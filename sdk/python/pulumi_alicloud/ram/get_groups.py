@@ -13,6 +13,7 @@ __all__ = [
     'GetGroupsResult',
     'AwaitableGetGroupsResult',
     'get_groups',
+    'get_groups_output',
 ]
 
 @pulumi.output_type
@@ -160,3 +161,34 @@ def get_groups(name_regex: Optional[str] = None,
         policy_name=__ret__.policy_name,
         policy_type=__ret__.policy_type,
         user_name=__ret__.user_name)
+
+
+@_utilities.lift_output_func(get_groups)
+def get_groups_output(name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                      policy_name: Optional[pulumi.Input[Optional[str]]] = None,
+                      policy_type: Optional[pulumi.Input[Optional[str]]] = None,
+                      user_name: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupsResult]:
+    """
+    This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    groups_ds = alicloud.ram.get_groups(name_regex="^group[0-9]*",
+        output_file="groups.txt",
+        user_name="user1")
+    pulumi.export("firstGroupName", groups_ds.groups[0].name)
+    ```
+
+
+    :param str name_regex: A regex string to filter the returned groups by their names.
+    :param str policy_name: Filter the results by a specific policy name. If you set this parameter without setting `policy_type`, it will be automatically set to `System`.
+    :param str policy_type: Filter the results by a specific policy type. Valid items are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
+    :param str user_name: Filter the results by a specific the user name.
+    """
+    ...

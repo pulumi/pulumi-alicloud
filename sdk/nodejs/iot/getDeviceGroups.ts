@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.iot.getDeviceGroups({});
- * export const iotDeviceGroupId1 = ids.then(ids => ids.groups[0].id);
+ * export const iotDeviceGroupId1 = ids.then(ids => ids.groups?[0]?.id);
  * ```
  */
 export function getDeviceGroups(args?: GetDeviceGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDeviceGroupsResult> {
@@ -49,28 +49,28 @@ export interface GetDeviceGroupsArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * The GroupName of the device group.
      */
-    readonly groupName?: string;
+    groupName?: string;
     /**
      * A list of device group IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The id of the Iot Instance.
      */
-    readonly iotInstanceId?: string;
+    iotInstanceId?: string;
     /**
      * A regex string to filter CEN instances by name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The id of the SuperGroup.
      */
-    readonly superGroupId?: string;
+    superGroupId?: string;
 }
 
 /**
@@ -89,4 +89,39 @@ export interface GetDeviceGroupsResult {
     readonly nameRegex?: string;
     readonly outputFile?: string;
     readonly superGroupId?: string;
+}
+
+export function getDeviceGroupsOutput(args?: GetDeviceGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceGroupsResult> {
+    return pulumi.output(args).apply(a => getDeviceGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDeviceGroups.
+ */
+export interface GetDeviceGroupsOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * The GroupName of the device group.
+     */
+    groupName?: pulumi.Input<string>;
+    /**
+     * A list of device group IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The id of the Iot Instance.
+     */
+    iotInstanceId?: pulumi.Input<string>;
+    /**
+     * A regex string to filter CEN instances by name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The id of the SuperGroup.
+     */
+    superGroupId?: pulumi.Input<string>;
 }

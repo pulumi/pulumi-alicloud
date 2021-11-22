@@ -12,6 +12,7 @@ __all__ = [
     'GetServiceResult',
     'AwaitableGetServiceResult',
     'get_service',
+    'get_service_output',
 ]
 
 @pulumi.output_type
@@ -96,3 +97,28 @@ def get_service(enable: Optional[str] = None,
         enable=__ret__.enable,
         id=__ret__.id,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_service)
+def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceResult]:
+    """
+    Using this data source can enable API gateway service automatically. If the service has been enabled, it will return `Opened`.
+
+    For information about API Gateway and how to use it, see [What is API Gateway](https://www.alibabacloud.com/help/product/29462.htm).
+
+    > **NOTE:** Available in v1.96.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    open = alicloud.apigateway.get_service(enable="On")
+    ```
+
+
+    :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
+    """
+    ...

@@ -153,23 +153,23 @@ export interface DomainConfigState {
     /**
      * (Available in 1.132.0+) The ID of the domain config function.
      */
-    readonly configId?: pulumi.Input<string>;
+    configId?: pulumi.Input<string>;
     /**
      * Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      */
-    readonly domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string>;
     /**
      * The args of the domain config.
      */
-    readonly functionArgs?: pulumi.Input<pulumi.Input<inputs.cdn.DomainConfigFunctionArg>[]>;
+    functionArgs?: pulumi.Input<pulumi.Input<inputs.cdn.DomainConfigFunctionArg>[]>;
     /**
      * The name of the domain config.
      */
-    readonly functionName?: pulumi.Input<string>;
+    functionName?: pulumi.Input<string>;
     /**
      * (Available in 1.132.0+) The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -179,13 +179,13 @@ export interface DomainConfigArgs {
     /**
      * Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      */
-    readonly domainName: pulumi.Input<string>;
+    domainName: pulumi.Input<string>;
     /**
      * The args of the domain config.
      */
-    readonly functionArgs: pulumi.Input<pulumi.Input<inputs.cdn.DomainConfigFunctionArg>[]>;
+    functionArgs: pulumi.Input<pulumi.Input<inputs.cdn.DomainConfigFunctionArg>[]>;
     /**
      * The name of the domain config.
      */
-    readonly functionName: pulumi.Input<string>;
+    functionName: pulumi.Input<string>;
 }

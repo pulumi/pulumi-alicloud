@@ -175,47 +175,47 @@ export interface MetricRuleTemplateState {
     /**
      * The details of alert rules that are generated based on the alert template. See the following `Block alertTemplates`.
      */
-    readonly alertTemplates?: pulumi.Input<pulumi.Input<inputs.cms.MetricRuleTemplateAlertTemplate>[]>;
+    alertTemplates?: pulumi.Input<pulumi.Input<inputs.cms.MetricRuleTemplateAlertTemplate>[]>;
     /**
      * The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
      */
-    readonly applyMode?: pulumi.Input<string>;
+    applyMode?: pulumi.Input<string>;
     /**
      * The description of the alert template.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The end of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:59 and the value 23 indicates 23:59.
      */
-    readonly enableEndTime?: pulumi.Input<string>;
+    enableEndTime?: pulumi.Input<string>;
     /**
      * The beginning of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:00 and the value 23 indicates 23:00.
      */
-    readonly enableStartTime?: pulumi.Input<string>;
+    enableStartTime?: pulumi.Input<string>;
     /**
      * The ID of the application group.
      */
-    readonly groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
     /**
      * The name of the alert template.
      */
-    readonly metricRuleTemplateName?: pulumi.Input<string>;
+    metricRuleTemplateName?: pulumi.Input<string>;
     /**
      * The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
      */
-    readonly notifyLevel?: pulumi.Input<string>;
+    notifyLevel?: pulumi.Input<string>;
     /**
      * The version of the alert template to be modified.
      */
-    readonly restVersion?: pulumi.Input<string>;
+    restVersion?: pulumi.Input<string>;
     /**
      * The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
      */
-    readonly silenceTime?: pulumi.Input<number>;
+    silenceTime?: pulumi.Input<number>;
     /**
      * The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
      */
-    readonly webhook?: pulumi.Input<string>;
+    webhook?: pulumi.Input<string>;
 }
 
 /**
@@ -225,41 +225,41 @@ export interface MetricRuleTemplateArgs {
     /**
      * The details of alert rules that are generated based on the alert template. See the following `Block alertTemplates`.
      */
-    readonly alertTemplates?: pulumi.Input<pulumi.Input<inputs.cms.MetricRuleTemplateAlertTemplate>[]>;
+    alertTemplates?: pulumi.Input<pulumi.Input<inputs.cms.MetricRuleTemplateAlertTemplate>[]>;
     /**
      * The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
      */
-    readonly applyMode?: pulumi.Input<string>;
+    applyMode?: pulumi.Input<string>;
     /**
      * The description of the alert template.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The end of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:59 and the value 23 indicates 23:59.
      */
-    readonly enableEndTime?: pulumi.Input<string>;
+    enableEndTime?: pulumi.Input<string>;
     /**
      * The beginning of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:00 and the value 23 indicates 23:00.
      */
-    readonly enableStartTime?: pulumi.Input<string>;
+    enableStartTime?: pulumi.Input<string>;
     /**
      * The ID of the application group.
      */
-    readonly groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
     /**
      * The name of the alert template.
      */
-    readonly metricRuleTemplateName: pulumi.Input<string>;
+    metricRuleTemplateName: pulumi.Input<string>;
     /**
      * The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
      */
-    readonly notifyLevel?: pulumi.Input<string>;
+    notifyLevel?: pulumi.Input<string>;
     /**
      * The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
      */
-    readonly silenceTime?: pulumi.Input<number>;
+    silenceTime?: pulumi.Input<number>;
     /**
      * The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
      */
-    readonly webhook?: pulumi.Input<string>;
+    webhook?: pulumi.Input<string>;
 }

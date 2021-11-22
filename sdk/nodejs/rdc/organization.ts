@@ -122,19 +122,19 @@ export interface OrganizationState {
     /**
      * The desired member count.
      */
-    readonly desiredMemberCount?: pulumi.Input<number>;
+    desiredMemberCount?: pulumi.Input<number>;
     /**
      * Company name.
      */
-    readonly organizationName?: pulumi.Input<string>;
+    organizationName?: pulumi.Input<string>;
     /**
      * User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk
      */
-    readonly realPk?: pulumi.Input<string>;
+    realPk?: pulumi.Input<string>;
     /**
      * This is organization source information
      */
-    readonly source?: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
 }
 
 /**
@@ -144,17 +144,17 @@ export interface OrganizationArgs {
     /**
      * The desired member count.
      */
-    readonly desiredMemberCount?: pulumi.Input<number>;
+    desiredMemberCount?: pulumi.Input<number>;
     /**
      * Company name.
      */
-    readonly organizationName: pulumi.Input<string>;
+    organizationName: pulumi.Input<string>;
     /**
      * User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk
      */
-    readonly realPk?: pulumi.Input<string>;
+    realPk?: pulumi.Input<string>;
     /**
      * This is organization source information
      */
-    readonly source: pulumi.Input<string>;
+    source: pulumi.Input<string>;
 }

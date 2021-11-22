@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.FNF
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.FNF
         ///             },
         ///             NameRegex = "the_resource_name",
         ///         }));
-        ///         this.FirstFnfFlowId = example.Apply(example =&gt; example.Flows[0].Id);
+        ///         this.FirstFnfFlowId = example.Apply(example =&gt; example.Flows?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstFnfFlowId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.FNF
         /// </summary>
         public static Task<GetFlowsResult> InvokeAsync(GetFlowsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFlowsResult>("alicloud:fnf/getFlows:getFlows", args ?? new GetFlowsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Fnf Flows of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.105.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.FNF.GetFlows.InvokeAsync(new AliCloud.FNF.GetFlowsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_value",
+        ///             },
+        ///             NameRegex = "the_resource_name",
+        ///         }));
+        ///         this.FirstFnfFlowId = example.Apply(example =&gt; example.Flows?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstFnfFlowId")]
+        ///     public Output&lt;string&gt; FirstFnfFlowId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetFlowsResult> Invoke(GetFlowsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFlowsResult>("alicloud:fnf/getFlows:getFlows", args ?? new GetFlowsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -83,6 +124,40 @@ namespace Pulumi.AliCloud.FNF
         public string? OutputFile { get; set; }
 
         public GetFlowsArgs()
+        {
+        }
+    }
+
+    public sealed class GetFlowsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Flow IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The number of resource queries.
+        /// </summary>
+        [Input("limit")]
+        public Input<int>? Limit { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Flow name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetFlowsInvokeArgs()
         {
         }
     }

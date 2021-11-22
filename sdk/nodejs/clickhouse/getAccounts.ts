@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  *     ids: [defaultAccountId],
  *     dbClusterId: defaultDbClusterId,
  * }));
- * export const accountId = defaultAccounts.ids[0];
+ * export const accountId = defaultAccounts.apply(defaultAccounts => defaultAccounts.ids?[0]);
  * ```
  */
 export function getAccounts(args: GetAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountsResult> {
@@ -70,20 +70,20 @@ export interface GetAccountsArgs {
     /**
      * The DBCluster id.
      */
-    readonly dbClusterId: string;
+    dbClusterId: string;
     /**
      * A list of Account IDs. Its element value is same as Account Name.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Account name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of the resource.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -101,4 +101,31 @@ export interface GetAccountsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getAccountsOutput(args: GetAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountsResult> {
+    return pulumi.output(args).apply(a => getAccounts(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccounts.
+ */
+export interface GetAccountsOutputArgs {
+    /**
+     * The DBCluster id.
+     */
+    dbClusterId: pulumi.Input<string>;
+    /**
+     * A list of Account IDs. Its element value is same as Account Name.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Account name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the resource.
+     */
+    status?: pulumi.Input<string>;
 }

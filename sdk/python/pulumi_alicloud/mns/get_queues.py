@@ -13,6 +13,7 @@ __all__ = [
     'GetQueuesResult',
     'AwaitableGetQueuesResult',
     'get_queues',
+    'get_queues_output',
 ]
 
 @pulumi.output_type
@@ -119,3 +120,26 @@ def get_queues(name_prefix: Optional[str] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         queues=__ret__.queues)
+
+
+@_utilities.lift_output_func(get_queues)
+def get_queues_output(name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
+                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQueuesResult]:
+    """
+    This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    queues = alicloud.mns.get_queues(name_prefix="tf-")
+    pulumi.export("firstQueueId", queues.queues[0].id)
+    ```
+
+
+    :param str name_prefix: A string to filter resulting queues by their name prefixs.
+    """
+    ...

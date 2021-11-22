@@ -13,6 +13,7 @@ __all__ = [
     'GetDataCentersResult',
     'AwaitableGetDataCentersResult',
     'get_data_centers',
+    'get_data_centers_output',
 ]
 
 @pulumi.output_type
@@ -115,7 +116,7 @@ def get_data_centers(cluster_id: Optional[str] = None,
                      output_file: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDataCentersResult:
     """
-    The `cassandra.getDataCenters` data source provides a collection of Cassandra Data Centers available in Alicloud account.
+    The `cassandra.get_data_centers` data source provides a collection of Cassandra Data Centers available in Alicloud account.
     Filters support regular expression for the cluster name or ids.
 
     > **NOTE:**  Available in 1.88.0+.
@@ -154,3 +155,33 @@ def get_data_centers(cluster_id: Optional[str] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_data_centers)
+def get_data_centers_output(cluster_id: Optional[pulumi.Input[str]] = None,
+                            ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDataCentersResult]:
+    """
+    The `cassandra.get_data_centers` data source provides a collection of Cassandra Data Centers available in Alicloud account.
+    Filters support regular expression for the cluster name or ids.
+
+    > **NOTE:**  Available in 1.88.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    cassandra = alicloud.cassandra.get_data_centers(cluster_id="cds-xxxxx",
+        name_regex="tf_testAccCassandra_dc")
+    ```
+
+
+    :param str cluster_id: The cluster id of dataCenters belongs to.
+    :param Sequence[str] ids: The list of Cassandra data center ids.
+    :param str name_regex: A regex string to apply to the cluster name.
+    """
+    ...

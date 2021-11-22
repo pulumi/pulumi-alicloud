@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstResourceManagerControlPolicyId = example.then(example => example.policies[0].id);
+ * export const firstResourceManagerControlPolicyId = example.then(example => example.policies?[0]?.id);
  * ```
  */
 export function getControlPolicies(args?: GetControlPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetControlPoliciesResult> {
@@ -51,24 +51,24 @@ export interface GetControlPoliciesArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Control Policy IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`.
      */
-    readonly language?: string;
+    language?: string;
     /**
      * A regex string to filter results by Control Policy name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The type of policy.
      */
-    readonly policyType?: string;
+    policyType?: string;
 }
 
 /**
@@ -87,4 +87,35 @@ export interface GetControlPoliciesResult {
     readonly outputFile?: string;
     readonly policies: outputs.resourcemanager.GetControlPoliciesPolicy[];
     readonly policyType?: string;
+}
+
+export function getControlPoliciesOutput(args?: GetControlPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetControlPoliciesResult> {
+    return pulumi.output(args).apply(a => getControlPolicies(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getControlPolicies.
+ */
+export interface GetControlPoliciesOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Control Policy IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`.
+     */
+    language?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Control Policy name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The type of policy.
+     */
+    policyType?: pulumi.Input<string>;
 }

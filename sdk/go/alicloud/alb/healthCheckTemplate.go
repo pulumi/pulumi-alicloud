@@ -298,7 +298,7 @@ type HealthCheckTemplateArrayInput interface {
 type HealthCheckTemplateArray []HealthCheckTemplateInput
 
 func (HealthCheckTemplateArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*HealthCheckTemplate)(nil))
+	return reflect.TypeOf((*[]*HealthCheckTemplate)(nil)).Elem()
 }
 
 func (i HealthCheckTemplateArray) ToHealthCheckTemplateArrayOutput() HealthCheckTemplateArrayOutput {
@@ -323,7 +323,7 @@ type HealthCheckTemplateMapInput interface {
 type HealthCheckTemplateMap map[string]HealthCheckTemplateInput
 
 func (HealthCheckTemplateMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*HealthCheckTemplate)(nil))
+	return reflect.TypeOf((*map[string]*HealthCheckTemplate)(nil)).Elem()
 }
 
 func (i HealthCheckTemplateMap) ToHealthCheckTemplateMapOutput() HealthCheckTemplateMapOutput {
@@ -334,9 +334,7 @@ func (i HealthCheckTemplateMap) ToHealthCheckTemplateMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(HealthCheckTemplateMapOutput)
 }
 
-type HealthCheckTemplateOutput struct {
-	*pulumi.OutputState
-}
+type HealthCheckTemplateOutput struct{ *pulumi.OutputState }
 
 func (HealthCheckTemplateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*HealthCheckTemplate)(nil))
@@ -355,14 +353,12 @@ func (o HealthCheckTemplateOutput) ToHealthCheckTemplatePtrOutput() HealthCheckT
 }
 
 func (o HealthCheckTemplateOutput) ToHealthCheckTemplatePtrOutputWithContext(ctx context.Context) HealthCheckTemplatePtrOutput {
-	return o.ApplyT(func(v HealthCheckTemplate) *HealthCheckTemplate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HealthCheckTemplate) *HealthCheckTemplate {
 		return &v
 	}).(HealthCheckTemplatePtrOutput)
 }
 
-type HealthCheckTemplatePtrOutput struct {
-	*pulumi.OutputState
-}
+type HealthCheckTemplatePtrOutput struct{ *pulumi.OutputState }
 
 func (HealthCheckTemplatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**HealthCheckTemplate)(nil))
@@ -374,6 +370,16 @@ func (o HealthCheckTemplatePtrOutput) ToHealthCheckTemplatePtrOutput() HealthChe
 
 func (o HealthCheckTemplatePtrOutput) ToHealthCheckTemplatePtrOutputWithContext(ctx context.Context) HealthCheckTemplatePtrOutput {
 	return o
+}
+
+func (o HealthCheckTemplatePtrOutput) Elem() HealthCheckTemplateOutput {
+	return o.ApplyT(func(v *HealthCheckTemplate) HealthCheckTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret HealthCheckTemplate
+		return ret
+	}).(HealthCheckTemplateOutput)
 }
 
 type HealthCheckTemplateArrayOutput struct{ *pulumi.OutputState }
@@ -417,6 +423,10 @@ func (o HealthCheckTemplateMapOutput) MapIndex(k pulumi.StringInput) HealthCheck
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HealthCheckTemplateInput)(nil)).Elem(), &HealthCheckTemplate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HealthCheckTemplatePtrInput)(nil)).Elem(), &HealthCheckTemplate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HealthCheckTemplateArrayInput)(nil)).Elem(), HealthCheckTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HealthCheckTemplateMapInput)(nil)).Elem(), HealthCheckTemplateMap{})
 	pulumi.RegisterOutputType(HealthCheckTemplateOutput{})
 	pulumi.RegisterOutputType(HealthCheckTemplatePtrOutput{})
 	pulumi.RegisterOutputType(HealthCheckTemplateArrayOutput{})

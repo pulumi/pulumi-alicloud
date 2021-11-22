@@ -154,7 +154,7 @@ type RoleAttachmentArrayInput interface {
 type RoleAttachmentArray []RoleAttachmentInput
 
 func (RoleAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RoleAttachment)(nil))
+	return reflect.TypeOf((*[]*RoleAttachment)(nil)).Elem()
 }
 
 func (i RoleAttachmentArray) ToRoleAttachmentArrayOutput() RoleAttachmentArrayOutput {
@@ -179,7 +179,7 @@ type RoleAttachmentMapInput interface {
 type RoleAttachmentMap map[string]RoleAttachmentInput
 
 func (RoleAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RoleAttachment)(nil))
+	return reflect.TypeOf((*map[string]*RoleAttachment)(nil)).Elem()
 }
 
 func (i RoleAttachmentMap) ToRoleAttachmentMapOutput() RoleAttachmentMapOutput {
@@ -190,9 +190,7 @@ func (i RoleAttachmentMap) ToRoleAttachmentMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(RoleAttachmentMapOutput)
 }
 
-type RoleAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type RoleAttachmentOutput struct{ *pulumi.OutputState }
 
 func (RoleAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RoleAttachment)(nil))
@@ -211,14 +209,12 @@ func (o RoleAttachmentOutput) ToRoleAttachmentPtrOutput() RoleAttachmentPtrOutpu
 }
 
 func (o RoleAttachmentOutput) ToRoleAttachmentPtrOutputWithContext(ctx context.Context) RoleAttachmentPtrOutput {
-	return o.ApplyT(func(v RoleAttachment) *RoleAttachment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoleAttachment) *RoleAttachment {
 		return &v
 	}).(RoleAttachmentPtrOutput)
 }
 
-type RoleAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type RoleAttachmentPtrOutput struct{ *pulumi.OutputState }
 
 func (RoleAttachmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RoleAttachment)(nil))
@@ -230,6 +226,16 @@ func (o RoleAttachmentPtrOutput) ToRoleAttachmentPtrOutput() RoleAttachmentPtrOu
 
 func (o RoleAttachmentPtrOutput) ToRoleAttachmentPtrOutputWithContext(ctx context.Context) RoleAttachmentPtrOutput {
 	return o
+}
+
+func (o RoleAttachmentPtrOutput) Elem() RoleAttachmentOutput {
+	return o.ApplyT(func(v *RoleAttachment) RoleAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret RoleAttachment
+		return ret
+	}).(RoleAttachmentOutput)
 }
 
 type RoleAttachmentArrayOutput struct{ *pulumi.OutputState }
@@ -273,6 +279,10 @@ func (o RoleAttachmentMapOutput) MapIndex(k pulumi.StringInput) RoleAttachmentOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RoleAttachmentInput)(nil)).Elem(), &RoleAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoleAttachmentPtrInput)(nil)).Elem(), &RoleAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoleAttachmentArrayInput)(nil)).Elem(), RoleAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoleAttachmentMapInput)(nil)).Elem(), RoleAttachmentMap{})
 	pulumi.RegisterOutputType(RoleAttachmentOutput{})
 	pulumi.RegisterOutputType(RoleAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(RoleAttachmentArrayOutput{})

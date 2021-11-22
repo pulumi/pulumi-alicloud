@@ -13,6 +13,7 @@ __all__ = [
     'GetInstancesResult',
     'AwaitableGetInstancesResult',
     'get_instances',
+    'get_instances_output',
 ]
 
 @pulumi.output_type
@@ -158,3 +159,39 @@ def get_instances(ids: Optional[Sequence[str]] = None,
         output_file=__ret__.output_file,
         resource_group_id=__ret__.resource_group_id,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_instances)
+def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         instance_source: Optional[pulumi.Input[Optional[str]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         status: Optional[pulumi.Input[Optional[int]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+    """
+    Provides a WAF datasource to retrieve instances.
+
+    For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
+
+    > **NOTE:** Available in 1.90.0+ .
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.waf.get_instances(ids=["waf-cn-09k********"],
+        status=1,
+        resource_group_id="rg-acfmwvv********",
+        instance_source="waf-cloud")
+    pulumi.export("theFirstWafInstanceId", default.instances[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of WAF instance IDs.
+    :param str instance_source: The source of the WAF instance.
+    :param str resource_group_id: The ID of resource group to which WAF instance belongs.
+    :param int status: The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
+    """
+    ...

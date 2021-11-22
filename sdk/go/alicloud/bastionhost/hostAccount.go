@@ -257,7 +257,7 @@ type HostAccountArrayInput interface {
 type HostAccountArray []HostAccountInput
 
 func (HostAccountArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*HostAccount)(nil))
+	return reflect.TypeOf((*[]*HostAccount)(nil)).Elem()
 }
 
 func (i HostAccountArray) ToHostAccountArrayOutput() HostAccountArrayOutput {
@@ -282,7 +282,7 @@ type HostAccountMapInput interface {
 type HostAccountMap map[string]HostAccountInput
 
 func (HostAccountMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*HostAccount)(nil))
+	return reflect.TypeOf((*map[string]*HostAccount)(nil)).Elem()
 }
 
 func (i HostAccountMap) ToHostAccountMapOutput() HostAccountMapOutput {
@@ -293,9 +293,7 @@ func (i HostAccountMap) ToHostAccountMapOutputWithContext(ctx context.Context) H
 	return pulumi.ToOutputWithContext(ctx, i).(HostAccountMapOutput)
 }
 
-type HostAccountOutput struct {
-	*pulumi.OutputState
-}
+type HostAccountOutput struct{ *pulumi.OutputState }
 
 func (HostAccountOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*HostAccount)(nil))
@@ -314,14 +312,12 @@ func (o HostAccountOutput) ToHostAccountPtrOutput() HostAccountPtrOutput {
 }
 
 func (o HostAccountOutput) ToHostAccountPtrOutputWithContext(ctx context.Context) HostAccountPtrOutput {
-	return o.ApplyT(func(v HostAccount) *HostAccount {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HostAccount) *HostAccount {
 		return &v
 	}).(HostAccountPtrOutput)
 }
 
-type HostAccountPtrOutput struct {
-	*pulumi.OutputState
-}
+type HostAccountPtrOutput struct{ *pulumi.OutputState }
 
 func (HostAccountPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**HostAccount)(nil))
@@ -333,6 +329,16 @@ func (o HostAccountPtrOutput) ToHostAccountPtrOutput() HostAccountPtrOutput {
 
 func (o HostAccountPtrOutput) ToHostAccountPtrOutputWithContext(ctx context.Context) HostAccountPtrOutput {
 	return o
+}
+
+func (o HostAccountPtrOutput) Elem() HostAccountOutput {
+	return o.ApplyT(func(v *HostAccount) HostAccount {
+		if v != nil {
+			return *v
+		}
+		var ret HostAccount
+		return ret
+	}).(HostAccountOutput)
 }
 
 type HostAccountArrayOutput struct{ *pulumi.OutputState }
@@ -376,6 +382,10 @@ func (o HostAccountMapOutput) MapIndex(k pulumi.StringInput) HostAccountOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HostAccountInput)(nil)).Elem(), &HostAccount{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostAccountPtrInput)(nil)).Elem(), &HostAccount{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostAccountArrayInput)(nil)).Elem(), HostAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostAccountMapInput)(nil)).Elem(), HostAccountMap{})
 	pulumi.RegisterOutputType(HostAccountOutput{})
 	pulumi.RegisterOutputType(HostAccountPtrOutput{})
 	pulumi.RegisterOutputType(HostAccountArrayOutput{})

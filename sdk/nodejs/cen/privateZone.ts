@@ -157,23 +157,23 @@ export interface PrivateZoneState {
     /**
      * The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
      */
-    readonly accessRegionId?: pulumi.Input<string>;
+    accessRegionId?: pulumi.Input<string>;
     /**
      * The ID of the CEN instance.
      */
-    readonly cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string>;
     /**
      * The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
      */
-    readonly hostRegionId?: pulumi.Input<string>;
+    hostRegionId?: pulumi.Input<string>;
     /**
      * The VPC that belongs to the service region.
      */
-    readonly hostVpcId?: pulumi.Input<string>;
+    hostVpcId?: pulumi.Input<string>;
     /**
      * The status of the PrivateZone service. Valid values: ["Creating", "Active", "Deleting"].
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -183,17 +183,17 @@ export interface PrivateZoneArgs {
     /**
      * The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
      */
-    readonly accessRegionId: pulumi.Input<string>;
+    accessRegionId: pulumi.Input<string>;
     /**
      * The ID of the CEN instance.
      */
-    readonly cenId: pulumi.Input<string>;
+    cenId: pulumi.Input<string>;
     /**
      * The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
      */
-    readonly hostRegionId: pulumi.Input<string>;
+    hostRegionId: pulumi.Input<string>;
     /**
      * The VPC that belongs to the service region.
      */
-    readonly hostVpcId: pulumi.Input<string>;
+    hostVpcId: pulumi.Input<string>;
 }

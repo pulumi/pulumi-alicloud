@@ -127,23 +127,23 @@ export interface ResourceGroupState {
     /**
      * The ID of the Alibaba Cloud account to which the resource group belongs.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from version 1.114.0. Use `resourceGroupName` instead.
      *
      * @deprecated Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly regionStatuses?: pulumi.Input<pulumi.Input<inputs.resourcemanager.ResourceGroupRegionStatus>[]>;
-    readonly resourceGroupName?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    regionStatuses?: pulumi.Input<pulumi.Input<inputs.resourcemanager.ResourceGroupRegionStatus>[]>;
+    resourceGroupName?: pulumi.Input<string>;
     /**
      * The status of the regional resource group.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -153,12 +153,12 @@ export interface ResourceGroupArgs {
     /**
      * The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
      */
-    readonly displayName: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from version 1.114.0. Use `resourceGroupName` instead.
      *
      * @deprecated Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly resourceGroupName?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    resourceGroupName?: pulumi.Input<string>;
 }

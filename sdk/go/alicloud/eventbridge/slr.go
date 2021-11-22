@@ -178,7 +178,7 @@ type SlrArrayInput interface {
 type SlrArray []SlrInput
 
 func (SlrArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Slr)(nil))
+	return reflect.TypeOf((*[]*Slr)(nil)).Elem()
 }
 
 func (i SlrArray) ToSlrArrayOutput() SlrArrayOutput {
@@ -203,7 +203,7 @@ type SlrMapInput interface {
 type SlrMap map[string]SlrInput
 
 func (SlrMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Slr)(nil))
+	return reflect.TypeOf((*map[string]*Slr)(nil)).Elem()
 }
 
 func (i SlrMap) ToSlrMapOutput() SlrMapOutput {
@@ -214,9 +214,7 @@ func (i SlrMap) ToSlrMapOutputWithContext(ctx context.Context) SlrMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SlrMapOutput)
 }
 
-type SlrOutput struct {
-	*pulumi.OutputState
-}
+type SlrOutput struct{ *pulumi.OutputState }
 
 func (SlrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Slr)(nil))
@@ -235,14 +233,12 @@ func (o SlrOutput) ToSlrPtrOutput() SlrPtrOutput {
 }
 
 func (o SlrOutput) ToSlrPtrOutputWithContext(ctx context.Context) SlrPtrOutput {
-	return o.ApplyT(func(v Slr) *Slr {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Slr) *Slr {
 		return &v
 	}).(SlrPtrOutput)
 }
 
-type SlrPtrOutput struct {
-	*pulumi.OutputState
-}
+type SlrPtrOutput struct{ *pulumi.OutputState }
 
 func (SlrPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Slr)(nil))
@@ -254,6 +250,16 @@ func (o SlrPtrOutput) ToSlrPtrOutput() SlrPtrOutput {
 
 func (o SlrPtrOutput) ToSlrPtrOutputWithContext(ctx context.Context) SlrPtrOutput {
 	return o
+}
+
+func (o SlrPtrOutput) Elem() SlrOutput {
+	return o.ApplyT(func(v *Slr) Slr {
+		if v != nil {
+			return *v
+		}
+		var ret Slr
+		return ret
+	}).(SlrOutput)
 }
 
 type SlrArrayOutput struct{ *pulumi.OutputState }
@@ -297,6 +303,10 @@ func (o SlrMapOutput) MapIndex(k pulumi.StringInput) SlrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SlrInput)(nil)).Elem(), &Slr{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlrPtrInput)(nil)).Elem(), &Slr{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlrArrayInput)(nil)).Elem(), SlrArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlrMapInput)(nil)).Elem(), SlrMap{})
 	pulumi.RegisterOutputType(SlrOutput{})
 	pulumi.RegisterOutputType(SlrPtrOutput{})
 	pulumi.RegisterOutputType(SlrArrayOutput{})

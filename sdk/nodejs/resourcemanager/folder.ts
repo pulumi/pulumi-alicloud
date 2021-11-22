@@ -107,11 +107,11 @@ export interface FolderState {
     /**
      * The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
      */
-    readonly folderName?: pulumi.Input<string>;
+    folderName?: pulumi.Input<string>;
     /**
      * The ID of the parent folder. If not set, the system default value will be used.
      */
-    readonly parentFolderId?: pulumi.Input<string>;
+    parentFolderId?: pulumi.Input<string>;
 }
 
 /**
@@ -121,9 +121,9 @@ export interface FolderArgs {
     /**
      * The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
      */
-    readonly folderName: pulumi.Input<string>;
+    folderName: pulumi.Input<string>;
     /**
      * The ID of the parent folder. If not set, the system default value will be used.
      */
-    readonly parentFolderId?: pulumi.Input<string>;
+    parentFolderId?: pulumi.Input<string>;
 }

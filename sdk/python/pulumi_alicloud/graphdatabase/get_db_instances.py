@@ -13,6 +13,7 @@ __all__ = [
     'GetDbInstancesResult',
     'AwaitableGetDbInstancesResult',
     'get_db_instances',
+    'get_db_instances_output',
 ]
 
 @pulumi.output_type
@@ -152,3 +153,42 @@ def get_db_instances(db_instance_description: Optional[str] = None,
         instances=__ret__.instances,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_db_instances)
+def get_db_instances_output(db_instance_description: Optional[pulumi.Input[Optional[str]]] = None,
+                            enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                            ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                            status: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDbInstancesResult]:
+    """
+    This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.136.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.graphdatabase.get_db_instances(ids=["example_id"])
+    pulumi.export("graphDatabaseDbInstanceId1", ids.instances[0].id)
+    status = alicloud.graphdatabase.get_db_instances(ids=["example_id"],
+        status="Running")
+    pulumi.export("graphDatabaseDbInstanceId2", status.instances[0].id)
+    description = alicloud.graphdatabase.get_db_instances(ids=["example_id"],
+        db_instance_description="example_value")
+    pulumi.export("graphDatabaseDbInstanceId3", description.instances[0].id)
+    ```
+
+
+    :param str db_instance_description: According to the practical example or notes.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of Db Instance IDs.
+    :param str status: Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+    """
+    ...

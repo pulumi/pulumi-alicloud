@@ -4,6 +4,9 @@
 package emr
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -91,4 +94,104 @@ type GetInstanceTypesResult struct {
 	Types []GetInstanceTypesType `pulumi:"types"`
 	// The available zone id in Alibaba Cloud account
 	ZoneId *string `pulumi:"zoneId"`
+}
+
+func GetInstanceTypesOutput(ctx *pulumi.Context, args GetInstanceTypesOutputArgs, opts ...pulumi.InvokeOption) GetInstanceTypesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetInstanceTypesResult, error) {
+			args := v.(GetInstanceTypesArgs)
+			r, err := GetInstanceTypes(ctx, &args, opts...)
+			return *r, err
+		}).(GetInstanceTypesResultOutput)
+}
+
+// A collection of arguments for invoking getInstanceTypes.
+type GetInstanceTypesOutputArgs struct {
+	// The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.
+	ClusterType pulumi.StringInput `pulumi:"clusterType"`
+	// The destination resource of emr cluster instance
+	DestinationResource pulumi.StringInput `pulumi:"destinationResource"`
+	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+	InstanceChargeType pulumi.StringInput `pulumi:"instanceChargeType"`
+	// Filter the specific ecs instance type to create emr cluster.
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	OutputFile   pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Whether the current storage disk is local or not.
+	SupportLocalStorage pulumi.BoolPtrInput `pulumi:"supportLocalStorage"`
+	// The specific supported node type list.
+	// Possible values may be any one or combination of these: ["MASTER", "CORE", "TASK", "GATEWAY"]
+	SupportNodeTypes pulumi.StringArrayInput `pulumi:"supportNodeTypes"`
+	// The supported resources of specific zoneId.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (GetInstanceTypesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getInstanceTypes.
+type GetInstanceTypesResultOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypesResult)(nil)).Elem()
+}
+
+func (o GetInstanceTypesResultOutput) ToGetInstanceTypesResultOutput() GetInstanceTypesResultOutput {
+	return o
+}
+
+func (o GetInstanceTypesResultOutput) ToGetInstanceTypesResultOutputWithContext(ctx context.Context) GetInstanceTypesResultOutput {
+	return o
+}
+
+func (o GetInstanceTypesResultOutput) ClusterType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) string { return v.ClusterType }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceTypesResultOutput) DestinationResource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) string { return v.DestinationResource }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetInstanceTypesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of emr instance types IDs.
+func (o GetInstanceTypesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstanceTypesResultOutput) InstanceChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) string { return v.InstanceChargeType }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceTypesResultOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceTypesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceTypesResultOutput) SupportLocalStorage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) *bool { return v.SupportLocalStorage }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetInstanceTypesResultOutput) SupportNodeTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) []string { return v.SupportNodeTypes }).(pulumi.StringArrayOutput)
+}
+
+// A list of emr instance types. Each element contains the following attributes:
+func (o GetInstanceTypesResultOutput) Types() GetInstanceTypesTypeArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) []GetInstanceTypesType { return v.Types }).(GetInstanceTypesTypeArrayOutput)
+}
+
+// The available zone id in Alibaba Cloud account
+func (o GetInstanceTypesResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetInstanceTypesResultOutput{})
 }

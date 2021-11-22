@@ -13,6 +13,7 @@ __all__ = [
     'GetTrafficMirrorFilterIngressRulesResult',
     'AwaitableGetTrafficMirrorFilterIngressRulesResult',
     'get_traffic_mirror_filter_ingress_rules',
+    'get_traffic_mirror_filter_ingress_rules_output',
 ]
 
 @pulumi.output_type
@@ -138,3 +139,39 @@ def get_traffic_mirror_filter_ingress_rules(ids: Optional[Sequence[str]] = None,
         rules=__ret__.rules,
         status=__ret__.status,
         traffic_mirror_filter_id=__ret__.traffic_mirror_filter_id)
+
+
+@_utilities.lift_output_func(get_traffic_mirror_filter_ingress_rules)
+def get_traffic_mirror_filter_ingress_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                                   output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                                   status: Optional[pulumi.Input[Optional[str]]] = None,
+                                                   traffic_mirror_filter_id: Optional[pulumi.Input[str]] = None,
+                                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTrafficMirrorFilterIngressRulesResult]:
+    """
+    This data source provides the Vpc Traffic Mirror Filter Ingress Rules of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.141.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.vpc.get_traffic_mirror_filter_ingress_rules(traffic_mirror_filter_id="example_traffic_mirror_filter_id",
+        ids=["example_id"])
+    pulumi.export("vpcTrafficMirrorFilterIngressRuleId1", ids.rules[0].id)
+    status = alicloud.vpc.get_traffic_mirror_filter_ingress_rules(traffic_mirror_filter_id="example_traffic_mirror_filter_id",
+        ids=["example_id"],
+        status="Created")
+    pulumi.export("vpcTrafficMirrorFilterIngressRuleId2", status.rules[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Traffic Mirror Filter Ingress Rule IDs.
+    :param str status: The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+    :param str traffic_mirror_filter_id: The ID of the filter associated with the inbound rule.
+    """
+    ...

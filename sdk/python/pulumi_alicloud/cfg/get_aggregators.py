@@ -13,6 +13,7 @@ __all__ = [
     'GetAggregatorsResult',
     'AwaitableGetAggregatorsResult',
     'get_aggregators',
+    'get_aggregators_output',
 ]
 
 @pulumi.output_type
@@ -157,3 +158,37 @@ def get_aggregators(enable_details: Optional[bool] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_aggregators)
+def get_aggregators_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                           ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                           name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                           status: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAggregatorsResult]:
+    """
+    This data source provides the Config Aggregators of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.124.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cfg.get_aggregators(ids=["ca-3ce2626622af0005****"],
+        name_regex="the_resource_name")
+    pulumi.export("firstConfigAggregatorId", example.aggregators[0].id)
+    ```
+
+
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of aggregator ids.
+    :param str name_regex: A regex string to filter results by aggregator name.
+    :param str status: The status of the resource.
+    """
+    ...

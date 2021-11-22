@@ -18,14 +18,14 @@ import * as utilities from "../utilities";
  *
  * const resourcesZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "KVStore",
- * }, { async: true }));
+ * }));
  * const resourcesInstanceEngines = resourcesZones.apply(resourcesZones => alicloud.kvstore.getInstanceEngines({
  *     engine: "Redis",
  *     engineVersion: "5.0",
  *     instanceChargeType: "PrePaid",
  *     outputFile: "./engines.txt",
  *     zoneId: resourcesZones.zones[0].id,
- * }, { async: true }));
+ * }));
  *
  * export const firstKvstoreInstanceClass = resourcesInstanceEngines.instanceEngines[0].engine;
  * ```
@@ -54,20 +54,20 @@ export interface GetInstanceEnginesArgs {
     /**
      * Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
      */
-    readonly engine?: string;
+    engine?: string;
     /**
      * Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
      */
-    readonly engineVersion?: string;
+    engineVersion?: string;
     /**
      * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
      */
-    readonly instanceChargeType?: string;
-    readonly outputFile?: string;
+    instanceChargeType?: string;
+    outputFile?: string;
     /**
      * The Zone to launch the KVStore instance.
      */
-    readonly zoneId: string;
+    zoneId: string;
 }
 
 /**
@@ -96,4 +96,31 @@ export interface GetInstanceEnginesResult {
      * The Zone to launch the KVStore instance.
      */
     readonly zoneId: string;
+}
+
+export function getInstanceEnginesOutput(args: GetInstanceEnginesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceEnginesResult> {
+    return pulumi.output(args).apply(a => getInstanceEngines(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstanceEngines.
+ */
+export interface GetInstanceEnginesOutputArgs {
+    /**
+     * Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
+     */
+    engine?: pulumi.Input<string>;
+    /**
+     * Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
+     */
+    engineVersion?: pulumi.Input<string>;
+    /**
+     * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
+     */
+    instanceChargeType?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The Zone to launch the KVStore instance.
+     */
+    zoneId: pulumi.Input<string>;
 }

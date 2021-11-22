@@ -4,6 +4,9 @@
 package bastionhost
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -82,4 +85,82 @@ type GetHostGroupsResult struct {
 	NameRegex  *string  `pulumi:"nameRegex"`
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetHostGroupsOutput(ctx *pulumi.Context, args GetHostGroupsOutputArgs, opts ...pulumi.InvokeOption) GetHostGroupsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetHostGroupsResult, error) {
+			args := v.(GetHostGroupsArgs)
+			r, err := GetHostGroups(ctx, &args, opts...)
+			return *r, err
+		}).(GetHostGroupsResultOutput)
+}
+
+// A collection of arguments for invoking getHostGroups.
+type GetHostGroupsOutputArgs struct {
+	// Specify the New Host Group Name, Supports up to 128 Characters.
+	HostGroupName pulumi.StringPtrInput `pulumi:"hostGroupName"`
+	// A list of Host Group IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Specify the New Host Group Where the Bastion Host ID of.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// A regex string to filter results by Host Group name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetHostGroupsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostGroupsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getHostGroups.
+type GetHostGroupsResultOutput struct{ *pulumi.OutputState }
+
+func (GetHostGroupsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostGroupsResult)(nil)).Elem()
+}
+
+func (o GetHostGroupsResultOutput) ToGetHostGroupsResultOutput() GetHostGroupsResultOutput {
+	return o
+}
+
+func (o GetHostGroupsResultOutput) ToGetHostGroupsResultOutputWithContext(ctx context.Context) GetHostGroupsResultOutput {
+	return o
+}
+
+func (o GetHostGroupsResultOutput) Groups() GetHostGroupsGroupArrayOutput {
+	return o.ApplyT(func(v GetHostGroupsResult) []GetHostGroupsGroup { return v.Groups }).(GetHostGroupsGroupArrayOutput)
+}
+
+func (o GetHostGroupsResultOutput) HostGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHostGroupsResult) *string { return v.HostGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetHostGroupsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostGroupsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetHostGroupsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHostGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetHostGroupsResultOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostGroupsResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetHostGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHostGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetHostGroupsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHostGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetHostGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHostGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetHostGroupsResultOutput{})
 }

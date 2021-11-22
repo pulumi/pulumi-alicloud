@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Ecs
         ///             },
         ///             NameRegex = "key_pair_name",
         ///         }));
-        ///         this.FirstEcsKeyPairId = example.Apply(example =&gt; example.Pairs[0].Id);
+        ///         this.FirstEcsKeyPairId = example.Apply(example =&gt; example.Pairs?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstEcsKeyPairId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public static Task<GetEcsKeyPairsResult> InvokeAsync(GetEcsKeyPairsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEcsKeyPairsResult>("alicloud:ecs/getEcsKeyPairs:getEcsKeyPairs", args ?? new GetEcsKeyPairsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.121.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Ecs.GetEcsKeyPairs.InvokeAsync(new AliCloud.Ecs.GetEcsKeyPairsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "key_pair_name",
+        ///             },
+        ///             NameRegex = "key_pair_name",
+        ///         }));
+        ///         this.FirstEcsKeyPairId = example.Apply(example =&gt; example.Pairs?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstEcsKeyPairId")]
+        ///     public Output&lt;string&gt; FirstEcsKeyPairId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetEcsKeyPairsResult> Invoke(GetEcsKeyPairsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEcsKeyPairsResult>("alicloud:ecs/getEcsKeyPairs:getEcsKeyPairs", args ?? new GetEcsKeyPairsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -101,6 +142,58 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         public GetEcsKeyPairsArgs()
+        {
+        }
+    }
+
+    public sealed class GetEcsKeyPairsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The finger print of the key pair.
+        /// </summary>
+        [Input("fingerPrint")]
+        public Input<string>? FingerPrint { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Key Pair IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Key Pair name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The Resource Group Id.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tags.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        public GetEcsKeyPairsInvokeArgs()
         {
         }
     }

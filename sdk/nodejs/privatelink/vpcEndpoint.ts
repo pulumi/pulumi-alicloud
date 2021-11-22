@@ -171,51 +171,51 @@ export interface VpcEndpointState {
     /**
      * The Bandwidth.
      */
-    readonly bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number>;
     /**
      * The status of Connection.
      */
-    readonly connectionStatus?: pulumi.Input<string>;
+    connectionStatus?: pulumi.Input<string>;
     /**
      * The dry run. Default to: `false`.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The status of Endpoint Business.
      */
-    readonly endpointBusinessStatus?: pulumi.Input<string>;
+    endpointBusinessStatus?: pulumi.Input<string>;
     /**
      * The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
      */
-    readonly endpointDescription?: pulumi.Input<string>;
+    endpointDescription?: pulumi.Input<string>;
     /**
      * The Endpoint Domain.
      */
-    readonly endpointDomain?: pulumi.Input<string>;
+    endpointDomain?: pulumi.Input<string>;
     /**
      * The security group associated with the terminal node network card.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The terminal node service associated with the terminal node.
      */
-    readonly serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string>;
     /**
      * The name of the terminal node service associated with the terminal node.
      */
-    readonly serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
     /**
      * The status of Vpc Endpoint.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
      */
-    readonly vpcEndpointName?: pulumi.Input<string>;
+    vpcEndpointName?: pulumi.Input<string>;
     /**
      * The private network to which the terminal node belongs.
      */
-    readonly vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
 }
 
 /**
@@ -225,29 +225,29 @@ export interface VpcEndpointArgs {
     /**
      * The dry run. Default to: `false`.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
      */
-    readonly endpointDescription?: pulumi.Input<string>;
+    endpointDescription?: pulumi.Input<string>;
     /**
      * The security group associated with the terminal node network card.
      */
-    readonly securityGroupIds: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The terminal node service associated with the terminal node.
      */
-    readonly serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string>;
     /**
      * The name of the terminal node service associated with the terminal node.
      */
-    readonly serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
     /**
      * The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
      */
-    readonly vpcEndpointName?: pulumi.Input<string>;
+    vpcEndpointName?: pulumi.Input<string>;
     /**
      * The private network to which the terminal node belongs.
      */
-    readonly vpcId: pulumi.Input<string>;
+    vpcId: pulumi.Input<string>;
 }

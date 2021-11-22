@@ -4,6 +4,9 @@
 package vpc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,4 +73,76 @@ type GetHavipsResult struct {
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	Status     *string  `pulumi:"status"`
+}
+
+func GetHavipsOutput(ctx *pulumi.Context, args GetHavipsOutputArgs, opts ...pulumi.InvokeOption) GetHavipsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetHavipsResult, error) {
+			args := v.(GetHavipsArgs)
+			r, err := GetHavips(ctx, &args, opts...)
+			return *r, err
+		}).(GetHavipsResultOutput)
+}
+
+// A collection of arguments for invoking getHavips.
+type GetHavipsOutputArgs struct {
+	// A list of Ha Vip IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Ha Vip name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetHavipsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHavipsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getHavips.
+type GetHavipsResultOutput struct{ *pulumi.OutputState }
+
+func (GetHavipsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHavipsResult)(nil)).Elem()
+}
+
+func (o GetHavipsResultOutput) ToGetHavipsResultOutput() GetHavipsResultOutput {
+	return o
+}
+
+func (o GetHavipsResultOutput) ToGetHavipsResultOutputWithContext(ctx context.Context) GetHavipsResultOutput {
+	return o
+}
+
+func (o GetHavipsResultOutput) Havips() GetHavipsHavipArrayOutput {
+	return o.ApplyT(func(v GetHavipsResult) []GetHavipsHavip { return v.Havips }).(GetHavipsHavipArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetHavipsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHavipsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetHavipsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHavipsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetHavipsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHavipsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetHavipsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHavipsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetHavipsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHavipsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetHavipsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHavipsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetHavipsResultOutput{})
 }

@@ -13,6 +13,7 @@ __all__ = [
     'GetNatGatewaysResult',
     'AwaitableGetNatGatewaysResult',
     'get_nat_gateways',
+    'get_nat_gateways_output',
 ]
 
 @pulumi.output_type
@@ -281,3 +282,40 @@ def get_nat_gateways(dry_run: Optional[bool] = None,
         status=__ret__.status,
         tags=__ret__.tags,
         vpc_id=__ret__.vpc_id)
+
+
+@_utilities.lift_output_func(get_nat_gateways)
+def get_nat_gateways_output(dry_run: Optional[pulumi.Input[Optional[bool]]] = None,
+                            enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                            ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                            nat_gateway_name: Optional[pulumi.Input[Optional[str]]] = None,
+                            nat_type: Optional[pulumi.Input[Optional[str]]] = None,
+                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                            payment_type: Optional[pulumi.Input[Optional[str]]] = None,
+                            resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                            specification: Optional[pulumi.Input[Optional[str]]] = None,
+                            status: Optional[pulumi.Input[Optional[str]]] = None,
+                            tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                            vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNatGatewaysResult]:
+    """
+    This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
+
+    > **NOTE:** Available in 1.37.0+.
+
+
+    :param bool dry_run: Specifies whether to only precheck the request.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of NAT gateways IDs.
+    :param str name_regex: A regex string to filter nat gateways by name.
+    :param str nat_gateway_name: The name of NAT gateway.
+    :param str nat_type: The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
+    :param str payment_type: The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
+    :param str resource_group_id: The resource group id of NAT gateway.
+    :param str specification: The specification of NAT gateway. Valid values `Middle`, `Large`, `Small` and `XLarge.1`. Default value is `Small`.
+    :param str status: The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
+    :param Mapping[str, Any] tags: The tags of NAT gateway.
+    :param str vpc_id: The ID of the VPC.
+    """
+    ...

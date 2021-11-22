@@ -18,14 +18,14 @@ import * as utilities from "../utilities";
  *
  * const resourcesZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "KVStore",
- * }, { async: true }));
+ * }));
  * const resourcesInstanceClasses = resourcesZones.apply(resourcesZones => alicloud.kvstore.getInstanceClasses({
  *     engine: "Redis",
  *     engineVersion: "5.0",
  *     instanceChargeType: "PrePaid",
  *     outputFile: "./classes.txt",
  *     zoneId: resourcesZones.zones[0].id,
- * }, { async: true }));
+ * }));
  *
  * export const firstKvstoreInstanceClass = resourcesInstanceClasses.instanceClasses;
  * ```
@@ -64,63 +64,63 @@ export interface GetInstanceClassesArgs {
     /**
      * The KVStore instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
      */
-    readonly architecture?: string;
+    architecture?: string;
     /**
      * The KVStore instance edition type required by the user. Valid values: `Community` and `Enterprise`.
      */
-    readonly editionType?: string;
+    editionType?: string;
     /**
      * Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
      */
-    readonly engine?: string;
+    engine?: string;
     /**
      * Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
      */
-    readonly engineVersion?: string;
+    engineVersion?: string;
     /**
      * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
      */
-    readonly instanceChargeType?: string;
+    instanceChargeType?: string;
     /**
      * The KVStore instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
      */
-    readonly nodeType?: string;
-    readonly outputFile?: string;
+    nodeType?: string;
+    outputFile?: string;
     /**
      * It has been deprecated from 1.68.0.
      *
      * @deprecated The parameter 'package_type' has been deprecated from 1.68.0.
      */
-    readonly packageType?: string;
+    packageType?: string;
     /**
      * It has been deprecated from 1.68.0.
      *
      * @deprecated The parameter 'performance_type' has been deprecated from 1.68.0.
      */
-    readonly performanceType?: string;
-    readonly productType?: string;
+    performanceType?: string;
+    productType?: string;
     /**
      * The KVStore instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
      */
-    readonly seriesType?: string;
+    seriesType?: string;
     /**
      * The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
      * * productType - (Optional, Available in v1.130.0+) The type of the service. Valid values:
      * * Local: an ApsaraDB for Redis instance with a local disk.
      * * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
      */
-    readonly shardNumber?: number;
-    readonly sortedBy?: string;
+    shardNumber?: number;
+    sortedBy?: string;
     /**
      * It has been deprecated from 1.68.0.
      *
      * @deprecated The parameter 'storage_type' has been deprecated from 1.68.0.
      */
-    readonly storageType?: string;
+    storageType?: string;
     /**
      * The Zone to launch the KVStore instance.
      */
-    readonly zoneId: string;
+    zoneId: string;
 }
 
 /**
@@ -163,4 +163,74 @@ export interface GetInstanceClassesResult {
      */
     readonly storageType?: string;
     readonly zoneId: string;
+}
+
+export function getInstanceClassesOutput(args: GetInstanceClassesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceClassesResult> {
+    return pulumi.output(args).apply(a => getInstanceClasses(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstanceClasses.
+ */
+export interface GetInstanceClassesOutputArgs {
+    /**
+     * The KVStore instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
+     */
+    architecture?: pulumi.Input<string>;
+    /**
+     * The KVStore instance edition type required by the user. Valid values: `Community` and `Enterprise`.
+     */
+    editionType?: pulumi.Input<string>;
+    /**
+     * Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
+     */
+    engine?: pulumi.Input<string>;
+    /**
+     * Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
+     */
+    engineVersion?: pulumi.Input<string>;
+    /**
+     * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
+     */
+    instanceChargeType?: pulumi.Input<string>;
+    /**
+     * The KVStore instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
+     */
+    nodeType?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * It has been deprecated from 1.68.0.
+     *
+     * @deprecated The parameter 'package_type' has been deprecated from 1.68.0.
+     */
+    packageType?: pulumi.Input<string>;
+    /**
+     * It has been deprecated from 1.68.0.
+     *
+     * @deprecated The parameter 'performance_type' has been deprecated from 1.68.0.
+     */
+    performanceType?: pulumi.Input<string>;
+    productType?: pulumi.Input<string>;
+    /**
+     * The KVStore instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
+     */
+    seriesType?: pulumi.Input<string>;
+    /**
+     * The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
+     * * productType - (Optional, Available in v1.130.0+) The type of the service. Valid values:
+     * * Local: an ApsaraDB for Redis instance with a local disk.
+     * * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+     */
+    shardNumber?: pulumi.Input<number>;
+    sortedBy?: pulumi.Input<string>;
+    /**
+     * It has been deprecated from 1.68.0.
+     *
+     * @deprecated The parameter 'storage_type' has been deprecated from 1.68.0.
+     */
+    storageType?: pulumi.Input<string>;
+    /**
+     * The Zone to launch the KVStore instance.
+     */
+    zoneId: pulumi.Input<string>;
 }

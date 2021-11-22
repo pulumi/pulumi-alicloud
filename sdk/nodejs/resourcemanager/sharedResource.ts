@@ -111,19 +111,19 @@ export interface SharedResourceState {
     /**
      * The resource ID need shared.
      */
-    readonly resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string>;
     /**
      * The resource share ID of resource manager.
      */
-    readonly resourceShareId?: pulumi.Input<string>;
+    resourceShareId?: pulumi.Input<string>;
     /**
      * The resource type of should shared, valid value `VSwitch`.
      */
-    readonly resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string>;
     /**
      * status.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -133,13 +133,13 @@ export interface SharedResourceArgs {
     /**
      * The resource ID need shared.
      */
-    readonly resourceId: pulumi.Input<string>;
+    resourceId: pulumi.Input<string>;
     /**
      * The resource share ID of resource manager.
      */
-    readonly resourceShareId: pulumi.Input<string>;
+    resourceShareId: pulumi.Input<string>;
     /**
      * The resource type of should shared, valid value `VSwitch`.
      */
-    readonly resourceType: pulumi.Input<string>;
+    resourceType: pulumi.Input<string>;
 }

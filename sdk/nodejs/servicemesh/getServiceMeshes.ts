@@ -21,16 +21,16 @@ import * as utilities from "../utilities";
  * const ids = alicloud.servicemesh.getServiceMeshes({
  *     ids: ["example_id"],
  * });
- * export const serviceMeshServiceMeshId1 = ids.then(ids => ids.meshes[0].id);
+ * export const serviceMeshServiceMeshId1 = ids.then(ids => ids.meshes?[0]?.id);
  * const nameRegex = alicloud.servicemesh.getServiceMeshes({
  *     nameRegex: "^my-ServiceMesh",
  * });
- * export const serviceMeshServiceMeshId2 = nameRegex.then(nameRegex => nameRegex.meshes[0].id);
+ * export const serviceMeshServiceMeshId2 = nameRegex.then(nameRegex => nameRegex.meshes?[0]?.id);
  * const status = alicloud.servicemesh.getServiceMeshes({
  *     ids: ["example_id"],
  *     status: "running",
  * });
- * export const serviceMeshServiceMeshId3 = status.then(status => status.meshes[0].id);
+ * export const serviceMeshServiceMeshId3 = status.then(status => status.meshes?[0]?.id);
  * ```
  */
 export function getServiceMeshes(args?: GetServiceMeshesArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceMeshesResult> {
@@ -55,20 +55,20 @@ export function getServiceMeshes(args?: GetServiceMeshesArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getServiceMeshes.
  */
 export interface GetServiceMeshesArgs {
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Service Mesh IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Service Mesh name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of the resource.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -86,4 +86,28 @@ export interface GetServiceMeshesResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getServiceMeshesOutput(args?: GetServiceMeshesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceMeshesResult> {
+    return pulumi.output(args).apply(a => getServiceMeshes(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServiceMeshes.
+ */
+export interface GetServiceMeshesOutputArgs {
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Service Mesh IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Service Mesh name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the resource.
+     */
+    status?: pulumi.Input<string>;
 }

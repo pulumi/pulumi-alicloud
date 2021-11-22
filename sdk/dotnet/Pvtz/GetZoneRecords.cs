@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Pvtz
 {
@@ -31,7 +32,7 @@ namespace Pulumi.AliCloud.Pvtz
         ///             Keyword = alicloud_pvtz_zone_record.Foo.Value,
         ///             ZoneId = alicloud_pvtz_zone.Basic.Id,
         ///         }));
-        ///         this.FirstRecordId = recordsDs.Apply(recordsDs =&gt; recordsDs.Records[0].Id);
+        ///         this.FirstRecordId = recordsDs.Apply(recordsDs =&gt; recordsDs.Records?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstRecordId")]
@@ -43,6 +44,39 @@ namespace Pulumi.AliCloud.Pvtz
         /// </summary>
         public static Task<GetZoneRecordsResult> InvokeAsync(GetZoneRecordsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetZoneRecordsResult>("alicloud:pvtz/getZoneRecords:getZoneRecords", args ?? new GetZoneRecordsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var recordsDs = Output.Create(AliCloud.Pvtz.GetZoneRecords.InvokeAsync(new AliCloud.Pvtz.GetZoneRecordsArgs
+        ///         {
+        ///             Keyword = alicloud_pvtz_zone_record.Foo.Value,
+        ///             ZoneId = alicloud_pvtz_zone.Basic.Id,
+        ///         }));
+        ///         this.FirstRecordId = recordsDs.Apply(recordsDs =&gt; recordsDs.Records?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstRecordId")]
+        ///     public Output&lt;string&gt; FirstRecordId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetZoneRecordsResult> Invoke(GetZoneRecordsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetZoneRecordsResult>("alicloud:pvtz/getZoneRecords:getZoneRecords", args ?? new GetZoneRecordsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -110,6 +144,74 @@ namespace Pulumi.AliCloud.Pvtz
         public string ZoneId { get; set; } = null!;
 
         public GetZoneRecordsArgs()
+        {
+        }
+    }
+
+    public sealed class GetZoneRecordsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Private Zone Record IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// Keyword for record rr and value.
+        /// </summary>
+        [Input("keyword")]
+        public Input<string>? Keyword { get; set; }
+
+        /// <summary>
+        /// User language.
+        /// </summary>
+        [Input("lang")]
+        public Input<string>? Lang { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Search mode. Value: 
+        /// - LIKE: fuzzy search.
+        /// - EXACT: precise search. It is not filled in by default.
+        /// </summary>
+        [Input("searchMode")]
+        public Input<string>? SearchMode { get; set; }
+
+        /// <summary>
+        /// Resolve record status. Value:
+        /// - ENABLE: enable resolution.
+        /// - DISABLE: pause parsing.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// It is not filled in by default, and queries the current zone resolution records. Fill in "ecs" to query the host name record list under the VPC associated with the current zone.
+        /// </summary>
+        [Input("tag")]
+        public Input<string>? Tag { get; set; }
+
+        /// <summary>
+        /// User ip.
+        /// </summary>
+        [Input("userClientIp")]
+        public Input<string>? UserClientIp { get; set; }
+
+        /// <summary>
+        /// ID of the Private Zone.
+        /// </summary>
+        [Input("zoneId", required: true)]
+        public Input<string> ZoneId { get; set; } = null!;
+
+        public GetZoneRecordsInvokeArgs()
         {
         }
     }

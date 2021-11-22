@@ -304,6 +304,10 @@ func (o GetProductsProductArrayOutput) Index(i pulumi.IntInput) GetProductsProdu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppInput)(nil)).Elem(), GetAppsAppArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppArrayInput)(nil)).Elem(), GetAppsAppArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProductsProductInput)(nil)).Elem(), GetProductsProductArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProductsProductArrayInput)(nil)).Elem(), GetProductsProductArray{})
 	pulumi.RegisterOutputType(GetAppsAppOutput{})
 	pulumi.RegisterOutputType(GetAppsAppArrayOutput{})
 	pulumi.RegisterOutputType(GetProductsProductOutput{})

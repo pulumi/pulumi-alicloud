@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["hpc-bp1i09xxxxxxxx"],
  *     nameRegex: "tf-testAcc",
  * });
- * export const firstEcsHpcClusterId = example.then(example => example.clusters[0].id);
+ * export const firstEcsHpcClusterId = example.then(example => example.clusters?[0]?.id);
  * ```
  */
 export function getHpcClusters(args?: GetHpcClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetHpcClustersResult> {
@@ -48,12 +48,12 @@ export interface GetHpcClustersArgs {
     /**
      * A list of Hpc Cluster IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Hpc Cluster name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -69,4 +69,23 @@ export interface GetHpcClustersResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getHpcClustersOutput(args?: GetHpcClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHpcClustersResult> {
+    return pulumi.output(args).apply(a => getHpcClusters(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getHpcClusters.
+ */
+export interface GetHpcClustersOutputArgs {
+    /**
+     * A list of Hpc Cluster IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Hpc Cluster name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

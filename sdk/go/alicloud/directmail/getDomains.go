@@ -4,6 +4,9 @@
 package directmail
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -95,4 +98,88 @@ type GetDomainsResult struct {
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	Status     *string  `pulumi:"status"`
+}
+
+func GetDomainsOutput(ctx *pulumi.Context, args GetDomainsOutputArgs, opts ...pulumi.InvokeOption) GetDomainsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDomainsResult, error) {
+			args := v.(GetDomainsArgs)
+			r, err := GetDomains(ctx, &args, opts...)
+			return *r, err
+		}).(GetDomainsResultOutput)
+}
+
+// A collection of arguments for invoking getDomains.
+type GetDomainsOutputArgs struct {
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of Domain IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
+	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
+	// A regex string to filter results by Domain name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetDomainsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDomains.
+type GetDomainsResultOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsResult)(nil)).Elem()
+}
+
+func (o GetDomainsResultOutput) ToGetDomainsResultOutput() GetDomainsResultOutput {
+	return o
+}
+
+func (o GetDomainsResultOutput) ToGetDomainsResultOutputWithContext(ctx context.Context) GetDomainsResultOutput {
+	return o
+}
+
+func (o GetDomainsResultOutput) Domains() GetDomainsDomainArrayOutput {
+	return o.ApplyT(func(v GetDomainsResult) []GetDomainsDomain { return v.Domains }).(GetDomainsDomainArrayOutput)
+}
+
+func (o GetDomainsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDomainsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDomainsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDomainsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDomainsResultOutput) KeyWord() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.KeyWord }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDomainsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDomainsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDomainsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDomainsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDomainsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDomainsResultOutput{})
 }

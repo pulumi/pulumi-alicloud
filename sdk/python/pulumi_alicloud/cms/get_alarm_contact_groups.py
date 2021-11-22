@@ -13,6 +13,7 @@ __all__ = [
     'GetAlarmContactGroupsResult',
     'AwaitableGetAlarmContactGroupsResult',
     'get_alarm_contact_groups',
+    'get_alarm_contact_groups_output',
 ]
 
 @pulumi.output_type
@@ -118,3 +119,20 @@ def get_alarm_contact_groups(ids: Optional[Sequence[str]] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_alarm_contact_groups)
+def get_alarm_contact_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlarmContactGroupsResult]:
+    """
+    This data source provides the CMS Groups of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.101.0+.
+
+
+    :param Sequence[str] ids: A list of Alarm Contact Group IDs.
+    :param str name_regex: A regex string to filter results by Alarm Contact Group name.
+    """
+    ...

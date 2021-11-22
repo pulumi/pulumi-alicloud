@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 export function getAccountAlias(args?: GetAccountAliasArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAliasResult> {
@@ -23,7 +22,7 @@ export function getAccountAlias(args?: GetAccountAliasArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getAccountAlias.
  */
 export interface GetAccountAliasArgs {
-    readonly outputFile?: string;
+    outputFile?: string;
 }
 
 /**
@@ -36,4 +35,15 @@ export interface GetAccountAliasResult {
      */
     readonly id: string;
     readonly outputFile?: string;
+}
+
+export function getAccountAliasOutput(args?: GetAccountAliasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAliasResult> {
+    return pulumi.output(args).apply(a => getAccountAlias(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccountAlias.
+ */
+export interface GetAccountAliasOutputArgs {
+    outputFile?: pulumi.Input<string>;
 }

@@ -103,19 +103,19 @@ export interface StoreIndexState {
     /**
      * List configurations of field search index. Valid item as follows:
      */
-    readonly fieldSearches?: pulumi.Input<pulumi.Input<inputs.log.StoreIndexFieldSearch>[]>;
+    fieldSearches?: pulumi.Input<pulumi.Input<inputs.log.StoreIndexFieldSearch>[]>;
     /**
      * The configuration of full text index. Valid item as follows:
      */
-    readonly fullText?: pulumi.Input<inputs.log.StoreIndexFullText>;
+    fullText?: pulumi.Input<inputs.log.StoreIndexFullText>;
     /**
      * The log store name to the query index belongs.
      */
-    readonly logstore?: pulumi.Input<string>;
+    logstore?: pulumi.Input<string>;
     /**
      * The project name to the log store belongs.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }
 
 /**
@@ -125,17 +125,17 @@ export interface StoreIndexArgs {
     /**
      * List configurations of field search index. Valid item as follows:
      */
-    readonly fieldSearches?: pulumi.Input<pulumi.Input<inputs.log.StoreIndexFieldSearch>[]>;
+    fieldSearches?: pulumi.Input<pulumi.Input<inputs.log.StoreIndexFieldSearch>[]>;
     /**
      * The configuration of full text index. Valid item as follows:
      */
-    readonly fullText?: pulumi.Input<inputs.log.StoreIndexFullText>;
+    fullText?: pulumi.Input<inputs.log.StoreIndexFullText>;
     /**
      * The log store name to the query index belongs.
      */
-    readonly logstore: pulumi.Input<string>;
+    logstore: pulumi.Input<string>;
     /**
      * The project name to the log store belongs.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
 }

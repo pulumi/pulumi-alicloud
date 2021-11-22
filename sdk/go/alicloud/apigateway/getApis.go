@@ -4,6 +4,9 @@
 package apigateway
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,4 +76,89 @@ type GetApisResult struct {
 	// A list of api names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetApisOutput(ctx *pulumi.Context, args GetApisOutputArgs, opts ...pulumi.InvokeOption) GetApisResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetApisResult, error) {
+			args := v.(GetApisArgs)
+			r, err := GetApis(ctx, &args, opts...)
+			return *r, err
+		}).(GetApisResultOutput)
+}
+
+// A collection of arguments for invoking getApis.
+type GetApisOutputArgs struct {
+	// (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
+	//
+	// Deprecated: Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.
+	ApiId pulumi.StringPtrInput `pulumi:"apiId"`
+	// ID of the specified group.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// A list of api IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter api gateway apis by name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetApisOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApisArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getApis.
+type GetApisResultOutput struct{ *pulumi.OutputState }
+
+func (GetApisResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApisResult)(nil)).Elem()
+}
+
+func (o GetApisResultOutput) ToGetApisResultOutput() GetApisResultOutput {
+	return o
+}
+
+func (o GetApisResultOutput) ToGetApisResultOutputWithContext(ctx context.Context) GetApisResultOutput {
+	return o
+}
+
+// Deprecated: Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.
+func (o GetApisResultOutput) ApiId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApisResult) *string { return v.ApiId }).(pulumi.StringPtrOutput)
+}
+
+// A list of apis. Each element contains the following attributes:
+func (o GetApisResultOutput) Apis() GetApisApiArrayOutput {
+	return o.ApplyT(func(v GetApisResult) []GetApisApi { return v.Apis }).(GetApisApiArrayOutput)
+}
+
+// The group id that the apis belong to.
+func (o GetApisResultOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApisResult) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetApisResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApisResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of api IDs.
+func (o GetApisResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApisResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetApisResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApisResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of api names.
+func (o GetApisResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApisResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetApisResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApisResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetApisResultOutput{})
 }

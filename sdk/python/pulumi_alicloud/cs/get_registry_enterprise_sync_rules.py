@@ -13,6 +13,7 @@ __all__ = [
     'GetRegistryEnterpriseSyncRulesResult',
     'AwaitableGetRegistryEnterpriseSyncRulesResult',
     'get_registry_enterprise_sync_rules',
+    'get_registry_enterprise_sync_rules_output',
 ]
 
 @pulumi.output_type
@@ -169,7 +170,7 @@ def get_registry_enterprise_sync_rules(ids: Optional[Sequence[str]] = None,
         repo_name="test-repo",
         target_instance_id="cri-yyy",
         name_regex="test-rule")
-    pulumi.export("output", [__item.id for __item in my_sync_rules.rules])
+    pulumi.export("output", [__item.id for __item in [my_sync_rules.rules]])
     ```
 
 
@@ -205,3 +206,42 @@ def get_registry_enterprise_sync_rules(ids: Optional[Sequence[str]] = None,
         repo_name=__ret__.repo_name,
         rules=__ret__.rules,
         target_instance_id=__ret__.target_instance_id)
+
+
+@_utilities.lift_output_func(get_registry_enterprise_sync_rules)
+def get_registry_enterprise_sync_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                              instance_id: Optional[pulumi.Input[str]] = None,
+                                              name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                              namespace_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                              repo_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                              target_instance_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegistryEnterpriseSyncRulesResult]:
+    """
+    This data source provides a list Container Registry Enterprise Edition sync rules on Alibaba Cloud.
+
+    > **NOTE:** Available in v1.90.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    my_sync_rules = alicloud.cs.get_registry_enterprise_sync_rules(instance_id="cri-xxx",
+        namespace_name="test-namespace",
+        repo_name="test-repo",
+        target_instance_id="cri-yyy",
+        name_regex="test-rule")
+    pulumi.export("output", [__item.id for __item in [my_sync_rules.rules]])
+    ```
+
+
+    :param Sequence[str] ids: A list of ids to filter results by sync rule id.
+    :param str instance_id: ID of Container Registry Enterprise Edition local instance.
+    :param str name_regex: A regex string to filter results by sync rule name.
+    :param str namespace_name: Name of Container Registry Enterprise Edition local namespace.
+    :param str repo_name: Name of Container Registry Enterprise Edition local repo.
+    :param str target_instance_id: ID of Container Registry Enterprise Edition target instance.
+    """
+    ...

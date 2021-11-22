@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *     frontendPort: Number.parseFloat("fake-port"),
  *     ids: ["fake-de-id"],
  *     loadBalancerId: "fake-lb-id",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getDomainExtensions(args: GetDomainExtensionsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainExtensionsResult> {
@@ -46,16 +46,16 @@ export interface GetDomainExtensionsArgs {
     /**
      * The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
      */
-    readonly frontendPort: number;
+    frontendPort: number;
     /**
      * IDs of the SLB domain extensions.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The ID of the SLB instance.
      */
-    readonly loadBalancerId: string;
-    readonly outputFile?: string;
+    loadBalancerId: string;
+    outputFile?: string;
 }
 
 /**
@@ -74,4 +74,27 @@ export interface GetDomainExtensionsResult {
     readonly ids: string[];
     readonly loadBalancerId: string;
     readonly outputFile?: string;
+}
+
+export function getDomainExtensionsOutput(args: GetDomainExtensionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainExtensionsResult> {
+    return pulumi.output(args).apply(a => getDomainExtensions(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDomainExtensions.
+ */
+export interface GetDomainExtensionsOutputArgs {
+    /**
+     * The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+     */
+    frontendPort: pulumi.Input<number>;
+    /**
+     * IDs of the SLB domain extensions.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the SLB instance.
+     */
+    loadBalancerId: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

@@ -4,6 +4,9 @@
 package eds
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -94,4 +97,76 @@ type GetPolicyGroupsResult struct {
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	Status     *string  `pulumi:"status"`
+}
+
+func GetPolicyGroupsOutput(ctx *pulumi.Context, args GetPolicyGroupsOutputArgs, opts ...pulumi.InvokeOption) GetPolicyGroupsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetPolicyGroupsResult, error) {
+			args := v.(GetPolicyGroupsArgs)
+			r, err := GetPolicyGroups(ctx, &args, opts...)
+			return *r, err
+		}).(GetPolicyGroupsResultOutput)
+}
+
+// A collection of arguments for invoking getPolicyGroups.
+type GetPolicyGroupsOutputArgs struct {
+	// A list of Policy Group IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Policy Group name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status of policy.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetPolicyGroupsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyGroupsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getPolicyGroups.
+type GetPolicyGroupsResultOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyGroupsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyGroupsResult)(nil)).Elem()
+}
+
+func (o GetPolicyGroupsResultOutput) ToGetPolicyGroupsResultOutput() GetPolicyGroupsResultOutput {
+	return o
+}
+
+func (o GetPolicyGroupsResultOutput) ToGetPolicyGroupsResultOutputWithContext(ctx context.Context) GetPolicyGroupsResultOutput {
+	return o
+}
+
+func (o GetPolicyGroupsResultOutput) Groups() GetPolicyGroupsGroupArrayOutput {
+	return o.ApplyT(func(v GetPolicyGroupsResult) []GetPolicyGroupsGroup { return v.Groups }).(GetPolicyGroupsGroupArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetPolicyGroupsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyGroupsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetPolicyGroupsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPolicyGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetPolicyGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPolicyGroupsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPolicyGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetPolicyGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPolicyGroupsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyGroupsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetPolicyGroupsResultOutput{})
 }

@@ -4,6 +4,9 @@
 package yundun
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,4 +37,73 @@ type LookupDBAuditInstanceResult struct {
 	Instances  []GetDBAuditInstanceInstance `pulumi:"instances"`
 	OutputFile *string                      `pulumi:"outputFile"`
 	Tags       map[string]interface{}       `pulumi:"tags"`
+}
+
+func LookupDBAuditInstanceOutput(ctx *pulumi.Context, args LookupDBAuditInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupDBAuditInstanceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupDBAuditInstanceResult, error) {
+			args := v.(LookupDBAuditInstanceArgs)
+			r, err := LookupDBAuditInstance(ctx, &args, opts...)
+			return *r, err
+		}).(LookupDBAuditInstanceResultOutput)
+}
+
+// A collection of arguments for invoking getDBAuditInstance.
+type LookupDBAuditInstanceOutputArgs struct {
+	DescriptionRegex pulumi.StringPtrInput   `pulumi:"descriptionRegex"`
+	Ids              pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile       pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Tags             pulumi.MapInput         `pulumi:"tags"`
+}
+
+func (LookupDBAuditInstanceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDBAuditInstanceArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDBAuditInstance.
+type LookupDBAuditInstanceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDBAuditInstanceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDBAuditInstanceResult)(nil)).Elem()
+}
+
+func (o LookupDBAuditInstanceResultOutput) ToLookupDBAuditInstanceResultOutput() LookupDBAuditInstanceResultOutput {
+	return o
+}
+
+func (o LookupDBAuditInstanceResultOutput) ToLookupDBAuditInstanceResultOutputWithContext(ctx context.Context) LookupDBAuditInstanceResultOutput {
+	return o
+}
+
+func (o LookupDBAuditInstanceResultOutput) DescriptionRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDBAuditInstanceResult) *string { return v.DescriptionRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupDBAuditInstanceResultOutput) Descriptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDBAuditInstanceResult) []string { return v.Descriptions }).(pulumi.StringArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupDBAuditInstanceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDBAuditInstanceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupDBAuditInstanceResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDBAuditInstanceResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupDBAuditInstanceResultOutput) Instances() GetDBAuditInstanceInstanceArrayOutput {
+	return o.ApplyT(func(v LookupDBAuditInstanceResult) []GetDBAuditInstanceInstance { return v.Instances }).(GetDBAuditInstanceInstanceArrayOutput)
+}
+
+func (o LookupDBAuditInstanceResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDBAuditInstanceResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupDBAuditInstanceResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupDBAuditInstanceResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDBAuditInstanceResultOutput{})
 }

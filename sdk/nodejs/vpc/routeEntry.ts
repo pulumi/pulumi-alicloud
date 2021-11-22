@@ -113,29 +113,29 @@ export interface RouteEntryState {
     /**
      * The RouteEntry's target network segment.
      */
-    readonly destinationCidrblock?: pulumi.Input<string>;
+    destinationCidrblock?: pulumi.Input<string>;
     /**
      * The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The route entry's next hop. ECS instance ID or VPC router interface ID.
      */
-    readonly nexthopId?: pulumi.Input<string>;
+    nexthopId?: pulumi.Input<string>;
     /**
      * The next hop type. Available values:
      */
-    readonly nexthopType?: pulumi.Input<string>;
+    nexthopType?: pulumi.Input<string>;
     /**
      * The ID of the route table.
      */
-    readonly routeTableId?: pulumi.Input<string>;
+    routeTableId?: pulumi.Input<string>;
     /**
      * This argument has been deprecated. Please use other arguments to launch a custom route entry.
      *
      * @deprecated Attribute router_id has been deprecated and suggest removing it from your template.
      */
-    readonly routerId?: pulumi.Input<string>;
+    routerId?: pulumi.Input<string>;
 }
 
 /**
@@ -145,27 +145,27 @@ export interface RouteEntryArgs {
     /**
      * The RouteEntry's target network segment.
      */
-    readonly destinationCidrblock?: pulumi.Input<string>;
+    destinationCidrblock?: pulumi.Input<string>;
     /**
      * The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The route entry's next hop. ECS instance ID or VPC router interface ID.
      */
-    readonly nexthopId?: pulumi.Input<string>;
+    nexthopId?: pulumi.Input<string>;
     /**
      * The next hop type. Available values:
      */
-    readonly nexthopType?: pulumi.Input<string>;
+    nexthopType?: pulumi.Input<string>;
     /**
      * The ID of the route table.
      */
-    readonly routeTableId: pulumi.Input<string>;
+    routeTableId: pulumi.Input<string>;
     /**
      * This argument has been deprecated. Please use other arguments to launch a custom route entry.
      *
      * @deprecated Attribute router_id has been deprecated and suggest removing it from your template.
      */
-    readonly routerId?: pulumi.Input<string>;
+    routerId?: pulumi.Input<string>;
 }

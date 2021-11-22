@@ -4,6 +4,9 @@
 package emr
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -72,4 +75,74 @@ type GetMainVersionsResult struct {
 	// A list of versions of the emr cluster instance. Each element contains the following attributes:
 	MainVersions []GetMainVersionsMainVersion `pulumi:"mainVersions"`
 	OutputFile   *string                      `pulumi:"outputFile"`
+}
+
+func GetMainVersionsOutput(ctx *pulumi.Context, args GetMainVersionsOutputArgs, opts ...pulumi.InvokeOption) GetMainVersionsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetMainVersionsResult, error) {
+			args := v.(GetMainVersionsArgs)
+			r, err := GetMainVersions(ctx, &args, opts...)
+			return *r, err
+		}).(GetMainVersionsResultOutput)
+}
+
+// A collection of arguments for invoking getMainVersions.
+type GetMainVersionsOutputArgs struct {
+	// The supported clusterType of this emr version.
+	// Possible values may be any one or combination of these: ["HADOOP", "DRUID", "KAFKA", "ZOOKEEPER", "FLINK", "CLICKHOUSE"]
+	ClusterTypes pulumi.StringArrayInput `pulumi:"clusterTypes"`
+	// The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
+	EmrVersion pulumi.StringPtrInput `pulumi:"emrVersion"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetMainVersionsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMainVersionsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getMainVersions.
+type GetMainVersionsResultOutput struct{ *pulumi.OutputState }
+
+func (GetMainVersionsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMainVersionsResult)(nil)).Elem()
+}
+
+func (o GetMainVersionsResultOutput) ToGetMainVersionsResultOutput() GetMainVersionsResultOutput {
+	return o
+}
+
+func (o GetMainVersionsResultOutput) ToGetMainVersionsResultOutputWithContext(ctx context.Context) GetMainVersionsResultOutput {
+	return o
+}
+
+func (o GetMainVersionsResultOutput) ClusterTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMainVersionsResult) []string { return v.ClusterTypes }).(pulumi.StringArrayOutput)
+}
+
+// The version of the emr cluster instance.
+func (o GetMainVersionsResultOutput) EmrVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMainVersionsResult) *string { return v.EmrVersion }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetMainVersionsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMainVersionsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of emr instance types IDs.
+func (o GetMainVersionsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMainVersionsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// A list of versions of the emr cluster instance. Each element contains the following attributes:
+func (o GetMainVersionsResultOutput) MainVersions() GetMainVersionsMainVersionArrayOutput {
+	return o.ApplyT(func(v GetMainVersionsResult) []GetMainVersionsMainVersion { return v.MainVersions }).(GetMainVersionsMainVersionArrayOutput)
+}
+
+func (o GetMainVersionsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMainVersionsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetMainVersionsResultOutput{})
 }

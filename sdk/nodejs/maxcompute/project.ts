@@ -121,19 +121,19 @@ export interface ProjectState {
     /**
      * It has been deprecated from provider version 1.110.0 and `projectName` instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The type of payment, only `PayAsYouGo` supported currently.
      */
-    readonly orderType?: pulumi.Input<string>;
+    orderType?: pulumi.Input<string>;
     /**
      * The name of the maxcompute project.
      */
-    readonly projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string>;
     /**
      * The type of resource Specification, only `OdpsStandard` supported currently.
      */
-    readonly specificationType?: pulumi.Input<string>;
+    specificationType?: pulumi.Input<string>;
 }
 
 /**
@@ -143,17 +143,17 @@ export interface ProjectArgs {
     /**
      * It has been deprecated from provider version 1.110.0 and `projectName` instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The type of payment, only `PayAsYouGo` supported currently.
      */
-    readonly orderType: pulumi.Input<string>;
+    orderType: pulumi.Input<string>;
     /**
      * The name of the maxcompute project.
      */
-    readonly projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string>;
     /**
      * The type of resource Specification, only `OdpsStandard` supported currently.
      */
-    readonly specificationType: pulumi.Input<string>;
+    specificationType: pulumi.Input<string>;
 }

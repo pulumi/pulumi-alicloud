@@ -19,11 +19,11 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.eventbridge.getEventBuses({});
- * export const eventBridgeEventBusId1 = ids.then(ids => ids.buses[0].id);
+ * export const eventBridgeEventBusId1 = ids.then(ids => ids.buses?[0]?.id);
  * const nameRegex = alicloud.eventbridge.getEventBuses({
  *     nameRegex: "^my-EventBus",
  * });
- * export const eventBridgeEventBusId2 = nameRegex.then(nameRegex => nameRegex.buses[0].id);
+ * export const eventBridgeEventBusId2 = nameRegex.then(nameRegex => nameRegex.buses?[0]?.id);
  * ```
  */
 export function getEventBuses(args?: GetEventBusesArgs, opts?: pulumi.InvokeOptions): Promise<GetEventBusesResult> {
@@ -51,20 +51,20 @@ export interface GetEventBusesArgs {
     /**
      * The event bus type.
      */
-    readonly eventBusType?: string;
+    eventBusType?: string;
     /**
      * A list of Event Bus IDs. Its element value is same as Event Bus Name.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The name prefix.
      */
-    readonly namePrefix?: string;
+    namePrefix?: string;
     /**
      * A regex string to filter results by Event Bus name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -82,4 +82,31 @@ export interface GetEventBusesResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getEventBusesOutput(args?: GetEventBusesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEventBusesResult> {
+    return pulumi.output(args).apply(a => getEventBuses(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEventBuses.
+ */
+export interface GetEventBusesOutputArgs {
+    /**
+     * The event bus type.
+     */
+    eventBusType?: pulumi.Input<string>;
+    /**
+     * A list of Event Bus IDs. Its element value is same as Event Bus Name.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name prefix.
+     */
+    namePrefix?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Event Bus name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

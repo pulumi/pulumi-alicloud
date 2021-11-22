@@ -217,7 +217,7 @@ type GroupPolicyAttachmentArrayInput interface {
 type GroupPolicyAttachmentArray []GroupPolicyAttachmentInput
 
 func (GroupPolicyAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*GroupPolicyAttachment)(nil))
+	return reflect.TypeOf((*[]*GroupPolicyAttachment)(nil)).Elem()
 }
 
 func (i GroupPolicyAttachmentArray) ToGroupPolicyAttachmentArrayOutput() GroupPolicyAttachmentArrayOutput {
@@ -242,7 +242,7 @@ type GroupPolicyAttachmentMapInput interface {
 type GroupPolicyAttachmentMap map[string]GroupPolicyAttachmentInput
 
 func (GroupPolicyAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*GroupPolicyAttachment)(nil))
+	return reflect.TypeOf((*map[string]*GroupPolicyAttachment)(nil)).Elem()
 }
 
 func (i GroupPolicyAttachmentMap) ToGroupPolicyAttachmentMapOutput() GroupPolicyAttachmentMapOutput {
@@ -253,9 +253,7 @@ func (i GroupPolicyAttachmentMap) ToGroupPolicyAttachmentMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GroupPolicyAttachmentMapOutput)
 }
 
-type GroupPolicyAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type GroupPolicyAttachmentOutput struct{ *pulumi.OutputState }
 
 func (GroupPolicyAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GroupPolicyAttachment)(nil))
@@ -274,14 +272,12 @@ func (o GroupPolicyAttachmentOutput) ToGroupPolicyAttachmentPtrOutput() GroupPol
 }
 
 func (o GroupPolicyAttachmentOutput) ToGroupPolicyAttachmentPtrOutputWithContext(ctx context.Context) GroupPolicyAttachmentPtrOutput {
-	return o.ApplyT(func(v GroupPolicyAttachment) *GroupPolicyAttachment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupPolicyAttachment) *GroupPolicyAttachment {
 		return &v
 	}).(GroupPolicyAttachmentPtrOutput)
 }
 
-type GroupPolicyAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type GroupPolicyAttachmentPtrOutput struct{ *pulumi.OutputState }
 
 func (GroupPolicyAttachmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**GroupPolicyAttachment)(nil))
@@ -293,6 +289,16 @@ func (o GroupPolicyAttachmentPtrOutput) ToGroupPolicyAttachmentPtrOutput() Group
 
 func (o GroupPolicyAttachmentPtrOutput) ToGroupPolicyAttachmentPtrOutputWithContext(ctx context.Context) GroupPolicyAttachmentPtrOutput {
 	return o
+}
+
+func (o GroupPolicyAttachmentPtrOutput) Elem() GroupPolicyAttachmentOutput {
+	return o.ApplyT(func(v *GroupPolicyAttachment) GroupPolicyAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret GroupPolicyAttachment
+		return ret
+	}).(GroupPolicyAttachmentOutput)
 }
 
 type GroupPolicyAttachmentArrayOutput struct{ *pulumi.OutputState }
@@ -336,6 +342,10 @@ func (o GroupPolicyAttachmentMapOutput) MapIndex(k pulumi.StringInput) GroupPoli
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupPolicyAttachmentInput)(nil)).Elem(), &GroupPolicyAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupPolicyAttachmentPtrInput)(nil)).Elem(), &GroupPolicyAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupPolicyAttachmentArrayInput)(nil)).Elem(), GroupPolicyAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupPolicyAttachmentMapInput)(nil)).Elem(), GroupPolicyAttachmentMap{})
 	pulumi.RegisterOutputType(GroupPolicyAttachmentOutput{})
 	pulumi.RegisterOutputType(GroupPolicyAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(GroupPolicyAttachmentArrayOutput{})

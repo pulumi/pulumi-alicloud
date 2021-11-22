@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *     instanceName: "sample-instance",
  *     nameRegex: "sample-table",
  *     outputFile: "tables.txt",
- * }, { async: true }));
+ * }));
  *
  * export const firstTableId = tablesDs.tables[0].id;
  * ```
@@ -50,16 +50,16 @@ export interface GetTablesArgs {
     /**
      * A list of table IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The name of OTS instance.
      */
-    readonly instanceName: string;
+    instanceName: string;
     /**
      * A regex string to filter results by table name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -88,4 +88,27 @@ export interface GetTablesResult {
      * A list of tables. Each element contains the following attributes:
      */
     readonly tables: outputs.oss.GetTablesTable[];
+}
+
+export function getTablesOutput(args: GetTablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTablesResult> {
+    return pulumi.output(args).apply(a => getTables(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTables.
+ */
+export interface GetTablesOutputArgs {
+    /**
+     * A list of table IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of OTS instance.
+     */
+    instanceName: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by table name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

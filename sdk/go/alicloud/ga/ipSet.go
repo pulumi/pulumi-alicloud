@@ -253,7 +253,7 @@ type IpSetArrayInput interface {
 type IpSetArray []IpSetInput
 
 func (IpSetArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*IpSet)(nil))
+	return reflect.TypeOf((*[]*IpSet)(nil)).Elem()
 }
 
 func (i IpSetArray) ToIpSetArrayOutput() IpSetArrayOutput {
@@ -278,7 +278,7 @@ type IpSetMapInput interface {
 type IpSetMap map[string]IpSetInput
 
 func (IpSetMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*IpSet)(nil))
+	return reflect.TypeOf((*map[string]*IpSet)(nil)).Elem()
 }
 
 func (i IpSetMap) ToIpSetMapOutput() IpSetMapOutput {
@@ -289,9 +289,7 @@ func (i IpSetMap) ToIpSetMapOutputWithContext(ctx context.Context) IpSetMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(IpSetMapOutput)
 }
 
-type IpSetOutput struct {
-	*pulumi.OutputState
-}
+type IpSetOutput struct{ *pulumi.OutputState }
 
 func (IpSetOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IpSet)(nil))
@@ -310,14 +308,12 @@ func (o IpSetOutput) ToIpSetPtrOutput() IpSetPtrOutput {
 }
 
 func (o IpSetOutput) ToIpSetPtrOutputWithContext(ctx context.Context) IpSetPtrOutput {
-	return o.ApplyT(func(v IpSet) *IpSet {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IpSet) *IpSet {
 		return &v
 	}).(IpSetPtrOutput)
 }
 
-type IpSetPtrOutput struct {
-	*pulumi.OutputState
-}
+type IpSetPtrOutput struct{ *pulumi.OutputState }
 
 func (IpSetPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**IpSet)(nil))
@@ -329,6 +325,16 @@ func (o IpSetPtrOutput) ToIpSetPtrOutput() IpSetPtrOutput {
 
 func (o IpSetPtrOutput) ToIpSetPtrOutputWithContext(ctx context.Context) IpSetPtrOutput {
 	return o
+}
+
+func (o IpSetPtrOutput) Elem() IpSetOutput {
+	return o.ApplyT(func(v *IpSet) IpSet {
+		if v != nil {
+			return *v
+		}
+		var ret IpSet
+		return ret
+	}).(IpSetOutput)
 }
 
 type IpSetArrayOutput struct{ *pulumi.OutputState }
@@ -372,6 +378,10 @@ func (o IpSetMapOutput) MapIndex(k pulumi.StringInput) IpSetOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IpSetInput)(nil)).Elem(), &IpSet{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpSetPtrInput)(nil)).Elem(), &IpSet{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpSetArrayInput)(nil)).Elem(), IpSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpSetMapInput)(nil)).Elem(), IpSetMap{})
 	pulumi.RegisterOutputType(IpSetOutput{})
 	pulumi.RegisterOutputType(IpSetPtrOutput{})
 	pulumi.RegisterOutputType(IpSetArrayOutput{})

@@ -4,6 +4,9 @@
 package ecs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -72,4 +75,147 @@ type GetSnapshotsResult struct {
 	Type *string                `pulumi:"type"`
 	// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
 	Usage *string `pulumi:"usage"`
+}
+
+func GetSnapshotsOutput(ctx *pulumi.Context, args GetSnapshotsOutputArgs, opts ...pulumi.InvokeOption) GetSnapshotsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetSnapshotsResult, error) {
+			args := v.(GetSnapshotsArgs)
+			r, err := GetSnapshots(ctx, &args, opts...)
+			return *r, err
+		}).(GetSnapshotsResultOutput)
+}
+
+// A collection of arguments for invoking getSnapshots.
+type GetSnapshotsOutputArgs struct {
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	DryRun   pulumi.BoolPtrInput   `pulumi:"dryRun"`
+	// Whether the snapshot is encrypted or not.
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// A list of snapshot IDs.
+	Ids             pulumi.StringArrayInput `pulumi:"ids"`
+	KmsKeyId        pulumi.StringPtrInput   `pulumi:"kmsKeyId"`
+	NameRegex       pulumi.StringPtrInput   `pulumi:"nameRegex"`
+	OutputFile      pulumi.StringPtrInput   `pulumi:"outputFile"`
+	ResourceGroupId pulumi.StringPtrInput   `pulumi:"resourceGroupId"`
+	SnapshotLinkId  pulumi.StringPtrInput   `pulumi:"snapshotLinkId"`
+	SnapshotName    pulumi.StringPtrInput   `pulumi:"snapshotName"`
+	SnapshotType    pulumi.StringPtrInput   `pulumi:"snapshotType"`
+	// Source disk attribute. Value range: `System`,`Data`.
+	SourceDiskType pulumi.StringPtrInput `pulumi:"sourceDiskType"`
+	// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// A map of tags assigned to the snapshot.
+	Tags pulumi.MapInput       `pulumi:"tags"`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
+	Usage pulumi.StringPtrInput `pulumi:"usage"`
+}
+
+func (GetSnapshotsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnapshotsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSnapshots.
+type GetSnapshotsResultOutput struct{ *pulumi.OutputState }
+
+func (GetSnapshotsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnapshotsResult)(nil)).Elem()
+}
+
+func (o GetSnapshotsResultOutput) ToGetSnapshotsResultOutput() GetSnapshotsResultOutput {
+	return o
+}
+
+func (o GetSnapshotsResultOutput) ToGetSnapshotsResultOutputWithContext(ctx context.Context) GetSnapshotsResultOutput {
+	return o
+}
+
+func (o GetSnapshotsResultOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSnapshotsResultOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSnapshotsResult) *bool { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the snapshot is encrypted or not.
+func (o GetSnapshotsResultOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSnapshotsResult) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSnapshotsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of snapshot IDs.
+func (o GetSnapshotsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSnapshotsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSnapshotsResultOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSnapshotsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of snapshots names.
+func (o GetSnapshotsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSnapshotsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSnapshotsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSnapshotsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSnapshotsResultOutput) SnapshotLinkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.SnapshotLinkId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSnapshotsResultOutput) SnapshotName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.SnapshotName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSnapshotsResultOutput) SnapshotType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.SnapshotType }).(pulumi.StringPtrOutput)
+}
+
+// A list of snapshots. Each element contains the following attributes:
+func (o GetSnapshotsResultOutput) Snapshots() GetSnapshotsSnapshotArrayOutput {
+	return o.ApplyT(func(v GetSnapshotsResult) []GetSnapshotsSnapshot { return v.Snapshots }).(GetSnapshotsSnapshotArrayOutput)
+}
+
+// Source disk attribute. Value range: `System`,`Data`.
+func (o GetSnapshotsResultOutput) SourceDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.SourceDiskType }).(pulumi.StringPtrOutput)
+}
+
+// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+func (o GetSnapshotsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// A map of tags assigned to the snapshot.
+func (o GetSnapshotsResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetSnapshotsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o GetSnapshotsResultOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
+func (o GetSnapshotsResultOutput) Usage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.Usage }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSnapshotsResultOutput{})
 }

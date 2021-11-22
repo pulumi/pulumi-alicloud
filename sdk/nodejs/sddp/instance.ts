@@ -239,81 +239,81 @@ export interface InstanceState {
     /**
      * Whether the required RAM authorization is configured.
      */
-    readonly authed?: pulumi.Input<boolean>;
+    authed?: pulumi.Input<boolean>;
     /**
      * The dataphin. Valid values: `yes`,`no`.
      */
-    readonly dataphin?: pulumi.Input<string>;
+    dataphin?: pulumi.Input<string>;
     /**
      * The dataphin count. Valid values: 1 to 20.
      */
-    readonly dataphinCount?: pulumi.Input<string>;
+    dataphinCount?: pulumi.Input<string>;
     /**
      * The number of instances.
      */
-    readonly instanceNum?: pulumi.Input<string>;
+    instanceNum?: pulumi.Input<string>;
     /**
      * The logistics.
      */
-    readonly logistics?: pulumi.Input<string>;
+    logistics?: pulumi.Input<string>;
     /**
      * The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute a update operation.
      */
-    readonly modifyType?: pulumi.Input<string>;
+    modifyType?: pulumi.Input<string>;
     /**
      * Whether the authorized MaxCompute (ODPS) assets.
      */
-    readonly odpsSet?: pulumi.Input<boolean>;
+    odpsSet?: pulumi.Input<boolean>;
     /**
      * Whether the authorized oss assets.
      */
-    readonly ossBucketSet?: pulumi.Input<boolean>;
-    readonly ossSize?: pulumi.Input<string>;
+    ossBucketSet?: pulumi.Input<boolean>;
+    ossSize?: pulumi.Input<string>;
     /**
      * The payment type of the resource. Valid values: `Subscription`.
      */
-    readonly paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
     /**
      * The Prepaid period. Valid values: `1`, `2`, `3`, `6`,`12`,`24`.
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * Whether the authorized rds assets.
      */
-    readonly rdsSet?: pulumi.Input<boolean>;
-    readonly remainDays?: pulumi.Input<string>;
+    rdsSet?: pulumi.Input<boolean>;
+    remainDays?: pulumi.Input<string>;
     /**
      * Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`,
      */
-    readonly renewPeriod?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number>;
     /**
      * Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
      */
-    readonly renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string>;
     /**
      * Whether to use the database. Valid values:`yes`,`no`.
      */
-    readonly sdCbool?: pulumi.Input<string>;
+    sdCbool?: pulumi.Input<string>;
     /**
      * The number of instances.
      */
-    readonly sdc?: pulumi.Input<string>;
+    sdc?: pulumi.Input<string>;
     /**
      * The sddp version. Valid values: `versionAudit`,`versionCompany`,`versionDlp`.
      */
-    readonly sddpVersion?: pulumi.Input<string>;
+    sddpVersion?: pulumi.Input<string>;
     /**
      * The status of the resource.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Whether to use OSS. Valid values: `yes`,`no`.
      */
-    readonly udCbool?: pulumi.Input<string>;
+    udCbool?: pulumi.Input<string>;
     /**
      * OSS Size.
      */
-    readonly udc?: pulumi.Input<string>;
+    udc?: pulumi.Input<string>;
 }
 
 /**
@@ -323,53 +323,53 @@ export interface InstanceArgs {
     /**
      * The dataphin. Valid values: `yes`,`no`.
      */
-    readonly dataphin?: pulumi.Input<string>;
+    dataphin?: pulumi.Input<string>;
     /**
      * The dataphin count. Valid values: 1 to 20.
      */
-    readonly dataphinCount?: pulumi.Input<string>;
+    dataphinCount?: pulumi.Input<string>;
     /**
      * The logistics.
      */
-    readonly logistics?: pulumi.Input<string>;
+    logistics?: pulumi.Input<string>;
     /**
      * The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute a update operation.
      */
-    readonly modifyType?: pulumi.Input<string>;
+    modifyType?: pulumi.Input<string>;
     /**
      * The payment type of the resource. Valid values: `Subscription`.
      */
-    readonly paymentType: pulumi.Input<string>;
+    paymentType: pulumi.Input<string>;
     /**
      * The Prepaid period. Valid values: `1`, `2`, `3`, `6`,`12`,`24`.
      */
-    readonly period: pulumi.Input<number>;
+    period: pulumi.Input<number>;
     /**
      * Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`,
      */
-    readonly renewPeriod?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number>;
     /**
      * Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
      */
-    readonly renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string>;
     /**
      * Whether to use the database. Valid values:`yes`,`no`.
      */
-    readonly sdCbool: pulumi.Input<string>;
+    sdCbool: pulumi.Input<string>;
     /**
      * The number of instances.
      */
-    readonly sdc: pulumi.Input<string>;
+    sdc: pulumi.Input<string>;
     /**
      * The sddp version. Valid values: `versionAudit`,`versionCompany`,`versionDlp`.
      */
-    readonly sddpVersion: pulumi.Input<string>;
+    sddpVersion: pulumi.Input<string>;
     /**
      * Whether to use OSS. Valid values: `yes`,`no`.
      */
-    readonly udCbool: pulumi.Input<string>;
+    udCbool: pulumi.Input<string>;
     /**
      * OSS Size.
      */
-    readonly udc: pulumi.Input<string>;
+    udc: pulumi.Input<string>;
 }

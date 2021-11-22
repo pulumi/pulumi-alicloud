@@ -4,6 +4,9 @@
 package fc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,4 +66,73 @@ type GetServicesResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// A list of FC services. Each element contains the following attributes:
 	Services []GetServicesService `pulumi:"services"`
+}
+
+func GetServicesOutput(ctx *pulumi.Context, args GetServicesOutputArgs, opts ...pulumi.InvokeOption) GetServicesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetServicesResult, error) {
+			args := v.(GetServicesArgs)
+			r, err := GetServices(ctx, &args, opts...)
+			return *r, err
+		}).(GetServicesResultOutput)
+}
+
+// A collection of arguments for invoking getServices.
+type GetServicesOutputArgs struct {
+	// - A list of FC services ids.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by FC service name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetServicesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getServices.
+type GetServicesResultOutput struct{ *pulumi.OutputState }
+
+func (GetServicesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicesResult)(nil)).Elem()
+}
+
+func (o GetServicesResultOutput) ToGetServicesResultOutput() GetServicesResultOutput {
+	return o
+}
+
+func (o GetServicesResultOutput) ToGetServicesResultOutputWithContext(ctx context.Context) GetServicesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetServicesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of FC services ids.
+func (o GetServicesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServicesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of FC services names.
+func (o GetServicesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServicesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of FC services. Each element contains the following attributes:
+func (o GetServicesResultOutput) Services() GetServicesServiceArrayOutput {
+	return o.ApplyT(func(v GetServicesResult) []GetServicesService { return v.Services }).(GetServicesServiceArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetServicesResultOutput{})
 }

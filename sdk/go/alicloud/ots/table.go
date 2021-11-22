@@ -37,9 +37,9 @@ import (
 // 		foo, err := ots.NewInstance(ctx, "foo", &ots.InstanceArgs{
 // 			Description: pulumi.String(name),
 // 			AccessedBy:  pulumi.String("Any"),
-// 			Tags: pulumi.StringMap{
-// 				"Created": pulumi.String("TF"),
-// 				"For":     pulumi.String("acceptance test"),
+// 			Tags: pulumi.AnyMap{
+// 				"Created": pulumi.Any("TF"),
+// 				"For":     pulumi.Any("acceptance test"),
 // 			},
 // 		})
 // 		if err != nil {
@@ -62,7 +62,7 @@ import (
 // 					Type: pulumi.String("Binary"),
 // 				},
 // 			},
-// 			TimeToLive:                pulumi.Int(-1),
+// 			TimeToLive:                -1,
 // 			MaxVersion:                pulumi.Int(1),
 // 			DeviationCellVersionInSec: pulumi.String("1"),
 // 		})
@@ -272,7 +272,7 @@ type TableArrayInput interface {
 type TableArray []TableInput
 
 func (TableArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Table)(nil))
+	return reflect.TypeOf((*[]*Table)(nil)).Elem()
 }
 
 func (i TableArray) ToTableArrayOutput() TableArrayOutput {
@@ -297,7 +297,7 @@ type TableMapInput interface {
 type TableMap map[string]TableInput
 
 func (TableMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Table)(nil))
+	return reflect.TypeOf((*map[string]*Table)(nil)).Elem()
 }
 
 func (i TableMap) ToTableMapOutput() TableMapOutput {
@@ -308,9 +308,7 @@ func (i TableMap) ToTableMapOutputWithContext(ctx context.Context) TableMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(TableMapOutput)
 }
 
-type TableOutput struct {
-	*pulumi.OutputState
-}
+type TableOutput struct{ *pulumi.OutputState }
 
 func (TableOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Table)(nil))
@@ -329,14 +327,12 @@ func (o TableOutput) ToTablePtrOutput() TablePtrOutput {
 }
 
 func (o TableOutput) ToTablePtrOutputWithContext(ctx context.Context) TablePtrOutput {
-	return o.ApplyT(func(v Table) *Table {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Table) *Table {
 		return &v
 	}).(TablePtrOutput)
 }
 
-type TablePtrOutput struct {
-	*pulumi.OutputState
-}
+type TablePtrOutput struct{ *pulumi.OutputState }
 
 func (TablePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Table)(nil))
@@ -348,6 +344,16 @@ func (o TablePtrOutput) ToTablePtrOutput() TablePtrOutput {
 
 func (o TablePtrOutput) ToTablePtrOutputWithContext(ctx context.Context) TablePtrOutput {
 	return o
+}
+
+func (o TablePtrOutput) Elem() TableOutput {
+	return o.ApplyT(func(v *Table) Table {
+		if v != nil {
+			return *v
+		}
+		var ret Table
+		return ret
+	}).(TableOutput)
 }
 
 type TableArrayOutput struct{ *pulumi.OutputState }
@@ -391,6 +397,10 @@ func (o TableMapOutput) MapIndex(k pulumi.StringInput) TableOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TableInput)(nil)).Elem(), &Table{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TablePtrInput)(nil)).Elem(), &Table{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableArrayInput)(nil)).Elem(), TableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableMapInput)(nil)).Elem(), TableMap{})
 	pulumi.RegisterOutputType(TableOutput{})
 	pulumi.RegisterOutputType(TablePtrOutput{})
 	pulumi.RegisterOutputType(TableArrayOutput{})

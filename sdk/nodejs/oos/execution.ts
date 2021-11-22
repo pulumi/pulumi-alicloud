@@ -249,87 +249,87 @@ export interface ExecutionState {
     /**
      * The counters of OOS Execution.
      */
-    readonly counters?: pulumi.Input<string>;
+    counters?: pulumi.Input<string>;
     /**
      * The time when the execution was created.
      */
-    readonly createDate?: pulumi.Input<string>;
+    createDate?: pulumi.Input<string>;
     /**
      * The description of OOS Execution.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The time when the execution was ended.
      */
-    readonly endDate?: pulumi.Input<string>;
+    endDate?: pulumi.Input<string>;
     /**
      * The user who execute the template.
      */
-    readonly executedBy?: pulumi.Input<string>;
+    executedBy?: pulumi.Input<string>;
     /**
      * Whether to include subtasks.
      */
-    readonly isParent?: pulumi.Input<boolean>;
+    isParent?: pulumi.Input<boolean>;
     /**
      * The loop mode of OOS Execution.
      */
-    readonly loopMode?: pulumi.Input<string>;
+    loopMode?: pulumi.Input<string>;
     /**
      * The mode of OOS Execution. Valid: `Automatic`, `Debug`. Default to `Automatic`.
      */
-    readonly mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
     /**
      * The outputs of OOS Execution.
      */
-    readonly outputs?: pulumi.Input<string>;
+    outputs?: pulumi.Input<string>;
     /**
      * The parameters required by the template. Default to `{}`.
      */
-    readonly parameters?: pulumi.Input<string>;
+    parameters?: pulumi.Input<string>;
     /**
      * The id of parent execution.
      */
-    readonly parentExecutionId?: pulumi.Input<string>;
+    parentExecutionId?: pulumi.Input<string>;
     /**
      * The role that executes the current template.
      */
-    readonly ramRole?: pulumi.Input<string>;
+    ramRole?: pulumi.Input<string>;
     /**
      * The mode of safety check.
      */
-    readonly safetyCheck?: pulumi.Input<string>;
+    safetyCheck?: pulumi.Input<string>;
     /**
      * The time when the execution was started.
      */
-    readonly startDate?: pulumi.Input<string>;
+    startDate?: pulumi.Input<string>;
     /**
      * The status of OOS Execution.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The message of status.
      */
-    readonly statusMessage?: pulumi.Input<string>;
+    statusMessage?: pulumi.Input<string>;
     /**
      * The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
      */
-    readonly templateContent?: pulumi.Input<string>;
+    templateContent?: pulumi.Input<string>;
     /**
      * The id of template.
      */
-    readonly templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string>;
     /**
      * The name of execution template.
      */
-    readonly templateName?: pulumi.Input<string>;
+    templateName?: pulumi.Input<string>;
     /**
      * The version of execution template.
      */
-    readonly templateVersion?: pulumi.Input<string>;
+    templateVersion?: pulumi.Input<string>;
     /**
      * The time when the execution was updated.
      */
-    readonly updateDate?: pulumi.Input<string>;
+    updateDate?: pulumi.Input<string>;
 }
 
 /**
@@ -339,37 +339,37 @@ export interface ExecutionArgs {
     /**
      * The description of OOS Execution.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The loop mode of OOS Execution.
      */
-    readonly loopMode?: pulumi.Input<string>;
+    loopMode?: pulumi.Input<string>;
     /**
      * The mode of OOS Execution. Valid: `Automatic`, `Debug`. Default to `Automatic`.
      */
-    readonly mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
     /**
      * The parameters required by the template. Default to `{}`.
      */
-    readonly parameters?: pulumi.Input<string>;
+    parameters?: pulumi.Input<string>;
     /**
      * The id of parent execution.
      */
-    readonly parentExecutionId?: pulumi.Input<string>;
+    parentExecutionId?: pulumi.Input<string>;
     /**
      * The mode of safety check.
      */
-    readonly safetyCheck?: pulumi.Input<string>;
+    safetyCheck?: pulumi.Input<string>;
     /**
      * The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
      */
-    readonly templateContent?: pulumi.Input<string>;
+    templateContent?: pulumi.Input<string>;
     /**
      * The name of execution template.
      */
-    readonly templateName: pulumi.Input<string>;
+    templateName: pulumi.Input<string>;
     /**
      * The version of execution template.
      */
-    readonly templateVersion?: pulumi.Input<string>;
+    templateVersion?: pulumi.Input<string>;
 }

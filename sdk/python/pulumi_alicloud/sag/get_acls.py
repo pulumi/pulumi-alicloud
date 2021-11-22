@@ -13,6 +13,7 @@ __all__ = [
     'GetAclsResult',
     'AwaitableGetAclsResult',
     'get_acls',
+    'get_acls_output',
 ]
 
 @pulumi.output_type
@@ -142,3 +143,35 @@ def get_acls(ids: Optional[Sequence[str]] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_acls)
+def get_acls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAclsResult]:
+    """
+    This data source provides Sag Acls available to the user.
+
+    > **NOTE:** Available in 1.60.0+
+
+    > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_acls = alicloud.sag.get_acls(ids=[alicloud_sag_acls["default"]["id"]],
+        name_regex="^tf-testAcc.*")
+    default_acl = alicloud.rocketmq.Acl("defaultAcl")
+    ```
+
+
+    :param Sequence[str] ids: A list of Sag Acl IDs.
+    :param str name_regex: A regex string to filter Sag Acl instances by name.
+    """
+    ...

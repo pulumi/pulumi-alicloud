@@ -13,6 +13,7 @@ __all__ = [
     'GetTopicsResult',
     'AwaitableGetTopicsResult',
     'get_topics',
+    'get_topics_output',
 ]
 
 @pulumi.output_type
@@ -135,3 +136,31 @@ def get_topics(instance_id: Optional[str] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         topics=__ret__.topics)
+
+
+@_utilities.lift_output_func(get_topics)
+def get_topics_output(instance_id: Optional[pulumi.Input[str]] = None,
+                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTopicsResult]:
+    """
+    This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available in 1.56.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    topics_ds = alicloud.actiontrail.get_topics(instance_id="xxx",
+        name_regex="alikafkaTopicName",
+        output_file="topics.txt")
+    pulumi.export("firstTopicName", topics_ds.topics[0].topic)
+    ```
+
+
+    :param str name_regex: A regex string to filter results by the topic name.
+    """
+    ...

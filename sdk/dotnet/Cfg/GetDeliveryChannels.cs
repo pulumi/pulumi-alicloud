@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cfg
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Cfg
         ///             },
         ///             NameRegex = "tftest",
         ///         }));
-        ///         this.FirstConfigDeliveryChannelId = example.Apply(example =&gt; example.Channels[0].Id);
+        ///         this.FirstConfigDeliveryChannelId = example.Apply(example =&gt; example.Channels?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstConfigDeliveryChannelId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Cfg
         /// </summary>
         public static Task<GetDeliveryChannelsResult> InvokeAsync(GetDeliveryChannelsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDeliveryChannelsResult>("alicloud:cfg/getDeliveryChannels:getDeliveryChannels", args ?? new GetDeliveryChannelsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.99.0+.
+        /// 
+        /// &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-northeast-1`.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Cfg.GetDeliveryChannels.InvokeAsync(new AliCloud.Cfg.GetDeliveryChannelsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "cdc-49a2ad756057********",
+        ///             },
+        ///             NameRegex = "tftest",
+        ///         }));
+        ///         this.FirstConfigDeliveryChannelId = example.Apply(example =&gt; example.Channels?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstConfigDeliveryChannelId")]
+        ///     public Output&lt;string&gt; FirstConfigDeliveryChannelId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDeliveryChannelsResult> Invoke(GetDeliveryChannelsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDeliveryChannelsResult>("alicloud:cfg/getDeliveryChannels:getDeliveryChannels", args ?? new GetDeliveryChannelsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -83,6 +124,40 @@ namespace Pulumi.AliCloud.Cfg
         public int? Status { get; set; }
 
         public GetDeliveryChannelsArgs()
+        {
+        }
+    }
+
+    public sealed class GetDeliveryChannelsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Config Delivery Channel IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by delivery channel name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the config delivery channel. Valid values `0`: Disable delivery channel, `1`: Enable delivery channel.
+        /// </summary>
+        [Input("status")]
+        public Input<int>? Status { get; set; }
+
+        public GetDeliveryChannelsInvokeArgs()
         {
         }
     }

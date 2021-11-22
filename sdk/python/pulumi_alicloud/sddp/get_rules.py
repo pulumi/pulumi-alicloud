@@ -13,6 +13,7 @@ __all__ = [
     'GetRulesResult',
     'AwaitableGetRulesResult',
     'get_rules',
+    'get_rules_output',
 ]
 
 @pulumi.output_type
@@ -265,3 +266,57 @@ def get_rules(category: Optional[int] = None,
         rules=__ret__.rules,
         status=__ret__.status,
         warn_level=__ret__.warn_level)
+
+
+@_utilities.lift_output_func(get_rules)
+def get_rules_output(category: Optional[pulumi.Input[Optional[int]]] = None,
+                     content_category: Optional[pulumi.Input[Optional[str]]] = None,
+                     custom_type: Optional[pulumi.Input[Optional[int]]] = None,
+                     enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                     ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                     name: Optional[pulumi.Input[Optional[str]]] = None,
+                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     product_id: Optional[pulumi.Input[Optional[str]]] = None,
+                     risk_level_id: Optional[pulumi.Input[Optional[str]]] = None,
+                     rule_type: Optional[pulumi.Input[Optional[int]]] = None,
+                     status: Optional[pulumi.Input[Optional[str]]] = None,
+                     warn_level: Optional[pulumi.Input[Optional[int]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRulesResult]:
+    """
+    This data source provides the Sddp Rules of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.132.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_rule = alicloud.sddp.Rule("defaultRule",
+        category=0,
+        content="content",
+        rule_name="rule_name",
+        risk_level_id="4",
+        product_code="ODPS")
+    default_rules = default_rule.id.apply(lambda id: alicloud.sddp.get_rules(ids=[id]))
+    pulumi.export("sddpRuleId", default_rules.id)
+    ```
+
+
+    :param int category: Sensitive Data Identification Rules for the Type of.
+    :param str content_category: The Content Classification.
+    :param int custom_type: Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+    :param Sequence[str] ids: A list of Rule IDs.
+    :param str name: The name of rule.
+    :param str name_regex: A regex string to filter results by Rule name.
+    :param str product_id: Product ID.
+    :param str risk_level_id: Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+    :param int rule_type: Rule Type.
+    :param str status: Sensitive Data Identification Rules Detection State of.
+    :param int warn_level: The Level of Risk.
+    """
+    ...

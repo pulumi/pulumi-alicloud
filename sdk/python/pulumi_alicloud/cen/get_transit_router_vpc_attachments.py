@@ -13,6 +13,7 @@ __all__ = [
     'GetTransitRouterVpcAttachmentsResult',
     'AwaitableGetTransitRouterVpcAttachmentsResult',
     'get_transit_router_vpc_attachments',
+    'get_transit_router_vpc_attachments_output',
 ]
 
 @pulumi.output_type
@@ -143,3 +144,24 @@ def get_transit_router_vpc_attachments(cen_id: Optional[str] = None,
         output_file=__ret__.output_file,
         status=__ret__.status,
         transit_router_id=__ret__.transit_router_id)
+
+
+@_utilities.lift_output_func(get_transit_router_vpc_attachments)
+def get_transit_router_vpc_attachments_output(cen_id: Optional[pulumi.Input[str]] = None,
+                                              ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                              status: Optional[pulumi.Input[Optional[str]]] = None,
+                                              transit_router_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRouterVpcAttachmentsResult]:
+    """
+    This data source provides CEN Transit Router VPC Attachments available to the user.[What is Cen Transit Router VPC Attachments](https://help.aliyun.com/document_detail/261222.html)
+
+    > **NOTE:** Available in 1.126.0+
+
+
+    :param str cen_id: ID of the CEN instance.
+    :param Sequence[str] ids: A list of resource id. The element value is same as `transit_router_id`.
+    :param str status: The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+    :param str transit_router_id: The transit router ID.
+    """
+    ...

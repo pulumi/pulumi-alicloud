@@ -179,7 +179,7 @@ type AppAttachmentArrayInput interface {
 type AppAttachmentArray []AppAttachmentInput
 
 func (AppAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AppAttachment)(nil))
+	return reflect.TypeOf((*[]*AppAttachment)(nil)).Elem()
 }
 
 func (i AppAttachmentArray) ToAppAttachmentArrayOutput() AppAttachmentArrayOutput {
@@ -204,7 +204,7 @@ type AppAttachmentMapInput interface {
 type AppAttachmentMap map[string]AppAttachmentInput
 
 func (AppAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AppAttachment)(nil))
+	return reflect.TypeOf((*map[string]*AppAttachment)(nil)).Elem()
 }
 
 func (i AppAttachmentMap) ToAppAttachmentMapOutput() AppAttachmentMapOutput {
@@ -215,9 +215,7 @@ func (i AppAttachmentMap) ToAppAttachmentMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AppAttachmentMapOutput)
 }
 
-type AppAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type AppAttachmentOutput struct{ *pulumi.OutputState }
 
 func (AppAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AppAttachment)(nil))
@@ -236,14 +234,12 @@ func (o AppAttachmentOutput) ToAppAttachmentPtrOutput() AppAttachmentPtrOutput {
 }
 
 func (o AppAttachmentOutput) ToAppAttachmentPtrOutputWithContext(ctx context.Context) AppAttachmentPtrOutput {
-	return o.ApplyT(func(v AppAttachment) *AppAttachment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppAttachment) *AppAttachment {
 		return &v
 	}).(AppAttachmentPtrOutput)
 }
 
-type AppAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type AppAttachmentPtrOutput struct{ *pulumi.OutputState }
 
 func (AppAttachmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AppAttachment)(nil))
@@ -255,6 +251,16 @@ func (o AppAttachmentPtrOutput) ToAppAttachmentPtrOutput() AppAttachmentPtrOutpu
 
 func (o AppAttachmentPtrOutput) ToAppAttachmentPtrOutputWithContext(ctx context.Context) AppAttachmentPtrOutput {
 	return o
+}
+
+func (o AppAttachmentPtrOutput) Elem() AppAttachmentOutput {
+	return o.ApplyT(func(v *AppAttachment) AppAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret AppAttachment
+		return ret
+	}).(AppAttachmentOutput)
 }
 
 type AppAttachmentArrayOutput struct{ *pulumi.OutputState }
@@ -298,6 +304,10 @@ func (o AppAttachmentMapOutput) MapIndex(k pulumi.StringInput) AppAttachmentOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AppAttachmentInput)(nil)).Elem(), &AppAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppAttachmentPtrInput)(nil)).Elem(), &AppAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppAttachmentArrayInput)(nil)).Elem(), AppAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppAttachmentMapInput)(nil)).Elem(), AppAttachmentMap{})
 	pulumi.RegisterOutputType(AppAttachmentOutput{})
 	pulumi.RegisterOutputType(AppAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(AppAttachmentArrayOutput{})

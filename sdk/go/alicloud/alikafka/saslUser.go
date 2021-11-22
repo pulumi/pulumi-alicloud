@@ -45,7 +45,7 @@ import (
 // 			password = param
 // 		}
 // 		opt0 := "VSwitch"
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -268,7 +268,7 @@ type SaslUserArrayInput interface {
 type SaslUserArray []SaslUserInput
 
 func (SaslUserArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SaslUser)(nil))
+	return reflect.TypeOf((*[]*SaslUser)(nil)).Elem()
 }
 
 func (i SaslUserArray) ToSaslUserArrayOutput() SaslUserArrayOutput {
@@ -293,7 +293,7 @@ type SaslUserMapInput interface {
 type SaslUserMap map[string]SaslUserInput
 
 func (SaslUserMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SaslUser)(nil))
+	return reflect.TypeOf((*map[string]*SaslUser)(nil)).Elem()
 }
 
 func (i SaslUserMap) ToSaslUserMapOutput() SaslUserMapOutput {
@@ -304,9 +304,7 @@ func (i SaslUserMap) ToSaslUserMapOutputWithContext(ctx context.Context) SaslUse
 	return pulumi.ToOutputWithContext(ctx, i).(SaslUserMapOutput)
 }
 
-type SaslUserOutput struct {
-	*pulumi.OutputState
-}
+type SaslUserOutput struct{ *pulumi.OutputState }
 
 func (SaslUserOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SaslUser)(nil))
@@ -325,14 +323,12 @@ func (o SaslUserOutput) ToSaslUserPtrOutput() SaslUserPtrOutput {
 }
 
 func (o SaslUserOutput) ToSaslUserPtrOutputWithContext(ctx context.Context) SaslUserPtrOutput {
-	return o.ApplyT(func(v SaslUser) *SaslUser {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SaslUser) *SaslUser {
 		return &v
 	}).(SaslUserPtrOutput)
 }
 
-type SaslUserPtrOutput struct {
-	*pulumi.OutputState
-}
+type SaslUserPtrOutput struct{ *pulumi.OutputState }
 
 func (SaslUserPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SaslUser)(nil))
@@ -344,6 +340,16 @@ func (o SaslUserPtrOutput) ToSaslUserPtrOutput() SaslUserPtrOutput {
 
 func (o SaslUserPtrOutput) ToSaslUserPtrOutputWithContext(ctx context.Context) SaslUserPtrOutput {
 	return o
+}
+
+func (o SaslUserPtrOutput) Elem() SaslUserOutput {
+	return o.ApplyT(func(v *SaslUser) SaslUser {
+		if v != nil {
+			return *v
+		}
+		var ret SaslUser
+		return ret
+	}).(SaslUserOutput)
 }
 
 type SaslUserArrayOutput struct{ *pulumi.OutputState }
@@ -387,6 +393,10 @@ func (o SaslUserMapOutput) MapIndex(k pulumi.StringInput) SaslUserOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SaslUserInput)(nil)).Elem(), &SaslUser{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SaslUserPtrInput)(nil)).Elem(), &SaslUser{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SaslUserArrayInput)(nil)).Elem(), SaslUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SaslUserMapInput)(nil)).Elem(), SaslUserMap{})
 	pulumi.RegisterOutputType(SaslUserOutput{})
 	pulumi.RegisterOutputType(SaslUserPtrOutput{})
 	pulumi.RegisterOutputType(SaslUserArrayOutput{})

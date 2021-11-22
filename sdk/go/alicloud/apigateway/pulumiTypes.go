@@ -243,7 +243,7 @@ func (o ApiFcServiceConfigOutput) ToApiFcServiceConfigPtrOutput() ApiFcServiceCo
 }
 
 func (o ApiFcServiceConfigOutput) ToApiFcServiceConfigPtrOutputWithContext(ctx context.Context) ApiFcServiceConfigPtrOutput {
-	return o.ApplyT(func(v ApiFcServiceConfig) *ApiFcServiceConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiFcServiceConfig) *ApiFcServiceConfig {
 		return &v
 	}).(ApiFcServiceConfigPtrOutput)
 }
@@ -288,7 +288,13 @@ func (o ApiFcServiceConfigPtrOutput) ToApiFcServiceConfigPtrOutputWithContext(ct
 }
 
 func (o ApiFcServiceConfigPtrOutput) Elem() ApiFcServiceConfigOutput {
-	return o.ApplyT(func(v *ApiFcServiceConfig) ApiFcServiceConfig { return *v }).(ApiFcServiceConfigOutput)
+	return o.ApplyT(func(v *ApiFcServiceConfig) ApiFcServiceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ApiFcServiceConfig
+		return ret
+	}).(ApiFcServiceConfigOutput)
 }
 
 // RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
@@ -448,7 +454,7 @@ func (o ApiHttpServiceConfigOutput) ToApiHttpServiceConfigPtrOutput() ApiHttpSer
 }
 
 func (o ApiHttpServiceConfigOutput) ToApiHttpServiceConfigPtrOutputWithContext(ctx context.Context) ApiHttpServiceConfigPtrOutput {
-	return o.ApplyT(func(v ApiHttpServiceConfig) *ApiHttpServiceConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiHttpServiceConfig) *ApiHttpServiceConfig {
 		return &v
 	}).(ApiHttpServiceConfigPtrOutput)
 }
@@ -492,7 +498,13 @@ func (o ApiHttpServiceConfigPtrOutput) ToApiHttpServiceConfigPtrOutputWithContex
 }
 
 func (o ApiHttpServiceConfigPtrOutput) Elem() ApiHttpServiceConfigOutput {
-	return o.ApplyT(func(v *ApiHttpServiceConfig) ApiHttpServiceConfig { return *v }).(ApiHttpServiceConfigOutput)
+	return o.ApplyT(func(v *ApiHttpServiceConfig) ApiHttpServiceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ApiHttpServiceConfig
+		return ret
+	}).(ApiHttpServiceConfigOutput)
 }
 
 // The address of backend service.
@@ -651,10 +663,11 @@ func (o ApiHttpVpcServiceConfigOutput) ToApiHttpVpcServiceConfigPtrOutput() ApiH
 }
 
 func (o ApiHttpVpcServiceConfigOutput) ToApiHttpVpcServiceConfigPtrOutputWithContext(ctx context.Context) ApiHttpVpcServiceConfigPtrOutput {
-	return o.ApplyT(func(v ApiHttpVpcServiceConfig) *ApiHttpVpcServiceConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiHttpVpcServiceConfig) *ApiHttpVpcServiceConfig {
 		return &v
 	}).(ApiHttpVpcServiceConfigPtrOutput)
 }
+
 func (o ApiHttpVpcServiceConfigOutput) AoneName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiHttpVpcServiceConfig) *string { return v.AoneName }).(pulumi.StringPtrOutput)
 }
@@ -694,7 +707,13 @@ func (o ApiHttpVpcServiceConfigPtrOutput) ToApiHttpVpcServiceConfigPtrOutputWith
 }
 
 func (o ApiHttpVpcServiceConfigPtrOutput) Elem() ApiHttpVpcServiceConfigOutput {
-	return o.ApplyT(func(v *ApiHttpVpcServiceConfig) ApiHttpVpcServiceConfig { return *v }).(ApiHttpVpcServiceConfigOutput)
+	return o.ApplyT(func(v *ApiHttpVpcServiceConfig) ApiHttpVpcServiceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ApiHttpVpcServiceConfig
+		return ret
+	}).(ApiHttpVpcServiceConfigOutput)
 }
 
 func (o ApiHttpVpcServiceConfigPtrOutput) AoneName() pulumi.StringPtrOutput {
@@ -841,10 +860,11 @@ func (o ApiMockServiceConfigOutput) ToApiMockServiceConfigPtrOutput() ApiMockSer
 }
 
 func (o ApiMockServiceConfigOutput) ToApiMockServiceConfigPtrOutputWithContext(ctx context.Context) ApiMockServiceConfigPtrOutput {
-	return o.ApplyT(func(v ApiMockServiceConfig) *ApiMockServiceConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiMockServiceConfig) *ApiMockServiceConfig {
 		return &v
 	}).(ApiMockServiceConfigPtrOutput)
 }
+
 func (o ApiMockServiceConfigOutput) AoneName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiMockServiceConfig) *string { return v.AoneName }).(pulumi.StringPtrOutput)
 }
@@ -869,7 +889,13 @@ func (o ApiMockServiceConfigPtrOutput) ToApiMockServiceConfigPtrOutputWithContex
 }
 
 func (o ApiMockServiceConfigPtrOutput) Elem() ApiMockServiceConfigOutput {
-	return o.ApplyT(func(v *ApiMockServiceConfig) ApiMockServiceConfig { return *v }).(ApiMockServiceConfigOutput)
+	return o.ApplyT(func(v *ApiMockServiceConfig) ApiMockServiceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ApiMockServiceConfig
+		return ret
+	}).(ApiMockServiceConfigOutput)
 }
 
 func (o ApiMockServiceConfigPtrOutput) AoneName() pulumi.StringPtrOutput {
@@ -1000,7 +1026,7 @@ func (o ApiRequestConfigOutput) ToApiRequestConfigPtrOutput() ApiRequestConfigPt
 }
 
 func (o ApiRequestConfigOutput) ToApiRequestConfigPtrOutputWithContext(ctx context.Context) ApiRequestConfigPtrOutput {
-	return o.ApplyT(func(v ApiRequestConfig) *ApiRequestConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiRequestConfig) *ApiRequestConfig {
 		return &v
 	}).(ApiRequestConfigPtrOutput)
 }
@@ -1045,7 +1071,13 @@ func (o ApiRequestConfigPtrOutput) ToApiRequestConfigPtrOutputWithContext(ctx co
 }
 
 func (o ApiRequestConfigPtrOutput) Elem() ApiRequestConfigOutput {
-	return o.ApplyT(func(v *ApiRequestConfig) ApiRequestConfig { return *v }).(ApiRequestConfigOutput)
+	return o.ApplyT(func(v *ApiRequestConfig) ApiRequestConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ApiRequestConfig
+		return ret
+	}).(ApiRequestConfigOutput)
 }
 
 // The body format of the api, which support the values of 'STREAM' and 'FORM'.
@@ -1848,6 +1880,28 @@ func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiConstantParameterInput)(nil)).Elem(), ApiConstantParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiConstantParameterArrayInput)(nil)).Elem(), ApiConstantParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiFcServiceConfigInput)(nil)).Elem(), ApiFcServiceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiFcServiceConfigPtrInput)(nil)).Elem(), ApiFcServiceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiHttpServiceConfigInput)(nil)).Elem(), ApiHttpServiceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiHttpServiceConfigPtrInput)(nil)).Elem(), ApiHttpServiceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiHttpVpcServiceConfigInput)(nil)).Elem(), ApiHttpVpcServiceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiHttpVpcServiceConfigPtrInput)(nil)).Elem(), ApiHttpVpcServiceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiMockServiceConfigInput)(nil)).Elem(), ApiMockServiceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiMockServiceConfigPtrInput)(nil)).Elem(), ApiMockServiceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiRequestConfigInput)(nil)).Elem(), ApiRequestConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiRequestConfigPtrInput)(nil)).Elem(), ApiRequestConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiRequestParameterInput)(nil)).Elem(), ApiRequestParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiRequestParameterArrayInput)(nil)).Elem(), ApiRequestParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiSystemParameterInput)(nil)).Elem(), ApiSystemParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiSystemParameterArrayInput)(nil)).Elem(), ApiSystemParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApisApiInput)(nil)).Elem(), GetApisApiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApisApiArrayInput)(nil)).Elem(), GetApisApiArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppInput)(nil)).Elem(), GetAppsAppArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppArrayInput)(nil)).Elem(), GetAppsAppArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupInput)(nil)).Elem(), GetGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupArrayInput)(nil)).Elem(), GetGroupsGroupArray{})
 	pulumi.RegisterOutputType(ApiConstantParameterOutput{})
 	pulumi.RegisterOutputType(ApiConstantParameterArrayOutput{})
 	pulumi.RegisterOutputType(ApiFcServiceConfigOutput{})

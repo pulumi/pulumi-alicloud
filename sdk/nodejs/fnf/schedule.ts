@@ -163,35 +163,35 @@ export interface ScheduleState {
     /**
      * The CRON expression of the time-based schedule to be created.
      */
-    readonly cronExpression?: pulumi.Input<string>;
+    cronExpression?: pulumi.Input<string>;
     /**
      * The description of the time-based schedule to be created.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Specifies whether to enable the time-based schedule you want to create. Valid values: `false`, `true`.
      */
-    readonly enable?: pulumi.Input<boolean>;
+    enable?: pulumi.Input<boolean>;
     /**
      * The name of the flow bound to the time-based schedule you want to create.
      */
-    readonly flowName?: pulumi.Input<string>;
+    flowName?: pulumi.Input<string>;
     /**
      * The time when the time-based schedule was last updated.
      */
-    readonly lastModifiedTime?: pulumi.Input<string>;
+    lastModifiedTime?: pulumi.Input<string>;
     /**
      * The trigger message of the time-based schedule to be created. It must be in JSON object format.
      */
-    readonly payload?: pulumi.Input<string>;
+    payload?: pulumi.Input<string>;
     /**
      * The ID of the time-based schedule.
      */
-    readonly scheduleId?: pulumi.Input<string>;
+    scheduleId?: pulumi.Input<string>;
     /**
      * The name of the time-based schedule to be created.
      */
-    readonly scheduleName?: pulumi.Input<string>;
+    scheduleName?: pulumi.Input<string>;
 }
 
 /**
@@ -201,25 +201,25 @@ export interface ScheduleArgs {
     /**
      * The CRON expression of the time-based schedule to be created.
      */
-    readonly cronExpression: pulumi.Input<string>;
+    cronExpression: pulumi.Input<string>;
     /**
      * The description of the time-based schedule to be created.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Specifies whether to enable the time-based schedule you want to create. Valid values: `false`, `true`.
      */
-    readonly enable?: pulumi.Input<boolean>;
+    enable?: pulumi.Input<boolean>;
     /**
      * The name of the flow bound to the time-based schedule you want to create.
      */
-    readonly flowName: pulumi.Input<string>;
+    flowName: pulumi.Input<string>;
     /**
      * The trigger message of the time-based schedule to be created. It must be in JSON object format.
      */
-    readonly payload?: pulumi.Input<string>;
+    payload?: pulumi.Input<string>;
     /**
      * The name of the time-based schedule to be created.
      */
-    readonly scheduleName: pulumi.Input<string>;
+    scheduleName: pulumi.Input<string>;
 }

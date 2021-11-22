@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Slb
 {
@@ -27,7 +28,7 @@ namespace Pulumi.AliCloud.Slb
         ///     public MyStack()
         ///     {
         ///         var sampleDs = Output.Create(AliCloud.Slb.GetCaCertificates.InvokeAsync());
-        ///         this.FirstSlbCaCertificateId = sampleDs.Apply(sampleDs =&gt; sampleDs.Certificates[0].Id);
+        ///         this.FirstSlbCaCertificateId = sampleDs.Apply(sampleDs =&gt; sampleDs.Certificates?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstSlbCaCertificateId")]
@@ -39,6 +40,35 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         public static Task<GetCaCertificatesResult> InvokeAsync(GetCaCertificatesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCaCertificatesResult>("alicloud:slb/getCaCertificates:getCaCertificates", args ?? new GetCaCertificatesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the CA certificate list.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var sampleDs = Output.Create(AliCloud.Slb.GetCaCertificates.InvokeAsync());
+        ///         this.FirstSlbCaCertificateId = sampleDs.Apply(sampleDs =&gt; sampleDs.Certificates?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstSlbCaCertificateId")]
+        ///     public Output&lt;string&gt; FirstSlbCaCertificateId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetCaCertificatesResult> Invoke(GetCaCertificatesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCaCertificatesResult>("alicloud:slb/getCaCertificates:getCaCertificates", args ?? new GetCaCertificatesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -84,6 +114,52 @@ namespace Pulumi.AliCloud.Slb
         }
 
         public GetCaCertificatesArgs()
+        {
+        }
+    }
+
+    public sealed class GetCaCertificatesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of ca certificates IDs to filter results.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by ca certificate name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The Id of resource group which ca certificates belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        public GetCaCertificatesInvokeArgs()
         {
         }
     }

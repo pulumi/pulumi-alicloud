@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Hbr
 {
@@ -34,7 +35,7 @@ namespace Pulumi.AliCloud.Hbr
         ///         {
         ///             NameRegex = "^my-Vault",
         ///         }));
-        ///         this.HbrVaultId1 = ids.Apply(ids =&gt; ids.Vaults[0].Id);
+        ///         this.HbrVaultId1 = ids.Apply(ids =&gt; ids.Vaults?[0]?.Id);
         ///     }
         /// 
         ///     [Output("hbrVaultId1")]
@@ -46,6 +47,42 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         public static Task<GetVaultsResult> InvokeAsync(GetVaultsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVaultsResult>("alicloud:hbr/getVaults:getVaults", args ?? new GetVaultsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Hbr Vaults of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.129.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Hbr.GetVaults.InvokeAsync(new AliCloud.Hbr.GetVaultsArgs
+        ///         {
+        ///             NameRegex = "^my-Vault",
+        ///         }));
+        ///         this.HbrVaultId1 = ids.Apply(ids =&gt; ids.Vaults?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("hbrVaultId1")]
+        ///     public Output&lt;string&gt; HbrVaultId1 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetVaultsResult> Invoke(GetVaultsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetVaultsResult>("alicloud:hbr/getVaults:getVaults", args ?? new GetVaultsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -85,6 +122,46 @@ namespace Pulumi.AliCloud.Hbr
         public string? VaultType { get; set; }
 
         public GetVaultsArgs()
+        {
+        }
+    }
+
+    public sealed class GetVaultsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Vault IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Vault name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The type of Vault. Valid values: `STANDARD`.
+        /// </summary>
+        [Input("vaultType")]
+        public Input<string>? VaultType { get; set; }
+
+        public GetVaultsInvokeArgs()
         {
         }
     }

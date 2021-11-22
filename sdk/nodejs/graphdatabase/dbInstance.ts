@@ -186,45 +186,45 @@ export interface DbInstanceState {
     /**
      * The category of the db instance. Valid values: `HA`.
      */
-    readonly dbInstanceCategory?: pulumi.Input<string>;
+    dbInstanceCategory?: pulumi.Input<string>;
     /**
      * According to the practical example or notes.
      */
-    readonly dbInstanceDescription?: pulumi.Input<string>;
+    dbInstanceDescription?: pulumi.Input<string>;
     /**
      * IP ADDRESS whitelist for the instance group list. See the following `Block dbInstanceIpArray`.
      */
-    readonly dbInstanceIpArrays?: pulumi.Input<pulumi.Input<inputs.graphdatabase.DbInstanceDbInstanceIpArray>[]>;
+    dbInstanceIpArrays?: pulumi.Input<pulumi.Input<inputs.graphdatabase.DbInstanceDbInstanceIpArray>[]>;
     /**
      * The network type of the db instance. Valid values: `vpc`.
      */
-    readonly dbInstanceNetworkType?: pulumi.Input<string>;
+    dbInstanceNetworkType?: pulumi.Input<string>;
     /**
      * Disk storage type. Valid values: `cloudEssd`, `cloudSsd`. Modification is not supported.
      */
-    readonly dbInstanceStorageType?: pulumi.Input<string>;
+    dbInstanceStorageType?: pulumi.Input<string>;
     /**
      * The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`.
      */
-    readonly dbNodeClass?: pulumi.Input<string>;
+    dbNodeClass?: pulumi.Input<string>;
     /**
      * Instance storage space, which is measured in GB.
      */
-    readonly dbNodeStorage?: pulumi.Input<number>;
+    dbNodeStorage?: pulumi.Input<number>;
     /**
      * Kernel Version. Valid values: `1.0` or `1.0-OpenCypher`. `1.0`: represented as gremlin, `1.0-OpenCypher`: said opencypher.
      */
-    readonly dbVersion?: pulumi.Input<string>;
+    dbVersion?: pulumi.Input<string>;
     /**
      * The paymen type of the resource. Valid values: `PayAsYouGo`.
      */
-    readonly paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
     /**
      * Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
      */
-    readonly status?: pulumi.Input<string>;
-    readonly vswitchId?: pulumi.Input<string>;
-    readonly zoneId?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -234,37 +234,37 @@ export interface DbInstanceArgs {
     /**
      * The category of the db instance. Valid values: `HA`.
      */
-    readonly dbInstanceCategory: pulumi.Input<string>;
+    dbInstanceCategory: pulumi.Input<string>;
     /**
      * According to the practical example or notes.
      */
-    readonly dbInstanceDescription?: pulumi.Input<string>;
+    dbInstanceDescription?: pulumi.Input<string>;
     /**
      * IP ADDRESS whitelist for the instance group list. See the following `Block dbInstanceIpArray`.
      */
-    readonly dbInstanceIpArrays?: pulumi.Input<pulumi.Input<inputs.graphdatabase.DbInstanceDbInstanceIpArray>[]>;
+    dbInstanceIpArrays?: pulumi.Input<pulumi.Input<inputs.graphdatabase.DbInstanceDbInstanceIpArray>[]>;
     /**
      * The network type of the db instance. Valid values: `vpc`.
      */
-    readonly dbInstanceNetworkType: pulumi.Input<string>;
+    dbInstanceNetworkType: pulumi.Input<string>;
     /**
      * Disk storage type. Valid values: `cloudEssd`, `cloudSsd`. Modification is not supported.
      */
-    readonly dbInstanceStorageType: pulumi.Input<string>;
+    dbInstanceStorageType: pulumi.Input<string>;
     /**
      * The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`.
      */
-    readonly dbNodeClass: pulumi.Input<string>;
+    dbNodeClass: pulumi.Input<string>;
     /**
      * Instance storage space, which is measured in GB.
      */
-    readonly dbNodeStorage: pulumi.Input<number>;
+    dbNodeStorage: pulumi.Input<number>;
     /**
      * Kernel Version. Valid values: `1.0` or `1.0-OpenCypher`. `1.0`: represented as gremlin, `1.0-OpenCypher`: said opencypher.
      */
-    readonly dbVersion: pulumi.Input<string>;
+    dbVersion: pulumi.Input<string>;
     /**
      * The paymen type of the resource. Valid values: `PayAsYouGo`.
      */
-    readonly paymentType: pulumi.Input<string>;
+    paymentType: pulumi.Input<string>;
 }

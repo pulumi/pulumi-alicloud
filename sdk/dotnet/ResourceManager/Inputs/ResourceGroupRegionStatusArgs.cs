@@ -9,4 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.ResourceManager.Inputs
 {
+
+    public sealed class ResourceGroupRegionStatusArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// The region ID.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
+        /// The status of the regional resource group.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public ResourceGroupRegionStatusArgs()
+        {
+        }
+    }
 }

@@ -4,6 +4,9 @@
 package cr
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,4 +74,73 @@ type GetEndpointAclServiceResult struct {
 	InstanceId string  `pulumi:"instanceId"`
 	ModuleName *string `pulumi:"moduleName"`
 	Status     string  `pulumi:"status"`
+}
+
+func GetEndpointAclServiceOutput(ctx *pulumi.Context, args GetEndpointAclServiceOutputArgs, opts ...pulumi.InvokeOption) GetEndpointAclServiceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetEndpointAclServiceResult, error) {
+			args := v.(GetEndpointAclServiceArgs)
+			r, err := GetEndpointAclService(ctx, &args, opts...)
+			return *r, err
+		}).(GetEndpointAclServiceResultOutput)
+}
+
+// A collection of arguments for invoking getEndpointAclService.
+type GetEndpointAclServiceOutputArgs struct {
+	// Whether to enable Acl Service.  Valid values: `true` and `false`.
+	Enable pulumi.BoolInput `pulumi:"enable"`
+	// The type of endpoint. Valid values: `internet`.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// The ID of the CR Instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The ModuleName. Valid values: `Registry`.
+	ModuleName pulumi.StringPtrInput `pulumi:"moduleName"`
+}
+
+func (GetEndpointAclServiceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointAclServiceArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getEndpointAclService.
+type GetEndpointAclServiceResultOutput struct{ *pulumi.OutputState }
+
+func (GetEndpointAclServiceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointAclServiceResult)(nil)).Elem()
+}
+
+func (o GetEndpointAclServiceResultOutput) ToGetEndpointAclServiceResultOutput() GetEndpointAclServiceResultOutput {
+	return o
+}
+
+func (o GetEndpointAclServiceResultOutput) ToGetEndpointAclServiceResultOutputWithContext(ctx context.Context) GetEndpointAclServiceResultOutput {
+	return o
+}
+
+func (o GetEndpointAclServiceResultOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEndpointAclServiceResult) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+func (o GetEndpointAclServiceResultOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointAclServiceResult) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetEndpointAclServiceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointAclServiceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetEndpointAclServiceResultOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointAclServiceResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetEndpointAclServiceResultOutput) ModuleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEndpointAclServiceResult) *string { return v.ModuleName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEndpointAclServiceResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointAclServiceResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetEndpointAclServiceResultOutput{})
 }

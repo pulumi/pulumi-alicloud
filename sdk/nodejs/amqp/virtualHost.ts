@@ -110,11 +110,11 @@ export interface VirtualHostState {
     /**
      * InstanceId.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * VirtualHostName.
      */
-    readonly virtualHostName?: pulumi.Input<string>;
+    virtualHostName?: pulumi.Input<string>;
 }
 
 /**
@@ -124,9 +124,9 @@ export interface VirtualHostArgs {
     /**
      * InstanceId.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * VirtualHostName.
      */
-    readonly virtualHostName: pulumi.Input<string>;
+    virtualHostName: pulumi.Input<string>;
 }

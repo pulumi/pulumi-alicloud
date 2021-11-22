@@ -142,29 +142,29 @@ export interface AppTemplateState {
     /**
      * The name of the resource.
      */
-    readonly appTemplateName?: pulumi.Input<string>;
+    appTemplateName?: pulumi.Input<string>;
     /**
      * List of components. Its element valid values: ["component.live","component.liveRecord","component.liveBeauty","component.rtc","component.rtcRecord","component.im","component.whiteboard","component.liveSecurity","component.chatSecurity"].
      */
-    readonly componentLists?: pulumi.Input<pulumi.Input<string>[]>;
+    componentLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Configuration list. It have several default configs after the resource is created. See the following `Block configList`.
      */
-    readonly configLists?: pulumi.Input<pulumi.Input<inputs.imp.AppTemplateConfigList>[]>;
+    configLists?: pulumi.Input<pulumi.Input<inputs.imp.AppTemplateConfigList>[]>;
     /**
      * Integration mode. Valid values:
      * * paasSDK: Integrated SDK.
      * * standardRoom: Model Room.
      */
-    readonly integrationMode?: pulumi.Input<string>;
+    integrationMode?: pulumi.Input<string>;
     /**
      * Application Template scenario. Valid values: ["business", "classroom"].
      */
-    readonly scene?: pulumi.Input<string>;
+    scene?: pulumi.Input<string>;
     /**
      * Application template usage status.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -174,23 +174,23 @@ export interface AppTemplateArgs {
     /**
      * The name of the resource.
      */
-    readonly appTemplateName: pulumi.Input<string>;
+    appTemplateName: pulumi.Input<string>;
     /**
      * List of components. Its element valid values: ["component.live","component.liveRecord","component.liveBeauty","component.rtc","component.rtcRecord","component.im","component.whiteboard","component.liveSecurity","component.chatSecurity"].
      */
-    readonly componentLists: pulumi.Input<pulumi.Input<string>[]>;
+    componentLists: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Configuration list. It have several default configs after the resource is created. See the following `Block configList`.
      */
-    readonly configLists?: pulumi.Input<pulumi.Input<inputs.imp.AppTemplateConfigList>[]>;
+    configLists?: pulumi.Input<pulumi.Input<inputs.imp.AppTemplateConfigList>[]>;
     /**
      * Integration mode. Valid values:
      * * paasSDK: Integrated SDK.
      * * standardRoom: Model Room.
      */
-    readonly integrationMode?: pulumi.Input<string>;
+    integrationMode?: pulumi.Input<string>;
     /**
      * Application Template scenario. Valid values: ["business", "classroom"].
      */
-    readonly scene?: pulumi.Input<string>;
+    scene?: pulumi.Input<string>;
 }

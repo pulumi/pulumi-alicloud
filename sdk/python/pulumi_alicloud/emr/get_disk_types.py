@@ -13,6 +13,7 @@ __all__ = [
     'GetDiskTypesResult',
     'AwaitableGetDiskTypesResult',
     'get_disk_types',
+    'get_disk_types_output',
 ]
 
 @pulumi.output_type
@@ -129,7 +130,7 @@ def get_disk_types(cluster_type: Optional[str] = None,
                    zone_id: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDiskTypesResult:
     """
-    The `emr.getDiskTypes` data source provides a collection of data disk and
+    The `emr.get_disk_types` data source provides a collection of data disk and
     system disk types available in Alibaba Cloud account when create a emr cluster.
 
     > **NOTE:** Available in 1.60.0+
@@ -178,3 +179,41 @@ def get_disk_types(cluster_type: Optional[str] = None,
         output_file=__ret__.output_file,
         types=__ret__.types,
         zone_id=__ret__.zone_id)
+
+
+@_utilities.lift_output_func(get_disk_types)
+def get_disk_types_output(cluster_type: Optional[pulumi.Input[str]] = None,
+                          destination_resource: Optional[pulumi.Input[str]] = None,
+                          instance_charge_type: Optional[pulumi.Input[str]] = None,
+                          instance_type: Optional[pulumi.Input[str]] = None,
+                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                          zone_id: Optional[pulumi.Input[Optional[str]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDiskTypesResult]:
+    """
+    The `emr.get_disk_types` data source provides a collection of data disk and
+    system disk types available in Alibaba Cloud account when create a emr cluster.
+
+    > **NOTE:** Available in 1.60.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.emr.get_disk_types(cluster_type="HADOOP",
+        destination_resource="DataDisk",
+        instance_charge_type="PostPaid",
+        instance_type="ecs.g5.xlarge",
+        zone_id="cn-huhehaote-a")
+    pulumi.export("dataDiskType", default.types[0].value)
+    ```
+
+
+    :param str cluster_type: The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.
+    :param str destination_resource: The destination resource of emr cluster instance
+    :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+    :param str instance_type: The ecs instance type of create emr cluster instance.
+    :param str zone_id: The Zone to create emr cluster instance.
+    """
+    ...

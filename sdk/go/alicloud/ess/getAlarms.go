@@ -4,6 +4,9 @@
 package ess
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,4 +51,87 @@ type GetAlarmsResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// The scaling group associated with this alarm.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
+}
+
+func GetAlarmsOutput(ctx *pulumi.Context, args GetAlarmsOutputArgs, opts ...pulumi.InvokeOption) GetAlarmsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAlarmsResult, error) {
+			args := v.(GetAlarmsArgs)
+			r, err := GetAlarms(ctx, &args, opts...)
+			return *r, err
+		}).(GetAlarmsResultOutput)
+}
+
+// A collection of arguments for invoking getAlarms.
+type GetAlarmsOutputArgs struct {
+	// A list of alarm IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
+	MetricType pulumi.StringPtrInput `pulumi:"metricType"`
+	// A regex string to filter resulting alarms by name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Scaling group id the alarms belong to.
+	ScalingGroupId pulumi.StringPtrInput `pulumi:"scalingGroupId"`
+}
+
+func (GetAlarmsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAlarms.
+type GetAlarmsResultOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmsResult)(nil)).Elem()
+}
+
+func (o GetAlarmsResultOutput) ToGetAlarmsResultOutput() GetAlarmsResultOutput {
+	return o
+}
+
+func (o GetAlarmsResultOutput) ToGetAlarmsResultOutputWithContext(ctx context.Context) GetAlarmsResultOutput {
+	return o
+}
+
+// A list of alarms. Each element contains the following attributes:
+func (o GetAlarmsResultOutput) Alarms() GetAlarmsAlarmArrayOutput {
+	return o.ApplyT(func(v GetAlarmsResult) []GetAlarmsAlarm { return v.Alarms }).(GetAlarmsAlarmArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAlarmsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of alarm ids.
+func (o GetAlarmsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlarmsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// The type for the alarm's associated metric.
+func (o GetAlarmsResultOutput) MetricType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlarmsResult) *string { return v.MetricType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAlarmsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlarmsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of alarm names.
+func (o GetAlarmsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlarmsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAlarmsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlarmsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The scaling group associated with this alarm.
+func (o GetAlarmsResultOutput) ScalingGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlarmsResult) *string { return v.ScalingGroupId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAlarmsResultOutput{})
 }

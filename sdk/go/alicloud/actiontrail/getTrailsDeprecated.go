@@ -4,6 +4,9 @@
 package actiontrail
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,4 +48,92 @@ type GetTrailsDeprecatedResult struct {
 	OutputFile *string                    `pulumi:"outputFile"`
 	Status     *string                    `pulumi:"status"`
 	Trails     []GetTrailsDeprecatedTrail `pulumi:"trails"`
+}
+
+func GetTrailsDeprecatedOutput(ctx *pulumi.Context, args GetTrailsDeprecatedOutputArgs, opts ...pulumi.InvokeOption) GetTrailsDeprecatedResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetTrailsDeprecatedResult, error) {
+			args := v.(GetTrailsDeprecatedArgs)
+			r, err := GetTrailsDeprecated(ctx, &args, opts...)
+			return *r, err
+		}).(GetTrailsDeprecatedResultOutput)
+}
+
+// A collection of arguments for invoking getTrailsDeprecated.
+type GetTrailsDeprecatedOutputArgs struct {
+	Ids                      pulumi.StringArrayInput `pulumi:"ids"`
+	IncludeOrganizationTrail pulumi.BoolPtrInput     `pulumi:"includeOrganizationTrail"`
+	IncludeShadowTrails      pulumi.BoolPtrInput     `pulumi:"includeShadowTrails"`
+	// A regex string to filter results action trail name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	Status     pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetTrailsDeprecatedOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTrailsDeprecatedArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getTrailsDeprecated.
+type GetTrailsDeprecatedResultOutput struct{ *pulumi.OutputState }
+
+func (GetTrailsDeprecatedResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTrailsDeprecatedResult)(nil)).Elem()
+}
+
+func (o GetTrailsDeprecatedResultOutput) ToGetTrailsDeprecatedResultOutput() GetTrailsDeprecatedResultOutput {
+	return o
+}
+
+func (o GetTrailsDeprecatedResultOutput) ToGetTrailsDeprecatedResultOutputWithContext(ctx context.Context) GetTrailsDeprecatedResultOutput {
+	return o
+}
+
+// A list of actiontrails. Each element contains the following attributes:
+//
+// Deprecated: Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.
+func (o GetTrailsDeprecatedResultOutput) Actiontrails() GetTrailsDeprecatedActiontrailArrayOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedResult) []GetTrailsDeprecatedActiontrail { return v.Actiontrails }).(GetTrailsDeprecatedActiontrailArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetTrailsDeprecatedResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetTrailsDeprecatedResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTrailsDeprecatedResultOutput) IncludeOrganizationTrail() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedResult) *bool { return v.IncludeOrganizationTrail }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetTrailsDeprecatedResultOutput) IncludeShadowTrails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedResult) *bool { return v.IncludeShadowTrails }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetTrailsDeprecatedResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of trail names.
+func (o GetTrailsDeprecatedResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTrailsDeprecatedResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetTrailsDeprecatedResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetTrailsDeprecatedResultOutput) Trails() GetTrailsDeprecatedTrailArrayOutput {
+	return o.ApplyT(func(v GetTrailsDeprecatedResult) []GetTrailsDeprecatedTrail { return v.Trails }).(GetTrailsDeprecatedTrailArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetTrailsDeprecatedResultOutput{})
 }

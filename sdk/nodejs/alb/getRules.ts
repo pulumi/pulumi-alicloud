@@ -21,11 +21,11 @@ import * as utilities from "../utilities";
  * const ids = alicloud.alb.getRules({
  *     ids: ["example_id"],
  * });
- * export const albRuleId1 = ids.then(ids => ids.rules[0].id);
+ * export const albRuleId1 = ids.then(ids => ids.rules?[0]?.id);
  * const nameRegex = alicloud.alb.getRules({
  *     nameRegex: "^my-Rule",
  * });
- * export const albRuleId2 = nameRegex.then(nameRegex => nameRegex.rules[0].id);
+ * export const albRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?[0]?.id);
  * ```
  */
 export function getRules(args?: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> {
@@ -55,28 +55,28 @@ export interface GetRulesArgs {
     /**
      * A list of Rule IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The listener ids.
      */
-    readonly listenerIds?: string[];
+    listenerIds?: string[];
     /**
      * The load balancer ids.
      */
-    readonly loadBalancerIds?: string[];
+    loadBalancerIds?: string[];
     /**
      * A regex string to filter results by Rule name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The rule ids.
      */
-    readonly ruleIds?: string[];
+    ruleIds?: string[];
     /**
      * The status of the resource.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -96,4 +96,39 @@ export interface GetRulesResult {
     readonly ruleIds?: string[];
     readonly rules: outputs.alb.GetRulesRule[];
     readonly status?: string;
+}
+
+export function getRulesOutput(args?: GetRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesResult> {
+    return pulumi.output(args).apply(a => getRules(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRules.
+ */
+export interface GetRulesOutputArgs {
+    /**
+     * A list of Rule IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The listener ids.
+     */
+    listenerIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The load balancer ids.
+     */
+    loadBalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Rule name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The rule ids.
+     */
+    ruleIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The status of the resource.
+     */
+    status?: pulumi.Input<string>;
 }

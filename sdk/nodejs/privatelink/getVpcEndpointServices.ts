@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstPrivatelinkVpcEndpointServiceId = example.then(example => example.services[0].id);
+ * export const firstPrivatelinkVpcEndpointServiceId = example.then(example => example.services?[0]?.id);
  * ```
  */
 export function getVpcEndpointServices(args?: GetVpcEndpointServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointServicesResult> {
@@ -52,28 +52,28 @@ export interface GetVpcEndpointServicesArgs {
     /**
      * Whether to automatically accept terminal node connections..
      */
-    readonly autoAcceptConnection?: boolean;
+    autoAcceptConnection?: boolean;
     /**
      * A list of Vpc Endpoint Service IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Vpc Endpoint Service name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The business status of the terminal node service..
      */
-    readonly serviceBusinessStatus?: string;
+    serviceBusinessStatus?: string;
     /**
      * The Status of Vpc Endpoint Service.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The name of Vpc Endpoint Service.
      */
-    readonly vpcEndpointServiceName?: string;
+    vpcEndpointServiceName?: string;
 }
 
 /**
@@ -93,4 +93,39 @@ export interface GetVpcEndpointServicesResult {
     readonly services: outputs.privatelink.GetVpcEndpointServicesService[];
     readonly status?: string;
     readonly vpcEndpointServiceName?: string;
+}
+
+export function getVpcEndpointServicesOutput(args?: GetVpcEndpointServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointServicesResult> {
+    return pulumi.output(args).apply(a => getVpcEndpointServices(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVpcEndpointServices.
+ */
+export interface GetVpcEndpointServicesOutputArgs {
+    /**
+     * Whether to automatically accept terminal node connections..
+     */
+    autoAcceptConnection?: pulumi.Input<boolean>;
+    /**
+     * A list of Vpc Endpoint Service IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Vpc Endpoint Service name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The business status of the terminal node service..
+     */
+    serviceBusinessStatus?: pulumi.Input<string>;
+    /**
+     * The Status of Vpc Endpoint Service.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The name of Vpc Endpoint Service.
+     */
+    vpcEndpointServiceName?: pulumi.Input<string>;
 }

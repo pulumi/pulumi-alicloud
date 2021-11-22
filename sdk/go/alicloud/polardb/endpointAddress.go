@@ -41,7 +41,7 @@ import (
 // 			name = param
 // 		}
 // 		opt0 := creation
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -276,7 +276,7 @@ type EndpointAddressArrayInput interface {
 type EndpointAddressArray []EndpointAddressInput
 
 func (EndpointAddressArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EndpointAddress)(nil))
+	return reflect.TypeOf((*[]*EndpointAddress)(nil)).Elem()
 }
 
 func (i EndpointAddressArray) ToEndpointAddressArrayOutput() EndpointAddressArrayOutput {
@@ -301,7 +301,7 @@ type EndpointAddressMapInput interface {
 type EndpointAddressMap map[string]EndpointAddressInput
 
 func (EndpointAddressMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EndpointAddress)(nil))
+	return reflect.TypeOf((*map[string]*EndpointAddress)(nil)).Elem()
 }
 
 func (i EndpointAddressMap) ToEndpointAddressMapOutput() EndpointAddressMapOutput {
@@ -312,9 +312,7 @@ func (i EndpointAddressMap) ToEndpointAddressMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointAddressMapOutput)
 }
 
-type EndpointAddressOutput struct {
-	*pulumi.OutputState
-}
+type EndpointAddressOutput struct{ *pulumi.OutputState }
 
 func (EndpointAddressOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EndpointAddress)(nil))
@@ -333,14 +331,12 @@ func (o EndpointAddressOutput) ToEndpointAddressPtrOutput() EndpointAddressPtrOu
 }
 
 func (o EndpointAddressOutput) ToEndpointAddressPtrOutputWithContext(ctx context.Context) EndpointAddressPtrOutput {
-	return o.ApplyT(func(v EndpointAddress) *EndpointAddress {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointAddress) *EndpointAddress {
 		return &v
 	}).(EndpointAddressPtrOutput)
 }
 
-type EndpointAddressPtrOutput struct {
-	*pulumi.OutputState
-}
+type EndpointAddressPtrOutput struct{ *pulumi.OutputState }
 
 func (EndpointAddressPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EndpointAddress)(nil))
@@ -352,6 +348,16 @@ func (o EndpointAddressPtrOutput) ToEndpointAddressPtrOutput() EndpointAddressPt
 
 func (o EndpointAddressPtrOutput) ToEndpointAddressPtrOutputWithContext(ctx context.Context) EndpointAddressPtrOutput {
 	return o
+}
+
+func (o EndpointAddressPtrOutput) Elem() EndpointAddressOutput {
+	return o.ApplyT(func(v *EndpointAddress) EndpointAddress {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointAddress
+		return ret
+	}).(EndpointAddressOutput)
 }
 
 type EndpointAddressArrayOutput struct{ *pulumi.OutputState }
@@ -395,6 +401,10 @@ func (o EndpointAddressMapOutput) MapIndex(k pulumi.StringInput) EndpointAddress
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointAddressInput)(nil)).Elem(), &EndpointAddress{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointAddressPtrInput)(nil)).Elem(), &EndpointAddress{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointAddressArrayInput)(nil)).Elem(), EndpointAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointAddressMapInput)(nil)).Elem(), EndpointAddressMap{})
 	pulumi.RegisterOutputType(EndpointAddressOutput{})
 	pulumi.RegisterOutputType(EndpointAddressPtrOutput{})
 	pulumi.RegisterOutputType(EndpointAddressArrayOutput{})

@@ -156,35 +156,35 @@ export interface DedicatedHostGroupState {
     /**
      * AThe policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
      */
-    readonly allocationPolicy?: pulumi.Input<string>;
+    allocationPolicy?: pulumi.Input<string>;
     /**
      * The CPU overcommitment ratio of the dedicated cluster.Valid values: 100 to 300. Default value: 200.
      */
-    readonly cpuAllocationRatio?: pulumi.Input<number>;
+    cpuAllocationRatio?: pulumi.Input<number>;
     /**
      * The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
      */
-    readonly dedicatedHostGroupDesc?: pulumi.Input<string>;
+    dedicatedHostGroupDesc?: pulumi.Input<string>;
     /**
      * The Disk Allocation Ratio of the Dedicated Host Group.
      */
-    readonly diskAllocationRatio?: pulumi.Input<number>;
+    diskAllocationRatio?: pulumi.Input<number>;
     /**
      * Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
      */
-    readonly engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string>;
     /**
      * The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
      */
-    readonly hostReplacePolicy?: pulumi.Input<string>;
+    hostReplacePolicy?: pulumi.Input<string>;
     /**
      * The Memory Allocation Ratio of the Dedicated Host Group.
      */
-    readonly memAllocationRatio?: pulumi.Input<number>;
+    memAllocationRatio?: pulumi.Input<number>;
     /**
      * The virtual private cloud (VPC) ID of the dedicated cluster.
      */
-    readonly vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
 }
 
 /**
@@ -194,33 +194,33 @@ export interface DedicatedHostGroupArgs {
     /**
      * AThe policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
      */
-    readonly allocationPolicy?: pulumi.Input<string>;
+    allocationPolicy?: pulumi.Input<string>;
     /**
      * The CPU overcommitment ratio of the dedicated cluster.Valid values: 100 to 300. Default value: 200.
      */
-    readonly cpuAllocationRatio?: pulumi.Input<number>;
+    cpuAllocationRatio?: pulumi.Input<number>;
     /**
      * The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
      */
-    readonly dedicatedHostGroupDesc?: pulumi.Input<string>;
+    dedicatedHostGroupDesc?: pulumi.Input<string>;
     /**
      * The Disk Allocation Ratio of the Dedicated Host Group.
      */
-    readonly diskAllocationRatio?: pulumi.Input<number>;
+    diskAllocationRatio?: pulumi.Input<number>;
     /**
      * Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
      */
-    readonly engine: pulumi.Input<string>;
+    engine: pulumi.Input<string>;
     /**
      * The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
      */
-    readonly hostReplacePolicy?: pulumi.Input<string>;
+    hostReplacePolicy?: pulumi.Input<string>;
     /**
      * The Memory Allocation Ratio of the Dedicated Host Group.
      */
-    readonly memAllocationRatio?: pulumi.Input<number>;
+    memAllocationRatio?: pulumi.Input<number>;
     /**
      * The virtual private cloud (VPC) ID of the dedicated cluster.
      */
-    readonly vpcId: pulumi.Input<string>;
+    vpcId: pulumi.Input<string>;
 }

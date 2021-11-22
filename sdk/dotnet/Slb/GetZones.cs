@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Slb
 {
@@ -38,6 +39,34 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:slb/getZones:getZones", args ?? new GetZonesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides availability zones for SLB that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+        /// 
+        /// &gt; **NOTE:** Available in v1.73.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var zonesIds = Output.Create(AliCloud.Slb.GetZones.InvokeAsync());
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:slb/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -65,6 +94,34 @@ namespace Pulumi.AliCloud.Slb
         public string? OutputFile { get; set; }
 
         public GetZonesArgs()
+        {
+        }
+    }
+
+    public sealed class GetZonesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
+        /// </summary>
+        [Input("availableSlbAddressIpVersion")]
+        public Input<string>? AvailableSlbAddressIpVersion { get; set; }
+
+        /// <summary>
+        /// Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
+        /// </summary>
+        [Input("availableSlbAddressType")]
+        public Input<string>? AvailableSlbAddressType { get; set; }
+
+        /// <summary>
+        /// Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetZonesInvokeArgs()
         {
         }
     }

@@ -115,7 +115,7 @@ func (o AlarmEscalationsCriticalOutput) ToAlarmEscalationsCriticalPtrOutput() Al
 }
 
 func (o AlarmEscalationsCriticalOutput) ToAlarmEscalationsCriticalPtrOutputWithContext(ctx context.Context) AlarmEscalationsCriticalPtrOutput {
-	return o.ApplyT(func(v AlarmEscalationsCritical) *AlarmEscalationsCritical {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlarmEscalationsCritical) *AlarmEscalationsCritical {
 		return &v
 	}).(AlarmEscalationsCriticalPtrOutput)
 }
@@ -155,7 +155,13 @@ func (o AlarmEscalationsCriticalPtrOutput) ToAlarmEscalationsCriticalPtrOutputWi
 }
 
 func (o AlarmEscalationsCriticalPtrOutput) Elem() AlarmEscalationsCriticalOutput {
-	return o.ApplyT(func(v *AlarmEscalationsCritical) AlarmEscalationsCritical { return *v }).(AlarmEscalationsCriticalOutput)
+	return o.ApplyT(func(v *AlarmEscalationsCritical) AlarmEscalationsCritical {
+		if v != nil {
+			return *v
+		}
+		var ret AlarmEscalationsCritical
+		return ret
+	}).(AlarmEscalationsCriticalOutput)
 }
 
 // Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
@@ -303,7 +309,7 @@ func (o AlarmEscalationsInfoOutput) ToAlarmEscalationsInfoPtrOutput() AlarmEscal
 }
 
 func (o AlarmEscalationsInfoOutput) ToAlarmEscalationsInfoPtrOutputWithContext(ctx context.Context) AlarmEscalationsInfoPtrOutput {
-	return o.ApplyT(func(v AlarmEscalationsInfo) *AlarmEscalationsInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlarmEscalationsInfo) *AlarmEscalationsInfo {
 		return &v
 	}).(AlarmEscalationsInfoPtrOutput)
 }
@@ -343,7 +349,13 @@ func (o AlarmEscalationsInfoPtrOutput) ToAlarmEscalationsInfoPtrOutputWithContex
 }
 
 func (o AlarmEscalationsInfoPtrOutput) Elem() AlarmEscalationsInfoOutput {
-	return o.ApplyT(func(v *AlarmEscalationsInfo) AlarmEscalationsInfo { return *v }).(AlarmEscalationsInfoOutput)
+	return o.ApplyT(func(v *AlarmEscalationsInfo) AlarmEscalationsInfo {
+		if v != nil {
+			return *v
+		}
+		var ret AlarmEscalationsInfo
+		return ret
+	}).(AlarmEscalationsInfoOutput)
 }
 
 // Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
@@ -491,7 +503,7 @@ func (o AlarmEscalationsWarnOutput) ToAlarmEscalationsWarnPtrOutput() AlarmEscal
 }
 
 func (o AlarmEscalationsWarnOutput) ToAlarmEscalationsWarnPtrOutputWithContext(ctx context.Context) AlarmEscalationsWarnPtrOutput {
-	return o.ApplyT(func(v AlarmEscalationsWarn) *AlarmEscalationsWarn {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlarmEscalationsWarn) *AlarmEscalationsWarn {
 		return &v
 	}).(AlarmEscalationsWarnPtrOutput)
 }
@@ -531,7 +543,13 @@ func (o AlarmEscalationsWarnPtrOutput) ToAlarmEscalationsWarnPtrOutputWithContex
 }
 
 func (o AlarmEscalationsWarnPtrOutput) Elem() AlarmEscalationsWarnOutput {
-	return o.ApplyT(func(v *AlarmEscalationsWarn) AlarmEscalationsWarn { return *v }).(AlarmEscalationsWarnOutput)
+	return o.ApplyT(func(v *AlarmEscalationsWarn) AlarmEscalationsWarn {
+		if v != nil {
+			return *v
+		}
+		var ret AlarmEscalationsWarn
+		return ret
+	}).(AlarmEscalationsWarnOutput)
 }
 
 // Critical level alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
@@ -675,7 +693,7 @@ func (o GroupMetricRuleEscalationsOutput) ToGroupMetricRuleEscalationsPtrOutput(
 }
 
 func (o GroupMetricRuleEscalationsOutput) ToGroupMetricRuleEscalationsPtrOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsPtrOutput {
-	return o.ApplyT(func(v GroupMetricRuleEscalations) *GroupMetricRuleEscalations {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupMetricRuleEscalations) *GroupMetricRuleEscalations {
 		return &v
 	}).(GroupMetricRuleEscalationsPtrOutput)
 }
@@ -710,7 +728,13 @@ func (o GroupMetricRuleEscalationsPtrOutput) ToGroupMetricRuleEscalationsPtrOutp
 }
 
 func (o GroupMetricRuleEscalationsPtrOutput) Elem() GroupMetricRuleEscalationsOutput {
-	return o.ApplyT(func(v *GroupMetricRuleEscalations) GroupMetricRuleEscalations { return *v }).(GroupMetricRuleEscalationsOutput)
+	return o.ApplyT(func(v *GroupMetricRuleEscalations) GroupMetricRuleEscalations {
+		if v != nil {
+			return *v
+		}
+		var ret GroupMetricRuleEscalations
+		return ret
+	}).(GroupMetricRuleEscalationsOutput)
 }
 
 // The critical level.
@@ -848,7 +872,7 @@ func (o GroupMetricRuleEscalationsCriticalOutput) ToGroupMetricRuleEscalationsCr
 }
 
 func (o GroupMetricRuleEscalationsCriticalOutput) ToGroupMetricRuleEscalationsCriticalPtrOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsCriticalPtrOutput {
-	return o.ApplyT(func(v GroupMetricRuleEscalationsCritical) *GroupMetricRuleEscalationsCritical {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupMetricRuleEscalationsCritical) *GroupMetricRuleEscalationsCritical {
 		return &v
 	}).(GroupMetricRuleEscalationsCriticalPtrOutput)
 }
@@ -888,7 +912,13 @@ func (o GroupMetricRuleEscalationsCriticalPtrOutput) ToGroupMetricRuleEscalation
 }
 
 func (o GroupMetricRuleEscalationsCriticalPtrOutput) Elem() GroupMetricRuleEscalationsCriticalOutput {
-	return o.ApplyT(func(v *GroupMetricRuleEscalationsCritical) GroupMetricRuleEscalationsCritical { return *v }).(GroupMetricRuleEscalationsCriticalOutput)
+	return o.ApplyT(func(v *GroupMetricRuleEscalationsCritical) GroupMetricRuleEscalationsCritical {
+		if v != nil {
+			return *v
+		}
+		var ret GroupMetricRuleEscalationsCritical
+		return ret
+	}).(GroupMetricRuleEscalationsCriticalOutput)
 }
 
 // The comparison operator of the threshold for warn-level alerts.
@@ -1036,7 +1066,7 @@ func (o GroupMetricRuleEscalationsInfoOutput) ToGroupMetricRuleEscalationsInfoPt
 }
 
 func (o GroupMetricRuleEscalationsInfoOutput) ToGroupMetricRuleEscalationsInfoPtrOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsInfoPtrOutput {
-	return o.ApplyT(func(v GroupMetricRuleEscalationsInfo) *GroupMetricRuleEscalationsInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupMetricRuleEscalationsInfo) *GroupMetricRuleEscalationsInfo {
 		return &v
 	}).(GroupMetricRuleEscalationsInfoPtrOutput)
 }
@@ -1076,7 +1106,13 @@ func (o GroupMetricRuleEscalationsInfoPtrOutput) ToGroupMetricRuleEscalationsInf
 }
 
 func (o GroupMetricRuleEscalationsInfoPtrOutput) Elem() GroupMetricRuleEscalationsInfoOutput {
-	return o.ApplyT(func(v *GroupMetricRuleEscalationsInfo) GroupMetricRuleEscalationsInfo { return *v }).(GroupMetricRuleEscalationsInfoOutput)
+	return o.ApplyT(func(v *GroupMetricRuleEscalationsInfo) GroupMetricRuleEscalationsInfo {
+		if v != nil {
+			return *v
+		}
+		var ret GroupMetricRuleEscalationsInfo
+		return ret
+	}).(GroupMetricRuleEscalationsInfoOutput)
 }
 
 // The comparison operator of the threshold for warn-level alerts.
@@ -1224,7 +1260,7 @@ func (o GroupMetricRuleEscalationsWarnOutput) ToGroupMetricRuleEscalationsWarnPt
 }
 
 func (o GroupMetricRuleEscalationsWarnOutput) ToGroupMetricRuleEscalationsWarnPtrOutputWithContext(ctx context.Context) GroupMetricRuleEscalationsWarnPtrOutput {
-	return o.ApplyT(func(v GroupMetricRuleEscalationsWarn) *GroupMetricRuleEscalationsWarn {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupMetricRuleEscalationsWarn) *GroupMetricRuleEscalationsWarn {
 		return &v
 	}).(GroupMetricRuleEscalationsWarnPtrOutput)
 }
@@ -1264,7 +1300,13 @@ func (o GroupMetricRuleEscalationsWarnPtrOutput) ToGroupMetricRuleEscalationsWar
 }
 
 func (o GroupMetricRuleEscalationsWarnPtrOutput) Elem() GroupMetricRuleEscalationsWarnOutput {
-	return o.ApplyT(func(v *GroupMetricRuleEscalationsWarn) GroupMetricRuleEscalationsWarn { return *v }).(GroupMetricRuleEscalationsWarnOutput)
+	return o.ApplyT(func(v *GroupMetricRuleEscalationsWarn) GroupMetricRuleEscalationsWarn {
+		if v != nil {
+			return *v
+		}
+		var ret GroupMetricRuleEscalationsWarn
+		return ret
+	}).(GroupMetricRuleEscalationsWarnOutput)
 }
 
 // The comparison operator of the threshold for warn-level alerts.
@@ -1552,7 +1594,7 @@ func (o MetricRuleTemplateAlertTemplateEscalationsOutput) ToMetricRuleTemplateAl
 }
 
 func (o MetricRuleTemplateAlertTemplateEscalationsOutput) ToMetricRuleTemplateAlertTemplateEscalationsPtrOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsPtrOutput {
-	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalations) *MetricRuleTemplateAlertTemplateEscalations {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricRuleTemplateAlertTemplateEscalations) *MetricRuleTemplateAlertTemplateEscalations {
 		return &v
 	}).(MetricRuleTemplateAlertTemplateEscalationsPtrOutput)
 }
@@ -1594,7 +1636,11 @@ func (o MetricRuleTemplateAlertTemplateEscalationsPtrOutput) ToMetricRuleTemplat
 
 func (o MetricRuleTemplateAlertTemplateEscalationsPtrOutput) Elem() MetricRuleTemplateAlertTemplateEscalationsOutput {
 	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalations) MetricRuleTemplateAlertTemplateEscalations {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MetricRuleTemplateAlertTemplateEscalations
+		return ret
 	}).(MetricRuleTemplateAlertTemplateEscalationsOutput)
 }
 
@@ -1733,7 +1779,7 @@ func (o MetricRuleTemplateAlertTemplateEscalationsCriticalOutput) ToMetricRuleTe
 }
 
 func (o MetricRuleTemplateAlertTemplateEscalationsCriticalOutput) ToMetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput {
-	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsCritical) *MetricRuleTemplateAlertTemplateEscalationsCritical {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricRuleTemplateAlertTemplateEscalationsCritical) *MetricRuleTemplateAlertTemplateEscalationsCritical {
 		return &v
 	}).(MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput)
 }
@@ -1774,7 +1820,11 @@ func (o MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput) ToMetricRul
 
 func (o MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput) Elem() MetricRuleTemplateAlertTemplateEscalationsCriticalOutput {
 	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsCritical) MetricRuleTemplateAlertTemplateEscalationsCritical {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MetricRuleTemplateAlertTemplateEscalationsCritical
+		return ret
 	}).(MetricRuleTemplateAlertTemplateEscalationsCriticalOutput)
 }
 
@@ -1923,7 +1973,7 @@ func (o MetricRuleTemplateAlertTemplateEscalationsInfoOutput) ToMetricRuleTempla
 }
 
 func (o MetricRuleTemplateAlertTemplateEscalationsInfoOutput) ToMetricRuleTemplateAlertTemplateEscalationsInfoPtrOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput {
-	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsInfo) *MetricRuleTemplateAlertTemplateEscalationsInfo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricRuleTemplateAlertTemplateEscalationsInfo) *MetricRuleTemplateAlertTemplateEscalationsInfo {
 		return &v
 	}).(MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput)
 }
@@ -1964,7 +2014,11 @@ func (o MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput) ToMetricRuleTem
 
 func (o MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput) Elem() MetricRuleTemplateAlertTemplateEscalationsInfoOutput {
 	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsInfo) MetricRuleTemplateAlertTemplateEscalationsInfo {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MetricRuleTemplateAlertTemplateEscalationsInfo
+		return ret
 	}).(MetricRuleTemplateAlertTemplateEscalationsInfoOutput)
 }
 
@@ -2113,7 +2167,7 @@ func (o MetricRuleTemplateAlertTemplateEscalationsWarnOutput) ToMetricRuleTempla
 }
 
 func (o MetricRuleTemplateAlertTemplateEscalationsWarnOutput) ToMetricRuleTemplateAlertTemplateEscalationsWarnPtrOutputWithContext(ctx context.Context) MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput {
-	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsWarn) *MetricRuleTemplateAlertTemplateEscalationsWarn {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricRuleTemplateAlertTemplateEscalationsWarn) *MetricRuleTemplateAlertTemplateEscalationsWarn {
 		return &v
 	}).(MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput)
 }
@@ -2154,7 +2208,11 @@ func (o MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput) ToMetricRuleTem
 
 func (o MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput) Elem() MetricRuleTemplateAlertTemplateEscalationsWarnOutput {
 	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsWarn) MetricRuleTemplateAlertTemplateEscalationsWarn {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret MetricRuleTemplateAlertTemplateEscalationsWarn
+		return ret
 	}).(MetricRuleTemplateAlertTemplateEscalationsWarnOutput)
 }
 
@@ -4717,6 +4775,66 @@ func (o GetMonitorGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetMonitorGro
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEscalationsCriticalInput)(nil)).Elem(), AlarmEscalationsCriticalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEscalationsCriticalPtrInput)(nil)).Elem(), AlarmEscalationsCriticalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEscalationsInfoInput)(nil)).Elem(), AlarmEscalationsInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEscalationsInfoPtrInput)(nil)).Elem(), AlarmEscalationsInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEscalationsWarnInput)(nil)).Elem(), AlarmEscalationsWarnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEscalationsWarnPtrInput)(nil)).Elem(), AlarmEscalationsWarnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleEscalationsInput)(nil)).Elem(), GroupMetricRuleEscalationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleEscalationsPtrInput)(nil)).Elem(), GroupMetricRuleEscalationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleEscalationsCriticalInput)(nil)).Elem(), GroupMetricRuleEscalationsCriticalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleEscalationsCriticalPtrInput)(nil)).Elem(), GroupMetricRuleEscalationsCriticalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleEscalationsInfoInput)(nil)).Elem(), GroupMetricRuleEscalationsInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleEscalationsInfoPtrInput)(nil)).Elem(), GroupMetricRuleEscalationsInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleEscalationsWarnInput)(nil)).Elem(), GroupMetricRuleEscalationsWarnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleEscalationsWarnPtrInput)(nil)).Elem(), GroupMetricRuleEscalationsWarnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRuleTemplateAlertTemplateInput)(nil)).Elem(), MetricRuleTemplateAlertTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRuleTemplateAlertTemplateArrayInput)(nil)).Elem(), MetricRuleTemplateAlertTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRuleTemplateAlertTemplateEscalationsInput)(nil)).Elem(), MetricRuleTemplateAlertTemplateEscalationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRuleTemplateAlertTemplateEscalationsPtrInput)(nil)).Elem(), MetricRuleTemplateAlertTemplateEscalationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRuleTemplateAlertTemplateEscalationsCriticalInput)(nil)).Elem(), MetricRuleTemplateAlertTemplateEscalationsCriticalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRuleTemplateAlertTemplateEscalationsCriticalPtrInput)(nil)).Elem(), MetricRuleTemplateAlertTemplateEscalationsCriticalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRuleTemplateAlertTemplateEscalationsInfoInput)(nil)).Elem(), MetricRuleTemplateAlertTemplateEscalationsInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRuleTemplateAlertTemplateEscalationsInfoPtrInput)(nil)).Elem(), MetricRuleTemplateAlertTemplateEscalationsInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRuleTemplateAlertTemplateEscalationsWarnInput)(nil)).Elem(), MetricRuleTemplateAlertTemplateEscalationsWarnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRuleTemplateAlertTemplateEscalationsWarnPtrInput)(nil)).Elem(), MetricRuleTemplateAlertTemplateEscalationsWarnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorGroupInstancesInstanceInput)(nil)).Elem(), MonitorGroupInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorGroupInstancesInstanceArrayInput)(nil)).Elem(), MonitorGroupInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteMonitorIspCityInput)(nil)).Elem(), SiteMonitorIspCityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteMonitorIspCityArrayInput)(nil)).Elem(), SiteMonitorIspCityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmContactGroupsGroupInput)(nil)).Elem(), GetAlarmContactGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmContactGroupsGroupArrayInput)(nil)).Elem(), GetAlarmContactGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmContactsContactInput)(nil)).Elem(), GetAlarmContactsContactArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmContactsContactArrayInput)(nil)).Elem(), GetAlarmContactsContactArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMetricRulesRuleInput)(nil)).Elem(), GetGroupMetricRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMetricRulesRuleArrayInput)(nil)).Elem(), GetGroupMetricRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMetricRulesRuleEscalationInput)(nil)).Elem(), GetGroupMetricRulesRuleEscalationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMetricRulesRuleEscalationArrayInput)(nil)).Elem(), GetGroupMetricRulesRuleEscalationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMetricRulesRuleEscalationCriticalInput)(nil)).Elem(), GetGroupMetricRulesRuleEscalationCriticalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMetricRulesRuleEscalationCriticalArrayInput)(nil)).Elem(), GetGroupMetricRulesRuleEscalationCriticalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMetricRulesRuleEscalationInfoInput)(nil)).Elem(), GetGroupMetricRulesRuleEscalationInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMetricRulesRuleEscalationInfoArrayInput)(nil)).Elem(), GetGroupMetricRulesRuleEscalationInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMetricRulesRuleEscalationWarnInput)(nil)).Elem(), GetGroupMetricRulesRuleEscalationWarnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMetricRulesRuleEscalationWarnArrayInput)(nil)).Elem(), GetGroupMetricRulesRuleEscalationWarnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricRuleTemplatesTemplateInput)(nil)).Elem(), GetMetricRuleTemplatesTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricRuleTemplatesTemplateArrayInput)(nil)).Elem(), GetMetricRuleTemplatesTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricRuleTemplatesTemplateAlertTemplateInput)(nil)).Elem(), GetMetricRuleTemplatesTemplateAlertTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricRuleTemplatesTemplateAlertTemplateArrayInput)(nil)).Elem(), GetMetricRuleTemplatesTemplateAlertTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricRuleTemplatesTemplateAlertTemplateEscalationInput)(nil)).Elem(), GetMetricRuleTemplatesTemplateAlertTemplateEscalationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayInput)(nil)).Elem(), GetMetricRuleTemplatesTemplateAlertTemplateEscalationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalInput)(nil)).Elem(), GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayInput)(nil)).Elem(), GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoInput)(nil)).Elem(), GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayInput)(nil)).Elem(), GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnInput)(nil)).Elem(), GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayInput)(nil)).Elem(), GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorGroupInstancesInstanceInput)(nil)).Elem(), GetMonitorGroupInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorGroupInstancesInstanceArrayInput)(nil)).Elem(), GetMonitorGroupInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorGroupInstancesInstanceInstanceInput)(nil)).Elem(), GetMonitorGroupInstancesInstanceInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorGroupInstancesInstanceInstanceArrayInput)(nil)).Elem(), GetMonitorGroupInstancesInstanceInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorGroupsGroupInput)(nil)).Elem(), GetMonitorGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorGroupsGroupArrayInput)(nil)).Elem(), GetMonitorGroupsGroupArray{})
 	pulumi.RegisterOutputType(AlarmEscalationsCriticalOutput{})
 	pulumi.RegisterOutputType(AlarmEscalationsCriticalPtrOutput{})
 	pulumi.RegisterOutputType(AlarmEscalationsInfoOutput{})

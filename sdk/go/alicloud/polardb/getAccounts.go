@@ -4,6 +4,9 @@
 package polardb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,4 +74,67 @@ type GetAccountsResult struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// Account name of the cluster.
 	Names []string `pulumi:"names"`
+}
+
+func GetAccountsOutput(ctx *pulumi.Context, args GetAccountsOutputArgs, opts ...pulumi.InvokeOption) GetAccountsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAccountsResult, error) {
+			args := v.(GetAccountsArgs)
+			r, err := GetAccounts(ctx, &args, opts...)
+			return *r, err
+		}).(GetAccountsResultOutput)
+}
+
+// A collection of arguments for invoking getAccounts.
+type GetAccountsOutputArgs struct {
+	// The polarDB cluster ID.
+	DbClusterId pulumi.StringInput `pulumi:"dbClusterId"`
+	// A regex string to filter results by account name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+}
+
+func (GetAccountsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAccounts.
+type GetAccountsResultOutput struct{ *pulumi.OutputState }
+
+func (GetAccountsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountsResult)(nil)).Elem()
+}
+
+func (o GetAccountsResultOutput) ToGetAccountsResultOutput() GetAccountsResultOutput {
+	return o
+}
+
+func (o GetAccountsResultOutput) ToGetAccountsResultOutputWithContext(ctx context.Context) GetAccountsResultOutput {
+	return o
+}
+
+// A list of PolarDB cluster accounts. Each element contains the following attributes:
+func (o GetAccountsResultOutput) Accounts() GetAccountsAccountArrayOutput {
+	return o.ApplyT(func(v GetAccountsResult) []GetAccountsAccount { return v.Accounts }).(GetAccountsAccountArrayOutput)
+}
+
+func (o GetAccountsResultOutput) DbClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsResult) string { return v.DbClusterId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAccountsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAccountsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// Account name of the cluster.
+func (o GetAccountsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAccountsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAccountsResultOutput{})
 }

@@ -13,6 +13,7 @@ __all__ = [
     'GetSnatEntriesResult',
     'AwaitableGetSnatEntriesResult',
     'get_snat_entries',
+    'get_snat_entries_output',
 ]
 
 @pulumi.output_type
@@ -248,3 +249,63 @@ def get_snat_entries(ids: Optional[Sequence[str]] = None,
         source_cidr=__ret__.source_cidr,
         source_vswitch_id=__ret__.source_vswitch_id,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_snat_entries)
+def get_snat_entries_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                            snat_entry_name: Optional[pulumi.Input[Optional[str]]] = None,
+                            snat_ip: Optional[pulumi.Input[Optional[str]]] = None,
+                            snat_table_id: Optional[pulumi.Input[str]] = None,
+                            source_cidr: Optional[pulumi.Input[Optional[str]]] = None,
+                            source_vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
+                            status: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnatEntriesResult]:
+    """
+    This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
+
+    > **NOTE:** Available in 1.37.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "snat-entry-example-name"
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
+    foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/12")
+    foo_switch = alicloud.vpc.Switch("fooSwitch",
+        vpc_id=foo_network.id,
+        cidr_block="172.16.0.0/21",
+        availability_zone=default.zones[0].id,
+        vswitch_name=name)
+    foo_nat_gateway = alicloud.vpc.NatGateway("fooNatGateway",
+        vpc_id=foo_network.id,
+        specification="Small")
+    foo_eip_address = alicloud.ecs.EipAddress("fooEipAddress", address_name=name)
+    foo_eip_association = alicloud.ecs.EipAssociation("fooEipAssociation",
+        allocation_id=foo_eip_address.id,
+        instance_id=foo_nat_gateway.id)
+    foo_snat_entry = alicloud.vpc.SnatEntry("fooSnatEntry",
+        snat_table_id=foo_nat_gateway.snat_table_ids,
+        source_vswitch_id=foo_switch.id,
+        snat_ip=foo_eip_address.ip_address)
+    foo_snat_entries = foo_snat_entry.snat_table_id.apply(lambda snat_table_id: alicloud.vpc.get_snat_entries(snat_table_id=snat_table_id))
+    ```
+
+
+    :param Sequence[str] ids: A list of Snat Entries IDs.
+    :param str name_regex: A regex string to filter results by the resource name.
+    :param str snat_entry_name: The name of snat entry.
+    :param str snat_ip: The public IP of the Snat Entry.
+    :param str snat_table_id: The ID of the Snat table.
+    :param str source_cidr: The source CIDR block of the Snat Entry.
+    :param str source_vswitch_id: The source vswitch ID.
+    :param str status: The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
+    """
+    ...

@@ -703,6 +703,16 @@ func (o GetProductsProductArrayOutput) Index(i pulumi.IntInput) GetProductsProdu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProductProductInput)(nil)).Elem(), GetProductProductArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProductProductArrayInput)(nil)).Elem(), GetProductProductArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProductProductSkusInput)(nil)).Elem(), GetProductProductSkusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProductProductSkusArrayInput)(nil)).Elem(), GetProductProductSkusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProductProductSkusImageInput)(nil)).Elem(), GetProductProductSkusImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProductProductSkusImageArrayInput)(nil)).Elem(), GetProductProductSkusImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProductProductSkusPackageVersionInput)(nil)).Elem(), GetProductProductSkusPackageVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProductProductSkusPackageVersionArrayInput)(nil)).Elem(), GetProductProductSkusPackageVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProductsProductInput)(nil)).Elem(), GetProductsProductArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProductsProductArrayInput)(nil)).Elem(), GetProductsProductArray{})
 	pulumi.RegisterOutputType(GetProductProductOutput{})
 	pulumi.RegisterOutputType(GetProductProductArrayOutput{})
 	pulumi.RegisterOutputType(GetProductProductSkusOutput{})

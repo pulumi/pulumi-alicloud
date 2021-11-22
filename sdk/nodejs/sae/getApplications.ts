@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * const vsw = new alicloud.vpc.Switch("vsw", {
  *     vpcId: vpc.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultNamespace = new alicloud.sae.Namespace("defaultNamespace", {
@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  * const defaultApplications = defaultApplication.id.apply(id => alicloud.sae.getApplications({
  *     ids: [id],
  * }));
- * export const saeApplicationId = defaultApplications.applications[0].id;
+ * export const saeApplicationId = defaultApplications.apply(defaultApplications => defaultApplications.applications?[0]?.id);
  * ```
  */
 export function getApplications(args?: GetApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationsResult> {
@@ -86,40 +86,40 @@ export interface GetApplicationsArgs {
     /**
      * Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
      */
-    readonly appName?: string;
+    appName?: string;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * The field type. Valid values:`appName`, `appIds`, `slbIps`, `instanceIps`
      */
-    readonly fieldType?: string;
+    fieldType?: string;
     /**
      * The field value.
      */
-    readonly fieldValue?: string;
+    fieldValue?: string;
     /**
      * A list of Application IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
      */
-    readonly namespaceId?: string;
+    namespaceId?: string;
     /**
      * The order by.Valid values:`running`,`instances`.
      */
-    readonly orderBy?: string;
-    readonly outputFile?: string;
+    orderBy?: string;
+    outputFile?: string;
     /**
      * The reverse.
      */
-    readonly reverse?: boolean;
+    reverse?: boolean;
     /**
      * The status of the resource.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -141,4 +141,51 @@ export interface GetApplicationsResult {
     readonly outputFile?: string;
     readonly reverse?: boolean;
     readonly status?: string;
+}
+
+export function getApplicationsOutput(args?: GetApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationsResult> {
+    return pulumi.output(args).apply(a => getApplications(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getApplications.
+ */
+export interface GetApplicationsOutputArgs {
+    /**
+     * Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
+     */
+    appName?: pulumi.Input<string>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * The field type. Valid values:`appName`, `appIds`, `slbIps`, `instanceIps`
+     */
+    fieldType?: pulumi.Input<string>;
+    /**
+     * The field value.
+     */
+    fieldValue?: pulumi.Input<string>;
+    /**
+     * A list of Application IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
+     */
+    namespaceId?: pulumi.Input<string>;
+    /**
+     * The order by.Valid values:`running`,`instances`.
+     */
+    orderBy?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The reverse.
+     */
+    reverse?: pulumi.Input<boolean>;
+    /**
+     * The status of the resource.
+     */
+    status?: pulumi.Input<string>;
 }

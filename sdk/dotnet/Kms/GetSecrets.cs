@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Kms
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Kms
         ///                 { "k-bb", "v-bb" },
         ///             },
         ///         }));
-        ///         this.FirstSecretId = kmsSecretsDs.Apply(kmsSecretsDs =&gt; kmsSecretsDs.Secrets[0].Id);
+        ///         this.FirstSecretId = kmsSecretsDs.Apply(kmsSecretsDs =&gt; kmsSecretsDs.Secrets?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstSecretId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         public static Task<GetSecretsResult> InvokeAsync(GetSecretsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecretsResult>("alicloud:kms/getSecrets:getSecrets", args ?? new GetSecretsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
+        ///  
+        /// &gt; **NOTE:** Available in v1.86.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var kmsSecretsDs = Output.Create(AliCloud.Kms.GetSecrets.InvokeAsync(new AliCloud.Kms.GetSecretsArgs
+        ///         {
+        ///             FetchTags = true,
+        ///             NameRegex = "name_regex",
+        ///             Tags = 
+        ///             {
+        ///                 { "k-aa", "v-aa" },
+        ///                 { "k-bb", "v-bb" },
+        ///             },
+        ///         }));
+        ///         this.FirstSecretId = kmsSecretsDs.Apply(kmsSecretsDs =&gt; kmsSecretsDs.Secrets?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstSecretId")]
+        ///     public Output&lt;string&gt; FirstSecretId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSecretsResult> Invoke(GetSecretsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSecretsResult>("alicloud:kms/getSecrets:getSecrets", args ?? new GetSecretsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -107,6 +148,64 @@ namespace Pulumi.AliCloud.Kms
         }
 
         public GetSecretsArgs()
+        {
+        }
+    }
+
+    public sealed class GetSecretsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Default to `false`. Set it to true can output more details.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        /// <summary>
+        /// Whether to include the predetermined resource tag in the return value. Default to `false`.
+        /// </summary>
+        [Input("fetchTags")]
+        public Input<bool>? FetchTags { get; set; }
+
+        /// <summary>
+        /// Credential filter. It is composed of Key-Values ​​key-value pairs, the length is 0~1. When using a tag key to filter resources, the number of resources queried cannot exceed 4000.
+        /// </summary>
+        [Input("filters")]
+        public Input<string>? Filters { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of KMS Secret ids. The value is same as KMS secret_name.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter the results by the KMS secret_name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        public GetSecretsInvokeArgs()
         {
         }
     }

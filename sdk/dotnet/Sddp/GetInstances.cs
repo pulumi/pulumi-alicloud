@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Sddp
 {
@@ -31,7 +32,7 @@ namespace Pulumi.AliCloud.Sddp
         ///     public MyStack()
         ///     {
         ///         var @default = Output.Create(AliCloud.Sddp.GetInstances.InvokeAsync());
-        ///         this.SddpInstanceId = @default.Apply(@default =&gt; @default.Instances[0]);
+        ///         this.SddpInstanceId = @default.Apply(@default =&gt; @default.Instances?[0]);
         ///     }
         /// 
         ///     [Output("sddpInstanceId")]
@@ -43,6 +44,39 @@ namespace Pulumi.AliCloud.Sddp
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:sddp/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Sddp Instances of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Sddp.GetInstances.InvokeAsync());
+        ///         this.SddpInstanceId = @default.Apply(@default =&gt; @default.Instances?[0]);
+        ///     }
+        /// 
+        ///     [Output("sddpInstanceId")]
+        ///     public Output&lt;string&gt; SddpInstanceId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:sddp/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -52,6 +86,16 @@ namespace Pulumi.AliCloud.Sddp
         public string? OutputFile { get; set; }
 
         public GetInstancesArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetInstancesInvokeArgs()
         {
         }
     }

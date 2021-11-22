@@ -188,7 +188,7 @@ type StorageBundleArrayInput interface {
 type StorageBundleArray []StorageBundleInput
 
 func (StorageBundleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*StorageBundle)(nil))
+	return reflect.TypeOf((*[]*StorageBundle)(nil)).Elem()
 }
 
 func (i StorageBundleArray) ToStorageBundleArrayOutput() StorageBundleArrayOutput {
@@ -213,7 +213,7 @@ type StorageBundleMapInput interface {
 type StorageBundleMap map[string]StorageBundleInput
 
 func (StorageBundleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*StorageBundle)(nil))
+	return reflect.TypeOf((*map[string]*StorageBundle)(nil)).Elem()
 }
 
 func (i StorageBundleMap) ToStorageBundleMapOutput() StorageBundleMapOutput {
@@ -224,9 +224,7 @@ func (i StorageBundleMap) ToStorageBundleMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(StorageBundleMapOutput)
 }
 
-type StorageBundleOutput struct {
-	*pulumi.OutputState
-}
+type StorageBundleOutput struct{ *pulumi.OutputState }
 
 func (StorageBundleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*StorageBundle)(nil))
@@ -245,14 +243,12 @@ func (o StorageBundleOutput) ToStorageBundlePtrOutput() StorageBundlePtrOutput {
 }
 
 func (o StorageBundleOutput) ToStorageBundlePtrOutputWithContext(ctx context.Context) StorageBundlePtrOutput {
-	return o.ApplyT(func(v StorageBundle) *StorageBundle {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageBundle) *StorageBundle {
 		return &v
 	}).(StorageBundlePtrOutput)
 }
 
-type StorageBundlePtrOutput struct {
-	*pulumi.OutputState
-}
+type StorageBundlePtrOutput struct{ *pulumi.OutputState }
 
 func (StorageBundlePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**StorageBundle)(nil))
@@ -264,6 +260,16 @@ func (o StorageBundlePtrOutput) ToStorageBundlePtrOutput() StorageBundlePtrOutpu
 
 func (o StorageBundlePtrOutput) ToStorageBundlePtrOutputWithContext(ctx context.Context) StorageBundlePtrOutput {
 	return o
+}
+
+func (o StorageBundlePtrOutput) Elem() StorageBundleOutput {
+	return o.ApplyT(func(v *StorageBundle) StorageBundle {
+		if v != nil {
+			return *v
+		}
+		var ret StorageBundle
+		return ret
+	}).(StorageBundleOutput)
 }
 
 type StorageBundleArrayOutput struct{ *pulumi.OutputState }
@@ -307,6 +313,10 @@ func (o StorageBundleMapOutput) MapIndex(k pulumi.StringInput) StorageBundleOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBundleInput)(nil)).Elem(), &StorageBundle{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBundlePtrInput)(nil)).Elem(), &StorageBundle{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBundleArrayInput)(nil)).Elem(), StorageBundleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageBundleMapInput)(nil)).Elem(), StorageBundleMap{})
 	pulumi.RegisterOutputType(StorageBundleOutput{})
 	pulumi.RegisterOutputType(StorageBundlePtrOutput{})
 	pulumi.RegisterOutputType(StorageBundleArrayOutput{})

@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * const cassandra = pulumi.output(alicloud.cassandra.getDataCenters({
  *     clusterId: "cds-xxxxx",
  *     nameRegex: "tf_testAccCassandra_dc",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getDataCenters(args: GetDataCentersArgs, opts?: pulumi.InvokeOptions): Promise<GetDataCentersResult> {
@@ -46,16 +46,16 @@ export interface GetDataCentersArgs {
     /**
      * The cluster id of dataCenters belongs to.
      */
-    readonly clusterId: string;
+    clusterId: string;
     /**
      * The list of Cassandra data center ids.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to apply to the cluster name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -84,4 +84,27 @@ export interface GetDataCentersResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getDataCentersOutput(args: GetDataCentersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataCentersResult> {
+    return pulumi.output(args).apply(a => getDataCenters(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDataCenters.
+ */
+export interface GetDataCentersOutputArgs {
+    /**
+     * The cluster id of dataCenters belongs to.
+     */
+    clusterId: pulumi.Input<string>;
+    /**
+     * The list of Cassandra data center ids.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to apply to the cluster name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

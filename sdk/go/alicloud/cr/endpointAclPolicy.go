@@ -199,7 +199,7 @@ type EndpointAclPolicyArrayInput interface {
 type EndpointAclPolicyArray []EndpointAclPolicyInput
 
 func (EndpointAclPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EndpointAclPolicy)(nil))
+	return reflect.TypeOf((*[]*EndpointAclPolicy)(nil)).Elem()
 }
 
 func (i EndpointAclPolicyArray) ToEndpointAclPolicyArrayOutput() EndpointAclPolicyArrayOutput {
@@ -224,7 +224,7 @@ type EndpointAclPolicyMapInput interface {
 type EndpointAclPolicyMap map[string]EndpointAclPolicyInput
 
 func (EndpointAclPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EndpointAclPolicy)(nil))
+	return reflect.TypeOf((*map[string]*EndpointAclPolicy)(nil)).Elem()
 }
 
 func (i EndpointAclPolicyMap) ToEndpointAclPolicyMapOutput() EndpointAclPolicyMapOutput {
@@ -235,9 +235,7 @@ func (i EndpointAclPolicyMap) ToEndpointAclPolicyMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointAclPolicyMapOutput)
 }
 
-type EndpointAclPolicyOutput struct {
-	*pulumi.OutputState
-}
+type EndpointAclPolicyOutput struct{ *pulumi.OutputState }
 
 func (EndpointAclPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EndpointAclPolicy)(nil))
@@ -256,14 +254,12 @@ func (o EndpointAclPolicyOutput) ToEndpointAclPolicyPtrOutput() EndpointAclPolic
 }
 
 func (o EndpointAclPolicyOutput) ToEndpointAclPolicyPtrOutputWithContext(ctx context.Context) EndpointAclPolicyPtrOutput {
-	return o.ApplyT(func(v EndpointAclPolicy) *EndpointAclPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointAclPolicy) *EndpointAclPolicy {
 		return &v
 	}).(EndpointAclPolicyPtrOutput)
 }
 
-type EndpointAclPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type EndpointAclPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (EndpointAclPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EndpointAclPolicy)(nil))
@@ -275,6 +271,16 @@ func (o EndpointAclPolicyPtrOutput) ToEndpointAclPolicyPtrOutput() EndpointAclPo
 
 func (o EndpointAclPolicyPtrOutput) ToEndpointAclPolicyPtrOutputWithContext(ctx context.Context) EndpointAclPolicyPtrOutput {
 	return o
+}
+
+func (o EndpointAclPolicyPtrOutput) Elem() EndpointAclPolicyOutput {
+	return o.ApplyT(func(v *EndpointAclPolicy) EndpointAclPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointAclPolicy
+		return ret
+	}).(EndpointAclPolicyOutput)
 }
 
 type EndpointAclPolicyArrayOutput struct{ *pulumi.OutputState }
@@ -318,6 +324,10 @@ func (o EndpointAclPolicyMapOutput) MapIndex(k pulumi.StringInput) EndpointAclPo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointAclPolicyInput)(nil)).Elem(), &EndpointAclPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointAclPolicyPtrInput)(nil)).Elem(), &EndpointAclPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointAclPolicyArrayInput)(nil)).Elem(), EndpointAclPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointAclPolicyMapInput)(nil)).Elem(), EndpointAclPolicyMap{})
 	pulumi.RegisterOutputType(EndpointAclPolicyOutput{})
 	pulumi.RegisterOutputType(EndpointAclPolicyPtrOutput{})
 	pulumi.RegisterOutputType(EndpointAclPolicyArrayOutput{})

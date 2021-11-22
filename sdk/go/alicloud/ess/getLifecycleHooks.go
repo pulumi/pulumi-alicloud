@@ -4,6 +4,9 @@
 package ess
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,4 +74,80 @@ type GetLifecycleHooksResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// ID of the scaling group.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
+}
+
+func GetLifecycleHooksOutput(ctx *pulumi.Context, args GetLifecycleHooksOutputArgs, opts ...pulumi.InvokeOption) GetLifecycleHooksResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetLifecycleHooksResult, error) {
+			args := v.(GetLifecycleHooksArgs)
+			r, err := GetLifecycleHooks(ctx, &args, opts...)
+			return *r, err
+		}).(GetLifecycleHooksResultOutput)
+}
+
+// A collection of arguments for invoking getLifecycleHooks.
+type GetLifecycleHooksOutputArgs struct {
+	// A list of lifecycle hook IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter resulting lifecycle hook by name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Scaling group id the lifecycle hooks belong to.
+	ScalingGroupId pulumi.StringPtrInput `pulumi:"scalingGroupId"`
+}
+
+func (GetLifecycleHooksOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLifecycleHooksArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getLifecycleHooks.
+type GetLifecycleHooksResultOutput struct{ *pulumi.OutputState }
+
+func (GetLifecycleHooksResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLifecycleHooksResult)(nil)).Elem()
+}
+
+func (o GetLifecycleHooksResultOutput) ToGetLifecycleHooksResultOutput() GetLifecycleHooksResultOutput {
+	return o
+}
+
+func (o GetLifecycleHooksResultOutput) ToGetLifecycleHooksResultOutputWithContext(ctx context.Context) GetLifecycleHooksResultOutput {
+	return o
+}
+
+// A list of lifecycle hooks. Each element contains the following attributes:
+func (o GetLifecycleHooksResultOutput) Hooks() GetLifecycleHooksHookArrayOutput {
+	return o.ApplyT(func(v GetLifecycleHooksResult) []GetLifecycleHooksHook { return v.Hooks }).(GetLifecycleHooksHookArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetLifecycleHooksResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLifecycleHooksResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of lifecycle hook ids.
+func (o GetLifecycleHooksResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLifecycleHooksResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetLifecycleHooksResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetLifecycleHooksResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of lifecycle hook names.
+func (o GetLifecycleHooksResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLifecycleHooksResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetLifecycleHooksResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetLifecycleHooksResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// ID of the scaling group.
+func (o GetLifecycleHooksResultOutput) ScalingGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetLifecycleHooksResult) *string { return v.ScalingGroupId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetLifecycleHooksResultOutput{})
 }

@@ -246,7 +246,7 @@ type VpcEndpointArrayInput interface {
 type VpcEndpointArray []VpcEndpointInput
 
 func (VpcEndpointArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*VpcEndpoint)(nil))
+	return reflect.TypeOf((*[]*VpcEndpoint)(nil)).Elem()
 }
 
 func (i VpcEndpointArray) ToVpcEndpointArrayOutput() VpcEndpointArrayOutput {
@@ -271,7 +271,7 @@ type VpcEndpointMapInput interface {
 type VpcEndpointMap map[string]VpcEndpointInput
 
 func (VpcEndpointMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*VpcEndpoint)(nil))
+	return reflect.TypeOf((*map[string]*VpcEndpoint)(nil)).Elem()
 }
 
 func (i VpcEndpointMap) ToVpcEndpointMapOutput() VpcEndpointMapOutput {
@@ -282,9 +282,7 @@ func (i VpcEndpointMap) ToVpcEndpointMapOutputWithContext(ctx context.Context) V
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointMapOutput)
 }
 
-type VpcEndpointOutput struct {
-	*pulumi.OutputState
-}
+type VpcEndpointOutput struct{ *pulumi.OutputState }
 
 func (VpcEndpointOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*VpcEndpoint)(nil))
@@ -303,14 +301,12 @@ func (o VpcEndpointOutput) ToVpcEndpointPtrOutput() VpcEndpointPtrOutput {
 }
 
 func (o VpcEndpointOutput) ToVpcEndpointPtrOutputWithContext(ctx context.Context) VpcEndpointPtrOutput {
-	return o.ApplyT(func(v VpcEndpoint) *VpcEndpoint {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcEndpoint) *VpcEndpoint {
 		return &v
 	}).(VpcEndpointPtrOutput)
 }
 
-type VpcEndpointPtrOutput struct {
-	*pulumi.OutputState
-}
+type VpcEndpointPtrOutput struct{ *pulumi.OutputState }
 
 func (VpcEndpointPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**VpcEndpoint)(nil))
@@ -322,6 +318,16 @@ func (o VpcEndpointPtrOutput) ToVpcEndpointPtrOutput() VpcEndpointPtrOutput {
 
 func (o VpcEndpointPtrOutput) ToVpcEndpointPtrOutputWithContext(ctx context.Context) VpcEndpointPtrOutput {
 	return o
+}
+
+func (o VpcEndpointPtrOutput) Elem() VpcEndpointOutput {
+	return o.ApplyT(func(v *VpcEndpoint) VpcEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret VpcEndpoint
+		return ret
+	}).(VpcEndpointOutput)
 }
 
 type VpcEndpointArrayOutput struct{ *pulumi.OutputState }
@@ -365,6 +371,10 @@ func (o VpcEndpointMapOutput) MapIndex(k pulumi.StringInput) VpcEndpointOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcEndpointInput)(nil)).Elem(), &VpcEndpoint{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcEndpointPtrInput)(nil)).Elem(), &VpcEndpoint{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcEndpointArrayInput)(nil)).Elem(), VpcEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcEndpointMapInput)(nil)).Elem(), VpcEndpointMap{})
 	pulumi.RegisterOutputType(VpcEndpointOutput{})
 	pulumi.RegisterOutputType(VpcEndpointPtrOutput{})
 	pulumi.RegisterOutputType(VpcEndpointArrayOutput{})

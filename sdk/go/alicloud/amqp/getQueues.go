@@ -4,6 +4,9 @@
 package amqp
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -84,4 +87,82 @@ type GetQueuesResult struct {
 	OutputFile      *string          `pulumi:"outputFile"`
 	Queues          []GetQueuesQueue `pulumi:"queues"`
 	VirtualHostName string           `pulumi:"virtualHostName"`
+}
+
+func GetQueuesOutput(ctx *pulumi.Context, args GetQueuesOutputArgs, opts ...pulumi.InvokeOption) GetQueuesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetQueuesResult, error) {
+			args := v.(GetQueuesArgs)
+			r, err := GetQueues(ctx, &args, opts...)
+			return *r, err
+		}).(GetQueuesResultOutput)
+}
+
+// A collection of arguments for invoking getQueues.
+type GetQueuesOutputArgs struct {
+	// A list of Queue IDs. Its element value is same as Queue Name.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The ID of the instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// A regex string to filter results by Queue name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The name of the virtual host.
+	VirtualHostName pulumi.StringInput `pulumi:"virtualHostName"`
+}
+
+func (GetQueuesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueuesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getQueues.
+type GetQueuesResultOutput struct{ *pulumi.OutputState }
+
+func (GetQueuesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueuesResult)(nil)).Elem()
+}
+
+func (o GetQueuesResultOutput) ToGetQueuesResultOutput() GetQueuesResultOutput {
+	return o
+}
+
+func (o GetQueuesResultOutput) ToGetQueuesResultOutputWithContext(ctx context.Context) GetQueuesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetQueuesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueuesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetQueuesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetQueuesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetQueuesResultOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueuesResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetQueuesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetQueuesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetQueuesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetQueuesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetQueuesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetQueuesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetQueuesResultOutput) Queues() GetQueuesQueueArrayOutput {
+	return o.ApplyT(func(v GetQueuesResult) []GetQueuesQueue { return v.Queues }).(GetQueuesQueueArrayOutput)
+}
+
+func (o GetQueuesResultOutput) VirtualHostName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueuesResult) string { return v.VirtualHostName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetQueuesResultOutput{})
 }

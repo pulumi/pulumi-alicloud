@@ -4,6 +4,9 @@
 package cas
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,4 +76,82 @@ type GetServiceCertificatesResult struct {
 	NameRegex  *string  `pulumi:"nameRegex"`
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetServiceCertificatesOutput(ctx *pulumi.Context, args GetServiceCertificatesOutputArgs, opts ...pulumi.InvokeOption) GetServiceCertificatesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetServiceCertificatesResult, error) {
+			args := v.(GetServiceCertificatesArgs)
+			r, err := GetServiceCertificates(ctx, &args, opts...)
+			return *r, err
+		}).(GetServiceCertificatesResultOutput)
+}
+
+// A collection of arguments for invoking getServiceCertificates.
+type GetServiceCertificatesOutputArgs struct {
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of Certificate IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The lang.
+	Lang pulumi.StringPtrInput `pulumi:"lang"`
+	// A regex string to filter results by Certificate name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetServiceCertificatesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceCertificatesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getServiceCertificates.
+type GetServiceCertificatesResultOutput struct{ *pulumi.OutputState }
+
+func (GetServiceCertificatesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceCertificatesResult)(nil)).Elem()
+}
+
+func (o GetServiceCertificatesResultOutput) ToGetServiceCertificatesResultOutput() GetServiceCertificatesResultOutput {
+	return o
+}
+
+func (o GetServiceCertificatesResultOutput) ToGetServiceCertificatesResultOutputWithContext(ctx context.Context) GetServiceCertificatesResultOutput {
+	return o
+}
+
+func (o GetServiceCertificatesResultOutput) Certificates() GetServiceCertificatesCertificateArrayOutput {
+	return o.ApplyT(func(v GetServiceCertificatesResult) []GetServiceCertificatesCertificate { return v.Certificates }).(GetServiceCertificatesCertificateArrayOutput)
+}
+
+func (o GetServiceCertificatesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceCertificatesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetServiceCertificatesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceCertificatesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetServiceCertificatesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceCertificatesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServiceCertificatesResultOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceCertificatesResult) *string { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceCertificatesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceCertificatesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceCertificatesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceCertificatesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServiceCertificatesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceCertificatesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetServiceCertificatesResultOutput{})
 }

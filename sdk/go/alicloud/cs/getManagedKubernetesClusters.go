@@ -4,6 +4,9 @@
 package cs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,4 +72,78 @@ type GetManagedKubernetesClustersResult struct {
 	// A list of matched Kubernetes clusters' names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetManagedKubernetesClustersOutput(ctx *pulumi.Context, args GetManagedKubernetesClustersOutputArgs, opts ...pulumi.InvokeOption) GetManagedKubernetesClustersResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetManagedKubernetesClustersResult, error) {
+			args := v.(GetManagedKubernetesClustersArgs)
+			r, err := GetManagedKubernetesClusters(ctx, &args, opts...)
+			return *r, err
+		}).(GetManagedKubernetesClustersResultOutput)
+}
+
+// A collection of arguments for invoking getManagedKubernetesClusters.
+type GetManagedKubernetesClustersOutputArgs struct {
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// Cluster IDs to filter.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by cluster name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetManagedKubernetesClustersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetManagedKubernetesClustersArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getManagedKubernetesClusters.
+type GetManagedKubernetesClustersResultOutput struct{ *pulumi.OutputState }
+
+func (GetManagedKubernetesClustersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetManagedKubernetesClustersResult)(nil)).Elem()
+}
+
+func (o GetManagedKubernetesClustersResultOutput) ToGetManagedKubernetesClustersResultOutput() GetManagedKubernetesClustersResultOutput {
+	return o
+}
+
+func (o GetManagedKubernetesClustersResultOutput) ToGetManagedKubernetesClustersResultOutputWithContext(ctx context.Context) GetManagedKubernetesClustersResultOutput {
+	return o
+}
+
+// A list of matched Kubernetes clusters. Each element contains the following attributes:
+func (o GetManagedKubernetesClustersResultOutput) Clusters() GetManagedKubernetesClustersClusterArrayOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersResult) []GetManagedKubernetesClustersCluster { return v.Clusters }).(GetManagedKubernetesClustersClusterArrayOutput)
+}
+
+func (o GetManagedKubernetesClustersResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetManagedKubernetesClustersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of matched Kubernetes clusters' ids.
+func (o GetManagedKubernetesClustersResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetManagedKubernetesClustersResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of matched Kubernetes clusters' names.
+func (o GetManagedKubernetesClustersResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetManagedKubernetesClustersResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetManagedKubernetesClustersResultOutput{})
 }

@@ -13,6 +13,7 @@ __all__ = [
     'GetNodeClassesResult',
     'AwaitableGetNodeClassesResult',
     'get_node_classes',
+    'get_node_classes_output',
 ]
 
 @pulumi.output_type
@@ -183,3 +184,42 @@ def get_node_classes(db_node_class: Optional[str] = None,
         pay_type=__ret__.pay_type,
         region_id=__ret__.region_id,
         zone_id=__ret__.zone_id)
+
+
+@_utilities.lift_output_func(get_node_classes)
+def get_node_classes_output(db_node_class: Optional[pulumi.Input[Optional[str]]] = None,
+                            db_type: Optional[pulumi.Input[Optional[str]]] = None,
+                            db_version: Optional[pulumi.Input[Optional[str]]] = None,
+                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                            pay_type: Optional[pulumi.Input[str]] = None,
+                            region_id: Optional[pulumi.Input[Optional[str]]] = None,
+                            zone_id: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeClassesResult]:
+    """
+    This data source provides the PolarDB node classes resource available info of Alibaba Cloud.
+
+    > **NOTE:** Available in v1.81.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    resources_zones = alicloud.get_zones(available_resource_creation="PolarDB")
+    resources_node_classes = alicloud.polardb.get_node_classes(zone_id=resources_zones.zones[0].id,
+        pay_type="PostPaid",
+        db_type="MySQL",
+        db_version="5.6")
+    pulumi.export("polardbNodeClasses", resources_node_classes.classes)
+    ```
+
+
+    :param str db_node_class: The PolarDB node class type by the user.
+    :param str db_type: Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If db_type is set, db_version also needs to be set.
+    :param str db_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If db_version is set, db_type also needs to be set.
+    :param str pay_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`.
+    :param str region_id: The Region to launch the PolarDB cluster.
+    :param str zone_id: The Zone to launch the PolarDB cluster.
+    """
+    ...

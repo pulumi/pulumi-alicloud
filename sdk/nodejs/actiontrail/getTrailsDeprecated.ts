@@ -30,15 +30,15 @@ export function getTrailsDeprecated(args?: GetTrailsDeprecatedArgs, opts?: pulum
  * A collection of arguments for invoking getTrailsDeprecated.
  */
 export interface GetTrailsDeprecatedArgs {
-    readonly ids?: string[];
-    readonly includeOrganizationTrail?: boolean;
-    readonly includeShadowTrails?: boolean;
+    ids?: string[];
+    includeOrganizationTrail?: boolean;
+    includeShadowTrails?: boolean;
     /**
      * A regex string to filter results action trail name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
-    readonly status?: string;
+    nameRegex?: string;
+    outputFile?: string;
+    status?: string;
 }
 
 /**
@@ -66,4 +66,23 @@ export interface GetTrailsDeprecatedResult {
     readonly outputFile?: string;
     readonly status?: string;
     readonly trails: outputs.actiontrail.GetTrailsDeprecatedTrail[];
+}
+
+export function getTrailsDeprecatedOutput(args?: GetTrailsDeprecatedOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrailsDeprecatedResult> {
+    return pulumi.output(args).apply(a => getTrailsDeprecated(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTrailsDeprecated.
+ */
+export interface GetTrailsDeprecatedOutputArgs {
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    includeOrganizationTrail?: pulumi.Input<boolean>;
+    includeShadowTrails?: pulumi.Input<boolean>;
+    /**
+     * A regex string to filter results action trail name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }

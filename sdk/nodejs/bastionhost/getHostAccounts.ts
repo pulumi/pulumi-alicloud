@@ -26,13 +26,13 @@ import * as utilities from "../utilities";
  *         "2",
  *     ],
  * });
- * export const bastionhostHostAccountId1 = ids.then(ids => ids.accounts[0].id);
+ * export const bastionhostHostAccountId1 = ids.then(ids => ids.accounts?[0]?.id);
  * const nameRegex = alicloud.bastionhost.getHostAccounts({
  *     hostId: "15",
  *     instanceId: "example_value",
  *     nameRegex: "^my-HostAccount",
  * });
- * export const bastionhostHostAccountId2 = nameRegex.then(nameRegex => nameRegex.accounts[0].id);
+ * export const bastionhostHostAccountId2 = nameRegex.then(nameRegex => nameRegex.accounts?[0]?.id);
  * ```
  */
 export function getHostAccounts(args: GetHostAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetHostAccountsResult> {
@@ -61,28 +61,28 @@ export interface GetHostAccountsArgs {
     /**
      * Specify the new hosting account's name, support the longest 128 characters.
      */
-    readonly hostAccountName?: string;
+    hostAccountName?: string;
     /**
      * Specifies the database where you want to create your hosting account's host ID.
      */
-    readonly hostId: string;
+    hostId: string;
     /**
      * A list of Host Account IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * Specifies the database where you want to create your hosting account's host bastion host ID of.
      */
-    readonly instanceId: string;
+    instanceId: string;
     /**
      * A regex string to filter results by Host Account name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
      */
-    readonly protocolName?: string;
+    protocolName?: string;
 }
 
 /**
@@ -102,4 +102,39 @@ export interface GetHostAccountsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly protocolName?: string;
+}
+
+export function getHostAccountsOutput(args: GetHostAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostAccountsResult> {
+    return pulumi.output(args).apply(a => getHostAccounts(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getHostAccounts.
+ */
+export interface GetHostAccountsOutputArgs {
+    /**
+     * Specify the new hosting account's name, support the longest 128 characters.
+     */
+    hostAccountName?: pulumi.Input<string>;
+    /**
+     * Specifies the database where you want to create your hosting account's host ID.
+     */
+    hostId: pulumi.Input<string>;
+    /**
+     * A list of Host Account IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specifies the database where you want to create your hosting account's host bastion host ID of.
+     */
+    instanceId: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Host Account name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
+     */
+    protocolName?: pulumi.Input<string>;
 }

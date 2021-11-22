@@ -4,6 +4,9 @@
 package kvstore
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +28,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "KVStore"
-// 		resourcesZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		resourcesZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -86,4 +89,82 @@ type GetInstanceEnginesResult struct {
 	OutputFile      *string                            `pulumi:"outputFile"`
 	// The Zone to launch the KVStore instance.
 	ZoneId string `pulumi:"zoneId"`
+}
+
+func GetInstanceEnginesOutput(ctx *pulumi.Context, args GetInstanceEnginesOutputArgs, opts ...pulumi.InvokeOption) GetInstanceEnginesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetInstanceEnginesResult, error) {
+			args := v.(GetInstanceEnginesArgs)
+			r, err := GetInstanceEngines(ctx, &args, opts...)
+			return *r, err
+		}).(GetInstanceEnginesResultOutput)
+}
+
+// A collection of arguments for invoking getInstanceEngines.
+type GetInstanceEnginesOutputArgs struct {
+	// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
+	Engine pulumi.StringPtrInput `pulumi:"engine"`
+	// Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
+	EngineVersion pulumi.StringPtrInput `pulumi:"engineVersion"`
+	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
+	InstanceChargeType pulumi.StringPtrInput `pulumi:"instanceChargeType"`
+	OutputFile         pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The Zone to launch the KVStore instance.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetInstanceEnginesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceEnginesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getInstanceEngines.
+type GetInstanceEnginesResultOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceEnginesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceEnginesResult)(nil)).Elem()
+}
+
+func (o GetInstanceEnginesResultOutput) ToGetInstanceEnginesResultOutput() GetInstanceEnginesResultOutput {
+	return o
+}
+
+func (o GetInstanceEnginesResultOutput) ToGetInstanceEnginesResultOutputWithContext(ctx context.Context) GetInstanceEnginesResultOutput {
+	return o
+}
+
+// Database type.
+func (o GetInstanceEnginesResultOutput) Engine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceEnginesResult) *string { return v.Engine }).(pulumi.StringPtrOutput)
+}
+
+// KVStore Instance version.
+func (o GetInstanceEnginesResultOutput) EngineVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceEnginesResult) *string { return v.EngineVersion }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetInstanceEnginesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceEnginesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceEnginesResultOutput) InstanceChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceEnginesResult) *string { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
+}
+
+// A list of KVStore available instance engines. Each element contains the following attributes:
+func (o GetInstanceEnginesResultOutput) InstanceEngines() GetInstanceEnginesInstanceEngineArrayOutput {
+	return o.ApplyT(func(v GetInstanceEnginesResult) []GetInstanceEnginesInstanceEngine { return v.InstanceEngines }).(GetInstanceEnginesInstanceEngineArrayOutput)
+}
+
+func (o GetInstanceEnginesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceEnginesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The Zone to launch the KVStore instance.
+func (o GetInstanceEnginesResultOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceEnginesResult) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetInstanceEnginesResultOutput{})
 }

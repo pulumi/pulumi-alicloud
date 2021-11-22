@@ -4,6 +4,9 @@
 package simpleapplicationserver
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,4 +41,77 @@ type GetImagesResult struct {
 	NameRegex  *string          `pulumi:"nameRegex"`
 	Names      []string         `pulumi:"names"`
 	OutputFile *string          `pulumi:"outputFile"`
+}
+
+func GetImagesOutput(ctx *pulumi.Context, args GetImagesOutputArgs, opts ...pulumi.InvokeOption) GetImagesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetImagesResult, error) {
+			args := v.(GetImagesArgs)
+			r, err := GetImages(ctx, &args, opts...)
+			return *r, err
+		}).(GetImagesResultOutput)
+}
+
+// A collection of arguments for invoking getImages.
+type GetImagesOutputArgs struct {
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The type of the image. Valid values: `app`, `custom`, `system`.
+	// * `system`: operating system (OS) image.
+	// * `app`: application image.
+	// * `custom`: custom image.
+	ImageType  pulumi.StringPtrInput `pulumi:"imageType"`
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetImagesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getImages.
+type GetImagesResultOutput struct{ *pulumi.OutputState }
+
+func (GetImagesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesResult)(nil)).Elem()
+}
+
+func (o GetImagesResultOutput) ToGetImagesResultOutput() GetImagesResultOutput {
+	return o
+}
+
+func (o GetImagesResultOutput) ToGetImagesResultOutputWithContext(ctx context.Context) GetImagesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetImagesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetImagesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetImagesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetImagesResultOutput) ImageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *string { return v.ImageType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetImagesResultOutput) Images() GetImagesImageArrayOutput {
+	return o.ApplyT(func(v GetImagesResult) []GetImagesImage { return v.Images }).(GetImagesImageArrayOutput)
+}
+
+func (o GetImagesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetImagesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetImagesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetImagesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetImagesResultOutput{})
 }

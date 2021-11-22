@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *     categoryId: "53690006",
  *     productType: "SERVICE",
  *     sort: "created_on-desc",
- * }, { async: true }));
+ * }));
  *
  * export const firstProductCode = defaultProducts.productItems.0.code;
  * export const productCodes = defaultProducts.ids!;
@@ -56,40 +56,40 @@ export interface GetProductsArgs {
     /**
      * The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
      */
-    readonly categoryId?: string;
+    categoryId?: string;
     /**
      * A list of product code.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to apply to the product name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The type of products, Valid values: `APP`, `SERVICE`, `MIRROR`, `DOWNLOAD` and `API_SERVICE`.
      */
-    readonly productType?: string;
+    productType?: string;
     /**
      * Search term in this query.
      */
-    readonly searchTerm?: string;
+    searchTerm?: string;
     /**
      * This field determines how to sort the filtered results, Valid values: `user_count-desc`, `created_on-desc`, `price-desc` and `score-desc`.
      */
-    readonly sort?: string;
+    sort?: string;
     /**
      * The suggested price of the product.
      */
-    readonly suggestedPrice?: number;
+    suggestedPrice?: number;
     /**
      * The supplier id of the product.
      */
-    readonly supplierId?: string;
+    supplierId?: string;
     /**
      * The supplier name keyword of the product.
      */
-    readonly supplierNameKeyword?: string;
+    supplierNameKeyword?: string;
 }
 
 /**
@@ -126,4 +126,51 @@ export interface GetProductsResult {
      */
     readonly supplierId?: string;
     readonly supplierNameKeyword?: string;
+}
+
+export function getProductsOutput(args?: GetProductsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductsResult> {
+    return pulumi.output(args).apply(a => getProducts(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProducts.
+ */
+export interface GetProductsOutputArgs {
+    /**
+     * The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
+     */
+    categoryId?: pulumi.Input<string>;
+    /**
+     * A list of product code.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to apply to the product name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The type of products, Valid values: `APP`, `SERVICE`, `MIRROR`, `DOWNLOAD` and `API_SERVICE`.
+     */
+    productType?: pulumi.Input<string>;
+    /**
+     * Search term in this query.
+     */
+    searchTerm?: pulumi.Input<string>;
+    /**
+     * This field determines how to sort the filtered results, Valid values: `user_count-desc`, `created_on-desc`, `price-desc` and `score-desc`.
+     */
+    sort?: pulumi.Input<string>;
+    /**
+     * The suggested price of the product.
+     */
+    suggestedPrice?: pulumi.Input<number>;
+    /**
+     * The supplier id of the product.
+     */
+    supplierId?: pulumi.Input<string>;
+    /**
+     * The supplier name keyword of the product.
+     */
+    supplierNameKeyword?: pulumi.Input<string>;
 }

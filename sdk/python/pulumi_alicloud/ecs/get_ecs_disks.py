@@ -14,6 +14,7 @@ __all__ = [
     'GetEcsDisksResult',
     'AwaitableGetEcsDisksResult',
     'get_ecs_disks',
+    'get_ecs_disks_output',
 ]
 
 @pulumi.output_type
@@ -453,3 +454,82 @@ def get_ecs_disks(additional_attributes: Optional[Sequence[str]] = None,
         tags=__ret__.tags,
         type=__ret__.type,
         zone_id=__ret__.zone_id)
+
+
+@_utilities.lift_output_func(get_ecs_disks)
+def get_ecs_disks_output(additional_attributes: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         auto_snapshot_policy_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         availability_zone: Optional[pulumi.Input[Optional[str]]] = None,
+                         category: Optional[pulumi.Input[Optional[str]]] = None,
+                         delete_auto_snapshot: Optional[pulumi.Input[Optional[bool]]] = None,
+                         delete_with_instance: Optional[pulumi.Input[Optional[bool]]] = None,
+                         disk_name: Optional[pulumi.Input[Optional[str]]] = None,
+                         disk_type: Optional[pulumi.Input[Optional[str]]] = None,
+                         dry_run: Optional[pulumi.Input[Optional[bool]]] = None,
+                         enable_auto_snapshot: Optional[pulumi.Input[Optional[bool]]] = None,
+                         enable_automated_snapshot_policy: Optional[pulumi.Input[Optional[bool]]] = None,
+                         enable_shared: Optional[pulumi.Input[Optional[bool]]] = None,
+                         encrypted: Optional[pulumi.Input[Optional[str]]] = None,
+                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         instance_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         kms_key_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         operation_locks: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetEcsDisksOperationLockArgs']]]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         payment_type: Optional[pulumi.Input[Optional[str]]] = None,
+                         portable: Optional[pulumi.Input[Optional[bool]]] = None,
+                         resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         snapshot_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         status: Optional[pulumi.Input[Optional[str]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         type: Optional[pulumi.Input[Optional[str]]] = None,
+                         zone_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEcsDisksResult]:
+    """
+    This data source provides the Ecs Disks of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.122.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ecs.get_ecs_disks(ids=["d-artgdsvdvxxxx"],
+        name_regex="tf-test")
+    pulumi.export("firstEcsDiskId", example.disks[0].id)
+    ```
+
+
+    :param Sequence[str] additional_attributes: Other attribute values. Currently, only the incoming value of IOPS is supported, which means to query the IOPS upper limit of the current disk.
+    :param str auto_snapshot_policy_id: Query cloud disks based on the automatic snapshot policy ID.
+    :param str availability_zone: Availability zone of the disk.
+    :param str category: Disk category.
+    :param bool delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released.
+    :param bool delete_with_instance: Indicates whether the disk is released together with the instance.
+    :param str disk_name: The disk name.
+    :param str disk_type: The disk type.
+    :param bool dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
+           * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
+           * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
+    :param bool enable_auto_snapshot: Whether the disk implements an automatic snapshot policy.
+    :param bool enable_automated_snapshot_policy: Whether the disk implements an automatic snapshot policy.
+    :param bool enable_shared: Whether it is shared block storage.
+    :param str encrypted: Indicate whether the disk is encrypted or not.
+    :param Sequence[str] ids: A list of Disk IDs.
+    :param str instance_id: The instance ID of the disk mount.
+    :param str kms_key_id: The kms key id.
+    :param str name_regex: A regex string to filter results by Disk name.
+    :param str payment_type: Payment method for disk.
+    :param bool portable: Whether the disk is unmountable.
+    :param str resource_group_id: The Id of resource group.
+    :param str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+    :param str status: Current status.
+    :param Mapping[str, Any] tags: A map of tags assigned to the disk.
+    :param str type: Disk type.
+    :param str zone_id: The zone id.
+    """
+    ...

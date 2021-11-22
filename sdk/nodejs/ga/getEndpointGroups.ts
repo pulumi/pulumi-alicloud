@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstGaEndpointGroupId = example.then(example => example.groups[0].id);
+ * export const firstGaEndpointGroupId = example.then(example => example.groups?[0]?.id);
  * ```
  */
 export function getEndpointGroups(args: GetEndpointGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointGroupsResult> {
@@ -52,28 +52,28 @@ export interface GetEndpointGroupsArgs {
     /**
      * The ID of the Global Accelerator instance to which the endpoint group will be added.
      */
-    readonly acceleratorId: string;
+    acceleratorId: string;
     /**
      * The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
      */
-    readonly endpointGroupType?: string;
+    endpointGroupType?: string;
     /**
      * A list of Endpoint Group IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The ID of the listener that is associated with the endpoint group.
      */
-    readonly listenerId?: string;
+    listenerId?: string;
     /**
      * A regex string to filter results by Endpoint Group name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of the endpoint group.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -93,4 +93,39 @@ export interface GetEndpointGroupsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getEndpointGroupsOutput(args: GetEndpointGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointGroupsResult> {
+    return pulumi.output(args).apply(a => getEndpointGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEndpointGroups.
+ */
+export interface GetEndpointGroupsOutputArgs {
+    /**
+     * The ID of the Global Accelerator instance to which the endpoint group will be added.
+     */
+    acceleratorId: pulumi.Input<string>;
+    /**
+     * The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+     */
+    endpointGroupType?: pulumi.Input<string>;
+    /**
+     * A list of Endpoint Group IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the listener that is associated with the endpoint group.
+     */
+    listenerId?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Endpoint Group name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the endpoint group.
+     */
+    status?: pulumi.Input<string>;
 }

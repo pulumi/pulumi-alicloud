@@ -4,6 +4,9 @@
 package vpn
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,4 +70,72 @@ type GetCustomerGatewaysResult struct {
 	NameRegex  *string  `pulumi:"nameRegex"`
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetCustomerGatewaysOutput(ctx *pulumi.Context, args GetCustomerGatewaysOutputArgs, opts ...pulumi.InvokeOption) GetCustomerGatewaysResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetCustomerGatewaysResult, error) {
+			args := v.(GetCustomerGatewaysArgs)
+			r, err := GetCustomerGateways(ctx, &args, opts...)
+			return *r, err
+		}).(GetCustomerGatewaysResultOutput)
+}
+
+// A collection of arguments for invoking getCustomerGateways.
+type GetCustomerGatewaysOutputArgs struct {
+	// ID of the VPN customer gateways.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string of VPN customer gateways name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// Save the result to the file.
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetCustomerGatewaysOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomerGatewaysArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getCustomerGateways.
+type GetCustomerGatewaysResultOutput struct{ *pulumi.OutputState }
+
+func (GetCustomerGatewaysResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomerGatewaysResult)(nil)).Elem()
+}
+
+func (o GetCustomerGatewaysResultOutput) ToGetCustomerGatewaysResultOutput() GetCustomerGatewaysResultOutput {
+	return o
+}
+
+func (o GetCustomerGatewaysResultOutput) ToGetCustomerGatewaysResultOutputWithContext(ctx context.Context) GetCustomerGatewaysResultOutput {
+	return o
+}
+
+// A list of VPN customer gateways. Each element contains the following attributes:
+func (o GetCustomerGatewaysResultOutput) Gateways() GetCustomerGatewaysGatewayArrayOutput {
+	return o.ApplyT(func(v GetCustomerGatewaysResult) []GetCustomerGatewaysGateway { return v.Gateways }).(GetCustomerGatewaysGatewayArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetCustomerGatewaysResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomerGatewaysResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetCustomerGatewaysResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCustomerGatewaysResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetCustomerGatewaysResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCustomerGatewaysResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetCustomerGatewaysResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCustomerGatewaysResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetCustomerGatewaysResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCustomerGatewaysResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetCustomerGatewaysResultOutput{})
 }

@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     dbInstanceId: "example_value",
  *     nameRegex: "the_resource_name",
  * });
- * export const firstRdsAccountId = example.then(example => example.accounts[0].id);
+ * export const firstRdsAccountId = example.then(example => example.accounts?[0]?.id);
  * ```
  */
 export function getAccounts(args: GetAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountsResult> {
@@ -49,20 +49,20 @@ export interface GetAccountsArgs {
     /**
      * The db instance id.
      */
-    readonly dbInstanceId: string;
+    dbInstanceId: string;
     /**
      * A list of Account IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Account name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of the resource.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -80,4 +80,31 @@ export interface GetAccountsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getAccountsOutput(args: GetAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountsResult> {
+    return pulumi.output(args).apply(a => getAccounts(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccounts.
+ */
+export interface GetAccountsOutputArgs {
+    /**
+     * The db instance id.
+     */
+    dbInstanceId: pulumi.Input<string>;
+    /**
+     * A list of Account IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Account name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the resource.
+     */
+    status?: pulumi.Input<string>;
 }

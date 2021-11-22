@@ -167,38 +167,38 @@ export interface DdosCooInstanceState {
     /**
      * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
      */
-    readonly bandwidth?: pulumi.Input<string>;
+    bandwidth?: pulumi.Input<string>;
     /**
      * Base defend bandwidth of the instance. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
      */
-    readonly baseBandwidth?: pulumi.Input<string>;
+    baseBandwidth?: pulumi.Input<string>;
     /**
      * Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
      */
-    readonly domainCount?: pulumi.Input<string>;
+    domainCount?: pulumi.Input<string>;
     /**
      * Name of the instance. This name can have a string of 1 to 63 characters.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
      */
-    readonly portCount?: pulumi.Input<string>;
+    portCount?: pulumi.Input<string>;
     /**
      * The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
      * - ddoscoo: Only supports domestic account.
      * - ddoscoo_intl: Only supports to international account.
      * Default to ddoscoo.
      */
-    readonly productType?: pulumi.Input<string>;
+    productType?: pulumi.Input<string>;
     /**
      * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
      */
-    readonly serviceBandwidth?: pulumi.Input<string>;
+    serviceBandwidth?: pulumi.Input<string>;
 }
 
 /**
@@ -208,36 +208,36 @@ export interface DdosCooInstanceArgs {
     /**
      * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
      */
-    readonly bandwidth: pulumi.Input<string>;
+    bandwidth: pulumi.Input<string>;
     /**
      * Base defend bandwidth of the instance. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
      */
-    readonly baseBandwidth: pulumi.Input<string>;
+    baseBandwidth: pulumi.Input<string>;
     /**
      * Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
      */
-    readonly domainCount: pulumi.Input<string>;
+    domainCount: pulumi.Input<string>;
     /**
      * Name of the instance. This name can have a string of 1 to 63 characters.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
      */
-    readonly portCount: pulumi.Input<string>;
+    portCount: pulumi.Input<string>;
     /**
      * The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
      * - ddoscoo: Only supports domestic account.
      * - ddoscoo_intl: Only supports to international account.
      * Default to ddoscoo.
      */
-    readonly productType?: pulumi.Input<string>;
+    productType?: pulumi.Input<string>;
     /**
      * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
      */
-    readonly serviceBandwidth: pulumi.Input<string>;
+    serviceBandwidth: pulumi.Input<string>;
 }

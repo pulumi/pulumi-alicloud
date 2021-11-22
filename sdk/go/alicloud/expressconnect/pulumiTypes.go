@@ -1104,6 +1104,16 @@ func (o GetVirtualBorderRoutersRouterArrayOutput) Index(i pulumi.IntInput) GetVi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessPointsPointInput)(nil)).Elem(), GetAccessPointsPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessPointsPointArrayInput)(nil)).Elem(), GetAccessPointsPointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessPointsPointAccessPointFeatureModelInput)(nil)).Elem(), GetAccessPointsPointAccessPointFeatureModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessPointsPointAccessPointFeatureModelArrayInput)(nil)).Elem(), GetAccessPointsPointAccessPointFeatureModelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPhysicalConnectionsConnectionInput)(nil)).Elem(), GetPhysicalConnectionsConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPhysicalConnectionsConnectionArrayInput)(nil)).Elem(), GetPhysicalConnectionsConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualBorderRoutersFilterInput)(nil)).Elem(), GetVirtualBorderRoutersFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualBorderRoutersFilterArrayInput)(nil)).Elem(), GetVirtualBorderRoutersFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualBorderRoutersRouterInput)(nil)).Elem(), GetVirtualBorderRoutersRouterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualBorderRoutersRouterArrayInput)(nil)).Elem(), GetVirtualBorderRoutersRouterArray{})
 	pulumi.RegisterOutputType(GetAccessPointsPointOutput{})
 	pulumi.RegisterOutputType(GetAccessPointsPointArrayOutput{})
 	pulumi.RegisterOutputType(GetAccessPointsPointAccessPointFeatureModelOutput{})

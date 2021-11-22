@@ -880,6 +880,16 @@ func (o GetRegionsRegionZoneIdArrayOutput) Index(i pulumi.IntInput) GetRegionsRe
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountInput)(nil)).Elem(), GetAccountsAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountArrayInput)(nil)).Elem(), GetAccountsAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbClustersClusterInput)(nil)).Elem(), GetDbClustersClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbClustersClusterArrayInput)(nil)).Elem(), GetDbClustersClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbClustersClusterScaleOutStatusInput)(nil)).Elem(), GetDbClustersClusterScaleOutStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbClustersClusterScaleOutStatusArrayInput)(nil)).Elem(), GetDbClustersClusterScaleOutStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionInput)(nil)).Elem(), GetRegionsRegionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionArrayInput)(nil)).Elem(), GetRegionsRegionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionZoneIdInput)(nil)).Elem(), GetRegionsRegionZoneIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionZoneIdArrayInput)(nil)).Elem(), GetRegionsRegionZoneIdArray{})
 	pulumi.RegisterOutputType(GetAccountsAccountOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetDbClustersClusterOutput{})

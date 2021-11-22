@@ -112,15 +112,15 @@ export interface ResourceShareState {
     /**
      * The name of resource share.
      */
-    readonly resourceShareName?: pulumi.Input<string>;
+    resourceShareName?: pulumi.Input<string>;
     /**
      * The owner of resource share.
      */
-    readonly resourceShareOwner?: pulumi.Input<string>;
+    resourceShareOwner?: pulumi.Input<string>;
     /**
      * The status of resource share.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -130,5 +130,5 @@ export interface ResourceShareArgs {
     /**
      * The name of resource share.
      */
-    readonly resourceShareName: pulumi.Input<string>;
+    resourceShareName: pulumi.Input<string>;
 }

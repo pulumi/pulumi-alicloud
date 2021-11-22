@@ -13,6 +13,7 @@ __all__ = [
     'GetEnhancedNatAvailableZonesResult',
     'AwaitableGetEnhancedNatAvailableZonesResult',
     'get_enhanced_nat_available_zones',
+    'get_enhanced_nat_available_zones_output',
 ]
 
 @pulumi.output_type
@@ -88,3 +89,12 @@ def get_enhanced_nat_available_zones(output_file: Optional[str] = None,
         ids=__ret__.ids,
         output_file=__ret__.output_file,
         zones=__ret__.zones)
+
+
+@_utilities.lift_output_func(get_enhanced_nat_available_zones)
+def get_enhanced_nat_available_zones_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnhancedNatAvailableZonesResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

@@ -13,6 +13,7 @@ __all__ = [
     'GetInstanceClassesResult',
     'AwaitableGetInstanceClassesResult',
     'get_instance_classes',
+    'get_instance_classes_output',
 ]
 
 @pulumi.output_type
@@ -240,3 +241,48 @@ def get_instance_classes(category: Optional[str] = None,
         sorted_by=__ret__.sorted_by,
         storage_type=__ret__.storage_type,
         zone_id=__ret__.zone_id)
+
+
+@_utilities.lift_output_func(get_instance_classes)
+def get_instance_classes_output(category: Optional[pulumi.Input[Optional[str]]] = None,
+                                db_instance_class: Optional[pulumi.Input[Optional[str]]] = None,
+                                db_instance_storage_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                engine: Optional[pulumi.Input[Optional[str]]] = None,
+                                engine_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                instance_charge_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                multi_zone: Optional[pulumi.Input[Optional[bool]]] = None,
+                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                sorted_by: Optional[pulumi.Input[Optional[str]]] = None,
+                                storage_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                zone_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceClassesResult]:
+    """
+    This data source provides the RDS instance classes resource available info of Alibaba Cloud.
+
+    > **NOTE:** Available in v1.46.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    resources = alicloud.rds.get_instance_classes(engine="MySQL",
+        engine_version="5.6",
+        instance_charge_type="PostPaid",
+        output_file="./classes.txt")
+    pulumi.export("firstDbInstanceClass", resources.instance_classes[0].instance_class)
+    ```
+
+
+    :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+    :param str db_instance_class: The DB instance class type by the user.
+    :param str db_instance_storage_type: The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
+    :param str engine: Database type. Valid values:"MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
+    :param str engine_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+    :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+    :param bool multi_zone: Whether to show multi available zone. Default false to not show multi availability zone.
+    :param str storage_type: It has been deprecated from verison 1.134.0+ and using `db_instance_storage_type` instead.
+    :param str zone_id: The Zone to launch the DB instance.
+    """
+    ...

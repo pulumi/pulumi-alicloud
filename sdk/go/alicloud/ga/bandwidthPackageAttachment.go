@@ -223,7 +223,7 @@ type BandwidthPackageAttachmentArrayInput interface {
 type BandwidthPackageAttachmentArray []BandwidthPackageAttachmentInput
 
 func (BandwidthPackageAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*BandwidthPackageAttachment)(nil))
+	return reflect.TypeOf((*[]*BandwidthPackageAttachment)(nil)).Elem()
 }
 
 func (i BandwidthPackageAttachmentArray) ToBandwidthPackageAttachmentArrayOutput() BandwidthPackageAttachmentArrayOutput {
@@ -248,7 +248,7 @@ type BandwidthPackageAttachmentMapInput interface {
 type BandwidthPackageAttachmentMap map[string]BandwidthPackageAttachmentInput
 
 func (BandwidthPackageAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*BandwidthPackageAttachment)(nil))
+	return reflect.TypeOf((*map[string]*BandwidthPackageAttachment)(nil)).Elem()
 }
 
 func (i BandwidthPackageAttachmentMap) ToBandwidthPackageAttachmentMapOutput() BandwidthPackageAttachmentMapOutput {
@@ -259,9 +259,7 @@ func (i BandwidthPackageAttachmentMap) ToBandwidthPackageAttachmentMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthPackageAttachmentMapOutput)
 }
 
-type BandwidthPackageAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type BandwidthPackageAttachmentOutput struct{ *pulumi.OutputState }
 
 func (BandwidthPackageAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BandwidthPackageAttachment)(nil))
@@ -280,14 +278,12 @@ func (o BandwidthPackageAttachmentOutput) ToBandwidthPackageAttachmentPtrOutput(
 }
 
 func (o BandwidthPackageAttachmentOutput) ToBandwidthPackageAttachmentPtrOutputWithContext(ctx context.Context) BandwidthPackageAttachmentPtrOutput {
-	return o.ApplyT(func(v BandwidthPackageAttachment) *BandwidthPackageAttachment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BandwidthPackageAttachment) *BandwidthPackageAttachment {
 		return &v
 	}).(BandwidthPackageAttachmentPtrOutput)
 }
 
-type BandwidthPackageAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type BandwidthPackageAttachmentPtrOutput struct{ *pulumi.OutputState }
 
 func (BandwidthPackageAttachmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BandwidthPackageAttachment)(nil))
@@ -299,6 +295,16 @@ func (o BandwidthPackageAttachmentPtrOutput) ToBandwidthPackageAttachmentPtrOutp
 
 func (o BandwidthPackageAttachmentPtrOutput) ToBandwidthPackageAttachmentPtrOutputWithContext(ctx context.Context) BandwidthPackageAttachmentPtrOutput {
 	return o
+}
+
+func (o BandwidthPackageAttachmentPtrOutput) Elem() BandwidthPackageAttachmentOutput {
+	return o.ApplyT(func(v *BandwidthPackageAttachment) BandwidthPackageAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret BandwidthPackageAttachment
+		return ret
+	}).(BandwidthPackageAttachmentOutput)
 }
 
 type BandwidthPackageAttachmentArrayOutput struct{ *pulumi.OutputState }
@@ -342,6 +348,10 @@ func (o BandwidthPackageAttachmentMapOutput) MapIndex(k pulumi.StringInput) Band
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BandwidthPackageAttachmentInput)(nil)).Elem(), &BandwidthPackageAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BandwidthPackageAttachmentPtrInput)(nil)).Elem(), &BandwidthPackageAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BandwidthPackageAttachmentArrayInput)(nil)).Elem(), BandwidthPackageAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BandwidthPackageAttachmentMapInput)(nil)).Elem(), BandwidthPackageAttachmentMap{})
 	pulumi.RegisterOutputType(BandwidthPackageAttachmentOutput{})
 	pulumi.RegisterOutputType(BandwidthPackageAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(BandwidthPackageAttachmentArrayOutput{})

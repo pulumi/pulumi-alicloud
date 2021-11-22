@@ -21,11 +21,11 @@ import * as utilities from "../utilities";
  * const ids = alicloud.databasegateway.getGateways({
  *     ids: ["example_id"],
  * });
- * export const databaseGatewayGatewayId1 = ids.then(ids => ids.gateways[0].id);
+ * export const databaseGatewayGatewayId1 = ids.then(ids => ids.gateways?[0]?.id);
  * const nameRegex = alicloud.databasegateway.getGateways({
  *     nameRegex: "^my-Gateway",
  * });
- * export const databaseGatewayGatewayId2 = nameRegex.then(nameRegex => nameRegex.gateways[0].id);
+ * export const databaseGatewayGatewayId2 = nameRegex.then(nameRegex => nameRegex.gateways?[0]?.id);
  * ```
  */
 export function getGateways(args?: GetGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewaysResult> {
@@ -54,24 +54,24 @@ export interface GetGatewaysArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Gateway IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Gateway name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The search key.
      */
-    readonly searchKey?: string;
+    searchKey?: string;
     /**
      * The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -90,4 +90,35 @@ export interface GetGatewaysResult {
     readonly outputFile?: string;
     readonly searchKey?: string;
     readonly status?: string;
+}
+
+export function getGatewaysOutput(args?: GetGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaysResult> {
+    return pulumi.output(args).apply(a => getGateways(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGateways.
+ */
+export interface GetGatewaysOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Gateway IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Gateway name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The search key.
+     */
+    searchKey?: pulumi.Input<string>;
+    /**
+     * The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
+     */
+    status?: pulumi.Input<string>;
 }

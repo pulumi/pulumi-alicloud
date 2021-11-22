@@ -146,23 +146,23 @@ export interface PortState {
     /**
      * The port of the origin server.
      */
-    readonly backendPort?: pulumi.Input<string>;
+    backendPort?: pulumi.Input<string>;
     /**
      * The forwarding port.
      */
-    readonly frontendPort?: pulumi.Input<string>;
+    frontendPort?: pulumi.Input<string>;
     /**
      * The forwarding protocol. Valid values `tcp` and `udp`.
      */
-    readonly frontendProtocol?: pulumi.Input<string>;
+    frontendProtocol?: pulumi.Input<string>;
     /**
      * The ID of Ddoscoo instance.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * List of source IP addresses.
      */
-    readonly realServers?: pulumi.Input<pulumi.Input<string>[]>;
+    realServers?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -172,21 +172,21 @@ export interface PortArgs {
     /**
      * The port of the origin server.
      */
-    readonly backendPort?: pulumi.Input<string>;
+    backendPort?: pulumi.Input<string>;
     /**
      * The forwarding port.
      */
-    readonly frontendPort: pulumi.Input<string>;
+    frontendPort: pulumi.Input<string>;
     /**
      * The forwarding protocol. Valid values `tcp` and `udp`.
      */
-    readonly frontendProtocol: pulumi.Input<string>;
+    frontendProtocol: pulumi.Input<string>;
     /**
      * The ID of Ddoscoo instance.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * List of source IP addresses.
      */
-    readonly realServers: pulumi.Input<pulumi.Input<string>[]>;
+    realServers: pulumi.Input<pulumi.Input<string>[]>;
 }

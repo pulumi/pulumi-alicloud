@@ -222,7 +222,7 @@ func (o DirectorySamlIdentityProviderConfigurationOutput) ToDirectorySamlIdentit
 }
 
 func (o DirectorySamlIdentityProviderConfigurationOutput) ToDirectorySamlIdentityProviderConfigurationPtrOutputWithContext(ctx context.Context) DirectorySamlIdentityProviderConfigurationPtrOutput {
-	return o.ApplyT(func(v DirectorySamlIdentityProviderConfiguration) *DirectorySamlIdentityProviderConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DirectorySamlIdentityProviderConfiguration) *DirectorySamlIdentityProviderConfiguration {
 		return &v
 	}).(DirectorySamlIdentityProviderConfigurationPtrOutput)
 }
@@ -253,7 +253,11 @@ func (o DirectorySamlIdentityProviderConfigurationPtrOutput) ToDirectorySamlIden
 
 func (o DirectorySamlIdentityProviderConfigurationPtrOutput) Elem() DirectorySamlIdentityProviderConfigurationOutput {
 	return o.ApplyT(func(v *DirectorySamlIdentityProviderConfiguration) DirectorySamlIdentityProviderConfiguration {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret DirectorySamlIdentityProviderConfiguration
+		return ret
 	}).(DirectorySamlIdentityProviderConfigurationOutput)
 }
 
@@ -1751,6 +1755,28 @@ func (o GetUsersUserMfaDeviceArrayOutput) Index(i pulumi.IntInput) GetUsersUserM
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessConfigurationPermissionPolicyInput)(nil)).Elem(), AccessConfigurationPermissionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessConfigurationPermissionPolicyArrayInput)(nil)).Elem(), AccessConfigurationPermissionPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectorySamlIdentityProviderConfigurationInput)(nil)).Elem(), DirectorySamlIdentityProviderConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectorySamlIdentityProviderConfigurationPtrInput)(nil)).Elem(), DirectorySamlIdentityProviderConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessConfigurationsConfigurationInput)(nil)).Elem(), GetAccessConfigurationsConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessConfigurationsConfigurationArrayInput)(nil)).Elem(), GetAccessConfigurationsConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessConfigurationsConfigurationPermissionPolicyInput)(nil)).Elem(), GetAccessConfigurationsConfigurationPermissionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessConfigurationsConfigurationPermissionPolicyArrayInput)(nil)).Elem(), GetAccessConfigurationsConfigurationPermissionPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDirectoriesDirectoryInput)(nil)).Elem(), GetDirectoriesDirectoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDirectoriesDirectoryArrayInput)(nil)).Elem(), GetDirectoriesDirectoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDirectoriesDirectorySamlIdentityProviderConfigurationInput)(nil)).Elem(), GetDirectoriesDirectorySamlIdentityProviderConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDirectoriesDirectorySamlIdentityProviderConfigurationArrayInput)(nil)).Elem(), GetDirectoriesDirectorySamlIdentityProviderConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDirectoriesDirectoryTaskInput)(nil)).Elem(), GetDirectoriesDirectoryTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDirectoriesDirectoryTaskArrayInput)(nil)).Elem(), GetDirectoriesDirectoryTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupInput)(nil)).Elem(), GetGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupArrayInput)(nil)).Elem(), GetGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetScimServerCredentialsCredentialInput)(nil)).Elem(), GetScimServerCredentialsCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetScimServerCredentialsCredentialArrayInput)(nil)).Elem(), GetScimServerCredentialsCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserInput)(nil)).Elem(), GetUsersUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserArrayInput)(nil)).Elem(), GetUsersUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserMfaDeviceInput)(nil)).Elem(), GetUsersUserMfaDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserMfaDeviceArrayInput)(nil)).Elem(), GetUsersUserMfaDeviceArray{})
 	pulumi.RegisterOutputType(AccessConfigurationPermissionPolicyOutput{})
 	pulumi.RegisterOutputType(AccessConfigurationPermissionPolicyArrayOutput{})
 	pulumi.RegisterOutputType(DirectorySamlIdentityProviderConfigurationOutput{})

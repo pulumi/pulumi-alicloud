@@ -13,6 +13,7 @@ __all__ = [
     'GetMailAddressesResult',
     'AwaitableGetMailAddressesResult',
     'get_mail_addresses',
+    'get_mail_addresses_output',
 ]
 
 @pulumi.output_type
@@ -146,3 +147,36 @@ def get_mail_addresses(ids: Optional[Sequence[str]] = None,
         output_file=__ret__.output_file,
         sendtype=__ret__.sendtype,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_mail_addresses)
+def get_mail_addresses_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                              key_word: Optional[pulumi.Input[Optional[str]]] = None,
+                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                              sendtype: Optional[pulumi.Input[Optional[str]]] = None,
+                              status: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMailAddressesResult]:
+    """
+    This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.134.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.directmail.get_mail_addresses(ids=["example_id"])
+    pulumi.export("directMailMailAddressId1", ids.addresses[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Mail Address IDs.
+    :param str key_word: The key word about account email address.
+    :param str sendtype: Account type.
+    :param str status: Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
+    """
+    ...

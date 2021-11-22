@@ -13,6 +13,7 @@ __all__ = [
     'GetNetworksResult',
     'AwaitableGetNetworksResult',
     'get_networks',
+    'get_networks_output',
 ]
 
 @pulumi.output_type
@@ -295,3 +296,52 @@ def get_networks(cidr_block: Optional[str] = None,
         vpc_owner_id=__ret__.vpc_owner_id,
         vpcs=__ret__.vpcs,
         vswitch_id=__ret__.vswitch_id)
+
+
+@_utilities.lift_output_func(get_networks)
+def get_networks_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None,
+                        dhcp_options_set_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        dry_run: Optional[pulumi.Input[Optional[bool]]] = None,
+                        enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                        is_default: Optional[pulumi.Input[Optional[bool]]] = None,
+                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        status: Optional[pulumi.Input[Optional[str]]] = None,
+                        tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                        vpc_name: Optional[pulumi.Input[Optional[str]]] = None,
+                        vpc_owner_id: Optional[pulumi.Input[Optional[int]]] = None,
+                        vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworksResult]:
+    """
+    This data source provides VPCs available to the user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    vpcs_ds = alicloud.vpc.get_networks(cidr_block="172.16.0.0/12",
+        name_regex="^foo",
+        status="Available")
+    pulumi.export("firstVpcId", vpcs_ds.vpcs[0].id)
+    ```
+
+
+    :param str cidr_block: Filter results by a specific CIDR block. For example: "172.16.0.0/12".
+    :param str dhcp_options_set_id: The ID of dhcp options set.
+    :param bool dry_run: Indicates whether to check this request only. Valid values: `true` and `false`.
+    :param bool enable_details: -(Optional, Available in v1.119.0+) Default to `true`. Set it to true can output the `route_table_id`.
+    :param Sequence[str] ids: A list of VPC IDs.
+    :param bool is_default: Indicate whether the VPC is the default one in the specified region.
+    :param str name_regex: A regex string to filter VPCs by name.
+    :param str resource_group_id: The Id of resource group which VPC belongs.
+    :param str status: Filter results by a specific status. Valid value are `Pending` and `Available`.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param str vpc_name: The name of the VPC.
+    :param int vpc_owner_id: The owner ID of VPC.
+    :param str vswitch_id: Filter results by the specified VSwitch.
+    """
+    ...

@@ -29,14 +29,14 @@ import * as utilities from "../utilities";
  * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {});
  * const vpc = new alicloud.cen.InstanceAttachment("vpc", {
  *     instanceId: exampleInstance.id,
- *     childInstanceId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs[0].id),
+ *     childInstanceId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs?[0]?.id),
  *     childInstanceType: "VPC",
- *     childInstanceRegionId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs[0].regionId),
+ *     childInstanceRegionId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs?[0]?.regionId),
  * });
  * const _this = new alicloud.cen.RouteService("this", {
- *     accessRegionId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs[0].regionId),
- *     hostRegionId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs[0].regionId),
- *     hostVpcId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs[0].id),
+ *     accessRegionId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs?[0]?.regionId),
+ *     hostRegionId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs?[0]?.regionId),
+ *     hostVpcId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs?[0]?.id),
  *     cenId: vpc.instanceId,
  *     host: "100.118.28.52/32",
  * });
@@ -166,31 +166,31 @@ export interface RouteServiceState {
     /**
      * The region of the network instances that access the cloud services.
      */
-    readonly accessRegionId?: pulumi.Input<string>;
+    accessRegionId?: pulumi.Input<string>;
     /**
      * The ID of the CEN instance.
      */
-    readonly cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string>;
     /**
      * The description of the cloud service.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The domain name or IP address of the cloud service.
      */
-    readonly host?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
     /**
      * The region of the cloud service.
      */
-    readonly hostRegionId?: pulumi.Input<string>;
+    hostRegionId?: pulumi.Input<string>;
     /**
      * The VPC associated with the cloud service.
      */
-    readonly hostVpcId?: pulumi.Input<string>;
+    hostVpcId?: pulumi.Input<string>;
     /**
      * The status of the cloud service.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -200,25 +200,25 @@ export interface RouteServiceArgs {
     /**
      * The region of the network instances that access the cloud services.
      */
-    readonly accessRegionId: pulumi.Input<string>;
+    accessRegionId: pulumi.Input<string>;
     /**
      * The ID of the CEN instance.
      */
-    readonly cenId: pulumi.Input<string>;
+    cenId: pulumi.Input<string>;
     /**
      * The description of the cloud service.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The domain name or IP address of the cloud service.
      */
-    readonly host: pulumi.Input<string>;
+    host: pulumi.Input<string>;
     /**
      * The region of the cloud service.
      */
-    readonly hostRegionId: pulumi.Input<string>;
+    hostRegionId: pulumi.Input<string>;
     /**
      * The VPC associated with the cloud service.
      */
-    readonly hostVpcId: pulumi.Input<string>;
+    hostVpcId: pulumi.Input<string>;
 }

@@ -76,8 +76,8 @@ import (
 // 			RiskLevel:               pulumi.Int(1),
 // 			Description:             pulumi.String(name),
 // 			ExcludeResourceIdsScope: pulumi.String(defaultInstances.Ids[0]),
-// 			InputParameters: pulumi.StringMap{
-// 				"cpuCount": pulumi.String("4"),
+// 			InputParameters: pulumi.AnyMap{
+// 				"cpuCount": pulumi.Any("4"),
 // 			},
 // 			RegionIdsScope:        pulumi.String("cn-hangzhou"),
 // 			ResourceGroupIdsScope: pulumi.String(defaultResourceGroups.Ids[0]),
@@ -327,7 +327,7 @@ type AggregateCompliancePackArrayInput interface {
 type AggregateCompliancePackArray []AggregateCompliancePackInput
 
 func (AggregateCompliancePackArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AggregateCompliancePack)(nil))
+	return reflect.TypeOf((*[]*AggregateCompliancePack)(nil)).Elem()
 }
 
 func (i AggregateCompliancePackArray) ToAggregateCompliancePackArrayOutput() AggregateCompliancePackArrayOutput {
@@ -352,7 +352,7 @@ type AggregateCompliancePackMapInput interface {
 type AggregateCompliancePackMap map[string]AggregateCompliancePackInput
 
 func (AggregateCompliancePackMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AggregateCompliancePack)(nil))
+	return reflect.TypeOf((*map[string]*AggregateCompliancePack)(nil)).Elem()
 }
 
 func (i AggregateCompliancePackMap) ToAggregateCompliancePackMapOutput() AggregateCompliancePackMapOutput {
@@ -363,9 +363,7 @@ func (i AggregateCompliancePackMap) ToAggregateCompliancePackMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AggregateCompliancePackMapOutput)
 }
 
-type AggregateCompliancePackOutput struct {
-	*pulumi.OutputState
-}
+type AggregateCompliancePackOutput struct{ *pulumi.OutputState }
 
 func (AggregateCompliancePackOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AggregateCompliancePack)(nil))
@@ -384,14 +382,12 @@ func (o AggregateCompliancePackOutput) ToAggregateCompliancePackPtrOutput() Aggr
 }
 
 func (o AggregateCompliancePackOutput) ToAggregateCompliancePackPtrOutputWithContext(ctx context.Context) AggregateCompliancePackPtrOutput {
-	return o.ApplyT(func(v AggregateCompliancePack) *AggregateCompliancePack {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AggregateCompliancePack) *AggregateCompliancePack {
 		return &v
 	}).(AggregateCompliancePackPtrOutput)
 }
 
-type AggregateCompliancePackPtrOutput struct {
-	*pulumi.OutputState
-}
+type AggregateCompliancePackPtrOutput struct{ *pulumi.OutputState }
 
 func (AggregateCompliancePackPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AggregateCompliancePack)(nil))
@@ -403,6 +399,16 @@ func (o AggregateCompliancePackPtrOutput) ToAggregateCompliancePackPtrOutput() A
 
 func (o AggregateCompliancePackPtrOutput) ToAggregateCompliancePackPtrOutputWithContext(ctx context.Context) AggregateCompliancePackPtrOutput {
 	return o
+}
+
+func (o AggregateCompliancePackPtrOutput) Elem() AggregateCompliancePackOutput {
+	return o.ApplyT(func(v *AggregateCompliancePack) AggregateCompliancePack {
+		if v != nil {
+			return *v
+		}
+		var ret AggregateCompliancePack
+		return ret
+	}).(AggregateCompliancePackOutput)
 }
 
 type AggregateCompliancePackArrayOutput struct{ *pulumi.OutputState }
@@ -446,6 +452,10 @@ func (o AggregateCompliancePackMapOutput) MapIndex(k pulumi.StringInput) Aggrega
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregateCompliancePackInput)(nil)).Elem(), &AggregateCompliancePack{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregateCompliancePackPtrInput)(nil)).Elem(), &AggregateCompliancePack{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregateCompliancePackArrayInput)(nil)).Elem(), AggregateCompliancePackArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregateCompliancePackMapInput)(nil)).Elem(), AggregateCompliancePackMap{})
 	pulumi.RegisterOutputType(AggregateCompliancePackOutput{})
 	pulumi.RegisterOutputType(AggregateCompliancePackPtrOutput{})
 	pulumi.RegisterOutputType(AggregateCompliancePackArrayOutput{})

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cen
 {
@@ -18,6 +19,14 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Task<GetVbrHealthChecksResult> InvokeAsync(GetVbrHealthChecksArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVbrHealthChecksResult>("alicloud:cen/getVbrHealthChecks:getVbrHealthChecks", args ?? new GetVbrHealthChecksArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides CEN VBR Health Checks available to the user.
+        /// 
+        /// &gt; **NOTE:** Available in 1.98.0+
+        /// </summary>
+        public static Output<GetVbrHealthChecksResult> Invoke(GetVbrHealthChecksInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetVbrHealthChecksResult>("alicloud:cen/getVbrHealthChecks:getVbrHealthChecks", args ?? new GetVbrHealthChecksInvokeArgs(), options.WithVersion());
     }
 
 
@@ -51,6 +60,40 @@ namespace Pulumi.AliCloud.Cen
         public string VbrInstanceRegionId { get; set; } = null!;
 
         public GetVbrHealthChecksArgs()
+        {
+        }
+    }
+
+    public sealed class GetVbrHealthChecksInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the Cloud Enterprise Network (CEN) instance.
+        /// </summary>
+        [Input("cenId")]
+        public Input<string>? CenId { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The ID of the VBR instance.
+        /// </summary>
+        [Input("vbrInstanceId")]
+        public Input<string>? VbrInstanceId { get; set; }
+
+        /// <summary>
+        /// The User ID (UID) of the account to which the VBR instance belongs.
+        /// </summary>
+        [Input("vbrInstanceOwnerId")]
+        public Input<int>? VbrInstanceOwnerId { get; set; }
+
+        /// <summary>
+        /// The ID of the region where the VBR instance is deployed.
+        /// </summary>
+        [Input("vbrInstanceRegionId", required: true)]
+        public Input<string> VbrInstanceRegionId { get; set; } = null!;
+
+        public GetVbrHealthChecksInvokeArgs()
         {
         }
     }

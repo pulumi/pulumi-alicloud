@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ResourceManager
 {
@@ -39,7 +40,7 @@ namespace Pulumi.AliCloud.ResourceManager
         ///             },
         ///             NameRegex = "the_resource_name",
         ///         }));
-        ///         this.FirstResourceManagerResourceShareId = example.Apply(example =&gt; example.Shares[0].Id);
+        ///         this.FirstResourceManagerResourceShareId = example.Apply(example =&gt; example.Shares?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstResourceManagerResourceShareId")]
@@ -51,6 +52,47 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         public static Task<GetResourceSharesResult> InvokeAsync(GetResourceSharesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetResourceSharesResult>("alicloud:resourcemanager/getResourceShares:getResourceShares", args ?? new GetResourceSharesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Resource Manager Resource Shares of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.111.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.ResourceManager.GetResourceShares.InvokeAsync(new AliCloud.ResourceManager.GetResourceSharesArgs
+        ///         {
+        ///             ResourceShareOwner = "Self",
+        ///             Ids = 
+        ///             {
+        ///                 "example_value",
+        ///             },
+        ///             NameRegex = "the_resource_name",
+        ///         }));
+        ///         this.FirstResourceManagerResourceShareId = example.Apply(example =&gt; example.Shares?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstResourceManagerResourceShareId")]
+        ///     public Output&lt;string&gt; FirstResourceManagerResourceShareId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetResourceSharesResult> Invoke(GetResourceSharesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetResourceSharesResult>("alicloud:resourcemanager/getResourceShares:getResourceShares", args ?? new GetResourceSharesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -96,6 +138,52 @@ namespace Pulumi.AliCloud.ResourceManager
         public string? Status { get; set; }
 
         public GetResourceSharesArgs()
+        {
+        }
+    }
+
+    public sealed class GetResourceSharesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Resource Share IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Resource Share name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The name of resource share.
+        /// </summary>
+        [Input("resourceShareName")]
+        public Input<string>? ResourceShareName { get; set; }
+
+        /// <summary>
+        /// The owner of resource share.
+        /// </summary>
+        [Input("resourceShareOwner", required: true)]
+        public Input<string> ResourceShareOwner { get; set; } = null!;
+
+        /// <summary>
+        /// The status of resource share.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetResourceSharesInvokeArgs()
         {
         }
     }

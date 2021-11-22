@@ -236,7 +236,7 @@ type HandshakeArrayInput interface {
 type HandshakeArray []HandshakeInput
 
 func (HandshakeArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Handshake)(nil))
+	return reflect.TypeOf((*[]*Handshake)(nil)).Elem()
 }
 
 func (i HandshakeArray) ToHandshakeArrayOutput() HandshakeArrayOutput {
@@ -261,7 +261,7 @@ type HandshakeMapInput interface {
 type HandshakeMap map[string]HandshakeInput
 
 func (HandshakeMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Handshake)(nil))
+	return reflect.TypeOf((*map[string]*Handshake)(nil)).Elem()
 }
 
 func (i HandshakeMap) ToHandshakeMapOutput() HandshakeMapOutput {
@@ -272,9 +272,7 @@ func (i HandshakeMap) ToHandshakeMapOutputWithContext(ctx context.Context) Hands
 	return pulumi.ToOutputWithContext(ctx, i).(HandshakeMapOutput)
 }
 
-type HandshakeOutput struct {
-	*pulumi.OutputState
-}
+type HandshakeOutput struct{ *pulumi.OutputState }
 
 func (HandshakeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Handshake)(nil))
@@ -293,14 +291,12 @@ func (o HandshakeOutput) ToHandshakePtrOutput() HandshakePtrOutput {
 }
 
 func (o HandshakeOutput) ToHandshakePtrOutputWithContext(ctx context.Context) HandshakePtrOutput {
-	return o.ApplyT(func(v Handshake) *Handshake {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Handshake) *Handshake {
 		return &v
 	}).(HandshakePtrOutput)
 }
 
-type HandshakePtrOutput struct {
-	*pulumi.OutputState
-}
+type HandshakePtrOutput struct{ *pulumi.OutputState }
 
 func (HandshakePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Handshake)(nil))
@@ -312,6 +308,16 @@ func (o HandshakePtrOutput) ToHandshakePtrOutput() HandshakePtrOutput {
 
 func (o HandshakePtrOutput) ToHandshakePtrOutputWithContext(ctx context.Context) HandshakePtrOutput {
 	return o
+}
+
+func (o HandshakePtrOutput) Elem() HandshakeOutput {
+	return o.ApplyT(func(v *Handshake) Handshake {
+		if v != nil {
+			return *v
+		}
+		var ret Handshake
+		return ret
+	}).(HandshakeOutput)
 }
 
 type HandshakeArrayOutput struct{ *pulumi.OutputState }
@@ -355,6 +361,10 @@ func (o HandshakeMapOutput) MapIndex(k pulumi.StringInput) HandshakeOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HandshakeInput)(nil)).Elem(), &Handshake{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HandshakePtrInput)(nil)).Elem(), &Handshake{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HandshakeArrayInput)(nil)).Elem(), HandshakeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HandshakeMapInput)(nil)).Elem(), HandshakeMap{})
 	pulumi.RegisterOutputType(HandshakeOutput{})
 	pulumi.RegisterOutputType(HandshakePtrOutput{})
 	pulumi.RegisterOutputType(HandshakeArrayOutput{})

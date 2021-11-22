@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["4a9a8978-a9cc-55ca-aa7c-530ccd91ae57"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstCmsGroupMetricRuleId = example.then(example => example.rules[0].id);
+ * export const firstCmsGroupMetricRuleId = example.then(example => example.rules?[0]?.id);
  * ```
  */
 export function getGroupMetricRules(args?: GetGroupMetricRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupMetricRulesResult> {
@@ -55,40 +55,40 @@ export interface GetGroupMetricRulesArgs {
     /**
      * The dimensions that specify the resources to be associated with the alert rule.
      */
-    readonly dimensions?: string;
+    dimensions?: string;
     /**
      * Indicates whether the alert rule is enabled.
      */
-    readonly enableState?: boolean;
+    enableState?: boolean;
     /**
      * The ID of the application group.
      */
-    readonly groupId?: string;
+    groupId?: string;
     /**
      * The name of the alert rule.
      */
-    readonly groupMetricRuleName?: string;
+    groupMetricRuleName?: string;
     /**
      * A list of Group Metric Rule IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The name of the metric.
      */
-    readonly metricName?: string;
+    metricName?: string;
     /**
      * A regex string to filter results by Group Metric Rule name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * The namespace of the service.
      */
-    readonly namespace?: string;
-    readonly outputFile?: string;
+    namespace?: string;
+    outputFile?: string;
     /**
      * The status of Group Metric Rule..
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -111,4 +111,51 @@ export interface GetGroupMetricRulesResult {
     readonly outputFile?: string;
     readonly rules: outputs.cms.GetGroupMetricRulesRule[];
     readonly status?: string;
+}
+
+export function getGroupMetricRulesOutput(args?: GetGroupMetricRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupMetricRulesResult> {
+    return pulumi.output(args).apply(a => getGroupMetricRules(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGroupMetricRules.
+ */
+export interface GetGroupMetricRulesOutputArgs {
+    /**
+     * The dimensions that specify the resources to be associated with the alert rule.
+     */
+    dimensions?: pulumi.Input<string>;
+    /**
+     * Indicates whether the alert rule is enabled.
+     */
+    enableState?: pulumi.Input<boolean>;
+    /**
+     * The ID of the application group.
+     */
+    groupId?: pulumi.Input<string>;
+    /**
+     * The name of the alert rule.
+     */
+    groupMetricRuleName?: pulumi.Input<string>;
+    /**
+     * A list of Group Metric Rule IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the metric.
+     */
+    metricName?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Group Metric Rule name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * The namespace of the service.
+     */
+    namespace?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of Group Metric Rule..
+     */
+    status?: pulumi.Input<string>;
 }

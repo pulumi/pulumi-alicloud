@@ -16,6 +16,45 @@ import (
 // [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 type Provider struct {
 	pulumi.ProviderResourceState
+
+	// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+	// console.
+	AccessKey pulumi.StringPtrOutput `pulumi:"accessKey"`
+	// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
+	// Alibaba Cloud console.
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	// Use this to mark a terraform configuration file source.
+	ConfigurationSource pulumi.StringPtrOutput `pulumi:"configurationSource"`
+	// The URI of sidecar credentials service.
+	CredentialsUri pulumi.StringPtrOutput `pulumi:"credentialsUri"`
+	// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
+	// of the Alibaba Cloud console.
+	EcsRoleName pulumi.StringPtrOutput `pulumi:"ecsRoleName"`
+	// Deprecated: Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.
+	Fc pulumi.StringPtrOutput `pulumi:"fc"`
+	// Deprecated: Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.
+	LogEndpoint pulumi.StringPtrOutput `pulumi:"logEndpoint"`
+	// Deprecated: Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.
+	MnsEndpoint pulumi.StringPtrOutput `pulumi:"mnsEndpoint"`
+	// Deprecated: Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.
+	OtsInstanceName pulumi.StringPtrOutput `pulumi:"otsInstanceName"`
+	// The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
+	Profile  pulumi.StringPtrOutput `pulumi:"profile"`
+	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
+	// The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
+	Region pulumi.StringPtrOutput `pulumi:"region"`
+	// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+	// console.
+	SecretKey pulumi.StringPtrOutput `pulumi:"secretKey"`
+	// The security transport for the assume role invoking.
+	SecureTransport pulumi.StringPtrOutput `pulumi:"secureTransport"`
+	// security token. A security token is only required if you are using Security Token Service.
+	SecurityToken     pulumi.StringPtrOutput `pulumi:"securityToken"`
+	SecurityTransport pulumi.StringPtrOutput `pulumi:"securityTransport"`
+	// The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
+	SharedCredentialsFile pulumi.StringPtrOutput `pulumi:"sharedCredentialsFile"`
+	// The source ip for the assume role invoking.
+	SourceIp pulumi.StringPtrOutput `pulumi:"sourceIp"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -195,9 +234,7 @@ func (i *providerPtrType) ToProviderPtrOutputWithContext(ctx context.Context) Pr
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderPtrOutput)
 }
 
-type ProviderOutput struct {
-	*pulumi.OutputState
-}
+type ProviderOutput struct{ *pulumi.OutputState }
 
 func (ProviderOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Provider)(nil))
@@ -216,14 +253,12 @@ func (o ProviderOutput) ToProviderPtrOutput() ProviderPtrOutput {
 }
 
 func (o ProviderOutput) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
-	return o.ApplyT(func(v Provider) *Provider {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Provider) *Provider {
 		return &v
 	}).(ProviderPtrOutput)
 }
 
-type ProviderPtrOutput struct {
-	*pulumi.OutputState
-}
+type ProviderPtrOutput struct{ *pulumi.OutputState }
 
 func (ProviderPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Provider)(nil))
@@ -237,7 +272,19 @@ func (o ProviderPtrOutput) ToProviderPtrOutputWithContext(ctx context.Context) P
 	return o
 }
 
+func (o ProviderPtrOutput) Elem() ProviderOutput {
+	return o.ApplyT(func(v *Provider) Provider {
+		if v != nil {
+			return *v
+		}
+		var ret Provider
+		return ret
+	}).(ProviderOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderInput)(nil)).Elem(), &Provider{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderPtrInput)(nil)).Elem(), &Provider{})
 	pulumi.RegisterOutputType(ProviderOutput{})
 	pulumi.RegisterOutputType(ProviderPtrOutput{})
 }

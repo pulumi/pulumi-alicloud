@@ -4,12 +4,39 @@
 package cen
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)
 //
 // > **NOTE:** Available in 1.126.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_default, err := cen.GetTransitRouters(ctx, &cen.GetTransitRoutersArgs{
+// 			CenId: "cen-id1",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstTransitRoutersType", _default.TransitRouters[0].Type)
+// 		return nil
+// 	})
+// }
+// ```
 func GetTransitRouters(ctx *pulumi.Context, args *GetTransitRoutersArgs, opts ...pulumi.InvokeOption) (*GetTransitRoutersResult, error) {
 	var rv GetTransitRoutersResult
 	err := ctx.Invoke("alicloud:cen/getTransitRouters:getTransitRouters", args, &rv, opts...)
@@ -50,4 +77,95 @@ type GetTransitRoutersResult struct {
 	TransitRouterIds []string `pulumi:"transitRouterIds"`
 	// A list of CEN Transit Routers. Each element contains the following attributes:
 	TransitRouters []GetTransitRoutersTransitRouter `pulumi:"transitRouters"`
+}
+
+func GetTransitRoutersOutput(ctx *pulumi.Context, args GetTransitRoutersOutputArgs, opts ...pulumi.InvokeOption) GetTransitRoutersResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetTransitRoutersResult, error) {
+			args := v.(GetTransitRoutersArgs)
+			r, err := GetTransitRouters(ctx, &args, opts...)
+			return *r, err
+		}).(GetTransitRoutersResultOutput)
+}
+
+// A collection of arguments for invoking getTransitRouters.
+type GetTransitRoutersOutputArgs struct {
+	// ID of the CEN instance.
+	CenId      pulumi.StringInput    `pulumi:"cenId"`
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// ID of the transit router.
+	TransitRouterId pulumi.StringInput `pulumi:"transitRouterId"`
+	// A list of ID of the transit router.
+	TransitRouterIds pulumi.StringArrayInput `pulumi:"transitRouterIds"`
+}
+
+func (GetTransitRoutersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRoutersArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getTransitRouters.
+type GetTransitRoutersResultOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRoutersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRoutersResult)(nil)).Elem()
+}
+
+func (o GetTransitRoutersResultOutput) ToGetTransitRoutersResultOutput() GetTransitRoutersResultOutput {
+	return o
+}
+
+func (o GetTransitRoutersResultOutput) ToGetTransitRoutersResultOutputWithContext(ctx context.Context) GetTransitRoutersResultOutput {
+	return o
+}
+
+// ID of the CEN instance.
+func (o GetTransitRoutersResultOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRoutersResult) string { return v.CenId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetTransitRoutersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRoutersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetTransitRoutersResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTransitRoutersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTransitRoutersResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTransitRoutersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetTransitRoutersResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTransitRoutersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTransitRoutersResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTransitRoutersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The status of the transit router attachment.
+func (o GetTransitRoutersResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTransitRoutersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// ID of the transit router.
+func (o GetTransitRoutersResultOutput) TransitRouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRoutersResult) string { return v.TransitRouterId }).(pulumi.StringOutput)
+}
+
+func (o GetTransitRoutersResultOutput) TransitRouterIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTransitRoutersResult) []string { return v.TransitRouterIds }).(pulumi.StringArrayOutput)
+}
+
+// A list of CEN Transit Routers. Each element contains the following attributes:
+func (o GetTransitRoutersResultOutput) TransitRouters() GetTransitRoutersTransitRouterArrayOutput {
+	return o.ApplyT(func(v GetTransitRoutersResult) []GetTransitRoutersTransitRouter { return v.TransitRouters }).(GetTransitRoutersTransitRouterArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetTransitRoutersResultOutput{})
 }

@@ -95,7 +95,7 @@ export interface AccountAliasState {
     /**
      * Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
      */
-    readonly accountAlias?: pulumi.Input<string>;
+    accountAlias?: pulumi.Input<string>;
 }
 
 /**
@@ -105,5 +105,5 @@ export interface AccountAliasArgs {
     /**
      * Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
      */
-    readonly accountAlias: pulumi.Input<string>;
+    accountAlias: pulumi.Input<string>;
 }

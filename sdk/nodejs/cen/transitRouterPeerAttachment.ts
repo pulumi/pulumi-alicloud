@@ -227,63 +227,63 @@ export interface TransitRouterPeerAttachmentState {
     /**
      * Auto publish route enabled. The system default value is `false`.
      */
-    readonly autoPublishRouteEnabled?: pulumi.Input<boolean>;
+    autoPublishRouteEnabled?: pulumi.Input<boolean>;
     /**
      * The bandwidth of the bandwidth package.
      */
-    readonly bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number>;
     /**
      * The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
      */
-    readonly cenBandwidthPackageId?: pulumi.Input<string>;
+    cenBandwidthPackageId?: pulumi.Input<string>;
     /**
      * The ID of the CEN.
      */
-    readonly cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string>;
     /**
      * Whether to perform pre-check for this request, including permission, instance status verification, etc.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The ID of the peer transit router.
      */
-    readonly peerTransitRouterId?: pulumi.Input<string>;
+    peerTransitRouterId?: pulumi.Input<string>;
     /**
      * The region ID of peer transit router.
      */
-    readonly peerTransitRouterRegionId?: pulumi.Input<string>;
+    peerTransitRouterRegionId?: pulumi.Input<string>;
     /**
      * The resource type to attachment. Only support `VR` and default value is `VR`.
      */
-    readonly resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string>;
     /**
      * Whether to association route table. System default is `false`.
      */
-    readonly routeTableAssociationEnabled?: pulumi.Input<boolean>;
+    routeTableAssociationEnabled?: pulumi.Input<boolean>;
     /**
      * Whether to propagation route table. System default is `false`.
      */
-    readonly routeTablePropagationEnabled?: pulumi.Input<boolean>;
+    routeTablePropagationEnabled?: pulumi.Input<boolean>;
     /**
      * The associating status of the network.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
      */
-    readonly transitRouterAttachmentDescription?: pulumi.Input<string>;
+    transitRouterAttachmentDescription?: pulumi.Input<string>;
     /**
      * The ID of transit router attachment id.
      */
-    readonly transitRouterAttachmentId?: pulumi.Input<string>;
+    transitRouterAttachmentId?: pulumi.Input<string>;
     /**
      * The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
      */
-    readonly transitRouterAttachmentName?: pulumi.Input<string>;
+    transitRouterAttachmentName?: pulumi.Input<string>;
     /**
      * The ID of the transit router to attach.
      */
-    readonly transitRouterId?: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string>;
 }
 
 /**
@@ -293,53 +293,53 @@ export interface TransitRouterPeerAttachmentArgs {
     /**
      * Auto publish route enabled. The system default value is `false`.
      */
-    readonly autoPublishRouteEnabled?: pulumi.Input<boolean>;
+    autoPublishRouteEnabled?: pulumi.Input<boolean>;
     /**
      * The bandwidth of the bandwidth package.
      */
-    readonly bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number>;
     /**
      * The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
      */
-    readonly cenBandwidthPackageId?: pulumi.Input<string>;
+    cenBandwidthPackageId?: pulumi.Input<string>;
     /**
      * The ID of the CEN.
      */
-    readonly cenId: pulumi.Input<string>;
+    cenId: pulumi.Input<string>;
     /**
      * Whether to perform pre-check for this request, including permission, instance status verification, etc.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The ID of the peer transit router.
      */
-    readonly peerTransitRouterId: pulumi.Input<string>;
+    peerTransitRouterId: pulumi.Input<string>;
     /**
      * The region ID of peer transit router.
      */
-    readonly peerTransitRouterRegionId: pulumi.Input<string>;
+    peerTransitRouterRegionId: pulumi.Input<string>;
     /**
      * The resource type to attachment. Only support `VR` and default value is `VR`.
      */
-    readonly resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string>;
     /**
      * Whether to association route table. System default is `false`.
      */
-    readonly routeTableAssociationEnabled?: pulumi.Input<boolean>;
+    routeTableAssociationEnabled?: pulumi.Input<boolean>;
     /**
      * Whether to propagation route table. System default is `false`.
      */
-    readonly routeTablePropagationEnabled?: pulumi.Input<boolean>;
+    routeTablePropagationEnabled?: pulumi.Input<boolean>;
     /**
      * The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
      */
-    readonly transitRouterAttachmentDescription?: pulumi.Input<string>;
+    transitRouterAttachmentDescription?: pulumi.Input<string>;
     /**
      * The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
      */
-    readonly transitRouterAttachmentName?: pulumi.Input<string>;
+    transitRouterAttachmentName?: pulumi.Input<string>;
     /**
      * The ID of the transit router to attach.
      */
-    readonly transitRouterId?: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string>;
 }

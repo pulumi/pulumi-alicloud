@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     status: "Running",
  * });
  * const example = new alicloud.hbr.EcsBackupClient("example", {
- *     instanceId: _default.then(_default => _default.instances[0].id),
+ *     instanceId: _default.then(_default => _default.instances?[0]?.id),
  *     useHttps: false,
  *     dataNetworkType: "PUBLIC",
  *     maxCpuCore: 2,
@@ -182,47 +182,47 @@ export interface EcsBackupClientState {
     /**
      * The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
      */
-    readonly dataNetworkType?: pulumi.Input<string>;
+    dataNetworkType?: pulumi.Input<string>;
     /**
      * The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
      */
-    readonly dataProxySetting?: pulumi.Input<string>;
+    dataProxySetting?: pulumi.Input<string>;
     /**
      * The ID of ECS instance.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The number of CPU cores used by a single backup task, 0 means no restrictions.
      */
-    readonly maxCpuCore?: pulumi.Input<string>;
+    maxCpuCore?: pulumi.Input<string>;
     /**
      * The number of concurrent jobs for a single backup task, 0 means no restrictions.
      */
-    readonly maxWorker?: pulumi.Input<string>;
+    maxWorker?: pulumi.Input<string>;
     /**
      * Custom data plane proxy server host address.
      */
-    readonly proxyHost?: pulumi.Input<string>;
+    proxyHost?: pulumi.Input<string>;
     /**
      * The password of custom data plane proxy server.
      */
-    readonly proxyPassword?: pulumi.Input<string>;
+    proxyPassword?: pulumi.Input<string>;
     /**
      * Custom data plane proxy server host port.
      */
-    readonly proxyPort?: pulumi.Input<string>;
+    proxyPort?: pulumi.Input<string>;
     /**
      * The username of custom data plane proxy server.
      */
-    readonly proxyUser?: pulumi.Input<string>;
+    proxyUser?: pulumi.Input<string>;
     /**
      * Status of client. Valid values: `ACTIVATED`, `STOPPED`. You can start or stop the client by specifying the status.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
      */
-    readonly useHttps?: pulumi.Input<boolean>;
+    useHttps?: pulumi.Input<boolean>;
 }
 
 /**
@@ -232,45 +232,45 @@ export interface EcsBackupClientArgs {
     /**
      * The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`.
      */
-    readonly dataNetworkType?: pulumi.Input<string>;
+    dataNetworkType?: pulumi.Input<string>;
     /**
      * The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
      */
-    readonly dataProxySetting?: pulumi.Input<string>;
+    dataProxySetting?: pulumi.Input<string>;
     /**
      * The ID of ECS instance.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * The number of CPU cores used by a single backup task, 0 means no restrictions.
      */
-    readonly maxCpuCore?: pulumi.Input<string>;
+    maxCpuCore?: pulumi.Input<string>;
     /**
      * The number of concurrent jobs for a single backup task, 0 means no restrictions.
      */
-    readonly maxWorker?: pulumi.Input<string>;
+    maxWorker?: pulumi.Input<string>;
     /**
      * Custom data plane proxy server host address.
      */
-    readonly proxyHost?: pulumi.Input<string>;
+    proxyHost?: pulumi.Input<string>;
     /**
      * The password of custom data plane proxy server.
      */
-    readonly proxyPassword?: pulumi.Input<string>;
+    proxyPassword?: pulumi.Input<string>;
     /**
      * Custom data plane proxy server host port.
      */
-    readonly proxyPort?: pulumi.Input<string>;
+    proxyPort?: pulumi.Input<string>;
     /**
      * The username of custom data plane proxy server.
      */
-    readonly proxyUser?: pulumi.Input<string>;
+    proxyUser?: pulumi.Input<string>;
     /**
      * Status of client. Valid values: `ACTIVATED`, `STOPPED`. You can start or stop the client by specifying the status.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
      */
-    readonly useHttps?: pulumi.Input<boolean>;
+    useHttps?: pulumi.Input<boolean>;
 }

@@ -34,97 +34,97 @@ import (
 // 		_, err := log.NewAudit(ctx, "example", &log.AuditArgs{
 // 			Aliuid:      pulumi.String("12345678"),
 // 			DisplayName: pulumi.String("tf-audit-test"),
-// 			VariableMap: pulumi.StringMap{
-// 				"actiontrail_enabled":             pulumi.String("true"),
-// 				"actiontrail_ti_enabled":          pulumi.String("false"),
-// 				"actiontrail_ttl":                 pulumi.String("180"),
-// 				"apigateway_enabled":              pulumi.String("true"),
-// 				"apigateway_ti_enabled":           pulumi.String("false"),
-// 				"apigateway_ttl":                  pulumi.String("180"),
-// 				"appconnect_enabled":              pulumi.String("false"),
-// 				"appconnect_ttl":                  pulumi.String("180"),
-// 				"bastion_enabled":                 pulumi.String("true"),
-// 				"bastion_ti_enabled":              pulumi.String("false"),
-// 				"bastion_ttl":                     pulumi.String("180"),
-// 				"cloudfirewall_enabled":           pulumi.String("true"),
-// 				"cloudfirewall_ti_enabled":        pulumi.String("false"),
-// 				"cloudfirewall_ttl":               pulumi.String("180"),
-// 				"cps_enabled":                     pulumi.String("true"),
-// 				"cps_ti_enabled":                  pulumi.String("false"),
-// 				"cps_ttl":                         pulumi.String("180"),
-// 				"ddos_coo_access_enabled":         pulumi.String("false"),
-// 				"ddos_coo_access_ti_enabled":      pulumi.String("false"),
-// 				"ddos_coo_access_ttl":             pulumi.String("180"),
-// 				"drds_audit_collection_policy":    pulumi.String(""),
-// 				"drds_audit_enabled":              pulumi.String("true"),
-// 				"drds_audit_ti_enabled":           pulumi.String("false"),
-// 				"drds_audit_ttl":                  pulumi.String("7"),
-// 				"drds_sync_enabled":               pulumi.String("true"),
-// 				"drds_sync_ttl":                   pulumi.String("180"),
-// 				"k8s_audit_collection_policy":     pulumi.String(""),
-// 				"k8s_audit_enabled":               pulumi.String("true"),
-// 				"k8s_audit_ttl":                   pulumi.String("180"),
-// 				"k8s_event_collection_policy":     pulumi.String(""),
-// 				"k8s_event_enabled":               pulumi.String("true"),
-// 				"k8s_event_ttl":                   pulumi.String("180"),
-// 				"k8s_ingress_collection_policy":   pulumi.String(""),
-// 				"k8s_ingress_enabled":             pulumi.String("true"),
-// 				"k8s_ingress_ttl":                 pulumi.String("180"),
-// 				"nas_enabled":                     pulumi.String("true"),
-// 				"nas_ti_enabled":                  pulumi.String("false"),
-// 				"nas_ttl":                         pulumi.String("180"),
-// 				"oss_access_enabled":              pulumi.String("true"),
-// 				"oss_access_ti_enabled":           pulumi.String("false"),
-// 				"oss_access_ttl":                  pulumi.String("7"),
-// 				"oss_metering_enabled":            pulumi.String("true"),
-// 				"oss_metering_ttl":                pulumi.String("180"),
-// 				"oss_sync_enabled":                pulumi.String("true"),
-// 				"oss_sync_ttl":                    pulumi.String("180"),
-// 				"polardb_audit_collection_policy": pulumi.String(""),
-// 				"polardb_enabled":                 pulumi.String("true"),
-// 				"polardb_perf_collection_policy":  pulumi.String(""),
-// 				"polardb_perf_enabled":            pulumi.String("false"),
-// 				"polardb_perf_ttl":                pulumi.String("180"),
-// 				"polardb_slow_collection_policy":  pulumi.String(""),
-// 				"polardb_slow_enabled":            pulumi.String("false"),
-// 				"polardb_slow_ttl":                pulumi.String("180"),
-// 				"polardb_ti_enabled":              pulumi.String("false"),
-// 				"polardb_ttl":                     pulumi.String("180"),
-// 				"rds_audit_collection_policy":     pulumi.String(""),
-// 				"rds_enabled":                     pulumi.String("true"),
-// 				"rds_perf_collection_policy":      pulumi.String(""),
-// 				"rds_perf_enabled":                pulumi.String("false"),
-// 				"rds_perf_ttl":                    pulumi.String("180"),
-// 				"rds_slow_collection_policy":      pulumi.String(""),
-// 				"rds_slow_enabled":                pulumi.String("false"),
-// 				"rds_slow_ttl":                    pulumi.String("180"),
-// 				"rds_ti_enabled":                  pulumi.String("false"),
-// 				"rds_ttl":                         pulumi.String("180"),
-// 				"sas_crack_enabled":               pulumi.String("true"),
-// 				"sas_dns_enabled":                 pulumi.String("true"),
-// 				"sas_http_enabled":                pulumi.String("true"),
-// 				"sas_local_dns_enabled":           pulumi.String("true"),
-// 				"sas_login_enabled":               pulumi.String("true"),
-// 				"sas_network_enabled":             pulumi.String("true"),
-// 				"sas_process_enabled":             pulumi.String("true"),
-// 				"sas_security_alert_enabled":      pulumi.String("true"),
-// 				"sas_security_hc_enabled":         pulumi.String("true"),
-// 				"sas_security_vul_enabled":        pulumi.String("true"),
-// 				"sas_session_enabled":             pulumi.String("true"),
-// 				"sas_snapshot_account_enabled":    pulumi.String("true"),
-// 				"sas_snapshot_port_enabled":       pulumi.String("true"),
-// 				"sas_snapshot_process_enabled":    pulumi.String("true"),
-// 				"sas_ti_enabled":                  pulumi.String("false"),
-// 				"sas_ttl":                         pulumi.String("180"),
-// 				"slb_access_collection_policy":    pulumi.String(""),
-// 				"slb_access_enabled":              pulumi.String("true"),
-// 				"slb_access_ti_enabled":           pulumi.String("false"),
-// 				"slb_access_ttl":                  pulumi.String("7"),
-// 				"slb_sync_enabled":                pulumi.String("true"),
-// 				"slb_sync_ttl":                    pulumi.String("180"),
-// 				"waf_enabled":                     pulumi.String("true"),
-// 				"waf_ti_enabled":                  pulumi.String("false"),
-// 				"waf_ttl":                         pulumi.String("180"),
+// 			VariableMap: pulumi.AnyMap{
+// 				"actiontrail_enabled":             pulumi.Any("true"),
+// 				"actiontrail_ti_enabled":          pulumi.Any("false"),
+// 				"actiontrail_ttl":                 pulumi.Any("180"),
+// 				"apigateway_enabled":              pulumi.Any("true"),
+// 				"apigateway_ti_enabled":           pulumi.Any("false"),
+// 				"apigateway_ttl":                  pulumi.Any("180"),
+// 				"appconnect_enabled":              pulumi.Any("false"),
+// 				"appconnect_ttl":                  pulumi.Any("180"),
+// 				"bastion_enabled":                 pulumi.Any("true"),
+// 				"bastion_ti_enabled":              pulumi.Any("false"),
+// 				"bastion_ttl":                     pulumi.Any("180"),
+// 				"cloudfirewall_enabled":           pulumi.Any("true"),
+// 				"cloudfirewall_ti_enabled":        pulumi.Any("false"),
+// 				"cloudfirewall_ttl":               pulumi.Any("180"),
+// 				"cps_enabled":                     pulumi.Any("true"),
+// 				"cps_ti_enabled":                  pulumi.Any("false"),
+// 				"cps_ttl":                         pulumi.Any("180"),
+// 				"ddos_coo_access_enabled":         pulumi.Any("false"),
+// 				"ddos_coo_access_ti_enabled":      pulumi.Any("false"),
+// 				"ddos_coo_access_ttl":             pulumi.Any("180"),
+// 				"drds_audit_collection_policy":    pulumi.Any(""),
+// 				"drds_audit_enabled":              pulumi.Any("true"),
+// 				"drds_audit_ti_enabled":           pulumi.Any("false"),
+// 				"drds_audit_ttl":                  pulumi.Any("7"),
+// 				"drds_sync_enabled":               pulumi.Any("true"),
+// 				"drds_sync_ttl":                   pulumi.Any("180"),
+// 				"k8s_audit_collection_policy":     pulumi.Any(""),
+// 				"k8s_audit_enabled":               pulumi.Any("true"),
+// 				"k8s_audit_ttl":                   pulumi.Any("180"),
+// 				"k8s_event_collection_policy":     pulumi.Any(""),
+// 				"k8s_event_enabled":               pulumi.Any("true"),
+// 				"k8s_event_ttl":                   pulumi.Any("180"),
+// 				"k8s_ingress_collection_policy":   pulumi.Any(""),
+// 				"k8s_ingress_enabled":             pulumi.Any("true"),
+// 				"k8s_ingress_ttl":                 pulumi.Any("180"),
+// 				"nas_enabled":                     pulumi.Any("true"),
+// 				"nas_ti_enabled":                  pulumi.Any("false"),
+// 				"nas_ttl":                         pulumi.Any("180"),
+// 				"oss_access_enabled":              pulumi.Any("true"),
+// 				"oss_access_ti_enabled":           pulumi.Any("false"),
+// 				"oss_access_ttl":                  pulumi.Any("7"),
+// 				"oss_metering_enabled":            pulumi.Any("true"),
+// 				"oss_metering_ttl":                pulumi.Any("180"),
+// 				"oss_sync_enabled":                pulumi.Any("true"),
+// 				"oss_sync_ttl":                    pulumi.Any("180"),
+// 				"polardb_audit_collection_policy": pulumi.Any(""),
+// 				"polardb_enabled":                 pulumi.Any("true"),
+// 				"polardb_perf_collection_policy":  pulumi.Any(""),
+// 				"polardb_perf_enabled":            pulumi.Any("false"),
+// 				"polardb_perf_ttl":                pulumi.Any("180"),
+// 				"polardb_slow_collection_policy":  pulumi.Any(""),
+// 				"polardb_slow_enabled":            pulumi.Any("false"),
+// 				"polardb_slow_ttl":                pulumi.Any("180"),
+// 				"polardb_ti_enabled":              pulumi.Any("false"),
+// 				"polardb_ttl":                     pulumi.Any("180"),
+// 				"rds_audit_collection_policy":     pulumi.Any(""),
+// 				"rds_enabled":                     pulumi.Any("true"),
+// 				"rds_perf_collection_policy":      pulumi.Any(""),
+// 				"rds_perf_enabled":                pulumi.Any("false"),
+// 				"rds_perf_ttl":                    pulumi.Any("180"),
+// 				"rds_slow_collection_policy":      pulumi.Any(""),
+// 				"rds_slow_enabled":                pulumi.Any("false"),
+// 				"rds_slow_ttl":                    pulumi.Any("180"),
+// 				"rds_ti_enabled":                  pulumi.Any("false"),
+// 				"rds_ttl":                         pulumi.Any("180"),
+// 				"sas_crack_enabled":               pulumi.Any("true"),
+// 				"sas_dns_enabled":                 pulumi.Any("true"),
+// 				"sas_http_enabled":                pulumi.Any("true"),
+// 				"sas_local_dns_enabled":           pulumi.Any("true"),
+// 				"sas_login_enabled":               pulumi.Any("true"),
+// 				"sas_network_enabled":             pulumi.Any("true"),
+// 				"sas_process_enabled":             pulumi.Any("true"),
+// 				"sas_security_alert_enabled":      pulumi.Any("true"),
+// 				"sas_security_hc_enabled":         pulumi.Any("true"),
+// 				"sas_security_vul_enabled":        pulumi.Any("true"),
+// 				"sas_session_enabled":             pulumi.Any("true"),
+// 				"sas_snapshot_account_enabled":    pulumi.Any("true"),
+// 				"sas_snapshot_port_enabled":       pulumi.Any("true"),
+// 				"sas_snapshot_process_enabled":    pulumi.Any("true"),
+// 				"sas_ti_enabled":                  pulumi.Any("false"),
+// 				"sas_ttl":                         pulumi.Any("180"),
+// 				"slb_access_collection_policy":    pulumi.Any(""),
+// 				"slb_access_enabled":              pulumi.Any("true"),
+// 				"slb_access_ti_enabled":           pulumi.Any("false"),
+// 				"slb_access_ttl":                  pulumi.Any("7"),
+// 				"slb_sync_enabled":                pulumi.Any("true"),
+// 				"slb_sync_ttl":                    pulumi.Any("180"),
+// 				"waf_enabled":                     pulumi.Any("true"),
+// 				"waf_ti_enabled":                  pulumi.Any("false"),
+// 				"waf_ttl":                         pulumi.Any("180"),
 // 			},
 // 		})
 // 		if err != nil {
@@ -153,11 +153,11 @@ import (
 // 				pulumi.String("123456789123"),
 // 				pulumi.String("12345678912300123"),
 // 			},
-// 			VariableMap: pulumi.StringMap{
-// 				"actiontrail_enabled": pulumi.String("true"),
-// 				"actiontrail_ttl":     pulumi.String("180"),
-// 				"oss_access_enabled":  pulumi.String("true"),
-// 				"oss_access_ttl":      pulumi.String("180"),
+// 			VariableMap: pulumi.AnyMap{
+// 				"actiontrail_enabled": pulumi.Any("true"),
+// 				"actiontrail_ttl":     pulumi.Any("180"),
+// 				"oss_access_enabled":  pulumi.Any("true"),
+// 				"oss_access_ttl":      pulumi.Any("180"),
 // 			},
 // 		})
 // 		if err != nil {
@@ -183,11 +183,11 @@ import (
 // 			Aliuid:                pulumi.String("12345678"),
 // 			DisplayName:           pulumi.String("tf-audit-test"),
 // 			ResourceDirectoryType: pulumi.String("all"),
-// 			VariableMap: pulumi.StringMap{
-// 				"actiontrail_enabled": pulumi.String("true"),
-// 				"actiontrail_ttl":     pulumi.String("180"),
-// 				"oss_access_enabled":  pulumi.String("true"),
-// 				"oss_access_ttl":      pulumi.String("180"),
+// 			VariableMap: pulumi.AnyMap{
+// 				"actiontrail_enabled": pulumi.Any("true"),
+// 				"actiontrail_ttl":     pulumi.Any("180"),
+// 				"oss_access_enabled":  pulumi.Any("true"),
+// 				"oss_access_ttl":      pulumi.Any("180"),
 // 			},
 // 		})
 // 		if err != nil {
@@ -215,11 +215,11 @@ import (
 // 				pulumi.String("12345678912300123"),
 // 			},
 // 			ResourceDirectoryType: pulumi.String("custom"),
-// 			VariableMap: pulumi.StringMap{
-// 				"actiontrail_enabled": pulumi.String("true"),
-// 				"actiontrail_ttl":     pulumi.String("180"),
-// 				"oss_access_enabled":  pulumi.String("true"),
-// 				"oss_access_ttl":      pulumi.String("180"),
+// 			VariableMap: pulumi.AnyMap{
+// 				"actiontrail_enabled": pulumi.Any("true"),
+// 				"actiontrail_ttl":     pulumi.Any("180"),
+// 				"oss_access_enabled":  pulumi.Any("true"),
+// 				"oss_access_ttl":      pulumi.Any("180"),
 // 			},
 // 		})
 // 		if err != nil {
@@ -409,7 +409,7 @@ type AuditArrayInput interface {
 type AuditArray []AuditInput
 
 func (AuditArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Audit)(nil))
+	return reflect.TypeOf((*[]*Audit)(nil)).Elem()
 }
 
 func (i AuditArray) ToAuditArrayOutput() AuditArrayOutput {
@@ -434,7 +434,7 @@ type AuditMapInput interface {
 type AuditMap map[string]AuditInput
 
 func (AuditMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Audit)(nil))
+	return reflect.TypeOf((*map[string]*Audit)(nil)).Elem()
 }
 
 func (i AuditMap) ToAuditMapOutput() AuditMapOutput {
@@ -445,9 +445,7 @@ func (i AuditMap) ToAuditMapOutputWithContext(ctx context.Context) AuditMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(AuditMapOutput)
 }
 
-type AuditOutput struct {
-	*pulumi.OutputState
-}
+type AuditOutput struct{ *pulumi.OutputState }
 
 func (AuditOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Audit)(nil))
@@ -466,14 +464,12 @@ func (o AuditOutput) ToAuditPtrOutput() AuditPtrOutput {
 }
 
 func (o AuditOutput) ToAuditPtrOutputWithContext(ctx context.Context) AuditPtrOutput {
-	return o.ApplyT(func(v Audit) *Audit {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Audit) *Audit {
 		return &v
 	}).(AuditPtrOutput)
 }
 
-type AuditPtrOutput struct {
-	*pulumi.OutputState
-}
+type AuditPtrOutput struct{ *pulumi.OutputState }
 
 func (AuditPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Audit)(nil))
@@ -485,6 +481,16 @@ func (o AuditPtrOutput) ToAuditPtrOutput() AuditPtrOutput {
 
 func (o AuditPtrOutput) ToAuditPtrOutputWithContext(ctx context.Context) AuditPtrOutput {
 	return o
+}
+
+func (o AuditPtrOutput) Elem() AuditOutput {
+	return o.ApplyT(func(v *Audit) Audit {
+		if v != nil {
+			return *v
+		}
+		var ret Audit
+		return ret
+	}).(AuditOutput)
 }
 
 type AuditArrayOutput struct{ *pulumi.OutputState }
@@ -528,6 +534,10 @@ func (o AuditMapOutput) MapIndex(k pulumi.StringInput) AuditOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditInput)(nil)).Elem(), &Audit{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditPtrInput)(nil)).Elem(), &Audit{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditArrayInput)(nil)).Elem(), AuditArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditMapInput)(nil)).Elem(), AuditMap{})
 	pulumi.RegisterOutputType(AuditOutput{})
 	pulumi.RegisterOutputType(AuditPtrOutput{})
 	pulumi.RegisterOutputType(AuditArrayOutput{})

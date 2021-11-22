@@ -4,6 +4,9 @@
 package cloudsso
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -78,4 +81,76 @@ type GetDirectoriesResult struct {
 	NameRegex  *string  `pulumi:"nameRegex"`
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetDirectoriesOutput(ctx *pulumi.Context, args GetDirectoriesOutputArgs, opts ...pulumi.InvokeOption) GetDirectoriesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDirectoriesResult, error) {
+			args := v.(GetDirectoriesArgs)
+			r, err := GetDirectories(ctx, &args, opts...)
+			return *r, err
+		}).(GetDirectoriesResultOutput)
+}
+
+// A collection of arguments for invoking getDirectories.
+type GetDirectoriesOutputArgs struct {
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of Directory IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Directory name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetDirectoriesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDirectoriesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDirectories.
+type GetDirectoriesResultOutput struct{ *pulumi.OutputState }
+
+func (GetDirectoriesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDirectoriesResult)(nil)).Elem()
+}
+
+func (o GetDirectoriesResultOutput) ToGetDirectoriesResultOutput() GetDirectoriesResultOutput {
+	return o
+}
+
+func (o GetDirectoriesResultOutput) ToGetDirectoriesResultOutputWithContext(ctx context.Context) GetDirectoriesResultOutput {
+	return o
+}
+
+func (o GetDirectoriesResultOutput) Directories() GetDirectoriesDirectoryArrayOutput {
+	return o.ApplyT(func(v GetDirectoriesResult) []GetDirectoriesDirectory { return v.Directories }).(GetDirectoriesDirectoryArrayOutput)
+}
+
+func (o GetDirectoriesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDirectoriesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDirectoriesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDirectoriesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDirectoriesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDirectoriesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDirectoriesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDirectoriesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDirectoriesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDirectoriesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDirectoriesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDirectoriesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDirectoriesResultOutput{})
 }

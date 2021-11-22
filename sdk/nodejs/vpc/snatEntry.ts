@@ -122,31 +122,31 @@ export interface SnatEntryState {
     /**
      * The id of the snat entry on the server.
      */
-    readonly snatEntryId?: pulumi.Input<string>;
+    snatEntryId?: pulumi.Input<string>;
     /**
      * The name of snat entry.
      */
-    readonly snatEntryName?: pulumi.Input<string>;
+    snatEntryName?: pulumi.Input<string>;
     /**
      * The SNAT ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidthPackages`.
      */
-    readonly snatIp?: pulumi.Input<string>;
+    snatIp?: pulumi.Input<string>;
     /**
      * The value can get from `alicloud.vpc.NatGateway` Attributes "snatTableIds".
      */
-    readonly snatTableId?: pulumi.Input<string>;
+    snatTableId?: pulumi.Input<string>;
     /**
      * The private network segment of Ecs. This parameter and the `sourceVswitchId` parameter are mutually exclusive and cannot appear at the same time.
      */
-    readonly sourceCidr?: pulumi.Input<string>;
+    sourceCidr?: pulumi.Input<string>;
     /**
      * The vswitch ID.
      */
-    readonly sourceVswitchId?: pulumi.Input<string>;
+    sourceVswitchId?: pulumi.Input<string>;
     /**
      * (Available in 1.119.1+) The status of snat entry.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -156,21 +156,21 @@ export interface SnatEntryArgs {
     /**
      * The name of snat entry.
      */
-    readonly snatEntryName?: pulumi.Input<string>;
+    snatEntryName?: pulumi.Input<string>;
     /**
      * The SNAT ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidthPackages`.
      */
-    readonly snatIp: pulumi.Input<string>;
+    snatIp: pulumi.Input<string>;
     /**
      * The value can get from `alicloud.vpc.NatGateway` Attributes "snatTableIds".
      */
-    readonly snatTableId: pulumi.Input<string>;
+    snatTableId: pulumi.Input<string>;
     /**
      * The private network segment of Ecs. This parameter and the `sourceVswitchId` parameter are mutually exclusive and cannot appear at the same time.
      */
-    readonly sourceCidr?: pulumi.Input<string>;
+    sourceCidr?: pulumi.Input<string>;
     /**
      * The vswitch ID.
      */
-    readonly sourceVswitchId?: pulumi.Input<string>;
+    sourceVswitchId?: pulumi.Input<string>;
 }

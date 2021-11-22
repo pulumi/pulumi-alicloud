@@ -22,9 +22,9 @@ import * as utilities from "../utilities";
  *     status: "Running",
  * });
  * const default = polardbClustersDs.then(polardbClustersDs => alicloud.polardb.getDatabases({
- *     dbClusterId: polardbClustersDs.clusters[0].id,
+ *     dbClusterId: polardbClustersDs.clusters?[0]?.id,
  * }));
- * export const database = _default.then(_default => _default.databases[0].dbName);
+ * export const database = _default.then(_default => _default.databases?[0]?.dbName);
  * ```
  */
 export function getDatabases(args: GetDatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabasesResult> {
@@ -48,11 +48,11 @@ export interface GetDatabasesArgs {
     /**
      * The polarDB cluster ID.
      */
-    readonly dbClusterId: string;
+    dbClusterId: string;
     /**
      * A regex string to filter results by database name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
 }
 
 /**
@@ -73,4 +73,22 @@ export interface GetDatabasesResult {
      * database name of the cluster.
      */
     readonly names: string[];
+}
+
+export function getDatabasesOutput(args: GetDatabasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabasesResult> {
+    return pulumi.output(args).apply(a => getDatabases(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDatabases.
+ */
+export interface GetDatabasesOutputArgs {
+    /**
+     * The polarDB cluster ID.
+     */
+    dbClusterId: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by database name.
+     */
+    nameRegex?: pulumi.Input<string>;
 }

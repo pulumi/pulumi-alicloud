@@ -4,6 +4,9 @@
 package ddos
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,4 +70,72 @@ type GetDdosCooDomainResourcesResult struct {
 	OutputFile         *string                             `pulumi:"outputFile"`
 	QueryDomainPattern *string                             `pulumi:"queryDomainPattern"`
 	Resources          []GetDdosCooDomainResourcesResource `pulumi:"resources"`
+}
+
+func GetDdosCooDomainResourcesOutput(ctx *pulumi.Context, args GetDdosCooDomainResourcesOutputArgs, opts ...pulumi.InvokeOption) GetDdosCooDomainResourcesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDdosCooDomainResourcesResult, error) {
+			args := v.(GetDdosCooDomainResourcesArgs)
+			r, err := GetDdosCooDomainResources(ctx, &args, opts...)
+			return *r, err
+		}).(GetDdosCooDomainResourcesResultOutput)
+}
+
+// A collection of arguments for invoking getDdosCooDomainResources.
+type GetDdosCooDomainResourcesOutputArgs struct {
+	// A list of Domain Resource IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A list ID of instance that you want to associate.
+	InstanceIds pulumi.StringArrayInput `pulumi:"instanceIds"`
+	OutputFile  pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// Match the pattern.
+	QueryDomainPattern pulumi.StringPtrInput `pulumi:"queryDomainPattern"`
+}
+
+func (GetDdosCooDomainResourcesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDdosCooDomainResourcesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDdosCooDomainResources.
+type GetDdosCooDomainResourcesResultOutput struct{ *pulumi.OutputState }
+
+func (GetDdosCooDomainResourcesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDdosCooDomainResourcesResult)(nil)).Elem()
+}
+
+func (o GetDdosCooDomainResourcesResultOutput) ToGetDdosCooDomainResourcesResultOutput() GetDdosCooDomainResourcesResultOutput {
+	return o
+}
+
+func (o GetDdosCooDomainResourcesResultOutput) ToGetDdosCooDomainResourcesResultOutputWithContext(ctx context.Context) GetDdosCooDomainResourcesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDdosCooDomainResourcesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDdosCooDomainResourcesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDdosCooDomainResourcesResultOutput) InstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResult) []string { return v.InstanceIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDdosCooDomainResourcesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDdosCooDomainResourcesResultOutput) QueryDomainPattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResult) *string { return v.QueryDomainPattern }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDdosCooDomainResourcesResultOutput) Resources() GetDdosCooDomainResourcesResourceArrayOutput {
+	return o.ApplyT(func(v GetDdosCooDomainResourcesResult) []GetDdosCooDomainResourcesResource { return v.Resources }).(GetDdosCooDomainResourcesResourceArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDdosCooDomainResourcesResultOutput{})
 }

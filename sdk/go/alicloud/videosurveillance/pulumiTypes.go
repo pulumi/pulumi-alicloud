@@ -358,6 +358,10 @@ func (o GetSystemGroupsGroupStatArrayOutput) Index(i pulumi.IntInput) GetSystemG
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSystemGroupsGroupInput)(nil)).Elem(), GetSystemGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSystemGroupsGroupArrayInput)(nil)).Elem(), GetSystemGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSystemGroupsGroupStatInput)(nil)).Elem(), GetSystemGroupsGroupStatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSystemGroupsGroupStatArrayInput)(nil)).Elem(), GetSystemGroupsGroupStatArray{})
 	pulumi.RegisterOutputType(GetSystemGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetSystemGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetSystemGroupsGroupStatOutput{})

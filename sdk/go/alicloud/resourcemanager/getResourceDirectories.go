@@ -4,6 +4,9 @@
 package resourcemanager
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -53,4 +56,55 @@ type GetResourceDirectoriesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id         string  `pulumi:"id"`
 	OutputFile *string `pulumi:"outputFile"`
+}
+
+func GetResourceDirectoriesOutput(ctx *pulumi.Context, args GetResourceDirectoriesOutputArgs, opts ...pulumi.InvokeOption) GetResourceDirectoriesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetResourceDirectoriesResult, error) {
+			args := v.(GetResourceDirectoriesArgs)
+			r, err := GetResourceDirectories(ctx, &args, opts...)
+			return *r, err
+		}).(GetResourceDirectoriesResultOutput)
+}
+
+// A collection of arguments for invoking getResourceDirectories.
+type GetResourceDirectoriesOutputArgs struct {
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetResourceDirectoriesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceDirectoriesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getResourceDirectories.
+type GetResourceDirectoriesResultOutput struct{ *pulumi.OutputState }
+
+func (GetResourceDirectoriesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceDirectoriesResult)(nil)).Elem()
+}
+
+func (o GetResourceDirectoriesResultOutput) ToGetResourceDirectoriesResultOutput() GetResourceDirectoriesResultOutput {
+	return o
+}
+
+func (o GetResourceDirectoriesResultOutput) ToGetResourceDirectoriesResultOutputWithContext(ctx context.Context) GetResourceDirectoriesResultOutput {
+	return o
+}
+
+// A list of resource directories. Each element contains the following attributes:
+func (o GetResourceDirectoriesResultOutput) Directories() GetResourceDirectoriesDirectoryArrayOutput {
+	return o.ApplyT(func(v GetResourceDirectoriesResult) []GetResourceDirectoriesDirectory { return v.Directories }).(GetResourceDirectoriesDirectoryArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetResourceDirectoriesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceDirectoriesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetResourceDirectoriesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceDirectoriesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetResourceDirectoriesResultOutput{})
 }

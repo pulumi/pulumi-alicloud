@@ -125,39 +125,39 @@ export class DnsDomain extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DnsDomain resources.
  */
 export interface DnsDomainState {
-    readonly dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The domain ID.
      */
-    readonly domainId?: pulumi.Input<string>;
+    domainId?: pulumi.Input<string>;
     /**
      * Name of the domain. This name without suffix can have a string of 1 to 63 characters(domain name subject, excluding suffix), must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      */
-    readonly domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string>;
     /**
      * Id of the group in which the domain will add. If not supplied, then use default group.
      */
-    readonly groupId?: pulumi.Input<string>;
-    readonly groupName?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string>;
     /**
      * User language.
      */
-    readonly lang?: pulumi.Input<string>;
-    readonly punyCode?: pulumi.Input<string>;
+    lang?: pulumi.Input<string>;
+    punyCode?: pulumi.Input<string>;
     /**
      * Remarks information for your domain name.
      */
-    readonly remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string>;
     /**
      * The Id of resource group which the dns domain belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -167,27 +167,27 @@ export interface DnsDomainArgs {
     /**
      * Name of the domain. This name without suffix can have a string of 1 to 63 characters(domain name subject, excluding suffix), must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      */
-    readonly domainName: pulumi.Input<string>;
+    domainName: pulumi.Input<string>;
     /**
      * Id of the group in which the domain will add. If not supplied, then use default group.
      */
-    readonly groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
     /**
      * User language.
      */
-    readonly lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string>;
     /**
      * Remarks information for your domain name.
      */
-    readonly remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string>;
     /**
      * The Id of resource group which the dns domain belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

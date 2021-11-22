@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dms
 {
@@ -18,6 +19,14 @@ namespace Pulumi.AliCloud.Dms
         /// </summary>
         public static Task<GetEnterpriseInstancesResult> InvokeAsync(GetEnterpriseInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEnterpriseInstancesResult>("alicloud:dms/getEnterpriseInstances:getEnterpriseInstances", args ?? new GetEnterpriseInstancesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of DMS Enterprise Instances in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.88.0+
+        /// </summary>
+        public static Output<GetEnterpriseInstancesResult> Invoke(GetEnterpriseInstancesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEnterpriseInstancesResult>("alicloud:dms/getEnterpriseInstances:getEnterpriseInstances", args ?? new GetEnterpriseInstancesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -81,6 +90,70 @@ namespace Pulumi.AliCloud.Dms
         public int? Tid { get; set; }
 
         public GetEnterpriseInstancesArgs()
+        {
+        }
+    }
+
+    public sealed class GetEnterpriseInstancesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The type of the environment to which the database instance belongs.
+        /// </summary>
+        [Input("envType")]
+        public Input<string>? EnvType { get; set; }
+
+        /// <summary>
+        /// A regex string to filter the results by the DMS Enterprise Instance instance_alias.
+        /// </summary>
+        [Input("instanceAliasRegex")]
+        public Input<string>? InstanceAliasRegex { get; set; }
+
+        /// <summary>
+        /// The source of the database instance.
+        /// </summary>
+        [Input("instanceSource")]
+        public Input<string>? InstanceSource { get; set; }
+
+        /// <summary>
+        /// The ID of the database instance.
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// A regex string to filter the results by the DMS Enterprise Instance instance_alias.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        /// <summary>
+        /// The network type of the database instance. Valid values: CLASSIC and VPC. For more information about the valid values, see the description of the RegisterInstance operation.
+        /// </summary>
+        [Input("netType")]
+        public Input<string>? NetType { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The keyword used to query database instances.
+        /// </summary>
+        [Input("searchKey")]
+        public Input<string>? SearchKey { get; set; }
+
+        /// <summary>
+        /// Filter the results by status of the DMS Enterprise Instances. Valid values: `NORMAL`, `UNAVAILABLE`, `UNKNOWN`, `DELETED`, `DISABLE`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The ID of the tenant in Data Management (DMS) Enterprise.
+        /// </summary>
+        [Input("tid")]
+        public Input<int>? Tid { get; set; }
+
+        public GetEnterpriseInstancesInvokeArgs()
         {
         }
     }

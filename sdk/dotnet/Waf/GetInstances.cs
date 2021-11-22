@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Waf
 {
@@ -40,7 +41,7 @@ namespace Pulumi.AliCloud.Waf
         ///             ResourceGroupId = "rg-acfmwvv********",
         ///             InstanceSource = "waf-cloud",
         ///         }));
-        ///         this.TheFirstWafInstanceId = @default.Apply(@default =&gt; @default.Instances[0].Id);
+        ///         this.TheFirstWafInstanceId = @default.Apply(@default =&gt; @default.Instances?[0]?.Id);
         ///     }
         /// 
         ///     [Output("theFirstWafInstanceId")]
@@ -52,6 +53,48 @@ namespace Pulumi.AliCloud.Waf
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:waf/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides a WAF datasource to retrieve instances.
+        /// 
+        /// For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
+        /// 
+        /// &gt; **NOTE:** Available in 1.90.0+ .
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Waf.GetInstances.InvokeAsync(new AliCloud.Waf.GetInstancesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "waf-cn-09k********",
+        ///             },
+        ///             Status = 1,
+        ///             ResourceGroupId = "rg-acfmwvv********",
+        ///             InstanceSource = "waf-cloud",
+        ///         }));
+        ///         this.TheFirstWafInstanceId = @default.Apply(@default =&gt; @default.Instances?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("theFirstWafInstanceId")]
+        ///     public Output&lt;string&gt; TheFirstWafInstanceId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:waf/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -91,6 +134,46 @@ namespace Pulumi.AliCloud.Waf
         public int? Status { get; set; }
 
         public GetInstancesArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of WAF instance IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The source of the WAF instance.
+        /// </summary>
+        [Input("instanceSource")]
+        public Input<string>? InstanceSource { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The ID of resource group to which WAF instance belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
+        /// </summary>
+        [Input("status")]
+        public Input<int>? Status { get; set; }
+
+        public GetInstancesInvokeArgs()
         {
         }
     }

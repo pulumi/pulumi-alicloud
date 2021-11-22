@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ram
 {
@@ -33,7 +34,7 @@ namespace Pulumi.AliCloud.Ram
         ///             Type = "System",
         ///             UserName = "user1",
         ///         }));
-        ///         this.FirstPolicyName = policiesDs.Apply(policiesDs =&gt; policiesDs.Policies[0].Name);
+        ///         this.FirstPolicyName = policiesDs.Apply(policiesDs =&gt; policiesDs.Policies?[0]?.Name);
         ///     }
         /// 
         ///     [Output("firstPolicyName")]
@@ -45,6 +46,41 @@ namespace Pulumi.AliCloud.Ram
         /// </summary>
         public static Task<GetPoliciesResult> InvokeAsync(GetPoliciesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPoliciesResult>("alicloud:ram/getPolicies:getPolicies", args ?? new GetPoliciesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var policiesDs = Output.Create(AliCloud.Ram.GetPolicies.InvokeAsync(new AliCloud.Ram.GetPoliciesArgs
+        ///         {
+        ///             GroupName = "group1",
+        ///             OutputFile = "policies.txt",
+        ///             Type = "System",
+        ///             UserName = "user1",
+        ///         }));
+        ///         this.FirstPolicyName = policiesDs.Apply(policiesDs =&gt; policiesDs.Policies?[0]?.Name);
+        ///     }
+        /// 
+        ///     [Output("firstPolicyName")]
+        ///     public Output&lt;string&gt; FirstPolicyName { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetPoliciesResult> Invoke(GetPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPoliciesResult>("alicloud:ram/getPolicies:getPolicies", args ?? new GetPoliciesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -98,6 +134,60 @@ namespace Pulumi.AliCloud.Ram
         public string? UserName { get; set; }
 
         public GetPoliciesArgs()
+        {
+        }
+    }
+
+    public sealed class GetPoliciesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Default to `true`. Set it to true can output more details.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        /// <summary>
+        /// Filter results by a specific group name. Returned policies are attached to the specified group.
+        /// </summary>
+        [Input("groupName")]
+        public Input<string>? GroupName { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter resulting policies by name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Filter results by a specific role name. Returned policies are attached to the specified role.
+        /// </summary>
+        [Input("roleName")]
+        public Input<string>? RoleName { get; set; }
+
+        /// <summary>
+        /// Filter results by a specific policy type. Valid values are `Custom` and `System`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// Filter results by a specific user name. Returned policies are attached to the specified user.
+        /// </summary>
+        [Input("userName")]
+        public Input<string>? UserName { get; set; }
+
+        public GetPoliciesInvokeArgs()
         {
         }
     }

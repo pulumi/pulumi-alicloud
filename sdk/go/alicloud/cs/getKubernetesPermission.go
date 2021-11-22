@@ -4,6 +4,9 @@
 package cs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,4 +70,59 @@ type LookupKubernetesPermissionResult struct {
 	Permissions []GetKubernetesPermissionPermission `pulumi:"permissions"`
 	// The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
 	Uid string `pulumi:"uid"`
+}
+
+func LookupKubernetesPermissionOutput(ctx *pulumi.Context, args LookupKubernetesPermissionOutputArgs, opts ...pulumi.InvokeOption) LookupKubernetesPermissionResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupKubernetesPermissionResult, error) {
+			args := v.(LookupKubernetesPermissionArgs)
+			r, err := LookupKubernetesPermission(ctx, &args, opts...)
+			return *r, err
+		}).(LookupKubernetesPermissionResultOutput)
+}
+
+// A collection of arguments for invoking getKubernetesPermission.
+type LookupKubernetesPermissionOutputArgs struct {
+	// A list of user permission.
+	Permissions GetKubernetesPermissionPermissionArrayInput `pulumi:"permissions"`
+	// The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
+	Uid pulumi.StringInput `pulumi:"uid"`
+}
+
+func (LookupKubernetesPermissionOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKubernetesPermissionArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getKubernetesPermission.
+type LookupKubernetesPermissionResultOutput struct{ *pulumi.OutputState }
+
+func (LookupKubernetesPermissionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKubernetesPermissionResult)(nil)).Elem()
+}
+
+func (o LookupKubernetesPermissionResultOutput) ToLookupKubernetesPermissionResultOutput() LookupKubernetesPermissionResultOutput {
+	return o
+}
+
+func (o LookupKubernetesPermissionResultOutput) ToLookupKubernetesPermissionResultOutputWithContext(ctx context.Context) LookupKubernetesPermissionResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupKubernetesPermissionResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesPermissionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of user permission.
+func (o LookupKubernetesPermissionResultOutput) Permissions() GetKubernetesPermissionPermissionArrayOutput {
+	return o.ApplyT(func(v LookupKubernetesPermissionResult) []GetKubernetesPermissionPermission { return v.Permissions }).(GetKubernetesPermissionPermissionArrayOutput)
+}
+
+// The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
+func (o LookupKubernetesPermissionResultOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesPermissionResult) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupKubernetesPermissionResultOutput{})
 }

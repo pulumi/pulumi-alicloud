@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultNatGateway = new alicloud.vpc.NatGateway("defaultNatGateway", {
@@ -202,49 +202,49 @@ export interface ForwardEntryState {
     /**
      * The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidthPackages`.
      */
-    readonly externalIp?: pulumi.Input<string>;
+    externalIp?: pulumi.Input<string>;
     /**
      * The external port, valid value is 1~65535|any.
      */
-    readonly externalPort?: pulumi.Input<string>;
+    externalPort?: pulumi.Input<string>;
     /**
      * The id of the forward entry on the server.
      */
-    readonly forwardEntryId?: pulumi.Input<string>;
+    forwardEntryId?: pulumi.Input<string>;
     /**
      * The name of forward entry.
      */
-    readonly forwardEntryName?: pulumi.Input<string>;
+    forwardEntryName?: pulumi.Input<string>;
     /**
      * The value can get from `alicloud.vpc.NatGateway` Attributes "forwardTableIds".
      */
-    readonly forwardTableId?: pulumi.Input<string>;
+    forwardTableId?: pulumi.Input<string>;
     /**
      * The internal ip, must a private ip.
      */
-    readonly internalIp?: pulumi.Input<string>;
+    internalIp?: pulumi.Input<string>;
     /**
      * The internal port, valid value is 1~65535|any.
      */
-    readonly internalPort?: pulumi.Input<string>;
+    internalPort?: pulumi.Input<string>;
     /**
      * The ip protocal, valid value is tcp|udp|any.
      */
-    readonly ipProtocol?: pulumi.Input<string>;
+    ipProtocol?: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Specifies whether to remove limits on the port range. Default value is `false`.
      */
-    readonly portBreak?: pulumi.Input<boolean>;
+    portBreak?: pulumi.Input<boolean>;
     /**
      * (Available in 1.119.1+) The status of forward entry.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -254,39 +254,39 @@ export interface ForwardEntryArgs {
     /**
      * The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidthPackages`.
      */
-    readonly externalIp: pulumi.Input<string>;
+    externalIp: pulumi.Input<string>;
     /**
      * The external port, valid value is 1~65535|any.
      */
-    readonly externalPort: pulumi.Input<string>;
+    externalPort: pulumi.Input<string>;
     /**
      * The name of forward entry.
      */
-    readonly forwardEntryName?: pulumi.Input<string>;
+    forwardEntryName?: pulumi.Input<string>;
     /**
      * The value can get from `alicloud.vpc.NatGateway` Attributes "forwardTableIds".
      */
-    readonly forwardTableId: pulumi.Input<string>;
+    forwardTableId: pulumi.Input<string>;
     /**
      * The internal ip, must a private ip.
      */
-    readonly internalIp: pulumi.Input<string>;
+    internalIp: pulumi.Input<string>;
     /**
      * The internal port, valid value is 1~65535|any.
      */
-    readonly internalPort: pulumi.Input<string>;
+    internalPort: pulumi.Input<string>;
     /**
      * The ip protocal, valid value is tcp|udp|any.
      */
-    readonly ipProtocol: pulumi.Input<string>;
+    ipProtocol: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Specifies whether to remove limits on the port range. Default value is `false`.
      */
-    readonly portBreak?: pulumi.Input<boolean>;
+    portBreak?: pulumi.Input<boolean>;
 }

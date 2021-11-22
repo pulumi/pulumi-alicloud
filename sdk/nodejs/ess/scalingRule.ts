@@ -154,51 +154,51 @@ export interface ScalingRuleState {
      * - PercentChangeInCapacity: It is used to increase or decrease a specified proportion of ECS instances.
      * - TotalCapacity: It is used to adjust the quantity of ECS instances in the current scaling group to a specified value.
      */
-    readonly adjustmentType?: pulumi.Input<string>;
+    adjustmentType?: pulumi.Input<string>;
     /**
      * The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
      * - QuantityChangeInCapacity：(0, 500] U (-500, 0]
      * - PercentChangeInCapacity：[0, 10000] U [-100, 0]
      * - TotalCapacity：[0, 1000]
      */
-    readonly adjustmentValue?: pulumi.Input<number>;
-    readonly ari?: pulumi.Input<string>;
+    adjustmentValue?: pulumi.Input<number>;
+    ari?: pulumi.Input<string>;
     /**
      * The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
      */
-    readonly cooldown?: pulumi.Input<number>;
+    cooldown?: pulumi.Input<number>;
     /**
      * Indicates whether scale in by the target tracking policy is disabled. Default to false.
      */
-    readonly disableScaleIn?: pulumi.Input<boolean>;
+    disableScaleIn?: pulumi.Input<boolean>;
     /**
      * The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
      */
-    readonly estimatedInstanceWarmup?: pulumi.Input<number>;
+    estimatedInstanceWarmup?: pulumi.Input<number>;
     /**
      * A CloudMonitor metric name.
      */
-    readonly metricName?: pulumi.Input<string>;
+    metricName?: pulumi.Input<string>;
     /**
      * ID of the scaling group of a scaling rule.
      */
-    readonly scalingGroupId?: pulumi.Input<string>;
+    scalingGroupId?: pulumi.Input<string>;
     /**
      * Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
      */
-    readonly scalingRuleName?: pulumi.Input<string>;
+    scalingRuleName?: pulumi.Input<string>;
     /**
      * The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
      */
-    readonly scalingRuleType?: pulumi.Input<string>;
+    scalingRuleType?: pulumi.Input<string>;
     /**
      * Steps for StepScalingRule. See Block stepAdjustment below for details.
      */
-    readonly stepAdjustments?: pulumi.Input<pulumi.Input<inputs.ess.ScalingRuleStepAdjustment>[]>;
+    stepAdjustments?: pulumi.Input<pulumi.Input<inputs.ess.ScalingRuleStepAdjustment>[]>;
     /**
      * The target value for the metric.
      */
-    readonly targetValue?: pulumi.Input<number>;
+    targetValue?: pulumi.Input<number>;
 }
 
 /**
@@ -211,48 +211,48 @@ export interface ScalingRuleArgs {
      * - PercentChangeInCapacity: It is used to increase or decrease a specified proportion of ECS instances.
      * - TotalCapacity: It is used to adjust the quantity of ECS instances in the current scaling group to a specified value.
      */
-    readonly adjustmentType?: pulumi.Input<string>;
+    adjustmentType?: pulumi.Input<string>;
     /**
      * The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
      * - QuantityChangeInCapacity：(0, 500] U (-500, 0]
      * - PercentChangeInCapacity：[0, 10000] U [-100, 0]
      * - TotalCapacity：[0, 1000]
      */
-    readonly adjustmentValue?: pulumi.Input<number>;
+    adjustmentValue?: pulumi.Input<number>;
     /**
      * The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
      */
-    readonly cooldown?: pulumi.Input<number>;
+    cooldown?: pulumi.Input<number>;
     /**
      * Indicates whether scale in by the target tracking policy is disabled. Default to false.
      */
-    readonly disableScaleIn?: pulumi.Input<boolean>;
+    disableScaleIn?: pulumi.Input<boolean>;
     /**
      * The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
      */
-    readonly estimatedInstanceWarmup?: pulumi.Input<number>;
+    estimatedInstanceWarmup?: pulumi.Input<number>;
     /**
      * A CloudMonitor metric name.
      */
-    readonly metricName?: pulumi.Input<string>;
+    metricName?: pulumi.Input<string>;
     /**
      * ID of the scaling group of a scaling rule.
      */
-    readonly scalingGroupId: pulumi.Input<string>;
+    scalingGroupId: pulumi.Input<string>;
     /**
      * Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
      */
-    readonly scalingRuleName?: pulumi.Input<string>;
+    scalingRuleName?: pulumi.Input<string>;
     /**
      * The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
      */
-    readonly scalingRuleType?: pulumi.Input<string>;
+    scalingRuleType?: pulumi.Input<string>;
     /**
      * Steps for StepScalingRule. See Block stepAdjustment below for details.
      */
-    readonly stepAdjustments?: pulumi.Input<pulumi.Input<inputs.ess.ScalingRuleStepAdjustment>[]>;
+    stepAdjustments?: pulumi.Input<pulumi.Input<inputs.ess.ScalingRuleStepAdjustment>[]>;
     /**
      * The target value for the metric.
      */
-    readonly targetValue?: pulumi.Input<number>;
+    targetValue?: pulumi.Input<number>;
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cfg
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Cfg
         ///             },
         ///             NameRegex = "tftest",
         ///         }));
-        ///         this.FirstConfigRuleId = example.Apply(example =&gt; example.Rules[0].Id);
+        ///         this.FirstConfigRuleId = example.Apply(example =&gt; example.Rules?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstConfigRuleId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Cfg
         /// </summary>
         public static Task<GetRulesResult> InvokeAsync(GetRulesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:cfg/getRules:getRules", args ?? new GetRulesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Config Rules of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.99.0+.
+        /// 
+        /// &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-northeast-1`.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Cfg.GetRules.InvokeAsync(new AliCloud.Cfg.GetRulesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "cr-ed4bad756057********",
+        ///             },
+        ///             NameRegex = "tftest",
+        ///         }));
+        ///         this.FirstConfigRuleId = example.Apply(example =&gt; example.Rules?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstConfigRuleId")]
+        ///     public Output&lt;string&gt; FirstConfigRuleId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetRulesResult> Invoke(GetRulesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:cfg/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -119,6 +160,76 @@ namespace Pulumi.AliCloud.Cfg
         public string? Status { get; set; }
 
         public GetRulesArgs()
+        {
+        }
+    }
+
+    public sealed class GetRulesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
+        /// </summary>
+        [Input("configRuleState")]
+        public Input<string>? ConfigRuleState { get; set; }
+
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Config Rule IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The ID of the member account to which the rule to be queried belongs. The default is empty. When `multi_account` is set to true, this parameter is valid.
+        /// </summary>
+        [Input("memberId")]
+        public Input<int>? MemberId { get; set; }
+
+        /// <summary>
+        /// Whether the enterprise management account queries the rule details of member accounts.
+        /// </summary>
+        [Input("multiAccount")]
+        public Input<bool>? MultiAccount { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by rule name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
+        /// </summary>
+        [Input("riskLevel")]
+        public Input<int>? RiskLevel { get; set; }
+
+        /// <summary>
+        /// The name of config rule.
+        /// </summary>
+        [Input("ruleName")]
+        public Input<string>? RuleName { get; set; }
+
+        /// <summary>
+        /// The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetRulesInvokeArgs()
         {
         }
     }

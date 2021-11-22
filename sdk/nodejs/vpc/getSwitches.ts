@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "vswitchDatasourceName";
  *
- * const defaultZones = pulumi.output(alicloud.getZones({ async: true }));
+ * const defaultZones = pulumi.output(alicloud.getZones());
  * const vpc = new alicloud.vpc.Network("vpc", {
  *     cidrBlock: "172.16.0.0/16",
  *     vpcName: name,
@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultSwitches = vswitch.vswitchName.apply(vswitchName => alicloud.vpc.getSwitches({
  *     nameRegex: vswitchName,
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getSwitches(args?: GetSwitchesArgs, opts?: pulumi.InvokeOptions): Promise<GetSwitchesResult> {
@@ -67,56 +67,56 @@ export interface GetSwitchesArgs {
     /**
      * Filter results by a specific CIDR block. For example: "172.16.0.0/12".
      */
-    readonly cidrBlock?: string;
+    cidrBlock?: string;
     /**
      * Specifies whether to precheck this request only. Valid values: `true` and `false`.
      */
-    readonly dryRun?: boolean;
+    dryRun?: boolean;
     /**
      * A list of VSwitch IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * Indicate whether the VSwitch is created by the system.
      */
-    readonly isDefault?: boolean;
+    isDefault?: boolean;
     /**
      * A regex string to filter results by name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The Id of resource group which VSWitch belongs.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * The route table ID of the VSwitch.
      */
-    readonly routeTableId?: string;
+    routeTableId?: string;
     /**
      * The status of the VSwitch. Valid values: `Available` and `Pending`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
     /**
      * ID of the VPC that owns the VSwitch.
      */
-    readonly vpcId?: string;
+    vpcId?: string;
     /**
      * The name of the VSwitch.
      */
-    readonly vswitchName?: string;
+    vswitchName?: string;
     /**
      * The VSwitch owner id.
      */
-    readonly vswitchOwnerId?: number;
+    vswitchOwnerId?: number;
     /**
      * The availability zone of the VSwitch.
      */
-    readonly zoneId?: string;
+    zoneId?: string;
 }
 
 /**
@@ -179,4 +179,67 @@ export interface GetSwitchesResult {
      * ID of the availability zone where the VSwitch is located.
      */
     readonly zoneId?: string;
+}
+
+export function getSwitchesOutput(args?: GetSwitchesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSwitchesResult> {
+    return pulumi.output(args).apply(a => getSwitches(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSwitches.
+ */
+export interface GetSwitchesOutputArgs {
+    /**
+     * Filter results by a specific CIDR block. For example: "172.16.0.0/12".
+     */
+    cidrBlock?: pulumi.Input<string>;
+    /**
+     * Specifies whether to precheck this request only. Valid values: `true` and `false`.
+     */
+    dryRun?: pulumi.Input<boolean>;
+    /**
+     * A list of VSwitch IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Indicate whether the VSwitch is created by the system.
+     */
+    isDefault?: pulumi.Input<boolean>;
+    /**
+     * A regex string to filter results by name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The Id of resource group which VSWitch belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The route table ID of the VSwitch.
+     */
+    routeTableId?: pulumi.Input<string>;
+    /**
+     * The status of the VSwitch. Valid values: `Available` and `Pending`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * ID of the VPC that owns the VSwitch.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
+     * The name of the VSwitch.
+     */
+    vswitchName?: pulumi.Input<string>;
+    /**
+     * The VSwitch owner id.
+     */
+    vswitchOwnerId?: pulumi.Input<number>;
+    /**
+     * The availability zone of the VSwitch.
+     */
+    zoneId?: pulumi.Input<string>;
 }

@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
@@ -234,71 +234,71 @@ export interface InstanceState {
     /**
      * （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
      */
-    readonly config?: pulumi.Input<string>;
+    config?: pulumi.Input<string>;
     /**
      * The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
      */
-    readonly deployType?: pulumi.Input<number>;
+    deployType?: pulumi.Input<number>;
     /**
      * The disk size of the instance. When modify this value, it only support adjust to a greater value.
      */
-    readonly diskSize?: pulumi.Input<number>;
+    diskSize?: pulumi.Input<number>;
     /**
      * The disk type of the instance. 0: efficient cloud disk , 1: SSD.
      */
-    readonly diskType?: pulumi.Input<number>;
+    diskType?: pulumi.Input<number>;
     /**
      * The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
      */
-    readonly eipMax?: pulumi.Input<number>;
+    eipMax?: pulumi.Input<number>;
     /**
      * The EndPoint to access the kafka instance.
      */
-    readonly endPoint?: pulumi.Input<string>;
+    endPoint?: pulumi.Input<string>;
     /**
      * The max value of io of the instance. When modify this value, it only support adjust to a greater value.
      */
-    readonly ioMax?: pulumi.Input<number>;
+    ioMax?: pulumi.Input<number>;
     /**
      * Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
      */
-    readonly paidType?: pulumi.Input<string>;
+    paidType?: pulumi.Input<string>;
     /**
      * （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
      */
-    readonly securityGroup?: pulumi.Input<string>;
+    securityGroup?: pulumi.Input<string>;
     /**
      * （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
      */
-    readonly serviceVersion?: pulumi.Input<string>;
+    serviceVersion?: pulumi.Input<string>;
     /**
      * The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
      */
-    readonly specType?: pulumi.Input<string>;
+    specType?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
      */
-    readonly topicQuota?: pulumi.Input<number>;
+    topicQuota?: pulumi.Input<number>;
     /**
      * The ID of attaching VPC to instance.
      */
-    readonly vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
     /**
      * The ID of attaching vswitch to instance.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * The Zone to launch the kafka instance.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -308,57 +308,57 @@ export interface InstanceArgs {
     /**
      * （Optional, Available in v1.112.0+） The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
      */
-    readonly config?: pulumi.Input<string>;
+    config?: pulumi.Input<string>;
     /**
      * The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
      */
-    readonly deployType: pulumi.Input<number>;
+    deployType: pulumi.Input<number>;
     /**
      * The disk size of the instance. When modify this value, it only support adjust to a greater value.
      */
-    readonly diskSize: pulumi.Input<number>;
+    diskSize: pulumi.Input<number>;
     /**
      * The disk type of the instance. 0: efficient cloud disk , 1: SSD.
      */
-    readonly diskType: pulumi.Input<number>;
+    diskType: pulumi.Input<number>;
     /**
      * The max bandwidth of the instance. When modify this value, it only support adjust to a greater value.
      */
-    readonly eipMax?: pulumi.Input<number>;
+    eipMax?: pulumi.Input<number>;
     /**
      * The max value of io of the instance. When modify this value, it only support adjust to a greater value.
      */
-    readonly ioMax: pulumi.Input<number>;
+    ioMax: pulumi.Input<number>;
     /**
      * Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
      */
-    readonly paidType?: pulumi.Input<string>;
+    paidType?: pulumi.Input<string>;
     /**
      * （Optional, ForceNew, Available in v1.93.0+） The ID of security group for this instance. If the security group is empty, system will create a default one.
      */
-    readonly securityGroup?: pulumi.Input<string>;
+    securityGroup?: pulumi.Input<string>;
     /**
      * （Optional, Available in v1.112.0+） The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
      */
-    readonly serviceVersion?: pulumi.Input<string>;
+    serviceVersion?: pulumi.Input<string>;
     /**
      * The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
      */
-    readonly specType?: pulumi.Input<string>;
+    specType?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
      */
-    readonly topicQuota: pulumi.Input<number>;
+    topicQuota: pulumi.Input<number>;
     /**
      * The ID of attaching vswitch to instance.
      */
-    readonly vswitchId: pulumi.Input<string>;
+    vswitchId: pulumi.Input<string>;
 }

@@ -13,6 +13,7 @@ __all__ = [
     'GetReceiversResult',
     'AwaitableGetReceiversResult',
     'get_receivers',
+    'get_receivers_output',
 ]
 
 @pulumi.output_type
@@ -157,3 +158,37 @@ def get_receivers(ids: Optional[Sequence[str]] = None,
         output_file=__ret__.output_file,
         receiverses=__ret__.receiverses,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_receivers)
+def get_receivers_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         key_word: Optional[pulumi.Input[Optional[str]]] = None,
+                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         status: Optional[pulumi.Input[Optional[int]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReceiversResult]:
+    """
+    This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.125.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.directmail.get_receivers(ids=["ca73b1e4fb0df7c935a5097a****"],
+        name_regex="the_resource_name")
+    pulumi.export("firstDirectMailReceiversId", example.receiverses[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Receivers IDs.
+    :param str key_word: The key word.
+    :param str name_regex: A regex string to filter results by Receivers name.
+    :param int status: The status of the resource.
+    """
+    ...

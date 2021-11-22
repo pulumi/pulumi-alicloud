@@ -27,11 +27,11 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getInstances.
  */
 export interface GetInstancesArgs {
-    readonly descriptionRegex?: string;
-    readonly ids?: string[];
-    readonly outputFile?: string;
-    readonly tags?: {[key: string]: any};
-    readonly version?: string;
+    descriptionRegex?: string;
+    ids?: string[];
+    outputFile?: string;
+    tags?: {[key: string]: any};
+    version?: string;
 }
 
 /**
@@ -49,4 +49,19 @@ export interface GetInstancesResult {
     readonly outputFile?: string;
     readonly tags?: {[key: string]: any};
     readonly version?: string;
+}
+
+export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
+    return pulumi.output(args).apply(a => getInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstances.
+ */
+export interface GetInstancesOutputArgs {
+    descriptionRegex?: pulumi.Input<string>;
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: any}>;
+    version?: pulumi.Input<string>;
 }

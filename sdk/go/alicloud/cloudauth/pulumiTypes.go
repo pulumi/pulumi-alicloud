@@ -126,6 +126,8 @@ func (o GetFaceConfigsConfigArrayOutput) Index(i pulumi.IntInput) GetFaceConfigs
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFaceConfigsConfigInput)(nil)).Elem(), GetFaceConfigsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFaceConfigsConfigArrayInput)(nil)).Elem(), GetFaceConfigsConfigArray{})
 	pulumi.RegisterOutputType(GetFaceConfigsConfigOutput{})
 	pulumi.RegisterOutputType(GetFaceConfigsConfigArrayOutput{})
 }

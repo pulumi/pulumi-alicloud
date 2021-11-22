@@ -13,6 +13,7 @@ __all__ = [
     'GetZonesResult',
     'AwaitableGetZonesResult',
     'get_zones',
+    'get_zones_output',
 ]
 
 @pulumi.output_type
@@ -201,3 +202,31 @@ def get_zones(category: Optional[str] = None,
         multi_zone=__ret__.multi_zone,
         output_file=__ret__.output_file,
         zones=__ret__.zones)
+
+
+@_utilities.lift_output_func(get_zones)
+def get_zones_output(category: Optional[pulumi.Input[Optional[str]]] = None,
+                     db_instance_class: Optional[pulumi.Input[Optional[str]]] = None,
+                     db_instance_storage_type: Optional[pulumi.Input[Optional[str]]] = None,
+                     engine: Optional[pulumi.Input[Optional[str]]] = None,
+                     engine_version: Optional[pulumi.Input[Optional[str]]] = None,
+                     instance_charge_type: Optional[pulumi.Input[Optional[str]]] = None,
+                     multi: Optional[pulumi.Input[Optional[bool]]] = None,
+                     multi_zone: Optional[pulumi.Input[Optional[bool]]] = None,
+                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
+    """
+    This data source provides availability zones for RDS that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+
+    > **NOTE:** Available in v1.73.0+.
+
+
+    :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+    :param str db_instance_storage_type: The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
+    :param str engine: Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
+    :param str engine_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+    :param str instance_charge_type: Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+    :param bool multi: It has been deprecated from version 1.137.0 and using `multi_zone` instead.
+    :param bool multi_zone: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
+    """
+    ...

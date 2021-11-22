@@ -55,28 +55,28 @@ export interface GetServerPlansArgs {
     /**
      * The peak bandwidth. Unit: Mbit/s.
      */
-    readonly bandwidth?: number;
+    bandwidth?: number;
     /**
      * The number of CPU cores.
      */
-    readonly core?: number;
+    core?: number;
     /**
      * The size of the enhanced SSD (ESSD). Unit: GB.
      */
-    readonly diskSize?: number;
+    diskSize?: number;
     /**
      * The monthly data transfer quota. Unit: GB.
      */
-    readonly flow?: number;
+    flow?: number;
     /**
      * A list of Instance Plan IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The memory size. Unit: GB.
      */
-    readonly memory?: number;
-    readonly outputFile?: string;
+    memory?: number;
+    outputFile?: string;
 }
 
 /**
@@ -95,4 +95,39 @@ export interface GetServerPlansResult {
     readonly memory?: number;
     readonly outputFile?: string;
     readonly plans: outputs.simpleapplicationserver.GetServerPlansPlan[];
+}
+
+export function getServerPlansOutput(args?: GetServerPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerPlansResult> {
+    return pulumi.output(args).apply(a => getServerPlans(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServerPlans.
+ */
+export interface GetServerPlansOutputArgs {
+    /**
+     * The peak bandwidth. Unit: Mbit/s.
+     */
+    bandwidth?: pulumi.Input<number>;
+    /**
+     * The number of CPU cores.
+     */
+    core?: pulumi.Input<number>;
+    /**
+     * The size of the enhanced SSD (ESSD). Unit: GB.
+     */
+    diskSize?: pulumi.Input<number>;
+    /**
+     * The monthly data transfer quota. Unit: GB.
+     */
+    flow?: pulumi.Input<number>;
+    /**
+     * A list of Instance Plan IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The memory size. Unit: GB.
+     */
+    memory?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string>;
 }

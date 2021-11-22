@@ -14,6 +14,7 @@ __all__ = [
     'GetQuotaApplicationsResult',
     'AwaitableGetQuotaApplicationsResult',
     'get_quota_applications',
+    'get_quota_applications_output',
 ]
 
 @pulumi.output_type
@@ -199,3 +200,44 @@ def get_quota_applications(dimensions: Optional[Sequence[pulumi.InputType['GetQu
         quota_action_code=__ret__.quota_action_code,
         quota_category=__ret__.quota_category,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_quota_applications)
+def get_quota_applications_output(dimensions: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetQuotaApplicationsDimensionArgs']]]]] = None,
+                                  enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                                  ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                  key_word: Optional[pulumi.Input[Optional[str]]] = None,
+                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                  product_code: Optional[pulumi.Input[str]] = None,
+                                  quota_action_code: Optional[pulumi.Input[Optional[str]]] = None,
+                                  quota_category: Optional[pulumi.Input[Optional[str]]] = None,
+                                  status: Optional[pulumi.Input[Optional[str]]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQuotaApplicationsResult]:
+    """
+    This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.117.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.quotas.get_quota_applications(product_code="ess",
+        ids=["4621F886-81E9-xxxx-xxxx"])
+    pulumi.export("firstQuotasQuotaApplicationId", example.applications[0].id)
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetQuotaApplicationsDimensionArgs']] dimensions: The quota dimensions.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of Application Info IDs.
+    :param str product_code: The product code.
+    :param str quota_action_code: The ID of quota action..
+    :param str quota_category: The quota category. Valid values: `CommonQuota`, `FlowControl`.
+    :param str status: The status of the quota application.
+    """
+    ...

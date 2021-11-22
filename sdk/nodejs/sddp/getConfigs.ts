@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     ids: [id],
  *     outputFile: "./t.json",
  * }));
- * export const sddpConfigId = defaultConfigs.ids;
+ * export const sddpConfigId = defaultConfigs.apply(defaultConfigs => defaultConfigs.ids);
  * ```
  */
 export function getConfigs(args?: GetConfigsArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigsResult> {
@@ -52,9 +52,9 @@ export interface GetConfigsArgs {
     /**
      * A list of Config IDs.
      */
-    readonly ids?: string[];
-    readonly lang?: string;
-    readonly outputFile?: string;
+    ids?: string[];
+    lang?: string;
+    outputFile?: string;
 }
 
 /**
@@ -69,4 +69,20 @@ export interface GetConfigsResult {
     readonly ids: string[];
     readonly lang?: string;
     readonly outputFile?: string;
+}
+
+export function getConfigsOutput(args?: GetConfigsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigsResult> {
+    return pulumi.output(args).apply(a => getConfigs(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getConfigs.
+ */
+export interface GetConfigsOutputArgs {
+    /**
+     * A list of Config IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    lang?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

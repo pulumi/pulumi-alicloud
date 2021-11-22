@@ -29,13 +29,13 @@ export function getMongoInstances(args?: GetMongoInstancesArgs, opts?: pulumi.In
  * A collection of arguments for invoking getMongoInstances.
  */
 export interface GetMongoInstancesArgs {
-    readonly availabilityZone?: string;
-    readonly ids?: string[];
-    readonly instanceClass?: string;
-    readonly instanceType?: string;
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
-    readonly tags?: {[key: string]: any};
+    availabilityZone?: string;
+    ids?: string[];
+    instanceClass?: string;
+    instanceType?: string;
+    nameRegex?: string;
+    outputFile?: string;
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -55,4 +55,21 @@ export interface GetMongoInstancesResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly tags?: {[key: string]: any};
+}
+
+export function getMongoInstancesOutput(args?: GetMongoInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMongoInstancesResult> {
+    return pulumi.output(args).apply(a => getMongoInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMongoInstances.
+ */
+export interface GetMongoInstancesOutputArgs {
+    availabilityZone?: pulumi.Input<string>;
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceClass?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

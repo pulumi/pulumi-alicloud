@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Quotas
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Quotas
         ///                 "4621F886-81E9-xxxx-xxxx",
         ///             },
         ///         }));
-        ///         this.FirstQuotasQuotaApplicationId = example.Apply(example =&gt; example.Applications[0].Id);
+        ///         this.FirstQuotasQuotaApplicationId = example.Apply(example =&gt; example.Applications?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstQuotasQuotaApplicationId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Quotas
         /// </summary>
         public static Task<GetQuotaApplicationsResult> InvokeAsync(GetQuotaApplicationsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetQuotaApplicationsResult>("alicloud:quotas/getQuotaApplications:getQuotaApplications", args ?? new GetQuotaApplicationsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.117.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Quotas.GetQuotaApplications.InvokeAsync(new AliCloud.Quotas.GetQuotaApplicationsArgs
+        ///         {
+        ///             ProductCode = "ess",
+        ///             Ids = 
+        ///             {
+        ///                 "4621F886-81E9-xxxx-xxxx",
+        ///             },
+        ///         }));
+        ///         this.FirstQuotasQuotaApplicationId = example.Apply(example =&gt; example.Applications?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstQuotasQuotaApplicationId")]
+        ///     public Output&lt;string&gt; FirstQuotasQuotaApplicationId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetQuotaApplicationsResult> Invoke(GetQuotaApplicationsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetQuotaApplicationsResult>("alicloud:quotas/getQuotaApplications:getQuotaApplications", args ?? new GetQuotaApplicationsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -116,6 +157,73 @@ namespace Pulumi.AliCloud.Quotas
         public string? Status { get; set; }
 
         public GetQuotaApplicationsArgs()
+        {
+        }
+    }
+
+    public sealed class GetQuotaApplicationsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("dimensions")]
+        private InputList<Inputs.GetQuotaApplicationsDimensionInputArgs>? _dimensions;
+
+        /// <summary>
+        /// The quota dimensions.
+        /// </summary>
+        public InputList<Inputs.GetQuotaApplicationsDimensionInputArgs> Dimensions
+        {
+            get => _dimensions ?? (_dimensions = new InputList<Inputs.GetQuotaApplicationsDimensionInputArgs>());
+            set => _dimensions = value;
+        }
+
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Application Info IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("keyWord")]
+        public Input<string>? KeyWord { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The product code.
+        /// </summary>
+        [Input("productCode", required: true)]
+        public Input<string> ProductCode { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of quota action..
+        /// </summary>
+        [Input("quotaActionCode")]
+        public Input<string>? QuotaActionCode { get; set; }
+
+        /// <summary>
+        /// The quota category. Valid values: `CommonQuota`, `FlowControl`.
+        /// </summary>
+        [Input("quotaCategory")]
+        public Input<string>? QuotaCategory { get; set; }
+
+        /// <summary>
+        /// The status of the quota application.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetQuotaApplicationsInvokeArgs()
         {
         }
     }

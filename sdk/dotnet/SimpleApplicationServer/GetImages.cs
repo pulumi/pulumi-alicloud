@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.SimpleApplicationServer
 {
@@ -13,6 +14,9 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
     {
         public static Task<GetImagesResult> InvokeAsync(GetImagesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("alicloud:simpleapplicationserver/getImages:getImages", args ?? new GetImagesArgs(), options.WithVersion());
+
+        public static Output<GetImagesResult> Invoke(GetImagesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetImagesResult>("alicloud:simpleapplicationserver/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -42,6 +46,36 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public string? OutputFile { get; set; }
 
         public GetImagesArgs()
+        {
+        }
+    }
+
+    public sealed class GetImagesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The type of the image. Valid values: `app`, `custom`, `system`.
+        /// * `system`: operating system (OS) image.
+        /// * `app`: application image.
+        /// * `custom`: custom image.
+        /// </summary>
+        [Input("imageType")]
+        public Input<string>? ImageType { get; set; }
+
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetImagesInvokeArgs()
         {
         }
     }

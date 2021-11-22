@@ -4,6 +4,9 @@
 package ddos
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,4 +74,78 @@ type GetDdosCooPortsResult struct {
 	InstanceId string                `pulumi:"instanceId"`
 	OutputFile *string               `pulumi:"outputFile"`
 	Ports      []GetDdosCooPortsPort `pulumi:"ports"`
+}
+
+func GetDdosCooPortsOutput(ctx *pulumi.Context, args GetDdosCooPortsOutputArgs, opts ...pulumi.InvokeOption) GetDdosCooPortsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDdosCooPortsResult, error) {
+			args := v.(GetDdosCooPortsArgs)
+			r, err := GetDdosCooPorts(ctx, &args, opts...)
+			return *r, err
+		}).(GetDdosCooPortsResultOutput)
+}
+
+// A collection of arguments for invoking getDdosCooPorts.
+type GetDdosCooPortsOutputArgs struct {
+	// The forwarding port.
+	FrontendPort pulumi.StringPtrInput `pulumi:"frontendPort"`
+	// The forwarding protocol.
+	FrontendProtocol pulumi.StringPtrInput `pulumi:"frontendProtocol"`
+	// A list of Port IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The Ddoscoo instance ID.
+	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetDdosCooPortsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDdosCooPortsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDdosCooPorts.
+type GetDdosCooPortsResultOutput struct{ *pulumi.OutputState }
+
+func (GetDdosCooPortsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDdosCooPortsResult)(nil)).Elem()
+}
+
+func (o GetDdosCooPortsResultOutput) ToGetDdosCooPortsResultOutput() GetDdosCooPortsResultOutput {
+	return o
+}
+
+func (o GetDdosCooPortsResultOutput) ToGetDdosCooPortsResultOutputWithContext(ctx context.Context) GetDdosCooPortsResultOutput {
+	return o
+}
+
+func (o GetDdosCooPortsResultOutput) FrontendPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDdosCooPortsResult) *string { return v.FrontendPort }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDdosCooPortsResultOutput) FrontendProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDdosCooPortsResult) *string { return v.FrontendProtocol }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDdosCooPortsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosCooPortsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDdosCooPortsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDdosCooPortsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDdosCooPortsResultOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosCooPortsResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetDdosCooPortsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDdosCooPortsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDdosCooPortsResultOutput) Ports() GetDdosCooPortsPortArrayOutput {
+	return o.ApplyT(func(v GetDdosCooPortsResult) []GetDdosCooPortsPort { return v.Ports }).(GetDdosCooPortsPortArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDdosCooPortsResultOutput{})
 }

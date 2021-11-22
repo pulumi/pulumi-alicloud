@@ -13,6 +13,7 @@ __all__ = [
     'GetSecretsResult',
     'AwaitableGetSecretsResult',
     'get_secrets',
+    'get_secrets_output',
 ]
 
 @pulumi.output_type
@@ -197,3 +198,43 @@ def get_secrets(enable_details: Optional[bool] = None,
         output_file=__ret__.output_file,
         secrets=__ret__.secrets,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_secrets)
+def get_secrets_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                       fetch_tags: Optional[pulumi.Input[Optional[bool]]] = None,
+                       filters: Optional[pulumi.Input[Optional[str]]] = None,
+                       ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                       name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                       tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretsResult]:
+    """
+    This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available in v1.86.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    kms_secrets_ds = alicloud.kms.get_secrets(fetch_tags=True,
+        name_regex="name_regex",
+        tags={
+            "k-aa": "v-aa",
+            "k-bb": "v-bb",
+        })
+    pulumi.export("firstSecretId", kms_secrets_ds.secrets[0].id)
+    ```
+
+
+    :param bool enable_details: Default to `false`. Set it to true can output more details.
+    :param bool fetch_tags: Whether to include the predetermined resource tag in the return value. Default to `false`.
+    :param str filters: Credential filter. It is composed of Key-Values ​​key-value pairs, the length is 0~1. When using a tag key to filter resources, the number of resources queried cannot exceed 4000.
+    :param Sequence[str] ids: A list of KMS Secret ids. The value is same as KMS secret_name.
+    :param str name_regex: A regex string to filter the results by the KMS secret_name.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    """
+    ...

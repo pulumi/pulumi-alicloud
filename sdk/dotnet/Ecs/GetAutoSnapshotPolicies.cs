@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Ecs
         ///             },
         ///             NameRegex = "tf-testAcc",
         ///         }));
-        ///         this.FirstEcsAutoSnapshotPolicyId = example.Apply(example =&gt; example.Policies[0].Id);
+        ///         this.FirstEcsAutoSnapshotPolicyId = example.Apply(example =&gt; example.Policies?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstEcsAutoSnapshotPolicyId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public static Task<GetAutoSnapshotPoliciesResult> InvokeAsync(GetAutoSnapshotPoliciesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAutoSnapshotPoliciesResult>("alicloud:ecs/getAutoSnapshotPolicies:getAutoSnapshotPolicies", args ?? new GetAutoSnapshotPoliciesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Ecs Auto Snapshot Policies of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.117.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Ecs.GetAutoSnapshotPolicies.InvokeAsync(new AliCloud.Ecs.GetAutoSnapshotPoliciesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "sp-bp14e66xxxxxxxx",
+        ///             },
+        ///             NameRegex = "tf-testAcc",
+        ///         }));
+        ///         this.FirstEcsAutoSnapshotPolicyId = example.Apply(example =&gt; example.Policies?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstEcsAutoSnapshotPolicyId")]
+        ///     public Output&lt;string&gt; FirstEcsAutoSnapshotPolicyId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAutoSnapshotPoliciesResult> Invoke(GetAutoSnapshotPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAutoSnapshotPoliciesResult>("alicloud:ecs/getAutoSnapshotPolicies:getAutoSnapshotPolicies", args ?? new GetAutoSnapshotPoliciesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -95,6 +136,52 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         public GetAutoSnapshotPoliciesArgs()
+        {
+        }
+    }
+
+    public sealed class GetAutoSnapshotPoliciesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Auto Snapshot Policy IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Auto Snapshot Policy name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of Auto Snapshot Policy.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        public GetAutoSnapshotPoliciesInvokeArgs()
         {
         }
     }

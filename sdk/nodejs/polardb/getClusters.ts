@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     descriptionRegex: "pc-\\w+",
  *     status: "Running",
  * });
- * export const firstPolardbClusterId = polardbClustersDs.then(polardbClustersDs => polardbClustersDs.clusters[0].id);
+ * export const firstPolardbClusterId = polardbClustersDs.then(polardbClustersDs => polardbClustersDs.clusters?[0]?.id);
  * ```
  */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
@@ -50,26 +50,26 @@ export interface GetClustersArgs {
     /**
      * Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
      */
-    readonly dbType?: string;
+    dbType?: string;
     /**
      * A regex string to filter results by cluster description.
      */
-    readonly descriptionRegex?: string;
+    descriptionRegex?: string;
     /**
      * A list of PolarDB cluster IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * status of the cluster.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -103,4 +103,37 @@ export interface GetClustersResult {
      */
     readonly status?: string;
     readonly tags?: {[key: string]: any};
+}
+
+export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
+    return pulumi.output(args).apply(a => getClusters(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getClusters.
+ */
+export interface GetClustersOutputArgs {
+    /**
+     * Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
+     */
+    dbType?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by cluster description.
+     */
+    descriptionRegex?: pulumi.Input<string>;
+    /**
+     * A list of PolarDB cluster IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * status of the cluster.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

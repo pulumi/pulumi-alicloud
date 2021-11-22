@@ -12,6 +12,7 @@ __all__ = [
     'GetEndpointAclServiceResult',
     'AwaitableGetEndpointAclServiceResult',
     'get_endpoint_acl_service',
+    'get_endpoint_acl_service_output',
 ]
 
 @pulumi.output_type
@@ -137,3 +138,39 @@ def get_endpoint_acl_service(enable: Optional[bool] = None,
         instance_id=__ret__.instance_id,
         module_name=__ret__.module_name,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_endpoint_acl_service)
+def get_endpoint_acl_service_output(enable: Optional[pulumi.Input[bool]] = None,
+                                    endpoint_type: Optional[pulumi.Input[str]] = None,
+                                    instance_id: Optional[pulumi.Input[str]] = None,
+                                    module_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEndpointAclServiceResult]:
+    """
+    This data source provides the CR Endpoint Acl Service of the current Alibaba Cloud user.
+
+    For information about Event Bridge and how to use it, see [What is CR Endpoint Acl](https://www.alibabacloud.com/help/en/doc-detail/142246.htm).
+
+    > **NOTE:** Available in v1.139.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cr.get_endpoint_acl_service(enable=True,
+        endpoint_type="internet",
+        instance_id="example_id",
+        module_name="Registry")
+    ```
+
+
+    :param bool enable: Whether to enable Acl Service.  Valid values: `true` and `false`.
+    :param str endpoint_type: The type of endpoint. Valid values: `internet`.
+    :param str instance_id: The ID of the CR Instance.
+    :param str module_name: The ModuleName. Valid values: `Registry`.
+    """
+    ...

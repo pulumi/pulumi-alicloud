@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dfs
 {
@@ -37,12 +38,12 @@ namespace Pulumi.AliCloud.Dfs
         ///                 "example_id",
         ///             },
         ///         }));
-        ///         this.DfsFileSystemId1 = ids.Apply(ids =&gt; ids.Systems[0].Id);
+        ///         this.DfsFileSystemId1 = ids.Apply(ids =&gt; ids.Systems?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.Dfs.GetFileSystems.InvokeAsync(new AliCloud.Dfs.GetFileSystemsArgs
         ///         {
         ///             NameRegex = "^my-FileSystem",
         ///         }));
-        ///         this.DfsFileSystemId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Systems[0].Id);
+        ///         this.DfsFileSystemId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Systems?[0]?.Id);
         ///     }
         /// 
         ///     [Output("dfsFileSystemId1")]
@@ -56,6 +57,52 @@ namespace Pulumi.AliCloud.Dfs
         /// </summary>
         public static Task<GetFileSystemsResult> InvokeAsync(GetFileSystemsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFileSystemsResult>("alicloud:dfs/getFileSystems:getFileSystems", args ?? new GetFileSystemsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Dfs File Systems of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Dfs.GetFileSystems.InvokeAsync(new AliCloud.Dfs.GetFileSystemsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_id",
+        ///             },
+        ///         }));
+        ///         this.DfsFileSystemId1 = ids.Apply(ids =&gt; ids.Systems?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.Dfs.GetFileSystems.InvokeAsync(new AliCloud.Dfs.GetFileSystemsArgs
+        ///         {
+        ///             NameRegex = "^my-FileSystem",
+        ///         }));
+        ///         this.DfsFileSystemId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Systems?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("dfsFileSystemId1")]
+        ///     public Output&lt;string&gt; DfsFileSystemId1 { get; set; }
+        ///     [Output("dfsFileSystemId2")]
+        ///     public Output&lt;string&gt; DfsFileSystemId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetFileSystemsResult> Invoke(GetFileSystemsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFileSystemsResult>("alicloud:dfs/getFileSystems:getFileSystems", args ?? new GetFileSystemsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -83,6 +130,34 @@ namespace Pulumi.AliCloud.Dfs
         public string? OutputFile { get; set; }
 
         public GetFileSystemsArgs()
+        {
+        }
+    }
+
+    public sealed class GetFileSystemsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of File System IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by File System name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetFileSystemsInvokeArgs()
         {
         }
     }

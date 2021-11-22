@@ -13,6 +13,7 @@ __all__ = [
     'GetDedicatedHostGroupsResult',
     'AwaitableGetDedicatedHostGroupsResult',
     'get_dedicated_host_groups',
+    'get_dedicated_host_groups_output',
 ]
 
 @pulumi.output_type
@@ -120,3 +121,32 @@ def get_dedicated_host_groups(engine: Optional[str] = None,
         id=__ret__.id,
         ids=__ret__.ids,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_dedicated_host_groups)
+def get_dedicated_host_groups_output(engine: Optional[pulumi.Input[Optional[str]]] = None,
+                                     ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDedicatedHostGroupsResult]:
+    """
+    This data source provides the Cddc Dedicated Host Groups of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.132.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cddc.get_dedicated_host_groups(engine="MongoDB")
+    pulumi.export("cddcDedicatedHostGroupId", default.id)
+    ```
+
+
+    :param str engine: Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+    :param Sequence[str] ids: A list of Dedicated Host Group IDs.
+    """
+    ...

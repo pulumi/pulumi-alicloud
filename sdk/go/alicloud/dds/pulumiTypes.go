@@ -431,6 +431,12 @@ func (o GetMongoInstancesInstanceShardArrayOutput) Index(i pulumi.IntInput) GetM
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMongoInstancesInstanceInput)(nil)).Elem(), GetMongoInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMongoInstancesInstanceArrayInput)(nil)).Elem(), GetMongoInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMongoInstancesInstanceMongoInput)(nil)).Elem(), GetMongoInstancesInstanceMongoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMongoInstancesInstanceMongoArrayInput)(nil)).Elem(), GetMongoInstancesInstanceMongoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMongoInstancesInstanceShardInput)(nil)).Elem(), GetMongoInstancesInstanceShardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMongoInstancesInstanceShardArrayInput)(nil)).Elem(), GetMongoInstancesInstanceShardArray{})
 	pulumi.RegisterOutputType(GetMongoInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetMongoInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetMongoInstancesInstanceMongoOutput{})

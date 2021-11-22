@@ -4,6 +4,9 @@
 package waf
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,4 +78,92 @@ type GetDomainsResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// The ID of the resource group to which the queried domain belongs in Resource Management.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+}
+
+func GetDomainsOutput(ctx *pulumi.Context, args GetDomainsOutputArgs, opts ...pulumi.InvokeOption) GetDomainsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDomainsResult, error) {
+			args := v.(GetDomainsArgs)
+			r, err := GetDomains(ctx, &args, opts...)
+			return *r, err
+		}).(GetDomainsResultOutput)
+}
+
+// A collection of arguments for invoking getDomains.
+type GetDomainsOutputArgs struct {
+	// Default to false and only output `id`, `domainName`. Set it to true can output more details.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of WAF domain names. Each item is domain name.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The Id of waf instance to which waf domain belongs.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// A regex string to filter results by domain name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The ID of the resource group to which the queried domain belongs in Resource Management.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+}
+
+func (GetDomainsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDomains.
+type GetDomainsResultOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsResult)(nil)).Elem()
+}
+
+func (o GetDomainsResultOutput) ToGetDomainsResultOutput() GetDomainsResultOutput {
+	return o
+}
+
+func (o GetDomainsResultOutput) ToGetDomainsResultOutputWithContext(ctx context.Context) GetDomainsResultOutput {
+	return o
+}
+
+// A list of Domains. Each element contains the following attributes:
+func (o GetDomainsResultOutput) Domains() GetDomainsDomainArrayOutput {
+	return o.ApplyT(func(v GetDomainsResult) []GetDomainsDomain { return v.Domains }).(GetDomainsDomainArrayOutput)
+}
+
+func (o GetDomainsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDomainsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of WAF domain self ID, value as `domainName`.
+func (o GetDomainsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDomainsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDomainsResultOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetDomainsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of WAF domain names.
+func (o GetDomainsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDomainsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDomainsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the resource group to which the queried domain belongs in Resource Management.
+func (o GetDomainsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDomainsResultOutput{})
 }

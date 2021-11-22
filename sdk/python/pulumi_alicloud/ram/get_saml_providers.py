@@ -13,6 +13,7 @@ __all__ = [
     'GetSamlProvidersResult',
     'AwaitableGetSamlProvidersResult',
     'get_saml_providers',
+    'get_saml_providers_output',
 ]
 
 @pulumi.output_type
@@ -144,3 +145,35 @@ def get_saml_providers(enable_details: Optional[bool] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         providers=__ret__.providers)
+
+
+@_utilities.lift_output_func(get_saml_providers)
+def get_saml_providers_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                              ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                              name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSamlProvidersResult]:
+    """
+    This data source provides the Ram Saml Providers of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.114.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ram.get_saml_providers(ids=["samlProviderName"],
+        name_regex="tf-testAcc")
+    pulumi.export("firstRamSamlProviderId", example.providers[0].id)
+    ```
+
+
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of SAML Provider IDs.
+    :param str name_regex: A regex string to filter results by SAML Provider name.
+    """
+    ...

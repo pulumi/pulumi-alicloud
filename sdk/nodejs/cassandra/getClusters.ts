@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * const cassandra = pulumi.output(alicloud.cassandra.getClusters({
  *     nameRegex: "tf_testAccCassandra",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
@@ -46,16 +46,16 @@ export interface GetClustersArgs {
     /**
      * The list of Cassandra cluster ids.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to apply to the cluster name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -84,4 +84,27 @@ export interface GetClustersResult {
      * A mapping of tags to assign to the resource.
      */
     readonly tags?: {[key: string]: any};
+}
+
+export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
+    return pulumi.output(args).apply(a => getClusters(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getClusters.
+ */
+export interface GetClustersOutputArgs {
+    /**
+     * The list of Cassandra cluster ids.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to apply to the cluster name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

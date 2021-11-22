@@ -118,23 +118,23 @@ export interface InstanceClusterAttachmentState {
     /**
      * The ID of the cluster that you want to create the application.
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * The cluster members map of the resource supplied above. The key is instanceId and the value is cluster_member_id.
      */
-    readonly clusterMemberIds?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    clusterMemberIds?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ecu map of the resource supplied above. The key is instanceId and the value is ecu_id.
      */
-    readonly ecuMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    ecuMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of instance. Type: list.
      */
-    readonly instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The status map of the resource supplied above. The key is instanceId and the values are 1(running) 0(converting) -1(failed) and -2(offline).
      */
-    readonly statusMap?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
+    statusMap?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
 }
 
 /**
@@ -144,9 +144,9 @@ export interface InstanceClusterAttachmentArgs {
     /**
      * The ID of the cluster that you want to create the application.
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * The ID of instance. Type: list.
      */
-    readonly instanceIds: pulumi.Input<pulumi.Input<string>[]>;
+    instanceIds: pulumi.Input<pulumi.Input<string>[]>;
 }

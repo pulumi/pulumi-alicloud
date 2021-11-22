@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * const default = alicloud.kvstore.getInstances({
  *     nameRegex: "testname",
  * });
- * export const firstInstanceName = _default.then(_default => _default.instances[0].name);
+ * export const firstInstanceName = _default.then(_default => _default.instances?[0]?.name);
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
@@ -61,80 +61,80 @@ export interface GetInstancesArgs {
     /**
      * The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
      */
-    readonly architectureType?: string;
+    architectureType?: string;
     /**
      * Used to retrieve instances belong to specified `vswitch` resources.  Valid values: `Enterprise`, `Community`.
      */
-    readonly editionType?: string;
+    editionType?: string;
     /**
      * Default to `false`. Set it to true can output more details.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
      */
-    readonly engineVersion?: string;
+    engineVersion?: string;
     /**
      * The expiration status of the instance.
      */
-    readonly expired?: string;
+    expired?: string;
     /**
      * Whether to create a distributed cache.
      */
-    readonly globalInstance?: boolean;
+    globalInstance?: boolean;
     /**
      * A list of KVStore DBInstance IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
      */
-    readonly instanceClass?: string;
+    instanceClass?: string;
     /**
      * The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
      */
-    readonly instanceType?: string;
+    instanceType?: string;
     /**
      * A regex string to apply to the instance name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * The type of the network. Valid values: `CLASSIC`, `VPC`.
      */
-    readonly networkType?: string;
-    readonly outputFile?: string;
+    networkType?: string;
+    outputFile?: string;
     /**
      * The payment type. Valid values: `PostPaid`, `PrePaid`.
      */
-    readonly paymentType?: string;
+    paymentType?: string;
     /**
      * The ID of the resource group.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * The name of the instance.
      */
-    readonly searchKey?: string;
+    searchKey?: string;
     /**
      * The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
     /**
      * Used to retrieve instances belong to specified VPC.
      */
-    readonly vpcId?: string;
+    vpcId?: string;
     /**
      * Used to retrieve instances belong to specified `vswitch` resources.
      */
-    readonly vswitchId?: string;
+    vswitchId?: string;
     /**
      * The ID of the zone.
      */
-    readonly zoneId?: string;
+    zoneId?: string;
 }
 
 /**
@@ -202,4 +202,91 @@ export interface GetInstancesResult {
      * The ID of zone.
      */
     readonly zoneId?: string;
+}
+
+export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
+    return pulumi.output(args).apply(a => getInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstances.
+ */
+export interface GetInstancesOutputArgs {
+    /**
+     * The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
+     */
+    architectureType?: pulumi.Input<string>;
+    /**
+     * Used to retrieve instances belong to specified `vswitch` resources.  Valid values: `Enterprise`, `Community`.
+     */
+    editionType?: pulumi.Input<string>;
+    /**
+     * Default to `false`. Set it to true can output more details.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+     */
+    engineVersion?: pulumi.Input<string>;
+    /**
+     * The expiration status of the instance.
+     */
+    expired?: pulumi.Input<string>;
+    /**
+     * Whether to create a distributed cache.
+     */
+    globalInstance?: pulumi.Input<boolean>;
+    /**
+     * A list of KVStore DBInstance IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+     */
+    instanceClass?: pulumi.Input<string>;
+    /**
+     * The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
+     */
+    instanceType?: pulumi.Input<string>;
+    /**
+     * A regex string to apply to the instance name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * The type of the network. Valid values: `CLASSIC`, `VPC`.
+     */
+    networkType?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The payment type. Valid values: `PostPaid`, `PrePaid`.
+     */
+    paymentType?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The name of the instance.
+     */
+    searchKey?: pulumi.Input<string>;
+    /**
+     * The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Used to retrieve instances belong to specified VPC.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
+     * Used to retrieve instances belong to specified `vswitch` resources.
+     */
+    vswitchId?: pulumi.Input<string>;
+    /**
+     * The ID of the zone.
+     */
+    zoneId?: pulumi.Input<string>;
 }

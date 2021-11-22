@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -19,7 +18,7 @@ import * as utilities from "../utilities";
  * const thisDomainTxtGuid = pulumi.output(alicloud.dns.getDomainTxtGuid({
  *     domainName: "test111.abc",
  *     type: "ADD_SUB_DOMAIN",
- * }, { async: true }));
+ * }));
  *
  * export const rr = thisDomainTxtGuid.rr;
  * export const value = thisDomainTxtGuid.value;
@@ -48,16 +47,16 @@ export interface GetDomainTxtGuidArgs {
     /**
      * Verified domain name.
      */
-    readonly domainName: string;
+    domainName: string;
     /**
      * User language.
      */
-    readonly lang?: string;
-    readonly outputFile?: string;
+    lang?: string;
+    outputFile?: string;
     /**
      * Txt verification function. Value:`ADD_SUB_DOMAIN`, `RETRIEVAL`.
      */
-    readonly type: string;
+    type: string;
 }
 
 /**
@@ -80,4 +79,27 @@ export interface GetDomainTxtGuidResult {
      * Record the value.
      */
     readonly value: string;
+}
+
+export function getDomainTxtGuidOutput(args: GetDomainTxtGuidOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainTxtGuidResult> {
+    return pulumi.output(args).apply(a => getDomainTxtGuid(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDomainTxtGuid.
+ */
+export interface GetDomainTxtGuidOutputArgs {
+    /**
+     * Verified domain name.
+     */
+    domainName: pulumi.Input<string>;
+    /**
+     * User language.
+     */
+    lang?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Txt verification function. Value:`ADD_SUB_DOMAIN`, `RETRIEVAL`.
+     */
+    type: pulumi.Input<string>;
 }

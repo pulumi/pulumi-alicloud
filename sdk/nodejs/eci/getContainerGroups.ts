@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const example = alicloud.eci.getContainerGroups({
  *     ids: ["example_value"],
  * });
- * export const firstEciContainerGroupId = example.then(example => example.groups[0].id);
+ * export const firstEciContainerGroupId = example.then(example => example.groups?[0]?.id);
  * ```
  */
 export function getContainerGroups(args?: GetContainerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerGroupsResult> {
@@ -56,45 +56,45 @@ export interface GetContainerGroupsArgs {
     /**
      * The name of ContainerGroup.
      */
-    readonly containerGroupName?: string;
+    containerGroupName?: string;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Container Group IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The maximum number of resources returned in the response. Default value is `20`. Maximum value: `20`. The number of returned results is no greater than the specified number.
      */
-    readonly limit?: number;
+    limit?: number;
     /**
      * A regex string to filter results by Container Group name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * The status of container.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
     /**
      * The vswitch id.
      */
-    readonly vswitchId?: string;
-    readonly withEvent?: boolean;
+    vswitchId?: string;
+    withEvent?: boolean;
     /**
      * The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
      */
-    readonly zoneId?: string;
+    zoneId?: string;
 }
 
 /**
@@ -119,4 +119,56 @@ export interface GetContainerGroupsResult {
     readonly vswitchId?: string;
     readonly withEvent?: boolean;
     readonly zoneId?: string;
+}
+
+export function getContainerGroupsOutput(args?: GetContainerGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerGroupsResult> {
+    return pulumi.output(args).apply(a => getContainerGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getContainerGroups.
+ */
+export interface GetContainerGroupsOutputArgs {
+    /**
+     * The name of ContainerGroup.
+     */
+    containerGroupName?: pulumi.Input<string>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Container Group IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The maximum number of resources returned in the response. Default value is `20`. Maximum value: `20`. The number of returned results is no greater than the specified number.
+     */
+    limit?: pulumi.Input<number>;
+    /**
+     * A regex string to filter results by Container Group name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The status of container.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The vswitch id.
+     */
+    vswitchId?: pulumi.Input<string>;
+    withEvent?: pulumi.Input<boolean>;
+    /**
+     * The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+     */
+    zoneId?: pulumi.Input<string>;
 }

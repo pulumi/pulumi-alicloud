@@ -13,6 +13,7 @@ __all__ = [
     'GetInstancesResult',
     'AwaitableGetInstancesResult',
     'get_instances',
+    'get_instances_output',
 ]
 
 @pulumi.output_type
@@ -298,7 +299,7 @@ def get_instances(architecture_type: Optional[str] = None,
                   zone_id: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
-    The `kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
+    The `kvstore.get_instances` data source provides a collection of kvstore instances available in Alicloud account.
     Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
 
     ## Example Usage
@@ -383,3 +384,63 @@ def get_instances(architecture_type: Optional[str] = None,
         vpc_id=__ret__.vpc_id,
         vswitch_id=__ret__.vswitch_id,
         zone_id=__ret__.zone_id)
+
+
+@_utilities.lift_output_func(get_instances)
+def get_instances_output(architecture_type: Optional[pulumi.Input[Optional[str]]] = None,
+                         edition_type: Optional[pulumi.Input[Optional[str]]] = None,
+                         enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                         engine_version: Optional[pulumi.Input[Optional[str]]] = None,
+                         expired: Optional[pulumi.Input[Optional[str]]] = None,
+                         global_instance: Optional[pulumi.Input[Optional[bool]]] = None,
+                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         instance_class: Optional[pulumi.Input[Optional[str]]] = None,
+                         instance_type: Optional[pulumi.Input[Optional[str]]] = None,
+                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         network_type: Optional[pulumi.Input[Optional[str]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         payment_type: Optional[pulumi.Input[Optional[str]]] = None,
+                         resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         search_key: Optional[pulumi.Input[Optional[str]]] = None,
+                         status: Optional[pulumi.Input[Optional[str]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         zone_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+    """
+    The `kvstore.get_instances` data source provides a collection of kvstore instances available in Alicloud account.
+    Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.kvstore.get_instances(name_regex="testname")
+    pulumi.export("firstInstanceName", default.instances[0].name)
+    ```
+
+
+    :param str architecture_type: The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
+    :param str edition_type: Used to retrieve instances belong to specified `vswitch` resources.  Valid values: `Enterprise`, `Community`.
+    :param bool enable_details: Default to `false`. Set it to true can output more details.
+    :param str engine_version: The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+    :param str expired: The expiration status of the instance.
+    :param bool global_instance: Whether to create a distributed cache.
+    :param Sequence[str] ids: A list of KVStore DBInstance IDs.
+    :param str instance_class: Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+    :param str instance_type: The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
+    :param str name_regex: A regex string to apply to the instance name.
+    :param str network_type: The type of the network. Valid values: `CLASSIC`, `VPC`.
+    :param str payment_type: The payment type. Valid values: `PostPaid`, `PrePaid`.
+    :param str resource_group_id: The ID of the resource group.
+    :param str search_key: The name of the instance.
+    :param str status: The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
+    :param Mapping[str, Any] tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+    :param str vpc_id: Used to retrieve instances belong to specified VPC.
+    :param str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.
+    :param str zone_id: The ID of the zone.
+    """
+    ...

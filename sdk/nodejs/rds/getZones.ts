@@ -39,33 +39,33 @@ export interface GetZonesArgs {
     /**
      * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
      */
-    readonly category?: string;
-    readonly dbInstanceClass?: string;
+    category?: string;
+    dbInstanceClass?: string;
     /**
      * The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
      */
-    readonly dbInstanceStorageType?: string;
+    dbInstanceStorageType?: string;
     /**
      * Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
      */
-    readonly engine?: string;
+    engine?: string;
     /**
      * Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
      */
-    readonly engineVersion?: string;
+    engineVersion?: string;
     /**
      * Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
      */
-    readonly instanceChargeType?: string;
+    instanceChargeType?: string;
     /**
      * It has been deprecated from version 1.137.0 and using `multiZone` instead.
      */
-    readonly multi?: boolean;
+    multi?: boolean;
     /**
      * Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
      */
-    readonly multiZone?: boolean;
-    readonly outputFile?: string;
+    multiZone?: boolean;
+    outputFile?: string;
 }
 
 /**
@@ -93,4 +93,44 @@ export interface GetZonesResult {
      * A list of availability zones. Each element contains the following attributes:
      */
     readonly zones: outputs.rds.GetZonesZone[];
+}
+
+export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
+    return pulumi.output(args).apply(a => getZones(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getZones.
+ */
+export interface GetZonesOutputArgs {
+    /**
+     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+     */
+    category?: pulumi.Input<string>;
+    dbInstanceClass?: pulumi.Input<string>;
+    /**
+     * The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
+     */
+    dbInstanceStorageType?: pulumi.Input<string>;
+    /**
+     * Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
+     */
+    engine?: pulumi.Input<string>;
+    /**
+     * Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+     */
+    engineVersion?: pulumi.Input<string>;
+    /**
+     * Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+     */
+    instanceChargeType?: pulumi.Input<string>;
+    /**
+     * It has been deprecated from version 1.137.0 and using `multiZone` instead.
+     */
+    multi?: pulumi.Input<boolean>;
+    /**
+     * Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
+     */
+    multiZone?: pulumi.Input<boolean>;
+    outputFile?: pulumi.Input<string>;
 }

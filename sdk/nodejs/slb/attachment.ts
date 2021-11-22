@@ -114,27 +114,27 @@ export interface AttachmentState {
     /**
      * The backend servers of the load balancer.
      */
-    readonly backendServers?: pulumi.Input<string>;
+    backendServers?: pulumi.Input<string>;
     /**
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      */
-    readonly deleteProtectionValidation?: pulumi.Input<boolean>;
+    deleteProtectionValidation?: pulumi.Input<boolean>;
     /**
      * A list of instance ids to added backend server in the SLB.
      */
-    readonly instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * ID of the load balancer.
      */
-    readonly loadBalancerId?: pulumi.Input<string>;
+    loadBalancerId?: pulumi.Input<string>;
     /**
      * Type of the instances. Valid value ecs, eni. Default to ecs.
      */
-    readonly serverType?: pulumi.Input<string>;
+    serverType?: pulumi.Input<string>;
     /**
      * Weight of the instances. Valid value range: [0-100]. Default to 100.
      */
-    readonly weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number>;
 }
 
 /**
@@ -144,25 +144,25 @@ export interface AttachmentArgs {
     /**
      * The backend servers of the load balancer.
      */
-    readonly backendServers?: pulumi.Input<string>;
+    backendServers?: pulumi.Input<string>;
     /**
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      */
-    readonly deleteProtectionValidation?: pulumi.Input<boolean>;
+    deleteProtectionValidation?: pulumi.Input<boolean>;
     /**
      * A list of instance ids to added backend server in the SLB.
      */
-    readonly instanceIds: pulumi.Input<pulumi.Input<string>[]>;
+    instanceIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * ID of the load balancer.
      */
-    readonly loadBalancerId: pulumi.Input<string>;
+    loadBalancerId: pulumi.Input<string>;
     /**
      * Type of the instances. Valid value ecs, eni. Default to ecs.
      */
-    readonly serverType?: pulumi.Input<string>;
+    serverType?: pulumi.Input<string>;
     /**
      * Weight of the instances. Valid value range: [0-100]. Default to 100.
      */
-    readonly weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number>;
 }

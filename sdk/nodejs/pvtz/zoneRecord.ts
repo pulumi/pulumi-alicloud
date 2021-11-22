@@ -154,52 +154,52 @@ export interface ZoneRecordState {
     /**
      * User language.
      */
-    readonly lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string>;
     /**
      * The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * The Private Zone Record ID.
      */
-    readonly recordId?: pulumi.Input<string>;
+    recordId?: pulumi.Input<string>;
     /**
      * The remark of the Private Zone Record.
      */
-    readonly remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string>;
     /**
      * The resource record of the Private Zone Record.
      *
      * @deprecated Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.
      */
-    readonly resourceRecord?: pulumi.Input<string>;
+    resourceRecord?: pulumi.Input<string>;
     /**
      * The rr of the Private Zone Record.
      */
-    readonly rr?: pulumi.Input<string>;
+    rr?: pulumi.Input<string>;
     /**
      * Resolve record status. Value:
      * - ENABLE: enable resolution.
      * - DISABLE: pause parsing.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The ttl of the Private Zone Record. Default to `60`.
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
     /**
      * The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
      */
-    readonly type?: pulumi.Input<string>;
-    readonly userClientIp?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
+    userClientIp?: pulumi.Input<string>;
     /**
      * The value of the Private Zone Record.
      */
-    readonly value?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
     /**
      * The name of the Private Zone Record.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -209,46 +209,46 @@ export interface ZoneRecordArgs {
     /**
      * User language.
      */
-    readonly lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string>;
     /**
      * The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * The remark of the Private Zone Record.
      */
-    readonly remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string>;
     /**
      * The resource record of the Private Zone Record.
      *
      * @deprecated Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.
      */
-    readonly resourceRecord?: pulumi.Input<string>;
+    resourceRecord?: pulumi.Input<string>;
     /**
      * The rr of the Private Zone Record.
      */
-    readonly rr?: pulumi.Input<string>;
+    rr?: pulumi.Input<string>;
     /**
      * Resolve record status. Value:
      * - ENABLE: enable resolution.
      * - DISABLE: pause parsing.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The ttl of the Private Zone Record. Default to `60`.
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
     /**
      * The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
      */
-    readonly type: pulumi.Input<string>;
-    readonly userClientIp?: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+    userClientIp?: pulumi.Input<string>;
     /**
      * The value of the Private Zone Record.
      */
-    readonly value: pulumi.Input<string>;
+    value: pulumi.Input<string>;
     /**
      * The name of the Private Zone Record.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

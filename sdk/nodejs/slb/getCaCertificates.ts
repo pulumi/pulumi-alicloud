@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const sampleDs = pulumi.output(alicloud.slb.getCaCertificates({ async: true }));
+ * const sampleDs = pulumi.output(alicloud.slb.getCaCertificates());
  *
  * export const firstSlbCaCertificateId = sampleDs.certificates[0].id;
  * ```
@@ -44,20 +44,20 @@ export interface GetCaCertificatesArgs {
     /**
      * A list of ca certificates IDs to filter results.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by ca certificate name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The Id of resource group which ca certificates belongs.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -90,4 +90,31 @@ export interface GetCaCertificatesResult {
      * (Available in v1.66.0+) A mapping of tags to assign to the resource.
      */
     readonly tags?: {[key: string]: any};
+}
+
+export function getCaCertificatesOutput(args?: GetCaCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCaCertificatesResult> {
+    return pulumi.output(args).apply(a => getCaCertificates(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCaCertificates.
+ */
+export interface GetCaCertificatesOutputArgs {
+    /**
+     * A list of ca certificates IDs to filter results.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by ca certificate name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The Id of resource group which ca certificates belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

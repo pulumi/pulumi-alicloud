@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Quotas
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Quotas
         ///             },
         ///             NameRegex = "tf-testAcc",
         ///         }));
-        ///         this.FirstQuotasQuotaAlarmId = example.Apply(example =&gt; example.Alarms[0].Id);
+        ///         this.FirstQuotasQuotaAlarmId = example.Apply(example =&gt; example.Alarms?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstQuotasQuotaAlarmId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Quotas
         /// </summary>
         public static Task<GetQuotaAlarmsResult> InvokeAsync(GetQuotaAlarmsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetQuotaAlarmsResult>("alicloud:quotas/getQuotaAlarms:getQuotaAlarms", args ?? new GetQuotaAlarmsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Quotas Quota Alarms of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.116.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Quotas.GetQuotaAlarms.InvokeAsync(new AliCloud.Quotas.GetQuotaAlarmsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "5VR90-421F886-81E9-xxx",
+        ///             },
+        ///             NameRegex = "tf-testAcc",
+        ///         }));
+        ///         this.FirstQuotasQuotaAlarmId = example.Apply(example =&gt; example.Alarms?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstQuotasQuotaAlarmId")]
+        ///     public Output&lt;string&gt; FirstQuotasQuotaAlarmId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetQuotaAlarmsResult> Invoke(GetQuotaAlarmsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetQuotaAlarmsResult>("alicloud:quotas/getQuotaAlarms:getQuotaAlarms", args ?? new GetQuotaAlarmsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -113,6 +154,70 @@ namespace Pulumi.AliCloud.Quotas
         }
 
         public GetQuotaAlarmsArgs()
+        {
+        }
+    }
+
+    public sealed class GetQuotaAlarmsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Quota Alarm IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Quota Alarm name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The Product Code.
+        /// </summary>
+        [Input("productCode")]
+        public Input<string>? ProductCode { get; set; }
+
+        /// <summary>
+        /// The Quota Action Code.
+        /// </summary>
+        [Input("quotaActionCode")]
+        public Input<string>? QuotaActionCode { get; set; }
+
+        /// <summary>
+        /// The name of Quota Alarm.
+        /// </summary>
+        [Input("quotaAlarmName")]
+        public Input<string>? QuotaAlarmName { get; set; }
+
+        [Input("quotaDimensions")]
+        private InputList<Inputs.GetQuotaAlarmsQuotaDimensionInputArgs>? _quotaDimensions;
+
+        /// <summary>
+        /// The Quota Dimensions.
+        /// </summary>
+        public InputList<Inputs.GetQuotaAlarmsQuotaDimensionInputArgs> QuotaDimensions
+        {
+            get => _quotaDimensions ?? (_quotaDimensions = new InputList<Inputs.GetQuotaAlarmsQuotaDimensionInputArgs>());
+            set => _quotaDimensions = value;
+        }
+
+        public GetQuotaAlarmsInvokeArgs()
         {
         }
     }

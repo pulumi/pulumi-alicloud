@@ -419,6 +419,12 @@ func (o GetAppTemplatesTemplateConfigListArrayOutput) Index(i pulumi.IntInput) G
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AppTemplateConfigListInput)(nil)).Elem(), AppTemplateConfigListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppTemplateConfigListArrayInput)(nil)).Elem(), AppTemplateConfigListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppTemplatesTemplateInput)(nil)).Elem(), GetAppTemplatesTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppTemplatesTemplateArrayInput)(nil)).Elem(), GetAppTemplatesTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppTemplatesTemplateConfigListInput)(nil)).Elem(), GetAppTemplatesTemplateConfigListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppTemplatesTemplateConfigListArrayInput)(nil)).Elem(), GetAppTemplatesTemplateConfigListArray{})
 	pulumi.RegisterOutputType(AppTemplateConfigListOutput{})
 	pulumi.RegisterOutputType(AppTemplateConfigListArrayOutput{})
 	pulumi.RegisterOutputType(GetAppTemplatesTemplateOutput{})

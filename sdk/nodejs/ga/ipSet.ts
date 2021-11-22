@@ -154,27 +154,27 @@ export interface IpSetState {
     /**
      * The ID of an acceleration region.
      */
-    readonly accelerateRegionId?: pulumi.Input<string>;
+    accelerateRegionId?: pulumi.Input<string>;
     /**
      * The ID of the Global Accelerator (GA) instance.
      */
-    readonly acceleratorId?: pulumi.Input<string>;
+    acceleratorId?: pulumi.Input<string>;
     /**
      * The bandwidth allocated to the acceleration region.
      */
-    readonly bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number>;
     /**
      * The list of accelerated IP addresses in the acceleration region.
      */
-    readonly ipAddressLists?: pulumi.Input<pulumi.Input<string>[]>;
+    ipAddressLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
      */
-    readonly ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string>;
     /**
      * The status of the acceleration region.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -184,17 +184,17 @@ export interface IpSetArgs {
     /**
      * The ID of an acceleration region.
      */
-    readonly accelerateRegionId: pulumi.Input<string>;
+    accelerateRegionId: pulumi.Input<string>;
     /**
      * The ID of the Global Accelerator (GA) instance.
      */
-    readonly acceleratorId: pulumi.Input<string>;
+    acceleratorId: pulumi.Input<string>;
     /**
      * The bandwidth allocated to the acceleration region.
      */
-    readonly bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number>;
     /**
      * The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
      */
-    readonly ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string>;
 }

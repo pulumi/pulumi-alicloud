@@ -152,28 +152,28 @@ export interface RoleState {
      * The resource descriptor of the role.
      * * `createDate` (Removed form v1.114.0) - Role creation time.
      */
-    readonly arn?: pulumi.Input<string>;
+    arn?: pulumi.Input<string>;
     /**
      * The content of the permissions strategy that plays a role.
      */
-    readonly assumeRolePolicyDocument?: pulumi.Input<string>;
+    assumeRolePolicyDocument?: pulumi.Input<string>;
     /**
      * The description of the Resource Manager role.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
      */
-    readonly maxSessionDuration?: pulumi.Input<number>;
-    readonly roleId?: pulumi.Input<string>;
+    maxSessionDuration?: pulumi.Input<number>;
+    roleId?: pulumi.Input<string>;
     /**
      * Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
      */
-    readonly roleName?: pulumi.Input<string>;
+    roleName?: pulumi.Input<string>;
     /**
      * Role update time.
      */
-    readonly updateDate?: pulumi.Input<string>;
+    updateDate?: pulumi.Input<string>;
 }
 
 /**
@@ -183,17 +183,17 @@ export interface RoleArgs {
     /**
      * The content of the permissions strategy that plays a role.
      */
-    readonly assumeRolePolicyDocument: pulumi.Input<string>;
+    assumeRolePolicyDocument: pulumi.Input<string>;
     /**
      * The description of the Resource Manager role.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
      */
-    readonly maxSessionDuration?: pulumi.Input<number>;
+    maxSessionDuration?: pulumi.Input<number>;
     /**
      * Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
      */
-    readonly roleName: pulumi.Input<string>;
+    roleName: pulumi.Input<string>;
 }

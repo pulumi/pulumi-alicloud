@@ -180,7 +180,7 @@ type TransitRouterRouteTablePropagationArrayInput interface {
 type TransitRouterRouteTablePropagationArray []TransitRouterRouteTablePropagationInput
 
 func (TransitRouterRouteTablePropagationArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TransitRouterRouteTablePropagation)(nil))
+	return reflect.TypeOf((*[]*TransitRouterRouteTablePropagation)(nil)).Elem()
 }
 
 func (i TransitRouterRouteTablePropagationArray) ToTransitRouterRouteTablePropagationArrayOutput() TransitRouterRouteTablePropagationArrayOutput {
@@ -205,7 +205,7 @@ type TransitRouterRouteTablePropagationMapInput interface {
 type TransitRouterRouteTablePropagationMap map[string]TransitRouterRouteTablePropagationInput
 
 func (TransitRouterRouteTablePropagationMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TransitRouterRouteTablePropagation)(nil))
+	return reflect.TypeOf((*map[string]*TransitRouterRouteTablePropagation)(nil)).Elem()
 }
 
 func (i TransitRouterRouteTablePropagationMap) ToTransitRouterRouteTablePropagationMapOutput() TransitRouterRouteTablePropagationMapOutput {
@@ -216,9 +216,7 @@ func (i TransitRouterRouteTablePropagationMap) ToTransitRouterRouteTablePropagat
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterRouteTablePropagationMapOutput)
 }
 
-type TransitRouterRouteTablePropagationOutput struct {
-	*pulumi.OutputState
-}
+type TransitRouterRouteTablePropagationOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterRouteTablePropagationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TransitRouterRouteTablePropagation)(nil))
@@ -237,14 +235,12 @@ func (o TransitRouterRouteTablePropagationOutput) ToTransitRouterRouteTablePropa
 }
 
 func (o TransitRouterRouteTablePropagationOutput) ToTransitRouterRouteTablePropagationPtrOutputWithContext(ctx context.Context) TransitRouterRouteTablePropagationPtrOutput {
-	return o.ApplyT(func(v TransitRouterRouteTablePropagation) *TransitRouterRouteTablePropagation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransitRouterRouteTablePropagation) *TransitRouterRouteTablePropagation {
 		return &v
 	}).(TransitRouterRouteTablePropagationPtrOutput)
 }
 
-type TransitRouterRouteTablePropagationPtrOutput struct {
-	*pulumi.OutputState
-}
+type TransitRouterRouteTablePropagationPtrOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterRouteTablePropagationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TransitRouterRouteTablePropagation)(nil))
@@ -256,6 +252,16 @@ func (o TransitRouterRouteTablePropagationPtrOutput) ToTransitRouterRouteTablePr
 
 func (o TransitRouterRouteTablePropagationPtrOutput) ToTransitRouterRouteTablePropagationPtrOutputWithContext(ctx context.Context) TransitRouterRouteTablePropagationPtrOutput {
 	return o
+}
+
+func (o TransitRouterRouteTablePropagationPtrOutput) Elem() TransitRouterRouteTablePropagationOutput {
+	return o.ApplyT(func(v *TransitRouterRouteTablePropagation) TransitRouterRouteTablePropagation {
+		if v != nil {
+			return *v
+		}
+		var ret TransitRouterRouteTablePropagation
+		return ret
+	}).(TransitRouterRouteTablePropagationOutput)
 }
 
 type TransitRouterRouteTablePropagationArrayOutput struct{ *pulumi.OutputState }
@@ -299,6 +305,10 @@ func (o TransitRouterRouteTablePropagationMapOutput) MapIndex(k pulumi.StringInp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterRouteTablePropagationInput)(nil)).Elem(), &TransitRouterRouteTablePropagation{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterRouteTablePropagationPtrInput)(nil)).Elem(), &TransitRouterRouteTablePropagation{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterRouteTablePropagationArrayInput)(nil)).Elem(), TransitRouterRouteTablePropagationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterRouteTablePropagationMapInput)(nil)).Elem(), TransitRouterRouteTablePropagationMap{})
 	pulumi.RegisterOutputType(TransitRouterRouteTablePropagationOutput{})
 	pulumi.RegisterOutputType(TransitRouterRouteTablePropagationPtrOutput{})
 	pulumi.RegisterOutputType(TransitRouterRouteTablePropagationArrayOutput{})

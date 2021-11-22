@@ -4,6 +4,9 @@
 package nas
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -50,4 +53,89 @@ type GetAccessRulesResult struct {
 	SourceCidrIp *string `pulumi:"sourceCidrIp"`
 	// UserAccess of the AccessRule
 	UserAccess *string `pulumi:"userAccess"`
+}
+
+func GetAccessRulesOutput(ctx *pulumi.Context, args GetAccessRulesOutputArgs, opts ...pulumi.InvokeOption) GetAccessRulesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAccessRulesResult, error) {
+			args := v.(GetAccessRulesArgs)
+			r, err := GetAccessRules(ctx, &args, opts...)
+			return *r, err
+		}).(GetAccessRulesResultOutput)
+}
+
+// A collection of arguments for invoking getAccessRules.
+type GetAccessRulesOutputArgs struct {
+	// Filter results by a specific AccessGroupName.
+	AccessGroupName pulumi.StringInput `pulumi:"accessGroupName"`
+	// A list of rule IDs.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// Filter results by a specific RWAccess.
+	RwAccess pulumi.StringPtrInput `pulumi:"rwAccess"`
+	// Filter results by a specific SourceCidrIp.
+	SourceCidrIp pulumi.StringPtrInput `pulumi:"sourceCidrIp"`
+	// Filter results by a specific UserAccess.
+	UserAccess pulumi.StringPtrInput `pulumi:"userAccess"`
+}
+
+func (GetAccessRulesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessRulesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAccessRules.
+type GetAccessRulesResultOutput struct{ *pulumi.OutputState }
+
+func (GetAccessRulesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessRulesResult)(nil)).Elem()
+}
+
+func (o GetAccessRulesResultOutput) ToGetAccessRulesResultOutput() GetAccessRulesResultOutput {
+	return o
+}
+
+func (o GetAccessRulesResultOutput) ToGetAccessRulesResultOutputWithContext(ctx context.Context) GetAccessRulesResultOutput {
+	return o
+}
+
+func (o GetAccessRulesResultOutput) AccessGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRulesResult) string { return v.AccessGroupName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAccessRulesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRulesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of rule IDs, Each element set to `accessRuleId` (Each element formats as `<access_group_name>:<access_rule_id>` before 1.53.0).
+func (o GetAccessRulesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAccessRulesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAccessRulesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of AccessRules. Each element contains the following attributes:
+func (o GetAccessRulesResultOutput) Rules() GetAccessRulesRuleArrayOutput {
+	return o.ApplyT(func(v GetAccessRulesResult) []GetAccessRulesRule { return v.Rules }).(GetAccessRulesRuleArrayOutput)
+}
+
+// RWAccess of the AccessRule.
+func (o GetAccessRulesResultOutput) RwAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessRulesResult) *string { return v.RwAccess }).(pulumi.StringPtrOutput)
+}
+
+// SourceCidrIp of the AccessRule.
+func (o GetAccessRulesResultOutput) SourceCidrIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessRulesResult) *string { return v.SourceCidrIp }).(pulumi.StringPtrOutput)
+}
+
+// UserAccess of the AccessRule
+func (o GetAccessRulesResultOutput) UserAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessRulesResult) *string { return v.UserAccess }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAccessRulesResultOutput{})
 }

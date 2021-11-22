@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *     cenId: "cen-o40h17ll9w********",
  *     ids: ["cn-hangzhou"],
  *     status: "Active",
- * }, { async: true }));
+ * }));
  *
  * export const firstCenPrivateZonesId = thisPrivateZones.zones[0].id;
  * ```
@@ -49,21 +49,21 @@ export interface GetPrivateZonesArgs {
     /**
      * The ID of the CEN instance.
      */
-    readonly cenId: string;
+    cenId: string;
     /**
      * The service region. The service region is the target region of the PrivateZone service accessed through CEN.
      */
-    readonly hostRegionId?: string;
+    hostRegionId?: string;
     /**
      * A list of CEN private zone IDs.
      * * `hostRegionId ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -95,4 +95,32 @@ export interface GetPrivateZonesResult {
      * A list of CEN private zones. Each element contains the following attributes:
      */
     readonly zones: outputs.cen.GetPrivateZonesZone[];
+}
+
+export function getPrivateZonesOutput(args: GetPrivateZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateZonesResult> {
+    return pulumi.output(args).apply(a => getPrivateZones(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPrivateZones.
+ */
+export interface GetPrivateZonesOutputArgs {
+    /**
+     * The ID of the CEN instance.
+     */
+    cenId: pulumi.Input<string>;
+    /**
+     * The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+     */
+    hostRegionId?: pulumi.Input<string>;
+    /**
+     * A list of CEN private zone IDs.
+     * * `hostRegionId ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
+     */
+    status?: pulumi.Input<string>;
 }

@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -22,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const open = pulumi.output(alicloud.kvstore.getPermission({
  *     enable: "On",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getPermission(args?: GetPermissionArgs, opts?: pulumi.InvokeOptions): Promise<GetPermissionResult> {
@@ -46,7 +45,7 @@ export interface GetPermissionArgs {
     /**
      * Setting the value to `On` to assigns a RAM role to ApsaraDB for Redis. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
      */
-    readonly enable?: string;
+    enable?: string;
 }
 
 /**
@@ -62,4 +61,18 @@ export interface GetPermissionResult {
      * The current service enable status.
      */
     readonly status: string;
+}
+
+export function getPermissionOutput(args?: GetPermissionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPermissionResult> {
+    return pulumi.output(args).apply(a => getPermission(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPermission.
+ */
+export interface GetPermissionOutputArgs {
+    /**
+     * Setting the value to `On` to assigns a RAM role to ApsaraDB for Redis. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
+     */
+    enable?: pulumi.Input<string>;
 }

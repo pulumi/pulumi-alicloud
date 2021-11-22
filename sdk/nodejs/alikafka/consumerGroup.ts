@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  * });
  * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
  *     topicQuota: "50",
@@ -136,15 +136,15 @@ export interface ConsumerGroupState {
     /**
      * ID of the consumer group. The length cannot exceed 64 characters.
      */
-    readonly consumerId?: pulumi.Input<string>;
+    consumerId?: pulumi.Input<string>;
     /**
      * ID of the ALIKAFKA Instance that owns the groups.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -154,13 +154,13 @@ export interface ConsumerGroupArgs {
     /**
      * ID of the consumer group. The length cannot exceed 64 characters.
      */
-    readonly consumerId: pulumi.Input<string>;
+    consumerId: pulumi.Input<string>;
     /**
      * ID of the ALIKAFKA Instance that owns the groups.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

@@ -37,13 +37,13 @@ import (
 // 			name = param
 // 		}
 // 		_, err := providers.Newalicloud(ctx, "us", &providers.alicloudArgs{
-// 			Region: pulumi.String("us-east-1"),
+// 			Region: "us-east-1",
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = providers.Newalicloud(ctx, "cn", &providers.alicloudArgs{
-// 			Region: pulumi.String("cn-hangzhou"),
+// 			Region: "cn-hangzhou",
 // 		})
 // 		if err != nil {
 // 			return err
@@ -379,7 +379,7 @@ type TransitRouterPeerAttachmentArrayInput interface {
 type TransitRouterPeerAttachmentArray []TransitRouterPeerAttachmentInput
 
 func (TransitRouterPeerAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TransitRouterPeerAttachment)(nil))
+	return reflect.TypeOf((*[]*TransitRouterPeerAttachment)(nil)).Elem()
 }
 
 func (i TransitRouterPeerAttachmentArray) ToTransitRouterPeerAttachmentArrayOutput() TransitRouterPeerAttachmentArrayOutput {
@@ -404,7 +404,7 @@ type TransitRouterPeerAttachmentMapInput interface {
 type TransitRouterPeerAttachmentMap map[string]TransitRouterPeerAttachmentInput
 
 func (TransitRouterPeerAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TransitRouterPeerAttachment)(nil))
+	return reflect.TypeOf((*map[string]*TransitRouterPeerAttachment)(nil)).Elem()
 }
 
 func (i TransitRouterPeerAttachmentMap) ToTransitRouterPeerAttachmentMapOutput() TransitRouterPeerAttachmentMapOutput {
@@ -415,9 +415,7 @@ func (i TransitRouterPeerAttachmentMap) ToTransitRouterPeerAttachmentMapOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterPeerAttachmentMapOutput)
 }
 
-type TransitRouterPeerAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type TransitRouterPeerAttachmentOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterPeerAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TransitRouterPeerAttachment)(nil))
@@ -436,14 +434,12 @@ func (o TransitRouterPeerAttachmentOutput) ToTransitRouterPeerAttachmentPtrOutpu
 }
 
 func (o TransitRouterPeerAttachmentOutput) ToTransitRouterPeerAttachmentPtrOutputWithContext(ctx context.Context) TransitRouterPeerAttachmentPtrOutput {
-	return o.ApplyT(func(v TransitRouterPeerAttachment) *TransitRouterPeerAttachment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransitRouterPeerAttachment) *TransitRouterPeerAttachment {
 		return &v
 	}).(TransitRouterPeerAttachmentPtrOutput)
 }
 
-type TransitRouterPeerAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type TransitRouterPeerAttachmentPtrOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterPeerAttachmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TransitRouterPeerAttachment)(nil))
@@ -455,6 +451,16 @@ func (o TransitRouterPeerAttachmentPtrOutput) ToTransitRouterPeerAttachmentPtrOu
 
 func (o TransitRouterPeerAttachmentPtrOutput) ToTransitRouterPeerAttachmentPtrOutputWithContext(ctx context.Context) TransitRouterPeerAttachmentPtrOutput {
 	return o
+}
+
+func (o TransitRouterPeerAttachmentPtrOutput) Elem() TransitRouterPeerAttachmentOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) TransitRouterPeerAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret TransitRouterPeerAttachment
+		return ret
+	}).(TransitRouterPeerAttachmentOutput)
 }
 
 type TransitRouterPeerAttachmentArrayOutput struct{ *pulumi.OutputState }
@@ -498,6 +504,10 @@ func (o TransitRouterPeerAttachmentMapOutput) MapIndex(k pulumi.StringInput) Tra
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterPeerAttachmentInput)(nil)).Elem(), &TransitRouterPeerAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterPeerAttachmentPtrInput)(nil)).Elem(), &TransitRouterPeerAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterPeerAttachmentArrayInput)(nil)).Elem(), TransitRouterPeerAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterPeerAttachmentMapInput)(nil)).Elem(), TransitRouterPeerAttachmentMap{})
 	pulumi.RegisterOutputType(TransitRouterPeerAttachmentOutput{})
 	pulumi.RegisterOutputType(TransitRouterPeerAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(TransitRouterPeerAttachmentArrayOutput{})

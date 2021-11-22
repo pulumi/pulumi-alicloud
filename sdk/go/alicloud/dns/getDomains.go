@@ -4,6 +4,9 @@
 package dns
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,4 +80,149 @@ type GetDomainsResult struct {
 	Tags            map[string]interface{} `pulumi:"tags"`
 	// Cloud resolution version ID.
 	VersionCode *string `pulumi:"versionCode"`
+}
+
+func GetDomainsOutput(ctx *pulumi.Context, args GetDomainsOutputArgs, opts ...pulumi.InvokeOption) GetDomainsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDomainsResult, error) {
+			args := v.(GetDomainsArgs)
+			r, err := GetDomains(ctx, &args, opts...)
+			return *r, err
+		}).(GetDomainsResultOutput)
+}
+
+// A collection of arguments for invoking getDomains.
+type GetDomainsOutputArgs struct {
+	// Specifies whether the domain is from Alibaba Cloud or not.
+	AliDomain pulumi.BoolPtrInput `pulumi:"aliDomain"`
+	// A regex string to filter results by the domain name.
+	DomainNameRegex pulumi.StringPtrInput `pulumi:"domainNameRegex"`
+	EnableDetails   pulumi.BoolPtrInput   `pulumi:"enableDetails"`
+	// Domain group ID, if not filled, the default is all groups.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// A regex string to filter results by the group name.
+	GroupNameRegex pulumi.StringPtrInput `pulumi:"groupNameRegex"`
+	// - A list of domain IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Cloud analysis product ID.
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	// The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
+	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
+	// User language.
+	Lang       pulumi.StringPtrInput `pulumi:"lang"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The Id of resource group which the dns belongs.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	// Search mode, `LIKE` fuzzy search, `EXACT` exact search.
+	SearchMode pulumi.StringPtrInput `pulumi:"searchMode"`
+	// Whether to query the domain name star.
+	Starmark pulumi.BoolPtrInput `pulumi:"starmark"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// Cloud analysis version code.
+	VersionCode pulumi.StringPtrInput `pulumi:"versionCode"`
+}
+
+func (GetDomainsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDomains.
+type GetDomainsResultOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsResult)(nil)).Elem()
+}
+
+func (o GetDomainsResultOutput) ToGetDomainsResultOutput() GetDomainsResultOutput {
+	return o
+}
+
+func (o GetDomainsResultOutput) ToGetDomainsResultOutputWithContext(ctx context.Context) GetDomainsResultOutput {
+	return o
+}
+
+// Indicates whether the domain is an Alibaba Cloud domain.
+func (o GetDomainsResultOutput) AliDomain() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *bool { return v.AliDomain }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetDomainsResultOutput) DomainNameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.DomainNameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of domains. Each element contains the following attributes:
+func (o GetDomainsResultOutput) Domains() GetDomainsDomainArrayOutput {
+	return o.ApplyT(func(v GetDomainsResult) []GetDomainsDomain { return v.Domains }).(GetDomainsDomainArrayOutput)
+}
+
+func (o GetDomainsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// Id of group that contains the domain.
+func (o GetDomainsResultOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDomainsResultOutput) GroupNameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.GroupNameRegex }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDomainsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of domain IDs.
+func (o GetDomainsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDomainsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// Cloud analysis product ID of the domain.
+func (o GetDomainsResultOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDomainsResultOutput) KeyWord() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.KeyWord }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDomainsResultOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
+// A list of domain names.
+func (o GetDomainsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDomainsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDomainsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The Id of resource group which the dns belongs.
+func (o GetDomainsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDomainsResultOutput) SearchMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.SearchMode }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDomainsResultOutput) Starmark() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *bool { return v.Starmark }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetDomainsResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetDomainsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// Cloud resolution version ID.
+func (o GetDomainsResultOutput) VersionCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *string { return v.VersionCode }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDomainsResultOutput{})
 }

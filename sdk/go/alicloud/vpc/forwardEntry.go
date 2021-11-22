@@ -36,7 +36,7 @@ import (
 // 			name = param
 // 		}
 // 		opt0 := "VSwitch"
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -347,7 +347,7 @@ type ForwardEntryArrayInput interface {
 type ForwardEntryArray []ForwardEntryInput
 
 func (ForwardEntryArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ForwardEntry)(nil))
+	return reflect.TypeOf((*[]*ForwardEntry)(nil)).Elem()
 }
 
 func (i ForwardEntryArray) ToForwardEntryArrayOutput() ForwardEntryArrayOutput {
@@ -372,7 +372,7 @@ type ForwardEntryMapInput interface {
 type ForwardEntryMap map[string]ForwardEntryInput
 
 func (ForwardEntryMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ForwardEntry)(nil))
+	return reflect.TypeOf((*map[string]*ForwardEntry)(nil)).Elem()
 }
 
 func (i ForwardEntryMap) ToForwardEntryMapOutput() ForwardEntryMapOutput {
@@ -383,9 +383,7 @@ func (i ForwardEntryMap) ToForwardEntryMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ForwardEntryMapOutput)
 }
 
-type ForwardEntryOutput struct {
-	*pulumi.OutputState
-}
+type ForwardEntryOutput struct{ *pulumi.OutputState }
 
 func (ForwardEntryOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ForwardEntry)(nil))
@@ -404,14 +402,12 @@ func (o ForwardEntryOutput) ToForwardEntryPtrOutput() ForwardEntryPtrOutput {
 }
 
 func (o ForwardEntryOutput) ToForwardEntryPtrOutputWithContext(ctx context.Context) ForwardEntryPtrOutput {
-	return o.ApplyT(func(v ForwardEntry) *ForwardEntry {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ForwardEntry) *ForwardEntry {
 		return &v
 	}).(ForwardEntryPtrOutput)
 }
 
-type ForwardEntryPtrOutput struct {
-	*pulumi.OutputState
-}
+type ForwardEntryPtrOutput struct{ *pulumi.OutputState }
 
 func (ForwardEntryPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ForwardEntry)(nil))
@@ -423,6 +419,16 @@ func (o ForwardEntryPtrOutput) ToForwardEntryPtrOutput() ForwardEntryPtrOutput {
 
 func (o ForwardEntryPtrOutput) ToForwardEntryPtrOutputWithContext(ctx context.Context) ForwardEntryPtrOutput {
 	return o
+}
+
+func (o ForwardEntryPtrOutput) Elem() ForwardEntryOutput {
+	return o.ApplyT(func(v *ForwardEntry) ForwardEntry {
+		if v != nil {
+			return *v
+		}
+		var ret ForwardEntry
+		return ret
+	}).(ForwardEntryOutput)
 }
 
 type ForwardEntryArrayOutput struct{ *pulumi.OutputState }
@@ -466,6 +472,10 @@ func (o ForwardEntryMapOutput) MapIndex(k pulumi.StringInput) ForwardEntryOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardEntryInput)(nil)).Elem(), &ForwardEntry{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardEntryPtrInput)(nil)).Elem(), &ForwardEntry{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardEntryArrayInput)(nil)).Elem(), ForwardEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardEntryMapInput)(nil)).Elem(), ForwardEntryMap{})
 	pulumi.RegisterOutputType(ForwardEntryOutput{})
 	pulumi.RegisterOutputType(ForwardEntryPtrOutput{})
 	pulumi.RegisterOutputType(ForwardEntryArrayOutput{})

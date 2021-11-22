@@ -4,6 +4,9 @@
 package cloudconnect
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,4 +45,73 @@ type GetNetworksResult struct {
 	// A list of CCN instances. Each element contains the following attributes:
 	Networks   []GetNetworksNetwork `pulumi:"networks"`
 	OutputFile *string              `pulumi:"outputFile"`
+}
+
+func GetNetworksOutput(ctx *pulumi.Context, args GetNetworksOutputArgs, opts ...pulumi.InvokeOption) GetNetworksResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetNetworksResult, error) {
+			args := v.(GetNetworksArgs)
+			r, err := GetNetworks(ctx, &args, opts...)
+			return *r, err
+		}).(GetNetworksResultOutput)
+}
+
+// A collection of arguments for invoking getNetworks.
+type GetNetworksOutputArgs struct {
+	// A list of CCN instances IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter CCN instances by name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetNetworksOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getNetworks.
+type GetNetworksResultOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksResult)(nil)).Elem()
+}
+
+func (o GetNetworksResultOutput) ToGetNetworksResultOutput() GetNetworksResultOutput {
+	return o
+}
+
+func (o GetNetworksResultOutput) ToGetNetworksResultOutputWithContext(ctx context.Context) GetNetworksResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetNetworksResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of CCN instances IDs.
+func (o GetNetworksResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworksResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNetworksResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworksResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of CCN instances names.
+func (o GetNetworksResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworksResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+// A list of CCN instances. Each element contains the following attributes:
+func (o GetNetworksResultOutput) Networks() GetNetworksNetworkArrayOutput {
+	return o.ApplyT(func(v GetNetworksResult) []GetNetworksNetwork { return v.Networks }).(GetNetworksNetworkArrayOutput)
+}
+
+func (o GetNetworksResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworksResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetNetworksResultOutput{})
 }

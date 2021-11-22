@@ -13,6 +13,7 @@ __all__ = [
     'GetPrivateZonesResult',
     'AwaitableGetPrivateZonesResult',
     'get_private_zones',
+    'get_private_zones_output',
 ]
 
 @pulumi.output_type
@@ -150,3 +151,25 @@ def get_private_zones(cen_id: Optional[str] = None,
         output_file=__ret__.output_file,
         status=__ret__.status,
         zones=__ret__.zones)
+
+
+@_utilities.lift_output_func(get_private_zones)
+def get_private_zones_output(cen_id: Optional[pulumi.Input[str]] = None,
+                             host_region_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                             status: Optional[pulumi.Input[Optional[str]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrivateZonesResult]:
+    """
+    This data source provides CEN Private Zones available to the user.
+
+    > **NOTE:** Available in v1.88.0+.
+
+
+    :param str cen_id: The ID of the CEN instance.
+    :param str host_region_id: The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+    :param Sequence[str] ids: A list of CEN private zone IDs.
+           * `host_region_id ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
+    :param str status: The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
+    """
+    ...

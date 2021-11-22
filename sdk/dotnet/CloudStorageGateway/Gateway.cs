@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     ///         {
     ///             VpcId = vpc.Id,
     ///             CidrBlock = "172.16.0.0/21",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
     ///             VswitchName = "tf-testAccCsgName",
     ///         });
     ///         var example = new AliCloud.CloudStorageGateway.StorageBundle("example", new AliCloud.CloudStorageGateway.StorageBundleArgs

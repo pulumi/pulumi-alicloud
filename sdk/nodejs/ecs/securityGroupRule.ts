@@ -139,48 +139,48 @@ export interface SecurityGroupRuleState {
     /**
      * The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
      */
-    readonly cidrIp?: pulumi.Input<string>;
+    cidrIp?: pulumi.Input<string>;
     /**
      * The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
      */
-    readonly ipProtocol?: pulumi.Input<string>;
+    ipProtocol?: pulumi.Input<string>;
     /**
      * Network type, can be either `internet` or `intranet`, the default value is `internet`.
      */
-    readonly nicType?: pulumi.Input<string>;
+    nicType?: pulumi.Input<string>;
     /**
      * Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
      */
-    readonly policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string>;
     /**
      * The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
      * For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
      */
-    readonly portRange?: pulumi.Input<string>;
+    portRange?: pulumi.Input<string>;
     /**
      * Authorization policy priority, with parameter values: `1-100`, default value: 1.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * The security group to apply this rule to.
      */
-    readonly securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
     /**
      * The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
      */
-    readonly sourceGroupOwnerAccount?: pulumi.Input<string>;
+    sourceGroupOwnerAccount?: pulumi.Input<string>;
     /**
      * The target security group ID within the same region. If this field is specified, the `nicType` can only select `intranet`.
      */
-    readonly sourceSecurityGroupId?: pulumi.Input<string>;
+    sourceSecurityGroupId?: pulumi.Input<string>;
     /**
      * The type of rule being created. Valid options are `ingress` (inbound) or `egress` (outbound).
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -190,46 +190,46 @@ export interface SecurityGroupRuleArgs {
     /**
      * The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
      */
-    readonly cidrIp?: pulumi.Input<string>;
+    cidrIp?: pulumi.Input<string>;
     /**
      * The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
      */
-    readonly ipProtocol: pulumi.Input<string>;
+    ipProtocol: pulumi.Input<string>;
     /**
      * Network type, can be either `internet` or `intranet`, the default value is `internet`.
      */
-    readonly nicType?: pulumi.Input<string>;
+    nicType?: pulumi.Input<string>;
     /**
      * Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
      */
-    readonly policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string>;
     /**
      * The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
      * For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
      */
-    readonly portRange?: pulumi.Input<string>;
+    portRange?: pulumi.Input<string>;
     /**
      * Authorization policy priority, with parameter values: `1-100`, default value: 1.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * The security group to apply this rule to.
      */
-    readonly securityGroupId: pulumi.Input<string>;
+    securityGroupId: pulumi.Input<string>;
     /**
      * The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
      */
-    readonly sourceGroupOwnerAccount?: pulumi.Input<string>;
+    sourceGroupOwnerAccount?: pulumi.Input<string>;
     /**
      * The target security group ID within the same region. If this field is specified, the `nicType` can only select `intranet`.
      */
-    readonly sourceSecurityGroupId?: pulumi.Input<string>;
+    sourceSecurityGroupId?: pulumi.Input<string>;
     /**
      * The type of rule being created. Valid options are `ingress` (inbound) or `egress` (outbound).
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
 }

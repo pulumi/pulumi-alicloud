@@ -358,7 +358,7 @@ type ChangeSetArrayInput interface {
 type ChangeSetArray []ChangeSetInput
 
 func (ChangeSetArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ChangeSet)(nil))
+	return reflect.TypeOf((*[]*ChangeSet)(nil)).Elem()
 }
 
 func (i ChangeSetArray) ToChangeSetArrayOutput() ChangeSetArrayOutput {
@@ -383,7 +383,7 @@ type ChangeSetMapInput interface {
 type ChangeSetMap map[string]ChangeSetInput
 
 func (ChangeSetMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ChangeSet)(nil))
+	return reflect.TypeOf((*map[string]*ChangeSet)(nil)).Elem()
 }
 
 func (i ChangeSetMap) ToChangeSetMapOutput() ChangeSetMapOutput {
@@ -394,9 +394,7 @@ func (i ChangeSetMap) ToChangeSetMapOutputWithContext(ctx context.Context) Chang
 	return pulumi.ToOutputWithContext(ctx, i).(ChangeSetMapOutput)
 }
 
-type ChangeSetOutput struct {
-	*pulumi.OutputState
-}
+type ChangeSetOutput struct{ *pulumi.OutputState }
 
 func (ChangeSetOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ChangeSet)(nil))
@@ -415,14 +413,12 @@ func (o ChangeSetOutput) ToChangeSetPtrOutput() ChangeSetPtrOutput {
 }
 
 func (o ChangeSetOutput) ToChangeSetPtrOutputWithContext(ctx context.Context) ChangeSetPtrOutput {
-	return o.ApplyT(func(v ChangeSet) *ChangeSet {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ChangeSet) *ChangeSet {
 		return &v
 	}).(ChangeSetPtrOutput)
 }
 
-type ChangeSetPtrOutput struct {
-	*pulumi.OutputState
-}
+type ChangeSetPtrOutput struct{ *pulumi.OutputState }
 
 func (ChangeSetPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ChangeSet)(nil))
@@ -434,6 +430,16 @@ func (o ChangeSetPtrOutput) ToChangeSetPtrOutput() ChangeSetPtrOutput {
 
 func (o ChangeSetPtrOutput) ToChangeSetPtrOutputWithContext(ctx context.Context) ChangeSetPtrOutput {
 	return o
+}
+
+func (o ChangeSetPtrOutput) Elem() ChangeSetOutput {
+	return o.ApplyT(func(v *ChangeSet) ChangeSet {
+		if v != nil {
+			return *v
+		}
+		var ret ChangeSet
+		return ret
+	}).(ChangeSetOutput)
 }
 
 type ChangeSetArrayOutput struct{ *pulumi.OutputState }
@@ -477,6 +483,10 @@ func (o ChangeSetMapOutput) MapIndex(k pulumi.StringInput) ChangeSetOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ChangeSetInput)(nil)).Elem(), &ChangeSet{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChangeSetPtrInput)(nil)).Elem(), &ChangeSet{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChangeSetArrayInput)(nil)).Elem(), ChangeSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChangeSetMapInput)(nil)).Elem(), ChangeSetMap{})
 	pulumi.RegisterOutputType(ChangeSetOutput{})
 	pulumi.RegisterOutputType(ChangeSetPtrOutput{})
 	pulumi.RegisterOutputType(ChangeSetArrayOutput{})

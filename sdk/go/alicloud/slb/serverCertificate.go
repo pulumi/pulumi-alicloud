@@ -16,6 +16,69 @@ import (
 //
 // For information about Server Certificate and how to use it, see [Configure Server Certificate](https://www.alibabacloud.com/help/doc-detail/85968.htm).
 //
+// ## Example Usage
+//
+// * using server_certificate/private content as string example
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := slb.NewServerCertificate(ctx, "foo", &slb.ServerCertificateArgs{
+// 			PrivateKey:        pulumi.String(fmt.Sprintf("%v%v%v", "-----BEGIN RSA PRIVATE KEY-----\n", "MIICXAIBAAKBgQDO0knDrlNdiys******ErVpjsckAaOW/JDG5PCSwkaMxk=\n", "-----END RSA PRIVATE KEY-----\n")),
+// 			ServerCertificate: pulumi.String(fmt.Sprintf("%v%v%v", "-----BEGIN CERTIFICATE-----\n", "MIIDRjCCAq+gAwIBAgI+OuMs******XTtI90EAxEG/bJJyOm5LqoiA=\n", "-----END CERTIFICATE-----\n")),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// * using server_certificate/private file example
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+// 	"io/ioutil"
+//
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func readFileOrPanic(path string) pulumi.StringPtrInput {
+// 	data, err := ioutil.ReadFile(path)
+// 	if err != nil {
+// 		panic(err.Error())
+// 	}
+// 	return pulumi.String(string(data))
+// }
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := slb.NewServerCertificate(ctx, "foo", &slb.ServerCertificateArgs{
+// 			ServerCertificate: readFileOrPanic(fmt.Sprintf("%v%v", path.Module, "/server_certificate.pem")),
+// 			PrivateKey:        readFileOrPanic(fmt.Sprintf("%v%v", path.Module, "/private_key.pem")),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Server Load balancer Server Certificate can be imported using the id, e.g.
@@ -239,7 +302,7 @@ type ServerCertificateArrayInput interface {
 type ServerCertificateArray []ServerCertificateInput
 
 func (ServerCertificateArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ServerCertificate)(nil))
+	return reflect.TypeOf((*[]*ServerCertificate)(nil)).Elem()
 }
 
 func (i ServerCertificateArray) ToServerCertificateArrayOutput() ServerCertificateArrayOutput {
@@ -264,7 +327,7 @@ type ServerCertificateMapInput interface {
 type ServerCertificateMap map[string]ServerCertificateInput
 
 func (ServerCertificateMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ServerCertificate)(nil))
+	return reflect.TypeOf((*map[string]*ServerCertificate)(nil)).Elem()
 }
 
 func (i ServerCertificateMap) ToServerCertificateMapOutput() ServerCertificateMapOutput {
@@ -275,9 +338,7 @@ func (i ServerCertificateMap) ToServerCertificateMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ServerCertificateMapOutput)
 }
 
-type ServerCertificateOutput struct {
-	*pulumi.OutputState
-}
+type ServerCertificateOutput struct{ *pulumi.OutputState }
 
 func (ServerCertificateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServerCertificate)(nil))
@@ -296,14 +357,12 @@ func (o ServerCertificateOutput) ToServerCertificatePtrOutput() ServerCertificat
 }
 
 func (o ServerCertificateOutput) ToServerCertificatePtrOutputWithContext(ctx context.Context) ServerCertificatePtrOutput {
-	return o.ApplyT(func(v ServerCertificate) *ServerCertificate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerCertificate) *ServerCertificate {
 		return &v
 	}).(ServerCertificatePtrOutput)
 }
 
-type ServerCertificatePtrOutput struct {
-	*pulumi.OutputState
-}
+type ServerCertificatePtrOutput struct{ *pulumi.OutputState }
 
 func (ServerCertificatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServerCertificate)(nil))
@@ -315,6 +374,16 @@ func (o ServerCertificatePtrOutput) ToServerCertificatePtrOutput() ServerCertifi
 
 func (o ServerCertificatePtrOutput) ToServerCertificatePtrOutputWithContext(ctx context.Context) ServerCertificatePtrOutput {
 	return o
+}
+
+func (o ServerCertificatePtrOutput) Elem() ServerCertificateOutput {
+	return o.ApplyT(func(v *ServerCertificate) ServerCertificate {
+		if v != nil {
+			return *v
+		}
+		var ret ServerCertificate
+		return ret
+	}).(ServerCertificateOutput)
 }
 
 type ServerCertificateArrayOutput struct{ *pulumi.OutputState }
@@ -358,6 +427,10 @@ func (o ServerCertificateMapOutput) MapIndex(k pulumi.StringInput) ServerCertifi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerCertificateInput)(nil)).Elem(), &ServerCertificate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerCertificatePtrInput)(nil)).Elem(), &ServerCertificate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerCertificateArrayInput)(nil)).Elem(), ServerCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerCertificateMapInput)(nil)).Elem(), ServerCertificateMap{})
 	pulumi.RegisterOutputType(ServerCertificateOutput{})
 	pulumi.RegisterOutputType(ServerCertificatePtrOutput{})
 	pulumi.RegisterOutputType(ServerCertificateArrayOutput{})

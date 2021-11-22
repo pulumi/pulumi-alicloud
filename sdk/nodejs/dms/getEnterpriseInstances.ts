@@ -40,40 +40,40 @@ export interface GetEnterpriseInstancesArgs {
     /**
      * The type of the environment to which the database instance belongs.
      */
-    readonly envType?: string;
+    envType?: string;
     /**
      * A regex string to filter the results by the DMS Enterprise Instance instance_alias.
      */
-    readonly instanceAliasRegex?: string;
+    instanceAliasRegex?: string;
     /**
      * The source of the database instance.
      */
-    readonly instanceSource?: string;
+    instanceSource?: string;
     /**
      * The ID of the database instance.
      */
-    readonly instanceType?: string;
+    instanceType?: string;
     /**
      * A regex string to filter the results by the DMS Enterprise Instance instance_alias.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * The network type of the database instance. Valid values: CLASSIC and VPC. For more information about the valid values, see the description of the RegisterInstance operation.
      */
-    readonly netType?: string;
-    readonly outputFile?: string;
+    netType?: string;
+    outputFile?: string;
     /**
      * The keyword used to query database instances.
      */
-    readonly searchKey?: string;
+    searchKey?: string;
     /**
      * Filter the results by status of the DMS Enterprise Instances. Valid values: `NORMAL`, `UNAVAILABLE`, `UNKNOWN`, `DELETED`, `DISABLE`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The ID of the tenant in Data Management (DMS) Enterprise.
      */
-    readonly tid?: number;
+    tid?: number;
 }
 
 /**
@@ -118,4 +118,51 @@ export interface GetEnterpriseInstancesResult {
      */
     readonly status?: string;
     readonly tid?: number;
+}
+
+export function getEnterpriseInstancesOutput(args?: GetEnterpriseInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseInstancesResult> {
+    return pulumi.output(args).apply(a => getEnterpriseInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEnterpriseInstances.
+ */
+export interface GetEnterpriseInstancesOutputArgs {
+    /**
+     * The type of the environment to which the database instance belongs.
+     */
+    envType?: pulumi.Input<string>;
+    /**
+     * A regex string to filter the results by the DMS Enterprise Instance instance_alias.
+     */
+    instanceAliasRegex?: pulumi.Input<string>;
+    /**
+     * The source of the database instance.
+     */
+    instanceSource?: pulumi.Input<string>;
+    /**
+     * The ID of the database instance.
+     */
+    instanceType?: pulumi.Input<string>;
+    /**
+     * A regex string to filter the results by the DMS Enterprise Instance instance_alias.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * The network type of the database instance. Valid values: CLASSIC and VPC. For more information about the valid values, see the description of the RegisterInstance operation.
+     */
+    netType?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The keyword used to query database instances.
+     */
+    searchKey?: pulumi.Input<string>;
+    /**
+     * Filter the results by status of the DMS Enterprise Instances. Valid values: `NORMAL`, `UNAVAILABLE`, `UNKNOWN`, `DELETED`, `DISABLE`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The ID of the tenant in Data Management (DMS) Enterprise.
+     */
+    tid?: pulumi.Input<number>;
 }

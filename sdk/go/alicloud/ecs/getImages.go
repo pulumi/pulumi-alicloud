@@ -4,6 +4,9 @@
 package ecs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -122,4 +125,171 @@ type GetImagesResult struct {
 	Status *string                `pulumi:"status"`
 	Tags   map[string]interface{} `pulumi:"tags"`
 	Usage  *string                `pulumi:"usage"`
+}
+
+func GetImagesOutput(ctx *pulumi.Context, args GetImagesOutputArgs, opts ...pulumi.InvokeOption) GetImagesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetImagesResult, error) {
+			args := v.(GetImagesArgs)
+			r, err := GetImages(ctx, &args, opts...)
+			return *r, err
+		}).(GetImagesResultOutput)
+}
+
+// A collection of arguments for invoking getImages.
+type GetImagesOutputArgs struct {
+	// The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
+	// * `CreateEcs`: instance creation.
+	// * `ChangeOS`: replacement of the system disk or operating system.
+	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
+	// The image architecture. Valid values: `i386` and `x8664`.
+	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
+	// Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:
+	// * `true`: The validity of the request is checked but resources are not queried. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are specified. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
+	// * `false`: The validity of the request is checked, and a 2XX HTTP status code is returned and resources are queried if the check succeeds.
+	DryRun pulumi.BoolPtrInput `pulumi:"dryRun"`
+	// The name of the image family. You can set this parameter to query images of the specified image family. This parameter is empty by default.
+	ImageFamily pulumi.StringPtrInput `pulumi:"imageFamily"`
+	// The instance type for which the image can be used.
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// Specifies whether the image supports cloud-init.
+	IsSupportCloudInit pulumi.BoolPtrInput `pulumi:"isSupportCloudInit"`
+	// Specifies whether the image can be used on I/O optimized instances.
+	IsSupportIoOptimized pulumi.BoolPtrInput `pulumi:"isSupportIoOptimized"`
+	// If more than one result are returned, select the most recent one.
+	MostRecent pulumi.BoolPtrInput `pulumi:"mostRecent"`
+	// A regex string to filter resulting images by name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// The operating system type of the image. Valid values: `windows` and `linux`.
+	OsType     pulumi.StringPtrInput `pulumi:"osType"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
+	Owners pulumi.StringPtrInput `pulumi:"owners"`
+	// The ID of the resource group to which the custom image belongs.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	// The ID of the snapshot used to create the custom image.
+	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
+	// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
+	// * `Creating`: The image is being created.
+	// * `Waiting`: The image is waiting to be processed.
+	// * `Available`: The image is available.
+	// * `UnAvailable`: The image is unavailable.
+	// * `CreateFailed`: The image failed to be created.
+	// * `Deprecated`: The image is discontinued.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// Specifies whether to check the validity of the request without actually making the request. Valid values:
+	// * `instance`: The image is already in use and running on an ECS instance.
+	// * `none`: The image is not in use.
+	Usage pulumi.StringPtrInput `pulumi:"usage"`
+}
+
+func (GetImagesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getImages.
+type GetImagesResultOutput struct{ *pulumi.OutputState }
+
+func (GetImagesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesResult)(nil)).Elem()
+}
+
+func (o GetImagesResultOutput) ToGetImagesResultOutput() GetImagesResultOutput {
+	return o
+}
+
+func (o GetImagesResultOutput) ToGetImagesResultOutputWithContext(ctx context.Context) GetImagesResultOutput {
+	return o
+}
+
+func (o GetImagesResultOutput) ActionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *string { return v.ActionType }).(pulumi.StringPtrOutput)
+}
+
+// Platform type of the image system: i386 or x86_64.
+func (o GetImagesResultOutput) Architecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *string { return v.Architecture }).(pulumi.StringPtrOutput)
+}
+
+func (o GetImagesResultOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *bool { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetImagesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of image IDs.
+func (o GetImagesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetImagesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetImagesResultOutput) ImageFamily() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *string { return v.ImageFamily }).(pulumi.StringPtrOutput)
+}
+
+// A list of images. Each element contains the following attributes:
+func (o GetImagesResultOutput) Images() GetImagesImageArrayOutput {
+	return o.ApplyT(func(v GetImagesResult) []GetImagesImage { return v.Images }).(GetImagesImageArrayOutput)
+}
+
+func (o GetImagesResultOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetImagesResultOutput) IsSupportCloudInit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *bool { return v.IsSupportCloudInit }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetImagesResultOutput) IsSupportIoOptimized() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *bool { return v.IsSupportIoOptimized }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetImagesResultOutput) MostRecent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *bool { return v.MostRecent }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetImagesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetImagesResultOutput) OsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *string { return v.OsType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetImagesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetImagesResultOutput) Owners() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *string { return v.Owners }).(pulumi.StringPtrOutput)
+}
+
+func (o GetImagesResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Snapshot ID.
+func (o GetImagesResultOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
+}
+
+// Status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
+func (o GetImagesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetImagesResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetImagesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o GetImagesResultOutput) Usage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *string { return v.Usage }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetImagesResultOutput{})
 }

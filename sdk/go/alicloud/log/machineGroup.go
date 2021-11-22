@@ -190,7 +190,7 @@ type MachineGroupArrayInput interface {
 type MachineGroupArray []MachineGroupInput
 
 func (MachineGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*MachineGroup)(nil))
+	return reflect.TypeOf((*[]*MachineGroup)(nil)).Elem()
 }
 
 func (i MachineGroupArray) ToMachineGroupArrayOutput() MachineGroupArrayOutput {
@@ -215,7 +215,7 @@ type MachineGroupMapInput interface {
 type MachineGroupMap map[string]MachineGroupInput
 
 func (MachineGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*MachineGroup)(nil))
+	return reflect.TypeOf((*map[string]*MachineGroup)(nil)).Elem()
 }
 
 func (i MachineGroupMap) ToMachineGroupMapOutput() MachineGroupMapOutput {
@@ -226,9 +226,7 @@ func (i MachineGroupMap) ToMachineGroupMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(MachineGroupMapOutput)
 }
 
-type MachineGroupOutput struct {
-	*pulumi.OutputState
-}
+type MachineGroupOutput struct{ *pulumi.OutputState }
 
 func (MachineGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MachineGroup)(nil))
@@ -247,14 +245,12 @@ func (o MachineGroupOutput) ToMachineGroupPtrOutput() MachineGroupPtrOutput {
 }
 
 func (o MachineGroupOutput) ToMachineGroupPtrOutputWithContext(ctx context.Context) MachineGroupPtrOutput {
-	return o.ApplyT(func(v MachineGroup) *MachineGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MachineGroup) *MachineGroup {
 		return &v
 	}).(MachineGroupPtrOutput)
 }
 
-type MachineGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type MachineGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (MachineGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MachineGroup)(nil))
@@ -266,6 +262,16 @@ func (o MachineGroupPtrOutput) ToMachineGroupPtrOutput() MachineGroupPtrOutput {
 
 func (o MachineGroupPtrOutput) ToMachineGroupPtrOutputWithContext(ctx context.Context) MachineGroupPtrOutput {
 	return o
+}
+
+func (o MachineGroupPtrOutput) Elem() MachineGroupOutput {
+	return o.ApplyT(func(v *MachineGroup) MachineGroup {
+		if v != nil {
+			return *v
+		}
+		var ret MachineGroup
+		return ret
+	}).(MachineGroupOutput)
 }
 
 type MachineGroupArrayOutput struct{ *pulumi.OutputState }
@@ -309,6 +315,10 @@ func (o MachineGroupMapOutput) MapIndex(k pulumi.StringInput) MachineGroupOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MachineGroupInput)(nil)).Elem(), &MachineGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MachineGroupPtrInput)(nil)).Elem(), &MachineGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MachineGroupArrayInput)(nil)).Elem(), MachineGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MachineGroupMapInput)(nil)).Elem(), MachineGroupMap{})
 	pulumi.RegisterOutputType(MachineGroupOutput{})
 	pulumi.RegisterOutputType(MachineGroupPtrOutput{})
 	pulumi.RegisterOutputType(MachineGroupArrayOutput{})

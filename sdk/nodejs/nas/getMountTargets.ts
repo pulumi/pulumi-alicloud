@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *     fileSystemId: "1a2sc4d",
  *     accessGroupName: "tf-testAccNasConfig",
  * });
- * export const theFirstMountTargetDomain = example.then(example => example.targets[0].id);
+ * export const theFirstMountTargetDomain = example.then(example => example.targets?[0]?.id);
  * ```
  */
 export function getMountTargets(args: GetMountTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetMountTargetsResult> {
@@ -52,44 +52,44 @@ export interface GetMountTargetsArgs {
     /**
      * Filter results by a specific AccessGroupName.
      */
-    readonly accessGroupName?: string;
+    accessGroupName?: string;
     /**
      * The ID of the FileSystem that owns the MountTarget.
      */
-    readonly fileSystemId: string;
+    fileSystemId: string;
     /**
      * A list of MountTargetDomain.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * Field `mountTargetDomain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
      *
      * @deprecated Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.
      */
-    readonly mountTargetDomain?: string;
+    mountTargetDomain?: string;
     /**
      * Filter results by a specific NetworkType.
      */
-    readonly networkType?: string;
-    readonly outputFile?: string;
+    networkType?: string;
+    outputFile?: string;
     /**
      * Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
      *
      * @deprecated Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it.
      */
-    readonly type?: string;
+    type?: string;
     /**
      * Filter results by a specific VpcId.
      */
-    readonly vpcId?: string;
+    vpcId?: string;
     /**
      * Filter results by a specific VSwitchId.
      */
-    readonly vswitchId?: string;
+    vswitchId?: string;
 }
 
 /**
@@ -137,4 +137,55 @@ export interface GetMountTargetsResult {
      * VSwitchId of The MountTarget.
      */
     readonly vswitchId?: string;
+}
+
+export function getMountTargetsOutput(args: GetMountTargetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMountTargetsResult> {
+    return pulumi.output(args).apply(a => getMountTargets(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMountTargets.
+ */
+export interface GetMountTargetsOutputArgs {
+    /**
+     * Filter results by a specific AccessGroupName.
+     */
+    accessGroupName?: pulumi.Input<string>;
+    /**
+     * The ID of the FileSystem that owns the MountTarget.
+     */
+    fileSystemId: pulumi.Input<string>;
+    /**
+     * A list of MountTargetDomain.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Field `mountTargetDomain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
+     *
+     * @deprecated Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.
+     */
+    mountTargetDomain?: pulumi.Input<string>;
+    /**
+     * Filter results by a specific NetworkType.
+     */
+    networkType?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
+     *
+     * @deprecated Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * Filter results by a specific VpcId.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
+     * Filter results by a specific VSwitchId.
+     */
+    vswitchId?: pulumi.Input<string>;
 }

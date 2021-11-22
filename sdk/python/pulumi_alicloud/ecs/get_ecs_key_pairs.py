@@ -13,6 +13,7 @@ __all__ = [
     'GetEcsKeyPairsResult',
     'AwaitableGetEcsKeyPairsResult',
     'get_ecs_key_pairs',
+    'get_ecs_key_pairs_output',
 ]
 
 @pulumi.output_type
@@ -184,3 +185,39 @@ def get_ecs_key_pairs(finger_print: Optional[str] = None,
         pairs=__ret__.pairs,
         resource_group_id=__ret__.resource_group_id,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_ecs_key_pairs)
+def get_ecs_key_pairs_output(finger_print: Optional[pulumi.Input[Optional[str]]] = None,
+                             ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                             resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEcsKeyPairsResult]:
+    """
+    This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.121.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ecs.get_ecs_key_pairs(ids=["key_pair_name"],
+        name_regex="key_pair_name")
+    pulumi.export("firstEcsKeyPairId", example.pairs[0].id)
+    ```
+
+
+    :param str finger_print: The finger print of the key pair.
+    :param Sequence[str] ids: A list of Key Pair IDs.
+    :param str name_regex: A regex string to filter results by Key Pair name.
+    :param str resource_group_id: The Resource Group Id.
+    :param Mapping[str, Any] tags: The tags.
+    """
+    ...

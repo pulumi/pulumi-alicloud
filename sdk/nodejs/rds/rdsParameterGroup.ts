@@ -147,23 +147,23 @@ export interface RdsParameterGroupState {
     /**
      * The database engine. Valid values: `mysql`, `mariadb`.
      */
-    readonly engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string>;
     /**
      * The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
      */
-    readonly engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string>;
     /**
      * Parameter list.
      */
-    readonly paramDetails?: pulumi.Input<pulumi.Input<inputs.rds.RdsParameterGroupParamDetail>[]>;
+    paramDetails?: pulumi.Input<pulumi.Input<inputs.rds.RdsParameterGroupParamDetail>[]>;
     /**
      * The description of the parameter template.
      */
-    readonly parameterGroupDesc?: pulumi.Input<string>;
+    parameterGroupDesc?: pulumi.Input<string>;
     /**
      * The name of the parameter template.
      */
-    readonly parameterGroupName?: pulumi.Input<string>;
+    parameterGroupName?: pulumi.Input<string>;
 }
 
 /**
@@ -173,21 +173,21 @@ export interface RdsParameterGroupArgs {
     /**
      * The database engine. Valid values: `mysql`, `mariadb`.
      */
-    readonly engine: pulumi.Input<string>;
+    engine: pulumi.Input<string>;
     /**
      * The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
      */
-    readonly engineVersion: pulumi.Input<string>;
+    engineVersion: pulumi.Input<string>;
     /**
      * Parameter list.
      */
-    readonly paramDetails: pulumi.Input<pulumi.Input<inputs.rds.RdsParameterGroupParamDetail>[]>;
+    paramDetails: pulumi.Input<pulumi.Input<inputs.rds.RdsParameterGroupParamDetail>[]>;
     /**
      * The description of the parameter template.
      */
-    readonly parameterGroupDesc?: pulumi.Input<string>;
+    parameterGroupDesc?: pulumi.Input<string>;
     /**
      * The name of the parameter template.
      */
-    readonly parameterGroupName: pulumi.Input<string>;
+    parameterGroupName: pulumi.Input<string>;
 }

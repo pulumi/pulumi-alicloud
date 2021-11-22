@@ -122,19 +122,19 @@ export interface ResourceDirectoryState {
     /**
      * The ID of the master account.
      */
-    readonly masterAccountId?: pulumi.Input<string>;
+    masterAccountId?: pulumi.Input<string>;
     /**
      * The name of the master account.
      */
-    readonly masterAccountName?: pulumi.Input<string>;
+    masterAccountName?: pulumi.Input<string>;
     /**
      * The ID of the root folder.
      */
-    readonly rootFolderId?: pulumi.Input<string>;
+    rootFolderId?: pulumi.Input<string>;
     /**
      * The status of control policy. Valid values:`Enabled` and `Disabled`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -144,5 +144,5 @@ export interface ResourceDirectoryArgs {
     /**
      * The status of control policy. Valid values:`Enabled` and `Disabled`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }

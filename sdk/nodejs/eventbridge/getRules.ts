@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstEventBridgeRuleId = example.then(example => example.rules[0].id);
+ * export const firstEventBridgeRuleId = example.then(example => example.rules?[0]?.id);
  * ```
  */
 export function getRules(args: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> {
@@ -51,24 +51,24 @@ export interface GetRulesArgs {
     /**
      * The name of event bus.
      */
-    readonly eventBusName: string;
+    eventBusName: string;
     /**
      * A list of Rule IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Rule name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The rule name prefix.
      */
-    readonly ruleNamePrefix?: string;
+    ruleNamePrefix?: string;
     /**
      * Rule status, either Enable or Disable.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -87,4 +87,35 @@ export interface GetRulesResult {
     readonly ruleNamePrefix?: string;
     readonly rules: outputs.eventbridge.GetRulesRule[];
     readonly status?: string;
+}
+
+export function getRulesOutput(args: GetRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesResult> {
+    return pulumi.output(args).apply(a => getRules(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRules.
+ */
+export interface GetRulesOutputArgs {
+    /**
+     * The name of event bus.
+     */
+    eventBusName: pulumi.Input<string>;
+    /**
+     * A list of Rule IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Rule name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The rule name prefix.
+     */
+    ruleNamePrefix?: pulumi.Input<string>;
+    /**
+     * Rule status, either Enable or Disable.
+     */
+    status?: pulumi.Input<string>;
 }

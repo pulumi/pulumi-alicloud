@@ -13,6 +13,7 @@ __all__ = [
     'GetSnapshotsResult',
     'AwaitableGetSnapshotsResult',
     'get_snapshots',
+    'get_snapshots_output',
 ]
 
 @pulumi.output_type
@@ -299,3 +300,34 @@ def get_snapshots(category: Optional[str] = None,
         tags=__ret__.tags,
         type=__ret__.type,
         usage=__ret__.usage)
+
+
+@_utilities.lift_output_func(get_snapshots)
+def get_snapshots_output(category: Optional[pulumi.Input[Optional[str]]] = None,
+                         dry_run: Optional[pulumi.Input[Optional[bool]]] = None,
+                         encrypted: Optional[pulumi.Input[Optional[bool]]] = None,
+                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         kms_key_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         snapshot_link_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         snapshot_name: Optional[pulumi.Input[Optional[str]]] = None,
+                         snapshot_type: Optional[pulumi.Input[Optional[str]]] = None,
+                         source_disk_type: Optional[pulumi.Input[Optional[str]]] = None,
+                         status: Optional[pulumi.Input[Optional[str]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         type: Optional[pulumi.Input[Optional[str]]] = None,
+                         usage: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotsResult]:
+    """
+    Use this data source to access information about an existing resource.
+
+    :param bool encrypted: Whether the snapshot is encrypted or not.
+    :param Sequence[str] ids: A list of snapshot IDs.
+    :param str source_disk_type: Source disk attribute. Value range: `System`,`Data`.
+    :param str status: The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+    :param Mapping[str, Any] tags: A map of tags assigned to the snapshot.
+    :param str usage: Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
+    """
+    ...

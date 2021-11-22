@@ -211,23 +211,23 @@ export interface DomainExtensionState {
     /**
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      */
-    readonly deleteProtectionValidation?: pulumi.Input<boolean>;
+    deleteProtectionValidation?: pulumi.Input<boolean>;
     /**
      * The domain name,
      */
-    readonly domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
     /**
      * The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
      */
-    readonly frontendPort?: pulumi.Input<number>;
+    frontendPort?: pulumi.Input<number>;
     /**
      * The ID of the SLB instance.
      */
-    readonly loadBalancerId?: pulumi.Input<string>;
+    loadBalancerId?: pulumi.Input<string>;
     /**
      * The ID of the certificate used by the domain name.
      */
-    readonly serverCertificateId?: pulumi.Input<string>;
+    serverCertificateId?: pulumi.Input<string>;
 }
 
 /**
@@ -237,21 +237,21 @@ export interface DomainExtensionArgs {
     /**
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      */
-    readonly deleteProtectionValidation?: pulumi.Input<boolean>;
+    deleteProtectionValidation?: pulumi.Input<boolean>;
     /**
      * The domain name,
      */
-    readonly domain: pulumi.Input<string>;
+    domain: pulumi.Input<string>;
     /**
      * The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
      */
-    readonly frontendPort: pulumi.Input<number>;
+    frontendPort: pulumi.Input<number>;
     /**
      * The ID of the SLB instance.
      */
-    readonly loadBalancerId: pulumi.Input<string>;
+    loadBalancerId: pulumi.Input<string>;
     /**
      * The ID of the certificate used by the domain name.
      */
-    readonly serverCertificateId: pulumi.Input<string>;
+    serverCertificateId: pulumi.Input<string>;
 }

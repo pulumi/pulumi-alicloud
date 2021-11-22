@@ -117,23 +117,23 @@ export interface RouteEntryState {
     /**
      * The next hop of the destination route.
      */
-    readonly nextHop?: pulumi.Input<string>;
+    nextHop?: pulumi.Input<string>;
     /**
      * Whether to issue the destination route to the VPC.
      */
-    readonly publishVpc?: pulumi.Input<boolean>;
+    publishVpc?: pulumi.Input<boolean>;
     /**
      * The destination network segment of the destination route.
      */
-    readonly routeDest?: pulumi.Input<string>;
+    routeDest?: pulumi.Input<string>;
     /**
      * The id of the vpn gateway.
      */
-    readonly vpnGatewayId?: pulumi.Input<string>;
+    vpnGatewayId?: pulumi.Input<string>;
     /**
      * The value should be 0 or 100.
      */
-    readonly weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number>;
 }
 
 /**
@@ -143,21 +143,21 @@ export interface RouteEntryArgs {
     /**
      * The next hop of the destination route.
      */
-    readonly nextHop: pulumi.Input<string>;
+    nextHop: pulumi.Input<string>;
     /**
      * Whether to issue the destination route to the VPC.
      */
-    readonly publishVpc: pulumi.Input<boolean>;
+    publishVpc: pulumi.Input<boolean>;
     /**
      * The destination network segment of the destination route.
      */
-    readonly routeDest: pulumi.Input<string>;
+    routeDest: pulumi.Input<string>;
     /**
      * The id of the vpn gateway.
      */
-    readonly vpnGatewayId: pulumi.Input<string>;
+    vpnGatewayId: pulumi.Input<string>;
     /**
      * The value should be 0 or 100.
      */
-    readonly weight: pulumi.Input<number>;
+    weight: pulumi.Input<number>;
 }

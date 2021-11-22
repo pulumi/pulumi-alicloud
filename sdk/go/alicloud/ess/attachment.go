@@ -40,7 +40,7 @@ import (
 // 		}
 // 		opt0 := "cloud_efficiency"
 // 		opt1 := "VSwitch"
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableDiskCategory:     &opt0,
 // 			AvailableResourceCreation: &opt1,
 // 		}, nil)
@@ -325,7 +325,7 @@ type AttachmentArrayInput interface {
 type AttachmentArray []AttachmentInput
 
 func (AttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Attachment)(nil))
+	return reflect.TypeOf((*[]*Attachment)(nil)).Elem()
 }
 
 func (i AttachmentArray) ToAttachmentArrayOutput() AttachmentArrayOutput {
@@ -350,7 +350,7 @@ type AttachmentMapInput interface {
 type AttachmentMap map[string]AttachmentInput
 
 func (AttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Attachment)(nil))
+	return reflect.TypeOf((*map[string]*Attachment)(nil)).Elem()
 }
 
 func (i AttachmentMap) ToAttachmentMapOutput() AttachmentMapOutput {
@@ -361,9 +361,7 @@ func (i AttachmentMap) ToAttachmentMapOutputWithContext(ctx context.Context) Att
 	return pulumi.ToOutputWithContext(ctx, i).(AttachmentMapOutput)
 }
 
-type AttachmentOutput struct {
-	*pulumi.OutputState
-}
+type AttachmentOutput struct{ *pulumi.OutputState }
 
 func (AttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Attachment)(nil))
@@ -382,14 +380,12 @@ func (o AttachmentOutput) ToAttachmentPtrOutput() AttachmentPtrOutput {
 }
 
 func (o AttachmentOutput) ToAttachmentPtrOutputWithContext(ctx context.Context) AttachmentPtrOutput {
-	return o.ApplyT(func(v Attachment) *Attachment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Attachment) *Attachment {
 		return &v
 	}).(AttachmentPtrOutput)
 }
 
-type AttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type AttachmentPtrOutput struct{ *pulumi.OutputState }
 
 func (AttachmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Attachment)(nil))
@@ -401,6 +397,16 @@ func (o AttachmentPtrOutput) ToAttachmentPtrOutput() AttachmentPtrOutput {
 
 func (o AttachmentPtrOutput) ToAttachmentPtrOutputWithContext(ctx context.Context) AttachmentPtrOutput {
 	return o
+}
+
+func (o AttachmentPtrOutput) Elem() AttachmentOutput {
+	return o.ApplyT(func(v *Attachment) Attachment {
+		if v != nil {
+			return *v
+		}
+		var ret Attachment
+		return ret
+	}).(AttachmentOutput)
 }
 
 type AttachmentArrayOutput struct{ *pulumi.OutputState }
@@ -444,6 +450,10 @@ func (o AttachmentMapOutput) MapIndex(k pulumi.StringInput) AttachmentOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachmentInput)(nil)).Elem(), &Attachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachmentPtrInput)(nil)).Elem(), &Attachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachmentArrayInput)(nil)).Elem(), AttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachmentMapInput)(nil)).Elem(), AttachmentMap{})
 	pulumi.RegisterOutputType(AttachmentOutput{})
 	pulumi.RegisterOutputType(AttachmentPtrOutput{})
 	pulumi.RegisterOutputType(AttachmentArrayOutput{})

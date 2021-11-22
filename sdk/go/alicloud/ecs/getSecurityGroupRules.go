@@ -4,6 +4,9 @@
 package ecs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -103,4 +106,99 @@ type GetSecurityGroupRulesResult struct {
 	Policy *string `pulumi:"policy"`
 	// A list of security group rules. Each element contains the following attributes:
 	Rules []GetSecurityGroupRulesRule `pulumi:"rules"`
+}
+
+func GetSecurityGroupRulesOutput(ctx *pulumi.Context, args GetSecurityGroupRulesOutputArgs, opts ...pulumi.InvokeOption) GetSecurityGroupRulesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetSecurityGroupRulesResult, error) {
+			args := v.(GetSecurityGroupRulesArgs)
+			r, err := GetSecurityGroupRules(ctx, &args, opts...)
+			return *r, err
+		}).(GetSecurityGroupRulesResultOutput)
+}
+
+// A collection of arguments for invoking getSecurityGroupRules.
+type GetSecurityGroupRulesOutputArgs struct {
+	// Authorization direction. Valid values are: `ingress` or `egress`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// The ID of the security group that owns the rules.
+	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// The IP protocol. Valid values are: `tcp`, `udp`, `icmp`, `gre` and `all`.
+	IpProtocol pulumi.StringPtrInput `pulumi:"ipProtocol"`
+	// Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
+	NicType    pulumi.StringPtrInput `pulumi:"nicType"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+}
+
+func (GetSecurityGroupRulesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGroupRulesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSecurityGroupRules.
+type GetSecurityGroupRulesResultOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGroupRulesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGroupRulesResult)(nil)).Elem()
+}
+
+func (o GetSecurityGroupRulesResultOutput) ToGetSecurityGroupRulesResultOutput() GetSecurityGroupRulesResultOutput {
+	return o
+}
+
+func (o GetSecurityGroupRulesResultOutput) ToGetSecurityGroupRulesResultOutputWithContext(ctx context.Context) GetSecurityGroupRulesResultOutput {
+	return o
+}
+
+// Authorization direction, `ingress` or `egress`.
+func (o GetSecurityGroupRulesResultOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecurityGroupRulesResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// The description of the security group that owns the rules.
+func (o GetSecurityGroupRulesResultOutput) GroupDesc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGroupRulesResult) string { return v.GroupDesc }).(pulumi.StringOutput)
+}
+
+func (o GetSecurityGroupRulesResultOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGroupRulesResult) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The name of the security group that owns the rules.
+func (o GetSecurityGroupRulesResultOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGroupRulesResult) string { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSecurityGroupRulesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGroupRulesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
+func (o GetSecurityGroupRulesResultOutput) IpProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecurityGroupRulesResult) *string { return v.IpProtocol }).(pulumi.StringPtrOutput)
+}
+
+// Network type, `internet` or `intranet`.
+func (o GetSecurityGroupRulesResultOutput) NicType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecurityGroupRulesResult) *string { return v.NicType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSecurityGroupRulesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecurityGroupRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// Authorization policy. Can be either `accept` or `drop`.
+func (o GetSecurityGroupRulesResultOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecurityGroupRulesResult) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+// A list of security group rules. Each element contains the following attributes:
+func (o GetSecurityGroupRulesResultOutput) Rules() GetSecurityGroupRulesRuleArrayOutput {
+	return o.ApplyT(func(v GetSecurityGroupRulesResult) []GetSecurityGroupRulesRule { return v.Rules }).(GetSecurityGroupRulesRuleArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSecurityGroupRulesResultOutput{})
 }

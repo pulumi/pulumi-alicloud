@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const example = alicloud.resourcemanager.getSharedTargets({
  *     ids: ["15681091********"],
  * });
- * export const firstResourceManagerSharedTargetId = example.then(example => example.targets[0].id);
+ * export const firstResourceManagerSharedTargetId = example.then(example => example.targets?[0]?.id);
  * ```
  */
 export function getSharedTargets(args?: GetSharedTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetSharedTargetsResult> {
@@ -48,16 +48,16 @@ export interface GetSharedTargetsArgs {
     /**
      * A list of Shared Target IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * The resource shared ID of resource manager.
      */
-    readonly resourceShareId?: string;
+    resourceShareId?: string;
     /**
      * The status of shared target.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -73,4 +73,27 @@ export interface GetSharedTargetsResult {
     readonly resourceShareId?: string;
     readonly status?: string;
     readonly targets: outputs.resourcemanager.GetSharedTargetsTarget[];
+}
+
+export function getSharedTargetsOutput(args?: GetSharedTargetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSharedTargetsResult> {
+    return pulumi.output(args).apply(a => getSharedTargets(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSharedTargets.
+ */
+export interface GetSharedTargetsOutputArgs {
+    /**
+     * A list of Shared Target IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The resource shared ID of resource manager.
+     */
+    resourceShareId?: pulumi.Input<string>;
+    /**
+     * The status of shared target.
+     */
+    status?: pulumi.Input<string>;
 }

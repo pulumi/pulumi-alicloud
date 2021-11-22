@@ -10,21 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Quotas.Inputs
 {
 
-    public sealed class GetQuotaApplicationsDimensionArgs : Pulumi.InvokeArgs
+    public sealed class GetQuotaApplicationsDimensionInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key of dimensions.
         /// </summary>
         [Input("key")]
-        public string? Key { get; set; }
+        public Input<string>? Key { get; set; }
 
         /// <summary>
         /// The value of dimensions.
         /// </summary>
         [Input("value")]
-        public string? Value { get; set; }
+        public Input<string>? Value { get; set; }
 
-        public GetQuotaApplicationsDimensionArgs()
+        public GetQuotaApplicationsDimensionInputArgs()
         {
         }
     }

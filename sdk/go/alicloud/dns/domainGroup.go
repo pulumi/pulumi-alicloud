@@ -200,7 +200,7 @@ type DomainGroupArrayInput interface {
 type DomainGroupArray []DomainGroupInput
 
 func (DomainGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DomainGroup)(nil))
+	return reflect.TypeOf((*[]*DomainGroup)(nil)).Elem()
 }
 
 func (i DomainGroupArray) ToDomainGroupArrayOutput() DomainGroupArrayOutput {
@@ -225,7 +225,7 @@ type DomainGroupMapInput interface {
 type DomainGroupMap map[string]DomainGroupInput
 
 func (DomainGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DomainGroup)(nil))
+	return reflect.TypeOf((*map[string]*DomainGroup)(nil)).Elem()
 }
 
 func (i DomainGroupMap) ToDomainGroupMapOutput() DomainGroupMapOutput {
@@ -236,9 +236,7 @@ func (i DomainGroupMap) ToDomainGroupMapOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DomainGroupMapOutput)
 }
 
-type DomainGroupOutput struct {
-	*pulumi.OutputState
-}
+type DomainGroupOutput struct{ *pulumi.OutputState }
 
 func (DomainGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainGroup)(nil))
@@ -257,14 +255,12 @@ func (o DomainGroupOutput) ToDomainGroupPtrOutput() DomainGroupPtrOutput {
 }
 
 func (o DomainGroupOutput) ToDomainGroupPtrOutputWithContext(ctx context.Context) DomainGroupPtrOutput {
-	return o.ApplyT(func(v DomainGroup) *DomainGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainGroup) *DomainGroup {
 		return &v
 	}).(DomainGroupPtrOutput)
 }
 
-type DomainGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type DomainGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (DomainGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DomainGroup)(nil))
@@ -276,6 +272,16 @@ func (o DomainGroupPtrOutput) ToDomainGroupPtrOutput() DomainGroupPtrOutput {
 
 func (o DomainGroupPtrOutput) ToDomainGroupPtrOutputWithContext(ctx context.Context) DomainGroupPtrOutput {
 	return o
+}
+
+func (o DomainGroupPtrOutput) Elem() DomainGroupOutput {
+	return o.ApplyT(func(v *DomainGroup) DomainGroup {
+		if v != nil {
+			return *v
+		}
+		var ret DomainGroup
+		return ret
+	}).(DomainGroupOutput)
 }
 
 type DomainGroupArrayOutput struct{ *pulumi.OutputState }
@@ -319,6 +325,10 @@ func (o DomainGroupMapOutput) MapIndex(k pulumi.StringInput) DomainGroupOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainGroupInput)(nil)).Elem(), &DomainGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainGroupPtrInput)(nil)).Elem(), &DomainGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainGroupArrayInput)(nil)).Elem(), DomainGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainGroupMapInput)(nil)).Elem(), DomainGroupMap{})
 	pulumi.RegisterOutputType(DomainGroupOutput{})
 	pulumi.RegisterOutputType(DomainGroupPtrOutput{})
 	pulumi.RegisterOutputType(DomainGroupArrayOutput{})

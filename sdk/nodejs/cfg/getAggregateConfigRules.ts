@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     ids: ["cr-5154626622af0034****"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstConfigAggregateConfigRuleId = example.then(example => example.rules[0].id);
+ * export const firstConfigAggregateConfigRuleId = example.then(example => example.rules?[0]?.id);
  * ```
  */
 export function getAggregateConfigRules(args: GetAggregateConfigRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetAggregateConfigRulesResult> {
@@ -53,32 +53,32 @@ export interface GetAggregateConfigRulesArgs {
     /**
      * The name of the rule.
      */
-    readonly aggregateConfigRuleName?: string;
+    aggregateConfigRuleName?: string;
     /**
      * The ID of Aggregator.
      */
-    readonly aggregatorId: string;
+    aggregatorId: string;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Aggregate Config Rule IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Aggregate Config Rule name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
      */
-    readonly riskLevel?: number;
+    riskLevel?: number;
     /**
      * The status of the rule.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -99,4 +99,43 @@ export interface GetAggregateConfigRulesResult {
     readonly riskLevel?: number;
     readonly rules: outputs.cfg.GetAggregateConfigRulesRule[];
     readonly status?: string;
+}
+
+export function getAggregateConfigRulesOutput(args: GetAggregateConfigRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAggregateConfigRulesResult> {
+    return pulumi.output(args).apply(a => getAggregateConfigRules(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAggregateConfigRules.
+ */
+export interface GetAggregateConfigRulesOutputArgs {
+    /**
+     * The name of the rule.
+     */
+    aggregateConfigRuleName?: pulumi.Input<string>;
+    /**
+     * The ID of Aggregator.
+     */
+    aggregatorId: pulumi.Input<string>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Aggregate Config Rule IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Aggregate Config Rule name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
+     */
+    riskLevel?: pulumi.Input<number>;
+    /**
+     * The status of the rule.
+     */
+    status?: pulumi.Input<string>;
 }

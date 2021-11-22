@@ -632,6 +632,12 @@ func (o GetRulesRuleArrayOutput) Index(i pulumi.IntInput) GetRulesRuleOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConfigsConfigInput)(nil)).Elem(), GetConfigsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConfigsConfigArrayInput)(nil)).Elem(), GetConfigsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleInput)(nil)).Elem(), GetRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleArrayInput)(nil)).Elem(), GetRulesRuleArray{})
 	pulumi.RegisterOutputType(GetConfigsConfigOutput{})
 	pulumi.RegisterOutputType(GetConfigsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})

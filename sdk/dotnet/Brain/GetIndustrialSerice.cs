@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Brain
 {
@@ -41,6 +42,37 @@ namespace Pulumi.AliCloud.Brain
         /// </summary>
         public static Task<GetIndustrialSericeResult> InvokeAsync(GetIndustrialSericeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIndustrialSericeResult>("alicloud:brain/getIndustrialSerice:getIndustrialSerice", args ?? new GetIndustrialSericeArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Using this data source can open Brain Industrial service automatically. If the service has been opened, it will return opened.
+        /// 
+        /// &gt; **NOTE:** Available in v1.115.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var open = Output.Create(AliCloud.Brain.GetIndustrialSerice.InvokeAsync(new AliCloud.Brain.GetIndustrialSericeArgs
+        ///         {
+        ///             Enable = "On",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetIndustrialSericeResult> Invoke(GetIndustrialSericeInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetIndustrialSericeResult>("alicloud:brain/getIndustrialSerice:getIndustrialSerice", args ?? new GetIndustrialSericeInvokeArgs(), options.WithVersion());
     }
 
 
@@ -53,6 +85,19 @@ namespace Pulumi.AliCloud.Brain
         public string? Enable { get; set; }
 
         public GetIndustrialSericeArgs()
+        {
+        }
+    }
+
+    public sealed class GetIndustrialSericeInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+        /// </summary>
+        [Input("enable")]
+        public Input<string>? Enable { get; set; }
+
+        public GetIndustrialSericeInvokeArgs()
         {
         }
     }

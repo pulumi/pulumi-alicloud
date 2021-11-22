@@ -82,11 +82,11 @@ export interface NetworkAclAttachmentState {
     /**
      * The id of the network acl, the field can't be changed.
      */
-    readonly networkAclId?: pulumi.Input<string>;
+    networkAclId?: pulumi.Input<string>;
     /**
      * List of the resources associated with the network acl. The details see Block Resources.
      */
-    readonly resources?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclAttachmentResource>[]>;
+    resources?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclAttachmentResource>[]>;
 }
 
 /**
@@ -96,9 +96,9 @@ export interface NetworkAclAttachmentArgs {
     /**
      * The id of the network acl, the field can't be changed.
      */
-    readonly networkAclId: pulumi.Input<string>;
+    networkAclId: pulumi.Input<string>;
     /**
      * List of the resources associated with the network acl. The details see Block Resources.
      */
-    readonly resources: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclAttachmentResource>[]>;
+    resources: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclAttachmentResource>[]>;
 }

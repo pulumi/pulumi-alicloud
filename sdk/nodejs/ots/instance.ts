@@ -122,23 +122,23 @@ export interface InstanceState {
     /**
      * The network limitation of accessing instance. Valid values:
      */
-    readonly accessedBy?: pulumi.Input<string>;
+    accessedBy?: pulumi.Input<string>;
     /**
      * The description of the instance. Currently, it does not support modifying.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
      */
-    readonly instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string>;
     /**
      * The name of the instance.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the instance.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -148,21 +148,21 @@ export interface InstanceArgs {
     /**
      * The network limitation of accessing instance. Valid values:
      */
-    readonly accessedBy?: pulumi.Input<string>;
+    accessedBy?: pulumi.Input<string>;
     /**
      * The description of the instance. Currently, it does not support modifying.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
      */
-    readonly instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string>;
     /**
      * The name of the instance.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the instance.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultCluster = new alicloud.polardb.Cluster("defaultCluster", {
@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * }));
  * const endpoint = new alicloud.polardb.EndpointAddress("endpoint", {
  *     dbClusterId: defaultCluster.id,
- *     dbEndpointId: defaultEndpoints.endpoints[0].dbEndpointId,
+ *     dbEndpointId: defaultEndpoints.apply(defaultEndpoints => defaultEndpoints.endpoints?[0]?.dbEndpointId),
  *     connectionPrefix: "testpolardbconn",
  *     netType: "Public",
  * });
@@ -163,31 +163,31 @@ export interface EndpointAddressState {
     /**
      * Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
      */
-    readonly connectionPrefix?: pulumi.Input<string>;
+    connectionPrefix?: pulumi.Input<string>;
     /**
      * Connection cluster or endpoint string.
      */
-    readonly connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string>;
     /**
      * The Id of cluster that can run database.
      */
-    readonly dbClusterId?: pulumi.Input<string>;
+    dbClusterId?: pulumi.Input<string>;
     /**
      * The Id of endpoint that can run database.
      */
-    readonly dbEndpointId?: pulumi.Input<string>;
+    dbEndpointId?: pulumi.Input<string>;
     /**
      * The ip address of connection string.
      */
-    readonly ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string>;
     /**
      * Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
      */
-    readonly netType?: pulumi.Input<string>;
+    netType?: pulumi.Input<string>;
     /**
      * Connection cluster or endpoint port.
      */
-    readonly port?: pulumi.Input<string>;
+    port?: pulumi.Input<string>;
 }
 
 /**
@@ -197,17 +197,17 @@ export interface EndpointAddressArgs {
     /**
      * Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
      */
-    readonly connectionPrefix?: pulumi.Input<string>;
+    connectionPrefix?: pulumi.Input<string>;
     /**
      * The Id of cluster that can run database.
      */
-    readonly dbClusterId: pulumi.Input<string>;
+    dbClusterId: pulumi.Input<string>;
     /**
      * The Id of endpoint that can run database.
      */
-    readonly dbEndpointId: pulumi.Input<string>;
+    dbEndpointId: pulumi.Input<string>;
     /**
      * Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
      */
-    readonly netType?: pulumi.Input<string>;
+    netType?: pulumi.Input<string>;
 }

@@ -18,12 +18,12 @@ import * as utilities from "../utilities";
  * const secGroupsDs = pulumi.output(alicloud.ecs.getSecurityGroups({
  *     nameRegex: "^web-",
  *     outputFile: "web_access.json",
- * }, { async: true }));
+ * }));
  * // In conjunction with a VPC
  * const primaryVpcDs = new alicloud.vpc.Network("primary_vpc_ds", {});
  * const primarySecGroupsDs = primaryVpcDs.id.apply(id => alicloud.ecs.getSecurityGroups({
  *     vpcId: id,
- * }, { async: true }));
+ * }));
  *
  * export const firstGroupId = primarySecGroupsDs.groups[0].id;
  * ```
@@ -54,16 +54,16 @@ export interface GetSecurityGroupsArgs {
     /**
      * A list of Security Group IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter the resulting security groups by their names.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The Id of resource group which the securityGroup belongs.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * A map of tags assigned to the ECS instances. It must be in the format:
      * ```typescript
@@ -75,14 +75,14 @@ export interface GetSecurityGroupsArgs {
      *         tagKey1: "tagValue1",
      *         tagKey2: "tagValue2",
      *     },
-     * }, { async: true }));
+     * }));
      * ```
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
     /**
      * Used to retrieve security groups that belong to the specified VPC ID.
      */
-    readonly vpcId?: string;
+    vpcId?: string;
 }
 
 /**
@@ -119,4 +119,46 @@ export interface GetSecurityGroupsResult {
      * The ID of the VPC that owns the security group.
      */
     readonly vpcId?: string;
+}
+
+export function getSecurityGroupsOutput(args?: GetSecurityGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityGroupsResult> {
+    return pulumi.output(args).apply(a => getSecurityGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSecurityGroups.
+ */
+export interface GetSecurityGroupsOutputArgs {
+    /**
+     * A list of Security Group IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter the resulting security groups by their names.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The Id of resource group which the securityGroup belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * A map of tags assigned to the ECS instances. It must be in the format:
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as alicloud from "@pulumi/alicloud";
+     *
+     * const taggedSecurityGroups = pulumi.output(alicloud.ecs.getSecurityGroups({
+     *     tags: {
+     *         tagKey1: "tagValue1",
+     *         tagKey2: "tagValue2",
+     *     },
+     * }));
+     * ```
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Used to retrieve security groups that belong to the specified VPC ID.
+     */
+    vpcId?: pulumi.Input<string>;
 }

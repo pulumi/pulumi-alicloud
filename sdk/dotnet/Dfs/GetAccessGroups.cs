@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dfs
 {
@@ -37,12 +38,12 @@ namespace Pulumi.AliCloud.Dfs
         ///                 "example_id",
         ///             },
         ///         }));
-        ///         this.DfsAccessGroupId1 = ids.Apply(ids =&gt; ids.Groups[0].Id);
+        ///         this.DfsAccessGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.Dfs.GetAccessGroups.InvokeAsync(new AliCloud.Dfs.GetAccessGroupsArgs
         ///         {
         ///             NameRegex = "^my-AccessGroup",
         ///         }));
-        ///         this.DfsAccessGroupId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups[0].Id);
+        ///         this.DfsAccessGroupId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups?[0]?.Id);
         ///     }
         /// 
         ///     [Output("dfsAccessGroupId1")]
@@ -56,6 +57,52 @@ namespace Pulumi.AliCloud.Dfs
         /// </summary>
         public static Task<GetAccessGroupsResult> InvokeAsync(GetAccessGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccessGroupsResult>("alicloud:dfs/getAccessGroups:getAccessGroups", args ?? new GetAccessGroupsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Apsara File Storage for HDFS Access Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Dfs.GetAccessGroups.InvokeAsync(new AliCloud.Dfs.GetAccessGroupsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_id",
+        ///             },
+        ///         }));
+        ///         this.DfsAccessGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.Dfs.GetAccessGroups.InvokeAsync(new AliCloud.Dfs.GetAccessGroupsArgs
+        ///         {
+        ///             NameRegex = "^my-AccessGroup",
+        ///         }));
+        ///         this.DfsAccessGroupId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("dfsAccessGroupId1")]
+        ///     public Output&lt;string&gt; DfsAccessGroupId1 { get; set; }
+        ///     [Output("dfsAccessGroupId2")]
+        ///     public Output&lt;string&gt; DfsAccessGroupId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAccessGroupsResult> Invoke(GetAccessGroupsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAccessGroupsResult>("alicloud:dfs/getAccessGroups:getAccessGroups", args ?? new GetAccessGroupsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -95,6 +142,46 @@ namespace Pulumi.AliCloud.Dfs
         public int? StartOffset { get; set; }
 
         public GetAccessGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetAccessGroupsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Access Group IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("limit")]
+        public Input<int>? Limit { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Access Group name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("orderBy")]
+        public Input<string>? OrderBy { get; set; }
+
+        [Input("orderType")]
+        public Input<string>? OrderType { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        [Input("startOffset")]
+        public Input<int>? StartOffset { get; set; }
+
+        public GetAccessGroupsInvokeArgs()
         {
         }
     }

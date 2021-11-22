@@ -699,6 +699,14 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlansPlanInput)(nil)).Elem(), GetBackupPlansPlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlansPlanArrayInput)(nil)).Elem(), GetBackupPlansPlanArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInput)(nil)).Elem(), GetClustersClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterArrayInput)(nil)).Elem(), GetClustersClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataCentersCenterInput)(nil)).Elem(), GetDataCentersCenterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataCentersCenterArrayInput)(nil)).Elem(), GetDataCentersCenterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(GetBackupPlansPlanOutput{})
 	pulumi.RegisterOutputType(GetBackupPlansPlanArrayOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterOutput{})

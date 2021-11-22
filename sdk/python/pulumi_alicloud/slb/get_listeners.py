@@ -13,6 +13,7 @@ __all__ = [
     'GetListenersResult',
     'AwaitableGetListenersResult',
     'get_listeners',
+    'get_listeners_output',
 ]
 
 @pulumi.output_type
@@ -168,3 +169,49 @@ def get_listeners(description_regex: Optional[str] = None,
         output_file=__ret__.output_file,
         protocol=__ret__.protocol,
         slb_listeners=__ret__.slb_listeners)
+
+
+@_utilities.lift_output_func(get_listeners)
+def get_listeners_output(description_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         frontend_port: Optional[pulumi.Input[Optional[int]]] = None,
+                         load_balancer_id: Optional[pulumi.Input[str]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         protocol: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetListenersResult]:
+    """
+    This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.slb.ApplicationLoadBalancer("default", load_balancer_name="tf-testAccSlbListenertcp")
+    tcp = alicloud.slb.Listener("tcp",
+        load_balancer_id=default.id,
+        backend_port=22,
+        frontend_port=22,
+        protocol="tcp",
+        bandwidth=10,
+        health_check_type="tcp",
+        persistence_timeout=3600,
+        healthy_threshold=8,
+        unhealthy_threshold=8,
+        health_check_timeout=8,
+        health_check_interval=5,
+        health_check_http_code="http_2xx",
+        health_check_connect_port=20,
+        health_check_uri="/console",
+        established_timeout=600)
+    sample_ds = default.id.apply(lambda id: alicloud.slb.get_listeners(load_balancer_id=id))
+    pulumi.export("firstSlbListenerProtocol", sample_ds.slb_listeners[0].protocol)
+    ```
+
+
+    :param str description_regex: A regex string to filter results by SLB listener description.
+    :param int frontend_port: Filter listeners by the specified frontend port.
+    :param str load_balancer_id: ID of the SLB with listeners.
+    :param str protocol: Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
+    """
+    ...

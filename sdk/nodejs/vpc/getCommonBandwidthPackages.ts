@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * const fooCommonBandwidthPackages = fooCommonBandwithPackage.id.apply(id => alicloud.vpc.getCommonBandwidthPackages({
  *     ids: [id],
  *     nameRegex: "^tf-testAcc.*",
- * }, { async: true }));
+ * }));
  * ```
  * ## Public ip addresses Block
  *
@@ -61,32 +61,32 @@ export interface GetCommonBandwidthPackagesArgs {
     /**
      * The name of bandwidth package.
      */
-    readonly bandwidthPackageName?: string;
+    bandwidthPackageName?: string;
     /**
      * Specifies whether to precheck only the request.
      */
-    readonly dryRun?: boolean;
+    dryRun?: boolean;
     /**
      * A list of Common Bandwidth Packages IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * Specifies whether to return data of orders that have not taken effect.
      */
-    readonly includeReservationData?: boolean;
+    includeReservationData?: boolean;
     /**
      * A regex string to filter results by name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The Id of resource group which the common bandwidth package belongs.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * The status of bandwidth package. Valid values: `Available` and `Pending`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -125,4 +125,43 @@ export interface GetCommonBandwidthPackagesResult {
      * Status of the Common Bandwidth Package.
      */
     readonly status?: string;
+}
+
+export function getCommonBandwidthPackagesOutput(args?: GetCommonBandwidthPackagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCommonBandwidthPackagesResult> {
+    return pulumi.output(args).apply(a => getCommonBandwidthPackages(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCommonBandwidthPackages.
+ */
+export interface GetCommonBandwidthPackagesOutputArgs {
+    /**
+     * The name of bandwidth package.
+     */
+    bandwidthPackageName?: pulumi.Input<string>;
+    /**
+     * Specifies whether to precheck only the request.
+     */
+    dryRun?: pulumi.Input<boolean>;
+    /**
+     * A list of Common Bandwidth Packages IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specifies whether to return data of orders that have not taken effect.
+     */
+    includeReservationData?: pulumi.Input<boolean>;
+    /**
+     * A regex string to filter results by name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The Id of resource group which the common bandwidth package belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The status of bandwidth package. Valid values: `Available` and `Pending`.
+     */
+    status?: pulumi.Input<string>;
 }

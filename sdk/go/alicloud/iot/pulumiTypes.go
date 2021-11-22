@@ -189,6 +189,8 @@ func (o GetDeviceGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetDeviceGroup
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDeviceGroupsGroupInput)(nil)).Elem(), GetDeviceGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDeviceGroupsGroupArrayInput)(nil)).Elem(), GetDeviceGroupsGroupArray{})
 	pulumi.RegisterOutputType(GetDeviceGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetDeviceGroupsGroupArrayOutput{})
 }

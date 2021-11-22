@@ -13,6 +13,7 @@ __all__ = [
     'GetBucketObjectsResult',
     'AwaitableGetBucketObjectsResult',
     'get_bucket_objects',
+    'get_bucket_objects_output',
 ]
 
 @pulumi.output_type
@@ -133,3 +134,31 @@ def get_bucket_objects(bucket_name: Optional[str] = None,
         key_regex=__ret__.key_regex,
         objects=__ret__.objects,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_bucket_objects)
+def get_bucket_objects_output(bucket_name: Optional[pulumi.Input[str]] = None,
+                              key_prefix: Optional[pulumi.Input[Optional[str]]] = None,
+                              key_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBucketObjectsResult]:
+    """
+    This data source provides the objects of an OSS bucket.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    bucket_objects_ds = alicloud.oss.get_bucket_objects(bucket_name="sample_bucket",
+        key_regex="sample/sample_object.txt")
+    pulumi.export("firstObjectKey", bucket_objects_ds.objects[0].key)
+    ```
+
+
+    :param str bucket_name: Name of the bucket that contains the objects to find.
+    :param str key_prefix: Filter results by the given key prefix (such as "path/to/folder/logs-").
+    :param str key_regex: A regex string to filter results by key.
+    """
+    ...

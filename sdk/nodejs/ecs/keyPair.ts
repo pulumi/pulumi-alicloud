@@ -107,28 +107,28 @@ export class KeyPair extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KeyPair resources.
  */
 export interface KeyPairState {
-    readonly fingerPrint?: pulumi.Input<string>;
+    fingerPrint?: pulumi.Input<string>;
     /**
      * The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
      */
-    readonly keyFile?: pulumi.Input<string>;
+    keyFile?: pulumi.Input<string>;
     /**
      * The key pair's name. It is the only in one Alicloud account.
      *
      * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
      */
-    readonly keyName?: pulumi.Input<string>;
-    readonly keyNamePrefix?: pulumi.Input<string>;
-    readonly keyPairName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string>;
+    keyNamePrefix?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string>;
     /**
      * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
      */
-    readonly publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string>;
     /**
      * The Id of resource group which the key pair belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    resourceGroupId?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -138,22 +138,22 @@ export interface KeyPairArgs {
     /**
      * The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
      */
-    readonly keyFile?: pulumi.Input<string>;
+    keyFile?: pulumi.Input<string>;
     /**
      * The key pair's name. It is the only in one Alicloud account.
      *
      * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
      */
-    readonly keyName?: pulumi.Input<string>;
-    readonly keyNamePrefix?: pulumi.Input<string>;
-    readonly keyPairName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string>;
+    keyNamePrefix?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string>;
     /**
      * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
      */
-    readonly publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string>;
     /**
      * The Id of resource group which the key pair belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    resourceGroupId?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

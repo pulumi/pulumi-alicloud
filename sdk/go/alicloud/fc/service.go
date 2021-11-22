@@ -241,7 +241,7 @@ type ServiceArrayInput interface {
 type ServiceArray []ServiceInput
 
 func (ServiceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Service)(nil))
+	return reflect.TypeOf((*[]*Service)(nil)).Elem()
 }
 
 func (i ServiceArray) ToServiceArrayOutput() ServiceArrayOutput {
@@ -266,7 +266,7 @@ type ServiceMapInput interface {
 type ServiceMap map[string]ServiceInput
 
 func (ServiceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Service)(nil))
+	return reflect.TypeOf((*map[string]*Service)(nil)).Elem()
 }
 
 func (i ServiceMap) ToServiceMapOutput() ServiceMapOutput {
@@ -277,9 +277,7 @@ func (i ServiceMap) ToServiceMapOutputWithContext(ctx context.Context) ServiceMa
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMapOutput)
 }
 
-type ServiceOutput struct {
-	*pulumi.OutputState
-}
+type ServiceOutput struct{ *pulumi.OutputState }
 
 func (ServiceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Service)(nil))
@@ -298,14 +296,12 @@ func (o ServiceOutput) ToServicePtrOutput() ServicePtrOutput {
 }
 
 func (o ServiceOutput) ToServicePtrOutputWithContext(ctx context.Context) ServicePtrOutput {
-	return o.ApplyT(func(v Service) *Service {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Service) *Service {
 		return &v
 	}).(ServicePtrOutput)
 }
 
-type ServicePtrOutput struct {
-	*pulumi.OutputState
-}
+type ServicePtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Service)(nil))
@@ -317,6 +313,16 @@ func (o ServicePtrOutput) ToServicePtrOutput() ServicePtrOutput {
 
 func (o ServicePtrOutput) ToServicePtrOutputWithContext(ctx context.Context) ServicePtrOutput {
 	return o
+}
+
+func (o ServicePtrOutput) Elem() ServiceOutput {
+	return o.ApplyT(func(v *Service) Service {
+		if v != nil {
+			return *v
+		}
+		var ret Service
+		return ret
+	}).(ServiceOutput)
 }
 
 type ServiceArrayOutput struct{ *pulumi.OutputState }
@@ -360,6 +366,10 @@ func (o ServiceMapOutput) MapIndex(k pulumi.StringInput) ServiceOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceInput)(nil)).Elem(), &Service{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePtrInput)(nil)).Elem(), &Service{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceArrayInput)(nil)).Elem(), ServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMapInput)(nil)).Elem(), ServiceMap{})
 	pulumi.RegisterOutputType(ServiceOutput{})
 	pulumi.RegisterOutputType(ServicePtrOutput{})
 	pulumi.RegisterOutputType(ServiceArrayOutput{})

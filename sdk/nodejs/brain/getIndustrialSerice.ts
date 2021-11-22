@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -18,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * const open = pulumi.output(alicloud.brain.getIndustrialSerice({
  *     enable: "On",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getIndustrialSerice(args?: GetIndustrialSericeArgs, opts?: pulumi.InvokeOptions): Promise<GetIndustrialSericeResult> {
@@ -42,7 +41,7 @@ export interface GetIndustrialSericeArgs {
     /**
      * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
      */
-    readonly enable?: string;
+    enable?: string;
 }
 
 /**
@@ -58,4 +57,18 @@ export interface GetIndustrialSericeResult {
      * The current service enable status.
      */
     readonly status: string;
+}
+
+export function getIndustrialSericeOutput(args?: GetIndustrialSericeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIndustrialSericeResult> {
+    return pulumi.output(args).apply(a => getIndustrialSerice(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getIndustrialSerice.
+ */
+export interface GetIndustrialSericeOutputArgs {
+    /**
+     * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+     */
+    enable?: pulumi.Input<string>;
 }

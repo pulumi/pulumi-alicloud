@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *         "ZOOKEEPER",
  *     ],
  *     emrVersion: "EMR-3.22.0",
- * }, { async: true }));
+ * }));
  *
  * export const firstMainVersion = defaultMainVersions.mainVersions[0].emrVersion;
  * export const thisClusterTypes = defaultMainVersions.mainVersions[0].clusterTypes;
@@ -53,12 +53,12 @@ export interface GetMainVersionsArgs {
      * The supported clusterType of this emr version.
      * Possible values may be any one or combination of these: ["HADOOP", "DRUID", "KAFKA", "ZOOKEEPER", "FLINK", "CLICKHOUSE"]
      */
-    readonly clusterTypes?: string[];
+    clusterTypes?: string[];
     /**
      * The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
      */
-    readonly emrVersion?: string;
-    readonly outputFile?: string;
+    emrVersion?: string;
+    outputFile?: string;
 }
 
 /**
@@ -83,4 +83,24 @@ export interface GetMainVersionsResult {
      */
     readonly mainVersions: outputs.emr.GetMainVersionsMainVersion[];
     readonly outputFile?: string;
+}
+
+export function getMainVersionsOutput(args?: GetMainVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMainVersionsResult> {
+    return pulumi.output(args).apply(a => getMainVersions(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMainVersions.
+ */
+export interface GetMainVersionsOutputArgs {
+    /**
+     * The supported clusterType of this emr version.
+     * Possible values may be any one or combination of these: ["HADOOP", "DRUID", "KAFKA", "ZOOKEEPER", "FLINK", "CLICKHOUSE"]
+     */
+    clusterTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
+     */
+    emrVersion?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

@@ -117,11 +117,11 @@ export interface ImageSharePermissionState {
     /**
      * Alibaba Cloud Account ID. It is used to share images.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The source image ID.
      */
-    readonly imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string>;
 }
 
 /**
@@ -131,9 +131,9 @@ export interface ImageSharePermissionArgs {
     /**
      * Alibaba Cloud Account ID. It is used to share images.
      */
-    readonly accountId: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
      * The source image ID.
      */
-    readonly imageId: pulumi.Input<string>;
+    imageId: pulumi.Input<string>;
 }

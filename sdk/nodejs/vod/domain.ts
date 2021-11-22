@@ -200,65 +200,65 @@ export interface DomainState {
     /**
      * The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
      */
-    readonly certName?: pulumi.Input<string>;
+    certName?: pulumi.Input<string>;
     /**
      * The URL that is used for health checks.
      */
-    readonly checkUrl?: pulumi.Input<string>;
+    checkUrl?: pulumi.Input<string>;
     /**
      * The CNAME that is assigned to the domain name for CDN. You must add a CNAME record in the system of your Domain Name System (DNS) service provider to map the domain name for CDN to the CNAME.
      */
-    readonly cname?: pulumi.Input<string>;
+    cname?: pulumi.Input<string>;
     /**
      * The description of the domain name for CDN.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The domain name for CDN that you want to add to ApsaraVideo VOD. Wildcard domain names are supported. Start the domain name with a period (.). Example: `.example.com.`.
      */
-    readonly domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string>;
     /**
      * The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
-    readonly gmtCreated?: pulumi.Input<string>;
+    gmtCreated?: pulumi.Input<string>;
     /**
      * The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
-    readonly gmtModified?: pulumi.Input<string>;
+    gmtModified?: pulumi.Input<string>;
     /**
      * This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
      */
-    readonly scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string>;
     /**
      * The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
      */
-    readonly sources?: pulumi.Input<pulumi.Input<inputs.vod.DomainSource>[]>;
+    sources?: pulumi.Input<pulumi.Input<inputs.vod.DomainSource>[]>;
     /**
      * Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
      */
-    readonly sslProtocol?: pulumi.Input<string>;
+    sslProtocol?: pulumi.Input<string>;
     /**
      * The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
      */
-    readonly sslPub?: pulumi.Input<string>;
+    sslPub?: pulumi.Input<string>;
     /**
      * The status of the domain name for CDN. Value values:
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
      * * `Value`: It can be up to 128 characters in length. It can be a null string.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The top-level domain name.
      */
-    readonly topLevelDomain?: pulumi.Input<string>;
+    topLevelDomain?: pulumi.Input<string>;
     /**
      * The weight of the origin server.
      */
-    readonly weight?: pulumi.Input<string>;
+    weight?: pulumi.Input<string>;
 }
 
 /**
@@ -268,27 +268,27 @@ export interface DomainArgs {
     /**
      * The URL that is used for health checks.
      */
-    readonly checkUrl?: pulumi.Input<string>;
+    checkUrl?: pulumi.Input<string>;
     /**
      * The domain name for CDN that you want to add to ApsaraVideo VOD. Wildcard domain names are supported. Start the domain name with a period (.). Example: `.example.com.`.
      */
-    readonly domainName: pulumi.Input<string>;
+    domainName: pulumi.Input<string>;
     /**
      * This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
      */
-    readonly scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string>;
     /**
      * The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
      */
-    readonly sources: pulumi.Input<pulumi.Input<inputs.vod.DomainSource>[]>;
+    sources: pulumi.Input<pulumi.Input<inputs.vod.DomainSource>[]>;
     /**
      * A mapping of tags to assign to the resource.
      * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
      * * `Value`: It can be up to 128 characters in length. It can be a null string.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The top-level domain name.
      */
-    readonly topLevelDomain?: pulumi.Input<string>;
+    topLevelDomain?: pulumi.Input<string>;
 }

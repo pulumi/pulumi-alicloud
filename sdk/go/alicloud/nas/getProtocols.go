@@ -4,6 +4,9 @@
 package nas
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,4 +68,67 @@ type GetProtocolsResult struct {
 	Protocols []string `pulumi:"protocols"`
 	Type      string   `pulumi:"type"`
 	ZoneId    *string  `pulumi:"zoneId"`
+}
+
+func GetProtocolsOutput(ctx *pulumi.Context, args GetProtocolsOutputArgs, opts ...pulumi.InvokeOption) GetProtocolsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetProtocolsResult, error) {
+			args := v.(GetProtocolsArgs)
+			r, err := GetProtocols(ctx, &args, opts...)
+			return *r, err
+		}).(GetProtocolsResultOutput)
+}
+
+// A collection of arguments for invoking getProtocols.
+type GetProtocolsOutputArgs struct {
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The file system type. Valid Values: `Performance` and `Capacity`.
+	Type pulumi.StringInput `pulumi:"type"`
+	// String to filter results by zone id.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (GetProtocolsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProtocolsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getProtocols.
+type GetProtocolsResultOutput struct{ *pulumi.OutputState }
+
+func (GetProtocolsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProtocolsResult)(nil)).Elem()
+}
+
+func (o GetProtocolsResultOutput) ToGetProtocolsResultOutput() GetProtocolsResultOutput {
+	return o
+}
+
+func (o GetProtocolsResultOutput) ToGetProtocolsResultOutputWithContext(ctx context.Context) GetProtocolsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetProtocolsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProtocolsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetProtocolsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProtocolsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of supported protocol type..
+func (o GetProtocolsResultOutput) Protocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetProtocolsResult) []string { return v.Protocols }).(pulumi.StringArrayOutput)
+}
+
+func (o GetProtocolsResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProtocolsResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetProtocolsResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProtocolsResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetProtocolsResultOutput{})
 }

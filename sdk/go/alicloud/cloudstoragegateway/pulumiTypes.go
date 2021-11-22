@@ -445,6 +445,10 @@ func (o GetStorageBundlesBundleArrayOutput) Index(i pulumi.IntInput) GetStorageB
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayInput)(nil)).Elem(), GetGatewaysGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayArrayInput)(nil)).Elem(), GetGatewaysGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageBundlesBundleInput)(nil)).Elem(), GetStorageBundlesBundleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageBundlesBundleArrayInput)(nil)).Elem(), GetStorageBundlesBundleArray{})
 	pulumi.RegisterOutputType(GetGatewaysGatewayOutput{})
 	pulumi.RegisterOutputType(GetGatewaysGatewayArrayOutput{})
 	pulumi.RegisterOutputType(GetStorageBundlesBundleOutput{})

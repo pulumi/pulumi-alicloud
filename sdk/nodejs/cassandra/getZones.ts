@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const zonesIds = alicloud.cassandra.getZones({});
  * // Create an Cassandra cluster with the first matched zone
- * const cassandra = new alicloud.cassandra.Cluster("cassandra", {zoneId: zonesIds.then(zonesIds => zonesIds.zones[0].id)});
+ * const cassandra = new alicloud.cassandra.Cluster("cassandra", {zoneId: zonesIds.then(zonesIds => zonesIds.zones?[0]?.id)});
  * // Other properties...
  * ```
  */
@@ -44,8 +44,8 @@ export interface GetZonesArgs {
     /**
      * Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Cassandra clusters.
      */
-    readonly multi?: boolean;
-    readonly outputFile?: string;
+    multi?: boolean;
+    outputFile?: string;
 }
 
 /**
@@ -66,4 +66,19 @@ export interface GetZonesResult {
      * A list of availability zones. Each element contains the following attributes:
      */
     readonly zones: outputs.cassandra.GetZonesZone[];
+}
+
+export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
+    return pulumi.output(args).apply(a => getZones(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getZones.
+ */
+export interface GetZonesOutputArgs {
+    /**
+     * Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Cassandra clusters.
+     */
+    multi?: pulumi.Input<boolean>;
+    outputFile?: pulumi.Input<string>;
 }

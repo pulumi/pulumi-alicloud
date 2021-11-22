@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const ossBucketsDs = pulumi.output(alicloud.oss.getBuckets({
  *     nameRegex: "sample_oss_bucket",
- * }, { async: true }));
+ * }));
  *
  * export const firstOssBucketName = ossBucketsDs.buckets[0].name;
  * ```
@@ -43,8 +43,8 @@ export interface GetBucketsArgs {
     /**
      * A regex string to filter results by bucket name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -65,4 +65,19 @@ export interface GetBucketsResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getBucketsOutput(args?: GetBucketsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketsResult> {
+    return pulumi.output(args).apply(a => getBuckets(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getBuckets.
+ */
+export interface GetBucketsOutputArgs {
+    /**
+     * A regex string to filter results by bucket name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

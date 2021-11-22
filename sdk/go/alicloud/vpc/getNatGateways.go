@@ -4,6 +4,9 @@
 package vpc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -78,4 +81,141 @@ type GetNatGatewaysResult struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The ID of the VPC.
 	VpcId *string `pulumi:"vpcId"`
+}
+
+func GetNatGatewaysOutput(ctx *pulumi.Context, args GetNatGatewaysOutputArgs, opts ...pulumi.InvokeOption) GetNatGatewaysResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetNatGatewaysResult, error) {
+			args := v.(GetNatGatewaysArgs)
+			r, err := GetNatGateways(ctx, &args, opts...)
+			return *r, err
+		}).(GetNatGatewaysResultOutput)
+}
+
+// A collection of arguments for invoking getNatGateways.
+type GetNatGatewaysOutputArgs struct {
+	// Specifies whether to only precheck the request.
+	DryRun pulumi.BoolPtrInput `pulumi:"dryRun"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of NAT gateways IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter nat gateways by name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// The name of NAT gateway.
+	NatGatewayName pulumi.StringPtrInput `pulumi:"natGatewayName"`
+	// The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
+	NatType    pulumi.StringPtrInput `pulumi:"natType"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
+	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`
+	// The resource group id of NAT gateway.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	// The specification of NAT gateway. Valid values `Middle`, `Large`, `Small` and `XLarge.1`. Default value is `Small`.
+	Specification pulumi.StringPtrInput `pulumi:"specification"`
+	// The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The tags of NAT gateway.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The ID of the VPC.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+}
+
+func (GetNatGatewaysOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNatGatewaysArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getNatGateways.
+type GetNatGatewaysResultOutput struct{ *pulumi.OutputState }
+
+func (GetNatGatewaysResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNatGatewaysResult)(nil)).Elem()
+}
+
+func (o GetNatGatewaysResultOutput) ToGetNatGatewaysResultOutput() GetNatGatewaysResultOutput {
+	return o
+}
+
+func (o GetNatGatewaysResultOutput) ToGetNatGatewaysResultOutputWithContext(ctx context.Context) GetNatGatewaysResultOutput {
+	return o
+}
+
+func (o GetNatGatewaysResultOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetNatGatewaysResult) *bool { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetNatGatewaysResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetNatGatewaysResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// A list of Nat gateways. Each element contains the following attributes:
+func (o GetNatGatewaysResultOutput) Gateways() GetNatGatewaysGatewayArrayOutput {
+	return o.ApplyT(func(v GetNatGatewaysResult) []GetNatGatewaysGateway { return v.Gateways }).(GetNatGatewaysGatewayArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetNatGatewaysResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNatGatewaysResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Optional) A list of Nat gateways IDs.
+func (o GetNatGatewaysResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNatGatewaysResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNatGatewaysResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNatGatewaysResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of Nat gateways names.
+func (o GetNatGatewaysResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNatGatewaysResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+// The name of the NAT gateway.
+func (o GetNatGatewaysResultOutput) NatGatewayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNatGatewaysResult) *string { return v.NatGatewayName }).(pulumi.StringPtrOutput)
+}
+
+// The type of the NAT gateway.
+func (o GetNatGatewaysResultOutput) NatType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNatGatewaysResult) *string { return v.NatType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNatGatewaysResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNatGatewaysResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The billing method of the NAT gateway.
+func (o GetNatGatewaysResultOutput) PaymentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNatGatewaysResult) *string { return v.PaymentType }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the resource group.
+func (o GetNatGatewaysResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNatGatewaysResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the NAT gateway.
+func (o GetNatGatewaysResultOutput) Specification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNatGatewaysResult) *string { return v.Specification }).(pulumi.StringPtrOutput)
+}
+
+// The status of the NAT gateway.
+func (o GetNatGatewaysResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNatGatewaysResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The tags of NAT gateway.
+func (o GetNatGatewaysResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetNatGatewaysResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The ID of the VPC.
+func (o GetNatGatewaysResultOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNatGatewaysResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetNatGatewaysResultOutput{})
 }

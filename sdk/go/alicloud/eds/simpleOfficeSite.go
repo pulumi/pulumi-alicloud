@@ -287,7 +287,7 @@ type SimpleOfficeSiteArrayInput interface {
 type SimpleOfficeSiteArray []SimpleOfficeSiteInput
 
 func (SimpleOfficeSiteArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SimpleOfficeSite)(nil))
+	return reflect.TypeOf((*[]*SimpleOfficeSite)(nil)).Elem()
 }
 
 func (i SimpleOfficeSiteArray) ToSimpleOfficeSiteArrayOutput() SimpleOfficeSiteArrayOutput {
@@ -312,7 +312,7 @@ type SimpleOfficeSiteMapInput interface {
 type SimpleOfficeSiteMap map[string]SimpleOfficeSiteInput
 
 func (SimpleOfficeSiteMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SimpleOfficeSite)(nil))
+	return reflect.TypeOf((*map[string]*SimpleOfficeSite)(nil)).Elem()
 }
 
 func (i SimpleOfficeSiteMap) ToSimpleOfficeSiteMapOutput() SimpleOfficeSiteMapOutput {
@@ -323,9 +323,7 @@ func (i SimpleOfficeSiteMap) ToSimpleOfficeSiteMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SimpleOfficeSiteMapOutput)
 }
 
-type SimpleOfficeSiteOutput struct {
-	*pulumi.OutputState
-}
+type SimpleOfficeSiteOutput struct{ *pulumi.OutputState }
 
 func (SimpleOfficeSiteOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SimpleOfficeSite)(nil))
@@ -344,14 +342,12 @@ func (o SimpleOfficeSiteOutput) ToSimpleOfficeSitePtrOutput() SimpleOfficeSitePt
 }
 
 func (o SimpleOfficeSiteOutput) ToSimpleOfficeSitePtrOutputWithContext(ctx context.Context) SimpleOfficeSitePtrOutput {
-	return o.ApplyT(func(v SimpleOfficeSite) *SimpleOfficeSite {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SimpleOfficeSite) *SimpleOfficeSite {
 		return &v
 	}).(SimpleOfficeSitePtrOutput)
 }
 
-type SimpleOfficeSitePtrOutput struct {
-	*pulumi.OutputState
-}
+type SimpleOfficeSitePtrOutput struct{ *pulumi.OutputState }
 
 func (SimpleOfficeSitePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SimpleOfficeSite)(nil))
@@ -363,6 +359,16 @@ func (o SimpleOfficeSitePtrOutput) ToSimpleOfficeSitePtrOutput() SimpleOfficeSit
 
 func (o SimpleOfficeSitePtrOutput) ToSimpleOfficeSitePtrOutputWithContext(ctx context.Context) SimpleOfficeSitePtrOutput {
 	return o
+}
+
+func (o SimpleOfficeSitePtrOutput) Elem() SimpleOfficeSiteOutput {
+	return o.ApplyT(func(v *SimpleOfficeSite) SimpleOfficeSite {
+		if v != nil {
+			return *v
+		}
+		var ret SimpleOfficeSite
+		return ret
+	}).(SimpleOfficeSiteOutput)
 }
 
 type SimpleOfficeSiteArrayOutput struct{ *pulumi.OutputState }
@@ -406,6 +412,10 @@ func (o SimpleOfficeSiteMapOutput) MapIndex(k pulumi.StringInput) SimpleOfficeSi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SimpleOfficeSiteInput)(nil)).Elem(), &SimpleOfficeSite{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SimpleOfficeSitePtrInput)(nil)).Elem(), &SimpleOfficeSite{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SimpleOfficeSiteArrayInput)(nil)).Elem(), SimpleOfficeSiteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SimpleOfficeSiteMapInput)(nil)).Elem(), SimpleOfficeSiteMap{})
 	pulumi.RegisterOutputType(SimpleOfficeSiteOutput{})
 	pulumi.RegisterOutputType(SimpleOfficeSitePtrOutput{})
 	pulumi.RegisterOutputType(SimpleOfficeSiteArrayOutput{})

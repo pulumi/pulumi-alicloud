@@ -1120,6 +1120,22 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSlbConnAddrInput)(nil)).Elem(), InstanceSlbConnAddrArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSlbConnAddrArrayInput)(nil)).Elem(), InstanceSlbConnAddrArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceUiProxyConnAddrInput)(nil)).Elem(), InstanceUiProxyConnAddrArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceUiProxyConnAddrArrayInput)(nil)).Elem(), InstanceUiProxyConnAddrArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceZkConnAddrInput)(nil)).Elem(), InstanceZkConnAddrArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceZkConnAddrArrayInput)(nil)).Elem(), InstanceZkConnAddrArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesCoreInstanceTypeInput)(nil)).Elem(), GetInstanceTypesCoreInstanceTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesCoreInstanceTypeArrayInput)(nil)).Elem(), GetInstanceTypesCoreInstanceTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesMasterInstanceTypeInput)(nil)).Elem(), GetInstanceTypesMasterInstanceTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesMasterInstanceTypeArrayInput)(nil)).Elem(), GetInstanceTypesMasterInstanceTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesTypeInput)(nil)).Elem(), GetInstanceTypesTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesTypeArrayInput)(nil)).Elem(), GetInstanceTypesTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(InstanceSlbConnAddrOutput{})
 	pulumi.RegisterOutputType(InstanceSlbConnAddrArrayOutput{})
 	pulumi.RegisterOutputType(InstanceUiProxyConnAddrOutput{})

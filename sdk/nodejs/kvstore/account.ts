@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultInstance = new alicloud.kvstore.Instance("defaultInstance", {
@@ -181,11 +181,11 @@ export interface AccountState {
     /**
      * The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
      */
-    readonly accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string>;
     /**
      * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
      */
-    readonly accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string>;
     /**
      * The privilege of account access database. Valid values: 
      * - RoleReadOnly: This value is only for Redis and Memcache
@@ -193,33 +193,33 @@ export interface AccountState {
      * - RoleRepl: This value supports instance to read, write, and open SYNC / PSYNC commands.
      * Only for Redis which engine version is 4.0 and architecture type is standard
      */
-    readonly accountPrivilege?: pulumi.Input<string>;
+    accountPrivilege?: pulumi.Input<string>;
     /**
      * Privilege type of account.
      * - Normal: Common privilege.
      * Default to Normal.
      */
-    readonly accountType?: pulumi.Input<string>;
+    accountType?: pulumi.Input<string>;
     /**
      * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * An KMS encrypts password used to a KVStore account. If the `accountPassword` is filled in, this field will be ignored.
      */
-    readonly kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a KVStore account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    readonly kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
      * The status of KVStore Account.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -229,11 +229,11 @@ export interface AccountArgs {
     /**
      * The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
      */
-    readonly accountName: pulumi.Input<string>;
+    accountName: pulumi.Input<string>;
     /**
      * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
      */
-    readonly accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string>;
     /**
      * The privilege of account access database. Valid values: 
      * - RoleReadOnly: This value is only for Redis and Memcache
@@ -241,27 +241,27 @@ export interface AccountArgs {
      * - RoleRepl: This value supports instance to read, write, and open SYNC / PSYNC commands.
      * Only for Redis which engine version is 4.0 and architecture type is standard
      */
-    readonly accountPrivilege?: pulumi.Input<string>;
+    accountPrivilege?: pulumi.Input<string>;
     /**
      * Privilege type of account.
      * - Normal: Common privilege.
      * Default to Normal.
      */
-    readonly accountType?: pulumi.Input<string>;
+    accountType?: pulumi.Input<string>;
     /**
      * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * An KMS encrypts password used to a KVStore account. If the `accountPassword` is filled in, this field will be ignored.
      */
-    readonly kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a KVStore account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    readonly kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
 }

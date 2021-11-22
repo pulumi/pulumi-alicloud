@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const aliasDs = pulumi.output(alicloud.ram.getAccountAliases({
  *     outputFile: "alias.txt",
- * }, { async: true }));
+ * }));
  *
  * export const accountAlias = aliasDs.accountAlias;
  * ```
@@ -39,7 +38,7 @@ export function getAccountAliases(args?: GetAccountAliasesArgs, opts?: pulumi.In
  * A collection of arguments for invoking getAccountAliases.
  */
 export interface GetAccountAliasesArgs {
-    readonly outputFile?: string;
+    outputFile?: string;
 }
 
 /**
@@ -55,4 +54,15 @@ export interface GetAccountAliasesResult {
      */
     readonly id: string;
     readonly outputFile?: string;
+}
+
+export function getAccountAliasesOutput(args?: GetAccountAliasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAliasesResult> {
+    return pulumi.output(args).apply(a => getAccountAliases(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccountAliases.
+ */
+export interface GetAccountAliasesOutputArgs {
+    outputFile?: pulumi.Input<string>;
 }

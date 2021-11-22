@@ -949,7 +949,7 @@ func (o BucketLoggingOutput) ToBucketLoggingPtrOutput() BucketLoggingPtrOutput {
 }
 
 func (o BucketLoggingOutput) ToBucketLoggingPtrOutputWithContext(ctx context.Context) BucketLoggingPtrOutput {
-	return o.ApplyT(func(v BucketLogging) *BucketLogging {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketLogging) *BucketLogging {
 		return &v
 	}).(BucketLoggingPtrOutput)
 }
@@ -979,7 +979,13 @@ func (o BucketLoggingPtrOutput) ToBucketLoggingPtrOutputWithContext(ctx context.
 }
 
 func (o BucketLoggingPtrOutput) Elem() BucketLoggingOutput {
-	return o.ApplyT(func(v *BucketLogging) BucketLogging { return *v }).(BucketLoggingOutput)
+	return o.ApplyT(func(v *BucketLogging) BucketLogging {
+		if v != nil {
+			return *v
+		}
+		var ret BucketLogging
+		return ret
+	}).(BucketLoggingOutput)
 }
 
 // The name of the bucket that will receive the log objects.
@@ -1099,7 +1105,7 @@ func (o BucketRefererConfigOutput) ToBucketRefererConfigPtrOutput() BucketRefere
 }
 
 func (o BucketRefererConfigOutput) ToBucketRefererConfigPtrOutputWithContext(ctx context.Context) BucketRefererConfigPtrOutput {
-	return o.ApplyT(func(v BucketRefererConfig) *BucketRefererConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketRefererConfig) *BucketRefererConfig {
 		return &v
 	}).(BucketRefererConfigPtrOutput)
 }
@@ -1129,7 +1135,13 @@ func (o BucketRefererConfigPtrOutput) ToBucketRefererConfigPtrOutputWithContext(
 }
 
 func (o BucketRefererConfigPtrOutput) Elem() BucketRefererConfigOutput {
-	return o.ApplyT(func(v *BucketRefererConfig) BucketRefererConfig { return *v }).(BucketRefererConfigOutput)
+	return o.ApplyT(func(v *BucketRefererConfig) BucketRefererConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BucketRefererConfig
+		return ret
+	}).(BucketRefererConfigOutput)
 }
 
 // Allows referer to be empty. Defaults false.
@@ -1249,7 +1261,7 @@ func (o BucketServerSideEncryptionRuleOutput) ToBucketServerSideEncryptionRulePt
 }
 
 func (o BucketServerSideEncryptionRuleOutput) ToBucketServerSideEncryptionRulePtrOutputWithContext(ctx context.Context) BucketServerSideEncryptionRulePtrOutput {
-	return o.ApplyT(func(v BucketServerSideEncryptionRule) *BucketServerSideEncryptionRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketServerSideEncryptionRule) *BucketServerSideEncryptionRule {
 		return &v
 	}).(BucketServerSideEncryptionRulePtrOutput)
 }
@@ -1279,7 +1291,13 @@ func (o BucketServerSideEncryptionRulePtrOutput) ToBucketServerSideEncryptionRul
 }
 
 func (o BucketServerSideEncryptionRulePtrOutput) Elem() BucketServerSideEncryptionRuleOutput {
-	return o.ApplyT(func(v *BucketServerSideEncryptionRule) BucketServerSideEncryptionRule { return *v }).(BucketServerSideEncryptionRuleOutput)
+	return o.ApplyT(func(v *BucketServerSideEncryptionRule) BucketServerSideEncryptionRule {
+		if v != nil {
+			return *v
+		}
+		var ret BucketServerSideEncryptionRule
+		return ret
+	}).(BucketServerSideEncryptionRuleOutput)
 }
 
 // The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
@@ -1395,7 +1413,7 @@ func (o BucketTransferAccelerationOutput) ToBucketTransferAccelerationPtrOutput(
 }
 
 func (o BucketTransferAccelerationOutput) ToBucketTransferAccelerationPtrOutputWithContext(ctx context.Context) BucketTransferAccelerationPtrOutput {
-	return o.ApplyT(func(v BucketTransferAcceleration) *BucketTransferAcceleration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketTransferAcceleration) *BucketTransferAcceleration {
 		return &v
 	}).(BucketTransferAccelerationPtrOutput)
 }
@@ -1420,7 +1438,13 @@ func (o BucketTransferAccelerationPtrOutput) ToBucketTransferAccelerationPtrOutp
 }
 
 func (o BucketTransferAccelerationPtrOutput) Elem() BucketTransferAccelerationOutput {
-	return o.ApplyT(func(v *BucketTransferAcceleration) BucketTransferAcceleration { return *v }).(BucketTransferAccelerationOutput)
+	return o.ApplyT(func(v *BucketTransferAcceleration) BucketTransferAcceleration {
+		if v != nil {
+			return *v
+		}
+		var ret BucketTransferAcceleration
+		return ret
+	}).(BucketTransferAccelerationOutput)
 }
 
 // Specifies the accelerate status of a bucket.
@@ -1526,7 +1550,7 @@ func (o BucketVersioningOutput) ToBucketVersioningPtrOutput() BucketVersioningPt
 }
 
 func (o BucketVersioningOutput) ToBucketVersioningPtrOutputWithContext(ctx context.Context) BucketVersioningPtrOutput {
-	return o.ApplyT(func(v BucketVersioning) *BucketVersioning {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketVersioning) *BucketVersioning {
 		return &v
 	}).(BucketVersioningPtrOutput)
 }
@@ -1551,7 +1575,13 @@ func (o BucketVersioningPtrOutput) ToBucketVersioningPtrOutputWithContext(ctx co
 }
 
 func (o BucketVersioningPtrOutput) Elem() BucketVersioningOutput {
-	return o.ApplyT(func(v *BucketVersioning) BucketVersioning { return *v }).(BucketVersioningOutput)
+	return o.ApplyT(func(v *BucketVersioning) BucketVersioning {
+		if v != nil {
+			return *v
+		}
+		var ret BucketVersioning
+		return ret
+	}).(BucketVersioningOutput)
 }
 
 // Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
@@ -1661,7 +1691,7 @@ func (o BucketWebsiteOutput) ToBucketWebsitePtrOutput() BucketWebsitePtrOutput {
 }
 
 func (o BucketWebsiteOutput) ToBucketWebsitePtrOutputWithContext(ctx context.Context) BucketWebsitePtrOutput {
-	return o.ApplyT(func(v BucketWebsite) *BucketWebsite {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketWebsite) *BucketWebsite {
 		return &v
 	}).(BucketWebsitePtrOutput)
 }
@@ -1691,7 +1721,13 @@ func (o BucketWebsitePtrOutput) ToBucketWebsitePtrOutputWithContext(ctx context.
 }
 
 func (o BucketWebsitePtrOutput) Elem() BucketWebsiteOutput {
-	return o.ApplyT(func(v *BucketWebsite) BucketWebsite { return *v }).(BucketWebsiteOutput)
+	return o.ApplyT(func(v *BucketWebsite) BucketWebsite {
+		if v != nil {
+			return *v
+		}
+		var ret BucketWebsite
+		return ret
+	}).(BucketWebsiteOutput)
 }
 
 // An absolute path to the document to return in case of a 4XX error.
@@ -3448,6 +3484,54 @@ func (o GetTablesTablePrimaryKeyArrayOutput) Index(i pulumi.IntInput) GetTablesT
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorsRuleInput)(nil)).Elem(), BucketCorsRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorsRuleArrayInput)(nil)).Elem(), BucketCorsRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleInput)(nil)).Elem(), BucketLifecycleRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleArrayInput)(nil)).Elem(), BucketLifecycleRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleAbortMultipartUploadInput)(nil)).Elem(), BucketLifecycleRuleAbortMultipartUploadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleAbortMultipartUploadArrayInput)(nil)).Elem(), BucketLifecycleRuleAbortMultipartUploadArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleExpirationInput)(nil)).Elem(), BucketLifecycleRuleExpirationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleExpirationArrayInput)(nil)).Elem(), BucketLifecycleRuleExpirationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleNoncurrentVersionExpirationInput)(nil)).Elem(), BucketLifecycleRuleNoncurrentVersionExpirationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleNoncurrentVersionExpirationArrayInput)(nil)).Elem(), BucketLifecycleRuleNoncurrentVersionExpirationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleNoncurrentVersionTransitionInput)(nil)).Elem(), BucketLifecycleRuleNoncurrentVersionTransitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleNoncurrentVersionTransitionArrayInput)(nil)).Elem(), BucketLifecycleRuleNoncurrentVersionTransitionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleTransitionInput)(nil)).Elem(), BucketLifecycleRuleTransitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleTransitionArrayInput)(nil)).Elem(), BucketLifecycleRuleTransitionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketLoggingInput)(nil)).Elem(), BucketLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketLoggingPtrInput)(nil)).Elem(), BucketLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketRefererConfigInput)(nil)).Elem(), BucketRefererConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketRefererConfigPtrInput)(nil)).Elem(), BucketRefererConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketServerSideEncryptionRuleInput)(nil)).Elem(), BucketServerSideEncryptionRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketServerSideEncryptionRulePtrInput)(nil)).Elem(), BucketServerSideEncryptionRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketTransferAccelerationInput)(nil)).Elem(), BucketTransferAccelerationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketTransferAccelerationPtrInput)(nil)).Elem(), BucketTransferAccelerationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketVersioningInput)(nil)).Elem(), BucketVersioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketVersioningPtrInput)(nil)).Elem(), BucketVersioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteInput)(nil)).Elem(), BucketWebsiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsitePtrInput)(nil)).Elem(), BucketWebsiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectsObjectInput)(nil)).Elem(), GetBucketObjectsObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectsObjectArrayInput)(nil)).Elem(), GetBucketObjectsObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketsBucketInput)(nil)).Elem(), GetBucketsBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketsBucketArrayInput)(nil)).Elem(), GetBucketsBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketsBucketCorsRuleInput)(nil)).Elem(), GetBucketsBucketCorsRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketsBucketCorsRuleArrayInput)(nil)).Elem(), GetBucketsBucketCorsRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketsBucketLifecycleRuleInput)(nil)).Elem(), GetBucketsBucketLifecycleRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketsBucketLifecycleRuleArrayInput)(nil)).Elem(), GetBucketsBucketLifecycleRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketsBucketLifecycleRuleExpirationInput)(nil)).Elem(), GetBucketsBucketLifecycleRuleExpirationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketsBucketLoggingInput)(nil)).Elem(), GetBucketsBucketLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketsBucketRefererConfigInput)(nil)).Elem(), GetBucketsBucketRefererConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketsBucketServerSideEncryptionRuleInput)(nil)).Elem(), GetBucketsBucketServerSideEncryptionRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketsBucketVersioningInput)(nil)).Elem(), GetBucketsBucketVersioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketsBucketWebsiteInput)(nil)).Elem(), GetBucketsBucketWebsiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAttachmentsAttachmentInput)(nil)).Elem(), GetInstanceAttachmentsAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAttachmentsAttachmentArrayInput)(nil)).Elem(), GetInstanceAttachmentsAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableInput)(nil)).Elem(), GetTablesTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableArrayInput)(nil)).Elem(), GetTablesTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTablePrimaryKeyInput)(nil)).Elem(), GetTablesTablePrimaryKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTablePrimaryKeyArrayInput)(nil)).Elem(), GetTablesTablePrimaryKeyArray{})
 	pulumi.RegisterOutputType(BucketCorsRuleOutput{})
 	pulumi.RegisterOutputType(BucketCorsRuleArrayOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleOutput{})

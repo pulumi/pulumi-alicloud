@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cassandra
 {
@@ -43,6 +44,39 @@ namespace Pulumi.AliCloud.Cassandra
         /// </summary>
         public static Task<GetDataCentersResult> InvokeAsync(GetDataCentersArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDataCentersResult>("alicloud:cassandra/getDataCenters:getDataCenters", args ?? new GetDataCentersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `alicloud.cassandra.getDataCenters` data source provides a collection of Cassandra Data Centers available in Alicloud account.
+        /// Filters support regular expression for the cluster name or ids.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.88.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var cassandra = Output.Create(AliCloud.Cassandra.GetDataCenters.InvokeAsync(new AliCloud.Cassandra.GetDataCentersArgs
+        ///         {
+        ///             ClusterId = "cds-xxxxx",
+        ///             NameRegex = "tf_testAccCassandra_dc",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDataCentersResult> Invoke(GetDataCentersInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDataCentersResult>("alicloud:cassandra/getDataCenters:getDataCenters", args ?? new GetDataCentersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -76,6 +110,40 @@ namespace Pulumi.AliCloud.Cassandra
         public string? OutputFile { get; set; }
 
         public GetDataCentersArgs()
+        {
+        }
+    }
+
+    public sealed class GetDataCentersInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The cluster id of dataCenters belongs to.
+        /// </summary>
+        [Input("clusterId", required: true)]
+        public Input<string> ClusterId { get; set; } = null!;
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// The list of Cassandra data center ids.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to apply to the cluster name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetDataCentersInvokeArgs()
         {
         }
     }

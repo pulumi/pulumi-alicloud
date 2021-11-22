@@ -4,6 +4,9 @@
 package directmail
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,4 +76,82 @@ type LookupReceiversResult struct {
 	OutputFile  *string                  `pulumi:"outputFile"`
 	Receiverses []GetReceiversReceiverse `pulumi:"receiverses"`
 	Status      *int                     `pulumi:"status"`
+}
+
+func LookupReceiversOutput(ctx *pulumi.Context, args LookupReceiversOutputArgs, opts ...pulumi.InvokeOption) LookupReceiversResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupReceiversResult, error) {
+			args := v.(LookupReceiversArgs)
+			r, err := LookupReceivers(ctx, &args, opts...)
+			return *r, err
+		}).(LookupReceiversResultOutput)
+}
+
+// A collection of arguments for invoking getReceivers.
+type LookupReceiversOutputArgs struct {
+	// A list of Receivers IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The key word.
+	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
+	// A regex string to filter results by Receivers name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status of the resource.
+	Status pulumi.IntPtrInput `pulumi:"status"`
+}
+
+func (LookupReceiversOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupReceiversArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getReceivers.
+type LookupReceiversResultOutput struct{ *pulumi.OutputState }
+
+func (LookupReceiversResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupReceiversResult)(nil)).Elem()
+}
+
+func (o LookupReceiversResultOutput) ToLookupReceiversResultOutput() LookupReceiversResultOutput {
+	return o
+}
+
+func (o LookupReceiversResultOutput) ToLookupReceiversResultOutputWithContext(ctx context.Context) LookupReceiversResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupReceiversResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReceiversResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupReceiversResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupReceiversResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupReceiversResultOutput) KeyWord() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupReceiversResult) *string { return v.KeyWord }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupReceiversResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupReceiversResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupReceiversResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupReceiversResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupReceiversResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupReceiversResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupReceiversResultOutput) Receiverses() GetReceiversReceiverseArrayOutput {
+	return o.ApplyT(func(v LookupReceiversResult) []GetReceiversReceiverse { return v.Receiverses }).(GetReceiversReceiverseArrayOutput)
+}
+
+func (o LookupReceiversResultOutput) Status() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupReceiversResult) *int { return v.Status }).(pulumi.IntPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupReceiversResultOutput{})
 }

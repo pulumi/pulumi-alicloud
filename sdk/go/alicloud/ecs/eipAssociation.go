@@ -190,7 +190,7 @@ type EipAssociationArrayInput interface {
 type EipAssociationArray []EipAssociationInput
 
 func (EipAssociationArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EipAssociation)(nil))
+	return reflect.TypeOf((*[]*EipAssociation)(nil)).Elem()
 }
 
 func (i EipAssociationArray) ToEipAssociationArrayOutput() EipAssociationArrayOutput {
@@ -215,7 +215,7 @@ type EipAssociationMapInput interface {
 type EipAssociationMap map[string]EipAssociationInput
 
 func (EipAssociationMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EipAssociation)(nil))
+	return reflect.TypeOf((*map[string]*EipAssociation)(nil)).Elem()
 }
 
 func (i EipAssociationMap) ToEipAssociationMapOutput() EipAssociationMapOutput {
@@ -226,9 +226,7 @@ func (i EipAssociationMap) ToEipAssociationMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(EipAssociationMapOutput)
 }
 
-type EipAssociationOutput struct {
-	*pulumi.OutputState
-}
+type EipAssociationOutput struct{ *pulumi.OutputState }
 
 func (EipAssociationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EipAssociation)(nil))
@@ -247,14 +245,12 @@ func (o EipAssociationOutput) ToEipAssociationPtrOutput() EipAssociationPtrOutpu
 }
 
 func (o EipAssociationOutput) ToEipAssociationPtrOutputWithContext(ctx context.Context) EipAssociationPtrOutput {
-	return o.ApplyT(func(v EipAssociation) *EipAssociation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EipAssociation) *EipAssociation {
 		return &v
 	}).(EipAssociationPtrOutput)
 }
 
-type EipAssociationPtrOutput struct {
-	*pulumi.OutputState
-}
+type EipAssociationPtrOutput struct{ *pulumi.OutputState }
 
 func (EipAssociationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EipAssociation)(nil))
@@ -266,6 +262,16 @@ func (o EipAssociationPtrOutput) ToEipAssociationPtrOutput() EipAssociationPtrOu
 
 func (o EipAssociationPtrOutput) ToEipAssociationPtrOutputWithContext(ctx context.Context) EipAssociationPtrOutput {
 	return o
+}
+
+func (o EipAssociationPtrOutput) Elem() EipAssociationOutput {
+	return o.ApplyT(func(v *EipAssociation) EipAssociation {
+		if v != nil {
+			return *v
+		}
+		var ret EipAssociation
+		return ret
+	}).(EipAssociationOutput)
 }
 
 type EipAssociationArrayOutput struct{ *pulumi.OutputState }
@@ -309,6 +315,10 @@ func (o EipAssociationMapOutput) MapIndex(k pulumi.StringInput) EipAssociationOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EipAssociationInput)(nil)).Elem(), &EipAssociation{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EipAssociationPtrInput)(nil)).Elem(), &EipAssociation{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EipAssociationArrayInput)(nil)).Elem(), EipAssociationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EipAssociationMapInput)(nil)).Elem(), EipAssociationMap{})
 	pulumi.RegisterOutputType(EipAssociationOutput{})
 	pulumi.RegisterOutputType(EipAssociationPtrOutput{})
 	pulumi.RegisterOutputType(EipAssociationArrayOutput{})

@@ -4,6 +4,9 @@
 package ram
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -83,4 +86,102 @@ type GetPoliciesResult struct {
 	// Type of the policy.
 	Type     *string `pulumi:"type"`
 	UserName *string `pulumi:"userName"`
+}
+
+func GetPoliciesOutput(ctx *pulumi.Context, args GetPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetPoliciesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetPoliciesResult, error) {
+			args := v.(GetPoliciesArgs)
+			r, err := GetPolicies(ctx, &args, opts...)
+			return *r, err
+		}).(GetPoliciesResultOutput)
+}
+
+// A collection of arguments for invoking getPolicies.
+type GetPoliciesOutputArgs struct {
+	// Default to `true`. Set it to true can output more details.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// Filter results by a specific group name. Returned policies are attached to the specified group.
+	GroupName pulumi.StringPtrInput   `pulumi:"groupName"`
+	Ids       pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter resulting policies by name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Filter results by a specific role name. Returned policies are attached to the specified role.
+	RoleName pulumi.StringPtrInput `pulumi:"roleName"`
+	// Filter results by a specific policy type. Valid values are `Custom` and `System`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Filter results by a specific user name. Returned policies are attached to the specified user.
+	UserName pulumi.StringPtrInput `pulumi:"userName"`
+}
+
+func (GetPoliciesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPoliciesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getPolicies.
+type GetPoliciesResultOutput struct{ *pulumi.OutputState }
+
+func (GetPoliciesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPoliciesResult)(nil)).Elem()
+}
+
+func (o GetPoliciesResultOutput) ToGetPoliciesResultOutput() GetPoliciesResultOutput {
+	return o
+}
+
+func (o GetPoliciesResultOutput) ToGetPoliciesResultOutputWithContext(ctx context.Context) GetPoliciesResultOutput {
+	return o
+}
+
+func (o GetPoliciesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPoliciesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetPoliciesResultOutput) GroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPoliciesResult) *string { return v.GroupName }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetPoliciesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoliciesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetPoliciesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPoliciesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetPoliciesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPoliciesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of ram group names.
+func (o GetPoliciesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPoliciesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetPoliciesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPoliciesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of policies. Each element contains the following attributes:
+func (o GetPoliciesResultOutput) Policies() GetPoliciesPolicyArrayOutput {
+	return o.ApplyT(func(v GetPoliciesResult) []GetPoliciesPolicy { return v.Policies }).(GetPoliciesPolicyArrayOutput)
+}
+
+func (o GetPoliciesResultOutput) RoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPoliciesResult) *string { return v.RoleName }).(pulumi.StringPtrOutput)
+}
+
+// Type of the policy.
+func (o GetPoliciesResultOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPoliciesResult) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPoliciesResultOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPoliciesResult) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetPoliciesResultOutput{})
 }

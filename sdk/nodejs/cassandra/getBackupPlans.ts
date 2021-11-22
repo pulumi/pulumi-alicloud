@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const example = alicloud.cassandra.getBackupPlans({
  *     clusterId: "example_value",
  * });
- * export const firstCassandraBackupPlanId = example.then(example => example.plans[0].id);
+ * export const firstCassandraBackupPlanId = example.then(example => example.plans?[0]?.id);
  * ```
  */
 export function getBackupPlans(args: GetBackupPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupPlansResult> {
@@ -45,8 +45,8 @@ export interface GetBackupPlansArgs {
     /**
      * The ID of the cluster for the backup.
      */
-    readonly clusterId: string;
-    readonly outputFile?: string;
+    clusterId: string;
+    outputFile?: string;
 }
 
 /**
@@ -61,4 +61,19 @@ export interface GetBackupPlansResult {
     readonly ids: string[];
     readonly outputFile?: string;
     readonly plans: outputs.cassandra.GetBackupPlansPlan[];
+}
+
+export function getBackupPlansOutput(args: GetBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupPlansResult> {
+    return pulumi.output(args).apply(a => getBackupPlans(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getBackupPlans.
+ */
+export interface GetBackupPlansOutputArgs {
+    /**
+     * The ID of the cluster for the backup.
+     */
+    clusterId: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

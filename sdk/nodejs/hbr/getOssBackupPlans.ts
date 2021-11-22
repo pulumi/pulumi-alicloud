@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const ids = alicloud.hbr.getOssBackupPlans({
  *     nameRegex: "^my-OssBackupPlan",
  * });
- * export const hbrOssBackupPlanId = ids.then(ids => ids.plans[0].id);
+ * export const hbrOssBackupPlanId = ids.then(ids => ids.plans?[0]?.id);
  * ```
  */
 export function getOssBackupPlans(args?: GetOssBackupPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetOssBackupPlansResult> {
@@ -49,20 +49,20 @@ export interface GetOssBackupPlansArgs {
     /**
      * The name of OSS bucket.
      */
-    readonly bucket?: string;
+    bucket?: string;
     /**
      * A list of OssBackupPlan IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by OssBackupPlan name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The ID of backup vault.
      */
-    readonly vaultId?: string;
+    vaultId?: string;
 }
 
 /**
@@ -80,4 +80,31 @@ export interface GetOssBackupPlansResult {
     readonly outputFile?: string;
     readonly plans: outputs.hbr.GetOssBackupPlansPlan[];
     readonly vaultId?: string;
+}
+
+export function getOssBackupPlansOutput(args?: GetOssBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOssBackupPlansResult> {
+    return pulumi.output(args).apply(a => getOssBackupPlans(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getOssBackupPlans.
+ */
+export interface GetOssBackupPlansOutputArgs {
+    /**
+     * The name of OSS bucket.
+     */
+    bucket?: pulumi.Input<string>;
+    /**
+     * A list of OssBackupPlan IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by OssBackupPlan name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The ID of backup vault.
+     */
+    vaultId?: pulumi.Input<string>;
 }

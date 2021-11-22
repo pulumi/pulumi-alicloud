@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Waf
 {
@@ -43,6 +44,39 @@ namespace Pulumi.AliCloud.Waf
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:waf/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provides a WAF datasource to retrieve domains.
+        /// 
+        /// For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
+        /// 
+        /// &gt; **NOTE:** Available in 1.86.0+ .
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Waf.GetDomains.InvokeAsync(new AliCloud.Waf.GetDomainsArgs
+        ///         {
+        ///             InstanceId = "waf-cf-xxxxx",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:waf/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -88,6 +122,52 @@ namespace Pulumi.AliCloud.Waf
         public string? ResourceGroupId { get; set; }
 
         public GetDomainsArgs()
+        {
+        }
+    }
+
+    public sealed class GetDomainsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Default to false and only output `id`, `domain_name`. Set it to true can output more details.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of WAF domain names. Each item is domain name.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The Id of waf instance to which waf domain belongs.
+        /// </summary>
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        /// <summary>
+        /// A regex string to filter results by domain name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group to which the queried domain belongs in Resource Management.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        public GetDomainsInvokeArgs()
         {
         }
     }

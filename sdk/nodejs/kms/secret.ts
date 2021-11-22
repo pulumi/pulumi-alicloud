@@ -186,59 +186,59 @@ export interface SecretState {
     /**
      * The Alicloud Resource Name (ARN) of the secret.
      */
-    readonly arn?: pulumi.Input<string>;
+    arn?: pulumi.Input<string>;
     /**
      * The description of the secret.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Whether to enable automatic key rotation.
      */
-    readonly enableAutomaticRotation?: pulumi.Input<boolean>;
+    enableAutomaticRotation?: pulumi.Input<boolean>;
     /**
      * The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
      */
-    readonly encryptionKeyId?: pulumi.Input<string>;
+    encryptionKeyId?: pulumi.Input<string>;
     /**
      * Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
      */
-    readonly forceDeleteWithoutRecovery?: pulumi.Input<boolean>;
+    forceDeleteWithoutRecovery?: pulumi.Input<boolean>;
     /**
      * The time when the secret is scheduled to be deleted.
      */
-    readonly plannedDeleteTime?: pulumi.Input<string>;
+    plannedDeleteTime?: pulumi.Input<string>;
     /**
      * Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `forceDeleteWithoutRecovery` is true.
      */
-    readonly recoveryWindowInDays?: pulumi.Input<number>;
+    recoveryWindowInDays?: pulumi.Input<number>;
     /**
      * The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
      */
-    readonly rotationInterval?: pulumi.Input<string>;
+    rotationInterval?: pulumi.Input<string>;
     /**
      * The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
      */
-    readonly secretData?: pulumi.Input<string>;
+    secretData?: pulumi.Input<string>;
     /**
      * The type of the secret value. Valid values: text, binary. Default to "text".
      */
-    readonly secretDataType?: pulumi.Input<string>;
+    secretDataType?: pulumi.Input<string>;
     /**
      * The name of the secret.
      */
-    readonly secretName?: pulumi.Input<string>;
+    secretName?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The version number of the initial version. Version numbers are unique in each secret object.
      */
-    readonly versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string>;
     /**
      * ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
      */
-    readonly versionStages?: pulumi.Input<pulumi.Input<string>[]>;
+    versionStages?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -248,49 +248,49 @@ export interface SecretArgs {
     /**
      * The description of the secret.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Whether to enable automatic key rotation.
      */
-    readonly enableAutomaticRotation?: pulumi.Input<boolean>;
+    enableAutomaticRotation?: pulumi.Input<boolean>;
     /**
      * The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
      */
-    readonly encryptionKeyId?: pulumi.Input<string>;
+    encryptionKeyId?: pulumi.Input<string>;
     /**
      * Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
      */
-    readonly forceDeleteWithoutRecovery?: pulumi.Input<boolean>;
+    forceDeleteWithoutRecovery?: pulumi.Input<boolean>;
     /**
      * Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `forceDeleteWithoutRecovery` is true.
      */
-    readonly recoveryWindowInDays?: pulumi.Input<number>;
+    recoveryWindowInDays?: pulumi.Input<number>;
     /**
      * The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
      */
-    readonly rotationInterval?: pulumi.Input<string>;
+    rotationInterval?: pulumi.Input<string>;
     /**
      * The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
      */
-    readonly secretData: pulumi.Input<string>;
+    secretData: pulumi.Input<string>;
     /**
      * The type of the secret value. Valid values: text, binary. Default to "text".
      */
-    readonly secretDataType?: pulumi.Input<string>;
+    secretDataType?: pulumi.Input<string>;
     /**
      * The name of the secret.
      */
-    readonly secretName: pulumi.Input<string>;
+    secretName: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The version number of the initial version. Version numbers are unique in each secret object.
      */
-    readonly versionId: pulumi.Input<string>;
+    versionId: pulumi.Input<string>;
     /**
      * ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
      */
-    readonly versionStages?: pulumi.Input<pulumi.Input<string>[]>;
+    versionStages?: pulumi.Input<pulumi.Input<string>[]>;
 }

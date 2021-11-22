@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -42,7 +43,7 @@ namespace Pulumi.AliCloud.Vpc
         ///         {
         ///             VpcId = fooNetwork.Id,
         ///             CidrBlock = "172.16.0.0/21",
-        ///             AvailabilityZone = @default.Apply(@default =&gt; @default.Zones[0].Id),
+        ///             AvailabilityZone = @default.Apply(@default =&gt; @default.Zones?[0]?.Id),
         ///             VswitchName = name,
         ///         });
         ///         var fooNatGateway = new AliCloud.Vpc.NatGateway("fooNatGateway", new AliCloud.Vpc.NatGatewayArgs
@@ -78,6 +79,74 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Task<GetSnatEntriesResult> InvokeAsync(GetSnatEntriesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSnatEntriesResult>("alicloud:vpc/getSnatEntries:getSnatEntries", args ?? new GetSnatEntriesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
+        /// 
+        /// &gt; **NOTE:** Available in 1.37.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var config = new Config();
+        ///         var name = config.Get("name") ?? "snat-entry-example-name";
+        ///         var @default = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+        ///         {
+        ///             AvailableResourceCreation = "VSwitch",
+        ///         }));
+        ///         var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new AliCloud.Vpc.NetworkArgs
+        ///         {
+        ///             CidrBlock = "172.16.0.0/12",
+        ///         });
+        ///         var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new AliCloud.Vpc.SwitchArgs
+        ///         {
+        ///             VpcId = fooNetwork.Id,
+        ///             CidrBlock = "172.16.0.0/21",
+        ///             AvailabilityZone = @default.Apply(@default =&gt; @default.Zones?[0]?.Id),
+        ///             VswitchName = name,
+        ///         });
+        ///         var fooNatGateway = new AliCloud.Vpc.NatGateway("fooNatGateway", new AliCloud.Vpc.NatGatewayArgs
+        ///         {
+        ///             VpcId = fooNetwork.Id,
+        ///             Specification = "Small",
+        ///         });
+        ///         var fooEipAddress = new AliCloud.Ecs.EipAddress("fooEipAddress", new AliCloud.Ecs.EipAddressArgs
+        ///         {
+        ///             AddressName = name,
+        ///         });
+        ///         var fooEipAssociation = new AliCloud.Ecs.EipAssociation("fooEipAssociation", new AliCloud.Ecs.EipAssociationArgs
+        ///         {
+        ///             AllocationId = fooEipAddress.Id,
+        ///             InstanceId = fooNatGateway.Id,
+        ///         });
+        ///         var fooSnatEntry = new AliCloud.Vpc.SnatEntry("fooSnatEntry", new AliCloud.Vpc.SnatEntryArgs
+        ///         {
+        ///             SnatTableId = fooNatGateway.SnatTableIds,
+        ///             SourceVswitchId = fooSwitch.Id,
+        ///             SnatIp = fooEipAddress.IpAddress,
+        ///         });
+        ///         var fooSnatEntries = fooSnatEntry.SnatTableId.Apply(snatTableId =&gt; AliCloud.Vpc.GetSnatEntries.InvokeAsync(new AliCloud.Vpc.GetSnatEntriesArgs
+        ///         {
+        ///             SnatTableId = snatTableId,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSnatEntriesResult> Invoke(GetSnatEntriesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSnatEntriesResult>("alicloud:vpc/getSnatEntries:getSnatEntries", args ?? new GetSnatEntriesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -141,6 +210,70 @@ namespace Pulumi.AliCloud.Vpc
         public string? Status { get; set; }
 
         public GetSnatEntriesArgs()
+        {
+        }
+    }
+
+    public sealed class GetSnatEntriesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Snat Entries IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by the resource name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The name of snat entry.
+        /// </summary>
+        [Input("snatEntryName")]
+        public Input<string>? SnatEntryName { get; set; }
+
+        /// <summary>
+        /// The public IP of the Snat Entry.
+        /// </summary>
+        [Input("snatIp")]
+        public Input<string>? SnatIp { get; set; }
+
+        /// <summary>
+        /// The ID of the Snat table.
+        /// </summary>
+        [Input("snatTableId", required: true)]
+        public Input<string> SnatTableId { get; set; } = null!;
+
+        /// <summary>
+        /// The source CIDR block of the Snat Entry.
+        /// </summary>
+        [Input("sourceCidr")]
+        public Input<string>? SourceCidr { get; set; }
+
+        /// <summary>
+        /// The source vswitch ID.
+        /// </summary>
+        [Input("sourceVswitchId")]
+        public Input<string>? SourceVswitchId { get; set; }
+
+        /// <summary>
+        /// The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetSnatEntriesInvokeArgs()
         {
         }
     }

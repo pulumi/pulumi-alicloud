@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Oss
 {
@@ -31,7 +32,7 @@ namespace Pulumi.AliCloud.Oss
         ///             BucketName = "sample_bucket",
         ///             KeyRegex = "sample/sample_object.txt",
         ///         }));
-        ///         this.FirstObjectKey = bucketObjectsDs.Apply(bucketObjectsDs =&gt; bucketObjectsDs.Objects[0].Key);
+        ///         this.FirstObjectKey = bucketObjectsDs.Apply(bucketObjectsDs =&gt; bucketObjectsDs.Objects?[0]?.Key);
         ///     }
         /// 
         ///     [Output("firstObjectKey")]
@@ -43,6 +44,39 @@ namespace Pulumi.AliCloud.Oss
         /// </summary>
         public static Task<GetBucketObjectsResult> InvokeAsync(GetBucketObjectsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBucketObjectsResult>("alicloud:oss/getBucketObjects:getBucketObjects", args ?? new GetBucketObjectsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the objects of an OSS bucket.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var bucketObjectsDs = Output.Create(AliCloud.Oss.GetBucketObjects.InvokeAsync(new AliCloud.Oss.GetBucketObjectsArgs
+        ///         {
+        ///             BucketName = "sample_bucket",
+        ///             KeyRegex = "sample/sample_object.txt",
+        ///         }));
+        ///         this.FirstObjectKey = bucketObjectsDs.Apply(bucketObjectsDs =&gt; bucketObjectsDs.Objects?[0]?.Key);
+        ///     }
+        /// 
+        ///     [Output("firstObjectKey")]
+        ///     public Output&lt;string&gt; FirstObjectKey { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetBucketObjectsResult> Invoke(GetBucketObjectsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetBucketObjectsResult>("alicloud:oss/getBucketObjects:getBucketObjects", args ?? new GetBucketObjectsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -70,6 +104,34 @@ namespace Pulumi.AliCloud.Oss
         public string? OutputFile { get; set; }
 
         public GetBucketObjectsArgs()
+        {
+        }
+    }
+
+    public sealed class GetBucketObjectsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Name of the bucket that contains the objects to find.
+        /// </summary>
+        [Input("bucketName", required: true)]
+        public Input<string> BucketName { get; set; } = null!;
+
+        /// <summary>
+        /// Filter results by the given key prefix (such as "path/to/folder/logs-").
+        /// </summary>
+        [Input("keyPrefix")]
+        public Input<string>? KeyPrefix { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by key.
+        /// </summary>
+        [Input("keyRegex")]
+        public Input<string>? KeyRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetBucketObjectsInvokeArgs()
         {
         }
     }

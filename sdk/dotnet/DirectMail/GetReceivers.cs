@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.DirectMail
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.DirectMail
         ///             },
         ///             NameRegex = "the_resource_name",
         ///         }));
-        ///         this.FirstDirectMailReceiversId = example.Apply(example =&gt; example.Receiverses[0].Id);
+        ///         this.FirstDirectMailReceiversId = example.Apply(example =&gt; example.Receiverses?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstDirectMailReceiversId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.DirectMail
         /// </summary>
         public static Task<GetReceiversResult> InvokeAsync(GetReceiversArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetReceiversResult>("alicloud:directmail/getReceivers:getReceivers", args ?? new GetReceiversArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.125.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.DirectMail.GetReceivers.InvokeAsync(new AliCloud.DirectMail.GetReceiversArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "ca73b1e4fb0df7c935a5097a****",
+        ///             },
+        ///             NameRegex = "the_resource_name",
+        ///         }));
+        ///         this.FirstDirectMailReceiversId = example.Apply(example =&gt; example.Receiverses?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstDirectMailReceiversId")]
+        ///     public Output&lt;string&gt; FirstDirectMailReceiversId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetReceiversResult> Invoke(GetReceiversInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetReceiversResult>("alicloud:directmail/getReceivers:getReceivers", args ?? new GetReceiversInvokeArgs(), options.WithVersion());
     }
 
 
@@ -89,6 +130,46 @@ namespace Pulumi.AliCloud.DirectMail
         public int? Status { get; set; }
 
         public GetReceiversArgs()
+        {
+        }
+    }
+
+    public sealed class GetReceiversInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Receivers IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The key word.
+        /// </summary>
+        [Input("keyWord")]
+        public Input<string>? KeyWord { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Receivers name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
+        [Input("status")]
+        public Input<int>? Status { get; set; }
+
+        public GetReceiversInvokeArgs()
         {
         }
     }

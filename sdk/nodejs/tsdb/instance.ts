@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * const exampleZones = alicloud.tsdb.getZones({});
  * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {cidrBlock: "192.168.0.0/16"});
  * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
- *     availabilityZone: exampleZones.then(exampleZones => exampleZones.ids[0]),
+ *     availabilityZone: exampleZones.then(exampleZones => exampleZones.ids?[0]),
  *     cidrBlock: "192.168.1.0/24",
  *     vpcId: exampleNetwork.id,
  * });
@@ -203,23 +203,23 @@ export interface InstanceState {
     /**
      * The app key.
      */
-    readonly appKey?: pulumi.Input<string>;
+    appKey?: pulumi.Input<string>;
     /**
      * The disk type of instance. Valid when the engine type is `tsdbInfluxdb`. `cloudSsd` refers to SSD disk, `cloudEfficiency` refers to efficiency disk, `cloudEssd` refers to ESSD PL1 disk. Valid values: `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
      */
-    readonly diskCategory?: pulumi.Input<string>;
+    diskCategory?: pulumi.Input<string>;
     /**
      * The duration.
      */
-    readonly duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string>;
     /**
      * The engine type of instance Enumerative: `tsdbTsdb` refers to TSDB, `tsdbInfluxdb` refers to TSDB for InfluxDB️.
      */
-    readonly engineType?: pulumi.Input<string>;
+    engineType?: pulumi.Input<string>;
     /**
      * The alias of the instance.
      */
-    readonly instanceAlias?: pulumi.Input<string>;
+    instanceAlias?: pulumi.Input<string>;
     /**
      * The specification of the instance. 
      * - Following enumerative value for TSDB for InfluxDB️ standart edition:
@@ -245,27 +245,27 @@ export interface InstanceState {
      * - `tsdb.48x.large` refers to ultimate edition I;
      * - `tsdb.96x.large` refers to ultimate edition II.
      */
-    readonly instanceClass?: pulumi.Input<string>;
+    instanceClass?: pulumi.Input<string>;
     /**
      * The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
      */
-    readonly instanceStorage?: pulumi.Input<string>;
+    instanceStorage?: pulumi.Input<string>;
     /**
      * The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
      */
-    readonly paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
     /**
      * Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The vswitch id.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * The zone ID of the instance.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -275,23 +275,23 @@ export interface InstanceArgs {
     /**
      * The app key.
      */
-    readonly appKey?: pulumi.Input<string>;
+    appKey?: pulumi.Input<string>;
     /**
      * The disk type of instance. Valid when the engine type is `tsdbInfluxdb`. `cloudSsd` refers to SSD disk, `cloudEfficiency` refers to efficiency disk, `cloudEssd` refers to ESSD PL1 disk. Valid values: `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
      */
-    readonly diskCategory?: pulumi.Input<string>;
+    diskCategory?: pulumi.Input<string>;
     /**
      * The duration.
      */
-    readonly duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string>;
     /**
      * The engine type of instance Enumerative: `tsdbTsdb` refers to TSDB, `tsdbInfluxdb` refers to TSDB for InfluxDB️.
      */
-    readonly engineType?: pulumi.Input<string>;
+    engineType?: pulumi.Input<string>;
     /**
      * The alias of the instance.
      */
-    readonly instanceAlias?: pulumi.Input<string>;
+    instanceAlias?: pulumi.Input<string>;
     /**
      * The specification of the instance. 
      * - Following enumerative value for TSDB for InfluxDB️ standart edition:
@@ -317,21 +317,21 @@ export interface InstanceArgs {
      * - `tsdb.48x.large` refers to ultimate edition I;
      * - `tsdb.96x.large` refers to ultimate edition II.
      */
-    readonly instanceClass: pulumi.Input<string>;
+    instanceClass: pulumi.Input<string>;
     /**
      * The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
      */
-    readonly instanceStorage: pulumi.Input<string>;
+    instanceStorage: pulumi.Input<string>;
     /**
      * The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
      */
-    readonly paymentType: pulumi.Input<string>;
+    paymentType: pulumi.Input<string>;
     /**
      * The vswitch id.
      */
-    readonly vswitchId: pulumi.Input<string>;
+    vswitchId: pulumi.Input<string>;
     /**
      * The zone ID of the instance.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

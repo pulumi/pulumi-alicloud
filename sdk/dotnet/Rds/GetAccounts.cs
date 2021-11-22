@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Rds
 {
@@ -35,7 +36,7 @@ namespace Pulumi.AliCloud.Rds
         ///             DbInstanceId = "example_value",
         ///             NameRegex = "the_resource_name",
         ///         }));
-        ///         this.FirstRdsAccountId = example.Apply(example =&gt; example.Accounts[0].Id);
+        ///         this.FirstRdsAccountId = example.Apply(example =&gt; example.Accounts?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstRdsAccountId")]
@@ -47,6 +48,43 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         public static Task<GetAccountsResult> InvokeAsync(GetAccountsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("alicloud:rds/getAccounts:getAccounts", args ?? new GetAccountsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Rds Accounts of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.120.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Rds.GetAccounts.InvokeAsync(new AliCloud.Rds.GetAccountsArgs
+        ///         {
+        ///             DbInstanceId = "example_value",
+        ///             NameRegex = "the_resource_name",
+        ///         }));
+        ///         this.FirstRdsAccountId = example.Apply(example =&gt; example.Accounts?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstRdsAccountId")]
+        ///     public Output&lt;string&gt; FirstRdsAccountId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAccountsResult> Invoke(GetAccountsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("alicloud:rds/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -86,6 +124,46 @@ namespace Pulumi.AliCloud.Rds
         public string? Status { get; set; }
 
         public GetAccountsArgs()
+        {
+        }
+    }
+
+    public sealed class GetAccountsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The db instance id.
+        /// </summary>
+        [Input("dbInstanceId", required: true)]
+        public Input<string> DbInstanceId { get; set; } = null!;
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Account IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Account name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetAccountsInvokeArgs()
         {
         }
     }

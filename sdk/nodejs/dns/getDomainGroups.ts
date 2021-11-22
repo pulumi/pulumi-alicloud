@@ -25,9 +25,9 @@ export function getDomainGroups(args?: GetDomainGroupsArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getDomainGroups.
  */
 export interface GetDomainGroupsArgs {
-    readonly ids?: string[];
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    ids?: string[];
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -43,4 +43,17 @@ export interface GetDomainGroupsResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getDomainGroupsOutput(args?: GetDomainGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainGroupsResult> {
+    return pulumi.output(args).apply(a => getDomainGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDomainGroups.
+ */
+export interface GetDomainGroupsOutputArgs {
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

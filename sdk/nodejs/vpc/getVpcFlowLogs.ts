@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstVpcFlowLogId = example.then(example => example.logs[0].id);
+ * export const firstVpcFlowLogId = example.then(example => example.logs?[0]?.id);
  * ```
  */
 export function getVpcFlowLogs(args?: GetVpcFlowLogsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcFlowLogsResult> {
@@ -56,44 +56,44 @@ export interface GetVpcFlowLogsArgs {
     /**
      * The Description of flow log.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * The flow log name.
      */
-    readonly flowLogName?: string;
+    flowLogName?: string;
     /**
      * A list of Flow Log IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The log store name.
      */
-    readonly logStoreName?: string;
+    logStoreName?: string;
     /**
      * A regex string to filter results by Flow Log name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The project name.
      */
-    readonly projectName?: string;
+    projectName?: string;
     /**
      * The resource id.
      */
-    readonly resourceId?: string;
+    resourceId?: string;
     /**
      * The resource type.
      */
-    readonly resourceType?: string;
+    resourceType?: string;
     /**
      * The status of flow log.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The traffic type.
      */
-    readonly trafficType?: string;
+    trafficType?: string;
 }
 
 /**
@@ -117,4 +117,55 @@ export interface GetVpcFlowLogsResult {
     readonly resourceType?: string;
     readonly status?: string;
     readonly trafficType?: string;
+}
+
+export function getVpcFlowLogsOutput(args?: GetVpcFlowLogsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcFlowLogsResult> {
+    return pulumi.output(args).apply(a => getVpcFlowLogs(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVpcFlowLogs.
+ */
+export interface GetVpcFlowLogsOutputArgs {
+    /**
+     * The Description of flow log.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The flow log name.
+     */
+    flowLogName?: pulumi.Input<string>;
+    /**
+     * A list of Flow Log IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The log store name.
+     */
+    logStoreName?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Flow Log name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The project name.
+     */
+    projectName?: pulumi.Input<string>;
+    /**
+     * The resource id.
+     */
+    resourceId?: pulumi.Input<string>;
+    /**
+     * The resource type.
+     */
+    resourceType?: pulumi.Input<string>;
+    /**
+     * The status of flow log.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The traffic type.
+     */
+    trafficType?: pulumi.Input<string>;
 }

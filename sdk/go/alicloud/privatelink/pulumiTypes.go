@@ -881,6 +881,18 @@ func (o GetVpcEndpointsEndpointArrayOutput) Index(i pulumi.IntInput) GetVpcEndpo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcEndpointConnectionsConnectionInput)(nil)).Elem(), GetVpcEndpointConnectionsConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcEndpointConnectionsConnectionArrayInput)(nil)).Elem(), GetVpcEndpointConnectionsConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcEndpointServiceResourcesResourceInput)(nil)).Elem(), GetVpcEndpointServiceResourcesResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcEndpointServiceResourcesResourceArrayInput)(nil)).Elem(), GetVpcEndpointServiceResourcesResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcEndpointServiceUsersUserInput)(nil)).Elem(), GetVpcEndpointServiceUsersUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcEndpointServiceUsersUserArrayInput)(nil)).Elem(), GetVpcEndpointServiceUsersUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcEndpointServicesServiceInput)(nil)).Elem(), GetVpcEndpointServicesServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcEndpointServicesServiceArrayInput)(nil)).Elem(), GetVpcEndpointServicesServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcEndpointZonesZoneInput)(nil)).Elem(), GetVpcEndpointZonesZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcEndpointZonesZoneArrayInput)(nil)).Elem(), GetVpcEndpointZonesZoneArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcEndpointsEndpointInput)(nil)).Elem(), GetVpcEndpointsEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcEndpointsEndpointArrayInput)(nil)).Elem(), GetVpcEndpointsEndpointArray{})
 	pulumi.RegisterOutputType(GetVpcEndpointConnectionsConnectionOutput{})
 	pulumi.RegisterOutputType(GetVpcEndpointConnectionsConnectionArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcEndpointServiceResourcesResourceOutput{})

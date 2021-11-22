@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * const defaultAppGroups = defaultAppGroup.id.apply(id => alicloud.opensearch.getAppGroups({
  *     ids: [id],
  * }));
- * export const appGroups = defaultAppGroups.groups;
+ * export const appGroups = defaultAppGroups.apply(defaultAppGroups => defaultAppGroups.groups);
  * ```
  */
 export function getAppGroups(args?: GetAppGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAppGroupsResult> {
@@ -64,29 +64,29 @@ export interface GetAppGroupsArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of App Group IDs. Its element value is same as App Group Name.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The Instance ID.
      */
-    readonly instanceId?: string;
-    readonly name?: string;
+    instanceId?: string;
+    name?: string;
     /**
      * A regex string to filter results by App Group name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The Resource Group ID.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * Application type. Valid Values: `standard`, `enhanced`.
      */
-    readonly type?: string;
+    type?: string;
 }
 
 /**
@@ -107,4 +107,40 @@ export interface GetAppGroupsResult {
     readonly outputFile?: string;
     readonly resourceGroupId?: string;
     readonly type?: string;
+}
+
+export function getAppGroupsOutput(args?: GetAppGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppGroupsResult> {
+    return pulumi.output(args).apply(a => getAppGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAppGroups.
+ */
+export interface GetAppGroupsOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of App Group IDs. Its element value is same as App Group Name.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Instance ID.
+     */
+    instanceId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by App Group name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The Resource Group ID.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Application type. Valid Values: `standard`, `enhanced`.
+     */
+    type?: pulumi.Input<string>;
 }

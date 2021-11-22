@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const defaultFlowlogs = pulumi.output(alicloud.cen.getFlowlogs({
  *     ids: ["flowlog-tig1xxxxx"],
  *     nameRegex: "^foo",
- * }, { async: true }));
+ * }));
  *
  * export const firstCenFlowlogId = alicloud_cen_instances_default.flowlogs.0.id;
  * ```
@@ -54,32 +54,32 @@ export interface GetFlowlogsArgs {
     /**
      * The ID of the CEN Instance.
      */
-    readonly cenId?: string;
+    cenId?: string;
     /**
      * The description of flowlog.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * A list of CEN flow log IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The name of the log store which is in the  `projectName` SLS project.
      */
-    readonly logStoreName?: string;
+    logStoreName?: string;
     /**
      * A regex string to filter CEN flow logs by name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The name of the SLS project.
      */
-    readonly projectName?: string;
+    projectName?: string;
     /**
      * The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -121,4 +121,43 @@ export interface GetFlowlogsResult {
      * The status of flowlog.
      */
     readonly status?: string;
+}
+
+export function getFlowlogsOutput(args?: GetFlowlogsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlowlogsResult> {
+    return pulumi.output(args).apply(a => getFlowlogs(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFlowlogs.
+ */
+export interface GetFlowlogsOutputArgs {
+    /**
+     * The ID of the CEN Instance.
+     */
+    cenId?: pulumi.Input<string>;
+    /**
+     * The description of flowlog.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * A list of CEN flow log IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the log store which is in the  `projectName` SLS project.
+     */
+    logStoreName?: pulumi.Input<string>;
+    /**
+     * A regex string to filter CEN flow logs by name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The name of the SLS project.
+     */
+    projectName?: pulumi.Input<string>;
+    /**
+     * The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+     */
+    status?: pulumi.Input<string>;
 }

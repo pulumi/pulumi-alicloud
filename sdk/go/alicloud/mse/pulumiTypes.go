@@ -436,6 +436,10 @@ func (o GetClustersClusterInstanceModelArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInput)(nil)).Elem(), GetClustersClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterArrayInput)(nil)).Elem(), GetClustersClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInstanceModelInput)(nil)).Elem(), GetClustersClusterInstanceModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInstanceModelArrayInput)(nil)).Elem(), GetClustersClusterInstanceModelArray{})
 	pulumi.RegisterOutputType(GetClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterInstanceModelOutput{})

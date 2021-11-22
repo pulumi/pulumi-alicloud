@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const example = alicloud.privatelink.getVpcEndpointServiceResources({
  *     serviceId: "epsrv-gw8ii1xxxx",
  * });
- * export const firstPrivatelinkVpcEndpointServiceResourceId = example.then(example => example.resources[0].id);
+ * export const firstPrivatelinkVpcEndpointServiceResourceId = example.then(example => example.resources?[0]?.id);
  * ```
  */
 export function getVpcEndpointServiceResources(args: GetVpcEndpointServiceResourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointServiceResourcesResult> {
@@ -42,11 +42,11 @@ export function getVpcEndpointServiceResources(args: GetVpcEndpointServiceResour
  * A collection of arguments for invoking getVpcEndpointServiceResources.
  */
 export interface GetVpcEndpointServiceResourcesArgs {
-    readonly outputFile?: string;
+    outputFile?: string;
     /**
      * The ID of Vpc Endpoint Service.
      */
-    readonly serviceId: string;
+    serviceId: string;
 }
 
 /**
@@ -61,4 +61,19 @@ export interface GetVpcEndpointServiceResourcesResult {
     readonly outputFile?: string;
     readonly resources: outputs.privatelink.GetVpcEndpointServiceResourcesResource[];
     readonly serviceId: string;
+}
+
+export function getVpcEndpointServiceResourcesOutput(args: GetVpcEndpointServiceResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointServiceResourcesResult> {
+    return pulumi.output(args).apply(a => getVpcEndpointServiceResources(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVpcEndpointServiceResources.
+ */
+export interface GetVpcEndpointServiceResourcesOutputArgs {
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The ID of Vpc Endpoint Service.
+     */
+    serviceId: pulumi.Input<string>;
 }

@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * const k8sClusters = pulumi.output(alicloud.cs.getServerlessKubernetesClusters({
  *     nameRegex: "my-first-k8s",
  *     outputFile: "my-first-k8s-json",
- * }, { async: true }));
+ * }));
  *
  * export const output = k8sClusters.clusters;
  * ```
@@ -46,16 +46,16 @@ export function getServerlessKubernetesClusters(args?: GetServerlessKubernetesCl
  * A collection of arguments for invoking getServerlessKubernetesClusters.
  */
 export interface GetServerlessKubernetesClustersArgs {
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * Cluster IDs to filter.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by cluster name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -81,4 +81,24 @@ export interface GetServerlessKubernetesClustersResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getServerlessKubernetesClustersOutput(args?: GetServerlessKubernetesClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerlessKubernetesClustersResult> {
+    return pulumi.output(args).apply(a => getServerlessKubernetesClusters(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServerlessKubernetesClusters.
+ */
+export interface GetServerlessKubernetesClustersOutputArgs {
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * Cluster IDs to filter.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by cluster name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

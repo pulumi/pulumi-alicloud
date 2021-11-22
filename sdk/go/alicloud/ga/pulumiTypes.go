@@ -231,7 +231,7 @@ func (o EndpointGroupPortOverridesOutput) ToEndpointGroupPortOverridesPtrOutput(
 }
 
 func (o EndpointGroupPortOverridesOutput) ToEndpointGroupPortOverridesPtrOutputWithContext(ctx context.Context) EndpointGroupPortOverridesPtrOutput {
-	return o.ApplyT(func(v EndpointGroupPortOverrides) *EndpointGroupPortOverrides {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointGroupPortOverrides) *EndpointGroupPortOverrides {
 		return &v
 	}).(EndpointGroupPortOverridesPtrOutput)
 }
@@ -261,7 +261,13 @@ func (o EndpointGroupPortOverridesPtrOutput) ToEndpointGroupPortOverridesPtrOutp
 }
 
 func (o EndpointGroupPortOverridesPtrOutput) Elem() EndpointGroupPortOverridesOutput {
-	return o.ApplyT(func(v *EndpointGroupPortOverrides) EndpointGroupPortOverrides { return *v }).(EndpointGroupPortOverridesOutput)
+	return o.ApplyT(func(v *EndpointGroupPortOverrides) EndpointGroupPortOverrides {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointGroupPortOverrides
+		return ret
+	}).(EndpointGroupPortOverridesOutput)
 }
 
 // Forwarding port.
@@ -857,7 +863,7 @@ func (o ForwardingRuleRuleConditionPathConfigOutput) ToForwardingRuleRuleConditi
 }
 
 func (o ForwardingRuleRuleConditionPathConfigOutput) ToForwardingRuleRuleConditionPathConfigPtrOutputWithContext(ctx context.Context) ForwardingRuleRuleConditionPathConfigPtrOutput {
-	return o.ApplyT(func(v ForwardingRuleRuleConditionPathConfig) *ForwardingRuleRuleConditionPathConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ForwardingRuleRuleConditionPathConfig) *ForwardingRuleRuleConditionPathConfig {
 		return &v
 	}).(ForwardingRuleRuleConditionPathConfigPtrOutput)
 }
@@ -882,7 +888,13 @@ func (o ForwardingRuleRuleConditionPathConfigPtrOutput) ToForwardingRuleRuleCond
 }
 
 func (o ForwardingRuleRuleConditionPathConfigPtrOutput) Elem() ForwardingRuleRuleConditionPathConfigOutput {
-	return o.ApplyT(func(v *ForwardingRuleRuleConditionPathConfig) ForwardingRuleRuleConditionPathConfig { return *v }).(ForwardingRuleRuleConditionPathConfigOutput)
+	return o.ApplyT(func(v *ForwardingRuleRuleConditionPathConfig) ForwardingRuleRuleConditionPathConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ForwardingRuleRuleConditionPathConfig
+		return ret
+	}).(ForwardingRuleRuleConditionPathConfigOutput)
 }
 
 // The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
@@ -3528,6 +3540,61 @@ func (o GetListenersListenerPortRangeArrayOutput) Index(i pulumi.IntInput) GetLi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointGroupEndpointConfigurationInput)(nil)).Elem(), EndpointGroupEndpointConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointGroupEndpointConfigurationArrayInput)(nil)).Elem(), EndpointGroupEndpointConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointGroupPortOverridesInput)(nil)).Elem(), EndpointGroupPortOverridesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointGroupPortOverridesPtrInput)(nil)).Elem(), EndpointGroupPortOverridesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleRuleActionInput)(nil)).Elem(), ForwardingRuleRuleActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleRuleActionArrayInput)(nil)).Elem(), ForwardingRuleRuleActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleRuleActionForwardGroupConfigInput)(nil)).Elem(), ForwardingRuleRuleActionForwardGroupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleInput)(nil)).Elem(), ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput)(nil)).Elem(), ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleRuleConditionInput)(nil)).Elem(), ForwardingRuleRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleRuleConditionArrayInput)(nil)).Elem(), ForwardingRuleRuleConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleRuleConditionHostConfigInput)(nil)).Elem(), ForwardingRuleRuleConditionHostConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleRuleConditionHostConfigArrayInput)(nil)).Elem(), ForwardingRuleRuleConditionHostConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleRuleConditionPathConfigInput)(nil)).Elem(), ForwardingRuleRuleConditionPathConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleRuleConditionPathConfigPtrInput)(nil)).Elem(), ForwardingRuleRuleConditionPathConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerCertificateInput)(nil)).Elem(), ListenerCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerCertificateArrayInput)(nil)).Elem(), ListenerCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerPortRangeInput)(nil)).Elem(), ListenerPortRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerPortRangeArrayInput)(nil)).Elem(), ListenerPortRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAcceleratorsAcceleratorInput)(nil)).Elem(), GetAcceleratorsAcceleratorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAcceleratorsAcceleratorArrayInput)(nil)).Elem(), GetAcceleratorsAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAcceleratorsAcceleratorBasicBandwidthPackageInput)(nil)).Elem(), GetAcceleratorsAcceleratorBasicBandwidthPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAcceleratorsAcceleratorBasicBandwidthPackageArrayInput)(nil)).Elem(), GetAcceleratorsAcceleratorBasicBandwidthPackageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAcceleratorsAcceleratorCrossDomainBandwidthPackageInput)(nil)).Elem(), GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayInput)(nil)).Elem(), GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBandwidthPackagesPackageInput)(nil)).Elem(), GetBandwidthPackagesPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBandwidthPackagesPackageArrayInput)(nil)).Elem(), GetBandwidthPackagesPackageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointGroupsGroupInput)(nil)).Elem(), GetEndpointGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointGroupsGroupArrayInput)(nil)).Elem(), GetEndpointGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointGroupsGroupEndpointConfigurationInput)(nil)).Elem(), GetEndpointGroupsGroupEndpointConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointGroupsGroupEndpointConfigurationArrayInput)(nil)).Elem(), GetEndpointGroupsGroupEndpointConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointGroupsGroupPortOverrideInput)(nil)).Elem(), GetEndpointGroupsGroupPortOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointGroupsGroupPortOverrideArrayInput)(nil)).Elem(), GetEndpointGroupsGroupPortOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRulesForwardingRuleInput)(nil)).Elem(), GetForwardingRulesForwardingRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRulesForwardingRuleArrayInput)(nil)).Elem(), GetForwardingRulesForwardingRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRulesForwardingRuleRuleActionInput)(nil)).Elem(), GetForwardingRulesForwardingRuleRuleActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRulesForwardingRuleRuleActionArrayInput)(nil)).Elem(), GetForwardingRulesForwardingRuleRuleActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigInput)(nil)).Elem(), GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArrayInput)(nil)).Elem(), GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleInput)(nil)).Elem(), GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput)(nil)).Elem(), GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRulesForwardingRuleRuleConditionInput)(nil)).Elem(), GetForwardingRulesForwardingRuleRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRulesForwardingRuleRuleConditionArrayInput)(nil)).Elem(), GetForwardingRulesForwardingRuleRuleConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRulesForwardingRuleRuleConditionHostConfigInput)(nil)).Elem(), GetForwardingRulesForwardingRuleRuleConditionHostConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRulesForwardingRuleRuleConditionHostConfigArrayInput)(nil)).Elem(), GetForwardingRulesForwardingRuleRuleConditionHostConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRulesForwardingRuleRuleConditionPathConfigInput)(nil)).Elem(), GetForwardingRulesForwardingRuleRuleConditionPathConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRulesForwardingRuleRuleConditionPathConfigArrayInput)(nil)).Elem(), GetForwardingRulesForwardingRuleRuleConditionPathConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpSetsSetInput)(nil)).Elem(), GetIpSetsSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpSetsSetArrayInput)(nil)).Elem(), GetIpSetsSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerInput)(nil)).Elem(), GetListenersListenerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerArrayInput)(nil)).Elem(), GetListenersListenerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerCertificateInput)(nil)).Elem(), GetListenersListenerCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerCertificateArrayInput)(nil)).Elem(), GetListenersListenerCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerPortRangeInput)(nil)).Elem(), GetListenersListenerPortRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerPortRangeArrayInput)(nil)).Elem(), GetListenersListenerPortRangeArray{})
 	pulumi.RegisterOutputType(EndpointGroupEndpointConfigurationOutput{})
 	pulumi.RegisterOutputType(EndpointGroupEndpointConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(EndpointGroupPortOverridesOutput{})

@@ -138,31 +138,31 @@ export class EcsKeyPair extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EcsKeyPair resources.
  */
 export interface EcsKeyPairState {
-    readonly fingerPrint?: pulumi.Input<string>;
+    fingerPrint?: pulumi.Input<string>;
     /**
      * The key file.
      */
-    readonly keyFile?: pulumi.Input<string>;
+    keyFile?: pulumi.Input<string>;
     /**
      * The key pair's name. It is the only in one Alicloud account.
      *
      * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
      */
-    readonly keyName?: pulumi.Input<string>;
-    readonly keyNamePrefix?: pulumi.Input<string>;
-    readonly keyPairName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string>;
+    keyNamePrefix?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string>;
     /**
      * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
      */
-    readonly publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string>;
     /**
      * The Id of resource group which the key pair belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -172,25 +172,25 @@ export interface EcsKeyPairArgs {
     /**
      * The key file.
      */
-    readonly keyFile?: pulumi.Input<string>;
+    keyFile?: pulumi.Input<string>;
     /**
      * The key pair's name. It is the only in one Alicloud account.
      *
      * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
      */
-    readonly keyName?: pulumi.Input<string>;
-    readonly keyNamePrefix?: pulumi.Input<string>;
-    readonly keyPairName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string>;
+    keyNamePrefix?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string>;
     /**
      * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
      */
-    readonly publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string>;
     /**
      * The Id of resource group which the key pair belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

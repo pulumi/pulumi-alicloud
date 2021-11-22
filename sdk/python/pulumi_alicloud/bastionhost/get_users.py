@@ -13,6 +13,7 @@ __all__ = [
     'GetUsersResult',
     'AwaitableGetUsersResult',
     'get_users',
+    'get_users_output',
 ]
 
 @pulumi.output_type
@@ -228,3 +229,53 @@ def get_users(display_name: Optional[str] = None,
         status=__ret__.status,
         user_name=__ret__.user_name,
         users=__ret__.users)
+
+
+@_utilities.lift_output_func(get_users)
+def get_users_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
+                     ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                     instance_id: Optional[pulumi.Input[str]] = None,
+                     mobile: Optional[pulumi.Input[Optional[str]]] = None,
+                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     source: Optional[pulumi.Input[Optional[str]]] = None,
+                     source_user_id: Optional[pulumi.Input[Optional[str]]] = None,
+                     status: Optional[pulumi.Input[Optional[str]]] = None,
+                     user_name: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsersResult]:
+    """
+    This data source provides the Bastionhost Users of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.133.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.bastionhost.get_users(instance_id="example_value",
+        ids=[
+            "1",
+            "10",
+        ])
+    pulumi.export("bastionhostUserId1", ids.users[0].id)
+    name_regex = alicloud.bastionhost.get_users(instance_id="example_value",
+        name_regex="^my-User")
+    pulumi.export("bastionhostUserId2", name_regex.users[0].id)
+    ```
+
+
+    :param str display_name: Specify the New Created the User's Display Name. Supports up to 128 Characters.
+    :param Sequence[str] ids: A list of User IDs.
+    :param str instance_id: You Want to Query the User the Bastion Host ID of.
+    :param str mobile: Specify the New of the User That Created a Different Mobile Phone Number from Your.
+    :param str name_regex: A regex string to filter results by User name.
+    :param str source: Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+    :param str source_user_id: Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
+    :param str status: The status of the resource.
+    :param str user_name: Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
+    """
+    ...

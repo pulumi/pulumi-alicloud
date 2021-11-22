@@ -13,6 +13,7 @@ __all__ = [
     'GetFlowsResult',
     'AwaitableGetFlowsResult',
     'get_flows',
+    'get_flows_output',
 ]
 
 @pulumi.output_type
@@ -144,3 +145,35 @@ def get_flows(ids: Optional[Sequence[str]] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_flows)
+def get_flows_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                     limit: Optional[pulumi.Input[Optional[int]]] = None,
+                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFlowsResult]:
+    """
+    This data source provides the Fnf Flows of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.105.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.fnf.get_flows(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstFnfFlowId", example.flows[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Flow IDs.
+    :param int limit: The number of resource queries.
+    :param str name_regex: A regex string to filter results by Flow name.
+    """
+    ...

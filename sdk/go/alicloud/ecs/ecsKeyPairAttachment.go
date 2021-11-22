@@ -211,7 +211,7 @@ type EcsKeyPairAttachmentArrayInput interface {
 type EcsKeyPairAttachmentArray []EcsKeyPairAttachmentInput
 
 func (EcsKeyPairAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EcsKeyPairAttachment)(nil))
+	return reflect.TypeOf((*[]*EcsKeyPairAttachment)(nil)).Elem()
 }
 
 func (i EcsKeyPairAttachmentArray) ToEcsKeyPairAttachmentArrayOutput() EcsKeyPairAttachmentArrayOutput {
@@ -236,7 +236,7 @@ type EcsKeyPairAttachmentMapInput interface {
 type EcsKeyPairAttachmentMap map[string]EcsKeyPairAttachmentInput
 
 func (EcsKeyPairAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EcsKeyPairAttachment)(nil))
+	return reflect.TypeOf((*map[string]*EcsKeyPairAttachment)(nil)).Elem()
 }
 
 func (i EcsKeyPairAttachmentMap) ToEcsKeyPairAttachmentMapOutput() EcsKeyPairAttachmentMapOutput {
@@ -247,9 +247,7 @@ func (i EcsKeyPairAttachmentMap) ToEcsKeyPairAttachmentMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(EcsKeyPairAttachmentMapOutput)
 }
 
-type EcsKeyPairAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type EcsKeyPairAttachmentOutput struct{ *pulumi.OutputState }
 
 func (EcsKeyPairAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EcsKeyPairAttachment)(nil))
@@ -268,14 +266,12 @@ func (o EcsKeyPairAttachmentOutput) ToEcsKeyPairAttachmentPtrOutput() EcsKeyPair
 }
 
 func (o EcsKeyPairAttachmentOutput) ToEcsKeyPairAttachmentPtrOutputWithContext(ctx context.Context) EcsKeyPairAttachmentPtrOutput {
-	return o.ApplyT(func(v EcsKeyPairAttachment) *EcsKeyPairAttachment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EcsKeyPairAttachment) *EcsKeyPairAttachment {
 		return &v
 	}).(EcsKeyPairAttachmentPtrOutput)
 }
 
-type EcsKeyPairAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type EcsKeyPairAttachmentPtrOutput struct{ *pulumi.OutputState }
 
 func (EcsKeyPairAttachmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EcsKeyPairAttachment)(nil))
@@ -287,6 +283,16 @@ func (o EcsKeyPairAttachmentPtrOutput) ToEcsKeyPairAttachmentPtrOutput() EcsKeyP
 
 func (o EcsKeyPairAttachmentPtrOutput) ToEcsKeyPairAttachmentPtrOutputWithContext(ctx context.Context) EcsKeyPairAttachmentPtrOutput {
 	return o
+}
+
+func (o EcsKeyPairAttachmentPtrOutput) Elem() EcsKeyPairAttachmentOutput {
+	return o.ApplyT(func(v *EcsKeyPairAttachment) EcsKeyPairAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret EcsKeyPairAttachment
+		return ret
+	}).(EcsKeyPairAttachmentOutput)
 }
 
 type EcsKeyPairAttachmentArrayOutput struct{ *pulumi.OutputState }
@@ -330,6 +336,10 @@ func (o EcsKeyPairAttachmentMapOutput) MapIndex(k pulumi.StringInput) EcsKeyPair
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsKeyPairAttachmentInput)(nil)).Elem(), &EcsKeyPairAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsKeyPairAttachmentPtrInput)(nil)).Elem(), &EcsKeyPairAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsKeyPairAttachmentArrayInput)(nil)).Elem(), EcsKeyPairAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsKeyPairAttachmentMapInput)(nil)).Elem(), EcsKeyPairAttachmentMap{})
 	pulumi.RegisterOutputType(EcsKeyPairAttachmentOutput{})
 	pulumi.RegisterOutputType(EcsKeyPairAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(EcsKeyPairAttachmentArrayOutput{})

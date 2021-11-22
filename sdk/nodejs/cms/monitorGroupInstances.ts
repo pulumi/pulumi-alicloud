@@ -121,11 +121,11 @@ export interface MonitorGroupInstancesState {
     /**
      * The id of Cms Group.
      */
-    readonly groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
     /**
      * Instance information added to the Cms Group.
      */
-    readonly instances?: pulumi.Input<pulumi.Input<inputs.cms.MonitorGroupInstancesInstance>[]>;
+    instances?: pulumi.Input<pulumi.Input<inputs.cms.MonitorGroupInstancesInstance>[]>;
 }
 
 /**
@@ -135,9 +135,9 @@ export interface MonitorGroupInstancesArgs {
     /**
      * The id of Cms Group.
      */
-    readonly groupId: pulumi.Input<string>;
+    groupId: pulumi.Input<string>;
     /**
      * Instance information added to the Cms Group.
      */
-    readonly instances: pulumi.Input<pulumi.Input<inputs.cms.MonitorGroupInstancesInstance>[]>;
+    instances: pulumi.Input<pulumi.Input<inputs.cms.MonitorGroupInstancesInstance>[]>;
 }

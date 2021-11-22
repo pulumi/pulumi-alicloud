@@ -13,6 +13,7 @@ __all__ = [
     'GetAclsResult',
     'AwaitableGetAclsResult',
     'get_acls',
+    'get_acls_output',
 ]
 
 @pulumi.output_type
@@ -197,3 +198,44 @@ def get_acls(acl_ids: Optional[Sequence[str]] = None,
         output_file=__ret__.output_file,
         resource_group_id=__ret__.resource_group_id,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_acls)
+def get_acls_output(acl_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                    acl_name: Optional[pulumi.Input[Optional[str]]] = None,
+                    enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                    ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                    resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                    status: Optional[pulumi.Input[Optional[str]]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAclsResult]:
+    """
+    This data source provides the Application Load Balancer (ALB) Acls of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.133.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.alb.get_acls()
+    pulumi.export("albAclId1", ids.acls[0].id)
+    name_regex = alicloud.alb.get_acls(name_regex="^my-Acl")
+    pulumi.export("albAclId2", name_regex.acls[0].id)
+    ```
+
+
+    :param Sequence[str] acl_ids: The acl ids.
+    :param str acl_name: The ACL Name.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of Acl IDs.
+    :param str name_regex: A regex string to filter results by Acl name.
+    :param str resource_group_id: Resource Group to Which the Number.
+    :param str status: The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+    """
+    ...

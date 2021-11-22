@@ -171,7 +171,7 @@ type ScimServerCredentialArrayInput interface {
 type ScimServerCredentialArray []ScimServerCredentialInput
 
 func (ScimServerCredentialArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ScimServerCredential)(nil))
+	return reflect.TypeOf((*[]*ScimServerCredential)(nil)).Elem()
 }
 
 func (i ScimServerCredentialArray) ToScimServerCredentialArrayOutput() ScimServerCredentialArrayOutput {
@@ -196,7 +196,7 @@ type ScimServerCredentialMapInput interface {
 type ScimServerCredentialMap map[string]ScimServerCredentialInput
 
 func (ScimServerCredentialMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ScimServerCredential)(nil))
+	return reflect.TypeOf((*map[string]*ScimServerCredential)(nil)).Elem()
 }
 
 func (i ScimServerCredentialMap) ToScimServerCredentialMapOutput() ScimServerCredentialMapOutput {
@@ -207,9 +207,7 @@ func (i ScimServerCredentialMap) ToScimServerCredentialMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ScimServerCredentialMapOutput)
 }
 
-type ScimServerCredentialOutput struct {
-	*pulumi.OutputState
-}
+type ScimServerCredentialOutput struct{ *pulumi.OutputState }
 
 func (ScimServerCredentialOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ScimServerCredential)(nil))
@@ -228,14 +226,12 @@ func (o ScimServerCredentialOutput) ToScimServerCredentialPtrOutput() ScimServer
 }
 
 func (o ScimServerCredentialOutput) ToScimServerCredentialPtrOutputWithContext(ctx context.Context) ScimServerCredentialPtrOutput {
-	return o.ApplyT(func(v ScimServerCredential) *ScimServerCredential {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScimServerCredential) *ScimServerCredential {
 		return &v
 	}).(ScimServerCredentialPtrOutput)
 }
 
-type ScimServerCredentialPtrOutput struct {
-	*pulumi.OutputState
-}
+type ScimServerCredentialPtrOutput struct{ *pulumi.OutputState }
 
 func (ScimServerCredentialPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ScimServerCredential)(nil))
@@ -247,6 +243,16 @@ func (o ScimServerCredentialPtrOutput) ToScimServerCredentialPtrOutput() ScimSer
 
 func (o ScimServerCredentialPtrOutput) ToScimServerCredentialPtrOutputWithContext(ctx context.Context) ScimServerCredentialPtrOutput {
 	return o
+}
+
+func (o ScimServerCredentialPtrOutput) Elem() ScimServerCredentialOutput {
+	return o.ApplyT(func(v *ScimServerCredential) ScimServerCredential {
+		if v != nil {
+			return *v
+		}
+		var ret ScimServerCredential
+		return ret
+	}).(ScimServerCredentialOutput)
 }
 
 type ScimServerCredentialArrayOutput struct{ *pulumi.OutputState }
@@ -290,6 +296,10 @@ func (o ScimServerCredentialMapOutput) MapIndex(k pulumi.StringInput) ScimServer
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ScimServerCredentialInput)(nil)).Elem(), &ScimServerCredential{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScimServerCredentialPtrInput)(nil)).Elem(), &ScimServerCredential{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScimServerCredentialArrayInput)(nil)).Elem(), ScimServerCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScimServerCredentialMapInput)(nil)).Elem(), ScimServerCredentialMap{})
 	pulumi.RegisterOutputType(ScimServerCredentialOutput{})
 	pulumi.RegisterOutputType(ScimServerCredentialPtrOutput{})
 	pulumi.RegisterOutputType(ScimServerCredentialArrayOutput{})

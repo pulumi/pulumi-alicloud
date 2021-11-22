@@ -181,35 +181,35 @@ export interface FunctionAsyncInvokeConfigState {
     /**
      * The date this resource was created.
      */
-    readonly createdTime?: pulumi.Input<string>;
+    createdTime?: pulumi.Input<string>;
     /**
      * Configuration block with destination configuration. See below for details.
      */
-    readonly destinationConfig?: pulumi.Input<inputs.fc.FunctionAsyncInvokeConfigDestinationConfig>;
+    destinationConfig?: pulumi.Input<inputs.fc.FunctionAsyncInvokeConfigDestinationConfig>;
     /**
      * Name of the Function Compute Function.
      */
-    readonly functionName?: pulumi.Input<string>;
+    functionName?: pulumi.Input<string>;
     /**
      * The date this resource was last modified.
      */
-    readonly lastModifiedTime?: pulumi.Input<string>;
+    lastModifiedTime?: pulumi.Input<string>;
     /**
      * Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 60 and 21600.
      */
-    readonly maximumEventAgeInSeconds?: pulumi.Input<number>;
+    maximumEventAgeInSeconds?: pulumi.Input<number>;
     /**
      * Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
      */
-    readonly maximumRetryAttempts?: pulumi.Input<number>;
+    maximumRetryAttempts?: pulumi.Input<number>;
     /**
      * Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
      */
-    readonly qualifier?: pulumi.Input<string>;
+    qualifier?: pulumi.Input<string>;
     /**
      * Name of the Function Compute Function, omitting any version or alias qualifier.
      */
-    readonly serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
 }
 
 /**
@@ -219,25 +219,25 @@ export interface FunctionAsyncInvokeConfigArgs {
     /**
      * Configuration block with destination configuration. See below for details.
      */
-    readonly destinationConfig?: pulumi.Input<inputs.fc.FunctionAsyncInvokeConfigDestinationConfig>;
+    destinationConfig?: pulumi.Input<inputs.fc.FunctionAsyncInvokeConfigDestinationConfig>;
     /**
      * Name of the Function Compute Function.
      */
-    readonly functionName: pulumi.Input<string>;
+    functionName: pulumi.Input<string>;
     /**
      * Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 60 and 21600.
      */
-    readonly maximumEventAgeInSeconds?: pulumi.Input<number>;
+    maximumEventAgeInSeconds?: pulumi.Input<number>;
     /**
      * Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
      */
-    readonly maximumRetryAttempts?: pulumi.Input<number>;
+    maximumRetryAttempts?: pulumi.Input<number>;
     /**
      * Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
      */
-    readonly qualifier?: pulumi.Input<string>;
+    qualifier?: pulumi.Input<string>;
     /**
      * Name of the Function Compute Function, omitting any version or alias qualifier.
      */
-    readonly serviceName: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
 }

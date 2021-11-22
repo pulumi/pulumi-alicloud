@@ -13,6 +13,7 @@ __all__ = [
     'GetPoliciesResult',
     'AwaitableGetPoliciesResult',
     'get_policies',
+    'get_policies_output',
 ]
 
 @pulumi.output_type
@@ -202,3 +203,40 @@ def get_policies(enable_details: Optional[bool] = None,
         role_name=__ret__.role_name,
         type=__ret__.type,
         user_name=__ret__.user_name)
+
+
+@_utilities.lift_output_func(get_policies)
+def get_policies_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                        group_name: Optional[pulumi.Input[Optional[str]]] = None,
+                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        role_name: Optional[pulumi.Input[Optional[str]]] = None,
+                        type: Optional[pulumi.Input[Optional[str]]] = None,
+                        user_name: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPoliciesResult]:
+    """
+    This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    policies_ds = alicloud.ram.get_policies(group_name="group1",
+        output_file="policies.txt",
+        type="System",
+        user_name="user1")
+    pulumi.export("firstPolicyName", policies_ds.policies[0].name)
+    ```
+
+
+    :param bool enable_details: Default to `true`. Set it to true can output more details.
+    :param str group_name: Filter results by a specific group name. Returned policies are attached to the specified group.
+    :param str name_regex: A regex string to filter resulting policies by name.
+    :param str role_name: Filter results by a specific role name. Returned policies are attached to the specified role.
+    :param str type: Filter results by a specific policy type. Valid values are `Custom` and `System`.
+    :param str user_name: Filter results by a specific user name. Returned policies are attached to the specified user.
+    """
+    ...

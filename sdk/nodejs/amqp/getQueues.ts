@@ -26,13 +26,13 @@ import * as utilities from "../utilities";
  *         "my-Queue-2",
  *     ],
  * });
- * export const amqpQueueId1 = ids.then(ids => ids.queues[0].id);
+ * export const amqpQueueId1 = ids.then(ids => ids.queues?[0]?.id);
  * const nameRegex = alicloud.amqp.getQueues({
  *     instanceId: "amqp-abc12345",
  *     virtualHostName: "my-VirtualHost",
  *     nameRegex: "^my-Queue",
  * });
- * export const amqpQueueId2 = nameRegex.then(nameRegex => nameRegex.queues[0].id);
+ * export const amqpQueueId2 = nameRegex.then(nameRegex => nameRegex.queues?[0]?.id);
  * ```
  */
 export function getQueues(args: GetQueuesArgs, opts?: pulumi.InvokeOptions): Promise<GetQueuesResult> {
@@ -59,20 +59,20 @@ export interface GetQueuesArgs {
     /**
      * A list of Queue IDs. Its element value is same as Queue Name.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The ID of the instance.
      */
-    readonly instanceId: string;
+    instanceId: string;
     /**
      * A regex string to filter results by Queue name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The name of the virtual host.
      */
-    readonly virtualHostName: string;
+    virtualHostName: string;
 }
 
 /**
@@ -90,4 +90,31 @@ export interface GetQueuesResult {
     readonly outputFile?: string;
     readonly queues: outputs.amqp.GetQueuesQueue[];
     readonly virtualHostName: string;
+}
+
+export function getQueuesOutput(args: GetQueuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQueuesResult> {
+    return pulumi.output(args).apply(a => getQueues(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getQueues.
+ */
+export interface GetQueuesOutputArgs {
+    /**
+     * A list of Queue IDs. Its element value is same as Queue Name.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the instance.
+     */
+    instanceId: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Queue name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The name of the virtual host.
+     */
+    virtualHostName: pulumi.Input<string>;
 }

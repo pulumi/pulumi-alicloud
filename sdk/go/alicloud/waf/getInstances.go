@@ -4,6 +4,9 @@
 package waf
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,4 +82,81 @@ type GetInstancesResult struct {
 	ResourceGroupId *string                `pulumi:"resourceGroupId"`
 	// Indicates whether the WAF instance has expired.
 	Status *int `pulumi:"status"`
+}
+
+func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetInstancesResult, error) {
+			args := v.(GetInstancesArgs)
+			r, err := GetInstances(ctx, &args, opts...)
+			return *r, err
+		}).(GetInstancesResultOutput)
+}
+
+// A collection of arguments for invoking getInstances.
+type GetInstancesOutputArgs struct {
+	// A list of WAF instance IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The source of the WAF instance.
+	InstanceSource pulumi.StringPtrInput `pulumi:"instanceSource"`
+	OutputFile     pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The ID of resource group to which WAF instance belongs.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	// The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
+	Status pulumi.IntPtrInput `pulumi:"status"`
+}
+
+func (GetInstancesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getInstances.
+type GetInstancesResultOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesResult)(nil)).Elem()
+}
+
+func (o GetInstancesResultOutput) ToGetInstancesResultOutput() GetInstancesResultOutput {
+	return o
+}
+
+func (o GetInstancesResultOutput) ToGetInstancesResultOutputWithContext(ctx context.Context) GetInstancesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetInstancesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Optional) A list of WAF instance IDs.
+func (o GetInstancesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstancesResultOutput) InstanceSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.InstanceSource }).(pulumi.StringPtrOutput)
+}
+
+// A list of WAF instances. Each element contains the following attributes:
+func (o GetInstancesResultOutput) Instances() GetInstancesInstanceArrayOutput {
+	return o.ApplyT(func(v GetInstancesResult) []GetInstancesInstance { return v.Instances }).(GetInstancesInstanceArrayOutput)
+}
+
+func (o GetInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancesResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the WAF instance has expired.
+func (o GetInstancesResultOutput) Status() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *int { return v.Status }).(pulumi.IntPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetInstancesResultOutput{})
 }

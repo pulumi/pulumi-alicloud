@@ -136,11 +136,11 @@ export interface ControlPolicyAttachmentState {
     /**
      * The ID of control policy.
      */
-    readonly policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string>;
     /**
      * The ID of target.
      */
-    readonly targetId?: pulumi.Input<string>;
+    targetId?: pulumi.Input<string>;
 }
 
 /**
@@ -150,9 +150,9 @@ export interface ControlPolicyAttachmentArgs {
     /**
      * The ID of control policy.
      */
-    readonly policyId: pulumi.Input<string>;
+    policyId: pulumi.Input<string>;
     /**
      * The ID of target.
      */
-    readonly targetId: pulumi.Input<string>;
+    targetId: pulumi.Input<string>;
 }

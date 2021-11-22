@@ -299,9 +299,9 @@ import (
 // 		_, err := oss.NewBucket(ctx, "bucket_tags", &oss.BucketArgs{
 // 			Acl:    pulumi.String("private"),
 // 			Bucket: pulumi.String("bucket-170309-tags"),
-// 			Tags: pulumi.StringMap{
-// 				"key1": pulumi.String("value1"),
-// 				"key2": pulumi.String("value2"),
+// 			Tags: pulumi.AnyMap{
+// 				"key1": pulumi.Any("value1"),
+// 				"key2": pulumi.Any("value2"),
 // 			},
 // 		})
 // 		if err != nil {
@@ -707,7 +707,7 @@ type BucketArrayInput interface {
 type BucketArray []BucketInput
 
 func (BucketArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Bucket)(nil))
+	return reflect.TypeOf((*[]*Bucket)(nil)).Elem()
 }
 
 func (i BucketArray) ToBucketArrayOutput() BucketArrayOutput {
@@ -732,7 +732,7 @@ type BucketMapInput interface {
 type BucketMap map[string]BucketInput
 
 func (BucketMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Bucket)(nil))
+	return reflect.TypeOf((*map[string]*Bucket)(nil)).Elem()
 }
 
 func (i BucketMap) ToBucketMapOutput() BucketMapOutput {
@@ -743,9 +743,7 @@ func (i BucketMap) ToBucketMapOutputWithContext(ctx context.Context) BucketMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(BucketMapOutput)
 }
 
-type BucketOutput struct {
-	*pulumi.OutputState
-}
+type BucketOutput struct{ *pulumi.OutputState }
 
 func (BucketOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Bucket)(nil))
@@ -764,14 +762,12 @@ func (o BucketOutput) ToBucketPtrOutput() BucketPtrOutput {
 }
 
 func (o BucketOutput) ToBucketPtrOutputWithContext(ctx context.Context) BucketPtrOutput {
-	return o.ApplyT(func(v Bucket) *Bucket {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Bucket) *Bucket {
 		return &v
 	}).(BucketPtrOutput)
 }
 
-type BucketPtrOutput struct {
-	*pulumi.OutputState
-}
+type BucketPtrOutput struct{ *pulumi.OutputState }
 
 func (BucketPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Bucket)(nil))
@@ -783,6 +779,16 @@ func (o BucketPtrOutput) ToBucketPtrOutput() BucketPtrOutput {
 
 func (o BucketPtrOutput) ToBucketPtrOutputWithContext(ctx context.Context) BucketPtrOutput {
 	return o
+}
+
+func (o BucketPtrOutput) Elem() BucketOutput {
+	return o.ApplyT(func(v *Bucket) Bucket {
+		if v != nil {
+			return *v
+		}
+		var ret Bucket
+		return ret
+	}).(BucketOutput)
 }
 
 type BucketArrayOutput struct{ *pulumi.OutputState }
@@ -826,6 +832,10 @@ func (o BucketMapOutput) MapIndex(k pulumi.StringInput) BucketOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketInput)(nil)).Elem(), &Bucket{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketPtrInput)(nil)).Elem(), &Bucket{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketArrayInput)(nil)).Elem(), BucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketMapInput)(nil)).Elem(), BucketMap{})
 	pulumi.RegisterOutputType(BucketOutput{})
 	pulumi.RegisterOutputType(BucketPtrOutput{})
 	pulumi.RegisterOutputType(BucketArrayOutput{})

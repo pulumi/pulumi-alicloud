@@ -13,6 +13,7 @@ __all__ = [
     'GetKeyPairsResult',
     'AwaitableGetKeyPairsResult',
     'get_key_pairs',
+    'get_key_pairs_output',
 ]
 
 @pulumi.output_type
@@ -183,3 +184,23 @@ def get_key_pairs(finger_print: Optional[str] = None,
         pairs=__ret__.pairs,
         resource_group_id=__ret__.resource_group_id,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_key_pairs)
+def get_key_pairs_output(finger_print: Optional[pulumi.Input[Optional[str]]] = None,
+                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeyPairsResult]:
+    """
+    Use this data source to access information about an existing resource.
+
+    :param str finger_print: A finger print used to retrieve specified key pair.
+    :param Sequence[str] ids: A list of key pair IDs.
+    :param str name_regex: A regex string to apply to the resulting key pairs.
+    :param str resource_group_id: The Id of resource group which the key pair belongs.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    """
+    ...

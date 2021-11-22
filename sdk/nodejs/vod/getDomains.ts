@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  *         key2: "value2",
  *     },
  * }));
- * export const vodDomain = defaultDomains.domains[0];
+ * export const vodDomain = defaultDomains.apply(defaultDomains => defaultDomains.domains?[0]);
  * ```
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
@@ -71,26 +71,26 @@ export interface GetDomainsArgs {
      * * `sufMatch`: suffix match.
      * * `fullMatch`: exact match
      */
-    readonly domainSearchType?: string;
+    domainSearchType?: string;
     /**
      * A list of Domain IDs. Its element value is same as Domain Name.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Domain name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of the resource.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * A mapping of tags to assign to the resource.
      * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
      * * `Value`: It can be up to 128 characters in length. It can be a null string.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -109,4 +109,41 @@ export interface GetDomainsResult {
     readonly outputFile?: string;
     readonly status?: string;
     readonly tags?: {[key: string]: any};
+}
+
+export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
+    return pulumi.output(args).apply(a => getDomains(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDomains.
+ */
+export interface GetDomainsOutputArgs {
+    /**
+     * The search method. Valid values:
+     * * `fuzzyMatch`: fuzzy match. This is the default value.
+     * * `preMatch`: prefix match.
+     * * `sufMatch`: suffix match.
+     * * `fullMatch`: exact match
+     */
+    domainSearchType?: pulumi.Input<string>;
+    /**
+     * A list of Domain IDs. Its element value is same as Domain Name.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Domain name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the resource.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
+     * * `Value`: It can be up to 128 characters in length. It can be a null string.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

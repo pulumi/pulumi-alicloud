@@ -149,29 +149,29 @@ export interface ClientUserState {
     /**
      * The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
      */
-    readonly bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number>;
     /**
      * The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
      */
-    readonly clientIp?: pulumi.Input<string>;
-    readonly kmsEncryptedPassword?: pulumi.Input<string>;
-    readonly kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    clientIp?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
      * The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * The ID of the SAG instance created for the SAG APP.
      */
-    readonly sagId?: pulumi.Input<string>;
+    sagId?: pulumi.Input<string>;
     /**
      * The email address of the user. The administrator uses this address to send the account information for logging on to the APP to the user.
      */
-    readonly userMail?: pulumi.Input<string>;
+    userMail?: pulumi.Input<string>;
     /**
      * The user name. User names in the same SAG APP must be unique.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
      */
-    readonly userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string>;
 }
 
 /**
@@ -181,27 +181,27 @@ export interface ClientUserArgs {
     /**
      * The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
      */
-    readonly bandwidth: pulumi.Input<number>;
+    bandwidth: pulumi.Input<number>;
     /**
      * The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
      */
-    readonly clientIp?: pulumi.Input<string>;
-    readonly kmsEncryptedPassword?: pulumi.Input<string>;
-    readonly kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    clientIp?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
      * The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * The ID of the SAG instance created for the SAG APP.
      */
-    readonly sagId: pulumi.Input<string>;
+    sagId: pulumi.Input<string>;
     /**
      * The email address of the user. The administrator uses this address to send the account information for logging on to the APP to the user.
      */
-    readonly userMail: pulumi.Input<string>;
+    userMail: pulumi.Input<string>;
     /**
      * The user name. User names in the same SAG APP must be unique.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
      */
-    readonly userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string>;
 }

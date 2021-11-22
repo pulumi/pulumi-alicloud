@@ -4,6 +4,9 @@
 package cassandra
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,4 +63,64 @@ type GetBackupPlansResult struct {
 	Ids        []string             `pulumi:"ids"`
 	OutputFile *string              `pulumi:"outputFile"`
 	Plans      []GetBackupPlansPlan `pulumi:"plans"`
+}
+
+func GetBackupPlansOutput(ctx *pulumi.Context, args GetBackupPlansOutputArgs, opts ...pulumi.InvokeOption) GetBackupPlansResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetBackupPlansResult, error) {
+			args := v.(GetBackupPlansArgs)
+			r, err := GetBackupPlans(ctx, &args, opts...)
+			return *r, err
+		}).(GetBackupPlansResultOutput)
+}
+
+// A collection of arguments for invoking getBackupPlans.
+type GetBackupPlansOutputArgs struct {
+	// The ID of the cluster for the backup.
+	ClusterId  pulumi.StringInput    `pulumi:"clusterId"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetBackupPlansOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlansArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getBackupPlans.
+type GetBackupPlansResultOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlansResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlansResult)(nil)).Elem()
+}
+
+func (o GetBackupPlansResultOutput) ToGetBackupPlansResultOutput() GetBackupPlansResultOutput {
+	return o
+}
+
+func (o GetBackupPlansResultOutput) ToGetBackupPlansResultOutputWithContext(ctx context.Context) GetBackupPlansResultOutput {
+	return o
+}
+
+func (o GetBackupPlansResultOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlansResult) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetBackupPlansResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlansResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetBackupPlansResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBackupPlansResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetBackupPlansResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBackupPlansResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetBackupPlansResultOutput) Plans() GetBackupPlansPlanArrayOutput {
+	return o.ApplyT(func(v GetBackupPlansResult) []GetBackupPlansPlan { return v.Plans }).(GetBackupPlansPlanArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetBackupPlansResultOutput{})
 }

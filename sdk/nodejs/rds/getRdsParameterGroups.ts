@@ -26,10 +26,10 @@ export function getRdsParameterGroups(args?: GetRdsParameterGroupsArgs, opts?: p
  * A collection of arguments for invoking getRdsParameterGroups.
  */
 export interface GetRdsParameterGroupsArgs {
-    readonly enableDetails?: boolean;
-    readonly ids?: string[];
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    enableDetails?: boolean;
+    ids?: string[];
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -46,4 +46,18 @@ export interface GetRdsParameterGroupsResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getRdsParameterGroupsOutput(args?: GetRdsParameterGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRdsParameterGroupsResult> {
+    return pulumi.output(args).apply(a => getRdsParameterGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRdsParameterGroups.
+ */
+export interface GetRdsParameterGroupsOutputArgs {
+    enableDetails?: pulumi.Input<boolean>;
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

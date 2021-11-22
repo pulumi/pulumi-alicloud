@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.MarketPlace
 {
@@ -18,6 +19,14 @@ namespace Pulumi.AliCloud.MarketPlace
         /// </summary>
         public static Task<GetProductsResult> InvokeAsync(GetProductsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProductsResult>("alicloud:marketplace/getProducts:getProducts", args ?? new GetProductsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Market product items of Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in 1.64.0+
+        /// </summary>
+        public static Output<GetProductsResult> Invoke(GetProductsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetProductsResult>("alicloud:marketplace/getProducts:getProducts", args ?? new GetProductsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -87,6 +96,76 @@ namespace Pulumi.AliCloud.MarketPlace
         public string? SupplierNameKeyword { get; set; }
 
         public GetProductsArgs()
+        {
+        }
+    }
+
+    public sealed class GetProductsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
+        /// </summary>
+        [Input("categoryId")]
+        public Input<string>? CategoryId { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of product code.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to apply to the product name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The type of products, Valid values: `APP`, `SERVICE`, `MIRROR`, `DOWNLOAD` and `API_SERVICE`.
+        /// </summary>
+        [Input("productType")]
+        public Input<string>? ProductType { get; set; }
+
+        /// <summary>
+        /// Search term in this query.
+        /// </summary>
+        [Input("searchTerm")]
+        public Input<string>? SearchTerm { get; set; }
+
+        /// <summary>
+        /// This field determines how to sort the filtered results, Valid values: `user_count-desc`, `created_on-desc`, `price-desc` and `score-desc`.
+        /// </summary>
+        [Input("sort")]
+        public Input<string>? Sort { get; set; }
+
+        /// <summary>
+        /// The suggested price of the product.
+        /// </summary>
+        [Input("suggestedPrice")]
+        public Input<double>? SuggestedPrice { get; set; }
+
+        /// <summary>
+        /// The supplier id of the product.
+        /// </summary>
+        [Input("supplierId")]
+        public Input<string>? SupplierId { get; set; }
+
+        /// <summary>
+        /// The supplier name keyword of the product.
+        /// </summary>
+        [Input("supplierNameKeyword")]
+        public Input<string>? SupplierNameKeyword { get; set; }
+
+        public GetProductsInvokeArgs()
         {
         }
     }

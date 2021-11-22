@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dns
 {
@@ -35,7 +36,7 @@ namespace Pulumi.AliCloud.Dns
         ///                 "dns-cn-oew1npk****",
         ///             },
         ///         }));
-        ///         this.FirstInstanceId = example.Apply(example =&gt; example.Instances[0].Id);
+        ///         this.FirstInstanceId = example.Apply(example =&gt; example.Instances?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstInstanceId")]
@@ -47,6 +48,43 @@ namespace Pulumi.AliCloud.Dns
         /// </summary>
         public static Task<GetAlidnsInstancesResult> InvokeAsync(GetAlidnsInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAlidnsInstancesResult>("alicloud:dns/getAlidnsInstances:getAlidnsInstances", args ?? new GetAlidnsInstancesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of Alidns instances in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.95.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Dns.GetAlidnsInstances.InvokeAsync(new AliCloud.Dns.GetAlidnsInstancesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "dns-cn-oew1npk****",
+        ///             },
+        ///         }));
+        ///         this.FirstInstanceId = example.Apply(example =&gt; example.Instances?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstInstanceId")]
+        ///     public Output&lt;string&gt; FirstInstanceId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAlidnsInstancesResult> Invoke(GetAlidnsInstancesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAlidnsInstancesResult>("alicloud:dns/getAlidnsInstances:getAlidnsInstances", args ?? new GetAlidnsInstancesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -86,6 +124,46 @@ namespace Pulumi.AliCloud.Dns
         public string? UserClientIp { get; set; }
 
         public GetAlidnsInstancesArgs()
+        {
+        }
+    }
+
+    public sealed class GetAlidnsInstancesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The type of domain.
+        /// </summary>
+        [Input("domainType")]
+        public Input<string>? DomainType { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of instance IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// Language.
+        /// </summary>
+        [Input("lang")]
+        public Input<string>? Lang { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The IP address of the client.
+        /// </summary>
+        [Input("userClientIp")]
+        public Input<string>? UserClientIp { get; set; }
+
+        public GetAlidnsInstancesInvokeArgs()
         {
         }
     }

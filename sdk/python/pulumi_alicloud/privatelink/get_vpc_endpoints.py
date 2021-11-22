@@ -13,6 +13,7 @@ __all__ = [
     'GetVpcEndpointsResult',
     'AwaitableGetVpcEndpointsResult',
     'get_vpc_endpoints',
+    'get_vpc_endpoints_output',
 ]
 
 @pulumi.output_type
@@ -209,3 +210,45 @@ def get_vpc_endpoints(connection_status: Optional[str] = None,
         status=__ret__.status,
         vpc_endpoint_name=__ret__.vpc_endpoint_name,
         vpc_id=__ret__.vpc_id)
+
+
+@_utilities.lift_output_func(get_vpc_endpoints)
+def get_vpc_endpoints_output(connection_status: Optional[pulumi.Input[Optional[str]]] = None,
+                             enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                             ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                             service_name: Optional[pulumi.Input[Optional[str]]] = None,
+                             status: Optional[pulumi.Input[Optional[str]]] = None,
+                             vpc_endpoint_name: Optional[pulumi.Input[Optional[str]]] = None,
+                             vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcEndpointsResult]:
+    """
+    This data source provides the Privatelink Vpc Endpoints of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.109.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.privatelink.get_vpc_endpoints(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstPrivatelinkVpcEndpointId", example.endpoints[0].id)
+    ```
+
+
+    :param str connection_status: The status of Connection.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of Vpc Endpoint IDs.
+    :param str name_regex: A regex string to filter results by Vpc Endpoint name.
+    :param str service_name: The name of the terminal node service associated with the terminal node.
+    :param str status: The status of Vpc Endpoint.
+    :param str vpc_endpoint_name: The name of Vpc Endpoint.
+    :param str vpc_id: The private network to which the terminal node belongs.
+    """
+    ...

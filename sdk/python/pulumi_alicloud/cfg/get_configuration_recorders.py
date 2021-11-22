@@ -13,6 +13,7 @@ __all__ = [
     'GetConfigurationRecordersResult',
     'AwaitableGetConfigurationRecordersResult',
     'get_configuration_recorders',
+    'get_configuration_recorders_output',
 ]
 
 @pulumi.output_type
@@ -95,3 +96,26 @@ def get_configuration_recorders(output_file: Optional[str] = None,
         id=__ret__.id,
         output_file=__ret__.output_file,
         recorders=__ret__.recorders)
+
+
+@_utilities.lift_output_func(get_configuration_recorders)
+def get_configuration_recorders_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConfigurationRecordersResult]:
+    """
+    This data source provides the Config Configuration Recorders of the current Alibaba Cloud user.
+
+    > **NOTE:**  Available in 1.99.0+.
+
+    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-northeast-1`.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cfg.get_configuration_recorders()
+    pulumi.export("listOfResourceTypes", data["alicloud_config_configuration_recorders"]["this"]["recorders"][0]["resource_types"])
+    ```
+    """
+    ...

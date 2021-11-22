@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const sampleDs = alicloud_slb_load_balancer_sample_slb.id.apply(id => alicloud.slb.getBackendServers({
  *     loadBalancerId: id,
- * }, { async: true }));
+ * }));
  *
  * export const firstSlbBackendServerId = sampleDs.backendServers[0].id;
  * ```
@@ -45,12 +45,12 @@ export interface GetBackendServersArgs {
     /**
      * List of attached ECS instance IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * ID of the SLB with attachments.
      */
-    readonly loadBalancerId: string;
-    readonly outputFile?: string;
+    loadBalancerId: string;
+    outputFile?: string;
 }
 
 /**
@@ -65,4 +65,23 @@ export interface GetBackendServersResult {
     readonly ids: string[];
     readonly loadBalancerId: string;
     readonly outputFile?: string;
+}
+
+export function getBackendServersOutput(args: GetBackendServersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendServersResult> {
+    return pulumi.output(args).apply(a => getBackendServers(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getBackendServers.
+ */
+export interface GetBackendServersOutputArgs {
+    /**
+     * List of attached ECS instance IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ID of the SLB with attachments.
+     */
+    loadBalancerId: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

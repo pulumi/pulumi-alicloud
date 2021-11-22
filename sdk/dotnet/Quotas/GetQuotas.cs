@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Quotas
 {
@@ -35,7 +36,7 @@ namespace Pulumi.AliCloud.Quotas
         ///             ProductCode = "ecs",
         ///             NameRegex = "专有宿主机总数量上限",
         ///         }));
-        ///         this.FirstQuotasQuotaId = example.Apply(example =&gt; example.Quotas[0].Id);
+        ///         this.FirstQuotasQuotaId = example.Apply(example =&gt; example.Quotas?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstQuotasQuotaId")]
@@ -47,6 +48,43 @@ namespace Pulumi.AliCloud.Quotas
         /// </summary>
         public static Task<GetQuotasResult> InvokeAsync(GetQuotasArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetQuotasResult>("alicloud:quotas/getQuotas:getQuotas", args ?? new GetQuotasArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Quotas Quotas of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.115.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Quotas.GetQuotas.InvokeAsync(new AliCloud.Quotas.GetQuotasArgs
+        ///         {
+        ///             ProductCode = "ecs",
+        ///             NameRegex = "专有宿主机总数量上限",
+        ///         }));
+        ///         this.FirstQuotasQuotaId = example.Apply(example =&gt; example.Quotas?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstQuotasQuotaId")]
+        ///     public Output&lt;string&gt; FirstQuotasQuotaId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetQuotasResult> Invoke(GetQuotasInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetQuotasResult>("alicloud:quotas/getQuotas:getQuotas", args ?? new GetQuotasInvokeArgs(), options.WithVersion());
     }
 
 
@@ -116,6 +154,76 @@ namespace Pulumi.AliCloud.Quotas
         public string? SortOrder { get; set; }
 
         public GetQuotasArgs()
+        {
+        }
+    }
+
+    public sealed class GetQuotasInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("dimensions")]
+        private InputList<Inputs.GetQuotasDimensionInputArgs>? _dimensions;
+
+        /// <summary>
+        /// The dimensions.
+        /// </summary>
+        public InputList<Inputs.GetQuotasDimensionInputArgs> Dimensions
+        {
+            get => _dimensions ?? (_dimensions = new InputList<Inputs.GetQuotasDimensionInputArgs>());
+            set => _dimensions = value;
+        }
+
+        /// <summary>
+        /// The group code.
+        /// </summary>
+        [Input("groupCode")]
+        public Input<string>? GroupCode { get; set; }
+
+        /// <summary>
+        /// The key word.
+        /// </summary>
+        [Input("keyWord")]
+        public Input<string>? KeyWord { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Quota name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The product code.
+        /// </summary>
+        [Input("productCode", required: true)]
+        public Input<string> ProductCode { get; set; } = null!;
+
+        /// <summary>
+        /// The quota action code.
+        /// </summary>
+        [Input("quotaActionCode")]
+        public Input<string>? QuotaActionCode { get; set; }
+
+        /// <summary>
+        /// The category of quota. Valid Values: `FlowControl` and `CommonQuota`.
+        /// </summary>
+        [Input("quotaCategory")]
+        public Input<string>? QuotaCategory { get; set; }
+
+        /// <summary>
+        /// Cloud service ECS specification quota supports setting sorting fields. Valid Values: `TIME`, `TOTAL` and `RESERVED`.
+        /// </summary>
+        [Input("sortField")]
+        public Input<string>? SortField { get; set; }
+
+        /// <summary>
+        /// Ranking of cloud service ECS specification quota support. Valid Values: `Ascending` and `Descending`.
+        /// </summary>
+        [Input("sortOrder")]
+        public Input<string>? SortOrder { get; set; }
+
+        public GetQuotasInvokeArgs()
         {
         }
     }

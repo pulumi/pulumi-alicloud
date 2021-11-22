@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *         Created: "TF",
  *         For: "template Test",
  *     },
- * }, { async: true }));
+ * }));
  *
  * export const firstTemplateName = example.templates[0].templateName;
  * ```
@@ -63,56 +63,56 @@ export interface GetTemplatesArgs {
     /**
      * The category of template.
      */
-    readonly category?: string;
+    category?: string;
     /**
      * The creator of the template.
      */
-    readonly createdBy?: string;
+    createdBy?: string;
     /**
      * The template whose creation time is less than or equal to the specified time. The format is: YYYY-MM-DDThh:mm::ssZ.
      */
-    readonly createdDate?: string;
+    createdDate?: string;
     /**
      * Create a template whose time is greater than or equal to the specified time. The format is: YYYY-MM-DDThh:mm:ssZ.
      */
-    readonly createdDateAfter?: string;
+    createdDateAfter?: string;
     /**
      * Is it triggered successfully.
      */
-    readonly hasTrigger?: boolean;
+    hasTrigger?: boolean;
     /**
      * A list of OOS Template ids. Each element in the list is same as template_name.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter the results by the template_name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The sharing type of the template. Valid values: `Private`, `Public`.
      */
-    readonly shareType?: string;
+    shareType?: string;
     /**
      * Sort field. Valid values: `TotalExecutionCount`, `Popularity`, `TemplateName` and `CreatedDate`. Default to `TotalExecutionCount`.
      */
-    readonly sortField?: string;
+    sortField?: string;
     /**
      * Sort order. Valid values: `Ascending`, `Descending`. Default to `Descending`
      */
-    readonly sortOrder?: string;
+    sortOrder?: string;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
     /**
      * The format of the template. Valid values: `JSON`, `YAML`.
      */
-    readonly templateFormat?: string;
+    templateFormat?: string;
     /**
      * The type of OOS Template.
      */
-    readonly templateType?: string;
+    templateType?: string;
 }
 
 /**
@@ -148,4 +148,67 @@ export interface GetTemplatesResult {
      * A list of OOS Templates. Each element contains the following attributes:
      */
     readonly templates: outputs.oos.GetTemplatesTemplate[];
+}
+
+export function getTemplatesOutput(args?: GetTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplatesResult> {
+    return pulumi.output(args).apply(a => getTemplates(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTemplates.
+ */
+export interface GetTemplatesOutputArgs {
+    /**
+     * The category of template.
+     */
+    category?: pulumi.Input<string>;
+    /**
+     * The creator of the template.
+     */
+    createdBy?: pulumi.Input<string>;
+    /**
+     * The template whose creation time is less than or equal to the specified time. The format is: YYYY-MM-DDThh:mm::ssZ.
+     */
+    createdDate?: pulumi.Input<string>;
+    /**
+     * Create a template whose time is greater than or equal to the specified time. The format is: YYYY-MM-DDThh:mm:ssZ.
+     */
+    createdDateAfter?: pulumi.Input<string>;
+    /**
+     * Is it triggered successfully.
+     */
+    hasTrigger?: pulumi.Input<boolean>;
+    /**
+     * A list of OOS Template ids. Each element in the list is same as template_name.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter the results by the template_name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The sharing type of the template. Valid values: `Private`, `Public`.
+     */
+    shareType?: pulumi.Input<string>;
+    /**
+     * Sort field. Valid values: `TotalExecutionCount`, `Popularity`, `TemplateName` and `CreatedDate`. Default to `TotalExecutionCount`.
+     */
+    sortField?: pulumi.Input<string>;
+    /**
+     * Sort order. Valid values: `Ascending`, `Descending`. Default to `Descending`
+     */
+    sortOrder?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The format of the template. Valid values: `JSON`, `YAML`.
+     */
+    templateFormat?: pulumi.Input<string>;
+    /**
+     * The type of OOS Template.
+     */
+    templateType?: pulumi.Input<string>;
 }

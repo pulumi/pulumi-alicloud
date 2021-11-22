@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *         "k-aa": "v-aa",
  *         "k-bb": "v-bb",
  *     },
- * }, { async: true }));
+ * }));
  *
  * export const firstSecretId = kmsSecretsDs.secrets[0].id;
  * ```
@@ -56,28 +56,28 @@ export interface GetSecretsArgs {
     /**
      * Default to `false`. Set it to true can output more details.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * Whether to include the predetermined resource tag in the return value. Default to `false`.
      */
-    readonly fetchTags?: boolean;
+    fetchTags?: boolean;
     /**
      * Credential filter. It is composed of Key-Values ​​key-value pairs, the length is 0~1. When using a tag key to filter resources, the number of resources queried cannot exceed 4000.
      */
-    readonly filters?: string;
+    filters?: string;
     /**
      * A list of KMS Secret ids. The value is same as KMS secret_name.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter the results by the KMS secret_name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -109,4 +109,39 @@ export interface GetSecretsResult {
      * (Optional) A mapping of tags to assign to the resource.
      */
     readonly tags?: {[key: string]: any};
+}
+
+export function getSecretsOutput(args?: GetSecretsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretsResult> {
+    return pulumi.output(args).apply(a => getSecrets(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSecrets.
+ */
+export interface GetSecretsOutputArgs {
+    /**
+     * Default to `false`. Set it to true can output more details.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * Whether to include the predetermined resource tag in the return value. Default to `false`.
+     */
+    fetchTags?: pulumi.Input<boolean>;
+    /**
+     * Credential filter. It is composed of Key-Values ​​key-value pairs, the length is 0~1. When using a tag key to filter resources, the number of resources queried cannot exceed 4000.
+     */
+    filters?: pulumi.Input<string>;
+    /**
+     * A list of KMS Secret ids. The value is same as KMS secret_name.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter the results by the KMS secret_name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

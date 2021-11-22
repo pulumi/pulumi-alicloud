@@ -124,19 +124,19 @@ export interface LoginProfileState {
     /**
      * This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
      */
-    readonly mfaBindRequired?: pulumi.Input<boolean>;
+    mfaBindRequired?: pulumi.Input<boolean>;
     /**
      * Password of the RAM user.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
      */
-    readonly passwordResetRequired?: pulumi.Input<boolean>;
+    passwordResetRequired?: pulumi.Input<boolean>;
     /**
      * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
      */
-    readonly userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string>;
 }
 
 /**
@@ -146,17 +146,17 @@ export interface LoginProfileArgs {
     /**
      * This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
      */
-    readonly mfaBindRequired?: pulumi.Input<boolean>;
+    mfaBindRequired?: pulumi.Input<boolean>;
     /**
      * Password of the RAM user.
      */
-    readonly password: pulumi.Input<string>;
+    password: pulumi.Input<string>;
     /**
      * This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
      */
-    readonly passwordResetRequired?: pulumi.Input<boolean>;
+    passwordResetRequired?: pulumi.Input<boolean>;
     /**
      * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
      */
-    readonly userName: pulumi.Input<string>;
+    userName: pulumi.Input<string>;
 }

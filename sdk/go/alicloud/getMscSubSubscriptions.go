@@ -4,6 +4,9 @@
 package alicloud
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,4 +57,54 @@ type GetMscSubSubscriptionsResult struct {
 	Id            string                               `pulumi:"id"`
 	OutputFile    *string                              `pulumi:"outputFile"`
 	Subscriptions []GetMscSubSubscriptionsSubscription `pulumi:"subscriptions"`
+}
+
+func GetMscSubSubscriptionsOutput(ctx *pulumi.Context, args GetMscSubSubscriptionsOutputArgs, opts ...pulumi.InvokeOption) GetMscSubSubscriptionsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetMscSubSubscriptionsResult, error) {
+			args := v.(GetMscSubSubscriptionsArgs)
+			r, err := GetMscSubSubscriptions(ctx, &args, opts...)
+			return *r, err
+		}).(GetMscSubSubscriptionsResultOutput)
+}
+
+// A collection of arguments for invoking getMscSubSubscriptions.
+type GetMscSubSubscriptionsOutputArgs struct {
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetMscSubSubscriptionsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMscSubSubscriptionsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getMscSubSubscriptions.
+type GetMscSubSubscriptionsResultOutput struct{ *pulumi.OutputState }
+
+func (GetMscSubSubscriptionsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMscSubSubscriptionsResult)(nil)).Elem()
+}
+
+func (o GetMscSubSubscriptionsResultOutput) ToGetMscSubSubscriptionsResultOutput() GetMscSubSubscriptionsResultOutput {
+	return o
+}
+
+func (o GetMscSubSubscriptionsResultOutput) ToGetMscSubSubscriptionsResultOutputWithContext(ctx context.Context) GetMscSubSubscriptionsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetMscSubSubscriptionsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMscSubSubscriptionsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetMscSubSubscriptionsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMscSubSubscriptionsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMscSubSubscriptionsResultOutput) Subscriptions() GetMscSubSubscriptionsSubscriptionArrayOutput {
+	return o.ApplyT(func(v GetMscSubSubscriptionsResult) []GetMscSubSubscriptionsSubscription { return v.Subscriptions }).(GetMscSubSubscriptionsSubscriptionArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetMscSubSubscriptionsResultOutput{})
 }

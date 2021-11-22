@@ -4,6 +4,9 @@
 package ros
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,4 +76,82 @@ type GetStackGroupsResult struct {
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	Status     *string  `pulumi:"status"`
+}
+
+func GetStackGroupsOutput(ctx *pulumi.Context, args GetStackGroupsOutputArgs, opts ...pulumi.InvokeOption) GetStackGroupsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetStackGroupsResult, error) {
+			args := v.(GetStackGroupsArgs)
+			r, err := GetStackGroups(ctx, &args, opts...)
+			return *r, err
+		}).(GetStackGroupsResultOutput)
+}
+
+// A collection of arguments for invoking getStackGroups.
+type GetStackGroupsOutputArgs struct {
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of Stack Group IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Stack Group name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status of Stack Group.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetStackGroupsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStackGroupsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getStackGroups.
+type GetStackGroupsResultOutput struct{ *pulumi.OutputState }
+
+func (GetStackGroupsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStackGroupsResult)(nil)).Elem()
+}
+
+func (o GetStackGroupsResultOutput) ToGetStackGroupsResultOutput() GetStackGroupsResultOutput {
+	return o
+}
+
+func (o GetStackGroupsResultOutput) ToGetStackGroupsResultOutputWithContext(ctx context.Context) GetStackGroupsResultOutput {
+	return o
+}
+
+func (o GetStackGroupsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetStackGroupsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetStackGroupsResultOutput) Groups() GetStackGroupsGroupArrayOutput {
+	return o.ApplyT(func(v GetStackGroupsResult) []GetStackGroupsGroup { return v.Groups }).(GetStackGroupsGroupArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetStackGroupsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackGroupsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetStackGroupsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetStackGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetStackGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetStackGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetStackGroupsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetStackGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetStackGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetStackGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetStackGroupsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetStackGroupsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetStackGroupsResultOutput{})
 }

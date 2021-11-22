@@ -484,6 +484,10 @@ func (o GetEnterpriseUsersUserArrayOutput) Index(i pulumi.IntInput) GetEnterpris
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnterpriseInstancesInstanceInput)(nil)).Elem(), GetEnterpriseInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnterpriseInstancesInstanceArrayInput)(nil)).Elem(), GetEnterpriseInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnterpriseUsersUserInput)(nil)).Elem(), GetEnterpriseUsersUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnterpriseUsersUserArrayInput)(nil)).Elem(), GetEnterpriseUsersUserArray{})
 	pulumi.RegisterOutputType(GetEnterpriseInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetEnterpriseInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetEnterpriseUsersUserOutput{})

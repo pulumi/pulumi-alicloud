@@ -168,35 +168,35 @@ export interface VbrHealthCheckState {
     /**
      * The ID of the CEN instance.
      */
-    readonly cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string>;
     /**
      * Specifies the interval at which the health check sends continuous detection packets. Default value: 2. Value range: 2 to 3.
      */
-    readonly healthCheckInterval?: pulumi.Input<number>;
+    healthCheckInterval?: pulumi.Input<number>;
     /**
      * The source IP address of health checks.
      */
-    readonly healthCheckSourceIp?: pulumi.Input<string>;
+    healthCheckSourceIp?: pulumi.Input<string>;
     /**
      * The destination IP address of health checks.
      */
-    readonly healthCheckTargetIp?: pulumi.Input<string>;
+    healthCheckTargetIp?: pulumi.Input<string>;
     /**
      * Specifies the number of probe messages sent by the health check. Default value: 8. Value range: 3 to 8.
      */
-    readonly healthyThreshold?: pulumi.Input<number>;
+    healthyThreshold?: pulumi.Input<number>;
     /**
      * The ID of the VBR.
      */
-    readonly vbrInstanceId?: pulumi.Input<string>;
+    vbrInstanceId?: pulumi.Input<string>;
     /**
      * The ID of the account to which the VBR belongs.
      */
-    readonly vbrInstanceOwnerId?: pulumi.Input<number>;
+    vbrInstanceOwnerId?: pulumi.Input<number>;
     /**
      * The ID of the region to which the VBR belongs.
      */
-    readonly vbrInstanceRegionId?: pulumi.Input<string>;
+    vbrInstanceRegionId?: pulumi.Input<string>;
 }
 
 /**
@@ -206,33 +206,33 @@ export interface VbrHealthCheckArgs {
     /**
      * The ID of the CEN instance.
      */
-    readonly cenId: pulumi.Input<string>;
+    cenId: pulumi.Input<string>;
     /**
      * Specifies the interval at which the health check sends continuous detection packets. Default value: 2. Value range: 2 to 3.
      */
-    readonly healthCheckInterval?: pulumi.Input<number>;
+    healthCheckInterval?: pulumi.Input<number>;
     /**
      * The source IP address of health checks.
      */
-    readonly healthCheckSourceIp?: pulumi.Input<string>;
+    healthCheckSourceIp?: pulumi.Input<string>;
     /**
      * The destination IP address of health checks.
      */
-    readonly healthCheckTargetIp: pulumi.Input<string>;
+    healthCheckTargetIp: pulumi.Input<string>;
     /**
      * Specifies the number of probe messages sent by the health check. Default value: 8. Value range: 3 to 8.
      */
-    readonly healthyThreshold?: pulumi.Input<number>;
+    healthyThreshold?: pulumi.Input<number>;
     /**
      * The ID of the VBR.
      */
-    readonly vbrInstanceId: pulumi.Input<string>;
+    vbrInstanceId: pulumi.Input<string>;
     /**
      * The ID of the account to which the VBR belongs.
      */
-    readonly vbrInstanceOwnerId?: pulumi.Input<number>;
+    vbrInstanceOwnerId?: pulumi.Input<number>;
     /**
      * The ID of the region to which the VBR belongs.
      */
-    readonly vbrInstanceRegionId: pulumi.Input<string>;
+    vbrInstanceRegionId: pulumi.Input<string>;
 }

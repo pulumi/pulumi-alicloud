@@ -4,6 +4,9 @@
 package dns
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -84,4 +87,156 @@ type GetAlidnsRecordsResult struct {
 	TypeKeyWord  *string `pulumi:"typeKeyWord"`
 	ValueKeyWord *string `pulumi:"valueKeyWord"`
 	ValueRegex   *string `pulumi:"valueRegex"`
+}
+
+func GetAlidnsRecordsOutput(ctx *pulumi.Context, args GetAlidnsRecordsOutputArgs, opts ...pulumi.InvokeOption) GetAlidnsRecordsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAlidnsRecordsResult, error) {
+			args := v.(GetAlidnsRecordsArgs)
+			r, err := GetAlidnsRecords(ctx, &args, opts...)
+			return *r, err
+		}).(GetAlidnsRecordsResultOutput)
+}
+
+// A collection of arguments for invoking getAlidnsRecords.
+type GetAlidnsRecordsOutputArgs struct {
+	// Sorting direction. Valid values: `DESC`,`ASC`. Default to `AESC`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// The domain name associated to the records.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// Domain name group ID.
+	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
+	// A list of record IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Keywords.
+	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
+	// User language.
+	Lang pulumi.StringPtrInput `pulumi:"lang"`
+	// ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+	Line pulumi.StringPtrInput `pulumi:"line"`
+	// Sort by. Sort from newest to oldest according to the time added by resolution.
+	OrderBy    pulumi.StringPtrInput `pulumi:"orderBy"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
+	RrKeyWord pulumi.StringPtrInput `pulumi:"rrKeyWord"`
+	// Host record regex.
+	RrRegex pulumi.StringPtrInput `pulumi:"rrRegex"`
+	// Search mode, Valid values: `LIKE`, `EXACT`, `ADVANCED`, `LIKE` (fuzzy), `EXACT` (accurate) search supports KeyWord field, `ADVANCED` (advanced) mode supports other fields.
+	SearchMode pulumi.StringPtrInput `pulumi:"searchMode"`
+	// Record status. Valid values: `ENABLE` and `DISABLE`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Record type. Valid values: `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Analyze type keywords, search by full match, not case sensitive.
+	TypeKeyWord pulumi.StringPtrInput `pulumi:"typeKeyWord"`
+	// The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
+	ValueKeyWord pulumi.StringPtrInput `pulumi:"valueKeyWord"`
+	// Host record value regex.
+	ValueRegex pulumi.StringPtrInput `pulumi:"valueRegex"`
+}
+
+func (GetAlidnsRecordsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlidnsRecordsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAlidnsRecords.
+type GetAlidnsRecordsResultOutput struct{ *pulumi.OutputState }
+
+func (GetAlidnsRecordsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlidnsRecordsResult)(nil)).Elem()
+}
+
+func (o GetAlidnsRecordsResultOutput) ToGetAlidnsRecordsResultOutput() GetAlidnsRecordsResultOutput {
+	return o
+}
+
+func (o GetAlidnsRecordsResultOutput) ToGetAlidnsRecordsResultOutputWithContext(ctx context.Context) GetAlidnsRecordsResultOutput {
+	return o
+}
+
+func (o GetAlidnsRecordsResultOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Name of the domain record belongs to.
+func (o GetAlidnsRecordsResultOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsResult) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+func (o GetAlidnsRecordsResultOutput) GroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsResult) *int { return v.GroupId }).(pulumi.IntPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAlidnsRecordsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of record IDs.
+func (o GetAlidnsRecordsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAlidnsRecordsResultOutput) KeyWord() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsResult) *string { return v.KeyWord }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAlidnsRecordsResultOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsResult) *string { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
+// ISP line of the record.
+func (o GetAlidnsRecordsResultOutput) Line() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsResult) *string { return v.Line }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAlidnsRecordsResultOutput) OrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAlidnsRecordsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of records. Each element contains the following attributes:
+func (o GetAlidnsRecordsResultOutput) Records() GetAlidnsRecordsRecordArrayOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsResult) []GetAlidnsRecordsRecord { return v.Records }).(GetAlidnsRecordsRecordArrayOutput)
+}
+
+func (o GetAlidnsRecordsResultOutput) RrKeyWord() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsResult) *string { return v.RrKeyWord }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAlidnsRecordsResultOutput) RrRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsResult) *string { return v.RrRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAlidnsRecordsResultOutput) SearchMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsResult) *string { return v.SearchMode }).(pulumi.StringPtrOutput)
+}
+
+// Status of the record.
+func (o GetAlidnsRecordsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Type of the record.
+func (o GetAlidnsRecordsResultOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAlidnsRecordsResultOutput) TypeKeyWord() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsResult) *string { return v.TypeKeyWord }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAlidnsRecordsResultOutput) ValueKeyWord() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsResult) *string { return v.ValueKeyWord }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAlidnsRecordsResultOutput) ValueRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsResult) *string { return v.ValueRegex }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAlidnsRecordsResultOutput{})
 }

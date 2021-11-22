@@ -13,6 +13,7 @@ __all__ = [
     'GetInstancesResult',
     'AwaitableGetInstancesResult',
     'get_instances',
+    'get_instances_output',
 ]
 
 @pulumi.output_type
@@ -185,3 +186,42 @@ def get_instances(app_key: Optional[str] = None,
         query_str=__ret__.query_str,
         status=__ret__.status,
         status_list=__ret__.status_list)
+
+
+@_utilities.lift_output_func(get_instances)
+def get_instances_output(app_key: Optional[pulumi.Input[Optional[str]]] = None,
+                         enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                         engine_type: Optional[pulumi.Input[Optional[str]]] = None,
+                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         query_str: Optional[pulumi.Input[Optional[str]]] = None,
+                         status: Optional[pulumi.Input[Optional[str]]] = None,
+                         status_list: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+    """
+    This data source provides the Time Series Database (TSDB) Instances of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.112.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.tsdb.get_instances(ids=["example_value"])
+    pulumi.export("firstTsdbInstanceId", example.instances[0].id)
+    ```
+
+
+    :param str app_key: The app key.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param str engine_type: The engine type of instance. Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
+    :param Sequence[str] ids: A list of Instance IDs.
+    :param str query_str: The query str.
+    :param str status: Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+    :param str status_list: The status list.
+    """
+    ...

@@ -13,6 +13,7 @@ __all__ = [
     'GetLoadBalancersResult',
     'AwaitableGetLoadBalancersResult',
     'get_load_balancers',
+    'get_load_balancers_output',
 ]
 
 @pulumi.output_type
@@ -376,3 +377,50 @@ def get_load_balancers(address: Optional[str] = None,
         tags=__ret__.tags,
         vpc_id=__ret__.vpc_id,
         vswitch_id=__ret__.vswitch_id)
+
+
+@_utilities.lift_output_func(get_load_balancers)
+def get_load_balancers_output(address: Optional[pulumi.Input[Optional[str]]] = None,
+                              address_ip_version: Optional[pulumi.Input[Optional[str]]] = None,
+                              address_type: Optional[pulumi.Input[Optional[str]]] = None,
+                              enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                              ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                              internet_charge_type: Optional[pulumi.Input[Optional[str]]] = None,
+                              load_balancer_name: Optional[pulumi.Input[Optional[str]]] = None,
+                              master_zone_id: Optional[pulumi.Input[Optional[str]]] = None,
+                              name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                              network_type: Optional[pulumi.Input[Optional[str]]] = None,
+                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                              payment_type: Optional[pulumi.Input[Optional[str]]] = None,
+                              resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                              server_id: Optional[pulumi.Input[Optional[str]]] = None,
+                              server_intranet_address: Optional[pulumi.Input[Optional[str]]] = None,
+                              slave_zone_id: Optional[pulumi.Input[Optional[str]]] = None,
+                              status: Optional[pulumi.Input[Optional[str]]] = None,
+                              tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                              vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
+                              vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLoadBalancersResult]:
+    """
+    Use this data source to access information about an existing resource.
+
+    :param str address: Service address of the SLBs.
+    :param Sequence[str] ids: A list of SLBs IDs.
+    :param str name_regex: A regex string to filter results by SLB name.
+    :param str network_type: Network type of the SLBs. Valid values: `vpc` and `classic`.
+    :param str resource_group_id: The Id of resource group which SLB belongs.
+    :param str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
+    :param Mapping[str, Any] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+           ```python
+           import pulumi
+           import pulumi_alicloud as alicloud
+           
+           tagged_instances = alicloud.slb.get_load_balancers(tags={
+               "tagKey1": "tagValue1",
+               "tagKey2": "tagValue2",
+           })
+           ```
+    :param str vpc_id: ID of the VPC linked to the SLBs.
+    :param str vswitch_id: ID of the VSwitch linked to the SLBs.
+    """
+    ...

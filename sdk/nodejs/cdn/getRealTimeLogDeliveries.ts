@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const example = alicloud.cdn.getRealTimeLogDeliveries({
  *     domain: "example_value",
  * });
- * export const cdnRealTimeLogDelivery1 = example.then(example => example.deliveries[0].id);
+ * export const cdnRealTimeLogDelivery1 = example.then(example => example.deliveries?[0]?.id);
  * ```
  */
 export function getRealTimeLogDeliveries(args: GetRealTimeLogDeliveriesArgs, opts?: pulumi.InvokeOptions): Promise<GetRealTimeLogDeliveriesResult> {
@@ -46,12 +46,12 @@ export interface GetRealTimeLogDeliveriesArgs {
     /**
      * Real-Time Log Service Domain.
      */
-    readonly domain: string;
-    readonly outputFile?: string;
+    domain: string;
+    outputFile?: string;
     /**
      * -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -66,4 +66,23 @@ export interface GetRealTimeLogDeliveriesResult {
     readonly id: string;
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getRealTimeLogDeliveriesOutput(args: GetRealTimeLogDeliveriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRealTimeLogDeliveriesResult> {
+    return pulumi.output(args).apply(a => getRealTimeLogDeliveries(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRealTimeLogDeliveries.
+ */
+export interface GetRealTimeLogDeliveriesOutputArgs {
+    /**
+     * Real-Time Log Service Domain.
+     */
+    domain: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+     */
+    status?: pulumi.Input<string>;
 }

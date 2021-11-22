@@ -4,6 +4,9 @@
 package eci
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,4 +58,100 @@ type GetImageCachesResult struct {
 	SnapshotId *string `pulumi:"snapshotId"`
 	// The status of ECI Image Cache.
 	Status *string `pulumi:"status"`
+}
+
+func GetImageCachesOutput(ctx *pulumi.Context, args GetImageCachesOutputArgs, opts ...pulumi.InvokeOption) GetImageCachesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetImageCachesResult, error) {
+			args := v.(GetImageCachesArgs)
+			r, err := GetImageCaches(ctx, &args, opts...)
+			return *r, err
+		}).(GetImageCachesResultOutput)
+}
+
+// A collection of arguments for invoking getImageCaches.
+type GetImageCachesOutputArgs struct {
+	// A list ids of ECI Image Cache.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Find the mirror cache containing it according to the image name.
+	Image pulumi.StringPtrInput `pulumi:"image"`
+	// The name of ECI Image Cache.
+	ImageCacheName pulumi.StringPtrInput `pulumi:"imageCacheName"`
+	// A regex string to filter results by the image cache name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The id of snapshot.
+	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
+	// The status of ECI Image Cache.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetImageCachesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImageCachesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getImageCaches.
+type GetImageCachesResultOutput struct{ *pulumi.OutputState }
+
+func (GetImageCachesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImageCachesResult)(nil)).Elem()
+}
+
+func (o GetImageCachesResultOutput) ToGetImageCachesResultOutput() GetImageCachesResultOutput {
+	return o
+}
+
+func (o GetImageCachesResultOutput) ToGetImageCachesResultOutputWithContext(ctx context.Context) GetImageCachesResultOutput {
+	return o
+}
+
+// A list of caches. Each element contains the following attributes:
+func (o GetImageCachesResultOutput) Caches() GetImageCachesCachArrayOutput {
+	return o.ApplyT(func(v GetImageCachesResult) []GetImageCachesCach { return v.Caches }).(GetImageCachesCachArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetImageCachesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageCachesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list ids of ECI Image Cache.
+func (o GetImageCachesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetImageCachesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetImageCachesResultOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImageCachesResult) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// The name of the ECI Image Cache.
+func (o GetImageCachesResultOutput) ImageCacheName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImageCachesResult) *string { return v.ImageCacheName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetImageCachesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImageCachesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of ECI Image Cache names.
+func (o GetImageCachesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetImageCachesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetImageCachesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImageCachesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The id of snapshot.
+func (o GetImageCachesResultOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImageCachesResult) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
+}
+
+// The status of ECI Image Cache.
+func (o GetImageCachesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImageCachesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetImageCachesResultOutput{})
 }

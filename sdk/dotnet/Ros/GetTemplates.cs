@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ros
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Ros
         ///             },
         ///             NameRegex = "the_resource_name",
         ///         }));
-        ///         this.FirstRosTemplateId = example.Apply(example =&gt; example.Templates[0].Id);
+        ///         this.FirstRosTemplateId = example.Apply(example =&gt; example.Templates?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstRosTemplateId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Ros
         /// </summary>
         public static Task<GetTemplatesResult> InvokeAsync(GetTemplatesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTemplatesResult>("alicloud:ros/getTemplates:getTemplates", args ?? new GetTemplatesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Ros Templates of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.108.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Ros.GetTemplates.InvokeAsync(new AliCloud.Ros.GetTemplatesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_value",
+        ///             },
+        ///             NameRegex = "the_resource_name",
+        ///         }));
+        ///         this.FirstRosTemplateId = example.Apply(example =&gt; example.Templates?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstRosTemplateId")]
+        ///     public Output&lt;string&gt; FirstRosTemplateId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetTemplatesResult> Invoke(GetTemplatesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTemplatesResult>("alicloud:ros/getTemplates:getTemplates", args ?? new GetTemplatesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -107,6 +148,64 @@ namespace Pulumi.AliCloud.Ros
         public string? TemplateName { get; set; }
 
         public GetTemplatesArgs()
+        {
+        }
+    }
+
+    public sealed class GetTemplatesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Template IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Template name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Share Type.
+        /// </summary>
+        [Input("shareType")]
+        public Input<string>? ShareType { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// Tags.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+        /// </summary>
+        [Input("templateName")]
+        public Input<string>? TemplateName { get; set; }
+
+        public GetTemplatesInvokeArgs()
         {
         }
     }

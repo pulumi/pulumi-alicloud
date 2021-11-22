@@ -126,69 +126,69 @@ export class Snapshot extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Snapshot resources.
  */
 export interface SnapshotState {
-    readonly category?: pulumi.Input<string>;
+    category?: pulumi.Input<string>;
     /**
      * Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The source disk ID.
      */
-    readonly diskId?: pulumi.Input<string>;
-    readonly force?: pulumi.Input<boolean>;
-    readonly instantAccess?: pulumi.Input<boolean>;
-    readonly instantAccessRetentionDays?: pulumi.Input<number>;
+    diskId?: pulumi.Input<string>;
+    force?: pulumi.Input<boolean>;
+    instantAccess?: pulumi.Input<boolean>;
+    instantAccessRetentionDays?: pulumi.Input<number>;
     /**
      * The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
-    readonly retentionDays?: pulumi.Input<number>;
-    readonly snapshotName?: pulumi.Input<string>;
-    readonly status?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
+    retentionDays?: pulumi.Input<number>;
+    snapshotName?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
  * The set of arguments for constructing a Snapshot resource.
  */
 export interface SnapshotArgs {
-    readonly category?: pulumi.Input<string>;
+    category?: pulumi.Input<string>;
     /**
      * Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The source disk ID.
      */
-    readonly diskId: pulumi.Input<string>;
-    readonly force?: pulumi.Input<boolean>;
-    readonly instantAccess?: pulumi.Input<boolean>;
-    readonly instantAccessRetentionDays?: pulumi.Input<number>;
+    diskId: pulumi.Input<string>;
+    force?: pulumi.Input<boolean>;
+    instantAccess?: pulumi.Input<boolean>;
+    instantAccessRetentionDays?: pulumi.Input<number>;
     /**
      * The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
-    readonly retentionDays?: pulumi.Input<number>;
-    readonly snapshotName?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
+    retentionDays?: pulumi.Input<number>;
+    snapshotName?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     rwAccess: "RDWR",
  *     sourceCidrIp: "168.1.1.0/16",
  *     userAccess: "no_squash",
- * }, { async: true }));
+ * }));
  *
  * export const alicloudNasAccessRulesId = foo.rules[0].id;
  * ```
@@ -51,24 +51,24 @@ export interface GetAccessRulesArgs {
     /**
      * Filter results by a specific AccessGroupName.
      */
-    readonly accessGroupName: string;
+    accessGroupName: string;
     /**
      * A list of rule IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * Filter results by a specific RWAccess.
      */
-    readonly rwAccess?: string;
+    rwAccess?: string;
     /**
      * Filter results by a specific SourceCidrIp.
      */
-    readonly sourceCidrIp?: string;
+    sourceCidrIp?: string;
     /**
      * Filter results by a specific UserAccess.
      */
-    readonly userAccess?: string;
+    userAccess?: string;
 }
 
 /**
@@ -101,4 +101,35 @@ export interface GetAccessRulesResult {
      * UserAccess of the AccessRule
      */
     readonly userAccess?: string;
+}
+
+export function getAccessRulesOutput(args: GetAccessRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessRulesResult> {
+    return pulumi.output(args).apply(a => getAccessRules(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccessRules.
+ */
+export interface GetAccessRulesOutputArgs {
+    /**
+     * Filter results by a specific AccessGroupName.
+     */
+    accessGroupName: pulumi.Input<string>;
+    /**
+     * A list of rule IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Filter results by a specific RWAccess.
+     */
+    rwAccess?: pulumi.Input<string>;
+    /**
+     * Filter results by a specific SourceCidrIp.
+     */
+    sourceCidrIp?: pulumi.Input<string>;
+    /**
+     * Filter results by a specific UserAccess.
+     */
+    userAccess?: pulumi.Input<string>;
 }

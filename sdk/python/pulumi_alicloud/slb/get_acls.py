@@ -13,6 +13,7 @@ __all__ = [
     'GetAclsResult',
     'AwaitableGetAclsResult',
     'get_acls',
+    'get_acls_output',
 ]
 
 @pulumi.output_type
@@ -182,3 +183,47 @@ def get_acls(ids: Optional[Sequence[str]] = None,
         output_file=__ret__.output_file,
         resource_group_id=__ret__.resource_group_id,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_acls)
+def get_acls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                    resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                    tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAclsResult]:
+    """
+    This data source provides the acls in the region.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    sample_ds = alicloud.slb.get_acls()
+    pulumi.export("firstSlbAclId", sample_ds.acls[0].id)
+    ```
+    ## Entry Block
+
+    The entry mapping supports the following:
+
+    * `entry`   - An IP addresses or CIDR blocks.
+    * `comment` - the comment of the entry.
+
+    ## Listener Block
+
+    The Listener mapping supports the following:
+
+    * `load_balancer_id` - the id of load balancer instance, the listener belongs to.
+    * `frontend_port` - the listener port.
+    * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
+    * `acl_type`      - the type of acl (such as white/black).
+
+
+    :param Sequence[str] ids: A list of acls IDs to filter results.
+    :param str name_regex: A regex string to filter results by acl name.
+    :param str resource_group_id: The Id of resource group which acl belongs.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    """
+    ...

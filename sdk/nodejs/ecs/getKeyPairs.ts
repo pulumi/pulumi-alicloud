@@ -31,24 +31,24 @@ export interface GetKeyPairsArgs {
     /**
      * A finger print used to retrieve specified key pair.
      */
-    readonly fingerPrint?: string;
+    fingerPrint?: string;
     /**
      * A list of key pair IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to apply to the resulting key pairs.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The Id of resource group which the key pair belongs.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -85,4 +85,35 @@ export interface GetKeyPairsResult {
      * (Optional, Available in v1.66.0+) A mapping of tags to assign to the resource.
      */
     readonly tags?: {[key: string]: any};
+}
+
+export function getKeyPairsOutput(args?: GetKeyPairsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyPairsResult> {
+    return pulumi.output(args).apply(a => getKeyPairs(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKeyPairs.
+ */
+export interface GetKeyPairsOutputArgs {
+    /**
+     * A finger print used to retrieve specified key pair.
+     */
+    fingerPrint?: pulumi.Input<string>;
+    /**
+     * A list of key pair IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to apply to the resulting key pairs.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The Id of resource group which the key pair belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

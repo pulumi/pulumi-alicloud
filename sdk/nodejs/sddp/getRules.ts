@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * const defaultRules = defaultRule.id.apply(id => alicloud.sddp.getRules({
  *     ids: [id],
  * }));
- * export const sddpRuleId = defaultRules.id;
+ * export const sddpRuleId = defaultRules.apply(defaultRules => defaultRules.id);
  * ```
  */
 export function getRules(args?: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> {
@@ -64,49 +64,49 @@ export interface GetRulesArgs {
     /**
      * Sensitive Data Identification Rules for the Type of.
      */
-    readonly category?: number;
+    category?: number;
     /**
      * The Content Classification.
      */
-    readonly contentCategory?: string;
+    contentCategory?: string;
     /**
      * Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
      */
-    readonly customType?: number;
-    readonly enableDetails?: boolean;
+    customType?: number;
+    enableDetails?: boolean;
     /**
      * A list of Rule IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The name of rule.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * A regex string to filter results by Rule name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * Product ID.
      */
-    readonly productId?: string;
+    productId?: string;
     /**
      * Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
      */
-    readonly riskLevelId?: string;
+    riskLevelId?: string;
     /**
      * Rule Type.
      */
-    readonly ruleType?: number;
+    ruleType?: number;
     /**
      * Sensitive Data Identification Rules Detection State of.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The Level of Risk.
      */
-    readonly warnLevel?: number;
+    warnLevel?: number;
 }
 
 /**
@@ -132,4 +132,60 @@ export interface GetRulesResult {
     readonly rules: outputs.sddp.GetRulesRule[];
     readonly status?: string;
     readonly warnLevel?: number;
+}
+
+export function getRulesOutput(args?: GetRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesResult> {
+    return pulumi.output(args).apply(a => getRules(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRules.
+ */
+export interface GetRulesOutputArgs {
+    /**
+     * Sensitive Data Identification Rules for the Type of.
+     */
+    category?: pulumi.Input<number>;
+    /**
+     * The Content Classification.
+     */
+    contentCategory?: pulumi.Input<string>;
+    /**
+     * Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+     */
+    customType?: pulumi.Input<number>;
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Rule IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of rule.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Rule name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Product ID.
+     */
+    productId?: pulumi.Input<string>;
+    /**
+     * Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+     */
+    riskLevelId?: pulumi.Input<string>;
+    /**
+     * Rule Type.
+     */
+    ruleType?: pulumi.Input<number>;
+    /**
+     * Sensitive Data Identification Rules Detection State of.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The Level of Risk.
+     */
+    warnLevel?: pulumi.Input<number>;
 }

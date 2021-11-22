@@ -4,6 +4,9 @@
 package opensearch
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,4 +54,99 @@ type GetAppGroupsResult struct {
 	OutputFile      *string  `pulumi:"outputFile"`
 	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	Type            *string  `pulumi:"type"`
+}
+
+func GetAppGroupsOutput(ctx *pulumi.Context, args GetAppGroupsOutputArgs, opts ...pulumi.InvokeOption) GetAppGroupsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAppGroupsResult, error) {
+			args := v.(GetAppGroupsArgs)
+			r, err := GetAppGroups(ctx, &args, opts...)
+			return *r, err
+		}).(GetAppGroupsResultOutput)
+}
+
+// A collection of arguments for invoking getAppGroups.
+type GetAppGroupsOutputArgs struct {
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of App Group IDs. Its element value is same as App Group Name.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The Instance ID.
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	Name       pulumi.StringPtrInput `pulumi:"name"`
+	// A regex string to filter results by App Group name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The Resource Group ID.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	// Application type. Valid Values: `standard`, `enhanced`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetAppGroupsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppGroupsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAppGroups.
+type GetAppGroupsResultOutput struct{ *pulumi.OutputState }
+
+func (GetAppGroupsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppGroupsResult)(nil)).Elem()
+}
+
+func (o GetAppGroupsResultOutput) ToGetAppGroupsResultOutput() GetAppGroupsResultOutput {
+	return o
+}
+
+func (o GetAppGroupsResultOutput) ToGetAppGroupsResultOutputWithContext(ctx context.Context) GetAppGroupsResultOutput {
+	return o
+}
+
+func (o GetAppGroupsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppGroupsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetAppGroupsResultOutput) Groups() GetAppGroupsGroupArrayOutput {
+	return o.ApplyT(func(v GetAppGroupsResult) []GetAppGroupsGroup { return v.Groups }).(GetAppGroupsGroupArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAppGroupsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppGroupsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAppGroupsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppGroupsResultOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppGroupsResult) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppGroupsResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppGroupsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppGroupsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppGroupsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppGroupsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppGroupsResultOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppGroupsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAppGroupsResultOutput{})
 }

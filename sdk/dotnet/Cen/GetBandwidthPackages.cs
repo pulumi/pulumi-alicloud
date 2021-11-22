@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cen
 {
@@ -31,7 +32,7 @@ namespace Pulumi.AliCloud.Cen
         ///             InstanceId = "cen-id1",
         ///             NameRegex = "^foo",
         ///         }));
-        ///         this.FirstCenBandwidthPackageId = example.Apply(example =&gt; example.Packages[0].Id);
+        ///         this.FirstCenBandwidthPackageId = example.Apply(example =&gt; example.Packages?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstCenBandwidthPackageId")]
@@ -43,6 +44,39 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Task<GetBandwidthPackagesResult> InvokeAsync(GetBandwidthPackagesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBandwidthPackagesResult>("alicloud:cen/getBandwidthPackages:getBandwidthPackages", args ?? new GetBandwidthPackagesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides CEN Bandwidth Packages available to the user.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Cen.GetBandwidthPackages.InvokeAsync(new AliCloud.Cen.GetBandwidthPackagesArgs
+        ///         {
+        ///             InstanceId = "cen-id1",
+        ///             NameRegex = "^foo",
+        ///         }));
+        ///         this.FirstCenBandwidthPackageId = example.Apply(example =&gt; example.Packages?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstCenBandwidthPackageId")]
+        ///     public Output&lt;string&gt; FirstCenBandwidthPackageId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetBandwidthPackagesResult> Invoke(GetBandwidthPackagesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetBandwidthPackagesResult>("alicloud:cen/getBandwidthPackages:getBandwidthPackages", args ?? new GetBandwidthPackagesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -88,6 +122,52 @@ namespace Pulumi.AliCloud.Cen
         public string? Status { get; set; }
 
         public GetBandwidthPackagesArgs()
+        {
+        }
+    }
+
+    public sealed class GetBandwidthPackagesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// Limit search to a list of specific CEN Bandwidth Package IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// -Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
+        /// </summary>
+        [Input("includeReservationData")]
+        public Input<bool>? IncludeReservationData { get; set; }
+
+        /// <summary>
+        /// ID of a CEN instance.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// A regex string to filter CEN Bandwidth Package by name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetBandwidthPackagesInvokeArgs()
         {
         }
     }

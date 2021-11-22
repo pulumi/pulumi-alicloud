@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstEventBridgeEventSourceId = example.then(example => example.sources[0].id);
+ * export const firstEventBridgeEventSourceId = example.then(example => example.sources?[0]?.id);
  * ```
  */
 export function getEventSources(args?: GetEventSourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetEventSourcesResult> {
@@ -48,12 +48,12 @@ export interface GetEventSourcesArgs {
     /**
      * A list of Event Source IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Event Source name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -69,4 +69,23 @@ export interface GetEventSourcesResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly sources: outputs.eventbridge.GetEventSourcesSource[];
+}
+
+export function getEventSourcesOutput(args?: GetEventSourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEventSourcesResult> {
+    return pulumi.output(args).apply(a => getEventSources(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEventSources.
+ */
+export interface GetEventSourcesOutputArgs {
+    /**
+     * A list of Event Source IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Event Source name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const currentRegionDs = pulumi.output(alicloud.getRegions({
  *     current: true,
- * }, { async: true }));
+ * }));
  *
  * export const currentRegionId = currentRegionDs.regions[0].id;
  * ```
@@ -44,12 +44,12 @@ export interface GetRegionsArgs {
     /**
      * Set to true to match only the region configured in the provider.
      */
-    readonly current?: boolean;
+    current?: boolean;
     /**
      * The name of the region to select, such as `eu-central-1`.
      */
-    readonly name?: string;
-    readonly outputFile?: string;
+    name?: string;
+    outputFile?: string;
 }
 
 /**
@@ -71,4 +71,23 @@ export interface GetRegionsResult {
      * A list of regions. Each element contains the following attributes:
      */
     readonly regions: outputs.GetRegionsRegion[];
+}
+
+export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
+    return pulumi.output(args).apply(a => getRegions(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRegions.
+ */
+export interface GetRegionsOutputArgs {
+    /**
+     * Set to true to match only the region configured in the provider.
+     */
+    current?: pulumi.Input<boolean>;
+    /**
+     * The name of the region to select, such as `eu-central-1`.
+     */
+    name?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

@@ -4,6 +4,9 @@
 package vpc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,4 +31,58 @@ type GetEnhancedNatAvailableZonesResult struct {
 	Ids        []string                           `pulumi:"ids"`
 	OutputFile *string                            `pulumi:"outputFile"`
 	Zones      []GetEnhancedNatAvailableZonesZone `pulumi:"zones"`
+}
+
+func GetEnhancedNatAvailableZonesOutput(ctx *pulumi.Context, args GetEnhancedNatAvailableZonesOutputArgs, opts ...pulumi.InvokeOption) GetEnhancedNatAvailableZonesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetEnhancedNatAvailableZonesResult, error) {
+			args := v.(GetEnhancedNatAvailableZonesArgs)
+			r, err := GetEnhancedNatAvailableZones(ctx, &args, opts...)
+			return *r, err
+		}).(GetEnhancedNatAvailableZonesResultOutput)
+}
+
+// A collection of arguments for invoking getEnhancedNatAvailableZones.
+type GetEnhancedNatAvailableZonesOutputArgs struct {
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetEnhancedNatAvailableZonesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnhancedNatAvailableZonesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getEnhancedNatAvailableZones.
+type GetEnhancedNatAvailableZonesResultOutput struct{ *pulumi.OutputState }
+
+func (GetEnhancedNatAvailableZonesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnhancedNatAvailableZonesResult)(nil)).Elem()
+}
+
+func (o GetEnhancedNatAvailableZonesResultOutput) ToGetEnhancedNatAvailableZonesResultOutput() GetEnhancedNatAvailableZonesResultOutput {
+	return o
+}
+
+func (o GetEnhancedNatAvailableZonesResultOutput) ToGetEnhancedNatAvailableZonesResultOutputWithContext(ctx context.Context) GetEnhancedNatAvailableZonesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetEnhancedNatAvailableZonesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnhancedNatAvailableZonesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetEnhancedNatAvailableZonesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEnhancedNatAvailableZonesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEnhancedNatAvailableZonesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEnhancedNatAvailableZonesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEnhancedNatAvailableZonesResultOutput) Zones() GetEnhancedNatAvailableZonesZoneArrayOutput {
+	return o.ApplyT(func(v GetEnhancedNatAvailableZonesResult) []GetEnhancedNatAvailableZonesZone { return v.Zones }).(GetEnhancedNatAvailableZonesZoneArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetEnhancedNatAvailableZonesResultOutput{})
 }

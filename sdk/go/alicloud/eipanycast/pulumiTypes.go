@@ -351,6 +351,10 @@ func (o GetAnycastEipAddressesAddressAnycastEipBindInfoListArrayOutput) Index(i 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAnycastEipAddressesAddressInput)(nil)).Elem(), GetAnycastEipAddressesAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAnycastEipAddressesAddressArrayInput)(nil)).Elem(), GetAnycastEipAddressesAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAnycastEipAddressesAddressAnycastEipBindInfoListInput)(nil)).Elem(), GetAnycastEipAddressesAddressAnycastEipBindInfoListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAnycastEipAddressesAddressAnycastEipBindInfoListArrayInput)(nil)).Elem(), GetAnycastEipAddressesAddressAnycastEipBindInfoListArray{})
 	pulumi.RegisterOutputType(GetAnycastEipAddressesAddressOutput{})
 	pulumi.RegisterOutputType(GetAnycastEipAddressesAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetAnycastEipAddressesAddressAnycastEipBindInfoListOutput{})

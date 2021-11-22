@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Nas
 {
@@ -29,7 +30,7 @@ namespace Pulumi.AliCloud.Nas
         ///     public MyStack()
         ///     {
         ///         var @default = Output.Create(AliCloud.Nas.GetZones.InvokeAsync());
-        ///         this.AlicloudNasZonesId = @default.Apply(@default =&gt; @default.Zones[0].ZoneId);
+        ///         this.AlicloudNasZonesId = @default.Apply(@default =&gt; @default.Zones?[0]?.ZoneId);
         ///     }
         /// 
         ///     [Output("alicloudNasZonesId")]
@@ -41,6 +42,37 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:nas/getZones:getZones", args ?? new GetZonesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Provide  a data source to retrieve the type of zone used to create NAS file system.
+        /// 
+        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Nas.GetZones.InvokeAsync());
+        ///         this.AlicloudNasZonesId = @default.Apply(@default =&gt; @default.Zones?[0]?.ZoneId);
+        ///     }
+        /// 
+        ///     [Output("alicloudNasZonesId")]
+        ///     public Output&lt;string&gt; AlicloudNasZonesId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:nas/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -50,6 +82,16 @@ namespace Pulumi.AliCloud.Nas
         public string? OutputFile { get; set; }
 
         public GetZonesArgs()
+        {
+        }
+    }
+
+    public sealed class GetZonesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetZonesInvokeArgs()
         {
         }
     }

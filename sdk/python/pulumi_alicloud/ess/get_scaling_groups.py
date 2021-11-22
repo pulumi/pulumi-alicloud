@@ -13,6 +13,7 @@ __all__ = [
     'GetScalingGroupsResult',
     'AwaitableGetScalingGroupsResult',
     'get_scaling_groups',
+    'get_scaling_groups_output',
 ]
 
 @pulumi.output_type
@@ -139,3 +140,32 @@ def get_scaling_groups(ids: Optional[Sequence[str]] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_scaling_groups)
+def get_scaling_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                              name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetScalingGroupsResult]:
+    """
+    This data source provides available scaling group resources.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    scalinggroups_ds = alicloud.ess.get_scaling_groups(ids=[
+            "scaling_group_id1",
+            "scaling_group_id2",
+        ],
+        name_regex="scaling_group_name")
+    pulumi.export("firstScalingGroup", scalinggroups_ds.groups[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of scaling group IDs.
+    :param str name_regex: A regex string to filter resulting scaling groups by name.
+    """
+    ...

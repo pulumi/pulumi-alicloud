@@ -276,7 +276,7 @@ type FileSystemArrayInput interface {
 type FileSystemArray []FileSystemInput
 
 func (FileSystemArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*FileSystem)(nil))
+	return reflect.TypeOf((*[]*FileSystem)(nil)).Elem()
 }
 
 func (i FileSystemArray) ToFileSystemArrayOutput() FileSystemArrayOutput {
@@ -301,7 +301,7 @@ type FileSystemMapInput interface {
 type FileSystemMap map[string]FileSystemInput
 
 func (FileSystemMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*FileSystem)(nil))
+	return reflect.TypeOf((*map[string]*FileSystem)(nil)).Elem()
 }
 
 func (i FileSystemMap) ToFileSystemMapOutput() FileSystemMapOutput {
@@ -312,9 +312,7 @@ func (i FileSystemMap) ToFileSystemMapOutputWithContext(ctx context.Context) Fil
 	return pulumi.ToOutputWithContext(ctx, i).(FileSystemMapOutput)
 }
 
-type FileSystemOutput struct {
-	*pulumi.OutputState
-}
+type FileSystemOutput struct{ *pulumi.OutputState }
 
 func (FileSystemOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FileSystem)(nil))
@@ -333,14 +331,12 @@ func (o FileSystemOutput) ToFileSystemPtrOutput() FileSystemPtrOutput {
 }
 
 func (o FileSystemOutput) ToFileSystemPtrOutputWithContext(ctx context.Context) FileSystemPtrOutput {
-	return o.ApplyT(func(v FileSystem) *FileSystem {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileSystem) *FileSystem {
 		return &v
 	}).(FileSystemPtrOutput)
 }
 
-type FileSystemPtrOutput struct {
-	*pulumi.OutputState
-}
+type FileSystemPtrOutput struct{ *pulumi.OutputState }
 
 func (FileSystemPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**FileSystem)(nil))
@@ -352,6 +348,16 @@ func (o FileSystemPtrOutput) ToFileSystemPtrOutput() FileSystemPtrOutput {
 
 func (o FileSystemPtrOutput) ToFileSystemPtrOutputWithContext(ctx context.Context) FileSystemPtrOutput {
 	return o
+}
+
+func (o FileSystemPtrOutput) Elem() FileSystemOutput {
+	return o.ApplyT(func(v *FileSystem) FileSystem {
+		if v != nil {
+			return *v
+		}
+		var ret FileSystem
+		return ret
+	}).(FileSystemOutput)
 }
 
 type FileSystemArrayOutput struct{ *pulumi.OutputState }
@@ -395,6 +401,10 @@ func (o FileSystemMapOutput) MapIndex(k pulumi.StringInput) FileSystemOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FileSystemInput)(nil)).Elem(), &FileSystem{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileSystemPtrInput)(nil)).Elem(), &FileSystem{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileSystemArrayInput)(nil)).Elem(), FileSystemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileSystemMapInput)(nil)).Elem(), FileSystemMap{})
 	pulumi.RegisterOutputType(FileSystemOutput{})
 	pulumi.RegisterOutputType(FileSystemPtrOutput{})
 	pulumi.RegisterOutputType(FileSystemArrayOutput{})

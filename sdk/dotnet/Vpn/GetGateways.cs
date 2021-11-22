@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpn
 {
@@ -48,6 +49,44 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         public static Task<GetGatewaysResult> InvokeAsync(GetGatewaysArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGatewaysResult>("alicloud:vpn/getGateways:getGateways", args ?? new GetGatewaysArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var vpnGateways = Output.Create(AliCloud.Vpn.GetGateways.InvokeAsync(new AliCloud.Vpn.GetGatewaysArgs
+        ///         {
+        ///             BusinessStatus = "Normal",
+        ///             Ids = 
+        ///             {
+        ///                 "fake-vpn-id1",
+        ///                 "fake-vpn-id2",
+        ///             },
+        ///             NameRegex = "testAcc*",
+        ///             OutputFile = "/tmp/vpns",
+        ///             Status = "active",
+        ///             VpcId = "fake-vpc-id",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetGatewaysResult> Invoke(GetGatewaysInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGatewaysResult>("alicloud:vpn/getGateways:getGateways", args ?? new GetGatewaysInvokeArgs(), options.WithVersion());
     }
 
 
@@ -96,6 +135,55 @@ namespace Pulumi.AliCloud.Vpn
         public string? VpcId { get; set; }
 
         public GetGatewaysArgs()
+        {
+        }
+    }
+
+    public sealed class GetGatewaysInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Limit search to specific business status - valid value is "Normal", "FinancialLocked".
+        /// </summary>
+        [Input("businessStatus")]
+        public Input<string>? BusinessStatus { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// IDs of the VPN.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string of VPN name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        /// <summary>
+        /// Save the result to the file.
+        /// </summary>
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Use the VPC ID as the search key.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        public GetGatewaysInvokeArgs()
         {
         }
     }

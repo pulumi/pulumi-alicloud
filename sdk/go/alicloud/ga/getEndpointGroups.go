@@ -4,6 +4,9 @@
 package ga
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -80,4 +83,94 @@ type GetEndpointGroupsResult struct {
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	Status     *string  `pulumi:"status"`
+}
+
+func GetEndpointGroupsOutput(ctx *pulumi.Context, args GetEndpointGroupsOutputArgs, opts ...pulumi.InvokeOption) GetEndpointGroupsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetEndpointGroupsResult, error) {
+			args := v.(GetEndpointGroupsArgs)
+			r, err := GetEndpointGroups(ctx, &args, opts...)
+			return *r, err
+		}).(GetEndpointGroupsResultOutput)
+}
+
+// A collection of arguments for invoking getEndpointGroups.
+type GetEndpointGroupsOutputArgs struct {
+	// The ID of the Global Accelerator instance to which the endpoint group will be added.
+	AcceleratorId pulumi.StringInput `pulumi:"acceleratorId"`
+	// The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+	EndpointGroupType pulumi.StringPtrInput `pulumi:"endpointGroupType"`
+	// A list of Endpoint Group IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The ID of the listener that is associated with the endpoint group.
+	ListenerId pulumi.StringPtrInput `pulumi:"listenerId"`
+	// A regex string to filter results by Endpoint Group name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status of the endpoint group.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetEndpointGroupsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointGroupsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getEndpointGroups.
+type GetEndpointGroupsResultOutput struct{ *pulumi.OutputState }
+
+func (GetEndpointGroupsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointGroupsResult)(nil)).Elem()
+}
+
+func (o GetEndpointGroupsResultOutput) ToGetEndpointGroupsResultOutput() GetEndpointGroupsResultOutput {
+	return o
+}
+
+func (o GetEndpointGroupsResultOutput) ToGetEndpointGroupsResultOutputWithContext(ctx context.Context) GetEndpointGroupsResultOutput {
+	return o
+}
+
+func (o GetEndpointGroupsResultOutput) AcceleratorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointGroupsResult) string { return v.AcceleratorId }).(pulumi.StringOutput)
+}
+
+func (o GetEndpointGroupsResultOutput) EndpointGroupType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEndpointGroupsResult) *string { return v.EndpointGroupType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEndpointGroupsResultOutput) Groups() GetEndpointGroupsGroupArrayOutput {
+	return o.ApplyT(func(v GetEndpointGroupsResult) []GetEndpointGroupsGroup { return v.Groups }).(GetEndpointGroupsGroupArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetEndpointGroupsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointGroupsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetEndpointGroupsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEndpointGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEndpointGroupsResultOutput) ListenerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEndpointGroupsResult) *string { return v.ListenerId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEndpointGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEndpointGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEndpointGroupsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEndpointGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEndpointGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEndpointGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEndpointGroupsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEndpointGroupsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetEndpointGroupsResultOutput{})
 }

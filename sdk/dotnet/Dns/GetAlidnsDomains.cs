@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dns
 {
@@ -33,7 +34,7 @@ namespace Pulumi.AliCloud.Dns
         ///             DomainNameRegex = "^hegu",
         ///             OutputFile = "domains.txt",
         ///         }));
-        ///         this.FirstDomainId = domainsDs.Apply(domainsDs =&gt; domainsDs.Domains[0].DomainId);
+        ///         this.FirstDomainId = domainsDs.Apply(domainsDs =&gt; domainsDs.Domains?[0]?.DomainId);
         ///     }
         /// 
         ///     [Output("firstDomainId")]
@@ -45,6 +46,41 @@ namespace Pulumi.AliCloud.Dns
         /// </summary>
         public static Task<GetAlidnsDomainsResult> InvokeAsync(GetAlidnsDomainsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAlidnsDomainsResult>("alicloud:dns/getAlidnsDomains:getAlidnsDomains", args ?? new GetAlidnsDomainsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.95.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var domainsDs = Output.Create(AliCloud.Dns.GetAlidnsDomains.InvokeAsync(new AliCloud.Dns.GetAlidnsDomainsArgs
+        ///         {
+        ///             DomainNameRegex = "^hegu",
+        ///             OutputFile = "domains.txt",
+        ///         }));
+        ///         this.FirstDomainId = domainsDs.Apply(domainsDs =&gt; domainsDs.Domains?[0]?.DomainId);
+        ///     }
+        /// 
+        ///     [Output("firstDomainId")]
+        ///     public Output&lt;string&gt; FirstDomainId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAlidnsDomainsResult> Invoke(GetAlidnsDomainsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAlidnsDomainsResult>("alicloud:dns/getAlidnsDomains:getAlidnsDomains", args ?? new GetAlidnsDomainsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -147,6 +183,109 @@ namespace Pulumi.AliCloud.Dns
         public string? VersionCode { get; set; }
 
         public GetAlidnsDomainsArgs()
+        {
+        }
+    }
+
+    public sealed class GetAlidnsDomainsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Specifies whether the domain is from Alibaba Cloud or not.
+        /// </summary>
+        [Input("aliDomain")]
+        public Input<bool>? AliDomain { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by the domain name.
+        /// </summary>
+        [Input("domainNameRegex")]
+        public Input<string>? DomainNameRegex { get; set; }
+
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        /// <summary>
+        /// Domain group ID, if not filled, the default is all groups.
+        /// </summary>
+        [Input("groupId")]
+        public Input<string>? GroupId { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by the group name.
+        /// </summary>
+        [Input("groupNameRegex")]
+        public Input<string>? GroupNameRegex { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of domain IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// Cloud analysis product ID.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
+        /// </summary>
+        [Input("keyWord")]
+        public Input<string>? KeyWord { get; set; }
+
+        /// <summary>
+        /// User language.
+        /// </summary>
+        [Input("lang")]
+        public Input<string>? Lang { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The Id of resource group which the dns belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Search mode, `LIKE` fuzzy search, `EXACT` exact search.
+        /// </summary>
+        [Input("searchMode")]
+        public Input<string>? SearchMode { get; set; }
+
+        /// <summary>
+        /// Whether to query the domain name star.
+        /// </summary>
+        [Input("starmark")]
+        public Input<bool>? Starmark { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Cloud analysis version code.
+        /// </summary>
+        [Input("versionCode")]
+        public Input<string>? VersionCode { get; set; }
+
+        public GetAlidnsDomainsInvokeArgs()
         {
         }
     }

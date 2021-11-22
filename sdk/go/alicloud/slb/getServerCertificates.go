@@ -4,6 +4,9 @@
 package slb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,4 +71,87 @@ type GetServerCertificatesResult struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// (Available in v1.66.0+) A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
+}
+
+func GetServerCertificatesOutput(ctx *pulumi.Context, args GetServerCertificatesOutputArgs, opts ...pulumi.InvokeOption) GetServerCertificatesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetServerCertificatesResult, error) {
+			args := v.(GetServerCertificatesArgs)
+			r, err := GetServerCertificates(ctx, &args, opts...)
+			return *r, err
+		}).(GetServerCertificatesResultOutput)
+}
+
+// A collection of arguments for invoking getServerCertificates.
+type GetServerCertificatesOutputArgs struct {
+	// A list of server certificates IDs to filter results.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by server certificate name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The Id of resource group which the slb server certificates belongs.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+}
+
+func (GetServerCertificatesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerCertificatesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getServerCertificates.
+type GetServerCertificatesResultOutput struct{ *pulumi.OutputState }
+
+func (GetServerCertificatesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerCertificatesResult)(nil)).Elem()
+}
+
+func (o GetServerCertificatesResultOutput) ToGetServerCertificatesResultOutput() GetServerCertificatesResultOutput {
+	return o
+}
+
+func (o GetServerCertificatesResultOutput) ToGetServerCertificatesResultOutputWithContext(ctx context.Context) GetServerCertificatesResultOutput {
+	return o
+}
+
+// A list of SLB server certificates. Each element contains the following attributes:
+func (o GetServerCertificatesResultOutput) Certificates() GetServerCertificatesCertificateArrayOutput {
+	return o.ApplyT(func(v GetServerCertificatesResult) []GetServerCertificatesCertificate { return v.Certificates }).(GetServerCertificatesCertificateArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetServerCertificatesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerCertificatesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of SLB server certificates IDs.
+func (o GetServerCertificatesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServerCertificatesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServerCertificatesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServerCertificatesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of SLB server certificates names.
+func (o GetServerCertificatesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServerCertificatesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServerCertificatesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServerCertificatesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The Id of resource group which the slb server certificates belongs.
+func (o GetServerCertificatesResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServerCertificatesResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// (Available in v1.66.0+) A mapping of tags to assign to the resource.
+func (o GetServerCertificatesResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetServerCertificatesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetServerCertificatesResultOutput{})
 }

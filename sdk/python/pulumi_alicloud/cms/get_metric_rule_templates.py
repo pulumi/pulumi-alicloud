@@ -13,6 +13,7 @@ __all__ = [
     'GetMetricRuleTemplatesResult',
     'AwaitableGetMetricRuleTemplatesResult',
     'get_metric_rule_templates',
+    'get_metric_rule_templates_output',
 ]
 
 @pulumi.output_type
@@ -188,3 +189,46 @@ def get_metric_rule_templates(enable_details: Optional[bool] = None,
         output_file=__ret__.output_file,
         template_id=__ret__.template_id,
         templates=__ret__.templates)
+
+
+@_utilities.lift_output_func(get_metric_rule_templates)
+def get_metric_rule_templates_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                                     ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                     keyword: Optional[pulumi.Input[Optional[str]]] = None,
+                                     metric_rule_template_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                     template_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetricRuleTemplatesResult]:
+    """
+    This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.134.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cms.get_metric_rule_templates(ids=["example_value"])
+    pulumi.export("cmsMetricRuleTemplateId1", ids.templates[0].id)
+    name_regex = alicloud.cms.get_metric_rule_templates(name_regex="^my-MetricRuleTemplate")
+    pulumi.export("cmsMetricRuleTemplateId2", name_regex.templates[0].id)
+    keyword = alicloud.cms.get_metric_rule_templates(keyword="^my-MetricRuleTemplate")
+    pulumi.export("cmsMetricRuleTemplateId3", name_regex.templates[0].id)
+    template_id = alicloud.cms.get_metric_rule_templates(template_id="example_value")
+    pulumi.export("cmsMetricRuleTemplateId4", name_regex.templates[0].id)
+    ```
+
+
+    :param bool enable_details: Valid values: `true` or `false`. Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of Metric Rule Template IDs.
+    :param str keyword: The name of the alert template. You can perform fuzzy search based on the template name.
+    :param str metric_rule_template_name: The name of the alert template.
+    :param str name_regex: A regex string to filter results by Metric Rule Template name.
+    :param str template_id: The ID of the alert template.
+    """
+    ...

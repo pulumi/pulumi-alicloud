@@ -186,7 +186,7 @@ type IndustrialPidOrganizationArrayInput interface {
 type IndustrialPidOrganizationArray []IndustrialPidOrganizationInput
 
 func (IndustrialPidOrganizationArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*IndustrialPidOrganization)(nil))
+	return reflect.TypeOf((*[]*IndustrialPidOrganization)(nil)).Elem()
 }
 
 func (i IndustrialPidOrganizationArray) ToIndustrialPidOrganizationArrayOutput() IndustrialPidOrganizationArrayOutput {
@@ -211,7 +211,7 @@ type IndustrialPidOrganizationMapInput interface {
 type IndustrialPidOrganizationMap map[string]IndustrialPidOrganizationInput
 
 func (IndustrialPidOrganizationMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*IndustrialPidOrganization)(nil))
+	return reflect.TypeOf((*map[string]*IndustrialPidOrganization)(nil)).Elem()
 }
 
 func (i IndustrialPidOrganizationMap) ToIndustrialPidOrganizationMapOutput() IndustrialPidOrganizationMapOutput {
@@ -222,9 +222,7 @@ func (i IndustrialPidOrganizationMap) ToIndustrialPidOrganizationMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(IndustrialPidOrganizationMapOutput)
 }
 
-type IndustrialPidOrganizationOutput struct {
-	*pulumi.OutputState
-}
+type IndustrialPidOrganizationOutput struct{ *pulumi.OutputState }
 
 func (IndustrialPidOrganizationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IndustrialPidOrganization)(nil))
@@ -243,14 +241,12 @@ func (o IndustrialPidOrganizationOutput) ToIndustrialPidOrganizationPtrOutput() 
 }
 
 func (o IndustrialPidOrganizationOutput) ToIndustrialPidOrganizationPtrOutputWithContext(ctx context.Context) IndustrialPidOrganizationPtrOutput {
-	return o.ApplyT(func(v IndustrialPidOrganization) *IndustrialPidOrganization {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IndustrialPidOrganization) *IndustrialPidOrganization {
 		return &v
 	}).(IndustrialPidOrganizationPtrOutput)
 }
 
-type IndustrialPidOrganizationPtrOutput struct {
-	*pulumi.OutputState
-}
+type IndustrialPidOrganizationPtrOutput struct{ *pulumi.OutputState }
 
 func (IndustrialPidOrganizationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**IndustrialPidOrganization)(nil))
@@ -262,6 +258,16 @@ func (o IndustrialPidOrganizationPtrOutput) ToIndustrialPidOrganizationPtrOutput
 
 func (o IndustrialPidOrganizationPtrOutput) ToIndustrialPidOrganizationPtrOutputWithContext(ctx context.Context) IndustrialPidOrganizationPtrOutput {
 	return o
+}
+
+func (o IndustrialPidOrganizationPtrOutput) Elem() IndustrialPidOrganizationOutput {
+	return o.ApplyT(func(v *IndustrialPidOrganization) IndustrialPidOrganization {
+		if v != nil {
+			return *v
+		}
+		var ret IndustrialPidOrganization
+		return ret
+	}).(IndustrialPidOrganizationOutput)
 }
 
 type IndustrialPidOrganizationArrayOutput struct{ *pulumi.OutputState }
@@ -305,6 +311,10 @@ func (o IndustrialPidOrganizationMapOutput) MapIndex(k pulumi.StringInput) Indus
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IndustrialPidOrganizationInput)(nil)).Elem(), &IndustrialPidOrganization{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndustrialPidOrganizationPtrInput)(nil)).Elem(), &IndustrialPidOrganization{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndustrialPidOrganizationArrayInput)(nil)).Elem(), IndustrialPidOrganizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndustrialPidOrganizationMapInput)(nil)).Elem(), IndustrialPidOrganizationMap{})
 	pulumi.RegisterOutputType(IndustrialPidOrganizationOutput{})
 	pulumi.RegisterOutputType(IndustrialPidOrganizationPtrOutput{})
 	pulumi.RegisterOutputType(IndustrialPidOrganizationArrayOutput{})

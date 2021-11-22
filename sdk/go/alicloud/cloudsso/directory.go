@@ -206,7 +206,7 @@ type DirectoryArrayInput interface {
 type DirectoryArray []DirectoryInput
 
 func (DirectoryArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Directory)(nil))
+	return reflect.TypeOf((*[]*Directory)(nil)).Elem()
 }
 
 func (i DirectoryArray) ToDirectoryArrayOutput() DirectoryArrayOutput {
@@ -231,7 +231,7 @@ type DirectoryMapInput interface {
 type DirectoryMap map[string]DirectoryInput
 
 func (DirectoryMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Directory)(nil))
+	return reflect.TypeOf((*map[string]*Directory)(nil)).Elem()
 }
 
 func (i DirectoryMap) ToDirectoryMapOutput() DirectoryMapOutput {
@@ -242,9 +242,7 @@ func (i DirectoryMap) ToDirectoryMapOutputWithContext(ctx context.Context) Direc
 	return pulumi.ToOutputWithContext(ctx, i).(DirectoryMapOutput)
 }
 
-type DirectoryOutput struct {
-	*pulumi.OutputState
-}
+type DirectoryOutput struct{ *pulumi.OutputState }
 
 func (DirectoryOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Directory)(nil))
@@ -263,14 +261,12 @@ func (o DirectoryOutput) ToDirectoryPtrOutput() DirectoryPtrOutput {
 }
 
 func (o DirectoryOutput) ToDirectoryPtrOutputWithContext(ctx context.Context) DirectoryPtrOutput {
-	return o.ApplyT(func(v Directory) *Directory {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Directory) *Directory {
 		return &v
 	}).(DirectoryPtrOutput)
 }
 
-type DirectoryPtrOutput struct {
-	*pulumi.OutputState
-}
+type DirectoryPtrOutput struct{ *pulumi.OutputState }
 
 func (DirectoryPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Directory)(nil))
@@ -282,6 +278,16 @@ func (o DirectoryPtrOutput) ToDirectoryPtrOutput() DirectoryPtrOutput {
 
 func (o DirectoryPtrOutput) ToDirectoryPtrOutputWithContext(ctx context.Context) DirectoryPtrOutput {
 	return o
+}
+
+func (o DirectoryPtrOutput) Elem() DirectoryOutput {
+	return o.ApplyT(func(v *Directory) Directory {
+		if v != nil {
+			return *v
+		}
+		var ret Directory
+		return ret
+	}).(DirectoryOutput)
 }
 
 type DirectoryArrayOutput struct{ *pulumi.OutputState }
@@ -325,6 +331,10 @@ func (o DirectoryMapOutput) MapIndex(k pulumi.StringInput) DirectoryOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryInput)(nil)).Elem(), &Directory{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryPtrInput)(nil)).Elem(), &Directory{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryArrayInput)(nil)).Elem(), DirectoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryMapInput)(nil)).Elem(), DirectoryMap{})
 	pulumi.RegisterOutputType(DirectoryOutput{})
 	pulumi.RegisterOutputType(DirectoryPtrOutput{})
 	pulumi.RegisterOutputType(DirectoryArrayOutput{})

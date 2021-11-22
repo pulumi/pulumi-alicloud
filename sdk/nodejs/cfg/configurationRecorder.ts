@@ -123,23 +123,23 @@ export interface ConfigurationRecorderState {
     /**
      * - Whether to use the enterprise version configuration audit. Valid values: `true` and `fales`. Default value `false`.
      */
-    readonly enterpriseEdition?: pulumi.Input<boolean>;
+    enterpriseEdition?: pulumi.Input<boolean>;
     /**
      * Status of resource monitoring. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
      */
-    readonly organizationEnableStatus?: pulumi.Input<string>;
+    organizationEnableStatus?: pulumi.Input<string>;
     /**
      * The ID of the Enterprise management account.
      */
-    readonly organizationMasterId?: pulumi.Input<number>;
+    organizationMasterId?: pulumi.Input<number>;
     /**
      * A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
      */
-    readonly resourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -149,9 +149,9 @@ export interface ConfigurationRecorderArgs {
     /**
      * - Whether to use the enterprise version configuration audit. Valid values: `true` and `fales`. Default value `false`.
      */
-    readonly enterpriseEdition?: pulumi.Input<boolean>;
+    enterpriseEdition?: pulumi.Input<boolean>;
     /**
      * A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
      */
-    readonly resourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
 }

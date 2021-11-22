@@ -13,6 +13,7 @@ __all__ = [
     'GetInstanceAttachmentsResult',
     'AwaitableGetInstanceAttachmentsResult',
     'get_instance_attachments',
+    'get_instance_attachments_output',
 ]
 
 @pulumi.output_type
@@ -150,3 +151,30 @@ def get_instance_attachments(instance_name: Optional[str] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         vpc_ids=__ret__.vpc_ids)
+
+
+@_utilities.lift_output_func(get_instance_attachments)
+def get_instance_attachments_output(instance_name: Optional[pulumi.Input[str]] = None,
+                                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceAttachmentsResult]:
+    """
+    This data source provides the ots instance attachments of the current Alibaba Cloud user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    attachments_ds = alicloud.ots.get_instance_attachments(instance_name="sample-instance",
+        name_regex="testvpc",
+        output_file="attachments.txt")
+    pulumi.export("firstOtsAttachmentId", attachments_ds.attachments[0].id)
+    ```
+
+
+    :param str instance_name: The name of OTS instance.
+    :param str name_regex: A regex string to filter results by vpc name.
+    """
+    ...

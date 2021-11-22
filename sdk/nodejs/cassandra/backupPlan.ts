@@ -123,27 +123,27 @@ export interface BackupPlanState {
     /**
      * Specifies whether to activate the backup plan. Valid values: `True`, `False`. Default value: `True`.
      */
-    readonly active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean>;
     /**
      * The backup cycle. Valid values: `Friday`, `Monday`, `Saturday`, `Sunday`, `Thursday`, `Tuesday`, `Wednesday`.
      */
-    readonly backupPeriod?: pulumi.Input<string>;
+    backupPeriod?: pulumi.Input<string>;
     /**
      * The start time of the backup task each day. The time is displayed in UTC and denoted by Z.
      */
-    readonly backupTime?: pulumi.Input<string>;
+    backupTime?: pulumi.Input<string>;
     /**
      * The ID of the cluster for the backup.
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * The ID of the data center for the backup in the cluster.
      */
-    readonly dataCenterId?: pulumi.Input<string>;
+    dataCenterId?: pulumi.Input<string>;
     /**
      * The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days. Default value: `30`.
      */
-    readonly retentionPeriod?: pulumi.Input<number>;
+    retentionPeriod?: pulumi.Input<number>;
 }
 
 /**
@@ -153,25 +153,25 @@ export interface BackupPlanArgs {
     /**
      * Specifies whether to activate the backup plan. Valid values: `True`, `False`. Default value: `True`.
      */
-    readonly active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean>;
     /**
      * The backup cycle. Valid values: `Friday`, `Monday`, `Saturday`, `Sunday`, `Thursday`, `Tuesday`, `Wednesday`.
      */
-    readonly backupPeriod?: pulumi.Input<string>;
+    backupPeriod?: pulumi.Input<string>;
     /**
      * The start time of the backup task each day. The time is displayed in UTC and denoted by Z.
      */
-    readonly backupTime: pulumi.Input<string>;
+    backupTime: pulumi.Input<string>;
     /**
      * The ID of the cluster for the backup.
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * The ID of the data center for the backup in the cluster.
      */
-    readonly dataCenterId: pulumi.Input<string>;
+    dataCenterId: pulumi.Input<string>;
     /**
      * The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days. Default value: `30`.
      */
-    readonly retentionPeriod?: pulumi.Input<number>;
+    retentionPeriod?: pulumi.Input<number>;
 }

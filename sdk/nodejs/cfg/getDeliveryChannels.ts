@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["cdc-49a2ad756057********"],
  *     nameRegex: "tftest",
  * });
- * export const firstConfigDeliveryChannelId = example.then(example => example.channels[0].id);
+ * export const firstConfigDeliveryChannelId = example.then(example => example.channels?[0]?.id);
  * ```
  */
 export function getDeliveryChannels(args?: GetDeliveryChannelsArgs, opts?: pulumi.InvokeOptions): Promise<GetDeliveryChannelsResult> {
@@ -49,16 +49,16 @@ export interface GetDeliveryChannelsArgs {
     /**
      * A list of Config Delivery Channel IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by delivery channel name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of the config delivery channel. Valid values `0`: Disable delivery channel, `1`: Enable delivery channel.
      */
-    readonly status?: number;
+    status?: number;
 }
 
 /**
@@ -87,4 +87,27 @@ export interface GetDeliveryChannelsResult {
      * The status of the delivery method.
      */
     readonly status?: number;
+}
+
+export function getDeliveryChannelsOutput(args?: GetDeliveryChannelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeliveryChannelsResult> {
+    return pulumi.output(args).apply(a => getDeliveryChannels(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDeliveryChannels.
+ */
+export interface GetDeliveryChannelsOutputArgs {
+    /**
+     * A list of Config Delivery Channel IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by delivery channel name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the config delivery channel. Valid values `0`: Disable delivery channel, `1`: Enable delivery channel.
+     */
+    status?: pulumi.Input<number>;
 }

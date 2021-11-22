@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.FC
 {
@@ -44,6 +45,40 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         public static Task<GetCustomDomainsResult> InvokeAsync(GetCustomDomainsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCustomDomainsResult>("alicloud:fc/getCustomDomains:getCustomDomains", args ?? new GetCustomDomainsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Function Compute custom domains of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in 1.98.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var fcDomains = Output.Create(AliCloud.FC.GetCustomDomains.InvokeAsync(new AliCloud.FC.GetCustomDomainsArgs
+        ///         {
+        ///             NameRegex = "sample_fc_custom_domain",
+        ///         }));
+        ///         this.FirstFcCustomDomainName = data.Alicloud_fc_custom_domains.Fc_domains_ds.Domains[0].Domain_name;
+        ///     }
+        /// 
+        ///     [Output("firstFcCustomDomainName")]
+        ///     public Output&lt;string&gt; FirstFcCustomDomainName { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetCustomDomainsResult> Invoke(GetCustomDomainsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCustomDomainsResult>("alicloud:fc/getCustomDomains:getCustomDomains", args ?? new GetCustomDomainsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -71,6 +106,34 @@ namespace Pulumi.AliCloud.FC
         public string? OutputFile { get; set; }
 
         public GetCustomDomainsArgs()
+        {
+        }
+    }
+
+    public sealed class GetCustomDomainsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of functions ids.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Function Compute custom domain name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetCustomDomainsInvokeArgs()
         {
         }
     }

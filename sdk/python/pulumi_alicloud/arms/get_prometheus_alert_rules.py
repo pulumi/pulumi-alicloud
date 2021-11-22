@@ -13,6 +13,7 @@ __all__ = [
     'GetPrometheusAlertRulesResult',
     'AwaitableGetPrometheusAlertRulesResult',
     'get_prometheus_alert_rules',
+    'get_prometheus_alert_rules_output',
 ]
 
 @pulumi.output_type
@@ -190,3 +191,48 @@ def get_prometheus_alert_rules(cluster_id: Optional[str] = None,
         rules=__ret__.rules,
         status=__ret__.status,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_prometheus_alert_rules)
+def get_prometheus_alert_rules_output(cluster_id: Optional[pulumi.Input[str]] = None,
+                                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                      match_expressions: Optional[pulumi.Input[Optional[str]]] = None,
+                                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                      status: Optional[pulumi.Input[Optional[int]]] = None,
+                                      type: Optional[pulumi.Input[Optional[str]]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrometheusAlertRulesResult]:
+    """
+    This data source provides the Arms Prometheus Alert Rules of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.136.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.arms.get_prometheus_alert_rules(cluster_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("armsPrometheusAlertRuleId1", ids.rules[0].id)
+    name_regex = alicloud.arms.get_prometheus_alert_rules(cluster_id="example_value",
+        name_regex="^my-PrometheusAlertRule")
+    pulumi.export("armsPrometheusAlertRuleId2", name_regex.rules[0].id)
+    ```
+
+
+    :param str cluster_id: The ID of the cluster.
+    :param Sequence[str] ids: A list of Prometheus Alert Rule IDs.
+    :param str name_regex: A regex string to filter results by Prometheus Alert Rule name.
+    :param int status: The status of the resource. Valid values: `0`, `1`.
+           * `1`: open.
+           * `0`: off.
+    :param str type: The type of the alert rule.
+    """
+    ...

@@ -4,6 +4,9 @@
 package kms
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,4 +71,73 @@ type GetAliasesResult struct {
 	// A list of KMS alias name.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetAliasesOutput(ctx *pulumi.Context, args GetAliasesOutputArgs, opts ...pulumi.InvokeOption) GetAliasesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAliasesResult, error) {
+			args := v.(GetAliasesArgs)
+			r, err := GetAliases(ctx, &args, opts...)
+			return *r, err
+		}).(GetAliasesResultOutput)
+}
+
+// A collection of arguments for invoking getAliases.
+type GetAliasesOutputArgs struct {
+	// A list of KMS aliases IDs. The value is same as KMS alias_name.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter the results by the KMS alias name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetAliasesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAliasesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAliases.
+type GetAliasesResultOutput struct{ *pulumi.OutputState }
+
+func (GetAliasesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAliasesResult)(nil)).Elem()
+}
+
+func (o GetAliasesResultOutput) ToGetAliasesResultOutput() GetAliasesResultOutput {
+	return o
+}
+
+func (o GetAliasesResultOutput) ToGetAliasesResultOutputWithContext(ctx context.Context) GetAliasesResultOutput {
+	return o
+}
+
+// A list of KMS User alias. Each element contains the following attributes:
+func (o GetAliasesResultOutput) Aliases() GetAliasesAliasArrayOutput {
+	return o.ApplyT(func(v GetAliasesResult) []GetAliasesAlias { return v.Aliases }).(GetAliasesAliasArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAliasesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAliasesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of kms aliases IDs. The value is same as KMS alias_name.
+func (o GetAliasesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAliasesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAliasesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAliasesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of KMS alias name.
+func (o GetAliasesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAliasesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAliasesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAliasesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAliasesResultOutput{})
 }

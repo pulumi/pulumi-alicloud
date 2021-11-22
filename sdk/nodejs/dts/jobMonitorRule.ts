@@ -128,23 +128,23 @@ export interface JobMonitorRuleState {
     /**
      * Trigger delay alarm threshold, which is measured in seconds.
      */
-    readonly delayRuleTime?: pulumi.Input<string>;
+    delayRuleTime?: pulumi.Input<string>;
     /**
      * Migration, synchronization or subscription task ID can be by calling the [DescribeDtsJobs] get.
      */
-    readonly dtsJobId?: pulumi.Input<string>;
+    dtsJobId?: pulumi.Input<string>;
     /**
      * The alarm is triggered after notification of the contact phone number, A plurality of phone numbers between them with a comma (,) to separate.
      */
-    readonly phone?: pulumi.Input<string>;
+    phone?: pulumi.Input<string>;
     /**
      * Whether to enable monitoring rules, valid values: `Y`, `N`.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * Monitoring rules of type, valid values: `delay`, `error`. **delay**: delay alarm. **error**: abnormal alarm.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -154,21 +154,21 @@ export interface JobMonitorRuleArgs {
     /**
      * Trigger delay alarm threshold, which is measured in seconds.
      */
-    readonly delayRuleTime?: pulumi.Input<string>;
+    delayRuleTime?: pulumi.Input<string>;
     /**
      * Migration, synchronization or subscription task ID can be by calling the [DescribeDtsJobs] get.
      */
-    readonly dtsJobId: pulumi.Input<string>;
+    dtsJobId: pulumi.Input<string>;
     /**
      * The alarm is triggered after notification of the contact phone number, A plurality of phone numbers between them with a comma (,) to separate.
      */
-    readonly phone?: pulumi.Input<string>;
+    phone?: pulumi.Input<string>;
     /**
      * Whether to enable monitoring rules, valid values: `Y`, `N`.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * Monitoring rules of type, valid values: `delay`, `error`. **delay**: delay alarm. **error**: abnormal alarm.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
 }

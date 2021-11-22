@@ -4,6 +4,9 @@
 package sae
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -93,4 +96,76 @@ type GetConfigMapsResult struct {
 	Names       []string           `pulumi:"names"`
 	NamespaceId string             `pulumi:"namespaceId"`
 	OutputFile  *string            `pulumi:"outputFile"`
+}
+
+func GetConfigMapsOutput(ctx *pulumi.Context, args GetConfigMapsOutputArgs, opts ...pulumi.InvokeOption) GetConfigMapsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetConfigMapsResult, error) {
+			args := v.(GetConfigMapsArgs)
+			r, err := GetConfigMaps(ctx, &args, opts...)
+			return *r, err
+		}).(GetConfigMapsResultOutput)
+}
+
+// A collection of arguments for invoking getConfigMaps.
+type GetConfigMapsOutputArgs struct {
+	// A list of Config Map IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Config Map name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// The NamespaceId of Config Maps.
+	NamespaceId pulumi.StringInput    `pulumi:"namespaceId"`
+	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetConfigMapsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConfigMapsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getConfigMaps.
+type GetConfigMapsResultOutput struct{ *pulumi.OutputState }
+
+func (GetConfigMapsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConfigMapsResult)(nil)).Elem()
+}
+
+func (o GetConfigMapsResultOutput) ToGetConfigMapsResultOutput() GetConfigMapsResultOutput {
+	return o
+}
+
+func (o GetConfigMapsResultOutput) ToGetConfigMapsResultOutputWithContext(ctx context.Context) GetConfigMapsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetConfigMapsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConfigMapsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetConfigMapsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConfigMapsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetConfigMapsResultOutput) Maps() GetConfigMapsMapArrayOutput {
+	return o.ApplyT(func(v GetConfigMapsResult) []GetConfigMapsMap { return v.Maps }).(GetConfigMapsMapArrayOutput)
+}
+
+func (o GetConfigMapsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConfigMapsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetConfigMapsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConfigMapsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetConfigMapsResultOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConfigMapsResult) string { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+func (o GetConfigMapsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConfigMapsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetConfigMapsResultOutput{})
 }

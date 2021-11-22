@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["lt-bp1a469uxxxxxx"],
  *     nameRegex: "your_launch_name",
  * });
- * export const firstEcsLaunchTemplateId = example.then(example => example.templates[0].id);
+ * export const firstEcsLaunchTemplateId = example.then(example => example.templates?[0]?.id);
  * ```
  */
 export function getEcsLaunchTemplates(args?: GetEcsLaunchTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsLaunchTemplatesResult> {
@@ -52,28 +52,28 @@ export interface GetEcsLaunchTemplatesArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Launch Template IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The Launch Template Name.
      */
-    readonly launchTemplateName?: string;
+    launchTemplateName?: string;
     /**
      * A regex string to filter results by Launch Template name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The template resource group id.
      */
-    readonly templateResourceGroupId?: string;
+    templateResourceGroupId?: string;
     /**
      * The template tags.
      */
-    readonly templateTags?: {[key: string]: any};
+    templateTags?: {[key: string]: any};
 }
 
 /**
@@ -93,4 +93,39 @@ export interface GetEcsLaunchTemplatesResult {
     readonly templateResourceGroupId?: string;
     readonly templateTags?: {[key: string]: any};
     readonly templates: outputs.ecs.GetEcsLaunchTemplatesTemplate[];
+}
+
+export function getEcsLaunchTemplatesOutput(args?: GetEcsLaunchTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsLaunchTemplatesResult> {
+    return pulumi.output(args).apply(a => getEcsLaunchTemplates(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEcsLaunchTemplates.
+ */
+export interface GetEcsLaunchTemplatesOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Launch Template IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Launch Template Name.
+     */
+    launchTemplateName?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Launch Template name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The template resource group id.
+     */
+    templateResourceGroupId?: pulumi.Input<string>;
+    /**
+     * The template tags.
+     */
+    templateTags?: pulumi.Input<{[key: string]: any}>;
 }

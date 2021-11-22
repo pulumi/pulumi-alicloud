@@ -13,6 +13,7 @@ __all__ = [
     'GetHostAccountsResult',
     'AwaitableGetHostAccountsResult',
     'get_host_accounts',
+    'get_host_accounts_output',
 ]
 
 @pulumi.output_type
@@ -191,3 +192,49 @@ def get_host_accounts(host_account_name: Optional[str] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         protocol_name=__ret__.protocol_name)
+
+
+@_utilities.lift_output_func(get_host_accounts)
+def get_host_accounts_output(host_account_name: Optional[pulumi.Input[Optional[str]]] = None,
+                             host_id: Optional[pulumi.Input[str]] = None,
+                             ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                             instance_id: Optional[pulumi.Input[str]] = None,
+                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                             protocol_name: Optional[pulumi.Input[Optional[str]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostAccountsResult]:
+    """
+    This data source provides the Bastionhost Host Accounts of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.135.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.bastionhost.get_host_accounts(host_id="15",
+        instance_id="example_value",
+        ids=[
+            "1",
+            "2",
+        ])
+    pulumi.export("bastionhostHostAccountId1", ids.accounts[0].id)
+    name_regex = alicloud.bastionhost.get_host_accounts(host_id="15",
+        instance_id="example_value",
+        name_regex="^my-HostAccount")
+    pulumi.export("bastionhostHostAccountId2", name_regex.accounts[0].id)
+    ```
+
+
+    :param str host_account_name: Specify the new hosting account's name, support the longest 128 characters.
+    :param str host_id: Specifies the database where you want to create your hosting account's host ID.
+    :param Sequence[str] ids: A list of Host Account IDs.
+    :param str instance_id: Specifies the database where you want to create your hosting account's host bastion host ID of.
+    :param str name_regex: A regex string to filter results by Host Account name.
+    :param str protocol_name: Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
+    """
+    ...

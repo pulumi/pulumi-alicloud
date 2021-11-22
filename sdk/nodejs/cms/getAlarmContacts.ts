@@ -49,20 +49,20 @@ export interface GetAlarmContactsArgs {
     /**
      * The alarm notification method. Alarm notifications can be sent by using `Email` or `DingWebHook`.
      */
-    readonly chanelType?: string;
+    chanelType?: string;
     /**
      * The alarm notification target.
      */
-    readonly chanelValue?: string;
+    chanelValue?: string;
     /**
      * A list of alarm contact IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by alarm contact name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -89,4 +89,31 @@ export interface GetAlarmContactsResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getAlarmContactsOutput(args?: GetAlarmContactsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlarmContactsResult> {
+    return pulumi.output(args).apply(a => getAlarmContacts(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAlarmContacts.
+ */
+export interface GetAlarmContactsOutputArgs {
+    /**
+     * The alarm notification method. Alarm notifications can be sent by using `Email` or `DingWebHook`.
+     */
+    chanelType?: pulumi.Input<string>;
+    /**
+     * The alarm notification target.
+     */
+    chanelValue?: pulumi.Input<string>;
+    /**
+     * A list of alarm contact IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by alarm contact name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

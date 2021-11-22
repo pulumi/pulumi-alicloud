@@ -126,23 +126,23 @@ export interface SamlProviderState {
     /**
      * The Alibaba Cloud Resource Name (ARN) of the IdP.
      */
-    readonly arn?: pulumi.Input<string>;
+    arn?: pulumi.Input<string>;
     /**
      * The description of SAML Provider.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
      */
-    readonly encodedsamlMetadataDocument?: pulumi.Input<string>;
+    encodedsamlMetadataDocument?: pulumi.Input<string>;
     /**
      * The name of SAML Provider.
      */
-    readonly samlProviderName?: pulumi.Input<string>;
+    samlProviderName?: pulumi.Input<string>;
     /**
      * The update time.
      */
-    readonly updateDate?: pulumi.Input<string>;
+    updateDate?: pulumi.Input<string>;
 }
 
 /**
@@ -152,13 +152,13 @@ export interface SamlProviderArgs {
     /**
      * The description of SAML Provider.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
      */
-    readonly encodedsamlMetadataDocument?: pulumi.Input<string>;
+    encodedsamlMetadataDocument?: pulumi.Input<string>;
     /**
      * The name of SAML Provider.
      */
-    readonly samlProviderName: pulumi.Input<string>;
+    samlProviderName: pulumi.Input<string>;
 }

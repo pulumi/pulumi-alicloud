@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Ecs
         ///             },
         ///             NameRegex = "tf-testAcc",
         ///         }));
-        ///         this.FirstEcsCommandId = example.Apply(example =&gt; example.Commands[0].Id);
+        ///         this.FirstEcsCommandId = example.Apply(example =&gt; example.Commands?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstEcsCommandId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public static Task<GetCommandsResult> InvokeAsync(GetCommandsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCommandsResult>("alicloud:ecs/getCommands:getCommands", args ?? new GetCommandsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Ecs Commands of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.116.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Ecs.GetCommands.InvokeAsync(new AliCloud.Ecs.GetCommandsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "E2RY53-xxxx",
+        ///             },
+        ///             NameRegex = "tf-testAcc",
+        ///         }));
+        ///         this.FirstEcsCommandId = example.Apply(example =&gt; example.Commands?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstEcsCommandId")]
+        ///     public Output&lt;string&gt; FirstEcsCommandId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetCommandsResult> Invoke(GetCommandsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCommandsResult>("alicloud:ecs/getCommands:getCommands", args ?? new GetCommandsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -107,6 +148,64 @@ namespace Pulumi.AliCloud.Ecs
         public string? Type { get; set; }
 
         public GetCommandsArgs()
+        {
+        }
+    }
+
+    public sealed class GetCommandsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Public order provider.
+        /// </summary>
+        [Input("commandProvider")]
+        public Input<string>? CommandProvider { get; set; }
+
+        /// <summary>
+        /// The Base64-encoded content of the command.
+        /// </summary>
+        [Input("contentEncoding")]
+        public Input<string>? ContentEncoding { get; set; }
+
+        /// <summary>
+        /// The description of command.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Command IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The name of the command
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Command name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The command type.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        public GetCommandsInvokeArgs()
         {
         }
     }

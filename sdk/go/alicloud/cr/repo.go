@@ -240,7 +240,7 @@ type RepoArrayInput interface {
 type RepoArray []RepoInput
 
 func (RepoArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Repo)(nil))
+	return reflect.TypeOf((*[]*Repo)(nil)).Elem()
 }
 
 func (i RepoArray) ToRepoArrayOutput() RepoArrayOutput {
@@ -265,7 +265,7 @@ type RepoMapInput interface {
 type RepoMap map[string]RepoInput
 
 func (RepoMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Repo)(nil))
+	return reflect.TypeOf((*map[string]*Repo)(nil)).Elem()
 }
 
 func (i RepoMap) ToRepoMapOutput() RepoMapOutput {
@@ -276,9 +276,7 @@ func (i RepoMap) ToRepoMapOutputWithContext(ctx context.Context) RepoMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RepoMapOutput)
 }
 
-type RepoOutput struct {
-	*pulumi.OutputState
-}
+type RepoOutput struct{ *pulumi.OutputState }
 
 func (RepoOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Repo)(nil))
@@ -297,14 +295,12 @@ func (o RepoOutput) ToRepoPtrOutput() RepoPtrOutput {
 }
 
 func (o RepoOutput) ToRepoPtrOutputWithContext(ctx context.Context) RepoPtrOutput {
-	return o.ApplyT(func(v Repo) *Repo {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Repo) *Repo {
 		return &v
 	}).(RepoPtrOutput)
 }
 
-type RepoPtrOutput struct {
-	*pulumi.OutputState
-}
+type RepoPtrOutput struct{ *pulumi.OutputState }
 
 func (RepoPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Repo)(nil))
@@ -316,6 +312,16 @@ func (o RepoPtrOutput) ToRepoPtrOutput() RepoPtrOutput {
 
 func (o RepoPtrOutput) ToRepoPtrOutputWithContext(ctx context.Context) RepoPtrOutput {
 	return o
+}
+
+func (o RepoPtrOutput) Elem() RepoOutput {
+	return o.ApplyT(func(v *Repo) Repo {
+		if v != nil {
+			return *v
+		}
+		var ret Repo
+		return ret
+	}).(RepoOutput)
 }
 
 type RepoArrayOutput struct{ *pulumi.OutputState }
@@ -359,6 +365,10 @@ func (o RepoMapOutput) MapIndex(k pulumi.StringInput) RepoOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RepoInput)(nil)).Elem(), &Repo{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepoPtrInput)(nil)).Elem(), &Repo{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepoArrayInput)(nil)).Elem(), RepoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepoMapInput)(nil)).Elem(), RepoMap{})
 	pulumi.RegisterOutputType(RepoOutput{})
 	pulumi.RegisterOutputType(RepoPtrOutput{})
 	pulumi.RegisterOutputType(RepoArrayOutput{})

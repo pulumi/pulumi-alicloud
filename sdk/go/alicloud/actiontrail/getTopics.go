@@ -4,6 +4,9 @@
 package actiontrail
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,4 +69,71 @@ type GetTopicsResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// A list of topics. Each element contains the following attributes:
 	Topics []GetTopicsTopic `pulumi:"topics"`
+}
+
+func GetTopicsOutput(ctx *pulumi.Context, args GetTopicsOutputArgs, opts ...pulumi.InvokeOption) GetTopicsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetTopicsResult, error) {
+			args := v.(GetTopicsArgs)
+			r, err := GetTopics(ctx, &args, opts...)
+			return *r, err
+		}).(GetTopicsResultOutput)
+}
+
+// A collection of arguments for invoking getTopics.
+type GetTopicsOutputArgs struct {
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// A regex string to filter results by the topic name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetTopicsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getTopics.
+type GetTopicsResultOutput struct{ *pulumi.OutputState }
+
+func (GetTopicsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicsResult)(nil)).Elem()
+}
+
+func (o GetTopicsResultOutput) ToGetTopicsResultOutput() GetTopicsResultOutput {
+	return o
+}
+
+func (o GetTopicsResultOutput) ToGetTopicsResultOutputWithContext(ctx context.Context) GetTopicsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetTopicsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetTopicsResultOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicsResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetTopicsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTopicsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of topic names.
+func (o GetTopicsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTopicsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTopicsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTopicsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of topics. Each element contains the following attributes:
+func (o GetTopicsResultOutput) Topics() GetTopicsTopicArrayOutput {
+	return o.ApplyT(func(v GetTopicsResult) []GetTopicsTopic { return v.Topics }).(GetTopicsTopicArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetTopicsResultOutput{})
 }

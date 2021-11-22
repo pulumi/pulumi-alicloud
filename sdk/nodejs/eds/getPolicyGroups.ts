@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * const nameRegex = alicloud.eds.getPolicyGroups({
  *     nameRegex: "^my-policy",
  * });
- * export const ecdPolicyGroupId = nameRegex.then(nameRegex => nameRegex.groups[0].id);
+ * export const ecdPolicyGroupId = nameRegex.then(nameRegex => nameRegex.groups?[0]?.id);
  * ```
  */
 export function getPolicyGroups(args?: GetPolicyGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyGroupsResult> {
@@ -68,16 +68,16 @@ export interface GetPolicyGroupsArgs {
     /**
      * A list of Policy Group IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Policy Group name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of policy.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -94,4 +94,27 @@ export interface GetPolicyGroupsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getPolicyGroupsOutput(args?: GetPolicyGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyGroupsResult> {
+    return pulumi.output(args).apply(a => getPolicyGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPolicyGroups.
+ */
+export interface GetPolicyGroupsOutputArgs {
+    /**
+     * A list of Policy Group IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Policy Group name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of policy.
+     */
+    status?: pulumi.Input<string>;
 }

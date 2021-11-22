@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
- * }, { async: true }));
+ * }));
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     cidrBlock: "172.16.0.0/12",
  *     vpcName: name,
@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultForwardEntries = defaultForwardEntry.forwardTableId.apply(forwardTableId => alicloud.vpc.getForwardEntries({
  *     forwardTableId: forwardTableId,
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getForwardEntries(args: GetForwardEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetForwardEntriesResult> {
@@ -86,44 +86,44 @@ export interface GetForwardEntriesArgs {
     /**
      * The public IP address.
      */
-    readonly externalIp?: string;
+    externalIp?: string;
     /**
      * The public port.
      */
-    readonly externalPort?: string;
+    externalPort?: string;
     /**
      * The name of forward entry.
      */
-    readonly forwardEntryName?: string;
+    forwardEntryName?: string;
     /**
      * The ID of the Forward table.
      */
-    readonly forwardTableId: string;
+    forwardTableId: string;
     /**
      * A list of Forward Entries IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The private IP address.
      */
-    readonly internalIp?: string;
+    internalIp?: string;
     /**
      * The internal port.
      */
-    readonly internalPort?: string;
+    internalPort?: string;
     /**
      * The ip protocol. Valid values: `any`,`tcp` and `udp`.
      */
-    readonly ipProtocol?: string;
+    ipProtocol?: string;
     /**
      * A regex string to filter results by forward entry name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -177,4 +177,55 @@ export interface GetForwardEntriesResult {
      * The status of forward entry.
      */
     readonly status?: string;
+}
+
+export function getForwardEntriesOutput(args: GetForwardEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetForwardEntriesResult> {
+    return pulumi.output(args).apply(a => getForwardEntries(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getForwardEntries.
+ */
+export interface GetForwardEntriesOutputArgs {
+    /**
+     * The public IP address.
+     */
+    externalIp?: pulumi.Input<string>;
+    /**
+     * The public port.
+     */
+    externalPort?: pulumi.Input<string>;
+    /**
+     * The name of forward entry.
+     */
+    forwardEntryName?: pulumi.Input<string>;
+    /**
+     * The ID of the Forward table.
+     */
+    forwardTableId: pulumi.Input<string>;
+    /**
+     * A list of Forward Entries IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The private IP address.
+     */
+    internalIp?: pulumi.Input<string>;
+    /**
+     * The internal port.
+     */
+    internalPort?: pulumi.Input<string>;
+    /**
+     * The ip protocol. Valid values: `any`,`tcp` and `udp`.
+     */
+    ipProtocol?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by forward entry name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+     */
+    status?: pulumi.Input<string>;
 }

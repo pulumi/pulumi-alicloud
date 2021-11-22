@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cen
 {
@@ -18,6 +19,14 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Task<GetTransitRouterVbrAttachmentsResult> InvokeAsync(GetTransitRouterVbrAttachmentsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterVbrAttachmentsResult>("alicloud:cen/getTransitRouterVbrAttachments:getTransitRouterVbrAttachments", args ?? new GetTransitRouterVbrAttachmentsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://help.aliyun.com/document_detail/261226.html)
+        /// 
+        /// &gt; **NOTE:** Available in 1.126.0+
+        /// </summary>
+        public static Output<GetTransitRouterVbrAttachmentsResult> Invoke(GetTransitRouterVbrAttachmentsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTransitRouterVbrAttachmentsResult>("alicloud:cen/getTransitRouterVbrAttachments:getTransitRouterVbrAttachments", args ?? new GetTransitRouterVbrAttachmentsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -57,6 +66,46 @@ namespace Pulumi.AliCloud.Cen
         public string? TransitRouterId { get; set; }
 
         public GetTransitRouterVbrAttachmentsArgs()
+        {
+        }
+    }
+
+    public sealed class GetTransitRouterVbrAttachmentsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// ID of the CEN instance.
+        /// </summary>
+        [Input("cenId", required: true)]
+        public Input<string> CenId { get; set; } = null!;
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of resource id. The element value is same as `transit_router_id`.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// ID of the transit router.
+        /// </summary>
+        [Input("transitRouterId")]
+        public Input<string>? TransitRouterId { get; set; }
+
+        public GetTransitRouterVbrAttachmentsInvokeArgs()
         {
         }
     }

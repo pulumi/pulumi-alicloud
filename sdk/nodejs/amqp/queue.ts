@@ -187,58 +187,58 @@ export interface QueueState {
      * * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
      * * false: The Auto Delete attribute is not configured.
      */
-    readonly autoDeleteState?: pulumi.Input<boolean>;
+    autoDeleteState?: pulumi.Input<boolean>;
     /**
      * The validity period after which the queue is automatically deleted.
      * If the queue is not accessed within a specified period of time, it is automatically deleted.
      */
-    readonly autoExpireState?: pulumi.Input<string>;
+    autoExpireState?: pulumi.Input<string>;
     /**
      * The dead-letter exchange. A dead-letter exchange is used to receive rejected messages. 
      * If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
      * Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
      */
-    readonly deadLetterExchange?: pulumi.Input<string>;
+    deadLetterExchange?: pulumi.Input<string>;
     /**
      * The dead letter routing key.
      */
-    readonly deadLetterRoutingKey?: pulumi.Input<string>;
+    deadLetterRoutingKey?: pulumi.Input<string>;
     /**
      * Specifies whether the queue is an exclusive queue. Valid values:
      * * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
      * * false: The queue is not an exclusive queue.
      */
-    readonly exclusiveState?: pulumi.Input<boolean>;
+    exclusiveState?: pulumi.Input<boolean>;
     /**
      * The ID of the instance.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The maximum number of messages that can be stored in the queue.
      * If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
      */
-    readonly maxLength?: pulumi.Input<string>;
+    maxLength?: pulumi.Input<string>;
     /**
      * The highest priority supported by the queue. This parameter is set to a positive integer.
      * Valid values: 0 to 255. Recommended values: 1 to 10
      */
-    readonly maximumPriority?: pulumi.Input<number>;
+    maximumPriority?: pulumi.Input<number>;
     /**
      * The message TTL of the queue.
      * If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
      * Message TTL must be set to a non-negative integer, in milliseconds.
      * For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
      */
-    readonly messageTtl?: pulumi.Input<string>;
+    messageTtl?: pulumi.Input<string>;
     /**
      * The name of the queue.
      * The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
      */
-    readonly queueName?: pulumi.Input<string>;
+    queueName?: pulumi.Input<string>;
     /**
      * The name of the virtual host.
      */
-    readonly virtualHostName?: pulumi.Input<string>;
+    virtualHostName?: pulumi.Input<string>;
 }
 
 /**
@@ -250,56 +250,56 @@ export interface QueueArgs {
      * * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
      * * false: The Auto Delete attribute is not configured.
      */
-    readonly autoDeleteState?: pulumi.Input<boolean>;
+    autoDeleteState?: pulumi.Input<boolean>;
     /**
      * The validity period after which the queue is automatically deleted.
      * If the queue is not accessed within a specified period of time, it is automatically deleted.
      */
-    readonly autoExpireState?: pulumi.Input<string>;
+    autoExpireState?: pulumi.Input<string>;
     /**
      * The dead-letter exchange. A dead-letter exchange is used to receive rejected messages. 
      * If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
      * Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
      */
-    readonly deadLetterExchange?: pulumi.Input<string>;
+    deadLetterExchange?: pulumi.Input<string>;
     /**
      * The dead letter routing key.
      */
-    readonly deadLetterRoutingKey?: pulumi.Input<string>;
+    deadLetterRoutingKey?: pulumi.Input<string>;
     /**
      * Specifies whether the queue is an exclusive queue. Valid values:
      * * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
      * * false: The queue is not an exclusive queue.
      */
-    readonly exclusiveState?: pulumi.Input<boolean>;
+    exclusiveState?: pulumi.Input<boolean>;
     /**
      * The ID of the instance.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * The maximum number of messages that can be stored in the queue.
      * If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
      */
-    readonly maxLength?: pulumi.Input<string>;
+    maxLength?: pulumi.Input<string>;
     /**
      * The highest priority supported by the queue. This parameter is set to a positive integer.
      * Valid values: 0 to 255. Recommended values: 1 to 10
      */
-    readonly maximumPriority?: pulumi.Input<number>;
+    maximumPriority?: pulumi.Input<number>;
     /**
      * The message TTL of the queue.
      * If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
      * Message TTL must be set to a non-negative integer, in milliseconds.
      * For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
      */
-    readonly messageTtl?: pulumi.Input<string>;
+    messageTtl?: pulumi.Input<string>;
     /**
      * The name of the queue.
      * The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
      */
-    readonly queueName: pulumi.Input<string>;
+    queueName: pulumi.Input<string>;
     /**
      * The name of the virtual host.
      */
-    readonly virtualHostName: pulumi.Input<string>;
+    virtualHostName: pulumi.Input<string>;
 }

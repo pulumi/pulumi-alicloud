@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *         "scaling_group_id2",
  *     ],
  *     nameRegex: "scaling_group_name",
- * }, { async: true }));
+ * }));
  *
  * export const firstScalingGroup = scalinggroupsDs.groups[0].id;
  * ```
@@ -48,12 +48,12 @@ export interface GetScalingGroupsArgs {
     /**
      * A list of scaling group IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter resulting scaling groups by name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -78,4 +78,23 @@ export interface GetScalingGroupsResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getScalingGroupsOutput(args?: GetScalingGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScalingGroupsResult> {
+    return pulumi.output(args).apply(a => getScalingGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getScalingGroups.
+ */
+export interface GetScalingGroupsOutputArgs {
+    /**
+     * A list of scaling group IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter resulting scaling groups by name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

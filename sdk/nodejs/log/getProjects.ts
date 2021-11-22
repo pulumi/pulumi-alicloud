@@ -34,16 +34,16 @@ export interface GetProjectsArgs {
     /**
      * A list of project IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by project name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of project.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -60,4 +60,27 @@ export interface GetProjectsResult {
     readonly outputFile?: string;
     readonly projects: outputs.log.GetProjectsProject[];
     readonly status?: string;
+}
+
+export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectsResult> {
+    return pulumi.output(args).apply(a => getProjects(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProjects.
+ */
+export interface GetProjectsOutputArgs {
+    /**
+     * A list of project IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by project name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of project.
+     */
+    status?: pulumi.Input<string>;
 }

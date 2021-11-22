@@ -13,6 +13,7 @@ __all__ = [
     'GetDomainsResult',
     'AwaitableGetDomainsResult',
     'get_domains',
+    'get_domains_output',
 ]
 
 @pulumi.output_type
@@ -236,3 +237,35 @@ def get_domains(change_end_time: Optional[str] = None,
         resource_group_id=__ret__.resource_group_id,
         security_token=__ret__.security_token,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_domains)
+def get_domains_output(change_end_time: Optional[pulumi.Input[Optional[str]]] = None,
+                       change_start_time: Optional[pulumi.Input[Optional[str]]] = None,
+                       check_domain_show: Optional[pulumi.Input[Optional[bool]]] = None,
+                       domain_search_type: Optional[pulumi.Input[Optional[str]]] = None,
+                       enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                       ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                       name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                       resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                       security_token: Optional[pulumi.Input[Optional[str]]] = None,
+                       status: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainsResult]:
+    """
+    Provides a collection of DCDN Domains to the specified filters.
+
+    > **NOTE:** Available in 1.94.0+.
+
+
+    :param str change_end_time: The end time of the update. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+    :param str change_start_time: The start time of the update. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+    :param bool check_domain_show: Specifies whether to display the domains in the checking, check_failed, or configure_failed status. Valid values: `true` or `false`.
+    :param str domain_search_type: The search method. Default value: `fuzzy_match`. Valid values: `fuzzy_match`, `pre_match`, `suf_match`, `full_match`.
+    :param bool enable_details: Default to `false`. Set it to true can output more details.
+    :param Sequence[str] ids: A list ids of DCDN Domain.
+    :param str name_regex: A regex string to filter results by the DCDN Domain.
+    :param str resource_group_id: The ID of the resource group.
+    :param str status: The status of DCDN Domain.
+    """
+    ...

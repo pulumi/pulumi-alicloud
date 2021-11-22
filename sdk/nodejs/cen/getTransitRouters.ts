@@ -9,6 +9,18 @@ import * as utilities from "../utilities";
  * This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)
  *
  * > **NOTE:** Available in 1.126.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cen.getTransitRouters({
+ *     cenId: "cen-id1",
+ * });
+ * export const firstTransitRoutersType = _default.then(_default => _default.transitRouters?[0]?.type);
+ * ```
  */
 export function getTransitRouters(args: GetTransitRoutersArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRoutersResult> {
     if (!opts) {
@@ -35,21 +47,21 @@ export interface GetTransitRoutersArgs {
     /**
      * ID of the CEN instance.
      */
-    readonly cenId: string;
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    cenId: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * ID of the transit router.
      */
-    readonly transitRouterId: string;
+    transitRouterId: string;
     /**
      * A list of ID of the transit router.
      */
-    readonly transitRouterIds?: string[];
+    transitRouterIds?: string[];
 }
 
 /**
@@ -81,4 +93,32 @@ export interface GetTransitRoutersResult {
      * A list of CEN Transit Routers. Each element contains the following attributes:
      */
     readonly transitRouters: outputs.cen.GetTransitRoutersTransitRouter[];
+}
+
+export function getTransitRoutersOutput(args: GetTransitRoutersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRoutersResult> {
+    return pulumi.output(args).apply(a => getTransitRouters(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTransitRouters.
+ */
+export interface GetTransitRoutersOutputArgs {
+    /**
+     * ID of the CEN instance.
+     */
+    cenId: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * ID of the transit router.
+     */
+    transitRouterId: pulumi.Input<string>;
+    /**
+     * A list of ID of the transit router.
+     */
+    transitRouterIds?: pulumi.Input<pulumi.Input<string>[]>;
 }

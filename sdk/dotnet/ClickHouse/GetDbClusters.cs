@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ClickHouse
 {
@@ -49,7 +50,7 @@ namespace Pulumi.AliCloud.ClickHouse
         ///                 id,
         ///             },
         ///         }));
-        ///         this.DbCluster = defaultDbClusters.Apply(defaultDbClusters =&gt; defaultDbClusters.Ids[0]);
+        ///         this.DbCluster = defaultDbClusters.Apply(defaultDbClusters =&gt; defaultDbClusters.Ids?[0]);
         ///     }
         /// 
         ///     [Output("dbCluster")]
@@ -61,6 +62,57 @@ namespace Pulumi.AliCloud.ClickHouse
         /// </summary>
         public static Task<GetDbClustersResult> InvokeAsync(GetDbClustersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDbClustersResult>("alicloud:clickhouse/getDbClusters:getDbClusters", args ?? new GetDbClustersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Click House DBCluster of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("defaultDbCluster", new AliCloud.ClickHouse.DbClusterArgs
+        ///         {
+        ///             DbClusterVersion = "20.3.10.75",
+        ///             Category = "Basic",
+        ///             DbClusterClass = "S8",
+        ///             DbClusterNetworkType = "vpc",
+        ///             DbNodeGroupCount = 1,
+        ///             PaymentType = "PayAsYouGo",
+        ///             DbNodeStorage = "500",
+        ///             StorageType = "cloud_essd",
+        ///             VswitchId = "your_vswitch_id",
+        ///         });
+        ///         var defaultDbClusters = defaultDbCluster.Id.Apply(id =&gt; AliCloud.ClickHouse.GetDbClusters.InvokeAsync(new AliCloud.ClickHouse.GetDbClustersArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 id,
+        ///             },
+        ///         }));
+        ///         this.DbCluster = defaultDbClusters.Apply(defaultDbClusters =&gt; defaultDbClusters.Ids?[0]);
+        ///     }
+        /// 
+        ///     [Output("dbCluster")]
+        ///     public Output&lt;string&gt; DbCluster { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDbClustersResult> Invoke(GetDbClustersInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDbClustersResult>("alicloud:clickhouse/getDbClusters:getDbClusters", args ?? new GetDbClustersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -100,6 +152,46 @@ namespace Pulumi.AliCloud.ClickHouse
         public string? Status { get; set; }
 
         public GetDbClustersArgs()
+        {
+        }
+    }
+
+    public sealed class GetDbClustersInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The DBCluster description.
+        /// </summary>
+        [Input("dbClusterDescription")]
+        public Input<string>? DbClusterDescription { get; set; }
+
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of DBCluster IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetDbClustersInvokeArgs()
         {
         }
     }

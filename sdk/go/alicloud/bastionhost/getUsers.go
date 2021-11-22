@@ -4,6 +4,9 @@
 package bastionhost
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -97,4 +100,112 @@ type GetUsersResult struct {
 	Status       *string        `pulumi:"status"`
 	UserName     *string        `pulumi:"userName"`
 	Users        []GetUsersUser `pulumi:"users"`
+}
+
+func GetUsersOutput(ctx *pulumi.Context, args GetUsersOutputArgs, opts ...pulumi.InvokeOption) GetUsersResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetUsersResult, error) {
+			args := v.(GetUsersArgs)
+			r, err := GetUsers(ctx, &args, opts...)
+			return *r, err
+		}).(GetUsersResultOutput)
+}
+
+// A collection of arguments for invoking getUsers.
+type GetUsersOutputArgs struct {
+	// Specify the New Created the User's Display Name. Supports up to 128 Characters.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// A list of User IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// You Want to Query the User the Bastion Host ID of.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// Specify the New of the User That Created a Different Mobile Phone Number from Your.
+	Mobile pulumi.StringPtrInput `pulumi:"mobile"`
+	// A regex string to filter results by User name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+	// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
+	SourceUserId pulumi.StringPtrInput `pulumi:"sourceUserId"`
+	// The status of the resource.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
+	UserName pulumi.StringPtrInput `pulumi:"userName"`
+}
+
+func (GetUsersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getUsers.
+type GetUsersResultOutput struct{ *pulumi.OutputState }
+
+func (GetUsersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersResult)(nil)).Elem()
+}
+
+func (o GetUsersResultOutput) ToGetUsersResultOutput() GetUsersResultOutput {
+	return o
+}
+
+func (o GetUsersResultOutput) ToGetUsersResultOutputWithContext(ctx context.Context) GetUsersResultOutput {
+	return o
+}
+
+func (o GetUsersResultOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetUsersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetUsersResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUsersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetUsersResultOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetUsersResultOutput) Mobile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *string { return v.Mobile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetUsersResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetUsersResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUsersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetUsersResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetUsersResultOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+func (o GetUsersResultOutput) SourceUserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *string { return v.SourceUserId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetUsersResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetUsersResultOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetUsersResultOutput) Users() GetUsersUserArrayOutput {
+	return o.ApplyT(func(v GetUsersResult) []GetUsersUser { return v.Users }).(GetUsersUserArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetUsersResultOutput{})
 }

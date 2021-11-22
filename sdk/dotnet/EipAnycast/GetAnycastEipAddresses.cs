@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.EipAnycast
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.EipAnycast
         ///             },
         ///             NameRegex = "the_resource_name",
         ///         }));
-        ///         this.FirstEipanycastAnycastEipAddressId = example.Apply(example =&gt; example.Addresses[0].Id);
+        ///         this.FirstEipanycastAnycastEipAddressId = example.Apply(example =&gt; example.Addresses?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstEipanycastAnycastEipAddressId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.EipAnycast
         /// </summary>
         public static Task<GetAnycastEipAddressesResult> InvokeAsync(GetAnycastEipAddressesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAnycastEipAddressesResult>("alicloud:eipanycast/getAnycastEipAddresses:getAnycastEipAddresses", args ?? new GetAnycastEipAddressesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Eipanycast Anycast Eip Addresses of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.113.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.EipAnycast.GetAnycastEipAddresses.InvokeAsync(new AliCloud.EipAnycast.GetAnycastEipAddressesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_value",
+        ///             },
+        ///             NameRegex = "the_resource_name",
+        ///         }));
+        ///         this.FirstEipanycastAnycastEipAddressId = example.Apply(example =&gt; example.Addresses?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstEipanycastAnycastEipAddressId")]
+        ///     public Output&lt;string&gt; FirstEipanycastAnycastEipAddressId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAnycastEipAddressesResult> Invoke(GetAnycastEipAddressesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAnycastEipAddressesResult>("alicloud:eipanycast/getAnycastEipAddresses:getAnycastEipAddresses", args ?? new GetAnycastEipAddressesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -131,6 +172,88 @@ namespace Pulumi.AliCloud.EipAnycast
         public string? Status { get; set; }
 
         public GetAnycastEipAddressesArgs()
+        {
+        }
+    }
+
+    public sealed class GetAnycastEipAddressesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Anycast EIP instance name.
+        /// </summary>
+        [Input("anycastEipAddressName")]
+        public Input<string>? AnycastEipAddressName { get; set; }
+
+        [Input("bindInstanceIds")]
+        private InputList<string>? _bindInstanceIds;
+
+        /// <summary>
+        /// The bind instance ids.
+        /// </summary>
+        public InputList<string> BindInstanceIds
+        {
+            get => _bindInstanceIds ?? (_bindInstanceIds = new InputList<string>());
+            set => _bindInstanceIds = value;
+        }
+
+        /// <summary>
+        /// The business status of the Anycast EIP instance. -`Normal`: Normal state. -`FinancialLocked`: The status of arrears locked.
+        /// </summary>
+        [Input("businessStatus")]
+        public Input<string>? BusinessStatus { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Anycast Eip Address IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic.
+        /// </summary>
+        [Input("internetChargeType")]
+        public Input<string>? InternetChargeType { get; set; }
+
+        /// <summary>
+        /// Anycast EIP instance IP address.
+        /// </summary>
+        [Input("ipAddress")]
+        public Input<string>? IpAddress { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Anycast Eip Address name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
+        /// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
+        /// </summary>
+        [Input("serviceLocation")]
+        public Input<string>? ServiceLocation { get; set; }
+
+        /// <summary>
+        /// IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetAnycastEipAddressesInvokeArgs()
         {
         }
     }

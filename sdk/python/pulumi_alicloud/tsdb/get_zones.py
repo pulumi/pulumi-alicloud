@@ -13,6 +13,7 @@ __all__ = [
     'GetZonesResult',
     'AwaitableGetZonesResult',
     'get_zones',
+    'get_zones_output',
 ]
 
 @pulumi.output_type
@@ -102,3 +103,26 @@ def get_zones(output_file: Optional[str] = None,
         ids=__ret__.ids,
         output_file=__ret__.output_file,
         zones=__ret__.zones)
+
+
+@_utilities.lift_output_func(get_zones)
+def get_zones_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
+    """
+    This data source provides the available zones with the Time Series Database (TSDB) Instance of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.112.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.tsdb.get_zones()
+    pulumi.export("firstTsdbZonesId", example.zones[0].zone_id)
+    ```
+    """
+    ...

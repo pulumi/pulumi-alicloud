@@ -23,8 +23,8 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "tf-testAccFileSystem";
  * const defaultZones = alicloud.dfs.getZones({});
  * const defaultFileSystem = new alicloud.dfs.FileSystem("defaultFileSystem", {
- *     storageType: defaultZones.then(defaultZones => defaultZones.zones[0].options[0].storageType),
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].zoneId),
+ *     storageType: defaultZones.then(defaultZones => defaultZones.zones?[0]?.options?[0]?.storageType),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.zoneId),
  *     protocolType: "HDFS",
  *     description: name,
  *     fileSystemName: name,
@@ -163,35 +163,35 @@ export interface FileSystemState {
     /**
      * The description of the File system.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the File system.
      */
-    readonly fileSystemName?: pulumi.Input<string>;
+    fileSystemName?: pulumi.Input<string>;
     /**
      * The protocol type. Valid values: `HDFS`.
      */
-    readonly protocolType?: pulumi.Input<string>;
+    protocolType?: pulumi.Input<string>;
     /**
      * The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s. **NOTE:** Only when `throughputMode` is `Provisioned`, this param is valid.
      */
-    readonly provisionedThroughputInMiBps?: pulumi.Input<number>;
+    provisionedThroughputInMiBps?: pulumi.Input<number>;
     /**
      * The capacity budget of the File system. **NOTE:** When the actual data storage reaches the file system capacity budget, the data cannot be written. The file system capacity budget does not support shrinking.
      */
-    readonly spaceCapacity?: pulumi.Input<number>;
+    spaceCapacity?: pulumi.Input<number>;
     /**
      * The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
      */
-    readonly storageType?: pulumi.Input<string>;
+    storageType?: pulumi.Input<string>;
     /**
      * The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
      */
-    readonly throughputMode?: pulumi.Input<string>;
+    throughputMode?: pulumi.Input<string>;
     /**
      * The zone ID of the File system.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -201,33 +201,33 @@ export interface FileSystemArgs {
     /**
      * The description of the File system.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the File system.
      */
-    readonly fileSystemName: pulumi.Input<string>;
+    fileSystemName: pulumi.Input<string>;
     /**
      * The protocol type. Valid values: `HDFS`.
      */
-    readonly protocolType: pulumi.Input<string>;
+    protocolType: pulumi.Input<string>;
     /**
      * The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s. **NOTE:** Only when `throughputMode` is `Provisioned`, this param is valid.
      */
-    readonly provisionedThroughputInMiBps?: pulumi.Input<number>;
+    provisionedThroughputInMiBps?: pulumi.Input<number>;
     /**
      * The capacity budget of the File system. **NOTE:** When the actual data storage reaches the file system capacity budget, the data cannot be written. The file system capacity budget does not support shrinking.
      */
-    readonly spaceCapacity: pulumi.Input<number>;
+    spaceCapacity: pulumi.Input<number>;
     /**
      * The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
      */
-    readonly storageType: pulumi.Input<string>;
+    storageType: pulumi.Input<string>;
     /**
      * The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
      */
-    readonly throughputMode?: pulumi.Input<string>;
+    throughputMode?: pulumi.Input<string>;
     /**
      * The zone ID of the File system.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

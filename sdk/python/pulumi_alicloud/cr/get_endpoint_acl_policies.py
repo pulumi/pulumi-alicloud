@@ -13,6 +13,7 @@ __all__ = [
     'GetEndpointAclPoliciesResult',
     'AwaitableGetEndpointAclPoliciesResult',
     'get_endpoint_acl_policies',
+    'get_endpoint_acl_policies_output',
 ]
 
 @pulumi.output_type
@@ -138,3 +139,39 @@ def get_endpoint_acl_policies(endpoint_type: Optional[str] = None,
         instance_id=__ret__.instance_id,
         output_file=__ret__.output_file,
         policies=__ret__.policies)
+
+
+@_utilities.lift_output_func(get_endpoint_acl_policies)
+def get_endpoint_acl_policies_output(endpoint_type: Optional[pulumi.Input[str]] = None,
+                                     ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                     instance_id: Optional[pulumi.Input[str]] = None,
+                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEndpointAclPoliciesResult]:
+    """
+    This data source provides the Cr Endpoint Acl Policies of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.139.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cr.get_endpoint_acl_policies(instance_id="example_value",
+        endpoint_type="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("crEndpointAclPolicyId1", ids.policies[0].id)
+    ```
+
+
+    :param str endpoint_type: The type of endpoint.
+    :param Sequence[str] ids: A list of Endpoint Acl Policy IDs.
+    :param str instance_id: The ID of the CR Instance.
+    """
+    ...

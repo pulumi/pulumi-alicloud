@@ -13,6 +13,7 @@ __all__ = [
     'GetAccessRulesResult',
     'AwaitableGetAccessRulesResult',
     'get_access_rules',
+    'get_access_rules_output',
 ]
 
 @pulumi.output_type
@@ -124,3 +125,36 @@ def get_access_rules(access_group_id: Optional[str] = None,
         ids=__ret__.ids,
         output_file=__ret__.output_file,
         rules=__ret__.rules)
+
+
+@_utilities.lift_output_func(get_access_rules)
+def get_access_rules_output(access_group_id: Optional[pulumi.Input[str]] = None,
+                            ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessRulesResult]:
+    """
+    This data source provides the Dfs Access Rules of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.140.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.dfs.get_access_rules(access_group_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("dfsAccessRuleId1", ids.rules[0].id)
+    ```
+
+
+    :param str access_group_id: The resource ID of the Access Group.
+    :param Sequence[str] ids: A list of Access Rule IDs.
+    """
+    ...

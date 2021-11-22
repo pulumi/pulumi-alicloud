@@ -4,6 +4,9 @@
 package sae
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -57,4 +60,62 @@ type GetInstanceSpecificationsResult struct {
 	Ids            []string                                 `pulumi:"ids"`
 	OutputFile     *string                                  `pulumi:"outputFile"`
 	Specifications []GetInstanceSpecificationsSpecification `pulumi:"specifications"`
+}
+
+func GetInstanceSpecificationsOutput(ctx *pulumi.Context, args GetInstanceSpecificationsOutputArgs, opts ...pulumi.InvokeOption) GetInstanceSpecificationsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetInstanceSpecificationsResult, error) {
+			args := v.(GetInstanceSpecificationsArgs)
+			r, err := GetInstanceSpecifications(ctx, &args, opts...)
+			return *r, err
+		}).(GetInstanceSpecificationsResultOutput)
+}
+
+// A collection of arguments for invoking getInstanceSpecifications.
+type GetInstanceSpecificationsOutputArgs struct {
+	// A list of Instance Specification IDs.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+}
+
+func (GetInstanceSpecificationsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceSpecificationsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getInstanceSpecifications.
+type GetInstanceSpecificationsResultOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceSpecificationsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceSpecificationsResult)(nil)).Elem()
+}
+
+func (o GetInstanceSpecificationsResultOutput) ToGetInstanceSpecificationsResultOutput() GetInstanceSpecificationsResultOutput {
+	return o
+}
+
+func (o GetInstanceSpecificationsResultOutput) ToGetInstanceSpecificationsResultOutputWithContext(ctx context.Context) GetInstanceSpecificationsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetInstanceSpecificationsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceSpecificationsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceSpecificationsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceSpecificationsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstanceSpecificationsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceSpecificationsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceSpecificationsResultOutput) Specifications() GetInstanceSpecificationsSpecificationArrayOutput {
+	return o.ApplyT(func(v GetInstanceSpecificationsResult) []GetInstanceSpecificationsSpecification {
+		return v.Specifications
+	}).(GetInstanceSpecificationsSpecificationArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetInstanceSpecificationsResultOutput{})
 }

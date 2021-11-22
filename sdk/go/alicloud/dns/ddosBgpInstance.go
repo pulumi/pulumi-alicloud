@@ -249,7 +249,7 @@ type DdosBgpInstanceArrayInput interface {
 type DdosBgpInstanceArray []DdosBgpInstanceInput
 
 func (DdosBgpInstanceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DdosBgpInstance)(nil))
+	return reflect.TypeOf((*[]*DdosBgpInstance)(nil)).Elem()
 }
 
 func (i DdosBgpInstanceArray) ToDdosBgpInstanceArrayOutput() DdosBgpInstanceArrayOutput {
@@ -274,7 +274,7 @@ type DdosBgpInstanceMapInput interface {
 type DdosBgpInstanceMap map[string]DdosBgpInstanceInput
 
 func (DdosBgpInstanceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DdosBgpInstance)(nil))
+	return reflect.TypeOf((*map[string]*DdosBgpInstance)(nil)).Elem()
 }
 
 func (i DdosBgpInstanceMap) ToDdosBgpInstanceMapOutput() DdosBgpInstanceMapOutput {
@@ -285,9 +285,7 @@ func (i DdosBgpInstanceMap) ToDdosBgpInstanceMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DdosBgpInstanceMapOutput)
 }
 
-type DdosBgpInstanceOutput struct {
-	*pulumi.OutputState
-}
+type DdosBgpInstanceOutput struct{ *pulumi.OutputState }
 
 func (DdosBgpInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DdosBgpInstance)(nil))
@@ -306,14 +304,12 @@ func (o DdosBgpInstanceOutput) ToDdosBgpInstancePtrOutput() DdosBgpInstancePtrOu
 }
 
 func (o DdosBgpInstanceOutput) ToDdosBgpInstancePtrOutputWithContext(ctx context.Context) DdosBgpInstancePtrOutput {
-	return o.ApplyT(func(v DdosBgpInstance) *DdosBgpInstance {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DdosBgpInstance) *DdosBgpInstance {
 		return &v
 	}).(DdosBgpInstancePtrOutput)
 }
 
-type DdosBgpInstancePtrOutput struct {
-	*pulumi.OutputState
-}
+type DdosBgpInstancePtrOutput struct{ *pulumi.OutputState }
 
 func (DdosBgpInstancePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DdosBgpInstance)(nil))
@@ -325,6 +321,16 @@ func (o DdosBgpInstancePtrOutput) ToDdosBgpInstancePtrOutput() DdosBgpInstancePt
 
 func (o DdosBgpInstancePtrOutput) ToDdosBgpInstancePtrOutputWithContext(ctx context.Context) DdosBgpInstancePtrOutput {
 	return o
+}
+
+func (o DdosBgpInstancePtrOutput) Elem() DdosBgpInstanceOutput {
+	return o.ApplyT(func(v *DdosBgpInstance) DdosBgpInstance {
+		if v != nil {
+			return *v
+		}
+		var ret DdosBgpInstance
+		return ret
+	}).(DdosBgpInstanceOutput)
 }
 
 type DdosBgpInstanceArrayOutput struct{ *pulumi.OutputState }
@@ -368,6 +374,10 @@ func (o DdosBgpInstanceMapOutput) MapIndex(k pulumi.StringInput) DdosBgpInstance
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DdosBgpInstanceInput)(nil)).Elem(), &DdosBgpInstance{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DdosBgpInstancePtrInput)(nil)).Elem(), &DdosBgpInstance{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DdosBgpInstanceArrayInput)(nil)).Elem(), DdosBgpInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DdosBgpInstanceMapInput)(nil)).Elem(), DdosBgpInstanceMap{})
 	pulumi.RegisterOutputType(DdosBgpInstanceOutput{})
 	pulumi.RegisterOutputType(DdosBgpInstancePtrOutput{})
 	pulumi.RegisterOutputType(DdosBgpInstanceArrayOutput{})

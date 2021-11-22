@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ResourceManager
 {
@@ -34,7 +35,7 @@ namespace Pulumi.AliCloud.ResourceManager
         ///             NameRegex = "tftest",
         ///             PolicyType = "Custom",
         ///         }));
-        ///         this.FirstPolicyId = example.Apply(example =&gt; example.Policies[0].Id);
+        ///         this.FirstPolicyId = example.Apply(example =&gt; example.Policies?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstPolicyId")]
@@ -46,6 +47,42 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         public static Task<GetPoliciesResult> InvokeAsync(GetPoliciesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPoliciesResult>("alicloud:resourcemanager/getPolicies:getPolicies", args ?? new GetPoliciesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.86.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.ResourceManager.GetPolicies.InvokeAsync(new AliCloud.ResourceManager.GetPoliciesArgs
+        ///         {
+        ///             DescriptionRegex = "tftest_policy",
+        ///             NameRegex = "tftest",
+        ///             PolicyType = "Custom",
+        ///         }));
+        ///         this.FirstPolicyId = example.Apply(example =&gt; example.Policies?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstPolicyId")]
+        ///     public Output&lt;string&gt; FirstPolicyId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetPoliciesResult> Invoke(GetPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPoliciesResult>("alicloud:resourcemanager/getPolicies:getPolicies", args ?? new GetPoliciesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -79,6 +116,40 @@ namespace Pulumi.AliCloud.ResourceManager
         public string? PolicyType { get; set; }
 
         public GetPoliciesArgs()
+        {
+        }
+    }
+
+    public sealed class GetPoliciesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Resource Manager Policy IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by policy name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.
+        /// </summary>
+        [Input("policyType")]
+        public Input<string>? PolicyType { get; set; }
+
+        public GetPoliciesInvokeArgs()
         {
         }
     }

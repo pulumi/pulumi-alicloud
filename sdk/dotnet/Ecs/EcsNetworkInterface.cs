@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Ecs
     ///         {
     ///             VswitchName = name,
     ///             CidrBlock = "192.168.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
     ///             VpcId = defaultNetwork.Id,
     ///         });
     ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Ecs
     ///                 { "Created", "TF" },
     ///                 { "For", "Test" },
     ///             },
-    ///             ResourceGroupId = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Ids[0]),
+    ///             ResourceGroupId = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Ids?[0]),
     ///         });
     ///     }
     /// 

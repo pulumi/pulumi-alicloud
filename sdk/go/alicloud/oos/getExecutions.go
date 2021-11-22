@@ -4,6 +4,9 @@
 package oos
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -110,4 +113,152 @@ type GetExecutionsResult struct {
 	Status                *string                `pulumi:"status"`
 	Tags                  map[string]interface{} `pulumi:"tags"`
 	TemplateName          *string                `pulumi:"templateName"`
+}
+
+func GetExecutionsOutput(ctx *pulumi.Context, args GetExecutionsOutputArgs, opts ...pulumi.InvokeOption) GetExecutionsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetExecutionsResult, error) {
+			args := v.(GetExecutionsArgs)
+			r, err := GetExecutions(ctx, &args, opts...)
+			return *r, err
+		}).(GetExecutionsResultOutput)
+}
+
+// A collection of arguments for invoking getExecutions.
+type GetExecutionsOutputArgs struct {
+	// The category of template. Valid: `AlarmTrigger`, `EventTrigger`, `Other` and `TimerTrigger`.
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// The time when the execution was ended.
+	EndDate pulumi.StringPtrInput `pulumi:"endDate"`
+	// Execution whose end time is less than or equal to the specified time.
+	EndDateAfter pulumi.StringPtrInput `pulumi:"endDateAfter"`
+	// The user who execute the template.
+	ExecutedBy pulumi.StringPtrInput `pulumi:"executedBy"`
+	// A list of OOS Execution ids.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Whether to include sub-execution.
+	IncludeChildExecution pulumi.BoolPtrInput `pulumi:"includeChildExecution"`
+	// The mode of OOS Execution. Valid: `Automatic`, `Debug`.
+	Mode       pulumi.StringPtrInput `pulumi:"mode"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The id of parent OOS Execution.
+	ParentExecutionId pulumi.StringPtrInput `pulumi:"parentExecutionId"`
+	// The role that executes the current template.
+	RamRole pulumi.StringPtrInput `pulumi:"ramRole"`
+	// The sort field.
+	SortField pulumi.StringPtrInput `pulumi:"sortField"`
+	// The sort order.
+	SortOrder pulumi.StringPtrInput `pulumi:"sortOrder"`
+	// The execution whose start time is greater than or equal to the specified time.
+	StartDateAfter pulumi.StringPtrInput `pulumi:"startDateAfter"`
+	// The execution with start time less than or equal to the specified time.
+	StartDateBefore pulumi.StringPtrInput `pulumi:"startDateBefore"`
+	// The Status of OOS Execution. Valid: `Cancelled`, `Failed`, `Queued`, `Running`, `Started`, `Success`, `Waiting`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The name of execution template.
+	TemplateName pulumi.StringPtrInput `pulumi:"templateName"`
+}
+
+func (GetExecutionsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExecutionsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getExecutions.
+type GetExecutionsResultOutput struct{ *pulumi.OutputState }
+
+func (GetExecutionsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExecutionsResult)(nil)).Elem()
+}
+
+func (o GetExecutionsResultOutput) ToGetExecutionsResultOutput() GetExecutionsResultOutput {
+	return o
+}
+
+func (o GetExecutionsResultOutput) ToGetExecutionsResultOutputWithContext(ctx context.Context) GetExecutionsResultOutput {
+	return o
+}
+
+func (o GetExecutionsResultOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExecutionsResult) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o GetExecutionsResultOutput) EndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExecutionsResult) *string { return v.EndDate }).(pulumi.StringPtrOutput)
+}
+
+func (o GetExecutionsResultOutput) EndDateAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExecutionsResult) *string { return v.EndDateAfter }).(pulumi.StringPtrOutput)
+}
+
+func (o GetExecutionsResultOutput) ExecutedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExecutionsResult) *string { return v.ExecutedBy }).(pulumi.StringPtrOutput)
+}
+
+// A list of OOS Executions. Each element contains the following attributes:
+func (o GetExecutionsResultOutput) Executions() GetExecutionsExecutionArrayOutput {
+	return o.ApplyT(func(v GetExecutionsResult) []GetExecutionsExecution { return v.Executions }).(GetExecutionsExecutionArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetExecutionsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExecutionsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of OOS Execution ids.
+func (o GetExecutionsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExecutionsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetExecutionsResultOutput) IncludeChildExecution() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetExecutionsResult) *bool { return v.IncludeChildExecution }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetExecutionsResultOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExecutionsResult) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+func (o GetExecutionsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExecutionsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetExecutionsResultOutput) ParentExecutionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExecutionsResult) *string { return v.ParentExecutionId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetExecutionsResultOutput) RamRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExecutionsResult) *string { return v.RamRole }).(pulumi.StringPtrOutput)
+}
+
+func (o GetExecutionsResultOutput) SortField() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExecutionsResult) *string { return v.SortField }).(pulumi.StringPtrOutput)
+}
+
+func (o GetExecutionsResultOutput) SortOrder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExecutionsResult) *string { return v.SortOrder }).(pulumi.StringPtrOutput)
+}
+
+func (o GetExecutionsResultOutput) StartDateAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExecutionsResult) *string { return v.StartDateAfter }).(pulumi.StringPtrOutput)
+}
+
+func (o GetExecutionsResultOutput) StartDateBefore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExecutionsResult) *string { return v.StartDateBefore }).(pulumi.StringPtrOutput)
+}
+
+func (o GetExecutionsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExecutionsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetExecutionsResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetExecutionsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o GetExecutionsResultOutput) TemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExecutionsResult) *string { return v.TemplateName }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetExecutionsResultOutput{})
 }

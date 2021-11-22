@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Hbr
 {
@@ -34,7 +35,7 @@ namespace Pulumi.AliCloud.Hbr
         ///         {
         ///             NameRegex = "^my-NasBackupPlan",
         ///         }));
-        ///         this.HbrNasBackupPlanId = ids.Apply(ids =&gt; ids.Plans[0].Id);
+        ///         this.HbrNasBackupPlanId = ids.Apply(ids =&gt; ids.Plans?[0]?.Id);
         ///     }
         /// 
         ///     [Output("hbrNasBackupPlanId")]
@@ -46,6 +47,42 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         public static Task<GetNasBackupPlansResult> InvokeAsync(GetNasBackupPlansArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNasBackupPlansResult>("alicloud:hbr/getNasBackupPlans:getNasBackupPlans", args ?? new GetNasBackupPlansArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Hbr NasBackupPlans of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Hbr.GetNasBackupPlans.InvokeAsync(new AliCloud.Hbr.GetNasBackupPlansArgs
+        ///         {
+        ///             NameRegex = "^my-NasBackupPlan",
+        ///         }));
+        ///         this.HbrNasBackupPlanId = ids.Apply(ids =&gt; ids.Plans?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("hbrNasBackupPlanId")]
+        ///     public Output&lt;string&gt; HbrNasBackupPlanId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetNasBackupPlansResult> Invoke(GetNasBackupPlansInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNasBackupPlansResult>("alicloud:hbr/getNasBackupPlans:getNasBackupPlans", args ?? new GetNasBackupPlansInvokeArgs(), options.WithVersion());
     }
 
 
@@ -85,6 +122,46 @@ namespace Pulumi.AliCloud.Hbr
         public string? VaultId { get; set; }
 
         public GetNasBackupPlansArgs()
+        {
+        }
+    }
+
+    public sealed class GetNasBackupPlansInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The File System ID of Nas.
+        /// </summary>
+        [Input("fileSystemId")]
+        public Input<string>? FileSystemId { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of NasBackupPlan IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by NasBackupPlan name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The ID of backup vault.
+        /// </summary>
+        [Input("vaultId")]
+        public Input<string>? VaultId { get; set; }
+
+        public GetNasBackupPlansInvokeArgs()
         {
         }
     }

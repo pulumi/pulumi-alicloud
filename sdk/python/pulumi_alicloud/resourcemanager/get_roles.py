@@ -13,6 +13,7 @@ __all__ = [
     'GetRolesResult',
     'AwaitableGetRolesResult',
     'get_roles',
+    'get_roles_output',
 ]
 
 @pulumi.output_type
@@ -150,3 +151,32 @@ def get_roles(enable_details: Optional[bool] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         roles=__ret__.roles)
+
+
+@_utilities.lift_output_func(get_roles)
+def get_roles_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                     ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRolesResult]:
+    """
+    This data source provides the Resource Manager Roles of the current Alibaba Cloud user.
+
+    > **NOTE:**  Available in 1.86.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.resourcemanager.get_roles(name_regex="tftest")
+    pulumi.export("firstRoleId", example.roles[0].id)
+    ```
+
+
+    :param bool enable_details: -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+    :param Sequence[str] ids: A list of Resource Manager Role IDs.
+    :param str name_regex: A regex string to filter results by role name.
+    """
+    ...

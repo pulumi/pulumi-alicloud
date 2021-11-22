@@ -321,7 +321,7 @@ type EcdPolicyGroupArrayInput interface {
 type EcdPolicyGroupArray []EcdPolicyGroupInput
 
 func (EcdPolicyGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EcdPolicyGroup)(nil))
+	return reflect.TypeOf((*[]*EcdPolicyGroup)(nil)).Elem()
 }
 
 func (i EcdPolicyGroupArray) ToEcdPolicyGroupArrayOutput() EcdPolicyGroupArrayOutput {
@@ -346,7 +346,7 @@ type EcdPolicyGroupMapInput interface {
 type EcdPolicyGroupMap map[string]EcdPolicyGroupInput
 
 func (EcdPolicyGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EcdPolicyGroup)(nil))
+	return reflect.TypeOf((*map[string]*EcdPolicyGroup)(nil)).Elem()
 }
 
 func (i EcdPolicyGroupMap) ToEcdPolicyGroupMapOutput() EcdPolicyGroupMapOutput {
@@ -357,9 +357,7 @@ func (i EcdPolicyGroupMap) ToEcdPolicyGroupMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(EcdPolicyGroupMapOutput)
 }
 
-type EcdPolicyGroupOutput struct {
-	*pulumi.OutputState
-}
+type EcdPolicyGroupOutput struct{ *pulumi.OutputState }
 
 func (EcdPolicyGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EcdPolicyGroup)(nil))
@@ -378,14 +376,12 @@ func (o EcdPolicyGroupOutput) ToEcdPolicyGroupPtrOutput() EcdPolicyGroupPtrOutpu
 }
 
 func (o EcdPolicyGroupOutput) ToEcdPolicyGroupPtrOutputWithContext(ctx context.Context) EcdPolicyGroupPtrOutput {
-	return o.ApplyT(func(v EcdPolicyGroup) *EcdPolicyGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EcdPolicyGroup) *EcdPolicyGroup {
 		return &v
 	}).(EcdPolicyGroupPtrOutput)
 }
 
-type EcdPolicyGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type EcdPolicyGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (EcdPolicyGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EcdPolicyGroup)(nil))
@@ -397,6 +393,16 @@ func (o EcdPolicyGroupPtrOutput) ToEcdPolicyGroupPtrOutput() EcdPolicyGroupPtrOu
 
 func (o EcdPolicyGroupPtrOutput) ToEcdPolicyGroupPtrOutputWithContext(ctx context.Context) EcdPolicyGroupPtrOutput {
 	return o
+}
+
+func (o EcdPolicyGroupPtrOutput) Elem() EcdPolicyGroupOutput {
+	return o.ApplyT(func(v *EcdPolicyGroup) EcdPolicyGroup {
+		if v != nil {
+			return *v
+		}
+		var ret EcdPolicyGroup
+		return ret
+	}).(EcdPolicyGroupOutput)
 }
 
 type EcdPolicyGroupArrayOutput struct{ *pulumi.OutputState }
@@ -440,6 +446,10 @@ func (o EcdPolicyGroupMapOutput) MapIndex(k pulumi.StringInput) EcdPolicyGroupOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EcdPolicyGroupInput)(nil)).Elem(), &EcdPolicyGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcdPolicyGroupPtrInput)(nil)).Elem(), &EcdPolicyGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcdPolicyGroupArrayInput)(nil)).Elem(), EcdPolicyGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcdPolicyGroupMapInput)(nil)).Elem(), EcdPolicyGroupMap{})
 	pulumi.RegisterOutputType(EcdPolicyGroupOutput{})
 	pulumi.RegisterOutputType(EcdPolicyGroupPtrOutput{})
 	pulumi.RegisterOutputType(EcdPolicyGroupArrayOutput{})

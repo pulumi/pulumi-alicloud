@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const functionsDs = pulumi.output(alicloud.fc.getFunctions({
  *     nameRegex: "sample_fc_function",
  *     serviceName: "sample_service",
- * }, { async: true }));
+ * }));
  *
  * export const firstFcFunctionName = functionsDs.functions[0].name;
  * ```
@@ -45,16 +45,16 @@ export interface GetFunctionsArgs {
     /**
      * - A list of functions ids.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by function name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * Name of the service that contains the functions to find.
      */
-    readonly serviceName: string;
+    serviceName: string;
 }
 
 /**
@@ -80,4 +80,27 @@ export interface GetFunctionsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly serviceName: string;
+}
+
+export function getFunctionsOutput(args: GetFunctionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFunctionsResult> {
+    return pulumi.output(args).apply(a => getFunctions(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFunctions.
+ */
+export interface GetFunctionsOutputArgs {
+    /**
+     * - A list of functions ids.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by function name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Name of the service that contains the functions to find.
+     */
+    serviceName: pulumi.Input<string>;
 }

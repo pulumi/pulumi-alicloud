@@ -1180,6 +1180,22 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReplicaSetInput)(nil)).Elem(), InstanceReplicaSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReplicaSetArrayInput)(nil)).Elem(), InstanceReplicaSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceConfigServerListInput)(nil)).Elem(), ShardingInstanceConfigServerListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceConfigServerListArrayInput)(nil)).Elem(), ShardingInstanceConfigServerListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceMongoListInput)(nil)).Elem(), ShardingInstanceMongoListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceMongoListArrayInput)(nil)).Elem(), ShardingInstanceMongoListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceShardListInput)(nil)).Elem(), ShardingInstanceShardListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceShardListArrayInput)(nil)).Elem(), ShardingInstanceShardListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceMongoInput)(nil)).Elem(), GetInstancesInstanceMongoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceMongoArrayInput)(nil)).Elem(), GetInstancesInstanceMongoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceShardInput)(nil)).Elem(), GetInstancesInstanceShardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceShardArrayInput)(nil)).Elem(), GetInstancesInstanceShardArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(InstanceReplicaSetOutput{})
 	pulumi.RegisterOutputType(InstanceReplicaSetArrayOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceConfigServerListOutput{})

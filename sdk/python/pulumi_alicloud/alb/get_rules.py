@@ -13,6 +13,7 @@ __all__ = [
     'GetRulesResult',
     'AwaitableGetRulesResult',
     'get_rules',
+    'get_rules_output',
 ]
 
 @pulumi.output_type
@@ -184,3 +185,42 @@ def get_rules(ids: Optional[Sequence[str]] = None,
         rule_ids=__ret__.rule_ids,
         rules=__ret__.rules,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_rules)
+def get_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                     listener_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                     load_balancer_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     rule_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                     status: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRulesResult]:
+    """
+    This data source provides the Alb Rules of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.133.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.alb.get_rules(ids=["example_id"])
+    pulumi.export("albRuleId1", ids.rules[0].id)
+    name_regex = alicloud.alb.get_rules(name_regex="^my-Rule")
+    pulumi.export("albRuleId2", name_regex.rules[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Rule IDs.
+    :param Sequence[str] listener_ids: The listener ids.
+    :param Sequence[str] load_balancer_ids: The load balancer ids.
+    :param str name_regex: A regex string to filter results by Rule name.
+    :param Sequence[str] rule_ids: The rule ids.
+    :param str status: The status of the resource.
+    """
+    ...

@@ -236,7 +236,7 @@ type SnapshotPolicyArrayInput interface {
 type SnapshotPolicyArray []SnapshotPolicyInput
 
 func (SnapshotPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SnapshotPolicy)(nil))
+	return reflect.TypeOf((*[]*SnapshotPolicy)(nil)).Elem()
 }
 
 func (i SnapshotPolicyArray) ToSnapshotPolicyArrayOutput() SnapshotPolicyArrayOutput {
@@ -261,7 +261,7 @@ type SnapshotPolicyMapInput interface {
 type SnapshotPolicyMap map[string]SnapshotPolicyInput
 
 func (SnapshotPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SnapshotPolicy)(nil))
+	return reflect.TypeOf((*map[string]*SnapshotPolicy)(nil)).Elem()
 }
 
 func (i SnapshotPolicyMap) ToSnapshotPolicyMapOutput() SnapshotPolicyMapOutput {
@@ -272,9 +272,7 @@ func (i SnapshotPolicyMap) ToSnapshotPolicyMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SnapshotPolicyMapOutput)
 }
 
-type SnapshotPolicyOutput struct {
-	*pulumi.OutputState
-}
+type SnapshotPolicyOutput struct{ *pulumi.OutputState }
 
 func (SnapshotPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SnapshotPolicy)(nil))
@@ -293,14 +291,12 @@ func (o SnapshotPolicyOutput) ToSnapshotPolicyPtrOutput() SnapshotPolicyPtrOutpu
 }
 
 func (o SnapshotPolicyOutput) ToSnapshotPolicyPtrOutputWithContext(ctx context.Context) SnapshotPolicyPtrOutput {
-	return o.ApplyT(func(v SnapshotPolicy) *SnapshotPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SnapshotPolicy) *SnapshotPolicy {
 		return &v
 	}).(SnapshotPolicyPtrOutput)
 }
 
-type SnapshotPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type SnapshotPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (SnapshotPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SnapshotPolicy)(nil))
@@ -312,6 +308,16 @@ func (o SnapshotPolicyPtrOutput) ToSnapshotPolicyPtrOutput() SnapshotPolicyPtrOu
 
 func (o SnapshotPolicyPtrOutput) ToSnapshotPolicyPtrOutputWithContext(ctx context.Context) SnapshotPolicyPtrOutput {
 	return o
+}
+
+func (o SnapshotPolicyPtrOutput) Elem() SnapshotPolicyOutput {
+	return o.ApplyT(func(v *SnapshotPolicy) SnapshotPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret SnapshotPolicy
+		return ret
+	}).(SnapshotPolicyOutput)
 }
 
 type SnapshotPolicyArrayOutput struct{ *pulumi.OutputState }
@@ -355,6 +361,10 @@ func (o SnapshotPolicyMapOutput) MapIndex(k pulumi.StringInput) SnapshotPolicyOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotPolicyInput)(nil)).Elem(), &SnapshotPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotPolicyPtrInput)(nil)).Elem(), &SnapshotPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotPolicyArrayInput)(nil)).Elem(), SnapshotPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotPolicyMapInput)(nil)).Elem(), SnapshotPolicyMap{})
 	pulumi.RegisterOutputType(SnapshotPolicyOutput{})
 	pulumi.RegisterOutputType(SnapshotPolicyPtrOutput{})
 	pulumi.RegisterOutputType(SnapshotPolicyArrayOutput{})

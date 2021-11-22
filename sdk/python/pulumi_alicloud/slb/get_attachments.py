@@ -13,6 +13,7 @@ __all__ = [
     'GetAttachmentsResult',
     'AwaitableGetAttachmentsResult',
     'get_attachments',
+    'get_attachments_output',
 ]
 
 @pulumi.output_type
@@ -119,3 +120,28 @@ def get_attachments(instance_ids: Optional[Sequence[str]] = None,
         load_balancer_id=__ret__.load_balancer_id,
         output_file=__ret__.output_file,
         slb_attachments=__ret__.slb_attachments)
+
+
+@_utilities.lift_output_func(get_attachments)
+def get_attachments_output(instance_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                           load_balancer_id: Optional[pulumi.Input[str]] = None,
+                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAttachmentsResult]:
+    """
+    This data source provides the server load balancer attachments of the current Alibaba Cloud user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    sample_ds = alicloud.slb.get_attachments(load_balancer_id=alicloud_slb_load_balancer["sample_slb"]["id"])
+    pulumi.export("firstSlbAttachmentInstanceId", sample_ds.slb_attachments[0].instance_id)
+    ```
+
+
+    :param Sequence[str] instance_ids: List of attached ECS instance IDs.
+    :param str load_balancer_id: ID of the SLB with attachments.
+    """
+    ...

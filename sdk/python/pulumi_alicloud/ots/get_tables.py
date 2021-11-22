@@ -13,6 +13,7 @@ __all__ = [
     'GetTablesResult',
     'AwaitableGetTablesResult',
     'get_tables',
+    'get_tables_output',
 ]
 
 @pulumi.output_type
@@ -155,3 +156,34 @@ def get_tables(ids: Optional[Sequence[str]] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         tables=__ret__.tables)
+
+
+@_utilities.lift_output_func(get_tables)
+def get_tables_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                      instance_name: Optional[pulumi.Input[str]] = None,
+                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTablesResult]:
+    """
+    This data source provides the ots tables of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.40.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    tables_ds = alicloud.ots.get_tables(instance_name="sample-instance",
+        name_regex="sample-table",
+        output_file="tables.txt")
+    pulumi.export("firstTableId", tables_ds.tables[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of table IDs.
+    :param str instance_name: The name of OTS instance.
+    :param str name_regex: A regex string to filter results by table name.
+    """
+    ...

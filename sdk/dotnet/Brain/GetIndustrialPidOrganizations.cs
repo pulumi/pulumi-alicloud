@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Brain
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Brain
         ///             },
         ///             NameRegex = "tf-testAcc",
         ///         }));
-        ///         this.FirstBrainIndustrialPidOrganizationId = example.Apply(example =&gt; example.Organizations[0].Id);
+        ///         this.FirstBrainIndustrialPidOrganizationId = example.Apply(example =&gt; example.Organizations?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstBrainIndustrialPidOrganizationId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Brain
         /// </summary>
         public static Task<GetIndustrialPidOrganizationsResult> InvokeAsync(GetIndustrialPidOrganizationsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIndustrialPidOrganizationsResult>("alicloud:brain/getIndustrialPidOrganizations:getIndustrialPidOrganizations", args ?? new GetIndustrialPidOrganizationsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Brain Industrial Pid Organizations of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.113.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Brain.GetIndustrialPidOrganizations.InvokeAsync(new AliCloud.Brain.GetIndustrialPidOrganizationsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "3e74e684-cbb5-xxxx",
+        ///             },
+        ///             NameRegex = "tf-testAcc",
+        ///         }));
+        ///         this.FirstBrainIndustrialPidOrganizationId = example.Apply(example =&gt; example.Organizations?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstBrainIndustrialPidOrganizationId")]
+        ///     public Output&lt;string&gt; FirstBrainIndustrialPidOrganizationId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetIndustrialPidOrganizationsResult> Invoke(GetIndustrialPidOrganizationsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetIndustrialPidOrganizationsResult>("alicloud:brain/getIndustrialPidOrganizations:getIndustrialPidOrganizations", args ?? new GetIndustrialPidOrganizationsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -83,6 +124,40 @@ namespace Pulumi.AliCloud.Brain
         public string? ParentOrganizationId { get; set; }
 
         public GetIndustrialPidOrganizationsArgs()
+        {
+        }
+    }
+
+    public sealed class GetIndustrialPidOrganizationsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Pid Organization IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Pid Organization name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The parent organization id.
+        /// </summary>
+        [Input("parentOrganizationId")]
+        public Input<string>? ParentOrganizationId { get; set; }
+
+        public GetIndustrialPidOrganizationsInvokeArgs()
         {
         }
     }

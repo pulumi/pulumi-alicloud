@@ -5,78 +5,240 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
-let __config = new pulumi.Config("alicloud");
+declare var exports: any;
+const __config = new pulumi.Config("alicloud");
 
 /**
  * The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
  * console.
  */
-export let accessKey: string | undefined = __config.get("accessKey");
+export declare const accessKey: string | undefined;
+Object.defineProperty(exports, "accessKey", {
+    get() {
+        return __config.get("accessKey");
+    },
+    enumerable: true,
+});
+
 /**
  * The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
  * Alibaba Cloud console.
  */
-export let accountId: string | undefined = __config.get("accountId");
-export let assumeRole: outputs.config.AssumeRole | undefined = __config.getObject<outputs.config.AssumeRole>("assumeRole");
+export declare const accountId: string | undefined;
+Object.defineProperty(exports, "accountId", {
+    get() {
+        return __config.get("accountId");
+    },
+    enumerable: true,
+});
+
+export declare const assumeRole: outputs.config.AssumeRole | undefined;
+Object.defineProperty(exports, "assumeRole", {
+    get() {
+        return __config.getObject<outputs.config.AssumeRole>("assumeRole");
+    },
+    enumerable: true,
+});
+
 /**
  * The maximum timeout of the client connection server.
  */
-export let clientConnectTimeout: number | undefined = __config.getObject<number>("clientConnectTimeout");
+export declare const clientConnectTimeout: number | undefined;
+Object.defineProperty(exports, "clientConnectTimeout", {
+    get() {
+        return __config.getObject<number>("clientConnectTimeout");
+    },
+    enumerable: true,
+});
+
 /**
  * The maximum timeout of the client read request.
  */
-export let clientReadTimeout: number | undefined = __config.getObject<number>("clientReadTimeout");
+export declare const clientReadTimeout: number | undefined;
+Object.defineProperty(exports, "clientReadTimeout", {
+    get() {
+        return __config.getObject<number>("clientReadTimeout");
+    },
+    enumerable: true,
+});
+
 /**
  * Use this to mark a terraform configuration file source.
  */
-export let configurationSource: string | undefined = __config.get("configurationSource");
+export declare const configurationSource: string | undefined;
+Object.defineProperty(exports, "configurationSource", {
+    get() {
+        return __config.get("configurationSource");
+    },
+    enumerable: true,
+});
+
 /**
  * The URI of sidecar credentials service.
  */
-export let credentialsUri: string | undefined = __config.get("credentialsUri");
+export declare const credentialsUri: string | undefined;
+Object.defineProperty(exports, "credentialsUri", {
+    get() {
+        return __config.get("credentialsUri");
+    },
+    enumerable: true,
+});
+
 /**
  * The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
  * of the Alibaba Cloud console.
  */
-export let ecsRoleName: string | undefined = __config.get("ecsRoleName") || utilities.getEnv("ALICLOUD_ECS_ROLE_NAME");
-export let endpoints: outputs.config.Endpoints[] | undefined = __config.getObject<outputs.config.Endpoints[]>("endpoints");
-export let fc: string | undefined = __config.get("fc");
-export let logEndpoint: string | undefined = __config.get("logEndpoint");
-export let mnsEndpoint: string | undefined = __config.get("mnsEndpoint");
-export let otsInstanceName: string | undefined = __config.get("otsInstanceName");
+export declare const ecsRoleName: string | undefined;
+Object.defineProperty(exports, "ecsRoleName", {
+    get() {
+        return __config.get("ecsRoleName") ?? utilities.getEnv("ALICLOUD_ECS_ROLE_NAME");
+    },
+    enumerable: true,
+});
+
+export declare const endpoints: outputs.config.Endpoints[] | undefined;
+Object.defineProperty(exports, "endpoints", {
+    get() {
+        return __config.getObject<outputs.config.Endpoints[]>("endpoints");
+    },
+    enumerable: true,
+});
+
+export declare const fc: string | undefined;
+Object.defineProperty(exports, "fc", {
+    get() {
+        return __config.get("fc");
+    },
+    enumerable: true,
+});
+
+export declare const logEndpoint: string | undefined;
+Object.defineProperty(exports, "logEndpoint", {
+    get() {
+        return __config.get("logEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const mnsEndpoint: string | undefined;
+Object.defineProperty(exports, "mnsEndpoint", {
+    get() {
+        return __config.get("mnsEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const otsInstanceName: string | undefined;
+Object.defineProperty(exports, "otsInstanceName", {
+    get() {
+        return __config.get("otsInstanceName");
+    },
+    enumerable: true,
+});
+
 /**
  * The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
  */
-export let profile: string | undefined = __config.get("profile") || utilities.getEnv("ALICLOUD_PROFILE");
-export let protocol: string | undefined = __config.get("protocol");
+export declare const profile: string | undefined;
+Object.defineProperty(exports, "profile", {
+    get() {
+        return __config.get("profile") ?? utilities.getEnv("ALICLOUD_PROFILE");
+    },
+    enumerable: true,
+});
+
+export declare const protocol: string | undefined;
+Object.defineProperty(exports, "protocol", {
+    get() {
+        return __config.get("protocol");
+    },
+    enumerable: true,
+});
+
 /**
  * The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
  */
-export let region: string | undefined = __config.get("region") || utilities.getEnv("ALICLOUD_REGION");
+export declare const region: string | undefined;
+Object.defineProperty(exports, "region", {
+    get() {
+        return __config.get("region") ?? utilities.getEnv("ALICLOUD_REGION");
+    },
+    enumerable: true,
+});
+
 /**
  * The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
  * console.
  */
-export let secretKey: string | undefined = __config.get("secretKey");
+export declare const secretKey: string | undefined;
+Object.defineProperty(exports, "secretKey", {
+    get() {
+        return __config.get("secretKey");
+    },
+    enumerable: true,
+});
+
 /**
  * The security transport for the assume role invoking.
  */
-export let secureTransport: string | undefined = __config.get("secureTransport");
+export declare const secureTransport: string | undefined;
+Object.defineProperty(exports, "secureTransport", {
+    get() {
+        return __config.get("secureTransport");
+    },
+    enumerable: true,
+});
+
 /**
  * security token. A security token is only required if you are using Security Token Service.
  */
-export let securityToken: string | undefined = __config.get("securityToken");
-export let securityTransport: string | undefined = __config.get("securityTransport");
+export declare const securityToken: string | undefined;
+Object.defineProperty(exports, "securityToken", {
+    get() {
+        return __config.get("securityToken");
+    },
+    enumerable: true,
+});
+
+export declare const securityTransport: string | undefined;
+Object.defineProperty(exports, "securityTransport", {
+    get() {
+        return __config.get("securityTransport");
+    },
+    enumerable: true,
+});
+
 /**
  * The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
  */
-export let sharedCredentialsFile: string | undefined = __config.get("sharedCredentialsFile");
+export declare const sharedCredentialsFile: string | undefined;
+Object.defineProperty(exports, "sharedCredentialsFile", {
+    get() {
+        return __config.get("sharedCredentialsFile");
+    },
+    enumerable: true,
+});
+
 /**
  * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
  * that are not public (yet).
  */
-export let skipRegionValidation: boolean | undefined = __config.getObject<boolean>("skipRegionValidation");
+export declare const skipRegionValidation: boolean | undefined;
+Object.defineProperty(exports, "skipRegionValidation", {
+    get() {
+        return __config.getObject<boolean>("skipRegionValidation");
+    },
+    enumerable: true,
+});
+
 /**
  * The source ip for the assume role invoking.
  */
-export let sourceIp: string | undefined = __config.get("sourceIp");
+export declare const sourceIp: string | undefined;
+Object.defineProperty(exports, "sourceIp", {
+    get() {
+        return __config.get("sourceIp");
+    },
+    enumerable: true,
+});
+

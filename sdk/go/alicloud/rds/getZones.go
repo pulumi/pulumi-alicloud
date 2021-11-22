@@ -4,6 +4,9 @@
 package rds
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,4 +59,107 @@ type GetZonesResult struct {
 	OutputFile         *string  `pulumi:"outputFile"`
 	// A list of availability zones. Each element contains the following attributes:
 	Zones []GetZonesZone `pulumi:"zones"`
+}
+
+func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi.InvokeOption) GetZonesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetZonesResult, error) {
+			args := v.(GetZonesArgs)
+			r, err := GetZones(ctx, &args, opts...)
+			return *r, err
+		}).(GetZonesResultOutput)
+}
+
+// A collection of arguments for invoking getZones.
+type GetZonesOutputArgs struct {
+	// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+	Category        pulumi.StringPtrInput `pulumi:"category"`
+	DbInstanceClass pulumi.StringPtrInput `pulumi:"dbInstanceClass"`
+	// The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
+	DbInstanceStorageType pulumi.StringPtrInput `pulumi:"dbInstanceStorageType"`
+	// Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
+	Engine pulumi.StringPtrInput `pulumi:"engine"`
+	// Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+	EngineVersion pulumi.StringPtrInput `pulumi:"engineVersion"`
+	// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+	InstanceChargeType pulumi.StringPtrInput `pulumi:"instanceChargeType"`
+	// It has been deprecated from version 1.137.0 and using `multiZone` instead.
+	Multi pulumi.BoolPtrInput `pulumi:"multi"`
+	// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
+	MultiZone  pulumi.BoolPtrInput   `pulumi:"multiZone"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetZonesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getZones.
+type GetZonesResultOutput struct{ *pulumi.OutputState }
+
+func (GetZonesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesResult)(nil)).Elem()
+}
+
+func (o GetZonesResultOutput) ToGetZonesResultOutput() GetZonesResultOutput {
+	return o
+}
+
+func (o GetZonesResultOutput) ToGetZonesResultOutputWithContext(ctx context.Context) GetZonesResultOutput {
+	return o
+}
+
+func (o GetZonesResultOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZonesResult) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o GetZonesResultOutput) DbInstanceClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZonesResult) *string { return v.DbInstanceClass }).(pulumi.StringPtrOutput)
+}
+
+func (o GetZonesResultOutput) DbInstanceStorageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZonesResult) *string { return v.DbInstanceStorageType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetZonesResultOutput) Engine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZonesResult) *string { return v.Engine }).(pulumi.StringPtrOutput)
+}
+
+func (o GetZonesResultOutput) EngineVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZonesResult) *string { return v.EngineVersion }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetZonesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of zone IDs.
+func (o GetZonesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetZonesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetZonesResultOutput) InstanceChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZonesResult) *string { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetZonesResultOutput) Multi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetZonesResult) *bool { return v.Multi }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetZonesResultOutput) MultiZone() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetZonesResult) *bool { return v.MultiZone }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetZonesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZonesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of availability zones. Each element contains the following attributes:
+func (o GetZonesResultOutput) Zones() GetZonesZoneArrayOutput {
+	return o.ApplyT(func(v GetZonesResult) []GetZonesZone { return v.Zones }).(GetZonesZoneArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetZonesResultOutput{})
 }

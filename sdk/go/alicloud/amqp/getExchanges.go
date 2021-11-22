@@ -4,6 +4,9 @@
 package amqp
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -84,4 +87,82 @@ type GetExchangesResult struct {
 	Names           []string `pulumi:"names"`
 	OutputFile      *string  `pulumi:"outputFile"`
 	VirtualHostName string   `pulumi:"virtualHostName"`
+}
+
+func GetExchangesOutput(ctx *pulumi.Context, args GetExchangesOutputArgs, opts ...pulumi.InvokeOption) GetExchangesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetExchangesResult, error) {
+			args := v.(GetExchangesArgs)
+			r, err := GetExchanges(ctx, &args, opts...)
+			return *r, err
+		}).(GetExchangesResultOutput)
+}
+
+// A collection of arguments for invoking getExchanges.
+type GetExchangesOutputArgs struct {
+	// A list of Exchange IDs. Its element value is same as Exchange Name.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The ID of the instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// A regex string to filter results by Exchange name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The name of virtual host where an exchange resides.
+	VirtualHostName pulumi.StringInput `pulumi:"virtualHostName"`
+}
+
+func (GetExchangesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExchangesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getExchanges.
+type GetExchangesResultOutput struct{ *pulumi.OutputState }
+
+func (GetExchangesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExchangesResult)(nil)).Elem()
+}
+
+func (o GetExchangesResultOutput) ToGetExchangesResultOutput() GetExchangesResultOutput {
+	return o
+}
+
+func (o GetExchangesResultOutput) ToGetExchangesResultOutputWithContext(ctx context.Context) GetExchangesResultOutput {
+	return o
+}
+
+func (o GetExchangesResultOutput) Exchanges() GetExchangesExchangeArrayOutput {
+	return o.ApplyT(func(v GetExchangesResult) []GetExchangesExchange { return v.Exchanges }).(GetExchangesExchangeArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetExchangesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExchangesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetExchangesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExchangesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetExchangesResultOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExchangesResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetExchangesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExchangesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetExchangesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExchangesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetExchangesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExchangesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetExchangesResultOutput) VirtualHostName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExchangesResult) string { return v.VirtualHostName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetExchangesResultOutput{})
 }

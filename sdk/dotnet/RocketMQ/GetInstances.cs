@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.RocketMQ
 {
@@ -48,7 +49,7 @@ namespace Pulumi.AliCloud.RocketMQ
         ///                 OutputFile = "instances.txt",
         ///             });
         ///         });
-        ///         this.FirstInstanceId = instancesDs.Apply(instancesDs =&gt; instancesDs.Instances[0].InstanceId);
+        ///         this.FirstInstanceId = instancesDs.Apply(instancesDs =&gt; instancesDs.Instances?[0]?.InstanceId);
         ///     }
         /// 
         ///     [Output("firstInstanceId")]
@@ -60,6 +61,56 @@ namespace Pulumi.AliCloud.RocketMQ
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:rocketmq/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of ONS Instances in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.52.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var config = new Config();
+        ///         var name = config.Get("name") ?? "onsInstanceDatasourceName";
+        ///         var @default = new AliCloud.RocketMQ.Instance("default", new AliCloud.RocketMQ.InstanceArgs
+        ///         {
+        ///             Remark = "default_ons_instance_remark",
+        ///         });
+        ///         var instancesDs = Output.Tuple(@default.Id, @default.Name).Apply(values =&gt;
+        ///         {
+        ///             var id = values.Item1;
+        ///             var name = values.Item2;
+        ///             return AliCloud.RocketMQ.GetInstances.InvokeAsync(new AliCloud.RocketMQ.GetInstancesArgs
+        ///             {
+        ///                 Ids = 
+        ///                 {
+        ///                     id,
+        ///                 },
+        ///                 NameRegex = name,
+        ///                 OutputFile = "instances.txt",
+        ///             });
+        ///         });
+        ///         this.FirstInstanceId = instancesDs.Apply(instancesDs =&gt; instancesDs.Instances?[0]?.InstanceId);
+        ///     }
+        /// 
+        ///     [Output("firstInstanceId")]
+        ///     public Output&lt;string&gt; FirstInstanceId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:rocketmq/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -111,6 +162,58 @@ namespace Pulumi.AliCloud.RocketMQ
         }
 
         public GetInstancesArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Default to `false`. Set it to true can output more details.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of instance IDs to filter results.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by the instance name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
+        /// </summary>
+        [Input("status")]
+        public Input<int>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A map of tags assigned to the Ons instance.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        public GetInstancesInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Ecs
         ///             },
         ///             NameRegex = "the_resource_name",
         ///         }));
-        ///         this.FirstEipAddressId = example.Apply(example =&gt; example.Addresses[0].Id);
+        ///         this.FirstEipAddressId = example.Apply(example =&gt; example.Addresses?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstEipAddressId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public static Task<GetEipAddressesResult> InvokeAsync(GetEipAddressesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEipAddressesResult>("alicloud:ecs/getEipAddresses:getEipAddresses", args ?? new GetEipAddressesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Eip Addresses of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.126.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Ecs.GetEipAddresses.InvokeAsync(new AliCloud.Ecs.GetEipAddressesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "eip-bp1jvx5ki6c********",
+        ///             },
+        ///             NameRegex = "the_resource_name",
+        ///         }));
+        ///         this.FirstEipAddressId = example.Apply(example =&gt; example.Addresses?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstEipAddressId")]
+        ///     public Output&lt;string&gt; FirstEipAddressId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetEipAddressesResult> Invoke(GetEipAddressesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEipAddressesResult>("alicloud:ecs/getEipAddresses:getEipAddresses", args ?? new GetEipAddressesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -176,6 +217,133 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         public GetEipAddressesArgs()
+        {
+        }
+    }
+
+    public sealed class GetEipAddressesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the EIP.
+        /// </summary>
+        [Input("addressName")]
+        public Input<string>? AddressName { get; set; }
+
+        /// <summary>
+        /// The associated instance id.
+        /// </summary>
+        [Input("associatedInstanceId")]
+        public Input<string>? AssociatedInstanceId { get; set; }
+
+        /// <summary>
+        /// The associated instance type.
+        /// </summary>
+        [Input("associatedInstanceType")]
+        public Input<string>? AssociatedInstanceType { get; set; }
+
+        /// <summary>
+        /// The dry run.
+        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// Default to `tue`. Set it to `false` can hidden the `tags` to output.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Address IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The include reservation data. Valid values: `BGP` and `BGP_PRO`.
+        /// </summary>
+        [Input("includeReservationData")]
+        public Input<bool>? IncludeReservationData { get; set; }
+
+        /// <summary>
+        /// The IP address of the EIP.
+        /// </summary>
+        [Input("ipAddress")]
+        public Input<string>? IpAddress { get; set; }
+
+        [Input("ipAddresses")]
+        private InputList<string>? _ipAddresses;
+        [Obsolete(@"Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.")]
+        public InputList<string> IpAddresses
+        {
+            get => _ipAddresses ?? (_ipAddresses = new InputList<string>());
+            set => _ipAddresses = value;
+        }
+
+        /// <summary>
+        /// The Internet service provider (ISP).
+        /// </summary>
+        [Input("isp")]
+        public Input<string>? Isp { get; set; }
+
+        /// <summary>
+        /// The lock reason.
+        /// </summary>
+        [Input("lockReason")]
+        public Input<string>? LockReason { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Address name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The billing method of the EIP.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The IDs of the contiguous EIPs.
+        /// </summary>
+        [Input("segmentInstanceId")]
+        public Input<string>? SegmentInstanceId { get; set; }
+
+        /// <summary>
+        /// The status of the EIP.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        public GetEipAddressesInvokeArgs()
         {
         }
     }

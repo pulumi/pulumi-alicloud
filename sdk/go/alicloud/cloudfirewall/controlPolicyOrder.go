@@ -217,7 +217,7 @@ type ControlPolicyOrderArrayInput interface {
 type ControlPolicyOrderArray []ControlPolicyOrderInput
 
 func (ControlPolicyOrderArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ControlPolicyOrder)(nil))
+	return reflect.TypeOf((*[]*ControlPolicyOrder)(nil)).Elem()
 }
 
 func (i ControlPolicyOrderArray) ToControlPolicyOrderArrayOutput() ControlPolicyOrderArrayOutput {
@@ -242,7 +242,7 @@ type ControlPolicyOrderMapInput interface {
 type ControlPolicyOrderMap map[string]ControlPolicyOrderInput
 
 func (ControlPolicyOrderMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ControlPolicyOrder)(nil))
+	return reflect.TypeOf((*map[string]*ControlPolicyOrder)(nil)).Elem()
 }
 
 func (i ControlPolicyOrderMap) ToControlPolicyOrderMapOutput() ControlPolicyOrderMapOutput {
@@ -253,9 +253,7 @@ func (i ControlPolicyOrderMap) ToControlPolicyOrderMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ControlPolicyOrderMapOutput)
 }
 
-type ControlPolicyOrderOutput struct {
-	*pulumi.OutputState
-}
+type ControlPolicyOrderOutput struct{ *pulumi.OutputState }
 
 func (ControlPolicyOrderOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ControlPolicyOrder)(nil))
@@ -274,14 +272,12 @@ func (o ControlPolicyOrderOutput) ToControlPolicyOrderPtrOutput() ControlPolicyO
 }
 
 func (o ControlPolicyOrderOutput) ToControlPolicyOrderPtrOutputWithContext(ctx context.Context) ControlPolicyOrderPtrOutput {
-	return o.ApplyT(func(v ControlPolicyOrder) *ControlPolicyOrder {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlPolicyOrder) *ControlPolicyOrder {
 		return &v
 	}).(ControlPolicyOrderPtrOutput)
 }
 
-type ControlPolicyOrderPtrOutput struct {
-	*pulumi.OutputState
-}
+type ControlPolicyOrderPtrOutput struct{ *pulumi.OutputState }
 
 func (ControlPolicyOrderPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ControlPolicyOrder)(nil))
@@ -293,6 +289,16 @@ func (o ControlPolicyOrderPtrOutput) ToControlPolicyOrderPtrOutput() ControlPoli
 
 func (o ControlPolicyOrderPtrOutput) ToControlPolicyOrderPtrOutputWithContext(ctx context.Context) ControlPolicyOrderPtrOutput {
 	return o
+}
+
+func (o ControlPolicyOrderPtrOutput) Elem() ControlPolicyOrderOutput {
+	return o.ApplyT(func(v *ControlPolicyOrder) ControlPolicyOrder {
+		if v != nil {
+			return *v
+		}
+		var ret ControlPolicyOrder
+		return ret
+	}).(ControlPolicyOrderOutput)
 }
 
 type ControlPolicyOrderArrayOutput struct{ *pulumi.OutputState }
@@ -336,6 +342,10 @@ func (o ControlPolicyOrderMapOutput) MapIndex(k pulumi.StringInput) ControlPolic
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlPolicyOrderInput)(nil)).Elem(), &ControlPolicyOrder{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlPolicyOrderPtrInput)(nil)).Elem(), &ControlPolicyOrder{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlPolicyOrderArrayInput)(nil)).Elem(), ControlPolicyOrderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlPolicyOrderMapInput)(nil)).Elem(), ControlPolicyOrderMap{})
 	pulumi.RegisterOutputType(ControlPolicyOrderOutput{})
 	pulumi.RegisterOutputType(ControlPolicyOrderPtrOutput{})
 	pulumi.RegisterOutputType(ControlPolicyOrderArrayOutput{})

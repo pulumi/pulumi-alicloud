@@ -21,11 +21,11 @@ import * as utilities from "./utilities";
  * const ids = alicloud.getMscSubWebhooks({
  *     ids: ["example_id"],
  * });
- * export const mscSubWebhookId1 = ids.then(ids => ids.webhooks[0].id);
+ * export const mscSubWebhookId1 = ids.then(ids => ids.webhooks?[0]?.id);
  * const nameRegex = alicloud.getMscSubWebhooks({
  *     nameRegex: "^my-Webhook",
  * });
- * export const mscSubWebhookId2 = nameRegex.then(nameRegex => nameRegex.webhooks[0].id);
+ * export const mscSubWebhookId2 = nameRegex.then(nameRegex => nameRegex.webhooks?[0]?.id);
  * ```
  */
 export function getMscSubWebhooks(args?: GetMscSubWebhooksArgs, opts?: pulumi.InvokeOptions): Promise<GetMscSubWebhooksResult> {
@@ -51,12 +51,12 @@ export interface GetMscSubWebhooksArgs {
     /**
      * A list of Webhook IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Webhook name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -72,4 +72,23 @@ export interface GetMscSubWebhooksResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly webhooks: outputs.GetMscSubWebhooksWebhook[];
+}
+
+export function getMscSubWebhooksOutput(args?: GetMscSubWebhooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMscSubWebhooksResult> {
+    return pulumi.output(args).apply(a => getMscSubWebhooks(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMscSubWebhooks.
+ */
+export interface GetMscSubWebhooksOutputArgs {
+    /**
+     * A list of Webhook IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Webhook name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

@@ -90,11 +90,11 @@ export interface HAVipAttachmentState {
     /**
      * The havipId of the havip attachment, the field can't be changed.
      */
-    readonly havipId?: pulumi.Input<string>;
+    havipId?: pulumi.Input<string>;
     /**
      * The instanceId of the havip attachment, the field can't be changed.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
 }
 
 /**
@@ -104,9 +104,9 @@ export interface HAVipAttachmentArgs {
     /**
      * The havipId of the havip attachment, the field can't be changed.
      */
-    readonly havipId: pulumi.Input<string>;
+    havipId: pulumi.Input<string>;
     /**
      * The instanceId of the havip attachment, the field can't be changed.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
 }

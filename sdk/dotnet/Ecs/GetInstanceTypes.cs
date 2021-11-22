@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -37,7 +38,7 @@ namespace Pulumi.AliCloud.Ecs
         ///         }));
         ///         var instance = new AliCloud.Ecs.Instance("instance", new AliCloud.Ecs.InstanceArgs
         ///         {
-        ///             InstanceType = typesDs.Apply(typesDs =&gt; typesDs.InstanceTypes[0].Id),
+        ///             InstanceType = typesDs.Apply(typesDs =&gt; typesDs.InstanceTypes?[0]?.Id),
         ///         });
         ///     }
         /// 
@@ -48,6 +49,44 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public static Task<GetInstanceTypesResult> InvokeAsync(GetInstanceTypesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:ecs/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the ECS instance types of Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
+        /// 
+        /// &gt; **NOTE:** If one instance type is sold out, it will not be exported.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var typesDs = Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
+        ///         {
+        ///             CpuCoreCount = 1,
+        ///             MemorySize = 2,
+        ///         }));
+        ///         var instance = new AliCloud.Ecs.Instance("instance", new AliCloud.Ecs.InstanceArgs
+        ///         {
+        ///             InstanceType = typesDs.Apply(typesDs =&gt; typesDs.InstanceTypes?[0]?.Id),
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstanceTypesResult> Invoke(GetInstanceTypesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("alicloud:ecs/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -135,6 +174,94 @@ namespace Pulumi.AliCloud.Ecs
         public string? SystemDiskCategory { get; set; }
 
         public GetInstanceTypesArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceTypesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The zone where instance types are supported.
+        /// </summary>
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
+
+        /// <summary>
+        /// Filter the results to a specific number of cpu cores.
+        /// </summary>
+        [Input("cpuCoreCount")]
+        public Input<int>? CpuCoreCount { get; set; }
+
+        /// <summary>
+        /// Filter the result whose network interface number is no more than `eni_amount`.
+        /// </summary>
+        [Input("eniAmount")]
+        public Input<int>? EniAmount { get; set; }
+
+        /// <summary>
+        /// The GPU amount of an instance type.
+        /// </summary>
+        [Input("gpuAmount")]
+        public Input<int>? GpuAmount { get; set; }
+
+        /// <summary>
+        /// The GPU spec of an instance type.
+        /// </summary>
+        [Input("gpuSpec")]
+        public Input<string>? GpuSpec { get; set; }
+
+        /// <summary>
+        /// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+        /// </summary>
+        [Input("instanceChargeType")]
+        public Input<string>? InstanceChargeType { get; set; }
+
+        /// <summary>
+        /// Filter the results based on their family name. For example: 'ecs.n4'.
+        /// </summary>
+        [Input("instanceTypeFamily")]
+        public Input<string>? InstanceTypeFamily { get; set; }
+
+        /// <summary>
+        /// If true, outdated instance types are included in the results. Default to false.
+        /// </summary>
+        [Input("isOutdated")]
+        public Input<bool>? IsOutdated { get; set; }
+
+        [Input("kubernetesNodeRole")]
+        public Input<string>? KubernetesNodeRole { get; set; }
+
+        /// <summary>
+        /// Filter the results to a specific memory size in GB.
+        /// </summary>
+        [Input("memorySize")]
+        public Input<double>? MemorySize { get; set; }
+
+        /// <summary>
+        /// Filter the results by network type. Valid values: `Classic` and `Vpc`.
+        /// </summary>
+        [Input("networkType")]
+        public Input<string>? NetworkType { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        [Input("sortedBy")]
+        public Input<string>? SortedBy { get; set; }
+
+        /// <summary>
+        /// Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+        /// </summary>
+        [Input("spotStrategy")]
+        public Input<string>? SpotStrategy { get; set; }
+
+        /// <summary>
+        /// Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`. Default to `cloud_efficiency`.
+        /// </summary>
+        [Input("systemDiskCategory")]
+        public Input<string>? SystemDiskCategory { get; set; }
+
+        public GetInstanceTypesInvokeArgs()
         {
         }
     }

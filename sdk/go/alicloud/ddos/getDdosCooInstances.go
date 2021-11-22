@@ -4,6 +4,9 @@
 package ddos
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,4 +70,73 @@ type GetDdosCooInstancesResult struct {
 	// A list of instance names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetDdosCooInstancesOutput(ctx *pulumi.Context, args GetDdosCooInstancesOutputArgs, opts ...pulumi.InvokeOption) GetDdosCooInstancesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDdosCooInstancesResult, error) {
+			args := v.(GetDdosCooInstancesArgs)
+			r, err := GetDdosCooInstances(ctx, &args, opts...)
+			return *r, err
+		}).(GetDdosCooInstancesResultOutput)
+}
+
+// A collection of arguments for invoking getDdosCooInstances.
+type GetDdosCooInstancesOutputArgs struct {
+	// A list of instance IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by the instance name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetDdosCooInstancesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDdosCooInstancesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDdosCooInstances.
+type GetDdosCooInstancesResultOutput struct{ *pulumi.OutputState }
+
+func (GetDdosCooInstancesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDdosCooInstancesResult)(nil)).Elem()
+}
+
+func (o GetDdosCooInstancesResultOutput) ToGetDdosCooInstancesResultOutput() GetDdosCooInstancesResultOutput {
+	return o
+}
+
+func (o GetDdosCooInstancesResultOutput) ToGetDdosCooInstancesResultOutputWithContext(ctx context.Context) GetDdosCooInstancesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDdosCooInstancesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosCooInstancesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of instance IDs.
+func (o GetDdosCooInstancesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDdosCooInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// A list of apis. Each element contains the following attributes:
+func (o GetDdosCooInstancesResultOutput) Instances() GetDdosCooInstancesInstanceArrayOutput {
+	return o.ApplyT(func(v GetDdosCooInstancesResult) []GetDdosCooInstancesInstance { return v.Instances }).(GetDdosCooInstancesInstanceArrayOutput)
+}
+
+func (o GetDdosCooInstancesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDdosCooInstancesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of instance names.
+func (o GetDdosCooInstancesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDdosCooInstancesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDdosCooInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDdosCooInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDdosCooInstancesResultOutput{})
 }

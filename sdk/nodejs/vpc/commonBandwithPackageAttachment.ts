@@ -90,11 +90,11 @@ export interface CommonBandwithPackageAttachmentState {
     /**
      * The bandwidthPackageId of the common bandwidth package attachment, the field can't be changed.
      */
-    readonly bandwidthPackageId?: pulumi.Input<string>;
+    bandwidthPackageId?: pulumi.Input<string>;
     /**
      * The instanceId of the common bandwidth package attachment, the field can't be changed.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
 }
 
 /**
@@ -104,9 +104,9 @@ export interface CommonBandwithPackageAttachmentArgs {
     /**
      * The bandwidthPackageId of the common bandwidth package attachment, the field can't be changed.
      */
-    readonly bandwidthPackageId: pulumi.Input<string>;
+    bandwidthPackageId: pulumi.Input<string>;
     /**
      * The instanceId of the common bandwidth package attachment, the field can't be changed.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
 }

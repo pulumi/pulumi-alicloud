@@ -775,6 +775,16 @@ func (o GetTablesTablePrimaryKeyArrayOutput) Index(i pulumi.IntInput) GetTablesT
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TablePrimaryKeyInput)(nil)).Elem(), TablePrimaryKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TablePrimaryKeyArrayInput)(nil)).Elem(), TablePrimaryKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAttachmentsAttachmentInput)(nil)).Elem(), GetInstanceAttachmentsAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAttachmentsAttachmentArrayInput)(nil)).Elem(), GetInstanceAttachmentsAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableInput)(nil)).Elem(), GetTablesTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableArrayInput)(nil)).Elem(), GetTablesTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTablePrimaryKeyInput)(nil)).Elem(), GetTablesTablePrimaryKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTablePrimaryKeyArrayInput)(nil)).Elem(), GetTablesTablePrimaryKeyArray{})
 	pulumi.RegisterOutputType(TablePrimaryKeyOutput{})
 	pulumi.RegisterOutputType(TablePrimaryKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceAttachmentsAttachmentOutput{})

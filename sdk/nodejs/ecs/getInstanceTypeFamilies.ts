@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const defaultInstanceTypeFamilies = pulumi.output(alicloud.ecs.getInstanceTypeFamilies({
  *     instanceChargeType: "PrePaid",
- * }, { async: true }));
+ * }));
  *
  * export const firstInstanceTypeFamilyId = defaultInstanceTypeFamilies.families[0].id;
  * export const instanceIds = defaultInstanceTypeFamilies.ids;
@@ -49,20 +49,20 @@ export interface GetInstanceTypeFamiliesArgs {
     /**
      * The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
      */
-    readonly generation?: string;
+    generation?: string;
     /**
      * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
      */
-    readonly instanceChargeType?: string;
-    readonly outputFile?: string;
+    instanceChargeType?: string;
+    outputFile?: string;
     /**
      * Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
      */
-    readonly spotStrategy?: string;
+    spotStrategy?: string;
     /**
      * The Zone to launch the instance.
      */
-    readonly zoneId?: string;
+    zoneId?: string;
 }
 
 /**
@@ -86,4 +86,31 @@ export interface GetInstanceTypeFamiliesResult {
     readonly outputFile?: string;
     readonly spotStrategy?: string;
     readonly zoneId?: string;
+}
+
+export function getInstanceTypeFamiliesOutput(args?: GetInstanceTypeFamiliesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTypeFamiliesResult> {
+    return pulumi.output(args).apply(a => getInstanceTypeFamilies(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstanceTypeFamilies.
+ */
+export interface GetInstanceTypeFamiliesOutputArgs {
+    /**
+     * The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
+     */
+    generation?: pulumi.Input<string>;
+    /**
+     * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+     */
+    instanceChargeType?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+     */
+    spotStrategy?: pulumi.Input<string>;
+    /**
+     * The Zone to launch the instance.
+     */
+    zoneId?: pulumi.Input<string>;
 }

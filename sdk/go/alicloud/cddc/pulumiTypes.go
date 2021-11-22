@@ -544,6 +544,12 @@ func (o GetDedicatedHostGroupsGroupZoneIdListArrayOutput) Index(i pulumi.IntInpu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostGroupsGroupInput)(nil)).Elem(), GetDedicatedHostGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostGroupsGroupArrayInput)(nil)).Elem(), GetDedicatedHostGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeInput)(nil)).Elem(), GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArrayInput)(nil)).Elem(), GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostGroupsGroupZoneIdListInput)(nil)).Elem(), GetDedicatedHostGroupsGroupZoneIdListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostGroupsGroupZoneIdListArrayInput)(nil)).Elem(), GetDedicatedHostGroupsGroupZoneIdListArray{})
 	pulumi.RegisterOutputType(GetDedicatedHostGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetDedicatedHostGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeOutput{})

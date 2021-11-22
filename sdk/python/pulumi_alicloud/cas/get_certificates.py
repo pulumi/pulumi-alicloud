@@ -13,6 +13,7 @@ __all__ = [
     'GetCertificatesResult',
     'AwaitableGetCertificatesResult',
     'get_certificates',
+    'get_certificates_output',
 ]
 
 warnings.warn("""This resource has been deprecated in favour of getServiceCertificates""", DeprecationWarning)
@@ -151,3 +152,20 @@ def get_certificates(enable_details: Optional[bool] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_certificates)
+def get_certificates_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                            ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            lang: Optional[pulumi.Input[Optional[str]]] = None,
+                            name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificatesResult]:
+    """
+    Use this data source to access information about an existing resource.
+
+    :param Sequence[str] ids: A list of cert IDs.
+    :param str name_regex: A regex string to filter results by the certificate name.
+    """
+    pulumi.log.warn("""get_certificates is deprecated: This resource has been deprecated in favour of getServiceCertificates""")
+    ...

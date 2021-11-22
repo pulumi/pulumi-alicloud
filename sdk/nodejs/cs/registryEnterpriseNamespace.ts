@@ -128,19 +128,19 @@ export interface RegistryEnterpriseNamespaceState {
     /**
      * Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
      */
-    readonly autoCreate?: pulumi.Input<boolean>;
+    autoCreate?: pulumi.Input<boolean>;
     /**
      * `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
      */
-    readonly defaultVisibility?: pulumi.Input<string>;
+    defaultVisibility?: pulumi.Input<string>;
     /**
      * ID of Container Registry Enterprise Edition instance.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -150,17 +150,17 @@ export interface RegistryEnterpriseNamespaceArgs {
     /**
      * Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
      */
-    readonly autoCreate: pulumi.Input<boolean>;
+    autoCreate: pulumi.Input<boolean>;
     /**
      * `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
      */
-    readonly defaultVisibility: pulumi.Input<string>;
+    defaultVisibility: pulumi.Input<string>;
     /**
      * ID of Container Registry Enterprise Edition instance.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

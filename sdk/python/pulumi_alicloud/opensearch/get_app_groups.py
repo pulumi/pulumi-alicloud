@@ -13,6 +13,7 @@ __all__ = [
     'GetAppGroupsResult',
     'AwaitableGetAppGroupsResult',
     'get_app_groups',
+    'get_app_groups_output',
 ]
 
 @pulumi.output_type
@@ -207,3 +208,54 @@ def get_app_groups(enable_details: Optional[bool] = None,
         output_file=__ret__.output_file,
         resource_group_id=__ret__.resource_group_id,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_app_groups)
+def get_app_groups_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                          ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                          instance_id: Optional[pulumi.Input[Optional[str]]] = None,
+                          name: Optional[pulumi.Input[Optional[str]]] = None,
+                          name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                          resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                          type: Optional[pulumi.Input[Optional[str]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppGroupsResult]:
+    """
+    This data source provides the Open Search App Groups of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.136.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "tf_testacc"
+    default_app_group = alicloud.opensearch.AppGroup("defaultAppGroup",
+        app_group_name=name,
+        payment_type="PayAsYouGo",
+        type="standard",
+        quota=alicloud.opensearch.AppGroupQuotaArgs(
+            doc_size=1,
+            compute_resource=20,
+            spec="opensearch.share.common",
+        ))
+    default_app_groups = default_app_group.id.apply(lambda id: alicloud.opensearch.get_app_groups(ids=[id]))
+    pulumi.export("appGroups", default_app_groups.groups)
+    ```
+
+
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of App Group IDs. Its element value is same as App Group Name.
+    :param str instance_id: The Instance ID.
+    :param str name_regex: A regex string to filter results by App Group name.
+    :param str resource_group_id: The Resource Group ID.
+    :param str type: Application type. Valid Values: `standard`, `enhanced`.
+    """
+    ...

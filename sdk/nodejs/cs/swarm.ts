@@ -133,49 +133,49 @@ export class Swarm extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Swarm resources.
  */
 export interface SwarmState {
-    readonly agentVersion?: pulumi.Input<string>;
-    readonly cidrBlock?: pulumi.Input<string>;
-    readonly diskCategory?: pulumi.Input<string>;
-    readonly diskSize?: pulumi.Input<number>;
-    readonly imageId?: pulumi.Input<string>;
-    readonly instanceType?: pulumi.Input<string>;
-    readonly isOutdated?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly namePrefix?: pulumi.Input<string>;
-    readonly needSlb?: pulumi.Input<boolean>;
-    readonly nodeNumber?: pulumi.Input<number>;
-    readonly nodes?: pulumi.Input<pulumi.Input<inputs.cs.SwarmNode>[]>;
-    readonly password?: pulumi.Input<string>;
-    readonly releaseEip?: pulumi.Input<boolean>;
-    readonly securityGroupId?: pulumi.Input<string>;
+    agentVersion?: pulumi.Input<string>;
+    cidrBlock?: pulumi.Input<string>;
+    diskCategory?: pulumi.Input<string>;
+    diskSize?: pulumi.Input<number>;
+    imageId?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string>;
+    isOutdated?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string>;
+    needSlb?: pulumi.Input<boolean>;
+    nodeNumber?: pulumi.Input<number>;
+    nodes?: pulumi.Input<pulumi.Input<inputs.cs.SwarmNode>[]>;
+    password?: pulumi.Input<string>;
+    releaseEip?: pulumi.Input<boolean>;
+    securityGroupId?: pulumi.Input<string>;
     /**
      * @deprecated Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
      */
-    readonly size?: pulumi.Input<number>;
-    readonly slbId?: pulumi.Input<string>;
-    readonly vpcId?: pulumi.Input<string>;
-    readonly vswitchId?: pulumi.Input<string>;
+    size?: pulumi.Input<number>;
+    slbId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Swarm resource.
  */
 export interface SwarmArgs {
-    readonly cidrBlock: pulumi.Input<string>;
-    readonly diskCategory?: pulumi.Input<string>;
-    readonly diskSize?: pulumi.Input<number>;
-    readonly imageId?: pulumi.Input<string>;
-    readonly instanceType: pulumi.Input<string>;
-    readonly isOutdated?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly namePrefix?: pulumi.Input<string>;
-    readonly needSlb?: pulumi.Input<boolean>;
-    readonly nodeNumber?: pulumi.Input<number>;
-    readonly password: pulumi.Input<string>;
-    readonly releaseEip?: pulumi.Input<boolean>;
+    cidrBlock: pulumi.Input<string>;
+    diskCategory?: pulumi.Input<string>;
+    diskSize?: pulumi.Input<number>;
+    imageId?: pulumi.Input<string>;
+    instanceType: pulumi.Input<string>;
+    isOutdated?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string>;
+    needSlb?: pulumi.Input<boolean>;
+    nodeNumber?: pulumi.Input<number>;
+    password: pulumi.Input<string>;
+    releaseEip?: pulumi.Input<boolean>;
     /**
      * @deprecated Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
      */
-    readonly size?: pulumi.Input<number>;
-    readonly vswitchId: pulumi.Input<string>;
+    size?: pulumi.Input<number>;
+    vswitchId: pulumi.Input<string>;
 }

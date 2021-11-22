@@ -13,6 +13,7 @@ __all__ = [
     'GetInstancesResult',
     'AwaitableGetInstancesResult',
     'get_instances',
+    'get_instances_output',
 ]
 
 @pulumi.output_type
@@ -200,7 +201,7 @@ def get_instances(connection_mode: Optional[str] = None,
                   vswitch_id: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
-    The `rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
+    The `rds.get_instances` data source provides a collection of RDS instances available in Alibaba Cloud account.
     Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
 
     ## Example Usage
@@ -264,3 +265,51 @@ def get_instances(connection_mode: Optional[str] = None,
         tags=__ret__.tags,
         vpc_id=__ret__.vpc_id,
         vswitch_id=__ret__.vswitch_id)
+
+
+@_utilities.lift_output_func(get_instances)
+def get_instances_output(connection_mode: Optional[pulumi.Input[Optional[str]]] = None,
+                         db_type: Optional[pulumi.Input[Optional[str]]] = None,
+                         enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                         engine: Optional[pulumi.Input[Optional[str]]] = None,
+                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         status: Optional[pulumi.Input[Optional[str]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+    """
+    The `rds.get_instances` data source provides a collection of RDS instances available in Alibaba Cloud account.
+    Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    db_instances_ds = alicloud.rds.get_instances(name_regex="data-\\d+",
+        status="Running",
+        tags={
+            "size": "tiny",
+            "type": "database",
+        })
+    pulumi.export("firstDbInstanceId", db_instances_ds.instances[0].id)
+    ```
+
+
+    :param str connection_mode: `Standard` for standard access mode and `Safe` for high security access mode.
+    :param str db_type: `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
+    :param bool enable_details: Default to `false`. Set it to `true` can output parameter template about resource attributes.
+    :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+    :param Sequence[str] ids: A list of RDS instance IDs.
+    :param str name_regex: A regex string to filter results by instance name.
+    :param str status: Status of the instance.
+    :param Mapping[str, Any] tags: A map of tags assigned to the DB instances. 
+           Note: Before 1.60.0, the value's format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\"key1\":\"value1\"}"`
+    :param str vpc_id: Used to retrieve instances belong to specified VPC.
+    :param str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.
+    """
+    ...

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.PolarDB
 {
@@ -34,7 +35,7 @@ namespace Pulumi.AliCloud.PolarDB
         ///             DescriptionRegex = "pc-\\w+",
         ///             Status = "Running",
         ///         }));
-        ///         this.FirstPolardbClusterId = polardbClustersDs.Apply(polardbClustersDs =&gt; polardbClustersDs.Clusters[0].Id);
+        ///         this.FirstPolardbClusterId = polardbClustersDs.Apply(polardbClustersDs =&gt; polardbClustersDs.Clusters?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstPolardbClusterId")]
@@ -46,6 +47,42 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:polardb/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `alicloud.polardb.getClusters` data source provides a collection of PolarDB clusters available in Alibaba Cloud account.
+        /// Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
+        /// 
+        /// &gt; **NOTE:** Available in v1.66.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var polardbClustersDs = Output.Create(AliCloud.PolarDB.GetClusters.InvokeAsync(new AliCloud.PolarDB.GetClustersArgs
+        ///         {
+        ///             DescriptionRegex = "pc-\\w+",
+        ///             Status = "Running",
+        ///         }));
+        ///         this.FirstPolardbClusterId = polardbClustersDs.Apply(polardbClustersDs =&gt; polardbClustersDs.Clusters?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstPolardbClusterId")]
+        ///     public Output&lt;string&gt; FirstPolardbClusterId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:polardb/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -99,6 +136,60 @@ namespace Pulumi.AliCloud.PolarDB
         }
 
         public GetClustersArgs()
+        {
+        }
+    }
+
+    public sealed class GetClustersInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
+        /// </summary>
+        [Input("dbType")]
+        public Input<string>? DbType { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by cluster description.
+        /// </summary>
+        [Input("descriptionRegex")]
+        public Input<string>? DescriptionRegex { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of PolarDB cluster IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// status of the cluster.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        public GetClustersInvokeArgs()
         {
         }
     }

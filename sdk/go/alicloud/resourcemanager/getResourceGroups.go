@@ -4,6 +4,9 @@
 package resourcemanager
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -72,4 +75,86 @@ type GetResourceGroupsResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// The status of the regional resource group.
 	Status *string `pulumi:"status"`
+}
+
+func GetResourceGroupsOutput(ctx *pulumi.Context, args GetResourceGroupsOutputArgs, opts ...pulumi.InvokeOption) GetResourceGroupsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetResourceGroupsResult, error) {
+			args := v.(GetResourceGroupsArgs)
+			r, err := GetResourceGroups(ctx, &args, opts...)
+			return *r, err
+		}).(GetResourceGroupsResultOutput)
+}
+
+// A collection of arguments for invoking getResourceGroups.
+type GetResourceGroupsOutputArgs struct {
+	// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of resource group IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by resource group name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetResourceGroupsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceGroupsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getResourceGroups.
+type GetResourceGroupsResultOutput struct{ *pulumi.OutputState }
+
+func (GetResourceGroupsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceGroupsResult)(nil)).Elem()
+}
+
+func (o GetResourceGroupsResultOutput) ToGetResourceGroupsResultOutput() GetResourceGroupsResultOutput {
+	return o
+}
+
+func (o GetResourceGroupsResultOutput) ToGetResourceGroupsResultOutputWithContext(ctx context.Context) GetResourceGroupsResultOutput {
+	return o
+}
+
+func (o GetResourceGroupsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceGroupsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// A list of resource groups. Each element contains the following attributes:
+func (o GetResourceGroupsResultOutput) Groups() GetResourceGroupsGroupArrayOutput {
+	return o.ApplyT(func(v GetResourceGroupsResult) []GetResourceGroupsGroup { return v.Groups }).(GetResourceGroupsGroupArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetResourceGroupsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceGroupsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of resource group IDs.
+func (o GetResourceGroupsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetResourceGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetResourceGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of resource group names.
+func (o GetResourceGroupsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetResourceGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetResourceGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The status of the regional resource group.
+func (o GetResourceGroupsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceGroupsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetResourceGroupsResultOutput{})
 }

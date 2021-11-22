@@ -13,6 +13,7 @@ __all__ = [
     'GetEcsBackupClientsResult',
     'AwaitableGetEcsBackupClientsResult',
     'get_ecs_backup_clients',
+    'get_ecs_backup_clients_output',
 ]
 
 @pulumi.output_type
@@ -136,3 +137,37 @@ def get_ecs_backup_clients(ids: Optional[Sequence[str]] = None,
         instance_ids=__ret__.instance_ids,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_ecs_backup_clients)
+def get_ecs_backup_clients_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                  instance_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                  status: Optional[pulumi.Input[Optional[str]]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEcsBackupClientsResult]:
+    """
+    This data source provides the Hbr Ecs File Backup Clients of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.132.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.ecs.get_instances(name_regex="ecs_instance_name",
+        status="Running")
+    ids = alicloud.hbr.get_ecs_backup_clients(ids=[alicloud_hbr_ecs_backup_client["default"]["id"]],
+        instance_ids=[alicloud_hbr_ecs_backup_client["default"]["instance_id"]])
+    pulumi.export("hbrEcsBackupClientId1", ids.clients[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Ecs Backup Client IDs.
+    :param Sequence[str] instance_ids: A list of ECS Instance IDs.
+    :param str status: The status of the resource.
+    """
+    ...

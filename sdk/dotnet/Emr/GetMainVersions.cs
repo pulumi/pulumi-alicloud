@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Emr
 {
@@ -38,8 +39,8 @@ namespace Pulumi.AliCloud.Emr
         ///             },
         ///             EmrVersion = "EMR-3.22.0",
         ///         }));
-        ///         this.FirstMainVersion = @default.Apply(@default =&gt; @default.MainVersions[0].EmrVersion);
-        ///         this.ThisClusterTypes = @default.Apply(@default =&gt; @default.MainVersions[0].ClusterTypes);
+        ///         this.FirstMainVersion = @default.Apply(@default =&gt; @default.MainVersions?[0]?.EmrVersion);
+        ///         this.ThisClusterTypes = @default.Apply(@default =&gt; @default.MainVersions?[0]?.ClusterTypes);
         ///     }
         /// 
         ///     [Output("firstMainVersion")]
@@ -53,6 +54,49 @@ namespace Pulumi.AliCloud.Emr
         /// </summary>
         public static Task<GetMainVersionsResult> InvokeAsync(GetMainVersionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMainVersionsResult>("alicloud:emr/getMainVersions:getMainVersions", args ?? new GetMainVersionsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `alicloud.emr.getMainVersions` data source provides a collection of emr 
+        /// main versions available in Alibaba Cloud account when create a emr cluster.
+        /// 
+        /// &gt; **NOTE:** Available in 1.59.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Emr.GetMainVersions.InvokeAsync(new AliCloud.Emr.GetMainVersionsArgs
+        ///         {
+        ///             ClusterTypes = 
+        ///             {
+        ///                 "HADOOP",
+        ///                 "ZOOKEEPER",
+        ///             },
+        ///             EmrVersion = "EMR-3.22.0",
+        ///         }));
+        ///         this.FirstMainVersion = @default.Apply(@default =&gt; @default.MainVersions?[0]?.EmrVersion);
+        ///         this.ThisClusterTypes = @default.Apply(@default =&gt; @default.MainVersions?[0]?.ClusterTypes);
+        ///     }
+        /// 
+        ///     [Output("firstMainVersion")]
+        ///     public Output&lt;string&gt; FirstMainVersion { get; set; }
+        ///     [Output("thisClusterTypes")]
+        ///     public Output&lt;string&gt; ThisClusterTypes { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetMainVersionsResult> Invoke(GetMainVersionsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMainVersionsResult>("alicloud:emr/getMainVersions:getMainVersions", args ?? new GetMainVersionsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -81,6 +125,35 @@ namespace Pulumi.AliCloud.Emr
         public string? OutputFile { get; set; }
 
         public GetMainVersionsArgs()
+        {
+        }
+    }
+
+    public sealed class GetMainVersionsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("clusterTypes")]
+        private InputList<string>? _clusterTypes;
+
+        /// <summary>
+        /// The supported clusterType of this emr version.
+        /// Possible values may be any one or combination of these: ["HADOOP", "DRUID", "KAFKA", "ZOOKEEPER", "FLINK", "CLICKHOUSE"]
+        /// </summary>
+        public InputList<string> ClusterTypes
+        {
+            get => _clusterTypes ?? (_clusterTypes = new InputList<string>());
+            set => _clusterTypes = value;
+        }
+
+        /// <summary>
+        /// The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
+        /// </summary>
+        [Input("emrVersion")]
+        public Input<string>? EmrVersion { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetMainVersionsInvokeArgs()
         {
         }
     }

@@ -4,6 +4,9 @@
 package actiontrail
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,4 +70,72 @@ type GetSaslUsersResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// A list of sasl users. Each element contains the following attributes:
 	Users []GetSaslUsersUser `pulumi:"users"`
+}
+
+func GetSaslUsersOutput(ctx *pulumi.Context, args GetSaslUsersOutputArgs, opts ...pulumi.InvokeOption) GetSaslUsersResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetSaslUsersResult, error) {
+			args := v.(GetSaslUsersArgs)
+			r, err := GetSaslUsers(ctx, &args, opts...)
+			return *r, err
+		}).(GetSaslUsersResultOutput)
+}
+
+// A collection of arguments for invoking getSaslUsers.
+type GetSaslUsersOutputArgs struct {
+	// ID of the ALIKAFKA Instance that owns the sasl users.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// A regex string to filter results by the username.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetSaslUsersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSaslUsersArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSaslUsers.
+type GetSaslUsersResultOutput struct{ *pulumi.OutputState }
+
+func (GetSaslUsersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSaslUsersResult)(nil)).Elem()
+}
+
+func (o GetSaslUsersResultOutput) ToGetSaslUsersResultOutput() GetSaslUsersResultOutput {
+	return o
+}
+
+func (o GetSaslUsersResultOutput) ToGetSaslUsersResultOutputWithContext(ctx context.Context) GetSaslUsersResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSaslUsersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSaslUsersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetSaslUsersResultOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSaslUsersResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetSaslUsersResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSaslUsersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of sasl usernames.
+func (o GetSaslUsersResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSaslUsersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSaslUsersResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSaslUsersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of sasl users. Each element contains the following attributes:
+func (o GetSaslUsersResultOutput) Users() GetSaslUsersUserArrayOutput {
+	return o.ApplyT(func(v GetSaslUsersResult) []GetSaslUsersUser { return v.Users }).(GetSaslUsersUserArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSaslUsersResultOutput{})
 }

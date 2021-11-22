@@ -1369,6 +1369,20 @@ func (o GetSimpleOfficeSitesSiteArrayOutput) Index(i pulumi.IntInput) GetSimpleO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EcdPolicyGroupAuthorizeAccessPolicyRuleInput)(nil)).Elem(), EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcdPolicyGroupAuthorizeAccessPolicyRuleArrayInput)(nil)).Elem(), EcdPolicyGroupAuthorizeAccessPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcdPolicyGroupAuthorizeSecurityPolicyRuleInput)(nil)).Elem(), EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayInput)(nil)).Elem(), EcdPolicyGroupAuthorizeSecurityPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNasFileSystemsSystemInput)(nil)).Elem(), GetNasFileSystemsSystemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNasFileSystemsSystemArrayInput)(nil)).Elem(), GetNasFileSystemsSystemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyGroupsGroupInput)(nil)).Elem(), GetPolicyGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyGroupsGroupArrayInput)(nil)).Elem(), GetPolicyGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyGroupsGroupAuthorizeAccessPolicyRuleInput)(nil)).Elem(), GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArrayInput)(nil)).Elem(), GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleInput)(nil)).Elem(), GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayInput)(nil)).Elem(), GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSimpleOfficeSitesSiteInput)(nil)).Elem(), GetSimpleOfficeSitesSiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSimpleOfficeSitesSiteArrayInput)(nil)).Elem(), GetSimpleOfficeSitesSiteArray{})
 	pulumi.RegisterOutputType(EcdPolicyGroupAuthorizeAccessPolicyRuleOutput{})
 	pulumi.RegisterOutputType(EcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(EcdPolicyGroupAuthorizeSecurityPolicyRuleOutput{})

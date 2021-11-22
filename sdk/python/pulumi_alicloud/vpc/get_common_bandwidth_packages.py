@@ -13,6 +13,7 @@ __all__ = [
     'GetCommonBandwidthPackagesResult',
     'AwaitableGetCommonBandwidthPackagesResult',
     'get_common_bandwidth_packages',
+    'get_common_bandwidth_packages_output',
 ]
 
 @pulumi.output_type
@@ -221,3 +222,50 @@ def get_common_bandwidth_packages(bandwidth_package_name: Optional[str] = None,
         packages=__ret__.packages,
         resource_group_id=__ret__.resource_group_id,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_common_bandwidth_packages)
+def get_common_bandwidth_packages_output(bandwidth_package_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                         dry_run: Optional[pulumi.Input[Optional[bool]]] = None,
+                                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                         include_reservation_data: Optional[pulumi.Input[Optional[bool]]] = None,
+                                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                         resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                         status: Optional[pulumi.Input[Optional[str]]] = None,
+                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCommonBandwidthPackagesResult]:
+    """
+    This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
+
+    > **NOTE:** Available in 1.36.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    foo_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("fooCommonBandwithPackage",
+        bandwidth="2",
+        description="tf-testAcc-CommonBandwidthPackage")
+    foo_common_bandwidth_packages = foo_common_bandwith_package.id.apply(lambda id: alicloud.vpc.get_common_bandwidth_packages(ids=[id],
+        name_regex="^tf-testAcc.*"))
+    ```
+    ## Public ip addresses Block
+
+      The public ip addresses mapping supports the following:
+
+      * `ip_address`   - The address of the EIP.
+      * `allocation_id` - The ID of the EIP instance.
+      * `bandwidth_package_ip_relation_status` - The IP relation status of bandwidth package.
+
+
+    :param str bandwidth_package_name: The name of bandwidth package.
+    :param bool dry_run: Specifies whether to precheck only the request.
+    :param Sequence[str] ids: A list of Common Bandwidth Packages IDs.
+    :param bool include_reservation_data: Specifies whether to return data of orders that have not taken effect.
+    :param str name_regex: A regex string to filter results by name.
+    :param str resource_group_id: The Id of resource group which the common bandwidth package belongs.
+    :param str status: The status of bandwidth package. Valid values: `Available` and `Pending`.
+    """
+    ...

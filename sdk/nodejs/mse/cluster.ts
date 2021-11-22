@@ -192,11 +192,11 @@ export interface ClusterState {
     /**
      * The whitelist.
      */
-    readonly aclEntryLists?: pulumi.Input<pulumi.Input<string>[]>;
+    aclEntryLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The alias of MSE Cluster.
      */
-    readonly clusterAliasName?: pulumi.Input<string>;
+    clusterAliasName?: pulumi.Input<string>;
     /**
      * The engine specification of MSE Cluster. Valid values:
      * `MSE_SC_1_2_200_c`：1C2G
@@ -204,47 +204,47 @@ export interface ClusterState {
      * `MSE_SC_4_8_200_c`：4C8G
      * `MSE_SC_8_16_200_c`：8C16G
      */
-    readonly clusterSpecification?: pulumi.Input<string>;
+    clusterSpecification?: pulumi.Input<string>;
     /**
      * The type of MSE Cluster.
      */
-    readonly clusterType?: pulumi.Input<string>;
+    clusterType?: pulumi.Input<string>;
     /**
      * The version of MSE Cluster.
      */
-    readonly clusterVersion?: pulumi.Input<string>;
+    clusterVersion?: pulumi.Input<string>;
     /**
      * The type of Disk.
      */
-    readonly diskType?: pulumi.Input<string>;
+    diskType?: pulumi.Input<string>;
     /**
      * The count of instance.
      */
-    readonly instanceCount?: pulumi.Input<number>;
+    instanceCount?: pulumi.Input<number>;
     /**
      * The type of network. Valid values: "privatenet" and "pubnet".
      */
-    readonly netType?: pulumi.Input<string>;
+    netType?: pulumi.Input<string>;
     /**
      * The specification of private network SLB.
      */
-    readonly privateSlbSpecification?: pulumi.Input<string>;
+    privateSlbSpecification?: pulumi.Input<string>;
     /**
      * The public network bandwidth. `0` means no access to the public network.
      */
-    readonly pubNetworkFlow?: pulumi.Input<string>;
+    pubNetworkFlow?: pulumi.Input<string>;
     /**
      * The specification of public network SLB.
      */
-    readonly pubSlbSpecification?: pulumi.Input<string>;
+    pubSlbSpecification?: pulumi.Input<string>;
     /**
      * The status of MSE Cluster.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The id of VSwitch.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
 }
 
 /**
@@ -254,11 +254,11 @@ export interface ClusterArgs {
     /**
      * The whitelist.
      */
-    readonly aclEntryLists?: pulumi.Input<pulumi.Input<string>[]>;
+    aclEntryLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The alias of MSE Cluster.
      */
-    readonly clusterAliasName?: pulumi.Input<string>;
+    clusterAliasName?: pulumi.Input<string>;
     /**
      * The engine specification of MSE Cluster. Valid values:
      * `MSE_SC_1_2_200_c`：1C2G
@@ -266,41 +266,41 @@ export interface ClusterArgs {
      * `MSE_SC_4_8_200_c`：4C8G
      * `MSE_SC_8_16_200_c`：8C16G
      */
-    readonly clusterSpecification: pulumi.Input<string>;
+    clusterSpecification: pulumi.Input<string>;
     /**
      * The type of MSE Cluster.
      */
-    readonly clusterType: pulumi.Input<string>;
+    clusterType: pulumi.Input<string>;
     /**
      * The version of MSE Cluster.
      */
-    readonly clusterVersion: pulumi.Input<string>;
+    clusterVersion: pulumi.Input<string>;
     /**
      * The type of Disk.
      */
-    readonly diskType?: pulumi.Input<string>;
+    diskType?: pulumi.Input<string>;
     /**
      * The count of instance.
      */
-    readonly instanceCount: pulumi.Input<number>;
+    instanceCount: pulumi.Input<number>;
     /**
      * The type of network. Valid values: "privatenet" and "pubnet".
      */
-    readonly netType: pulumi.Input<string>;
+    netType: pulumi.Input<string>;
     /**
      * The specification of private network SLB.
      */
-    readonly privateSlbSpecification?: pulumi.Input<string>;
+    privateSlbSpecification?: pulumi.Input<string>;
     /**
      * The public network bandwidth. `0` means no access to the public network.
      */
-    readonly pubNetworkFlow?: pulumi.Input<string>;
+    pubNetworkFlow?: pulumi.Input<string>;
     /**
      * The specification of public network SLB.
      */
-    readonly pubSlbSpecification?: pulumi.Input<string>;
+    pubSlbSpecification?: pulumi.Input<string>;
     /**
      * The id of VSwitch.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
 }

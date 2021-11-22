@@ -142,19 +142,19 @@ export interface ControlPolicyState {
     /**
      * The name of control policy.
      */
-    readonly controlPolicyName?: pulumi.Input<string>;
+    controlPolicyName?: pulumi.Input<string>;
     /**
      * The description of control policy.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The effect scope. Valid values `RAM`.
      */
-    readonly effectScope?: pulumi.Input<string>;
+    effectScope?: pulumi.Input<string>;
     /**
      * The policy document of control policy.
      */
-    readonly policyDocument?: pulumi.Input<string>;
+    policyDocument?: pulumi.Input<string>;
 }
 
 /**
@@ -164,17 +164,17 @@ export interface ControlPolicyArgs {
     /**
      * The name of control policy.
      */
-    readonly controlPolicyName: pulumi.Input<string>;
+    controlPolicyName: pulumi.Input<string>;
     /**
      * The description of control policy.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The effect scope. Valid values `RAM`.
      */
-    readonly effectScope: pulumi.Input<string>;
+    effectScope: pulumi.Input<string>;
     /**
      * The policy document of control policy.
      */
-    readonly policyDocument: pulumi.Input<string>;
+    policyDocument: pulumi.Input<string>;
 }

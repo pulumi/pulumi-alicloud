@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["3e74e684-cbb5-xxxx"],
  *     nameRegex: "tf-testAcc",
  * });
- * export const firstBrainIndustrialPidProjectId = example.then(example => example.projects[0].id);
+ * export const firstBrainIndustrialPidProjectId = example.then(example => example.projects?[0]?.id);
  * ```
  */
 export function getIndustrialPidProjects(args?: GetIndustrialPidProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetIndustrialPidProjectsResult> {
@@ -50,20 +50,20 @@ export interface GetIndustrialPidProjectsArgs {
     /**
      * A list of Pid Project IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Pid Project name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The ID of Pid Organization.
      */
-    readonly pidOrganizationId?: string;
+    pidOrganizationId?: string;
     /**
      * The name of Pid Project.
      */
-    readonly pidProjectName?: string;
+    pidProjectName?: string;
 }
 
 /**
@@ -81,4 +81,31 @@ export interface GetIndustrialPidProjectsResult {
     readonly pidOrganizationId?: string;
     readonly pidProjectName?: string;
     readonly projects: outputs.brain.GetIndustrialPidProjectsProject[];
+}
+
+export function getIndustrialPidProjectsOutput(args?: GetIndustrialPidProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIndustrialPidProjectsResult> {
+    return pulumi.output(args).apply(a => getIndustrialPidProjects(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getIndustrialPidProjects.
+ */
+export interface GetIndustrialPidProjectsOutputArgs {
+    /**
+     * A list of Pid Project IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Pid Project name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The ID of Pid Organization.
+     */
+    pidOrganizationId?: pulumi.Input<string>;
+    /**
+     * The name of Pid Project.
+     */
+    pidProjectName?: pulumi.Input<string>;
 }

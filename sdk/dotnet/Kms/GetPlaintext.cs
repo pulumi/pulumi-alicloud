@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Kms
 {
@@ -13,6 +14,9 @@ namespace Pulumi.AliCloud.Kms
     {
         public static Task<GetPlaintextResult> InvokeAsync(GetPlaintextArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPlaintextResult>("alicloud:kms/getPlaintext:getPlaintext", args ?? new GetPlaintextArgs(), options.WithVersion());
+
+        public static Output<GetPlaintextResult> Invoke(GetPlaintextInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetPlaintextResult>("alicloud:kms/getPlaintext:getPlaintext", args ?? new GetPlaintextInvokeArgs(), options.WithVersion());
     }
 
 
@@ -38,6 +42,32 @@ namespace Pulumi.AliCloud.Kms
         }
 
         public GetPlaintextArgs()
+        {
+        }
+    }
+
+    public sealed class GetPlaintextInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ciphertext to be decrypted.
+        /// </summary>
+        [Input("ciphertextBlob", required: true)]
+        public Input<string> CiphertextBlob { get; set; } = null!;
+
+        [Input("encryptionContext")]
+        private InputMap<string>? _encryptionContext;
+
+        /// <summary>
+        /// -
+        /// (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+        /// </summary>
+        public InputMap<string> EncryptionContext
+        {
+            get => _encryptionContext ?? (_encryptionContext = new InputMap<string>());
+            set => _encryptionContext = value;
+        }
+
+        public GetPlaintextInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cassandra
 {
@@ -32,7 +33,7 @@ namespace Pulumi.AliCloud.Cassandra
         ///         // Create an Cassandra cluster with the first matched zone
         ///         var cassandra = new AliCloud.Cassandra.Cluster("cassandra", new AliCloud.Cassandra.ClusterArgs
         ///         {
-        ///             ZoneId = zonesIds.Apply(zonesIds =&gt; zonesIds.Zones[0].Id),
+        ///             ZoneId = zonesIds.Apply(zonesIds =&gt; zonesIds.Zones?[0]?.Id),
         ///         });
         ///         // Other properties...
         ///     }
@@ -44,6 +45,40 @@ namespace Pulumi.AliCloud.Cassandra
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:cassandra/getZones:getZones", args ?? new GetZonesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides availability zones for Cassandra that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+        /// 
+        /// &gt; **NOTE:** Available in v1.88.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var zonesIds = Output.Create(AliCloud.Cassandra.GetZones.InvokeAsync());
+        ///         // Create an Cassandra cluster with the first matched zone
+        ///         var cassandra = new AliCloud.Cassandra.Cluster("cassandra", new AliCloud.Cassandra.ClusterArgs
+        ///         {
+        ///             ZoneId = zonesIds.Apply(zonesIds =&gt; zonesIds.Zones?[0]?.Id),
+        ///         });
+        ///         // Other properties...
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:cassandra/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -59,6 +94,22 @@ namespace Pulumi.AliCloud.Cassandra
         public string? OutputFile { get; set; }
 
         public GetZonesArgs()
+        {
+        }
+    }
+
+    public sealed class GetZonesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Cassandra clusters.
+        /// </summary>
+        [Input("multi")]
+        public Input<bool>? Multi { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetZonesInvokeArgs()
         {
         }
     }

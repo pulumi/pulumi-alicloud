@@ -37,26 +37,26 @@ export interface GetTransitRouterRouteTablesArgs {
     /**
      * A list of CEN Transit Router Route Table IDs.
      */
-    readonly ids?: string[];
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
-    readonly status?: string;
+    ids?: string[];
+    nameRegex?: string;
+    outputFile?: string;
+    status?: string;
     /**
      * ID of the CEN Transit Router Route Table.
      */
-    readonly transitRouterId: string;
+    transitRouterId: string;
     /**
      * A list of ID of the CEN Transit Router Route Table.
      */
-    readonly transitRouterRouteTableIds?: string[];
+    transitRouterRouteTableIds?: string[];
     /**
      * A list of name of the CEN Transit Router Route Table.
      */
-    readonly transitRouterRouteTableNames?: string[];
+    transitRouterRouteTableNames?: string[];
     /**
      * The status of the transit router route table to query.
      */
-    readonly transitRouterRouteTableStatus?: string;
+    transitRouterRouteTableStatus?: string;
 }
 
 /**
@@ -89,4 +89,37 @@ export interface GetTransitRouterRouteTablesResult {
      * The status of the route table.
      */
     readonly transitRouterRouteTableStatus?: string;
+}
+
+export function getTransitRouterRouteTablesOutput(args: GetTransitRouterRouteTablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterRouteTablesResult> {
+    return pulumi.output(args).apply(a => getTransitRouterRouteTables(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTransitRouterRouteTables.
+ */
+export interface GetTransitRouterRouteTablesOutputArgs {
+    /**
+     * A list of CEN Transit Router Route Table IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
+    /**
+     * ID of the CEN Transit Router Route Table.
+     */
+    transitRouterId: pulumi.Input<string>;
+    /**
+     * A list of ID of the CEN Transit Router Route Table.
+     */
+    transitRouterRouteTableIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of name of the CEN Transit Router Route Table.
+     */
+    transitRouterRouteTableNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The status of the transit router route table to query.
+     */
+    transitRouterRouteTableStatus?: pulumi.Input<string>;
 }

@@ -13,6 +13,7 @@ __all__ = [
     'GetAlidnsDomainsResult',
     'AwaitableGetAlidnsDomainsResult',
     'get_alidns_domains',
+    'get_alidns_domains_output',
 ]
 
 @pulumi.output_type
@@ -308,3 +309,54 @@ def get_alidns_domains(ali_domain: Optional[bool] = None,
         starmark=__ret__.starmark,
         tags=__ret__.tags,
         version_code=__ret__.version_code)
+
+
+@_utilities.lift_output_func(get_alidns_domains)
+def get_alidns_domains_output(ali_domain: Optional[pulumi.Input[Optional[bool]]] = None,
+                              domain_name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                              enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                              group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                              group_name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                              ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                              instance_id: Optional[pulumi.Input[Optional[str]]] = None,
+                              key_word: Optional[pulumi.Input[Optional[str]]] = None,
+                              lang: Optional[pulumi.Input[Optional[str]]] = None,
+                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                              resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                              search_mode: Optional[pulumi.Input[Optional[str]]] = None,
+                              starmark: Optional[pulumi.Input[Optional[bool]]] = None,
+                              tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                              version_code: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlidnsDomainsResult]:
+    """
+    This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:**  Available in 1.95.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    domains_ds = alicloud.dns.get_alidns_domains(domain_name_regex="^hegu",
+        output_file="domains.txt")
+    pulumi.export("firstDomainId", domains_ds.domains[0].domain_id)
+    ```
+
+
+    :param bool ali_domain: Specifies whether the domain is from Alibaba Cloud or not.
+    :param str domain_name_regex: A regex string to filter results by the domain name.
+    :param str group_id: Domain group ID, if not filled, the default is all groups.
+    :param str group_name_regex: A regex string to filter results by the group name.
+    :param Sequence[str] ids: A list of domain IDs.
+    :param str instance_id: Cloud analysis product ID.
+    :param str key_word: The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
+    :param str lang: User language.
+    :param str resource_group_id: The Id of resource group which the dns belongs.
+    :param str search_mode: Search mode, `LIKE` fuzzy search, `EXACT` exact search.
+    :param bool starmark: Whether to query the domain name star.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param str version_code: Cloud analysis version code.
+    """
+    ...

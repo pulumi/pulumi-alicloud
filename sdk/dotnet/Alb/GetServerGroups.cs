@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Alb
 {
@@ -31,12 +32,12 @@ namespace Pulumi.AliCloud.Alb
         ///     public MyStack()
         ///     {
         ///         var ids = Output.Create(AliCloud.Alb.GetServerGroups.InvokeAsync());
-        ///         this.AlbServerGroupId1 = ids.Apply(ids =&gt; ids.Groups[0].Id);
+        ///         this.AlbServerGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.Alb.GetServerGroups.InvokeAsync(new AliCloud.Alb.GetServerGroupsArgs
         ///         {
         ///             NameRegex = "^my-ServerGroup",
         ///         }));
-        ///         this.AlbServerGroupId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups[0].Id);
+        ///         this.AlbServerGroupId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups?[0]?.Id);
         ///     }
         /// 
         ///     [Output("albServerGroupId1")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Alb
         /// </summary>
         public static Task<GetServerGroupsResult> InvokeAsync(GetServerGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServerGroupsResult>("alicloud:alb/getServerGroups:getServerGroups", args ?? new GetServerGroupsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Alb Server Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.131.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Alb.GetServerGroups.InvokeAsync());
+        ///         this.AlbServerGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.Alb.GetServerGroups.InvokeAsync(new AliCloud.Alb.GetServerGroupsArgs
+        ///         {
+        ///             NameRegex = "^my-ServerGroup",
+        ///         }));
+        ///         this.AlbServerGroupId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("albServerGroupId1")]
+        ///     public Output&lt;string&gt; AlbServerGroupId1 { get; set; }
+        ///     [Output("albServerGroupId2")]
+        ///     public Output&lt;string&gt; AlbServerGroupId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetServerGroupsResult> Invoke(GetServerGroupsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServerGroupsResult>("alicloud:alb/getServerGroups:getServerGroups", args ?? new GetServerGroupsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -124,6 +165,81 @@ namespace Pulumi.AliCloud.Alb
         public string? VpcId { get; set; }
 
         public GetServerGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetServerGroupsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Server Group IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Server Group name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("serverGroupIds")]
+        private InputList<string>? _serverGroupIds;
+
+        /// <summary>
+        /// The server group ids.
+        /// </summary>
+        public InputList<string> ServerGroupIds
+        {
+            get => _serverGroupIds ?? (_serverGroupIds = new InputList<string>());
+            set => _serverGroupIds = value;
+        }
+
+        /// <summary>
+        /// The name of the resource.
+        /// </summary>
+        [Input("serverGroupName")]
+        public Input<string>? ServerGroupName { get; set; }
+
+        /// <summary>
+        /// The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The ID of the VPC that you want to access.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        public GetServerGroupsInvokeArgs()
         {
         }
     }

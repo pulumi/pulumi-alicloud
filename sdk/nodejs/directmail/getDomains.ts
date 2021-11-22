@@ -21,17 +21,17 @@ import * as utilities from "../utilities";
  * const ids = alicloud.directmail.getDomains({
  *     ids: ["example_id"],
  * });
- * export const directMailDomainId1 = ids.then(ids => ids.domains[0].id);
+ * export const directMailDomainId1 = ids.then(ids => ids.domains?[0]?.id);
  * const nameRegex = alicloud.directmail.getDomains({
  *     nameRegex: "^my-Domain",
  * });
- * export const directMailDomainId2 = nameRegex.then(nameRegex => nameRegex.domains[0].id);
+ * export const directMailDomainId2 = nameRegex.then(nameRegex => nameRegex.domains?[0]?.id);
  * const example = alicloud.directmail.getDomains({
  *     status: "1",
  *     keyWord: "^my-Domain",
  *     ids: ["example_id"],
  * });
- * export const directMailDomainId3 = example.then(example => example.domains[0].id);
+ * export const directMailDomainId3 = example.then(example => example.domains?[0]?.id);
  * ```
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
@@ -60,24 +60,24 @@ export interface GetDomainsArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Domain IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
      */
-    readonly keyWord?: string;
+    keyWord?: string;
     /**
      * A regex string to filter results by Domain name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -96,4 +96,35 @@ export interface GetDomainsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
+    return pulumi.output(args).apply(a => getDomains(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDomains.
+ */
+export interface GetDomainsOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Domain IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
+     */
+    keyWord?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Domain name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
+     */
+    status?: pulumi.Input<string>;
 }

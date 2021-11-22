@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -39,7 +40,7 @@ namespace Pulumi.AliCloud.Ecs
         ///         {
         ///             VpcId = id,
         ///         }));
-        ///         this.FirstGroupId = primarySecGroupsDs.Apply(primarySecGroupsDs =&gt; primarySecGroupsDs.Groups[0].Id);
+        ///         this.FirstGroupId = primarySecGroupsDs.Apply(primarySecGroupsDs =&gt; primarySecGroupsDs.Groups?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstGroupId")]
@@ -51,6 +52,47 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public static Task<GetSecurityGroupsResult> InvokeAsync(GetSecurityGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecurityGroupsResult>("alicloud:ecs/getSecurityGroups:getSecurityGroups", args ?? new GetSecurityGroupsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var secGroupsDs = Output.Create(AliCloud.Ecs.GetSecurityGroups.InvokeAsync(new AliCloud.Ecs.GetSecurityGroupsArgs
+        ///         {
+        ///             NameRegex = "^web-",
+        ///             OutputFile = "web_access.json",
+        ///         }));
+        ///         // In conjunction with a VPC
+        ///         var primaryVpcDs = new AliCloud.Vpc.Network("primaryVpcDs", new AliCloud.Vpc.NetworkArgs
+        ///         {
+        ///         });
+        ///         var primarySecGroupsDs = primaryVpcDs.Id.Apply(id =&gt; AliCloud.Ecs.GetSecurityGroups.InvokeAsync(new AliCloud.Ecs.GetSecurityGroupsArgs
+        ///         {
+        ///             VpcId = id,
+        ///         }));
+        ///         this.FirstGroupId = primarySecGroupsDs.Apply(primarySecGroupsDs =&gt; primarySecGroupsDs.Groups?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstGroupId")]
+        ///     public Output&lt;string&gt; FirstGroupId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSecurityGroupsResult> Invoke(GetSecurityGroupsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSecurityGroupsResult>("alicloud:ecs/getSecurityGroups:getSecurityGroups", args ?? new GetSecurityGroupsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -122,6 +164,78 @@ namespace Pulumi.AliCloud.Ecs
         public string? VpcId { get; set; }
 
         public GetSecurityGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetSecurityGroupsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Security Group IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter the resulting security groups by their names.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The Id of resource group which the security_group belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A map of tags assigned to the ECS instances. It must be in the format:
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var taggedSecurityGroups = Output.Create(AliCloud.Ecs.GetSecurityGroups.InvokeAsync(new AliCloud.Ecs.GetSecurityGroupsArgs
+        ///         {
+        ///             Tags = 
+        ///             {
+        ///                 { "tagKey1", "tagValue1" },
+        ///                 { "tagKey2", "tagValue2" },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Used to retrieve security groups that belong to the specified VPC ID.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        public GetSecurityGroupsInvokeArgs()
         {
         }
     }

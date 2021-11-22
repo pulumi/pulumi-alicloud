@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Slb
 {
@@ -32,7 +33,7 @@ namespace Pulumi.AliCloud.Slb
         ///         {
         ///             LoadBalancerId = alicloud_slb_load_balancer.Sample_slb.Id,
         ///         }));
-        ///         this.FirstSlbBackendServerId = sampleDs.Apply(sampleDs =&gt; sampleDs.BackendServers[0].Id);
+        ///         this.FirstSlbBackendServerId = sampleDs.Apply(sampleDs =&gt; sampleDs.BackendServers?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstSlbBackendServerId")]
@@ -44,6 +45,40 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         public static Task<GetBackendServersResult> InvokeAsync(GetBackendServersArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBackendServersResult>("alicloud:slb/getBackendServers:getBackendServers", args ?? new GetBackendServersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the server load balancer backend servers related to a server load balancer..
+        /// 
+        /// &gt; **NOTE:** Available in 1.53.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var sampleDs = Output.Create(AliCloud.Slb.GetBackendServers.InvokeAsync(new AliCloud.Slb.GetBackendServersArgs
+        ///         {
+        ///             LoadBalancerId = alicloud_slb_load_balancer.Sample_slb.Id,
+        ///         }));
+        ///         this.FirstSlbBackendServerId = sampleDs.Apply(sampleDs =&gt; sampleDs.BackendServers?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstSlbBackendServerId")]
+        ///     public Output&lt;string&gt; FirstSlbBackendServerId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetBackendServersResult> Invoke(GetBackendServersInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetBackendServersResult>("alicloud:slb/getBackendServers:getBackendServers", args ?? new GetBackendServersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -71,6 +106,34 @@ namespace Pulumi.AliCloud.Slb
         public string? OutputFile { get; set; }
 
         public GetBackendServersArgs()
+        {
+        }
+    }
+
+    public sealed class GetBackendServersInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// List of attached ECS instance IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// ID of the SLB with attachments.
+        /// </summary>
+        [Input("loadBalancerId", required: true)]
+        public Input<string> LoadBalancerId { get; set; } = null!;
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetBackendServersInvokeArgs()
         {
         }
     }

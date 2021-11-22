@@ -191,7 +191,7 @@ type AlidnsDomainAttachmentArrayInput interface {
 type AlidnsDomainAttachmentArray []AlidnsDomainAttachmentInput
 
 func (AlidnsDomainAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AlidnsDomainAttachment)(nil))
+	return reflect.TypeOf((*[]*AlidnsDomainAttachment)(nil)).Elem()
 }
 
 func (i AlidnsDomainAttachmentArray) ToAlidnsDomainAttachmentArrayOutput() AlidnsDomainAttachmentArrayOutput {
@@ -216,7 +216,7 @@ type AlidnsDomainAttachmentMapInput interface {
 type AlidnsDomainAttachmentMap map[string]AlidnsDomainAttachmentInput
 
 func (AlidnsDomainAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AlidnsDomainAttachment)(nil))
+	return reflect.TypeOf((*map[string]*AlidnsDomainAttachment)(nil)).Elem()
 }
 
 func (i AlidnsDomainAttachmentMap) ToAlidnsDomainAttachmentMapOutput() AlidnsDomainAttachmentMapOutput {
@@ -227,9 +227,7 @@ func (i AlidnsDomainAttachmentMap) ToAlidnsDomainAttachmentMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AlidnsDomainAttachmentMapOutput)
 }
 
-type AlidnsDomainAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type AlidnsDomainAttachmentOutput struct{ *pulumi.OutputState }
 
 func (AlidnsDomainAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AlidnsDomainAttachment)(nil))
@@ -248,14 +246,12 @@ func (o AlidnsDomainAttachmentOutput) ToAlidnsDomainAttachmentPtrOutput() Alidns
 }
 
 func (o AlidnsDomainAttachmentOutput) ToAlidnsDomainAttachmentPtrOutputWithContext(ctx context.Context) AlidnsDomainAttachmentPtrOutput {
-	return o.ApplyT(func(v AlidnsDomainAttachment) *AlidnsDomainAttachment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlidnsDomainAttachment) *AlidnsDomainAttachment {
 		return &v
 	}).(AlidnsDomainAttachmentPtrOutput)
 }
 
-type AlidnsDomainAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type AlidnsDomainAttachmentPtrOutput struct{ *pulumi.OutputState }
 
 func (AlidnsDomainAttachmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AlidnsDomainAttachment)(nil))
@@ -267,6 +263,16 @@ func (o AlidnsDomainAttachmentPtrOutput) ToAlidnsDomainAttachmentPtrOutput() Ali
 
 func (o AlidnsDomainAttachmentPtrOutput) ToAlidnsDomainAttachmentPtrOutputWithContext(ctx context.Context) AlidnsDomainAttachmentPtrOutput {
 	return o
+}
+
+func (o AlidnsDomainAttachmentPtrOutput) Elem() AlidnsDomainAttachmentOutput {
+	return o.ApplyT(func(v *AlidnsDomainAttachment) AlidnsDomainAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret AlidnsDomainAttachment
+		return ret
+	}).(AlidnsDomainAttachmentOutput)
 }
 
 type AlidnsDomainAttachmentArrayOutput struct{ *pulumi.OutputState }
@@ -310,6 +316,10 @@ func (o AlidnsDomainAttachmentMapOutput) MapIndex(k pulumi.StringInput) AlidnsDo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AlidnsDomainAttachmentInput)(nil)).Elem(), &AlidnsDomainAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlidnsDomainAttachmentPtrInput)(nil)).Elem(), &AlidnsDomainAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlidnsDomainAttachmentArrayInput)(nil)).Elem(), AlidnsDomainAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlidnsDomainAttachmentMapInput)(nil)).Elem(), AlidnsDomainAttachmentMap{})
 	pulumi.RegisterOutputType(AlidnsDomainAttachmentOutput{})
 	pulumi.RegisterOutputType(AlidnsDomainAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(AlidnsDomainAttachmentArrayOutput{})

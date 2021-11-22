@@ -4,6 +4,9 @@
 package slb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,7 +34,7 @@ import (
 // 		}
 // 		opt0 := "cloud_efficiency"
 // 		opt1 := "VSwitch"
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableDiskCategory:     &opt0,
 // 			AvailableResourceCreation: &opt1,
 // 		}, nil)
@@ -130,4 +133,85 @@ type GetRulesResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// A list of SLB listener rules. Each element contains the following attributes:
 	SlbRules []GetRulesSlbRule `pulumi:"slbRules"`
+}
+
+func GetRulesOutput(ctx *pulumi.Context, args GetRulesOutputArgs, opts ...pulumi.InvokeOption) GetRulesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetRulesResult, error) {
+			args := v.(GetRulesArgs)
+			r, err := GetRules(ctx, &args, opts...)
+			return *r, err
+		}).(GetRulesResultOutput)
+}
+
+// A collection of arguments for invoking getRules.
+type GetRulesOutputArgs struct {
+	// SLB listener port.
+	FrontendPort pulumi.IntInput `pulumi:"frontendPort"`
+	// A list of rules IDs to filter results.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// ID of the SLB with listener rules.
+	LoadBalancerId pulumi.StringInput `pulumi:"loadBalancerId"`
+	// A regex string to filter results by rule name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetRulesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRules.
+type GetRulesResultOutput struct{ *pulumi.OutputState }
+
+func (GetRulesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesResult)(nil)).Elem()
+}
+
+func (o GetRulesResultOutput) ToGetRulesResultOutput() GetRulesResultOutput {
+	return o
+}
+
+func (o GetRulesResultOutput) ToGetRulesResultOutputWithContext(ctx context.Context) GetRulesResultOutput {
+	return o
+}
+
+func (o GetRulesResultOutput) FrontendPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRulesResult) int { return v.FrontendPort }).(pulumi.IntOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRulesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of SLB listener rules IDs.
+func (o GetRulesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRulesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRulesResultOutput) LoadBalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesResult) string { return v.LoadBalancerId }).(pulumi.StringOutput)
+}
+
+func (o GetRulesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of SLB listener rules names.
+func (o GetRulesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRulesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRulesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of SLB listener rules. Each element contains the following attributes:
+func (o GetRulesResultOutput) SlbRules() GetRulesSlbRuleArrayOutput {
+	return o.ApplyT(func(v GetRulesResult) []GetRulesSlbRule { return v.SlbRules }).(GetRulesSlbRuleArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRulesResultOutput{})
 }

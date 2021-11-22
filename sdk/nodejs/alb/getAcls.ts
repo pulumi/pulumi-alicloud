@@ -19,11 +19,11 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.alb.getAcls({});
- * export const albAclId1 = ids.then(ids => ids.acls[0].id);
+ * export const albAclId1 = ids.then(ids => ids.acls?[0]?.id);
  * const nameRegex = alicloud.alb.getAcls({
  *     nameRegex: "^my-Acl",
  * });
- * export const albAclId2 = nameRegex.then(nameRegex => nameRegex.acls[0].id);
+ * export const albAclId2 = nameRegex.then(nameRegex => nameRegex.acls?[0]?.id);
  * ```
  */
 export function getAcls(args?: GetAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetAclsResult> {
@@ -54,32 +54,32 @@ export interface GetAclsArgs {
     /**
      * The acl ids.
      */
-    readonly aclIds?: string[];
+    aclIds?: string[];
     /**
      * The ACL Name.
      */
-    readonly aclName?: string;
+    aclName?: string;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Acl IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Acl name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * Resource Group to Which the Number.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -100,4 +100,43 @@ export interface GetAclsResult {
     readonly outputFile?: string;
     readonly resourceGroupId?: string;
     readonly status?: string;
+}
+
+export function getAclsOutput(args?: GetAclsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclsResult> {
+    return pulumi.output(args).apply(a => getAcls(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAcls.
+ */
+export interface GetAclsOutputArgs {
+    /**
+     * The acl ids.
+     */
+    aclIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ACL Name.
+     */
+    aclName?: pulumi.Input<string>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Acl IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Acl name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Resource Group to Which the Number.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+     */
+    status?: pulumi.Input<string>;
 }

@@ -109,32 +109,32 @@ export class OpenApiImageCache extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OpenApiImageCache resources.
  */
 export interface OpenApiImageCacheState {
-    readonly containerGroupId?: pulumi.Input<string>;
-    readonly eipInstanceId?: pulumi.Input<string>;
-    readonly imageCacheName?: pulumi.Input<string>;
-    readonly imageCacheSize?: pulumi.Input<number>;
-    readonly imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.OpenApiImageCacheImageRegistryCredential>[]>;
-    readonly images?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly resourceGroupId?: pulumi.Input<string>;
-    readonly retentionDays?: pulumi.Input<number>;
-    readonly securityGroupId?: pulumi.Input<string>;
-    readonly status?: pulumi.Input<string>;
-    readonly vswitchId?: pulumi.Input<string>;
-    readonly zoneId?: pulumi.Input<string>;
+    containerGroupId?: pulumi.Input<string>;
+    eipInstanceId?: pulumi.Input<string>;
+    imageCacheName?: pulumi.Input<string>;
+    imageCacheSize?: pulumi.Input<number>;
+    imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.OpenApiImageCacheImageRegistryCredential>[]>;
+    images?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceGroupId?: pulumi.Input<string>;
+    retentionDays?: pulumi.Input<number>;
+    securityGroupId?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a OpenApiImageCache resource.
  */
 export interface OpenApiImageCacheArgs {
-    readonly eipInstanceId?: pulumi.Input<string>;
-    readonly imageCacheName: pulumi.Input<string>;
-    readonly imageCacheSize?: pulumi.Input<number>;
-    readonly imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.OpenApiImageCacheImageRegistryCredential>[]>;
-    readonly images: pulumi.Input<pulumi.Input<string>[]>;
-    readonly resourceGroupId?: pulumi.Input<string>;
-    readonly retentionDays?: pulumi.Input<number>;
-    readonly securityGroupId: pulumi.Input<string>;
-    readonly vswitchId: pulumi.Input<string>;
-    readonly zoneId?: pulumi.Input<string>;
+    eipInstanceId?: pulumi.Input<string>;
+    imageCacheName: pulumi.Input<string>;
+    imageCacheSize?: pulumi.Input<number>;
+    imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.OpenApiImageCacheImageRegistryCredential>[]>;
+    images: pulumi.Input<pulumi.Input<string>[]>;
+    resourceGroupId?: pulumi.Input<string>;
+    retentionDays?: pulumi.Input<number>;
+    securityGroupId: pulumi.Input<string>;
+    vswitchId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

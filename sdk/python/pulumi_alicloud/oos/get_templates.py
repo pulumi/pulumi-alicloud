@@ -13,6 +13,7 @@ __all__ = [
     'GetTemplatesResult',
     'AwaitableGetTemplatesResult',
     'get_templates',
+    'get_templates_output',
 ]
 
 @pulumi.output_type
@@ -286,3 +287,58 @@ def get_templates(category: Optional[str] = None,
         template_format=__ret__.template_format,
         template_type=__ret__.template_type,
         templates=__ret__.templates)
+
+
+@_utilities.lift_output_func(get_templates)
+def get_templates_output(category: Optional[pulumi.Input[Optional[str]]] = None,
+                         created_by: Optional[pulumi.Input[Optional[str]]] = None,
+                         created_date: Optional[pulumi.Input[Optional[str]]] = None,
+                         created_date_after: Optional[pulumi.Input[Optional[str]]] = None,
+                         has_trigger: Optional[pulumi.Input[Optional[bool]]] = None,
+                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         share_type: Optional[pulumi.Input[Optional[str]]] = None,
+                         sort_field: Optional[pulumi.Input[Optional[str]]] = None,
+                         sort_order: Optional[pulumi.Input[Optional[str]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         template_format: Optional[pulumi.Input[Optional[str]]] = None,
+                         template_type: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTemplatesResult]:
+    """
+    This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available in v1.92.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.oos.get_templates(has_trigger=False,
+        name_regex="test",
+        share_type="Private",
+        tags={
+            "Created": "TF",
+            "For": "template Test",
+        })
+    pulumi.export("firstTemplateName", example.templates[0].template_name)
+    ```
+
+
+    :param str category: The category of template.
+    :param str created_by: The creator of the template.
+    :param str created_date: The template whose creation time is less than or equal to the specified time. The format is: YYYY-MM-DDThh:mm::ssZ.
+    :param str created_date_after: Create a template whose time is greater than or equal to the specified time. The format is: YYYY-MM-DDThh:mm:ssZ.
+    :param bool has_trigger: Is it triggered successfully.
+    :param Sequence[str] ids: A list of OOS Template ids. Each element in the list is same as template_name.
+    :param str name_regex: A regex string to filter the results by the template_name.
+    :param str share_type: The sharing type of the template. Valid values: `Private`, `Public`.
+    :param str sort_field: Sort field. Valid values: `TotalExecutionCount`, `Popularity`, `TemplateName` and `CreatedDate`. Default to `TotalExecutionCount`.
+    :param str sort_order: Sort order. Valid values: `Ascending`, `Descending`. Default to `Descending`
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param str template_format: The format of the template. Valid values: `JSON`, `YAML`.
+    :param str template_type: The type of OOS Template.
+    """
+    ...

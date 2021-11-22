@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     nameRegex: "^cas",
  *     ids: ["Certificate Id"],
  * });
- * export const cert = certs.then(certs => certs.certificates[0].id);
+ * export const cert = certs.then(certs => certs.certificates?[0]?.id);
  * ```
  */
 export function getServiceCertificates(args?: GetServiceCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceCertificatesResult> {
@@ -50,20 +50,20 @@ export interface GetServiceCertificatesArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Certificate IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The lang.
      */
-    readonly lang?: string;
+    lang?: string;
     /**
      * A regex string to filter results by Certificate name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -81,4 +81,31 @@ export interface GetServiceCertificatesResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getServiceCertificatesOutput(args?: GetServiceCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceCertificatesResult> {
+    return pulumi.output(args).apply(a => getServiceCertificates(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServiceCertificates.
+ */
+export interface GetServiceCertificatesOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Certificate IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The lang.
+     */
+    lang?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Certificate name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

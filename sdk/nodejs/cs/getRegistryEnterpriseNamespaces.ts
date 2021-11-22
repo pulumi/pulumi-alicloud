@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     instanceId: "cri-xxx",
  *     nameRegex: "my-namespace",
  *     outputFile: "my-namespace-json",
- * }, { async: true }));
+ * }));
  *
  * export const output = myNamespaces.namespaces;
  * ```
@@ -49,16 +49,16 @@ export interface GetRegistryEnterpriseNamespacesArgs {
     /**
      * A list of ids to filter results by namespace id.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * ID of Container Registry Enterprise Edition instance.
      */
-    readonly instanceId: string;
+    instanceId: string;
     /**
      * A regex string to filter results by namespace name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -87,4 +87,27 @@ export interface GetRegistryEnterpriseNamespacesResult {
      */
     readonly namespaces: outputs.cs.GetRegistryEnterpriseNamespacesNamespace[];
     readonly outputFile?: string;
+}
+
+export function getRegistryEnterpriseNamespacesOutput(args: GetRegistryEnterpriseNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryEnterpriseNamespacesResult> {
+    return pulumi.output(args).apply(a => getRegistryEnterpriseNamespaces(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRegistryEnterpriseNamespaces.
+ */
+export interface GetRegistryEnterpriseNamespacesOutputArgs {
+    /**
+     * A list of ids to filter results by namespace id.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ID of Container Registry Enterprise Edition instance.
+     */
+    instanceId: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by namespace name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

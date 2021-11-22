@@ -4,6 +4,9 @@
 package eds
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,4 +73,76 @@ type GetSimpleOfficeSitesResult struct {
 	OutputFile *string                    `pulumi:"outputFile"`
 	Sites      []GetSimpleOfficeSitesSite `pulumi:"sites"`
 	Status     *string                    `pulumi:"status"`
+}
+
+func GetSimpleOfficeSitesOutput(ctx *pulumi.Context, args GetSimpleOfficeSitesOutputArgs, opts ...pulumi.InvokeOption) GetSimpleOfficeSitesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetSimpleOfficeSitesResult, error) {
+			args := v.(GetSimpleOfficeSitesArgs)
+			r, err := GetSimpleOfficeSites(ctx, &args, opts...)
+			return *r, err
+		}).(GetSimpleOfficeSitesResultOutput)
+}
+
+// A collection of arguments for invoking getSimpleOfficeSites.
+type GetSimpleOfficeSitesOutputArgs struct {
+	// A list of Simple Office Site IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Simple Office Site name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetSimpleOfficeSitesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSimpleOfficeSitesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSimpleOfficeSites.
+type GetSimpleOfficeSitesResultOutput struct{ *pulumi.OutputState }
+
+func (GetSimpleOfficeSitesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSimpleOfficeSitesResult)(nil)).Elem()
+}
+
+func (o GetSimpleOfficeSitesResultOutput) ToGetSimpleOfficeSitesResultOutput() GetSimpleOfficeSitesResultOutput {
+	return o
+}
+
+func (o GetSimpleOfficeSitesResultOutput) ToGetSimpleOfficeSitesResultOutputWithContext(ctx context.Context) GetSimpleOfficeSitesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSimpleOfficeSitesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetSimpleOfficeSitesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSimpleOfficeSitesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSimpleOfficeSitesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSimpleOfficeSitesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSimpleOfficeSitesResultOutput) Sites() GetSimpleOfficeSitesSiteArrayOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesResult) []GetSimpleOfficeSitesSite { return v.Sites }).(GetSimpleOfficeSitesSiteArrayOutput)
+}
+
+func (o GetSimpleOfficeSitesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSimpleOfficeSitesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSimpleOfficeSitesResultOutput{})
 }

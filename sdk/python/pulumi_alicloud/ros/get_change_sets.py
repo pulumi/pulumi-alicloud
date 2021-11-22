@@ -13,6 +13,7 @@ __all__ = [
     'GetChangeSetsResult',
     'AwaitableGetChangeSetsResult',
     'get_change_sets',
+    'get_change_sets_output',
 ]
 
 @pulumi.output_type
@@ -184,3 +185,42 @@ def get_change_sets(change_set_name: Optional[str] = None,
         sets=__ret__.sets,
         stack_id=__ret__.stack_id,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_change_sets)
+def get_change_sets_output(change_set_name: Optional[pulumi.Input[Optional[str]]] = None,
+                           enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                           ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                           name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                           stack_id: Optional[pulumi.Input[str]] = None,
+                           status: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetChangeSetsResult]:
+    """
+    This data source provides the Ros Change Sets of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.105.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ros.get_change_sets(stack_id="example_value",
+        ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstRosChangeSetId", example.sets[0].id)
+    ```
+
+
+    :param str change_set_name: The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of Change Set IDs.
+    :param str name_regex: A regex string to filter results by Change Set name.
+    :param str stack_id: The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
+    :param str status: The status of the change set.
+    """
+    ...

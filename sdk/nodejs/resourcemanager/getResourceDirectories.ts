@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultResourceDirectories = pulumi.output(alicloud.resourcemanager.getResourceDirectories({ async: true }));
+ * const defaultResourceDirectories = pulumi.output(alicloud.resourcemanager.getResourceDirectories());
  *
  * export const resourceDirectoryId = defaultResourceDirectories.directories[0].id;
  * ```
@@ -39,7 +39,7 @@ export function getResourceDirectories(args?: GetResourceDirectoriesArgs, opts?:
  * A collection of arguments for invoking getResourceDirectories.
  */
 export interface GetResourceDirectoriesArgs {
-    readonly outputFile?: string;
+    outputFile?: string;
 }
 
 /**
@@ -55,4 +55,15 @@ export interface GetResourceDirectoriesResult {
      */
     readonly id: string;
     readonly outputFile?: string;
+}
+
+export function getResourceDirectoriesOutput(args?: GetResourceDirectoriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceDirectoriesResult> {
+    return pulumi.output(args).apply(a => getResourceDirectories(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getResourceDirectories.
+ */
+export interface GetResourceDirectoriesOutputArgs {
+    outputFile?: pulumi.Input<string>;
 }

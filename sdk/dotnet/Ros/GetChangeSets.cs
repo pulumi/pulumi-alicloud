@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ros
 {
@@ -39,7 +40,7 @@ namespace Pulumi.AliCloud.Ros
         ///             },
         ///             NameRegex = "the_resource_name",
         ///         }));
-        ///         this.FirstRosChangeSetId = example.Apply(example =&gt; example.Sets[0].Id);
+        ///         this.FirstRosChangeSetId = example.Apply(example =&gt; example.Sets?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstRosChangeSetId")]
@@ -51,6 +52,47 @@ namespace Pulumi.AliCloud.Ros
         /// </summary>
         public static Task<GetChangeSetsResult> InvokeAsync(GetChangeSetsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetChangeSetsResult>("alicloud:ros/getChangeSets:getChangeSets", args ?? new GetChangeSetsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Ros Change Sets of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.105.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Ros.GetChangeSets.InvokeAsync(new AliCloud.Ros.GetChangeSetsArgs
+        ///         {
+        ///             StackId = "example_value",
+        ///             Ids = 
+        ///             {
+        ///                 "example_value",
+        ///             },
+        ///             NameRegex = "the_resource_name",
+        ///         }));
+        ///         this.FirstRosChangeSetId = example.Apply(example =&gt; example.Sets?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstRosChangeSetId")]
+        ///     public Output&lt;string&gt; FirstRosChangeSetId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetChangeSetsResult> Invoke(GetChangeSetsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetChangeSetsResult>("alicloud:ros/getChangeSets:getChangeSets", args ?? new GetChangeSetsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -102,6 +144,58 @@ namespace Pulumi.AliCloud.Ros
         public string? Status { get; set; }
 
         public GetChangeSetsArgs()
+        {
+        }
+    }
+
+    public sealed class GetChangeSetsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+        /// </summary>
+        [Input("changeSetName")]
+        public Input<string>? ChangeSetName { get; set; }
+
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Change Set IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Change Set name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
+        /// </summary>
+        [Input("stackId", required: true)]
+        public Input<string> StackId { get; set; } = null!;
+
+        /// <summary>
+        /// The status of the change set.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetChangeSetsInvokeArgs()
         {
         }
     }

@@ -42,15 +42,15 @@ namespace Pulumi.AliCloud.Cen
     ///         var vpc = new AliCloud.Cen.InstanceAttachment("vpc", new AliCloud.Cen.InstanceAttachmentArgs
     ///         {
     ///             InstanceId = exampleInstance.Id,
-    ///             ChildInstanceId = exampleNetworks.Apply(exampleNetworks =&gt; exampleNetworks.Vpcs[0].Id),
+    ///             ChildInstanceId = exampleNetworks.Apply(exampleNetworks =&gt; exampleNetworks.Vpcs?[0]?.Id),
     ///             ChildInstanceType = "VPC",
-    ///             ChildInstanceRegionId = exampleNetworks.Apply(exampleNetworks =&gt; exampleNetworks.Vpcs[0].RegionId),
+    ///             ChildInstanceRegionId = exampleNetworks.Apply(exampleNetworks =&gt; exampleNetworks.Vpcs?[0]?.RegionId),
     ///         });
     ///         var @this = new AliCloud.Cen.RouteService("this", new AliCloud.Cen.RouteServiceArgs
     ///         {
-    ///             AccessRegionId = exampleNetworks.Apply(exampleNetworks =&gt; exampleNetworks.Vpcs[0].RegionId),
-    ///             HostRegionId = exampleNetworks.Apply(exampleNetworks =&gt; exampleNetworks.Vpcs[0].RegionId),
-    ///             HostVpcId = exampleNetworks.Apply(exampleNetworks =&gt; exampleNetworks.Vpcs[0].Id),
+    ///             AccessRegionId = exampleNetworks.Apply(exampleNetworks =&gt; exampleNetworks.Vpcs?[0]?.RegionId),
+    ///             HostRegionId = exampleNetworks.Apply(exampleNetworks =&gt; exampleNetworks.Vpcs?[0]?.RegionId),
+    ///             HostVpcId = exampleNetworks.Apply(exampleNetworks =&gt; exampleNetworks.Vpcs?[0]?.Id),
     ///             CenId = vpc.InstanceId,
     ///             Host = "100.118.28.52/32",
     ///         });

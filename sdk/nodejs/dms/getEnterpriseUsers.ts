@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     ids: ["uid"],
  *     role: "USER",
  *     status: "NORMAL",
- * }, { async: true }));
+ * }));
  *
  * export const firstUserId = dmsEnterpriseUsersDs.users[0].id;
  * ```
@@ -53,28 +53,28 @@ export interface GetEnterpriseUsersArgs {
     /**
      * A list of DMS Enterprise User IDs (UID).
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter the results by the DMS Enterprise User nick_name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The role of the user to query.
      */
-    readonly role?: string;
+    role?: string;
     /**
      * The keyword used to query users.
      */
-    readonly searchKey?: string;
+    searchKey?: string;
     /**
      * The status of the user.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The ID of the tenant in DMS Enterprise.
      */
-    readonly tid?: number;
+    tid?: number;
 }
 
 /**
@@ -106,4 +106,39 @@ export interface GetEnterpriseUsersResult {
      * A list of DMS Enterprise Users. Each element contains the following attributes:
      */
     readonly users: outputs.dms.GetEnterpriseUsersUser[];
+}
+
+export function getEnterpriseUsersOutput(args?: GetEnterpriseUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseUsersResult> {
+    return pulumi.output(args).apply(a => getEnterpriseUsers(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEnterpriseUsers.
+ */
+export interface GetEnterpriseUsersOutputArgs {
+    /**
+     * A list of DMS Enterprise User IDs (UID).
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter the results by the DMS Enterprise User nick_name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The role of the user to query.
+     */
+    role?: pulumi.Input<string>;
+    /**
+     * The keyword used to query users.
+     */
+    searchKey?: pulumi.Input<string>;
+    /**
+     * The status of the user.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The ID of the tenant in DMS Enterprise.
+     */
+    tid?: pulumi.Input<number>;
 }

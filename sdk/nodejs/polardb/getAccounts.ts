@@ -22,9 +22,9 @@ import * as utilities from "../utilities";
  *     status: "Running",
  * });
  * const default = polardbClustersDs.then(polardbClustersDs => alicloud.polardb.getAccounts({
- *     dbClusterId: polardbClustersDs.clusters[0].id,
+ *     dbClusterId: polardbClustersDs.clusters?[0]?.id,
  * }));
- * export const account = _default.then(_default => _default.accounts[0].accountName);
+ * export const account = _default.then(_default => _default.accounts?[0]?.accountName);
  * ```
  */
 export function getAccounts(args: GetAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountsResult> {
@@ -48,11 +48,11 @@ export interface GetAccountsArgs {
     /**
      * The polarDB cluster ID.
      */
-    readonly dbClusterId: string;
+    dbClusterId: string;
     /**
      * A regex string to filter results by account name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
 }
 
 /**
@@ -73,4 +73,22 @@ export interface GetAccountsResult {
      * Account name of the cluster.
      */
     readonly names: string[];
+}
+
+export function getAccountsOutput(args: GetAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountsResult> {
+    return pulumi.output(args).apply(a => getAccounts(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccounts.
+ */
+export interface GetAccountsOutputArgs {
+    /**
+     * The polarDB cluster ID.
+     */
+    dbClusterId: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by account name.
+     */
+    nameRegex?: pulumi.Input<string>;
 }

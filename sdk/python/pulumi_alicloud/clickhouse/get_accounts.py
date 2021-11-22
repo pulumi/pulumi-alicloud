@@ -13,6 +13,7 @@ __all__ = [
     'GetAccountsResult',
     'AwaitableGetAccountsResult',
     'get_accounts',
+    'get_accounts_output',
 ]
 
 @pulumi.output_type
@@ -180,3 +181,60 @@ def get_accounts(db_cluster_id: Optional[str] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_accounts)
+def get_accounts_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
+                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        status: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountsResult]:
+    """
+    This data source provides the Click House Accounts of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.134.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "testaccountname"
+    pwd = config.get("pwd")
+    if pwd is None:
+        pwd = "Tf-testpwd"
+    default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
+        db_cluster_version="20.3.10.75",
+        category="Basic",
+        db_cluster_class="S8",
+        db_cluster_network_type="vpc",
+        db_cluster_description=name,
+        db_node_group_count=1,
+        payment_type="PayAsYouGo",
+        db_node_storage="500",
+        storage_type="cloud_essd",
+        vswitch_id="your_vswitch_id")
+    default_account = alicloud.clickhouse.Account("defaultAccount",
+        db_cluster_id=default_db_cluster.id,
+        account_description="your_description",
+        account_name=name,
+        account_password=pwd)
+    default_accounts = pulumi.Output.all(default_account.id, default_db_cluster.id).apply(lambda defaultAccountId, defaultDbClusterId: alicloud.clickhouse.get_accounts(ids=[default_account_id],
+        db_cluster_id=default_db_cluster_id))
+    pulumi.export("accountId", default_accounts.ids[0])
+    ```
+
+
+    :param str db_cluster_id: The DBCluster id.
+    :param Sequence[str] ids: A list of Account IDs. Its element value is same as Account Name.
+    :param str name_regex: A regex string to filter results by Account name.
+    :param str status: The status of the resource.
+    """
+    ...

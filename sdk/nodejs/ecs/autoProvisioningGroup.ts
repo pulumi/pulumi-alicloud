@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  *     owners: "system",
  * });
  * const template = new alicloud.ecs.EcsLaunchTemplate("template", {
- *     imageId: defaultImages.then(defaultImages => defaultImages.images[0].id),
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?[0]?.id),
  *     instanceType: "ecs.n1.tiny",
  *     securityGroupId: defaultSecurityGroup.id,
  * });
@@ -261,83 +261,83 @@ export interface AutoProvisioningGroupState {
     /**
      * The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
      */
-    readonly autoProvisioningGroupName?: pulumi.Input<string>;
+    autoProvisioningGroupName?: pulumi.Input<string>;
     /**
      * The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
      */
-    readonly autoProvisioningGroupType?: pulumi.Input<string>;
+    autoProvisioningGroupType?: pulumi.Input<string>;
     /**
      * The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
      */
-    readonly defaultTargetCapacityType?: pulumi.Input<string>;
+    defaultTargetCapacityType?: pulumi.Input<string>;
     /**
      * The description of the auto provisioning group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
      */
-    readonly excessCapacityTerminationPolicy?: pulumi.Input<string>;
+    excessCapacityTerminationPolicy?: pulumi.Input<string>;
     /**
      * DataDisk mappings to attach to ecs instance. See Block config below for details.
      */
-    readonly launchTemplateConfigs?: pulumi.Input<pulumi.Input<inputs.ecs.AutoProvisioningGroupLaunchTemplateConfig>[]>;
+    launchTemplateConfigs?: pulumi.Input<pulumi.Input<inputs.ecs.AutoProvisioningGroupLaunchTemplateConfig>[]>;
     /**
      * The ID of the instance launch template associated with the auto provisioning group.
      */
-    readonly launchTemplateId?: pulumi.Input<string>;
+    launchTemplateId?: pulumi.Input<string>;
     /**
      * The version of the instance launch template associated with the auto provisioning group.
      */
-    readonly launchTemplateVersion?: pulumi.Input<string>;
+    launchTemplateVersion?: pulumi.Input<string>;
     /**
      * The global maximum price for preemptible instances in the auto provisioning group. If both the `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice` parameters are specified, the maximum price is the lower value of the two.
      */
-    readonly maxSpotPrice?: pulumi.Input<number>;
+    maxSpotPrice?: pulumi.Input<number>;
     /**
      * The scale-out policy for pay-as-you-go instances. Valid values: `lowest-price` and `prioritized`,Default value: `lowest-price`.
      */
-    readonly payAsYouGoAllocationStrategy?: pulumi.Input<string>;
+    payAsYouGoAllocationStrategy?: pulumi.Input<string>;
     /**
      * The target capacity of pay-as-you-go instances in the auto provisioning group.
      */
-    readonly payAsYouGoTargetCapacity?: pulumi.Input<string>;
+    payAsYouGoTargetCapacity?: pulumi.Input<string>;
     /**
      * The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
      */
-    readonly spotAllocationStrategy?: pulumi.Input<string>;
+    spotAllocationStrategy?: pulumi.Input<string>;
     /**
      * The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
      */
-    readonly spotInstanceInterruptionBehavior?: pulumi.Input<string>;
+    spotInstanceInterruptionBehavior?: pulumi.Input<string>;
     /**
      * This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
      */
-    readonly spotInstancePoolsToUseCount?: pulumi.Input<number>;
+    spotInstancePoolsToUseCount?: pulumi.Input<number>;
     /**
      * The target capacity of preemptible instances in the auto provisioning group.
      */
-    readonly spotTargetCapacity?: pulumi.Input<string>;
+    spotTargetCapacity?: pulumi.Input<string>;
     /**
      * Specifies whether to release instances of the auto provisioning group. Valid values:`false` and `true`, default value: `false`.
      */
-    readonly terminateInstances?: pulumi.Input<boolean>;
+    terminateInstances?: pulumi.Input<boolean>;
     /**
      * The shutdown policy for preemptible instances when the auto provisioning group expires. Valid values: `false` and `true`, default value: `false`.
      */
-    readonly terminateInstancesWithExpiration?: pulumi.Input<boolean>;
+    terminateInstancesWithExpiration?: pulumi.Input<boolean>;
     /**
      * The total target capacity of the auto provisioning group. The target capacity consists of the following three parts:PayAsYouGoTargetCapacity,SpotTargetCapacity and the supplemental capacity besides PayAsYouGoTargetCapacity and SpotTargetCapacity.
      */
-    readonly totalTargetCapacity?: pulumi.Input<string>;
+    totalTargetCapacity?: pulumi.Input<string>;
     /**
      * The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `validUntil` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
      */
-    readonly validFrom?: pulumi.Input<string>;
+    validFrom?: pulumi.Input<string>;
     /**
      * The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `validFrom` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
      */
-    readonly validUntil?: pulumi.Input<string>;
+    validUntil?: pulumi.Input<string>;
 }
 
 /**
@@ -347,81 +347,81 @@ export interface AutoProvisioningGroupArgs {
     /**
      * The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
      */
-    readonly autoProvisioningGroupName?: pulumi.Input<string>;
+    autoProvisioningGroupName?: pulumi.Input<string>;
     /**
      * The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
      */
-    readonly autoProvisioningGroupType?: pulumi.Input<string>;
+    autoProvisioningGroupType?: pulumi.Input<string>;
     /**
      * The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
      */
-    readonly defaultTargetCapacityType?: pulumi.Input<string>;
+    defaultTargetCapacityType?: pulumi.Input<string>;
     /**
      * The description of the auto provisioning group.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
      */
-    readonly excessCapacityTerminationPolicy?: pulumi.Input<string>;
+    excessCapacityTerminationPolicy?: pulumi.Input<string>;
     /**
      * DataDisk mappings to attach to ecs instance. See Block config below for details.
      */
-    readonly launchTemplateConfigs: pulumi.Input<pulumi.Input<inputs.ecs.AutoProvisioningGroupLaunchTemplateConfig>[]>;
+    launchTemplateConfigs: pulumi.Input<pulumi.Input<inputs.ecs.AutoProvisioningGroupLaunchTemplateConfig>[]>;
     /**
      * The ID of the instance launch template associated with the auto provisioning group.
      */
-    readonly launchTemplateId: pulumi.Input<string>;
+    launchTemplateId: pulumi.Input<string>;
     /**
      * The version of the instance launch template associated with the auto provisioning group.
      */
-    readonly launchTemplateVersion?: pulumi.Input<string>;
+    launchTemplateVersion?: pulumi.Input<string>;
     /**
      * The global maximum price for preemptible instances in the auto provisioning group. If both the `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice` parameters are specified, the maximum price is the lower value of the two.
      */
-    readonly maxSpotPrice?: pulumi.Input<number>;
+    maxSpotPrice?: pulumi.Input<number>;
     /**
      * The scale-out policy for pay-as-you-go instances. Valid values: `lowest-price` and `prioritized`,Default value: `lowest-price`.
      */
-    readonly payAsYouGoAllocationStrategy?: pulumi.Input<string>;
+    payAsYouGoAllocationStrategy?: pulumi.Input<string>;
     /**
      * The target capacity of pay-as-you-go instances in the auto provisioning group.
      */
-    readonly payAsYouGoTargetCapacity?: pulumi.Input<string>;
+    payAsYouGoTargetCapacity?: pulumi.Input<string>;
     /**
      * The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
      */
-    readonly spotAllocationStrategy?: pulumi.Input<string>;
+    spotAllocationStrategy?: pulumi.Input<string>;
     /**
      * The default behavior after preemptible instances are shut down. Value values: `stop` and `terminate`,Default value: `stop`.
      */
-    readonly spotInstanceInterruptionBehavior?: pulumi.Input<string>;
+    spotInstanceInterruptionBehavior?: pulumi.Input<string>;
     /**
      * This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
      */
-    readonly spotInstancePoolsToUseCount?: pulumi.Input<number>;
+    spotInstancePoolsToUseCount?: pulumi.Input<number>;
     /**
      * The target capacity of preemptible instances in the auto provisioning group.
      */
-    readonly spotTargetCapacity?: pulumi.Input<string>;
+    spotTargetCapacity?: pulumi.Input<string>;
     /**
      * Specifies whether to release instances of the auto provisioning group. Valid values:`false` and `true`, default value: `false`.
      */
-    readonly terminateInstances?: pulumi.Input<boolean>;
+    terminateInstances?: pulumi.Input<boolean>;
     /**
      * The shutdown policy for preemptible instances when the auto provisioning group expires. Valid values: `false` and `true`, default value: `false`.
      */
-    readonly terminateInstancesWithExpiration?: pulumi.Input<boolean>;
+    terminateInstancesWithExpiration?: pulumi.Input<boolean>;
     /**
      * The total target capacity of the auto provisioning group. The target capacity consists of the following three parts:PayAsYouGoTargetCapacity,SpotTargetCapacity and the supplemental capacity besides PayAsYouGoTargetCapacity and SpotTargetCapacity.
      */
-    readonly totalTargetCapacity: pulumi.Input<string>;
+    totalTargetCapacity: pulumi.Input<string>;
     /**
      * The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `validUntil` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
      */
-    readonly validFrom?: pulumi.Input<string>;
+    validFrom?: pulumi.Input<string>;
     /**
      * The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `validFrom` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
      */
-    readonly validUntil?: pulumi.Input<string>;
+    validUntil?: pulumi.Input<string>;
 }

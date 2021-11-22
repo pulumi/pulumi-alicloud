@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(alicloud.CmsAlarmContactGroup({
  *     nameRegex: "tf-testacc",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getAlarmContactGroups(args?: GetAlarmContactGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlarmContactGroupsResult> {
@@ -46,12 +46,12 @@ export interface GetAlarmContactGroupsArgs {
     /**
      * A list of Alarm Contact Group IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Alarm Contact Group name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -67,4 +67,23 @@ export interface GetAlarmContactGroupsResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getAlarmContactGroupsOutput(args?: GetAlarmContactGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlarmContactGroupsResult> {
+    return pulumi.output(args).apply(a => getAlarmContactGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAlarmContactGroups.
+ */
+export interface GetAlarmContactGroupsOutputArgs {
+    /**
+     * A list of Alarm Contact Group IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Alarm Contact Group name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

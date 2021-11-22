@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.BastionHost
 {
@@ -39,13 +40,13 @@ namespace Pulumi.AliCloud.BastionHost
         ///                 "example_value-2",
         ///             },
         ///         }));
-        ///         this.BastionhostHostGroupId1 = ids.Apply(ids =&gt; ids.Groups[0].Id);
+        ///         this.BastionhostHostGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.BastionHost.GetHostGroups.InvokeAsync(new AliCloud.BastionHost.GetHostGroupsArgs
         ///         {
         ///             InstanceId = "bastionhost-cn-tl3xxxxxxx",
         ///             NameRegex = "^my-HostGroup",
         ///         }));
-        ///         this.BastionhostHostGroupId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups[0].Id);
+        ///         this.BastionhostHostGroupId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups?[0]?.Id);
         ///     }
         /// 
         ///     [Output("bastionhostHostGroupId1")]
@@ -59,6 +60,55 @@ namespace Pulumi.AliCloud.BastionHost
         /// </summary>
         public static Task<GetHostGroupsResult> InvokeAsync(GetHostGroupsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetHostGroupsResult>("alicloud:bastionhost/getHostGroups:getHostGroups", args ?? new GetHostGroupsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Bastionhost Host Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.BastionHost.GetHostGroups.InvokeAsync(new AliCloud.BastionHost.GetHostGroupsArgs
+        ///         {
+        ///             InstanceId = "bastionhost-cn-tl3xxxxxxx",
+        ///             Ids = 
+        ///             {
+        ///                 "example_value-1",
+        ///                 "example_value-2",
+        ///             },
+        ///         }));
+        ///         this.BastionhostHostGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.BastionHost.GetHostGroups.InvokeAsync(new AliCloud.BastionHost.GetHostGroupsArgs
+        ///         {
+        ///             InstanceId = "bastionhost-cn-tl3xxxxxxx",
+        ///             NameRegex = "^my-HostGroup",
+        ///         }));
+        ///         this.BastionhostHostGroupId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("bastionhostHostGroupId1")]
+        ///     public Output&lt;string&gt; BastionhostHostGroupId1 { get; set; }
+        ///     [Output("bastionhostHostGroupId2")]
+        ///     public Output&lt;string&gt; BastionhostHostGroupId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetHostGroupsResult> Invoke(GetHostGroupsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetHostGroupsResult>("alicloud:bastionhost/getHostGroups:getHostGroups", args ?? new GetHostGroupsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -98,6 +148,46 @@ namespace Pulumi.AliCloud.BastionHost
         public string? OutputFile { get; set; }
 
         public GetHostGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetHostGroupsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Specify the New Host Group Name, Supports up to 128 Characters.
+        /// </summary>
+        [Input("hostGroupName")]
+        public Input<string>? HostGroupName { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Host Group IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// Specify the New Host Group Where the Bastion Host ID of.
+        /// </summary>
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        /// <summary>
+        /// A regex string to filter results by Host Group name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetHostGroupsInvokeArgs()
         {
         }
     }

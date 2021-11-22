@@ -13,6 +13,7 @@ __all__ = [
     'GetAccessGroupsResult',
     'AwaitableGetAccessGroupsResult',
     'get_access_groups',
+    'get_access_groups_output',
 ]
 
 @pulumi.output_type
@@ -230,3 +231,42 @@ def get_access_groups(access_group_name: Optional[str] = None,
         output_file=__ret__.output_file,
         type=__ret__.type,
         useutc_date_time=__ret__.useutc_date_time)
+
+
+@_utilities.lift_output_func(get_access_groups)
+def get_access_groups_output(access_group_name: Optional[pulumi.Input[Optional[str]]] = None,
+                             access_group_type: Optional[pulumi.Input[Optional[str]]] = None,
+                             description: Optional[pulumi.Input[Optional[str]]] = None,
+                             file_system_type: Optional[pulumi.Input[Optional[str]]] = None,
+                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                             type: Optional[pulumi.Input[Optional[str]]] = None,
+                             useutc_date_time: Optional[pulumi.Input[Optional[bool]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessGroupsResult]:
+    """
+    This data source provides user-available access groups. Use when you can create mount points
+
+    > NOTE: Available in 1.35.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.nas.get_access_groups(name_regex="^foo",
+        access_group_type="Classic",
+        description="tf-testAccAccessGroupsdatasource")
+    pulumi.export("alicloudNasAccessGroupsId", example.groups[0].id)
+    ```
+
+
+    :param str access_group_name: The name of access group.
+    :param str access_group_type: Filter results by a specific AccessGroupType.
+    :param str description: Filter results by a specific Description.
+    :param str file_system_type: The type of file system. Valid values: `standard` and `extreme`. Default to `standard`.
+    :param str name_regex: A regex string to filter AccessGroups by name.
+    :param str type: Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
+    :param bool useutc_date_time: Specifies whether the time to return is in UTC. Valid values: true and false.
+    """
+    ...

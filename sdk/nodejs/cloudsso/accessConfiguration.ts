@@ -135,35 +135,35 @@ export interface AccessConfigurationState {
     /**
      * The AccessConfigurationId of the Access Configuration.
      */
-    readonly accessConfigurationId?: pulumi.Input<string>;
+    accessConfigurationId?: pulumi.Input<string>;
     /**
      * The AccessConfigurationName of the Access Configuration.
      */
-    readonly accessConfigurationName?: pulumi.Input<string>;
+    accessConfigurationName?: pulumi.Input<string>;
     /**
      * The Description of the  Access Configuration.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the Directory.
      */
-    readonly directoryId?: pulumi.Input<string>;
+    directoryId?: pulumi.Input<string>;
     /**
      * This parameter is used to force deletion `permissionPolicies`. Valid Value: `true` and `false`.
      */
-    readonly forceRemovePermissionPolicies?: pulumi.Input<boolean>;
+    forceRemovePermissionPolicies?: pulumi.Input<boolean>;
     /**
      * The Policy List. See the following `Block permissionPolicies`.
      */
-    readonly permissionPolicies?: pulumi.Input<pulumi.Input<inputs.cloudsso.AccessConfigurationPermissionPolicy>[]>;
+    permissionPolicies?: pulumi.Input<pulumi.Input<inputs.cloudsso.AccessConfigurationPermissionPolicy>[]>;
     /**
      * The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
      */
-    readonly relayState?: pulumi.Input<string>;
+    relayState?: pulumi.Input<string>;
     /**
      * The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
      */
-    readonly sessionDuration?: pulumi.Input<number>;
+    sessionDuration?: pulumi.Input<number>;
 }
 
 /**
@@ -173,29 +173,29 @@ export interface AccessConfigurationArgs {
     /**
      * The AccessConfigurationName of the Access Configuration.
      */
-    readonly accessConfigurationName: pulumi.Input<string>;
+    accessConfigurationName: pulumi.Input<string>;
     /**
      * The Description of the  Access Configuration.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the Directory.
      */
-    readonly directoryId: pulumi.Input<string>;
+    directoryId: pulumi.Input<string>;
     /**
      * This parameter is used to force deletion `permissionPolicies`. Valid Value: `true` and `false`.
      */
-    readonly forceRemovePermissionPolicies?: pulumi.Input<boolean>;
+    forceRemovePermissionPolicies?: pulumi.Input<boolean>;
     /**
      * The Policy List. See the following `Block permissionPolicies`.
      */
-    readonly permissionPolicies?: pulumi.Input<pulumi.Input<inputs.cloudsso.AccessConfigurationPermissionPolicy>[]>;
+    permissionPolicies?: pulumi.Input<pulumi.Input<inputs.cloudsso.AccessConfigurationPermissionPolicy>[]>;
     /**
      * The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
      */
-    readonly relayState?: pulumi.Input<string>;
+    relayState?: pulumi.Input<string>;
     /**
      * The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
      */
-    readonly sessionDuration?: pulumi.Input<number>;
+    sessionDuration?: pulumi.Input<number>;
 }

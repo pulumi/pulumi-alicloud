@@ -33,8 +33,8 @@ namespace Pulumi.AliCloud.Dfs
     ///         var defaultZones = Output.Create(AliCloud.Dfs.GetZones.InvokeAsync());
     ///         var defaultFileSystem = new AliCloud.Dfs.FileSystem("defaultFileSystem", new AliCloud.Dfs.FileSystemArgs
     ///         {
-    ///             StorageType = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Options[0].StorageType),
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].ZoneId),
+    ///             StorageType = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Options?[0]?.StorageType),
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.ZoneId),
     ///             ProtocolType = "HDFS",
     ///             Description = name,
     ///             FileSystemName = name,

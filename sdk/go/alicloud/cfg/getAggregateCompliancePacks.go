@@ -4,6 +4,9 @@
 package cfg
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,4 +80,88 @@ type GetAggregateCompliancePacksResult struct {
 	OutputFile *string                           `pulumi:"outputFile"`
 	Packs      []GetAggregateCompliancePacksPack `pulumi:"packs"`
 	Status     *string                           `pulumi:"status"`
+}
+
+func GetAggregateCompliancePacksOutput(ctx *pulumi.Context, args GetAggregateCompliancePacksOutputArgs, opts ...pulumi.InvokeOption) GetAggregateCompliancePacksResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAggregateCompliancePacksResult, error) {
+			args := v.(GetAggregateCompliancePacksArgs)
+			r, err := GetAggregateCompliancePacks(ctx, &args, opts...)
+			return *r, err
+		}).(GetAggregateCompliancePacksResultOutput)
+}
+
+// A collection of arguments for invoking getAggregateCompliancePacks.
+type GetAggregateCompliancePacksOutputArgs struct {
+	// The ID of aggregator.
+	AggregatorId pulumi.StringInput `pulumi:"aggregatorId"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of Aggregate Compliance Pack IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Aggregate Compliance Pack name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status of the resource.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetAggregateCompliancePacksOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAggregateCompliancePacksArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAggregateCompliancePacks.
+type GetAggregateCompliancePacksResultOutput struct{ *pulumi.OutputState }
+
+func (GetAggregateCompliancePacksResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAggregateCompliancePacksResult)(nil)).Elem()
+}
+
+func (o GetAggregateCompliancePacksResultOutput) ToGetAggregateCompliancePacksResultOutput() GetAggregateCompliancePacksResultOutput {
+	return o
+}
+
+func (o GetAggregateCompliancePacksResultOutput) ToGetAggregateCompliancePacksResultOutputWithContext(ctx context.Context) GetAggregateCompliancePacksResultOutput {
+	return o
+}
+
+func (o GetAggregateCompliancePacksResultOutput) AggregatorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAggregateCompliancePacksResult) string { return v.AggregatorId }).(pulumi.StringOutput)
+}
+
+func (o GetAggregateCompliancePacksResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAggregateCompliancePacksResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAggregateCompliancePacksResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAggregateCompliancePacksResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAggregateCompliancePacksResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAggregateCompliancePacksResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAggregateCompliancePacksResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAggregateCompliancePacksResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAggregateCompliancePacksResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAggregateCompliancePacksResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAggregateCompliancePacksResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAggregateCompliancePacksResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAggregateCompliancePacksResultOutput) Packs() GetAggregateCompliancePacksPackArrayOutput {
+	return o.ApplyT(func(v GetAggregateCompliancePacksResult) []GetAggregateCompliancePacksPack { return v.Packs }).(GetAggregateCompliancePacksPackArrayOutput)
+}
+
+func (o GetAggregateCompliancePacksResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAggregateCompliancePacksResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAggregateCompliancePacksResultOutput{})
 }

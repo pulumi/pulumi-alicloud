@@ -13,6 +13,7 @@ __all__ = [
     'GetAnycastEipAddressesResult',
     'AwaitableGetAnycastEipAddressesResult',
     'get_anycast_eip_addresses',
+    'get_anycast_eip_addresses_output',
 ]
 
 @pulumi.output_type
@@ -235,3 +236,49 @@ def get_anycast_eip_addresses(anycast_eip_address_name: Optional[str] = None,
         payment_type=__ret__.payment_type,
         service_location=__ret__.service_location,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_anycast_eip_addresses)
+def get_anycast_eip_addresses_output(anycast_eip_address_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                     bind_instance_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                     business_status: Optional[pulumi.Input[Optional[str]]] = None,
+                                     ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                     internet_charge_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                     ip_address: Optional[pulumi.Input[Optional[str]]] = None,
+                                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                     payment_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                     service_location: Optional[pulumi.Input[Optional[str]]] = None,
+                                     status: Optional[pulumi.Input[Optional[str]]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAnycastEipAddressesResult]:
+    """
+    This data source provides the Eipanycast Anycast Eip Addresses of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.113.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.eipanycast.get_anycast_eip_addresses(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstEipanycastAnycastEipAddressId", example.addresses[0].id)
+    ```
+
+
+    :param str anycast_eip_address_name: Anycast EIP instance name.
+    :param Sequence[str] bind_instance_ids: The bind instance ids.
+    :param str business_status: The business status of the Anycast EIP instance. -`Normal`: Normal state. -`FinancialLocked`: The status of arrears locked.
+    :param Sequence[str] ids: A list of Anycast Eip Address IDs.
+    :param str internet_charge_type: The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic.
+    :param str ip_address: Anycast EIP instance IP address.
+    :param str name_regex: A regex string to filter results by Anycast Eip Address name.
+    :param str payment_type: The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
+    :param str service_location: Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
+    :param str status: IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+    """
+    ...

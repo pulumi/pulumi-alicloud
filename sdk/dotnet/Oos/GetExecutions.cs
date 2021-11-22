@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Oos
 {
@@ -37,7 +38,7 @@ namespace Pulumi.AliCloud.Oos
         ///             Status = "Success",
         ///             TemplateName = "name",
         ///         }));
-        ///         this.FirstExecutionId = example.Apply(example =&gt; example.Executions[0].Id);
+        ///         this.FirstExecutionId = example.Apply(example =&gt; example.Executions?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstExecutionId")]
@@ -49,6 +50,45 @@ namespace Pulumi.AliCloud.Oos
         /// </summary>
         public static Task<GetExecutionsResult> InvokeAsync(GetExecutionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetExecutionsResult>("alicloud:oos/getExecutions:getExecutions", args ?? new GetExecutionsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.
+        ///  
+        /// &gt; **NOTE:** Available in v1.93.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Oos.GetExecutions.InvokeAsync(new AliCloud.Oos.GetExecutionsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "execution_id",
+        ///             },
+        ///             Status = "Success",
+        ///             TemplateName = "name",
+        ///         }));
+        ///         this.FirstExecutionId = example.Apply(example =&gt; example.Executions?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstExecutionId")]
+        ///     public Output&lt;string&gt; FirstExecutionId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetExecutionsResult> Invoke(GetExecutionsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetExecutionsResult>("alicloud:oos/getExecutions:getExecutions", args ?? new GetExecutionsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -166,6 +206,124 @@ namespace Pulumi.AliCloud.Oos
         public string? TemplateName { get; set; }
 
         public GetExecutionsArgs()
+        {
+        }
+    }
+
+    public sealed class GetExecutionsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The category of template. Valid: `AlarmTrigger`, `EventTrigger`, `Other` and `TimerTrigger`.
+        /// </summary>
+        [Input("category")]
+        public Input<string>? Category { get; set; }
+
+        /// <summary>
+        /// The time when the execution was ended.
+        /// </summary>
+        [Input("endDate")]
+        public Input<string>? EndDate { get; set; }
+
+        /// <summary>
+        /// Execution whose end time is less than or equal to the specified time.
+        /// </summary>
+        [Input("endDateAfter")]
+        public Input<string>? EndDateAfter { get; set; }
+
+        /// <summary>
+        /// The user who execute the template.
+        /// </summary>
+        [Input("executedBy")]
+        public Input<string>? ExecutedBy { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of OOS Execution ids.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// Whether to include sub-execution.
+        /// </summary>
+        [Input("includeChildExecution")]
+        public Input<bool>? IncludeChildExecution { get; set; }
+
+        /// <summary>
+        /// The mode of OOS Execution. Valid: `Automatic`, `Debug`.
+        /// </summary>
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The id of parent OOS Execution.
+        /// </summary>
+        [Input("parentExecutionId")]
+        public Input<string>? ParentExecutionId { get; set; }
+
+        /// <summary>
+        /// The role that executes the current template.
+        /// </summary>
+        [Input("ramRole")]
+        public Input<string>? RamRole { get; set; }
+
+        /// <summary>
+        /// The sort field.
+        /// </summary>
+        [Input("sortField")]
+        public Input<string>? SortField { get; set; }
+
+        /// <summary>
+        /// The sort order.
+        /// </summary>
+        [Input("sortOrder")]
+        public Input<string>? SortOrder { get; set; }
+
+        /// <summary>
+        /// The execution whose start time is greater than or equal to the specified time.
+        /// </summary>
+        [Input("startDateAfter")]
+        public Input<string>? StartDateAfter { get; set; }
+
+        /// <summary>
+        /// The execution with start time less than or equal to the specified time.
+        /// </summary>
+        [Input("startDateBefore")]
+        public Input<string>? StartDateBefore { get; set; }
+
+        /// <summary>
+        /// The Status of OOS Execution. Valid: `Cancelled`, `Failed`, `Queued`, `Running`, `Started`, `Success`, `Waiting`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The name of execution template.
+        /// </summary>
+        [Input("templateName")]
+        public Input<string>? TemplateName { get; set; }
+
+        public GetExecutionsInvokeArgs()
         {
         }
     }

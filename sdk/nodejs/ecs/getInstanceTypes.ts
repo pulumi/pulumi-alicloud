@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * const typesDs = pulumi.output(alicloud.ecs.getInstanceTypes({
  *     cpuCoreCount: 1,
  *     memorySize: 2,
- * }, { async: true }));
+ * }));
  * const instance = new alicloud.ecs.Instance("instance", {
  *     instanceType: typesDs.instanceTypes[0].id,
  * });
@@ -63,54 +63,54 @@ export interface GetInstanceTypesArgs {
     /**
      * The zone where instance types are supported.
      */
-    readonly availabilityZone?: string;
+    availabilityZone?: string;
     /**
      * Filter the results to a specific number of cpu cores.
      */
-    readonly cpuCoreCount?: number;
+    cpuCoreCount?: number;
     /**
      * Filter the result whose network interface number is no more than `eniAmount`.
      */
-    readonly eniAmount?: number;
+    eniAmount?: number;
     /**
      * The GPU amount of an instance type.
      */
-    readonly gpuAmount?: number;
+    gpuAmount?: number;
     /**
      * The GPU spec of an instance type.
      */
-    readonly gpuSpec?: string;
+    gpuSpec?: string;
     /**
      * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
      */
-    readonly instanceChargeType?: string;
+    instanceChargeType?: string;
     /**
      * Filter the results based on their family name. For example: 'ecs.n4'.
      */
-    readonly instanceTypeFamily?: string;
+    instanceTypeFamily?: string;
     /**
      * If true, outdated instance types are included in the results. Default to false.
      */
-    readonly isOutdated?: boolean;
-    readonly kubernetesNodeRole?: string;
+    isOutdated?: boolean;
+    kubernetesNodeRole?: string;
     /**
      * Filter the results to a specific memory size in GB.
      */
-    readonly memorySize?: number;
+    memorySize?: number;
     /**
      * Filter the results by network type. Valid values: `Classic` and `Vpc`.
      */
-    readonly networkType?: string;
-    readonly outputFile?: string;
-    readonly sortedBy?: string;
+    networkType?: string;
+    outputFile?: string;
+    sortedBy?: string;
     /**
      * Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
      */
-    readonly spotStrategy?: string;
+    spotStrategy?: string;
     /**
      * Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`. Default to `cloudEfficiency`.
      */
-    readonly systemDiskCategory?: string;
+    systemDiskCategory?: string;
 }
 
 /**
@@ -153,4 +153,65 @@ export interface GetInstanceTypesResult {
     readonly sortedBy?: string;
     readonly spotStrategy?: string;
     readonly systemDiskCategory?: string;
+}
+
+export function getInstanceTypesOutput(args?: GetInstanceTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTypesResult> {
+    return pulumi.output(args).apply(a => getInstanceTypes(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstanceTypes.
+ */
+export interface GetInstanceTypesOutputArgs {
+    /**
+     * The zone where instance types are supported.
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
+     * Filter the results to a specific number of cpu cores.
+     */
+    cpuCoreCount?: pulumi.Input<number>;
+    /**
+     * Filter the result whose network interface number is no more than `eniAmount`.
+     */
+    eniAmount?: pulumi.Input<number>;
+    /**
+     * The GPU amount of an instance type.
+     */
+    gpuAmount?: pulumi.Input<number>;
+    /**
+     * The GPU spec of an instance type.
+     */
+    gpuSpec?: pulumi.Input<string>;
+    /**
+     * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+     */
+    instanceChargeType?: pulumi.Input<string>;
+    /**
+     * Filter the results based on their family name. For example: 'ecs.n4'.
+     */
+    instanceTypeFamily?: pulumi.Input<string>;
+    /**
+     * If true, outdated instance types are included in the results. Default to false.
+     */
+    isOutdated?: pulumi.Input<boolean>;
+    kubernetesNodeRole?: pulumi.Input<string>;
+    /**
+     * Filter the results to a specific memory size in GB.
+     */
+    memorySize?: pulumi.Input<number>;
+    /**
+     * Filter the results by network type. Valid values: `Classic` and `Vpc`.
+     */
+    networkType?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    sortedBy?: pulumi.Input<string>;
+    /**
+     * Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+     */
+    spotStrategy?: pulumi.Input<string>;
+    /**
+     * Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`. Default to `cloudEfficiency`.
+     */
+    systemDiskCategory?: pulumi.Input<string>;
 }

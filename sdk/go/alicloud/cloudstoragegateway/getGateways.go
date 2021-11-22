@@ -4,6 +4,9 @@
 package cloudstoragegateway
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,4 +74,82 @@ type GetGatewaysResult struct {
 	OutputFile      *string  `pulumi:"outputFile"`
 	Status          *string  `pulumi:"status"`
 	StorageBundleId string   `pulumi:"storageBundleId"`
+}
+
+func GetGatewaysOutput(ctx *pulumi.Context, args GetGatewaysOutputArgs, opts ...pulumi.InvokeOption) GetGatewaysResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetGatewaysResult, error) {
+			args := v.(GetGatewaysArgs)
+			r, err := GetGateways(ctx, &args, opts...)
+			return *r, err
+		}).(GetGatewaysResultOutput)
+}
+
+// A collection of arguments for invoking getGateways.
+type GetGatewaysOutputArgs struct {
+	// A list of Gateway IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Gateway name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// gateway status.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// storage bundle id.
+	StorageBundleId pulumi.StringInput `pulumi:"storageBundleId"`
+}
+
+func (GetGatewaysOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getGateways.
+type GetGatewaysResultOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysResult)(nil)).Elem()
+}
+
+func (o GetGatewaysResultOutput) ToGetGatewaysResultOutput() GetGatewaysResultOutput {
+	return o
+}
+
+func (o GetGatewaysResultOutput) ToGetGatewaysResultOutputWithContext(ctx context.Context) GetGatewaysResultOutput {
+	return o
+}
+
+func (o GetGatewaysResultOutput) Gateways() GetGatewaysGatewayArrayOutput {
+	return o.ApplyT(func(v GetGatewaysResult) []GetGatewaysGateway { return v.Gateways }).(GetGatewaysGatewayArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetGatewaysResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetGatewaysResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGatewaysResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGatewaysResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGatewaysResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGatewaysResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGatewaysResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGatewaysResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGatewaysResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGatewaysResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGatewaysResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGatewaysResultOutput) StorageBundleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysResult) string { return v.StorageBundleId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetGatewaysResultOutput{})
 }

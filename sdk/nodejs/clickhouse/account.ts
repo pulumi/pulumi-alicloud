@@ -151,24 +151,24 @@ export interface AccountState {
     /**
      * In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
      */
-    readonly accountDescription?: pulumi.Input<string>;
+    accountDescription?: pulumi.Input<string>;
     /**
      * Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
      */
-    readonly accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string>;
     /**
      * The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
      */
-    readonly accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string>;
     /**
      * The db cluster id.
      */
-    readonly dbClusterId?: pulumi.Input<string>;
+    dbClusterId?: pulumi.Input<string>;
     /**
      * The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
      */
-    readonly status?: pulumi.Input<string>;
-    readonly type?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -178,17 +178,17 @@ export interface AccountArgs {
     /**
      * In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
      */
-    readonly accountDescription?: pulumi.Input<string>;
+    accountDescription?: pulumi.Input<string>;
     /**
      * Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
      */
-    readonly accountName: pulumi.Input<string>;
+    accountName: pulumi.Input<string>;
     /**
      * The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
      */
-    readonly accountPassword: pulumi.Input<string>;
+    accountPassword: pulumi.Input<string>;
     /**
      * The db cluster id.
      */
-    readonly dbClusterId: pulumi.Input<string>;
+    dbClusterId: pulumi.Input<string>;
 }

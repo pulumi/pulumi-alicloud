@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Kms
 {
@@ -31,7 +32,7 @@ namespace Pulumi.AliCloud.Kms
         ///             DescriptionRegex = "Hello KMS",
         ///             OutputFile = "kms_keys.json",
         ///         }));
-        ///         this.FirstKeyId = kmsKeysDs.Apply(kmsKeysDs =&gt; kmsKeysDs.Keys[0].Id);
+        ///         this.FirstKeyId = kmsKeysDs.Apply(kmsKeysDs =&gt; kmsKeysDs.Keys?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstKeyId")]
@@ -43,6 +44,39 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         public static Task<GetKeysResult> InvokeAsync(GetKeysArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("alicloud:kms/getKeys:getKeys", args ?? new GetKeysArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var kmsKeysDs = Output.Create(AliCloud.Kms.GetKeys.InvokeAsync(new AliCloud.Kms.GetKeysArgs
+        ///         {
+        ///             DescriptionRegex = "Hello KMS",
+        ///             OutputFile = "kms_keys.json",
+        ///         }));
+        ///         this.FirstKeyId = kmsKeysDs.Apply(kmsKeysDs =&gt; kmsKeysDs.Keys?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstKeyId")]
+        ///     public Output&lt;string&gt; FirstKeyId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetKeysResult> Invoke(GetKeysInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKeysResult>("alicloud:kms/getKeys:getKeys", args ?? new GetKeysInvokeArgs(), options.WithVersion());
     }
 
 
@@ -82,6 +116,46 @@ namespace Pulumi.AliCloud.Kms
         public string? Status { get; set; }
 
         public GetKeysArgs()
+        {
+        }
+    }
+
+    public sealed class GetKeysInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// A regex string to filter the results by the KMS key description.
+        /// </summary>
+        [Input("descriptionRegex")]
+        public Input<string>? DescriptionRegex { get; set; }
+
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("filters")]
+        public Input<string>? Filters { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of KMS key IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetKeysInvokeArgs()
         {
         }
     }

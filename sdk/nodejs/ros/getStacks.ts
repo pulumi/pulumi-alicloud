@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstRosStackId = example.then(example => example.stacks[0].id);
+ * export const firstRosStackId = example.then(example => example.stacks?[0]?.id);
  * ```
  */
 export function getStacks(args?: GetStacksArgs, opts?: pulumi.InvokeOptions): Promise<GetStacksResult> {
@@ -54,36 +54,36 @@ export interface GetStacksArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Stack IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Stack name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * Parent Stack Id.
      */
-    readonly parentStackId?: string;
+    parentStackId?: string;
     /**
      * The show nested stack.
      */
-    readonly showNestedStack?: boolean;
+    showNestedStack?: boolean;
     /**
      * Stack Name.
      */
-    readonly stackName?: string;
+    stackName?: string;
     /**
      * The status of Stack. Valid Values: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `DELETE_COMPLETE`, `DELETE_FAILED`, `DELETE_IN_PROGRESS`, `ROLLBACK_COMPLETE`, `ROLLBACK_FAILED`, `ROLLBACK_IN_PROGRESS`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -105,4 +105,47 @@ export interface GetStacksResult {
     readonly stacks: outputs.ros.GetStacksStack[];
     readonly status?: string;
     readonly tags?: {[key: string]: any};
+}
+
+export function getStacksOutput(args?: GetStacksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStacksResult> {
+    return pulumi.output(args).apply(a => getStacks(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getStacks.
+ */
+export interface GetStacksOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Stack IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Stack name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Parent Stack Id.
+     */
+    parentStackId?: pulumi.Input<string>;
+    /**
+     * The show nested stack.
+     */
+    showNestedStack?: pulumi.Input<boolean>;
+    /**
+     * Stack Name.
+     */
+    stackName?: pulumi.Input<string>;
+    /**
+     * The status of Stack. Valid Values: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `DELETE_COMPLETE`, `DELETE_FAILED`, `DELETE_IN_PROGRESS`, `ROLLBACK_COMPLETE`, `ROLLBACK_FAILED`, `ROLLBACK_IN_PROGRESS`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

@@ -4,6 +4,9 @@
 package brain
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,4 +59,56 @@ type GetIndustrialSericeResult struct {
 	Id string `pulumi:"id"`
 	// The current service enable status.
 	Status string `pulumi:"status"`
+}
+
+func GetIndustrialSericeOutput(ctx *pulumi.Context, args GetIndustrialSericeOutputArgs, opts ...pulumi.InvokeOption) GetIndustrialSericeResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetIndustrialSericeResult, error) {
+			args := v.(GetIndustrialSericeArgs)
+			r, err := GetIndustrialSerice(ctx, &args, opts...)
+			return *r, err
+		}).(GetIndustrialSericeResultOutput)
+}
+
+// A collection of arguments for invoking getIndustrialSerice.
+type GetIndustrialSericeOutputArgs struct {
+	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+	Enable pulumi.StringPtrInput `pulumi:"enable"`
+}
+
+func (GetIndustrialSericeOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIndustrialSericeArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getIndustrialSerice.
+type GetIndustrialSericeResultOutput struct{ *pulumi.OutputState }
+
+func (GetIndustrialSericeResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIndustrialSericeResult)(nil)).Elem()
+}
+
+func (o GetIndustrialSericeResultOutput) ToGetIndustrialSericeResultOutput() GetIndustrialSericeResultOutput {
+	return o
+}
+
+func (o GetIndustrialSericeResultOutput) ToGetIndustrialSericeResultOutputWithContext(ctx context.Context) GetIndustrialSericeResultOutput {
+	return o
+}
+
+func (o GetIndustrialSericeResultOutput) Enable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIndustrialSericeResult) *string { return v.Enable }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetIndustrialSericeResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIndustrialSericeResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The current service enable status.
+func (o GetIndustrialSericeResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIndustrialSericeResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetIndustrialSericeResultOutput{})
 }

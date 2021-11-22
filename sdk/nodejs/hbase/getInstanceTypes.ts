@@ -38,32 +38,32 @@ export interface GetInstanceTypesArgs {
     /**
      * The charge type of create hbase cluster instance, `PrePaid` or `PostPaid`.
      */
-    readonly chargeType?: string;
+    chargeType?: string;
     /**
      * The disk type, `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`.
      */
-    readonly diskType?: string;
+    diskType?: string;
     /**
      * The engine name, `singlehbase`, `hbase`, `hbaseue`, `bds`.
      */
-    readonly engine?: string;
+    engine?: string;
     /**
      * The hbase instance type of create hbase cluster instance.
      */
-    readonly instanceType?: string;
-    readonly outputFile?: string;
+    instanceType?: string;
+    outputFile?: string;
     /**
      * The dest region id, default client region.
      */
-    readonly regionId?: string;
+    regionId?: string;
     /**
      * The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
      */
-    readonly version?: string;
+    version?: string;
     /**
      * The zone id, belong to regionId.
      */
-    readonly zoneId?: string;
+    zoneId?: string;
 }
 
 /**
@@ -107,4 +107,43 @@ export interface GetInstanceTypesResult {
      */
     readonly version?: string;
     readonly zoneId?: string;
+}
+
+export function getInstanceTypesOutput(args?: GetInstanceTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTypesResult> {
+    return pulumi.output(args).apply(a => getInstanceTypes(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstanceTypes.
+ */
+export interface GetInstanceTypesOutputArgs {
+    /**
+     * The charge type of create hbase cluster instance, `PrePaid` or `PostPaid`.
+     */
+    chargeType?: pulumi.Input<string>;
+    /**
+     * The disk type, `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`.
+     */
+    diskType?: pulumi.Input<string>;
+    /**
+     * The engine name, `singlehbase`, `hbase`, `hbaseue`, `bds`.
+     */
+    engine?: pulumi.Input<string>;
+    /**
+     * The hbase instance type of create hbase cluster instance.
+     */
+    instanceType?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The dest region id, default client region.
+     */
+    regionId?: pulumi.Input<string>;
+    /**
+     * The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
+     */
+    version?: pulumi.Input<string>;
+    /**
+     * The zone id, belong to regionId.
+     */
+    zoneId?: pulumi.Input<string>;
 }

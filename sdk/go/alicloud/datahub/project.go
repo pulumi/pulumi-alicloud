@@ -194,7 +194,7 @@ type ProjectArrayInput interface {
 type ProjectArray []ProjectInput
 
 func (ProjectArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Project)(nil))
+	return reflect.TypeOf((*[]*Project)(nil)).Elem()
 }
 
 func (i ProjectArray) ToProjectArrayOutput() ProjectArrayOutput {
@@ -219,7 +219,7 @@ type ProjectMapInput interface {
 type ProjectMap map[string]ProjectInput
 
 func (ProjectMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Project)(nil))
+	return reflect.TypeOf((*map[string]*Project)(nil)).Elem()
 }
 
 func (i ProjectMap) ToProjectMapOutput() ProjectMapOutput {
@@ -230,9 +230,7 @@ func (i ProjectMap) ToProjectMapOutputWithContext(ctx context.Context) ProjectMa
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMapOutput)
 }
 
-type ProjectOutput struct {
-	*pulumi.OutputState
-}
+type ProjectOutput struct{ *pulumi.OutputState }
 
 func (ProjectOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Project)(nil))
@@ -251,14 +249,12 @@ func (o ProjectOutput) ToProjectPtrOutput() ProjectPtrOutput {
 }
 
 func (o ProjectOutput) ToProjectPtrOutputWithContext(ctx context.Context) ProjectPtrOutput {
-	return o.ApplyT(func(v Project) *Project {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Project) *Project {
 		return &v
 	}).(ProjectPtrOutput)
 }
 
-type ProjectPtrOutput struct {
-	*pulumi.OutputState
-}
+type ProjectPtrOutput struct{ *pulumi.OutputState }
 
 func (ProjectPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Project)(nil))
@@ -270,6 +266,16 @@ func (o ProjectPtrOutput) ToProjectPtrOutput() ProjectPtrOutput {
 
 func (o ProjectPtrOutput) ToProjectPtrOutputWithContext(ctx context.Context) ProjectPtrOutput {
 	return o
+}
+
+func (o ProjectPtrOutput) Elem() ProjectOutput {
+	return o.ApplyT(func(v *Project) Project {
+		if v != nil {
+			return *v
+		}
+		var ret Project
+		return ret
+	}).(ProjectOutput)
 }
 
 type ProjectArrayOutput struct{ *pulumi.OutputState }
@@ -313,6 +319,10 @@ func (o ProjectMapOutput) MapIndex(k pulumi.StringInput) ProjectOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectInput)(nil)).Elem(), &Project{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPtrInput)(nil)).Elem(), &Project{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectArrayInput)(nil)).Elem(), ProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectMapInput)(nil)).Elem(), ProjectMap{})
 	pulumi.RegisterOutputType(ProjectOutput{})
 	pulumi.RegisterOutputType(ProjectPtrOutput{})
 	pulumi.RegisterOutputType(ProjectArrayOutput{})

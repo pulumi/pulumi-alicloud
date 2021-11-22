@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.Hbr
     ///             Schedule = "I|1602673264|PT2H",
     ///             BackupType = "COMPLETE",
     ///             VaultId = defaultVault.Id,
-    ///             CreateTime = defaultFileSystems.Apply(defaultFileSystems =&gt; defaultFileSystems.Systems[0].CreateTime),
+    ///             CreateTime = defaultFileSystems.Apply(defaultFileSystems =&gt; defaultFileSystems.Systems?[0]?.CreateTime),
     ///             Retention = "2",
     ///             Paths = 
     ///             {

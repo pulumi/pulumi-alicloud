@@ -4,6 +4,9 @@
 package edas
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -72,4 +75,79 @@ type GetClustersResult struct {
 	// A list of cluster names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetClustersOutput(ctx *pulumi.Context, args GetClustersOutputArgs, opts ...pulumi.InvokeOption) GetClustersResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetClustersResult, error) {
+			args := v.(GetClustersArgs)
+			r, err := GetClusters(ctx, &args, opts...)
+			return *r, err
+		}).(GetClustersResultOutput)
+}
+
+// A collection of arguments for invoking getClusters.
+type GetClustersOutputArgs struct {
+	// An ids string to filter results by the cluster id.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// ID of the namespace in EDAS.
+	LogicalRegionId pulumi.StringInput `pulumi:"logicalRegionId"`
+	// A regex string to filter results by the cluster name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetClustersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getClusters.
+type GetClustersResultOutput struct{ *pulumi.OutputState }
+
+func (GetClustersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersResult)(nil)).Elem()
+}
+
+func (o GetClustersResultOutput) ToGetClustersResultOutput() GetClustersResultOutput {
+	return o
+}
+
+func (o GetClustersResultOutput) ToGetClustersResultOutputWithContext(ctx context.Context) GetClustersResultOutput {
+	return o
+}
+
+// A list of clusters.
+func (o GetClustersResultOutput) Clusters() GetClustersClusterArrayOutput {
+	return o.ApplyT(func(v GetClustersResult) []GetClustersCluster { return v.Clusters }).(GetClustersClusterArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetClustersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of cluster IDs.
+func (o GetClustersResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClustersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetClustersResultOutput) LogicalRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersResult) string { return v.LogicalRegionId }).(pulumi.StringOutput)
+}
+
+func (o GetClustersResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClustersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of cluster names.
+func (o GetClustersResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClustersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetClustersResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClustersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetClustersResultOutput{})
 }

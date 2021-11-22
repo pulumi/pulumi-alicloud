@@ -4,6 +4,9 @@
 package cms
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,4 +40,70 @@ type GetAlarmContactGroupsResult struct {
 	NameRegex  *string  `pulumi:"nameRegex"`
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetAlarmContactGroupsOutput(ctx *pulumi.Context, args GetAlarmContactGroupsOutputArgs, opts ...pulumi.InvokeOption) GetAlarmContactGroupsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAlarmContactGroupsResult, error) {
+			args := v.(GetAlarmContactGroupsArgs)
+			r, err := GetAlarmContactGroups(ctx, &args, opts...)
+			return *r, err
+		}).(GetAlarmContactGroupsResultOutput)
+}
+
+// A collection of arguments for invoking getAlarmContactGroups.
+type GetAlarmContactGroupsOutputArgs struct {
+	// A list of Alarm Contact Group IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Alarm Contact Group name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetAlarmContactGroupsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmContactGroupsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAlarmContactGroups.
+type GetAlarmContactGroupsResultOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmContactGroupsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmContactGroupsResult)(nil)).Elem()
+}
+
+func (o GetAlarmContactGroupsResultOutput) ToGetAlarmContactGroupsResultOutput() GetAlarmContactGroupsResultOutput {
+	return o
+}
+
+func (o GetAlarmContactGroupsResultOutput) ToGetAlarmContactGroupsResultOutputWithContext(ctx context.Context) GetAlarmContactGroupsResultOutput {
+	return o
+}
+
+func (o GetAlarmContactGroupsResultOutput) Groups() GetAlarmContactGroupsGroupArrayOutput {
+	return o.ApplyT(func(v GetAlarmContactGroupsResult) []GetAlarmContactGroupsGroup { return v.Groups }).(GetAlarmContactGroupsGroupArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAlarmContactGroupsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmContactGroupsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAlarmContactGroupsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlarmContactGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAlarmContactGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlarmContactGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAlarmContactGroupsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlarmContactGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAlarmContactGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlarmContactGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAlarmContactGroupsResultOutput{})
 }

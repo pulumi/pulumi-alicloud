@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     dedicatedHostType: "ddh.g5",
  *     nameRegex: "tf-testAcc",
  *     status: "Available",
- * }, { async: true }));
+ * }));
  *
  * export const firstDedicatedHostsId = dedicatedHostsDs.hosts[0].id;
  * ```
@@ -57,47 +57,47 @@ export interface GetDedicatedHostsArgs {
     /**
      * The ID of ECS Dedicated Host.
      */
-    readonly dedicatedHostId?: string;
+    dedicatedHostId?: string;
     /**
      * The name of ECS Dedicated Host.
      */
-    readonly dedicatedHostName?: string;
+    dedicatedHostName?: string;
     /**
      * The type of the dedicated host.
      */
-    readonly dedicatedHostType?: string;
+    dedicatedHostType?: string;
     /**
      * A list of ECS Dedicated Host ids.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by the ECS Dedicated Host name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * The reason why the dedicated host resource is locked.
      */
-    readonly operationLocks?: inputs.ecs.GetDedicatedHostsOperationLock[];
+    operationLocks?: inputs.ecs.GetDedicatedHostsOperationLock[];
     /**
      * Save the result to the file.
      */
-    readonly outputFile?: string;
+    outputFile?: string;
     /**
      * The ID of the resource group to which the ECS Dedicated Host belongs.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
     /**
      * The zone ID of the ECS Dedicated Host.
      */
-    readonly zoneId?: string;
+    zoneId?: string;
 }
 
 /**
@@ -148,4 +148,58 @@ export interface GetDedicatedHostsResult {
     readonly status?: string;
     readonly tags?: {[key: string]: any};
     readonly zoneId?: string;
+}
+
+export function getDedicatedHostsOutput(args?: GetDedicatedHostsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDedicatedHostsResult> {
+    return pulumi.output(args).apply(a => getDedicatedHosts(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDedicatedHosts.
+ */
+export interface GetDedicatedHostsOutputArgs {
+    /**
+     * The ID of ECS Dedicated Host.
+     */
+    dedicatedHostId?: pulumi.Input<string>;
+    /**
+     * The name of ECS Dedicated Host.
+     */
+    dedicatedHostName?: pulumi.Input<string>;
+    /**
+     * The type of the dedicated host.
+     */
+    dedicatedHostType?: pulumi.Input<string>;
+    /**
+     * A list of ECS Dedicated Host ids.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by the ECS Dedicated Host name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * The reason why the dedicated host resource is locked.
+     */
+    operationLocks?: pulumi.Input<pulumi.Input<inputs.ecs.GetDedicatedHostsOperationLockArgs>[]>;
+    /**
+     * Save the result to the file.
+     */
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group to which the ECS Dedicated Host belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The zone ID of the ECS Dedicated Host.
+     */
+    zoneId?: pulumi.Input<string>;
 }

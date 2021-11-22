@@ -13,6 +13,7 @@ __all__ = [
     'GetInstancesResult',
     'AwaitableGetInstancesResult',
     'get_instances',
+    'get_instances_output',
 ]
 
 @pulumi.output_type
@@ -158,3 +159,38 @@ def get_instances(ids: Optional[Sequence[str]] = None,
         output_file=__ret__.output_file,
         payment_type=__ret__.payment_type,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_instances)
+def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         payment_type: Optional[pulumi.Input[Optional[str]]] = None,
+                         status: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+    """
+    This data source provides the Simple Application Server Instances of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.135.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.simpleapplicationserver.get_instances(ids=["example_id"])
+    pulumi.export("simpleApplicationServerInstanceId1", ids.instances[0].id)
+    name_regex = alicloud.simpleapplicationserver.get_instances(name_regex="^my-Instance")
+    pulumi.export("simpleApplicationServerInstanceId2", name_regex.instances[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Instance IDs.
+    :param str name_regex: A regex string to filter results by Instance name.
+    :param str payment_type: The billing method of the simple application server.
+    :param str status: The status of the resource.
+    """
+    ...

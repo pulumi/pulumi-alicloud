@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  *     schedule: "I|1602673264|PT2H",
  *     backupType: "COMPLETE",
  *     vaultId: defaultVault.id,
- *     createTime: defaultFileSystems.systems[0].createTime,
+ *     createTime: defaultFileSystems.apply(defaultFileSystems => defaultFileSystems.systems?[0]?.createTime),
  *     retention: "2",
  *     paths: ["/"],
  * }, {
@@ -215,51 +215,51 @@ export interface NasBackupPlanState {
     /**
      * Backup type. Valid values: `COMPLETE`.
      */
-    readonly backupType?: pulumi.Input<string>;
+    backupType?: pulumi.Input<string>;
     /**
      * File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      */
-    readonly createTime?: pulumi.Input<string>;
-    readonly detail?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
+    detail?: pulumi.Input<string>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
-    readonly disabled?: pulumi.Input<boolean>;
-    readonly exclude?: pulumi.Input<string>;
+    disabled?: pulumi.Input<boolean>;
+    exclude?: pulumi.Input<string>;
     /**
      * The File System ID of Nas.
      */
-    readonly fileSystemId?: pulumi.Input<string>;
-    readonly include?: pulumi.Input<string>;
+    fileSystemId?: pulumi.Input<string>;
+    include?: pulumi.Input<string>;
     /**
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
-    readonly nasBackupPlanName?: pulumi.Input<string>;
+    nasBackupPlanName?: pulumi.Input<string>;
     /**
      * Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
      */
-    readonly options?: pulumi.Input<string>;
+    options?: pulumi.Input<string>;
     /**
      * List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
      */
-    readonly paths?: pulumi.Input<pulumi.Input<string>[]>;
+    paths?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Backup retention days, the minimum is 1.
      */
-    readonly retention?: pulumi.Input<string>;
+    retention?: pulumi.Input<string>;
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      */
-    readonly schedule?: pulumi.Input<string>;
-    readonly speedLimit?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string>;
+    speedLimit?: pulumi.Input<string>;
     /**
      * @deprecated Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
      */
-    readonly updatePaths?: pulumi.Input<boolean>;
+    updatePaths?: pulumi.Input<boolean>;
     /**
      * The ID of Backup vault.
      */
-    readonly vaultId?: pulumi.Input<string>;
+    vaultId?: pulumi.Input<string>;
 }
 
 /**
@@ -269,49 +269,49 @@ export interface NasBackupPlanArgs {
     /**
      * Backup type. Valid values: `COMPLETE`.
      */
-    readonly backupType: pulumi.Input<string>;
+    backupType: pulumi.Input<string>;
     /**
      * File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      */
-    readonly createTime: pulumi.Input<string>;
-    readonly detail?: pulumi.Input<string>;
+    createTime: pulumi.Input<string>;
+    detail?: pulumi.Input<string>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
-    readonly disabled?: pulumi.Input<boolean>;
-    readonly exclude?: pulumi.Input<string>;
+    disabled?: pulumi.Input<boolean>;
+    exclude?: pulumi.Input<string>;
     /**
      * The File System ID of Nas.
      */
-    readonly fileSystemId: pulumi.Input<string>;
-    readonly include?: pulumi.Input<string>;
+    fileSystemId: pulumi.Input<string>;
+    include?: pulumi.Input<string>;
     /**
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
-    readonly nasBackupPlanName: pulumi.Input<string>;
+    nasBackupPlanName: pulumi.Input<string>;
     /**
      * Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
      */
-    readonly options?: pulumi.Input<string>;
+    options?: pulumi.Input<string>;
     /**
      * List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
      */
-    readonly paths: pulumi.Input<pulumi.Input<string>[]>;
+    paths: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Backup retention days, the minimum is 1.
      */
-    readonly retention: pulumi.Input<string>;
+    retention: pulumi.Input<string>;
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      */
-    readonly schedule: pulumi.Input<string>;
-    readonly speedLimit?: pulumi.Input<string>;
+    schedule: pulumi.Input<string>;
+    speedLimit?: pulumi.Input<string>;
     /**
      * @deprecated Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
      */
-    readonly updatePaths?: pulumi.Input<boolean>;
+    updatePaths?: pulumi.Input<boolean>;
     /**
      * The ID of Backup vault.
      */
-    readonly vaultId: pulumi.Input<string>;
+    vaultId: pulumi.Input<string>;
 }

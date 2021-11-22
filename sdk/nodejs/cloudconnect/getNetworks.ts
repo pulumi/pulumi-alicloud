@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const defaultNetworks = alicloud_cloud_connect_networks_default.id.apply(id => alicloud.cloudconnect.getNetworks({
  *     ids: [id],
  *     nameRegex: "^tf-testAcc.*",
- * }, { async: true }));
+ * }));
  * const defaultNetwork = new alicloud.cloudconnect.Network("default", {
  *     cidrBlock: "192.168.0.0/24",
  *     description: "tf-testAccCloudConnectNetworkDescription",
@@ -52,12 +52,12 @@ export interface GetNetworksArgs {
     /**
      * A list of CCN instances IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter CCN instances by name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -82,4 +82,23 @@ export interface GetNetworksResult {
      */
     readonly networks: outputs.cloudconnect.GetNetworksNetwork[];
     readonly outputFile?: string;
+}
+
+export function getNetworksOutput(args?: GetNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworksResult> {
+    return pulumi.output(args).apply(a => getNetworks(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNetworks.
+ */
+export interface GetNetworksOutputArgs {
+    /**
+     * A list of CCN instances IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter CCN instances by name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

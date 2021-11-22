@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const ids = alicloud.directmail.getMailAddresses({
  *     ids: ["example_id"],
  * });
- * export const directMailMailAddressId1 = ids.then(ids => ids.addresses[0].id);
+ * export const directMailMailAddressId1 = ids.then(ids => ids.addresses?[0]?.id);
  * ```
  */
 export function getMailAddresses(args?: GetMailAddressesArgs, opts?: pulumi.InvokeOptions): Promise<GetMailAddressesResult> {
@@ -49,20 +49,20 @@ export interface GetMailAddressesArgs {
     /**
      * A list of Mail Address IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The key word about account email address.
      */
-    readonly keyWord?: string;
-    readonly outputFile?: string;
+    keyWord?: string;
+    outputFile?: string;
     /**
      * Account type.
      */
-    readonly sendtype?: string;
+    sendtype?: string;
     /**
      * Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -79,4 +79,31 @@ export interface GetMailAddressesResult {
     readonly outputFile?: string;
     readonly sendtype?: string;
     readonly status?: string;
+}
+
+export function getMailAddressesOutput(args?: GetMailAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMailAddressesResult> {
+    return pulumi.output(args).apply(a => getMailAddresses(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMailAddresses.
+ */
+export interface GetMailAddressesOutputArgs {
+    /**
+     * A list of Mail Address IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The key word about account email address.
+     */
+    keyWord?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Account type.
+     */
+    sendtype?: pulumi.Input<string>;
+    /**
+     * Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
+     */
+    status?: pulumi.Input<string>;
 }

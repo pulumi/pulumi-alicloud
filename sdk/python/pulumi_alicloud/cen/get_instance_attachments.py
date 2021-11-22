@@ -13,6 +13,7 @@ __all__ = [
     'GetInstanceAttachmentsResult',
     'AwaitableGetInstanceAttachmentsResult',
     'get_instance_attachments',
+    'get_instance_attachments_output',
 ]
 
 @pulumi.output_type
@@ -172,3 +173,34 @@ def get_instance_attachments(child_instance_region_id: Optional[str] = None,
         instance_id=__ret__.instance_id,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_instance_attachments)
+def get_instance_attachments_output(child_instance_region_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                    child_instance_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                    instance_id: Optional[pulumi.Input[str]] = None,
+                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                    status: Optional[pulumi.Input[Optional[str]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceAttachmentsResult]:
+    """
+    This data source provides Cen Instance Attachments of the current Alibaba Cloud User.
+
+    > **NOTE:** Available in v1.97.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cen.get_instance_attachments(instance_id="cen-o40h17ll9w********")
+    pulumi.export("theFirstAttachmentedInstanceId", example.attachments[0].child_instance_id)
+    ```
+
+
+    :param str child_instance_region_id: The region to which the network to be queried belongs.
+    :param str child_instance_type: The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
+    :param str instance_id: The ID of the CEN instance.
+    :param str status: The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
+    """
+    ...

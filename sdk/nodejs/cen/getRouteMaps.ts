@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     ids: ["cenrmap-bnh97kb3mn********"],
  *     status: "Active",
  *     transmitDirection: "RegionIn",
- * }, { async: true }));
+ * }));
  *
  * export const firstCenRouteMapId = thisRouteMaps.maps[0].id;
  * ```
@@ -54,28 +54,28 @@ export interface GetRouteMapsArgs {
     /**
      * The ID of the CEN instance.
      */
-    readonly cenId: string;
+    cenId: string;
     /**
      * The ID of the region to which the CEN instance belongs.
      */
-    readonly cenRegionId?: string;
+    cenRegionId?: string;
     /**
      * A regex string to filter CEN route map by description.
      */
-    readonly descriptionRegex?: string;
+    descriptionRegex?: string;
     /**
      * A list of CEN route map IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * The status of the route map, including `Creating`, `Active` and `Deleting`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
      */
-    readonly transmitDirection?: string;
+    transmitDirection?: string;
 }
 
 /**
@@ -112,4 +112,39 @@ export interface GetRouteMapsResult {
      * The direction in which the route map is applied.
      */
     readonly transmitDirection?: string;
+}
+
+export function getRouteMapsOutput(args: GetRouteMapsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteMapsResult> {
+    return pulumi.output(args).apply(a => getRouteMaps(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRouteMaps.
+ */
+export interface GetRouteMapsOutputArgs {
+    /**
+     * The ID of the CEN instance.
+     */
+    cenId: pulumi.Input<string>;
+    /**
+     * The ID of the region to which the CEN instance belongs.
+     */
+    cenRegionId?: pulumi.Input<string>;
+    /**
+     * A regex string to filter CEN route map by description.
+     */
+    descriptionRegex?: pulumi.Input<string>;
+    /**
+     * A list of CEN route map IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the route map, including `Creating`, `Active` and `Deleting`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
+     */
+    transmitDirection?: pulumi.Input<string>;
 }

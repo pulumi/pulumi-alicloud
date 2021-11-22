@@ -19,11 +19,11 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.alb.getLoadBalancers({});
- * export const albLoadBalancerId1 = ids.then(ids => ids.balancers[0].id);
+ * export const albLoadBalancerId1 = ids.then(ids => ids.balancers?[0]?.id);
  * const nameRegex = alicloud.alb.getLoadBalancers({
  *     nameRegex: "^my-LoadBalancer",
  * });
- * export const albLoadBalancerId2 = nameRegex.then(nameRegex => nameRegex.balancers[0].id);
+ * export const albLoadBalancerId2 = nameRegex.then(nameRegex => nameRegex.balancers?[0]?.id);
  * ```
  */
 export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancersResult> {
@@ -60,56 +60,56 @@ export interface GetLoadBalancersArgs {
     /**
      * The type of IP address that the ALB instance uses to provide services.
      */
-    readonly addressType?: string;
+    addressType?: string;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Load Balancer IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.
      */
-    readonly loadBalancerBussinessStatus?: string;
+    loadBalancerBussinessStatus?: string;
     /**
      * The load balancer ids.
      */
-    readonly loadBalancerIds?: string[];
+    loadBalancerIds?: string[];
     /**
      * The name of the resource.
      */
-    readonly loadBalancerName?: string;
+    loadBalancerName?: string;
     /**
      * A regex string to filter results by Load Balancer name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The ID of the resource group.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The tag of the resource.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
     /**
      * The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
      */
-    readonly vpcId?: string;
+    vpcId?: string;
     /**
      * The vpc ids.
      */
-    readonly vpcIds?: string[];
+    vpcIds?: string[];
     /**
      * The ID of the zone to which the ALB instance belongs.
      */
-    readonly zoneId?: string;
+    zoneId?: string;
 }
 
 /**
@@ -136,4 +136,67 @@ export interface GetLoadBalancersResult {
     readonly vpcId?: string;
     readonly vpcIds?: string[];
     readonly zoneId?: string;
+}
+
+export function getLoadBalancersOutput(args?: GetLoadBalancersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancersResult> {
+    return pulumi.output(args).apply(a => getLoadBalancers(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getLoadBalancers.
+ */
+export interface GetLoadBalancersOutputArgs {
+    /**
+     * The type of IP address that the ALB instance uses to provide services.
+     */
+    addressType?: pulumi.Input<string>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Load Balancer IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.
+     */
+    loadBalancerBussinessStatus?: pulumi.Input<string>;
+    /**
+     * The load balancer ids.
+     */
+    loadBalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the resource.
+     */
+    loadBalancerName?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Load Balancer name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The tag of the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
+     * The vpc ids.
+     */
+    vpcIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the zone to which the ALB instance belongs.
+     */
+    zoneId?: pulumi.Input<string>;
 }

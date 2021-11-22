@@ -13,6 +13,7 @@ __all__ = [
     'GetForwardEntriesResult',
     'AwaitableGetForwardEntriesResult',
     'get_forward_entries',
+    'get_forward_entries_output',
 ]
 
 @pulumi.output_type
@@ -288,3 +289,72 @@ def get_forward_entries(external_ip: Optional[str] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_forward_entries)
+def get_forward_entries_output(external_ip: Optional[pulumi.Input[Optional[str]]] = None,
+                               external_port: Optional[pulumi.Input[Optional[str]]] = None,
+                               forward_entry_name: Optional[pulumi.Input[Optional[str]]] = None,
+                               forward_table_id: Optional[pulumi.Input[str]] = None,
+                               ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                               internal_ip: Optional[pulumi.Input[Optional[str]]] = None,
+                               internal_port: Optional[pulumi.Input[Optional[str]]] = None,
+                               ip_protocol: Optional[pulumi.Input[Optional[str]]] = None,
+                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                               status: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetForwardEntriesResult]:
+    """
+    This data source provides a list of Forward Entries owned by an Alibaba Cloud account.
+
+    > **NOTE:** Available in 1.37.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "forward-entry-config-example-name"
+    default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+    default_network = alicloud.vpc.Network("defaultNetwork",
+        cidr_block="172.16.0.0/12",
+        vpc_name=name)
+    default_switch = alicloud.vpc.Switch("defaultSwitch",
+        cidr_block="172.16.0.0/21",
+        vpc_id=default_network.id,
+        vswitch_name=name,
+        zone_id=default_zones.zones[0].id)
+    default_nat_gateway = alicloud.vpc.NatGateway("defaultNatGateway",
+        specification="Small",
+        vpc_id=default_network.id)
+    default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=name)
+    default_eip_association = alicloud.ecs.EipAssociation("defaultEipAssociation",
+        allocation_id=default_eip_address.id,
+        instance_id=default_nat_gateway.id)
+    default_forward_entry = alicloud.vpc.ForwardEntry("defaultForwardEntry",
+        external_ip=default_eip_address.ip_address,
+        external_port="80",
+        forward_table_id=default_nat_gateway.forward_table_ids,
+        internal_ip="172.16.0.3",
+        internal_port="8080",
+        ip_protocol="tcp")
+    default_forward_entries = default_forward_entry.forward_table_id.apply(lambda forward_table_id: alicloud.vpc.get_forward_entries(forward_table_id=forward_table_id))
+    ```
+
+
+    :param str external_ip: The public IP address.
+    :param str external_port: The public port.
+    :param str forward_entry_name: The name of forward entry.
+    :param str forward_table_id: The ID of the Forward table.
+    :param Sequence[str] ids: A list of Forward Entries IDs.
+    :param str internal_ip: The private IP address.
+    :param str internal_port: The internal port.
+    :param str ip_protocol: The ip protocol. Valid values: `any`,`tcp` and `udp`.
+    :param str name_regex: A regex string to filter results by forward entry name.
+    :param str status: The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+    """
+    ...

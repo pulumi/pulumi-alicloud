@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cms
 {
@@ -13,6 +14,9 @@ namespace Pulumi.AliCloud.Cms
     {
         public static Task<GetMonitorGroupInstancesResult> InvokeAsync(GetMonitorGroupInstancesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMonitorGroupInstancesResult>("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", args ?? new GetMonitorGroupInstancesArgs(), options.WithVersion());
+
+        public static Output<GetMonitorGroupInstancesResult> Invoke(GetMonitorGroupInstancesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMonitorGroupInstancesResult>("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", args ?? new GetMonitorGroupInstancesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +32,22 @@ namespace Pulumi.AliCloud.Cms
         public string? OutputFile { get; set; }
 
         public GetMonitorGroupInstancesArgs()
+        {
+        }
+    }
+
+    public sealed class GetMonitorGroupInstancesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids", required: true)]
+        public Input<string> Ids { get; set; } = null!;
+
+        [Input("keyword")]
+        public Input<string>? Keyword { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetMonitorGroupInstancesInvokeArgs()
         {
         }
     }

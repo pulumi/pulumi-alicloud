@@ -4,6 +4,9 @@
 package vpc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -116,4 +119,92 @@ type GetDhcpOptionsSetsResult struct {
 	OutputFile *string                 `pulumi:"outputFile"`
 	Sets       []GetDhcpOptionsSetsSet `pulumi:"sets"`
 	Status     *string                 `pulumi:"status"`
+}
+
+func GetDhcpOptionsSetsOutput(ctx *pulumi.Context, args GetDhcpOptionsSetsOutputArgs, opts ...pulumi.InvokeOption) GetDhcpOptionsSetsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDhcpOptionsSetsResult, error) {
+			args := v.(GetDhcpOptionsSetsArgs)
+			r, err := GetDhcpOptionsSets(ctx, &args, opts...)
+			return *r, err
+		}).(GetDhcpOptionsSetsResultOutput)
+}
+
+// A collection of arguments for invoking getDhcpOptionsSets.
+type GetDhcpOptionsSetsOutputArgs struct {
+	// The root domain, for example, example.com. After a DHCP options set is associated with a
+	// Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
+	// ECS instances in the VPC network.
+	DhcpOptionsSetName pulumi.StringPtrInput `pulumi:"dhcpOptionsSetName"`
+	// The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
+	// Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
+	// instances in the VPC network.
+	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
+	// A list of Dhcp Options Set IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Dhcp Options Set name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetDhcpOptionsSetsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDhcpOptionsSetsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDhcpOptionsSets.
+type GetDhcpOptionsSetsResultOutput struct{ *pulumi.OutputState }
+
+func (GetDhcpOptionsSetsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDhcpOptionsSetsResult)(nil)).Elem()
+}
+
+func (o GetDhcpOptionsSetsResultOutput) ToGetDhcpOptionsSetsResultOutput() GetDhcpOptionsSetsResultOutput {
+	return o
+}
+
+func (o GetDhcpOptionsSetsResultOutput) ToGetDhcpOptionsSetsResultOutputWithContext(ctx context.Context) GetDhcpOptionsSetsResultOutput {
+	return o
+}
+
+func (o GetDhcpOptionsSetsResultOutput) DhcpOptionsSetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDhcpOptionsSetsResult) *string { return v.DhcpOptionsSetName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDhcpOptionsSetsResultOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDhcpOptionsSetsResult) *string { return v.DomainName }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDhcpOptionsSetsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDhcpOptionsSetsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDhcpOptionsSetsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDhcpOptionsSetsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDhcpOptionsSetsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDhcpOptionsSetsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDhcpOptionsSetsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDhcpOptionsSetsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDhcpOptionsSetsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDhcpOptionsSetsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDhcpOptionsSetsResultOutput) Sets() GetDhcpOptionsSetsSetArrayOutput {
+	return o.ApplyT(func(v GetDhcpOptionsSetsResult) []GetDhcpOptionsSetsSet { return v.Sets }).(GetDhcpOptionsSetsSetArrayOutput)
+}
+
+func (o GetDhcpOptionsSetsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDhcpOptionsSetsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDhcpOptionsSetsResultOutput{})
 }

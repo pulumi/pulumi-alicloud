@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.DirectMail
 {
@@ -37,7 +38,7 @@ namespace Pulumi.AliCloud.DirectMail
         ///                 "example_id",
         ///             },
         ///         }));
-        ///         this.DirectMailMailAddressId1 = ids.Apply(ids =&gt; ids.Addresses[0].Id);
+        ///         this.DirectMailMailAddressId1 = ids.Apply(ids =&gt; ids.Addresses?[0]?.Id);
         ///     }
         /// 
         ///     [Output("directMailMailAddressId1")]
@@ -49,6 +50,45 @@ namespace Pulumi.AliCloud.DirectMail
         /// </summary>
         public static Task<GetMailAddressesResult> InvokeAsync(GetMailAddressesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMailAddressesResult>("alicloud:directmail/getMailAddresses:getMailAddresses", args ?? new GetMailAddressesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.DirectMail.GetMailAddresses.InvokeAsync(new AliCloud.DirectMail.GetMailAddressesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_id",
+        ///             },
+        ///         }));
+        ///         this.DirectMailMailAddressId1 = ids.Apply(ids =&gt; ids.Addresses?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("directMailMailAddressId1")]
+        ///     public Output&lt;string&gt; DirectMailMailAddressId1 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetMailAddressesResult> Invoke(GetMailAddressesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMailAddressesResult>("alicloud:directmail/getMailAddresses:getMailAddresses", args ?? new GetMailAddressesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -88,6 +128,46 @@ namespace Pulumi.AliCloud.DirectMail
         public string? Status { get; set; }
 
         public GetMailAddressesArgs()
+        {
+        }
+    }
+
+    public sealed class GetMailAddressesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Mail Address IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The key word about account email address.
+        /// </summary>
+        [Input("keyWord")]
+        public Input<string>? KeyWord { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Account type.
+        /// </summary>
+        [Input("sendtype")]
+        public Input<string>? Sendtype { get; set; }
+
+        /// <summary>
+        /// Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetMailAddressesInvokeArgs()
         {
         }
     }

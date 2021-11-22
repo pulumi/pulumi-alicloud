@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/16",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * const sampleDs = defaultApplicationLoadBalancer.id.apply(id => alicloud.slb.getServerGroups({
  *     loadBalancerId: id,
  * }));
- * export const firstSlbServerGroupId = sampleDs.slbServerGroups[0].id;
+ * export const firstSlbServerGroupId = sampleDs.apply(sampleDs => sampleDs.slbServerGroups?[0]?.id);
  * ```
  */
 export function getServerGroups(args: GetServerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetServerGroupsResult> {
@@ -64,16 +64,16 @@ export interface GetServerGroupsArgs {
     /**
      * A list of VServer group IDs to filter results.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * ID of the SLB.
      */
-    readonly loadBalancerId: string;
+    loadBalancerId: string;
     /**
      * A regex string to filter results by VServer group name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -99,4 +99,27 @@ export interface GetServerGroupsResult {
      * A list of SLB VServer groups. Each element contains the following attributes:
      */
     readonly slbServerGroups: outputs.slb.GetServerGroupsSlbServerGroup[];
+}
+
+export function getServerGroupsOutput(args: GetServerGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerGroupsResult> {
+    return pulumi.output(args).apply(a => getServerGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServerGroups.
+ */
+export interface GetServerGroupsOutputArgs {
+    /**
+     * A list of VServer group IDs to filter results.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ID of the SLB.
+     */
+    loadBalancerId: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by VServer group name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

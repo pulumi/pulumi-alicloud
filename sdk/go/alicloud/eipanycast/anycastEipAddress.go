@@ -234,7 +234,7 @@ type AnycastEipAddressArrayInput interface {
 type AnycastEipAddressArray []AnycastEipAddressInput
 
 func (AnycastEipAddressArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AnycastEipAddress)(nil))
+	return reflect.TypeOf((*[]*AnycastEipAddress)(nil)).Elem()
 }
 
 func (i AnycastEipAddressArray) ToAnycastEipAddressArrayOutput() AnycastEipAddressArrayOutput {
@@ -259,7 +259,7 @@ type AnycastEipAddressMapInput interface {
 type AnycastEipAddressMap map[string]AnycastEipAddressInput
 
 func (AnycastEipAddressMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AnycastEipAddress)(nil))
+	return reflect.TypeOf((*map[string]*AnycastEipAddress)(nil)).Elem()
 }
 
 func (i AnycastEipAddressMap) ToAnycastEipAddressMapOutput() AnycastEipAddressMapOutput {
@@ -270,9 +270,7 @@ func (i AnycastEipAddressMap) ToAnycastEipAddressMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AnycastEipAddressMapOutput)
 }
 
-type AnycastEipAddressOutput struct {
-	*pulumi.OutputState
-}
+type AnycastEipAddressOutput struct{ *pulumi.OutputState }
 
 func (AnycastEipAddressOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AnycastEipAddress)(nil))
@@ -291,14 +289,12 @@ func (o AnycastEipAddressOutput) ToAnycastEipAddressPtrOutput() AnycastEipAddres
 }
 
 func (o AnycastEipAddressOutput) ToAnycastEipAddressPtrOutputWithContext(ctx context.Context) AnycastEipAddressPtrOutput {
-	return o.ApplyT(func(v AnycastEipAddress) *AnycastEipAddress {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AnycastEipAddress) *AnycastEipAddress {
 		return &v
 	}).(AnycastEipAddressPtrOutput)
 }
 
-type AnycastEipAddressPtrOutput struct {
-	*pulumi.OutputState
-}
+type AnycastEipAddressPtrOutput struct{ *pulumi.OutputState }
 
 func (AnycastEipAddressPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AnycastEipAddress)(nil))
@@ -310,6 +306,16 @@ func (o AnycastEipAddressPtrOutput) ToAnycastEipAddressPtrOutput() AnycastEipAdd
 
 func (o AnycastEipAddressPtrOutput) ToAnycastEipAddressPtrOutputWithContext(ctx context.Context) AnycastEipAddressPtrOutput {
 	return o
+}
+
+func (o AnycastEipAddressPtrOutput) Elem() AnycastEipAddressOutput {
+	return o.ApplyT(func(v *AnycastEipAddress) AnycastEipAddress {
+		if v != nil {
+			return *v
+		}
+		var ret AnycastEipAddress
+		return ret
+	}).(AnycastEipAddressOutput)
 }
 
 type AnycastEipAddressArrayOutput struct{ *pulumi.OutputState }
@@ -353,6 +359,10 @@ func (o AnycastEipAddressMapOutput) MapIndex(k pulumi.StringInput) AnycastEipAdd
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AnycastEipAddressInput)(nil)).Elem(), &AnycastEipAddress{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AnycastEipAddressPtrInput)(nil)).Elem(), &AnycastEipAddress{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AnycastEipAddressArrayInput)(nil)).Elem(), AnycastEipAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AnycastEipAddressMapInput)(nil)).Elem(), AnycastEipAddressMap{})
 	pulumi.RegisterOutputType(AnycastEipAddressOutput{})
 	pulumi.RegisterOutputType(AnycastEipAddressPtrOutput{})
 	pulumi.RegisterOutputType(AnycastEipAddressArrayOutput{})

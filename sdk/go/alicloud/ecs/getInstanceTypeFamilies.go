@@ -4,6 +4,9 @@
 package ecs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,4 +74,84 @@ type GetInstanceTypeFamiliesResult struct {
 	OutputFile         *string  `pulumi:"outputFile"`
 	SpotStrategy       *string  `pulumi:"spotStrategy"`
 	ZoneId             *string  `pulumi:"zoneId"`
+}
+
+func GetInstanceTypeFamiliesOutput(ctx *pulumi.Context, args GetInstanceTypeFamiliesOutputArgs, opts ...pulumi.InvokeOption) GetInstanceTypeFamiliesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetInstanceTypeFamiliesResult, error) {
+			args := v.(GetInstanceTypeFamiliesArgs)
+			r, err := GetInstanceTypeFamilies(ctx, &args, opts...)
+			return *r, err
+		}).(GetInstanceTypeFamiliesResultOutput)
+}
+
+// A collection of arguments for invoking getInstanceTypeFamilies.
+type GetInstanceTypeFamiliesOutputArgs struct {
+	// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
+	Generation pulumi.StringPtrInput `pulumi:"generation"`
+	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+	InstanceChargeType pulumi.StringPtrInput `pulumi:"instanceChargeType"`
+	OutputFile         pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+	SpotStrategy pulumi.StringPtrInput `pulumi:"spotStrategy"`
+	// The Zone to launch the instance.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (GetInstanceTypeFamiliesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypeFamiliesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getInstanceTypeFamilies.
+type GetInstanceTypeFamiliesResultOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypeFamiliesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypeFamiliesResult)(nil)).Elem()
+}
+
+func (o GetInstanceTypeFamiliesResultOutput) ToGetInstanceTypeFamiliesResultOutput() GetInstanceTypeFamiliesResultOutput {
+	return o
+}
+
+func (o GetInstanceTypeFamiliesResultOutput) ToGetInstanceTypeFamiliesResultOutputWithContext(ctx context.Context) GetInstanceTypeFamiliesResultOutput {
+	return o
+}
+
+func (o GetInstanceTypeFamiliesResultOutput) Families() GetInstanceTypeFamiliesFamilyArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypeFamiliesResult) []GetInstanceTypeFamiliesFamily { return v.Families }).(GetInstanceTypeFamiliesFamilyArrayOutput)
+}
+
+// The generation of the instance type family.
+func (o GetInstanceTypeFamiliesResultOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceTypeFamiliesResult) *string { return v.Generation }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetInstanceTypeFamiliesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypeFamiliesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of instance type family IDs.
+func (o GetInstanceTypeFamiliesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypeFamiliesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstanceTypeFamiliesResultOutput) InstanceChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceTypeFamiliesResult) *string { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceTypeFamiliesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceTypeFamiliesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceTypeFamiliesResultOutput) SpotStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceTypeFamiliesResult) *string { return v.SpotStrategy }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceTypeFamiliesResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceTypeFamiliesResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetInstanceTypeFamiliesResultOutput{})
 }

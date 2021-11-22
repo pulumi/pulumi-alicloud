@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -57,6 +58,53 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Task<GetCommonBandwidthPackagesResult> InvokeAsync(GetCommonBandwidthPackagesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCommonBandwidthPackagesResult>("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", args ?? new GetCommonBandwidthPackagesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
+        /// 
+        /// &gt; **NOTE:** Available in 1.36.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var fooCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("fooCommonBandwithPackage", new AliCloud.Vpc.CommonBandwithPackageArgs
+        ///         {
+        ///             Bandwidth = "2",
+        ///             Description = "tf-testAcc-CommonBandwidthPackage",
+        ///         });
+        ///         var fooCommonBandwidthPackages = fooCommonBandwithPackage.Id.Apply(id =&gt; AliCloud.Vpc.GetCommonBandwidthPackages.InvokeAsync(new AliCloud.Vpc.GetCommonBandwidthPackagesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 id,
+        ///             },
+        ///             NameRegex = "^tf-testAcc.*",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// ## Public ip addresses Block
+        ///   
+        ///   The public ip addresses mapping supports the following:
+        ///   
+        ///   * `ip_address`   - The address of the EIP.
+        ///   * `allocation_id` - The ID of the EIP instance.
+        ///   * `bandwidth_package_ip_relation_status` - The IP relation status of bandwidth package.
+        /// </summary>
+        public static Output<GetCommonBandwidthPackagesResult> Invoke(GetCommonBandwidthPackagesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCommonBandwidthPackagesResult>("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", args ?? new GetCommonBandwidthPackagesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -114,6 +162,64 @@ namespace Pulumi.AliCloud.Vpc
         public string? Status { get; set; }
 
         public GetCommonBandwidthPackagesArgs()
+        {
+        }
+    }
+
+    public sealed class GetCommonBandwidthPackagesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of bandwidth package.
+        /// </summary>
+        [Input("bandwidthPackageName")]
+        public Input<string>? BandwidthPackageName { get; set; }
+
+        /// <summary>
+        /// Specifies whether to precheck only the request.
+        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Common Bandwidth Packages IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// Specifies whether to return data of orders that have not taken effect.
+        /// </summary>
+        [Input("includeReservationData")]
+        public Input<bool>? IncludeReservationData { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The Id of resource group which the common bandwidth package belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The status of bandwidth package. Valid values: `Available` and `Pending`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetCommonBandwidthPackagesInvokeArgs()
         {
         }
     }

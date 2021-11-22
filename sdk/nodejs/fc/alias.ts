@@ -138,23 +138,23 @@ export interface AliasState {
     /**
      * Name for the alias you are creating.
      */
-    readonly aliasName?: pulumi.Input<string>;
+    aliasName?: pulumi.Input<string>;
     /**
      * Description of the alias.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The Function Compute alias' route configuration settings. Fields documented below.
      */
-    readonly routingConfig?: pulumi.Input<inputs.fc.AliasRoutingConfig>;
+    routingConfig?: pulumi.Input<inputs.fc.AliasRoutingConfig>;
     /**
      * The Function Compute service name.
      */
-    readonly serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
     /**
      * The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
      */
-    readonly serviceVersion?: pulumi.Input<string>;
+    serviceVersion?: pulumi.Input<string>;
 }
 
 /**
@@ -164,21 +164,21 @@ export interface AliasArgs {
     /**
      * Name for the alias you are creating.
      */
-    readonly aliasName: pulumi.Input<string>;
+    aliasName: pulumi.Input<string>;
     /**
      * Description of the alias.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The Function Compute alias' route configuration settings. Fields documented below.
      */
-    readonly routingConfig?: pulumi.Input<inputs.fc.AliasRoutingConfig>;
+    routingConfig?: pulumi.Input<inputs.fc.AliasRoutingConfig>;
     /**
      * The Function Compute service name.
      */
-    readonly serviceName: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
     /**
      * The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
      */
-    readonly serviceVersion: pulumi.Input<string>;
+    serviceVersion: pulumi.Input<string>;
 }

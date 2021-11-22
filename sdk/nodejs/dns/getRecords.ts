@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *     isLocked: false,
  *     outputFile: "records.txt",
  *     type: "A",
- * }, { async: true }));
+ * }));
  *
  * export const firstRecordId = recordsDs.records[0].recordId;
  * ```
@@ -53,36 +53,36 @@ export interface GetRecordsArgs {
     /**
      * The domain name associated to the records.
      */
-    readonly domainName: string;
+    domainName: string;
     /**
      * Host record regex.
      */
-    readonly hostRecordRegex?: string;
+    hostRecordRegex?: string;
     /**
      * A list of record IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * Whether the record is locked or not.
      */
-    readonly isLocked?: boolean;
+    isLocked?: boolean;
     /**
      * ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
      */
-    readonly line?: string;
-    readonly outputFile?: string;
+    line?: string;
+    outputFile?: string;
     /**
      * Record status. Valid items are `ENABLE` and `DISABLE`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * Record type. Valid items are `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
      */
-    readonly type?: string;
+    type?: string;
     /**
      * Host record value regex.
      */
-    readonly valueRegex?: string;
+    valueRegex?: string;
 }
 
 /**
@@ -125,4 +125,47 @@ export interface GetRecordsResult {
      */
     readonly urls: string[];
     readonly valueRegex?: string;
+}
+
+export function getRecordsOutput(args: GetRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordsResult> {
+    return pulumi.output(args).apply(a => getRecords(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRecords.
+ */
+export interface GetRecordsOutputArgs {
+    /**
+     * The domain name associated to the records.
+     */
+    domainName: pulumi.Input<string>;
+    /**
+     * Host record regex.
+     */
+    hostRecordRegex?: pulumi.Input<string>;
+    /**
+     * A list of record IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether the record is locked or not.
+     */
+    isLocked?: pulumi.Input<boolean>;
+    /**
+     * ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+     */
+    line?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Record status. Valid items are `ENABLE` and `DISABLE`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * Record type. Valid items are `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * Host record value regex.
+     */
+    valueRegex?: pulumi.Input<string>;
 }

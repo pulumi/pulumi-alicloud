@@ -193,59 +193,59 @@ export interface DomainState {
     /**
      * Indicates the name of the certificate if the HTTPS protocol is enabled.
      */
-    readonly certName?: pulumi.Input<string>;
+    certName?: pulumi.Input<string>;
     /**
      * The type of the certificate. Valid values:
      * `free`: a free certificate.
      * `cas`: a certificate purchased from Alibaba Cloud SSL Certificates Service.
      * `upload`: a user uploaded certificate.
      */
-    readonly certType?: pulumi.Input<string>;
+    certType?: pulumi.Input<string>;
     /**
      * The URL that is used to test the accessibility of the origin.
      */
-    readonly checkUrl?: pulumi.Input<string>;
+    checkUrl?: pulumi.Input<string>;
     /**
      * The name of the accelerated domain.
      */
-    readonly domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string>;
     /**
      * Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
      */
-    readonly forceSet?: pulumi.Input<string>;
+    forceSet?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The acceleration region.
      */
-    readonly scope?: pulumi.Input<string>;
-    readonly securityToken?: pulumi.Input<string>;
+    scope?: pulumi.Input<string>;
+    securityToken?: pulumi.Input<string>;
     /**
      * The origin information.
      */
-    readonly sources?: pulumi.Input<pulumi.Input<inputs.dcdn.DomainSource>[]>;
+    sources?: pulumi.Input<pulumi.Input<inputs.dcdn.DomainSource>[]>;
     /**
      * The private key. Specify this parameter only if you enable the SSL certificate.
      */
-    readonly sslPri?: pulumi.Input<string>;
+    sslPri?: pulumi.Input<string>;
     /**
      * Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
      */
-    readonly sslProtocol?: pulumi.Input<string>;
+    sslProtocol?: pulumi.Input<string>;
     /**
      * Indicates the public key of the certificate if the HTTPS protocol is enabled.
      */
-    readonly sslPub?: pulumi.Input<string>;
+    sslPub?: pulumi.Input<string>;
     /**
      * The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The top-level domain name.
      */
-    readonly topLevelDomain?: pulumi.Input<string>;
+    topLevelDomain?: pulumi.Input<string>;
 }
 
 /**
@@ -255,57 +255,57 @@ export interface DomainArgs {
     /**
      * Indicates the name of the certificate if the HTTPS protocol is enabled.
      */
-    readonly certName?: pulumi.Input<string>;
+    certName?: pulumi.Input<string>;
     /**
      * The type of the certificate. Valid values:
      * `free`: a free certificate.
      * `cas`: a certificate purchased from Alibaba Cloud SSL Certificates Service.
      * `upload`: a user uploaded certificate.
      */
-    readonly certType?: pulumi.Input<string>;
+    certType?: pulumi.Input<string>;
     /**
      * The URL that is used to test the accessibility of the origin.
      */
-    readonly checkUrl?: pulumi.Input<string>;
+    checkUrl?: pulumi.Input<string>;
     /**
      * The name of the accelerated domain.
      */
-    readonly domainName: pulumi.Input<string>;
+    domainName: pulumi.Input<string>;
     /**
      * Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
      */
-    readonly forceSet?: pulumi.Input<string>;
+    forceSet?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The acceleration region.
      */
-    readonly scope?: pulumi.Input<string>;
-    readonly securityToken?: pulumi.Input<string>;
+    scope?: pulumi.Input<string>;
+    securityToken?: pulumi.Input<string>;
     /**
      * The origin information.
      */
-    readonly sources: pulumi.Input<pulumi.Input<inputs.dcdn.DomainSource>[]>;
+    sources: pulumi.Input<pulumi.Input<inputs.dcdn.DomainSource>[]>;
     /**
      * The private key. Specify this parameter only if you enable the SSL certificate.
      */
-    readonly sslPri?: pulumi.Input<string>;
+    sslPri?: pulumi.Input<string>;
     /**
      * Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
      */
-    readonly sslProtocol?: pulumi.Input<string>;
+    sslProtocol?: pulumi.Input<string>;
     /**
      * Indicates the public key of the certificate if the HTTPS protocol is enabled.
      */
-    readonly sslPub?: pulumi.Input<string>;
+    sslPub?: pulumi.Input<string>;
     /**
      * The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The top-level domain name.
      */
-    readonly topLevelDomain?: pulumi.Input<string>;
+    topLevelDomain?: pulumi.Input<string>;
 }

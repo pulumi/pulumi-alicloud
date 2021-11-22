@@ -4,6 +4,9 @@
 package ram
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -80,4 +83,91 @@ type GetUsersResult struct {
 	PolicyType *string  `pulumi:"policyType"`
 	// A list of users. Each element contains the following attributes:
 	Users []GetUsersUser `pulumi:"users"`
+}
+
+func GetUsersOutput(ctx *pulumi.Context, args GetUsersOutputArgs, opts ...pulumi.InvokeOption) GetUsersResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetUsersResult, error) {
+			args := v.(GetUsersArgs)
+			r, err := GetUsers(ctx, &args, opts...)
+			return *r, err
+		}).(GetUsersResultOutput)
+}
+
+// A collection of arguments for invoking getUsers.
+type GetUsersOutputArgs struct {
+	// Filter results by a specific group name. Returned users are in the specified group.
+	GroupName pulumi.StringPtrInput `pulumi:"groupName"`
+	// - A list of ram user IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter resulting users by their names.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Filter results by a specific policy name. If you set this parameter without setting `policyType`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
+	PolicyName pulumi.StringPtrInput `pulumi:"policyName"`
+	// Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
+	PolicyType pulumi.StringPtrInput `pulumi:"policyType"`
+}
+
+func (GetUsersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getUsers.
+type GetUsersResultOutput struct{ *pulumi.OutputState }
+
+func (GetUsersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersResult)(nil)).Elem()
+}
+
+func (o GetUsersResultOutput) ToGetUsersResultOutput() GetUsersResultOutput {
+	return o
+}
+
+func (o GetUsersResultOutput) ToGetUsersResultOutputWithContext(ctx context.Context) GetUsersResultOutput {
+	return o
+}
+
+func (o GetUsersResultOutput) GroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *string { return v.GroupName }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetUsersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of ram user IDs.
+func (o GetUsersResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUsersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetUsersResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of ram user names.
+func (o GetUsersResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUsersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetUsersResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetUsersResultOutput) PolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *string { return v.PolicyName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetUsersResultOutput) PolicyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *string { return v.PolicyType }).(pulumi.StringPtrOutput)
+}
+
+// A list of users. Each element contains the following attributes:
+func (o GetUsersResultOutput) Users() GetUsersUserArrayOutput {
+	return o.ApplyT(func(v GetUsersResult) []GetUsersUser { return v.Users }).(GetUsersUserArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetUsersResultOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.RocketMQ
 {
@@ -49,7 +50,7 @@ namespace Pulumi.AliCloud.RocketMQ
         ///             NameRegex = topic,
         ///             OutputFile = "topics.txt",
         ///         }));
-        ///         this.FirstTopicName = topicsDs.Apply(topicsDs =&gt; topicsDs.Topics[0].TopicName);
+        ///         this.FirstTopicName = topicsDs.Apply(topicsDs =&gt; topicsDs.Topics?[0]?.TopicName);
         ///     }
         /// 
         ///     [Output("firstTopicName")]
@@ -61,6 +62,57 @@ namespace Pulumi.AliCloud.RocketMQ
         /// </summary>
         public static Task<GetTopicsResult> InvokeAsync(GetTopicsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTopicsResult>("alicloud:rocketmq/getTopics:getTopics", args ?? new GetTopicsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.53.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var config = new Config();
+        ///         var name = config.Get("name") ?? "onsInstanceName";
+        ///         var topic = config.Get("topic") ?? "onsTopicDatasourceName";
+        ///         var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new AliCloud.RocketMQ.InstanceArgs
+        ///         {
+        ///             InstanceName = name,
+        ///             Remark = "default_ons_instance_remark",
+        ///         });
+        ///         var defaultTopic = new AliCloud.RocketMQ.Topic("defaultTopic", new AliCloud.RocketMQ.TopicArgs
+        ///         {
+        ///             TopicName = topic,
+        ///             InstanceId = defaultInstance.Id,
+        ///             MessageType = 0,
+        ///             Remark = "dafault_ons_topic_remark",
+        ///         });
+        ///         var topicsDs = defaultTopic.InstanceId.Apply(instanceId =&gt; AliCloud.RocketMQ.GetTopics.InvokeAsync(new AliCloud.RocketMQ.GetTopicsArgs
+        ///         {
+        ///             InstanceId = instanceId,
+        ///             NameRegex = topic,
+        ///             OutputFile = "topics.txt",
+        ///         }));
+        ///         this.FirstTopicName = topicsDs.Apply(topicsDs =&gt; topicsDs.Topics?[0]?.TopicName);
+        ///     }
+        /// 
+        ///     [Output("firstTopicName")]
+        ///     public Output&lt;string&gt; FirstTopicName { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetTopicsResult> Invoke(GetTopicsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTopicsResult>("alicloud:rocketmq/getTopics:getTopics", args ?? new GetTopicsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -109,6 +161,55 @@ namespace Pulumi.AliCloud.RocketMQ
         }
 
         public GetTopicsArgs()
+        {
+        }
+    }
+
+    public sealed class GetTopicsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of topic IDs to filter results.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// ID of the ONS Instance that owns the topics.
+        /// </summary>
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        /// <summary>
+        /// A regex string to filter results by the topic name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A map of tags assigned to the Ons instance.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        public GetTopicsInvokeArgs()
         {
         }
     }

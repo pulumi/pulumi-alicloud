@@ -13,6 +13,7 @@ __all__ = [
     'GetAccessGroupsResult',
     'AwaitableGetAccessGroupsResult',
     'get_access_groups',
+    'get_access_groups_output',
 ]
 
 @pulumi.output_type
@@ -180,3 +181,38 @@ def get_access_groups(ids: Optional[Sequence[str]] = None,
         order_type=__ret__.order_type,
         output_file=__ret__.output_file,
         start_offset=__ret__.start_offset)
+
+
+@_utilities.lift_output_func(get_access_groups)
+def get_access_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                             limit: Optional[pulumi.Input[Optional[int]]] = None,
+                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                             order_by: Optional[pulumi.Input[Optional[str]]] = None,
+                             order_type: Optional[pulumi.Input[Optional[str]]] = None,
+                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                             start_offset: Optional[pulumi.Input[Optional[int]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessGroupsResult]:
+    """
+    This data source provides the Apsara File Storage for HDFS Access Groups of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.133.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.dfs.get_access_groups(ids=["example_id"])
+    pulumi.export("dfsAccessGroupId1", ids.groups[0].id)
+    name_regex = alicloud.dfs.get_access_groups(name_regex="^my-AccessGroup")
+    pulumi.export("dfsAccessGroupId2", name_regex.groups[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Access Group IDs.
+    :param str name_regex: A regex string to filter results by Access Group name.
+    """
+    ...

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -36,7 +37,7 @@ namespace Pulumi.AliCloud.Vpc
         ///         });
         ///         var vswitch = new AliCloud.Vpc.Switch("vswitch", new AliCloud.Vpc.SwitchArgs
         ///         {
-        ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+        ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
         ///             CidrBlock = "172.16.0.0/24",
         ///             VpcId = vpc.Id,
         ///             VswitchName = name,
@@ -54,6 +55,50 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Task<GetSwitchesResult> InvokeAsync(GetSwitchesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSwitchesResult>("alicloud:vpc/getSwitches:getSwitches", args ?? new GetSwitchesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of VSwitches owned by an Alibaba Cloud account.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var config = new Config();
+        ///         var name = config.Get("name") ?? "vswitchDatasourceName";
+        ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync());
+        ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
+        ///         {
+        ///             CidrBlock = "172.16.0.0/16",
+        ///             VpcName = name,
+        ///         });
+        ///         var vswitch = new AliCloud.Vpc.Switch("vswitch", new AliCloud.Vpc.SwitchArgs
+        ///         {
+        ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
+        ///             CidrBlock = "172.16.0.0/24",
+        ///             VpcId = vpc.Id,
+        ///             VswitchName = name,
+        ///         });
+        ///         var defaultSwitches = vswitch.VswitchName.Apply(vswitchName =&gt; AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
+        ///         {
+        ///             NameRegex = vswitchName,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSwitchesResult> Invoke(GetSwitchesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSwitchesResult>("alicloud:vpc/getSwitches:getSwitches", args ?? new GetSwitchesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -153,6 +198,106 @@ namespace Pulumi.AliCloud.Vpc
         public string? ZoneId { get; set; }
 
         public GetSwitchesArgs()
+        {
+        }
+    }
+
+    public sealed class GetSwitchesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Filter results by a specific CIDR block. For example: "172.16.0.0/12".
+        /// </summary>
+        [Input("cidrBlock")]
+        public Input<string>? CidrBlock { get; set; }
+
+        /// <summary>
+        /// Specifies whether to precheck this request only. Valid values: `true` and `false`.
+        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of VSwitch IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// Indicate whether the VSwitch is created by the system.
+        /// </summary>
+        [Input("isDefault")]
+        public Input<bool>? IsDefault { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The Id of resource group which VSWitch belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The route table ID of the VSwitch.
+        /// </summary>
+        [Input("routeTableId")]
+        public Input<string>? RouteTableId { get; set; }
+
+        /// <summary>
+        /// The status of the VSwitch. Valid values: `Available` and `Pending`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// ID of the VPC that owns the VSwitch.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// The name of the VSwitch.
+        /// </summary>
+        [Input("vswitchName")]
+        public Input<string>? VswitchName { get; set; }
+
+        /// <summary>
+        /// The VSwitch owner id.
+        /// </summary>
+        [Input("vswitchOwnerId")]
+        public Input<int>? VswitchOwnerId { get; set; }
+
+        /// <summary>
+        /// The availability zone of the VSwitch.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
+        public GetSwitchesInvokeArgs()
         {
         }
     }

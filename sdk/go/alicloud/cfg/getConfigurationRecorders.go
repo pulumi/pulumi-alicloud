@@ -4,6 +4,9 @@
 package cfg
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,4 +58,55 @@ type GetConfigurationRecordersResult struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// A list of Config Configuration Recorders. Each element contains the following attributes:
 	Recorders []GetConfigurationRecordersRecorder `pulumi:"recorders"`
+}
+
+func GetConfigurationRecordersOutput(ctx *pulumi.Context, args GetConfigurationRecordersOutputArgs, opts ...pulumi.InvokeOption) GetConfigurationRecordersResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetConfigurationRecordersResult, error) {
+			args := v.(GetConfigurationRecordersArgs)
+			r, err := GetConfigurationRecorders(ctx, &args, opts...)
+			return *r, err
+		}).(GetConfigurationRecordersResultOutput)
+}
+
+// A collection of arguments for invoking getConfigurationRecorders.
+type GetConfigurationRecordersOutputArgs struct {
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetConfigurationRecordersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConfigurationRecordersArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getConfigurationRecorders.
+type GetConfigurationRecordersResultOutput struct{ *pulumi.OutputState }
+
+func (GetConfigurationRecordersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConfigurationRecordersResult)(nil)).Elem()
+}
+
+func (o GetConfigurationRecordersResultOutput) ToGetConfigurationRecordersResultOutput() GetConfigurationRecordersResultOutput {
+	return o
+}
+
+func (o GetConfigurationRecordersResultOutput) ToGetConfigurationRecordersResultOutputWithContext(ctx context.Context) GetConfigurationRecordersResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetConfigurationRecordersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConfigurationRecordersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetConfigurationRecordersResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConfigurationRecordersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of Config Configuration Recorders. Each element contains the following attributes:
+func (o GetConfigurationRecordersResultOutput) Recorders() GetConfigurationRecordersRecorderArrayOutput {
+	return o.ApplyT(func(v GetConfigurationRecordersResult) []GetConfigurationRecordersRecorder { return v.Recorders }).(GetConfigurationRecordersRecorderArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetConfigurationRecordersResultOutput{})
 }

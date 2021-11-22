@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Hbase
 {
@@ -18,6 +19,14 @@ namespace Pulumi.AliCloud.Hbase
         /// </summary>
         public static Task<GetInstanceTypesResult> InvokeAsync(GetInstanceTypesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:hbase/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+        /// 
+        /// &gt; **NOTE:** Available in v1.106.0+.
+        /// </summary>
+        public static Output<GetInstanceTypesResult> Invoke(GetInstanceTypesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("alicloud:hbase/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -69,6 +78,58 @@ namespace Pulumi.AliCloud.Hbase
         public string? ZoneId { get; set; }
 
         public GetInstanceTypesArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceTypesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The charge type of create hbase cluster instance, `PrePaid` or `PostPaid`.
+        /// </summary>
+        [Input("chargeType")]
+        public Input<string>? ChargeType { get; set; }
+
+        /// <summary>
+        /// The disk type, `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`.
+        /// </summary>
+        [Input("diskType")]
+        public Input<string>? DiskType { get; set; }
+
+        /// <summary>
+        /// The engine name, `singlehbase`, `hbase`, `hbaseue`, `bds`.
+        /// </summary>
+        [Input("engine")]
+        public Input<string>? Engine { get; set; }
+
+        /// <summary>
+        /// The hbase instance type of create hbase cluster instance.
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The dest region id, default client region.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
+        /// The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        /// <summary>
+        /// The zone id, belong to regionId.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
+        public GetInstanceTypesInvokeArgs()
         {
         }
     }

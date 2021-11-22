@@ -150,31 +150,31 @@ export interface QuotaAlarmState {
     /**
      * The Product Code.
      */
-    readonly productCode?: pulumi.Input<string>;
+    productCode?: pulumi.Input<string>;
     /**
      * The Quota Action Code.
      */
-    readonly quotaActionCode?: pulumi.Input<string>;
+    quotaActionCode?: pulumi.Input<string>;
     /**
      * The name of Quota Alarm.
      */
-    readonly quotaAlarmName?: pulumi.Input<string>;
+    quotaAlarmName?: pulumi.Input<string>;
     /**
      * The Quota Dimensions.
      */
-    readonly quotaDimensions?: pulumi.Input<pulumi.Input<inputs.quotas.QuotaAlarmQuotaDimension>[]>;
+    quotaDimensions?: pulumi.Input<pulumi.Input<inputs.quotas.QuotaAlarmQuotaDimension>[]>;
     /**
      * The threshold of Quota Alarm.
      */
-    readonly threshold?: pulumi.Input<number>;
+    threshold?: pulumi.Input<number>;
     /**
      * The threshold percent of Quota Alarm.
      */
-    readonly thresholdPercent?: pulumi.Input<number>;
+    thresholdPercent?: pulumi.Input<number>;
     /**
      * The WebHook of Quota Alarm.
      */
-    readonly webHook?: pulumi.Input<string>;
+    webHook?: pulumi.Input<string>;
 }
 
 /**
@@ -184,29 +184,29 @@ export interface QuotaAlarmArgs {
     /**
      * The Product Code.
      */
-    readonly productCode: pulumi.Input<string>;
+    productCode: pulumi.Input<string>;
     /**
      * The Quota Action Code.
      */
-    readonly quotaActionCode: pulumi.Input<string>;
+    quotaActionCode: pulumi.Input<string>;
     /**
      * The name of Quota Alarm.
      */
-    readonly quotaAlarmName: pulumi.Input<string>;
+    quotaAlarmName: pulumi.Input<string>;
     /**
      * The Quota Dimensions.
      */
-    readonly quotaDimensions?: pulumi.Input<pulumi.Input<inputs.quotas.QuotaAlarmQuotaDimension>[]>;
+    quotaDimensions?: pulumi.Input<pulumi.Input<inputs.quotas.QuotaAlarmQuotaDimension>[]>;
     /**
      * The threshold of Quota Alarm.
      */
-    readonly threshold?: pulumi.Input<number>;
+    threshold?: pulumi.Input<number>;
     /**
      * The threshold percent of Quota Alarm.
      */
-    readonly thresholdPercent?: pulumi.Input<number>;
+    thresholdPercent?: pulumi.Input<number>;
     /**
      * The WebHook of Quota Alarm.
      */
-    readonly webHook?: pulumi.Input<string>;
+    webHook?: pulumi.Input<string>;
 }

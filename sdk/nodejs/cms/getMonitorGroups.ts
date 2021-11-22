@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstCmsMonitorGroupId = example.then(example => example.groups[0].id);
+ * export const firstCmsMonitorGroupId = example.then(example => example.groups?[0]?.id);
  * ```
  */
 export function getMonitorGroups(args?: GetMonitorGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetMonitorGroupsResult> {
@@ -55,40 +55,40 @@ export interface GetMonitorGroupsArgs {
     /**
      * The ID of the tag rule.
      */
-    readonly dynamicTagRuleId?: string;
+    dynamicTagRuleId?: string;
     /**
      * A list of Monitor Group IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The include template history.
      */
-    readonly includeTemplateHistory?: boolean;
+    includeTemplateHistory?: boolean;
     /**
      * The keyword to be matched.
      */
-    readonly keyword?: string;
+    keyword?: string;
     /**
      * The name of the application group.
      */
-    readonly monitorGroupName?: string;
+    monitorGroupName?: string;
     /**
      * A regex string to filter results by Monitor Group name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The select contact groups.
      */
-    readonly selectContactGroups?: boolean;
+    selectContactGroups?: boolean;
     /**
      * A map of tags assigned to the Cms Monitor Group.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
     /**
      * The type of the application group.
      */
-    readonly type?: string;
+    type?: string;
 }
 
 /**
@@ -111,4 +111,51 @@ export interface GetMonitorGroupsResult {
     readonly selectContactGroups?: boolean;
     readonly tags?: {[key: string]: any};
     readonly type?: string;
+}
+
+export function getMonitorGroupsOutput(args?: GetMonitorGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMonitorGroupsResult> {
+    return pulumi.output(args).apply(a => getMonitorGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getMonitorGroups.
+ */
+export interface GetMonitorGroupsOutputArgs {
+    /**
+     * The ID of the tag rule.
+     */
+    dynamicTagRuleId?: pulumi.Input<string>;
+    /**
+     * A list of Monitor Group IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The include template history.
+     */
+    includeTemplateHistory?: pulumi.Input<boolean>;
+    /**
+     * The keyword to be matched.
+     */
+    keyword?: pulumi.Input<string>;
+    /**
+     * The name of the application group.
+     */
+    monitorGroupName?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Monitor Group name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The select contact groups.
+     */
+    selectContactGroups?: pulumi.Input<boolean>;
+    /**
+     * A map of tags assigned to the Cms Monitor Group.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The type of the application group.
+     */
+    type?: pulumi.Input<string>;
 }

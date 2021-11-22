@@ -228,71 +228,71 @@ export interface ControlPolicyState {
     /**
      * The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
      */
-    readonly aclAction?: pulumi.Input<string>;
+    aclAction?: pulumi.Input<string>;
     /**
      * The unique ID of the access control policy.
      */
-    readonly aclUuid?: pulumi.Input<string>;
+    aclUuid?: pulumi.Input<string>;
     /**
      * The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
      */
-    readonly applicationName?: pulumi.Input<string>;
+    applicationName?: pulumi.Input<string>;
     /**
      * The description of the access control policy.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The destination port defined in the access control policy.
      */
-    readonly destPort?: pulumi.Input<string>;
+    destPort?: pulumi.Input<string>;
     /**
      * The destination port address book defined in the access control policy.
      */
-    readonly destPortGroup?: pulumi.Input<string>;
+    destPortGroup?: pulumi.Input<string>;
     /**
      * The destination port type defined in the access control policy. Valid values: `group`, `port`.
      */
-    readonly destPortType?: pulumi.Input<string>;
+    destPortType?: pulumi.Input<string>;
     /**
      * The destination address defined in the access control policy.
      */
-    readonly destination?: pulumi.Input<string>;
+    destination?: pulumi.Input<string>;
     /**
      * DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
      */
-    readonly destinationType?: pulumi.Input<string>;
+    destinationType?: pulumi.Input<string>;
     /**
      * Direction. Valid values: `in`, `out`.
      */
-    readonly direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string>;
     /**
      * The ip version.
      */
-    readonly ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string>;
     /**
      * DestPortGroupPorts. Valid values: `en`, `zh`.
      */
-    readonly lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string>;
     /**
      * Proto. Valid values: ` TCP`, ` UDP`, `ANY`, `ICMP`.
      */
-    readonly proto?: pulumi.Input<string>;
+    proto?: pulumi.Input<string>;
     /**
      * Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
      */
-    readonly release?: pulumi.Input<string>;
+    release?: pulumi.Input<string>;
     /**
      * Source.
      */
-    readonly source?: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
     /**
      * The source ip.
      */
-    readonly sourceIp?: pulumi.Input<string>;
+    sourceIp?: pulumi.Input<string>;
     /**
      * SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
      */
-    readonly sourceType?: pulumi.Input<string>;
+    sourceType?: pulumi.Input<string>;
 }
 
 /**
@@ -302,65 +302,65 @@ export interface ControlPolicyArgs {
     /**
      * The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
      */
-    readonly aclAction: pulumi.Input<string>;
+    aclAction: pulumi.Input<string>;
     /**
      * The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
      */
-    readonly applicationName: pulumi.Input<string>;
+    applicationName: pulumi.Input<string>;
     /**
      * The description of the access control policy.
      */
-    readonly description: pulumi.Input<string>;
+    description: pulumi.Input<string>;
     /**
      * The destination port defined in the access control policy.
      */
-    readonly destPort?: pulumi.Input<string>;
+    destPort?: pulumi.Input<string>;
     /**
      * The destination port address book defined in the access control policy.
      */
-    readonly destPortGroup?: pulumi.Input<string>;
+    destPortGroup?: pulumi.Input<string>;
     /**
      * The destination port type defined in the access control policy. Valid values: `group`, `port`.
      */
-    readonly destPortType?: pulumi.Input<string>;
+    destPortType?: pulumi.Input<string>;
     /**
      * The destination address defined in the access control policy.
      */
-    readonly destination: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
     /**
      * DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
      */
-    readonly destinationType: pulumi.Input<string>;
+    destinationType: pulumi.Input<string>;
     /**
      * Direction. Valid values: `in`, `out`.
      */
-    readonly direction: pulumi.Input<string>;
+    direction: pulumi.Input<string>;
     /**
      * The ip version.
      */
-    readonly ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string>;
     /**
      * DestPortGroupPorts. Valid values: `en`, `zh`.
      */
-    readonly lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string>;
     /**
      * Proto. Valid values: ` TCP`, ` UDP`, `ANY`, `ICMP`.
      */
-    readonly proto: pulumi.Input<string>;
+    proto: pulumi.Input<string>;
     /**
      * Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
      */
-    readonly release?: pulumi.Input<string>;
+    release?: pulumi.Input<string>;
     /**
      * Source.
      */
-    readonly source: pulumi.Input<string>;
+    source: pulumi.Input<string>;
     /**
      * The source ip.
      */
-    readonly sourceIp?: pulumi.Input<string>;
+    sourceIp?: pulumi.Input<string>;
     /**
      * SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
      */
-    readonly sourceType: pulumi.Input<string>;
+    sourceType: pulumi.Input<string>;
 }

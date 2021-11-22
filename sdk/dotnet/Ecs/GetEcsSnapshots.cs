@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Ecs
         ///             },
         ///             NameRegex = "tf-test",
         ///         }));
-        ///         this.FirstEcsSnapshotId = example.Apply(example =&gt; example.Snapshots[0].Id);
+        ///         this.FirstEcsSnapshotId = example.Apply(example =&gt; example.Snapshots?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstEcsSnapshotId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public static Task<GetEcsSnapshotsResult> InvokeAsync(GetEcsSnapshotsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEcsSnapshotsResult>("alicloud:ecs/getEcsSnapshots:getEcsSnapshots", args ?? new GetEcsSnapshotsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.120.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Ecs.GetEcsSnapshots.InvokeAsync(new AliCloud.Ecs.GetEcsSnapshotsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "s-bp1fvuxxxxxxxx",
+        ///             },
+        ///             NameRegex = "tf-test",
+        ///         }));
+        ///         this.FirstEcsSnapshotId = example.Apply(example =&gt; example.Snapshots?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstEcsSnapshotId")]
+        ///     public Output&lt;string&gt; FirstEcsSnapshotId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetEcsSnapshotsResult> Invoke(GetEcsSnapshotsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEcsSnapshotsResult>("alicloud:ecs/getEcsSnapshots:getEcsSnapshots", args ?? new GetEcsSnapshotsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -158,6 +199,115 @@ namespace Pulumi.AliCloud.Ecs
         public string? Usage { get; set; }
 
         public GetEcsSnapshotsArgs()
+        {
+        }
+    }
+
+    public sealed class GetEcsSnapshotsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The category of the snapshot.
+        /// </summary>
+        [Input("category")]
+        public Input<string>? Category { get; set; }
+
+        /// <summary>
+        /// Specifies whether to check the validity of the request without actually making the request.
+        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// Whether the snapshot is encrypted.
+        /// </summary>
+        [Input("encrypted")]
+        public Input<bool>? Encrypted { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Snapshot IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The kms key id.
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Snapshot name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The resource group id.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The snapshot link id.
+        /// </summary>
+        [Input("snapshotLinkId")]
+        public Input<string>? SnapshotLinkId { get; set; }
+
+        /// <summary>
+        /// Snapshot Display Name.
+        /// </summary>
+        [Input("snapshotName")]
+        public Input<string>? SnapshotName { get; set; }
+
+        /// <summary>
+        /// Snapshot creation type.
+        /// </summary>
+        [Input("snapshotType")]
+        public Input<string>? SnapshotType { get; set; }
+
+        /// <summary>
+        /// Source disk attributes.
+        /// </summary>
+        [Input("sourceDiskType")]
+        public Input<string>? SourceDiskType { get; set; }
+
+        /// <summary>
+        /// The status of the snapshot.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tags.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// A resource type that has a reference relationship.
+        /// </summary>
+        [Input("usage")]
+        public Input<string>? Usage { get; set; }
+
+        public GetEcsSnapshotsInvokeArgs()
         {
         }
     }

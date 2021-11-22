@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstPrivatelinkVpcEndpointId = example.then(example => example.endpoints[0].id);
+ * export const firstPrivatelinkVpcEndpointId = example.then(example => example.endpoints?[0]?.id);
  * ```
  */
 export function getVpcEndpoints(args?: GetVpcEndpointsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointsResult> {
@@ -54,36 +54,36 @@ export interface GetVpcEndpointsArgs {
     /**
      * The status of Connection.
      */
-    readonly connectionStatus?: string;
+    connectionStatus?: string;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Vpc Endpoint IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Vpc Endpoint name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The name of the terminal node service associated with the terminal node.
      */
-    readonly serviceName?: string;
+    serviceName?: string;
     /**
      * The status of Vpc Endpoint.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The name of Vpc Endpoint.
      */
-    readonly vpcEndpointName?: string;
+    vpcEndpointName?: string;
     /**
      * The private network to which the terminal node belongs.
      */
-    readonly vpcId?: string;
+    vpcId?: string;
 }
 
 /**
@@ -105,4 +105,47 @@ export interface GetVpcEndpointsResult {
     readonly status?: string;
     readonly vpcEndpointName?: string;
     readonly vpcId?: string;
+}
+
+export function getVpcEndpointsOutput(args?: GetVpcEndpointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointsResult> {
+    return pulumi.output(args).apply(a => getVpcEndpoints(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVpcEndpoints.
+ */
+export interface GetVpcEndpointsOutputArgs {
+    /**
+     * The status of Connection.
+     */
+    connectionStatus?: pulumi.Input<string>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Vpc Endpoint IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Vpc Endpoint name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The name of the terminal node service associated with the terminal node.
+     */
+    serviceName?: pulumi.Input<string>;
+    /**
+     * The status of Vpc Endpoint.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The name of Vpc Endpoint.
+     */
+    vpcEndpointName?: pulumi.Input<string>;
+    /**
+     * The private network to which the terminal node belongs.
+     */
+    vpcId?: pulumi.Input<string>;
 }

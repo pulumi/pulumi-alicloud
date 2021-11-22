@@ -140,39 +140,39 @@ export interface UserState {
     /**
      * The description of user.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the Directory.
      */
-    readonly directoryId?: pulumi.Input<string>;
+    directoryId?: pulumi.Input<string>;
     /**
      * The display name of user.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The User's Contact Email Address.
      */
-    readonly email?: pulumi.Input<string>;
+    email?: pulumi.Input<string>;
     /**
      * The first name of user.
      */
-    readonly firstName?: pulumi.Input<string>;
+    firstName?: pulumi.Input<string>;
     /**
      * The last name of user.
      */
-    readonly lastName?: pulumi.Input<string>;
+    lastName?: pulumi.Input<string>;
     /**
      * The status of user. Valid values: `Disabled`, `Enabled`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The User ID of the group.
      */
-    readonly userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string>;
     /**
      * The name of user.
      */
-    readonly userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string>;
 }
 
 /**
@@ -182,33 +182,33 @@ export interface UserArgs {
     /**
      * The description of user.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the Directory.
      */
-    readonly directoryId: pulumi.Input<string>;
+    directoryId: pulumi.Input<string>;
     /**
      * The display name of user.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The User's Contact Email Address.
      */
-    readonly email?: pulumi.Input<string>;
+    email?: pulumi.Input<string>;
     /**
      * The first name of user.
      */
-    readonly firstName?: pulumi.Input<string>;
+    firstName?: pulumi.Input<string>;
     /**
      * The last name of user.
      */
-    readonly lastName?: pulumi.Input<string>;
+    lastName?: pulumi.Input<string>;
     /**
      * The status of user. Valid values: `Disabled`, `Enabled`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The name of user.
      */
-    readonly userName: pulumi.Input<string>;
+    userName: pulumi.Input<string>;
 }

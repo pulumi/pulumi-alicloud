@@ -151,39 +151,39 @@ export interface HandshakeState {
     /**
      * The expiration time of the invitation.
      */
-    readonly expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string>;
     /**
      * Resource account master account ID.
      */
-    readonly masterAccountId?: pulumi.Input<string>;
+    masterAccountId?: pulumi.Input<string>;
     /**
      * The name of the main account of the resource directory.
      */
-    readonly masterAccountName?: pulumi.Input<string>;
+    masterAccountName?: pulumi.Input<string>;
     /**
      * The modification time of the invitation.
      */
-    readonly modifyTime?: pulumi.Input<string>;
+    modifyTime?: pulumi.Input<string>;
     /**
      * Remarks. The maximum length is 1024 characters.
      */
-    readonly note?: pulumi.Input<string>;
+    note?: pulumi.Input<string>;
     /**
      * Resource directory ID.
      */
-    readonly resourceDirectoryId?: pulumi.Input<string>;
+    resourceDirectoryId?: pulumi.Input<string>;
     /**
      * Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Invited account ID or login email.
      */
-    readonly targetEntity?: pulumi.Input<string>;
+    targetEntity?: pulumi.Input<string>;
     /**
      * Type of account being invited. Valid values: `Account`, `Email`.
      */
-    readonly targetType?: pulumi.Input<string>;
+    targetType?: pulumi.Input<string>;
 }
 
 /**
@@ -193,13 +193,13 @@ export interface HandshakeArgs {
     /**
      * Remarks. The maximum length is 1024 characters.
      */
-    readonly note?: pulumi.Input<string>;
+    note?: pulumi.Input<string>;
     /**
      * Invited account ID or login email.
      */
-    readonly targetEntity: pulumi.Input<string>;
+    targetEntity: pulumi.Input<string>;
     /**
      * Type of account being invited. Valid values: `Account`, `Email`.
      */
-    readonly targetType: pulumi.Input<string>;
+    targetType: pulumi.Input<string>;
 }

@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstGaListenerId = example.then(example => example.listeners[0].id);
+ * export const firstGaListenerId = example.then(example => example.listeners?[0]?.id);
  * ```
  */
 export function getListeners(args: GetListenersArgs, opts?: pulumi.InvokeOptions): Promise<GetListenersResult> {
@@ -50,20 +50,20 @@ export interface GetListenersArgs {
     /**
      * The accelerator id.
      */
-    readonly acceleratorId: string;
+    acceleratorId: string;
     /**
      * A list of Listener IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Listener name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of the listener.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -81,4 +81,31 @@ export interface GetListenersResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getListenersOutput(args: GetListenersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetListenersResult> {
+    return pulumi.output(args).apply(a => getListeners(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getListeners.
+ */
+export interface GetListenersOutputArgs {
+    /**
+     * The accelerator id.
+     */
+    acceleratorId: pulumi.Input<string>;
+    /**
+     * A list of Listener IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Listener name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the listener.
+     */
+    status?: pulumi.Input<string>;
 }

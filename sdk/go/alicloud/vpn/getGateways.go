@@ -4,6 +4,9 @@
 package vpn
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -87,4 +90,95 @@ type GetGatewaysResult struct {
 	Status *string `pulumi:"status"`
 	// ID of the VPC that the VPN belongs.
 	VpcId *string `pulumi:"vpcId"`
+}
+
+func GetGatewaysOutput(ctx *pulumi.Context, args GetGatewaysOutputArgs, opts ...pulumi.InvokeOption) GetGatewaysResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetGatewaysResult, error) {
+			args := v.(GetGatewaysArgs)
+			r, err := GetGateways(ctx, &args, opts...)
+			return *r, err
+		}).(GetGatewaysResultOutput)
+}
+
+// A collection of arguments for invoking getGateways.
+type GetGatewaysOutputArgs struct {
+	// Limit search to specific business status - valid value is "Normal", "FinancialLocked".
+	BusinessStatus pulumi.StringPtrInput `pulumi:"businessStatus"`
+	// IDs of the VPN.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string of VPN name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// Save the result to the file.
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Use the VPC ID as the search key.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+}
+
+func (GetGatewaysOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getGateways.
+type GetGatewaysResultOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysResult)(nil)).Elem()
+}
+
+func (o GetGatewaysResultOutput) ToGetGatewaysResultOutput() GetGatewaysResultOutput {
+	return o
+}
+
+func (o GetGatewaysResultOutput) ToGetGatewaysResultOutputWithContext(ctx context.Context) GetGatewaysResultOutput {
+	return o
+}
+
+// The business status of the VPN gateway.
+func (o GetGatewaysResultOutput) BusinessStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGatewaysResult) *string { return v.BusinessStatus }).(pulumi.StringPtrOutput)
+}
+
+// A list of VPN gateways. Each element contains the following attributes:
+func (o GetGatewaysResultOutput) Gateways() GetGatewaysGatewayArrayOutput {
+	return o.ApplyT(func(v GetGatewaysResult) []GetGatewaysGateway { return v.Gateways }).(GetGatewaysGatewayArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetGatewaysResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// IDs of the VPN.
+func (o GetGatewaysResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGatewaysResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGatewaysResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGatewaysResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// names of the VPN.
+func (o GetGatewaysResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGatewaysResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGatewaysResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGatewaysResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The status of the VPN
+func (o GetGatewaysResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGatewaysResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// ID of the VPC that the VPN belongs.
+func (o GetGatewaysResultOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGatewaysResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetGatewaysResultOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dts
 {
@@ -31,7 +32,7 @@ namespace Pulumi.AliCloud.Dts
         ///     public MyStack()
         ///     {
         ///         var ids = Output.Create(AliCloud.Dts.GetSynchronizationJobs.InvokeAsync());
-        ///         this.DtsSynchronizationJobId1 = ids.Apply(ids =&gt; ids.Jobs[0].Id);
+        ///         this.DtsSynchronizationJobId1 = ids.Apply(ids =&gt; ids.Jobs?[0]?.Id);
         ///     }
         /// 
         ///     [Output("dtsSynchronizationJobId1")]
@@ -43,6 +44,39 @@ namespace Pulumi.AliCloud.Dts
         /// </summary>
         public static Task<GetSynchronizationJobsResult> InvokeAsync(GetSynchronizationJobsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSynchronizationJobsResult>("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", args ?? new GetSynchronizationJobsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Dts.GetSynchronizationJobs.InvokeAsync());
+        ///         this.DtsSynchronizationJobId1 = ids.Apply(ids =&gt; ids.Jobs?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("dtsSynchronizationJobId1")]
+        ///     public Output&lt;string&gt; DtsSynchronizationJobId1 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSynchronizationJobsResult> Invoke(GetSynchronizationJobsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSynchronizationJobsResult>("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", args ?? new GetSynchronizationJobsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -79,6 +113,43 @@ namespace Pulumi.AliCloud.Dts
         public string? Status { get; set; }
 
         public GetSynchronizationJobsArgs()
+        {
+        }
+    }
+
+    public sealed class GetSynchronizationJobsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Synchronization Job IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by synchronization job name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetSynchronizationJobsInvokeArgs()
         {
         }
     }

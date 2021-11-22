@@ -4,6 +4,9 @@
 package cloudstoragegateway
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,4 +37,73 @@ type GetStorageBundlesResult struct {
 	NameRegex  *string  `pulumi:"nameRegex"`
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetStorageBundlesOutput(ctx *pulumi.Context, args GetStorageBundlesOutputArgs, opts ...pulumi.InvokeOption) GetStorageBundlesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetStorageBundlesResult, error) {
+			args := v.(GetStorageBundlesArgs)
+			r, err := GetStorageBundles(ctx, &args, opts...)
+			return *r, err
+		}).(GetStorageBundlesResultOutput)
+}
+
+// A collection of arguments for invoking getStorageBundles.
+type GetStorageBundlesOutputArgs struct {
+	BackendBucketRegionId pulumi.StringInput      `pulumi:"backendBucketRegionId"`
+	Ids                   pulumi.StringArrayInput `pulumi:"ids"`
+	NameRegex             pulumi.StringPtrInput   `pulumi:"nameRegex"`
+	OutputFile            pulumi.StringPtrInput   `pulumi:"outputFile"`
+}
+
+func (GetStorageBundlesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageBundlesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getStorageBundles.
+type GetStorageBundlesResultOutput struct{ *pulumi.OutputState }
+
+func (GetStorageBundlesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageBundlesResult)(nil)).Elem()
+}
+
+func (o GetStorageBundlesResultOutput) ToGetStorageBundlesResultOutput() GetStorageBundlesResultOutput {
+	return o
+}
+
+func (o GetStorageBundlesResultOutput) ToGetStorageBundlesResultOutputWithContext(ctx context.Context) GetStorageBundlesResultOutput {
+	return o
+}
+
+func (o GetStorageBundlesResultOutput) BackendBucketRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageBundlesResult) string { return v.BackendBucketRegionId }).(pulumi.StringOutput)
+}
+
+func (o GetStorageBundlesResultOutput) Bundles() GetStorageBundlesBundleArrayOutput {
+	return o.ApplyT(func(v GetStorageBundlesResult) []GetStorageBundlesBundle { return v.Bundles }).(GetStorageBundlesBundleArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetStorageBundlesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageBundlesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetStorageBundlesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetStorageBundlesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetStorageBundlesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetStorageBundlesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetStorageBundlesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetStorageBundlesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetStorageBundlesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetStorageBundlesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetStorageBundlesResultOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -34,7 +35,7 @@ namespace Pulumi.AliCloud.Vpc
         ///         }));
         ///         var defaultInstanceTypes = defaultZones.Apply(defaultZones =&gt; Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
         ///         {
-        ///             AvailabilityZone = defaultZones.Zones[0].Id,
+        ///             AvailabilityZone = defaultZones.Zones?[0]?.Id,
         ///             CpuCoreCount = 1,
         ///             MemorySize = 2,
         ///         })));
@@ -52,7 +53,7 @@ namespace Pulumi.AliCloud.Vpc
         ///         });
         ///         var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new AliCloud.Vpc.SwitchArgs
         ///         {
-        ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+        ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
         ///             CidrBlock = "10.1.1.0/24",
         ///             VpcId = fooNetwork.Id,
         ///             VswitchName = name,
@@ -65,10 +66,10 @@ namespace Pulumi.AliCloud.Vpc
         ///         var fooInstance = new AliCloud.Ecs.Instance("fooInstance", new AliCloud.Ecs.InstanceArgs
         ///         {
         ///             AllocatePublicIp = true,
-        ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images[0].Id),
+        ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images?[0]?.Id),
         ///             InstanceChargeType = "PostPaid",
         ///             InstanceName = name,
-        ///             InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes[0].Id),
+        ///             InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes?[0]?.Id),
         ///             InternetChargeType = "PayByTraffic",
         ///             InternetMaxBandwidthOut = 5,
         ///             SecurityGroups = 
@@ -109,6 +110,105 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Task<GetRouteEntriesResult> InvokeAsync(GetRouteEntriesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRouteEntriesResult>("alicloud:vpc/getRouteEntries:getRouteEntries", args ?? new GetRouteEntriesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of Route Entries owned by an Alibaba Cloud account.
+        /// 
+        /// &gt; **NOTE:** Available in 1.37.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+        ///         {
+        ///             AvailableResourceCreation = "VSwitch",
+        ///         }));
+        ///         var defaultInstanceTypes = defaultZones.Apply(defaultZones =&gt; Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
+        ///         {
+        ///             AvailabilityZone = defaultZones.Zones?[0]?.Id,
+        ///             CpuCoreCount = 1,
+        ///             MemorySize = 2,
+        ///         })));
+        ///         var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
+        ///         {
+        ///             MostRecent = true,
+        ///             NameRegex = "^ubuntu_18.*64",
+        ///             Owners = "system",
+        ///         }));
+        ///         var config = new Config();
+        ///         var name = config.Get("name") ?? "tf-testAccRouteEntryConfig";
+        ///         var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new AliCloud.Vpc.NetworkArgs
+        ///         {
+        ///             CidrBlock = "10.1.0.0/21",
+        ///         });
+        ///         var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new AliCloud.Vpc.SwitchArgs
+        ///         {
+        ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
+        ///             CidrBlock = "10.1.1.0/24",
+        ///             VpcId = fooNetwork.Id,
+        ///             VswitchName = name,
+        ///         });
+        ///         var tfTestFoo = new AliCloud.Ecs.SecurityGroup("tfTestFoo", new AliCloud.Ecs.SecurityGroupArgs
+        ///         {
+        ///             Description = "foo",
+        ///             VpcId = fooNetwork.Id,
+        ///         });
+        ///         var fooInstance = new AliCloud.Ecs.Instance("fooInstance", new AliCloud.Ecs.InstanceArgs
+        ///         {
+        ///             AllocatePublicIp = true,
+        ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images?[0]?.Id),
+        ///             InstanceChargeType = "PostPaid",
+        ///             InstanceName = name,
+        ///             InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes?[0]?.Id),
+        ///             InternetChargeType = "PayByTraffic",
+        ///             InternetMaxBandwidthOut = 5,
+        ///             SecurityGroups = 
+        ///             {
+        ///                 tfTestFoo.Id,
+        ///             },
+        ///             SystemDiskCategory = "cloud_efficiency",
+        ///             VswitchId = fooSwitch.Id,
+        ///         });
+        ///         var fooRouteEntry = new AliCloud.Vpc.RouteEntry("fooRouteEntry", new AliCloud.Vpc.RouteEntryArgs
+        ///         {
+        ///             DestinationCidrblock = "172.11.1.1/32",
+        ///             NexthopId = fooInstance.Id,
+        ///             NexthopType = "Instance",
+        ///             RouteTableId = fooNetwork.RouteTableId,
+        ///         });
+        ///         var ingress = new AliCloud.Ecs.SecurityGroupRule("ingress", new AliCloud.Ecs.SecurityGroupRuleArgs
+        ///         {
+        ///             CidrIp = "0.0.0.0/0",
+        ///             IpProtocol = "tcp",
+        ///             NicType = "intranet",
+        ///             Policy = "accept",
+        ///             PortRange = "22/22",
+        ///             Priority = 1,
+        ///             SecurityGroupId = tfTestFoo.Id,
+        ///             Type = "ingress",
+        ///         });
+        ///         var fooRouteEntries = fooRouteEntry.RouteTableId.Apply(routeTableId =&gt; AliCloud.Vpc.GetRouteEntries.InvokeAsync(new AliCloud.Vpc.GetRouteEntriesArgs
+        ///         {
+        ///             RouteTableId = routeTableId,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetRouteEntriesResult> Invoke(GetRouteEntriesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRouteEntriesResult>("alicloud:vpc/getRouteEntries:getRouteEntries", args ?? new GetRouteEntriesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -142,6 +242,40 @@ namespace Pulumi.AliCloud.Vpc
         public string? Type { get; set; }
 
         public GetRouteEntriesArgs()
+        {
+        }
+    }
+
+    public sealed class GetRouteEntriesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The destination CIDR block of the route entry.
+        /// </summary>
+        [Input("cidrBlock")]
+        public Input<string>? CidrBlock { get; set; }
+
+        /// <summary>
+        /// The instance ID of the next hop.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The ID of the router table to which the route entry belongs.
+        /// </summary>
+        [Input("routeTableId", required: true)]
+        public Input<string> RouteTableId { get; set; } = null!;
+
+        /// <summary>
+        /// The type of the route entry.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        public GetRouteEntriesInvokeArgs()
         {
         }
     }

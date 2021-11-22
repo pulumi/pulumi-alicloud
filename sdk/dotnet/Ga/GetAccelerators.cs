@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ga
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Ga
         ///             },
         ///             NameRegex = "the_resource_name",
         ///         }));
-        ///         this.FirstGaAcceleratorId = example.Apply(example =&gt; example.Accelerators[0].Id);
+        ///         this.FirstGaAcceleratorId = example.Apply(example =&gt; example.Accelerators?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstGaAcceleratorId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         public static Task<GetAcceleratorsResult> InvokeAsync(GetAcceleratorsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAcceleratorsResult>("alicloud:ga/getAccelerators:getAccelerators", args ?? new GetAcceleratorsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.111.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Ga.GetAccelerators.InvokeAsync(new AliCloud.Ga.GetAcceleratorsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_value",
+        ///             },
+        ///             NameRegex = "the_resource_name",
+        ///         }));
+        ///         this.FirstGaAcceleratorId = example.Apply(example =&gt; example.Accelerators?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstGaAcceleratorId")]
+        ///     public Output&lt;string&gt; FirstGaAcceleratorId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAcceleratorsResult> Invoke(GetAcceleratorsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAcceleratorsResult>("alicloud:ga/getAccelerators:getAccelerators", args ?? new GetAcceleratorsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -83,6 +124,40 @@ namespace Pulumi.AliCloud.Ga
         public string? Status { get; set; }
 
         public GetAcceleratorsArgs()
+        {
+        }
+    }
+
+    public sealed class GetAcceleratorsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Accelerator IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Accelerator name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the GA instance.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetAcceleratorsInvokeArgs()
         {
         }
     }

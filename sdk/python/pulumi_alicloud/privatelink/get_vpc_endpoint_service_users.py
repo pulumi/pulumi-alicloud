@@ -13,6 +13,7 @@ __all__ = [
     'GetVpcEndpointServiceUsersResult',
     'AwaitableGetVpcEndpointServiceUsersResult',
     'get_vpc_endpoint_service_users',
+    'get_vpc_endpoint_service_users_output',
 ]
 
 @pulumi.output_type
@@ -130,3 +131,32 @@ def get_vpc_endpoint_service_users(output_file: Optional[str] = None,
         service_id=__ret__.service_id,
         user_id=__ret__.user_id,
         users=__ret__.users)
+
+
+@_utilities.lift_output_func(get_vpc_endpoint_service_users)
+def get_vpc_endpoint_service_users_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                          service_id: Optional[pulumi.Input[str]] = None,
+                                          user_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcEndpointServiceUsersResult]:
+    """
+    This data source provides the Privatelink Vpc Endpoint Service Users of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.110.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.privatelink.get_vpc_endpoint_service_users(service_id="epsrv-gw81c6vxxxxxx")
+    pulumi.export("firstPrivatelinkVpcEndpointServiceUserId", example.users[0].id)
+    ```
+
+
+    :param str service_id: The Id of Vpc Endpoint Service.
+    :param str user_id: The Id of Ram User.
+    """
+    ...

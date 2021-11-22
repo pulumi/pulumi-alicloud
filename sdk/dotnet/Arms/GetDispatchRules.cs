@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Arms
 {
@@ -31,12 +32,12 @@ namespace Pulumi.AliCloud.Arms
         ///     public MyStack()
         ///     {
         ///         var ids = Output.Create(AliCloud.Arms.GetDispatchRules.InvokeAsync());
-        ///         this.ArmsDispatchRuleId1 = ids.Apply(ids =&gt; ids.Rules[0].Id);
+        ///         this.ArmsDispatchRuleId1 = ids.Apply(ids =&gt; ids.Rules?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.Arms.GetDispatchRules.InvokeAsync(new AliCloud.Arms.GetDispatchRulesArgs
         ///         {
         ///             NameRegex = "^my-DispatchRule",
         ///         }));
-        ///         this.ArmsDispatchRuleId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Rules[0].Id);
+        ///         this.ArmsDispatchRuleId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Rules?[0]?.Id);
         ///     }
         /// 
         ///     [Output("armsDispatchRuleId1")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Arms
         /// </summary>
         public static Task<GetDispatchRulesResult> InvokeAsync(GetDispatchRulesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDispatchRulesResult>("alicloud:arms/getDispatchRules:getDispatchRules", args ?? new GetDispatchRulesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Arms.GetDispatchRules.InvokeAsync());
+        ///         this.ArmsDispatchRuleId1 = ids.Apply(ids =&gt; ids.Rules?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.Arms.GetDispatchRules.InvokeAsync(new AliCloud.Arms.GetDispatchRulesArgs
+        ///         {
+        ///             NameRegex = "^my-DispatchRule",
+        ///         }));
+        ///         this.ArmsDispatchRuleId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Rules?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("armsDispatchRuleId1")]
+        ///     public Output&lt;string&gt; ArmsDispatchRuleId1 { get; set; }
+        ///     [Output("armsDispatchRuleId2")]
+        ///     public Output&lt;string&gt; ArmsDispatchRuleId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDispatchRulesResult> Invoke(GetDispatchRulesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDispatchRulesResult>("alicloud:arms/getDispatchRules:getDispatchRules", args ?? new GetDispatchRulesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -89,6 +130,46 @@ namespace Pulumi.AliCloud.Arms
         public string? OutputFile { get; set; }
 
         public GetDispatchRulesArgs()
+        {
+        }
+    }
+
+    public sealed class GetDispatchRulesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the dispatch rule.
+        /// </summary>
+        [Input("dispatchRuleName")]
+        public Input<string>? DispatchRuleName { get; set; }
+
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of dispatch rule id.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Dispatch Rule name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetDispatchRulesInvokeArgs()
         {
         }
     }

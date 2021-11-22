@@ -13,6 +13,7 @@ __all__ = [
     'GetAccessConfigurationsResult',
     'AwaitableGetAccessConfigurationsResult',
     'get_access_configurations',
+    'get_access_configurations_output',
 ]
 
 @pulumi.output_type
@@ -165,3 +166,45 @@ def get_access_configurations(directory_id: Optional[str] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_access_configurations)
+def get_access_configurations_output(directory_id: Optional[pulumi.Input[str]] = None,
+                                     enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                                     ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessConfigurationsResult]:
+    """
+    This data source provides the Cloud Sso Access Configurations of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.140.0+.
+
+    > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cloudsso.get_access_configurations(directory_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("cloudSsoAccessConfigurationId1", ids.configurations[0].id)
+    name_regex = alicloud.cloudsso.get_access_configurations(directory_id="example_value",
+        name_regex="^my-AccessConfiguration")
+    pulumi.export("cloudSsoAccessConfigurationId2", name_regex.configurations[0].id)
+    ```
+
+
+    :param str directory_id: The ID of the Directory.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of Access Configuration IDs.
+    :param str name_regex: A regex string to filter results by Access Configuration name.
+    """
+    ...

@@ -4,6 +4,9 @@
 package cfg
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -83,4 +86,100 @@ type GetAggregateConfigRulesResult struct {
 	RiskLevel  *int                          `pulumi:"riskLevel"`
 	Rules      []GetAggregateConfigRulesRule `pulumi:"rules"`
 	Status     *string                       `pulumi:"status"`
+}
+
+func GetAggregateConfigRulesOutput(ctx *pulumi.Context, args GetAggregateConfigRulesOutputArgs, opts ...pulumi.InvokeOption) GetAggregateConfigRulesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAggregateConfigRulesResult, error) {
+			args := v.(GetAggregateConfigRulesArgs)
+			r, err := GetAggregateConfigRules(ctx, &args, opts...)
+			return *r, err
+		}).(GetAggregateConfigRulesResultOutput)
+}
+
+// A collection of arguments for invoking getAggregateConfigRules.
+type GetAggregateConfigRulesOutputArgs struct {
+	// The name of the rule.
+	AggregateConfigRuleName pulumi.StringPtrInput `pulumi:"aggregateConfigRuleName"`
+	// The ID of Aggregator.
+	AggregatorId pulumi.StringInput `pulumi:"aggregatorId"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of Aggregate Config Rule IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Aggregate Config Rule name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
+	RiskLevel pulumi.IntPtrInput `pulumi:"riskLevel"`
+	// The status of the rule.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetAggregateConfigRulesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAggregateConfigRulesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAggregateConfigRules.
+type GetAggregateConfigRulesResultOutput struct{ *pulumi.OutputState }
+
+func (GetAggregateConfigRulesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAggregateConfigRulesResult)(nil)).Elem()
+}
+
+func (o GetAggregateConfigRulesResultOutput) ToGetAggregateConfigRulesResultOutput() GetAggregateConfigRulesResultOutput {
+	return o
+}
+
+func (o GetAggregateConfigRulesResultOutput) ToGetAggregateConfigRulesResultOutputWithContext(ctx context.Context) GetAggregateConfigRulesResultOutput {
+	return o
+}
+
+func (o GetAggregateConfigRulesResultOutput) AggregateConfigRuleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAggregateConfigRulesResult) *string { return v.AggregateConfigRuleName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAggregateConfigRulesResultOutput) AggregatorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAggregateConfigRulesResult) string { return v.AggregatorId }).(pulumi.StringOutput)
+}
+
+func (o GetAggregateConfigRulesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAggregateConfigRulesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAggregateConfigRulesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAggregateConfigRulesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAggregateConfigRulesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAggregateConfigRulesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAggregateConfigRulesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAggregateConfigRulesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAggregateConfigRulesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAggregateConfigRulesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAggregateConfigRulesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAggregateConfigRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAggregateConfigRulesResultOutput) RiskLevel() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAggregateConfigRulesResult) *int { return v.RiskLevel }).(pulumi.IntPtrOutput)
+}
+
+func (o GetAggregateConfigRulesResultOutput) Rules() GetAggregateConfigRulesRuleArrayOutput {
+	return o.ApplyT(func(v GetAggregateConfigRulesResult) []GetAggregateConfigRulesRule { return v.Rules }).(GetAggregateConfigRulesRuleArrayOutput)
+}
+
+func (o GetAggregateConfigRulesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAggregateConfigRulesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAggregateConfigRulesResultOutput{})
 }

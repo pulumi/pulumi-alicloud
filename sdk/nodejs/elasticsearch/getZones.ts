@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Declare the data source
- * const zonesIds = pulumi.output(alicloud.elasticsearch.getZones({ async: true }));
+ * const zonesIds = pulumi.output(alicloud.elasticsearch.getZones());
  * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
@@ -42,8 +42,8 @@ export interface GetZonesArgs {
     /**
      * Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Elasticsearch instances.
      */
-    readonly multi?: boolean;
-    readonly outputFile?: string;
+    multi?: boolean;
+    outputFile?: string;
 }
 
 /**
@@ -64,4 +64,19 @@ export interface GetZonesResult {
      * A list of availability zones. Each element contains the following attributes:
      */
     readonly zones: outputs.elasticsearch.GetZonesZone[];
+}
+
+export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
+    return pulumi.output(args).apply(a => getZones(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getZones.
+ */
+export interface GetZonesOutputArgs {
+    /**
+     * Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Elasticsearch instances.
+     */
+    multi?: pulumi.Input<boolean>;
+    outputFile?: pulumi.Input<string>;
 }

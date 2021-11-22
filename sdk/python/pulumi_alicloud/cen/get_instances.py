@@ -13,6 +13,7 @@ __all__ = [
     'GetInstancesResult',
     'AwaitableGetInstancesResult',
     'get_instances',
+    'get_instances_output',
 ]
 
 @pulumi.output_type
@@ -168,3 +169,33 @@ def get_instances(ids: Optional[Sequence[str]] = None,
         output_file=__ret__.output_file,
         status=__ret__.status,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_instances)
+def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         status: Optional[pulumi.Input[Optional[str]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+    """
+    This data source provides CEN instances available to the user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    cen_instances_ds = alicloud.cen.get_instances(ids=["cen-id1"],
+        name_regex="^foo")
+    pulumi.export("firstCenInstanceId", cen_instances_ds.instances[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of CEN instances IDs.
+    :param str name_regex: A regex string to filter CEN instances by name.
+    :param str status: The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    """
+    ...

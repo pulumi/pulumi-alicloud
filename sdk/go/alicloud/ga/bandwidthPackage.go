@@ -322,7 +322,7 @@ type BandwidthPackageArrayInput interface {
 type BandwidthPackageArray []BandwidthPackageInput
 
 func (BandwidthPackageArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*BandwidthPackage)(nil))
+	return reflect.TypeOf((*[]*BandwidthPackage)(nil)).Elem()
 }
 
 func (i BandwidthPackageArray) ToBandwidthPackageArrayOutput() BandwidthPackageArrayOutput {
@@ -347,7 +347,7 @@ type BandwidthPackageMapInput interface {
 type BandwidthPackageMap map[string]BandwidthPackageInput
 
 func (BandwidthPackageMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*BandwidthPackage)(nil))
+	return reflect.TypeOf((*map[string]*BandwidthPackage)(nil)).Elem()
 }
 
 func (i BandwidthPackageMap) ToBandwidthPackageMapOutput() BandwidthPackageMapOutput {
@@ -358,9 +358,7 @@ func (i BandwidthPackageMap) ToBandwidthPackageMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthPackageMapOutput)
 }
 
-type BandwidthPackageOutput struct {
-	*pulumi.OutputState
-}
+type BandwidthPackageOutput struct{ *pulumi.OutputState }
 
 func (BandwidthPackageOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BandwidthPackage)(nil))
@@ -379,14 +377,12 @@ func (o BandwidthPackageOutput) ToBandwidthPackagePtrOutput() BandwidthPackagePt
 }
 
 func (o BandwidthPackageOutput) ToBandwidthPackagePtrOutputWithContext(ctx context.Context) BandwidthPackagePtrOutput {
-	return o.ApplyT(func(v BandwidthPackage) *BandwidthPackage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BandwidthPackage) *BandwidthPackage {
 		return &v
 	}).(BandwidthPackagePtrOutput)
 }
 
-type BandwidthPackagePtrOutput struct {
-	*pulumi.OutputState
-}
+type BandwidthPackagePtrOutput struct{ *pulumi.OutputState }
 
 func (BandwidthPackagePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BandwidthPackage)(nil))
@@ -398,6 +394,16 @@ func (o BandwidthPackagePtrOutput) ToBandwidthPackagePtrOutput() BandwidthPackag
 
 func (o BandwidthPackagePtrOutput) ToBandwidthPackagePtrOutputWithContext(ctx context.Context) BandwidthPackagePtrOutput {
 	return o
+}
+
+func (o BandwidthPackagePtrOutput) Elem() BandwidthPackageOutput {
+	return o.ApplyT(func(v *BandwidthPackage) BandwidthPackage {
+		if v != nil {
+			return *v
+		}
+		var ret BandwidthPackage
+		return ret
+	}).(BandwidthPackageOutput)
 }
 
 type BandwidthPackageArrayOutput struct{ *pulumi.OutputState }
@@ -441,6 +447,10 @@ func (o BandwidthPackageMapOutput) MapIndex(k pulumi.StringInput) BandwidthPacka
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BandwidthPackageInput)(nil)).Elem(), &BandwidthPackage{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BandwidthPackagePtrInput)(nil)).Elem(), &BandwidthPackage{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BandwidthPackageArrayInput)(nil)).Elem(), BandwidthPackageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BandwidthPackageMapInput)(nil)).Elem(), BandwidthPackageMap{})
 	pulumi.RegisterOutputType(BandwidthPackageOutput{})
 	pulumi.RegisterOutputType(BandwidthPackagePtrOutput{})
 	pulumi.RegisterOutputType(BandwidthPackageArrayOutput{})

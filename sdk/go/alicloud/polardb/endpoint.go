@@ -42,7 +42,7 @@ import (
 // 			name = param
 // 		}
 // 		opt0 := creation
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -292,7 +292,7 @@ type EndpointArrayInput interface {
 type EndpointArray []EndpointInput
 
 func (EndpointArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Endpoint)(nil))
+	return reflect.TypeOf((*[]*Endpoint)(nil)).Elem()
 }
 
 func (i EndpointArray) ToEndpointArrayOutput() EndpointArrayOutput {
@@ -317,7 +317,7 @@ type EndpointMapInput interface {
 type EndpointMap map[string]EndpointInput
 
 func (EndpointMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Endpoint)(nil))
+	return reflect.TypeOf((*map[string]*Endpoint)(nil)).Elem()
 }
 
 func (i EndpointMap) ToEndpointMapOutput() EndpointMapOutput {
@@ -328,9 +328,7 @@ func (i EndpointMap) ToEndpointMapOutputWithContext(ctx context.Context) Endpoin
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointMapOutput)
 }
 
-type EndpointOutput struct {
-	*pulumi.OutputState
-}
+type EndpointOutput struct{ *pulumi.OutputState }
 
 func (EndpointOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Endpoint)(nil))
@@ -349,14 +347,12 @@ func (o EndpointOutput) ToEndpointPtrOutput() EndpointPtrOutput {
 }
 
 func (o EndpointOutput) ToEndpointPtrOutputWithContext(ctx context.Context) EndpointPtrOutput {
-	return o.ApplyT(func(v Endpoint) *Endpoint {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Endpoint) *Endpoint {
 		return &v
 	}).(EndpointPtrOutput)
 }
 
-type EndpointPtrOutput struct {
-	*pulumi.OutputState
-}
+type EndpointPtrOutput struct{ *pulumi.OutputState }
 
 func (EndpointPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Endpoint)(nil))
@@ -368,6 +364,16 @@ func (o EndpointPtrOutput) ToEndpointPtrOutput() EndpointPtrOutput {
 
 func (o EndpointPtrOutput) ToEndpointPtrOutputWithContext(ctx context.Context) EndpointPtrOutput {
 	return o
+}
+
+func (o EndpointPtrOutput) Elem() EndpointOutput {
+	return o.ApplyT(func(v *Endpoint) Endpoint {
+		if v != nil {
+			return *v
+		}
+		var ret Endpoint
+		return ret
+	}).(EndpointOutput)
 }
 
 type EndpointArrayOutput struct{ *pulumi.OutputState }
@@ -411,6 +417,10 @@ func (o EndpointMapOutput) MapIndex(k pulumi.StringInput) EndpointOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointInput)(nil)).Elem(), &Endpoint{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointPtrInput)(nil)).Elem(), &Endpoint{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointArrayInput)(nil)).Elem(), EndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointMapInput)(nil)).Elem(), EndpointMap{})
 	pulumi.RegisterOutputType(EndpointOutput{})
 	pulumi.RegisterOutputType(EndpointPtrOutput{})
 	pulumi.RegisterOutputType(EndpointArrayOutput{})

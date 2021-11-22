@@ -300,7 +300,7 @@ type RegistryEnterpriseSyncRuleArrayInput interface {
 type RegistryEnterpriseSyncRuleArray []RegistryEnterpriseSyncRuleInput
 
 func (RegistryEnterpriseSyncRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RegistryEnterpriseSyncRule)(nil))
+	return reflect.TypeOf((*[]*RegistryEnterpriseSyncRule)(nil)).Elem()
 }
 
 func (i RegistryEnterpriseSyncRuleArray) ToRegistryEnterpriseSyncRuleArrayOutput() RegistryEnterpriseSyncRuleArrayOutput {
@@ -325,7 +325,7 @@ type RegistryEnterpriseSyncRuleMapInput interface {
 type RegistryEnterpriseSyncRuleMap map[string]RegistryEnterpriseSyncRuleInput
 
 func (RegistryEnterpriseSyncRuleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RegistryEnterpriseSyncRule)(nil))
+	return reflect.TypeOf((*map[string]*RegistryEnterpriseSyncRule)(nil)).Elem()
 }
 
 func (i RegistryEnterpriseSyncRuleMap) ToRegistryEnterpriseSyncRuleMapOutput() RegistryEnterpriseSyncRuleMapOutput {
@@ -336,9 +336,7 @@ func (i RegistryEnterpriseSyncRuleMap) ToRegistryEnterpriseSyncRuleMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnterpriseSyncRuleMapOutput)
 }
 
-type RegistryEnterpriseSyncRuleOutput struct {
-	*pulumi.OutputState
-}
+type RegistryEnterpriseSyncRuleOutput struct{ *pulumi.OutputState }
 
 func (RegistryEnterpriseSyncRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegistryEnterpriseSyncRule)(nil))
@@ -357,14 +355,12 @@ func (o RegistryEnterpriseSyncRuleOutput) ToRegistryEnterpriseSyncRulePtrOutput(
 }
 
 func (o RegistryEnterpriseSyncRuleOutput) ToRegistryEnterpriseSyncRulePtrOutputWithContext(ctx context.Context) RegistryEnterpriseSyncRulePtrOutput {
-	return o.ApplyT(func(v RegistryEnterpriseSyncRule) *RegistryEnterpriseSyncRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistryEnterpriseSyncRule) *RegistryEnterpriseSyncRule {
 		return &v
 	}).(RegistryEnterpriseSyncRulePtrOutput)
 }
 
-type RegistryEnterpriseSyncRulePtrOutput struct {
-	*pulumi.OutputState
-}
+type RegistryEnterpriseSyncRulePtrOutput struct{ *pulumi.OutputState }
 
 func (RegistryEnterpriseSyncRulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RegistryEnterpriseSyncRule)(nil))
@@ -376,6 +372,16 @@ func (o RegistryEnterpriseSyncRulePtrOutput) ToRegistryEnterpriseSyncRulePtrOutp
 
 func (o RegistryEnterpriseSyncRulePtrOutput) ToRegistryEnterpriseSyncRulePtrOutputWithContext(ctx context.Context) RegistryEnterpriseSyncRulePtrOutput {
 	return o
+}
+
+func (o RegistryEnterpriseSyncRulePtrOutput) Elem() RegistryEnterpriseSyncRuleOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseSyncRule) RegistryEnterpriseSyncRule {
+		if v != nil {
+			return *v
+		}
+		var ret RegistryEnterpriseSyncRule
+		return ret
+	}).(RegistryEnterpriseSyncRuleOutput)
 }
 
 type RegistryEnterpriseSyncRuleArrayOutput struct{ *pulumi.OutputState }
@@ -419,6 +425,10 @@ func (o RegistryEnterpriseSyncRuleMapOutput) MapIndex(k pulumi.StringInput) Regi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegistryEnterpriseSyncRuleInput)(nil)).Elem(), &RegistryEnterpriseSyncRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegistryEnterpriseSyncRulePtrInput)(nil)).Elem(), &RegistryEnterpriseSyncRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegistryEnterpriseSyncRuleArrayInput)(nil)).Elem(), RegistryEnterpriseSyncRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegistryEnterpriseSyncRuleMapInput)(nil)).Elem(), RegistryEnterpriseSyncRuleMap{})
 	pulumi.RegisterOutputType(RegistryEnterpriseSyncRuleOutput{})
 	pulumi.RegisterOutputType(RegistryEnterpriseSyncRulePtrOutput{})
 	pulumi.RegisterOutputType(RegistryEnterpriseSyncRuleArrayOutput{})

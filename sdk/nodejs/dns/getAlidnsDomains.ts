@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * const domainsDs = pulumi.output(alicloud.dns.getAlidnsDomains({
  *     domainNameRegex: "^hegu",
  *     outputFile: "domains.txt",
- * }, { async: true }));
+ * }));
  *
  * export const firstDomainId = domainsDs.domains[0].domainId;
  * ```
@@ -59,57 +59,57 @@ export interface GetAlidnsDomainsArgs {
     /**
      * Specifies whether the domain is from Alibaba Cloud or not.
      */
-    readonly aliDomain?: boolean;
+    aliDomain?: boolean;
     /**
      * A regex string to filter results by the domain name.
      */
-    readonly domainNameRegex?: string;
-    readonly enableDetails?: boolean;
+    domainNameRegex?: string;
+    enableDetails?: boolean;
     /**
      * Domain group ID, if not filled, the default is all groups.
      */
-    readonly groupId?: string;
+    groupId?: string;
     /**
      * A regex string to filter results by the group name.
      */
-    readonly groupNameRegex?: string;
+    groupNameRegex?: string;
     /**
      * A list of domain IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * Cloud analysis product ID.
      */
-    readonly instanceId?: string;
+    instanceId?: string;
     /**
      * The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
      */
-    readonly keyWord?: string;
+    keyWord?: string;
     /**
      * User language.
      */
-    readonly lang?: string;
-    readonly outputFile?: string;
+    lang?: string;
+    outputFile?: string;
     /**
      * The Id of resource group which the dns belongs.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * Search mode, `LIKE` fuzzy search, `EXACT` exact search.
      */
-    readonly searchMode?: string;
+    searchMode?: string;
     /**
      * Whether to query the domain name star.
      */
-    readonly starmark?: boolean;
+    starmark?: boolean;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
     /**
      * Cloud analysis version code.
      */
-    readonly versionCode?: string;
+    versionCode?: string;
 }
 
 /**
@@ -161,4 +161,68 @@ export interface GetAlidnsDomainsResult {
      * Cloud resolution version ID.
      */
     readonly versionCode?: string;
+}
+
+export function getAlidnsDomainsOutput(args?: GetAlidnsDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlidnsDomainsResult> {
+    return pulumi.output(args).apply(a => getAlidnsDomains(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAlidnsDomains.
+ */
+export interface GetAlidnsDomainsOutputArgs {
+    /**
+     * Specifies whether the domain is from Alibaba Cloud or not.
+     */
+    aliDomain?: pulumi.Input<boolean>;
+    /**
+     * A regex string to filter results by the domain name.
+     */
+    domainNameRegex?: pulumi.Input<string>;
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * Domain group ID, if not filled, the default is all groups.
+     */
+    groupId?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by the group name.
+     */
+    groupNameRegex?: pulumi.Input<string>;
+    /**
+     * A list of domain IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Cloud analysis product ID.
+     */
+    instanceId?: pulumi.Input<string>;
+    /**
+     * The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
+     */
+    keyWord?: pulumi.Input<string>;
+    /**
+     * User language.
+     */
+    lang?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The Id of resource group which the dns belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Search mode, `LIKE` fuzzy search, `EXACT` exact search.
+     */
+    searchMode?: pulumi.Input<string>;
+    /**
+     * Whether to query the domain name star.
+     */
+    starmark?: pulumi.Input<boolean>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Cloud analysis version code.
+     */
+    versionCode?: pulumi.Input<string>;
 }

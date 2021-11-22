@@ -161,11 +161,11 @@ export interface InstanceState {
     /**
      * Description of the DRDS instance, This description can have a string of 2 to 256 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
      */
-    readonly instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string>;
     /**
      * User-defined DRDS instance node spec. Value range:
      * - `drds.sn1.4c8g` for DRDS instance Starter version;
@@ -173,7 +173,7 @@ export interface InstanceState {
      * - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
      * - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
      */
-    readonly instanceSeries?: pulumi.Input<string>;
+    instanceSeries?: pulumi.Input<string>;
     /**
      * User-defined DRDS instance specification. Value range:
      * - `drds.sn1.4c8g` for DRDS instance Starter version;
@@ -185,15 +185,15 @@ export interface InstanceState {
      * - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
      * - value range : `drds.sn1.32c64g.128c256g`
      */
-    readonly specification?: pulumi.Input<string>;
+    specification?: pulumi.Input<string>;
     /**
      * The VSwitch ID to launch in.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * The Zone to launch the DRDS instance.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -203,11 +203,11 @@ export interface InstanceArgs {
     /**
      * Description of the DRDS instance, This description can have a string of 2 to 256 characters.
      */
-    readonly description: pulumi.Input<string>;
+    description: pulumi.Input<string>;
     /**
      * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
      */
-    readonly instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string>;
     /**
      * User-defined DRDS instance node spec. Value range:
      * - `drds.sn1.4c8g` for DRDS instance Starter version;
@@ -215,7 +215,7 @@ export interface InstanceArgs {
      * - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
      * - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
      */
-    readonly instanceSeries: pulumi.Input<string>;
+    instanceSeries: pulumi.Input<string>;
     /**
      * User-defined DRDS instance specification. Value range:
      * - `drds.sn1.4c8g` for DRDS instance Starter version;
@@ -227,13 +227,13 @@ export interface InstanceArgs {
      * - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
      * - value range : `drds.sn1.32c64g.128c256g`
      */
-    readonly specification: pulumi.Input<string>;
+    specification: pulumi.Input<string>;
     /**
      * The VSwitch ID to launch in.
      */
-    readonly vswitchId: pulumi.Input<string>;
+    vswitchId: pulumi.Input<string>;
     /**
      * The Zone to launch the DRDS instance.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

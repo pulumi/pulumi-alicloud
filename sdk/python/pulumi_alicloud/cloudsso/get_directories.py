@@ -13,6 +13,7 @@ __all__ = [
     'GetDirectoriesResult',
     'AwaitableGetDirectoriesResult',
     'get_directories',
+    'get_directories_output',
 ]
 
 @pulumi.output_type
@@ -147,3 +148,38 @@ def get_directories(enable_details: Optional[bool] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_directories)
+def get_directories_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                           ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                           name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDirectoriesResult]:
+    """
+    This data source provides the Cloud Sso Directories of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.135.0+.
+
+    > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cloudsso.get_directories(ids=["example_id"])
+    pulumi.export("cloudSsoDirectoryId1", ids.directories[0].id)
+    name_regex = alicloud.cloudsso.get_directories(name_regex="^my-Directory")
+    pulumi.export("cloudSsoDirectoryId2", name_regex.directories[0].id)
+    ```
+
+
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of Directory IDs.
+    :param str name_regex: A regex string to filter results by Directory name.
+    """
+    ...

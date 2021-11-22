@@ -147,15 +147,15 @@ export interface InstanceGrantState {
     /**
      * The ID of the CEN.
      */
-    readonly cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string>;
     /**
      * The owner UID of the  CEN which the child instance granted to.
      */
-    readonly cenOwnerId?: pulumi.Input<string>;
+    cenOwnerId?: pulumi.Input<string>;
     /**
      * The ID of the child instance to grant.
      */
-    readonly childInstanceId?: pulumi.Input<string>;
+    childInstanceId?: pulumi.Input<string>;
 }
 
 /**
@@ -165,13 +165,13 @@ export interface InstanceGrantArgs {
     /**
      * The ID of the CEN.
      */
-    readonly cenId: pulumi.Input<string>;
+    cenId: pulumi.Input<string>;
     /**
      * The owner UID of the  CEN which the child instance granted to.
      */
-    readonly cenOwnerId: pulumi.Input<string>;
+    cenOwnerId: pulumi.Input<string>;
     /**
      * The ID of the child instance to grant.
      */
-    readonly childInstanceId: pulumi.Input<string>;
+    childInstanceId: pulumi.Input<string>;
 }

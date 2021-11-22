@@ -13,6 +13,7 @@ __all__ = [
     'GetContainerGroupsResult',
     'AwaitableGetContainerGroupsResult',
     'get_container_groups',
+    'get_container_groups_output',
 ]
 
 @pulumi.output_type
@@ -246,3 +247,49 @@ def get_container_groups(container_group_name: Optional[str] = None,
         vswitch_id=__ret__.vswitch_id,
         with_event=__ret__.with_event,
         zone_id=__ret__.zone_id)
+
+
+@_utilities.lift_output_func(get_container_groups)
+def get_container_groups_output(container_group_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                                ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                limit: Optional[pulumi.Input[Optional[int]]] = None,
+                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                status: Optional[pulumi.Input[Optional[str]]] = None,
+                                tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                with_event: Optional[pulumi.Input[Optional[bool]]] = None,
+                                zone_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContainerGroupsResult]:
+    """
+    This data source provides the Eci Container Groups of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.111.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.eci.get_container_groups(ids=["example_value"])
+    pulumi.export("firstEciContainerGroupId", example.groups[0].id)
+    ```
+
+
+    :param str container_group_name: The name of ContainerGroup.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of Container Group IDs.
+    :param int limit: The maximum number of resources returned in the response. Default value is `20`. Maximum value: `20`. The number of returned results is no greater than the specified number.
+    :param str name_regex: A regex string to filter results by Container Group name.
+    :param str resource_group_id: The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
+    :param str status: The status of container.
+    :param Mapping[str, Any] tags: The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
+    :param str vswitch_id: The vswitch id.
+    :param str zone_id: The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+    """
+    ...

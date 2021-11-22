@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.EventBridge
 {
@@ -39,7 +40,7 @@ namespace Pulumi.AliCloud.EventBridge
         ///             },
         ///             NameRegex = "the_resource_name",
         ///         }));
-        ///         this.FirstEventBridgeRuleId = example.Apply(example =&gt; example.Rules[0].Id);
+        ///         this.FirstEventBridgeRuleId = example.Apply(example =&gt; example.Rules?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstEventBridgeRuleId")]
@@ -51,6 +52,47 @@ namespace Pulumi.AliCloud.EventBridge
         /// </summary>
         public static Task<GetRulesResult> InvokeAsync(GetRulesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:eventbridge/getRules:getRules", args ?? new GetRulesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Event Bridge Rules of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.129.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.EventBridge.GetRules.InvokeAsync(new AliCloud.EventBridge.GetRulesArgs
+        ///         {
+        ///             EventBusName = "example_value",
+        ///             Ids = 
+        ///             {
+        ///                 "example_value",
+        ///             },
+        ///             NameRegex = "the_resource_name",
+        ///         }));
+        ///         this.FirstEventBridgeRuleId = example.Apply(example =&gt; example.Rules?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstEventBridgeRuleId")]
+        ///     public Output&lt;string&gt; FirstEventBridgeRuleId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetRulesResult> Invoke(GetRulesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:eventbridge/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -96,6 +138,52 @@ namespace Pulumi.AliCloud.EventBridge
         public string? Status { get; set; }
 
         public GetRulesArgs()
+        {
+        }
+    }
+
+    public sealed class GetRulesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of event bus.
+        /// </summary>
+        [Input("eventBusName", required: true)]
+        public Input<string> EventBusName { get; set; } = null!;
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Rule IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Rule name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The rule name prefix.
+        /// </summary>
+        [Input("ruleNamePrefix")]
+        public Input<string>? RuleNamePrefix { get; set; }
+
+        /// <summary>
+        /// Rule status, either Enable or Disable.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetRulesInvokeArgs()
         {
         }
     }

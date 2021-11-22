@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.OpenSearch
 {
@@ -63,6 +64,59 @@ namespace Pulumi.AliCloud.OpenSearch
         /// </summary>
         public static Task<GetAppGroupsResult> InvokeAsync(GetAppGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAppGroupsResult>("alicloud:opensearch/getAppGroups:getAppGroups", args ?? new GetAppGroupsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Open Search App Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var config = new Config();
+        ///         var name = config.Get("name") ?? "tf_testacc";
+        ///         var defaultAppGroup = new AliCloud.OpenSearch.AppGroup("defaultAppGroup", new AliCloud.OpenSearch.AppGroupArgs
+        ///         {
+        ///             AppGroupName = name,
+        ///             PaymentType = "PayAsYouGo",
+        ///             Type = "standard",
+        ///             Quota = new AliCloud.OpenSearch.Inputs.AppGroupQuotaArgs
+        ///             {
+        ///                 DocSize = 1,
+        ///                 ComputeResource = 20,
+        ///                 Spec = "opensearch.share.common",
+        ///             },
+        ///         });
+        ///         var defaultAppGroups = defaultAppGroup.Id.Apply(id =&gt; AliCloud.OpenSearch.GetAppGroups.InvokeAsync(new AliCloud.OpenSearch.GetAppGroupsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 id,
+        ///             },
+        ///         }));
+        ///         this.AppGroups = defaultAppGroups.Apply(defaultAppGroups =&gt; defaultAppGroups.Groups);
+        ///     }
+        /// 
+        ///     [Output("appGroups")]
+        ///     public Output&lt;string&gt; AppGroups { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAppGroupsResult> Invoke(GetAppGroupsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAppGroupsResult>("alicloud:opensearch/getAppGroups:getAppGroups", args ?? new GetAppGroupsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -117,6 +171,61 @@ namespace Pulumi.AliCloud.OpenSearch
         public string? Type { get; set; }
 
         public GetAppGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetAppGroupsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of App Group IDs. Its element value is same as App Group Name.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The Instance ID.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
+
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by App Group name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The Resource Group ID.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Application type. Valid Values: `standard`, `enhanced`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        public GetAppGroupsInvokeArgs()
         {
         }
     }

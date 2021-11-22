@@ -4,6 +4,9 @@
 package dns
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,4 +71,78 @@ type GetDomainTxtGuidResult struct {
 	Type string `pulumi:"type"`
 	// Record the value.
 	Value string `pulumi:"value"`
+}
+
+func GetDomainTxtGuidOutput(ctx *pulumi.Context, args GetDomainTxtGuidOutputArgs, opts ...pulumi.InvokeOption) GetDomainTxtGuidResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDomainTxtGuidResult, error) {
+			args := v.(GetDomainTxtGuidArgs)
+			r, err := GetDomainTxtGuid(ctx, &args, opts...)
+			return *r, err
+		}).(GetDomainTxtGuidResultOutput)
+}
+
+// A collection of arguments for invoking getDomainTxtGuid.
+type GetDomainTxtGuidOutputArgs struct {
+	// Verified domain name.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// User language.
+	Lang       pulumi.StringPtrInput `pulumi:"lang"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Txt verification function. Value:`ADD_SUB_DOMAIN`, `RETRIEVAL`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDomainTxtGuidOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainTxtGuidArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDomainTxtGuid.
+type GetDomainTxtGuidResultOutput struct{ *pulumi.OutputState }
+
+func (GetDomainTxtGuidResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainTxtGuidResult)(nil)).Elem()
+}
+
+func (o GetDomainTxtGuidResultOutput) ToGetDomainTxtGuidResultOutput() GetDomainTxtGuidResultOutput {
+	return o
+}
+
+func (o GetDomainTxtGuidResultOutput) ToGetDomainTxtGuidResultOutputWithContext(ctx context.Context) GetDomainTxtGuidResultOutput {
+	return o
+}
+
+func (o GetDomainTxtGuidResultOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainTxtGuidResult) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDomainTxtGuidResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainTxtGuidResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDomainTxtGuidResultOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainTxtGuidResult) *string { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDomainTxtGuidResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDomainTxtGuidResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// Host record.
+func (o GetDomainTxtGuidResultOutput) Rr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainTxtGuidResult) string { return v.Rr }).(pulumi.StringOutput)
+}
+
+func (o GetDomainTxtGuidResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainTxtGuidResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Record the value.
+func (o GetDomainTxtGuidResultOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainTxtGuidResult) string { return v.Value }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDomainTxtGuidResultOutput{})
 }

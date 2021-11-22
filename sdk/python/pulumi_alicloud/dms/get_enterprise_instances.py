@@ -13,6 +13,7 @@ __all__ = [
     'GetEnterpriseInstancesResult',
     'AwaitableGetEnterpriseInstancesResult',
     'get_enterprise_instances',
+    'get_enterprise_instances_output',
 ]
 
 @pulumi.output_type
@@ -240,3 +241,34 @@ def get_enterprise_instances(env_type: Optional[str] = None,
         search_key=__ret__.search_key,
         status=__ret__.status,
         tid=__ret__.tid)
+
+
+@_utilities.lift_output_func(get_enterprise_instances)
+def get_enterprise_instances_output(env_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                    instance_alias_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                    instance_source: Optional[pulumi.Input[Optional[str]]] = None,
+                                    instance_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                    net_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                    search_key: Optional[pulumi.Input[Optional[str]]] = None,
+                                    status: Optional[pulumi.Input[Optional[str]]] = None,
+                                    tid: Optional[pulumi.Input[Optional[int]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnterpriseInstancesResult]:
+    """
+    This data source provides a list of DMS Enterprise Instances in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available in 1.88.0+
+
+
+    :param str env_type: The type of the environment to which the database instance belongs.
+    :param str instance_alias_regex: A regex string to filter the results by the DMS Enterprise Instance instance_alias.
+    :param str instance_source: The source of the database instance.
+    :param str instance_type: The ID of the database instance.
+    :param str name_regex: A regex string to filter the results by the DMS Enterprise Instance instance_alias.
+    :param str net_type: The network type of the database instance. Valid values: CLASSIC and VPC. For more information about the valid values, see the description of the RegisterInstance operation.
+    :param str search_key: The keyword used to query database instances.
+    :param str status: Filter the results by status of the DMS Enterprise Instances. Valid values: `NORMAL`, `UNAVAILABLE`, `UNKNOWN`, `DELETED`, `DISABLE`.
+    :param int tid: The ID of the tenant in Data Management (DMS) Enterprise.
+    """
+    ...

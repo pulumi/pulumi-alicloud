@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.BastionHost
 {
@@ -39,13 +40,13 @@ namespace Pulumi.AliCloud.BastionHost
         ///                 "2",
         ///             },
         ///         }));
-        ///         this.BastionhostHostId1 = ids.Apply(ids =&gt; ids.Hosts[0].Id);
+        ///         this.BastionhostHostId1 = ids.Apply(ids =&gt; ids.Hosts?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.BastionHost.GetHosts.InvokeAsync(new AliCloud.BastionHost.GetHostsArgs
         ///         {
         ///             InstanceId = "example_value",
         ///             NameRegex = "^my-Host",
         ///         }));
-        ///         this.BastionhostHostId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Hosts[0].Id);
+        ///         this.BastionhostHostId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Hosts?[0]?.Id);
         ///     }
         /// 
         ///     [Output("bastionhostHostId1")]
@@ -59,6 +60,55 @@ namespace Pulumi.AliCloud.BastionHost
         /// </summary>
         public static Task<GetHostsResult> InvokeAsync(GetHostsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetHostsResult>("alicloud:bastionhost/getHosts:getHosts", args ?? new GetHostsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Bastionhost Hosts of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.BastionHost.GetHosts.InvokeAsync(new AliCloud.BastionHost.GetHostsArgs
+        ///         {
+        ///             InstanceId = "example_value",
+        ///             Ids = 
+        ///             {
+        ///                 "1",
+        ///                 "2",
+        ///             },
+        ///         }));
+        ///         this.BastionhostHostId1 = ids.Apply(ids =&gt; ids.Hosts?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.BastionHost.GetHosts.InvokeAsync(new AliCloud.BastionHost.GetHostsArgs
+        ///         {
+        ///             InstanceId = "example_value",
+        ///             NameRegex = "^my-Host",
+        ///         }));
+        ///         this.BastionhostHostId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Hosts?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("bastionhostHostId1")]
+        ///     public Output&lt;string&gt; BastionhostHostId1 { get; set; }
+        ///     [Output("bastionhostHostId2")]
+        ///     public Output&lt;string&gt; BastionhostHostId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetHostsResult> Invoke(GetHostsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetHostsResult>("alicloud:bastionhost/getHosts:getHosts", args ?? new GetHostsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -134,6 +184,82 @@ namespace Pulumi.AliCloud.BastionHost
         public string? SourceInstanceState { get; set; }
 
         public GetHostsArgs()
+        {
+        }
+    }
+
+    public sealed class GetHostsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        /// <summary>
+        /// The host address.
+        /// </summary>
+        [Input("hostAddress")]
+        public Input<string>? HostAddress { get; set; }
+
+        /// <summary>
+        /// Specify the new create a host name of the supports up to 128 characters.
+        /// </summary>
+        [Input("hostName")]
+        public Input<string>? HostName { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Host IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// Specify the new create a host where the Bastion host ID of.
+        /// </summary>
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        /// <summary>
+        /// A regex string to filter results by Host name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        /// <summary>
+        /// Specify the new create the host's operating system. Valid values: Linux Windows.
+        /// </summary>
+        [Input("osType")]
+        public Input<string>? OsType { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
+        /// </summary>
+        [Input("source")]
+        public Input<string>? Source { get; set; }
+
+        /// <summary>
+        /// Specify the newly created ECS instance ID or dedicated cluster host ID.
+        /// </summary>
+        [Input("sourceInstanceId")]
+        public Input<string>? SourceInstanceId { get; set; }
+
+        /// <summary>
+        /// The source instance state.
+        /// </summary>
+        [Input("sourceInstanceState")]
+        public Input<string>? SourceInstanceState { get; set; }
+
+        public GetHostsInvokeArgs()
         {
         }
     }

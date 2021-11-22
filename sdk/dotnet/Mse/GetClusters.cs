@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Mse
 {
@@ -36,7 +37,7 @@ namespace Pulumi.AliCloud.Mse
         ///             },
         ///             Status = "INIT_SUCCESS",
         ///         }));
-        ///         this.ClusterId = example.Apply(example =&gt; example.Clusters[0].Id);
+        ///         this.ClusterId = example.Apply(example =&gt; example.Clusters?[0]?.Id);
         ///     }
         /// 
         ///     [Output("clusterId")]
@@ -48,6 +49,44 @@ namespace Pulumi.AliCloud.Mse
         /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:mse/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of MSE Clusters in an Alibaba Cloud account according to the specified filters.
+        ///  
+        /// &gt; **NOTE:** Available in v1.94.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Mse.GetClusters.InvokeAsync(new AliCloud.Mse.GetClustersArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "mse-cn-0d9xxxx",
+        ///             },
+        ///             Status = "INIT_SUCCESS",
+        ///         }));
+        ///         this.ClusterId = example.Apply(example =&gt; example.Clusters?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("clusterId")]
+        ///     public Output&lt;string&gt; ClusterId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:mse/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -93,6 +132,52 @@ namespace Pulumi.AliCloud.Mse
         public string? Status { get; set; }
 
         public GetClustersArgs()
+        {
+        }
+    }
+
+    public sealed class GetClustersInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The alias name of MSE Cluster.
+        /// </summary>
+        [Input("clusterAliasName")]
+        public Input<string>? ClusterAliasName { get; set; }
+
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of MSE Cluster ids.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter the results by the cluster alias name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        [Input("requestPars")]
+        public Input<string>? RequestPars { get; set; }
+
+        /// <summary>
+        /// The status of MSE Cluster. Valid: `DESTROY_FAILED`, `DESTROY_ING`, `DESTROY_SUCCESS`, `INIT_FAILED`, `INIT_ING`, `INIT_SUCCESS`, `INIT_TIME_OUT`, `RESTART_FAILED`, `RESTART_ING`, `RESTART_SUCCESS`, `SCALE_FAILED`, `SCALE_ING`, `SCALE_SUCCESS`
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetClustersInvokeArgs()
         {
         }
     }

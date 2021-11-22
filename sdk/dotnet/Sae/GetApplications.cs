@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Sae
 {
@@ -45,7 +46,7 @@ namespace Pulumi.AliCloud.Sae
         ///         {
         ///             VpcId = vpc.Id,
         ///             CidrBlock = "172.16.0.0/24",
-        ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+        ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
         ///             VswitchName = name,
         ///         });
         ///         var defaultNamespace = new AliCloud.Sae.Namespace("defaultNamespace", new AliCloud.Sae.NamespaceArgs
@@ -74,7 +75,7 @@ namespace Pulumi.AliCloud.Sae
         ///                 id,
         ///             },
         ///         }));
-        ///         this.SaeApplicationId = defaultApplications.Apply(defaultApplications =&gt; defaultApplications.Applications[0].Id);
+        ///         this.SaeApplicationId = defaultApplications.Apply(defaultApplications =&gt; defaultApplications.Applications?[0]?.Id);
         ///     }
         /// 
         ///     [Output("saeApplicationId")]
@@ -86,6 +87,82 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         public static Task<GetApplicationsResult> InvokeAsync(GetApplicationsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationsResult>("alicloud:sae/getApplications:getApplications", args ?? new GetApplicationsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Sae Applications of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var config = new Config();
+        ///         var name = config.Get("name") ?? "tf-testacc";
+        ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+        ///         {
+        ///             AvailableResourceCreation = "VSwitch",
+        ///         }));
+        ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
+        ///         {
+        ///             VpcName = "tf_testacc",
+        ///             CidrBlock = "172.16.0.0/12",
+        ///         });
+        ///         var vsw = new AliCloud.Vpc.Switch("vsw", new AliCloud.Vpc.SwitchArgs
+        ///         {
+        ///             VpcId = vpc.Id,
+        ///             CidrBlock = "172.16.0.0/24",
+        ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
+        ///             VswitchName = name,
+        ///         });
+        ///         var defaultNamespace = new AliCloud.Sae.Namespace("defaultNamespace", new AliCloud.Sae.NamespaceArgs
+        ///         {
+        ///             NamespaceDescription = name,
+        ///             NamespaceId = "cn-hangzhou:tfacctest",
+        ///             NamespaceName = name,
+        ///         });
+        ///         var defaultApplication = new AliCloud.Sae.Application("defaultApplication", new AliCloud.Sae.ApplicationArgs
+        ///         {
+        ///             AppDescription = "tf-testaccDescription",
+        ///             AppName = "tf-testaccAppName131",
+        ///             NamespaceId = defaultNamespace.Id,
+        ///             ImageUrl = "registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
+        ///             PackageType = "Image",
+        ///             VswitchId = vsw.Id,
+        ///             Timezone = "Asia/Beijing",
+        ///             Replicas = 5,
+        ///             Cpu = 500,
+        ///             Memory = 2048,
+        ///         });
+        ///         var defaultApplications = defaultApplication.Id.Apply(id =&gt; AliCloud.Sae.GetApplications.InvokeAsync(new AliCloud.Sae.GetApplicationsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 id,
+        ///             },
+        ///         }));
+        ///         this.SaeApplicationId = defaultApplications.Apply(defaultApplications =&gt; defaultApplications.Applications?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("saeApplicationId")]
+        ///     public Output&lt;string&gt; SaeApplicationId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetApplicationsResult> Invoke(GetApplicationsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetApplicationsResult>("alicloud:sae/getApplications:getApplications", args ?? new GetApplicationsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -155,6 +232,76 @@ namespace Pulumi.AliCloud.Sae
         public string? Status { get; set; }
 
         public GetApplicationsArgs()
+        {
+        }
+    }
+
+    public sealed class GetApplicationsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
+        /// </summary>
+        [Input("appName")]
+        public Input<string>? AppName { get; set; }
+
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        /// <summary>
+        /// The field type. Valid values:`appName`, `appIds`, `slbIps`, `instanceIps`
+        /// </summary>
+        [Input("fieldType")]
+        public Input<string>? FieldType { get; set; }
+
+        /// <summary>
+        /// The field value.
+        /// </summary>
+        [Input("fieldValue")]
+        public Input<string>? FieldValue { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Application IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
+        /// </summary>
+        [Input("namespaceId")]
+        public Input<string>? NamespaceId { get; set; }
+
+        /// <summary>
+        /// The order by.Valid values:`running`,`instances`.
+        /// </summary>
+        [Input("orderBy")]
+        public Input<string>? OrderBy { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The reverse.
+        /// </summary>
+        [Input("reverse")]
+        public Input<bool>? Reverse { get; set; }
+
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetApplicationsInvokeArgs()
         {
         }
     }

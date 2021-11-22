@@ -116,15 +116,15 @@ export interface ImageExportState {
     /**
      * The source image ID.
      */
-    readonly imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string>;
     /**
      * Save the exported OSS bucket.
      */
-    readonly ossBucket?: pulumi.Input<string>;
+    ossBucket?: pulumi.Input<string>;
     /**
      * The prefix of your OSS Object. It can be composed of numbers or letters, and the character length is 1 ~ 30.
      */
-    readonly ossPrefix?: pulumi.Input<string>;
+    ossPrefix?: pulumi.Input<string>;
 }
 
 /**
@@ -134,13 +134,13 @@ export interface ImageExportArgs {
     /**
      * The source image ID.
      */
-    readonly imageId: pulumi.Input<string>;
+    imageId: pulumi.Input<string>;
     /**
      * Save the exported OSS bucket.
      */
-    readonly ossBucket: pulumi.Input<string>;
+    ossBucket: pulumi.Input<string>;
     /**
      * The prefix of your OSS Object. It can be composed of numbers or letters, and the character length is 1 ~ 30.
      */
-    readonly ossPrefix?: pulumi.Input<string>;
+    ossPrefix?: pulumi.Input<string>;
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Nas
 {
@@ -34,7 +35,7 @@ namespace Pulumi.AliCloud.Nas
         ///             AccessGroupType = "Classic",
         ///             Description = "tf-testAccAccessGroupsdatasource",
         ///         }));
-        ///         this.AlicloudNasAccessGroupsId = example.Apply(example =&gt; example.Groups[0].Id);
+        ///         this.AlicloudNasAccessGroupsId = example.Apply(example =&gt; example.Groups?[0]?.Id);
         ///     }
         /// 
         ///     [Output("alicloudNasAccessGroupsId")]
@@ -46,6 +47,42 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         public static Task<GetAccessGroupsResult> InvokeAsync(GetAccessGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccessGroupsResult>("alicloud:nas/getAccessGroups:getAccessGroups", args ?? new GetAccessGroupsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides user-available access groups. Use when you can create mount points
+        /// 
+        /// &gt; NOTE: Available in 1.35.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Nas.GetAccessGroups.InvokeAsync(new AliCloud.Nas.GetAccessGroupsArgs
+        ///         {
+        ///             NameRegex = "^foo",
+        ///             AccessGroupType = "Classic",
+        ///             Description = "tf-testAccAccessGroupsdatasource",
+        ///         }));
+        ///         this.AlicloudNasAccessGroupsId = example.Apply(example =&gt; example.Groups?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("alicloudNasAccessGroupsId")]
+        ///     public Output&lt;string&gt; AlicloudNasAccessGroupsId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAccessGroupsResult> Invoke(GetAccessGroupsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAccessGroupsResult>("alicloud:nas/getAccessGroups:getAccessGroups", args ?? new GetAccessGroupsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -97,6 +134,58 @@ namespace Pulumi.AliCloud.Nas
         public bool? UseutcDateTime { get; set; }
 
         public GetAccessGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetAccessGroupsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of access group.
+        /// </summary>
+        [Input("accessGroupName")]
+        public Input<string>? AccessGroupName { get; set; }
+
+        /// <summary>
+        /// Filter results by a specific AccessGroupType.
+        /// </summary>
+        [Input("accessGroupType")]
+        public Input<string>? AccessGroupType { get; set; }
+
+        /// <summary>
+        /// Filter results by a specific Description.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The type of file system. Valid values: `standard` and `extreme`. Default to `standard`.
+        /// </summary>
+        [Input("fileSystemType")]
+        public Input<string>? FileSystemType { get; set; }
+
+        /// <summary>
+        /// A regex string to filter AccessGroups by name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// Specifies whether the time to return is in UTC. Valid values: true and false.
+        /// </summary>
+        [Input("useutcDateTime")]
+        public Input<bool>? UseutcDateTime { get; set; }
+
+        public GetAccessGroupsInvokeArgs()
         {
         }
     }

@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     ],
  *     nameRegex: "testAcc*",
  *     outputFile: "/tmp/cgws",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getCustomerGateways(args?: GetCustomerGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomerGatewaysResult> {
@@ -47,15 +47,15 @@ export interface GetCustomerGatewaysArgs {
     /**
      * ID of the VPN customer gateways.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string of VPN customer gateways name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * Save the result to the file.
      */
-    readonly outputFile?: string;
+    outputFile?: string;
 }
 
 /**
@@ -74,4 +74,26 @@ export interface GetCustomerGatewaysResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getCustomerGatewaysOutput(args?: GetCustomerGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomerGatewaysResult> {
+    return pulumi.output(args).apply(a => getCustomerGateways(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCustomerGateways.
+ */
+export interface GetCustomerGatewaysOutputArgs {
+    /**
+     * ID of the VPN customer gateways.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string of VPN customer gateways name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * Save the result to the file.
+     */
+    outputFile?: pulumi.Input<string>;
 }

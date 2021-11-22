@@ -59,12 +59,12 @@ import (
 // 			Comment:     pulumi.String("created by terraform"),
 // 			LifeCycle:   pulumi.Int(7),
 // 			ProjectName: pulumi.String("tf_datahub_project"),
-// 			RecordSchema: pulumi.StringMap{
-// 				"bigint_field":    pulumi.String("BIGINT"),
-// 				"boolean_field":   pulumi.String("BOOLEAN"),
-// 				"double_field":    pulumi.String("DOUBLE"),
-// 				"string_field":    pulumi.String("STRING"),
-// 				"timestamp_field": pulumi.String("TIMESTAMP"),
+// 			RecordSchema: pulumi.AnyMap{
+// 				"bigint_field":    pulumi.Any("BIGINT"),
+// 				"boolean_field":   pulumi.Any("BOOLEAN"),
+// 				"double_field":    pulumi.Any("DOUBLE"),
+// 				"string_field":    pulumi.Any("STRING"),
+// 				"timestamp_field": pulumi.Any("TIMESTAMP"),
 // 			},
 // 			RecordType: pulumi.String("TUPLE"),
 // 			ShardCount: pulumi.Int(3),
@@ -310,7 +310,7 @@ type TopicArrayInput interface {
 type TopicArray []TopicInput
 
 func (TopicArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Topic)(nil))
+	return reflect.TypeOf((*[]*Topic)(nil)).Elem()
 }
 
 func (i TopicArray) ToTopicArrayOutput() TopicArrayOutput {
@@ -335,7 +335,7 @@ type TopicMapInput interface {
 type TopicMap map[string]TopicInput
 
 func (TopicMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Topic)(nil))
+	return reflect.TypeOf((*map[string]*Topic)(nil)).Elem()
 }
 
 func (i TopicMap) ToTopicMapOutput() TopicMapOutput {
@@ -346,9 +346,7 @@ func (i TopicMap) ToTopicMapOutputWithContext(ctx context.Context) TopicMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(TopicMapOutput)
 }
 
-type TopicOutput struct {
-	*pulumi.OutputState
-}
+type TopicOutput struct{ *pulumi.OutputState }
 
 func (TopicOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Topic)(nil))
@@ -367,14 +365,12 @@ func (o TopicOutput) ToTopicPtrOutput() TopicPtrOutput {
 }
 
 func (o TopicOutput) ToTopicPtrOutputWithContext(ctx context.Context) TopicPtrOutput {
-	return o.ApplyT(func(v Topic) *Topic {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Topic) *Topic {
 		return &v
 	}).(TopicPtrOutput)
 }
 
-type TopicPtrOutput struct {
-	*pulumi.OutputState
-}
+type TopicPtrOutput struct{ *pulumi.OutputState }
 
 func (TopicPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Topic)(nil))
@@ -386,6 +382,16 @@ func (o TopicPtrOutput) ToTopicPtrOutput() TopicPtrOutput {
 
 func (o TopicPtrOutput) ToTopicPtrOutputWithContext(ctx context.Context) TopicPtrOutput {
 	return o
+}
+
+func (o TopicPtrOutput) Elem() TopicOutput {
+	return o.ApplyT(func(v *Topic) Topic {
+		if v != nil {
+			return *v
+		}
+		var ret Topic
+		return ret
+	}).(TopicOutput)
 }
 
 type TopicArrayOutput struct{ *pulumi.OutputState }
@@ -429,6 +435,10 @@ func (o TopicMapOutput) MapIndex(k pulumi.StringInput) TopicOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicInput)(nil)).Elem(), &Topic{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicPtrInput)(nil)).Elem(), &Topic{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicArrayInput)(nil)).Elem(), TopicArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicMapInput)(nil)).Elem(), TopicMap{})
 	pulumi.RegisterOutputType(TopicOutput{})
 	pulumi.RegisterOutputType(TopicPtrOutput{})
 	pulumi.RegisterOutputType(TopicArrayOutput{})

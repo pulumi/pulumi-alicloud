@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstRosTemplateId = example.then(example => example.templates[0].id);
+ * export const firstRosTemplateId = example.then(example => example.templates?[0]?.id);
  * ```
  */
 export function getTemplates(args?: GetTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplatesResult> {
@@ -52,28 +52,28 @@ export interface GetTemplatesArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Template IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Template name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * Share Type.
      */
-    readonly shareType?: string;
+    shareType?: string;
     /**
      * Tags.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
     /**
      * The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
      */
-    readonly templateName?: string;
+    templateName?: string;
 }
 
 /**
@@ -93,4 +93,39 @@ export interface GetTemplatesResult {
     readonly tags?: {[key: string]: any};
     readonly templateName?: string;
     readonly templates: outputs.ros.GetTemplatesTemplate[];
+}
+
+export function getTemplatesOutput(args?: GetTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplatesResult> {
+    return pulumi.output(args).apply(a => getTemplates(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTemplates.
+ */
+export interface GetTemplatesOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Template IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Template name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Share Type.
+     */
+    shareType?: pulumi.Input<string>;
+    /**
+     * Tags.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+     */
+    templateName?: pulumi.Input<string>;
 }

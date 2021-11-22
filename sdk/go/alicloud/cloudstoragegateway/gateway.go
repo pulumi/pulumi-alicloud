@@ -41,7 +41,7 @@ import (
 // 			return err
 // 		}
 // 		opt0 := "VSwitch"
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -343,7 +343,7 @@ type GatewayArrayInput interface {
 type GatewayArray []GatewayInput
 
 func (GatewayArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Gateway)(nil))
+	return reflect.TypeOf((*[]*Gateway)(nil)).Elem()
 }
 
 func (i GatewayArray) ToGatewayArrayOutput() GatewayArrayOutput {
@@ -368,7 +368,7 @@ type GatewayMapInput interface {
 type GatewayMap map[string]GatewayInput
 
 func (GatewayMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Gateway)(nil))
+	return reflect.TypeOf((*map[string]*Gateway)(nil)).Elem()
 }
 
 func (i GatewayMap) ToGatewayMapOutput() GatewayMapOutput {
@@ -379,9 +379,7 @@ func (i GatewayMap) ToGatewayMapOutputWithContext(ctx context.Context) GatewayMa
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayMapOutput)
 }
 
-type GatewayOutput struct {
-	*pulumi.OutputState
-}
+type GatewayOutput struct{ *pulumi.OutputState }
 
 func (GatewayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Gateway)(nil))
@@ -400,14 +398,12 @@ func (o GatewayOutput) ToGatewayPtrOutput() GatewayPtrOutput {
 }
 
 func (o GatewayOutput) ToGatewayPtrOutputWithContext(ctx context.Context) GatewayPtrOutput {
-	return o.ApplyT(func(v Gateway) *Gateway {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Gateway) *Gateway {
 		return &v
 	}).(GatewayPtrOutput)
 }
 
-type GatewayPtrOutput struct {
-	*pulumi.OutputState
-}
+type GatewayPtrOutput struct{ *pulumi.OutputState }
 
 func (GatewayPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Gateway)(nil))
@@ -419,6 +415,16 @@ func (o GatewayPtrOutput) ToGatewayPtrOutput() GatewayPtrOutput {
 
 func (o GatewayPtrOutput) ToGatewayPtrOutputWithContext(ctx context.Context) GatewayPtrOutput {
 	return o
+}
+
+func (o GatewayPtrOutput) Elem() GatewayOutput {
+	return o.ApplyT(func(v *Gateway) Gateway {
+		if v != nil {
+			return *v
+		}
+		var ret Gateway
+		return ret
+	}).(GatewayOutput)
 }
 
 type GatewayArrayOutput struct{ *pulumi.OutputState }
@@ -462,6 +468,10 @@ func (o GatewayMapOutput) MapIndex(k pulumi.StringInput) GatewayOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayInput)(nil)).Elem(), &Gateway{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayPtrInput)(nil)).Elem(), &Gateway{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayArrayInput)(nil)).Elem(), GatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayMapInput)(nil)).Elem(), GatewayMap{})
 	pulumi.RegisterOutputType(GatewayOutput{})
 	pulumi.RegisterOutputType(GatewayPtrOutput{})
 	pulumi.RegisterOutputType(GatewayArrayOutput{})

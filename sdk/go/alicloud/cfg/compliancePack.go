@@ -65,7 +65,7 @@ import (
 // 			ResourceGroupIdsScope:   pulumi.String(defaultResourceGroups.Ids[0]),
 // 			ExcludeResourceIdsScope: pulumi.String(defaultInstances.Instances[0].Id),
 // 			RegionIdsScope:          pulumi.String("cn-hangzhou"),
-// 			InputParameters: pulumi.StringMap{
+// 			InputParameters: pulumi.AnyMap{
 // 				"vpcIds": pulumi.String(defaultInstances.Instances[0].VpcId),
 // 			},
 // 		})
@@ -298,7 +298,7 @@ type CompliancePackArrayInput interface {
 type CompliancePackArray []CompliancePackInput
 
 func (CompliancePackArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CompliancePack)(nil))
+	return reflect.TypeOf((*[]*CompliancePack)(nil)).Elem()
 }
 
 func (i CompliancePackArray) ToCompliancePackArrayOutput() CompliancePackArrayOutput {
@@ -323,7 +323,7 @@ type CompliancePackMapInput interface {
 type CompliancePackMap map[string]CompliancePackInput
 
 func (CompliancePackMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CompliancePack)(nil))
+	return reflect.TypeOf((*map[string]*CompliancePack)(nil)).Elem()
 }
 
 func (i CompliancePackMap) ToCompliancePackMapOutput() CompliancePackMapOutput {
@@ -334,9 +334,7 @@ func (i CompliancePackMap) ToCompliancePackMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(CompliancePackMapOutput)
 }
 
-type CompliancePackOutput struct {
-	*pulumi.OutputState
-}
+type CompliancePackOutput struct{ *pulumi.OutputState }
 
 func (CompliancePackOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CompliancePack)(nil))
@@ -355,14 +353,12 @@ func (o CompliancePackOutput) ToCompliancePackPtrOutput() CompliancePackPtrOutpu
 }
 
 func (o CompliancePackOutput) ToCompliancePackPtrOutputWithContext(ctx context.Context) CompliancePackPtrOutput {
-	return o.ApplyT(func(v CompliancePack) *CompliancePack {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CompliancePack) *CompliancePack {
 		return &v
 	}).(CompliancePackPtrOutput)
 }
 
-type CompliancePackPtrOutput struct {
-	*pulumi.OutputState
-}
+type CompliancePackPtrOutput struct{ *pulumi.OutputState }
 
 func (CompliancePackPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CompliancePack)(nil))
@@ -374,6 +370,16 @@ func (o CompliancePackPtrOutput) ToCompliancePackPtrOutput() CompliancePackPtrOu
 
 func (o CompliancePackPtrOutput) ToCompliancePackPtrOutputWithContext(ctx context.Context) CompliancePackPtrOutput {
 	return o
+}
+
+func (o CompliancePackPtrOutput) Elem() CompliancePackOutput {
+	return o.ApplyT(func(v *CompliancePack) CompliancePack {
+		if v != nil {
+			return *v
+		}
+		var ret CompliancePack
+		return ret
+	}).(CompliancePackOutput)
 }
 
 type CompliancePackArrayOutput struct{ *pulumi.OutputState }
@@ -417,6 +423,10 @@ func (o CompliancePackMapOutput) MapIndex(k pulumi.StringInput) CompliancePackOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CompliancePackInput)(nil)).Elem(), &CompliancePack{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CompliancePackPtrInput)(nil)).Elem(), &CompliancePack{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CompliancePackArrayInput)(nil)).Elem(), CompliancePackArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CompliancePackMapInput)(nil)).Elem(), CompliancePackMap{})
 	pulumi.RegisterOutputType(CompliancePackOutput{})
 	pulumi.RegisterOutputType(CompliancePackPtrOutput{})
 	pulumi.RegisterOutputType(CompliancePackArrayOutput{})

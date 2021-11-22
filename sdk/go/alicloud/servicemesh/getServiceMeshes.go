@@ -4,6 +4,9 @@
 package servicemesh
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -89,4 +92,81 @@ type GetServiceMeshesResult struct {
 	Names      []string               `pulumi:"names"`
 	OutputFile *string                `pulumi:"outputFile"`
 	Status     *string                `pulumi:"status"`
+}
+
+func GetServiceMeshesOutput(ctx *pulumi.Context, args GetServiceMeshesOutputArgs, opts ...pulumi.InvokeOption) GetServiceMeshesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetServiceMeshesResult, error) {
+			args := v.(GetServiceMeshesArgs)
+			r, err := GetServiceMeshes(ctx, &args, opts...)
+			return *r, err
+		}).(GetServiceMeshesResultOutput)
+}
+
+// A collection of arguments for invoking getServiceMeshes.
+type GetServiceMeshesOutputArgs struct {
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of Service Mesh IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Service Mesh name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status of the resource.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetServiceMeshesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMeshesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getServiceMeshes.
+type GetServiceMeshesResultOutput struct{ *pulumi.OutputState }
+
+func (GetServiceMeshesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMeshesResult)(nil)).Elem()
+}
+
+func (o GetServiceMeshesResultOutput) ToGetServiceMeshesResultOutput() GetServiceMeshesResultOutput {
+	return o
+}
+
+func (o GetServiceMeshesResultOutput) ToGetServiceMeshesResultOutputWithContext(ctx context.Context) GetServiceMeshesResultOutput {
+	return o
+}
+
+func (o GetServiceMeshesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceMeshesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetServiceMeshesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMeshesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetServiceMeshesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceMeshesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServiceMeshesResultOutput) Meshes() GetServiceMeshesMeshArrayOutput {
+	return o.ApplyT(func(v GetServiceMeshesResult) []GetServiceMeshesMesh { return v.Meshes }).(GetServiceMeshesMeshArrayOutput)
+}
+
+func (o GetServiceMeshesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMeshesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceMeshesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceMeshesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServiceMeshesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMeshesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceMeshesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMeshesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetServiceMeshesResultOutput{})
 }

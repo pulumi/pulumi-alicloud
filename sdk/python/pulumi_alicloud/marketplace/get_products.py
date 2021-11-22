@@ -13,6 +13,7 @@ __all__ = [
     'GetProductsResult',
     'AwaitableGetProductsResult',
     'get_products',
+    'get_products_output',
 ]
 
 @pulumi.output_type
@@ -214,3 +215,34 @@ def get_products(category_id: Optional[str] = None,
         suggested_price=__ret__.suggested_price,
         supplier_id=__ret__.supplier_id,
         supplier_name_keyword=__ret__.supplier_name_keyword)
+
+
+@_utilities.lift_output_func(get_products)
+def get_products_output(category_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        product_type: Optional[pulumi.Input[Optional[str]]] = None,
+                        search_term: Optional[pulumi.Input[Optional[str]]] = None,
+                        sort: Optional[pulumi.Input[Optional[str]]] = None,
+                        suggested_price: Optional[pulumi.Input[Optional[float]]] = None,
+                        supplier_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        supplier_name_keyword: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProductsResult]:
+    """
+    This data source provides the Market product items of Alibaba Cloud.
+
+    > **NOTE:** Available in 1.64.0+
+
+
+    :param str category_id: The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
+    :param Sequence[str] ids: A list of product code.
+    :param str name_regex: A regex string to apply to the product name.
+    :param str product_type: The type of products, Valid values: `APP`, `SERVICE`, `MIRROR`, `DOWNLOAD` and `API_SERVICE`.
+    :param str search_term: Search term in this query.
+    :param str sort: This field determines how to sort the filtered results, Valid values: `user_count-desc`, `created_on-desc`, `price-desc` and `score-desc`.
+    :param float suggested_price: The suggested price of the product.
+    :param str supplier_id: The supplier id of the product.
+    :param str supplier_name_keyword: The supplier name keyword of the product.
+    """
+    ...

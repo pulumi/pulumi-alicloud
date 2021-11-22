@@ -13,6 +13,7 @@ __all__ = [
     'GetClustersResult',
     'AwaitableGetClustersResult',
     'get_clusters',
+    'get_clusters_output',
 ]
 
 @pulumi.output_type
@@ -152,3 +153,34 @@ def get_clusters(ids: Optional[Sequence[str]] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_clusters)
+def get_clusters_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                        logical_region_id: Optional[pulumi.Input[str]] = None,
+                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClustersResult]:
+    """
+    This data source provides a list of EDAS clusters in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available in 1.82.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    clusters = alicloud.edas.get_clusters(logical_region_id="cn-shenzhen:xxx",
+        ids=["addfs-dfsasd"],
+        output_file="clusters.txt")
+    pulumi.export("firstClusterName", data["alicloud_alikafka_consumer_groups"]["clusters"]["clusters"][0]["cluster_name"])
+    ```
+
+
+    :param Sequence[str] ids: An ids string to filter results by the cluster id.
+    :param str logical_region_id: ID of the namespace in EDAS.
+    :param str name_regex: A regex string to filter results by the cluster name.
+    """
+    ...

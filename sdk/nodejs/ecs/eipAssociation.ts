@@ -108,23 +108,23 @@ export interface EipAssociationState {
     /**
      * The allocation EIP ID.
      */
-    readonly allocationId?: pulumi.Input<string>;
+    allocationId?: pulumi.Input<string>;
     /**
      * When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
      */
-    readonly force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
      */
-    readonly instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string>;
     /**
      * The private IP address in the network segment of the vswitch which has been assigned.
      */
-    readonly privateIpAddress?: pulumi.Input<string>;
+    privateIpAddress?: pulumi.Input<string>;
 }
 
 /**
@@ -134,21 +134,21 @@ export interface EipAssociationArgs {
     /**
      * The allocation EIP ID.
      */
-    readonly allocationId: pulumi.Input<string>;
+    allocationId: pulumi.Input<string>;
     /**
      * When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
      */
-    readonly force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
      */
-    readonly instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string>;
     /**
      * The private IP address in the network segment of the vswitch which has been assigned.
      */
-    readonly privateIpAddress?: pulumi.Input<string>;
+    privateIpAddress?: pulumi.Input<string>;
 }

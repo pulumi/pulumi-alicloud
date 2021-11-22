@@ -13,6 +13,7 @@ __all__ = [
     'GetUsersResult',
     'AwaitableGetUsersResult',
     'get_users',
+    'get_users_output',
 ]
 
 @pulumi.output_type
@@ -133,3 +134,34 @@ def get_users(enable_details: Optional[bool] = None,
         keyword=__ret__.keyword,
         output_file=__ret__.output_file,
         users=__ret__.users)
+
+
+@_utilities.lift_output_func(get_users)
+def get_users_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                     ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                     keyword: Optional[pulumi.Input[Optional[str]]] = None,
+                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsersResult]:
+    """
+    This data source provides the Quick BI Users of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.136.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.quickbi.get_users(ids=["example_id"])
+    pulumi.export("quickBiUserId1", ids.users[0].id)
+    ```
+
+
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of User IDs.
+    :param str keyword: The keywords of the nicknames or usernames of the members of the organization.
+    """
+    ...

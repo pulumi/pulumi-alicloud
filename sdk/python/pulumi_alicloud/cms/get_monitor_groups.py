@@ -13,6 +13,7 @@ __all__ = [
     'GetMonitorGroupsResult',
     'AwaitableGetMonitorGroupsResult',
     'get_monitor_groups',
+    'get_monitor_groups_output',
 ]
 
 @pulumi.output_type
@@ -222,3 +223,47 @@ def get_monitor_groups(dynamic_tag_rule_id: Optional[str] = None,
         select_contact_groups=__ret__.select_contact_groups,
         tags=__ret__.tags,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_monitor_groups)
+def get_monitor_groups_output(dynamic_tag_rule_id: Optional[pulumi.Input[Optional[str]]] = None,
+                              ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                              include_template_history: Optional[pulumi.Input[Optional[bool]]] = None,
+                              keyword: Optional[pulumi.Input[Optional[str]]] = None,
+                              monitor_group_name: Optional[pulumi.Input[Optional[str]]] = None,
+                              name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                              select_contact_groups: Optional[pulumi.Input[Optional[bool]]] = None,
+                              tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                              type: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMonitorGroupsResult]:
+    """
+    This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.113.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cms.get_monitor_groups(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstCmsMonitorGroupId", example.groups[0].id)
+    ```
+
+
+    :param str dynamic_tag_rule_id: The ID of the tag rule.
+    :param Sequence[str] ids: A list of Monitor Group IDs.
+    :param bool include_template_history: The include template history.
+    :param str keyword: The keyword to be matched.
+    :param str monitor_group_name: The name of the application group.
+    :param str name_regex: A regex string to filter results by Monitor Group name.
+    :param bool select_contact_groups: The select contact groups.
+    :param Mapping[str, Any] tags: A map of tags assigned to the Cms Monitor Group.
+    :param str type: The type of the application group.
+    """
+    ...

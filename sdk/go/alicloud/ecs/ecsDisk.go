@@ -37,8 +37,8 @@ import (
 // 			Encrypted:   pulumi.Bool(true),
 // 			KmsKeyId:    pulumi.String("2a6767f0-a16c-4679-a60f-13bf*****"),
 // 			Size:        pulumi.Int(30),
-// 			Tags: pulumi.StringMap{
-// 				"Name": pulumi.String("TerraformTest"),
+// 			Tags: pulumi.AnyMap{
+// 				"Name": pulumi.Any("TerraformTest"),
 // 			},
 // 			ZoneId: pulumi.String("cn-beijing-b"),
 // 		})
@@ -474,7 +474,7 @@ type EcsDiskArrayInput interface {
 type EcsDiskArray []EcsDiskInput
 
 func (EcsDiskArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EcsDisk)(nil))
+	return reflect.TypeOf((*[]*EcsDisk)(nil)).Elem()
 }
 
 func (i EcsDiskArray) ToEcsDiskArrayOutput() EcsDiskArrayOutput {
@@ -499,7 +499,7 @@ type EcsDiskMapInput interface {
 type EcsDiskMap map[string]EcsDiskInput
 
 func (EcsDiskMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EcsDisk)(nil))
+	return reflect.TypeOf((*map[string]*EcsDisk)(nil)).Elem()
 }
 
 func (i EcsDiskMap) ToEcsDiskMapOutput() EcsDiskMapOutput {
@@ -510,9 +510,7 @@ func (i EcsDiskMap) ToEcsDiskMapOutputWithContext(ctx context.Context) EcsDiskMa
 	return pulumi.ToOutputWithContext(ctx, i).(EcsDiskMapOutput)
 }
 
-type EcsDiskOutput struct {
-	*pulumi.OutputState
-}
+type EcsDiskOutput struct{ *pulumi.OutputState }
 
 func (EcsDiskOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EcsDisk)(nil))
@@ -531,14 +529,12 @@ func (o EcsDiskOutput) ToEcsDiskPtrOutput() EcsDiskPtrOutput {
 }
 
 func (o EcsDiskOutput) ToEcsDiskPtrOutputWithContext(ctx context.Context) EcsDiskPtrOutput {
-	return o.ApplyT(func(v EcsDisk) *EcsDisk {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EcsDisk) *EcsDisk {
 		return &v
 	}).(EcsDiskPtrOutput)
 }
 
-type EcsDiskPtrOutput struct {
-	*pulumi.OutputState
-}
+type EcsDiskPtrOutput struct{ *pulumi.OutputState }
 
 func (EcsDiskPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EcsDisk)(nil))
@@ -550,6 +546,16 @@ func (o EcsDiskPtrOutput) ToEcsDiskPtrOutput() EcsDiskPtrOutput {
 
 func (o EcsDiskPtrOutput) ToEcsDiskPtrOutputWithContext(ctx context.Context) EcsDiskPtrOutput {
 	return o
+}
+
+func (o EcsDiskPtrOutput) Elem() EcsDiskOutput {
+	return o.ApplyT(func(v *EcsDisk) EcsDisk {
+		if v != nil {
+			return *v
+		}
+		var ret EcsDisk
+		return ret
+	}).(EcsDiskOutput)
 }
 
 type EcsDiskArrayOutput struct{ *pulumi.OutputState }
@@ -593,6 +599,10 @@ func (o EcsDiskMapOutput) MapIndex(k pulumi.StringInput) EcsDiskOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsDiskInput)(nil)).Elem(), &EcsDisk{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsDiskPtrInput)(nil)).Elem(), &EcsDisk{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsDiskArrayInput)(nil)).Elem(), EcsDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsDiskMapInput)(nil)).Elem(), EcsDiskMap{})
 	pulumi.RegisterOutputType(EcsDiskOutput{})
 	pulumi.RegisterOutputType(EcsDiskPtrOutput{})
 	pulumi.RegisterOutputType(EcsDiskArrayOutput{})

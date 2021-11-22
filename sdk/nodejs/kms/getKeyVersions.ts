@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * const alicloudKmsKeyVersionsDs = pulumi.output(alicloud.kms.getKeyVersions({
  *     ids: ["d89e8a53-b708-41aa-8c67-6873axxx"],
  *     keyId: "08438c-b4d5-4d05-928c-07b7xxxx",
- * }, { async: true }));
+ * }));
  *
  * export const allVersions = alicloudKmsKeyVersionsDs.versions;
  * ```
@@ -47,12 +47,12 @@ export interface GetKeyVersionsArgs {
     /**
      * A list of KMS KeyVersion IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The id of kms key.
      */
-    readonly keyId: string;
-    readonly outputFile?: string;
+    keyId: string;
+    outputFile?: string;
 }
 
 /**
@@ -76,4 +76,23 @@ export interface GetKeyVersionsResult {
      * A list of KMS KeyVersions. Each element contains the following attributes:
      */
     readonly versions: outputs.kms.GetKeyVersionsVersion[];
+}
+
+export function getKeyVersionsOutput(args: GetKeyVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyVersionsResult> {
+    return pulumi.output(args).apply(a => getKeyVersions(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKeyVersions.
+ */
+export interface GetKeyVersionsOutputArgs {
+    /**
+     * A list of KMS KeyVersion IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The id of kms key.
+     */
+    keyId: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

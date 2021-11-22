@@ -13,6 +13,7 @@ __all__ = [
     'GetRouteMapsResult',
     'AwaitableGetRouteMapsResult',
     'get_route_maps',
+    'get_route_maps_output',
 ]
 
 @pulumi.output_type
@@ -193,3 +194,43 @@ def get_route_maps(cen_id: Optional[str] = None,
         output_file=__ret__.output_file,
         status=__ret__.status,
         transmit_direction=__ret__.transmit_direction)
+
+
+@_utilities.lift_output_func(get_route_maps)
+def get_route_maps_output(cen_id: Optional[pulumi.Input[str]] = None,
+                          cen_region_id: Optional[pulumi.Input[Optional[str]]] = None,
+                          description_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                          ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                          status: Optional[pulumi.Input[Optional[str]]] = None,
+                          transmit_direction: Optional[pulumi.Input[Optional[str]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouteMapsResult]:
+    """
+    This data source provides CEN Route Maps available to the user.
+
+    > **NOTE:** Available in v1.87.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    this = alicloud.cen.get_route_maps(cen_id="cen-ihdlgo87ai********",
+        cen_region_id="cn-hangzhou",
+        description_regex="datasource_test",
+        ids=["cenrmap-bnh97kb3mn********"],
+        status="Active",
+        transmit_direction="RegionIn")
+    pulumi.export("firstCenRouteMapId", this.maps[0].id)
+    ```
+
+
+    :param str cen_id: The ID of the CEN instance.
+    :param str cen_region_id: The ID of the region to which the CEN instance belongs.
+    :param str description_regex: A regex string to filter CEN route map by description.
+    :param Sequence[str] ids: A list of CEN route map IDs.
+    :param str status: The status of the route map, including `Creating`, `Active` and `Deleting`.
+    :param str transmit_direction: The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
+    """
+    ...

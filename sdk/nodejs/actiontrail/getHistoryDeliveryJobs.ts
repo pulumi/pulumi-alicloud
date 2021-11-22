@@ -21,12 +21,12 @@ import * as utilities from "../utilities";
  * const ids = alicloud.actiontrail.getHistoryDeliveryJobs({
  *     ids: ["example_id"],
  * });
- * export const actiontrailHistoryDeliveryJobId1 = ids.then(ids => ids.jobs[0].id);
+ * export const actiontrailHistoryDeliveryJobId1 = ids.then(ids => ids.jobs?[0]?.id);
  * const status = alicloud.actiontrail.getHistoryDeliveryJobs({
  *     ids: ["example_id"],
  *     status: "2",
  * });
- * export const actiontrailHistoryDeliveryJobId2 = status.then(status => status.jobs[0].id);
+ * export const actiontrailHistoryDeliveryJobId2 = status.then(status => status.jobs?[0]?.id);
  * ```
  */
 export function getHistoryDeliveryJobs(args?: GetHistoryDeliveryJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetHistoryDeliveryJobsResult> {
@@ -50,16 +50,16 @@ export function getHistoryDeliveryJobs(args?: GetHistoryDeliveryJobsArgs, opts?:
  * A collection of arguments for invoking getHistoryDeliveryJobs.
  */
 export interface GetHistoryDeliveryJobsArgs {
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of History Delivery Job IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
      */
-    readonly status?: number;
+    status?: number;
 }
 
 /**
@@ -75,4 +75,24 @@ export interface GetHistoryDeliveryJobsResult {
     readonly jobs: outputs.actiontrail.GetHistoryDeliveryJobsJob[];
     readonly outputFile?: string;
     readonly status?: number;
+}
+
+export function getHistoryDeliveryJobsOutput(args?: GetHistoryDeliveryJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHistoryDeliveryJobsResult> {
+    return pulumi.output(args).apply(a => getHistoryDeliveryJobs(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getHistoryDeliveryJobs.
+ */
+export interface GetHistoryDeliveryJobsOutputArgs {
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of History Delivery Job IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+     */
+    status?: pulumi.Input<number>;
 }

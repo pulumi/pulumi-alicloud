@@ -13,6 +13,7 @@ __all__ = [
     'GetGroupsResult',
     'AwaitableGetGroupsResult',
     'get_groups',
+    'get_groups_output',
 ]
 
 @pulumi.output_type
@@ -207,3 +208,53 @@ def get_groups(group_id_regex: Optional[str] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_groups)
+def get_groups_output(group_id_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                      group_type: Optional[pulumi.Input[Optional[str]]] = None,
+                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                      instance_id: Optional[pulumi.Input[str]] = None,
+                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                      tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupsResult]:
+    """
+    This data source provides a list of ONS Groups in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available in 1.53.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "onsInstanceName"
+    group_name = config.get("groupName")
+    if group_name is None:
+        group_name = "GID-onsGroupDatasourceName"
+    default_instance = alicloud.rocketmq.Instance("defaultInstance",
+        instance_name=name,
+        remark="default_ons_instance_remark")
+    default_group = alicloud.rocketmq.Group("defaultGroup",
+        group_name=group_name,
+        instance_id=default_instance.id,
+        remark="dafault_ons_group_remark")
+    groups_ds = default_group.instance_id.apply(lambda instance_id: alicloud.rocketmq.get_groups(instance_id=instance_id,
+        name_regex=var["group_id"],
+        output_file="groups.txt"))
+    pulumi.export("firstGroupName", groups_ds.groups[0].group_name)
+    ```
+
+
+    :param str group_id_regex: A regex string to filter results by the group name.
+    :param str group_type: Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+    :param Sequence[str] ids: A list of group names.
+    :param str instance_id: ID of the ONS Instance that owns the groups.
+    :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
+    """
+    ...

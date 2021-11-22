@@ -13,6 +13,7 @@ __all__ = [
     'GetScimServerCredentialsResult',
     'AwaitableGetScimServerCredentialsResult',
     'get_scim_server_credentials',
+    'get_scim_server_credentials_output',
 ]
 
 @pulumi.output_type
@@ -139,3 +140,40 @@ def get_scim_server_credentials(directory_id: Optional[str] = None,
         ids=__ret__.ids,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_scim_server_credentials)
+def get_scim_server_credentials_output(directory_id: Optional[pulumi.Input[str]] = None,
+                                       ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                       status: Optional[pulumi.Input[Optional[str]]] = None,
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetScimServerCredentialsResult]:
+    """
+    This data source provides the Cloud Sso Scim Server Credentials of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.138.0+.
+
+    > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cloudsso.get_scim_server_credentials(directory_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("cloudSsoScimServerCredentialId1", ids.credentials[0].id)
+    ```
+
+
+    :param str directory_id: The ID of the Directory.
+    :param Sequence[str] ids: A list of SCIM Server Credential IDs.
+    :param str status: The Status of the resource. Valid values: `Disabled`, `Enabled`.
+    """
+    ...

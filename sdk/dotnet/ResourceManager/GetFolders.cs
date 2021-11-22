@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ResourceManager
 {
@@ -34,7 +35,7 @@ namespace Pulumi.AliCloud.ResourceManager
         ///         {
         ///             NameRegex = "tftest",
         ///         }));
-        ///         this.FirstFolderId = example.Apply(example =&gt; example.Folders[0].Id);
+        ///         this.FirstFolderId = example.Apply(example =&gt; example.Folders?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstFolderId")]
@@ -46,6 +47,42 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         public static Task<GetFoldersResult> InvokeAsync(GetFoldersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFoldersResult>("alicloud:resourcemanager/getFolders:getFolders", args ?? new GetFoldersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the resource manager folders of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.84.0+.
+        /// 
+        /// &gt; **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.ResourceManager.GetFolders.InvokeAsync(new AliCloud.ResourceManager.GetFoldersArgs
+        ///         {
+        ///             NameRegex = "tftest",
+        ///         }));
+        ///         this.FirstFolderId = example.Apply(example =&gt; example.Folders?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstFolderId")]
+        ///     public Output&lt;string&gt; FirstFolderId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetFoldersResult> Invoke(GetFoldersInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFoldersResult>("alicloud:resourcemanager/getFolders:getFolders", args ?? new GetFoldersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -91,6 +128,52 @@ namespace Pulumi.AliCloud.ResourceManager
         public string? QueryKeyword { get; set; }
 
         public GetFoldersArgs()
+        {
+        }
+    }
+
+    public sealed class GetFoldersInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of resource manager folders IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by folder name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The ID of the parent folder.
+        /// </summary>
+        [Input("parentFolderId")]
+        public Input<string>? ParentFolderId { get; set; }
+
+        /// <summary>
+        /// The query keyword.
+        /// </summary>
+        [Input("queryKeyword")]
+        public Input<string>? QueryKeyword { get; set; }
+
+        public GetFoldersInvokeArgs()
         {
         }
     }

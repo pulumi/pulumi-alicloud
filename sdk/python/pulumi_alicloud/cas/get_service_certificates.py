@@ -13,6 +13,7 @@ __all__ = [
     'GetServiceCertificatesResult',
     'AwaitableGetServiceCertificatesResult',
     'get_service_certificates',
+    'get_service_certificates_output',
 ]
 
 @pulumi.output_type
@@ -157,3 +158,37 @@ def get_service_certificates(enable_details: Optional[bool] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_service_certificates)
+def get_service_certificates_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                                    ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                    lang: Optional[pulumi.Input[Optional[str]]] = None,
+                                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceCertificatesResult]:
+    """
+    This data source provides the Ssl Certificates Service Certificates of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.129.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    certs = alicloud.cas.get_certificates(name_regex="^cas",
+        ids=["Certificate Id"])
+    pulumi.export("cert", certs.certificates[0].id)
+    ```
+
+
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of Certificate IDs.
+    :param str lang: The lang.
+    :param str name_regex: A regex string to filter results by Certificate name.
+    """
+    ...

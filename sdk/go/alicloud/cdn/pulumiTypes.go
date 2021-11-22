@@ -115,7 +115,7 @@ func (o DomainAuthConfigOutput) ToDomainAuthConfigPtrOutput() DomainAuthConfigPt
 }
 
 func (o DomainAuthConfigOutput) ToDomainAuthConfigPtrOutputWithContext(ctx context.Context) DomainAuthConfigPtrOutput {
-	return o.ApplyT(func(v DomainAuthConfig) *DomainAuthConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainAuthConfig) *DomainAuthConfig {
 		return &v
 	}).(DomainAuthConfigPtrOutput)
 }
@@ -155,7 +155,13 @@ func (o DomainAuthConfigPtrOutput) ToDomainAuthConfigPtrOutputWithContext(ctx co
 }
 
 func (o DomainAuthConfigPtrOutput) Elem() DomainAuthConfigOutput {
-	return o.ApplyT(func(v *DomainAuthConfig) DomainAuthConfig { return *v }).(DomainAuthConfigOutput)
+	return o.ApplyT(func(v *DomainAuthConfig) DomainAuthConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DomainAuthConfig
+		return ret
+	}).(DomainAuthConfigOutput)
 }
 
 // Auth type of the auth config. Valid values are  `noAuth`, `typeA`, `typeB` and `typeC`. Default value is `noAuth`.
@@ -429,7 +435,7 @@ func (o DomainCertificateConfigOutput) ToDomainCertificateConfigPtrOutput() Doma
 }
 
 func (o DomainCertificateConfigOutput) ToDomainCertificateConfigPtrOutputWithContext(ctx context.Context) DomainCertificateConfigPtrOutput {
-	return o.ApplyT(func(v DomainCertificateConfig) *DomainCertificateConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainCertificateConfig) *DomainCertificateConfig {
 		return &v
 	}).(DomainCertificateConfigPtrOutput)
 }
@@ -464,7 +470,13 @@ func (o DomainCertificateConfigPtrOutput) ToDomainCertificateConfigPtrOutputWith
 }
 
 func (o DomainCertificateConfigPtrOutput) Elem() DomainCertificateConfigOutput {
-	return o.ApplyT(func(v *DomainCertificateConfig) DomainCertificateConfig { return *v }).(DomainCertificateConfigOutput)
+	return o.ApplyT(func(v *DomainCertificateConfig) DomainCertificateConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DomainCertificateConfig
+		return ret
+	}).(DomainCertificateConfigOutput)
 }
 
 // The SSL private key. This is required if `serverCertificateStatus` is `on`
@@ -828,7 +840,7 @@ func (o DomainNewCertificateConfigOutput) ToDomainNewCertificateConfigPtrOutput(
 }
 
 func (o DomainNewCertificateConfigOutput) ToDomainNewCertificateConfigPtrOutputWithContext(ctx context.Context) DomainNewCertificateConfigPtrOutput {
-	return o.ApplyT(func(v DomainNewCertificateConfig) *DomainNewCertificateConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainNewCertificateConfig) *DomainNewCertificateConfig {
 		return &v
 	}).(DomainNewCertificateConfigPtrOutput)
 }
@@ -878,7 +890,13 @@ func (o DomainNewCertificateConfigPtrOutput) ToDomainNewCertificateConfigPtrOutp
 }
 
 func (o DomainNewCertificateConfigPtrOutput) Elem() DomainNewCertificateConfigOutput {
-	return o.ApplyT(func(v *DomainNewCertificateConfig) DomainNewCertificateConfig { return *v }).(DomainNewCertificateConfigOutput)
+	return o.ApplyT(func(v *DomainNewCertificateConfig) DomainNewCertificateConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DomainNewCertificateConfig
+		return ret
+	}).(DomainNewCertificateConfigOutput)
 }
 
 // The SSL certificate name.
@@ -1173,7 +1191,7 @@ func (o DomainPage404ConfigOutput) ToDomainPage404ConfigPtrOutput() DomainPage40
 }
 
 func (o DomainPage404ConfigOutput) ToDomainPage404ConfigPtrOutputWithContext(ctx context.Context) DomainPage404ConfigPtrOutput {
-	return o.ApplyT(func(v DomainPage404Config) *DomainPage404Config {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainPage404Config) *DomainPage404Config {
 		return &v
 	}).(DomainPage404ConfigPtrOutput)
 }
@@ -1207,7 +1225,13 @@ func (o DomainPage404ConfigPtrOutput) ToDomainPage404ConfigPtrOutputWithContext(
 }
 
 func (o DomainPage404ConfigPtrOutput) Elem() DomainPage404ConfigOutput {
-	return o.ApplyT(func(v *DomainPage404Config) DomainPage404Config { return *v }).(DomainPage404ConfigOutput)
+	return o.ApplyT(func(v *DomainPage404Config) DomainPage404Config {
+		if v != nil {
+			return *v
+		}
+		var ret DomainPage404Config
+		return ret
+	}).(DomainPage404ConfigOutput)
 }
 
 // Custom page url of the error page. It must be the full path under the accelerated domain name. It's value must be `http://promotion.alicdn.com/help/oss/error.html` when `pageType` value is `charity` and It can not be set when `pageType` value is `default`.
@@ -1336,7 +1360,7 @@ func (o DomainParameterFilterConfigOutput) ToDomainParameterFilterConfigPtrOutpu
 }
 
 func (o DomainParameterFilterConfigOutput) ToDomainParameterFilterConfigPtrOutputWithContext(ctx context.Context) DomainParameterFilterConfigPtrOutput {
-	return o.ApplyT(func(v DomainParameterFilterConfig) *DomainParameterFilterConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainParameterFilterConfig) *DomainParameterFilterConfig {
 		return &v
 	}).(DomainParameterFilterConfigPtrOutput)
 }
@@ -1366,7 +1390,13 @@ func (o DomainParameterFilterConfigPtrOutput) ToDomainParameterFilterConfigPtrOu
 }
 
 func (o DomainParameterFilterConfigPtrOutput) Elem() DomainParameterFilterConfigOutput {
-	return o.ApplyT(func(v *DomainParameterFilterConfig) DomainParameterFilterConfig { return *v }).(DomainParameterFilterConfigOutput)
+	return o.ApplyT(func(v *DomainParameterFilterConfig) DomainParameterFilterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DomainParameterFilterConfig
+		return ret
+	}).(DomainParameterFilterConfigOutput)
 }
 
 // This parameter indicates whether or not the `parameterFilterConfig` is enable. Valid values are `on` and `off`. Default value is `off`.
@@ -1490,7 +1520,7 @@ func (o DomainReferConfigOutput) ToDomainReferConfigPtrOutput() DomainReferConfi
 }
 
 func (o DomainReferConfigOutput) ToDomainReferConfigPtrOutputWithContext(ctx context.Context) DomainReferConfigPtrOutput {
-	return o.ApplyT(func(v DomainReferConfig) *DomainReferConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainReferConfig) *DomainReferConfig {
 		return &v
 	}).(DomainReferConfigPtrOutput)
 }
@@ -1525,7 +1555,13 @@ func (o DomainReferConfigPtrOutput) ToDomainReferConfigPtrOutputWithContext(ctx 
 }
 
 func (o DomainReferConfigPtrOutput) Elem() DomainReferConfigOutput {
-	return o.ApplyT(func(v *DomainReferConfig) DomainReferConfig { return *v }).(DomainReferConfigOutput)
+	return o.ApplyT(func(v *DomainReferConfig) DomainReferConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DomainReferConfig
+		return ret
+	}).(DomainReferConfigOutput)
 }
 
 // This parameter indicates whether or not to allow empty refer access. Valid values are `on` and `off`. Default value is `on`.
@@ -1701,6 +1737,28 @@ func (o GetRealTimeLogDeliveriesDeliveryArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainAuthConfigInput)(nil)).Elem(), DomainAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainAuthConfigPtrInput)(nil)).Elem(), DomainAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainCacheConfigInput)(nil)).Elem(), DomainCacheConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainCacheConfigArrayInput)(nil)).Elem(), DomainCacheConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainCertificateConfigInput)(nil)).Elem(), DomainCertificateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainCertificateConfigPtrInput)(nil)).Elem(), DomainCertificateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainConfigFunctionArgInput)(nil)).Elem(), DomainConfigFunctionArgArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainConfigFunctionArgArrayInput)(nil)).Elem(), DomainConfigFunctionArgArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainHttpHeaderConfigInput)(nil)).Elem(), DomainHttpHeaderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainHttpHeaderConfigArrayInput)(nil)).Elem(), DomainHttpHeaderConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainNewCertificateConfigInput)(nil)).Elem(), DomainNewCertificateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainNewCertificateConfigPtrInput)(nil)).Elem(), DomainNewCertificateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainNewSourceInput)(nil)).Elem(), DomainNewSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainNewSourceArrayInput)(nil)).Elem(), DomainNewSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainPage404ConfigInput)(nil)).Elem(), DomainPage404ConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainPage404ConfigPtrInput)(nil)).Elem(), DomainPage404ConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainParameterFilterConfigInput)(nil)).Elem(), DomainParameterFilterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainParameterFilterConfigPtrInput)(nil)).Elem(), DomainParameterFilterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainReferConfigInput)(nil)).Elem(), DomainReferConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainReferConfigPtrInput)(nil)).Elem(), DomainReferConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRealTimeLogDeliveriesDeliveryInput)(nil)).Elem(), GetRealTimeLogDeliveriesDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRealTimeLogDeliveriesDeliveryArrayInput)(nil)).Elem(), GetRealTimeLogDeliveriesDeliveryArray{})
 	pulumi.RegisterOutputType(DomainAuthConfigOutput{})
 	pulumi.RegisterOutputType(DomainAuthConfigPtrOutput{})
 	pulumi.RegisterOutputType(DomainCacheConfigOutput{})

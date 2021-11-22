@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -18,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * const defaultFileCrc64Checksum = pulumi.output(alicloud.getFileCrc64Checksum({
  *     filename: "exampleFileName",
- * }, { async: true }));
+ * }));
  *
  * export const fileCrc64Checksum = alicloud_file_crc64_checksum_defualt.checksum;
  * ```
@@ -44,8 +43,8 @@ export interface GetFileCrc64ChecksumArgs {
     /**
      * The name of the file to be computed crc64 checksum.
      */
-    readonly filename: string;
-    readonly outputFile?: string;
+    filename: string;
+    outputFile?: string;
 }
 
 /**
@@ -62,4 +61,19 @@ export interface GetFileCrc64ChecksumResult {
      */
     readonly id: string;
     readonly outputFile?: string;
+}
+
+export function getFileCrc64ChecksumOutput(args: GetFileCrc64ChecksumOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFileCrc64ChecksumResult> {
+    return pulumi.output(args).apply(a => getFileCrc64Checksum(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFileCrc64Checksum.
+ */
+export interface GetFileCrc64ChecksumOutputArgs {
+    /**
+     * The name of the file to be computed crc64 checksum.
+     */
+    filename: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

@@ -4,6 +4,9 @@
 package hbr
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,4 +73,82 @@ type GetEcsBackupPlansResult struct {
 	OutputFile *string                 `pulumi:"outputFile"`
 	Plans      []GetEcsBackupPlansPlan `pulumi:"plans"`
 	VaultId    *string                 `pulumi:"vaultId"`
+}
+
+func GetEcsBackupPlansOutput(ctx *pulumi.Context, args GetEcsBackupPlansOutputArgs, opts ...pulumi.InvokeOption) GetEcsBackupPlansResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetEcsBackupPlansResult, error) {
+			args := v.(GetEcsBackupPlansArgs)
+			r, err := GetEcsBackupPlans(ctx, &args, opts...)
+			return *r, err
+		}).(GetEcsBackupPlansResultOutput)
+}
+
+// A collection of arguments for invoking getEcsBackupPlans.
+type GetEcsBackupPlansOutputArgs struct {
+	// A list of EcsBackupPlan IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The ID of ECS instance.
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	// A regex string to filter results by EcsBackupPlan name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The ID of Backup vault.
+	VaultId pulumi.StringPtrInput `pulumi:"vaultId"`
+}
+
+func (GetEcsBackupPlansOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsBackupPlansArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getEcsBackupPlans.
+type GetEcsBackupPlansResultOutput struct{ *pulumi.OutputState }
+
+func (GetEcsBackupPlansResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsBackupPlansResult)(nil)).Elem()
+}
+
+func (o GetEcsBackupPlansResultOutput) ToGetEcsBackupPlansResultOutput() GetEcsBackupPlansResultOutput {
+	return o
+}
+
+func (o GetEcsBackupPlansResultOutput) ToGetEcsBackupPlansResultOutputWithContext(ctx context.Context) GetEcsBackupPlansResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetEcsBackupPlansResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsBackupPlansResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetEcsBackupPlansResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEcsBackupPlansResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEcsBackupPlansResultOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsBackupPlansResult) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEcsBackupPlansResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsBackupPlansResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEcsBackupPlansResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEcsBackupPlansResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEcsBackupPlansResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsBackupPlansResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEcsBackupPlansResultOutput) Plans() GetEcsBackupPlansPlanArrayOutput {
+	return o.ApplyT(func(v GetEcsBackupPlansResult) []GetEcsBackupPlansPlan { return v.Plans }).(GetEcsBackupPlansPlanArrayOutput)
+}
+
+func (o GetEcsBackupPlansResultOutput) VaultId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsBackupPlansResult) *string { return v.VaultId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetEcsBackupPlansResultOutput{})
 }

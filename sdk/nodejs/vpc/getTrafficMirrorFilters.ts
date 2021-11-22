@@ -21,19 +21,19 @@ import * as utilities from "../utilities";
  * const ids = alicloud.vpc.getTrafficMirrorFilters({
  *     ids: ["example_id"],
  * });
- * export const vpcTrafficMirrorFilterId1 = ids.then(ids => ids.filters[0].id);
+ * export const vpcTrafficMirrorFilterId1 = ids.then(ids => ids.filters?[0]?.id);
  * const nameRegex = alicloud.vpc.getTrafficMirrorFilters({
  *     nameRegex: "^my-TrafficMirrorFilter",
  * });
- * export const vpcTrafficMirrorFilterId2 = nameRegex.then(nameRegex => nameRegex.filters[0].id);
+ * export const vpcTrafficMirrorFilterId2 = nameRegex.then(nameRegex => nameRegex.filters?[0]?.id);
  * const filterName = alicloud.vpc.getTrafficMirrorFilters({
  *     trafficMirrorFilterName: "example_traffic_mirror_filter_name",
  * });
- * export const vpcTrafficMirrorFilterId3 = filterName.then(filterName => filterName.filters[0].id);
+ * export const vpcTrafficMirrorFilterId3 = filterName.then(filterName => filterName.filters?[0]?.id);
  * const status = alicloud.vpc.getTrafficMirrorFilters({
  *     status: "^my-TrafficMirrorFilter",
  * });
- * export const vpcTrafficMirrorFilterId4 = status.then(status => status.filters[0].id);
+ * export const vpcTrafficMirrorFilterId4 = status.then(status => status.filters?[0]?.id);
  * ```
  */
 export function getTrafficMirrorFilters(args?: GetTrafficMirrorFiltersArgs, opts?: pulumi.InvokeOptions): Promise<GetTrafficMirrorFiltersResult> {
@@ -61,20 +61,20 @@ export interface GetTrafficMirrorFiltersArgs {
     /**
      * A list of Traffic Mirror Filter IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Traffic Mirror Filter name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The name of the filter.
      */
-    readonly trafficMirrorFilterName?: string;
+    trafficMirrorFilterName?: string;
 }
 
 /**
@@ -92,4 +92,31 @@ export interface GetTrafficMirrorFiltersResult {
     readonly outputFile?: string;
     readonly status?: string;
     readonly trafficMirrorFilterName?: string;
+}
+
+export function getTrafficMirrorFiltersOutput(args?: GetTrafficMirrorFiltersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrafficMirrorFiltersResult> {
+    return pulumi.output(args).apply(a => getTrafficMirrorFilters(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTrafficMirrorFilters.
+ */
+export interface GetTrafficMirrorFiltersOutputArgs {
+    /**
+     * A list of Traffic Mirror Filter IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Traffic Mirror Filter name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The name of the filter.
+     */
+    trafficMirrorFilterName?: pulumi.Input<string>;
 }

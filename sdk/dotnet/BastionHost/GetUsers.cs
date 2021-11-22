@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.BastionHost
 {
@@ -39,13 +40,13 @@ namespace Pulumi.AliCloud.BastionHost
         ///                 "10",
         ///             },
         ///         }));
-        ///         this.BastionhostUserId1 = ids.Apply(ids =&gt; ids.Users[0].Id);
+        ///         this.BastionhostUserId1 = ids.Apply(ids =&gt; ids.Users?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.BastionHost.GetUsers.InvokeAsync(new AliCloud.BastionHost.GetUsersArgs
         ///         {
         ///             InstanceId = "example_value",
         ///             NameRegex = "^my-User",
         ///         }));
-        ///         this.BastionhostUserId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Users[0].Id);
+        ///         this.BastionhostUserId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Users?[0]?.Id);
         ///     }
         /// 
         ///     [Output("bastionhostUserId1")]
@@ -59,6 +60,55 @@ namespace Pulumi.AliCloud.BastionHost
         /// </summary>
         public static Task<GetUsersResult> InvokeAsync(GetUsersArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("alicloud:bastionhost/getUsers:getUsers", args ?? new GetUsersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Bastionhost Users of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.BastionHost.GetUsers.InvokeAsync(new AliCloud.BastionHost.GetUsersArgs
+        ///         {
+        ///             InstanceId = "example_value",
+        ///             Ids = 
+        ///             {
+        ///                 "1",
+        ///                 "10",
+        ///             },
+        ///         }));
+        ///         this.BastionhostUserId1 = ids.Apply(ids =&gt; ids.Users?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.BastionHost.GetUsers.InvokeAsync(new AliCloud.BastionHost.GetUsersArgs
+        ///         {
+        ///             InstanceId = "example_value",
+        ///             NameRegex = "^my-User",
+        ///         }));
+        ///         this.BastionhostUserId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Users?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("bastionhostUserId1")]
+        ///     public Output&lt;string&gt; BastionhostUserId1 { get; set; }
+        ///     [Output("bastionhostUserId2")]
+        ///     public Output&lt;string&gt; BastionhostUserId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetUsersResult>("alicloud:bastionhost/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -128,6 +178,76 @@ namespace Pulumi.AliCloud.BastionHost
         public string? UserName { get; set; }
 
         public GetUsersArgs()
+        {
+        }
+    }
+
+    public sealed class GetUsersInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Specify the New Created the User's Display Name. Supports up to 128 Characters.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of User IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// You Want to Query the User the Bastion Host ID of.
+        /// </summary>
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        /// <summary>
+        /// Specify the New of the User That Created a Different Mobile Phone Number from Your.
+        /// </summary>
+        [Input("mobile")]
+        public Input<string>? Mobile { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by User name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+        /// </summary>
+        [Input("source")]
+        public Input<string>? Source { get; set; }
+
+        /// <summary>
+        /// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
+        /// </summary>
+        [Input("sourceUserId")]
+        public Input<string>? SourceUserId { get; set; }
+
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
+        /// </summary>
+        [Input("userName")]
+        public Input<string>? UserName { get; set; }
+
+        public GetUsersInvokeArgs()
         {
         }
     }

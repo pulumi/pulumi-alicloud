@@ -13,6 +13,7 @@ __all__ = [
     'GetSystemGroupsResult',
     'AwaitableGetSystemGroupsResult',
     'get_system_groups',
+    'get_system_groups_output',
 ]
 
 @pulumi.output_type
@@ -175,3 +176,44 @@ def get_system_groups(ids: Optional[Sequence[str]] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_system_groups)
+def get_system_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                             in_protocol: Optional[pulumi.Input[Optional[str]]] = None,
+                             name: Optional[pulumi.Input[Optional[str]]] = None,
+                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                             status: Optional[pulumi.Input[Optional[str]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSystemGroupsResult]:
+    """
+    This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.135.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_system_group = alicloud.videosurveillance.SystemGroup("defaultSystemGroup",
+        group_name="groupname",
+        in_protocol="rtmp",
+        out_protocol="flv",
+        play_domain="your_plan_domain",
+        push_domain="your_push_domain")
+    default_system_groups = default_system_group.id.apply(lambda id: alicloud.videosurveillance.get_system_groups(ids=[id]))
+    pulumi.export("vsGroup", default_system_groups.ids[0])
+    ```
+
+
+    :param Sequence[str] ids: A list of Group IDs.
+    :param str in_protocol: The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+    :param str name: The name.
+    :param str name_regex: A regex string to filter results by Group name.
+    :param str status: The status. Valid values: `on`,`off`.
+    """
+    ...

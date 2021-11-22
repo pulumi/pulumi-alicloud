@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = pulumi.output(alicloud.resourcemanager.getPolicyAttachments({ async: true }));
+ * const example = pulumi.output(alicloud.resourcemanager.getPolicyAttachments());
  *
  * export const firstAttachmentId = example.attachments[0].id;
  * ```
@@ -48,28 +48,28 @@ export interface GetPolicyAttachmentsArgs {
     /**
      * The language that is used to return the description of the system policy. Valid values:`en`: English, `zh-CN`: Chinese, `ja`: Japanese.
      */
-    readonly language?: string;
-    readonly outputFile?: string;
+    language?: string;
+    outputFile?: string;
     /**
      * The name of the policy. The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
      */
-    readonly policyName?: string;
+    policyName?: string;
     /**
      * The type of the policy. Valid values: `Custom` and `System`.
      */
-    readonly policyType?: string;
+    policyType?: string;
     /**
      * The name of the object to which the policy is attached.
      */
-    readonly principalName?: string;
+    principalName?: string;
     /**
      * The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
      */
-    readonly principalType?: string;
+    principalType?: string;
     /**
      * The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs. If you do not specify this parameter, the system lists all policy attachment records under the current account.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
 }
 
 /**
@@ -98,4 +98,39 @@ export interface GetPolicyAttachmentsResult {
      * The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
      */
     readonly resourceGroupId?: string;
+}
+
+export function getPolicyAttachmentsOutput(args?: GetPolicyAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyAttachmentsResult> {
+    return pulumi.output(args).apply(a => getPolicyAttachments(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPolicyAttachments.
+ */
+export interface GetPolicyAttachmentsOutputArgs {
+    /**
+     * The language that is used to return the description of the system policy. Valid values:`en`: English, `zh-CN`: Chinese, `ja`: Japanese.
+     */
+    language?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The name of the policy. The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+     */
+    policyName?: pulumi.Input<string>;
+    /**
+     * The type of the policy. Valid values: `Custom` and `System`.
+     */
+    policyType?: pulumi.Input<string>;
+    /**
+     * The name of the object to which the policy is attached.
+     */
+    principalName?: pulumi.Input<string>;
+    /**
+     * The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
+     */
+    principalType?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs. If you do not specify this parameter, the system lists all policy attachment records under the current account.
+     */
+    resourceGroupId?: pulumi.Input<string>;
 }

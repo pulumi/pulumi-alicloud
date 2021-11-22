@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Quotas
 {
@@ -13,6 +14,9 @@ namespace Pulumi.AliCloud.Quotas
     {
         public static Task<GetApplicationInfosResult> InvokeAsync(GetApplicationInfosArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationInfosResult>("alicloud:quotas/getApplicationInfos:getApplicationInfos", args ?? new GetApplicationInfosArgs(), options.WithVersion());
+
+        public static Output<GetApplicationInfosResult> Invoke(GetApplicationInfosInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetApplicationInfosResult>("alicloud:quotas/getApplicationInfos:getApplicationInfos", args ?? new GetApplicationInfosInvokeArgs(), options.WithVersion());
     }
 
 
@@ -56,6 +60,50 @@ namespace Pulumi.AliCloud.Quotas
         public string? Status { get; set; }
 
         public GetApplicationInfosArgs()
+        {
+        }
+    }
+
+    public sealed class GetApplicationInfosInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("dimensions")]
+        private InputList<Inputs.GetApplicationInfosDimensionInputArgs>? _dimensions;
+        public InputList<Inputs.GetApplicationInfosDimensionInputArgs> Dimensions
+        {
+            get => _dimensions ?? (_dimensions = new InputList<Inputs.GetApplicationInfosDimensionInputArgs>());
+            set => _dimensions = value;
+        }
+
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("keyWord")]
+        public Input<string>? KeyWord { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        [Input("productCode", required: true)]
+        public Input<string> ProductCode { get; set; } = null!;
+
+        [Input("quotaActionCode")]
+        public Input<string>? QuotaActionCode { get; set; }
+
+        [Input("quotaCategory")]
+        public Input<string>? QuotaCategory { get; set; }
+
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetApplicationInfosInvokeArgs()
         {
         }
     }

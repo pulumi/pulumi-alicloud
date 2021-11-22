@@ -1052,6 +1052,20 @@ func (o GetDdosCooPortsPortArrayOutput) Index(i pulumi.IntInput) GetDdosCooPorts
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainResourceProxyTypeInput)(nil)).Elem(), DomainResourceProxyTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainResourceProxyTypeArrayInput)(nil)).Elem(), DomainResourceProxyTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerRuleRuleInput)(nil)).Elem(), SchedulerRuleRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerRuleRuleArrayInput)(nil)).Elem(), SchedulerRuleRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDdosBgpInstancesInstanceInput)(nil)).Elem(), GetDdosBgpInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDdosBgpInstancesInstanceArrayInput)(nil)).Elem(), GetDdosBgpInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDdosCooDomainResourcesResourceInput)(nil)).Elem(), GetDdosCooDomainResourcesResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDdosCooDomainResourcesResourceArrayInput)(nil)).Elem(), GetDdosCooDomainResourcesResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDdosCooDomainResourcesResourceProxyTypeInput)(nil)).Elem(), GetDdosCooDomainResourcesResourceProxyTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDdosCooDomainResourcesResourceProxyTypeArrayInput)(nil)).Elem(), GetDdosCooDomainResourcesResourceProxyTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDdosCooInstancesInstanceInput)(nil)).Elem(), GetDdosCooInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDdosCooInstancesInstanceArrayInput)(nil)).Elem(), GetDdosCooInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDdosCooPortsPortInput)(nil)).Elem(), GetDdosCooPortsPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDdosCooPortsPortArrayInput)(nil)).Elem(), GetDdosCooPortsPortArray{})
 	pulumi.RegisterOutputType(DomainResourceProxyTypeOutput{})
 	pulumi.RegisterOutputType(DomainResourceProxyTypeArrayOutput{})
 	pulumi.RegisterOutputType(SchedulerRuleRuleOutput{})

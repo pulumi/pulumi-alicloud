@@ -184,70 +184,70 @@ export interface NatGatewayState {
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly dryRun?: pulumi.Input<boolean>;
-    readonly force?: pulumi.Input<boolean>;
+    description?: pulumi.Input<string>;
+    dryRun?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * The nat gateway will auto create a forward item.
      */
-    readonly forwardTableIds?: pulumi.Input<string>;
+    forwardTableIds?: pulumi.Input<string>;
     /**
      * Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
      */
-    readonly instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string>;
     /**
      * The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
      */
-    readonly internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
      */
-    readonly natGatewayName?: pulumi.Input<string>;
+    natGatewayName?: pulumi.Input<string>;
     /**
      * The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
      */
-    readonly natType?: pulumi.Input<string>;
+    natType?: pulumi.Input<string>;
     /**
      * Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
      */
-    readonly networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string>;
     /**
      * The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
      */
-    readonly paymentType?: pulumi.Input<string>;
-    readonly period?: pulumi.Input<number>;
+    paymentType?: pulumi.Input<string>;
+    period?: pulumi.Input<number>;
     /**
      * The nat gateway will auto create a snat item.
      */
-    readonly snatTableIds?: pulumi.Input<string>;
+    snatTableIds?: pulumi.Input<string>;
     /**
      * The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internetChargeType` is `PayBySpec` and `networkType` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
      */
-    readonly specification?: pulumi.Input<string>;
+    specification?: pulumi.Input<string>;
     /**
      * (Available in 1.121.0+) The status of NAT gateway.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The tags of NAT gateway.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The VPC ID.
      */
-    readonly vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
     /**
      * The id of VSwitch.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
 }
 
 /**
@@ -259,56 +259,56 @@ export interface NatGatewayArgs {
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly dryRun?: pulumi.Input<boolean>;
-    readonly force?: pulumi.Input<boolean>;
+    description?: pulumi.Input<string>;
+    dryRun?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
      */
-    readonly instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string>;
     /**
      * The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
      */
-    readonly internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
      */
-    readonly natGatewayName?: pulumi.Input<string>;
+    natGatewayName?: pulumi.Input<string>;
     /**
      * The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
      */
-    readonly natType?: pulumi.Input<string>;
+    natType?: pulumi.Input<string>;
     /**
      * Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
      */
-    readonly networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string>;
     /**
      * The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
      */
-    readonly paymentType?: pulumi.Input<string>;
-    readonly period?: pulumi.Input<number>;
+    paymentType?: pulumi.Input<string>;
+    period?: pulumi.Input<number>;
     /**
      * The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internetChargeType` is `PayBySpec` and `networkType` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
      */
-    readonly specification?: pulumi.Input<string>;
+    specification?: pulumi.Input<string>;
     /**
      * The tags of NAT gateway.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The VPC ID.
      */
-    readonly vpcId: pulumi.Input<string>;
+    vpcId: pulumi.Input<string>;
     /**
      * The id of VSwitch.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
 }

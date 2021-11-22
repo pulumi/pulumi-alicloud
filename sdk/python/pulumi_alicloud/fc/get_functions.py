@@ -13,6 +13,7 @@ __all__ = [
     'GetFunctionsResult',
     'AwaitableGetFunctionsResult',
     'get_functions',
+    'get_functions_output',
 ]
 
 @pulumi.output_type
@@ -149,3 +150,31 @@ def get_functions(ids: Optional[Sequence[str]] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         service_name=__ret__.service_name)
+
+
+@_utilities.lift_output_func(get_functions)
+def get_functions_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         service_name: Optional[pulumi.Input[str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFunctionsResult]:
+    """
+    This data source provides the Function Compute functions of the current Alibaba Cloud user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    functions_ds = alicloud.fc.get_functions(name_regex="sample_fc_function",
+        service_name="sample_service")
+    pulumi.export("firstFcFunctionName", functions_ds.functions[0].name)
+    ```
+
+
+    :param Sequence[str] ids: - A list of functions ids.
+    :param str name_regex: A regex string to filter results by function name.
+    :param str service_name: Name of the service that contains the functions to find.
+    """
+    ...

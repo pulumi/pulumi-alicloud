@@ -208,7 +208,7 @@ type AlarmContactGroupArrayInput interface {
 type AlarmContactGroupArray []AlarmContactGroupInput
 
 func (AlarmContactGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AlarmContactGroup)(nil))
+	return reflect.TypeOf((*[]*AlarmContactGroup)(nil)).Elem()
 }
 
 func (i AlarmContactGroupArray) ToAlarmContactGroupArrayOutput() AlarmContactGroupArrayOutput {
@@ -233,7 +233,7 @@ type AlarmContactGroupMapInput interface {
 type AlarmContactGroupMap map[string]AlarmContactGroupInput
 
 func (AlarmContactGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AlarmContactGroup)(nil))
+	return reflect.TypeOf((*map[string]*AlarmContactGroup)(nil)).Elem()
 }
 
 func (i AlarmContactGroupMap) ToAlarmContactGroupMapOutput() AlarmContactGroupMapOutput {
@@ -244,9 +244,7 @@ func (i AlarmContactGroupMap) ToAlarmContactGroupMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AlarmContactGroupMapOutput)
 }
 
-type AlarmContactGroupOutput struct {
-	*pulumi.OutputState
-}
+type AlarmContactGroupOutput struct{ *pulumi.OutputState }
 
 func (AlarmContactGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AlarmContactGroup)(nil))
@@ -265,14 +263,12 @@ func (o AlarmContactGroupOutput) ToAlarmContactGroupPtrOutput() AlarmContactGrou
 }
 
 func (o AlarmContactGroupOutput) ToAlarmContactGroupPtrOutputWithContext(ctx context.Context) AlarmContactGroupPtrOutput {
-	return o.ApplyT(func(v AlarmContactGroup) *AlarmContactGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlarmContactGroup) *AlarmContactGroup {
 		return &v
 	}).(AlarmContactGroupPtrOutput)
 }
 
-type AlarmContactGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type AlarmContactGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (AlarmContactGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AlarmContactGroup)(nil))
@@ -284,6 +280,16 @@ func (o AlarmContactGroupPtrOutput) ToAlarmContactGroupPtrOutput() AlarmContactG
 
 func (o AlarmContactGroupPtrOutput) ToAlarmContactGroupPtrOutputWithContext(ctx context.Context) AlarmContactGroupPtrOutput {
 	return o
+}
+
+func (o AlarmContactGroupPtrOutput) Elem() AlarmContactGroupOutput {
+	return o.ApplyT(func(v *AlarmContactGroup) AlarmContactGroup {
+		if v != nil {
+			return *v
+		}
+		var ret AlarmContactGroup
+		return ret
+	}).(AlarmContactGroupOutput)
 }
 
 type AlarmContactGroupArrayOutput struct{ *pulumi.OutputState }
@@ -327,6 +333,10 @@ func (o AlarmContactGroupMapOutput) MapIndex(k pulumi.StringInput) AlarmContactG
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmContactGroupInput)(nil)).Elem(), &AlarmContactGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmContactGroupPtrInput)(nil)).Elem(), &AlarmContactGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmContactGroupArrayInput)(nil)).Elem(), AlarmContactGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmContactGroupMapInput)(nil)).Elem(), AlarmContactGroupMap{})
 	pulumi.RegisterOutputType(AlarmContactGroupOutput{})
 	pulumi.RegisterOutputType(AlarmContactGroupPtrOutput{})
 	pulumi.RegisterOutputType(AlarmContactGroupArrayOutput{})

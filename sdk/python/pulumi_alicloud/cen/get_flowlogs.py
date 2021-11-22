@@ -13,6 +13,7 @@ __all__ = [
     'GetFlowlogsResult',
     'AwaitableGetFlowlogsResult',
     'get_flowlogs',
+    'get_flowlogs_output',
 ]
 
 @pulumi.output_type
@@ -217,3 +218,43 @@ def get_flowlogs(cen_id: Optional[str] = None,
         output_file=__ret__.output_file,
         project_name=__ret__.project_name,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_flowlogs)
+def get_flowlogs_output(cen_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        description: Optional[pulumi.Input[Optional[str]]] = None,
+                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                        log_store_name: Optional[pulumi.Input[Optional[str]]] = None,
+                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        project_name: Optional[pulumi.Input[Optional[str]]] = None,
+                        status: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFlowlogsResult]:
+    """
+    This data source provides CEN flow logs available to the user.
+
+    > **NOTE:** Available in 1.78.0+
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cen.get_flowlogs(ids=["flowlog-tig1xxxxx"],
+        name_regex="^foo")
+    pulumi.export("firstCenFlowlogId", data["alicloud_cen_instances"]["default"]["flowlogs"][0]["id"])
+    ```
+
+
+    :param str cen_id: The ID of the CEN Instance.
+    :param str description: The description of flowlog.
+    :param Sequence[str] ids: A list of CEN flow log IDs.
+    :param str log_store_name: The name of the log store which is in the  `project_name` SLS project.
+    :param str name_regex: A regex string to filter CEN flow logs by name.
+    :param str project_name: The name of the SLS project.
+    :param str status: The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+    """
+    ...

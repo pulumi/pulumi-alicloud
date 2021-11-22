@@ -4,6 +4,9 @@
 package actiontrail
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,4 +78,82 @@ type GetSaslAclsResult struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The username of the sasl acl.
 	Username string `pulumi:"username"`
+}
+
+func GetSaslAclsOutput(ctx *pulumi.Context, args GetSaslAclsOutputArgs, opts ...pulumi.InvokeOption) GetSaslAclsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetSaslAclsResult, error) {
+			args := v.(GetSaslAclsArgs)
+			r, err := GetSaslAcls(ctx, &args, opts...)
+			return *r, err
+		}).(GetSaslAclsResultOutput)
+}
+
+// A collection of arguments for invoking getSaslAcls.
+type GetSaslAclsOutputArgs struct {
+	// Get results for the specified resource name.
+	AclResourceName pulumi.StringInput `pulumi:"aclResourceName"`
+	// Get results for the specified resource type.
+	AclResourceType pulumi.StringInput `pulumi:"aclResourceType"`
+	// ID of the ALIKAFKA Instance that owns the sasl acls.
+	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Get results for the specified username.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (GetSaslAclsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSaslAclsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSaslAcls.
+type GetSaslAclsResultOutput struct{ *pulumi.OutputState }
+
+func (GetSaslAclsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSaslAclsResult)(nil)).Elem()
+}
+
+func (o GetSaslAclsResultOutput) ToGetSaslAclsResultOutput() GetSaslAclsResultOutput {
+	return o
+}
+
+func (o GetSaslAclsResultOutput) ToGetSaslAclsResultOutputWithContext(ctx context.Context) GetSaslAclsResultOutput {
+	return o
+}
+
+// The resource name of the sasl acl.
+func (o GetSaslAclsResultOutput) AclResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSaslAclsResult) string { return v.AclResourceName }).(pulumi.StringOutput)
+}
+
+// The resource type of the sasl acl.
+func (o GetSaslAclsResultOutput) AclResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSaslAclsResult) string { return v.AclResourceType }).(pulumi.StringOutput)
+}
+
+// A list of sasl acls. Each element contains the following attributes:
+func (o GetSaslAclsResultOutput) Acls() GetSaslAclsAclArrayOutput {
+	return o.ApplyT(func(v GetSaslAclsResult) []GetSaslAclsAcl { return v.Acls }).(GetSaslAclsAclArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSaslAclsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSaslAclsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetSaslAclsResultOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSaslAclsResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetSaslAclsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSaslAclsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The username of the sasl acl.
+func (o GetSaslAclsResultOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSaslAclsResult) string { return v.Username }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSaslAclsResultOutput{})
 }

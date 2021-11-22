@@ -4,6 +4,9 @@
 package amqp
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,4 +82,76 @@ type GetVirtualHostsResult struct {
 	NameRegex  *string  `pulumi:"nameRegex"`
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetVirtualHostsOutput(ctx *pulumi.Context, args GetVirtualHostsOutputArgs, opts ...pulumi.InvokeOption) GetVirtualHostsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetVirtualHostsResult, error) {
+			args := v.(GetVirtualHostsArgs)
+			r, err := GetVirtualHosts(ctx, &args, opts...)
+			return *r, err
+		}).(GetVirtualHostsResultOutput)
+}
+
+// A collection of arguments for invoking getVirtualHosts.
+type GetVirtualHostsOutputArgs struct {
+	// A list of Virtual Host IDs. Its element value is same as Virtual Host Name.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// InstanceId.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// A regex string to filter results by Virtual Host name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetVirtualHostsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVirtualHostsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getVirtualHosts.
+type GetVirtualHostsResultOutput struct{ *pulumi.OutputState }
+
+func (GetVirtualHostsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVirtualHostsResult)(nil)).Elem()
+}
+
+func (o GetVirtualHostsResultOutput) ToGetVirtualHostsResultOutput() GetVirtualHostsResultOutput {
+	return o
+}
+
+func (o GetVirtualHostsResultOutput) ToGetVirtualHostsResultOutputWithContext(ctx context.Context) GetVirtualHostsResultOutput {
+	return o
+}
+
+func (o GetVirtualHostsResultOutput) Hosts() GetVirtualHostsHostArrayOutput {
+	return o.ApplyT(func(v GetVirtualHostsResult) []GetVirtualHostsHost { return v.Hosts }).(GetVirtualHostsHostArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetVirtualHostsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualHostsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetVirtualHostsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVirtualHostsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetVirtualHostsResultOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualHostsResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetVirtualHostsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVirtualHostsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetVirtualHostsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVirtualHostsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetVirtualHostsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVirtualHostsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetVirtualHostsResultOutput{})
 }

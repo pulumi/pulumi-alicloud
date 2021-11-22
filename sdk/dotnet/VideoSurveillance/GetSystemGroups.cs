@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.VideoSurveillance
 {
@@ -45,7 +46,7 @@ namespace Pulumi.AliCloud.VideoSurveillance
         ///                 id,
         ///             },
         ///         }));
-        ///         this.VsGroup = defaultSystemGroups.Apply(defaultSystemGroups =&gt; defaultSystemGroups.Ids[0]);
+        ///         this.VsGroup = defaultSystemGroups.Apply(defaultSystemGroups =&gt; defaultSystemGroups.Ids?[0]);
         ///     }
         /// 
         ///     [Output("vsGroup")]
@@ -57,6 +58,53 @@ namespace Pulumi.AliCloud.VideoSurveillance
         /// </summary>
         public static Task<GetSystemGroupsResult> InvokeAsync(GetSystemGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSystemGroupsResult>("alicloud:videosurveillance/getSystemGroups:getSystemGroups", args ?? new GetSystemGroupsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var defaultSystemGroup = new AliCloud.VideoSurveillance.SystemGroup("defaultSystemGroup", new AliCloud.VideoSurveillance.SystemGroupArgs
+        ///         {
+        ///             GroupName = "groupname",
+        ///             InProtocol = "rtmp",
+        ///             OutProtocol = "flv",
+        ///             PlayDomain = "your_plan_domain",
+        ///             PushDomain = "your_push_domain",
+        ///         });
+        ///         var defaultSystemGroups = defaultSystemGroup.Id.Apply(id =&gt; AliCloud.VideoSurveillance.GetSystemGroups.InvokeAsync(new AliCloud.VideoSurveillance.GetSystemGroupsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 id,
+        ///             },
+        ///         }));
+        ///         this.VsGroup = defaultSystemGroups.Apply(defaultSystemGroups =&gt; defaultSystemGroups.Ids?[0]);
+        ///     }
+        /// 
+        ///     [Output("vsGroup")]
+        ///     public Output&lt;string&gt; VsGroup { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSystemGroupsResult> Invoke(GetSystemGroupsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSystemGroupsResult>("alicloud:videosurveillance/getSystemGroups:getSystemGroups", args ?? new GetSystemGroupsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -102,6 +150,52 @@ namespace Pulumi.AliCloud.VideoSurveillance
         public string? Status { get; set; }
 
         public GetSystemGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetSystemGroupsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Group IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+        /// </summary>
+        [Input("inProtocol")]
+        public Input<string>? InProtocol { get; set; }
+
+        /// <summary>
+        /// The name.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Group name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status. Valid values: `on`,`off`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetSystemGroupsInvokeArgs()
         {
         }
     }

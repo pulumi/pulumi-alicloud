@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -32,7 +33,7 @@ namespace Pulumi.AliCloud.Vpc
         ///             NameRegex = "^testenv",
         ///             Status = "Active",
         ///         }));
-        ///         this.FirstRouterInterfaceId = routerInterfacesDs.Apply(routerInterfacesDs =&gt; routerInterfacesDs.Interfaces[0].Id);
+        ///         this.FirstRouterInterfaceId = routerInterfacesDs.Apply(routerInterfacesDs =&gt; routerInterfacesDs.Interfaces?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstRouterInterfaceId")]
@@ -44,6 +45,40 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Task<GetRouterInterfacesResult> InvokeAsync(GetRouterInterfacesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRouterInterfacesResult>("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", args ?? new GetRouterInterfacesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+        /// that connect VPCs together.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var routerInterfacesDs = Output.Create(AliCloud.Vpc.GetRouterInterfaces.InvokeAsync(new AliCloud.Vpc.GetRouterInterfacesArgs
+        ///         {
+        ///             NameRegex = "^testenv",
+        ///             Status = "Active",
+        ///         }));
+        ///         this.FirstRouterInterfaceId = routerInterfacesDs.Apply(routerInterfacesDs =&gt; routerInterfacesDs.Interfaces?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstRouterInterfaceId")]
+        ///     public Output&lt;string&gt; FirstRouterInterfaceId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetRouterInterfacesResult> Invoke(GetRouterInterfacesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRouterInterfacesResult>("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", args ?? new GetRouterInterfacesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -114,6 +149,77 @@ namespace Pulumi.AliCloud.Vpc
         public string? Status { get; set; }
 
         public GetRouterInterfacesArgs()
+        {
+        }
+    }
+
+    public sealed class GetRouterInterfacesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of router interface IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string used to filter by router interface name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        /// <summary>
+        /// ID of the peer router interface.
+        /// </summary>
+        [Input("oppositeInterfaceId")]
+        public Input<string>? OppositeInterfaceId { get; set; }
+
+        /// <summary>
+        /// Account ID of the owner of the peer router interface.
+        /// </summary>
+        [Input("oppositeInterfaceOwnerId")]
+        public Input<string>? OppositeInterfaceOwnerId { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 
+        /// `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
+        /// </summary>
+        [Input("role")]
+        public Input<string>? Role { get; set; }
+
+        /// <summary>
+        /// ID of the VRouter located in the local region.
+        /// </summary>
+        [Input("routerId")]
+        public Input<string>? RouterId { get; set; }
+
+        /// <summary>
+        /// Router type in the local region. Valid values are `VRouter` and `VBR` (physical connection).
+        /// </summary>
+        [Input("routerType")]
+        public Input<string>? RouterType { get; set; }
+
+        /// <summary>
+        /// Specification of the link, such as `Small.1` (10Mb), `Middle.1` (100Mb), `Large.2` (2Gb), ...etc.
+        /// </summary>
+        [Input("specification")]
+        public Input<string>? Specification { get; set; }
+
+        /// <summary>
+        /// Expected status. Valid values are `Active`, `Inactive` and `Idle`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetRouterInterfacesInvokeArgs()
         {
         }
     }

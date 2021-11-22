@@ -13,6 +13,7 @@ __all__ = [
     'GetAlidnsRecordsResult',
     'AwaitableGetAlidnsRecordsResult',
     'get_alidns_records',
+    'get_alidns_records_output',
 ]
 
 @pulumi.output_type
@@ -308,3 +309,48 @@ def get_alidns_records(direction: Optional[str] = None,
         type_key_word=__ret__.type_key_word,
         value_key_word=__ret__.value_key_word,
         value_regex=__ret__.value_regex)
+
+
+@_utilities.lift_output_func(get_alidns_records)
+def get_alidns_records_output(direction: Optional[pulumi.Input[Optional[str]]] = None,
+                              domain_name: Optional[pulumi.Input[str]] = None,
+                              group_id: Optional[pulumi.Input[Optional[int]]] = None,
+                              ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                              key_word: Optional[pulumi.Input[Optional[str]]] = None,
+                              lang: Optional[pulumi.Input[Optional[str]]] = None,
+                              line: Optional[pulumi.Input[Optional[str]]] = None,
+                              order_by: Optional[pulumi.Input[Optional[str]]] = None,
+                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                              rr_key_word: Optional[pulumi.Input[Optional[str]]] = None,
+                              rr_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                              search_mode: Optional[pulumi.Input[Optional[str]]] = None,
+                              status: Optional[pulumi.Input[Optional[str]]] = None,
+                              type: Optional[pulumi.Input[Optional[str]]] = None,
+                              type_key_word: Optional[pulumi.Input[Optional[str]]] = None,
+                              value_key_word: Optional[pulumi.Input[Optional[str]]] = None,
+                              value_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlidnsRecordsResult]:
+    """
+    This data source provides a list of Alidns Domain Records in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:**  Available in 1.86.0+.
+
+
+    :param str direction: Sorting direction. Valid values: `DESC`,`ASC`. Default to `AESC`.
+    :param str domain_name: The domain name associated to the records.
+    :param int group_id: Domain name group ID.
+    :param Sequence[str] ids: A list of record IDs.
+    :param str key_word: Keywords.
+    :param str lang: User language.
+    :param str line: ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+    :param str order_by: Sort by. Sort from newest to oldest according to the time added by resolution.
+    :param str rr_key_word: The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
+    :param str rr_regex: Host record regex.
+    :param str search_mode: Search mode, Valid values: `LIKE`, `EXACT`, `ADVANCED`, `LIKE` (fuzzy), `EXACT` (accurate) search supports KeyWord field, `ADVANCED` (advanced) mode supports other fields.
+    :param str status: Record status. Valid values: `ENABLE` and `DISABLE`.
+    :param str type: Record type. Valid values: `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
+    :param str type_key_word: Analyze type keywords, search by full match, not case sensitive.
+    :param str value_key_word: The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
+    :param str value_regex: Host record value regex.
+    """
+    ...

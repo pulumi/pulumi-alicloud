@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cen
 {
@@ -34,7 +35,7 @@ namespace Pulumi.AliCloud.Cen
         ///             },
         ///             NameRegex = "^foo",
         ///         }));
-        ///         this.FirstCenInstanceId = cenInstancesDs.Apply(cenInstancesDs =&gt; cenInstancesDs.Instances[0].Id);
+        ///         this.FirstCenInstanceId = cenInstancesDs.Apply(cenInstancesDs =&gt; cenInstancesDs.Instances?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstCenInstanceId")]
@@ -46,6 +47,42 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:cen/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides CEN instances available to the user.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var cenInstancesDs = Output.Create(AliCloud.Cen.GetInstances.InvokeAsync(new AliCloud.Cen.GetInstancesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "cen-id1",
+        ///             },
+        ///             NameRegex = "^foo",
+        ///         }));
+        ///         this.FirstCenInstanceId = cenInstancesDs.Apply(cenInstancesDs =&gt; cenInstancesDs.Instances?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstCenInstanceId")]
+        ///     public Output&lt;string&gt; FirstCenInstanceId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:cen/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -91,6 +128,52 @@ namespace Pulumi.AliCloud.Cen
         }
 
         public GetInstancesArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of CEN instances IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter CEN instances by name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        public GetInstancesInvokeArgs()
         {
         }
     }

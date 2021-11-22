@@ -4,6 +4,9 @@
 package eventbridge
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,4 +78,82 @@ type GetEventBusesResult struct {
 	NameRegex  *string  `pulumi:"nameRegex"`
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetEventBusesOutput(ctx *pulumi.Context, args GetEventBusesOutputArgs, opts ...pulumi.InvokeOption) GetEventBusesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetEventBusesResult, error) {
+			args := v.(GetEventBusesArgs)
+			r, err := GetEventBuses(ctx, &args, opts...)
+			return *r, err
+		}).(GetEventBusesResultOutput)
+}
+
+// A collection of arguments for invoking getEventBuses.
+type GetEventBusesOutputArgs struct {
+	// The event bus type.
+	EventBusType pulumi.StringPtrInput `pulumi:"eventBusType"`
+	// A list of Event Bus IDs. Its element value is same as Event Bus Name.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The name prefix.
+	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
+	// A regex string to filter results by Event Bus name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetEventBusesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventBusesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getEventBuses.
+type GetEventBusesResultOutput struct{ *pulumi.OutputState }
+
+func (GetEventBusesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventBusesResult)(nil)).Elem()
+}
+
+func (o GetEventBusesResultOutput) ToGetEventBusesResultOutput() GetEventBusesResultOutput {
+	return o
+}
+
+func (o GetEventBusesResultOutput) ToGetEventBusesResultOutputWithContext(ctx context.Context) GetEventBusesResultOutput {
+	return o
+}
+
+func (o GetEventBusesResultOutput) Buses() GetEventBusesBusArrayOutput {
+	return o.ApplyT(func(v GetEventBusesResult) []GetEventBusesBus { return v.Buses }).(GetEventBusesBusArrayOutput)
+}
+
+func (o GetEventBusesResultOutput) EventBusType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEventBusesResult) *string { return v.EventBusType }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetEventBusesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventBusesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetEventBusesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEventBusesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEventBusesResultOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEventBusesResult) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEventBusesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEventBusesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEventBusesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEventBusesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEventBusesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEventBusesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetEventBusesResultOutput{})
 }

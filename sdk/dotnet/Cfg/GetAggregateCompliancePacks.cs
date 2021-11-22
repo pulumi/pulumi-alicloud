@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cfg
 {
@@ -39,7 +40,7 @@ namespace Pulumi.AliCloud.Cfg
         ///             },
         ///             NameRegex = "the_resource_name",
         ///         }));
-        ///         this.FirstConfigAggregateCompliancePackId = example.Apply(example =&gt; example.Packs[0].Id);
+        ///         this.FirstConfigAggregateCompliancePackId = example.Apply(example =&gt; example.Packs?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstConfigAggregateCompliancePackId")]
@@ -51,6 +52,47 @@ namespace Pulumi.AliCloud.Cfg
         /// </summary>
         public static Task<GetAggregateCompliancePacksResult> InvokeAsync(GetAggregateCompliancePacksArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAggregateCompliancePacksResult>("alicloud:cfg/getAggregateCompliancePacks:getAggregateCompliancePacks", args ?? new GetAggregateCompliancePacksArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Config Aggregate Compliance Packs of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.124.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Cfg.GetAggregateCompliancePacks.InvokeAsync(new AliCloud.Cfg.GetAggregateCompliancePacksArgs
+        ///         {
+        ///             AggregatorId = "ca-3a9b626622af001d****",
+        ///             Ids = 
+        ///             {
+        ///                 "cp-152a626622af00bc****",
+        ///             },
+        ///             NameRegex = "the_resource_name",
+        ///         }));
+        ///         this.FirstConfigAggregateCompliancePackId = example.Apply(example =&gt; example.Packs?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstConfigAggregateCompliancePackId")]
+        ///     public Output&lt;string&gt; FirstConfigAggregateCompliancePackId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAggregateCompliancePacksResult> Invoke(GetAggregateCompliancePacksInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAggregateCompliancePacksResult>("alicloud:cfg/getAggregateCompliancePacks:getAggregateCompliancePacks", args ?? new GetAggregateCompliancePacksInvokeArgs(), options.WithVersion());
     }
 
 
@@ -96,6 +138,52 @@ namespace Pulumi.AliCloud.Cfg
         public string? Status { get; set; }
 
         public GetAggregateCompliancePacksArgs()
+        {
+        }
+    }
+
+    public sealed class GetAggregateCompliancePacksInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of aggregator.
+        /// </summary>
+        [Input("aggregatorId", required: true)]
+        public Input<string> AggregatorId { get; set; } = null!;
+
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Aggregate Compliance Pack IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Aggregate Compliance Pack name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetAggregateCompliancePacksInvokeArgs()
         {
         }
     }

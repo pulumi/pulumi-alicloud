@@ -25,36 +25,36 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const vpcNatIpId1 = ids.then(ids => ids.ips[0].id);
+ * export const vpcNatIpId1 = ids.then(ids => ids.ips?[0]?.id);
  * const nameRegex = alicloud.vpc.getNatIps({
  *     natGatewayId: "example_value",
  *     nameRegex: "^my-NatIp",
  * });
- * export const vpcNatIpId2 = nameRegex.then(nameRegex => nameRegex.ips[0].id);
+ * export const vpcNatIpId2 = nameRegex.then(nameRegex => nameRegex.ips?[0]?.id);
  * const natIpCidr = alicloud.vpc.getNatIps({
  *     natGatewayId: "example_value",
  *     natIpCidr: "example_value",
  *     nameRegex: "^my-NatIp",
  * });
- * export const vpcNatIpId3 = natIpCidr.then(natIpCidr => natIpCidr.ips[0].id);
+ * export const vpcNatIpId3 = natIpCidr.then(natIpCidr => natIpCidr.ips?[0]?.id);
  * const natIpName = alicloud.vpc.getNatIps({
  *     natGatewayId: "example_value",
  *     ids: ["example_value"],
  *     natIpNames: ["example_value"],
  * });
- * export const vpcNatIpId4 = natIpName.then(natIpName => natIpName.ips[0].id);
+ * export const vpcNatIpId4 = natIpName.then(natIpName => natIpName.ips?[0]?.id);
  * const natIpIds = alicloud.vpc.getNatIps({
  *     natGatewayId: "example_value",
  *     ids: ["example_value"],
  *     natIpIds: ["example_value"],
  * });
- * export const vpcNatIpId5 = natIpIds.then(natIpIds => natIpIds.ips[0].id);
+ * export const vpcNatIpId5 = natIpIds.then(natIpIds => natIpIds.ips?[0]?.id);
  * const status = alicloud.vpc.getNatIps({
  *     natGatewayId: "example_value",
  *     ids: ["example_value"],
  *     status: "example_value",
  * });
- * export const vpcNatIpId6 = status.then(status => status.ips[0].id);
+ * export const vpcNatIpId6 = status.then(status => status.ips?[0]?.id);
  * ```
  */
 export function getNatIps(args: GetNatIpsArgs, opts?: pulumi.InvokeOptions): Promise<GetNatIpsResult> {
@@ -84,29 +84,29 @@ export interface GetNatIpsArgs {
     /**
      * A list of Nat Ip IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Nat Ip name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
      */
-    readonly natGatewayId: string;
+    natGatewayId: string;
     /**
      * The CIDR block to which the NAT IP address belongs.
      */
-    readonly natIpCidr?: string;
-    readonly natIpIds?: string[];
+    natIpCidr?: string;
+    natIpIds?: string[];
     /**
      * The name of the NAT IP address.
      */
-    readonly natIpNames?: string[];
-    readonly outputFile?: string;
+    natIpNames?: string[];
+    outputFile?: string;
     /**
      * The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -127,4 +127,40 @@ export interface GetNatIpsResult {
     readonly natIpNames?: string[];
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getNatIpsOutput(args: GetNatIpsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNatIpsResult> {
+    return pulumi.output(args).apply(a => getNatIps(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNatIps.
+ */
+export interface GetNatIpsOutputArgs {
+    /**
+     * A list of Nat Ip IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Nat Ip name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+     */
+    natGatewayId: pulumi.Input<string>;
+    /**
+     * The CIDR block to which the NAT IP address belongs.
+     */
+    natIpCidr?: pulumi.Input<string>;
+    natIpIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the NAT IP address.
+     */
+    natIpNames?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
+     */
+    status?: pulumi.Input<string>;
 }

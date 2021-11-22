@@ -108,27 +108,27 @@ export interface UserState {
     /**
      * Comment of the RAM user. This parameter can have a string of 1 to 128 characters.
      */
-    readonly comments?: pulumi.Input<string>;
+    comments?: pulumi.Input<string>;
     /**
      * Name of the RAM user which for display. This name can have a string of 1 to 128 characters or Chinese characters, must contain only alphanumeric characters or Chinese characters or hyphens, such as "-",".", and must not end with a hyphen.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Email of the RAM user.
      */
-    readonly email?: pulumi.Input<string>;
+    email?: pulumi.Input<string>;
     /**
      * This parameter is used for resource destroy. Default value is `false`.
      */
-    readonly force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
      */
-    readonly mobile?: pulumi.Input<string>;
+    mobile?: pulumi.Input<string>;
     /**
      * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -138,25 +138,25 @@ export interface UserArgs {
     /**
      * Comment of the RAM user. This parameter can have a string of 1 to 128 characters.
      */
-    readonly comments?: pulumi.Input<string>;
+    comments?: pulumi.Input<string>;
     /**
      * Name of the RAM user which for display. This name can have a string of 1 to 128 characters or Chinese characters, must contain only alphanumeric characters or Chinese characters or hyphens, such as "-",".", and must not end with a hyphen.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Email of the RAM user.
      */
-    readonly email?: pulumi.Input<string>;
+    email?: pulumi.Input<string>;
     /**
      * This parameter is used for resource destroy. Default value is `false`.
      */
-    readonly force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
      */
-    readonly mobile?: pulumi.Input<string>;
+    mobile?: pulumi.Input<string>;
     /**
      * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

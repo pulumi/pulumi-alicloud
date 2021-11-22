@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  * });
  * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
  *     loadBalancerName: name,
@@ -182,15 +182,15 @@ export interface ScalingGroupVServerGroupsState {
     /**
      * If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
      */
-    readonly force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * ID of the scaling group.
      */
-    readonly scalingGroupId?: pulumi.Input<string>;
+    scalingGroupId?: pulumi.Input<string>;
     /**
      * A list of vserver groups attached on scaling group. See Block vserverGroup below for details.
      */
-    readonly vserverGroups?: pulumi.Input<pulumi.Input<inputs.ess.ScalingGroupVServerGroupsVserverGroup>[]>;
+    vserverGroups?: pulumi.Input<pulumi.Input<inputs.ess.ScalingGroupVServerGroupsVserverGroup>[]>;
 }
 
 /**
@@ -200,13 +200,13 @@ export interface ScalingGroupVServerGroupsArgs {
     /**
      * If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
      */
-    readonly force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * ID of the scaling group.
      */
-    readonly scalingGroupId: pulumi.Input<string>;
+    scalingGroupId: pulumi.Input<string>;
     /**
      * A list of vserver groups attached on scaling group. See Block vserverGroup below for details.
      */
-    readonly vserverGroups: pulumi.Input<pulumi.Input<inputs.ess.ScalingGroupVServerGroupsVserverGroup>[]>;
+    vserverGroups: pulumi.Input<pulumi.Input<inputs.ess.ScalingGroupVServerGroupsVserverGroup>[]>;
 }

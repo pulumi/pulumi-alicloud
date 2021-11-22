@@ -13,6 +13,7 @@ __all__ = [
     'GetCertificatesResult',
     'AwaitableGetCertificatesResult',
     'get_certificates',
+    'get_certificates_output',
 ]
 
 @pulumi.output_type
@@ -158,3 +159,38 @@ def get_certificates(domain: Optional[str] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_certificates)
+def get_certificates_output(domain: Optional[pulumi.Input[Optional[str]]] = None,
+                            ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            instance_id: Optional[pulumi.Input[str]] = None,
+                            name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificatesResult]:
+    """
+    This data source provides the Waf Certificates of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.135.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.waf.get_certificates(ids=["your_certificate_id"],
+        instance_id="your_instance_id",
+        domain="your_domain_name")
+    pulumi.export("wafCertificate", default.certificates[0])
+    ```
+
+
+    :param str domain: The domain that you want to add to WAF.
+    :param Sequence[str] ids: A list of Certificate IDs.
+    :param str instance_id: WAF instance ID.
+    :param str name_regex: A regex string to filter results by Certificate name.
+    """
+    ...

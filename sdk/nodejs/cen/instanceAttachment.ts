@@ -150,31 +150,31 @@ export interface InstanceAttachmentState {
     /**
      * The account ID to which the CEN instance belongs.
      */
-    readonly cenOwnerId?: pulumi.Input<number>;
+    cenOwnerId?: pulumi.Input<number>;
     /**
      * The ID of the child instance to attach.
      */
-    readonly childInstanceId?: pulumi.Input<string>;
+    childInstanceId?: pulumi.Input<string>;
     /**
      * The uid of the child instance. Only used when attach a child instance of other account.
      */
-    readonly childInstanceOwnerId?: pulumi.Input<number>;
+    childInstanceOwnerId?: pulumi.Input<number>;
     /**
      * The region ID of the child instance to attach.
      */
-    readonly childInstanceRegionId?: pulumi.Input<string>;
+    childInstanceRegionId?: pulumi.Input<string>;
     /**
      * The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
      */
-    readonly childInstanceType?: pulumi.Input<string>;
+    childInstanceType?: pulumi.Input<string>;
     /**
      * The ID of the CEN.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The associating status of the network.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -184,25 +184,25 @@ export interface InstanceAttachmentArgs {
     /**
      * The account ID to which the CEN instance belongs.
      */
-    readonly cenOwnerId?: pulumi.Input<number>;
+    cenOwnerId?: pulumi.Input<number>;
     /**
      * The ID of the child instance to attach.
      */
-    readonly childInstanceId: pulumi.Input<string>;
+    childInstanceId: pulumi.Input<string>;
     /**
      * The uid of the child instance. Only used when attach a child instance of other account.
      */
-    readonly childInstanceOwnerId?: pulumi.Input<number>;
+    childInstanceOwnerId?: pulumi.Input<number>;
     /**
      * The region ID of the child instance to attach.
      */
-    readonly childInstanceRegionId: pulumi.Input<string>;
+    childInstanceRegionId: pulumi.Input<string>;
     /**
      * The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
      */
-    readonly childInstanceType: pulumi.Input<string>;
+    childInstanceType: pulumi.Input<string>;
     /**
      * The ID of the CEN.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
 }

@@ -316,157 +316,157 @@ export interface NodePoolState {
     /**
      * Enable Node payment auto-renew, default is `false`.
      */
-    readonly autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean>;
     /**
      * Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
      */
-    readonly autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number>;
     /**
      * The id of kubernetes cluster.
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * The data disk configurations of worker nodes, such as the disk type and disk size.
      */
-    readonly dataDisks?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolDataDisk>[]>;
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolDataDisk>[]>;
     /**
      * After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
      */
-    readonly formatDisk?: pulumi.Input<boolean>;
+    formatDisk?: pulumi.Input<boolean>;
     /**
      * Custom Image support. Must based on CentOS7 or AliyunLinux2.
      */
-    readonly imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string>;
     /**
      * Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
      */
-    readonly installCloudMonitor?: pulumi.Input<boolean>;
+    installCloudMonitor?: pulumi.Input<boolean>;
     /**
      * Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
      */
-    readonly instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string>;
     /**
      * The instance type of worker node.
      */
-    readonly instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The instance list. Add existing nodes under the same cluster VPC to the node pool.
      */
-    readonly instances?: pulumi.Input<pulumi.Input<string>[]>;
+    instances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
      */
-    readonly internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string>;
     /**
      * The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
      */
-    readonly internetMaxBandwidthOut?: pulumi.Input<number>;
+    internetMaxBandwidthOut?: pulumi.Input<number>;
     /**
      * Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
      */
-    readonly keepInstanceName?: pulumi.Input<boolean>;
+    keepInstanceName?: pulumi.Input<boolean>;
     /**
      * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
      */
-    readonly keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string>;
     /**
      * An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
-    readonly kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string>;
     /**
      * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
      */
-    readonly labels?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolLabel>[]>;
     /**
      * Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
      */
-    readonly management?: pulumi.Input<inputs.cs.NodePoolManagement>;
+    management?: pulumi.Input<inputs.cs.NodePoolManagement>;
     /**
      * The name of node pool.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
      */
-    readonly nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number>;
     /**
      * Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
      */
-    readonly nodeNameMode?: pulumi.Input<string>;
+    nodeNameMode?: pulumi.Input<string>;
     /**
      * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * Node payment period unit, valid value: `Month`. Default is `Month`.
      */
-    readonly periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string>;
     /**
      * The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
      */
-    readonly platform?: pulumi.Input<string>;
+    platform?: pulumi.Input<string>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * Auto scaling node pool configuration. For more details, see `scalingConfig`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
      */
-    readonly scalingConfig?: pulumi.Input<inputs.cs.NodePoolScalingConfig>;
+    scalingConfig?: pulumi.Input<inputs.cs.NodePoolScalingConfig>;
     /**
      * (Available in 1.105.0+) Id of the Scaling Group.
      */
-    readonly scalingGroupId?: pulumi.Input<string>;
+    scalingGroupId?: pulumi.Input<string>;
     /**
      * The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, adn restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
      */
-    readonly scalingPolicy?: pulumi.Input<string>;
+    scalingPolicy?: pulumi.Input<string>;
     /**
      * The security group id for worker node.
      */
-    readonly securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
     /**
      * The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
      */
-    readonly spotPriceLimits?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolSpotPriceLimit>[]>;
+    spotPriceLimits?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolSpotPriceLimit>[]>;
     /**
      * The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
      */
-    readonly spotStrategy?: pulumi.Input<string>;
+    spotStrategy?: pulumi.Input<string>;
     /**
      * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      */
-    readonly systemDiskCategory?: pulumi.Input<string>;
-    readonly systemDiskPerformanceLevel?: pulumi.Input<string>;
+    systemDiskCategory?: pulumi.Input<string>;
+    systemDiskPerformanceLevel?: pulumi.Input<string>;
     /**
      * The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
      */
-    readonly systemDiskSize?: pulumi.Input<number>;
+    systemDiskSize?: pulumi.Input<number>;
     /**
      * A Map of tags to assign to the resource. It will be applied for ECS instances finally.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * A List of Kubernetes taints to assign to the nodes.
      */
-    readonly taints?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolTaint>[]>;
+    taints?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolTaint>[]>;
     /**
      * Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
      */
-    readonly unschedulable?: pulumi.Input<boolean>;
+    unschedulable?: pulumi.Input<boolean>;
     /**
      * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
      */
-    readonly userData?: pulumi.Input<string>;
-    readonly vpcId?: pulumi.Input<string>;
+    userData?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
     /**
      * The vswitches used by node pool workers.
      */
-    readonly vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -476,150 +476,150 @@ export interface NodePoolArgs {
     /**
      * Enable Node payment auto-renew, default is `false`.
      */
-    readonly autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean>;
     /**
      * Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
      */
-    readonly autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number>;
     /**
      * The id of kubernetes cluster.
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * The data disk configurations of worker nodes, such as the disk type and disk size.
      */
-    readonly dataDisks?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolDataDisk>[]>;
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolDataDisk>[]>;
     /**
      * After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
      */
-    readonly formatDisk?: pulumi.Input<boolean>;
+    formatDisk?: pulumi.Input<boolean>;
     /**
      * Custom Image support. Must based on CentOS7 or AliyunLinux2.
      */
-    readonly imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string>;
     /**
      * Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
      */
-    readonly installCloudMonitor?: pulumi.Input<boolean>;
+    installCloudMonitor?: pulumi.Input<boolean>;
     /**
      * Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
      */
-    readonly instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string>;
     /**
      * The instance type of worker node.
      */
-    readonly instanceTypes: pulumi.Input<pulumi.Input<string>[]>;
+    instanceTypes: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The instance list. Add existing nodes under the same cluster VPC to the node pool.
      */
-    readonly instances?: pulumi.Input<pulumi.Input<string>[]>;
+    instances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
      */
-    readonly internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string>;
     /**
      * The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
      */
-    readonly internetMaxBandwidthOut?: pulumi.Input<number>;
+    internetMaxBandwidthOut?: pulumi.Input<number>;
     /**
      * Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
      */
-    readonly keepInstanceName?: pulumi.Input<boolean>;
+    keepInstanceName?: pulumi.Input<boolean>;
     /**
      * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields. Only `keyName` is supported in the management node pool.
      */
-    readonly keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string>;
     /**
      * An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
-    readonly kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string>;
     /**
      * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument.
      */
-    readonly labels?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolLabel>[]>;
     /**
      * Managed node pool configuration. When using a managed node pool, the node key must use `keyName`. Detailed below.
      */
-    readonly management?: pulumi.Input<inputs.cs.NodePoolManagement>;
+    management?: pulumi.Input<inputs.cs.NodePoolManagement>;
     /**
      * The name of node pool.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
      */
-    readonly nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number>;
     /**
      * Each node name consists of a prefix, an IP substring, and a suffix. For example "customized,aliyun.com,5,test", if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
      */
-    readonly nodeNameMode?: pulumi.Input<string>;
+    nodeNameMode?: pulumi.Input<string>;
     /**
      * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * Node payment period unit, valid value: `Month`. Default is `Month`.
      */
-    readonly periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string>;
     /**
      * The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
      */
-    readonly platform?: pulumi.Input<string>;
+    platform?: pulumi.Input<string>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * Auto scaling node pool configuration. For more details, see `scalingConfig`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
      */
-    readonly scalingConfig?: pulumi.Input<inputs.cs.NodePoolScalingConfig>;
+    scalingConfig?: pulumi.Input<inputs.cs.NodePoolScalingConfig>;
     /**
      * The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, adn restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
      */
-    readonly scalingPolicy?: pulumi.Input<string>;
+    scalingPolicy?: pulumi.Input<string>;
     /**
      * The security group id for worker node.
      */
-    readonly securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
     /**
      * The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
      */
-    readonly spotPriceLimits?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolSpotPriceLimit>[]>;
+    spotPriceLimits?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolSpotPriceLimit>[]>;
     /**
      * The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
      */
-    readonly spotStrategy?: pulumi.Input<string>;
+    spotStrategy?: pulumi.Input<string>;
     /**
      * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      */
-    readonly systemDiskCategory?: pulumi.Input<string>;
-    readonly systemDiskPerformanceLevel?: pulumi.Input<string>;
+    systemDiskCategory?: pulumi.Input<string>;
+    systemDiskPerformanceLevel?: pulumi.Input<string>;
     /**
      * The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
      */
-    readonly systemDiskSize?: pulumi.Input<number>;
+    systemDiskSize?: pulumi.Input<number>;
     /**
      * A Map of tags to assign to the resource. It will be applied for ECS instances finally.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * A List of Kubernetes taints to assign to the nodes.
      */
-    readonly taints?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolTaint>[]>;
+    taints?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolTaint>[]>;
     /**
      * Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
      */
-    readonly unschedulable?: pulumi.Input<boolean>;
+    unschedulable?: pulumi.Input<boolean>;
     /**
      * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
      */
-    readonly userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string>;
     /**
      * The vswitches used by node pool workers.
      */
-    readonly vswitchIds: pulumi.Input<pulumi.Input<string>[]>;
+    vswitchIds: pulumi.Input<pulumi.Input<string>[]>;
 }

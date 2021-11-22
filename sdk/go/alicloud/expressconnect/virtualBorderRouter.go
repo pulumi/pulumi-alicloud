@@ -385,7 +385,7 @@ type VirtualBorderRouterArrayInput interface {
 type VirtualBorderRouterArray []VirtualBorderRouterInput
 
 func (VirtualBorderRouterArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*VirtualBorderRouter)(nil))
+	return reflect.TypeOf((*[]*VirtualBorderRouter)(nil)).Elem()
 }
 
 func (i VirtualBorderRouterArray) ToVirtualBorderRouterArrayOutput() VirtualBorderRouterArrayOutput {
@@ -410,7 +410,7 @@ type VirtualBorderRouterMapInput interface {
 type VirtualBorderRouterMap map[string]VirtualBorderRouterInput
 
 func (VirtualBorderRouterMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*VirtualBorderRouter)(nil))
+	return reflect.TypeOf((*map[string]*VirtualBorderRouter)(nil)).Elem()
 }
 
 func (i VirtualBorderRouterMap) ToVirtualBorderRouterMapOutput() VirtualBorderRouterMapOutput {
@@ -421,9 +421,7 @@ func (i VirtualBorderRouterMap) ToVirtualBorderRouterMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualBorderRouterMapOutput)
 }
 
-type VirtualBorderRouterOutput struct {
-	*pulumi.OutputState
-}
+type VirtualBorderRouterOutput struct{ *pulumi.OutputState }
 
 func (VirtualBorderRouterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*VirtualBorderRouter)(nil))
@@ -442,14 +440,12 @@ func (o VirtualBorderRouterOutput) ToVirtualBorderRouterPtrOutput() VirtualBorde
 }
 
 func (o VirtualBorderRouterOutput) ToVirtualBorderRouterPtrOutputWithContext(ctx context.Context) VirtualBorderRouterPtrOutput {
-	return o.ApplyT(func(v VirtualBorderRouter) *VirtualBorderRouter {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualBorderRouter) *VirtualBorderRouter {
 		return &v
 	}).(VirtualBorderRouterPtrOutput)
 }
 
-type VirtualBorderRouterPtrOutput struct {
-	*pulumi.OutputState
-}
+type VirtualBorderRouterPtrOutput struct{ *pulumi.OutputState }
 
 func (VirtualBorderRouterPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**VirtualBorderRouter)(nil))
@@ -461,6 +457,16 @@ func (o VirtualBorderRouterPtrOutput) ToVirtualBorderRouterPtrOutput() VirtualBo
 
 func (o VirtualBorderRouterPtrOutput) ToVirtualBorderRouterPtrOutputWithContext(ctx context.Context) VirtualBorderRouterPtrOutput {
 	return o
+}
+
+func (o VirtualBorderRouterPtrOutput) Elem() VirtualBorderRouterOutput {
+	return o.ApplyT(func(v *VirtualBorderRouter) VirtualBorderRouter {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualBorderRouter
+		return ret
+	}).(VirtualBorderRouterOutput)
 }
 
 type VirtualBorderRouterArrayOutput struct{ *pulumi.OutputState }
@@ -504,6 +510,10 @@ func (o VirtualBorderRouterMapOutput) MapIndex(k pulumi.StringInput) VirtualBord
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualBorderRouterInput)(nil)).Elem(), &VirtualBorderRouter{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualBorderRouterPtrInput)(nil)).Elem(), &VirtualBorderRouter{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualBorderRouterArrayInput)(nil)).Elem(), VirtualBorderRouterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualBorderRouterMapInput)(nil)).Elem(), VirtualBorderRouterMap{})
 	pulumi.RegisterOutputType(VirtualBorderRouterOutput{})
 	pulumi.RegisterOutputType(VirtualBorderRouterPtrOutput{})
 	pulumi.RegisterOutputType(VirtualBorderRouterArrayOutput{})

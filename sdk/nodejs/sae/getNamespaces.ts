@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const nameRegex = alicloud.sae.getNamespaces({
  *     nameRegex: "^my-Namespace",
  * });
- * export const saeNamespaceId = nameRegex.then(nameRegex => nameRegex.namespaces[0].id);
+ * export const saeNamespaceId = nameRegex.then(nameRegex => nameRegex.namespaces?[0]?.id);
  * ```
  */
 export function getNamespaces(args?: GetNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespacesResult> {
@@ -47,12 +47,12 @@ export interface GetNamespacesArgs {
     /**
      * A list of Namespace IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Namespace name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -68,4 +68,23 @@ export interface GetNamespacesResult {
     readonly names: string[];
     readonly namespaces: outputs.sae.GetNamespacesNamespace[];
     readonly outputFile?: string;
+}
+
+export function getNamespacesOutput(args?: GetNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamespacesResult> {
+    return pulumi.output(args).apply(a => getNamespaces(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNamespaces.
+ */
+export interface GetNamespacesOutputArgs {
+    /**
+     * A list of Namespace IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Namespace name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

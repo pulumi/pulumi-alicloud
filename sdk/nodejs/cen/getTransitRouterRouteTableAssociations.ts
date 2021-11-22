@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * const default = alicloud.cen.getTransitRouterRouteTableAssociations({
  *     transitRouterRouteTableId: "rtb-id1",
  * });
- * export const firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType = _default.then(_default => _default.associations[0].resourceType);
+ * export const firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType = _default.then(_default => _default.associations?[0]?.resourceType);
  * ```
  */
 export function getTransitRouterRouteTableAssociations(args: GetTransitRouterRouteTableAssociationsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterRouteTableAssociationsResult> {
@@ -45,16 +45,16 @@ export interface GetTransitRouterRouteTableAssociationsArgs {
     /**
      * A list of CEN Transit Router Route Table Association IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * The status of the route table, including `Active`, `Associating`, `Dissociating`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * ID of the route table of the VPC or VBR.
      */
-    readonly transitRouterRouteTableId: string;
+    transitRouterRouteTableId: string;
 }
 
 /**
@@ -82,4 +82,27 @@ export interface GetTransitRouterRouteTableAssociationsResult {
      * ID of the transit router route table.
      */
     readonly transitRouterRouteTableId: string;
+}
+
+export function getTransitRouterRouteTableAssociationsOutput(args: GetTransitRouterRouteTableAssociationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterRouteTableAssociationsResult> {
+    return pulumi.output(args).apply(a => getTransitRouterRouteTableAssociations(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTransitRouterRouteTableAssociations.
+ */
+export interface GetTransitRouterRouteTableAssociationsOutputArgs {
+    /**
+     * A list of CEN Transit Router Route Table Association IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the route table, including `Active`, `Associating`, `Dissociating`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * ID of the route table of the VPC or VBR.
+     */
+    transitRouterRouteTableId: pulumi.Input<string>;
 }

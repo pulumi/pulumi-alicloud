@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Ecs
         ///             },
         ///             NameRegex = "your_launch_name",
         ///         }));
-        ///         this.FirstEcsLaunchTemplateId = example.Apply(example =&gt; example.Templates[0].Id);
+        ///         this.FirstEcsLaunchTemplateId = example.Apply(example =&gt; example.Templates?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstEcsLaunchTemplateId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public static Task<GetEcsLaunchTemplatesResult> InvokeAsync(GetEcsLaunchTemplatesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEcsLaunchTemplatesResult>("alicloud:ecs/getEcsLaunchTemplates:getEcsLaunchTemplates", args ?? new GetEcsLaunchTemplatesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.120.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Ecs.GetEcsLaunchTemplates.InvokeAsync(new AliCloud.Ecs.GetEcsLaunchTemplatesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "lt-bp1a469uxxxxxx",
+        ///             },
+        ///             NameRegex = "your_launch_name",
+        ///         }));
+        ///         this.FirstEcsLaunchTemplateId = example.Apply(example =&gt; example.Templates?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstEcsLaunchTemplateId")]
+        ///     public Output&lt;string&gt; FirstEcsLaunchTemplateId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetEcsLaunchTemplatesResult> Invoke(GetEcsLaunchTemplatesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEcsLaunchTemplatesResult>("alicloud:ecs/getEcsLaunchTemplates:getEcsLaunchTemplates", args ?? new GetEcsLaunchTemplatesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -107,6 +148,64 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         public GetEcsLaunchTemplatesArgs()
+        {
+        }
+    }
+
+    public sealed class GetEcsLaunchTemplatesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Launch Template IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The Launch Template Name.
+        /// </summary>
+        [Input("launchTemplateName")]
+        public Input<string>? LaunchTemplateName { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Launch Template name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The template resource group id.
+        /// </summary>
+        [Input("templateResourceGroupId")]
+        public Input<string>? TemplateResourceGroupId { get; set; }
+
+        [Input("templateTags")]
+        private InputMap<object>? _templateTags;
+
+        /// <summary>
+        /// The template tags.
+        /// </summary>
+        public InputMap<object> TemplateTags
+        {
+            get => _templateTags ?? (_templateTags = new InputMap<object>());
+            set => _templateTags = value;
+        }
+
+        public GetEcsLaunchTemplatesInvokeArgs()
         {
         }
     }

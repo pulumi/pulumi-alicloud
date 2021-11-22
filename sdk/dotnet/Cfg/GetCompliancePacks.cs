@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cfg
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Cfg
         ///             },
         ///             NameRegex = "the_resource_name",
         ///         }));
-        ///         this.FirstConfigCompliancePackId = example.Apply(example =&gt; example.Packs[0].Id);
+        ///         this.FirstConfigCompliancePackId = example.Apply(example =&gt; example.Packs?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstConfigCompliancePackId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Cfg
         /// </summary>
         public static Task<GetCompliancePacksResult> InvokeAsync(GetCompliancePacksArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCompliancePacksResult>("alicloud:cfg/getCompliancePacks:getCompliancePacks", args ?? new GetCompliancePacksArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Config Compliance Packs of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.124.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Cfg.GetCompliancePacks.InvokeAsync(new AliCloud.Cfg.GetCompliancePacksArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "cp-152a626622af00bc****",
+        ///             },
+        ///             NameRegex = "the_resource_name",
+        ///         }));
+        ///         this.FirstConfigCompliancePackId = example.Apply(example =&gt; example.Packs?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstConfigCompliancePackId")]
+        ///     public Output&lt;string&gt; FirstConfigCompliancePackId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetCompliancePacksResult> Invoke(GetCompliancePacksInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCompliancePacksResult>("alicloud:cfg/getCompliancePacks:getCompliancePacks", args ?? new GetCompliancePacksInvokeArgs(), options.WithVersion());
     }
 
 
@@ -89,6 +130,46 @@ namespace Pulumi.AliCloud.Cfg
         public string? Status { get; set; }
 
         public GetCompliancePacksArgs()
+        {
+        }
+    }
+
+    public sealed class GetCompliancePacksInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Compliance Pack IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Compliance Pack name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetCompliancePacksInvokeArgs()
         {
         }
     }

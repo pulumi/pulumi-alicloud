@@ -19,11 +19,11 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.alb.getServerGroups({});
- * export const albServerGroupId1 = ids.then(ids => ids.groups[0].id);
+ * export const albServerGroupId1 = ids.then(ids => ids.groups?[0]?.id);
  * const nameRegex = alicloud.alb.getServerGroups({
  *     nameRegex: "^my-ServerGroup",
  * });
- * export const albServerGroupId2 = nameRegex.then(nameRegex => nameRegex.groups[0].id);
+ * export const albServerGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?[0]?.id);
  * ```
  */
 export function getServerGroups(args?: GetServerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetServerGroupsResult> {
@@ -53,37 +53,37 @@ export function getServerGroups(args?: GetServerGroupsArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getServerGroups.
  */
 export interface GetServerGroupsArgs {
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Server Group IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Server Group name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The ID of the resource group.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * The server group ids.
      */
-    readonly serverGroupIds?: string[];
+    serverGroupIds?: string[];
     /**
      * The name of the resource.
      */
-    readonly serverGroupName?: string;
+    serverGroupName?: string;
     /**
      * The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
      */
-    readonly status?: string;
-    readonly tags?: {[key: string]: any};
+    status?: string;
+    tags?: {[key: string]: any};
     /**
      * The ID of the VPC that you want to access.
      */
-    readonly vpcId?: string;
+    vpcId?: string;
 }
 
 /**
@@ -106,4 +106,45 @@ export interface GetServerGroupsResult {
     readonly status?: string;
     readonly tags?: {[key: string]: any};
     readonly vpcId?: string;
+}
+
+export function getServerGroupsOutput(args?: GetServerGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerGroupsResult> {
+    return pulumi.output(args).apply(a => getServerGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServerGroups.
+ */
+export interface GetServerGroupsOutputArgs {
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Server Group IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Server Group name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The server group ids.
+     */
+    serverGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the resource.
+     */
+    serverGroupName?: pulumi.Input<string>;
+    /**
+     * The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+     */
+    status?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The ID of the VPC that you want to access.
+     */
+    vpcId?: pulumi.Input<string>;
 }

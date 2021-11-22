@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -13,6 +14,9 @@ namespace Pulumi.AliCloud.Ecs
     {
         public static Task<GetSnapshotsResult> InvokeAsync(GetSnapshotsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotsResult>("alicloud:ecs/getSnapshots:getSnapshots", args ?? new GetSnapshotsArgs(), options.WithVersion());
+
+        public static Output<GetSnapshotsResult> Invoke(GetSnapshotsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSnapshotsResult>("alicloud:ecs/getSnapshots:getSnapshots", args ?? new GetSnapshotsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -97,6 +101,91 @@ namespace Pulumi.AliCloud.Ecs
         public string? Usage { get; set; }
 
         public GetSnapshotsArgs()
+        {
+        }
+    }
+
+    public sealed class GetSnapshotsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("category")]
+        public Input<string>? Category { get; set; }
+
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// Whether the snapshot is encrypted or not.
+        /// </summary>
+        [Input("encrypted")]
+        public Input<bool>? Encrypted { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of snapshot IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("snapshotLinkId")]
+        public Input<string>? SnapshotLinkId { get; set; }
+
+        [Input("snapshotName")]
+        public Input<string>? SnapshotName { get; set; }
+
+        [Input("snapshotType")]
+        public Input<string>? SnapshotType { get; set; }
+
+        /// <summary>
+        /// Source disk attribute. Value range: `System`,`Data`.
+        /// </summary>
+        [Input("sourceDiskType")]
+        public Input<string>? SourceDiskType { get; set; }
+
+        /// <summary>
+        /// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A map of tags assigned to the snapshot.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
+        /// </summary>
+        [Input("usage")]
+        public Input<string>? Usage { get; set; }
+
+        public GetSnapshotsInvokeArgs()
         {
         }
     }

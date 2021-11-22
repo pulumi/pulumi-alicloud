@@ -4,6 +4,9 @@
 package slb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -135,4 +138,193 @@ type GetApplicationLoadBalancersResult struct {
 	VpcId *string `pulumi:"vpcId"`
 	// ID of the VSwitch the SLB belongs to.
 	VswitchId *string `pulumi:"vswitchId"`
+}
+
+func GetApplicationLoadBalancersOutput(ctx *pulumi.Context, args GetApplicationLoadBalancersOutputArgs, opts ...pulumi.InvokeOption) GetApplicationLoadBalancersResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetApplicationLoadBalancersResult, error) {
+			args := v.(GetApplicationLoadBalancersArgs)
+			r, err := GetApplicationLoadBalancers(ctx, &args, opts...)
+			return *r, err
+		}).(GetApplicationLoadBalancersResultOutput)
+}
+
+// A collection of arguments for invoking getApplicationLoadBalancers.
+type GetApplicationLoadBalancersOutputArgs struct {
+	// Service address of the SLBs.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// The address ip version. Valid values `ipv4` and `ipv6`.
+	AddressIpVersion pulumi.StringPtrInput `pulumi:"addressIpVersion"`
+	// The address type of the SLB. Valid values `internet` and `intranet`.
+	AddressType   pulumi.StringPtrInput `pulumi:"addressType"`
+	EnableDetails pulumi.BoolPtrInput   `pulumi:"enableDetails"`
+	// A list of SLBs IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
+	InternetChargeType pulumi.StringPtrInput `pulumi:"internetChargeType"`
+	// The name of the SLB.
+	LoadBalancerName pulumi.StringPtrInput `pulumi:"loadBalancerName"`
+	// The master zone id of the SLB.
+	MasterZoneId pulumi.StringPtrInput `pulumi:"masterZoneId"`
+	// A regex string to filter results by SLB name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// Network type of the SLBs. Valid values: `vpc` and `classic`.
+	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
+	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
+	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`
+	// The Id of resource group which SLB belongs.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	// The server ID.
+	ServerId pulumi.StringPtrInput `pulumi:"serverId"`
+	// The server intranet address.
+	ServerIntranetAddress pulumi.StringPtrInput `pulumi:"serverIntranetAddress"`
+	// The slave zone id of the SLB.
+	SlaveZoneId pulumi.StringPtrInput `pulumi:"slaveZoneId"`
+	// SLB current status. Possible values: `inactive`, `active` and `locked`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// ID of the VPC linked to the SLBs.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	// ID of the VSwitch linked to the SLBs.
+	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
+}
+
+func (GetApplicationLoadBalancersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancersArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getApplicationLoadBalancers.
+type GetApplicationLoadBalancersResultOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancersResult)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancersResultOutput) ToGetApplicationLoadBalancersResultOutput() GetApplicationLoadBalancersResultOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancersResultOutput) ToGetApplicationLoadBalancersResultOutputWithContext(ctx context.Context) GetApplicationLoadBalancersResultOutput {
+	return o
+}
+
+// The IP address that the SLB instance uses to provide services.
+func (o GetApplicationLoadBalancersResultOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// The address ip version.
+func (o GetApplicationLoadBalancersResultOutput) AddressIpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) *string { return v.AddressIpVersion }).(pulumi.StringPtrOutput)
+}
+
+// The address type.
+func (o GetApplicationLoadBalancersResultOutput) AddressType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) *string { return v.AddressType }).(pulumi.StringPtrOutput)
+}
+
+// A list of SLBs. Each element contains the following attributes:
+func (o GetApplicationLoadBalancersResultOutput) Balancers() GetApplicationLoadBalancersBalancerArrayOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) []GetApplicationLoadBalancersBalancer { return v.Balancers }).(GetApplicationLoadBalancersBalancerArrayOutput)
+}
+
+func (o GetApplicationLoadBalancersResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetApplicationLoadBalancersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of slb IDs.
+func (o GetApplicationLoadBalancersResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// The billing method of the Internet-facing SLB instance.
+func (o GetApplicationLoadBalancersResultOutput) InternetChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) *string { return v.InternetChargeType }).(pulumi.StringPtrOutput)
+}
+
+// The name of the SLB.
+func (o GetApplicationLoadBalancersResultOutput) LoadBalancerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) *string { return v.LoadBalancerName }).(pulumi.StringPtrOutput)
+}
+
+// Master availability zone of the SLBs.
+func (o GetApplicationLoadBalancersResultOutput) MasterZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) *string { return v.MasterZoneId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetApplicationLoadBalancersResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of slb names.
+func (o GetApplicationLoadBalancersResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+// Network type of the SLB. Possible values: `vpc` and `classic`.
+func (o GetApplicationLoadBalancersResultOutput) NetworkType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetApplicationLoadBalancersResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetApplicationLoadBalancersResultOutput) PaymentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) *string { return v.PaymentType }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the resource group.
+func (o GetApplicationLoadBalancersResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Elastic Compute Service (ECS) instance that is specified as a backend server of the CLB instance.
+func (o GetApplicationLoadBalancersResultOutput) ServerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) *string { return v.ServerId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetApplicationLoadBalancersResultOutput) ServerIntranetAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) *string { return v.ServerIntranetAddress }).(pulumi.StringPtrOutput)
+}
+
+// Slave availability zone of the SLBs.
+func (o GetApplicationLoadBalancersResultOutput) SlaveZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) *string { return v.SlaveZoneId }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Field 'slbs' has deprecated from v1.123.1 and replace by 'balancers'.
+func (o GetApplicationLoadBalancersResultOutput) Slbs() GetApplicationLoadBalancersSlbArrayOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) []GetApplicationLoadBalancersSlb { return v.Slbs }).(GetApplicationLoadBalancersSlbArrayOutput)
+}
+
+// SLB current status. Possible values: `inactive`, `active` and `locked`.
+func (o GetApplicationLoadBalancersResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The tags of the SLB.
+func (o GetApplicationLoadBalancersResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// ID of the VPC the SLB belongs to.
+func (o GetApplicationLoadBalancersResultOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the VSwitch the SLB belongs to.
+func (o GetApplicationLoadBalancersResultOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancersResult) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetApplicationLoadBalancersResultOutput{})
 }

@@ -13,6 +13,7 @@ __all__ = [
     'GetNetworkInterfacesResult',
     'AwaitableGetNetworkInterfacesResult',
     'get_network_interfaces',
+    'get_network_interfaces_output',
 ]
 
 @pulumi.output_type
@@ -312,3 +313,36 @@ def get_network_interfaces(ids: Optional[Sequence[str]] = None,
         type=__ret__.type,
         vpc_id=__ret__.vpc_id,
         vswitch_id=__ret__.vswitch_id)
+
+
+@_utilities.lift_output_func(get_network_interfaces)
+def get_network_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                  instance_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                  name: Optional[pulumi.Input[Optional[str]]] = None,
+                                  name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                  network_interface_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                  primary_ip_address: Optional[pulumi.Input[Optional[str]]] = None,
+                                  private_ip: Optional[pulumi.Input[Optional[str]]] = None,
+                                  resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                  security_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                  service_managed: Optional[pulumi.Input[Optional[bool]]] = None,
+                                  status: Optional[pulumi.Input[Optional[str]]] = None,
+                                  tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                  type: Optional[pulumi.Input[Optional[str]]] = None,
+                                  vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                  vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkInterfacesResult]:
+    """
+    Use this data source to access information about an existing resource.
+
+    :param str instance_id: ID of the instance that the ENI is attached to.
+    :param str name: Name of the ENI.
+    :param str private_ip: Primary private IP of the ENI.
+    :param str resource_group_id: The Id of resource group.
+    :param str status: Current status of the ENI.
+    :param Mapping[str, Any] tags: A map of tags assigned to the ENI.
+    :param str vpc_id: ID of the VPC that the ENI belongs to.
+    :param str vswitch_id: ID of the VSwitch that the ENI is linked to.
+    """
+    ...

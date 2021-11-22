@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud
 {
@@ -44,6 +45,40 @@ namespace Pulumi.AliCloud
         /// </summary>
         public static Task<GetFileCrc64ChecksumResult> InvokeAsync(GetFileCrc64ChecksumArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFileCrc64ChecksumResult>("alicloud:index/getFileCrc64Checksum:getFileCrc64Checksum", args ?? new GetFileCrc64ChecksumArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source compute file crc64 checksum.
+        /// 
+        /// &gt; **NOTE:** Available in 1.59.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.GetFileCrc64Checksum.InvokeAsync(new AliCloud.GetFileCrc64ChecksumArgs
+        ///         {
+        ///             Filename = "exampleFileName",
+        ///         }));
+        ///         this.FileCrc64Checksum = data.Alicloud_file_crc64_checksum.Defualt.Checksum;
+        ///     }
+        /// 
+        ///     [Output("fileCrc64Checksum")]
+        ///     public Output&lt;string&gt; FileCrc64Checksum { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetFileCrc64ChecksumResult> Invoke(GetFileCrc64ChecksumInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFileCrc64ChecksumResult>("alicloud:index/getFileCrc64Checksum:getFileCrc64Checksum", args ?? new GetFileCrc64ChecksumInvokeArgs(), options.WithVersion());
     }
 
 
@@ -59,6 +94,22 @@ namespace Pulumi.AliCloud
         public string? OutputFile { get; set; }
 
         public GetFileCrc64ChecksumArgs()
+        {
+        }
+    }
+
+    public sealed class GetFileCrc64ChecksumInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the file to be computed crc64 checksum.
+        /// </summary>
+        [Input("filename", required: true)]
+        public Input<string> Filename { get; set; } = null!;
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetFileCrc64ChecksumInvokeArgs()
         {
         }
     }

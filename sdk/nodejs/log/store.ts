@@ -133,40 +133,40 @@ export interface StoreState {
     /**
      * Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
      */
-    readonly appendMeta?: pulumi.Input<boolean>;
+    appendMeta?: pulumi.Input<boolean>;
     /**
      * Determines whether to automatically split a shard. Default to `false`.
      */
-    readonly autoSplit?: pulumi.Input<boolean>;
+    autoSplit?: pulumi.Input<boolean>;
     /**
      * Determines whether to enable Web Tracking. Default `false`.
      */
-    readonly enableWebTracking?: pulumi.Input<boolean>;
+    enableWebTracking?: pulumi.Input<boolean>;
     /**
      * Encrypted storage of data, providing data static protection capability, only supported at creation time.
      */
-    readonly encryptConf?: pulumi.Input<inputs.log.StoreEncryptConf>;
+    encryptConf?: pulumi.Input<inputs.log.StoreEncryptConf>;
     /**
      * The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
      */
-    readonly maxSplitShardCount?: pulumi.Input<number>;
+    maxSplitShardCount?: pulumi.Input<number>;
     /**
      * The log store, which is unique in the same project.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The project name to the log store belongs.
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
      */
-    readonly retentionPeriod?: pulumi.Input<number>;
+    retentionPeriod?: pulumi.Input<number>;
     /**
      * The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
      */
-    readonly shardCount?: pulumi.Input<number>;
-    readonly shards?: pulumi.Input<pulumi.Input<inputs.log.StoreShard>[]>;
+    shardCount?: pulumi.Input<number>;
+    shards?: pulumi.Input<pulumi.Input<inputs.log.StoreShard>[]>;
 }
 
 /**
@@ -176,37 +176,37 @@ export interface StoreArgs {
     /**
      * Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
      */
-    readonly appendMeta?: pulumi.Input<boolean>;
+    appendMeta?: pulumi.Input<boolean>;
     /**
      * Determines whether to automatically split a shard. Default to `false`.
      */
-    readonly autoSplit?: pulumi.Input<boolean>;
+    autoSplit?: pulumi.Input<boolean>;
     /**
      * Determines whether to enable Web Tracking. Default `false`.
      */
-    readonly enableWebTracking?: pulumi.Input<boolean>;
+    enableWebTracking?: pulumi.Input<boolean>;
     /**
      * Encrypted storage of data, providing data static protection capability, only supported at creation time.
      */
-    readonly encryptConf?: pulumi.Input<inputs.log.StoreEncryptConf>;
+    encryptConf?: pulumi.Input<inputs.log.StoreEncryptConf>;
     /**
      * The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
      */
-    readonly maxSplitShardCount?: pulumi.Input<number>;
+    maxSplitShardCount?: pulumi.Input<number>;
     /**
      * The log store, which is unique in the same project.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The project name to the log store belongs.
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
      */
-    readonly retentionPeriod?: pulumi.Input<number>;
+    retentionPeriod?: pulumi.Input<number>;
     /**
      * The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
      */
-    readonly shardCount?: pulumi.Input<number>;
+    shardCount?: pulumi.Input<number>;
 }

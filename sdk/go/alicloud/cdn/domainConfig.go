@@ -244,7 +244,7 @@ type DomainConfigArrayInput interface {
 type DomainConfigArray []DomainConfigInput
 
 func (DomainConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DomainConfig)(nil))
+	return reflect.TypeOf((*[]*DomainConfig)(nil)).Elem()
 }
 
 func (i DomainConfigArray) ToDomainConfigArrayOutput() DomainConfigArrayOutput {
@@ -269,7 +269,7 @@ type DomainConfigMapInput interface {
 type DomainConfigMap map[string]DomainConfigInput
 
 func (DomainConfigMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DomainConfig)(nil))
+	return reflect.TypeOf((*map[string]*DomainConfig)(nil)).Elem()
 }
 
 func (i DomainConfigMap) ToDomainConfigMapOutput() DomainConfigMapOutput {
@@ -280,9 +280,7 @@ func (i DomainConfigMap) ToDomainConfigMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigMapOutput)
 }
 
-type DomainConfigOutput struct {
-	*pulumi.OutputState
-}
+type DomainConfigOutput struct{ *pulumi.OutputState }
 
 func (DomainConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainConfig)(nil))
@@ -301,14 +299,12 @@ func (o DomainConfigOutput) ToDomainConfigPtrOutput() DomainConfigPtrOutput {
 }
 
 func (o DomainConfigOutput) ToDomainConfigPtrOutputWithContext(ctx context.Context) DomainConfigPtrOutput {
-	return o.ApplyT(func(v DomainConfig) *DomainConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainConfig) *DomainConfig {
 		return &v
 	}).(DomainConfigPtrOutput)
 }
 
-type DomainConfigPtrOutput struct {
-	*pulumi.OutputState
-}
+type DomainConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (DomainConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DomainConfig)(nil))
@@ -320,6 +316,16 @@ func (o DomainConfigPtrOutput) ToDomainConfigPtrOutput() DomainConfigPtrOutput {
 
 func (o DomainConfigPtrOutput) ToDomainConfigPtrOutputWithContext(ctx context.Context) DomainConfigPtrOutput {
 	return o
+}
+
+func (o DomainConfigPtrOutput) Elem() DomainConfigOutput {
+	return o.ApplyT(func(v *DomainConfig) DomainConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DomainConfig
+		return ret
+	}).(DomainConfigOutput)
 }
 
 type DomainConfigArrayOutput struct{ *pulumi.OutputState }
@@ -363,6 +369,10 @@ func (o DomainConfigMapOutput) MapIndex(k pulumi.StringInput) DomainConfigOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainConfigInput)(nil)).Elem(), &DomainConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainConfigPtrInput)(nil)).Elem(), &DomainConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainConfigArrayInput)(nil)).Elem(), DomainConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainConfigMapInput)(nil)).Elem(), DomainConfigMap{})
 	pulumi.RegisterOutputType(DomainConfigOutput{})
 	pulumi.RegisterOutputType(DomainConfigPtrOutput{})
 	pulumi.RegisterOutputType(DomainConfigArrayOutput{})

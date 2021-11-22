@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *     descriptionRegex: "tftest_policy",
  *     nameRegex: "tftest",
  *     policyType: "Custom",
- * }, { async: true }));
+ * }));
  *
  * export const firstPolicyId = example.policies[0].id;
  * ```
@@ -49,16 +49,16 @@ export interface GetPoliciesArgs {
     /**
      * A list of Resource Manager Policy IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by policy name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.
      */
-    readonly policyType?: string;
+    policyType?: string;
 }
 
 /**
@@ -84,4 +84,27 @@ export interface GetPoliciesResult {
      */
     readonly policies: outputs.resourcemanager.GetPoliciesPolicy[];
     readonly policyType?: string;
+}
+
+export function getPoliciesOutput(args?: GetPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPoliciesResult> {
+    return pulumi.output(args).apply(a => getPolicies(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPolicies.
+ */
+export interface GetPoliciesOutputArgs {
+    /**
+     * A list of Resource Manager Policy IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by policy name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.
+     */
+    policyType?: pulumi.Input<string>;
 }

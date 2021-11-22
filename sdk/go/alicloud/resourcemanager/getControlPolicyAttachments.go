@@ -4,6 +4,9 @@
 package resourcemanager
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,4 +69,78 @@ type GetControlPolicyAttachmentsResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	PolicyType *string  `pulumi:"policyType"`
 	TargetId   string   `pulumi:"targetId"`
+}
+
+func GetControlPolicyAttachmentsOutput(ctx *pulumi.Context, args GetControlPolicyAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetControlPolicyAttachmentsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetControlPolicyAttachmentsResult, error) {
+			args := v.(GetControlPolicyAttachmentsArgs)
+			r, err := GetControlPolicyAttachments(ctx, &args, opts...)
+			return *r, err
+		}).(GetControlPolicyAttachmentsResultOutput)
+}
+
+// A collection of arguments for invoking getControlPolicyAttachments.
+type GetControlPolicyAttachmentsOutputArgs struct {
+	// The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`
+	Language   pulumi.StringPtrInput `pulumi:"language"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The type of policy.
+	PolicyType pulumi.StringPtrInput `pulumi:"policyType"`
+	// The Id of target.
+	TargetId pulumi.StringInput `pulumi:"targetId"`
+}
+
+func (GetControlPolicyAttachmentsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlPolicyAttachmentsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getControlPolicyAttachments.
+type GetControlPolicyAttachmentsResultOutput struct{ *pulumi.OutputState }
+
+func (GetControlPolicyAttachmentsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlPolicyAttachmentsResult)(nil)).Elem()
+}
+
+func (o GetControlPolicyAttachmentsResultOutput) ToGetControlPolicyAttachmentsResultOutput() GetControlPolicyAttachmentsResultOutput {
+	return o
+}
+
+func (o GetControlPolicyAttachmentsResultOutput) ToGetControlPolicyAttachmentsResultOutputWithContext(ctx context.Context) GetControlPolicyAttachmentsResultOutput {
+	return o
+}
+
+func (o GetControlPolicyAttachmentsResultOutput) Attachments() GetControlPolicyAttachmentsAttachmentArrayOutput {
+	return o.ApplyT(func(v GetControlPolicyAttachmentsResult) []GetControlPolicyAttachmentsAttachment {
+		return v.Attachments
+	}).(GetControlPolicyAttachmentsAttachmentArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetControlPolicyAttachmentsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlPolicyAttachmentsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetControlPolicyAttachmentsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetControlPolicyAttachmentsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetControlPolicyAttachmentsResultOutput) Language() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetControlPolicyAttachmentsResult) *string { return v.Language }).(pulumi.StringPtrOutput)
+}
+
+func (o GetControlPolicyAttachmentsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetControlPolicyAttachmentsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetControlPolicyAttachmentsResultOutput) PolicyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetControlPolicyAttachmentsResult) *string { return v.PolicyType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetControlPolicyAttachmentsResultOutput) TargetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlPolicyAttachmentsResult) string { return v.TargetId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetControlPolicyAttachmentsResultOutput{})
 }

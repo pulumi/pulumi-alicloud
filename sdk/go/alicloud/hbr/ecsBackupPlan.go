@@ -369,7 +369,7 @@ type EcsBackupPlanArrayInput interface {
 type EcsBackupPlanArray []EcsBackupPlanInput
 
 func (EcsBackupPlanArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EcsBackupPlan)(nil))
+	return reflect.TypeOf((*[]*EcsBackupPlan)(nil)).Elem()
 }
 
 func (i EcsBackupPlanArray) ToEcsBackupPlanArrayOutput() EcsBackupPlanArrayOutput {
@@ -394,7 +394,7 @@ type EcsBackupPlanMapInput interface {
 type EcsBackupPlanMap map[string]EcsBackupPlanInput
 
 func (EcsBackupPlanMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EcsBackupPlan)(nil))
+	return reflect.TypeOf((*map[string]*EcsBackupPlan)(nil)).Elem()
 }
 
 func (i EcsBackupPlanMap) ToEcsBackupPlanMapOutput() EcsBackupPlanMapOutput {
@@ -405,9 +405,7 @@ func (i EcsBackupPlanMap) ToEcsBackupPlanMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(EcsBackupPlanMapOutput)
 }
 
-type EcsBackupPlanOutput struct {
-	*pulumi.OutputState
-}
+type EcsBackupPlanOutput struct{ *pulumi.OutputState }
 
 func (EcsBackupPlanOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EcsBackupPlan)(nil))
@@ -426,14 +424,12 @@ func (o EcsBackupPlanOutput) ToEcsBackupPlanPtrOutput() EcsBackupPlanPtrOutput {
 }
 
 func (o EcsBackupPlanOutput) ToEcsBackupPlanPtrOutputWithContext(ctx context.Context) EcsBackupPlanPtrOutput {
-	return o.ApplyT(func(v EcsBackupPlan) *EcsBackupPlan {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EcsBackupPlan) *EcsBackupPlan {
 		return &v
 	}).(EcsBackupPlanPtrOutput)
 }
 
-type EcsBackupPlanPtrOutput struct {
-	*pulumi.OutputState
-}
+type EcsBackupPlanPtrOutput struct{ *pulumi.OutputState }
 
 func (EcsBackupPlanPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EcsBackupPlan)(nil))
@@ -445,6 +441,16 @@ func (o EcsBackupPlanPtrOutput) ToEcsBackupPlanPtrOutput() EcsBackupPlanPtrOutpu
 
 func (o EcsBackupPlanPtrOutput) ToEcsBackupPlanPtrOutputWithContext(ctx context.Context) EcsBackupPlanPtrOutput {
 	return o
+}
+
+func (o EcsBackupPlanPtrOutput) Elem() EcsBackupPlanOutput {
+	return o.ApplyT(func(v *EcsBackupPlan) EcsBackupPlan {
+		if v != nil {
+			return *v
+		}
+		var ret EcsBackupPlan
+		return ret
+	}).(EcsBackupPlanOutput)
 }
 
 type EcsBackupPlanArrayOutput struct{ *pulumi.OutputState }
@@ -488,6 +494,10 @@ func (o EcsBackupPlanMapOutput) MapIndex(k pulumi.StringInput) EcsBackupPlanOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsBackupPlanInput)(nil)).Elem(), &EcsBackupPlan{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsBackupPlanPtrInput)(nil)).Elem(), &EcsBackupPlan{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsBackupPlanArrayInput)(nil)).Elem(), EcsBackupPlanArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsBackupPlanMapInput)(nil)).Elem(), EcsBackupPlanMap{})
 	pulumi.RegisterOutputType(EcsBackupPlanOutput{})
 	pulumi.RegisterOutputType(EcsBackupPlanPtrOutput{})
 	pulumi.RegisterOutputType(EcsBackupPlanArrayOutput{})

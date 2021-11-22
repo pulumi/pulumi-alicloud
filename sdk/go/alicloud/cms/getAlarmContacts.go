@@ -4,6 +4,9 @@
 package cms
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -74,4 +77,85 @@ type GetAlarmContactsResult struct {
 	// A list of alarm contact names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetAlarmContactsOutput(ctx *pulumi.Context, args GetAlarmContactsOutputArgs, opts ...pulumi.InvokeOption) GetAlarmContactsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAlarmContactsResult, error) {
+			args := v.(GetAlarmContactsArgs)
+			r, err := GetAlarmContacts(ctx, &args, opts...)
+			return *r, err
+		}).(GetAlarmContactsResultOutput)
+}
+
+// A collection of arguments for invoking getAlarmContacts.
+type GetAlarmContactsOutputArgs struct {
+	// The alarm notification method. Alarm notifications can be sent by using `Email` or `DingWebHook`.
+	ChanelType pulumi.StringPtrInput `pulumi:"chanelType"`
+	// The alarm notification target.
+	ChanelValue pulumi.StringPtrInput `pulumi:"chanelValue"`
+	// A list of alarm contact IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by alarm contact name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetAlarmContactsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmContactsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAlarmContacts.
+type GetAlarmContactsResultOutput struct{ *pulumi.OutputState }
+
+func (GetAlarmContactsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmContactsResult)(nil)).Elem()
+}
+
+func (o GetAlarmContactsResultOutput) ToGetAlarmContactsResultOutput() GetAlarmContactsResultOutput {
+	return o
+}
+
+func (o GetAlarmContactsResultOutput) ToGetAlarmContactsResultOutputWithContext(ctx context.Context) GetAlarmContactsResultOutput {
+	return o
+}
+
+func (o GetAlarmContactsResultOutput) ChanelType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlarmContactsResult) *string { return v.ChanelType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAlarmContactsResultOutput) ChanelValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlarmContactsResult) *string { return v.ChanelValue }).(pulumi.StringPtrOutput)
+}
+
+// A list of alarm contacts. Each element contains the following attributes:
+func (o GetAlarmContactsResultOutput) Contacts() GetAlarmContactsContactArrayOutput {
+	return o.ApplyT(func(v GetAlarmContactsResult) []GetAlarmContactsContact { return v.Contacts }).(GetAlarmContactsContactArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAlarmContactsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlarmContactsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of alarm contact IDs.
+func (o GetAlarmContactsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlarmContactsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAlarmContactsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlarmContactsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of alarm contact names.
+func (o GetAlarmContactsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlarmContactsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAlarmContactsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAlarmContactsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAlarmContactsResultOutput{})
 }

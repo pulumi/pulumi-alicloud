@@ -4,6 +4,9 @@
 package dts
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,4 +72,87 @@ type GetSubscriptionJobsResult struct {
 	OutputFile *string                  `pulumi:"outputFile"`
 	Status     *string                  `pulumi:"status"`
 	Tags       map[string]interface{}   `pulumi:"tags"`
+}
+
+func GetSubscriptionJobsOutput(ctx *pulumi.Context, args GetSubscriptionJobsOutputArgs, opts ...pulumi.InvokeOption) GetSubscriptionJobsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetSubscriptionJobsResult, error) {
+			args := v.(GetSubscriptionJobsArgs)
+			r, err := GetSubscriptionJobs(ctx, &args, opts...)
+			return *r, err
+		}).(GetSubscriptionJobsResultOutput)
+}
+
+// A collection of arguments for invoking getSubscriptionJobs.
+type GetSubscriptionJobsOutputArgs struct {
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of Subscription Job IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by subscription job name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The tag of the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+}
+
+func (GetSubscriptionJobsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionJobsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSubscriptionJobs.
+type GetSubscriptionJobsResultOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionJobsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionJobsResult)(nil)).Elem()
+}
+
+func (o GetSubscriptionJobsResultOutput) ToGetSubscriptionJobsResultOutput() GetSubscriptionJobsResultOutput {
+	return o
+}
+
+func (o GetSubscriptionJobsResultOutput) ToGetSubscriptionJobsResultOutputWithContext(ctx context.Context) GetSubscriptionJobsResultOutput {
+	return o
+}
+
+func (o GetSubscriptionJobsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSubscriptionJobsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSubscriptionJobsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionJobsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetSubscriptionJobsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSubscriptionJobsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSubscriptionJobsResultOutput) Jobs() GetSubscriptionJobsJobArrayOutput {
+	return o.ApplyT(func(v GetSubscriptionJobsResult) []GetSubscriptionJobsJob { return v.Jobs }).(GetSubscriptionJobsJobArrayOutput)
+}
+
+func (o GetSubscriptionJobsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSubscriptionJobsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSubscriptionJobsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSubscriptionJobsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSubscriptionJobsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSubscriptionJobsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSubscriptionJobsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSubscriptionJobsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSubscriptionJobsResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetSubscriptionJobsResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSubscriptionJobsResultOutput{})
 }

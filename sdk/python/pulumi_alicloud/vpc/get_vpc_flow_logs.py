@@ -13,6 +13,7 @@ __all__ = [
     'GetVpcFlowLogsResult',
     'AwaitableGetVpcFlowLogsResult',
     'get_vpc_flow_logs',
+    'get_vpc_flow_logs_output',
 ]
 
 @pulumi.output_type
@@ -235,3 +236,49 @@ def get_vpc_flow_logs(description: Optional[str] = None,
         resource_type=__ret__.resource_type,
         status=__ret__.status,
         traffic_type=__ret__.traffic_type)
+
+
+@_utilities.lift_output_func(get_vpc_flow_logs)
+def get_vpc_flow_logs_output(description: Optional[pulumi.Input[Optional[str]]] = None,
+                             flow_log_name: Optional[pulumi.Input[Optional[str]]] = None,
+                             ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                             log_store_name: Optional[pulumi.Input[Optional[str]]] = None,
+                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                             project_name: Optional[pulumi.Input[Optional[str]]] = None,
+                             resource_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             resource_type: Optional[pulumi.Input[Optional[str]]] = None,
+                             status: Optional[pulumi.Input[Optional[str]]] = None,
+                             traffic_type: Optional[pulumi.Input[Optional[str]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcFlowLogsResult]:
+    """
+    This data source provides the Vpc Flow Logs of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.122.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.vpc.get_vpc_flow_logs(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstVpcFlowLogId", example.logs[0].id)
+    ```
+
+
+    :param str description: The Description of flow log.
+    :param str flow_log_name: The flow log name.
+    :param Sequence[str] ids: A list of Flow Log IDs.
+    :param str log_store_name: The log store name.
+    :param str name_regex: A regex string to filter results by Flow Log name.
+    :param str project_name: The project name.
+    :param str resource_id: The resource id.
+    :param str resource_type: The resource type.
+    :param str status: The status of flow log.
+    :param str traffic_type: The traffic type.
+    """
+    ...

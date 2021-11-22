@@ -4,6 +4,9 @@
 package ga
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -74,4 +77,82 @@ type GetListenersResult struct {
 	Names      []string               `pulumi:"names"`
 	OutputFile *string                `pulumi:"outputFile"`
 	Status     *string                `pulumi:"status"`
+}
+
+func GetListenersOutput(ctx *pulumi.Context, args GetListenersOutputArgs, opts ...pulumi.InvokeOption) GetListenersResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetListenersResult, error) {
+			args := v.(GetListenersArgs)
+			r, err := GetListeners(ctx, &args, opts...)
+			return *r, err
+		}).(GetListenersResultOutput)
+}
+
+// A collection of arguments for invoking getListeners.
+type GetListenersOutputArgs struct {
+	// The accelerator id.
+	AcceleratorId pulumi.StringInput `pulumi:"acceleratorId"`
+	// A list of Listener IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Listener name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status of the listener.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetListenersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getListeners.
+type GetListenersResultOutput struct{ *pulumi.OutputState }
+
+func (GetListenersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersResult)(nil)).Elem()
+}
+
+func (o GetListenersResultOutput) ToGetListenersResultOutput() GetListenersResultOutput {
+	return o
+}
+
+func (o GetListenersResultOutput) ToGetListenersResultOutputWithContext(ctx context.Context) GetListenersResultOutput {
+	return o
+}
+
+func (o GetListenersResultOutput) AcceleratorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersResult) string { return v.AcceleratorId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetListenersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetListenersResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetListenersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetListenersResultOutput) Listeners() GetListenersListenerArrayOutput {
+	return o.ApplyT(func(v GetListenersResult) []GetListenersListener { return v.Listeners }).(GetListenersListenerArrayOutput)
+}
+
+func (o GetListenersResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetListenersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetListenersResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetListenersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetListenersResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetListenersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetListenersResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetListenersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetListenersResultOutput{})
 }

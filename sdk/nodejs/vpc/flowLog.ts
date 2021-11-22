@@ -169,35 +169,35 @@ export interface FlowLogState {
     /**
      * The Description of the VPC Flow Log.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The Name of the VPC Flow Log.
      */
-    readonly flowLogName?: pulumi.Input<string>;
+    flowLogName?: pulumi.Input<string>;
     /**
      * The name of the logstore.
      */
-    readonly logStoreName?: pulumi.Input<string>;
+    logStoreName?: pulumi.Input<string>;
     /**
      * The name of the project.
      */
-    readonly projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string>;
     /**
      * The ID of the resource.
      */
-    readonly resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string>;
     /**
      * The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
      */
-    readonly resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string>;
     /**
      * The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
      */
-    readonly trafficType?: pulumi.Input<string>;
+    trafficType?: pulumi.Input<string>;
 }
 
 /**
@@ -207,33 +207,33 @@ export interface FlowLogArgs {
     /**
      * The Description of the VPC Flow Log.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The Name of the VPC Flow Log.
      */
-    readonly flowLogName?: pulumi.Input<string>;
+    flowLogName?: pulumi.Input<string>;
     /**
      * The name of the logstore.
      */
-    readonly logStoreName: pulumi.Input<string>;
+    logStoreName: pulumi.Input<string>;
     /**
      * The name of the project.
      */
-    readonly projectName: pulumi.Input<string>;
+    projectName: pulumi.Input<string>;
     /**
      * The ID of the resource.
      */
-    readonly resourceId: pulumi.Input<string>;
+    resourceId: pulumi.Input<string>;
     /**
      * The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
      */
-    readonly resourceType: pulumi.Input<string>;
+    resourceType: pulumi.Input<string>;
     /**
      * The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
      */
-    readonly trafficType: pulumi.Input<string>;
+    trafficType: pulumi.Input<string>;
 }

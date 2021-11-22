@@ -141,6 +141,8 @@ func (o GetNetworksNetworkArrayOutput) Index(i pulumi.IntInput) GetNetworksNetwo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksNetworkInput)(nil)).Elem(), GetNetworksNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksNetworkArrayInput)(nil)).Elem(), GetNetworksNetworkArray{})
 	pulumi.RegisterOutputType(GetNetworksNetworkOutput{})
 	pulumi.RegisterOutputType(GetNetworksNetworkArrayOutput{})
 }

@@ -221,69 +221,69 @@ export interface DbClusterState {
     /**
      * The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
      */
-    readonly category?: pulumi.Input<string>;
+    category?: pulumi.Input<string>;
     /**
      * The DBCluster class. According to the category, dbClusterClass has two value ranges:
      * * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
      * * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
      */
-    readonly dbClusterClass?: pulumi.Input<string>;
+    dbClusterClass?: pulumi.Input<string>;
     /**
      * The DBCluster description.
      */
-    readonly dbClusterDescription?: pulumi.Input<string>;
+    dbClusterDescription?: pulumi.Input<string>;
     /**
      * The DBCluster network type. Valid values: `vpc`.
      */
-    readonly dbClusterNetworkType?: pulumi.Input<string>;
+    dbClusterNetworkType?: pulumi.Input<string>;
     /**
      * The DBCluster version. Valid values: `19.15.2.2`, `20.3.10.75`, `20.8.7.15`.
      */
-    readonly dbClusterVersion?: pulumi.Input<string>;
+    dbClusterVersion?: pulumi.Input<string>;
     /**
      * The db node group count. The number should between 1 and 48.
      */
-    readonly dbNodeGroupCount?: pulumi.Input<number>;
+    dbNodeGroupCount?: pulumi.Input<number>;
     /**
      * The db node storage.
      */
-    readonly dbNodeStorage?: pulumi.Input<string>;
+    dbNodeStorage?: pulumi.Input<string>;
     /**
      * Key management service KMS key ID.
      */
-    readonly encryptionKey?: pulumi.Input<string>;
+    encryptionKey?: pulumi.Input<string>;
     /**
      * Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
      */
-    readonly encryptionType?: pulumi.Input<string>;
+    encryptionType?: pulumi.Input<string>;
     /**
      * The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
      */
-    readonly maintainTime?: pulumi.Input<string>;
+    maintainTime?: pulumi.Input<string>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
      */
-    readonly paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
     /**
      * Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
      */
-    readonly period?: pulumi.Input<string>;
+    period?: pulumi.Input<string>;
     /**
      * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
      */
-    readonly storageType?: pulumi.Input<string>;
+    storageType?: pulumi.Input<string>;
     /**
      * The used time of DBCluster.
      */
-    readonly usedTime?: pulumi.Input<string>;
+    usedTime?: pulumi.Input<string>;
     /**
      * The vswitch id of DBCluster.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
 }
 
 /**
@@ -293,67 +293,67 @@ export interface DbClusterArgs {
     /**
      * The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
      */
-    readonly category: pulumi.Input<string>;
+    category: pulumi.Input<string>;
     /**
      * The DBCluster class. According to the category, dbClusterClass has two value ranges:
      * * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
      * * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
      */
-    readonly dbClusterClass: pulumi.Input<string>;
+    dbClusterClass: pulumi.Input<string>;
     /**
      * The DBCluster description.
      */
-    readonly dbClusterDescription?: pulumi.Input<string>;
+    dbClusterDescription?: pulumi.Input<string>;
     /**
      * The DBCluster network type. Valid values: `vpc`.
      */
-    readonly dbClusterNetworkType: pulumi.Input<string>;
+    dbClusterNetworkType: pulumi.Input<string>;
     /**
      * The DBCluster version. Valid values: `19.15.2.2`, `20.3.10.75`, `20.8.7.15`.
      */
-    readonly dbClusterVersion: pulumi.Input<string>;
+    dbClusterVersion: pulumi.Input<string>;
     /**
      * The db node group count. The number should between 1 and 48.
      */
-    readonly dbNodeGroupCount: pulumi.Input<number>;
+    dbNodeGroupCount: pulumi.Input<number>;
     /**
      * The db node storage.
      */
-    readonly dbNodeStorage: pulumi.Input<string>;
+    dbNodeStorage: pulumi.Input<string>;
     /**
      * Key management service KMS key ID.
      */
-    readonly encryptionKey?: pulumi.Input<string>;
+    encryptionKey?: pulumi.Input<string>;
     /**
      * Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
      */
-    readonly encryptionType?: pulumi.Input<string>;
+    encryptionType?: pulumi.Input<string>;
     /**
      * The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
      */
-    readonly maintainTime?: pulumi.Input<string>;
+    maintainTime?: pulumi.Input<string>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
      */
-    readonly paymentType: pulumi.Input<string>;
+    paymentType: pulumi.Input<string>;
     /**
      * Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
      */
-    readonly period?: pulumi.Input<string>;
+    period?: pulumi.Input<string>;
     /**
      * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
      */
-    readonly storageType: pulumi.Input<string>;
+    storageType: pulumi.Input<string>;
     /**
      * The used time of DBCluster.
      */
-    readonly usedTime?: pulumi.Input<string>;
+    usedTime?: pulumi.Input<string>;
     /**
      * The vswitch id of DBCluster.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
 }

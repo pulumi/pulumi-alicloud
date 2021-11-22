@@ -160,7 +160,7 @@ type HAVipAttachmentArrayInput interface {
 type HAVipAttachmentArray []HAVipAttachmentInput
 
 func (HAVipAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*HAVipAttachment)(nil))
+	return reflect.TypeOf((*[]*HAVipAttachment)(nil)).Elem()
 }
 
 func (i HAVipAttachmentArray) ToHAVipAttachmentArrayOutput() HAVipAttachmentArrayOutput {
@@ -185,7 +185,7 @@ type HAVipAttachmentMapInput interface {
 type HAVipAttachmentMap map[string]HAVipAttachmentInput
 
 func (HAVipAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*HAVipAttachment)(nil))
+	return reflect.TypeOf((*map[string]*HAVipAttachment)(nil)).Elem()
 }
 
 func (i HAVipAttachmentMap) ToHAVipAttachmentMapOutput() HAVipAttachmentMapOutput {
@@ -196,9 +196,7 @@ func (i HAVipAttachmentMap) ToHAVipAttachmentMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(HAVipAttachmentMapOutput)
 }
 
-type HAVipAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type HAVipAttachmentOutput struct{ *pulumi.OutputState }
 
 func (HAVipAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*HAVipAttachment)(nil))
@@ -217,14 +215,12 @@ func (o HAVipAttachmentOutput) ToHAVipAttachmentPtrOutput() HAVipAttachmentPtrOu
 }
 
 func (o HAVipAttachmentOutput) ToHAVipAttachmentPtrOutputWithContext(ctx context.Context) HAVipAttachmentPtrOutput {
-	return o.ApplyT(func(v HAVipAttachment) *HAVipAttachment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HAVipAttachment) *HAVipAttachment {
 		return &v
 	}).(HAVipAttachmentPtrOutput)
 }
 
-type HAVipAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type HAVipAttachmentPtrOutput struct{ *pulumi.OutputState }
 
 func (HAVipAttachmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**HAVipAttachment)(nil))
@@ -236,6 +232,16 @@ func (o HAVipAttachmentPtrOutput) ToHAVipAttachmentPtrOutput() HAVipAttachmentPt
 
 func (o HAVipAttachmentPtrOutput) ToHAVipAttachmentPtrOutputWithContext(ctx context.Context) HAVipAttachmentPtrOutput {
 	return o
+}
+
+func (o HAVipAttachmentPtrOutput) Elem() HAVipAttachmentOutput {
+	return o.ApplyT(func(v *HAVipAttachment) HAVipAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret HAVipAttachment
+		return ret
+	}).(HAVipAttachmentOutput)
 }
 
 type HAVipAttachmentArrayOutput struct{ *pulumi.OutputState }
@@ -279,6 +285,10 @@ func (o HAVipAttachmentMapOutput) MapIndex(k pulumi.StringInput) HAVipAttachment
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HAVipAttachmentInput)(nil)).Elem(), &HAVipAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HAVipAttachmentPtrInput)(nil)).Elem(), &HAVipAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HAVipAttachmentArrayInput)(nil)).Elem(), HAVipAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HAVipAttachmentMapInput)(nil)).Elem(), HAVipAttachmentMap{})
 	pulumi.RegisterOutputType(HAVipAttachmentOutput{})
 	pulumi.RegisterOutputType(HAVipAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(HAVipAttachmentArrayOutput{})

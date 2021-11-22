@@ -4,6 +4,9 @@
 package simpleapplicationserver
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -83,4 +86,90 @@ type GetServerPlansResult struct {
 	Memory     *int                 `pulumi:"memory"`
 	OutputFile *string              `pulumi:"outputFile"`
 	Plans      []GetServerPlansPlan `pulumi:"plans"`
+}
+
+func GetServerPlansOutput(ctx *pulumi.Context, args GetServerPlansOutputArgs, opts ...pulumi.InvokeOption) GetServerPlansResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetServerPlansResult, error) {
+			args := v.(GetServerPlansArgs)
+			r, err := GetServerPlans(ctx, &args, opts...)
+			return *r, err
+		}).(GetServerPlansResultOutput)
+}
+
+// A collection of arguments for invoking getServerPlans.
+type GetServerPlansOutputArgs struct {
+	// The peak bandwidth. Unit: Mbit/s.
+	Bandwidth pulumi.IntPtrInput `pulumi:"bandwidth"`
+	// The number of CPU cores.
+	Core pulumi.IntPtrInput `pulumi:"core"`
+	// The size of the enhanced SSD (ESSD). Unit: GB.
+	DiskSize pulumi.IntPtrInput `pulumi:"diskSize"`
+	// The monthly data transfer quota. Unit: GB.
+	Flow pulumi.IntPtrInput `pulumi:"flow"`
+	// A list of Instance Plan IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The memory size. Unit: GB.
+	Memory     pulumi.IntPtrInput    `pulumi:"memory"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetServerPlansOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerPlansArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getServerPlans.
+type GetServerPlansResultOutput struct{ *pulumi.OutputState }
+
+func (GetServerPlansResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerPlansResult)(nil)).Elem()
+}
+
+func (o GetServerPlansResultOutput) ToGetServerPlansResultOutput() GetServerPlansResultOutput {
+	return o
+}
+
+func (o GetServerPlansResultOutput) ToGetServerPlansResultOutputWithContext(ctx context.Context) GetServerPlansResultOutput {
+	return o
+}
+
+func (o GetServerPlansResultOutput) Bandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServerPlansResult) *int { return v.Bandwidth }).(pulumi.IntPtrOutput)
+}
+
+func (o GetServerPlansResultOutput) Core() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServerPlansResult) *int { return v.Core }).(pulumi.IntPtrOutput)
+}
+
+func (o GetServerPlansResultOutput) DiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServerPlansResult) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetServerPlansResultOutput) Flow() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServerPlansResult) *int { return v.Flow }).(pulumi.IntPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetServerPlansResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerPlansResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetServerPlansResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServerPlansResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServerPlansResultOutput) Memory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServerPlansResult) *int { return v.Memory }).(pulumi.IntPtrOutput)
+}
+
+func (o GetServerPlansResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServerPlansResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServerPlansResultOutput) Plans() GetServerPlansPlanArrayOutput {
+	return o.ApplyT(func(v GetServerPlansResult) []GetServerPlansPlan { return v.Plans }).(GetServerPlansPlanArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetServerPlansResultOutput{})
 }

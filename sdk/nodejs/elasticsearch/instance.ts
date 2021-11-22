@@ -326,138 +326,138 @@ export interface InstanceState {
     /**
      * The Elasticsearch cluster's client node quantity, between 2 and 25.
      */
-    readonly clientNodeAmount?: pulumi.Input<number>;
+    clientNodeAmount?: pulumi.Input<number>;
     /**
      * The client node spec. If specified, client node will be created.
      */
-    readonly clientNodeSpec?: pulumi.Input<string>;
+    clientNodeSpec?: pulumi.Input<string>;
     /**
      * The Elasticsearch cluster's data node quantity, between 2 and 50.
      */
-    readonly dataNodeAmount?: pulumi.Input<number>;
+    dataNodeAmount?: pulumi.Input<number>;
     /**
      * If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
      */
-    readonly dataNodeDiskEncrypted?: pulumi.Input<boolean>;
+    dataNodeDiskEncrypted?: pulumi.Input<boolean>;
     /**
      * The single data node storage space.
      * - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
      */
-    readonly dataNodeDiskSize?: pulumi.Input<number>;
+    dataNodeDiskSize?: pulumi.Input<number>;
     /**
      * The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
      */
-    readonly dataNodeDiskType?: pulumi.Input<string>;
+    dataNodeDiskType?: pulumi.Input<string>;
     /**
      * The data node specifications of the Elasticsearch instance.
      */
-    readonly dataNodeSpec?: pulumi.Input<string>;
+    dataNodeSpec?: pulumi.Input<string>;
     /**
      * The description of instance. It a string of 0 to 30 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Instance connection domain (only VPC network access supported).
      */
-    readonly domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
     /**
      * Bool, default to false. When it set to true, the instance can close kibana private network access。
      */
-    readonly enableKibanaPrivateNetwork?: pulumi.Input<boolean>;
+    enableKibanaPrivateNetwork?: pulumi.Input<boolean>;
     /**
      * Bool, default to true. When it set to false, the instance can enable kibana public network access。
      */
-    readonly enableKibanaPublicNetwork?: pulumi.Input<boolean>;
+    enableKibanaPublicNetwork?: pulumi.Input<boolean>;
     /**
      * Bool, default to false. When it set to true, the instance can enable public network access。
      */
-    readonly enablePublic?: pulumi.Input<boolean>;
+    enablePublic?: pulumi.Input<boolean>;
     /**
      * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
      */
-    readonly instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string>;
     /**
      * Kibana console domain (Internet access supported).
      */
-    readonly kibanaDomain?: pulumi.Input<string>;
+    kibanaDomain?: pulumi.Input<string>;
     /**
      * Kibana console port.
      */
-    readonly kibanaPort?: pulumi.Input<number>;
+    kibanaPort?: pulumi.Input<number>;
     /**
      * Set the Kibana's IP whitelist in private network.
      */
-    readonly kibanaPrivateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    kibanaPrivateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Set the Kibana's IP whitelist in internet network.
      */
-    readonly kibanaWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    kibanaWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
      */
-    readonly kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    readonly kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
      * The dedicated master node spec. If specified, dedicated master node will be created.
      */
-    readonly masterNodeSpec?: pulumi.Input<string>;
+    masterNodeSpec?: pulumi.Input<string>;
     /**
      * The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * Instance connection port.
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * Set the instance's IP whitelist in VPC network.
      */
-    readonly privateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    privateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
      */
-    readonly protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string>;
     /**
      * Set the instance's IP whitelist in internet network.
      */
-    readonly publicWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    publicWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Id of resource group which the Elasticsearch instance belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
      */
-    readonly settingConfig?: pulumi.Input<{[key: string]: any}>;
+    settingConfig?: pulumi.Input<{[key: string]: any}>;
     /**
      * The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource. 
      * - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
      * - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
     /**
      * The ID of VSwitch.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
      */
-    readonly zoneCount?: pulumi.Input<number>;
+    zoneCount?: pulumi.Input<number>;
 }
 
 /**
@@ -467,116 +467,116 @@ export interface InstanceArgs {
     /**
      * The Elasticsearch cluster's client node quantity, between 2 and 25.
      */
-    readonly clientNodeAmount?: pulumi.Input<number>;
+    clientNodeAmount?: pulumi.Input<number>;
     /**
      * The client node spec. If specified, client node will be created.
      */
-    readonly clientNodeSpec?: pulumi.Input<string>;
+    clientNodeSpec?: pulumi.Input<string>;
     /**
      * The Elasticsearch cluster's data node quantity, between 2 and 50.
      */
-    readonly dataNodeAmount: pulumi.Input<number>;
+    dataNodeAmount: pulumi.Input<number>;
     /**
      * If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
      */
-    readonly dataNodeDiskEncrypted?: pulumi.Input<boolean>;
+    dataNodeDiskEncrypted?: pulumi.Input<boolean>;
     /**
      * The single data node storage space.
      * - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
      */
-    readonly dataNodeDiskSize: pulumi.Input<number>;
+    dataNodeDiskSize: pulumi.Input<number>;
     /**
      * The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
      */
-    readonly dataNodeDiskType: pulumi.Input<string>;
+    dataNodeDiskType: pulumi.Input<string>;
     /**
      * The data node specifications of the Elasticsearch instance.
      */
-    readonly dataNodeSpec: pulumi.Input<string>;
+    dataNodeSpec: pulumi.Input<string>;
     /**
      * The description of instance. It a string of 0 to 30 characters.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Bool, default to false. When it set to true, the instance can close kibana private network access。
      */
-    readonly enableKibanaPrivateNetwork?: pulumi.Input<boolean>;
+    enableKibanaPrivateNetwork?: pulumi.Input<boolean>;
     /**
      * Bool, default to true. When it set to false, the instance can enable kibana public network access。
      */
-    readonly enableKibanaPublicNetwork?: pulumi.Input<boolean>;
+    enableKibanaPublicNetwork?: pulumi.Input<boolean>;
     /**
      * Bool, default to false. When it set to true, the instance can enable public network access。
      */
-    readonly enablePublic?: pulumi.Input<boolean>;
+    enablePublic?: pulumi.Input<boolean>;
     /**
      * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
      */
-    readonly instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string>;
     /**
      * Set the Kibana's IP whitelist in private network.
      */
-    readonly kibanaPrivateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    kibanaPrivateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Set the Kibana's IP whitelist in internet network.
      */
-    readonly kibanaWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    kibanaWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
      */
-    readonly kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    readonly kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
      * The dedicated master node spec. If specified, dedicated master node will be created.
      */
-    readonly masterNodeSpec?: pulumi.Input<string>;
+    masterNodeSpec?: pulumi.Input<string>;
     /**
      * The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * Set the instance's IP whitelist in VPC network.
      */
-    readonly privateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    privateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
      */
-    readonly protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string>;
     /**
      * Set the instance's IP whitelist in internet network.
      */
-    readonly publicWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    publicWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Id of resource group which the Elasticsearch instance belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
      */
-    readonly settingConfig?: pulumi.Input<{[key: string]: any}>;
+    settingConfig?: pulumi.Input<{[key: string]: any}>;
     /**
      * A mapping of tags to assign to the resource. 
      * - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
      * - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
      */
-    readonly version: pulumi.Input<string>;
+    version: pulumi.Input<string>;
     /**
      * The ID of VSwitch.
      */
-    readonly vswitchId: pulumi.Input<string>;
+    vswitchId: pulumi.Input<string>;
     /**
      * The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
      */
-    readonly zoneCount?: pulumi.Input<number>;
+    zoneCount?: pulumi.Input<number>;
 }

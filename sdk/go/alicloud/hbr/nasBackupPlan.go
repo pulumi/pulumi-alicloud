@@ -67,7 +67,7 @@ import (
 // 				pulumi.String("/"),
 // 			},
 // 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			"alicloud_nas_file_system.default",
+// 			pulumi.Resource("alicloud_nas_file_system.default"),
 // 		}))
 // 		if err != nil {
 // 			return err
@@ -354,7 +354,7 @@ type NasBackupPlanArrayInput interface {
 type NasBackupPlanArray []NasBackupPlanInput
 
 func (NasBackupPlanArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*NasBackupPlan)(nil))
+	return reflect.TypeOf((*[]*NasBackupPlan)(nil)).Elem()
 }
 
 func (i NasBackupPlanArray) ToNasBackupPlanArrayOutput() NasBackupPlanArrayOutput {
@@ -379,7 +379,7 @@ type NasBackupPlanMapInput interface {
 type NasBackupPlanMap map[string]NasBackupPlanInput
 
 func (NasBackupPlanMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*NasBackupPlan)(nil))
+	return reflect.TypeOf((*map[string]*NasBackupPlan)(nil)).Elem()
 }
 
 func (i NasBackupPlanMap) ToNasBackupPlanMapOutput() NasBackupPlanMapOutput {
@@ -390,9 +390,7 @@ func (i NasBackupPlanMap) ToNasBackupPlanMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(NasBackupPlanMapOutput)
 }
 
-type NasBackupPlanOutput struct {
-	*pulumi.OutputState
-}
+type NasBackupPlanOutput struct{ *pulumi.OutputState }
 
 func (NasBackupPlanOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NasBackupPlan)(nil))
@@ -411,14 +409,12 @@ func (o NasBackupPlanOutput) ToNasBackupPlanPtrOutput() NasBackupPlanPtrOutput {
 }
 
 func (o NasBackupPlanOutput) ToNasBackupPlanPtrOutputWithContext(ctx context.Context) NasBackupPlanPtrOutput {
-	return o.ApplyT(func(v NasBackupPlan) *NasBackupPlan {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NasBackupPlan) *NasBackupPlan {
 		return &v
 	}).(NasBackupPlanPtrOutput)
 }
 
-type NasBackupPlanPtrOutput struct {
-	*pulumi.OutputState
-}
+type NasBackupPlanPtrOutput struct{ *pulumi.OutputState }
 
 func (NasBackupPlanPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NasBackupPlan)(nil))
@@ -430,6 +426,16 @@ func (o NasBackupPlanPtrOutput) ToNasBackupPlanPtrOutput() NasBackupPlanPtrOutpu
 
 func (o NasBackupPlanPtrOutput) ToNasBackupPlanPtrOutputWithContext(ctx context.Context) NasBackupPlanPtrOutput {
 	return o
+}
+
+func (o NasBackupPlanPtrOutput) Elem() NasBackupPlanOutput {
+	return o.ApplyT(func(v *NasBackupPlan) NasBackupPlan {
+		if v != nil {
+			return *v
+		}
+		var ret NasBackupPlan
+		return ret
+	}).(NasBackupPlanOutput)
 }
 
 type NasBackupPlanArrayOutput struct{ *pulumi.OutputState }
@@ -473,6 +479,10 @@ func (o NasBackupPlanMapOutput) MapIndex(k pulumi.StringInput) NasBackupPlanOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NasBackupPlanInput)(nil)).Elem(), &NasBackupPlan{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NasBackupPlanPtrInput)(nil)).Elem(), &NasBackupPlan{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NasBackupPlanArrayInput)(nil)).Elem(), NasBackupPlanArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NasBackupPlanMapInput)(nil)).Elem(), NasBackupPlanMap{})
 	pulumi.RegisterOutputType(NasBackupPlanOutput{})
 	pulumi.RegisterOutputType(NasBackupPlanPtrOutput{})
 	pulumi.RegisterOutputType(NasBackupPlanArrayOutput{})

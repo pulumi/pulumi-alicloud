@@ -13,6 +13,7 @@ __all__ = [
     'GetHpcClustersResult',
     'AwaitableGetHpcClustersResult',
     'get_hpc_clusters',
+    'get_hpc_clusters_output',
 ]
 
 @pulumi.output_type
@@ -131,3 +132,33 @@ def get_hpc_clusters(ids: Optional[Sequence[str]] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_hpc_clusters)
+def get_hpc_clusters_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHpcClustersResult]:
+    """
+    This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.116.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ecs.get_hpc_clusters(ids=["hpc-bp1i09xxxxxxxx"],
+        name_regex="tf-testAcc")
+    pulumi.export("firstEcsHpcClusterId", example.clusters[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Hpc Cluster IDs.
+    :param str name_regex: A regex string to filter results by Hpc Cluster name.
+    """
+    ...

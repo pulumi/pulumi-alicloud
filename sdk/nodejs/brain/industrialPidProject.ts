@@ -114,15 +114,15 @@ export interface IndustrialPidProjectState {
     /**
      * The ID of Pid Organization.
      */
-    readonly pidOrganizationId?: pulumi.Input<string>;
+    pidOrganizationId?: pulumi.Input<string>;
     /**
      * The description of Pid Project.
      */
-    readonly pidProjectDesc?: pulumi.Input<string>;
+    pidProjectDesc?: pulumi.Input<string>;
     /**
      * The name of Pid Project.
      */
-    readonly pidProjectName?: pulumi.Input<string>;
+    pidProjectName?: pulumi.Input<string>;
 }
 
 /**
@@ -132,13 +132,13 @@ export interface IndustrialPidProjectArgs {
     /**
      * The ID of Pid Organization.
      */
-    readonly pidOrganizationId: pulumi.Input<string>;
+    pidOrganizationId: pulumi.Input<string>;
     /**
      * The description of Pid Project.
      */
-    readonly pidProjectDesc?: pulumi.Input<string>;
+    pidProjectDesc?: pulumi.Input<string>;
     /**
      * The name of Pid Project.
      */
-    readonly pidProjectName: pulumi.Input<string>;
+    pidProjectName: pulumi.Input<string>;
 }

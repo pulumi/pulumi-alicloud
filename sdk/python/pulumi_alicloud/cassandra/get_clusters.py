@@ -13,6 +13,7 @@ __all__ = [
     'GetClustersResult',
     'AwaitableGetClustersResult',
     'get_clusters',
+    'get_clusters_output',
 ]
 
 @pulumi.output_type
@@ -115,7 +116,7 @@ def get_clusters(ids: Optional[Sequence[str]] = None,
                  tags: Optional[Mapping[str, Any]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClustersResult:
     """
-    The `cassandra.getClusters` data source provides a collection of Cassandra clusters available in Alicloud account.
+    The `cassandra.get_clusters` data source provides a collection of Cassandra clusters available in Alicloud account.
     Filters support regular expression for the cluster name, ids or tags.
 
     > **NOTE:**  Available in 1.88.0+.
@@ -153,3 +154,32 @@ def get_clusters(ids: Optional[Sequence[str]] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_clusters)
+def get_clusters_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClustersResult]:
+    """
+    The `cassandra.get_clusters` data source provides a collection of Cassandra clusters available in Alicloud account.
+    Filters support regular expression for the cluster name, ids or tags.
+
+    > **NOTE:**  Available in 1.88.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    cassandra = alicloud.cassandra.get_clusters(name_regex="tf_testAccCassandra")
+    ```
+
+
+    :param Sequence[str] ids: The list of Cassandra cluster ids.
+    :param str name_regex: A regex string to apply to the cluster name.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    """
+    ...

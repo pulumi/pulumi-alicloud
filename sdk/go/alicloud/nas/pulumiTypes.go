@@ -896,6 +896,18 @@ func (o GetZonesZoneInstanceTypeArrayOutput) Index(i pulumi.IntInput) GetZonesZo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessGroupsGroupInput)(nil)).Elem(), GetAccessGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessGroupsGroupArrayInput)(nil)).Elem(), GetAccessGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRulesRuleInput)(nil)).Elem(), GetAccessRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRulesRuleArrayInput)(nil)).Elem(), GetAccessRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFileSystemsSystemInput)(nil)).Elem(), GetFileSystemsSystemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFileSystemsSystemArrayInput)(nil)).Elem(), GetFileSystemsSystemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMountTargetsTargetInput)(nil)).Elem(), GetMountTargetsTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMountTargetsTargetArrayInput)(nil)).Elem(), GetMountTargetsTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInstanceTypeInput)(nil)).Elem(), GetZonesZoneInstanceTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInstanceTypeArrayInput)(nil)).Elem(), GetZonesZoneInstanceTypeArray{})
 	pulumi.RegisterOutputType(GetAccessGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetAccessGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetAccessRulesRuleOutput{})

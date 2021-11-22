@@ -4,6 +4,9 @@
 package slb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,4 +62,67 @@ type GetAttachmentsResult struct {
 	OutputFile     *string  `pulumi:"outputFile"`
 	// A list of SLB attachments. Each element contains the following attributes:
 	SlbAttachments []GetAttachmentsSlbAttachment `pulumi:"slbAttachments"`
+}
+
+func GetAttachmentsOutput(ctx *pulumi.Context, args GetAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetAttachmentsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAttachmentsResult, error) {
+			args := v.(GetAttachmentsArgs)
+			r, err := GetAttachments(ctx, &args, opts...)
+			return *r, err
+		}).(GetAttachmentsResultOutput)
+}
+
+// A collection of arguments for invoking getAttachments.
+type GetAttachmentsOutputArgs struct {
+	// List of attached ECS instance IDs.
+	InstanceIds pulumi.StringArrayInput `pulumi:"instanceIds"`
+	// ID of the SLB with attachments.
+	LoadBalancerId pulumi.StringInput    `pulumi:"loadBalancerId"`
+	OutputFile     pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetAttachmentsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttachmentsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAttachments.
+type GetAttachmentsResultOutput struct{ *pulumi.OutputState }
+
+func (GetAttachmentsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttachmentsResult)(nil)).Elem()
+}
+
+func (o GetAttachmentsResultOutput) ToGetAttachmentsResultOutput() GetAttachmentsResultOutput {
+	return o
+}
+
+func (o GetAttachmentsResultOutput) ToGetAttachmentsResultOutputWithContext(ctx context.Context) GetAttachmentsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAttachmentsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttachmentsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAttachmentsResultOutput) InstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAttachmentsResult) []string { return v.InstanceIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAttachmentsResultOutput) LoadBalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttachmentsResult) string { return v.LoadBalancerId }).(pulumi.StringOutput)
+}
+
+func (o GetAttachmentsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAttachmentsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of SLB attachments. Each element contains the following attributes:
+func (o GetAttachmentsResultOutput) SlbAttachments() GetAttachmentsSlbAttachmentArrayOutput {
+	return o.ApplyT(func(v GetAttachmentsResult) []GetAttachmentsSlbAttachment { return v.SlbAttachments }).(GetAttachmentsSlbAttachmentArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAttachmentsResultOutput{})
 }

@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *     nameRegex: "your_user_name",
  * });
  * const default = usersDs.then(usersDs => alicloud.cs.getKubernetesPermission({
- *     uid: usersDs.users[0].id,
+ *     uid: usersDs.users?[0]?.id,
  * }));
  * export const permissions = _default.then(_default => _default.permissions);
  * ```
@@ -46,11 +46,11 @@ export interface GetKubernetesPermissionArgs {
     /**
      * A list of user permission.
      */
-    readonly permissions?: inputs.cs.GetKubernetesPermissionPermission[];
+    permissions?: inputs.cs.GetKubernetesPermissionPermission[];
     /**
      * The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
      */
-    readonly uid: string;
+    uid: string;
 }
 
 /**
@@ -69,4 +69,22 @@ export interface GetKubernetesPermissionResult {
      * The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
      */
     readonly uid: string;
+}
+
+export function getKubernetesPermissionOutput(args: GetKubernetesPermissionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesPermissionResult> {
+    return pulumi.output(args).apply(a => getKubernetesPermission(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKubernetesPermission.
+ */
+export interface GetKubernetesPermissionOutputArgs {
+    /**
+     * A list of user permission.
+     */
+    permissions?: pulumi.Input<pulumi.Input<inputs.cs.GetKubernetesPermissionPermissionArgs>[]>;
+    /**
+     * The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
+     */
+    uid: pulumi.Input<string>;
 }

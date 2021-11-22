@@ -19,6 +19,101 @@ namespace Pulumi.AliCloud
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>
+        /// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+        /// console.
+        /// </summary>
+        [Output("accessKey")]
+        public Output<string?> AccessKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
+        /// Alibaba Cloud console.
+        /// </summary>
+        [Output("accountId")]
+        public Output<string?> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// Use this to mark a terraform configuration file source.
+        /// </summary>
+        [Output("configurationSource")]
+        public Output<string?> ConfigurationSource { get; private set; } = null!;
+
+        /// <summary>
+        /// The URI of sidecar credentials service.
+        /// </summary>
+        [Output("credentialsUri")]
+        public Output<string?> CredentialsUri { get; private set; } = null!;
+
+        /// <summary>
+        /// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
+        /// of the Alibaba Cloud console.
+        /// </summary>
+        [Output("ecsRoleName")]
+        public Output<string?> EcsRoleName { get; private set; } = null!;
+
+        [Output("fc")]
+        public Output<string?> Fc { get; private set; } = null!;
+
+        [Output("logEndpoint")]
+        public Output<string?> LogEndpoint { get; private set; } = null!;
+
+        [Output("mnsEndpoint")]
+        public Output<string?> MnsEndpoint { get; private set; } = null!;
+
+        [Output("otsInstanceName")]
+        public Output<string?> OtsInstanceName { get; private set; } = null!;
+
+        /// <summary>
+        /// The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
+        /// </summary>
+        [Output("profile")]
+        public Output<string?> Profile { get; private set; } = null!;
+
+        [Output("protocol")]
+        public Output<string?> Protocol { get; private set; } = null!;
+
+        /// <summary>
+        /// The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
+        /// </summary>
+        [Output("region")]
+        public Output<string?> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+        /// console.
+        /// </summary>
+        [Output("secretKey")]
+        public Output<string?> SecretKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The security transport for the assume role invoking.
+        /// </summary>
+        [Output("secureTransport")]
+        public Output<string?> SecureTransport { get; private set; } = null!;
+
+        /// <summary>
+        /// security token. A security token is only required if you are using Security Token Service.
+        /// </summary>
+        [Output("securityToken")]
+        public Output<string?> SecurityToken { get; private set; } = null!;
+
+        [Output("securityTransport")]
+        public Output<string?> SecurityTransport { get; private set; } = null!;
+
+        /// <summary>
+        /// The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
+        /// </summary>
+        [Output("sharedCredentialsFile")]
+        public Output<string?> SharedCredentialsFile { get; private set; } = null!;
+
+        /// <summary>
+        /// The source ip for the assume role invoking.
+        /// </summary>
+        [Output("sourceIp")]
+        public Output<string?> SourceIp { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>
         ///

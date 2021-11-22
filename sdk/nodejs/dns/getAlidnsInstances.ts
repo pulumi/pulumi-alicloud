@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(alicloud.dns.getAlidnsInstances({
  *     ids: ["dns-cn-oew1npk****"],
- * }, { async: true }));
+ * }));
  *
  * export const firstInstanceId = example.instances[0].id;
  * ```
@@ -48,20 +48,20 @@ export interface GetAlidnsInstancesArgs {
     /**
      * The type of domain.
      */
-    readonly domainType?: string;
+    domainType?: string;
     /**
      * A list of instance IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * Language.
      */
-    readonly lang?: string;
-    readonly outputFile?: string;
+    lang?: string;
+    outputFile?: string;
     /**
      * The IP address of the client.
      */
-    readonly userClientIp?: string;
+    userClientIp?: string;
 }
 
 /**
@@ -84,4 +84,31 @@ export interface GetAlidnsInstancesResult {
     readonly lang?: string;
     readonly outputFile?: string;
     readonly userClientIp?: string;
+}
+
+export function getAlidnsInstancesOutput(args?: GetAlidnsInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlidnsInstancesResult> {
+    return pulumi.output(args).apply(a => getAlidnsInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAlidnsInstances.
+ */
+export interface GetAlidnsInstancesOutputArgs {
+    /**
+     * The type of domain.
+     */
+    domainType?: pulumi.Input<string>;
+    /**
+     * A list of instance IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Language.
+     */
+    lang?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The IP address of the client.
+     */
+    userClientIp?: pulumi.Input<string>;
 }

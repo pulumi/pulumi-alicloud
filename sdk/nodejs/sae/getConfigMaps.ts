@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  *     namespaceId: namespaceId,
  *     nameRegex: "^example",
  * }));
- * export const saeConfigMapId = nameRegex.maps[0].id;
+ * export const saeConfigMapId = nameRegex.apply(nameRegex => nameRegex.maps?[0]?.id);
  * ```
  */
 export function getConfigMaps(args: GetConfigMapsArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigMapsResult> {
@@ -62,16 +62,16 @@ export interface GetConfigMapsArgs {
     /**
      * A list of Config Map IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Config Map name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * The NamespaceId of Config Maps.
      */
-    readonly namespaceId: string;
-    readonly outputFile?: string;
+    namespaceId: string;
+    outputFile?: string;
 }
 
 /**
@@ -88,4 +88,27 @@ export interface GetConfigMapsResult {
     readonly names: string[];
     readonly namespaceId: string;
     readonly outputFile?: string;
+}
+
+export function getConfigMapsOutput(args: GetConfigMapsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigMapsResult> {
+    return pulumi.output(args).apply(a => getConfigMaps(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getConfigMaps.
+ */
+export interface GetConfigMapsOutputArgs {
+    /**
+     * A list of Config Map IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Config Map name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * The NamespaceId of Config Maps.
+     */
+    namespaceId: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

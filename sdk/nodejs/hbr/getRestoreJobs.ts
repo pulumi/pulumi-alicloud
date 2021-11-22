@@ -23,8 +23,8 @@ import * as utilities from "../utilities";
  * });
  * const defaultRestoreJobs = Promise.all([defaultEcsBackupPlans, defaultEcsBackupPlans]).then(([defaultEcsBackupPlans, defaultEcsBackupPlans1]) => alicloud.hbr.getRestoreJobs({
  *     restoreType: "ECS_FILE",
- *     vaultIds: [defaultEcsBackupPlans.plans[0].vaultId],
- *     targetInstanceIds: [defaultEcsBackupPlans1.plans[0].instanceId],
+ *     vaultIds: [defaultEcsBackupPlans.plans?[0]?.vaultId],
+ *     targetInstanceIds: [defaultEcsBackupPlans1.plans?[0]?.instanceId],
  * }));
  * ```
  */
@@ -53,39 +53,39 @@ export function getRestoreJobs(args: GetRestoreJobsArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getRestoreJobs.
  */
 export interface GetRestoreJobsArgs {
-    readonly outputFile?: string;
+    outputFile?: string;
     /**
      * The ID of restore job.
      */
-    readonly restoreIds?: string[];
+    restoreIds?: string[];
     /**
      * The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
      */
-    readonly restoreType: string;
+    restoreType: string;
     /**
      * The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
      */
-    readonly sourceTypes?: string[];
+    sourceTypes?: string[];
     /**
      * The status of restore job.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The name of target ofo OSS bucket.
      */
-    readonly targetBuckets?: string[];
+    targetBuckets?: string[];
     /**
      * The ID of destination file system.
      */
-    readonly targetFileSystemIds?: string[];
+    targetFileSystemIds?: string[];
     /**
      * The ID of target ECS instance.
      */
-    readonly targetInstanceIds?: string[];
+    targetInstanceIds?: string[];
     /**
      * The ID of backup vault.
      */
-    readonly vaultIds?: string[];
+    vaultIds?: string[];
 }
 
 /**
@@ -107,4 +107,47 @@ export interface GetRestoreJobsResult {
     readonly targetFileSystemIds?: string[];
     readonly targetInstanceIds?: string[];
     readonly vaultIds?: string[];
+}
+
+export function getRestoreJobsOutput(args: GetRestoreJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRestoreJobsResult> {
+    return pulumi.output(args).apply(a => getRestoreJobs(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRestoreJobs.
+ */
+export interface GetRestoreJobsOutputArgs {
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The ID of restore job.
+     */
+    restoreIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+     */
+    restoreType: pulumi.Input<string>;
+    /**
+     * The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
+     */
+    sourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The status of restore job.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The name of target ofo OSS bucket.
+     */
+    targetBuckets?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of destination file system.
+     */
+    targetFileSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of target ECS instance.
+     */
+    targetInstanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of backup vault.
+     */
+    vaultIds?: pulumi.Input<pulumi.Input<string>[]>;
 }

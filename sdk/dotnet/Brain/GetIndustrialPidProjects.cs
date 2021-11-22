@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Brain
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Brain
         ///             },
         ///             NameRegex = "tf-testAcc",
         ///         }));
-        ///         this.FirstBrainIndustrialPidProjectId = example.Apply(example =&gt; example.Projects[0].Id);
+        ///         this.FirstBrainIndustrialPidProjectId = example.Apply(example =&gt; example.Projects?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstBrainIndustrialPidProjectId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Brain
         /// </summary>
         public static Task<GetIndustrialPidProjectsResult> InvokeAsync(GetIndustrialPidProjectsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIndustrialPidProjectsResult>("alicloud:brain/getIndustrialPidProjects:getIndustrialPidProjects", args ?? new GetIndustrialPidProjectsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Brain Industrial Pid Projects of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.113.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Brain.GetIndustrialPidProjects.InvokeAsync(new AliCloud.Brain.GetIndustrialPidProjectsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "3e74e684-cbb5-xxxx",
+        ///             },
+        ///             NameRegex = "tf-testAcc",
+        ///         }));
+        ///         this.FirstBrainIndustrialPidProjectId = example.Apply(example =&gt; example.Projects?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstBrainIndustrialPidProjectId")]
+        ///     public Output&lt;string&gt; FirstBrainIndustrialPidProjectId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetIndustrialPidProjectsResult> Invoke(GetIndustrialPidProjectsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetIndustrialPidProjectsResult>("alicloud:brain/getIndustrialPidProjects:getIndustrialPidProjects", args ?? new GetIndustrialPidProjectsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -89,6 +130,46 @@ namespace Pulumi.AliCloud.Brain
         public string? PidProjectName { get; set; }
 
         public GetIndustrialPidProjectsArgs()
+        {
+        }
+    }
+
+    public sealed class GetIndustrialPidProjectsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Pid Project IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Pid Project name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The ID of Pid Organization.
+        /// </summary>
+        [Input("pidOrganizationId")]
+        public Input<string>? PidOrganizationId { get; set; }
+
+        /// <summary>
+        /// The name of Pid Project.
+        /// </summary>
+        [Input("pidProjectName")]
+        public Input<string>? PidProjectName { get; set; }
+
+        public GetIndustrialPidProjectsInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.DirectMail
 {
@@ -37,12 +38,12 @@ namespace Pulumi.AliCloud.DirectMail
         ///                 "example_id",
         ///             },
         ///         }));
-        ///         this.DirectMailDomainId1 = ids.Apply(ids =&gt; ids.Domains[0].Id);
+        ///         this.DirectMailDomainId1 = ids.Apply(ids =&gt; ids.Domains?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.DirectMail.GetDomains.InvokeAsync(new AliCloud.DirectMail.GetDomainsArgs
         ///         {
         ///             NameRegex = "^my-Domain",
         ///         }));
-        ///         this.DirectMailDomainId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Domains[0].Id);
+        ///         this.DirectMailDomainId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Domains?[0]?.Id);
         ///         var example = Output.Create(AliCloud.DirectMail.GetDomains.InvokeAsync(new AliCloud.DirectMail.GetDomainsArgs
         ///         {
         ///             Status = "1",
@@ -52,7 +53,7 @@ namespace Pulumi.AliCloud.DirectMail
         ///                 "example_id",
         ///             },
         ///         }));
-        ///         this.DirectMailDomainId3 = example.Apply(example =&gt; example.Domains[0].Id);
+        ///         this.DirectMailDomainId3 = example.Apply(example =&gt; example.Domains?[0]?.Id);
         ///     }
         /// 
         ///     [Output("directMailDomainId1")]
@@ -68,6 +69,64 @@ namespace Pulumi.AliCloud.DirectMail
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:directmail/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Direct Mail Domains of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.DirectMail.GetDomains.InvokeAsync(new AliCloud.DirectMail.GetDomainsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_id",
+        ///             },
+        ///         }));
+        ///         this.DirectMailDomainId1 = ids.Apply(ids =&gt; ids.Domains?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.DirectMail.GetDomains.InvokeAsync(new AliCloud.DirectMail.GetDomainsArgs
+        ///         {
+        ///             NameRegex = "^my-Domain",
+        ///         }));
+        ///         this.DirectMailDomainId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Domains?[0]?.Id);
+        ///         var example = Output.Create(AliCloud.DirectMail.GetDomains.InvokeAsync(new AliCloud.DirectMail.GetDomainsArgs
+        ///         {
+        ///             Status = "1",
+        ///             KeyWord = "^my-Domain",
+        ///             Ids = 
+        ///             {
+        ///                 "example_id",
+        ///             },
+        ///         }));
+        ///         this.DirectMailDomainId3 = example.Apply(example =&gt; example.Domains?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("directMailDomainId1")]
+        ///     public Output&lt;string&gt; DirectMailDomainId1 { get; set; }
+        ///     [Output("directMailDomainId2")]
+        ///     public Output&lt;string&gt; DirectMailDomainId2 { get; set; }
+        ///     [Output("directMailDomainId3")]
+        ///     public Output&lt;string&gt; DirectMailDomainId3 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:directmail/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -113,6 +172,52 @@ namespace Pulumi.AliCloud.DirectMail
         public string? Status { get; set; }
 
         public GetDomainsArgs()
+        {
+        }
+    }
+
+    public sealed class GetDomainsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Domain IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
+        /// </summary>
+        [Input("keyWord")]
+        public Input<string>? KeyWord { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Domain name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetDomainsInvokeArgs()
         {
         }
     }

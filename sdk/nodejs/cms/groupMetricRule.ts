@@ -202,71 +202,71 @@ export interface GroupMetricRuleState {
     /**
      * The abbreviation of the service name.
      */
-    readonly category?: pulumi.Input<string>;
+    category?: pulumi.Input<string>;
     /**
      * Alarm contact group.
      */
-    readonly contactGroups?: pulumi.Input<string>;
+    contactGroups?: pulumi.Input<string>;
     /**
      * The dimensions that specify the resources to be associated with the alert rule.
      */
-    readonly dimensions?: pulumi.Input<string>;
+    dimensions?: pulumi.Input<string>;
     /**
      * The time period during which the alert rule is effective.
      */
-    readonly effectiveInterval?: pulumi.Input<string>;
+    effectiveInterval?: pulumi.Input<string>;
     /**
      * The subject of the alert notification email.                                         .
      */
-    readonly emailSubject?: pulumi.Input<string>;
+    emailSubject?: pulumi.Input<string>;
     /**
      * Alarm level. See the block for escalations.
      */
-    readonly escalations?: pulumi.Input<inputs.cms.GroupMetricRuleEscalations>;
+    escalations?: pulumi.Input<inputs.cms.GroupMetricRuleEscalations>;
     /**
      * The ID of the application group.
      */
-    readonly groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
     /**
      * The name of the alert rule.
      */
-    readonly groupMetricRuleName?: pulumi.Input<string>;
+    groupMetricRuleName?: pulumi.Input<string>;
     /**
      * The interval at which Cloud Monitor checks whether the alert rule is triggered. Unit: seconds.
      */
-    readonly interval?: pulumi.Input<string>;
+    interval?: pulumi.Input<string>;
     /**
      * The name of the metric.
      */
-    readonly metricName?: pulumi.Input<string>;
+    metricName?: pulumi.Input<string>;
     /**
      * The namespace of the service.
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     /**
      * The time period during which the alert rule is ineffective.
      */
-    readonly noEffectiveInterval?: pulumi.Input<string>;
+    noEffectiveInterval?: pulumi.Input<string>;
     /**
      * The aggregation period of the monitoring data. Unit: seconds. The value is an integral multiple of 60. Default value: `300`.
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * The ID of the alert rule.
      */
-    readonly ruleId?: pulumi.Input<string>;
+    ruleId?: pulumi.Input<string>;
     /**
      * The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
      */
-    readonly silenceTime?: pulumi.Input<number>;
+    silenceTime?: pulumi.Input<number>;
     /**
      * The status of Group Metric Rule.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The callback URL.
      */
-    readonly webhook?: pulumi.Input<string>;
+    webhook?: pulumi.Input<string>;
 }
 
 /**
@@ -276,65 +276,65 @@ export interface GroupMetricRuleArgs {
     /**
      * The abbreviation of the service name.
      */
-    readonly category: pulumi.Input<string>;
+    category: pulumi.Input<string>;
     /**
      * Alarm contact group.
      */
-    readonly contactGroups?: pulumi.Input<string>;
+    contactGroups?: pulumi.Input<string>;
     /**
      * The dimensions that specify the resources to be associated with the alert rule.
      */
-    readonly dimensions?: pulumi.Input<string>;
+    dimensions?: pulumi.Input<string>;
     /**
      * The time period during which the alert rule is effective.
      */
-    readonly effectiveInterval?: pulumi.Input<string>;
+    effectiveInterval?: pulumi.Input<string>;
     /**
      * The subject of the alert notification email.                                         .
      */
-    readonly emailSubject?: pulumi.Input<string>;
+    emailSubject?: pulumi.Input<string>;
     /**
      * Alarm level. See the block for escalations.
      */
-    readonly escalations: pulumi.Input<inputs.cms.GroupMetricRuleEscalations>;
+    escalations: pulumi.Input<inputs.cms.GroupMetricRuleEscalations>;
     /**
      * The ID of the application group.
      */
-    readonly groupId: pulumi.Input<string>;
+    groupId: pulumi.Input<string>;
     /**
      * The name of the alert rule.
      */
-    readonly groupMetricRuleName: pulumi.Input<string>;
+    groupMetricRuleName: pulumi.Input<string>;
     /**
      * The interval at which Cloud Monitor checks whether the alert rule is triggered. Unit: seconds.
      */
-    readonly interval?: pulumi.Input<string>;
+    interval?: pulumi.Input<string>;
     /**
      * The name of the metric.
      */
-    readonly metricName: pulumi.Input<string>;
+    metricName: pulumi.Input<string>;
     /**
      * The namespace of the service.
      */
-    readonly namespace: pulumi.Input<string>;
+    namespace: pulumi.Input<string>;
     /**
      * The time period during which the alert rule is ineffective.
      */
-    readonly noEffectiveInterval?: pulumi.Input<string>;
+    noEffectiveInterval?: pulumi.Input<string>;
     /**
      * The aggregation period of the monitoring data. Unit: seconds. The value is an integral multiple of 60. Default value: `300`.
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * The ID of the alert rule.
      */
-    readonly ruleId: pulumi.Input<string>;
+    ruleId: pulumi.Input<string>;
     /**
      * The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
      */
-    readonly silenceTime?: pulumi.Input<number>;
+    silenceTime?: pulumi.Input<number>;
     /**
      * The callback URL.
      */
-    readonly webhook?: pulumi.Input<string>;
+    webhook?: pulumi.Input<string>;
 }

@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const ids = alicloud.hbr.getNasBackupPlans({
  *     nameRegex: "^my-NasBackupPlan",
  * });
- * export const hbrNasBackupPlanId = ids.then(ids => ids.plans[0].id);
+ * export const hbrNasBackupPlanId = ids.then(ids => ids.plans?[0]?.id);
  * ```
  */
 export function getNasBackupPlans(args?: GetNasBackupPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetNasBackupPlansResult> {
@@ -49,20 +49,20 @@ export interface GetNasBackupPlansArgs {
     /**
      * The File System ID of Nas.
      */
-    readonly fileSystemId?: string;
+    fileSystemId?: string;
     /**
      * A list of NasBackupPlan IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by NasBackupPlan name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The ID of backup vault.
      */
-    readonly vaultId?: string;
+    vaultId?: string;
 }
 
 /**
@@ -80,4 +80,31 @@ export interface GetNasBackupPlansResult {
     readonly outputFile?: string;
     readonly plans: outputs.hbr.GetNasBackupPlansPlan[];
     readonly vaultId?: string;
+}
+
+export function getNasBackupPlansOutput(args?: GetNasBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNasBackupPlansResult> {
+    return pulumi.output(args).apply(a => getNasBackupPlans(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNasBackupPlans.
+ */
+export interface GetNasBackupPlansOutputArgs {
+    /**
+     * The File System ID of Nas.
+     */
+    fileSystemId?: pulumi.Input<string>;
+    /**
+     * A list of NasBackupPlan IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by NasBackupPlan name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The ID of backup vault.
+     */
+    vaultId?: pulumi.Input<string>;
 }

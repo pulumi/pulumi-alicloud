@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vswitchName: name,
  * });
  * const cluster = new alicloud.adb.Cluster("cluster", {
@@ -150,23 +150,23 @@ export interface ConnectionState {
     /**
      * Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `<db_cluster_id> + tf`.
      */
-    readonly connectionPrefix?: pulumi.Input<string>;
+    connectionPrefix?: pulumi.Input<string>;
     /**
      * Connection cluster string.
      */
-    readonly connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string>;
     /**
      * The Id of cluster that can run database.
      */
-    readonly dbClusterId?: pulumi.Input<string>;
+    dbClusterId?: pulumi.Input<string>;
     /**
      * The ip address of connection string.
      */
-    readonly ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string>;
     /**
      * Connection cluster port.
      */
-    readonly port?: pulumi.Input<string>;
+    port?: pulumi.Input<string>;
 }
 
 /**
@@ -176,9 +176,9 @@ export interface ConnectionArgs {
     /**
      * Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `<db_cluster_id> + tf`.
      */
-    readonly connectionPrefix?: pulumi.Input<string>;
+    connectionPrefix?: pulumi.Input<string>;
     /**
      * The Id of cluster that can run database.
      */
-    readonly dbClusterId: pulumi.Input<string>;
+    dbClusterId: pulumi.Input<string>;
 }

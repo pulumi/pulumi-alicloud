@@ -4,6 +4,9 @@
 package databasegateway
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -82,4 +85,88 @@ type GetGatewaysResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	SearchKey  *string  `pulumi:"searchKey"`
 	Status     *string  `pulumi:"status"`
+}
+
+func GetGatewaysOutput(ctx *pulumi.Context, args GetGatewaysOutputArgs, opts ...pulumi.InvokeOption) GetGatewaysResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetGatewaysResult, error) {
+			args := v.(GetGatewaysArgs)
+			r, err := GetGateways(ctx, &args, opts...)
+			return *r, err
+		}).(GetGatewaysResultOutput)
+}
+
+// A collection of arguments for invoking getGateways.
+type GetGatewaysOutputArgs struct {
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of Gateway IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Gateway name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The search key.
+	SearchKey pulumi.StringPtrInput `pulumi:"searchKey"`
+	// The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetGatewaysOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getGateways.
+type GetGatewaysResultOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysResult)(nil)).Elem()
+}
+
+func (o GetGatewaysResultOutput) ToGetGatewaysResultOutput() GetGatewaysResultOutput {
+	return o
+}
+
+func (o GetGatewaysResultOutput) ToGetGatewaysResultOutputWithContext(ctx context.Context) GetGatewaysResultOutput {
+	return o
+}
+
+func (o GetGatewaysResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGatewaysResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetGatewaysResultOutput) Gateways() GetGatewaysGatewayArrayOutput {
+	return o.ApplyT(func(v GetGatewaysResult) []GetGatewaysGateway { return v.Gateways }).(GetGatewaysGatewayArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetGatewaysResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetGatewaysResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGatewaysResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGatewaysResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGatewaysResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGatewaysResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGatewaysResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGatewaysResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGatewaysResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGatewaysResultOutput) SearchKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGatewaysResult) *string { return v.SearchKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGatewaysResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGatewaysResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetGatewaysResultOutput{})
 }

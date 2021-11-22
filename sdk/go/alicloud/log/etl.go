@@ -571,7 +571,7 @@ type EtlArrayInput interface {
 type EtlArray []EtlInput
 
 func (EtlArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Etl)(nil))
+	return reflect.TypeOf((*[]*Etl)(nil)).Elem()
 }
 
 func (i EtlArray) ToEtlArrayOutput() EtlArrayOutput {
@@ -596,7 +596,7 @@ type EtlMapInput interface {
 type EtlMap map[string]EtlInput
 
 func (EtlMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Etl)(nil))
+	return reflect.TypeOf((*map[string]*Etl)(nil)).Elem()
 }
 
 func (i EtlMap) ToEtlMapOutput() EtlMapOutput {
@@ -607,9 +607,7 @@ func (i EtlMap) ToEtlMapOutputWithContext(ctx context.Context) EtlMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EtlMapOutput)
 }
 
-type EtlOutput struct {
-	*pulumi.OutputState
-}
+type EtlOutput struct{ *pulumi.OutputState }
 
 func (EtlOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Etl)(nil))
@@ -628,14 +626,12 @@ func (o EtlOutput) ToEtlPtrOutput() EtlPtrOutput {
 }
 
 func (o EtlOutput) ToEtlPtrOutputWithContext(ctx context.Context) EtlPtrOutput {
-	return o.ApplyT(func(v Etl) *Etl {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Etl) *Etl {
 		return &v
 	}).(EtlPtrOutput)
 }
 
-type EtlPtrOutput struct {
-	*pulumi.OutputState
-}
+type EtlPtrOutput struct{ *pulumi.OutputState }
 
 func (EtlPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Etl)(nil))
@@ -647,6 +643,16 @@ func (o EtlPtrOutput) ToEtlPtrOutput() EtlPtrOutput {
 
 func (o EtlPtrOutput) ToEtlPtrOutputWithContext(ctx context.Context) EtlPtrOutput {
 	return o
+}
+
+func (o EtlPtrOutput) Elem() EtlOutput {
+	return o.ApplyT(func(v *Etl) Etl {
+		if v != nil {
+			return *v
+		}
+		var ret Etl
+		return ret
+	}).(EtlOutput)
 }
 
 type EtlArrayOutput struct{ *pulumi.OutputState }
@@ -690,6 +696,10 @@ func (o EtlMapOutput) MapIndex(k pulumi.StringInput) EtlOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EtlInput)(nil)).Elem(), &Etl{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EtlPtrInput)(nil)).Elem(), &Etl{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EtlArrayInput)(nil)).Elem(), EtlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EtlMapInput)(nil)).Elem(), EtlMap{})
 	pulumi.RegisterOutputType(EtlOutput{})
 	pulumi.RegisterOutputType(EtlPtrOutput{})
 	pulumi.RegisterOutputType(EtlArrayOutput{})

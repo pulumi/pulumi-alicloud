@@ -30,11 +30,11 @@ import * as utilities from "../utilities";
  *     nasFileSystemName: "your_nas_file_system_name",
  * });
  * const ids = alicloud.eds.getNasFileSystems({});
- * export const ecdNasFileSystemId1 = ids.then(ids => ids.systems[0].id);
+ * export const ecdNasFileSystemId1 = ids.then(ids => ids.systems?[0]?.id);
  * const nameRegex = defaultNasFileSystem.nasFileSystemName.apply(nasFileSystemName => alicloud.eds.getNasFileSystems({
  *     nameRegex: nasFileSystemName,
  * }));
- * export const ecdNasFileSystemId2 = nameRegex.systems[0].id;
+ * export const ecdNasFileSystemId2 = nameRegex.apply(nameRegex => nameRegex.systems?[0]?.id);
  * ```
  */
 export function getNasFileSystems(args?: GetNasFileSystemsArgs, opts?: pulumi.InvokeOptions): Promise<GetNasFileSystemsResult> {
@@ -62,20 +62,20 @@ export interface GetNasFileSystemsArgs {
     /**
      * A list of Nas File System IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Nas File System name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * The ID of office site.
      */
-    readonly officeSiteId?: string;
-    readonly outputFile?: string;
+    officeSiteId?: string;
+    outputFile?: string;
     /**
      * The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -93,4 +93,31 @@ export interface GetNasFileSystemsResult {
     readonly outputFile?: string;
     readonly status?: string;
     readonly systems: outputs.eds.GetNasFileSystemsSystem[];
+}
+
+export function getNasFileSystemsOutput(args?: GetNasFileSystemsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNasFileSystemsResult> {
+    return pulumi.output(args).apply(a => getNasFileSystems(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNasFileSystems.
+ */
+export interface GetNasFileSystemsOutputArgs {
+    /**
+     * A list of Nas File System IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Nas File System name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * The ID of office site.
+     */
+    officeSiteId?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
+     */
+    status?: pulumi.Input<string>;
 }

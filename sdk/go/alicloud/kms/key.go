@@ -362,7 +362,7 @@ type KeyArrayInput interface {
 type KeyArray []KeyInput
 
 func (KeyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Key)(nil))
+	return reflect.TypeOf((*[]*Key)(nil)).Elem()
 }
 
 func (i KeyArray) ToKeyArrayOutput() KeyArrayOutput {
@@ -387,7 +387,7 @@ type KeyMapInput interface {
 type KeyMap map[string]KeyInput
 
 func (KeyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Key)(nil))
+	return reflect.TypeOf((*map[string]*Key)(nil)).Elem()
 }
 
 func (i KeyMap) ToKeyMapOutput() KeyMapOutput {
@@ -398,9 +398,7 @@ func (i KeyMap) ToKeyMapOutputWithContext(ctx context.Context) KeyMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyMapOutput)
 }
 
-type KeyOutput struct {
-	*pulumi.OutputState
-}
+type KeyOutput struct{ *pulumi.OutputState }
 
 func (KeyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Key)(nil))
@@ -419,14 +417,12 @@ func (o KeyOutput) ToKeyPtrOutput() KeyPtrOutput {
 }
 
 func (o KeyOutput) ToKeyPtrOutputWithContext(ctx context.Context) KeyPtrOutput {
-	return o.ApplyT(func(v Key) *Key {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Key) *Key {
 		return &v
 	}).(KeyPtrOutput)
 }
 
-type KeyPtrOutput struct {
-	*pulumi.OutputState
-}
+type KeyPtrOutput struct{ *pulumi.OutputState }
 
 func (KeyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Key)(nil))
@@ -438,6 +434,16 @@ func (o KeyPtrOutput) ToKeyPtrOutput() KeyPtrOutput {
 
 func (o KeyPtrOutput) ToKeyPtrOutputWithContext(ctx context.Context) KeyPtrOutput {
 	return o
+}
+
+func (o KeyPtrOutput) Elem() KeyOutput {
+	return o.ApplyT(func(v *Key) Key {
+		if v != nil {
+			return *v
+		}
+		var ret Key
+		return ret
+	}).(KeyOutput)
 }
 
 type KeyArrayOutput struct{ *pulumi.OutputState }
@@ -481,6 +487,10 @@ func (o KeyMapOutput) MapIndex(k pulumi.StringInput) KeyOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyInput)(nil)).Elem(), &Key{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyPtrInput)(nil)).Elem(), &Key{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyArrayInput)(nil)).Elem(), KeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyMapInput)(nil)).Elem(), KeyMap{})
 	pulumi.RegisterOutputType(KeyOutput{})
 	pulumi.RegisterOutputType(KeyPtrOutput{})
 	pulumi.RegisterOutputType(KeyArrayOutput{})

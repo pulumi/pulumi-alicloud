@@ -13,6 +13,7 @@ __all__ = [
     'GetTransitRouterRouteTablesResult',
     'AwaitableGetTransitRouterRouteTablesResult',
     'get_transit_router_route_tables',
+    'get_transit_router_route_tables_output',
 ]
 
 @pulumi.output_type
@@ -193,3 +194,28 @@ def get_transit_router_route_tables(ids: Optional[Sequence[str]] = None,
         transit_router_route_table_ids=__ret__.transit_router_route_table_ids,
         transit_router_route_table_names=__ret__.transit_router_route_table_names,
         transit_router_route_table_status=__ret__.transit_router_route_table_status)
+
+
+@_utilities.lift_output_func(get_transit_router_route_tables)
+def get_transit_router_route_tables_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                           name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                           status: Optional[pulumi.Input[Optional[str]]] = None,
+                                           transit_router_id: Optional[pulumi.Input[str]] = None,
+                                           transit_router_route_table_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                           transit_router_route_table_names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                           transit_router_route_table_status: Optional[pulumi.Input[Optional[str]]] = None,
+                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRouterRouteTablesResult]:
+    """
+    This data source provides CEN Transit Router Route Tables available to the user.[What is Cen Transit Router Route Tables](https://help.aliyun.com/document_detail/261237.html)
+
+    > **NOTE:** Available in 1.126.0+
+
+
+    :param Sequence[str] ids: A list of CEN Transit Router Route Table IDs.
+    :param str transit_router_id: ID of the CEN Transit Router Route Table.
+    :param Sequence[str] transit_router_route_table_ids: A list of ID of the CEN Transit Router Route Table.
+    :param Sequence[str] transit_router_route_table_names: A list of name of the CEN Transit Router Route Table.
+    :param str transit_router_route_table_status: The status of the transit router route table to query.
+    """
+    ...

@@ -13,6 +13,7 @@ __all__ = [
     'GetDomainsResult',
     'AwaitableGetDomainsResult',
     'get_domains',
+    'get_domains_output',
 ]
 
 @pulumi.output_type
@@ -169,3 +170,38 @@ def get_domains(enable_details: Optional[bool] = None,
         output_file=__ret__.output_file,
         resource_group_id=__ret__.resource_group_id,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_domains)
+def get_domains_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                       ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                       name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                       resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                       status: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainsResult]:
+    """
+    This data source provides the Scdn Domains of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.131.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    name_regex = alicloud.scdn.get_domains(name_regex="^my-Domain")
+    pulumi.export("scdnDomainId", name_regex.domains[0].id)
+    ```
+
+
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of Domain IDs. Its element value is same as Domain Name.
+    :param str name_regex: A regex string to filter results by Domain name.
+    :param str resource_group_id: The Resource Group ID.
+    :param str status: The status of the resource.
+    """
+    ...

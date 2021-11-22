@@ -40,7 +40,7 @@ export function getConfigurationRecorders(args?: GetConfigurationRecordersArgs, 
  * A collection of arguments for invoking getConfigurationRecorders.
  */
 export interface GetConfigurationRecordersArgs {
-    readonly outputFile?: string;
+    outputFile?: string;
 }
 
 /**
@@ -56,4 +56,15 @@ export interface GetConfigurationRecordersResult {
      * A list of Config Configuration Recorders. Each element contains the following attributes:
      */
     readonly recorders: outputs.cfg.GetConfigurationRecordersRecorder[];
+}
+
+export function getConfigurationRecordersOutput(args?: GetConfigurationRecordersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigurationRecordersResult> {
+    return pulumi.output(args).apply(a => getConfigurationRecorders(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getConfigurationRecorders.
+ */
+export interface GetConfigurationRecordersOutputArgs {
+    outputFile?: pulumi.Input<string>;
 }

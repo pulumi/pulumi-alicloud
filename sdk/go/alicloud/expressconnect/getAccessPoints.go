@@ -4,6 +4,9 @@
 package expressconnect
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -76,4 +79,76 @@ type GetAccessPointsResult struct {
 	OutputFile *string                `pulumi:"outputFile"`
 	Points     []GetAccessPointsPoint `pulumi:"points"`
 	Status     *string                `pulumi:"status"`
+}
+
+func GetAccessPointsOutput(ctx *pulumi.Context, args GetAccessPointsOutputArgs, opts ...pulumi.InvokeOption) GetAccessPointsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAccessPointsResult, error) {
+			args := v.(GetAccessPointsArgs)
+			r, err := GetAccessPoints(ctx, &args, opts...)
+			return *r, err
+		}).(GetAccessPointsResultOutput)
+}
+
+// A collection of arguments for invoking getAccessPoints.
+type GetAccessPointsOutputArgs struct {
+	// A list of Access Point IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Access Point name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The Physical Connection to Which the Access Point State.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetAccessPointsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessPointsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAccessPoints.
+type GetAccessPointsResultOutput struct{ *pulumi.OutputState }
+
+func (GetAccessPointsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessPointsResult)(nil)).Elem()
+}
+
+func (o GetAccessPointsResultOutput) ToGetAccessPointsResultOutput() GetAccessPointsResultOutput {
+	return o
+}
+
+func (o GetAccessPointsResultOutput) ToGetAccessPointsResultOutputWithContext(ctx context.Context) GetAccessPointsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAccessPointsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessPointsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAccessPointsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAccessPointsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAccessPointsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessPointsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccessPointsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAccessPointsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAccessPointsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessPointsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAccessPointsResultOutput) Points() GetAccessPointsPointArrayOutput {
+	return o.ApplyT(func(v GetAccessPointsResult) []GetAccessPointsPoint { return v.Points }).(GetAccessPointsPointArrayOutput)
+}
+
+func (o GetAccessPointsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessPointsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAccessPointsResultOutput{})
 }

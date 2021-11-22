@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cms
 {
@@ -37,22 +38,22 @@ namespace Pulumi.AliCloud.Cms
         ///                 "example_value",
         ///             },
         ///         }));
-        ///         this.CmsMetricRuleTemplateId1 = ids.Apply(ids =&gt; ids.Templates[0].Id);
+        ///         this.CmsMetricRuleTemplateId1 = ids.Apply(ids =&gt; ids.Templates?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.Cms.GetMetricRuleTemplates.InvokeAsync(new AliCloud.Cms.GetMetricRuleTemplatesArgs
         ///         {
         ///             NameRegex = "^my-MetricRuleTemplate",
         ///         }));
-        ///         this.CmsMetricRuleTemplateId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Templates[0].Id);
+        ///         this.CmsMetricRuleTemplateId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Templates?[0]?.Id);
         ///         var keyword = Output.Create(AliCloud.Cms.GetMetricRuleTemplates.InvokeAsync(new AliCloud.Cms.GetMetricRuleTemplatesArgs
         ///         {
         ///             Keyword = "^my-MetricRuleTemplate",
         ///         }));
-        ///         this.CmsMetricRuleTemplateId3 = nameRegex.Apply(nameRegex =&gt; nameRegex.Templates[0].Id);
+        ///         this.CmsMetricRuleTemplateId3 = nameRegex.Apply(nameRegex =&gt; nameRegex.Templates?[0]?.Id);
         ///         var templateId = Output.Create(AliCloud.Cms.GetMetricRuleTemplates.InvokeAsync(new AliCloud.Cms.GetMetricRuleTemplatesArgs
         ///         {
         ///             TemplateId = "example_value",
         ///         }));
-        ///         this.CmsMetricRuleTemplateId4 = nameRegex.Apply(nameRegex =&gt; nameRegex.Templates[0].Id);
+        ///         this.CmsMetricRuleTemplateId4 = nameRegex.Apply(nameRegex =&gt; nameRegex.Templates?[0]?.Id);
         ///     }
         /// 
         ///     [Output("cmsMetricRuleTemplateId1")]
@@ -70,6 +71,66 @@ namespace Pulumi.AliCloud.Cms
         /// </summary>
         public static Task<GetMetricRuleTemplatesResult> InvokeAsync(GetMetricRuleTemplatesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMetricRuleTemplatesResult>("alicloud:cms/getMetricRuleTemplates:getMetricRuleTemplates", args ?? new GetMetricRuleTemplatesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Cms.GetMetricRuleTemplates.InvokeAsync(new AliCloud.Cms.GetMetricRuleTemplatesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_value",
+        ///             },
+        ///         }));
+        ///         this.CmsMetricRuleTemplateId1 = ids.Apply(ids =&gt; ids.Templates?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.Cms.GetMetricRuleTemplates.InvokeAsync(new AliCloud.Cms.GetMetricRuleTemplatesArgs
+        ///         {
+        ///             NameRegex = "^my-MetricRuleTemplate",
+        ///         }));
+        ///         this.CmsMetricRuleTemplateId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Templates?[0]?.Id);
+        ///         var keyword = Output.Create(AliCloud.Cms.GetMetricRuleTemplates.InvokeAsync(new AliCloud.Cms.GetMetricRuleTemplatesArgs
+        ///         {
+        ///             Keyword = "^my-MetricRuleTemplate",
+        ///         }));
+        ///         this.CmsMetricRuleTemplateId3 = nameRegex.Apply(nameRegex =&gt; nameRegex.Templates?[0]?.Id);
+        ///         var templateId = Output.Create(AliCloud.Cms.GetMetricRuleTemplates.InvokeAsync(new AliCloud.Cms.GetMetricRuleTemplatesArgs
+        ///         {
+        ///             TemplateId = "example_value",
+        ///         }));
+        ///         this.CmsMetricRuleTemplateId4 = nameRegex.Apply(nameRegex =&gt; nameRegex.Templates?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("cmsMetricRuleTemplateId1")]
+        ///     public Output&lt;string&gt; CmsMetricRuleTemplateId1 { get; set; }
+        ///     [Output("cmsMetricRuleTemplateId2")]
+        ///     public Output&lt;string&gt; CmsMetricRuleTemplateId2 { get; set; }
+        ///     [Output("cmsMetricRuleTemplateId3")]
+        ///     public Output&lt;string&gt; CmsMetricRuleTemplateId3 { get; set; }
+        ///     [Output("cmsMetricRuleTemplateId4")]
+        ///     public Output&lt;string&gt; CmsMetricRuleTemplateId4 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetMetricRuleTemplatesResult> Invoke(GetMetricRuleTemplatesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetMetricRuleTemplatesResult>("alicloud:cms/getMetricRuleTemplates:getMetricRuleTemplates", args ?? new GetMetricRuleTemplatesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -121,6 +182,58 @@ namespace Pulumi.AliCloud.Cms
         public string? TemplateId { get; set; }
 
         public GetMetricRuleTemplatesArgs()
+        {
+        }
+    }
+
+    public sealed class GetMetricRuleTemplatesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Valid values: `true` or `false`. Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Metric Rule Template IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The name of the alert template. You can perform fuzzy search based on the template name.
+        /// </summary>
+        [Input("keyword")]
+        public Input<string>? Keyword { get; set; }
+
+        /// <summary>
+        /// The name of the alert template.
+        /// </summary>
+        [Input("metricRuleTemplateName")]
+        public Input<string>? MetricRuleTemplateName { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Metric Rule Template name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The ID of the alert template.
+        /// </summary>
+        [Input("templateId")]
+        public Input<string>? TemplateId { get; set; }
+
+        public GetMetricRuleTemplatesInvokeArgs()
         {
         }
     }

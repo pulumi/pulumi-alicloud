@@ -4,6 +4,9 @@
 package cs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,4 +82,93 @@ type GetRegistryEnterpriseReposResult struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// A list of matched Container Registry Enterprise Edition namespaces. Each element contains the following attributes:
 	Repos []GetRegistryEnterpriseReposRepo `pulumi:"repos"`
+}
+
+func GetRegistryEnterpriseReposOutput(ctx *pulumi.Context, args GetRegistryEnterpriseReposOutputArgs, opts ...pulumi.InvokeOption) GetRegistryEnterpriseReposResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetRegistryEnterpriseReposResult, error) {
+			args := v.(GetRegistryEnterpriseReposArgs)
+			r, err := GetRegistryEnterpriseRepos(ctx, &args, opts...)
+			return *r, err
+		}).(GetRegistryEnterpriseReposResultOutput)
+}
+
+// A collection of arguments for invoking getRegistryEnterpriseRepos.
+type GetRegistryEnterpriseReposOutputArgs struct {
+	// Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `tags` in attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of ids to filter results by repository id.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// ID of Container Registry Enterprise Edition instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// A regex string to filter results by repository name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+	Namespace  pulumi.StringPtrInput `pulumi:"namespace"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetRegistryEnterpriseReposOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegistryEnterpriseReposArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRegistryEnterpriseRepos.
+type GetRegistryEnterpriseReposResultOutput struct{ *pulumi.OutputState }
+
+func (GetRegistryEnterpriseReposResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegistryEnterpriseReposResult)(nil)).Elem()
+}
+
+func (o GetRegistryEnterpriseReposResultOutput) ToGetRegistryEnterpriseReposResultOutput() GetRegistryEnterpriseReposResultOutput {
+	return o
+}
+
+func (o GetRegistryEnterpriseReposResultOutput) ToGetRegistryEnterpriseReposResultOutputWithContext(ctx context.Context) GetRegistryEnterpriseReposResultOutput {
+	return o
+}
+
+func (o GetRegistryEnterpriseReposResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseReposResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRegistryEnterpriseReposResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseReposResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of matched Container Registry Enterprise Edition repositories. Its element is a repository id.
+func (o GetRegistryEnterpriseReposResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseReposResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// ID of Container Registry Enterprise Edition instance.
+func (o GetRegistryEnterpriseReposResultOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseReposResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetRegistryEnterpriseReposResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseReposResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of repository names.
+func (o GetRegistryEnterpriseReposResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseReposResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+// Name of Container Registry Enterprise Edition namespace where repo is located.
+func (o GetRegistryEnterpriseReposResultOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseReposResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRegistryEnterpriseReposResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseReposResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of matched Container Registry Enterprise Edition namespaces. Each element contains the following attributes:
+func (o GetRegistryEnterpriseReposResultOutput) Repos() GetRegistryEnterpriseReposRepoArrayOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseReposResult) []GetRegistryEnterpriseReposRepo { return v.Repos }).(GetRegistryEnterpriseReposRepoArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRegistryEnterpriseReposResultOutput{})
 }

@@ -119,6 +119,7 @@ export interface ProviderEndpoint {
     waf?: pulumi.Input<string>;
     wafOpenapi?: pulumi.Input<string>;
 }
+
 export namespace actiontrail {
 }
 
@@ -1126,6 +1127,7 @@ export namespace cen {
          */
         zoneId?: pulumi.Input<string>;
     }
+
 }
 
 export namespace cfg {
@@ -1644,6 +1646,31 @@ export namespace cs {
         roleType?: string;
     }
 
+    export interface GetKubernetesPermissionPermissionArgs {
+        /**
+         * ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
+         * * `isRamRole` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+         */
+        isOwner?: pulumi.Input<boolean>;
+        isRamRole?: pulumi.Input<boolean>;
+        /**
+         * The permission settings to manage ACK clusters.
+         */
+        resourceId: pulumi.Input<string>;
+        /**
+         * The authorization type. Valid values `cluster`, `namespace` and `console`.
+         */
+        resourceType: pulumi.Input<string>;
+        /**
+         * The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
+         */
+        roleName: pulumi.Input<string>;
+        /**
+         * The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
+         */
+        roleType?: pulumi.Input<string>;
+    }
+
     export interface KubernetesAddon {
         config?: pulumi.Input<string>;
         disabled?: pulumi.Input<boolean>;
@@ -2131,6 +2158,7 @@ export namespace ddos {
         value?: pulumi.Input<string>;
         valueType?: pulumi.Input<number>;
     }
+
 }
 
 export namespace dds {
@@ -2483,6 +2511,7 @@ export namespace eci {
         server?: pulumi.Input<string>;
         userName?: pulumi.Input<string>;
     }
+
 }
 
 export namespace ecp {
@@ -2604,8 +2633,23 @@ export namespace ecs {
         lockReason?: string;
     }
 
+    export interface GetDedicatedHostsOperationLockArgs {
+        /**
+         * The reason why the dedicated host resource is locked.
+         */
+        lockReason?: pulumi.Input<string>;
+    }
+
+    export interface GetDisksOperationLockArgs {
+        lockReason?: pulumi.Input<string>;
+    }
+
     export interface GetDisksOperationLock {
         lockReason?: string;
+    }
+
+    export interface GetEcsDisksOperationLockArgs {
+        lockReason?: pulumi.Input<string>;
     }
 
     export interface GetEcsDisksOperationLock {
@@ -2982,6 +3026,7 @@ export namespace ess {
         metricIntervalUpperBound?: pulumi.Input<string>;
         scalingAdjustment?: pulumi.Input<number>;
     }
+
 }
 
 export namespace eventbridge {
@@ -3035,6 +3080,18 @@ export namespace expressconnect {
          * Set of values that are accepted for the given field.
          */
         values?: string[];
+    }
+
+    export interface GetVirtualBorderRoutersFilterArgs {
+        /**
+         * The key of the field to filter by, as defined by
+         * [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Set of values that are accepted for the given field.
+         */
+        values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
 }
@@ -3322,6 +3379,7 @@ export namespace hbase {
         connAddrPort?: pulumi.Input<string>;
         netType?: pulumi.Input<string>;
     }
+
 }
 
 export namespace hbr {
@@ -3338,6 +3396,21 @@ export namespace hbr {
          * Set of values that are accepted for the given field.
          */
         values?: string[];
+    }
+
+    export interface GetBackupJobsFilterArgs {
+        /**
+         * The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
+         */
+        operator?: pulumi.Input<string>;
+        /**
+         * Set of values that are accepted for the given field.
+         */
+        values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
 }
@@ -3370,6 +3443,7 @@ export namespace kvstore {
         name: pulumi.Input<string>;
         value: pulumi.Input<string>;
     }
+
 }
 
 export namespace lindorm {
@@ -3699,6 +3773,7 @@ export namespace mongodb {
          */
         readonlyReplicas?: pulumi.Input<number>;
     }
+
 }
 
 export namespace mse {
@@ -4000,6 +4075,11 @@ export namespace quotas {
         value?: string;
     }
 
+    export interface GetApplicationInfosDimensionArgs {
+        key?: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+    }
+
     export interface GetQuotaAlarmsQuotaDimension {
         /**
          * The key of quota_dimensions.
@@ -4011,6 +4091,17 @@ export namespace quotas {
         value?: string;
     }
 
+    export interface GetQuotaAlarmsQuotaDimensionArgs {
+        /**
+         * The key of quota_dimensions.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The value of quota_dimensions.
+         */
+        value?: pulumi.Input<string>;
+    }
+
     export interface GetQuotaApplicationsDimension {
         /**
          * The key of dimensions.
@@ -4020,6 +4111,28 @@ export namespace quotas {
          * The value of dimensions.
          */
         value?: string;
+    }
+
+    export interface GetQuotaApplicationsDimensionArgs {
+        /**
+         * The key of dimensions.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The value of dimensions.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface GetQuotasDimensionArgs {
+        /**
+         * The key of dimensions.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The value of dimensions.
+         */
+        value?: pulumi.Input<string>;
     }
 
     export interface GetQuotasDimension {
@@ -4097,6 +4210,7 @@ export namespace rds {
         name: pulumi.Input<string>;
         value: pulumi.Input<string>;
     }
+
 }
 
 export namespace resourcemanager {
@@ -4110,6 +4224,7 @@ export namespace resourcemanager {
          */
         status?: pulumi.Input<string>;
     }
+
 }
 
 export namespace rocketmq {
@@ -4148,6 +4263,7 @@ export namespace ros {
          */
         parameterValue: pulumi.Input<string>;
     }
+
 }
 
 export namespace sae {
@@ -4536,6 +4652,7 @@ export namespace slb {
         type?: pulumi.Input<string>;
         weight?: pulumi.Input<number>;
     }
+
 }
 
 export namespace tsdb {
@@ -4715,6 +4832,7 @@ export namespace vpc {
          */
         resourceType?: pulumi.Input<string>;
     }
+
 }
 
 export namespace vpn {

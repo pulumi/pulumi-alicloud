@@ -13,6 +13,7 @@ __all__ = [
     'GetAliasesResult',
     'AwaitableGetAliasesResult',
     'get_aliases',
+    'get_aliases_output',
 ]
 
 @pulumi.output_type
@@ -138,3 +139,31 @@ def get_aliases(ids: Optional[Sequence[str]] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_aliases)
+def get_aliases_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                       name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAliasesResult]:
+    """
+    This data source provides a list of KMS aliases in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:** Available in v1.79.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    kms_aliases = alicloud.kms.get_aliases(ids=["d89e8a53-b708-41aa-8c67-6873axxx"],
+        name_regex="alias/tf-testKmsAlias_123")
+    pulumi.export("firstKeyId", data["alicloud_kms_keys"]["kms_keys_ds"]["keys"][0]["id"])
+    ```
+
+
+    :param Sequence[str] ids: A list of KMS aliases IDs. The value is same as KMS alias_name.
+    :param str name_regex: A regex string to filter the results by the KMS alias name.
+    """
+    ...

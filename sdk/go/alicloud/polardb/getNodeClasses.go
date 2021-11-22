@@ -4,6 +4,9 @@
 package polardb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +28,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "PolarDB"
-// 		resourcesZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		resourcesZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -89,4 +92,93 @@ type GetNodeClassesResult struct {
 	RegionId   *string `pulumi:"regionId"`
 	// The Zone to launch the PolarDB cluster.
 	ZoneId *string `pulumi:"zoneId"`
+}
+
+func GetNodeClassesOutput(ctx *pulumi.Context, args GetNodeClassesOutputArgs, opts ...pulumi.InvokeOption) GetNodeClassesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetNodeClassesResult, error) {
+			args := v.(GetNodeClassesArgs)
+			r, err := GetNodeClasses(ctx, &args, opts...)
+			return *r, err
+		}).(GetNodeClassesResultOutput)
+}
+
+// A collection of arguments for invoking getNodeClasses.
+type GetNodeClassesOutputArgs struct {
+	// The PolarDB node class type by the user.
+	DbNodeClass pulumi.StringPtrInput `pulumi:"dbNodeClass"`
+	// Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If dbType is set, dbVersion also needs to be set.
+	DbType pulumi.StringPtrInput `pulumi:"dbType"`
+	// Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If dbVersion is set, dbType also needs to be set.
+	DbVersion  pulumi.StringPtrInput `pulumi:"dbVersion"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`.
+	PayType pulumi.StringInput `pulumi:"payType"`
+	// The Region to launch the PolarDB cluster.
+	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
+	// The Zone to launch the PolarDB cluster.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (GetNodeClassesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeClassesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getNodeClasses.
+type GetNodeClassesResultOutput struct{ *pulumi.OutputState }
+
+func (GetNodeClassesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeClassesResult)(nil)).Elem()
+}
+
+func (o GetNodeClassesResultOutput) ToGetNodeClassesResultOutput() GetNodeClassesResultOutput {
+	return o
+}
+
+func (o GetNodeClassesResultOutput) ToGetNodeClassesResultOutputWithContext(ctx context.Context) GetNodeClassesResultOutput {
+	return o
+}
+
+// A list of PolarDB node classes. Each element contains the following attributes:
+func (o GetNodeClassesResultOutput) Classes() GetNodeClassesClassArrayOutput {
+	return o.ApplyT(func(v GetNodeClassesResult) []GetNodeClassesClass { return v.Classes }).(GetNodeClassesClassArrayOutput)
+}
+
+// PolarDB node available class.
+func (o GetNodeClassesResultOutput) DbNodeClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNodeClassesResult) *string { return v.DbNodeClass }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNodeClassesResultOutput) DbType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNodeClassesResult) *string { return v.DbType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNodeClassesResultOutput) DbVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNodeClassesResult) *string { return v.DbVersion }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetNodeClassesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeClassesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetNodeClassesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNodeClassesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNodeClassesResultOutput) PayType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeClassesResult) string { return v.PayType }).(pulumi.StringOutput)
+}
+
+func (o GetNodeClassesResultOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNodeClassesResult) *string { return v.RegionId }).(pulumi.StringPtrOutput)
+}
+
+// The Zone to launch the PolarDB cluster.
+func (o GetNodeClassesResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNodeClassesResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetNodeClassesResultOutput{})
 }

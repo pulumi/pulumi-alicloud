@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ExpressConnect
 {
@@ -15,9 +16,133 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.134.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.ExpressConnect.GetVirtualBorderRouters.InvokeAsync());
+        ///         this.ExpressConnectVirtualBorderRouterId1 = ids.Apply(ids =&gt; ids.Routers?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.ExpressConnect.GetVirtualBorderRouters.InvokeAsync(new AliCloud.ExpressConnect.GetVirtualBorderRoutersArgs
+        ///         {
+        ///             NameRegex = "^my-VirtualBorderRouter",
+        ///         }));
+        ///         this.ExpressConnectVirtualBorderRouterId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Routers?[0]?.Id);
+        ///         var filter = Output.Create(AliCloud.ExpressConnect.GetVirtualBorderRouters.InvokeAsync(new AliCloud.ExpressConnect.GetVirtualBorderRoutersArgs
+        ///         {
+        ///             Filters = 
+        ///             {
+        ///                 new AliCloud.ExpressConnect.Inputs.GetVirtualBorderRoutersFilterArgs
+        ///                 {
+        ///                     Key = "PhysicalConnectionId",
+        ///                     Values = 
+        ///                     {
+        ///                         "pc-xxxx1",
+        ///                     },
+        ///                 },
+        ///                 new AliCloud.ExpressConnect.Inputs.GetVirtualBorderRoutersFilterArgs
+        ///                 {
+        ///                     Key = "VbrId",
+        ///                     Values = 
+        ///                     {
+        ///                         "vbr-xxxx1",
+        ///                         "vbr-xxxx2",
+        ///                     },
+        ///                 },
+        ///             },
+        ///         }));
+        ///         this.ExpressConnectVirtualBorderRouterId3 = filter.Apply(filter =&gt; filter.Routers?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("expressConnectVirtualBorderRouterId1")]
+        ///     public Output&lt;string&gt; ExpressConnectVirtualBorderRouterId1 { get; set; }
+        ///     [Output("expressConnectVirtualBorderRouterId2")]
+        ///     public Output&lt;string&gt; ExpressConnectVirtualBorderRouterId2 { get; set; }
+        ///     [Output("expressConnectVirtualBorderRouterId3")]
+        ///     public Output&lt;string&gt; ExpressConnectVirtualBorderRouterId3 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetVirtualBorderRoutersResult> InvokeAsync(GetVirtualBorderRoutersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVirtualBorderRoutersResult>("alicloud:expressconnect/getVirtualBorderRouters:getVirtualBorderRouters", args ?? new GetVirtualBorderRoutersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.ExpressConnect.GetVirtualBorderRouters.InvokeAsync());
+        ///         this.ExpressConnectVirtualBorderRouterId1 = ids.Apply(ids =&gt; ids.Routers?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.ExpressConnect.GetVirtualBorderRouters.InvokeAsync(new AliCloud.ExpressConnect.GetVirtualBorderRoutersArgs
+        ///         {
+        ///             NameRegex = "^my-VirtualBorderRouter",
+        ///         }));
+        ///         this.ExpressConnectVirtualBorderRouterId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Routers?[0]?.Id);
+        ///         var filter = Output.Create(AliCloud.ExpressConnect.GetVirtualBorderRouters.InvokeAsync(new AliCloud.ExpressConnect.GetVirtualBorderRoutersArgs
+        ///         {
+        ///             Filters = 
+        ///             {
+        ///                 new AliCloud.ExpressConnect.Inputs.GetVirtualBorderRoutersFilterArgs
+        ///                 {
+        ///                     Key = "PhysicalConnectionId",
+        ///                     Values = 
+        ///                     {
+        ///                         "pc-xxxx1",
+        ///                     },
+        ///                 },
+        ///                 new AliCloud.ExpressConnect.Inputs.GetVirtualBorderRoutersFilterArgs
+        ///                 {
+        ///                     Key = "VbrId",
+        ///                     Values = 
+        ///                     {
+        ///                         "vbr-xxxx1",
+        ///                         "vbr-xxxx2",
+        ///                     },
+        ///                 },
+        ///             },
+        ///         }));
+        ///         this.ExpressConnectVirtualBorderRouterId3 = filter.Apply(filter =&gt; filter.Routers?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("expressConnectVirtualBorderRouterId1")]
+        ///     public Output&lt;string&gt; ExpressConnectVirtualBorderRouterId1 { get; set; }
+        ///     [Output("expressConnectVirtualBorderRouterId2")]
+        ///     public Output&lt;string&gt; ExpressConnectVirtualBorderRouterId2 { get; set; }
+        ///     [Output("expressConnectVirtualBorderRouterId3")]
+        ///     public Output&lt;string&gt; ExpressConnectVirtualBorderRouterId3 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetVirtualBorderRoutersResult> Invoke(GetVirtualBorderRoutersInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetVirtualBorderRoutersResult>("alicloud:expressconnect/getVirtualBorderRouters:getVirtualBorderRouters", args ?? new GetVirtualBorderRoutersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -63,6 +188,52 @@ namespace Pulumi.AliCloud.ExpressConnect
         public string? Status { get; set; }
 
         public GetVirtualBorderRoutersArgs()
+        {
+        }
+    }
+
+    public sealed class GetVirtualBorderRoutersInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetVirtualBorderRoutersFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// Custom filter block as described below.
+        /// </summary>
+        public InputList<Inputs.GetVirtualBorderRoutersFilterInputArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetVirtualBorderRoutersFilterInputArgs>());
+            set => _filters = value;
+        }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Virtual Border Router IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Virtual Border Router name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The VBR state.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetVirtualBorderRoutersInvokeArgs()
         {
         }
     }

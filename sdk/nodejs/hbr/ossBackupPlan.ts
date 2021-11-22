@@ -167,35 +167,35 @@ export interface OssBackupPlanState {
     /**
      * Backup type. Valid values: `COMPLETE`.
      */
-    readonly backupType?: pulumi.Input<string>;
+    backupType?: pulumi.Input<string>;
     /**
      * The name of OSS bucket.
      */
-    readonly bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
-    readonly ossBackupPlanName?: pulumi.Input<string>;
+    ossBackupPlanName?: pulumi.Input<string>;
     /**
      * Backup prefix. Once specified, only objects with matching prefixes will be backed up.
      */
-    readonly prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string>;
     /**
      * Backup retention days, the minimum is 1.
      */
-    readonly retention?: pulumi.Input<string>;
+    retention?: pulumi.Input<string>;
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      */
-    readonly schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string>;
     /**
      * The ID of backup vault.
      */
-    readonly vaultId?: pulumi.Input<string>;
+    vaultId?: pulumi.Input<string>;
 }
 
 /**
@@ -205,33 +205,33 @@ export interface OssBackupPlanArgs {
     /**
      * Backup type. Valid values: `COMPLETE`.
      */
-    readonly backupType: pulumi.Input<string>;
+    backupType: pulumi.Input<string>;
     /**
      * The name of OSS bucket.
      */
-    readonly bucket: pulumi.Input<string>;
+    bucket: pulumi.Input<string>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
-    readonly ossBackupPlanName: pulumi.Input<string>;
+    ossBackupPlanName: pulumi.Input<string>;
     /**
      * Backup prefix. Once specified, only objects with matching prefixes will be backed up.
      */
-    readonly prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string>;
     /**
      * Backup retention days, the minimum is 1.
      */
-    readonly retention: pulumi.Input<string>;
+    retention: pulumi.Input<string>;
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      */
-    readonly schedule: pulumi.Input<string>;
+    schedule: pulumi.Input<string>;
     /**
      * The ID of backup vault.
      */
-    readonly vaultId: pulumi.Input<string>;
+    vaultId: pulumi.Input<string>;
 }

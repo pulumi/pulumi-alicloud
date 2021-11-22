@@ -4,6 +4,9 @@
 package cfg
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,4 +76,82 @@ type GetAggregatorsResult struct {
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	Status     *string  `pulumi:"status"`
+}
+
+func GetAggregatorsOutput(ctx *pulumi.Context, args GetAggregatorsOutputArgs, opts ...pulumi.InvokeOption) GetAggregatorsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAggregatorsResult, error) {
+			args := v.(GetAggregatorsArgs)
+			r, err := GetAggregators(ctx, &args, opts...)
+			return *r, err
+		}).(GetAggregatorsResultOutput)
+}
+
+// A collection of arguments for invoking getAggregators.
+type GetAggregatorsOutputArgs struct {
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of aggregator ids.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by aggregator name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status of the resource.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetAggregatorsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAggregatorsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAggregators.
+type GetAggregatorsResultOutput struct{ *pulumi.OutputState }
+
+func (GetAggregatorsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAggregatorsResult)(nil)).Elem()
+}
+
+func (o GetAggregatorsResultOutput) ToGetAggregatorsResultOutput() GetAggregatorsResultOutput {
+	return o
+}
+
+func (o GetAggregatorsResultOutput) ToGetAggregatorsResultOutputWithContext(ctx context.Context) GetAggregatorsResultOutput {
+	return o
+}
+
+func (o GetAggregatorsResultOutput) Aggregators() GetAggregatorsAggregatorArrayOutput {
+	return o.ApplyT(func(v GetAggregatorsResult) []GetAggregatorsAggregator { return v.Aggregators }).(GetAggregatorsAggregatorArrayOutput)
+}
+
+func (o GetAggregatorsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAggregatorsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAggregatorsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAggregatorsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAggregatorsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAggregatorsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAggregatorsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAggregatorsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAggregatorsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAggregatorsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAggregatorsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAggregatorsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAggregatorsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAggregatorsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAggregatorsResultOutput{})
 }

@@ -232,7 +232,7 @@ type AccessManagementArrayInput interface {
 type AccessManagementArray []AccessManagementInput
 
 func (AccessManagementArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AccessManagement)(nil))
+	return reflect.TypeOf((*[]*AccessManagement)(nil)).Elem()
 }
 
 func (i AccessManagementArray) ToAccessManagementArrayOutput() AccessManagementArrayOutput {
@@ -257,7 +257,7 @@ type AccessManagementMapInput interface {
 type AccessManagementMap map[string]AccessManagementInput
 
 func (AccessManagementMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AccessManagement)(nil))
+	return reflect.TypeOf((*map[string]*AccessManagement)(nil)).Elem()
 }
 
 func (i AccessManagementMap) ToAccessManagementMapOutput() AccessManagementMapOutput {
@@ -268,9 +268,7 @@ func (i AccessManagementMap) ToAccessManagementMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AccessManagementMapOutput)
 }
 
-type AccessManagementOutput struct {
-	*pulumi.OutputState
-}
+type AccessManagementOutput struct{ *pulumi.OutputState }
 
 func (AccessManagementOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccessManagement)(nil))
@@ -289,14 +287,12 @@ func (o AccessManagementOutput) ToAccessManagementPtrOutput() AccessManagementPt
 }
 
 func (o AccessManagementOutput) ToAccessManagementPtrOutputWithContext(ctx context.Context) AccessManagementPtrOutput {
-	return o.ApplyT(func(v AccessManagement) *AccessManagement {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessManagement) *AccessManagement {
 		return &v
 	}).(AccessManagementPtrOutput)
 }
 
-type AccessManagementPtrOutput struct {
-	*pulumi.OutputState
-}
+type AccessManagementPtrOutput struct{ *pulumi.OutputState }
 
 func (AccessManagementPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AccessManagement)(nil))
@@ -308,6 +304,16 @@ func (o AccessManagementPtrOutput) ToAccessManagementPtrOutput() AccessManagemen
 
 func (o AccessManagementPtrOutput) ToAccessManagementPtrOutputWithContext(ctx context.Context) AccessManagementPtrOutput {
 	return o
+}
+
+func (o AccessManagementPtrOutput) Elem() AccessManagementOutput {
+	return o.ApplyT(func(v *AccessManagement) AccessManagement {
+		if v != nil {
+			return *v
+		}
+		var ret AccessManagement
+		return ret
+	}).(AccessManagementOutput)
 }
 
 type AccessManagementArrayOutput struct{ *pulumi.OutputState }
@@ -351,6 +357,10 @@ func (o AccessManagementMapOutput) MapIndex(k pulumi.StringInput) AccessManageme
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessManagementInput)(nil)).Elem(), &AccessManagement{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessManagementPtrInput)(nil)).Elem(), &AccessManagement{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessManagementArrayInput)(nil)).Elem(), AccessManagementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessManagementMapInput)(nil)).Elem(), AccessManagementMap{})
 	pulumi.RegisterOutputType(AccessManagementOutput{})
 	pulumi.RegisterOutputType(AccessManagementPtrOutput{})
 	pulumi.RegisterOutputType(AccessManagementArrayOutput{})

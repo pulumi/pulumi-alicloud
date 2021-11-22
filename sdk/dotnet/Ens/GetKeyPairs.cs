@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ens
 {
@@ -35,7 +36,7 @@ namespace Pulumi.AliCloud.Ens
         ///             Version = "example_value",
         ///             NameRegex = "^my-KeyPair",
         ///         }));
-        ///         this.EnsKeyPairId1 = nameRegex.Apply(nameRegex =&gt; nameRegex.Pairs[0].Id);
+        ///         this.EnsKeyPairId1 = nameRegex.Apply(nameRegex =&gt; nameRegex.Pairs?[0]?.Id);
         ///     }
         /// 
         ///     [Output("ensKeyPairId1")]
@@ -47,6 +48,43 @@ namespace Pulumi.AliCloud.Ens
         /// </summary>
         public static Task<GetKeyPairsResult> InvokeAsync(GetKeyPairsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeyPairsResult>("alicloud:ens/getKeyPairs:getKeyPairs", args ?? new GetKeyPairsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Ens Key Pairs of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var nameRegex = Output.Create(AliCloud.Ens.GetKeyPairs.InvokeAsync(new AliCloud.Ens.GetKeyPairsArgs
+        ///         {
+        ///             Version = "example_value",
+        ///             NameRegex = "^my-KeyPair",
+        ///         }));
+        ///         this.EnsKeyPairId1 = nameRegex.Apply(nameRegex =&gt; nameRegex.Pairs?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("ensKeyPairId1")]
+        ///     public Output&lt;string&gt; EnsKeyPairId1 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetKeyPairsResult> Invoke(GetKeyPairsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKeyPairsResult>("alicloud:ens/getKeyPairs:getKeyPairs", args ?? new GetKeyPairsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -74,6 +112,34 @@ namespace Pulumi.AliCloud.Ens
         public string Version { get; set; } = null!;
 
         public GetKeyPairsArgs()
+        {
+        }
+    }
+
+    public sealed class GetKeyPairsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the key pair.
+        /// </summary>
+        [Input("keyPairName")]
+        public Input<string>? KeyPairName { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Key Pair name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The version number.
+        /// </summary>
+        [Input("version", required: true)]
+        public Input<string> Version { get; set; } = null!;
+
+        public GetKeyPairsInvokeArgs()
         {
         }
     }

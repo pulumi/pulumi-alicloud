@@ -13,6 +13,7 @@ __all__ = [
     'GetNatIpsResult',
     'AwaitableGetNatIpsResult',
     'get_nat_ips',
+    'get_nat_ips_output',
 ]
 
 @pulumi.output_type
@@ -217,3 +218,64 @@ def get_nat_ips(ids: Optional[Sequence[str]] = None,
         nat_ip_names=__ret__.nat_ip_names,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_nat_ips)
+def get_nat_ips_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                       name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                       nat_gateway_id: Optional[pulumi.Input[str]] = None,
+                       nat_ip_cidr: Optional[pulumi.Input[Optional[str]]] = None,
+                       nat_ip_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                       nat_ip_names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                       status: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNatIpsResult]:
+    """
+    This data source provides the Vpc Nat Ips of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.136.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.vpc.get_nat_ips(nat_gateway_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("vpcNatIpId1", ids.ips[0].id)
+    name_regex = alicloud.vpc.get_nat_ips(nat_gateway_id="example_value",
+        name_regex="^my-NatIp")
+    pulumi.export("vpcNatIpId2", name_regex.ips[0].id)
+    nat_ip_cidr = alicloud.vpc.get_nat_ips(nat_gateway_id="example_value",
+        nat_ip_cidr="example_value",
+        name_regex="^my-NatIp")
+    pulumi.export("vpcNatIpId3", nat_ip_cidr.ips[0].id)
+    nat_ip_name = alicloud.vpc.get_nat_ips(nat_gateway_id="example_value",
+        ids=["example_value"],
+        nat_ip_names=["example_value"])
+    pulumi.export("vpcNatIpId4", nat_ip_name.ips[0].id)
+    nat_ip_ids = alicloud.vpc.get_nat_ips(nat_gateway_id="example_value",
+        ids=["example_value"],
+        nat_ip_ids=["example_value"])
+    pulumi.export("vpcNatIpId5", nat_ip_ids.ips[0].id)
+    status = alicloud.vpc.get_nat_ips(nat_gateway_id="example_value",
+        ids=["example_value"],
+        status="example_value")
+    pulumi.export("vpcNatIpId6", status.ips[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Nat Ip IDs.
+    :param str name_regex: A regex string to filter results by Nat Ip name.
+    :param str nat_gateway_id: The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+    :param str nat_ip_cidr: The CIDR block to which the NAT IP address belongs.
+    :param Sequence[str] nat_ip_names: The name of the NAT IP address.
+    :param str status: The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
+    """
+    ...

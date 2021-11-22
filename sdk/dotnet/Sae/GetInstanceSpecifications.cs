@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Sae
 {
@@ -31,7 +32,7 @@ namespace Pulumi.AliCloud.Sae
         ///     public MyStack()
         ///     {
         ///         var ids = Output.Create(AliCloud.Sae.GetInstanceSpecifications.InvokeAsync());
-        ///         this.SaeInstanceSpecificationId1 = ids.Apply(ids =&gt; ids.Specifications[0].Id);
+        ///         this.SaeInstanceSpecificationId1 = ids.Apply(ids =&gt; ids.Specifications?[0]?.Id);
         ///     }
         /// 
         ///     [Output("saeInstanceSpecificationId1")]
@@ -43,6 +44,39 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         public static Task<GetInstanceSpecificationsResult> InvokeAsync(GetInstanceSpecificationsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceSpecificationsResult>("alicloud:sae/getInstanceSpecifications:getInstanceSpecifications", args ?? new GetInstanceSpecificationsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Sae Instance Specifications of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.139.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Sae.GetInstanceSpecifications.InvokeAsync());
+        ///         this.SaeInstanceSpecificationId1 = ids.Apply(ids =&gt; ids.Specifications?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("saeInstanceSpecificationId1")]
+        ///     public Output&lt;string&gt; SaeInstanceSpecificationId1 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstanceSpecificationsResult> Invoke(GetInstanceSpecificationsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceSpecificationsResult>("alicloud:sae/getInstanceSpecifications:getInstanceSpecifications", args ?? new GetInstanceSpecificationsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -64,6 +98,28 @@ namespace Pulumi.AliCloud.Sae
         public string? OutputFile { get; set; }
 
         public GetInstanceSpecificationsArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceSpecificationsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Instance Specification IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetInstanceSpecificationsInvokeArgs()
         {
         }
     }

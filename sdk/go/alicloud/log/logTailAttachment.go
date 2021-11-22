@@ -250,7 +250,7 @@ type LogTailAttachmentArrayInput interface {
 type LogTailAttachmentArray []LogTailAttachmentInput
 
 func (LogTailAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*LogTailAttachment)(nil))
+	return reflect.TypeOf((*[]*LogTailAttachment)(nil)).Elem()
 }
 
 func (i LogTailAttachmentArray) ToLogTailAttachmentArrayOutput() LogTailAttachmentArrayOutput {
@@ -275,7 +275,7 @@ type LogTailAttachmentMapInput interface {
 type LogTailAttachmentMap map[string]LogTailAttachmentInput
 
 func (LogTailAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*LogTailAttachment)(nil))
+	return reflect.TypeOf((*map[string]*LogTailAttachment)(nil)).Elem()
 }
 
 func (i LogTailAttachmentMap) ToLogTailAttachmentMapOutput() LogTailAttachmentMapOutput {
@@ -286,9 +286,7 @@ func (i LogTailAttachmentMap) ToLogTailAttachmentMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(LogTailAttachmentMapOutput)
 }
 
-type LogTailAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type LogTailAttachmentOutput struct{ *pulumi.OutputState }
 
 func (LogTailAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*LogTailAttachment)(nil))
@@ -307,14 +305,12 @@ func (o LogTailAttachmentOutput) ToLogTailAttachmentPtrOutput() LogTailAttachmen
 }
 
 func (o LogTailAttachmentOutput) ToLogTailAttachmentPtrOutputWithContext(ctx context.Context) LogTailAttachmentPtrOutput {
-	return o.ApplyT(func(v LogTailAttachment) *LogTailAttachment {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogTailAttachment) *LogTailAttachment {
 		return &v
 	}).(LogTailAttachmentPtrOutput)
 }
 
-type LogTailAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
+type LogTailAttachmentPtrOutput struct{ *pulumi.OutputState }
 
 func (LogTailAttachmentPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**LogTailAttachment)(nil))
@@ -326,6 +322,16 @@ func (o LogTailAttachmentPtrOutput) ToLogTailAttachmentPtrOutput() LogTailAttach
 
 func (o LogTailAttachmentPtrOutput) ToLogTailAttachmentPtrOutputWithContext(ctx context.Context) LogTailAttachmentPtrOutput {
 	return o
+}
+
+func (o LogTailAttachmentPtrOutput) Elem() LogTailAttachmentOutput {
+	return o.ApplyT(func(v *LogTailAttachment) LogTailAttachment {
+		if v != nil {
+			return *v
+		}
+		var ret LogTailAttachment
+		return ret
+	}).(LogTailAttachmentOutput)
 }
 
 type LogTailAttachmentArrayOutput struct{ *pulumi.OutputState }
@@ -369,6 +375,10 @@ func (o LogTailAttachmentMapOutput) MapIndex(k pulumi.StringInput) LogTailAttach
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*LogTailAttachmentInput)(nil)).Elem(), &LogTailAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogTailAttachmentPtrInput)(nil)).Elem(), &LogTailAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogTailAttachmentArrayInput)(nil)).Elem(), LogTailAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogTailAttachmentMapInput)(nil)).Elem(), LogTailAttachmentMap{})
 	pulumi.RegisterOutputType(LogTailAttachmentOutput{})
 	pulumi.RegisterOutputType(LogTailAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(LogTailAttachmentArrayOutput{})

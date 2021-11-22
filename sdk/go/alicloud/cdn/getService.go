@@ -4,6 +4,9 @@
 package cdn
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,4 +74,79 @@ type GetServiceResult struct {
 	OpeningTime string `pulumi:"openingTime"`
 	// The current service enable status.
 	Status string `pulumi:"status"`
+}
+
+func GetServiceOutput(ctx *pulumi.Context, args GetServiceOutputArgs, opts ...pulumi.InvokeOption) GetServiceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetServiceResult, error) {
+			args := v.(GetServiceArgs)
+			r, err := GetService(ctx, &args, opts...)
+			return *r, err
+		}).(GetServiceResultOutput)
+}
+
+// A collection of arguments for invoking getService.
+type GetServiceOutputArgs struct {
+	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
+	Enable pulumi.StringPtrInput `pulumi:"enable"`
+	// The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
+	// It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internetChargeType`.
+	// As a note, the updated internet charge type will be effective in the next day zero time.
+	InternetChargeType pulumi.StringPtrInput `pulumi:"internetChargeType"`
+}
+
+func (GetServiceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getService.
+type GetServiceResultOutput struct{ *pulumi.OutputState }
+
+func (GetServiceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceResult)(nil)).Elem()
+}
+
+func (o GetServiceResultOutput) ToGetServiceResultOutput() GetServiceResultOutput {
+	return o
+}
+
+func (o GetServiceResultOutput) ToGetServiceResultOutputWithContext(ctx context.Context) GetServiceResultOutput {
+	return o
+}
+
+// The time when the change of the billing method starts to take effect. The time is displayed in GMT.
+func (o GetServiceResultOutput) ChangingAffectTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceResult) string { return v.ChangingAffectTime }).(pulumi.StringOutput)
+}
+
+// The billing method to be effective.
+func (o GetServiceResultOutput) ChangingChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceResult) string { return v.ChangingChargeType }).(pulumi.StringOutput)
+}
+
+func (o GetServiceResultOutput) Enable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceResult) *string { return v.Enable }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetServiceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetServiceResultOutput) InternetChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceResult) *string { return v.InternetChargeType }).(pulumi.StringPtrOutput)
+}
+
+// The time when the CDN service was activated. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mmZ format.
+func (o GetServiceResultOutput) OpeningTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceResult) string { return v.OpeningTime }).(pulumi.StringOutput)
+}
+
+// The current service enable status.
+func (o GetServiceResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetServiceResultOutput{})
 }

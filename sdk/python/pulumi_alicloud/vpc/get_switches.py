@@ -13,6 +13,7 @@ __all__ = [
     'GetSwitchesResult',
     'AwaitableGetSwitchesResult',
     'get_switches',
+    'get_switches_output',
 ]
 
 @pulumi.output_type
@@ -317,3 +318,62 @@ def get_switches(cidr_block: Optional[str] = None,
         vswitch_owner_id=__ret__.vswitch_owner_id,
         vswitches=__ret__.vswitches,
         zone_id=__ret__.zone_id)
+
+
+@_utilities.lift_output_func(get_switches)
+def get_switches_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None,
+                        dry_run: Optional[pulumi.Input[Optional[bool]]] = None,
+                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                        is_default: Optional[pulumi.Input[Optional[bool]]] = None,
+                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        route_table_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        status: Optional[pulumi.Input[Optional[str]]] = None,
+                        tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                        vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        vswitch_name: Optional[pulumi.Input[Optional[str]]] = None,
+                        vswitch_owner_id: Optional[pulumi.Input[Optional[int]]] = None,
+                        zone_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSwitchesResult]:
+    """
+    This data source provides a list of VSwitches owned by an Alibaba Cloud account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "vswitchDatasourceName"
+    default_zones = alicloud.get_zones()
+    vpc = alicloud.vpc.Network("vpc",
+        cidr_block="172.16.0.0/16",
+        vpc_name=name)
+    vswitch = alicloud.vpc.Switch("vswitch",
+        availability_zone=default_zones.zones[0].id,
+        cidr_block="172.16.0.0/24",
+        vpc_id=vpc.id,
+        vswitch_name=name)
+    default_switches = vswitch.vswitch_name.apply(lambda vswitch_name: alicloud.vpc.get_switches(name_regex=vswitch_name))
+    ```
+
+
+    :param str cidr_block: Filter results by a specific CIDR block. For example: "172.16.0.0/12".
+    :param bool dry_run: Specifies whether to precheck this request only. Valid values: `true` and `false`.
+    :param Sequence[str] ids: A list of VSwitch IDs.
+    :param bool is_default: Indicate whether the VSwitch is created by the system.
+    :param str name_regex: A regex string to filter results by name.
+    :param str resource_group_id: The Id of resource group which VSWitch belongs.
+    :param str route_table_id: The route table ID of the VSwitch.
+    :param str status: The status of the VSwitch. Valid values: `Available` and `Pending`.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param str vpc_id: ID of the VPC that owns the VSwitch.
+    :param str vswitch_name: The name of the VSwitch.
+    :param int vswitch_owner_id: The VSwitch owner id.
+    :param str zone_id: The availability zone of the VSwitch.
+    """
+    ...

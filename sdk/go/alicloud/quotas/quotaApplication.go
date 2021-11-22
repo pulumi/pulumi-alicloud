@@ -315,7 +315,7 @@ type QuotaApplicationArrayInput interface {
 type QuotaApplicationArray []QuotaApplicationInput
 
 func (QuotaApplicationArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*QuotaApplication)(nil))
+	return reflect.TypeOf((*[]*QuotaApplication)(nil)).Elem()
 }
 
 func (i QuotaApplicationArray) ToQuotaApplicationArrayOutput() QuotaApplicationArrayOutput {
@@ -340,7 +340,7 @@ type QuotaApplicationMapInput interface {
 type QuotaApplicationMap map[string]QuotaApplicationInput
 
 func (QuotaApplicationMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*QuotaApplication)(nil))
+	return reflect.TypeOf((*map[string]*QuotaApplication)(nil)).Elem()
 }
 
 func (i QuotaApplicationMap) ToQuotaApplicationMapOutput() QuotaApplicationMapOutput {
@@ -351,9 +351,7 @@ func (i QuotaApplicationMap) ToQuotaApplicationMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(QuotaApplicationMapOutput)
 }
 
-type QuotaApplicationOutput struct {
-	*pulumi.OutputState
-}
+type QuotaApplicationOutput struct{ *pulumi.OutputState }
 
 func (QuotaApplicationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*QuotaApplication)(nil))
@@ -372,14 +370,12 @@ func (o QuotaApplicationOutput) ToQuotaApplicationPtrOutput() QuotaApplicationPt
 }
 
 func (o QuotaApplicationOutput) ToQuotaApplicationPtrOutputWithContext(ctx context.Context) QuotaApplicationPtrOutput {
-	return o.ApplyT(func(v QuotaApplication) *QuotaApplication {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QuotaApplication) *QuotaApplication {
 		return &v
 	}).(QuotaApplicationPtrOutput)
 }
 
-type QuotaApplicationPtrOutput struct {
-	*pulumi.OutputState
-}
+type QuotaApplicationPtrOutput struct{ *pulumi.OutputState }
 
 func (QuotaApplicationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**QuotaApplication)(nil))
@@ -391,6 +387,16 @@ func (o QuotaApplicationPtrOutput) ToQuotaApplicationPtrOutput() QuotaApplicatio
 
 func (o QuotaApplicationPtrOutput) ToQuotaApplicationPtrOutputWithContext(ctx context.Context) QuotaApplicationPtrOutput {
 	return o
+}
+
+func (o QuotaApplicationPtrOutput) Elem() QuotaApplicationOutput {
+	return o.ApplyT(func(v *QuotaApplication) QuotaApplication {
+		if v != nil {
+			return *v
+		}
+		var ret QuotaApplication
+		return ret
+	}).(QuotaApplicationOutput)
 }
 
 type QuotaApplicationArrayOutput struct{ *pulumi.OutputState }
@@ -434,6 +440,10 @@ func (o QuotaApplicationMapOutput) MapIndex(k pulumi.StringInput) QuotaApplicati
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaApplicationInput)(nil)).Elem(), &QuotaApplication{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaApplicationPtrInput)(nil)).Elem(), &QuotaApplication{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaApplicationArrayInput)(nil)).Elem(), QuotaApplicationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaApplicationMapInput)(nil)).Elem(), QuotaApplicationMap{})
 	pulumi.RegisterOutputType(QuotaApplicationOutput{})
 	pulumi.RegisterOutputType(QuotaApplicationPtrOutput{})
 	pulumi.RegisterOutputType(QuotaApplicationArrayOutput{})

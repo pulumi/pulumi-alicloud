@@ -180,7 +180,7 @@ type PolicyVersionArrayInput interface {
 type PolicyVersionArray []PolicyVersionInput
 
 func (PolicyVersionArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*PolicyVersion)(nil))
+	return reflect.TypeOf((*[]*PolicyVersion)(nil)).Elem()
 }
 
 func (i PolicyVersionArray) ToPolicyVersionArrayOutput() PolicyVersionArrayOutput {
@@ -205,7 +205,7 @@ type PolicyVersionMapInput interface {
 type PolicyVersionMap map[string]PolicyVersionInput
 
 func (PolicyVersionMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*PolicyVersion)(nil))
+	return reflect.TypeOf((*map[string]*PolicyVersion)(nil)).Elem()
 }
 
 func (i PolicyVersionMap) ToPolicyVersionMapOutput() PolicyVersionMapOutput {
@@ -216,9 +216,7 @@ func (i PolicyVersionMap) ToPolicyVersionMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyVersionMapOutput)
 }
 
-type PolicyVersionOutput struct {
-	*pulumi.OutputState
-}
+type PolicyVersionOutput struct{ *pulumi.OutputState }
 
 func (PolicyVersionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PolicyVersion)(nil))
@@ -237,14 +235,12 @@ func (o PolicyVersionOutput) ToPolicyVersionPtrOutput() PolicyVersionPtrOutput {
 }
 
 func (o PolicyVersionOutput) ToPolicyVersionPtrOutputWithContext(ctx context.Context) PolicyVersionPtrOutput {
-	return o.ApplyT(func(v PolicyVersion) *PolicyVersion {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyVersion) *PolicyVersion {
 		return &v
 	}).(PolicyVersionPtrOutput)
 }
 
-type PolicyVersionPtrOutput struct {
-	*pulumi.OutputState
-}
+type PolicyVersionPtrOutput struct{ *pulumi.OutputState }
 
 func (PolicyVersionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**PolicyVersion)(nil))
@@ -256,6 +252,16 @@ func (o PolicyVersionPtrOutput) ToPolicyVersionPtrOutput() PolicyVersionPtrOutpu
 
 func (o PolicyVersionPtrOutput) ToPolicyVersionPtrOutputWithContext(ctx context.Context) PolicyVersionPtrOutput {
 	return o
+}
+
+func (o PolicyVersionPtrOutput) Elem() PolicyVersionOutput {
+	return o.ApplyT(func(v *PolicyVersion) PolicyVersion {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyVersion
+		return ret
+	}).(PolicyVersionOutput)
 }
 
 type PolicyVersionArrayOutput struct{ *pulumi.OutputState }
@@ -299,6 +305,10 @@ func (o PolicyVersionMapOutput) MapIndex(k pulumi.StringInput) PolicyVersionOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyVersionInput)(nil)).Elem(), &PolicyVersion{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyVersionPtrInput)(nil)).Elem(), &PolicyVersion{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyVersionArrayInput)(nil)).Elem(), PolicyVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyVersionMapInput)(nil)).Elem(), PolicyVersionMap{})
 	pulumi.RegisterOutputType(PolicyVersionOutput{})
 	pulumi.RegisterOutputType(PolicyVersionPtrOutput{})
 	pulumi.RegisterOutputType(PolicyVersionArrayOutput{})

@@ -45,38 +45,38 @@ export interface GetLoadBalancersArgs {
     /**
      * Service address of the SLBs.
      */
-    readonly address?: string;
-    readonly addressIpVersion?: string;
-    readonly addressType?: string;
-    readonly enableDetails?: boolean;
+    address?: string;
+    addressIpVersion?: string;
+    addressType?: string;
+    enableDetails?: boolean;
     /**
      * A list of SLBs IDs.
      */
-    readonly ids?: string[];
-    readonly internetChargeType?: string;
-    readonly loadBalancerName?: string;
-    readonly masterZoneId?: string;
+    ids?: string[];
+    internetChargeType?: string;
+    loadBalancerName?: string;
+    masterZoneId?: string;
     /**
      * A regex string to filter results by SLB name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * Network type of the SLBs. Valid values: `vpc` and `classic`.
      */
-    readonly networkType?: string;
-    readonly outputFile?: string;
-    readonly paymentType?: string;
+    networkType?: string;
+    outputFile?: string;
+    paymentType?: string;
     /**
      * The Id of resource group which SLB belongs.
      */
-    readonly resourceGroupId?: string;
-    readonly serverId?: string;
-    readonly serverIntranetAddress?: string;
-    readonly slaveZoneId?: string;
+    resourceGroupId?: string;
+    serverId?: string;
+    serverIntranetAddress?: string;
+    slaveZoneId?: string;
     /**
      * SLB current status. Possible values: `inactive`, `active` and `locked`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
      * ```typescript
@@ -88,18 +88,18 @@ export interface GetLoadBalancersArgs {
      *         tagKey1: "tagValue1",
      *         tagKey2: "tagValue2",
      *     },
-     * }, { async: true }));
+     * }));
      * ```
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
     /**
      * ID of the VPC linked to the SLBs.
      */
-    readonly vpcId?: string;
+    vpcId?: string;
     /**
      * ID of the VSwitch linked to the SLBs.
      */
-    readonly vswitchId?: string;
+    vswitchId?: string;
 }
 
 /**
@@ -162,4 +162,72 @@ export interface GetLoadBalancersResult {
      * ID of the VSwitch the SLB belongs to.
      */
     readonly vswitchId?: string;
+}
+
+export function getLoadBalancersOutput(args?: GetLoadBalancersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancersResult> {
+    return pulumi.output(args).apply(a => getLoadBalancers(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getLoadBalancers.
+ */
+export interface GetLoadBalancersOutputArgs {
+    /**
+     * Service address of the SLBs.
+     */
+    address?: pulumi.Input<string>;
+    addressIpVersion?: pulumi.Input<string>;
+    addressType?: pulumi.Input<string>;
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of SLBs IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    internetChargeType?: pulumi.Input<string>;
+    loadBalancerName?: pulumi.Input<string>;
+    masterZoneId?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by SLB name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * Network type of the SLBs. Valid values: `vpc` and `classic`.
+     */
+    networkType?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
+    /**
+     * The Id of resource group which SLB belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    serverId?: pulumi.Input<string>;
+    serverIntranetAddress?: pulumi.Input<string>;
+    slaveZoneId?: pulumi.Input<string>;
+    /**
+     * SLB current status. Possible values: `inactive`, `active` and `locked`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as alicloud from "@pulumi/alicloud";
+     *
+     * const taggedInstances = pulumi.output(alicloud.slb.getLoadBalancers({
+     *     tags: {
+     *         tagKey1: "tagValue1",
+     *         tagKey2: "tagValue2",
+     *     },
+     * }));
+     * ```
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * ID of the VPC linked to the SLBs.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
+     * ID of the VSwitch linked to the SLBs.
+     */
+    vswitchId?: pulumi.Input<string>;
 }

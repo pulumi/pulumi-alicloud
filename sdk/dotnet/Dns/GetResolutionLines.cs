@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dns
 {
@@ -36,7 +37,7 @@ namespace Pulumi.AliCloud.Dns
         ///             },
         ///             OutputFile = "support_lines.txt",
         ///         }));
-        ///         this.FirstLineCode = resolutionLinesDs.Apply(resolutionLinesDs =&gt; resolutionLinesDs.Lines[0].LineCode);
+        ///         this.FirstLineCode = resolutionLinesDs.Apply(resolutionLinesDs =&gt; resolutionLinesDs.Lines?[0]?.LineCode);
         ///     }
         /// 
         ///     [Output("firstLineCode")]
@@ -48,6 +49,44 @@ namespace Pulumi.AliCloud.Dns
         /// </summary>
         public static Task<GetResolutionLinesResult> InvokeAsync(GetResolutionLinesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetResolutionLinesResult>("alicloud:dns/getResolutionLines:getResolutionLines", args ?? new GetResolutionLinesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of DNS Resolution Lines in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.60.0.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var resolutionLinesDs = Output.Create(AliCloud.Dns.GetResolutionLines.InvokeAsync(new AliCloud.Dns.GetResolutionLinesArgs
+        ///         {
+        ///             LineCodes = 
+        ///             {
+        ///                 "cn_unicom_shanxi",
+        ///             },
+        ///             OutputFile = "support_lines.txt",
+        ///         }));
+        ///         this.FirstLineCode = resolutionLinesDs.Apply(resolutionLinesDs =&gt; resolutionLinesDs.Lines?[0]?.LineCode);
+        ///     }
+        /// 
+        ///     [Output("firstLineCode")]
+        ///     public Output&lt;string&gt; FirstLineCode { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetResolutionLinesResult> Invoke(GetResolutionLinesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetResolutionLinesResult>("alicloud:dns/getResolutionLines:getResolutionLines", args ?? new GetResolutionLinesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -107,6 +146,66 @@ namespace Pulumi.AliCloud.Dns
         public string? UserClientIp { get; set; }
 
         public GetResolutionLinesArgs()
+        {
+        }
+    }
+
+    public sealed class GetResolutionLinesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Domain Name.
+        /// </summary>
+        [Input("domainName")]
+        public Input<string>? DomainName { get; set; }
+
+        /// <summary>
+        /// language.
+        /// </summary>
+        [Input("lang")]
+        public Input<string>? Lang { get; set; }
+
+        [Input("lineCodes")]
+        private InputList<string>? _lineCodes;
+
+        /// <summary>
+        /// A list of lines codes.
+        /// </summary>
+        public InputList<string> LineCodes
+        {
+            get => _lineCodes ?? (_lineCodes = new InputList<string>());
+            set => _lineCodes = value;
+        }
+
+        [Input("lineDisplayNames")]
+        private InputList<string>? _lineDisplayNames;
+
+        /// <summary>
+        /// A list of line display names.
+        /// </summary>
+        public InputList<string> LineDisplayNames
+        {
+            get => _lineDisplayNames ?? (_lineDisplayNames = new InputList<string>());
+            set => _lineDisplayNames = value;
+        }
+
+        [Input("lineNames")]
+        private InputList<string>? _lineNames;
+        public InputList<string> LineNames
+        {
+            get => _lineNames ?? (_lineNames = new InputList<string>());
+            set => _lineNames = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The ip of user client.
+        /// </summary>
+        [Input("userClientIp")]
+        public Input<string>? UserClientIp { get; set; }
+
+        public GetResolutionLinesInvokeArgs()
         {
         }
     }

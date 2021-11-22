@@ -12,6 +12,7 @@ __all__ = [
     'GetServiceResult',
     'AwaitableGetServiceResult',
     'get_service',
+    'get_service_output',
 ]
 
 @pulumi.output_type
@@ -151,3 +152,33 @@ def get_service(enable: Optional[str] = None,
         internet_charge_type=__ret__.internet_charge_type,
         opening_time=__ret__.opening_time,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_service)
+def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
+                       internet_charge_type: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceResult]:
+    """
+    Using this data source can enable CDN service automatically. If the service has been enabled, it will return `Opened`.
+
+    For information about CDN and how to use it, see [What is CDN](https://www.alibabacloud.com/help/product/27099.htm).
+
+    > **NOTE:** Available in v1.98.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    open = alicloud.cdn.get_service(enable="On",
+        internet_charge_type="PayByTraffic")
+    ```
+
+
+    :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
+    :param str internet_charge_type: The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
+           It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internet_charge_type`.
+           As a note, the updated internet charge type will be effective in the next day zero time.
+    """
+    ...

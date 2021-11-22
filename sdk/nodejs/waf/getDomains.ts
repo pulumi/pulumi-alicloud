@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *
  * const defaultDomains = pulumi.output(alicloud.waf.getDomains({
  *     instanceId: "waf-cf-xxxxx",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getDomains(args: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
@@ -48,24 +48,24 @@ export interface GetDomainsArgs {
     /**
      * Default to false and only output `id`, `domainName`. Set it to true can output more details.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of WAF domain names. Each item is domain name.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The Id of waf instance to which waf domain belongs.
      */
-    readonly instanceId: string;
+    instanceId: string;
     /**
      * A regex string to filter results by domain name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The ID of the resource group to which the queried domain belongs in Resource Management.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
 }
 
 /**
@@ -96,4 +96,35 @@ export interface GetDomainsResult {
      * The ID of the resource group to which the queried domain belongs in Resource Management.
      */
     readonly resourceGroupId?: string;
+}
+
+export function getDomainsOutput(args: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
+    return pulumi.output(args).apply(a => getDomains(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDomains.
+ */
+export interface GetDomainsOutputArgs {
+    /**
+     * Default to false and only output `id`, `domainName`. Set it to true can output more details.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of WAF domain names. Each item is domain name.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Id of waf instance to which waf domain belongs.
+     */
+    instanceId: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by domain name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group to which the queried domain belongs in Resource Management.
+     */
+    resourceGroupId?: pulumi.Input<string>;
 }

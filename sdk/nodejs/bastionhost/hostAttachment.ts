@@ -118,15 +118,15 @@ export interface HostAttachmentState {
     /**
      * Specifies the added to the host group ID.
      */
-    readonly hostGroupId?: pulumi.Input<string>;
+    hostGroupId?: pulumi.Input<string>;
     /**
      * Specified to be part of a host group of host ID.
      */
-    readonly hostId?: pulumi.Input<string>;
+    hostId?: pulumi.Input<string>;
     /**
      * The bastion host instance id.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
 }
 
 /**
@@ -136,13 +136,13 @@ export interface HostAttachmentArgs {
     /**
      * Specifies the added to the host group ID.
      */
-    readonly hostGroupId: pulumi.Input<string>;
+    hostGroupId: pulumi.Input<string>;
     /**
      * Specified to be part of a host group of host ID.
      */
-    readonly hostId: pulumi.Input<string>;
+    hostId: pulumi.Input<string>;
     /**
      * The bastion host instance id.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
 }

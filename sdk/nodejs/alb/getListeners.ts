@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const ids = alicloud.alb.getListeners({
  *     ids: ["example_id"],
  * });
- * export const albListenerId1 = ids.then(ids => ids.listeners[0].id);
+ * export const albListenerId1 = ids.then(ids => ids.listeners?[0]?.id);
  * ```
  */
 export function getListeners(args?: GetListenersArgs, opts?: pulumi.InvokeOptions): Promise<GetListenersResult> {
@@ -51,28 +51,28 @@ export interface GetListenersArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Listener IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The listener ids.
      */
-    readonly listenerIds?: string[];
+    listenerIds?: string[];
     /**
      * Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
      */
-    readonly listenerProtocol?: string;
+    listenerProtocol?: string;
     /**
      * The load balancer ids.
      */
-    readonly loadBalancerIds?: string[];
-    readonly outputFile?: string;
+    loadBalancerIds?: string[];
+    outputFile?: string;
     /**
      * The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -91,4 +91,39 @@ export interface GetListenersResult {
     readonly loadBalancerIds?: string[];
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getListenersOutput(args?: GetListenersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetListenersResult> {
+    return pulumi.output(args).apply(a => getListeners(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getListeners.
+ */
+export interface GetListenersOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Listener IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The listener ids.
+     */
+    listenerIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+     */
+    listenerProtocol?: pulumi.Input<string>;
+    /**
+     * The load balancer ids.
+     */
+    loadBalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+     */
+    status?: pulumi.Input<string>;
 }

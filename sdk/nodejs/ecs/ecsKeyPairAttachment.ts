@@ -119,19 +119,19 @@ export interface EcsKeyPairAttachmentState {
     /**
      * Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
      */
-    readonly force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * The list of ECS instance's IDs.
      */
-    readonly instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
      */
-    readonly keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string>;
     /**
      * The name of key pair used to bind.
      */
-    readonly keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string>;
 }
 
 /**
@@ -141,17 +141,17 @@ export interface EcsKeyPairAttachmentArgs {
     /**
      * Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
      */
-    readonly force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
     /**
      * The list of ECS instance's IDs.
      */
-    readonly instanceIds: pulumi.Input<pulumi.Input<string>[]>;
+    instanceIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
      */
-    readonly keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string>;
     /**
      * The name of key pair used to bind.
      */
-    readonly keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string>;
 }

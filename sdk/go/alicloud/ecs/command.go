@@ -244,7 +244,7 @@ type CommandArrayInput interface {
 type CommandArray []CommandInput
 
 func (CommandArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Command)(nil))
+	return reflect.TypeOf((*[]*Command)(nil)).Elem()
 }
 
 func (i CommandArray) ToCommandArrayOutput() CommandArrayOutput {
@@ -269,7 +269,7 @@ type CommandMapInput interface {
 type CommandMap map[string]CommandInput
 
 func (CommandMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Command)(nil))
+	return reflect.TypeOf((*map[string]*Command)(nil)).Elem()
 }
 
 func (i CommandMap) ToCommandMapOutput() CommandMapOutput {
@@ -280,9 +280,7 @@ func (i CommandMap) ToCommandMapOutputWithContext(ctx context.Context) CommandMa
 	return pulumi.ToOutputWithContext(ctx, i).(CommandMapOutput)
 }
 
-type CommandOutput struct {
-	*pulumi.OutputState
-}
+type CommandOutput struct{ *pulumi.OutputState }
 
 func (CommandOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Command)(nil))
@@ -301,14 +299,12 @@ func (o CommandOutput) ToCommandPtrOutput() CommandPtrOutput {
 }
 
 func (o CommandOutput) ToCommandPtrOutputWithContext(ctx context.Context) CommandPtrOutput {
-	return o.ApplyT(func(v Command) *Command {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Command) *Command {
 		return &v
 	}).(CommandPtrOutput)
 }
 
-type CommandPtrOutput struct {
-	*pulumi.OutputState
-}
+type CommandPtrOutput struct{ *pulumi.OutputState }
 
 func (CommandPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Command)(nil))
@@ -320,6 +316,16 @@ func (o CommandPtrOutput) ToCommandPtrOutput() CommandPtrOutput {
 
 func (o CommandPtrOutput) ToCommandPtrOutputWithContext(ctx context.Context) CommandPtrOutput {
 	return o
+}
+
+func (o CommandPtrOutput) Elem() CommandOutput {
+	return o.ApplyT(func(v *Command) Command {
+		if v != nil {
+			return *v
+		}
+		var ret Command
+		return ret
+	}).(CommandOutput)
 }
 
 type CommandArrayOutput struct{ *pulumi.OutputState }
@@ -363,6 +369,10 @@ func (o CommandMapOutput) MapIndex(k pulumi.StringInput) CommandOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CommandInput)(nil)).Elem(), &Command{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommandPtrInput)(nil)).Elem(), &Command{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommandArrayInput)(nil)).Elem(), CommandArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommandMapInput)(nil)).Elem(), CommandMap{})
 	pulumi.RegisterOutputType(CommandOutput{})
 	pulumi.RegisterOutputType(CommandPtrOutput{})
 	pulumi.RegisterOutputType(CommandArrayOutput{})

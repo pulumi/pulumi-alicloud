@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *     outputFile: "policies.txt",
  *     type: "System",
  *     userName: "user1",
- * }, { async: true }));
+ * }));
  *
  * export const firstPolicyName = policiesDs.policies[0].name;
  * ```
@@ -52,29 +52,29 @@ export interface GetPoliciesArgs {
     /**
      * Default to `true`. Set it to true can output more details.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * Filter results by a specific group name. Returned policies are attached to the specified group.
      */
-    readonly groupName?: string;
-    readonly ids?: string[];
+    groupName?: string;
+    ids?: string[];
     /**
      * A regex string to filter resulting policies by name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * Filter results by a specific role name. Returned policies are attached to the specified role.
      */
-    readonly roleName?: string;
+    roleName?: string;
     /**
      * Filter results by a specific policy type. Valid values are `Custom` and `System`.
      */
-    readonly type?: string;
+    type?: string;
     /**
      * Filter results by a specific user name. Returned policies are attached to the specified user.
      */
-    readonly userName?: string;
+    userName?: string;
 }
 
 /**
@@ -104,4 +104,40 @@ export interface GetPoliciesResult {
      */
     readonly type?: string;
     readonly userName?: string;
+}
+
+export function getPoliciesOutput(args?: GetPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPoliciesResult> {
+    return pulumi.output(args).apply(a => getPolicies(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPolicies.
+ */
+export interface GetPoliciesOutputArgs {
+    /**
+     * Default to `true`. Set it to true can output more details.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * Filter results by a specific group name. Returned policies are attached to the specified group.
+     */
+    groupName?: pulumi.Input<string>;
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter resulting policies by name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Filter results by a specific role name. Returned policies are attached to the specified role.
+     */
+    roleName?: pulumi.Input<string>;
+    /**
+     * Filter results by a specific policy type. Valid values are `Custom` and `System`.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * Filter results by a specific user name. Returned policies are attached to the specified user.
+     */
+    userName?: pulumi.Input<string>;
 }

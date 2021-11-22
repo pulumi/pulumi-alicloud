@@ -22,13 +22,13 @@ import * as utilities from "../utilities";
  *     trafficMirrorFilterId: "example_traffic_mirror_filter_id",
  *     ids: ["example_id"],
  * });
- * export const vpcTrafficMirrorFilterIngressRuleId1 = ids.then(ids => ids.rules[0].id);
+ * export const vpcTrafficMirrorFilterIngressRuleId1 = ids.then(ids => ids.rules?[0]?.id);
  * const status = alicloud.vpc.getTrafficMirrorFilterIngressRules({
  *     trafficMirrorFilterId: "example_traffic_mirror_filter_id",
  *     ids: ["example_id"],
  *     status: "Created",
  * });
- * export const vpcTrafficMirrorFilterIngressRuleId2 = status.then(status => status.rules[0].id);
+ * export const vpcTrafficMirrorFilterIngressRuleId2 = status.then(status => status.rules?[0]?.id);
  * ```
  */
 export function getTrafficMirrorFilterIngressRules(args: GetTrafficMirrorFilterIngressRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetTrafficMirrorFilterIngressRulesResult> {
@@ -54,16 +54,16 @@ export interface GetTrafficMirrorFilterIngressRulesArgs {
     /**
      * A list of Traffic Mirror Filter Ingress Rule IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The ID of the filter associated with the inbound rule.
      */
-    readonly trafficMirrorFilterId: string;
+    trafficMirrorFilterId: string;
 }
 
 /**
@@ -79,4 +79,27 @@ export interface GetTrafficMirrorFilterIngressRulesResult {
     readonly rules: outputs.vpc.GetTrafficMirrorFilterIngressRulesRule[];
     readonly status?: string;
     readonly trafficMirrorFilterId: string;
+}
+
+export function getTrafficMirrorFilterIngressRulesOutput(args: GetTrafficMirrorFilterIngressRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrafficMirrorFilterIngressRulesResult> {
+    return pulumi.output(args).apply(a => getTrafficMirrorFilterIngressRules(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTrafficMirrorFilterIngressRules.
+ */
+export interface GetTrafficMirrorFilterIngressRulesOutputArgs {
+    /**
+     * A list of Traffic Mirror Filter Ingress Rule IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The ID of the filter associated with the inbound rule.
+     */
+    trafficMirrorFilterId: pulumi.Input<string>;
 }

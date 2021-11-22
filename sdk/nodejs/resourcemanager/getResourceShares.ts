@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstResourceManagerResourceShareId = example.then(example => example.shares[0].id);
+ * export const firstResourceManagerResourceShareId = example.then(example => example.shares?[0]?.id);
  * ```
  */
 export function getResourceShares(args: GetResourceSharesArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceSharesResult> {
@@ -51,24 +51,24 @@ export interface GetResourceSharesArgs {
     /**
      * A list of Resource Share IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Resource Share name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The name of resource share.
      */
-    readonly resourceShareName?: string;
+    resourceShareName?: string;
     /**
      * The owner of resource share.
      */
-    readonly resourceShareOwner: string;
+    resourceShareOwner: string;
     /**
      * The status of resource share.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -87,4 +87,35 @@ export interface GetResourceSharesResult {
     readonly resourceShareOwner: string;
     readonly shares: outputs.resourcemanager.GetResourceSharesShare[];
     readonly status?: string;
+}
+
+export function getResourceSharesOutput(args: GetResourceSharesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceSharesResult> {
+    return pulumi.output(args).apply(a => getResourceShares(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getResourceShares.
+ */
+export interface GetResourceSharesOutputArgs {
+    /**
+     * A list of Resource Share IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Resource Share name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The name of resource share.
+     */
+    resourceShareName?: pulumi.Input<string>;
+    /**
+     * The owner of resource share.
+     */
+    resourceShareOwner: pulumi.Input<string>;
+    /**
+     * The status of resource share.
+     */
+    status?: pulumi.Input<string>;
 }

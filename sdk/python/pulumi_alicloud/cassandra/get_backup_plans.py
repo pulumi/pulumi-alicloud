@@ -13,6 +13,7 @@ __all__ = [
     'GetBackupPlansResult',
     'AwaitableGetBackupPlansResult',
     'get_backup_plans',
+    'get_backup_plans_output',
 ]
 
 @pulumi.output_type
@@ -117,3 +118,30 @@ def get_backup_plans(cluster_id: Optional[str] = None,
         ids=__ret__.ids,
         output_file=__ret__.output_file,
         plans=__ret__.plans)
+
+
+@_utilities.lift_output_func(get_backup_plans)
+def get_backup_plans_output(cluster_id: Optional[pulumi.Input[str]] = None,
+                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackupPlansResult]:
+    """
+    This data source provides the Cassandra Backup Plans of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.128.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cassandra.get_backup_plans(cluster_id="example_value")
+    pulumi.export("firstCassandraBackupPlanId", example.plans[0].id)
+    ```
+
+
+    :param str cluster_id: The ID of the cluster for the backup.
+    """
+    ...

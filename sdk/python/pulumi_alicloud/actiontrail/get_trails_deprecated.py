@@ -13,6 +13,7 @@ __all__ = [
     'GetTrailsDeprecatedResult',
     'AwaitableGetTrailsDeprecatedResult',
     'get_trails_deprecated',
+    'get_trails_deprecated_output',
 ]
 
 warnings.warn("""DataSource has been renamed to `getTrails`""", DeprecationWarning)
@@ -173,3 +174,20 @@ def get_trails_deprecated(ids: Optional[Sequence[str]] = None,
         output_file=__ret__.output_file,
         status=__ret__.status,
         trails=__ret__.trails)
+
+
+@_utilities.lift_output_func(get_trails_deprecated)
+def get_trails_deprecated_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                 include_organization_trail: Optional[pulumi.Input[Optional[bool]]] = None,
+                                 include_shadow_trails: Optional[pulumi.Input[Optional[bool]]] = None,
+                                 name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                 status: Optional[pulumi.Input[Optional[str]]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTrailsDeprecatedResult]:
+    """
+    Use this data source to access information about an existing resource.
+
+    :param str name_regex: A regex string to filter results action trail name.
+    """
+    pulumi.log.warn("""get_trails_deprecated is deprecated: DataSource has been renamed to `getTrails`""")
+    ...

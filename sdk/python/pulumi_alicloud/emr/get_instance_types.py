@@ -13,6 +13,7 @@ __all__ = [
     'GetInstanceTypesResult',
     'AwaitableGetInstanceTypesResult',
     'get_instance_types',
+    'get_instance_types_output',
 ]
 
 @pulumi.output_type
@@ -152,7 +153,7 @@ def get_instance_types(cluster_type: Optional[str] = None,
                        zone_id: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceTypesResult:
     """
-    The `emr.getInstanceTypes` data source provides a collection of ecs
+    The `emr.get_instance_types` data source provides a collection of ecs
     instance types available in Alibaba Cloud account when create a emr cluster.
 
     > **NOTE:** Available in 1.59.0+
@@ -212,3 +213,50 @@ def get_instance_types(cluster_type: Optional[str] = None,
         support_node_types=__ret__.support_node_types,
         types=__ret__.types,
         zone_id=__ret__.zone_id)
+
+
+@_utilities.lift_output_func(get_instance_types)
+def get_instance_types_output(cluster_type: Optional[pulumi.Input[str]] = None,
+                              destination_resource: Optional[pulumi.Input[str]] = None,
+                              instance_charge_type: Optional[pulumi.Input[str]] = None,
+                              instance_type: Optional[pulumi.Input[Optional[str]]] = None,
+                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                              support_local_storage: Optional[pulumi.Input[Optional[bool]]] = None,
+                              support_node_types: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                              zone_id: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTypesResult]:
+    """
+    The `emr.get_instance_types` data source provides a collection of ecs
+    instance types available in Alibaba Cloud account when create a emr cluster.
+
+    > **NOTE:** Available in 1.59.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.emr.get_instance_types(cluster_type="HADOOP",
+        destination_resource="InstanceType",
+        instance_charge_type="PostPaid",
+        instance_type="ecs.g5.2xlarge",
+        support_local_storage=False,
+        support_node_types=[
+            "MASTER",
+            "CORE",
+        ])
+    pulumi.export("firstInstanceType", default.types[0].id)
+    ```
+
+
+    :param str cluster_type: The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.
+    :param str destination_resource: The destination resource of emr cluster instance
+    :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+    :param str instance_type: Filter the specific ecs instance type to create emr cluster.
+    :param bool support_local_storage: Whether the current storage disk is local or not.
+    :param Sequence[str] support_node_types: The specific supported node type list.
+           Possible values may be any one or combination of these: ["MASTER", "CORE", "TASK", "GATEWAY"]
+    :param str zone_id: The supported resources of specific zoneId.
+    """
+    ...

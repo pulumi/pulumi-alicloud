@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vswitchName: name,
  * });
  * const instance = new alicloud.rds.Instance("instance", {
@@ -162,15 +162,15 @@ export interface AccountPrivilegeState {
     /**
      * A specified account name.
      */
-    readonly accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string>;
     /**
      * List of specified database name.
      */
-    readonly dbNames?: pulumi.Input<pulumi.Input<string>[]>;
+    dbNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Id of instance in which account belongs.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The privilege of one account access database. Valid values: 
      * - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
@@ -179,7 +179,7 @@ export interface AccountPrivilegeState {
      * - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
      */
-    readonly privilege?: pulumi.Input<string>;
+    privilege?: pulumi.Input<string>;
 }
 
 /**
@@ -189,15 +189,15 @@ export interface AccountPrivilegeArgs {
     /**
      * A specified account name.
      */
-    readonly accountName: pulumi.Input<string>;
+    accountName: pulumi.Input<string>;
     /**
      * List of specified database name.
      */
-    readonly dbNames: pulumi.Input<pulumi.Input<string>[]>;
+    dbNames: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Id of instance in which account belongs.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * The privilege of one account access database. Valid values: 
      * - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
@@ -206,5 +206,5 @@ export interface AccountPrivilegeArgs {
      * - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
      */
-    readonly privilege?: pulumi.Input<string>;
+    privilege?: pulumi.Input<string>;
 }

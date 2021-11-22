@@ -47,16 +47,16 @@ export interface GetClustersArgs {
     /**
      * An ids string to filter results by the cluster id.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * ID of the namespace in EDAS.
      */
-    readonly logicalRegionId: string;
+    logicalRegionId: string;
     /**
      * A regex string to filter results by the cluster name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -82,4 +82,27 @@ export interface GetClustersResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getClustersOutput(args: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
+    return pulumi.output(args).apply(a => getClusters(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getClusters.
+ */
+export interface GetClustersOutputArgs {
+    /**
+     * An ids string to filter results by the cluster id.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ID of the namespace in EDAS.
+     */
+    logicalRegionId: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by the cluster name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

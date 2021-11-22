@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.dts.getSubscriptionJobs({});
- * export const dtsSubscriptionJobId1 = ids.then(ids => ids.jobs[0].id);
+ * export const dtsSubscriptionJobId1 = ids.then(ids => ids.jobs?[0]?.id);
  * ```
  */
 export function getSubscriptionJobs(args?: GetSubscriptionJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetSubscriptionJobsResult> {
@@ -45,24 +45,24 @@ export function getSubscriptionJobs(args?: GetSubscriptionJobsArgs, opts?: pulum
  * A collection of arguments for invoking getSubscriptionJobs.
  */
 export interface GetSubscriptionJobsArgs {
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Subscription Job IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by subscription job name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The tag of the resource.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -81,4 +81,32 @@ export interface GetSubscriptionJobsResult {
     readonly outputFile?: string;
     readonly status?: string;
     readonly tags?: {[key: string]: any};
+}
+
+export function getSubscriptionJobsOutput(args?: GetSubscriptionJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubscriptionJobsResult> {
+    return pulumi.output(args).apply(a => getSubscriptionJobs(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSubscriptionJobs.
+ */
+export interface GetSubscriptionJobsOutputArgs {
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Subscription Job IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by subscription job name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The tag of the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

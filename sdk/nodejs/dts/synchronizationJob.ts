@@ -380,152 +380,152 @@ export interface SynchronizationJobState {
     /**
      * Start time in Unix timestamp format.
      */
-    readonly checkpoint?: pulumi.Input<string>;
+    checkpoint?: pulumi.Input<string>;
     /**
      * Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization values include:
      */
-    readonly dataInitialization?: pulumi.Input<boolean>;
+    dataInitialization?: pulumi.Input<boolean>;
     /**
      * Whether to perform incremental data migration for migration types or synchronization values include:
      */
-    readonly dataSynchronization?: pulumi.Input<boolean>;
+    dataSynchronization?: pulumi.Input<boolean>;
     /**
      * Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
      */
-    readonly dbList?: pulumi.Input<string>;
+    dbList?: pulumi.Input<string>;
     /**
      * The delay notice. Valid values: `true`, `false`.
      */
-    readonly delayNotice?: pulumi.Input<boolean>;
+    delayNotice?: pulumi.Input<boolean>;
     /**
      * The delay phone. The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
      */
-    readonly delayPhone?: pulumi.Input<string>;
+    delayPhone?: pulumi.Input<string>;
     /**
      * The delay rule time. When `delayNotice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
      */
-    readonly delayRuleTime?: pulumi.Input<string>;
-    readonly destinationEndpointDatabaseName?: pulumi.Input<string>;
+    delayRuleTime?: pulumi.Input<string>;
+    destinationEndpointDatabaseName?: pulumi.Input<string>;
     /**
      * The type of destination database. Valid values: `ADB20`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
      */
-    readonly destinationEndpointEngineName?: pulumi.Input<string>;
+    destinationEndpointEngineName?: pulumi.Input<string>;
     /**
      * The ID of destination instance.
      */
-    readonly destinationEndpointInstanceId?: pulumi.Input<string>;
+    destinationEndpointInstanceId?: pulumi.Input<string>;
     /**
      * The type of destination instance. Valid values: `ads`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
      */
-    readonly destinationEndpointInstanceType?: pulumi.Input<string>;
+    destinationEndpointInstanceType?: pulumi.Input<string>;
     /**
      * The ip of source endpoint.
      */
-    readonly destinationEndpointIp?: pulumi.Input<string>;
+    destinationEndpointIp?: pulumi.Input<string>;
     /**
      * The SID of Oracle database.
      */
-    readonly destinationEndpointOracleSid?: pulumi.Input<string>;
+    destinationEndpointOracleSid?: pulumi.Input<string>;
     /**
      * The password of database account.
      */
-    readonly destinationEndpointPassword?: pulumi.Input<string>;
+    destinationEndpointPassword?: pulumi.Input<string>;
     /**
      * The port of source endpoint.
      */
-    readonly destinationEndpointPort?: pulumi.Input<string>;
+    destinationEndpointPort?: pulumi.Input<string>;
     /**
      * The region of destination instance.
      */
-    readonly destinationEndpointRegion?: pulumi.Input<string>;
+    destinationEndpointRegion?: pulumi.Input<string>;
     /**
      * The username of database account.
      */
-    readonly destinationEndpointUserName?: pulumi.Input<string>;
+    destinationEndpointUserName?: pulumi.Input<string>;
     /**
      * Synchronizing instance ID. The ID of `alicloud.dts.SynchronizationInstance`.
      */
-    readonly dtsInstanceId?: pulumi.Input<string>;
+    dtsInstanceId?: pulumi.Input<string>;
     /**
      * The name of synchronization job.
      */
-    readonly dtsJobName?: pulumi.Input<string>;
+    dtsJobName?: pulumi.Input<string>;
     /**
      * The error notice. Valid values: `true`, `false`.
      */
-    readonly errorNotice?: pulumi.Input<boolean>;
+    errorNotice?: pulumi.Input<boolean>;
     /**
      * The error phone. The mobile phone number of the contact who error the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
      */
-    readonly errorPhone?: pulumi.Input<string>;
+    errorPhone?: pulumi.Input<string>;
     /**
      * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
      */
-    readonly instanceClass?: pulumi.Input<string>;
+    instanceClass?: pulumi.Input<string>;
     /**
      * DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
      */
-    readonly reserve?: pulumi.Input<string>;
+    reserve?: pulumi.Input<string>;
     /**
      * The name of migrate the database.
      */
-    readonly sourceEndpointDatabaseName?: pulumi.Input<string>;
+    sourceEndpointDatabaseName?: pulumi.Input<string>;
     /**
      * The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
      */
-    readonly sourceEndpointEngineName?: pulumi.Input<string>;
+    sourceEndpointEngineName?: pulumi.Input<string>;
     /**
      * The ID of source instance.
      */
-    readonly sourceEndpointInstanceId?: pulumi.Input<string>;
+    sourceEndpointInstanceId?: pulumi.Input<string>;
     /**
      * The type of source instance. Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
      */
-    readonly sourceEndpointInstanceType?: pulumi.Input<string>;
+    sourceEndpointInstanceType?: pulumi.Input<string>;
     /**
      * The ip of source endpoint.
      */
-    readonly sourceEndpointIp?: pulumi.Input<string>;
+    sourceEndpointIp?: pulumi.Input<string>;
     /**
      * The SID of Oracle database.
      */
-    readonly sourceEndpointOracleSid?: pulumi.Input<string>;
+    sourceEndpointOracleSid?: pulumi.Input<string>;
     /**
      * The Alibaba Cloud account ID to which the source instance belongs.
      */
-    readonly sourceEndpointOwnerId?: pulumi.Input<string>;
+    sourceEndpointOwnerId?: pulumi.Input<string>;
     /**
      * The password of database account.
      */
-    readonly sourceEndpointPassword?: pulumi.Input<string>;
+    sourceEndpointPassword?: pulumi.Input<string>;
     /**
      * The port of source endpoint.
      */
-    readonly sourceEndpointPort?: pulumi.Input<string>;
+    sourceEndpointPort?: pulumi.Input<string>;
     /**
      * The region of source instance.
      */
-    readonly sourceEndpointRegion?: pulumi.Input<string>;
+    sourceEndpointRegion?: pulumi.Input<string>;
     /**
      * The name of the role configured for the cloud account to which the source instance belongs.
      */
-    readonly sourceEndpointRole?: pulumi.Input<string>;
+    sourceEndpointRole?: pulumi.Input<string>;
     /**
      * The username of database account.
      */
-    readonly sourceEndpointUserName?: pulumi.Input<string>;
+    sourceEndpointUserName?: pulumi.Input<string>;
     /**
      * The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Whether to perform a database table structure to migrate or initialization values include:
      */
-    readonly structureInitialization?: pulumi.Input<boolean>;
+    structureInitialization?: pulumi.Input<boolean>;
     /**
      * Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `syncArchitecture` of the `alicloud.dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
      */
-    readonly synchronizationDirection?: pulumi.Input<string>;
+    synchronizationDirection?: pulumi.Input<string>;
 }
 
 /**
@@ -535,150 +535,150 @@ export interface SynchronizationJobArgs {
     /**
      * Start time in Unix timestamp format.
      */
-    readonly checkpoint?: pulumi.Input<string>;
+    checkpoint?: pulumi.Input<string>;
     /**
      * Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization values include:
      */
-    readonly dataInitialization: pulumi.Input<boolean>;
+    dataInitialization: pulumi.Input<boolean>;
     /**
      * Whether to perform incremental data migration for migration types or synchronization values include:
      */
-    readonly dataSynchronization: pulumi.Input<boolean>;
+    dataSynchronization: pulumi.Input<boolean>;
     /**
      * Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
      */
-    readonly dbList: pulumi.Input<string>;
+    dbList: pulumi.Input<string>;
     /**
      * The delay notice. Valid values: `true`, `false`.
      */
-    readonly delayNotice?: pulumi.Input<boolean>;
+    delayNotice?: pulumi.Input<boolean>;
     /**
      * The delay phone. The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
      */
-    readonly delayPhone?: pulumi.Input<string>;
+    delayPhone?: pulumi.Input<string>;
     /**
      * The delay rule time. When `delayNotice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
      */
-    readonly delayRuleTime?: pulumi.Input<string>;
-    readonly destinationEndpointDatabaseName?: pulumi.Input<string>;
+    delayRuleTime?: pulumi.Input<string>;
+    destinationEndpointDatabaseName?: pulumi.Input<string>;
     /**
      * The type of destination database. Valid values: `ADB20`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
      */
-    readonly destinationEndpointEngineName: pulumi.Input<string>;
+    destinationEndpointEngineName: pulumi.Input<string>;
     /**
      * The ID of destination instance.
      */
-    readonly destinationEndpointInstanceId?: pulumi.Input<string>;
+    destinationEndpointInstanceId?: pulumi.Input<string>;
     /**
      * The type of destination instance. Valid values: `ads`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
      */
-    readonly destinationEndpointInstanceType: pulumi.Input<string>;
+    destinationEndpointInstanceType: pulumi.Input<string>;
     /**
      * The ip of source endpoint.
      */
-    readonly destinationEndpointIp?: pulumi.Input<string>;
+    destinationEndpointIp?: pulumi.Input<string>;
     /**
      * The SID of Oracle database.
      */
-    readonly destinationEndpointOracleSid?: pulumi.Input<string>;
+    destinationEndpointOracleSid?: pulumi.Input<string>;
     /**
      * The password of database account.
      */
-    readonly destinationEndpointPassword?: pulumi.Input<string>;
+    destinationEndpointPassword?: pulumi.Input<string>;
     /**
      * The port of source endpoint.
      */
-    readonly destinationEndpointPort?: pulumi.Input<string>;
+    destinationEndpointPort?: pulumi.Input<string>;
     /**
      * The region of destination instance.
      */
-    readonly destinationEndpointRegion?: pulumi.Input<string>;
+    destinationEndpointRegion?: pulumi.Input<string>;
     /**
      * The username of database account.
      */
-    readonly destinationEndpointUserName?: pulumi.Input<string>;
+    destinationEndpointUserName?: pulumi.Input<string>;
     /**
      * Synchronizing instance ID. The ID of `alicloud.dts.SynchronizationInstance`.
      */
-    readonly dtsInstanceId: pulumi.Input<string>;
+    dtsInstanceId: pulumi.Input<string>;
     /**
      * The name of synchronization job.
      */
-    readonly dtsJobName?: pulumi.Input<string>;
+    dtsJobName?: pulumi.Input<string>;
     /**
      * The error notice. Valid values: `true`, `false`.
      */
-    readonly errorNotice?: pulumi.Input<boolean>;
+    errorNotice?: pulumi.Input<boolean>;
     /**
      * The error phone. The mobile phone number of the contact who error the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
      */
-    readonly errorPhone?: pulumi.Input<string>;
+    errorPhone?: pulumi.Input<string>;
     /**
      * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
      */
-    readonly instanceClass?: pulumi.Input<string>;
+    instanceClass?: pulumi.Input<string>;
     /**
      * DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
      */
-    readonly reserve?: pulumi.Input<string>;
+    reserve?: pulumi.Input<string>;
     /**
      * The name of migrate the database.
      */
-    readonly sourceEndpointDatabaseName?: pulumi.Input<string>;
+    sourceEndpointDatabaseName?: pulumi.Input<string>;
     /**
      * The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
      */
-    readonly sourceEndpointEngineName: pulumi.Input<string>;
+    sourceEndpointEngineName: pulumi.Input<string>;
     /**
      * The ID of source instance.
      */
-    readonly sourceEndpointInstanceId?: pulumi.Input<string>;
+    sourceEndpointInstanceId?: pulumi.Input<string>;
     /**
      * The type of source instance. Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
      */
-    readonly sourceEndpointInstanceType: pulumi.Input<string>;
+    sourceEndpointInstanceType: pulumi.Input<string>;
     /**
      * The ip of source endpoint.
      */
-    readonly sourceEndpointIp?: pulumi.Input<string>;
+    sourceEndpointIp?: pulumi.Input<string>;
     /**
      * The SID of Oracle database.
      */
-    readonly sourceEndpointOracleSid?: pulumi.Input<string>;
+    sourceEndpointOracleSid?: pulumi.Input<string>;
     /**
      * The Alibaba Cloud account ID to which the source instance belongs.
      */
-    readonly sourceEndpointOwnerId?: pulumi.Input<string>;
+    sourceEndpointOwnerId?: pulumi.Input<string>;
     /**
      * The password of database account.
      */
-    readonly sourceEndpointPassword?: pulumi.Input<string>;
+    sourceEndpointPassword?: pulumi.Input<string>;
     /**
      * The port of source endpoint.
      */
-    readonly sourceEndpointPort?: pulumi.Input<string>;
+    sourceEndpointPort?: pulumi.Input<string>;
     /**
      * The region of source instance.
      */
-    readonly sourceEndpointRegion?: pulumi.Input<string>;
+    sourceEndpointRegion?: pulumi.Input<string>;
     /**
      * The name of the role configured for the cloud account to which the source instance belongs.
      */
-    readonly sourceEndpointRole?: pulumi.Input<string>;
+    sourceEndpointRole?: pulumi.Input<string>;
     /**
      * The username of database account.
      */
-    readonly sourceEndpointUserName?: pulumi.Input<string>;
+    sourceEndpointUserName?: pulumi.Input<string>;
     /**
      * The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Whether to perform a database table structure to migrate or initialization values include:
      */
-    readonly structureInitialization: pulumi.Input<boolean>;
+    structureInitialization: pulumi.Input<boolean>;
     /**
      * Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `syncArchitecture` of the `alicloud.dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
      */
-    readonly synchronizationDirection?: pulumi.Input<string>;
+    synchronizationDirection?: pulumi.Input<string>;
 }

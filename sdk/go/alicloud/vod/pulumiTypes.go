@@ -425,6 +425,12 @@ func (o GetDomainsDomainSourceArrayOutput) Index(i pulumi.IntInput) GetDomainsDo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainSourceInput)(nil)).Elem(), DomainSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainSourceArrayInput)(nil)).Elem(), DomainSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainInput)(nil)).Elem(), GetDomainsDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainArrayInput)(nil)).Elem(), GetDomainsDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainSourceInput)(nil)).Elem(), GetDomainsDomainSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainSourceArrayInput)(nil)).Elem(), GetDomainsDomainSourceArray{})
 	pulumi.RegisterOutputType(DomainSourceOutput{})
 	pulumi.RegisterOutputType(DomainSourceArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainOutput{})

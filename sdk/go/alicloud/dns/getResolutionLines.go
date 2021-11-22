@@ -4,6 +4,9 @@
 package dns
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -78,4 +81,92 @@ type GetResolutionLinesResult struct {
 	Lines        []GetResolutionLinesLine `pulumi:"lines"`
 	OutputFile   *string                  `pulumi:"outputFile"`
 	UserClientIp *string                  `pulumi:"userClientIp"`
+}
+
+func GetResolutionLinesOutput(ctx *pulumi.Context, args GetResolutionLinesOutputArgs, opts ...pulumi.InvokeOption) GetResolutionLinesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetResolutionLinesResult, error) {
+			args := v.(GetResolutionLinesArgs)
+			r, err := GetResolutionLines(ctx, &args, opts...)
+			return *r, err
+		}).(GetResolutionLinesResultOutput)
+}
+
+// A collection of arguments for invoking getResolutionLines.
+type GetResolutionLinesOutputArgs struct {
+	// Domain Name.
+	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
+	// language.
+	Lang pulumi.StringPtrInput `pulumi:"lang"`
+	// A list of lines codes.
+	LineCodes pulumi.StringArrayInput `pulumi:"lineCodes"`
+	// A list of line display names.
+	LineDisplayNames pulumi.StringArrayInput `pulumi:"lineDisplayNames"`
+	LineNames        pulumi.StringArrayInput `pulumi:"lineNames"`
+	OutputFile       pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// The ip of user client.
+	UserClientIp pulumi.StringPtrInput `pulumi:"userClientIp"`
+}
+
+func (GetResolutionLinesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResolutionLinesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getResolutionLines.
+type GetResolutionLinesResultOutput struct{ *pulumi.OutputState }
+
+func (GetResolutionLinesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResolutionLinesResult)(nil)).Elem()
+}
+
+func (o GetResolutionLinesResultOutput) ToGetResolutionLinesResultOutput() GetResolutionLinesResultOutput {
+	return o
+}
+
+func (o GetResolutionLinesResultOutput) ToGetResolutionLinesResultOutputWithContext(ctx context.Context) GetResolutionLinesResultOutput {
+	return o
+}
+
+func (o GetResolutionLinesResultOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResolutionLinesResult) *string { return v.DomainName }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetResolutionLinesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResolutionLinesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetResolutionLinesResultOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResolutionLinesResult) *string { return v.Lang }).(pulumi.StringPtrOutput)
+}
+
+// Line code.
+func (o GetResolutionLinesResultOutput) LineCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetResolutionLinesResult) []string { return v.LineCodes }).(pulumi.StringArrayOutput)
+}
+
+// A list of line display names.
+func (o GetResolutionLinesResultOutput) LineDisplayNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetResolutionLinesResult) []string { return v.LineDisplayNames }).(pulumi.StringArrayOutput)
+}
+
+func (o GetResolutionLinesResultOutput) LineNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetResolutionLinesResult) []string { return v.LineNames }).(pulumi.StringArrayOutput)
+}
+
+// A list of cloud resolution line. Each element contains the following attributes:
+func (o GetResolutionLinesResultOutput) Lines() GetResolutionLinesLineArrayOutput {
+	return o.ApplyT(func(v GetResolutionLinesResult) []GetResolutionLinesLine { return v.Lines }).(GetResolutionLinesLineArrayOutput)
+}
+
+func (o GetResolutionLinesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResolutionLinesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResolutionLinesResultOutput) UserClientIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResolutionLinesResult) *string { return v.UserClientIp }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetResolutionLinesResultOutput{})
 }

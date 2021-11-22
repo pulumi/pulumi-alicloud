@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const instancesDs = pulumi.output(alicloud.ecs.getInstances({
  *     nameRegex: "web_server",
  *     status: "Running",
- * }, { async: true }));
+ * }));
  *
  * export const firstInstanceId = instancesDs.instances[0].id;
  * export const instanceIds = instancesDs.ids!;
@@ -54,32 +54,32 @@ export interface GetInstancesArgs {
     /**
      * Availability zone where instances are located.
      */
-    readonly availabilityZone?: string;
+    availabilityZone?: string;
     /**
      * A list of ECS instance IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The image ID of some ECS instance used.
      */
-    readonly imageId?: string;
+    imageId?: string;
     /**
      * A regex string to filter results by instance name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The RAM role name which the instance attaches.
      */
-    readonly ramRoleName?: string;
+    ramRoleName?: string;
     /**
      * The Id of resource group which the instance belongs.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * A map of tags assigned to the ECS instances. It must be in the format:
      * ```typescript
@@ -91,18 +91,18 @@ export interface GetInstancesArgs {
      *         tagKey1: "tagValue1",
      *         tagKey2: "tagValue2",
      *     },
-     * }, { async: true }));
+     * }));
      * ```
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
     /**
      * ID of the VPC linked to the instances.
      */
-    readonly vpcId?: string;
+    vpcId?: string;
     /**
      * ID of the VSwitch linked to the instances.
      */
-    readonly vswitchId?: string;
+    vswitchId?: string;
 }
 
 /**
@@ -159,4 +159,66 @@ export interface GetInstancesResult {
      * ID of the VSwitch the instance belongs to.
      */
     readonly vswitchId?: string;
+}
+
+export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
+    return pulumi.output(args).apply(a => getInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstances.
+ */
+export interface GetInstancesOutputArgs {
+    /**
+     * Availability zone where instances are located.
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
+     * A list of ECS instance IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The image ID of some ECS instance used.
+     */
+    imageId?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by instance name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The RAM role name which the instance attaches.
+     */
+    ramRoleName?: pulumi.Input<string>;
+    /**
+     * The Id of resource group which the instance belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * A map of tags assigned to the ECS instances. It must be in the format:
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as alicloud from "@pulumi/alicloud";
+     *
+     * const taggedInstances = pulumi.output(alicloud.ecs.getInstances({
+     *     tags: {
+     *         tagKey1: "tagValue1",
+     *         tagKey2: "tagValue2",
+     *     },
+     * }));
+     * ```
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * ID of the VPC linked to the instances.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
+     * ID of the VSwitch linked to the instances.
+     */
+    vswitchId?: pulumi.Input<string>;
 }

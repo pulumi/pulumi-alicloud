@@ -13,6 +13,7 @@ __all__ = [
     'GetAutoSnapshotPoliciesResult',
     'AwaitableGetAutoSnapshotPoliciesResult',
     'get_auto_snapshot_policies',
+    'get_auto_snapshot_policies_output',
 ]
 
 @pulumi.output_type
@@ -157,3 +158,37 @@ def get_auto_snapshot_policies(ids: Optional[Sequence[str]] = None,
         policies=__ret__.policies,
         status=__ret__.status,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_auto_snapshot_policies)
+def get_auto_snapshot_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                      status: Optional[pulumi.Input[Optional[str]]] = None,
+                                      tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAutoSnapshotPoliciesResult]:
+    """
+    This data source provides the Ecs Auto Snapshot Policies of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.117.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ecs.get_auto_snapshot_policies(ids=["sp-bp14e66xxxxxxxx"],
+        name_regex="tf-testAcc")
+    pulumi.export("firstEcsAutoSnapshotPolicyId", example.policies[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Auto Snapshot Policy IDs.
+    :param str name_regex: A regex string to filter results by Auto Snapshot Policy name.
+    :param str status: The status of Auto Snapshot Policy.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    """
+    ...

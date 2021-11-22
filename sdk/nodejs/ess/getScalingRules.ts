@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     ],
  *     nameRegex: "scaling_rule_name",
  *     scalingGroupId: "scaling_group_id",
- * }, { async: true }));
+ * }));
  *
  * export const firstScalingRule = scalingrulesDs.rules[0].id;
  * ```
@@ -51,20 +51,20 @@ export interface GetScalingRulesArgs {
     /**
      * A list of scaling rule IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter resulting scaling rules by name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * Scaling group id the scaling rules belong to.
      */
-    readonly scalingGroupId?: string;
+    scalingGroupId?: string;
     /**
      * Type of scaling rule.
      */
-    readonly type?: string;
+    type?: string;
 }
 
 /**
@@ -97,4 +97,31 @@ export interface GetScalingRulesResult {
      * Type of the scaling rule.
      */
     readonly type?: string;
+}
+
+export function getScalingRulesOutput(args?: GetScalingRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScalingRulesResult> {
+    return pulumi.output(args).apply(a => getScalingRules(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getScalingRules.
+ */
+export interface GetScalingRulesOutputArgs {
+    /**
+     * A list of scaling rule IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter resulting scaling rules by name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Scaling group id the scaling rules belong to.
+     */
+    scalingGroupId?: pulumi.Input<string>;
+    /**
+     * Type of scaling rule.
+     */
+    type?: pulumi.Input<string>;
 }

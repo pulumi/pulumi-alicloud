@@ -13,6 +13,7 @@ __all__ = [
     'GetAlidnsDomainGroupsResult',
     'AwaitableGetAlidnsDomainGroupsResult',
     'get_alidns_domain_groups',
+    'get_alidns_domain_groups_output',
 ]
 
 @pulumi.output_type
@@ -137,3 +138,30 @@ def get_alidns_domain_groups(ids: Optional[Sequence[str]] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_alidns_domain_groups)
+def get_alidns_domain_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlidnsDomainGroupsResult]:
+    """
+    This data source provides a list of Alidns Domain Groups in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:**  Available in 1.85.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.dns.get_alidns_domain_groups(ids=["c5ef2bc43064445787adf182af2****"])
+    pulumi.export("firstDomainGroupId", example.groups[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of instance IDs.
+    :param str name_regex: A regex string to filter results by the domain group name.
+    """
+    ...

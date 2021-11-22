@@ -194,19 +194,19 @@ export interface PhysicalConnectionState {
     /**
      * The Physical Leased Line Access Point ID.
      */
-    readonly accessPointId?: pulumi.Input<string>;
+    accessPointId?: pulumi.Input<string>;
     /**
      * On the Bandwidth of the ECC Service and Physical Connection.
      */
-    readonly bandwidth?: pulumi.Input<string>;
+    bandwidth?: pulumi.Input<string>;
     /**
      * Operators for Physical Connection Circuit Provided Coding.
      */
-    readonly circuitCode?: pulumi.Input<string>;
+    circuitCode?: pulumi.Input<string>;
     /**
      * The Physical Connection to Which the Description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Provides Access to the Physical Line Operator. Valid values:
      * * CT: China Telecom
@@ -216,15 +216,15 @@ export interface PhysicalConnectionState {
      * * Equinix: Equinix
      * * Other: Other Overseas.
      */
-    readonly lineOperator?: pulumi.Input<string>;
+    lineOperator?: pulumi.Input<string>;
     /**
      * and an on-Premises Data Center Location.
      */
-    readonly peerLocation?: pulumi.Input<string>;
+    peerLocation?: pulumi.Input<string>;
     /**
      * on Behalf of the Resource Name of the Resources-Attribute Field.
      */
-    readonly physicalConnectionName?: pulumi.Input<string>;
+    physicalConnectionName?: pulumi.Input<string>;
     /**
      * The Physical Leased Line Access Port Type. Valid value:
      * * 100Base-T: Fast Electrical Ports
@@ -233,19 +233,19 @@ export interface PhysicalConnectionState {
      * * 10GBase-T: Gigabit Electrical Port
      * * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
      */
-    readonly portType?: pulumi.Input<string>;
+    portType?: pulumi.Input<string>;
     /**
      * Redundant Physical Connection to Which the ID.
      */
-    readonly redundantPhysicalConnectionId?: pulumi.Input<string>;
+    redundantPhysicalConnectionId?: pulumi.Input<string>;
     /**
      * Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Physical Private Line of Type. Default Value: VPC.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -255,19 +255,19 @@ export interface PhysicalConnectionArgs {
     /**
      * The Physical Leased Line Access Point ID.
      */
-    readonly accessPointId: pulumi.Input<string>;
+    accessPointId: pulumi.Input<string>;
     /**
      * On the Bandwidth of the ECC Service and Physical Connection.
      */
-    readonly bandwidth?: pulumi.Input<string>;
+    bandwidth?: pulumi.Input<string>;
     /**
      * Operators for Physical Connection Circuit Provided Coding.
      */
-    readonly circuitCode?: pulumi.Input<string>;
+    circuitCode?: pulumi.Input<string>;
     /**
      * The Physical Connection to Which the Description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Provides Access to the Physical Line Operator. Valid values:
      * * CT: China Telecom
@@ -277,15 +277,15 @@ export interface PhysicalConnectionArgs {
      * * Equinix: Equinix
      * * Other: Other Overseas.
      */
-    readonly lineOperator: pulumi.Input<string>;
+    lineOperator: pulumi.Input<string>;
     /**
      * and an on-Premises Data Center Location.
      */
-    readonly peerLocation: pulumi.Input<string>;
+    peerLocation: pulumi.Input<string>;
     /**
      * on Behalf of the Resource Name of the Resources-Attribute Field.
      */
-    readonly physicalConnectionName?: pulumi.Input<string>;
+    physicalConnectionName?: pulumi.Input<string>;
     /**
      * The Physical Leased Line Access Port Type. Valid value:
      * * 100Base-T: Fast Electrical Ports
@@ -294,17 +294,17 @@ export interface PhysicalConnectionArgs {
      * * 10GBase-T: Gigabit Electrical Port
      * * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
      */
-    readonly portType?: pulumi.Input<string>;
+    portType?: pulumi.Input<string>;
     /**
      * Redundant Physical Connection to Which the ID.
      */
-    readonly redundantPhysicalConnectionId?: pulumi.Input<string>;
+    redundantPhysicalConnectionId?: pulumi.Input<string>;
     /**
      * Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Physical Private Line of Type. Default Value: VPC.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }

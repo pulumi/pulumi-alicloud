@@ -13,6 +13,7 @@ __all__ = [
     'GetImagesResult',
     'AwaitableGetImagesResult',
     'get_images',
+    'get_images_output',
 ]
 
 @pulumi.output_type
@@ -129,3 +130,20 @@ def get_images(ids: Optional[Sequence[str]] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_images)
+def get_images_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                      image_type: Optional[pulumi.Input[Optional[str]]] = None,
+                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImagesResult]:
+    """
+    Use this data source to access information about an existing resource.
+
+    :param str image_type: The type of the image. Valid values: `app`, `custom`, `system`.
+           * `system`: operating system (OS) image.
+           * `app`: application image.
+           * `custom`: custom image.
+    """
+    ...

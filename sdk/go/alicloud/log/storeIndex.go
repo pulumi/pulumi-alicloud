@@ -180,7 +180,7 @@ type StoreIndexArrayInput interface {
 type StoreIndexArray []StoreIndexInput
 
 func (StoreIndexArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*StoreIndex)(nil))
+	return reflect.TypeOf((*[]*StoreIndex)(nil)).Elem()
 }
 
 func (i StoreIndexArray) ToStoreIndexArrayOutput() StoreIndexArrayOutput {
@@ -205,7 +205,7 @@ type StoreIndexMapInput interface {
 type StoreIndexMap map[string]StoreIndexInput
 
 func (StoreIndexMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*StoreIndex)(nil))
+	return reflect.TypeOf((*map[string]*StoreIndex)(nil)).Elem()
 }
 
 func (i StoreIndexMap) ToStoreIndexMapOutput() StoreIndexMapOutput {
@@ -216,9 +216,7 @@ func (i StoreIndexMap) ToStoreIndexMapOutputWithContext(ctx context.Context) Sto
 	return pulumi.ToOutputWithContext(ctx, i).(StoreIndexMapOutput)
 }
 
-type StoreIndexOutput struct {
-	*pulumi.OutputState
-}
+type StoreIndexOutput struct{ *pulumi.OutputState }
 
 func (StoreIndexOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*StoreIndex)(nil))
@@ -237,14 +235,12 @@ func (o StoreIndexOutput) ToStoreIndexPtrOutput() StoreIndexPtrOutput {
 }
 
 func (o StoreIndexOutput) ToStoreIndexPtrOutputWithContext(ctx context.Context) StoreIndexPtrOutput {
-	return o.ApplyT(func(v StoreIndex) *StoreIndex {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StoreIndex) *StoreIndex {
 		return &v
 	}).(StoreIndexPtrOutput)
 }
 
-type StoreIndexPtrOutput struct {
-	*pulumi.OutputState
-}
+type StoreIndexPtrOutput struct{ *pulumi.OutputState }
 
 func (StoreIndexPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**StoreIndex)(nil))
@@ -256,6 +252,16 @@ func (o StoreIndexPtrOutput) ToStoreIndexPtrOutput() StoreIndexPtrOutput {
 
 func (o StoreIndexPtrOutput) ToStoreIndexPtrOutputWithContext(ctx context.Context) StoreIndexPtrOutput {
 	return o
+}
+
+func (o StoreIndexPtrOutput) Elem() StoreIndexOutput {
+	return o.ApplyT(func(v *StoreIndex) StoreIndex {
+		if v != nil {
+			return *v
+		}
+		var ret StoreIndex
+		return ret
+	}).(StoreIndexOutput)
 }
 
 type StoreIndexArrayOutput struct{ *pulumi.OutputState }
@@ -299,6 +305,10 @@ func (o StoreIndexMapOutput) MapIndex(k pulumi.StringInput) StoreIndexOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*StoreIndexInput)(nil)).Elem(), &StoreIndex{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StoreIndexPtrInput)(nil)).Elem(), &StoreIndex{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StoreIndexArrayInput)(nil)).Elem(), StoreIndexArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StoreIndexMapInput)(nil)).Elem(), StoreIndexMap{})
 	pulumi.RegisterOutputType(StoreIndexOutput{})
 	pulumi.RegisterOutputType(StoreIndexPtrOutput{})
 	pulumi.RegisterOutputType(StoreIndexArrayOutput{})

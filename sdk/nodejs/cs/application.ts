@@ -100,30 +100,30 @@ export class Application extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Application resources.
  */
 export interface ApplicationState {
-    readonly blueGreen?: pulumi.Input<boolean>;
-    readonly blueGreenConfirm?: pulumi.Input<boolean>;
-    readonly clusterName?: pulumi.Input<string>;
-    readonly defaultDomain?: pulumi.Input<string>;
-    readonly description?: pulumi.Input<string>;
-    readonly environment?: pulumi.Input<{[key: string]: any}>;
-    readonly latestImage?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly services?: pulumi.Input<pulumi.Input<inputs.cs.ApplicationService>[]>;
-    readonly template?: pulumi.Input<string>;
-    readonly version?: pulumi.Input<string>;
+    blueGreen?: pulumi.Input<boolean>;
+    blueGreenConfirm?: pulumi.Input<boolean>;
+    clusterName?: pulumi.Input<string>;
+    defaultDomain?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    environment?: pulumi.Input<{[key: string]: any}>;
+    latestImage?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    services?: pulumi.Input<pulumi.Input<inputs.cs.ApplicationService>[]>;
+    template?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Application resource.
  */
 export interface ApplicationArgs {
-    readonly blueGreen?: pulumi.Input<boolean>;
-    readonly blueGreenConfirm?: pulumi.Input<boolean>;
-    readonly clusterName: pulumi.Input<string>;
-    readonly description?: pulumi.Input<string>;
-    readonly environment?: pulumi.Input<{[key: string]: any}>;
-    readonly latestImage?: pulumi.Input<boolean>;
-    readonly name?: pulumi.Input<string>;
-    readonly template: pulumi.Input<string>;
-    readonly version?: pulumi.Input<string>;
+    blueGreen?: pulumi.Input<boolean>;
+    blueGreenConfirm?: pulumi.Input<boolean>;
+    clusterName: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    environment?: pulumi.Input<{[key: string]: any}>;
+    latestImage?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    template: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
 }

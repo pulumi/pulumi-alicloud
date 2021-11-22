@@ -4,6 +4,9 @@
 package privatelink
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,4 +66,70 @@ type GetVpcEndpointZonesResult struct {
 	OutputFile *string                   `pulumi:"outputFile"`
 	Status     *string                   `pulumi:"status"`
 	Zones      []GetVpcEndpointZonesZone `pulumi:"zones"`
+}
+
+func GetVpcEndpointZonesOutput(ctx *pulumi.Context, args GetVpcEndpointZonesOutputArgs, opts ...pulumi.InvokeOption) GetVpcEndpointZonesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetVpcEndpointZonesResult, error) {
+			args := v.(GetVpcEndpointZonesArgs)
+			r, err := GetVpcEndpointZones(ctx, &args, opts...)
+			return *r, err
+		}).(GetVpcEndpointZonesResultOutput)
+}
+
+// A collection of arguments for invoking getVpcEndpointZones.
+type GetVpcEndpointZonesOutputArgs struct {
+	// The ID of the Vpc Endpoint.
+	EndpointId pulumi.StringInput    `pulumi:"endpointId"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The Status of Vpc Endpoint Zone..
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetVpcEndpointZonesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcEndpointZonesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getVpcEndpointZones.
+type GetVpcEndpointZonesResultOutput struct{ *pulumi.OutputState }
+
+func (GetVpcEndpointZonesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcEndpointZonesResult)(nil)).Elem()
+}
+
+func (o GetVpcEndpointZonesResultOutput) ToGetVpcEndpointZonesResultOutput() GetVpcEndpointZonesResultOutput {
+	return o
+}
+
+func (o GetVpcEndpointZonesResultOutput) ToGetVpcEndpointZonesResultOutputWithContext(ctx context.Context) GetVpcEndpointZonesResultOutput {
+	return o
+}
+
+func (o GetVpcEndpointZonesResultOutput) EndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointZonesResult) string { return v.EndpointId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetVpcEndpointZonesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointZonesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetVpcEndpointZonesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpcEndpointZonesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetVpcEndpointZonesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVpcEndpointZonesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetVpcEndpointZonesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVpcEndpointZonesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetVpcEndpointZonesResultOutput) Zones() GetVpcEndpointZonesZoneArrayOutput {
+	return o.ApplyT(func(v GetVpcEndpointZonesResult) []GetVpcEndpointZonesZone { return v.Zones }).(GetVpcEndpointZonesZoneArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetVpcEndpointZonesResultOutput{})
 }

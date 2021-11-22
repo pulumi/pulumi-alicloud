@@ -4,6 +4,9 @@
 package mhub
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -81,4 +84,70 @@ type GetProductsResult struct {
 	Names      []string             `pulumi:"names"`
 	OutputFile *string              `pulumi:"outputFile"`
 	Products   []GetProductsProduct `pulumi:"products"`
+}
+
+func GetProductsOutput(ctx *pulumi.Context, args GetProductsOutputArgs, opts ...pulumi.InvokeOption) GetProductsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetProductsResult, error) {
+			args := v.(GetProductsArgs)
+			r, err := GetProducts(ctx, &args, opts...)
+			return *r, err
+		}).(GetProductsResultOutput)
+}
+
+// A collection of arguments for invoking getProducts.
+type GetProductsOutputArgs struct {
+	// A list of Product IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Product name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetProductsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProductsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getProducts.
+type GetProductsResultOutput struct{ *pulumi.OutputState }
+
+func (GetProductsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProductsResult)(nil)).Elem()
+}
+
+func (o GetProductsResultOutput) ToGetProductsResultOutput() GetProductsResultOutput {
+	return o
+}
+
+func (o GetProductsResultOutput) ToGetProductsResultOutputWithContext(ctx context.Context) GetProductsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetProductsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProductsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetProductsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetProductsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetProductsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProductsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetProductsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetProductsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetProductsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProductsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetProductsResultOutput) Products() GetProductsProductArrayOutput {
+	return o.ApplyT(func(v GetProductsResult) []GetProductsProduct { return v.Products }).(GetProductsProductArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetProductsResultOutput{})
 }

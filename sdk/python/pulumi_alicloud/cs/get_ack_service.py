@@ -12,6 +12,7 @@ __all__ = [
     'GetAckServiceResult',
     'AwaitableGetAckServiceResult',
     'get_ack_service',
+    'get_ack_service_output',
 ]
 
 @pulumi.output_type
@@ -110,3 +111,31 @@ def get_ack_service(enable: Optional[str] = None,
         id=__ret__.id,
         status=__ret__.status,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_ack_service)
+def get_ack_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
+                           type: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAckServiceResult]:
+    """
+    Using this data source can open Container Service (CS) service automatically. If the service has been opened, it will return opened.
+
+    For information about Container Service (CS) and how to use it, see [What is Container Service (CS)](https://www.alibabacloud.com/help/en/product/85222.htm).
+
+    > **NOTE:** Available in v1.113.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    open = alicloud.cs.get_ack_service(enable="On",
+        type="propayasgo")
+    ```
+
+
+    :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+    :param str type: Types of services opened. Valid values: `propayasgo`: Container service ack Pro managed version, `edgepayasgo`: Edge container service, `gspayasgo`: Gene computing services.
+    """
+    ...

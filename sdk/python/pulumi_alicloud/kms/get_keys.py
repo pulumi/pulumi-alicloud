@@ -13,6 +13,7 @@ __all__ = [
     'GetKeysResult',
     'AwaitableGetKeysResult',
     'get_keys',
+    'get_keys_output',
 ]
 
 @pulumi.output_type
@@ -163,3 +164,33 @@ def get_keys(description_regex: Optional[str] = None,
         keys=__ret__.keys,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_keys)
+def get_keys_output(description_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                    enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                    filters: Optional[pulumi.Input[Optional[str]]] = None,
+                    ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                    status: Optional[pulumi.Input[Optional[str]]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeysResult]:
+    """
+    This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    kms_keys_ds = alicloud.kms.get_keys(description_regex="Hello KMS",
+        output_file="kms_keys.json")
+    pulumi.export("firstKeyId", kms_keys_ds.keys[0].id)
+    ```
+
+
+    :param str description_regex: A regex string to filter the results by the KMS key description.
+    :param Sequence[str] ids: A list of KMS key IDs.
+    :param str status: Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
+    """
+    ...

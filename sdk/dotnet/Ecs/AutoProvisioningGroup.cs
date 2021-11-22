@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Ecs
     ///         {
     ///             VpcId = defaultNetwork.Id,
     ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
     ///             VswitchName = name,
     ///         });
     ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Ecs
     ///         }));
     ///         var template = new AliCloud.Ecs.EcsLaunchTemplate("template", new AliCloud.Ecs.EcsLaunchTemplateArgs
     ///         {
-    ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images[0].Id),
+    ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images?[0]?.Id),
     ///             InstanceType = "ecs.n1.tiny",
     ///             SecurityGroupId = defaultSecurityGroup.Id,
     ///         });

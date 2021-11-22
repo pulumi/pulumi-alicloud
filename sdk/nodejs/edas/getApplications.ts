@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *     ids: ["xxx"],
  *     outputFile: "application.txt",
  * });
- * export const firstApplicationName = applications.then(applications => applications.applications[0].appName);
+ * export const firstApplicationName = applications.then(applications => applications.applications?[0]?.appName);
  * ```
  */
 export function getApplications(args?: GetApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationsResult> {
@@ -46,12 +46,12 @@ export interface GetApplicationsArgs {
     /**
      * An ids string to filter results by the application id.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by the application name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -76,4 +76,23 @@ export interface GetApplicationsResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getApplicationsOutput(args?: GetApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationsResult> {
+    return pulumi.output(args).apply(a => getApplications(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getApplications.
+ */
+export interface GetApplicationsOutputArgs {
+    /**
+     * An ids string to filter results by the application id.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by the application name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

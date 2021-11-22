@@ -4,6 +4,9 @@
 package cloudauth
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,4 +40,70 @@ type GetFaceConfigsResult struct {
 	NameRegex  *string  `pulumi:"nameRegex"`
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetFaceConfigsOutput(ctx *pulumi.Context, args GetFaceConfigsOutputArgs, opts ...pulumi.InvokeOption) GetFaceConfigsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetFaceConfigsResult, error) {
+			args := v.(GetFaceConfigsArgs)
+			r, err := GetFaceConfigs(ctx, &args, opts...)
+			return *r, err
+		}).(GetFaceConfigsResultOutput)
+}
+
+// A collection of arguments for invoking getFaceConfigs.
+type GetFaceConfigsOutputArgs struct {
+	// A list of Face Config IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by biz_name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetFaceConfigsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFaceConfigsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getFaceConfigs.
+type GetFaceConfigsResultOutput struct{ *pulumi.OutputState }
+
+func (GetFaceConfigsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFaceConfigsResult)(nil)).Elem()
+}
+
+func (o GetFaceConfigsResultOutput) ToGetFaceConfigsResultOutput() GetFaceConfigsResultOutput {
+	return o
+}
+
+func (o GetFaceConfigsResultOutput) ToGetFaceConfigsResultOutputWithContext(ctx context.Context) GetFaceConfigsResultOutput {
+	return o
+}
+
+func (o GetFaceConfigsResultOutput) Configs() GetFaceConfigsConfigArrayOutput {
+	return o.ApplyT(func(v GetFaceConfigsResult) []GetFaceConfigsConfig { return v.Configs }).(GetFaceConfigsConfigArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetFaceConfigsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFaceConfigsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetFaceConfigsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFaceConfigsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetFaceConfigsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFaceConfigsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetFaceConfigsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFaceConfigsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetFaceConfigsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFaceConfigsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetFaceConfigsResultOutput{})
 }

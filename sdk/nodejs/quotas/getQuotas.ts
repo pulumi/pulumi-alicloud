@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     productCode: "ecs",
  *     nameRegex: "专有宿主机总数量上限",
  * });
- * export const firstQuotasQuotaId = example.then(example => example.quotas[0].id);
+ * export const firstQuotasQuotaId = example.then(example => example.quotas?[0]?.id);
  * ```
  */
 export function getQuotas(args: GetQuotasArgs, opts?: pulumi.InvokeOptions): Promise<GetQuotasResult> {
@@ -54,40 +54,40 @@ export interface GetQuotasArgs {
     /**
      * The dimensions.
      */
-    readonly dimensions?: inputs.quotas.GetQuotasDimension[];
+    dimensions?: inputs.quotas.GetQuotasDimension[];
     /**
      * The group code.
      */
-    readonly groupCode?: string;
+    groupCode?: string;
     /**
      * The key word.
      */
-    readonly keyWord?: string;
+    keyWord?: string;
     /**
      * A regex string to filter results by Quota name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The product code.
      */
-    readonly productCode: string;
+    productCode: string;
     /**
      * The quota action code.
      */
-    readonly quotaActionCode?: string;
+    quotaActionCode?: string;
     /**
      * The category of quota. Valid Values: `FlowControl` and `CommonQuota`.
      */
-    readonly quotaCategory?: string;
+    quotaCategory?: string;
     /**
      * Cloud service ECS specification quota supports setting sorting fields. Valid Values: `TIME`, `TOTAL` and `RESERVED`.
      */
-    readonly sortField?: string;
+    sortField?: string;
     /**
      * Ranking of cloud service ECS specification quota support. Valid Values: `Ascending` and `Descending`.
      */
-    readonly sortOrder?: string;
+    sortOrder?: string;
 }
 
 /**
@@ -111,4 +111,51 @@ export interface GetQuotasResult {
     readonly quotas: outputs.quotas.GetQuotasQuota[];
     readonly sortField?: string;
     readonly sortOrder?: string;
+}
+
+export function getQuotasOutput(args: GetQuotasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotasResult> {
+    return pulumi.output(args).apply(a => getQuotas(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getQuotas.
+ */
+export interface GetQuotasOutputArgs {
+    /**
+     * The dimensions.
+     */
+    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.GetQuotasDimensionArgs>[]>;
+    /**
+     * The group code.
+     */
+    groupCode?: pulumi.Input<string>;
+    /**
+     * The key word.
+     */
+    keyWord?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Quota name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The product code.
+     */
+    productCode: pulumi.Input<string>;
+    /**
+     * The quota action code.
+     */
+    quotaActionCode?: pulumi.Input<string>;
+    /**
+     * The category of quota. Valid Values: `FlowControl` and `CommonQuota`.
+     */
+    quotaCategory?: pulumi.Input<string>;
+    /**
+     * Cloud service ECS specification quota supports setting sorting fields. Valid Values: `TIME`, `TOTAL` and `RESERVED`.
+     */
+    sortField?: pulumi.Input<string>;
+    /**
+     * Ranking of cloud service ECS specification quota support. Valid Values: `Ascending` and `Descending`.
+     */
+    sortOrder?: pulumi.Input<string>;
 }

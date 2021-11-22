@@ -45,12 +45,12 @@ export interface GetCustomDomainsArgs {
     /**
      * A list of functions ids.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Function Compute custom domain name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -75,4 +75,23 @@ export interface GetCustomDomainsResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getCustomDomainsOutput(args?: GetCustomDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomDomainsResult> {
+    return pulumi.output(args).apply(a => getCustomDomains(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCustomDomains.
+ */
+export interface GetCustomDomainsOutputArgs {
+    /**
+     * A list of functions ids.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Function Compute custom domain name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

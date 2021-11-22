@@ -13,6 +13,7 @@ __all__ = [
     'GetInstancesResult',
     'AwaitableGetInstancesResult',
     'get_instances',
+    'get_instances_output',
 ]
 
 @pulumi.output_type
@@ -92,3 +93,26 @@ def get_instances(output_file: Optional[str] = None,
         id=__ret__.id,
         instances=__ret__.instances,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_instances)
+def get_instances_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+    """
+    This data source provides the Cloud Firewall Instances of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.139.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.cloudfirewall.get_instances()
+    pulumi.export("cloudFirewallInstanceId1", ids.instances[0].id)
+    ```
+    """
+    ...

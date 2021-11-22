@@ -106,11 +106,11 @@ export interface DomainState {
     /**
      * Domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
      */
-    readonly domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string>;
     /**
      * The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -120,5 +120,5 @@ export interface DomainArgs {
     /**
      * Domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
      */
-    readonly domainName: pulumi.Input<string>;
+    domainName: pulumi.Input<string>;
 }

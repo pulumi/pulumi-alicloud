@@ -33,7 +33,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "VSwitch"
-// 		exampleZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		exampleZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -296,7 +296,7 @@ type NatIpArrayInput interface {
 type NatIpArray []NatIpInput
 
 func (NatIpArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*NatIp)(nil))
+	return reflect.TypeOf((*[]*NatIp)(nil)).Elem()
 }
 
 func (i NatIpArray) ToNatIpArrayOutput() NatIpArrayOutput {
@@ -321,7 +321,7 @@ type NatIpMapInput interface {
 type NatIpMap map[string]NatIpInput
 
 func (NatIpMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*NatIp)(nil))
+	return reflect.TypeOf((*map[string]*NatIp)(nil)).Elem()
 }
 
 func (i NatIpMap) ToNatIpMapOutput() NatIpMapOutput {
@@ -332,9 +332,7 @@ func (i NatIpMap) ToNatIpMapOutputWithContext(ctx context.Context) NatIpMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(NatIpMapOutput)
 }
 
-type NatIpOutput struct {
-	*pulumi.OutputState
-}
+type NatIpOutput struct{ *pulumi.OutputState }
 
 func (NatIpOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NatIp)(nil))
@@ -353,14 +351,12 @@ func (o NatIpOutput) ToNatIpPtrOutput() NatIpPtrOutput {
 }
 
 func (o NatIpOutput) ToNatIpPtrOutputWithContext(ctx context.Context) NatIpPtrOutput {
-	return o.ApplyT(func(v NatIp) *NatIp {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NatIp) *NatIp {
 		return &v
 	}).(NatIpPtrOutput)
 }
 
-type NatIpPtrOutput struct {
-	*pulumi.OutputState
-}
+type NatIpPtrOutput struct{ *pulumi.OutputState }
 
 func (NatIpPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NatIp)(nil))
@@ -372,6 +368,16 @@ func (o NatIpPtrOutput) ToNatIpPtrOutput() NatIpPtrOutput {
 
 func (o NatIpPtrOutput) ToNatIpPtrOutputWithContext(ctx context.Context) NatIpPtrOutput {
 	return o
+}
+
+func (o NatIpPtrOutput) Elem() NatIpOutput {
+	return o.ApplyT(func(v *NatIp) NatIp {
+		if v != nil {
+			return *v
+		}
+		var ret NatIp
+		return ret
+	}).(NatIpOutput)
 }
 
 type NatIpArrayOutput struct{ *pulumi.OutputState }
@@ -415,6 +421,10 @@ func (o NatIpMapOutput) MapIndex(k pulumi.StringInput) NatIpOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NatIpInput)(nil)).Elem(), &NatIp{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NatIpPtrInput)(nil)).Elem(), &NatIp{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NatIpArrayInput)(nil)).Elem(), NatIpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NatIpMapInput)(nil)).Elem(), NatIpMap{})
 	pulumi.RegisterOutputType(NatIpOutput{})
 	pulumi.RegisterOutputType(NatIpPtrOutput{})
 	pulumi.RegisterOutputType(NatIpArrayOutput{})

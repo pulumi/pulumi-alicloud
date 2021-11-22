@@ -13,6 +13,7 @@ __all__ = [
     'GetZoneRecordsResult',
     'AwaitableGetZoneRecordsResult',
     'get_zone_records',
+    'get_zone_records_output',
 ]
 
 @pulumi.output_type
@@ -208,3 +209,45 @@ def get_zone_records(ids: Optional[Sequence[str]] = None,
         tag=__ret__.tag,
         user_client_ip=__ret__.user_client_ip,
         zone_id=__ret__.zone_id)
+
+
+@_utilities.lift_output_func(get_zone_records)
+def get_zone_records_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            keyword: Optional[pulumi.Input[Optional[str]]] = None,
+                            lang: Optional[pulumi.Input[Optional[str]]] = None,
+                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                            search_mode: Optional[pulumi.Input[Optional[str]]] = None,
+                            status: Optional[pulumi.Input[Optional[str]]] = None,
+                            tag: Optional[pulumi.Input[Optional[str]]] = None,
+                            user_client_ip: Optional[pulumi.Input[Optional[str]]] = None,
+                            zone_id: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneRecordsResult]:
+    """
+    This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    records_ds = alicloud.pvtz.get_zone_records(keyword=alicloud_pvtz_zone_record["foo"]["value"],
+        zone_id=alicloud_pvtz_zone["basic"]["id"])
+    pulumi.export("firstRecordId", records_ds.records[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Private Zone Record IDs.
+    :param str keyword: Keyword for record rr and value.
+    :param str lang: User language.
+    :param str search_mode: Search mode. Value: 
+           - LIKE: fuzzy search.
+           - EXACT: precise search. It is not filled in by default.
+    :param str status: Resolve record status. Value:
+           - ENABLE: enable resolution.
+           - DISABLE: pause parsing.
+    :param str tag: It is not filled in by default, and queries the current zone resolution records. Fill in "ecs" to query the host name record list under the VPC associated with the current zone.
+    :param str user_client_ip: User ip.
+    :param str zone_id: ID of the Private Zone.
+    """
+    ...

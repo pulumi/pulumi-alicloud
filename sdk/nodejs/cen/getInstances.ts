@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *     ids: ["cen-id1"],
  *     nameRegex: "^foo",
  * });
- * export const firstCenInstanceId = cenInstancesDs.then(cenInstancesDs => cenInstancesDs.instances[0].id);
+ * export const firstCenInstanceId = cenInstancesDs.then(cenInstancesDs => cenInstancesDs.instances?[0]?.id);
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
@@ -46,20 +46,20 @@ export interface GetInstancesArgs {
     /**
      * A list of CEN instances IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter CEN instances by name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -92,4 +92,31 @@ export interface GetInstancesResult {
      * A map of tags assigned to the Cen Instance.
      */
     readonly tags?: {[key: string]: any};
+}
+
+export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
+    return pulumi.output(args).apply(a => getInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstances.
+ */
+export interface GetInstancesOutputArgs {
+    /**
+     * A list of CEN instances IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter CEN instances by name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

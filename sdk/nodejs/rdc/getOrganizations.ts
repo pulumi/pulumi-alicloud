@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * const ids = _default.id.apply(id => alicloud.rdc.getOrganizations({
  *     ids: [id],
  * }));
- * export const rdcOrganizationId1 = ids.id;
+ * export const rdcOrganizationId1 = ids.apply(ids => ids.id);
  * const nameRegex = alicloud.rdc.getOrganizations({
  *     nameRegex: "^my-Organization",
  * });
@@ -58,16 +58,16 @@ export interface GetOrganizationsArgs {
     /**
      * A list of Organization IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Organization name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk
      */
-    readonly realPk?: string;
+    realPk?: string;
 }
 
 /**
@@ -84,4 +84,27 @@ export interface GetOrganizationsResult {
     readonly organizations: outputs.rdc.GetOrganizationsOrganization[];
     readonly outputFile?: string;
     readonly realPk?: string;
+}
+
+export function getOrganizationsOutput(args?: GetOrganizationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationsResult> {
+    return pulumi.output(args).apply(a => getOrganizations(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getOrganizations.
+ */
+export interface GetOrganizationsOutputArgs {
+    /**
+     * A list of Organization IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Organization name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk
+     */
+    realPk?: pulumi.Input<string>;
 }

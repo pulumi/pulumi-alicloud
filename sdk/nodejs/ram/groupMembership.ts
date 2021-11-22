@@ -126,11 +126,11 @@ export interface GroupMembershipState {
     /**
      * Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
      */
-    readonly groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string>;
     /**
      * Set of user name which will be added to group. Each name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
      */
-    readonly userNames?: pulumi.Input<pulumi.Input<string>[]>;
+    userNames?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -140,9 +140,9 @@ export interface GroupMembershipArgs {
     /**
      * Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
      */
-    readonly groupName: pulumi.Input<string>;
+    groupName: pulumi.Input<string>;
     /**
      * Set of user name which will be added to group. Each name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
      */
-    readonly userNames: pulumi.Input<pulumi.Input<string>[]>;
+    userNames: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -223,7 +223,7 @@ type AccountPasswordPolicyArrayInput interface {
 type AccountPasswordPolicyArray []AccountPasswordPolicyInput
 
 func (AccountPasswordPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AccountPasswordPolicy)(nil))
+	return reflect.TypeOf((*[]*AccountPasswordPolicy)(nil)).Elem()
 }
 
 func (i AccountPasswordPolicyArray) ToAccountPasswordPolicyArrayOutput() AccountPasswordPolicyArrayOutput {
@@ -248,7 +248,7 @@ type AccountPasswordPolicyMapInput interface {
 type AccountPasswordPolicyMap map[string]AccountPasswordPolicyInput
 
 func (AccountPasswordPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AccountPasswordPolicy)(nil))
+	return reflect.TypeOf((*map[string]*AccountPasswordPolicy)(nil)).Elem()
 }
 
 func (i AccountPasswordPolicyMap) ToAccountPasswordPolicyMapOutput() AccountPasswordPolicyMapOutput {
@@ -259,9 +259,7 @@ func (i AccountPasswordPolicyMap) ToAccountPasswordPolicyMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(AccountPasswordPolicyMapOutput)
 }
 
-type AccountPasswordPolicyOutput struct {
-	*pulumi.OutputState
-}
+type AccountPasswordPolicyOutput struct{ *pulumi.OutputState }
 
 func (AccountPasswordPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccountPasswordPolicy)(nil))
@@ -280,14 +278,12 @@ func (o AccountPasswordPolicyOutput) ToAccountPasswordPolicyPtrOutput() AccountP
 }
 
 func (o AccountPasswordPolicyOutput) ToAccountPasswordPolicyPtrOutputWithContext(ctx context.Context) AccountPasswordPolicyPtrOutput {
-	return o.ApplyT(func(v AccountPasswordPolicy) *AccountPasswordPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccountPasswordPolicy) *AccountPasswordPolicy {
 		return &v
 	}).(AccountPasswordPolicyPtrOutput)
 }
 
-type AccountPasswordPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type AccountPasswordPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (AccountPasswordPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AccountPasswordPolicy)(nil))
@@ -299,6 +295,16 @@ func (o AccountPasswordPolicyPtrOutput) ToAccountPasswordPolicyPtrOutput() Accou
 
 func (o AccountPasswordPolicyPtrOutput) ToAccountPasswordPolicyPtrOutputWithContext(ctx context.Context) AccountPasswordPolicyPtrOutput {
 	return o
+}
+
+func (o AccountPasswordPolicyPtrOutput) Elem() AccountPasswordPolicyOutput {
+	return o.ApplyT(func(v *AccountPasswordPolicy) AccountPasswordPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret AccountPasswordPolicy
+		return ret
+	}).(AccountPasswordPolicyOutput)
 }
 
 type AccountPasswordPolicyArrayOutput struct{ *pulumi.OutputState }
@@ -342,6 +348,10 @@ func (o AccountPasswordPolicyMapOutput) MapIndex(k pulumi.StringInput) AccountPa
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountPasswordPolicyInput)(nil)).Elem(), &AccountPasswordPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountPasswordPolicyPtrInput)(nil)).Elem(), &AccountPasswordPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountPasswordPolicyArrayInput)(nil)).Elem(), AccountPasswordPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountPasswordPolicyMapInput)(nil)).Elem(), AccountPasswordPolicyMap{})
 	pulumi.RegisterOutputType(AccountPasswordPolicyOutput{})
 	pulumi.RegisterOutputType(AccountPasswordPolicyPtrOutput{})
 	pulumi.RegisterOutputType(AccountPasswordPolicyArrayOutput{})

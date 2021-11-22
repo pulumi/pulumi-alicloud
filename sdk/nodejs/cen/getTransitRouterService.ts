@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -20,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * const open = pulumi.output(alicloud.cen.getTransitRouterService({
  *     enable: "On",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getTransitRouterService(args?: GetTransitRouterServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterServiceResult> {
@@ -44,7 +43,7 @@ export interface GetTransitRouterServiceArgs {
     /**
      * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
      */
-    readonly enable?: string;
+    enable?: string;
 }
 
 /**
@@ -60,4 +59,18 @@ export interface GetTransitRouterServiceResult {
      * The current service enable status.
      */
     readonly status: string;
+}
+
+export function getTransitRouterServiceOutput(args?: GetTransitRouterServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterServiceResult> {
+    return pulumi.output(args).apply(a => getTransitRouterService(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTransitRouterService.
+ */
+export interface GetTransitRouterServiceOutputArgs {
+    /**
+     * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+     */
+    enable?: pulumi.Input<string>;
 }

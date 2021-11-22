@@ -4,6 +4,9 @@
 package imp
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -72,4 +75,76 @@ type GetAppTemplatesResult struct {
 	OutputFile *string                   `pulumi:"outputFile"`
 	Status     *string                   `pulumi:"status"`
 	Templates  []GetAppTemplatesTemplate `pulumi:"templates"`
+}
+
+func GetAppTemplatesOutput(ctx *pulumi.Context, args GetAppTemplatesOutputArgs, opts ...pulumi.InvokeOption) GetAppTemplatesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAppTemplatesResult, error) {
+			args := v.(GetAppTemplatesArgs)
+			r, err := GetAppTemplates(ctx, &args, opts...)
+			return *r, err
+		}).(GetAppTemplatesResultOutput)
+}
+
+// A collection of arguments for invoking getAppTemplates.
+type GetAppTemplatesOutputArgs struct {
+	// A list of App Template IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by App Template name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Application template usage status.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetAppTemplatesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppTemplatesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAppTemplates.
+type GetAppTemplatesResultOutput struct{ *pulumi.OutputState }
+
+func (GetAppTemplatesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppTemplatesResult)(nil)).Elem()
+}
+
+func (o GetAppTemplatesResultOutput) ToGetAppTemplatesResultOutput() GetAppTemplatesResultOutput {
+	return o
+}
+
+func (o GetAppTemplatesResultOutput) ToGetAppTemplatesResultOutputWithContext(ctx context.Context) GetAppTemplatesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAppTemplatesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppTemplatesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAppTemplatesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppTemplatesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppTemplatesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppTemplatesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppTemplatesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppTemplatesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppTemplatesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppTemplatesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppTemplatesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppTemplatesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppTemplatesResultOutput) Templates() GetAppTemplatesTemplateArrayOutput {
+	return o.ApplyT(func(v GetAppTemplatesResult) []GetAppTemplatesTemplate { return v.Templates }).(GetAppTemplatesTemplateArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAppTemplatesResultOutput{})
 }

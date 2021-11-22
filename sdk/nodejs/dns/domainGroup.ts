@@ -108,17 +108,17 @@ export interface DomainGroupState {
     /**
      * Name of the domain group.
      */
-    readonly domainGroupName?: pulumi.Input<string>;
+    domainGroupName?: pulumi.Input<string>;
     /**
      * Replaced by `domainGroupName` after version 1.97.0.
      *
      * @deprecated Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.
      */
-    readonly groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string>;
     /**
      * User language.
      */
-    readonly lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string>;
 }
 
 /**
@@ -128,15 +128,15 @@ export interface DomainGroupArgs {
     /**
      * Name of the domain group.
      */
-    readonly domainGroupName?: pulumi.Input<string>;
+    domainGroupName?: pulumi.Input<string>;
     /**
      * Replaced by `domainGroupName` after version 1.97.0.
      *
      * @deprecated Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.
      */
-    readonly groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string>;
     /**
      * User language.
      */
-    readonly lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string>;
 }

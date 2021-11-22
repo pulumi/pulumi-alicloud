@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Sag
 {
@@ -52,6 +53,48 @@ namespace Pulumi.AliCloud.Sag
         /// </summary>
         public static Task<GetAclsResult> InvokeAsync(GetAclsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAclsResult>("alicloud:sag/getAcls:getAcls", args ?? new GetAclsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides Sag Acls available to the user.
+        /// 
+        /// &gt; **NOTE:** Available in 1.60.0+
+        /// 
+        /// &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var defaultAcls = Output.Create(AliCloud.Sag.GetAcls.InvokeAsync(new AliCloud.Sag.GetAclsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 alicloud_sag_acls.Default.Id,
+        ///             },
+        ///             NameRegex = "^tf-testAcc.*",
+        ///         }));
+        ///         var defaultAcl = new AliCloud.RocketMQ.Acl("defaultAcl", new AliCloud.RocketMQ.AclArgs
+        ///         {
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAclsResult> Invoke(GetAclsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAclsResult>("alicloud:sag/getAcls:getAcls", args ?? new GetAclsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -79,6 +122,34 @@ namespace Pulumi.AliCloud.Sag
         public string? OutputFile { get; set; }
 
         public GetAclsArgs()
+        {
+        }
+    }
+
+    public sealed class GetAclsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Sag Acl IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter Sag Acl instances by name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetAclsInvokeArgs()
         {
         }
     }

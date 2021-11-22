@@ -181,7 +181,7 @@ export interface BindingState {
      * * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
      * * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
      */
-    readonly argument?: pulumi.Input<string>;
+    argument?: pulumi.Input<string>;
     /**
      * The Binding Key.
      * * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
@@ -190,27 +190,27 @@ export interface BindingState {
      * If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
      * The binding key must be 1 to 255 characters in length.
      */
-    readonly bindingKey?: pulumi.Input<string>;
+    bindingKey?: pulumi.Input<string>;
     /**
      * The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
      */
-    readonly bindingType?: pulumi.Input<string>;
+    bindingType?: pulumi.Input<string>;
     /**
      * The Target Queue Or Exchange of the Name.
      */
-    readonly destinationName?: pulumi.Input<string>;
+    destinationName?: pulumi.Input<string>;
     /**
      * Instance Id.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The Source Exchange Name.
      */
-    readonly sourceExchange?: pulumi.Input<string>;
+    sourceExchange?: pulumi.Input<string>;
     /**
      * Virtualhost Name.
      */
-    readonly virtualHostName?: pulumi.Input<string>;
+    virtualHostName?: pulumi.Input<string>;
 }
 
 /**
@@ -222,7 +222,7 @@ export interface BindingArgs {
      * * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
      * * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
      */
-    readonly argument?: pulumi.Input<string>;
+    argument?: pulumi.Input<string>;
     /**
      * The Binding Key.
      * * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
@@ -231,25 +231,25 @@ export interface BindingArgs {
      * If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
      * The binding key must be 1 to 255 characters in length.
      */
-    readonly bindingKey: pulumi.Input<string>;
+    bindingKey: pulumi.Input<string>;
     /**
      * The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
      */
-    readonly bindingType: pulumi.Input<string>;
+    bindingType: pulumi.Input<string>;
     /**
      * The Target Queue Or Exchange of the Name.
      */
-    readonly destinationName: pulumi.Input<string>;
+    destinationName: pulumi.Input<string>;
     /**
      * Instance Id.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * The Source Exchange Name.
      */
-    readonly sourceExchange: pulumi.Input<string>;
+    sourceExchange: pulumi.Input<string>;
     /**
      * Virtualhost Name.
      */
-    readonly virtualHostName: pulumi.Input<string>;
+    virtualHostName: pulumi.Input<string>;
 }

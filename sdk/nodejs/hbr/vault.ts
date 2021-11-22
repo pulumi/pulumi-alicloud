@@ -124,23 +124,23 @@ export interface VaultState {
     /**
      * The description of Vault. Defaults to an empty string.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The status of Vault. Valid values: `INITIALIZING`, `CREATED`, `ERROR`, `UNKNOWN`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The name of Vault.
      */
-    readonly vaultName?: pulumi.Input<string>;
+    vaultName?: pulumi.Input<string>;
     /**
      * The storage class of Vault. Valid values: `STANDARD`.
      */
-    readonly vaultStorageClass?: pulumi.Input<string>;
+    vaultStorageClass?: pulumi.Input<string>;
     /**
      * The type of Vault. Valid values: `STANDARD`.
      */
-    readonly vaultType?: pulumi.Input<string>;
+    vaultType?: pulumi.Input<string>;
 }
 
 /**
@@ -150,17 +150,17 @@ export interface VaultArgs {
     /**
      * The description of Vault. Defaults to an empty string.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of Vault.
      */
-    readonly vaultName: pulumi.Input<string>;
+    vaultName: pulumi.Input<string>;
     /**
      * The storage class of Vault. Valid values: `STANDARD`.
      */
-    readonly vaultStorageClass?: pulumi.Input<string>;
+    vaultStorageClass?: pulumi.Input<string>;
     /**
      * The type of Vault. Valid values: `STANDARD`.
      */
-    readonly vaultType?: pulumi.Input<string>;
+    vaultType?: pulumi.Input<string>;
 }

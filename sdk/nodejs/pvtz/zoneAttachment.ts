@@ -106,23 +106,23 @@ export interface ZoneAttachmentState {
     /**
      * The language of code.
      */
-    readonly lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string>;
     /**
      * The user custom IP address.
      */
-    readonly userClientIp?: pulumi.Input<string>;
+    userClientIp?: pulumi.Input<string>;
     /**
      * The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
      */
-    readonly vpcIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vpcIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The List of the VPC:
      */
-    readonly vpcs?: pulumi.Input<pulumi.Input<inputs.pvtz.ZoneAttachmentVpc>[]>;
+    vpcs?: pulumi.Input<pulumi.Input<inputs.pvtz.ZoneAttachmentVpc>[]>;
     /**
      * The name of the Private Zone Record.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -132,21 +132,21 @@ export interface ZoneAttachmentArgs {
     /**
      * The language of code.
      */
-    readonly lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string>;
     /**
      * The user custom IP address.
      */
-    readonly userClientIp?: pulumi.Input<string>;
+    userClientIp?: pulumi.Input<string>;
     /**
      * The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
      */
-    readonly vpcIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vpcIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The List of the VPC:
      */
-    readonly vpcs?: pulumi.Input<pulumi.Input<inputs.pvtz.ZoneAttachmentVpc>[]>;
+    vpcs?: pulumi.Input<pulumi.Input<inputs.pvtz.ZoneAttachmentVpc>[]>;
     /**
      * The name of the Private Zone Record.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

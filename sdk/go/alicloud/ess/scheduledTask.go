@@ -323,7 +323,7 @@ type ScheduledTaskArrayInput interface {
 type ScheduledTaskArray []ScheduledTaskInput
 
 func (ScheduledTaskArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ScheduledTask)(nil))
+	return reflect.TypeOf((*[]*ScheduledTask)(nil)).Elem()
 }
 
 func (i ScheduledTaskArray) ToScheduledTaskArrayOutput() ScheduledTaskArrayOutput {
@@ -348,7 +348,7 @@ type ScheduledTaskMapInput interface {
 type ScheduledTaskMap map[string]ScheduledTaskInput
 
 func (ScheduledTaskMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ScheduledTask)(nil))
+	return reflect.TypeOf((*map[string]*ScheduledTask)(nil)).Elem()
 }
 
 func (i ScheduledTaskMap) ToScheduledTaskMapOutput() ScheduledTaskMapOutput {
@@ -359,9 +359,7 @@ func (i ScheduledTaskMap) ToScheduledTaskMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduledTaskMapOutput)
 }
 
-type ScheduledTaskOutput struct {
-	*pulumi.OutputState
-}
+type ScheduledTaskOutput struct{ *pulumi.OutputState }
 
 func (ScheduledTaskOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ScheduledTask)(nil))
@@ -380,14 +378,12 @@ func (o ScheduledTaskOutput) ToScheduledTaskPtrOutput() ScheduledTaskPtrOutput {
 }
 
 func (o ScheduledTaskOutput) ToScheduledTaskPtrOutputWithContext(ctx context.Context) ScheduledTaskPtrOutput {
-	return o.ApplyT(func(v ScheduledTask) *ScheduledTask {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduledTask) *ScheduledTask {
 		return &v
 	}).(ScheduledTaskPtrOutput)
 }
 
-type ScheduledTaskPtrOutput struct {
-	*pulumi.OutputState
-}
+type ScheduledTaskPtrOutput struct{ *pulumi.OutputState }
 
 func (ScheduledTaskPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ScheduledTask)(nil))
@@ -399,6 +395,16 @@ func (o ScheduledTaskPtrOutput) ToScheduledTaskPtrOutput() ScheduledTaskPtrOutpu
 
 func (o ScheduledTaskPtrOutput) ToScheduledTaskPtrOutputWithContext(ctx context.Context) ScheduledTaskPtrOutput {
 	return o
+}
+
+func (o ScheduledTaskPtrOutput) Elem() ScheduledTaskOutput {
+	return o.ApplyT(func(v *ScheduledTask) ScheduledTask {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduledTask
+		return ret
+	}).(ScheduledTaskOutput)
 }
 
 type ScheduledTaskArrayOutput struct{ *pulumi.OutputState }
@@ -442,6 +448,10 @@ func (o ScheduledTaskMapOutput) MapIndex(k pulumi.StringInput) ScheduledTaskOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledTaskInput)(nil)).Elem(), &ScheduledTask{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledTaskPtrInput)(nil)).Elem(), &ScheduledTask{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledTaskArrayInput)(nil)).Elem(), ScheduledTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledTaskMapInput)(nil)).Elem(), ScheduledTaskMap{})
 	pulumi.RegisterOutputType(ScheduledTaskOutput{})
 	pulumi.RegisterOutputType(ScheduledTaskPtrOutput{})
 	pulumi.RegisterOutputType(ScheduledTaskArrayOutput{})

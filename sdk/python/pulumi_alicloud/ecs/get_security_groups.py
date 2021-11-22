@@ -13,6 +13,7 @@ __all__ = [
     'GetSecurityGroupsResult',
     'AwaitableGetSecurityGroupsResult',
     'get_security_groups',
+    'get_security_groups_output',
 ]
 
 @pulumi.output_type
@@ -196,3 +197,47 @@ def get_security_groups(ids: Optional[Sequence[str]] = None,
         resource_group_id=__ret__.resource_group_id,
         tags=__ret__.tags,
         vpc_id=__ret__.vpc_id)
+
+
+@_utilities.lift_output_func(get_security_groups)
+def get_security_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                               resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                               tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                               vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecurityGroupsResult]:
+    """
+    This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    sec_groups_ds = alicloud.ecs.get_security_groups(name_regex="^web-",
+        output_file="web_access.json")
+    # In conjunction with a VPC
+    primary_vpc_ds = alicloud.vpc.Network("primaryVpcDs")
+    primary_sec_groups_ds = primary_vpc_ds.id.apply(lambda id: alicloud.ecs.get_security_groups(vpc_id=id))
+    pulumi.export("firstGroupId", primary_sec_groups_ds.groups[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Security Group IDs.
+    :param str name_regex: A regex string to filter the resulting security groups by their names.
+    :param str resource_group_id: The Id of resource group which the security_group belongs.
+    :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
+           ```python
+           import pulumi
+           import pulumi_alicloud as alicloud
+           
+           tagged_security_groups = alicloud.ecs.get_security_groups(tags={
+               "tagKey1": "tagValue1",
+               "tagKey2": "tagValue2",
+           })
+           ```
+    :param str vpc_id: Used to retrieve security groups that belong to the specified VPC ID.
+    """
+    ...

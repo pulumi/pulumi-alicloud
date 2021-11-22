@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *     nameRegex: "^foo",
  *     outputFile: "/tmp/sslserver",
  *     vpnGatewayId: "fake-vpn-id",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getSslVpnServers(args?: GetSslVpnServersArgs, opts?: pulumi.InvokeOptions): Promise<GetSslVpnServersResult> {
@@ -46,19 +46,19 @@ export interface GetSslVpnServersArgs {
     /**
      * IDs of the SSL-VPN servers.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string of SSL-VPN server name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * Save the result to the file.
      */
-    readonly outputFile?: string;
+    outputFile?: string;
     /**
      * Use the VPN gateway ID as the search key.
      */
-    readonly vpnGatewayId?: string;
+    vpnGatewayId?: string;
 }
 
 /**
@@ -87,4 +87,30 @@ export interface GetSslVpnServersResult {
      * The ID of the VPN gateway instance.
      */
     readonly vpnGatewayId?: string;
+}
+
+export function getSslVpnServersOutput(args?: GetSslVpnServersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSslVpnServersResult> {
+    return pulumi.output(args).apply(a => getSslVpnServers(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSslVpnServers.
+ */
+export interface GetSslVpnServersOutputArgs {
+    /**
+     * IDs of the SSL-VPN servers.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string of SSL-VPN server name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * Save the result to the file.
+     */
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Use the VPN gateway ID as the search key.
+     */
+    vpnGatewayId?: pulumi.Input<string>;
 }

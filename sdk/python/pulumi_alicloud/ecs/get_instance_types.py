@@ -13,6 +13,7 @@ __all__ = [
     'GetInstanceTypesResult',
     'AwaitableGetInstanceTypesResult',
     'get_instance_types',
+    'get_instance_types_output',
 ]
 
 @pulumi.output_type
@@ -300,3 +301,55 @@ def get_instance_types(availability_zone: Optional[str] = None,
         sorted_by=__ret__.sorted_by,
         spot_strategy=__ret__.spot_strategy,
         system_disk_category=__ret__.system_disk_category)
+
+
+@_utilities.lift_output_func(get_instance_types)
+def get_instance_types_output(availability_zone: Optional[pulumi.Input[Optional[str]]] = None,
+                              cpu_core_count: Optional[pulumi.Input[Optional[int]]] = None,
+                              eni_amount: Optional[pulumi.Input[Optional[int]]] = None,
+                              gpu_amount: Optional[pulumi.Input[Optional[int]]] = None,
+                              gpu_spec: Optional[pulumi.Input[Optional[str]]] = None,
+                              instance_charge_type: Optional[pulumi.Input[Optional[str]]] = None,
+                              instance_type_family: Optional[pulumi.Input[Optional[str]]] = None,
+                              is_outdated: Optional[pulumi.Input[Optional[bool]]] = None,
+                              kubernetes_node_role: Optional[pulumi.Input[Optional[str]]] = None,
+                              memory_size: Optional[pulumi.Input[Optional[float]]] = None,
+                              network_type: Optional[pulumi.Input[Optional[str]]] = None,
+                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                              sorted_by: Optional[pulumi.Input[Optional[str]]] = None,
+                              spot_strategy: Optional[pulumi.Input[Optional[str]]] = None,
+                              system_disk_category: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTypesResult]:
+    """
+    This data source provides the ECS instance types of Alibaba Cloud.
+
+    > **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
+
+    > **NOTE:** If one instance type is sold out, it will not be exported.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    types_ds = alicloud.ecs.get_instance_types(cpu_core_count=1,
+        memory_size=2)
+    instance = alicloud.ecs.Instance("instance", instance_type=types_ds.instance_types[0].id)
+    ```
+
+
+    :param str availability_zone: The zone where instance types are supported.
+    :param int cpu_core_count: Filter the results to a specific number of cpu cores.
+    :param int eni_amount: Filter the result whose network interface number is no more than `eni_amount`.
+    :param int gpu_amount: The GPU amount of an instance type.
+    :param str gpu_spec: The GPU spec of an instance type.
+    :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+    :param str instance_type_family: Filter the results based on their family name. For example: 'ecs.n4'.
+    :param bool is_outdated: If true, outdated instance types are included in the results. Default to false.
+    :param float memory_size: Filter the results to a specific memory size in GB.
+    :param str network_type: Filter the results by network type. Valid values: `Classic` and `Vpc`.
+    :param str spot_strategy: Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+    :param str system_disk_category: Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`. Default to `cloud_efficiency`.
+    """
+    ...

@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     resourceGroupId: "rg-acfmwvv********",
  *     instanceSource: "waf-cloud",
  * });
- * export const theFirstWafInstanceId = _default.then(_default => _default.instances[0].id);
+ * export const theFirstWafInstanceId = _default.then(_default => _default.instances?[0]?.id);
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
@@ -52,20 +52,20 @@ export interface GetInstancesArgs {
     /**
      * A list of WAF instance IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The source of the WAF instance.
      */
-    readonly instanceSource?: string;
-    readonly outputFile?: string;
+    instanceSource?: string;
+    outputFile?: string;
     /**
      * The ID of resource group to which WAF instance belongs.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
      */
-    readonly status?: number;
+    status?: number;
 }
 
 /**
@@ -91,4 +91,31 @@ export interface GetInstancesResult {
      * Indicates whether the WAF instance has expired.
      */
     readonly status?: number;
+}
+
+export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
+    return pulumi.output(args).apply(a => getInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstances.
+ */
+export interface GetInstancesOutputArgs {
+    /**
+     * A list of WAF instance IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The source of the WAF instance.
+     */
+    instanceSource?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The ID of resource group to which WAF instance belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
+     */
+    status?: pulumi.Input<number>;
 }

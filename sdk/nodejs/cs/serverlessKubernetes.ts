@@ -238,111 +238,111 @@ export interface ServerlessKubernetesState {
     /**
      * ) You can specific network plugin,log component,ingress component and so on.Detailed below.
      */
-    readonly addons?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesAddon>[]>;
+    addons?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesAddon>[]>;
     /**
      * The path of client certificate, like `~/.kube/client-cert.pem`.
      */
-    readonly clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string>;
     /**
      * The path of client key, like `~/.kube/client-key.pem`.
      */
-    readonly clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string>;
     /**
      * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
      */
-    readonly clusterCaCert?: pulumi.Input<string>;
+    clusterCaCert?: pulumi.Input<string>;
     /**
      * Whether enable the deletion protection or not.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Whether to create internet  eip for API Server. Default to false.
      */
-    readonly endpointPublicAccessEnabled?: pulumi.Input<boolean>;
+    endpointPublicAccessEnabled?: pulumi.Input<boolean>;
     /**
      * Default false, when you want to change `vpcId` and `vswitchId`, you have to set this field to true, then the cluster will be recreated.
      */
-    readonly forceUpdate?: pulumi.Input<boolean>;
+    forceUpdate?: pulumi.Input<boolean>;
     /**
      * The path of kube config, like `~/.kube/config`.
      */
-    readonly kubeConfig?: pulumi.Input<string>;
+    kubeConfig?: pulumi.Input<string>;
     /**
      * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
      */
-    readonly loadBalancerSpec?: pulumi.Input<string>;
+    loadBalancerSpec?: pulumi.Input<string>;
     /**
      * Enable log service, Valid value `SLS`.
      */
-    readonly loggingType?: pulumi.Input<string>;
+    loggingType?: pulumi.Input<string>;
     /**
      * Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
      */
-    readonly name?: pulumi.Input<string>;
-    readonly namePrefix?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string>;
     /**
      * Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
      */
-    readonly newNatGateway?: pulumi.Input<boolean>;
+    newNatGateway?: pulumi.Input<boolean>;
     /**
      * (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
      *
      * @deprecated Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
      */
-    readonly privateZone?: pulumi.Input<boolean>;
+    privateZone?: pulumi.Input<boolean>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
-    readonly retainResources?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceGroupId?: pulumi.Input<string>;
+    retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
-    readonly securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
     /**
      * CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
      */
-    readonly serviceCidr?: pulumi.Input<string>;
+    serviceCidr?: pulumi.Input<string>;
     /**
      * Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
      */
-    readonly serviceDiscoveryTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    serviceDiscoveryTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If you use an existing SLS project, you must specify `slsProjectName`.
      */
-    readonly slsProjectName?: pulumi.Input<string>;
+    slsProjectName?: pulumi.Input<string>;
     /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The time zone of the cluster.
      */
-    readonly timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string>;
     /**
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
     /**
      * The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
      */
-    readonly vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
     /**
      * (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
      *
      * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * The vswitches where new kubernetes cluster will be located.
      */
-    readonly vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -352,109 +352,109 @@ export interface ServerlessKubernetesArgs {
     /**
      * ) You can specific network plugin,log component,ingress component and so on.Detailed below.
      */
-    readonly addons?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesAddon>[]>;
+    addons?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesAddon>[]>;
     /**
      * The path of client certificate, like `~/.kube/client-cert.pem`.
      */
-    readonly clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string>;
     /**
      * The path of client key, like `~/.kube/client-key.pem`.
      */
-    readonly clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string>;
     /**
      * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
      */
-    readonly clusterCaCert?: pulumi.Input<string>;
+    clusterCaCert?: pulumi.Input<string>;
     /**
      * Whether enable the deletion protection or not.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
      */
-    readonly deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Whether to create internet  eip for API Server. Default to false.
      */
-    readonly endpointPublicAccessEnabled?: pulumi.Input<boolean>;
+    endpointPublicAccessEnabled?: pulumi.Input<boolean>;
     /**
      * Default false, when you want to change `vpcId` and `vswitchId`, you have to set this field to true, then the cluster will be recreated.
      */
-    readonly forceUpdate?: pulumi.Input<boolean>;
+    forceUpdate?: pulumi.Input<boolean>;
     /**
      * The path of kube config, like `~/.kube/config`.
      */
-    readonly kubeConfig?: pulumi.Input<string>;
+    kubeConfig?: pulumi.Input<string>;
     /**
      * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
      */
-    readonly loadBalancerSpec?: pulumi.Input<string>;
+    loadBalancerSpec?: pulumi.Input<string>;
     /**
      * Enable log service, Valid value `SLS`.
      */
-    readonly loggingType?: pulumi.Input<string>;
+    loggingType?: pulumi.Input<string>;
     /**
      * Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
      */
-    readonly name?: pulumi.Input<string>;
-    readonly namePrefix?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string>;
     /**
      * Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
      */
-    readonly newNatGateway?: pulumi.Input<boolean>;
+    newNatGateway?: pulumi.Input<boolean>;
     /**
      * (Optional, ForceNew) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
      *
      * @deprecated Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
      */
-    readonly privateZone?: pulumi.Input<boolean>;
+    privateZone?: pulumi.Input<boolean>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
-    readonly retainResources?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceGroupId?: pulumi.Input<string>;
+    retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
-    readonly securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
     /**
      * CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
      */
-    readonly serviceCidr?: pulumi.Input<string>;
+    serviceCidr?: pulumi.Input<string>;
     /**
      * Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
      */
-    readonly serviceDiscoveryTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    serviceDiscoveryTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If you use an existing SLS project, you must specify `slsProjectName`.
      */
-    readonly slsProjectName?: pulumi.Input<string>;
+    slsProjectName?: pulumi.Input<string>;
     /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The time zone of the cluster.
      */
-    readonly timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string>;
     /**
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
     /**
      * The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
      */
-    readonly vpcId: pulumi.Input<string>;
+    vpcId: pulumi.Input<string>;
     /**
      * (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
      *
      * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * The vswitches where new kubernetes cluster will be located.
      */
-    readonly vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

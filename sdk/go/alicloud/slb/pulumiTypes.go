@@ -325,10 +325,11 @@ func (o ListenerXForwardedForOutput) ToListenerXForwardedForPtrOutput() Listener
 }
 
 func (o ListenerXForwardedForOutput) ToListenerXForwardedForPtrOutputWithContext(ctx context.Context) ListenerXForwardedForPtrOutput {
-	return o.ApplyT(func(v ListenerXForwardedFor) *ListenerXForwardedFor {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListenerXForwardedFor) *ListenerXForwardedFor {
 		return &v
 	}).(ListenerXForwardedForPtrOutput)
 }
+
 func (o ListenerXForwardedForOutput) RetriveClientIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListenerXForwardedFor) *bool { return v.RetriveClientIp }).(pulumi.BoolPtrOutput)
 }
@@ -363,7 +364,13 @@ func (o ListenerXForwardedForPtrOutput) ToListenerXForwardedForPtrOutputWithCont
 }
 
 func (o ListenerXForwardedForPtrOutput) Elem() ListenerXForwardedForOutput {
-	return o.ApplyT(func(v *ListenerXForwardedFor) ListenerXForwardedFor { return *v }).(ListenerXForwardedForOutput)
+	return o.ApplyT(func(v *ListenerXForwardedFor) ListenerXForwardedFor {
+		if v != nil {
+			return *v
+		}
+		var ret ListenerXForwardedFor
+		return ret
+	}).(ListenerXForwardedForOutput)
 }
 
 func (o ListenerXForwardedForPtrOutput) RetriveClientIp() pulumi.BoolPtrOutput {
@@ -5073,6 +5080,70 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AclEntryListInput)(nil)).Elem(), AclEntryListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclEntryListArrayInput)(nil)).Elem(), AclEntryListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServerBackendServerInput)(nil)).Elem(), BackendServerBackendServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServerBackendServerArrayInput)(nil)).Elem(), BackendServerBackendServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerXForwardedForInput)(nil)).Elem(), ListenerXForwardedForArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerXForwardedForPtrInput)(nil)).Elem(), ListenerXForwardedForArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MasterSlaveServerGroupServerInput)(nil)).Elem(), MasterSlaveServerGroupServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MasterSlaveServerGroupServerArrayInput)(nil)).Elem(), MasterSlaveServerGroupServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupServerInput)(nil)).Elem(), ServerGroupServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupServerArrayInput)(nil)).Elem(), ServerGroupServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclsAclInput)(nil)).Elem(), GetAclsAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclsAclArrayInput)(nil)).Elem(), GetAclsAclArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclsAclEntryListInput)(nil)).Elem(), GetAclsAclEntryListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclsAclEntryListArrayInput)(nil)).Elem(), GetAclsAclEntryListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclsAclRelatedListenerInput)(nil)).Elem(), GetAclsAclRelatedListenerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclsAclRelatedListenerArrayInput)(nil)).Elem(), GetAclsAclRelatedListenerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancersBalancerInput)(nil)).Elem(), GetApplicationLoadBalancersBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancersBalancerArrayInput)(nil)).Elem(), GetApplicationLoadBalancersBalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancersBalancerBackendServerInput)(nil)).Elem(), GetApplicationLoadBalancersBalancerBackendServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancersBalancerBackendServerArrayInput)(nil)).Elem(), GetApplicationLoadBalancersBalancerBackendServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancersBalancerListenerPortsAndProtocalInput)(nil)).Elem(), GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArrayInput)(nil)).Elem(), GetApplicationLoadBalancersBalancerListenerPortsAndProtocalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancersBalancerListenerPortsAndProtocolInput)(nil)).Elem(), GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArrayInput)(nil)).Elem(), GetApplicationLoadBalancersBalancerListenerPortsAndProtocolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancersSlbInput)(nil)).Elem(), GetApplicationLoadBalancersSlbArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancersSlbArrayInput)(nil)).Elem(), GetApplicationLoadBalancersSlbArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttachmentsSlbAttachmentInput)(nil)).Elem(), GetAttachmentsSlbAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttachmentsSlbAttachmentArrayInput)(nil)).Elem(), GetAttachmentsSlbAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServersBackendServerInput)(nil)).Elem(), GetBackendServersBackendServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServersBackendServerArrayInput)(nil)).Elem(), GetBackendServersBackendServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCaCertificatesCertificateInput)(nil)).Elem(), GetCaCertificatesCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCaCertificatesCertificateArrayInput)(nil)).Elem(), GetCaCertificatesCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainExtensionsExtensionInput)(nil)).Elem(), GetDomainExtensionsExtensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainExtensionsExtensionArrayInput)(nil)).Elem(), GetDomainExtensionsExtensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersSlbListenerInput)(nil)).Elem(), GetListenersSlbListenerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersSlbListenerArrayInput)(nil)).Elem(), GetListenersSlbListenerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersBalancerInput)(nil)).Elem(), GetLoadBalancersBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersBalancerArrayInput)(nil)).Elem(), GetLoadBalancersBalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersBalancerBackendServerInput)(nil)).Elem(), GetLoadBalancersBalancerBackendServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersBalancerBackendServerArrayInput)(nil)).Elem(), GetLoadBalancersBalancerBackendServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersBalancerListenerPortsAndProtocalInput)(nil)).Elem(), GetLoadBalancersBalancerListenerPortsAndProtocalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersBalancerListenerPortsAndProtocalArrayInput)(nil)).Elem(), GetLoadBalancersBalancerListenerPortsAndProtocalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersBalancerListenerPortsAndProtocolInput)(nil)).Elem(), GetLoadBalancersBalancerListenerPortsAndProtocolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersBalancerListenerPortsAndProtocolArrayInput)(nil)).Elem(), GetLoadBalancersBalancerListenerPortsAndProtocolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersSlbInput)(nil)).Elem(), GetLoadBalancersSlbArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersSlbArrayInput)(nil)).Elem(), GetLoadBalancersSlbArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMasterSlaveServerGroupsGroupInput)(nil)).Elem(), GetMasterSlaveServerGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMasterSlaveServerGroupsGroupArrayInput)(nil)).Elem(), GetMasterSlaveServerGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMasterSlaveServerGroupsGroupServerInput)(nil)).Elem(), GetMasterSlaveServerGroupsGroupServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMasterSlaveServerGroupsGroupServerArrayInput)(nil)).Elem(), GetMasterSlaveServerGroupsGroupServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesSlbRuleInput)(nil)).Elem(), GetRulesSlbRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesSlbRuleArrayInput)(nil)).Elem(), GetRulesSlbRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerCertificatesCertificateInput)(nil)).Elem(), GetServerCertificatesCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerCertificatesCertificateArrayInput)(nil)).Elem(), GetServerCertificatesCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerGroupsSlbServerGroupInput)(nil)).Elem(), GetServerGroupsSlbServerGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerGroupsSlbServerGroupArrayInput)(nil)).Elem(), GetServerGroupsSlbServerGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerGroupsSlbServerGroupServerInput)(nil)).Elem(), GetServerGroupsSlbServerGroupServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerGroupsSlbServerGroupServerArrayInput)(nil)).Elem(), GetServerGroupsSlbServerGroupServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTlsCipherPoliciesPolicyInput)(nil)).Elem(), GetTlsCipherPoliciesPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTlsCipherPoliciesPolicyArrayInput)(nil)).Elem(), GetTlsCipherPoliciesPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTlsCipherPoliciesPolicyRelateListenerInput)(nil)).Elem(), GetTlsCipherPoliciesPolicyRelateListenerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTlsCipherPoliciesPolicyRelateListenerArrayInput)(nil)).Elem(), GetTlsCipherPoliciesPolicyRelateListenerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(AclEntryListOutput{})
 	pulumi.RegisterOutputType(AclEntryListArrayOutput{})
 	pulumi.RegisterOutputType(BackendServerBackendServerOutput{})

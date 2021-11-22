@@ -304,111 +304,111 @@ export interface EnterpriseInstanceState {
     /**
      * Cross-database query datalink name.
      */
-    readonly dataLinkName?: pulumi.Input<string>;
+    dataLinkName?: pulumi.Input<string>;
     /**
      * Database access password.
      */
-    readonly databasePassword?: pulumi.Input<string>;
+    databasePassword?: pulumi.Input<string>;
     /**
      * Database access account.
      */
-    readonly databaseUser?: pulumi.Input<string>;
-    readonly dbaId?: pulumi.Input<string>;
+    databaseUser?: pulumi.Input<string>;
+    dbaId?: pulumi.Input<string>;
     /**
      * The instance dba nickname.
      */
-    readonly dbaNickName?: pulumi.Input<string>;
+    dbaNickName?: pulumi.Input<string>;
     /**
      * The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
      */
-    readonly dbaUid?: pulumi.Input<number>;
+    dbaUid?: pulumi.Input<number>;
     /**
      * Whether to use online services, currently only supports MySQL and PolarDB. Valid values: `0` Not used, `1` Native online DDL priority, `2` DMS lock-free table structure change priority.
      */
-    readonly ddlOnline?: pulumi.Input<number>;
+    ddlOnline?: pulumi.Input<number>;
     /**
      * ECS instance ID. The value of InstanceSource is the ECS self-built library. This value must be passed.
      */
-    readonly ecsInstanceId?: pulumi.Input<string>;
+    ecsInstanceId?: pulumi.Input<string>;
     /**
      * The region where the instance is located. This value must be passed when the value of InstanceSource is RDS, ECS self-built library, and VPC dedicated line IDC.
      */
-    readonly ecsRegion?: pulumi.Input<string>;
+    ecsRegion?: pulumi.Input<string>;
     /**
      * Environment type. Valid values: `product` production environment, `dev` development environment, `pre` pre-release environment, `test` test environment, `sit` SIT environment, `uat` UAT environment, `pet` pressure test environment, `stag` STAG environment.
      */
-    readonly envType?: pulumi.Input<string>;
+    envType?: pulumi.Input<string>;
     /**
      * Export timeout, unit: s (seconds).
      */
-    readonly exportTimeout?: pulumi.Input<number>;
+    exportTimeout?: pulumi.Input<number>;
     /**
      * Host address of the target database.
      */
-    readonly host?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
     /**
      * It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
      *
      * @deprecated Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.
      */
-    readonly instanceAlias?: pulumi.Input<string>;
-    readonly instanceId?: pulumi.Input<string>;
+    instanceAlias?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * Instance name, to help users quickly distinguish positioning.
      */
-    readonly instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string>;
     /**
      * The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
      */
-    readonly instanceSource?: pulumi.Input<string>;
+    instanceSource?: pulumi.Input<string>;
     /**
      * Database type. Valid values: `MySQL`, `SQLServer`, `PostgreSQL`, `Oracle,` `DRDS`, `OceanBase`, `Mongo`, `Redis`.
      */
-    readonly instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string>;
     /**
      * Network type. Valid values: `CLASSIC`, `VPC`.
      */
-    readonly networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string>;
     /**
      * Access port of the target database.
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * Query timeout time, unit: s (seconds).
      */
-    readonly queryTimeout?: pulumi.Input<number>;
+    queryTimeout?: pulumi.Input<number>;
     /**
      * The security rule of the instance is passed into the name of the security rule in the enterprise.
      */
-    readonly safeRule?: pulumi.Input<string>;
-    readonly safeRuleId?: pulumi.Input<string>;
+    safeRule?: pulumi.Input<string>;
+    safeRuleId?: pulumi.Input<string>;
     /**
      * The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
      */
-    readonly sid?: pulumi.Input<string>;
-    readonly skipTest?: pulumi.Input<boolean>;
+    sid?: pulumi.Input<string>;
+    skipTest?: pulumi.Input<boolean>;
     /**
      * It has been deprecated from provider version 1.100.0 and 'status' instead.
      *
      * @deprecated Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * The instance status.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The tenant ID.
      */
-    readonly tid?: pulumi.Input<number>;
+    tid?: pulumi.Input<number>;
     /**
      * Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
      */
-    readonly useDsql?: pulumi.Input<number>;
+    useDsql?: pulumi.Input<number>;
     /**
      * VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.
      */
-    readonly vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
 }
 
 /**
@@ -418,95 +418,95 @@ export interface EnterpriseInstanceArgs {
     /**
      * Cross-database query datalink name.
      */
-    readonly dataLinkName?: pulumi.Input<string>;
+    dataLinkName?: pulumi.Input<string>;
     /**
      * Database access password.
      */
-    readonly databasePassword: pulumi.Input<string>;
+    databasePassword: pulumi.Input<string>;
     /**
      * Database access account.
      */
-    readonly databaseUser: pulumi.Input<string>;
-    readonly dbaId?: pulumi.Input<string>;
+    databaseUser: pulumi.Input<string>;
+    dbaId?: pulumi.Input<string>;
     /**
      * The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
      */
-    readonly dbaUid: pulumi.Input<number>;
+    dbaUid: pulumi.Input<number>;
     /**
      * Whether to use online services, currently only supports MySQL and PolarDB. Valid values: `0` Not used, `1` Native online DDL priority, `2` DMS lock-free table structure change priority.
      */
-    readonly ddlOnline?: pulumi.Input<number>;
+    ddlOnline?: pulumi.Input<number>;
     /**
      * ECS instance ID. The value of InstanceSource is the ECS self-built library. This value must be passed.
      */
-    readonly ecsInstanceId?: pulumi.Input<string>;
+    ecsInstanceId?: pulumi.Input<string>;
     /**
      * The region where the instance is located. This value must be passed when the value of InstanceSource is RDS, ECS self-built library, and VPC dedicated line IDC.
      */
-    readonly ecsRegion?: pulumi.Input<string>;
+    ecsRegion?: pulumi.Input<string>;
     /**
      * Environment type. Valid values: `product` production environment, `dev` development environment, `pre` pre-release environment, `test` test environment, `sit` SIT environment, `uat` UAT environment, `pet` pressure test environment, `stag` STAG environment.
      */
-    readonly envType: pulumi.Input<string>;
+    envType: pulumi.Input<string>;
     /**
      * Export timeout, unit: s (seconds).
      */
-    readonly exportTimeout: pulumi.Input<number>;
+    exportTimeout: pulumi.Input<number>;
     /**
      * Host address of the target database.
      */
-    readonly host: pulumi.Input<string>;
+    host: pulumi.Input<string>;
     /**
      * It has been deprecated from provider version 1.100.0 and 'instance_name' instead.
      *
      * @deprecated Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.
      */
-    readonly instanceAlias?: pulumi.Input<string>;
-    readonly instanceId?: pulumi.Input<string>;
+    instanceAlias?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * Instance name, to help users quickly distinguish positioning.
      */
-    readonly instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string>;
     /**
      * The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
      */
-    readonly instanceSource: pulumi.Input<string>;
+    instanceSource: pulumi.Input<string>;
     /**
      * Database type. Valid values: `MySQL`, `SQLServer`, `PostgreSQL`, `Oracle,` `DRDS`, `OceanBase`, `Mongo`, `Redis`.
      */
-    readonly instanceType: pulumi.Input<string>;
+    instanceType: pulumi.Input<string>;
     /**
      * Network type. Valid values: `CLASSIC`, `VPC`.
      */
-    readonly networkType: pulumi.Input<string>;
+    networkType: pulumi.Input<string>;
     /**
      * Access port of the target database.
      */
-    readonly port: pulumi.Input<number>;
+    port: pulumi.Input<number>;
     /**
      * Query timeout time, unit: s (seconds).
      */
-    readonly queryTimeout: pulumi.Input<number>;
+    queryTimeout: pulumi.Input<number>;
     /**
      * The security rule of the instance is passed into the name of the security rule in the enterprise.
      */
-    readonly safeRule: pulumi.Input<string>;
-    readonly safeRuleId?: pulumi.Input<string>;
+    safeRule: pulumi.Input<string>;
+    safeRuleId?: pulumi.Input<string>;
     /**
      * The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
      */
-    readonly sid?: pulumi.Input<string>;
-    readonly skipTest?: pulumi.Input<boolean>;
+    sid?: pulumi.Input<string>;
+    skipTest?: pulumi.Input<boolean>;
     /**
      * The tenant ID.
      */
-    readonly tid?: pulumi.Input<number>;
+    tid?: pulumi.Input<number>;
     /**
      * Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
      */
-    readonly useDsql?: pulumi.Input<number>;
+    useDsql?: pulumi.Input<number>;
     /**
      * VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.
      */
-    readonly vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
 }

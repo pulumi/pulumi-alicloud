@@ -110,16 +110,16 @@ export class Folder extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Folder resources.
  */
 export interface FolderState {
-    readonly folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string>;
     /**
      * Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
      */
-    readonly folderPath?: pulumi.Input<string>;
+    folderPath?: pulumi.Input<string>;
     /**
      * The ID of the project.
      */
-    readonly projectId?: pulumi.Input<string>;
-    readonly projectIdentifier?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
+    projectIdentifier?: pulumi.Input<string>;
 }
 
 /**
@@ -129,10 +129,10 @@ export interface FolderArgs {
     /**
      * Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
      */
-    readonly folderPath: pulumi.Input<string>;
+    folderPath: pulumi.Input<string>;
     /**
      * The ID of the project.
      */
-    readonly projectId?: pulumi.Input<string>;
-    readonly projectIdentifier?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
+    projectIdentifier?: pulumi.Input<string>;
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cen
 {
@@ -34,7 +35,7 @@ namespace Pulumi.AliCloud.Cen
         ///         {
         ///             CenId = "cen-7qthudw0ll6jmc****",
         ///         }));
-        ///         this.FirstCenRouteServiceId = example.Apply(example =&gt; example.Services[0].Id);
+        ///         this.FirstCenRouteServiceId = example.Apply(example =&gt; example.Services?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstCenRouteServiceId")]
@@ -46,6 +47,42 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public static Task<GetRouteServicesResult> InvokeAsync(GetRouteServicesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRouteServicesResult>("alicloud:cen/getRouteServices:getRouteServices", args ?? new GetRouteServicesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides CEN Route Service available to the user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.102.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Cen.GetRouteServices.InvokeAsync(new AliCloud.Cen.GetRouteServicesArgs
+        ///         {
+        ///             CenId = "cen-7qthudw0ll6jmc****",
+        ///         }));
+        ///         this.FirstCenRouteServiceId = example.Apply(example =&gt; example.Services?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstCenRouteServiceId")]
+        ///     public Output&lt;string&gt; FirstCenRouteServiceId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetRouteServicesResult> Invoke(GetRouteServicesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRouteServicesResult>("alicloud:cen/getRouteServices:getRouteServices", args ?? new GetRouteServicesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -91,6 +128,52 @@ namespace Pulumi.AliCloud.Cen
         public string? Status { get; set; }
 
         public GetRouteServicesArgs()
+        {
+        }
+    }
+
+    public sealed class GetRouteServicesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The region of the network instances that access the cloud services.
+        /// </summary>
+        [Input("accessRegionId")]
+        public Input<string>? AccessRegionId { get; set; }
+
+        /// <summary>
+        /// -(Required, ForceNew) The ID of the CEN instance.
+        /// </summary>
+        [Input("cenId", required: true)]
+        public Input<string> CenId { get; set; } = null!;
+
+        /// <summary>
+        /// -(Optional, ForceNew) The domain name or IP address of the cloud service.
+        /// </summary>
+        [Input("host")]
+        public Input<string>? Host { get; set; }
+
+        /// <summary>
+        /// The region of the cloud service.
+        /// </summary>
+        [Input("hostRegionId")]
+        public Input<string>? HostRegionId { get; set; }
+
+        /// <summary>
+        /// The VPC associated with the cloud service.
+        /// </summary>
+        [Input("hostVpcId")]
+        public Input<string>? HostVpcId { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetRouteServicesInvokeArgs()
         {
         }
     }

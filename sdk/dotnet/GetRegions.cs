@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud
 {
@@ -30,7 +31,7 @@ namespace Pulumi.AliCloud
         ///         {
         ///             Current = true,
         ///         }));
-        ///         this.CurrentRegionId = currentRegionDs.Apply(currentRegionDs =&gt; currentRegionDs.Regions[0].Id);
+        ///         this.CurrentRegionId = currentRegionDs.Apply(currentRegionDs =&gt; currentRegionDs.Regions?[0]?.Id);
         ///     }
         /// 
         ///     [Output("currentRegionId")]
@@ -42,6 +43,38 @@ namespace Pulumi.AliCloud
         /// </summary>
         public static Task<GetRegionsResult> InvokeAsync(GetRegionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("alicloud:index/getRegions:getRegions", args ?? new GetRegionsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides Alibaba Cloud regions.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var currentRegionDs = Output.Create(AliCloud.GetRegions.InvokeAsync(new AliCloud.GetRegionsArgs
+        ///         {
+        ///             Current = true,
+        ///         }));
+        ///         this.CurrentRegionId = currentRegionDs.Apply(currentRegionDs =&gt; currentRegionDs.Regions?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("currentRegionId")]
+        ///     public Output&lt;string&gt; CurrentRegionId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetRegionsResult> Invoke(GetRegionsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetRegionsResult>("alicloud:index/getRegions:getRegions", args ?? new GetRegionsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -63,6 +96,28 @@ namespace Pulumi.AliCloud
         public string? OutputFile { get; set; }
 
         public GetRegionsArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegionsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Set to true to match only the region configured in the provider.
+        /// </summary>
+        [Input("current")]
+        public Input<bool>? Current { get; set; }
+
+        /// <summary>
+        /// The name of the region to select, such as `eu-central-1`.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetRegionsInvokeArgs()
         {
         }
     }

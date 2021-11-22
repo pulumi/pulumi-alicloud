@@ -13,6 +13,7 @@ __all__ = [
     'GetEndpointGroupsResult',
     'AwaitableGetEndpointGroupsResult',
     'get_endpoint_groups',
+    'get_endpoint_groups_output',
 ]
 
 @pulumi.output_type
@@ -184,3 +185,42 @@ def get_endpoint_groups(accelerator_id: Optional[str] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_endpoint_groups)
+def get_endpoint_groups_output(accelerator_id: Optional[pulumi.Input[str]] = None,
+                               endpoint_group_type: Optional[pulumi.Input[Optional[str]]] = None,
+                               ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                               listener_id: Optional[pulumi.Input[Optional[str]]] = None,
+                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                               status: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEndpointGroupsResult]:
+    """
+    This data source provides the Global Accelerator (GA) Endpoint Groups of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.113.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ga.get_endpoint_groups(accelerator_id="example_value",
+        ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstGaEndpointGroupId", example.groups[0].id)
+    ```
+
+
+    :param str accelerator_id: The ID of the Global Accelerator instance to which the endpoint group will be added.
+    :param str endpoint_group_type: The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+    :param Sequence[str] ids: A list of Endpoint Group IDs.
+    :param str listener_id: The ID of the listener that is associated with the endpoint group.
+    :param str name_regex: A regex string to filter results by Endpoint Group name.
+    :param str status: The status of the endpoint group.
+    """
+    ...

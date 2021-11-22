@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vswitchName: name,
  * });
  * const _this = new alicloud.adb.DBCluster("this", {
@@ -276,100 +276,100 @@ export interface DBClusterState {
     /**
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
      */
-    readonly autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number>;
     /**
      * The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
      */
-    readonly computeResource?: pulumi.Input<string>;
+    computeResource?: pulumi.Input<string>;
     /**
      * The endpoint of the cluster.
      */
-    readonly connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string>;
     /**
      * The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
      */
-    readonly dbClusterCategory?: pulumi.Input<string>;
+    dbClusterCategory?: pulumi.Input<string>;
     /**
      * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      *
      * @deprecated It duplicates with attribute db_node_class and is deprecated from 1.121.2.
      */
-    readonly dbClusterClass?: pulumi.Input<string>;
+    dbClusterClass?: pulumi.Input<string>;
     /**
      * The db cluster version. Value options: `3.0`, Default to `3.0`.
      */
-    readonly dbClusterVersion?: pulumi.Input<string>;
+    dbClusterVersion?: pulumi.Input<string>;
     /**
      * The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
      */
-    readonly dbNodeClass?: pulumi.Input<string>;
+    dbNodeClass?: pulumi.Input<string>;
     /**
      * The db node count.
      */
-    readonly dbNodeCount?: pulumi.Input<number>;
+    dbNodeCount?: pulumi.Input<number>;
     /**
      * The db node storage.
      */
-    readonly dbNodeStorage?: pulumi.Input<number>;
+    dbNodeStorage?: pulumi.Input<number>;
     /**
      * The description of DBCluster.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The elastic io resource.
      */
-    readonly elasticIoResource?: pulumi.Input<number>;
+    elasticIoResource?: pulumi.Input<number>;
     /**
      * The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
      */
-    readonly maintainTime?: pulumi.Input<string>;
+    maintainTime?: pulumi.Input<string>;
     /**
      * The mode of the cluster. Valid values: `reserver`, `flexible`.
      */
-    readonly mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
     /**
      * The modify type.
      */
-    readonly modifyType?: pulumi.Input<string>;
+    modifyType?: pulumi.Input<string>;
     /**
      * Field `payType` has been deprecated. New field `paymentType` instead.
      */
-    readonly payType?: pulumi.Input<string>;
+    payType?: pulumi.Input<string>;
     /**
      * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
      */
-    readonly paymentType?: pulumi.Input<string>;
-    readonly period?: pulumi.Input<number>;
+    paymentType?: pulumi.Input<string>;
+    period?: pulumi.Input<number>;
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */
-    readonly renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
-    readonly securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The status of the resource.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The vswitch id.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * The zone ID of the resource.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -379,90 +379,90 @@ export interface DBClusterArgs {
     /**
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
      */
-    readonly autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number>;
     /**
      * The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
      */
-    readonly computeResource?: pulumi.Input<string>;
+    computeResource?: pulumi.Input<string>;
     /**
      * The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
      */
-    readonly dbClusterCategory: pulumi.Input<string>;
+    dbClusterCategory: pulumi.Input<string>;
     /**
      * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      *
      * @deprecated It duplicates with attribute db_node_class and is deprecated from 1.121.2.
      */
-    readonly dbClusterClass?: pulumi.Input<string>;
+    dbClusterClass?: pulumi.Input<string>;
     /**
      * The db cluster version. Value options: `3.0`, Default to `3.0`.
      */
-    readonly dbClusterVersion?: pulumi.Input<string>;
+    dbClusterVersion?: pulumi.Input<string>;
     /**
      * The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
      */
-    readonly dbNodeClass?: pulumi.Input<string>;
+    dbNodeClass?: pulumi.Input<string>;
     /**
      * The db node count.
      */
-    readonly dbNodeCount?: pulumi.Input<number>;
+    dbNodeCount?: pulumi.Input<number>;
     /**
      * The db node storage.
      */
-    readonly dbNodeStorage?: pulumi.Input<number>;
+    dbNodeStorage?: pulumi.Input<number>;
     /**
      * The description of DBCluster.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The elastic io resource.
      */
-    readonly elasticIoResource?: pulumi.Input<number>;
+    elasticIoResource?: pulumi.Input<number>;
     /**
      * The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
      */
-    readonly maintainTime?: pulumi.Input<string>;
+    maintainTime?: pulumi.Input<string>;
     /**
      * The mode of the cluster. Valid values: `reserver`, `flexible`.
      */
-    readonly mode: pulumi.Input<string>;
+    mode: pulumi.Input<string>;
     /**
      * The modify type.
      */
-    readonly modifyType?: pulumi.Input<string>;
+    modifyType?: pulumi.Input<string>;
     /**
      * Field `payType` has been deprecated. New field `paymentType` instead.
      */
-    readonly payType?: pulumi.Input<string>;
+    payType?: pulumi.Input<string>;
     /**
      * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
      */
-    readonly paymentType?: pulumi.Input<string>;
-    readonly period?: pulumi.Input<number>;
+    paymentType?: pulumi.Input<string>;
+    period?: pulumi.Input<number>;
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */
-    readonly renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
-    readonly securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The vswitch id.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * The zone ID of the resource.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

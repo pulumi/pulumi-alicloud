@@ -218,7 +218,7 @@ type MscSubContractArrayInput interface {
 type MscSubContractArray []MscSubContractInput
 
 func (MscSubContractArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*MscSubContract)(nil))
+	return reflect.TypeOf((*[]*MscSubContract)(nil)).Elem()
 }
 
 func (i MscSubContractArray) ToMscSubContractArrayOutput() MscSubContractArrayOutput {
@@ -243,7 +243,7 @@ type MscSubContractMapInput interface {
 type MscSubContractMap map[string]MscSubContractInput
 
 func (MscSubContractMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*MscSubContract)(nil))
+	return reflect.TypeOf((*map[string]*MscSubContract)(nil)).Elem()
 }
 
 func (i MscSubContractMap) ToMscSubContractMapOutput() MscSubContractMapOutput {
@@ -254,9 +254,7 @@ func (i MscSubContractMap) ToMscSubContractMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(MscSubContractMapOutput)
 }
 
-type MscSubContractOutput struct {
-	*pulumi.OutputState
-}
+type MscSubContractOutput struct{ *pulumi.OutputState }
 
 func (MscSubContractOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MscSubContract)(nil))
@@ -275,14 +273,12 @@ func (o MscSubContractOutput) ToMscSubContractPtrOutput() MscSubContractPtrOutpu
 }
 
 func (o MscSubContractOutput) ToMscSubContractPtrOutputWithContext(ctx context.Context) MscSubContractPtrOutput {
-	return o.ApplyT(func(v MscSubContract) *MscSubContract {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MscSubContract) *MscSubContract {
 		return &v
 	}).(MscSubContractPtrOutput)
 }
 
-type MscSubContractPtrOutput struct {
-	*pulumi.OutputState
-}
+type MscSubContractPtrOutput struct{ *pulumi.OutputState }
 
 func (MscSubContractPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MscSubContract)(nil))
@@ -294,6 +290,16 @@ func (o MscSubContractPtrOutput) ToMscSubContractPtrOutput() MscSubContractPtrOu
 
 func (o MscSubContractPtrOutput) ToMscSubContractPtrOutputWithContext(ctx context.Context) MscSubContractPtrOutput {
 	return o
+}
+
+func (o MscSubContractPtrOutput) Elem() MscSubContractOutput {
+	return o.ApplyT(func(v *MscSubContract) MscSubContract {
+		if v != nil {
+			return *v
+		}
+		var ret MscSubContract
+		return ret
+	}).(MscSubContractOutput)
 }
 
 type MscSubContractArrayOutput struct{ *pulumi.OutputState }
@@ -337,6 +343,10 @@ func (o MscSubContractMapOutput) MapIndex(k pulumi.StringInput) MscSubContractOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MscSubContractInput)(nil)).Elem(), &MscSubContract{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MscSubContractPtrInput)(nil)).Elem(), &MscSubContract{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MscSubContractArrayInput)(nil)).Elem(), MscSubContractArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MscSubContractMapInput)(nil)).Elem(), MscSubContractMap{})
 	pulumi.RegisterOutputType(MscSubContractOutput{})
 	pulumi.RegisterOutputType(MscSubContractPtrOutput{})
 	pulumi.RegisterOutputType(MscSubContractArrayOutput{})

@@ -99,36 +99,36 @@ export class CopyImage extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CopyImage resources.
  */
 export interface CopyImageState {
-    readonly deleteAutoSnapshot?: pulumi.Input<boolean>;
-    readonly description?: pulumi.Input<string>;
-    readonly encrypted?: pulumi.Input<boolean>;
-    readonly force?: pulumi.Input<boolean>;
-    readonly imageName?: pulumi.Input<string>;
-    readonly kmsKeyId?: pulumi.Input<string>;
+    deleteAutoSnapshot?: pulumi.Input<boolean>;
+    description?: pulumi.Input<string>;
+    encrypted?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
+    imageName?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string>;
     /**
      * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly sourceImageId?: pulumi.Input<string>;
-    readonly sourceRegionId?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    name?: pulumi.Input<string>;
+    sourceImageId?: pulumi.Input<string>;
+    sourceRegionId?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
  * The set of arguments for constructing a CopyImage resource.
  */
 export interface CopyImageArgs {
-    readonly deleteAutoSnapshot?: pulumi.Input<boolean>;
-    readonly description?: pulumi.Input<string>;
-    readonly encrypted?: pulumi.Input<boolean>;
-    readonly force?: pulumi.Input<boolean>;
-    readonly imageName?: pulumi.Input<string>;
-    readonly kmsKeyId?: pulumi.Input<string>;
+    deleteAutoSnapshot?: pulumi.Input<boolean>;
+    description?: pulumi.Input<string>;
+    encrypted?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean>;
+    imageName?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string>;
     /**
      * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly sourceImageId: pulumi.Input<string>;
-    readonly sourceRegionId: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    name?: pulumi.Input<string>;
+    sourceImageId: pulumi.Input<string>;
+    sourceRegionId: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     acceleratorId: "example_value",
  *     ids: ["example_value"],
  * });
- * export const firstGaIpSetId = example.then(example => example.sets[0].id);
+ * export const firstGaIpSetId = example.then(example => example.sets?[0]?.id);
  * ```
  */
 export function getIpSets(args: GetIpSetsArgs, opts?: pulumi.InvokeOptions): Promise<GetIpSetsResult> {
@@ -48,16 +48,16 @@ export interface GetIpSetsArgs {
     /**
      * The ID of the Global Accelerator (GA) instance.
      */
-    readonly acceleratorId: string;
+    acceleratorId: string;
     /**
      * A list of Ip Set IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * The status of the acceleration region.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -73,4 +73,27 @@ export interface GetIpSetsResult {
     readonly outputFile?: string;
     readonly sets: outputs.ga.GetIpSetsSet[];
     readonly status?: string;
+}
+
+export function getIpSetsOutput(args: GetIpSetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpSetsResult> {
+    return pulumi.output(args).apply(a => getIpSets(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getIpSets.
+ */
+export interface GetIpSetsOutputArgs {
+    /**
+     * The ID of the Global Accelerator (GA) instance.
+     */
+    acceleratorId: pulumi.Input<string>;
+    /**
+     * A list of Ip Set IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the acceleration region.
+     */
+    status?: pulumi.Input<string>;
 }

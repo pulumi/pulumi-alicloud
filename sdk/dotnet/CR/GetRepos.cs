@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CR
 {
@@ -45,6 +46,41 @@ namespace Pulumi.AliCloud.CR
         /// </summary>
         public static Task<GetReposResult> InvokeAsync(GetReposArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetReposResult>("alicloud:cr/getRepos:getRepos", args ?? new GetReposArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list Container Registry repositories on Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in v1.35.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myRepos = Output.Create(AliCloud.CR.GetRepos.InvokeAsync(new AliCloud.CR.GetReposArgs
+        ///         {
+        ///             NameRegex = "my-repos",
+        ///             OutputFile = "my-repo-json",
+        ///         }));
+        ///         this.Output = myRepos.Apply(myRepos =&gt; myRepos.Repos);
+        ///     }
+        /// 
+        ///     [Output("output")]
+        ///     public Output&lt;string&gt; Output { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetReposResult> Invoke(GetReposInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetReposResult>("alicloud:cr/getRepos:getRepos", args ?? new GetReposInvokeArgs(), options.WithVersion());
     }
 
 
@@ -72,6 +108,34 @@ namespace Pulumi.AliCloud.CR
         public string? OutputFile { get; set; }
 
         public GetReposArgs()
+        {
+        }
+    }
+
+    public sealed class GetReposInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Boolean, false by default, only repository attributes are exported. Set to true if domain list and tags belong to this repository are needed. See `tags` in attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by repository name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        /// <summary>
+        /// Name of container registry namespace where the repositories are located in.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetReposInvokeArgs()
         {
         }
     }

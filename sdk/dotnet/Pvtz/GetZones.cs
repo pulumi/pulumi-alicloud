@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Pvtz
 {
@@ -30,7 +31,7 @@ namespace Pulumi.AliCloud.Pvtz
         ///         {
         ///             Keyword = alicloud_pvtz_zone.Basic.Zone_name,
         ///         }));
-        ///         this.FirstZoneId = pvtzZonesDs.Apply(pvtzZonesDs =&gt; pvtzZonesDs.Zones[0].Id);
+        ///         this.FirstZoneId = pvtzZonesDs.Apply(pvtzZonesDs =&gt; pvtzZonesDs.Zones?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstZoneId")]
@@ -42,6 +43,38 @@ namespace Pulumi.AliCloud.Pvtz
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:pvtz/getZones:getZones", args ?? new GetZonesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var pvtzZonesDs = Output.Create(AliCloud.Pvtz.GetZones.InvokeAsync(new AliCloud.Pvtz.GetZonesArgs
+        ///         {
+        ///             Keyword = alicloud_pvtz_zone.Basic.Zone_name,
+        ///         }));
+        ///         this.FirstZoneId = pvtzZonesDs.Apply(pvtzZonesDs =&gt; pvtzZonesDs.Zones?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstZoneId")]
+        ///     public Output&lt;string&gt; FirstZoneId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:pvtz/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -110,6 +143,75 @@ namespace Pulumi.AliCloud.Pvtz
         public string? SearchMode { get; set; }
 
         public GetZonesArgs()
+        {
+        }
+    }
+
+    public sealed class GetZonesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// -(Optional, Available 1.107.0+) Default to `false`. Set it to true can output more details.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of zone IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// keyword for zone name.
+        /// </summary>
+        [Input("keyword")]
+        public Input<string>? Keyword { get; set; }
+
+        /// <summary>
+        /// User language.
+        /// </summary>
+        [Input("lang")]
+        public Input<string>? Lang { get; set; }
+
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// query_region_id for zone regionId.
+        /// </summary>
+        [Input("queryRegionId")]
+        public Input<string>? QueryRegionId { get; set; }
+
+        /// <summary>
+        /// query_vpc_id for zone vpcId.
+        /// </summary>
+        [Input("queryVpcId")]
+        public Input<string>? QueryVpcId { get; set; }
+
+        /// <summary>
+        /// resource_group_id for zone resourceGroupId.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Search mode. Value: 
+        /// - LIKE: fuzzy search.
+        /// - EXACT: precise search. It is not filled in by default.
+        /// </summary>
+        [Input("searchMode")]
+        public Input<string>? SearchMode { get; set; }
+
+        public GetZonesInvokeArgs()
         {
         }
     }

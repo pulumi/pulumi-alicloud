@@ -13,6 +13,7 @@ __all__ = [
     'GetTransitRouterPeerAttachmentsResult',
     'AwaitableGetTransitRouterPeerAttachmentsResult',
     'get_transit_router_peer_attachments',
+    'get_transit_router_peer_attachments_output',
 ]
 
 @pulumi.output_type
@@ -185,3 +186,28 @@ def get_transit_router_peer_attachments(cen_id: Optional[str] = None,
         status=__ret__.status,
         transit_router_attachment_id=__ret__.transit_router_attachment_id,
         transit_router_id=__ret__.transit_router_id)
+
+
+@_utilities.lift_output_func(get_transit_router_peer_attachments)
+def get_transit_router_peer_attachments_output(cen_id: Optional[pulumi.Input[str]] = None,
+                                               ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                               status: Optional[pulumi.Input[Optional[str]]] = None,
+                                               transit_router_attachment_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                               transit_router_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRouterPeerAttachmentsResult]:
+    """
+    This data source provides CEN Transit Router peer attachments available to the user.
+
+    > **NOTE:** Available in 1.128.0+
+
+
+    :param str cen_id: ID of the CEN instance.
+    :param Sequence[str] ids: A list of CEN Transit Router peer attachments IDs.
+    :param str name_regex: A regex string to filter CEN Transit Router peer attachments by name.
+    :param str status: The status of CEN Transit Router peer attachment. Valid values `Attached`, `Attaching` and `Detaching`.
+    :param str transit_router_attachment_id: The ID of CEN Transit Router peer attachments.
+    :param str transit_router_id: The ID of transit router.
+    """
+    ...

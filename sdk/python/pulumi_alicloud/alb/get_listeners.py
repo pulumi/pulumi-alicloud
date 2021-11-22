@@ -13,6 +13,7 @@ __all__ = [
     'GetListenersResult',
     'AwaitableGetListenersResult',
     'get_listeners',
+    'get_listeners_output',
 ]
 
 @pulumi.output_type
@@ -172,3 +173,40 @@ def get_listeners(enable_details: Optional[bool] = None,
         load_balancer_ids=__ret__.load_balancer_ids,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_listeners)
+def get_listeners_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         listener_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         listener_protocol: Optional[pulumi.Input[Optional[str]]] = None,
+                         load_balancer_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         status: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetListenersResult]:
+    """
+    This data source provides the Application Load Balancer (ALB) Listeners of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.133.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.alb.get_listeners(ids=["example_id"])
+    pulumi.export("albListenerId1", ids.listeners[0].id)
+    ```
+
+
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of Listener IDs.
+    :param Sequence[str] listener_ids: The listener ids.
+    :param str listener_protocol: Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+    :param Sequence[str] load_balancer_ids: The load balancer ids.
+    :param str status: The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+    """
+    ...

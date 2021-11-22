@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ddos
 {
@@ -37,7 +38,7 @@ namespace Pulumi.AliCloud.Ddos
         ///                 "tftestacc1234.abc",
         ///             },
         ///         }));
-        ///         this.FirstDdoscooDomainResourceId = example.Apply(example =&gt; example.Resources[0].Id);
+        ///         this.FirstDdoscooDomainResourceId = example.Apply(example =&gt; example.Resources?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstDdoscooDomainResourceId")]
@@ -49,6 +50,45 @@ namespace Pulumi.AliCloud.Ddos
         /// </summary>
         public static Task<GetDdosCooDomainResourcesResult> InvokeAsync(GetDdosCooDomainResourcesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDdosCooDomainResourcesResult>("alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources", args ?? new GetDdosCooDomainResourcesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Ddoscoo Domain Resources of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.123.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Ddos.GetDdosCooDomainResources.InvokeAsync(new AliCloud.Ddos.GetDdosCooDomainResourcesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "tftestacc1234.abc",
+        ///             },
+        ///         }));
+        ///         this.FirstDdoscooDomainResourceId = example.Apply(example =&gt; example.Resources?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstDdoscooDomainResourceId")]
+        ///     public Output&lt;string&gt; FirstDdoscooDomainResourceId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDdosCooDomainResourcesResult> Invoke(GetDdosCooDomainResourcesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDdosCooDomainResourcesResult>("alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources", args ?? new GetDdosCooDomainResourcesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -88,6 +128,46 @@ namespace Pulumi.AliCloud.Ddos
         public string? QueryDomainPattern { get; set; }
 
         public GetDdosCooDomainResourcesArgs()
+        {
+        }
+    }
+
+    public sealed class GetDdosCooDomainResourcesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Domain Resource IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("instanceIds")]
+        private InputList<string>? _instanceIds;
+
+        /// <summary>
+        /// A list ID of instance that you want to associate.
+        /// </summary>
+        public InputList<string> InstanceIds
+        {
+            get => _instanceIds ?? (_instanceIds = new InputList<string>());
+            set => _instanceIds = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Match the pattern.
+        /// </summary>
+        [Input("queryDomainPattern")]
+        public Input<string>? QueryDomainPattern { get; set; }
+
+        public GetDdosCooDomainResourcesInvokeArgs()
         {
         }
     }

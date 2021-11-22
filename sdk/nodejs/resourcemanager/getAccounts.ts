@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultAccounts = pulumi.output(alicloud.resourcemanager.getAccounts({ async: true }));
+ * const defaultAccounts = pulumi.output(alicloud.resourcemanager.getAccounts());
  *
  * export const firstAccountId = defaultAccounts.accounts[0].id;
  * ```
@@ -45,16 +45,16 @@ export interface GetAccountsArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of account IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -79,4 +79,27 @@ export interface GetAccountsResult {
      * The status of the member account.
      */
     readonly status?: string;
+}
+
+export function getAccountsOutput(args?: GetAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountsResult> {
+    return pulumi.output(args).apply(a => getAccounts(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccounts.
+ */
+export interface GetAccountsOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of account IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
+     */
+    status?: pulumi.Input<string>;
 }

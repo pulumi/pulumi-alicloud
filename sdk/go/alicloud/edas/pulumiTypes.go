@@ -536,6 +536,12 @@ func (o GetDeployGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetDeployGroup
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationsApplicationInput)(nil)).Elem(), GetApplicationsApplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationsApplicationArrayInput)(nil)).Elem(), GetApplicationsApplicationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInput)(nil)).Elem(), GetClustersClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterArrayInput)(nil)).Elem(), GetClustersClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDeployGroupsGroupInput)(nil)).Elem(), GetDeployGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDeployGroupsGroupArrayInput)(nil)).Elem(), GetDeployGroupsGroupArray{})
 	pulumi.RegisterOutputType(GetApplicationsApplicationOutput{})
 	pulumi.RegisterOutputType(GetApplicationsApplicationArrayOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterOutput{})

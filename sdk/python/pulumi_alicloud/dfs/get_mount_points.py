@@ -13,6 +13,7 @@ __all__ = [
     'GetMountPointsResult',
     'AwaitableGetMountPointsResult',
     'get_mount_points',
+    'get_mount_points_output',
 ]
 
 @pulumi.output_type
@@ -137,3 +138,38 @@ def get_mount_points(file_system_id: Optional[str] = None,
         output_file=__ret__.output_file,
         points=__ret__.points,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_mount_points)
+def get_mount_points_output(file_system_id: Optional[pulumi.Input[str]] = None,
+                            ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                            status: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMountPointsResult]:
+    """
+    This data source provides the Dfs Mount Points of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.140.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.dfs.get_mount_points(file_system_id="example_value",
+        ids=[
+            "example_value-1",
+            "example_value-2",
+        ])
+    pulumi.export("dfsMountPointId1", ids.points[0].id)
+    ```
+
+
+    :param str file_system_id: The ID of the File System.
+    :param Sequence[str] ids: A list of Mount Point IDs.
+    :param str status: The status of the Mount Point. Valid values: `Active`, `Inactive`.
+    """
+    ...

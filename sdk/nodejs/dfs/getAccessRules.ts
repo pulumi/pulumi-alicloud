@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const dfsAccessRuleId1 = ids.then(ids => ids.rules[0].id);
+ * export const dfsAccessRuleId1 = ids.then(ids => ids.rules?[0]?.id);
  * ```
  */
 export function getAccessRules(args: GetAccessRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessRulesResult> {
@@ -50,12 +50,12 @@ export interface GetAccessRulesArgs {
     /**
      * The resource ID of the Access Group.
      */
-    readonly accessGroupId: string;
+    accessGroupId: string;
     /**
      * A list of Access Rule IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
 }
 
 /**
@@ -70,4 +70,23 @@ export interface GetAccessRulesResult {
     readonly ids: string[];
     readonly outputFile?: string;
     readonly rules: outputs.dfs.GetAccessRulesRule[];
+}
+
+export function getAccessRulesOutput(args: GetAccessRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessRulesResult> {
+    return pulumi.output(args).apply(a => getAccessRules(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAccessRules.
+ */
+export interface GetAccessRulesOutputArgs {
+    /**
+     * The resource ID of the Access Group.
+     */
+    accessGroupId: pulumi.Input<string>;
+    /**
+     * A list of Access Rule IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
 }

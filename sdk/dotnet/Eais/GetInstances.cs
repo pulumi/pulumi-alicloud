@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Eais
 {
@@ -37,12 +38,12 @@ namespace Pulumi.AliCloud.Eais
         ///                 "example_id",
         ///             },
         ///         }));
-        ///         this.EaisInstanceId1 = ids.Apply(ids =&gt; ids.Instances[0].Id);
+        ///         this.EaisInstanceId1 = ids.Apply(ids =&gt; ids.Instances?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.Eais.GetInstances.InvokeAsync(new AliCloud.Eais.GetInstancesArgs
         ///         {
         ///             NameRegex = "^my-Instance",
         ///         }));
-        ///         this.EaisInstanceId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Instances[0].Id);
+        ///         this.EaisInstanceId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Instances?[0]?.Id);
         ///     }
         /// 
         ///     [Output("eaisInstanceId1")]
@@ -56,6 +57,52 @@ namespace Pulumi.AliCloud.Eais
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:eais/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Eais Instances of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.137.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Eais.GetInstances.InvokeAsync(new AliCloud.Eais.GetInstancesArgs
+        ///         {
+        ///             Id = 
+        ///             {
+        ///                 "example_id",
+        ///             },
+        ///         }));
+        ///         this.EaisInstanceId1 = ids.Apply(ids =&gt; ids.Instances?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.Eais.GetInstances.InvokeAsync(new AliCloud.Eais.GetInstancesArgs
+        ///         {
+        ///             NameRegex = "^my-Instance",
+        ///         }));
+        ///         this.EaisInstanceId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Instances?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("eaisInstanceId1")]
+        ///     public Output&lt;string&gt; EaisInstanceId1 { get; set; }
+        ///     [Output("eaisInstanceId2")]
+        ///     public Output&lt;string&gt; EaisInstanceId2 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:eais/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -95,6 +142,46 @@ namespace Pulumi.AliCloud.Eais
         public string? Status { get; set; }
 
         public GetInstancesArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Instance IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Instance name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetInstancesInvokeArgs()
         {
         }
     }

@@ -223,80 +223,80 @@ export interface DomainState {
     /**
      * The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
      */
-    readonly clusterType?: pulumi.Input<string>;
+    clusterType?: pulumi.Input<string>;
     /**
      * The CNAME record assigned by the WAF instance to the specified domain.
      */
-    readonly cname?: pulumi.Input<string>;
+    cname?: pulumi.Input<string>;
     /**
      * The connection timeout for WAF exclusive clusters. Unit: seconds.
      */
-    readonly connectionTime?: pulumi.Input<number>;
+    connectionTime?: pulumi.Input<number>;
     /**
      * Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
      *
      * @deprecated Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.
      */
-    readonly domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
     /**
      * The domain that you want to add to WAF.
      */
-    readonly domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string>;
     /**
      * List of the HTTP 2.0 ports.
      */
-    readonly http2Ports?: pulumi.Input<pulumi.Input<string>[]>;
+    http2Ports?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of the HTTP ports.
      */
-    readonly httpPorts?: pulumi.Input<pulumi.Input<string>[]>;
+    httpPorts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
      * By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
      */
-    readonly httpToUserIp?: pulumi.Input<string>;
+    httpToUserIp?: pulumi.Input<string>;
     /**
      * List of the HTTPS ports.
      */
-    readonly httpsPorts?: pulumi.Input<pulumi.Input<string>[]>;
+    httpsPorts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
      */
-    readonly httpsRedirect?: pulumi.Input<string>;
+    httpsRedirect?: pulumi.Input<string>;
     /**
      * The ID of the WAF instance.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
      */
-    readonly isAccessProduct?: pulumi.Input<string>;
+    isAccessProduct?: pulumi.Input<string>;
     /**
      * The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
      */
-    readonly loadBalancing?: pulumi.Input<string>;
+    loadBalancing?: pulumi.Input<string>;
     /**
      * The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
      * * key: The key of label
      * * value: The value of label
      */
-    readonly logHeaders?: pulumi.Input<pulumi.Input<inputs.waf.DomainLogHeader>[]>;
+    logHeaders?: pulumi.Input<pulumi.Input<inputs.waf.DomainLogHeader>[]>;
     /**
      * The read timeout of a WAF exclusive cluster. Unit: seconds.
      */
-    readonly readTime?: pulumi.Input<number>;
+    readTime?: pulumi.Input<number>;
     /**
      * The ID of the resource group to which the queried domain belongs in Resource Management. By default, no value is specified, indicating that the domain belongs to the default resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * List of the IP address or domain of the origin server to which the specified domain points.
      */
-    readonly sourceIps?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
      */
-    readonly writeTime?: pulumi.Input<number>;
+    writeTime?: pulumi.Input<number>;
 }
 
 /**
@@ -306,74 +306,74 @@ export interface DomainArgs {
     /**
      * The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
      */
-    readonly clusterType?: pulumi.Input<string>;
+    clusterType?: pulumi.Input<string>;
     /**
      * The connection timeout for WAF exclusive clusters. Unit: seconds.
      */
-    readonly connectionTime?: pulumi.Input<number>;
+    connectionTime?: pulumi.Input<number>;
     /**
      * Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
      *
      * @deprecated Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.
      */
-    readonly domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
     /**
      * The domain that you want to add to WAF.
      */
-    readonly domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string>;
     /**
      * List of the HTTP 2.0 ports.
      */
-    readonly http2Ports?: pulumi.Input<pulumi.Input<string>[]>;
+    http2Ports?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of the HTTP ports.
      */
-    readonly httpPorts?: pulumi.Input<pulumi.Input<string>[]>;
+    httpPorts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
      * By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
      */
-    readonly httpToUserIp?: pulumi.Input<string>;
+    httpToUserIp?: pulumi.Input<string>;
     /**
      * List of the HTTPS ports.
      */
-    readonly httpsPorts?: pulumi.Input<pulumi.Input<string>[]>;
+    httpsPorts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
      */
-    readonly httpsRedirect?: pulumi.Input<string>;
+    httpsRedirect?: pulumi.Input<string>;
     /**
      * The ID of the WAF instance.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
      */
-    readonly isAccessProduct: pulumi.Input<string>;
+    isAccessProduct: pulumi.Input<string>;
     /**
      * The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
      */
-    readonly loadBalancing?: pulumi.Input<string>;
+    loadBalancing?: pulumi.Input<string>;
     /**
      * The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
      * * key: The key of label
      * * value: The value of label
      */
-    readonly logHeaders?: pulumi.Input<pulumi.Input<inputs.waf.DomainLogHeader>[]>;
+    logHeaders?: pulumi.Input<pulumi.Input<inputs.waf.DomainLogHeader>[]>;
     /**
      * The read timeout of a WAF exclusive cluster. Unit: seconds.
      */
-    readonly readTime?: pulumi.Input<number>;
+    readTime?: pulumi.Input<number>;
     /**
      * The ID of the resource group to which the queried domain belongs in Resource Management. By default, no value is specified, indicating that the domain belongs to the default resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * List of the IP address or domain of the origin server to which the specified domain points.
      */
-    readonly sourceIps?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
      */
-    readonly writeTime?: pulumi.Input<number>;
+    writeTime?: pulumi.Input<number>;
 }

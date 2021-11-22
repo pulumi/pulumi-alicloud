@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Log
 {
@@ -18,6 +19,14 @@ namespace Pulumi.AliCloud.Log
         /// </summary>
         public static Task<GetProjectsResult> InvokeAsync(GetProjectsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectsResult>("alicloud:log/getProjects:getProjects", args ?? new GetProjectsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Log Projects of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.126.0+.
+        /// </summary>
+        public static Output<GetProjectsResult> Invoke(GetProjectsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetProjectsResult>("alicloud:log/getProjects:getProjects", args ?? new GetProjectsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -51,6 +60,40 @@ namespace Pulumi.AliCloud.Log
         public string? Status { get; set; }
 
         public GetProjectsArgs()
+        {
+        }
+    }
+
+    public sealed class GetProjectsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of project IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by project name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of project.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetProjectsInvokeArgs()
         {
         }
     }

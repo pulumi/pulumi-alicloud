@@ -725,7 +725,7 @@ class Alarm(pulumi.CustomResource):
             contact_groups=["test-group"],
             dimensions={
                 "device": "/dev/vda1,/dev/vdb1",
-                "instance_id": "i-bp1247,i-bp11gd",
+                "instanceId": "i-bp1247,i-bp11gd",
             },
             effective_interval="0:00-2:00",
             escalations_critical=alicloud.cms.AlarmEscalationsCriticalArgs(
@@ -792,7 +792,7 @@ class Alarm(pulumi.CustomResource):
             contact_groups=["test-group"],
             dimensions={
                 "device": "/dev/vda1,/dev/vdb1",
-                "instance_id": "i-bp1247,i-bp11gd",
+                "instanceId": "i-bp1247,i-bp11gd",
             },
             effective_interval="0:00-2:00",
             escalations_critical=alicloud.cms.AlarmEscalationsCriticalArgs(

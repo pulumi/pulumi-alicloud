@@ -4,6 +4,9 @@
 package oss
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -64,4 +67,73 @@ type GetBucketObjectsResult struct {
 	// A list of bucket objects. Each element contains the following attributes:
 	Objects    []GetBucketObjectsObject `pulumi:"objects"`
 	OutputFile *string                  `pulumi:"outputFile"`
+}
+
+func GetBucketObjectsOutput(ctx *pulumi.Context, args GetBucketObjectsOutputArgs, opts ...pulumi.InvokeOption) GetBucketObjectsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetBucketObjectsResult, error) {
+			args := v.(GetBucketObjectsArgs)
+			r, err := GetBucketObjects(ctx, &args, opts...)
+			return *r, err
+		}).(GetBucketObjectsResultOutput)
+}
+
+// A collection of arguments for invoking getBucketObjects.
+type GetBucketObjectsOutputArgs struct {
+	// Name of the bucket that contains the objects to find.
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// Filter results by the given key prefix (such as "path/to/folder/logs-").
+	KeyPrefix pulumi.StringPtrInput `pulumi:"keyPrefix"`
+	// A regex string to filter results by key.
+	KeyRegex   pulumi.StringPtrInput `pulumi:"keyRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetBucketObjectsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketObjectsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getBucketObjects.
+type GetBucketObjectsResultOutput struct{ *pulumi.OutputState }
+
+func (GetBucketObjectsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketObjectsResult)(nil)).Elem()
+}
+
+func (o GetBucketObjectsResultOutput) ToGetBucketObjectsResultOutput() GetBucketObjectsResultOutput {
+	return o
+}
+
+func (o GetBucketObjectsResultOutput) ToGetBucketObjectsResultOutputWithContext(ctx context.Context) GetBucketObjectsResultOutput {
+	return o
+}
+
+func (o GetBucketObjectsResultOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectsResult) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetBucketObjectsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetBucketObjectsResultOutput) KeyPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBucketObjectsResult) *string { return v.KeyPrefix }).(pulumi.StringPtrOutput)
+}
+
+func (o GetBucketObjectsResultOutput) KeyRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBucketObjectsResult) *string { return v.KeyRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of bucket objects. Each element contains the following attributes:
+func (o GetBucketObjectsResultOutput) Objects() GetBucketObjectsObjectArrayOutput {
+	return o.ApplyT(func(v GetBucketObjectsResult) []GetBucketObjectsObject { return v.Objects }).(GetBucketObjectsObjectArrayOutput)
+}
+
+func (o GetBucketObjectsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBucketObjectsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetBucketObjectsResultOutput{})
 }

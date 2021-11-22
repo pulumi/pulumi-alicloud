@@ -146,28 +146,28 @@ export interface SecurityPolicyState {
     /**
      * The supported cipher suites, which are determined by the TLS protocol version.The specified cipher suites must be supported by at least one TLS protocol version that you select.
      */
-    readonly ciphers?: pulumi.Input<pulumi.Input<string>[]>;
+    ciphers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The dry run.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The ID of the resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
      */
-    readonly securityPolicyName?: pulumi.Input<string>;
+    securityPolicyName?: pulumi.Input<string>;
     /**
      * The status of the resource.
      */
-    readonly status?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    status?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
      */
-    readonly tlsVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    tlsVersions?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -177,22 +177,22 @@ export interface SecurityPolicyArgs {
     /**
      * The supported cipher suites, which are determined by the TLS protocol version.The specified cipher suites must be supported by at least one TLS protocol version that you select.
      */
-    readonly ciphers: pulumi.Input<pulumi.Input<string>[]>;
+    ciphers: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The dry run.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The ID of the resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
      */
-    readonly securityPolicyName: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    securityPolicyName: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
      */
-    readonly tlsVersions: pulumi.Input<pulumi.Input<string>[]>;
+    tlsVersions: pulumi.Input<pulumi.Input<string>[]>;
 }

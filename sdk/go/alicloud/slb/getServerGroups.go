@@ -4,6 +4,9 @@
 package slb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,7 +34,7 @@ import (
 // 		}
 // 		opt0 := "cloud_efficiency"
 // 		opt1 := "VSwitch"
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableDiskCategory:     &opt0,
 // 			AvailableResourceCreation: &opt1,
 // 		}, nil)
@@ -107,4 +110,79 @@ type GetServerGroupsResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// A list of SLB VServer groups. Each element contains the following attributes:
 	SlbServerGroups []GetServerGroupsSlbServerGroup `pulumi:"slbServerGroups"`
+}
+
+func GetServerGroupsOutput(ctx *pulumi.Context, args GetServerGroupsOutputArgs, opts ...pulumi.InvokeOption) GetServerGroupsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetServerGroupsResult, error) {
+			args := v.(GetServerGroupsArgs)
+			r, err := GetServerGroups(ctx, &args, opts...)
+			return *r, err
+		}).(GetServerGroupsResultOutput)
+}
+
+// A collection of arguments for invoking getServerGroups.
+type GetServerGroupsOutputArgs struct {
+	// A list of VServer group IDs to filter results.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// ID of the SLB.
+	LoadBalancerId pulumi.StringInput `pulumi:"loadBalancerId"`
+	// A regex string to filter results by VServer group name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetServerGroupsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerGroupsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getServerGroups.
+type GetServerGroupsResultOutput struct{ *pulumi.OutputState }
+
+func (GetServerGroupsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerGroupsResult)(nil)).Elem()
+}
+
+func (o GetServerGroupsResultOutput) ToGetServerGroupsResultOutput() GetServerGroupsResultOutput {
+	return o
+}
+
+func (o GetServerGroupsResultOutput) ToGetServerGroupsResultOutputWithContext(ctx context.Context) GetServerGroupsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetServerGroupsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerGroupsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of SLB VServer groups IDs.
+func (o GetServerGroupsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServerGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServerGroupsResultOutput) LoadBalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerGroupsResult) string { return v.LoadBalancerId }).(pulumi.StringOutput)
+}
+
+func (o GetServerGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServerGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of SLB VServer groups names.
+func (o GetServerGroupsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServerGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServerGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServerGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of SLB VServer groups. Each element contains the following attributes:
+func (o GetServerGroupsResultOutput) SlbServerGroups() GetServerGroupsSlbServerGroupArrayOutput {
+	return o.ApplyT(func(v GetServerGroupsResult) []GetServerGroupsSlbServerGroup { return v.SlbServerGroups }).(GetServerGroupsSlbServerGroupArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetServerGroupsResultOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dfs
 {
@@ -39,7 +40,7 @@ namespace Pulumi.AliCloud.Dfs
         ///                 "example_value-2",
         ///             },
         ///         }));
-        ///         this.DfsAccessRuleId1 = ids.Apply(ids =&gt; ids.Rules[0].Id);
+        ///         this.DfsAccessRuleId1 = ids.Apply(ids =&gt; ids.Rules?[0]?.Id);
         ///     }
         /// 
         ///     [Output("dfsAccessRuleId1")]
@@ -51,6 +52,47 @@ namespace Pulumi.AliCloud.Dfs
         /// </summary>
         public static Task<GetAccessRulesResult> InvokeAsync(GetAccessRulesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccessRulesResult>("alicloud:dfs/getAccessRules:getAccessRules", args ?? new GetAccessRulesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Dfs Access Rules of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Dfs.GetAccessRules.InvokeAsync(new AliCloud.Dfs.GetAccessRulesArgs
+        ///         {
+        ///             AccessGroupId = "example_value",
+        ///             Ids = 
+        ///             {
+        ///                 "example_value-1",
+        ///                 "example_value-2",
+        ///             },
+        ///         }));
+        ///         this.DfsAccessRuleId1 = ids.Apply(ids =&gt; ids.Rules?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("dfsAccessRuleId1")]
+        ///     public Output&lt;string&gt; DfsAccessRuleId1 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAccessRulesResult> Invoke(GetAccessRulesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAccessRulesResult>("alicloud:dfs/getAccessRules:getAccessRules", args ?? new GetAccessRulesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -78,6 +120,34 @@ namespace Pulumi.AliCloud.Dfs
         public string? OutputFile { get; set; }
 
         public GetAccessRulesArgs()
+        {
+        }
+    }
+
+    public sealed class GetAccessRulesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The resource ID of the Access Group.
+        /// </summary>
+        [Input("accessGroupId", required: true)]
+        public Input<string> AccessGroupId { get; set; } = null!;
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Access Rule IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetAccessRulesInvokeArgs()
         {
         }
     }

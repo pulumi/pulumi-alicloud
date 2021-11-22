@@ -176,61 +176,61 @@ export interface TrailState {
     /**
      * Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
      */
-    readonly eventRw?: pulumi.Input<string>;
+    eventRw?: pulumi.Input<string>;
     /**
      * Specifies whether to create a multi-account trail. Valid values:`true`: Create a multi-account trail.`false`: Create a single-account trail. It is the default value.
      */
-    readonly isOrganizationTrail?: pulumi.Input<boolean>;
+    isOrganizationTrail?: pulumi.Input<boolean>;
     /**
      * Field `mnsTopicArn` has been deprecated from version 1.118.0.
      *
      * @deprecated Field 'mns_topic_arn' has been deprecated from version 1.118.0
      */
-    readonly mnsTopicArn?: pulumi.Input<string>;
+    mnsTopicArn?: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from version 1.95.0. Use `trailName` instead.
      *
      * @deprecated Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
      */
-    readonly ossBucketName?: pulumi.Input<string>;
+    ossBucketName?: pulumi.Input<string>;
     /**
      * The prefix of the specified OSS bucket name. This parameter can be left empty.
      */
-    readonly ossKeyPrefix?: pulumi.Input<string>;
+    ossKeyPrefix?: pulumi.Input<string>;
     /**
      * The unique ARN of the Oss role.
      */
-    readonly ossWriteRoleArn?: pulumi.Input<string>;
+    ossWriteRoleArn?: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from version 1.118.0.
      *
      * @deprecated Field 'role_name' has been deprecated from version 1.118.0
      */
-    readonly roleName?: pulumi.Input<string>;
+    roleName?: pulumi.Input<string>;
     /**
      * The unique ARN of the Log Service project.
      */
-    readonly slsProjectArn?: pulumi.Input<string>;
+    slsProjectArn?: pulumi.Input<string>;
     /**
      * The unique ARN of the Log Service role.
      */
-    readonly slsWriteRoleArn?: pulumi.Input<string>;
+    slsWriteRoleArn?: pulumi.Input<string>;
     /**
      * The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The name of the trail to be created, which must be unique for an account.
      */
-    readonly trailName?: pulumi.Input<string>;
+    trailName?: pulumi.Input<string>;
     /**
      * The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
      */
-    readonly trailRegion?: pulumi.Input<string>;
+    trailRegion?: pulumi.Input<string>;
 }
 
 /**
@@ -240,59 +240,59 @@ export interface TrailArgs {
     /**
      * Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
      */
-    readonly eventRw?: pulumi.Input<string>;
+    eventRw?: pulumi.Input<string>;
     /**
      * Specifies whether to create a multi-account trail. Valid values:`true`: Create a multi-account trail.`false`: Create a single-account trail. It is the default value.
      */
-    readonly isOrganizationTrail?: pulumi.Input<boolean>;
+    isOrganizationTrail?: pulumi.Input<boolean>;
     /**
      * Field `mnsTopicArn` has been deprecated from version 1.118.0.
      *
      * @deprecated Field 'mns_topic_arn' has been deprecated from version 1.118.0
      */
-    readonly mnsTopicArn?: pulumi.Input<string>;
+    mnsTopicArn?: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from version 1.95.0. Use `trailName` instead.
      *
      * @deprecated Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
      */
-    readonly ossBucketName?: pulumi.Input<string>;
+    ossBucketName?: pulumi.Input<string>;
     /**
      * The prefix of the specified OSS bucket name. This parameter can be left empty.
      */
-    readonly ossKeyPrefix?: pulumi.Input<string>;
+    ossKeyPrefix?: pulumi.Input<string>;
     /**
      * The unique ARN of the Oss role.
      */
-    readonly ossWriteRoleArn?: pulumi.Input<string>;
+    ossWriteRoleArn?: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from version 1.118.0.
      *
      * @deprecated Field 'role_name' has been deprecated from version 1.118.0
      */
-    readonly roleName?: pulumi.Input<string>;
+    roleName?: pulumi.Input<string>;
     /**
      * The unique ARN of the Log Service project.
      */
-    readonly slsProjectArn?: pulumi.Input<string>;
+    slsProjectArn?: pulumi.Input<string>;
     /**
      * The unique ARN of the Log Service role.
      */
-    readonly slsWriteRoleArn?: pulumi.Input<string>;
+    slsWriteRoleArn?: pulumi.Input<string>;
     /**
      * The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The name of the trail to be created, which must be unique for an account.
      */
-    readonly trailName?: pulumi.Input<string>;
+    trailName?: pulumi.Input<string>;
     /**
      * The regions to which the trail is applied. Valid values: `cn-beijing`, `cn-hangzhou`, and `All`. Default to `All`.
      */
-    readonly trailRegion?: pulumi.Input<string>;
+    trailRegion?: pulumi.Input<string>;
 }

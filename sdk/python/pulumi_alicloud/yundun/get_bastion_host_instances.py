@@ -13,6 +13,7 @@ __all__ = [
     'GetBastionHostInstancesResult',
     'AwaitableGetBastionHostInstancesResult',
     'get_bastion_host_instances',
+    'get_bastion_host_instances_output',
 ]
 
 @pulumi.output_type
@@ -124,3 +125,15 @@ def get_bastion_host_instances(description_regex: Optional[str] = None,
         instances=__ret__.instances,
         output_file=__ret__.output_file,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_bastion_host_instances)
+def get_bastion_host_instances_output(description_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                      tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBastionHostInstancesResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

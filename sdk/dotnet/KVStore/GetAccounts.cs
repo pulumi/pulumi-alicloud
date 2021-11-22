@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.KVStore
 {
@@ -34,7 +35,7 @@ namespace Pulumi.AliCloud.KVStore
         ///         {
         ///             InstanceId = "example_value",
         ///         }));
-        ///         this.FirstKvstoreAccountId = example.Apply(example =&gt; example.Accounts[0].Id);
+        ///         this.FirstKvstoreAccountId = example.Apply(example =&gt; example.Accounts?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstKvstoreAccountId")]
@@ -46,6 +47,42 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         public static Task<GetAccountsResult> InvokeAsync(GetAccountsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("alicloud:kvstore/getAccounts:getAccounts", args ?? new GetAccountsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the KVStore Accounts of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.102.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.KVStore.GetAccounts.InvokeAsync(new AliCloud.KVStore.GetAccountsArgs
+        ///         {
+        ///             InstanceId = "example_value",
+        ///         }));
+        ///         this.FirstKvstoreAccountId = example.Apply(example =&gt; example.Accounts?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstKvstoreAccountId")]
+        ///     public Output&lt;string&gt; FirstKvstoreAccountId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAccountsResult> Invoke(GetAccountsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("alicloud:kvstore/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -76,6 +113,37 @@ namespace Pulumi.AliCloud.KVStore
         public string? Status { get; set; }
 
         public GetAccountsArgs()
+        {
+        }
+    }
+
+    public sealed class GetAccountsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the account.
+        /// </summary>
+        [Input("accountName")]
+        public Input<string>? AccountName { get; set; }
+
+        /// <summary>
+        /// The Id of instance in which account belongs.
+        /// </summary>
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of account.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetAccountsInvokeArgs()
         {
         }
     }

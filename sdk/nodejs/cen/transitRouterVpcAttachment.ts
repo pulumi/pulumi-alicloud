@@ -167,56 +167,56 @@ export interface TransitRouterVpcAttachmentState {
     /**
      * Whether to create vpc route automatically. The system default value is `true`.
      */
-    readonly autoCreateVpcRoute?: pulumi.Input<boolean>;
+    autoCreateVpcRoute?: pulumi.Input<boolean>;
     /**
      * The ID of the CEN.
      */
-    readonly cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string>;
     /**
      * The dry run.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
      */
-    readonly resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string>;
     /**
      * Whether to enabled route table association. The system default value is `true`.
      */
-    readonly routeTableAssociationEnabled?: pulumi.Input<boolean>;
+    routeTableAssociationEnabled?: pulumi.Input<boolean>;
     /**
      * Whether to enabled route table propagation. The system default value is `true`.
      */
-    readonly routeTablePropagationEnabled?: pulumi.Input<boolean>;
+    routeTablePropagationEnabled?: pulumi.Input<boolean>;
     /**
      * The associating status of the network.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The description of the transit router vbr attachment.
      */
-    readonly transitRouterAttachmentDescription?: pulumi.Input<string>;
+    transitRouterAttachmentDescription?: pulumi.Input<string>;
     /**
      * The ID of transit router attachment.
      */
-    readonly transitRouterAttachmentId?: pulumi.Input<string>;
+    transitRouterAttachmentId?: pulumi.Input<string>;
     /**
      * The name of the transit router vbr attachment.
      */
-    readonly transitRouterAttachmentName?: pulumi.Input<string>;
+    transitRouterAttachmentName?: pulumi.Input<string>;
     /**
      * The ID of the transit router.
      */
-    readonly transitRouterId?: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string>;
     /**
      * The ID of the VPC.
      */
-    readonly vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
     /**
      * The owner id of vpc.
      */
-    readonly vpcOwnerId?: pulumi.Input<string>;
-    readonly zoneMappings?: pulumi.Input<pulumi.Input<inputs.cen.TransitRouterVpcAttachmentZoneMapping>[]>;
+    vpcOwnerId?: pulumi.Input<string>;
+    zoneMappings?: pulumi.Input<pulumi.Input<inputs.cen.TransitRouterVpcAttachmentZoneMapping>[]>;
 }
 
 /**
@@ -226,46 +226,46 @@ export interface TransitRouterVpcAttachmentArgs {
     /**
      * Whether to create vpc route automatically. The system default value is `true`.
      */
-    readonly autoCreateVpcRoute?: pulumi.Input<boolean>;
+    autoCreateVpcRoute?: pulumi.Input<boolean>;
     /**
      * The ID of the CEN.
      */
-    readonly cenId: pulumi.Input<string>;
+    cenId: pulumi.Input<string>;
     /**
      * The dry run.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
      */
-    readonly resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string>;
     /**
      * Whether to enabled route table association. The system default value is `true`.
      */
-    readonly routeTableAssociationEnabled?: pulumi.Input<boolean>;
+    routeTableAssociationEnabled?: pulumi.Input<boolean>;
     /**
      * Whether to enabled route table propagation. The system default value is `true`.
      */
-    readonly routeTablePropagationEnabled?: pulumi.Input<boolean>;
+    routeTablePropagationEnabled?: pulumi.Input<boolean>;
     /**
      * The description of the transit router vbr attachment.
      */
-    readonly transitRouterAttachmentDescription?: pulumi.Input<string>;
+    transitRouterAttachmentDescription?: pulumi.Input<string>;
     /**
      * The name of the transit router vbr attachment.
      */
-    readonly transitRouterAttachmentName?: pulumi.Input<string>;
+    transitRouterAttachmentName?: pulumi.Input<string>;
     /**
      * The ID of the transit router.
      */
-    readonly transitRouterId?: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string>;
     /**
      * The ID of the VPC.
      */
-    readonly vpcId: pulumi.Input<string>;
+    vpcId: pulumi.Input<string>;
     /**
      * The owner id of vpc.
      */
-    readonly vpcOwnerId?: pulumi.Input<string>;
-    readonly zoneMappings: pulumi.Input<pulumi.Input<inputs.cen.TransitRouterVpcAttachmentZoneMapping>[]>;
+    vpcOwnerId?: pulumi.Input<string>;
+    zoneMappings: pulumi.Input<pulumi.Input<inputs.cen.TransitRouterVpcAttachmentZoneMapping>[]>;
 }

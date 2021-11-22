@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(alicloud.resourcemanager.getFolders({
  *     nameRegex: "tftest",
- * }, { async: true }));
+ * }));
  *
  * export const firstFolderId = example.folders[0].id;
  * ```
@@ -51,24 +51,24 @@ export interface GetFoldersArgs {
     /**
      * -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of resource manager folders IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by folder name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The ID of the parent folder.
      */
-    readonly parentFolderId?: string;
+    parentFolderId?: string;
     /**
      * The query keyword.
      */
-    readonly queryKeyword?: string;
+    queryKeyword?: string;
 }
 
 /**
@@ -96,4 +96,35 @@ export interface GetFoldersResult {
     readonly outputFile?: string;
     readonly parentFolderId?: string;
     readonly queryKeyword?: string;
+}
+
+export function getFoldersOutput(args?: GetFoldersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFoldersResult> {
+    return pulumi.output(args).apply(a => getFolders(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFolders.
+ */
+export interface GetFoldersOutputArgs {
+    /**
+     * -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of resource manager folders IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by folder name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The ID of the parent folder.
+     */
+    parentFolderId?: pulumi.Input<string>;
+    /**
+     * The query keyword.
+     */
+    queryKeyword?: pulumi.Input<string>;
 }

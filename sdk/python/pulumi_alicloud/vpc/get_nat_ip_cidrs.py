@@ -13,6 +13,7 @@ __all__ = [
     'GetNatIpCidrsResult',
     'AwaitableGetNatIpCidrsResult',
     'get_nat_ip_cidrs',
+    'get_nat_ip_cidrs_output',
 ]
 
 @pulumi.output_type
@@ -170,3 +171,28 @@ def get_nat_ip_cidrs(ids: Optional[Sequence[str]] = None,
         nat_ip_cidrs=__ret__.nat_ip_cidrs,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_nat_ip_cidrs)
+def get_nat_ip_cidrs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                            nat_gateway_id: Optional[pulumi.Input[str]] = None,
+                            nat_ip_cidr_names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            nat_ip_cidrs: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                            status: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNatIpCidrsResult]:
+    """
+    This data source provides the Vpc Nat Ip Cidrs of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.136.0+.
+
+
+    :param Sequence[str] ids: A list of Nat Ip Cidr IDs.
+    :param str name_regex: A regex string to filter results by Nat Ip Cidr name.
+    :param str nat_gateway_id: The ID of the VPC NAT gateway.
+    :param Sequence[str] nat_ip_cidr_names: NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+    :param Sequence[str] nat_ip_cidrs: The NAT CIDR block to be created. Support up to `20`. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
+    :param str status: The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+    """
+    ...

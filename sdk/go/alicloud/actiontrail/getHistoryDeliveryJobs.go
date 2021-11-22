@@ -4,6 +4,9 @@
 package actiontrail
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,4 +80,71 @@ type GetHistoryDeliveryJobsResult struct {
 	Jobs       []GetHistoryDeliveryJobsJob `pulumi:"jobs"`
 	OutputFile *string                     `pulumi:"outputFile"`
 	Status     *int                        `pulumi:"status"`
+}
+
+func GetHistoryDeliveryJobsOutput(ctx *pulumi.Context, args GetHistoryDeliveryJobsOutputArgs, opts ...pulumi.InvokeOption) GetHistoryDeliveryJobsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetHistoryDeliveryJobsResult, error) {
+			args := v.(GetHistoryDeliveryJobsArgs)
+			r, err := GetHistoryDeliveryJobs(ctx, &args, opts...)
+			return *r, err
+		}).(GetHistoryDeliveryJobsResultOutput)
+}
+
+// A collection of arguments for invoking getHistoryDeliveryJobs.
+type GetHistoryDeliveryJobsOutputArgs struct {
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of History Delivery Job IDs.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+	Status pulumi.IntPtrInput `pulumi:"status"`
+}
+
+func (GetHistoryDeliveryJobsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHistoryDeliveryJobsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getHistoryDeliveryJobs.
+type GetHistoryDeliveryJobsResultOutput struct{ *pulumi.OutputState }
+
+func (GetHistoryDeliveryJobsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHistoryDeliveryJobsResult)(nil)).Elem()
+}
+
+func (o GetHistoryDeliveryJobsResultOutput) ToGetHistoryDeliveryJobsResultOutput() GetHistoryDeliveryJobsResultOutput {
+	return o
+}
+
+func (o GetHistoryDeliveryJobsResultOutput) ToGetHistoryDeliveryJobsResultOutputWithContext(ctx context.Context) GetHistoryDeliveryJobsResultOutput {
+	return o
+}
+
+func (o GetHistoryDeliveryJobsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetHistoryDeliveryJobsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetHistoryDeliveryJobsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHistoryDeliveryJobsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetHistoryDeliveryJobsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHistoryDeliveryJobsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetHistoryDeliveryJobsResultOutput) Jobs() GetHistoryDeliveryJobsJobArrayOutput {
+	return o.ApplyT(func(v GetHistoryDeliveryJobsResult) []GetHistoryDeliveryJobsJob { return v.Jobs }).(GetHistoryDeliveryJobsJobArrayOutput)
+}
+
+func (o GetHistoryDeliveryJobsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHistoryDeliveryJobsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetHistoryDeliveryJobsResultOutput) Status() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetHistoryDeliveryJobsResult) *int { return v.Status }).(pulumi.IntPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetHistoryDeliveryJobsResultOutput{})
 }

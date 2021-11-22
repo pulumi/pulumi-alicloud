@@ -4,6 +4,9 @@
 package vpc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,7 +35,7 @@ import (
 // 			name = param
 // 		}
 // 		opt0 := "VSwitch"
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -150,4 +153,128 @@ type GetForwardEntriesResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// The status of forward entry.
 	Status *string `pulumi:"status"`
+}
+
+func GetForwardEntriesOutput(ctx *pulumi.Context, args GetForwardEntriesOutputArgs, opts ...pulumi.InvokeOption) GetForwardEntriesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetForwardEntriesResult, error) {
+			args := v.(GetForwardEntriesArgs)
+			r, err := GetForwardEntries(ctx, &args, opts...)
+			return *r, err
+		}).(GetForwardEntriesResultOutput)
+}
+
+// A collection of arguments for invoking getForwardEntries.
+type GetForwardEntriesOutputArgs struct {
+	// The public IP address.
+	ExternalIp pulumi.StringPtrInput `pulumi:"externalIp"`
+	// The public port.
+	ExternalPort pulumi.StringPtrInput `pulumi:"externalPort"`
+	// The name of forward entry.
+	ForwardEntryName pulumi.StringPtrInput `pulumi:"forwardEntryName"`
+	// The ID of the Forward table.
+	ForwardTableId pulumi.StringInput `pulumi:"forwardTableId"`
+	// A list of Forward Entries IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The private IP address.
+	InternalIp pulumi.StringPtrInput `pulumi:"internalIp"`
+	// The internal port.
+	InternalPort pulumi.StringPtrInput `pulumi:"internalPort"`
+	// The ip protocol. Valid values: `any`,`tcp` and `udp`.
+	IpProtocol pulumi.StringPtrInput `pulumi:"ipProtocol"`
+	// A regex string to filter results by forward entry name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetForwardEntriesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardEntriesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getForwardEntries.
+type GetForwardEntriesResultOutput struct{ *pulumi.OutputState }
+
+func (GetForwardEntriesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardEntriesResult)(nil)).Elem()
+}
+
+func (o GetForwardEntriesResultOutput) ToGetForwardEntriesResultOutput() GetForwardEntriesResultOutput {
+	return o
+}
+
+func (o GetForwardEntriesResultOutput) ToGetForwardEntriesResultOutputWithContext(ctx context.Context) GetForwardEntriesResultOutput {
+	return o
+}
+
+// A list of Forward Entries. Each element contains the following attributes:
+func (o GetForwardEntriesResultOutput) Entries() GetForwardEntriesEntryArrayOutput {
+	return o.ApplyT(func(v GetForwardEntriesResult) []GetForwardEntriesEntry { return v.Entries }).(GetForwardEntriesEntryArrayOutput)
+}
+
+// The public IP address.
+func (o GetForwardEntriesResultOutput) ExternalIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetForwardEntriesResult) *string { return v.ExternalIp }).(pulumi.StringPtrOutput)
+}
+
+// The public port.
+func (o GetForwardEntriesResultOutput) ExternalPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetForwardEntriesResult) *string { return v.ExternalPort }).(pulumi.StringPtrOutput)
+}
+
+// The name of forward entry.
+func (o GetForwardEntriesResultOutput) ForwardEntryName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetForwardEntriesResult) *string { return v.ForwardEntryName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetForwardEntriesResultOutput) ForwardTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardEntriesResult) string { return v.ForwardTableId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetForwardEntriesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardEntriesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of Forward Entries IDs.
+func (o GetForwardEntriesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetForwardEntriesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// The private IP address.
+func (o GetForwardEntriesResultOutput) InternalIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetForwardEntriesResult) *string { return v.InternalIp }).(pulumi.StringPtrOutput)
+}
+
+// The private port.
+func (o GetForwardEntriesResultOutput) InternalPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetForwardEntriesResult) *string { return v.InternalPort }).(pulumi.StringPtrOutput)
+}
+
+// The protocol type.
+func (o GetForwardEntriesResultOutput) IpProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetForwardEntriesResult) *string { return v.IpProtocol }).(pulumi.StringPtrOutput)
+}
+
+func (o GetForwardEntriesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetForwardEntriesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of Forward Entries names.
+func (o GetForwardEntriesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetForwardEntriesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetForwardEntriesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetForwardEntriesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The status of forward entry.
+func (o GetForwardEntriesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetForwardEntriesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetForwardEntriesResultOutput{})
 }

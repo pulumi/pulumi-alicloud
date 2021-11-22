@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ess
 {
@@ -36,7 +37,7 @@ namespace Pulumi.AliCloud.Ess
         ///             NameRegex = "scaling_configuration_name",
         ///             ScalingGroupId = "scaling_group_id",
         ///         }));
-        ///         this.FirstScalingRule = scalingconfigurationsDs.Apply(scalingconfigurationsDs =&gt; scalingconfigurationsDs.Configurations[0].Id);
+        ///         this.FirstScalingRule = scalingconfigurationsDs.Apply(scalingconfigurationsDs =&gt; scalingconfigurationsDs.Configurations?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstScalingRule")]
@@ -48,6 +49,44 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         public static Task<GetScalingConfigurationsResult> InvokeAsync(GetScalingConfigurationsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetScalingConfigurationsResult>("alicloud:ess/getScalingConfigurations:getScalingConfigurations", args ?? new GetScalingConfigurationsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides available scaling configuration resources. 
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var scalingconfigurationsDs = Output.Create(AliCloud.Ess.GetScalingConfigurations.InvokeAsync(new AliCloud.Ess.GetScalingConfigurationsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "scaling_configuration_id1",
+        ///                 "scaling_configuration_id2",
+        ///             },
+        ///             NameRegex = "scaling_configuration_name",
+        ///             ScalingGroupId = "scaling_group_id",
+        ///         }));
+        ///         this.FirstScalingRule = scalingconfigurationsDs.Apply(scalingconfigurationsDs =&gt; scalingconfigurationsDs.Configurations?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstScalingRule")]
+        ///     public Output&lt;string&gt; FirstScalingRule { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetScalingConfigurationsResult> Invoke(GetScalingConfigurationsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetScalingConfigurationsResult>("alicloud:ess/getScalingConfigurations:getScalingConfigurations", args ?? new GetScalingConfigurationsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -81,6 +120,40 @@ namespace Pulumi.AliCloud.Ess
         public string? ScalingGroupId { get; set; }
 
         public GetScalingConfigurationsArgs()
+        {
+        }
+    }
+
+    public sealed class GetScalingConfigurationsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of scaling configuration IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter resulting scaling configurations by name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Scaling group id the scaling configurations belong to.
+        /// </summary>
+        [Input("scalingGroupId")]
+        public Input<string>? ScalingGroupId { get; set; }
+
+        public GetScalingConfigurationsInvokeArgs()
         {
         }
     }

@@ -301,6 +301,10 @@ func (o GetDBAuditInstanceInstanceArrayOutput) Index(i pulumi.IntInput) GetDBAud
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBastionHostInstancesInstanceInput)(nil)).Elem(), GetBastionHostInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBastionHostInstancesInstanceArrayInput)(nil)).Elem(), GetBastionHostInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDBAuditInstanceInstanceInput)(nil)).Elem(), GetDBAuditInstanceInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDBAuditInstanceInstanceArrayInput)(nil)).Elem(), GetDBAuditInstanceInstanceArray{})
 	pulumi.RegisterOutputType(GetBastionHostInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetBastionHostInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetDBAuditInstanceInstanceOutput{})

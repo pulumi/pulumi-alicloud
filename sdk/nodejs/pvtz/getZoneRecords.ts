@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const recordsDs = pulumi.all([alicloud_pvtz_zone_record_foo.value, alicloud_pvtz_zone_basic.id]).apply(([value, id]) => alicloud.pvtz.getZoneRecords({
  *     keyword: value,
  *     zoneId: id,
- * }, { async: true }));
+ * }));
  *
  * export const firstRecordId = recordsDs.records[0].id;
  * ```
@@ -50,40 +50,40 @@ export interface GetZoneRecordsArgs {
     /**
      * A list of Private Zone Record IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * Keyword for record rr and value.
      */
-    readonly keyword?: string;
+    keyword?: string;
     /**
      * User language.
      */
-    readonly lang?: string;
-    readonly outputFile?: string;
+    lang?: string;
+    outputFile?: string;
     /**
      * Search mode. Value: 
      * - LIKE: fuzzy search.
      * - EXACT: precise search. It is not filled in by default.
      */
-    readonly searchMode?: string;
+    searchMode?: string;
     /**
      * Resolve record status. Value:
      * - ENABLE: enable resolution.
      * - DISABLE: pause parsing.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * It is not filled in by default, and queries the current zone resolution records. Fill in "ecs" to query the host name record list under the VPC associated with the current zone.
      */
-    readonly tag?: string;
+    tag?: string;
     /**
      * User ip.
      */
-    readonly userClientIp?: string;
+    userClientIp?: string;
     /**
      * ID of the Private Zone.
      */
-    readonly zoneId: string;
+    zoneId: string;
 }
 
 /**
@@ -113,4 +113,51 @@ export interface GetZoneRecordsResult {
     readonly tag?: string;
     readonly userClientIp?: string;
     readonly zoneId: string;
+}
+
+export function getZoneRecordsOutput(args: GetZoneRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneRecordsResult> {
+    return pulumi.output(args).apply(a => getZoneRecords(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getZoneRecords.
+ */
+export interface GetZoneRecordsOutputArgs {
+    /**
+     * A list of Private Zone Record IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Keyword for record rr and value.
+     */
+    keyword?: pulumi.Input<string>;
+    /**
+     * User language.
+     */
+    lang?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Search mode. Value: 
+     * - LIKE: fuzzy search.
+     * - EXACT: precise search. It is not filled in by default.
+     */
+    searchMode?: pulumi.Input<string>;
+    /**
+     * Resolve record status. Value:
+     * - ENABLE: enable resolution.
+     * - DISABLE: pause parsing.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * It is not filled in by default, and queries the current zone resolution records. Fill in "ecs" to query the host name record list under the VPC associated with the current zone.
+     */
+    tag?: pulumi.Input<string>;
+    /**
+     * User ip.
+     */
+    userClientIp?: pulumi.Input<string>;
+    /**
+     * ID of the Private Zone.
+     */
+    zoneId: pulumi.Input<string>;
 }

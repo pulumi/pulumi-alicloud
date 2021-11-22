@@ -30,48 +30,48 @@ import * as utilities from "../utilities";
  * });
  * const ecsSnapshots = Promise.all([defaultEcsBackupPlans, defaultEcsBackupPlans]).then(([defaultEcsBackupPlans, defaultEcsBackupPlans1]) => alicloud.hbr.getSnapshots({
  *     sourceType: "ECS_FILE",
- *     vaultId: defaultEcsBackupPlans.plans[0].vaultId,
- *     instanceId: defaultEcsBackupPlans1.plans[0].instanceId,
+ *     vaultId: defaultEcsBackupPlans.plans?[0]?.vaultId,
+ *     instanceId: defaultEcsBackupPlans1.plans?[0]?.instanceId,
  * }));
  * const ossSnapshots = Promise.all([defaultOssBackupPlans, defaultOssBackupPlans]).then(([defaultOssBackupPlans, defaultOssBackupPlans1]) => alicloud.hbr.getSnapshots({
  *     sourceType: "OSS",
- *     vaultId: defaultOssBackupPlans.plans[0].vaultId,
- *     bucket: defaultOssBackupPlans1.plans[0].bucket,
+ *     vaultId: defaultOssBackupPlans.plans?[0]?.vaultId,
+ *     bucket: defaultOssBackupPlans1.plans?[0]?.bucket,
  * }));
  * const nasSnapshots = Promise.all([defaultNasBackupPlans, defaultNasBackupPlans, defaultNasBackupPlans]).then(([defaultNasBackupPlans, defaultNasBackupPlans1, defaultNasBackupPlans2]) => alicloud.hbr.getSnapshots({
  *     sourceType: "NAS",
- *     vaultId: defaultNasBackupPlans.plans[0].vaultId,
- *     fileSystemId: defaultNasBackupPlans1.plans[0].fileSystemId,
- *     createTime: defaultNasBackupPlans2.plans[0].createTime,
+ *     vaultId: defaultNasBackupPlans.plans?[0]?.vaultId,
+ *     fileSystemId: defaultNasBackupPlans1.plans?[0]?.fileSystemId,
+ *     createTime: defaultNasBackupPlans2.plans?[0]?.createTime,
  * }));
  * const nasJob = new alicloud.hbr.RestoreJob("nasJob", {
- *     snapshotHash: nasSnapshots.then(nasSnapshots => nasSnapshots.snapshots[0].snapshotHash),
- *     vaultId: defaultNasBackupPlans.then(defaultNasBackupPlans => defaultNasBackupPlans.plans[0].vaultId),
+ *     snapshotHash: nasSnapshots.then(nasSnapshots => nasSnapshots.snapshots?[0]?.snapshotHash),
+ *     vaultId: defaultNasBackupPlans.then(defaultNasBackupPlans => defaultNasBackupPlans.plans?[0]?.vaultId),
  *     sourceType: "NAS",
  *     restoreType: "NAS",
- *     snapshotId: nasSnapshots.then(nasSnapshots => nasSnapshots.snapshots[0].snapshotId),
- *     targetFileSystemId: defaultNasBackupPlans.then(defaultNasBackupPlans => defaultNasBackupPlans.plans[0].fileSystemId),
- *     targetCreateTime: defaultNasBackupPlans.then(defaultNasBackupPlans => defaultNasBackupPlans.plans[0].createTime),
+ *     snapshotId: nasSnapshots.then(nasSnapshots => nasSnapshots.snapshots?[0]?.snapshotId),
+ *     targetFileSystemId: defaultNasBackupPlans.then(defaultNasBackupPlans => defaultNasBackupPlans.plans?[0]?.fileSystemId),
+ *     targetCreateTime: defaultNasBackupPlans.then(defaultNasBackupPlans => defaultNasBackupPlans.plans?[0]?.createTime),
  *     targetPath: "/",
  *     options: "    {\"includes\":[], \"excludes\":[]}\n",
  * });
  * const ossJob = new alicloud.hbr.RestoreJob("ossJob", {
- *     snapshotHash: ossSnapshots.then(ossSnapshots => ossSnapshots.snapshots[0].snapshotHash),
- *     vaultId: defaultOssBackupPlans.then(defaultOssBackupPlans => defaultOssBackupPlans.plans[0].vaultId),
+ *     snapshotHash: ossSnapshots.then(ossSnapshots => ossSnapshots.snapshots?[0]?.snapshotHash),
+ *     vaultId: defaultOssBackupPlans.then(defaultOssBackupPlans => defaultOssBackupPlans.plans?[0]?.vaultId),
  *     sourceType: "OSS",
  *     restoreType: "OSS",
- *     snapshotId: ossSnapshots.then(ossSnapshots => ossSnapshots.snapshots[0].snapshotId),
- *     targetBucket: defaultOssBackupPlans.then(defaultOssBackupPlans => defaultOssBackupPlans.plans[0].bucket),
+ *     snapshotId: ossSnapshots.then(ossSnapshots => ossSnapshots.snapshots?[0]?.snapshotId),
+ *     targetBucket: defaultOssBackupPlans.then(defaultOssBackupPlans => defaultOssBackupPlans.plans?[0]?.bucket),
  *     targetPrefix: "",
  *     options: "    {\"includes\":[], \"excludes\":[]}\n",
  * });
  * const ecsJob = new alicloud.hbr.RestoreJob("ecsJob", {
- *     snapshotHash: ecsSnapshots.then(ecsSnapshots => ecsSnapshots.snapshots[0].snapshotHash),
- *     vaultId: defaultEcsBackupPlans.then(defaultEcsBackupPlans => defaultEcsBackupPlans.plans[0].vaultId),
+ *     snapshotHash: ecsSnapshots.then(ecsSnapshots => ecsSnapshots.snapshots?[0]?.snapshotHash),
+ *     vaultId: defaultEcsBackupPlans.then(defaultEcsBackupPlans => defaultEcsBackupPlans.plans?[0]?.vaultId),
  *     sourceType: "ECS_FILE",
  *     restoreType: "ECS_FILE",
- *     snapshotId: ecsSnapshots.then(ecsSnapshots => ecsSnapshots.snapshots[0].snapshotId),
- *     targetInstanceId: defaultEcsBackupPlans.then(defaultEcsBackupPlans => defaultEcsBackupPlans.plans[0].instanceId),
+ *     snapshotId: ecsSnapshots.then(ecsSnapshots => ecsSnapshots.snapshots?[0]?.snapshotId),
+ *     targetInstanceId: defaultEcsBackupPlans.then(defaultEcsBackupPlans => defaultEcsBackupPlans.plans?[0]?.instanceId),
  *     targetPath: "/",
  * });
  * ```
@@ -268,71 +268,71 @@ export interface RestoreJobState {
     /**
      * The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
-    readonly exclude?: pulumi.Input<string>;
+    exclude?: pulumi.Input<string>;
     /**
      * The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
-    readonly include?: pulumi.Input<string>;
+    include?: pulumi.Input<string>;
     /**
      * Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
      */
-    readonly options?: pulumi.Input<string>;
+    options?: pulumi.Input<string>;
     /**
      * Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
      */
-    readonly restoreJobId?: pulumi.Input<string>;
+    restoreJobId?: pulumi.Input<string>;
     /**
      * The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
      */
-    readonly restoreType?: pulumi.Input<string>;
+    restoreType?: pulumi.Input<string>;
     /**
      * The hashcode of Snapshot.
      */
-    readonly snapshotHash?: pulumi.Input<string>;
+    snapshotHash?: pulumi.Input<string>;
     /**
      * The ID of Snapshot.
      */
-    readonly snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string>;
     /**
      * The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
      */
-    readonly sourceType?: pulumi.Input<string>;
+    sourceType?: pulumi.Input<string>;
     /**
      * The Restore Job Status.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The target name of OSS bucket.
      */
-    readonly targetBucket?: pulumi.Input<string>;
-    readonly targetClientId?: pulumi.Input<string>;
-    readonly targetContainer?: pulumi.Input<string>;
-    readonly targetContainerClusterId?: pulumi.Input<string>;
+    targetBucket?: pulumi.Input<string>;
+    targetClientId?: pulumi.Input<string>;
+    targetContainer?: pulumi.Input<string>;
+    targetContainerClusterId?: pulumi.Input<string>;
     /**
      * The creation time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      */
-    readonly targetCreateTime?: pulumi.Input<string>;
-    readonly targetDataSourceId?: pulumi.Input<string>;
+    targetCreateTime?: pulumi.Input<string>;
+    targetDataSourceId?: pulumi.Input<string>;
     /**
      * The ID of destination File System.
      */
-    readonly targetFileSystemId?: pulumi.Input<string>;
+    targetFileSystemId?: pulumi.Input<string>;
     /**
      * The target ID of ECS instance.
      */
-    readonly targetInstanceId?: pulumi.Input<string>;
+    targetInstanceId?: pulumi.Input<string>;
     /**
      * The target file path of (ECS) instance. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
-    readonly targetPath?: pulumi.Input<string>;
+    targetPath?: pulumi.Input<string>;
     /**
      * The target prefix of the OSS object. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
-    readonly targetPrefix?: pulumi.Input<string>;
+    targetPrefix?: pulumi.Input<string>;
     /**
      * The ID of backup vault.
      */
-    readonly vaultId?: pulumi.Input<string>;
+    vaultId?: pulumi.Input<string>;
 }
 
 /**
@@ -342,65 +342,65 @@ export interface RestoreJobArgs {
     /**
      * The exclude path. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
-    readonly exclude?: pulumi.Input<string>;
+    exclude?: pulumi.Input<string>;
     /**
      * The include path. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
-    readonly include?: pulumi.Input<string>;
+    include?: pulumi.Input<string>;
     /**
      * Recovery options. It's a json string with format:`"{"includes":[],"excludes":[]}",`.
      */
-    readonly options?: pulumi.Input<string>;
+    options?: pulumi.Input<string>;
     /**
      * Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
      */
-    readonly restoreJobId?: pulumi.Input<string>;
+    restoreJobId?: pulumi.Input<string>;
     /**
      * The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
      */
-    readonly restoreType: pulumi.Input<string>;
+    restoreType: pulumi.Input<string>;
     /**
      * The hashcode of Snapshot.
      */
-    readonly snapshotHash: pulumi.Input<string>;
+    snapshotHash: pulumi.Input<string>;
     /**
      * The ID of Snapshot.
      */
-    readonly snapshotId: pulumi.Input<string>;
+    snapshotId: pulumi.Input<string>;
     /**
      * The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`.
      */
-    readonly sourceType: pulumi.Input<string>;
+    sourceType: pulumi.Input<string>;
     /**
      * The target name of OSS bucket.
      */
-    readonly targetBucket?: pulumi.Input<string>;
-    readonly targetClientId?: pulumi.Input<string>;
-    readonly targetContainer?: pulumi.Input<string>;
-    readonly targetContainerClusterId?: pulumi.Input<string>;
+    targetBucket?: pulumi.Input<string>;
+    targetClientId?: pulumi.Input<string>;
+    targetContainer?: pulumi.Input<string>;
+    targetContainerClusterId?: pulumi.Input<string>;
     /**
      * The creation time of destination File System. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      */
-    readonly targetCreateTime?: pulumi.Input<string>;
-    readonly targetDataSourceId?: pulumi.Input<string>;
+    targetCreateTime?: pulumi.Input<string>;
+    targetDataSourceId?: pulumi.Input<string>;
     /**
      * The ID of destination File System.
      */
-    readonly targetFileSystemId?: pulumi.Input<string>;
+    targetFileSystemId?: pulumi.Input<string>;
     /**
      * The target ID of ECS instance.
      */
-    readonly targetInstanceId?: pulumi.Input<string>;
+    targetInstanceId?: pulumi.Input<string>;
     /**
      * The target file path of (ECS) instance. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
-    readonly targetPath?: pulumi.Input<string>;
+    targetPath?: pulumi.Input<string>;
     /**
      * The target prefix of the OSS object. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      */
-    readonly targetPrefix?: pulumi.Input<string>;
+    targetPrefix?: pulumi.Input<string>;
     /**
      * The ID of backup vault.
      */
-    readonly vaultId: pulumi.Input<string>;
+    vaultId: pulumi.Input<string>;
 }

@@ -4,6 +4,9 @@
 package vpc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,7 +35,7 @@ import (
 // 			name = param
 // 		}
 // 		opt0 := "VSwitch"
-// 		_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		_default, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -137,4 +140,113 @@ type GetSnatEntriesResult struct {
 	SourceVswitchId *string `pulumi:"sourceVswitchId"`
 	// The status of the Snat Entry.
 	Status *string `pulumi:"status"`
+}
+
+func GetSnatEntriesOutput(ctx *pulumi.Context, args GetSnatEntriesOutputArgs, opts ...pulumi.InvokeOption) GetSnatEntriesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetSnatEntriesResult, error) {
+			args := v.(GetSnatEntriesArgs)
+			r, err := GetSnatEntries(ctx, &args, opts...)
+			return *r, err
+		}).(GetSnatEntriesResultOutput)
+}
+
+// A collection of arguments for invoking getSnatEntries.
+type GetSnatEntriesOutputArgs struct {
+	// A list of Snat Entries IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by the resource name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The name of snat entry.
+	SnatEntryName pulumi.StringPtrInput `pulumi:"snatEntryName"`
+	// The public IP of the Snat Entry.
+	SnatIp pulumi.StringPtrInput `pulumi:"snatIp"`
+	// The ID of the Snat table.
+	SnatTableId pulumi.StringInput `pulumi:"snatTableId"`
+	// The source CIDR block of the Snat Entry.
+	SourceCidr pulumi.StringPtrInput `pulumi:"sourceCidr"`
+	// The source vswitch ID.
+	SourceVswitchId pulumi.StringPtrInput `pulumi:"sourceVswitchId"`
+	// The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetSnatEntriesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnatEntriesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getSnatEntries.
+type GetSnatEntriesResultOutput struct{ *pulumi.OutputState }
+
+func (GetSnatEntriesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnatEntriesResult)(nil)).Elem()
+}
+
+func (o GetSnatEntriesResultOutput) ToGetSnatEntriesResultOutput() GetSnatEntriesResultOutput {
+	return o
+}
+
+func (o GetSnatEntriesResultOutput) ToGetSnatEntriesResultOutputWithContext(ctx context.Context) GetSnatEntriesResultOutput {
+	return o
+}
+
+// A list of Snat Entries. Each element contains the following attributes:
+func (o GetSnatEntriesResultOutput) Entries() GetSnatEntriesEntryArrayOutput {
+	return o.ApplyT(func(v GetSnatEntriesResult) []GetSnatEntriesEntry { return v.Entries }).(GetSnatEntriesEntryArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSnatEntriesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnatEntriesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Optional) A list of Snat Entries IDs.
+func (o GetSnatEntriesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSnatEntriesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSnatEntriesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSnatEntriesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSnatEntriesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSnatEntriesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSnatEntriesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSnatEntriesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The name of snat entry.
+func (o GetSnatEntriesResultOutput) SnatEntryName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSnatEntriesResult) *string { return v.SnatEntryName }).(pulumi.StringPtrOutput)
+}
+
+// The public IP of the Snat Entry.
+func (o GetSnatEntriesResultOutput) SnatIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSnatEntriesResult) *string { return v.SnatIp }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSnatEntriesResultOutput) SnatTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnatEntriesResult) string { return v.SnatTableId }).(pulumi.StringOutput)
+}
+
+// The source CIDR block of the Snat Entry.
+func (o GetSnatEntriesResultOutput) SourceCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSnatEntriesResult) *string { return v.SourceCidr }).(pulumi.StringPtrOutput)
+}
+
+// The source vswitch ID.
+func (o GetSnatEntriesResultOutput) SourceVswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSnatEntriesResult) *string { return v.SourceVswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The status of the Snat Entry.
+func (o GetSnatEntriesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSnatEntriesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSnatEntriesResultOutput{})
 }

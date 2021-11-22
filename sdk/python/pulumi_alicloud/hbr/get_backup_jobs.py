@@ -14,6 +14,7 @@ __all__ = [
     'GetBackupJobsResult',
     'AwaitableGetBackupJobsResult',
     'get_backup_jobs',
+    'get_backup_jobs_output',
 ]
 
 @pulumi.output_type
@@ -119,6 +120,59 @@ def get_backup_jobs(filters: Optional[Sequence[pulumi.InputType['GetBackupJobsFi
 
     > **NOTE:** Available in v1.138.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_ecs_backup_plans = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-name")
+    default_backup_jobs = alicloud.hbr.get_backup_jobs(source_type="ECS_FILE",
+        filters=[
+            alicloud.hbr.GetBackupJobsFilterArgs(
+                key="VaultId",
+                operator="IN",
+                values=[default_ecs_backup_plans.plans[0].vault_id],
+            ),
+            alicloud.hbr.GetBackupJobsFilterArgs(
+                key="InstanceId",
+                operator="IN",
+                values=[default_ecs_backup_plans.plans[0].instance_id],
+            ),
+            alicloud.hbr.GetBackupJobsFilterArgs(
+                key="CompleteTime",
+                operator="BETWEEN",
+                values=[
+                    "2021-08-23T14:17:15CST",
+                    "2021-08-24T14:17:15CST",
+                ],
+            ),
+        ])
+    example = alicloud.hbr.get_backup_jobs(source_type="ECS_FILE",
+        status="COMPLETE",
+        filters=[
+            alicloud.hbr.GetBackupJobsFilterArgs(
+                key="VaultId",
+                operator="IN",
+                values=[default_ecs_backup_plans.plans[0].vault_id],
+            ),
+            alicloud.hbr.GetBackupJobsFilterArgs(
+                key="InstanceId",
+                operator="IN",
+                values=[default_ecs_backup_plans.plans[0].instance_id],
+            ),
+            alicloud.hbr.GetBackupJobsFilterArgs(
+                key="CompleteTime",
+                operator="LESS_THAN",
+                values=["2021-10-20T20:20:20CST"],
+            ),
+        ])
+    pulumi.export("alicloudHbrBackupJobsDefault1", default_backup_jobs.jobs[0].id)
+    pulumi.export("alicloudHbrBackupJobsExample1", example.jobs[0].id)
+    ```
+
 
     :param Sequence[str] ids: A list of Backup Job IDs.
     :param str sort_direction: The sort direction. Valid values: `ASCEND`, `DESCEND`.
@@ -147,3 +201,78 @@ def get_backup_jobs(filters: Optional[Sequence[pulumi.InputType['GetBackupJobsFi
         sort_direction=__ret__.sort_direction,
         source_type=__ret__.source_type,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_backup_jobs)
+def get_backup_jobs_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetBackupJobsFilterArgs']]]]] = None,
+                           ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                           sort_direction: Optional[pulumi.Input[Optional[str]]] = None,
+                           source_type: Optional[pulumi.Input[str]] = None,
+                           status: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackupJobsResult]:
+    """
+    This data source provides the Hbr Backup Jobs of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.138.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_ecs_backup_plans = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-name")
+    default_backup_jobs = alicloud.hbr.get_backup_jobs(source_type="ECS_FILE",
+        filters=[
+            alicloud.hbr.GetBackupJobsFilterArgs(
+                key="VaultId",
+                operator="IN",
+                values=[default_ecs_backup_plans.plans[0].vault_id],
+            ),
+            alicloud.hbr.GetBackupJobsFilterArgs(
+                key="InstanceId",
+                operator="IN",
+                values=[default_ecs_backup_plans.plans[0].instance_id],
+            ),
+            alicloud.hbr.GetBackupJobsFilterArgs(
+                key="CompleteTime",
+                operator="BETWEEN",
+                values=[
+                    "2021-08-23T14:17:15CST",
+                    "2021-08-24T14:17:15CST",
+                ],
+            ),
+        ])
+    example = alicloud.hbr.get_backup_jobs(source_type="ECS_FILE",
+        status="COMPLETE",
+        filters=[
+            alicloud.hbr.GetBackupJobsFilterArgs(
+                key="VaultId",
+                operator="IN",
+                values=[default_ecs_backup_plans.plans[0].vault_id],
+            ),
+            alicloud.hbr.GetBackupJobsFilterArgs(
+                key="InstanceId",
+                operator="IN",
+                values=[default_ecs_backup_plans.plans[0].instance_id],
+            ),
+            alicloud.hbr.GetBackupJobsFilterArgs(
+                key="CompleteTime",
+                operator="LESS_THAN",
+                values=["2021-10-20T20:20:20CST"],
+            ),
+        ])
+    pulumi.export("alicloudHbrBackupJobsDefault1", default_backup_jobs.jobs[0].id)
+    pulumi.export("alicloudHbrBackupJobsExample1", example.jobs[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Backup Job IDs.
+    :param str sort_direction: The sort direction. Valid values: `ASCEND`, `DESCEND`.
+    :param str source_type: The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+    :param str status: The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+    """
+    ...

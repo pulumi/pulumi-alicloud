@@ -200,71 +200,71 @@ export interface JobTemplateState {
     /**
      * Queue Jobs, Is of the Form: 1-10:2.
      */
-    readonly arrayRequest?: pulumi.Input<string>;
+    arrayRequest?: pulumi.Input<string>;
     /**
      * Job Maximum Run Time.
      */
-    readonly clockTime?: pulumi.Input<string>;
+    clockTime?: pulumi.Input<string>;
     /**
      * Job Commands.
      */
-    readonly commandLine?: pulumi.Input<string>;
+    commandLine?: pulumi.Input<string>;
     /**
      * A Single Compute Node Using the GPU Number.Possible Values: 1~20000.
      */
-    readonly gpu?: pulumi.Input<number>;
+    gpu?: pulumi.Input<number>;
     /**
      * A Job Template Name.
      */
-    readonly jobTemplateName?: pulumi.Input<string>;
+    jobTemplateName?: pulumi.Input<string>;
     /**
      * A Single Compute Node Maximum Memory.
      */
-    readonly mem?: pulumi.Input<string>;
+    mem?: pulumi.Input<string>;
     /**
      * Submit a Task Is Required for Computing the Number of Data Nodes to Be. Possible Values: 1~5000 .
      */
-    readonly node?: pulumi.Input<number>;
+    node?: pulumi.Input<number>;
     /**
      * Job Commands the Directory.
      */
-    readonly packagePath?: pulumi.Input<string>;
+    packagePath?: pulumi.Input<string>;
     /**
      * The Job Priority.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * The Job Queue.
      */
-    readonly queue?: pulumi.Input<string>;
+    queue?: pulumi.Input<string>;
     /**
      * If the Job Is Support for the Re-Run.
      */
-    readonly reRunable?: pulumi.Input<boolean>;
+    reRunable?: pulumi.Input<boolean>;
     /**
      * The name of the user who performed the job.
      */
-    readonly runasUser?: pulumi.Input<string>;
+    runasUser?: pulumi.Input<string>;
     /**
      * Error Output Path.
      */
-    readonly stderrRedirectPath?: pulumi.Input<string>;
+    stderrRedirectPath?: pulumi.Input<string>;
     /**
      * Standard Output Path and.
      */
-    readonly stdoutRedirectPath?: pulumi.Input<string>;
+    stdoutRedirectPath?: pulumi.Input<string>;
     /**
      * A Single Compute Node Required Number of Tasks. Possible Values: 1~20000 .
      */
-    readonly task?: pulumi.Input<number>;
+    task?: pulumi.Input<number>;
     /**
      * A Single Task and the Number of Required Threads.
      */
-    readonly thread?: pulumi.Input<number>;
+    thread?: pulumi.Input<number>;
     /**
      * The Job of the Environment Variable.
      */
-    readonly variables?: pulumi.Input<string>;
+    variables?: pulumi.Input<string>;
 }
 
 /**
@@ -274,69 +274,69 @@ export interface JobTemplateArgs {
     /**
      * Queue Jobs, Is of the Form: 1-10:2.
      */
-    readonly arrayRequest?: pulumi.Input<string>;
+    arrayRequest?: pulumi.Input<string>;
     /**
      * Job Maximum Run Time.
      */
-    readonly clockTime?: pulumi.Input<string>;
+    clockTime?: pulumi.Input<string>;
     /**
      * Job Commands.
      */
-    readonly commandLine: pulumi.Input<string>;
+    commandLine: pulumi.Input<string>;
     /**
      * A Single Compute Node Using the GPU Number.Possible Values: 1~20000.
      */
-    readonly gpu?: pulumi.Input<number>;
+    gpu?: pulumi.Input<number>;
     /**
      * A Job Template Name.
      */
-    readonly jobTemplateName: pulumi.Input<string>;
+    jobTemplateName: pulumi.Input<string>;
     /**
      * A Single Compute Node Maximum Memory.
      */
-    readonly mem?: pulumi.Input<string>;
+    mem?: pulumi.Input<string>;
     /**
      * Submit a Task Is Required for Computing the Number of Data Nodes to Be. Possible Values: 1~5000 .
      */
-    readonly node?: pulumi.Input<number>;
+    node?: pulumi.Input<number>;
     /**
      * Job Commands the Directory.
      */
-    readonly packagePath?: pulumi.Input<string>;
+    packagePath?: pulumi.Input<string>;
     /**
      * The Job Priority.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * The Job Queue.
      */
-    readonly queue?: pulumi.Input<string>;
+    queue?: pulumi.Input<string>;
     /**
      * If the Job Is Support for the Re-Run.
      */
-    readonly reRunable?: pulumi.Input<boolean>;
+    reRunable?: pulumi.Input<boolean>;
     /**
      * The name of the user who performed the job.
      */
-    readonly runasUser?: pulumi.Input<string>;
+    runasUser?: pulumi.Input<string>;
     /**
      * Error Output Path.
      */
-    readonly stderrRedirectPath?: pulumi.Input<string>;
+    stderrRedirectPath?: pulumi.Input<string>;
     /**
      * Standard Output Path and.
      */
-    readonly stdoutRedirectPath?: pulumi.Input<string>;
+    stdoutRedirectPath?: pulumi.Input<string>;
     /**
      * A Single Compute Node Required Number of Tasks. Possible Values: 1~20000 .
      */
-    readonly task?: pulumi.Input<number>;
+    task?: pulumi.Input<number>;
     /**
      * A Single Task and the Number of Required Threads.
      */
-    readonly thread?: pulumi.Input<number>;
+    thread?: pulumi.Input<number>;
     /**
      * The Job of the Environment Variable.
      */
-    readonly variables?: pulumi.Input<string>;
+    variables?: pulumi.Input<string>;
 }

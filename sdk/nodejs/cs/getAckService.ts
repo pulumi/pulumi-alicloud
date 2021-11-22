@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -21,7 +20,7 @@ import * as utilities from "../utilities";
  * const open = pulumi.output(alicloud.cs.getAckService({
  *     enable: "On",
  *     type: "propayasgo",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getAckService(args: GetAckServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetAckServiceResult> {
@@ -45,11 +44,11 @@ export interface GetAckServiceArgs {
     /**
      * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
      */
-    readonly enable?: string;
+    enable?: string;
     /**
      * Types of services opened. Valid values: `propayasgo`: Container service ack Pro managed version, `edgepayasgo`: Edge container service, `gspayasgo`: Gene computing services.
      */
-    readonly type: string;
+    type: string;
 }
 
 /**
@@ -66,4 +65,22 @@ export interface GetAckServiceResult {
      */
     readonly status: string;
     readonly type: string;
+}
+
+export function getAckServiceOutput(args: GetAckServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAckServiceResult> {
+    return pulumi.output(args).apply(a => getAckService(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAckService.
+ */
+export interface GetAckServiceOutputArgs {
+    /**
+     * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+     */
+    enable?: pulumi.Input<string>;
+    /**
+     * Types of services opened. Valid values: `propayasgo`: Container service ack Pro managed version, `edgepayasgo`: Edge container service, `gspayasgo`: Gene computing services.
+     */
+    type: pulumi.Input<string>;
 }

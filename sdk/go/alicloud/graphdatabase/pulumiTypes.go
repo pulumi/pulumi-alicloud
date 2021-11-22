@@ -626,6 +626,12 @@ func (o GetDbInstancesInstanceDbInstanceIpArrayArrayOutput) Index(i pulumi.IntIn
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DbInstanceDbInstanceIpArrayInput)(nil)).Elem(), DbInstanceDbInstanceIpArrayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbInstanceDbInstanceIpArrayArrayInput)(nil)).Elem(), DbInstanceDbInstanceIpArrayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbInstancesInstanceInput)(nil)).Elem(), GetDbInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbInstancesInstanceArrayInput)(nil)).Elem(), GetDbInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbInstancesInstanceDbInstanceIpArrayInput)(nil)).Elem(), GetDbInstancesInstanceDbInstanceIpArrayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbInstancesInstanceDbInstanceIpArrayArrayInput)(nil)).Elem(), GetDbInstancesInstanceDbInstanceIpArrayArray{})
 	pulumi.RegisterOutputType(DbInstanceDbInstanceIpArrayOutput{})
 	pulumi.RegisterOutputType(DbInstanceDbInstanceIpArrayArrayOutput{})
 	pulumi.RegisterOutputType(GetDbInstancesInstanceOutput{})

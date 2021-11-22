@@ -13,6 +13,7 @@ __all__ = [
     'GetRulesResult',
     'AwaitableGetRulesResult',
     'get_rules',
+    'get_rules_output',
 ]
 
 @pulumi.output_type
@@ -171,3 +172,40 @@ def get_rules(event_bus_name: Optional[str] = None,
         rule_name_prefix=__ret__.rule_name_prefix,
         rules=__ret__.rules,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_rules)
+def get_rules_output(event_bus_name: Optional[pulumi.Input[str]] = None,
+                     ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     rule_name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
+                     status: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRulesResult]:
+    """
+    This data source provides the Event Bridge Rules of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.129.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.eventbridge.get_rules(event_bus_name="example_value",
+        ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstEventBridgeRuleId", example.rules[0].id)
+    ```
+
+
+    :param str event_bus_name: The name of event bus.
+    :param Sequence[str] ids: A list of Rule IDs.
+    :param str name_regex: A regex string to filter results by Rule name.
+    :param str rule_name_prefix: The rule name prefix.
+    :param str status: Rule status, either Enable or Disable.
+    """
+    ...

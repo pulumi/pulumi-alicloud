@@ -4,6 +4,9 @@
 package kms
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,4 +38,68 @@ type GetPlaintextResult struct {
 	KeyId string `pulumi:"keyId"`
 	// The decrypted plaintext.
 	Plaintext string `pulumi:"plaintext"`
+}
+
+func GetPlaintextOutput(ctx *pulumi.Context, args GetPlaintextOutputArgs, opts ...pulumi.InvokeOption) GetPlaintextResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetPlaintextResult, error) {
+			args := v.(GetPlaintextArgs)
+			r, err := GetPlaintext(ctx, &args, opts...)
+			return *r, err
+		}).(GetPlaintextResultOutput)
+}
+
+// A collection of arguments for invoking getPlaintext.
+type GetPlaintextOutputArgs struct {
+	// The ciphertext to be decrypted.
+	CiphertextBlob pulumi.StringInput `pulumi:"ciphertextBlob"`
+	// -
+	// (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+	EncryptionContext pulumi.StringMapInput `pulumi:"encryptionContext"`
+}
+
+func (GetPlaintextOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPlaintextArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getPlaintext.
+type GetPlaintextResultOutput struct{ *pulumi.OutputState }
+
+func (GetPlaintextResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPlaintextResult)(nil)).Elem()
+}
+
+func (o GetPlaintextResultOutput) ToGetPlaintextResultOutput() GetPlaintextResultOutput {
+	return o
+}
+
+func (o GetPlaintextResultOutput) ToGetPlaintextResultOutputWithContext(ctx context.Context) GetPlaintextResultOutput {
+	return o
+}
+
+func (o GetPlaintextResultOutput) CiphertextBlob() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPlaintextResult) string { return v.CiphertextBlob }).(pulumi.StringOutput)
+}
+
+func (o GetPlaintextResultOutput) EncryptionContext() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPlaintextResult) map[string]string { return v.EncryptionContext }).(pulumi.StringMapOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetPlaintextResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPlaintextResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The globally unique ID of the CMK. It is the ID of the CMK used to decrypt ciphertext.
+func (o GetPlaintextResultOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPlaintextResult) string { return v.KeyId }).(pulumi.StringOutput)
+}
+
+// The decrypted plaintext.
+func (o GetPlaintextResultOutput) Plaintext() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPlaintextResult) string { return v.Plaintext }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetPlaintextResultOutput{})
 }

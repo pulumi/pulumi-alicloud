@@ -4,6 +4,9 @@
 package eds
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -87,4 +90,82 @@ type GetNasFileSystemsResult struct {
 	OutputFile   *string                   `pulumi:"outputFile"`
 	Status       *string                   `pulumi:"status"`
 	Systems      []GetNasFileSystemsSystem `pulumi:"systems"`
+}
+
+func GetNasFileSystemsOutput(ctx *pulumi.Context, args GetNasFileSystemsOutputArgs, opts ...pulumi.InvokeOption) GetNasFileSystemsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetNasFileSystemsResult, error) {
+			args := v.(GetNasFileSystemsArgs)
+			r, err := GetNasFileSystems(ctx, &args, opts...)
+			return *r, err
+		}).(GetNasFileSystemsResultOutput)
+}
+
+// A collection of arguments for invoking getNasFileSystems.
+type GetNasFileSystemsOutputArgs struct {
+	// A list of Nas File System IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Nas File System name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// The ID of office site.
+	OfficeSiteId pulumi.StringPtrInput `pulumi:"officeSiteId"`
+	OutputFile   pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetNasFileSystemsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNasFileSystemsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getNasFileSystems.
+type GetNasFileSystemsResultOutput struct{ *pulumi.OutputState }
+
+func (GetNasFileSystemsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNasFileSystemsResult)(nil)).Elem()
+}
+
+func (o GetNasFileSystemsResultOutput) ToGetNasFileSystemsResultOutput() GetNasFileSystemsResultOutput {
+	return o
+}
+
+func (o GetNasFileSystemsResultOutput) ToGetNasFileSystemsResultOutputWithContext(ctx context.Context) GetNasFileSystemsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetNasFileSystemsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNasFileSystemsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetNasFileSystemsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNasFileSystemsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNasFileSystemsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNasFileSystemsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNasFileSystemsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNasFileSystemsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNasFileSystemsResultOutput) OfficeSiteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNasFileSystemsResult) *string { return v.OfficeSiteId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNasFileSystemsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNasFileSystemsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNasFileSystemsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNasFileSystemsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNasFileSystemsResultOutput) Systems() GetNasFileSystemsSystemArrayOutput {
+	return o.ApplyT(func(v GetNasFileSystemsResult) []GetNasFileSystemsSystem { return v.Systems }).(GetNasFileSystemsSystemArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetNasFileSystemsResultOutput{})
 }

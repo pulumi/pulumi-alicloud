@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CloudAuth
 {
@@ -48,7 +49,7 @@ namespace Pulumi.AliCloud.CloudAuth
         ///                 NameRegex = bizName,
         ///             });
         ///         });
-        ///         this.FaceConfig = defaultFaceConfigs.Apply(defaultFaceConfigs =&gt; defaultFaceConfigs.Configs[0]);
+        ///         this.FaceConfig = defaultFaceConfigs.Apply(defaultFaceConfigs =&gt; defaultFaceConfigs.Configs?[0]);
         ///     }
         /// 
         ///     [Output("faceConfig")]
@@ -60,6 +61,56 @@ namespace Pulumi.AliCloud.CloudAuth
         /// </summary>
         public static Task<GetFaceConfigsResult> InvokeAsync(GetFaceConfigsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFaceConfigsResult>("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", args ?? new GetFaceConfigsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Cloudauth Face Configs of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.137.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var defaultFaceConfig = new AliCloud.CloudAuth.FaceConfig("defaultFaceConfig", new AliCloud.CloudAuth.FaceConfigArgs
+        ///         {
+        ///             BizName = "example-value",
+        ///             BizType = "example-value",
+        ///         });
+        ///         var defaultFaceConfigs = Output.Tuple(defaultFaceConfig.Id, defaultFaceConfig.BizName).Apply(values =&gt;
+        ///         {
+        ///             var id = values.Item1;
+        ///             var bizName = values.Item2;
+        ///             return AliCloud.CloudAuth.GetFaceConfigs.InvokeAsync(new AliCloud.CloudAuth.GetFaceConfigsArgs
+        ///             {
+        ///                 Ids = 
+        ///                 {
+        ///                     id,
+        ///                 },
+        ///                 NameRegex = bizName,
+        ///             });
+        ///         });
+        ///         this.FaceConfig = defaultFaceConfigs.Apply(defaultFaceConfigs =&gt; defaultFaceConfigs.Configs?[0]);
+        ///     }
+        /// 
+        ///     [Output("faceConfig")]
+        ///     public Output&lt;string&gt; FaceConfig { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetFaceConfigsResult> Invoke(GetFaceConfigsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFaceConfigsResult>("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", args ?? new GetFaceConfigsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -87,6 +138,34 @@ namespace Pulumi.AliCloud.CloudAuth
         public string? OutputFile { get; set; }
 
         public GetFaceConfigsArgs()
+        {
+        }
+    }
+
+    public sealed class GetFaceConfigsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Face Config IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by biz_name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetFaceConfigsInvokeArgs()
         {
         }
     }

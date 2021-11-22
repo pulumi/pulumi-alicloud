@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const example = alicloud.cen.getRouteServices({
  *     cenId: "cen-7qthudw0ll6jmc****",
  * });
- * export const firstCenRouteServiceId = example.then(example => example.services[0].id);
+ * export const firstCenRouteServiceId = example.then(example => example.services?[0]?.id);
  * ```
  */
 export function getRouteServices(args: GetRouteServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteServicesResult> {
@@ -50,28 +50,28 @@ export interface GetRouteServicesArgs {
     /**
      * The region of the network instances that access the cloud services.
      */
-    readonly accessRegionId?: string;
+    accessRegionId?: string;
     /**
      * -(Required, ForceNew) The ID of the CEN instance.
      */
-    readonly cenId: string;
+    cenId: string;
     /**
      * -(Optional, ForceNew) The domain name or IP address of the cloud service.
      */
-    readonly host?: string;
+    host?: string;
     /**
      * The region of the cloud service.
      */
-    readonly hostRegionId?: string;
+    hostRegionId?: string;
     /**
      * The VPC associated with the cloud service.
      */
-    readonly hostVpcId?: string;
-    readonly outputFile?: string;
+    hostVpcId?: string;
+    outputFile?: string;
     /**
      * The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -115,4 +115,39 @@ export interface GetRouteServicesResult {
      * The status of the cloud service.
      */
     readonly status?: string;
+}
+
+export function getRouteServicesOutput(args: GetRouteServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteServicesResult> {
+    return pulumi.output(args).apply(a => getRouteServices(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRouteServices.
+ */
+export interface GetRouteServicesOutputArgs {
+    /**
+     * The region of the network instances that access the cloud services.
+     */
+    accessRegionId?: pulumi.Input<string>;
+    /**
+     * -(Required, ForceNew) The ID of the CEN instance.
+     */
+    cenId: pulumi.Input<string>;
+    /**
+     * -(Optional, ForceNew) The domain name or IP address of the cloud service.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * The region of the cloud service.
+     */
+    hostRegionId?: pulumi.Input<string>;
+    /**
+     * The VPC associated with the cloud service.
+     */
+    hostVpcId?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
+     */
+    status?: pulumi.Input<string>;
 }

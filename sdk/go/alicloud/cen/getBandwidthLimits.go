@@ -4,6 +4,9 @@
 package cen
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -58,4 +61,61 @@ type GetBandwidthLimitsResult struct {
 	// A list of CEN Bandwidth Limits. Each element contains the following attributes:
 	Limits     []GetBandwidthLimitsLimit `pulumi:"limits"`
 	OutputFile *string                   `pulumi:"outputFile"`
+}
+
+func GetBandwidthLimitsOutput(ctx *pulumi.Context, args GetBandwidthLimitsOutputArgs, opts ...pulumi.InvokeOption) GetBandwidthLimitsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetBandwidthLimitsResult, error) {
+			args := v.(GetBandwidthLimitsArgs)
+			r, err := GetBandwidthLimits(ctx, &args, opts...)
+			return *r, err
+		}).(GetBandwidthLimitsResultOutput)
+}
+
+// A collection of arguments for invoking getBandwidthLimits.
+type GetBandwidthLimitsOutputArgs struct {
+	// A list of CEN instances IDs.
+	InstanceIds pulumi.StringArrayInput `pulumi:"instanceIds"`
+	OutputFile  pulumi.StringPtrInput   `pulumi:"outputFile"`
+}
+
+func (GetBandwidthLimitsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBandwidthLimitsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getBandwidthLimits.
+type GetBandwidthLimitsResultOutput struct{ *pulumi.OutputState }
+
+func (GetBandwidthLimitsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBandwidthLimitsResult)(nil)).Elem()
+}
+
+func (o GetBandwidthLimitsResultOutput) ToGetBandwidthLimitsResultOutput() GetBandwidthLimitsResultOutput {
+	return o
+}
+
+func (o GetBandwidthLimitsResultOutput) ToGetBandwidthLimitsResultOutputWithContext(ctx context.Context) GetBandwidthLimitsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetBandwidthLimitsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBandwidthLimitsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetBandwidthLimitsResultOutput) InstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBandwidthLimitsResult) []string { return v.InstanceIds }).(pulumi.StringArrayOutput)
+}
+
+// A list of CEN Bandwidth Limits. Each element contains the following attributes:
+func (o GetBandwidthLimitsResultOutput) Limits() GetBandwidthLimitsLimitArrayOutput {
+	return o.ApplyT(func(v GetBandwidthLimitsResult) []GetBandwidthLimitsLimit { return v.Limits }).(GetBandwidthLimitsLimitArrayOutput)
+}
+
+func (o GetBandwidthLimitsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBandwidthLimitsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetBandwidthLimitsResultOutput{})
 }

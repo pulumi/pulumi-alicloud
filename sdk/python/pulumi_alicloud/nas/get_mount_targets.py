@@ -13,6 +13,7 @@ __all__ = [
     'GetMountTargetsResult',
     'AwaitableGetMountTargetsResult',
     'get_mount_targets',
+    'get_mount_targets_output',
 ]
 
 @pulumi.output_type
@@ -239,3 +240,45 @@ def get_mount_targets(access_group_name: Optional[str] = None,
         type=__ret__.type,
         vpc_id=__ret__.vpc_id,
         vswitch_id=__ret__.vswitch_id)
+
+
+@_utilities.lift_output_func(get_mount_targets)
+def get_mount_targets_output(access_group_name: Optional[pulumi.Input[Optional[str]]] = None,
+                             file_system_id: Optional[pulumi.Input[str]] = None,
+                             ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                             mount_target_domain: Optional[pulumi.Input[Optional[str]]] = None,
+                             network_type: Optional[pulumi.Input[Optional[str]]] = None,
+                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                             status: Optional[pulumi.Input[Optional[str]]] = None,
+                             type: Optional[pulumi.Input[Optional[str]]] = None,
+                             vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMountTargetsResult]:
+    """
+    This data source provides MountTargets available to the user.
+
+    > **NOTE**: Available in 1.35.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.nas.get_mount_targets(file_system_id="1a2sc4d",
+        access_group_name="tf-testAccNasConfig")
+    pulumi.export("theFirstMountTargetDomain", example.targets[0].id)
+    ```
+
+
+    :param str access_group_name: Filter results by a specific AccessGroupName.
+    :param str file_system_id: The ID of the FileSystem that owns the MountTarget.
+    :param Sequence[str] ids: A list of MountTargetDomain.
+    :param str mount_target_domain: Field `mount_target_domain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
+    :param str network_type: Filter results by a specific NetworkType.
+    :param str status: Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
+    :param str type: Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
+    :param str vpc_id: Filter results by a specific VpcId.
+    :param str vswitch_id: Filter results by a specific VSwitchId.
+    """
+    ...

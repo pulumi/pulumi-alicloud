@@ -4,6 +4,9 @@
 package hbr
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,4 +42,72 @@ type GetEcsBackupClientsResult struct {
 	InstanceIds []string `pulumi:"instanceIds"`
 	OutputFile  *string  `pulumi:"outputFile"`
 	Status      *string  `pulumi:"status"`
+}
+
+func GetEcsBackupClientsOutput(ctx *pulumi.Context, args GetEcsBackupClientsOutputArgs, opts ...pulumi.InvokeOption) GetEcsBackupClientsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetEcsBackupClientsResult, error) {
+			args := v.(GetEcsBackupClientsArgs)
+			r, err := GetEcsBackupClients(ctx, &args, opts...)
+			return *r, err
+		}).(GetEcsBackupClientsResultOutput)
+}
+
+// A collection of arguments for invoking getEcsBackupClients.
+type GetEcsBackupClientsOutputArgs struct {
+	// A list of Ecs Backup Client IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A list of ECS Instance IDs.
+	InstanceIds pulumi.StringArrayInput `pulumi:"instanceIds"`
+	OutputFile  pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// The status of the resource.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetEcsBackupClientsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsBackupClientsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getEcsBackupClients.
+type GetEcsBackupClientsResultOutput struct{ *pulumi.OutputState }
+
+func (GetEcsBackupClientsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsBackupClientsResult)(nil)).Elem()
+}
+
+func (o GetEcsBackupClientsResultOutput) ToGetEcsBackupClientsResultOutput() GetEcsBackupClientsResultOutput {
+	return o
+}
+
+func (o GetEcsBackupClientsResultOutput) ToGetEcsBackupClientsResultOutputWithContext(ctx context.Context) GetEcsBackupClientsResultOutput {
+	return o
+}
+
+func (o GetEcsBackupClientsResultOutput) Clients() GetEcsBackupClientsClientArrayOutput {
+	return o.ApplyT(func(v GetEcsBackupClientsResult) []GetEcsBackupClientsClient { return v.Clients }).(GetEcsBackupClientsClientArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetEcsBackupClientsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsBackupClientsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetEcsBackupClientsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEcsBackupClientsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEcsBackupClientsResultOutput) InstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEcsBackupClientsResult) []string { return v.InstanceIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEcsBackupClientsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsBackupClientsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEcsBackupClientsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEcsBackupClientsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetEcsBackupClientsResultOutput{})
 }

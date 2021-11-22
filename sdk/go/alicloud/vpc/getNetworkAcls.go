@@ -4,6 +4,9 @@
 package vpc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -82,4 +85,100 @@ type GetNetworkAclsResult struct {
 	ResourceType   *string  `pulumi:"resourceType"`
 	Status         *string  `pulumi:"status"`
 	VpcId          *string  `pulumi:"vpcId"`
+}
+
+func GetNetworkAclsOutput(ctx *pulumi.Context, args GetNetworkAclsOutputArgs, opts ...pulumi.InvokeOption) GetNetworkAclsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetNetworkAclsResult, error) {
+			args := v.(GetNetworkAclsArgs)
+			r, err := GetNetworkAcls(ctx, &args, opts...)
+			return *r, err
+		}).(GetNetworkAclsResultOutput)
+}
+
+// A collection of arguments for invoking getNetworkAcls.
+type GetNetworkAclsOutputArgs struct {
+	// A list of Network Acl ID.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Network Acl name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// The name of the network ACL.
+	NetworkAclName pulumi.StringPtrInput `pulumi:"networkAclName"`
+	OutputFile     pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The ID of the associated resource.
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+	// The type of the associated resource.
+	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
+	// The state of the network ACL.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The ID of the associated VPC.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+}
+
+func (GetNetworkAclsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getNetworkAcls.
+type GetNetworkAclsResultOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclsResult)(nil)).Elem()
+}
+
+func (o GetNetworkAclsResultOutput) ToGetNetworkAclsResultOutput() GetNetworkAclsResultOutput {
+	return o
+}
+
+func (o GetNetworkAclsResultOutput) ToGetNetworkAclsResultOutputWithContext(ctx context.Context) GetNetworkAclsResultOutput {
+	return o
+}
+
+func (o GetNetworkAclsResultOutput) Acls() GetNetworkAclsAclArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclsResult) []GetNetworkAclsAcl { return v.Acls }).(GetNetworkAclsAclArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetNetworkAclsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkAclsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNetworkAclsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkAclsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNetworkAclsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNetworkAclsResultOutput) NetworkAclName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkAclsResult) *string { return v.NetworkAclName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNetworkAclsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkAclsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNetworkAclsResultOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkAclsResult) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNetworkAclsResultOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkAclsResult) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNetworkAclsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkAclsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNetworkAclsResultOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkAclsResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetNetworkAclsResultOutput{})
 }

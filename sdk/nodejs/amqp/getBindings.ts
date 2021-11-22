@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const examples = pulumi.output(alicloud.amqp.getBindings({
  *     instanceId: "amqp-cn-xxxxx",
  *     virtualHostName: "my-vh",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getBindings(args: GetBindingsArgs, opts?: pulumi.InvokeOptions): Promise<GetBindingsResult> {
@@ -46,12 +46,12 @@ export interface GetBindingsArgs {
     /**
      * Instance Id.
      */
-    readonly instanceId: string;
-    readonly outputFile?: string;
+    instanceId: string;
+    outputFile?: string;
     /**
      * Virtualhost Name.
      */
-    readonly virtualHostName: string;
+    virtualHostName: string;
 }
 
 /**
@@ -67,4 +67,23 @@ export interface GetBindingsResult {
     readonly instanceId: string;
     readonly outputFile?: string;
     readonly virtualHostName: string;
+}
+
+export function getBindingsOutput(args: GetBindingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBindingsResult> {
+    return pulumi.output(args).apply(a => getBindings(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getBindings.
+ */
+export interface GetBindingsOutputArgs {
+    /**
+     * Instance Id.
+     */
+    instanceId: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Virtualhost Name.
+     */
+    virtualHostName: pulumi.Input<string>;
 }

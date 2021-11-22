@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * const sampleDs = _default.id.apply(id => alicloud.slb.getListeners({
  *     loadBalancerId: id,
  * }));
- * export const firstSlbListenerProtocol = sampleDs.slbListeners[0].protocol;
+ * export const firstSlbListenerProtocol = sampleDs.apply(sampleDs => sampleDs.slbListeners?[0]?.protocol);
  * ```
  */
 export function getListeners(args: GetListenersArgs, opts?: pulumi.InvokeOptions): Promise<GetListenersResult> {
@@ -62,20 +62,20 @@ export interface GetListenersArgs {
     /**
      * A regex string to filter results by SLB listener description.
      */
-    readonly descriptionRegex?: string;
+    descriptionRegex?: string;
     /**
      * Filter listeners by the specified frontend port.
      */
-    readonly frontendPort?: number;
+    frontendPort?: number;
     /**
      * ID of the SLB with listeners.
      */
-    readonly loadBalancerId: string;
-    readonly outputFile?: string;
+    loadBalancerId: string;
+    outputFile?: string;
     /**
      * Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
      */
-    readonly protocol?: string;
+    protocol?: string;
 }
 
 /**
@@ -101,4 +101,31 @@ export interface GetListenersResult {
      * A list of SLB listeners. Each element contains the following attributes:
      */
     readonly slbListeners: outputs.slb.GetListenersSlbListener[];
+}
+
+export function getListenersOutput(args: GetListenersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetListenersResult> {
+    return pulumi.output(args).apply(a => getListeners(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getListeners.
+ */
+export interface GetListenersOutputArgs {
+    /**
+     * A regex string to filter results by SLB listener description.
+     */
+    descriptionRegex?: pulumi.Input<string>;
+    /**
+     * Filter listeners by the specified frontend port.
+     */
+    frontendPort?: pulumi.Input<number>;
+    /**
+     * ID of the SLB with listeners.
+     */
+    loadBalancerId: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
+     */
+    protocol?: pulumi.Input<string>;
 }

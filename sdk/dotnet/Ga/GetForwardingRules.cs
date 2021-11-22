@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ga
 {
@@ -39,7 +40,7 @@ namespace Pulumi.AliCloud.Ga
         ///                 "example_value",
         ///             },
         ///         }));
-        ///         this.FirstGaForwardingRuleId = example.Apply(example =&gt; example.ForwardingRules[0].Id);
+        ///         this.FirstGaForwardingRuleId = example.Apply(example =&gt; example.ForwardingRules?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstGaForwardingRuleId")]
@@ -51,6 +52,47 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         public static Task<GetForwardingRulesResult> InvokeAsync(GetForwardingRulesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetForwardingRulesResult>("alicloud:ga/getForwardingRules:getForwardingRules", args ?? new GetForwardingRulesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Global Accelerator (GA) Forwarding Rules of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.120.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Ga.GetForwardingRules.InvokeAsync(new AliCloud.Ga.GetForwardingRulesArgs
+        ///         {
+        ///             AcceleratorId = "example_value",
+        ///             ListenerId = "example_value",
+        ///             Ids = 
+        ///             {
+        ///                 "example_value",
+        ///             },
+        ///         }));
+        ///         this.FirstGaForwardingRuleId = example.Apply(example =&gt; example.ForwardingRules?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstGaForwardingRuleId")]
+        ///     public Output&lt;string&gt; FirstGaForwardingRuleId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetForwardingRulesResult> Invoke(GetForwardingRulesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetForwardingRulesResult>("alicloud:ga/getForwardingRules:getForwardingRules", args ?? new GetForwardingRulesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -90,6 +132,46 @@ namespace Pulumi.AliCloud.Ga
         public string? Status { get; set; }
 
         public GetForwardingRulesArgs()
+        {
+        }
+    }
+
+    public sealed class GetForwardingRulesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the Global Accelerator instance.
+        /// </summary>
+        [Input("acceleratorId", required: true)]
+        public Input<string> AcceleratorId { get; set; } = null!;
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Forwarding Rule IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The ID of the listener.
+        /// </summary>
+        [Input("listenerId", required: true)]
+        public Input<string> ListenerId { get; set; } = null!;
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of the acceleration region. Valid values: `active`, `configuring`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetForwardingRulesInvokeArgs()
         {
         }
     }

@@ -13,6 +13,7 @@ __all__ = [
     'GetTransitRouterRouteTablePropagationsResult',
     'AwaitableGetTransitRouterRouteTablePropagationsResult',
     'get_transit_router_route_table_propagations',
+    'get_transit_router_route_table_propagations_output',
 ]
 
 @pulumi.output_type
@@ -143,3 +144,32 @@ def get_transit_router_route_table_propagations(ids: Optional[Sequence[str]] = N
         propagations=__ret__.propagations,
         status=__ret__.status,
         transit_router_route_table_id=__ret__.transit_router_route_table_id)
+
+
+@_utilities.lift_output_func(get_transit_router_route_table_propagations)
+def get_transit_router_route_table_propagations_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                                       status: Optional[pulumi.Input[Optional[str]]] = None,
+                                                       transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
+                                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRouterRouteTablePropagationsResult]:
+    """
+    This data source provides CEN Transit Router Route Table Propagations available to the user.[What is Cen Transit Router Route Table Propagations](https://help.aliyun.com/document_detail/261245.html)
+
+    > **NOTE:** Available in 1.126.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cen.get_transit_router_route_table_propagations(transit_router_route_table_id="rtb-id1")
+    pulumi.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default.propagations[0].resource_type)
+    ```
+
+
+    :param Sequence[str] ids: A list of CEN Transit Router Route Table Association IDs.
+    :param str status: The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
+    :param str transit_router_route_table_id: ID of the route table of the VPC or VBR.
+    """
+    ...

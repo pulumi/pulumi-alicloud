@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud
 {
@@ -37,7 +38,7 @@ namespace Pulumi.AliCloud
         ///         // Create an ECS instance with the first matched zone
         ///         var instance = new AliCloud.Ecs.Instance("instance", new AliCloud.Ecs.InstanceArgs
         ///         {
-        ///             AvailabilityZone = zonesDs.Apply(zonesDs =&gt; zonesDs.Zones[0].Id),
+        ///             AvailabilityZone = zonesDs.Apply(zonesDs =&gt; zonesDs.Zones?[0]?.Id),
         ///         });
         ///     }
         /// 
@@ -48,6 +49,44 @@ namespace Pulumi.AliCloud
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:index/getZones:getZones", args ?? new GetZonesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+        /// 
+        /// 
+        /// &gt; **NOTE:** If one zone is sold out, it will not be exported.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var zonesDs = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+        ///         {
+        ///             AvailableDiskCategory = "cloud_ssd",
+        ///             AvailableInstanceType = "ecs.n4.large",
+        ///         }));
+        ///         // Create an ECS instance with the first matched zone
+        ///         var instance = new AliCloud.Ecs.Instance("instance", new AliCloud.Ecs.InstanceArgs
+        ///         {
+        ///             AvailabilityZone = zonesDs.Apply(zonesDs =&gt; zonesDs.Zones?[0]?.Id),
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:index/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -118,6 +157,77 @@ namespace Pulumi.AliCloud
         public string? SpotStrategy { get; set; }
 
         public GetZonesArgs()
+        {
+        }
+    }
+
+    public sealed class GetZonesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Filter the results by a specific disk category. Can be either `cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`.
+        /// </summary>
+        [Input("availableDiskCategory")]
+        public Input<string>? AvailableDiskCategory { get; set; }
+
+        /// <summary>
+        /// Filter the results by a specific instance type.
+        /// </summary>
+        [Input("availableInstanceType")]
+        public Input<string>? AvailableInstanceType { get; set; }
+
+        /// <summary>
+        /// Filter the results by a specific resource type.
+        /// Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
+        /// </summary>
+        [Input("availableResourceCreation")]
+        public Input<string>? AvailableResourceCreation { get; set; }
+
+        /// <summary>
+        /// Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
+        /// </summary>
+        [Input("availableSlbAddressIpVersion")]
+        public Input<string>? AvailableSlbAddressIpVersion { get; set; }
+
+        /// <summary>
+        /// Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
+        /// </summary>
+        [Input("availableSlbAddressType")]
+        public Input<string>? AvailableSlbAddressType { get; set; }
+
+        /// <summary>
+        /// Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        /// <summary>
+        /// Filter the results by a specific ECS instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+        /// </summary>
+        [Input("instanceChargeType")]
+        public Input<string>? InstanceChargeType { get; set; }
+
+        /// <summary>
+        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
+        /// </summary>
+        [Input("multi")]
+        public Input<bool>? Multi { get; set; }
+
+        /// <summary>
+        /// Filter the results by a specific network type. Valid values: `Classic` and `Vpc`.
+        /// </summary>
+        [Input("networkType")]
+        public Input<string>? NetworkType { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+        /// </summary>
+        [Input("spotStrategy")]
+        public Input<string>? SpotStrategy { get; set; }
+
+        public GetZonesInvokeArgs()
         {
         }
     }

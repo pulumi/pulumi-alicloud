@@ -19,11 +19,11 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.arms.getDispatchRules({});
- * export const armsDispatchRuleId1 = ids.then(ids => ids.rules[0].id);
+ * export const armsDispatchRuleId1 = ids.then(ids => ids.rules?[0]?.id);
  * const nameRegex = alicloud.arms.getDispatchRules({
  *     nameRegex: "^my-DispatchRule",
  * });
- * export const armsDispatchRuleId2 = nameRegex.then(nameRegex => nameRegex.rules[0].id);
+ * export const armsDispatchRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?[0]?.id);
  * ```
  */
 export function getDispatchRules(args?: GetDispatchRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetDispatchRulesResult> {
@@ -51,20 +51,20 @@ export interface GetDispatchRulesArgs {
     /**
      * The name of the dispatch rule.
      */
-    readonly dispatchRuleName?: string;
+    dispatchRuleName?: string;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of dispatch rule id.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Dispatch Rule name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -82,4 +82,31 @@ export interface GetDispatchRulesResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly rules: outputs.arms.GetDispatchRulesRule[];
+}
+
+export function getDispatchRulesOutput(args?: GetDispatchRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDispatchRulesResult> {
+    return pulumi.output(args).apply(a => getDispatchRules(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDispatchRules.
+ */
+export interface GetDispatchRulesOutputArgs {
+    /**
+     * The name of the dispatch rule.
+     */
+    dispatchRuleName?: pulumi.Input<string>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of dispatch rule id.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Dispatch Rule name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

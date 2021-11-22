@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Hbase
 {
@@ -31,7 +32,7 @@ namespace Pulumi.AliCloud.Hbase
         ///         var zonesIds = Output.Create(AliCloud.Hbase.GetZones.InvokeAsync());
         ///         var hbase = new AliCloud.Hbase.Instance("hbase", new AliCloud.Hbase.InstanceArgs
         ///         {
-        ///             ZoneId = zonesIds.Apply(zonesIds =&gt; zonesIds.Zones[0].Id),
+        ///             ZoneId = zonesIds.Apply(zonesIds =&gt; zonesIds.Zones?[0]?.Id),
         ///         });
         ///         // Other properties...
         ///     }
@@ -43,6 +44,39 @@ namespace Pulumi.AliCloud.Hbase
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:hbase/getZones:getZones", args ?? new GetZonesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides availability zones for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+        /// 
+        /// &gt; **NOTE:** Available in v1.73.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var zonesIds = Output.Create(AliCloud.Hbase.GetZones.InvokeAsync());
+        ///         var hbase = new AliCloud.Hbase.Instance("hbase", new AliCloud.Hbase.InstanceArgs
+        ///         {
+        ///             ZoneId = zonesIds.Apply(zonesIds =&gt; zonesIds.Zones?[0]?.Id),
+        ///         });
+        ///         // Other properties...
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:hbase/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -52,6 +86,16 @@ namespace Pulumi.AliCloud.Hbase
         public string? OutputFile { get; set; }
 
         public GetZonesArgs()
+        {
+        }
+    }
+
+    public sealed class GetZonesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetZonesInvokeArgs()
         {
         }
     }

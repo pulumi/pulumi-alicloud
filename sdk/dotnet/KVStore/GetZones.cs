@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.KVStore
 {
@@ -32,7 +33,7 @@ namespace Pulumi.AliCloud.KVStore
         ///         // Create an KVStore instance with the first matched zone
         ///         var kvstore = new AliCloud.KVStore.Instance("kvstore", new AliCloud.KVStore.InstanceArgs
         ///         {
-        ///             AvailabilityZone = zonesIds.Apply(zonesIds =&gt; zonesIds.Zones[0].Id),
+        ///             AvailabilityZone = zonesIds.Apply(zonesIds =&gt; zonesIds.Zones?[0]?.Id),
         ///         });
         ///         // Other properties...
         ///     }
@@ -44,6 +45,40 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:kvstore/getZones:getZones", args ?? new GetZonesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+        /// 
+        /// &gt; **NOTE:** Available in v1.73.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var zonesIds = Output.Create(AliCloud.KVStore.GetZones.InvokeAsync());
+        ///         // Create an KVStore instance with the first matched zone
+        ///         var kvstore = new AliCloud.KVStore.Instance("kvstore", new AliCloud.KVStore.InstanceArgs
+        ///         {
+        ///             AvailabilityZone = zonesIds.Apply(zonesIds =&gt; zonesIds.Zones?[0]?.Id),
+        ///         });
+        ///         // Other properties...
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:kvstore/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -77,6 +112,40 @@ namespace Pulumi.AliCloud.KVStore
         public string? ProductType { get; set; }
 
         public GetZonesArgs()
+        {
+        }
+    }
+
+    public sealed class GetZonesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
+        /// * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values:
+        /// * Local: an ApsaraDB for Redis instance with a local disk.
+        /// * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+        /// </summary>
+        [Input("engine")]
+        public Input<string>? Engine { get; set; }
+
+        /// <summary>
+        /// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+        /// </summary>
+        [Input("instanceChargeType")]
+        public Input<string>? InstanceChargeType { get; set; }
+
+        /// <summary>
+        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
+        /// </summary>
+        [Input("multi")]
+        public Input<bool>? Multi { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        [Input("productType")]
+        public Input<string>? ProductType { get; set; }
+
+        public GetZonesInvokeArgs()
         {
         }
     }

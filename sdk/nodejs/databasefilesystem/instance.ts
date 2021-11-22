@@ -188,115 +188,115 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
-    readonly attachMode?: pulumi.Input<string>;
-    readonly attachPoint?: pulumi.Input<string>;
+    attachMode?: pulumi.Input<string>;
+    attachPoint?: pulumi.Input<string>;
     /**
      * The type of the Database file system. Valid values: `standard`.
      */
-    readonly category?: pulumi.Input<string>;
+    category?: pulumi.Input<string>;
     /**
      * Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
      */
-    readonly deleteSnapshot?: pulumi.Input<boolean>;
+    deleteSnapshot?: pulumi.Input<boolean>;
     /**
      * The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`.
      */
-    readonly ecsLists?: pulumi.Input<pulumi.Input<inputs.databasefilesystem.InstanceEcsList>[]>;
+    ecsLists?: pulumi.Input<pulumi.Input<inputs.databasefilesystem.InstanceEcsList>[]>;
     /**
      * Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
      */
-    readonly enableRaid?: pulumi.Input<boolean>;
+    enableRaid?: pulumi.Input<boolean>;
     /**
      * Whether to encrypt the database file system. Valid values: `true` and `false`.
      */
-    readonly encryption?: pulumi.Input<boolean>;
+    encryption?: pulumi.Input<boolean>;
     /**
      * The name of the Database file system.
      */
-    readonly instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string>;
     /**
      * The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
      */
-    readonly kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string>;
     /**
      * The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
      */
-    readonly performanceLevel?: pulumi.Input<string>;
+    performanceLevel?: pulumi.Input<string>;
     /**
      * The number of strip. This parameter is valid When `enableRaid` parameter is set to `true`.
      */
-    readonly raidStripeUnitNumber?: pulumi.Input<string>;
+    raidStripeUnitNumber?: pulumi.Input<string>;
     /**
      * The size Of the Database file system. Unit: GiB.
      */
-    readonly size?: pulumi.Input<number>;
+    size?: pulumi.Input<number>;
     /**
      * The snapshot id of the Database file system.
      */
-    readonly snapshotId?: pulumi.Input<string>;
-    readonly status?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
-    readonly usedScene?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: any}>;
+    usedScene?: pulumi.Input<string>;
     /**
      * The Zone ID of the Database file system.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
-    readonly attachMode?: pulumi.Input<string>;
-    readonly attachPoint?: pulumi.Input<string>;
+    attachMode?: pulumi.Input<string>;
+    attachPoint?: pulumi.Input<string>;
     /**
      * The type of the Database file system. Valid values: `standard`.
      */
-    readonly category?: pulumi.Input<string>;
+    category?: pulumi.Input<string>;
     /**
      * Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
      */
-    readonly deleteSnapshot?: pulumi.Input<boolean>;
+    deleteSnapshot?: pulumi.Input<boolean>;
     /**
      * The collection of ECS instances mounted to the Database file system. See the following `Block ecsList`.
      */
-    readonly ecsLists?: pulumi.Input<pulumi.Input<inputs.databasefilesystem.InstanceEcsList>[]>;
+    ecsLists?: pulumi.Input<pulumi.Input<inputs.databasefilesystem.InstanceEcsList>[]>;
     /**
      * Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
      */
-    readonly enableRaid?: pulumi.Input<boolean>;
+    enableRaid?: pulumi.Input<boolean>;
     /**
      * Whether to encrypt the database file system. Valid values: `true` and `false`.
      */
-    readonly encryption?: pulumi.Input<boolean>;
+    encryption?: pulumi.Input<boolean>;
     /**
      * The name of the Database file system.
      */
-    readonly instanceName: pulumi.Input<string>;
+    instanceName: pulumi.Input<string>;
     /**
      * The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
      */
-    readonly kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string>;
     /**
      * The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
      */
-    readonly performanceLevel?: pulumi.Input<string>;
+    performanceLevel?: pulumi.Input<string>;
     /**
      * The number of strip. This parameter is valid When `enableRaid` parameter is set to `true`.
      */
-    readonly raidStripeUnitNumber?: pulumi.Input<string>;
+    raidStripeUnitNumber?: pulumi.Input<string>;
     /**
      * The size Of the Database file system. Unit: GiB.
      */
-    readonly size: pulumi.Input<number>;
+    size: pulumi.Input<number>;
     /**
      * The snapshot id of the Database file system.
      */
-    readonly snapshotId?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
-    readonly usedScene?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: any}>;
+    usedScene?: pulumi.Input<string>;
     /**
      * The Zone ID of the Database file system.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

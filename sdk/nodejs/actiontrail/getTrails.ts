@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * const default = alicloud.actiontrail.getTrails({
  *     nameRegex: "tf-testacc-actiontrail",
  * });
- * export const trailName = _default.then(_default => _default.trails[0].id);
+ * export const trailName = _default.then(_default => _default.trails?[0]?.id);
  * ```
  */
 export function getTrails(args?: GetTrailsArgs, opts?: pulumi.InvokeOptions): Promise<GetTrailsResult> {
@@ -48,24 +48,24 @@ export interface GetTrailsArgs {
     /**
      * A list of ActionTrail Trail IDs. It is the same as trail name.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * Whether to show organization tracking. Default to `false`.
      */
-    readonly includeOrganizationTrail?: boolean;
+    includeOrganizationTrail?: boolean;
     /**
      * Whether to show shadow tracking. Default to `false`.
      */
-    readonly includeShadowTrails?: boolean;
+    includeShadowTrails?: boolean;
     /**
      * A regex string to filter results by trail name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -102,4 +102,35 @@ export interface GetTrailsResult {
      * A list of ActionTrail Trails. Each element contains the following attributes:
      */
     readonly trails: outputs.actiontrail.GetTrailsTrail[];
+}
+
+export function getTrailsOutput(args?: GetTrailsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrailsResult> {
+    return pulumi.output(args).apply(a => getTrails(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTrails.
+ */
+export interface GetTrailsOutputArgs {
+    /**
+     * A list of ActionTrail Trail IDs. It is the same as trail name.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to show organization tracking. Default to `false`.
+     */
+    includeOrganizationTrail?: pulumi.Input<boolean>;
+    /**
+     * Whether to show shadow tracking. Default to `false`.
+     */
+    includeShadowTrails?: pulumi.Input<boolean>;
+    /**
+     * A regex string to filter results by trail name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+     */
+    status?: pulumi.Input<string>;
 }

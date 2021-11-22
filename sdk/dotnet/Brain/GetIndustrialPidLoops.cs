@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Brain
 {
@@ -39,7 +40,7 @@ namespace Pulumi.AliCloud.Brain
         ///             },
         ///             NameRegex = "tf-testACC",
         ///         }));
-        ///         this.FirstBrainIndustrialPidLoopId = example.Apply(example =&gt; example.Loops[0].Id);
+        ///         this.FirstBrainIndustrialPidLoopId = example.Apply(example =&gt; example.Loops?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstBrainIndustrialPidLoopId")]
@@ -51,6 +52,47 @@ namespace Pulumi.AliCloud.Brain
         /// </summary>
         public static Task<GetIndustrialPidLoopsResult> InvokeAsync(GetIndustrialPidLoopsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIndustrialPidLoopsResult>("alicloud:brain/getIndustrialPidLoops:getIndustrialPidLoops", args ?? new GetIndustrialPidLoopsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.117.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Brain.GetIndustrialPidLoops.InvokeAsync(new AliCloud.Brain.GetIndustrialPidLoopsArgs
+        ///         {
+        ///             PidProjectId = "856c6b8f-ca63-40a4-xxxx-xxxx",
+        ///             Ids = 
+        ///             {
+        ///                 "742a3d4e-d8b0-47c8-xxxx-xxxx",
+        ///             },
+        ///             NameRegex = "tf-testACC",
+        ///         }));
+        ///         this.FirstBrainIndustrialPidLoopId = example.Apply(example =&gt; example.Loops?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstBrainIndustrialPidLoopId")]
+        ///     public Output&lt;string&gt; FirstBrainIndustrialPidLoopId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetIndustrialPidLoopsResult> Invoke(GetIndustrialPidLoopsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetIndustrialPidLoopsResult>("alicloud:brain/getIndustrialPidLoops:getIndustrialPidLoops", args ?? new GetIndustrialPidLoopsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -99,6 +141,55 @@ namespace Pulumi.AliCloud.Brain
         public string? Status { get; set; }
 
         public GetIndustrialPidLoopsArgs()
+        {
+        }
+    }
+
+    public sealed class GetIndustrialPidLoopsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Pid Loop IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Pid Loop name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The name of Pid Loop.
+        /// </summary>
+        [Input("pidLoopName")]
+        public Input<string>? PidLoopName { get; set; }
+
+        /// <summary>
+        /// The pid project id.
+        /// </summary>
+        [Input("pidProjectId", required: true)]
+        public Input<string> PidProjectId { get; set; } = null!;
+
+        /// <summary>
+        /// The status of Pid Loop.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetIndustrialPidLoopsInvokeArgs()
         {
         }
     }

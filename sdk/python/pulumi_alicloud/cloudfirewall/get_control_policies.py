@@ -13,6 +13,7 @@ __all__ = [
     'GetControlPoliciesResult',
     'AwaitableGetControlPoliciesResult',
     'get_control_policies',
+    'get_control_policies_output',
 ]
 
 @pulumi.output_type
@@ -233,3 +234,47 @@ def get_control_policies(acl_action: Optional[str] = None,
         proto=__ret__.proto,
         source=__ret__.source,
         source_ip=__ret__.source_ip)
+
+
+@_utilities.lift_output_func(get_control_policies)
+def get_control_policies_output(acl_action: Optional[pulumi.Input[Optional[str]]] = None,
+                                acl_uuid: Optional[pulumi.Input[Optional[str]]] = None,
+                                description: Optional[pulumi.Input[Optional[str]]] = None,
+                                destination: Optional[pulumi.Input[Optional[str]]] = None,
+                                direction: Optional[pulumi.Input[str]] = None,
+                                ip_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                lang: Optional[pulumi.Input[Optional[str]]] = None,
+                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                proto: Optional[pulumi.Input[Optional[str]]] = None,
+                                source: Optional[pulumi.Input[Optional[str]]] = None,
+                                source_ip: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetControlPoliciesResult]:
+    """
+    This data source provides the Cloud Firewall Control Policies of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.129.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cloudfirewall.get_control_policies(direction="in")
+    ```
+
+
+    :param str acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
+    :param str acl_uuid: The unique ID of the access control policy.
+    :param str description: The description of the access control policy.
+    :param str destination: The destination address defined in the access control policy.
+    :param str direction: The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+    :param str ip_version: The ip version.
+    :param str lang: DestPortGroupPorts. Valid values: `en`, `zh`.
+    :param str proto: The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+    :param str source: The source address defined in the access control policy.
+    :param str source_ip: The source IP address of the request.
+    """
+    ...

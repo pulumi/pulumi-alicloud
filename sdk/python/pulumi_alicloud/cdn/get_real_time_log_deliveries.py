@@ -13,6 +13,7 @@ __all__ = [
     'GetRealTimeLogDeliveriesResult',
     'AwaitableGetRealTimeLogDeliveriesResult',
     'get_real_time_log_deliveries',
+    'get_real_time_log_deliveries_output',
 ]
 
 @pulumi.output_type
@@ -120,3 +121,32 @@ def get_real_time_log_deliveries(domain: Optional[str] = None,
         id=__ret__.id,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_real_time_log_deliveries)
+def get_real_time_log_deliveries_output(domain: Optional[pulumi.Input[str]] = None,
+                                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                        status: Optional[pulumi.Input[Optional[str]]] = None,
+                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRealTimeLogDeliveriesResult]:
+    """
+    This data source provides the Cdn Real Time Log Deliveries of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.134.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cdn.get_real_time_log_deliveries(domain="example_value")
+    pulumi.export("cdnRealTimeLogDelivery1", example.deliveries[0].id)
+    ```
+
+
+    :param str domain: Real-Time Log Service Domain.
+    :param str status: -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+    """
+    ...

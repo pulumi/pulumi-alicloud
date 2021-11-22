@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const example = alicloud.privatelink.getVpcEndpointServiceUsers({
  *     serviceId: "epsrv-gw81c6vxxxxxx",
  * });
- * export const firstPrivatelinkVpcEndpointServiceUserId = example.then(example => example.users[0].id);
+ * export const firstPrivatelinkVpcEndpointServiceUserId = example.then(example => example.users?[0]?.id);
  * ```
  */
 export function getVpcEndpointServiceUsers(args: GetVpcEndpointServiceUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointServiceUsersResult> {
@@ -43,15 +43,15 @@ export function getVpcEndpointServiceUsers(args: GetVpcEndpointServiceUsersArgs,
  * A collection of arguments for invoking getVpcEndpointServiceUsers.
  */
 export interface GetVpcEndpointServiceUsersArgs {
-    readonly outputFile?: string;
+    outputFile?: string;
     /**
      * The Id of Vpc Endpoint Service.
      */
-    readonly serviceId: string;
+    serviceId: string;
     /**
      * The Id of Ram User.
      */
-    readonly userId?: string;
+    userId?: string;
 }
 
 /**
@@ -67,4 +67,23 @@ export interface GetVpcEndpointServiceUsersResult {
     readonly serviceId: string;
     readonly userId?: string;
     readonly users: outputs.privatelink.GetVpcEndpointServiceUsersUser[];
+}
+
+export function getVpcEndpointServiceUsersOutput(args: GetVpcEndpointServiceUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointServiceUsersResult> {
+    return pulumi.output(args).apply(a => getVpcEndpointServiceUsers(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVpcEndpointServiceUsers.
+ */
+export interface GetVpcEndpointServiceUsersOutputArgs {
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The Id of Vpc Endpoint Service.
+     */
+    serviceId: pulumi.Input<string>;
+    /**
+     * The Id of Ram User.
+     */
+    userId?: pulumi.Input<string>;
 }

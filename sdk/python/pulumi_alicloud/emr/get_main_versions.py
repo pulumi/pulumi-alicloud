@@ -13,6 +13,7 @@ __all__ = [
     'GetMainVersionsResult',
     'AwaitableGetMainVersionsResult',
     'get_main_versions',
+    'get_main_versions_output',
 ]
 
 @pulumi.output_type
@@ -102,7 +103,7 @@ def get_main_versions(cluster_types: Optional[Sequence[str]] = None,
                       output_file: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMainVersionsResult:
     """
-    The `emr.getMainVersions` data source provides a collection of emr
+    The `emr.get_main_versions` data source provides a collection of emr
     main versions available in Alibaba Cloud account when create a emr cluster.
 
     > **NOTE:** Available in 1.59.0+
@@ -144,3 +145,37 @@ def get_main_versions(cluster_types: Optional[Sequence[str]] = None,
         ids=__ret__.ids,
         main_versions=__ret__.main_versions,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_main_versions)
+def get_main_versions_output(cluster_types: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                             emr_version: Optional[pulumi.Input[Optional[str]]] = None,
+                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMainVersionsResult]:
+    """
+    The `emr.get_main_versions` data source provides a collection of emr
+    main versions available in Alibaba Cloud account when create a emr cluster.
+
+    > **NOTE:** Available in 1.59.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.emr.get_main_versions(cluster_types=[
+            "HADOOP",
+            "ZOOKEEPER",
+        ],
+        emr_version="EMR-3.22.0")
+    pulumi.export("firstMainVersion", default.main_versions[0].emr_version)
+    pulumi.export("thisClusterTypes", default.main_versions[0].cluster_types)
+    ```
+
+
+    :param Sequence[str] cluster_types: The supported clusterType of this emr version.
+           Possible values may be any one or combination of these: ["HADOOP", "DRUID", "KAFKA", "ZOOKEEPER", "FLINK", "CLICKHOUSE"]
+    :param str emr_version: The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
+    """
+    ...

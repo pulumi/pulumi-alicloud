@@ -4,6 +4,9 @@
 package polardb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,4 +74,67 @@ type GetDatabasesResult struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// database name of the cluster.
 	Names []string `pulumi:"names"`
+}
+
+func GetDatabasesOutput(ctx *pulumi.Context, args GetDatabasesOutputArgs, opts ...pulumi.InvokeOption) GetDatabasesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDatabasesResult, error) {
+			args := v.(GetDatabasesArgs)
+			r, err := GetDatabases(ctx, &args, opts...)
+			return *r, err
+		}).(GetDatabasesResultOutput)
+}
+
+// A collection of arguments for invoking getDatabases.
+type GetDatabasesOutputArgs struct {
+	// The polarDB cluster ID.
+	DbClusterId pulumi.StringInput `pulumi:"dbClusterId"`
+	// A regex string to filter results by database name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+}
+
+func (GetDatabasesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabasesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDatabases.
+type GetDatabasesResultOutput struct{ *pulumi.OutputState }
+
+func (GetDatabasesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabasesResult)(nil)).Elem()
+}
+
+func (o GetDatabasesResultOutput) ToGetDatabasesResultOutput() GetDatabasesResultOutput {
+	return o
+}
+
+func (o GetDatabasesResultOutput) ToGetDatabasesResultOutputWithContext(ctx context.Context) GetDatabasesResultOutput {
+	return o
+}
+
+// A list of PolarDB cluster databases. Each element contains the following attributes:
+func (o GetDatabasesResultOutput) Databases() GetDatabasesDatabaseArrayOutput {
+	return o.ApplyT(func(v GetDatabasesResult) []GetDatabasesDatabase { return v.Databases }).(GetDatabasesDatabaseArrayOutput)
+}
+
+func (o GetDatabasesResultOutput) DbClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasesResult) string { return v.DbClusterId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDatabasesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDatabasesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// database name of the cluster.
+func (o GetDatabasesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatabasesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDatabasesResultOutput{})
 }

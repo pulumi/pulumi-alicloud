@@ -155,35 +155,35 @@ export interface HostAccountState {
     /**
      * Hosting account ID.
      */
-    readonly hostAccountId?: pulumi.Input<string>;
+    hostAccountId?: pulumi.Input<string>;
     /**
      * The name of the host account. The name can be up to 128 characters in length.
      */
-    readonly hostAccountName?: pulumi.Input<string>;
+    hostAccountName?: pulumi.Input<string>;
     /**
      * The ID of the host for which you want to create an account.
      */
-    readonly hostId?: pulumi.Input<string>;
+    hostId?: pulumi.Input<string>;
     /**
      * The ID of the Bastionhost instance where you want to create an account for the host.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocolName` is `SSH`.
      */
-    readonly passPhrase?: pulumi.Input<string>;
+    passPhrase?: pulumi.Input<string>;
     /**
      * The password of the host account.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocolName` is `SSH`
      */
-    readonly privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string>;
     /**
      * The protocol used by the host account. Valid values: SSH,RDP
      */
-    readonly protocolName?: pulumi.Input<string>;
+    protocolName?: pulumi.Input<string>;
 }
 
 /**
@@ -193,29 +193,29 @@ export interface HostAccountArgs {
     /**
      * The name of the host account. The name can be up to 128 characters in length.
      */
-    readonly hostAccountName: pulumi.Input<string>;
+    hostAccountName: pulumi.Input<string>;
     /**
      * The ID of the host for which you want to create an account.
      */
-    readonly hostId: pulumi.Input<string>;
+    hostId: pulumi.Input<string>;
     /**
      * The ID of the Bastionhost instance where you want to create an account for the host.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocolName` is `SSH`.
      */
-    readonly passPhrase?: pulumi.Input<string>;
+    passPhrase?: pulumi.Input<string>;
     /**
      * The password of the host account.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocolName` is `SSH`
      */
-    readonly privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string>;
     /**
      * The protocol used by the host account. Valid values: SSH,RDP
      */
-    readonly protocolName: pulumi.Input<string>;
+    protocolName: pulumi.Input<string>;
 }

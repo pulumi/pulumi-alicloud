@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const subscriptions = pulumi.output(alicloud.mns.getTopicSubscriptions({
  *     namePrefix: "tf-",
  *     topicName: "topic_name",
- * }, { async: true }));
+ * }));
  *
  * export const firstTopicSubscriptionId = subscriptions.subscriptions[0].id;
  * ```
@@ -44,12 +44,12 @@ export interface GetTopicSubscriptionsArgs {
     /**
      * A string to filter resulting subscriptions of the topic by their name prefixs.
      */
-    readonly namePrefix?: string;
-    readonly outputFile?: string;
+    namePrefix?: string;
+    outputFile?: string;
     /**
      * Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
      */
-    readonly topicName: string;
+    topicName: string;
 }
 
 /**
@@ -71,4 +71,23 @@ export interface GetTopicSubscriptionsResult {
      */
     readonly subscriptions: outputs.mns.GetTopicSubscriptionsSubscription[];
     readonly topicName: string;
+}
+
+export function getTopicSubscriptionsOutput(args: GetTopicSubscriptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicSubscriptionsResult> {
+    return pulumi.output(args).apply(a => getTopicSubscriptions(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTopicSubscriptions.
+ */
+export interface GetTopicSubscriptionsOutputArgs {
+    /**
+     * A string to filter resulting subscriptions of the topic by their name prefixs.
+     */
+    namePrefix?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
+     */
+    topicName: pulumi.Input<string>;
 }

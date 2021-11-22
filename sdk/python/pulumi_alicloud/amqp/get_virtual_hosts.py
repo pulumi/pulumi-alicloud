@@ -13,6 +13,7 @@ __all__ = [
     'GetVirtualHostsResult',
     'AwaitableGetVirtualHostsResult',
     'get_virtual_hosts',
+    'get_virtual_hosts_output',
 ]
 
 @pulumi.output_type
@@ -150,3 +151,41 @@ def get_virtual_hosts(ids: Optional[Sequence[str]] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_virtual_hosts)
+def get_virtual_hosts_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                             instance_id: Optional[pulumi.Input[str]] = None,
+                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVirtualHostsResult]:
+    """
+    This data source provides the Amqp Virtual Hosts of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.126.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.amqp.get_virtual_hosts(instance_id="amqp-abc12345",
+        ids=[
+            "my-VirtualHost-1",
+            "my-VirtualHost-2",
+        ])
+    pulumi.export("amqpVirtualHostId1", ids.hosts[0].id)
+    name_regex = alicloud.amqp.get_virtual_hosts(instance_id="amqp-abc12345",
+        name_regex="^my-VirtualHost")
+    pulumi.export("amqpVirtualHostId2", name_regex.hosts[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Virtual Host IDs. Its element value is same as Virtual Host Name.
+    :param str instance_id: InstanceId.
+    :param str name_regex: A regex string to filter results by Virtual Host name.
+    """
+    ...

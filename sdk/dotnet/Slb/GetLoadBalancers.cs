@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Slb
 {
@@ -13,6 +14,9 @@ namespace Pulumi.AliCloud.Slb
     {
         public static Task<GetLoadBalancersResult> InvokeAsync(GetLoadBalancersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancersResult>("alicloud:slb/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersArgs(), options.WithVersion());
+
+        public static Output<GetLoadBalancersResult> Invoke(GetLoadBalancersInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetLoadBalancersResult>("alicloud:slb/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -138,6 +142,132 @@ namespace Pulumi.AliCloud.Slb
         public string? VswitchId { get; set; }
 
         public GetLoadBalancersArgs()
+        {
+        }
+    }
+
+    public sealed class GetLoadBalancersInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Service address of the SLBs.
+        /// </summary>
+        [Input("address")]
+        public Input<string>? Address { get; set; }
+
+        [Input("addressIpVersion")]
+        public Input<string>? AddressIpVersion { get; set; }
+
+        [Input("addressType")]
+        public Input<string>? AddressType { get; set; }
+
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of SLBs IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("internetChargeType")]
+        public Input<string>? InternetChargeType { get; set; }
+
+        [Input("loadBalancerName")]
+        public Input<string>? LoadBalancerName { get; set; }
+
+        [Input("masterZoneId")]
+        public Input<string>? MasterZoneId { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by SLB name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        /// <summary>
+        /// Network type of the SLBs. Valid values: `vpc` and `classic`.
+        /// </summary>
+        [Input("networkType")]
+        public Input<string>? NetworkType { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
+        /// The Id of resource group which SLB belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("serverId")]
+        public Input<string>? ServerId { get; set; }
+
+        [Input("serverIntranetAddress")]
+        public Input<string>? ServerIntranetAddress { get; set; }
+
+        [Input("slaveZoneId")]
+        public Input<string>? SlaveZoneId { get; set; }
+
+        /// <summary>
+        /// SLB current status. Possible values: `inactive`, `active` and `locked`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var taggedInstances = Output.Create(AliCloud.Slb.GetLoadBalancers.InvokeAsync(new AliCloud.Slb.GetLoadBalancersArgs
+        ///         {
+        ///             Tags = 
+        ///             {
+        ///                 { "tagKey1", "tagValue1" },
+        ///                 { "tagKey2", "tagValue2" },
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// ID of the VPC linked to the SLBs.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// ID of the VSwitch linked to the SLBs.
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
+
+        public GetLoadBalancersInvokeArgs()
         {
         }
     }

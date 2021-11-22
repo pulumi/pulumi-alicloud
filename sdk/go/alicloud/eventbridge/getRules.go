@@ -4,6 +4,9 @@
 package eventbridge
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,4 +80,88 @@ type GetRulesResult struct {
 	RuleNamePrefix *string        `pulumi:"ruleNamePrefix"`
 	Rules          []GetRulesRule `pulumi:"rules"`
 	Status         *string        `pulumi:"status"`
+}
+
+func GetRulesOutput(ctx *pulumi.Context, args GetRulesOutputArgs, opts ...pulumi.InvokeOption) GetRulesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetRulesResult, error) {
+			args := v.(GetRulesArgs)
+			r, err := GetRules(ctx, &args, opts...)
+			return *r, err
+		}).(GetRulesResultOutput)
+}
+
+// A collection of arguments for invoking getRules.
+type GetRulesOutputArgs struct {
+	// The name of event bus.
+	EventBusName pulumi.StringInput `pulumi:"eventBusName"`
+	// A list of Rule IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Rule name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The rule name prefix.
+	RuleNamePrefix pulumi.StringPtrInput `pulumi:"ruleNamePrefix"`
+	// Rule status, either Enable or Disable.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetRulesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRules.
+type GetRulesResultOutput struct{ *pulumi.OutputState }
+
+func (GetRulesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesResult)(nil)).Elem()
+}
+
+func (o GetRulesResultOutput) ToGetRulesResultOutput() GetRulesResultOutput {
+	return o
+}
+
+func (o GetRulesResultOutput) ToGetRulesResultOutputWithContext(ctx context.Context) GetRulesResultOutput {
+	return o
+}
+
+func (o GetRulesResultOutput) EventBusName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesResult) string { return v.EventBusName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRulesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetRulesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRulesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRulesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRulesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRulesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRulesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRulesResultOutput) RuleNamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *string { return v.RuleNamePrefix }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRulesResultOutput) Rules() GetRulesRuleArrayOutput {
+	return o.ApplyT(func(v GetRulesResult) []GetRulesRule { return v.Rules }).(GetRulesRuleArrayOutput)
+}
+
+func (o GetRulesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRulesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRulesResultOutput{})
 }

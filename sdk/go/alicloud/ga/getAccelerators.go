@@ -4,6 +4,9 @@
 package ga
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,4 +73,76 @@ type GetAcceleratorsResult struct {
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	Status     *string  `pulumi:"status"`
+}
+
+func GetAcceleratorsOutput(ctx *pulumi.Context, args GetAcceleratorsOutputArgs, opts ...pulumi.InvokeOption) GetAcceleratorsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAcceleratorsResult, error) {
+			args := v.(GetAcceleratorsArgs)
+			r, err := GetAccelerators(ctx, &args, opts...)
+			return *r, err
+		}).(GetAcceleratorsResultOutput)
+}
+
+// A collection of arguments for invoking getAccelerators.
+type GetAcceleratorsOutputArgs struct {
+	// A list of Accelerator IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Accelerator name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status of the GA instance.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetAcceleratorsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAcceleratorsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAccelerators.
+type GetAcceleratorsResultOutput struct{ *pulumi.OutputState }
+
+func (GetAcceleratorsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAcceleratorsResult)(nil)).Elem()
+}
+
+func (o GetAcceleratorsResultOutput) ToGetAcceleratorsResultOutput() GetAcceleratorsResultOutput {
+	return o
+}
+
+func (o GetAcceleratorsResultOutput) ToGetAcceleratorsResultOutputWithContext(ctx context.Context) GetAcceleratorsResultOutput {
+	return o
+}
+
+func (o GetAcceleratorsResultOutput) Accelerators() GetAcceleratorsAcceleratorArrayOutput {
+	return o.ApplyT(func(v GetAcceleratorsResult) []GetAcceleratorsAccelerator { return v.Accelerators }).(GetAcceleratorsAcceleratorArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAcceleratorsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcceleratorsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAcceleratorsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAcceleratorsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAcceleratorsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAcceleratorsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAcceleratorsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAcceleratorsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAcceleratorsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAcceleratorsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAcceleratorsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAcceleratorsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAcceleratorsResultOutput{})
 }

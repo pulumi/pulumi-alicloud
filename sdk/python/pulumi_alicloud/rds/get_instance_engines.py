@@ -13,6 +13,7 @@ __all__ = [
     'GetInstanceEnginesResult',
     'AwaitableGetInstanceEnginesResult',
     'get_instance_engines',
+    'get_instance_engines_output',
 ]
 
 @pulumi.output_type
@@ -211,3 +212,43 @@ def get_instance_engines(category: Optional[str] = None,
         multi_zone=__ret__.multi_zone,
         output_file=__ret__.output_file,
         zone_id=__ret__.zone_id)
+
+
+@_utilities.lift_output_func(get_instance_engines)
+def get_instance_engines_output(category: Optional[pulumi.Input[Optional[str]]] = None,
+                                db_instance_storage_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                engine: Optional[pulumi.Input[Optional[str]]] = None,
+                                engine_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                instance_charge_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                multi_zone: Optional[pulumi.Input[Optional[bool]]] = None,
+                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                zone_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceEnginesResult]:
+    """
+    This data source provides the RDS instance engines resource available info of Alibaba Cloud.
+
+    > **NOTE:** Available in v1.46.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    resources = alicloud.rds.get_instance_engines(engine="MySQL",
+        engine_version="5.6",
+        instance_charge_type="PostPaid",
+        output_file="./engines.txt")
+    pulumi.export("firstDbCategory", resources.instance_engines[0].category)
+    ```
+
+
+    :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+    :param str db_instance_storage_type: The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
+    :param str engine: Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
+    :param str engine_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+    :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+    :param bool multi_zone: Whether to show multi available zone. Default false to not show multi availability zone.
+    :param str zone_id: The Zone to launch the DB instance.
+    """
+    ...

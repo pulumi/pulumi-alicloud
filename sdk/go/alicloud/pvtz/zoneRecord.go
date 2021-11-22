@@ -274,7 +274,7 @@ type ZoneRecordArrayInput interface {
 type ZoneRecordArray []ZoneRecordInput
 
 func (ZoneRecordArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ZoneRecord)(nil))
+	return reflect.TypeOf((*[]*ZoneRecord)(nil)).Elem()
 }
 
 func (i ZoneRecordArray) ToZoneRecordArrayOutput() ZoneRecordArrayOutput {
@@ -299,7 +299,7 @@ type ZoneRecordMapInput interface {
 type ZoneRecordMap map[string]ZoneRecordInput
 
 func (ZoneRecordMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ZoneRecord)(nil))
+	return reflect.TypeOf((*map[string]*ZoneRecord)(nil)).Elem()
 }
 
 func (i ZoneRecordMap) ToZoneRecordMapOutput() ZoneRecordMapOutput {
@@ -310,9 +310,7 @@ func (i ZoneRecordMap) ToZoneRecordMapOutputWithContext(ctx context.Context) Zon
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneRecordMapOutput)
 }
 
-type ZoneRecordOutput struct {
-	*pulumi.OutputState
-}
+type ZoneRecordOutput struct{ *pulumi.OutputState }
 
 func (ZoneRecordOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ZoneRecord)(nil))
@@ -331,14 +329,12 @@ func (o ZoneRecordOutput) ToZoneRecordPtrOutput() ZoneRecordPtrOutput {
 }
 
 func (o ZoneRecordOutput) ToZoneRecordPtrOutputWithContext(ctx context.Context) ZoneRecordPtrOutput {
-	return o.ApplyT(func(v ZoneRecord) *ZoneRecord {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneRecord) *ZoneRecord {
 		return &v
 	}).(ZoneRecordPtrOutput)
 }
 
-type ZoneRecordPtrOutput struct {
-	*pulumi.OutputState
-}
+type ZoneRecordPtrOutput struct{ *pulumi.OutputState }
 
 func (ZoneRecordPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ZoneRecord)(nil))
@@ -350,6 +346,16 @@ func (o ZoneRecordPtrOutput) ToZoneRecordPtrOutput() ZoneRecordPtrOutput {
 
 func (o ZoneRecordPtrOutput) ToZoneRecordPtrOutputWithContext(ctx context.Context) ZoneRecordPtrOutput {
 	return o
+}
+
+func (o ZoneRecordPtrOutput) Elem() ZoneRecordOutput {
+	return o.ApplyT(func(v *ZoneRecord) ZoneRecord {
+		if v != nil {
+			return *v
+		}
+		var ret ZoneRecord
+		return ret
+	}).(ZoneRecordOutput)
 }
 
 type ZoneRecordArrayOutput struct{ *pulumi.OutputState }
@@ -393,6 +399,10 @@ func (o ZoneRecordMapOutput) MapIndex(k pulumi.StringInput) ZoneRecordOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneRecordInput)(nil)).Elem(), &ZoneRecord{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneRecordPtrInput)(nil)).Elem(), &ZoneRecord{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneRecordArrayInput)(nil)).Elem(), ZoneRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneRecordMapInput)(nil)).Elem(), ZoneRecordMap{})
 	pulumi.RegisterOutputType(ZoneRecordOutput{})
 	pulumi.RegisterOutputType(ZoneRecordPtrOutput{})
 	pulumi.RegisterOutputType(ZoneRecordArrayOutput{})

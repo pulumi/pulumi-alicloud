@@ -4,6 +4,9 @@
 package nas
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,4 +82,91 @@ type GetFileSystemsResult struct {
 	StorageType *string `pulumi:"storageType"`
 	// A list of VPCs. Each element contains the following attributes:
 	Systems []GetFileSystemsSystem `pulumi:"systems"`
+}
+
+func GetFileSystemsOutput(ctx *pulumi.Context, args GetFileSystemsOutputArgs, opts ...pulumi.InvokeOption) GetFileSystemsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetFileSystemsResult, error) {
+			args := v.(GetFileSystemsArgs)
+			r, err := GetFileSystems(ctx, &args, opts...)
+			return *r, err
+		}).(GetFileSystemsResultOutput)
+}
+
+// A collection of arguments for invoking getFileSystems.
+type GetFileSystemsOutputArgs struct {
+	// A regex string to filter the results by the ：FileSystem description.
+	DescriptionRegex pulumi.StringPtrInput `pulumi:"descriptionRegex"`
+	// A list of FileSystemId.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// The protocol type of the file system.
+	// Valid values:
+	// `NFS`,
+	// `SMB` (Available when the `fileSystemType` is `standard`).
+	ProtocolType pulumi.StringPtrInput `pulumi:"protocolType"`
+	// The storage type of the file system.
+	// * Valid values:
+	StorageType pulumi.StringPtrInput `pulumi:"storageType"`
+}
+
+func (GetFileSystemsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFileSystemsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getFileSystems.
+type GetFileSystemsResultOutput struct{ *pulumi.OutputState }
+
+func (GetFileSystemsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFileSystemsResult)(nil)).Elem()
+}
+
+func (o GetFileSystemsResultOutput) ToGetFileSystemsResultOutput() GetFileSystemsResultOutput {
+	return o
+}
+
+func (o GetFileSystemsResultOutput) ToGetFileSystemsResultOutputWithContext(ctx context.Context) GetFileSystemsResultOutput {
+	return o
+}
+
+func (o GetFileSystemsResultOutput) DescriptionRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFileSystemsResult) *string { return v.DescriptionRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of FileSystem descriptions.
+func (o GetFileSystemsResultOutput) Descriptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFileSystemsResult) []string { return v.Descriptions }).(pulumi.StringArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetFileSystemsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFileSystemsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of FileSystem Id.
+func (o GetFileSystemsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFileSystemsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetFileSystemsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFileSystemsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// ProtocolType block of the FileSystem
+func (o GetFileSystemsResultOutput) ProtocolType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFileSystemsResult) *string { return v.ProtocolType }).(pulumi.StringPtrOutput)
+}
+
+// StorageType block of the FileSystem.
+func (o GetFileSystemsResultOutput) StorageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFileSystemsResult) *string { return v.StorageType }).(pulumi.StringPtrOutput)
+}
+
+// A list of VPCs. Each element contains the following attributes:
+func (o GetFileSystemsResultOutput) Systems() GetFileSystemsSystemArrayOutput {
+	return o.ApplyT(func(v GetFileSystemsResult) []GetFileSystemsSystem { return v.Systems }).(GetFileSystemsSystemArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetFileSystemsResultOutput{})
 }

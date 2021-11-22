@@ -13,6 +13,7 @@ __all__ = [
     'GetAlarmContactsResult',
     'AwaitableGetAlarmContactsResult',
     'get_alarm_contacts',
+    'get_alarm_contacts_output',
 ]
 
 @pulumi.output_type
@@ -165,3 +166,36 @@ def get_alarm_contacts(chanel_type: Optional[str] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_alarm_contacts)
+def get_alarm_contacts_output(chanel_type: Optional[pulumi.Input[Optional[str]]] = None,
+                              chanel_value: Optional[pulumi.Input[Optional[str]]] = None,
+                              ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                              name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlarmContactsResult]:
+    """
+    Provides a list of alarm contact owned by an Alibaba Cloud account.
+
+    > **NOTE:** Available in v1.99.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.cms.get_alarm_contacts(ids=["tf-testAccCmsAlarmContact"])
+    pulumi.export("first-contact", data["alicloud_cms_alarm_contacts"]["this"]["contacts"])
+    ```
+
+
+    :param str chanel_type: The alarm notification method. Alarm notifications can be sent by using `Email` or `DingWebHook`.
+    :param str chanel_value: The alarm notification target.
+    :param Sequence[str] ids: A list of alarm contact IDs.
+    :param str name_regex: A regex string to filter results by alarm contact name.
+    """
+    ...

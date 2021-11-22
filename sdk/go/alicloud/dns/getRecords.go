@@ -4,6 +4,9 @@
 package dns
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -92,4 +95,113 @@ type GetRecordsResult struct {
 	// A list of entire URLs. Each item format as `<host_record>.<domain_name>`.
 	Urls       []string `pulumi:"urls"`
 	ValueRegex *string  `pulumi:"valueRegex"`
+}
+
+func GetRecordsOutput(ctx *pulumi.Context, args GetRecordsOutputArgs, opts ...pulumi.InvokeOption) GetRecordsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetRecordsResult, error) {
+			args := v.(GetRecordsArgs)
+			r, err := GetRecords(ctx, &args, opts...)
+			return *r, err
+		}).(GetRecordsResultOutput)
+}
+
+// A collection of arguments for invoking getRecords.
+type GetRecordsOutputArgs struct {
+	// The domain name associated to the records.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// Host record regex.
+	HostRecordRegex pulumi.StringPtrInput `pulumi:"hostRecordRegex"`
+	// A list of record IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Whether the record is locked or not.
+	IsLocked pulumi.BoolPtrInput `pulumi:"isLocked"`
+	// ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+	Line       pulumi.StringPtrInput `pulumi:"line"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Record status. Valid items are `ENABLE` and `DISABLE`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Record type. Valid items are `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Host record value regex.
+	ValueRegex pulumi.StringPtrInput `pulumi:"valueRegex"`
+}
+
+func (GetRecordsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRecordsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRecords.
+type GetRecordsResultOutput struct{ *pulumi.OutputState }
+
+func (GetRecordsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRecordsResult)(nil)).Elem()
+}
+
+func (o GetRecordsResultOutput) ToGetRecordsResultOutput() GetRecordsResultOutput {
+	return o
+}
+
+func (o GetRecordsResultOutput) ToGetRecordsResultOutputWithContext(ctx context.Context) GetRecordsResultOutput {
+	return o
+}
+
+// Name of the domain the record belongs to.
+func (o GetRecordsResultOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordsResult) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+func (o GetRecordsResultOutput) HostRecordRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRecordsResult) *string { return v.HostRecordRegex }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRecordsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of record IDs.
+func (o GetRecordsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRecordsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRecordsResultOutput) IsLocked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRecordsResult) *bool { return v.IsLocked }).(pulumi.BoolPtrOutput)
+}
+
+// ISP line of the record.
+func (o GetRecordsResultOutput) Line() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRecordsResult) *string { return v.Line }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRecordsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRecordsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of records. Each element contains the following attributes:
+func (o GetRecordsResultOutput) Records() GetRecordsRecordArrayOutput {
+	return o.ApplyT(func(v GetRecordsResult) []GetRecordsRecord { return v.Records }).(GetRecordsRecordArrayOutput)
+}
+
+// Status of the record.
+func (o GetRecordsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRecordsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Type of the record.
+func (o GetRecordsResultOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRecordsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// A list of entire URLs. Each item format as `<host_record>.<domain_name>`.
+func (o GetRecordsResultOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRecordsResult) []string { return v.Urls }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRecordsResultOutput) ValueRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRecordsResult) *string { return v.ValueRegex }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRecordsResultOutput{})
 }

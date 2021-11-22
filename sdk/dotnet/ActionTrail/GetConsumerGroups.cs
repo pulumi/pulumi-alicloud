@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ActionTrail
 {
@@ -34,7 +35,7 @@ namespace Pulumi.AliCloud.ActionTrail
         ///             InstanceId = "xxx",
         ///             OutputFile = "consumerGroups.txt",
         ///         }));
-        ///         this.FirstGroupName = consumerGroupsDs.Apply(consumerGroupsDs =&gt; consumerGroupsDs.ConsumerIds[0]);
+        ///         this.FirstGroupName = consumerGroupsDs.Apply(consumerGroupsDs =&gt; consumerGroupsDs.ConsumerIds?[0]);
         ///     }
         /// 
         ///     [Output("firstGroupName")]
@@ -46,6 +47,42 @@ namespace Pulumi.AliCloud.ActionTrail
         /// </summary>
         public static Task<GetConsumerGroupsResult> InvokeAsync(GetConsumerGroupsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConsumerGroupsResult>("alicloud:actiontrail/getConsumerGroups:getConsumerGroups", args ?? new GetConsumerGroupsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.56.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var consumerGroupsDs = Output.Create(AliCloud.ActionTrail.GetConsumerGroups.InvokeAsync(new AliCloud.ActionTrail.GetConsumerGroupsArgs
+        ///         {
+        ///             ConsumerIdRegex = "CID-alikafkaGroupDatasourceName",
+        ///             InstanceId = "xxx",
+        ///             OutputFile = "consumerGroups.txt",
+        ///         }));
+        ///         this.FirstGroupName = consumerGroupsDs.Apply(consumerGroupsDs =&gt; consumerGroupsDs.ConsumerIds?[0]);
+        ///     }
+        /// 
+        ///     [Output("firstGroupName")]
+        ///     public Output&lt;string&gt; FirstGroupName { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetConsumerGroupsResult> Invoke(GetConsumerGroupsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetConsumerGroupsResult>("alicloud:actiontrail/getConsumerGroups:getConsumerGroups", args ?? new GetConsumerGroupsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -67,6 +104,28 @@ namespace Pulumi.AliCloud.ActionTrail
         public string? OutputFile { get; set; }
 
         public GetConsumerGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetConsumerGroupsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// A regex string to filter results by the consumer group id.
+        /// </summary>
+        [Input("consumerIdRegex")]
+        public Input<string>? ConsumerIdRegex { get; set; }
+
+        /// <summary>
+        /// ID of the ALIKAFKA Instance that owns the consumer groups.
+        /// </summary>
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetConsumerGroupsInvokeArgs()
         {
         }
     }

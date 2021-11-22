@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *     instanceClass: "dds.mongo.mid",
  *     instanceType: "replicate",
  *     nameRegex: "dds-.+\\d+",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
@@ -50,28 +50,28 @@ export interface GetInstancesArgs {
     /**
      * Instance availability zone.
      */
-    readonly availabilityZone?: string;
+    availabilityZone?: string;
     /**
      * The ids list of MongoDB instances
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * Sizing of the instance to be queried.
      */
-    readonly instanceClass?: string;
+    instanceClass?: string;
     /**
      * Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
      */
-    readonly instanceType?: string;
+    instanceType?: string;
     /**
      * A regex string to apply to the instance name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -109,4 +109,39 @@ export interface GetInstancesResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly tags?: {[key: string]: any};
+}
+
+export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
+    return pulumi.output(args).apply(a => getInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstances.
+ */
+export interface GetInstancesOutputArgs {
+    /**
+     * Instance availability zone.
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
+     * The ids list of MongoDB instances
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Sizing of the instance to be queried.
+     */
+    instanceClass?: pulumi.Input<string>;
+    /**
+     * Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
+     */
+    instanceType?: pulumi.Input<string>;
+    /**
+     * A regex string to apply to the instance name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

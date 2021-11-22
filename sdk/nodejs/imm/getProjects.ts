@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const ids = alicloud.imm.getProjects({
  *     ids: ["example_id"],
  * });
- * export const immProjectId1 = ids.then(ids => ids.projects[0].id);
+ * export const immProjectId1 = ids.then(ids => ids.projects?[0]?.id);
  * ```
  */
 export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
@@ -46,8 +46,8 @@ export interface GetProjectsArgs {
     /**
      * A list of Project IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
 }
 
 /**
@@ -61,4 +61,19 @@ export interface GetProjectsResult {
     readonly ids: string[];
     readonly outputFile?: string;
     readonly projects: outputs.imm.GetProjectsProject[];
+}
+
+export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectsResult> {
+    return pulumi.output(args).apply(a => getProjects(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getProjects.
+ */
+export interface GetProjectsOutputArgs {
+    /**
+     * A list of Project IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
 }

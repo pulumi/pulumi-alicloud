@@ -180,50 +180,50 @@ export interface HostState {
     /**
      * Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
      */
-    readonly activeAddressType?: pulumi.Input<string>;
+    activeAddressType?: pulumi.Input<string>;
     /**
      * Specify a host of notes, supports up to 500 characters.
      */
-    readonly comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string>;
     /**
      * The host ID.
      */
-    readonly hostId?: pulumi.Input<string>;
+    hostId?: pulumi.Input<string>;
     /**
      * Specify the new create a host name of the supports up to 128 characters.
      */
-    readonly hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string>;
     /**
      * Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
      */
-    readonly hostPrivateAddress?: pulumi.Input<string>;
+    hostPrivateAddress?: pulumi.Input<string>;
     /**
      * Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
      */
-    readonly hostPublicAddress?: pulumi.Input<string>;
+    hostPublicAddress?: pulumi.Input<string>;
     /**
      * Specify the new create a host where the Bastion host ID of.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The instance region id.
      */
-    readonly instanceRegionId?: pulumi.Input<string>;
+    instanceRegionId?: pulumi.Input<string>;
     /**
      * Specify the new create the host's operating system. Valid values: Linux Windows.
      */
-    readonly osType?: pulumi.Input<string>;
+    osType?: pulumi.Input<string>;
     /**
      * Specify the new create a host of source. Valid values: 
      * * Local: localhost
      * * Ecs:ECS instance
      * * Rds:RDS exclusive cluster host.
      */
-    readonly source?: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
     /**
      * Specify the newly created ECS instance ID or dedicated cluster host ID.
      */
-    readonly sourceInstanceId?: pulumi.Input<string>;
+    sourceInstanceId?: pulumi.Input<string>;
 }
 
 /**
@@ -233,44 +233,44 @@ export interface HostArgs {
     /**
      * Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
      */
-    readonly activeAddressType: pulumi.Input<string>;
+    activeAddressType: pulumi.Input<string>;
     /**
      * Specify a host of notes, supports up to 500 characters.
      */
-    readonly comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string>;
     /**
      * Specify the new create a host name of the supports up to 128 characters.
      */
-    readonly hostName: pulumi.Input<string>;
+    hostName: pulumi.Input<string>;
     /**
      * Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
      */
-    readonly hostPrivateAddress?: pulumi.Input<string>;
+    hostPrivateAddress?: pulumi.Input<string>;
     /**
      * Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
      */
-    readonly hostPublicAddress?: pulumi.Input<string>;
+    hostPublicAddress?: pulumi.Input<string>;
     /**
      * Specify the new create a host where the Bastion host ID of.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * The instance region id.
      */
-    readonly instanceRegionId?: pulumi.Input<string>;
+    instanceRegionId?: pulumi.Input<string>;
     /**
      * Specify the new create the host's operating system. Valid values: Linux Windows.
      */
-    readonly osType: pulumi.Input<string>;
+    osType: pulumi.Input<string>;
     /**
      * Specify the new create a host of source. Valid values: 
      * * Local: localhost
      * * Ecs:ECS instance
      * * Rds:RDS exclusive cluster host.
      */
-    readonly source: pulumi.Input<string>;
+    source: pulumi.Input<string>;
     /**
      * Specify the newly created ECS instance ID or dedicated cluster host ID.
      */
-    readonly sourceInstanceId?: pulumi.Input<string>;
+    sourceInstanceId?: pulumi.Input<string>;
 }

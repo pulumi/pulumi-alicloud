@@ -21,17 +21,17 @@ import * as utilities from "../utilities";
  * const ids = alicloud.graphdatabase.getDbInstances({
  *     ids: ["example_id"],
  * });
- * export const graphDatabaseDbInstanceId1 = ids.then(ids => ids.instances[0].id);
+ * export const graphDatabaseDbInstanceId1 = ids.then(ids => ids.instances?[0]?.id);
  * const status = alicloud.graphdatabase.getDbInstances({
  *     ids: ["example_id"],
  *     status: "Running",
  * });
- * export const graphDatabaseDbInstanceId2 = status.then(status => status.instances[0].id);
+ * export const graphDatabaseDbInstanceId2 = status.then(status => status.instances?[0]?.id);
  * const description = alicloud.graphdatabase.getDbInstances({
  *     ids: ["example_id"],
  *     dbInstanceDescription: "example_value",
  * });
- * export const graphDatabaseDbInstanceId3 = description.then(description => description.instances[0].id);
+ * export const graphDatabaseDbInstanceId3 = description.then(description => description.instances?[0]?.id);
  * ```
  */
 export function getDbInstances(args?: GetDbInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetDbInstancesResult> {
@@ -59,20 +59,20 @@ export interface GetDbInstancesArgs {
     /**
      * According to the practical example or notes.
      */
-    readonly dbInstanceDescription?: string;
+    dbInstanceDescription?: string;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Db Instance IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -89,4 +89,31 @@ export interface GetDbInstancesResult {
     readonly instances: outputs.graphdatabase.GetDbInstancesInstance[];
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getDbInstancesOutput(args?: GetDbInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbInstancesResult> {
+    return pulumi.output(args).apply(a => getDbInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDbInstances.
+ */
+export interface GetDbInstancesOutputArgs {
+    /**
+     * According to the practical example or notes.
+     */
+    dbInstanceDescription?: pulumi.Input<string>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Db Instance IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+     */
+    status?: pulumi.Input<string>;
 }

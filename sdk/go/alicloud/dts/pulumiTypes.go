@@ -839,6 +839,12 @@ func (o GetSynchronizationJobsJobArrayOutput) Index(i pulumi.IntInput) GetSynchr
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionJobsJobInput)(nil)).Elem(), GetSubscriptionJobsJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionJobsJobArrayInput)(nil)).Elem(), GetSubscriptionJobsJobArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionJobsJobSubscriptionHostInput)(nil)).Elem(), GetSubscriptionJobsJobSubscriptionHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionJobsJobSubscriptionHostArrayInput)(nil)).Elem(), GetSubscriptionJobsJobSubscriptionHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSynchronizationJobsJobInput)(nil)).Elem(), GetSynchronizationJobsJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSynchronizationJobsJobArrayInput)(nil)).Elem(), GetSynchronizationJobsJobArray{})
 	pulumi.RegisterOutputType(GetSubscriptionJobsJobOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionJobsJobArrayOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionJobsJobSubscriptionHostOutput{})

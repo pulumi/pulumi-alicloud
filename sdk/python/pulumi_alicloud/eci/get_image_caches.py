@@ -13,6 +13,7 @@ __all__ = [
     'GetImageCachesResult',
     'AwaitableGetImageCachesResult',
     'get_image_caches',
+    'get_image_caches_output',
 ]
 
 @pulumi.output_type
@@ -188,3 +189,28 @@ def get_image_caches(ids: Optional[Sequence[str]] = None,
         output_file=__ret__.output_file,
         snapshot_id=__ret__.snapshot_id,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_image_caches)
+def get_image_caches_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            image: Optional[pulumi.Input[Optional[str]]] = None,
+                            image_cache_name: Optional[pulumi.Input[Optional[str]]] = None,
+                            name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                            snapshot_id: Optional[pulumi.Input[Optional[str]]] = None,
+                            status: Optional[pulumi.Input[Optional[str]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageCachesResult]:
+    """
+    Provides a collection of ECI Image Cache to the specified filters.
+
+    > **NOTE:** Available in 1.90.0+.
+
+
+    :param Sequence[str] ids: A list ids of ECI Image Cache.
+    :param str image: Find the mirror cache containing it according to the image name.
+    :param str image_cache_name: The name of ECI Image Cache.
+    :param str name_regex: A regex string to filter results by the image cache name.
+    :param str snapshot_id: The id of snapshot.
+    :param str status: The status of ECI Image Cache.
+    """
+    ...

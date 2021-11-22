@@ -4,6 +4,9 @@
 package slb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,4 +71,87 @@ type GetCaCertificatesResult struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// (Available in v1.66.0+) A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
+}
+
+func GetCaCertificatesOutput(ctx *pulumi.Context, args GetCaCertificatesOutputArgs, opts ...pulumi.InvokeOption) GetCaCertificatesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetCaCertificatesResult, error) {
+			args := v.(GetCaCertificatesArgs)
+			r, err := GetCaCertificates(ctx, &args, opts...)
+			return *r, err
+		}).(GetCaCertificatesResultOutput)
+}
+
+// A collection of arguments for invoking getCaCertificates.
+type GetCaCertificatesOutputArgs struct {
+	// A list of ca certificates IDs to filter results.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by ca certificate name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The Id of resource group which ca certificates belongs.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+}
+
+func (GetCaCertificatesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCaCertificatesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getCaCertificates.
+type GetCaCertificatesResultOutput struct{ *pulumi.OutputState }
+
+func (GetCaCertificatesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCaCertificatesResult)(nil)).Elem()
+}
+
+func (o GetCaCertificatesResultOutput) ToGetCaCertificatesResultOutput() GetCaCertificatesResultOutput {
+	return o
+}
+
+func (o GetCaCertificatesResultOutput) ToGetCaCertificatesResultOutputWithContext(ctx context.Context) GetCaCertificatesResultOutput {
+	return o
+}
+
+// A list of SLB ca certificates. Each element contains the following attributes:
+func (o GetCaCertificatesResultOutput) Certificates() GetCaCertificatesCertificateArrayOutput {
+	return o.ApplyT(func(v GetCaCertificatesResult) []GetCaCertificatesCertificate { return v.Certificates }).(GetCaCertificatesCertificateArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetCaCertificatesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCaCertificatesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of SLB ca certificates IDs.
+func (o GetCaCertificatesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCaCertificatesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetCaCertificatesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCaCertificatesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of SLB ca certificates names.
+func (o GetCaCertificatesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCaCertificatesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetCaCertificatesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCaCertificatesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The resource group Id of CA certificate.
+func (o GetCaCertificatesResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCaCertificatesResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// (Available in v1.66.0+) A mapping of tags to assign to the resource.
+func (o GetCaCertificatesResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetCaCertificatesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetCaCertificatesResultOutput{})
 }

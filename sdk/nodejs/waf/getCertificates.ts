@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     instanceId: "your_instance_id",
  *     domain: "your_domain_name",
  * });
- * export const wafCertificate = _default.then(_default => _default.certificates[0]);
+ * export const wafCertificate = _default.then(_default => _default.certificates?[0]);
  * ```
  */
 export function getCertificates(args: GetCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificatesResult> {
@@ -50,20 +50,20 @@ export interface GetCertificatesArgs {
     /**
      * The domain that you want to add to WAF.
      */
-    readonly domain?: string;
+    domain?: string;
     /**
      * A list of Certificate IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * WAF instance ID.
      */
-    readonly instanceId: string;
+    instanceId: string;
     /**
      * A regex string to filter results by Certificate name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -81,4 +81,31 @@ export interface GetCertificatesResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getCertificatesOutput(args: GetCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificatesResult> {
+    return pulumi.output(args).apply(a => getCertificates(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCertificates.
+ */
+export interface GetCertificatesOutputArgs {
+    /**
+     * The domain that you want to add to WAF.
+     */
+    domain?: pulumi.Input<string>;
+    /**
+     * A list of Certificate IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * WAF instance ID.
+     */
+    instanceId: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Certificate name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

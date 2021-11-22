@@ -313,127 +313,127 @@ export interface K8sApplicationState {
     /**
      * The description of the application
      */
-    readonly applicationDescriotion?: pulumi.Input<string>;
+    applicationDescriotion?: pulumi.Input<string>;
     /**
      * The name of the application you want to create. Must start with character,supports numbers, letters and dashes (-), supports up to 36 characters
      */
-    readonly applicationName?: pulumi.Input<string>;
+    applicationName?: pulumi.Input<string>;
     /**
      * The ID of the alicloud container service kubernetes cluster that you want to import to. You can call the ListCluster operation to query.
      */
-    readonly clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     /**
      * The set command, if set, will replace the startup command in the mirror when the mirror is started.
      */
-    readonly command?: pulumi.Input<string>;
+    command?: pulumi.Input<string>;
     /**
      * Used in combination with the command, the parameter of the command is a JsonArray string in the format: `[{"argument":"-c"},{"argument":"test"}]`. Among them, -c and test are two parameters that need to be set.
      */
-    readonly commandArgs?: pulumi.Input<pulumi.Input<string>[]>;
+    commandArgs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * EDAS-Container version that the deployed package depends on. Image does not support this parameter.
      */
-    readonly edasContainerVersion?: pulumi.Input<string>;
+    edasContainerVersion?: pulumi.Input<string>;
     /**
      * Deployment environment variables, the format must conform to the JSON object array, such as: `{"name":"x","value":"y"},{"name":"x2","value":"y2"}`, If you want to cancel the configuration, you need to set an empty JSON array "" to indicate no configuration.
      */
-    readonly envs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    envs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Mirror address. When the packageType is set to 'Image', this parameter item is required.
      */
-    readonly imageUrl?: pulumi.Input<string>;
+    imageUrl?: pulumi.Input<string>;
     /**
      * Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
      */
-    readonly internetSlbId?: pulumi.Input<string>;
+    internetSlbId?: pulumi.Input<string>;
     /**
      * The public network SLB front-end port, range 1~65535.
      */
-    readonly internetSlbPort?: pulumi.Input<number>;
+    internetSlbPort?: pulumi.Input<number>;
     /**
      * The public network SLB protocol supports TCP, HTTP and HTTPS protocols.
      */
-    readonly internetSlbProtocol?: pulumi.Input<string>;
+    internetSlbProtocol?: pulumi.Input<string>;
     /**
      * The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
      */
-    readonly internetTargetPort?: pulumi.Input<number>;
+    internetTargetPort?: pulumi.Input<number>;
     /**
      * The JDK version that the deployed package depends on. The optional parameter values are Open JDK 7 and Open JDK 8. Image does not support this parameter.
      */
-    readonly jdk?: pulumi.Input<string>;
+    jdk?: pulumi.Input<string>;
     /**
      * The CPU quota of the application instance during application operation. Unit: Number of millcores, set to 0 means unlimited, similar to request_cpu.
      */
-    readonly limitMCpu?: pulumi.Input<number>;
+    limitMCpu?: pulumi.Input<number>;
     /**
      * The memory limit of the application instance during application operation, unit: M.
      */
-    readonly limitMem?: pulumi.Input<number>;
+    limitMem?: pulumi.Input<number>;
     /**
      * Container survival status monitoring, format such as: `{"failureThreshold": 3,"initialDelaySeconds": 5,"successThreshold": 1,"timeoutSeconds": 1,"tcpSocket":{"host":"", "port":8080} }`.
      */
-    readonly liveness?: pulumi.Input<string>;
+    liveness?: pulumi.Input<string>;
     /**
      * The configuration of the host file mounted to the container. For example: `[{"type":"","nodePath":"/localfiles","mountPath":"/app/files"},{"type":"Directory","nodePath":"/mnt", "mountPath":"/app/storage"}]`. Among them, nodePath is the host path; mountPath is the path in the container; type is the mount type.
      */
-    readonly localVolume?: pulumi.Input<string>;
+    localVolume?: pulumi.Input<string>;
     /**
      * The ID corresponding to the EDAS namespace, the non-default namespace must be filled in.
      */
-    readonly logicalRegionId?: pulumi.Input<string>;
+    logicalRegionId?: pulumi.Input<string>;
     /**
      * Mount configuration description, as a serialized JSON. For example: `[{"nasPath": "/k8s","mountPath": "/mnt"},{"nasPath": "/files","mountPath": "/app/files"}]`. Among them, nasPath refers to the file storage path; mountPath refers to the path mounted in the container.
      */
-    readonly mountDescs?: pulumi.Input<string>;
+    mountDescs?: pulumi.Input<string>;
     /**
      * The namespace of the K8s cluster, it will determine which K8s namespace your application is deployed in. The default is 'default'.
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     /**
      * The ID of the mounted NAS must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field exists, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
      */
-    readonly nasId?: pulumi.Input<string>;
+    nasId?: pulumi.Input<string>;
     /**
      * Application package type. Optional parameter values include: FatJar, WAR and Image.
      */
-    readonly packageType?: pulumi.Input<string>;
+    packageType?: pulumi.Input<string>;
     /**
      * The url of the package to deploy.Applications deployed through FatJar or WAR packages need to configure it.
      */
-    readonly packageUrl?: pulumi.Input<string>;
+    packageUrl?: pulumi.Input<string>;
     /**
      * The version number of the deployment package. WAR and FatJar types are required. Please customize its meaning.
      */
-    readonly packageVersion?: pulumi.Input<string>;
+    packageVersion?: pulumi.Input<string>;
     /**
      * Execute script after startup
      */
-    readonly postStart?: pulumi.Input<string>;
+    postStart?: pulumi.Input<string>;
     /**
      * Execute script before stopping
      */
-    readonly preStop?: pulumi.Input<string>;
+    preStop?: pulumi.Input<string>;
     /**
      * Container service status check. If the check fails, the traffic passing through K8s Service will not be transferred to the container. The format is: `{"failureThreshold": 3,"initialDelaySeconds": 5,"successThreshold": 1,"timeoutSeconds": 1, "httpGet": {"path": "/consumer","port": 8080,"scheme": "HTTP","httpHeaders": [{"name": "test","value": "testvalue"} ]}}`.
      */
-    readonly readiness?: pulumi.Input<string>;
+    readiness?: pulumi.Input<string>;
     /**
      * Number of application instances.
      */
-    readonly replicas?: pulumi.Input<number>;
+    replicas?: pulumi.Input<number>;
     /**
      * When the application is created, the CPU quota of the application instance, unit: number of millcores, similar to request_cpu
      */
-    readonly requestsMCpu?: pulumi.Input<number>;
+    requestsMCpu?: pulumi.Input<number>;
     /**
      * When the application is created, the memory limit of the application instance, unit: M. When set to 0, it means unlimited.
      */
-    readonly requestsMem?: pulumi.Input<number>;
+    requestsMem?: pulumi.Input<number>;
     /**
      * The Tomcat version that the deployment package depends on. Applicable to Spring Cloud and Dubbo applications deployed through WAR packages. Image does not support this parameter.
      */
-    readonly webContainer?: pulumi.Input<string>;
+    webContainer?: pulumi.Input<string>;
 }
 
 /**
@@ -443,125 +443,125 @@ export interface K8sApplicationArgs {
     /**
      * The description of the application
      */
-    readonly applicationDescriotion?: pulumi.Input<string>;
+    applicationDescriotion?: pulumi.Input<string>;
     /**
      * The name of the application you want to create. Must start with character,supports numbers, letters and dashes (-), supports up to 36 characters
      */
-    readonly applicationName: pulumi.Input<string>;
+    applicationName: pulumi.Input<string>;
     /**
      * The ID of the alicloud container service kubernetes cluster that you want to import to. You can call the ListCluster operation to query.
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * The set command, if set, will replace the startup command in the mirror when the mirror is started.
      */
-    readonly command?: pulumi.Input<string>;
+    command?: pulumi.Input<string>;
     /**
      * Used in combination with the command, the parameter of the command is a JsonArray string in the format: `[{"argument":"-c"},{"argument":"test"}]`. Among them, -c and test are two parameters that need to be set.
      */
-    readonly commandArgs?: pulumi.Input<pulumi.Input<string>[]>;
+    commandArgs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * EDAS-Container version that the deployed package depends on. Image does not support this parameter.
      */
-    readonly edasContainerVersion?: pulumi.Input<string>;
+    edasContainerVersion?: pulumi.Input<string>;
     /**
      * Deployment environment variables, the format must conform to the JSON object array, such as: `{"name":"x","value":"y"},{"name":"x2","value":"y2"}`, If you want to cancel the configuration, you need to set an empty JSON array "" to indicate no configuration.
      */
-    readonly envs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    envs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Mirror address. When the packageType is set to 'Image', this parameter item is required.
      */
-    readonly imageUrl?: pulumi.Input<string>;
+    imageUrl?: pulumi.Input<string>;
     /**
      * Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
      */
-    readonly internetSlbId?: pulumi.Input<string>;
+    internetSlbId?: pulumi.Input<string>;
     /**
      * The public network SLB front-end port, range 1~65535.
      */
-    readonly internetSlbPort?: pulumi.Input<number>;
+    internetSlbPort?: pulumi.Input<number>;
     /**
      * The public network SLB protocol supports TCP, HTTP and HTTPS protocols.
      */
-    readonly internetSlbProtocol?: pulumi.Input<string>;
+    internetSlbProtocol?: pulumi.Input<string>;
     /**
      * The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
      */
-    readonly internetTargetPort?: pulumi.Input<number>;
+    internetTargetPort?: pulumi.Input<number>;
     /**
      * The JDK version that the deployed package depends on. The optional parameter values are Open JDK 7 and Open JDK 8. Image does not support this parameter.
      */
-    readonly jdk?: pulumi.Input<string>;
+    jdk?: pulumi.Input<string>;
     /**
      * The CPU quota of the application instance during application operation. Unit: Number of millcores, set to 0 means unlimited, similar to request_cpu.
      */
-    readonly limitMCpu?: pulumi.Input<number>;
+    limitMCpu?: pulumi.Input<number>;
     /**
      * The memory limit of the application instance during application operation, unit: M.
      */
-    readonly limitMem?: pulumi.Input<number>;
+    limitMem?: pulumi.Input<number>;
     /**
      * Container survival status monitoring, format such as: `{"failureThreshold": 3,"initialDelaySeconds": 5,"successThreshold": 1,"timeoutSeconds": 1,"tcpSocket":{"host":"", "port":8080} }`.
      */
-    readonly liveness?: pulumi.Input<string>;
+    liveness?: pulumi.Input<string>;
     /**
      * The configuration of the host file mounted to the container. For example: `[{"type":"","nodePath":"/localfiles","mountPath":"/app/files"},{"type":"Directory","nodePath":"/mnt", "mountPath":"/app/storage"}]`. Among them, nodePath is the host path; mountPath is the path in the container; type is the mount type.
      */
-    readonly localVolume?: pulumi.Input<string>;
+    localVolume?: pulumi.Input<string>;
     /**
      * The ID corresponding to the EDAS namespace, the non-default namespace must be filled in.
      */
-    readonly logicalRegionId?: pulumi.Input<string>;
+    logicalRegionId?: pulumi.Input<string>;
     /**
      * Mount configuration description, as a serialized JSON. For example: `[{"nasPath": "/k8s","mountPath": "/mnt"},{"nasPath": "/files","mountPath": "/app/files"}]`. Among them, nasPath refers to the file storage path; mountPath refers to the path mounted in the container.
      */
-    readonly mountDescs?: pulumi.Input<string>;
+    mountDescs?: pulumi.Input<string>;
     /**
      * The namespace of the K8s cluster, it will determine which K8s namespace your application is deployed in. The default is 'default'.
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     /**
      * The ID of the mounted NAS must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field exists, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
      */
-    readonly nasId?: pulumi.Input<string>;
+    nasId?: pulumi.Input<string>;
     /**
      * Application package type. Optional parameter values include: FatJar, WAR and Image.
      */
-    readonly packageType?: pulumi.Input<string>;
+    packageType?: pulumi.Input<string>;
     /**
      * The url of the package to deploy.Applications deployed through FatJar or WAR packages need to configure it.
      */
-    readonly packageUrl?: pulumi.Input<string>;
+    packageUrl?: pulumi.Input<string>;
     /**
      * The version number of the deployment package. WAR and FatJar types are required. Please customize its meaning.
      */
-    readonly packageVersion?: pulumi.Input<string>;
+    packageVersion?: pulumi.Input<string>;
     /**
      * Execute script after startup
      */
-    readonly postStart?: pulumi.Input<string>;
+    postStart?: pulumi.Input<string>;
     /**
      * Execute script before stopping
      */
-    readonly preStop?: pulumi.Input<string>;
+    preStop?: pulumi.Input<string>;
     /**
      * Container service status check. If the check fails, the traffic passing through K8s Service will not be transferred to the container. The format is: `{"failureThreshold": 3,"initialDelaySeconds": 5,"successThreshold": 1,"timeoutSeconds": 1, "httpGet": {"path": "/consumer","port": 8080,"scheme": "HTTP","httpHeaders": [{"name": "test","value": "testvalue"} ]}}`.
      */
-    readonly readiness?: pulumi.Input<string>;
+    readiness?: pulumi.Input<string>;
     /**
      * Number of application instances.
      */
-    readonly replicas?: pulumi.Input<number>;
+    replicas?: pulumi.Input<number>;
     /**
      * When the application is created, the CPU quota of the application instance, unit: number of millcores, similar to request_cpu
      */
-    readonly requestsMCpu?: pulumi.Input<number>;
+    requestsMCpu?: pulumi.Input<number>;
     /**
      * When the application is created, the memory limit of the application instance, unit: M. When set to 0, it means unlimited.
      */
-    readonly requestsMem?: pulumi.Input<number>;
+    requestsMem?: pulumi.Input<number>;
     /**
      * The Tomcat version that the deployment package depends on. Applicable to Spring Cloud and Dubbo applications deployed through WAR packages. Image does not support this parameter.
      */
-    readonly webContainer?: pulumi.Input<string>;
+    webContainer?: pulumi.Input<string>;
 }

@@ -13,6 +13,7 @@ __all__ = [
     'GetInstancesResult',
     'AwaitableGetInstancesResult',
     'get_instances',
+    'get_instances_output',
 ]
 
 @pulumi.output_type
@@ -134,3 +135,18 @@ def get_instances(domain_type: Optional[str] = None,
         lang=__ret__.lang,
         output_file=__ret__.output_file,
         user_client_ip=__ret__.user_client_ip)
+
+
+@_utilities.lift_output_func(get_instances)
+def get_instances_output(domain_type: Optional[pulumi.Input[Optional[str]]] = None,
+                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         lang: Optional[pulumi.Input[Optional[str]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         user_client_ip: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+    """
+    Use this data source to access information about an existing resource.
+
+    :param Sequence[str] ids: A list of instance IDs.
+    """
+    ...

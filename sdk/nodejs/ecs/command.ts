@@ -142,31 +142,31 @@ export interface CommandState {
     /**
      * The Base64-encoded content of the command.
      */
-    readonly commandContent?: pulumi.Input<string>;
+    commandContent?: pulumi.Input<string>;
     /**
      * The description of command.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Specifies whether to use custom parameters in the command to be created. Default to: false.
      */
-    readonly enableParameter?: pulumi.Input<boolean>;
+    enableParameter?: pulumi.Input<boolean>;
     /**
      * The name of the command, which supports all character sets. It can be up to 128 characters in length.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The timeout period that is specified for the command to be run on ECS instances. Unit: seconds. Default to: `60`.
      */
-    readonly timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number>;
     /**
      * The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * The execution path of the command in the ECS instance.
      */
-    readonly workingDir?: pulumi.Input<string>;
+    workingDir?: pulumi.Input<string>;
 }
 
 /**
@@ -176,29 +176,29 @@ export interface CommandArgs {
     /**
      * The Base64-encoded content of the command.
      */
-    readonly commandContent: pulumi.Input<string>;
+    commandContent: pulumi.Input<string>;
     /**
      * The description of command.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Specifies whether to use custom parameters in the command to be created. Default to: false.
      */
-    readonly enableParameter?: pulumi.Input<boolean>;
+    enableParameter?: pulumi.Input<boolean>;
     /**
      * The name of the command, which supports all character sets. It can be up to 128 characters in length.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The timeout period that is specified for the command to be run on ECS instances. Unit: seconds. Default to: `60`.
      */
-    readonly timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number>;
     /**
      * The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
     /**
      * The execution path of the command in the ECS instance.
      */
-    readonly workingDir?: pulumi.Input<string>;
+    workingDir?: pulumi.Input<string>;
 }

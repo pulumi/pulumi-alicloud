@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     ids: [id],
  *     nameRegex: bizName,
  * }));
- * export const faceConfig = defaultFaceConfigs.configs[0];
+ * export const faceConfig = defaultFaceConfigs.apply(defaultFaceConfigs => defaultFaceConfigs.configs?[0]);
  * ```
  */
 export function getFaceConfigs(args?: GetFaceConfigsArgs, opts?: pulumi.InvokeOptions): Promise<GetFaceConfigsResult> {
@@ -52,12 +52,12 @@ export interface GetFaceConfigsArgs {
     /**
      * A list of Face Config IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by biz_name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -73,4 +73,23 @@ export interface GetFaceConfigsResult {
     readonly nameRegex?: string;
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getFaceConfigsOutput(args?: GetFaceConfigsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFaceConfigsResult> {
+    return pulumi.output(args).apply(a => getFaceConfigs(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFaceConfigs.
+ */
+export interface GetFaceConfigsOutputArgs {
+    /**
+     * A list of Face Config IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by biz_name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

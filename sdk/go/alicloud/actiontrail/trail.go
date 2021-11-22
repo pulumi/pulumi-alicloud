@@ -324,7 +324,7 @@ type TrailArrayInput interface {
 type TrailArray []TrailInput
 
 func (TrailArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Trail)(nil))
+	return reflect.TypeOf((*[]*Trail)(nil)).Elem()
 }
 
 func (i TrailArray) ToTrailArrayOutput() TrailArrayOutput {
@@ -349,7 +349,7 @@ type TrailMapInput interface {
 type TrailMap map[string]TrailInput
 
 func (TrailMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Trail)(nil))
+	return reflect.TypeOf((*map[string]*Trail)(nil)).Elem()
 }
 
 func (i TrailMap) ToTrailMapOutput() TrailMapOutput {
@@ -360,9 +360,7 @@ func (i TrailMap) ToTrailMapOutputWithContext(ctx context.Context) TrailMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(TrailMapOutput)
 }
 
-type TrailOutput struct {
-	*pulumi.OutputState
-}
+type TrailOutput struct{ *pulumi.OutputState }
 
 func (TrailOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Trail)(nil))
@@ -381,14 +379,12 @@ func (o TrailOutput) ToTrailPtrOutput() TrailPtrOutput {
 }
 
 func (o TrailOutput) ToTrailPtrOutputWithContext(ctx context.Context) TrailPtrOutput {
-	return o.ApplyT(func(v Trail) *Trail {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Trail) *Trail {
 		return &v
 	}).(TrailPtrOutput)
 }
 
-type TrailPtrOutput struct {
-	*pulumi.OutputState
-}
+type TrailPtrOutput struct{ *pulumi.OutputState }
 
 func (TrailPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Trail)(nil))
@@ -400,6 +396,16 @@ func (o TrailPtrOutput) ToTrailPtrOutput() TrailPtrOutput {
 
 func (o TrailPtrOutput) ToTrailPtrOutputWithContext(ctx context.Context) TrailPtrOutput {
 	return o
+}
+
+func (o TrailPtrOutput) Elem() TrailOutput {
+	return o.ApplyT(func(v *Trail) Trail {
+		if v != nil {
+			return *v
+		}
+		var ret Trail
+		return ret
+	}).(TrailOutput)
 }
 
 type TrailArrayOutput struct{ *pulumi.OutputState }
@@ -443,6 +449,10 @@ func (o TrailMapOutput) MapIndex(k pulumi.StringInput) TrailOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TrailInput)(nil)).Elem(), &Trail{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrailPtrInput)(nil)).Elem(), &Trail{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrailArrayInput)(nil)).Elem(), TrailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrailMapInput)(nil)).Elem(), TrailMap{})
 	pulumi.RegisterOutputType(TrailOutput{})
 	pulumi.RegisterOutputType(TrailPtrOutput{})
 	pulumi.RegisterOutputType(TrailArrayOutput{})

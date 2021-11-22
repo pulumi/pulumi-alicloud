@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *     cidrBlock: "172.16.0.0/12",
  *     nameRegex: "^foo",
  *     status: "Available",
- * }, { async: true }));
+ * }));
  *
  * export const firstVpcId = vpcsDs.vpcs[0].id;
  * ```
@@ -57,56 +57,56 @@ export interface GetNetworksArgs {
     /**
      * Filter results by a specific CIDR block. For example: "172.16.0.0/12".
      */
-    readonly cidrBlock?: string;
+    cidrBlock?: string;
     /**
      * The ID of dhcp options set.
      */
-    readonly dhcpOptionsSetId?: string;
+    dhcpOptionsSetId?: string;
     /**
      * Indicates whether to check this request only. Valid values: `true` and `false`.
      */
-    readonly dryRun?: boolean;
+    dryRun?: boolean;
     /**
      * -(Optional, Available in v1.119.0+) Default to `true`. Set it to true can output the `routeTableId`.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of VPC IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * Indicate whether the VPC is the default one in the specified region.
      */
-    readonly isDefault?: boolean;
+    isDefault?: boolean;
     /**
      * A regex string to filter VPCs by name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The Id of resource group which VPC belongs.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * Filter results by a specific status. Valid value are `Pending` and `Available`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
     /**
      * The name of the VPC.
      */
-    readonly vpcName?: string;
+    vpcName?: string;
     /**
      * The owner ID of VPC.
      */
-    readonly vpcOwnerId?: number;
+    vpcOwnerId?: number;
     /**
      * Filter results by the specified VSwitch.
      */
-    readonly vswitchId?: string;
+    vswitchId?: string;
 }
 
 /**
@@ -157,4 +157,67 @@ export interface GetNetworksResult {
      */
     readonly vpcs: outputs.vpc.GetNetworksVpc[];
     readonly vswitchId?: string;
+}
+
+export function getNetworksOutput(args?: GetNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworksResult> {
+    return pulumi.output(args).apply(a => getNetworks(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNetworks.
+ */
+export interface GetNetworksOutputArgs {
+    /**
+     * Filter results by a specific CIDR block. For example: "172.16.0.0/12".
+     */
+    cidrBlock?: pulumi.Input<string>;
+    /**
+     * The ID of dhcp options set.
+     */
+    dhcpOptionsSetId?: pulumi.Input<string>;
+    /**
+     * Indicates whether to check this request only. Valid values: `true` and `false`.
+     */
+    dryRun?: pulumi.Input<boolean>;
+    /**
+     * -(Optional, Available in v1.119.0+) Default to `true`. Set it to true can output the `routeTableId`.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of VPC IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Indicate whether the VPC is the default one in the specified region.
+     */
+    isDefault?: pulumi.Input<boolean>;
+    /**
+     * A regex string to filter VPCs by name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The Id of resource group which VPC belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Filter results by a specific status. Valid value are `Pending` and `Available`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The name of the VPC.
+     */
+    vpcName?: pulumi.Input<string>;
+    /**
+     * The owner ID of VPC.
+     */
+    vpcOwnerId?: pulumi.Input<number>;
+    /**
+     * Filter results by the specified VSwitch.
+     */
+    vswitchId?: pulumi.Input<string>;
 }

@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     ids: ["eip-bp1jvx5ki6c********"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstEipAddressId = example.then(example => example.addresses[0].id);
+ * export const firstEipAddressId = example.then(example => example.addresses?[0]?.id);
  * ```
  */
 export function getEipAddresses(args?: GetEipAddressesArgs, opts?: pulumi.InvokeOptions): Promise<GetEipAddressesResult> {
@@ -63,72 +63,72 @@ export interface GetEipAddressesArgs {
     /**
      * The name of the EIP.
      */
-    readonly addressName?: string;
+    addressName?: string;
     /**
      * The associated instance id.
      */
-    readonly associatedInstanceId?: string;
+    associatedInstanceId?: string;
     /**
      * The associated instance type.
      */
-    readonly associatedInstanceType?: string;
+    associatedInstanceType?: string;
     /**
      * The dry run.
      */
-    readonly dryRun?: boolean;
+    dryRun?: boolean;
     /**
      * Default to `tue`. Set it to `false` can hidden the `tags` to output.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of Address IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The include reservation data. Valid values: `BGP` and `BGP_PRO`.
      */
-    readonly includeReservationData?: boolean;
+    includeReservationData?: boolean;
     /**
      * The IP address of the EIP.
      */
-    readonly ipAddress?: string;
+    ipAddress?: string;
     /**
      * @deprecated Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.
      */
-    readonly ipAddresses?: string[];
+    ipAddresses?: string[];
     /**
      * The Internet service provider (ISP).
      */
-    readonly isp?: string;
+    isp?: string;
     /**
      * The lock reason.
      */
-    readonly lockReason?: string;
+    lockReason?: string;
     /**
      * A regex string to filter results by Address name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The billing method of the EIP.
      */
-    readonly paymentType?: string;
+    paymentType?: string;
     /**
      * The ID of the resource group.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * The IDs of the contiguous EIPs.
      */
-    readonly segmentInstanceId?: string;
+    segmentInstanceId?: string;
     /**
      * The status of the EIP.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -166,4 +166,83 @@ export interface GetEipAddressesResult {
     readonly segmentInstanceId?: string;
     readonly status?: string;
     readonly tags?: {[key: string]: any};
+}
+
+export function getEipAddressesOutput(args?: GetEipAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEipAddressesResult> {
+    return pulumi.output(args).apply(a => getEipAddresses(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEipAddresses.
+ */
+export interface GetEipAddressesOutputArgs {
+    /**
+     * The name of the EIP.
+     */
+    addressName?: pulumi.Input<string>;
+    /**
+     * The associated instance id.
+     */
+    associatedInstanceId?: pulumi.Input<string>;
+    /**
+     * The associated instance type.
+     */
+    associatedInstanceType?: pulumi.Input<string>;
+    /**
+     * The dry run.
+     */
+    dryRun?: pulumi.Input<boolean>;
+    /**
+     * Default to `tue`. Set it to `false` can hidden the `tags` to output.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of Address IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The include reservation data. Valid values: `BGP` and `BGP_PRO`.
+     */
+    includeReservationData?: pulumi.Input<boolean>;
+    /**
+     * The IP address of the EIP.
+     */
+    ipAddress?: pulumi.Input<string>;
+    /**
+     * @deprecated Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.
+     */
+    ipAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Internet service provider (ISP).
+     */
+    isp?: pulumi.Input<string>;
+    /**
+     * The lock reason.
+     */
+    lockReason?: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Address name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The billing method of the EIP.
+     */
+    paymentType?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The IDs of the contiguous EIPs.
+     */
+    segmentInstanceId?: pulumi.Input<string>;
+    /**
+     * The status of the EIP.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

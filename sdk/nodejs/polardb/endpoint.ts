@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  * });
  * const defaultCluster = new alicloud.polardb.Cluster("defaultCluster", {
  *     dbType: "MySQL",
@@ -171,43 +171,43 @@ export class Endpoint extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Endpoint resources.
  */
 export interface EndpointState {
-    readonly autoAddNewNodes?: pulumi.Input<string>;
-    readonly dbClusterId?: pulumi.Input<string>;
-    readonly endpointConfig?: pulumi.Input<{[key: string]: any}>;
+    autoAddNewNodes?: pulumi.Input<string>;
+    dbClusterId?: pulumi.Input<string>;
+    endpointConfig?: pulumi.Input<{[key: string]: any}>;
     /**
      * Type of endpoint.
      */
-    readonly endpointType?: pulumi.Input<string>;
-    readonly netType?: pulumi.Input<string>;
-    readonly nodes?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly readWriteMode?: pulumi.Input<string>;
-    readonly sslAutoRotate?: pulumi.Input<string>;
-    readonly sslCertificateUrl?: pulumi.Input<string>;
+    endpointType?: pulumi.Input<string>;
+    netType?: pulumi.Input<string>;
+    nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    readWriteMode?: pulumi.Input<string>;
+    sslAutoRotate?: pulumi.Input<string>;
+    sslCertificateUrl?: pulumi.Input<string>;
     /**
      * (Available in v1.121.0+) The SSL connection string.
      */
-    readonly sslConnectionString?: pulumi.Input<string>;
-    readonly sslEnabled?: pulumi.Input<string>;
+    sslConnectionString?: pulumi.Input<string>;
+    sslEnabled?: pulumi.Input<string>;
     /**
      * (Available in v1.121.0+) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
-    readonly sslExpireTime?: pulumi.Input<string>;
+    sslExpireTime?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Endpoint resource.
  */
 export interface EndpointArgs {
-    readonly autoAddNewNodes?: pulumi.Input<string>;
-    readonly dbClusterId: pulumi.Input<string>;
-    readonly endpointConfig?: pulumi.Input<{[key: string]: any}>;
+    autoAddNewNodes?: pulumi.Input<string>;
+    dbClusterId: pulumi.Input<string>;
+    endpointConfig?: pulumi.Input<{[key: string]: any}>;
     /**
      * Type of endpoint.
      */
-    readonly endpointType?: pulumi.Input<string>;
-    readonly netType?: pulumi.Input<string>;
-    readonly nodes?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly readWriteMode?: pulumi.Input<string>;
-    readonly sslAutoRotate?: pulumi.Input<string>;
-    readonly sslEnabled?: pulumi.Input<string>;
+    endpointType?: pulumi.Input<string>;
+    netType?: pulumi.Input<string>;
+    nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    readWriteMode?: pulumi.Input<string>;
+    sslAutoRotate?: pulumi.Input<string>;
+    sslEnabled?: pulumi.Input<string>;
 }

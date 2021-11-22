@@ -47,8 +47,8 @@ namespace Pulumi.AliCloud.Hbr
     ///             return Output.Create(AliCloud.Hbr.GetSnapshots.InvokeAsync(new AliCloud.Hbr.GetSnapshotsArgs
     ///             {
     ///                 SourceType = "ECS_FILE",
-    ///                 VaultId = defaultEcsBackupPlans.Plans[0].VaultId,
-    ///                 InstanceId = defaultEcsBackupPlans1.Plans[0].InstanceId,
+    ///                 VaultId = defaultEcsBackupPlans.Plans?[0]?.VaultId,
+    ///                 InstanceId = defaultEcsBackupPlans1.Plans?[0]?.InstanceId,
     ///             }));
     ///         });
     ///         var ossSnapshots = Output.Tuple(defaultOssBackupPlans, defaultOssBackupPlans).Apply(values =&gt;
@@ -58,8 +58,8 @@ namespace Pulumi.AliCloud.Hbr
     ///             return Output.Create(AliCloud.Hbr.GetSnapshots.InvokeAsync(new AliCloud.Hbr.GetSnapshotsArgs
     ///             {
     ///                 SourceType = "OSS",
-    ///                 VaultId = defaultOssBackupPlans.Plans[0].VaultId,
-    ///                 Bucket = defaultOssBackupPlans1.Plans[0].Bucket,
+    ///                 VaultId = defaultOssBackupPlans.Plans?[0]?.VaultId,
+    ///                 Bucket = defaultOssBackupPlans1.Plans?[0]?.Bucket,
     ///             }));
     ///         });
     ///         var nasSnapshots = Output.Tuple(defaultNasBackupPlans, defaultNasBackupPlans, defaultNasBackupPlans).Apply(values =&gt;
@@ -70,44 +70,44 @@ namespace Pulumi.AliCloud.Hbr
     ///             return Output.Create(AliCloud.Hbr.GetSnapshots.InvokeAsync(new AliCloud.Hbr.GetSnapshotsArgs
     ///             {
     ///                 SourceType = "NAS",
-    ///                 VaultId = defaultNasBackupPlans.Plans[0].VaultId,
-    ///                 FileSystemId = defaultNasBackupPlans1.Plans[0].FileSystemId,
-    ///                 CreateTime = defaultNasBackupPlans2.Plans[0].CreateTime,
+    ///                 VaultId = defaultNasBackupPlans.Plans?[0]?.VaultId,
+    ///                 FileSystemId = defaultNasBackupPlans1.Plans?[0]?.FileSystemId,
+    ///                 CreateTime = defaultNasBackupPlans2.Plans?[0]?.CreateTime,
     ///             }));
     ///         });
     ///         var nasJob = new AliCloud.Hbr.RestoreJob("nasJob", new AliCloud.Hbr.RestoreJobArgs
     ///         {
-    ///             SnapshotHash = nasSnapshots.Apply(nasSnapshots =&gt; nasSnapshots.Snapshots[0].SnapshotHash),
-    ///             VaultId = defaultNasBackupPlans.Apply(defaultNasBackupPlans =&gt; defaultNasBackupPlans.Plans[0].VaultId),
+    ///             SnapshotHash = nasSnapshots.Apply(nasSnapshots =&gt; nasSnapshots.Snapshots?[0]?.SnapshotHash),
+    ///             VaultId = defaultNasBackupPlans.Apply(defaultNasBackupPlans =&gt; defaultNasBackupPlans.Plans?[0]?.VaultId),
     ///             SourceType = "NAS",
     ///             RestoreType = "NAS",
-    ///             SnapshotId = nasSnapshots.Apply(nasSnapshots =&gt; nasSnapshots.Snapshots[0].SnapshotId),
-    ///             TargetFileSystemId = defaultNasBackupPlans.Apply(defaultNasBackupPlans =&gt; defaultNasBackupPlans.Plans[0].FileSystemId),
-    ///             TargetCreateTime = defaultNasBackupPlans.Apply(defaultNasBackupPlans =&gt; defaultNasBackupPlans.Plans[0].CreateTime),
+    ///             SnapshotId = nasSnapshots.Apply(nasSnapshots =&gt; nasSnapshots.Snapshots?[0]?.SnapshotId),
+    ///             TargetFileSystemId = defaultNasBackupPlans.Apply(defaultNasBackupPlans =&gt; defaultNasBackupPlans.Plans?[0]?.FileSystemId),
+    ///             TargetCreateTime = defaultNasBackupPlans.Apply(defaultNasBackupPlans =&gt; defaultNasBackupPlans.Plans?[0]?.CreateTime),
     ///             TargetPath = "/",
     ///             Options = @"    {""includes"":[], ""excludes"":[]}
     /// ",
     ///         });
     ///         var ossJob = new AliCloud.Hbr.RestoreJob("ossJob", new AliCloud.Hbr.RestoreJobArgs
     ///         {
-    ///             SnapshotHash = ossSnapshots.Apply(ossSnapshots =&gt; ossSnapshots.Snapshots[0].SnapshotHash),
-    ///             VaultId = defaultOssBackupPlans.Apply(defaultOssBackupPlans =&gt; defaultOssBackupPlans.Plans[0].VaultId),
+    ///             SnapshotHash = ossSnapshots.Apply(ossSnapshots =&gt; ossSnapshots.Snapshots?[0]?.SnapshotHash),
+    ///             VaultId = defaultOssBackupPlans.Apply(defaultOssBackupPlans =&gt; defaultOssBackupPlans.Plans?[0]?.VaultId),
     ///             SourceType = "OSS",
     ///             RestoreType = "OSS",
-    ///             SnapshotId = ossSnapshots.Apply(ossSnapshots =&gt; ossSnapshots.Snapshots[0].SnapshotId),
-    ///             TargetBucket = defaultOssBackupPlans.Apply(defaultOssBackupPlans =&gt; defaultOssBackupPlans.Plans[0].Bucket),
+    ///             SnapshotId = ossSnapshots.Apply(ossSnapshots =&gt; ossSnapshots.Snapshots?[0]?.SnapshotId),
+    ///             TargetBucket = defaultOssBackupPlans.Apply(defaultOssBackupPlans =&gt; defaultOssBackupPlans.Plans?[0]?.Bucket),
     ///             TargetPrefix = "",
     ///             Options = @"    {""includes"":[], ""excludes"":[]}
     /// ",
     ///         });
     ///         var ecsJob = new AliCloud.Hbr.RestoreJob("ecsJob", new AliCloud.Hbr.RestoreJobArgs
     ///         {
-    ///             SnapshotHash = ecsSnapshots.Apply(ecsSnapshots =&gt; ecsSnapshots.Snapshots[0].SnapshotHash),
-    ///             VaultId = defaultEcsBackupPlans.Apply(defaultEcsBackupPlans =&gt; defaultEcsBackupPlans.Plans[0].VaultId),
+    ///             SnapshotHash = ecsSnapshots.Apply(ecsSnapshots =&gt; ecsSnapshots.Snapshots?[0]?.SnapshotHash),
+    ///             VaultId = defaultEcsBackupPlans.Apply(defaultEcsBackupPlans =&gt; defaultEcsBackupPlans.Plans?[0]?.VaultId),
     ///             SourceType = "ECS_FILE",
     ///             RestoreType = "ECS_FILE",
-    ///             SnapshotId = ecsSnapshots.Apply(ecsSnapshots =&gt; ecsSnapshots.Snapshots[0].SnapshotId),
-    ///             TargetInstanceId = defaultEcsBackupPlans.Apply(defaultEcsBackupPlans =&gt; defaultEcsBackupPlans.Plans[0].InstanceId),
+    ///             SnapshotId = ecsSnapshots.Apply(ecsSnapshots =&gt; ecsSnapshots.Snapshots?[0]?.SnapshotId),
+    ///             TargetInstanceId = defaultEcsBackupPlans.Apply(defaultEcsBackupPlans =&gt; defaultEcsBackupPlans.Plans?[0]?.InstanceId),
     ///             TargetPath = "/",
     ///         });
     ///     }

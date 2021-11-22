@@ -286,7 +286,7 @@ class CompliancePack(pulumi.CustomResource):
             exclude_resource_ids_scope=default_instances.instances[0].id,
             region_ids_scope="cn-hangzhou",
             input_parameters={
-                "vpc_ids": default_instances.instances[0].vpc_id,
+                "vpcIds": default_instances.instances[0].vpc_id,
             })
         default_compliance_pack = alicloud.cfg.CompliancePack("defaultCompliancePack",
             compliance_pack_name="tf-testaccConfig1234",
@@ -355,7 +355,7 @@ class CompliancePack(pulumi.CustomResource):
             exclude_resource_ids_scope=default_instances.instances[0].id,
             region_ids_scope="cn-hangzhou",
             input_parameters={
-                "vpc_ids": default_instances.instances[0].vpc_id,
+                "vpcIds": default_instances.instances[0].vpc_id,
             })
         default_compliance_pack = alicloud.cfg.CompliancePack("defaultCompliancePack",
             compliance_pack_name="tf-testaccConfig1234",

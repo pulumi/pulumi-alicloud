@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Rds
 {
@@ -37,7 +38,7 @@ namespace Pulumi.AliCloud.Rds
         ///                 { "type", "database" },
         ///             },
         ///         }));
-        ///         this.FirstDbInstanceId = dbInstancesDs.Apply(dbInstancesDs =&gt; dbInstancesDs.Instances[0].Id);
+        ///         this.FirstDbInstanceId = dbInstancesDs.Apply(dbInstancesDs =&gt; dbInstancesDs.Instances?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstDbInstanceId")]
@@ -49,6 +50,45 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:rds/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `alicloud.rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
+        /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var dbInstancesDs = Output.Create(AliCloud.Rds.GetInstances.InvokeAsync(new AliCloud.Rds.GetInstancesArgs
+        ///         {
+        ///             NameRegex = "data-\\d+",
+        ///             Status = "Running",
+        ///             Tags = 
+        ///             {
+        ///                 { "size", "tiny" },
+        ///                 { "type", "database" },
+        ///             },
+        ///         }));
+        ///         this.FirstDbInstanceId = dbInstancesDs.Apply(dbInstancesDs =&gt; dbInstancesDs.Instances?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstDbInstanceId")]
+        ///     public Output&lt;string&gt; FirstDbInstanceId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:rds/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -131,6 +171,89 @@ namespace Pulumi.AliCloud.Rds
         public string? VswitchId { get; set; }
 
         public GetInstancesArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// `Standard` for standard access mode and `Safe` for high security access mode.
+        /// </summary>
+        [Input("connectionMode")]
+        public Input<string>? ConnectionMode { get; set; }
+
+        /// <summary>
+        /// `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
+        /// </summary>
+        [Input("dbType")]
+        public Input<string>? DbType { get; set; }
+
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output parameter template about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        /// <summary>
+        /// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+        /// </summary>
+        [Input("engine")]
+        public Input<string>? Engine { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of RDS instance IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by instance name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Status of the instance.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A map of tags assigned to the DB instances. 
+        /// Note: Before 1.60.0, the value's format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\"key1\":\"value1\"}"`
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Used to retrieve instances belong to specified VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// Used to retrieve instances belong to specified `vswitch` resources.
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
+
+        public GetInstancesInvokeArgs()
         {
         }
     }

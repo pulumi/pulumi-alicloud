@@ -127,20 +127,20 @@ export interface MonitorGroupState {
     /**
      * The alert group to which alert notifications will be sent.
      */
-    readonly contactGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    contactGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the application group.
      */
-    readonly monitorGroupName?: pulumi.Input<string>;
+    monitorGroupName?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The name of the resource group.
      */
-    readonly resourceGroupName?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    resourceGroupName?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -150,18 +150,18 @@ export interface MonitorGroupArgs {
     /**
      * The alert group to which alert notifications will be sent.
      */
-    readonly contactGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    contactGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the application group.
      */
-    readonly monitorGroupName?: pulumi.Input<string>;
+    monitorGroupName?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The name of the resource group.
      */
-    readonly resourceGroupName?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    resourceGroupName?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

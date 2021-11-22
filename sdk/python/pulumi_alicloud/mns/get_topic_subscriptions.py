@@ -13,6 +13,7 @@ __all__ = [
     'GetTopicSubscriptionsResult',
     'AwaitableGetTopicSubscriptionsResult',
     'get_topic_subscriptions',
+    'get_topic_subscriptions_output',
 ]
 
 @pulumi.output_type
@@ -133,3 +134,29 @@ def get_topic_subscriptions(name_prefix: Optional[str] = None,
         output_file=__ret__.output_file,
         subscriptions=__ret__.subscriptions,
         topic_name=__ret__.topic_name)
+
+
+@_utilities.lift_output_func(get_topic_subscriptions)
+def get_topic_subscriptions_output(name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
+                                   output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                   topic_name: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTopicSubscriptionsResult]:
+    """
+    This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    subscriptions = alicloud.mns.get_topic_subscriptions(name_prefix="tf-",
+        topic_name="topic_name")
+    pulumi.export("firstTopicSubscriptionId", subscriptions.subscriptions[0].id)
+    ```
+
+
+    :param str name_prefix: A string to filter resulting subscriptions of the topic by their name prefixs.
+    :param str topic_name: Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
+    """
+    ...

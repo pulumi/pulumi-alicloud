@@ -22,13 +22,13 @@ import * as utilities from "../utilities";
  *     trafficMirrorFilterId: "example_traffic_mirror_filter_id",
  *     ids: ["example_id"],
  * });
- * export const vpcTrafficMirrorFilterEgressRuleId1 = ids.then(ids => ids.rules[0].id);
+ * export const vpcTrafficMirrorFilterEgressRuleId1 = ids.then(ids => ids.rules?[0]?.id);
  * const status = alicloud.vpc.getTrafficMirrorFilterEgressRules({
  *     trafficMirrorFilterId: "example_traffic_mirror_filter_id",
  *     ids: ["example_id"],
  *     status: "Created",
  * });
- * export const vpcTrafficMirrorFilterEgressRuleId2 = status.then(status => status.rules[0].id);
+ * export const vpcTrafficMirrorFilterEgressRuleId2 = status.then(status => status.rules?[0]?.id);
  * ```
  */
 export function getTrafficMirrorFilterEgressRules(args: GetTrafficMirrorFilterEgressRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetTrafficMirrorFilterEgressRulesResult> {
@@ -54,16 +54,16 @@ export interface GetTrafficMirrorFilterEgressRulesArgs {
     /**
      * A list of Traffic Mirror Filter Egress Rule IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The ID of the filter associated with the outbound rule.
      */
-    readonly trafficMirrorFilterId: string;
+    trafficMirrorFilterId: string;
 }
 
 /**
@@ -79,4 +79,27 @@ export interface GetTrafficMirrorFilterEgressRulesResult {
     readonly rules: outputs.vpc.GetTrafficMirrorFilterEgressRulesRule[];
     readonly status?: string;
     readonly trafficMirrorFilterId: string;
+}
+
+export function getTrafficMirrorFilterEgressRulesOutput(args: GetTrafficMirrorFilterEgressRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrafficMirrorFilterEgressRulesResult> {
+    return pulumi.output(args).apply(a => getTrafficMirrorFilterEgressRules(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTrafficMirrorFilterEgressRules.
+ */
+export interface GetTrafficMirrorFilterEgressRulesOutputArgs {
+    /**
+     * A list of Traffic Mirror Filter Egress Rule IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The ID of the filter associated with the outbound rule.
+     */
+    trafficMirrorFilterId: pulumi.Input<string>;
 }

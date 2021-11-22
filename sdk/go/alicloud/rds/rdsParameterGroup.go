@@ -240,7 +240,7 @@ type RdsParameterGroupArrayInput interface {
 type RdsParameterGroupArray []RdsParameterGroupInput
 
 func (RdsParameterGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RdsParameterGroup)(nil))
+	return reflect.TypeOf((*[]*RdsParameterGroup)(nil)).Elem()
 }
 
 func (i RdsParameterGroupArray) ToRdsParameterGroupArrayOutput() RdsParameterGroupArrayOutput {
@@ -265,7 +265,7 @@ type RdsParameterGroupMapInput interface {
 type RdsParameterGroupMap map[string]RdsParameterGroupInput
 
 func (RdsParameterGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RdsParameterGroup)(nil))
+	return reflect.TypeOf((*map[string]*RdsParameterGroup)(nil)).Elem()
 }
 
 func (i RdsParameterGroupMap) ToRdsParameterGroupMapOutput() RdsParameterGroupMapOutput {
@@ -276,9 +276,7 @@ func (i RdsParameterGroupMap) ToRdsParameterGroupMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(RdsParameterGroupMapOutput)
 }
 
-type RdsParameterGroupOutput struct {
-	*pulumi.OutputState
-}
+type RdsParameterGroupOutput struct{ *pulumi.OutputState }
 
 func (RdsParameterGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RdsParameterGroup)(nil))
@@ -297,14 +295,12 @@ func (o RdsParameterGroupOutput) ToRdsParameterGroupPtrOutput() RdsParameterGrou
 }
 
 func (o RdsParameterGroupOutput) ToRdsParameterGroupPtrOutputWithContext(ctx context.Context) RdsParameterGroupPtrOutput {
-	return o.ApplyT(func(v RdsParameterGroup) *RdsParameterGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RdsParameterGroup) *RdsParameterGroup {
 		return &v
 	}).(RdsParameterGroupPtrOutput)
 }
 
-type RdsParameterGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type RdsParameterGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (RdsParameterGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RdsParameterGroup)(nil))
@@ -316,6 +312,16 @@ func (o RdsParameterGroupPtrOutput) ToRdsParameterGroupPtrOutput() RdsParameterG
 
 func (o RdsParameterGroupPtrOutput) ToRdsParameterGroupPtrOutputWithContext(ctx context.Context) RdsParameterGroupPtrOutput {
 	return o
+}
+
+func (o RdsParameterGroupPtrOutput) Elem() RdsParameterGroupOutput {
+	return o.ApplyT(func(v *RdsParameterGroup) RdsParameterGroup {
+		if v != nil {
+			return *v
+		}
+		var ret RdsParameterGroup
+		return ret
+	}).(RdsParameterGroupOutput)
 }
 
 type RdsParameterGroupArrayOutput struct{ *pulumi.OutputState }
@@ -359,6 +365,10 @@ func (o RdsParameterGroupMapOutput) MapIndex(k pulumi.StringInput) RdsParameterG
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RdsParameterGroupInput)(nil)).Elem(), &RdsParameterGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RdsParameterGroupPtrInput)(nil)).Elem(), &RdsParameterGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RdsParameterGroupArrayInput)(nil)).Elem(), RdsParameterGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RdsParameterGroupMapInput)(nil)).Elem(), RdsParameterGroupMap{})
 	pulumi.RegisterOutputType(RdsParameterGroupOutput{})
 	pulumi.RegisterOutputType(RdsParameterGroupPtrOutput{})
 	pulumi.RegisterOutputType(RdsParameterGroupArrayOutput{})

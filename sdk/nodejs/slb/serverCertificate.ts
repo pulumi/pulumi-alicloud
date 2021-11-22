@@ -171,43 +171,43 @@ export interface ServerCertificateState {
     /**
      * @deprecated Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.
      */
-    readonly alicloudCertifacteId?: pulumi.Input<string>;
+    alicloudCertifacteId?: pulumi.Input<string>;
     /**
      * @deprecated Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.
      */
-    readonly alicloudCertifacteName?: pulumi.Input<string>;
+    alicloudCertifacteName?: pulumi.Input<string>;
     /**
      * an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
      */
-    readonly alicloudCertificateId?: pulumi.Input<string>;
+    alicloudCertificateId?: pulumi.Input<string>;
     /**
      * the name of the certificate specified by `alicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
      */
-    readonly alicloudCertificateName?: pulumi.Input<string>;
+    alicloudCertificateName?: pulumi.Input<string>;
     /**
      * the region of the certificate specified by `alicloudCertificateId`. but it is not supported on the international site of alibaba cloud now.
      */
-    readonly alicloudCertificateRegionId?: pulumi.Input<string>;
+    alicloudCertificateRegionId?: pulumi.Input<string>;
     /**
      * Name of the Server Certificate.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * the content of privat key of the ssl certificate specified by `serverCertificate`. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
      */
-    readonly privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string>;
     /**
      * The Id of resource group which the slb server certificate belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * the content of the ssl certificate. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
      */
-    readonly serverCertificate?: pulumi.Input<string>;
+    serverCertificate?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -217,41 +217,41 @@ export interface ServerCertificateArgs {
     /**
      * @deprecated Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.
      */
-    readonly alicloudCertifacteId?: pulumi.Input<string>;
+    alicloudCertifacteId?: pulumi.Input<string>;
     /**
      * @deprecated Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.
      */
-    readonly alicloudCertifacteName?: pulumi.Input<string>;
+    alicloudCertifacteName?: pulumi.Input<string>;
     /**
      * an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
      */
-    readonly alicloudCertificateId?: pulumi.Input<string>;
+    alicloudCertificateId?: pulumi.Input<string>;
     /**
      * the name of the certificate specified by `alicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
      */
-    readonly alicloudCertificateName?: pulumi.Input<string>;
+    alicloudCertificateName?: pulumi.Input<string>;
     /**
      * the region of the certificate specified by `alicloudCertificateId`. but it is not supported on the international site of alibaba cloud now.
      */
-    readonly alicloudCertificateRegionId?: pulumi.Input<string>;
+    alicloudCertificateRegionId?: pulumi.Input<string>;
     /**
      * Name of the Server Certificate.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * the content of privat key of the ssl certificate specified by `serverCertificate`. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
      */
-    readonly privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string>;
     /**
      * The Id of resource group which the slb server certificate belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * the content of the ssl certificate. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
      */
-    readonly serverCertificate?: pulumi.Input<string>;
+    serverCertificate?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

@@ -13,6 +13,7 @@ __all__ = [
     'GetRdsParameterGroupsResult',
     'AwaitableGetRdsParameterGroupsResult',
     'get_rds_parameter_groups',
+    'get_rds_parameter_groups_output',
 ]
 
 @pulumi.output_type
@@ -124,3 +125,15 @@ def get_rds_parameter_groups(enable_details: Optional[bool] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file)
+
+
+@_utilities.lift_output_func(get_rds_parameter_groups)
+def get_rds_parameter_groups_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                                    ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRdsParameterGroupsResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

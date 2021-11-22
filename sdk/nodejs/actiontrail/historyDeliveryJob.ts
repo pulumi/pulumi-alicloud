@@ -31,8 +31,8 @@ import * as utilities from "../utilities";
  * });
  * const exampleTrail = new alicloud.actiontrail.Trail("exampleTrail", {
  *     trailName: "example_value",
- *     slsWriteRoleArn: exampleRoles.then(exampleRoles => exampleRoles.roles[0].arn),
- *     slsProjectArn: pulumi.all([exampleRegions, exampleAccount, exampleProject.name]).apply(([exampleRegions, exampleAccount, name]) => `acs:log:${exampleRegions.regions[0].id}:${exampleAccount.id}:project/${name}`),
+ *     slsWriteRoleArn: exampleRoles.then(exampleRoles => exampleRoles.roles?[0]?.arn),
+ *     slsProjectArn: pulumi.all([exampleRegions, exampleAccount, exampleProject.name]).apply(([exampleRegions, exampleAccount, name]) => `acs:log:${exampleRegions.regions?[0]?.id}:${exampleAccount.id}:project/${name}`),
  * });
  * const exampleHistoryDeliveryJob = new alicloud.actiontrail.HistoryDeliveryJob("exampleHistoryDeliveryJob", {trailName: exampleTrail.id});
  * ```
@@ -119,11 +119,11 @@ export interface HistoryDeliveryJobState {
     /**
      * The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
      */
-    readonly status?: pulumi.Input<number>;
+    status?: pulumi.Input<number>;
     /**
      * The name of the trail for which you want to create a historical event delivery task.
      */
-    readonly trailName?: pulumi.Input<string>;
+    trailName?: pulumi.Input<string>;
 }
 
 /**
@@ -133,5 +133,5 @@ export interface HistoryDeliveryJobArgs {
     /**
      * The name of the trail for which you want to create a historical event delivery task.
      */
-    readonly trailName: pulumi.Input<string>;
+    trailName: pulumi.Input<string>;
 }

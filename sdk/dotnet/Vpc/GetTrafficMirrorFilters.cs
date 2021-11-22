@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -37,22 +38,22 @@ namespace Pulumi.AliCloud.Vpc
         ///                 "example_id",
         ///             },
         ///         }));
-        ///         this.VpcTrafficMirrorFilterId1 = ids.Apply(ids =&gt; ids.Filters[0].Id);
+        ///         this.VpcTrafficMirrorFilterId1 = ids.Apply(ids =&gt; ids.Filters?[0]?.Id);
         ///         var nameRegex = Output.Create(AliCloud.Vpc.GetTrafficMirrorFilters.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorFiltersArgs
         ///         {
         ///             NameRegex = "^my-TrafficMirrorFilter",
         ///         }));
-        ///         this.VpcTrafficMirrorFilterId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Filters[0].Id);
+        ///         this.VpcTrafficMirrorFilterId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Filters?[0]?.Id);
         ///         var filterName = Output.Create(AliCloud.Vpc.GetTrafficMirrorFilters.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorFiltersArgs
         ///         {
         ///             TrafficMirrorFilterName = "example_traffic_mirror_filter_name",
         ///         }));
-        ///         this.VpcTrafficMirrorFilterId3 = filterName.Apply(filterName =&gt; filterName.Filters[0].Id);
+        ///         this.VpcTrafficMirrorFilterId3 = filterName.Apply(filterName =&gt; filterName.Filters?[0]?.Id);
         ///         var status = Output.Create(AliCloud.Vpc.GetTrafficMirrorFilters.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorFiltersArgs
         ///         {
         ///             Status = "^my-TrafficMirrorFilter",
         ///         }));
-        ///         this.VpcTrafficMirrorFilterId4 = status.Apply(status =&gt; status.Filters[0].Id);
+        ///         this.VpcTrafficMirrorFilterId4 = status.Apply(status =&gt; status.Filters?[0]?.Id);
         ///     }
         /// 
         ///     [Output("vpcTrafficMirrorFilterId1")]
@@ -70,6 +71,66 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Task<GetTrafficMirrorFiltersResult> InvokeAsync(GetTrafficMirrorFiltersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTrafficMirrorFiltersResult>("alicloud:vpc/getTrafficMirrorFilters:getTrafficMirrorFilters", args ?? new GetTrafficMirrorFiltersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Vpc.GetTrafficMirrorFilters.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorFiltersArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_id",
+        ///             },
+        ///         }));
+        ///         this.VpcTrafficMirrorFilterId1 = ids.Apply(ids =&gt; ids.Filters?[0]?.Id);
+        ///         var nameRegex = Output.Create(AliCloud.Vpc.GetTrafficMirrorFilters.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorFiltersArgs
+        ///         {
+        ///             NameRegex = "^my-TrafficMirrorFilter",
+        ///         }));
+        ///         this.VpcTrafficMirrorFilterId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Filters?[0]?.Id);
+        ///         var filterName = Output.Create(AliCloud.Vpc.GetTrafficMirrorFilters.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorFiltersArgs
+        ///         {
+        ///             TrafficMirrorFilterName = "example_traffic_mirror_filter_name",
+        ///         }));
+        ///         this.VpcTrafficMirrorFilterId3 = filterName.Apply(filterName =&gt; filterName.Filters?[0]?.Id);
+        ///         var status = Output.Create(AliCloud.Vpc.GetTrafficMirrorFilters.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorFiltersArgs
+        ///         {
+        ///             Status = "^my-TrafficMirrorFilter",
+        ///         }));
+        ///         this.VpcTrafficMirrorFilterId4 = status.Apply(status =&gt; status.Filters?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("vpcTrafficMirrorFilterId1")]
+        ///     public Output&lt;string&gt; VpcTrafficMirrorFilterId1 { get; set; }
+        ///     [Output("vpcTrafficMirrorFilterId2")]
+        ///     public Output&lt;string&gt; VpcTrafficMirrorFilterId2 { get; set; }
+        ///     [Output("vpcTrafficMirrorFilterId3")]
+        ///     public Output&lt;string&gt; VpcTrafficMirrorFilterId3 { get; set; }
+        ///     [Output("vpcTrafficMirrorFilterId4")]
+        ///     public Output&lt;string&gt; VpcTrafficMirrorFilterId4 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetTrafficMirrorFiltersResult> Invoke(GetTrafficMirrorFiltersInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetTrafficMirrorFiltersResult>("alicloud:vpc/getTrafficMirrorFilters:getTrafficMirrorFilters", args ?? new GetTrafficMirrorFiltersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -109,6 +170,46 @@ namespace Pulumi.AliCloud.Vpc
         public string? TrafficMirrorFilterName { get; set; }
 
         public GetTrafficMirrorFiltersArgs()
+        {
+        }
+    }
+
+    public sealed class GetTrafficMirrorFiltersInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Traffic Mirror Filter IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Traffic Mirror Filter name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The name of the filter.
+        /// </summary>
+        [Input("trafficMirrorFilterName")]
+        public Input<string>? TrafficMirrorFilterName { get; set; }
+
+        public GetTrafficMirrorFiltersInvokeArgs()
         {
         }
     }

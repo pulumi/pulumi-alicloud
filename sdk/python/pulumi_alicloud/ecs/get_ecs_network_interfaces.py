@@ -13,6 +13,7 @@ __all__ = [
     'GetEcsNetworkInterfacesResult',
     'AwaitableGetEcsNetworkInterfacesResult',
     'get_ecs_network_interfaces',
+    'get_ecs_network_interfaces_output',
 ]
 
 @pulumi.output_type
@@ -308,3 +309,59 @@ def get_ecs_network_interfaces(ids: Optional[Sequence[str]] = None,
         type=__ret__.type,
         vpc_id=__ret__.vpc_id,
         vswitch_id=__ret__.vswitch_id)
+
+
+@_utilities.lift_output_func(get_ecs_network_interfaces)
+def get_ecs_network_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                      instance_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                      name: Optional[pulumi.Input[Optional[str]]] = None,
+                                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                      network_interface_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                      primary_ip_address: Optional[pulumi.Input[Optional[str]]] = None,
+                                      private_ip: Optional[pulumi.Input[Optional[str]]] = None,
+                                      resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                      security_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                      service_managed: Optional[pulumi.Input[Optional[bool]]] = None,
+                                      status: Optional[pulumi.Input[Optional[str]]] = None,
+                                      tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                                      type: Optional[pulumi.Input[Optional[str]]] = None,
+                                      vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                      vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEcsNetworkInterfacesResult]:
+    """
+    This data source provides the Ecs Network Interfaces of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.123.1+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ecs.get_ecs_network_interfaces(ids=["eni-abcd1234"],
+        name_regex="tf-testAcc")
+    pulumi.export("firstEcsNetworkInterfaceId", example.interfaces[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Network Interface IDs.
+    :param str instance_id: The instance id.
+    :param str name: The network interface name.
+    :param str name_regex: A regex string to filter results by Network Interface name.
+    :param str network_interface_name: The network interface name.
+    :param str primary_ip_address: The primary private IP address of the ENI.
+    :param str private_ip: The primary private IP address of the ENI.
+    :param str resource_group_id: The resource group id.
+    :param str security_group_id: The security group id.
+    :param bool service_managed: Whether the user of the elastic network card is a cloud product or a virtual vendor.
+    :param str status: The status of the ENI.
+    :param Mapping[str, Any] tags: The tags.
+    :param str type: The type of the ENI.
+    :param str vpc_id: The Vpc Id.
+    :param str vswitch_id: The vswitch id.
+    """
+    ...

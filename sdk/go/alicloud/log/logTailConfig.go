@@ -219,7 +219,7 @@ type LogTailConfigArrayInput interface {
 type LogTailConfigArray []LogTailConfigInput
 
 func (LogTailConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*LogTailConfig)(nil))
+	return reflect.TypeOf((*[]*LogTailConfig)(nil)).Elem()
 }
 
 func (i LogTailConfigArray) ToLogTailConfigArrayOutput() LogTailConfigArrayOutput {
@@ -244,7 +244,7 @@ type LogTailConfigMapInput interface {
 type LogTailConfigMap map[string]LogTailConfigInput
 
 func (LogTailConfigMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*LogTailConfig)(nil))
+	return reflect.TypeOf((*map[string]*LogTailConfig)(nil)).Elem()
 }
 
 func (i LogTailConfigMap) ToLogTailConfigMapOutput() LogTailConfigMapOutput {
@@ -255,9 +255,7 @@ func (i LogTailConfigMap) ToLogTailConfigMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(LogTailConfigMapOutput)
 }
 
-type LogTailConfigOutput struct {
-	*pulumi.OutputState
-}
+type LogTailConfigOutput struct{ *pulumi.OutputState }
 
 func (LogTailConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*LogTailConfig)(nil))
@@ -276,14 +274,12 @@ func (o LogTailConfigOutput) ToLogTailConfigPtrOutput() LogTailConfigPtrOutput {
 }
 
 func (o LogTailConfigOutput) ToLogTailConfigPtrOutputWithContext(ctx context.Context) LogTailConfigPtrOutput {
-	return o.ApplyT(func(v LogTailConfig) *LogTailConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogTailConfig) *LogTailConfig {
 		return &v
 	}).(LogTailConfigPtrOutput)
 }
 
-type LogTailConfigPtrOutput struct {
-	*pulumi.OutputState
-}
+type LogTailConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (LogTailConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**LogTailConfig)(nil))
@@ -295,6 +291,16 @@ func (o LogTailConfigPtrOutput) ToLogTailConfigPtrOutput() LogTailConfigPtrOutpu
 
 func (o LogTailConfigPtrOutput) ToLogTailConfigPtrOutputWithContext(ctx context.Context) LogTailConfigPtrOutput {
 	return o
+}
+
+func (o LogTailConfigPtrOutput) Elem() LogTailConfigOutput {
+	return o.ApplyT(func(v *LogTailConfig) LogTailConfig {
+		if v != nil {
+			return *v
+		}
+		var ret LogTailConfig
+		return ret
+	}).(LogTailConfigOutput)
 }
 
 type LogTailConfigArrayOutput struct{ *pulumi.OutputState }
@@ -338,6 +344,10 @@ func (o LogTailConfigMapOutput) MapIndex(k pulumi.StringInput) LogTailConfigOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*LogTailConfigInput)(nil)).Elem(), &LogTailConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogTailConfigPtrInput)(nil)).Elem(), &LogTailConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogTailConfigArrayInput)(nil)).Elem(), LogTailConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogTailConfigMapInput)(nil)).Elem(), LogTailConfigMap{})
 	pulumi.RegisterOutputType(LogTailConfigOutput{})
 	pulumi.RegisterOutputType(LogTailConfigPtrOutput{})
 	pulumi.RegisterOutputType(LogTailConfigArrayOutput{})

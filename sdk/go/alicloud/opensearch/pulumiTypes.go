@@ -244,7 +244,7 @@ func (o AppGroupQuotaOutput) ToAppGroupQuotaPtrOutput() AppGroupQuotaPtrOutput {
 }
 
 func (o AppGroupQuotaOutput) ToAppGroupQuotaPtrOutputWithContext(ctx context.Context) AppGroupQuotaPtrOutput {
-	return o.ApplyT(func(v AppGroupQuota) *AppGroupQuota {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppGroupQuota) *AppGroupQuota {
 		return &v
 	}).(AppGroupQuotaPtrOutput)
 }
@@ -291,7 +291,13 @@ func (o AppGroupQuotaPtrOutput) ToAppGroupQuotaPtrOutputWithContext(ctx context.
 }
 
 func (o AppGroupQuotaPtrOutput) Elem() AppGroupQuotaOutput {
-	return o.ApplyT(func(v *AppGroupQuota) AppGroupQuota { return *v }).(AppGroupQuotaOutput)
+	return o.ApplyT(func(v *AppGroupQuota) AppGroupQuota {
+		if v != nil {
+			return *v
+		}
+		var ret AppGroupQuota
+		return ret
+	}).(AppGroupQuotaOutput)
 }
 
 // Computing resources. Unit: LCU.
@@ -809,6 +815,14 @@ func (o GetAppGroupsGroupQuotaArrayOutput) Index(i pulumi.IntInput) GetAppGroups
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AppGroupOrderInput)(nil)).Elem(), AppGroupOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppGroupOrderArrayInput)(nil)).Elem(), AppGroupOrderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppGroupQuotaInput)(nil)).Elem(), AppGroupQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppGroupQuotaPtrInput)(nil)).Elem(), AppGroupQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppGroupsGroupInput)(nil)).Elem(), GetAppGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppGroupsGroupArrayInput)(nil)).Elem(), GetAppGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppGroupsGroupQuotaInput)(nil)).Elem(), GetAppGroupsGroupQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppGroupsGroupQuotaArrayInput)(nil)).Elem(), GetAppGroupsGroupQuotaArray{})
 	pulumi.RegisterOutputType(AppGroupOrderOutput{})
 	pulumi.RegisterOutputType(AppGroupOrderArrayOutput{})
 	pulumi.RegisterOutputType(AppGroupQuotaOutput{})

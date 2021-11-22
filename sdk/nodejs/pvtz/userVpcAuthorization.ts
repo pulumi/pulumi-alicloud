@@ -112,15 +112,15 @@ export interface UserVpcAuthorizationState {
     /**
      * The auth channel. Valid values: `RESOURCE_DIRECTORY`.
      */
-    readonly authChannel?: pulumi.Input<string>;
+    authChannel?: pulumi.Input<string>;
     /**
      * The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
      */
-    readonly authType?: pulumi.Input<string>;
+    authType?: pulumi.Input<string>;
     /**
      * The primary account ID of the user who authorizes the resource.
      */
-    readonly authorizedUserId?: pulumi.Input<string>;
+    authorizedUserId?: pulumi.Input<string>;
 }
 
 /**
@@ -130,13 +130,13 @@ export interface UserVpcAuthorizationArgs {
     /**
      * The auth channel. Valid values: `RESOURCE_DIRECTORY`.
      */
-    readonly authChannel?: pulumi.Input<string>;
+    authChannel?: pulumi.Input<string>;
     /**
      * The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
      */
-    readonly authType?: pulumi.Input<string>;
+    authType?: pulumi.Input<string>;
     /**
      * The primary account ID of the user who authorizes the resource.
      */
-    readonly authorizedUserId: pulumi.Input<string>;
+    authorizedUserId: pulumi.Input<string>;
 }

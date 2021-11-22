@@ -26,6 +26,76 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    /**
+     * The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+     * console.
+     */
+    public readonly accessKey!: pulumi.Output<string | undefined>;
+    /**
+     * The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
+     * Alibaba Cloud console.
+     */
+    public readonly accountId!: pulumi.Output<string | undefined>;
+    /**
+     * Use this to mark a terraform configuration file source.
+     */
+    public readonly configurationSource!: pulumi.Output<string | undefined>;
+    /**
+     * The URI of sidecar credentials service.
+     */
+    public readonly credentialsUri!: pulumi.Output<string | undefined>;
+    /**
+     * The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
+     * of the Alibaba Cloud console.
+     */
+    public readonly ecsRoleName!: pulumi.Output<string | undefined>;
+    /**
+     * @deprecated Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.
+     */
+    public readonly fc!: pulumi.Output<string | undefined>;
+    /**
+     * @deprecated Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.
+     */
+    public readonly logEndpoint!: pulumi.Output<string | undefined>;
+    /**
+     * @deprecated Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.
+     */
+    public readonly mnsEndpoint!: pulumi.Output<string | undefined>;
+    /**
+     * @deprecated Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.
+     */
+    public readonly otsInstanceName!: pulumi.Output<string | undefined>;
+    /**
+     * The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
+     */
+    public readonly profile!: pulumi.Output<string | undefined>;
+    public readonly protocol!: pulumi.Output<string | undefined>;
+    /**
+     * The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
+     */
+    public readonly region!: pulumi.Output<string | undefined>;
+    /**
+     * The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+     * console.
+     */
+    public readonly secretKey!: pulumi.Output<string | undefined>;
+    /**
+     * The security transport for the assume role invoking.
+     */
+    public readonly secureTransport!: pulumi.Output<string | undefined>;
+    /**
+     * security token. A security token is only required if you are using Security Token Service.
+     */
+    public readonly securityToken!: pulumi.Output<string | undefined>;
+    public readonly securityTransport!: pulumi.Output<string | undefined>;
+    /**
+     * The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
+     */
+    public readonly sharedCredentialsFile!: pulumi.Output<string | undefined>;
+    /**
+     * The source ip for the assume role invoking.
+     */
+    public readonly sourceIp!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -77,85 +147,85 @@ export interface ProviderArgs {
      * The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
      * console.
      */
-    readonly accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string>;
     /**
      * The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
      * Alibaba Cloud console.
      */
-    readonly accountId?: pulumi.Input<string>;
-    readonly assumeRole?: pulumi.Input<inputs.ProviderAssumeRole>;
+    accountId?: pulumi.Input<string>;
+    assumeRole?: pulumi.Input<inputs.ProviderAssumeRole>;
     /**
      * The maximum timeout of the client connection server.
      */
-    readonly clientConnectTimeout?: pulumi.Input<number>;
+    clientConnectTimeout?: pulumi.Input<number>;
     /**
      * The maximum timeout of the client read request.
      */
-    readonly clientReadTimeout?: pulumi.Input<number>;
+    clientReadTimeout?: pulumi.Input<number>;
     /**
      * Use this to mark a terraform configuration file source.
      */
-    readonly configurationSource?: pulumi.Input<string>;
+    configurationSource?: pulumi.Input<string>;
     /**
      * The URI of sidecar credentials service.
      */
-    readonly credentialsUri?: pulumi.Input<string>;
+    credentialsUri?: pulumi.Input<string>;
     /**
      * The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
      * of the Alibaba Cloud console.
      */
-    readonly ecsRoleName?: pulumi.Input<string>;
-    readonly endpoints?: pulumi.Input<pulumi.Input<inputs.ProviderEndpoint>[]>;
+    ecsRoleName?: pulumi.Input<string>;
+    endpoints?: pulumi.Input<pulumi.Input<inputs.ProviderEndpoint>[]>;
     /**
      * @deprecated Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.
      */
-    readonly fc?: pulumi.Input<string>;
+    fc?: pulumi.Input<string>;
     /**
      * @deprecated Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.
      */
-    readonly logEndpoint?: pulumi.Input<string>;
+    logEndpoint?: pulumi.Input<string>;
     /**
      * @deprecated Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.
      */
-    readonly mnsEndpoint?: pulumi.Input<string>;
+    mnsEndpoint?: pulumi.Input<string>;
     /**
      * @deprecated Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.
      */
-    readonly otsInstanceName?: pulumi.Input<string>;
+    otsInstanceName?: pulumi.Input<string>;
     /**
      * The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
      */
-    readonly profile?: pulumi.Input<string>;
-    readonly protocol?: pulumi.Input<string>;
+    profile?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string>;
     /**
      * The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
      * console.
      */
-    readonly secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string>;
     /**
      * The security transport for the assume role invoking.
      */
-    readonly secureTransport?: pulumi.Input<string>;
+    secureTransport?: pulumi.Input<string>;
     /**
      * security token. A security token is only required if you are using Security Token Service.
      */
-    readonly securityToken?: pulumi.Input<string>;
-    readonly securityTransport?: pulumi.Input<string>;
+    securityToken?: pulumi.Input<string>;
+    securityTransport?: pulumi.Input<string>;
     /**
      * The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
      */
-    readonly sharedCredentialsFile?: pulumi.Input<string>;
+    sharedCredentialsFile?: pulumi.Input<string>;
     /**
      * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
      * that are not public (yet).
      */
-    readonly skipRegionValidation?: pulumi.Input<boolean>;
+    skipRegionValidation?: pulumi.Input<boolean>;
     /**
      * The source ip for the assume role invoking.
      */
-    readonly sourceIp?: pulumi.Input<string>;
+    sourceIp?: pulumi.Input<string>;
 }

@@ -13,6 +13,7 @@ __all__ = [
     'GetStacksResult',
     'AwaitableGetStacksResult',
     'get_stacks',
+    'get_stacks_output',
 ]
 
 @pulumi.output_type
@@ -209,3 +210,45 @@ def get_stacks(enable_details: Optional[bool] = None,
         stacks=__ret__.stacks,
         status=__ret__.status,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_stacks)
+def get_stacks_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                      parent_stack_id: Optional[pulumi.Input[Optional[str]]] = None,
+                      show_nested_stack: Optional[pulumi.Input[Optional[bool]]] = None,
+                      stack_name: Optional[pulumi.Input[Optional[str]]] = None,
+                      status: Optional[pulumi.Input[Optional[str]]] = None,
+                      tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStacksResult]:
+    """
+    This data source provides the Ros Stacks of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.106.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.ros.get_stacks(ids=["example_value"],
+        name_regex="the_resource_name")
+    pulumi.export("firstRosStackId", example.stacks[0].id)
+    ```
+
+
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of Stack IDs.
+    :param str name_regex: A regex string to filter results by Stack name.
+    :param str parent_stack_id: Parent Stack Id.
+    :param bool show_nested_stack: The show nested stack.
+    :param str stack_name: Stack Name.
+    :param str status: The status of Stack. Valid Values: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `DELETE_COMPLETE`, `DELETE_FAILED`, `DELETE_IN_PROGRESS`, `ROLLBACK_COMPLETE`, `ROLLBACK_FAILED`, `ROLLBACK_IN_PROGRESS`.
+    :param Mapping[str, Any] tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+    """
+    ...

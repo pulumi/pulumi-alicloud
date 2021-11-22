@@ -13,6 +13,7 @@ __all__ = [
     'GetRegistryEnterpriseReposResult',
     'AwaitableGetRegistryEnterpriseReposResult',
     'get_registry_enterprise_repos',
+    'get_registry_enterprise_repos_output',
 ]
 
 @pulumi.output_type
@@ -184,3 +185,38 @@ def get_registry_enterprise_repos(enable_details: Optional[bool] = None,
         namespace=__ret__.namespace,
         output_file=__ret__.output_file,
         repos=__ret__.repos)
+
+
+@_utilities.lift_output_func(get_registry_enterprise_repos)
+def get_registry_enterprise_repos_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                         instance_id: Optional[pulumi.Input[str]] = None,
+                                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                         namespace: Optional[pulumi.Input[Optional[str]]] = None,
+                                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegistryEnterpriseReposResult]:
+    """
+    This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.
+
+    > **NOTE:** Available in v1.87.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    my_repos = alicloud.cs.get_registry_enterprise_repos(instance_id="cri-xx",
+        name_regex="my-repos",
+        output_file="my-repo-json")
+    pulumi.export("output", my_repos.repos)
+    ```
+
+
+    :param bool enable_details: Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `tags` in attributes.
+    :param Sequence[str] ids: A list of ids to filter results by repository id.
+    :param str instance_id: ID of Container Registry Enterprise Edition instance.
+    :param str name_regex: A regex string to filter results by repository name.
+    :param str namespace: Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+    """
+    ...

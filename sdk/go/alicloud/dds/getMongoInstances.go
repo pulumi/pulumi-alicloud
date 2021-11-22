@@ -4,6 +4,9 @@
 package dds
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,4 +43,88 @@ type GetMongoInstancesResult struct {
 	Names         []string                    `pulumi:"names"`
 	OutputFile    *string                     `pulumi:"outputFile"`
 	Tags          map[string]interface{}      `pulumi:"tags"`
+}
+
+func GetMongoInstancesOutput(ctx *pulumi.Context, args GetMongoInstancesOutputArgs, opts ...pulumi.InvokeOption) GetMongoInstancesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetMongoInstancesResult, error) {
+			args := v.(GetMongoInstancesArgs)
+			r, err := GetMongoInstances(ctx, &args, opts...)
+			return *r, err
+		}).(GetMongoInstancesResultOutput)
+}
+
+// A collection of arguments for invoking getMongoInstances.
+type GetMongoInstancesOutputArgs struct {
+	AvailabilityZone pulumi.StringPtrInput   `pulumi:"availabilityZone"`
+	Ids              pulumi.StringArrayInput `pulumi:"ids"`
+	InstanceClass    pulumi.StringPtrInput   `pulumi:"instanceClass"`
+	InstanceType     pulumi.StringPtrInput   `pulumi:"instanceType"`
+	NameRegex        pulumi.StringPtrInput   `pulumi:"nameRegex"`
+	OutputFile       pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Tags             pulumi.MapInput         `pulumi:"tags"`
+}
+
+func (GetMongoInstancesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMongoInstancesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getMongoInstances.
+type GetMongoInstancesResultOutput struct{ *pulumi.OutputState }
+
+func (GetMongoInstancesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMongoInstancesResult)(nil)).Elem()
+}
+
+func (o GetMongoInstancesResultOutput) ToGetMongoInstancesResultOutput() GetMongoInstancesResultOutput {
+	return o
+}
+
+func (o GetMongoInstancesResultOutput) ToGetMongoInstancesResultOutputWithContext(ctx context.Context) GetMongoInstancesResultOutput {
+	return o
+}
+
+func (o GetMongoInstancesResultOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMongoInstancesResult) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetMongoInstancesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMongoInstancesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetMongoInstancesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMongoInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetMongoInstancesResultOutput) InstanceClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMongoInstancesResult) *string { return v.InstanceClass }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMongoInstancesResultOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMongoInstancesResult) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMongoInstancesResultOutput) Instances() GetMongoInstancesInstanceArrayOutput {
+	return o.ApplyT(func(v GetMongoInstancesResult) []GetMongoInstancesInstance { return v.Instances }).(GetMongoInstancesInstanceArrayOutput)
+}
+
+func (o GetMongoInstancesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMongoInstancesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMongoInstancesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMongoInstancesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetMongoInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMongoInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMongoInstancesResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetMongoInstancesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetMongoInstancesResultOutput{})
 }

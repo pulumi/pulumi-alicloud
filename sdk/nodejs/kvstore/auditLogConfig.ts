@@ -126,25 +126,25 @@ export interface AuditLogConfigState {
     /**
      * Instance Creation Time.
      */
-    readonly createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * Indicates Whether to Enable the Audit Log.  Valid value: 
      * * true: Default Value, Open.
      * * false: Closed.
      */
-    readonly dbAudit?: pulumi.Input<boolean>;
+    dbAudit?: pulumi.Input<boolean>;
     /**
      * Instance ID, Call the Describeinstances Get.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * Audit Log Retention Period Value: 1~365.
      */
-    readonly retention?: pulumi.Input<number>;
+    retention?: pulumi.Input<number>;
     /**
      * The status of the resource.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -156,13 +156,13 @@ export interface AuditLogConfigArgs {
      * * true: Default Value, Open.
      * * false: Closed.
      */
-    readonly dbAudit?: pulumi.Input<boolean>;
+    dbAudit?: pulumi.Input<boolean>;
     /**
      * Instance ID, Call the Describeinstances Get.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * Audit Log Retention Period Value: 1~365.
      */
-    readonly retention?: pulumi.Input<number>;
+    retention?: pulumi.Input<number>;
 }

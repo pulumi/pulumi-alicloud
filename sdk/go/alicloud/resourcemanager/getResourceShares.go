@@ -4,6 +4,9 @@
 package resourcemanager
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,4 +80,88 @@ type GetResourceSharesResult struct {
 	ResourceShareOwner string                   `pulumi:"resourceShareOwner"`
 	Shares             []GetResourceSharesShare `pulumi:"shares"`
 	Status             *string                  `pulumi:"status"`
+}
+
+func GetResourceSharesOutput(ctx *pulumi.Context, args GetResourceSharesOutputArgs, opts ...pulumi.InvokeOption) GetResourceSharesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetResourceSharesResult, error) {
+			args := v.(GetResourceSharesArgs)
+			r, err := GetResourceShares(ctx, &args, opts...)
+			return *r, err
+		}).(GetResourceSharesResultOutput)
+}
+
+// A collection of arguments for invoking getResourceShares.
+type GetResourceSharesOutputArgs struct {
+	// A list of Resource Share IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Resource Share name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The name of resource share.
+	ResourceShareName pulumi.StringPtrInput `pulumi:"resourceShareName"`
+	// The owner of resource share.
+	ResourceShareOwner pulumi.StringInput `pulumi:"resourceShareOwner"`
+	// The status of resource share.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetResourceSharesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceSharesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getResourceShares.
+type GetResourceSharesResultOutput struct{ *pulumi.OutputState }
+
+func (GetResourceSharesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceSharesResult)(nil)).Elem()
+}
+
+func (o GetResourceSharesResultOutput) ToGetResourceSharesResultOutput() GetResourceSharesResultOutput {
+	return o
+}
+
+func (o GetResourceSharesResultOutput) ToGetResourceSharesResultOutputWithContext(ctx context.Context) GetResourceSharesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetResourceSharesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceSharesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetResourceSharesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetResourceSharesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetResourceSharesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceSharesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceSharesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetResourceSharesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetResourceSharesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceSharesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceSharesResultOutput) ResourceShareName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceSharesResult) *string { return v.ResourceShareName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceSharesResultOutput) ResourceShareOwner() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceSharesResult) string { return v.ResourceShareOwner }).(pulumi.StringOutput)
+}
+
+func (o GetResourceSharesResultOutput) Shares() GetResourceSharesShareArrayOutput {
+	return o.ApplyT(func(v GetResourceSharesResult) []GetResourceSharesShare { return v.Shares }).(GetResourceSharesShareArrayOutput)
+}
+
+func (o GetResourceSharesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceSharesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetResourceSharesResultOutput{})
 }

@@ -198,7 +198,7 @@ type FaceConfigArrayInput interface {
 type FaceConfigArray []FaceConfigInput
 
 func (FaceConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*FaceConfig)(nil))
+	return reflect.TypeOf((*[]*FaceConfig)(nil)).Elem()
 }
 
 func (i FaceConfigArray) ToFaceConfigArrayOutput() FaceConfigArrayOutput {
@@ -223,7 +223,7 @@ type FaceConfigMapInput interface {
 type FaceConfigMap map[string]FaceConfigInput
 
 func (FaceConfigMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*FaceConfig)(nil))
+	return reflect.TypeOf((*map[string]*FaceConfig)(nil)).Elem()
 }
 
 func (i FaceConfigMap) ToFaceConfigMapOutput() FaceConfigMapOutput {
@@ -234,9 +234,7 @@ func (i FaceConfigMap) ToFaceConfigMapOutputWithContext(ctx context.Context) Fac
 	return pulumi.ToOutputWithContext(ctx, i).(FaceConfigMapOutput)
 }
 
-type FaceConfigOutput struct {
-	*pulumi.OutputState
-}
+type FaceConfigOutput struct{ *pulumi.OutputState }
 
 func (FaceConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*FaceConfig)(nil))
@@ -255,14 +253,12 @@ func (o FaceConfigOutput) ToFaceConfigPtrOutput() FaceConfigPtrOutput {
 }
 
 func (o FaceConfigOutput) ToFaceConfigPtrOutputWithContext(ctx context.Context) FaceConfigPtrOutput {
-	return o.ApplyT(func(v FaceConfig) *FaceConfig {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FaceConfig) *FaceConfig {
 		return &v
 	}).(FaceConfigPtrOutput)
 }
 
-type FaceConfigPtrOutput struct {
-	*pulumi.OutputState
-}
+type FaceConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (FaceConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**FaceConfig)(nil))
@@ -274,6 +270,16 @@ func (o FaceConfigPtrOutput) ToFaceConfigPtrOutput() FaceConfigPtrOutput {
 
 func (o FaceConfigPtrOutput) ToFaceConfigPtrOutputWithContext(ctx context.Context) FaceConfigPtrOutput {
 	return o
+}
+
+func (o FaceConfigPtrOutput) Elem() FaceConfigOutput {
+	return o.ApplyT(func(v *FaceConfig) FaceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FaceConfig
+		return ret
+	}).(FaceConfigOutput)
 }
 
 type FaceConfigArrayOutput struct{ *pulumi.OutputState }
@@ -317,6 +323,10 @@ func (o FaceConfigMapOutput) MapIndex(k pulumi.StringInput) FaceConfigOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FaceConfigInput)(nil)).Elem(), &FaceConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FaceConfigPtrInput)(nil)).Elem(), &FaceConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FaceConfigArrayInput)(nil)).Elem(), FaceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FaceConfigMapInput)(nil)).Elem(), FaceConfigMap{})
 	pulumi.RegisterOutputType(FaceConfigOutput{})
 	pulumi.RegisterOutputType(FaceConfigPtrOutput{})
 	pulumi.RegisterOutputType(FaceConfigArrayOutput{})

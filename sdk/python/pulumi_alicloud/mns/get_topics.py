@@ -13,6 +13,7 @@ __all__ = [
     'GetTopicsResult',
     'AwaitableGetTopicsResult',
     'get_topics',
+    'get_topics_output',
 ]
 
 @pulumi.output_type
@@ -119,3 +120,26 @@ def get_topics(name_prefix: Optional[str] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         topics=__ret__.topics)
+
+
+@_utilities.lift_output_func(get_topics)
+def get_topics_output(name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
+                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTopicsResult]:
+    """
+    This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    topics = alicloud.mns.get_topics(name_prefix="tf-")
+    pulumi.export("firstTopicId", topics.topics[0].id)
+    ```
+
+
+    :param str name_prefix: A string to filter resulting topics by their name prefixs.
+    """
+    ...

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cms
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Cms
         ///             },
         ///             NameRegex = "the_resource_name",
         ///         }));
-        ///         this.FirstCmsGroupMetricRuleId = example.Apply(example =&gt; example.Rules[0].Id);
+        ///         this.FirstCmsGroupMetricRuleId = example.Apply(example =&gt; example.Rules?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstCmsGroupMetricRuleId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Cms
         /// </summary>
         public static Task<GetGroupMetricRulesResult> InvokeAsync(GetGroupMetricRulesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupMetricRulesResult>("alicloud:cms/getGroupMetricRules:getGroupMetricRules", args ?? new GetGroupMetricRulesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.104.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Cms.GetGroupMetricRules.InvokeAsync(new AliCloud.Cms.GetGroupMetricRulesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "4a9a8978-a9cc-55ca-aa7c-530ccd91ae57",
+        ///             },
+        ///             NameRegex = "the_resource_name",
+        ///         }));
+        ///         this.FirstCmsGroupMetricRuleId = example.Apply(example =&gt; example.Rules?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstCmsGroupMetricRuleId")]
+        ///     public Output&lt;string&gt; FirstCmsGroupMetricRuleId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetGroupMetricRulesResult> Invoke(GetGroupMetricRulesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGroupMetricRulesResult>("alicloud:cms/getGroupMetricRules:getGroupMetricRules", args ?? new GetGroupMetricRulesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -119,6 +160,76 @@ namespace Pulumi.AliCloud.Cms
         public string? Status { get; set; }
 
         public GetGroupMetricRulesArgs()
+        {
+        }
+    }
+
+    public sealed class GetGroupMetricRulesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The dimensions that specify the resources to be associated with the alert rule.
+        /// </summary>
+        [Input("dimensions")]
+        public Input<string>? Dimensions { get; set; }
+
+        /// <summary>
+        /// Indicates whether the alert rule is enabled.
+        /// </summary>
+        [Input("enableState")]
+        public Input<bool>? EnableState { get; set; }
+
+        /// <summary>
+        /// The ID of the application group.
+        /// </summary>
+        [Input("groupId")]
+        public Input<string>? GroupId { get; set; }
+
+        /// <summary>
+        /// The name of the alert rule.
+        /// </summary>
+        [Input("groupMetricRuleName")]
+        public Input<string>? GroupMetricRuleName { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Group Metric Rule IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The name of the metric.
+        /// </summary>
+        [Input("metricName")]
+        public Input<string>? MetricName { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by Group Metric Rule name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        /// <summary>
+        /// The namespace of the service.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The status of Group Metric Rule..
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetGroupMetricRulesInvokeArgs()
         {
         }
     }

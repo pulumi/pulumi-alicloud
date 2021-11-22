@@ -13,108 +13,6 @@ import (
 
 // Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		creation := "Rds"
-// 		if param := cfg.Get("creation"); param != "" {
-// 			creation = param
-// 		}
-// 		name := "dbaccountprivilegebasic"
-// 		if param := cfg.Get("name"); param != "" {
-// 			name = param
-// 		}
-// 		opt0 := creation
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-// 			AvailableResourceCreation: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// 			VpcName:   pulumi.String(name),
-// 			CidrBlock: pulumi.String("172.16.0.0/16"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// 			VpcId:       defaultNetwork.ID(),
-// 			CidrBlock:   pulumi.String("172.16.0.0/24"),
-// 			ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
-// 			VswitchName: pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		instance, err := rds.NewInstance(ctx, "instance", &rds.InstanceArgs{
-// 			Engine:          pulumi.String("MySQL"),
-// 			EngineVersion:   pulumi.String("5.6"),
-// 			InstanceType:    pulumi.String("rds.mysql.s1.small"),
-// 			InstanceStorage: pulumi.Int(10),
-// 			VswitchId:       defaultSwitch.ID(),
-// 			InstanceName:    pulumi.String(name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		var db []*rds.Database
-// 		for key0, _ := range 2 {
-// 			__res, err := rds.NewDatabase(ctx, fmt.Sprintf("db-%v", key0), &rds.DatabaseArgs{
-// 				InstanceId:  instance.ID(),
-// 				Description: pulumi.String("from terraform"),
-// 			})
-// 			if err != nil {
-// 				return err
-// 			}
-// 			db = append(db, __res)
-// 		}
-// 		account, err := rds.NewAccount(ctx, "account", &rds.AccountArgs{
-// 			InstanceId:  instance.ID(),
-// 			Password:    pulumi.String("Test12345"),
-// 			Description: pulumi.String("from terraform"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		var splat0 pulumi.StringArray
-// 		for _, val0 := range db {
-// 			splat0 = append(splat0, val0.Name)
-// 		}
-// 		_, err = rds.NewAccountPrivilege(ctx, "privilege", &rds.AccountPrivilegeArgs{
-// 			InstanceId:  instance.ID(),
-// 			AccountName: account.Name,
-// 			Privilege:   pulumi.String("ReadOnly"),
-// 			DbNames:     toPulumiStringArray(splat0),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// func toPulumiStringArray(arr []string) pulumi.StringArray {
-// 	var pulumiArr pulumi.StringArray
-// 	for _, v := range arr {
-// 		pulumiArr = append(pulumiArr, pulumi.String(v))
-// 	}
-// 	return pulumiArr
-// }
-// ```
-//
 // ## Import
 //
 // RDS account privilege can be imported using the id, e.g.
@@ -312,7 +210,7 @@ type AccountPrivilegeArrayInput interface {
 type AccountPrivilegeArray []AccountPrivilegeInput
 
 func (AccountPrivilegeArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AccountPrivilege)(nil))
+	return reflect.TypeOf((*[]*AccountPrivilege)(nil)).Elem()
 }
 
 func (i AccountPrivilegeArray) ToAccountPrivilegeArrayOutput() AccountPrivilegeArrayOutput {
@@ -337,7 +235,7 @@ type AccountPrivilegeMapInput interface {
 type AccountPrivilegeMap map[string]AccountPrivilegeInput
 
 func (AccountPrivilegeMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AccountPrivilege)(nil))
+	return reflect.TypeOf((*map[string]*AccountPrivilege)(nil)).Elem()
 }
 
 func (i AccountPrivilegeMap) ToAccountPrivilegeMapOutput() AccountPrivilegeMapOutput {
@@ -348,9 +246,7 @@ func (i AccountPrivilegeMap) ToAccountPrivilegeMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AccountPrivilegeMapOutput)
 }
 
-type AccountPrivilegeOutput struct {
-	*pulumi.OutputState
-}
+type AccountPrivilegeOutput struct{ *pulumi.OutputState }
 
 func (AccountPrivilegeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccountPrivilege)(nil))
@@ -369,14 +265,12 @@ func (o AccountPrivilegeOutput) ToAccountPrivilegePtrOutput() AccountPrivilegePt
 }
 
 func (o AccountPrivilegeOutput) ToAccountPrivilegePtrOutputWithContext(ctx context.Context) AccountPrivilegePtrOutput {
-	return o.ApplyT(func(v AccountPrivilege) *AccountPrivilege {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccountPrivilege) *AccountPrivilege {
 		return &v
 	}).(AccountPrivilegePtrOutput)
 }
 
-type AccountPrivilegePtrOutput struct {
-	*pulumi.OutputState
-}
+type AccountPrivilegePtrOutput struct{ *pulumi.OutputState }
 
 func (AccountPrivilegePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AccountPrivilege)(nil))
@@ -388,6 +282,16 @@ func (o AccountPrivilegePtrOutput) ToAccountPrivilegePtrOutput() AccountPrivileg
 
 func (o AccountPrivilegePtrOutput) ToAccountPrivilegePtrOutputWithContext(ctx context.Context) AccountPrivilegePtrOutput {
 	return o
+}
+
+func (o AccountPrivilegePtrOutput) Elem() AccountPrivilegeOutput {
+	return o.ApplyT(func(v *AccountPrivilege) AccountPrivilege {
+		if v != nil {
+			return *v
+		}
+		var ret AccountPrivilege
+		return ret
+	}).(AccountPrivilegeOutput)
 }
 
 type AccountPrivilegeArrayOutput struct{ *pulumi.OutputState }
@@ -431,6 +335,10 @@ func (o AccountPrivilegeMapOutput) MapIndex(k pulumi.StringInput) AccountPrivile
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountPrivilegeInput)(nil)).Elem(), &AccountPrivilege{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountPrivilegePtrInput)(nil)).Elem(), &AccountPrivilege{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountPrivilegeArrayInput)(nil)).Elem(), AccountPrivilegeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountPrivilegeMapInput)(nil)).Elem(), AccountPrivilegeMap{})
 	pulumi.RegisterOutputType(AccountPrivilegeOutput{})
 	pulumi.RegisterOutputType(AccountPrivilegePtrOutput{})
 	pulumi.RegisterOutputType(AccountPrivilegeArrayOutput{})

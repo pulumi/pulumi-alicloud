@@ -797,6 +797,18 @@ func (o GetRulesRuleTargetArrayOutput) Index(i pulumi.IntInput) GetRulesRuleTarg
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleTargetInput)(nil)).Elem(), RuleTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleTargetArrayInput)(nil)).Elem(), RuleTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleTargetParamListInput)(nil)).Elem(), RuleTargetParamListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleTargetParamListArrayInput)(nil)).Elem(), RuleTargetParamListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventBusesBusInput)(nil)).Elem(), GetEventBusesBusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventBusesBusArrayInput)(nil)).Elem(), GetEventBusesBusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventSourcesSourceInput)(nil)).Elem(), GetEventSourcesSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventSourcesSourceArrayInput)(nil)).Elem(), GetEventSourcesSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleInput)(nil)).Elem(), GetRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleArrayInput)(nil)).Elem(), GetRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleTargetInput)(nil)).Elem(), GetRulesRuleTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleTargetArrayInput)(nil)).Elem(), GetRulesRuleTargetArray{})
 	pulumi.RegisterOutputType(RuleTargetOutput{})
 	pulumi.RegisterOutputType(RuleTargetArrayOutput{})
 	pulumi.RegisterOutputType(RuleTargetParamListOutput{})

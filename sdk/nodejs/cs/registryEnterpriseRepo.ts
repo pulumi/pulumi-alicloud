@@ -156,31 +156,31 @@ export interface RegistryEnterpriseRepoState {
     /**
      * The repository specific information. MarkDown format is supported, and the length limit is 2000.
      */
-    readonly detail?: pulumi.Input<string>;
+    detail?: pulumi.Input<string>;
     /**
      * ID of Container Registry Enterprise Edition instance.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     /**
      * The uuid of Container Registry Enterprise Edition repository.
      */
-    readonly repoId?: pulumi.Input<string>;
+    repoId?: pulumi.Input<string>;
     /**
      * `PUBLIC` or `PRIVATE`, repo's visibility.
      */
-    readonly repoType?: pulumi.Input<string>;
+    repoType?: pulumi.Input<string>;
     /**
      * The repository general information. It can contain 1 to 100 characters.
      */
-    readonly summary?: pulumi.Input<string>;
+    summary?: pulumi.Input<string>;
 }
 
 /**
@@ -190,25 +190,25 @@ export interface RegistryEnterpriseRepoArgs {
     /**
      * The repository specific information. MarkDown format is supported, and the length limit is 2000.
      */
-    readonly detail?: pulumi.Input<string>;
+    detail?: pulumi.Input<string>;
     /**
      * ID of Container Registry Enterprise Edition instance.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.
      */
-    readonly namespace: pulumi.Input<string>;
+    namespace: pulumi.Input<string>;
     /**
      * `PUBLIC` or `PRIVATE`, repo's visibility.
      */
-    readonly repoType: pulumi.Input<string>;
+    repoType: pulumi.Input<string>;
     /**
      * The repository general information. It can contain 1 to 100 characters.
      */
-    readonly summary: pulumi.Input<string>;
+    summary: pulumi.Input<string>;
 }

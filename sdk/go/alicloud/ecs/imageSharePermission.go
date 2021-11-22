@@ -199,7 +199,7 @@ type ImageSharePermissionArrayInput interface {
 type ImageSharePermissionArray []ImageSharePermissionInput
 
 func (ImageSharePermissionArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ImageSharePermission)(nil))
+	return reflect.TypeOf((*[]*ImageSharePermission)(nil)).Elem()
 }
 
 func (i ImageSharePermissionArray) ToImageSharePermissionArrayOutput() ImageSharePermissionArrayOutput {
@@ -224,7 +224,7 @@ type ImageSharePermissionMapInput interface {
 type ImageSharePermissionMap map[string]ImageSharePermissionInput
 
 func (ImageSharePermissionMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ImageSharePermission)(nil))
+	return reflect.TypeOf((*map[string]*ImageSharePermission)(nil)).Elem()
 }
 
 func (i ImageSharePermissionMap) ToImageSharePermissionMapOutput() ImageSharePermissionMapOutput {
@@ -235,9 +235,7 @@ func (i ImageSharePermissionMap) ToImageSharePermissionMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ImageSharePermissionMapOutput)
 }
 
-type ImageSharePermissionOutput struct {
-	*pulumi.OutputState
-}
+type ImageSharePermissionOutput struct{ *pulumi.OutputState }
 
 func (ImageSharePermissionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ImageSharePermission)(nil))
@@ -256,14 +254,12 @@ func (o ImageSharePermissionOutput) ToImageSharePermissionPtrOutput() ImageShare
 }
 
 func (o ImageSharePermissionOutput) ToImageSharePermissionPtrOutputWithContext(ctx context.Context) ImageSharePermissionPtrOutput {
-	return o.ApplyT(func(v ImageSharePermission) *ImageSharePermission {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageSharePermission) *ImageSharePermission {
 		return &v
 	}).(ImageSharePermissionPtrOutput)
 }
 
-type ImageSharePermissionPtrOutput struct {
-	*pulumi.OutputState
-}
+type ImageSharePermissionPtrOutput struct{ *pulumi.OutputState }
 
 func (ImageSharePermissionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ImageSharePermission)(nil))
@@ -275,6 +271,16 @@ func (o ImageSharePermissionPtrOutput) ToImageSharePermissionPtrOutput() ImageSh
 
 func (o ImageSharePermissionPtrOutput) ToImageSharePermissionPtrOutputWithContext(ctx context.Context) ImageSharePermissionPtrOutput {
 	return o
+}
+
+func (o ImageSharePermissionPtrOutput) Elem() ImageSharePermissionOutput {
+	return o.ApplyT(func(v *ImageSharePermission) ImageSharePermission {
+		if v != nil {
+			return *v
+		}
+		var ret ImageSharePermission
+		return ret
+	}).(ImageSharePermissionOutput)
 }
 
 type ImageSharePermissionArrayOutput struct{ *pulumi.OutputState }
@@ -318,6 +324,10 @@ func (o ImageSharePermissionMapOutput) MapIndex(k pulumi.StringInput) ImageShare
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageSharePermissionInput)(nil)).Elem(), &ImageSharePermission{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageSharePermissionPtrInput)(nil)).Elem(), &ImageSharePermission{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageSharePermissionArrayInput)(nil)).Elem(), ImageSharePermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageSharePermissionMapInput)(nil)).Elem(), ImageSharePermissionMap{})
 	pulumi.RegisterOutputType(ImageSharePermissionOutput{})
 	pulumi.RegisterOutputType(ImageSharePermissionPtrOutput{})
 	pulumi.RegisterOutputType(ImageSharePermissionArrayOutput{})

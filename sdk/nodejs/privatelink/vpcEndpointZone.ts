@@ -129,23 +129,23 @@ export interface VpcEndpointZoneState {
     /**
      * The dry run.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The ID of the Vpc Endpoint.
      */
-    readonly endpointId?: pulumi.Input<string>;
+    endpointId?: pulumi.Input<string>;
     /**
      * Status.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The VSwitch id.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * The Zone Id.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -155,17 +155,17 @@ export interface VpcEndpointZoneArgs {
     /**
      * The dry run.
      */
-    readonly dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean>;
     /**
      * The ID of the Vpc Endpoint.
      */
-    readonly endpointId: pulumi.Input<string>;
+    endpointId: pulumi.Input<string>;
     /**
      * The VSwitch id.
      */
-    readonly vswitchId: pulumi.Input<string>;
+    vswitchId: pulumi.Input<string>;
     /**
      * The Zone Id.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

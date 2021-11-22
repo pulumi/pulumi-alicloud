@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const instanceDdosCooInstances = pulumi.output(alicloud.ddos.getDdosCooInstances({
  *     nameRegex: "^ddoscoo",
- * }, { async: true }));
+ * }));
  *
  * export const instance = alicloud_ddoscoo_instances_instance.map(v => v.id);
  * ```
@@ -44,12 +44,12 @@ export interface GetDdosCooInstancesArgs {
     /**
      * A list of instance IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by the instance name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -74,4 +74,23 @@ export interface GetDdosCooInstancesResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getDdosCooInstancesOutput(args?: GetDdosCooInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosCooInstancesResult> {
+    return pulumi.output(args).apply(a => getDdosCooInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDdosCooInstances.
+ */
+export interface GetDdosCooInstancesOutputArgs {
+    /**
+     * A list of instance IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by the instance name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

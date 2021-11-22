@@ -4,6 +4,9 @@
 package slb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -83,4 +86,88 @@ type GetTlsCipherPoliciesResult struct {
 	Policies            []GetTlsCipherPoliciesPolicy `pulumi:"policies"`
 	Status              *string                      `pulumi:"status"`
 	TlsCipherPolicyName *string                      `pulumi:"tlsCipherPolicyName"`
+}
+
+func GetTlsCipherPoliciesOutput(ctx *pulumi.Context, args GetTlsCipherPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetTlsCipherPoliciesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetTlsCipherPoliciesResult, error) {
+			args := v.(GetTlsCipherPoliciesArgs)
+			r, err := GetTlsCipherPolicies(ctx, &args, opts...)
+			return *r, err
+		}).(GetTlsCipherPoliciesResultOutput)
+}
+
+// A collection of arguments for invoking getTlsCipherPolicies.
+type GetTlsCipherPoliciesOutputArgs struct {
+	// A list of Tls Cipher Policy IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The include listener.
+	IncludeListener pulumi.BoolPtrInput `pulumi:"includeListener"`
+	// A regex string to filter results by Tls Cipher Policy name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// TLS policy instance state.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
+	TlsCipherPolicyName pulumi.StringPtrInput `pulumi:"tlsCipherPolicyName"`
+}
+
+func (GetTlsCipherPoliciesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTlsCipherPoliciesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getTlsCipherPolicies.
+type GetTlsCipherPoliciesResultOutput struct{ *pulumi.OutputState }
+
+func (GetTlsCipherPoliciesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTlsCipherPoliciesResult)(nil)).Elem()
+}
+
+func (o GetTlsCipherPoliciesResultOutput) ToGetTlsCipherPoliciesResultOutput() GetTlsCipherPoliciesResultOutput {
+	return o
+}
+
+func (o GetTlsCipherPoliciesResultOutput) ToGetTlsCipherPoliciesResultOutputWithContext(ctx context.Context) GetTlsCipherPoliciesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetTlsCipherPoliciesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTlsCipherPoliciesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetTlsCipherPoliciesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTlsCipherPoliciesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTlsCipherPoliciesResultOutput) IncludeListener() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetTlsCipherPoliciesResult) *bool { return v.IncludeListener }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetTlsCipherPoliciesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTlsCipherPoliciesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetTlsCipherPoliciesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTlsCipherPoliciesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTlsCipherPoliciesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTlsCipherPoliciesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetTlsCipherPoliciesResultOutput) Policies() GetTlsCipherPoliciesPolicyArrayOutput {
+	return o.ApplyT(func(v GetTlsCipherPoliciesResult) []GetTlsCipherPoliciesPolicy { return v.Policies }).(GetTlsCipherPoliciesPolicyArrayOutput)
+}
+
+func (o GetTlsCipherPoliciesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTlsCipherPoliciesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetTlsCipherPoliciesResultOutput) TlsCipherPolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTlsCipherPoliciesResult) *string { return v.TlsCipherPolicyName }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetTlsCipherPoliciesResultOutput{})
 }

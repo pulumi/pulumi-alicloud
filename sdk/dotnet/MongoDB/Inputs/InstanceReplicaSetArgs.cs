@@ -9,4 +9,53 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.MongoDB.Inputs
 {
+
+    public sealed class InstanceReplicaSetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// The connection address of the node.
+        /// </summary>
+        [Input("connectionDomain")]
+        public Input<string>? ConnectionDomain { get; set; }
+
+        /// <summary>
+        /// The connection port of the node.
+        /// </summary>
+        [Input("connectionPort")]
+        public Input<string>? ConnectionPort { get; set; }
+
+        /// <summary>
+        /// The network type of the node. Valid values: `Classic`,`VPC`.
+        /// </summary>
+        [Input("networkType")]
+        public Input<string>? NetworkType { get; set; }
+
+        /// <summary>
+        /// The role of the node. Valid values: `Primary`,`Secondary`.
+        /// </summary>
+        [Input("replicaSetRole")]
+        public Input<string>? ReplicaSetRole { get; set; }
+
+        /// <summary>
+        /// VPC instance ID.
+        /// </summary>
+        [Input("vpcCloudInstanceId")]
+        public Input<string>? VpcCloudInstanceId { get; set; }
+
+        /// <summary>
+        /// The private network ID of the node.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// The virtual switch ID to launch DB instances in one VPC.
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
+
+        public InstanceReplicaSetArgs()
+        {
+        }
+    }
 }

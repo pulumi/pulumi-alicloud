@@ -101,15 +101,15 @@ export interface ScimServerCredentialState {
     /**
      * The CredentialId of the resource.
      */
-    readonly credentialId?: pulumi.Input<string>;
+    credentialId?: pulumi.Input<string>;
     /**
      * The ID of the Directory.
      */
-    readonly directoryId?: pulumi.Input<string>;
+    directoryId?: pulumi.Input<string>;
     /**
      * The Status of the resource. Valid values: `Disabled`, `Enabled`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -119,9 +119,9 @@ export interface ScimServerCredentialArgs {
     /**
      * The ID of the Directory.
      */
-    readonly directoryId: pulumi.Input<string>;
+    directoryId: pulumi.Input<string>;
     /**
      * The Status of the resource. Valid values: `Disabled`, `Enabled`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }

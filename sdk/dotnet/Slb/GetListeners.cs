@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Slb
 {
@@ -52,7 +53,7 @@ namespace Pulumi.AliCloud.Slb
         ///         {
         ///             LoadBalancerId = id,
         ///         }));
-        ///         this.FirstSlbListenerProtocol = sampleDs.Apply(sampleDs =&gt; sampleDs.SlbListeners[0].Protocol);
+        ///         this.FirstSlbListenerProtocol = sampleDs.Apply(sampleDs =&gt; sampleDs.SlbListeners?[0]?.Protocol);
         ///     }
         /// 
         ///     [Output("firstSlbListenerProtocol")]
@@ -64,6 +65,60 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         public static Task<GetListenersResult> InvokeAsync(GetListenersArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetListenersResult>("alicloud:slb/getListeners:getListeners", args ?? new GetListenersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = new AliCloud.Slb.ApplicationLoadBalancer("default", new AliCloud.Slb.ApplicationLoadBalancerArgs
+        ///         {
+        ///             LoadBalancerName = "tf-testAccSlbListenertcp",
+        ///         });
+        ///         var tcp = new AliCloud.Slb.Listener("tcp", new AliCloud.Slb.ListenerArgs
+        ///         {
+        ///             LoadBalancerId = @default.Id,
+        ///             BackendPort = 22,
+        ///             FrontendPort = 22,
+        ///             Protocol = "tcp",
+        ///             Bandwidth = 10,
+        ///             HealthCheckType = "tcp",
+        ///             PersistenceTimeout = 3600,
+        ///             HealthyThreshold = 8,
+        ///             UnhealthyThreshold = 8,
+        ///             HealthCheckTimeout = 8,
+        ///             HealthCheckInterval = 5,
+        ///             HealthCheckHttpCode = "http_2xx",
+        ///             HealthCheckConnectPort = 20,
+        ///             HealthCheckUri = "/console",
+        ///             EstablishedTimeout = 600,
+        ///         });
+        ///         var sampleDs = @default.Id.Apply(id =&gt; AliCloud.Slb.GetListeners.InvokeAsync(new AliCloud.Slb.GetListenersArgs
+        ///         {
+        ///             LoadBalancerId = id,
+        ///         }));
+        ///         this.FirstSlbListenerProtocol = sampleDs.Apply(sampleDs =&gt; sampleDs.SlbListeners?[0]?.Protocol);
+        ///     }
+        /// 
+        ///     [Output("firstSlbListenerProtocol")]
+        ///     public Output&lt;string&gt; FirstSlbListenerProtocol { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetListenersResult> Invoke(GetListenersInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetListenersResult>("alicloud:slb/getListeners:getListeners", args ?? new GetListenersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -97,6 +152,40 @@ namespace Pulumi.AliCloud.Slb
         public string? Protocol { get; set; }
 
         public GetListenersArgs()
+        {
+        }
+    }
+
+    public sealed class GetListenersInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// A regex string to filter results by SLB listener description.
+        /// </summary>
+        [Input("descriptionRegex")]
+        public Input<string>? DescriptionRegex { get; set; }
+
+        /// <summary>
+        /// Filter listeners by the specified frontend port.
+        /// </summary>
+        [Input("frontendPort")]
+        public Input<int>? FrontendPort { get; set; }
+
+        /// <summary>
+        /// ID of the SLB with listeners.
+        /// </summary>
+        [Input("loadBalancerId", required: true)]
+        public Input<string> LoadBalancerId { get; set; } = null!;
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
+        /// </summary>
+        [Input("protocol")]
+        public Input<string>? Protocol { get; set; }
+
+        public GetListenersInvokeArgs()
         {
         }
     }

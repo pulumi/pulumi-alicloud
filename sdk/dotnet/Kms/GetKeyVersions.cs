@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Kms
 {
@@ -48,6 +49,44 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         public static Task<GetKeyVersionsResult> InvokeAsync(GetKeyVersionsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeyVersionsResult>("alicloud:kms/getKeyVersions:getKeyVersions", args ?? new GetKeyVersionsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of KMS KeyVersions in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; NOTE: Available in v1.85.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var alicloudKmsKeyVersionsDs = Output.Create(AliCloud.Kms.GetKeyVersions.InvokeAsync(new AliCloud.Kms.GetKeyVersionsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "d89e8a53-b708-41aa-8c67-6873axxx",
+        ///             },
+        ///             KeyId = "08438c-b4d5-4d05-928c-07b7xxxx",
+        ///         }));
+        ///         this.AllVersions = alicloudKmsKeyVersionsDs.Apply(alicloudKmsKeyVersionsDs =&gt; alicloudKmsKeyVersionsDs.Versions);
+        ///     }
+        /// 
+        ///     [Output("allVersions")]
+        ///     public Output&lt;string&gt; AllVersions { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetKeyVersionsResult> Invoke(GetKeyVersionsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKeyVersionsResult>("alicloud:kms/getKeyVersions:getKeyVersions", args ?? new GetKeyVersionsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -75,6 +114,34 @@ namespace Pulumi.AliCloud.Kms
         public string? OutputFile { get; set; }
 
         public GetKeyVersionsArgs()
+        {
+        }
+    }
+
+    public sealed class GetKeyVersionsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of KMS KeyVersion IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The id of kms key.
+        /// </summary>
+        [Input("keyId", required: true)]
+        public Input<string> KeyId { get; set; } = null!;
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetKeyVersionsInvokeArgs()
         {
         }
     }

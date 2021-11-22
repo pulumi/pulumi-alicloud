@@ -93,24 +93,24 @@ export class BastionHostInstance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BastionHostInstance resources.
  */
 export interface BastionHostInstanceState {
-    readonly description?: pulumi.Input<string>;
-    readonly licenseCode?: pulumi.Input<string>;
-    readonly period?: pulumi.Input<number>;
-    readonly resourceGroupId?: pulumi.Input<string>;
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
-    readonly vswitchId?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    licenseCode?: pulumi.Input<string>;
+    period?: pulumi.Input<number>;
+    resourceGroupId?: pulumi.Input<string>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<{[key: string]: any}>;
+    vswitchId?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a BastionHostInstance resource.
  */
 export interface BastionHostInstanceArgs {
-    readonly description: pulumi.Input<string>;
-    readonly licenseCode: pulumi.Input<string>;
-    readonly period?: pulumi.Input<number>;
-    readonly resourceGroupId?: pulumi.Input<string>;
-    readonly securityGroupIds: pulumi.Input<pulumi.Input<string>[]>;
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
-    readonly vswitchId: pulumi.Input<string>;
+    description: pulumi.Input<string>;
+    licenseCode: pulumi.Input<string>;
+    period?: pulumi.Input<number>;
+    resourceGroupId?: pulumi.Input<string>;
+    securityGroupIds: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<{[key: string]: any}>;
+    vswitchId: pulumi.Input<string>;
 }

@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  * });
  * const cluster = new alicloud.polardb.Cluster("cluster", {
  *     dbType: "MySQL",
@@ -138,19 +138,19 @@ export interface DatabaseState {
     /**
      * Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
      */
-    readonly characterSetName?: pulumi.Input<string>;
+    characterSetName?: pulumi.Input<string>;
     /**
      * The Id of cluster that can run database.
      */
-    readonly dbClusterId?: pulumi.Input<string>;
+    dbClusterId?: pulumi.Input<string>;
     /**
      * Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
      */
-    readonly dbDescription?: pulumi.Input<string>;
+    dbDescription?: pulumi.Input<string>;
     /**
      * Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
      */
-    readonly dbName?: pulumi.Input<string>;
+    dbName?: pulumi.Input<string>;
 }
 
 /**
@@ -160,17 +160,17 @@ export interface DatabaseArgs {
     /**
      * Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
      */
-    readonly characterSetName?: pulumi.Input<string>;
+    characterSetName?: pulumi.Input<string>;
     /**
      * The Id of cluster that can run database.
      */
-    readonly dbClusterId: pulumi.Input<string>;
+    dbClusterId: pulumi.Input<string>;
     /**
      * Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
      */
-    readonly dbDescription?: pulumi.Input<string>;
+    dbDescription?: pulumi.Input<string>;
     /**
      * Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
      */
-    readonly dbName: pulumi.Input<string>;
+    dbName: pulumi.Input<string>;
 }

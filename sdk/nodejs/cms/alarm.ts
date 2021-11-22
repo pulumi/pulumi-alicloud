@@ -248,95 +248,95 @@ export interface AlarmState {
     /**
      * List contact groups of the alarm rule, which must have been created on the console.
      */
-    readonly contactGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    contactGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
-    readonly dimensions?: pulumi.Input<{[key: string]: any}>;
+    dimensions?: pulumi.Input<{[key: string]: any}>;
     /**
      * The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
      */
-    readonly effectiveInterval?: pulumi.Input<string>;
+    effectiveInterval?: pulumi.Input<string>;
     /**
      * Whether to enable alarm rule. Default to true.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
      *
      * @deprecated Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
      */
-    readonly endTime?: pulumi.Input<number>;
+    endTime?: pulumi.Input<number>;
     /**
      * A configuration of critical alarm (documented below).
      */
-    readonly escalationsCritical?: pulumi.Input<inputs.cms.AlarmEscalationsCritical>;
+    escalationsCritical?: pulumi.Input<inputs.cms.AlarmEscalationsCritical>;
     /**
      * A configuration of critical info (documented below).
      */
-    readonly escalationsInfo?: pulumi.Input<inputs.cms.AlarmEscalationsInfo>;
+    escalationsInfo?: pulumi.Input<inputs.cms.AlarmEscalationsInfo>;
     /**
      * A configuration of critical warn (documented below).
      */
-    readonly escalationsWarn?: pulumi.Input<inputs.cms.AlarmEscalationsWarn>;
+    escalationsWarn?: pulumi.Input<inputs.cms.AlarmEscalationsWarn>;
     /**
      * Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
-    readonly metric?: pulumi.Input<string>;
+    metric?: pulumi.Input<string>;
     /**
      * The alarm rule name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
      *
      * @deprecated Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.
      */
-    readonly operator?: pulumi.Input<string>;
+    operator?: pulumi.Input<string>;
     /**
      * Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
-    readonly project?: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
      */
-    readonly silenceTime?: pulumi.Input<number>;
+    silenceTime?: pulumi.Input<number>;
     /**
      * It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
      *
      * @deprecated Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
      */
-    readonly startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number>;
     /**
      * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
      *
      * @deprecated Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
      */
-    readonly statistics?: pulumi.Input<string>;
+    statistics?: pulumi.Input<string>;
     /**
      * The current alarm rule status.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * Critical level alarm threshold value, which must be a numeric value currently.
      *
      * @deprecated Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
      */
-    readonly threshold?: pulumi.Input<string>;
+    threshold?: pulumi.Input<string>;
     /**
      * It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
      *
      * @deprecated Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.
      */
-    readonly triggeredCount?: pulumi.Input<number>;
+    triggeredCount?: pulumi.Input<number>;
     /**
      * The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
      */
-    readonly webhook?: pulumi.Input<string>;
+    webhook?: pulumi.Input<string>;
 }
 
 /**
@@ -346,89 +346,89 @@ export interface AlarmArgs {
     /**
      * List contact groups of the alarm rule, which must have been created on the console.
      */
-    readonly contactGroups: pulumi.Input<pulumi.Input<string>[]>;
+    contactGroups: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
-    readonly dimensions: pulumi.Input<{[key: string]: any}>;
+    dimensions: pulumi.Input<{[key: string]: any}>;
     /**
      * The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
      */
-    readonly effectiveInterval?: pulumi.Input<string>;
+    effectiveInterval?: pulumi.Input<string>;
     /**
      * Whether to enable alarm rule. Default to true.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
      *
      * @deprecated Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
      */
-    readonly endTime?: pulumi.Input<number>;
+    endTime?: pulumi.Input<number>;
     /**
      * A configuration of critical alarm (documented below).
      */
-    readonly escalationsCritical?: pulumi.Input<inputs.cms.AlarmEscalationsCritical>;
+    escalationsCritical?: pulumi.Input<inputs.cms.AlarmEscalationsCritical>;
     /**
      * A configuration of critical info (documented below).
      */
-    readonly escalationsInfo?: pulumi.Input<inputs.cms.AlarmEscalationsInfo>;
+    escalationsInfo?: pulumi.Input<inputs.cms.AlarmEscalationsInfo>;
     /**
      * A configuration of critical warn (documented below).
      */
-    readonly escalationsWarn?: pulumi.Input<inputs.cms.AlarmEscalationsWarn>;
+    escalationsWarn?: pulumi.Input<inputs.cms.AlarmEscalationsWarn>;
     /**
      * Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
-    readonly metric: pulumi.Input<string>;
+    metric: pulumi.Input<string>;
     /**
      * The alarm rule name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * It has been deprecated from provider version 1.94.0 and 'escalations_critical.comparison_operator' instead.
      *
      * @deprecated Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.
      */
-    readonly operator?: pulumi.Input<string>;
+    operator?: pulumi.Input<string>;
     /**
      * Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
-    readonly project: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
      * Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
      */
-    readonly silenceTime?: pulumi.Input<number>;
+    silenceTime?: pulumi.Input<number>;
     /**
      * It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
      *
      * @deprecated Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
      */
-    readonly startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number>;
     /**
      * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
      *
      * @deprecated Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
      */
-    readonly statistics?: pulumi.Input<string>;
+    statistics?: pulumi.Input<string>;
     /**
      * Critical level alarm threshold value, which must be a numeric value currently.
      *
      * @deprecated Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.
      */
-    readonly threshold?: pulumi.Input<string>;
+    threshold?: pulumi.Input<string>;
     /**
      * It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
      *
      * @deprecated Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.
      */
-    readonly triggeredCount?: pulumi.Input<number>;
+    triggeredCount?: pulumi.Input<number>;
     /**
      * The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
      */
-    readonly webhook?: pulumi.Input<string>;
+    webhook?: pulumi.Input<string>;
 }

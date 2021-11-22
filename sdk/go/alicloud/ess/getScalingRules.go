@@ -4,6 +4,9 @@
 package ess
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,4 +80,87 @@ type GetScalingRulesResult struct {
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
 	// Type of the scaling rule.
 	Type *string `pulumi:"type"`
+}
+
+func GetScalingRulesOutput(ctx *pulumi.Context, args GetScalingRulesOutputArgs, opts ...pulumi.InvokeOption) GetScalingRulesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetScalingRulesResult, error) {
+			args := v.(GetScalingRulesArgs)
+			r, err := GetScalingRules(ctx, &args, opts...)
+			return *r, err
+		}).(GetScalingRulesResultOutput)
+}
+
+// A collection of arguments for invoking getScalingRules.
+type GetScalingRulesOutputArgs struct {
+	// A list of scaling rule IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter resulting scaling rules by name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Scaling group id the scaling rules belong to.
+	ScalingGroupId pulumi.StringPtrInput `pulumi:"scalingGroupId"`
+	// Type of scaling rule.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetScalingRulesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScalingRulesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getScalingRules.
+type GetScalingRulesResultOutput struct{ *pulumi.OutputState }
+
+func (GetScalingRulesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScalingRulesResult)(nil)).Elem()
+}
+
+func (o GetScalingRulesResultOutput) ToGetScalingRulesResultOutput() GetScalingRulesResultOutput {
+	return o
+}
+
+func (o GetScalingRulesResultOutput) ToGetScalingRulesResultOutputWithContext(ctx context.Context) GetScalingRulesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetScalingRulesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingRulesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of scaling rule ids.
+func (o GetScalingRulesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetScalingRulesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetScalingRulesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetScalingRulesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of scaling rule names.
+func (o GetScalingRulesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetScalingRulesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetScalingRulesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetScalingRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// A list of scaling rules. Each element contains the following attributes:
+func (o GetScalingRulesResultOutput) Rules() GetScalingRulesRuleArrayOutput {
+	return o.ApplyT(func(v GetScalingRulesResult) []GetScalingRulesRule { return v.Rules }).(GetScalingRulesRuleArrayOutput)
+}
+
+// ID of the scaling group.
+func (o GetScalingRulesResultOutput) ScalingGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetScalingRulesResult) *string { return v.ScalingGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Type of the scaling rule.
+func (o GetScalingRulesResultOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetScalingRulesResult) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetScalingRulesResultOutput{})
 }

@@ -276,7 +276,7 @@ type ReservedInstanceArrayInput interface {
 type ReservedInstanceArray []ReservedInstanceInput
 
 func (ReservedInstanceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ReservedInstance)(nil))
+	return reflect.TypeOf((*[]*ReservedInstance)(nil)).Elem()
 }
 
 func (i ReservedInstanceArray) ToReservedInstanceArrayOutput() ReservedInstanceArrayOutput {
@@ -301,7 +301,7 @@ type ReservedInstanceMapInput interface {
 type ReservedInstanceMap map[string]ReservedInstanceInput
 
 func (ReservedInstanceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ReservedInstance)(nil))
+	return reflect.TypeOf((*map[string]*ReservedInstance)(nil)).Elem()
 }
 
 func (i ReservedInstanceMap) ToReservedInstanceMapOutput() ReservedInstanceMapOutput {
@@ -312,9 +312,7 @@ func (i ReservedInstanceMap) ToReservedInstanceMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ReservedInstanceMapOutput)
 }
 
-type ReservedInstanceOutput struct {
-	*pulumi.OutputState
-}
+type ReservedInstanceOutput struct{ *pulumi.OutputState }
 
 func (ReservedInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ReservedInstance)(nil))
@@ -333,14 +331,12 @@ func (o ReservedInstanceOutput) ToReservedInstancePtrOutput() ReservedInstancePt
 }
 
 func (o ReservedInstanceOutput) ToReservedInstancePtrOutputWithContext(ctx context.Context) ReservedInstancePtrOutput {
-	return o.ApplyT(func(v ReservedInstance) *ReservedInstance {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReservedInstance) *ReservedInstance {
 		return &v
 	}).(ReservedInstancePtrOutput)
 }
 
-type ReservedInstancePtrOutput struct {
-	*pulumi.OutputState
-}
+type ReservedInstancePtrOutput struct{ *pulumi.OutputState }
 
 func (ReservedInstancePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ReservedInstance)(nil))
@@ -352,6 +348,16 @@ func (o ReservedInstancePtrOutput) ToReservedInstancePtrOutput() ReservedInstanc
 
 func (o ReservedInstancePtrOutput) ToReservedInstancePtrOutputWithContext(ctx context.Context) ReservedInstancePtrOutput {
 	return o
+}
+
+func (o ReservedInstancePtrOutput) Elem() ReservedInstanceOutput {
+	return o.ApplyT(func(v *ReservedInstance) ReservedInstance {
+		if v != nil {
+			return *v
+		}
+		var ret ReservedInstance
+		return ret
+	}).(ReservedInstanceOutput)
 }
 
 type ReservedInstanceArrayOutput struct{ *pulumi.OutputState }
@@ -395,6 +401,10 @@ func (o ReservedInstanceMapOutput) MapIndex(k pulumi.StringInput) ReservedInstan
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservedInstanceInput)(nil)).Elem(), &ReservedInstance{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservedInstancePtrInput)(nil)).Elem(), &ReservedInstance{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservedInstanceArrayInput)(nil)).Elem(), ReservedInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservedInstanceMapInput)(nil)).Elem(), ReservedInstanceMap{})
 	pulumi.RegisterOutputType(ReservedInstanceOutput{})
 	pulumi.RegisterOutputType(ReservedInstancePtrOutput{})
 	pulumi.RegisterOutputType(ReservedInstanceArrayOutput{})

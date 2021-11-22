@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.KVStore
 {
@@ -38,9 +39,9 @@ namespace Pulumi.AliCloud.KVStore
         ///             EngineVersion = "5.0",
         ///             InstanceChargeType = "PrePaid",
         ///             OutputFile = "./engines.txt",
-        ///             ZoneId = resourcesZones.Zones[0].Id,
+        ///             ZoneId = resourcesZones.Zones?[0]?.Id,
         ///         })));
-        ///         this.FirstKvstoreInstanceClass = resourcesInstanceEngines.Apply(resourcesInstanceEngines =&gt; resourcesInstanceEngines.InstanceEngines[0].Engine);
+        ///         this.FirstKvstoreInstanceClass = resourcesInstanceEngines.Apply(resourcesInstanceEngines =&gt; resourcesInstanceEngines.InstanceEngines?[0]?.Engine);
         ///     }
         /// 
         ///     [Output("firstKvstoreInstanceClass")]
@@ -52,6 +53,48 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         public static Task<GetInstanceEnginesResult> InvokeAsync(GetInstanceEnginesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceEnginesResult>("alicloud:kvstore/getInstanceEngines:getInstanceEngines", args ?? new GetInstanceEnginesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in v1.51.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var resourcesZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+        ///         {
+        ///             AvailableResourceCreation = "KVStore",
+        ///         }));
+        ///         var resourcesInstanceEngines = resourcesZones.Apply(resourcesZones =&gt; Output.Create(AliCloud.KVStore.GetInstanceEngines.InvokeAsync(new AliCloud.KVStore.GetInstanceEnginesArgs
+        ///         {
+        ///             Engine = "Redis",
+        ///             EngineVersion = "5.0",
+        ///             InstanceChargeType = "PrePaid",
+        ///             OutputFile = "./engines.txt",
+        ///             ZoneId = resourcesZones.Zones?[0]?.Id,
+        ///         })));
+        ///         this.FirstKvstoreInstanceClass = resourcesInstanceEngines.Apply(resourcesInstanceEngines =&gt; resourcesInstanceEngines.InstanceEngines?[0]?.Engine);
+        ///     }
+        /// 
+        ///     [Output("firstKvstoreInstanceClass")]
+        ///     public Output&lt;string&gt; FirstKvstoreInstanceClass { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetInstanceEnginesResult> Invoke(GetInstanceEnginesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetInstanceEnginesResult>("alicloud:kvstore/getInstanceEngines:getInstanceEngines", args ?? new GetInstanceEnginesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -85,6 +128,40 @@ namespace Pulumi.AliCloud.KVStore
         public string ZoneId { get; set; } = null!;
 
         public GetInstanceEnginesArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceEnginesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
+        /// </summary>
+        [Input("engine")]
+        public Input<string>? Engine { get; set; }
+
+        /// <summary>
+        /// Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
+        /// </summary>
+        [Input("engineVersion")]
+        public Input<string>? EngineVersion { get; set; }
+
+        /// <summary>
+        /// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
+        /// </summary>
+        [Input("instanceChargeType")]
+        public Input<string>? InstanceChargeType { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The Zone to launch the KVStore instance.
+        /// </summary>
+        [Input("zoneId", required: true)]
+        public Input<string> ZoneId { get; set; } = null!;
+
+        public GetInstanceEnginesInvokeArgs()
         {
         }
     }

@@ -169,51 +169,51 @@ export interface SimpleOfficeSiteState {
     /**
      * The Internet Bandwidth Peak. Valid values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
      */
-    readonly bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number>;
     /**
      * Cloud Enterprise Network Instance ID.
      */
-    readonly cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string>;
     /**
      * The cen owner id.
      */
-    readonly cenOwnerId?: pulumi.Input<string>;
+    cenOwnerId?: pulumi.Input<string>;
     /**
      * Workspace Corresponds to the Security Office Network of IPv4 Segment.
      */
-    readonly cidrBlock?: pulumi.Input<string>;
+    cidrBlock?: pulumi.Input<string>;
     /**
      * Connect to the Cloud Desktop Allows the Use of the Access Mode of. Valid values: `Any`, `Internet`, `VPC`.
      */
-    readonly desktopAccessType?: pulumi.Input<string>;
+    desktopAccessType?: pulumi.Input<string>;
     /**
      * Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
      */
-    readonly enableAdminAccess?: pulumi.Input<boolean>;
+    enableAdminAccess?: pulumi.Input<boolean>;
     /**
      * Enable Cross-Desktop Access.
      */
-    readonly enableCrossDesktopAccess?: pulumi.Input<boolean>;
+    enableCrossDesktopAccess?: pulumi.Input<boolean>;
     /**
      * Whether the Open Internet Access Function.
      */
-    readonly enableInternetAccess?: pulumi.Input<boolean>;
+    enableInternetAccess?: pulumi.Input<boolean>;
     /**
      * Whether to Enable Multi-Factor Authentication MFA.
      */
-    readonly mfaEnabled?: pulumi.Input<boolean>;
+    mfaEnabled?: pulumi.Input<boolean>;
     /**
      * The office site name.
      */
-    readonly officeSiteName?: pulumi.Input<string>;
+    officeSiteName?: pulumi.Input<string>;
     /**
      * Whether to Enable Single Sign-on (SSO) for User-Based SSO.
      */
-    readonly ssoEnabled?: pulumi.Input<boolean>;
+    ssoEnabled?: pulumi.Input<boolean>;
     /**
      * Workspace State. Valid Values: `REGISTERED`,`REGISTERING`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -223,45 +223,45 @@ export interface SimpleOfficeSiteArgs {
     /**
      * The Internet Bandwidth Peak. Valid values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
      */
-    readonly bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number>;
     /**
      * Cloud Enterprise Network Instance ID.
      */
-    readonly cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string>;
     /**
      * The cen owner id.
      */
-    readonly cenOwnerId?: pulumi.Input<string>;
+    cenOwnerId?: pulumi.Input<string>;
     /**
      * Workspace Corresponds to the Security Office Network of IPv4 Segment.
      */
-    readonly cidrBlock: pulumi.Input<string>;
+    cidrBlock: pulumi.Input<string>;
     /**
      * Connect to the Cloud Desktop Allows the Use of the Access Mode of. Valid values: `Any`, `Internet`, `VPC`.
      */
-    readonly desktopAccessType?: pulumi.Input<string>;
+    desktopAccessType?: pulumi.Input<string>;
     /**
      * Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
      */
-    readonly enableAdminAccess?: pulumi.Input<boolean>;
+    enableAdminAccess?: pulumi.Input<boolean>;
     /**
      * Enable Cross-Desktop Access.
      */
-    readonly enableCrossDesktopAccess?: pulumi.Input<boolean>;
+    enableCrossDesktopAccess?: pulumi.Input<boolean>;
     /**
      * Whether the Open Internet Access Function.
      */
-    readonly enableInternetAccess?: pulumi.Input<boolean>;
+    enableInternetAccess?: pulumi.Input<boolean>;
     /**
      * Whether to Enable Multi-Factor Authentication MFA.
      */
-    readonly mfaEnabled?: pulumi.Input<boolean>;
+    mfaEnabled?: pulumi.Input<boolean>;
     /**
      * The office site name.
      */
-    readonly officeSiteName?: pulumi.Input<string>;
+    officeSiteName?: pulumi.Input<string>;
     /**
      * Whether to Enable Single Sign-on (SSO) for User-Based SSO.
      */
-    readonly ssoEnabled?: pulumi.Input<boolean>;
+    ssoEnabled?: pulumi.Input<boolean>;
 }

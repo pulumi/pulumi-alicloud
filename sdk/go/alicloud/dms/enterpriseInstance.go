@@ -486,7 +486,7 @@ type EnterpriseInstanceArrayInput interface {
 type EnterpriseInstanceArray []EnterpriseInstanceInput
 
 func (EnterpriseInstanceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EnterpriseInstance)(nil))
+	return reflect.TypeOf((*[]*EnterpriseInstance)(nil)).Elem()
 }
 
 func (i EnterpriseInstanceArray) ToEnterpriseInstanceArrayOutput() EnterpriseInstanceArrayOutput {
@@ -511,7 +511,7 @@ type EnterpriseInstanceMapInput interface {
 type EnterpriseInstanceMap map[string]EnterpriseInstanceInput
 
 func (EnterpriseInstanceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EnterpriseInstance)(nil))
+	return reflect.TypeOf((*map[string]*EnterpriseInstance)(nil)).Elem()
 }
 
 func (i EnterpriseInstanceMap) ToEnterpriseInstanceMapOutput() EnterpriseInstanceMapOutput {
@@ -522,9 +522,7 @@ func (i EnterpriseInstanceMap) ToEnterpriseInstanceMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseInstanceMapOutput)
 }
 
-type EnterpriseInstanceOutput struct {
-	*pulumi.OutputState
-}
+type EnterpriseInstanceOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EnterpriseInstance)(nil))
@@ -543,14 +541,12 @@ func (o EnterpriseInstanceOutput) ToEnterpriseInstancePtrOutput() EnterpriseInst
 }
 
 func (o EnterpriseInstanceOutput) ToEnterpriseInstancePtrOutputWithContext(ctx context.Context) EnterpriseInstancePtrOutput {
-	return o.ApplyT(func(v EnterpriseInstance) *EnterpriseInstance {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseInstance) *EnterpriseInstance {
 		return &v
 	}).(EnterpriseInstancePtrOutput)
 }
 
-type EnterpriseInstancePtrOutput struct {
-	*pulumi.OutputState
-}
+type EnterpriseInstancePtrOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseInstancePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EnterpriseInstance)(nil))
@@ -562,6 +558,16 @@ func (o EnterpriseInstancePtrOutput) ToEnterpriseInstancePtrOutput() EnterpriseI
 
 func (o EnterpriseInstancePtrOutput) ToEnterpriseInstancePtrOutputWithContext(ctx context.Context) EnterpriseInstancePtrOutput {
 	return o
+}
+
+func (o EnterpriseInstancePtrOutput) Elem() EnterpriseInstanceOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) EnterpriseInstance {
+		if v != nil {
+			return *v
+		}
+		var ret EnterpriseInstance
+		return ret
+	}).(EnterpriseInstanceOutput)
 }
 
 type EnterpriseInstanceArrayOutput struct{ *pulumi.OutputState }
@@ -605,6 +611,10 @@ func (o EnterpriseInstanceMapOutput) MapIndex(k pulumi.StringInput) EnterpriseIn
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseInstanceInput)(nil)).Elem(), &EnterpriseInstance{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseInstancePtrInput)(nil)).Elem(), &EnterpriseInstance{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseInstanceArrayInput)(nil)).Elem(), EnterpriseInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseInstanceMapInput)(nil)).Elem(), EnterpriseInstanceMap{})
 	pulumi.RegisterOutputType(EnterpriseInstanceOutput{})
 	pulumi.RegisterOutputType(EnterpriseInstancePtrOutput{})
 	pulumi.RegisterOutputType(EnterpriseInstanceArrayOutput{})

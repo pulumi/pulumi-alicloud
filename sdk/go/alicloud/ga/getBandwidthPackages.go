@@ -4,6 +4,9 @@
 package ga
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -76,4 +79,88 @@ type GetBandwidthPackagesResult struct {
 	Packages   []GetBandwidthPackagesPackage `pulumi:"packages"`
 	Status     *string                       `pulumi:"status"`
 	Type       *string                       `pulumi:"type"`
+}
+
+func GetBandwidthPackagesOutput(ctx *pulumi.Context, args GetBandwidthPackagesOutputArgs, opts ...pulumi.InvokeOption) GetBandwidthPackagesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetBandwidthPackagesResult, error) {
+			args := v.(GetBandwidthPackagesArgs)
+			r, err := GetBandwidthPackages(ctx, &args, opts...)
+			return *r, err
+		}).(GetBandwidthPackagesResultOutput)
+}
+
+// A collection of arguments for invoking getBandwidthPackages.
+type GetBandwidthPackagesOutputArgs struct {
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of Bandwidth Package IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Bandwidth Package name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status of the bandwidth plan.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The type of the bandwidth packet. China station only supports return to basic.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetBandwidthPackagesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBandwidthPackagesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getBandwidthPackages.
+type GetBandwidthPackagesResultOutput struct{ *pulumi.OutputState }
+
+func (GetBandwidthPackagesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBandwidthPackagesResult)(nil)).Elem()
+}
+
+func (o GetBandwidthPackagesResultOutput) ToGetBandwidthPackagesResultOutput() GetBandwidthPackagesResultOutput {
+	return o
+}
+
+func (o GetBandwidthPackagesResultOutput) ToGetBandwidthPackagesResultOutputWithContext(ctx context.Context) GetBandwidthPackagesResultOutput {
+	return o
+}
+
+func (o GetBandwidthPackagesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetBandwidthPackagesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetBandwidthPackagesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetBandwidthPackagesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetBandwidthPackagesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetBandwidthPackagesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetBandwidthPackagesResultOutput) Packages() GetBandwidthPackagesPackageArrayOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesResult) []GetBandwidthPackagesPackage { return v.Packages }).(GetBandwidthPackagesPackageArrayOutput)
+}
+
+func (o GetBandwidthPackagesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetBandwidthPackagesResultOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBandwidthPackagesResult) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetBandwidthPackagesResultOutput{})
 }

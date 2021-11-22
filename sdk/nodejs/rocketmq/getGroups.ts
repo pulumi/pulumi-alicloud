@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *     nameRegex: _var.group_id,
  *     outputFile: "groups.txt",
  * }));
- * export const firstGroupName = groupsDs.groups[0].groupName;
+ * export const firstGroupName = groupsDs.apply(groupsDs => groupsDs.groups?[0]?.groupName);
  * ```
  */
 export function getGroups(args: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
@@ -62,25 +62,25 @@ export interface GetGroupsArgs {
     /**
      * A regex string to filter results by the group name.
      */
-    readonly groupIdRegex?: string;
+    groupIdRegex?: string;
     /**
      * Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
      */
-    readonly groupType?: string;
+    groupType?: string;
     /**
      * A list of group names.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * ID of the ONS Instance that owns the groups.
      */
-    readonly instanceId: string;
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    instanceId: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * A map of tags assigned to the Ons instance.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -112,4 +112,36 @@ export interface GetGroupsResult {
      * A map of tags assigned to the Ons group.
      */
     readonly tags?: {[key: string]: any};
+}
+
+export function getGroupsOutput(args: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
+    return pulumi.output(args).apply(a => getGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGroups.
+ */
+export interface GetGroupsOutputArgs {
+    /**
+     * A regex string to filter results by the group name.
+     */
+    groupIdRegex?: pulumi.Input<string>;
+    /**
+     * Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
+     */
+    groupType?: pulumi.Input<string>;
+    /**
+     * A list of group names.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ID of the ONS Instance that owns the groups.
+     */
+    instanceId: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * A map of tags assigned to the Ons instance.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * const defaultAcls = alicloud_sag_acls_default.id.apply(id => alicloud.sag.getAcls({
  *     ids: [id],
  *     nameRegex: "^tf-testAcc.*",
- * }, { async: true }));
+ * }));
  * const defaultAcl = new alicloud.rocketmq.Acl("default", {});
  * ```
  */
@@ -50,12 +50,12 @@ export interface GetAclsArgs {
     /**
      * A list of Sag Acl IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter Sag Acl instances by name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -80,4 +80,23 @@ export interface GetAclsResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getAclsOutput(args?: GetAclsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclsResult> {
+    return pulumi.output(args).apply(a => getAcls(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAcls.
+ */
+export interface GetAclsOutputArgs {
+    /**
+     * A list of Sag Acl IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter Sag Acl instances by name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

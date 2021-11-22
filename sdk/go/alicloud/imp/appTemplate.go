@@ -243,7 +243,7 @@ type AppTemplateArrayInput interface {
 type AppTemplateArray []AppTemplateInput
 
 func (AppTemplateArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AppTemplate)(nil))
+	return reflect.TypeOf((*[]*AppTemplate)(nil)).Elem()
 }
 
 func (i AppTemplateArray) ToAppTemplateArrayOutput() AppTemplateArrayOutput {
@@ -268,7 +268,7 @@ type AppTemplateMapInput interface {
 type AppTemplateMap map[string]AppTemplateInput
 
 func (AppTemplateMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AppTemplate)(nil))
+	return reflect.TypeOf((*map[string]*AppTemplate)(nil)).Elem()
 }
 
 func (i AppTemplateMap) ToAppTemplateMapOutput() AppTemplateMapOutput {
@@ -279,9 +279,7 @@ func (i AppTemplateMap) ToAppTemplateMapOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AppTemplateMapOutput)
 }
 
-type AppTemplateOutput struct {
-	*pulumi.OutputState
-}
+type AppTemplateOutput struct{ *pulumi.OutputState }
 
 func (AppTemplateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AppTemplate)(nil))
@@ -300,14 +298,12 @@ func (o AppTemplateOutput) ToAppTemplatePtrOutput() AppTemplatePtrOutput {
 }
 
 func (o AppTemplateOutput) ToAppTemplatePtrOutputWithContext(ctx context.Context) AppTemplatePtrOutput {
-	return o.ApplyT(func(v AppTemplate) *AppTemplate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppTemplate) *AppTemplate {
 		return &v
 	}).(AppTemplatePtrOutput)
 }
 
-type AppTemplatePtrOutput struct {
-	*pulumi.OutputState
-}
+type AppTemplatePtrOutput struct{ *pulumi.OutputState }
 
 func (AppTemplatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AppTemplate)(nil))
@@ -319,6 +315,16 @@ func (o AppTemplatePtrOutput) ToAppTemplatePtrOutput() AppTemplatePtrOutput {
 
 func (o AppTemplatePtrOutput) ToAppTemplatePtrOutputWithContext(ctx context.Context) AppTemplatePtrOutput {
 	return o
+}
+
+func (o AppTemplatePtrOutput) Elem() AppTemplateOutput {
+	return o.ApplyT(func(v *AppTemplate) AppTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret AppTemplate
+		return ret
+	}).(AppTemplateOutput)
 }
 
 type AppTemplateArrayOutput struct{ *pulumi.OutputState }
@@ -362,6 +368,10 @@ func (o AppTemplateMapOutput) MapIndex(k pulumi.StringInput) AppTemplateOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AppTemplateInput)(nil)).Elem(), &AppTemplate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppTemplatePtrInput)(nil)).Elem(), &AppTemplate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppTemplateArrayInput)(nil)).Elem(), AppTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppTemplateMapInput)(nil)).Elem(), AppTemplateMap{})
 	pulumi.RegisterOutputType(AppTemplateOutput{})
 	pulumi.RegisterOutputType(AppTemplatePtrOutput{})
 	pulumi.RegisterOutputType(AppTemplateArrayOutput{})

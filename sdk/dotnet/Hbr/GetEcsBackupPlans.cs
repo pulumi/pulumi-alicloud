@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Hbr
 {
@@ -34,7 +35,7 @@ namespace Pulumi.AliCloud.Hbr
         ///         {
         ///             NameRegex = "plan-name",
         ///         }));
-        ///         this.HbrEcsBackupPlanId = ids.Apply(ids =&gt; ids.Plans[0].Id);
+        ///         this.HbrEcsBackupPlanId = ids.Apply(ids =&gt; ids.Plans?[0]?.Id);
         ///     }
         /// 
         ///     [Output("hbrEcsBackupPlanId")]
@@ -46,6 +47,42 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         public static Task<GetEcsBackupPlansResult> InvokeAsync(GetEcsBackupPlansArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEcsBackupPlansResult>("alicloud:hbr/getEcsBackupPlans:getEcsBackupPlans", args ?? new GetEcsBackupPlansArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Hbr EcsBackupPlans of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ids = Output.Create(AliCloud.Hbr.GetEcsBackupPlans.InvokeAsync(new AliCloud.Hbr.GetEcsBackupPlansArgs
+        ///         {
+        ///             NameRegex = "plan-name",
+        ///         }));
+        ///         this.HbrEcsBackupPlanId = ids.Apply(ids =&gt; ids.Plans?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("hbrEcsBackupPlanId")]
+        ///     public Output&lt;string&gt; HbrEcsBackupPlanId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetEcsBackupPlansResult> Invoke(GetEcsBackupPlansInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetEcsBackupPlansResult>("alicloud:hbr/getEcsBackupPlans:getEcsBackupPlans", args ?? new GetEcsBackupPlansInvokeArgs(), options.WithVersion());
     }
 
 
@@ -85,6 +122,46 @@ namespace Pulumi.AliCloud.Hbr
         public string? VaultId { get; set; }
 
         public GetEcsBackupPlansArgs()
+        {
+        }
+    }
+
+    public sealed class GetEcsBackupPlansInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of EcsBackupPlan IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The ID of ECS instance.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// A regex string to filter results by EcsBackupPlan name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The ID of Backup vault.
+        /// </summary>
+        [Input("vaultId")]
+        public Input<string>? VaultId { get; set; }
+
+        public GetEcsBackupPlansInvokeArgs()
         {
         }
     }

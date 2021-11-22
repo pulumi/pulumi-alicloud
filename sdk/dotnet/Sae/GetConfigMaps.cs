@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Sae
 {
@@ -54,7 +55,7 @@ namespace Pulumi.AliCloud.Sae
         ///             NamespaceId = namespaceId,
         ///             NameRegex = "^example",
         ///         }));
-        ///         this.SaeConfigMapId = nameRegex.Apply(nameRegex =&gt; nameRegex.Maps[0].Id);
+        ///         this.SaeConfigMapId = nameRegex.Apply(nameRegex =&gt; nameRegex.Maps?[0]?.Id);
         ///     }
         /// 
         ///     [Output("saeConfigMapId")]
@@ -66,6 +67,62 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         public static Task<GetConfigMapsResult> InvokeAsync(GetConfigMapsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConfigMapsResult>("alicloud:sae/getConfigMaps:getConfigMaps", args ?? new GetConfigMapsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Sae Config Maps of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.130.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Text.Json;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var config = new Config();
+        ///         var configMapName = config.Get("configMapName") ?? "examplename";
+        ///         var exampleNamespace = new AliCloud.Sae.Namespace("exampleNamespace", new AliCloud.Sae.NamespaceArgs
+        ///         {
+        ///             NamespaceId = "cn-hangzhou:yourname",
+        ///             NamespaceName = "example_value",
+        ///             NamespaceDescription = "your_description",
+        ///         });
+        ///         var exampleConfigMap = new AliCloud.Sae.ConfigMap("exampleConfigMap", new AliCloud.Sae.ConfigMapArgs
+        ///         {
+        ///             Data = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+        ///             {
+        ///                 { "env.home", "/root" },
+        ///                 { "env.shell", "/bin/sh" },
+        ///             }),
+        ///             NamespaceId = exampleNamespace.NamespaceId,
+        ///         });
+        ///         var nameRegex = exampleNamespace.NamespaceId.Apply(namespaceId =&gt; AliCloud.Sae.GetConfigMaps.InvokeAsync(new AliCloud.Sae.GetConfigMapsArgs
+        ///         {
+        ///             NamespaceId = namespaceId,
+        ///             NameRegex = "^example",
+        ///         }));
+        ///         this.SaeConfigMapId = nameRegex.Apply(nameRegex =&gt; nameRegex.Maps?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("saeConfigMapId")]
+        ///     public Output&lt;string&gt; SaeConfigMapId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetConfigMapsResult> Invoke(GetConfigMapsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetConfigMapsResult>("alicloud:sae/getConfigMaps:getConfigMaps", args ?? new GetConfigMapsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -99,6 +156,40 @@ namespace Pulumi.AliCloud.Sae
         public string? OutputFile { get; set; }
 
         public GetConfigMapsArgs()
+        {
+        }
+    }
+
+    public sealed class GetConfigMapsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Config Map IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Config Map name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        /// <summary>
+        /// The NamespaceId of Config Maps.
+        /// </summary>
+        [Input("namespaceId", required: true)]
+        public Input<string> NamespaceId { get; set; } = null!;
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetConfigMapsInvokeArgs()
         {
         }
     }

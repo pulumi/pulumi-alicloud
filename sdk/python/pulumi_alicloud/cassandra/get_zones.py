@@ -13,6 +13,7 @@ __all__ = [
     'GetZonesResult',
     'AwaitableGetZonesResult',
     'get_zones',
+    'get_zones_output',
 ]
 
 @pulumi.output_type
@@ -123,3 +124,30 @@ def get_zones(multi: Optional[bool] = None,
         multi=__ret__.multi,
         output_file=__ret__.output_file,
         zones=__ret__.zones)
+
+
+@_utilities.lift_output_func(get_zones)
+def get_zones_output(multi: Optional[pulumi.Input[Optional[bool]]] = None,
+                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
+    """
+    This data source provides availability zones for Cassandra that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+
+    > **NOTE:** Available in v1.88.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    zones_ids = alicloud.cassandra.get_zones()
+    # Create an Cassandra cluster with the first matched zone
+    cassandra = alicloud.cassandra.Cluster("cassandra", zone_id=zones_ids.zones[0].id)
+    # Other properties...
+    ```
+
+
+    :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Cassandra clusters.
+    """
+    ...

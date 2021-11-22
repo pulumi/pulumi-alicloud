@@ -4,6 +4,9 @@
 package alb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -76,4 +79,90 @@ type GetListenersResult struct {
 	LoadBalancerIds  []string               `pulumi:"loadBalancerIds"`
 	OutputFile       *string                `pulumi:"outputFile"`
 	Status           *string                `pulumi:"status"`
+}
+
+func GetListenersOutput(ctx *pulumi.Context, args GetListenersOutputArgs, opts ...pulumi.InvokeOption) GetListenersResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetListenersResult, error) {
+			args := v.(GetListenersArgs)
+			r, err := GetListeners(ctx, &args, opts...)
+			return *r, err
+		}).(GetListenersResultOutput)
+}
+
+// A collection of arguments for invoking getListeners.
+type GetListenersOutputArgs struct {
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of Listener IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The listener ids.
+	ListenerIds pulumi.StringArrayInput `pulumi:"listenerIds"`
+	// Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+	ListenerProtocol pulumi.StringPtrInput `pulumi:"listenerProtocol"`
+	// The load balancer ids.
+	LoadBalancerIds pulumi.StringArrayInput `pulumi:"loadBalancerIds"`
+	OutputFile      pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetListenersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getListeners.
+type GetListenersResultOutput struct{ *pulumi.OutputState }
+
+func (GetListenersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenersResult)(nil)).Elem()
+}
+
+func (o GetListenersResultOutput) ToGetListenersResultOutput() GetListenersResultOutput {
+	return o
+}
+
+func (o GetListenersResultOutput) ToGetListenersResultOutputWithContext(ctx context.Context) GetListenersResultOutput {
+	return o
+}
+
+func (o GetListenersResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetListenersResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetListenersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetListenersResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetListenersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetListenersResultOutput) ListenerIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetListenersResult) []string { return v.ListenerIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetListenersResultOutput) ListenerProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetListenersResult) *string { return v.ListenerProtocol }).(pulumi.StringPtrOutput)
+}
+
+func (o GetListenersResultOutput) Listeners() GetListenersListenerArrayOutput {
+	return o.ApplyT(func(v GetListenersResult) []GetListenersListener { return v.Listeners }).(GetListenersListenerArrayOutput)
+}
+
+func (o GetListenersResultOutput) LoadBalancerIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetListenersResult) []string { return v.LoadBalancerIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetListenersResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetListenersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetListenersResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetListenersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetListenersResultOutput{})
 }

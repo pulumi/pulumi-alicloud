@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const sampleDs = pulumi.output(alicloud.slb.getServerCertificates({ async: true }));
+ * const sampleDs = pulumi.output(alicloud.slb.getServerCertificates());
  *
  * export const firstSlbServerCertificateId = sampleDs.certificates[0].id;
  * ```
@@ -44,20 +44,20 @@ export interface GetServerCertificatesArgs {
     /**
      * A list of server certificates IDs to filter results.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by server certificate name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The Id of resource group which the slb server certificates belongs.
      */
-    readonly resourceGroupId?: string;
+    resourceGroupId?: string;
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: any};
+    tags?: {[key: string]: any};
 }
 
 /**
@@ -90,4 +90,31 @@ export interface GetServerCertificatesResult {
      * (Available in v1.66.0+) A mapping of tags to assign to the resource.
      */
     readonly tags?: {[key: string]: any};
+}
+
+export function getServerCertificatesOutput(args?: GetServerCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerCertificatesResult> {
+    return pulumi.output(args).apply(a => getServerCertificates(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServerCertificates.
+ */
+export interface GetServerCertificatesOutputArgs {
+    /**
+     * A list of server certificates IDs to filter results.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by server certificate name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The Id of resource group which the slb server certificates belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

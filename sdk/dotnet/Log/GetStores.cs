@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Log
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Log
         ///                 "the_store_name",
         ///             },
         ///         }));
-        ///         this.FirstLogStoreId = example.Apply(example =&gt; example.Stores[0].Id);
+        ///         this.FirstLogStoreId = example.Apply(example =&gt; example.Stores?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstLogStoreId")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Log
         /// </summary>
         public static Task<GetStoresResult> InvokeAsync(GetStoresArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetStoresResult>("alicloud:log/getStores:getStores", args ?? new GetStoresArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Log Stores of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.126.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Log.GetStores.InvokeAsync(new AliCloud.Log.GetStoresArgs
+        ///         {
+        ///             Project = "the_project_name",
+        ///             Ids = 
+        ///             {
+        ///                 "the_store_name",
+        ///             },
+        ///         }));
+        ///         this.FirstLogStoreId = example.Apply(example =&gt; example.Stores?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstLogStoreId")]
+        ///     public Output&lt;string&gt; FirstLogStoreId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetStoresResult> Invoke(GetStoresInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetStoresResult>("alicloud:log/getStores:getStores", args ?? new GetStoresInvokeArgs(), options.WithVersion());
     }
 
 
@@ -80,6 +121,37 @@ namespace Pulumi.AliCloud.Log
         public string Project { get; set; } = null!;
 
         public GetStoresArgs()
+        {
+        }
+    }
+
+    public sealed class GetStoresInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of store IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by store name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
+
+        public GetStoresInvokeArgs()
         {
         }
     }

@@ -4,6 +4,9 @@
 package kms
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,4 +39,69 @@ type LookupCiphertextResult struct {
 	Id        string `pulumi:"id"`
 	KeyId     string `pulumi:"keyId"`
 	Plaintext string `pulumi:"plaintext"`
+}
+
+func LookupCiphertextOutput(ctx *pulumi.Context, args LookupCiphertextOutputArgs, opts ...pulumi.InvokeOption) LookupCiphertextResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupCiphertextResult, error) {
+			args := v.(LookupCiphertextArgs)
+			r, err := LookupCiphertext(ctx, &args, opts...)
+			return *r, err
+		}).(LookupCiphertextResultOutput)
+}
+
+// A collection of arguments for invoking getCiphertext.
+type LookupCiphertextOutputArgs struct {
+	// -
+	// (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+	EncryptionContext pulumi.StringMapInput `pulumi:"encryptionContext"`
+	// The globally unique ID of the CMK.
+	KeyId pulumi.StringInput `pulumi:"keyId"`
+	// The plaintext to be encrypted which must be encoded in Base64.
+	Plaintext pulumi.StringInput `pulumi:"plaintext"`
+}
+
+func (LookupCiphertextOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCiphertextArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getCiphertext.
+type LookupCiphertextResultOutput struct{ *pulumi.OutputState }
+
+func (LookupCiphertextResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCiphertextResult)(nil)).Elem()
+}
+
+func (o LookupCiphertextResultOutput) ToLookupCiphertextResultOutput() LookupCiphertextResultOutput {
+	return o
+}
+
+func (o LookupCiphertextResultOutput) ToLookupCiphertextResultOutputWithContext(ctx context.Context) LookupCiphertextResultOutput {
+	return o
+}
+
+// The ciphertext of the data key encrypted with the primary CMK version.
+func (o LookupCiphertextResultOutput) CiphertextBlob() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCiphertextResult) string { return v.CiphertextBlob }).(pulumi.StringOutput)
+}
+
+func (o LookupCiphertextResultOutput) EncryptionContext() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupCiphertextResult) map[string]string { return v.EncryptionContext }).(pulumi.StringMapOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupCiphertextResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCiphertextResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupCiphertextResultOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCiphertextResult) string { return v.KeyId }).(pulumi.StringOutput)
+}
+
+func (o LookupCiphertextResultOutput) Plaintext() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCiphertextResult) string { return v.Plaintext }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupCiphertextResultOutput{})
 }

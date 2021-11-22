@@ -174,43 +174,43 @@ export interface FileSystemState {
      * The capacity of the file system. The `capacity` is required when the `fileSystemType` is `extreme`.
      * Unit: gib; **Note**: The minimum value is 100.
      */
-    readonly capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number>;
     /**
      * The File System description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
      * * Valid values:
      */
-    readonly encryptType?: pulumi.Input<number>;
+    encryptType?: pulumi.Input<number>;
     /**
      * the type of the file system. 
      * Valid values:
      * `standard` (Default),
      * `extreme`.
      */
-    readonly fileSystemType?: pulumi.Input<string>;
+    fileSystemType?: pulumi.Input<string>;
     /**
      * The id of the KMS key. The `kmsKeyId` is required when the `encryptType` is `2`.
      */
-    readonly kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string>;
     /**
      * The protocol type of the file system.
      * Valid values:
      * `NFS`,
      * `SMB` (Available when the `fileSystemType` is `standard`).
      */
-    readonly protocolType?: pulumi.Input<string>;
+    protocolType?: pulumi.Input<string>;
     /**
      * The storage type of the file System. 
      * * Valid values:
      */
-    readonly storageType?: pulumi.Input<string>;
+    storageType?: pulumi.Input<string>;
     /**
      * The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocolType` and `storageType` configuration.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -221,41 +221,41 @@ export interface FileSystemArgs {
      * The capacity of the file system. The `capacity` is required when the `fileSystemType` is `extreme`.
      * Unit: gib; **Note**: The minimum value is 100.
      */
-    readonly capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number>;
     /**
      * The File System description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
      * * Valid values:
      */
-    readonly encryptType?: pulumi.Input<number>;
+    encryptType?: pulumi.Input<number>;
     /**
      * the type of the file system. 
      * Valid values:
      * `standard` (Default),
      * `extreme`.
      */
-    readonly fileSystemType?: pulumi.Input<string>;
+    fileSystemType?: pulumi.Input<string>;
     /**
      * The id of the KMS key. The `kmsKeyId` is required when the `encryptType` is `2`.
      */
-    readonly kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string>;
     /**
      * The protocol type of the file system.
      * Valid values:
      * `NFS`,
      * `SMB` (Available when the `fileSystemType` is `standard`).
      */
-    readonly protocolType: pulumi.Input<string>;
+    protocolType: pulumi.Input<string>;
     /**
      * The storage type of the file System. 
      * * Valid values:
      */
-    readonly storageType: pulumi.Input<string>;
+    storageType: pulumi.Input<string>;
     /**
      * The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocolType` and `storageType` configuration.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * const fs = alicloud_nas_file_system_foo.description.apply(description => alicloud.nas.getFileSystems({
  *     descriptionRegex: description,
  *     protocolType: "NFS",
- * }, { async: true }));
+ * }));
  *
  * export const alicloudNasFileSystemsId = fs.systems[0].id;
  * ```
@@ -49,24 +49,24 @@ export interface GetFileSystemsArgs {
     /**
      * A regex string to filter the results by the ：FileSystem description.
      */
-    readonly descriptionRegex?: string;
+    descriptionRegex?: string;
     /**
      * A list of FileSystemId.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * The protocol type of the file system.
      * Valid values:
      * `NFS`,
      * `SMB` (Available when the `fileSystemType` is `standard`).
      */
-    readonly protocolType?: string;
+    protocolType?: string;
     /**
      * The storage type of the file system.
      * * Valid values:
      */
-    readonly storageType?: string;
+    storageType?: string;
 }
 
 /**
@@ -99,4 +99,35 @@ export interface GetFileSystemsResult {
      * A list of VPCs. Each element contains the following attributes:
      */
     readonly systems: outputs.nas.GetFileSystemsSystem[];
+}
+
+export function getFileSystemsOutput(args?: GetFileSystemsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFileSystemsResult> {
+    return pulumi.output(args).apply(a => getFileSystems(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFileSystems.
+ */
+export interface GetFileSystemsOutputArgs {
+    /**
+     * A regex string to filter the results by the ：FileSystem description.
+     */
+    descriptionRegex?: pulumi.Input<string>;
+    /**
+     * A list of FileSystemId.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The protocol type of the file system.
+     * Valid values:
+     * `NFS`,
+     * `SMB` (Available when the `fileSystemType` is `standard`).
+     */
+    protocolType?: pulumi.Input<string>;
+    /**
+     * The storage type of the file system.
+     * * Valid values:
+     */
+    storageType?: pulumi.Input<string>;
 }

@@ -124,19 +124,19 @@ export interface ConnectionState {
     /**
      * The public connection string of KVStore DBInstance.
      */
-    readonly connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string>;
     /**
      * The prefix of the public endpoint. The prefix can be 8 to 64 characters in length, and can contain lowercase letters and digits. It must start with a lowercase letter.
      */
-    readonly connectionStringPrefix?: pulumi.Input<string>;
+    connectionStringPrefix?: pulumi.Input<string>;
     /**
      * The ID of the instance.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
     /**
      * The service port number of the instance.
      */
-    readonly port?: pulumi.Input<string>;
+    port?: pulumi.Input<string>;
 }
 
 /**
@@ -146,13 +146,13 @@ export interface ConnectionArgs {
     /**
      * The prefix of the public endpoint. The prefix can be 8 to 64 characters in length, and can contain lowercase letters and digits. It must start with a lowercase letter.
      */
-    readonly connectionStringPrefix: pulumi.Input<string>;
+    connectionStringPrefix: pulumi.Input<string>;
     /**
      * The ID of the instance.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * The service port number of the instance.
      */
-    readonly port: pulumi.Input<string>;
+    port: pulumi.Input<string>;
 }

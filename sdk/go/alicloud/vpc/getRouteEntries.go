@@ -4,6 +4,9 @@
 package vpc
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +30,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "VSwitch"
-// 		defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// 		defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
 // 			AvailableResourceCreation: &opt0,
 // 		}, nil)
 // 		if err != nil {
@@ -162,4 +165,83 @@ type GetRouteEntriesResult struct {
 	RouteTableId string `pulumi:"routeTableId"`
 	// The type of the route entry.
 	Type *string `pulumi:"type"`
+}
+
+func GetRouteEntriesOutput(ctx *pulumi.Context, args GetRouteEntriesOutputArgs, opts ...pulumi.InvokeOption) GetRouteEntriesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetRouteEntriesResult, error) {
+			args := v.(GetRouteEntriesArgs)
+			r, err := GetRouteEntries(ctx, &args, opts...)
+			return *r, err
+		}).(GetRouteEntriesResultOutput)
+}
+
+// A collection of arguments for invoking getRouteEntries.
+type GetRouteEntriesOutputArgs struct {
+	// The destination CIDR block of the route entry.
+	CidrBlock pulumi.StringPtrInput `pulumi:"cidrBlock"`
+	// The instance ID of the next hop.
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The ID of the router table to which the route entry belongs.
+	RouteTableId pulumi.StringInput `pulumi:"routeTableId"`
+	// The type of the route entry.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetRouteEntriesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteEntriesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getRouteEntries.
+type GetRouteEntriesResultOutput struct{ *pulumi.OutputState }
+
+func (GetRouteEntriesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteEntriesResult)(nil)).Elem()
+}
+
+func (o GetRouteEntriesResultOutput) ToGetRouteEntriesResultOutput() GetRouteEntriesResultOutput {
+	return o
+}
+
+func (o GetRouteEntriesResultOutput) ToGetRouteEntriesResultOutputWithContext(ctx context.Context) GetRouteEntriesResultOutput {
+	return o
+}
+
+// The destination CIDR block of the route entry.
+func (o GetRouteEntriesResultOutput) CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteEntriesResult) *string { return v.CidrBlock }).(pulumi.StringPtrOutput)
+}
+
+// A list of Route Entries. Each element contains the following attributes:
+func (o GetRouteEntriesResultOutput) Entries() GetRouteEntriesEntryArrayOutput {
+	return o.ApplyT(func(v GetRouteEntriesResult) []GetRouteEntriesEntry { return v.Entries }).(GetRouteEntriesEntryArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRouteEntriesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteEntriesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The instance ID of the next hop.
+func (o GetRouteEntriesResultOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteEntriesResult) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRouteEntriesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteEntriesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the router table to which the route entry belongs.
+func (o GetRouteEntriesResultOutput) RouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteEntriesResult) string { return v.RouteTableId }).(pulumi.StringOutput)
+}
+
+// The type of the route entry.
+func (o GetRouteEntriesResultOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteEntriesResult) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRouteEntriesResultOutput{})
 }

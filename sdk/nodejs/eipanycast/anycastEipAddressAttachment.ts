@@ -140,23 +140,23 @@ export interface AnycastEipAddressAttachmentState {
     /**
      * The ID of Anycast EIP.
      */
-    readonly anycastId?: pulumi.Input<string>;
+    anycastId?: pulumi.Input<string>;
     /**
      * The ID of bound instance.
      */
-    readonly bindInstanceId?: pulumi.Input<string>;
+    bindInstanceId?: pulumi.Input<string>;
     /**
      * The region ID of bound instance.
      */
-    readonly bindInstanceRegionId?: pulumi.Input<string>;
+    bindInstanceRegionId?: pulumi.Input<string>;
     /**
      * The type of bound instance. Valid value: `SlbInstance`.
      */
-    readonly bindInstanceType?: pulumi.Input<string>;
+    bindInstanceType?: pulumi.Input<string>;
     /**
      * The time of bound instance.
      */
-    readonly bindTime?: pulumi.Input<string>;
+    bindTime?: pulumi.Input<string>;
 }
 
 /**
@@ -166,17 +166,17 @@ export interface AnycastEipAddressAttachmentArgs {
     /**
      * The ID of Anycast EIP.
      */
-    readonly anycastId: pulumi.Input<string>;
+    anycastId: pulumi.Input<string>;
     /**
      * The ID of bound instance.
      */
-    readonly bindInstanceId: pulumi.Input<string>;
+    bindInstanceId: pulumi.Input<string>;
     /**
      * The region ID of bound instance.
      */
-    readonly bindInstanceRegionId: pulumi.Input<string>;
+    bindInstanceRegionId: pulumi.Input<string>;
     /**
      * The type of bound instance. Valid value: `SlbInstance`.
      */
-    readonly bindInstanceType: pulumi.Input<string>;
+    bindInstanceType: pulumi.Input<string>;
 }

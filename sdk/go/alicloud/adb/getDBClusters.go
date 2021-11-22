@@ -4,6 +4,9 @@
 package adb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,4 +82,100 @@ type GetDBClustersResult struct {
 	ResourceGroupId *string                `pulumi:"resourceGroupId"`
 	Status          *string                `pulumi:"status"`
 	Tags            map[string]interface{} `pulumi:"tags"`
+}
+
+func GetDBClustersOutput(ctx *pulumi.Context, args GetDBClustersOutputArgs, opts ...pulumi.InvokeOption) GetDBClustersResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDBClustersResult, error) {
+			args := v.(GetDBClustersArgs)
+			r, err := GetDBClusters(ctx, &args, opts...)
+			return *r, err
+		}).(GetDBClustersResultOutput)
+}
+
+// A collection of arguments for invoking getDBClusters.
+type GetDBClustersOutputArgs struct {
+	// The description of DBCluster.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// A regex string to filter results by DBCluster description.
+	DescriptionRegex pulumi.StringPtrInput `pulumi:"descriptionRegex"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of DBCluster IDs.
+	Ids        pulumi.StringArrayInput `pulumi:"ids"`
+	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	// The status of the resource.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The tag of the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+}
+
+func (GetDBClustersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDBClustersArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDBClusters.
+type GetDBClustersResultOutput struct{ *pulumi.OutputState }
+
+func (GetDBClustersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDBClustersResult)(nil)).Elem()
+}
+
+func (o GetDBClustersResultOutput) ToGetDBClustersResultOutput() GetDBClustersResultOutput {
+	return o
+}
+
+func (o GetDBClustersResultOutput) ToGetDBClustersResultOutputWithContext(ctx context.Context) GetDBClustersResultOutput {
+	return o
+}
+
+func (o GetDBClustersResultOutput) Clusters() GetDBClustersClusterArrayOutput {
+	return o.ApplyT(func(v GetDBClustersResult) []GetDBClustersCluster { return v.Clusters }).(GetDBClustersClusterArrayOutput)
+}
+
+func (o GetDBClustersResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDBClustersResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDBClustersResultOutput) DescriptionRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDBClustersResult) *string { return v.DescriptionRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDBClustersResultOutput) Descriptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDBClustersResult) []string { return v.Descriptions }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDBClustersResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDBClustersResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDBClustersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDBClustersResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDBClustersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDBClustersResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDBClustersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDBClustersResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDBClustersResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDBClustersResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDBClustersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDBClustersResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetDBClustersResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDBClustersResultOutput{})
 }

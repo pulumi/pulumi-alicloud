@@ -13,6 +13,7 @@ __all__ = [
     'GetAccountsResult',
     'AwaitableGetAccountsResult',
     'get_accounts',
+    'get_accounts_output',
 ]
 
 @pulumi.output_type
@@ -165,3 +166,35 @@ def get_accounts(account_name: Optional[str] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_accounts)
+def get_accounts_output(account_name: Optional[pulumi.Input[Optional[str]]] = None,
+                        instance_id: Optional[pulumi.Input[str]] = None,
+                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        status: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountsResult]:
+    """
+    This data source provides the KVStore Accounts of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.102.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.kvstore.get_accounts(instance_id="example_value")
+    pulumi.export("firstKvstoreAccountId", example.accounts[0].id)
+    ```
+
+
+    :param str account_name: The name of the account.
+    :param str instance_id: The Id of instance in which account belongs.
+    :param str status: The status of account.
+    """
+    ...

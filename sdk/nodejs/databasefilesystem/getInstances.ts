@@ -21,11 +21,11 @@ import * as utilities from "../utilities";
  * const ids = alicloud.databasefilesystem.getInstances({
  *     ids: ["example_id"],
  * });
- * export const dbfsInstanceId1 = ids.then(ids => ids.instances[0].id);
+ * export const dbfsInstanceId1 = ids.then(ids => ids.instances?[0]?.id);
  * const nameRegex = alicloud.databasefilesystem.getInstances({
  *     nameRegex: "^my-Instance",
  * });
- * export const dbfsInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances[0].id);
+ * export const dbfsInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?[0]?.id);
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
@@ -52,16 +52,16 @@ export interface GetInstancesArgs {
     /**
      * A list of Instance IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter results by Instance name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of the Database file system.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -78,4 +78,27 @@ export interface GetInstancesResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
+    return pulumi.output(args).apply(a => getInstances(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstances.
+ */
+export interface GetInstancesOutputArgs {
+    /**
+     * A list of Instance IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Instance name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the Database file system.
+     */
+    status?: pulumi.Input<string>;
 }

@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * const kmsKeysDs = pulumi.output(alicloud.kms.getKeys({
  *     descriptionRegex: "Hello KMS",
  *     outputFile: "kms_keys.json",
- * }, { async: true }));
+ * }));
  *
  * export const firstKeyId = kmsKeysDs.keys[0].id;
  * ```
@@ -49,18 +49,18 @@ export interface GetKeysArgs {
     /**
      * A regex string to filter the results by the KMS key description.
      */
-    readonly descriptionRegex?: string;
-    readonly enableDetails?: boolean;
-    readonly filters?: string;
+    descriptionRegex?: string;
+    enableDetails?: boolean;
+    filters?: string;
     /**
      * A list of KMS key IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -87,4 +87,29 @@ export interface GetKeysResult {
      * Status of the key. Possible values: `Enabled`, `Disabled` and `PendingDeletion`.
      */
     readonly status?: string;
+}
+
+export function getKeysOutput(args?: GetKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeysResult> {
+    return pulumi.output(args).apply(a => getKeys(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKeys.
+ */
+export interface GetKeysOutputArgs {
+    /**
+     * A regex string to filter the results by the KMS key description.
+     */
+    descriptionRegex?: pulumi.Input<string>;
+    enableDetails?: pulumi.Input<boolean>;
+    filters?: pulumi.Input<string>;
+    /**
+     * A list of KMS key IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
+     */
+    status?: pulumi.Input<string>;
 }

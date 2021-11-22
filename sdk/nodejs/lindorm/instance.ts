@@ -255,115 +255,115 @@ export interface InstanceState {
     /**
      * The cold storage capacity of the instance. Unit: GB.
      */
-    readonly coldStorage?: pulumi.Input<number>;
+    coldStorage?: pulumi.Input<number>;
     /**
      * The core num.
      */
-    readonly coreNum?: pulumi.Input<number>;
+    coreNum?: pulumi.Input<number>;
     /**
      * The core spec.
      */
-    readonly coreSpec?: pulumi.Input<string>;
+    coreSpec?: pulumi.Input<string>;
     /**
      * The deletion protection of instance.
      */
-    readonly deletionProection?: pulumi.Input<boolean>;
+    deletionProection?: pulumi.Input<boolean>;
     /**
      * The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
      */
-    readonly diskCategory?: pulumi.Input<string>;
+    diskCategory?: pulumi.Input<string>;
     /**
      * The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
      */
-    readonly duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string>;
     /**
      * The count of file engine.
      */
-    readonly fileEngineNodeCount?: pulumi.Input<number>;
+    fileEngineNodeCount?: pulumi.Input<number>;
     /**
      * The specification of file engine. Valid values: `lindorm.c.xlarge`.
      */
-    readonly fileEngineSpecification?: pulumi.Input<string>;
+    fileEngineSpecification?: pulumi.Input<string>;
     /**
      * The group name.
      */
-    readonly groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string>;
     /**
      * The name of the instance.
      */
-    readonly instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string>;
     /**
      * The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
      */
-    readonly instanceStorage?: pulumi.Input<string>;
+    instanceStorage?: pulumi.Input<string>;
     /**
      * The ip white list of instance.
      */
-    readonly ipWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    ipWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The count of lindorm tunnel service.
      */
-    readonly ltsNodeCount?: pulumi.Input<number>;
+    ltsNodeCount?: pulumi.Input<number>;
     /**
      * The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
      */
-    readonly ltsNodeSpecification?: pulumi.Input<string>;
+    ltsNodeSpecification?: pulumi.Input<string>;
     /**
      * The billing method. Valid values: `PayAsYouGo` and `Subscription`.
      */
-    readonly paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string>;
     /**
      * The count of phoenix.
      */
-    readonly phoenixNodeCount?: pulumi.Input<number>;
+    phoenixNodeCount?: pulumi.Input<number>;
     /**
      * The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
      */
-    readonly phoenixNodeSpecification?: pulumi.Input<string>;
+    phoenixNodeSpecification?: pulumi.Input<string>;
     /**
      * The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
      */
-    readonly pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string>;
     /**
      * The count of search engine.
      */
-    readonly searchEngineNodeCount?: pulumi.Input<number>;
+    searchEngineNodeCount?: pulumi.Input<number>;
     /**
      * The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
      */
-    readonly searchEngineSpecification?: pulumi.Input<string>;
+    searchEngineSpecification?: pulumi.Input<string>;
     /**
      * The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The count of table engine.
      */
-    readonly tableEngineNodeCount?: pulumi.Input<number>;
+    tableEngineNodeCount?: pulumi.Input<number>;
     /**
      * The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
      */
-    readonly tableEngineSpecification?: pulumi.Input<string>;
+    tableEngineSpecification?: pulumi.Input<string>;
     /**
      * The count of time series engine.
      */
-    readonly timeSeriesEngineNodeCount?: pulumi.Input<number>;
+    timeSeriesEngineNodeCount?: pulumi.Input<number>;
     /**
      * The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
      */
-    readonly timeSeriresEngineSpecification?: pulumi.Input<string>;
+    timeSeriresEngineSpecification?: pulumi.Input<string>;
     /**
      * The upgrade type. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
      */
-    readonly upgradeType?: pulumi.Input<string>;
+    upgradeType?: pulumi.Input<string>;
     /**
      * The vswitch id.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * The zone ID of the instance.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -373,109 +373,109 @@ export interface InstanceArgs {
     /**
      * The cold storage capacity of the instance. Unit: GB.
      */
-    readonly coldStorage?: pulumi.Input<number>;
+    coldStorage?: pulumi.Input<number>;
     /**
      * The core num.
      */
-    readonly coreNum?: pulumi.Input<number>;
+    coreNum?: pulumi.Input<number>;
     /**
      * The core spec.
      */
-    readonly coreSpec?: pulumi.Input<string>;
+    coreSpec?: pulumi.Input<string>;
     /**
      * The deletion protection of instance.
      */
-    readonly deletionProection?: pulumi.Input<boolean>;
+    deletionProection?: pulumi.Input<boolean>;
     /**
      * The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
      */
-    readonly diskCategory: pulumi.Input<string>;
+    diskCategory: pulumi.Input<string>;
     /**
      * The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
      */
-    readonly duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string>;
     /**
      * The count of file engine.
      */
-    readonly fileEngineNodeCount?: pulumi.Input<number>;
+    fileEngineNodeCount?: pulumi.Input<number>;
     /**
      * The specification of file engine. Valid values: `lindorm.c.xlarge`.
      */
-    readonly fileEngineSpecification?: pulumi.Input<string>;
+    fileEngineSpecification?: pulumi.Input<string>;
     /**
      * The group name.
      */
-    readonly groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string>;
     /**
      * The name of the instance.
      */
-    readonly instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string>;
     /**
      * The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
      */
-    readonly instanceStorage?: pulumi.Input<string>;
+    instanceStorage?: pulumi.Input<string>;
     /**
      * The ip white list of instance.
      */
-    readonly ipWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    ipWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The count of lindorm tunnel service.
      */
-    readonly ltsNodeCount?: pulumi.Input<number>;
+    ltsNodeCount?: pulumi.Input<number>;
     /**
      * The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
      */
-    readonly ltsNodeSpecification?: pulumi.Input<string>;
+    ltsNodeSpecification?: pulumi.Input<string>;
     /**
      * The billing method. Valid values: `PayAsYouGo` and `Subscription`.
      */
-    readonly paymentType: pulumi.Input<string>;
+    paymentType: pulumi.Input<string>;
     /**
      * The count of phoenix.
      */
-    readonly phoenixNodeCount?: pulumi.Input<number>;
+    phoenixNodeCount?: pulumi.Input<number>;
     /**
      * The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
      */
-    readonly phoenixNodeSpecification?: pulumi.Input<string>;
+    phoenixNodeSpecification?: pulumi.Input<string>;
     /**
      * The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
      */
-    readonly pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string>;
     /**
      * The count of search engine.
      */
-    readonly searchEngineNodeCount?: pulumi.Input<number>;
+    searchEngineNodeCount?: pulumi.Input<number>;
     /**
      * The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
      */
-    readonly searchEngineSpecification?: pulumi.Input<string>;
+    searchEngineSpecification?: pulumi.Input<string>;
     /**
      * The count of table engine.
      */
-    readonly tableEngineNodeCount?: pulumi.Input<number>;
+    tableEngineNodeCount?: pulumi.Input<number>;
     /**
      * The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
      */
-    readonly tableEngineSpecification?: pulumi.Input<string>;
+    tableEngineSpecification?: pulumi.Input<string>;
     /**
      * The count of time series engine.
      */
-    readonly timeSeriesEngineNodeCount?: pulumi.Input<number>;
+    timeSeriesEngineNodeCount?: pulumi.Input<number>;
     /**
      * The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
      */
-    readonly timeSeriresEngineSpecification?: pulumi.Input<string>;
+    timeSeriresEngineSpecification?: pulumi.Input<string>;
     /**
      * The upgrade type. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
      */
-    readonly upgradeType?: pulumi.Input<string>;
+    upgradeType?: pulumi.Input<string>;
     /**
      * The vswitch id.
      */
-    readonly vswitchId: pulumi.Input<string>;
+    vswitchId: pulumi.Input<string>;
     /**
      * The zone ID of the instance.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

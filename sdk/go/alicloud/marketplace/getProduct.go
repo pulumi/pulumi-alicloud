@@ -4,6 +4,9 @@
 package marketplace
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,4 +64,62 @@ type GetProductResult struct {
 	ProductCode string `pulumi:"productCode"`
 	// A product. It contains the following attributes:
 	Products []GetProductProduct `pulumi:"products"`
+}
+
+func GetProductOutput(ctx *pulumi.Context, args GetProductOutputArgs, opts ...pulumi.InvokeOption) GetProductResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetProductResult, error) {
+			args := v.(GetProductArgs)
+			r, err := GetProduct(ctx, &args, opts...)
+			return *r, err
+		}).(GetProductResultOutput)
+}
+
+// A collection of arguments for invoking getProduct.
+type GetProductOutputArgs struct {
+	// A available region id used to filter market place Ecs images.
+	AvailableRegion pulumi.StringPtrInput `pulumi:"availableRegion"`
+	// The product code of the market product.
+	ProductCode pulumi.StringInput `pulumi:"productCode"`
+}
+
+func (GetProductOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProductArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getProduct.
+type GetProductResultOutput struct{ *pulumi.OutputState }
+
+func (GetProductResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProductResult)(nil)).Elem()
+}
+
+func (o GetProductResultOutput) ToGetProductResultOutput() GetProductResultOutput {
+	return o
+}
+
+func (o GetProductResultOutput) ToGetProductResultOutputWithContext(ctx context.Context) GetProductResultOutput {
+	return o
+}
+
+func (o GetProductResultOutput) AvailableRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProductResult) *string { return v.AvailableRegion }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetProductResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProductResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetProductResultOutput) ProductCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProductResult) string { return v.ProductCode }).(pulumi.StringOutput)
+}
+
+// A product. It contains the following attributes:
+func (o GetProductResultOutput) Products() GetProductProductArrayOutput {
+	return o.ApplyT(func(v GetProductResult) []GetProductProduct { return v.Products }).(GetProductProductArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetProductResultOutput{})
 }

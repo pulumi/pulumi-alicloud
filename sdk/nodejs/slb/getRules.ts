@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/16",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  *     loadBalancerId: id,
  *     frontendPort: 22,
  * }));
- * export const firstSlbRuleId = sampleDs.slbRules[0].id;
+ * export const firstSlbRuleId = sampleDs.apply(sampleDs => sampleDs.slbRules?[0]?.id);
  * ```
  */
 export function getRules(args: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> {
@@ -78,20 +78,20 @@ export interface GetRulesArgs {
     /**
      * SLB listener port.
      */
-    readonly frontendPort: number;
+    frontendPort: number;
     /**
      * A list of rules IDs to filter results.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * ID of the SLB with listener rules.
      */
-    readonly loadBalancerId: string;
+    loadBalancerId: string;
     /**
      * A regex string to filter results by rule name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -118,4 +118,31 @@ export interface GetRulesResult {
      * A list of SLB listener rules. Each element contains the following attributes:
      */
     readonly slbRules: outputs.slb.GetRulesSlbRule[];
+}
+
+export function getRulesOutput(args: GetRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesResult> {
+    return pulumi.output(args).apply(a => getRules(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRules.
+ */
+export interface GetRulesOutputArgs {
+    /**
+     * SLB listener port.
+     */
+    frontendPort: pulumi.Input<number>;
+    /**
+     * A list of rules IDs to filter results.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ID of the SLB with listener rules.
+     */
+    loadBalancerId: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by rule name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

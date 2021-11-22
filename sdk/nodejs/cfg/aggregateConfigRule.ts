@@ -198,68 +198,68 @@ export interface AggregateConfigRuleState {
     /**
      * The name of the rule.
      */
-    readonly aggregateConfigRuleName?: pulumi.Input<string>;
+    aggregateConfigRuleName?: pulumi.Input<string>;
     /**
      * The Aggregator Id.
      */
-    readonly aggregatorId?: pulumi.Input<string>;
+    aggregatorId?: pulumi.Input<string>;
     /**
      * (Available in 1.141.0+) The rule ID of Aggregate Config Rule.
      */
-    readonly configRuleId?: pulumi.Input<string>;
+    configRuleId?: pulumi.Input<string>;
     /**
      * The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
      */
-    readonly configRuleTriggerTypes?: pulumi.Input<string>;
+    configRuleTriggerTypes?: pulumi.Input<string>;
     /**
      * The description of the rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
      */
-    readonly excludeResourceIdsScope?: pulumi.Input<string>;
+    excludeResourceIdsScope?: pulumi.Input<string>;
     /**
      * The settings map of the input parameters for the rule.
      */
-    readonly inputParameters?: pulumi.Input<{[key: string]: any}>;
+    inputParameters?: pulumi.Input<{[key: string]: any}>;
     /**
      * The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `configRuleTriggerTypes` is `ScheduledNotification`.
      */
-    readonly maximumExecutionFrequency?: pulumi.Input<string>;
+    maximumExecutionFrequency?: pulumi.Input<string>;
     /**
      * The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
      */
-    readonly regionIdsScope?: pulumi.Input<string>;
+    regionIdsScope?: pulumi.Input<string>;
     /**
      * The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
      */
-    readonly resourceGroupIdsScope?: pulumi.Input<string>;
+    resourceGroupIdsScope?: pulumi.Input<string>;
     /**
      * Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
      */
-    readonly resourceTypesScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceTypesScopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info.
      */
-    readonly riskLevel?: pulumi.Input<number>;
+    riskLevel?: pulumi.Input<number>;
     /**
      * The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
      */
-    readonly sourceIdentifier?: pulumi.Input<string>;
+    sourceIdentifier?: pulumi.Input<string>;
     /**
      * Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
      */
-    readonly sourceOwner?: pulumi.Input<string>;
-    readonly status?: pulumi.Input<string>;
+    sourceOwner?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The rule monitors the tag key, only applies to rules created based on managed rules.
      */
-    readonly tagKeyScope?: pulumi.Input<string>;
+    tagKeyScope?: pulumi.Input<string>;
     /**
      * The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
      */
-    readonly tagValueScope?: pulumi.Input<string>;
+    tagValueScope?: pulumi.Input<string>;
 }
 
 /**
@@ -269,61 +269,61 @@ export interface AggregateConfigRuleArgs {
     /**
      * The name of the rule.
      */
-    readonly aggregateConfigRuleName: pulumi.Input<string>;
+    aggregateConfigRuleName: pulumi.Input<string>;
     /**
      * The Aggregator Id.
      */
-    readonly aggregatorId: pulumi.Input<string>;
+    aggregatorId: pulumi.Input<string>;
     /**
      * The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
      */
-    readonly configRuleTriggerTypes: pulumi.Input<string>;
+    configRuleTriggerTypes: pulumi.Input<string>;
     /**
      * The description of the rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
      */
-    readonly excludeResourceIdsScope?: pulumi.Input<string>;
+    excludeResourceIdsScope?: pulumi.Input<string>;
     /**
      * The settings map of the input parameters for the rule.
      */
-    readonly inputParameters?: pulumi.Input<{[key: string]: any}>;
+    inputParameters?: pulumi.Input<{[key: string]: any}>;
     /**
      * The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `configRuleTriggerTypes` is `ScheduledNotification`.
      */
-    readonly maximumExecutionFrequency?: pulumi.Input<string>;
+    maximumExecutionFrequency?: pulumi.Input<string>;
     /**
      * The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
      */
-    readonly regionIdsScope?: pulumi.Input<string>;
+    regionIdsScope?: pulumi.Input<string>;
     /**
      * The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
      */
-    readonly resourceGroupIdsScope?: pulumi.Input<string>;
+    resourceGroupIdsScope?: pulumi.Input<string>;
     /**
      * Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
      */
-    readonly resourceTypesScopes: pulumi.Input<pulumi.Input<string>[]>;
+    resourceTypesScopes: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info.
      */
-    readonly riskLevel: pulumi.Input<number>;
+    riskLevel: pulumi.Input<number>;
     /**
      * The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
      */
-    readonly sourceIdentifier: pulumi.Input<string>;
+    sourceIdentifier: pulumi.Input<string>;
     /**
      * Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
      */
-    readonly sourceOwner: pulumi.Input<string>;
+    sourceOwner: pulumi.Input<string>;
     /**
      * The rule monitors the tag key, only applies to rules created based on managed rules.
      */
-    readonly tagKeyScope?: pulumi.Input<string>;
+    tagKeyScope?: pulumi.Input<string>;
     /**
      * The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
      */
-    readonly tagValueScope?: pulumi.Input<string>;
+    tagValueScope?: pulumi.Input<string>;
 }

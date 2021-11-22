@@ -160,44 +160,44 @@ export interface ReservedInstanceState {
     /**
      * Description of the RI. 2 to 256 English or Chinese characters. It cannot start with http:// or https://.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
      */
-    readonly instanceAmount?: pulumi.Input<number>;
+    instanceAmount?: pulumi.Input<number>;
     /**
      * Instance type of the RI. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.html).
      */
-    readonly instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string>;
     /**
      * Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
      */
-    readonly offeringType?: pulumi.Input<string>;
-    readonly period?: pulumi.Input<number>;
+    offeringType?: pulumi.Input<string>;
+    period?: pulumi.Input<number>;
     /**
      * Term unit. Optional value: Year.
      */
-    readonly periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string>;
     /**
      * The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
      */
-    readonly platform?: pulumi.Input<string>;
+    platform?: pulumi.Input<string>;
     /**
      * Resource group ID.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
      */
-    readonly scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string>;
     /**
      * ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -207,42 +207,42 @@ export interface ReservedInstanceArgs {
     /**
      * Description of the RI. 2 to 256 English or Chinese characters. It cannot start with http:// or https://.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
      */
-    readonly instanceAmount?: pulumi.Input<number>;
+    instanceAmount?: pulumi.Input<number>;
     /**
      * Instance type of the RI. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.html).
      */
-    readonly instanceType: pulumi.Input<string>;
+    instanceType: pulumi.Input<string>;
     /**
      * Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
      */
-    readonly offeringType?: pulumi.Input<string>;
-    readonly period?: pulumi.Input<number>;
+    offeringType?: pulumi.Input<string>;
+    period?: pulumi.Input<number>;
     /**
      * Term unit. Optional value: Year.
      */
-    readonly periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string>;
     /**
      * The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
      */
-    readonly platform?: pulumi.Input<string>;
+    platform?: pulumi.Input<string>;
     /**
      * Resource group ID.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
      */
-    readonly scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string>;
     /**
      * ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

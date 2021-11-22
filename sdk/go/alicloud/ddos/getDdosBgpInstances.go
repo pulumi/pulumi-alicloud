@@ -4,6 +4,9 @@
 package ddos
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,4 +72,73 @@ type GetDdosBgpInstancesResult struct {
 	// A list of instance names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+}
+
+func GetDdosBgpInstancesOutput(ctx *pulumi.Context, args GetDdosBgpInstancesOutputArgs, opts ...pulumi.InvokeOption) GetDdosBgpInstancesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDdosBgpInstancesResult, error) {
+			args := v.(GetDdosBgpInstancesArgs)
+			r, err := GetDdosBgpInstances(ctx, &args, opts...)
+			return *r, err
+		}).(GetDdosBgpInstancesResultOutput)
+}
+
+// A collection of arguments for invoking getDdosBgpInstances.
+type GetDdosBgpInstancesOutputArgs struct {
+	// A list of instance IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by the instance name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+}
+
+func (GetDdosBgpInstancesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDdosBgpInstancesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDdosBgpInstances.
+type GetDdosBgpInstancesResultOutput struct{ *pulumi.OutputState }
+
+func (GetDdosBgpInstancesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDdosBgpInstancesResult)(nil)).Elem()
+}
+
+func (o GetDdosBgpInstancesResultOutput) ToGetDdosBgpInstancesResultOutput() GetDdosBgpInstancesResultOutput {
+	return o
+}
+
+func (o GetDdosBgpInstancesResultOutput) ToGetDdosBgpInstancesResultOutputWithContext(ctx context.Context) GetDdosBgpInstancesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDdosBgpInstancesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosBgpInstancesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of instance IDs.
+func (o GetDdosBgpInstancesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDdosBgpInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// A list of apis. Each element contains the following attributes:
+func (o GetDdosBgpInstancesResultOutput) Instances() GetDdosBgpInstancesInstanceArrayOutput {
+	return o.ApplyT(func(v GetDdosBgpInstancesResult) []GetDdosBgpInstancesInstance { return v.Instances }).(GetDdosBgpInstancesInstanceArrayOutput)
+}
+
+func (o GetDdosBgpInstancesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDdosBgpInstancesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of instance names.
+func (o GetDdosBgpInstancesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDdosBgpInstancesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDdosBgpInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDdosBgpInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDdosBgpInstancesResultOutput{})
 }

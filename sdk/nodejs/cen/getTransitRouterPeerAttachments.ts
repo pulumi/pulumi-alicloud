@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const defaultTransitRouterPeerAttachments = pulumi.output(alicloud.cen.getTransitRouterPeerAttachments({
  *     cenId: "cen-id1",
- * }, { async: true }));
+ * }));
  *
  * export const firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType = defaultTransitRouterPeerAttachments.transitRouterAttachments.0.resourceType;
  * ```
@@ -49,28 +49,28 @@ export interface GetTransitRouterPeerAttachmentsArgs {
     /**
      * ID of the CEN instance.
      */
-    readonly cenId: string;
+    cenId: string;
     /**
      * A list of CEN Transit Router peer attachments IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter CEN Transit Router peer attachments by name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
     /**
      * The status of CEN Transit Router peer attachment. Valid values `Attached`, `Attaching` and `Detaching`.
      */
-    readonly status?: string;
+    status?: string;
     /**
      * The ID of CEN Transit Router peer attachments.
      */
-    readonly transitRouterAttachmentId?: string;
+    transitRouterAttachmentId?: string;
     /**
      * The ID of transit router.
      */
-    readonly transitRouterId?: string;
+    transitRouterId?: string;
 }
 
 /**
@@ -105,4 +105,39 @@ export interface GetTransitRouterPeerAttachmentsResult {
      * ID of the transit router.
      */
     readonly transitRouterId?: string;
+}
+
+export function getTransitRouterPeerAttachmentsOutput(args: GetTransitRouterPeerAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterPeerAttachmentsResult> {
+    return pulumi.output(args).apply(a => getTransitRouterPeerAttachments(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTransitRouterPeerAttachments.
+ */
+export interface GetTransitRouterPeerAttachmentsOutputArgs {
+    /**
+     * ID of the CEN instance.
+     */
+    cenId: pulumi.Input<string>;
+    /**
+     * A list of CEN Transit Router peer attachments IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter CEN Transit Router peer attachments by name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of CEN Transit Router peer attachment. Valid values `Attached`, `Attaching` and `Detaching`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The ID of CEN Transit Router peer attachments.
+     */
+    transitRouterAttachmentId?: pulumi.Input<string>;
+    /**
+     * The ID of transit router.
+     */
+    transitRouterId?: pulumi.Input<string>;
 }

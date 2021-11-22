@@ -122,23 +122,23 @@ export interface PolicyAttachmentState {
     /**
      * The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
      */
-    readonly policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string>;
     /**
      * - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
      */
-    readonly policyType?: pulumi.Input<string>;
+    policyType?: pulumi.Input<string>;
     /**
      * The name of the object to which you want to attach the policy.
      */
-    readonly principalName?: pulumi.Input<string>;
+    principalName?: pulumi.Input<string>;
     /**
      * The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
      */
-    readonly principalType?: pulumi.Input<string>;
+    principalType?: pulumi.Input<string>;
     /**
      * The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
 }
 
 /**
@@ -148,21 +148,21 @@ export interface PolicyAttachmentArgs {
     /**
      * The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
      */
-    readonly policyName: pulumi.Input<string>;
+    policyName: pulumi.Input<string>;
     /**
      * - (Required, ForceNew) The type of the policy. Valid values: `Custom`, `System`.
      */
-    readonly policyType: pulumi.Input<string>;
+    policyType: pulumi.Input<string>;
     /**
      * The name of the object to which you want to attach the policy.
      */
-    readonly principalName: pulumi.Input<string>;
+    principalName: pulumi.Input<string>;
     /**
      * The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
      */
-    readonly principalType: pulumi.Input<string>;
+    principalType: pulumi.Input<string>;
     /**
      * The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
      */
-    readonly resourceGroupId: pulumi.Input<string>;
+    resourceGroupId: pulumi.Input<string>;
 }

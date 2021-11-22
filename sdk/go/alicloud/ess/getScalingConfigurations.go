@@ -4,6 +4,9 @@
 package ess
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,4 +76,82 @@ type GetScalingConfigurationsResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// ID of the scaling group.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
+}
+
+func GetScalingConfigurationsOutput(ctx *pulumi.Context, args GetScalingConfigurationsOutputArgs, opts ...pulumi.InvokeOption) GetScalingConfigurationsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetScalingConfigurationsResult, error) {
+			args := v.(GetScalingConfigurationsArgs)
+			r, err := GetScalingConfigurations(ctx, &args, opts...)
+			return *r, err
+		}).(GetScalingConfigurationsResultOutput)
+}
+
+// A collection of arguments for invoking getScalingConfigurations.
+type GetScalingConfigurationsOutputArgs struct {
+	// A list of scaling configuration IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter resulting scaling configurations by name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Scaling group id the scaling configurations belong to.
+	ScalingGroupId pulumi.StringPtrInput `pulumi:"scalingGroupId"`
+}
+
+func (GetScalingConfigurationsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScalingConfigurationsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getScalingConfigurations.
+type GetScalingConfigurationsResultOutput struct{ *pulumi.OutputState }
+
+func (GetScalingConfigurationsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScalingConfigurationsResult)(nil)).Elem()
+}
+
+func (o GetScalingConfigurationsResultOutput) ToGetScalingConfigurationsResultOutput() GetScalingConfigurationsResultOutput {
+	return o
+}
+
+func (o GetScalingConfigurationsResultOutput) ToGetScalingConfigurationsResultOutputWithContext(ctx context.Context) GetScalingConfigurationsResultOutput {
+	return o
+}
+
+// A list of scaling rules. Each element contains the following attributes:
+func (o GetScalingConfigurationsResultOutput) Configurations() GetScalingConfigurationsConfigurationArrayOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsResult) []GetScalingConfigurationsConfiguration {
+		return v.Configurations
+	}).(GetScalingConfigurationsConfigurationArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetScalingConfigurationsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of scaling configuration ids.
+func (o GetScalingConfigurationsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetScalingConfigurationsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of scaling configuration names.
+func (o GetScalingConfigurationsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetScalingConfigurationsResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// ID of the scaling group.
+func (o GetScalingConfigurationsResultOutput) ScalingGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsResult) *string { return v.ScalingGroupId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetScalingConfigurationsResultOutput{})
 }

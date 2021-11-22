@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.DataWorks
 {
@@ -49,7 +50,7 @@ namespace Pulumi.AliCloud.DataWorks
         ///                 ParentFolderPath = "Business Flow/tfTestAcc/folderDi",
         ///             });
         ///         });
-        ///         this.DataWorksFolderId1 = ids.Apply(ids =&gt; ids.Folders[0].Id);
+        ///         this.DataWorksFolderId1 = ids.Apply(ids =&gt; ids.Folders?[0]?.Id);
         ///     }
         /// 
         ///     [Output("dataWorksFolderId1")]
@@ -61,6 +62,57 @@ namespace Pulumi.AliCloud.DataWorks
         /// </summary>
         public static Task<GetFoldersResult> InvokeAsync(GetFoldersArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFoldersResult>("alicloud:dataworks/getFolders:getFolders", args ?? new GetFoldersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Data Works Folders of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.131.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = new AliCloud.DataWorks.Folder("default", new AliCloud.DataWorks.FolderArgs
+        ///         {
+        ///             ProjectId = "xxxx",
+        ///             FolderPath = "Business Flow/tfTestAcc/folderDi",
+        ///         });
+        ///         var ids = Output.Tuple(@default.FolderId, @default.ProjectId).Apply(values =&gt;
+        ///         {
+        ///             var folderId = values.Item1;
+        ///             var projectId = values.Item2;
+        ///             return AliCloud.DataWorks.GetFolders.InvokeAsync(new AliCloud.DataWorks.GetFoldersArgs
+        ///             {
+        ///                 Ids = 
+        ///                 {
+        ///                     folderId,
+        ///                 },
+        ///                 ProjectId = projectId,
+        ///                 ParentFolderPath = "Business Flow/tfTestAcc/folderDi",
+        ///             });
+        ///         });
+        ///         this.DataWorksFolderId1 = ids.Apply(ids =&gt; ids.Folders?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("dataWorksFolderId1")]
+        ///     public Output&lt;string&gt; DataWorksFolderId1 { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetFoldersResult> Invoke(GetFoldersInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetFoldersResult>("alicloud:dataworks/getFolders:getFolders", args ?? new GetFoldersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -94,6 +146,40 @@ namespace Pulumi.AliCloud.DataWorks
         public string ProjectId { get; set; } = null!;
 
         public GetFoldersArgs()
+        {
+        }
+    }
+
+    public sealed class GetFoldersInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Folder IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The parent folder path.
+        /// </summary>
+        [Input("parentFolderPath", required: true)]
+        public Input<string> ParentFolderPath { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the project.
+        /// </summary>
+        [Input("projectId", required: true)]
+        public Input<string> ProjectId { get; set; } = null!;
+
+        public GetFoldersInvokeArgs()
         {
         }
     }

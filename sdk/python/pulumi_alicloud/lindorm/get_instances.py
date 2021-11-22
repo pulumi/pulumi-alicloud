@@ -13,6 +13,7 @@ __all__ = [
     'GetInstancesResult',
     'AwaitableGetInstancesResult',
     'get_instances',
+    'get_instances_output',
 ]
 
 @pulumi.output_type
@@ -184,3 +185,42 @@ def get_instances(enable_details: Optional[bool] = None,
         query_str=__ret__.query_str,
         status=__ret__.status,
         support_engine=__ret__.support_engine)
+
+
+@_utilities.lift_output_func(get_instances)
+def get_instances_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
+                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         query_str: Optional[pulumi.Input[Optional[str]]] = None,
+                         status: Optional[pulumi.Input[Optional[str]]] = None,
+                         support_engine: Optional[pulumi.Input[Optional[int]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+    """
+    This data source provides the Lindorm Instances of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.132.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.lindorm.get_instances()
+    pulumi.export("lindormInstanceId1", ids.instances[0].id)
+    name_regex = alicloud.lindorm.get_instances(name_regex="^my-Instance")
+    pulumi.export("lindormInstanceId2", name_regex.instances[0].id)
+    ```
+
+
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of Instance IDs.
+    :param str name_regex: A regex string to filter results by Instance name.
+    :param str query_str: The query str, which can use `instance_name` keyword for fuzzy search.
+    :param str status: The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+    :param int support_engine: The support engine. Valid values: `1` to `7`.
+    """
+    ...

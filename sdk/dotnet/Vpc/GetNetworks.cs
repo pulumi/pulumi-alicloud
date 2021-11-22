@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -32,7 +33,7 @@ namespace Pulumi.AliCloud.Vpc
         ///             NameRegex = "^foo",
         ///             Status = "Available",
         ///         }));
-        ///         this.FirstVpcId = vpcsDs.Apply(vpcsDs =&gt; vpcsDs.Vpcs[0].Id);
+        ///         this.FirstVpcId = vpcsDs.Apply(vpcsDs =&gt; vpcsDs.Vpcs?[0]?.Id);
         ///     }
         /// 
         ///     [Output("firstVpcId")]
@@ -44,6 +45,40 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public static Task<GetNetworksResult> InvokeAsync(GetNetworksArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNetworksResult>("alicloud:vpc/getNetworks:getNetworks", args ?? new GetNetworksArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides VPCs available to the user.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var vpcsDs = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
+        ///         {
+        ///             CidrBlock = "172.16.0.0/12",
+        ///             NameRegex = "^foo",
+        ///             Status = "Available",
+        ///         }));
+        ///         this.FirstVpcId = vpcsDs.Apply(vpcsDs =&gt; vpcsDs.Vpcs?[0]?.Id);
+        ///     }
+        /// 
+        ///     [Output("firstVpcId")]
+        ///     public Output&lt;string&gt; FirstVpcId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetNetworksResult> Invoke(GetNetworksInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNetworksResult>("alicloud:vpc/getNetworks:getNetworks", args ?? new GetNetworksInvokeArgs(), options.WithVersion());
     }
 
 
@@ -143,6 +178,106 @@ namespace Pulumi.AliCloud.Vpc
         public string? VswitchId { get; set; }
 
         public GetNetworksArgs()
+        {
+        }
+    }
+
+    public sealed class GetNetworksInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Filter results by a specific CIDR block. For example: "172.16.0.0/12".
+        /// </summary>
+        [Input("cidrBlock")]
+        public Input<string>? CidrBlock { get; set; }
+
+        /// <summary>
+        /// The ID of dhcp options set.
+        /// </summary>
+        [Input("dhcpOptionsSetId")]
+        public Input<string>? DhcpOptionsSetId { get; set; }
+
+        /// <summary>
+        /// Indicates whether to check this request only. Valid values: `true` and `false`.
+        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// -(Optional, Available in v1.119.0+) Default to `true`. Set it to true can output the `route_table_id`.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of VPC IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// Indicate whether the VPC is the default one in the specified region.
+        /// </summary>
+        [Input("isDefault")]
+        public Input<bool>? IsDefault { get; set; }
+
+        /// <summary>
+        /// A regex string to filter VPCs by name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// The Id of resource group which VPC belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Filter results by a specific status. Valid value are `Pending` and `Available`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The name of the VPC.
+        /// </summary>
+        [Input("vpcName")]
+        public Input<string>? VpcName { get; set; }
+
+        /// <summary>
+        /// The owner ID of VPC.
+        /// </summary>
+        [Input("vpcOwnerId")]
+        public Input<int>? VpcOwnerId { get; set; }
+
+        /// <summary>
+        /// Filter results by the specified VSwitch.
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
+
+        public GetNetworksInvokeArgs()
         {
         }
     }

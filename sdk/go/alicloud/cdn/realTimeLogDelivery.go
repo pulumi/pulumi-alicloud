@@ -226,7 +226,7 @@ type RealTimeLogDeliveryArrayInput interface {
 type RealTimeLogDeliveryArray []RealTimeLogDeliveryInput
 
 func (RealTimeLogDeliveryArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RealTimeLogDelivery)(nil))
+	return reflect.TypeOf((*[]*RealTimeLogDelivery)(nil)).Elem()
 }
 
 func (i RealTimeLogDeliveryArray) ToRealTimeLogDeliveryArrayOutput() RealTimeLogDeliveryArrayOutput {
@@ -251,7 +251,7 @@ type RealTimeLogDeliveryMapInput interface {
 type RealTimeLogDeliveryMap map[string]RealTimeLogDeliveryInput
 
 func (RealTimeLogDeliveryMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RealTimeLogDelivery)(nil))
+	return reflect.TypeOf((*map[string]*RealTimeLogDelivery)(nil)).Elem()
 }
 
 func (i RealTimeLogDeliveryMap) ToRealTimeLogDeliveryMapOutput() RealTimeLogDeliveryMapOutput {
@@ -262,9 +262,7 @@ func (i RealTimeLogDeliveryMap) ToRealTimeLogDeliveryMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(RealTimeLogDeliveryMapOutput)
 }
 
-type RealTimeLogDeliveryOutput struct {
-	*pulumi.OutputState
-}
+type RealTimeLogDeliveryOutput struct{ *pulumi.OutputState }
 
 func (RealTimeLogDeliveryOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RealTimeLogDelivery)(nil))
@@ -283,14 +281,12 @@ func (o RealTimeLogDeliveryOutput) ToRealTimeLogDeliveryPtrOutput() RealTimeLogD
 }
 
 func (o RealTimeLogDeliveryOutput) ToRealTimeLogDeliveryPtrOutputWithContext(ctx context.Context) RealTimeLogDeliveryPtrOutput {
-	return o.ApplyT(func(v RealTimeLogDelivery) *RealTimeLogDelivery {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RealTimeLogDelivery) *RealTimeLogDelivery {
 		return &v
 	}).(RealTimeLogDeliveryPtrOutput)
 }
 
-type RealTimeLogDeliveryPtrOutput struct {
-	*pulumi.OutputState
-}
+type RealTimeLogDeliveryPtrOutput struct{ *pulumi.OutputState }
 
 func (RealTimeLogDeliveryPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RealTimeLogDelivery)(nil))
@@ -302,6 +298,16 @@ func (o RealTimeLogDeliveryPtrOutput) ToRealTimeLogDeliveryPtrOutput() RealTimeL
 
 func (o RealTimeLogDeliveryPtrOutput) ToRealTimeLogDeliveryPtrOutputWithContext(ctx context.Context) RealTimeLogDeliveryPtrOutput {
 	return o
+}
+
+func (o RealTimeLogDeliveryPtrOutput) Elem() RealTimeLogDeliveryOutput {
+	return o.ApplyT(func(v *RealTimeLogDelivery) RealTimeLogDelivery {
+		if v != nil {
+			return *v
+		}
+		var ret RealTimeLogDelivery
+		return ret
+	}).(RealTimeLogDeliveryOutput)
 }
 
 type RealTimeLogDeliveryArrayOutput struct{ *pulumi.OutputState }
@@ -345,6 +351,10 @@ func (o RealTimeLogDeliveryMapOutput) MapIndex(k pulumi.StringInput) RealTimeLog
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RealTimeLogDeliveryInput)(nil)).Elem(), &RealTimeLogDelivery{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RealTimeLogDeliveryPtrInput)(nil)).Elem(), &RealTimeLogDelivery{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RealTimeLogDeliveryArrayInput)(nil)).Elem(), RealTimeLogDeliveryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RealTimeLogDeliveryMapInput)(nil)).Elem(), RealTimeLogDeliveryMap{})
 	pulumi.RegisterOutputType(RealTimeLogDeliveryOutput{})
 	pulumi.RegisterOutputType(RealTimeLogDeliveryPtrOutput{})
 	pulumi.RegisterOutputType(RealTimeLogDeliveryArrayOutput{})

@@ -682,6 +682,16 @@ func (o GetMainVersionsMainVersionArrayOutput) Index(i pulumi.IntInput) GetMainV
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterBootstrapActionInput)(nil)).Elem(), ClusterBootstrapActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterBootstrapActionArrayInput)(nil)).Elem(), ClusterBootstrapActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterHostGroupInput)(nil)).Elem(), ClusterHostGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterHostGroupArrayInput)(nil)).Elem(), ClusterHostGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskTypesTypeInput)(nil)).Elem(), GetDiskTypesTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskTypesTypeArrayInput)(nil)).Elem(), GetDiskTypesTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesTypeInput)(nil)).Elem(), GetInstanceTypesTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesTypeArrayInput)(nil)).Elem(), GetInstanceTypesTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMainVersionsMainVersionInput)(nil)).Elem(), GetMainVersionsMainVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMainVersionsMainVersionArrayInput)(nil)).Elem(), GetMainVersionsMainVersionArray{})
 	pulumi.RegisterOutputType(ClusterBootstrapActionOutput{})
 	pulumi.RegisterOutputType(ClusterBootstrapActionArrayOutput{})
 	pulumi.RegisterOutputType(ClusterHostGroupOutput{})

@@ -298,7 +298,7 @@ type TrafficMirrorFilterEgressRuleArrayInput interface {
 type TrafficMirrorFilterEgressRuleArray []TrafficMirrorFilterEgressRuleInput
 
 func (TrafficMirrorFilterEgressRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TrafficMirrorFilterEgressRule)(nil))
+	return reflect.TypeOf((*[]*TrafficMirrorFilterEgressRule)(nil)).Elem()
 }
 
 func (i TrafficMirrorFilterEgressRuleArray) ToTrafficMirrorFilterEgressRuleArrayOutput() TrafficMirrorFilterEgressRuleArrayOutput {
@@ -323,7 +323,7 @@ type TrafficMirrorFilterEgressRuleMapInput interface {
 type TrafficMirrorFilterEgressRuleMap map[string]TrafficMirrorFilterEgressRuleInput
 
 func (TrafficMirrorFilterEgressRuleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TrafficMirrorFilterEgressRule)(nil))
+	return reflect.TypeOf((*map[string]*TrafficMirrorFilterEgressRule)(nil)).Elem()
 }
 
 func (i TrafficMirrorFilterEgressRuleMap) ToTrafficMirrorFilterEgressRuleMapOutput() TrafficMirrorFilterEgressRuleMapOutput {
@@ -334,9 +334,7 @@ func (i TrafficMirrorFilterEgressRuleMap) ToTrafficMirrorFilterEgressRuleMapOutp
 	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorFilterEgressRuleMapOutput)
 }
 
-type TrafficMirrorFilterEgressRuleOutput struct {
-	*pulumi.OutputState
-}
+type TrafficMirrorFilterEgressRuleOutput struct{ *pulumi.OutputState }
 
 func (TrafficMirrorFilterEgressRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TrafficMirrorFilterEgressRule)(nil))
@@ -355,14 +353,12 @@ func (o TrafficMirrorFilterEgressRuleOutput) ToTrafficMirrorFilterEgressRulePtrO
 }
 
 func (o TrafficMirrorFilterEgressRuleOutput) ToTrafficMirrorFilterEgressRulePtrOutputWithContext(ctx context.Context) TrafficMirrorFilterEgressRulePtrOutput {
-	return o.ApplyT(func(v TrafficMirrorFilterEgressRule) *TrafficMirrorFilterEgressRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TrafficMirrorFilterEgressRule) *TrafficMirrorFilterEgressRule {
 		return &v
 	}).(TrafficMirrorFilterEgressRulePtrOutput)
 }
 
-type TrafficMirrorFilterEgressRulePtrOutput struct {
-	*pulumi.OutputState
-}
+type TrafficMirrorFilterEgressRulePtrOutput struct{ *pulumi.OutputState }
 
 func (TrafficMirrorFilterEgressRulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TrafficMirrorFilterEgressRule)(nil))
@@ -374,6 +370,16 @@ func (o TrafficMirrorFilterEgressRulePtrOutput) ToTrafficMirrorFilterEgressRuleP
 
 func (o TrafficMirrorFilterEgressRulePtrOutput) ToTrafficMirrorFilterEgressRulePtrOutputWithContext(ctx context.Context) TrafficMirrorFilterEgressRulePtrOutput {
 	return o
+}
+
+func (o TrafficMirrorFilterEgressRulePtrOutput) Elem() TrafficMirrorFilterEgressRuleOutput {
+	return o.ApplyT(func(v *TrafficMirrorFilterEgressRule) TrafficMirrorFilterEgressRule {
+		if v != nil {
+			return *v
+		}
+		var ret TrafficMirrorFilterEgressRule
+		return ret
+	}).(TrafficMirrorFilterEgressRuleOutput)
 }
 
 type TrafficMirrorFilterEgressRuleArrayOutput struct{ *pulumi.OutputState }
@@ -417,6 +423,10 @@ func (o TrafficMirrorFilterEgressRuleMapOutput) MapIndex(k pulumi.StringInput) T
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TrafficMirrorFilterEgressRuleInput)(nil)).Elem(), &TrafficMirrorFilterEgressRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrafficMirrorFilterEgressRulePtrInput)(nil)).Elem(), &TrafficMirrorFilterEgressRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrafficMirrorFilterEgressRuleArrayInput)(nil)).Elem(), TrafficMirrorFilterEgressRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrafficMirrorFilterEgressRuleMapInput)(nil)).Elem(), TrafficMirrorFilterEgressRuleMap{})
 	pulumi.RegisterOutputType(TrafficMirrorFilterEgressRuleOutput{})
 	pulumi.RegisterOutputType(TrafficMirrorFilterEgressRulePtrOutput{})
 	pulumi.RegisterOutputType(TrafficMirrorFilterEgressRuleArrayOutput{})

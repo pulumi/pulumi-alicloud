@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Eds
 {
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Eds
         ///             },
         ///             Status = "REGISTERED",
         ///         }));
-        ///         this.DesktopAccessType = @default.Apply(@default =&gt; @default.Sites[0].DesktopAccessType);
+        ///         this.DesktopAccessType = @default.Apply(@default =&gt; @default.Sites?[0]?.DesktopAccessType);
         ///     }
         /// 
         ///     [Output("desktopAccessType")]
@@ -50,6 +51,46 @@ namespace Pulumi.AliCloud.Eds
         /// </summary>
         public static Task<GetSimpleOfficeSitesResult> InvokeAsync(GetSimpleOfficeSitesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSimpleOfficeSitesResult>("alicloud:eds/getSimpleOfficeSites:getSimpleOfficeSites", args ?? new GetSimpleOfficeSitesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Eds.GetSimpleOfficeSites.InvokeAsync(new AliCloud.Eds.GetSimpleOfficeSitesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "example_id",
+        ///             },
+        ///             Status = "REGISTERED",
+        ///         }));
+        ///         this.DesktopAccessType = @default.Apply(@default =&gt; @default.Sites?[0]?.DesktopAccessType);
+        ///     }
+        /// 
+        ///     [Output("desktopAccessType")]
+        ///     public Output&lt;string&gt; DesktopAccessType { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetSimpleOfficeSitesResult> Invoke(GetSimpleOfficeSitesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetSimpleOfficeSitesResult>("alicloud:eds/getSimpleOfficeSites:getSimpleOfficeSites", args ?? new GetSimpleOfficeSitesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -83,6 +124,40 @@ namespace Pulumi.AliCloud.Eds
         public string? Status { get; set; }
 
         public GetSimpleOfficeSitesArgs()
+        {
+        }
+    }
+
+    public sealed class GetSimpleOfficeSitesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Simple Office Site IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter results by Simple Office Site name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        public GetSimpleOfficeSitesInvokeArgs()
         {
         }
     }

@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * const defaultDbClusters = defaultDbCluster.id.apply(id => alicloud.clickhouse.getDbClusters({
  *     ids: [id],
  * }));
- * export const dbCluster = defaultDbClusters.ids[0];
+ * export const dbCluster = defaultDbClusters.apply(defaultDbClusters => defaultDbClusters.ids?[0]);
  * ```
  */
 export function getDbClusters(args?: GetDbClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetDbClustersResult> {
@@ -60,20 +60,20 @@ export interface GetDbClustersArgs {
     /**
      * The DBCluster description.
      */
-    readonly dbClusterDescription?: string;
+    dbClusterDescription?: string;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * A list of DBCluster IDs.
      */
-    readonly ids?: string[];
-    readonly outputFile?: string;
+    ids?: string[];
+    outputFile?: string;
     /**
      * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
      */
-    readonly status?: string;
+    status?: string;
 }
 
 /**
@@ -90,4 +90,31 @@ export interface GetDbClustersResult {
     readonly ids: string[];
     readonly outputFile?: string;
     readonly status?: string;
+}
+
+export function getDbClustersOutput(args?: GetDbClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbClustersResult> {
+    return pulumi.output(args).apply(a => getDbClusters(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDbClusters.
+ */
+export interface GetDbClustersOutputArgs {
+    /**
+     * The DBCluster description.
+     */
+    dbClusterDescription?: pulumi.Input<string>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * A list of DBCluster IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+     */
+    status?: pulumi.Input<string>;
 }

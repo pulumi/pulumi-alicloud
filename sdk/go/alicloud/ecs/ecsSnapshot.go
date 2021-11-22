@@ -37,9 +37,9 @@ import (
 // 			DiskId:        pulumi.String("d-gw8csgxxxxxxxxx"),
 // 			RetentionDays: pulumi.Int(20),
 // 			SnapshotName:  pulumi.String("tf-test"),
-// 			Tags: pulumi.StringMap{
-// 				"Created": pulumi.String("TF"),
-// 				"For":     pulumi.String("Acceptance-test"),
+// 			Tags: pulumi.AnyMap{
+// 				"Created": pulumi.Any("TF"),
+// 				"For":     pulumi.Any("Acceptance-test"),
 // 			},
 // 		})
 // 		if err != nil {
@@ -292,7 +292,7 @@ type EcsSnapshotArrayInput interface {
 type EcsSnapshotArray []EcsSnapshotInput
 
 func (EcsSnapshotArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EcsSnapshot)(nil))
+	return reflect.TypeOf((*[]*EcsSnapshot)(nil)).Elem()
 }
 
 func (i EcsSnapshotArray) ToEcsSnapshotArrayOutput() EcsSnapshotArrayOutput {
@@ -317,7 +317,7 @@ type EcsSnapshotMapInput interface {
 type EcsSnapshotMap map[string]EcsSnapshotInput
 
 func (EcsSnapshotMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EcsSnapshot)(nil))
+	return reflect.TypeOf((*map[string]*EcsSnapshot)(nil)).Elem()
 }
 
 func (i EcsSnapshotMap) ToEcsSnapshotMapOutput() EcsSnapshotMapOutput {
@@ -328,9 +328,7 @@ func (i EcsSnapshotMap) ToEcsSnapshotMapOutputWithContext(ctx context.Context) E
 	return pulumi.ToOutputWithContext(ctx, i).(EcsSnapshotMapOutput)
 }
 
-type EcsSnapshotOutput struct {
-	*pulumi.OutputState
-}
+type EcsSnapshotOutput struct{ *pulumi.OutputState }
 
 func (EcsSnapshotOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EcsSnapshot)(nil))
@@ -349,14 +347,12 @@ func (o EcsSnapshotOutput) ToEcsSnapshotPtrOutput() EcsSnapshotPtrOutput {
 }
 
 func (o EcsSnapshotOutput) ToEcsSnapshotPtrOutputWithContext(ctx context.Context) EcsSnapshotPtrOutput {
-	return o.ApplyT(func(v EcsSnapshot) *EcsSnapshot {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EcsSnapshot) *EcsSnapshot {
 		return &v
 	}).(EcsSnapshotPtrOutput)
 }
 
-type EcsSnapshotPtrOutput struct {
-	*pulumi.OutputState
-}
+type EcsSnapshotPtrOutput struct{ *pulumi.OutputState }
 
 func (EcsSnapshotPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EcsSnapshot)(nil))
@@ -368,6 +364,16 @@ func (o EcsSnapshotPtrOutput) ToEcsSnapshotPtrOutput() EcsSnapshotPtrOutput {
 
 func (o EcsSnapshotPtrOutput) ToEcsSnapshotPtrOutputWithContext(ctx context.Context) EcsSnapshotPtrOutput {
 	return o
+}
+
+func (o EcsSnapshotPtrOutput) Elem() EcsSnapshotOutput {
+	return o.ApplyT(func(v *EcsSnapshot) EcsSnapshot {
+		if v != nil {
+			return *v
+		}
+		var ret EcsSnapshot
+		return ret
+	}).(EcsSnapshotOutput)
 }
 
 type EcsSnapshotArrayOutput struct{ *pulumi.OutputState }
@@ -411,6 +417,10 @@ func (o EcsSnapshotMapOutput) MapIndex(k pulumi.StringInput) EcsSnapshotOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsSnapshotInput)(nil)).Elem(), &EcsSnapshot{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsSnapshotPtrInput)(nil)).Elem(), &EcsSnapshot{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsSnapshotArrayInput)(nil)).Elem(), EcsSnapshotArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EcsSnapshotMapInput)(nil)).Elem(), EcsSnapshotMap{})
 	pulumi.RegisterOutputType(EcsSnapshotOutput{})
 	pulumi.RegisterOutputType(EcsSnapshotPtrOutput{})
 	pulumi.RegisterOutputType(EcsSnapshotArrayOutput{})

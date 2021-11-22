@@ -144,31 +144,31 @@ export interface NasFileSystemState {
     /**
      * The description of nas file system.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The filesystem id of nas file system.
      */
-    readonly fileSystemId?: pulumi.Input<string>;
+    fileSystemId?: pulumi.Input<string>;
     /**
      * The domain of mount target.
      */
-    readonly mountTargetDomain?: pulumi.Input<string>;
+    mountTargetDomain?: pulumi.Input<string>;
     /**
      * The name of nas file system.
      */
-    readonly nasFileSystemName?: pulumi.Input<string>;
+    nasFileSystemName?: pulumi.Input<string>;
     /**
      * The ID of office site.
      */
-    readonly officeSiteId?: pulumi.Input<string>;
+    officeSiteId?: pulumi.Input<string>;
     /**
      * The mount point is in an inactive state, reset the mount point of the NAS file system. Default to `false`.
      */
-    readonly reset?: pulumi.Input<boolean>;
+    reset?: pulumi.Input<boolean>;
     /**
      * The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -178,25 +178,25 @@ export interface NasFileSystemArgs {
     /**
      * The description of nas file system.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The filesystem id of nas file system.
      */
-    readonly fileSystemId?: pulumi.Input<string>;
+    fileSystemId?: pulumi.Input<string>;
     /**
      * The domain of mount target.
      */
-    readonly mountTargetDomain?: pulumi.Input<string>;
+    mountTargetDomain?: pulumi.Input<string>;
     /**
      * The name of nas file system.
      */
-    readonly nasFileSystemName?: pulumi.Input<string>;
+    nasFileSystemName?: pulumi.Input<string>;
     /**
      * The ID of office site.
      */
-    readonly officeSiteId: pulumi.Input<string>;
+    officeSiteId: pulumi.Input<string>;
     /**
      * The mount point is in an inactive state, reset the mount point of the NAS file system. Default to `false`.
      */
-    readonly reset?: pulumi.Input<boolean>;
+    reset?: pulumi.Input<boolean>;
 }

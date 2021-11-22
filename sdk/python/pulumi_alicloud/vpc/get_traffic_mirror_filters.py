@@ -13,6 +13,7 @@ __all__ = [
     'GetTrafficMirrorFiltersResult',
     'AwaitableGetTrafficMirrorFiltersResult',
     'get_traffic_mirror_filters',
+    'get_traffic_mirror_filters_output',
 ]
 
 @pulumi.output_type
@@ -162,3 +163,42 @@ def get_traffic_mirror_filters(ids: Optional[Sequence[str]] = None,
         output_file=__ret__.output_file,
         status=__ret__.status,
         traffic_mirror_filter_name=__ret__.traffic_mirror_filter_name)
+
+
+@_utilities.lift_output_func(get_traffic_mirror_filters)
+def get_traffic_mirror_filters_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
+                                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                      status: Optional[pulumi.Input[Optional[str]]] = None,
+                                      traffic_mirror_filter_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTrafficMirrorFiltersResult]:
+    """
+    This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.140.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ids = alicloud.vpc.get_traffic_mirror_filters(ids=["example_id"])
+    pulumi.export("vpcTrafficMirrorFilterId1", ids.filters[0].id)
+    name_regex = alicloud.vpc.get_traffic_mirror_filters(name_regex="^my-TrafficMirrorFilter")
+    pulumi.export("vpcTrafficMirrorFilterId2", name_regex.filters[0].id)
+    filter_name = alicloud.vpc.get_traffic_mirror_filters(traffic_mirror_filter_name="example_traffic_mirror_filter_name")
+    pulumi.export("vpcTrafficMirrorFilterId3", filter_name.filters[0].id)
+    status = alicloud.vpc.get_traffic_mirror_filters(status="^my-TrafficMirrorFilter")
+    pulumi.export("vpcTrafficMirrorFilterId4", status.filters[0].id)
+    ```
+
+
+    :param Sequence[str] ids: A list of Traffic Mirror Filter IDs.
+    :param str name_regex: A regex string to filter results by Traffic Mirror Filter name.
+    :param str status: The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+    :param str traffic_mirror_filter_name: The name of the filter.
+    """
+    ...

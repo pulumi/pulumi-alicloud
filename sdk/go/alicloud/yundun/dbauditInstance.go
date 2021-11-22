@@ -234,7 +234,7 @@ type DBAuditInstanceArrayInput interface {
 type DBAuditInstanceArray []DBAuditInstanceInput
 
 func (DBAuditInstanceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DBAuditInstance)(nil))
+	return reflect.TypeOf((*[]*DBAuditInstance)(nil)).Elem()
 }
 
 func (i DBAuditInstanceArray) ToDBAuditInstanceArrayOutput() DBAuditInstanceArrayOutput {
@@ -259,7 +259,7 @@ type DBAuditInstanceMapInput interface {
 type DBAuditInstanceMap map[string]DBAuditInstanceInput
 
 func (DBAuditInstanceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DBAuditInstance)(nil))
+	return reflect.TypeOf((*map[string]*DBAuditInstance)(nil)).Elem()
 }
 
 func (i DBAuditInstanceMap) ToDBAuditInstanceMapOutput() DBAuditInstanceMapOutput {
@@ -270,9 +270,7 @@ func (i DBAuditInstanceMap) ToDBAuditInstanceMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DBAuditInstanceMapOutput)
 }
 
-type DBAuditInstanceOutput struct {
-	*pulumi.OutputState
-}
+type DBAuditInstanceOutput struct{ *pulumi.OutputState }
 
 func (DBAuditInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DBAuditInstance)(nil))
@@ -291,14 +289,12 @@ func (o DBAuditInstanceOutput) ToDBAuditInstancePtrOutput() DBAuditInstancePtrOu
 }
 
 func (o DBAuditInstanceOutput) ToDBAuditInstancePtrOutputWithContext(ctx context.Context) DBAuditInstancePtrOutput {
-	return o.ApplyT(func(v DBAuditInstance) *DBAuditInstance {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DBAuditInstance) *DBAuditInstance {
 		return &v
 	}).(DBAuditInstancePtrOutput)
 }
 
-type DBAuditInstancePtrOutput struct {
-	*pulumi.OutputState
-}
+type DBAuditInstancePtrOutput struct{ *pulumi.OutputState }
 
 func (DBAuditInstancePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DBAuditInstance)(nil))
@@ -310,6 +306,16 @@ func (o DBAuditInstancePtrOutput) ToDBAuditInstancePtrOutput() DBAuditInstancePt
 
 func (o DBAuditInstancePtrOutput) ToDBAuditInstancePtrOutputWithContext(ctx context.Context) DBAuditInstancePtrOutput {
 	return o
+}
+
+func (o DBAuditInstancePtrOutput) Elem() DBAuditInstanceOutput {
+	return o.ApplyT(func(v *DBAuditInstance) DBAuditInstance {
+		if v != nil {
+			return *v
+		}
+		var ret DBAuditInstance
+		return ret
+	}).(DBAuditInstanceOutput)
 }
 
 type DBAuditInstanceArrayOutput struct{ *pulumi.OutputState }
@@ -353,6 +359,10 @@ func (o DBAuditInstanceMapOutput) MapIndex(k pulumi.StringInput) DBAuditInstance
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DBAuditInstanceInput)(nil)).Elem(), &DBAuditInstance{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DBAuditInstancePtrInput)(nil)).Elem(), &DBAuditInstance{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DBAuditInstanceArrayInput)(nil)).Elem(), DBAuditInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DBAuditInstanceMapInput)(nil)).Elem(), DBAuditInstanceMap{})
 	pulumi.RegisterOutputType(DBAuditInstanceOutput{})
 	pulumi.RegisterOutputType(DBAuditInstancePtrOutput{})
 	pulumi.RegisterOutputType(DBAuditInstanceArrayOutput{})

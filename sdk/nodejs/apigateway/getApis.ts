@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const dataApigatwayApis = pulumi.output(alicloud.apigateway.getApis({
  *     outputFile: "output_ApiGatawayApis",
- * }, { async: true }));
+ * }));
  *
  * export const firstApiId = alicloud_api_gateway_apis_data_apigatway.apis.0.id;
  * ```
@@ -48,20 +48,20 @@ export interface GetApisArgs {
      *
      * @deprecated Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.
      */
-    readonly apiId?: string;
+    apiId?: string;
     /**
      * ID of the specified group.
      */
-    readonly groupId?: string;
+    groupId?: string;
     /**
      * A list of api IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * A regex string to filter api gateway apis by name.
      */
-    readonly nameRegex?: string;
-    readonly outputFile?: string;
+    nameRegex?: string;
+    outputFile?: string;
 }
 
 /**
@@ -94,4 +94,33 @@ export interface GetApisResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+}
+
+export function getApisOutput(args?: GetApisOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApisResult> {
+    return pulumi.output(args).apply(a => getApis(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getApis.
+ */
+export interface GetApisOutputArgs {
+    /**
+     * (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
+     *
+     * @deprecated Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.
+     */
+    apiId?: pulumi.Input<string>;
+    /**
+     * ID of the specified group.
+     */
+    groupId?: pulumi.Input<string>;
+    /**
+     * A list of api IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter api gateway apis by name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

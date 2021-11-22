@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     instanceId: "ddoscoo-cn-6ja1rl4j****",
  *     ids: ["ddoscoo-cn-6ja1rl4j****:7001:tcp"],
  * });
- * export const firstDdoscooPortId = example.then(example => example.ports[0].id);
+ * export const firstDdoscooPortId = example.then(example => example.ports?[0]?.id);
  * ```
  */
 export function getDdosCooPorts(args: GetDdosCooPortsArgs, opts?: pulumi.InvokeOptions): Promise<GetDdosCooPortsResult> {
@@ -49,20 +49,20 @@ export interface GetDdosCooPortsArgs {
     /**
      * The forwarding port.
      */
-    readonly frontendPort?: string;
+    frontendPort?: string;
     /**
      * The forwarding protocol.
      */
-    readonly frontendProtocol?: string;
+    frontendProtocol?: string;
     /**
      * A list of Port IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * The Ddoscoo instance ID.
      */
-    readonly instanceId: string;
-    readonly outputFile?: string;
+    instanceId: string;
+    outputFile?: string;
 }
 
 /**
@@ -79,4 +79,31 @@ export interface GetDdosCooPortsResult {
     readonly instanceId: string;
     readonly outputFile?: string;
     readonly ports: outputs.ddos.GetDdosCooPortsPort[];
+}
+
+export function getDdosCooPortsOutput(args: GetDdosCooPortsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosCooPortsResult> {
+    return pulumi.output(args).apply(a => getDdosCooPorts(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDdosCooPorts.
+ */
+export interface GetDdosCooPortsOutputArgs {
+    /**
+     * The forwarding port.
+     */
+    frontendPort?: pulumi.Input<string>;
+    /**
+     * The forwarding protocol.
+     */
+    frontendProtocol?: pulumi.Input<string>;
+    /**
+     * A list of Port IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Ddoscoo instance ID.
+     */
+    instanceId: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
 }

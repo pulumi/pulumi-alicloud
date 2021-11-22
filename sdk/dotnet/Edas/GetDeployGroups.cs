@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Edas
 {
@@ -37,7 +38,7 @@ namespace Pulumi.AliCloud.Edas
         ///             },
         ///             OutputFile = "groups.txt",
         ///         }));
-        ///         this.FirstGroupName = groups.Apply(groups =&gt; groups.Groups[0].GroupName);
+        ///         this.FirstGroupName = groups.Apply(groups =&gt; groups.Groups?[0]?.GroupName);
         ///     }
         /// 
         ///     [Output("firstGroupName")]
@@ -49,6 +50,45 @@ namespace Pulumi.AliCloud.Edas
         /// </summary>
         public static Task<GetDeployGroupsResult> InvokeAsync(GetDeployGroupsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDeployGroupsResult>("alicloud:edas/getDeployGroups:getDeployGroups", args ?? new GetDeployGroupsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.82.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var groups = Output.Create(AliCloud.Edas.GetDeployGroups.InvokeAsync(new AliCloud.Edas.GetDeployGroupsArgs
+        ///         {
+        ///             AppId = "xxx",
+        ///             Ids = 
+        ///             {
+        ///                 "xxx",
+        ///             },
+        ///             OutputFile = "groups.txt",
+        ///         }));
+        ///         this.FirstGroupName = groups.Apply(groups =&gt; groups.Groups?[0]?.GroupName);
+        ///     }
+        /// 
+        ///     [Output("firstGroupName")]
+        ///     public Output&lt;string&gt; FirstGroupName { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDeployGroupsResult> Invoke(GetDeployGroupsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDeployGroupsResult>("alicloud:edas/getDeployGroups:getDeployGroups", args ?? new GetDeployGroupsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -70,6 +110,28 @@ namespace Pulumi.AliCloud.Edas
         public string? OutputFile { get; set; }
 
         public GetDeployGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetDeployGroupsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// ID of the EDAS application.
+        /// </summary>
+        [Input("appId", required: true)]
+        public Input<string> AppId { get; set; } = null!;
+
+        /// <summary>
+        /// A regex string to filter results by the deploy group name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        [Input("outputFile")]
+        public Input<string>? OutputFile { get; set; }
+
+        public GetDeployGroupsInvokeArgs()
         {
         }
     }

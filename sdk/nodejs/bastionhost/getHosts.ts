@@ -25,12 +25,12 @@ import * as utilities from "../utilities";
  *         "2",
  *     ],
  * });
- * export const bastionhostHostId1 = ids.then(ids => ids.hosts[0].id);
+ * export const bastionhostHostId1 = ids.then(ids => ids.hosts?[0]?.id);
  * const nameRegex = alicloud.bastionhost.getHosts({
  *     instanceId: "example_value",
  *     nameRegex: "^my-Host",
  * });
- * export const bastionhostHostId2 = nameRegex.then(nameRegex => nameRegex.hosts[0].id);
+ * export const bastionhostHostId2 = nameRegex.then(nameRegex => nameRegex.hosts?[0]?.id);
  * ```
  */
 export function getHosts(args: GetHostsArgs, opts?: pulumi.InvokeOptions): Promise<GetHostsResult> {
@@ -63,44 +63,44 @@ export interface GetHostsArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    readonly enableDetails?: boolean;
+    enableDetails?: boolean;
     /**
      * The host address.
      */
-    readonly hostAddress?: string;
+    hostAddress?: string;
     /**
      * Specify the new create a host name of the supports up to 128 characters.
      */
-    readonly hostName?: string;
+    hostName?: string;
     /**
      * A list of Host IDs.
      */
-    readonly ids?: string[];
+    ids?: string[];
     /**
      * Specify the new create a host where the Bastion host ID of.
      */
-    readonly instanceId: string;
+    instanceId: string;
     /**
      * A regex string to filter results by Host name.
      */
-    readonly nameRegex?: string;
+    nameRegex?: string;
     /**
      * Specify the new create the host's operating system. Valid values: Linux Windows.
      */
-    readonly osType?: string;
-    readonly outputFile?: string;
+    osType?: string;
+    outputFile?: string;
     /**
      * Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
      */
-    readonly source?: string;
+    source?: string;
     /**
      * Specify the newly created ECS instance ID or dedicated cluster host ID.
      */
-    readonly sourceInstanceId?: string;
+    sourceInstanceId?: string;
     /**
      * The source instance state.
      */
-    readonly sourceInstanceState?: string;
+    sourceInstanceState?: string;
 }
 
 /**
@@ -124,4 +124,55 @@ export interface GetHostsResult {
     readonly source?: string;
     readonly sourceInstanceId?: string;
     readonly sourceInstanceState?: string;
+}
+
+export function getHostsOutput(args: GetHostsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostsResult> {
+    return pulumi.output(args).apply(a => getHosts(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getHosts.
+ */
+export interface GetHostsOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
+     * The host address.
+     */
+    hostAddress?: pulumi.Input<string>;
+    /**
+     * Specify the new create a host name of the supports up to 128 characters.
+     */
+    hostName?: pulumi.Input<string>;
+    /**
+     * A list of Host IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specify the new create a host where the Bastion host ID of.
+     */
+    instanceId: pulumi.Input<string>;
+    /**
+     * A regex string to filter results by Host name.
+     */
+    nameRegex?: pulumi.Input<string>;
+    /**
+     * Specify the new create the host's operating system. Valid values: Linux Windows.
+     */
+    osType?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string>;
+    /**
+     * Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
+     */
+    source?: pulumi.Input<string>;
+    /**
+     * Specify the newly created ECS instance ID or dedicated cluster host ID.
+     */
+    sourceInstanceId?: pulumi.Input<string>;
+    /**
+     * The source instance state.
+     */
+    sourceInstanceState?: pulumi.Input<string>;
 }

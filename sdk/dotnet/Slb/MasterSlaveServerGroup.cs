@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Slb
     ///         }));
     ///         var defaultInstanceTypes = defaultZones.Apply(defaultZones =&gt; Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
     ///         {
-    ///             AvailabilityZone = defaultZones.Zones[0].Id,
+    ///             AvailabilityZone = defaultZones.Zones?[0]?.Id,
     ///             EniAmount = 2,
     ///         })));
     ///         var image = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.Slb
     ///         {
     ///             VpcId = mainNetwork.Id,
     ///             CidrBlock = "172.16.0.0/16",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
     ///             VswitchName = name,
     ///         });
     ///         var groupSecurityGroup = new AliCloud.Ecs.SecurityGroup("groupSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
@@ -78,8 +78,8 @@ namespace Pulumi.AliCloud.Slb
     ///             var range = new { Value = rangeIndex };
     ///             instanceInstance.Add(new AliCloud.Ecs.Instance($"instanceInstance-{range.Value}", new AliCloud.Ecs.InstanceArgs
     ///             {
-    ///                 ImageId = image.Apply(image =&gt; image.Images[0].Id),
-    ///                 InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes[0].Id),
+    ///                 ImageId = image.Apply(image =&gt; image.Images?[0]?.Id),
+    ///                 InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes?[0]?.Id),
     ///                 InstanceName = name,
     ///                 SecurityGroups = 
     ///                 {
@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.Slb
     ///                 },
     ///                 InternetChargeType = "PayByTraffic",
     ///                 InternetMaxBandwidthOut = 10,
-    ///                 AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///                 AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
     ///                 InstanceChargeType = "PostPaid",
     ///                 SystemDiskCategory = "cloud_efficiency",
     ///                 VswitchId = mainSwitch.Id,

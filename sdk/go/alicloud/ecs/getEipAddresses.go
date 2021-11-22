@@ -4,6 +4,9 @@
 package ecs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -115,4 +118,166 @@ type GetEipAddressesResult struct {
 	SegmentInstanceId *string                `pulumi:"segmentInstanceId"`
 	Status            *string                `pulumi:"status"`
 	Tags              map[string]interface{} `pulumi:"tags"`
+}
+
+func GetEipAddressesOutput(ctx *pulumi.Context, args GetEipAddressesOutputArgs, opts ...pulumi.InvokeOption) GetEipAddressesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetEipAddressesResult, error) {
+			args := v.(GetEipAddressesArgs)
+			r, err := GetEipAddresses(ctx, &args, opts...)
+			return *r, err
+		}).(GetEipAddressesResultOutput)
+}
+
+// A collection of arguments for invoking getEipAddresses.
+type GetEipAddressesOutputArgs struct {
+	// The name of the EIP.
+	AddressName pulumi.StringPtrInput `pulumi:"addressName"`
+	// The associated instance id.
+	AssociatedInstanceId pulumi.StringPtrInput `pulumi:"associatedInstanceId"`
+	// The associated instance type.
+	AssociatedInstanceType pulumi.StringPtrInput `pulumi:"associatedInstanceType"`
+	// The dry run.
+	DryRun pulumi.BoolPtrInput `pulumi:"dryRun"`
+	// Default to `tue`. Set it to `false` can hidden the `tags` to output.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of Address IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The include reservation data. Valid values: `BGP` and `BGP_PRO`.
+	IncludeReservationData pulumi.BoolPtrInput `pulumi:"includeReservationData"`
+	// The IP address of the EIP.
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.
+	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
+	// The Internet service provider (ISP).
+	Isp pulumi.StringPtrInput `pulumi:"isp"`
+	// The lock reason.
+	LockReason pulumi.StringPtrInput `pulumi:"lockReason"`
+	// A regex string to filter results by Address name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The billing method of the EIP.
+	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	// The IDs of the contiguous EIPs.
+	SegmentInstanceId pulumi.StringPtrInput `pulumi:"segmentInstanceId"`
+	// The status of the EIP.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+}
+
+func (GetEipAddressesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEipAddressesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getEipAddresses.
+type GetEipAddressesResultOutput struct{ *pulumi.OutputState }
+
+func (GetEipAddressesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEipAddressesResult)(nil)).Elem()
+}
+
+func (o GetEipAddressesResultOutput) ToGetEipAddressesResultOutput() GetEipAddressesResultOutput {
+	return o
+}
+
+func (o GetEipAddressesResultOutput) ToGetEipAddressesResultOutputWithContext(ctx context.Context) GetEipAddressesResultOutput {
+	return o
+}
+
+func (o GetEipAddressesResultOutput) AddressName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEipAddressesResult) *string { return v.AddressName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEipAddressesResultOutput) Addresses() GetEipAddressesAddressArrayOutput {
+	return o.ApplyT(func(v GetEipAddressesResult) []GetEipAddressesAddress { return v.Addresses }).(GetEipAddressesAddressArrayOutput)
+}
+
+func (o GetEipAddressesResultOutput) AssociatedInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEipAddressesResult) *string { return v.AssociatedInstanceId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEipAddressesResultOutput) AssociatedInstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEipAddressesResult) *string { return v.AssociatedInstanceType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEipAddressesResultOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetEipAddressesResult) *bool { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// Deprecated: Field 'eips' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'addresses' instead.
+func (o GetEipAddressesResultOutput) Eips() GetEipAddressesEipArrayOutput {
+	return o.ApplyT(func(v GetEipAddressesResult) []GetEipAddressesEip { return v.Eips }).(GetEipAddressesEipArrayOutput)
+}
+
+func (o GetEipAddressesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetEipAddressesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetEipAddressesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEipAddressesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetEipAddressesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEipAddressesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEipAddressesResultOutput) IncludeReservationData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetEipAddressesResult) *bool { return v.IncludeReservationData }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetEipAddressesResultOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEipAddressesResult) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.
+func (o GetEipAddressesResultOutput) IpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEipAddressesResult) []string { return v.IpAddresses }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEipAddressesResultOutput) Isp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEipAddressesResult) *string { return v.Isp }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEipAddressesResultOutput) LockReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEipAddressesResult) *string { return v.LockReason }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEipAddressesResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEipAddressesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEipAddressesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEipAddressesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEipAddressesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEipAddressesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEipAddressesResultOutput) PaymentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEipAddressesResult) *string { return v.PaymentType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEipAddressesResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEipAddressesResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEipAddressesResultOutput) SegmentInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEipAddressesResult) *string { return v.SegmentInstanceId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEipAddressesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEipAddressesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEipAddressesResultOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetEipAddressesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetEipAddressesResultOutput{})
 }

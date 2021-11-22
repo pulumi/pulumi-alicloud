@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
  *     vpcId: exampleNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones[0].id),
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?[0]?.id),
  * });
  * const exampleInstance = new alicloud.rds.Instance("exampleInstance", {
  *     engine: "MySQL",
@@ -579,60 +579,60 @@ export interface InstanceState {
      * - verify-ca
      * - verify-full (supported only when the instance runs PostgreSQL 12 or later)
      */
-    readonly acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string>;
     /**
      * Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
      */
-    readonly autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean>;
     /**
      * Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
      */
-    readonly autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number>;
     /**
      * The upgrade method to use. Valid values:
      * - Auto: Instances are automatically upgraded to a higher minor version.
      * - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
      */
-    readonly autoUpgradeMinorVersion?: pulumi.Input<string>;
+    autoUpgradeMinorVersion?: pulumi.Input<string>;
     /**
      * The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
      * - aliyun: a cloud certificate
      * - custom: a custom certificate
      */
-    readonly caType?: pulumi.Input<string>;
+    caType?: pulumi.Input<string>;
     /**
      * The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
      */
-    readonly clientCaCert?: pulumi.Input<string>;
+    clientCaCert?: pulumi.Input<string>;
     /**
      * Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
      * - 1: enables the public key
      * - 0: disables the public key
      */
-    readonly clientCaEnabled?: pulumi.Input<number>;
+    clientCaEnabled?: pulumi.Input<number>;
     /**
      * The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter.
      */
-    readonly clientCertRevocationList?: pulumi.Input<string>;
+    clientCertRevocationList?: pulumi.Input<string>;
     /**
      * Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
      * - 1: enables the CRL
      * - 0: disables the CRL
      */
-    readonly clientCrlEnabled?: pulumi.Input<number>;
+    clientCrlEnabled?: pulumi.Input<number>;
     /**
      * RDS database connection string.
      */
-    readonly connectionString?: pulumi.Input<string>;
-    readonly connectionStringPrefix?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string>;
+    connectionStringPrefix?: pulumi.Input<string>;
     /**
      * The attribute of the IP address whitelist. By default, this parameter is empty.
      */
-    readonly dbInstanceIpArrayAttribute?: pulumi.Input<string>;
+    dbInstanceIpArrayAttribute?: pulumi.Input<string>;
     /**
      * The name of the IP address whitelist. Default value: Default.
      */
-    readonly dbInstanceIpArrayName?: pulumi.Input<string>;
+    dbInstanceIpArrayName?: pulumi.Input<string>;
     /**
      * The storage type of the instance. Valid values:
      * - local_ssd: specifies to use local SSDs. This value is recommended.
@@ -641,7 +641,7 @@ export interface InstanceState {
      * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
      * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
      */
-    readonly dbInstanceStorageType?: pulumi.Input<string>;
+    dbInstanceStorageType?: pulumi.Input<string>;
     /**
      * The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
      * - If you set the `Engine` parameter to MySQL.
@@ -651,37 +651,37 @@ export interface InstanceState {
      * - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
      * - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
      */
-    readonly dbTimeZone?: pulumi.Input<string>;
+    dbTimeZone?: pulumi.Input<string>;
     /**
      * The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
      */
-    readonly encryptionKey?: pulumi.Input<string>;
+    encryptionKey?: pulumi.Input<string>;
     /**
      * Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
      */
-    readonly engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
      */
-    readonly engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string>;
     /**
      * Set it to true to make some parameter efficient when modifying them. Default to false.
      */
-    readonly forceRestart?: pulumi.Input<boolean>;
+    forceRestart?: pulumi.Input<boolean>;
     /**
      * The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
      * - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
      * - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
      */
-    readonly haConfig?: pulumi.Input<string>;
+    haConfig?: pulumi.Input<string>;
     /**
      * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
      */
-    readonly instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string>;
     /**
      * The name of DB instance. It a string of 2 to 256 characters.
      */
-    readonly instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string>;
     /**
      * User-defined DB instance storage space. Value range:
      * - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
@@ -691,47 +691,47 @@ export interface InstanceState {
      * Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
      * Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
      */
-    readonly instanceStorage?: pulumi.Input<number>;
+    instanceStorage?: pulumi.Input<number>;
     /**
      * DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
      */
-    readonly instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string>;
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
-    readonly maintainTime?: pulumi.Input<string>;
+    maintainTime?: pulumi.Input<string>;
     /**
      * The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
      */
-    readonly manualHaTime?: pulumi.Input<string>;
+    manualHaTime?: pulumi.Input<string>;
     /**
      * The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
      * - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
      * - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
      * - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
      */
-    readonly modifyMode?: pulumi.Input<string>;
+    modifyMode?: pulumi.Input<string>;
     /**
      * The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
      */
-    readonly monitoringPeriod?: pulumi.Input<number>;
+    monitoringPeriod?: pulumi.Input<number>;
     /**
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
      */
-    readonly parameters?: pulumi.Input<pulumi.Input<inputs.rds.InstanceParameter>[]>;
-    readonly period?: pulumi.Input<number>;
-    readonly port?: pulumi.Input<string>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.rds.InstanceParameter>[]>;
+    period?: pulumi.Input<number>;
+    port?: pulumi.Input<string>;
     /**
      * The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
      */
-    readonly privateIpAddress?: pulumi.Input<string>;
+    privateIpAddress?: pulumi.Input<string>;
     /**
      * The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
      * - None: No archived backup files are retained.
      * - Lastest: Only the last archived backup file is retained.
      * - All: All the archived backup files are retained.
      */
-    readonly releasedKeepPolicy?: pulumi.Input<string>;
+    releasedKeepPolicy?: pulumi.Input<string>;
     /**
      * The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
      * - cert
@@ -739,63 +739,63 @@ export interface InstanceState {
      * - verify-ca
      * - verify-full (supported only when the instance runs PostgreSQL 12 or later)
      */
-    readonly replicationAcl?: pulumi.Input<string>;
+    replicationAcl?: pulumi.Input<string>;
     /**
      * The ID of resource group which the DB instance belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      *
      * @deprecated Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
      */
-    readonly securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
     /**
      * , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
      */
-    readonly securityIpMode?: pulumi.Input<string>;
+    securityIpMode?: pulumi.Input<string>;
     /**
      * The type of IP address in the IP address whitelist.
      */
-    readonly securityIpType?: pulumi.Input<string>;
+    securityIpType?: pulumi.Input<string>;
     /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
-    readonly securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
      */
-    readonly serverCert?: pulumi.Input<string>;
+    serverCert?: pulumi.Input<string>;
     /**
      * The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
      */
-    readonly serverKey?: pulumi.Input<string>;
+    serverKey?: pulumi.Input<string>;
     /**
      * The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
      */
-    readonly sqlCollectorConfigValue?: pulumi.Input<number>;
+    sqlCollectorConfigValue?: pulumi.Input<number>;
     /**
      * The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
      */
-    readonly sqlCollectorStatus?: pulumi.Input<string>;
+    sqlCollectorStatus?: pulumi.Input<string>;
     /**
      * Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
      */
-    readonly sslAction?: pulumi.Input<string>;
+    sslAction?: pulumi.Input<string>;
     /**
      * Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
      */
-    readonly sslStatus?: pulumi.Input<string>;
+    sslStatus?: pulumi.Input<string>;
     /**
      * Automatic storage space expansion switch. Valid values:
      * - Enable
      * - Disable
      */
-    readonly storageAutoScale?: pulumi.Input<string>;
+    storageAutoScale?: pulumi.Input<string>;
     /**
      * The trigger threshold (percentage) for automatic storage space expansion. Valid values:
      * - 10
@@ -804,21 +804,21 @@ export interface InstanceState {
      * - 40
      * - 50
      */
-    readonly storageThreshold?: pulumi.Input<number>;
+    storageThreshold?: pulumi.Input<number>;
     /**
      * The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
      */
-    readonly storageUpperBound?: pulumi.Input<number>;
+    storageUpperBound?: pulumi.Input<number>;
     /**
      * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
      */
-    readonly switchTime?: pulumi.Input<string>;
+    switchTime?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
      * - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
@@ -828,49 +828,49 @@ export interface InstanceState {
      * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
      */
-    readonly targetMinorVersion?: pulumi.Input<string>;
+    targetMinorVersion?: pulumi.Input<string>;
     /**
      * The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
      */
-    readonly tdeStatus?: pulumi.Input<string>;
+    tdeStatus?: pulumi.Input<string>;
     /**
      * Whether to upgrade a minor version of the kernel. Valid values:
      * - true: upgrade
      * - false: not to upgrade
      */
-    readonly upgradeDbInstanceKernelVersion?: pulumi.Input<boolean>;
+    upgradeDbInstanceKernelVersion?: pulumi.Input<boolean>;
     /**
      * The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
      * - Immediate: The minor engine version is immediately updated.
      * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
      * - SpecifyTime: The minor engine version is updated at the point in time you specify.
      */
-    readonly upgradeTime?: pulumi.Input<string>;
+    upgradeTime?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * The network type of the IP address whitelist. Default value: MIX. Valid values:
      * - Classic: classic network in enhanced whitelist mode
      * - VPC: virtual private cloud (VPC) in enhanced whitelist mode
      * - MIX: standard whitelist mode
      */
-    readonly whitelistNetworkType?: pulumi.Input<string>;
+    whitelistNetworkType?: pulumi.Input<string>;
     /**
      * The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
      * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
     /**
      * The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
      */
-    readonly zoneIdSlaveA?: pulumi.Input<string>;
+    zoneIdSlaveA?: pulumi.Input<string>;
     /**
      * The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
      */
-    readonly zoneIdSlaveB?: pulumi.Input<string>;
+    zoneIdSlaveB?: pulumi.Input<string>;
 }
 
 /**
@@ -884,56 +884,56 @@ export interface InstanceArgs {
      * - verify-ca
      * - verify-full (supported only when the instance runs PostgreSQL 12 or later)
      */
-    readonly acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string>;
     /**
      * Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
      */
-    readonly autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean>;
     /**
      * Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
      */
-    readonly autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number>;
     /**
      * The upgrade method to use. Valid values:
      * - Auto: Instances are automatically upgraded to a higher minor version.
      * - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
      */
-    readonly autoUpgradeMinorVersion?: pulumi.Input<string>;
+    autoUpgradeMinorVersion?: pulumi.Input<string>;
     /**
      * The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
      * - aliyun: a cloud certificate
      * - custom: a custom certificate
      */
-    readonly caType?: pulumi.Input<string>;
+    caType?: pulumi.Input<string>;
     /**
      * The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
      */
-    readonly clientCaCert?: pulumi.Input<string>;
+    clientCaCert?: pulumi.Input<string>;
     /**
      * Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
      * - 1: enables the public key
      * - 0: disables the public key
      */
-    readonly clientCaEnabled?: pulumi.Input<number>;
+    clientCaEnabled?: pulumi.Input<number>;
     /**
      * The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter.
      */
-    readonly clientCertRevocationList?: pulumi.Input<string>;
+    clientCertRevocationList?: pulumi.Input<string>;
     /**
      * Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
      * - 1: enables the CRL
      * - 0: disables the CRL
      */
-    readonly clientCrlEnabled?: pulumi.Input<number>;
-    readonly connectionStringPrefix?: pulumi.Input<string>;
+    clientCrlEnabled?: pulumi.Input<number>;
+    connectionStringPrefix?: pulumi.Input<string>;
     /**
      * The attribute of the IP address whitelist. By default, this parameter is empty.
      */
-    readonly dbInstanceIpArrayAttribute?: pulumi.Input<string>;
+    dbInstanceIpArrayAttribute?: pulumi.Input<string>;
     /**
      * The name of the IP address whitelist. Default value: Default.
      */
-    readonly dbInstanceIpArrayName?: pulumi.Input<string>;
+    dbInstanceIpArrayName?: pulumi.Input<string>;
     /**
      * The storage type of the instance. Valid values:
      * - local_ssd: specifies to use local SSDs. This value is recommended.
@@ -942,7 +942,7 @@ export interface InstanceArgs {
      * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
      * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
      */
-    readonly dbInstanceStorageType?: pulumi.Input<string>;
+    dbInstanceStorageType?: pulumi.Input<string>;
     /**
      * The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
      * - If you set the `Engine` parameter to MySQL.
@@ -952,37 +952,37 @@ export interface InstanceArgs {
      * - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
      * - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
      */
-    readonly dbTimeZone?: pulumi.Input<string>;
+    dbTimeZone?: pulumi.Input<string>;
     /**
      * The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
      */
-    readonly encryptionKey?: pulumi.Input<string>;
+    encryptionKey?: pulumi.Input<string>;
     /**
      * Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
      */
-    readonly engine: pulumi.Input<string>;
+    engine: pulumi.Input<string>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
      */
-    readonly engineVersion: pulumi.Input<string>;
+    engineVersion: pulumi.Input<string>;
     /**
      * Set it to true to make some parameter efficient when modifying them. Default to false.
      */
-    readonly forceRestart?: pulumi.Input<boolean>;
+    forceRestart?: pulumi.Input<boolean>;
     /**
      * The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
      * - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
      * - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
      */
-    readonly haConfig?: pulumi.Input<string>;
+    haConfig?: pulumi.Input<string>;
     /**
      * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
      */
-    readonly instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string>;
     /**
      * The name of DB instance. It a string of 2 to 256 characters.
      */
-    readonly instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string>;
     /**
      * User-defined DB instance storage space. Value range:
      * - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
@@ -992,47 +992,47 @@ export interface InstanceArgs {
      * Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
      * Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
      */
-    readonly instanceStorage: pulumi.Input<number>;
+    instanceStorage: pulumi.Input<number>;
     /**
      * DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
      */
-    readonly instanceType: pulumi.Input<string>;
+    instanceType: pulumi.Input<string>;
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
-    readonly maintainTime?: pulumi.Input<string>;
+    maintainTime?: pulumi.Input<string>;
     /**
      * The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
      */
-    readonly manualHaTime?: pulumi.Input<string>;
+    manualHaTime?: pulumi.Input<string>;
     /**
      * The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
      * - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
      * - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
      * - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
      */
-    readonly modifyMode?: pulumi.Input<string>;
+    modifyMode?: pulumi.Input<string>;
     /**
      * The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
      */
-    readonly monitoringPeriod?: pulumi.Input<number>;
+    monitoringPeriod?: pulumi.Input<number>;
     /**
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
      */
-    readonly parameters?: pulumi.Input<pulumi.Input<inputs.rds.InstanceParameter>[]>;
-    readonly period?: pulumi.Input<number>;
-    readonly port?: pulumi.Input<string>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.rds.InstanceParameter>[]>;
+    period?: pulumi.Input<number>;
+    port?: pulumi.Input<string>;
     /**
      * The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
      */
-    readonly privateIpAddress?: pulumi.Input<string>;
+    privateIpAddress?: pulumi.Input<string>;
     /**
      * The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
      * - None: No archived backup files are retained.
      * - Lastest: Only the last archived backup file is retained.
      * - All: All the archived backup files are retained.
      */
-    readonly releasedKeepPolicy?: pulumi.Input<string>;
+    releasedKeepPolicy?: pulumi.Input<string>;
     /**
      * The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
      * - cert
@@ -1040,59 +1040,59 @@ export interface InstanceArgs {
      * - verify-ca
      * - verify-full (supported only when the instance runs PostgreSQL 12 or later)
      */
-    readonly replicationAcl?: pulumi.Input<string>;
+    replicationAcl?: pulumi.Input<string>;
     /**
      * The ID of resource group which the DB instance belongs.
      */
-    readonly resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      *
      * @deprecated Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
      */
-    readonly securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string>;
     /**
      * , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
      */
-    readonly securityIpMode?: pulumi.Input<string>;
+    securityIpMode?: pulumi.Input<string>;
     /**
      * The type of IP address in the IP address whitelist.
      */
-    readonly securityIpType?: pulumi.Input<string>;
+    securityIpType?: pulumi.Input<string>;
     /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
-    readonly securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
      */
-    readonly serverCert?: pulumi.Input<string>;
+    serverCert?: pulumi.Input<string>;
     /**
      * The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
      */
-    readonly serverKey?: pulumi.Input<string>;
+    serverKey?: pulumi.Input<string>;
     /**
      * The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
      */
-    readonly sqlCollectorConfigValue?: pulumi.Input<number>;
+    sqlCollectorConfigValue?: pulumi.Input<number>;
     /**
      * The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
      */
-    readonly sqlCollectorStatus?: pulumi.Input<string>;
+    sqlCollectorStatus?: pulumi.Input<string>;
     /**
      * Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
      */
-    readonly sslAction?: pulumi.Input<string>;
+    sslAction?: pulumi.Input<string>;
     /**
      * Automatic storage space expansion switch. Valid values:
      * - Enable
      * - Disable
      */
-    readonly storageAutoScale?: pulumi.Input<string>;
+    storageAutoScale?: pulumi.Input<string>;
     /**
      * The trigger threshold (percentage) for automatic storage space expansion. Valid values:
      * - 10
@@ -1101,21 +1101,21 @@ export interface InstanceArgs {
      * - 40
      * - 50
      */
-    readonly storageThreshold?: pulumi.Input<number>;
+    storageThreshold?: pulumi.Input<number>;
     /**
      * The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
      */
-    readonly storageUpperBound?: pulumi.Input<number>;
+    storageUpperBound?: pulumi.Input<number>;
     /**
      * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
      */
-    readonly switchTime?: pulumi.Input<string>;
+    switchTime?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
      * - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
@@ -1125,47 +1125,47 @@ export interface InstanceArgs {
      * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
      */
-    readonly targetMinorVersion?: pulumi.Input<string>;
+    targetMinorVersion?: pulumi.Input<string>;
     /**
      * The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
      */
-    readonly tdeStatus?: pulumi.Input<string>;
+    tdeStatus?: pulumi.Input<string>;
     /**
      * Whether to upgrade a minor version of the kernel. Valid values:
      * - true: upgrade
      * - false: not to upgrade
      */
-    readonly upgradeDbInstanceKernelVersion?: pulumi.Input<boolean>;
+    upgradeDbInstanceKernelVersion?: pulumi.Input<boolean>;
     /**
      * The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
      * - Immediate: The minor engine version is immediately updated.
      * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
      * - SpecifyTime: The minor engine version is updated at the point in time you specify.
      */
-    readonly upgradeTime?: pulumi.Input<string>;
+    upgradeTime?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string>;
     /**
      * The network type of the IP address whitelist. Default value: MIX. Valid values:
      * - Classic: classic network in enhanced whitelist mode
      * - VPC: virtual private cloud (VPC) in enhanced whitelist mode
      * - MIX: standard whitelist mode
      */
-    readonly whitelistNetworkType?: pulumi.Input<string>;
+    whitelistNetworkType?: pulumi.Input<string>;
     /**
      * The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
      * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
     /**
      * The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
      */
-    readonly zoneIdSlaveA?: pulumi.Input<string>;
+    zoneIdSlaveA?: pulumi.Input<string>;
     /**
      * The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
      */
-    readonly zoneIdSlaveB?: pulumi.Input<string>;
+    zoneIdSlaveB?: pulumi.Input<string>;
 }

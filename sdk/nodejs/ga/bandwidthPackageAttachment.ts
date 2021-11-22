@@ -135,19 +135,19 @@ export interface BandwidthPackageAttachmentState {
     /**
      * The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
      */
-    readonly acceleratorId?: pulumi.Input<string>;
+    acceleratorId?: pulumi.Input<string>;
     /**
      * Accelerators bound with current Bandwidth Package.
      */
-    readonly accelerators?: pulumi.Input<pulumi.Input<string>[]>;
+    accelerators?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the bandwidth plan to disassociate.
      */
-    readonly bandwidthPackageId?: pulumi.Input<string>;
+    bandwidthPackageId?: pulumi.Input<string>;
     /**
      * State of Bandwidth Package.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -157,9 +157,9 @@ export interface BandwidthPackageAttachmentArgs {
     /**
      * The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
      */
-    readonly acceleratorId: pulumi.Input<string>;
+    acceleratorId: pulumi.Input<string>;
     /**
      * The ID of the bandwidth plan to disassociate.
      */
-    readonly bandwidthPackageId: pulumi.Input<string>;
+    bandwidthPackageId: pulumi.Input<string>;
 }

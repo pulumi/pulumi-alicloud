@@ -219,7 +219,7 @@ type VpcEndpointServiceConnectionArrayInput interface {
 type VpcEndpointServiceConnectionArray []VpcEndpointServiceConnectionInput
 
 func (VpcEndpointServiceConnectionArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*VpcEndpointServiceConnection)(nil))
+	return reflect.TypeOf((*[]*VpcEndpointServiceConnection)(nil)).Elem()
 }
 
 func (i VpcEndpointServiceConnectionArray) ToVpcEndpointServiceConnectionArrayOutput() VpcEndpointServiceConnectionArrayOutput {
@@ -244,7 +244,7 @@ type VpcEndpointServiceConnectionMapInput interface {
 type VpcEndpointServiceConnectionMap map[string]VpcEndpointServiceConnectionInput
 
 func (VpcEndpointServiceConnectionMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*VpcEndpointServiceConnection)(nil))
+	return reflect.TypeOf((*map[string]*VpcEndpointServiceConnection)(nil)).Elem()
 }
 
 func (i VpcEndpointServiceConnectionMap) ToVpcEndpointServiceConnectionMapOutput() VpcEndpointServiceConnectionMapOutput {
@@ -255,9 +255,7 @@ func (i VpcEndpointServiceConnectionMap) ToVpcEndpointServiceConnectionMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointServiceConnectionMapOutput)
 }
 
-type VpcEndpointServiceConnectionOutput struct {
-	*pulumi.OutputState
-}
+type VpcEndpointServiceConnectionOutput struct{ *pulumi.OutputState }
 
 func (VpcEndpointServiceConnectionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*VpcEndpointServiceConnection)(nil))
@@ -276,14 +274,12 @@ func (o VpcEndpointServiceConnectionOutput) ToVpcEndpointServiceConnectionPtrOut
 }
 
 func (o VpcEndpointServiceConnectionOutput) ToVpcEndpointServiceConnectionPtrOutputWithContext(ctx context.Context) VpcEndpointServiceConnectionPtrOutput {
-	return o.ApplyT(func(v VpcEndpointServiceConnection) *VpcEndpointServiceConnection {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcEndpointServiceConnection) *VpcEndpointServiceConnection {
 		return &v
 	}).(VpcEndpointServiceConnectionPtrOutput)
 }
 
-type VpcEndpointServiceConnectionPtrOutput struct {
-	*pulumi.OutputState
-}
+type VpcEndpointServiceConnectionPtrOutput struct{ *pulumi.OutputState }
 
 func (VpcEndpointServiceConnectionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**VpcEndpointServiceConnection)(nil))
@@ -295,6 +291,16 @@ func (o VpcEndpointServiceConnectionPtrOutput) ToVpcEndpointServiceConnectionPtr
 
 func (o VpcEndpointServiceConnectionPtrOutput) ToVpcEndpointServiceConnectionPtrOutputWithContext(ctx context.Context) VpcEndpointServiceConnectionPtrOutput {
 	return o
+}
+
+func (o VpcEndpointServiceConnectionPtrOutput) Elem() VpcEndpointServiceConnectionOutput {
+	return o.ApplyT(func(v *VpcEndpointServiceConnection) VpcEndpointServiceConnection {
+		if v != nil {
+			return *v
+		}
+		var ret VpcEndpointServiceConnection
+		return ret
+	}).(VpcEndpointServiceConnectionOutput)
 }
 
 type VpcEndpointServiceConnectionArrayOutput struct{ *pulumi.OutputState }
@@ -338,6 +344,10 @@ func (o VpcEndpointServiceConnectionMapOutput) MapIndex(k pulumi.StringInput) Vp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcEndpointServiceConnectionInput)(nil)).Elem(), &VpcEndpointServiceConnection{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcEndpointServiceConnectionPtrInput)(nil)).Elem(), &VpcEndpointServiceConnection{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcEndpointServiceConnectionArrayInput)(nil)).Elem(), VpcEndpointServiceConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcEndpointServiceConnectionMapInput)(nil)).Elem(), VpcEndpointServiceConnectionMap{})
 	pulumi.RegisterOutputType(VpcEndpointServiceConnectionOutput{})
 	pulumi.RegisterOutputType(VpcEndpointServiceConnectionPtrOutput{})
 	pulumi.RegisterOutputType(VpcEndpointServiceConnectionArrayOutput{})
