@@ -2,12 +2,15 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 3.9.0 (2021-11-22)
 * Upgrade to terraform-bridge 3.11.0
 * Upgrade to pulumi 3.17.0
 * Upgrade to v1.141.0 of the AliCloud Terraform Provider
   **PLEASE NOTE:* `alicloud.hbr.getVaults` will no longer accept the `createTime` parameter.
-
----
 
 ## 3.8.0 (2021-10-04)
 * Upgrade to v1.137.0 of the AliCloud Terraform Provider
