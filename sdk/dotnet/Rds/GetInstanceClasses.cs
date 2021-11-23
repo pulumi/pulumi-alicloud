@@ -139,7 +139,7 @@ namespace Pulumi.AliCloud.Rds
         public string? SortedBy { get; set; }
 
         /// <summary>
-        /// It has been deprecated from verison 1.134.0+ and using `db_instance_storage_type` instead.
+        /// It has been deprecated from version 1.134.0+ and using `db_instance_storage_type` instead.
         /// </summary>
         [Input("storageType")]
         public string? StorageType { get; set; }
@@ -206,7 +206,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? SortedBy { get; set; }
 
         /// <summary>
-        /// It has been deprecated from verison 1.134.0+ and using `db_instance_storage_type` instead.
+        /// It has been deprecated from version 1.134.0+ and using `db_instance_storage_type` instead.
         /// </summary>
         [Input("storageType")]
         public Input<string>? StorageType { get; set; }

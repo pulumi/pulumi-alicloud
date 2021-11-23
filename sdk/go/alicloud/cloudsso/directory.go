@@ -32,8 +32,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudsso.NewDirectory(ctx, "example", &cloudsso.DirectoryArgs{
-// 			DirectoryName: pulumi.String("example_value"),
+// 		_, err := cloudsso.NewDirectory(ctx, "_default", &cloudsso.DirectoryArgs{
+// 			DirectoryName: pulumi.String("example-value"),
 // 		})
 // 		if err != nil {
 // 			return err

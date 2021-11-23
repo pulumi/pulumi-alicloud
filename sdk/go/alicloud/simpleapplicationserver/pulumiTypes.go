@@ -357,6 +357,468 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 	}).(GetInstancesInstanceOutput)
 }
 
+type GetServerCustomImagesImage struct {
+	// The first ID of the resource.
+	CustomImageId string `pulumi:"customImageId"`
+	// The name of the resource.
+	CustomImageName string `pulumi:"customImageName"`
+	// Image description information.
+	Description string `pulumi:"description"`
+	// The ID of the Custom Image.
+	Id string `pulumi:"id"`
+	// The type of operating system used by the Mirror. Valid values: `Linux`, `Windows`.
+	Platform string `pulumi:"platform"`
+}
+
+// GetServerCustomImagesImageInput is an input type that accepts GetServerCustomImagesImageArgs and GetServerCustomImagesImageOutput values.
+// You can construct a concrete instance of `GetServerCustomImagesImageInput` via:
+//
+//          GetServerCustomImagesImageArgs{...}
+type GetServerCustomImagesImageInput interface {
+	pulumi.Input
+
+	ToGetServerCustomImagesImageOutput() GetServerCustomImagesImageOutput
+	ToGetServerCustomImagesImageOutputWithContext(context.Context) GetServerCustomImagesImageOutput
+}
+
+type GetServerCustomImagesImageArgs struct {
+	// The first ID of the resource.
+	CustomImageId pulumi.StringInput `pulumi:"customImageId"`
+	// The name of the resource.
+	CustomImageName pulumi.StringInput `pulumi:"customImageName"`
+	// Image description information.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Custom Image.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The type of operating system used by the Mirror. Valid values: `Linux`, `Windows`.
+	Platform pulumi.StringInput `pulumi:"platform"`
+}
+
+func (GetServerCustomImagesImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerCustomImagesImage)(nil)).Elem()
+}
+
+func (i GetServerCustomImagesImageArgs) ToGetServerCustomImagesImageOutput() GetServerCustomImagesImageOutput {
+	return i.ToGetServerCustomImagesImageOutputWithContext(context.Background())
+}
+
+func (i GetServerCustomImagesImageArgs) ToGetServerCustomImagesImageOutputWithContext(ctx context.Context) GetServerCustomImagesImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerCustomImagesImageOutput)
+}
+
+// GetServerCustomImagesImageArrayInput is an input type that accepts GetServerCustomImagesImageArray and GetServerCustomImagesImageArrayOutput values.
+// You can construct a concrete instance of `GetServerCustomImagesImageArrayInput` via:
+//
+//          GetServerCustomImagesImageArray{ GetServerCustomImagesImageArgs{...} }
+type GetServerCustomImagesImageArrayInput interface {
+	pulumi.Input
+
+	ToGetServerCustomImagesImageArrayOutput() GetServerCustomImagesImageArrayOutput
+	ToGetServerCustomImagesImageArrayOutputWithContext(context.Context) GetServerCustomImagesImageArrayOutput
+}
+
+type GetServerCustomImagesImageArray []GetServerCustomImagesImageInput
+
+func (GetServerCustomImagesImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerCustomImagesImage)(nil)).Elem()
+}
+
+func (i GetServerCustomImagesImageArray) ToGetServerCustomImagesImageArrayOutput() GetServerCustomImagesImageArrayOutput {
+	return i.ToGetServerCustomImagesImageArrayOutputWithContext(context.Background())
+}
+
+func (i GetServerCustomImagesImageArray) ToGetServerCustomImagesImageArrayOutputWithContext(ctx context.Context) GetServerCustomImagesImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerCustomImagesImageArrayOutput)
+}
+
+type GetServerCustomImagesImageOutput struct{ *pulumi.OutputState }
+
+func (GetServerCustomImagesImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerCustomImagesImage)(nil)).Elem()
+}
+
+func (o GetServerCustomImagesImageOutput) ToGetServerCustomImagesImageOutput() GetServerCustomImagesImageOutput {
+	return o
+}
+
+func (o GetServerCustomImagesImageOutput) ToGetServerCustomImagesImageOutputWithContext(ctx context.Context) GetServerCustomImagesImageOutput {
+	return o
+}
+
+// The first ID of the resource.
+func (o GetServerCustomImagesImageOutput) CustomImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerCustomImagesImage) string { return v.CustomImageId }).(pulumi.StringOutput)
+}
+
+// The name of the resource.
+func (o GetServerCustomImagesImageOutput) CustomImageName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerCustomImagesImage) string { return v.CustomImageName }).(pulumi.StringOutput)
+}
+
+// Image description information.
+func (o GetServerCustomImagesImageOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerCustomImagesImage) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Custom Image.
+func (o GetServerCustomImagesImageOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerCustomImagesImage) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The type of operating system used by the Mirror. Valid values: `Linux`, `Windows`.
+func (o GetServerCustomImagesImageOutput) Platform() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerCustomImagesImage) string { return v.Platform }).(pulumi.StringOutput)
+}
+
+type GetServerCustomImagesImageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServerCustomImagesImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerCustomImagesImage)(nil)).Elem()
+}
+
+func (o GetServerCustomImagesImageArrayOutput) ToGetServerCustomImagesImageArrayOutput() GetServerCustomImagesImageArrayOutput {
+	return o
+}
+
+func (o GetServerCustomImagesImageArrayOutput) ToGetServerCustomImagesImageArrayOutputWithContext(ctx context.Context) GetServerCustomImagesImageArrayOutput {
+	return o
+}
+
+func (o GetServerCustomImagesImageArrayOutput) Index(i pulumi.IntInput) GetServerCustomImagesImageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerCustomImagesImage {
+		return vs[0].([]GetServerCustomImagesImage)[vs[1].(int)]
+	}).(GetServerCustomImagesImageOutput)
+}
+
+type GetServerDisksDisk struct {
+	// Disk type. Possible values: `ESSD`, `SSD`.
+	Category string `pulumi:"category"`
+	// The time when the disk was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	CreateTime string `pulumi:"createTime"`
+	// The device name of the disk on the simple application server.
+	Device string `pulumi:"device"`
+	// The first ID of the resource.
+	DiskId string `pulumi:"diskId"`
+	// The name of the resource.
+	DiskName string `pulumi:"diskName"`
+	// The type of the disk. Possible values: `System`, `Data`.
+	DiskType string `pulumi:"diskType"`
+	// The ID of the Disk.
+	Id string `pulumi:"id"`
+	// Alibaba Cloud simple application server instance ID.
+	InstanceId string `pulumi:"instanceId"`
+	// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
+	PaymentType string `pulumi:"paymentType"`
+	// The size of the disk. Unit: `GB`.
+	Size int `pulumi:"size"`
+	// The status of the disk. Valid values: `ReIniting`, `Creating`, `In_Use`, `Available`, `Attaching`, `Detaching`.
+	Status string `pulumi:"status"`
+}
+
+// GetServerDisksDiskInput is an input type that accepts GetServerDisksDiskArgs and GetServerDisksDiskOutput values.
+// You can construct a concrete instance of `GetServerDisksDiskInput` via:
+//
+//          GetServerDisksDiskArgs{...}
+type GetServerDisksDiskInput interface {
+	pulumi.Input
+
+	ToGetServerDisksDiskOutput() GetServerDisksDiskOutput
+	ToGetServerDisksDiskOutputWithContext(context.Context) GetServerDisksDiskOutput
+}
+
+type GetServerDisksDiskArgs struct {
+	// Disk type. Possible values: `ESSD`, `SSD`.
+	Category pulumi.StringInput `pulumi:"category"`
+	// The time when the disk was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The device name of the disk on the simple application server.
+	Device pulumi.StringInput `pulumi:"device"`
+	// The first ID of the resource.
+	DiskId pulumi.StringInput `pulumi:"diskId"`
+	// The name of the resource.
+	DiskName pulumi.StringInput `pulumi:"diskName"`
+	// The type of the disk. Possible values: `System`, `Data`.
+	DiskType pulumi.StringInput `pulumi:"diskType"`
+	// The ID of the Disk.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Alibaba Cloud simple application server instance ID.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// The size of the disk. Unit: `GB`.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The status of the disk. Valid values: `ReIniting`, `Creating`, `In_Use`, `Available`, `Attaching`, `Detaching`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetServerDisksDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerDisksDisk)(nil)).Elem()
+}
+
+func (i GetServerDisksDiskArgs) ToGetServerDisksDiskOutput() GetServerDisksDiskOutput {
+	return i.ToGetServerDisksDiskOutputWithContext(context.Background())
+}
+
+func (i GetServerDisksDiskArgs) ToGetServerDisksDiskOutputWithContext(ctx context.Context) GetServerDisksDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerDisksDiskOutput)
+}
+
+// GetServerDisksDiskArrayInput is an input type that accepts GetServerDisksDiskArray and GetServerDisksDiskArrayOutput values.
+// You can construct a concrete instance of `GetServerDisksDiskArrayInput` via:
+//
+//          GetServerDisksDiskArray{ GetServerDisksDiskArgs{...} }
+type GetServerDisksDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetServerDisksDiskArrayOutput() GetServerDisksDiskArrayOutput
+	ToGetServerDisksDiskArrayOutputWithContext(context.Context) GetServerDisksDiskArrayOutput
+}
+
+type GetServerDisksDiskArray []GetServerDisksDiskInput
+
+func (GetServerDisksDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerDisksDisk)(nil)).Elem()
+}
+
+func (i GetServerDisksDiskArray) ToGetServerDisksDiskArrayOutput() GetServerDisksDiskArrayOutput {
+	return i.ToGetServerDisksDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetServerDisksDiskArray) ToGetServerDisksDiskArrayOutputWithContext(ctx context.Context) GetServerDisksDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerDisksDiskArrayOutput)
+}
+
+type GetServerDisksDiskOutput struct{ *pulumi.OutputState }
+
+func (GetServerDisksDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerDisksDisk)(nil)).Elem()
+}
+
+func (o GetServerDisksDiskOutput) ToGetServerDisksDiskOutput() GetServerDisksDiskOutput {
+	return o
+}
+
+func (o GetServerDisksDiskOutput) ToGetServerDisksDiskOutputWithContext(ctx context.Context) GetServerDisksDiskOutput {
+	return o
+}
+
+// Disk type. Possible values: `ESSD`, `SSD`.
+func (o GetServerDisksDiskOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerDisksDisk) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// The time when the disk was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+func (o GetServerDisksDiskOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerDisksDisk) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The device name of the disk on the simple application server.
+func (o GetServerDisksDiskOutput) Device() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerDisksDisk) string { return v.Device }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource.
+func (o GetServerDisksDiskOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerDisksDisk) string { return v.DiskId }).(pulumi.StringOutput)
+}
+
+// The name of the resource.
+func (o GetServerDisksDiskOutput) DiskName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerDisksDisk) string { return v.DiskName }).(pulumi.StringOutput)
+}
+
+// The type of the disk. Possible values: `System`, `Data`.
+func (o GetServerDisksDiskOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerDisksDisk) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// The ID of the Disk.
+func (o GetServerDisksDiskOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerDisksDisk) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Alibaba Cloud simple application server instance ID.
+func (o GetServerDisksDiskOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerDisksDisk) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
+func (o GetServerDisksDiskOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerDisksDisk) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The size of the disk. Unit: `GB`.
+func (o GetServerDisksDiskOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServerDisksDisk) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The status of the disk. Valid values: `ReIniting`, `Creating`, `In_Use`, `Available`, `Attaching`, `Detaching`.
+func (o GetServerDisksDiskOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerDisksDisk) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetServerDisksDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServerDisksDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerDisksDisk)(nil)).Elem()
+}
+
+func (o GetServerDisksDiskArrayOutput) ToGetServerDisksDiskArrayOutput() GetServerDisksDiskArrayOutput {
+	return o
+}
+
+func (o GetServerDisksDiskArrayOutput) ToGetServerDisksDiskArrayOutputWithContext(ctx context.Context) GetServerDisksDiskArrayOutput {
+	return o
+}
+
+func (o GetServerDisksDiskArrayOutput) Index(i pulumi.IntInput) GetServerDisksDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerDisksDisk {
+		return vs[0].([]GetServerDisksDisk)[vs[1].(int)]
+	}).(GetServerDisksDiskOutput)
+}
+
+type GetServerFirewallRulesRule struct {
+	// The ID of the firewall rule.
+	FirewallRuleId string `pulumi:"firewallRuleId"`
+	// The ID of the Firewall Rule. The value formats as `<instance_id>:<firewall_rule_id>`.
+	Id string `pulumi:"id"`
+	// Alibaba Cloud simple application server instance ID.
+	InstanceId string `pulumi:"instanceId"`
+	// The port range of the firewall rule.
+	Port string `pulumi:"port"`
+	// The remarks of the firewall rule.
+	Remark string `pulumi:"remark"`
+	// The transport layer protocol. Valid values: `Tcp`, `Udp`, `TcpAndUdp`.
+	RuleProtocol string `pulumi:"ruleProtocol"`
+}
+
+// GetServerFirewallRulesRuleInput is an input type that accepts GetServerFirewallRulesRuleArgs and GetServerFirewallRulesRuleOutput values.
+// You can construct a concrete instance of `GetServerFirewallRulesRuleInput` via:
+//
+//          GetServerFirewallRulesRuleArgs{...}
+type GetServerFirewallRulesRuleInput interface {
+	pulumi.Input
+
+	ToGetServerFirewallRulesRuleOutput() GetServerFirewallRulesRuleOutput
+	ToGetServerFirewallRulesRuleOutputWithContext(context.Context) GetServerFirewallRulesRuleOutput
+}
+
+type GetServerFirewallRulesRuleArgs struct {
+	// The ID of the firewall rule.
+	FirewallRuleId pulumi.StringInput `pulumi:"firewallRuleId"`
+	// The ID of the Firewall Rule. The value formats as `<instance_id>:<firewall_rule_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Alibaba Cloud simple application server instance ID.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The port range of the firewall rule.
+	Port pulumi.StringInput `pulumi:"port"`
+	// The remarks of the firewall rule.
+	Remark pulumi.StringInput `pulumi:"remark"`
+	// The transport layer protocol. Valid values: `Tcp`, `Udp`, `TcpAndUdp`.
+	RuleProtocol pulumi.StringInput `pulumi:"ruleProtocol"`
+}
+
+func (GetServerFirewallRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerFirewallRulesRule)(nil)).Elem()
+}
+
+func (i GetServerFirewallRulesRuleArgs) ToGetServerFirewallRulesRuleOutput() GetServerFirewallRulesRuleOutput {
+	return i.ToGetServerFirewallRulesRuleOutputWithContext(context.Background())
+}
+
+func (i GetServerFirewallRulesRuleArgs) ToGetServerFirewallRulesRuleOutputWithContext(ctx context.Context) GetServerFirewallRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerFirewallRulesRuleOutput)
+}
+
+// GetServerFirewallRulesRuleArrayInput is an input type that accepts GetServerFirewallRulesRuleArray and GetServerFirewallRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetServerFirewallRulesRuleArrayInput` via:
+//
+//          GetServerFirewallRulesRuleArray{ GetServerFirewallRulesRuleArgs{...} }
+type GetServerFirewallRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetServerFirewallRulesRuleArrayOutput() GetServerFirewallRulesRuleArrayOutput
+	ToGetServerFirewallRulesRuleArrayOutputWithContext(context.Context) GetServerFirewallRulesRuleArrayOutput
+}
+
+type GetServerFirewallRulesRuleArray []GetServerFirewallRulesRuleInput
+
+func (GetServerFirewallRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerFirewallRulesRule)(nil)).Elem()
+}
+
+func (i GetServerFirewallRulesRuleArray) ToGetServerFirewallRulesRuleArrayOutput() GetServerFirewallRulesRuleArrayOutput {
+	return i.ToGetServerFirewallRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetServerFirewallRulesRuleArray) ToGetServerFirewallRulesRuleArrayOutputWithContext(ctx context.Context) GetServerFirewallRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerFirewallRulesRuleArrayOutput)
+}
+
+type GetServerFirewallRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetServerFirewallRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerFirewallRulesRule)(nil)).Elem()
+}
+
+func (o GetServerFirewallRulesRuleOutput) ToGetServerFirewallRulesRuleOutput() GetServerFirewallRulesRuleOutput {
+	return o
+}
+
+func (o GetServerFirewallRulesRuleOutput) ToGetServerFirewallRulesRuleOutputWithContext(ctx context.Context) GetServerFirewallRulesRuleOutput {
+	return o
+}
+
+// The ID of the firewall rule.
+func (o GetServerFirewallRulesRuleOutput) FirewallRuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerFirewallRulesRule) string { return v.FirewallRuleId }).(pulumi.StringOutput)
+}
+
+// The ID of the Firewall Rule. The value formats as `<instance_id>:<firewall_rule_id>`.
+func (o GetServerFirewallRulesRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerFirewallRulesRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Alibaba Cloud simple application server instance ID.
+func (o GetServerFirewallRulesRuleOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerFirewallRulesRule) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The port range of the firewall rule.
+func (o GetServerFirewallRulesRuleOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerFirewallRulesRule) string { return v.Port }).(pulumi.StringOutput)
+}
+
+// The remarks of the firewall rule.
+func (o GetServerFirewallRulesRuleOutput) Remark() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerFirewallRulesRule) string { return v.Remark }).(pulumi.StringOutput)
+}
+
+// The transport layer protocol. Valid values: `Tcp`, `Udp`, `TcpAndUdp`.
+func (o GetServerFirewallRulesRuleOutput) RuleProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerFirewallRulesRule) string { return v.RuleProtocol }).(pulumi.StringOutput)
+}
+
+type GetServerFirewallRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServerFirewallRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerFirewallRulesRule)(nil)).Elem()
+}
+
+func (o GetServerFirewallRulesRuleArrayOutput) ToGetServerFirewallRulesRuleArrayOutput() GetServerFirewallRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetServerFirewallRulesRuleArrayOutput) ToGetServerFirewallRulesRuleArrayOutputWithContext(ctx context.Context) GetServerFirewallRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetServerFirewallRulesRuleArrayOutput) Index(i pulumi.IntInput) GetServerFirewallRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerFirewallRulesRule {
+		return vs[0].([]GetServerFirewallRulesRule)[vs[1].(int)]
+	}).(GetServerFirewallRulesRuleOutput)
+}
+
 type GetServerPlansPlan struct {
 	// The peak bandwidth. Unit: Mbit/s.
 	Bandwidth int `pulumi:"bandwidth"`
@@ -508,17 +970,202 @@ func (o GetServerPlansPlanArrayOutput) Index(i pulumi.IntInput) GetServerPlansPl
 	}).(GetServerPlansPlanOutput)
 }
 
+type GetServerSnapshotsSnapshot struct {
+	// The time when the snapshot was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the source disk. This parameter has a value even after the source disk is released.
+	DiskId string `pulumi:"diskId"`
+	// The ID of the Snapshot.
+	Id string `pulumi:"id"`
+	// The progress of snapshot creation.
+	Progress string `pulumi:"progress"`
+	// The remarks of the snapshot.
+	Remark string `pulumi:"remark"`
+	// The ID of the snapshot.
+	SnapshotId string `pulumi:"snapshotId"`
+	// The name of the snapshot.
+	SnapshotName string `pulumi:"snapshotName"`
+	// A snapshot of the source of a disk type. Possible values: `System`, `Data`.
+	SourceDiskType string `pulumi:"sourceDiskType"`
+	// The status of the snapshots. Valid values: `Progressing`, `Accomplished` and `Failed`.
+	Status string `pulumi:"status"`
+}
+
+// GetServerSnapshotsSnapshotInput is an input type that accepts GetServerSnapshotsSnapshotArgs and GetServerSnapshotsSnapshotOutput values.
+// You can construct a concrete instance of `GetServerSnapshotsSnapshotInput` via:
+//
+//          GetServerSnapshotsSnapshotArgs{...}
+type GetServerSnapshotsSnapshotInput interface {
+	pulumi.Input
+
+	ToGetServerSnapshotsSnapshotOutput() GetServerSnapshotsSnapshotOutput
+	ToGetServerSnapshotsSnapshotOutputWithContext(context.Context) GetServerSnapshotsSnapshotOutput
+}
+
+type GetServerSnapshotsSnapshotArgs struct {
+	// The time when the snapshot was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the source disk. This parameter has a value even after the source disk is released.
+	DiskId pulumi.StringInput `pulumi:"diskId"`
+	// The ID of the Snapshot.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The progress of snapshot creation.
+	Progress pulumi.StringInput `pulumi:"progress"`
+	// The remarks of the snapshot.
+	Remark pulumi.StringInput `pulumi:"remark"`
+	// The ID of the snapshot.
+	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
+	// The name of the snapshot.
+	SnapshotName pulumi.StringInput `pulumi:"snapshotName"`
+	// A snapshot of the source of a disk type. Possible values: `System`, `Data`.
+	SourceDiskType pulumi.StringInput `pulumi:"sourceDiskType"`
+	// The status of the snapshots. Valid values: `Progressing`, `Accomplished` and `Failed`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetServerSnapshotsSnapshotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (i GetServerSnapshotsSnapshotArgs) ToGetServerSnapshotsSnapshotOutput() GetServerSnapshotsSnapshotOutput {
+	return i.ToGetServerSnapshotsSnapshotOutputWithContext(context.Background())
+}
+
+func (i GetServerSnapshotsSnapshotArgs) ToGetServerSnapshotsSnapshotOutputWithContext(ctx context.Context) GetServerSnapshotsSnapshotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSnapshotsSnapshotOutput)
+}
+
+// GetServerSnapshotsSnapshotArrayInput is an input type that accepts GetServerSnapshotsSnapshotArray and GetServerSnapshotsSnapshotArrayOutput values.
+// You can construct a concrete instance of `GetServerSnapshotsSnapshotArrayInput` via:
+//
+//          GetServerSnapshotsSnapshotArray{ GetServerSnapshotsSnapshotArgs{...} }
+type GetServerSnapshotsSnapshotArrayInput interface {
+	pulumi.Input
+
+	ToGetServerSnapshotsSnapshotArrayOutput() GetServerSnapshotsSnapshotArrayOutput
+	ToGetServerSnapshotsSnapshotArrayOutputWithContext(context.Context) GetServerSnapshotsSnapshotArrayOutput
+}
+
+type GetServerSnapshotsSnapshotArray []GetServerSnapshotsSnapshotInput
+
+func (GetServerSnapshotsSnapshotArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (i GetServerSnapshotsSnapshotArray) ToGetServerSnapshotsSnapshotArrayOutput() GetServerSnapshotsSnapshotArrayOutput {
+	return i.ToGetServerSnapshotsSnapshotArrayOutputWithContext(context.Background())
+}
+
+func (i GetServerSnapshotsSnapshotArray) ToGetServerSnapshotsSnapshotArrayOutputWithContext(ctx context.Context) GetServerSnapshotsSnapshotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerSnapshotsSnapshotArrayOutput)
+}
+
+type GetServerSnapshotsSnapshotOutput struct{ *pulumi.OutputState }
+
+func (GetServerSnapshotsSnapshotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (o GetServerSnapshotsSnapshotOutput) ToGetServerSnapshotsSnapshotOutput() GetServerSnapshotsSnapshotOutput {
+	return o
+}
+
+func (o GetServerSnapshotsSnapshotOutput) ToGetServerSnapshotsSnapshotOutputWithContext(ctx context.Context) GetServerSnapshotsSnapshotOutput {
+	return o
+}
+
+// The time when the snapshot was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+func (o GetServerSnapshotsSnapshotOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSnapshotsSnapshot) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the source disk. This parameter has a value even after the source disk is released.
+func (o GetServerSnapshotsSnapshotOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSnapshotsSnapshot) string { return v.DiskId }).(pulumi.StringOutput)
+}
+
+// The ID of the Snapshot.
+func (o GetServerSnapshotsSnapshotOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSnapshotsSnapshot) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The progress of snapshot creation.
+func (o GetServerSnapshotsSnapshotOutput) Progress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSnapshotsSnapshot) string { return v.Progress }).(pulumi.StringOutput)
+}
+
+// The remarks of the snapshot.
+func (o GetServerSnapshotsSnapshotOutput) Remark() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSnapshotsSnapshot) string { return v.Remark }).(pulumi.StringOutput)
+}
+
+// The ID of the snapshot.
+func (o GetServerSnapshotsSnapshotOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSnapshotsSnapshot) string { return v.SnapshotId }).(pulumi.StringOutput)
+}
+
+// The name of the snapshot.
+func (o GetServerSnapshotsSnapshotOutput) SnapshotName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSnapshotsSnapshot) string { return v.SnapshotName }).(pulumi.StringOutput)
+}
+
+// A snapshot of the source of a disk type. Possible values: `System`, `Data`.
+func (o GetServerSnapshotsSnapshotOutput) SourceDiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSnapshotsSnapshot) string { return v.SourceDiskType }).(pulumi.StringOutput)
+}
+
+// The status of the snapshots. Valid values: `Progressing`, `Accomplished` and `Failed`.
+func (o GetServerSnapshotsSnapshotOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerSnapshotsSnapshot) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetServerSnapshotsSnapshotArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServerSnapshotsSnapshotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (o GetServerSnapshotsSnapshotArrayOutput) ToGetServerSnapshotsSnapshotArrayOutput() GetServerSnapshotsSnapshotArrayOutput {
+	return o
+}
+
+func (o GetServerSnapshotsSnapshotArrayOutput) ToGetServerSnapshotsSnapshotArrayOutputWithContext(ctx context.Context) GetServerSnapshotsSnapshotArrayOutput {
+	return o
+}
+
+func (o GetServerSnapshotsSnapshotArrayOutput) Index(i pulumi.IntInput) GetServerSnapshotsSnapshotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerSnapshotsSnapshot {
+		return vs[0].([]GetServerSnapshotsSnapshot)[vs[1].(int)]
+	}).(GetServerSnapshotsSnapshotOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageInput)(nil)).Elem(), GetImagesImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageArrayInput)(nil)).Elem(), GetImagesImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerCustomImagesImageInput)(nil)).Elem(), GetServerCustomImagesImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerCustomImagesImageArrayInput)(nil)).Elem(), GetServerCustomImagesImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerDisksDiskInput)(nil)).Elem(), GetServerDisksDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerDisksDiskArrayInput)(nil)).Elem(), GetServerDisksDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerFirewallRulesRuleInput)(nil)).Elem(), GetServerFirewallRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerFirewallRulesRuleArrayInput)(nil)).Elem(), GetServerFirewallRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerPlansPlanInput)(nil)).Elem(), GetServerPlansPlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerPlansPlanArrayInput)(nil)).Elem(), GetServerPlansPlanArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSnapshotsSnapshotInput)(nil)).Elem(), GetServerSnapshotsSnapshotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerSnapshotsSnapshotArrayInput)(nil)).Elem(), GetServerSnapshotsSnapshotArray{})
 	pulumi.RegisterOutputType(GetImagesImageOutput{})
 	pulumi.RegisterOutputType(GetImagesImageArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetServerCustomImagesImageOutput{})
+	pulumi.RegisterOutputType(GetServerCustomImagesImageArrayOutput{})
+	pulumi.RegisterOutputType(GetServerDisksDiskOutput{})
+	pulumi.RegisterOutputType(GetServerDisksDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetServerFirewallRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetServerFirewallRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetServerPlansPlanOutput{})
 	pulumi.RegisterOutputType(GetServerPlansPlanArrayOutput{})
+	pulumi.RegisterOutputType(GetServerSnapshotsSnapshotOutput{})
+	pulumi.RegisterOutputType(GetServerSnapshotsSnapshotArrayOutput{})
 }

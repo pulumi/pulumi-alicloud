@@ -50,7 +50,7 @@ export class Zone extends pulumi.CustomResource {
      */
     public readonly lang!: pulumi.Output<string | undefined>;
     /**
-     * The name of the Private Zone.
+     * The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
      *
      * @deprecated Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.
      */
@@ -79,7 +79,7 @@ export class Zone extends pulumi.CustomResource {
      */
     public readonly userClientIp!: pulumi.Output<string | undefined>;
     /**
-     * The zoneName of the Private Zone.
+     * The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
      */
     public readonly zoneName!: pulumi.Output<string>;
 
@@ -137,7 +137,7 @@ export interface ZoneState {
      */
     lang?: pulumi.Input<string>;
     /**
-     * The name of the Private Zone.
+     * The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
      *
      * @deprecated Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.
      */
@@ -166,7 +166,7 @@ export interface ZoneState {
      */
     userClientIp?: pulumi.Input<string>;
     /**
-     * The zoneName of the Private Zone.
+     * The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
      */
     zoneName?: pulumi.Input<string>;
 }
@@ -180,7 +180,7 @@ export interface ZoneArgs {
      */
     lang?: pulumi.Input<string>;
     /**
-     * The name of the Private Zone.
+     * The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
      *
      * @deprecated Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.
      */
@@ -205,7 +205,7 @@ export interface ZoneArgs {
      */
     userClientIp?: pulumi.Input<string>;
     /**
-     * The zoneName of the Private Zone.
+     * The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
      */
     zoneName?: pulumi.Input<string>;
 }

@@ -75,7 +75,7 @@ export class Subscription extends pulumi.CustomResource {
      */
     public readonly projectName!: pulumi.Output<string>;
     /**
-     * The identidy of the subscritpion, generate from server side.
+     * The identidy of the subscription, generate from server side.
      */
     public /*out*/ readonly subId!: pulumi.Output<string>;
     /**
@@ -145,7 +145,7 @@ export interface SubscriptionState {
      */
     projectName?: pulumi.Input<string>;
     /**
-     * The identidy of the subscritpion, generate from server side.
+     * The identidy of the subscription, generate from server side.
      */
     subId?: pulumi.Input<string>;
     /**

@@ -10,11 +10,169 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'EndpointIpConfig',
+    'RuleAttachmentVpc',
+    'RuleForwardIp',
     'ZoneAttachmentVpc',
+    'GetEndpointsEndpointResult',
+    'GetEndpointsEndpointIpConfigResult',
+    'GetResolverZonesZoneResult',
+    'GetRulesRuleResult',
+    'GetRulesRuleForwardIpResult',
     'GetZoneRecordsRecordResult',
     'GetZonesZoneResult',
     'GetZonesZoneBindVpcResult',
 ]
+
+@pulumi.output_type
+class EndpointIpConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cidrBlock":
+            suggest = "cidr_block"
+        elif key == "vswitchId":
+            suggest = "vswitch_id"
+        elif key == "zoneId":
+            suggest = "zone_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EndpointIpConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EndpointIpConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EndpointIpConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cidr_block: str,
+                 vswitch_id: str,
+                 zone_id: str,
+                 ip: Optional[str] = None):
+        """
+        :param str cidr_block: The Subnet mask.
+        :param str vswitch_id: The Vswitch id.
+        :param str zone_id: The Zone ID.
+        :param str ip: The IP address within the parameter range of the subnet mask.  It is recommended to use the IP address assigned by the system.
+        """
+        pulumi.set(__self__, "cidr_block", cidr_block)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> str:
+        """
+        The Subnet mask.
+        """
+        return pulumi.get(self, "cidr_block")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The Vswitch id.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The Zone ID.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> Optional[str]:
+        """
+        The IP address within the parameter range of the subnet mask.  It is recommended to use the IP address assigned by the system.
+        """
+        return pulumi.get(self, "ip")
+
+
+@pulumi.output_type
+class RuleAttachmentVpc(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "regionId":
+            suggest = "region_id"
+        elif key == "vpcId":
+            suggest = "vpc_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuleAttachmentVpc. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuleAttachmentVpc.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuleAttachmentVpc.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 region_id: str,
+                 vpc_id: str):
+        """
+        :param str region_id: The region of the vpc. If not set, the current region will instead of.
+        :param str vpc_id: The ID of the VPC.  **NOTE:** The VPC that can be associated with the forwarding rule must belong to the same region as the Endpoint.
+        """
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        """
+        The region of the vpc. If not set, the current region will instead of.
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of the VPC.  **NOTE:** The VPC that can be associated with the forwarding rule must belong to the same region as the Endpoint.
+        """
+        return pulumi.get(self, "vpc_id")
+
+
+@pulumi.output_type
+class RuleForwardIp(dict):
+    def __init__(__self__, *,
+                 ip: str,
+                 port: int):
+        """
+        :param str ip: The ip of the forwarding destination.
+        :param int port: The port of the forwarding destination.
+        """
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        The ip of the forwarding destination.
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        The port of the forwarding destination.
+        """
+        return pulumi.get(self, "port")
+
 
 @pulumi.output_type
 class ZoneAttachmentVpc(dict):
@@ -63,6 +221,309 @@ class ZoneAttachmentVpc(dict):
         The region of the vpc. If not set, the current region will instead of.
         """
         return pulumi.get(self, "region_id")
+
+
+@pulumi.output_type
+class GetEndpointsEndpointResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 endpoint_name: str,
+                 id: str,
+                 ip_configs: Sequence['outputs.GetEndpointsEndpointIpConfigResult'],
+                 security_group_id: str,
+                 status: str,
+                 vpc_id: str,
+                 vpc_name: str,
+                 vpc_region_id: str):
+        """
+        :param str create_time: The creation time of the resource.
+        :param str endpoint_name: The name of the resource.
+        :param Sequence['GetEndpointsEndpointIpConfigArgs'] ip_configs: The Ip Configs.
+        :param str security_group_id: The ID of the Security Group.
+        :param str status: The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
+        :param str vpc_id: The VPC ID.
+        :param str vpc_name: The name of the VPC.
+        :param str vpc_region_id: The Region of the VPC.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "endpoint_name", endpoint_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip_configs", ip_configs)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vpc_name", vpc_name)
+        pulumi.set(__self__, "vpc_region_id", vpc_region_id)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="endpointName")
+    def endpoint_name(self) -> str:
+        """
+        The name of the resource.
+        """
+        return pulumi.get(self, "endpoint_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipConfigs")
+    def ip_configs(self) -> Sequence['outputs.GetEndpointsEndpointIpConfigResult']:
+        """
+        The Ip Configs.
+        """
+        return pulumi.get(self, "ip_configs")
+
+    @property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> str:
+        """
+        The ID of the Security Group.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The VPC ID.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vpcName")
+    def vpc_name(self) -> str:
+        """
+        The name of the VPC.
+        """
+        return pulumi.get(self, "vpc_name")
+
+    @property
+    @pulumi.getter(name="vpcRegionId")
+    def vpc_region_id(self) -> str:
+        """
+        The Region of the VPC.
+        """
+        return pulumi.get(self, "vpc_region_id")
+
+
+@pulumi.output_type
+class GetEndpointsEndpointIpConfigResult(dict):
+    def __init__(__self__, *,
+                 cidr_block: str,
+                 ip: str,
+                 vswitch_id: str,
+                 zone_id: str):
+        """
+        :param str cidr_block: The Subnet mask.
+        :param str ip: The IP address within the parameter range of the subnet mask. **NOTE:** It is recommended to use the IP address assigned by the system.
+        :param str vswitch_id: The Vswitch id.
+        :param str zone_id: The Zone ID.
+        """
+        pulumi.set(__self__, "cidr_block", cidr_block)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> str:
+        """
+        The Subnet mask.
+        """
+        return pulumi.get(self, "cidr_block")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        The IP address within the parameter range of the subnet mask. **NOTE:** It is recommended to use the IP address assigned by the system.
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The Vswitch id.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The Zone ID.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetResolverZonesZoneResult(dict):
+    def __init__(__self__, *,
+                 status: str,
+                 zone_id: str):
+        """
+        :param str status: The status of the Zone.
+        :param str zone_id: The zone ID.
+        """
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the Zone.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The zone ID.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetRulesRuleResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 endpoint_id: str,
+                 endpoint_name: str,
+                 forward_ips: Sequence['outputs.GetRulesRuleForwardIpResult'],
+                 id: str,
+                 rule_id: str,
+                 rule_name: str,
+                 type: str,
+                 zone_name: str):
+        """
+        :param str create_time: The creation time of the resource.
+        :param str endpoint_id: The ID of the Endpoint.
+        :param str endpoint_name: The Name of the Endpoint.
+        :param str id: The ID of the Rule.
+        :param str rule_id: The first ID of the resource.
+        :param str rule_name: The name of the resource.
+        :param str type: The type of the rule.
+        :param str zone_name: The name of the forwarding zone.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "endpoint_id", endpoint_id)
+        pulumi.set(__self__, "endpoint_name", endpoint_name)
+        pulumi.set(__self__, "forward_ips", forward_ips)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "rule_id", rule_id)
+        pulumi.set(__self__, "rule_name", rule_name)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "zone_name", zone_name)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="endpointId")
+    def endpoint_id(self) -> str:
+        """
+        The ID of the Endpoint.
+        """
+        return pulumi.get(self, "endpoint_id")
+
+    @property
+    @pulumi.getter(name="endpointName")
+    def endpoint_name(self) -> str:
+        """
+        The Name of the Endpoint.
+        """
+        return pulumi.get(self, "endpoint_name")
+
+    @property
+    @pulumi.getter(name="forwardIps")
+    def forward_ips(self) -> Sequence['outputs.GetRulesRuleForwardIpResult']:
+        return pulumi.get(self, "forward_ips")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Rule.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "rule_id")
+
+    @property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> str:
+        """
+        The name of the resource.
+        """
+        return pulumi.get(self, "rule_name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the rule.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="zoneName")
+    def zone_name(self) -> str:
+        """
+        The name of the forwarding zone.
+        """
+        return pulumi.get(self, "zone_name")
+
+
+@pulumi.output_type
+class GetRulesRuleForwardIpResult(dict):
+    def __init__(__self__, *,
+                 ip: str,
+                 port: int):
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type

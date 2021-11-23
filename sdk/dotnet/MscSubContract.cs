@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud
     public partial class MscSubContract : Pulumi.CustomResource
     {
         /// <summary>
-        /// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length, and can contain uppercase and lowercase letters.
+        /// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
         /// </summary>
         [Output("contactName")]
         public Output<string> ContactName { get; private set; } = null!;
@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud
         public Output<string> Mobile { get; private set; } = null!;
 
         /// <summary>
-        /// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
+        /// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
         /// </summary>
         [Output("position")]
         public Output<string> Position { get; private set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud
     public sealed class MscSubContractArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length, and can contain uppercase and lowercase letters.
+        /// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
         /// </summary>
         [Input("contactName", required: true)]
         public Input<string> ContactName { get; set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud
         public Input<string> Mobile { get; set; } = null!;
 
         /// <summary>
-        /// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
+        /// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
         /// </summary>
         [Input("position", required: true)]
         public Input<string> Position { get; set; } = null!;
@@ -151,7 +151,7 @@ namespace Pulumi.AliCloud
     public sealed class MscSubContractState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length, and can contain uppercase and lowercase letters.
+        /// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
         /// </summary>
         [Input("contactName")]
         public Input<string>? ContactName { get; set; }
@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud
         public Input<string>? Mobile { get; set; }
 
         /// <summary>
-        /// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
+        /// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
         /// </summary>
         [Input("position")]
         public Input<string>? Position { get; set; }

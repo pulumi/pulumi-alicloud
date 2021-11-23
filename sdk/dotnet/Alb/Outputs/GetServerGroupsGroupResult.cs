@@ -49,6 +49,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// The configuration of the sticky session.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServerGroupsGroupStickySessionConfigResult> StickySessionConfigs;
+        public readonly ImmutableDictionary<string, object> Tags;
         /// <summary>
         /// The ID of the VPC that you want to access.
         /// </summary>
@@ -74,6 +75,8 @@ namespace Pulumi.AliCloud.Alb.Outputs
 
             ImmutableArray<Outputs.GetServerGroupsGroupStickySessionConfigResult> stickySessionConfigs,
 
+            ImmutableDictionary<string, object> tags,
+
             string vpcId)
         {
             HealthCheckConfigs = healthCheckConfigs;
@@ -85,6 +88,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
             Servers = servers;
             Status = status;
             StickySessionConfigs = stickySessionConfigs;
+            Tags = tags;
             VpcId = vpcId;
         }
     }

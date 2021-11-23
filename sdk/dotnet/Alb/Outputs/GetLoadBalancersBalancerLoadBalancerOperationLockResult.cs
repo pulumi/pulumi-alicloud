@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class GetLoadBalancersBalancerLoadBalancerOperationLockResult
     {
         /// <summary>
-        /// The Locking of the Reasons. In 'loadbalancerbussinessstatus' **Exception When Effective,.
+        /// The Locking of the Reasons.
         /// </summary>
         public readonly string LockReason;
         /// <summary>

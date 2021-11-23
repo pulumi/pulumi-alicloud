@@ -13,6 +13,37 @@ import (
 // This data source provides a list of Alidns Domain Records in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:**  Available in 1.86.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "records.txt"
+// 		opt1 := "A"
+// 		recordsDs, err := dns.GetAlidnsRecords(ctx, &dns.GetAlidnsRecordsArgs{
+// 			DomainName: "xiaozhu.top",
+// 			Ids: []string{
+// 				"1978593525779****",
+// 			},
+// 			OutputFile: &opt0,
+// 			Type:       &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstRecordId", recordsDs.Records[0].RecordId)
+// 		return nil
+// 	})
+// }
+// ```
 func GetAlidnsRecords(ctx *pulumi.Context, args *GetAlidnsRecordsArgs, opts ...pulumi.InvokeOption) (*GetAlidnsRecordsResult, error) {
 	var rv GetAlidnsRecordsResult
 	err := ctx.Invoke("alicloud:dns/getAlidnsRecords:getAlidnsRecords", args, &rv, opts...)

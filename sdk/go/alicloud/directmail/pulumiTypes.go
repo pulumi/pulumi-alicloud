@@ -634,6 +634,121 @@ func (o GetReceiversReceiverseArrayOutput) Index(i pulumi.IntInput) GetReceivers
 	}).(GetReceiversReceiverseOutput)
 }
 
+type GetTagsTag struct {
+	// The ID of the tag.
+	Id string `pulumi:"id"`
+	// The ID of the tag.
+	TagId string `pulumi:"tagId"`
+	// The name of the tag.
+	TagName string `pulumi:"tagName"`
+}
+
+// GetTagsTagInput is an input type that accepts GetTagsTagArgs and GetTagsTagOutput values.
+// You can construct a concrete instance of `GetTagsTagInput` via:
+//
+//          GetTagsTagArgs{...}
+type GetTagsTagInput interface {
+	pulumi.Input
+
+	ToGetTagsTagOutput() GetTagsTagOutput
+	ToGetTagsTagOutputWithContext(context.Context) GetTagsTagOutput
+}
+
+type GetTagsTagArgs struct {
+	// The ID of the tag.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the tag.
+	TagId pulumi.StringInput `pulumi:"tagId"`
+	// The name of the tag.
+	TagName pulumi.StringInput `pulumi:"tagName"`
+}
+
+func (GetTagsTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagsTag)(nil)).Elem()
+}
+
+func (i GetTagsTagArgs) ToGetTagsTagOutput() GetTagsTagOutput {
+	return i.ToGetTagsTagOutputWithContext(context.Background())
+}
+
+func (i GetTagsTagArgs) ToGetTagsTagOutputWithContext(ctx context.Context) GetTagsTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagsTagOutput)
+}
+
+// GetTagsTagArrayInput is an input type that accepts GetTagsTagArray and GetTagsTagArrayOutput values.
+// You can construct a concrete instance of `GetTagsTagArrayInput` via:
+//
+//          GetTagsTagArray{ GetTagsTagArgs{...} }
+type GetTagsTagArrayInput interface {
+	pulumi.Input
+
+	ToGetTagsTagArrayOutput() GetTagsTagArrayOutput
+	ToGetTagsTagArrayOutputWithContext(context.Context) GetTagsTagArrayOutput
+}
+
+type GetTagsTagArray []GetTagsTagInput
+
+func (GetTagsTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagsTag)(nil)).Elem()
+}
+
+func (i GetTagsTagArray) ToGetTagsTagArrayOutput() GetTagsTagArrayOutput {
+	return i.ToGetTagsTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetTagsTagArray) ToGetTagsTagArrayOutputWithContext(ctx context.Context) GetTagsTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagsTagArrayOutput)
+}
+
+type GetTagsTagOutput struct{ *pulumi.OutputState }
+
+func (GetTagsTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagsTag)(nil)).Elem()
+}
+
+func (o GetTagsTagOutput) ToGetTagsTagOutput() GetTagsTagOutput {
+	return o
+}
+
+func (o GetTagsTagOutput) ToGetTagsTagOutputWithContext(ctx context.Context) GetTagsTagOutput {
+	return o
+}
+
+// The ID of the tag.
+func (o GetTagsTagOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagsTag) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the tag.
+func (o GetTagsTagOutput) TagId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagsTag) string { return v.TagId }).(pulumi.StringOutput)
+}
+
+// The name of the tag.
+func (o GetTagsTagOutput) TagName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagsTag) string { return v.TagName }).(pulumi.StringOutput)
+}
+
+type GetTagsTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTagsTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagsTag)(nil)).Elem()
+}
+
+func (o GetTagsTagArrayOutput) ToGetTagsTagArrayOutput() GetTagsTagArrayOutput {
+	return o
+}
+
+func (o GetTagsTagArrayOutput) ToGetTagsTagArrayOutputWithContext(ctx context.Context) GetTagsTagArrayOutput {
+	return o
+}
+
+func (o GetTagsTagArrayOutput) Index(i pulumi.IntInput) GetTagsTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTagsTag {
+		return vs[0].([]GetTagsTag)[vs[1].(int)]
+	}).(GetTagsTagOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainInput)(nil)).Elem(), GetDomainsDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainArrayInput)(nil)).Elem(), GetDomainsDomainArray{})
@@ -641,10 +756,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMailAddressesAddressArrayInput)(nil)).Elem(), GetMailAddressesAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReceiversReceiverseInput)(nil)).Elem(), GetReceiversReceiverseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReceiversReceiverseArrayInput)(nil)).Elem(), GetReceiversReceiverseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsTagInput)(nil)).Elem(), GetTagsTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsTagArrayInput)(nil)).Elem(), GetTagsTagArray{})
 	pulumi.RegisterOutputType(GetDomainsDomainOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetMailAddressesAddressOutput{})
 	pulumi.RegisterOutputType(GetMailAddressesAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetReceiversReceiverseOutput{})
 	pulumi.RegisterOutputType(GetReceiversReceiverseArrayOutput{})
+	pulumi.RegisterOutputType(GetTagsTagOutput{})
+	pulumi.RegisterOutputType(GetTagsTagArrayOutput{})
 }

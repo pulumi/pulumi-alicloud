@@ -13,7 +13,7 @@ import (
 
 // ## Import
 //
-// The common bandwidth package attachemnt can be imported using the id, e.g.
+// The common bandwidth package attachment can be imported using the id, e.g.
 //
 // ```sh
 //  $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment foo cbwp-abc123456:eip-abc123456

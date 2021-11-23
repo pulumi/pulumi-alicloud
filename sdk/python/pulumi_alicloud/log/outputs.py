@@ -398,7 +398,7 @@ class StoreEncryptConf(dict):
         """
         :param bool enable: enable encryption. Default `false`
         :param str encrypt_type: Supported encryption type, only supports `default(AES)`,` m4`
-        :param 'StoreEncryptConfUserCmkInfoArgs' user_cmk_info: User bring your own key (BYOK) encryption.[Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm?spm=a2c63.p38356.b99.673.cafa2b38qBskFV)
+        :param 'StoreEncryptConfUserCmkInfoArgs' user_cmk_info: User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
         """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
@@ -427,7 +427,7 @@ class StoreEncryptConf(dict):
     @pulumi.getter(name="userCmkInfo")
     def user_cmk_info(self) -> Optional['outputs.StoreEncryptConfUserCmkInfo']:
         """
-        User bring your own key (BYOK) encryption.[Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm?spm=a2c63.p38356.b99.673.cafa2b38qBskFV)
+        User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
         """
         return pulumi.get(self, "user_cmk_info")
 
@@ -458,9 +458,9 @@ class StoreEncryptConfUserCmkInfo(dict):
                  cmk_key_id: str,
                  region_id: str):
         """
-        :param str arn: role arn
-        :param str cmk_key_id: User master key id
-        :param str region_id: Region id where the  user master key id is located
+        :param str arn: role arn.
+        :param str cmk_key_id: User master key id.
+        :param str region_id: Region id where the  user master key id is located.
         """
         pulumi.set(__self__, "arn", arn)
         pulumi.set(__self__, "cmk_key_id", cmk_key_id)
@@ -470,7 +470,7 @@ class StoreEncryptConfUserCmkInfo(dict):
     @pulumi.getter
     def arn(self) -> str:
         """
-        role arn
+        role arn.
         """
         return pulumi.get(self, "arn")
 
@@ -478,7 +478,7 @@ class StoreEncryptConfUserCmkInfo(dict):
     @pulumi.getter(name="cmkKeyId")
     def cmk_key_id(self) -> str:
         """
-        User master key id
+        User master key id.
         """
         return pulumi.get(self, "cmk_key_id")
 
@@ -486,7 +486,7 @@ class StoreEncryptConfUserCmkInfo(dict):
     @pulumi.getter(name="regionId")
     def region_id(self) -> str:
         """
-        Region id where the  user master key id is located
+        Region id where the  user master key id is located.
         """
         return pulumi.get(self, "region_id")
 

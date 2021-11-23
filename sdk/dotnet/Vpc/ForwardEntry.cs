@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> InternalPort { get; private set; } = null!;
 
         /// <summary>
-        /// The ip protocal, valid value is tcp|udp|any.
+        /// The ip protocol, valid value is tcp|udp|any.
         /// </summary>
         [Output("ipProtocol")]
         public Output<string> IpProtocol { get; private set; } = null!;
@@ -230,7 +230,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> InternalPort { get; set; } = null!;
 
         /// <summary>
-        /// The ip protocal, valid value is tcp|udp|any.
+        /// The ip protocol, valid value is tcp|udp|any.
         /// </summary>
         [Input("ipProtocol", required: true)]
         public Input<string> IpProtocol { get; set; } = null!;
@@ -297,7 +297,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? InternalPort { get; set; }
 
         /// <summary>
-        /// The ip protocal, valid value is tcp|udp|any.
+        /// The ip protocol, valid value is tcp|udp|any.
         /// </summary>
         [Input("ipProtocol")]
         public Input<string>? IpProtocol { get; set; }

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cdn.Outputs
     public sealed class DomainNewSource
     {
         /// <summary>
-        /// The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
+        /// The address of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
         /// </summary>
         public readonly string Content;
         /// <summary>

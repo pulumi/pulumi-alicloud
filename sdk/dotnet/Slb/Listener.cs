@@ -23,7 +23,7 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// ## Listener fields and protocol mapping
     /// 
-    /// load balance support 4 protocal to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
+    /// load balance support 4 protocol to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
     /// 
     /// listener parameter | support protocol | value range |
     /// ------------- | ------------- | ------------- |
@@ -186,7 +186,7 @@ namespace Pulumi.AliCloud.Slb
         /// Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
         /// </summary>
         [Output("healthCheckHttpCode")]
-        public Output<string?> HealthCheckHttpCode { get; private set; } = null!;
+        public Output<string> HealthCheckHttpCode { get; private set; } = null!;
 
         /// <summary>
         /// Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
@@ -280,7 +280,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string?> Scheduler { get; private set; } = null!;
 
         /// <summary>
-        /// SLB Server certificate ID. It is required when `protocol` is `https`.
+        /// SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
         /// </summary>
         [Output("serverCertificateId")]
         public Output<string> ServerCertificateId { get; private set; } = null!;
@@ -292,7 +292,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string?> ServerGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        /// SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
         /// </summary>
         [Output("sslCertificateId")]
         public Output<string> SslCertificateId { get; private set; } = null!;
@@ -579,7 +579,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? Scheduler { get; set; }
 
         /// <summary>
-        /// SLB Server certificate ID. It is required when `protocol` is `https`.
+        /// SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
         /// </summary>
         [Input("serverCertificateId")]
         public Input<string>? ServerCertificateId { get; set; }
@@ -591,7 +591,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? ServerGroupId { get; set; }
 
         /// <summary>
-        /// It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        /// SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
         /// </summary>
         [Input("sslCertificateId")]
         public Input<string>? SslCertificateId { get; set; }
@@ -839,7 +839,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? Scheduler { get; set; }
 
         /// <summary>
-        /// SLB Server certificate ID. It is required when `protocol` is `https`.
+        /// SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
         /// </summary>
         [Input("serverCertificateId")]
         public Input<string>? ServerCertificateId { get; set; }
@@ -851,7 +851,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? ServerGroupId { get; set; }
 
         /// <summary>
-        /// It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        /// SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
         /// </summary>
         [Input("sslCertificateId")]
         public Input<string>? SslCertificateId { get; set; }

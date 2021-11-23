@@ -39,7 +39,7 @@ class DomainArgs:
         :param pulumi.Input[str] cluster_type: The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
         :param pulumi.Input[int] connection_time: The connection timeout for WAF exclusive clusters. Unit: seconds.
         :param pulumi.Input[str] domain: Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
-        :param pulumi.Input[str] domain_name: The domain that you want to add to WAF.
+        :param pulumi.Input[str] domain_name: The domain that you want to add to WAF. The `domain_name` is required when the value of the `domain`  is Empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] http2_ports: List of the HTTP 2.0 ports.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] http_ports: List of the HTTP ports.
         :param pulumi.Input[str] http_to_user_ip: Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
@@ -155,7 +155,7 @@ class DomainArgs:
     @pulumi.getter(name="domainName")
     def domain_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The domain that you want to add to WAF.
+        The domain that you want to add to WAF. The `domain_name` is required when the value of the `domain`  is Empty.
         """
         return pulumi.get(self, "domain_name")
 
@@ -326,7 +326,7 @@ class _DomainState:
         :param pulumi.Input[str] cname: The CNAME record assigned by the WAF instance to the specified domain.
         :param pulumi.Input[int] connection_time: The connection timeout for WAF exclusive clusters. Unit: seconds.
         :param pulumi.Input[str] domain: Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
-        :param pulumi.Input[str] domain_name: The domain that you want to add to WAF.
+        :param pulumi.Input[str] domain_name: The domain that you want to add to WAF. The `domain_name` is required when the value of the `domain`  is Empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] http2_ports: List of the HTTP 2.0 ports.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] http_ports: List of the HTTP ports.
         :param pulumi.Input[str] http_to_user_ip: Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
@@ -436,7 +436,7 @@ class _DomainState:
     @pulumi.getter(name="domainName")
     def domain_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The domain that you want to add to WAF.
+        The domain that you want to add to WAF. The `domain_name` is required when the value of the `domain`  is Empty.
         """
         return pulumi.get(self, "domain_name")
 
@@ -671,7 +671,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_type: The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
         :param pulumi.Input[int] connection_time: The connection timeout for WAF exclusive clusters. Unit: seconds.
         :param pulumi.Input[str] domain: Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
-        :param pulumi.Input[str] domain_name: The domain that you want to add to WAF.
+        :param pulumi.Input[str] domain_name: The domain that you want to add to WAF. The `domain_name` is required when the value of the `domain`  is Empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] http2_ports: List of the HTTP 2.0 ports.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] http_ports: List of the HTTP ports.
         :param pulumi.Input[str] http_to_user_ip: Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
@@ -842,7 +842,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] cname: The CNAME record assigned by the WAF instance to the specified domain.
         :param pulumi.Input[int] connection_time: The connection timeout for WAF exclusive clusters. Unit: seconds.
         :param pulumi.Input[str] domain: Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
-        :param pulumi.Input[str] domain_name: The domain that you want to add to WAF.
+        :param pulumi.Input[str] domain_name: The domain that you want to add to WAF. The `domain_name` is required when the value of the `domain`  is Empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] http2_ports: List of the HTTP 2.0 ports.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] http_ports: List of the HTTP ports.
         :param pulumi.Input[str] http_to_user_ip: Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
@@ -920,7 +920,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter(name="domainName")
     def domain_name(self) -> pulumi.Output[str]:
         """
-        The domain that you want to add to WAF.
+        The domain that you want to add to WAF. The `domain_name` is required when the value of the `domain`  is Empty.
         """
         return pulumi.get(self, "domain_name")
 

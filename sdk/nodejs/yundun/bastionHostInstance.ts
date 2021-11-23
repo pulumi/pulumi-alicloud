@@ -33,6 +33,7 @@ export class BastionHostInstance extends pulumi.CustomResource {
     }
 
     public readonly description!: pulumi.Output<string>;
+    public readonly enablePublicAccess!: pulumi.Output<boolean>;
     public readonly licenseCode!: pulumi.Output<string>;
     public readonly period!: pulumi.Output<number | undefined>;
     public readonly resourceGroupId!: pulumi.Output<string | undefined>;
@@ -54,6 +55,7 @@ export class BastionHostInstance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as BastionHostInstanceState | undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["enablePublicAccess"] = state ? state.enablePublicAccess : undefined;
             inputs["licenseCode"] = state ? state.licenseCode : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
@@ -75,6 +77,7 @@ export class BastionHostInstance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vswitchId'");
             }
             inputs["description"] = args ? args.description : undefined;
+            inputs["enablePublicAccess"] = args ? args.enablePublicAccess : undefined;
             inputs["licenseCode"] = args ? args.licenseCode : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
@@ -94,6 +97,7 @@ export class BastionHostInstance extends pulumi.CustomResource {
  */
 export interface BastionHostInstanceState {
     description?: pulumi.Input<string>;
+    enablePublicAccess?: pulumi.Input<boolean>;
     licenseCode?: pulumi.Input<string>;
     period?: pulumi.Input<number>;
     resourceGroupId?: pulumi.Input<string>;
@@ -107,6 +111,7 @@ export interface BastionHostInstanceState {
  */
 export interface BastionHostInstanceArgs {
     description: pulumi.Input<string>;
+    enablePublicAccess?: pulumi.Input<boolean>;
     licenseCode: pulumi.Input<string>;
     period?: pulumi.Input<number>;
     resourceGroupId?: pulumi.Input<string>;

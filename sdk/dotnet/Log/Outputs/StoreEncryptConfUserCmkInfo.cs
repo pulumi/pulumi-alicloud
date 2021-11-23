@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.Log.Outputs
     public sealed class StoreEncryptConfUserCmkInfo
     {
         /// <summary>
-        /// role arn
+        /// role arn.
         /// </summary>
         public readonly string Arn;
         /// <summary>
-        /// User master key id
+        /// User master key id.
         /// </summary>
         public readonly string CmkKeyId;
         /// <summary>
-        /// Region id where the  user master key id is located
+        /// Region id where the  user master key id is located.
         /// </summary>
         public readonly string RegionId;
 

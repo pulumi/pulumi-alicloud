@@ -26,7 +26,7 @@ class AggregateCompliancePackArgs:
         The set of arguments for constructing a AggregateCompliancePack resource.
         :param pulumi.Input[str] aggregate_compliance_pack_name: The name of compliance package name.
         :param pulumi.Input[str] aggregator_id: The ID of aggregator.
-        :param pulumi.Input[str] description: Teh description of compliance package.
+        :param pulumi.Input[str] description: The description of compliance package.
         :param pulumi.Input[int] risk_level: The Risk Level. Valid values: `1`, `2`, `3`.
         :param pulumi.Input[str] compliance_pack_template_id: The Template ID of compliance package.
         :param pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]] config_rule_ids: A list of Config Rule IDs.
@@ -74,7 +74,7 @@ class AggregateCompliancePackArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
         """
-        Teh description of compliance package.
+        The description of compliance package.
         """
         return pulumi.get(self, "description")
 
@@ -149,7 +149,7 @@ class _AggregateCompliancePackState:
         :param pulumi.Input[str] compliance_pack_template_id: The Template ID of compliance package.
         :param pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]] config_rule_ids: A list of Config Rule IDs.
         :param pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]] config_rules: A list of Config Rules.
-        :param pulumi.Input[str] description: Teh description of compliance package.
+        :param pulumi.Input[str] description: The description of compliance package.
         :param pulumi.Input[int] risk_level: The Risk Level. Valid values: `1`, `2`, `3`.
         :param pulumi.Input[str] status: The status of the resource.
         """
@@ -237,7 +237,7 @@ class _AggregateCompliancePackState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Teh description of compliance package.
+        The description of compliance package.
         """
         return pulumi.get(self, "description")
 
@@ -354,7 +354,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
         :param pulumi.Input[str] compliance_pack_template_id: The Template ID of compliance package.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleIdArgs']]]] config_rule_ids: A list of Config Rule IDs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleArgs']]]] config_rules: A list of Config Rules.
-        :param pulumi.Input[str] description: Teh description of compliance package.
+        :param pulumi.Input[str] description: The description of compliance package.
         :param pulumi.Input[int] risk_level: The Risk Level. Valid values: `1`, `2`, `3`.
         """
         ...
@@ -510,7 +510,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
         :param pulumi.Input[str] compliance_pack_template_id: The Template ID of compliance package.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleIdArgs']]]] config_rule_ids: A list of Config Rule IDs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleArgs']]]] config_rules: A list of Config Rules.
-        :param pulumi.Input[str] description: Teh description of compliance package.
+        :param pulumi.Input[str] description: The description of compliance package.
         :param pulumi.Input[int] risk_level: The Risk Level. Valid values: `1`, `2`, `3`.
         :param pulumi.Input[str] status: The status of the resource.
         """
@@ -572,7 +572,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        Teh description of compliance package.
+        The description of compliance package.
         """
         return pulumi.get(self, "description")
 

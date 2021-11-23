@@ -12,12 +12,14 @@ export * from "./getEventSources";
 export * from "./getRules";
 export * from "./getService";
 export * from "./rule";
+export * from "./serviceLinkedRole";
 export * from "./slr";
 
 // Import resources to register:
 import { EventBus } from "./eventBus";
 import { EventSource } from "./eventSource";
 import { Rule } from "./rule";
+import { ServiceLinkedRole } from "./serviceLinkedRole";
 import { Slr } from "./slr";
 
 const _module = {
@@ -30,6 +32,8 @@ const _module = {
                 return new EventSource(name, <any>undefined, { urn })
             case "alicloud:eventbridge/rule:Rule":
                 return new Rule(name, <any>undefined, { urn })
+            case "alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole":
+                return new ServiceLinkedRole(name, <any>undefined, { urn })
             case "alicloud:eventbridge/slr:Slr":
                 return new Slr(name, <any>undefined, { urn })
             default:
@@ -40,4 +44,5 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "eventbridge/eventBus", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eventbridge/eventSource", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eventbridge/rule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "eventbridge/serviceLinkedRole", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eventbridge/slr", _module)

@@ -267,6 +267,646 @@ func (o EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutput) Index(i pulumi.Int
 	}).(EcdPolicyGroupAuthorizeSecurityPolicyRuleOutput)
 }
 
+type GetBundlesBundle struct {
+	// The bundle id of the bundle.
+	BundleId string `pulumi:"bundleId"`
+	// The name of the bundle.
+	BundleName string `pulumi:"bundleName"`
+	// The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
+	BundleType string `pulumi:"bundleType"`
+	// The description of the bundle.
+	Description string `pulumi:"description"`
+	// The desktop type of the bundle.
+	DesktopType string `pulumi:"desktopType"`
+	// The desktop type attribute of the bundle.
+	DesktopTypeAttributes []GetBundlesBundleDesktopTypeAttribute `pulumi:"desktopTypeAttributes"`
+	// The disks of the bundle.
+	Disks []GetBundlesBundleDisk `pulumi:"disks"`
+	// The ID of the bundle.
+	Id string `pulumi:"id"`
+	// The image id attribute of the bundle.
+	ImageId string `pulumi:"imageId"`
+	// The os type attribute of the bundle.
+	OsType string `pulumi:"osType"`
+}
+
+// GetBundlesBundleInput is an input type that accepts GetBundlesBundleArgs and GetBundlesBundleOutput values.
+// You can construct a concrete instance of `GetBundlesBundleInput` via:
+//
+//          GetBundlesBundleArgs{...}
+type GetBundlesBundleInput interface {
+	pulumi.Input
+
+	ToGetBundlesBundleOutput() GetBundlesBundleOutput
+	ToGetBundlesBundleOutputWithContext(context.Context) GetBundlesBundleOutput
+}
+
+type GetBundlesBundleArgs struct {
+	// The bundle id of the bundle.
+	BundleId pulumi.StringInput `pulumi:"bundleId"`
+	// The name of the bundle.
+	BundleName pulumi.StringInput `pulumi:"bundleName"`
+	// The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
+	BundleType pulumi.StringInput `pulumi:"bundleType"`
+	// The description of the bundle.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The desktop type of the bundle.
+	DesktopType pulumi.StringInput `pulumi:"desktopType"`
+	// The desktop type attribute of the bundle.
+	DesktopTypeAttributes GetBundlesBundleDesktopTypeAttributeArrayInput `pulumi:"desktopTypeAttributes"`
+	// The disks of the bundle.
+	Disks GetBundlesBundleDiskArrayInput `pulumi:"disks"`
+	// The ID of the bundle.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The image id attribute of the bundle.
+	ImageId pulumi.StringInput `pulumi:"imageId"`
+	// The os type attribute of the bundle.
+	OsType pulumi.StringInput `pulumi:"osType"`
+}
+
+func (GetBundlesBundleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBundlesBundle)(nil)).Elem()
+}
+
+func (i GetBundlesBundleArgs) ToGetBundlesBundleOutput() GetBundlesBundleOutput {
+	return i.ToGetBundlesBundleOutputWithContext(context.Background())
+}
+
+func (i GetBundlesBundleArgs) ToGetBundlesBundleOutputWithContext(ctx context.Context) GetBundlesBundleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBundlesBundleOutput)
+}
+
+// GetBundlesBundleArrayInput is an input type that accepts GetBundlesBundleArray and GetBundlesBundleArrayOutput values.
+// You can construct a concrete instance of `GetBundlesBundleArrayInput` via:
+//
+//          GetBundlesBundleArray{ GetBundlesBundleArgs{...} }
+type GetBundlesBundleArrayInput interface {
+	pulumi.Input
+
+	ToGetBundlesBundleArrayOutput() GetBundlesBundleArrayOutput
+	ToGetBundlesBundleArrayOutputWithContext(context.Context) GetBundlesBundleArrayOutput
+}
+
+type GetBundlesBundleArray []GetBundlesBundleInput
+
+func (GetBundlesBundleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBundlesBundle)(nil)).Elem()
+}
+
+func (i GetBundlesBundleArray) ToGetBundlesBundleArrayOutput() GetBundlesBundleArrayOutput {
+	return i.ToGetBundlesBundleArrayOutputWithContext(context.Background())
+}
+
+func (i GetBundlesBundleArray) ToGetBundlesBundleArrayOutputWithContext(ctx context.Context) GetBundlesBundleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBundlesBundleArrayOutput)
+}
+
+type GetBundlesBundleOutput struct{ *pulumi.OutputState }
+
+func (GetBundlesBundleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBundlesBundle)(nil)).Elem()
+}
+
+func (o GetBundlesBundleOutput) ToGetBundlesBundleOutput() GetBundlesBundleOutput {
+	return o
+}
+
+func (o GetBundlesBundleOutput) ToGetBundlesBundleOutputWithContext(ctx context.Context) GetBundlesBundleOutput {
+	return o
+}
+
+// The bundle id of the bundle.
+func (o GetBundlesBundleOutput) BundleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBundlesBundle) string { return v.BundleId }).(pulumi.StringOutput)
+}
+
+// The name of the bundle.
+func (o GetBundlesBundleOutput) BundleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBundlesBundle) string { return v.BundleName }).(pulumi.StringOutput)
+}
+
+// The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
+func (o GetBundlesBundleOutput) BundleType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBundlesBundle) string { return v.BundleType }).(pulumi.StringOutput)
+}
+
+// The description of the bundle.
+func (o GetBundlesBundleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBundlesBundle) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The desktop type of the bundle.
+func (o GetBundlesBundleOutput) DesktopType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBundlesBundle) string { return v.DesktopType }).(pulumi.StringOutput)
+}
+
+// The desktop type attribute of the bundle.
+func (o GetBundlesBundleOutput) DesktopTypeAttributes() GetBundlesBundleDesktopTypeAttributeArrayOutput {
+	return o.ApplyT(func(v GetBundlesBundle) []GetBundlesBundleDesktopTypeAttribute { return v.DesktopTypeAttributes }).(GetBundlesBundleDesktopTypeAttributeArrayOutput)
+}
+
+// The disks of the bundle.
+func (o GetBundlesBundleOutput) Disks() GetBundlesBundleDiskArrayOutput {
+	return o.ApplyT(func(v GetBundlesBundle) []GetBundlesBundleDisk { return v.Disks }).(GetBundlesBundleDiskArrayOutput)
+}
+
+// The ID of the bundle.
+func (o GetBundlesBundleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBundlesBundle) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The image id attribute of the bundle.
+func (o GetBundlesBundleOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBundlesBundle) string { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// The os type attribute of the bundle.
+func (o GetBundlesBundleOutput) OsType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBundlesBundle) string { return v.OsType }).(pulumi.StringOutput)
+}
+
+type GetBundlesBundleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBundlesBundleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBundlesBundle)(nil)).Elem()
+}
+
+func (o GetBundlesBundleArrayOutput) ToGetBundlesBundleArrayOutput() GetBundlesBundleArrayOutput {
+	return o
+}
+
+func (o GetBundlesBundleArrayOutput) ToGetBundlesBundleArrayOutputWithContext(ctx context.Context) GetBundlesBundleArrayOutput {
+	return o
+}
+
+func (o GetBundlesBundleArrayOutput) Index(i pulumi.IntInput) GetBundlesBundleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBundlesBundle {
+		return vs[0].([]GetBundlesBundle)[vs[1].(int)]
+	}).(GetBundlesBundleOutput)
+}
+
+type GetBundlesBundleDesktopTypeAttribute struct {
+	// The cpu count attribute of the bundle.
+	CpuCount int `pulumi:"cpuCount"`
+	// The gpu count attribute of the bundle.
+	GpuCount string `pulumi:"gpuCount"`
+	// The gpu spec attribute of the bundle.
+	GpuSpec string `pulumi:"gpuSpec"`
+	// The memory size attribute of the bundle.
+	MemorySize string `pulumi:"memorySize"`
+}
+
+// GetBundlesBundleDesktopTypeAttributeInput is an input type that accepts GetBundlesBundleDesktopTypeAttributeArgs and GetBundlesBundleDesktopTypeAttributeOutput values.
+// You can construct a concrete instance of `GetBundlesBundleDesktopTypeAttributeInput` via:
+//
+//          GetBundlesBundleDesktopTypeAttributeArgs{...}
+type GetBundlesBundleDesktopTypeAttributeInput interface {
+	pulumi.Input
+
+	ToGetBundlesBundleDesktopTypeAttributeOutput() GetBundlesBundleDesktopTypeAttributeOutput
+	ToGetBundlesBundleDesktopTypeAttributeOutputWithContext(context.Context) GetBundlesBundleDesktopTypeAttributeOutput
+}
+
+type GetBundlesBundleDesktopTypeAttributeArgs struct {
+	// The cpu count attribute of the bundle.
+	CpuCount pulumi.IntInput `pulumi:"cpuCount"`
+	// The gpu count attribute of the bundle.
+	GpuCount pulumi.StringInput `pulumi:"gpuCount"`
+	// The gpu spec attribute of the bundle.
+	GpuSpec pulumi.StringInput `pulumi:"gpuSpec"`
+	// The memory size attribute of the bundle.
+	MemorySize pulumi.StringInput `pulumi:"memorySize"`
+}
+
+func (GetBundlesBundleDesktopTypeAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBundlesBundleDesktopTypeAttribute)(nil)).Elem()
+}
+
+func (i GetBundlesBundleDesktopTypeAttributeArgs) ToGetBundlesBundleDesktopTypeAttributeOutput() GetBundlesBundleDesktopTypeAttributeOutput {
+	return i.ToGetBundlesBundleDesktopTypeAttributeOutputWithContext(context.Background())
+}
+
+func (i GetBundlesBundleDesktopTypeAttributeArgs) ToGetBundlesBundleDesktopTypeAttributeOutputWithContext(ctx context.Context) GetBundlesBundleDesktopTypeAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBundlesBundleDesktopTypeAttributeOutput)
+}
+
+// GetBundlesBundleDesktopTypeAttributeArrayInput is an input type that accepts GetBundlesBundleDesktopTypeAttributeArray and GetBundlesBundleDesktopTypeAttributeArrayOutput values.
+// You can construct a concrete instance of `GetBundlesBundleDesktopTypeAttributeArrayInput` via:
+//
+//          GetBundlesBundleDesktopTypeAttributeArray{ GetBundlesBundleDesktopTypeAttributeArgs{...} }
+type GetBundlesBundleDesktopTypeAttributeArrayInput interface {
+	pulumi.Input
+
+	ToGetBundlesBundleDesktopTypeAttributeArrayOutput() GetBundlesBundleDesktopTypeAttributeArrayOutput
+	ToGetBundlesBundleDesktopTypeAttributeArrayOutputWithContext(context.Context) GetBundlesBundleDesktopTypeAttributeArrayOutput
+}
+
+type GetBundlesBundleDesktopTypeAttributeArray []GetBundlesBundleDesktopTypeAttributeInput
+
+func (GetBundlesBundleDesktopTypeAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBundlesBundleDesktopTypeAttribute)(nil)).Elem()
+}
+
+func (i GetBundlesBundleDesktopTypeAttributeArray) ToGetBundlesBundleDesktopTypeAttributeArrayOutput() GetBundlesBundleDesktopTypeAttributeArrayOutput {
+	return i.ToGetBundlesBundleDesktopTypeAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i GetBundlesBundleDesktopTypeAttributeArray) ToGetBundlesBundleDesktopTypeAttributeArrayOutputWithContext(ctx context.Context) GetBundlesBundleDesktopTypeAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBundlesBundleDesktopTypeAttributeArrayOutput)
+}
+
+type GetBundlesBundleDesktopTypeAttributeOutput struct{ *pulumi.OutputState }
+
+func (GetBundlesBundleDesktopTypeAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBundlesBundleDesktopTypeAttribute)(nil)).Elem()
+}
+
+func (o GetBundlesBundleDesktopTypeAttributeOutput) ToGetBundlesBundleDesktopTypeAttributeOutput() GetBundlesBundleDesktopTypeAttributeOutput {
+	return o
+}
+
+func (o GetBundlesBundleDesktopTypeAttributeOutput) ToGetBundlesBundleDesktopTypeAttributeOutputWithContext(ctx context.Context) GetBundlesBundleDesktopTypeAttributeOutput {
+	return o
+}
+
+// The cpu count attribute of the bundle.
+func (o GetBundlesBundleDesktopTypeAttributeOutput) CpuCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBundlesBundleDesktopTypeAttribute) int { return v.CpuCount }).(pulumi.IntOutput)
+}
+
+// The gpu count attribute of the bundle.
+func (o GetBundlesBundleDesktopTypeAttributeOutput) GpuCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBundlesBundleDesktopTypeAttribute) string { return v.GpuCount }).(pulumi.StringOutput)
+}
+
+// The gpu spec attribute of the bundle.
+func (o GetBundlesBundleDesktopTypeAttributeOutput) GpuSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBundlesBundleDesktopTypeAttribute) string { return v.GpuSpec }).(pulumi.StringOutput)
+}
+
+// The memory size attribute of the bundle.
+func (o GetBundlesBundleDesktopTypeAttributeOutput) MemorySize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBundlesBundleDesktopTypeAttribute) string { return v.MemorySize }).(pulumi.StringOutput)
+}
+
+type GetBundlesBundleDesktopTypeAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBundlesBundleDesktopTypeAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBundlesBundleDesktopTypeAttribute)(nil)).Elem()
+}
+
+func (o GetBundlesBundleDesktopTypeAttributeArrayOutput) ToGetBundlesBundleDesktopTypeAttributeArrayOutput() GetBundlesBundleDesktopTypeAttributeArrayOutput {
+	return o
+}
+
+func (o GetBundlesBundleDesktopTypeAttributeArrayOutput) ToGetBundlesBundleDesktopTypeAttributeArrayOutputWithContext(ctx context.Context) GetBundlesBundleDesktopTypeAttributeArrayOutput {
+	return o
+}
+
+func (o GetBundlesBundleDesktopTypeAttributeArrayOutput) Index(i pulumi.IntInput) GetBundlesBundleDesktopTypeAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBundlesBundleDesktopTypeAttribute {
+		return vs[0].([]GetBundlesBundleDesktopTypeAttribute)[vs[1].(int)]
+	}).(GetBundlesBundleDesktopTypeAttributeOutput)
+}
+
+type GetBundlesBundleDisk struct {
+	// The disk size attribute of the bundle.
+	DiskSize string `pulumi:"diskSize"`
+	// The disk type attribute of the bundle.
+	DiskType string `pulumi:"diskType"`
+}
+
+// GetBundlesBundleDiskInput is an input type that accepts GetBundlesBundleDiskArgs and GetBundlesBundleDiskOutput values.
+// You can construct a concrete instance of `GetBundlesBundleDiskInput` via:
+//
+//          GetBundlesBundleDiskArgs{...}
+type GetBundlesBundleDiskInput interface {
+	pulumi.Input
+
+	ToGetBundlesBundleDiskOutput() GetBundlesBundleDiskOutput
+	ToGetBundlesBundleDiskOutputWithContext(context.Context) GetBundlesBundleDiskOutput
+}
+
+type GetBundlesBundleDiskArgs struct {
+	// The disk size attribute of the bundle.
+	DiskSize pulumi.StringInput `pulumi:"diskSize"`
+	// The disk type attribute of the bundle.
+	DiskType pulumi.StringInput `pulumi:"diskType"`
+}
+
+func (GetBundlesBundleDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBundlesBundleDisk)(nil)).Elem()
+}
+
+func (i GetBundlesBundleDiskArgs) ToGetBundlesBundleDiskOutput() GetBundlesBundleDiskOutput {
+	return i.ToGetBundlesBundleDiskOutputWithContext(context.Background())
+}
+
+func (i GetBundlesBundleDiskArgs) ToGetBundlesBundleDiskOutputWithContext(ctx context.Context) GetBundlesBundleDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBundlesBundleDiskOutput)
+}
+
+// GetBundlesBundleDiskArrayInput is an input type that accepts GetBundlesBundleDiskArray and GetBundlesBundleDiskArrayOutput values.
+// You can construct a concrete instance of `GetBundlesBundleDiskArrayInput` via:
+//
+//          GetBundlesBundleDiskArray{ GetBundlesBundleDiskArgs{...} }
+type GetBundlesBundleDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetBundlesBundleDiskArrayOutput() GetBundlesBundleDiskArrayOutput
+	ToGetBundlesBundleDiskArrayOutputWithContext(context.Context) GetBundlesBundleDiskArrayOutput
+}
+
+type GetBundlesBundleDiskArray []GetBundlesBundleDiskInput
+
+func (GetBundlesBundleDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBundlesBundleDisk)(nil)).Elem()
+}
+
+func (i GetBundlesBundleDiskArray) ToGetBundlesBundleDiskArrayOutput() GetBundlesBundleDiskArrayOutput {
+	return i.ToGetBundlesBundleDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetBundlesBundleDiskArray) ToGetBundlesBundleDiskArrayOutputWithContext(ctx context.Context) GetBundlesBundleDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBundlesBundleDiskArrayOutput)
+}
+
+type GetBundlesBundleDiskOutput struct{ *pulumi.OutputState }
+
+func (GetBundlesBundleDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBundlesBundleDisk)(nil)).Elem()
+}
+
+func (o GetBundlesBundleDiskOutput) ToGetBundlesBundleDiskOutput() GetBundlesBundleDiskOutput {
+	return o
+}
+
+func (o GetBundlesBundleDiskOutput) ToGetBundlesBundleDiskOutputWithContext(ctx context.Context) GetBundlesBundleDiskOutput {
+	return o
+}
+
+// The disk size attribute of the bundle.
+func (o GetBundlesBundleDiskOutput) DiskSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBundlesBundleDisk) string { return v.DiskSize }).(pulumi.StringOutput)
+}
+
+// The disk type attribute of the bundle.
+func (o GetBundlesBundleDiskOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBundlesBundleDisk) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+type GetBundlesBundleDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBundlesBundleDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBundlesBundleDisk)(nil)).Elem()
+}
+
+func (o GetBundlesBundleDiskArrayOutput) ToGetBundlesBundleDiskArrayOutput() GetBundlesBundleDiskArrayOutput {
+	return o
+}
+
+func (o GetBundlesBundleDiskArrayOutput) ToGetBundlesBundleDiskArrayOutputWithContext(ctx context.Context) GetBundlesBundleDiskArrayOutput {
+	return o
+}
+
+func (o GetBundlesBundleDiskArrayOutput) Index(i pulumi.IntInput) GetBundlesBundleDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBundlesBundleDisk {
+		return vs[0].([]GetBundlesBundleDisk)[vs[1].(int)]
+	}).(GetBundlesBundleDiskOutput)
+}
+
+type GetDesktopsDesktop struct {
+	// The number of CPUs.
+	Cpu int `pulumi:"cpu"`
+	// The creation time of the Desktop.
+	CreateTime string `pulumi:"createTime"`
+	// The desktop id of the Desktop.
+	DesktopId string `pulumi:"desktopId"`
+	// The desktop name of the Desktop.
+	DesktopName string `pulumi:"desktopName"`
+	// The desktop type of the Desktop.
+	DesktopType string `pulumi:"desktopType"`
+	// The directory id of the Desktop.
+	DirectoryId string `pulumi:"directoryId"`
+	// The desktop end user id of the Desktop.
+	EndUserIds []string `pulumi:"endUserIds"`
+	// The expired time of the Desktop.
+	ExpiredTime string `pulumi:"expiredTime"`
+	// The ID of the Desktop.
+	Id string `pulumi:"id"`
+	// The image id of the Desktop.
+	ImageId string `pulumi:"imageId"`
+	// The memory of the Desktop.
+	Memory string `pulumi:"memory"`
+	// The network interface id of the Desktop.
+	NetworkInterfaceId string `pulumi:"networkInterfaceId"`
+	// The payment type of the Desktop.
+	PaymentType string `pulumi:"paymentType"`
+	// The policy group id of the Desktop.
+	PolicyGroupId string `pulumi:"policyGroupId"`
+	// The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+	Status string `pulumi:"status"`
+	// The system disk size of the Desktop.
+	SystemDiskSize int `pulumi:"systemDiskSize"`
+}
+
+// GetDesktopsDesktopInput is an input type that accepts GetDesktopsDesktopArgs and GetDesktopsDesktopOutput values.
+// You can construct a concrete instance of `GetDesktopsDesktopInput` via:
+//
+//          GetDesktopsDesktopArgs{...}
+type GetDesktopsDesktopInput interface {
+	pulumi.Input
+
+	ToGetDesktopsDesktopOutput() GetDesktopsDesktopOutput
+	ToGetDesktopsDesktopOutputWithContext(context.Context) GetDesktopsDesktopOutput
+}
+
+type GetDesktopsDesktopArgs struct {
+	// The number of CPUs.
+	Cpu pulumi.IntInput `pulumi:"cpu"`
+	// The creation time of the Desktop.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The desktop id of the Desktop.
+	DesktopId pulumi.StringInput `pulumi:"desktopId"`
+	// The desktop name of the Desktop.
+	DesktopName pulumi.StringInput `pulumi:"desktopName"`
+	// The desktop type of the Desktop.
+	DesktopType pulumi.StringInput `pulumi:"desktopType"`
+	// The directory id of the Desktop.
+	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
+	// The desktop end user id of the Desktop.
+	EndUserIds pulumi.StringArrayInput `pulumi:"endUserIds"`
+	// The expired time of the Desktop.
+	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
+	// The ID of the Desktop.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The image id of the Desktop.
+	ImageId pulumi.StringInput `pulumi:"imageId"`
+	// The memory of the Desktop.
+	Memory pulumi.StringInput `pulumi:"memory"`
+	// The network interface id of the Desktop.
+	NetworkInterfaceId pulumi.StringInput `pulumi:"networkInterfaceId"`
+	// The payment type of the Desktop.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// The policy group id of the Desktop.
+	PolicyGroupId pulumi.StringInput `pulumi:"policyGroupId"`
+	// The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The system disk size of the Desktop.
+	SystemDiskSize pulumi.IntInput `pulumi:"systemDiskSize"`
+}
+
+func (GetDesktopsDesktopArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDesktopsDesktop)(nil)).Elem()
+}
+
+func (i GetDesktopsDesktopArgs) ToGetDesktopsDesktopOutput() GetDesktopsDesktopOutput {
+	return i.ToGetDesktopsDesktopOutputWithContext(context.Background())
+}
+
+func (i GetDesktopsDesktopArgs) ToGetDesktopsDesktopOutputWithContext(ctx context.Context) GetDesktopsDesktopOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDesktopsDesktopOutput)
+}
+
+// GetDesktopsDesktopArrayInput is an input type that accepts GetDesktopsDesktopArray and GetDesktopsDesktopArrayOutput values.
+// You can construct a concrete instance of `GetDesktopsDesktopArrayInput` via:
+//
+//          GetDesktopsDesktopArray{ GetDesktopsDesktopArgs{...} }
+type GetDesktopsDesktopArrayInput interface {
+	pulumi.Input
+
+	ToGetDesktopsDesktopArrayOutput() GetDesktopsDesktopArrayOutput
+	ToGetDesktopsDesktopArrayOutputWithContext(context.Context) GetDesktopsDesktopArrayOutput
+}
+
+type GetDesktopsDesktopArray []GetDesktopsDesktopInput
+
+func (GetDesktopsDesktopArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDesktopsDesktop)(nil)).Elem()
+}
+
+func (i GetDesktopsDesktopArray) ToGetDesktopsDesktopArrayOutput() GetDesktopsDesktopArrayOutput {
+	return i.ToGetDesktopsDesktopArrayOutputWithContext(context.Background())
+}
+
+func (i GetDesktopsDesktopArray) ToGetDesktopsDesktopArrayOutputWithContext(ctx context.Context) GetDesktopsDesktopArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDesktopsDesktopArrayOutput)
+}
+
+type GetDesktopsDesktopOutput struct{ *pulumi.OutputState }
+
+func (GetDesktopsDesktopOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDesktopsDesktop)(nil)).Elem()
+}
+
+func (o GetDesktopsDesktopOutput) ToGetDesktopsDesktopOutput() GetDesktopsDesktopOutput {
+	return o
+}
+
+func (o GetDesktopsDesktopOutput) ToGetDesktopsDesktopOutputWithContext(ctx context.Context) GetDesktopsDesktopOutput {
+	return o
+}
+
+// The number of CPUs.
+func (o GetDesktopsDesktopOutput) Cpu() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDesktopsDesktop) int { return v.Cpu }).(pulumi.IntOutput)
+}
+
+// The creation time of the Desktop.
+func (o GetDesktopsDesktopOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The desktop id of the Desktop.
+func (o GetDesktopsDesktopOutput) DesktopId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.DesktopId }).(pulumi.StringOutput)
+}
+
+// The desktop name of the Desktop.
+func (o GetDesktopsDesktopOutput) DesktopName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.DesktopName }).(pulumi.StringOutput)
+}
+
+// The desktop type of the Desktop.
+func (o GetDesktopsDesktopOutput) DesktopType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.DesktopType }).(pulumi.StringOutput)
+}
+
+// The directory id of the Desktop.
+func (o GetDesktopsDesktopOutput) DirectoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.DirectoryId }).(pulumi.StringOutput)
+}
+
+// The desktop end user id of the Desktop.
+func (o GetDesktopsDesktopOutput) EndUserIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDesktopsDesktop) []string { return v.EndUserIds }).(pulumi.StringArrayOutput)
+}
+
+// The expired time of the Desktop.
+func (o GetDesktopsDesktopOutput) ExpiredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.ExpiredTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Desktop.
+func (o GetDesktopsDesktopOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The image id of the Desktop.
+func (o GetDesktopsDesktopOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// The memory of the Desktop.
+func (o GetDesktopsDesktopOutput) Memory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.Memory }).(pulumi.StringOutput)
+}
+
+// The network interface id of the Desktop.
+func (o GetDesktopsDesktopOutput) NetworkInterfaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.NetworkInterfaceId }).(pulumi.StringOutput)
+}
+
+// The payment type of the Desktop.
+func (o GetDesktopsDesktopOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The policy group id of the Desktop.
+func (o GetDesktopsDesktopOutput) PolicyGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.PolicyGroupId }).(pulumi.StringOutput)
+}
+
+// The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+func (o GetDesktopsDesktopOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDesktopsDesktop) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The system disk size of the Desktop.
+func (o GetDesktopsDesktopOutput) SystemDiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDesktopsDesktop) int { return v.SystemDiskSize }).(pulumi.IntOutput)
+}
+
+type GetDesktopsDesktopArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDesktopsDesktopArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDesktopsDesktop)(nil)).Elem()
+}
+
+func (o GetDesktopsDesktopArrayOutput) ToGetDesktopsDesktopArrayOutput() GetDesktopsDesktopArrayOutput {
+	return o
+}
+
+func (o GetDesktopsDesktopArrayOutput) ToGetDesktopsDesktopArrayOutputWithContext(ctx context.Context) GetDesktopsDesktopArrayOutput {
+	return o
+}
+
+func (o GetDesktopsDesktopArrayOutput) Index(i pulumi.IntInput) GetDesktopsDesktopOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDesktopsDesktop {
+		return vs[0].([]GetDesktopsDesktop)[vs[1].(int)]
+	}).(GetDesktopsDesktopOutput)
+}
+
 type GetNasFileSystemsSystem struct {
 	// The capacity of nas file system.
 	Capacity string `pulumi:"capacity"`
@@ -497,6 +1137,175 @@ func (o GetNasFileSystemsSystemArrayOutput) Index(i pulumi.IntInput) GetNasFileS
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNasFileSystemsSystem {
 		return vs[0].([]GetNasFileSystemsSystem)[vs[1].(int)]
 	}).(GetNasFileSystemsSystemOutput)
+}
+
+type GetNetworkPackagesPackage struct {
+	// The bandwidth of package.
+	Bandwidth int `pulumi:"bandwidth"`
+	// The creation time of network package.
+	CreateTime string `pulumi:"createTime"`
+	// The expired time of package.
+	ExpiredTime string `pulumi:"expiredTime"`
+	// The ID of the Network Package.
+	Id string `pulumi:"id"`
+	// The internet charge type  of  package.
+	InternetChargeType string `pulumi:"internetChargeType"`
+	// The ID of network package.
+	NetworkPackageId string `pulumi:"networkPackageId"`
+	// The ID of office site.
+	OfficeSiteId string `pulumi:"officeSiteId"`
+	// The name of office site.
+	OfficeSiteName string `pulumi:"officeSiteName"`
+	// The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
+	Status string `pulumi:"status"`
+}
+
+// GetNetworkPackagesPackageInput is an input type that accepts GetNetworkPackagesPackageArgs and GetNetworkPackagesPackageOutput values.
+// You can construct a concrete instance of `GetNetworkPackagesPackageInput` via:
+//
+//          GetNetworkPackagesPackageArgs{...}
+type GetNetworkPackagesPackageInput interface {
+	pulumi.Input
+
+	ToGetNetworkPackagesPackageOutput() GetNetworkPackagesPackageOutput
+	ToGetNetworkPackagesPackageOutputWithContext(context.Context) GetNetworkPackagesPackageOutput
+}
+
+type GetNetworkPackagesPackageArgs struct {
+	// The bandwidth of package.
+	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
+	// The creation time of network package.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The expired time of package.
+	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
+	// The ID of the Network Package.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The internet charge type  of  package.
+	InternetChargeType pulumi.StringInput `pulumi:"internetChargeType"`
+	// The ID of network package.
+	NetworkPackageId pulumi.StringInput `pulumi:"networkPackageId"`
+	// The ID of office site.
+	OfficeSiteId pulumi.StringInput `pulumi:"officeSiteId"`
+	// The name of office site.
+	OfficeSiteName pulumi.StringInput `pulumi:"officeSiteName"`
+	// The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetNetworkPackagesPackageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkPackagesPackage)(nil)).Elem()
+}
+
+func (i GetNetworkPackagesPackageArgs) ToGetNetworkPackagesPackageOutput() GetNetworkPackagesPackageOutput {
+	return i.ToGetNetworkPackagesPackageOutputWithContext(context.Background())
+}
+
+func (i GetNetworkPackagesPackageArgs) ToGetNetworkPackagesPackageOutputWithContext(ctx context.Context) GetNetworkPackagesPackageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkPackagesPackageOutput)
+}
+
+// GetNetworkPackagesPackageArrayInput is an input type that accepts GetNetworkPackagesPackageArray and GetNetworkPackagesPackageArrayOutput values.
+// You can construct a concrete instance of `GetNetworkPackagesPackageArrayInput` via:
+//
+//          GetNetworkPackagesPackageArray{ GetNetworkPackagesPackageArgs{...} }
+type GetNetworkPackagesPackageArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkPackagesPackageArrayOutput() GetNetworkPackagesPackageArrayOutput
+	ToGetNetworkPackagesPackageArrayOutputWithContext(context.Context) GetNetworkPackagesPackageArrayOutput
+}
+
+type GetNetworkPackagesPackageArray []GetNetworkPackagesPackageInput
+
+func (GetNetworkPackagesPackageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkPackagesPackage)(nil)).Elem()
+}
+
+func (i GetNetworkPackagesPackageArray) ToGetNetworkPackagesPackageArrayOutput() GetNetworkPackagesPackageArrayOutput {
+	return i.ToGetNetworkPackagesPackageArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkPackagesPackageArray) ToGetNetworkPackagesPackageArrayOutputWithContext(ctx context.Context) GetNetworkPackagesPackageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkPackagesPackageArrayOutput)
+}
+
+type GetNetworkPackagesPackageOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkPackagesPackageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkPackagesPackage)(nil)).Elem()
+}
+
+func (o GetNetworkPackagesPackageOutput) ToGetNetworkPackagesPackageOutput() GetNetworkPackagesPackageOutput {
+	return o
+}
+
+func (o GetNetworkPackagesPackageOutput) ToGetNetworkPackagesPackageOutputWithContext(ctx context.Context) GetNetworkPackagesPackageOutput {
+	return o
+}
+
+// The bandwidth of package.
+func (o GetNetworkPackagesPackageOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkPackagesPackage) int { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// The creation time of network package.
+func (o GetNetworkPackagesPackageOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPackagesPackage) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The expired time of package.
+func (o GetNetworkPackagesPackageOutput) ExpiredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPackagesPackage) string { return v.ExpiredTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Network Package.
+func (o GetNetworkPackagesPackageOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPackagesPackage) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The internet charge type  of  package.
+func (o GetNetworkPackagesPackageOutput) InternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPackagesPackage) string { return v.InternetChargeType }).(pulumi.StringOutput)
+}
+
+// The ID of network package.
+func (o GetNetworkPackagesPackageOutput) NetworkPackageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPackagesPackage) string { return v.NetworkPackageId }).(pulumi.StringOutput)
+}
+
+// The ID of office site.
+func (o GetNetworkPackagesPackageOutput) OfficeSiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPackagesPackage) string { return v.OfficeSiteId }).(pulumi.StringOutput)
+}
+
+// The name of office site.
+func (o GetNetworkPackagesPackageOutput) OfficeSiteName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPackagesPackage) string { return v.OfficeSiteName }).(pulumi.StringOutput)
+}
+
+// The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
+func (o GetNetworkPackagesPackageOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPackagesPackage) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetNetworkPackagesPackageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkPackagesPackageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkPackagesPackage)(nil)).Elem()
+}
+
+func (o GetNetworkPackagesPackageArrayOutput) ToGetNetworkPackagesPackageArrayOutput() GetNetworkPackagesPackageArrayOutput {
+	return o
+}
+
+func (o GetNetworkPackagesPackageArrayOutput) ToGetNetworkPackagesPackageArrayOutputWithContext(ctx context.Context) GetNetworkPackagesPackageArrayOutput {
+	return o
+}
+
+func (o GetNetworkPackagesPackageArrayOutput) Index(i pulumi.IntInput) GetNetworkPackagesPackageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkPackagesPackage {
+		return vs[0].([]GetNetworkPackagesPackage)[vs[1].(int)]
+	}).(GetNetworkPackagesPackageOutput)
 }
 
 type GetPolicyGroupsGroup struct {
@@ -1011,7 +1820,9 @@ func (o GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayOutput) Index(i pulu
 }
 
 type GetSimpleOfficeSitesSite struct {
-	// The Internet Bandwidth Peak.  Valid Values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+	// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
+	//
+	// Deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.
 	Bandwidth int `pulumi:"bandwidth"`
 	// Cloud Enterprise Network Instance Id.
 	CenId string `pulumi:"cenId"`
@@ -1040,6 +1851,8 @@ type GetSimpleOfficeSitesSite struct {
 	// Enable Cross-Desktop Access.
 	EnableCrossDesktopAccess bool `pulumi:"enableCrossDesktopAccess"`
 	// Whether the Open Internet Access Function.
+	//
+	// Deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
 	EnableInternetAccess bool `pulumi:"enableInternetAccess"`
 	// NAS File System ID.
 	FileSystemIds []string `pulumi:"fileSystemIds"`
@@ -1085,7 +1898,9 @@ type GetSimpleOfficeSitesSiteInput interface {
 }
 
 type GetSimpleOfficeSitesSiteArgs struct {
-	// The Internet Bandwidth Peak.  Valid Values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+	// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
+	//
+	// Deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.
 	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
 	// Cloud Enterprise Network Instance Id.
 	CenId pulumi.StringInput `pulumi:"cenId"`
@@ -1114,6 +1929,8 @@ type GetSimpleOfficeSitesSiteArgs struct {
 	// Enable Cross-Desktop Access.
 	EnableCrossDesktopAccess pulumi.BoolInput `pulumi:"enableCrossDesktopAccess"`
 	// Whether the Open Internet Access Function.
+	//
+	// Deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
 	EnableInternetAccess pulumi.BoolInput `pulumi:"enableInternetAccess"`
 	// NAS File System ID.
 	FileSystemIds pulumi.StringArrayInput `pulumi:"fileSystemIds"`
@@ -1198,7 +2015,9 @@ func (o GetSimpleOfficeSitesSiteOutput) ToGetSimpleOfficeSitesSiteOutputWithCont
 	return o
 }
 
-// The Internet Bandwidth Peak.  Valid Values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
+//
+// Deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.
 func (o GetSimpleOfficeSitesSiteOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSimpleOfficeSitesSite) int { return v.Bandwidth }).(pulumi.IntOutput)
 }
@@ -1269,6 +2088,8 @@ func (o GetSimpleOfficeSitesSiteOutput) EnableCrossDesktopAccess() pulumi.BoolOu
 }
 
 // Whether the Open Internet Access Function.
+//
+// Deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
 func (o GetSimpleOfficeSitesSiteOutput) EnableInternetAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSimpleOfficeSitesSite) bool { return v.EnableInternetAccess }).(pulumi.BoolOutput)
 }
@@ -1368,13 +2189,156 @@ func (o GetSimpleOfficeSitesSiteArrayOutput) Index(i pulumi.IntInput) GetSimpleO
 	}).(GetSimpleOfficeSitesSiteOutput)
 }
 
+type GetUsersUser struct {
+	// The email of the user email.
+	Email string `pulumi:"email"`
+	// The Username. The custom setting is composed of lowercase letters, numbers and underscores, and the length is 3~24 characters.
+	EndUserId string `pulumi:"endUserId"`
+	// The ID of the user id.
+	Id string `pulumi:"id"`
+	// The phone of the mobile phone number.
+	Phone string `pulumi:"phone"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+}
+
+// GetUsersUserInput is an input type that accepts GetUsersUserArgs and GetUsersUserOutput values.
+// You can construct a concrete instance of `GetUsersUserInput` via:
+//
+//          GetUsersUserArgs{...}
+type GetUsersUserInput interface {
+	pulumi.Input
+
+	ToGetUsersUserOutput() GetUsersUserOutput
+	ToGetUsersUserOutputWithContext(context.Context) GetUsersUserOutput
+}
+
+type GetUsersUserArgs struct {
+	// The email of the user email.
+	Email pulumi.StringInput `pulumi:"email"`
+	// The Username. The custom setting is composed of lowercase letters, numbers and underscores, and the length is 3~24 characters.
+	EndUserId pulumi.StringInput `pulumi:"endUserId"`
+	// The ID of the user id.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The phone of the mobile phone number.
+	Phone pulumi.StringInput `pulumi:"phone"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetUsersUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersUser)(nil)).Elem()
+}
+
+func (i GetUsersUserArgs) ToGetUsersUserOutput() GetUsersUserOutput {
+	return i.ToGetUsersUserOutputWithContext(context.Background())
+}
+
+func (i GetUsersUserArgs) ToGetUsersUserOutputWithContext(ctx context.Context) GetUsersUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserOutput)
+}
+
+// GetUsersUserArrayInput is an input type that accepts GetUsersUserArray and GetUsersUserArrayOutput values.
+// You can construct a concrete instance of `GetUsersUserArrayInput` via:
+//
+//          GetUsersUserArray{ GetUsersUserArgs{...} }
+type GetUsersUserArrayInput interface {
+	pulumi.Input
+
+	ToGetUsersUserArrayOutput() GetUsersUserArrayOutput
+	ToGetUsersUserArrayOutputWithContext(context.Context) GetUsersUserArrayOutput
+}
+
+type GetUsersUserArray []GetUsersUserInput
+
+func (GetUsersUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersUser)(nil)).Elem()
+}
+
+func (i GetUsersUserArray) ToGetUsersUserArrayOutput() GetUsersUserArrayOutput {
+	return i.ToGetUsersUserArrayOutputWithContext(context.Background())
+}
+
+func (i GetUsersUserArray) ToGetUsersUserArrayOutputWithContext(ctx context.Context) GetUsersUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserArrayOutput)
+}
+
+type GetUsersUserOutput struct{ *pulumi.OutputState }
+
+func (GetUsersUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersUser)(nil)).Elem()
+}
+
+func (o GetUsersUserOutput) ToGetUsersUserOutput() GetUsersUserOutput {
+	return o
+}
+
+func (o GetUsersUserOutput) ToGetUsersUserOutputWithContext(ctx context.Context) GetUsersUserOutput {
+	return o
+}
+
+// The email of the user email.
+func (o GetUsersUserOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// The Username. The custom setting is composed of lowercase letters, numbers and underscores, and the length is 3~24 characters.
+func (o GetUsersUserOutput) EndUserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.EndUserId }).(pulumi.StringOutput)
+}
+
+// The ID of the user id.
+func (o GetUsersUserOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The phone of the mobile phone number.
+func (o GetUsersUserOutput) Phone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Phone }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetUsersUserOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetUsersUserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUsersUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersUser)(nil)).Elem()
+}
+
+func (o GetUsersUserArrayOutput) ToGetUsersUserArrayOutput() GetUsersUserArrayOutput {
+	return o
+}
+
+func (o GetUsersUserArrayOutput) ToGetUsersUserArrayOutputWithContext(ctx context.Context) GetUsersUserArrayOutput {
+	return o
+}
+
+func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUsersUser {
+		return vs[0].([]GetUsersUser)[vs[1].(int)]
+	}).(GetUsersUserOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EcdPolicyGroupAuthorizeAccessPolicyRuleInput)(nil)).Elem(), EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcdPolicyGroupAuthorizeAccessPolicyRuleArrayInput)(nil)).Elem(), EcdPolicyGroupAuthorizeAccessPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcdPolicyGroupAuthorizeSecurityPolicyRuleInput)(nil)).Elem(), EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayInput)(nil)).Elem(), EcdPolicyGroupAuthorizeSecurityPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBundlesBundleInput)(nil)).Elem(), GetBundlesBundleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBundlesBundleArrayInput)(nil)).Elem(), GetBundlesBundleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBundlesBundleDesktopTypeAttributeInput)(nil)).Elem(), GetBundlesBundleDesktopTypeAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBundlesBundleDesktopTypeAttributeArrayInput)(nil)).Elem(), GetBundlesBundleDesktopTypeAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBundlesBundleDiskInput)(nil)).Elem(), GetBundlesBundleDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBundlesBundleDiskArrayInput)(nil)).Elem(), GetBundlesBundleDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDesktopsDesktopInput)(nil)).Elem(), GetDesktopsDesktopArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDesktopsDesktopArrayInput)(nil)).Elem(), GetDesktopsDesktopArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNasFileSystemsSystemInput)(nil)).Elem(), GetNasFileSystemsSystemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNasFileSystemsSystemArrayInput)(nil)).Elem(), GetNasFileSystemsSystemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkPackagesPackageInput)(nil)).Elem(), GetNetworkPackagesPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkPackagesPackageArrayInput)(nil)).Elem(), GetNetworkPackagesPackageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyGroupsGroupInput)(nil)).Elem(), GetPolicyGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyGroupsGroupArrayInput)(nil)).Elem(), GetPolicyGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyGroupsGroupAuthorizeAccessPolicyRuleInput)(nil)).Elem(), GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArgs{})
@@ -1383,12 +2347,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayInput)(nil)).Elem(), GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSimpleOfficeSitesSiteInput)(nil)).Elem(), GetSimpleOfficeSitesSiteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSimpleOfficeSitesSiteArrayInput)(nil)).Elem(), GetSimpleOfficeSitesSiteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserInput)(nil)).Elem(), GetUsersUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserArrayInput)(nil)).Elem(), GetUsersUserArray{})
 	pulumi.RegisterOutputType(EcdPolicyGroupAuthorizeAccessPolicyRuleOutput{})
 	pulumi.RegisterOutputType(EcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(EcdPolicyGroupAuthorizeSecurityPolicyRuleOutput{})
 	pulumi.RegisterOutputType(EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetBundlesBundleOutput{})
+	pulumi.RegisterOutputType(GetBundlesBundleArrayOutput{})
+	pulumi.RegisterOutputType(GetBundlesBundleDesktopTypeAttributeOutput{})
+	pulumi.RegisterOutputType(GetBundlesBundleDesktopTypeAttributeArrayOutput{})
+	pulumi.RegisterOutputType(GetBundlesBundleDiskOutput{})
+	pulumi.RegisterOutputType(GetBundlesBundleDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetDesktopsDesktopOutput{})
+	pulumi.RegisterOutputType(GetDesktopsDesktopArrayOutput{})
 	pulumi.RegisterOutputType(GetNasFileSystemsSystemOutput{})
 	pulumi.RegisterOutputType(GetNasFileSystemsSystemArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkPackagesPackageOutput{})
+	pulumi.RegisterOutputType(GetNetworkPackagesPackageArrayOutput{})
 	pulumi.RegisterOutputType(GetPolicyGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetPolicyGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetPolicyGroupsGroupAuthorizeAccessPolicyRuleOutput{})
@@ -1397,4 +2373,6 @@ func init() {
 	pulumi.RegisterOutputType(GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetSimpleOfficeSitesSiteOutput{})
 	pulumi.RegisterOutputType(GetSimpleOfficeSitesSiteArrayOutput{})
+	pulumi.RegisterOutputType(GetUsersUserOutput{})
+	pulumi.RegisterOutputType(GetUsersUserArrayOutput{})
 }

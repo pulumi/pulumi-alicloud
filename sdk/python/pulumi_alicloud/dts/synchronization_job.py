@@ -1320,7 +1320,7 @@ class SynchronizationJob(pulumi.CustomResource):
         1. The expiration time cannot be changed after the work of the annual and monthly subscription suspended;
         2. After the pay-as-you-go type job suspended, your job configuration fee will still be charged;
         3. If the task suspended for more than 6 hours, the task will not start successfully.
-        4. Suspending the task will only stop writing to the target library, but will still continue to obtain the incremental log of the source, so that the task can be quickly resumed after the suspension is cancelled. Therefore, some resources of the source library, such as bandwidth resources, will continue to be occupied during the period.
+        4. Suspending the task will only stop writing to the target library, but will still continue to obtain the incremental log of the source, so that the task can be quickly resumed after the suspension is canceled. Therefore, some resources of the source library, such as bandwidth resources, will continue to be occupied during the period.
         5. Charges will continue during the task suspension period. If you need to stop charging, please release the instance
         6. When a DTS instance suspended for more than 7 days, the instance cannot be resumed, and the status will change from suspended to failed.
 
@@ -1429,7 +1429,7 @@ class SynchronizationJob(pulumi.CustomResource):
         1. The expiration time cannot be changed after the work of the annual and monthly subscription suspended;
         2. After the pay-as-you-go type job suspended, your job configuration fee will still be charged;
         3. If the task suspended for more than 6 hours, the task will not start successfully.
-        4. Suspending the task will only stop writing to the target library, but will still continue to obtain the incremental log of the source, so that the task can be quickly resumed after the suspension is cancelled. Therefore, some resources of the source library, such as bandwidth resources, will continue to be occupied during the period.
+        4. Suspending the task will only stop writing to the target library, but will still continue to obtain the incremental log of the source, so that the task can be quickly resumed after the suspension is canceled. Therefore, some resources of the source library, such as bandwidth resources, will continue to be occupied during the period.
         5. Charges will continue during the task suspension period. If you need to stop charging, please release the instance
         6. When a DTS instance suspended for more than 7 days, the instance cannot be resumed, and the status will change from suspended to failed.
 

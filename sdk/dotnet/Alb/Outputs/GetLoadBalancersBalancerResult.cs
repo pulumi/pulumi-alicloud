@@ -53,7 +53,11 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLoadBalancersBalancerLoadBalancerBillingConfigResult> LoadBalancerBillingConfigs;
         /// <summary>
-        /// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.
+        /// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+        /// </summary>
+        public readonly string LoadBalancerBusinessStatus;
+        /// <summary>
+        /// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
         /// </summary>
         public readonly string LoadBalancerBussinessStatus;
         /// <summary>
@@ -117,6 +121,8 @@ namespace Pulumi.AliCloud.Alb.Outputs
 
             ImmutableArray<Outputs.GetLoadBalancersBalancerLoadBalancerBillingConfigResult> loadBalancerBillingConfigs,
 
+            string loadBalancerBusinessStatus,
+
             string loadBalancerBussinessStatus,
 
             string loadBalancerEdition,
@@ -148,6 +154,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
             DnsName = dnsName;
             Id = id;
             LoadBalancerBillingConfigs = loadBalancerBillingConfigs;
+            LoadBalancerBusinessStatus = loadBalancerBusinessStatus;
             LoadBalancerBussinessStatus = loadBalancerBussinessStatus;
             LoadBalancerEdition = loadBalancerEdition;
             LoadBalancerId = loadBalancerId;

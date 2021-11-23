@@ -55,8 +55,10 @@ import (
 type SimpleOfficeSite struct {
 	pulumi.CustomResourceState
 
-	// The Internet Bandwidth Peak. Valid values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
-	Bandwidth pulumi.IntPtrOutput `pulumi:"bandwidth"`
+	// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+	//
+	// Deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.
+	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
 	// Cloud Enterprise Network Instance ID.
 	CenId pulumi.StringPtrOutput `pulumi:"cenId"`
 	// The cen owner id.
@@ -70,7 +72,9 @@ type SimpleOfficeSite struct {
 	// Enable Cross-Desktop Access.
 	EnableCrossDesktopAccess pulumi.BoolOutput `pulumi:"enableCrossDesktopAccess"`
 	// Whether the Open Internet Access Function.
-	EnableInternetAccess pulumi.BoolPtrOutput `pulumi:"enableInternetAccess"`
+	//
+	// Deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
+	EnableInternetAccess pulumi.BoolOutput `pulumi:"enableInternetAccess"`
 	// Whether to Enable Multi-Factor Authentication MFA.
 	MfaEnabled pulumi.BoolOutput `pulumi:"mfaEnabled"`
 	// The office site name.
@@ -113,7 +117,9 @@ func GetSimpleOfficeSite(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SimpleOfficeSite resources.
 type simpleOfficeSiteState struct {
-	// The Internet Bandwidth Peak. Valid values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+	// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+	//
+	// Deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.
 	Bandwidth *int `pulumi:"bandwidth"`
 	// Cloud Enterprise Network Instance ID.
 	CenId *string `pulumi:"cenId"`
@@ -128,6 +134,8 @@ type simpleOfficeSiteState struct {
 	// Enable Cross-Desktop Access.
 	EnableCrossDesktopAccess *bool `pulumi:"enableCrossDesktopAccess"`
 	// Whether the Open Internet Access Function.
+	//
+	// Deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
 	EnableInternetAccess *bool `pulumi:"enableInternetAccess"`
 	// Whether to Enable Multi-Factor Authentication MFA.
 	MfaEnabled *bool `pulumi:"mfaEnabled"`
@@ -140,7 +148,9 @@ type simpleOfficeSiteState struct {
 }
 
 type SimpleOfficeSiteState struct {
-	// The Internet Bandwidth Peak. Valid values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+	// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+	//
+	// Deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.
 	Bandwidth pulumi.IntPtrInput
 	// Cloud Enterprise Network Instance ID.
 	CenId pulumi.StringPtrInput
@@ -155,6 +165,8 @@ type SimpleOfficeSiteState struct {
 	// Enable Cross-Desktop Access.
 	EnableCrossDesktopAccess pulumi.BoolPtrInput
 	// Whether the Open Internet Access Function.
+	//
+	// Deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
 	EnableInternetAccess pulumi.BoolPtrInput
 	// Whether to Enable Multi-Factor Authentication MFA.
 	MfaEnabled pulumi.BoolPtrInput
@@ -171,7 +183,9 @@ func (SimpleOfficeSiteState) ElementType() reflect.Type {
 }
 
 type simpleOfficeSiteArgs struct {
-	// The Internet Bandwidth Peak. Valid values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+	// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+	//
+	// Deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.
 	Bandwidth *int `pulumi:"bandwidth"`
 	// Cloud Enterprise Network Instance ID.
 	CenId *string `pulumi:"cenId"`
@@ -186,6 +200,8 @@ type simpleOfficeSiteArgs struct {
 	// Enable Cross-Desktop Access.
 	EnableCrossDesktopAccess *bool `pulumi:"enableCrossDesktopAccess"`
 	// Whether the Open Internet Access Function.
+	//
+	// Deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
 	EnableInternetAccess *bool `pulumi:"enableInternetAccess"`
 	// Whether to Enable Multi-Factor Authentication MFA.
 	MfaEnabled *bool `pulumi:"mfaEnabled"`
@@ -197,7 +213,9 @@ type simpleOfficeSiteArgs struct {
 
 // The set of arguments for constructing a SimpleOfficeSite resource.
 type SimpleOfficeSiteArgs struct {
-	// The Internet Bandwidth Peak. Valid values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+	// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+	//
+	// Deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.
 	Bandwidth pulumi.IntPtrInput
 	// Cloud Enterprise Network Instance ID.
 	CenId pulumi.StringPtrInput
@@ -212,6 +230,8 @@ type SimpleOfficeSiteArgs struct {
 	// Enable Cross-Desktop Access.
 	EnableCrossDesktopAccess pulumi.BoolPtrInput
 	// Whether the Open Internet Access Function.
+	//
+	// Deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
 	EnableInternetAccess pulumi.BoolPtrInput
 	// Whether to Enable Multi-Factor Authentication MFA.
 	MfaEnabled pulumi.BoolPtrInput

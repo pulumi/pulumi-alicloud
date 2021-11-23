@@ -329,7 +329,7 @@ type CustomDomainRouteConfig struct {
 	Methods []string `pulumi:"methods"`
 	// The path that requests are routed from.
 	Path string `pulumi:"path"`
-	// The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about verison and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
+	// The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about version and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
 	Qualifier   *string `pulumi:"qualifier"`
 	ServiceName string  `pulumi:"serviceName"`
 }
@@ -352,7 +352,7 @@ type CustomDomainRouteConfigArgs struct {
 	Methods pulumi.StringArrayInput `pulumi:"methods"`
 	// The path that requests are routed from.
 	Path pulumi.StringInput `pulumi:"path"`
-	// The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about verison and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
+	// The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about version and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
 	Qualifier   pulumi.StringPtrInput `pulumi:"qualifier"`
 	ServiceName pulumi.StringInput    `pulumi:"serviceName"`
 }
@@ -423,7 +423,7 @@ func (o CustomDomainRouteConfigOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomDomainRouteConfig) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about verison and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
+// The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about version and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
 func (o CustomDomainRouteConfigOutput) Qualifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomDomainRouteConfig) *string { return v.Qualifier }).(pulumi.StringPtrOutput)
 }

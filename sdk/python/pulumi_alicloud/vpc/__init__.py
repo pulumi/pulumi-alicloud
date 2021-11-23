@@ -15,6 +15,10 @@ from .get_dhcp_options_sets import *
 from .get_enhanced_nat_available_zones import *
 from .get_forward_entries import *
 from .get_havips import *
+from .get_ipv6_addresses import *
+from .get_ipv6_egress_rules import *
+from .get_ipv6_gateways import *
+from .get_ipv6_internet_bandwidths import *
 from .get_nat_gateways import *
 from .get_nat_ip_cidrs import *
 from .get_nat_ips import *
@@ -31,9 +35,13 @@ from .get_traffic_mirror_filter_egress_rules import *
 from .get_traffic_mirror_filter_ingress_rules import *
 from .get_traffic_mirror_filters import *
 from .get_traffic_mirror_service import *
+from .get_traffic_mirror_sessions import *
 from .get_vpc_flow_logs import *
 from .ha_vip import *
 from .ha_vip_attachment import *
+from .ipv6_egress_rule import *
+from .ipv6_gateway import *
+from .ipv6_internet_bandwidth import *
 from .nat_gateway import *
 from .nat_ip import *
 from .nat_ip_cidr import *
@@ -54,5 +62,6 @@ from .switch import *
 from .traffic_mirror_filter import *
 from .traffic_mirror_filter_egress_rule import *
 from .traffic_mirror_filter_ingress_rule import *
+from .traffic_mirror_session import *
 from ._inputs import *
 from . import outputs

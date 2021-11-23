@@ -121,7 +121,13 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.
+        /// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+        /// </summary>
+        [Input("loadBalancerBusinessStatus")]
+        public string? LoadBalancerBusinessStatus { get; set; }
+
+        /// <summary>
+        /// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
         /// </summary>
         [Input("loadBalancerBussinessStatus")]
         public string? LoadBalancerBussinessStatus { get; set; }
@@ -233,7 +239,13 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.
+        /// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+        /// </summary>
+        [Input("loadBalancerBusinessStatus")]
+        public Input<string>? LoadBalancerBusinessStatus { get; set; }
+
+        /// <summary>
+        /// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
         /// </summary>
         [Input("loadBalancerBussinessStatus")]
         public Input<string>? LoadBalancerBussinessStatus { get; set; }
@@ -330,6 +342,7 @@ namespace Pulumi.AliCloud.Alb
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        public readonly string? LoadBalancerBusinessStatus;
         public readonly string? LoadBalancerBussinessStatus;
         public readonly ImmutableArray<string> LoadBalancerIds;
         public readonly string? LoadBalancerName;
@@ -354,6 +367,8 @@ namespace Pulumi.AliCloud.Alb
             string id,
 
             ImmutableArray<string> ids,
+
+            string? loadBalancerBusinessStatus,
 
             string? loadBalancerBussinessStatus,
 
@@ -384,6 +399,7 @@ namespace Pulumi.AliCloud.Alb
             EnableDetails = enableDetails;
             Id = id;
             Ids = ids;
+            LoadBalancerBusinessStatus = loadBalancerBusinessStatus;
             LoadBalancerBussinessStatus = loadBalancerBussinessStatus;
             LoadBalancerIds = loadBalancerIds;
             LoadBalancerName = loadBalancerName;

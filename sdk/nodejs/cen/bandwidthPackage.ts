@@ -98,7 +98,7 @@ export class BandwidthPackage extends pulumi.CustomResource {
      */
     public readonly geographicRegionIds!: pulumi.Output<string[]>;
     /**
-     * Field 'name' has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
+     * Field `name` has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
      *
      * @deprecated Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.
      */
@@ -204,7 +204,7 @@ export interface BandwidthPackageState {
      */
     geographicRegionIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Field 'name' has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
+     * Field `name` has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
      *
      * @deprecated Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.
      */
@@ -257,7 +257,7 @@ export interface BandwidthPackageArgs {
      */
     geographicRegionIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Field 'name' has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
+     * Field `name` has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
      *
      * @deprecated Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.
      */

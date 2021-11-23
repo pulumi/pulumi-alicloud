@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Log.Inputs
         public Input<string>? EncryptType { get; set; }
 
         /// <summary>
-        /// User bring your own key (BYOK) encryption.[Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm?spm=a2c63.p38356.b99.673.cafa2b38qBskFV)
+        /// User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
         /// </summary>
         [Input("userCmkInfo")]
         public Input<Inputs.StoreEncryptConfUserCmkInfoArgs>? UserCmkInfo { get; set; }

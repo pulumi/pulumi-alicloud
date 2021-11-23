@@ -121,6 +121,7 @@ type Endpoints struct {
 	Eais                *string `pulumi:"eais"`
 	Eci                 *string `pulumi:"eci"`
 	Ecs                 *string `pulumi:"ecs"`
+	Edsuser             *string `pulumi:"edsuser"`
 	Ehpc                *string `pulumi:"ehpc"`
 	Eipanycast          *string `pulumi:"eipanycast"`
 	Elasticsearch       *string `pulumi:"elasticsearch"`
@@ -241,6 +242,7 @@ type EndpointsArgs struct {
 	Eais                pulumi.StringPtrInput `pulumi:"eais"`
 	Eci                 pulumi.StringPtrInput `pulumi:"eci"`
 	Ecs                 pulumi.StringPtrInput `pulumi:"ecs"`
+	Edsuser             pulumi.StringPtrInput `pulumi:"edsuser"`
 	Ehpc                pulumi.StringPtrInput `pulumi:"ehpc"`
 	Eipanycast          pulumi.StringPtrInput `pulumi:"eipanycast"`
 	Elasticsearch       pulumi.StringPtrInput `pulumi:"elasticsearch"`
@@ -527,6 +529,10 @@ func (o EndpointsOutput) Eci() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Ecs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Ecs }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Edsuser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Edsuser }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Ehpc() pulumi.StringPtrOutput {

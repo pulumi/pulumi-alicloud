@@ -17,6 +17,7 @@ class BastionHostInstanceArgs:
                  license_code: pulumi.Input[str],
                  security_group_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  vswitch_id: pulumi.Input[str],
+                 enable_public_access: Optional[pulumi.Input[bool]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
@@ -27,6 +28,8 @@ class BastionHostInstanceArgs:
         pulumi.set(__self__, "license_code", license_code)
         pulumi.set(__self__, "security_group_ids", security_group_ids)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if enable_public_access is not None:
+            pulumi.set(__self__, "enable_public_access", enable_public_access)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if resource_group_id is not None:
@@ -71,6 +74,15 @@ class BastionHostInstanceArgs:
         pulumi.set(self, "vswitch_id", value)
 
     @property
+    @pulumi.getter(name="enablePublicAccess")
+    def enable_public_access(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enable_public_access")
+
+    @enable_public_access.setter
+    def enable_public_access(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_public_access", value)
+
+    @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "period")
@@ -102,6 +114,7 @@ class BastionHostInstanceArgs:
 class _BastionHostInstanceState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_public_access: Optional[pulumi.Input[bool]] = None,
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -113,6 +126,8 @@ class _BastionHostInstanceState:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_public_access is not None:
+            pulumi.set(__self__, "enable_public_access", enable_public_access)
         if license_code is not None:
             pulumi.set(__self__, "license_code", license_code)
         if period is not None:
@@ -134,6 +149,15 @@ class _BastionHostInstanceState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="enablePublicAccess")
+    def enable_public_access(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enable_public_access")
+
+    @enable_public_access.setter
+    def enable_public_access(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_public_access", value)
 
     @property
     @pulumi.getter(name="licenseCode")
@@ -196,6 +220,7 @@ class BastionHostInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_public_access: Optional[pulumi.Input[bool]] = None,
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -232,6 +257,7 @@ class BastionHostInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_public_access: Optional[pulumi.Input[bool]] = None,
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -253,6 +279,7 @@ class BastionHostInstance(pulumi.CustomResource):
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
+            __props__.__dict__["enable_public_access"] = enable_public_access
             if license_code is None and not opts.urn:
                 raise TypeError("Missing required property 'license_code'")
             __props__.__dict__["license_code"] = license_code
@@ -276,6 +303,7 @@ class BastionHostInstance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
+            enable_public_access: Optional[pulumi.Input[bool]] = None,
             license_code: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -295,6 +323,7 @@ class BastionHostInstance(pulumi.CustomResource):
         __props__ = _BastionHostInstanceState.__new__(_BastionHostInstanceState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["enable_public_access"] = enable_public_access
         __props__.__dict__["license_code"] = license_code
         __props__.__dict__["period"] = period
         __props__.__dict__["resource_group_id"] = resource_group_id
@@ -307,6 +336,11 @@ class BastionHostInstance(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enablePublicAccess")
+    def enable_public_access(self) -> pulumi.Output[bool]:
+        return pulumi.get(self, "enable_public_access")
 
     @property
     @pulumi.getter(name="licenseCode")

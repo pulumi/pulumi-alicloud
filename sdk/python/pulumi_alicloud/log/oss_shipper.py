@@ -673,7 +673,7 @@ class OssShipper(pulumi.CustomResource):
             append_meta=True)
         example_oss_shipper = alicloud.log.OssShipper("exampleOssShipper",
             project_name=example_project.name,
-            logstore_name=alicloud_log_logstore["example"]["name"],
+            logstore_name=example_store.name,
             shipper_name="oss_shipper_name",
             oss_bucket="test_bucket",
             oss_prefix="root",
@@ -755,7 +755,7 @@ class OssShipper(pulumi.CustomResource):
             append_meta=True)
         example_oss_shipper = alicloud.log.OssShipper("exampleOssShipper",
             project_name=example_project.name,
-            logstore_name=alicloud_log_logstore["example"]["name"],
+            logstore_name=example_store.name,
             shipper_name="oss_shipper_name",
             oss_bucket="test_bucket",
             oss_prefix="root",

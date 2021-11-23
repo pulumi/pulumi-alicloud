@@ -23,7 +23,7 @@ class ZoneArgs:
         """
         The set of arguments for constructing a Zone resource.
         :param pulumi.Input[str] lang: The language. Valid values: "zh", "en", "jp".
-        :param pulumi.Input[str] name: The name of the Private Zone.
+        :param pulumi.Input[str] name: The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
         :param pulumi.Input[str] proxy_pattern: The recursive DNS proxy. Valid values:
                - ZONE: indicates that the recursive DNS proxy is disabled.
                - RECORD: indicates that the recursive DNS proxy is enabled.
@@ -31,7 +31,7 @@ class ZoneArgs:
         :param pulumi.Input[str] remark: The remark of the Private Zone.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Private Zone belongs.
         :param pulumi.Input[str] user_client_ip: The IP address of the client.
-        :param pulumi.Input[str] zone_name: The zone_name of the Private Zone.
+        :param pulumi.Input[str] zone_name: The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
         """
         if lang is not None:
             pulumi.set(__self__, "lang", lang)
@@ -67,7 +67,7 @@ class ZoneArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Private Zone.
+        The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
         """
         return pulumi.get(self, "name")
 
@@ -130,7 +130,7 @@ class ZoneArgs:
     @pulumi.getter(name="zoneName")
     def zone_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone_name of the Private Zone.
+        The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
         """
         return pulumi.get(self, "zone_name")
 
@@ -155,7 +155,7 @@ class _ZoneState:
         Input properties used for looking up and filtering Zone resources.
         :param pulumi.Input[bool] is_ptr: Whether the Private Zone is ptr.
         :param pulumi.Input[str] lang: The language. Valid values: "zh", "en", "jp".
-        :param pulumi.Input[str] name: The name of the Private Zone.
+        :param pulumi.Input[str] name: The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
         :param pulumi.Input[str] proxy_pattern: The recursive DNS proxy. Valid values:
                - ZONE: indicates that the recursive DNS proxy is disabled.
                - RECORD: indicates that the recursive DNS proxy is enabled.
@@ -164,7 +164,7 @@ class _ZoneState:
         :param pulumi.Input[str] remark: The remark of the Private Zone.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Private Zone belongs.
         :param pulumi.Input[str] user_client_ip: The IP address of the client.
-        :param pulumi.Input[str] zone_name: The zone_name of the Private Zone.
+        :param pulumi.Input[str] zone_name: The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
         """
         if is_ptr is not None:
             pulumi.set(__self__, "is_ptr", is_ptr)
@@ -216,7 +216,7 @@ class _ZoneState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Private Zone.
+        The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
         """
         return pulumi.get(self, "name")
 
@@ -291,7 +291,7 @@ class _ZoneState:
     @pulumi.getter(name="zoneName")
     def zone_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone_name of the Private Zone.
+        The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
         """
         return pulumi.get(self, "zone_name")
 
@@ -325,7 +325,7 @@ class Zone(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] lang: The language. Valid values: "zh", "en", "jp".
-        :param pulumi.Input[str] name: The name of the Private Zone.
+        :param pulumi.Input[str] name: The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
         :param pulumi.Input[str] proxy_pattern: The recursive DNS proxy. Valid values:
                - ZONE: indicates that the recursive DNS proxy is disabled.
                - RECORD: indicates that the recursive DNS proxy is enabled.
@@ -333,7 +333,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[str] remark: The remark of the Private Zone.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Private Zone belongs.
         :param pulumi.Input[str] user_client_ip: The IP address of the client.
-        :param pulumi.Input[str] zone_name: The zone_name of the Private Zone.
+        :param pulumi.Input[str] zone_name: The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
         """
         ...
     @overload
@@ -424,7 +424,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] is_ptr: Whether the Private Zone is ptr.
         :param pulumi.Input[str] lang: The language. Valid values: "zh", "en", "jp".
-        :param pulumi.Input[str] name: The name of the Private Zone.
+        :param pulumi.Input[str] name: The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
         :param pulumi.Input[str] proxy_pattern: The recursive DNS proxy. Valid values:
                - ZONE: indicates that the recursive DNS proxy is disabled.
                - RECORD: indicates that the recursive DNS proxy is enabled.
@@ -433,7 +433,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[str] remark: The remark of the Private Zone.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Private Zone belongs.
         :param pulumi.Input[str] user_client_ip: The IP address of the client.
-        :param pulumi.Input[str] zone_name: The zone_name of the Private Zone.
+        :param pulumi.Input[str] zone_name: The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -470,7 +470,7 @@ class Zone(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the Private Zone.
+        The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
         """
         return pulumi.get(self, "name")
 
@@ -521,7 +521,7 @@ class Zone(pulumi.CustomResource):
     @pulumi.getter(name="zoneName")
     def zone_name(self) -> pulumi.Output[str]:
         """
-        The zone_name of the Private Zone.
+        The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
         """
         return pulumi.get(self, "zone_name")
 

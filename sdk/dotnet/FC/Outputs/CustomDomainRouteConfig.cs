@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.FC.Outputs
         /// </summary>
         public readonly string Path;
         /// <summary>
-        /// The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about verison and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
+        /// The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about version and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
         /// </summary>
         public readonly string? Qualifier;
         public readonly string ServiceName;

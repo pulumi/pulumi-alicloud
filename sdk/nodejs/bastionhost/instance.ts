@@ -77,6 +77,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+     */
+    public readonly enablePublicAccess!: pulumi.Output<boolean>;
+    /**
      * The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
      */
     public readonly licenseCode!: pulumi.Output<string>;
@@ -112,6 +116,7 @@ export class Instance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["enablePublicAccess"] = state ? state.enablePublicAccess : undefined;
             inputs["licenseCode"] = state ? state.licenseCode : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
@@ -133,6 +138,7 @@ export class Instance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vswitchId'");
             }
             inputs["description"] = args ? args.description : undefined;
+            inputs["enablePublicAccess"] = args ? args.enablePublicAccess : undefined;
             inputs["licenseCode"] = args ? args.licenseCode : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
@@ -155,6 +161,10 @@ export interface InstanceState {
      * Description of the instance. This name can have a string of 1 to 63 characters.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+     */
+    enablePublicAccess?: pulumi.Input<boolean>;
     /**
      * The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
      */
@@ -186,6 +196,10 @@ export interface InstanceArgs {
      * Description of the instance. This name can have a string of 1 to 63 characters.
      */
     description: pulumi.Input<string>;
+    /**
+     * Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+     */
+    enablePublicAccess?: pulumi.Input<boolean>;
     /**
      * The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
      */

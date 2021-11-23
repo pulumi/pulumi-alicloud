@@ -56,7 +56,7 @@ export class SlbAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the applicaton to which you want to bind an SLB instance.
+     * The ID of the application to which you want to bind an SLB instance.
      */
     public readonly appId!: pulumi.Output<string>;
     /**
@@ -72,7 +72,7 @@ export class SlbAttachment extends pulumi.CustomResource {
      */
     public readonly slbIp!: pulumi.Output<string>;
     /**
-     * Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and foward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
+     * Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and forward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
      */
     public /*out*/ readonly slbStatus!: pulumi.Output<string>;
     /**
@@ -144,7 +144,7 @@ export class SlbAttachment extends pulumi.CustomResource {
  */
 export interface SlbAttachmentState {
     /**
-     * The ID of the applicaton to which you want to bind an SLB instance.
+     * The ID of the application to which you want to bind an SLB instance.
      */
     appId?: pulumi.Input<string>;
     /**
@@ -160,7 +160,7 @@ export interface SlbAttachmentState {
      */
     slbIp?: pulumi.Input<string>;
     /**
-     * Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and foward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
+     * Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and forward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
      */
     slbStatus?: pulumi.Input<string>;
     /**
@@ -182,7 +182,7 @@ export interface SlbAttachmentState {
  */
 export interface SlbAttachmentArgs {
     /**
-     * The ID of the applicaton to which you want to bind an SLB instance.
+     * The ID of the application to which you want to bind an SLB instance.
      */
     appId: pulumi.Input<string>;
     /**

@@ -64,9 +64,11 @@ export class SimpleOfficeSite extends pulumi.CustomResource {
     }
 
     /**
-     * The Internet Bandwidth Peak. Valid values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+     * The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+     *
+     * @deprecated Field 'bandwidth' has been deprecated from provider version 1.142.0.
      */
-    public readonly bandwidth!: pulumi.Output<number | undefined>;
+    public readonly bandwidth!: pulumi.Output<number>;
     /**
      * Cloud Enterprise Network Instance ID.
      */
@@ -93,8 +95,10 @@ export class SimpleOfficeSite extends pulumi.CustomResource {
     public readonly enableCrossDesktopAccess!: pulumi.Output<boolean>;
     /**
      * Whether the Open Internet Access Function.
+     *
+     * @deprecated Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
      */
-    public readonly enableInternetAccess!: pulumi.Output<boolean | undefined>;
+    public readonly enableInternetAccess!: pulumi.Output<boolean>;
     /**
      * Whether to Enable Multi-Factor Authentication MFA.
      */
@@ -167,7 +171,9 @@ export class SimpleOfficeSite extends pulumi.CustomResource {
  */
 export interface SimpleOfficeSiteState {
     /**
-     * The Internet Bandwidth Peak. Valid values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+     * The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+     *
+     * @deprecated Field 'bandwidth' has been deprecated from provider version 1.142.0.
      */
     bandwidth?: pulumi.Input<number>;
     /**
@@ -196,6 +202,8 @@ export interface SimpleOfficeSiteState {
     enableCrossDesktopAccess?: pulumi.Input<boolean>;
     /**
      * Whether the Open Internet Access Function.
+     *
+     * @deprecated Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
      */
     enableInternetAccess?: pulumi.Input<boolean>;
     /**
@@ -221,7 +229,9 @@ export interface SimpleOfficeSiteState {
  */
 export interface SimpleOfficeSiteArgs {
     /**
-     * The Internet Bandwidth Peak. Valid values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+     * The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+     *
+     * @deprecated Field 'bandwidth' has been deprecated from provider version 1.142.0.
      */
     bandwidth?: pulumi.Input<number>;
     /**
@@ -250,6 +260,8 @@ export interface SimpleOfficeSiteArgs {
     enableCrossDesktopAccess?: pulumi.Input<boolean>;
     /**
      * Whether the Open Internet Access Function.
+     *
+     * @deprecated Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
      */
     enableInternetAccess?: pulumi.Input<boolean>;
     /**

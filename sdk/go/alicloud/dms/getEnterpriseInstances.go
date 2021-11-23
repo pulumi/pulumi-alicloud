@@ -13,6 +13,39 @@ import (
 // This data source provides a list of DMS Enterprise Instances in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available in 1.88.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dms"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "test"
+// 		opt1 := "mysql"
+// 		opt2 := "tf_testAcc"
+// 		opt3 := "CLASSIC"
+// 		opt4 := "dms_enterprise_instances.json"
+// 		dmsEnterpriseInstancesDs, err := dms.GetEnterpriseInstances(ctx, &dms.GetEnterpriseInstancesArgs{
+// 			EnvType:      &opt0,
+// 			InstanceType: &opt1,
+// 			NameRegex:    &opt2,
+// 			NetType:      &opt3,
+// 			OutputFile:   &opt4,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("firstDatabaseInstanceId", dmsEnterpriseInstancesDs.Instances[0].InstanceId)
+// 		return nil
+// 	})
+// }
+// ```
 func GetEnterpriseInstances(ctx *pulumi.Context, args *GetEnterpriseInstancesArgs, opts ...pulumi.InvokeOption) (*GetEnterpriseInstancesResult, error) {
 	var rv GetEnterpriseInstancesResult
 	err := ctx.Invoke("alicloud:dms/getEnterpriseInstances:getEnterpriseInstances", args, &rv, opts...)

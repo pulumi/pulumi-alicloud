@@ -79,7 +79,7 @@ class _SubscriptionState:
         :param pulumi.Input[str] create_time: Create time of the datahub subscription. It is a human-readable string rather than 64-bits UTC.
         :param pulumi.Input[str] last_modify_time: Last modify time of the datahub subscription. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
         :param pulumi.Input[str] project_name: The name of the datahub project that the subscription belongs to. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
-        :param pulumi.Input[str] sub_id: The identidy of the subscritpion, generate from server side.
+        :param pulumi.Input[str] sub_id: The identidy of the subscription, generate from server side.
         :param pulumi.Input[str] topic_name: The name of the datahub topic that the subscription belongs to. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
         """
         if comment is not None:
@@ -147,7 +147,7 @@ class _SubscriptionState:
     @pulumi.getter(name="subId")
     def sub_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The identidy of the subscritpion, generate from server side.
+        The identidy of the subscription, generate from server side.
         """
         return pulumi.get(self, "sub_id")
 
@@ -306,7 +306,7 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Create time of the datahub subscription. It is a human-readable string rather than 64-bits UTC.
         :param pulumi.Input[str] last_modify_time: Last modify time of the datahub subscription. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
         :param pulumi.Input[str] project_name: The name of the datahub project that the subscription belongs to. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
-        :param pulumi.Input[str] sub_id: The identidy of the subscritpion, generate from server side.
+        :param pulumi.Input[str] sub_id: The identidy of the subscription, generate from server side.
         :param pulumi.Input[str] topic_name: The name of the datahub topic that the subscription belongs to. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -357,7 +357,7 @@ class Subscription(pulumi.CustomResource):
     @pulumi.getter(name="subId")
     def sub_id(self) -> pulumi.Output[str]:
         """
-        The identidy of the subscritpion, generate from server side.
+        The identidy of the subscription, generate from server side.
         """
         return pulumi.get(self, "sub_id")
 

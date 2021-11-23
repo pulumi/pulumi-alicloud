@@ -9,13 +9,16 @@ export * from "./domain";
 export * from "./getDomains";
 export * from "./getMailAddresses";
 export * from "./getReceivers";
+export * from "./getTags";
 export * from "./mailAddress";
 export * from "./receivers";
+export * from "./tag";
 
 // Import resources to register:
 import { Domain } from "./domain";
 import { MailAddress } from "./mailAddress";
 import { Receivers } from "./receivers";
+import { Tag } from "./tag";
 
 const _module = {
     version: utilities.getVersion(),
@@ -27,6 +30,8 @@ const _module = {
                 return new MailAddress(name, <any>undefined, { urn })
             case "alicloud:directmail/receivers:Receivers":
                 return new Receivers(name, <any>undefined, { urn })
+            case "alicloud:directmail/tag:Tag":
+                return new Tag(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -35,3 +40,4 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "directmail/domain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "directmail/mailAddress", _module)
 pulumi.runtime.registerResourceModule("alicloud", "directmail/receivers", _module)
+pulumi.runtime.registerResourceModule("alicloud", "directmail/tag", _module)

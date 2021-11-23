@@ -21,6 +21,7 @@ class ScalingConfigurationArgs:
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
+                 host_name: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_name: Optional[pulumi.Input[str]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -60,6 +61,7 @@ class ScalingConfigurationArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]] data_disks: DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
         :param pulumi.Input[bool] enable: Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
         :param pulumi.Input[bool] force_delete: The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
+        :param pulumi.Input[str] host_name: Hostname of an ECS instance.
         :param pulumi.Input[str] image_id: ID of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[str] image_name: Name of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
@@ -105,6 +107,8 @@ class ScalingConfigurationArgs:
             pulumi.set(__self__, "enable", enable)
         if force_delete is not None:
             pulumi.set(__self__, "force_delete", force_delete)
+        if host_name is not None:
+            pulumi.set(__self__, "host_name", host_name)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
         if image_name is not None:
@@ -245,6 +249,18 @@ class ScalingConfigurationArgs:
     @force_delete.setter
     def force_delete(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force_delete", value)
+
+    @property
+    @pulumi.getter(name="hostName")
+    def host_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hostname of an ECS instance.
+        """
+        return pulumi.get(self, "host_name")
+
+    @host_name.setter
+    def host_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host_name", value)
 
     @property
     @pulumi.getter(name="imageId")
@@ -629,6 +645,7 @@ class _ScalingConfigurationState:
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
+                 host_name: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_name: Optional[pulumi.Input[str]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -668,6 +685,7 @@ class _ScalingConfigurationState:
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]] data_disks: DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
         :param pulumi.Input[bool] enable: Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
         :param pulumi.Input[bool] force_delete: The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
+        :param pulumi.Input[str] host_name: Hostname of an ECS instance.
         :param pulumi.Input[str] image_id: ID of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[str] image_name: Name of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
@@ -713,6 +731,8 @@ class _ScalingConfigurationState:
             pulumi.set(__self__, "enable", enable)
         if force_delete is not None:
             pulumi.set(__self__, "force_delete", force_delete)
+        if host_name is not None:
+            pulumi.set(__self__, "host_name", host_name)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
         if image_name is not None:
@@ -843,6 +863,18 @@ class _ScalingConfigurationState:
     @force_delete.setter
     def force_delete(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force_delete", value)
+
+    @property
+    @pulumi.getter(name="hostName")
+    def host_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hostname of an ECS instance.
+        """
+        return pulumi.get(self, "host_name")
+
+    @host_name.setter
+    def host_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host_name", value)
 
     @property
     @pulumi.getter(name="imageId")
@@ -1241,6 +1273,7 @@ class ScalingConfiguration(pulumi.CustomResource):
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationDataDiskArgs']]]]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
+                 host_name: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_name: Optional[pulumi.Input[str]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1290,6 +1323,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationDataDiskArgs']]]] data_disks: DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
         :param pulumi.Input[bool] enable: Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
         :param pulumi.Input[bool] force_delete: The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
+        :param pulumi.Input[str] host_name: Hostname of an ECS instance.
         :param pulumi.Input[str] image_id: ID of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[str] image_name: Name of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
@@ -1360,6 +1394,7 @@ class ScalingConfiguration(pulumi.CustomResource):
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationDataDiskArgs']]]]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
+                 host_name: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_name: Optional[pulumi.Input[str]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1409,6 +1444,7 @@ class ScalingConfiguration(pulumi.CustomResource):
             __props__.__dict__["data_disks"] = data_disks
             __props__.__dict__["enable"] = enable
             __props__.__dict__["force_delete"] = force_delete
+            __props__.__dict__["host_name"] = host_name
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["image_name"] = image_name
             if instance_ids is not None and not opts.urn:
@@ -1464,6 +1500,7 @@ class ScalingConfiguration(pulumi.CustomResource):
             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationDataDiskArgs']]]]] = None,
             enable: Optional[pulumi.Input[bool]] = None,
             force_delete: Optional[pulumi.Input[bool]] = None,
+            host_name: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
             image_name: Optional[pulumi.Input[str]] = None,
             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1508,6 +1545,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationDataDiskArgs']]]] data_disks: DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
         :param pulumi.Input[bool] enable: Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
         :param pulumi.Input[bool] force_delete: The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
+        :param pulumi.Input[str] host_name: Hostname of an ECS instance.
         :param pulumi.Input[str] image_id: ID of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[str] image_name: Name of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
@@ -1552,6 +1590,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         __props__.__dict__["data_disks"] = data_disks
         __props__.__dict__["enable"] = enable
         __props__.__dict__["force_delete"] = force_delete
+        __props__.__dict__["host_name"] = host_name
         __props__.__dict__["image_id"] = image_id
         __props__.__dict__["image_name"] = image_name
         __props__.__dict__["instance_ids"] = instance_ids
@@ -1625,6 +1664,14 @@ class ScalingConfiguration(pulumi.CustomResource):
         The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
         """
         return pulumi.get(self, "force_delete")
+
+    @property
+    @pulumi.getter(name="hostName")
+    def host_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        Hostname of an ECS instance.
+        """
+        return pulumi.get(self, "host_name")
 
     @property
     @pulumi.getter(name="imageId")

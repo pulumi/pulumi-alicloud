@@ -31,6 +31,8 @@ type ScalingConfiguration struct {
 	Enable pulumi.BoolPtrOutput `pulumi:"enable"`
 	// The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
 	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
+	// Hostname of an ECS instance.
+	HostName pulumi.StringPtrOutput `pulumi:"hostName"`
 	// ID of an image file, indicating the image resource selected when an instance is enabled.
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
 	// Name of an image file, indicating the image resource selected when an instance is enabled.
@@ -145,6 +147,8 @@ type scalingConfigurationState struct {
 	Enable *bool `pulumi:"enable"`
 	// The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
 	ForceDelete *bool `pulumi:"forceDelete"`
+	// Hostname of an ECS instance.
+	HostName *string `pulumi:"hostName"`
 	// ID of an image file, indicating the image resource selected when an instance is enabled.
 	ImageId *string `pulumi:"imageId"`
 	// Name of an image file, indicating the image resource selected when an instance is enabled.
@@ -228,6 +232,8 @@ type ScalingConfigurationState struct {
 	Enable pulumi.BoolPtrInput
 	// The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
 	ForceDelete pulumi.BoolPtrInput
+	// Hostname of an ECS instance.
+	HostName pulumi.StringPtrInput
 	// ID of an image file, indicating the image resource selected when an instance is enabled.
 	ImageId pulumi.StringPtrInput
 	// Name of an image file, indicating the image resource selected when an instance is enabled.
@@ -315,6 +321,8 @@ type scalingConfigurationArgs struct {
 	Enable *bool `pulumi:"enable"`
 	// The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
 	ForceDelete *bool `pulumi:"forceDelete"`
+	// Hostname of an ECS instance.
+	HostName *string `pulumi:"hostName"`
 	// ID of an image file, indicating the image resource selected when an instance is enabled.
 	ImageId *string `pulumi:"imageId"`
 	// Name of an image file, indicating the image resource selected when an instance is enabled.
@@ -399,6 +407,8 @@ type ScalingConfigurationArgs struct {
 	Enable pulumi.BoolPtrInput
 	// The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
 	ForceDelete pulumi.BoolPtrInput
+	// Hostname of an ECS instance.
+	HostName pulumi.StringPtrInput
 	// ID of an image file, indicating the image resource selected when an instance is enabled.
 	ImageId pulumi.StringPtrInput
 	// Name of an image file, indicating the image resource selected when an instance is enabled.

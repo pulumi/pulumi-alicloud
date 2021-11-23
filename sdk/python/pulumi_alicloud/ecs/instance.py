@@ -29,6 +29,7 @@ class InstanceArgs:
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
+                 hpc_cluster_id: Optional[pulumi.Input[str]] = None,
                  include_data_disks: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -47,6 +48,7 @@ class InstanceArgs:
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  role_name: Optional[pulumi.Input[str]] = None,
+                 secondary_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
@@ -88,6 +90,7 @@ class InstanceArgs:
                However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
         :param pulumi.Input[str] host_name: Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
                On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[str] hpc_cluster_id: The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
         :param pulumi.Input[bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
         :param pulumi.Input[str] internet_charge_type: Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
@@ -107,6 +110,7 @@ class InstanceArgs:
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the instance belongs.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_private_ips: A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
         :param pulumi.Input[str] security_enhancement_strategy: The security enhancement strategy.
                - Active: Enable security enhancement strategy, it only works on system images.
                - Deactive: Disable security enhancement strategy, it works on all images.
@@ -159,6 +163,8 @@ class InstanceArgs:
             pulumi.set(__self__, "force_delete", force_delete)
         if host_name is not None:
             pulumi.set(__self__, "host_name", host_name)
+        if hpc_cluster_id is not None:
+            pulumi.set(__self__, "hpc_cluster_id", hpc_cluster_id)
         if include_data_disks is not None:
             pulumi.set(__self__, "include_data_disks", include_data_disks)
         if instance_charge_type is not None:
@@ -201,6 +207,8 @@ class InstanceArgs:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if role_name is not None:
             pulumi.set(__self__, "role_name", role_name)
+        if secondary_private_ips is not None:
+            pulumi.set(__self__, "secondary_private_ips", secondary_private_ips)
         if security_enhancement_strategy is not None:
             pulumi.set(__self__, "security_enhancement_strategy", security_enhancement_strategy)
         if spot_price_limit is not None:
@@ -409,6 +417,18 @@ class InstanceArgs:
     @host_name.setter
     def host_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "host_name", value)
+
+    @property
+    @pulumi.getter(name="hpcClusterId")
+    def hpc_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
+        """
+        return pulumi.get(self, "hpc_cluster_id")
+
+    @hpc_cluster_id.setter
+    def hpc_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hpc_cluster_id", value)
 
     @property
     @pulumi.getter(name="includeDataDisks")
@@ -624,6 +644,18 @@ class InstanceArgs:
         pulumi.set(self, "role_name", value)
 
     @property
+    @pulumi.getter(name="secondaryPrivateIps")
+    def secondary_private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+        """
+        return pulumi.get(self, "secondary_private_ips")
+
+    @secondary_private_ips.setter
+    def secondary_private_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "secondary_private_ips", value)
+
+    @property
     @pulumi.getter(name="securityEnhancementStrategy")
     def security_enhancement_strategy(self) -> Optional[pulumi.Input[str]]:
         """
@@ -824,6 +856,7 @@ class _InstanceState:
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
+                 hpc_cluster_id: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  include_data_disks: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -845,6 +878,7 @@ class _InstanceState:
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  role_name: Optional[pulumi.Input[str]] = None,
+                 secondary_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
@@ -884,6 +918,7 @@ class _InstanceState:
                However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
         :param pulumi.Input[str] host_name: Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
                On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[str] hpc_cluster_id: The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
         :param pulumi.Input[str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
@@ -906,6 +941,7 @@ class _InstanceState:
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the instance belongs.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_private_ips: A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
         :param pulumi.Input[str] security_enhancement_strategy: The security enhancement strategy.
                - Active: Enable security enhancement strategy, it only works on system images.
                - Deactive: Disable security enhancement strategy, it works on all images.
@@ -956,6 +992,8 @@ class _InstanceState:
             pulumi.set(__self__, "force_delete", force_delete)
         if host_name is not None:
             pulumi.set(__self__, "host_name", host_name)
+        if hpc_cluster_id is not None:
+            pulumi.set(__self__, "hpc_cluster_id", hpc_cluster_id)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
         if include_data_disks is not None:
@@ -1004,6 +1042,8 @@ class _InstanceState:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if role_name is not None:
             pulumi.set(__self__, "role_name", role_name)
+        if secondary_private_ips is not None:
+            pulumi.set(__self__, "secondary_private_ips", secondary_private_ips)
         if security_enhancement_strategy is not None:
             pulumi.set(__self__, "security_enhancement_strategy", security_enhancement_strategy)
         if security_groups is not None:
@@ -1178,6 +1218,18 @@ class _InstanceState:
     @host_name.setter
     def host_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "host_name", value)
+
+    @property
+    @pulumi.getter(name="hpcClusterId")
+    def hpc_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
+        """
+        return pulumi.get(self, "hpc_cluster_id")
+
+    @hpc_cluster_id.setter
+    def hpc_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hpc_cluster_id", value)
 
     @property
     @pulumi.getter(name="imageId")
@@ -1429,6 +1481,18 @@ class _InstanceState:
         pulumi.set(self, "role_name", value)
 
     @property
+    @pulumi.getter(name="secondaryPrivateIps")
+    def secondary_private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+        """
+        return pulumi.get(self, "secondary_private_ips")
+
+    @secondary_private_ips.setter
+    def secondary_private_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "secondary_private_ips", value)
+
+    @property
     @pulumi.getter(name="securityEnhancementStrategy")
     def security_enhancement_strategy(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1643,6 +1707,7 @@ class Instance(pulumi.CustomResource):
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
+                 hpc_cluster_id: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  include_data_disks: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -1663,6 +1728,7 @@ class Instance(pulumi.CustomResource):
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  role_name: Optional[pulumi.Input[str]] = None,
+                 secondary_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
@@ -1712,6 +1778,7 @@ class Instance(pulumi.CustomResource):
                However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
         :param pulumi.Input[str] host_name: Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
                On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[str] hpc_cluster_id: The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
         :param pulumi.Input[str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
@@ -1733,6 +1800,7 @@ class Instance(pulumi.CustomResource):
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the instance belongs.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_private_ips: A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
         :param pulumi.Input[str] security_enhancement_strategy: The security enhancement strategy.
                - Active: Enable security enhancement strategy, it only works on system images.
                - Deactive: Disable security enhancement strategy, it works on all images.
@@ -1799,6 +1867,7 @@ class Instance(pulumi.CustomResource):
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
+                 hpc_cluster_id: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  include_data_disks: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -1819,6 +1888,7 @@ class Instance(pulumi.CustomResource):
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  role_name: Optional[pulumi.Input[str]] = None,
+                 secondary_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
@@ -1861,6 +1931,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["force_delete"] = force_delete
             __props__.__dict__["host_name"] = host_name
+            __props__.__dict__["hpc_cluster_id"] = hpc_cluster_id
             if image_id is None and not opts.urn:
                 raise TypeError("Missing required property 'image_id'")
             __props__.__dict__["image_id"] = image_id
@@ -1891,6 +1962,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["renewal_status"] = renewal_status
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["role_name"] = role_name
+            __props__.__dict__["secondary_private_ips"] = secondary_private_ips
             __props__.__dict__["security_enhancement_strategy"] = security_enhancement_strategy
             if security_groups is None and not opts.urn:
                 raise TypeError("Missing required property 'security_groups'")
@@ -1931,6 +2003,7 @@ class Instance(pulumi.CustomResource):
             dry_run: Optional[pulumi.Input[bool]] = None,
             force_delete: Optional[pulumi.Input[bool]] = None,
             host_name: Optional[pulumi.Input[str]] = None,
+            hpc_cluster_id: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
             include_data_disks: Optional[pulumi.Input[bool]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -1952,6 +2025,7 @@ class Instance(pulumi.CustomResource):
             renewal_status: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             role_name: Optional[pulumi.Input[str]] = None,
+            secondary_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             spot_price_limit: Optional[pulumi.Input[float]] = None,
@@ -1996,6 +2070,7 @@ class Instance(pulumi.CustomResource):
                However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
         :param pulumi.Input[str] host_name: Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
                On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[str] hpc_cluster_id: The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
         :param pulumi.Input[str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
@@ -2018,6 +2093,7 @@ class Instance(pulumi.CustomResource):
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the instance belongs.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_private_ips: A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
         :param pulumi.Input[str] security_enhancement_strategy: The security enhancement strategy.
                - Active: Enable security enhancement strategy, it only works on system images.
                - Deactive: Disable security enhancement strategy, it works on all images.
@@ -2058,6 +2134,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["host_name"] = host_name
+        __props__.__dict__["hpc_cluster_id"] = hpc_cluster_id
         __props__.__dict__["image_id"] = image_id
         __props__.__dict__["include_data_disks"] = include_data_disks
         __props__.__dict__["instance_charge_type"] = instance_charge_type
@@ -2079,6 +2156,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["role_name"] = role_name
+        __props__.__dict__["secondary_private_ips"] = secondary_private_ips
         __props__.__dict__["security_enhancement_strategy"] = security_enhancement_strategy
         __props__.__dict__["security_groups"] = security_groups
         __props__.__dict__["spot_price_limit"] = spot_price_limit
@@ -2194,6 +2272,14 @@ class Instance(pulumi.CustomResource):
         On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "host_name")
+
+    @property
+    @pulumi.getter(name="hpcClusterId")
+    def hpc_cluster_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
+        """
+        return pulumi.get(self, "hpc_cluster_id")
 
     @property
     @pulumi.getter(name="imageId")
@@ -2359,6 +2445,14 @@ class Instance(pulumi.CustomResource):
         Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         """
         return pulumi.get(self, "role_name")
+
+    @property
+    @pulumi.getter(name="secondaryPrivateIps")
+    def secondary_private_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+        """
+        return pulumi.get(self, "secondary_private_ips")
 
     @property
     @pulumi.getter(name="securityEnhancementStrategy")

@@ -95,6 +95,7 @@ class Endpoints(dict):
                  eais: Optional[str] = None,
                  eci: Optional[str] = None,
                  ecs: Optional[str] = None,
+                 edsuser: Optional[str] = None,
                  ehpc: Optional[str] = None,
                  eipanycast: Optional[str] = None,
                  elasticsearch: Optional[str] = None,
@@ -244,6 +245,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "eci", eci)
         if ecs is not None:
             pulumi.set(__self__, "ecs", ecs)
+        if edsuser is not None:
+            pulumi.set(__self__, "edsuser", edsuser)
         if ehpc is not None:
             pulumi.set(__self__, "ehpc", ehpc)
         if eipanycast is not None:
@@ -585,6 +588,11 @@ class Endpoints(dict):
     @pulumi.getter
     def ecs(self) -> Optional[str]:
         return pulumi.get(self, "ecs")
+
+    @property
+    @pulumi.getter
+    def edsuser(self) -> Optional[str]:
+        return pulumi.get(self, "edsuser")
 
     @property
     @pulumi.getter

@@ -23,7 +23,7 @@ class RoleArgs:
                  version: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Role resource.
-        :param pulumi.Input[str] description: Description of the RAM role. This name can have a string of 1 to 1024 characters.
+        :param pulumi.Input[str] description: Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
         :param pulumi.Input[str] document: Authorization strategy of the RAM role. It is required when the `services` and `ram_users` are not specified.
         :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
         :param pulumi.Input[int] max_session_duration: The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
@@ -62,7 +62,7 @@ class RoleArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the RAM role. This name can have a string of 1 to 1024 characters.
+        Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
         """
         return pulumi.get(self, "description")
 
@@ -171,7 +171,7 @@ class _RoleState:
         """
         Input properties used for looking up and filtering Role resources.
         :param pulumi.Input[str] arn: The role arn.
-        :param pulumi.Input[str] description: Description of the RAM role. This name can have a string of 1 to 1024 characters.
+        :param pulumi.Input[str] description: Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
         :param pulumi.Input[str] document: Authorization strategy of the RAM role. It is required when the `services` and `ram_users` are not specified.
         :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
         :param pulumi.Input[int] max_session_duration: The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
@@ -227,7 +227,7 @@ class _RoleState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the RAM role. This name can have a string of 1 to 1024 characters.
+        Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
         """
         return pulumi.get(self, "description")
 
@@ -357,7 +357,7 @@ class Role(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description of the RAM role. This name can have a string of 1 to 1024 characters.
+        :param pulumi.Input[str] description: Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
         :param pulumi.Input[str] document: Authorization strategy of the RAM role. It is required when the `services` and `ram_users` are not specified.
         :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
         :param pulumi.Input[int] max_session_duration: The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
@@ -463,7 +463,7 @@ class Role(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The role arn.
-        :param pulumi.Input[str] description: Description of the RAM role. This name can have a string of 1 to 1024 characters.
+        :param pulumi.Input[str] description: Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
         :param pulumi.Input[str] document: Authorization strategy of the RAM role. It is required when the `services` and `ram_users` are not specified.
         :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
         :param pulumi.Input[int] max_session_duration: The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
@@ -501,7 +501,7 @@ class Role(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the RAM role. This name can have a string of 1 to 1024 characters.
+        Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
         """
         return pulumi.get(self, "description")
 

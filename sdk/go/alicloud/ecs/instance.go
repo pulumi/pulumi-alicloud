@@ -55,6 +55,8 @@ type Instance struct {
 	// Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
 	// On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
 	HostName pulumi.StringOutput `pulumi:"hostName"`
+	// The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
+	HpcClusterId pulumi.StringPtrOutput `pulumi:"hpcClusterId"`
 	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
 	ImageId pulumi.StringOutput `pulumi:"imageId"`
 	// Whether to change instance disks charge type when changing instance charge type.
@@ -102,6 +104,8 @@ type Instance struct {
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName pulumi.StringOutput `pulumi:"roleName"`
+	// A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+	SecondaryPrivateIps pulumi.StringArrayOutput `pulumi:"secondaryPrivateIps"`
 	// The security enhancement strategy.
 	// - Active: Enable security enhancement strategy, it only works on system images.
 	// - Deactive: Disable security enhancement strategy, it works on all images.
@@ -216,6 +220,8 @@ type instanceState struct {
 	// Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
 	// On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
 	HostName *string `pulumi:"hostName"`
+	// The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
+	HpcClusterId *string `pulumi:"hpcClusterId"`
 	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
 	ImageId *string `pulumi:"imageId"`
 	// Whether to change instance disks charge type when changing instance charge type.
@@ -263,6 +269,8 @@ type instanceState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName *string `pulumi:"roleName"`
+	// A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+	SecondaryPrivateIps []string `pulumi:"secondaryPrivateIps"`
 	// The security enhancement strategy.
 	// - Active: Enable security enhancement strategy, it only works on system images.
 	// - Deactive: Disable security enhancement strategy, it works on all images.
@@ -340,6 +348,8 @@ type InstanceState struct {
 	// Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
 	// On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
 	HostName pulumi.StringPtrInput
+	// The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
+	HpcClusterId pulumi.StringPtrInput
 	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
 	ImageId pulumi.StringPtrInput
 	// Whether to change instance disks charge type when changing instance charge type.
@@ -387,6 +397,8 @@ type InstanceState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName pulumi.StringPtrInput
+	// A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+	SecondaryPrivateIps pulumi.StringArrayInput
 	// The security enhancement strategy.
 	// - Active: Enable security enhancement strategy, it only works on system images.
 	// - Deactive: Disable security enhancement strategy, it works on all images.
@@ -468,6 +480,8 @@ type instanceArgs struct {
 	// Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
 	// On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
 	HostName *string `pulumi:"hostName"`
+	// The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
+	HpcClusterId *string `pulumi:"hpcClusterId"`
 	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
 	ImageId string `pulumi:"imageId"`
 	// Whether to change instance disks charge type when changing instance charge type.
@@ -513,6 +527,8 @@ type instanceArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName *string `pulumi:"roleName"`
+	// A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+	SecondaryPrivateIps []string `pulumi:"secondaryPrivateIps"`
 	// The security enhancement strategy.
 	// - Active: Enable security enhancement strategy, it only works on system images.
 	// - Deactive: Disable security enhancement strategy, it works on all images.
@@ -591,6 +607,8 @@ type InstanceArgs struct {
 	// Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
 	// On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
 	HostName pulumi.StringPtrInput
+	// The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
+	HpcClusterId pulumi.StringPtrInput
 	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
 	ImageId pulumi.StringInput
 	// Whether to change instance disks charge type when changing instance charge type.
@@ -636,6 +654,8 @@ type InstanceArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName pulumi.StringPtrInput
+	// A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+	SecondaryPrivateIps pulumi.StringArrayInput
 	// The security enhancement strategy.
 	// - Active: Enable security enhancement strategy, it only works on system images.
 	// - Deactive: Disable security enhancement strategy, it works on all images.

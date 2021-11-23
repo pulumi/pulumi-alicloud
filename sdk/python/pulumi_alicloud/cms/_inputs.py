@@ -12,6 +12,7 @@ __all__ = [
     'AlarmEscalationsCriticalArgs',
     'AlarmEscalationsInfoArgs',
     'AlarmEscalationsWarnArgs',
+    'DynamicTagGroupMatchExpressArgs',
     'GroupMetricRuleEscalationsArgs',
     'GroupMetricRuleEscalationsCriticalArgs',
     'GroupMetricRuleEscalationsInfoArgs',
@@ -236,6 +237,43 @@ class AlarmEscalationsWarnArgs:
     @times.setter
     def times(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "times", value)
+
+
+@pulumi.input_type
+class DynamicTagGroupMatchExpressArgs:
+    def __init__(__self__, *,
+                 tag_value: pulumi.Input[str],
+                 tag_value_match_function: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] tag_value: The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+        :param pulumi.Input[str] tag_value_match_function: Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+        """
+        pulumi.set(__self__, "tag_value", tag_value)
+        pulumi.set(__self__, "tag_value_match_function", tag_value_match_function)
+
+    @property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> pulumi.Input[str]:
+        """
+        The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+        """
+        return pulumi.get(self, "tag_value")
+
+    @tag_value.setter
+    def tag_value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "tag_value", value)
+
+    @property
+    @pulumi.getter(name="tagValueMatchFunction")
+    def tag_value_match_function(self) -> pulumi.Input[str]:
+        """
+        Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+        """
+        return pulumi.get(self, "tag_value_match_function")
+
+    @tag_value_match_function.setter
+    def tag_value_match_function(self, value: pulumi.Input[str]):
+        pulumi.set(self, "tag_value_match_function", value)
 
 
 @pulumi.input_type

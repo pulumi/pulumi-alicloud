@@ -24,6 +24,10 @@ __all__ = [
     'GetEnhancedNatAvailableZonesZoneResult',
     'GetForwardEntriesEntryResult',
     'GetHavipsHavipResult',
+    'GetIpv6AddressesAddressResult',
+    'GetIpv6EgressRulesRuleResult',
+    'GetIpv6GatewaysGatewayResult',
+    'GetIpv6InternetBandwidthsBandwidthResult',
     'GetNatGatewaysGatewayResult',
     'GetNatIpCidrsCidrResult',
     'GetNatIpsIpResult',
@@ -42,6 +46,7 @@ __all__ = [
     'GetTrafficMirrorFilterEgressRulesRuleResult',
     'GetTrafficMirrorFilterIngressRulesRuleResult',
     'GetTrafficMirrorFiltersFilterResult',
+    'GetTrafficMirrorSessionsSessionResult',
     'GetVpcFlowLogsLogResult',
 ]
 
@@ -1285,6 +1290,463 @@ class GetHavipsHavipResult(dict):
         The vswitch id.
         """
         return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
+class GetIpv6AddressesAddressResult(dict):
+    def __init__(__self__, *,
+                 associated_instance_id: str,
+                 associated_instance_type: str,
+                 create_time: str,
+                 id: str,
+                 ipv6_address: str,
+                 ipv6_address_id: str,
+                 ipv6_address_name: str,
+                 ipv6_gateway_id: str,
+                 network_type: str,
+                 status: str,
+                 vpc_id: str,
+                 vswitch_id: str):
+        """
+        :param str associated_instance_id: The ID of the instance that is assigned the IPv6 address.
+        :param str associated_instance_type: The type of the instance that is assigned the IPv6 address.
+        :param str create_time: The time when the IPv6 address was created.
+        :param str id: The ID of the Ipv6 Address.
+        :param str ipv6_address: The address of the Ipv6 Address.
+        :param str ipv6_address_id: The ID of the IPv6 address.
+        :param str ipv6_address_name: The name of the IPv6 address.
+        :param str ipv6_gateway_id: The ID of the IPv6 gateway to which the IPv6 address belongs.
+        :param str network_type: The type of communication supported by the IPv6 address. Valid values:`Private` or `Public`. `Private`: communication within the private network. `Public`: communication over the public network
+        :param str status: The status of the IPv6 address. Valid values:`Pending` or `Available`.
+        :param str vpc_id: The ID of the VPC to which the IPv6 address belongs.
+        :param str vswitch_id: The ID of the vSwitch to which the IPv6 address belongs.
+        """
+        pulumi.set(__self__, "associated_instance_id", associated_instance_id)
+        pulumi.set(__self__, "associated_instance_type", associated_instance_type)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ipv6_address", ipv6_address)
+        pulumi.set(__self__, "ipv6_address_id", ipv6_address_id)
+        pulumi.set(__self__, "ipv6_address_name", ipv6_address_name)
+        pulumi.set(__self__, "ipv6_gateway_id", ipv6_gateway_id)
+        pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="associatedInstanceId")
+    def associated_instance_id(self) -> str:
+        """
+        The ID of the instance that is assigned the IPv6 address.
+        """
+        return pulumi.get(self, "associated_instance_id")
+
+    @property
+    @pulumi.getter(name="associatedInstanceType")
+    def associated_instance_type(self) -> str:
+        """
+        The type of the instance that is assigned the IPv6 address.
+        """
+        return pulumi.get(self, "associated_instance_type")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the IPv6 address was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Ipv6 Address.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> str:
+        """
+        The address of the Ipv6 Address.
+        """
+        return pulumi.get(self, "ipv6_address")
+
+    @property
+    @pulumi.getter(name="ipv6AddressId")
+    def ipv6_address_id(self) -> str:
+        """
+        The ID of the IPv6 address.
+        """
+        return pulumi.get(self, "ipv6_address_id")
+
+    @property
+    @pulumi.getter(name="ipv6AddressName")
+    def ipv6_address_name(self) -> str:
+        """
+        The name of the IPv6 address.
+        """
+        return pulumi.get(self, "ipv6_address_name")
+
+    @property
+    @pulumi.getter(name="ipv6GatewayId")
+    def ipv6_gateway_id(self) -> str:
+        """
+        The ID of the IPv6 gateway to which the IPv6 address belongs.
+        """
+        return pulumi.get(self, "ipv6_gateway_id")
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> str:
+        """
+        The type of communication supported by the IPv6 address. Valid values:`Private` or `Public`. `Private`: communication within the private network. `Public`: communication over the public network
+        """
+        return pulumi.get(self, "network_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the IPv6 address. Valid values:`Pending` or `Available`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of the VPC to which the IPv6 address belongs.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The ID of the vSwitch to which the IPv6 address belongs.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
+class GetIpv6EgressRulesRuleResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 id: str,
+                 instance_id: str,
+                 instance_type: str,
+                 ipv6_egress_rule_id: str,
+                 ipv6_egress_rule_name: str,
+                 ipv6_gateway_id: str,
+                 status: str):
+        """
+        :param str description: The description of the egress-only rule.
+        :param str id: The ID of the Ipv6 Egress Rule. The value formats as `<ipv6_gateway_id>:<ipv6_egress_rule_id>`.
+        :param str instance_id: The ID of the instance to which the egress-only rule is applied.
+        :param str instance_type: The type of the instance to which the egress-only rule is applied.
+        :param str ipv6_egress_rule_id: The first ID of the resource.
+        :param str ipv6_egress_rule_name: The name of the resource.
+        :param str ipv6_gateway_id: The ID of the IPv6 gateway.
+        :param str status: The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "ipv6_egress_rule_id", ipv6_egress_rule_id)
+        pulumi.set(__self__, "ipv6_egress_rule_name", ipv6_egress_rule_name)
+        pulumi.set(__self__, "ipv6_gateway_id", ipv6_gateway_id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the egress-only rule.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Ipv6 Egress Rule. The value formats as `<ipv6_gateway_id>:<ipv6_egress_rule_id>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the instance to which the egress-only rule is applied.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> str:
+        """
+        The type of the instance to which the egress-only rule is applied.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="ipv6EgressRuleId")
+    def ipv6_egress_rule_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "ipv6_egress_rule_id")
+
+    @property
+    @pulumi.getter(name="ipv6EgressRuleName")
+    def ipv6_egress_rule_name(self) -> str:
+        """
+        The name of the resource.
+        """
+        return pulumi.get(self, "ipv6_egress_rule_name")
+
+    @property
+    @pulumi.getter(name="ipv6GatewayId")
+    def ipv6_gateway_id(self) -> str:
+        """
+        The ID of the IPv6 gateway.
+        """
+        return pulumi.get(self, "ipv6_gateway_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetIpv6GatewaysGatewayResult(dict):
+    def __init__(__self__, *,
+                 business_status: str,
+                 create_time: str,
+                 description: str,
+                 expired_time: str,
+                 id: str,
+                 instance_charge_type: str,
+                 ipv6_gateway_id: str,
+                 ipv6_gateway_name: str,
+                 spec: str,
+                 status: str,
+                 vpc_id: str):
+        """
+        :param str business_status: The status of the IPv6 gateway. Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`. `Normal`: working as expected. `FinancialLocked`: locked due to overdue payments. `SecurityLocked`: locked due to security reasons.
+        :param str create_time: The creation time of the resource.
+        :param str description: The description of the IPv6 gateway.
+        :param str expired_time: The time when the IPv6 gateway expires.
+        :param str id: The ID of the Ipv6 Gateway.
+        :param str instance_charge_type: The metering method of the IPv6 gateway. Valid values: `PayAsYouGo`.
+        :param str ipv6_gateway_id: The first ID of the resource.
+        :param str ipv6_gateway_name: The name of the IPv6 gateway.
+        :param str spec: The specification of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+        :param str status: The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.
+        :param str vpc_id: The ID of the virtual private cloud (VPC) to which the IPv6 gateway belongs.
+        """
+        pulumi.set(__self__, "business_status", business_status)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        pulumi.set(__self__, "ipv6_gateway_id", ipv6_gateway_id)
+        pulumi.set(__self__, "ipv6_gateway_name", ipv6_gateway_name)
+        pulumi.set(__self__, "spec", spec)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="businessStatus")
+    def business_status(self) -> str:
+        """
+        The status of the IPv6 gateway. Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`. `Normal`: working as expected. `FinancialLocked`: locked due to overdue payments. `SecurityLocked`: locked due to security reasons.
+        """
+        return pulumi.get(self, "business_status")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the IPv6 gateway.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> str:
+        """
+        The time when the IPv6 gateway expires.
+        """
+        return pulumi.get(self, "expired_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Ipv6 Gateway.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceChargeType")
+    def instance_charge_type(self) -> str:
+        """
+        The metering method of the IPv6 gateway. Valid values: `PayAsYouGo`.
+        """
+        return pulumi.get(self, "instance_charge_type")
+
+    @property
+    @pulumi.getter(name="ipv6GatewayId")
+    def ipv6_gateway_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "ipv6_gateway_id")
+
+    @property
+    @pulumi.getter(name="ipv6GatewayName")
+    def ipv6_gateway_name(self) -> str:
+        """
+        The name of the IPv6 gateway.
+        """
+        return pulumi.get(self, "ipv6_gateway_name")
+
+    @property
+    @pulumi.getter
+    def spec(self) -> str:
+        """
+        The specification of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+        """
+        return pulumi.get(self, "spec")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of the virtual private cloud (VPC) to which the IPv6 gateway belongs.
+        """
+        return pulumi.get(self, "vpc_id")
+
+
+@pulumi.output_type
+class GetIpv6InternetBandwidthsBandwidthResult(dict):
+    def __init__(__self__, *,
+                 bandwidth: int,
+                 id: str,
+                 internet_charge_type: str,
+                 ipv6_address_id: str,
+                 ipv6_gateway_id: str,
+                 ipv6_internet_bandwidth_id: str,
+                 payment_type: str,
+                 status: str):
+        """
+        :param int bandwidth: The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`.
+        :param str id: The ID of the Ipv6 Internet Bandwidth.
+        :param str internet_charge_type: The metering method of the Internet bandwidth resources of the IPv6 gateway.
+        :param str ipv6_address_id: The ID of the IPv6 address.
+        :param str ipv6_gateway_id: The ID of the IPv6 gateway.
+        :param str ipv6_internet_bandwidth_id: The ID of the Ipv6 Internet Bandwidth.
+        :param str payment_type: The payment type of the resource.
+        :param str status: The status of the resource. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
+        """
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        pulumi.set(__self__, "ipv6_address_id", ipv6_address_id)
+        pulumi.set(__self__, "ipv6_gateway_id", ipv6_gateway_id)
+        pulumi.set(__self__, "ipv6_internet_bandwidth_id", ipv6_internet_bandwidth_id)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> int:
+        """
+        The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Ipv6 Internet Bandwidth.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="internetChargeType")
+    def internet_charge_type(self) -> str:
+        """
+        The metering method of the Internet bandwidth resources of the IPv6 gateway.
+        """
+        return pulumi.get(self, "internet_charge_type")
+
+    @property
+    @pulumi.getter(name="ipv6AddressId")
+    def ipv6_address_id(self) -> str:
+        """
+        The ID of the IPv6 address.
+        """
+        return pulumi.get(self, "ipv6_address_id")
+
+    @property
+    @pulumi.getter(name="ipv6GatewayId")
+    def ipv6_gateway_id(self) -> str:
+        """
+        The ID of the IPv6 gateway.
+        """
+        return pulumi.get(self, "ipv6_gateway_id")
+
+    @property
+    @pulumi.getter(name="ipv6InternetBandwidthId")
+    def ipv6_internet_bandwidth_id(self) -> str:
+        """
+        The ID of the Ipv6 Internet Bandwidth.
+        """
+        return pulumi.get(self, "ipv6_internet_bandwidth_id")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        The payment type of the resource.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type
@@ -3481,6 +3943,167 @@ class GetTrafficMirrorFiltersFilterResult(dict):
         The name of the filter.
         """
         return pulumi.get(self, "traffic_mirror_filter_name")
+
+
+@pulumi.output_type
+class GetTrafficMirrorSessionsSessionResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 id: str,
+                 packet_length: int,
+                 priority: int,
+                 status: str,
+                 traffic_mirror_filter_id: str,
+                 traffic_mirror_session_business_status: str,
+                 traffic_mirror_session_description: str,
+                 traffic_mirror_session_id: str,
+                 traffic_mirror_session_name: str,
+                 traffic_mirror_source_ids: Sequence[str],
+                 traffic_mirror_target_id: str,
+                 traffic_mirror_target_type: str,
+                 virtual_network_id: int):
+        """
+        :param bool enabled: Indicates whether traffic mirror sessions are enabled. default to `false`.
+        :param str id: The ID of the Traffic Mirror Session.
+        :param int packet_length: The maximum transmission unit (MTU).
+        :param int priority: The priority of the traffic mirror session. A smaller value indicates a higher priority.
+        :param str status: The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
+        :param str traffic_mirror_filter_id: The ID of the filter.
+        :param str traffic_mirror_session_business_status: The state of the traffic mirror session. Valid values: `Normal` or `FinancialLocked`. `Normal`: working as expected. `FinancialLocked`: locked due to overdue payments.
+        :param str traffic_mirror_session_description: The description of the traffic mirror session.
+        :param str traffic_mirror_session_id: The first ID of the resource.
+        :param str traffic_mirror_session_name: The name of the traffic mirror session.
+        :param Sequence[str] traffic_mirror_source_ids: The ID of the mirror source.
+        :param str traffic_mirror_target_id: The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
+        :param str traffic_mirror_target_type: The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance
+        :param int virtual_network_id: You can specify VNIs to distinguish different mirrored traffic.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "packet_length", packet_length)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "traffic_mirror_filter_id", traffic_mirror_filter_id)
+        pulumi.set(__self__, "traffic_mirror_session_business_status", traffic_mirror_session_business_status)
+        pulumi.set(__self__, "traffic_mirror_session_description", traffic_mirror_session_description)
+        pulumi.set(__self__, "traffic_mirror_session_id", traffic_mirror_session_id)
+        pulumi.set(__self__, "traffic_mirror_session_name", traffic_mirror_session_name)
+        pulumi.set(__self__, "traffic_mirror_source_ids", traffic_mirror_source_ids)
+        pulumi.set(__self__, "traffic_mirror_target_id", traffic_mirror_target_id)
+        pulumi.set(__self__, "traffic_mirror_target_type", traffic_mirror_target_type)
+        pulumi.set(__self__, "virtual_network_id", virtual_network_id)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Indicates whether traffic mirror sessions are enabled. default to `false`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Traffic Mirror Session.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="packetLength")
+    def packet_length(self) -> int:
+        """
+        The maximum transmission unit (MTU).
+        """
+        return pulumi.get(self, "packet_length")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> int:
+        """
+        The priority of the traffic mirror session. A smaller value indicates a higher priority.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="trafficMirrorFilterId")
+    def traffic_mirror_filter_id(self) -> str:
+        """
+        The ID of the filter.
+        """
+        return pulumi.get(self, "traffic_mirror_filter_id")
+
+    @property
+    @pulumi.getter(name="trafficMirrorSessionBusinessStatus")
+    def traffic_mirror_session_business_status(self) -> str:
+        """
+        The state of the traffic mirror session. Valid values: `Normal` or `FinancialLocked`. `Normal`: working as expected. `FinancialLocked`: locked due to overdue payments.
+        """
+        return pulumi.get(self, "traffic_mirror_session_business_status")
+
+    @property
+    @pulumi.getter(name="trafficMirrorSessionDescription")
+    def traffic_mirror_session_description(self) -> str:
+        """
+        The description of the traffic mirror session.
+        """
+        return pulumi.get(self, "traffic_mirror_session_description")
+
+    @property
+    @pulumi.getter(name="trafficMirrorSessionId")
+    def traffic_mirror_session_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "traffic_mirror_session_id")
+
+    @property
+    @pulumi.getter(name="trafficMirrorSessionName")
+    def traffic_mirror_session_name(self) -> str:
+        """
+        The name of the traffic mirror session.
+        """
+        return pulumi.get(self, "traffic_mirror_session_name")
+
+    @property
+    @pulumi.getter(name="trafficMirrorSourceIds")
+    def traffic_mirror_source_ids(self) -> Sequence[str]:
+        """
+        The ID of the mirror source.
+        """
+        return pulumi.get(self, "traffic_mirror_source_ids")
+
+    @property
+    @pulumi.getter(name="trafficMirrorTargetId")
+    def traffic_mirror_target_id(self) -> str:
+        """
+        The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
+        """
+        return pulumi.get(self, "traffic_mirror_target_id")
+
+    @property
+    @pulumi.getter(name="trafficMirrorTargetType")
+    def traffic_mirror_target_type(self) -> str:
+        """
+        The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance
+        """
+        return pulumi.get(self, "traffic_mirror_target_type")
+
+    @property
+    @pulumi.getter(name="virtualNetworkId")
+    def virtual_network_id(self) -> int:
+        """
+        You can specify VNIs to distinguish different mirrored traffic.
+        """
+        return pulumi.get(self, "virtual_network_id")
 
 
 @pulumi.output_type

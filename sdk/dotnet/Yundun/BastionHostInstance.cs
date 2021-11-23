@@ -15,6 +15,9 @@ namespace Pulumi.AliCloud.Yundun
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        [Output("enablePublicAccess")]
+        public Output<bool> EnablePublicAccess { get; private set; } = null!;
+
         [Output("licenseCode")]
         public Output<string> LicenseCode { get; private set; } = null!;
 
@@ -82,6 +85,9 @@ namespace Pulumi.AliCloud.Yundun
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
+        [Input("enablePublicAccess")]
+        public Input<bool>? EnablePublicAccess { get; set; }
+
         [Input("licenseCode", required: true)]
         public Input<string> LicenseCode { get; set; } = null!;
 
@@ -119,6 +125,9 @@ namespace Pulumi.AliCloud.Yundun
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("enablePublicAccess")]
+        public Input<bool>? EnablePublicAccess { get; set; }
 
         [Input("licenseCode")]
         public Input<string>? LicenseCode { get; set; }

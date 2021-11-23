@@ -299,6 +299,7 @@ namespace Pulumi.AliCloud
                 public string? Eais { get; set; } = null!;
                 public string? Eci { get; set; } = null!;
                 public string? Ecs { get; set; } = null!;
+                public string? Edsuser { get; set; } = null!;
                 public string? Ehpc { get; set; } = null!;
                 public string? Eipanycast { get; set; } = null!;
                 public string? Elasticsearch { get; set; } = null!;

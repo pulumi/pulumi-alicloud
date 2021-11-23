@@ -111,6 +111,7 @@ class ProviderEndpointArgs:
                  eais: Optional[pulumi.Input[str]] = None,
                  eci: Optional[pulumi.Input[str]] = None,
                  ecs: Optional[pulumi.Input[str]] = None,
+                 edsuser: Optional[pulumi.Input[str]] = None,
                  ehpc: Optional[pulumi.Input[str]] = None,
                  eipanycast: Optional[pulumi.Input[str]] = None,
                  elasticsearch: Optional[pulumi.Input[str]] = None,
@@ -260,6 +261,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "eci", eci)
         if ecs is not None:
             pulumi.set(__self__, "ecs", ecs)
+        if edsuser is not None:
+            pulumi.set(__self__, "edsuser", edsuser)
         if ehpc is not None:
             pulumi.set(__self__, "ehpc", ehpc)
         if eipanycast is not None:
@@ -773,6 +776,15 @@ class ProviderEndpointArgs:
     @ecs.setter
     def ecs(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ecs", value)
+
+    @property
+    @pulumi.getter
+    def edsuser(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "edsuser")
+
+    @edsuser.setter
+    def edsuser(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edsuser", value)
 
     @property
     @pulumi.getter

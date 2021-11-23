@@ -183,7 +183,7 @@ class Directory(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.cloudsso.Directory("example", directory_name="example_value")
+        default = alicloud.cloudsso.Directory("default", directory_name="example-value")
         ```
 
         ## Import
@@ -224,7 +224,7 @@ class Directory(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.cloudsso.Directory("example", directory_name="example_value")
+        default = alicloud.cloudsso.Directory("default", directory_name="example-value")
         ```
 
         ## Import

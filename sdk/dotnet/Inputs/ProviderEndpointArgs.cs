@@ -141,6 +141,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("ecs")]
         public Input<string>? Ecs { get; set; }
 
+        [Input("edsuser")]
+        public Input<string>? Edsuser { get; set; }
+
         [Input("ehpc")]
         public Input<string>? Ehpc { get; set; }
 

@@ -24,7 +24,7 @@ type Zone struct {
 	IsPtr pulumi.BoolOutput `pulumi:"isPtr"`
 	// The language. Valid values: "zh", "en", "jp".
 	Lang pulumi.StringPtrOutput `pulumi:"lang"`
-	// The name of the Private Zone.
+	// The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -41,7 +41,7 @@ type Zone struct {
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrOutput `pulumi:"userClientIp"`
-	// The zoneName of the Private Zone.
+	// The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
 	ZoneName pulumi.StringOutput `pulumi:"zoneName"`
 }
 
@@ -78,7 +78,7 @@ type zoneState struct {
 	IsPtr *bool `pulumi:"isPtr"`
 	// The language. Valid values: "zh", "en", "jp".
 	Lang *string `pulumi:"lang"`
-	// The name of the Private Zone.
+	// The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.
 	Name *string `pulumi:"name"`
@@ -95,7 +95,7 @@ type zoneState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The IP address of the client.
 	UserClientIp *string `pulumi:"userClientIp"`
-	// The zoneName of the Private Zone.
+	// The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
 	ZoneName *string `pulumi:"zoneName"`
 }
 
@@ -104,7 +104,7 @@ type ZoneState struct {
 	IsPtr pulumi.BoolPtrInput
 	// The language. Valid values: "zh", "en", "jp".
 	Lang pulumi.StringPtrInput
-	// The name of the Private Zone.
+	// The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.
 	Name pulumi.StringPtrInput
@@ -121,7 +121,7 @@ type ZoneState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrInput
-	// The zoneName of the Private Zone.
+	// The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
 	ZoneName pulumi.StringPtrInput
 }
 
@@ -132,7 +132,7 @@ func (ZoneState) ElementType() reflect.Type {
 type zoneArgs struct {
 	// The language. Valid values: "zh", "en", "jp".
 	Lang *string `pulumi:"lang"`
-	// The name of the Private Zone.
+	// The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.
 	Name *string `pulumi:"name"`
@@ -147,7 +147,7 @@ type zoneArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The IP address of the client.
 	UserClientIp *string `pulumi:"userClientIp"`
-	// The zoneName of the Private Zone.
+	// The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
 	ZoneName *string `pulumi:"zoneName"`
 }
 
@@ -155,7 +155,7 @@ type zoneArgs struct {
 type ZoneArgs struct {
 	// The language. Valid values: "zh", "en", "jp".
 	Lang pulumi.StringPtrInput
-	// The name of the Private Zone.
+	// The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.
 	Name pulumi.StringPtrInput
@@ -170,7 +170,7 @@ type ZoneArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrInput
-	// The zoneName of the Private Zone.
+	// The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
 	ZoneName pulumi.StringPtrInput
 }
 

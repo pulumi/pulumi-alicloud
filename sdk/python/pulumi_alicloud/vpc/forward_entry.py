@@ -29,7 +29,7 @@ class ForwardEntryArgs:
         :param pulumi.Input[str] forward_table_id: The value can get from `vpc.NatGateway` Attributes "forward_table_ids".
         :param pulumi.Input[str] internal_ip: The internal ip, must a private ip.
         :param pulumi.Input[str] internal_port: The internal port, valid value is 1~65535|any.
-        :param pulumi.Input[str] ip_protocol: The ip protocal, valid value is tcp|udp|any.
+        :param pulumi.Input[str] ip_protocol: The ip protocol, valid value is tcp|udp|any.
         :param pulumi.Input[str] forward_entry_name: The name of forward entry.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
         :param pulumi.Input[bool] port_break: Specifies whether to remove limits on the port range. Default value is `false`.
@@ -114,7 +114,7 @@ class ForwardEntryArgs:
     @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> pulumi.Input[str]:
         """
-        The ip protocal, valid value is tcp|udp|any.
+        The ip protocol, valid value is tcp|udp|any.
         """
         return pulumi.get(self, "ip_protocol")
 
@@ -182,7 +182,7 @@ class _ForwardEntryState:
         :param pulumi.Input[str] forward_table_id: The value can get from `vpc.NatGateway` Attributes "forward_table_ids".
         :param pulumi.Input[str] internal_ip: The internal ip, must a private ip.
         :param pulumi.Input[str] internal_port: The internal port, valid value is 1~65535|any.
-        :param pulumi.Input[str] ip_protocol: The ip protocal, valid value is tcp|udp|any.
+        :param pulumi.Input[str] ip_protocol: The ip protocol, valid value is tcp|udp|any.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
         :param pulumi.Input[bool] port_break: Specifies whether to remove limits on the port range. Default value is `false`.
         :param pulumi.Input[str] status: (Available in 1.119.1+) The status of forward entry.
@@ -301,7 +301,7 @@ class _ForwardEntryState:
     @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The ip protocal, valid value is tcp|udp|any.
+        The ip protocol, valid value is tcp|udp|any.
         """
         return pulumi.get(self, "ip_protocol")
 
@@ -417,7 +417,7 @@ class ForwardEntry(pulumi.CustomResource):
         :param pulumi.Input[str] forward_table_id: The value can get from `vpc.NatGateway` Attributes "forward_table_ids".
         :param pulumi.Input[str] internal_ip: The internal ip, must a private ip.
         :param pulumi.Input[str] internal_port: The internal port, valid value is 1~65535|any.
-        :param pulumi.Input[str] ip_protocol: The ip protocal, valid value is tcp|udp|any.
+        :param pulumi.Input[str] ip_protocol: The ip protocol, valid value is tcp|udp|any.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
         :param pulumi.Input[bool] port_break: Specifies whether to remove limits on the port range. Default value is `false`.
         """
@@ -572,7 +572,7 @@ class ForwardEntry(pulumi.CustomResource):
         :param pulumi.Input[str] forward_table_id: The value can get from `vpc.NatGateway` Attributes "forward_table_ids".
         :param pulumi.Input[str] internal_ip: The internal ip, must a private ip.
         :param pulumi.Input[str] internal_port: The internal port, valid value is 1~65535|any.
-        :param pulumi.Input[str] ip_protocol: The ip protocal, valid value is tcp|udp|any.
+        :param pulumi.Input[str] ip_protocol: The ip protocol, valid value is tcp|udp|any.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
         :param pulumi.Input[bool] port_break: Specifies whether to remove limits on the port range. Default value is `false`.
         :param pulumi.Input[str] status: (Available in 1.119.1+) The status of forward entry.
@@ -654,7 +654,7 @@ class ForwardEntry(pulumi.CustomResource):
     @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> pulumi.Output[str]:
         """
-        The ip protocal, valid value is tcp|udp|any.
+        The ip protocol, valid value is tcp|udp|any.
         """
         return pulumi.get(self, "ip_protocol")
 

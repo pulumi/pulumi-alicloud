@@ -12,11 +12,17 @@ from . import outputs
 __all__ = [
     'EcdPolicyGroupAuthorizeAccessPolicyRule',
     'EcdPolicyGroupAuthorizeSecurityPolicyRule',
+    'GetBundlesBundleResult',
+    'GetBundlesBundleDesktopTypeAttributeResult',
+    'GetBundlesBundleDiskResult',
+    'GetDesktopsDesktopResult',
     'GetNasFileSystemsSystemResult',
+    'GetNetworkPackagesPackageResult',
     'GetPolicyGroupsGroupResult',
     'GetPolicyGroupsGroupAuthorizeAccessPolicyRuleResult',
     'GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleResult',
     'GetSimpleOfficeSitesSiteResult',
+    'GetUsersUserResult',
 ]
 
 @pulumi.output_type
@@ -177,6 +183,386 @@ class EcdPolicyGroupAuthorizeSecurityPolicyRule(dict):
         The type of security rules.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetBundlesBundleResult(dict):
+    def __init__(__self__, *,
+                 bundle_id: str,
+                 bundle_name: str,
+                 bundle_type: str,
+                 description: str,
+                 desktop_type: str,
+                 desktop_type_attributes: Sequence['outputs.GetBundlesBundleDesktopTypeAttributeResult'],
+                 disks: Sequence['outputs.GetBundlesBundleDiskResult'],
+                 id: str,
+                 image_id: str,
+                 os_type: str):
+        """
+        :param str bundle_id: The bundle id of the bundle.
+        :param str bundle_name: The name of the bundle.
+        :param str bundle_type: The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
+        :param str description: The description of the bundle.
+        :param str desktop_type: The desktop type of the bundle.
+        :param Sequence['GetBundlesBundleDesktopTypeAttributeArgs'] desktop_type_attributes: The desktop type attribute of the bundle.
+        :param Sequence['GetBundlesBundleDiskArgs'] disks: The disks of the bundle.
+        :param str id: The ID of the bundle.
+        :param str image_id: The image id attribute of the bundle.
+        :param str os_type: The os type attribute of the bundle.
+        """
+        pulumi.set(__self__, "bundle_id", bundle_id)
+        pulumi.set(__self__, "bundle_name", bundle_name)
+        pulumi.set(__self__, "bundle_type", bundle_type)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "desktop_type", desktop_type)
+        pulumi.set(__self__, "desktop_type_attributes", desktop_type_attributes)
+        pulumi.set(__self__, "disks", disks)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "os_type", os_type)
+
+    @property
+    @pulumi.getter(name="bundleId")
+    def bundle_id(self) -> str:
+        """
+        The bundle id of the bundle.
+        """
+        return pulumi.get(self, "bundle_id")
+
+    @property
+    @pulumi.getter(name="bundleName")
+    def bundle_name(self) -> str:
+        """
+        The name of the bundle.
+        """
+        return pulumi.get(self, "bundle_name")
+
+    @property
+    @pulumi.getter(name="bundleType")
+    def bundle_type(self) -> str:
+        """
+        The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
+        """
+        return pulumi.get(self, "bundle_type")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the bundle.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="desktopType")
+    def desktop_type(self) -> str:
+        """
+        The desktop type of the bundle.
+        """
+        return pulumi.get(self, "desktop_type")
+
+    @property
+    @pulumi.getter(name="desktopTypeAttributes")
+    def desktop_type_attributes(self) -> Sequence['outputs.GetBundlesBundleDesktopTypeAttributeResult']:
+        """
+        The desktop type attribute of the bundle.
+        """
+        return pulumi.get(self, "desktop_type_attributes")
+
+    @property
+    @pulumi.getter
+    def disks(self) -> Sequence['outputs.GetBundlesBundleDiskResult']:
+        """
+        The disks of the bundle.
+        """
+        return pulumi.get(self, "disks")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the bundle.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> str:
+        """
+        The image id attribute of the bundle.
+        """
+        return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="osType")
+    def os_type(self) -> str:
+        """
+        The os type attribute of the bundle.
+        """
+        return pulumi.get(self, "os_type")
+
+
+@pulumi.output_type
+class GetBundlesBundleDesktopTypeAttributeResult(dict):
+    def __init__(__self__, *,
+                 cpu_count: int,
+                 gpu_count: str,
+                 gpu_spec: str,
+                 memory_size: str):
+        """
+        :param int cpu_count: The cpu count attribute of the bundle.
+        :param str gpu_count: The gpu count attribute of the bundle.
+        :param str gpu_spec: The gpu spec attribute of the bundle.
+        :param str memory_size: The memory size attribute of the bundle.
+        """
+        pulumi.set(__self__, "cpu_count", cpu_count)
+        pulumi.set(__self__, "gpu_count", gpu_count)
+        pulumi.set(__self__, "gpu_spec", gpu_spec)
+        pulumi.set(__self__, "memory_size", memory_size)
+
+    @property
+    @pulumi.getter(name="cpuCount")
+    def cpu_count(self) -> int:
+        """
+        The cpu count attribute of the bundle.
+        """
+        return pulumi.get(self, "cpu_count")
+
+    @property
+    @pulumi.getter(name="gpuCount")
+    def gpu_count(self) -> str:
+        """
+        The gpu count attribute of the bundle.
+        """
+        return pulumi.get(self, "gpu_count")
+
+    @property
+    @pulumi.getter(name="gpuSpec")
+    def gpu_spec(self) -> str:
+        """
+        The gpu spec attribute of the bundle.
+        """
+        return pulumi.get(self, "gpu_spec")
+
+    @property
+    @pulumi.getter(name="memorySize")
+    def memory_size(self) -> str:
+        """
+        The memory size attribute of the bundle.
+        """
+        return pulumi.get(self, "memory_size")
+
+
+@pulumi.output_type
+class GetBundlesBundleDiskResult(dict):
+    def __init__(__self__, *,
+                 disk_size: str,
+                 disk_type: str):
+        """
+        :param str disk_size: The disk size attribute of the bundle.
+        :param str disk_type: The disk type attribute of the bundle.
+        """
+        pulumi.set(__self__, "disk_size", disk_size)
+        pulumi.set(__self__, "disk_type", disk_type)
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> str:
+        """
+        The disk size attribute of the bundle.
+        """
+        return pulumi.get(self, "disk_size")
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> str:
+        """
+        The disk type attribute of the bundle.
+        """
+        return pulumi.get(self, "disk_type")
+
+
+@pulumi.output_type
+class GetDesktopsDesktopResult(dict):
+    def __init__(__self__, *,
+                 cpu: int,
+                 create_time: str,
+                 desktop_id: str,
+                 desktop_name: str,
+                 desktop_type: str,
+                 directory_id: str,
+                 end_user_ids: Sequence[str],
+                 expired_time: str,
+                 id: str,
+                 image_id: str,
+                 memory: str,
+                 network_interface_id: str,
+                 payment_type: str,
+                 policy_group_id: str,
+                 status: str,
+                 system_disk_size: int):
+        """
+        :param int cpu: The number of CPUs.
+        :param str create_time: The creation time of the Desktop.
+        :param str desktop_id: The desktop id of the Desktop.
+        :param str desktop_name: The desktop name of the Desktop.
+        :param str desktop_type: The desktop type of the Desktop.
+        :param str directory_id: The directory id of the Desktop.
+        :param Sequence[str] end_user_ids: The desktop end user id of the Desktop.
+        :param str expired_time: The expired time of the Desktop.
+        :param str id: The ID of the Desktop.
+        :param str image_id: The image id of the Desktop.
+        :param str memory: The memory of the Desktop.
+        :param str network_interface_id: The network interface id of the Desktop.
+        :param str payment_type: The payment type of the Desktop.
+        :param str policy_group_id: The policy group id of the Desktop.
+        :param str status: The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+        :param int system_disk_size: The system disk size of the Desktop.
+        """
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "desktop_id", desktop_id)
+        pulumi.set(__self__, "desktop_name", desktop_name)
+        pulumi.set(__self__, "desktop_type", desktop_type)
+        pulumi.set(__self__, "directory_id", directory_id)
+        pulumi.set(__self__, "end_user_ids", end_user_ids)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "memory", memory)
+        pulumi.set(__self__, "network_interface_id", network_interface_id)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "policy_group_id", policy_group_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "system_disk_size", system_disk_size)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> int:
+        """
+        The number of CPUs.
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the Desktop.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="desktopId")
+    def desktop_id(self) -> str:
+        """
+        The desktop id of the Desktop.
+        """
+        return pulumi.get(self, "desktop_id")
+
+    @property
+    @pulumi.getter(name="desktopName")
+    def desktop_name(self) -> str:
+        """
+        The desktop name of the Desktop.
+        """
+        return pulumi.get(self, "desktop_name")
+
+    @property
+    @pulumi.getter(name="desktopType")
+    def desktop_type(self) -> str:
+        """
+        The desktop type of the Desktop.
+        """
+        return pulumi.get(self, "desktop_type")
+
+    @property
+    @pulumi.getter(name="directoryId")
+    def directory_id(self) -> str:
+        """
+        The directory id of the Desktop.
+        """
+        return pulumi.get(self, "directory_id")
+
+    @property
+    @pulumi.getter(name="endUserIds")
+    def end_user_ids(self) -> Sequence[str]:
+        """
+        The desktop end user id of the Desktop.
+        """
+        return pulumi.get(self, "end_user_ids")
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> str:
+        """
+        The expired time of the Desktop.
+        """
+        return pulumi.get(self, "expired_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Desktop.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> str:
+        """
+        The image id of the Desktop.
+        """
+        return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> str:
+        """
+        The memory of the Desktop.
+        """
+        return pulumi.get(self, "memory")
+
+    @property
+    @pulumi.getter(name="networkInterfaceId")
+    def network_interface_id(self) -> str:
+        """
+        The network interface id of the Desktop.
+        """
+        return pulumi.get(self, "network_interface_id")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        The payment type of the Desktop.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter(name="policyGroupId")
+    def policy_group_id(self) -> str:
+        """
+        The policy group id of the Desktop.
+        """
+        return pulumi.get(self, "policy_group_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="systemDiskSize")
+    def system_disk_size(self) -> int:
+        """
+        The system disk size of the Desktop.
+        """
+        return pulumi.get(self, "system_disk_size")
 
 
 @pulumi.output_type
@@ -360,6 +746,112 @@ class GetNasFileSystemsSystemResult(dict):
         The zone id of nas file system.
         """
         return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetNetworkPackagesPackageResult(dict):
+    def __init__(__self__, *,
+                 bandwidth: int,
+                 create_time: str,
+                 expired_time: str,
+                 id: str,
+                 internet_charge_type: str,
+                 network_package_id: str,
+                 office_site_id: str,
+                 office_site_name: str,
+                 status: str):
+        """
+        :param int bandwidth: The bandwidth of package.
+        :param str create_time: The creation time of network package.
+        :param str expired_time: The expired time of package.
+        :param str id: The ID of the Network Package.
+        :param str internet_charge_type: The internet charge type  of  package.
+        :param str network_package_id: The ID of network package.
+        :param str office_site_id: The ID of office site.
+        :param str office_site_name: The name of office site.
+        :param str status: The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
+        """
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        pulumi.set(__self__, "network_package_id", network_package_id)
+        pulumi.set(__self__, "office_site_id", office_site_id)
+        pulumi.set(__self__, "office_site_name", office_site_name)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> int:
+        """
+        The bandwidth of package.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of network package.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> str:
+        """
+        The expired time of package.
+        """
+        return pulumi.get(self, "expired_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Network Package.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="internetChargeType")
+    def internet_charge_type(self) -> str:
+        """
+        The internet charge type  of  package.
+        """
+        return pulumi.get(self, "internet_charge_type")
+
+    @property
+    @pulumi.getter(name="networkPackageId")
+    def network_package_id(self) -> str:
+        """
+        The ID of network package.
+        """
+        return pulumi.get(self, "network_package_id")
+
+    @property
+    @pulumi.getter(name="officeSiteId")
+    def office_site_id(self) -> str:
+        """
+        The ID of office site.
+        """
+        return pulumi.get(self, "office_site_id")
+
+    @property
+    @pulumi.getter(name="officeSiteName")
+    def office_site_name(self) -> str:
+        """
+        The name of office site.
+        """
+        return pulumi.get(self, "office_site_name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type
@@ -714,7 +1206,7 @@ class GetSimpleOfficeSitesSiteResult(dict):
                  vpc_id: str,
                  vswitch_ids: Sequence[str]):
         """
-        :param int bandwidth: The Internet Bandwidth Peak.  Valid Values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+        :param int bandwidth: The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
         :param str cen_id: Cloud Enterprise Network Instance Id.
         :param str cidr_block: Workspace Corresponds to the Security Office Network of IPv4 Segment.
         :param str create_time: Workspace Creation Time.
@@ -780,7 +1272,7 @@ class GetSimpleOfficeSitesSiteResult(dict):
     @pulumi.getter
     def bandwidth(self) -> int:
         """
-        The Internet Bandwidth Peak.  Valid Values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+        The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -1015,5 +1507,67 @@ class GetSimpleOfficeSitesSiteResult(dict):
         The vswitch ids.
         """
         return pulumi.get(self, "vswitch_ids")
+
+
+@pulumi.output_type
+class GetUsersUserResult(dict):
+    def __init__(__self__, *,
+                 email: str,
+                 end_user_id: str,
+                 id: str,
+                 phone: str,
+                 status: str):
+        """
+        :param str email: The email of the user email.
+        :param str end_user_id: The Username. The custom setting is composed of lowercase letters, numbers and underscores, and the length is 3~24 characters.
+        :param str id: The ID of the user id.
+        :param str phone: The phone of the mobile phone number.
+        :param str status: The status of the resource.
+        """
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "end_user_id", end_user_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "phone", phone)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        The email of the user email.
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="endUserId")
+    def end_user_id(self) -> str:
+        """
+        The Username. The custom setting is composed of lowercase letters, numbers and underscores, and the length is 3~24 characters.
+        """
+        return pulumi.get(self, "end_user_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the user id.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def phone(self) -> str:
+        """
+        The phone of the mobile phone number.
+        """
+        return pulumi.get(self, "phone")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
 
 

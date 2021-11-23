@@ -8,8 +8,10 @@ import typing
 from .alarm import *
 from .alarm_contact import *
 from .alarm_contact_group import *
+from .dynamic_tag_group import *
 from .get_alarm_contact_groups import *
 from .get_alarm_contacts import *
+from .get_dynamic_tag_groups import *
 from .get_group_metric_rules import *
 from .get_metric_rule_templates import *
 from .get_monitor_group_instances import *

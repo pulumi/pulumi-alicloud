@@ -41,7 +41,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = log.NewStore(ctx, "exampleStore", &log.StoreArgs{
+// 		exampleStore, err := log.NewStore(ctx, "exampleStore", &log.StoreArgs{
 // 			Project:            exampleProject.Name,
 // 			RetentionPeriod:    pulumi.Int(3650),
 // 			ShardCount:         pulumi.Int(3),
@@ -54,7 +54,7 @@ import (
 // 		}
 // 		_, err = log.NewOssShipper(ctx, "exampleOssShipper", &log.OssShipperArgs{
 // 			ProjectName:    exampleProject.Name,
-// 			LogstoreName:   pulumi.Any(alicloud_log_logstore.Example.Name),
+// 			LogstoreName:   exampleStore.Name,
 // 			ShipperName:    pulumi.String("oss_shipper_name"),
 // 			OssBucket:      pulumi.String("test_bucket"),
 // 			OssPrefix:      pulumi.String("root"),

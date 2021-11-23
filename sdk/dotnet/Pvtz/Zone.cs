@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Private Zone.
+        /// The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Output<string?> UserClientIp { get; private set; } = null!;
 
         /// <summary>
-        /// The zone_name of the Private Zone.
+        /// The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
         /// </summary>
         [Output("zoneName")]
         public Output<string> ZoneName { get; private set; } = null!;
@@ -131,7 +131,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The name of the Private Zone.
+        /// The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -164,7 +164,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Input<string>? UserClientIp { get; set; }
 
         /// <summary>
-        /// The zone_name of the Private Zone.
+        /// The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
         /// </summary>
         [Input("zoneName")]
         public Input<string>? ZoneName { get; set; }
@@ -189,7 +189,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The name of the Private Zone.
+        /// The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -228,7 +228,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Input<string>? UserClientIp { get; set; }
 
         /// <summary>
-        /// The zone_name of the Private Zone.
+        /// The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
         /// </summary>
         [Input("zoneName")]
         public Input<string>? ZoneName { get; set; }

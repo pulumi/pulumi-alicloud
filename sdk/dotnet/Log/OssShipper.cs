@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Log
     ///         var exampleOssShipper = new AliCloud.Log.OssShipper("exampleOssShipper", new AliCloud.Log.OssShipperArgs
     ///         {
     ///             ProjectName = exampleProject.Name,
-    ///             LogstoreName = alicloud_log_logstore.Example.Name,
+    ///             LogstoreName = exampleStore.Name,
     ///             ShipperName = "oss_shipper_name",
     ///             OssBucket = "test_bucket",
     ///             OssPrefix = "root",

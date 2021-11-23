@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.BastionHost
     public partial class Host : Pulumi.CustomResource
     {
         /// <summary>
-        /// Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
+        /// Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
         /// </summary>
         [Output("activeAddressType")]
         public Output<string> ActiveAddressType { get; private set; } = null!;
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Output<string> HostName { get; private set; } = null!;
 
         /// <summary>
-        /// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
+        /// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `active_address_type` parameter is set to `Private`.
         /// </summary>
         [Output("hostPrivateAddress")]
         public Output<string?> HostPrivateAddress { get; private set; } = null!;
@@ -102,22 +102,22 @@ namespace Pulumi.AliCloud.BastionHost
         public Output<string?> InstanceRegionId { get; private set; } = null!;
 
         /// <summary>
-        /// Specify the new create the host's operating system. Valid values: Linux Windows.
+        /// Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
         /// </summary>
         [Output("osType")]
         public Output<string> OsType { get; private set; } = null!;
 
         /// <summary>
         /// Specify the new create a host of source. Valid values: 
-        /// * Local: localhost
-        /// * Ecs:ECS instance
-        /// * Rds:RDS exclusive cluster host.
+        /// * `Local`: localhost
+        /// * `Ecs`:ECS instance
+        /// * `Rds`:RDS exclusive cluster host.
         /// </summary>
         [Output("source")]
         public Output<string> Source { get; private set; } = null!;
 
         /// <summary>
-        /// Specify the newly created ECS instance ID or dedicated cluster host ID.
+        /// Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
         /// </summary>
         [Output("sourceInstanceId")]
         public Output<string?> SourceInstanceId { get; private set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud.BastionHost
     public sealed class HostArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
+        /// Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
         /// </summary>
         [Input("activeAddressType", required: true)]
         public Input<string> ActiveAddressType { get; set; } = null!;
@@ -187,7 +187,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<string> HostName { get; set; } = null!;
 
         /// <summary>
-        /// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
+        /// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `active_address_type` parameter is set to `Private`.
         /// </summary>
         [Input("hostPrivateAddress")]
         public Input<string>? HostPrivateAddress { get; set; }
@@ -211,22 +211,22 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<string>? InstanceRegionId { get; set; }
 
         /// <summary>
-        /// Specify the new create the host's operating system. Valid values: Linux Windows.
+        /// Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
         /// </summary>
         [Input("osType", required: true)]
         public Input<string> OsType { get; set; } = null!;
 
         /// <summary>
         /// Specify the new create a host of source. Valid values: 
-        /// * Local: localhost
-        /// * Ecs:ECS instance
-        /// * Rds:RDS exclusive cluster host.
+        /// * `Local`: localhost
+        /// * `Ecs`:ECS instance
+        /// * `Rds`:RDS exclusive cluster host.
         /// </summary>
         [Input("source", required: true)]
         public Input<string> Source { get; set; } = null!;
 
         /// <summary>
-        /// Specify the newly created ECS instance ID or dedicated cluster host ID.
+        /// Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
         /// </summary>
         [Input("sourceInstanceId")]
         public Input<string>? SourceInstanceId { get; set; }
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.BastionHost
     public sealed class HostState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
+        /// Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
         /// </summary>
         [Input("activeAddressType")]
         public Input<string>? ActiveAddressType { get; set; }
@@ -263,7 +263,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<string>? HostName { get; set; }
 
         /// <summary>
-        /// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
+        /// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `active_address_type` parameter is set to `Private`.
         /// </summary>
         [Input("hostPrivateAddress")]
         public Input<string>? HostPrivateAddress { get; set; }
@@ -287,22 +287,22 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<string>? InstanceRegionId { get; set; }
 
         /// <summary>
-        /// Specify the new create the host's operating system. Valid values: Linux Windows.
+        /// Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
         /// </summary>
         [Input("osType")]
         public Input<string>? OsType { get; set; }
 
         /// <summary>
         /// Specify the new create a host of source. Valid values: 
-        /// * Local: localhost
-        /// * Ecs:ECS instance
-        /// * Rds:RDS exclusive cluster host.
+        /// * `Local`: localhost
+        /// * `Ecs`:ECS instance
+        /// * `Rds`:RDS exclusive cluster host.
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
 
         /// <summary>
-        /// Specify the newly created ECS instance ID or dedicated cluster host ID.
+        /// Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
         /// </summary>
         [Input("sourceInstanceId")]
         public Input<string>? SourceInstanceId { get; set; }

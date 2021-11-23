@@ -68,6 +68,12 @@ namespace Pulumi.AliCloud.BastionHost
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+        /// </summary>
+        [Output("enablePublicAccess")]
+        public Output<bool> EnablePublicAccess { get; private set; } = null!;
+
+        /// <summary>
         /// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         /// </summary>
         [Output("licenseCode")]
@@ -153,6 +159,12 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
+        /// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+        /// </summary>
+        [Input("enablePublicAccess")]
+        public Input<bool>? EnablePublicAccess { get; set; }
+
+        /// <summary>
         /// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         /// </summary>
         [Input("licenseCode", required: true)]
@@ -209,6 +221,12 @@ namespace Pulumi.AliCloud.BastionHost
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+        /// </summary>
+        [Input("enablePublicAccess")]
+        public Input<bool>? EnablePublicAccess { get; set; }
 
         /// <summary>
         /// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).

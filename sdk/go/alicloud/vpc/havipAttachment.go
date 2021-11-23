@@ -13,7 +13,7 @@ import (
 
 // ## Import
 //
-// The havip attachemnt can be imported using the id, e.g.
+// The havip attachment can be imported using the id, e.g.
 //
 // ```sh
 //  $ pulumi import alicloud:vpc/hAVipAttachment:HAVipAttachment foo havip-abc123456:i-abc123456

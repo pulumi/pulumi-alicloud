@@ -608,8 +608,10 @@ class GetScalingConfigurationsConfigurationResult(dict):
                  creation_time: str,
                  credit_specification: str,
                  data_disks: Sequence['outputs.GetScalingConfigurationsConfigurationDataDiskResult'],
+                 host_name: str,
                  id: str,
                  image_id: str,
+                 instance_name: str,
                  instance_type: str,
                  internet_charge_type: str,
                  internet_max_bandwidth_in: int,
@@ -625,8 +627,10 @@ class GetScalingConfigurationsConfigurationResult(dict):
         :param str creation_time: Creation time of the scaling configuration.
         :param str credit_specification: Performance mode of the t5 burstable instance.
         :param Sequence['GetScalingConfigurationsConfigurationDataDiskArgs'] data_disks: Data disks of the scaling configuration.
+        :param str host_name: (Optional,Available in 1.143.0+) Hostname of an ECS instance.
         :param str id: ID of the scaling rule.
         :param str image_id: Image ID of the scaling configuration.
+        :param str instance_name: (Optional,Available in 1.143.0+) InstanceName of an ECS instance.
         :param str instance_type: Instance type of the scaling configuration.
         :param str internet_charge_type: Internet charge type of the scaling configuration.
         :param int internet_max_bandwidth_in: Internet max bandwidth in of the scaling configuration.
@@ -642,8 +646,10 @@ class GetScalingConfigurationsConfigurationResult(dict):
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "credit_specification", credit_specification)
         pulumi.set(__self__, "data_disks", data_disks)
+        pulumi.set(__self__, "host_name", host_name)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "instance_name", instance_name)
         pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         pulumi.set(__self__, "internet_max_bandwidth_in", internet_max_bandwidth_in)
@@ -681,6 +687,14 @@ class GetScalingConfigurationsConfigurationResult(dict):
         return pulumi.get(self, "data_disks")
 
     @property
+    @pulumi.getter(name="hostName")
+    def host_name(self) -> str:
+        """
+        (Optional,Available in 1.143.0+) Hostname of an ECS instance.
+        """
+        return pulumi.get(self, "host_name")
+
+    @property
     @pulumi.getter
     def id(self) -> str:
         """
@@ -695,6 +709,14 @@ class GetScalingConfigurationsConfigurationResult(dict):
         Image ID of the scaling configuration.
         """
         return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> str:
+        """
+        (Optional,Available in 1.143.0+) InstanceName of an ECS instance.
+        """
+        return pulumi.get(self, "instance_name")
 
     @property
     @pulumi.getter(name="instanceType")

@@ -592,6 +592,112 @@ func (o AlarmEscalationsWarnPtrOutput) Times() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type DynamicTagGroupMatchExpress struct {
+	// The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+	TagValue string `pulumi:"tagValue"`
+	// Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+	TagValueMatchFunction string `pulumi:"tagValueMatchFunction"`
+}
+
+// DynamicTagGroupMatchExpressInput is an input type that accepts DynamicTagGroupMatchExpressArgs and DynamicTagGroupMatchExpressOutput values.
+// You can construct a concrete instance of `DynamicTagGroupMatchExpressInput` via:
+//
+//          DynamicTagGroupMatchExpressArgs{...}
+type DynamicTagGroupMatchExpressInput interface {
+	pulumi.Input
+
+	ToDynamicTagGroupMatchExpressOutput() DynamicTagGroupMatchExpressOutput
+	ToDynamicTagGroupMatchExpressOutputWithContext(context.Context) DynamicTagGroupMatchExpressOutput
+}
+
+type DynamicTagGroupMatchExpressArgs struct {
+	// The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+	TagValue pulumi.StringInput `pulumi:"tagValue"`
+	// Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+	TagValueMatchFunction pulumi.StringInput `pulumi:"tagValueMatchFunction"`
+}
+
+func (DynamicTagGroupMatchExpressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicTagGroupMatchExpress)(nil)).Elem()
+}
+
+func (i DynamicTagGroupMatchExpressArgs) ToDynamicTagGroupMatchExpressOutput() DynamicTagGroupMatchExpressOutput {
+	return i.ToDynamicTagGroupMatchExpressOutputWithContext(context.Background())
+}
+
+func (i DynamicTagGroupMatchExpressArgs) ToDynamicTagGroupMatchExpressOutputWithContext(ctx context.Context) DynamicTagGroupMatchExpressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicTagGroupMatchExpressOutput)
+}
+
+// DynamicTagGroupMatchExpressArrayInput is an input type that accepts DynamicTagGroupMatchExpressArray and DynamicTagGroupMatchExpressArrayOutput values.
+// You can construct a concrete instance of `DynamicTagGroupMatchExpressArrayInput` via:
+//
+//          DynamicTagGroupMatchExpressArray{ DynamicTagGroupMatchExpressArgs{...} }
+type DynamicTagGroupMatchExpressArrayInput interface {
+	pulumi.Input
+
+	ToDynamicTagGroupMatchExpressArrayOutput() DynamicTagGroupMatchExpressArrayOutput
+	ToDynamicTagGroupMatchExpressArrayOutputWithContext(context.Context) DynamicTagGroupMatchExpressArrayOutput
+}
+
+type DynamicTagGroupMatchExpressArray []DynamicTagGroupMatchExpressInput
+
+func (DynamicTagGroupMatchExpressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DynamicTagGroupMatchExpress)(nil)).Elem()
+}
+
+func (i DynamicTagGroupMatchExpressArray) ToDynamicTagGroupMatchExpressArrayOutput() DynamicTagGroupMatchExpressArrayOutput {
+	return i.ToDynamicTagGroupMatchExpressArrayOutputWithContext(context.Background())
+}
+
+func (i DynamicTagGroupMatchExpressArray) ToDynamicTagGroupMatchExpressArrayOutputWithContext(ctx context.Context) DynamicTagGroupMatchExpressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicTagGroupMatchExpressArrayOutput)
+}
+
+type DynamicTagGroupMatchExpressOutput struct{ *pulumi.OutputState }
+
+func (DynamicTagGroupMatchExpressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicTagGroupMatchExpress)(nil)).Elem()
+}
+
+func (o DynamicTagGroupMatchExpressOutput) ToDynamicTagGroupMatchExpressOutput() DynamicTagGroupMatchExpressOutput {
+	return o
+}
+
+func (o DynamicTagGroupMatchExpressOutput) ToDynamicTagGroupMatchExpressOutputWithContext(ctx context.Context) DynamicTagGroupMatchExpressOutput {
+	return o
+}
+
+// The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+func (o DynamicTagGroupMatchExpressOutput) TagValue() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamicTagGroupMatchExpress) string { return v.TagValue }).(pulumi.StringOutput)
+}
+
+// Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+func (o DynamicTagGroupMatchExpressOutput) TagValueMatchFunction() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamicTagGroupMatchExpress) string { return v.TagValueMatchFunction }).(pulumi.StringOutput)
+}
+
+type DynamicTagGroupMatchExpressArrayOutput struct{ *pulumi.OutputState }
+
+func (DynamicTagGroupMatchExpressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DynamicTagGroupMatchExpress)(nil)).Elem()
+}
+
+func (o DynamicTagGroupMatchExpressArrayOutput) ToDynamicTagGroupMatchExpressArrayOutput() DynamicTagGroupMatchExpressArrayOutput {
+	return o
+}
+
+func (o DynamicTagGroupMatchExpressArrayOutput) ToDynamicTagGroupMatchExpressArrayOutputWithContext(ctx context.Context) DynamicTagGroupMatchExpressArrayOutput {
+	return o
+}
+
+func (o DynamicTagGroupMatchExpressArrayOutput) Index(i pulumi.IntInput) DynamicTagGroupMatchExpressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DynamicTagGroupMatchExpress {
+		return vs[0].([]DynamicTagGroupMatchExpress)[vs[1].(int)]
+	}).(DynamicTagGroupMatchExpressOutput)
+}
+
 type GroupMetricRuleEscalations struct {
 	// The critical level.
 	Critical *GroupMetricRuleEscalationsCritical `pulumi:"critical"`
@@ -2815,6 +2921,254 @@ func (o GetAlarmContactsContactArrayOutput) Index(i pulumi.IntInput) GetAlarmCon
 	}).(GetAlarmContactsContactOutput)
 }
 
+type GetDynamicTagGroupsGroup struct {
+	// The ID of the tag rule.
+	DynamicTagRuleId string `pulumi:"dynamicTagRuleId"`
+	// The ID of the Dynamic Tag Group.
+	Id string `pulumi:"id"`
+	// The relationship between conditional expressions. Valid values: `and`, `or`.
+	MatchExpressFilterRelation string `pulumi:"matchExpressFilterRelation"`
+	// The label generates a matching expression that applies the grouping. See the following `Block matchExpress`.
+	MatchExpresses []GetDynamicTagGroupsGroupMatchExpress `pulumi:"matchExpresses"`
+	// The status of the resource. Valid values: `RUNNING`, `FINISH`.
+	Status string `pulumi:"status"`
+	// The tag key of the tag.
+	TagKey string `pulumi:"tagKey"`
+}
+
+// GetDynamicTagGroupsGroupInput is an input type that accepts GetDynamicTagGroupsGroupArgs and GetDynamicTagGroupsGroupOutput values.
+// You can construct a concrete instance of `GetDynamicTagGroupsGroupInput` via:
+//
+//          GetDynamicTagGroupsGroupArgs{...}
+type GetDynamicTagGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetDynamicTagGroupsGroupOutput() GetDynamicTagGroupsGroupOutput
+	ToGetDynamicTagGroupsGroupOutputWithContext(context.Context) GetDynamicTagGroupsGroupOutput
+}
+
+type GetDynamicTagGroupsGroupArgs struct {
+	// The ID of the tag rule.
+	DynamicTagRuleId pulumi.StringInput `pulumi:"dynamicTagRuleId"`
+	// The ID of the Dynamic Tag Group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The relationship between conditional expressions. Valid values: `and`, `or`.
+	MatchExpressFilterRelation pulumi.StringInput `pulumi:"matchExpressFilterRelation"`
+	// The label generates a matching expression that applies the grouping. See the following `Block matchExpress`.
+	MatchExpresses GetDynamicTagGroupsGroupMatchExpressArrayInput `pulumi:"matchExpresses"`
+	// The status of the resource. Valid values: `RUNNING`, `FINISH`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The tag key of the tag.
+	TagKey pulumi.StringInput `pulumi:"tagKey"`
+}
+
+func (GetDynamicTagGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDynamicTagGroupsGroup)(nil)).Elem()
+}
+
+func (i GetDynamicTagGroupsGroupArgs) ToGetDynamicTagGroupsGroupOutput() GetDynamicTagGroupsGroupOutput {
+	return i.ToGetDynamicTagGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetDynamicTagGroupsGroupArgs) ToGetDynamicTagGroupsGroupOutputWithContext(ctx context.Context) GetDynamicTagGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDynamicTagGroupsGroupOutput)
+}
+
+// GetDynamicTagGroupsGroupArrayInput is an input type that accepts GetDynamicTagGroupsGroupArray and GetDynamicTagGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetDynamicTagGroupsGroupArrayInput` via:
+//
+//          GetDynamicTagGroupsGroupArray{ GetDynamicTagGroupsGroupArgs{...} }
+type GetDynamicTagGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetDynamicTagGroupsGroupArrayOutput() GetDynamicTagGroupsGroupArrayOutput
+	ToGetDynamicTagGroupsGroupArrayOutputWithContext(context.Context) GetDynamicTagGroupsGroupArrayOutput
+}
+
+type GetDynamicTagGroupsGroupArray []GetDynamicTagGroupsGroupInput
+
+func (GetDynamicTagGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDynamicTagGroupsGroup)(nil)).Elem()
+}
+
+func (i GetDynamicTagGroupsGroupArray) ToGetDynamicTagGroupsGroupArrayOutput() GetDynamicTagGroupsGroupArrayOutput {
+	return i.ToGetDynamicTagGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetDynamicTagGroupsGroupArray) ToGetDynamicTagGroupsGroupArrayOutputWithContext(ctx context.Context) GetDynamicTagGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDynamicTagGroupsGroupArrayOutput)
+}
+
+type GetDynamicTagGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetDynamicTagGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDynamicTagGroupsGroup)(nil)).Elem()
+}
+
+func (o GetDynamicTagGroupsGroupOutput) ToGetDynamicTagGroupsGroupOutput() GetDynamicTagGroupsGroupOutput {
+	return o
+}
+
+func (o GetDynamicTagGroupsGroupOutput) ToGetDynamicTagGroupsGroupOutputWithContext(ctx context.Context) GetDynamicTagGroupsGroupOutput {
+	return o
+}
+
+// The ID of the tag rule.
+func (o GetDynamicTagGroupsGroupOutput) DynamicTagRuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDynamicTagGroupsGroup) string { return v.DynamicTagRuleId }).(pulumi.StringOutput)
+}
+
+// The ID of the Dynamic Tag Group.
+func (o GetDynamicTagGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDynamicTagGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The relationship between conditional expressions. Valid values: `and`, `or`.
+func (o GetDynamicTagGroupsGroupOutput) MatchExpressFilterRelation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDynamicTagGroupsGroup) string { return v.MatchExpressFilterRelation }).(pulumi.StringOutput)
+}
+
+// The label generates a matching expression that applies the grouping. See the following `Block matchExpress`.
+func (o GetDynamicTagGroupsGroupOutput) MatchExpresses() GetDynamicTagGroupsGroupMatchExpressArrayOutput {
+	return o.ApplyT(func(v GetDynamicTagGroupsGroup) []GetDynamicTagGroupsGroupMatchExpress { return v.MatchExpresses }).(GetDynamicTagGroupsGroupMatchExpressArrayOutput)
+}
+
+// The status of the resource. Valid values: `RUNNING`, `FINISH`.
+func (o GetDynamicTagGroupsGroupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDynamicTagGroupsGroup) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tag key of the tag.
+func (o GetDynamicTagGroupsGroupOutput) TagKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDynamicTagGroupsGroup) string { return v.TagKey }).(pulumi.StringOutput)
+}
+
+type GetDynamicTagGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDynamicTagGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDynamicTagGroupsGroup)(nil)).Elem()
+}
+
+func (o GetDynamicTagGroupsGroupArrayOutput) ToGetDynamicTagGroupsGroupArrayOutput() GetDynamicTagGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetDynamicTagGroupsGroupArrayOutput) ToGetDynamicTagGroupsGroupArrayOutputWithContext(ctx context.Context) GetDynamicTagGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetDynamicTagGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetDynamicTagGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDynamicTagGroupsGroup {
+		return vs[0].([]GetDynamicTagGroupsGroup)[vs[1].(int)]
+	}).(GetDynamicTagGroupsGroupOutput)
+}
+
+type GetDynamicTagGroupsGroupMatchExpress struct {
+	// The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+	TagValue string `pulumi:"tagValue"`
+	// Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+	TagValueMatchFunction string `pulumi:"tagValueMatchFunction"`
+}
+
+// GetDynamicTagGroupsGroupMatchExpressInput is an input type that accepts GetDynamicTagGroupsGroupMatchExpressArgs and GetDynamicTagGroupsGroupMatchExpressOutput values.
+// You can construct a concrete instance of `GetDynamicTagGroupsGroupMatchExpressInput` via:
+//
+//          GetDynamicTagGroupsGroupMatchExpressArgs{...}
+type GetDynamicTagGroupsGroupMatchExpressInput interface {
+	pulumi.Input
+
+	ToGetDynamicTagGroupsGroupMatchExpressOutput() GetDynamicTagGroupsGroupMatchExpressOutput
+	ToGetDynamicTagGroupsGroupMatchExpressOutputWithContext(context.Context) GetDynamicTagGroupsGroupMatchExpressOutput
+}
+
+type GetDynamicTagGroupsGroupMatchExpressArgs struct {
+	// The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+	TagValue pulumi.StringInput `pulumi:"tagValue"`
+	// Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+	TagValueMatchFunction pulumi.StringInput `pulumi:"tagValueMatchFunction"`
+}
+
+func (GetDynamicTagGroupsGroupMatchExpressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDynamicTagGroupsGroupMatchExpress)(nil)).Elem()
+}
+
+func (i GetDynamicTagGroupsGroupMatchExpressArgs) ToGetDynamicTagGroupsGroupMatchExpressOutput() GetDynamicTagGroupsGroupMatchExpressOutput {
+	return i.ToGetDynamicTagGroupsGroupMatchExpressOutputWithContext(context.Background())
+}
+
+func (i GetDynamicTagGroupsGroupMatchExpressArgs) ToGetDynamicTagGroupsGroupMatchExpressOutputWithContext(ctx context.Context) GetDynamicTagGroupsGroupMatchExpressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDynamicTagGroupsGroupMatchExpressOutput)
+}
+
+// GetDynamicTagGroupsGroupMatchExpressArrayInput is an input type that accepts GetDynamicTagGroupsGroupMatchExpressArray and GetDynamicTagGroupsGroupMatchExpressArrayOutput values.
+// You can construct a concrete instance of `GetDynamicTagGroupsGroupMatchExpressArrayInput` via:
+//
+//          GetDynamicTagGroupsGroupMatchExpressArray{ GetDynamicTagGroupsGroupMatchExpressArgs{...} }
+type GetDynamicTagGroupsGroupMatchExpressArrayInput interface {
+	pulumi.Input
+
+	ToGetDynamicTagGroupsGroupMatchExpressArrayOutput() GetDynamicTagGroupsGroupMatchExpressArrayOutput
+	ToGetDynamicTagGroupsGroupMatchExpressArrayOutputWithContext(context.Context) GetDynamicTagGroupsGroupMatchExpressArrayOutput
+}
+
+type GetDynamicTagGroupsGroupMatchExpressArray []GetDynamicTagGroupsGroupMatchExpressInput
+
+func (GetDynamicTagGroupsGroupMatchExpressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDynamicTagGroupsGroupMatchExpress)(nil)).Elem()
+}
+
+func (i GetDynamicTagGroupsGroupMatchExpressArray) ToGetDynamicTagGroupsGroupMatchExpressArrayOutput() GetDynamicTagGroupsGroupMatchExpressArrayOutput {
+	return i.ToGetDynamicTagGroupsGroupMatchExpressArrayOutputWithContext(context.Background())
+}
+
+func (i GetDynamicTagGroupsGroupMatchExpressArray) ToGetDynamicTagGroupsGroupMatchExpressArrayOutputWithContext(ctx context.Context) GetDynamicTagGroupsGroupMatchExpressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDynamicTagGroupsGroupMatchExpressArrayOutput)
+}
+
+type GetDynamicTagGroupsGroupMatchExpressOutput struct{ *pulumi.OutputState }
+
+func (GetDynamicTagGroupsGroupMatchExpressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDynamicTagGroupsGroupMatchExpress)(nil)).Elem()
+}
+
+func (o GetDynamicTagGroupsGroupMatchExpressOutput) ToGetDynamicTagGroupsGroupMatchExpressOutput() GetDynamicTagGroupsGroupMatchExpressOutput {
+	return o
+}
+
+func (o GetDynamicTagGroupsGroupMatchExpressOutput) ToGetDynamicTagGroupsGroupMatchExpressOutputWithContext(ctx context.Context) GetDynamicTagGroupsGroupMatchExpressOutput {
+	return o
+}
+
+// The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+func (o GetDynamicTagGroupsGroupMatchExpressOutput) TagValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDynamicTagGroupsGroupMatchExpress) string { return v.TagValue }).(pulumi.StringOutput)
+}
+
+// Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+func (o GetDynamicTagGroupsGroupMatchExpressOutput) TagValueMatchFunction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDynamicTagGroupsGroupMatchExpress) string { return v.TagValueMatchFunction }).(pulumi.StringOutput)
+}
+
+type GetDynamicTagGroupsGroupMatchExpressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDynamicTagGroupsGroupMatchExpressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDynamicTagGroupsGroupMatchExpress)(nil)).Elem()
+}
+
+func (o GetDynamicTagGroupsGroupMatchExpressArrayOutput) ToGetDynamicTagGroupsGroupMatchExpressArrayOutput() GetDynamicTagGroupsGroupMatchExpressArrayOutput {
+	return o
+}
+
+func (o GetDynamicTagGroupsGroupMatchExpressArrayOutput) ToGetDynamicTagGroupsGroupMatchExpressArrayOutputWithContext(ctx context.Context) GetDynamicTagGroupsGroupMatchExpressArrayOutput {
+	return o
+}
+
+func (o GetDynamicTagGroupsGroupMatchExpressArrayOutput) Index(i pulumi.IntInput) GetDynamicTagGroupsGroupMatchExpressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDynamicTagGroupsGroupMatchExpress {
+		return vs[0].([]GetDynamicTagGroupsGroupMatchExpress)[vs[1].(int)]
+	}).(GetDynamicTagGroupsGroupMatchExpressOutput)
+}
+
 type GetGroupMetricRulesRule struct {
 	// Alarm contact group.
 	ContactGroups string `pulumi:"contactGroups"`
@@ -4781,6 +5135,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEscalationsInfoPtrInput)(nil)).Elem(), AlarmEscalationsInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEscalationsWarnInput)(nil)).Elem(), AlarmEscalationsWarnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEscalationsWarnPtrInput)(nil)).Elem(), AlarmEscalationsWarnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamicTagGroupMatchExpressInput)(nil)).Elem(), DynamicTagGroupMatchExpressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamicTagGroupMatchExpressArrayInput)(nil)).Elem(), DynamicTagGroupMatchExpressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleEscalationsInput)(nil)).Elem(), GroupMetricRuleEscalationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleEscalationsPtrInput)(nil)).Elem(), GroupMetricRuleEscalationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleEscalationsCriticalInput)(nil)).Elem(), GroupMetricRuleEscalationsCriticalArgs{})
@@ -4807,6 +5163,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmContactGroupsGroupArrayInput)(nil)).Elem(), GetAlarmContactGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmContactsContactInput)(nil)).Elem(), GetAlarmContactsContactArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmContactsContactArrayInput)(nil)).Elem(), GetAlarmContactsContactArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDynamicTagGroupsGroupInput)(nil)).Elem(), GetDynamicTagGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDynamicTagGroupsGroupArrayInput)(nil)).Elem(), GetDynamicTagGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDynamicTagGroupsGroupMatchExpressInput)(nil)).Elem(), GetDynamicTagGroupsGroupMatchExpressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDynamicTagGroupsGroupMatchExpressArrayInput)(nil)).Elem(), GetDynamicTagGroupsGroupMatchExpressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMetricRulesRuleInput)(nil)).Elem(), GetGroupMetricRulesRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMetricRulesRuleArrayInput)(nil)).Elem(), GetGroupMetricRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMetricRulesRuleEscalationInput)(nil)).Elem(), GetGroupMetricRulesRuleEscalationArgs{})
@@ -4841,6 +5201,8 @@ func init() {
 	pulumi.RegisterOutputType(AlarmEscalationsInfoPtrOutput{})
 	pulumi.RegisterOutputType(AlarmEscalationsWarnOutput{})
 	pulumi.RegisterOutputType(AlarmEscalationsWarnPtrOutput{})
+	pulumi.RegisterOutputType(DynamicTagGroupMatchExpressOutput{})
+	pulumi.RegisterOutputType(DynamicTagGroupMatchExpressArrayOutput{})
 	pulumi.RegisterOutputType(GroupMetricRuleEscalationsOutput{})
 	pulumi.RegisterOutputType(GroupMetricRuleEscalationsPtrOutput{})
 	pulumi.RegisterOutputType(GroupMetricRuleEscalationsCriticalOutput{})
@@ -4867,6 +5229,10 @@ func init() {
 	pulumi.RegisterOutputType(GetAlarmContactGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetAlarmContactsContactOutput{})
 	pulumi.RegisterOutputType(GetAlarmContactsContactArrayOutput{})
+	pulumi.RegisterOutputType(GetDynamicTagGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetDynamicTagGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetDynamicTagGroupsGroupMatchExpressOutput{})
+	pulumi.RegisterOutputType(GetDynamicTagGroupsGroupMatchExpressArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupMetricRulesRuleOutput{})
 	pulumi.RegisterOutputType(GetGroupMetricRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupMetricRulesRuleEscalationOutput{})

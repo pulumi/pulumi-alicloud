@@ -81,19 +81,38 @@ namespace Pulumi.AliCloud.Alb
     ///             SystemDiskCategory = "cloud_efficiency",
     ///             VswitchId = defaultSwitch.Id,
     ///         });
+    ///         var defaultResourceGroups = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync());
     ///         var defaultServerGroup = new AliCloud.Alb.ServerGroup("defaultServerGroup", new AliCloud.Alb.ServerGroupArgs
     ///         {
     ///             Protocol = "HTTP",
-    ///             VpcId = alicloud_vpc.Vpcs[0].Id,
+    ///             VpcId = defaultNetwork.Id,
     ///             ServerGroupName = name,
-    ///             ResourceGroupId = data.Alicloud_resource_manager_resource_groups.Default.Groups[0].Id,
+    ///             ResourceGroupId = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Groups?[0]?.Id),
     ///             HealthCheckConfig = new AliCloud.Alb.Inputs.ServerGroupHealthCheckConfigArgs
     ///             {
-    ///                 HealthCheckEnabled = false,
+    ///                 HealthCheckConnectPort = 46325,
+    ///                 HealthCheckEnabled = true,
+    ///                 HealthCheckHost = "tf-testAcc.com",
+    ///                 HealthCheckCodes = 
+    ///                 {
+    ///                     "http_2xx",
+    ///                     "http_3xx",
+    ///                     "http_4xx",
+    ///                 },
+    ///                 HealthCheckHttpVersion = "HTTP1.1",
+    ///                 HealthCheckInterval = 2,
+    ///                 HealthCheckMethod = "HEAD",
+    ///                 HealthCheckPath = "/tf-testAcc",
+    ///                 HealthCheckProtocol = "HTTP",
+    ///                 HealthCheckTimeout = 5,
+    ///                 HealthyThreshold = 3,
+    ///                 UnhealthyThreshold = 3,
     ///             },
     ///             StickySessionConfig = new AliCloud.Alb.Inputs.ServerGroupStickySessionConfigArgs
     ///             {
-    ///                 StickySessionEnabled = false,
+    ///                 StickySessionEnabled = true,
+    ///                 Cookie = "tf-testAcc",
+    ///                 StickySessionType = "Server",
     ///             },
     ///             Tags = 
     ///             {

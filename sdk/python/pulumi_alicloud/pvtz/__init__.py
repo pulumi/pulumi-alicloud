@@ -5,9 +5,15 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .endpoint import *
+from .get_endpoints import *
+from .get_resolver_zones import *
+from .get_rules import *
 from .get_service import *
 from .get_zone_records import *
 from .get_zones import *
+from .rule import *
+from .rule_attachment import *
 from .user_vpc_authorization import *
 from .zone import *
 from .zone_attachment import *

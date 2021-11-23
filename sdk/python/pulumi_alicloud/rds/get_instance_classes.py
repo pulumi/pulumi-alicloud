@@ -205,7 +205,7 @@ def get_instance_classes(category: Optional[str] = None,
     :param str engine_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param bool multi_zone: Whether to show multi available zone. Default false to not show multi availability zone.
-    :param str storage_type: It has been deprecated from verison 1.134.0+ and using `db_instance_storage_type` instead.
+    :param str storage_type: It has been deprecated from version 1.134.0+ and using `db_instance_storage_type` instead.
     :param str zone_id: The Zone to launch the DB instance.
     """
     __args__ = dict()
@@ -282,7 +282,7 @@ def get_instance_classes_output(category: Optional[pulumi.Input[Optional[str]]] 
     :param str engine_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param bool multi_zone: Whether to show multi available zone. Default false to not show multi availability zone.
-    :param str storage_type: It has been deprecated from verison 1.134.0+ and using `db_instance_storage_type` instead.
+    :param str storage_type: It has been deprecated from version 1.134.0+ and using `db_instance_storage_type` instead.
     :param str zone_id: The Zone to launch the DB instance.
     """
     ...

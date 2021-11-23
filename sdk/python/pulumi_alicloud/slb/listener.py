@@ -94,9 +94,9 @@ class ListenerArgs:
         :param pulumi.Input[int] request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
         :param pulumi.Input[str] scheduler: Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
                Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
-        :param pulumi.Input[str] server_certificate_id: SLB Server certificate ID. It is required when `protocol` is `https`.
+        :param pulumi.Input[str] server_certificate_id: SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
         :param pulumi.Input[str] server_group_id: the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
-        :param pulumi.Input[str] ssl_certificate_id: It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        :param pulumi.Input[str] ssl_certificate_id: SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
         :param pulumi.Input[str] sticky_session: Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
         :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         :param pulumi.Input[str] tls_cipher_policy: Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
@@ -626,7 +626,7 @@ class ListenerArgs:
     @pulumi.getter(name="serverCertificateId")
     def server_certificate_id(self) -> Optional[pulumi.Input[str]]:
         """
-        SLB Server certificate ID. It is required when `protocol` is `https`.
+        SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
         """
         return pulumi.get(self, "server_certificate_id")
 
@@ -650,7 +650,7 @@ class ListenerArgs:
     @pulumi.getter(name="sslCertificateId")
     def ssl_certificate_id(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
         """
         return pulumi.get(self, "ssl_certificate_id")
 
@@ -801,9 +801,9 @@ class _ListenerState:
         :param pulumi.Input[int] request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
         :param pulumi.Input[str] scheduler: Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
                Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
-        :param pulumi.Input[str] server_certificate_id: SLB Server certificate ID. It is required when `protocol` is `https`.
+        :param pulumi.Input[str] server_certificate_id: SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
         :param pulumi.Input[str] server_group_id: the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
-        :param pulumi.Input[str] ssl_certificate_id: It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        :param pulumi.Input[str] ssl_certificate_id: SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
         :param pulumi.Input[str] sticky_session: Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
         :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         :param pulumi.Input[str] tls_cipher_policy: Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
@@ -1336,7 +1336,7 @@ class _ListenerState:
     @pulumi.getter(name="serverCertificateId")
     def server_certificate_id(self) -> Optional[pulumi.Input[str]]:
         """
-        SLB Server certificate ID. It is required when `protocol` is `https`.
+        SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
         """
         return pulumi.get(self, "server_certificate_id")
 
@@ -1360,7 +1360,7 @@ class _ListenerState:
     @pulumi.getter(name="sslCertificateId")
     def ssl_certificate_id(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
         """
         return pulumi.get(self, "ssl_certificate_id")
 
@@ -1493,7 +1493,7 @@ class Listener(pulumi.CustomResource):
 
         ## Listener fields and protocol mapping
 
-        load balance support 4 protocal to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
+        load balance support 4 protocol to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
 
         listener parameter | support protocol | value range |
         ------------- | ------------- | ------------- |
@@ -1576,9 +1576,9 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[int] request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
         :param pulumi.Input[str] scheduler: Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
                Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
-        :param pulumi.Input[str] server_certificate_id: SLB Server certificate ID. It is required when `protocol` is `https`.
+        :param pulumi.Input[str] server_certificate_id: SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
         :param pulumi.Input[str] server_group_id: the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
-        :param pulumi.Input[str] ssl_certificate_id: It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        :param pulumi.Input[str] ssl_certificate_id: SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
         :param pulumi.Input[str] sticky_session: Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
         :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         :param pulumi.Input[str] tls_cipher_policy: Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
@@ -1605,7 +1605,7 @@ class Listener(pulumi.CustomResource):
 
         ## Listener fields and protocol mapping
 
-        load balance support 4 protocal to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
+        load balance support 4 protocol to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
 
         listener parameter | support protocol | value range |
         ------------- | ------------- | ------------- |
@@ -1880,9 +1880,9 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[int] request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
         :param pulumi.Input[str] scheduler: Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
                Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
-        :param pulumi.Input[str] server_certificate_id: SLB Server certificate ID. It is required when `protocol` is `https`.
+        :param pulumi.Input[str] server_certificate_id: SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
         :param pulumi.Input[str] server_group_id: the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
-        :param pulumi.Input[str] ssl_certificate_id: It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        :param pulumi.Input[str] ssl_certificate_id: SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
         :param pulumi.Input[str] sticky_session: Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
         :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         :param pulumi.Input[str] tls_cipher_policy: Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
@@ -2085,7 +2085,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="healthCheckHttpCode")
-    def health_check_http_code(self) -> pulumi.Output[Optional[str]]:
+    def health_check_http_code(self) -> pulumi.Output[str]:
         """
         Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
         """
@@ -2220,7 +2220,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="serverCertificateId")
     def server_certificate_id(self) -> pulumi.Output[str]:
         """
-        SLB Server certificate ID. It is required when `protocol` is `https`.
+        SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
         """
         return pulumi.get(self, "server_certificate_id")
 
@@ -2236,7 +2236,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="sslCertificateId")
     def ssl_certificate_id(self) -> pulumi.Output[str]:
         """
-        It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
         """
         return pulumi.get(self, "ssl_certificate_id")
 

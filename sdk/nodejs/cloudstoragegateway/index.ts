@@ -5,22 +5,56 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./expressSync";
+export * from "./expressSyncShareAttachment";
 export * from "./gateway";
+export * from "./gatewayBlockVolume";
+export * from "./gatewayCacheDisk";
+export * from "./gatewayFileShare";
+export * from "./gatewayLogging";
+export * from "./gatewaySmbUser";
+export * from "./getExpressSyncs";
+export * from "./getGatewayBlockVolumes";
+export * from "./getGatewayCacheDisks";
+export * from "./getGatewayFileShares";
+export * from "./getGatewaySmbUsers";
 export * from "./getGateways";
 export * from "./getService";
+export * from "./getStocks";
 export * from "./getStorageBundles";
 export * from "./storageBundle";
 
 // Import resources to register:
+import { ExpressSync } from "./expressSync";
+import { ExpressSyncShareAttachment } from "./expressSyncShareAttachment";
 import { Gateway } from "./gateway";
+import { GatewayBlockVolume } from "./gatewayBlockVolume";
+import { GatewayCacheDisk } from "./gatewayCacheDisk";
+import { GatewayFileShare } from "./gatewayFileShare";
+import { GatewayLogging } from "./gatewayLogging";
+import { GatewaySmbUser } from "./gatewaySmbUser";
 import { StorageBundle } from "./storageBundle";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:cloudstoragegateway/expressSync:ExpressSync":
+                return new ExpressSync(name, <any>undefined, { urn })
+            case "alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment":
+                return new ExpressSyncShareAttachment(name, <any>undefined, { urn })
             case "alicloud:cloudstoragegateway/gateway:Gateway":
                 return new Gateway(name, <any>undefined, { urn })
+            case "alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume":
+                return new GatewayBlockVolume(name, <any>undefined, { urn })
+            case "alicloud:cloudstoragegateway/gatewayCacheDisk:GatewayCacheDisk":
+                return new GatewayCacheDisk(name, <any>undefined, { urn })
+            case "alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare":
+                return new GatewayFileShare(name, <any>undefined, { urn })
+            case "alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging":
+                return new GatewayLogging(name, <any>undefined, { urn })
+            case "alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser":
+                return new GatewaySmbUser(name, <any>undefined, { urn })
             case "alicloud:cloudstoragegateway/storageBundle:StorageBundle":
                 return new StorageBundle(name, <any>undefined, { urn })
             default:
@@ -28,5 +62,12 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "cloudstoragegateway/expressSync", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudstoragegateway/expressSyncShareAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudstoragegateway/gateway", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudstoragegateway/gatewayBlockVolume", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudstoragegateway/gatewayCacheDisk", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudstoragegateway/gatewayFileShare", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudstoragegateway/gatewayLogging", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudstoragegateway/gatewaySmbUser", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudstoragegateway/storageBundle", _module)

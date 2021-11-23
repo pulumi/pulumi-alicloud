@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EventSource{}
 	case "alicloud:eventbridge/rule:Rule":
 		r = &Rule{}
+	case "alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole":
+		r = &ServiceLinkedRole{}
 	case "alicloud:eventbridge/slr:Slr":
 		r = &Slr{}
 	default:
@@ -55,6 +57,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"eventbridge/rule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"eventbridge/serviceLinkedRole",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

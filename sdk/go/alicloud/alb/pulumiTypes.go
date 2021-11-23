@@ -6939,7 +6939,11 @@ type GetLoadBalancersBalancer struct {
 	Id string `pulumi:"id"`
 	// The configuration of the billing method.
 	LoadBalancerBillingConfigs []GetLoadBalancersBalancerLoadBalancerBillingConfig `pulumi:"loadBalancerBillingConfigs"`
-	// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.
+	// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+	LoadBalancerBusinessStatus string `pulumi:"loadBalancerBusinessStatus"`
+	// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
+	//
+	// Deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be remove in the future version. Please use the new parameter 'load_balancer_business_status' instead.
 	LoadBalancerBussinessStatus string `pulumi:"loadBalancerBussinessStatus"`
 	// The edition of the ALB instance.
 	LoadBalancerEdition string `pulumi:"loadBalancerEdition"`
@@ -6996,7 +7000,11 @@ type GetLoadBalancersBalancerArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The configuration of the billing method.
 	LoadBalancerBillingConfigs GetLoadBalancersBalancerLoadBalancerBillingConfigArrayInput `pulumi:"loadBalancerBillingConfigs"`
-	// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.
+	// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+	LoadBalancerBusinessStatus pulumi.StringInput `pulumi:"loadBalancerBusinessStatus"`
+	// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
+	//
+	// Deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be remove in the future version. Please use the new parameter 'load_balancer_business_status' instead.
 	LoadBalancerBussinessStatus pulumi.StringInput `pulumi:"loadBalancerBussinessStatus"`
 	// The edition of the ALB instance.
 	LoadBalancerEdition pulumi.StringInput `pulumi:"loadBalancerEdition"`
@@ -7123,7 +7131,14 @@ func (o GetLoadBalancersBalancerOutput) LoadBalancerBillingConfigs() GetLoadBala
 	}).(GetLoadBalancersBalancerLoadBalancerBillingConfigArrayOutput)
 }
 
-// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.
+// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+func (o GetLoadBalancersBalancerOutput) LoadBalancerBusinessStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.LoadBalancerBusinessStatus }).(pulumi.StringOutput)
+}
+
+// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
+//
+// Deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be remove in the future version. Please use the new parameter 'load_balancer_business_status' instead.
 func (o GetLoadBalancersBalancerOutput) LoadBalancerBussinessStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.LoadBalancerBussinessStatus }).(pulumi.StringOutput)
 }
@@ -7512,7 +7527,7 @@ func (o GetLoadBalancersBalancerLoadBalancerBillingConfigArrayOutput) Index(i pu
 }
 
 type GetLoadBalancersBalancerLoadBalancerOperationLock struct {
-	// The Locking of the Reasons. In 'loadbalancerbussinessstatus' **Exception When Effective,.
+	// The Locking of the Reasons.
 	LockReason string `pulumi:"lockReason"`
 	// The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
 	LockType string `pulumi:"lockType"`
@@ -7530,7 +7545,7 @@ type GetLoadBalancersBalancerLoadBalancerOperationLockInput interface {
 }
 
 type GetLoadBalancersBalancerLoadBalancerOperationLockArgs struct {
-	// The Locking of the Reasons. In 'loadbalancerbussinessstatus' **Exception When Effective,.
+	// The Locking of the Reasons.
 	LockReason pulumi.StringInput `pulumi:"lockReason"`
 	// The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
 	LockType pulumi.StringInput `pulumi:"lockType"`
@@ -7587,7 +7602,7 @@ func (o GetLoadBalancersBalancerLoadBalancerOperationLockOutput) ToGetLoadBalanc
 	return o
 }
 
-// The Locking of the Reasons. In 'loadbalancerbussinessstatus' **Exception When Effective,.
+// The Locking of the Reasons.
 func (o GetLoadBalancersBalancerLoadBalancerOperationLockOutput) LockReason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerLoadBalancerOperationLock) string { return v.LockReason }).(pulumi.StringOutput)
 }
@@ -10070,6 +10085,7 @@ type GetServerGroupsGroup struct {
 	Status string `pulumi:"status"`
 	// The configuration of the sticky session.
 	StickySessionConfigs []GetServerGroupsGroupStickySessionConfig `pulumi:"stickySessionConfigs"`
+	Tags                 map[string]interface{}                    `pulumi:"tags"`
 	// The ID of the VPC that you want to access.
 	VpcId string `pulumi:"vpcId"`
 }
@@ -10104,6 +10120,7 @@ type GetServerGroupsGroupArgs struct {
 	Status pulumi.StringInput `pulumi:"status"`
 	// The configuration of the sticky session.
 	StickySessionConfigs GetServerGroupsGroupStickySessionConfigArrayInput `pulumi:"stickySessionConfigs"`
+	Tags                 pulumi.MapInput                                   `pulumi:"tags"`
 	// The ID of the VPC that you want to access.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 }
@@ -10202,6 +10219,10 @@ func (o GetServerGroupsGroupOutput) Status() pulumi.StringOutput {
 // The configuration of the sticky session.
 func (o GetServerGroupsGroupOutput) StickySessionConfigs() GetServerGroupsGroupStickySessionConfigArrayOutput {
 	return o.ApplyT(func(v GetServerGroupsGroup) []GetServerGroupsGroupStickySessionConfig { return v.StickySessionConfigs }).(GetServerGroupsGroupStickySessionConfigArrayOutput)
+}
+
+func (o GetServerGroupsGroupOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetServerGroupsGroup) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
 // The ID of the VPC that you want to access.

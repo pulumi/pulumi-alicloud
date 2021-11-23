@@ -39,6 +39,7 @@ export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.Invo
         "addressType": args.addressType,
         "enableDetails": args.enableDetails,
         "ids": args.ids,
+        "loadBalancerBusinessStatus": args.loadBalancerBusinessStatus,
         "loadBalancerBussinessStatus": args.loadBalancerBussinessStatus,
         "loadBalancerIds": args.loadBalancerIds,
         "loadBalancerName": args.loadBalancerName,
@@ -70,7 +71,13 @@ export interface GetLoadBalancersArgs {
      */
     ids?: string[];
     /**
-     * Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.
+     * Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+     */
+    loadBalancerBusinessStatus?: string;
+    /**
+     * Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
+     *
+     * @deprecated Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be remove in the future version. Please use the new attribute 'load_balancer_business_status' instead.
      */
     loadBalancerBussinessStatus?: string;
     /**
@@ -124,6 +131,10 @@ export interface GetLoadBalancersResult {
      */
     readonly id: string;
     readonly ids: string[];
+    readonly loadBalancerBusinessStatus?: string;
+    /**
+     * @deprecated Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be remove in the future version. Please use the new attribute 'load_balancer_business_status' instead.
+     */
     readonly loadBalancerBussinessStatus?: string;
     readonly loadBalancerIds?: string[];
     readonly loadBalancerName?: string;
@@ -159,7 +170,13 @@ export interface GetLoadBalancersOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.
+     * Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+     */
+    loadBalancerBusinessStatus?: pulumi.Input<string>;
+    /**
+     * Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
+     *
+     * @deprecated Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be remove in the future version. Please use the new attribute 'load_balancer_business_status' instead.
      */
     loadBalancerBussinessStatus?: pulumi.Input<string>;
     /**

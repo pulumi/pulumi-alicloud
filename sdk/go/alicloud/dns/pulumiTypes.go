@@ -720,6 +720,8 @@ type GetAlidnsRecordsRecord struct {
 	Priority int `pulumi:"priority"`
 	// ID of the record.
 	RecordId string `pulumi:"recordId"`
+	// The remark of the domain record.  **NOTE:** Available in 1.144.0+.
+	Remark string `pulumi:"remark"`
 	// Host record of the domain.
 	Rr string `pulumi:"rr"`
 	// Record status. Valid values: `ENABLE` and `DISABLE`.
@@ -756,6 +758,8 @@ type GetAlidnsRecordsRecordArgs struct {
 	Priority pulumi.IntInput `pulumi:"priority"`
 	// ID of the record.
 	RecordId pulumi.StringInput `pulumi:"recordId"`
+	// The remark of the domain record.  **NOTE:** Available in 1.144.0+.
+	Remark pulumi.StringInput `pulumi:"remark"`
 	// Host record of the domain.
 	Rr pulumi.StringInput `pulumi:"rr"`
 	// Record status. Valid values: `ENABLE` and `DISABLE`.
@@ -847,6 +851,11 @@ func (o GetAlidnsRecordsRecordOutput) Priority() pulumi.IntOutput {
 // ID of the record.
 func (o GetAlidnsRecordsRecordOutput) RecordId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlidnsRecordsRecord) string { return v.RecordId }).(pulumi.StringOutput)
+}
+
+// The remark of the domain record.  **NOTE:** Available in 1.144.0+.
+func (o GetAlidnsRecordsRecordOutput) Remark() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsRecord) string { return v.Remark }).(pulumi.StringOutput)
 }
 
 // Host record of the domain.
