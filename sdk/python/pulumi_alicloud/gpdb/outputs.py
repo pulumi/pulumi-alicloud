@@ -9,9 +9,72 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'GetAccountsAccountResult',
     'GetInstancesInstanceResult',
     'GetZonesZoneResult',
 ]
+
+@pulumi.output_type
+class GetAccountsAccountResult(dict):
+    def __init__(__self__, *,
+                 account_description: str,
+                 account_name: str,
+                 db_instance_id: str,
+                 id: str,
+                 status: str):
+        """
+        :param str account_description: The description of the account.
+        :param str account_name: The name of the account.
+        :param str db_instance_id: The ID of the instance.
+        :param str id: The ID of the Account. Its value is same as Queue Name.
+        :param str status: The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+        """
+        pulumi.set(__self__, "account_description", account_description)
+        pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "db_instance_id", db_instance_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="accountDescription")
+    def account_description(self) -> str:
+        """
+        The description of the account.
+        """
+        return pulumi.get(self, "account_description")
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> str:
+        """
+        The name of the account.
+        """
+        return pulumi.get(self, "account_name")
+
+    @property
+    @pulumi.getter(name="dbInstanceId")
+    def db_instance_id(self) -> str:
+        """
+        The ID of the instance.
+        """
+        return pulumi.get(self, "db_instance_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Account. Its value is same as Queue Name.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+        """
+        return pulumi.get(self, "status")
+
 
 @pulumi.output_type
 class GetInstancesInstanceResult(dict):

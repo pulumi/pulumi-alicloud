@@ -2062,6 +2062,709 @@ func (o GetHavipsHavipArrayOutput) Index(i pulumi.IntInput) GetHavipsHavipOutput
 	}).(GetHavipsHavipOutput)
 }
 
+type GetIpv6AddressesAddress struct {
+	// The ID of the instance that is assigned the IPv6 address.
+	AssociatedInstanceId string `pulumi:"associatedInstanceId"`
+	// The type of the instance that is assigned the IPv6 address.
+	AssociatedInstanceType string `pulumi:"associatedInstanceType"`
+	// The time when the IPv6 address was created.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the Ipv6 Address.
+	Id string `pulumi:"id"`
+	// The address of the Ipv6 Address.
+	Ipv6Address string `pulumi:"ipv6Address"`
+	// The ID of the IPv6 address.
+	Ipv6AddressId string `pulumi:"ipv6AddressId"`
+	// The name of the IPv6 address.
+	Ipv6AddressName string `pulumi:"ipv6AddressName"`
+	// The ID of the IPv6 gateway to which the IPv6 address belongs.
+	Ipv6GatewayId string `pulumi:"ipv6GatewayId"`
+	// The type of communication supported by the IPv6 address. Valid values:`Private` or `Public`. `Private`: communication within the private network. `Public`: communication over the public network
+	NetworkType string `pulumi:"networkType"`
+	// The status of the IPv6 address. Valid values:`Pending` or `Available`.
+	Status string `pulumi:"status"`
+	// The ID of the VPC to which the IPv6 address belongs.
+	VpcId string `pulumi:"vpcId"`
+	// The ID of the vSwitch to which the IPv6 address belongs.
+	VswitchId string `pulumi:"vswitchId"`
+}
+
+// GetIpv6AddressesAddressInput is an input type that accepts GetIpv6AddressesAddressArgs and GetIpv6AddressesAddressOutput values.
+// You can construct a concrete instance of `GetIpv6AddressesAddressInput` via:
+//
+//          GetIpv6AddressesAddressArgs{...}
+type GetIpv6AddressesAddressInput interface {
+	pulumi.Input
+
+	ToGetIpv6AddressesAddressOutput() GetIpv6AddressesAddressOutput
+	ToGetIpv6AddressesAddressOutputWithContext(context.Context) GetIpv6AddressesAddressOutput
+}
+
+type GetIpv6AddressesAddressArgs struct {
+	// The ID of the instance that is assigned the IPv6 address.
+	AssociatedInstanceId pulumi.StringInput `pulumi:"associatedInstanceId"`
+	// The type of the instance that is assigned the IPv6 address.
+	AssociatedInstanceType pulumi.StringInput `pulumi:"associatedInstanceType"`
+	// The time when the IPv6 address was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the Ipv6 Address.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The address of the Ipv6 Address.
+	Ipv6Address pulumi.StringInput `pulumi:"ipv6Address"`
+	// The ID of the IPv6 address.
+	Ipv6AddressId pulumi.StringInput `pulumi:"ipv6AddressId"`
+	// The name of the IPv6 address.
+	Ipv6AddressName pulumi.StringInput `pulumi:"ipv6AddressName"`
+	// The ID of the IPv6 gateway to which the IPv6 address belongs.
+	Ipv6GatewayId pulumi.StringInput `pulumi:"ipv6GatewayId"`
+	// The type of communication supported by the IPv6 address. Valid values:`Private` or `Public`. `Private`: communication within the private network. `Public`: communication over the public network
+	NetworkType pulumi.StringInput `pulumi:"networkType"`
+	// The status of the IPv6 address. Valid values:`Pending` or `Available`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the VPC to which the IPv6 address belongs.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The ID of the vSwitch to which the IPv6 address belongs.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+}
+
+func (GetIpv6AddressesAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpv6AddressesAddress)(nil)).Elem()
+}
+
+func (i GetIpv6AddressesAddressArgs) ToGetIpv6AddressesAddressOutput() GetIpv6AddressesAddressOutput {
+	return i.ToGetIpv6AddressesAddressOutputWithContext(context.Background())
+}
+
+func (i GetIpv6AddressesAddressArgs) ToGetIpv6AddressesAddressOutputWithContext(ctx context.Context) GetIpv6AddressesAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpv6AddressesAddressOutput)
+}
+
+// GetIpv6AddressesAddressArrayInput is an input type that accepts GetIpv6AddressesAddressArray and GetIpv6AddressesAddressArrayOutput values.
+// You can construct a concrete instance of `GetIpv6AddressesAddressArrayInput` via:
+//
+//          GetIpv6AddressesAddressArray{ GetIpv6AddressesAddressArgs{...} }
+type GetIpv6AddressesAddressArrayInput interface {
+	pulumi.Input
+
+	ToGetIpv6AddressesAddressArrayOutput() GetIpv6AddressesAddressArrayOutput
+	ToGetIpv6AddressesAddressArrayOutputWithContext(context.Context) GetIpv6AddressesAddressArrayOutput
+}
+
+type GetIpv6AddressesAddressArray []GetIpv6AddressesAddressInput
+
+func (GetIpv6AddressesAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpv6AddressesAddress)(nil)).Elem()
+}
+
+func (i GetIpv6AddressesAddressArray) ToGetIpv6AddressesAddressArrayOutput() GetIpv6AddressesAddressArrayOutput {
+	return i.ToGetIpv6AddressesAddressArrayOutputWithContext(context.Background())
+}
+
+func (i GetIpv6AddressesAddressArray) ToGetIpv6AddressesAddressArrayOutputWithContext(ctx context.Context) GetIpv6AddressesAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpv6AddressesAddressArrayOutput)
+}
+
+type GetIpv6AddressesAddressOutput struct{ *pulumi.OutputState }
+
+func (GetIpv6AddressesAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpv6AddressesAddress)(nil)).Elem()
+}
+
+func (o GetIpv6AddressesAddressOutput) ToGetIpv6AddressesAddressOutput() GetIpv6AddressesAddressOutput {
+	return o
+}
+
+func (o GetIpv6AddressesAddressOutput) ToGetIpv6AddressesAddressOutputWithContext(ctx context.Context) GetIpv6AddressesAddressOutput {
+	return o
+}
+
+// The ID of the instance that is assigned the IPv6 address.
+func (o GetIpv6AddressesAddressOutput) AssociatedInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6AddressesAddress) string { return v.AssociatedInstanceId }).(pulumi.StringOutput)
+}
+
+// The type of the instance that is assigned the IPv6 address.
+func (o GetIpv6AddressesAddressOutput) AssociatedInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6AddressesAddress) string { return v.AssociatedInstanceType }).(pulumi.StringOutput)
+}
+
+// The time when the IPv6 address was created.
+func (o GetIpv6AddressesAddressOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6AddressesAddress) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Ipv6 Address.
+func (o GetIpv6AddressesAddressOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6AddressesAddress) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The address of the Ipv6 Address.
+func (o GetIpv6AddressesAddressOutput) Ipv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6AddressesAddress) string { return v.Ipv6Address }).(pulumi.StringOutput)
+}
+
+// The ID of the IPv6 address.
+func (o GetIpv6AddressesAddressOutput) Ipv6AddressId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6AddressesAddress) string { return v.Ipv6AddressId }).(pulumi.StringOutput)
+}
+
+// The name of the IPv6 address.
+func (o GetIpv6AddressesAddressOutput) Ipv6AddressName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6AddressesAddress) string { return v.Ipv6AddressName }).(pulumi.StringOutput)
+}
+
+// The ID of the IPv6 gateway to which the IPv6 address belongs.
+func (o GetIpv6AddressesAddressOutput) Ipv6GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6AddressesAddress) string { return v.Ipv6GatewayId }).(pulumi.StringOutput)
+}
+
+// The type of communication supported by the IPv6 address. Valid values:`Private` or `Public`. `Private`: communication within the private network. `Public`: communication over the public network
+func (o GetIpv6AddressesAddressOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6AddressesAddress) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// The status of the IPv6 address. Valid values:`Pending` or `Available`.
+func (o GetIpv6AddressesAddressOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6AddressesAddress) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC to which the IPv6 address belongs.
+func (o GetIpv6AddressesAddressOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6AddressesAddress) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The ID of the vSwitch to which the IPv6 address belongs.
+func (o GetIpv6AddressesAddressOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6AddressesAddress) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+type GetIpv6AddressesAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIpv6AddressesAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpv6AddressesAddress)(nil)).Elem()
+}
+
+func (o GetIpv6AddressesAddressArrayOutput) ToGetIpv6AddressesAddressArrayOutput() GetIpv6AddressesAddressArrayOutput {
+	return o
+}
+
+func (o GetIpv6AddressesAddressArrayOutput) ToGetIpv6AddressesAddressArrayOutputWithContext(ctx context.Context) GetIpv6AddressesAddressArrayOutput {
+	return o
+}
+
+func (o GetIpv6AddressesAddressArrayOutput) Index(i pulumi.IntInput) GetIpv6AddressesAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIpv6AddressesAddress {
+		return vs[0].([]GetIpv6AddressesAddress)[vs[1].(int)]
+	}).(GetIpv6AddressesAddressOutput)
+}
+
+type GetIpv6EgressRulesRule struct {
+	// The description of the egress-only rule.
+	Description string `pulumi:"description"`
+	// The ID of the Ipv6 Egress Rule. The value formats as `<ipv6_gateway_id>:<ipv6_egress_rule_id>`.
+	Id string `pulumi:"id"`
+	// The ID of the instance to which the egress-only rule is applied.
+	InstanceId string `pulumi:"instanceId"`
+	// The type of the instance to which the egress-only rule is applied.
+	InstanceType string `pulumi:"instanceType"`
+	// The first ID of the resource.
+	Ipv6EgressRuleId string `pulumi:"ipv6EgressRuleId"`
+	// The name of the resource.
+	Ipv6EgressRuleName string `pulumi:"ipv6EgressRuleName"`
+	// The ID of the IPv6 gateway.
+	Ipv6GatewayId string `pulumi:"ipv6GatewayId"`
+	// The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+	Status string `pulumi:"status"`
+}
+
+// GetIpv6EgressRulesRuleInput is an input type that accepts GetIpv6EgressRulesRuleArgs and GetIpv6EgressRulesRuleOutput values.
+// You can construct a concrete instance of `GetIpv6EgressRulesRuleInput` via:
+//
+//          GetIpv6EgressRulesRuleArgs{...}
+type GetIpv6EgressRulesRuleInput interface {
+	pulumi.Input
+
+	ToGetIpv6EgressRulesRuleOutput() GetIpv6EgressRulesRuleOutput
+	ToGetIpv6EgressRulesRuleOutputWithContext(context.Context) GetIpv6EgressRulesRuleOutput
+}
+
+type GetIpv6EgressRulesRuleArgs struct {
+	// The description of the egress-only rule.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Ipv6 Egress Rule. The value formats as `<ipv6_gateway_id>:<ipv6_egress_rule_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the instance to which the egress-only rule is applied.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The type of the instance to which the egress-only rule is applied.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The first ID of the resource.
+	Ipv6EgressRuleId pulumi.StringInput `pulumi:"ipv6EgressRuleId"`
+	// The name of the resource.
+	Ipv6EgressRuleName pulumi.StringInput `pulumi:"ipv6EgressRuleName"`
+	// The ID of the IPv6 gateway.
+	Ipv6GatewayId pulumi.StringInput `pulumi:"ipv6GatewayId"`
+	// The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetIpv6EgressRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpv6EgressRulesRule)(nil)).Elem()
+}
+
+func (i GetIpv6EgressRulesRuleArgs) ToGetIpv6EgressRulesRuleOutput() GetIpv6EgressRulesRuleOutput {
+	return i.ToGetIpv6EgressRulesRuleOutputWithContext(context.Background())
+}
+
+func (i GetIpv6EgressRulesRuleArgs) ToGetIpv6EgressRulesRuleOutputWithContext(ctx context.Context) GetIpv6EgressRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpv6EgressRulesRuleOutput)
+}
+
+// GetIpv6EgressRulesRuleArrayInput is an input type that accepts GetIpv6EgressRulesRuleArray and GetIpv6EgressRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetIpv6EgressRulesRuleArrayInput` via:
+//
+//          GetIpv6EgressRulesRuleArray{ GetIpv6EgressRulesRuleArgs{...} }
+type GetIpv6EgressRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetIpv6EgressRulesRuleArrayOutput() GetIpv6EgressRulesRuleArrayOutput
+	ToGetIpv6EgressRulesRuleArrayOutputWithContext(context.Context) GetIpv6EgressRulesRuleArrayOutput
+}
+
+type GetIpv6EgressRulesRuleArray []GetIpv6EgressRulesRuleInput
+
+func (GetIpv6EgressRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpv6EgressRulesRule)(nil)).Elem()
+}
+
+func (i GetIpv6EgressRulesRuleArray) ToGetIpv6EgressRulesRuleArrayOutput() GetIpv6EgressRulesRuleArrayOutput {
+	return i.ToGetIpv6EgressRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetIpv6EgressRulesRuleArray) ToGetIpv6EgressRulesRuleArrayOutputWithContext(ctx context.Context) GetIpv6EgressRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpv6EgressRulesRuleArrayOutput)
+}
+
+type GetIpv6EgressRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetIpv6EgressRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpv6EgressRulesRule)(nil)).Elem()
+}
+
+func (o GetIpv6EgressRulesRuleOutput) ToGetIpv6EgressRulesRuleOutput() GetIpv6EgressRulesRuleOutput {
+	return o
+}
+
+func (o GetIpv6EgressRulesRuleOutput) ToGetIpv6EgressRulesRuleOutputWithContext(ctx context.Context) GetIpv6EgressRulesRuleOutput {
+	return o
+}
+
+// The description of the egress-only rule.
+func (o GetIpv6EgressRulesRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6EgressRulesRule) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Ipv6 Egress Rule. The value formats as `<ipv6_gateway_id>:<ipv6_egress_rule_id>`.
+func (o GetIpv6EgressRulesRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6EgressRulesRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the instance to which the egress-only rule is applied.
+func (o GetIpv6EgressRulesRuleOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6EgressRulesRule) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The type of the instance to which the egress-only rule is applied.
+func (o GetIpv6EgressRulesRuleOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6EgressRulesRule) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource.
+func (o GetIpv6EgressRulesRuleOutput) Ipv6EgressRuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6EgressRulesRule) string { return v.Ipv6EgressRuleId }).(pulumi.StringOutput)
+}
+
+// The name of the resource.
+func (o GetIpv6EgressRulesRuleOutput) Ipv6EgressRuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6EgressRulesRule) string { return v.Ipv6EgressRuleName }).(pulumi.StringOutput)
+}
+
+// The ID of the IPv6 gateway.
+func (o GetIpv6EgressRulesRuleOutput) Ipv6GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6EgressRulesRule) string { return v.Ipv6GatewayId }).(pulumi.StringOutput)
+}
+
+// The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+func (o GetIpv6EgressRulesRuleOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6EgressRulesRule) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetIpv6EgressRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIpv6EgressRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpv6EgressRulesRule)(nil)).Elem()
+}
+
+func (o GetIpv6EgressRulesRuleArrayOutput) ToGetIpv6EgressRulesRuleArrayOutput() GetIpv6EgressRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetIpv6EgressRulesRuleArrayOutput) ToGetIpv6EgressRulesRuleArrayOutputWithContext(ctx context.Context) GetIpv6EgressRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetIpv6EgressRulesRuleArrayOutput) Index(i pulumi.IntInput) GetIpv6EgressRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIpv6EgressRulesRule {
+		return vs[0].([]GetIpv6EgressRulesRule)[vs[1].(int)]
+	}).(GetIpv6EgressRulesRuleOutput)
+}
+
+type GetIpv6GatewaysGateway struct {
+	// The status of the IPv6 gateway. Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`. `Normal`: working as expected. `FinancialLocked`: locked due to overdue payments. `SecurityLocked`: locked due to security reasons.
+	BusinessStatus string `pulumi:"businessStatus"`
+	// The creation time of the resource.
+	CreateTime string `pulumi:"createTime"`
+	// The description of the IPv6 gateway.
+	Description string `pulumi:"description"`
+	// The time when the IPv6 gateway expires.
+	ExpiredTime string `pulumi:"expiredTime"`
+	// The ID of the Ipv6 Gateway.
+	Id string `pulumi:"id"`
+	// The metering method of the IPv6 gateway. Valid values: `PayAsYouGo`.
+	InstanceChargeType string `pulumi:"instanceChargeType"`
+	// The first ID of the resource.
+	Ipv6GatewayId string `pulumi:"ipv6GatewayId"`
+	// The name of the IPv6 gateway.
+	Ipv6GatewayName string `pulumi:"ipv6GatewayName"`
+	// The specification of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+	Spec string `pulumi:"spec"`
+	// The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.
+	Status string `pulumi:"status"`
+	// The ID of the virtual private cloud (VPC) to which the IPv6 gateway belongs.
+	VpcId string `pulumi:"vpcId"`
+}
+
+// GetIpv6GatewaysGatewayInput is an input type that accepts GetIpv6GatewaysGatewayArgs and GetIpv6GatewaysGatewayOutput values.
+// You can construct a concrete instance of `GetIpv6GatewaysGatewayInput` via:
+//
+//          GetIpv6GatewaysGatewayArgs{...}
+type GetIpv6GatewaysGatewayInput interface {
+	pulumi.Input
+
+	ToGetIpv6GatewaysGatewayOutput() GetIpv6GatewaysGatewayOutput
+	ToGetIpv6GatewaysGatewayOutputWithContext(context.Context) GetIpv6GatewaysGatewayOutput
+}
+
+type GetIpv6GatewaysGatewayArgs struct {
+	// The status of the IPv6 gateway. Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`. `Normal`: working as expected. `FinancialLocked`: locked due to overdue payments. `SecurityLocked`: locked due to security reasons.
+	BusinessStatus pulumi.StringInput `pulumi:"businessStatus"`
+	// The creation time of the resource.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the IPv6 gateway.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The time when the IPv6 gateway expires.
+	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
+	// The ID of the Ipv6 Gateway.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The metering method of the IPv6 gateway. Valid values: `PayAsYouGo`.
+	InstanceChargeType pulumi.StringInput `pulumi:"instanceChargeType"`
+	// The first ID of the resource.
+	Ipv6GatewayId pulumi.StringInput `pulumi:"ipv6GatewayId"`
+	// The name of the IPv6 gateway.
+	Ipv6GatewayName pulumi.StringInput `pulumi:"ipv6GatewayName"`
+	// The specification of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+	Spec pulumi.StringInput `pulumi:"spec"`
+	// The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the virtual private cloud (VPC) to which the IPv6 gateway belongs.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+}
+
+func (GetIpv6GatewaysGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpv6GatewaysGateway)(nil)).Elem()
+}
+
+func (i GetIpv6GatewaysGatewayArgs) ToGetIpv6GatewaysGatewayOutput() GetIpv6GatewaysGatewayOutput {
+	return i.ToGetIpv6GatewaysGatewayOutputWithContext(context.Background())
+}
+
+func (i GetIpv6GatewaysGatewayArgs) ToGetIpv6GatewaysGatewayOutputWithContext(ctx context.Context) GetIpv6GatewaysGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpv6GatewaysGatewayOutput)
+}
+
+// GetIpv6GatewaysGatewayArrayInput is an input type that accepts GetIpv6GatewaysGatewayArray and GetIpv6GatewaysGatewayArrayOutput values.
+// You can construct a concrete instance of `GetIpv6GatewaysGatewayArrayInput` via:
+//
+//          GetIpv6GatewaysGatewayArray{ GetIpv6GatewaysGatewayArgs{...} }
+type GetIpv6GatewaysGatewayArrayInput interface {
+	pulumi.Input
+
+	ToGetIpv6GatewaysGatewayArrayOutput() GetIpv6GatewaysGatewayArrayOutput
+	ToGetIpv6GatewaysGatewayArrayOutputWithContext(context.Context) GetIpv6GatewaysGatewayArrayOutput
+}
+
+type GetIpv6GatewaysGatewayArray []GetIpv6GatewaysGatewayInput
+
+func (GetIpv6GatewaysGatewayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpv6GatewaysGateway)(nil)).Elem()
+}
+
+func (i GetIpv6GatewaysGatewayArray) ToGetIpv6GatewaysGatewayArrayOutput() GetIpv6GatewaysGatewayArrayOutput {
+	return i.ToGetIpv6GatewaysGatewayArrayOutputWithContext(context.Background())
+}
+
+func (i GetIpv6GatewaysGatewayArray) ToGetIpv6GatewaysGatewayArrayOutputWithContext(ctx context.Context) GetIpv6GatewaysGatewayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpv6GatewaysGatewayArrayOutput)
+}
+
+type GetIpv6GatewaysGatewayOutput struct{ *pulumi.OutputState }
+
+func (GetIpv6GatewaysGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpv6GatewaysGateway)(nil)).Elem()
+}
+
+func (o GetIpv6GatewaysGatewayOutput) ToGetIpv6GatewaysGatewayOutput() GetIpv6GatewaysGatewayOutput {
+	return o
+}
+
+func (o GetIpv6GatewaysGatewayOutput) ToGetIpv6GatewaysGatewayOutputWithContext(ctx context.Context) GetIpv6GatewaysGatewayOutput {
+	return o
+}
+
+// The status of the IPv6 gateway. Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`. `Normal`: working as expected. `FinancialLocked`: locked due to overdue payments. `SecurityLocked`: locked due to security reasons.
+func (o GetIpv6GatewaysGatewayOutput) BusinessStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6GatewaysGateway) string { return v.BusinessStatus }).(pulumi.StringOutput)
+}
+
+// The creation time of the resource.
+func (o GetIpv6GatewaysGatewayOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6GatewaysGateway) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the IPv6 gateway.
+func (o GetIpv6GatewaysGatewayOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6GatewaysGateway) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The time when the IPv6 gateway expires.
+func (o GetIpv6GatewaysGatewayOutput) ExpiredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6GatewaysGateway) string { return v.ExpiredTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Ipv6 Gateway.
+func (o GetIpv6GatewaysGatewayOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6GatewaysGateway) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The metering method of the IPv6 gateway. Valid values: `PayAsYouGo`.
+func (o GetIpv6GatewaysGatewayOutput) InstanceChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6GatewaysGateway) string { return v.InstanceChargeType }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource.
+func (o GetIpv6GatewaysGatewayOutput) Ipv6GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6GatewaysGateway) string { return v.Ipv6GatewayId }).(pulumi.StringOutput)
+}
+
+// The name of the IPv6 gateway.
+func (o GetIpv6GatewaysGatewayOutput) Ipv6GatewayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6GatewaysGateway) string { return v.Ipv6GatewayName }).(pulumi.StringOutput)
+}
+
+// The specification of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+func (o GetIpv6GatewaysGatewayOutput) Spec() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6GatewaysGateway) string { return v.Spec }).(pulumi.StringOutput)
+}
+
+// The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.
+func (o GetIpv6GatewaysGatewayOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6GatewaysGateway) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the virtual private cloud (VPC) to which the IPv6 gateway belongs.
+func (o GetIpv6GatewaysGatewayOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6GatewaysGateway) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+type GetIpv6GatewaysGatewayArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIpv6GatewaysGatewayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpv6GatewaysGateway)(nil)).Elem()
+}
+
+func (o GetIpv6GatewaysGatewayArrayOutput) ToGetIpv6GatewaysGatewayArrayOutput() GetIpv6GatewaysGatewayArrayOutput {
+	return o
+}
+
+func (o GetIpv6GatewaysGatewayArrayOutput) ToGetIpv6GatewaysGatewayArrayOutputWithContext(ctx context.Context) GetIpv6GatewaysGatewayArrayOutput {
+	return o
+}
+
+func (o GetIpv6GatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetIpv6GatewaysGatewayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIpv6GatewaysGateway {
+		return vs[0].([]GetIpv6GatewaysGateway)[vs[1].(int)]
+	}).(GetIpv6GatewaysGatewayOutput)
+}
+
+type GetIpv6InternetBandwidthsBandwidth struct {
+	// The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`.
+	Bandwidth int `pulumi:"bandwidth"`
+	// The ID of the Ipv6 Internet Bandwidth.
+	Id string `pulumi:"id"`
+	// The metering method of the Internet bandwidth resources of the IPv6 gateway.
+	InternetChargeType string `pulumi:"internetChargeType"`
+	// The ID of the IPv6 address.
+	Ipv6AddressId string `pulumi:"ipv6AddressId"`
+	// The ID of the IPv6 gateway.
+	Ipv6GatewayId string `pulumi:"ipv6GatewayId"`
+	// The ID of the Ipv6 Internet Bandwidth.
+	Ipv6InternetBandwidthId string `pulumi:"ipv6InternetBandwidthId"`
+	// The payment type of the resource.
+	PaymentType string `pulumi:"paymentType"`
+	// The status of the resource. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
+	Status string `pulumi:"status"`
+}
+
+// GetIpv6InternetBandwidthsBandwidthInput is an input type that accepts GetIpv6InternetBandwidthsBandwidthArgs and GetIpv6InternetBandwidthsBandwidthOutput values.
+// You can construct a concrete instance of `GetIpv6InternetBandwidthsBandwidthInput` via:
+//
+//          GetIpv6InternetBandwidthsBandwidthArgs{...}
+type GetIpv6InternetBandwidthsBandwidthInput interface {
+	pulumi.Input
+
+	ToGetIpv6InternetBandwidthsBandwidthOutput() GetIpv6InternetBandwidthsBandwidthOutput
+	ToGetIpv6InternetBandwidthsBandwidthOutputWithContext(context.Context) GetIpv6InternetBandwidthsBandwidthOutput
+}
+
+type GetIpv6InternetBandwidthsBandwidthArgs struct {
+	// The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`.
+	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
+	// The ID of the Ipv6 Internet Bandwidth.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The metering method of the Internet bandwidth resources of the IPv6 gateway.
+	InternetChargeType pulumi.StringInput `pulumi:"internetChargeType"`
+	// The ID of the IPv6 address.
+	Ipv6AddressId pulumi.StringInput `pulumi:"ipv6AddressId"`
+	// The ID of the IPv6 gateway.
+	Ipv6GatewayId pulumi.StringInput `pulumi:"ipv6GatewayId"`
+	// The ID of the Ipv6 Internet Bandwidth.
+	Ipv6InternetBandwidthId pulumi.StringInput `pulumi:"ipv6InternetBandwidthId"`
+	// The payment type of the resource.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// The status of the resource. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetIpv6InternetBandwidthsBandwidthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpv6InternetBandwidthsBandwidth)(nil)).Elem()
+}
+
+func (i GetIpv6InternetBandwidthsBandwidthArgs) ToGetIpv6InternetBandwidthsBandwidthOutput() GetIpv6InternetBandwidthsBandwidthOutput {
+	return i.ToGetIpv6InternetBandwidthsBandwidthOutputWithContext(context.Background())
+}
+
+func (i GetIpv6InternetBandwidthsBandwidthArgs) ToGetIpv6InternetBandwidthsBandwidthOutputWithContext(ctx context.Context) GetIpv6InternetBandwidthsBandwidthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpv6InternetBandwidthsBandwidthOutput)
+}
+
+// GetIpv6InternetBandwidthsBandwidthArrayInput is an input type that accepts GetIpv6InternetBandwidthsBandwidthArray and GetIpv6InternetBandwidthsBandwidthArrayOutput values.
+// You can construct a concrete instance of `GetIpv6InternetBandwidthsBandwidthArrayInput` via:
+//
+//          GetIpv6InternetBandwidthsBandwidthArray{ GetIpv6InternetBandwidthsBandwidthArgs{...} }
+type GetIpv6InternetBandwidthsBandwidthArrayInput interface {
+	pulumi.Input
+
+	ToGetIpv6InternetBandwidthsBandwidthArrayOutput() GetIpv6InternetBandwidthsBandwidthArrayOutput
+	ToGetIpv6InternetBandwidthsBandwidthArrayOutputWithContext(context.Context) GetIpv6InternetBandwidthsBandwidthArrayOutput
+}
+
+type GetIpv6InternetBandwidthsBandwidthArray []GetIpv6InternetBandwidthsBandwidthInput
+
+func (GetIpv6InternetBandwidthsBandwidthArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpv6InternetBandwidthsBandwidth)(nil)).Elem()
+}
+
+func (i GetIpv6InternetBandwidthsBandwidthArray) ToGetIpv6InternetBandwidthsBandwidthArrayOutput() GetIpv6InternetBandwidthsBandwidthArrayOutput {
+	return i.ToGetIpv6InternetBandwidthsBandwidthArrayOutputWithContext(context.Background())
+}
+
+func (i GetIpv6InternetBandwidthsBandwidthArray) ToGetIpv6InternetBandwidthsBandwidthArrayOutputWithContext(ctx context.Context) GetIpv6InternetBandwidthsBandwidthArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpv6InternetBandwidthsBandwidthArrayOutput)
+}
+
+type GetIpv6InternetBandwidthsBandwidthOutput struct{ *pulumi.OutputState }
+
+func (GetIpv6InternetBandwidthsBandwidthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpv6InternetBandwidthsBandwidth)(nil)).Elem()
+}
+
+func (o GetIpv6InternetBandwidthsBandwidthOutput) ToGetIpv6InternetBandwidthsBandwidthOutput() GetIpv6InternetBandwidthsBandwidthOutput {
+	return o
+}
+
+func (o GetIpv6InternetBandwidthsBandwidthOutput) ToGetIpv6InternetBandwidthsBandwidthOutputWithContext(ctx context.Context) GetIpv6InternetBandwidthsBandwidthOutput {
+	return o
+}
+
+// The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`.
+func (o GetIpv6InternetBandwidthsBandwidthOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIpv6InternetBandwidthsBandwidth) int { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// The ID of the Ipv6 Internet Bandwidth.
+func (o GetIpv6InternetBandwidthsBandwidthOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6InternetBandwidthsBandwidth) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The metering method of the Internet bandwidth resources of the IPv6 gateway.
+func (o GetIpv6InternetBandwidthsBandwidthOutput) InternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6InternetBandwidthsBandwidth) string { return v.InternetChargeType }).(pulumi.StringOutput)
+}
+
+// The ID of the IPv6 address.
+func (o GetIpv6InternetBandwidthsBandwidthOutput) Ipv6AddressId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6InternetBandwidthsBandwidth) string { return v.Ipv6AddressId }).(pulumi.StringOutput)
+}
+
+// The ID of the IPv6 gateway.
+func (o GetIpv6InternetBandwidthsBandwidthOutput) Ipv6GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6InternetBandwidthsBandwidth) string { return v.Ipv6GatewayId }).(pulumi.StringOutput)
+}
+
+// The ID of the Ipv6 Internet Bandwidth.
+func (o GetIpv6InternetBandwidthsBandwidthOutput) Ipv6InternetBandwidthId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6InternetBandwidthsBandwidth) string { return v.Ipv6InternetBandwidthId }).(pulumi.StringOutput)
+}
+
+// The payment type of the resource.
+func (o GetIpv6InternetBandwidthsBandwidthOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6InternetBandwidthsBandwidth) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The status of the resource. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
+func (o GetIpv6InternetBandwidthsBandwidthOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6InternetBandwidthsBandwidth) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetIpv6InternetBandwidthsBandwidthArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIpv6InternetBandwidthsBandwidthArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpv6InternetBandwidthsBandwidth)(nil)).Elem()
+}
+
+func (o GetIpv6InternetBandwidthsBandwidthArrayOutput) ToGetIpv6InternetBandwidthsBandwidthArrayOutput() GetIpv6InternetBandwidthsBandwidthArrayOutput {
+	return o
+}
+
+func (o GetIpv6InternetBandwidthsBandwidthArrayOutput) ToGetIpv6InternetBandwidthsBandwidthArrayOutputWithContext(ctx context.Context) GetIpv6InternetBandwidthsBandwidthArrayOutput {
+	return o
+}
+
+func (o GetIpv6InternetBandwidthsBandwidthArrayOutput) Index(i pulumi.IntInput) GetIpv6InternetBandwidthsBandwidthOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIpv6InternetBandwidthsBandwidth {
+		return vs[0].([]GetIpv6InternetBandwidthsBandwidth)[vs[1].(int)]
+	}).(GetIpv6InternetBandwidthsBandwidthOutput)
+}
+
 type GetNatGatewaysGateway struct {
 	// The state of the NAT gateway.
 	BusinessStatus string `pulumi:"businessStatus"`
@@ -5341,6 +6044,220 @@ func (o GetTrafficMirrorFiltersFilterArrayOutput) Index(i pulumi.IntInput) GetTr
 	}).(GetTrafficMirrorFiltersFilterOutput)
 }
 
+type GetTrafficMirrorSessionsSession struct {
+	// Indicates whether traffic mirror sessions are enabled. default to `false`.
+	Enabled bool `pulumi:"enabled"`
+	// The ID of the Traffic Mirror Session.
+	Id string `pulumi:"id"`
+	// The maximum transmission unit (MTU).
+	PacketLength int `pulumi:"packetLength"`
+	// The priority of the traffic mirror session. A smaller value indicates a higher priority.
+	Priority int `pulumi:"priority"`
+	// The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
+	Status string `pulumi:"status"`
+	// The ID of the filter.
+	TrafficMirrorFilterId string `pulumi:"trafficMirrorFilterId"`
+	// The state of the traffic mirror session. Valid values: `Normal` or `FinancialLocked`. `Normal`: working as expected. `FinancialLocked`: locked due to overdue payments.
+	TrafficMirrorSessionBusinessStatus string `pulumi:"trafficMirrorSessionBusinessStatus"`
+	// The description of the traffic mirror session.
+	TrafficMirrorSessionDescription string `pulumi:"trafficMirrorSessionDescription"`
+	// The first ID of the resource.
+	TrafficMirrorSessionId string `pulumi:"trafficMirrorSessionId"`
+	// The name of the traffic mirror session.
+	TrafficMirrorSessionName string `pulumi:"trafficMirrorSessionName"`
+	// The ID of the mirror source.
+	TrafficMirrorSourceIds []string `pulumi:"trafficMirrorSourceIds"`
+	// The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
+	TrafficMirrorTargetId string `pulumi:"trafficMirrorTargetId"`
+	// The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance
+	TrafficMirrorTargetType string `pulumi:"trafficMirrorTargetType"`
+	// You can specify VNIs to distinguish different mirrored traffic.
+	VirtualNetworkId int `pulumi:"virtualNetworkId"`
+}
+
+// GetTrafficMirrorSessionsSessionInput is an input type that accepts GetTrafficMirrorSessionsSessionArgs and GetTrafficMirrorSessionsSessionOutput values.
+// You can construct a concrete instance of `GetTrafficMirrorSessionsSessionInput` via:
+//
+//          GetTrafficMirrorSessionsSessionArgs{...}
+type GetTrafficMirrorSessionsSessionInput interface {
+	pulumi.Input
+
+	ToGetTrafficMirrorSessionsSessionOutput() GetTrafficMirrorSessionsSessionOutput
+	ToGetTrafficMirrorSessionsSessionOutputWithContext(context.Context) GetTrafficMirrorSessionsSessionOutput
+}
+
+type GetTrafficMirrorSessionsSessionArgs struct {
+	// Indicates whether traffic mirror sessions are enabled. default to `false`.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The ID of the Traffic Mirror Session.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The maximum transmission unit (MTU).
+	PacketLength pulumi.IntInput `pulumi:"packetLength"`
+	// The priority of the traffic mirror session. A smaller value indicates a higher priority.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the filter.
+	TrafficMirrorFilterId pulumi.StringInput `pulumi:"trafficMirrorFilterId"`
+	// The state of the traffic mirror session. Valid values: `Normal` or `FinancialLocked`. `Normal`: working as expected. `FinancialLocked`: locked due to overdue payments.
+	TrafficMirrorSessionBusinessStatus pulumi.StringInput `pulumi:"trafficMirrorSessionBusinessStatus"`
+	// The description of the traffic mirror session.
+	TrafficMirrorSessionDescription pulumi.StringInput `pulumi:"trafficMirrorSessionDescription"`
+	// The first ID of the resource.
+	TrafficMirrorSessionId pulumi.StringInput `pulumi:"trafficMirrorSessionId"`
+	// The name of the traffic mirror session.
+	TrafficMirrorSessionName pulumi.StringInput `pulumi:"trafficMirrorSessionName"`
+	// The ID of the mirror source.
+	TrafficMirrorSourceIds pulumi.StringArrayInput `pulumi:"trafficMirrorSourceIds"`
+	// The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
+	TrafficMirrorTargetId pulumi.StringInput `pulumi:"trafficMirrorTargetId"`
+	// The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance
+	TrafficMirrorTargetType pulumi.StringInput `pulumi:"trafficMirrorTargetType"`
+	// You can specify VNIs to distinguish different mirrored traffic.
+	VirtualNetworkId pulumi.IntInput `pulumi:"virtualNetworkId"`
+}
+
+func (GetTrafficMirrorSessionsSessionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTrafficMirrorSessionsSession)(nil)).Elem()
+}
+
+func (i GetTrafficMirrorSessionsSessionArgs) ToGetTrafficMirrorSessionsSessionOutput() GetTrafficMirrorSessionsSessionOutput {
+	return i.ToGetTrafficMirrorSessionsSessionOutputWithContext(context.Background())
+}
+
+func (i GetTrafficMirrorSessionsSessionArgs) ToGetTrafficMirrorSessionsSessionOutputWithContext(ctx context.Context) GetTrafficMirrorSessionsSessionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTrafficMirrorSessionsSessionOutput)
+}
+
+// GetTrafficMirrorSessionsSessionArrayInput is an input type that accepts GetTrafficMirrorSessionsSessionArray and GetTrafficMirrorSessionsSessionArrayOutput values.
+// You can construct a concrete instance of `GetTrafficMirrorSessionsSessionArrayInput` via:
+//
+//          GetTrafficMirrorSessionsSessionArray{ GetTrafficMirrorSessionsSessionArgs{...} }
+type GetTrafficMirrorSessionsSessionArrayInput interface {
+	pulumi.Input
+
+	ToGetTrafficMirrorSessionsSessionArrayOutput() GetTrafficMirrorSessionsSessionArrayOutput
+	ToGetTrafficMirrorSessionsSessionArrayOutputWithContext(context.Context) GetTrafficMirrorSessionsSessionArrayOutput
+}
+
+type GetTrafficMirrorSessionsSessionArray []GetTrafficMirrorSessionsSessionInput
+
+func (GetTrafficMirrorSessionsSessionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTrafficMirrorSessionsSession)(nil)).Elem()
+}
+
+func (i GetTrafficMirrorSessionsSessionArray) ToGetTrafficMirrorSessionsSessionArrayOutput() GetTrafficMirrorSessionsSessionArrayOutput {
+	return i.ToGetTrafficMirrorSessionsSessionArrayOutputWithContext(context.Background())
+}
+
+func (i GetTrafficMirrorSessionsSessionArray) ToGetTrafficMirrorSessionsSessionArrayOutputWithContext(ctx context.Context) GetTrafficMirrorSessionsSessionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTrafficMirrorSessionsSessionArrayOutput)
+}
+
+type GetTrafficMirrorSessionsSessionOutput struct{ *pulumi.OutputState }
+
+func (GetTrafficMirrorSessionsSessionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTrafficMirrorSessionsSession)(nil)).Elem()
+}
+
+func (o GetTrafficMirrorSessionsSessionOutput) ToGetTrafficMirrorSessionsSessionOutput() GetTrafficMirrorSessionsSessionOutput {
+	return o
+}
+
+func (o GetTrafficMirrorSessionsSessionOutput) ToGetTrafficMirrorSessionsSessionOutputWithContext(ctx context.Context) GetTrafficMirrorSessionsSessionOutput {
+	return o
+}
+
+// Indicates whether traffic mirror sessions are enabled. default to `false`.
+func (o GetTrafficMirrorSessionsSessionOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTrafficMirrorSessionsSession) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The ID of the Traffic Mirror Session.
+func (o GetTrafficMirrorSessionsSessionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMirrorSessionsSession) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The maximum transmission unit (MTU).
+func (o GetTrafficMirrorSessionsSessionOutput) PacketLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTrafficMirrorSessionsSession) int { return v.PacketLength }).(pulumi.IntOutput)
+}
+
+// The priority of the traffic mirror session. A smaller value indicates a higher priority.
+func (o GetTrafficMirrorSessionsSessionOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTrafficMirrorSessionsSession) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
+func (o GetTrafficMirrorSessionsSessionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMirrorSessionsSession) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the filter.
+func (o GetTrafficMirrorSessionsSessionOutput) TrafficMirrorFilterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMirrorSessionsSession) string { return v.TrafficMirrorFilterId }).(pulumi.StringOutput)
+}
+
+// The state of the traffic mirror session. Valid values: `Normal` or `FinancialLocked`. `Normal`: working as expected. `FinancialLocked`: locked due to overdue payments.
+func (o GetTrafficMirrorSessionsSessionOutput) TrafficMirrorSessionBusinessStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMirrorSessionsSession) string { return v.TrafficMirrorSessionBusinessStatus }).(pulumi.StringOutput)
+}
+
+// The description of the traffic mirror session.
+func (o GetTrafficMirrorSessionsSessionOutput) TrafficMirrorSessionDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMirrorSessionsSession) string { return v.TrafficMirrorSessionDescription }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource.
+func (o GetTrafficMirrorSessionsSessionOutput) TrafficMirrorSessionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMirrorSessionsSession) string { return v.TrafficMirrorSessionId }).(pulumi.StringOutput)
+}
+
+// The name of the traffic mirror session.
+func (o GetTrafficMirrorSessionsSessionOutput) TrafficMirrorSessionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMirrorSessionsSession) string { return v.TrafficMirrorSessionName }).(pulumi.StringOutput)
+}
+
+// The ID of the mirror source.
+func (o GetTrafficMirrorSessionsSessionOutput) TrafficMirrorSourceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTrafficMirrorSessionsSession) []string { return v.TrafficMirrorSourceIds }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
+func (o GetTrafficMirrorSessionsSessionOutput) TrafficMirrorTargetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMirrorSessionsSession) string { return v.TrafficMirrorTargetId }).(pulumi.StringOutput)
+}
+
+// The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance
+func (o GetTrafficMirrorSessionsSessionOutput) TrafficMirrorTargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTrafficMirrorSessionsSession) string { return v.TrafficMirrorTargetType }).(pulumi.StringOutput)
+}
+
+// You can specify VNIs to distinguish different mirrored traffic.
+func (o GetTrafficMirrorSessionsSessionOutput) VirtualNetworkId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTrafficMirrorSessionsSession) int { return v.VirtualNetworkId }).(pulumi.IntOutput)
+}
+
+type GetTrafficMirrorSessionsSessionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTrafficMirrorSessionsSessionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTrafficMirrorSessionsSession)(nil)).Elem()
+}
+
+func (o GetTrafficMirrorSessionsSessionArrayOutput) ToGetTrafficMirrorSessionsSessionArrayOutput() GetTrafficMirrorSessionsSessionArrayOutput {
+	return o
+}
+
+func (o GetTrafficMirrorSessionsSessionArrayOutput) ToGetTrafficMirrorSessionsSessionArrayOutputWithContext(ctx context.Context) GetTrafficMirrorSessionsSessionArrayOutput {
+	return o
+}
+
+func (o GetTrafficMirrorSessionsSessionArrayOutput) Index(i pulumi.IntInput) GetTrafficMirrorSessionsSessionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTrafficMirrorSessionsSession {
+		return vs[0].([]GetTrafficMirrorSessionsSession)[vs[1].(int)]
+	}).(GetTrafficMirrorSessionsSessionOutput)
+}
+
 type GetVpcFlowLogsLog struct {
 	// The Description of flow log.
 	Description string `pulumi:"description"`
@@ -5548,6 +6465,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardEntriesEntryArrayInput)(nil)).Elem(), GetForwardEntriesEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHavipsHavipInput)(nil)).Elem(), GetHavipsHavipArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHavipsHavipArrayInput)(nil)).Elem(), GetHavipsHavipArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6AddressesAddressInput)(nil)).Elem(), GetIpv6AddressesAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6AddressesAddressArrayInput)(nil)).Elem(), GetIpv6AddressesAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6EgressRulesRuleInput)(nil)).Elem(), GetIpv6EgressRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6EgressRulesRuleArrayInput)(nil)).Elem(), GetIpv6EgressRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6GatewaysGatewayInput)(nil)).Elem(), GetIpv6GatewaysGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6GatewaysGatewayArrayInput)(nil)).Elem(), GetIpv6GatewaysGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6InternetBandwidthsBandwidthInput)(nil)).Elem(), GetIpv6InternetBandwidthsBandwidthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6InternetBandwidthsBandwidthArrayInput)(nil)).Elem(), GetIpv6InternetBandwidthsBandwidthArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNatGatewaysGatewayInput)(nil)).Elem(), GetNatGatewaysGatewayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNatGatewaysGatewayArrayInput)(nil)).Elem(), GetNatGatewaysGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNatIpCidrsCidrInput)(nil)).Elem(), GetNatIpCidrsCidrArgs{})
@@ -5584,6 +6509,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTrafficMirrorFilterIngressRulesRuleArrayInput)(nil)).Elem(), GetTrafficMirrorFilterIngressRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTrafficMirrorFiltersFilterInput)(nil)).Elem(), GetTrafficMirrorFiltersFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTrafficMirrorFiltersFilterArrayInput)(nil)).Elem(), GetTrafficMirrorFiltersFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTrafficMirrorSessionsSessionInput)(nil)).Elem(), GetTrafficMirrorSessionsSessionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTrafficMirrorSessionsSessionArrayInput)(nil)).Elem(), GetTrafficMirrorSessionsSessionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFlowLogsLogInput)(nil)).Elem(), GetVpcFlowLogsLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFlowLogsLogArrayInput)(nil)).Elem(), GetVpcFlowLogsLogArray{})
 	pulumi.RegisterOutputType(DhcpOptionsSetAssociateVpcOutput{})
@@ -5614,6 +6541,14 @@ func init() {
 	pulumi.RegisterOutputType(GetForwardEntriesEntryArrayOutput{})
 	pulumi.RegisterOutputType(GetHavipsHavipOutput{})
 	pulumi.RegisterOutputType(GetHavipsHavipArrayOutput{})
+	pulumi.RegisterOutputType(GetIpv6AddressesAddressOutput{})
+	pulumi.RegisterOutputType(GetIpv6AddressesAddressArrayOutput{})
+	pulumi.RegisterOutputType(GetIpv6EgressRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetIpv6EgressRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetIpv6GatewaysGatewayOutput{})
+	pulumi.RegisterOutputType(GetIpv6GatewaysGatewayArrayOutput{})
+	pulumi.RegisterOutputType(GetIpv6InternetBandwidthsBandwidthOutput{})
+	pulumi.RegisterOutputType(GetIpv6InternetBandwidthsBandwidthArrayOutput{})
 	pulumi.RegisterOutputType(GetNatGatewaysGatewayOutput{})
 	pulumi.RegisterOutputType(GetNatGatewaysGatewayArrayOutput{})
 	pulumi.RegisterOutputType(GetNatIpCidrsCidrOutput{})
@@ -5650,6 +6585,8 @@ func init() {
 	pulumi.RegisterOutputType(GetTrafficMirrorFilterIngressRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetTrafficMirrorFiltersFilterOutput{})
 	pulumi.RegisterOutputType(GetTrafficMirrorFiltersFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetTrafficMirrorSessionsSessionOutput{})
+	pulumi.RegisterOutputType(GetTrafficMirrorSessionsSessionArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcFlowLogsLogOutput{})
 	pulumi.RegisterOutputType(GetVpcFlowLogsLogArrayOutput{})
 }

@@ -5,8 +5,10 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .account import *
 from .connection import *
 from .elastic_instance import *
+from .get_accounts import *
 from .get_instances import *
 from .get_zones import *
 from .instance import *

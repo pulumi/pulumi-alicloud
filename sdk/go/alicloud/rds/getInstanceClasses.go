@@ -71,7 +71,7 @@ type GetInstanceClassesArgs struct {
 	MultiZone  *bool   `pulumi:"multiZone"`
 	OutputFile *string `pulumi:"outputFile"`
 	SortedBy   *string `pulumi:"sortedBy"`
-	// It has been deprecated from verison 1.134.0+ and using `dbInstanceStorageType` instead.
+	// It has been deprecated from version 1.134.0+ and using `dbInstanceStorageType` instead.
 	StorageType *string `pulumi:"storageType"`
 	// The Zone to launch the DB instance.
 	ZoneId *string `pulumi:"zoneId"`
@@ -125,7 +125,7 @@ type GetInstanceClassesOutputArgs struct {
 	MultiZone  pulumi.BoolPtrInput   `pulumi:"multiZone"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	SortedBy   pulumi.StringPtrInput `pulumi:"sortedBy"`
-	// It has been deprecated from verison 1.134.0+ and using `dbInstanceStorageType` instead.
+	// It has been deprecated from version 1.134.0+ and using `dbInstanceStorageType` instead.
 	StorageType pulumi.StringPtrInput `pulumi:"storageType"`
 	// The Zone to launch the DB instance.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`

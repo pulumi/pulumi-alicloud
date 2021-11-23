@@ -62,7 +62,7 @@ export class MscSubContract extends pulumi.CustomResource {
     }
 
     /**
-     * The User's Contact Name. **Note:** The name must be 2 to 12 characters in length, and can contain uppercase and lowercase letters.
+     * The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
      */
     public readonly contactName!: pulumi.Output<string>;
     /**
@@ -74,7 +74,7 @@ export class MscSubContract extends pulumi.CustomResource {
      */
     public readonly mobile!: pulumi.Output<string>;
     /**
-     * The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
+     * The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
      */
     public readonly position!: pulumi.Output<string>;
 
@@ -126,7 +126,7 @@ export class MscSubContract extends pulumi.CustomResource {
  */
 export interface MscSubContractState {
     /**
-     * The User's Contact Name. **Note:** The name must be 2 to 12 characters in length, and can contain uppercase and lowercase letters.
+     * The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
      */
     contactName?: pulumi.Input<string>;
     /**
@@ -138,7 +138,7 @@ export interface MscSubContractState {
      */
     mobile?: pulumi.Input<string>;
     /**
-     * The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
+     * The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
      */
     position?: pulumi.Input<string>;
 }
@@ -148,7 +148,7 @@ export interface MscSubContractState {
  */
 export interface MscSubContractArgs {
     /**
-     * The User's Contact Name. **Note:** The name must be 2 to 12 characters in length, and can contain uppercase and lowercase letters.
+     * The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
      */
     contactName: pulumi.Input<string>;
     /**
@@ -160,7 +160,7 @@ export interface MscSubContractArgs {
      */
     mobile: pulumi.Input<string>;
     /**
-     * The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
+     * The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
      */
     position: pulumi.Input<string>;
 }

@@ -330,6 +330,7 @@ class BucketLifecycleRuleExpiration(dict):
         :param str created_before_date: Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
         :param str date: Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
         :param int days: Specifies the number of days noncurrent object versions transition.
+        :param bool expired_object_delete_marker: On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
         """
         if created_before_date is not None:
             pulumi.set(__self__, "created_before_date", created_before_date)
@@ -367,6 +368,9 @@ class BucketLifecycleRuleExpiration(dict):
     @property
     @pulumi.getter(name="expiredObjectDeleteMarker")
     def expired_object_delete_marker(self) -> Optional[bool]:
+        """
+        On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
+        """
         return pulumi.get(self, "expired_object_delete_marker")
 
 

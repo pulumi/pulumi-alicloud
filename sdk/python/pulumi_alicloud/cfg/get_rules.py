@@ -184,7 +184,7 @@ def get_rules(config_rule_state: Optional[str] = None,
 
     > **NOTE:**  Available in 1.99.0+.
 
-    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-northeast-1`.
+    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
 
     ## Example Usage
 
@@ -258,7 +258,7 @@ def get_rules_output(config_rule_state: Optional[pulumi.Input[Optional[str]]] = 
 
     > **NOTE:**  Available in 1.99.0+.
 
-    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-northeast-1`.
+    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
 
     ## Example Usage
 

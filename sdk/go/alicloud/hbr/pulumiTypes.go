@@ -10,6 +10,184 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type ServerBackupPlanDetail struct {
+	// Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
+	AppConsistent bool `pulumi:"appConsistent"`
+	// Only vaild when DoCopy is true. The destination region ID when replicating to another region. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	DestinationRegionId *string `pulumi:"destinationRegionId"`
+	// Only vaild when DoCopy is true. The retention days of the destination backup. When not specified, the destination backup will be saved permanently. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	DestinationRetention *int `pulumi:"destinationRetention"`
+	// The list of cloud disks to be backed up in the ECS instance. When not specified, a snapshot is executed for all the disks on the ECS instance.
+	DiskIdLists []string `pulumi:"diskIdLists"`
+	// Whether replicate to another region. Valid values: `true`, `false`.
+	DoCopy *bool `pulumi:"doCopy"`
+	// Only the Linux system is valid. Whether to use the Linux FsFreeze mechanism to ensure that the file system is read-only consistent before creating a storage snapshot. The default is True. Valid values: `true`, `false`.
+	EnableFsFreeze *bool `pulumi:"enableFsFreeze"`
+	// Only vaild for the linux system when AppConsistent is true. The application thaw script path (e.g. /tmp/postscript.sh). The postscript.sh script must meet the following conditions: in terms of permissions, only the root user as the owner has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+	PostScriptPath *string `pulumi:"postScriptPath"`
+	// Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+	PreScriptPath *string `pulumi:"preScriptPath"`
+	// Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
+	SnapshotGroup bool `pulumi:"snapshotGroup"`
+	// Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
+	TimeoutInSeconds *int `pulumi:"timeoutInSeconds"`
+}
+
+// ServerBackupPlanDetailInput is an input type that accepts ServerBackupPlanDetailArgs and ServerBackupPlanDetailOutput values.
+// You can construct a concrete instance of `ServerBackupPlanDetailInput` via:
+//
+//          ServerBackupPlanDetailArgs{...}
+type ServerBackupPlanDetailInput interface {
+	pulumi.Input
+
+	ToServerBackupPlanDetailOutput() ServerBackupPlanDetailOutput
+	ToServerBackupPlanDetailOutputWithContext(context.Context) ServerBackupPlanDetailOutput
+}
+
+type ServerBackupPlanDetailArgs struct {
+	// Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
+	AppConsistent pulumi.BoolInput `pulumi:"appConsistent"`
+	// Only vaild when DoCopy is true. The destination region ID when replicating to another region. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	DestinationRegionId pulumi.StringPtrInput `pulumi:"destinationRegionId"`
+	// Only vaild when DoCopy is true. The retention days of the destination backup. When not specified, the destination backup will be saved permanently. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	DestinationRetention pulumi.IntPtrInput `pulumi:"destinationRetention"`
+	// The list of cloud disks to be backed up in the ECS instance. When not specified, a snapshot is executed for all the disks on the ECS instance.
+	DiskIdLists pulumi.StringArrayInput `pulumi:"diskIdLists"`
+	// Whether replicate to another region. Valid values: `true`, `false`.
+	DoCopy pulumi.BoolPtrInput `pulumi:"doCopy"`
+	// Only the Linux system is valid. Whether to use the Linux FsFreeze mechanism to ensure that the file system is read-only consistent before creating a storage snapshot. The default is True. Valid values: `true`, `false`.
+	EnableFsFreeze pulumi.BoolPtrInput `pulumi:"enableFsFreeze"`
+	// Only vaild for the linux system when AppConsistent is true. The application thaw script path (e.g. /tmp/postscript.sh). The postscript.sh script must meet the following conditions: in terms of permissions, only the root user as the owner has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+	PostScriptPath pulumi.StringPtrInput `pulumi:"postScriptPath"`
+	// Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+	PreScriptPath pulumi.StringPtrInput `pulumi:"preScriptPath"`
+	// Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
+	SnapshotGroup pulumi.BoolInput `pulumi:"snapshotGroup"`
+	// Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
+	TimeoutInSeconds pulumi.IntPtrInput `pulumi:"timeoutInSeconds"`
+}
+
+func (ServerBackupPlanDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerBackupPlanDetail)(nil)).Elem()
+}
+
+func (i ServerBackupPlanDetailArgs) ToServerBackupPlanDetailOutput() ServerBackupPlanDetailOutput {
+	return i.ToServerBackupPlanDetailOutputWithContext(context.Background())
+}
+
+func (i ServerBackupPlanDetailArgs) ToServerBackupPlanDetailOutputWithContext(ctx context.Context) ServerBackupPlanDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerBackupPlanDetailOutput)
+}
+
+// ServerBackupPlanDetailArrayInput is an input type that accepts ServerBackupPlanDetailArray and ServerBackupPlanDetailArrayOutput values.
+// You can construct a concrete instance of `ServerBackupPlanDetailArrayInput` via:
+//
+//          ServerBackupPlanDetailArray{ ServerBackupPlanDetailArgs{...} }
+type ServerBackupPlanDetailArrayInput interface {
+	pulumi.Input
+
+	ToServerBackupPlanDetailArrayOutput() ServerBackupPlanDetailArrayOutput
+	ToServerBackupPlanDetailArrayOutputWithContext(context.Context) ServerBackupPlanDetailArrayOutput
+}
+
+type ServerBackupPlanDetailArray []ServerBackupPlanDetailInput
+
+func (ServerBackupPlanDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerBackupPlanDetail)(nil)).Elem()
+}
+
+func (i ServerBackupPlanDetailArray) ToServerBackupPlanDetailArrayOutput() ServerBackupPlanDetailArrayOutput {
+	return i.ToServerBackupPlanDetailArrayOutputWithContext(context.Background())
+}
+
+func (i ServerBackupPlanDetailArray) ToServerBackupPlanDetailArrayOutputWithContext(ctx context.Context) ServerBackupPlanDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerBackupPlanDetailArrayOutput)
+}
+
+type ServerBackupPlanDetailOutput struct{ *pulumi.OutputState }
+
+func (ServerBackupPlanDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerBackupPlanDetail)(nil)).Elem()
+}
+
+func (o ServerBackupPlanDetailOutput) ToServerBackupPlanDetailOutput() ServerBackupPlanDetailOutput {
+	return o
+}
+
+func (o ServerBackupPlanDetailOutput) ToServerBackupPlanDetailOutputWithContext(ctx context.Context) ServerBackupPlanDetailOutput {
+	return o
+}
+
+// Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
+func (o ServerBackupPlanDetailOutput) AppConsistent() pulumi.BoolOutput {
+	return o.ApplyT(func(v ServerBackupPlanDetail) bool { return v.AppConsistent }).(pulumi.BoolOutput)
+}
+
+// Only vaild when DoCopy is true. The destination region ID when replicating to another region. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+func (o ServerBackupPlanDetailOutput) DestinationRegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerBackupPlanDetail) *string { return v.DestinationRegionId }).(pulumi.StringPtrOutput)
+}
+
+// Only vaild when DoCopy is true. The retention days of the destination backup. When not specified, the destination backup will be saved permanently. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+func (o ServerBackupPlanDetailOutput) DestinationRetention() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServerBackupPlanDetail) *int { return v.DestinationRetention }).(pulumi.IntPtrOutput)
+}
+
+// The list of cloud disks to be backed up in the ECS instance. When not specified, a snapshot is executed for all the disks on the ECS instance.
+func (o ServerBackupPlanDetailOutput) DiskIdLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServerBackupPlanDetail) []string { return v.DiskIdLists }).(pulumi.StringArrayOutput)
+}
+
+// Whether replicate to another region. Valid values: `true`, `false`.
+func (o ServerBackupPlanDetailOutput) DoCopy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServerBackupPlanDetail) *bool { return v.DoCopy }).(pulumi.BoolPtrOutput)
+}
+
+// Only the Linux system is valid. Whether to use the Linux FsFreeze mechanism to ensure that the file system is read-only consistent before creating a storage snapshot. The default is True. Valid values: `true`, `false`.
+func (o ServerBackupPlanDetailOutput) EnableFsFreeze() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServerBackupPlanDetail) *bool { return v.EnableFsFreeze }).(pulumi.BoolPtrOutput)
+}
+
+// Only vaild for the linux system when AppConsistent is true. The application thaw script path (e.g. /tmp/postscript.sh). The postscript.sh script must meet the following conditions: in terms of permissions, only the root user as the owner has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+func (o ServerBackupPlanDetailOutput) PostScriptPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerBackupPlanDetail) *string { return v.PostScriptPath }).(pulumi.StringPtrOutput)
+}
+
+// Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+func (o ServerBackupPlanDetailOutput) PreScriptPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerBackupPlanDetail) *string { return v.PreScriptPath }).(pulumi.StringPtrOutput)
+}
+
+// Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
+func (o ServerBackupPlanDetailOutput) SnapshotGroup() pulumi.BoolOutput {
+	return o.ApplyT(func(v ServerBackupPlanDetail) bool { return v.SnapshotGroup }).(pulumi.BoolOutput)
+}
+
+// Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
+func (o ServerBackupPlanDetailOutput) TimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServerBackupPlanDetail) *int { return v.TimeoutInSeconds }).(pulumi.IntPtrOutput)
+}
+
+type ServerBackupPlanDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerBackupPlanDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerBackupPlanDetail)(nil)).Elem()
+}
+
+func (o ServerBackupPlanDetailArrayOutput) ToServerBackupPlanDetailArrayOutput() ServerBackupPlanDetailArrayOutput {
+	return o
+}
+
+func (o ServerBackupPlanDetailArrayOutput) ToServerBackupPlanDetailArrayOutputWithContext(ctx context.Context) ServerBackupPlanDetailArrayOutput {
+	return o
+}
+
+func (o ServerBackupPlanDetailArrayOutput) Index(i pulumi.IntInput) ServerBackupPlanDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerBackupPlanDetail {
+		return vs[0].([]ServerBackupPlanDetail)[vs[1].(int)]
+	}).(ServerBackupPlanDetailOutput)
+}
+
 type GetBackupJobsFilter struct {
 	// The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
 	Key *string `pulumi:"key"`
@@ -1808,6 +1986,459 @@ func (o GetRestoreJobsJobArrayOutput) Index(i pulumi.IntInput) GetRestoreJobsJob
 	}).(GetRestoreJobsJobOutput)
 }
 
+type GetServerBackupPlansFilter struct {
+	// The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
+	Key *string `pulumi:"key"`
+	// Set of values that are accepted for the given field.
+	Values []string `pulumi:"values"`
+}
+
+// GetServerBackupPlansFilterInput is an input type that accepts GetServerBackupPlansFilterArgs and GetServerBackupPlansFilterOutput values.
+// You can construct a concrete instance of `GetServerBackupPlansFilterInput` via:
+//
+//          GetServerBackupPlansFilterArgs{...}
+type GetServerBackupPlansFilterInput interface {
+	pulumi.Input
+
+	ToGetServerBackupPlansFilterOutput() GetServerBackupPlansFilterOutput
+	ToGetServerBackupPlansFilterOutputWithContext(context.Context) GetServerBackupPlansFilterOutput
+}
+
+type GetServerBackupPlansFilterArgs struct {
+	// The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Set of values that are accepted for the given field.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetServerBackupPlansFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerBackupPlansFilter)(nil)).Elem()
+}
+
+func (i GetServerBackupPlansFilterArgs) ToGetServerBackupPlansFilterOutput() GetServerBackupPlansFilterOutput {
+	return i.ToGetServerBackupPlansFilterOutputWithContext(context.Background())
+}
+
+func (i GetServerBackupPlansFilterArgs) ToGetServerBackupPlansFilterOutputWithContext(ctx context.Context) GetServerBackupPlansFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerBackupPlansFilterOutput)
+}
+
+// GetServerBackupPlansFilterArrayInput is an input type that accepts GetServerBackupPlansFilterArray and GetServerBackupPlansFilterArrayOutput values.
+// You can construct a concrete instance of `GetServerBackupPlansFilterArrayInput` via:
+//
+//          GetServerBackupPlansFilterArray{ GetServerBackupPlansFilterArgs{...} }
+type GetServerBackupPlansFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetServerBackupPlansFilterArrayOutput() GetServerBackupPlansFilterArrayOutput
+	ToGetServerBackupPlansFilterArrayOutputWithContext(context.Context) GetServerBackupPlansFilterArrayOutput
+}
+
+type GetServerBackupPlansFilterArray []GetServerBackupPlansFilterInput
+
+func (GetServerBackupPlansFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerBackupPlansFilter)(nil)).Elem()
+}
+
+func (i GetServerBackupPlansFilterArray) ToGetServerBackupPlansFilterArrayOutput() GetServerBackupPlansFilterArrayOutput {
+	return i.ToGetServerBackupPlansFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetServerBackupPlansFilterArray) ToGetServerBackupPlansFilterArrayOutputWithContext(ctx context.Context) GetServerBackupPlansFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerBackupPlansFilterArrayOutput)
+}
+
+type GetServerBackupPlansFilterOutput struct{ *pulumi.OutputState }
+
+func (GetServerBackupPlansFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerBackupPlansFilter)(nil)).Elem()
+}
+
+func (o GetServerBackupPlansFilterOutput) ToGetServerBackupPlansFilterOutput() GetServerBackupPlansFilterOutput {
+	return o
+}
+
+func (o GetServerBackupPlansFilterOutput) ToGetServerBackupPlansFilterOutputWithContext(ctx context.Context) GetServerBackupPlansFilterOutput {
+	return o
+}
+
+// The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
+func (o GetServerBackupPlansFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServerBackupPlansFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Set of values that are accepted for the given field.
+func (o GetServerBackupPlansFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServerBackupPlansFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetServerBackupPlansFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServerBackupPlansFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerBackupPlansFilter)(nil)).Elem()
+}
+
+func (o GetServerBackupPlansFilterArrayOutput) ToGetServerBackupPlansFilterArrayOutput() GetServerBackupPlansFilterArrayOutput {
+	return o
+}
+
+func (o GetServerBackupPlansFilterArrayOutput) ToGetServerBackupPlansFilterArrayOutputWithContext(ctx context.Context) GetServerBackupPlansFilterArrayOutput {
+	return o
+}
+
+func (o GetServerBackupPlansFilterArrayOutput) Index(i pulumi.IntInput) GetServerBackupPlansFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerBackupPlansFilter {
+		return vs[0].([]GetServerBackupPlansFilter)[vs[1].(int)]
+	}).(GetServerBackupPlansFilterOutput)
+}
+
+type GetServerBackupPlansPlan struct {
+	// The creation time of backup plan.
+	CreateTime string `pulumi:"createTime"`
+	// ECS server backup plan details.
+	Details []GetServerBackupPlansPlanDetail `pulumi:"details"`
+	// Whether to disable the backup task. Valid values: `true`, `false`.
+	Disabled bool `pulumi:"disabled"`
+	// The ID of the server backup plan.
+	EcsServerBackupPlanId string `pulumi:"ecsServerBackupPlanId"`
+	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+	EcsServerBackupPlanName string `pulumi:"ecsServerBackupPlanName"`
+	// The ID of the server backup plan.
+	Id string `pulumi:"id"`
+	// The ID of ECS Instance.
+	InstanceId string `pulumi:"instanceId"`
+	// Backup retention days, the minimum is 1.
+	Retention string `pulumi:"retention"`
+	// Backup strategy.
+	Schedule string `pulumi:"schedule"`
+}
+
+// GetServerBackupPlansPlanInput is an input type that accepts GetServerBackupPlansPlanArgs and GetServerBackupPlansPlanOutput values.
+// You can construct a concrete instance of `GetServerBackupPlansPlanInput` via:
+//
+//          GetServerBackupPlansPlanArgs{...}
+type GetServerBackupPlansPlanInput interface {
+	pulumi.Input
+
+	ToGetServerBackupPlansPlanOutput() GetServerBackupPlansPlanOutput
+	ToGetServerBackupPlansPlanOutputWithContext(context.Context) GetServerBackupPlansPlanOutput
+}
+
+type GetServerBackupPlansPlanArgs struct {
+	// The creation time of backup plan.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// ECS server backup plan details.
+	Details GetServerBackupPlansPlanDetailArrayInput `pulumi:"details"`
+	// Whether to disable the backup task. Valid values: `true`, `false`.
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+	// The ID of the server backup plan.
+	EcsServerBackupPlanId pulumi.StringInput `pulumi:"ecsServerBackupPlanId"`
+	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+	EcsServerBackupPlanName pulumi.StringInput `pulumi:"ecsServerBackupPlanName"`
+	// The ID of the server backup plan.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of ECS Instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// Backup retention days, the minimum is 1.
+	Retention pulumi.StringInput `pulumi:"retention"`
+	// Backup strategy.
+	Schedule pulumi.StringInput `pulumi:"schedule"`
+}
+
+func (GetServerBackupPlansPlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerBackupPlansPlan)(nil)).Elem()
+}
+
+func (i GetServerBackupPlansPlanArgs) ToGetServerBackupPlansPlanOutput() GetServerBackupPlansPlanOutput {
+	return i.ToGetServerBackupPlansPlanOutputWithContext(context.Background())
+}
+
+func (i GetServerBackupPlansPlanArgs) ToGetServerBackupPlansPlanOutputWithContext(ctx context.Context) GetServerBackupPlansPlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerBackupPlansPlanOutput)
+}
+
+// GetServerBackupPlansPlanArrayInput is an input type that accepts GetServerBackupPlansPlanArray and GetServerBackupPlansPlanArrayOutput values.
+// You can construct a concrete instance of `GetServerBackupPlansPlanArrayInput` via:
+//
+//          GetServerBackupPlansPlanArray{ GetServerBackupPlansPlanArgs{...} }
+type GetServerBackupPlansPlanArrayInput interface {
+	pulumi.Input
+
+	ToGetServerBackupPlansPlanArrayOutput() GetServerBackupPlansPlanArrayOutput
+	ToGetServerBackupPlansPlanArrayOutputWithContext(context.Context) GetServerBackupPlansPlanArrayOutput
+}
+
+type GetServerBackupPlansPlanArray []GetServerBackupPlansPlanInput
+
+func (GetServerBackupPlansPlanArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerBackupPlansPlan)(nil)).Elem()
+}
+
+func (i GetServerBackupPlansPlanArray) ToGetServerBackupPlansPlanArrayOutput() GetServerBackupPlansPlanArrayOutput {
+	return i.ToGetServerBackupPlansPlanArrayOutputWithContext(context.Background())
+}
+
+func (i GetServerBackupPlansPlanArray) ToGetServerBackupPlansPlanArrayOutputWithContext(ctx context.Context) GetServerBackupPlansPlanArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerBackupPlansPlanArrayOutput)
+}
+
+type GetServerBackupPlansPlanOutput struct{ *pulumi.OutputState }
+
+func (GetServerBackupPlansPlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerBackupPlansPlan)(nil)).Elem()
+}
+
+func (o GetServerBackupPlansPlanOutput) ToGetServerBackupPlansPlanOutput() GetServerBackupPlansPlanOutput {
+	return o
+}
+
+func (o GetServerBackupPlansPlanOutput) ToGetServerBackupPlansPlanOutputWithContext(ctx context.Context) GetServerBackupPlansPlanOutput {
+	return o
+}
+
+// The creation time of backup plan.
+func (o GetServerBackupPlansPlanOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerBackupPlansPlan) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// ECS server backup plan details.
+func (o GetServerBackupPlansPlanOutput) Details() GetServerBackupPlansPlanDetailArrayOutput {
+	return o.ApplyT(func(v GetServerBackupPlansPlan) []GetServerBackupPlansPlanDetail { return v.Details }).(GetServerBackupPlansPlanDetailArrayOutput)
+}
+
+// Whether to disable the backup task. Valid values: `true`, `false`.
+func (o GetServerBackupPlansPlanOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServerBackupPlansPlan) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// The ID of the server backup plan.
+func (o GetServerBackupPlansPlanOutput) EcsServerBackupPlanId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerBackupPlansPlan) string { return v.EcsServerBackupPlanId }).(pulumi.StringOutput)
+}
+
+// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+func (o GetServerBackupPlansPlanOutput) EcsServerBackupPlanName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerBackupPlansPlan) string { return v.EcsServerBackupPlanName }).(pulumi.StringOutput)
+}
+
+// The ID of the server backup plan.
+func (o GetServerBackupPlansPlanOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerBackupPlansPlan) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of ECS Instance.
+func (o GetServerBackupPlansPlanOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerBackupPlansPlan) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Backup retention days, the minimum is 1.
+func (o GetServerBackupPlansPlanOutput) Retention() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerBackupPlansPlan) string { return v.Retention }).(pulumi.StringOutput)
+}
+
+// Backup strategy.
+func (o GetServerBackupPlansPlanOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerBackupPlansPlan) string { return v.Schedule }).(pulumi.StringOutput)
+}
+
+type GetServerBackupPlansPlanArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServerBackupPlansPlanArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerBackupPlansPlan)(nil)).Elem()
+}
+
+func (o GetServerBackupPlansPlanArrayOutput) ToGetServerBackupPlansPlanArrayOutput() GetServerBackupPlansPlanArrayOutput {
+	return o
+}
+
+func (o GetServerBackupPlansPlanArrayOutput) ToGetServerBackupPlansPlanArrayOutputWithContext(ctx context.Context) GetServerBackupPlansPlanArrayOutput {
+	return o
+}
+
+func (o GetServerBackupPlansPlanArrayOutput) Index(i pulumi.IntInput) GetServerBackupPlansPlanOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerBackupPlansPlan {
+		return vs[0].([]GetServerBackupPlansPlan)[vs[1].(int)]
+	}).(GetServerBackupPlansPlanOutput)
+}
+
+type GetServerBackupPlansPlanDetail struct {
+	// Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
+	AppConsistent bool `pulumi:"appConsistent"`
+	// Only vaild when DoCopy is true. The destination region ID when replicating to another region. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	DestinationRegionId string `pulumi:"destinationRegionId"`
+	// Only vaild when DoCopy is true. The retention days of the destination backup. When not specified, the destination backup will be saved permanently. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	DestinationRetention int `pulumi:"destinationRetention"`
+	// The list of cloud disks to be backed up in the ECS instance. When not specified, a snapshot is executed for all the disks on the ECS instance.
+	DiskIdLists []string `pulumi:"diskIdLists"`
+	// Whether replicate to another region. Valid values: `true`, `false`.
+	DoCopy bool `pulumi:"doCopy"`
+	// Only the Linux system is valid. Whether to use the Linux FsFreeze mechanism to ensure that the file system is read-only consistent before creating a storage snapshot. The default is True. Valid values: `true`, `false`.
+	EnableFsFreeze bool `pulumi:"enableFsFreeze"`
+	// Only vaild for the linux system when AppConsistent is true. The application thaw script path (e.g. /tmp/postscript.sh). The postscript.sh script must meet the following conditions: in terms of permissions, only the root user as the owner has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+	PostScriptPath string `pulumi:"postScriptPath"`
+	// Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+	PreScriptPath string `pulumi:"preScriptPath"`
+	// Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
+	SnapshotGroup bool `pulumi:"snapshotGroup"`
+	// Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
+	TimeoutInSeconds int `pulumi:"timeoutInSeconds"`
+}
+
+// GetServerBackupPlansPlanDetailInput is an input type that accepts GetServerBackupPlansPlanDetailArgs and GetServerBackupPlansPlanDetailOutput values.
+// You can construct a concrete instance of `GetServerBackupPlansPlanDetailInput` via:
+//
+//          GetServerBackupPlansPlanDetailArgs{...}
+type GetServerBackupPlansPlanDetailInput interface {
+	pulumi.Input
+
+	ToGetServerBackupPlansPlanDetailOutput() GetServerBackupPlansPlanDetailOutput
+	ToGetServerBackupPlansPlanDetailOutputWithContext(context.Context) GetServerBackupPlansPlanDetailOutput
+}
+
+type GetServerBackupPlansPlanDetailArgs struct {
+	// Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
+	AppConsistent pulumi.BoolInput `pulumi:"appConsistent"`
+	// Only vaild when DoCopy is true. The destination region ID when replicating to another region. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	DestinationRegionId pulumi.StringInput `pulumi:"destinationRegionId"`
+	// Only vaild when DoCopy is true. The retention days of the destination backup. When not specified, the destination backup will be saved permanently. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	DestinationRetention pulumi.IntInput `pulumi:"destinationRetention"`
+	// The list of cloud disks to be backed up in the ECS instance. When not specified, a snapshot is executed for all the disks on the ECS instance.
+	DiskIdLists pulumi.StringArrayInput `pulumi:"diskIdLists"`
+	// Whether replicate to another region. Valid values: `true`, `false`.
+	DoCopy pulumi.BoolInput `pulumi:"doCopy"`
+	// Only the Linux system is valid. Whether to use the Linux FsFreeze mechanism to ensure that the file system is read-only consistent before creating a storage snapshot. The default is True. Valid values: `true`, `false`.
+	EnableFsFreeze pulumi.BoolInput `pulumi:"enableFsFreeze"`
+	// Only vaild for the linux system when AppConsistent is true. The application thaw script path (e.g. /tmp/postscript.sh). The postscript.sh script must meet the following conditions: in terms of permissions, only the root user as the owner has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+	PostScriptPath pulumi.StringInput `pulumi:"postScriptPath"`
+	// Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+	PreScriptPath pulumi.StringInput `pulumi:"preScriptPath"`
+	// Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
+	SnapshotGroup pulumi.BoolInput `pulumi:"snapshotGroup"`
+	// Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
+	TimeoutInSeconds pulumi.IntInput `pulumi:"timeoutInSeconds"`
+}
+
+func (GetServerBackupPlansPlanDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerBackupPlansPlanDetail)(nil)).Elem()
+}
+
+func (i GetServerBackupPlansPlanDetailArgs) ToGetServerBackupPlansPlanDetailOutput() GetServerBackupPlansPlanDetailOutput {
+	return i.ToGetServerBackupPlansPlanDetailOutputWithContext(context.Background())
+}
+
+func (i GetServerBackupPlansPlanDetailArgs) ToGetServerBackupPlansPlanDetailOutputWithContext(ctx context.Context) GetServerBackupPlansPlanDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerBackupPlansPlanDetailOutput)
+}
+
+// GetServerBackupPlansPlanDetailArrayInput is an input type that accepts GetServerBackupPlansPlanDetailArray and GetServerBackupPlansPlanDetailArrayOutput values.
+// You can construct a concrete instance of `GetServerBackupPlansPlanDetailArrayInput` via:
+//
+//          GetServerBackupPlansPlanDetailArray{ GetServerBackupPlansPlanDetailArgs{...} }
+type GetServerBackupPlansPlanDetailArrayInput interface {
+	pulumi.Input
+
+	ToGetServerBackupPlansPlanDetailArrayOutput() GetServerBackupPlansPlanDetailArrayOutput
+	ToGetServerBackupPlansPlanDetailArrayOutputWithContext(context.Context) GetServerBackupPlansPlanDetailArrayOutput
+}
+
+type GetServerBackupPlansPlanDetailArray []GetServerBackupPlansPlanDetailInput
+
+func (GetServerBackupPlansPlanDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerBackupPlansPlanDetail)(nil)).Elem()
+}
+
+func (i GetServerBackupPlansPlanDetailArray) ToGetServerBackupPlansPlanDetailArrayOutput() GetServerBackupPlansPlanDetailArrayOutput {
+	return i.ToGetServerBackupPlansPlanDetailArrayOutputWithContext(context.Background())
+}
+
+func (i GetServerBackupPlansPlanDetailArray) ToGetServerBackupPlansPlanDetailArrayOutputWithContext(ctx context.Context) GetServerBackupPlansPlanDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerBackupPlansPlanDetailArrayOutput)
+}
+
+type GetServerBackupPlansPlanDetailOutput struct{ *pulumi.OutputState }
+
+func (GetServerBackupPlansPlanDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerBackupPlansPlanDetail)(nil)).Elem()
+}
+
+func (o GetServerBackupPlansPlanDetailOutput) ToGetServerBackupPlansPlanDetailOutput() GetServerBackupPlansPlanDetailOutput {
+	return o
+}
+
+func (o GetServerBackupPlansPlanDetailOutput) ToGetServerBackupPlansPlanDetailOutputWithContext(ctx context.Context) GetServerBackupPlansPlanDetailOutput {
+	return o
+}
+
+// Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
+func (o GetServerBackupPlansPlanDetailOutput) AppConsistent() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServerBackupPlansPlanDetail) bool { return v.AppConsistent }).(pulumi.BoolOutput)
+}
+
+// Only vaild when DoCopy is true. The destination region ID when replicating to another region. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+func (o GetServerBackupPlansPlanDetailOutput) DestinationRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerBackupPlansPlanDetail) string { return v.DestinationRegionId }).(pulumi.StringOutput)
+}
+
+// Only vaild when DoCopy is true. The retention days of the destination backup. When not specified, the destination backup will be saved permanently. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+func (o GetServerBackupPlansPlanDetailOutput) DestinationRetention() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServerBackupPlansPlanDetail) int { return v.DestinationRetention }).(pulumi.IntOutput)
+}
+
+// The list of cloud disks to be backed up in the ECS instance. When not specified, a snapshot is executed for all the disks on the ECS instance.
+func (o GetServerBackupPlansPlanDetailOutput) DiskIdLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServerBackupPlansPlanDetail) []string { return v.DiskIdLists }).(pulumi.StringArrayOutput)
+}
+
+// Whether replicate to another region. Valid values: `true`, `false`.
+func (o GetServerBackupPlansPlanDetailOutput) DoCopy() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServerBackupPlansPlanDetail) bool { return v.DoCopy }).(pulumi.BoolOutput)
+}
+
+// Only the Linux system is valid. Whether to use the Linux FsFreeze mechanism to ensure that the file system is read-only consistent before creating a storage snapshot. The default is True. Valid values: `true`, `false`.
+func (o GetServerBackupPlansPlanDetailOutput) EnableFsFreeze() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServerBackupPlansPlanDetail) bool { return v.EnableFsFreeze }).(pulumi.BoolOutput)
+}
+
+// Only vaild for the linux system when AppConsistent is true. The application thaw script path (e.g. /tmp/postscript.sh). The postscript.sh script must meet the following conditions: in terms of permissions, only the root user as the owner has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+func (o GetServerBackupPlansPlanDetailOutput) PostScriptPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerBackupPlansPlanDetail) string { return v.PostScriptPath }).(pulumi.StringOutput)
+}
+
+// Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+func (o GetServerBackupPlansPlanDetailOutput) PreScriptPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerBackupPlansPlanDetail) string { return v.PreScriptPath }).(pulumi.StringOutput)
+}
+
+// Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
+func (o GetServerBackupPlansPlanDetailOutput) SnapshotGroup() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServerBackupPlansPlanDetail) bool { return v.SnapshotGroup }).(pulumi.BoolOutput)
+}
+
+// Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
+func (o GetServerBackupPlansPlanDetailOutput) TimeoutInSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServerBackupPlansPlanDetail) int { return v.TimeoutInSeconds }).(pulumi.IntOutput)
+}
+
+type GetServerBackupPlansPlanDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServerBackupPlansPlanDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerBackupPlansPlanDetail)(nil)).Elem()
+}
+
+func (o GetServerBackupPlansPlanDetailArrayOutput) ToGetServerBackupPlansPlanDetailArrayOutput() GetServerBackupPlansPlanDetailArrayOutput {
+	return o
+}
+
+func (o GetServerBackupPlansPlanDetailArrayOutput) ToGetServerBackupPlansPlanDetailArrayOutputWithContext(ctx context.Context) GetServerBackupPlansPlanDetailArrayOutput {
+	return o
+}
+
+func (o GetServerBackupPlansPlanDetailArrayOutput) Index(i pulumi.IntInput) GetServerBackupPlansPlanDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerBackupPlansPlanDetail {
+		return vs[0].([]GetServerBackupPlansPlanDetail)[vs[1].(int)]
+	}).(GetServerBackupPlansPlanDetailOutput)
+}
+
 type GetSnapshotsSnapshot struct {
 	// The actual data volume of the snapshot. Unit byte.
 	ActualBytes string `pulumi:"actualBytes"`
@@ -2447,6 +3078,8 @@ func (o GetVaultsVaultArrayOutput) Index(i pulumi.IntInput) GetVaultsVaultOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerBackupPlanDetailInput)(nil)).Elem(), ServerBackupPlanDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerBackupPlanDetailArrayInput)(nil)).Elem(), ServerBackupPlanDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupJobsFilterInput)(nil)).Elem(), GetBackupJobsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupJobsFilterArrayInput)(nil)).Elem(), GetBackupJobsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupJobsJobInput)(nil)).Elem(), GetBackupJobsJobArgs{})
@@ -2461,10 +3094,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOssBackupPlansPlanArrayInput)(nil)).Elem(), GetOssBackupPlansPlanArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRestoreJobsJobInput)(nil)).Elem(), GetRestoreJobsJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRestoreJobsJobArrayInput)(nil)).Elem(), GetRestoreJobsJobArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerBackupPlansFilterInput)(nil)).Elem(), GetServerBackupPlansFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerBackupPlansFilterArrayInput)(nil)).Elem(), GetServerBackupPlansFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerBackupPlansPlanInput)(nil)).Elem(), GetServerBackupPlansPlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerBackupPlansPlanArrayInput)(nil)).Elem(), GetServerBackupPlansPlanArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerBackupPlansPlanDetailInput)(nil)).Elem(), GetServerBackupPlansPlanDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerBackupPlansPlanDetailArrayInput)(nil)).Elem(), GetServerBackupPlansPlanDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotsSnapshotInput)(nil)).Elem(), GetSnapshotsSnapshotArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotsSnapshotArrayInput)(nil)).Elem(), GetSnapshotsSnapshotArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVaultsVaultInput)(nil)).Elem(), GetVaultsVaultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVaultsVaultArrayInput)(nil)).Elem(), GetVaultsVaultArray{})
+	pulumi.RegisterOutputType(ServerBackupPlanDetailOutput{})
+	pulumi.RegisterOutputType(ServerBackupPlanDetailArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupJobsFilterOutput{})
 	pulumi.RegisterOutputType(GetBackupJobsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupJobsJobOutput{})
@@ -2479,6 +3120,12 @@ func init() {
 	pulumi.RegisterOutputType(GetOssBackupPlansPlanArrayOutput{})
 	pulumi.RegisterOutputType(GetRestoreJobsJobOutput{})
 	pulumi.RegisterOutputType(GetRestoreJobsJobArrayOutput{})
+	pulumi.RegisterOutputType(GetServerBackupPlansFilterOutput{})
+	pulumi.RegisterOutputType(GetServerBackupPlansFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetServerBackupPlansPlanOutput{})
+	pulumi.RegisterOutputType(GetServerBackupPlansPlanArrayOutput{})
+	pulumi.RegisterOutputType(GetServerBackupPlansPlanDetailOutput{})
+	pulumi.RegisterOutputType(GetServerBackupPlansPlanDetailArrayOutput{})
 	pulumi.RegisterOutputType(GetSnapshotsSnapshotOutput{})
 	pulumi.RegisterOutputType(GetSnapshotsSnapshotArrayOutput{})
 	pulumi.RegisterOutputType(GetVaultsVaultOutput{})

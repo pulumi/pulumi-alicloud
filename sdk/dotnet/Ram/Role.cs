@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Ram
         public Output<string> Arn { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the RAM role. This name can have a string of 1 to 1024 characters.
+        /// Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.Ram
     public sealed class RoleArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the RAM role. This name can have a string of 1 to 1024 characters.
+        /// Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -203,7 +203,7 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? Arn { get; set; }
 
         /// <summary>
-        /// Description of the RAM role. This name can have a string of 1 to 1024 characters.
+        /// Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

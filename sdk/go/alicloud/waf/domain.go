@@ -84,7 +84,7 @@ type Domain struct {
 	//
 	// Deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.
 	Domain pulumi.StringOutput `pulumi:"domain"`
-	// The domain that you want to add to WAF.
+	// The domain that you want to add to WAF. The `domainName` is required when the value of the `domain`  is Empty.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
 	// List of the HTTP 2.0 ports.
 	Http2Ports pulumi.StringArrayOutput `pulumi:"http2Ports"`
@@ -162,7 +162,7 @@ type domainState struct {
 	//
 	// Deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.
 	Domain *string `pulumi:"domain"`
-	// The domain that you want to add to WAF.
+	// The domain that you want to add to WAF. The `domainName` is required when the value of the `domain`  is Empty.
 	DomainName *string `pulumi:"domainName"`
 	// List of the HTTP 2.0 ports.
 	Http2Ports []string `pulumi:"http2Ports"`
@@ -206,7 +206,7 @@ type DomainState struct {
 	//
 	// Deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.
 	Domain pulumi.StringPtrInput
-	// The domain that you want to add to WAF.
+	// The domain that you want to add to WAF. The `domainName` is required when the value of the `domain`  is Empty.
 	DomainName pulumi.StringPtrInput
 	// List of the HTTP 2.0 ports.
 	Http2Ports pulumi.StringArrayInput
@@ -252,7 +252,7 @@ type domainArgs struct {
 	//
 	// Deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.
 	Domain *string `pulumi:"domain"`
-	// The domain that you want to add to WAF.
+	// The domain that you want to add to WAF. The `domainName` is required when the value of the `domain`  is Empty.
 	DomainName *string `pulumi:"domainName"`
 	// List of the HTTP 2.0 ports.
 	Http2Ports []string `pulumi:"http2Ports"`
@@ -295,7 +295,7 @@ type DomainArgs struct {
 	//
 	// Deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.
 	Domain pulumi.StringPtrInput
-	// The domain that you want to add to WAF.
+	// The domain that you want to add to WAF. The `domainName` is required when the value of the `domain`  is Empty.
 	DomainName pulumi.StringPtrInput
 	// List of the HTTP 2.0 ports.
 	Http2Ports pulumi.StringArrayInput

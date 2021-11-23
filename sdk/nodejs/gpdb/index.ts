@@ -5,13 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./account";
 export * from "./connection";
 export * from "./elasticInstance";
+export * from "./getAccounts";
 export * from "./getInstances";
 export * from "./getZones";
 export * from "./instance";
 
 // Import resources to register:
+import { Account } from "./account";
 import { Connection } from "./connection";
 import { ElasticInstance } from "./elasticInstance";
 import { Instance } from "./instance";
@@ -20,6 +23,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:gpdb/account:Account":
+                return new Account(name, <any>undefined, { urn })
             case "alicloud:gpdb/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
             case "alicloud:gpdb/elasticInstance:ElasticInstance":
@@ -31,6 +36,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "gpdb/account", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/connection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/elasticInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/instance", _module)

@@ -118,7 +118,7 @@ type ForwardEntry struct {
 	InternalIp pulumi.StringOutput `pulumi:"internalIp"`
 	// The internal port, valid value is 1~65535|any.
 	InternalPort pulumi.StringOutput `pulumi:"internalPort"`
-	// The ip protocal, valid value is tcp|udp|any.
+	// The ip protocol, valid value is tcp|udp|any.
 	IpProtocol pulumi.StringOutput `pulumi:"ipProtocol"`
 	// Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
 	//
@@ -191,7 +191,7 @@ type forwardEntryState struct {
 	InternalIp *string `pulumi:"internalIp"`
 	// The internal port, valid value is 1~65535|any.
 	InternalPort *string `pulumi:"internalPort"`
-	// The ip protocal, valid value is tcp|udp|any.
+	// The ip protocol, valid value is tcp|udp|any.
 	IpProtocol *string `pulumi:"ipProtocol"`
 	// Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
 	//
@@ -218,7 +218,7 @@ type ForwardEntryState struct {
 	InternalIp pulumi.StringPtrInput
 	// The internal port, valid value is 1~65535|any.
 	InternalPort pulumi.StringPtrInput
-	// The ip protocal, valid value is tcp|udp|any.
+	// The ip protocol, valid value is tcp|udp|any.
 	IpProtocol pulumi.StringPtrInput
 	// Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
 	//
@@ -247,7 +247,7 @@ type forwardEntryArgs struct {
 	InternalIp string `pulumi:"internalIp"`
 	// The internal port, valid value is 1~65535|any.
 	InternalPort string `pulumi:"internalPort"`
-	// The ip protocal, valid value is tcp|udp|any.
+	// The ip protocol, valid value is tcp|udp|any.
 	IpProtocol string `pulumi:"ipProtocol"`
 	// Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
 	//
@@ -271,7 +271,7 @@ type ForwardEntryArgs struct {
 	InternalIp pulumi.StringInput
 	// The internal port, valid value is 1~65535|any.
 	InternalPort pulumi.StringInput
-	// The ip protocal, valid value is tcp|udp|any.
+	// The ip protocol, valid value is tcp|udp|any.
 	IpProtocol pulumi.StringInput
 	// Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
 	//

@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
 export * from "./alarm";
 export * from "./alarmContact";
 export * from "./alarmContactGroup";
+export * from "./dynamicTagGroup";
 export * from "./getAlarmContactGroups";
 export * from "./getAlarmContacts";
+export * from "./getDynamicTagGroups";
 export * from "./getGroupMetricRules";
 export * from "./getMetricRuleTemplates";
 export * from "./getMonitorGroupInstances";
@@ -25,6 +27,7 @@ export * from "./siteMonitor";
 import { Alarm } from "./alarm";
 import { AlarmContact } from "./alarmContact";
 import { AlarmContactGroup } from "./alarmContactGroup";
+import { DynamicTagGroup } from "./dynamicTagGroup";
 import { GroupMetricRule } from "./groupMetricRule";
 import { MetricRuleTemplate } from "./metricRuleTemplate";
 import { MonitorGroup } from "./monitorGroup";
@@ -41,6 +44,8 @@ const _module = {
                 return new AlarmContact(name, <any>undefined, { urn })
             case "alicloud:cms/alarmContactGroup:AlarmContactGroup":
                 return new AlarmContactGroup(name, <any>undefined, { urn })
+            case "alicloud:cms/dynamicTagGroup:DynamicTagGroup":
+                return new DynamicTagGroup(name, <any>undefined, { urn })
             case "alicloud:cms/groupMetricRule:GroupMetricRule":
                 return new GroupMetricRule(name, <any>undefined, { urn })
             case "alicloud:cms/metricRuleTemplate:MetricRuleTemplate":
@@ -59,6 +64,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "cms/alarm", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/alarmContact", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/alarmContactGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cms/dynamicTagGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/groupMetricRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/metricRuleTemplate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/monitorGroup", _module)

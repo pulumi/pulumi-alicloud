@@ -21,8 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:simpleapplicationserver/customImage:CustomImage":
+		r = &CustomImage{}
+	case "alicloud:simpleapplicationserver/firewallRule:FirewallRule":
+		r = &FirewallRule{}
 	case "alicloud:simpleapplicationserver/instance:Instance":
 		r = &Instance{}
+	case "alicloud:simpleapplicationserver/snapshot:Snapshot":
+		r = &Snapshot{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -38,7 +44,22 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"simpleapplicationserver/customImage",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"simpleapplicationserver/firewallRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"simpleapplicationserver/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"simpleapplicationserver/snapshot",
 		&module{version},
 	)
 }

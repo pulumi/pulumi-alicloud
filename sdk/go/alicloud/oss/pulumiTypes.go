@@ -419,7 +419,8 @@ type BucketLifecycleRuleExpiration struct {
 	// Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
 	Date *string `pulumi:"date"`
 	// Specifies the number of days noncurrent object versions transition.
-	Days                      *int  `pulumi:"days"`
+	Days *int `pulumi:"days"`
+	// On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
 	ExpiredObjectDeleteMarker *bool `pulumi:"expiredObjectDeleteMarker"`
 }
 
@@ -440,7 +441,8 @@ type BucketLifecycleRuleExpirationArgs struct {
 	// Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
 	Date pulumi.StringPtrInput `pulumi:"date"`
 	// Specifies the number of days noncurrent object versions transition.
-	Days                      pulumi.IntPtrInput  `pulumi:"days"`
+	Days pulumi.IntPtrInput `pulumi:"days"`
+	// On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
 	ExpiredObjectDeleteMarker pulumi.BoolPtrInput `pulumi:"expiredObjectDeleteMarker"`
 }
 
@@ -510,6 +512,7 @@ func (o BucketLifecycleRuleExpirationOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
 
+// On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
 func (o BucketLifecycleRuleExpirationOutput) ExpiredObjectDeleteMarker() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *bool { return v.ExpiredObjectDeleteMarker }).(pulumi.BoolPtrOutput)
 }

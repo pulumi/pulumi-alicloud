@@ -57,7 +57,7 @@ import (
 type Host struct {
 	pulumi.CustomResourceState
 
-	// Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
+	// Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
 	ActiveAddressType pulumi.StringOutput `pulumi:"activeAddressType"`
 	// Specify a host of notes, supports up to 500 characters.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
@@ -65,7 +65,7 @@ type Host struct {
 	HostId pulumi.StringOutput `pulumi:"hostId"`
 	// Specify the new create a host name of the supports up to 128 characters.
 	HostName pulumi.StringOutput `pulumi:"hostName"`
-	// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
+	// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `activeAddressType` parameter is set to `Private`.
 	HostPrivateAddress pulumi.StringPtrOutput `pulumi:"hostPrivateAddress"`
 	// Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
 	HostPublicAddress pulumi.StringPtrOutput `pulumi:"hostPublicAddress"`
@@ -73,14 +73,14 @@ type Host struct {
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The instance region id.
 	InstanceRegionId pulumi.StringPtrOutput `pulumi:"instanceRegionId"`
-	// Specify the new create the host's operating system. Valid values: Linux Windows.
+	// Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
 	OsType pulumi.StringOutput `pulumi:"osType"`
 	// Specify the new create a host of source. Valid values:
-	// * Local: localhost
-	// * Ecs:ECS instance
-	// * Rds:RDS exclusive cluster host.
+	// * `Local`: localhost
+	// * `Ecs`:ECS instance
+	// * `Rds`:RDS exclusive cluster host.
 	Source pulumi.StringOutput `pulumi:"source"`
-	// Specify the newly created ECS instance ID or dedicated cluster host ID.
+	// Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
 	SourceInstanceId pulumi.StringPtrOutput `pulumi:"sourceInstanceId"`
 }
 
@@ -128,7 +128,7 @@ func GetHost(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Host resources.
 type hostState struct {
-	// Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
+	// Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
 	ActiveAddressType *string `pulumi:"activeAddressType"`
 	// Specify a host of notes, supports up to 500 characters.
 	Comment *string `pulumi:"comment"`
@@ -136,7 +136,7 @@ type hostState struct {
 	HostId *string `pulumi:"hostId"`
 	// Specify the new create a host name of the supports up to 128 characters.
 	HostName *string `pulumi:"hostName"`
-	// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
+	// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `activeAddressType` parameter is set to `Private`.
 	HostPrivateAddress *string `pulumi:"hostPrivateAddress"`
 	// Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
 	HostPublicAddress *string `pulumi:"hostPublicAddress"`
@@ -144,19 +144,19 @@ type hostState struct {
 	InstanceId *string `pulumi:"instanceId"`
 	// The instance region id.
 	InstanceRegionId *string `pulumi:"instanceRegionId"`
-	// Specify the new create the host's operating system. Valid values: Linux Windows.
+	// Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
 	OsType *string `pulumi:"osType"`
 	// Specify the new create a host of source. Valid values:
-	// * Local: localhost
-	// * Ecs:ECS instance
-	// * Rds:RDS exclusive cluster host.
+	// * `Local`: localhost
+	// * `Ecs`:ECS instance
+	// * `Rds`:RDS exclusive cluster host.
 	Source *string `pulumi:"source"`
-	// Specify the newly created ECS instance ID or dedicated cluster host ID.
+	// Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
 	SourceInstanceId *string `pulumi:"sourceInstanceId"`
 }
 
 type HostState struct {
-	// Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
+	// Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
 	ActiveAddressType pulumi.StringPtrInput
 	// Specify a host of notes, supports up to 500 characters.
 	Comment pulumi.StringPtrInput
@@ -164,7 +164,7 @@ type HostState struct {
 	HostId pulumi.StringPtrInput
 	// Specify the new create a host name of the supports up to 128 characters.
 	HostName pulumi.StringPtrInput
-	// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
+	// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `activeAddressType` parameter is set to `Private`.
 	HostPrivateAddress pulumi.StringPtrInput
 	// Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
 	HostPublicAddress pulumi.StringPtrInput
@@ -172,14 +172,14 @@ type HostState struct {
 	InstanceId pulumi.StringPtrInput
 	// The instance region id.
 	InstanceRegionId pulumi.StringPtrInput
-	// Specify the new create the host's operating system. Valid values: Linux Windows.
+	// Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
 	OsType pulumi.StringPtrInput
 	// Specify the new create a host of source. Valid values:
-	// * Local: localhost
-	// * Ecs:ECS instance
-	// * Rds:RDS exclusive cluster host.
+	// * `Local`: localhost
+	// * `Ecs`:ECS instance
+	// * `Rds`:RDS exclusive cluster host.
 	Source pulumi.StringPtrInput
-	// Specify the newly created ECS instance ID or dedicated cluster host ID.
+	// Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
 	SourceInstanceId pulumi.StringPtrInput
 }
 
@@ -188,13 +188,13 @@ func (HostState) ElementType() reflect.Type {
 }
 
 type hostArgs struct {
-	// Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
+	// Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
 	ActiveAddressType string `pulumi:"activeAddressType"`
 	// Specify a host of notes, supports up to 500 characters.
 	Comment *string `pulumi:"comment"`
 	// Specify the new create a host name of the supports up to 128 characters.
 	HostName string `pulumi:"hostName"`
-	// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
+	// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `activeAddressType` parameter is set to `Private`.
 	HostPrivateAddress *string `pulumi:"hostPrivateAddress"`
 	// Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
 	HostPublicAddress *string `pulumi:"hostPublicAddress"`
@@ -202,26 +202,26 @@ type hostArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// The instance region id.
 	InstanceRegionId *string `pulumi:"instanceRegionId"`
-	// Specify the new create the host's operating system. Valid values: Linux Windows.
+	// Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
 	OsType string `pulumi:"osType"`
 	// Specify the new create a host of source. Valid values:
-	// * Local: localhost
-	// * Ecs:ECS instance
-	// * Rds:RDS exclusive cluster host.
+	// * `Local`: localhost
+	// * `Ecs`:ECS instance
+	// * `Rds`:RDS exclusive cluster host.
 	Source string `pulumi:"source"`
-	// Specify the newly created ECS instance ID or dedicated cluster host ID.
+	// Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
 	SourceInstanceId *string `pulumi:"sourceInstanceId"`
 }
 
 // The set of arguments for constructing a Host resource.
 type HostArgs struct {
-	// Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
+	// Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
 	ActiveAddressType pulumi.StringInput
 	// Specify a host of notes, supports up to 500 characters.
 	Comment pulumi.StringPtrInput
 	// Specify the new create a host name of the supports up to 128 characters.
 	HostName pulumi.StringInput
-	// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
+	// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `activeAddressType` parameter is set to `Private`.
 	HostPrivateAddress pulumi.StringPtrInput
 	// Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
 	HostPublicAddress pulumi.StringPtrInput
@@ -229,14 +229,14 @@ type HostArgs struct {
 	InstanceId pulumi.StringInput
 	// The instance region id.
 	InstanceRegionId pulumi.StringPtrInput
-	// Specify the new create the host's operating system. Valid values: Linux Windows.
+	// Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
 	OsType pulumi.StringInput
 	// Specify the new create a host of source. Valid values:
-	// * Local: localhost
-	// * Ecs:ECS instance
-	// * Rds:RDS exclusive cluster host.
+	// * `Local`: localhost
+	// * `Ecs`:ECS instance
+	// * `Rds`:RDS exclusive cluster host.
 	Source pulumi.StringInput
-	// Specify the newly created ECS instance ID or dedicated cluster host ID.
+	// Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
 	SourceInstanceId pulumi.StringPtrInput
 }
 

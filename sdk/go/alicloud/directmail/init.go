@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MailAddress{}
 	case "alicloud:directmail/receivers:Receivers":
 		r = &Receivers{}
+	case "alicloud:directmail/tag:Tag":
+		r = &Tag{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -53,6 +55,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"directmail/receivers",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"directmail/tag",
 		&module{version},
 	)
 }

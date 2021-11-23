@@ -1154,10 +1154,66 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cloudstoragegateway/expressSync",
+  "fqn": "pulumi_alicloud.cloudstoragegateway",
+  "classes": {
+   "alicloud:cloudstoragegateway/expressSync:ExpressSync": "ExpressSync"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudstoragegateway/expressSyncShareAttachment",
+  "fqn": "pulumi_alicloud.cloudstoragegateway",
+  "classes": {
+   "alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment": "ExpressSyncShareAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cloudstoragegateway/gateway",
   "fqn": "pulumi_alicloud.cloudstoragegateway",
   "classes": {
    "alicloud:cloudstoragegateway/gateway:Gateway": "Gateway"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudstoragegateway/gatewayBlockVolume",
+  "fqn": "pulumi_alicloud.cloudstoragegateway",
+  "classes": {
+   "alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume": "GatewayBlockVolume"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudstoragegateway/gatewayCacheDisk",
+  "fqn": "pulumi_alicloud.cloudstoragegateway",
+  "classes": {
+   "alicloud:cloudstoragegateway/gatewayCacheDisk:GatewayCacheDisk": "GatewayCacheDisk"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudstoragegateway/gatewayFileShare",
+  "fqn": "pulumi_alicloud.cloudstoragegateway",
+  "classes": {
+   "alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare": "GatewayFileShare"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudstoragegateway/gatewayLogging",
+  "fqn": "pulumi_alicloud.cloudstoragegateway",
+  "classes": {
+   "alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging": "GatewayLogging"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudstoragegateway/gatewaySmbUser",
+  "fqn": "pulumi_alicloud.cloudstoragegateway",
+  "classes": {
+   "alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser": "GatewaySmbUser"
   }
  },
  {
@@ -1190,6 +1246,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cms",
   "classes": {
    "alicloud:cms/alarmContactGroup:AlarmContactGroup": "AlarmContactGroup"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cms/dynamicTagGroup",
+  "fqn": "pulumi_alicloud.cms",
+  "classes": {
+   "alicloud:cms/dynamicTagGroup:DynamicTagGroup": "DynamicTagGroup"
   }
  },
  {
@@ -1534,6 +1598,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.directmail",
   "classes": {
    "alicloud:directmail/receivers:Receivers": "Receivers"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "directmail/tag",
+  "fqn": "pulumi_alicloud.directmail",
+  "classes": {
+   "alicloud:directmail/tag:Tag": "Tag"
   }
  },
  {
@@ -2090,6 +2162,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "eds/desktop",
+  "fqn": "pulumi_alicloud.eds",
+  "classes": {
+   "alicloud:eds/desktop:Desktop": "Desktop"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "eds/ecdPolicyGroup",
   "fqn": "pulumi_alicloud.eds",
   "classes": {
@@ -2106,10 +2186,26 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "eds/networkPackage",
+  "fqn": "pulumi_alicloud.eds",
+  "classes": {
+   "alicloud:eds/networkPackage:NetworkPackage": "NetworkPackage"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "eds/simpleOfficeSite",
   "fqn": "pulumi_alicloud.eds",
   "classes": {
    "alicloud:eds/simpleOfficeSite:SimpleOfficeSite": "SimpleOfficeSite"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "eds/user",
+  "fqn": "pulumi_alicloud.eds",
+  "classes": {
+   "alicloud:eds/user:User": "User"
   }
  },
  {
@@ -2266,6 +2362,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "eventbridge/serviceLinkedRole",
+  "fqn": "pulumi_alicloud.eventbridge",
+  "classes": {
+   "alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole": "ServiceLinkedRole"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "eventbridge/slr",
   "fqn": "pulumi_alicloud.eventbridge",
   "classes": {
@@ -2410,6 +2514,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "gpdb/account",
+  "fqn": "pulumi_alicloud.gpdb",
+  "classes": {
+   "alicloud:gpdb/account:Account": "Account"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "gpdb/connection",
   "fqn": "pulumi_alicloud.gpdb",
   "classes": {
@@ -2486,6 +2598,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.hbr",
   "classes": {
    "alicloud:hbr/restoreJob:RestoreJob": "RestoreJob"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "hbr/serverBackupPlan",
+  "fqn": "pulumi_alicloud.hbr",
+  "classes": {
+   "alicloud:hbr/serverBackupPlan:ServerBackupPlan": "ServerBackupPlan"
   }
  },
  {
@@ -2998,6 +3118,30 @@ _utilities.register(
   "fqn": "pulumi_alicloud.privatelink",
   "classes": {
    "alicloud:privatelink/vpcEndpointZone:VpcEndpointZone": "VpcEndpointZone"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "pvtz/endpoint",
+  "fqn": "pulumi_alicloud.pvtz",
+  "classes": {
+   "alicloud:pvtz/endpoint:Endpoint": "Endpoint"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "pvtz/rule",
+  "fqn": "pulumi_alicloud.pvtz",
+  "classes": {
+   "alicloud:pvtz/rule:Rule": "Rule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "pvtz/ruleAttachment",
+  "fqn": "pulumi_alicloud.pvtz",
+  "classes": {
+   "alicloud:pvtz/ruleAttachment:RuleAttachment": "RuleAttachment"
   }
  },
  {
@@ -3586,6 +3730,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "securitycenter/serviceLinkedRole",
+  "fqn": "pulumi_alicloud.securitycenter",
+  "classes": {
+   "alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole": "ServiceLinkedRole"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "servicemesh/serviceMesh",
   "fqn": "pulumi_alicloud.servicemesh",
   "classes": {
@@ -3594,10 +3746,34 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "simpleapplicationserver/customImage",
+  "fqn": "pulumi_alicloud.simpleapplicationserver",
+  "classes": {
+   "alicloud:simpleapplicationserver/customImage:CustomImage": "CustomImage"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "simpleapplicationserver/firewallRule",
+  "fqn": "pulumi_alicloud.simpleapplicationserver",
+  "classes": {
+   "alicloud:simpleapplicationserver/firewallRule:FirewallRule": "FirewallRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "simpleapplicationserver/instance",
   "fqn": "pulumi_alicloud.simpleapplicationserver",
   "classes": {
    "alicloud:simpleapplicationserver/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "simpleapplicationserver/snapshot",
+  "fqn": "pulumi_alicloud.simpleapplicationserver",
+  "classes": {
+   "alicloud:simpleapplicationserver/snapshot:Snapshot": "Snapshot"
   }
  },
  {
@@ -3786,6 +3962,30 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "vpc/ipv6EgressRule",
+  "fqn": "pulumi_alicloud.vpc",
+  "classes": {
+   "alicloud:vpc/ipv6EgressRule:Ipv6EgressRule": "Ipv6EgressRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "vpc/ipv6Gateway",
+  "fqn": "pulumi_alicloud.vpc",
+  "classes": {
+   "alicloud:vpc/ipv6Gateway:Ipv6Gateway": "Ipv6Gateway"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "vpc/ipv6InternetBandwidth",
+  "fqn": "pulumi_alicloud.vpc",
+  "classes": {
+   "alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth": "Ipv6InternetBandwidth"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "vpc/natGateway",
   "fqn": "pulumi_alicloud.vpc",
   "classes": {
@@ -3942,6 +4142,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.vpc",
   "classes": {
    "alicloud:vpc/trafficMirrorFilterIngressRule:TrafficMirrorFilterIngressRule": "TrafficMirrorFilterIngressRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "vpc/trafficMirrorSession",
+  "fqn": "pulumi_alicloud.vpc",
+  "classes": {
+   "alicloud:vpc/trafficMirrorSession:TrafficMirrorSession": "TrafficMirrorSession"
   }
  },
  {

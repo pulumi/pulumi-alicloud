@@ -9,6 +9,8 @@ from .domain import *
 from .get_domains import *
 from .get_mail_addresses import *
 from .get_receivers import *
+from .get_tags import *
 from .mail_address import *
 from .receivers import *
+from .tag import *
 from . import outputs

@@ -7,4 +7,5 @@ import typing
 # Export this package's modules as members:
 from .get_groups import *
 from .group import *
+from .service_linked_role import *
 from . import outputs

@@ -66,7 +66,7 @@ export class Host extends pulumi.CustomResource {
     }
 
     /**
-     * Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
+     * Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
      */
     public readonly activeAddressType!: pulumi.Output<string>;
     /**
@@ -82,7 +82,7 @@ export class Host extends pulumi.CustomResource {
      */
     public readonly hostName!: pulumi.Output<string>;
     /**
-     * Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
+     * Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `activeAddressType` parameter is set to `Private`.
      */
     public readonly hostPrivateAddress!: pulumi.Output<string | undefined>;
     /**
@@ -98,18 +98,18 @@ export class Host extends pulumi.CustomResource {
      */
     public readonly instanceRegionId!: pulumi.Output<string | undefined>;
     /**
-     * Specify the new create the host's operating system. Valid values: Linux Windows.
+     * Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
      */
     public readonly osType!: pulumi.Output<string>;
     /**
      * Specify the new create a host of source. Valid values: 
-     * * Local: localhost
-     * * Ecs:ECS instance
-     * * Rds:RDS exclusive cluster host.
+     * * `Local`: localhost
+     * * `Ecs`:ECS instance
+     * * `Rds`:RDS exclusive cluster host.
      */
     public readonly source!: pulumi.Output<string>;
     /**
-     * Specify the newly created ECS instance ID or dedicated cluster host ID.
+     * Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
      */
     public readonly sourceInstanceId!: pulumi.Output<string | undefined>;
 
@@ -178,7 +178,7 @@ export class Host extends pulumi.CustomResource {
  */
 export interface HostState {
     /**
-     * Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
+     * Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
      */
     activeAddressType?: pulumi.Input<string>;
     /**
@@ -194,7 +194,7 @@ export interface HostState {
      */
     hostName?: pulumi.Input<string>;
     /**
-     * Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
+     * Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `activeAddressType` parameter is set to `Private`.
      */
     hostPrivateAddress?: pulumi.Input<string>;
     /**
@@ -210,18 +210,18 @@ export interface HostState {
      */
     instanceRegionId?: pulumi.Input<string>;
     /**
-     * Specify the new create the host's operating system. Valid values: Linux Windows.
+     * Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
      */
     osType?: pulumi.Input<string>;
     /**
      * Specify the new create a host of source. Valid values: 
-     * * Local: localhost
-     * * Ecs:ECS instance
-     * * Rds:RDS exclusive cluster host.
+     * * `Local`: localhost
+     * * `Ecs`:ECS instance
+     * * `Rds`:RDS exclusive cluster host.
      */
     source?: pulumi.Input<string>;
     /**
-     * Specify the newly created ECS instance ID or dedicated cluster host ID.
+     * Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
      */
     sourceInstanceId?: pulumi.Input<string>;
 }
@@ -231,7 +231,7 @@ export interface HostState {
  */
 export interface HostArgs {
     /**
-     * Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
+     * Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
      */
     activeAddressType: pulumi.Input<string>;
     /**
@@ -243,7 +243,7 @@ export interface HostArgs {
      */
     hostName: pulumi.Input<string>;
     /**
-     * Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
+     * Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `activeAddressType` parameter is set to `Private`.
      */
     hostPrivateAddress?: pulumi.Input<string>;
     /**
@@ -259,18 +259,18 @@ export interface HostArgs {
      */
     instanceRegionId?: pulumi.Input<string>;
     /**
-     * Specify the new create the host's operating system. Valid values: Linux Windows.
+     * Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
      */
     osType: pulumi.Input<string>;
     /**
      * Specify the new create a host of source. Valid values: 
-     * * Local: localhost
-     * * Ecs:ECS instance
-     * * Rds:RDS exclusive cluster host.
+     * * `Local`: localhost
+     * * `Ecs`:ECS instance
+     * * `Rds`:RDS exclusive cluster host.
      */
     source: pulumi.Input<string>;
     /**
-     * Specify the newly created ECS instance ID or dedicated cluster host ID.
+     * Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
      */
     sourceInstanceId?: pulumi.Input<string>;
 }

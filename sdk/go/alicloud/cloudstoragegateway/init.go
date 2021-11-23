@@ -21,8 +21,22 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:cloudstoragegateway/expressSync:ExpressSync":
+		r = &ExpressSync{}
+	case "alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment":
+		r = &ExpressSyncShareAttachment{}
 	case "alicloud:cloudstoragegateway/gateway:Gateway":
 		r = &Gateway{}
+	case "alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume":
+		r = &GatewayBlockVolume{}
+	case "alicloud:cloudstoragegateway/gatewayCacheDisk:GatewayCacheDisk":
+		r = &GatewayCacheDisk{}
+	case "alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare":
+		r = &GatewayFileShare{}
+	case "alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging":
+		r = &GatewayLogging{}
+	case "alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser":
+		r = &GatewaySmbUser{}
 	case "alicloud:cloudstoragegateway/storageBundle:StorageBundle":
 		r = &StorageBundle{}
 	default:
@@ -40,7 +54,42 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"cloudstoragegateway/expressSync",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudstoragegateway/expressSyncShareAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"cloudstoragegateway/gateway",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudstoragegateway/gatewayBlockVolume",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudstoragegateway/gatewayCacheDisk",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudstoragegateway/gatewayFileShare",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudstoragegateway/gatewayLogging",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudstoragegateway/gatewaySmbUser",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

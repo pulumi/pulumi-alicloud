@@ -9,8 +9,175 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'ServerBackupPlanDetailArgs',
     'GetBackupJobsFilterArgs',
+    'GetServerBackupPlansFilterArgs',
 ]
+
+@pulumi.input_type
+class ServerBackupPlanDetailArgs:
+    def __init__(__self__, *,
+                 app_consistent: pulumi.Input[bool],
+                 snapshot_group: pulumi.Input[bool],
+                 destination_region_id: Optional[pulumi.Input[str]] = None,
+                 destination_retention: Optional[pulumi.Input[int]] = None,
+                 disk_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 do_copy: Optional[pulumi.Input[bool]] = None,
+                 enable_fs_freeze: Optional[pulumi.Input[bool]] = None,
+                 post_script_path: Optional[pulumi.Input[str]] = None,
+                 pre_script_path: Optional[pulumi.Input[str]] = None,
+                 timeout_in_seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[bool] app_consistent: Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
+        :param pulumi.Input[bool] snapshot_group: Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
+        :param pulumi.Input[str] destination_region_id: Only vaild when DoCopy is true. The destination region ID when replicating to another region. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        :param pulumi.Input[int] destination_retention: Only vaild when DoCopy is true. The retention days of the destination backup. When not specified, the destination backup will be saved permanently. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] disk_id_lists: The list of cloud disks to be backed up in the ECS instance. When not specified, a snapshot is executed for all the disks on the ECS instance.
+        :param pulumi.Input[bool] do_copy: Whether replicate to another region. Valid values: `true`, `false`.
+        :param pulumi.Input[bool] enable_fs_freeze: Only the Linux system is valid. Whether to use the Linux FsFreeze mechanism to ensure that the file system is read-only consistent before creating a storage snapshot. The default is True. Valid values: `true`, `false`.
+        :param pulumi.Input[str] post_script_path: Only vaild for the linux system when AppConsistent is true. The application thaw script path (e.g. /tmp/postscript.sh). The postscript.sh script must meet the following conditions: in terms of permissions, only the root user as the owner has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+        :param pulumi.Input[str] pre_script_path: Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+        :param pulumi.Input[int] timeout_in_seconds: Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
+        """
+        pulumi.set(__self__, "app_consistent", app_consistent)
+        pulumi.set(__self__, "snapshot_group", snapshot_group)
+        if destination_region_id is not None:
+            pulumi.set(__self__, "destination_region_id", destination_region_id)
+        if destination_retention is not None:
+            pulumi.set(__self__, "destination_retention", destination_retention)
+        if disk_id_lists is not None:
+            pulumi.set(__self__, "disk_id_lists", disk_id_lists)
+        if do_copy is not None:
+            pulumi.set(__self__, "do_copy", do_copy)
+        if enable_fs_freeze is not None:
+            pulumi.set(__self__, "enable_fs_freeze", enable_fs_freeze)
+        if post_script_path is not None:
+            pulumi.set(__self__, "post_script_path", post_script_path)
+        if pre_script_path is not None:
+            pulumi.set(__self__, "pre_script_path", pre_script_path)
+        if timeout_in_seconds is not None:
+            pulumi.set(__self__, "timeout_in_seconds", timeout_in_seconds)
+
+    @property
+    @pulumi.getter(name="appConsistent")
+    def app_consistent(self) -> pulumi.Input[bool]:
+        """
+        Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "app_consistent")
+
+    @app_consistent.setter
+    def app_consistent(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "app_consistent", value)
+
+    @property
+    @pulumi.getter(name="snapshotGroup")
+    def snapshot_group(self) -> pulumi.Input[bool]:
+        """
+        Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "snapshot_group")
+
+    @snapshot_group.setter
+    def snapshot_group(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "snapshot_group", value)
+
+    @property
+    @pulumi.getter(name="destinationRegionId")
+    def destination_region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Only vaild when DoCopy is true. The destination region ID when replicating to another region. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        """
+        return pulumi.get(self, "destination_region_id")
+
+    @destination_region_id.setter
+    def destination_region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_region_id", value)
+
+    @property
+    @pulumi.getter(name="destinationRetention")
+    def destination_retention(self) -> Optional[pulumi.Input[int]]:
+        """
+        Only vaild when DoCopy is true. The retention days of the destination backup. When not specified, the destination backup will be saved permanently. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        """
+        return pulumi.get(self, "destination_retention")
+
+    @destination_retention.setter
+    def destination_retention(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "destination_retention", value)
+
+    @property
+    @pulumi.getter(name="diskIdLists")
+    def disk_id_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of cloud disks to be backed up in the ECS instance. When not specified, a snapshot is executed for all the disks on the ECS instance.
+        """
+        return pulumi.get(self, "disk_id_lists")
+
+    @disk_id_lists.setter
+    def disk_id_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "disk_id_lists", value)
+
+    @property
+    @pulumi.getter(name="doCopy")
+    def do_copy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether replicate to another region. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "do_copy")
+
+    @do_copy.setter
+    def do_copy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "do_copy", value)
+
+    @property
+    @pulumi.getter(name="enableFsFreeze")
+    def enable_fs_freeze(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Only the Linux system is valid. Whether to use the Linux FsFreeze mechanism to ensure that the file system is read-only consistent before creating a storage snapshot. The default is True. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "enable_fs_freeze")
+
+    @enable_fs_freeze.setter
+    def enable_fs_freeze(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_fs_freeze", value)
+
+    @property
+    @pulumi.getter(name="postScriptPath")
+    def post_script_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Only vaild for the linux system when AppConsistent is true. The application thaw script path (e.g. /tmp/postscript.sh). The postscript.sh script must meet the following conditions: in terms of permissions, only the root user as the owner has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+        """
+        return pulumi.get(self, "post_script_path")
+
+    @post_script_path.setter
+    def post_script_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "post_script_path", value)
+
+    @property
+    @pulumi.getter(name="preScriptPath")
+    def pre_script_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+        """
+        return pulumi.get(self, "pre_script_path")
+
+    @pre_script_path.setter
+    def pre_script_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pre_script_path", value)
+
+    @property
+    @pulumi.getter(name="timeoutInSeconds")
+    def timeout_in_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
+        """
+        return pulumi.get(self, "timeout_in_seconds")
+
+    @timeout_in_seconds.setter
+    def timeout_in_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_in_seconds", value)
+
 
 @pulumi.input_type
 class GetBackupJobsFilterArgs:
@@ -53,6 +220,45 @@ class GetBackupJobsFilterArgs:
     @operator.setter
     def operator(self, value: Optional[str]):
         pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        Set of values that are accepted for the given field.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[Sequence[str]]):
+        pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class GetServerBackupPlansFilterArgs:
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str key: The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[str]):
+        pulumi.set(self, "key", value)
 
     @property
     @pulumi.getter

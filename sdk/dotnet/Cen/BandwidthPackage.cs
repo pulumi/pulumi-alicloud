@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<ImmutableArray<string>> GeographicRegionIds { get; private set; } = null!;
 
         /// <summary>
-        /// Field 'name' has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
+        /// Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -214,7 +214,7 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
-        /// Field 'name' has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
+        /// Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -291,7 +291,7 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
-        /// Field 'name' has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
+        /// Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

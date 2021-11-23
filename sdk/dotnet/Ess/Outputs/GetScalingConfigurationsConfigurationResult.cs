@@ -26,6 +26,10 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetScalingConfigurationsConfigurationDataDiskResult> DataDisks;
         /// <summary>
+        /// (Optional,Available in 1.143.0+) Hostname of an ECS instance.
+        /// </summary>
+        public readonly string HostName;
+        /// <summary>
         /// ID of the scaling rule.
         /// </summary>
         public readonly string Id;
@@ -33,6 +37,10 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// Image ID of the scaling configuration.
         /// </summary>
         public readonly string ImageId;
+        /// <summary>
+        /// (Optional,Available in 1.143.0+) InstanceName of an ECS instance.
+        /// </summary>
+        public readonly string InstanceName;
         /// <summary>
         /// Instance type of the scaling configuration.
         /// </summary>
@@ -86,9 +94,13 @@ namespace Pulumi.AliCloud.Ess.Outputs
 
             ImmutableArray<Outputs.GetScalingConfigurationsConfigurationDataDiskResult> dataDisks,
 
+            string hostName,
+
             string id,
 
             string imageId,
+
+            string instanceName,
 
             string instanceType,
 
@@ -115,8 +127,10 @@ namespace Pulumi.AliCloud.Ess.Outputs
             CreationTime = creationTime;
             CreditSpecification = creditSpecification;
             DataDisks = dataDisks;
+            HostName = hostName;
             Id = id;
             ImageId = imageId;
+            InstanceName = instanceName;
             InstanceType = instanceType;
             InternetChargeType = internetChargeType;
             InternetMaxBandwidthIn = internetMaxBandwidthIn;

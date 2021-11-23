@@ -5,15 +5,24 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./endpoint";
+export * from "./getEndpoints";
+export * from "./getResolverZones";
+export * from "./getRules";
 export * from "./getService";
 export * from "./getZoneRecords";
 export * from "./getZones";
+export * from "./rule";
+export * from "./ruleAttachment";
 export * from "./userVpcAuthorization";
 export * from "./zone";
 export * from "./zoneAttachment";
 export * from "./zoneRecord";
 
 // Import resources to register:
+import { Endpoint } from "./endpoint";
+import { Rule } from "./rule";
+import { RuleAttachment } from "./ruleAttachment";
 import { UserVpcAuthorization } from "./userVpcAuthorization";
 import { Zone } from "./zone";
 import { ZoneAttachment } from "./zoneAttachment";
@@ -23,6 +32,12 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:pvtz/endpoint:Endpoint":
+                return new Endpoint(name, <any>undefined, { urn })
+            case "alicloud:pvtz/rule:Rule":
+                return new Rule(name, <any>undefined, { urn })
+            case "alicloud:pvtz/ruleAttachment:RuleAttachment":
+                return new RuleAttachment(name, <any>undefined, { urn })
             case "alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization":
                 return new UserVpcAuthorization(name, <any>undefined, { urn })
             case "alicloud:pvtz/zone:Zone":
@@ -36,6 +51,9 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "pvtz/endpoint", _module)
+pulumi.runtime.registerResourceModule("alicloud", "pvtz/rule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "pvtz/ruleAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "pvtz/userVpcAuthorization", _module)
 pulumi.runtime.registerResourceModule("alicloud", "pvtz/zone", _module)
 pulumi.runtime.registerResourceModule("alicloud", "pvtz/zoneAttachment", _module)

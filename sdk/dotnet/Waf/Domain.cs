@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.Waf
         public Output<string> DomainDeprecated { get; private set; } = null!;
 
         /// <summary>
-        /// The domain that you want to add to WAF.
+        /// The domain that you want to add to WAF. The `domain_name` is required when the value of the `domain`  is Empty.
         /// </summary>
         [Output("domainName")]
         public Output<string> DomainName { get; private set; } = null!;
@@ -252,7 +252,7 @@ namespace Pulumi.AliCloud.Waf
         public Input<string>? DomainDeprecated { get; set; }
 
         /// <summary>
-        /// The domain that you want to add to WAF.
+        /// The domain that you want to add to WAF. The `domain_name` is required when the value of the `domain`  is Empty.
         /// </summary>
         [Input("domainName")]
         public Input<string>? DomainName { get; set; }
@@ -400,7 +400,7 @@ namespace Pulumi.AliCloud.Waf
         public Input<string>? DomainDeprecated { get; set; }
 
         /// <summary>
-        /// The domain that you want to add to WAF.
+        /// The domain that you want to add to WAF. The `domain_name` is required when the value of the `domain`  is Empty.
         /// </summary>
         [Input("domainName")]
         public Input<string>? DomainName { get; set; }

@@ -1004,10 +1004,14 @@ type GetScalingConfigurationsConfiguration struct {
 	CreditSpecification string `pulumi:"creditSpecification"`
 	// Data disks of the scaling configuration.
 	DataDisks []GetScalingConfigurationsConfigurationDataDisk `pulumi:"dataDisks"`
+	// (Optional,Available in 1.143.0+) Hostname of an ECS instance.
+	HostName string `pulumi:"hostName"`
 	// ID of the scaling rule.
 	Id string `pulumi:"id"`
 	// Image ID of the scaling configuration.
 	ImageId string `pulumi:"imageId"`
+	// (Optional,Available in 1.143.0+) InstanceName of an ECS instance.
+	InstanceName string `pulumi:"instanceName"`
 	// Instance type of the scaling configuration.
 	InstanceType string `pulumi:"instanceType"`
 	// Internet charge type of the scaling configuration.
@@ -1050,10 +1054,14 @@ type GetScalingConfigurationsConfigurationArgs struct {
 	CreditSpecification pulumi.StringInput `pulumi:"creditSpecification"`
 	// Data disks of the scaling configuration.
 	DataDisks GetScalingConfigurationsConfigurationDataDiskArrayInput `pulumi:"dataDisks"`
+	// (Optional,Available in 1.143.0+) Hostname of an ECS instance.
+	HostName pulumi.StringInput `pulumi:"hostName"`
 	// ID of the scaling rule.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Image ID of the scaling configuration.
 	ImageId pulumi.StringInput `pulumi:"imageId"`
+	// (Optional,Available in 1.143.0+) InstanceName of an ECS instance.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
 	// Instance type of the scaling configuration.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
 	// Internet charge type of the scaling configuration.
@@ -1146,6 +1154,11 @@ func (o GetScalingConfigurationsConfigurationOutput) DataDisks() GetScalingConfi
 	}).(GetScalingConfigurationsConfigurationDataDiskArrayOutput)
 }
 
+// (Optional,Available in 1.143.0+) Hostname of an ECS instance.
+func (o GetScalingConfigurationsConfigurationOutput) HostName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.HostName }).(pulumi.StringOutput)
+}
+
 // ID of the scaling rule.
 func (o GetScalingConfigurationsConfigurationOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.Id }).(pulumi.StringOutput)
@@ -1154,6 +1167,11 @@ func (o GetScalingConfigurationsConfigurationOutput) Id() pulumi.StringOutput {
 // Image ID of the scaling configuration.
 func (o GetScalingConfigurationsConfigurationOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// (Optional,Available in 1.143.0+) InstanceName of an ECS instance.
+func (o GetScalingConfigurationsConfigurationOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.InstanceName }).(pulumi.StringOutput)
 }
 
 // Instance type of the scaling configuration.

@@ -464,7 +464,7 @@ class DomainNewSource(dict):
                  priority: Optional[int] = None,
                  weight: Optional[int] = None):
         """
-        :param str content: The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
+        :param str content: The address of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
         :param str type: The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
         :param int port: The port of source. Valid values are `443` and `80`. Default value is `80`.
         :param int priority: Priority of the source. Valid values are `0` and `100`. Default value is `20`.
@@ -483,7 +483,7 @@ class DomainNewSource(dict):
     @pulumi.getter
     def content(self) -> str:
         """
-        The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
+        The address of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
         """
         return pulumi.get(self, "content")
 

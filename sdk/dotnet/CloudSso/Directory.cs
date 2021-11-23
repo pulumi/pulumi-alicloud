@@ -30,9 +30,9 @@ namespace Pulumi.AliCloud.CloudSso
     /// {
     ///     public MyStack()
     ///     {
-    ///         var example = new AliCloud.CloudSso.Directory("example", new AliCloud.CloudSso.DirectoryArgs
+    ///         var @default = new AliCloud.CloudSso.Directory("default", new AliCloud.CloudSso.DirectoryArgs
     ///         {
-    ///             DirectoryName = "example_value",
+    ///             DirectoryName = "example-value",
     ///         });
     ///     }
     /// 

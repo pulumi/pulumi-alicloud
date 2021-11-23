@@ -12,6 +12,7 @@ __all__ = [
     'GetDomainsDomainResult',
     'GetMailAddressesAddressResult',
     'GetReceiversReceiverseResult',
+    'GetTagsTagResult',
 ]
 
 @pulumi.output_type
@@ -473,5 +474,45 @@ class GetReceiversReceiverseResult(dict):
         The status of the resource.
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetTagsTagResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 tag_id: str,
+                 tag_name: str):
+        """
+        :param str id: The ID of the tag.
+        :param str tag_id: The ID of the tag.
+        :param str tag_name: The name of the tag.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "tag_id", tag_id)
+        pulumi.set(__self__, "tag_name", tag_name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the tag.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="tagId")
+    def tag_id(self) -> str:
+        """
+        The ID of the tag.
+        """
+        return pulumi.get(self, "tag_id")
+
+    @property
+    @pulumi.getter(name="tagName")
+    def tag_name(self) -> str:
+        """
+        The name of the tag.
+        """
+        return pulumi.get(self, "tag_name")
 
 

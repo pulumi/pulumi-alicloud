@@ -25,19 +25,19 @@ class HostArgs:
                  source_instance_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Host resource.
-        :param pulumi.Input[str] active_address_type: Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
+        :param pulumi.Input[str] active_address_type: Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
         :param pulumi.Input[str] host_name: Specify the new create a host name of the supports up to 128 characters.
         :param pulumi.Input[str] instance_id: Specify the new create a host where the Bastion host ID of.
-        :param pulumi.Input[str] os_type: Specify the new create the host's operating system. Valid values: Linux Windows.
+        :param pulumi.Input[str] os_type: Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
         :param pulumi.Input[str] source: Specify the new create a host of source. Valid values: 
-               * Local: localhost
-               * Ecs:ECS instance
-               * Rds:RDS exclusive cluster host.
+               * `Local`: localhost
+               * `Ecs`:ECS instance
+               * `Rds`:RDS exclusive cluster host.
         :param pulumi.Input[str] comment: Specify a host of notes, supports up to 500 characters.
-        :param pulumi.Input[str] host_private_address: Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
+        :param pulumi.Input[str] host_private_address: Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `active_address_type` parameter is set to `Private`.
         :param pulumi.Input[str] host_public_address: Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
         :param pulumi.Input[str] instance_region_id: The instance region id.
-        :param pulumi.Input[str] source_instance_id: Specify the newly created ECS instance ID or dedicated cluster host ID.
+        :param pulumi.Input[str] source_instance_id: Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
         """
         pulumi.set(__self__, "active_address_type", active_address_type)
         pulumi.set(__self__, "host_name", host_name)
@@ -59,7 +59,7 @@ class HostArgs:
     @pulumi.getter(name="activeAddressType")
     def active_address_type(self) -> pulumi.Input[str]:
         """
-        Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
+        Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
         """
         return pulumi.get(self, "active_address_type")
 
@@ -95,7 +95,7 @@ class HostArgs:
     @pulumi.getter(name="osType")
     def os_type(self) -> pulumi.Input[str]:
         """
-        Specify the new create the host's operating system. Valid values: Linux Windows.
+        Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
         """
         return pulumi.get(self, "os_type")
 
@@ -108,9 +108,9 @@ class HostArgs:
     def source(self) -> pulumi.Input[str]:
         """
         Specify the new create a host of source. Valid values: 
-        * Local: localhost
-        * Ecs:ECS instance
-        * Rds:RDS exclusive cluster host.
+        * `Local`: localhost
+        * `Ecs`:ECS instance
+        * `Rds`:RDS exclusive cluster host.
         """
         return pulumi.get(self, "source")
 
@@ -134,7 +134,7 @@ class HostArgs:
     @pulumi.getter(name="hostPrivateAddress")
     def host_private_address(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
+        Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `active_address_type` parameter is set to `Private`.
         """
         return pulumi.get(self, "host_private_address")
 
@@ -170,7 +170,7 @@ class HostArgs:
     @pulumi.getter(name="sourceInstanceId")
     def source_instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify the newly created ECS instance ID or dedicated cluster host ID.
+        Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
         """
         return pulumi.get(self, "source_instance_id")
 
@@ -195,20 +195,20 @@ class _HostState:
                  source_instance_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Host resources.
-        :param pulumi.Input[str] active_address_type: Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
+        :param pulumi.Input[str] active_address_type: Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
         :param pulumi.Input[str] comment: Specify a host of notes, supports up to 500 characters.
         :param pulumi.Input[str] host_id: The host ID.
         :param pulumi.Input[str] host_name: Specify the new create a host name of the supports up to 128 characters.
-        :param pulumi.Input[str] host_private_address: Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
+        :param pulumi.Input[str] host_private_address: Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `active_address_type` parameter is set to `Private`.
         :param pulumi.Input[str] host_public_address: Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
         :param pulumi.Input[str] instance_id: Specify the new create a host where the Bastion host ID of.
         :param pulumi.Input[str] instance_region_id: The instance region id.
-        :param pulumi.Input[str] os_type: Specify the new create the host's operating system. Valid values: Linux Windows.
+        :param pulumi.Input[str] os_type: Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
         :param pulumi.Input[str] source: Specify the new create a host of source. Valid values: 
-               * Local: localhost
-               * Ecs:ECS instance
-               * Rds:RDS exclusive cluster host.
-        :param pulumi.Input[str] source_instance_id: Specify the newly created ECS instance ID or dedicated cluster host ID.
+               * `Local`: localhost
+               * `Ecs`:ECS instance
+               * `Rds`:RDS exclusive cluster host.
+        :param pulumi.Input[str] source_instance_id: Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
         """
         if active_address_type is not None:
             pulumi.set(__self__, "active_address_type", active_address_type)
@@ -237,7 +237,7 @@ class _HostState:
     @pulumi.getter(name="activeAddressType")
     def active_address_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
+        Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
         """
         return pulumi.get(self, "active_address_type")
 
@@ -285,7 +285,7 @@ class _HostState:
     @pulumi.getter(name="hostPrivateAddress")
     def host_private_address(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
+        Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `active_address_type` parameter is set to `Private`.
         """
         return pulumi.get(self, "host_private_address")
 
@@ -333,7 +333,7 @@ class _HostState:
     @pulumi.getter(name="osType")
     def os_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify the new create the host's operating system. Valid values: Linux Windows.
+        Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
         """
         return pulumi.get(self, "os_type")
 
@@ -346,9 +346,9 @@ class _HostState:
     def source(self) -> Optional[pulumi.Input[str]]:
         """
         Specify the new create a host of source. Valid values: 
-        * Local: localhost
-        * Ecs:ECS instance
-        * Rds:RDS exclusive cluster host.
+        * `Local`: localhost
+        * `Ecs`:ECS instance
+        * `Rds`:RDS exclusive cluster host.
         """
         return pulumi.get(self, "source")
 
@@ -360,7 +360,7 @@ class _HostState:
     @pulumi.getter(name="sourceInstanceId")
     def source_instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify the newly created ECS instance ID or dedicated cluster host ID.
+        Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
         """
         return pulumi.get(self, "source_instance_id")
 
@@ -419,19 +419,19 @@ class Host(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] active_address_type: Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
+        :param pulumi.Input[str] active_address_type: Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
         :param pulumi.Input[str] comment: Specify a host of notes, supports up to 500 characters.
         :param pulumi.Input[str] host_name: Specify the new create a host name of the supports up to 128 characters.
-        :param pulumi.Input[str] host_private_address: Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
+        :param pulumi.Input[str] host_private_address: Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `active_address_type` parameter is set to `Private`.
         :param pulumi.Input[str] host_public_address: Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
         :param pulumi.Input[str] instance_id: Specify the new create a host where the Bastion host ID of.
         :param pulumi.Input[str] instance_region_id: The instance region id.
-        :param pulumi.Input[str] os_type: Specify the new create the host's operating system. Valid values: Linux Windows.
+        :param pulumi.Input[str] os_type: Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
         :param pulumi.Input[str] source: Specify the new create a host of source. Valid values: 
-               * Local: localhost
-               * Ecs:ECS instance
-               * Rds:RDS exclusive cluster host.
-        :param pulumi.Input[str] source_instance_id: Specify the newly created ECS instance ID or dedicated cluster host ID.
+               * `Local`: localhost
+               * `Ecs`:ECS instance
+               * `Rds`:RDS exclusive cluster host.
+        :param pulumi.Input[str] source_instance_id: Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
         """
         ...
     @overload
@@ -557,20 +557,20 @@ class Host(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] active_address_type: Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
+        :param pulumi.Input[str] active_address_type: Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
         :param pulumi.Input[str] comment: Specify a host of notes, supports up to 500 characters.
         :param pulumi.Input[str] host_id: The host ID.
         :param pulumi.Input[str] host_name: Specify the new create a host name of the supports up to 128 characters.
-        :param pulumi.Input[str] host_private_address: Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
+        :param pulumi.Input[str] host_private_address: Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `active_address_type` parameter is set to `Private`.
         :param pulumi.Input[str] host_public_address: Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
         :param pulumi.Input[str] instance_id: Specify the new create a host where the Bastion host ID of.
         :param pulumi.Input[str] instance_region_id: The instance region id.
-        :param pulumi.Input[str] os_type: Specify the new create the host's operating system. Valid values: Linux Windows.
+        :param pulumi.Input[str] os_type: Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
         :param pulumi.Input[str] source: Specify the new create a host of source. Valid values: 
-               * Local: localhost
-               * Ecs:ECS instance
-               * Rds:RDS exclusive cluster host.
-        :param pulumi.Input[str] source_instance_id: Specify the newly created ECS instance ID or dedicated cluster host ID.
+               * `Local`: localhost
+               * `Ecs`:ECS instance
+               * `Rds`:RDS exclusive cluster host.
+        :param pulumi.Input[str] source_instance_id: Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -593,7 +593,7 @@ class Host(pulumi.CustomResource):
     @pulumi.getter(name="activeAddressType")
     def active_address_type(self) -> pulumi.Output[str]:
         """
-        Specify the new create a host of address types. Valid values: Public: the IP address of a Public network Private: Private network address.
+        Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
         """
         return pulumi.get(self, "active_address_type")
 
@@ -625,7 +625,7 @@ class Host(pulumi.CustomResource):
     @pulumi.getter(name="hostPrivateAddress")
     def host_private_address(self) -> pulumi.Output[Optional[str]]:
         """
-        Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS.
+        Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `active_address_type` parameter is set to `Private`.
         """
         return pulumi.get(self, "host_private_address")
 
@@ -657,7 +657,7 @@ class Host(pulumi.CustomResource):
     @pulumi.getter(name="osType")
     def os_type(self) -> pulumi.Output[str]:
         """
-        Specify the new create the host's operating system. Valid values: Linux Windows.
+        Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
         """
         return pulumi.get(self, "os_type")
 
@@ -666,9 +666,9 @@ class Host(pulumi.CustomResource):
     def source(self) -> pulumi.Output[str]:
         """
         Specify the new create a host of source. Valid values: 
-        * Local: localhost
-        * Ecs:ECS instance
-        * Rds:RDS exclusive cluster host.
+        * `Local`: localhost
+        * `Ecs`:ECS instance
+        * `Rds`:RDS exclusive cluster host.
         """
         return pulumi.get(self, "source")
 
@@ -676,7 +676,7 @@ class Host(pulumi.CustomResource):
     @pulumi.getter(name="sourceInstanceId")
     def source_instance_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Specify the newly created ECS instance ID or dedicated cluster host ID.
+        Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
         """
         return pulumi.get(self, "source_instance_id")
 

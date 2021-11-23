@@ -73,7 +73,7 @@ type BandwidthPackage struct {
 	//
 	// Deprecated: Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.
 	GeographicRegionIds pulumi.StringArrayOutput `pulumi:"geographicRegionIds"`
-	// Field 'name' has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
+	// Field `name` has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -136,7 +136,7 @@ type bandwidthPackageState struct {
 	//
 	// Deprecated: Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.
 	GeographicRegionIds []string `pulumi:"geographicRegionIds"`
-	// Field 'name' has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
+	// Field `name` has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.
 	Name *string `pulumi:"name"`
@@ -168,7 +168,7 @@ type BandwidthPackageState struct {
 	//
 	// Deprecated: Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.
 	GeographicRegionIds pulumi.StringArrayInput
-	// Field 'name' has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
+	// Field `name` has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.
 	Name pulumi.StringPtrInput
@@ -202,7 +202,7 @@ type bandwidthPackageArgs struct {
 	//
 	// Deprecated: Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.
 	GeographicRegionIds []string `pulumi:"geographicRegionIds"`
-	// Field 'name' has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
+	// Field `name` has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.
 	Name *string `pulumi:"name"`
@@ -231,7 +231,7 @@ type BandwidthPackageArgs struct {
 	//
 	// Deprecated: Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.
 	GeographicRegionIds pulumi.StringArrayInput
-	// Field 'name' has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
+	// Field `name` has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.
 	Name pulumi.StringPtrInput

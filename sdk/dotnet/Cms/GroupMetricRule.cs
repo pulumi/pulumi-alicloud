@@ -16,6 +16,59 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// &gt; **NOTE:** Available in v1.104.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var thisRandomUuid = new Random.RandomUuid("thisRandomUuid", new Random.RandomUuidArgs
+    ///         {
+    ///         });
+    ///         var thisGroupMetricRule = new AliCloud.Cms.GroupMetricRule("thisGroupMetricRule", new AliCloud.Cms.GroupMetricRuleArgs
+    ///         {
+    ///             GroupId = "539****",
+    ///             RuleId = thisRandomUuid.Id,
+    ///             Category = "ecs",
+    ///             Namespace = "acs_ecs_dashboard",
+    ///             MetricName = "cpu_total",
+    ///             Period = 60,
+    ///             GroupMetricRuleName = "tf-testacc-rule-name",
+    ///             EmailSubject = "tf-testacc-rule-name-warning",
+    ///             Interval = "3600",
+    ///             SilenceTime = 85800,
+    ///             NoEffectiveInterval = "00:00-05:30",
+    ///             Webhook = "http://www.aliyun.com",
+    ///             Escalations = new AliCloud.Cms.Inputs.GroupMetricRuleEscalationsArgs
+    ///             {
+    ///                 Warn = new AliCloud.Cms.Inputs.GroupMetricRuleEscalationsWarnArgs
+    ///                 {
+    ///                     ComparisonOperator = "GreaterThanOrEqualToThreshold",
+    ///                     Statistics = "Average",
+    ///                     Threshold = "90",
+    ///                     Times = 3,
+    ///                 },
+    ///                 Info = new AliCloud.Cms.Inputs.GroupMetricRuleEscalationsInfoArgs
+    ///                 {
+    ///                     ComparisonOperator = "LessThanLastWeek",
+    ///                     Statistics = "Average",
+    ///                     Threshold = "90",
+    ///                     Times = 5,
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cloud Monitor Service Group Metric Rule can be imported using the id, e.g.

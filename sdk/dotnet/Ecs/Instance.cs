@@ -98,6 +98,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> HostName { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
+        /// </summary>
+        [Output("hpcClusterId")]
+        public Output<string?> HpcClusterId { get; private set; } = null!;
+
+        /// <summary>
         /// The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Output("imageId")]
@@ -219,6 +225,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("roleName")]
         public Output<string> RoleName { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+        /// </summary>
+        [Output("secondaryPrivateIps")]
+        public Output<ImmutableArray<string>> SecondaryPrivateIps { get; private set; } = null!;
 
         /// <summary>
         /// The security enhancement strategy.
@@ -451,6 +463,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? HostName { get; set; }
 
         /// <summary>
+        /// The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
+        /// </summary>
+        [Input("hpcClusterId")]
+        public Input<string>? HpcClusterId { get; set; }
+
+        /// <summary>
         /// The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Input("imageId", required: true)]
@@ -572,6 +590,18 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("roleName")]
         public Input<string>? RoleName { get; set; }
+
+        [Input("secondaryPrivateIps")]
+        private InputList<string>? _secondaryPrivateIps;
+
+        /// <summary>
+        /// A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+        /// </summary>
+        public InputList<string> SecondaryPrivateIps
+        {
+            get => _secondaryPrivateIps ?? (_secondaryPrivateIps = new InputList<string>());
+            set => _secondaryPrivateIps = value;
+        }
 
         /// <summary>
         /// The security enhancement strategy.
@@ -783,6 +813,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? HostName { get; set; }
 
         /// <summary>
+        /// The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
+        /// </summary>
+        [Input("hpcClusterId")]
+        public Input<string>? HpcClusterId { get; set; }
+
+        /// <summary>
         /// The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Input("imageId")]
@@ -910,6 +946,18 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("roleName")]
         public Input<string>? RoleName { get; set; }
+
+        [Input("secondaryPrivateIps")]
+        private InputList<string>? _secondaryPrivateIps;
+
+        /// <summary>
+        /// A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+        /// </summary>
+        public InputList<string> SecondaryPrivateIps
+        {
+            get => _secondaryPrivateIps ?? (_secondaryPrivateIps = new InputList<string>());
+            set => _secondaryPrivateIps = value;
+        }
 
         /// <summary>
         /// The security enhancement strategy.

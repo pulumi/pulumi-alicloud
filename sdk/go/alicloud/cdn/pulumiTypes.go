@@ -960,7 +960,7 @@ func (o DomainNewCertificateConfigPtrOutput) ServerCertificateStatus() pulumi.St
 }
 
 type DomainNewSource struct {
-	// The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
+	// The address of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
 	Content string `pulumi:"content"`
 	// The port of source. Valid values are `443` and `80`. Default value is `80`.
 	Port *int `pulumi:"port"`
@@ -984,7 +984,7 @@ type DomainNewSourceInput interface {
 }
 
 type DomainNewSourceArgs struct {
-	// The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
+	// The address of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
 	Content pulumi.StringInput `pulumi:"content"`
 	// The port of source. Valid values are `443` and `80`. Default value is `80`.
 	Port pulumi.IntPtrInput `pulumi:"port"`
@@ -1047,7 +1047,7 @@ func (o DomainNewSourceOutput) ToDomainNewSourceOutputWithContext(ctx context.Co
 	return o
 }
 
-// The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
+// The address of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
 func (o DomainNewSourceOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainNewSource) string { return v.Content }).(pulumi.StringOutput)
 }

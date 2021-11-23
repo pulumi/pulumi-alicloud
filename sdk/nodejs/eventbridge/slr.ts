@@ -4,24 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Using this data source can create Event Bridge service-linked roles(SLR). EventBridge may need to access another Alibaba Cloud service to implement a specific feature. In this case, EventBridge must assume a specific service-linked role, which is a Resource Access Management (RAM) role, to obtain permissions to access another Alibaba Cloud service.
- *
- * For information about Event Bridge service-linked roles(SLR) and how to use it, see [What is service-linked roles](https://www.alibabacloud.com/help/doc-detail/181425.htm).
- *
- * > **NOTE:** Available in v1.129.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const slr = new alicloud.eventbridge.Slr("slr", {
- *     productName: "AliyunServiceRoleForEventBridgeSendToMNS",
- * });
- * ```
- */
 export class Slr extends pulumi.CustomResource {
     /**
      * Get an existing Slr resource's state with the given name, ID, and optional extra
@@ -50,11 +32,6 @@ export class Slr extends pulumi.CustomResource {
         return obj['__pulumiType'] === Slr.__pulumiType;
     }
 
-    /**
-     * The product name for SLR. EventBridge can automatically create the following service-linked roles:
-     * Event source related: `AliyunServiceRoleForEventBridgeSendToMNS`,`AliyunServiceRoleForEventBridgeSourceRocketMQ`, `AliyunServiceRoleForEventBridgeSourceActionTrail`, `AliyunServiceRoleForEventBridgeSourceRabbitMQ`
-     * Target related: `AliyunServiceRoleForEventBridgeConnectVPC`, `AliyunServiceRoleForEventBridgeSendToFC`, `AliyunServiceRoleForEventBridgeSendToSMS`, `AliyunServiceRoleForEventBridgeSendToDirectMail`, `AliyunServiceRoleForEventBridgeSendToRabbitMQ`, `AliyunServiceRoleForEventBridgeSendToRocketMQ`
-     */
     public readonly productName!: pulumi.Output<string>;
 
     /**
@@ -89,11 +66,6 @@ export class Slr extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Slr resources.
  */
 export interface SlrState {
-    /**
-     * The product name for SLR. EventBridge can automatically create the following service-linked roles:
-     * Event source related: `AliyunServiceRoleForEventBridgeSendToMNS`,`AliyunServiceRoleForEventBridgeSourceRocketMQ`, `AliyunServiceRoleForEventBridgeSourceActionTrail`, `AliyunServiceRoleForEventBridgeSourceRabbitMQ`
-     * Target related: `AliyunServiceRoleForEventBridgeConnectVPC`, `AliyunServiceRoleForEventBridgeSendToFC`, `AliyunServiceRoleForEventBridgeSendToSMS`, `AliyunServiceRoleForEventBridgeSendToDirectMail`, `AliyunServiceRoleForEventBridgeSendToRabbitMQ`, `AliyunServiceRoleForEventBridgeSendToRocketMQ`
-     */
     productName?: pulumi.Input<string>;
 }
 
@@ -101,10 +73,5 @@ export interface SlrState {
  * The set of arguments for constructing a Slr resource.
  */
 export interface SlrArgs {
-    /**
-     * The product name for SLR. EventBridge can automatically create the following service-linked roles:
-     * Event source related: `AliyunServiceRoleForEventBridgeSendToMNS`,`AliyunServiceRoleForEventBridgeSourceRocketMQ`, `AliyunServiceRoleForEventBridgeSourceActionTrail`, `AliyunServiceRoleForEventBridgeSourceRabbitMQ`
-     * Target related: `AliyunServiceRoleForEventBridgeConnectVPC`, `AliyunServiceRoleForEventBridgeSendToFC`, `AliyunServiceRoleForEventBridgeSendToSMS`, `AliyunServiceRoleForEventBridgeSendToDirectMail`, `AliyunServiceRoleForEventBridgeSendToRabbitMQ`, `AliyunServiceRoleForEventBridgeSendToRocketMQ`
-     */
     productName: pulumi.Input<string>;
 }

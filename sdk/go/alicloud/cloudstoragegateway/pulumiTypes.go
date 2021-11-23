@@ -10,6 +10,1430 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetExpressSyncsSync struct {
+	// The name of the OSS Bucket.
+	BucketName string `pulumi:"bucketName"`
+	// The prefix of the OSS Bucket.
+	BucketPrefix string `pulumi:"bucketPrefix"`
+	// The region of the OSS Bucket.
+	BucketRegion string `pulumi:"bucketRegion"`
+	// The description of the Express Sync.
+	Description string `pulumi:"description"`
+	// The ID of the Express Sync.
+	ExpressSyncId string `pulumi:"expressSyncId"`
+	// The name of the Express Sync.
+	ExpressSyncName string `pulumi:"expressSyncName"`
+	Id              string `pulumi:"id"`
+	// The name of the message topic (Topic) corresponding to the Express Sync in the Alibaba Cloud Message Service MNS.
+	MnsTopic string `pulumi:"mnsTopic"`
+}
+
+// GetExpressSyncsSyncInput is an input type that accepts GetExpressSyncsSyncArgs and GetExpressSyncsSyncOutput values.
+// You can construct a concrete instance of `GetExpressSyncsSyncInput` via:
+//
+//          GetExpressSyncsSyncArgs{...}
+type GetExpressSyncsSyncInput interface {
+	pulumi.Input
+
+	ToGetExpressSyncsSyncOutput() GetExpressSyncsSyncOutput
+	ToGetExpressSyncsSyncOutputWithContext(context.Context) GetExpressSyncsSyncOutput
+}
+
+type GetExpressSyncsSyncArgs struct {
+	// The name of the OSS Bucket.
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// The prefix of the OSS Bucket.
+	BucketPrefix pulumi.StringInput `pulumi:"bucketPrefix"`
+	// The region of the OSS Bucket.
+	BucketRegion pulumi.StringInput `pulumi:"bucketRegion"`
+	// The description of the Express Sync.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Express Sync.
+	ExpressSyncId pulumi.StringInput `pulumi:"expressSyncId"`
+	// The name of the Express Sync.
+	ExpressSyncName pulumi.StringInput `pulumi:"expressSyncName"`
+	Id              pulumi.StringInput `pulumi:"id"`
+	// The name of the message topic (Topic) corresponding to the Express Sync in the Alibaba Cloud Message Service MNS.
+	MnsTopic pulumi.StringInput `pulumi:"mnsTopic"`
+}
+
+func (GetExpressSyncsSyncArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExpressSyncsSync)(nil)).Elem()
+}
+
+func (i GetExpressSyncsSyncArgs) ToGetExpressSyncsSyncOutput() GetExpressSyncsSyncOutput {
+	return i.ToGetExpressSyncsSyncOutputWithContext(context.Background())
+}
+
+func (i GetExpressSyncsSyncArgs) ToGetExpressSyncsSyncOutputWithContext(ctx context.Context) GetExpressSyncsSyncOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExpressSyncsSyncOutput)
+}
+
+// GetExpressSyncsSyncArrayInput is an input type that accepts GetExpressSyncsSyncArray and GetExpressSyncsSyncArrayOutput values.
+// You can construct a concrete instance of `GetExpressSyncsSyncArrayInput` via:
+//
+//          GetExpressSyncsSyncArray{ GetExpressSyncsSyncArgs{...} }
+type GetExpressSyncsSyncArrayInput interface {
+	pulumi.Input
+
+	ToGetExpressSyncsSyncArrayOutput() GetExpressSyncsSyncArrayOutput
+	ToGetExpressSyncsSyncArrayOutputWithContext(context.Context) GetExpressSyncsSyncArrayOutput
+}
+
+type GetExpressSyncsSyncArray []GetExpressSyncsSyncInput
+
+func (GetExpressSyncsSyncArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExpressSyncsSync)(nil)).Elem()
+}
+
+func (i GetExpressSyncsSyncArray) ToGetExpressSyncsSyncArrayOutput() GetExpressSyncsSyncArrayOutput {
+	return i.ToGetExpressSyncsSyncArrayOutputWithContext(context.Background())
+}
+
+func (i GetExpressSyncsSyncArray) ToGetExpressSyncsSyncArrayOutputWithContext(ctx context.Context) GetExpressSyncsSyncArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExpressSyncsSyncArrayOutput)
+}
+
+type GetExpressSyncsSyncOutput struct{ *pulumi.OutputState }
+
+func (GetExpressSyncsSyncOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExpressSyncsSync)(nil)).Elem()
+}
+
+func (o GetExpressSyncsSyncOutput) ToGetExpressSyncsSyncOutput() GetExpressSyncsSyncOutput {
+	return o
+}
+
+func (o GetExpressSyncsSyncOutput) ToGetExpressSyncsSyncOutputWithContext(ctx context.Context) GetExpressSyncsSyncOutput {
+	return o
+}
+
+// The name of the OSS Bucket.
+func (o GetExpressSyncsSyncOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExpressSyncsSync) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// The prefix of the OSS Bucket.
+func (o GetExpressSyncsSyncOutput) BucketPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExpressSyncsSync) string { return v.BucketPrefix }).(pulumi.StringOutput)
+}
+
+// The region of the OSS Bucket.
+func (o GetExpressSyncsSyncOutput) BucketRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExpressSyncsSync) string { return v.BucketRegion }).(pulumi.StringOutput)
+}
+
+// The description of the Express Sync.
+func (o GetExpressSyncsSyncOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExpressSyncsSync) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Express Sync.
+func (o GetExpressSyncsSyncOutput) ExpressSyncId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExpressSyncsSync) string { return v.ExpressSyncId }).(pulumi.StringOutput)
+}
+
+// The name of the Express Sync.
+func (o GetExpressSyncsSyncOutput) ExpressSyncName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExpressSyncsSync) string { return v.ExpressSyncName }).(pulumi.StringOutput)
+}
+
+func (o GetExpressSyncsSyncOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExpressSyncsSync) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the message topic (Topic) corresponding to the Express Sync in the Alibaba Cloud Message Service MNS.
+func (o GetExpressSyncsSyncOutput) MnsTopic() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExpressSyncsSync) string { return v.MnsTopic }).(pulumi.StringOutput)
+}
+
+type GetExpressSyncsSyncArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExpressSyncsSyncArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExpressSyncsSync)(nil)).Elem()
+}
+
+func (o GetExpressSyncsSyncArrayOutput) ToGetExpressSyncsSyncArrayOutput() GetExpressSyncsSyncArrayOutput {
+	return o
+}
+
+func (o GetExpressSyncsSyncArrayOutput) ToGetExpressSyncsSyncArrayOutputWithContext(ctx context.Context) GetExpressSyncsSyncArrayOutput {
+	return o
+}
+
+func (o GetExpressSyncsSyncArrayOutput) Index(i pulumi.IntInput) GetExpressSyncsSyncOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExpressSyncsSync {
+		return vs[0].([]GetExpressSyncsSync)[vs[1].(int)]
+	}).(GetExpressSyncsSyncOutput)
+}
+
+type GetGatewayBlockVolumesVolume struct {
+	// The IP ADDRESS.
+	Address string `pulumi:"address"`
+	// The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+	CacheMode string `pulumi:"cacheMode"`
+	// Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
+	ChapEnabled bool `pulumi:"chapEnabled"`
+	// The Inbound CHAP user.**NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
+	ChapInUser string `pulumi:"chapInUser"`
+	// The Block volume storage allocation unit.  Valid values: `8192`, `16384`, `32768`, `65536`, `131072`. Default value: `32768`. Unit: `Byte`.
+	ChunkSize int `pulumi:"chunkSize"`
+	// The cache disk ID.
+	DiskId string `pulumi:"diskId"`
+	// The cache disk type.
+	DiskType string `pulumi:"diskType"`
+	// Whether to enable Volume.
+	Enabled bool `pulumi:"enabled"`
+	// The Block volume name.  The name must be 1 to 32 characters in length, and can contain lowercase letters, numbers.
+	GatewayBlockVolumeName string `pulumi:"gatewayBlockVolumeName"`
+	// The Gateway ID.
+	GatewayId string `pulumi:"gatewayId"`
+	// The ID of the Gateway Block Volume. The value formats as `<gateway_id>:<index_id>`.
+	Id string `pulumi:"id"`
+	// The ID of the index.
+	IndexId string `pulumi:"indexId"`
+	// CThe Cache disk to local path. **NOTE:**  When the `cacheMode` is  `Cache` is,The `chapInPassword` is valid.
+	LocalPath string `pulumi:"localPath"`
+	// The Lun identifier.
+	LunId int `pulumi:"lunId"`
+	// The name of the OSS Bucket.
+	OssBucketName string `pulumi:"ossBucketName"`
+	// Whether to enable SSL access your OSS Buckets. Default value: `true`.
+	OssBucketSsl bool `pulumi:"ossBucketSsl"`
+	// The endpoint of the OSS Bucket.
+	OssEndpoint string `pulumi:"ossEndpoint"`
+	// The Port.
+	Port int `pulumi:"port"`
+	// The Protocol.
+	Protocol string `pulumi:"protocol"`
+	// The Volume size.
+	Size int `pulumi:"size"`
+	// The Buffer status.
+	State string `pulumi:"state"`
+	// The status of volume.
+	Status int `pulumi:"status"`
+	// The target.
+	Target string `pulumi:"target"`
+	// The total amount of downloaded data. Unit: `B`.
+	TotalDownload int `pulumi:"totalDownload"`
+	// The total amount of uploaded data. Unit: `B`.
+	TotalUpload int `pulumi:"totalUpload"`
+	VolumeState int `pulumi:"volumeState"`
+}
+
+// GetGatewayBlockVolumesVolumeInput is an input type that accepts GetGatewayBlockVolumesVolumeArgs and GetGatewayBlockVolumesVolumeOutput values.
+// You can construct a concrete instance of `GetGatewayBlockVolumesVolumeInput` via:
+//
+//          GetGatewayBlockVolumesVolumeArgs{...}
+type GetGatewayBlockVolumesVolumeInput interface {
+	pulumi.Input
+
+	ToGetGatewayBlockVolumesVolumeOutput() GetGatewayBlockVolumesVolumeOutput
+	ToGetGatewayBlockVolumesVolumeOutputWithContext(context.Context) GetGatewayBlockVolumesVolumeOutput
+}
+
+type GetGatewayBlockVolumesVolumeArgs struct {
+	// The IP ADDRESS.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+	CacheMode pulumi.StringInput `pulumi:"cacheMode"`
+	// Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
+	ChapEnabled pulumi.BoolInput `pulumi:"chapEnabled"`
+	// The Inbound CHAP user.**NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
+	ChapInUser pulumi.StringInput `pulumi:"chapInUser"`
+	// The Block volume storage allocation unit.  Valid values: `8192`, `16384`, `32768`, `65536`, `131072`. Default value: `32768`. Unit: `Byte`.
+	ChunkSize pulumi.IntInput `pulumi:"chunkSize"`
+	// The cache disk ID.
+	DiskId pulumi.StringInput `pulumi:"diskId"`
+	// The cache disk type.
+	DiskType pulumi.StringInput `pulumi:"diskType"`
+	// Whether to enable Volume.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The Block volume name.  The name must be 1 to 32 characters in length, and can contain lowercase letters, numbers.
+	GatewayBlockVolumeName pulumi.StringInput `pulumi:"gatewayBlockVolumeName"`
+	// The Gateway ID.
+	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
+	// The ID of the Gateway Block Volume. The value formats as `<gateway_id>:<index_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the index.
+	IndexId pulumi.StringInput `pulumi:"indexId"`
+	// CThe Cache disk to local path. **NOTE:**  When the `cacheMode` is  `Cache` is,The `chapInPassword` is valid.
+	LocalPath pulumi.StringInput `pulumi:"localPath"`
+	// The Lun identifier.
+	LunId pulumi.IntInput `pulumi:"lunId"`
+	// The name of the OSS Bucket.
+	OssBucketName pulumi.StringInput `pulumi:"ossBucketName"`
+	// Whether to enable SSL access your OSS Buckets. Default value: `true`.
+	OssBucketSsl pulumi.BoolInput `pulumi:"ossBucketSsl"`
+	// The endpoint of the OSS Bucket.
+	OssEndpoint pulumi.StringInput `pulumi:"ossEndpoint"`
+	// The Port.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The Protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// The Volume size.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The Buffer status.
+	State pulumi.StringInput `pulumi:"state"`
+	// The status of volume.
+	Status pulumi.IntInput `pulumi:"status"`
+	// The target.
+	Target pulumi.StringInput `pulumi:"target"`
+	// The total amount of downloaded data. Unit: `B`.
+	TotalDownload pulumi.IntInput `pulumi:"totalDownload"`
+	// The total amount of uploaded data. Unit: `B`.
+	TotalUpload pulumi.IntInput `pulumi:"totalUpload"`
+	VolumeState pulumi.IntInput `pulumi:"volumeState"`
+}
+
+func (GetGatewayBlockVolumesVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayBlockVolumesVolume)(nil)).Elem()
+}
+
+func (i GetGatewayBlockVolumesVolumeArgs) ToGetGatewayBlockVolumesVolumeOutput() GetGatewayBlockVolumesVolumeOutput {
+	return i.ToGetGatewayBlockVolumesVolumeOutputWithContext(context.Background())
+}
+
+func (i GetGatewayBlockVolumesVolumeArgs) ToGetGatewayBlockVolumesVolumeOutputWithContext(ctx context.Context) GetGatewayBlockVolumesVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayBlockVolumesVolumeOutput)
+}
+
+// GetGatewayBlockVolumesVolumeArrayInput is an input type that accepts GetGatewayBlockVolumesVolumeArray and GetGatewayBlockVolumesVolumeArrayOutput values.
+// You can construct a concrete instance of `GetGatewayBlockVolumesVolumeArrayInput` via:
+//
+//          GetGatewayBlockVolumesVolumeArray{ GetGatewayBlockVolumesVolumeArgs{...} }
+type GetGatewayBlockVolumesVolumeArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewayBlockVolumesVolumeArrayOutput() GetGatewayBlockVolumesVolumeArrayOutput
+	ToGetGatewayBlockVolumesVolumeArrayOutputWithContext(context.Context) GetGatewayBlockVolumesVolumeArrayOutput
+}
+
+type GetGatewayBlockVolumesVolumeArray []GetGatewayBlockVolumesVolumeInput
+
+func (GetGatewayBlockVolumesVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayBlockVolumesVolume)(nil)).Elem()
+}
+
+func (i GetGatewayBlockVolumesVolumeArray) ToGetGatewayBlockVolumesVolumeArrayOutput() GetGatewayBlockVolumesVolumeArrayOutput {
+	return i.ToGetGatewayBlockVolumesVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewayBlockVolumesVolumeArray) ToGetGatewayBlockVolumesVolumeArrayOutputWithContext(ctx context.Context) GetGatewayBlockVolumesVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayBlockVolumesVolumeArrayOutput)
+}
+
+type GetGatewayBlockVolumesVolumeOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayBlockVolumesVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayBlockVolumesVolume)(nil)).Elem()
+}
+
+func (o GetGatewayBlockVolumesVolumeOutput) ToGetGatewayBlockVolumesVolumeOutput() GetGatewayBlockVolumesVolumeOutput {
+	return o
+}
+
+func (o GetGatewayBlockVolumesVolumeOutput) ToGetGatewayBlockVolumesVolumeOutputWithContext(ctx context.Context) GetGatewayBlockVolumesVolumeOutput {
+	return o
+}
+
+// The IP ADDRESS.
+func (o GetGatewayBlockVolumesVolumeOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+func (o GetGatewayBlockVolumesVolumeOutput) CacheMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) string { return v.CacheMode }).(pulumi.StringOutput)
+}
+
+// Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
+func (o GetGatewayBlockVolumesVolumeOutput) ChapEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) bool { return v.ChapEnabled }).(pulumi.BoolOutput)
+}
+
+// The Inbound CHAP user.**NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
+func (o GetGatewayBlockVolumesVolumeOutput) ChapInUser() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) string { return v.ChapInUser }).(pulumi.StringOutput)
+}
+
+// The Block volume storage allocation unit.  Valid values: `8192`, `16384`, `32768`, `65536`, `131072`. Default value: `32768`. Unit: `Byte`.
+func (o GetGatewayBlockVolumesVolumeOutput) ChunkSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) int { return v.ChunkSize }).(pulumi.IntOutput)
+}
+
+// The cache disk ID.
+func (o GetGatewayBlockVolumesVolumeOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) string { return v.DiskId }).(pulumi.StringOutput)
+}
+
+// The cache disk type.
+func (o GetGatewayBlockVolumesVolumeOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// Whether to enable Volume.
+func (o GetGatewayBlockVolumesVolumeOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The Block volume name.  The name must be 1 to 32 characters in length, and can contain lowercase letters, numbers.
+func (o GetGatewayBlockVolumesVolumeOutput) GatewayBlockVolumeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) string { return v.GatewayBlockVolumeName }).(pulumi.StringOutput)
+}
+
+// The Gateway ID.
+func (o GetGatewayBlockVolumesVolumeOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) string { return v.GatewayId }).(pulumi.StringOutput)
+}
+
+// The ID of the Gateway Block Volume. The value formats as `<gateway_id>:<index_id>`.
+func (o GetGatewayBlockVolumesVolumeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the index.
+func (o GetGatewayBlockVolumesVolumeOutput) IndexId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) string { return v.IndexId }).(pulumi.StringOutput)
+}
+
+// CThe Cache disk to local path. **NOTE:**  When the `cacheMode` is  `Cache` is,The `chapInPassword` is valid.
+func (o GetGatewayBlockVolumesVolumeOutput) LocalPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) string { return v.LocalPath }).(pulumi.StringOutput)
+}
+
+// The Lun identifier.
+func (o GetGatewayBlockVolumesVolumeOutput) LunId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) int { return v.LunId }).(pulumi.IntOutput)
+}
+
+// The name of the OSS Bucket.
+func (o GetGatewayBlockVolumesVolumeOutput) OssBucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) string { return v.OssBucketName }).(pulumi.StringOutput)
+}
+
+// Whether to enable SSL access your OSS Buckets. Default value: `true`.
+func (o GetGatewayBlockVolumesVolumeOutput) OssBucketSsl() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) bool { return v.OssBucketSsl }).(pulumi.BoolOutput)
+}
+
+// The endpoint of the OSS Bucket.
+func (o GetGatewayBlockVolumesVolumeOutput) OssEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) string { return v.OssEndpoint }).(pulumi.StringOutput)
+}
+
+// The Port.
+func (o GetGatewayBlockVolumesVolumeOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The Protocol.
+func (o GetGatewayBlockVolumesVolumeOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The Volume size.
+func (o GetGatewayBlockVolumesVolumeOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The Buffer status.
+func (o GetGatewayBlockVolumesVolumeOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The status of volume.
+func (o GetGatewayBlockVolumesVolumeOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) int { return v.Status }).(pulumi.IntOutput)
+}
+
+// The target.
+func (o GetGatewayBlockVolumesVolumeOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// The total amount of downloaded data. Unit: `B`.
+func (o GetGatewayBlockVolumesVolumeOutput) TotalDownload() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) int { return v.TotalDownload }).(pulumi.IntOutput)
+}
+
+// The total amount of uploaded data. Unit: `B`.
+func (o GetGatewayBlockVolumesVolumeOutput) TotalUpload() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) int { return v.TotalUpload }).(pulumi.IntOutput)
+}
+
+func (o GetGatewayBlockVolumesVolumeOutput) VolumeState() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayBlockVolumesVolume) int { return v.VolumeState }).(pulumi.IntOutput)
+}
+
+type GetGatewayBlockVolumesVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayBlockVolumesVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayBlockVolumesVolume)(nil)).Elem()
+}
+
+func (o GetGatewayBlockVolumesVolumeArrayOutput) ToGetGatewayBlockVolumesVolumeArrayOutput() GetGatewayBlockVolumesVolumeArrayOutput {
+	return o
+}
+
+func (o GetGatewayBlockVolumesVolumeArrayOutput) ToGetGatewayBlockVolumesVolumeArrayOutputWithContext(ctx context.Context) GetGatewayBlockVolumesVolumeArrayOutput {
+	return o
+}
+
+func (o GetGatewayBlockVolumesVolumeArrayOutput) Index(i pulumi.IntInput) GetGatewayBlockVolumesVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayBlockVolumesVolume {
+		return vs[0].([]GetGatewayBlockVolumesVolume)[vs[1].(int)]
+	}).(GetGatewayBlockVolumesVolumeOutput)
+}
+
+type GetGatewayCacheDisksDisk struct {
+	// The category of eht cache disk.
+	CacheDiskCategory string `pulumi:"cacheDiskCategory"`
+	// The size of the cache disk.
+	CacheDiskSizeInGb int `pulumi:"cacheDiskSizeInGb"`
+	// The ID of the cache disk.
+	CacheId string `pulumi:"cacheId"`
+	// The expiration time. Time stamp in seconds (s).
+	ExpiredTime int `pulumi:"expiredTime"`
+	// The ID of the gateway.
+	GatewayId string `pulumi:"gatewayId"`
+	// The ID of the Gateway Cache Disk.
+	Id string `pulumi:"id"`
+	// Per second of the input output.
+	Iops int `pulumi:"iops"`
+	// Whether it is used.
+	IsUsed bool `pulumi:"isUsed"`
+	// The cache disk inside the device name.
+	LocalFilePath string `pulumi:"localFilePath"`
+	// A renewal link of the cache disk.
+	RenewUrl string `pulumi:"renewUrl"`
+	// The status of the resource.
+	Status int `pulumi:"status"`
+}
+
+// GetGatewayCacheDisksDiskInput is an input type that accepts GetGatewayCacheDisksDiskArgs and GetGatewayCacheDisksDiskOutput values.
+// You can construct a concrete instance of `GetGatewayCacheDisksDiskInput` via:
+//
+//          GetGatewayCacheDisksDiskArgs{...}
+type GetGatewayCacheDisksDiskInput interface {
+	pulumi.Input
+
+	ToGetGatewayCacheDisksDiskOutput() GetGatewayCacheDisksDiskOutput
+	ToGetGatewayCacheDisksDiskOutputWithContext(context.Context) GetGatewayCacheDisksDiskOutput
+}
+
+type GetGatewayCacheDisksDiskArgs struct {
+	// The category of eht cache disk.
+	CacheDiskCategory pulumi.StringInput `pulumi:"cacheDiskCategory"`
+	// The size of the cache disk.
+	CacheDiskSizeInGb pulumi.IntInput `pulumi:"cacheDiskSizeInGb"`
+	// The ID of the cache disk.
+	CacheId pulumi.StringInput `pulumi:"cacheId"`
+	// The expiration time. Time stamp in seconds (s).
+	ExpiredTime pulumi.IntInput `pulumi:"expiredTime"`
+	// The ID of the gateway.
+	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
+	// The ID of the Gateway Cache Disk.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Per second of the input output.
+	Iops pulumi.IntInput `pulumi:"iops"`
+	// Whether it is used.
+	IsUsed pulumi.BoolInput `pulumi:"isUsed"`
+	// The cache disk inside the device name.
+	LocalFilePath pulumi.StringInput `pulumi:"localFilePath"`
+	// A renewal link of the cache disk.
+	RenewUrl pulumi.StringInput `pulumi:"renewUrl"`
+	// The status of the resource.
+	Status pulumi.IntInput `pulumi:"status"`
+}
+
+func (GetGatewayCacheDisksDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayCacheDisksDisk)(nil)).Elem()
+}
+
+func (i GetGatewayCacheDisksDiskArgs) ToGetGatewayCacheDisksDiskOutput() GetGatewayCacheDisksDiskOutput {
+	return i.ToGetGatewayCacheDisksDiskOutputWithContext(context.Background())
+}
+
+func (i GetGatewayCacheDisksDiskArgs) ToGetGatewayCacheDisksDiskOutputWithContext(ctx context.Context) GetGatewayCacheDisksDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayCacheDisksDiskOutput)
+}
+
+// GetGatewayCacheDisksDiskArrayInput is an input type that accepts GetGatewayCacheDisksDiskArray and GetGatewayCacheDisksDiskArrayOutput values.
+// You can construct a concrete instance of `GetGatewayCacheDisksDiskArrayInput` via:
+//
+//          GetGatewayCacheDisksDiskArray{ GetGatewayCacheDisksDiskArgs{...} }
+type GetGatewayCacheDisksDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewayCacheDisksDiskArrayOutput() GetGatewayCacheDisksDiskArrayOutput
+	ToGetGatewayCacheDisksDiskArrayOutputWithContext(context.Context) GetGatewayCacheDisksDiskArrayOutput
+}
+
+type GetGatewayCacheDisksDiskArray []GetGatewayCacheDisksDiskInput
+
+func (GetGatewayCacheDisksDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayCacheDisksDisk)(nil)).Elem()
+}
+
+func (i GetGatewayCacheDisksDiskArray) ToGetGatewayCacheDisksDiskArrayOutput() GetGatewayCacheDisksDiskArrayOutput {
+	return i.ToGetGatewayCacheDisksDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewayCacheDisksDiskArray) ToGetGatewayCacheDisksDiskArrayOutputWithContext(ctx context.Context) GetGatewayCacheDisksDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayCacheDisksDiskArrayOutput)
+}
+
+type GetGatewayCacheDisksDiskOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayCacheDisksDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayCacheDisksDisk)(nil)).Elem()
+}
+
+func (o GetGatewayCacheDisksDiskOutput) ToGetGatewayCacheDisksDiskOutput() GetGatewayCacheDisksDiskOutput {
+	return o
+}
+
+func (o GetGatewayCacheDisksDiskOutput) ToGetGatewayCacheDisksDiskOutputWithContext(ctx context.Context) GetGatewayCacheDisksDiskOutput {
+	return o
+}
+
+// The category of eht cache disk.
+func (o GetGatewayCacheDisksDiskOutput) CacheDiskCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayCacheDisksDisk) string { return v.CacheDiskCategory }).(pulumi.StringOutput)
+}
+
+// The size of the cache disk.
+func (o GetGatewayCacheDisksDiskOutput) CacheDiskSizeInGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayCacheDisksDisk) int { return v.CacheDiskSizeInGb }).(pulumi.IntOutput)
+}
+
+// The ID of the cache disk.
+func (o GetGatewayCacheDisksDiskOutput) CacheId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayCacheDisksDisk) string { return v.CacheId }).(pulumi.StringOutput)
+}
+
+// The expiration time. Time stamp in seconds (s).
+func (o GetGatewayCacheDisksDiskOutput) ExpiredTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayCacheDisksDisk) int { return v.ExpiredTime }).(pulumi.IntOutput)
+}
+
+// The ID of the gateway.
+func (o GetGatewayCacheDisksDiskOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayCacheDisksDisk) string { return v.GatewayId }).(pulumi.StringOutput)
+}
+
+// The ID of the Gateway Cache Disk.
+func (o GetGatewayCacheDisksDiskOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayCacheDisksDisk) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Per second of the input output.
+func (o GetGatewayCacheDisksDiskOutput) Iops() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayCacheDisksDisk) int { return v.Iops }).(pulumi.IntOutput)
+}
+
+// Whether it is used.
+func (o GetGatewayCacheDisksDiskOutput) IsUsed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayCacheDisksDisk) bool { return v.IsUsed }).(pulumi.BoolOutput)
+}
+
+// The cache disk inside the device name.
+func (o GetGatewayCacheDisksDiskOutput) LocalFilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayCacheDisksDisk) string { return v.LocalFilePath }).(pulumi.StringOutput)
+}
+
+// A renewal link of the cache disk.
+func (o GetGatewayCacheDisksDiskOutput) RenewUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayCacheDisksDisk) string { return v.RenewUrl }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetGatewayCacheDisksDiskOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayCacheDisksDisk) int { return v.Status }).(pulumi.IntOutput)
+}
+
+type GetGatewayCacheDisksDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayCacheDisksDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayCacheDisksDisk)(nil)).Elem()
+}
+
+func (o GetGatewayCacheDisksDiskArrayOutput) ToGetGatewayCacheDisksDiskArrayOutput() GetGatewayCacheDisksDiskArrayOutput {
+	return o
+}
+
+func (o GetGatewayCacheDisksDiskArrayOutput) ToGetGatewayCacheDisksDiskArrayOutputWithContext(ctx context.Context) GetGatewayCacheDisksDiskArrayOutput {
+	return o
+}
+
+func (o GetGatewayCacheDisksDiskArrayOutput) Index(i pulumi.IntInput) GetGatewayCacheDisksDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayCacheDisksDisk {
+		return vs[0].([]GetGatewayCacheDisksDisk)[vs[1].(int)]
+	}).(GetGatewayCacheDisksDiskOutput)
+}
+
+type GetGatewayFileSharesShare struct {
+	// The set up gateway file share Server Message Block (SMB) protocol, whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** Gateway version >= 1.0.45 above support.
+	AccessBasedEnumeration bool `pulumi:"accessBasedEnumeration"`
+	// Share the private IP address of the RDS instance.
+	Address string `pulumi:"address"`
+	// The set up gateway file share Max upload speed. Unit: `MB/s`, `0` means unlimited. Value range: `0` ~ `1280`. Default value: `0`. **NOTE:** at the same time if you have to limit the maximum write speed, maximum upload speed is no less than the maximum write speed.
+	BackendLimit int `pulumi:"backendLimit"`
+	// The set up gateway file share Server Message Block (SMB) protocol whether browsable (that is, in the network neighborhood of whether you can find). The parameters in the NFS protocol not valid under. Default value: `true`.
+	Browsable bool `pulumi:"browsable"`
+	// Multi-Bucket information.
+	BucketInfos string `pulumi:"bucketInfos"`
+	// Whether there are multiple buckets.
+	BucketsStub bool `pulumi:"bucketsStub"`
+	// Direct reading OSS of the gateway file share.
+	BypassCacheRead bool `pulumi:"bypassCacheRead"`
+	// The cache mode of the gateway file share. Value range: Cache: cached mode. Sync: replication mode are available.
+	CacheMode string `pulumi:"cacheMode"`
+	// File share is enabled to client-side encryption, the encryption by the use of the KMS key. **NOTE:** note: This KMS key must be the gateway and is in the same Region.
+	ClientSideCmk string `pulumi:"clientSideCmk"`
+	// Whether to enabled to client-side encryption of the gateway file share. Default value: `false`. **NOTE:** need to contact us open whitelist before you can the settings, and only supports enhanced more than online gateway, at the same time, server-side encryption and to client-side encryption can not simultaneously configuration.
+	ClientSideEncryption bool `pulumi:"clientSideEncryption"`
+	// Whether directio (direct I/O data transfer) is enabled for file share. Default: `false`.
+	DirectIo bool `pulumi:"directIo"`
+	// The ID of the disk.
+	DiskId string `pulumi:"diskId"`
+	// The cache disk type. Valid values: `cloudEfficiency`: Ultra cloud disk. `cloudSsd`:SSD cloud disk.
+	DiskType string `pulumi:"diskType"`
+	// The set up gateway file share maximum download speed. Unit: `MB/s`. `0` means unlimited. Value range: `0` ~ `1280`. **NOTE:** only in copy mode and enable download file data can be set. only when the shared opens the reverse synchronization or acceded to by the speed synchronization Group when, this parameter will not take effect. Gateway version >= 1.3.0 above support.
+	DownloadLimit int `pulumi:"downloadLimit"`
+	// Shared whether the changes take effect.
+	Enabled bool `pulumi:"enabled"`
+	// Speed synchronization group ID.
+	ExpressSyncId string `pulumi:"expressSyncId"`
+	// The set up gateway file share whether to enable Upload optimization, which is suitable for data pure backup migration scenarios. Default value: `false`. **NOTE:** Gateway version >= 1.0.39 above support.
+	FastReclaim bool `pulumi:"fastReclaim"`
+	// The set up gateway file share and the maximum write speed. Unit: `MB/s`, `0` means unlimited. Value range: `0` ~ `1280`. Default value: `0`.
+	FeLimit int `pulumi:"feLimit"`
+	// Supported by the file system file number.
+	FileNumLimit string `pulumi:"fileNumLimit"`
+	// File system capacity. Unit: `B`.
+	FsSizeLimit string `pulumi:"fsSizeLimit"`
+	// The name of the file share. Length from `1` to `255` characters can contain lowercase letters, digits, (.), (_) Or (-), at the same time, must start with a lowercase letter.
+	GatewayFileShareName string `pulumi:"gatewayFileShareName"`
+	// The ID of the gateway.
+	GatewayId string `pulumi:"gatewayId"`
+	// The ID of the Gateway File Share.
+	Id string `pulumi:"id"`
+	// Whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** Gateway version >= 1.0.40 above support.
+	IgnoreDelete bool `pulumi:"ignoreDelete"`
+	// Whether debris optimization of the gateway file share. Default value: `false`.
+	InPlace bool `pulumi:"inPlace"`
+	// Cache growth. Unit: `B/s`.
+	InRate string `pulumi:"inRate"`
+	// The ID of the file share.
+	IndexId string `pulumi:"indexId"`
+	// File share is enabled to client-side encryption, key rotation period of time. Seconds. 0 represents no rotation. Rotation of the value range: `3600` ~ `86400`. Default value: `0`.
+	KmsRotatePeriod int `pulumi:"kmsRotatePeriod"`
+	// The synchronization delay, I.e. gateway local cache sync to Alibaba Cloud Object Storage Service (oss) of the delay time. Unit: `Seconds`. Value range: `5` ~ `120`. Default value: `5`. **NOTE:** Gateway version >= 1.0.40 above support.
+	LagPeriod string `pulumi:"lagPeriod"`
+	// The cache disk inside the device name.
+	LocalPath string `pulumi:"localPath"`
+	// The messages from the queue health types. Valid values: `TopicAndQueueFailure`: A Message Queuing message theme can be accessed during the black hole period. `TopicFailure`: a message theme can be accessed during the black hole period. `MNSFullSyncInit`: full synchronization wait. `MNSFullSyncing`: full synchronization in progress. `QueueFailure`: a message queue can be accessed during the black hole period. `MNSNotEnabled`: Top speed synchronization is not enabled. `MNSHealthy`: sync fine.
+	MnsHealth string `pulumi:"mnsHealth"`
+	// The set up gateway file share NFS protocol, whether to enable NFS v4 optimization improve Mount Upload efficiency. Default value: `false`. **NOTE:** turns on after I will not support NFS v3 mount the filesystem on a. Gateway version >= 1.2.0 above support.
+	NfsV4Optimization bool `pulumi:"nfsV4Optimization"`
+	// Multi-Bucket, removing the Bucket.
+	ObsoleteBuckets string `pulumi:"obsoleteBuckets"`
+	// The name of the Bucket.
+	OssBucketName string `pulumi:"ossBucketName"`
+	// Whether they are using SSL connect to OSS Bucket.
+	OssBucketSsl bool `pulumi:"ossBucketSsl"`
+	// The set up gateway file share corresponds to the Object Storage SERVICE (OSS), Bucket Endpoint. **NOTE:** distinguish between intranet and internet Endpoint. We recommend that if the OSS Bucket and the gateway is in the same Region is use the RDS intranet IP Endpoint:oss-cn-hangzhou-internal.aliyuncs.com.
+	OssEndpoint string `pulumi:"ossEndpoint"`
+	// The OSS Bucket of type. Valid values: `BucketHealthy`: OSS connectivity. `BucketAccessDenied`: OBJECT STORAGE Service (OSS) access to an exception. `BucketMiscFailure`: OBJECT STORAGE Service (OSS) access to additional exception. `BucketNetworkFailure`: OBJECT STORAGE Service (OSS) access network an exception. `BucketNotExist`: OSS Bucket does not exist. `Nothing returns`: We may not have ever known existed.
+	OssHealth string `pulumi:"ossHealth"`
+	// For a cloud-based data is. Unit: `B`.
+	OssUsed string `pulumi:"ossUsed"`
+	// Upload speed. Unit: `B/s`.
+	OutRate string `pulumi:"outRate"`
+	// In part mode, the directory path group JSON format.
+	PartialSyncPaths string `pulumi:"partialSyncPaths"`
+	// The prefix of the OSS.
+	PathPrefix string `pulumi:"pathPrefix"`
+	// The reverse synchronization time intervals of the gateway file share. Value range: `15` ~ `36000`. **NOTE:** in copy mode + reverse synchronization is enabled Download file data, value range: `3600` ~ `36000`.
+	PollingInterval int `pulumi:"pollingInterval"`
+	// Share types. Valid values: `SMB`, `NFS`.
+	Protocol string `pulumi:"protocol"`
+	// You can use the metadata space. Unit: `B`.
+	RemainingMetaSpace string `pulumi:"remainingMetaSpace"`
+	// Whether to enable reverse synchronization of the gateway file share. Default value: `false`.
+	RemoteSync bool `pulumi:"remoteSync"`
+	// Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the shared opens the reverse synchronization or acceded to by the speed synchronization group, this parameter will not take effect.
+	RemoteSyncDownload bool `pulumi:"remoteSyncDownload"`
+	// The read-only client list. When Protocol NFS is returned when the status is.
+	RoClientList string `pulumi:"roClientList"`
+	// The read-only client list. When Protocol for Server Message Block (SMB) to go back to.
+	RoUserList string `pulumi:"roUserList"`
+	// Read and write the client list. When Protocol NFS is returned when the status is.
+	RwClientList string `pulumi:"rwClientList"`
+	// Read-write user list. When Protocol for Server Message Block (SMB) to go back to.
+	RwUserList string `pulumi:"rwUserList"`
+	// File share is enabled server-side encryption, encryption used by the KMS key.
+	ServerSideCmk string `pulumi:"serverSideCmk"`
+	// If the OSS Bucket side encryption.
+	ServerSideEncryption bool `pulumi:"serverSideEncryption"`
+	// The caching capacity. Unit: `B`.
+	Size string `pulumi:"size"`
+	// The set up gateway file share NFS protocol user mapping. Valid values: `none`, `rootSquash`, `allSquash`, `allAnonymous`. Default value: `none`.
+	Squash string `pulumi:"squash"`
+	// File synchronization types. Valid values: `clean`, `dirty`. `clean`: synchronization is complete. `dirty`: synchronization has not been completed.
+	State string `pulumi:"state"`
+	// Whether to support the archive transparent read.
+	SupportArchive bool `pulumi:"supportArchive"`
+	// Full synchronization progress. When the share has been added for a synchronization group, the return parameters are valid, that shared full synchronization progress (0~100). `-2`: indicates that share the Gateway version does not support this feature. `-1`: the share does not occur full synchronization.
+	SyncProgress int `pulumi:"syncProgress"`
+	// The OSS Bucket to the Gateway total downloads. Unit: `B`.
+	TotalDownload string `pulumi:"totalDownload"`
+	// The OSS Bucket to the Gateway total Upload amount. Unit: `B`.
+	TotalUpload string `pulumi:"totalUpload"`
+	// The set up gateway file share whether to enable transmission acceleration needs corresponding OSS Bucket enabled transport acceleration. **NOTE:** Gateway version >= 1.3.0 above support.
+	TransferAcceleration bool `pulumi:"transferAcceleration"`
+	// Used cache. Unit: `B`.
+	Used string `pulumi:"used"`
+	// The set up gateway file share Server Message Block (SMB) protocol, whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `false`. **NOTE:** Gateway version >= 1.0.45 above support.
+	WindowsAcl bool `pulumi:"windowsAcl"`
+}
+
+// GetGatewayFileSharesShareInput is an input type that accepts GetGatewayFileSharesShareArgs and GetGatewayFileSharesShareOutput values.
+// You can construct a concrete instance of `GetGatewayFileSharesShareInput` via:
+//
+//          GetGatewayFileSharesShareArgs{...}
+type GetGatewayFileSharesShareInput interface {
+	pulumi.Input
+
+	ToGetGatewayFileSharesShareOutput() GetGatewayFileSharesShareOutput
+	ToGetGatewayFileSharesShareOutputWithContext(context.Context) GetGatewayFileSharesShareOutput
+}
+
+type GetGatewayFileSharesShareArgs struct {
+	// The set up gateway file share Server Message Block (SMB) protocol, whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** Gateway version >= 1.0.45 above support.
+	AccessBasedEnumeration pulumi.BoolInput `pulumi:"accessBasedEnumeration"`
+	// Share the private IP address of the RDS instance.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The set up gateway file share Max upload speed. Unit: `MB/s`, `0` means unlimited. Value range: `0` ~ `1280`. Default value: `0`. **NOTE:** at the same time if you have to limit the maximum write speed, maximum upload speed is no less than the maximum write speed.
+	BackendLimit pulumi.IntInput `pulumi:"backendLimit"`
+	// The set up gateway file share Server Message Block (SMB) protocol whether browsable (that is, in the network neighborhood of whether you can find). The parameters in the NFS protocol not valid under. Default value: `true`.
+	Browsable pulumi.BoolInput `pulumi:"browsable"`
+	// Multi-Bucket information.
+	BucketInfos pulumi.StringInput `pulumi:"bucketInfos"`
+	// Whether there are multiple buckets.
+	BucketsStub pulumi.BoolInput `pulumi:"bucketsStub"`
+	// Direct reading OSS of the gateway file share.
+	BypassCacheRead pulumi.BoolInput `pulumi:"bypassCacheRead"`
+	// The cache mode of the gateway file share. Value range: Cache: cached mode. Sync: replication mode are available.
+	CacheMode pulumi.StringInput `pulumi:"cacheMode"`
+	// File share is enabled to client-side encryption, the encryption by the use of the KMS key. **NOTE:** note: This KMS key must be the gateway and is in the same Region.
+	ClientSideCmk pulumi.StringInput `pulumi:"clientSideCmk"`
+	// Whether to enabled to client-side encryption of the gateway file share. Default value: `false`. **NOTE:** need to contact us open whitelist before you can the settings, and only supports enhanced more than online gateway, at the same time, server-side encryption and to client-side encryption can not simultaneously configuration.
+	ClientSideEncryption pulumi.BoolInput `pulumi:"clientSideEncryption"`
+	// Whether directio (direct I/O data transfer) is enabled for file share. Default: `false`.
+	DirectIo pulumi.BoolInput `pulumi:"directIo"`
+	// The ID of the disk.
+	DiskId pulumi.StringInput `pulumi:"diskId"`
+	// The cache disk type. Valid values: `cloudEfficiency`: Ultra cloud disk. `cloudSsd`:SSD cloud disk.
+	DiskType pulumi.StringInput `pulumi:"diskType"`
+	// The set up gateway file share maximum download speed. Unit: `MB/s`. `0` means unlimited. Value range: `0` ~ `1280`. **NOTE:** only in copy mode and enable download file data can be set. only when the shared opens the reverse synchronization or acceded to by the speed synchronization Group when, this parameter will not take effect. Gateway version >= 1.3.0 above support.
+	DownloadLimit pulumi.IntInput `pulumi:"downloadLimit"`
+	// Shared whether the changes take effect.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Speed synchronization group ID.
+	ExpressSyncId pulumi.StringInput `pulumi:"expressSyncId"`
+	// The set up gateway file share whether to enable Upload optimization, which is suitable for data pure backup migration scenarios. Default value: `false`. **NOTE:** Gateway version >= 1.0.39 above support.
+	FastReclaim pulumi.BoolInput `pulumi:"fastReclaim"`
+	// The set up gateway file share and the maximum write speed. Unit: `MB/s`, `0` means unlimited. Value range: `0` ~ `1280`. Default value: `0`.
+	FeLimit pulumi.IntInput `pulumi:"feLimit"`
+	// Supported by the file system file number.
+	FileNumLimit pulumi.StringInput `pulumi:"fileNumLimit"`
+	// File system capacity. Unit: `B`.
+	FsSizeLimit pulumi.StringInput `pulumi:"fsSizeLimit"`
+	// The name of the file share. Length from `1` to `255` characters can contain lowercase letters, digits, (.), (_) Or (-), at the same time, must start with a lowercase letter.
+	GatewayFileShareName pulumi.StringInput `pulumi:"gatewayFileShareName"`
+	// The ID of the gateway.
+	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
+	// The ID of the Gateway File Share.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** Gateway version >= 1.0.40 above support.
+	IgnoreDelete pulumi.BoolInput `pulumi:"ignoreDelete"`
+	// Whether debris optimization of the gateway file share. Default value: `false`.
+	InPlace pulumi.BoolInput `pulumi:"inPlace"`
+	// Cache growth. Unit: `B/s`.
+	InRate pulumi.StringInput `pulumi:"inRate"`
+	// The ID of the file share.
+	IndexId pulumi.StringInput `pulumi:"indexId"`
+	// File share is enabled to client-side encryption, key rotation period of time. Seconds. 0 represents no rotation. Rotation of the value range: `3600` ~ `86400`. Default value: `0`.
+	KmsRotatePeriod pulumi.IntInput `pulumi:"kmsRotatePeriod"`
+	// The synchronization delay, I.e. gateway local cache sync to Alibaba Cloud Object Storage Service (oss) of the delay time. Unit: `Seconds`. Value range: `5` ~ `120`. Default value: `5`. **NOTE:** Gateway version >= 1.0.40 above support.
+	LagPeriod pulumi.StringInput `pulumi:"lagPeriod"`
+	// The cache disk inside the device name.
+	LocalPath pulumi.StringInput `pulumi:"localPath"`
+	// The messages from the queue health types. Valid values: `TopicAndQueueFailure`: A Message Queuing message theme can be accessed during the black hole period. `TopicFailure`: a message theme can be accessed during the black hole period. `MNSFullSyncInit`: full synchronization wait. `MNSFullSyncing`: full synchronization in progress. `QueueFailure`: a message queue can be accessed during the black hole period. `MNSNotEnabled`: Top speed synchronization is not enabled. `MNSHealthy`: sync fine.
+	MnsHealth pulumi.StringInput `pulumi:"mnsHealth"`
+	// The set up gateway file share NFS protocol, whether to enable NFS v4 optimization improve Mount Upload efficiency. Default value: `false`. **NOTE:** turns on after I will not support NFS v3 mount the filesystem on a. Gateway version >= 1.2.0 above support.
+	NfsV4Optimization pulumi.BoolInput `pulumi:"nfsV4Optimization"`
+	// Multi-Bucket, removing the Bucket.
+	ObsoleteBuckets pulumi.StringInput `pulumi:"obsoleteBuckets"`
+	// The name of the Bucket.
+	OssBucketName pulumi.StringInput `pulumi:"ossBucketName"`
+	// Whether they are using SSL connect to OSS Bucket.
+	OssBucketSsl pulumi.BoolInput `pulumi:"ossBucketSsl"`
+	// The set up gateway file share corresponds to the Object Storage SERVICE (OSS), Bucket Endpoint. **NOTE:** distinguish between intranet and internet Endpoint. We recommend that if the OSS Bucket and the gateway is in the same Region is use the RDS intranet IP Endpoint:oss-cn-hangzhou-internal.aliyuncs.com.
+	OssEndpoint pulumi.StringInput `pulumi:"ossEndpoint"`
+	// The OSS Bucket of type. Valid values: `BucketHealthy`: OSS connectivity. `BucketAccessDenied`: OBJECT STORAGE Service (OSS) access to an exception. `BucketMiscFailure`: OBJECT STORAGE Service (OSS) access to additional exception. `BucketNetworkFailure`: OBJECT STORAGE Service (OSS) access network an exception. `BucketNotExist`: OSS Bucket does not exist. `Nothing returns`: We may not have ever known existed.
+	OssHealth pulumi.StringInput `pulumi:"ossHealth"`
+	// For a cloud-based data is. Unit: `B`.
+	OssUsed pulumi.StringInput `pulumi:"ossUsed"`
+	// Upload speed. Unit: `B/s`.
+	OutRate pulumi.StringInput `pulumi:"outRate"`
+	// In part mode, the directory path group JSON format.
+	PartialSyncPaths pulumi.StringInput `pulumi:"partialSyncPaths"`
+	// The prefix of the OSS.
+	PathPrefix pulumi.StringInput `pulumi:"pathPrefix"`
+	// The reverse synchronization time intervals of the gateway file share. Value range: `15` ~ `36000`. **NOTE:** in copy mode + reverse synchronization is enabled Download file data, value range: `3600` ~ `36000`.
+	PollingInterval pulumi.IntInput `pulumi:"pollingInterval"`
+	// Share types. Valid values: `SMB`, `NFS`.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// You can use the metadata space. Unit: `B`.
+	RemainingMetaSpace pulumi.StringInput `pulumi:"remainingMetaSpace"`
+	// Whether to enable reverse synchronization of the gateway file share. Default value: `false`.
+	RemoteSync pulumi.BoolInput `pulumi:"remoteSync"`
+	// Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the shared opens the reverse synchronization or acceded to by the speed synchronization group, this parameter will not take effect.
+	RemoteSyncDownload pulumi.BoolInput `pulumi:"remoteSyncDownload"`
+	// The read-only client list. When Protocol NFS is returned when the status is.
+	RoClientList pulumi.StringInput `pulumi:"roClientList"`
+	// The read-only client list. When Protocol for Server Message Block (SMB) to go back to.
+	RoUserList pulumi.StringInput `pulumi:"roUserList"`
+	// Read and write the client list. When Protocol NFS is returned when the status is.
+	RwClientList pulumi.StringInput `pulumi:"rwClientList"`
+	// Read-write user list. When Protocol for Server Message Block (SMB) to go back to.
+	RwUserList pulumi.StringInput `pulumi:"rwUserList"`
+	// File share is enabled server-side encryption, encryption used by the KMS key.
+	ServerSideCmk pulumi.StringInput `pulumi:"serverSideCmk"`
+	// If the OSS Bucket side encryption.
+	ServerSideEncryption pulumi.BoolInput `pulumi:"serverSideEncryption"`
+	// The caching capacity. Unit: `B`.
+	Size pulumi.StringInput `pulumi:"size"`
+	// The set up gateway file share NFS protocol user mapping. Valid values: `none`, `rootSquash`, `allSquash`, `allAnonymous`. Default value: `none`.
+	Squash pulumi.StringInput `pulumi:"squash"`
+	// File synchronization types. Valid values: `clean`, `dirty`. `clean`: synchronization is complete. `dirty`: synchronization has not been completed.
+	State pulumi.StringInput `pulumi:"state"`
+	// Whether to support the archive transparent read.
+	SupportArchive pulumi.BoolInput `pulumi:"supportArchive"`
+	// Full synchronization progress. When the share has been added for a synchronization group, the return parameters are valid, that shared full synchronization progress (0~100). `-2`: indicates that share the Gateway version does not support this feature. `-1`: the share does not occur full synchronization.
+	SyncProgress pulumi.IntInput `pulumi:"syncProgress"`
+	// The OSS Bucket to the Gateway total downloads. Unit: `B`.
+	TotalDownload pulumi.StringInput `pulumi:"totalDownload"`
+	// The OSS Bucket to the Gateway total Upload amount. Unit: `B`.
+	TotalUpload pulumi.StringInput `pulumi:"totalUpload"`
+	// The set up gateway file share whether to enable transmission acceleration needs corresponding OSS Bucket enabled transport acceleration. **NOTE:** Gateway version >= 1.3.0 above support.
+	TransferAcceleration pulumi.BoolInput `pulumi:"transferAcceleration"`
+	// Used cache. Unit: `B`.
+	Used pulumi.StringInput `pulumi:"used"`
+	// The set up gateway file share Server Message Block (SMB) protocol, whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `false`. **NOTE:** Gateway version >= 1.0.45 above support.
+	WindowsAcl pulumi.BoolInput `pulumi:"windowsAcl"`
+}
+
+func (GetGatewayFileSharesShareArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayFileSharesShare)(nil)).Elem()
+}
+
+func (i GetGatewayFileSharesShareArgs) ToGetGatewayFileSharesShareOutput() GetGatewayFileSharesShareOutput {
+	return i.ToGetGatewayFileSharesShareOutputWithContext(context.Background())
+}
+
+func (i GetGatewayFileSharesShareArgs) ToGetGatewayFileSharesShareOutputWithContext(ctx context.Context) GetGatewayFileSharesShareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayFileSharesShareOutput)
+}
+
+// GetGatewayFileSharesShareArrayInput is an input type that accepts GetGatewayFileSharesShareArray and GetGatewayFileSharesShareArrayOutput values.
+// You can construct a concrete instance of `GetGatewayFileSharesShareArrayInput` via:
+//
+//          GetGatewayFileSharesShareArray{ GetGatewayFileSharesShareArgs{...} }
+type GetGatewayFileSharesShareArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewayFileSharesShareArrayOutput() GetGatewayFileSharesShareArrayOutput
+	ToGetGatewayFileSharesShareArrayOutputWithContext(context.Context) GetGatewayFileSharesShareArrayOutput
+}
+
+type GetGatewayFileSharesShareArray []GetGatewayFileSharesShareInput
+
+func (GetGatewayFileSharesShareArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayFileSharesShare)(nil)).Elem()
+}
+
+func (i GetGatewayFileSharesShareArray) ToGetGatewayFileSharesShareArrayOutput() GetGatewayFileSharesShareArrayOutput {
+	return i.ToGetGatewayFileSharesShareArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewayFileSharesShareArray) ToGetGatewayFileSharesShareArrayOutputWithContext(ctx context.Context) GetGatewayFileSharesShareArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayFileSharesShareArrayOutput)
+}
+
+type GetGatewayFileSharesShareOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayFileSharesShareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayFileSharesShare)(nil)).Elem()
+}
+
+func (o GetGatewayFileSharesShareOutput) ToGetGatewayFileSharesShareOutput() GetGatewayFileSharesShareOutput {
+	return o
+}
+
+func (o GetGatewayFileSharesShareOutput) ToGetGatewayFileSharesShareOutputWithContext(ctx context.Context) GetGatewayFileSharesShareOutput {
+	return o
+}
+
+// The set up gateway file share Server Message Block (SMB) protocol, whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** Gateway version >= 1.0.45 above support.
+func (o GetGatewayFileSharesShareOutput) AccessBasedEnumeration() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) bool { return v.AccessBasedEnumeration }).(pulumi.BoolOutput)
+}
+
+// Share the private IP address of the RDS instance.
+func (o GetGatewayFileSharesShareOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The set up gateway file share Max upload speed. Unit: `MB/s`, `0` means unlimited. Value range: `0` ~ `1280`. Default value: `0`. **NOTE:** at the same time if you have to limit the maximum write speed, maximum upload speed is no less than the maximum write speed.
+func (o GetGatewayFileSharesShareOutput) BackendLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) int { return v.BackendLimit }).(pulumi.IntOutput)
+}
+
+// The set up gateway file share Server Message Block (SMB) protocol whether browsable (that is, in the network neighborhood of whether you can find). The parameters in the NFS protocol not valid under. Default value: `true`.
+func (o GetGatewayFileSharesShareOutput) Browsable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) bool { return v.Browsable }).(pulumi.BoolOutput)
+}
+
+// Multi-Bucket information.
+func (o GetGatewayFileSharesShareOutput) BucketInfos() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.BucketInfos }).(pulumi.StringOutput)
+}
+
+// Whether there are multiple buckets.
+func (o GetGatewayFileSharesShareOutput) BucketsStub() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) bool { return v.BucketsStub }).(pulumi.BoolOutput)
+}
+
+// Direct reading OSS of the gateway file share.
+func (o GetGatewayFileSharesShareOutput) BypassCacheRead() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) bool { return v.BypassCacheRead }).(pulumi.BoolOutput)
+}
+
+// The cache mode of the gateway file share. Value range: Cache: cached mode. Sync: replication mode are available.
+func (o GetGatewayFileSharesShareOutput) CacheMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.CacheMode }).(pulumi.StringOutput)
+}
+
+// File share is enabled to client-side encryption, the encryption by the use of the KMS key. **NOTE:** note: This KMS key must be the gateway and is in the same Region.
+func (o GetGatewayFileSharesShareOutput) ClientSideCmk() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.ClientSideCmk }).(pulumi.StringOutput)
+}
+
+// Whether to enabled to client-side encryption of the gateway file share. Default value: `false`. **NOTE:** need to contact us open whitelist before you can the settings, and only supports enhanced more than online gateway, at the same time, server-side encryption and to client-side encryption can not simultaneously configuration.
+func (o GetGatewayFileSharesShareOutput) ClientSideEncryption() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) bool { return v.ClientSideEncryption }).(pulumi.BoolOutput)
+}
+
+// Whether directio (direct I/O data transfer) is enabled for file share. Default: `false`.
+func (o GetGatewayFileSharesShareOutput) DirectIo() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) bool { return v.DirectIo }).(pulumi.BoolOutput)
+}
+
+// The ID of the disk.
+func (o GetGatewayFileSharesShareOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.DiskId }).(pulumi.StringOutput)
+}
+
+// The cache disk type. Valid values: `cloudEfficiency`: Ultra cloud disk. `cloudSsd`:SSD cloud disk.
+func (o GetGatewayFileSharesShareOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// The set up gateway file share maximum download speed. Unit: `MB/s`. `0` means unlimited. Value range: `0` ~ `1280`. **NOTE:** only in copy mode and enable download file data can be set. only when the shared opens the reverse synchronization or acceded to by the speed synchronization Group when, this parameter will not take effect. Gateway version >= 1.3.0 above support.
+func (o GetGatewayFileSharesShareOutput) DownloadLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) int { return v.DownloadLimit }).(pulumi.IntOutput)
+}
+
+// Shared whether the changes take effect.
+func (o GetGatewayFileSharesShareOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Speed synchronization group ID.
+func (o GetGatewayFileSharesShareOutput) ExpressSyncId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.ExpressSyncId }).(pulumi.StringOutput)
+}
+
+// The set up gateway file share whether to enable Upload optimization, which is suitable for data pure backup migration scenarios. Default value: `false`. **NOTE:** Gateway version >= 1.0.39 above support.
+func (o GetGatewayFileSharesShareOutput) FastReclaim() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) bool { return v.FastReclaim }).(pulumi.BoolOutput)
+}
+
+// The set up gateway file share and the maximum write speed. Unit: `MB/s`, `0` means unlimited. Value range: `0` ~ `1280`. Default value: `0`.
+func (o GetGatewayFileSharesShareOutput) FeLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) int { return v.FeLimit }).(pulumi.IntOutput)
+}
+
+// Supported by the file system file number.
+func (o GetGatewayFileSharesShareOutput) FileNumLimit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.FileNumLimit }).(pulumi.StringOutput)
+}
+
+// File system capacity. Unit: `B`.
+func (o GetGatewayFileSharesShareOutput) FsSizeLimit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.FsSizeLimit }).(pulumi.StringOutput)
+}
+
+// The name of the file share. Length from `1` to `255` characters can contain lowercase letters, digits, (.), (_) Or (-), at the same time, must start with a lowercase letter.
+func (o GetGatewayFileSharesShareOutput) GatewayFileShareName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.GatewayFileShareName }).(pulumi.StringOutput)
+}
+
+// The ID of the gateway.
+func (o GetGatewayFileSharesShareOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.GatewayId }).(pulumi.StringOutput)
+}
+
+// The ID of the Gateway File Share.
+func (o GetGatewayFileSharesShareOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** Gateway version >= 1.0.40 above support.
+func (o GetGatewayFileSharesShareOutput) IgnoreDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) bool { return v.IgnoreDelete }).(pulumi.BoolOutput)
+}
+
+// Whether debris optimization of the gateway file share. Default value: `false`.
+func (o GetGatewayFileSharesShareOutput) InPlace() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) bool { return v.InPlace }).(pulumi.BoolOutput)
+}
+
+// Cache growth. Unit: `B/s`.
+func (o GetGatewayFileSharesShareOutput) InRate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.InRate }).(pulumi.StringOutput)
+}
+
+// The ID of the file share.
+func (o GetGatewayFileSharesShareOutput) IndexId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.IndexId }).(pulumi.StringOutput)
+}
+
+// File share is enabled to client-side encryption, key rotation period of time. Seconds. 0 represents no rotation. Rotation of the value range: `3600` ~ `86400`. Default value: `0`.
+func (o GetGatewayFileSharesShareOutput) KmsRotatePeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) int { return v.KmsRotatePeriod }).(pulumi.IntOutput)
+}
+
+// The synchronization delay, I.e. gateway local cache sync to Alibaba Cloud Object Storage Service (oss) of the delay time. Unit: `Seconds`. Value range: `5` ~ `120`. Default value: `5`. **NOTE:** Gateway version >= 1.0.40 above support.
+func (o GetGatewayFileSharesShareOutput) LagPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.LagPeriod }).(pulumi.StringOutput)
+}
+
+// The cache disk inside the device name.
+func (o GetGatewayFileSharesShareOutput) LocalPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.LocalPath }).(pulumi.StringOutput)
+}
+
+// The messages from the queue health types. Valid values: `TopicAndQueueFailure`: A Message Queuing message theme can be accessed during the black hole period. `TopicFailure`: a message theme can be accessed during the black hole period. `MNSFullSyncInit`: full synchronization wait. `MNSFullSyncing`: full synchronization in progress. `QueueFailure`: a message queue can be accessed during the black hole period. `MNSNotEnabled`: Top speed synchronization is not enabled. `MNSHealthy`: sync fine.
+func (o GetGatewayFileSharesShareOutput) MnsHealth() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.MnsHealth }).(pulumi.StringOutput)
+}
+
+// The set up gateway file share NFS protocol, whether to enable NFS v4 optimization improve Mount Upload efficiency. Default value: `false`. **NOTE:** turns on after I will not support NFS v3 mount the filesystem on a. Gateway version >= 1.2.0 above support.
+func (o GetGatewayFileSharesShareOutput) NfsV4Optimization() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) bool { return v.NfsV4Optimization }).(pulumi.BoolOutput)
+}
+
+// Multi-Bucket, removing the Bucket.
+func (o GetGatewayFileSharesShareOutput) ObsoleteBuckets() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.ObsoleteBuckets }).(pulumi.StringOutput)
+}
+
+// The name of the Bucket.
+func (o GetGatewayFileSharesShareOutput) OssBucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.OssBucketName }).(pulumi.StringOutput)
+}
+
+// Whether they are using SSL connect to OSS Bucket.
+func (o GetGatewayFileSharesShareOutput) OssBucketSsl() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) bool { return v.OssBucketSsl }).(pulumi.BoolOutput)
+}
+
+// The set up gateway file share corresponds to the Object Storage SERVICE (OSS), Bucket Endpoint. **NOTE:** distinguish between intranet and internet Endpoint. We recommend that if the OSS Bucket and the gateway is in the same Region is use the RDS intranet IP Endpoint:oss-cn-hangzhou-internal.aliyuncs.com.
+func (o GetGatewayFileSharesShareOutput) OssEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.OssEndpoint }).(pulumi.StringOutput)
+}
+
+// The OSS Bucket of type. Valid values: `BucketHealthy`: OSS connectivity. `BucketAccessDenied`: OBJECT STORAGE Service (OSS) access to an exception. `BucketMiscFailure`: OBJECT STORAGE Service (OSS) access to additional exception. `BucketNetworkFailure`: OBJECT STORAGE Service (OSS) access network an exception. `BucketNotExist`: OSS Bucket does not exist. `Nothing returns`: We may not have ever known existed.
+func (o GetGatewayFileSharesShareOutput) OssHealth() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.OssHealth }).(pulumi.StringOutput)
+}
+
+// For a cloud-based data is. Unit: `B`.
+func (o GetGatewayFileSharesShareOutput) OssUsed() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.OssUsed }).(pulumi.StringOutput)
+}
+
+// Upload speed. Unit: `B/s`.
+func (o GetGatewayFileSharesShareOutput) OutRate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.OutRate }).(pulumi.StringOutput)
+}
+
+// In part mode, the directory path group JSON format.
+func (o GetGatewayFileSharesShareOutput) PartialSyncPaths() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.PartialSyncPaths }).(pulumi.StringOutput)
+}
+
+// The prefix of the OSS.
+func (o GetGatewayFileSharesShareOutput) PathPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.PathPrefix }).(pulumi.StringOutput)
+}
+
+// The reverse synchronization time intervals of the gateway file share. Value range: `15` ~ `36000`. **NOTE:** in copy mode + reverse synchronization is enabled Download file data, value range: `3600` ~ `36000`.
+func (o GetGatewayFileSharesShareOutput) PollingInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) int { return v.PollingInterval }).(pulumi.IntOutput)
+}
+
+// Share types. Valid values: `SMB`, `NFS`.
+func (o GetGatewayFileSharesShareOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// You can use the metadata space. Unit: `B`.
+func (o GetGatewayFileSharesShareOutput) RemainingMetaSpace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.RemainingMetaSpace }).(pulumi.StringOutput)
+}
+
+// Whether to enable reverse synchronization of the gateway file share. Default value: `false`.
+func (o GetGatewayFileSharesShareOutput) RemoteSync() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) bool { return v.RemoteSync }).(pulumi.BoolOutput)
+}
+
+// Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the shared opens the reverse synchronization or acceded to by the speed synchronization group, this parameter will not take effect.
+func (o GetGatewayFileSharesShareOutput) RemoteSyncDownload() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) bool { return v.RemoteSyncDownload }).(pulumi.BoolOutput)
+}
+
+// The read-only client list. When Protocol NFS is returned when the status is.
+func (o GetGatewayFileSharesShareOutput) RoClientList() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.RoClientList }).(pulumi.StringOutput)
+}
+
+// The read-only client list. When Protocol for Server Message Block (SMB) to go back to.
+func (o GetGatewayFileSharesShareOutput) RoUserList() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.RoUserList }).(pulumi.StringOutput)
+}
+
+// Read and write the client list. When Protocol NFS is returned when the status is.
+func (o GetGatewayFileSharesShareOutput) RwClientList() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.RwClientList }).(pulumi.StringOutput)
+}
+
+// Read-write user list. When Protocol for Server Message Block (SMB) to go back to.
+func (o GetGatewayFileSharesShareOutput) RwUserList() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.RwUserList }).(pulumi.StringOutput)
+}
+
+// File share is enabled server-side encryption, encryption used by the KMS key.
+func (o GetGatewayFileSharesShareOutput) ServerSideCmk() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.ServerSideCmk }).(pulumi.StringOutput)
+}
+
+// If the OSS Bucket side encryption.
+func (o GetGatewayFileSharesShareOutput) ServerSideEncryption() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) bool { return v.ServerSideEncryption }).(pulumi.BoolOutput)
+}
+
+// The caching capacity. Unit: `B`.
+func (o GetGatewayFileSharesShareOutput) Size() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.Size }).(pulumi.StringOutput)
+}
+
+// The set up gateway file share NFS protocol user mapping. Valid values: `none`, `rootSquash`, `allSquash`, `allAnonymous`. Default value: `none`.
+func (o GetGatewayFileSharesShareOutput) Squash() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.Squash }).(pulumi.StringOutput)
+}
+
+// File synchronization types. Valid values: `clean`, `dirty`. `clean`: synchronization is complete. `dirty`: synchronization has not been completed.
+func (o GetGatewayFileSharesShareOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Whether to support the archive transparent read.
+func (o GetGatewayFileSharesShareOutput) SupportArchive() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) bool { return v.SupportArchive }).(pulumi.BoolOutput)
+}
+
+// Full synchronization progress. When the share has been added for a synchronization group, the return parameters are valid, that shared full synchronization progress (0~100). `-2`: indicates that share the Gateway version does not support this feature. `-1`: the share does not occur full synchronization.
+func (o GetGatewayFileSharesShareOutput) SyncProgress() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) int { return v.SyncProgress }).(pulumi.IntOutput)
+}
+
+// The OSS Bucket to the Gateway total downloads. Unit: `B`.
+func (o GetGatewayFileSharesShareOutput) TotalDownload() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.TotalDownload }).(pulumi.StringOutput)
+}
+
+// The OSS Bucket to the Gateway total Upload amount. Unit: `B`.
+func (o GetGatewayFileSharesShareOutput) TotalUpload() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.TotalUpload }).(pulumi.StringOutput)
+}
+
+// The set up gateway file share whether to enable transmission acceleration needs corresponding OSS Bucket enabled transport acceleration. **NOTE:** Gateway version >= 1.3.0 above support.
+func (o GetGatewayFileSharesShareOutput) TransferAcceleration() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) bool { return v.TransferAcceleration }).(pulumi.BoolOutput)
+}
+
+// Used cache. Unit: `B`.
+func (o GetGatewayFileSharesShareOutput) Used() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) string { return v.Used }).(pulumi.StringOutput)
+}
+
+// The set up gateway file share Server Message Block (SMB) protocol, whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `false`. **NOTE:** Gateway version >= 1.0.45 above support.
+func (o GetGatewayFileSharesShareOutput) WindowsAcl() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayFileSharesShare) bool { return v.WindowsAcl }).(pulumi.BoolOutput)
+}
+
+type GetGatewayFileSharesShareArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayFileSharesShareArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayFileSharesShare)(nil)).Elem()
+}
+
+func (o GetGatewayFileSharesShareArrayOutput) ToGetGatewayFileSharesShareArrayOutput() GetGatewayFileSharesShareArrayOutput {
+	return o
+}
+
+func (o GetGatewayFileSharesShareArrayOutput) ToGetGatewayFileSharesShareArrayOutputWithContext(ctx context.Context) GetGatewayFileSharesShareArrayOutput {
+	return o
+}
+
+func (o GetGatewayFileSharesShareArrayOutput) Index(i pulumi.IntInput) GetGatewayFileSharesShareOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayFileSharesShare {
+		return vs[0].([]GetGatewayFileSharesShare)[vs[1].(int)]
+	}).(GetGatewayFileSharesShareOutput)
+}
+
+type GetGatewaySmbUsersUser struct {
+	// The Gateway ID.
+	GatewayId string `pulumi:"gatewayId"`
+	// The ID of the Gateway SMB User.
+	Id string `pulumi:"id"`
+	// The username of the Gateway SMB User.
+	Username string `pulumi:"username"`
+}
+
+// GetGatewaySmbUsersUserInput is an input type that accepts GetGatewaySmbUsersUserArgs and GetGatewaySmbUsersUserOutput values.
+// You can construct a concrete instance of `GetGatewaySmbUsersUserInput` via:
+//
+//          GetGatewaySmbUsersUserArgs{...}
+type GetGatewaySmbUsersUserInput interface {
+	pulumi.Input
+
+	ToGetGatewaySmbUsersUserOutput() GetGatewaySmbUsersUserOutput
+	ToGetGatewaySmbUsersUserOutputWithContext(context.Context) GetGatewaySmbUsersUserOutput
+}
+
+type GetGatewaySmbUsersUserArgs struct {
+	// The Gateway ID.
+	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
+	// The ID of the Gateway SMB User.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The username of the Gateway SMB User.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (GetGatewaySmbUsersUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaySmbUsersUser)(nil)).Elem()
+}
+
+func (i GetGatewaySmbUsersUserArgs) ToGetGatewaySmbUsersUserOutput() GetGatewaySmbUsersUserOutput {
+	return i.ToGetGatewaySmbUsersUserOutputWithContext(context.Background())
+}
+
+func (i GetGatewaySmbUsersUserArgs) ToGetGatewaySmbUsersUserOutputWithContext(ctx context.Context) GetGatewaySmbUsersUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaySmbUsersUserOutput)
+}
+
+// GetGatewaySmbUsersUserArrayInput is an input type that accepts GetGatewaySmbUsersUserArray and GetGatewaySmbUsersUserArrayOutput values.
+// You can construct a concrete instance of `GetGatewaySmbUsersUserArrayInput` via:
+//
+//          GetGatewaySmbUsersUserArray{ GetGatewaySmbUsersUserArgs{...} }
+type GetGatewaySmbUsersUserArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewaySmbUsersUserArrayOutput() GetGatewaySmbUsersUserArrayOutput
+	ToGetGatewaySmbUsersUserArrayOutputWithContext(context.Context) GetGatewaySmbUsersUserArrayOutput
+}
+
+type GetGatewaySmbUsersUserArray []GetGatewaySmbUsersUserInput
+
+func (GetGatewaySmbUsersUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaySmbUsersUser)(nil)).Elem()
+}
+
+func (i GetGatewaySmbUsersUserArray) ToGetGatewaySmbUsersUserArrayOutput() GetGatewaySmbUsersUserArrayOutput {
+	return i.ToGetGatewaySmbUsersUserArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewaySmbUsersUserArray) ToGetGatewaySmbUsersUserArrayOutputWithContext(ctx context.Context) GetGatewaySmbUsersUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaySmbUsersUserArrayOutput)
+}
+
+type GetGatewaySmbUsersUserOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaySmbUsersUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaySmbUsersUser)(nil)).Elem()
+}
+
+func (o GetGatewaySmbUsersUserOutput) ToGetGatewaySmbUsersUserOutput() GetGatewaySmbUsersUserOutput {
+	return o
+}
+
+func (o GetGatewaySmbUsersUserOutput) ToGetGatewaySmbUsersUserOutputWithContext(ctx context.Context) GetGatewaySmbUsersUserOutput {
+	return o
+}
+
+// The Gateway ID.
+func (o GetGatewaySmbUsersUserOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaySmbUsersUser) string { return v.GatewayId }).(pulumi.StringOutput)
+}
+
+// The ID of the Gateway SMB User.
+func (o GetGatewaySmbUsersUserOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaySmbUsersUser) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The username of the Gateway SMB User.
+func (o GetGatewaySmbUsersUserOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaySmbUsersUser) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GetGatewaySmbUsersUserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaySmbUsersUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewaySmbUsersUser)(nil)).Elem()
+}
+
+func (o GetGatewaySmbUsersUserArrayOutput) ToGetGatewaySmbUsersUserArrayOutput() GetGatewaySmbUsersUserArrayOutput {
+	return o
+}
+
+func (o GetGatewaySmbUsersUserArrayOutput) ToGetGatewaySmbUsersUserArrayOutputWithContext(ctx context.Context) GetGatewaySmbUsersUserArrayOutput {
+	return o
+}
+
+func (o GetGatewaySmbUsersUserArrayOutput) Index(i pulumi.IntInput) GetGatewaySmbUsersUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewaySmbUsersUser {
+		return vs[0].([]GetGatewaySmbUsersUser)[vs[1].(int)]
+	}).(GetGatewaySmbUsersUserOutput)
+}
+
 type GetGatewaysGateway struct {
 	// gateway .
 	ActivatedTime string `pulumi:"activatedTime"`
@@ -326,6 +1750,112 @@ func (o GetGatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetGatewaysGatew
 	}).(GetGatewaysGatewayOutput)
 }
 
+type GetStocksStock struct {
+	// A list of available gateway class in this Zone ID.
+	AvailableGatewayClasses []string `pulumi:"availableGatewayClasses"`
+	// The Zone ID.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetStocksStockInput is an input type that accepts GetStocksStockArgs and GetStocksStockOutput values.
+// You can construct a concrete instance of `GetStocksStockInput` via:
+//
+//          GetStocksStockArgs{...}
+type GetStocksStockInput interface {
+	pulumi.Input
+
+	ToGetStocksStockOutput() GetStocksStockOutput
+	ToGetStocksStockOutputWithContext(context.Context) GetStocksStockOutput
+}
+
+type GetStocksStockArgs struct {
+	// A list of available gateway class in this Zone ID.
+	AvailableGatewayClasses pulumi.StringArrayInput `pulumi:"availableGatewayClasses"`
+	// The Zone ID.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetStocksStockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStocksStock)(nil)).Elem()
+}
+
+func (i GetStocksStockArgs) ToGetStocksStockOutput() GetStocksStockOutput {
+	return i.ToGetStocksStockOutputWithContext(context.Background())
+}
+
+func (i GetStocksStockArgs) ToGetStocksStockOutputWithContext(ctx context.Context) GetStocksStockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStocksStockOutput)
+}
+
+// GetStocksStockArrayInput is an input type that accepts GetStocksStockArray and GetStocksStockArrayOutput values.
+// You can construct a concrete instance of `GetStocksStockArrayInput` via:
+//
+//          GetStocksStockArray{ GetStocksStockArgs{...} }
+type GetStocksStockArrayInput interface {
+	pulumi.Input
+
+	ToGetStocksStockArrayOutput() GetStocksStockArrayOutput
+	ToGetStocksStockArrayOutputWithContext(context.Context) GetStocksStockArrayOutput
+}
+
+type GetStocksStockArray []GetStocksStockInput
+
+func (GetStocksStockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStocksStock)(nil)).Elem()
+}
+
+func (i GetStocksStockArray) ToGetStocksStockArrayOutput() GetStocksStockArrayOutput {
+	return i.ToGetStocksStockArrayOutputWithContext(context.Background())
+}
+
+func (i GetStocksStockArray) ToGetStocksStockArrayOutputWithContext(ctx context.Context) GetStocksStockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStocksStockArrayOutput)
+}
+
+type GetStocksStockOutput struct{ *pulumi.OutputState }
+
+func (GetStocksStockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStocksStock)(nil)).Elem()
+}
+
+func (o GetStocksStockOutput) ToGetStocksStockOutput() GetStocksStockOutput {
+	return o
+}
+
+func (o GetStocksStockOutput) ToGetStocksStockOutputWithContext(ctx context.Context) GetStocksStockOutput {
+	return o
+}
+
+// A list of available gateway class in this Zone ID.
+func (o GetStocksStockOutput) AvailableGatewayClasses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetStocksStock) []string { return v.AvailableGatewayClasses }).(pulumi.StringArrayOutput)
+}
+
+// The Zone ID.
+func (o GetStocksStockOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStocksStock) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetStocksStockArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStocksStockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStocksStock)(nil)).Elem()
+}
+
+func (o GetStocksStockArrayOutput) ToGetStocksStockArrayOutput() GetStocksStockArrayOutput {
+	return o
+}
+
+func (o GetStocksStockArrayOutput) ToGetStocksStockArrayOutputWithContext(ctx context.Context) GetStocksStockArrayOutput {
+	return o
+}
+
+func (o GetStocksStockArrayOutput) Index(i pulumi.IntInput) GetStocksStockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStocksStock {
+		return vs[0].([]GetStocksStock)[vs[1].(int)]
+	}).(GetStocksStockOutput)
+}
+
 type GetStorageBundlesBundle struct {
 	Description       string `pulumi:"description"`
 	Id                string `pulumi:"id"`
@@ -445,12 +1975,36 @@ func (o GetStorageBundlesBundleArrayOutput) Index(i pulumi.IntInput) GetStorageB
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExpressSyncsSyncInput)(nil)).Elem(), GetExpressSyncsSyncArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExpressSyncsSyncArrayInput)(nil)).Elem(), GetExpressSyncsSyncArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayBlockVolumesVolumeInput)(nil)).Elem(), GetGatewayBlockVolumesVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayBlockVolumesVolumeArrayInput)(nil)).Elem(), GetGatewayBlockVolumesVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayCacheDisksDiskInput)(nil)).Elem(), GetGatewayCacheDisksDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayCacheDisksDiskArrayInput)(nil)).Elem(), GetGatewayCacheDisksDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayFileSharesShareInput)(nil)).Elem(), GetGatewayFileSharesShareArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayFileSharesShareArrayInput)(nil)).Elem(), GetGatewayFileSharesShareArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaySmbUsersUserInput)(nil)).Elem(), GetGatewaySmbUsersUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaySmbUsersUserArrayInput)(nil)).Elem(), GetGatewaySmbUsersUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayInput)(nil)).Elem(), GetGatewaysGatewayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayArrayInput)(nil)).Elem(), GetGatewaysGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStocksStockInput)(nil)).Elem(), GetStocksStockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStocksStockArrayInput)(nil)).Elem(), GetStocksStockArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageBundlesBundleInput)(nil)).Elem(), GetStorageBundlesBundleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageBundlesBundleArrayInput)(nil)).Elem(), GetStorageBundlesBundleArray{})
+	pulumi.RegisterOutputType(GetExpressSyncsSyncOutput{})
+	pulumi.RegisterOutputType(GetExpressSyncsSyncArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewayBlockVolumesVolumeOutput{})
+	pulumi.RegisterOutputType(GetGatewayBlockVolumesVolumeArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewayCacheDisksDiskOutput{})
+	pulumi.RegisterOutputType(GetGatewayCacheDisksDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewayFileSharesShareOutput{})
+	pulumi.RegisterOutputType(GetGatewayFileSharesShareArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewaySmbUsersUserOutput{})
+	pulumi.RegisterOutputType(GetGatewaySmbUsersUserArrayOutput{})
 	pulumi.RegisterOutputType(GetGatewaysGatewayOutput{})
 	pulumi.RegisterOutputType(GetGatewaysGatewayArrayOutput{})
+	pulumi.RegisterOutputType(GetStocksStockOutput{})
+	pulumi.RegisterOutputType(GetStocksStockArrayOutput{})
 	pulumi.RegisterOutputType(GetStorageBundlesBundleOutput{})
 	pulumi.RegisterOutputType(GetStorageBundlesBundleArrayOutput{})
 }

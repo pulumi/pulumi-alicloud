@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * });
  * const exampleOssShipper = new alicloud.log.OssShipper("exampleOssShipper", {
  *     projectName: exampleProject.name,
- *     logstoreName: alicloud_log_logstore.example.name,
+ *     logstoreName: exampleStore.name,
  *     shipperName: "oss_shipper_name",
  *     ossBucket: "test_bucket",
  *     ossPrefix: "root",

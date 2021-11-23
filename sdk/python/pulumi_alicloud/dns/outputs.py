@@ -483,6 +483,7 @@ class GetAlidnsRecordsRecordResult(dict):
                  locked: bool,
                  priority: int,
                  record_id: str,
+                 remark: str,
                  rr: str,
                  status: str,
                  ttl: int,
@@ -495,6 +496,7 @@ class GetAlidnsRecordsRecordResult(dict):
         :param bool locked: Indicates whether the record is locked.
         :param int priority: Priority of the `MX` record.
         :param str record_id: ID of the record.
+        :param str remark: The remark of the domain record.  **NOTE:** Available in 1.144.0+.
         :param str rr: Host record of the domain.
         :param str status: Record status. Valid values: `ENABLE` and `DISABLE`.
         :param int ttl: TTL of the record.
@@ -507,6 +509,7 @@ class GetAlidnsRecordsRecordResult(dict):
         pulumi.set(__self__, "locked", locked)
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "record_id", record_id)
+        pulumi.set(__self__, "remark", remark)
         pulumi.set(__self__, "rr", rr)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "ttl", ttl)
@@ -560,6 +563,14 @@ class GetAlidnsRecordsRecordResult(dict):
         ID of the record.
         """
         return pulumi.get(self, "record_id")
+
+    @property
+    @pulumi.getter
+    def remark(self) -> str:
+        """
+        The remark of the domain record.  **NOTE:** Available in 1.144.0+.
+        """
+        return pulumi.get(self, "remark")
 
     @property
     @pulumi.getter

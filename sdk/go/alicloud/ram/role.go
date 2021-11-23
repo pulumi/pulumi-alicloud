@@ -22,7 +22,7 @@ type Role struct {
 
 	// The role arn.
 	Arn pulumi.StringOutput `pulumi:"arn"`
-	// Description of the RAM role. This name can have a string of 1 to 1024 characters.
+	// Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Authorization strategy of the RAM role. It is required when the `services` and `ramUsers` are not specified.
 	Document pulumi.StringOutput `pulumi:"document"`
@@ -79,7 +79,7 @@ func GetRole(ctx *pulumi.Context,
 type roleState struct {
 	// The role arn.
 	Arn *string `pulumi:"arn"`
-	// Description of the RAM role. This name can have a string of 1 to 1024 characters.
+	// Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
 	Description *string `pulumi:"description"`
 	// Authorization strategy of the RAM role. It is required when the `services` and `ramUsers` are not specified.
 	Document *string `pulumi:"document"`
@@ -108,7 +108,7 @@ type roleState struct {
 type RoleState struct {
 	// The role arn.
 	Arn pulumi.StringPtrInput
-	// Description of the RAM role. This name can have a string of 1 to 1024 characters.
+	// Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
 	Description pulumi.StringPtrInput
 	// Authorization strategy of the RAM role. It is required when the `services` and `ramUsers` are not specified.
 	Document pulumi.StringPtrInput
@@ -139,7 +139,7 @@ func (RoleState) ElementType() reflect.Type {
 }
 
 type roleArgs struct {
-	// Description of the RAM role. This name can have a string of 1 to 1024 characters.
+	// Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
 	Description *string `pulumi:"description"`
 	// Authorization strategy of the RAM role. It is required when the `services` and `ramUsers` are not specified.
 	Document *string `pulumi:"document"`
@@ -165,7 +165,7 @@ type roleArgs struct {
 
 // The set of arguments for constructing a Role resource.
 type RoleArgs struct {
-	// Description of the RAM role. This name can have a string of 1 to 1024 characters.
+	// Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
 	Description pulumi.StringPtrInput
 	// Authorization strategy of the RAM role. It is required when the `services` and `ramUsers` are not specified.
 	Document pulumi.StringPtrInput

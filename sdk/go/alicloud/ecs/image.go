@@ -78,7 +78,7 @@ type Image struct {
 	InstanceId pulumi.StringPtrOutput `pulumi:"instanceId"`
 	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+	// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`.
 	Platform pulumi.StringPtrOutput `pulumi:"platform"`
 	// The ID of the enterprise resource group to which a custom image belongs
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
@@ -134,7 +134,7 @@ type imageState struct {
 	InstanceId *string `pulumi:"instanceId"`
 	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
 	Name *string `pulumi:"name"`
-	// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+	// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`.
 	Platform *string `pulumi:"platform"`
 	// The ID of the enterprise resource group to which a custom image belongs
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -162,7 +162,7 @@ type ImageState struct {
 	InstanceId pulumi.StringPtrInput
 	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
 	Name pulumi.StringPtrInput
-	// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+	// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`.
 	Platform pulumi.StringPtrInput
 	// The ID of the enterprise resource group to which a custom image belongs
 	ResourceGroupId pulumi.StringPtrInput
@@ -194,7 +194,7 @@ type imageArgs struct {
 	InstanceId *string `pulumi:"instanceId"`
 	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
 	Name *string `pulumi:"name"`
-	// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+	// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`.
 	Platform *string `pulumi:"platform"`
 	// The ID of the enterprise resource group to which a custom image belongs
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -223,7 +223,7 @@ type ImageArgs struct {
 	InstanceId pulumi.StringPtrInput
 	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
 	Name pulumi.StringPtrInput
-	// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+	// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`.
 	Platform pulumi.StringPtrInput
 	// The ID of the enterprise resource group to which a custom image belongs
 	ResourceGroupId pulumi.StringPtrInput

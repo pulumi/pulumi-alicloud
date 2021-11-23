@@ -13,19 +13,19 @@ namespace Pulumi.AliCloud.Log.Inputs
     public sealed class StoreEncryptConfUserCmkInfoArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// role arn
+        /// role arn.
         /// </summary>
         [Input("arn", required: true)]
         public Input<string> Arn { get; set; } = null!;
 
         /// <summary>
-        /// User master key id
+        /// User master key id.
         /// </summary>
         [Input("cmkKeyId", required: true)]
         public Input<string> CmkKeyId { get; set; } = null!;
 
         /// <summary>
-        /// Region id where the  user master key id is located
+        /// Region id where the  user master key id is located.
         /// </summary>
         [Input("regionId", required: true)]
         public Input<string> RegionId { get; set; } = null!;

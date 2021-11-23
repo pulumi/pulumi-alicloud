@@ -47,9 +47,9 @@ import (
 type DomainGroup struct {
 	pulumi.CustomResourceState
 
-	// Name of the domain group.
+	// The Name of the domain group. The `domainGroupName` is required when the value of the `groupName`  is Empty.
 	DomainGroupName pulumi.StringOutput `pulumi:"domainGroupName"`
-	// Replaced by `domainGroupName` after version 1.97.0.
+	// The Name of the domain group. The `groupName` has been deprecated from provider version 1.97.0. Please use `domainGroupName` instead.
 	//
 	// Deprecated: Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.
 	GroupName pulumi.StringOutput `pulumi:"groupName"`
@@ -86,9 +86,9 @@ func GetDomainGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DomainGroup resources.
 type domainGroupState struct {
-	// Name of the domain group.
+	// The Name of the domain group. The `domainGroupName` is required when the value of the `groupName`  is Empty.
 	DomainGroupName *string `pulumi:"domainGroupName"`
-	// Replaced by `domainGroupName` after version 1.97.0.
+	// The Name of the domain group. The `groupName` has been deprecated from provider version 1.97.0. Please use `domainGroupName` instead.
 	//
 	// Deprecated: Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.
 	GroupName *string `pulumi:"groupName"`
@@ -97,9 +97,9 @@ type domainGroupState struct {
 }
 
 type DomainGroupState struct {
-	// Name of the domain group.
+	// The Name of the domain group. The `domainGroupName` is required when the value of the `groupName`  is Empty.
 	DomainGroupName pulumi.StringPtrInput
-	// Replaced by `domainGroupName` after version 1.97.0.
+	// The Name of the domain group. The `groupName` has been deprecated from provider version 1.97.0. Please use `domainGroupName` instead.
 	//
 	// Deprecated: Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.
 	GroupName pulumi.StringPtrInput
@@ -112,9 +112,9 @@ func (DomainGroupState) ElementType() reflect.Type {
 }
 
 type domainGroupArgs struct {
-	// Name of the domain group.
+	// The Name of the domain group. The `domainGroupName` is required when the value of the `groupName`  is Empty.
 	DomainGroupName *string `pulumi:"domainGroupName"`
-	// Replaced by `domainGroupName` after version 1.97.0.
+	// The Name of the domain group. The `groupName` has been deprecated from provider version 1.97.0. Please use `domainGroupName` instead.
 	//
 	// Deprecated: Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.
 	GroupName *string `pulumi:"groupName"`
@@ -124,9 +124,9 @@ type domainGroupArgs struct {
 
 // The set of arguments for constructing a DomainGroup resource.
 type DomainGroupArgs struct {
-	// Name of the domain group.
+	// The Name of the domain group. The `domainGroupName` is required when the value of the `groupName`  is Empty.
 	DomainGroupName pulumi.StringPtrInput
-	// Replaced by `domainGroupName` after version 1.97.0.
+	// The Name of the domain group. The `groupName` has been deprecated from provider version 1.97.0. Please use `domainGroupName` instead.
 	//
 	// Deprecated: Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.
 	GroupName pulumi.StringPtrInput

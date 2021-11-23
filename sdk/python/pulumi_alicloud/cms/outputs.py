@@ -13,6 +13,7 @@ __all__ = [
     'AlarmEscalationsCritical',
     'AlarmEscalationsInfo',
     'AlarmEscalationsWarn',
+    'DynamicTagGroupMatchExpress',
     'GroupMetricRuleEscalations',
     'GroupMetricRuleEscalationsCritical',
     'GroupMetricRuleEscalationsInfo',
@@ -26,6 +27,8 @@ __all__ = [
     'SiteMonitorIspCity',
     'GetAlarmContactGroupsGroupResult',
     'GetAlarmContactsContactResult',
+    'GetDynamicTagGroupsGroupResult',
+    'GetDynamicTagGroupsGroupMatchExpressResult',
     'GetGroupMetricRulesRuleResult',
     'GetGroupMetricRulesRuleEscalationResult',
     'GetGroupMetricRulesRuleEscalationCriticalResult',
@@ -256,6 +259,54 @@ class AlarmEscalationsWarn(dict):
         Critical level alarm retry times. Default to 3.
         """
         return pulumi.get(self, "times")
+
+
+@pulumi.output_type
+class DynamicTagGroupMatchExpress(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tagValue":
+            suggest = "tag_value"
+        elif key == "tagValueMatchFunction":
+            suggest = "tag_value_match_function"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DynamicTagGroupMatchExpress. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DynamicTagGroupMatchExpress.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DynamicTagGroupMatchExpress.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 tag_value: str,
+                 tag_value_match_function: str):
+        """
+        :param str tag_value: The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+        :param str tag_value_match_function: Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+        """
+        pulumi.set(__self__, "tag_value", tag_value)
+        pulumi.set(__self__, "tag_value_match_function", tag_value_match_function)
+
+    @property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> str:
+        """
+        The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+        """
+        return pulumi.get(self, "tag_value")
+
+    @property
+    @pulumi.getter(name="tagValueMatchFunction")
+    def tag_value_match_function(self) -> str:
+        """
+        Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+        """
+        return pulumi.get(self, "tag_value_match_function")
 
 
 @pulumi.output_type
@@ -1167,6 +1218,108 @@ class GetAlarmContactsContactResult(dict):
     @pulumi.getter
     def lang(self) -> str:
         return pulumi.get(self, "lang")
+
+
+@pulumi.output_type
+class GetDynamicTagGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 dynamic_tag_rule_id: str,
+                 id: str,
+                 match_express_filter_relation: str,
+                 match_expresses: Sequence['outputs.GetDynamicTagGroupsGroupMatchExpressResult'],
+                 status: str,
+                 tag_key: str):
+        """
+        :param str dynamic_tag_rule_id: The ID of the tag rule.
+        :param str id: The ID of the Dynamic Tag Group.
+        :param str match_express_filter_relation: The relationship between conditional expressions. Valid values: `and`, `or`.
+        :param Sequence['GetDynamicTagGroupsGroupMatchExpressArgs'] match_expresses: The label generates a matching expression that applies the grouping. See the following `Block match_express`.
+        :param str status: The status of the resource. Valid values: `RUNNING`, `FINISH`.
+        :param str tag_key: The tag key of the tag.
+        """
+        pulumi.set(__self__, "dynamic_tag_rule_id", dynamic_tag_rule_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "match_express_filter_relation", match_express_filter_relation)
+        pulumi.set(__self__, "match_expresses", match_expresses)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tag_key", tag_key)
+
+    @property
+    @pulumi.getter(name="dynamicTagRuleId")
+    def dynamic_tag_rule_id(self) -> str:
+        """
+        The ID of the tag rule.
+        """
+        return pulumi.get(self, "dynamic_tag_rule_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Dynamic Tag Group.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="matchExpressFilterRelation")
+    def match_express_filter_relation(self) -> str:
+        """
+        The relationship between conditional expressions. Valid values: `and`, `or`.
+        """
+        return pulumi.get(self, "match_express_filter_relation")
+
+    @property
+    @pulumi.getter(name="matchExpresses")
+    def match_expresses(self) -> Sequence['outputs.GetDynamicTagGroupsGroupMatchExpressResult']:
+        """
+        The label generates a matching expression that applies the grouping. See the following `Block match_express`.
+        """
+        return pulumi.get(self, "match_expresses")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource. Valid values: `RUNNING`, `FINISH`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> str:
+        """
+        The tag key of the tag.
+        """
+        return pulumi.get(self, "tag_key")
+
+
+@pulumi.output_type
+class GetDynamicTagGroupsGroupMatchExpressResult(dict):
+    def __init__(__self__, *,
+                 tag_value: str,
+                 tag_value_match_function: str):
+        """
+        :param str tag_value: The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+        :param str tag_value_match_function: Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+        """
+        pulumi.set(__self__, "tag_value", tag_value)
+        pulumi.set(__self__, "tag_value_match_function", tag_value_match_function)
+
+    @property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> str:
+        """
+        The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+        """
+        return pulumi.get(self, "tag_value")
+
+    @property
+    @pulumi.getter(name="tagValueMatchFunction")
+    def tag_value_match_function(self) -> str:
+        """
+        Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+        """
+        return pulumi.get(self, "tag_value_match_function")
 
 
 @pulumi.output_type

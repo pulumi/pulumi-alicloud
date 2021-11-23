@@ -66,6 +66,8 @@ type Instance struct {
 
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+	EnablePublicAccess pulumi.BoolOutput `pulumi:"enablePublicAccess"`
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode pulumi.StringOutput `pulumi:"licenseCode"`
 	Period      pulumi.IntPtrOutput `pulumi:"period"`
@@ -122,6 +124,8 @@ func GetInstance(ctx *pulumi.Context,
 type instanceState struct {
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description *string `pulumi:"description"`
+	// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+	EnablePublicAccess *bool `pulumi:"enablePublicAccess"`
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode *string `pulumi:"licenseCode"`
 	Period      *int    `pulumi:"period"`
@@ -138,6 +142,8 @@ type instanceState struct {
 type InstanceState struct {
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description pulumi.StringPtrInput
+	// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+	EnablePublicAccess pulumi.BoolPtrInput
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode pulumi.StringPtrInput
 	Period      pulumi.IntPtrInput
@@ -158,6 +164,8 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description string `pulumi:"description"`
+	// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+	EnablePublicAccess *bool `pulumi:"enablePublicAccess"`
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode string `pulumi:"licenseCode"`
 	Period      *int   `pulumi:"period"`
@@ -175,6 +183,8 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description pulumi.StringInput
+	// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+	EnablePublicAccess pulumi.BoolPtrInput
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode pulumi.StringInput
 	Period      pulumi.IntPtrInput

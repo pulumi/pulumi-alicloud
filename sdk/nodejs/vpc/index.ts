@@ -15,6 +15,10 @@ export * from "./getDhcpOptionsSets";
 export * from "./getEnhancedNatAvailableZones";
 export * from "./getForwardEntries";
 export * from "./getHavips";
+export * from "./getIpv6Addresses";
+export * from "./getIpv6EgressRules";
+export * from "./getIpv6Gateways";
+export * from "./getIpv6InternetBandwidths";
 export * from "./getNatGateways";
 export * from "./getNatIpCidrs";
 export * from "./getNatIps";
@@ -31,9 +35,13 @@ export * from "./getTrafficMirrorFilterEgressRules";
 export * from "./getTrafficMirrorFilterIngressRules";
 export * from "./getTrafficMirrorFilters";
 export * from "./getTrafficMirrorService";
+export * from "./getTrafficMirrorSessions";
 export * from "./getVpcFlowLogs";
 export * from "./havip";
 export * from "./havipAttachment";
+export * from "./ipv6EgressRule";
+export * from "./ipv6Gateway";
+export * from "./ipv6InternetBandwidth";
 export * from "./natGateway";
 export * from "./natIp";
 export * from "./natIpCidr";
@@ -54,6 +62,7 @@ export * from "./switch";
 export * from "./trafficMirrorFilter";
 export * from "./trafficMirrorFilterEgressRule";
 export * from "./trafficMirrorFilterIngressRule";
+export * from "./trafficMirrorSession";
 
 // Import resources to register:
 import { CommonBandwithPackage } from "./commonBandwithPackage";
@@ -63,6 +72,9 @@ import { FlowLog } from "./flowLog";
 import { ForwardEntry } from "./forwardEntry";
 import { HAVip } from "./havip";
 import { HAVipAttachment } from "./havipAttachment";
+import { Ipv6EgressRule } from "./ipv6EgressRule";
+import { Ipv6Gateway } from "./ipv6Gateway";
+import { Ipv6InternetBandwidth } from "./ipv6InternetBandwidth";
 import { NatGateway } from "./natGateway";
 import { NatIp } from "./natIp";
 import { NatIpCidr } from "./natIpCidr";
@@ -83,6 +95,7 @@ import { Switch } from "./switch";
 import { TrafficMirrorFilter } from "./trafficMirrorFilter";
 import { TrafficMirrorFilterEgressRule } from "./trafficMirrorFilterEgressRule";
 import { TrafficMirrorFilterIngressRule } from "./trafficMirrorFilterIngressRule";
+import { TrafficMirrorSession } from "./trafficMirrorSession";
 
 const _module = {
     version: utilities.getVersion(),
@@ -102,6 +115,12 @@ const _module = {
                 return new HAVip(name, <any>undefined, { urn })
             case "alicloud:vpc/hAVipAttachment:HAVipAttachment":
                 return new HAVipAttachment(name, <any>undefined, { urn })
+            case "alicloud:vpc/ipv6EgressRule:Ipv6EgressRule":
+                return new Ipv6EgressRule(name, <any>undefined, { urn })
+            case "alicloud:vpc/ipv6Gateway:Ipv6Gateway":
+                return new Ipv6Gateway(name, <any>undefined, { urn })
+            case "alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth":
+                return new Ipv6InternetBandwidth(name, <any>undefined, { urn })
             case "alicloud:vpc/natGateway:NatGateway":
                 return new NatGateway(name, <any>undefined, { urn })
             case "alicloud:vpc/natIp:NatIp":
@@ -142,6 +161,8 @@ const _module = {
                 return new TrafficMirrorFilterEgressRule(name, <any>undefined, { urn })
             case "alicloud:vpc/trafficMirrorFilterIngressRule:TrafficMirrorFilterIngressRule":
                 return new TrafficMirrorFilterIngressRule(name, <any>undefined, { urn })
+            case "alicloud:vpc/trafficMirrorSession:TrafficMirrorSession":
+                return new TrafficMirrorSession(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -154,6 +175,9 @@ pulumi.runtime.registerResourceModule("alicloud", "vpc/flowLog", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/forwardEntry", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/hAVip", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/hAVipAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv6EgressRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv6Gateway", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv6InternetBandwidth", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/natGateway", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/natIp", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/natIpCidr", _module)
@@ -174,3 +198,4 @@ pulumi.runtime.registerResourceModule("alicloud", "vpc/switch", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/trafficMirrorFilter", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/trafficMirrorFilterEgressRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/trafficMirrorFilterIngressRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/trafficMirrorSession", _module)

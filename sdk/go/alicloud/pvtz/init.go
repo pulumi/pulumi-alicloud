@@ -21,6 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:pvtz/endpoint:Endpoint":
+		r = &Endpoint{}
+	case "alicloud:pvtz/rule:Rule":
+		r = &Rule{}
+	case "alicloud:pvtz/ruleAttachment:RuleAttachment":
+		r = &RuleAttachment{}
 	case "alicloud:pvtz/userVpcAuthorization:UserVpcAuthorization":
 		r = &UserVpcAuthorization{}
 	case "alicloud:pvtz/zone:Zone":
@@ -42,6 +48,21 @@ func init() {
 	if err != nil {
 		fmt.Printf("failed to determine package version. defaulting to v1: %v\n", err)
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"pvtz/endpoint",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"pvtz/rule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"pvtz/ruleAttachment",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"pvtz/userVpcAuthorization",

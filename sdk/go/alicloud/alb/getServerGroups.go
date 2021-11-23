@@ -56,6 +56,7 @@ func GetServerGroups(ctx *pulumi.Context, args *GetServerGroupsArgs, opts ...pul
 
 // A collection of arguments for invoking getServerGroups.
 type GetServerGroupsArgs struct {
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Server Group IDs.
 	Ids []string `pulumi:"ids"`
@@ -104,6 +105,7 @@ func GetServerGroupsOutput(ctx *pulumi.Context, args GetServerGroupsOutputArgs, 
 
 // A collection of arguments for invoking getServerGroups.
 type GetServerGroupsOutputArgs struct {
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Server Group IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

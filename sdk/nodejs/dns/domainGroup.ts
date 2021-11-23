@@ -58,11 +58,11 @@ export class DomainGroup extends pulumi.CustomResource {
     }
 
     /**
-     * Name of the domain group.
+     * The Name of the domain group. The `domainGroupName` is required when the value of the `groupName`  is Empty.
      */
     public readonly domainGroupName!: pulumi.Output<string>;
     /**
-     * Replaced by `domainGroupName` after version 1.97.0.
+     * The Name of the domain group. The `groupName` has been deprecated from provider version 1.97.0. Please use `domainGroupName` instead.
      *
      * @deprecated Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.
      */
@@ -106,11 +106,11 @@ export class DomainGroup extends pulumi.CustomResource {
  */
 export interface DomainGroupState {
     /**
-     * Name of the domain group.
+     * The Name of the domain group. The `domainGroupName` is required when the value of the `groupName`  is Empty.
      */
     domainGroupName?: pulumi.Input<string>;
     /**
-     * Replaced by `domainGroupName` after version 1.97.0.
+     * The Name of the domain group. The `groupName` has been deprecated from provider version 1.97.0. Please use `domainGroupName` instead.
      *
      * @deprecated Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.
      */
@@ -126,11 +126,11 @@ export interface DomainGroupState {
  */
 export interface DomainGroupArgs {
     /**
-     * Name of the domain group.
+     * The Name of the domain group. The `domainGroupName` is required when the value of the `groupName`  is Empty.
      */
     domainGroupName?: pulumi.Input<string>;
     /**
-     * Replaced by `domainGroupName` after version 1.97.0.
+     * The Name of the domain group. The `groupName` has been deprecated from provider version 1.97.0. Please use `domainGroupName` instead.
      *
      * @deprecated Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.
      */

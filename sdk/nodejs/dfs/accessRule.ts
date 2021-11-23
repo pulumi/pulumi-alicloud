@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "exmaple_name";
+ * const name = config.get("name") || "example_name";
  * const defaultAccessGroup = new alicloud.dfs.AccessGroup("defaultAccessGroup", {
  *     networkType: "VPC",
  *     accessGroupName: name,

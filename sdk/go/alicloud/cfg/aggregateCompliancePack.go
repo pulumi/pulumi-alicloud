@@ -128,7 +128,7 @@ type AggregateCompliancePack struct {
 	//
 	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
 	ConfigRules AggregateCompliancePackConfigRuleArrayOutput `pulumi:"configRules"`
-	// Teh description of compliance package.
+	// The description of compliance package.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The Risk Level. Valid values: `1`, `2`, `3`.
 	RiskLevel pulumi.IntOutput `pulumi:"riskLevel"`
@@ -189,7 +189,7 @@ type aggregateCompliancePackState struct {
 	//
 	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
 	ConfigRules []AggregateCompliancePackConfigRule `pulumi:"configRules"`
-	// Teh description of compliance package.
+	// The description of compliance package.
 	Description *string `pulumi:"description"`
 	// The Risk Level. Valid values: `1`, `2`, `3`.
 	RiskLevel *int `pulumi:"riskLevel"`
@@ -210,7 +210,7 @@ type AggregateCompliancePackState struct {
 	//
 	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
 	ConfigRules AggregateCompliancePackConfigRuleArrayInput
-	// Teh description of compliance package.
+	// The description of compliance package.
 	Description pulumi.StringPtrInput
 	// The Risk Level. Valid values: `1`, `2`, `3`.
 	RiskLevel pulumi.IntPtrInput
@@ -235,7 +235,7 @@ type aggregateCompliancePackArgs struct {
 	//
 	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
 	ConfigRules []AggregateCompliancePackConfigRule `pulumi:"configRules"`
-	// Teh description of compliance package.
+	// The description of compliance package.
 	Description string `pulumi:"description"`
 	// The Risk Level. Valid values: `1`, `2`, `3`.
 	RiskLevel int `pulumi:"riskLevel"`
@@ -255,7 +255,7 @@ type AggregateCompliancePackArgs struct {
 	//
 	// Deprecated: Field 'config_rules' has been deprecated from provider version 1.141.0. New field 'config_rule_ids' instead.
 	ConfigRules AggregateCompliancePackConfigRuleArrayInput
-	// Teh description of compliance package.
+	// The description of compliance package.
 	Description pulumi.StringInput
 	// The Risk Level. Valid values: `1`, `2`, `3`.
 	RiskLevel pulumi.IntInput

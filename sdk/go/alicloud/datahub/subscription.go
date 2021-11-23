@@ -58,7 +58,7 @@ type Subscription struct {
 	LastModifyTime pulumi.StringOutput `pulumi:"lastModifyTime"`
 	// The name of the datahub project that the subscription belongs to. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
 	ProjectName pulumi.StringOutput `pulumi:"projectName"`
-	// The identidy of the subscritpion, generate from server side.
+	// The identidy of the subscription, generate from server side.
 	SubId pulumi.StringOutput `pulumi:"subId"`
 	// The name of the datahub topic that the subscription belongs to. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
 	TopicName pulumi.StringOutput `pulumi:"topicName"`
@@ -107,7 +107,7 @@ type subscriptionState struct {
 	LastModifyTime *string `pulumi:"lastModifyTime"`
 	// The name of the datahub project that the subscription belongs to. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
 	ProjectName *string `pulumi:"projectName"`
-	// The identidy of the subscritpion, generate from server side.
+	// The identidy of the subscription, generate from server side.
 	SubId *string `pulumi:"subId"`
 	// The name of the datahub topic that the subscription belongs to. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
 	TopicName *string `pulumi:"topicName"`
@@ -122,7 +122,7 @@ type SubscriptionState struct {
 	LastModifyTime pulumi.StringPtrInput
 	// The name of the datahub project that the subscription belongs to. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
 	ProjectName pulumi.StringPtrInput
-	// The identidy of the subscritpion, generate from server side.
+	// The identidy of the subscription, generate from server side.
 	SubId pulumi.StringPtrInput
 	// The name of the datahub topic that the subscription belongs to. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
 	TopicName pulumi.StringPtrInput

@@ -52,10 +52,10 @@ namespace Pulumi.AliCloud.Eds
     public partial class SimpleOfficeSite : Pulumi.CustomResource
     {
         /// <summary>
-        /// The Internet Bandwidth Peak. Valid values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+        /// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
         /// </summary>
         [Output("bandwidth")]
-        public Output<int?> Bandwidth { get; private set; } = null!;
+        public Output<int> Bandwidth { get; private set; } = null!;
 
         /// <summary>
         /// Cloud Enterprise Network Instance ID.
@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.Eds
         /// Whether the Open Internet Access Function.
         /// </summary>
         [Output("enableInternetAccess")]
-        public Output<bool?> EnableInternetAccess { get; private set; } = null!;
+        public Output<bool> EnableInternetAccess { get; private set; } = null!;
 
         /// <summary>
         /// Whether to Enable Multi-Factor Authentication MFA.
@@ -170,7 +170,7 @@ namespace Pulumi.AliCloud.Eds
     public sealed class SimpleOfficeSiteArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Internet Bandwidth Peak. Valid values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+        /// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
@@ -243,7 +243,7 @@ namespace Pulumi.AliCloud.Eds
     public sealed class SimpleOfficeSiteState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Internet Bandwidth Peak. Valid values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+        /// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }

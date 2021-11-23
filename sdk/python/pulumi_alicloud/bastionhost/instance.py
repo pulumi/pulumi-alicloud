@@ -17,6 +17,7 @@ class InstanceArgs:
                  license_code: pulumi.Input[str],
                  security_group_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  vswitch_id: pulumi.Input[str],
+                 enable_public_access: Optional[pulumi.Input[bool]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
@@ -26,6 +27,7 @@ class InstanceArgs:
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost.
         :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
+        :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -33,6 +35,8 @@ class InstanceArgs:
         pulumi.set(__self__, "license_code", license_code)
         pulumi.set(__self__, "security_group_ids", security_group_ids)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if enable_public_access is not None:
+            pulumi.set(__self__, "enable_public_access", enable_public_access)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if resource_group_id is not None:
@@ -89,6 +93,18 @@ class InstanceArgs:
         pulumi.set(self, "vswitch_id", value)
 
     @property
+    @pulumi.getter(name="enablePublicAccess")
+    def enable_public_access(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "enable_public_access")
+
+    @enable_public_access.setter
+    def enable_public_access(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_public_access", value)
+
+    @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "period")
@@ -126,6 +142,7 @@ class InstanceArgs:
 class _InstanceState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_public_access: Optional[pulumi.Input[bool]] = None,
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -135,6 +152,7 @@ class _InstanceState:
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
+        :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost.
@@ -143,6 +161,8 @@ class _InstanceState:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_public_access is not None:
+            pulumi.set(__self__, "enable_public_access", enable_public_access)
         if license_code is not None:
             pulumi.set(__self__, "license_code", license_code)
         if period is not None:
@@ -167,6 +187,18 @@ class _InstanceState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="enablePublicAccess")
+    def enable_public_access(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "enable_public_access")
+
+    @enable_public_access.setter
+    def enable_public_access(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_public_access", value)
 
     @property
     @pulumi.getter(name="licenseCode")
@@ -244,6 +276,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_public_access: Optional[pulumi.Input[bool]] = None,
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -293,6 +326,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
+        :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost.
@@ -360,6 +394,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_public_access: Optional[pulumi.Input[bool]] = None,
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -381,6 +416,7 @@ class Instance(pulumi.CustomResource):
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
+            __props__.__dict__["enable_public_access"] = enable_public_access
             if license_code is None and not opts.urn:
                 raise TypeError("Missing required property 'license_code'")
             __props__.__dict__["license_code"] = license_code
@@ -404,6 +440,7 @@ class Instance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
+            enable_public_access: Optional[pulumi.Input[bool]] = None,
             license_code: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -418,6 +455,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
+        :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost.
@@ -429,6 +467,7 @@ class Instance(pulumi.CustomResource):
         __props__ = _InstanceState.__new__(_InstanceState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["enable_public_access"] = enable_public_access
         __props__.__dict__["license_code"] = license_code
         __props__.__dict__["period"] = period
         __props__.__dict__["resource_group_id"] = resource_group_id
@@ -444,6 +483,14 @@ class Instance(pulumi.CustomResource):
         Description of the instance. This name can have a string of 1 to 63 characters.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enablePublicAccess")
+    def enable_public_access(self) -> pulumi.Output[bool]:
+        """
+        Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "enable_public_access")
 
     @property
     @pulumi.getter(name="licenseCode")

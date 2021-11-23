@@ -9,9 +9,1252 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'GetExpressSyncsSyncResult',
+    'GetGatewayBlockVolumesVolumeResult',
+    'GetGatewayCacheDisksDiskResult',
+    'GetGatewayFileSharesShareResult',
+    'GetGatewaySmbUsersUserResult',
     'GetGatewaysGatewayResult',
+    'GetStocksStockResult',
     'GetStorageBundlesBundleResult',
 ]
+
+@pulumi.output_type
+class GetExpressSyncsSyncResult(dict):
+    def __init__(__self__, *,
+                 bucket_name: str,
+                 bucket_prefix: str,
+                 bucket_region: str,
+                 description: str,
+                 express_sync_id: str,
+                 express_sync_name: str,
+                 id: str,
+                 mns_topic: str):
+        """
+        :param str bucket_name: The name of the OSS Bucket.
+        :param str bucket_prefix: The prefix of the OSS Bucket.
+        :param str bucket_region: The region of the OSS Bucket.
+        :param str description: The description of the Express Sync.
+        :param str express_sync_id: The ID of the Express Sync.
+        :param str express_sync_name: The name of the Express Sync.
+        :param str mns_topic: The name of the message topic (Topic) corresponding to the Express Sync in the Alibaba Cloud Message Service MNS.
+        """
+        pulumi.set(__self__, "bucket_name", bucket_name)
+        pulumi.set(__self__, "bucket_prefix", bucket_prefix)
+        pulumi.set(__self__, "bucket_region", bucket_region)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "express_sync_id", express_sync_id)
+        pulumi.set(__self__, "express_sync_name", express_sync_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "mns_topic", mns_topic)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> str:
+        """
+        The name of the OSS Bucket.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @property
+    @pulumi.getter(name="bucketPrefix")
+    def bucket_prefix(self) -> str:
+        """
+        The prefix of the OSS Bucket.
+        """
+        return pulumi.get(self, "bucket_prefix")
+
+    @property
+    @pulumi.getter(name="bucketRegion")
+    def bucket_region(self) -> str:
+        """
+        The region of the OSS Bucket.
+        """
+        return pulumi.get(self, "bucket_region")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the Express Sync.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="expressSyncId")
+    def express_sync_id(self) -> str:
+        """
+        The ID of the Express Sync.
+        """
+        return pulumi.get(self, "express_sync_id")
+
+    @property
+    @pulumi.getter(name="expressSyncName")
+    def express_sync_name(self) -> str:
+        """
+        The name of the Express Sync.
+        """
+        return pulumi.get(self, "express_sync_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="mnsTopic")
+    def mns_topic(self) -> str:
+        """
+        The name of the message topic (Topic) corresponding to the Express Sync in the Alibaba Cloud Message Service MNS.
+        """
+        return pulumi.get(self, "mns_topic")
+
+
+@pulumi.output_type
+class GetGatewayBlockVolumesVolumeResult(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 cache_mode: str,
+                 chap_enabled: bool,
+                 chap_in_user: str,
+                 chunk_size: int,
+                 disk_id: str,
+                 disk_type: str,
+                 enabled: bool,
+                 gateway_block_volume_name: str,
+                 gateway_id: str,
+                 id: str,
+                 index_id: str,
+                 local_path: str,
+                 lun_id: int,
+                 oss_bucket_name: str,
+                 oss_bucket_ssl: bool,
+                 oss_endpoint: str,
+                 port: int,
+                 protocol: str,
+                 size: int,
+                 state: str,
+                 status: int,
+                 target: str,
+                 total_download: int,
+                 total_upload: int,
+                 volume_state: int):
+        """
+        :param str address: The IP ADDRESS.
+        :param str cache_mode: The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+        :param bool chap_enabled: Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
+        :param str chap_in_user: The Inbound CHAP user.**NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
+        :param int chunk_size: The Block volume storage allocation unit.  Valid values: `8192`, `16384`, `32768`, `65536`, `131072`. Default value: `32768`. Unit: `Byte`.
+        :param str disk_id: The cache disk ID.
+        :param str disk_type: The cache disk type.
+        :param bool enabled: Whether to enable Volume.
+        :param str gateway_block_volume_name: The Block volume name.  The name must be 1 to 32 characters in length, and can contain lowercase letters, numbers.
+        :param str gateway_id: The Gateway ID.
+        :param str id: The ID of the Gateway Block Volume. The value formats as `<gateway_id>:<index_id>`.
+        :param str index_id: The ID of the index.
+        :param str local_path: CThe Cache disk to local path. **NOTE:**  When the `cache_mode` is  `Cache` is,The `chap_in_password` is valid.
+        :param int lun_id: The Lun identifier.
+        :param str oss_bucket_name: The name of the OSS Bucket.
+        :param bool oss_bucket_ssl: Whether to enable SSL access your OSS Buckets. Default value: `true`.
+        :param str oss_endpoint: The endpoint of the OSS Bucket.
+        :param int port: The Port.
+        :param str protocol: The Protocol.
+        :param int size: The Volume size.
+        :param str state: The Buffer status.
+        :param int status: The status of volume.
+        :param str target: The target.
+        :param int total_download: The total amount of downloaded data. Unit: `B`.
+        :param int total_upload: The total amount of uploaded data. Unit: `B`.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "cache_mode", cache_mode)
+        pulumi.set(__self__, "chap_enabled", chap_enabled)
+        pulumi.set(__self__, "chap_in_user", chap_in_user)
+        pulumi.set(__self__, "chunk_size", chunk_size)
+        pulumi.set(__self__, "disk_id", disk_id)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "gateway_block_volume_name", gateway_block_volume_name)
+        pulumi.set(__self__, "gateway_id", gateway_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "index_id", index_id)
+        pulumi.set(__self__, "local_path", local_path)
+        pulumi.set(__self__, "lun_id", lun_id)
+        pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
+        pulumi.set(__self__, "oss_bucket_ssl", oss_bucket_ssl)
+        pulumi.set(__self__, "oss_endpoint", oss_endpoint)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "target", target)
+        pulumi.set(__self__, "total_download", total_download)
+        pulumi.set(__self__, "total_upload", total_upload)
+        pulumi.set(__self__, "volume_state", volume_state)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The IP ADDRESS.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="cacheMode")
+    def cache_mode(self) -> str:
+        """
+        The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+        """
+        return pulumi.get(self, "cache_mode")
+
+    @property
+    @pulumi.getter(name="chapEnabled")
+    def chap_enabled(self) -> bool:
+        """
+        Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
+        """
+        return pulumi.get(self, "chap_enabled")
+
+    @property
+    @pulumi.getter(name="chapInUser")
+    def chap_in_user(self) -> str:
+        """
+        The Inbound CHAP user.**NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
+        """
+        return pulumi.get(self, "chap_in_user")
+
+    @property
+    @pulumi.getter(name="chunkSize")
+    def chunk_size(self) -> int:
+        """
+        The Block volume storage allocation unit.  Valid values: `8192`, `16384`, `32768`, `65536`, `131072`. Default value: `32768`. Unit: `Byte`.
+        """
+        return pulumi.get(self, "chunk_size")
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> str:
+        """
+        The cache disk ID.
+        """
+        return pulumi.get(self, "disk_id")
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> str:
+        """
+        The cache disk type.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether to enable Volume.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="gatewayBlockVolumeName")
+    def gateway_block_volume_name(self) -> str:
+        """
+        The Block volume name.  The name must be 1 to 32 characters in length, and can contain lowercase letters, numbers.
+        """
+        return pulumi.get(self, "gateway_block_volume_name")
+
+    @property
+    @pulumi.getter(name="gatewayId")
+    def gateway_id(self) -> str:
+        """
+        The Gateway ID.
+        """
+        return pulumi.get(self, "gateway_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Gateway Block Volume. The value formats as `<gateway_id>:<index_id>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="indexId")
+    def index_id(self) -> str:
+        """
+        The ID of the index.
+        """
+        return pulumi.get(self, "index_id")
+
+    @property
+    @pulumi.getter(name="localPath")
+    def local_path(self) -> str:
+        """
+        CThe Cache disk to local path. **NOTE:**  When the `cache_mode` is  `Cache` is,The `chap_in_password` is valid.
+        """
+        return pulumi.get(self, "local_path")
+
+    @property
+    @pulumi.getter(name="lunId")
+    def lun_id(self) -> int:
+        """
+        The Lun identifier.
+        """
+        return pulumi.get(self, "lun_id")
+
+    @property
+    @pulumi.getter(name="ossBucketName")
+    def oss_bucket_name(self) -> str:
+        """
+        The name of the OSS Bucket.
+        """
+        return pulumi.get(self, "oss_bucket_name")
+
+    @property
+    @pulumi.getter(name="ossBucketSsl")
+    def oss_bucket_ssl(self) -> bool:
+        """
+        Whether to enable SSL access your OSS Buckets. Default value: `true`.
+        """
+        return pulumi.get(self, "oss_bucket_ssl")
+
+    @property
+    @pulumi.getter(name="ossEndpoint")
+    def oss_endpoint(self) -> str:
+        """
+        The endpoint of the OSS Bucket.
+        """
+        return pulumi.get(self, "oss_endpoint")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        The Port.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        The Protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter
+    def size(self) -> int:
+        """
+        The Volume size.
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The Buffer status.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def status(self) -> int:
+        """
+        The status of volume.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def target(self) -> str:
+        """
+        The target.
+        """
+        return pulumi.get(self, "target")
+
+    @property
+    @pulumi.getter(name="totalDownload")
+    def total_download(self) -> int:
+        """
+        The total amount of downloaded data. Unit: `B`.
+        """
+        return pulumi.get(self, "total_download")
+
+    @property
+    @pulumi.getter(name="totalUpload")
+    def total_upload(self) -> int:
+        """
+        The total amount of uploaded data. Unit: `B`.
+        """
+        return pulumi.get(self, "total_upload")
+
+    @property
+    @pulumi.getter(name="volumeState")
+    def volume_state(self) -> int:
+        return pulumi.get(self, "volume_state")
+
+
+@pulumi.output_type
+class GetGatewayCacheDisksDiskResult(dict):
+    def __init__(__self__, *,
+                 cache_disk_category: str,
+                 cache_disk_size_in_gb: int,
+                 cache_id: str,
+                 expired_time: int,
+                 gateway_id: str,
+                 id: str,
+                 iops: int,
+                 is_used: bool,
+                 local_file_path: str,
+                 renew_url: str,
+                 status: int):
+        """
+        :param str cache_disk_category: The category of eht cache disk.
+        :param int cache_disk_size_in_gb: The size of the cache disk.
+        :param str cache_id: The ID of the cache disk.
+        :param int expired_time: The expiration time. Time stamp in seconds (s).
+        :param str gateway_id: The ID of the gateway.
+        :param str id: The ID of the Gateway Cache Disk.
+        :param int iops: Per second of the input output.
+        :param bool is_used: Whether it is used.
+        :param str local_file_path: The cache disk inside the device name.
+        :param str renew_url: A renewal link of the cache disk.
+        :param int status: The status of the resource.
+        """
+        pulumi.set(__self__, "cache_disk_category", cache_disk_category)
+        pulumi.set(__self__, "cache_disk_size_in_gb", cache_disk_size_in_gb)
+        pulumi.set(__self__, "cache_id", cache_id)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "gateway_id", gateway_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "iops", iops)
+        pulumi.set(__self__, "is_used", is_used)
+        pulumi.set(__self__, "local_file_path", local_file_path)
+        pulumi.set(__self__, "renew_url", renew_url)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="cacheDiskCategory")
+    def cache_disk_category(self) -> str:
+        """
+        The category of eht cache disk.
+        """
+        return pulumi.get(self, "cache_disk_category")
+
+    @property
+    @pulumi.getter(name="cacheDiskSizeInGb")
+    def cache_disk_size_in_gb(self) -> int:
+        """
+        The size of the cache disk.
+        """
+        return pulumi.get(self, "cache_disk_size_in_gb")
+
+    @property
+    @pulumi.getter(name="cacheId")
+    def cache_id(self) -> str:
+        """
+        The ID of the cache disk.
+        """
+        return pulumi.get(self, "cache_id")
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> int:
+        """
+        The expiration time. Time stamp in seconds (s).
+        """
+        return pulumi.get(self, "expired_time")
+
+    @property
+    @pulumi.getter(name="gatewayId")
+    def gateway_id(self) -> str:
+        """
+        The ID of the gateway.
+        """
+        return pulumi.get(self, "gateway_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Gateway Cache Disk.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def iops(self) -> int:
+        """
+        Per second of the input output.
+        """
+        return pulumi.get(self, "iops")
+
+    @property
+    @pulumi.getter(name="isUsed")
+    def is_used(self) -> bool:
+        """
+        Whether it is used.
+        """
+        return pulumi.get(self, "is_used")
+
+    @property
+    @pulumi.getter(name="localFilePath")
+    def local_file_path(self) -> str:
+        """
+        The cache disk inside the device name.
+        """
+        return pulumi.get(self, "local_file_path")
+
+    @property
+    @pulumi.getter(name="renewUrl")
+    def renew_url(self) -> str:
+        """
+        A renewal link of the cache disk.
+        """
+        return pulumi.get(self, "renew_url")
+
+    @property
+    @pulumi.getter
+    def status(self) -> int:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetGatewayFileSharesShareResult(dict):
+    def __init__(__self__, *,
+                 access_based_enumeration: bool,
+                 address: str,
+                 backend_limit: int,
+                 browsable: bool,
+                 bucket_infos: str,
+                 buckets_stub: bool,
+                 bypass_cache_read: bool,
+                 cache_mode: str,
+                 client_side_cmk: str,
+                 client_side_encryption: bool,
+                 direct_io: bool,
+                 disk_id: str,
+                 disk_type: str,
+                 download_limit: int,
+                 enabled: bool,
+                 express_sync_id: str,
+                 fast_reclaim: bool,
+                 fe_limit: int,
+                 file_num_limit: str,
+                 fs_size_limit: str,
+                 gateway_file_share_name: str,
+                 gateway_id: str,
+                 id: str,
+                 ignore_delete: bool,
+                 in_place: bool,
+                 in_rate: str,
+                 index_id: str,
+                 kms_rotate_period: int,
+                 lag_period: str,
+                 local_path: str,
+                 mns_health: str,
+                 nfs_v4_optimization: bool,
+                 obsolete_buckets: str,
+                 oss_bucket_name: str,
+                 oss_bucket_ssl: bool,
+                 oss_endpoint: str,
+                 oss_health: str,
+                 oss_used: str,
+                 out_rate: str,
+                 partial_sync_paths: str,
+                 path_prefix: str,
+                 polling_interval: int,
+                 protocol: str,
+                 remaining_meta_space: str,
+                 remote_sync: bool,
+                 remote_sync_download: bool,
+                 ro_client_list: str,
+                 ro_user_list: str,
+                 rw_client_list: str,
+                 rw_user_list: str,
+                 server_side_cmk: str,
+                 server_side_encryption: bool,
+                 size: str,
+                 squash: str,
+                 state: str,
+                 support_archive: bool,
+                 sync_progress: int,
+                 total_download: str,
+                 total_upload: str,
+                 transfer_acceleration: bool,
+                 used: str,
+                 windows_acl: bool):
+        """
+        :param bool access_based_enumeration: The set up gateway file share Server Message Block (SMB) protocol, whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** Gateway version >= 1.0.45 above support.
+        :param str address: Share the private IP address of the RDS instance.
+        :param int backend_limit: The set up gateway file share Max upload speed. Unit: `MB/s`, `0` means unlimited. Value range: `0` ~ `1280`. Default value: `0`. **NOTE:** at the same time if you have to limit the maximum write speed, maximum upload speed is no less than the maximum write speed.
+        :param bool browsable: The set up gateway file share Server Message Block (SMB) protocol whether browsable (that is, in the network neighborhood of whether you can find). The parameters in the NFS protocol not valid under. Default value: `true`.
+        :param str bucket_infos: Multi-Bucket information.
+        :param bool buckets_stub: Whether there are multiple buckets.
+        :param bool bypass_cache_read: Direct reading OSS of the gateway file share.
+        :param str cache_mode: The cache mode of the gateway file share. Value range: Cache: cached mode. Sync: replication mode are available.
+        :param str client_side_cmk: File share is enabled to client-side encryption, the encryption by the use of the KMS key. **NOTE:** note: This KMS key must be the gateway and is in the same Region.
+        :param bool client_side_encryption: Whether to enabled to client-side encryption of the gateway file share. Default value: `false`. **NOTE:** need to contact us open whitelist before you can the settings, and only supports enhanced more than online gateway, at the same time, server-side encryption and to client-side encryption can not simultaneously configuration.
+        :param bool direct_io: Whether directio (direct I/O data transfer) is enabled for file share. Default: `false`.
+        :param str disk_id: The ID of the disk.
+        :param str disk_type: The cache disk type. Valid values: `cloud_efficiency`: Ultra cloud disk. `cloud_ssd`:SSD cloud disk.
+        :param int download_limit: The set up gateway file share maximum download speed. Unit: `MB/s`. `0` means unlimited. Value range: `0` ~ `1280`. **NOTE:** only in copy mode and enable download file data can be set. only when the shared opens the reverse synchronization or acceded to by the speed synchronization Group when, this parameter will not take effect. Gateway version >= 1.3.0 above support.
+        :param bool enabled: Shared whether the changes take effect.
+        :param str express_sync_id: Speed synchronization group ID.
+        :param bool fast_reclaim: The set up gateway file share whether to enable Upload optimization, which is suitable for data pure backup migration scenarios. Default value: `false`. **NOTE:** Gateway version >= 1.0.39 above support.
+        :param int fe_limit: The set up gateway file share and the maximum write speed. Unit: `MB/s`, `0` means unlimited. Value range: `0` ~ `1280`. Default value: `0`.
+        :param str file_num_limit: Supported by the file system file number.
+        :param str fs_size_limit: File system capacity. Unit: `B`.
+        :param str gateway_file_share_name: The name of the file share. Length from `1` to `255` characters can contain lowercase letters, digits, (.), (_) Or (-), at the same time, must start with a lowercase letter.
+        :param str gateway_id: The ID of the gateway.
+        :param str id: The ID of the Gateway File Share.
+        :param bool ignore_delete: Whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** Gateway version >= 1.0.40 above support.
+        :param bool in_place: Whether debris optimization of the gateway file share. Default value: `false`.
+        :param str in_rate: Cache growth. Unit: `B/s`.
+        :param str index_id: The ID of the file share.
+        :param int kms_rotate_period: File share is enabled to client-side encryption, key rotation period of time. Seconds. 0 represents no rotation. Rotation of the value range: `3600` ~ `86400`. Default value: `0`.
+        :param str lag_period: The synchronization delay, I.e. gateway local cache sync to Alibaba Cloud Object Storage Service (oss) of the delay time. Unit: `Seconds`. Value range: `5` ~ `120`. Default value: `5`. **NOTE:** Gateway version >= 1.0.40 above support.
+        :param str local_path: The cache disk inside the device name.
+        :param str mns_health: The messages from the queue health types. Valid values: `TopicAndQueueFailure`: A Message Queuing message theme can be accessed during the black hole period. `TopicFailure`: a message theme can be accessed during the black hole period. `MNSFullSyncInit`: full synchronization wait. `MNSFullSyncing`: full synchronization in progress. `QueueFailure`: a message queue can be accessed during the black hole period. `MNSNotEnabled`: Top speed synchronization is not enabled. `MNSHealthy`: sync fine.
+        :param bool nfs_v4_optimization: The set up gateway file share NFS protocol, whether to enable NFS v4 optimization improve Mount Upload efficiency. Default value: `false`. **NOTE:** turns on after I will not support NFS v3 mount the filesystem on a. Gateway version >= 1.2.0 above support.
+        :param str obsolete_buckets: Multi-Bucket, removing the Bucket.
+        :param str oss_bucket_name: The name of the Bucket.
+        :param bool oss_bucket_ssl: Whether they are using SSL connect to OSS Bucket.
+        :param str oss_endpoint: The set up gateway file share corresponds to the Object Storage SERVICE (OSS), Bucket Endpoint. **NOTE:** distinguish between intranet and internet Endpoint. We recommend that if the OSS Bucket and the gateway is in the same Region is use the RDS intranet IP Endpoint:oss-cn-hangzhou-internal.aliyuncs.com.
+        :param str oss_health: The OSS Bucket of type. Valid values: `BucketHealthy`: OSS connectivity. `BucketAccessDenied`: OBJECT STORAGE Service (OSS) access to an exception. `BucketMiscFailure`: OBJECT STORAGE Service (OSS) access to additional exception. `BucketNetworkFailure`: OBJECT STORAGE Service (OSS) access network an exception. `BucketNotExist`: OSS Bucket does not exist. `Nothing returns`: We may not have ever known existed.
+        :param str oss_used: For a cloud-based data is. Unit: `B`.
+        :param str out_rate: Upload speed. Unit: `B/s`.
+        :param str partial_sync_paths: In part mode, the directory path group JSON format.
+        :param str path_prefix: The prefix of the OSS.
+        :param int polling_interval: The reverse synchronization time intervals of the gateway file share. Value range: `15` ~ `36000`. **NOTE:** in copy mode + reverse synchronization is enabled Download file data, value range: `3600` ~ `36000`.
+        :param str protocol: Share types. Valid values: `SMB`, `NFS`.
+        :param str remaining_meta_space: You can use the metadata space. Unit: `B`.
+        :param bool remote_sync: Whether to enable reverse synchronization of the gateway file share. Default value: `false`.
+        :param bool remote_sync_download: Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the shared opens the reverse synchronization or acceded to by the speed synchronization group, this parameter will not take effect.
+        :param str ro_client_list: The read-only client list. When Protocol NFS is returned when the status is.
+        :param str ro_user_list: The read-only client list. When Protocol for Server Message Block (SMB) to go back to.
+        :param str rw_client_list: Read and write the client list. When Protocol NFS is returned when the status is.
+        :param str rw_user_list: Read-write user list. When Protocol for Server Message Block (SMB) to go back to.
+        :param str server_side_cmk: File share is enabled server-side encryption, encryption used by the KMS key.
+        :param bool server_side_encryption: If the OSS Bucket side encryption.
+        :param str size: The caching capacity. Unit: `B`.
+        :param str squash: The set up gateway file share NFS protocol user mapping. Valid values: `none`, `root_squash`, `all_squash`, `all_anonymous`. Default value: `none`.
+        :param str state: File synchronization types. Valid values: `clean`, `dirty`. `clean`: synchronization is complete. `dirty`: synchronization has not been completed.
+        :param bool support_archive: Whether to support the archive transparent read.
+        :param int sync_progress: Full synchronization progress. When the share has been added for a synchronization group, the return parameters are valid, that shared full synchronization progress (0~100). `-2`: indicates that share the Gateway version does not support this feature. `-1`: the share does not occur full synchronization.
+        :param str total_download: The OSS Bucket to the Gateway total downloads. Unit: `B`.
+        :param str total_upload: The OSS Bucket to the Gateway total Upload amount. Unit: `B`.
+        :param bool transfer_acceleration: The set up gateway file share whether to enable transmission acceleration needs corresponding OSS Bucket enabled transport acceleration. **NOTE:** Gateway version >= 1.3.0 above support.
+        :param str used: Used cache. Unit: `B`.
+        :param bool windows_acl: The set up gateway file share Server Message Block (SMB) protocol, whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `false`. **NOTE:** Gateway version >= 1.0.45 above support.
+        """
+        pulumi.set(__self__, "access_based_enumeration", access_based_enumeration)
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "backend_limit", backend_limit)
+        pulumi.set(__self__, "browsable", browsable)
+        pulumi.set(__self__, "bucket_infos", bucket_infos)
+        pulumi.set(__self__, "buckets_stub", buckets_stub)
+        pulumi.set(__self__, "bypass_cache_read", bypass_cache_read)
+        pulumi.set(__self__, "cache_mode", cache_mode)
+        pulumi.set(__self__, "client_side_cmk", client_side_cmk)
+        pulumi.set(__self__, "client_side_encryption", client_side_encryption)
+        pulumi.set(__self__, "direct_io", direct_io)
+        pulumi.set(__self__, "disk_id", disk_id)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "download_limit", download_limit)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "express_sync_id", express_sync_id)
+        pulumi.set(__self__, "fast_reclaim", fast_reclaim)
+        pulumi.set(__self__, "fe_limit", fe_limit)
+        pulumi.set(__self__, "file_num_limit", file_num_limit)
+        pulumi.set(__self__, "fs_size_limit", fs_size_limit)
+        pulumi.set(__self__, "gateway_file_share_name", gateway_file_share_name)
+        pulumi.set(__self__, "gateway_id", gateway_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ignore_delete", ignore_delete)
+        pulumi.set(__self__, "in_place", in_place)
+        pulumi.set(__self__, "in_rate", in_rate)
+        pulumi.set(__self__, "index_id", index_id)
+        pulumi.set(__self__, "kms_rotate_period", kms_rotate_period)
+        pulumi.set(__self__, "lag_period", lag_period)
+        pulumi.set(__self__, "local_path", local_path)
+        pulumi.set(__self__, "mns_health", mns_health)
+        pulumi.set(__self__, "nfs_v4_optimization", nfs_v4_optimization)
+        pulumi.set(__self__, "obsolete_buckets", obsolete_buckets)
+        pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
+        pulumi.set(__self__, "oss_bucket_ssl", oss_bucket_ssl)
+        pulumi.set(__self__, "oss_endpoint", oss_endpoint)
+        pulumi.set(__self__, "oss_health", oss_health)
+        pulumi.set(__self__, "oss_used", oss_used)
+        pulumi.set(__self__, "out_rate", out_rate)
+        pulumi.set(__self__, "partial_sync_paths", partial_sync_paths)
+        pulumi.set(__self__, "path_prefix", path_prefix)
+        pulumi.set(__self__, "polling_interval", polling_interval)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "remaining_meta_space", remaining_meta_space)
+        pulumi.set(__self__, "remote_sync", remote_sync)
+        pulumi.set(__self__, "remote_sync_download", remote_sync_download)
+        pulumi.set(__self__, "ro_client_list", ro_client_list)
+        pulumi.set(__self__, "ro_user_list", ro_user_list)
+        pulumi.set(__self__, "rw_client_list", rw_client_list)
+        pulumi.set(__self__, "rw_user_list", rw_user_list)
+        pulumi.set(__self__, "server_side_cmk", server_side_cmk)
+        pulumi.set(__self__, "server_side_encryption", server_side_encryption)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "squash", squash)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "support_archive", support_archive)
+        pulumi.set(__self__, "sync_progress", sync_progress)
+        pulumi.set(__self__, "total_download", total_download)
+        pulumi.set(__self__, "total_upload", total_upload)
+        pulumi.set(__self__, "transfer_acceleration", transfer_acceleration)
+        pulumi.set(__self__, "used", used)
+        pulumi.set(__self__, "windows_acl", windows_acl)
+
+    @property
+    @pulumi.getter(name="accessBasedEnumeration")
+    def access_based_enumeration(self) -> bool:
+        """
+        The set up gateway file share Server Message Block (SMB) protocol, whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** Gateway version >= 1.0.45 above support.
+        """
+        return pulumi.get(self, "access_based_enumeration")
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        Share the private IP address of the RDS instance.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="backendLimit")
+    def backend_limit(self) -> int:
+        """
+        The set up gateway file share Max upload speed. Unit: `MB/s`, `0` means unlimited. Value range: `0` ~ `1280`. Default value: `0`. **NOTE:** at the same time if you have to limit the maximum write speed, maximum upload speed is no less than the maximum write speed.
+        """
+        return pulumi.get(self, "backend_limit")
+
+    @property
+    @pulumi.getter
+    def browsable(self) -> bool:
+        """
+        The set up gateway file share Server Message Block (SMB) protocol whether browsable (that is, in the network neighborhood of whether you can find). The parameters in the NFS protocol not valid under. Default value: `true`.
+        """
+        return pulumi.get(self, "browsable")
+
+    @property
+    @pulumi.getter(name="bucketInfos")
+    def bucket_infos(self) -> str:
+        """
+        Multi-Bucket information.
+        """
+        return pulumi.get(self, "bucket_infos")
+
+    @property
+    @pulumi.getter(name="bucketsStub")
+    def buckets_stub(self) -> bool:
+        """
+        Whether there are multiple buckets.
+        """
+        return pulumi.get(self, "buckets_stub")
+
+    @property
+    @pulumi.getter(name="bypassCacheRead")
+    def bypass_cache_read(self) -> bool:
+        """
+        Direct reading OSS of the gateway file share.
+        """
+        return pulumi.get(self, "bypass_cache_read")
+
+    @property
+    @pulumi.getter(name="cacheMode")
+    def cache_mode(self) -> str:
+        """
+        The cache mode of the gateway file share. Value range: Cache: cached mode. Sync: replication mode are available.
+        """
+        return pulumi.get(self, "cache_mode")
+
+    @property
+    @pulumi.getter(name="clientSideCmk")
+    def client_side_cmk(self) -> str:
+        """
+        File share is enabled to client-side encryption, the encryption by the use of the KMS key. **NOTE:** note: This KMS key must be the gateway and is in the same Region.
+        """
+        return pulumi.get(self, "client_side_cmk")
+
+    @property
+    @pulumi.getter(name="clientSideEncryption")
+    def client_side_encryption(self) -> bool:
+        """
+        Whether to enabled to client-side encryption of the gateway file share. Default value: `false`. **NOTE:** need to contact us open whitelist before you can the settings, and only supports enhanced more than online gateway, at the same time, server-side encryption and to client-side encryption can not simultaneously configuration.
+        """
+        return pulumi.get(self, "client_side_encryption")
+
+    @property
+    @pulumi.getter(name="directIo")
+    def direct_io(self) -> bool:
+        """
+        Whether directio (direct I/O data transfer) is enabled for file share. Default: `false`.
+        """
+        return pulumi.get(self, "direct_io")
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> str:
+        """
+        The ID of the disk.
+        """
+        return pulumi.get(self, "disk_id")
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> str:
+        """
+        The cache disk type. Valid values: `cloud_efficiency`: Ultra cloud disk. `cloud_ssd`:SSD cloud disk.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="downloadLimit")
+    def download_limit(self) -> int:
+        """
+        The set up gateway file share maximum download speed. Unit: `MB/s`. `0` means unlimited. Value range: `0` ~ `1280`. **NOTE:** only in copy mode and enable download file data can be set. only when the shared opens the reverse synchronization or acceded to by the speed synchronization Group when, this parameter will not take effect. Gateway version >= 1.3.0 above support.
+        """
+        return pulumi.get(self, "download_limit")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Shared whether the changes take effect.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="expressSyncId")
+    def express_sync_id(self) -> str:
+        """
+        Speed synchronization group ID.
+        """
+        return pulumi.get(self, "express_sync_id")
+
+    @property
+    @pulumi.getter(name="fastReclaim")
+    def fast_reclaim(self) -> bool:
+        """
+        The set up gateway file share whether to enable Upload optimization, which is suitable for data pure backup migration scenarios. Default value: `false`. **NOTE:** Gateway version >= 1.0.39 above support.
+        """
+        return pulumi.get(self, "fast_reclaim")
+
+    @property
+    @pulumi.getter(name="feLimit")
+    def fe_limit(self) -> int:
+        """
+        The set up gateway file share and the maximum write speed. Unit: `MB/s`, `0` means unlimited. Value range: `0` ~ `1280`. Default value: `0`.
+        """
+        return pulumi.get(self, "fe_limit")
+
+    @property
+    @pulumi.getter(name="fileNumLimit")
+    def file_num_limit(self) -> str:
+        """
+        Supported by the file system file number.
+        """
+        return pulumi.get(self, "file_num_limit")
+
+    @property
+    @pulumi.getter(name="fsSizeLimit")
+    def fs_size_limit(self) -> str:
+        """
+        File system capacity. Unit: `B`.
+        """
+        return pulumi.get(self, "fs_size_limit")
+
+    @property
+    @pulumi.getter(name="gatewayFileShareName")
+    def gateway_file_share_name(self) -> str:
+        """
+        The name of the file share. Length from `1` to `255` characters can contain lowercase letters, digits, (.), (_) Or (-), at the same time, must start with a lowercase letter.
+        """
+        return pulumi.get(self, "gateway_file_share_name")
+
+    @property
+    @pulumi.getter(name="gatewayId")
+    def gateway_id(self) -> str:
+        """
+        The ID of the gateway.
+        """
+        return pulumi.get(self, "gateway_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Gateway File Share.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ignoreDelete")
+    def ignore_delete(self) -> bool:
+        """
+        Whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** Gateway version >= 1.0.40 above support.
+        """
+        return pulumi.get(self, "ignore_delete")
+
+    @property
+    @pulumi.getter(name="inPlace")
+    def in_place(self) -> bool:
+        """
+        Whether debris optimization of the gateway file share. Default value: `false`.
+        """
+        return pulumi.get(self, "in_place")
+
+    @property
+    @pulumi.getter(name="inRate")
+    def in_rate(self) -> str:
+        """
+        Cache growth. Unit: `B/s`.
+        """
+        return pulumi.get(self, "in_rate")
+
+    @property
+    @pulumi.getter(name="indexId")
+    def index_id(self) -> str:
+        """
+        The ID of the file share.
+        """
+        return pulumi.get(self, "index_id")
+
+    @property
+    @pulumi.getter(name="kmsRotatePeriod")
+    def kms_rotate_period(self) -> int:
+        """
+        File share is enabled to client-side encryption, key rotation period of time. Seconds. 0 represents no rotation. Rotation of the value range: `3600` ~ `86400`. Default value: `0`.
+        """
+        return pulumi.get(self, "kms_rotate_period")
+
+    @property
+    @pulumi.getter(name="lagPeriod")
+    def lag_period(self) -> str:
+        """
+        The synchronization delay, I.e. gateway local cache sync to Alibaba Cloud Object Storage Service (oss) of the delay time. Unit: `Seconds`. Value range: `5` ~ `120`. Default value: `5`. **NOTE:** Gateway version >= 1.0.40 above support.
+        """
+        return pulumi.get(self, "lag_period")
+
+    @property
+    @pulumi.getter(name="localPath")
+    def local_path(self) -> str:
+        """
+        The cache disk inside the device name.
+        """
+        return pulumi.get(self, "local_path")
+
+    @property
+    @pulumi.getter(name="mnsHealth")
+    def mns_health(self) -> str:
+        """
+        The messages from the queue health types. Valid values: `TopicAndQueueFailure`: A Message Queuing message theme can be accessed during the black hole period. `TopicFailure`: a message theme can be accessed during the black hole period. `MNSFullSyncInit`: full synchronization wait. `MNSFullSyncing`: full synchronization in progress. `QueueFailure`: a message queue can be accessed during the black hole period. `MNSNotEnabled`: Top speed synchronization is not enabled. `MNSHealthy`: sync fine.
+        """
+        return pulumi.get(self, "mns_health")
+
+    @property
+    @pulumi.getter(name="nfsV4Optimization")
+    def nfs_v4_optimization(self) -> bool:
+        """
+        The set up gateway file share NFS protocol, whether to enable NFS v4 optimization improve Mount Upload efficiency. Default value: `false`. **NOTE:** turns on after I will not support NFS v3 mount the filesystem on a. Gateway version >= 1.2.0 above support.
+        """
+        return pulumi.get(self, "nfs_v4_optimization")
+
+    @property
+    @pulumi.getter(name="obsoleteBuckets")
+    def obsolete_buckets(self) -> str:
+        """
+        Multi-Bucket, removing the Bucket.
+        """
+        return pulumi.get(self, "obsolete_buckets")
+
+    @property
+    @pulumi.getter(name="ossBucketName")
+    def oss_bucket_name(self) -> str:
+        """
+        The name of the Bucket.
+        """
+        return pulumi.get(self, "oss_bucket_name")
+
+    @property
+    @pulumi.getter(name="ossBucketSsl")
+    def oss_bucket_ssl(self) -> bool:
+        """
+        Whether they are using SSL connect to OSS Bucket.
+        """
+        return pulumi.get(self, "oss_bucket_ssl")
+
+    @property
+    @pulumi.getter(name="ossEndpoint")
+    def oss_endpoint(self) -> str:
+        """
+        The set up gateway file share corresponds to the Object Storage SERVICE (OSS), Bucket Endpoint. **NOTE:** distinguish between intranet and internet Endpoint. We recommend that if the OSS Bucket and the gateway is in the same Region is use the RDS intranet IP Endpoint:oss-cn-hangzhou-internal.aliyuncs.com.
+        """
+        return pulumi.get(self, "oss_endpoint")
+
+    @property
+    @pulumi.getter(name="ossHealth")
+    def oss_health(self) -> str:
+        """
+        The OSS Bucket of type. Valid values: `BucketHealthy`: OSS connectivity. `BucketAccessDenied`: OBJECT STORAGE Service (OSS) access to an exception. `BucketMiscFailure`: OBJECT STORAGE Service (OSS) access to additional exception. `BucketNetworkFailure`: OBJECT STORAGE Service (OSS) access network an exception. `BucketNotExist`: OSS Bucket does not exist. `Nothing returns`: We may not have ever known existed.
+        """
+        return pulumi.get(self, "oss_health")
+
+    @property
+    @pulumi.getter(name="ossUsed")
+    def oss_used(self) -> str:
+        """
+        For a cloud-based data is. Unit: `B`.
+        """
+        return pulumi.get(self, "oss_used")
+
+    @property
+    @pulumi.getter(name="outRate")
+    def out_rate(self) -> str:
+        """
+        Upload speed. Unit: `B/s`.
+        """
+        return pulumi.get(self, "out_rate")
+
+    @property
+    @pulumi.getter(name="partialSyncPaths")
+    def partial_sync_paths(self) -> str:
+        """
+        In part mode, the directory path group JSON format.
+        """
+        return pulumi.get(self, "partial_sync_paths")
+
+    @property
+    @pulumi.getter(name="pathPrefix")
+    def path_prefix(self) -> str:
+        """
+        The prefix of the OSS.
+        """
+        return pulumi.get(self, "path_prefix")
+
+    @property
+    @pulumi.getter(name="pollingInterval")
+    def polling_interval(self) -> int:
+        """
+        The reverse synchronization time intervals of the gateway file share. Value range: `15` ~ `36000`. **NOTE:** in copy mode + reverse synchronization is enabled Download file data, value range: `3600` ~ `36000`.
+        """
+        return pulumi.get(self, "polling_interval")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        Share types. Valid values: `SMB`, `NFS`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="remainingMetaSpace")
+    def remaining_meta_space(self) -> str:
+        """
+        You can use the metadata space. Unit: `B`.
+        """
+        return pulumi.get(self, "remaining_meta_space")
+
+    @property
+    @pulumi.getter(name="remoteSync")
+    def remote_sync(self) -> bool:
+        """
+        Whether to enable reverse synchronization of the gateway file share. Default value: `false`.
+        """
+        return pulumi.get(self, "remote_sync")
+
+    @property
+    @pulumi.getter(name="remoteSyncDownload")
+    def remote_sync_download(self) -> bool:
+        """
+        Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the shared opens the reverse synchronization or acceded to by the speed synchronization group, this parameter will not take effect.
+        """
+        return pulumi.get(self, "remote_sync_download")
+
+    @property
+    @pulumi.getter(name="roClientList")
+    def ro_client_list(self) -> str:
+        """
+        The read-only client list. When Protocol NFS is returned when the status is.
+        """
+        return pulumi.get(self, "ro_client_list")
+
+    @property
+    @pulumi.getter(name="roUserList")
+    def ro_user_list(self) -> str:
+        """
+        The read-only client list. When Protocol for Server Message Block (SMB) to go back to.
+        """
+        return pulumi.get(self, "ro_user_list")
+
+    @property
+    @pulumi.getter(name="rwClientList")
+    def rw_client_list(self) -> str:
+        """
+        Read and write the client list. When Protocol NFS is returned when the status is.
+        """
+        return pulumi.get(self, "rw_client_list")
+
+    @property
+    @pulumi.getter(name="rwUserList")
+    def rw_user_list(self) -> str:
+        """
+        Read-write user list. When Protocol for Server Message Block (SMB) to go back to.
+        """
+        return pulumi.get(self, "rw_user_list")
+
+    @property
+    @pulumi.getter(name="serverSideCmk")
+    def server_side_cmk(self) -> str:
+        """
+        File share is enabled server-side encryption, encryption used by the KMS key.
+        """
+        return pulumi.get(self, "server_side_cmk")
+
+    @property
+    @pulumi.getter(name="serverSideEncryption")
+    def server_side_encryption(self) -> bool:
+        """
+        If the OSS Bucket side encryption.
+        """
+        return pulumi.get(self, "server_side_encryption")
+
+    @property
+    @pulumi.getter
+    def size(self) -> str:
+        """
+        The caching capacity. Unit: `B`.
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def squash(self) -> str:
+        """
+        The set up gateway file share NFS protocol user mapping. Valid values: `none`, `root_squash`, `all_squash`, `all_anonymous`. Default value: `none`.
+        """
+        return pulumi.get(self, "squash")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        File synchronization types. Valid values: `clean`, `dirty`. `clean`: synchronization is complete. `dirty`: synchronization has not been completed.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="supportArchive")
+    def support_archive(self) -> bool:
+        """
+        Whether to support the archive transparent read.
+        """
+        return pulumi.get(self, "support_archive")
+
+    @property
+    @pulumi.getter(name="syncProgress")
+    def sync_progress(self) -> int:
+        """
+        Full synchronization progress. When the share has been added for a synchronization group, the return parameters are valid, that shared full synchronization progress (0~100). `-2`: indicates that share the Gateway version does not support this feature. `-1`: the share does not occur full synchronization.
+        """
+        return pulumi.get(self, "sync_progress")
+
+    @property
+    @pulumi.getter(name="totalDownload")
+    def total_download(self) -> str:
+        """
+        The OSS Bucket to the Gateway total downloads. Unit: `B`.
+        """
+        return pulumi.get(self, "total_download")
+
+    @property
+    @pulumi.getter(name="totalUpload")
+    def total_upload(self) -> str:
+        """
+        The OSS Bucket to the Gateway total Upload amount. Unit: `B`.
+        """
+        return pulumi.get(self, "total_upload")
+
+    @property
+    @pulumi.getter(name="transferAcceleration")
+    def transfer_acceleration(self) -> bool:
+        """
+        The set up gateway file share whether to enable transmission acceleration needs corresponding OSS Bucket enabled transport acceleration. **NOTE:** Gateway version >= 1.3.0 above support.
+        """
+        return pulumi.get(self, "transfer_acceleration")
+
+    @property
+    @pulumi.getter
+    def used(self) -> str:
+        """
+        Used cache. Unit: `B`.
+        """
+        return pulumi.get(self, "used")
+
+    @property
+    @pulumi.getter(name="windowsAcl")
+    def windows_acl(self) -> bool:
+        """
+        The set up gateway file share Server Message Block (SMB) protocol, whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `false`. **NOTE:** Gateway version >= 1.0.45 above support.
+        """
+        return pulumi.get(self, "windows_acl")
+
+
+@pulumi.output_type
+class GetGatewaySmbUsersUserResult(dict):
+    def __init__(__self__, *,
+                 gateway_id: str,
+                 id: str,
+                 username: str):
+        """
+        :param str gateway_id: The Gateway ID.
+        :param str id: The ID of the Gateway SMB User.
+        :param str username: The username of the Gateway SMB User.
+        """
+        pulumi.set(__self__, "gateway_id", gateway_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="gatewayId")
+    def gateway_id(self) -> str:
+        """
+        The Gateway ID.
+        """
+        return pulumi.get(self, "gateway_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Gateway SMB User.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        The username of the Gateway SMB User.
+        """
+        return pulumi.get(self, "username")
+
 
 @pulumi.output_type
 class GetGatewaysGatewayResult(dict):
@@ -296,6 +1539,35 @@ class GetGatewaysGatewayResult(dict):
         The vswitch id.
         """
         return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
+class GetStocksStockResult(dict):
+    def __init__(__self__, *,
+                 available_gateway_classes: Sequence[str],
+                 zone_id: str):
+        """
+        :param Sequence[str] available_gateway_classes: A list of available gateway class in this Zone ID.
+        :param str zone_id: The Zone ID.
+        """
+        pulumi.set(__self__, "available_gateway_classes", available_gateway_classes)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="availableGatewayClasses")
+    def available_gateway_classes(self) -> Sequence[str]:
+        """
+        A list of available gateway class in this Zone ID.
+        """
+        return pulumi.get(self, "available_gateway_classes")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The Zone ID.
+        """
+        return pulumi.get(self, "zone_id")
 
 
 @pulumi.output_type

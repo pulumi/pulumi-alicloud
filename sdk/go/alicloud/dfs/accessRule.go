@@ -33,7 +33,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		cfg := config.New(ctx, "")
-// 		name := "exmaple_name"
+// 		name := "example_name"
 // 		if param := cfg.Get("name"); param != "" {
 // 			name = param
 // 		}

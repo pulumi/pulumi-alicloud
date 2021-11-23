@@ -232,6 +232,7 @@ type ProviderEndpoint struct {
 	Eais                *string `pulumi:"eais"`
 	Eci                 *string `pulumi:"eci"`
 	Ecs                 *string `pulumi:"ecs"`
+	Edsuser             *string `pulumi:"edsuser"`
 	Ehpc                *string `pulumi:"ehpc"`
 	Eipanycast          *string `pulumi:"eipanycast"`
 	Elasticsearch       *string `pulumi:"elasticsearch"`
@@ -352,6 +353,7 @@ type ProviderEndpointArgs struct {
 	Eais                pulumi.StringPtrInput `pulumi:"eais"`
 	Eci                 pulumi.StringPtrInput `pulumi:"eci"`
 	Ecs                 pulumi.StringPtrInput `pulumi:"ecs"`
+	Edsuser             pulumi.StringPtrInput `pulumi:"edsuser"`
 	Ehpc                pulumi.StringPtrInput `pulumi:"ehpc"`
 	Eipanycast          pulumi.StringPtrInput `pulumi:"eipanycast"`
 	Elasticsearch       pulumi.StringPtrInput `pulumi:"elasticsearch"`
@@ -638,6 +640,10 @@ func (o ProviderEndpointOutput) Eci() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Ecs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ecs }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Edsuser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Edsuser }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Ehpc() pulumi.StringPtrOutput {
@@ -937,7 +943,7 @@ type GetMscSubContactsContact struct {
 	LastMobileVerificationTimeStamp string `pulumi:"lastMobileVerificationTimeStamp"`
 	// The User's Telephone.
 	Mobile string `pulumi:"mobile"`
-	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
+	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
 	Position string `pulumi:"position"`
 }
 
@@ -977,7 +983,7 @@ type GetMscSubContactsContactArgs struct {
 	LastMobileVerificationTimeStamp pulumi.StringInput `pulumi:"lastMobileVerificationTimeStamp"`
 	// The User's Telephone.
 	Mobile pulumi.StringInput `pulumi:"mobile"`
-	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
+	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
 	Position pulumi.StringInput `pulumi:"position"`
 }
 
@@ -1092,7 +1098,7 @@ func (o GetMscSubContactsContactOutput) Mobile() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMscSubContactsContact) string { return v.Mobile }).(pulumi.StringOutput)
 }
 
-// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
+// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
 func (o GetMscSubContactsContactOutput) Position() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMscSubContactsContact) string { return v.Position }).(pulumi.StringOutput)
 }

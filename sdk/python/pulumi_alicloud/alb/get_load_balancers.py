@@ -21,7 +21,7 @@ class GetLoadBalancersResult:
     """
     A collection of values returned by getLoadBalancers.
     """
-    def __init__(__self__, address_type=None, balancers=None, enable_details=None, id=None, ids=None, load_balancer_bussiness_status=None, load_balancer_ids=None, load_balancer_name=None, name_regex=None, names=None, output_file=None, resource_group_id=None, status=None, tags=None, vpc_id=None, vpc_ids=None, zone_id=None):
+    def __init__(__self__, address_type=None, balancers=None, enable_details=None, id=None, ids=None, load_balancer_business_status=None, load_balancer_bussiness_status=None, load_balancer_ids=None, load_balancer_name=None, name_regex=None, names=None, output_file=None, resource_group_id=None, status=None, tags=None, vpc_id=None, vpc_ids=None, zone_id=None):
         if address_type and not isinstance(address_type, str):
             raise TypeError("Expected argument 'address_type' to be a str")
         pulumi.set(__self__, "address_type", address_type)
@@ -37,8 +37,15 @@ class GetLoadBalancersResult:
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
+        if load_balancer_business_status and not isinstance(load_balancer_business_status, str):
+            raise TypeError("Expected argument 'load_balancer_business_status' to be a str")
+        pulumi.set(__self__, "load_balancer_business_status", load_balancer_business_status)
         if load_balancer_bussiness_status and not isinstance(load_balancer_bussiness_status, str):
             raise TypeError("Expected argument 'load_balancer_bussiness_status' to be a str")
+        if load_balancer_bussiness_status is not None:
+            warnings.warn("""Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be remove in the future version. Please use the new attribute 'load_balancer_business_status' instead.""", DeprecationWarning)
+            pulumi.log.warn("""load_balancer_bussiness_status is deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be remove in the future version. Please use the new attribute 'load_balancer_business_status' instead.""")
+
         pulumi.set(__self__, "load_balancer_bussiness_status", load_balancer_bussiness_status)
         if load_balancer_ids and not isinstance(load_balancer_ids, list):
             raise TypeError("Expected argument 'load_balancer_ids' to be a list")
@@ -101,6 +108,11 @@ class GetLoadBalancersResult:
     @pulumi.getter
     def ids(self) -> Sequence[str]:
         return pulumi.get(self, "ids")
+
+    @property
+    @pulumi.getter(name="loadBalancerBusinessStatus")
+    def load_balancer_business_status(self) -> Optional[str]:
+        return pulumi.get(self, "load_balancer_business_status")
 
     @property
     @pulumi.getter(name="loadBalancerBussinessStatus")
@@ -174,6 +186,7 @@ class AwaitableGetLoadBalancersResult(GetLoadBalancersResult):
             enable_details=self.enable_details,
             id=self.id,
             ids=self.ids,
+            load_balancer_business_status=self.load_balancer_business_status,
             load_balancer_bussiness_status=self.load_balancer_bussiness_status,
             load_balancer_ids=self.load_balancer_ids,
             load_balancer_name=self.load_balancer_name,
@@ -191,6 +204,7 @@ class AwaitableGetLoadBalancersResult(GetLoadBalancersResult):
 def get_load_balancers(address_type: Optional[str] = None,
                        enable_details: Optional[bool] = None,
                        ids: Optional[Sequence[str]] = None,
+                       load_balancer_business_status: Optional[str] = None,
                        load_balancer_bussiness_status: Optional[str] = None,
                        load_balancer_ids: Optional[Sequence[str]] = None,
                        load_balancer_name: Optional[str] = None,
@@ -226,7 +240,8 @@ def get_load_balancers(address_type: Optional[str] = None,
     :param str address_type: The type of IP address that the ALB instance uses to provide services.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Load Balancer IDs.
-    :param str load_balancer_bussiness_status: Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.
+    :param str load_balancer_business_status: Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+    :param str load_balancer_bussiness_status: Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
     :param Sequence[str] load_balancer_ids: The load balancer ids.
     :param str load_balancer_name: The name of the resource.
     :param str name_regex: A regex string to filter results by Load Balancer name.
@@ -241,6 +256,7 @@ def get_load_balancers(address_type: Optional[str] = None,
     __args__['addressType'] = address_type
     __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
+    __args__['loadBalancerBusinessStatus'] = load_balancer_business_status
     __args__['loadBalancerBussinessStatus'] = load_balancer_bussiness_status
     __args__['loadBalancerIds'] = load_balancer_ids
     __args__['loadBalancerName'] = load_balancer_name
@@ -264,6 +280,7 @@ def get_load_balancers(address_type: Optional[str] = None,
         enable_details=__ret__.enable_details,
         id=__ret__.id,
         ids=__ret__.ids,
+        load_balancer_business_status=__ret__.load_balancer_business_status,
         load_balancer_bussiness_status=__ret__.load_balancer_bussiness_status,
         load_balancer_ids=__ret__.load_balancer_ids,
         load_balancer_name=__ret__.load_balancer_name,
@@ -282,6 +299,7 @@ def get_load_balancers(address_type: Optional[str] = None,
 def get_load_balancers_output(address_type: Optional[pulumi.Input[Optional[str]]] = None,
                               enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                               ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                              load_balancer_business_status: Optional[pulumi.Input[Optional[str]]] = None,
                               load_balancer_bussiness_status: Optional[pulumi.Input[Optional[str]]] = None,
                               load_balancer_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                               load_balancer_name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -317,7 +335,8 @@ def get_load_balancers_output(address_type: Optional[pulumi.Input[Optional[str]]
     :param str address_type: The type of IP address that the ALB instance uses to provide services.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Load Balancer IDs.
-    :param str load_balancer_bussiness_status: Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.
+    :param str load_balancer_business_status: Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+    :param str load_balancer_bussiness_status: Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
     :param Sequence[str] load_balancer_ids: The load balancer ids.
     :param str load_balancer_name: The name of the resource.
     :param str name_regex: A regex string to filter results by Load Balancer name.

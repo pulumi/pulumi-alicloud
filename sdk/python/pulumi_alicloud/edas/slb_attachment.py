@@ -21,7 +21,7 @@ class SlbAttachmentArgs:
                  vserver_group_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SlbAttachment resource.
-        :param pulumi.Input[str] app_id: The ID of the applicaton to which you want to bind an SLB instance.
+        :param pulumi.Input[str] app_id: The ID of the application to which you want to bind an SLB instance.
         :param pulumi.Input[str] slb_id: The ID of the SLB instance that is going to be bound.
         :param pulumi.Input[str] slb_ip: The IP address that is allocated to the bound SLB instance.
         :param pulumi.Input[str] type: The type of the bound SLB instance.
@@ -41,7 +41,7 @@ class SlbAttachmentArgs:
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Input[str]:
         """
-        The ID of the applicaton to which you want to bind an SLB instance.
+        The ID of the application to which you want to bind an SLB instance.
         """
         return pulumi.get(self, "app_id")
 
@@ -123,11 +123,11 @@ class _SlbAttachmentState:
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SlbAttachment resources.
-        :param pulumi.Input[str] app_id: The ID of the applicaton to which you want to bind an SLB instance.
+        :param pulumi.Input[str] app_id: The ID of the application to which you want to bind an SLB instance.
         :param pulumi.Input[int] listener_port: The listening port for the bound SLB instance.
         :param pulumi.Input[str] slb_id: The ID of the SLB instance that is going to be bound.
         :param pulumi.Input[str] slb_ip: The IP address that is allocated to the bound SLB instance.
-        :param pulumi.Input[str] slb_status: Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and foward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
+        :param pulumi.Input[str] slb_status: Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and forward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
         :param pulumi.Input[str] type: The type of the bound SLB instance.
         :param pulumi.Input[str] vserver_group_id: The ID of the virtual server (VServer) group associated with the intranet SLB instance.
         :param pulumi.Input[str] vswitch_id: VPC related vswitch ID.
@@ -153,7 +153,7 @@ class _SlbAttachmentState:
     @pulumi.getter(name="appId")
     def app_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the applicaton to which you want to bind an SLB instance.
+        The ID of the application to which you want to bind an SLB instance.
         """
         return pulumi.get(self, "app_id")
 
@@ -201,7 +201,7 @@ class _SlbAttachmentState:
     @pulumi.getter(name="slbStatus")
     def slb_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and foward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
+        Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and forward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
         """
         return pulumi.get(self, "slb_status")
 
@@ -282,7 +282,7 @@ class SlbAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] app_id: The ID of the applicaton to which you want to bind an SLB instance.
+        :param pulumi.Input[str] app_id: The ID of the application to which you want to bind an SLB instance.
         :param pulumi.Input[int] listener_port: The listening port for the bound SLB instance.
         :param pulumi.Input[str] slb_id: The ID of the SLB instance that is going to be bound.
         :param pulumi.Input[str] slb_ip: The IP address that is allocated to the bound SLB instance.
@@ -391,11 +391,11 @@ class SlbAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] app_id: The ID of the applicaton to which you want to bind an SLB instance.
+        :param pulumi.Input[str] app_id: The ID of the application to which you want to bind an SLB instance.
         :param pulumi.Input[int] listener_port: The listening port for the bound SLB instance.
         :param pulumi.Input[str] slb_id: The ID of the SLB instance that is going to be bound.
         :param pulumi.Input[str] slb_ip: The IP address that is allocated to the bound SLB instance.
-        :param pulumi.Input[str] slb_status: Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and foward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
+        :param pulumi.Input[str] slb_status: Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and forward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
         :param pulumi.Input[str] type: The type of the bound SLB instance.
         :param pulumi.Input[str] vserver_group_id: The ID of the virtual server (VServer) group associated with the intranet SLB instance.
         :param pulumi.Input[str] vswitch_id: VPC related vswitch ID.
@@ -418,7 +418,7 @@ class SlbAttachment(pulumi.CustomResource):
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Output[str]:
         """
-        The ID of the applicaton to which you want to bind an SLB instance.
+        The ID of the application to which you want to bind an SLB instance.
         """
         return pulumi.get(self, "app_id")
 
@@ -450,7 +450,7 @@ class SlbAttachment(pulumi.CustomResource):
     @pulumi.getter(name="slbStatus")
     def slb_status(self) -> pulumi.Output[str]:
         """
-        Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and foward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
+        Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and forward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
         """
         return pulumi.get(self, "slb_status")
 

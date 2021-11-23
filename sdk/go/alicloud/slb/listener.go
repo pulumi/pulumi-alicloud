@@ -24,7 +24,7 @@ import (
 //
 // ## Listener fields and protocol mapping
 //
-// load balance support 4 protocal to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
+// load balance support 4 protocol to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
 //
 // listener parameter | support protocol | value range |
 // ------------- | ------------- | ------------- |
@@ -111,7 +111,7 @@ type Listener struct {
 	// Domain name used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
 	HealthCheckDomain pulumi.StringPtrOutput `pulumi:"healthCheckDomain"`
 	// Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `healthCheck` is on. Default to `http2xx`.  Valid values are: `http2xx`,  `http3xx`, `http4xx` and `http5xx`.
-	HealthCheckHttpCode pulumi.StringPtrOutput `pulumi:"healthCheckHttpCode"`
+	HealthCheckHttpCode pulumi.StringOutput `pulumi:"healthCheckHttpCode"`
 	// Time interval of health checks. It is required when `healthCheck` is on. Valid value range: [1-50] in seconds. Default to 2.
 	HealthCheckInterval pulumi.IntPtrOutput `pulumi:"healthCheckInterval"`
 	// The method of health check. Valid values: ["head", "get"].
@@ -146,11 +146,11 @@ type Listener struct {
 	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
 	// Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
 	Scheduler pulumi.StringPtrOutput `pulumi:"scheduler"`
-	// SLB Server certificate ID. It is required when `protocol` is `https`.
+	// SLB Server certificate ID. It is required when `protocol` is `https`. The `serverCertificateId` is also required when the value of the `sslCertificateId`  is Empty.
 	ServerCertificateId pulumi.StringOutput `pulumi:"serverCertificateId"`
 	// the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
 	ServerGroupId pulumi.StringPtrOutput `pulumi:"serverGroupId"`
-	// It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
+	// SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
 	//
 	// Deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
 	SslCertificateId pulumi.StringOutput `pulumi:"sslCertificateId"`
@@ -276,11 +276,11 @@ type listenerState struct {
 	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
 	// Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
 	Scheduler *string `pulumi:"scheduler"`
-	// SLB Server certificate ID. It is required when `protocol` is `https`.
+	// SLB Server certificate ID. It is required when `protocol` is `https`. The `serverCertificateId` is also required when the value of the `sslCertificateId`  is Empty.
 	ServerCertificateId *string `pulumi:"serverCertificateId"`
 	// the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
 	ServerGroupId *string `pulumi:"serverGroupId"`
-	// It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
+	// SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
 	//
 	// Deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
 	SslCertificateId *string `pulumi:"sslCertificateId"`
@@ -369,11 +369,11 @@ type ListenerState struct {
 	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
 	// Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
 	Scheduler pulumi.StringPtrInput
-	// SLB Server certificate ID. It is required when `protocol` is `https`.
+	// SLB Server certificate ID. It is required when `protocol` is `https`. The `serverCertificateId` is also required when the value of the `sslCertificateId`  is Empty.
 	ServerCertificateId pulumi.StringPtrInput
 	// the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
 	ServerGroupId pulumi.StringPtrInput
-	// It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
+	// SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
 	//
 	// Deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
 	SslCertificateId pulumi.StringPtrInput
@@ -466,11 +466,11 @@ type listenerArgs struct {
 	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
 	// Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
 	Scheduler *string `pulumi:"scheduler"`
-	// SLB Server certificate ID. It is required when `protocol` is `https`.
+	// SLB Server certificate ID. It is required when `protocol` is `https`. The `serverCertificateId` is also required when the value of the `sslCertificateId`  is Empty.
 	ServerCertificateId *string `pulumi:"serverCertificateId"`
 	// the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
 	ServerGroupId *string `pulumi:"serverGroupId"`
-	// It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
+	// SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
 	//
 	// Deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
 	SslCertificateId *string `pulumi:"sslCertificateId"`
@@ -560,11 +560,11 @@ type ListenerArgs struct {
 	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
 	// Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
 	Scheduler pulumi.StringPtrInput
-	// SLB Server certificate ID. It is required when `protocol` is `https`.
+	// SLB Server certificate ID. It is required when `protocol` is `https`. The `serverCertificateId` is also required when the value of the `sslCertificateId`  is Empty.
 	ServerCertificateId pulumi.StringPtrInput
 	// the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
 	ServerGroupId pulumi.StringPtrInput
-	// It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
+	// SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
 	//
 	// Deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
 	SslCertificateId pulumi.StringPtrInput

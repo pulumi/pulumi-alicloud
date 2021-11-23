@@ -63,6 +63,10 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly forceDelete!: pulumi.Output<boolean | undefined>;
     /**
+     * Hostname of an ECS instance.
+     */
+    public readonly hostName!: pulumi.Output<string | undefined>;
+    /**
      * ID of an image file, indicating the image resource selected when an instance is enabled.
      */
     public readonly imageId!: pulumi.Output<string | undefined>;
@@ -215,6 +219,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             inputs["dataDisks"] = state ? state.dataDisks : undefined;
             inputs["enable"] = state ? state.enable : undefined;
             inputs["forceDelete"] = state ? state.forceDelete : undefined;
+            inputs["hostName"] = state ? state.hostName : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
             inputs["imageName"] = state ? state.imageName : undefined;
             inputs["instanceIds"] = state ? state.instanceIds : undefined;
@@ -257,6 +262,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             inputs["dataDisks"] = args ? args.dataDisks : undefined;
             inputs["enable"] = args ? args.enable : undefined;
             inputs["forceDelete"] = args ? args.forceDelete : undefined;
+            inputs["hostName"] = args ? args.hostName : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
             inputs["imageName"] = args ? args.imageName : undefined;
             inputs["instanceIds"] = args ? args.instanceIds : undefined;
@@ -321,6 +327,10 @@ export interface ScalingConfigurationState {
      * The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
      */
     forceDelete?: pulumi.Input<boolean>;
+    /**
+     * Hostname of an ECS instance.
+     */
+    hostName?: pulumi.Input<string>;
     /**
      * ID of an image file, indicating the image resource selected when an instance is enabled.
      */
@@ -481,6 +491,10 @@ export interface ScalingConfigurationArgs {
      * The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
      */
     forceDelete?: pulumi.Input<boolean>;
+    /**
+     * Hostname of an ECS instance.
+     */
+    hostName?: pulumi.Input<string>;
     /**
      * ID of an image file, indicating the image resource selected when an instance is enabled.
      */

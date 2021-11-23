@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Cdn.Inputs
     public sealed class DomainNewSourceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
+        /// The address of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
         /// </summary>
         [Input("content", required: true)]
         public Input<string> Content { get; set; } = null!;

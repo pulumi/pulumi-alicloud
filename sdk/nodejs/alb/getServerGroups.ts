@@ -53,6 +53,9 @@ export function getServerGroups(args?: GetServerGroupsArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getServerGroups.
  */
 export interface GetServerGroupsArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
     enableDetails?: boolean;
     /**
      * A list of Server Group IDs.
@@ -116,6 +119,9 @@ export function getServerGroupsOutput(args?: GetServerGroupsOutputArgs, opts?: p
  * A collection of arguments for invoking getServerGroups.
  */
 export interface GetServerGroupsOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
     enableDetails?: pulumi.Input<boolean>;
     /**
      * A list of Server Group IDs.

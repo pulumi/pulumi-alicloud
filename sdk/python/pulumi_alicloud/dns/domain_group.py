@@ -18,8 +18,8 @@ class DomainGroupArgs:
                  lang: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DomainGroup resource.
-        :param pulumi.Input[str] domain_group_name: Name of the domain group.
-        :param pulumi.Input[str] group_name: Replaced by `domain_group_name` after version 1.97.0.
+        :param pulumi.Input[str] domain_group_name: The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
+        :param pulumi.Input[str] group_name: The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
         :param pulumi.Input[str] lang: User language.
         """
         if domain_group_name is not None:
@@ -36,7 +36,7 @@ class DomainGroupArgs:
     @pulumi.getter(name="domainGroupName")
     def domain_group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the domain group.
+        The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
         """
         return pulumi.get(self, "domain_group_name")
 
@@ -48,7 +48,7 @@ class DomainGroupArgs:
     @pulumi.getter(name="groupName")
     def group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Replaced by `domain_group_name` after version 1.97.0.
+        The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
         """
         return pulumi.get(self, "group_name")
 
@@ -77,8 +77,8 @@ class _DomainGroupState:
                  lang: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DomainGroup resources.
-        :param pulumi.Input[str] domain_group_name: Name of the domain group.
-        :param pulumi.Input[str] group_name: Replaced by `domain_group_name` after version 1.97.0.
+        :param pulumi.Input[str] domain_group_name: The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
+        :param pulumi.Input[str] group_name: The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
         :param pulumi.Input[str] lang: User language.
         """
         if domain_group_name is not None:
@@ -95,7 +95,7 @@ class _DomainGroupState:
     @pulumi.getter(name="domainGroupName")
     def domain_group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the domain group.
+        The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
         """
         return pulumi.get(self, "domain_group_name")
 
@@ -107,7 +107,7 @@ class _DomainGroupState:
     @pulumi.getter(name="groupName")
     def group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Replaced by `domain_group_name` after version 1.97.0.
+        The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
         """
         return pulumi.get(self, "group_name")
 
@@ -162,8 +162,8 @@ class DomainGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] domain_group_name: Name of the domain group.
-        :param pulumi.Input[str] group_name: Replaced by `domain_group_name` after version 1.97.0.
+        :param pulumi.Input[str] domain_group_name: The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
+        :param pulumi.Input[str] group_name: The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
         :param pulumi.Input[str] lang: User language.
         """
         ...
@@ -251,8 +251,8 @@ class DomainGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] domain_group_name: Name of the domain group.
-        :param pulumi.Input[str] group_name: Replaced by `domain_group_name` after version 1.97.0.
+        :param pulumi.Input[str] domain_group_name: The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
+        :param pulumi.Input[str] group_name: The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
         :param pulumi.Input[str] lang: User language.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -268,7 +268,7 @@ class DomainGroup(pulumi.CustomResource):
     @pulumi.getter(name="domainGroupName")
     def domain_group_name(self) -> pulumi.Output[str]:
         """
-        Name of the domain group.
+        The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
         """
         return pulumi.get(self, "domain_group_name")
 
@@ -276,7 +276,7 @@ class DomainGroup(pulumi.CustomResource):
     @pulumi.getter(name="groupName")
     def group_name(self) -> pulumi.Output[str]:
         """
-        Replaced by `domain_group_name` after version 1.97.0.
+        The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
         """
         return pulumi.get(self, "group_name")
 

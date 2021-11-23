@@ -46,13 +46,13 @@ namespace Pulumi.AliCloud.Dns
     public partial class DomainGroup : Pulumi.CustomResource
     {
         /// <summary>
-        /// Name of the domain group.
+        /// The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
         /// </summary>
         [Output("domainGroupName")]
         public Output<string> DomainGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// Replaced by `domain_group_name` after version 1.97.0.
+        /// The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
         /// </summary>
         [Output("groupName")]
         public Output<string> GroupName { get; private set; } = null!;
@@ -110,13 +110,13 @@ namespace Pulumi.AliCloud.Dns
     public sealed class DomainGroupArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the domain group.
+        /// The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
         /// </summary>
         [Input("domainGroupName")]
         public Input<string>? DomainGroupName { get; set; }
 
         /// <summary>
-        /// Replaced by `domain_group_name` after version 1.97.0.
+        /// The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
         /// </summary>
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }
@@ -135,13 +135,13 @@ namespace Pulumi.AliCloud.Dns
     public sealed class DomainGroupState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the domain group.
+        /// The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
         /// </summary>
         [Input("domainGroupName")]
         public Input<string>? DomainGroupName { get; set; }
 
         /// <summary>
-        /// Replaced by `domain_group_name` after version 1.97.0.
+        /// The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
         /// </summary>
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }

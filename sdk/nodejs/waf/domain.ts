@@ -92,7 +92,7 @@ export class Domain extends pulumi.CustomResource {
      */
     public readonly domain!: pulumi.Output<string>;
     /**
-     * The domain that you want to add to WAF.
+     * The domain that you want to add to WAF. The `domainName` is required when the value of the `domain`  is Empty.
      */
     public readonly domainName!: pulumi.Output<string>;
     /**
@@ -239,7 +239,7 @@ export interface DomainState {
      */
     domain?: pulumi.Input<string>;
     /**
-     * The domain that you want to add to WAF.
+     * The domain that you want to add to WAF. The `domainName` is required when the value of the `domain`  is Empty.
      */
     domainName?: pulumi.Input<string>;
     /**
@@ -318,7 +318,7 @@ export interface DomainArgs {
      */
     domain?: pulumi.Input<string>;
     /**
-     * The domain that you want to add to WAF.
+     * The domain that you want to add to WAF. The `domainName` is required when the value of the `domain`  is Empty.
      */
     domainName?: pulumi.Input<string>;
     /**

@@ -47,7 +47,7 @@ import (
 type SlbAttachment struct {
 	pulumi.CustomResourceState
 
-	// The ID of the applicaton to which you want to bind an SLB instance.
+	// The ID of the application to which you want to bind an SLB instance.
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// The listening port for the bound SLB instance.
 	ListenerPort pulumi.IntPtrOutput `pulumi:"listenerPort"`
@@ -55,7 +55,7 @@ type SlbAttachment struct {
 	SlbId pulumi.StringOutput `pulumi:"slbId"`
 	// The IP address that is allocated to the bound SLB instance.
 	SlbIp pulumi.StringOutput `pulumi:"slbIp"`
-	// Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and foward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
+	// Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and forward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
 	SlbStatus pulumi.StringOutput `pulumi:"slbStatus"`
 	// The type of the bound SLB instance.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -106,7 +106,7 @@ func GetSlbAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SlbAttachment resources.
 type slbAttachmentState struct {
-	// The ID of the applicaton to which you want to bind an SLB instance.
+	// The ID of the application to which you want to bind an SLB instance.
 	AppId *string `pulumi:"appId"`
 	// The listening port for the bound SLB instance.
 	ListenerPort *int `pulumi:"listenerPort"`
@@ -114,7 +114,7 @@ type slbAttachmentState struct {
 	SlbId *string `pulumi:"slbId"`
 	// The IP address that is allocated to the bound SLB instance.
 	SlbIp *string `pulumi:"slbIp"`
-	// Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and foward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
+	// Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and forward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
 	SlbStatus *string `pulumi:"slbStatus"`
 	// The type of the bound SLB instance.
 	Type *string `pulumi:"type"`
@@ -125,7 +125,7 @@ type slbAttachmentState struct {
 }
 
 type SlbAttachmentState struct {
-	// The ID of the applicaton to which you want to bind an SLB instance.
+	// The ID of the application to which you want to bind an SLB instance.
 	AppId pulumi.StringPtrInput
 	// The listening port for the bound SLB instance.
 	ListenerPort pulumi.IntPtrInput
@@ -133,7 +133,7 @@ type SlbAttachmentState struct {
 	SlbId pulumi.StringPtrInput
 	// The IP address that is allocated to the bound SLB instance.
 	SlbIp pulumi.StringPtrInput
-	// Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and foward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
+	// Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and forward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
 	SlbStatus pulumi.StringPtrInput
 	// The type of the bound SLB instance.
 	Type pulumi.StringPtrInput
@@ -148,7 +148,7 @@ func (SlbAttachmentState) ElementType() reflect.Type {
 }
 
 type slbAttachmentArgs struct {
-	// The ID of the applicaton to which you want to bind an SLB instance.
+	// The ID of the application to which you want to bind an SLB instance.
 	AppId string `pulumi:"appId"`
 	// The listening port for the bound SLB instance.
 	ListenerPort *int `pulumi:"listenerPort"`
@@ -164,7 +164,7 @@ type slbAttachmentArgs struct {
 
 // The set of arguments for constructing a SlbAttachment resource.
 type SlbAttachmentArgs struct {
-	// The ID of the applicaton to which you want to bind an SLB instance.
+	// The ID of the application to which you want to bind an SLB instance.
 	AppId pulumi.StringInput
 	// The listening port for the bound SLB instance.
 	ListenerPort pulumi.IntPtrInput

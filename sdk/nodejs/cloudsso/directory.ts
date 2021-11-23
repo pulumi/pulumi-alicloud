@@ -22,8 +22,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.cloudsso.Directory("example", {
- *     directoryName: "example_value",
+ * const defaultDirectory = new alicloud.cloudsso.Directory("default", {
+ *     directoryName: "example-value",
  * });
  * ```
  *

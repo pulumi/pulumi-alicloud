@@ -76,7 +76,7 @@ import * as utilities from "../utilities";
  * ```
  * ## Listener fields and protocol mapping
  *
- * load balance support 4 protocal to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
+ * load balance support 4 protocol to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
  *
  * listener parameter | support protocol | value range |
  * ------------- | ------------- | ------------- |
@@ -227,7 +227,7 @@ export class Listener extends pulumi.CustomResource {
     /**
      * Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `healthCheck` is on. Default to `http2xx`.  Valid values are: `http2xx`,  `http3xx`, `http4xx` and `http5xx`.
      */
-    public readonly healthCheckHttpCode!: pulumi.Output<string | undefined>;
+    public readonly healthCheckHttpCode!: pulumi.Output<string>;
     /**
      * Time interval of health checks. It is required when `healthCheck` is on. Valid value range: [1-50] in seconds. Default to 2.
      */
@@ -295,7 +295,7 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly scheduler!: pulumi.Output<string | undefined>;
     /**
-     * SLB Server certificate ID. It is required when `protocol` is `https`.
+     * SLB Server certificate ID. It is required when `protocol` is `https`. The `serverCertificateId` is also required when the value of the `sslCertificateId`  is Empty.
      */
     public readonly serverCertificateId!: pulumi.Output<string>;
     /**
@@ -303,7 +303,7 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly serverGroupId!: pulumi.Output<string | undefined>;
     /**
-     * It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
+     * SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
      *
      * @deprecated Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
      */
@@ -596,7 +596,7 @@ export interface ListenerState {
      */
     scheduler?: pulumi.Input<string>;
     /**
-     * SLB Server certificate ID. It is required when `protocol` is `https`.
+     * SLB Server certificate ID. It is required when `protocol` is `https`. The `serverCertificateId` is also required when the value of the `sslCertificateId`  is Empty.
      */
     serverCertificateId?: pulumi.Input<string>;
     /**
@@ -604,7 +604,7 @@ export interface ListenerState {
      */
     serverGroupId?: pulumi.Input<string>;
     /**
-     * It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
+     * SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
      *
      * @deprecated Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
      */
@@ -778,7 +778,7 @@ export interface ListenerArgs {
      */
     scheduler?: pulumi.Input<string>;
     /**
-     * SLB Server certificate ID. It is required when `protocol` is `https`.
+     * SLB Server certificate ID. It is required when `protocol` is `https`. The `serverCertificateId` is also required when the value of the `sslCertificateId`  is Empty.
      */
     serverCertificateId?: pulumi.Input<string>;
     /**
@@ -786,7 +786,7 @@ export interface ListenerArgs {
      */
     serverGroupId?: pulumi.Input<string>;
     /**
-     * It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
+     * SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
      *
      * @deprecated Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
      */

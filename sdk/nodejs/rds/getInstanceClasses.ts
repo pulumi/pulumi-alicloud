@@ -85,7 +85,7 @@ export interface GetInstanceClassesArgs {
     outputFile?: string;
     sortedBy?: string;
     /**
-     * It has been deprecated from verison 1.134.0+ and using `dbInstanceStorageType` instead.
+     * It has been deprecated from version 1.134.0+ and using `dbInstanceStorageType` instead.
      */
     storageType?: string;
     /**
@@ -162,7 +162,7 @@ export interface GetInstanceClassesOutputArgs {
     outputFile?: pulumi.Input<string>;
     sortedBy?: pulumi.Input<string>;
     /**
-     * It has been deprecated from verison 1.134.0+ and using `dbInstanceStorageType` instead.
+     * It has been deprecated from version 1.134.0+ and using `dbInstanceStorageType` instead.
      */
     storageType?: pulumi.Input<string>;
     /**

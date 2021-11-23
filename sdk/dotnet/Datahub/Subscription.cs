@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Datahub
         public Output<string> ProjectName { get; private set; } = null!;
 
         /// <summary>
-        /// The identidy of the subscritpion, generate from server side.
+        /// The identidy of the subscription, generate from server side.
         /// </summary>
         [Output("subId")]
         public Output<string> SubId { get; private set; } = null!;
@@ -178,7 +178,7 @@ namespace Pulumi.AliCloud.Datahub
         public Input<string>? ProjectName { get; set; }
 
         /// <summary>
-        /// The identidy of the subscritpion, generate from server side.
+        /// The identidy of the subscription, generate from server side.
         /// </summary>
         [Input("subId")]
         public Input<string>? SubId { get; set; }

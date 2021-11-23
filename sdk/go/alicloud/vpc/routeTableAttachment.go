@@ -13,7 +13,7 @@ import (
 
 // ## Import
 //
-// The route table attachemnt can be imported using the id, e.g.
+// The route table attachment can be imported using the id, e.g.
 //
 // ```sh
 //  $ pulumi import alicloud:vpc/routeTableAttachment:RouteTableAttachment foo vtb-abc123456:vsw-abc123456

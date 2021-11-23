@@ -114,7 +114,7 @@ export class ForwardEntry extends pulumi.CustomResource {
      */
     public readonly internalPort!: pulumi.Output<string>;
     /**
-     * The ip protocal, valid value is tcp|udp|any.
+     * The ip protocol, valid value is tcp|udp|any.
      */
     public readonly ipProtocol!: pulumi.Output<string>;
     /**
@@ -228,7 +228,7 @@ export interface ForwardEntryState {
      */
     internalPort?: pulumi.Input<string>;
     /**
-     * The ip protocal, valid value is tcp|udp|any.
+     * The ip protocol, valid value is tcp|udp|any.
      */
     ipProtocol?: pulumi.Input<string>;
     /**
@@ -276,7 +276,7 @@ export interface ForwardEntryArgs {
      */
     internalPort: pulumi.Input<string>;
     /**
-     * The ip protocal, valid value is tcp|udp|any.
+     * The ip protocol, valid value is tcp|udp|any.
      */
     ipProtocol: pulumi.Input<string>;
     /**

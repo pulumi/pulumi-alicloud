@@ -12,6 +12,7 @@ from .get_event_sources import *
 from .get_rules import *
 from .get_service import *
 from .rule import *
+from .service_linked_role import *
 from .slr import *
 from ._inputs import *
 from . import outputs

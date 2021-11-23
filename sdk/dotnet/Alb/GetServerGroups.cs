@@ -96,6 +96,9 @@ namespace Pulumi.AliCloud.Alb
 
     public sealed class GetServerGroupsArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -171,6 +174,9 @@ namespace Pulumi.AliCloud.Alb
 
     public sealed class GetServerGroupsInvokeArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 

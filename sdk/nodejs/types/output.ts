@@ -54,7 +54,7 @@ export interface GetMscSubContactsContact {
      */
     mobile: string;
     /**
-     * The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
+     * The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
      */
     position: string;
 }
@@ -1170,7 +1170,13 @@ export namespace alb {
          */
         loadBalancerBillingConfigs: outputs.alb.GetLoadBalancersBalancerLoadBalancerBillingConfig[];
         /**
-         * Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.
+         * Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+         */
+        loadBalancerBusinessStatus: string;
+        /**
+         * Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
+         *
+         * @deprecated Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be remove in the future version. Please use the new parameter 'load_balancer_business_status' instead.
          */
         loadBalancerBussinessStatus: string;
         /**
@@ -1246,7 +1252,7 @@ export namespace alb {
 
     export interface GetLoadBalancersBalancerLoadBalancerOperationLock {
         /**
-         * The Locking of the Reasons. In 'loadbalancerbussinessstatus' **Exception When Effective,.
+         * The Locking of the Reasons.
          */
         lockReason: string;
         /**
@@ -1605,6 +1611,7 @@ export namespace alb {
          * The configuration of the sticky session.
          */
         stickySessionConfigs: outputs.alb.GetServerGroupsGroupStickySessionConfig[];
+        tags: {[key: string]: any};
         /**
          * The ID of the VPC that you want to access.
          */
@@ -3925,7 +3932,7 @@ export namespace cdn {
 
     export interface DomainNewSource {
         /**
-         * The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
+         * The address of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
          */
         content: string;
         /**
@@ -6075,6 +6082,455 @@ export namespace cloudsso {
 }
 
 export namespace cloudstoragegateway {
+    export interface GetExpressSyncsSync {
+        /**
+         * The name of the OSS Bucket.
+         */
+        bucketName: string;
+        /**
+         * The prefix of the OSS Bucket.
+         */
+        bucketPrefix: string;
+        /**
+         * The region of the OSS Bucket.
+         */
+        bucketRegion: string;
+        /**
+         * The description of the Express Sync.
+         */
+        description: string;
+        /**
+         * The ID of the Express Sync.
+         */
+        expressSyncId: string;
+        /**
+         * The name of the Express Sync.
+         */
+        expressSyncName: string;
+        id: string;
+        /**
+         * The name of the message topic (Topic) corresponding to the Express Sync in the Alibaba Cloud Message Service MNS.
+         */
+        mnsTopic: string;
+    }
+
+    export interface GetGatewayBlockVolumesVolume {
+        /**
+         * The IP ADDRESS.
+         */
+        address: string;
+        /**
+         * The Block volume set mode to cache mode. Value values: `Cache`, `WriteThrough`.
+         */
+        cacheMode: string;
+        /**
+         * Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
+         */
+        chapEnabled: boolean;
+        /**
+         * The Inbound CHAP user.**NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
+         */
+        chapInUser: string;
+        /**
+         * The Block volume storage allocation unit.  Valid values: `8192`, `16384`, `32768`, `65536`, `131072`. Default value: `32768`. Unit: `Byte`.
+         */
+        chunkSize: number;
+        /**
+         * The cache disk ID.
+         */
+        diskId: string;
+        /**
+         * The cache disk type.
+         */
+        diskType: string;
+        /**
+         * Whether to enable Volume.
+         */
+        enabled: boolean;
+        /**
+         * The Block volume name.  The name must be 1 to 32 characters in length, and can contain lowercase letters, numbers.
+         */
+        gatewayBlockVolumeName: string;
+        /**
+         * The Gateway ID.
+         */
+        gatewayId: string;
+        /**
+         * The ID of the Gateway Block Volume. The value formats as `<gateway_id>:<index_id>`.
+         */
+        id: string;
+        /**
+         * The ID of the index.
+         */
+        indexId: string;
+        /**
+         * CThe Cache disk to local path. **NOTE:**  When the `cacheMode` is  `Cache` is,The `chapInPassword` is valid.
+         */
+        localPath: string;
+        /**
+         * The Lun identifier.
+         */
+        lunId: number;
+        /**
+         * The name of the OSS Bucket.
+         */
+        ossBucketName: string;
+        /**
+         * Whether to enable SSL access your OSS Buckets. Default value: `true`.
+         */
+        ossBucketSsl: boolean;
+        /**
+         * The endpoint of the OSS Bucket.
+         */
+        ossEndpoint: string;
+        /**
+         * The Port.
+         */
+        port: number;
+        /**
+         * The Protocol.
+         */
+        protocol: string;
+        /**
+         * The Volume size.
+         */
+        size: number;
+        /**
+         * The Buffer status.
+         */
+        state: string;
+        /**
+         * The status of volume.
+         */
+        status: number;
+        /**
+         * The target.
+         */
+        target: string;
+        /**
+         * The total amount of downloaded data. Unit: `B`.
+         */
+        totalDownload: number;
+        /**
+         * The total amount of uploaded data. Unit: `B`.
+         */
+        totalUpload: number;
+        volumeState: number;
+    }
+
+    export interface GetGatewayCacheDisksDisk {
+        /**
+         * The category of eht cache disk.
+         */
+        cacheDiskCategory: string;
+        /**
+         * The size of the cache disk.
+         */
+        cacheDiskSizeInGb: number;
+        /**
+         * The ID of the cache disk.
+         */
+        cacheId: string;
+        /**
+         * The expiration time. Time stamp in seconds (s).
+         */
+        expiredTime: number;
+        /**
+         * The ID of the gateway.
+         */
+        gatewayId: string;
+        /**
+         * The ID of the Gateway Cache Disk.
+         */
+        id: string;
+        /**
+         * Per second of the input output.
+         */
+        iops: number;
+        /**
+         * Whether it is used.
+         */
+        isUsed: boolean;
+        /**
+         * The cache disk inside the device name.
+         */
+        localFilePath: string;
+        /**
+         * A renewal link of the cache disk.
+         */
+        renewUrl: string;
+        /**
+         * The status of the resource.
+         */
+        status: number;
+    }
+
+    export interface GetGatewayFileSharesShare {
+        /**
+         * The set up gateway file share Server Message Block (SMB) protocol, whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** Gateway version >= 1.0.45 above support.
+         */
+        accessBasedEnumeration: boolean;
+        /**
+         * Share the private IP address of the RDS instance.
+         */
+        address: string;
+        /**
+         * The set up gateway file share Max upload speed. Unit: `MB/s`, `0` means unlimited. Value range: `0` ~ `1280`. Default value: `0`. **NOTE:** at the same time if you have to limit the maximum write speed, maximum upload speed is no less than the maximum write speed.
+         */
+        backendLimit: number;
+        /**
+         * The set up gateway file share Server Message Block (SMB) protocol whether browsable (that is, in the network neighborhood of whether you can find). The parameters in the NFS protocol not valid under. Default value: `true`.
+         */
+        browsable: boolean;
+        /**
+         * Multi-Bucket information.
+         */
+        bucketInfos: string;
+        /**
+         * Whether there are multiple buckets.
+         */
+        bucketsStub: boolean;
+        /**
+         * Direct reading OSS of the gateway file share.
+         */
+        bypassCacheRead: boolean;
+        /**
+         * The cache mode of the gateway file share. Value range: Cache: cached mode. Sync: replication mode are available.
+         */
+        cacheMode: string;
+        /**
+         * File share is enabled to client-side encryption, the encryption by the use of the KMS key. **NOTE:** note: This KMS key must be the gateway and is in the same Region.
+         */
+        clientSideCmk: string;
+        /**
+         * Whether to enabled to client-side encryption of the gateway file share. Default value: `false`. **NOTE:** need to contact us open whitelist before you can the settings, and only supports enhanced more than online gateway, at the same time, server-side encryption and to client-side encryption can not simultaneously configuration.
+         */
+        clientSideEncryption: boolean;
+        /**
+         * Whether directio (direct I/O data transfer) is enabled for file share. Default: `false`.
+         */
+        directIo: boolean;
+        /**
+         * The ID of the disk.
+         */
+        diskId: string;
+        /**
+         * The cache disk type. Valid values: `cloudEfficiency`: Ultra cloud disk. `cloudSsd`:SSD cloud disk.
+         */
+        diskType: string;
+        /**
+         * The set up gateway file share maximum download speed. Unit: `MB/s`. `0` means unlimited. Value range: `0` ~ `1280`. **NOTE:** only in copy mode and enable download file data can be set. only when the shared opens the reverse synchronization or acceded to by the speed synchronization Group when, this parameter will not take effect. Gateway version >= 1.3.0 above support.
+         */
+        downloadLimit: number;
+        /**
+         * Shared whether the changes take effect.
+         */
+        enabled: boolean;
+        /**
+         * Speed synchronization group ID.
+         */
+        expressSyncId: string;
+        /**
+         * The set up gateway file share whether to enable Upload optimization, which is suitable for data pure backup migration scenarios. Default value: `false`. **NOTE:** Gateway version >= 1.0.39 above support.
+         */
+        fastReclaim: boolean;
+        /**
+         * The set up gateway file share and the maximum write speed. Unit: `MB/s`, `0` means unlimited. Value range: `0` ~ `1280`. Default value: `0`.
+         */
+        feLimit: number;
+        /**
+         * Supported by the file system file number.
+         */
+        fileNumLimit: string;
+        /**
+         * File system capacity. Unit: `B`.
+         */
+        fsSizeLimit: string;
+        /**
+         * The name of the file share. Length from `1` to `255` characters can contain lowercase letters, digits, (.), (_) Or (-), at the same time, must start with a lowercase letter.
+         */
+        gatewayFileShareName: string;
+        /**
+         * The ID of the gateway.
+         */
+        gatewayId: string;
+        /**
+         * The ID of the Gateway File Share.
+         */
+        id: string;
+        /**
+         * Whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** Gateway version >= 1.0.40 above support.
+         */
+        ignoreDelete: boolean;
+        /**
+         * Whether debris optimization of the gateway file share. Default value: `false`.
+         */
+        inPlace: boolean;
+        /**
+         * Cache growth. Unit: `B/s`.
+         */
+        inRate: string;
+        /**
+         * The ID of the file share.
+         */
+        indexId: string;
+        /**
+         * File share is enabled to client-side encryption, key rotation period of time. Seconds. 0 represents no rotation. Rotation of the value range: `3600` ~ `86400`. Default value: `0`.
+         */
+        kmsRotatePeriod: number;
+        /**
+         * The synchronization delay, I.e. gateway local cache sync to Alibaba Cloud Object Storage Service (oss) of the delay time. Unit: `Seconds`. Value range: `5` ~ `120`. Default value: `5`. **NOTE:** Gateway version >= 1.0.40 above support.
+         */
+        lagPeriod: string;
+        /**
+         * The cache disk inside the device name.
+         */
+        localPath: string;
+        /**
+         * The messages from the queue health types. Valid values: `TopicAndQueueFailure`: A Message Queuing message theme can be accessed during the black hole period. `TopicFailure`: a message theme can be accessed during the black hole period. `MNSFullSyncInit`: full synchronization wait. `MNSFullSyncing`: full synchronization in progress. `QueueFailure`: a message queue can be accessed during the black hole period. `MNSNotEnabled`: Top speed synchronization is not enabled. `MNSHealthy`: sync fine.
+         */
+        mnsHealth: string;
+        /**
+         * The set up gateway file share NFS protocol, whether to enable NFS v4 optimization improve Mount Upload efficiency. Default value: `false`. **NOTE:** turns on after I will not support NFS v3 mount the filesystem on a. Gateway version >= 1.2.0 above support.
+         */
+        nfsV4Optimization: boolean;
+        /**
+         * Multi-Bucket, removing the Bucket.
+         */
+        obsoleteBuckets: string;
+        /**
+         * The name of the Bucket.
+         */
+        ossBucketName: string;
+        /**
+         * Whether they are using SSL connect to OSS Bucket.
+         */
+        ossBucketSsl: boolean;
+        /**
+         * The set up gateway file share corresponds to the Object Storage SERVICE (OSS), Bucket Endpoint. **NOTE:** distinguish between intranet and internet Endpoint. We recommend that if the OSS Bucket and the gateway is in the same Region is use the RDS intranet IP Endpoint:oss-cn-hangzhou-internal.aliyuncs.com.
+         */
+        ossEndpoint: string;
+        /**
+         * The OSS Bucket of type. Valid values: `BucketHealthy`: OSS connectivity. `BucketAccessDenied`: OBJECT STORAGE Service (OSS) access to an exception. `BucketMiscFailure`: OBJECT STORAGE Service (OSS) access to additional exception. `BucketNetworkFailure`: OBJECT STORAGE Service (OSS) access network an exception. `BucketNotExist`: OSS Bucket does not exist. `Nothing returns`: We may not have ever known existed.
+         */
+        ossHealth: string;
+        /**
+         * For a cloud-based data is. Unit: `B`.
+         */
+        ossUsed: string;
+        /**
+         * Upload speed. Unit: `B/s`.
+         */
+        outRate: string;
+        /**
+         * In part mode, the directory path group JSON format.
+         */
+        partialSyncPaths: string;
+        /**
+         * The prefix of the OSS.
+         */
+        pathPrefix: string;
+        /**
+         * The reverse synchronization time intervals of the gateway file share. Value range: `15` ~ `36000`. **NOTE:** in copy mode + reverse synchronization is enabled Download file data, value range: `3600` ~ `36000`.
+         */
+        pollingInterval: number;
+        /**
+         * Share types. Valid values: `SMB`, `NFS`.
+         */
+        protocol: string;
+        /**
+         * You can use the metadata space. Unit: `B`.
+         */
+        remainingMetaSpace: string;
+        /**
+         * Whether to enable reverse synchronization of the gateway file share. Default value: `false`.
+         */
+        remoteSync: boolean;
+        /**
+         * Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the shared opens the reverse synchronization or acceded to by the speed synchronization group, this parameter will not take effect.
+         */
+        remoteSyncDownload: boolean;
+        /**
+         * The read-only client list. When Protocol NFS is returned when the status is.
+         */
+        roClientList: string;
+        /**
+         * The read-only client list. When Protocol for Server Message Block (SMB) to go back to.
+         */
+        roUserList: string;
+        /**
+         * Read and write the client list. When Protocol NFS is returned when the status is.
+         */
+        rwClientList: string;
+        /**
+         * Read-write user list. When Protocol for Server Message Block (SMB) to go back to.
+         */
+        rwUserList: string;
+        /**
+         * File share is enabled server-side encryption, encryption used by the KMS key.
+         */
+        serverSideCmk: string;
+        /**
+         * If the OSS Bucket side encryption.
+         */
+        serverSideEncryption: boolean;
+        /**
+         * The caching capacity. Unit: `B`.
+         */
+        size: string;
+        /**
+         * The set up gateway file share NFS protocol user mapping. Valid values: `none`, `rootSquash`, `allSquash`, `allAnonymous`. Default value: `none`.
+         */
+        squash: string;
+        /**
+         * File synchronization types. Valid values: `clean`, `dirty`. `clean`: synchronization is complete. `dirty`: synchronization has not been completed.
+         */
+        state: string;
+        /**
+         * Whether to support the archive transparent read.
+         */
+        supportArchive: boolean;
+        /**
+         * Full synchronization progress. When the share has been added for a synchronization group, the return parameters are valid, that shared full synchronization progress (0~100). `-2`: indicates that share the Gateway version does not support this feature. `-1`: the share does not occur full synchronization.
+         */
+        syncProgress: number;
+        /**
+         * The OSS Bucket to the Gateway total downloads. Unit: `B`.
+         */
+        totalDownload: string;
+        /**
+         * The OSS Bucket to the Gateway total Upload amount. Unit: `B`.
+         */
+        totalUpload: string;
+        /**
+         * The set up gateway file share whether to enable transmission acceleration needs corresponding OSS Bucket enabled transport acceleration. **NOTE:** Gateway version >= 1.3.0 above support.
+         */
+        transferAcceleration: boolean;
+        /**
+         * Used cache. Unit: `B`.
+         */
+        used: string;
+        /**
+         * The set up gateway file share Server Message Block (SMB) protocol, whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `false`. **NOTE:** Gateway version >= 1.0.45 above support.
+         */
+        windowsAcl: boolean;
+    }
+
+    export interface GetGatewaySmbUsersUser {
+        /**
+         * The Gateway ID.
+         */
+        gatewayId: string;
+        /**
+         * The ID of the Gateway SMB User.
+         */
+        id: string;
+        /**
+         * The username of the Gateway SMB User.
+         */
+        username: string;
+    }
+
     export interface GetGatewaysGateway {
         /**
          * gateway .
@@ -6176,6 +6632,17 @@ export namespace cloudstoragegateway {
         vswitchId: string;
     }
 
+    export interface GetStocksStock {
+        /**
+         * A list of available gateway class in this Zone ID.
+         */
+        availableGatewayClasses: string[];
+        /**
+         * The Zone ID.
+         */
+        zoneId: string;
+    }
+
     export interface GetStorageBundlesBundle {
         description: string;
         id: string;
@@ -6242,6 +6709,17 @@ export namespace cms {
          * Critical level alarm retry times. Default to 3.
          */
         times?: number;
+    }
+
+    export interface DynamicTagGroupMatchExpress {
+        /**
+         * The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+         */
+        tagValue: string;
+        /**
+         * Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+         */
+        tagValueMatchFunction: string;
     }
 
     export interface GetAlarmContactGroupsGroup {
@@ -6317,6 +6795,44 @@ export namespace cms {
          */
         id: string;
         lang: string;
+    }
+
+    export interface GetDynamicTagGroupsGroup {
+        /**
+         * The ID of the tag rule.
+         */
+        dynamicTagRuleId: string;
+        /**
+         * The ID of the Dynamic Tag Group.
+         */
+        id: string;
+        /**
+         * The relationship between conditional expressions. Valid values: `and`, `or`.
+         */
+        matchExpressFilterRelation: string;
+        /**
+         * The label generates a matching expression that applies the grouping. See the following `Block matchExpress`.
+         */
+        matchExpresses: outputs.cms.GetDynamicTagGroupsGroupMatchExpress[];
+        /**
+         * The status of the resource. Valid values: `RUNNING`, `FINISH`.
+         */
+        status: string;
+        /**
+         * The tag key of the tag.
+         */
+        tagKey: string;
+    }
+
+    export interface GetDynamicTagGroupsGroupMatchExpress {
+        /**
+         * The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+         */
+        tagValue: string;
+        /**
+         * Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+         */
+        tagValueMatchFunction: string;
     }
 
     export interface GetGroupMetricRulesRule {
@@ -6860,6 +7376,7 @@ export namespace cms {
         city: string;
         isp: string;
     }
+
 }
 
 export namespace config {
@@ -6914,6 +7431,7 @@ export namespace config {
         eais?: string;
         eci?: string;
         ecs?: string;
+        edsuser?: string;
         ehpc?: string;
         eipanycast?: string;
         elasticsearch?: string;
@@ -9165,6 +9683,21 @@ export namespace directmail {
         status: number;
     }
 
+    export interface GetTagsTag {
+        /**
+         * The ID of the tag.
+         */
+        id: string;
+        /**
+         * The ID of the tag.
+         */
+        tagId: string;
+        /**
+         * The name of the tag.
+         */
+        tagName: string;
+    }
+
 }
 
 export namespace dms {
@@ -9491,6 +10024,10 @@ export namespace dns {
          * ID of the record.
          */
         recordId: string;
+        /**
+         * The remark of the domain record.  **NOTE:** Available in 1.144.0+.
+         */
+        remark: string;
         /**
          * Host record of the domain.
          */
@@ -13593,6 +14130,146 @@ export namespace eds {
         type?: string;
     }
 
+    export interface GetBundlesBundle {
+        /**
+         * The bundle id of the bundle.
+         */
+        bundleId: string;
+        /**
+         * The name of the bundle.
+         */
+        bundleName: string;
+        /**
+         * The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
+         */
+        bundleType: string;
+        /**
+         * The description of the bundle.
+         */
+        description: string;
+        /**
+         * The desktop type of the bundle.
+         */
+        desktopType: string;
+        /**
+         * The desktop type attribute of the bundle.
+         */
+        desktopTypeAttributes: outputs.eds.GetBundlesBundleDesktopTypeAttribute[];
+        /**
+         * The disks of the bundle.
+         */
+        disks: outputs.eds.GetBundlesBundleDisk[];
+        /**
+         * The ID of the bundle.
+         */
+        id: string;
+        /**
+         * The image id attribute of the bundle.
+         */
+        imageId: string;
+        /**
+         * The os type attribute of the bundle.
+         */
+        osType: string;
+    }
+
+    export interface GetBundlesBundleDesktopTypeAttribute {
+        /**
+         * The cpu count attribute of the bundle.
+         */
+        cpuCount: number;
+        /**
+         * The gpu count attribute of the bundle.
+         */
+        gpuCount: string;
+        /**
+         * The gpu spec attribute of the bundle.
+         */
+        gpuSpec: string;
+        /**
+         * The memory size attribute of the bundle.
+         */
+        memorySize: string;
+    }
+
+    export interface GetBundlesBundleDisk {
+        /**
+         * The disk size attribute of the bundle.
+         */
+        diskSize: string;
+        /**
+         * The disk type attribute of the bundle.
+         */
+        diskType: string;
+    }
+
+    export interface GetDesktopsDesktop {
+        /**
+         * The number of CPUs.
+         */
+        cpu: number;
+        /**
+         * The creation time of the Desktop.
+         */
+        createTime: string;
+        /**
+         * The desktop id of the Desktop.
+         */
+        desktopId: string;
+        /**
+         * The desktop name of the Desktop.
+         */
+        desktopName: string;
+        /**
+         * The desktop type of the Desktop.
+         */
+        desktopType: string;
+        /**
+         * The directory id of the Desktop.
+         */
+        directoryId: string;
+        /**
+         * The desktop end user id of the Desktop.
+         */
+        endUserIds: string[];
+        /**
+         * The expired time of the Desktop.
+         */
+        expiredTime: string;
+        /**
+         * The ID of the Desktop.
+         */
+        id: string;
+        /**
+         * The image id of the Desktop.
+         */
+        imageId: string;
+        /**
+         * The memory of the Desktop.
+         */
+        memory: string;
+        /**
+         * The network interface id of the Desktop.
+         */
+        networkInterfaceId: string;
+        /**
+         * The payment type of the Desktop.
+         */
+        paymentType: string;
+        /**
+         * The policy group id of the Desktop.
+         */
+        policyGroupId: string;
+        /**
+         * The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+         */
+        status: string;
+        /**
+         * The system disk size of the Desktop.
+         */
+        systemDiskSize: number;
+    }
+
     export interface GetNasFileSystemsSystem {
         /**
          * The capacity of nas file system.
@@ -13658,6 +14335,45 @@ export namespace eds {
          * The zone id of nas file system.
          */
         zoneId: string;
+    }
+
+    export interface GetNetworkPackagesPackage {
+        /**
+         * The bandwidth of package.
+         */
+        bandwidth: number;
+        /**
+         * The creation time of network package.
+         */
+        createTime: string;
+        /**
+         * The expired time of package.
+         */
+        expiredTime: string;
+        /**
+         * The ID of the Network Package.
+         */
+        id: string;
+        /**
+         * The internet charge type  of  package.
+         */
+        internetChargeType: string;
+        /**
+         * The ID of network package.
+         */
+        networkPackageId: string;
+        /**
+         * The ID of office site.
+         */
+        officeSiteId: string;
+        /**
+         * The name of office site.
+         */
+        officeSiteName: string;
+        /**
+         * The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
+         */
+        status: string;
     }
 
     export interface GetPolicyGroupsGroup {
@@ -13779,7 +14495,9 @@ export namespace eds {
 
     export interface GetSimpleOfficeSitesSite {
         /**
-         * The Internet Bandwidth Peak.  Valid Values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+         * The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
+         *
+         * @deprecated Field 'bandwidth' has been deprecated from provider version 1.142.0.
          */
         bandwidth: number;
         /**
@@ -13836,6 +14554,8 @@ export namespace eds {
         enableCrossDesktopAccess: boolean;
         /**
          * Whether the Open Internet Access Function.
+         *
+         * @deprecated Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
          */
         enableInternetAccess: boolean;
         /**
@@ -13898,6 +14618,29 @@ export namespace eds {
          * The vswitch ids.
          */
         vswitchIds: string[];
+    }
+
+    export interface GetUsersUser {
+        /**
+         * The email of the user email.
+         */
+        email: string;
+        /**
+         * The Username. The custom setting is composed of lowercase letters, numbers and underscores, and the length is 3~24 characters.
+         */
+        endUserId: string;
+        /**
+         * The ID of the user id.
+         */
+        id: string;
+        /**
+         * The phone of the mobile phone number.
+         */
+        phone: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
     }
 
 }
@@ -14376,6 +15119,10 @@ export namespace ess {
          */
         dataDisks: outputs.ess.GetScalingConfigurationsConfigurationDataDisk[];
         /**
+         * (Optional,Available in 1.143.0+) Hostname of an ECS instance.
+         */
+        hostName: string;
+        /**
          * ID of the scaling rule.
          */
         id: string;
@@ -14383,6 +15130,10 @@ export namespace ess {
          * Image ID of the scaling configuration.
          */
         imageId: string;
+        /**
+         * (Optional,Available in 1.143.0+) InstanceName of an ECS instance.
+         */
+        instanceName: string;
         /**
          * Instance type of the scaling configuration.
          */
@@ -15127,7 +15878,7 @@ export namespace fc {
          */
         path: string;
         /**
-         * The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about verison and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
+         * The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about version and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
          */
         qualifier?: string;
         serviceName: string;
@@ -16105,6 +16856,29 @@ export namespace ga {
 }
 
 export namespace gpdb {
+    export interface GetAccountsAccount {
+        /**
+         * The description of the account.
+         */
+        accountDescription: string;
+        /**
+         * The name of the account.
+         */
+        accountName: string;
+        /**
+         * The ID of the instance.
+         */
+        dbInstanceId: string;
+        /**
+         * The ID of the Account. Its value is same as Queue Name.
+         */
+        id: string;
+        /**
+         * The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+         */
+        status: string;
+    }
+
     export interface GetInstancesInstance {
         /**
          * Instance availability zone.
@@ -17059,6 +17833,99 @@ export namespace hbr {
         vaultId: string;
     }
 
+    export interface GetServerBackupPlansFilter {
+        /**
+         * The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
+         */
+        key?: string;
+        /**
+         * Set of values that are accepted for the given field.
+         */
+        values?: string[];
+    }
+
+    export interface GetServerBackupPlansPlan {
+        /**
+         * The creation time of backup plan.
+         */
+        createTime: string;
+        /**
+         * ECS server backup plan details.
+         */
+        details: outputs.hbr.GetServerBackupPlansPlanDetail[];
+        /**
+         * Whether to disable the backup task. Valid values: `true`, `false`.
+         */
+        disabled: boolean;
+        /**
+         * The ID of the server backup plan.
+         */
+        ecsServerBackupPlanId: string;
+        /**
+         * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+         */
+        ecsServerBackupPlanName: string;
+        /**
+         * The ID of the server backup plan.
+         */
+        id: string;
+        /**
+         * The ID of ECS Instance.
+         */
+        instanceId: string;
+        /**
+         * Backup retention days, the minimum is 1.
+         */
+        retention: string;
+        /**
+         * Backup strategy.
+         */
+        schedule: string;
+    }
+
+    export interface GetServerBackupPlansPlanDetail {
+        /**
+         * Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
+         */
+        appConsistent: boolean;
+        /**
+         * Only vaild when DoCopy is true. The destination region ID when replicating to another region. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+         */
+        destinationRegionId: string;
+        /**
+         * Only vaild when DoCopy is true. The retention days of the destination backup. When not specified, the destination backup will be saved permanently. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+         */
+        destinationRetention: number;
+        /**
+         * The list of cloud disks to be backed up in the ECS instance. When not specified, a snapshot is executed for all the disks on the ECS instance.
+         */
+        diskIdLists: string[];
+        /**
+         * Whether replicate to another region. Valid values: `true`, `false`.
+         */
+        doCopy: boolean;
+        /**
+         * Only the Linux system is valid. Whether to use the Linux FsFreeze mechanism to ensure that the file system is read-only consistent before creating a storage snapshot. The default is True. Valid values: `true`, `false`.
+         */
+        enableFsFreeze: boolean;
+        /**
+         * Only vaild for the linux system when AppConsistent is true. The application thaw script path (e.g. /tmp/postscript.sh). The postscript.sh script must meet the following conditions: in terms of permissions, only the root user as the owner has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+         */
+        postScriptPath: string;
+        /**
+         * Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+         */
+        preScriptPath: string;
+        /**
+         * Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
+         */
+        snapshotGroup: boolean;
+        /**
+         * Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
+         */
+        timeoutInSeconds: number;
+    }
+
     export interface GetSnapshotsSnapshot {
         /**
          * The actual data volume of the snapshot. Unit byte.
@@ -17267,6 +18134,48 @@ export namespace hbr {
         vaultType: string;
     }
 
+    export interface ServerBackupPlanDetail {
+        /**
+         * Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
+         */
+        appConsistent: boolean;
+        /**
+         * Only vaild when DoCopy is true. The destination region ID when replicating to another region. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+         */
+        destinationRegionId?: string;
+        /**
+         * Only vaild when DoCopy is true. The retention days of the destination backup. When not specified, the destination backup will be saved permanently. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+         */
+        destinationRetention?: number;
+        /**
+         * The list of cloud disks to be backed up in the ECS instance. When not specified, a snapshot is executed for all the disks on the ECS instance.
+         */
+        diskIdLists?: string[];
+        /**
+         * Whether replicate to another region. Valid values: `true`, `false`.
+         */
+        doCopy?: boolean;
+        /**
+         * Only the Linux system is valid. Whether to use the Linux FsFreeze mechanism to ensure that the file system is read-only consistent before creating a storage snapshot. The default is True. Valid values: `true`, `false`.
+         */
+        enableFsFreeze?: boolean;
+        /**
+         * Only vaild for the linux system when AppConsistent is true. The application thaw script path (e.g. /tmp/postscript.sh). The postscript.sh script must meet the following conditions: in terms of permissions, only the root user as the owner has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+         */
+        postScriptPath?: string;
+        /**
+         * Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+         */
+        preScriptPath?: string;
+        /**
+         * Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
+         */
+        snapshotGroup: boolean;
+        /**
+         * Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
+         */
+        timeoutInSeconds?: number;
+    }
 }
 
 export namespace imm {
@@ -18189,22 +19098,22 @@ export namespace log {
          */
         encryptType?: string;
         /**
-         * User bring your own key (BYOK) encryption.[Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm?spm=a2c63.p38356.b99.673.cafa2b38qBskFV)
+         * User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
          */
         userCmkInfo?: outputs.log.StoreEncryptConfUserCmkInfo;
     }
 
     export interface StoreEncryptConfUserCmkInfo {
         /**
-         * role arn
+         * role arn.
          */
         arn: string;
         /**
-         * User master key id
+         * User master key id.
          */
         cmkKeyId: string;
         /**
-         * Region id where the  user master key id is located
+         * Region id where the  user master key id is located.
          */
         regionId: string;
     }
@@ -19490,6 +20399,9 @@ export namespace oss {
          * Specifies the number of days noncurrent object versions transition.
          */
         days?: number;
+        /**
+         * On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
+         */
         expiredObjectDeleteMarker?: boolean;
     }
 
@@ -20583,6 +21495,132 @@ export namespace privatelink {
 }
 
 export namespace pvtz {
+    export interface EndpointIpConfig {
+        /**
+         * The Subnet mask.
+         */
+        cidrBlock: string;
+        /**
+         * The IP address within the parameter range of the subnet mask.  It is recommended to use the IP address assigned by the system.
+         */
+        ip: string;
+        /**
+         * The Vswitch id.
+         */
+        vswitchId: string;
+        /**
+         * The Zone ID.
+         */
+        zoneId: string;
+    }
+
+    export interface GetEndpointsEndpoint {
+        /**
+         * The creation time of the resource.
+         */
+        createTime: string;
+        /**
+         * The name of the resource.
+         */
+        endpointName: string;
+        id: string;
+        /**
+         * The Ip Configs.
+         */
+        ipConfigs: outputs.pvtz.GetEndpointsEndpointIpConfig[];
+        /**
+         * The ID of the Security Group.
+         */
+        securityGroupId: string;
+        /**
+         * The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
+         */
+        status: string;
+        /**
+         * The VPC ID.
+         */
+        vpcId: string;
+        /**
+         * The name of the VPC.
+         */
+        vpcName: string;
+        /**
+         * The Region of the VPC.
+         */
+        vpcRegionId: string;
+    }
+
+    export interface GetEndpointsEndpointIpConfig {
+        /**
+         * The Subnet mask.
+         */
+        cidrBlock: string;
+        /**
+         * The IP address within the parameter range of the subnet mask. **NOTE:** It is recommended to use the IP address assigned by the system.
+         */
+        ip: string;
+        /**
+         * The Vswitch id.
+         */
+        vswitchId: string;
+        /**
+         * The Zone ID.
+         */
+        zoneId: string;
+    }
+
+    export interface GetResolverZonesZone {
+        /**
+         * The status of the Zone.
+         */
+        status: string;
+        /**
+         * The zone ID.
+         */
+        zoneId: string;
+    }
+
+    export interface GetRulesRule {
+        /**
+         * The creation time of the resource.
+         */
+        createTime: string;
+        /**
+         * The ID of the Endpoint.
+         */
+        endpointId: string;
+        /**
+         * The Name of the Endpoint.
+         */
+        endpointName: string;
+        forwardIps: outputs.pvtz.GetRulesRuleForwardIp[];
+        /**
+         * The ID of the Rule.
+         */
+        id: string;
+        /**
+         * The first ID of the resource.
+         */
+        ruleId: string;
+        /**
+         * The name of the resource.
+         */
+        ruleName: string;
+        /**
+         * The type of the rule.
+         */
+        type: string;
+        /**
+         * The name of the forwarding zone.
+         */
+        zoneName: string;
+    }
+
+    export interface GetRulesRuleForwardIp {
+        ip: string;
+        port: number;
+    }
+
     export interface GetZoneRecordsRecord {
         /**
          * ID of the Private Zone Record.
@@ -20699,6 +21737,28 @@ export namespace pvtz {
          */
         vpcId: string;
         vpcName: string;
+    }
+
+    export interface RuleAttachmentVpc {
+        /**
+         * The region of the vpc. If not set, the current region will instead of.
+         */
+        regionId: string;
+        /**
+         * The ID of the VPC.  **NOTE:** The VPC that can be associated with the forwarding rule must belong to the same region as the Endpoint.
+         */
+        vpcId: string;
+    }
+
+    export interface RuleForwardIp {
+        /**
+         * The ip of the forwarding destination.
+         */
+        ip: string;
+        /**
+         * The port of the forwarding destination.
+         */
+        port: number;
     }
 
     export interface ZoneAttachmentVpc {
@@ -23830,6 +24890,103 @@ export namespace simpleapplicationserver {
         status: string;
     }
 
+    export interface GetServerCustomImagesImage {
+        /**
+         * The first ID of the resource.
+         */
+        customImageId: string;
+        /**
+         * The name of the resource.
+         */
+        customImageName: string;
+        /**
+         * Image description information.
+         */
+        description: string;
+        /**
+         * The ID of the Custom Image.
+         */
+        id: string;
+        /**
+         * The type of operating system used by the Mirror. Valid values: `Linux`, `Windows`.
+         */
+        platform: string;
+    }
+
+    export interface GetServerDisksDisk {
+        /**
+         * Disk type. Possible values: `ESSD`, `SSD`.
+         */
+        category: string;
+        /**
+         * The time when the disk was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+         */
+        createTime: string;
+        /**
+         * The device name of the disk on the simple application server.
+         */
+        device: string;
+        /**
+         * The first ID of the resource.
+         */
+        diskId: string;
+        /**
+         * The name of the resource.
+         */
+        diskName: string;
+        /**
+         * The type of the disk. Possible values: `System`, `Data`.
+         */
+        diskType: string;
+        /**
+         * The ID of the Disk.
+         */
+        id: string;
+        /**
+         * Alibaba Cloud simple application server instance ID.
+         */
+        instanceId: string;
+        /**
+         * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
+         */
+        paymentType: string;
+        /**
+         * The size of the disk. Unit: `GB`.
+         */
+        size: number;
+        /**
+         * The status of the disk. Valid values: `ReIniting`, `Creating`, `In_Use`, `Available`, `Attaching`, `Detaching`.
+         */
+        status: string;
+    }
+
+    export interface GetServerFirewallRulesRule {
+        /**
+         * The ID of the firewall rule.
+         */
+        firewallRuleId: string;
+        /**
+         * The ID of the Firewall Rule. The value formats as `<instance_id>:<firewall_rule_id>`.
+         */
+        id: string;
+        /**
+         * Alibaba Cloud simple application server instance ID.
+         */
+        instanceId: string;
+        /**
+         * The port range of the firewall rule.
+         */
+        port: string;
+        /**
+         * The remarks of the firewall rule.
+         */
+        remark: string;
+        /**
+         * The transport layer protocol. Valid values: `Tcp`, `Udp`, `TcpAndUdp`.
+         */
+        ruleProtocol: string;
+    }
+
     export interface GetServerPlansPlan {
         /**
          * The peak bandwidth. Unit: Mbit/s.
@@ -23859,6 +25016,45 @@ export namespace simpleapplicationserver {
          * The ID of the Instance Plan.
          */
         planId: string;
+    }
+
+    export interface GetServerSnapshotsSnapshot {
+        /**
+         * The time when the snapshot was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+         */
+        createTime: string;
+        /**
+         * The ID of the source disk. This parameter has a value even after the source disk is released.
+         */
+        diskId: string;
+        /**
+         * The ID of the Snapshot.
+         */
+        id: string;
+        /**
+         * The progress of snapshot creation.
+         */
+        progress: string;
+        /**
+         * The remarks of the snapshot.
+         */
+        remark: string;
+        /**
+         * The ID of the snapshot.
+         */
+        snapshotId: string;
+        /**
+         * The name of the snapshot.
+         */
+        snapshotName: string;
+        /**
+         * A snapshot of the source of a disk type. Possible values: `System`, `Data`.
+         */
+        sourceDiskType: string;
+        /**
+         * The status of the snapshots. Valid values: `Progressing`, `Accomplished` and `Failed`.
+         */
+        status: string;
     }
 
 }
@@ -25277,6 +26473,174 @@ export namespace vpc {
         vswitchId: string;
     }
 
+    export interface GetIpv6AddressesAddress {
+        /**
+         * The ID of the instance that is assigned the IPv6 address.
+         */
+        associatedInstanceId: string;
+        /**
+         * The type of the instance that is assigned the IPv6 address.
+         */
+        associatedInstanceType: string;
+        /**
+         * The time when the IPv6 address was created.
+         */
+        createTime: string;
+        /**
+         * The ID of the Ipv6 Address.
+         */
+        id: string;
+        /**
+         * The address of the Ipv6 Address.
+         */
+        ipv6Address: string;
+        /**
+         * The ID of the IPv6 address.
+         */
+        ipv6AddressId: string;
+        /**
+         * The name of the IPv6 address.
+         */
+        ipv6AddressName: string;
+        /**
+         * The ID of the IPv6 gateway to which the IPv6 address belongs.
+         */
+        ipv6GatewayId: string;
+        /**
+         * The type of communication supported by the IPv6 address. Valid values:`Private` or `Public`. `Private`: communication within the private network. `Public`: communication over the public network
+         */
+        networkType: string;
+        /**
+         * The status of the IPv6 address. Valid values:`Pending` or `Available`.
+         */
+        status: string;
+        /**
+         * The ID of the VPC to which the IPv6 address belongs.
+         */
+        vpcId: string;
+        /**
+         * The ID of the vSwitch to which the IPv6 address belongs.
+         */
+        vswitchId: string;
+    }
+
+    export interface GetIpv6EgressRulesRule {
+        /**
+         * The description of the egress-only rule.
+         */
+        description: string;
+        /**
+         * The ID of the Ipv6 Egress Rule. The value formats as `<ipv6_gateway_id>:<ipv6_egress_rule_id>`.
+         */
+        id: string;
+        /**
+         * The ID of the instance to which the egress-only rule is applied.
+         */
+        instanceId: string;
+        /**
+         * The type of the instance to which the egress-only rule is applied.
+         */
+        instanceType: string;
+        /**
+         * The first ID of the resource.
+         */
+        ipv6EgressRuleId: string;
+        /**
+         * The name of the resource.
+         */
+        ipv6EgressRuleName: string;
+        /**
+         * The ID of the IPv6 gateway.
+         */
+        ipv6GatewayId: string;
+        /**
+         * The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+         */
+        status: string;
+    }
+
+    export interface GetIpv6GatewaysGateway {
+        /**
+         * The status of the IPv6 gateway. Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`. `Normal`: working as expected. `FinancialLocked`: locked due to overdue payments. `SecurityLocked`: locked due to security reasons.
+         */
+        businessStatus: string;
+        /**
+         * The creation time of the resource.
+         */
+        createTime: string;
+        /**
+         * The description of the IPv6 gateway.
+         */
+        description: string;
+        /**
+         * The time when the IPv6 gateway expires.
+         */
+        expiredTime: string;
+        /**
+         * The ID of the Ipv6 Gateway.
+         */
+        id: string;
+        /**
+         * The metering method of the IPv6 gateway. Valid values: `PayAsYouGo`.
+         */
+        instanceChargeType: string;
+        /**
+         * The first ID of the resource.
+         */
+        ipv6GatewayId: string;
+        /**
+         * The name of the IPv6 gateway.
+         */
+        ipv6GatewayName: string;
+        /**
+         * The specification of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+         */
+        spec: string;
+        /**
+         * The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.
+         */
+        status: string;
+        /**
+         * The ID of the virtual private cloud (VPC) to which the IPv6 gateway belongs.
+         */
+        vpcId: string;
+    }
+
+    export interface GetIpv6InternetBandwidthsBandwidth {
+        /**
+         * The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`.
+         */
+        bandwidth: number;
+        /**
+         * The ID of the Ipv6 Internet Bandwidth.
+         */
+        id: string;
+        /**
+         * The metering method of the Internet bandwidth resources of the IPv6 gateway.
+         */
+        internetChargeType: string;
+        /**
+         * The ID of the IPv6 address.
+         */
+        ipv6AddressId: string;
+        /**
+         * The ID of the IPv6 gateway.
+         */
+        ipv6GatewayId: string;
+        /**
+         * The ID of the Ipv6 Internet Bandwidth.
+         */
+        ipv6InternetBandwidthId: string;
+        /**
+         * The payment type of the resource.
+         */
+        paymentType: string;
+        /**
+         * The status of the resource. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
+         */
+        status: string;
+    }
+
     export interface GetNatGatewaysGateway {
         /**
          * The state of the NAT gateway.
@@ -26084,6 +27448,65 @@ export namespace vpc {
         trafficMirrorFilterName: string;
     }
 
+    export interface GetTrafficMirrorSessionsSession {
+        /**
+         * Indicates whether traffic mirror sessions are enabled. default to `false`.
+         */
+        enabled: boolean;
+        /**
+         * The ID of the Traffic Mirror Session.
+         */
+        id: string;
+        /**
+         * The maximum transmission unit (MTU).
+         */
+        packetLength: number;
+        /**
+         * The priority of the traffic mirror session. A smaller value indicates a higher priority.
+         */
+        priority: number;
+        /**
+         * The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
+         */
+        status: string;
+        /**
+         * The ID of the filter.
+         */
+        trafficMirrorFilterId: string;
+        /**
+         * The state of the traffic mirror session. Valid values: `Normal` or `FinancialLocked`. `Normal`: working as expected. `FinancialLocked`: locked due to overdue payments.
+         */
+        trafficMirrorSessionBusinessStatus: string;
+        /**
+         * The description of the traffic mirror session.
+         */
+        trafficMirrorSessionDescription: string;
+        /**
+         * The first ID of the resource.
+         */
+        trafficMirrorSessionId: string;
+        /**
+         * The name of the traffic mirror session.
+         */
+        trafficMirrorSessionName: string;
+        /**
+         * The ID of the mirror source.
+         */
+        trafficMirrorSourceIds: string[];
+        /**
+         * The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
+         */
+        trafficMirrorTargetId: string;
+        /**
+         * The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance
+         */
+        trafficMirrorTargetType: string;
+        /**
+         * You can specify VNIs to distinguish different mirrored traffic.
+         */
+        virtualNetworkId: number;
+    }
+
     export interface GetVpcFlowLogsLog {
         /**
          * The Description of flow log.
@@ -26264,6 +27687,7 @@ export namespace vpc {
          */
         resourceType?: string;
     }
+
 }
 
 export namespace vpn {

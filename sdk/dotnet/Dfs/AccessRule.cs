@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Dfs
     ///     public MyStack()
     ///     {
     ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "exmaple_name";
+    ///         var name = config.Get("name") ?? "example_name";
     ///         var defaultAccessGroup = new AliCloud.Dfs.AccessGroup("defaultAccessGroup", new AliCloud.Dfs.AccessGroupArgs
     ///         {
     ///             NetworkType = "VPC",

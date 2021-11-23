@@ -60,16 +60,34 @@ import * as utilities from "../utilities";
  *     systemDiskCategory: "cloud_efficiency",
  *     vswitchId: defaultSwitch.id,
  * });
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const defaultServerGroup = new alicloud.alb.ServerGroup("defaultServerGroup", {
  *     protocol: "HTTP",
- *     vpcId: alicloud_vpc.vpcs[0].id,
+ *     vpcId: defaultNetwork.id,
  *     serverGroupName: name,
- *     resourceGroupId: data.alicloud_resource_manager_resource_groups["default"].groups[0].id,
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?[0]?.id),
  *     healthCheckConfig: {
- *         healthCheckEnabled: "false",
+ *         healthCheckConnectPort: "46325",
+ *         healthCheckEnabled: true,
+ *         healthCheckHost: "tf-testAcc.com",
+ *         healthCheckCodes: [
+ *             "http_2xx",
+ *             "http_3xx",
+ *             "http_4xx",
+ *         ],
+ *         healthCheckHttpVersion: "HTTP1.1",
+ *         healthCheckInterval: "2",
+ *         healthCheckMethod: "HEAD",
+ *         healthCheckPath: "/tf-testAcc",
+ *         healthCheckProtocol: "HTTP",
+ *         healthCheckTimeout: 5,
+ *         healthyThreshold: 3,
+ *         unhealthyThreshold: 3,
  *     },
  *     stickySessionConfig: {
- *         stickySessionEnabled: "false",
+ *         stickySessionEnabled: true,
+ *         cookie: "tf-testAcc",
+ *         stickySessionType: "Server",
  *     },
  *     tags: {
  *         Created: "TF",

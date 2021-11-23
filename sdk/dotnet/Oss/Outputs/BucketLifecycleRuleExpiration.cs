@@ -25,6 +25,9 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// Specifies the number of days noncurrent object versions transition.
         /// </summary>
         public readonly int? Days;
+        /// <summary>
+        /// On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
+        /// </summary>
         public readonly bool? ExpiredObjectDeleteMarker;
 
         [OutputConstructor]

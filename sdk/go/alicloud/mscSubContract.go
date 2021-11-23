@@ -53,13 +53,13 @@ import (
 type MscSubContract struct {
 	pulumi.CustomResourceState
 
-	// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length, and can contain uppercase and lowercase letters.
+	// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
 	ContactName pulumi.StringOutput `pulumi:"contactName"`
 	// The User's Contact Email Address.
 	Email pulumi.StringOutput `pulumi:"email"`
 	// The User's Telephone.
 	Mobile pulumi.StringOutput `pulumi:"mobile"`
-	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
+	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
 	Position pulumi.StringOutput `pulumi:"position"`
 }
 
@@ -104,24 +104,24 @@ func GetMscSubContract(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MscSubContract resources.
 type mscSubContractState struct {
-	// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length, and can contain uppercase and lowercase letters.
+	// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
 	ContactName *string `pulumi:"contactName"`
 	// The User's Contact Email Address.
 	Email *string `pulumi:"email"`
 	// The User's Telephone.
 	Mobile *string `pulumi:"mobile"`
-	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
+	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
 	Position *string `pulumi:"position"`
 }
 
 type MscSubContractState struct {
-	// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length, and can contain uppercase and lowercase letters.
+	// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
 	ContactName pulumi.StringPtrInput
 	// The User's Contact Email Address.
 	Email pulumi.StringPtrInput
 	// The User's Telephone.
 	Mobile pulumi.StringPtrInput
-	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
+	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
 	Position pulumi.StringPtrInput
 }
 
@@ -130,25 +130,25 @@ func (MscSubContractState) ElementType() reflect.Type {
 }
 
 type mscSubContractArgs struct {
-	// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length, and can contain uppercase and lowercase letters.
+	// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
 	ContactName string `pulumi:"contactName"`
 	// The User's Contact Email Address.
 	Email string `pulumi:"email"`
 	// The User's Telephone.
 	Mobile string `pulumi:"mobile"`
-	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
+	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
 	Position string `pulumi:"position"`
 }
 
 // The set of arguments for constructing a MscSubContract resource.
 type MscSubContractArgs struct {
-	// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length, and can contain uppercase and lowercase letters.
+	// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
 	ContactName pulumi.StringInput
 	// The User's Contact Email Address.
 	Email pulumi.StringInput
 	// The User's Telephone.
 	Mobile pulumi.StringInput
-	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
+	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
 	Position pulumi.StringInput
 }
 

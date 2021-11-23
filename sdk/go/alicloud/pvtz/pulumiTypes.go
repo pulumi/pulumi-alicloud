@@ -10,6 +10,342 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type EndpointIpConfig struct {
+	// The Subnet mask.
+	CidrBlock string `pulumi:"cidrBlock"`
+	// The IP address within the parameter range of the subnet mask.  It is recommended to use the IP address assigned by the system.
+	Ip *string `pulumi:"ip"`
+	// The Vswitch id.
+	VswitchId string `pulumi:"vswitchId"`
+	// The Zone ID.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// EndpointIpConfigInput is an input type that accepts EndpointIpConfigArgs and EndpointIpConfigOutput values.
+// You can construct a concrete instance of `EndpointIpConfigInput` via:
+//
+//          EndpointIpConfigArgs{...}
+type EndpointIpConfigInput interface {
+	pulumi.Input
+
+	ToEndpointIpConfigOutput() EndpointIpConfigOutput
+	ToEndpointIpConfigOutputWithContext(context.Context) EndpointIpConfigOutput
+}
+
+type EndpointIpConfigArgs struct {
+	// The Subnet mask.
+	CidrBlock pulumi.StringInput `pulumi:"cidrBlock"`
+	// The IP address within the parameter range of the subnet mask.  It is recommended to use the IP address assigned by the system.
+	Ip pulumi.StringPtrInput `pulumi:"ip"`
+	// The Vswitch id.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// The Zone ID.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (EndpointIpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointIpConfig)(nil)).Elem()
+}
+
+func (i EndpointIpConfigArgs) ToEndpointIpConfigOutput() EndpointIpConfigOutput {
+	return i.ToEndpointIpConfigOutputWithContext(context.Background())
+}
+
+func (i EndpointIpConfigArgs) ToEndpointIpConfigOutputWithContext(ctx context.Context) EndpointIpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointIpConfigOutput)
+}
+
+// EndpointIpConfigArrayInput is an input type that accepts EndpointIpConfigArray and EndpointIpConfigArrayOutput values.
+// You can construct a concrete instance of `EndpointIpConfigArrayInput` via:
+//
+//          EndpointIpConfigArray{ EndpointIpConfigArgs{...} }
+type EndpointIpConfigArrayInput interface {
+	pulumi.Input
+
+	ToEndpointIpConfigArrayOutput() EndpointIpConfigArrayOutput
+	ToEndpointIpConfigArrayOutputWithContext(context.Context) EndpointIpConfigArrayOutput
+}
+
+type EndpointIpConfigArray []EndpointIpConfigInput
+
+func (EndpointIpConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointIpConfig)(nil)).Elem()
+}
+
+func (i EndpointIpConfigArray) ToEndpointIpConfigArrayOutput() EndpointIpConfigArrayOutput {
+	return i.ToEndpointIpConfigArrayOutputWithContext(context.Background())
+}
+
+func (i EndpointIpConfigArray) ToEndpointIpConfigArrayOutputWithContext(ctx context.Context) EndpointIpConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointIpConfigArrayOutput)
+}
+
+type EndpointIpConfigOutput struct{ *pulumi.OutputState }
+
+func (EndpointIpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointIpConfig)(nil)).Elem()
+}
+
+func (o EndpointIpConfigOutput) ToEndpointIpConfigOutput() EndpointIpConfigOutput {
+	return o
+}
+
+func (o EndpointIpConfigOutput) ToEndpointIpConfigOutputWithContext(ctx context.Context) EndpointIpConfigOutput {
+	return o
+}
+
+// The Subnet mask.
+func (o EndpointIpConfigOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointIpConfig) string { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+// The IP address within the parameter range of the subnet mask.  It is recommended to use the IP address assigned by the system.
+func (o EndpointIpConfigOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointIpConfig) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+// The Vswitch id.
+func (o EndpointIpConfigOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointIpConfig) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The Zone ID.
+func (o EndpointIpConfigOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointIpConfig) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type EndpointIpConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (EndpointIpConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointIpConfig)(nil)).Elem()
+}
+
+func (o EndpointIpConfigArrayOutput) ToEndpointIpConfigArrayOutput() EndpointIpConfigArrayOutput {
+	return o
+}
+
+func (o EndpointIpConfigArrayOutput) ToEndpointIpConfigArrayOutputWithContext(ctx context.Context) EndpointIpConfigArrayOutput {
+	return o
+}
+
+func (o EndpointIpConfigArrayOutput) Index(i pulumi.IntInput) EndpointIpConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointIpConfig {
+		return vs[0].([]EndpointIpConfig)[vs[1].(int)]
+	}).(EndpointIpConfigOutput)
+}
+
+type RuleAttachmentVpc struct {
+	// The region of the vpc. If not set, the current region will instead of.
+	RegionId string `pulumi:"regionId"`
+	// The ID of the VPC.  **NOTE:** The VPC that can be associated with the forwarding rule must belong to the same region as the Endpoint.
+	VpcId string `pulumi:"vpcId"`
+}
+
+// RuleAttachmentVpcInput is an input type that accepts RuleAttachmentVpcArgs and RuleAttachmentVpcOutput values.
+// You can construct a concrete instance of `RuleAttachmentVpcInput` via:
+//
+//          RuleAttachmentVpcArgs{...}
+type RuleAttachmentVpcInput interface {
+	pulumi.Input
+
+	ToRuleAttachmentVpcOutput() RuleAttachmentVpcOutput
+	ToRuleAttachmentVpcOutputWithContext(context.Context) RuleAttachmentVpcOutput
+}
+
+type RuleAttachmentVpcArgs struct {
+	// The region of the vpc. If not set, the current region will instead of.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The ID of the VPC.  **NOTE:** The VPC that can be associated with the forwarding rule must belong to the same region as the Endpoint.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+}
+
+func (RuleAttachmentVpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleAttachmentVpc)(nil)).Elem()
+}
+
+func (i RuleAttachmentVpcArgs) ToRuleAttachmentVpcOutput() RuleAttachmentVpcOutput {
+	return i.ToRuleAttachmentVpcOutputWithContext(context.Background())
+}
+
+func (i RuleAttachmentVpcArgs) ToRuleAttachmentVpcOutputWithContext(ctx context.Context) RuleAttachmentVpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleAttachmentVpcOutput)
+}
+
+// RuleAttachmentVpcArrayInput is an input type that accepts RuleAttachmentVpcArray and RuleAttachmentVpcArrayOutput values.
+// You can construct a concrete instance of `RuleAttachmentVpcArrayInput` via:
+//
+//          RuleAttachmentVpcArray{ RuleAttachmentVpcArgs{...} }
+type RuleAttachmentVpcArrayInput interface {
+	pulumi.Input
+
+	ToRuleAttachmentVpcArrayOutput() RuleAttachmentVpcArrayOutput
+	ToRuleAttachmentVpcArrayOutputWithContext(context.Context) RuleAttachmentVpcArrayOutput
+}
+
+type RuleAttachmentVpcArray []RuleAttachmentVpcInput
+
+func (RuleAttachmentVpcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleAttachmentVpc)(nil)).Elem()
+}
+
+func (i RuleAttachmentVpcArray) ToRuleAttachmentVpcArrayOutput() RuleAttachmentVpcArrayOutput {
+	return i.ToRuleAttachmentVpcArrayOutputWithContext(context.Background())
+}
+
+func (i RuleAttachmentVpcArray) ToRuleAttachmentVpcArrayOutputWithContext(ctx context.Context) RuleAttachmentVpcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleAttachmentVpcArrayOutput)
+}
+
+type RuleAttachmentVpcOutput struct{ *pulumi.OutputState }
+
+func (RuleAttachmentVpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleAttachmentVpc)(nil)).Elem()
+}
+
+func (o RuleAttachmentVpcOutput) ToRuleAttachmentVpcOutput() RuleAttachmentVpcOutput {
+	return o
+}
+
+func (o RuleAttachmentVpcOutput) ToRuleAttachmentVpcOutputWithContext(ctx context.Context) RuleAttachmentVpcOutput {
+	return o
+}
+
+// The region of the vpc. If not set, the current region will instead of.
+func (o RuleAttachmentVpcOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleAttachmentVpc) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC.  **NOTE:** The VPC that can be associated with the forwarding rule must belong to the same region as the Endpoint.
+func (o RuleAttachmentVpcOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleAttachmentVpc) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+type RuleAttachmentVpcArrayOutput struct{ *pulumi.OutputState }
+
+func (RuleAttachmentVpcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleAttachmentVpc)(nil)).Elem()
+}
+
+func (o RuleAttachmentVpcArrayOutput) ToRuleAttachmentVpcArrayOutput() RuleAttachmentVpcArrayOutput {
+	return o
+}
+
+func (o RuleAttachmentVpcArrayOutput) ToRuleAttachmentVpcArrayOutputWithContext(ctx context.Context) RuleAttachmentVpcArrayOutput {
+	return o
+}
+
+func (o RuleAttachmentVpcArrayOutput) Index(i pulumi.IntInput) RuleAttachmentVpcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleAttachmentVpc {
+		return vs[0].([]RuleAttachmentVpc)[vs[1].(int)]
+	}).(RuleAttachmentVpcOutput)
+}
+
+type RuleForwardIp struct {
+	// The ip of the forwarding destination.
+	Ip string `pulumi:"ip"`
+	// The port of the forwarding destination.
+	Port int `pulumi:"port"`
+}
+
+// RuleForwardIpInput is an input type that accepts RuleForwardIpArgs and RuleForwardIpOutput values.
+// You can construct a concrete instance of `RuleForwardIpInput` via:
+//
+//          RuleForwardIpArgs{...}
+type RuleForwardIpInput interface {
+	pulumi.Input
+
+	ToRuleForwardIpOutput() RuleForwardIpOutput
+	ToRuleForwardIpOutputWithContext(context.Context) RuleForwardIpOutput
+}
+
+type RuleForwardIpArgs struct {
+	// The ip of the forwarding destination.
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// The port of the forwarding destination.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (RuleForwardIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleForwardIp)(nil)).Elem()
+}
+
+func (i RuleForwardIpArgs) ToRuleForwardIpOutput() RuleForwardIpOutput {
+	return i.ToRuleForwardIpOutputWithContext(context.Background())
+}
+
+func (i RuleForwardIpArgs) ToRuleForwardIpOutputWithContext(ctx context.Context) RuleForwardIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleForwardIpOutput)
+}
+
+// RuleForwardIpArrayInput is an input type that accepts RuleForwardIpArray and RuleForwardIpArrayOutput values.
+// You can construct a concrete instance of `RuleForwardIpArrayInput` via:
+//
+//          RuleForwardIpArray{ RuleForwardIpArgs{...} }
+type RuleForwardIpArrayInput interface {
+	pulumi.Input
+
+	ToRuleForwardIpArrayOutput() RuleForwardIpArrayOutput
+	ToRuleForwardIpArrayOutputWithContext(context.Context) RuleForwardIpArrayOutput
+}
+
+type RuleForwardIpArray []RuleForwardIpInput
+
+func (RuleForwardIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleForwardIp)(nil)).Elem()
+}
+
+func (i RuleForwardIpArray) ToRuleForwardIpArrayOutput() RuleForwardIpArrayOutput {
+	return i.ToRuleForwardIpArrayOutputWithContext(context.Background())
+}
+
+func (i RuleForwardIpArray) ToRuleForwardIpArrayOutputWithContext(ctx context.Context) RuleForwardIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleForwardIpArrayOutput)
+}
+
+type RuleForwardIpOutput struct{ *pulumi.OutputState }
+
+func (RuleForwardIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleForwardIp)(nil)).Elem()
+}
+
+func (o RuleForwardIpOutput) ToRuleForwardIpOutput() RuleForwardIpOutput {
+	return o
+}
+
+func (o RuleForwardIpOutput) ToRuleForwardIpOutputWithContext(ctx context.Context) RuleForwardIpOutput {
+	return o
+}
+
+// The ip of the forwarding destination.
+func (o RuleForwardIpOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleForwardIp) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// The port of the forwarding destination.
+func (o RuleForwardIpOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v RuleForwardIp) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type RuleForwardIpArrayOutput struct{ *pulumi.OutputState }
+
+func (RuleForwardIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleForwardIp)(nil)).Elem()
+}
+
+func (o RuleForwardIpArrayOutput) ToRuleForwardIpArrayOutput() RuleForwardIpArrayOutput {
+	return o
+}
+
+func (o RuleForwardIpArrayOutput) ToRuleForwardIpArrayOutputWithContext(ctx context.Context) RuleForwardIpArrayOutput {
+	return o
+}
+
+func (o RuleForwardIpArrayOutput) Index(i pulumi.IntInput) RuleForwardIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleForwardIp {
+		return vs[0].([]RuleForwardIp)[vs[1].(int)]
+	}).(RuleForwardIpOutput)
+}
+
 type ZoneAttachmentVpc struct {
 	// The region of the vpc. If not set, the current region will instead of.
 	RegionId *string `pulumi:"regionId"`
@@ -114,6 +450,668 @@ func (o ZoneAttachmentVpcArrayOutput) Index(i pulumi.IntInput) ZoneAttachmentVpc
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZoneAttachmentVpc {
 		return vs[0].([]ZoneAttachmentVpc)[vs[1].(int)]
 	}).(ZoneAttachmentVpcOutput)
+}
+
+type GetEndpointsEndpoint struct {
+	// The creation time of the resource.
+	CreateTime string `pulumi:"createTime"`
+	// The name of the resource.
+	EndpointName string `pulumi:"endpointName"`
+	Id           string `pulumi:"id"`
+	// The Ip Configs.
+	IpConfigs []GetEndpointsEndpointIpConfig `pulumi:"ipConfigs"`
+	// The ID of the Security Group.
+	SecurityGroupId string `pulumi:"securityGroupId"`
+	// The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
+	Status string `pulumi:"status"`
+	// The VPC ID.
+	VpcId string `pulumi:"vpcId"`
+	// The name of the VPC.
+	VpcName string `pulumi:"vpcName"`
+	// The Region of the VPC.
+	VpcRegionId string `pulumi:"vpcRegionId"`
+}
+
+// GetEndpointsEndpointInput is an input type that accepts GetEndpointsEndpointArgs and GetEndpointsEndpointOutput values.
+// You can construct a concrete instance of `GetEndpointsEndpointInput` via:
+//
+//          GetEndpointsEndpointArgs{...}
+type GetEndpointsEndpointInput interface {
+	pulumi.Input
+
+	ToGetEndpointsEndpointOutput() GetEndpointsEndpointOutput
+	ToGetEndpointsEndpointOutputWithContext(context.Context) GetEndpointsEndpointOutput
+}
+
+type GetEndpointsEndpointArgs struct {
+	// The creation time of the resource.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The name of the resource.
+	EndpointName pulumi.StringInput `pulumi:"endpointName"`
+	Id           pulumi.StringInput `pulumi:"id"`
+	// The Ip Configs.
+	IpConfigs GetEndpointsEndpointIpConfigArrayInput `pulumi:"ipConfigs"`
+	// The ID of the Security Group.
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	// The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The VPC ID.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The name of the VPC.
+	VpcName pulumi.StringInput `pulumi:"vpcName"`
+	// The Region of the VPC.
+	VpcRegionId pulumi.StringInput `pulumi:"vpcRegionId"`
+}
+
+func (GetEndpointsEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointsEndpoint)(nil)).Elem()
+}
+
+func (i GetEndpointsEndpointArgs) ToGetEndpointsEndpointOutput() GetEndpointsEndpointOutput {
+	return i.ToGetEndpointsEndpointOutputWithContext(context.Background())
+}
+
+func (i GetEndpointsEndpointArgs) ToGetEndpointsEndpointOutputWithContext(ctx context.Context) GetEndpointsEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEndpointsEndpointOutput)
+}
+
+// GetEndpointsEndpointArrayInput is an input type that accepts GetEndpointsEndpointArray and GetEndpointsEndpointArrayOutput values.
+// You can construct a concrete instance of `GetEndpointsEndpointArrayInput` via:
+//
+//          GetEndpointsEndpointArray{ GetEndpointsEndpointArgs{...} }
+type GetEndpointsEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetEndpointsEndpointArrayOutput() GetEndpointsEndpointArrayOutput
+	ToGetEndpointsEndpointArrayOutputWithContext(context.Context) GetEndpointsEndpointArrayOutput
+}
+
+type GetEndpointsEndpointArray []GetEndpointsEndpointInput
+
+func (GetEndpointsEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEndpointsEndpoint)(nil)).Elem()
+}
+
+func (i GetEndpointsEndpointArray) ToGetEndpointsEndpointArrayOutput() GetEndpointsEndpointArrayOutput {
+	return i.ToGetEndpointsEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetEndpointsEndpointArray) ToGetEndpointsEndpointArrayOutputWithContext(ctx context.Context) GetEndpointsEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEndpointsEndpointArrayOutput)
+}
+
+type GetEndpointsEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetEndpointsEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointsEndpoint)(nil)).Elem()
+}
+
+func (o GetEndpointsEndpointOutput) ToGetEndpointsEndpointOutput() GetEndpointsEndpointOutput {
+	return o
+}
+
+func (o GetEndpointsEndpointOutput) ToGetEndpointsEndpointOutputWithContext(ctx context.Context) GetEndpointsEndpointOutput {
+	return o
+}
+
+// The creation time of the resource.
+func (o GetEndpointsEndpointOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointsEndpoint) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The name of the resource.
+func (o GetEndpointsEndpointOutput) EndpointName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointsEndpoint) string { return v.EndpointName }).(pulumi.StringOutput)
+}
+
+func (o GetEndpointsEndpointOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointsEndpoint) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Ip Configs.
+func (o GetEndpointsEndpointOutput) IpConfigs() GetEndpointsEndpointIpConfigArrayOutput {
+	return o.ApplyT(func(v GetEndpointsEndpoint) []GetEndpointsEndpointIpConfig { return v.IpConfigs }).(GetEndpointsEndpointIpConfigArrayOutput)
+}
+
+// The ID of the Security Group.
+func (o GetEndpointsEndpointOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointsEndpoint) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
+func (o GetEndpointsEndpointOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointsEndpoint) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The VPC ID.
+func (o GetEndpointsEndpointOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointsEndpoint) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The name of the VPC.
+func (o GetEndpointsEndpointOutput) VpcName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointsEndpoint) string { return v.VpcName }).(pulumi.StringOutput)
+}
+
+// The Region of the VPC.
+func (o GetEndpointsEndpointOutput) VpcRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointsEndpoint) string { return v.VpcRegionId }).(pulumi.StringOutput)
+}
+
+type GetEndpointsEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEndpointsEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEndpointsEndpoint)(nil)).Elem()
+}
+
+func (o GetEndpointsEndpointArrayOutput) ToGetEndpointsEndpointArrayOutput() GetEndpointsEndpointArrayOutput {
+	return o
+}
+
+func (o GetEndpointsEndpointArrayOutput) ToGetEndpointsEndpointArrayOutputWithContext(ctx context.Context) GetEndpointsEndpointArrayOutput {
+	return o
+}
+
+func (o GetEndpointsEndpointArrayOutput) Index(i pulumi.IntInput) GetEndpointsEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEndpointsEndpoint {
+		return vs[0].([]GetEndpointsEndpoint)[vs[1].(int)]
+	}).(GetEndpointsEndpointOutput)
+}
+
+type GetEndpointsEndpointIpConfig struct {
+	// The Subnet mask.
+	CidrBlock string `pulumi:"cidrBlock"`
+	// The IP address within the parameter range of the subnet mask. **NOTE:** It is recommended to use the IP address assigned by the system.
+	Ip string `pulumi:"ip"`
+	// The Vswitch id.
+	VswitchId string `pulumi:"vswitchId"`
+	// The Zone ID.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetEndpointsEndpointIpConfigInput is an input type that accepts GetEndpointsEndpointIpConfigArgs and GetEndpointsEndpointIpConfigOutput values.
+// You can construct a concrete instance of `GetEndpointsEndpointIpConfigInput` via:
+//
+//          GetEndpointsEndpointIpConfigArgs{...}
+type GetEndpointsEndpointIpConfigInput interface {
+	pulumi.Input
+
+	ToGetEndpointsEndpointIpConfigOutput() GetEndpointsEndpointIpConfigOutput
+	ToGetEndpointsEndpointIpConfigOutputWithContext(context.Context) GetEndpointsEndpointIpConfigOutput
+}
+
+type GetEndpointsEndpointIpConfigArgs struct {
+	// The Subnet mask.
+	CidrBlock pulumi.StringInput `pulumi:"cidrBlock"`
+	// The IP address within the parameter range of the subnet mask. **NOTE:** It is recommended to use the IP address assigned by the system.
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// The Vswitch id.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// The Zone ID.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetEndpointsEndpointIpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointsEndpointIpConfig)(nil)).Elem()
+}
+
+func (i GetEndpointsEndpointIpConfigArgs) ToGetEndpointsEndpointIpConfigOutput() GetEndpointsEndpointIpConfigOutput {
+	return i.ToGetEndpointsEndpointIpConfigOutputWithContext(context.Background())
+}
+
+func (i GetEndpointsEndpointIpConfigArgs) ToGetEndpointsEndpointIpConfigOutputWithContext(ctx context.Context) GetEndpointsEndpointIpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEndpointsEndpointIpConfigOutput)
+}
+
+// GetEndpointsEndpointIpConfigArrayInput is an input type that accepts GetEndpointsEndpointIpConfigArray and GetEndpointsEndpointIpConfigArrayOutput values.
+// You can construct a concrete instance of `GetEndpointsEndpointIpConfigArrayInput` via:
+//
+//          GetEndpointsEndpointIpConfigArray{ GetEndpointsEndpointIpConfigArgs{...} }
+type GetEndpointsEndpointIpConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetEndpointsEndpointIpConfigArrayOutput() GetEndpointsEndpointIpConfigArrayOutput
+	ToGetEndpointsEndpointIpConfigArrayOutputWithContext(context.Context) GetEndpointsEndpointIpConfigArrayOutput
+}
+
+type GetEndpointsEndpointIpConfigArray []GetEndpointsEndpointIpConfigInput
+
+func (GetEndpointsEndpointIpConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEndpointsEndpointIpConfig)(nil)).Elem()
+}
+
+func (i GetEndpointsEndpointIpConfigArray) ToGetEndpointsEndpointIpConfigArrayOutput() GetEndpointsEndpointIpConfigArrayOutput {
+	return i.ToGetEndpointsEndpointIpConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetEndpointsEndpointIpConfigArray) ToGetEndpointsEndpointIpConfigArrayOutputWithContext(ctx context.Context) GetEndpointsEndpointIpConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEndpointsEndpointIpConfigArrayOutput)
+}
+
+type GetEndpointsEndpointIpConfigOutput struct{ *pulumi.OutputState }
+
+func (GetEndpointsEndpointIpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndpointsEndpointIpConfig)(nil)).Elem()
+}
+
+func (o GetEndpointsEndpointIpConfigOutput) ToGetEndpointsEndpointIpConfigOutput() GetEndpointsEndpointIpConfigOutput {
+	return o
+}
+
+func (o GetEndpointsEndpointIpConfigOutput) ToGetEndpointsEndpointIpConfigOutputWithContext(ctx context.Context) GetEndpointsEndpointIpConfigOutput {
+	return o
+}
+
+// The Subnet mask.
+func (o GetEndpointsEndpointIpConfigOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointsEndpointIpConfig) string { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+// The IP address within the parameter range of the subnet mask. **NOTE:** It is recommended to use the IP address assigned by the system.
+func (o GetEndpointsEndpointIpConfigOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointsEndpointIpConfig) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// The Vswitch id.
+func (o GetEndpointsEndpointIpConfigOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointsEndpointIpConfig) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The Zone ID.
+func (o GetEndpointsEndpointIpConfigOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointsEndpointIpConfig) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetEndpointsEndpointIpConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEndpointsEndpointIpConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEndpointsEndpointIpConfig)(nil)).Elem()
+}
+
+func (o GetEndpointsEndpointIpConfigArrayOutput) ToGetEndpointsEndpointIpConfigArrayOutput() GetEndpointsEndpointIpConfigArrayOutput {
+	return o
+}
+
+func (o GetEndpointsEndpointIpConfigArrayOutput) ToGetEndpointsEndpointIpConfigArrayOutputWithContext(ctx context.Context) GetEndpointsEndpointIpConfigArrayOutput {
+	return o
+}
+
+func (o GetEndpointsEndpointIpConfigArrayOutput) Index(i pulumi.IntInput) GetEndpointsEndpointIpConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEndpointsEndpointIpConfig {
+		return vs[0].([]GetEndpointsEndpointIpConfig)[vs[1].(int)]
+	}).(GetEndpointsEndpointIpConfigOutput)
+}
+
+type GetResolverZonesZone struct {
+	// The status of the Zone.
+	Status string `pulumi:"status"`
+	// The zone ID.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetResolverZonesZoneInput is an input type that accepts GetResolverZonesZoneArgs and GetResolverZonesZoneOutput values.
+// You can construct a concrete instance of `GetResolverZonesZoneInput` via:
+//
+//          GetResolverZonesZoneArgs{...}
+type GetResolverZonesZoneInput interface {
+	pulumi.Input
+
+	ToGetResolverZonesZoneOutput() GetResolverZonesZoneOutput
+	ToGetResolverZonesZoneOutputWithContext(context.Context) GetResolverZonesZoneOutput
+}
+
+type GetResolverZonesZoneArgs struct {
+	// The status of the Zone.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The zone ID.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetResolverZonesZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResolverZonesZone)(nil)).Elem()
+}
+
+func (i GetResolverZonesZoneArgs) ToGetResolverZonesZoneOutput() GetResolverZonesZoneOutput {
+	return i.ToGetResolverZonesZoneOutputWithContext(context.Background())
+}
+
+func (i GetResolverZonesZoneArgs) ToGetResolverZonesZoneOutputWithContext(ctx context.Context) GetResolverZonesZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResolverZonesZoneOutput)
+}
+
+// GetResolverZonesZoneArrayInput is an input type that accepts GetResolverZonesZoneArray and GetResolverZonesZoneArrayOutput values.
+// You can construct a concrete instance of `GetResolverZonesZoneArrayInput` via:
+//
+//          GetResolverZonesZoneArray{ GetResolverZonesZoneArgs{...} }
+type GetResolverZonesZoneArrayInput interface {
+	pulumi.Input
+
+	ToGetResolverZonesZoneArrayOutput() GetResolverZonesZoneArrayOutput
+	ToGetResolverZonesZoneArrayOutputWithContext(context.Context) GetResolverZonesZoneArrayOutput
+}
+
+type GetResolverZonesZoneArray []GetResolverZonesZoneInput
+
+func (GetResolverZonesZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResolverZonesZone)(nil)).Elem()
+}
+
+func (i GetResolverZonesZoneArray) ToGetResolverZonesZoneArrayOutput() GetResolverZonesZoneArrayOutput {
+	return i.ToGetResolverZonesZoneArrayOutputWithContext(context.Background())
+}
+
+func (i GetResolverZonesZoneArray) ToGetResolverZonesZoneArrayOutputWithContext(ctx context.Context) GetResolverZonesZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResolverZonesZoneArrayOutput)
+}
+
+type GetResolverZonesZoneOutput struct{ *pulumi.OutputState }
+
+func (GetResolverZonesZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResolverZonesZone)(nil)).Elem()
+}
+
+func (o GetResolverZonesZoneOutput) ToGetResolverZonesZoneOutput() GetResolverZonesZoneOutput {
+	return o
+}
+
+func (o GetResolverZonesZoneOutput) ToGetResolverZonesZoneOutputWithContext(ctx context.Context) GetResolverZonesZoneOutput {
+	return o
+}
+
+// The status of the Zone.
+func (o GetResolverZonesZoneOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResolverZonesZone) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The zone ID.
+func (o GetResolverZonesZoneOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResolverZonesZone) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetResolverZonesZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResolverZonesZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResolverZonesZone)(nil)).Elem()
+}
+
+func (o GetResolverZonesZoneArrayOutput) ToGetResolverZonesZoneArrayOutput() GetResolverZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetResolverZonesZoneArrayOutput) ToGetResolverZonesZoneArrayOutputWithContext(ctx context.Context) GetResolverZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetResolverZonesZoneArrayOutput) Index(i pulumi.IntInput) GetResolverZonesZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResolverZonesZone {
+		return vs[0].([]GetResolverZonesZone)[vs[1].(int)]
+	}).(GetResolverZonesZoneOutput)
+}
+
+type GetRulesRule struct {
+	// The creation time of the resource.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the Endpoint.
+	EndpointId string `pulumi:"endpointId"`
+	// The Name of the Endpoint.
+	EndpointName string                  `pulumi:"endpointName"`
+	ForwardIps   []GetRulesRuleForwardIp `pulumi:"forwardIps"`
+	// The ID of the Rule.
+	Id string `pulumi:"id"`
+	// The first ID of the resource.
+	RuleId string `pulumi:"ruleId"`
+	// The name of the resource.
+	RuleName string `pulumi:"ruleName"`
+	// The type of the rule.
+	Type string `pulumi:"type"`
+	// The name of the forwarding zone.
+	ZoneName string `pulumi:"zoneName"`
+}
+
+// GetRulesRuleInput is an input type that accepts GetRulesRuleArgs and GetRulesRuleOutput values.
+// You can construct a concrete instance of `GetRulesRuleInput` via:
+//
+//          GetRulesRuleArgs{...}
+type GetRulesRuleInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleOutput() GetRulesRuleOutput
+	ToGetRulesRuleOutputWithContext(context.Context) GetRulesRuleOutput
+}
+
+type GetRulesRuleArgs struct {
+	// The creation time of the resource.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the Endpoint.
+	EndpointId pulumi.StringInput `pulumi:"endpointId"`
+	// The Name of the Endpoint.
+	EndpointName pulumi.StringInput              `pulumi:"endpointName"`
+	ForwardIps   GetRulesRuleForwardIpArrayInput `pulumi:"forwardIps"`
+	// The ID of the Rule.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The first ID of the resource.
+	RuleId pulumi.StringInput `pulumi:"ruleId"`
+	// The name of the resource.
+	RuleName pulumi.StringInput `pulumi:"ruleName"`
+	// The type of the rule.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The name of the forwarding zone.
+	ZoneName pulumi.StringInput `pulumi:"zoneName"`
+}
+
+func (GetRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRule)(nil)).Elem()
+}
+
+func (i GetRulesRuleArgs) ToGetRulesRuleOutput() GetRulesRuleOutput {
+	return i.ToGetRulesRuleOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleArgs) ToGetRulesRuleOutputWithContext(ctx context.Context) GetRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleOutput)
+}
+
+// GetRulesRuleArrayInput is an input type that accepts GetRulesRuleArray and GetRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleArrayInput` via:
+//
+//          GetRulesRuleArray{ GetRulesRuleArgs{...} }
+type GetRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleArrayOutput() GetRulesRuleArrayOutput
+	ToGetRulesRuleArrayOutputWithContext(context.Context) GetRulesRuleArrayOutput
+}
+
+type GetRulesRuleArray []GetRulesRuleInput
+
+func (GetRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRule)(nil)).Elem()
+}
+
+func (i GetRulesRuleArray) ToGetRulesRuleArrayOutput() GetRulesRuleArrayOutput {
+	return i.ToGetRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleArray) ToGetRulesRuleArrayOutputWithContext(ctx context.Context) GetRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleArrayOutput)
+}
+
+type GetRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRule)(nil)).Elem()
+}
+
+func (o GetRulesRuleOutput) ToGetRulesRuleOutput() GetRulesRuleOutput {
+	return o
+}
+
+func (o GetRulesRuleOutput) ToGetRulesRuleOutputWithContext(ctx context.Context) GetRulesRuleOutput {
+	return o
+}
+
+// The creation time of the resource.
+func (o GetRulesRuleOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Endpoint.
+func (o GetRulesRuleOutput) EndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.EndpointId }).(pulumi.StringOutput)
+}
+
+// The Name of the Endpoint.
+func (o GetRulesRuleOutput) EndpointName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.EndpointName }).(pulumi.StringOutput)
+}
+
+func (o GetRulesRuleOutput) ForwardIps() GetRulesRuleForwardIpArrayOutput {
+	return o.ApplyT(func(v GetRulesRule) []GetRulesRuleForwardIp { return v.ForwardIps }).(GetRulesRuleForwardIpArrayOutput)
+}
+
+// The ID of the Rule.
+func (o GetRulesRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource.
+func (o GetRulesRuleOutput) RuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.RuleId }).(pulumi.StringOutput)
+}
+
+// The name of the resource.
+func (o GetRulesRuleOutput) RuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.RuleName }).(pulumi.StringOutput)
+}
+
+// The type of the rule.
+func (o GetRulesRuleOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The name of the forwarding zone.
+func (o GetRulesRuleOutput) ZoneName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRule) string { return v.ZoneName }).(pulumi.StringOutput)
+}
+
+type GetRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRule)(nil)).Elem()
+}
+
+func (o GetRulesRuleArrayOutput) ToGetRulesRuleArrayOutput() GetRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleArrayOutput) ToGetRulesRuleArrayOutputWithContext(ctx context.Context) GetRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleArrayOutput) Index(i pulumi.IntInput) GetRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRule {
+		return vs[0].([]GetRulesRule)[vs[1].(int)]
+	}).(GetRulesRuleOutput)
+}
+
+type GetRulesRuleForwardIp struct {
+	Ip   string `pulumi:"ip"`
+	Port int    `pulumi:"port"`
+}
+
+// GetRulesRuleForwardIpInput is an input type that accepts GetRulesRuleForwardIpArgs and GetRulesRuleForwardIpOutput values.
+// You can construct a concrete instance of `GetRulesRuleForwardIpInput` via:
+//
+//          GetRulesRuleForwardIpArgs{...}
+type GetRulesRuleForwardIpInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleForwardIpOutput() GetRulesRuleForwardIpOutput
+	ToGetRulesRuleForwardIpOutputWithContext(context.Context) GetRulesRuleForwardIpOutput
+}
+
+type GetRulesRuleForwardIpArgs struct {
+	Ip   pulumi.StringInput `pulumi:"ip"`
+	Port pulumi.IntInput    `pulumi:"port"`
+}
+
+func (GetRulesRuleForwardIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleForwardIp)(nil)).Elem()
+}
+
+func (i GetRulesRuleForwardIpArgs) ToGetRulesRuleForwardIpOutput() GetRulesRuleForwardIpOutput {
+	return i.ToGetRulesRuleForwardIpOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleForwardIpArgs) ToGetRulesRuleForwardIpOutputWithContext(ctx context.Context) GetRulesRuleForwardIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleForwardIpOutput)
+}
+
+// GetRulesRuleForwardIpArrayInput is an input type that accepts GetRulesRuleForwardIpArray and GetRulesRuleForwardIpArrayOutput values.
+// You can construct a concrete instance of `GetRulesRuleForwardIpArrayInput` via:
+//
+//          GetRulesRuleForwardIpArray{ GetRulesRuleForwardIpArgs{...} }
+type GetRulesRuleForwardIpArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesRuleForwardIpArrayOutput() GetRulesRuleForwardIpArrayOutput
+	ToGetRulesRuleForwardIpArrayOutputWithContext(context.Context) GetRulesRuleForwardIpArrayOutput
+}
+
+type GetRulesRuleForwardIpArray []GetRulesRuleForwardIpInput
+
+func (GetRulesRuleForwardIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleForwardIp)(nil)).Elem()
+}
+
+func (i GetRulesRuleForwardIpArray) ToGetRulesRuleForwardIpArrayOutput() GetRulesRuleForwardIpArrayOutput {
+	return i.ToGetRulesRuleForwardIpArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesRuleForwardIpArray) ToGetRulesRuleForwardIpArrayOutputWithContext(ctx context.Context) GetRulesRuleForwardIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesRuleForwardIpArrayOutput)
+}
+
+type GetRulesRuleForwardIpOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleForwardIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesRuleForwardIp)(nil)).Elem()
+}
+
+func (o GetRulesRuleForwardIpOutput) ToGetRulesRuleForwardIpOutput() GetRulesRuleForwardIpOutput {
+	return o
+}
+
+func (o GetRulesRuleForwardIpOutput) ToGetRulesRuleForwardIpOutputWithContext(ctx context.Context) GetRulesRuleForwardIpOutput {
+	return o
+}
+
+func (o GetRulesRuleForwardIpOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesRuleForwardIp) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+func (o GetRulesRuleForwardIpOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRulesRuleForwardIp) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetRulesRuleForwardIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesRuleForwardIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesRuleForwardIp)(nil)).Elem()
+}
+
+func (o GetRulesRuleForwardIpArrayOutput) ToGetRulesRuleForwardIpArrayOutput() GetRulesRuleForwardIpArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleForwardIpArrayOutput) ToGetRulesRuleForwardIpArrayOutputWithContext(ctx context.Context) GetRulesRuleForwardIpArrayOutput {
+	return o
+}
+
+func (o GetRulesRuleForwardIpArrayOutput) Index(i pulumi.IntInput) GetRulesRuleForwardIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesRuleForwardIp {
+		return vs[0].([]GetRulesRuleForwardIp)[vs[1].(int)]
+	}).(GetRulesRuleForwardIpOutput)
 }
 
 type GetZoneRecordsRecord struct {
@@ -639,16 +1637,48 @@ func (o GetZonesZoneBindVpcArrayOutput) Index(i pulumi.IntInput) GetZonesZoneBin
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointIpConfigInput)(nil)).Elem(), EndpointIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointIpConfigArrayInput)(nil)).Elem(), EndpointIpConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleAttachmentVpcInput)(nil)).Elem(), RuleAttachmentVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleAttachmentVpcArrayInput)(nil)).Elem(), RuleAttachmentVpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleForwardIpInput)(nil)).Elem(), RuleForwardIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleForwardIpArrayInput)(nil)).Elem(), RuleForwardIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneAttachmentVpcInput)(nil)).Elem(), ZoneAttachmentVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneAttachmentVpcArrayInput)(nil)).Elem(), ZoneAttachmentVpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointsEndpointInput)(nil)).Elem(), GetEndpointsEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointsEndpointArrayInput)(nil)).Elem(), GetEndpointsEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointsEndpointIpConfigInput)(nil)).Elem(), GetEndpointsEndpointIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointsEndpointIpConfigArrayInput)(nil)).Elem(), GetEndpointsEndpointIpConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResolverZonesZoneInput)(nil)).Elem(), GetResolverZonesZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResolverZonesZoneArrayInput)(nil)).Elem(), GetResolverZonesZoneArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleInput)(nil)).Elem(), GetRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleArrayInput)(nil)).Elem(), GetRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleForwardIpInput)(nil)).Elem(), GetRulesRuleForwardIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleForwardIpArrayInput)(nil)).Elem(), GetRulesRuleForwardIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZoneRecordsRecordInput)(nil)).Elem(), GetZoneRecordsRecordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZoneRecordsRecordArrayInput)(nil)).Elem(), GetZoneRecordsRecordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneBindVpcInput)(nil)).Elem(), GetZonesZoneBindVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneBindVpcArrayInput)(nil)).Elem(), GetZonesZoneBindVpcArray{})
+	pulumi.RegisterOutputType(EndpointIpConfigOutput{})
+	pulumi.RegisterOutputType(EndpointIpConfigArrayOutput{})
+	pulumi.RegisterOutputType(RuleAttachmentVpcOutput{})
+	pulumi.RegisterOutputType(RuleAttachmentVpcArrayOutput{})
+	pulumi.RegisterOutputType(RuleForwardIpOutput{})
+	pulumi.RegisterOutputType(RuleForwardIpArrayOutput{})
 	pulumi.RegisterOutputType(ZoneAttachmentVpcOutput{})
 	pulumi.RegisterOutputType(ZoneAttachmentVpcArrayOutput{})
+	pulumi.RegisterOutputType(GetEndpointsEndpointOutput{})
+	pulumi.RegisterOutputType(GetEndpointsEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetEndpointsEndpointIpConfigOutput{})
+	pulumi.RegisterOutputType(GetEndpointsEndpointIpConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetResolverZonesZoneOutput{})
+	pulumi.RegisterOutputType(GetResolverZonesZoneArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleForwardIpOutput{})
+	pulumi.RegisterOutputType(GetRulesRuleForwardIpArrayOutput{})
 	pulumi.RegisterOutputType(GetZoneRecordsRecordOutput{})
 	pulumi.RegisterOutputType(GetZoneRecordsRecordArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})

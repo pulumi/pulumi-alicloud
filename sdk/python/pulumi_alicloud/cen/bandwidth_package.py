@@ -32,7 +32,7 @@ class BandwidthPackageArgs:
         :param pulumi.Input[str] geographic_region_a_id: The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
         :param pulumi.Input[str] geographic_region_b_id: The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] geographic_region_ids: Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
-        :param pulumi.Input[str] name: Field 'name' has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         :param pulumi.Input[str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
@@ -152,7 +152,7 @@ class BandwidthPackageArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Field 'name' has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
+        Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         """
         return pulumi.get(self, "name")
 
@@ -207,7 +207,7 @@ class _BandwidthPackageState:
         :param pulumi.Input[str] geographic_region_a_id: The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
         :param pulumi.Input[str] geographic_region_b_id: The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] geographic_region_ids: Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
-        :param pulumi.Input[str] name: Field 'name' has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         :param pulumi.Input[str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
         :param pulumi.Input[str] status: The association status of the bandwidth package.
         """
@@ -345,7 +345,7 @@ class _BandwidthPackageState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Field 'name' has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
+        Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         """
         return pulumi.get(self, "name")
 
@@ -440,7 +440,7 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[str] geographic_region_a_id: The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
         :param pulumi.Input[str] geographic_region_b_id: The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] geographic_region_ids: Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
-        :param pulumi.Input[str] name: Field 'name' has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         :param pulumi.Input[str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
         """
         ...
@@ -574,7 +574,7 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[str] geographic_region_a_id: The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
         :param pulumi.Input[str] geographic_region_b_id: The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] geographic_region_ids: Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
-        :param pulumi.Input[str] name: Field 'name' has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         :param pulumi.Input[str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
         :param pulumi.Input[str] status: The association status of the bandwidth package.
         """
@@ -664,7 +664,7 @@ class BandwidthPackage(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Field 'name' has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
+        Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         """
         return pulumi.get(self, "name")
 

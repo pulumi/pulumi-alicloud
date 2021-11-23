@@ -99,6 +99,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly hostName!: pulumi.Output<string>;
     /**
+     * The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
+     */
+    public readonly hpcClusterId!: pulumi.Output<string | undefined>;
+    /**
      * The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
      */
     public readonly imageId!: pulumi.Output<string>;
@@ -183,6 +187,10 @@ export class Instance extends pulumi.CustomResource {
      * Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud.ram.Role` to create a new one.
      */
     public readonly roleName!: pulumi.Output<string>;
+    /**
+     * A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+     */
+    public readonly secondaryPrivateIps!: pulumi.Output<string[] | undefined>;
     /**
      * The security enhancement strategy.
      * - Active: Enable security enhancement strategy, it only works on system images.
@@ -278,6 +286,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["dryRun"] = state ? state.dryRun : undefined;
             inputs["forceDelete"] = state ? state.forceDelete : undefined;
             inputs["hostName"] = state ? state.hostName : undefined;
+            inputs["hpcClusterId"] = state ? state.hpcClusterId : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
             inputs["includeDataDisks"] = state ? state.includeDataDisks : undefined;
             inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
@@ -299,6 +308,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["renewalStatus"] = state ? state.renewalStatus : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["roleName"] = state ? state.roleName : undefined;
+            inputs["secondaryPrivateIps"] = state ? state.secondaryPrivateIps : undefined;
             inputs["securityEnhancementStrategy"] = state ? state.securityEnhancementStrategy : undefined;
             inputs["securityGroups"] = state ? state.securityGroups : undefined;
             inputs["spotPriceLimit"] = state ? state.spotPriceLimit : undefined;
@@ -337,6 +347,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["dryRun"] = args ? args.dryRun : undefined;
             inputs["forceDelete"] = args ? args.forceDelete : undefined;
             inputs["hostName"] = args ? args.hostName : undefined;
+            inputs["hpcClusterId"] = args ? args.hpcClusterId : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
             inputs["includeDataDisks"] = args ? args.includeDataDisks : undefined;
             inputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
@@ -357,6 +368,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["renewalStatus"] = args ? args.renewalStatus : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["roleName"] = args ? args.roleName : undefined;
+            inputs["secondaryPrivateIps"] = args ? args.secondaryPrivateIps : undefined;
             inputs["securityEnhancementStrategy"] = args ? args.securityEnhancementStrategy : undefined;
             inputs["securityGroups"] = args ? args.securityGroups : undefined;
             inputs["spotPriceLimit"] = args ? args.spotPriceLimit : undefined;
@@ -443,6 +455,10 @@ export interface InstanceState {
      */
     hostName?: pulumi.Input<string>;
     /**
+     * The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
+     */
+    hpcClusterId?: pulumi.Input<string>;
+    /**
      * The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
      */
     imageId?: pulumi.Input<string>;
@@ -527,6 +543,10 @@ export interface InstanceState {
      * Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud.ram.Role` to create a new one.
      */
     roleName?: pulumi.Input<string>;
+    /**
+     * A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+     */
+    secondaryPrivateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The security enhancement strategy.
      * - Active: Enable security enhancement strategy, it only works on system images.
@@ -660,6 +680,10 @@ export interface InstanceArgs {
      */
     hostName?: pulumi.Input<string>;
     /**
+     * The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
+     */
+    hpcClusterId?: pulumi.Input<string>;
+    /**
      * The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
      */
     imageId: pulumi.Input<string>;
@@ -740,6 +764,10 @@ export interface InstanceArgs {
      * Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud.ram.Role` to create a new one.
      */
     roleName?: pulumi.Input<string>;
+    /**
+     * A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+     */
+    secondaryPrivateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The security enhancement strategy.
      * - Active: Enable security enhancement strategy, it only works on system images.

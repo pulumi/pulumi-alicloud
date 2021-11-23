@@ -38,6 +38,10 @@ namespace Pulumi.AliCloud.Dns.Outputs
         /// </summary>
         public readonly string RecordId;
         /// <summary>
+        /// The remark of the domain record.  **NOTE:** Available in 1.144.0+.
+        /// </summary>
+        public readonly string Remark;
+        /// <summary>
         /// Host record of the domain.
         /// </summary>
         public readonly string Rr;
@@ -72,6 +76,8 @@ namespace Pulumi.AliCloud.Dns.Outputs
 
             string recordId,
 
+            string remark,
+
             string rr,
 
             string status,
@@ -88,6 +94,7 @@ namespace Pulumi.AliCloud.Dns.Outputs
             Locked = locked;
             Priority = priority;
             RecordId = recordId;
+            Remark = remark;
             Rr = rr;
             Status = status;
             Ttl = ttl;

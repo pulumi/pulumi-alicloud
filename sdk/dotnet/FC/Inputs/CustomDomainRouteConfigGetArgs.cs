@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         public Input<string> Path { get; set; } = null!;
 
         /// <summary>
-        /// The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about verison and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
+        /// The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about version and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
         /// </summary>
         [Input("qualifier")]
         public Input<string>? Qualifier { get; set; }

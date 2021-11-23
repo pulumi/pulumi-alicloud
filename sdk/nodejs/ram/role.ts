@@ -46,7 +46,7 @@ export class Role extends pulumi.CustomResource {
      */
     public /*out*/ readonly arn!: pulumi.Output<string>;
     /**
-     * Description of the RAM role. This name can have a string of 1 to 1024 characters.
+     * Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -140,7 +140,7 @@ export interface RoleState {
      */
     arn?: pulumi.Input<string>;
     /**
-     * Description of the RAM role. This name can have a string of 1 to 1024 characters.
+     * Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
      */
     description?: pulumi.Input<string>;
     /**
@@ -188,7 +188,7 @@ export interface RoleState {
  */
 export interface RoleArgs {
     /**
-     * Description of the RAM role. This name can have a string of 1 to 1024 characters.
+     * Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
      */
     description?: pulumi.Input<string>;
     /**

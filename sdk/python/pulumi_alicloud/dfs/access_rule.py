@@ -227,7 +227,7 @@ class AccessRule(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "exmaple_name"
+            name = "example_name"
         default_access_group = alicloud.dfs.AccessGroup("defaultAccessGroup",
             network_type="VPC",
             access_group_name=name,
@@ -280,7 +280,7 @@ class AccessRule(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "exmaple_name"
+            name = "example_name"
         default_access_group = alicloud.dfs.AccessGroup("defaultAccessGroup",
             network_type="VPC",
             access_group_name=name,

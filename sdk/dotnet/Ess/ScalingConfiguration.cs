@@ -52,6 +52,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<bool?> ForceDelete { get; private set; } = null!;
 
         /// <summary>
+        /// Hostname of an ECS instance.
+        /// </summary>
+        [Output("hostName")]
+        public Output<string?> HostName { get; private set; } = null!;
+
+        /// <summary>
         /// ID of an image file, indicating the image resource selected when an instance is enabled.
         /// </summary>
         [Output("imageId")]
@@ -328,6 +334,12 @@ namespace Pulumi.AliCloud.Ess
         public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
+        /// Hostname of an ECS instance.
+        /// </summary>
+        [Input("hostName")]
+        public Input<string>? HostName { get; set; }
+
+        /// <summary>
         /// ID of an image file, indicating the image resource selected when an instance is enabled.
         /// </summary>
         [Input("imageId")]
@@ -594,6 +606,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("forceDelete")]
         public Input<bool>? ForceDelete { get; set; }
+
+        /// <summary>
+        /// Hostname of an ECS instance.
+        /// </summary>
+        [Input("hostName")]
+        public Input<string>? HostName { get; set; }
 
         /// <summary>
         /// ID of an image file, indicating the image resource selected when an instance is enabled.

@@ -123,7 +123,7 @@ export class AggregateCompliancePack extends pulumi.CustomResource {
      */
     public readonly configRules!: pulumi.Output<outputs.cfg.AggregateCompliancePackConfigRule[] | undefined>;
     /**
-     * Teh description of compliance package.
+     * The description of compliance package.
      */
     public readonly description!: pulumi.Output<string>;
     /**
@@ -213,7 +213,7 @@ export interface AggregateCompliancePackState {
      */
     configRules?: pulumi.Input<pulumi.Input<inputs.cfg.AggregateCompliancePackConfigRule>[]>;
     /**
-     * Teh description of compliance package.
+     * The description of compliance package.
      */
     description?: pulumi.Input<string>;
     /**
@@ -253,7 +253,7 @@ export interface AggregateCompliancePackArgs {
      */
     configRules?: pulumi.Input<pulumi.Input<inputs.cfg.AggregateCompliancePackConfigRule>[]>;
     /**
-     * Teh description of compliance package.
+     * The description of compliance package.
      */
     description: pulumi.Input<string>;
     /**

@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:gpdb/account:Account":
+		r = &Account{}
 	case "alicloud:gpdb/connection:Connection":
 		r = &Connection{}
 	case "alicloud:gpdb/elasticInstance:ElasticInstance":
@@ -40,6 +42,11 @@ func init() {
 	if err != nil {
 		fmt.Printf("failed to determine package version. defaulting to v1: %v\n", err)
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"gpdb/account",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"gpdb/connection",

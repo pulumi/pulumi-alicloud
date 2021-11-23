@@ -2902,6 +2902,7 @@ class GetLoadBalancersBalancerResult(dict):
                  dns_name: str,
                  id: str,
                  load_balancer_billing_configs: Sequence['outputs.GetLoadBalancersBalancerLoadBalancerBillingConfigResult'],
+                 load_balancer_business_status: str,
                  load_balancer_bussiness_status: str,
                  load_balancer_edition: str,
                  load_balancer_id: str,
@@ -2926,7 +2927,8 @@ class GetLoadBalancersBalancerResult(dict):
         :param str dns_name: DNS Domain Name.
         :param str id: The ID of the Load Balancer.
         :param Sequence['GetLoadBalancersBalancerLoadBalancerBillingConfigArgs'] load_balancer_billing_configs: The configuration of the billing method.
-        :param str load_balancer_bussiness_status: Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.
+        :param str load_balancer_business_status: Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+        :param str load_balancer_bussiness_status: Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
         :param str load_balancer_edition: The edition of the ALB instance.
         :param str load_balancer_id: The first ID of the resource.
         :param str load_balancer_name: The name of the resource.
@@ -2947,6 +2949,7 @@ class GetLoadBalancersBalancerResult(dict):
         pulumi.set(__self__, "dns_name", dns_name)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "load_balancer_billing_configs", load_balancer_billing_configs)
+        pulumi.set(__self__, "load_balancer_business_status", load_balancer_business_status)
         pulumi.set(__self__, "load_balancer_bussiness_status", load_balancer_bussiness_status)
         pulumi.set(__self__, "load_balancer_edition", load_balancer_edition)
         pulumi.set(__self__, "load_balancer_id", load_balancer_id)
@@ -3035,10 +3038,18 @@ class GetLoadBalancersBalancerResult(dict):
         return pulumi.get(self, "load_balancer_billing_configs")
 
     @property
+    @pulumi.getter(name="loadBalancerBusinessStatus")
+    def load_balancer_business_status(self) -> str:
+        """
+        Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+        """
+        return pulumi.get(self, "load_balancer_business_status")
+
+    @property
     @pulumi.getter(name="loadBalancerBussinessStatus")
     def load_balancer_bussiness_status(self) -> str:
         """
-        Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.
+        Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
         """
         return pulumi.get(self, "load_balancer_bussiness_status")
 
@@ -3205,7 +3216,7 @@ class GetLoadBalancersBalancerLoadBalancerOperationLockResult(dict):
                  lock_reason: str,
                  lock_type: str):
         """
-        :param str lock_reason: The Locking of the Reasons. In 'loadbalancerbussinessstatus' **Exception When Effective,.
+        :param str lock_reason: The Locking of the Reasons.
         :param str lock_type: The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
         """
         pulumi.set(__self__, "lock_reason", lock_reason)
@@ -3215,7 +3226,7 @@ class GetLoadBalancersBalancerLoadBalancerOperationLockResult(dict):
     @pulumi.getter(name="lockReason")
     def lock_reason(self) -> str:
         """
-        The Locking of the Reasons. In 'loadbalancerbussinessstatus' **Exception When Effective,.
+        The Locking of the Reasons.
         """
         return pulumi.get(self, "lock_reason")
 
@@ -4081,6 +4092,7 @@ class GetServerGroupsGroupResult(dict):
                  servers: Sequence['outputs.GetServerGroupsGroupServerResult'],
                  status: str,
                  sticky_session_configs: Sequence['outputs.GetServerGroupsGroupStickySessionConfigResult'],
+                 tags: Mapping[str, Any],
                  vpc_id: str):
         """
         :param Sequence['GetServerGroupsGroupHealthCheckConfigArgs'] health_check_configs: The configuration of health checks.
@@ -4103,6 +4115,7 @@ class GetServerGroupsGroupResult(dict):
         pulumi.set(__self__, "servers", servers)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "sticky_session_configs", sticky_session_configs)
+        pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "vpc_id", vpc_id)
 
     @property
@@ -4176,6 +4189,11 @@ class GetServerGroupsGroupResult(dict):
         The configuration of the sticky session.
         """
         return pulumi.get(self, "sticky_session_configs")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vpcId")

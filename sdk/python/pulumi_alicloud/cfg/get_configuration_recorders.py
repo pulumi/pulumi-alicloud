@@ -72,7 +72,7 @@ def get_configuration_recorders(output_file: Optional[str] = None,
 
     > **NOTE:**  Available in 1.99.0+.
 
-    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-northeast-1`.
+    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
 
     ## Example Usage
 
@@ -106,7 +106,7 @@ def get_configuration_recorders_output(output_file: Optional[pulumi.Input[Option
 
     > **NOTE:**  Available in 1.99.0+.
 
-    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-northeast-1`.
+    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
 
     ## Example Usage
 

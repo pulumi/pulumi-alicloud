@@ -109,7 +109,7 @@ class CustomDomainRouteConfigArgs:
         :param pulumi.Input[str] function_name: The name of the Function Compute function that requests are routed to.
         :param pulumi.Input[str] path: The path that requests are routed from.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] methods: The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
-        :param pulumi.Input[str] qualifier: The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about verison and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
+        :param pulumi.Input[str] qualifier: The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about version and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
         """
         pulumi.set(__self__, "function_name", function_name)
         pulumi.set(__self__, "path", path)
@@ -168,7 +168,7 @@ class CustomDomainRouteConfigArgs:
     @pulumi.getter
     def qualifier(self) -> Optional[pulumi.Input[str]]:
         """
-        The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about verison and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
+        The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about version and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
         """
         return pulumi.get(self, "qualifier")
 

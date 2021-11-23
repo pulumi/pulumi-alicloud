@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Edas
     public partial class SlbAttachment : Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the applicaton to which you want to bind an SLB instance.
+        /// The ID of the application to which you want to bind an SLB instance.
         /// </summary>
         [Output("appId")]
         public Output<string> AppId { get; private set; } = null!;
@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Edas
         public Output<string> SlbIp { get; private set; } = null!;
 
         /// <summary>
-        /// Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and foward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
+        /// Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and forward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
         /// </summary>
         [Output("slbStatus")]
         public Output<string> SlbStatus { get; private set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud.Edas
     public sealed class SlbAttachmentArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the applicaton to which you want to bind an SLB instance.
+        /// The ID of the application to which you want to bind an SLB instance.
         /// </summary>
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
@@ -181,7 +181,7 @@ namespace Pulumi.AliCloud.Edas
     public sealed class SlbAttachmentState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the applicaton to which you want to bind an SLB instance.
+        /// The ID of the application to which you want to bind an SLB instance.
         /// </summary>
         [Input("appId")]
         public Input<string>? AppId { get; set; }
@@ -205,7 +205,7 @@ namespace Pulumi.AliCloud.Edas
         public Input<string>? SlbIp { get; set; }
 
         /// <summary>
-        /// Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and foward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
+        /// Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and forward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
         /// </summary>
         [Input("slbStatus")]
         public Input<string>? SlbStatus { get; set; }

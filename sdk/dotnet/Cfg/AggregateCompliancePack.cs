@@ -133,7 +133,7 @@ namespace Pulumi.AliCloud.Cfg
         public Output<ImmutableArray<Outputs.AggregateCompliancePackConfigRule>> ConfigRules { get; private set; } = null!;
 
         /// <summary>
-        /// Teh description of compliance package.
+        /// The description of compliance package.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -240,7 +240,7 @@ namespace Pulumi.AliCloud.Cfg
         }
 
         /// <summary>
-        /// Teh description of compliance package.
+        /// The description of compliance package.
         /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
@@ -302,7 +302,7 @@ namespace Pulumi.AliCloud.Cfg
         }
 
         /// <summary>
-        /// Teh description of compliance package.
+        /// The description of compliance package.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

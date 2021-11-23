@@ -120,7 +120,7 @@ def get_delivery_channels(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:**  Available in 1.99.0+.
 
-    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-northeast-1`.
+    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
 
     ## Example Usage
 
@@ -170,7 +170,7 @@ def get_delivery_channels_output(ids: Optional[pulumi.Input[Optional[Sequence[st
 
     > **NOTE:**  Available in 1.99.0+.
 
-    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-northeast-1`.
+    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
 
     ## Example Usage
 

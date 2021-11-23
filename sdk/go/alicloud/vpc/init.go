@@ -35,6 +35,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HAVip{}
 	case "alicloud:vpc/hAVipAttachment:HAVipAttachment":
 		r = &HAVipAttachment{}
+	case "alicloud:vpc/ipv6EgressRule:Ipv6EgressRule":
+		r = &Ipv6EgressRule{}
+	case "alicloud:vpc/ipv6Gateway:Ipv6Gateway":
+		r = &Ipv6Gateway{}
+	case "alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth":
+		r = &Ipv6InternetBandwidth{}
 	case "alicloud:vpc/natGateway:NatGateway":
 		r = &NatGateway{}
 	case "alicloud:vpc/natIp:NatIp":
@@ -75,6 +81,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TrafficMirrorFilterEgressRule{}
 	case "alicloud:vpc/trafficMirrorFilterIngressRule:TrafficMirrorFilterIngressRule":
 		r = &TrafficMirrorFilterIngressRule{}
+	case "alicloud:vpc/trafficMirrorSession:TrafficMirrorSession":
+		r = &TrafficMirrorSession{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -121,6 +129,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"vpc/hAVipAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/ipv6EgressRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/ipv6Gateway",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/ipv6InternetBandwidth",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -221,6 +244,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"vpc/trafficMirrorFilterIngressRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/trafficMirrorSession",
 		&module{version},
 	)
 }

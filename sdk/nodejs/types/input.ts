@@ -55,6 +55,7 @@ export interface ProviderEndpoint {
     eais?: pulumi.Input<string>;
     eci?: pulumi.Input<string>;
     ecs?: pulumi.Input<string>;
+    edsuser?: pulumi.Input<string>;
     ehpc?: pulumi.Input<string>;
     eipanycast?: pulumi.Input<string>;
     elasticsearch?: pulumi.Input<string>;
@@ -1055,7 +1056,7 @@ export namespace cdn {
 
     export interface DomainNewSource {
         /**
-         * The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
+         * The address of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
          */
         content: pulumi.Input<string>;
         /**
@@ -1306,6 +1307,17 @@ export namespace cms {
          * Critical level alarm retry times. Default to 3.
          */
         times?: pulumi.Input<number>;
+    }
+
+    export interface DynamicTagGroupMatchExpress {
+        /**
+         * The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+         */
+        tagValue: pulumi.Input<string>;
+        /**
+         * Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+         */
+        tagValueMatchFunction: pulumi.Input<string>;
     }
 
     export interface GroupMetricRuleEscalations {
@@ -3133,7 +3145,7 @@ export namespace fc {
          */
         path: pulumi.Input<string>;
         /**
-         * The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about verison and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
+         * The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about version and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
          */
         qualifier?: pulumi.Input<string>;
         serviceName: pulumi.Input<string>;
@@ -3413,6 +3425,71 @@ export namespace hbr {
         values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
+    export interface GetServerBackupPlansFilterArgs {
+        /**
+         * The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Set of values that are accepted for the given field.
+         */
+        values?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetServerBackupPlansFilter {
+        /**
+         * The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
+         */
+        key?: string;
+        /**
+         * Set of values that are accepted for the given field.
+         */
+        values?: string[];
+    }
+
+    export interface ServerBackupPlanDetail {
+        /**
+         * Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
+         */
+        appConsistent: pulumi.Input<boolean>;
+        /**
+         * Only vaild when DoCopy is true. The destination region ID when replicating to another region. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+         */
+        destinationRegionId?: pulumi.Input<string>;
+        /**
+         * Only vaild when DoCopy is true. The retention days of the destination backup. When not specified, the destination backup will be saved permanently. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+         */
+        destinationRetention?: pulumi.Input<number>;
+        /**
+         * The list of cloud disks to be backed up in the ECS instance. When not specified, a snapshot is executed for all the disks on the ECS instance.
+         */
+        diskIdLists?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Whether replicate to another region. Valid values: `true`, `false`.
+         */
+        doCopy?: pulumi.Input<boolean>;
+        /**
+         * Only the Linux system is valid. Whether to use the Linux FsFreeze mechanism to ensure that the file system is read-only consistent before creating a storage snapshot. The default is True. Valid values: `true`, `false`.
+         */
+        enableFsFreeze?: pulumi.Input<boolean>;
+        /**
+         * Only vaild for the linux system when AppConsistent is true. The application thaw script path (e.g. /tmp/postscript.sh). The postscript.sh script must meet the following conditions: in terms of permissions, only the root user as the owner has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+         */
+        postScriptPath?: pulumi.Input<string>;
+        /**
+         * Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+         */
+        preScriptPath?: pulumi.Input<string>;
+        /**
+         * Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
+         */
+        snapshotGroup: pulumi.Input<boolean>;
+        /**
+         * Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
+         */
+        timeoutInSeconds?: pulumi.Input<number>;
+    }
+
 }
 
 export namespace imm {
@@ -3558,22 +3635,22 @@ export namespace log {
          */
         encryptType?: pulumi.Input<string>;
         /**
-         * User bring your own key (BYOK) encryption.[Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm?spm=a2c63.p38356.b99.673.cafa2b38qBskFV)
+         * User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
          */
         userCmkInfo?: pulumi.Input<inputs.log.StoreEncryptConfUserCmkInfo>;
     }
 
     export interface StoreEncryptConfUserCmkInfo {
         /**
-         * role arn
+         * role arn.
          */
         arn: pulumi.Input<string>;
         /**
-         * User master key id
+         * User master key id.
          */
         cmkKeyId: pulumi.Input<string>;
         /**
-         * Region id where the  user master key id is located
+         * Region id where the  user master key id is located.
          */
         regionId: pulumi.Input<string>;
     }
@@ -3912,6 +3989,9 @@ export namespace oss {
          * Specifies the number of days noncurrent object versions transition.
          */
         days?: pulumi.Input<number>;
+        /**
+         * On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
+         */
         expiredObjectDeleteMarker?: pulumi.Input<boolean>;
     }
 
@@ -4049,6 +4129,47 @@ export namespace privatelink {
 }
 
 export namespace pvtz {
+    export interface EndpointIpConfig {
+        /**
+         * The Subnet mask.
+         */
+        cidrBlock: pulumi.Input<string>;
+        /**
+         * The IP address within the parameter range of the subnet mask.  It is recommended to use the IP address assigned by the system.
+         */
+        ip?: pulumi.Input<string>;
+        /**
+         * The Vswitch id.
+         */
+        vswitchId: pulumi.Input<string>;
+        /**
+         * The Zone ID.
+         */
+        zoneId: pulumi.Input<string>;
+    }
+
+    export interface RuleAttachmentVpc {
+        /**
+         * The region of the vpc. If not set, the current region will instead of.
+         */
+        regionId: pulumi.Input<string>;
+        /**
+         * The ID of the VPC.  **NOTE:** The VPC that can be associated with the forwarding rule must belong to the same region as the Endpoint.
+         */
+        vpcId: pulumi.Input<string>;
+    }
+
+    export interface RuleForwardIp {
+        /**
+         * The ip of the forwarding destination.
+         */
+        ip: pulumi.Input<string>;
+        /**
+         * The port of the forwarding destination.
+         */
+        port: pulumi.Input<number>;
+    }
+
     export interface ZoneAttachmentVpc {
         /**
          * The region of the vpc. If not set, the current region will instead of.

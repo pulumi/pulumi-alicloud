@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eds.Outputs
     public sealed class GetSimpleOfficeSitesSiteResult
     {
         /// <summary>
-        /// The Internet Bandwidth Peak.  Valid Values: 0~200. If This Field Is Set to 0, Indicates That There Is No Open Internet Access.
+        /// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
         /// </summary>
         public readonly int Bandwidth;
         /// <summary>

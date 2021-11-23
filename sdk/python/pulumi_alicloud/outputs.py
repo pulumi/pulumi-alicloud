@@ -45,7 +45,7 @@ class GetMscSubContactsContactResult(dict):
         :param str last_email_verification_time_stamp: Last Verification Email Transmission Time.
         :param str last_mobile_verification_time_stamp: The Pieces of Authentication SMS Sending Time.
         :param str mobile: The User's Telephone.
-        :param str position: The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
+        :param str position: The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
         """
         pulumi.set(__self__, "account_uid", account_uid)
         pulumi.set(__self__, "contact_id", contact_id)
@@ -161,7 +161,7 @@ class GetMscSubContactsContactResult(dict):
     @pulumi.getter
     def position(self) -> str:
         """
-        The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Others`.
+        The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
         """
         return pulumi.get(self, "position")
 
