@@ -5,8 +5,14 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .application import *
+from .application_group import *
 from .execution import *
+from .get_application_groups import *
+from .get_applications import *
 from .get_executions import *
+from .get_patch_baselines import *
 from .get_templates import *
+from .patch_baseline import *
 from .template import *
 from . import outputs

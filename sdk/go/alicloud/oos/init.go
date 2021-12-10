@@ -21,8 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:oos/application:Application":
+		r = &Application{}
+	case "alicloud:oos/applicationGroup:ApplicationGroup":
+		r = &ApplicationGroup{}
 	case "alicloud:oos/execution:Execution":
 		r = &Execution{}
+	case "alicloud:oos/patchBaseline:PatchBaseline":
+		r = &PatchBaseline{}
 	case "alicloud:oos/template:Template":
 		r = &Template{}
 	default:
@@ -40,7 +46,22 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"oos/application",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"oos/applicationGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"oos/execution",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"oos/patchBaseline",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

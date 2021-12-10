@@ -137,7 +137,7 @@ type Kubernetes struct {
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
 	Taints KubernetesTaintArrayOutput `pulumi:"taints"`
-	// When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+	// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
 	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa pulumi.StringPtrOutput `pulumi:"userCa"`
@@ -340,7 +340,7 @@ type kubernetesState struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
 	Taints []KubernetesTaint `pulumi:"taints"`
-	// When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+	// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
 	Timezone *string `pulumi:"timezone"`
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa *string `pulumi:"userCa"`
@@ -500,7 +500,7 @@ type KubernetesState struct {
 	Tags pulumi.MapInput
 	// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
 	Taints KubernetesTaintArrayInput
-	// When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+	// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
 	Timezone pulumi.StringPtrInput
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa pulumi.StringPtrInput
@@ -651,7 +651,7 @@ type kubernetesArgs struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
 	Taints []KubernetesTaint `pulumi:"taints"`
-	// When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+	// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
 	Timezone *string `pulumi:"timezone"`
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa *string `pulumi:"userCa"`
@@ -793,7 +793,7 @@ type KubernetesArgs struct {
 	Tags pulumi.MapInput
 	// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
 	Taints KubernetesTaintArrayInput
-	// When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+	// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
 	Timezone pulumi.StringPtrInput
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa pulumi.StringPtrInput

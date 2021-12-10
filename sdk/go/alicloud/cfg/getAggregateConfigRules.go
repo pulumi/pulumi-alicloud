@@ -55,9 +55,9 @@ func GetAggregateConfigRules(ctx *pulumi.Context, args *GetAggregateConfigRulesA
 
 // A collection of arguments for invoking getAggregateConfigRules.
 type GetAggregateConfigRulesArgs struct {
-	// The name of the rule.
+	// The config rule name.
 	AggregateConfigRuleName *string `pulumi:"aggregateConfigRuleName"`
-	// The ID of Aggregator.
+	// The ID of aggregator.
 	AggregatorId string `pulumi:"aggregatorId"`
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
@@ -66,26 +66,33 @@ type GetAggregateConfigRulesArgs struct {
 	// A regex string to filter results by Aggregate Config Rule name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
-	// The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
+	// Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
 	RiskLevel *int `pulumi:"riskLevel"`
-	// The status of the rule.
+	// The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
 	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getAggregateConfigRules.
 type GetAggregateConfigRulesResult struct {
+	// The name of the rule.
 	AggregateConfigRuleName *string `pulumi:"aggregateConfigRuleName"`
-	AggregatorId            string  `pulumi:"aggregatorId"`
-	EnableDetails           *bool   `pulumi:"enableDetails"`
+	// The ID of Aggregator.
+	// * `compliance` -The Compliance information.
+	AggregatorId  string `pulumi:"aggregatorId"`
+	EnableDetails *bool  `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                        `pulumi:"id"`
-	Ids        []string                      `pulumi:"ids"`
-	NameRegex  *string                       `pulumi:"nameRegex"`
-	Names      []string                      `pulumi:"names"`
-	OutputFile *string                       `pulumi:"outputFile"`
-	RiskLevel  *int                          `pulumi:"riskLevel"`
-	Rules      []GetAggregateConfigRulesRule `pulumi:"rules"`
-	Status     *string                       `pulumi:"status"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Aggregate Config Rule names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
+	RiskLevel *int `pulumi:"riskLevel"`
+	// A list of Config Aggregate Config Rules. Each element contains the following attributes:
+	Rules []GetAggregateConfigRulesRule `pulumi:"rules"`
+	// The status of the rule.
+	Status *string `pulumi:"status"`
 }
 
 func GetAggregateConfigRulesOutput(ctx *pulumi.Context, args GetAggregateConfigRulesOutputArgs, opts ...pulumi.InvokeOption) GetAggregateConfigRulesResultOutput {
@@ -99,9 +106,9 @@ func GetAggregateConfigRulesOutput(ctx *pulumi.Context, args GetAggregateConfigR
 
 // A collection of arguments for invoking getAggregateConfigRules.
 type GetAggregateConfigRulesOutputArgs struct {
-	// The name of the rule.
+	// The config rule name.
 	AggregateConfigRuleName pulumi.StringPtrInput `pulumi:"aggregateConfigRuleName"`
-	// The ID of Aggregator.
+	// The ID of aggregator.
 	AggregatorId pulumi.StringInput `pulumi:"aggregatorId"`
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
@@ -110,9 +117,9 @@ type GetAggregateConfigRulesOutputArgs struct {
 	// A regex string to filter results by Aggregate Config Rule name.
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
+	// Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
 	RiskLevel pulumi.IntPtrInput `pulumi:"riskLevel"`
-	// The status of the rule.
+	// The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -135,10 +142,13 @@ func (o GetAggregateConfigRulesResultOutput) ToGetAggregateConfigRulesResultOutp
 	return o
 }
 
+// The name of the rule.
 func (o GetAggregateConfigRulesResultOutput) AggregateConfigRuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAggregateConfigRulesResult) *string { return v.AggregateConfigRuleName }).(pulumi.StringPtrOutput)
 }
 
+// The ID of Aggregator.
+// * `compliance` -The Compliance information.
 func (o GetAggregateConfigRulesResultOutput) AggregatorId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAggregateConfigRulesResult) string { return v.AggregatorId }).(pulumi.StringOutput)
 }
@@ -160,6 +170,7 @@ func (o GetAggregateConfigRulesResultOutput) NameRegex() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetAggregateConfigRulesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Aggregate Config Rule names.
 func (o GetAggregateConfigRulesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAggregateConfigRulesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -168,14 +179,17 @@ func (o GetAggregateConfigRulesResultOutput) OutputFile() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetAggregateConfigRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
 func (o GetAggregateConfigRulesResultOutput) RiskLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetAggregateConfigRulesResult) *int { return v.RiskLevel }).(pulumi.IntPtrOutput)
 }
 
+// A list of Config Aggregate Config Rules. Each element contains the following attributes:
 func (o GetAggregateConfigRulesResultOutput) Rules() GetAggregateConfigRulesRuleArrayOutput {
 	return o.ApplyT(func(v GetAggregateConfigRulesResult) []GetAggregateConfigRulesRule { return v.Rules }).(GetAggregateConfigRulesRuleArrayOutput)
 }
 
+// The status of the rule.
 func (o GetAggregateConfigRulesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAggregateConfigRulesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

@@ -15,7 +15,7 @@ import (
 //
 // For information about Cloud SSO Access Configuration and how to use it, see [What is Access Configuration](https://www.alibabacloud.com/help/en/doc-detail/266737.html).
 //
-// > **NOTE:** Available in v1.140.0+.
+// > **NOTE:** Available in v1.145.0+.
 //
 // > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 //
@@ -31,7 +31,7 @@ type AccessConfiguration struct {
 
 	// The AccessConfigurationId of the Access Configuration.
 	AccessConfigurationId pulumi.StringOutput `pulumi:"accessConfigurationId"`
-	// The AccessConfigurationName of the Access Configuration.
+	// The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
 	AccessConfigurationName pulumi.StringOutput `pulumi:"accessConfigurationName"`
 	// The Description of the  Access Configuration.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -84,7 +84,7 @@ func GetAccessConfiguration(ctx *pulumi.Context,
 type accessConfigurationState struct {
 	// The AccessConfigurationId of the Access Configuration.
 	AccessConfigurationId *string `pulumi:"accessConfigurationId"`
-	// The AccessConfigurationName of the Access Configuration.
+	// The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
 	AccessConfigurationName *string `pulumi:"accessConfigurationName"`
 	// The Description of the  Access Configuration.
 	Description *string `pulumi:"description"`
@@ -103,7 +103,7 @@ type accessConfigurationState struct {
 type AccessConfigurationState struct {
 	// The AccessConfigurationId of the Access Configuration.
 	AccessConfigurationId pulumi.StringPtrInput
-	// The AccessConfigurationName of the Access Configuration.
+	// The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
 	AccessConfigurationName pulumi.StringPtrInput
 	// The Description of the  Access Configuration.
 	Description pulumi.StringPtrInput
@@ -124,7 +124,7 @@ func (AccessConfigurationState) ElementType() reflect.Type {
 }
 
 type accessConfigurationArgs struct {
-	// The AccessConfigurationName of the Access Configuration.
+	// The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
 	AccessConfigurationName string `pulumi:"accessConfigurationName"`
 	// The Description of the  Access Configuration.
 	Description *string `pulumi:"description"`
@@ -142,7 +142,7 @@ type accessConfigurationArgs struct {
 
 // The set of arguments for constructing a AccessConfiguration resource.
 type AccessConfigurationArgs struct {
-	// The AccessConfigurationName of the Access Configuration.
+	// The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
 	AccessConfigurationName pulumi.StringInput
 	// The Description of the  Access Configuration.
 	Description pulumi.StringPtrInput

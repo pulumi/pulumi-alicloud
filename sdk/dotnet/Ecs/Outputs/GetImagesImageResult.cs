@@ -33,6 +33,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// ID of the image.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The ID of the image.
+        /// </summary>
         public readonly string ImageId;
         /// <summary>
         /// Alias of the image owner.

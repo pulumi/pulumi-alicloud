@@ -13,7 +13,7 @@ import (
 
 // Provides a Cloud Config Compliance Pack resource.
 //
-// For information about Cloud Config Compliance Pack and how to use it, see [What is Compliance Pack](https://help.aliyun.com/).
+// For information about Cloud Config Compliance Pack and how to use it, see [What is Compliance Pack](https://www.alibabacloud.com/help/en/doc-detail/194753.html).
 //
 // > **NOTE:** Available in v1.124.0+.
 //
@@ -100,7 +100,7 @@ import (
 type CompliancePack struct {
 	pulumi.CustomResourceState
 
-	// The Compliance Package Name.
+	// The Compliance Package Name. . **NOTE:** the `compliancePackName` supports modification since V1.146.0.
 	CompliancePackName pulumi.StringOutput `pulumi:"compliancePackName"`
 	// Compliance Package Template Id.
 	CompliancePackTemplateId pulumi.StringPtrOutput `pulumi:"compliancePackTemplateId"`
@@ -156,7 +156,7 @@ func GetCompliancePack(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CompliancePack resources.
 type compliancePackState struct {
-	// The Compliance Package Name.
+	// The Compliance Package Name. . **NOTE:** the `compliancePackName` supports modification since V1.146.0.
 	CompliancePackName *string `pulumi:"compliancePackName"`
 	// Compliance Package Template Id.
 	CompliancePackTemplateId *string `pulumi:"compliancePackTemplateId"`
@@ -175,7 +175,7 @@ type compliancePackState struct {
 }
 
 type CompliancePackState struct {
-	// The Compliance Package Name.
+	// The Compliance Package Name. . **NOTE:** the `compliancePackName` supports modification since V1.146.0.
 	CompliancePackName pulumi.StringPtrInput
 	// Compliance Package Template Id.
 	CompliancePackTemplateId pulumi.StringPtrInput
@@ -198,7 +198,7 @@ func (CompliancePackState) ElementType() reflect.Type {
 }
 
 type compliancePackArgs struct {
-	// The Compliance Package Name.
+	// The Compliance Package Name. . **NOTE:** the `compliancePackName` supports modification since V1.146.0.
 	CompliancePackName string `pulumi:"compliancePackName"`
 	// Compliance Package Template Id.
 	CompliancePackTemplateId *string `pulumi:"compliancePackTemplateId"`
@@ -216,7 +216,7 @@ type compliancePackArgs struct {
 
 // The set of arguments for constructing a CompliancePack resource.
 type CompliancePackArgs struct {
-	// The Compliance Package Name.
+	// The Compliance Package Name. . **NOTE:** the `compliancePackName` supports modification since V1.146.0.
 	CompliancePackName pulumi.StringInput
 	// Compliance Package Template Id.
 	CompliancePackTemplateId pulumi.StringPtrInput

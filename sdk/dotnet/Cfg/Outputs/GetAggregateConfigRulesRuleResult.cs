@@ -18,16 +18,17 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// The name of the rule.
+        /// The config rule name.
         /// </summary>
         public readonly string AggregateConfigRuleName;
+        /// <summary>
+        /// The ID of aggregator.
+        /// </summary>
+        public readonly string AggregatorId;
         /// <summary>
         /// The ID of Compliance Package.
         /// </summary>
         public readonly string CompliancePackId;
-        /// <summary>
-        /// -The Compliance information.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetAggregateConfigRulesRuleComplianceResult> Compliances;
         /// <summary>
         /// The config rule arn.
@@ -51,6 +52,8 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         public readonly string EventSource;
         /// <summary>
         /// The types of the resources to be evaluated against the rule.
+        /// * `source_identifier`- The name of the custom rule or managed rule.
+        /// * `source_owner`- The source owner of the Config Rule.
         /// </summary>
         public readonly string ExcludeResourceIdsScope;
         /// <summary>
@@ -79,19 +82,13 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         public readonly string ResourceGroupIdsScope;
         public readonly ImmutableArray<string> ResourceTypesScopes;
         /// <summary>
-        /// The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
+        /// Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
         /// </summary>
         public readonly int RiskLevel;
-        /// <summary>
-        /// The name of the custom rule or managed rule.
-        /// </summary>
         public readonly string SourceIdentifier;
-        /// <summary>
-        /// The source owner of the Config Rule.
-        /// </summary>
         public readonly string SourceOwner;
         /// <summary>
-        /// The status of the rule.
+        /// The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -108,6 +105,8 @@ namespace Pulumi.AliCloud.Cfg.Outputs
             string accountId,
 
             string aggregateConfigRuleName,
+
+            string aggregatorId,
 
             string compliancePackId,
 
@@ -153,6 +152,7 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         {
             AccountId = accountId;
             AggregateConfigRuleName = aggregateConfigRuleName;
+            AggregatorId = aggregatorId;
             CompliancePackId = compliancePackId;
             Compliances = compliances;
             ConfigRuleArn = configRuleArn;

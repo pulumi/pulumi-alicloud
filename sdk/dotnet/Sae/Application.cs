@@ -352,7 +352,7 @@ namespace Pulumi.AliCloud.Sae
         public Output<string?> Readiness { get; private set; } = null!;
 
         /// <summary>
-        /// Initial number of instances.
+        /// Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
         /// </summary>
         [Output("replicas")]
         public Output<int> Replicas { get; private set; } = null!;
@@ -746,7 +746,7 @@ namespace Pulumi.AliCloud.Sae
         public Input<string>? Readiness { get; set; }
 
         /// <summary>
-        /// Initial number of instances.
+        /// Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
         /// </summary>
         [Input("replicas", required: true)]
         public Input<int> Replicas { get; set; } = null!;
@@ -1113,7 +1113,7 @@ namespace Pulumi.AliCloud.Sae
         public Input<string>? Readiness { get; set; }
 
         /// <summary>
-        /// Initial number of instances.
+        /// Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
         /// </summary>
         [Input("replicas")]
         public Input<int>? Replicas { get; set; }

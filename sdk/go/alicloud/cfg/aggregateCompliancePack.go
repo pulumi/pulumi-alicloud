@@ -13,7 +13,7 @@ import (
 
 // Provides a Cloud Config Aggregate Compliance Pack resource.
 //
-// For information about Cloud Config Aggregate Compliance Pack and how to use it, see [What is Aggregate Compliance Pack](https://help.aliyun.com/).
+// For information about Cloud Config Aggregate Compliance Pack and how to use it, see [What is Aggregate Compliance Pack](https://www.alibabacloud.com/help/en/doc-detail/194753.html).
 //
 // > **NOTE:** Available in v1.124.0+.
 //
@@ -116,7 +116,7 @@ import (
 type AggregateCompliancePack struct {
 	pulumi.CustomResourceState
 
-	// The name of compliance package name.
+	// The name of compliance package name. **NOTE:** the `aggregateCompliancePackName` supports modification since V1.145.0.
 	AggregateCompliancePackName pulumi.StringOutput `pulumi:"aggregateCompliancePackName"`
 	// The ID of aggregator.
 	AggregatorId pulumi.StringOutput `pulumi:"aggregatorId"`
@@ -177,7 +177,7 @@ func GetAggregateCompliancePack(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AggregateCompliancePack resources.
 type aggregateCompliancePackState struct {
-	// The name of compliance package name.
+	// The name of compliance package name. **NOTE:** the `aggregateCompliancePackName` supports modification since V1.145.0.
 	AggregateCompliancePackName *string `pulumi:"aggregateCompliancePackName"`
 	// The ID of aggregator.
 	AggregatorId *string `pulumi:"aggregatorId"`
@@ -198,7 +198,7 @@ type aggregateCompliancePackState struct {
 }
 
 type AggregateCompliancePackState struct {
-	// The name of compliance package name.
+	// The name of compliance package name. **NOTE:** the `aggregateCompliancePackName` supports modification since V1.145.0.
 	AggregateCompliancePackName pulumi.StringPtrInput
 	// The ID of aggregator.
 	AggregatorId pulumi.StringPtrInput
@@ -223,7 +223,7 @@ func (AggregateCompliancePackState) ElementType() reflect.Type {
 }
 
 type aggregateCompliancePackArgs struct {
-	// The name of compliance package name.
+	// The name of compliance package name. **NOTE:** the `aggregateCompliancePackName` supports modification since V1.145.0.
 	AggregateCompliancePackName string `pulumi:"aggregateCompliancePackName"`
 	// The ID of aggregator.
 	AggregatorId string `pulumi:"aggregatorId"`
@@ -243,7 +243,7 @@ type aggregateCompliancePackArgs struct {
 
 // The set of arguments for constructing a AggregateCompliancePack resource.
 type AggregateCompliancePackArgs struct {
-	// The name of compliance package name.
+	// The name of compliance package name. **NOTE:** the `aggregateCompliancePackName` supports modification since V1.145.0.
 	AggregateCompliancePackName pulumi.StringInput
 	// The ID of aggregator.
 	AggregatorId pulumi.StringInput

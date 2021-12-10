@@ -452,6 +452,112 @@ func (o ZoneAttachmentVpcArrayOutput) Index(i pulumi.IntInput) ZoneAttachmentVpc
 	}).(ZoneAttachmentVpcOutput)
 }
 
+type ZoneUserInfo struct {
+	// The list of the region IDs.
+	RegionIds []string `pulumi:"regionIds"`
+	// The user ID belonging to the region is used for cross-account synchronization scenarios.
+	UserId *string `pulumi:"userId"`
+}
+
+// ZoneUserInfoInput is an input type that accepts ZoneUserInfoArgs and ZoneUserInfoOutput values.
+// You can construct a concrete instance of `ZoneUserInfoInput` via:
+//
+//          ZoneUserInfoArgs{...}
+type ZoneUserInfoInput interface {
+	pulumi.Input
+
+	ToZoneUserInfoOutput() ZoneUserInfoOutput
+	ToZoneUserInfoOutputWithContext(context.Context) ZoneUserInfoOutput
+}
+
+type ZoneUserInfoArgs struct {
+	// The list of the region IDs.
+	RegionIds pulumi.StringArrayInput `pulumi:"regionIds"`
+	// The user ID belonging to the region is used for cross-account synchronization scenarios.
+	UserId pulumi.StringPtrInput `pulumi:"userId"`
+}
+
+func (ZoneUserInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneUserInfo)(nil)).Elem()
+}
+
+func (i ZoneUserInfoArgs) ToZoneUserInfoOutput() ZoneUserInfoOutput {
+	return i.ToZoneUserInfoOutputWithContext(context.Background())
+}
+
+func (i ZoneUserInfoArgs) ToZoneUserInfoOutputWithContext(ctx context.Context) ZoneUserInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneUserInfoOutput)
+}
+
+// ZoneUserInfoArrayInput is an input type that accepts ZoneUserInfoArray and ZoneUserInfoArrayOutput values.
+// You can construct a concrete instance of `ZoneUserInfoArrayInput` via:
+//
+//          ZoneUserInfoArray{ ZoneUserInfoArgs{...} }
+type ZoneUserInfoArrayInput interface {
+	pulumi.Input
+
+	ToZoneUserInfoArrayOutput() ZoneUserInfoArrayOutput
+	ToZoneUserInfoArrayOutputWithContext(context.Context) ZoneUserInfoArrayOutput
+}
+
+type ZoneUserInfoArray []ZoneUserInfoInput
+
+func (ZoneUserInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZoneUserInfo)(nil)).Elem()
+}
+
+func (i ZoneUserInfoArray) ToZoneUserInfoArrayOutput() ZoneUserInfoArrayOutput {
+	return i.ToZoneUserInfoArrayOutputWithContext(context.Background())
+}
+
+func (i ZoneUserInfoArray) ToZoneUserInfoArrayOutputWithContext(ctx context.Context) ZoneUserInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneUserInfoArrayOutput)
+}
+
+type ZoneUserInfoOutput struct{ *pulumi.OutputState }
+
+func (ZoneUserInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneUserInfo)(nil)).Elem()
+}
+
+func (o ZoneUserInfoOutput) ToZoneUserInfoOutput() ZoneUserInfoOutput {
+	return o
+}
+
+func (o ZoneUserInfoOutput) ToZoneUserInfoOutputWithContext(ctx context.Context) ZoneUserInfoOutput {
+	return o
+}
+
+// The list of the region IDs.
+func (o ZoneUserInfoOutput) RegionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ZoneUserInfo) []string { return v.RegionIds }).(pulumi.StringArrayOutput)
+}
+
+// The user ID belonging to the region is used for cross-account synchronization scenarios.
+func (o ZoneUserInfoOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneUserInfo) *string { return v.UserId }).(pulumi.StringPtrOutput)
+}
+
+type ZoneUserInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (ZoneUserInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZoneUserInfo)(nil)).Elem()
+}
+
+func (o ZoneUserInfoArrayOutput) ToZoneUserInfoArrayOutput() ZoneUserInfoArrayOutput {
+	return o
+}
+
+func (o ZoneUserInfoArrayOutput) ToZoneUserInfoArrayOutputWithContext(ctx context.Context) ZoneUserInfoArrayOutput {
+	return o
+}
+
+func (o ZoneUserInfoArrayOutput) Index(i pulumi.IntInput) ZoneUserInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZoneUserInfo {
+		return vs[0].([]ZoneUserInfo)[vs[1].(int)]
+	}).(ZoneUserInfoOutput)
+}
+
 type GetEndpointsEndpoint struct {
 	// The creation time of the resource.
 	CreateTime string `pulumi:"createTime"`
@@ -1645,6 +1751,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleForwardIpArrayInput)(nil)).Elem(), RuleForwardIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneAttachmentVpcInput)(nil)).Elem(), ZoneAttachmentVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneAttachmentVpcArrayInput)(nil)).Elem(), ZoneAttachmentVpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneUserInfoInput)(nil)).Elem(), ZoneUserInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneUserInfoArrayInput)(nil)).Elem(), ZoneUserInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointsEndpointInput)(nil)).Elem(), GetEndpointsEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointsEndpointArrayInput)(nil)).Elem(), GetEndpointsEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointsEndpointIpConfigInput)(nil)).Elem(), GetEndpointsEndpointIpConfigArgs{})
@@ -1669,6 +1777,8 @@ func init() {
 	pulumi.RegisterOutputType(RuleForwardIpArrayOutput{})
 	pulumi.RegisterOutputType(ZoneAttachmentVpcOutput{})
 	pulumi.RegisterOutputType(ZoneAttachmentVpcArrayOutput{})
+	pulumi.RegisterOutputType(ZoneUserInfoOutput{})
+	pulumi.RegisterOutputType(ZoneUserInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetEndpointsEndpointOutput{})
 	pulumi.RegisterOutputType(GetEndpointsEndpointArrayOutput{})
 	pulumi.RegisterOutputType(GetEndpointsEndpointIpConfigOutput{})

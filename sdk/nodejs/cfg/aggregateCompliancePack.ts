@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Config Aggregate Compliance Pack resource.
  *
- * For information about Cloud Config Aggregate Compliance Pack and how to use it, see [What is Aggregate Compliance Pack](https://help.aliyun.com/).
+ * For information about Cloud Config Aggregate Compliance Pack and how to use it, see [What is Aggregate Compliance Pack](https://www.alibabacloud.com/help/en/doc-detail/194753.html).
  *
  * > **NOTE:** Available in v1.124.0+.
  *
@@ -101,7 +101,7 @@ export class AggregateCompliancePack extends pulumi.CustomResource {
     }
 
     /**
-     * The name of compliance package name.
+     * The name of compliance package name. **NOTE:** the `aggregateCompliancePackName` supports modification since V1.145.0.
      */
     public readonly aggregateCompliancePackName!: pulumi.Output<string>;
     /**
@@ -191,7 +191,7 @@ export class AggregateCompliancePack extends pulumi.CustomResource {
  */
 export interface AggregateCompliancePackState {
     /**
-     * The name of compliance package name.
+     * The name of compliance package name. **NOTE:** the `aggregateCompliancePackName` supports modification since V1.145.0.
      */
     aggregateCompliancePackName?: pulumi.Input<string>;
     /**
@@ -231,7 +231,7 @@ export interface AggregateCompliancePackState {
  */
 export interface AggregateCompliancePackArgs {
     /**
-     * The name of compliance package name.
+     * The name of compliance package name. **NOTE:** the `aggregateCompliancePackName` supports modification since V1.145.0.
      */
     aggregateCompliancePackName: pulumi.Input<string>;
     /**

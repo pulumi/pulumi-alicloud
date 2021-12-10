@@ -19,11 +19,11 @@ namespace Pulumi.AliCloud.Dts.Outputs
         public readonly string Checkpoint;
         public readonly string CreateTime;
         /// <summary>
-        /// Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization values include:
+        /// Whether to execute DTS supports schema migration, full data migration, or full-data initialization.
         /// </summary>
         public readonly bool DataInitialization;
         /// <summary>
-        /// Whether to perform incremental data migration for migration types or synchronization values include:
+        /// Whether to perform incremental data migration for migration types or synchronization.
         /// </summary>
         public readonly bool DataSynchronization;
         /// <summary>

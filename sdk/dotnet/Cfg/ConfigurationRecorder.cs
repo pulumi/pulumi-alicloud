@@ -11,7 +11,7 @@ namespace Pulumi.AliCloud.Cfg
 {
     /// <summary>
     /// Provides a Alicloud Config Configuration Recorder resource. Cloud Config is a specialized service for evaluating resources. Cloud Config tracks configuration changes of your resources and evaluates configuration compliance. Cloud Config can help you evaluate numerous resources and maintain the continuous compliance of your cloud infrastructure.
-    /// For information about Alicloud Config Configuration Recorder and how to use it, see [What is Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127388.htm)
+    /// For information about Alicloud Config Configuration Recorder and how to use it, see [What is Configuration Recorder.](https://www.alibabacloud.com/help/en/doc-detail/153156.html)
     /// 
     /// &gt; **NOTE:** Available in v1.99.0+.
     /// 
@@ -51,11 +51,8 @@ namespace Pulumi.AliCloud.Cfg
     [AliCloudResourceType("alicloud:cfg/configurationRecorder:ConfigurationRecorder")]
     public partial class ConfigurationRecorder : Pulumi.CustomResource
     {
-        /// <summary>
-        /// - Whether to use the enterprise version configuration audit. Valid values: `true` and `fales`. Default value `false`.
-        /// </summary>
         [Output("enterpriseEdition")]
-        public Output<bool?> EnterpriseEdition { get; private set; } = null!;
+        public Output<bool> EnterpriseEdition { get; private set; } = null!;
 
         /// <summary>
         /// Status of resource monitoring. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
@@ -71,6 +68,8 @@ namespace Pulumi.AliCloud.Cfg
 
         /// <summary>
         /// A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+        /// * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
+        /// * If you use an enterprise account, the `resource_types` does not support updating.
         /// </summary>
         [Output("resourceTypes")]
         public Output<ImmutableArray<string>> ResourceTypes { get; private set; } = null!;
@@ -127,9 +126,6 @@ namespace Pulumi.AliCloud.Cfg
 
     public sealed class ConfigurationRecorderArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// - Whether to use the enterprise version configuration audit. Valid values: `true` and `fales`. Default value `false`.
-        /// </summary>
         [Input("enterpriseEdition")]
         public Input<bool>? EnterpriseEdition { get; set; }
 
@@ -138,6 +134,8 @@ namespace Pulumi.AliCloud.Cfg
 
         /// <summary>
         /// A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+        /// * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
+        /// * If you use an enterprise account, the `resource_types` does not support updating.
         /// </summary>
         public InputList<string> ResourceTypes
         {
@@ -152,9 +150,6 @@ namespace Pulumi.AliCloud.Cfg
 
     public sealed class ConfigurationRecorderState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// - Whether to use the enterprise version configuration audit. Valid values: `true` and `fales`. Default value `false`.
-        /// </summary>
         [Input("enterpriseEdition")]
         public Input<bool>? EnterpriseEdition { get; set; }
 
@@ -175,6 +170,8 @@ namespace Pulumi.AliCloud.Cfg
 
         /// <summary>
         /// A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+        /// * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
+        /// * If you use an enterprise account, the `resource_types` does not support updating.
         /// </summary>
         public InputList<string> ResourceTypes
         {

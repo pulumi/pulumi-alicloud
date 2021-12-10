@@ -64,7 +64,7 @@ type GetAggregateCompliancePacksArgs struct {
 	// A regex string to filter results by Aggregate Compliance Pack name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`.
 	Status *string `pulumi:"status"`
 }
 
@@ -73,13 +73,16 @@ type GetAggregateCompliancePacksResult struct {
 	AggregatorId  string `pulumi:"aggregatorId"`
 	EnableDetails *bool  `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                            `pulumi:"id"`
-	Ids        []string                          `pulumi:"ids"`
-	NameRegex  *string                           `pulumi:"nameRegex"`
-	Names      []string                          `pulumi:"names"`
-	OutputFile *string                           `pulumi:"outputFile"`
-	Packs      []GetAggregateCompliancePacksPack `pulumi:"packs"`
-	Status     *string                           `pulumi:"status"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Config Aggregate Compliance Pack names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Config Aggregate Compliance Packs. Each element contains the following attributes:
+	Packs []GetAggregateCompliancePacksPack `pulumi:"packs"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
 }
 
 func GetAggregateCompliancePacksOutput(ctx *pulumi.Context, args GetAggregateCompliancePacksOutputArgs, opts ...pulumi.InvokeOption) GetAggregateCompliancePacksResultOutput {
@@ -102,7 +105,7 @@ type GetAggregateCompliancePacksOutputArgs struct {
 	// A regex string to filter results by Aggregate Compliance Pack name.
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -146,6 +149,7 @@ func (o GetAggregateCompliancePacksResultOutput) NameRegex() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetAggregateCompliancePacksResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Config Aggregate Compliance Pack names.
 func (o GetAggregateCompliancePacksResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAggregateCompliancePacksResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -154,10 +158,12 @@ func (o GetAggregateCompliancePacksResultOutput) OutputFile() pulumi.StringPtrOu
 	return o.ApplyT(func(v GetAggregateCompliancePacksResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Config Aggregate Compliance Packs. Each element contains the following attributes:
 func (o GetAggregateCompliancePacksResultOutput) Packs() GetAggregateCompliancePacksPackArrayOutput {
 	return o.ApplyT(func(v GetAggregateCompliancePacksResult) []GetAggregateCompliancePacksPack { return v.Packs }).(GetAggregateCompliancePacksPackArrayOutput)
 }
 
+// The status of the resource.
 func (o GetAggregateCompliancePacksResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAggregateCompliancePacksResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

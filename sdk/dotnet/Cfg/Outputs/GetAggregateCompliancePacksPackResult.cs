@@ -17,12 +17,10 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// The Aliyun User Id.
         /// </summary>
         public readonly string AccountId;
-        /// <summary>
-        /// -The Aggregate Compliance Package Name.
-        /// </summary>
         public readonly string AggregateCompliancePackName;
         /// <summary>
         /// The first ID of the resource.
+        /// * `aggregate_compliance_pack_name` -The Aggregate Compliance Package Name.
         /// </summary>
         public readonly string AggregatorCompliancePackId;
         /// <summary>
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// </summary>
         public readonly int RiskLevel;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`.
         /// </summary>
         public readonly string Status;
 

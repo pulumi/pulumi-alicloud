@@ -7,10 +7,22 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'ClusterBootstrapAction',
     'ClusterHostGroup',
+    'GetClustersClusterResult',
+    'GetClustersClusterAccessInfoResult',
+    'GetClustersClusterAccessInfoZkLinkResult',
+    'GetClustersClusterBootstrapActionListResult',
+    'GetClustersClusterHostGroupListResult',
+    'GetClustersClusterHostGroupListNodeResult',
+    'GetClustersClusterHostGroupListNodeDiskInfoResult',
+    'GetClustersClusterHostPoolInfoResult',
+    'GetClustersClusterRelateClusterInfoResult',
+    'GetClustersClusterSoftwareInfoResult',
+    'GetClustersClusterSoftwareInfoSoftwareResult',
     'GetDiskTypesTypeResult',
     'GetInstanceTypesTypeResult',
     'GetMainVersionsMainVersionResult',
@@ -269,6 +281,1091 @@ class ClusterHostGroup(dict):
         System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
         """
         return pulumi.get(self, "sys_disk_type")
+
+
+@pulumi.output_type
+class GetClustersClusterResult(dict):
+    def __init__(__self__, *,
+                 access_infos: Sequence['outputs.GetClustersClusterAccessInfoResult'],
+                 auto_scaling_allowed: bool,
+                 auto_scaling_by_load_allowed: bool,
+                 auto_scaling_enable: bool,
+                 auto_scaling_spot_with_limit_allowed: bool,
+                 bootstrap_action_lists: Sequence['outputs.GetClustersClusterBootstrapActionListResult'],
+                 bootstrap_failed: bool,
+                 cluster_id: str,
+                 cluster_name: str,
+                 create_resource: str,
+                 create_time: str,
+                 create_type: str,
+                 deposit_type: str,
+                 eas_enable: bool,
+                 expired_time: str,
+                 extra_info: str,
+                 high_availability_enable: bool,
+                 host_group_lists: Sequence['outputs.GetClustersClusterHostGroupListResult'],
+                 host_pool_infos: Sequence['outputs.GetClustersClusterHostPoolInfoResult'],
+                 id: str,
+                 image_id: str,
+                 local_meta_db: bool,
+                 machine_type: str,
+                 meta_store_type: str,
+                 net_type: str,
+                 payment_type: str,
+                 period: int,
+                 relate_cluster_infos: Sequence['outputs.GetClustersClusterRelateClusterInfoResult'],
+                 resize_disk_enable: bool,
+                 running_time: int,
+                 security_group_id: str,
+                 security_group_name: str,
+                 software_infos: Sequence['outputs.GetClustersClusterSoftwareInfoResult'],
+                 start_time: str,
+                 status: str,
+                 stop_time: str,
+                 tags: Mapping[str, Any],
+                 user_defined_emr_ecs_role: str,
+                 user_id: str,
+                 vpc_id: str,
+                 vswitch_id: str,
+                 zone_id: str):
+        """
+        :param Sequence['GetClustersClusterAccessInfoArgs'] access_infos: Cluster connection information.
+        :param bool auto_scaling_allowed: Whether flexible expansion is allowed.
+        :param bool auto_scaling_by_load_allowed: Whether to allow expansion by load.
+        :param bool auto_scaling_enable: Whether to enable elastic expansion.
+        :param bool auto_scaling_spot_with_limit_allowed: Whether to allow the use of elastic scaling bidding instances.
+        :param Sequence['GetClustersClusterBootstrapActionListArgs'] bootstrap_action_lists: List of boot actions.
+        :param bool bootstrap_failed: The result of the boot operation.
+        :param str cluster_id: The ID of the associated cluster.
+        :param str cluster_name: The name of the associated cluster.
+        :param str create_resource: Cluster tag, no need to pay attention.
+        :param str create_time: Creation time.
+        :param str create_type: How to create a cluster.
+        :param str deposit_type: The hosting type of the cluster.
+        :param bool eas_enable: High security cluster.
+        :param str expired_time: Timeout time.
+        :param str extra_info: Additional information for Stack.
+        :param bool high_availability_enable: High availability cluster.
+        :param Sequence['GetClustersClusterHostGroupListArgs'] host_group_lists: List of cluster machine groups.
+        :param Sequence['GetClustersClusterHostPoolInfoArgs'] host_pool_infos: Machine pool information.
+        :param str image_id: The ID of the image used to create the cluster.
+        :param bool local_meta_db: Whether to use Hive local Metabase.
+        :param str machine_type: The host type of the cluster. The default is ECS.
+        :param str meta_store_type: Metadata type:
+        :param str net_type: Cluster network type.
+        :param str payment_type: The payment type of the resource.
+        :param int period: The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+        :param Sequence['GetClustersClusterRelateClusterInfoArgs'] relate_cluster_infos: The information of the primary cluster associated with the Gateway.
+        :param bool resize_disk_enable: Whether to allow disk expansion:
+        :param int running_time: The time (in seconds) that has been running.
+        :param str security_group_id: The ID of the security group.
+        :param str security_group_name: The name of the security group.
+        :param Sequence['GetClustersClusterSoftwareInfoArgs'] software_infos: Service list.
+        :param str start_time: Cluster startup time.
+        :param str status: The cluster status.
+        :param str stop_time: Cluster stop time.
+        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param str user_defined_emr_ecs_role: The EMR permission name used.
+        :param str user_id: The user ID.
+        :param str vpc_id: The VPC ID.
+        :param str vswitch_id: The vswitch id.
+        :param str zone_id: The zone ID.
+        """
+        pulumi.set(__self__, "access_infos", access_infos)
+        pulumi.set(__self__, "auto_scaling_allowed", auto_scaling_allowed)
+        pulumi.set(__self__, "auto_scaling_by_load_allowed", auto_scaling_by_load_allowed)
+        pulumi.set(__self__, "auto_scaling_enable", auto_scaling_enable)
+        pulumi.set(__self__, "auto_scaling_spot_with_limit_allowed", auto_scaling_spot_with_limit_allowed)
+        pulumi.set(__self__, "bootstrap_action_lists", bootstrap_action_lists)
+        pulumi.set(__self__, "bootstrap_failed", bootstrap_failed)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "cluster_name", cluster_name)
+        pulumi.set(__self__, "create_resource", create_resource)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "create_type", create_type)
+        pulumi.set(__self__, "deposit_type", deposit_type)
+        pulumi.set(__self__, "eas_enable", eas_enable)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "extra_info", extra_info)
+        pulumi.set(__self__, "high_availability_enable", high_availability_enable)
+        pulumi.set(__self__, "host_group_lists", host_group_lists)
+        pulumi.set(__self__, "host_pool_infos", host_pool_infos)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "local_meta_db", local_meta_db)
+        pulumi.set(__self__, "machine_type", machine_type)
+        pulumi.set(__self__, "meta_store_type", meta_store_type)
+        pulumi.set(__self__, "net_type", net_type)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "period", period)
+        pulumi.set(__self__, "relate_cluster_infos", relate_cluster_infos)
+        pulumi.set(__self__, "resize_disk_enable", resize_disk_enable)
+        pulumi.set(__self__, "running_time", running_time)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "security_group_name", security_group_name)
+        pulumi.set(__self__, "software_infos", software_infos)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "stop_time", stop_time)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "user_defined_emr_ecs_role", user_defined_emr_ecs_role)
+        pulumi.set(__self__, "user_id", user_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="accessInfos")
+    def access_infos(self) -> Sequence['outputs.GetClustersClusterAccessInfoResult']:
+        """
+        Cluster connection information.
+        """
+        return pulumi.get(self, "access_infos")
+
+    @property
+    @pulumi.getter(name="autoScalingAllowed")
+    def auto_scaling_allowed(self) -> bool:
+        """
+        Whether flexible expansion is allowed.
+        """
+        return pulumi.get(self, "auto_scaling_allowed")
+
+    @property
+    @pulumi.getter(name="autoScalingByLoadAllowed")
+    def auto_scaling_by_load_allowed(self) -> bool:
+        """
+        Whether to allow expansion by load.
+        """
+        return pulumi.get(self, "auto_scaling_by_load_allowed")
+
+    @property
+    @pulumi.getter(name="autoScalingEnable")
+    def auto_scaling_enable(self) -> bool:
+        """
+        Whether to enable elastic expansion.
+        """
+        return pulumi.get(self, "auto_scaling_enable")
+
+    @property
+    @pulumi.getter(name="autoScalingSpotWithLimitAllowed")
+    def auto_scaling_spot_with_limit_allowed(self) -> bool:
+        """
+        Whether to allow the use of elastic scaling bidding instances.
+        """
+        return pulumi.get(self, "auto_scaling_spot_with_limit_allowed")
+
+    @property
+    @pulumi.getter(name="bootstrapActionLists")
+    def bootstrap_action_lists(self) -> Sequence['outputs.GetClustersClusterBootstrapActionListResult']:
+        """
+        List of boot actions.
+        """
+        return pulumi.get(self, "bootstrap_action_lists")
+
+    @property
+    @pulumi.getter(name="bootstrapFailed")
+    def bootstrap_failed(self) -> bool:
+        """
+        The result of the boot operation.
+        """
+        return pulumi.get(self, "bootstrap_failed")
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        """
+        The ID of the associated cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> str:
+        """
+        The name of the associated cluster.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @property
+    @pulumi.getter(name="createResource")
+    def create_resource(self) -> str:
+        """
+        Cluster tag, no need to pay attention.
+        """
+        return pulumi.get(self, "create_resource")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="createType")
+    def create_type(self) -> str:
+        """
+        How to create a cluster.
+        """
+        return pulumi.get(self, "create_type")
+
+    @property
+    @pulumi.getter(name="depositType")
+    def deposit_type(self) -> str:
+        """
+        The hosting type of the cluster.
+        """
+        return pulumi.get(self, "deposit_type")
+
+    @property
+    @pulumi.getter(name="easEnable")
+    def eas_enable(self) -> bool:
+        """
+        High security cluster.
+        """
+        return pulumi.get(self, "eas_enable")
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> str:
+        """
+        Timeout time.
+        """
+        return pulumi.get(self, "expired_time")
+
+    @property
+    @pulumi.getter(name="extraInfo")
+    def extra_info(self) -> str:
+        """
+        Additional information for Stack.
+        """
+        return pulumi.get(self, "extra_info")
+
+    @property
+    @pulumi.getter(name="highAvailabilityEnable")
+    def high_availability_enable(self) -> bool:
+        """
+        High availability cluster.
+        """
+        return pulumi.get(self, "high_availability_enable")
+
+    @property
+    @pulumi.getter(name="hostGroupLists")
+    def host_group_lists(self) -> Sequence['outputs.GetClustersClusterHostGroupListResult']:
+        """
+        List of cluster machine groups.
+        """
+        return pulumi.get(self, "host_group_lists")
+
+    @property
+    @pulumi.getter(name="hostPoolInfos")
+    def host_pool_infos(self) -> Sequence['outputs.GetClustersClusterHostPoolInfoResult']:
+        """
+        Machine pool information.
+        """
+        return pulumi.get(self, "host_pool_infos")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> str:
+        """
+        The ID of the image used to create the cluster.
+        """
+        return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="localMetaDb")
+    def local_meta_db(self) -> bool:
+        """
+        Whether to use Hive local Metabase.
+        """
+        return pulumi.get(self, "local_meta_db")
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> str:
+        """
+        The host type of the cluster. The default is ECS.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter(name="metaStoreType")
+    def meta_store_type(self) -> str:
+        """
+        Metadata type:
+        """
+        return pulumi.get(self, "meta_store_type")
+
+    @property
+    @pulumi.getter(name="netType")
+    def net_type(self) -> str:
+        """
+        Cluster network type.
+        """
+        return pulumi.get(self, "net_type")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        The payment type of the resource.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter
+    def period(self) -> int:
+        """
+        The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+        """
+        return pulumi.get(self, "period")
+
+    @property
+    @pulumi.getter(name="relateClusterInfos")
+    def relate_cluster_infos(self) -> Sequence['outputs.GetClustersClusterRelateClusterInfoResult']:
+        """
+        The information of the primary cluster associated with the Gateway.
+        """
+        return pulumi.get(self, "relate_cluster_infos")
+
+    @property
+    @pulumi.getter(name="resizeDiskEnable")
+    def resize_disk_enable(self) -> bool:
+        """
+        Whether to allow disk expansion:
+        """
+        return pulumi.get(self, "resize_disk_enable")
+
+    @property
+    @pulumi.getter(name="runningTime")
+    def running_time(self) -> int:
+        """
+        The time (in seconds) that has been running.
+        """
+        return pulumi.get(self, "running_time")
+
+    @property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> str:
+        """
+        The ID of the security group.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @property
+    @pulumi.getter(name="securityGroupName")
+    def security_group_name(self) -> str:
+        """
+        The name of the security group.
+        """
+        return pulumi.get(self, "security_group_name")
+
+    @property
+    @pulumi.getter(name="softwareInfos")
+    def software_infos(self) -> Sequence['outputs.GetClustersClusterSoftwareInfoResult']:
+        """
+        Service list.
+        """
+        return pulumi.get(self, "software_infos")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        Cluster startup time.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The cluster status.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="stopTime")
+    def stop_time(self) -> str:
+        """
+        Cluster stop time.
+        """
+        return pulumi.get(self, "stop_time")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="userDefinedEmrEcsRole")
+    def user_defined_emr_ecs_role(self) -> str:
+        """
+        The EMR permission name used.
+        """
+        return pulumi.get(self, "user_defined_emr_ecs_role")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> str:
+        """
+        The user ID.
+        """
+        return pulumi.get(self, "user_id")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The VPC ID.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The vswitch id.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The zone ID.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetClustersClusterAccessInfoResult(dict):
+    def __init__(__self__, *,
+                 zk_links: Sequence['outputs.GetClustersClusterAccessInfoZkLinkResult']):
+        """
+        :param Sequence['GetClustersClusterAccessInfoZkLinkArgs'] zk_links: Link address information list of ZooKeeper.
+        """
+        pulumi.set(__self__, "zk_links", zk_links)
+
+    @property
+    @pulumi.getter(name="zkLinks")
+    def zk_links(self) -> Sequence['outputs.GetClustersClusterAccessInfoZkLinkResult']:
+        """
+        Link address information list of ZooKeeper.
+        """
+        return pulumi.get(self, "zk_links")
+
+
+@pulumi.output_type
+class GetClustersClusterAccessInfoZkLinkResult(dict):
+    def __init__(__self__, *,
+                 link: str,
+                 port: str):
+        """
+        :param str link: The access link address of ZooKeeper.
+        :param str port: The port of ZooKeeper.
+        """
+        pulumi.set(__self__, "link", link)
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def link(self) -> str:
+        """
+        The access link address of ZooKeeper.
+        """
+        return pulumi.get(self, "link")
+
+    @property
+    @pulumi.getter
+    def port(self) -> str:
+        """
+        The port of ZooKeeper.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class GetClustersClusterBootstrapActionListResult(dict):
+    def __init__(__self__, *,
+                 arg: str,
+                 name: str,
+                 path: str):
+        """
+        :param str arg: Parameters of the boot operation.
+        :param str name: The internal name of the service.
+        :param str path: Boot operation script path.
+        """
+        pulumi.set(__self__, "arg", arg)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def arg(self) -> str:
+        """
+        Parameters of the boot operation.
+        """
+        return pulumi.get(self, "arg")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The internal name of the service.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        Boot operation script path.
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class GetClustersClusterHostGroupListResult(dict):
+    def __init__(__self__, *,
+                 band_width: str,
+                 charge_type: str,
+                 cpu_core: int,
+                 disk_capacity: int,
+                 disk_count: int,
+                 disk_type: str,
+                 host_group_change_type: str,
+                 host_group_id: str,
+                 host_group_name: str,
+                 host_group_type: str,
+                 instance_type: str,
+                 memory_capacity: int,
+                 node_count: int,
+                 nodes: Sequence['outputs.GetClustersClusterHostGroupListNodeResult'],
+                 period: str):
+        """
+        :param str band_width: Bandwidth.
+        :param str charge_type: Payment Type.
+        :param int cpu_core: The number of CPU cores.
+        :param int disk_capacity: Data disk capacity.
+        :param int disk_count: The number of data disks.
+        :param str disk_type: System disk type:
+        :param str host_group_change_type: The current operation type of the machine Group:
+        :param str host_group_id: The ID of the machine group.
+        :param str host_group_name: The name of the machine group.
+        :param str host_group_type: Role of host in cluster:
+        :param str instance_type: Machine Group instance.
+        :param int memory_capacity: Memory size.
+        :param int node_count: The number of machine group nodes.
+        :param Sequence['GetClustersClusterHostGroupListNodeArgs'] nodes: Machine node.
+        :param str period: The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+        """
+        pulumi.set(__self__, "band_width", band_width)
+        pulumi.set(__self__, "charge_type", charge_type)
+        pulumi.set(__self__, "cpu_core", cpu_core)
+        pulumi.set(__self__, "disk_capacity", disk_capacity)
+        pulumi.set(__self__, "disk_count", disk_count)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "host_group_change_type", host_group_change_type)
+        pulumi.set(__self__, "host_group_id", host_group_id)
+        pulumi.set(__self__, "host_group_name", host_group_name)
+        pulumi.set(__self__, "host_group_type", host_group_type)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "memory_capacity", memory_capacity)
+        pulumi.set(__self__, "node_count", node_count)
+        pulumi.set(__self__, "nodes", nodes)
+        pulumi.set(__self__, "period", period)
+
+    @property
+    @pulumi.getter(name="bandWidth")
+    def band_width(self) -> str:
+        """
+        Bandwidth.
+        """
+        return pulumi.get(self, "band_width")
+
+    @property
+    @pulumi.getter(name="chargeType")
+    def charge_type(self) -> str:
+        """
+        Payment Type.
+        """
+        return pulumi.get(self, "charge_type")
+
+    @property
+    @pulumi.getter(name="cpuCore")
+    def cpu_core(self) -> int:
+        """
+        The number of CPU cores.
+        """
+        return pulumi.get(self, "cpu_core")
+
+    @property
+    @pulumi.getter(name="diskCapacity")
+    def disk_capacity(self) -> int:
+        """
+        Data disk capacity.
+        """
+        return pulumi.get(self, "disk_capacity")
+
+    @property
+    @pulumi.getter(name="diskCount")
+    def disk_count(self) -> int:
+        """
+        The number of data disks.
+        """
+        return pulumi.get(self, "disk_count")
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> str:
+        """
+        System disk type:
+        """
+        return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="hostGroupChangeType")
+    def host_group_change_type(self) -> str:
+        """
+        The current operation type of the machine Group:
+        """
+        return pulumi.get(self, "host_group_change_type")
+
+    @property
+    @pulumi.getter(name="hostGroupId")
+    def host_group_id(self) -> str:
+        """
+        The ID of the machine group.
+        """
+        return pulumi.get(self, "host_group_id")
+
+    @property
+    @pulumi.getter(name="hostGroupName")
+    def host_group_name(self) -> str:
+        """
+        The name of the machine group.
+        """
+        return pulumi.get(self, "host_group_name")
+
+    @property
+    @pulumi.getter(name="hostGroupType")
+    def host_group_type(self) -> str:
+        """
+        Role of host in cluster:
+        """
+        return pulumi.get(self, "host_group_type")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> str:
+        """
+        Machine Group instance.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="memoryCapacity")
+    def memory_capacity(self) -> int:
+        """
+        Memory size.
+        """
+        return pulumi.get(self, "memory_capacity")
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> int:
+        """
+        The number of machine group nodes.
+        """
+        return pulumi.get(self, "node_count")
+
+    @property
+    @pulumi.getter
+    def nodes(self) -> Sequence['outputs.GetClustersClusterHostGroupListNodeResult']:
+        """
+        Machine node.
+        """
+        return pulumi.get(self, "nodes")
+
+    @property
+    @pulumi.getter
+    def period(self) -> str:
+        """
+        The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+        """
+        return pulumi.get(self, "period")
+
+
+@pulumi.output_type
+class GetClustersClusterHostGroupListNodeResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 disk_infos: Sequence['outputs.GetClustersClusterHostGroupListNodeDiskInfoResult'],
+                 emr_expired_time: str,
+                 expired_time: str,
+                 inner_ip: str,
+                 instance_id: str,
+                 pub_ip: str,
+                 status: str,
+                 support_ipv6: bool,
+                 zone_id: str):
+        """
+        :param str create_time: Creation time.
+        :param Sequence['GetClustersClusterHostGroupListNodeDiskInfoArgs'] disk_infos: Disk information.
+        :param str emr_expired_time: The timeout of the EMR.
+        :param str expired_time: Timeout time.
+        :param str inner_ip: The Intranet IP of the EMR.
+        :param str instance_id: The ID of the ECS instance.
+        :param str pub_ip: Public IP address.
+        :param str status: The cluster status.
+        :param bool support_ipv6: Whether IPV6 is supported.
+        :param str zone_id: The zone ID.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "disk_infos", disk_infos)
+        pulumi.set(__self__, "emr_expired_time", emr_expired_time)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "inner_ip", inner_ip)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "pub_ip", pub_ip)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "support_ipv6", support_ipv6)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="diskInfos")
+    def disk_infos(self) -> Sequence['outputs.GetClustersClusterHostGroupListNodeDiskInfoResult']:
+        """
+        Disk information.
+        """
+        return pulumi.get(self, "disk_infos")
+
+    @property
+    @pulumi.getter(name="emrExpiredTime")
+    def emr_expired_time(self) -> str:
+        """
+        The timeout of the EMR.
+        """
+        return pulumi.get(self, "emr_expired_time")
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> str:
+        """
+        Timeout time.
+        """
+        return pulumi.get(self, "expired_time")
+
+    @property
+    @pulumi.getter(name="innerIp")
+    def inner_ip(self) -> str:
+        """
+        The Intranet IP of the EMR.
+        """
+        return pulumi.get(self, "inner_ip")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the ECS instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="pubIp")
+    def pub_ip(self) -> str:
+        """
+        Public IP address.
+        """
+        return pulumi.get(self, "pub_ip")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The cluster status.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="supportIpv6")
+    def support_ipv6(self) -> bool:
+        """
+        Whether IPV6 is supported.
+        """
+        return pulumi.get(self, "support_ipv6")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The zone ID.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetClustersClusterHostGroupListNodeDiskInfoResult(dict):
+    def __init__(__self__, *,
+                 device: str,
+                 disk_id: str,
+                 disk_name: str,
+                 size: int,
+                 type: str):
+        """
+        :param str device: The disk name.
+        :param str disk_id: The ID of the disk.
+        :param str disk_name: The disk name.
+        :param int size: Disk capacity.
+        :param str type: Disk type.
+        """
+        pulumi.set(__self__, "device", device)
+        pulumi.set(__self__, "disk_id", disk_id)
+        pulumi.set(__self__, "disk_name", disk_name)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def device(self) -> str:
+        """
+        The disk name.
+        """
+        return pulumi.get(self, "device")
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> str:
+        """
+        The ID of the disk.
+        """
+        return pulumi.get(self, "disk_id")
+
+    @property
+    @pulumi.getter(name="diskName")
+    def disk_name(self) -> str:
+        """
+        The disk name.
+        """
+        return pulumi.get(self, "disk_name")
+
+    @property
+    @pulumi.getter
+    def size(self) -> int:
+        """
+        Disk capacity.
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Disk type.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetClustersClusterHostPoolInfoResult(dict):
+    def __init__(__self__, *,
+                 hp_biz_id: str,
+                 hp_name: str):
+        """
+        :param str hp_biz_id: Machine pool ID.
+        :param str hp_name: The name of the machine pool.
+        """
+        pulumi.set(__self__, "hp_biz_id", hp_biz_id)
+        pulumi.set(__self__, "hp_name", hp_name)
+
+    @property
+    @pulumi.getter(name="hpBizId")
+    def hp_biz_id(self) -> str:
+        """
+        Machine pool ID.
+        """
+        return pulumi.get(self, "hp_biz_id")
+
+    @property
+    @pulumi.getter(name="hpName")
+    def hp_name(self) -> str:
+        """
+        The name of the machine pool.
+        """
+        return pulumi.get(self, "hp_name")
+
+
+@pulumi.output_type
+class GetClustersClusterRelateClusterInfoResult(dict):
+    def __init__(__self__, *,
+                 cluster_id: str,
+                 cluster_name: str,
+                 cluster_type: str,
+                 status: str):
+        """
+        :param str cluster_id: The ID of the associated cluster.
+        :param str cluster_name: The name of the associated cluster.
+        :param str cluster_type: Cluster type:
+        :param str status: The cluster status.
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "cluster_name", cluster_name)
+        pulumi.set(__self__, "cluster_type", cluster_type)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        """
+        The ID of the associated cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> str:
+        """
+        The name of the associated cluster.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @property
+    @pulumi.getter(name="clusterType")
+    def cluster_type(self) -> str:
+        """
+        Cluster type:
+        """
+        return pulumi.get(self, "cluster_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The cluster status.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetClustersClusterSoftwareInfoResult(dict):
+    def __init__(__self__, *,
+                 cluster_type: str,
+                 emr_ver: str,
+                 softwares: Sequence['outputs.GetClustersClusterSoftwareInfoSoftwareResult']):
+        """
+        :param str cluster_type: Cluster type:
+        :param str emr_ver: E-MapReduce version number.
+        :param Sequence['GetClustersClusterSoftwareInfoSoftwareArgs'] softwares: Service list.
+        """
+        pulumi.set(__self__, "cluster_type", cluster_type)
+        pulumi.set(__self__, "emr_ver", emr_ver)
+        pulumi.set(__self__, "softwares", softwares)
+
+    @property
+    @pulumi.getter(name="clusterType")
+    def cluster_type(self) -> str:
+        """
+        Cluster type:
+        """
+        return pulumi.get(self, "cluster_type")
+
+    @property
+    @pulumi.getter(name="emrVer")
+    def emr_ver(self) -> str:
+        """
+        E-MapReduce version number.
+        """
+        return pulumi.get(self, "emr_ver")
+
+    @property
+    @pulumi.getter
+    def softwares(self) -> Sequence['outputs.GetClustersClusterSoftwareInfoSoftwareResult']:
+        """
+        Service list.
+        """
+        return pulumi.get(self, "softwares")
+
+
+@pulumi.output_type
+class GetClustersClusterSoftwareInfoSoftwareResult(dict):
+    def __init__(__self__, *,
+                 display_name: str,
+                 name: str,
+                 only_display: bool,
+                 start_tpe: int,
+                 version: str):
+        """
+        :param str display_name: The name of the service.
+        :param str name: The internal name of the service.
+        :param bool only_display: Whether it shows.
+        :param int start_tpe: Startup type.
+        :param str version: Service version.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "only_display", only_display)
+        pulumi.set(__self__, "start_tpe", start_tpe)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The name of the service.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The internal name of the service.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="onlyDisplay")
+    def only_display(self) -> bool:
+        """
+        Whether it shows.
+        """
+        return pulumi.get(self, "only_display")
+
+    @property
+    @pulumi.getter(name="startTpe")
+    def start_tpe(self) -> int:
+        """
+        Startup type.
+        """
+        return pulumi.get(self, "start_tpe")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Service version.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type

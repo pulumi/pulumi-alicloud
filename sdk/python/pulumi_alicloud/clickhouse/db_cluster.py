@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['DbClusterArgs', 'DbCluster']
 
@@ -21,6 +23,7 @@ class DbClusterArgs:
                  db_node_storage: pulumi.Input[str],
                  payment_type: pulumi.Input[str],
                  storage_type: pulumi.Input[str],
+                 db_cluster_access_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]]] = None,
                  db_cluster_description: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  encryption_type: Optional[pulumi.Input[str]] = None,
@@ -41,6 +44,7 @@ class DbClusterArgs:
         :param pulumi.Input[str] db_node_storage: The db node storage.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         :param pulumi.Input[str] storage_type: Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
+        :param pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]] db_cluster_access_white_lists: The db cluster access white list.
         :param pulumi.Input[str] db_cluster_description: The DBCluster description.
         :param pulumi.Input[str] encryption_key: Key management service KMS key ID.
         :param pulumi.Input[str] encryption_type: Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
@@ -58,6 +62,8 @@ class DbClusterArgs:
         pulumi.set(__self__, "db_node_storage", db_node_storage)
         pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "storage_type", storage_type)
+        if db_cluster_access_white_lists is not None:
+            pulumi.set(__self__, "db_cluster_access_white_lists", db_cluster_access_white_lists)
         if db_cluster_description is not None:
             pulumi.set(__self__, "db_cluster_description", db_cluster_description)
         if encryption_key is not None:
@@ -174,6 +180,18 @@ class DbClusterArgs:
         pulumi.set(self, "storage_type", value)
 
     @property
+    @pulumi.getter(name="dbClusterAccessWhiteLists")
+    def db_cluster_access_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]]]:
+        """
+        The db cluster access white list.
+        """
+        return pulumi.get(self, "db_cluster_access_white_lists")
+
+    @db_cluster_access_white_lists.setter
+    def db_cluster_access_white_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]]]):
+        pulumi.set(self, "db_cluster_access_white_lists", value)
+
+    @property
     @pulumi.getter(name="dbClusterDescription")
     def db_cluster_description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -274,6 +292,7 @@ class DbClusterArgs:
 class _DbClusterState:
     def __init__(__self__, *,
                  category: Optional[pulumi.Input[str]] = None,
+                 db_cluster_access_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]]] = None,
                  db_cluster_class: Optional[pulumi.Input[str]] = None,
                  db_cluster_description: Optional[pulumi.Input[str]] = None,
                  db_cluster_network_type: Optional[pulumi.Input[str]] = None,
@@ -292,6 +311,7 @@ class _DbClusterState:
         """
         Input properties used for looking up and filtering DbCluster resources.
         :param pulumi.Input[str] category: The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
+        :param pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]] db_cluster_access_white_lists: The db cluster access white list.
         :param pulumi.Input[str] db_cluster_class: The DBCluster class. According to the category, db_cluster_class has two value ranges:
                * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
                * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
@@ -312,6 +332,8 @@ class _DbClusterState:
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
+        if db_cluster_access_white_lists is not None:
+            pulumi.set(__self__, "db_cluster_access_white_lists", db_cluster_access_white_lists)
         if db_cluster_class is not None:
             pulumi.set(__self__, "db_cluster_class", db_cluster_class)
         if db_cluster_description is not None:
@@ -354,6 +376,18 @@ class _DbClusterState:
     @category.setter
     def category(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "category", value)
+
+    @property
+    @pulumi.getter(name="dbClusterAccessWhiteLists")
+    def db_cluster_access_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]]]:
+        """
+        The db cluster access white list.
+        """
+        return pulumi.get(self, "db_cluster_access_white_lists")
+
+    @db_cluster_access_white_lists.setter
+    def db_cluster_access_white_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]]]):
+        pulumi.set(self, "db_cluster_access_white_lists", value)
 
     @property
     @pulumi.getter(name="dbClusterClass")
@@ -544,6 +578,7 @@ class DbCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  category: Optional[pulumi.Input[str]] = None,
+                 db_cluster_access_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbClusterDbClusterAccessWhiteListArgs']]]]] = None,
                  db_cluster_class: Optional[pulumi.Input[str]] = None,
                  db_cluster_description: Optional[pulumi.Input[str]] = None,
                  db_cluster_network_type: Optional[pulumi.Input[str]] = None,
@@ -577,6 +612,11 @@ class DbCluster(pulumi.CustomResource):
 
         default = alicloud.clickhouse.DbCluster("default",
             category="Basic",
+            db_cluster_access_white_lists=[alicloud.clickhouse.DbClusterDbClusterAccessWhiteListArgs(
+                db_cluster_ip_array_attribute="test",
+                db_cluster_ip_array_name="test",
+                security_ip_list="192.168.0.1",
+            )],
             db_cluster_class="S8",
             db_cluster_network_type="vpc",
             db_cluster_version="20.3.10.75",
@@ -598,6 +638,7 @@ class DbCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] category: The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbClusterDbClusterAccessWhiteListArgs']]]] db_cluster_access_white_lists: The db cluster access white list.
         :param pulumi.Input[str] db_cluster_class: The DBCluster class. According to the category, db_cluster_class has two value ranges:
                * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
                * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
@@ -639,6 +680,11 @@ class DbCluster(pulumi.CustomResource):
 
         default = alicloud.clickhouse.DbCluster("default",
             category="Basic",
+            db_cluster_access_white_lists=[alicloud.clickhouse.DbClusterDbClusterAccessWhiteListArgs(
+                db_cluster_ip_array_attribute="test",
+                db_cluster_ip_array_name="test",
+                security_ip_list="192.168.0.1",
+            )],
             db_cluster_class="S8",
             db_cluster_network_type="vpc",
             db_cluster_version="20.3.10.75",
@@ -673,6 +719,7 @@ class DbCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  category: Optional[pulumi.Input[str]] = None,
+                 db_cluster_access_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbClusterDbClusterAccessWhiteListArgs']]]]] = None,
                  db_cluster_class: Optional[pulumi.Input[str]] = None,
                  db_cluster_description: Optional[pulumi.Input[str]] = None,
                  db_cluster_network_type: Optional[pulumi.Input[str]] = None,
@@ -703,6 +750,7 @@ class DbCluster(pulumi.CustomResource):
             if category is None and not opts.urn:
                 raise TypeError("Missing required property 'category'")
             __props__.__dict__["category"] = category
+            __props__.__dict__["db_cluster_access_white_lists"] = db_cluster_access_white_lists
             if db_cluster_class is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_class'")
             __props__.__dict__["db_cluster_class"] = db_cluster_class
@@ -743,6 +791,7 @@ class DbCluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             category: Optional[pulumi.Input[str]] = None,
+            db_cluster_access_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbClusterDbClusterAccessWhiteListArgs']]]]] = None,
             db_cluster_class: Optional[pulumi.Input[str]] = None,
             db_cluster_description: Optional[pulumi.Input[str]] = None,
             db_cluster_network_type: Optional[pulumi.Input[str]] = None,
@@ -766,6 +815,7 @@ class DbCluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] category: The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbClusterDbClusterAccessWhiteListArgs']]]] db_cluster_access_white_lists: The db cluster access white list.
         :param pulumi.Input[str] db_cluster_class: The DBCluster class. According to the category, db_cluster_class has two value ranges:
                * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
                * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
@@ -789,6 +839,7 @@ class DbCluster(pulumi.CustomResource):
         __props__ = _DbClusterState.__new__(_DbClusterState)
 
         __props__.__dict__["category"] = category
+        __props__.__dict__["db_cluster_access_white_lists"] = db_cluster_access_white_lists
         __props__.__dict__["db_cluster_class"] = db_cluster_class
         __props__.__dict__["db_cluster_description"] = db_cluster_description
         __props__.__dict__["db_cluster_network_type"] = db_cluster_network_type
@@ -813,6 +864,14 @@ class DbCluster(pulumi.CustomResource):
         The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
         """
         return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="dbClusterAccessWhiteLists")
+    def db_cluster_access_white_lists(self) -> pulumi.Output[Optional[Sequence['outputs.DbClusterDbClusterAccessWhiteList']]]:
+        """
+        The db cluster access white list.
+        """
+        return pulumi.get(self, "db_cluster_access_white_lists")
 
     @property
     @pulumi.getter(name="dbClusterClass")

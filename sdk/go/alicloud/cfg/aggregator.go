@@ -13,6 +13,8 @@ import (
 
 // Provides a Cloud Config Aggregator resource.
 //
+// For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregator](https://www.alibabacloud.com/help/en/doc-detail/211197.html).
+//
 // > **NOTE:** Available in v1.124.0+.
 //
 // ## Example Usage
@@ -62,7 +64,7 @@ type Aggregator struct {
 	AggregatorAccounts AggregatorAggregatorAccountArrayOutput `pulumi:"aggregatorAccounts"`
 	// The name of aggregator.
 	AggregatorName pulumi.StringOutput `pulumi:"aggregatorName"`
-	// The type of aggregator. Valid values: `CUSTOM`, `RD`.
+	// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
 	AggregatorType pulumi.StringOutput `pulumi:"aggregatorType"`
 	// The description of aggregator.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -112,7 +114,7 @@ type aggregatorState struct {
 	AggregatorAccounts []AggregatorAggregatorAccount `pulumi:"aggregatorAccounts"`
 	// The name of aggregator.
 	AggregatorName *string `pulumi:"aggregatorName"`
-	// The type of aggregator. Valid values: `CUSTOM`, `RD`.
+	// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
 	AggregatorType *string `pulumi:"aggregatorType"`
 	// The description of aggregator.
 	Description *string `pulumi:"description"`
@@ -125,7 +127,7 @@ type AggregatorState struct {
 	AggregatorAccounts AggregatorAggregatorAccountArrayInput
 	// The name of aggregator.
 	AggregatorName pulumi.StringPtrInput
-	// The type of aggregator. Valid values: `CUSTOM`, `RD`.
+	// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
 	AggregatorType pulumi.StringPtrInput
 	// The description of aggregator.
 	Description pulumi.StringPtrInput
@@ -142,7 +144,7 @@ type aggregatorArgs struct {
 	AggregatorAccounts []AggregatorAggregatorAccount `pulumi:"aggregatorAccounts"`
 	// The name of aggregator.
 	AggregatorName string `pulumi:"aggregatorName"`
-	// The type of aggregator. Valid values: `CUSTOM`, `RD`.
+	// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
 	AggregatorType *string `pulumi:"aggregatorType"`
 	// The description of aggregator.
 	Description string `pulumi:"description"`
@@ -154,7 +156,7 @@ type AggregatorArgs struct {
 	AggregatorAccounts AggregatorAggregatorAccountArrayInput
 	// The name of aggregator.
 	AggregatorName pulumi.StringInput
-	// The type of aggregator. Valid values: `CUSTOM`, `RD`.
+	// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
 	AggregatorType pulumi.StringPtrInput
 	// The description of aggregator.
 	Description pulumi.StringInput

@@ -188,9 +188,13 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly roleName!: pulumi.Output<string>;
     /**
+     * The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
+     */
+    public readonly secondaryPrivateIpAddressCount!: pulumi.Output<number>;
+    /**
      * A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
      */
-    public readonly secondaryPrivateIps!: pulumi.Output<string[] | undefined>;
+    public readonly secondaryPrivateIps!: pulumi.Output<string[]>;
     /**
      * The security enhancement strategy.
      * - Active: Enable security enhancement strategy, it only works on system images.
@@ -308,6 +312,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["renewalStatus"] = state ? state.renewalStatus : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["roleName"] = state ? state.roleName : undefined;
+            inputs["secondaryPrivateIpAddressCount"] = state ? state.secondaryPrivateIpAddressCount : undefined;
             inputs["secondaryPrivateIps"] = state ? state.secondaryPrivateIps : undefined;
             inputs["securityEnhancementStrategy"] = state ? state.securityEnhancementStrategy : undefined;
             inputs["securityGroups"] = state ? state.securityGroups : undefined;
@@ -368,6 +373,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["renewalStatus"] = args ? args.renewalStatus : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["roleName"] = args ? args.roleName : undefined;
+            inputs["secondaryPrivateIpAddressCount"] = args ? args.secondaryPrivateIpAddressCount : undefined;
             inputs["secondaryPrivateIps"] = args ? args.secondaryPrivateIps : undefined;
             inputs["securityEnhancementStrategy"] = args ? args.securityEnhancementStrategy : undefined;
             inputs["securityGroups"] = args ? args.securityGroups : undefined;
@@ -543,6 +549,10 @@ export interface InstanceState {
      * Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud.ram.Role` to create a new one.
      */
     roleName?: pulumi.Input<string>;
+    /**
+     * The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
+     */
+    secondaryPrivateIpAddressCount?: pulumi.Input<number>;
     /**
      * A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
      */
@@ -764,6 +774,10 @@ export interface InstanceArgs {
      * Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud.ram.Role` to create a new one.
      */
     roleName?: pulumi.Input<string>;
+    /**
+     * The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
+     */
+    secondaryPrivateIpAddressCount?: pulumi.Input<number>;
     /**
      * A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
      */

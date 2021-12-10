@@ -104,6 +104,8 @@ type Instance struct {
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName pulumi.StringOutput `pulumi:"roleName"`
+	// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
+	SecondaryPrivateIpAddressCount pulumi.IntOutput `pulumi:"secondaryPrivateIpAddressCount"`
 	// A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
 	SecondaryPrivateIps pulumi.StringArrayOutput `pulumi:"secondaryPrivateIps"`
 	// The security enhancement strategy.
@@ -269,6 +271,8 @@ type instanceState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName *string `pulumi:"roleName"`
+	// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
+	SecondaryPrivateIpAddressCount *int `pulumi:"secondaryPrivateIpAddressCount"`
 	// A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
 	SecondaryPrivateIps []string `pulumi:"secondaryPrivateIps"`
 	// The security enhancement strategy.
@@ -397,6 +401,8 @@ type InstanceState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName pulumi.StringPtrInput
+	// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
+	SecondaryPrivateIpAddressCount pulumi.IntPtrInput
 	// A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
 	SecondaryPrivateIps pulumi.StringArrayInput
 	// The security enhancement strategy.
@@ -527,6 +533,8 @@ type instanceArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName *string `pulumi:"roleName"`
+	// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
+	SecondaryPrivateIpAddressCount *int `pulumi:"secondaryPrivateIpAddressCount"`
 	// A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
 	SecondaryPrivateIps []string `pulumi:"secondaryPrivateIps"`
 	// The security enhancement strategy.
@@ -654,6 +662,8 @@ type InstanceArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName pulumi.StringPtrInput
+	// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
+	SecondaryPrivateIpAddressCount pulumi.IntPtrInput
 	// A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
 	SecondaryPrivateIps pulumi.StringArrayInput
 	// The security enhancement strategy.

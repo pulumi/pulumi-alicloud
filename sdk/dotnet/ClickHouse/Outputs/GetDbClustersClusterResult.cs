@@ -38,6 +38,10 @@ namespace Pulumi.AliCloud.ClickHouse.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// The db cluster access white list.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDbClustersClusterDbClusterAccessWhiteListResult> DbClusterAccessWhiteLists;
+        /// <summary>
         /// The DBCluster description.
         /// </summary>
         public readonly string DbClusterDescription;
@@ -169,6 +173,8 @@ namespace Pulumi.AliCloud.ClickHouse.Outputs
 
             string createTime,
 
+            ImmutableArray<Outputs.GetDbClustersClusterDbClusterAccessWhiteListResult> dbClusterAccessWhiteLists,
+
             string dbClusterDescription,
 
             string dbClusterId,
@@ -235,6 +241,7 @@ namespace Pulumi.AliCloud.ClickHouse.Outputs
             CommodityCode = commodityCode;
             ConnectionString = connectionString;
             CreateTime = createTime;
+            DbClusterAccessWhiteLists = dbClusterAccessWhiteLists;
             DbClusterDescription = dbClusterDescription;
             DbClusterId = dbClusterId;
             DbClusterNetworkType = dbClusterNetworkType;

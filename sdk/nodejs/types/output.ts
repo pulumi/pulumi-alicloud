@@ -4908,12 +4908,10 @@ export namespace cfg {
          * The Aliyun User Id.
          */
         accountId: string;
-        /**
-         * -The Aggregate Compliance Package Name.
-         */
         aggregateCompliancePackName: string;
         /**
          * The first ID of the resource.
+         * * `aggregateCompliancePackName` -The Aggregate Compliance Package Name.
          */
         aggregatorCompliancePackId: string;
         /**
@@ -4937,7 +4935,7 @@ export namespace cfg {
          */
         riskLevel: number;
         /**
-         * The status of the resource.
+         * The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`.
          */
         status: string;
     }
@@ -4978,16 +4976,17 @@ export namespace cfg {
          */
         accountId: string;
         /**
-         * The name of the rule.
+         * The config rule name.
          */
         aggregateConfigRuleName: string;
+        /**
+         * The ID of aggregator.
+         */
+        aggregatorId: string;
         /**
          * The ID of Compliance Package.
          */
         compliancePackId: string;
-        /**
-         * -The Compliance information.
-         */
         compliances: outputs.cfg.GetAggregateConfigRulesRuleCompliance[];
         /**
          * The config rule arn.
@@ -5011,6 +5010,8 @@ export namespace cfg {
         eventSource: string;
         /**
          * The types of the resources to be evaluated against the rule.
+         * * `sourceIdentifier`- The name of the custom rule or managed rule.
+         * * `sourceOwner`- The source owner of the Config Rule.
          */
         excludeResourceIdsScope: string;
         /**
@@ -5039,19 +5040,13 @@ export namespace cfg {
         resourceGroupIdsScope: string;
         resourceTypesScopes: string[];
         /**
-         * The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
+         * Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
          */
         riskLevel: number;
-        /**
-         * The name of the custom rule or managed rule.
-         */
         sourceIdentifier: string;
-        /**
-         * The source owner of the Config Rule.
-         */
         sourceOwner: string;
         /**
-         * The status of the rule.
+         * The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
          */
         status: string;
         /**
@@ -5105,7 +5100,7 @@ export namespace cfg {
          */
         id: string;
         /**
-         * The status of the resource.
+         * The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
          */
         status: string;
     }
@@ -5159,7 +5154,7 @@ export namespace cfg {
          */
         riskLevel: number;
         /**
-         * The status of the resource.
+         * The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`
          */
         status: string;
     }
@@ -5367,6 +5362,21 @@ export namespace cfg {
 }
 
 export namespace clickhouse {
+    export interface DbClusterDbClusterAccessWhiteList {
+        /**
+         * Whitelist grouping attribute.
+         */
+        dbClusterIpArrayAttribute?: string;
+        /**
+         * Whitelist group name.
+         */
+        dbClusterIpArrayName?: string;
+        /**
+         * The IP address list under the whitelist group.
+         */
+        securityIpList?: string;
+    }
+
     export interface GetAccountsAccount {
         /**
          * In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
@@ -5419,6 +5429,10 @@ export namespace clickhouse {
          * The creation time of the resource.
          */
         createTime: string;
+        /**
+         * The db cluster access white list.
+         */
+        dbClusterAccessWhiteLists: outputs.clickhouse.GetDbClustersClusterDbClusterAccessWhiteList[];
         /**
          * The DBCluster description.
          */
@@ -5536,6 +5550,21 @@ export namespace clickhouse {
          * The zone ID of the DBCluster.
          */
         zoneId: string;
+    }
+
+    export interface GetDbClustersClusterDbClusterAccessWhiteList {
+        /**
+         * Whitelist grouping attribute.
+         */
+        dbClusterIpArrayAttribute: string;
+        /**
+         * Whitelist group name.
+         */
+        dbClusterIpArrayName: string;
+        /**
+         * The IP address list under the whitelist group.
+         */
+        securityIpList: string;
     }
 
     export interface GetDbClustersClusterScaleOutStatus {
@@ -5732,18 +5761,18 @@ export namespace cloudsso {
          */
         permissionPolicyDocument?: string;
         /**
-         * The Policy Name of policy.
+         * The Policy Name of policy. The name of the resource. The name must be 1 to 32 characters in length and can contain letters, digits, and hyphens (-).
          */
-        permissionPolicyName?: string;
+        permissionPolicyName: string;
         /**
          * The Policy Type of policy. Valid values: `System`, `Inline`.
          */
-        permissionPolicyType?: string;
+        permissionPolicyType: string;
     }
 
     export interface DirectorySamlIdentityProviderConfiguration {
         /**
-         * Base64 encoded IdP metadata document.
+         * Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
          */
         encodedMetadataDocument: string;
         /**
@@ -10294,6 +10323,37 @@ export namespace drds {
 }
 
 export namespace dts {
+    export interface GetConsumerChannelsChannel {
+        /**
+         * The ID of the consumer group.
+         */
+        consumerGroupId: string;
+        /**
+         * The name of the consumer group.
+         */
+        consumerGroupName: string;
+        /**
+         * The username of the consumer group.
+         */
+        consumerGroupUserName: string;
+        /**
+         * The time point when the client consumed the last message in the subscription channel.
+         */
+        consumptionCheckpoint: string;
+        /**
+         * The ID of the Consumer Channel.
+         */
+        id: string;
+        /**
+         * The message delay time, for the current time data subscription channel in the earliest time of unconsumed messages of the difference, in Unix timestamp format, which is measured in seconds.
+         */
+        messageDelay: number;
+        /**
+         * The total number of unconsumed messages.
+         */
+        unconsumedData: number;
+    }
+
     export interface GetSubscriptionJobsJob {
         /**
          * Subscription start time in Unix timestamp format.
@@ -10431,11 +10491,11 @@ export namespace dts {
         checkpoint: string;
         createTime: string;
         /**
-         * Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization values include:
+         * Whether to execute DTS supports schema migration, full data migration, or full-data initialization.
          */
         dataInitialization: boolean;
         /**
-         * Whether to perform incremental data migration for migration types or synchronization values include:
+         * Whether to perform incremental data migration for migration types or synchronization.
          */
         dataSynchronization: boolean;
         /**
@@ -11420,6 +11480,120 @@ export namespace eci {
         type: string;
     }
 
+    export interface GetVirtualNodesNode {
+        /**
+         * The Number of CPU.
+         */
+        cpu: number;
+        /**
+         * The creation time of the virtual node.
+         */
+        createTime: string;
+        /**
+         * The ENI instance ID.
+         */
+        eniInstanceId: string;
+        /**
+         * The event list.
+         */
+        events: outputs.eci.GetVirtualNodesNodeEvent[];
+        /**
+         * The ID of the Virtual Node.
+         */
+        id: string;
+        /**
+         * The IP address of a public network.
+         */
+        internetIp: string;
+        /**
+         * The private IP address of the RDS instance.
+         */
+        intranetIp: string;
+        /**
+         * The memory size.
+         */
+        memory: number;
+        /**
+         * The ram role.
+         */
+        ramRoleName: string;
+        /**
+         * The resource group ID.
+         */
+        resourceGroupId: string;
+        /**
+         * The security group ID.
+         */
+        securityGroupId: string;
+        /**
+         * The Status of the virtual node.
+         */
+        status: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: any};
+        /**
+         * Of the virtual node number.
+         */
+        virtualNodeId: string;
+        /**
+         * The name of the virtual node.
+         */
+        virtualNodeName: string;
+        vpcId: string;
+        /**
+         * The vswitch id.
+         */
+        vswitchId: string;
+        /**
+         * The Zone.
+         */
+        zoneId: string;
+    }
+
+    export interface GetVirtualNodesNodeEvent {
+        /**
+         * The number of occurrences.
+         */
+        count: number;
+        /**
+         * The first presentation time stamp.
+         */
+        firstTimestamp: string;
+        /**
+         * The most recent time stamp.
+         */
+        lastTimestamp: string;
+        /**
+         * The event of the message body.
+         */
+        message: string;
+        /**
+         * The name of the event.
+         */
+        name: string;
+        /**
+         * The causes of the incident.
+         */
+        reason: string;
+        /**
+         * The Event type.
+         */
+        type: string;
+    }
+
+    export interface GetZonesZone {
+        /**
+         * The endpoint of the region.
+         */
+        regionEndpoint: string;
+        /**
+         * The list of available zone ids.
+         */
+        zoneIds: string[];
+    }
+
     export interface ImageCacheImageRegistryCredential {
         /**
          * The password of the Image Registry.
@@ -11439,6 +11613,21 @@ export namespace eci {
         password?: string;
         server?: string;
         userName?: string;
+    }
+
+    export interface VirtualNodeTaint {
+        /**
+         * The effect of the taint. Valid values: `NoSchedule`, `NoExecute` and `PreferNoSchedule`.
+         */
+        effect?: string;
+        /**
+         * The key of the taint.
+         */
+        key?: string;
+        /**
+         * The value of the taint.
+         */
+        value?: string;
     }
 
 }
@@ -11969,6 +12158,83 @@ export namespace ecs {
 
     export interface GetDisksOperationLock {
         lockReason?: string;
+    }
+
+    export interface GetEcsDedicatedHostClustersCluster {
+        /**
+         * The capacity of the dedicated host cluster.
+         */
+        dedicatedHostClusterCapacities: outputs.ecs.GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity[];
+        /**
+         * The ID of the dedicated host cluster.
+         */
+        dedicatedHostClusterId: string;
+        /**
+         * The name of the dedicated host cluster.
+         */
+        dedicatedHostClusterName: string;
+        /**
+         * The IDs of dedicated hosts in the dedicated host cluster.
+         */
+        dedicatedHostIds: string[];
+        /**
+         * The description of the dedicated host cluster.
+         */
+        description: string;
+        /**
+         * The ID of the Dedicated Host Cluster.
+         */
+        id: string;
+        /**
+         * The ID of the resource group to which the dedicated host cluster belongs.
+         */
+        resourceGroupId: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: any};
+        /**
+         * The zone ID of the dedicated host cluster.
+         */
+        zoneId: string;
+    }
+
+    export interface GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity {
+        /**
+         * The available memory size. Unit: `GiB`.
+         */
+        availableMemory: number;
+        /**
+         * The number of available vCPUs.
+         */
+        availableVcpus: number;
+        /**
+         * The local storage.
+         */
+        localStorageCapacities: outputs.ecs.GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity[];
+        /**
+         * The total memory size. Unit: `GiB`.
+         */
+        totalMemory: number;
+        /**
+         * The total number of vCPUs.
+         */
+        totalVcpus: number;
+    }
+
+    export interface GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity {
+        /**
+         * The available capacity of the local disk. Unit: `GiB`.
+         */
+        availableDisk: number;
+        /**
+         * The category of the data disk. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd`, `ephemeralSsd`, `cloudEssd`.
+         */
+        dataDiskCategory: string;
+        /**
+         * The total capacity of the local disk. Unit: `GiB`.
+         */
+        totalDisk: number;
     }
 
     export interface GetEcsDeploymentSetsSet {
@@ -13074,6 +13340,9 @@ export namespace ecs {
          * ID of the image.
          */
         id: string;
+        /**
+         * The ID of the image.
+         */
         imageId: string;
         /**
          * Alias of the image owner.
@@ -13957,6 +14226,7 @@ export namespace ecs {
          */
         size: number;
     }
+
 }
 
 export namespace edas {
@@ -14203,6 +14473,84 @@ export namespace eds {
         diskType: string;
     }
 
+    export interface GetCommandsCommand {
+        /**
+         * The Contents of the Script to Base64 Encoded Transmission.
+         */
+        commandContent: string;
+        /**
+         * The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
+         */
+        commandType: string;
+        /**
+         * The Task of Creation Time.
+         */
+        createTime: string;
+        /**
+         * The ID of the Command.
+         */
+        id: string;
+        /**
+         * The Implementation of the Target Cloud Desktop Collection.
+         */
+        invokeDesktops: outputs.eds.GetCommandsCommandInvokeDesktop[];
+        /**
+         * The invoke id of the Command.
+         */
+        invokeId: string;
+        /**
+         * Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
+         */
+        status: string;
+    }
+
+    export interface GetCommandsCommandInvokeDesktop {
+        /**
+         * The desktop id of the Desktop.
+         */
+        desktopId: string;
+        /**
+         * Output Field Text Length Exceeds 24 KB of Truncated Discarded Text Length.
+         */
+        dropped: number;
+        /**
+         * Command of the Failure Or Perform the Reason for the Failure of the Code.
+         */
+        errorCode: string;
+        /**
+         * Command of the Failure Or Perform the Reason for the Failure of the Details.
+         */
+        errorInfo: string;
+        /**
+         * Command of the Failure Or Perform the Reason for the Failure of the Details.
+         */
+        exitCode: string;
+        /**
+         * The Script Process until the End of Time.
+         */
+        finishTime: string;
+        /**
+         * A Single Cloud Desktop Script Progress Status.
+         */
+        invocationStatus: string;
+        /**
+         * Script the Output of the Process.
+         */
+        output: string;
+        /**
+         * Command in the Desktop Implementation.
+         */
+        repeats: number;
+        /**
+         * The Script Process on the Desktop, in the Start Timing of the Execution.
+         */
+        startTime: string;
+        /**
+         * If You Use the invocation Indicates That the Call of the Time.
+         */
+        stopTime: string;
+    }
+
     export interface GetDesktopsDesktop {
         /**
          * The number of CPUs.
@@ -14268,6 +14616,57 @@ export namespace eds {
          * The system disk size of the Desktop.
          */
         systemDiskSize: number;
+    }
+
+    export interface GetImagesImage {
+        /**
+         * The creation time of the image.
+         */
+        createTime: string;
+        /**
+         * The size of data disk of the image.
+         */
+        dataDiskSize: number;
+        /**
+         * The description of the image.
+         */
+        description: string;
+        /**
+         * The Gpu Category of the image.
+         */
+        gpuCategory: boolean;
+        /**
+         * The ID of the Image.
+         */
+        id: string;
+        /**
+         * The image id of the image.
+         */
+        imageId: string;
+        /**
+         * The image name.
+         */
+        imageName: string;
+        /**
+         * The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
+         */
+        imageType: string;
+        /**
+         * The os type of the image.
+         */
+        osType: string;
+        /**
+         * The progress of the image.
+         */
+        progress: string;
+        /**
+         * The size of the image.
+         */
+        size: number;
+        /**
+         * The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
+         */
+        status: string;
     }
 
     export interface GetNasFileSystemsSystem {
@@ -14908,6 +15307,404 @@ export namespace emr {
          * System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
          */
         sysDiskType?: string;
+    }
+
+    export interface GetClustersCluster {
+        /**
+         * Cluster connection information.
+         */
+        accessInfos: outputs.emr.GetClustersClusterAccessInfo[];
+        /**
+         * Whether flexible expansion is allowed.
+         */
+        autoScalingAllowed: boolean;
+        /**
+         * Whether to allow expansion by load.
+         */
+        autoScalingByLoadAllowed: boolean;
+        /**
+         * Whether to enable elastic expansion.
+         */
+        autoScalingEnable: boolean;
+        /**
+         * Whether to allow the use of elastic scaling bidding instances.
+         */
+        autoScalingSpotWithLimitAllowed: boolean;
+        /**
+         * List of boot actions.
+         */
+        bootstrapActionLists: outputs.emr.GetClustersClusterBootstrapActionList[];
+        /**
+         * The result of the boot operation.
+         */
+        bootstrapFailed: boolean;
+        /**
+         * The ID of the associated cluster.
+         */
+        clusterId: string;
+        /**
+         * The name of the associated cluster.
+         */
+        clusterName: string;
+        /**
+         * Cluster tag, no need to pay attention.
+         */
+        createResource: string;
+        /**
+         * Creation time.
+         */
+        createTime: string;
+        /**
+         * How to create a cluster.
+         */
+        createType: string;
+        /**
+         * The hosting type of the cluster.
+         */
+        depositType: string;
+        /**
+         * High security cluster.
+         */
+        easEnable: boolean;
+        /**
+         * Timeout time.
+         */
+        expiredTime: string;
+        /**
+         * Additional information for Stack.
+         */
+        extraInfo: string;
+        /**
+         * High availability cluster.
+         */
+        highAvailabilityEnable: boolean;
+        /**
+         * List of cluster machine groups.
+         */
+        hostGroupLists: outputs.emr.GetClustersClusterHostGroupList[];
+        /**
+         * Machine pool information.
+         */
+        hostPoolInfos: outputs.emr.GetClustersClusterHostPoolInfo[];
+        id: string;
+        /**
+         * The ID of the image used to create the cluster.
+         */
+        imageId: string;
+        /**
+         * Whether to use Hive local Metabase.
+         */
+        localMetaDb: boolean;
+        /**
+         * The host type of the cluster. The default is ECS.
+         */
+        machineType: string;
+        /**
+         * Metadata type:
+         */
+        metaStoreType: string;
+        /**
+         * Cluster network type.
+         */
+        netType: string;
+        /**
+         * The payment type of the resource.
+         */
+        paymentType: string;
+        /**
+         * The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+         */
+        period: number;
+        /**
+         * The information of the primary cluster associated with the Gateway.
+         */
+        relateClusterInfos: outputs.emr.GetClustersClusterRelateClusterInfo[];
+        /**
+         * Whether to allow disk expansion:
+         */
+        resizeDiskEnable: boolean;
+        /**
+         * The time (in seconds) that has been running.
+         */
+        runningTime: number;
+        /**
+         * The ID of the security group.
+         */
+        securityGroupId: string;
+        /**
+         * The name of the security group.
+         */
+        securityGroupName: string;
+        /**
+         * Service list.
+         */
+        softwareInfos: outputs.emr.GetClustersClusterSoftwareInfo[];
+        /**
+         * Cluster startup time.
+         */
+        startTime: string;
+        /**
+         * The cluster status.
+         */
+        status: string;
+        /**
+         * Cluster stop time.
+         */
+        stopTime: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: any};
+        /**
+         * The EMR permission name used.
+         */
+        userDefinedEmrEcsRole: string;
+        /**
+         * The user ID.
+         */
+        userId: string;
+        /**
+         * The VPC ID.
+         */
+        vpcId: string;
+        /**
+         * The vswitch id.
+         */
+        vswitchId: string;
+        /**
+         * The zone ID.
+         */
+        zoneId: string;
+    }
+
+    export interface GetClustersClusterAccessInfo {
+        /**
+         * Link address information list of ZooKeeper.
+         */
+        zkLinks: outputs.emr.GetClustersClusterAccessInfoZkLink[];
+    }
+
+    export interface GetClustersClusterAccessInfoZkLink {
+        /**
+         * The access link address of ZooKeeper.
+         */
+        link: string;
+        /**
+         * The port of ZooKeeper.
+         */
+        port: string;
+    }
+
+    export interface GetClustersClusterBootstrapActionList {
+        /**
+         * Parameters of the boot operation.
+         */
+        arg: string;
+        /**
+         * The internal name of the service.
+         */
+        name: string;
+        /**
+         * Boot operation script path.
+         */
+        path: string;
+    }
+
+    export interface GetClustersClusterHostGroupList {
+        /**
+         * Bandwidth.
+         */
+        bandWidth: string;
+        /**
+         * Payment Type.
+         */
+        chargeType: string;
+        /**
+         * The number of CPU cores.
+         */
+        cpuCore: number;
+        /**
+         * Data disk capacity.
+         */
+        diskCapacity: number;
+        /**
+         * The number of data disks.
+         */
+        diskCount: number;
+        /**
+         * System disk type:
+         */
+        diskType: string;
+        /**
+         * The current operation type of the machine Group:
+         */
+        hostGroupChangeType: string;
+        /**
+         * The ID of the machine group.
+         */
+        hostGroupId: string;
+        /**
+         * The name of the machine group.
+         */
+        hostGroupName: string;
+        /**
+         * Role of host in cluster:
+         */
+        hostGroupType: string;
+        /**
+         * Machine Group instance.
+         */
+        instanceType: string;
+        /**
+         * Memory size.
+         */
+        memoryCapacity: number;
+        /**
+         * The number of machine group nodes.
+         */
+        nodeCount: number;
+        /**
+         * Machine node.
+         */
+        nodes: outputs.emr.GetClustersClusterHostGroupListNode[];
+        /**
+         * The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+         */
+        period: string;
+    }
+
+    export interface GetClustersClusterHostGroupListNode {
+        /**
+         * Creation time.
+         */
+        createTime: string;
+        /**
+         * Disk information.
+         */
+        diskInfos: outputs.emr.GetClustersClusterHostGroupListNodeDiskInfo[];
+        /**
+         * The timeout of the EMR.
+         */
+        emrExpiredTime: string;
+        /**
+         * Timeout time.
+         */
+        expiredTime: string;
+        /**
+         * The Intranet IP of the EMR.
+         */
+        innerIp: string;
+        /**
+         * The ID of the ECS instance.
+         */
+        instanceId: string;
+        /**
+         * Public IP address.
+         */
+        pubIp: string;
+        /**
+         * The cluster status.
+         */
+        status: string;
+        /**
+         * Whether IPV6 is supported.
+         */
+        supportIpv6: boolean;
+        /**
+         * The zone ID.
+         */
+        zoneId: string;
+    }
+
+    export interface GetClustersClusterHostGroupListNodeDiskInfo {
+        /**
+         * The disk name.
+         */
+        device: string;
+        /**
+         * The ID of the disk.
+         */
+        diskId: string;
+        /**
+         * The disk name.
+         */
+        diskName: string;
+        /**
+         * Disk capacity.
+         */
+        size: number;
+        /**
+         * Disk type.
+         */
+        type: string;
+    }
+
+    export interface GetClustersClusterHostPoolInfo {
+        /**
+         * Machine pool ID.
+         */
+        hpBizId: string;
+        /**
+         * The name of the machine pool.
+         */
+        hpName: string;
+    }
+
+    export interface GetClustersClusterRelateClusterInfo {
+        /**
+         * The ID of the associated cluster.
+         */
+        clusterId: string;
+        /**
+         * The name of the associated cluster.
+         */
+        clusterName: string;
+        /**
+         * Cluster type:
+         */
+        clusterType: string;
+        /**
+         * The cluster status.
+         */
+        status: string;
+    }
+
+    export interface GetClustersClusterSoftwareInfo {
+        /**
+         * Cluster type:
+         */
+        clusterType: string;
+        /**
+         * E-MapReduce version number.
+         */
+        emrVer: string;
+        /**
+         * Service list.
+         */
+        softwares: outputs.emr.GetClustersClusterSoftwareInfoSoftware[];
+    }
+
+    export interface GetClustersClusterSoftwareInfoSoftware {
+        /**
+         * The name of the service.
+         */
+        displayName: string;
+        /**
+         * The internal name of the service.
+         */
+        name: string;
+        /**
+         * Whether it shows.
+         */
+        onlyDisplay: boolean;
+        /**
+         * Startup type.
+         */
+        startTpe: number;
+        /**
+         * Service version.
+         */
+        version: string;
     }
 
     export interface GetDiskTypesType {
@@ -19990,6 +20787,80 @@ export namespace nas {
 }
 
 export namespace oos {
+    export interface GetApplicationGroupsGroup {
+        /**
+         * The name of the Application group.
+         */
+        applicationGroupName: string;
+        /**
+         * The name of the Application.
+         */
+        applicationName: string;
+        /**
+         * The ID of the cloud monitor group.
+         */
+        cmsGroupId: string;
+        /**
+         * The Creation time of the resource.
+         */
+        createTime: string;
+        /**
+         * The region ID of the deployment.
+         */
+        deployRegionId: string;
+        /**
+         * Application group description information.
+         */
+        description: string;
+        /**
+         * The ID of the Application Group. Its value is same as Queue Name.
+         */
+        id: string;
+        /**
+         * Label key.
+         */
+        importTagKey: string;
+        /**
+         * Label value.
+         */
+        importTagValue: string;
+        /**
+         * The Update time of the resource.
+         */
+        updateTime: string;
+    }
+
+    export interface GetApplicationsApplication {
+        /**
+         * The name of the application.
+         */
+        applicationName: string;
+        /**
+         * The Created time of the application.
+         */
+        createTime: string;
+        /**
+         * Application group description information.
+         */
+        description: string;
+        /**
+         * The ID of the Application. The value is formate as <application_name>.
+         */
+        id: string;
+        /**
+         * The ID of the resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * The tag of the resource.
+         */
+        tags: {[key: string]: any};
+        /**
+         * The Updated time of the application.
+         */
+        updateTime: string;
+    }
+
     export interface GetExecutionsExecution {
         /**
          * The category of template. Valid: `AlarmTrigger`, `EventTrigger`, `Other` and `TimerTrigger`.
@@ -20075,6 +20946,57 @@ export namespace oos {
          * The time when the template was updated.
          */
         updateDate: string;
+    }
+
+    export interface GetPatchBaselinesBaseline {
+        /**
+         * Accept the rules.
+         */
+        approvalRules: string;
+        /**
+         * The create time of patch baselines.
+         */
+        createTime: string;
+        /**
+         * The user who created the patch baselines.
+         */
+        createdBy: string;
+        /**
+         * Patches baseline description information.
+         */
+        description: string;
+        /**
+         * The ID of the Patch Baseline. Its value is same as `patchBaselineName`.
+         */
+        id: string;
+        /**
+         * Whether it is the default patch baseline.
+         */
+        isDefault: boolean;
+        /**
+         * Operating system type.
+         */
+        operationSystem: string;
+        /**
+         * Patch baseline ID.
+         */
+        patchBaselineId: string;
+        /**
+         * The name of the patch baseline.
+         */
+        patchBaselineName: string;
+        /**
+         * Patch baseline sharing type.
+         */
+        shareType: string;
+        /**
+         * The user who updated the patch baselines.
+         */
+        updatedBy: string;
+        /**
+         * The update time of patch baselines.
+         */
+        updatedDate: string;
     }
 
     export interface GetTemplatesTemplate {
@@ -21772,6 +22694,16 @@ export namespace pvtz {
         vpcId: string;
     }
 
+    export interface ZoneUserInfo {
+        /**
+         * The list of the region IDs.
+         */
+        regionIds?: string[];
+        /**
+         * The user ID belonging to the region is used for cross-account synchronization scenarios.
+         */
+        userId?: string;
+    }
 }
 
 export namespace quickbi {
@@ -23356,6 +24288,21 @@ export namespace ros {
         parameterValue: string;
     }
 
+    export interface GetRegionsRegion {
+        /**
+         * The name of the region.
+         */
+        localName: string;
+        /**
+         * The endpoint of the region.
+         */
+        regionEndpoint: string;
+        /**
+         * The ID of the region.
+         */
+        regionId: string;
+    }
+
     export interface GetStackGroupsGroup {
         /**
          * The name of the RAM administrator role assumed by ROS.
@@ -23402,6 +24349,61 @@ export namespace ros {
         parameterKey: string;
         /**
          * The parameter value.
+         */
+        parameterValue: string;
+    }
+
+    export interface GetStackInstancesInstance {
+        /**
+         * The ID of the Stack Instance. The value formats as `<stack_group_name>:<stack_instance_account_id>:<stack_instance_region_id>`.
+         */
+        id: string;
+        /**
+         * ParameterOverrides.
+         */
+        parameterOverrides: outputs.ros.GetStackInstancesInstanceParameterOverride[];
+        /**
+         * The ID of the stack group.
+         */
+        stackGroupId: string;
+        /**
+         * The name of the stack group.
+         */
+        stackGroupName: string;
+        /**
+         * The ID of the stack corresponding to the stack instance.
+         */
+        stackId: string;
+        /**
+         * The account to which the stack instance belongs.
+         */
+        stackInstanceAccountId: string;
+        /**
+         * The region of the stack instance.
+         */
+        stackInstanceRegionId: string;
+        /**
+         * The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
+         * * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
+         * * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
+         * * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
+         * * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
+         * * The create or update operation is not complete.
+         */
+        status: string;
+        /**
+         * The reason why the stack is in its current state.
+         */
+        statusReason: string;
+    }
+
+    export interface GetStackInstancesInstanceParameterOverride {
+        /**
+         * The key of override parameter.
+         */
+        parameterKey: string;
+        /**
+         * The value of override parameter.
          */
         parameterValue: string;
     }
@@ -23550,6 +24552,17 @@ export namespace ros {
         parameterValue?: string;
     }
 
+    export interface StackInstanceParameterOverride {
+        /**
+         * The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+         */
+        parameterKey?: string;
+        /**
+         * The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+         */
+        parameterValue?: string;
+    }
+
     export interface StackParameter {
         /**
          * The parameter key.
@@ -23560,6 +24573,7 @@ export namespace ros {
          */
         parameterValue: string;
     }
+
 }
 
 export namespace sae {

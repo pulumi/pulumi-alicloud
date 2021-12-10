@@ -62,10 +62,6 @@ type GetRulesArgs struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Config Rule IDs.
 	Ids []string `pulumi:"ids"`
-	// The ID of the member account to which the rule to be queried belongs. The default is empty. When `multiAccount` is set to true, this parameter is valid.
-	MemberId *int `pulumi:"memberId"`
-	// Whether the enterprise management account queries the rule details of member accounts.
-	MultiAccount *bool `pulumi:"multiAccount"`
 	// A regex string to filter results by rule name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
@@ -85,10 +81,8 @@ type GetRulesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of Config Rule IDs.
-	Ids          []string `pulumi:"ids"`
-	MemberId     *int     `pulumi:"memberId"`
-	MultiAccount *bool    `pulumi:"multiAccount"`
-	NameRegex    *string  `pulumi:"nameRegex"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of Config Rule names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
@@ -119,10 +113,6 @@ type GetRulesOutputArgs struct {
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Config Rule IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The ID of the member account to which the rule to be queried belongs. The default is empty. When `multiAccount` is set to true, this parameter is valid.
-	MemberId pulumi.IntPtrInput `pulumi:"memberId"`
-	// Whether the enterprise management account queries the rule details of member accounts.
-	MultiAccount pulumi.BoolPtrInput `pulumi:"multiAccount"`
 	// A regex string to filter results by rule name.
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
@@ -170,14 +160,6 @@ func (o GetRulesResultOutput) Id() pulumi.StringOutput {
 // A list of Config Rule IDs.
 func (o GetRulesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRulesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
-}
-
-func (o GetRulesResultOutput) MemberId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetRulesResult) *int { return v.MemberId }).(pulumi.IntPtrOutput)
-}
-
-func (o GetRulesResultOutput) MultiAccount() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetRulesResult) *bool { return v.MultiAccount }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetRulesResultOutput) NameRegex() pulumi.StringPtrOutput {

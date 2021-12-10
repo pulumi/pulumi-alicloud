@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.Cfg
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -178,7 +178,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -200,9 +200,18 @@ namespace Pulumi.AliCloud.Cfg
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Config Aggregate Compliance Pack names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Config Aggregate Compliance Packs. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAggregateCompliancePacksPackResult> Packs;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

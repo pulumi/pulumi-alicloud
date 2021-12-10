@@ -113,6 +113,18 @@ namespace Pulumi.AliCloud.Ecs
         public string? ImageFamily { get; set; }
 
         /// <summary>
+        /// The ID of the image.
+        /// </summary>
+        [Input("imageId")]
+        public string? ImageId { get; set; }
+
+        /// <summary>
+        /// The name of the image.
+        /// </summary>
+        [Input("imageName")]
+        public string? ImageName { get; set; }
+
+        /// <summary>
         /// The instance type for which the image can be used.
         /// </summary>
         [Input("instanceType")]
@@ -237,6 +249,18 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ImageFamily { get; set; }
 
         /// <summary>
+        /// The ID of the image.
+        /// </summary>
+        [Input("imageId")]
+        public Input<string>? ImageId { get; set; }
+
+        /// <summary>
+        /// The name of the image.
+        /// </summary>
+        [Input("imageName")]
+        public Input<string>? ImageName { get; set; }
+
+        /// <summary>
         /// The instance type for which the image can be used.
         /// </summary>
         [Input("instanceType")]
@@ -349,6 +373,8 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? ImageFamily;
+        public readonly string? ImageId;
+        public readonly string? ImageName;
         /// <summary>
         /// A list of images. Each element contains the following attributes:
         /// </summary>
@@ -387,6 +413,10 @@ namespace Pulumi.AliCloud.Ecs
 
             string? imageFamily,
 
+            string? imageId,
+
+            string? imageName,
+
             ImmutableArray<Outputs.GetImagesImageResult> images,
 
             string? instanceType,
@@ -421,6 +451,8 @@ namespace Pulumi.AliCloud.Ecs
             Id = id;
             Ids = ids;
             ImageFamily = imageFamily;
+            ImageId = imageId;
+            ImageName = imageName;
             Images = images;
             InstanceType = instanceType;
             IsSupportCloudInit = isSupportCloudInit;

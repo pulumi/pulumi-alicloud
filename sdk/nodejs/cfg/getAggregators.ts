@@ -61,7 +61,7 @@ export interface GetAggregatorsArgs {
     nameRegex?: string;
     outputFile?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
      */
     status?: string;
 }
@@ -70,6 +70,9 @@ export interface GetAggregatorsArgs {
  * A collection of values returned by getAggregators.
  */
 export interface GetAggregatorsResult {
+    /**
+     * A list of config aggregators. Each element contains the following attributes:
+     */
     readonly aggregators: outputs.cfg.GetAggregatorsAggregator[];
     readonly enableDetails?: boolean;
     /**
@@ -78,8 +81,14 @@ export interface GetAggregatorsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Aggregator names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
 }
 
@@ -105,7 +114,7 @@ export interface GetAggregatorsOutputArgs {
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
      */
     status?: pulumi.Input<string>;
 }

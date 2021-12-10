@@ -11,6 +11,7 @@ from .. import _utilities
 __all__ = [
     'ChangeSetParameterArgs',
     'StackGroupParameterArgs',
+    'StackInstanceParameterOverrideArgs',
     'StackParameterArgs',
 ]
 
@@ -82,6 +83,45 @@ class StackGroupParameterArgs:
     def parameter_value(self) -> Optional[pulumi.Input[str]]:
         """
         The parameter value.
+        """
+        return pulumi.get(self, "parameter_value")
+
+    @parameter_value.setter
+    def parameter_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parameter_value", value)
+
+
+@pulumi.input_type
+class StackInstanceParameterOverrideArgs:
+    def __init__(__self__, *,
+                 parameter_key: Optional[pulumi.Input[str]] = None,
+                 parameter_value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] parameter_key: The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+        :param pulumi.Input[str] parameter_value: The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+        """
+        if parameter_key is not None:
+            pulumi.set(__self__, "parameter_key", parameter_key)
+        if parameter_value is not None:
+            pulumi.set(__self__, "parameter_value", parameter_value)
+
+    @property
+    @pulumi.getter(name="parameterKey")
+    def parameter_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+        """
+        return pulumi.get(self, "parameter_key")
+
+    @parameter_key.setter
+    def parameter_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parameter_key", value)
+
+    @property
+    @pulumi.getter(name="parameterValue")
+    def parameter_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
         """
         return pulumi.get(self, "parameter_value")
 

@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -21,6 +22,11 @@ import * as utilities from "../utilities";
  *
  * const defaultDbCluster = new alicloud.clickhouse.DbCluster("default", {
  *     category: "Basic",
+ *     dbClusterAccessWhiteLists: [{
+ *         dbClusterIpArrayAttribute: "test",
+ *         dbClusterIpArrayName: "test",
+ *         securityIpList: "192.168.0.1",
+ *     }],
  *     dbClusterClass: "S8",
  *     dbClusterNetworkType: "vpc",
  *     dbClusterVersion: "20.3.10.75",
@@ -72,6 +78,10 @@ export class DbCluster extends pulumi.CustomResource {
      * The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
      */
     public readonly category!: pulumi.Output<string>;
+    /**
+     * The db cluster access white list.
+     */
+    public readonly dbClusterAccessWhiteLists!: pulumi.Output<outputs.clickhouse.DbClusterDbClusterAccessWhiteList[] | undefined>;
     /**
      * The DBCluster class. According to the category, dbClusterClass has two value ranges:
      * * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
@@ -149,6 +159,7 @@ export class DbCluster extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DbClusterState | undefined;
             inputs["category"] = state ? state.category : undefined;
+            inputs["dbClusterAccessWhiteLists"] = state ? state.dbClusterAccessWhiteLists : undefined;
             inputs["dbClusterClass"] = state ? state.dbClusterClass : undefined;
             inputs["dbClusterDescription"] = state ? state.dbClusterDescription : undefined;
             inputs["dbClusterNetworkType"] = state ? state.dbClusterNetworkType : undefined;
@@ -191,6 +202,7 @@ export class DbCluster extends pulumi.CustomResource {
                 throw new Error("Missing required property 'storageType'");
             }
             inputs["category"] = args ? args.category : undefined;
+            inputs["dbClusterAccessWhiteLists"] = args ? args.dbClusterAccessWhiteLists : undefined;
             inputs["dbClusterClass"] = args ? args.dbClusterClass : undefined;
             inputs["dbClusterDescription"] = args ? args.dbClusterDescription : undefined;
             inputs["dbClusterNetworkType"] = args ? args.dbClusterNetworkType : undefined;
@@ -222,6 +234,10 @@ export interface DbClusterState {
      * The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
      */
     category?: pulumi.Input<string>;
+    /**
+     * The db cluster access white list.
+     */
+    dbClusterAccessWhiteLists?: pulumi.Input<pulumi.Input<inputs.clickhouse.DbClusterDbClusterAccessWhiteList>[]>;
     /**
      * The DBCluster class. According to the category, dbClusterClass has two value ranges:
      * * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
@@ -294,6 +310,10 @@ export interface DbClusterArgs {
      * The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
      */
     category: pulumi.Input<string>;
+    /**
+     * The db cluster access white list.
+     */
+    dbClusterAccessWhiteLists?: pulumi.Input<pulumi.Input<inputs.clickhouse.DbClusterDbClusterAccessWhiteList>[]>;
     /**
      * The DBCluster class. According to the category, dbClusterClass has two value ranges:
      * * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.

@@ -24,7 +24,7 @@ class AccessConfigurationArgs:
                  session_duration: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a AccessConfiguration resource.
-        :param pulumi.Input[str] access_configuration_name: The AccessConfigurationName of the Access Configuration.
+        :param pulumi.Input[str] access_configuration_name: The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
         :param pulumi.Input[str] directory_id: The ID of the Directory.
         :param pulumi.Input[str] description: The Description of the  Access Configuration.
         :param pulumi.Input[bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
@@ -49,7 +49,7 @@ class AccessConfigurationArgs:
     @pulumi.getter(name="accessConfigurationName")
     def access_configuration_name(self) -> pulumi.Input[str]:
         """
-        The AccessConfigurationName of the Access Configuration.
+        The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
         """
         return pulumi.get(self, "access_configuration_name")
 
@@ -144,7 +144,7 @@ class _AccessConfigurationState:
         """
         Input properties used for looking up and filtering AccessConfiguration resources.
         :param pulumi.Input[str] access_configuration_id: The AccessConfigurationId of the Access Configuration.
-        :param pulumi.Input[str] access_configuration_name: The AccessConfigurationName of the Access Configuration.
+        :param pulumi.Input[str] access_configuration_name: The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
         :param pulumi.Input[str] description: The Description of the  Access Configuration.
         :param pulumi.Input[str] directory_id: The ID of the Directory.
         :param pulumi.Input[bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
@@ -185,7 +185,7 @@ class _AccessConfigurationState:
     @pulumi.getter(name="accessConfigurationName")
     def access_configuration_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The AccessConfigurationName of the Access Configuration.
+        The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
         """
         return pulumi.get(self, "access_configuration_name")
 
@@ -284,7 +284,7 @@ class AccessConfiguration(pulumi.CustomResource):
 
         For information about Cloud SSO Access Configuration and how to use it, see [What is Access Configuration](https://www.alibabacloud.com/help/en/doc-detail/266737.html).
 
-        > **NOTE:** Available in v1.140.0+.
+        > **NOTE:** Available in v1.145.0+.
 
         > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
@@ -298,7 +298,7 @@ class AccessConfiguration(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_configuration_name: The AccessConfigurationName of the Access Configuration.
+        :param pulumi.Input[str] access_configuration_name: The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
         :param pulumi.Input[str] description: The Description of the  Access Configuration.
         :param pulumi.Input[str] directory_id: The ID of the Directory.
         :param pulumi.Input[bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
@@ -317,7 +317,7 @@ class AccessConfiguration(pulumi.CustomResource):
 
         For information about Cloud SSO Access Configuration and how to use it, see [What is Access Configuration](https://www.alibabacloud.com/help/en/doc-detail/266737.html).
 
-        > **NOTE:** Available in v1.140.0+.
+        > **NOTE:** Available in v1.145.0+.
 
         > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
@@ -401,7 +401,7 @@ class AccessConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_configuration_id: The AccessConfigurationId of the Access Configuration.
-        :param pulumi.Input[str] access_configuration_name: The AccessConfigurationName of the Access Configuration.
+        :param pulumi.Input[str] access_configuration_name: The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
         :param pulumi.Input[str] description: The Description of the  Access Configuration.
         :param pulumi.Input[str] directory_id: The ID of the Directory.
         :param pulumi.Input[bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
@@ -435,7 +435,7 @@ class AccessConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="accessConfigurationName")
     def access_configuration_name(self) -> pulumi.Output[str]:
         """
-        The AccessConfigurationName of the Access Configuration.
+        The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
         """
         return pulumi.get(self, "access_configuration_name")
 

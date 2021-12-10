@@ -26,6 +26,7 @@ class AggregateConfigRuleArgs:
                  maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
                  region_ids_scope: Optional[pulumi.Input[str]] = None,
                  resource_group_ids_scope: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  tag_key_scope: Optional[pulumi.Input[str]] = None,
                  tag_value_scope: Optional[pulumi.Input[str]] = None):
         """
@@ -43,8 +44,9 @@ class AggregateConfigRuleArgs:
         :param pulumi.Input[str] maximum_execution_frequency: The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `config_rule_trigger_types` is `ScheduledNotification`.
         :param pulumi.Input[str] region_ids_scope: The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
         :param pulumi.Input[str] resource_group_ids_scope: The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
+        :param pulumi.Input[str] status: The rule status. The valid values: `ACTIVE`, `INACTIVE`.
         :param pulumi.Input[str] tag_key_scope: The rule monitors the tag key, only applies to rules created based on managed rules.
-        :param pulumi.Input[str] tag_value_scope: The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+        :param pulumi.Input[str] tag_value_scope: The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
         """
         pulumi.set(__self__, "aggregate_config_rule_name", aggregate_config_rule_name)
         pulumi.set(__self__, "aggregator_id", aggregator_id)
@@ -65,6 +67,8 @@ class AggregateConfigRuleArgs:
             pulumi.set(__self__, "region_ids_scope", region_ids_scope)
         if resource_group_ids_scope is not None:
             pulumi.set(__self__, "resource_group_ids_scope", resource_group_ids_scope)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
         if tag_key_scope is not None:
             pulumi.set(__self__, "tag_key_scope", tag_key_scope)
         if tag_value_scope is not None:
@@ -227,6 +231,18 @@ class AggregateConfigRuleArgs:
         pulumi.set(self, "resource_group_ids_scope", value)
 
     @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
     @pulumi.getter(name="tagKeyScope")
     def tag_key_scope(self) -> Optional[pulumi.Input[str]]:
         """
@@ -242,7 +258,7 @@ class AggregateConfigRuleArgs:
     @pulumi.getter(name="tagValueScope")
     def tag_value_scope(self) -> Optional[pulumi.Input[str]]:
         """
-        The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+        The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
         """
         return pulumi.get(self, "tag_value_scope")
 
@@ -287,8 +303,9 @@ class _AggregateConfigRuleState:
         :param pulumi.Input[int] risk_level: The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info.
         :param pulumi.Input[str] source_identifier: The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
         :param pulumi.Input[str] source_owner: Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
+        :param pulumi.Input[str] status: The rule status. The valid values: `ACTIVE`, `INACTIVE`.
         :param pulumi.Input[str] tag_key_scope: The rule monitors the tag key, only applies to rules created based on managed rules.
-        :param pulumi.Input[str] tag_value_scope: The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+        :param pulumi.Input[str] tag_value_scope: The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
         """
         if aggregate_config_rule_name is not None:
             pulumi.set(__self__, "aggregate_config_rule_name", aggregate_config_rule_name)
@@ -496,6 +513,9 @@ class _AggregateConfigRuleState:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -518,7 +538,7 @@ class _AggregateConfigRuleState:
     @pulumi.getter(name="tagValueScope")
     def tag_value_scope(self) -> Optional[pulumi.Input[str]]:
         """
-        The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+        The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
         """
         return pulumi.get(self, "tag_value_scope")
 
@@ -545,15 +565,45 @@ class AggregateConfigRule(pulumi.CustomResource):
                  risk_level: Optional[pulumi.Input[int]] = None,
                  source_identifier: Optional[pulumi.Input[str]] = None,
                  source_owner: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  tag_key_scope: Optional[pulumi.Input[str]] = None,
                  tag_value_scope: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a Cloud Config Aggregate Config Rule resource.
 
-        For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregate Config Rule](https://help.aliyun.com/).
+        For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregate Config Rule](https://www.alibabacloud.com/help/doc-detail/154216.html).
 
         > **NOTE:** Available in v1.124.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_aggregator = alicloud.cfg.Aggregator("exampleAggregator",
+            aggregator_accounts=[alicloud.cfg.AggregatorAggregatorAccountArgs(
+                account_id="140278452670****",
+                account_name="test-2",
+                account_type="ResourceDirectory",
+            )],
+            aggregator_name="tf-testaccaggregator",
+            description="tf-testaccaggregator")
+        example_aggregate_config_rule = alicloud.cfg.AggregateConfigRule("exampleAggregateConfigRule",
+            aggregate_config_rule_name="tf-testaccconfig1234",
+            aggregator_id=example_aggregator.id,
+            config_rule_trigger_types="ConfigurationItemChangeNotification",
+            source_owner="ALIYUN",
+            source_identifier="ecs-cpu-min-count-limit",
+            risk_level=1,
+            resource_types_scopes=["ACS::ECS::Instance"],
+            input_parameters={
+                "cpuCount": "4",
+            })
+        ```
 
         ## Import
 
@@ -578,8 +628,9 @@ class AggregateConfigRule(pulumi.CustomResource):
         :param pulumi.Input[int] risk_level: The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info.
         :param pulumi.Input[str] source_identifier: The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
         :param pulumi.Input[str] source_owner: Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
+        :param pulumi.Input[str] status: The rule status. The valid values: `ACTIVE`, `INACTIVE`.
         :param pulumi.Input[str] tag_key_scope: The rule monitors the tag key, only applies to rules created based on managed rules.
-        :param pulumi.Input[str] tag_value_scope: The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+        :param pulumi.Input[str] tag_value_scope: The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
         """
         ...
     @overload
@@ -590,9 +641,38 @@ class AggregateConfigRule(pulumi.CustomResource):
         """
         Provides a Cloud Config Aggregate Config Rule resource.
 
-        For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregate Config Rule](https://help.aliyun.com/).
+        For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregate Config Rule](https://www.alibabacloud.com/help/doc-detail/154216.html).
 
         > **NOTE:** Available in v1.124.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_aggregator = alicloud.cfg.Aggregator("exampleAggregator",
+            aggregator_accounts=[alicloud.cfg.AggregatorAggregatorAccountArgs(
+                account_id="140278452670****",
+                account_name="test-2",
+                account_type="ResourceDirectory",
+            )],
+            aggregator_name="tf-testaccaggregator",
+            description="tf-testaccaggregator")
+        example_aggregate_config_rule = alicloud.cfg.AggregateConfigRule("exampleAggregateConfigRule",
+            aggregate_config_rule_name="tf-testaccconfig1234",
+            aggregator_id=example_aggregator.id,
+            config_rule_trigger_types="ConfigurationItemChangeNotification",
+            source_owner="ALIYUN",
+            source_identifier="ecs-cpu-min-count-limit",
+            risk_level=1,
+            resource_types_scopes=["ACS::ECS::Instance"],
+            input_parameters={
+                "cpuCount": "4",
+            })
+        ```
 
         ## Import
 
@@ -630,6 +710,7 @@ class AggregateConfigRule(pulumi.CustomResource):
                  risk_level: Optional[pulumi.Input[int]] = None,
                  source_identifier: Optional[pulumi.Input[str]] = None,
                  source_owner: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  tag_key_scope: Optional[pulumi.Input[str]] = None,
                  tag_value_scope: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -671,10 +752,10 @@ class AggregateConfigRule(pulumi.CustomResource):
             if source_owner is None and not opts.urn:
                 raise TypeError("Missing required property 'source_owner'")
             __props__.__dict__["source_owner"] = source_owner
+            __props__.__dict__["status"] = status
             __props__.__dict__["tag_key_scope"] = tag_key_scope
             __props__.__dict__["tag_value_scope"] = tag_value_scope
             __props__.__dict__["config_rule_id"] = None
-            __props__.__dict__["status"] = None
         super(AggregateConfigRule, __self__).__init__(
             'alicloud:cfg/aggregateConfigRule:AggregateConfigRule',
             resource_name,
@@ -723,8 +804,9 @@ class AggregateConfigRule(pulumi.CustomResource):
         :param pulumi.Input[int] risk_level: The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info.
         :param pulumi.Input[str] source_identifier: The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
         :param pulumi.Input[str] source_owner: Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
+        :param pulumi.Input[str] status: The rule status. The valid values: `ACTIVE`, `INACTIVE`.
         :param pulumi.Input[str] tag_key_scope: The rule monitors the tag key, only applies to rules created based on managed rules.
-        :param pulumi.Input[str] tag_value_scope: The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+        :param pulumi.Input[str] tag_value_scope: The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -864,6 +946,9 @@ class AggregateConfigRule(pulumi.CustomResource):
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
+        """
+        The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+        """
         return pulumi.get(self, "status")
 
     @property
@@ -878,7 +963,7 @@ class AggregateConfigRule(pulumi.CustomResource):
     @pulumi.getter(name="tagValueScope")
     def tag_value_scope(self) -> pulumi.Output[Optional[str]]:
         """
-        The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+        The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
         """
         return pulumi.get(self, "tag_value_scope")
 

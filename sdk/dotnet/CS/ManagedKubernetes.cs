@@ -93,7 +93,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> ControlPlaneLogProject { get; private set; } = null!;
 
         /// <summary>
-        /// Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
+        /// Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
         /// </summary>
         [Output("controlPlaneLogTtl")]
         public Output<string?> ControlPlaneLogTtl { get; private set; } = null!;
@@ -333,7 +333,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<Outputs.ManagedKubernetesTaint>> Taints { get; private set; } = null!;
 
         /// <summary>
-        /// When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        /// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         /// </summary>
         [Output("timezone")]
         public Output<string?> Timezone { get; private set; } = null!;
@@ -578,7 +578,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ControlPlaneLogProject { get; set; }
 
         /// <summary>
-        /// Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
+        /// Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
         /// </summary>
         [Input("controlPlaneLogTtl")]
         public Input<string>? ControlPlaneLogTtl { get; set; }
@@ -835,7 +835,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        /// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
@@ -1052,7 +1052,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ControlPlaneLogProject { get; set; }
 
         /// <summary>
-        /// Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
+        /// Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
         /// </summary>
         [Input("controlPlaneLogTtl")]
         public Input<string>? ControlPlaneLogTtl { get; set; }
@@ -1327,7 +1327,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        /// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }

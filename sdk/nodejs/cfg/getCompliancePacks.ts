@@ -61,7 +61,7 @@ export interface GetCompliancePacksArgs {
     nameRegex?: string;
     outputFile?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`
      */
     status?: string;
 }
@@ -77,9 +77,18 @@ export interface GetCompliancePacksResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Compliance Pack names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Config Compliance Packs. Each element contains the following attributes:
+     */
     readonly packs: outputs.cfg.GetCompliancePacksPack[];
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
 }
 
@@ -105,7 +114,7 @@ export interface GetCompliancePacksOutputArgs {
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`
      */
     status?: pulumi.Input<string>;
 }

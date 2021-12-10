@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ZoneArgs', 'Zone']
 
@@ -18,7 +20,9 @@ class ZoneArgs:
                  proxy_pattern: Optional[pulumi.Input[str]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 sync_status: Optional[pulumi.Input[str]] = None,
                  user_client_ip: Optional[pulumi.Input[str]] = None,
+                 user_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]]] = None,
                  zone_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Zone resource.
@@ -30,7 +34,9 @@ class ZoneArgs:
                Default to "ZONE".
         :param pulumi.Input[str] remark: The remark of the Private Zone.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Private Zone belongs.
+        :param pulumi.Input[str] sync_status: The status of the host synchronization task. Valid values:  `ON`,`OFF`.
         :param pulumi.Input[str] user_client_ip: The IP address of the client.
+        :param pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]] user_infos: The user information of the host synchronization task. The details see Block `user_info`.
         :param pulumi.Input[str] zone_name: The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
         """
         if lang is not None:
@@ -46,8 +52,12 @@ class ZoneArgs:
             pulumi.set(__self__, "remark", remark)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if sync_status is not None:
+            pulumi.set(__self__, "sync_status", sync_status)
         if user_client_ip is not None:
             pulumi.set(__self__, "user_client_ip", user_client_ip)
+        if user_infos is not None:
+            pulumi.set(__self__, "user_infos", user_infos)
         if zone_name is not None:
             pulumi.set(__self__, "zone_name", zone_name)
 
@@ -115,6 +125,18 @@ class ZoneArgs:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="syncStatus")
+    def sync_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+        """
+        return pulumi.get(self, "sync_status")
+
+    @sync_status.setter
+    def sync_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sync_status", value)
+
+    @property
     @pulumi.getter(name="userClientIp")
     def user_client_ip(self) -> Optional[pulumi.Input[str]]:
         """
@@ -125,6 +147,18 @@ class ZoneArgs:
     @user_client_ip.setter
     def user_client_ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_client_ip", value)
+
+    @property
+    @pulumi.getter(name="userInfos")
+    def user_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]]]:
+        """
+        The user information of the host synchronization task. The details see Block `user_info`.
+        """
+        return pulumi.get(self, "user_infos")
+
+    @user_infos.setter
+    def user_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]]]):
+        pulumi.set(self, "user_infos", value)
 
     @property
     @pulumi.getter(name="zoneName")
@@ -149,7 +183,9 @@ class _ZoneState:
                  record_count: Optional[pulumi.Input[int]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 sync_status: Optional[pulumi.Input[str]] = None,
                  user_client_ip: Optional[pulumi.Input[str]] = None,
+                 user_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]]] = None,
                  zone_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Zone resources.
@@ -163,7 +199,9 @@ class _ZoneState:
         :param pulumi.Input[int] record_count: The count of the Private Zone Record.
         :param pulumi.Input[str] remark: The remark of the Private Zone.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Private Zone belongs.
+        :param pulumi.Input[str] sync_status: The status of the host synchronization task. Valid values:  `ON`,`OFF`.
         :param pulumi.Input[str] user_client_ip: The IP address of the client.
+        :param pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]] user_infos: The user information of the host synchronization task. The details see Block `user_info`.
         :param pulumi.Input[str] zone_name: The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
         """
         if is_ptr is not None:
@@ -183,8 +221,12 @@ class _ZoneState:
             pulumi.set(__self__, "remark", remark)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if sync_status is not None:
+            pulumi.set(__self__, "sync_status", sync_status)
         if user_client_ip is not None:
             pulumi.set(__self__, "user_client_ip", user_client_ip)
+        if user_infos is not None:
+            pulumi.set(__self__, "user_infos", user_infos)
         if zone_name is not None:
             pulumi.set(__self__, "zone_name", zone_name)
 
@@ -276,6 +318,18 @@ class _ZoneState:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="syncStatus")
+    def sync_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+        """
+        return pulumi.get(self, "sync_status")
+
+    @sync_status.setter
+    def sync_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sync_status", value)
+
+    @property
     @pulumi.getter(name="userClientIp")
     def user_client_ip(self) -> Optional[pulumi.Input[str]]:
         """
@@ -286,6 +340,18 @@ class _ZoneState:
     @user_client_ip.setter
     def user_client_ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_client_ip", value)
+
+    @property
+    @pulumi.getter(name="userInfos")
+    def user_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]]]:
+        """
+        The user information of the host synchronization task. The details see Block `user_info`.
+        """
+        return pulumi.get(self, "user_infos")
+
+    @user_infos.setter
+    def user_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]]]):
+        pulumi.set(self, "user_infos", value)
 
     @property
     @pulumi.getter(name="zoneName")
@@ -310,7 +376,9 @@ class Zone(pulumi.CustomResource):
                  proxy_pattern: Optional[pulumi.Input[str]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 sync_status: Optional[pulumi.Input[str]] = None,
                  user_client_ip: Optional[pulumi.Input[str]] = None,
+                 user_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneUserInfoArgs']]]]] = None,
                  zone_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -332,7 +400,9 @@ class Zone(pulumi.CustomResource):
                Default to "ZONE".
         :param pulumi.Input[str] remark: The remark of the Private Zone.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Private Zone belongs.
+        :param pulumi.Input[str] sync_status: The status of the host synchronization task. Valid values:  `ON`,`OFF`.
         :param pulumi.Input[str] user_client_ip: The IP address of the client.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneUserInfoArgs']]]] user_infos: The user information of the host synchronization task. The details see Block `user_info`.
         :param pulumi.Input[str] zone_name: The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
         """
         ...
@@ -370,7 +440,9 @@ class Zone(pulumi.CustomResource):
                  proxy_pattern: Optional[pulumi.Input[str]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 sync_status: Optional[pulumi.Input[str]] = None,
                  user_client_ip: Optional[pulumi.Input[str]] = None,
+                 user_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneUserInfoArgs']]]]] = None,
                  zone_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -392,7 +464,9 @@ class Zone(pulumi.CustomResource):
             __props__.__dict__["proxy_pattern"] = proxy_pattern
             __props__.__dict__["remark"] = remark
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["sync_status"] = sync_status
             __props__.__dict__["user_client_ip"] = user_client_ip
+            __props__.__dict__["user_infos"] = user_infos
             __props__.__dict__["zone_name"] = zone_name
             __props__.__dict__["is_ptr"] = None
             __props__.__dict__["record_count"] = None
@@ -413,7 +487,9 @@ class Zone(pulumi.CustomResource):
             record_count: Optional[pulumi.Input[int]] = None,
             remark: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
+            sync_status: Optional[pulumi.Input[str]] = None,
             user_client_ip: Optional[pulumi.Input[str]] = None,
+            user_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneUserInfoArgs']]]]] = None,
             zone_name: Optional[pulumi.Input[str]] = None) -> 'Zone':
         """
         Get an existing Zone resource's state with the given name, id, and optional extra
@@ -432,7 +508,9 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[int] record_count: The count of the Private Zone Record.
         :param pulumi.Input[str] remark: The remark of the Private Zone.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Private Zone belongs.
+        :param pulumi.Input[str] sync_status: The status of the host synchronization task. Valid values:  `ON`,`OFF`.
         :param pulumi.Input[str] user_client_ip: The IP address of the client.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneUserInfoArgs']]]] user_infos: The user information of the host synchronization task. The details see Block `user_info`.
         :param pulumi.Input[str] zone_name: The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -446,7 +524,9 @@ class Zone(pulumi.CustomResource):
         __props__.__dict__["record_count"] = record_count
         __props__.__dict__["remark"] = remark
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["sync_status"] = sync_status
         __props__.__dict__["user_client_ip"] = user_client_ip
+        __props__.__dict__["user_infos"] = user_infos
         __props__.__dict__["zone_name"] = zone_name
         return Zone(resource_name, opts=opts, __props__=__props__)
 
@@ -510,12 +590,28 @@ class Zone(pulumi.CustomResource):
         return pulumi.get(self, "resource_group_id")
 
     @property
+    @pulumi.getter(name="syncStatus")
+    def sync_status(self) -> pulumi.Output[Optional[str]]:
+        """
+        The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+        """
+        return pulumi.get(self, "sync_status")
+
+    @property
     @pulumi.getter(name="userClientIp")
     def user_client_ip(self) -> pulumi.Output[Optional[str]]:
         """
         The IP address of the client.
         """
         return pulumi.get(self, "user_client_ip")
+
+    @property
+    @pulumi.getter(name="userInfos")
+    def user_infos(self) -> pulumi.Output[Optional[Sequence['outputs.ZoneUserInfo']]]:
+        """
+        The user information of the host synchronization task. The details see Block `user_info`.
+        """
+        return pulumi.get(self, "user_infos")
 
     @property
     @pulumi.getter(name="zoneName")

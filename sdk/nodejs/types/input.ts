@@ -1208,6 +1208,21 @@ export namespace cfg {
 }
 
 export namespace clickhouse {
+    export interface DbClusterDbClusterAccessWhiteList {
+        /**
+         * Whitelist grouping attribute.
+         */
+        dbClusterIpArrayAttribute?: pulumi.Input<string>;
+        /**
+         * Whitelist group name.
+         */
+        dbClusterIpArrayName?: pulumi.Input<string>;
+        /**
+         * The IP address list under the whitelist group.
+         */
+        securityIpList?: pulumi.Input<string>;
+    }
+
 }
 
 export namespace cloudauth {
@@ -1226,18 +1241,18 @@ export namespace cloudsso {
          */
         permissionPolicyDocument?: pulumi.Input<string>;
         /**
-         * The Policy Name of policy.
+         * The Policy Name of policy. The name of the resource. The name must be 1 to 32 characters in length and can contain letters, digits, and hyphens (-).
          */
-        permissionPolicyName?: pulumi.Input<string>;
+        permissionPolicyName: pulumi.Input<string>;
         /**
          * The Policy Type of policy. Valid values: `System`, `Inline`.
          */
-        permissionPolicyType?: pulumi.Input<string>;
+        permissionPolicyType: pulumi.Input<string>;
     }
 
     export interface DirectorySamlIdentityProviderConfiguration {
         /**
-         * Base64 encoded IdP metadata document.
+         * Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
          */
         encodedMetadataDocument?: pulumi.Input<string>;
         /**
@@ -2524,6 +2539,21 @@ export namespace eci {
         userName?: pulumi.Input<string>;
     }
 
+    export interface VirtualNodeTaint {
+        /**
+         * The effect of the taint. Valid values: `NoSchedule`, `NoExecute` and `PreferNoSchedule`.
+         */
+        effect?: pulumi.Input<string>;
+        /**
+         * The key of the taint.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The value of the taint.
+         */
+        value?: pulumi.Input<string>;
+    }
+
 }
 
 export namespace ecp {
@@ -2638,18 +2668,18 @@ export namespace ecs {
         size?: pulumi.Input<number>;
     }
 
-    export interface GetDedicatedHostsOperationLock {
-        /**
-         * The reason why the dedicated host resource is locked.
-         */
-        lockReason?: string;
-    }
-
     export interface GetDedicatedHostsOperationLockArgs {
         /**
          * The reason why the dedicated host resource is locked.
          */
         lockReason?: pulumi.Input<string>;
+    }
+
+    export interface GetDedicatedHostsOperationLock {
+        /**
+         * The reason why the dedicated host resource is locked.
+         */
+        lockReason?: string;
     }
 
     export interface GetDisksOperationLockArgs {
@@ -4180,6 +4210,18 @@ export namespace pvtz {
          */
         vpcId: pulumi.Input<string>;
     }
+
+    export interface ZoneUserInfo {
+        /**
+         * The list of the region IDs.
+         */
+        regionIds?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The user ID belonging to the region is used for cross-account synchronization scenarios.
+         */
+        userId?: pulumi.Input<string>;
+    }
+
 }
 
 export namespace quickbi {
@@ -4374,6 +4416,17 @@ export namespace ros {
         parameterValue?: pulumi.Input<string>;
     }
 
+    export interface StackInstanceParameterOverride {
+        /**
+         * The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+         */
+        parameterKey?: pulumi.Input<string>;
+        /**
+         * The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+         */
+        parameterValue?: pulumi.Input<string>;
+    }
+
     export interface StackParameter {
         /**
          * The parameter key.
@@ -4384,7 +4437,6 @@ export namespace ros {
          */
         parameterValue: pulumi.Input<string>;
     }
-
 }
 
 export namespace sae {

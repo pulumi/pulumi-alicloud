@@ -48,6 +48,7 @@ class InstanceArgs:
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  role_name: Optional[pulumi.Input[str]] = None,
+                 secondary_private_ip_address_count: Optional[pulumi.Input[int]] = None,
                  secondary_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
@@ -110,6 +111,7 @@ class InstanceArgs:
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the instance belongs.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+        :param pulumi.Input[int] secondary_private_ip_address_count: The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_private_ips: A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
         :param pulumi.Input[str] security_enhancement_strategy: The security enhancement strategy.
                - Active: Enable security enhancement strategy, it only works on system images.
@@ -207,6 +209,8 @@ class InstanceArgs:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if role_name is not None:
             pulumi.set(__self__, "role_name", role_name)
+        if secondary_private_ip_address_count is not None:
+            pulumi.set(__self__, "secondary_private_ip_address_count", secondary_private_ip_address_count)
         if secondary_private_ips is not None:
             pulumi.set(__self__, "secondary_private_ips", secondary_private_ips)
         if security_enhancement_strategy is not None:
@@ -644,6 +648,18 @@ class InstanceArgs:
         pulumi.set(self, "role_name", value)
 
     @property
+    @pulumi.getter(name="secondaryPrivateIpAddressCount")
+    def secondary_private_ip_address_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
+        """
+        return pulumi.get(self, "secondary_private_ip_address_count")
+
+    @secondary_private_ip_address_count.setter
+    def secondary_private_ip_address_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "secondary_private_ip_address_count", value)
+
+    @property
     @pulumi.getter(name="secondaryPrivateIps")
     def secondary_private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -878,6 +894,7 @@ class _InstanceState:
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  role_name: Optional[pulumi.Input[str]] = None,
+                 secondary_private_ip_address_count: Optional[pulumi.Input[int]] = None,
                  secondary_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -941,6 +958,7 @@ class _InstanceState:
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the instance belongs.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+        :param pulumi.Input[int] secondary_private_ip_address_count: The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_private_ips: A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
         :param pulumi.Input[str] security_enhancement_strategy: The security enhancement strategy.
                - Active: Enable security enhancement strategy, it only works on system images.
@@ -1042,6 +1060,8 @@ class _InstanceState:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if role_name is not None:
             pulumi.set(__self__, "role_name", role_name)
+        if secondary_private_ip_address_count is not None:
+            pulumi.set(__self__, "secondary_private_ip_address_count", secondary_private_ip_address_count)
         if secondary_private_ips is not None:
             pulumi.set(__self__, "secondary_private_ips", secondary_private_ips)
         if security_enhancement_strategy is not None:
@@ -1481,6 +1501,18 @@ class _InstanceState:
         pulumi.set(self, "role_name", value)
 
     @property
+    @pulumi.getter(name="secondaryPrivateIpAddressCount")
+    def secondary_private_ip_address_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
+        """
+        return pulumi.get(self, "secondary_private_ip_address_count")
+
+    @secondary_private_ip_address_count.setter
+    def secondary_private_ip_address_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "secondary_private_ip_address_count", value)
+
+    @property
     @pulumi.getter(name="secondaryPrivateIps")
     def secondary_private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -1728,6 +1760,7 @@ class Instance(pulumi.CustomResource):
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  role_name: Optional[pulumi.Input[str]] = None,
+                 secondary_private_ip_address_count: Optional[pulumi.Input[int]] = None,
                  secondary_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1800,6 +1833,7 @@ class Instance(pulumi.CustomResource):
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the instance belongs.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+        :param pulumi.Input[int] secondary_private_ip_address_count: The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_private_ips: A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
         :param pulumi.Input[str] security_enhancement_strategy: The security enhancement strategy.
                - Active: Enable security enhancement strategy, it only works on system images.
@@ -1888,6 +1922,7 @@ class Instance(pulumi.CustomResource):
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  role_name: Optional[pulumi.Input[str]] = None,
+                 secondary_private_ip_address_count: Optional[pulumi.Input[int]] = None,
                  secondary_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1962,6 +1997,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["renewal_status"] = renewal_status
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["role_name"] = role_name
+            __props__.__dict__["secondary_private_ip_address_count"] = secondary_private_ip_address_count
             __props__.__dict__["secondary_private_ips"] = secondary_private_ips
             __props__.__dict__["security_enhancement_strategy"] = security_enhancement_strategy
             if security_groups is None and not opts.urn:
@@ -2025,6 +2061,7 @@ class Instance(pulumi.CustomResource):
             renewal_status: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             role_name: Optional[pulumi.Input[str]] = None,
+            secondary_private_ip_address_count: Optional[pulumi.Input[int]] = None,
             secondary_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2093,6 +2130,7 @@ class Instance(pulumi.CustomResource):
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the instance belongs.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+        :param pulumi.Input[int] secondary_private_ip_address_count: The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_private_ips: A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
         :param pulumi.Input[str] security_enhancement_strategy: The security enhancement strategy.
                - Active: Enable security enhancement strategy, it only works on system images.
@@ -2156,6 +2194,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["role_name"] = role_name
+        __props__.__dict__["secondary_private_ip_address_count"] = secondary_private_ip_address_count
         __props__.__dict__["secondary_private_ips"] = secondary_private_ips
         __props__.__dict__["security_enhancement_strategy"] = security_enhancement_strategy
         __props__.__dict__["security_groups"] = security_groups
@@ -2447,8 +2486,16 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "role_name")
 
     @property
+    @pulumi.getter(name="secondaryPrivateIpAddressCount")
+    def secondary_private_ip_address_count(self) -> pulumi.Output[int]:
+        """
+        The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
+        """
+        return pulumi.get(self, "secondary_private_ip_address_count")
+
+    @property
     @pulumi.getter(name="secondaryPrivateIps")
-    def secondary_private_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def secondary_private_ips(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
         """

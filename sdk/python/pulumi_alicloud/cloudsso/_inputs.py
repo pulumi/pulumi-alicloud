@@ -16,20 +16,42 @@ __all__ = [
 @pulumi.input_type
 class AccessConfigurationPermissionPolicyArgs:
     def __init__(__self__, *,
-                 permission_policy_document: Optional[pulumi.Input[str]] = None,
-                 permission_policy_name: Optional[pulumi.Input[str]] = None,
-                 permission_policy_type: Optional[pulumi.Input[str]] = None):
+                 permission_policy_name: pulumi.Input[str],
+                 permission_policy_type: pulumi.Input[str],
+                 permission_policy_document: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] permission_policy_document: The Content of Policy.
-        :param pulumi.Input[str] permission_policy_name: The Policy Name of policy.
+        :param pulumi.Input[str] permission_policy_name: The Policy Name of policy. The name of the resource. The name must be 1 to 32 characters in length and can contain letters, digits, and hyphens (-).
         :param pulumi.Input[str] permission_policy_type: The Policy Type of policy. Valid values: `System`, `Inline`.
+        :param pulumi.Input[str] permission_policy_document: The Content of Policy.
         """
+        pulumi.set(__self__, "permission_policy_name", permission_policy_name)
+        pulumi.set(__self__, "permission_policy_type", permission_policy_type)
         if permission_policy_document is not None:
             pulumi.set(__self__, "permission_policy_document", permission_policy_document)
-        if permission_policy_name is not None:
-            pulumi.set(__self__, "permission_policy_name", permission_policy_name)
-        if permission_policy_type is not None:
-            pulumi.set(__self__, "permission_policy_type", permission_policy_type)
+
+    @property
+    @pulumi.getter(name="permissionPolicyName")
+    def permission_policy_name(self) -> pulumi.Input[str]:
+        """
+        The Policy Name of policy. The name of the resource. The name must be 1 to 32 characters in length and can contain letters, digits, and hyphens (-).
+        """
+        return pulumi.get(self, "permission_policy_name")
+
+    @permission_policy_name.setter
+    def permission_policy_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "permission_policy_name", value)
+
+    @property
+    @pulumi.getter(name="permissionPolicyType")
+    def permission_policy_type(self) -> pulumi.Input[str]:
+        """
+        The Policy Type of policy. Valid values: `System`, `Inline`.
+        """
+        return pulumi.get(self, "permission_policy_type")
+
+    @permission_policy_type.setter
+    def permission_policy_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "permission_policy_type", value)
 
     @property
     @pulumi.getter(name="permissionPolicyDocument")
@@ -43,30 +65,6 @@ class AccessConfigurationPermissionPolicyArgs:
     def permission_policy_document(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "permission_policy_document", value)
 
-    @property
-    @pulumi.getter(name="permissionPolicyName")
-    def permission_policy_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Policy Name of policy.
-        """
-        return pulumi.get(self, "permission_policy_name")
-
-    @permission_policy_name.setter
-    def permission_policy_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "permission_policy_name", value)
-
-    @property
-    @pulumi.getter(name="permissionPolicyType")
-    def permission_policy_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Policy Type of policy. Valid values: `System`, `Inline`.
-        """
-        return pulumi.get(self, "permission_policy_type")
-
-    @permission_policy_type.setter
-    def permission_policy_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "permission_policy_type", value)
-
 
 @pulumi.input_type
 class DirectorySamlIdentityProviderConfigurationArgs:
@@ -74,7 +72,7 @@ class DirectorySamlIdentityProviderConfigurationArgs:
                  encoded_metadata_document: Optional[pulumi.Input[str]] = None,
                  sso_status: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] encoded_metadata_document: Base64 encoded IdP metadata document.
+        :param pulumi.Input[str] encoded_metadata_document: Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `sso_status` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `sso_status` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
         :param pulumi.Input[str] sso_status: SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
         """
         if encoded_metadata_document is not None:
@@ -86,7 +84,7 @@ class DirectorySamlIdentityProviderConfigurationArgs:
     @pulumi.getter(name="encodedMetadataDocument")
     def encoded_metadata_document(self) -> Optional[pulumi.Input[str]]:
         """
-        Base64 encoded IdP metadata document.
+        Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `sso_status` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `sso_status` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
         """
         return pulumi.get(self, "encoded_metadata_document")
 

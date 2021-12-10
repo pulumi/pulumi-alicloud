@@ -62,6 +62,10 @@ type GetImagesArgs struct {
 	DryRun *bool `pulumi:"dryRun"`
 	// The name of the image family. You can set this parameter to query images of the specified image family. This parameter is empty by default.
 	ImageFamily *string `pulumi:"imageFamily"`
+	// The ID of the image.
+	ImageId *string `pulumi:"imageId"`
+	// The name of the image.
+	ImageName *string `pulumi:"imageName"`
 	// The instance type for which the image can be used.
 	InstanceType *string `pulumi:"instanceType"`
 	// Specifies whether the image supports cloud-init.
@@ -108,6 +112,8 @@ type GetImagesResult struct {
 	// A list of image IDs.
 	Ids         []string `pulumi:"ids"`
 	ImageFamily *string  `pulumi:"imageFamily"`
+	ImageId     *string  `pulumi:"imageId"`
+	ImageName   *string  `pulumi:"imageName"`
 	// A list of images. Each element contains the following attributes:
 	Images               []GetImagesImage `pulumi:"images"`
 	InstanceType         *string          `pulumi:"instanceType"`
@@ -150,6 +156,10 @@ type GetImagesOutputArgs struct {
 	DryRun pulumi.BoolPtrInput `pulumi:"dryRun"`
 	// The name of the image family. You can set this parameter to query images of the specified image family. This parameter is empty by default.
 	ImageFamily pulumi.StringPtrInput `pulumi:"imageFamily"`
+	// The ID of the image.
+	ImageId pulumi.StringPtrInput `pulumi:"imageId"`
+	// The name of the image.
+	ImageName pulumi.StringPtrInput `pulumi:"imageName"`
 	// The instance type for which the image can be used.
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
 	// Specifies whether the image supports cloud-init.
@@ -229,6 +239,14 @@ func (o GetImagesResultOutput) Ids() pulumi.StringArrayOutput {
 
 func (o GetImagesResultOutput) ImageFamily() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.ImageFamily }).(pulumi.StringPtrOutput)
+}
+
+func (o GetImagesResultOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *string { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetImagesResultOutput) ImageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesResult) *string { return v.ImageName }).(pulumi.StringPtrOutput)
 }
 
 // A list of images. Each element contains the following attributes:

@@ -67,10 +67,22 @@ namespace Pulumi.AliCloud.Pvtz
         public Output<string?> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
+        /// The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+        /// </summary>
+        [Output("syncStatus")]
+        public Output<string?> SyncStatus { get; private set; } = null!;
+
+        /// <summary>
         /// The IP address of the client.
         /// </summary>
         [Output("userClientIp")]
         public Output<string?> UserClientIp { get; private set; } = null!;
+
+        /// <summary>
+        /// The user information of the host synchronization task. The details see Block `user_info`.
+        /// </summary>
+        [Output("userInfos")]
+        public Output<ImmutableArray<Outputs.ZoneUserInfo>> UserInfos { get; private set; } = null!;
 
         /// <summary>
         /// The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
@@ -158,10 +170,28 @@ namespace Pulumi.AliCloud.Pvtz
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
+        /// The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+        /// </summary>
+        [Input("syncStatus")]
+        public Input<string>? SyncStatus { get; set; }
+
+        /// <summary>
         /// The IP address of the client.
         /// </summary>
         [Input("userClientIp")]
         public Input<string>? UserClientIp { get; set; }
+
+        [Input("userInfos")]
+        private InputList<Inputs.ZoneUserInfoArgs>? _userInfos;
+
+        /// <summary>
+        /// The user information of the host synchronization task. The details see Block `user_info`.
+        /// </summary>
+        public InputList<Inputs.ZoneUserInfoArgs> UserInfos
+        {
+            get => _userInfos ?? (_userInfos = new InputList<Inputs.ZoneUserInfoArgs>());
+            set => _userInfos = value;
+        }
 
         /// <summary>
         /// The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
@@ -222,10 +252,28 @@ namespace Pulumi.AliCloud.Pvtz
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
+        /// The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+        /// </summary>
+        [Input("syncStatus")]
+        public Input<string>? SyncStatus { get; set; }
+
+        /// <summary>
         /// The IP address of the client.
         /// </summary>
         [Input("userClientIp")]
         public Input<string>? UserClientIp { get; set; }
+
+        [Input("userInfos")]
+        private InputList<Inputs.ZoneUserInfoGetArgs>? _userInfos;
+
+        /// <summary>
+        /// The user information of the host synchronization task. The details see Block `user_info`.
+        /// </summary>
+        public InputList<Inputs.ZoneUserInfoGetArgs> UserInfos
+        {
+            get => _userInfos ?? (_userInfos = new InputList<Inputs.ZoneUserInfoGetArgs>());
+            set => _userInfos = value;
+        }
 
         /// <summary>
         /// The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.

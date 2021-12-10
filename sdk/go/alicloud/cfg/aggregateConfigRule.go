@@ -13,9 +13,59 @@ import (
 
 // Provides a Cloud Config Aggregate Config Rule resource.
 //
-// For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregate Config Rule](https://help.aliyun.com/).
+// For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregate Config Rule](https://www.alibabacloud.com/help/doc-detail/154216.html).
 //
 // > **NOTE:** Available in v1.124.0+.
+//
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleAggregator, err := cfg.NewAggregator(ctx, "exampleAggregator", &cfg.AggregatorArgs{
+// 			AggregatorAccounts: cfg.AggregatorAggregatorAccountArray{
+// 				&cfg.AggregatorAggregatorAccountArgs{
+// 					AccountId:   pulumi.String("140278452670****"),
+// 					AccountName: pulumi.String("test-2"),
+// 					AccountType: pulumi.String("ResourceDirectory"),
+// 				},
+// 			},
+// 			AggregatorName: pulumi.String("tf-testaccaggregator"),
+// 			Description:    pulumi.String("tf-testaccaggregator"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cfg.NewAggregateConfigRule(ctx, "exampleAggregateConfigRule", &cfg.AggregateConfigRuleArgs{
+// 			AggregateConfigRuleName: pulumi.String("tf-testaccconfig1234"),
+// 			AggregatorId:            exampleAggregator.ID(),
+// 			ConfigRuleTriggerTypes:  pulumi.String("ConfigurationItemChangeNotification"),
+// 			SourceOwner:             pulumi.String("ALIYUN"),
+// 			SourceIdentifier:        pulumi.String("ecs-cpu-min-count-limit"),
+// 			RiskLevel:               pulumi.Int(1),
+// 			ResourceTypesScopes: pulumi.StringArray{
+// 				pulumi.String("ACS::ECS::Instance"),
+// 			},
+// 			InputParameters: pulumi.AnyMap{
+// 				"cpuCount": pulumi.Any("4"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -55,10 +105,11 @@ type AggregateConfigRule struct {
 	SourceIdentifier pulumi.StringOutput `pulumi:"sourceIdentifier"`
 	// Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
 	SourceOwner pulumi.StringOutput `pulumi:"sourceOwner"`
-	Status      pulumi.StringOutput `pulumi:"status"`
+	// The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+	Status pulumi.StringOutput `pulumi:"status"`
 	// The rule monitors the tag key, only applies to rules created based on managed rules.
 	TagKeyScope pulumi.StringPtrOutput `pulumi:"tagKeyScope"`
-	// The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+	// The rule monitors the tag value, use with the `tagKeyScope` options. only applies to rules created based on managed rules.
 	TagValueScope pulumi.StringPtrOutput `pulumi:"tagValueScope"`
 }
 
@@ -140,10 +191,11 @@ type aggregateConfigRuleState struct {
 	SourceIdentifier *string `pulumi:"sourceIdentifier"`
 	// Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
 	SourceOwner *string `pulumi:"sourceOwner"`
-	Status      *string `pulumi:"status"`
+	// The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+	Status *string `pulumi:"status"`
 	// The rule monitors the tag key, only applies to rules created based on managed rules.
 	TagKeyScope *string `pulumi:"tagKeyScope"`
-	// The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+	// The rule monitors the tag value, use with the `tagKeyScope` options. only applies to rules created based on managed rules.
 	TagValueScope *string `pulumi:"tagValueScope"`
 }
 
@@ -176,10 +228,11 @@ type AggregateConfigRuleState struct {
 	SourceIdentifier pulumi.StringPtrInput
 	// Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
 	SourceOwner pulumi.StringPtrInput
-	Status      pulumi.StringPtrInput
+	// The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+	Status pulumi.StringPtrInput
 	// The rule monitors the tag key, only applies to rules created based on managed rules.
 	TagKeyScope pulumi.StringPtrInput
-	// The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+	// The rule monitors the tag value, use with the `tagKeyScope` options. only applies to rules created based on managed rules.
 	TagValueScope pulumi.StringPtrInput
 }
 
@@ -214,9 +267,11 @@ type aggregateConfigRuleArgs struct {
 	SourceIdentifier string `pulumi:"sourceIdentifier"`
 	// Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
 	SourceOwner string `pulumi:"sourceOwner"`
+	// The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+	Status *string `pulumi:"status"`
 	// The rule monitors the tag key, only applies to rules created based on managed rules.
 	TagKeyScope *string `pulumi:"tagKeyScope"`
-	// The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+	// The rule monitors the tag value, use with the `tagKeyScope` options. only applies to rules created based on managed rules.
 	TagValueScope *string `pulumi:"tagValueScope"`
 }
 
@@ -248,9 +303,11 @@ type AggregateConfigRuleArgs struct {
 	SourceIdentifier pulumi.StringInput
 	// Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
 	SourceOwner pulumi.StringInput
+	// The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+	Status pulumi.StringPtrInput
 	// The rule monitors the tag key, only applies to rules created based on managed rules.
 	TagKeyScope pulumi.StringPtrInput
-	// The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+	// The rule monitors the tag value, use with the `tagKeyScope` options. only applies to rules created based on managed rules.
 	TagValueScope pulumi.StringPtrInput
 }
 

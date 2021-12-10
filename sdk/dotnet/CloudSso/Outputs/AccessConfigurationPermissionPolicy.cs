@@ -18,21 +18,21 @@ namespace Pulumi.AliCloud.CloudSso.Outputs
         /// </summary>
         public readonly string? PermissionPolicyDocument;
         /// <summary>
-        /// The Policy Name of policy.
+        /// The Policy Name of policy. The name of the resource. The name must be 1 to 32 characters in length and can contain letters, digits, and hyphens (-).
         /// </summary>
-        public readonly string? PermissionPolicyName;
+        public readonly string PermissionPolicyName;
         /// <summary>
         /// The Policy Type of policy. Valid values: `System`, `Inline`.
         /// </summary>
-        public readonly string? PermissionPolicyType;
+        public readonly string PermissionPolicyType;
 
         [OutputConstructor]
         private AccessConfigurationPermissionPolicy(
             string? permissionPolicyDocument,
 
-            string? permissionPolicyName,
+            string permissionPolicyName,
 
-            string? permissionPolicyType)
+            string permissionPolicyType)
         {
             PermissionPolicyDocument = permissionPolicyDocument;
             PermissionPolicyName = permissionPolicyName;

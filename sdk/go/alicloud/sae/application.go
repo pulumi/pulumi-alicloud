@@ -190,7 +190,7 @@ type Application struct {
 	PreStop pulumi.StringPtrOutput `pulumi:"preStop"`
 	// Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
 	Readiness pulumi.StringPtrOutput `pulumi:"readiness"`
-	// Initial number of instances.
+	// Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
 	Replicas pulumi.IntOutput `pulumi:"replicas"`
 	// Security group ID.
 	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
@@ -346,7 +346,7 @@ type applicationState struct {
 	PreStop *string `pulumi:"preStop"`
 	// Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
 	Readiness *string `pulumi:"readiness"`
-	// Initial number of instances.
+	// Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
 	Replicas *int `pulumi:"replicas"`
 	// Security group ID.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -465,7 +465,7 @@ type ApplicationState struct {
 	PreStop pulumi.StringPtrInput
 	// Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
 	Readiness pulumi.StringPtrInput
-	// Initial number of instances.
+	// Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
 	Replicas pulumi.IntPtrInput
 	// Security group ID.
 	SecurityGroupId pulumi.StringPtrInput
@@ -584,7 +584,7 @@ type applicationArgs struct {
 	PreStop *string `pulumi:"preStop"`
 	// Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
 	Readiness *string `pulumi:"readiness"`
-	// Initial number of instances.
+	// Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
 	Replicas int `pulumi:"replicas"`
 	// Security group ID.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -700,7 +700,7 @@ type ApplicationArgs struct {
 	PreStop pulumi.StringPtrInput
 	// Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
 	Readiness pulumi.StringPtrInput
-	// Initial number of instances.
+	// Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
 	Replicas pulumi.IntInput
 	// Security group ID.
 	SecurityGroupId pulumi.StringPtrInput

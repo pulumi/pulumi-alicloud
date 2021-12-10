@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .cluster import *
+from .get_clusters import *
 from .get_disk_types import *
 from .get_instance_types import *
 from .get_main_versions import *

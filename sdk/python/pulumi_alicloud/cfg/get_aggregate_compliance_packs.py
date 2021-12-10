@@ -81,6 +81,9 @@ class GetAggregateCompliancePacksResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Config Aggregate Compliance Pack names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -91,11 +94,17 @@ class GetAggregateCompliancePacksResult:
     @property
     @pulumi.getter
     def packs(self) -> Sequence['outputs.GetAggregateCompliancePacksPackResult']:
+        """
+        A list of Config Aggregate Compliance Packs. Each element contains the following attributes:
+        """
         return pulumi.get(self, "packs")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
 
@@ -147,7 +156,7 @@ def get_aggregate_compliance_packs(aggregator_id: Optional[str] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Aggregate Compliance Pack IDs.
     :param str name_regex: A regex string to filter results by Aggregate Compliance Pack name.
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`.
     """
     __args__ = dict()
     __args__['aggregatorId'] = aggregator_id
@@ -206,6 +215,6 @@ def get_aggregate_compliance_packs_output(aggregator_id: Optional[pulumi.Input[s
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Aggregate Compliance Pack IDs.
     :param str name_regex: A regex string to filter results by Aggregate Compliance Pack name.
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`.
     """
     ...

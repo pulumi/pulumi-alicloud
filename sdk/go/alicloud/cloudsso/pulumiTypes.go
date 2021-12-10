@@ -13,10 +13,10 @@ import (
 type AccessConfigurationPermissionPolicy struct {
 	// The Content of Policy.
 	PermissionPolicyDocument *string `pulumi:"permissionPolicyDocument"`
-	// The Policy Name of policy.
-	PermissionPolicyName *string `pulumi:"permissionPolicyName"`
+	// The Policy Name of policy. The name of the resource. The name must be 1 to 32 characters in length and can contain letters, digits, and hyphens (-).
+	PermissionPolicyName string `pulumi:"permissionPolicyName"`
 	// The Policy Type of policy. Valid values: `System`, `Inline`.
-	PermissionPolicyType *string `pulumi:"permissionPolicyType"`
+	PermissionPolicyType string `pulumi:"permissionPolicyType"`
 }
 
 // AccessConfigurationPermissionPolicyInput is an input type that accepts AccessConfigurationPermissionPolicyArgs and AccessConfigurationPermissionPolicyOutput values.
@@ -33,10 +33,10 @@ type AccessConfigurationPermissionPolicyInput interface {
 type AccessConfigurationPermissionPolicyArgs struct {
 	// The Content of Policy.
 	PermissionPolicyDocument pulumi.StringPtrInput `pulumi:"permissionPolicyDocument"`
-	// The Policy Name of policy.
-	PermissionPolicyName pulumi.StringPtrInput `pulumi:"permissionPolicyName"`
+	// The Policy Name of policy. The name of the resource. The name must be 1 to 32 characters in length and can contain letters, digits, and hyphens (-).
+	PermissionPolicyName pulumi.StringInput `pulumi:"permissionPolicyName"`
 	// The Policy Type of policy. Valid values: `System`, `Inline`.
-	PermissionPolicyType pulumi.StringPtrInput `pulumi:"permissionPolicyType"`
+	PermissionPolicyType pulumi.StringInput `pulumi:"permissionPolicyType"`
 }
 
 func (AccessConfigurationPermissionPolicyArgs) ElementType() reflect.Type {
@@ -95,14 +95,14 @@ func (o AccessConfigurationPermissionPolicyOutput) PermissionPolicyDocument() pu
 	return o.ApplyT(func(v AccessConfigurationPermissionPolicy) *string { return v.PermissionPolicyDocument }).(pulumi.StringPtrOutput)
 }
 
-// The Policy Name of policy.
-func (o AccessConfigurationPermissionPolicyOutput) PermissionPolicyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessConfigurationPermissionPolicy) *string { return v.PermissionPolicyName }).(pulumi.StringPtrOutput)
+// The Policy Name of policy. The name of the resource. The name must be 1 to 32 characters in length and can contain letters, digits, and hyphens (-).
+func (o AccessConfigurationPermissionPolicyOutput) PermissionPolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessConfigurationPermissionPolicy) string { return v.PermissionPolicyName }).(pulumi.StringOutput)
 }
 
 // The Policy Type of policy. Valid values: `System`, `Inline`.
-func (o AccessConfigurationPermissionPolicyOutput) PermissionPolicyType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessConfigurationPermissionPolicy) *string { return v.PermissionPolicyType }).(pulumi.StringPtrOutput)
+func (o AccessConfigurationPermissionPolicyOutput) PermissionPolicyType() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessConfigurationPermissionPolicy) string { return v.PermissionPolicyType }).(pulumi.StringOutput)
 }
 
 type AccessConfigurationPermissionPolicyArrayOutput struct{ *pulumi.OutputState }
@@ -126,7 +126,7 @@ func (o AccessConfigurationPermissionPolicyArrayOutput) Index(i pulumi.IntInput)
 }
 
 type DirectorySamlIdentityProviderConfiguration struct {
-	// Base64 encoded IdP metadata document.
+	// Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
 	EncodedMetadataDocument *string `pulumi:"encodedMetadataDocument"`
 	// SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
 	SsoStatus *string `pulumi:"ssoStatus"`
@@ -144,7 +144,7 @@ type DirectorySamlIdentityProviderConfigurationInput interface {
 }
 
 type DirectorySamlIdentityProviderConfigurationArgs struct {
-	// Base64 encoded IdP metadata document.
+	// Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
 	EncodedMetadataDocument pulumi.StringPtrInput `pulumi:"encodedMetadataDocument"`
 	// SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
 	SsoStatus pulumi.StringPtrInput `pulumi:"ssoStatus"`
@@ -227,7 +227,7 @@ func (o DirectorySamlIdentityProviderConfigurationOutput) ToDirectorySamlIdentit
 	}).(DirectorySamlIdentityProviderConfigurationPtrOutput)
 }
 
-// Base64 encoded IdP metadata document.
+// Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
 func (o DirectorySamlIdentityProviderConfigurationOutput) EncodedMetadataDocument() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DirectorySamlIdentityProviderConfiguration) *string { return v.EncodedMetadataDocument }).(pulumi.StringPtrOutput)
 }
@@ -261,7 +261,7 @@ func (o DirectorySamlIdentityProviderConfigurationPtrOutput) Elem() DirectorySam
 	}).(DirectorySamlIdentityProviderConfigurationOutput)
 }
 
-// Base64 encoded IdP metadata document.
+// Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `ssoStatus` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
 func (o DirectorySamlIdentityProviderConfigurationPtrOutput) EncodedMetadataDocument() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DirectorySamlIdentityProviderConfiguration) *string {
 		if v == nil {

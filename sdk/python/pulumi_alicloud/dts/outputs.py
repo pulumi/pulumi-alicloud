@@ -10,10 +10,95 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'GetConsumerChannelsChannelResult',
     'GetSubscriptionJobsJobResult',
     'GetSubscriptionJobsJobSubscriptionHostResult',
     'GetSynchronizationJobsJobResult',
 ]
+
+@pulumi.output_type
+class GetConsumerChannelsChannelResult(dict):
+    def __init__(__self__, *,
+                 consumer_group_id: str,
+                 consumer_group_name: str,
+                 consumer_group_user_name: str,
+                 consumption_checkpoint: str,
+                 id: str,
+                 message_delay: int,
+                 unconsumed_data: int):
+        """
+        :param str consumer_group_id: The ID of the consumer group.
+        :param str consumer_group_name: The name of the consumer group.
+        :param str consumer_group_user_name: The username of the consumer group.
+        :param str consumption_checkpoint: The time point when the client consumed the last message in the subscription channel.
+        :param str id: The ID of the Consumer Channel.
+        :param int message_delay: The message delay time, for the current time data subscription channel in the earliest time of unconsumed messages of the difference, in Unix timestamp format, which is measured in seconds.
+        :param int unconsumed_data: The total number of unconsumed messages.
+        """
+        pulumi.set(__self__, "consumer_group_id", consumer_group_id)
+        pulumi.set(__self__, "consumer_group_name", consumer_group_name)
+        pulumi.set(__self__, "consumer_group_user_name", consumer_group_user_name)
+        pulumi.set(__self__, "consumption_checkpoint", consumption_checkpoint)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "message_delay", message_delay)
+        pulumi.set(__self__, "unconsumed_data", unconsumed_data)
+
+    @property
+    @pulumi.getter(name="consumerGroupId")
+    def consumer_group_id(self) -> str:
+        """
+        The ID of the consumer group.
+        """
+        return pulumi.get(self, "consumer_group_id")
+
+    @property
+    @pulumi.getter(name="consumerGroupName")
+    def consumer_group_name(self) -> str:
+        """
+        The name of the consumer group.
+        """
+        return pulumi.get(self, "consumer_group_name")
+
+    @property
+    @pulumi.getter(name="consumerGroupUserName")
+    def consumer_group_user_name(self) -> str:
+        """
+        The username of the consumer group.
+        """
+        return pulumi.get(self, "consumer_group_user_name")
+
+    @property
+    @pulumi.getter(name="consumptionCheckpoint")
+    def consumption_checkpoint(self) -> str:
+        """
+        The time point when the client consumed the last message in the subscription channel.
+        """
+        return pulumi.get(self, "consumption_checkpoint")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Consumer Channel.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="messageDelay")
+    def message_delay(self) -> int:
+        """
+        The message delay time, for the current time data subscription channel in the earliest time of unconsumed messages of the difference, in Unix timestamp format, which is measured in seconds.
+        """
+        return pulumi.get(self, "message_delay")
+
+    @property
+    @pulumi.getter(name="unconsumedData")
+    def unconsumed_data(self) -> int:
+        """
+        The total number of unconsumed messages.
+        """
+        return pulumi.get(self, "unconsumed_data")
+
 
 @pulumi.output_type
 class GetSubscriptionJobsJobResult(dict):
@@ -408,8 +493,8 @@ class GetSynchronizationJobsJobResult(dict):
                  synchronization_direction: str):
         """
         :param str checkpoint: Start time in Unix timestamp format.
-        :param bool data_initialization: Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization values include:
-        :param bool data_synchronization: Whether to perform incremental data migration for migration types or synchronization values include:
+        :param bool data_initialization: Whether to execute DTS supports schema migration, full data migration, or full-data initialization.
+        :param bool data_synchronization: Whether to perform incremental data migration for migration types or synchronization.
         :param str db_list: Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
         :param str destination_endpoint_data_base_name: The name of migrate the database.
         :param str destination_endpoint_engine_name: The type of destination database. Valid values: `ADB20`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
@@ -488,7 +573,7 @@ class GetSynchronizationJobsJobResult(dict):
     @pulumi.getter(name="dataInitialization")
     def data_initialization(self) -> bool:
         """
-        Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization values include:
+        Whether to execute DTS supports schema migration, full data migration, or full-data initialization.
         """
         return pulumi.get(self, "data_initialization")
 
@@ -496,7 +581,7 @@ class GetSynchronizationJobsJobResult(dict):
     @pulumi.getter(name="dataSynchronization")
     def data_synchronization(self) -> bool:
         """
-        Whether to perform incremental data migration for migration types or synchronization values include:
+        Whether to perform incremental data migration for migration types or synchronization.
         """
         return pulumi.get(self, "data_synchronization")
 

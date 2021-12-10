@@ -90,7 +90,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly controlPlaneLogProject!: pulumi.Output<string | undefined>;
     /**
-     * Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
+     * Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
      */
     public readonly controlPlaneLogTtl!: pulumi.Output<string | undefined>;
     /**
@@ -249,7 +249,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly taints!: pulumi.Output<outputs.cs.ManagedKubernetesTaint[] | undefined>;
     /**
-     * When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+     * When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
      */
     public readonly timezone!: pulumi.Output<string | undefined>;
     /**
@@ -558,7 +558,7 @@ export interface ManagedKubernetesState {
      */
     controlPlaneLogProject?: pulumi.Input<string>;
     /**
-     * Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
+     * Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
      */
     controlPlaneLogTtl?: pulumi.Input<string>;
     /**
@@ -717,7 +717,7 @@ export interface ManagedKubernetesState {
      */
     taints?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesTaint>[]>;
     /**
-     * When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+     * When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
      */
     timezone?: pulumi.Input<string>;
     /**
@@ -841,7 +841,7 @@ export interface ManagedKubernetesArgs {
      */
     controlPlaneLogProject?: pulumi.Input<string>;
     /**
-     * Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
+     * Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
      */
     controlPlaneLogTtl?: pulumi.Input<string>;
     /**
@@ -987,7 +987,7 @@ export interface ManagedKubernetesArgs {
      */
     taints?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesTaint>[]>;
     /**
-     * When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+     * When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
      */
     timezone?: pulumi.Input<string>;
     /**

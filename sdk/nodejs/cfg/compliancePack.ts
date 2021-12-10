@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Config Compliance Pack resource.
  *
- * For information about Cloud Config Compliance Pack and how to use it, see [What is Compliance Pack](https://help.aliyun.com/).
+ * For information about Cloud Config Compliance Pack and how to use it, see [What is Compliance Pack](https://www.alibabacloud.com/help/en/doc-detail/194753.html).
  *
  * > **NOTE:** Available in v1.124.0+.
  *
@@ -90,7 +90,7 @@ export class CompliancePack extends pulumi.CustomResource {
     }
 
     /**
-     * The Compliance Package Name.
+     * The Compliance Package Name. . **NOTE:** the `compliancePackName` supports modification since V1.146.0.
      */
     public readonly compliancePackName!: pulumi.Output<string>;
     /**
@@ -171,7 +171,7 @@ export class CompliancePack extends pulumi.CustomResource {
  */
 export interface CompliancePackState {
     /**
-     * The Compliance Package Name.
+     * The Compliance Package Name. . **NOTE:** the `compliancePackName` supports modification since V1.146.0.
      */
     compliancePackName?: pulumi.Input<string>;
     /**
@@ -207,7 +207,7 @@ export interface CompliancePackState {
  */
 export interface CompliancePackArgs {
     /**
-     * The Compliance Package Name.
+     * The Compliance Package Name. . **NOTE:** the `compliancePackName` supports modification since V1.146.0.
      */
     compliancePackName: pulumi.Input<string>;
     /**

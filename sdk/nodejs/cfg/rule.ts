@@ -6,7 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a a Alicloud Config Rule resource. Cloud Config checks the validity of resources based on rules. You can create rules to evaluate resources as needed.
- * For information about Alicloud Config Rule and how to use it, see [What is Alicloud Config Rule](https://www.alibabacloud.com/help/en/doc-detail/127388.htm).
+ * For information about Alicloud Config Rule and how to use it, see [What is Alicloud Config Rule](https://www.alibabacloud.com/help/doc-detail/154216.html).
  *
  * > **NOTE:** Available in v1.99.0+.
  *
@@ -137,13 +137,16 @@ export class Rule extends pulumi.CustomResource {
      * Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
      */
     public readonly sourceOwner!: pulumi.Output<string>;
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+     */
+    public readonly status!: pulumi.Output<string>;
     /**
      * The rule monitors the tag key, only applies to rules created based on managed rules.
      */
     public readonly tagKeyScope!: pulumi.Output<string | undefined>;
     /**
-     * The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+     * The rule monitors the tag value, use with the `tagKeyScope` options. only applies to rules created based on managed rules.
      */
     public readonly tagValueScope!: pulumi.Output<string | undefined>;
 
@@ -207,9 +210,9 @@ export class Rule extends pulumi.CustomResource {
             inputs["sourceIdentifier"] = args ? args.sourceIdentifier : undefined;
             inputs["sourceMaximumExecutionFrequency"] = args ? args.sourceMaximumExecutionFrequency : undefined;
             inputs["sourceOwner"] = args ? args.sourceOwner : undefined;
+            inputs["status"] = args ? args.status : undefined;
             inputs["tagKeyScope"] = args ? args.tagKeyScope : undefined;
             inputs["tagValueScope"] = args ? args.tagValueScope : undefined;
-            inputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -288,13 +291,16 @@ export interface RuleState {
      * Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
      */
     sourceOwner?: pulumi.Input<string>;
+    /**
+     * The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+     */
     status?: pulumi.Input<string>;
     /**
      * The rule monitors the tag key, only applies to rules created based on managed rules.
      */
     tagKeyScope?: pulumi.Input<string>;
     /**
-     * The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+     * The rule monitors the tag value, use with the `tagKeyScope` options. only applies to rules created based on managed rules.
      */
     tagValueScope?: pulumi.Input<string>;
 }
@@ -370,11 +376,15 @@ export interface RuleArgs {
      */
     sourceOwner: pulumi.Input<string>;
     /**
+     * The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+     */
+    status?: pulumi.Input<string>;
+    /**
      * The rule monitors the tag key, only applies to rules created based on managed rules.
      */
     tagKeyScope?: pulumi.Input<string>;
     /**
-     * The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+     * The rule monitors the tag value, use with the `tagKeyScope` options. only applies to rules created based on managed rules.
      */
     tagValueScope?: pulumi.Input<string>;
 }

@@ -46,7 +46,7 @@ type ManagedKubernetes struct {
 	ControlPlaneLogComponents pulumi.StringArrayOutput `pulumi:"controlPlaneLogComponents"`
 	// Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
 	ControlPlaneLogProject pulumi.StringPtrOutput `pulumi:"controlPlaneLogProject"`
-	// Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
+	// Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
 	ControlPlaneLogTtl pulumi.StringPtrOutput `pulumi:"controlPlaneLogTtl"`
 	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
 	CpuPolicy pulumi.StringPtrOutput `pulumi:"cpuPolicy"`
@@ -127,7 +127,7 @@ type ManagedKubernetes struct {
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
 	Taints ManagedKubernetesTaintArrayOutput `pulumi:"taints"`
-	// When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+	// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
 	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa pulumi.StringPtrOutput `pulumi:"userCa"`
@@ -227,7 +227,7 @@ type managedKubernetesState struct {
 	ControlPlaneLogComponents []string `pulumi:"controlPlaneLogComponents"`
 	// Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
 	ControlPlaneLogProject *string `pulumi:"controlPlaneLogProject"`
-	// Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
+	// Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
 	ControlPlaneLogTtl *string `pulumi:"controlPlaneLogTtl"`
 	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
 	CpuPolicy *string `pulumi:"cpuPolicy"`
@@ -308,7 +308,7 @@ type managedKubernetesState struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
 	Taints []ManagedKubernetesTaint `pulumi:"taints"`
-	// When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+	// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
 	Timezone *string `pulumi:"timezone"`
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa *string `pulumi:"userCa"`
@@ -377,7 +377,7 @@ type ManagedKubernetesState struct {
 	ControlPlaneLogComponents pulumi.StringArrayInput
 	// Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
 	ControlPlaneLogProject pulumi.StringPtrInput
-	// Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
+	// Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
 	ControlPlaneLogTtl pulumi.StringPtrInput
 	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
 	CpuPolicy pulumi.StringPtrInput
@@ -458,7 +458,7 @@ type ManagedKubernetesState struct {
 	Tags pulumi.MapInput
 	// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
 	Taints ManagedKubernetesTaintArrayInput
-	// When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+	// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
 	Timezone pulumi.StringPtrInput
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa pulumi.StringPtrInput
@@ -527,7 +527,7 @@ type managedKubernetesArgs struct {
 	ControlPlaneLogComponents []string `pulumi:"controlPlaneLogComponents"`
 	// Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
 	ControlPlaneLogProject *string `pulumi:"controlPlaneLogProject"`
-	// Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
+	// Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
 	ControlPlaneLogTtl *string `pulumi:"controlPlaneLogTtl"`
 	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
 	CpuPolicy *string `pulumi:"cpuPolicy"`
@@ -601,7 +601,7 @@ type managedKubernetesArgs struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
 	Taints []ManagedKubernetesTaint `pulumi:"taints"`
-	// When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+	// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
 	Timezone *string `pulumi:"timezone"`
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa *string `pulumi:"userCa"`
@@ -661,7 +661,7 @@ type ManagedKubernetesArgs struct {
 	ControlPlaneLogComponents pulumi.StringArrayInput
 	// Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
 	ControlPlaneLogProject pulumi.StringPtrInput
-	// Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
+	// Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
 	ControlPlaneLogTtl pulumi.StringPtrInput
 	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
 	CpuPolicy pulumi.StringPtrInput
@@ -735,7 +735,7 @@ type ManagedKubernetesArgs struct {
 	Tags pulumi.MapInput
 	// Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
 	Taints ManagedKubernetesTaintArrayInput
-	// When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+	// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
 	Timezone pulumi.StringPtrInput
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa pulumi.StringPtrInput

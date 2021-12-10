@@ -5,6 +5,8 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .consumer_channel import *
+from .get_consumer_channels import *
 from .get_subscription_jobs import *
 from .get_synchronization_jobs import *
 from .job_monitor_rule import *

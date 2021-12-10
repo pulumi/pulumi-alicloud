@@ -99,13 +99,13 @@ namespace Pulumi.AliCloud.Cfg
     public sealed class GetAggregateConfigRulesArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the rule.
+        /// The config rule name.
         /// </summary>
         [Input("aggregateConfigRuleName")]
         public string? AggregateConfigRuleName { get; set; }
 
         /// <summary>
-        /// The ID of Aggregator.
+        /// The ID of aggregator.
         /// </summary>
         [Input("aggregatorId", required: true)]
         public string AggregatorId { get; set; } = null!;
@@ -138,13 +138,13 @@ namespace Pulumi.AliCloud.Cfg
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
+        /// Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
         /// </summary>
         [Input("riskLevel")]
         public int? RiskLevel { get; set; }
 
         /// <summary>
-        /// The status of the rule.
+        /// The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -157,13 +157,13 @@ namespace Pulumi.AliCloud.Cfg
     public sealed class GetAggregateConfigRulesInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the rule.
+        /// The config rule name.
         /// </summary>
         [Input("aggregateConfigRuleName")]
         public Input<string>? AggregateConfigRuleName { get; set; }
 
         /// <summary>
-        /// The ID of Aggregator.
+        /// The ID of aggregator.
         /// </summary>
         [Input("aggregatorId", required: true)]
         public Input<string> AggregatorId { get; set; } = null!;
@@ -196,13 +196,13 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
+        /// Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
         /// </summary>
         [Input("riskLevel")]
         public Input<int>? RiskLevel { get; set; }
 
         /// <summary>
-        /// The status of the rule.
+        /// The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -216,7 +216,14 @@ namespace Pulumi.AliCloud.Cfg
     [OutputType]
     public sealed class GetAggregateConfigRulesResult
     {
+        /// <summary>
+        /// The name of the rule.
+        /// </summary>
         public readonly string? AggregateConfigRuleName;
+        /// <summary>
+        /// The ID of Aggregator.
+        /// * `compliance` -The Compliance information.
+        /// </summary>
         public readonly string AggregatorId;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -225,10 +232,22 @@ namespace Pulumi.AliCloud.Cfg
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Aggregate Config Rule names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
+        /// </summary>
         public readonly int? RiskLevel;
+        /// <summary>
+        /// A list of Config Aggregate Config Rules. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAggregateConfigRulesRuleResult> Rules;
+        /// <summary>
+        /// The status of the rule.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

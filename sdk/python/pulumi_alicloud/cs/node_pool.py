@@ -23,6 +23,7 @@ class NodePoolArgs:
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]]] = None,
                  format_disk: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 image_type: Optional[pulumi.Input[str]] = None,
                  install_cloud_monitor: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -41,9 +42,12 @@ class NodePoolArgs:
                  period_unit: Optional[pulumi.Input[str]] = None,
                  platform: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 runtime_name: Optional[pulumi.Input[str]] = None,
+                 runtime_version: Optional[pulumi.Input[str]] = None,
                  scaling_config: Optional[pulumi.Input['NodePoolScalingConfigArgs']] = None,
                  scaling_policy: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
@@ -63,6 +67,7 @@ class NodePoolArgs:
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]] data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
         :param pulumi.Input[bool] format_disk: After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
+        :param pulumi.Input[str] image_type: The image type, instead of `platform`. This field cannot be modified. One of `AliyunLinux`, `AliyunLinux3`, `AliyunLinux3Arm64`, `AliyunLinuxUEFI`, `CentOS`, `Windows`,`WindowsCore`,`AliyunLinux Qboot`,`ContainerOS`. If you select `Windows` or `WindowsCore`, the `passord` is required.
         :param pulumi.Input[bool] install_cloud_monitor: Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
         :param pulumi.Input[str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The instance list. Add existing nodes under the same cluster VPC to the node pool.
@@ -79,11 +84,14 @@ class NodePoolArgs:
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[int] period: Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
-        :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+        :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+        :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input['NodePoolScalingConfigArgs'] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
         :param pulumi.Input[str] scaling_policy: The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
-        :param pulumi.Input[str] security_group_id: The security group id for worker node.
+        :param pulumi.Input[str] security_group_id: The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
         :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
         :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -106,6 +114,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "format_disk", format_disk)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
+        if image_type is not None:
+            pulumi.set(__self__, "image_type", image_type)
         if install_cloud_monitor is not None:
             pulumi.set(__self__, "install_cloud_monitor", install_cloud_monitor)
         if instance_charge_type is not None:
@@ -139,15 +149,27 @@ class NodePoolArgs:
         if period_unit is not None:
             pulumi.set(__self__, "period_unit", period_unit)
         if platform is not None:
+            warnings.warn("""Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead""", DeprecationWarning)
+            pulumi.log.warn("""platform is deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead""")
+        if platform is not None:
             pulumi.set(__self__, "platform", platform)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if runtime_name is not None:
+            pulumi.set(__self__, "runtime_name", runtime_name)
+        if runtime_version is not None:
+            pulumi.set(__self__, "runtime_version", runtime_version)
         if scaling_config is not None:
             pulumi.set(__self__, "scaling_config", scaling_config)
         if scaling_policy is not None:
             pulumi.set(__self__, "scaling_policy", scaling_policy)
         if security_group_id is not None:
+            warnings.warn("""Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead""", DeprecationWarning)
+            pulumi.log.warn("""security_group_id is deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead""")
+        if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
+        if security_group_ids is not None:
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
         if spot_price_limits is not None:
             pulumi.set(__self__, "spot_price_limits", spot_price_limits)
         if spot_strategy is not None:
@@ -262,6 +284,18 @@ class NodePoolArgs:
     @image_id.setter
     def image_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter(name="imageType")
+    def image_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The image type, instead of `platform`. This field cannot be modified. One of `AliyunLinux`, `AliyunLinux3`, `AliyunLinux3Arm64`, `AliyunLinuxUEFI`, `CentOS`, `Windows`,`WindowsCore`,`AliyunLinux Qboot`,`ContainerOS`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+        """
+        return pulumi.get(self, "image_type")
+
+    @image_type.setter
+    def image_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_type", value)
 
     @property
     @pulumi.getter(name="installCloudMonitor")
@@ -459,7 +493,7 @@ class NodePoolArgs:
     @pulumi.getter
     def platform(self) -> Optional[pulumi.Input[str]]:
         """
-        The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+        The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
         """
         return pulumi.get(self, "platform")
 
@@ -478,6 +512,30 @@ class NodePoolArgs:
     @resource_group_id.setter
     def resource_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="runtimeName")
+    def runtime_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+        """
+        return pulumi.get(self, "runtime_name")
+
+    @runtime_name.setter
+    def runtime_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "runtime_name", value)
+
+    @property
+    @pulumi.getter(name="runtimeVersion")
+    def runtime_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
+        """
+        return pulumi.get(self, "runtime_version")
+
+    @runtime_version.setter
+    def runtime_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "runtime_version", value)
 
     @property
     @pulumi.getter(name="scalingConfig")
@@ -507,13 +565,25 @@ class NodePoolArgs:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The security group id for worker node.
+        The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
     def security_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "security_group_id", value)
+
+    @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
+        """
+        return pulumi.get(self, "security_group_ids")
+
+    @security_group_ids.setter
+    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_group_ids", value)
 
     @property
     @pulumi.getter(name="spotPriceLimits")
@@ -630,6 +700,7 @@ class _NodePoolState:
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]]] = None,
                  format_disk: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 image_type: Optional[pulumi.Input[str]] = None,
                  install_cloud_monitor: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -649,10 +720,13 @@ class _NodePoolState:
                  period_unit: Optional[pulumi.Input[str]] = None,
                  platform: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 runtime_name: Optional[pulumi.Input[str]] = None,
+                 runtime_version: Optional[pulumi.Input[str]] = None,
                  scaling_config: Optional[pulumi.Input['NodePoolScalingConfigArgs']] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
                  scaling_policy: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
@@ -672,6 +746,7 @@ class _NodePoolState:
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]] data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
         :param pulumi.Input[bool] format_disk: After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
+        :param pulumi.Input[str] image_type: The image type, instead of `platform`. This field cannot be modified. One of `AliyunLinux`, `AliyunLinux3`, `AliyunLinux3Arm64`, `AliyunLinuxUEFI`, `CentOS`, `Windows`,`WindowsCore`,`AliyunLinux Qboot`,`ContainerOS`. If you select `Windows` or `WindowsCore`, the `passord` is required.
         :param pulumi.Input[bool] install_cloud_monitor: Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
         :param pulumi.Input[str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: The instance type of worker node.
@@ -689,12 +764,15 @@ class _NodePoolState:
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[int] period: Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
-        :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+        :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+        :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input['NodePoolScalingConfigArgs'] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
         :param pulumi.Input[str] scaling_group_id: (Available in 1.105.0+) Id of the Scaling Group.
         :param pulumi.Input[str] scaling_policy: The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
-        :param pulumi.Input[str] security_group_id: The security group id for worker node.
+        :param pulumi.Input[str] security_group_id: The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
         :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
         :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -717,6 +795,8 @@ class _NodePoolState:
             pulumi.set(__self__, "format_disk", format_disk)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
+        if image_type is not None:
+            pulumi.set(__self__, "image_type", image_type)
         if install_cloud_monitor is not None:
             pulumi.set(__self__, "install_cloud_monitor", install_cloud_monitor)
         if instance_charge_type is not None:
@@ -752,9 +832,16 @@ class _NodePoolState:
         if period_unit is not None:
             pulumi.set(__self__, "period_unit", period_unit)
         if platform is not None:
+            warnings.warn("""Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead""", DeprecationWarning)
+            pulumi.log.warn("""platform is deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead""")
+        if platform is not None:
             pulumi.set(__self__, "platform", platform)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if runtime_name is not None:
+            pulumi.set(__self__, "runtime_name", runtime_name)
+        if runtime_version is not None:
+            pulumi.set(__self__, "runtime_version", runtime_version)
         if scaling_config is not None:
             pulumi.set(__self__, "scaling_config", scaling_config)
         if scaling_group_id is not None:
@@ -762,7 +849,12 @@ class _NodePoolState:
         if scaling_policy is not None:
             pulumi.set(__self__, "scaling_policy", scaling_policy)
         if security_group_id is not None:
+            warnings.warn("""Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead""", DeprecationWarning)
+            pulumi.log.warn("""security_group_id is deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead""")
+        if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
+        if security_group_ids is not None:
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
         if spot_price_limits is not None:
             pulumi.set(__self__, "spot_price_limits", spot_price_limits)
         if spot_strategy is not None:
@@ -857,6 +949,18 @@ class _NodePoolState:
     @image_id.setter
     def image_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter(name="imageType")
+    def image_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The image type, instead of `platform`. This field cannot be modified. One of `AliyunLinux`, `AliyunLinux3`, `AliyunLinux3Arm64`, `AliyunLinuxUEFI`, `CentOS`, `Windows`,`WindowsCore`,`AliyunLinux Qboot`,`ContainerOS`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+        """
+        return pulumi.get(self, "image_type")
+
+    @image_type.setter
+    def image_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_type", value)
 
     @property
     @pulumi.getter(name="installCloudMonitor")
@@ -1066,7 +1170,7 @@ class _NodePoolState:
     @pulumi.getter
     def platform(self) -> Optional[pulumi.Input[str]]:
         """
-        The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+        The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
         """
         return pulumi.get(self, "platform")
 
@@ -1085,6 +1189,30 @@ class _NodePoolState:
     @resource_group_id.setter
     def resource_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="runtimeName")
+    def runtime_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+        """
+        return pulumi.get(self, "runtime_name")
+
+    @runtime_name.setter
+    def runtime_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "runtime_name", value)
+
+    @property
+    @pulumi.getter(name="runtimeVersion")
+    def runtime_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
+        """
+        return pulumi.get(self, "runtime_version")
+
+    @runtime_version.setter
+    def runtime_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "runtime_version", value)
 
     @property
     @pulumi.getter(name="scalingConfig")
@@ -1126,13 +1254,25 @@ class _NodePoolState:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The security group id for worker node.
+        The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
     def security_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "security_group_id", value)
+
+    @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
+        """
+        return pulumi.get(self, "security_group_ids")
+
+    @security_group_ids.setter
+    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_group_ids", value)
 
     @property
     @pulumi.getter(name="spotPriceLimits")
@@ -1272,6 +1412,7 @@ class NodePool(pulumi.CustomResource):
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]]] = None,
                  format_disk: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 image_type: Optional[pulumi.Input[str]] = None,
                  install_cloud_monitor: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1291,9 +1432,12 @@ class NodePool(pulumi.CustomResource):
                  period_unit: Optional[pulumi.Input[str]] = None,
                  platform: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 runtime_name: Optional[pulumi.Input[str]] = None,
+                 runtime_version: Optional[pulumi.Input[str]] = None,
                  scaling_config: Optional[pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']]] = None,
                  scaling_policy: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
@@ -1322,6 +1466,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]] data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
         :param pulumi.Input[bool] format_disk: After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
+        :param pulumi.Input[str] image_type: The image type, instead of `platform`. This field cannot be modified. One of `AliyunLinux`, `AliyunLinux3`, `AliyunLinux3Arm64`, `AliyunLinuxUEFI`, `CentOS`, `Windows`,`WindowsCore`,`AliyunLinux Qboot`,`ContainerOS`. If you select `Windows` or `WindowsCore`, the `passord` is required.
         :param pulumi.Input[bool] install_cloud_monitor: Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
         :param pulumi.Input[str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: The instance type of worker node.
@@ -1339,11 +1484,14 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[int] period: Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
-        :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+        :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+        :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
         :param pulumi.Input[str] scaling_policy: The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
-        :param pulumi.Input[str] security_group_id: The security group id for worker node.
+        :param pulumi.Input[str] security_group_id: The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
         :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
         :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -1390,6 +1538,7 @@ class NodePool(pulumi.CustomResource):
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]]] = None,
                  format_disk: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 image_type: Optional[pulumi.Input[str]] = None,
                  install_cloud_monitor: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1409,9 +1558,12 @@ class NodePool(pulumi.CustomResource):
                  period_unit: Optional[pulumi.Input[str]] = None,
                  platform: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 runtime_name: Optional[pulumi.Input[str]] = None,
+                 runtime_version: Optional[pulumi.Input[str]] = None,
                  scaling_config: Optional[pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']]] = None,
                  scaling_policy: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
@@ -1442,6 +1594,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["data_disks"] = data_disks
             __props__.__dict__["format_disk"] = format_disk
             __props__.__dict__["image_id"] = image_id
+            __props__.__dict__["image_type"] = image_type
             __props__.__dict__["install_cloud_monitor"] = install_cloud_monitor
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             if instance_types is None and not opts.urn:
@@ -1461,11 +1614,20 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["password"] = password
             __props__.__dict__["period"] = period
             __props__.__dict__["period_unit"] = period_unit
+            if platform is not None and not opts.urn:
+                warnings.warn("""Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead""", DeprecationWarning)
+                pulumi.log.warn("""platform is deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead""")
             __props__.__dict__["platform"] = platform
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["runtime_name"] = runtime_name
+            __props__.__dict__["runtime_version"] = runtime_version
             __props__.__dict__["scaling_config"] = scaling_config
             __props__.__dict__["scaling_policy"] = scaling_policy
+            if security_group_id is not None and not opts.urn:
+                warnings.warn("""Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead""", DeprecationWarning)
+                pulumi.log.warn("""security_group_id is deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead""")
             __props__.__dict__["security_group_id"] = security_group_id
+            __props__.__dict__["security_group_ids"] = security_group_ids
             __props__.__dict__["spot_price_limits"] = spot_price_limits
             __props__.__dict__["spot_strategy"] = spot_strategy
             __props__.__dict__["system_disk_category"] = system_disk_category
@@ -1496,6 +1658,7 @@ class NodePool(pulumi.CustomResource):
             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]]] = None,
             format_disk: Optional[pulumi.Input[bool]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
+            image_type: Optional[pulumi.Input[str]] = None,
             install_cloud_monitor: Optional[pulumi.Input[bool]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1515,10 +1678,13 @@ class NodePool(pulumi.CustomResource):
             period_unit: Optional[pulumi.Input[str]] = None,
             platform: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
+            runtime_name: Optional[pulumi.Input[str]] = None,
+            runtime_version: Optional[pulumi.Input[str]] = None,
             scaling_config: Optional[pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']]] = None,
             scaling_group_id: Optional[pulumi.Input[str]] = None,
             scaling_policy: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
+            security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]]] = None,
             spot_strategy: Optional[pulumi.Input[str]] = None,
             system_disk_category: Optional[pulumi.Input[str]] = None,
@@ -1543,6 +1709,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolDataDiskArgs']]]] data_disks: The data disk configurations of worker nodes, such as the disk type and disk size.
         :param pulumi.Input[bool] format_disk: After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
+        :param pulumi.Input[str] image_type: The image type, instead of `platform`. This field cannot be modified. One of `AliyunLinux`, `AliyunLinux3`, `AliyunLinux3Arm64`, `AliyunLinuxUEFI`, `CentOS`, `Windows`,`WindowsCore`,`AliyunLinux Qboot`,`ContainerOS`. If you select `Windows` or `WindowsCore`, the `passord` is required.
         :param pulumi.Input[bool] install_cloud_monitor: Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
         :param pulumi.Input[str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: The instance type of worker node.
@@ -1560,12 +1727,15 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[int] period: Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
-        :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+        :param pulumi.Input[str] platform: The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+        :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+        :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
         :param pulumi.Input[str] scaling_group_id: (Available in 1.105.0+) Id of the Scaling Group.
         :param pulumi.Input[str] scaling_policy: The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
-        :param pulumi.Input[str] security_group_id: The security group id for worker node.
+        :param pulumi.Input[str] security_group_id: The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]] spot_price_limits: The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
         :param pulumi.Input[str] spot_strategy: The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
         :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -1586,6 +1756,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["data_disks"] = data_disks
         __props__.__dict__["format_disk"] = format_disk
         __props__.__dict__["image_id"] = image_id
+        __props__.__dict__["image_type"] = image_type
         __props__.__dict__["install_cloud_monitor"] = install_cloud_monitor
         __props__.__dict__["instance_charge_type"] = instance_charge_type
         __props__.__dict__["instance_types"] = instance_types
@@ -1605,10 +1776,13 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["period_unit"] = period_unit
         __props__.__dict__["platform"] = platform
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["runtime_name"] = runtime_name
+        __props__.__dict__["runtime_version"] = runtime_version
         __props__.__dict__["scaling_config"] = scaling_config
         __props__.__dict__["scaling_group_id"] = scaling_group_id
         __props__.__dict__["scaling_policy"] = scaling_policy
         __props__.__dict__["security_group_id"] = security_group_id
+        __props__.__dict__["security_group_ids"] = security_group_ids
         __props__.__dict__["spot_price_limits"] = spot_price_limits
         __props__.__dict__["spot_strategy"] = spot_strategy
         __props__.__dict__["system_disk_category"] = system_disk_category
@@ -1669,6 +1843,14 @@ class NodePool(pulumi.CustomResource):
         Custom Image support. Must based on CentOS7 or AliyunLinux2.
         """
         return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="imageType")
+    def image_type(self) -> pulumi.Output[str]:
+        """
+        The image type, instead of `platform`. This field cannot be modified. One of `AliyunLinux`, `AliyunLinux3`, `AliyunLinux3Arm64`, `AliyunLinuxUEFI`, `CentOS`, `Windows`,`WindowsCore`,`AliyunLinux Qboot`,`ContainerOS`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+        """
+        return pulumi.get(self, "image_type")
 
     @property
     @pulumi.getter(name="installCloudMonitor")
@@ -1810,7 +1992,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter
     def platform(self) -> pulumi.Output[str]:
         """
-        The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+        The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
         """
         return pulumi.get(self, "platform")
 
@@ -1821,6 +2003,22 @@ class NodePool(pulumi.CustomResource):
         The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         """
         return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="runtimeName")
+    def runtime_name(self) -> pulumi.Output[str]:
+        """
+        The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+        """
+        return pulumi.get(self, "runtime_name")
+
+    @property
+    @pulumi.getter(name="runtimeVersion")
+    def runtime_version(self) -> pulumi.Output[str]:
+        """
+        The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
+        """
+        return pulumi.get(self, "runtime_version")
 
     @property
     @pulumi.getter(name="scalingConfig")
@@ -1850,9 +2048,17 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[str]:
         """
-        The security group id for worker node.
+        The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
         """
         return pulumi.get(self, "security_group_id")
+
+    @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
+        """
+        return pulumi.get(self, "security_group_ids")
 
     @property
     @pulumi.getter(name="spotPriceLimits")

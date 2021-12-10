@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.Cfg
     /// <summary>
     /// Provides a Cloud Config Aggregator resource.
     /// 
+    /// For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregator](https://www.alibabacloud.com/help/en/doc-detail/211197.html).
+    /// 
     /// &gt; **NOTE:** Available in v1.124.0+.
     /// 
     /// ## Example Usage
@@ -69,7 +71,7 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string> AggregatorName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of aggregator. Valid values: `CUSTOM`, `RD`.
+        /// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
         /// </summary>
         [Output("aggregatorType")]
         public Output<string> AggregatorType { get; private set; } = null!;
@@ -151,7 +153,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string> AggregatorName { get; set; } = null!;
 
         /// <summary>
-        /// The type of aggregator. Valid values: `CUSTOM`, `RD`.
+        /// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
         /// </summary>
         [Input("aggregatorType")]
         public Input<string>? AggregatorType { get; set; }
@@ -188,7 +190,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? AggregatorName { get; set; }
 
         /// <summary>
-        /// The type of aggregator. Valid values: `CUSTOM`, `RD`.
+        /// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
         /// </summary>
         [Input("aggregatorType")]
         public Input<string>? AggregatorType { get; set; }

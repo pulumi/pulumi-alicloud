@@ -10,6 +10,335 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetApplicationGroupsGroup struct {
+	// The name of the Application group.
+	ApplicationGroupName string `pulumi:"applicationGroupName"`
+	// The name of the Application.
+	ApplicationName string `pulumi:"applicationName"`
+	// The ID of the cloud monitor group.
+	CmsGroupId string `pulumi:"cmsGroupId"`
+	// The Creation time of the resource.
+	CreateTime string `pulumi:"createTime"`
+	// The region ID of the deployment.
+	DeployRegionId string `pulumi:"deployRegionId"`
+	// Application group description information.
+	Description string `pulumi:"description"`
+	// The ID of the Application Group. Its value is same as Queue Name.
+	Id string `pulumi:"id"`
+	// Label key.
+	ImportTagKey string `pulumi:"importTagKey"`
+	// Label value.
+	ImportTagValue string `pulumi:"importTagValue"`
+	// The Update time of the resource.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetApplicationGroupsGroupInput is an input type that accepts GetApplicationGroupsGroupArgs and GetApplicationGroupsGroupOutput values.
+// You can construct a concrete instance of `GetApplicationGroupsGroupInput` via:
+//
+//          GetApplicationGroupsGroupArgs{...}
+type GetApplicationGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetApplicationGroupsGroupOutput() GetApplicationGroupsGroupOutput
+	ToGetApplicationGroupsGroupOutputWithContext(context.Context) GetApplicationGroupsGroupOutput
+}
+
+type GetApplicationGroupsGroupArgs struct {
+	// The name of the Application group.
+	ApplicationGroupName pulumi.StringInput `pulumi:"applicationGroupName"`
+	// The name of the Application.
+	ApplicationName pulumi.StringInput `pulumi:"applicationName"`
+	// The ID of the cloud monitor group.
+	CmsGroupId pulumi.StringInput `pulumi:"cmsGroupId"`
+	// The Creation time of the resource.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The region ID of the deployment.
+	DeployRegionId pulumi.StringInput `pulumi:"deployRegionId"`
+	// Application group description information.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Application Group. Its value is same as Queue Name.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Label key.
+	ImportTagKey pulumi.StringInput `pulumi:"importTagKey"`
+	// Label value.
+	ImportTagValue pulumi.StringInput `pulumi:"importTagValue"`
+	// The Update time of the resource.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetApplicationGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationGroupsGroup)(nil)).Elem()
+}
+
+func (i GetApplicationGroupsGroupArgs) ToGetApplicationGroupsGroupOutput() GetApplicationGroupsGroupOutput {
+	return i.ToGetApplicationGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetApplicationGroupsGroupArgs) ToGetApplicationGroupsGroupOutputWithContext(ctx context.Context) GetApplicationGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationGroupsGroupOutput)
+}
+
+// GetApplicationGroupsGroupArrayInput is an input type that accepts GetApplicationGroupsGroupArray and GetApplicationGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetApplicationGroupsGroupArrayInput` via:
+//
+//          GetApplicationGroupsGroupArray{ GetApplicationGroupsGroupArgs{...} }
+type GetApplicationGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationGroupsGroupArrayOutput() GetApplicationGroupsGroupArrayOutput
+	ToGetApplicationGroupsGroupArrayOutputWithContext(context.Context) GetApplicationGroupsGroupArrayOutput
+}
+
+type GetApplicationGroupsGroupArray []GetApplicationGroupsGroupInput
+
+func (GetApplicationGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationGroupsGroup)(nil)).Elem()
+}
+
+func (i GetApplicationGroupsGroupArray) ToGetApplicationGroupsGroupArrayOutput() GetApplicationGroupsGroupArrayOutput {
+	return i.ToGetApplicationGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationGroupsGroupArray) ToGetApplicationGroupsGroupArrayOutputWithContext(ctx context.Context) GetApplicationGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationGroupsGroupArrayOutput)
+}
+
+type GetApplicationGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationGroupsGroup)(nil)).Elem()
+}
+
+func (o GetApplicationGroupsGroupOutput) ToGetApplicationGroupsGroupOutput() GetApplicationGroupsGroupOutput {
+	return o
+}
+
+func (o GetApplicationGroupsGroupOutput) ToGetApplicationGroupsGroupOutputWithContext(ctx context.Context) GetApplicationGroupsGroupOutput {
+	return o
+}
+
+// The name of the Application group.
+func (o GetApplicationGroupsGroupOutput) ApplicationGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationGroupsGroup) string { return v.ApplicationGroupName }).(pulumi.StringOutput)
+}
+
+// The name of the Application.
+func (o GetApplicationGroupsGroupOutput) ApplicationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationGroupsGroup) string { return v.ApplicationName }).(pulumi.StringOutput)
+}
+
+// The ID of the cloud monitor group.
+func (o GetApplicationGroupsGroupOutput) CmsGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationGroupsGroup) string { return v.CmsGroupId }).(pulumi.StringOutput)
+}
+
+// The Creation time of the resource.
+func (o GetApplicationGroupsGroupOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationGroupsGroup) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The region ID of the deployment.
+func (o GetApplicationGroupsGroupOutput) DeployRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationGroupsGroup) string { return v.DeployRegionId }).(pulumi.StringOutput)
+}
+
+// Application group description information.
+func (o GetApplicationGroupsGroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationGroupsGroup) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Application Group. Its value is same as Queue Name.
+func (o GetApplicationGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Label key.
+func (o GetApplicationGroupsGroupOutput) ImportTagKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationGroupsGroup) string { return v.ImportTagKey }).(pulumi.StringOutput)
+}
+
+// Label value.
+func (o GetApplicationGroupsGroupOutput) ImportTagValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationGroupsGroup) string { return v.ImportTagValue }).(pulumi.StringOutput)
+}
+
+// The Update time of the resource.
+func (o GetApplicationGroupsGroupOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationGroupsGroup) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetApplicationGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationGroupsGroup)(nil)).Elem()
+}
+
+func (o GetApplicationGroupsGroupArrayOutput) ToGetApplicationGroupsGroupArrayOutput() GetApplicationGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetApplicationGroupsGroupArrayOutput) ToGetApplicationGroupsGroupArrayOutputWithContext(ctx context.Context) GetApplicationGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetApplicationGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetApplicationGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationGroupsGroup {
+		return vs[0].([]GetApplicationGroupsGroup)[vs[1].(int)]
+	}).(GetApplicationGroupsGroupOutput)
+}
+
+type GetApplicationsApplication struct {
+	// The name of the application.
+	ApplicationName string `pulumi:"applicationName"`
+	// The Created time of the application.
+	CreateTime string `pulumi:"createTime"`
+	// Application group description information.
+	Description string `pulumi:"description"`
+	// The ID of the Application. The value is formate as <application_name>.
+	Id string `pulumi:"id"`
+	// The ID of the resource group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The tag of the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The Updated time of the application.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetApplicationsApplicationInput is an input type that accepts GetApplicationsApplicationArgs and GetApplicationsApplicationOutput values.
+// You can construct a concrete instance of `GetApplicationsApplicationInput` via:
+//
+//          GetApplicationsApplicationArgs{...}
+type GetApplicationsApplicationInput interface {
+	pulumi.Input
+
+	ToGetApplicationsApplicationOutput() GetApplicationsApplicationOutput
+	ToGetApplicationsApplicationOutputWithContext(context.Context) GetApplicationsApplicationOutput
+}
+
+type GetApplicationsApplicationArgs struct {
+	// The name of the application.
+	ApplicationName pulumi.StringInput `pulumi:"applicationName"`
+	// The Created time of the application.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Application group description information.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Application. The value is formate as <application_name>.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The tag of the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The Updated time of the application.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetApplicationsApplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationsApplication)(nil)).Elem()
+}
+
+func (i GetApplicationsApplicationArgs) ToGetApplicationsApplicationOutput() GetApplicationsApplicationOutput {
+	return i.ToGetApplicationsApplicationOutputWithContext(context.Background())
+}
+
+func (i GetApplicationsApplicationArgs) ToGetApplicationsApplicationOutputWithContext(ctx context.Context) GetApplicationsApplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationsApplicationOutput)
+}
+
+// GetApplicationsApplicationArrayInput is an input type that accepts GetApplicationsApplicationArray and GetApplicationsApplicationArrayOutput values.
+// You can construct a concrete instance of `GetApplicationsApplicationArrayInput` via:
+//
+//          GetApplicationsApplicationArray{ GetApplicationsApplicationArgs{...} }
+type GetApplicationsApplicationArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationsApplicationArrayOutput() GetApplicationsApplicationArrayOutput
+	ToGetApplicationsApplicationArrayOutputWithContext(context.Context) GetApplicationsApplicationArrayOutput
+}
+
+type GetApplicationsApplicationArray []GetApplicationsApplicationInput
+
+func (GetApplicationsApplicationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationsApplication)(nil)).Elem()
+}
+
+func (i GetApplicationsApplicationArray) ToGetApplicationsApplicationArrayOutput() GetApplicationsApplicationArrayOutput {
+	return i.ToGetApplicationsApplicationArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationsApplicationArray) ToGetApplicationsApplicationArrayOutputWithContext(ctx context.Context) GetApplicationsApplicationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationsApplicationArrayOutput)
+}
+
+type GetApplicationsApplicationOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationsApplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationsApplication)(nil)).Elem()
+}
+
+func (o GetApplicationsApplicationOutput) ToGetApplicationsApplicationOutput() GetApplicationsApplicationOutput {
+	return o
+}
+
+func (o GetApplicationsApplicationOutput) ToGetApplicationsApplicationOutputWithContext(ctx context.Context) GetApplicationsApplicationOutput {
+	return o
+}
+
+// The name of the application.
+func (o GetApplicationsApplicationOutput) ApplicationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.ApplicationName }).(pulumi.StringOutput)
+}
+
+// The Created time of the application.
+func (o GetApplicationsApplicationOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Application group description information.
+func (o GetApplicationsApplicationOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Application. The value is formate as <application_name>.
+func (o GetApplicationsApplicationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o GetApplicationsApplicationOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The tag of the resource.
+func (o GetApplicationsApplicationOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The Updated time of the application.
+func (o GetApplicationsApplicationOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationsApplication) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetApplicationsApplicationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationsApplicationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationsApplication)(nil)).Elem()
+}
+
+func (o GetApplicationsApplicationArrayOutput) ToGetApplicationsApplicationArrayOutput() GetApplicationsApplicationArrayOutput {
+	return o
+}
+
+func (o GetApplicationsApplicationArrayOutput) ToGetApplicationsApplicationArrayOutputWithContext(ctx context.Context) GetApplicationsApplicationArrayOutput {
+	return o
+}
+
+func (o GetApplicationsApplicationArrayOutput) Index(i pulumi.IntInput) GetApplicationsApplicationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationsApplication {
+		return vs[0].([]GetApplicationsApplication)[vs[1].(int)]
+	}).(GetApplicationsApplicationOutput)
+}
+
 type GetExecutionsExecution struct {
 	// The category of template. Valid: `AlarmTrigger`, `EventTrigger`, `Other` and `TimerTrigger`.
 	Category string `pulumi:"category"`
@@ -287,6 +616,202 @@ func (o GetExecutionsExecutionArrayOutput) Index(i pulumi.IntInput) GetExecution
 	}).(GetExecutionsExecutionOutput)
 }
 
+type GetPatchBaselinesBaseline struct {
+	// Accept the rules.
+	ApprovalRules string `pulumi:"approvalRules"`
+	// The create time of patch baselines.
+	CreateTime string `pulumi:"createTime"`
+	// The user who created the patch baselines.
+	CreatedBy string `pulumi:"createdBy"`
+	// Patches baseline description information.
+	Description string `pulumi:"description"`
+	// The ID of the Patch Baseline. Its value is same as `patchBaselineName`.
+	Id string `pulumi:"id"`
+	// Whether it is the default patch baseline.
+	IsDefault bool `pulumi:"isDefault"`
+	// Operating system type.
+	OperationSystem string `pulumi:"operationSystem"`
+	// Patch baseline ID.
+	PatchBaselineId string `pulumi:"patchBaselineId"`
+	// The name of the patch baseline.
+	PatchBaselineName string `pulumi:"patchBaselineName"`
+	// Patch baseline sharing type.
+	ShareType string `pulumi:"shareType"`
+	// The user who updated the patch baselines.
+	UpdatedBy string `pulumi:"updatedBy"`
+	// The update time of patch baselines.
+	UpdatedDate string `pulumi:"updatedDate"`
+}
+
+// GetPatchBaselinesBaselineInput is an input type that accepts GetPatchBaselinesBaselineArgs and GetPatchBaselinesBaselineOutput values.
+// You can construct a concrete instance of `GetPatchBaselinesBaselineInput` via:
+//
+//          GetPatchBaselinesBaselineArgs{...}
+type GetPatchBaselinesBaselineInput interface {
+	pulumi.Input
+
+	ToGetPatchBaselinesBaselineOutput() GetPatchBaselinesBaselineOutput
+	ToGetPatchBaselinesBaselineOutputWithContext(context.Context) GetPatchBaselinesBaselineOutput
+}
+
+type GetPatchBaselinesBaselineArgs struct {
+	// Accept the rules.
+	ApprovalRules pulumi.StringInput `pulumi:"approvalRules"`
+	// The create time of patch baselines.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The user who created the patch baselines.
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Patches baseline description information.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Patch Baseline. Its value is same as `patchBaselineName`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether it is the default patch baseline.
+	IsDefault pulumi.BoolInput `pulumi:"isDefault"`
+	// Operating system type.
+	OperationSystem pulumi.StringInput `pulumi:"operationSystem"`
+	// Patch baseline ID.
+	PatchBaselineId pulumi.StringInput `pulumi:"patchBaselineId"`
+	// The name of the patch baseline.
+	PatchBaselineName pulumi.StringInput `pulumi:"patchBaselineName"`
+	// Patch baseline sharing type.
+	ShareType pulumi.StringInput `pulumi:"shareType"`
+	// The user who updated the patch baselines.
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// The update time of patch baselines.
+	UpdatedDate pulumi.StringInput `pulumi:"updatedDate"`
+}
+
+func (GetPatchBaselinesBaselineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPatchBaselinesBaseline)(nil)).Elem()
+}
+
+func (i GetPatchBaselinesBaselineArgs) ToGetPatchBaselinesBaselineOutput() GetPatchBaselinesBaselineOutput {
+	return i.ToGetPatchBaselinesBaselineOutputWithContext(context.Background())
+}
+
+func (i GetPatchBaselinesBaselineArgs) ToGetPatchBaselinesBaselineOutputWithContext(ctx context.Context) GetPatchBaselinesBaselineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPatchBaselinesBaselineOutput)
+}
+
+// GetPatchBaselinesBaselineArrayInput is an input type that accepts GetPatchBaselinesBaselineArray and GetPatchBaselinesBaselineArrayOutput values.
+// You can construct a concrete instance of `GetPatchBaselinesBaselineArrayInput` via:
+//
+//          GetPatchBaselinesBaselineArray{ GetPatchBaselinesBaselineArgs{...} }
+type GetPatchBaselinesBaselineArrayInput interface {
+	pulumi.Input
+
+	ToGetPatchBaselinesBaselineArrayOutput() GetPatchBaselinesBaselineArrayOutput
+	ToGetPatchBaselinesBaselineArrayOutputWithContext(context.Context) GetPatchBaselinesBaselineArrayOutput
+}
+
+type GetPatchBaselinesBaselineArray []GetPatchBaselinesBaselineInput
+
+func (GetPatchBaselinesBaselineArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPatchBaselinesBaseline)(nil)).Elem()
+}
+
+func (i GetPatchBaselinesBaselineArray) ToGetPatchBaselinesBaselineArrayOutput() GetPatchBaselinesBaselineArrayOutput {
+	return i.ToGetPatchBaselinesBaselineArrayOutputWithContext(context.Background())
+}
+
+func (i GetPatchBaselinesBaselineArray) ToGetPatchBaselinesBaselineArrayOutputWithContext(ctx context.Context) GetPatchBaselinesBaselineArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPatchBaselinesBaselineArrayOutput)
+}
+
+type GetPatchBaselinesBaselineOutput struct{ *pulumi.OutputState }
+
+func (GetPatchBaselinesBaselineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPatchBaselinesBaseline)(nil)).Elem()
+}
+
+func (o GetPatchBaselinesBaselineOutput) ToGetPatchBaselinesBaselineOutput() GetPatchBaselinesBaselineOutput {
+	return o
+}
+
+func (o GetPatchBaselinesBaselineOutput) ToGetPatchBaselinesBaselineOutputWithContext(ctx context.Context) GetPatchBaselinesBaselineOutput {
+	return o
+}
+
+// Accept the rules.
+func (o GetPatchBaselinesBaselineOutput) ApprovalRules() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPatchBaselinesBaseline) string { return v.ApprovalRules }).(pulumi.StringOutput)
+}
+
+// The create time of patch baselines.
+func (o GetPatchBaselinesBaselineOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPatchBaselinesBaseline) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The user who created the patch baselines.
+func (o GetPatchBaselinesBaselineOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPatchBaselinesBaseline) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Patches baseline description information.
+func (o GetPatchBaselinesBaselineOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPatchBaselinesBaseline) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Patch Baseline. Its value is same as `patchBaselineName`.
+func (o GetPatchBaselinesBaselineOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPatchBaselinesBaseline) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether it is the default patch baseline.
+func (o GetPatchBaselinesBaselineOutput) IsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPatchBaselinesBaseline) bool { return v.IsDefault }).(pulumi.BoolOutput)
+}
+
+// Operating system type.
+func (o GetPatchBaselinesBaselineOutput) OperationSystem() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPatchBaselinesBaseline) string { return v.OperationSystem }).(pulumi.StringOutput)
+}
+
+// Patch baseline ID.
+func (o GetPatchBaselinesBaselineOutput) PatchBaselineId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPatchBaselinesBaseline) string { return v.PatchBaselineId }).(pulumi.StringOutput)
+}
+
+// The name of the patch baseline.
+func (o GetPatchBaselinesBaselineOutput) PatchBaselineName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPatchBaselinesBaseline) string { return v.PatchBaselineName }).(pulumi.StringOutput)
+}
+
+// Patch baseline sharing type.
+func (o GetPatchBaselinesBaselineOutput) ShareType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPatchBaselinesBaseline) string { return v.ShareType }).(pulumi.StringOutput)
+}
+
+// The user who updated the patch baselines.
+func (o GetPatchBaselinesBaselineOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPatchBaselinesBaseline) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// The update time of patch baselines.
+func (o GetPatchBaselinesBaselineOutput) UpdatedDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPatchBaselinesBaseline) string { return v.UpdatedDate }).(pulumi.StringOutput)
+}
+
+type GetPatchBaselinesBaselineArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPatchBaselinesBaselineArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPatchBaselinesBaseline)(nil)).Elem()
+}
+
+func (o GetPatchBaselinesBaselineArrayOutput) ToGetPatchBaselinesBaselineArrayOutput() GetPatchBaselinesBaselineArrayOutput {
+	return o
+}
+
+func (o GetPatchBaselinesBaselineArrayOutput) ToGetPatchBaselinesBaselineArrayOutputWithContext(ctx context.Context) GetPatchBaselinesBaselineArrayOutput {
+	return o
+}
+
+func (o GetPatchBaselinesBaselineArrayOutput) Index(i pulumi.IntInput) GetPatchBaselinesBaselineOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPatchBaselinesBaseline {
+		return vs[0].([]GetPatchBaselinesBaseline)[vs[1].(int)]
+	}).(GetPatchBaselinesBaselineOutput)
+}
+
 type GetTemplatesTemplate struct {
 	// The category of template.
 	Category string `pulumi:"category"`
@@ -511,12 +1036,24 @@ func (o GetTemplatesTemplateArrayOutput) Index(i pulumi.IntInput) GetTemplatesTe
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationGroupsGroupInput)(nil)).Elem(), GetApplicationGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationGroupsGroupArrayInput)(nil)).Elem(), GetApplicationGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationsApplicationInput)(nil)).Elem(), GetApplicationsApplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationsApplicationArrayInput)(nil)).Elem(), GetApplicationsApplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExecutionsExecutionInput)(nil)).Elem(), GetExecutionsExecutionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExecutionsExecutionArrayInput)(nil)).Elem(), GetExecutionsExecutionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPatchBaselinesBaselineInput)(nil)).Elem(), GetPatchBaselinesBaselineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPatchBaselinesBaselineArrayInput)(nil)).Elem(), GetPatchBaselinesBaselineArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplatesTemplateInput)(nil)).Elem(), GetTemplatesTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplatesTemplateArrayInput)(nil)).Elem(), GetTemplatesTemplateArray{})
+	pulumi.RegisterOutputType(GetApplicationGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetApplicationGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationsApplicationOutput{})
+	pulumi.RegisterOutputType(GetApplicationsApplicationArrayOutput{})
 	pulumi.RegisterOutputType(GetExecutionsExecutionOutput{})
 	pulumi.RegisterOutputType(GetExecutionsExecutionArrayOutput{})
+	pulumi.RegisterOutputType(GetPatchBaselinesBaselineOutput{})
+	pulumi.RegisterOutputType(GetPatchBaselinesBaselineArrayOutput{})
 	pulumi.RegisterOutputType(GetTemplatesTemplateOutput{})
 	pulumi.RegisterOutputType(GetTemplatesTemplateArrayOutput{})
 }

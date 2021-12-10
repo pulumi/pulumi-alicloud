@@ -514,6 +514,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_dts_subscription_job":         {Tok: resource(dtsMod, "SubscriptionJob")},
 			"alicloud_dts_synchronization_instance": {Tok: resource(dtsMod, "SynchronizationInstance")},
 			"alicloud_dts_synchronization_job":      {Tok: resource(dtsMod, "SynchronizationJob")},
+			"alicloud_dts_consumer_channel":         {Tok: resource(dtsMod, "ConsumerChannel")},
 
 			// Eais
 			"alicloud_eais_instance": {Tok: resource(eaisMod, "Instance")},
@@ -522,6 +523,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_eci_openapi_image_cache": {Tok: resource(eciMod, "OpenApiImageCache")},
 			"alicloud_eci_image_cache":         {Tok: resource(eciMod, "ImageCache")},
 			"alicloud_eci_container_group":     {Tok: resource(eciMod, "ContainerGroup")},
+			"alicloud_eci_virtual_node":        {Tok: resource(eciMod, "VirtualNode")},
 
 			// Ecp
 			"alicloud_ecp_key_pair": {Tok: resource(ecpMod, "KeyPair")},
@@ -573,6 +575,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ecs_network_interface":               {Tok: resource(ecsMod, "EcsNetworkInterface")},
 			"alicloud_ecs_network_interface_attachment":    {Tok: resource(ecsMod, "EcsNetworkInterfaceAttachment")},
 			"alicloud_ecs_deployment_set":                  {Tok: resource(ecsMod, "EcsDeploymentSet")},
+			"alicloud_ecs_dedicated_host_cluster":          {Tok: resource(ecsMod, "EcsDedicatedHostCluster")},
 
 			// Edas
 			"alicloud_edas_application":                 {Tok: resource(edasMod, "Application")},
@@ -592,6 +595,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ecd_desktop":            {Tok: resource(edsMod, "Desktop")},
 			"alicloud_ecd_network_package":    {Tok: resource(edsMod, "NetworkPackage")},
 			"alicloud_ecd_user":               {Tok: resource(edsMod, "User")},
+			"alicloud_ecd_image":              {Tok: resource(edsMod, "Image")},
+			"alicloud_ecd_command":            {Tok: resource(edsMod, "Command")},
 
 			// Ehpc
 			"alicloud_ehpc_job_template": {Tok: resource(ehpcMod, "JobTemplate")},
@@ -766,8 +771,11 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_nas_mount_target": {Tok: resource(nasMod, "MountTarget")},
 
 			// Oos
-			"alicloud_oos_template":  {Tok: resource(oosMod, "Template")},
-			"alicloud_oos_execution": {Tok: resource(oosMod, "Execution")},
+			"alicloud_oos_template":          {Tok: resource(oosMod, "Template")},
+			"alicloud_oos_execution":         {Tok: resource(oosMod, "Execution")},
+			"alicloud_oos_application":       {Tok: resource(oosMod, "Application")},
+			"alicloud_oos_application_group": {Tok: resource(oosMod, "ApplicationGroup")},
+			"alicloud_oos_patch_baseline":    {Tok: resource(oosMod, "PatchBaseline")},
 
 			// OpenSearch
 			"alicloud_open_search_app_group": {Tok: resource(openSearchMod, "AppGroup")},
@@ -891,10 +899,11 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// ros
-			"alicloud_ros_change_set":  {Tok: resource(rosMod, "ChangeSet")},
-			"alicloud_ros_stack_group": {Tok: resource(rosMod, "StackGroup")},
-			"alicloud_ros_stack":       {Tok: resource(rosMod, "Stack")},
-			"alicloud_ros_template":    {Tok: resource(rosMod, "Template")},
+			"alicloud_ros_change_set":     {Tok: resource(rosMod, "ChangeSet")},
+			"alicloud_ros_stack_group":    {Tok: resource(rosMod, "StackGroup")},
+			"alicloud_ros_stack":          {Tok: resource(rosMod, "Stack")},
+			"alicloud_ros_template":       {Tok: resource(rosMod, "Template")},
+			"alicloud_ros_stack_instance": {Tok: resource(rosMod, "StackInstance")},
 
 			// Sae
 			"alicloud_sae_namespace":   {Tok: resource(saeMod, "Namespace")},
@@ -1309,6 +1318,7 @@ func Provider() tfbridge.ProviderInfo {
 			// Dts
 			"alicloud_dts_subscription_jobs":    {Tok: dataSource(dtsMod, "getSubscriptionJobs")},
 			"alicloud_dts_synchronization_jobs": {Tok: dataSource(dtsMod, "getSynchronizationJobs")},
+			"alicloud_dts_consumer_channels":    {Tok: dataSource(dtsMod, "getConsumerChannels")},
 
 			// Eais
 			"alicloud_eais_instances": {Tok: dataSource(eaisMod, "getInstances")},
@@ -1316,6 +1326,8 @@ func Provider() tfbridge.ProviderInfo {
 			// Eci
 			"alicloud_eci_image_caches":     {Tok: dataSource(eciMod, "getImageCaches")},
 			"alicloud_eci_container_groups": {Tok: dataSource(eciMod, "getContainerGroups")},
+			"alicloud_eci_virtual_nodes":    {Tok: dataSource(eciMod, "getVirtualNodes")},
+			"alicloud_eci_zones":            {Tok: dataSource(eciMod, "getZones")},
 
 			// Ecp
 			"alicloud_ecp_key_pairs": {Tok: dataSource(ecpMod, "getKeyPairs")},
@@ -1332,20 +1344,21 @@ func Provider() tfbridge.ProviderInfo {
 				Tok:                dataSource(ecsMod, "getEips"),
 				DeprecationMessage: "This function has been deprecated in favour of the getEipAddresses function",
 			},
-			"alicloud_eip_addresses":              {Tok: dataSource(ecsMod, "getEipAddresses")},
-			"alicloud_instance_type_families":     {Tok: dataSource(ecsMod, "getInstanceTypeFamilies")},
-			"alicloud_network_interfaces":         {Tok: dataSource(ecsMod, "getNetworkInterfaces")},
-			"alicloud_snapshots":                  {Tok: dataSource(ecsMod, "getSnapshots")},
-			"alicloud_ecs_dedicated_hosts":        {Tok: dataSource(ecsMod, "getDedicatedHosts")},
-			"alicloud_ecs_hpc_clusters":           {Tok: dataSource(ecsMod, "getHpcClusters")},
-			"alicloud_ecs_commands":               {Tok: dataSource(ecsMod, "getCommands")},
-			"alicloud_ecs_auto_snapshot_policies": {Tok: dataSource(ecsMod, "getAutoSnapshotPolicies")},
-			"alicloud_ecs_snapshots":              {Tok: dataSource(ecsMod, "getEcsSnapshots")},
-			"alicloud_ecs_launch_templates":       {Tok: dataSource(ecsMod, "getEcsLaunchTemplates")},
-			"alicloud_ecs_key_pairs":              {Tok: dataSource(ecsMod, "getEcsKeyPairs")},
-			"alicloud_ecs_disks":                  {Tok: dataSource(ecsMod, "getEcsDisks")},
-			"alicloud_ecs_network_interfaces":     {Tok: dataSource(ecsMod, "getEcsNetworkInterfaces")},
-			"alicloud_ecs_deployment_sets":        {Tok: dataSource(ecsMod, "getEcsDeploymentSets")},
+			"alicloud_eip_addresses":               {Tok: dataSource(ecsMod, "getEipAddresses")},
+			"alicloud_instance_type_families":      {Tok: dataSource(ecsMod, "getInstanceTypeFamilies")},
+			"alicloud_network_interfaces":          {Tok: dataSource(ecsMod, "getNetworkInterfaces")},
+			"alicloud_snapshots":                   {Tok: dataSource(ecsMod, "getSnapshots")},
+			"alicloud_ecs_dedicated_hosts":         {Tok: dataSource(ecsMod, "getDedicatedHosts")},
+			"alicloud_ecs_hpc_clusters":            {Tok: dataSource(ecsMod, "getHpcClusters")},
+			"alicloud_ecs_commands":                {Tok: dataSource(ecsMod, "getCommands")},
+			"alicloud_ecs_auto_snapshot_policies":  {Tok: dataSource(ecsMod, "getAutoSnapshotPolicies")},
+			"alicloud_ecs_snapshots":               {Tok: dataSource(ecsMod, "getEcsSnapshots")},
+			"alicloud_ecs_launch_templates":        {Tok: dataSource(ecsMod, "getEcsLaunchTemplates")},
+			"alicloud_ecs_key_pairs":               {Tok: dataSource(ecsMod, "getEcsKeyPairs")},
+			"alicloud_ecs_disks":                   {Tok: dataSource(ecsMod, "getEcsDisks")},
+			"alicloud_ecs_network_interfaces":      {Tok: dataSource(ecsMod, "getEcsNetworkInterfaces")},
+			"alicloud_ecs_deployment_sets":         {Tok: dataSource(ecsMod, "getEcsDeploymentSets")},
+			"alicloud_ecs_dedicated_host_clusters": {Tok: dataSource(ecsMod, "getEcsDedicatedHostClusters")},
 
 			// Edas
 			"alicloud_edas_applications":  {Tok: dataSource(edasMod, "getApplications")},
@@ -1361,6 +1374,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ecd_desktops":            {Tok: dataSource(edsMod, "getDesktops")},
 			"alicloud_ecd_network_packages":    {Tok: dataSource(edsMod, "getNetworkPackages")},
 			"alicloud_ecd_users":               {Tok: dataSource(edsMod, "getUsers")},
+			"alicloud_ecd_images":              {Tok: dataSource(edsMod, "getImages")},
+			"alicloud_ecd_commands":            {Tok: dataSource(edsMod, "getCommands")},
 
 			// Ehpc
 			"alicloud_ehpc_job_templates": {Tok: dataSource(ehpcMod, "getJobTemplates")},
@@ -1376,6 +1391,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_emr_disk_types":     {Tok: dataSource(emrMod, "getDiskTypes")},
 			"alicloud_emr_instance_types": {Tok: dataSource(emrMod, "getInstanceTypes")},
 			"alicloud_emr_main_versions":  {Tok: dataSource(emrMod, "getMainVersions")},
+			"alicloud_emr_clusters":       {Tok: dataSource(emrMod, "getClusters")},
 
 			// Ens
 			"alicloud_ens_key_pairs": {Tok: dataSource(ensMod, "getKeyPairs")},
@@ -1519,8 +1535,11 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_nas_zones":         {Tok: dataSource(nasMod, "getZones")},
 
 			// Oos
-			"alicloud_oos_templates":  {Tok: dataSource(oosMod, "getTemplates")},
-			"alicloud_oos_executions": {Tok: dataSource(oosMod, "getExecutions")},
+			"alicloud_oos_templates":          {Tok: dataSource(oosMod, "getTemplates")},
+			"alicloud_oos_executions":         {Tok: dataSource(oosMod, "getExecutions")},
+			"alicloud_oos_applications":       {Tok: dataSource(oosMod, "getApplications")},
+			"alicloud_oos_patch_baselines":    {Tok: dataSource(oosMod, "getPatchBaselines")},
+			"alicloud_oos_application_groups": {Tok: dataSource(oosMod, "getApplicationGroups")},
 
 			// OpenSearch
 			"alicloud_open_search_app_groups": {Tok: dataSource(openSearchMod, "getAppGroups")},
@@ -1624,10 +1643,12 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ons_service":   {Tok: dataSource(rocketMqMod, "getService")},
 
 			//Ros
-			"alicloud_ros_change_sets":  {Tok: dataSource(rosMod, "getChangeSets")},
-			"alicloud_ros_stack_groups": {Tok: dataSource(rosMod, "getStackGroups")},
-			"alicloud_ros_stacks":       {Tok: dataSource(rosMod, "getStacks")},
-			"alicloud_ros_templates":    {Tok: dataSource(rosMod, "getTemplates")},
+			"alicloud_ros_change_sets":     {Tok: dataSource(rosMod, "getChangeSets")},
+			"alicloud_ros_stack_groups":    {Tok: dataSource(rosMod, "getStackGroups")},
+			"alicloud_ros_stacks":          {Tok: dataSource(rosMod, "getStacks")},
+			"alicloud_ros_templates":       {Tok: dataSource(rosMod, "getTemplates")},
+			"alicloud_ros_stack_instances": {Tok: dataSource(rosMod, "getStackInstances")},
+			"alicloud_ros_regions":         {Tok: dataSource(rosMod, "getRegions")},
 
 			// Sae
 			"alicloud_sae_service":                 {Tok: dataSource(saeMod, "getService")},

@@ -21,10 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:eds/command:Command":
+		r = &Command{}
 	case "alicloud:eds/desktop:Desktop":
 		r = &Desktop{}
 	case "alicloud:eds/ecdPolicyGroup:EcdPolicyGroup":
 		r = &EcdPolicyGroup{}
+	case "alicloud:eds/image:Image":
+		r = &Image{}
 	case "alicloud:eds/nasFileSystem:NasFileSystem":
 		r = &NasFileSystem{}
 	case "alicloud:eds/networkPackage:NetworkPackage":
@@ -48,12 +52,22 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"eds/command",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"eds/desktop",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"eds/ecdPolicyGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"eds/image",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

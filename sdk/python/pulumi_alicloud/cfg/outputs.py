@@ -378,14 +378,14 @@ class GetAggregateCompliancePacksPackResult(dict):
                  status: str):
         """
         :param str account_id: The Aliyun User Id.
-        :param str aggregate_compliance_pack_name: -The Aggregate Compliance Package Name.
         :param str aggregator_compliance_pack_id: The first ID of the resource.
+               * `aggregate_compliance_pack_name` -The Aggregate Compliance Package Name.
         :param str compliance_pack_template_id: The template ID of the Compliance Package.
         :param Sequence['GetAggregateCompliancePacksPackConfigRuleArgs'] config_rules: A list of The Aggregate Compliance Package Rules.
         :param str description: The description of aggregate compliance pack.
         :param str id: The ID of the Aggregate Compliance Pack.
         :param int risk_level: The Risk Level.
-        :param str status: The status of the resource.
+        :param str status: The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "aggregate_compliance_pack_name", aggregate_compliance_pack_name)
@@ -408,9 +408,6 @@ class GetAggregateCompliancePacksPackResult(dict):
     @property
     @pulumi.getter(name="aggregateCompliancePackName")
     def aggregate_compliance_pack_name(self) -> str:
-        """
-        -The Aggregate Compliance Package Name.
-        """
         return pulumi.get(self, "aggregate_compliance_pack_name")
 
     @property
@@ -418,6 +415,7 @@ class GetAggregateCompliancePacksPackResult(dict):
     def aggregator_compliance_pack_id(self) -> str:
         """
         The first ID of the resource.
+        * `aggregate_compliance_pack_name` -The Aggregate Compliance Package Name.
         """
         return pulumi.get(self, "aggregator_compliance_pack_id")
 
@@ -465,7 +463,7 @@ class GetAggregateCompliancePacksPackResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource.
+        The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`.
         """
         return pulumi.get(self, "status")
 
@@ -555,6 +553,7 @@ class GetAggregateConfigRulesRuleResult(dict):
     def __init__(__self__, *,
                  account_id: str,
                  aggregate_config_rule_name: str,
+                 aggregator_id: str,
                  compliance_pack_id: str,
                  compliances: Sequence['outputs.GetAggregateConfigRulesRuleComplianceResult'],
                  config_rule_arn: str,
@@ -578,30 +577,31 @@ class GetAggregateConfigRulesRuleResult(dict):
                  tag_value_scope: str):
         """
         :param str account_id: The Aliyun User ID.
-        :param str aggregate_config_rule_name: The name of the rule.
+        :param str aggregate_config_rule_name: The config rule name.
+        :param str aggregator_id: The ID of aggregator.
         :param str compliance_pack_id: The ID of Compliance Package.
-        :param Sequence['GetAggregateConfigRulesRuleComplianceArgs'] compliances: -The Compliance information.
         :param str config_rule_arn: The config rule arn.
         :param str config_rule_id: The ID of the rule.
         :param str config_rule_trigger_types: The trigger types of config rules.
         :param str description: The description of the rule.
         :param str event_source: Event source of the Config Rule.
         :param str exclude_resource_ids_scope: The types of the resources to be evaluated against the rule.
+               * `source_identifier`- The name of the custom rule or managed rule.
+               * `source_owner`- The source owner of the Config Rule.
         :param str id: The ID of the Aggregate Config Rule.
         :param Mapping[str, Any] input_parameters: The settings of the input parameters for the rule.
         :param str maximum_execution_frequency: The frequency of the compliance evaluations.
         :param str modified_timestamp: The timestamp when the rule was last modified.
         :param str region_ids_scope: The Exclude ResourceId List.
         :param str resource_group_ids_scope: The scope of resource group ids.
-        :param int risk_level: The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
-        :param str source_identifier: The name of the custom rule or managed rule.
-        :param str source_owner: The source owner of the Config Rule.
-        :param str status: The status of the rule.
+        :param int risk_level: Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+        :param str status: The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
         :param str tag_key_scope: The scope of tay key.
         :param str tag_value_scope: The scope of tay value.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "aggregate_config_rule_name", aggregate_config_rule_name)
+        pulumi.set(__self__, "aggregator_id", aggregator_id)
         pulumi.set(__self__, "compliance_pack_id", compliance_pack_id)
         pulumi.set(__self__, "compliances", compliances)
         pulumi.set(__self__, "config_rule_arn", config_rule_arn)
@@ -636,9 +636,17 @@ class GetAggregateConfigRulesRuleResult(dict):
     @pulumi.getter(name="aggregateConfigRuleName")
     def aggregate_config_rule_name(self) -> str:
         """
-        The name of the rule.
+        The config rule name.
         """
         return pulumi.get(self, "aggregate_config_rule_name")
+
+    @property
+    @pulumi.getter(name="aggregatorId")
+    def aggregator_id(self) -> str:
+        """
+        The ID of aggregator.
+        """
+        return pulumi.get(self, "aggregator_id")
 
     @property
     @pulumi.getter(name="compliancePackId")
@@ -651,9 +659,6 @@ class GetAggregateConfigRulesRuleResult(dict):
     @property
     @pulumi.getter
     def compliances(self) -> Sequence['outputs.GetAggregateConfigRulesRuleComplianceResult']:
-        """
-        -The Compliance information.
-        """
         return pulumi.get(self, "compliances")
 
     @property
@@ -701,6 +706,8 @@ class GetAggregateConfigRulesRuleResult(dict):
     def exclude_resource_ids_scope(self) -> str:
         """
         The types of the resources to be evaluated against the rule.
+        * `source_identifier`- The name of the custom rule or managed rule.
+        * `source_owner`- The source owner of the Config Rule.
         """
         return pulumi.get(self, "exclude_resource_ids_scope")
 
@@ -761,31 +768,25 @@ class GetAggregateConfigRulesRuleResult(dict):
     @pulumi.getter(name="riskLevel")
     def risk_level(self) -> int:
         """
-        The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
+        Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
         """
         return pulumi.get(self, "risk_level")
 
     @property
     @pulumi.getter(name="sourceIdentifier")
     def source_identifier(self) -> str:
-        """
-        The name of the custom rule or managed rule.
-        """
         return pulumi.get(self, "source_identifier")
 
     @property
     @pulumi.getter(name="sourceOwner")
     def source_owner(self) -> str:
-        """
-        The source owner of the Config Rule.
-        """
         return pulumi.get(self, "source_owner")
 
     @property
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the rule.
+        The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
         """
         return pulumi.get(self, "status")
 
@@ -854,7 +855,7 @@ class GetAggregatorsAggregatorResult(dict):
         :param str aggregator_type: The type of aggregator.
         :param str description: The description of aggregator.
         :param str id: The id of the aggregator.
-        :param str status: The status of the resource.
+        :param str status: The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "aggregator_accounts", aggregator_accounts)
@@ -925,7 +926,7 @@ class GetAggregatorsAggregatorResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource.
+        The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
         """
         return pulumi.get(self, "status")
 
@@ -991,7 +992,7 @@ class GetCompliancePacksPackResult(dict):
         :param str description: The description of compliance pack.
         :param str id: The ID of the Compliance Pack.
         :param int risk_level: The Ris Level.
-        :param str status: The status of the resource.
+        :param str status: The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "compliance_pack_id", compliance_pack_id)
@@ -1071,7 +1072,7 @@ class GetCompliancePacksPackResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource.
+        The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`
         """
         return pulumi.get(self, "status")
 
