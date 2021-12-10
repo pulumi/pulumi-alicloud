@@ -12,9 +12,57 @@ namespace Pulumi.AliCloud.Cfg
     /// <summary>
     /// Provides a Cloud Config Aggregate Config Rule resource.
     /// 
-    /// For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregate Config Rule](https://help.aliyun.com/).
+    /// For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregate Config Rule](https://www.alibabacloud.com/help/doc-detail/154216.html).
     /// 
     /// &gt; **NOTE:** Available in v1.124.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var exampleAggregator = new AliCloud.Cfg.Aggregator("exampleAggregator", new AliCloud.Cfg.AggregatorArgs
+    ///         {
+    ///             AggregatorAccounts = 
+    ///             {
+    ///                 new AliCloud.Cfg.Inputs.AggregatorAggregatorAccountArgs
+    ///                 {
+    ///                     AccountId = "140278452670****",
+    ///                     AccountName = "test-2",
+    ///                     AccountType = "ResourceDirectory",
+    ///                 },
+    ///             },
+    ///             AggregatorName = "tf-testaccaggregator",
+    ///             Description = "tf-testaccaggregator",
+    ///         });
+    ///         var exampleAggregateConfigRule = new AliCloud.Cfg.AggregateConfigRule("exampleAggregateConfigRule", new AliCloud.Cfg.AggregateConfigRuleArgs
+    ///         {
+    ///             AggregateConfigRuleName = "tf-testaccconfig1234",
+    ///             AggregatorId = exampleAggregator.Id,
+    ///             ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
+    ///             SourceOwner = "ALIYUN",
+    ///             SourceIdentifier = "ecs-cpu-min-count-limit",
+    ///             RiskLevel = 1,
+    ///             ResourceTypesScopes = 
+    ///             {
+    ///                 "ACS::ECS::Instance",
+    ///             },
+    ///             InputParameters = 
+    ///             {
+    ///                 { "cpuCount", "4" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -111,6 +159,9 @@ namespace Pulumi.AliCloud.Cfg
         [Output("sourceOwner")]
         public Output<string> SourceOwner { get; private set; } = null!;
 
+        /// <summary>
+        /// The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
@@ -121,7 +172,7 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string?> TagKeyScope { get; private set; } = null!;
 
         /// <summary>
-        /// The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+        /// The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
         /// </summary>
         [Output("tagValueScope")]
         public Output<string?> TagValueScope { get; private set; } = null!;
@@ -263,13 +314,19 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string> SourceOwner { get; set; } = null!;
 
         /// <summary>
+        /// The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
         /// The rule monitors the tag key, only applies to rules created based on managed rules.
         /// </summary>
         [Input("tagKeyScope")]
         public Input<string>? TagKeyScope { get; set; }
 
         /// <summary>
-        /// The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+        /// The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
         /// </summary>
         [Input("tagValueScope")]
         public Input<string>? TagValueScope { get; set; }
@@ -377,6 +434,9 @@ namespace Pulumi.AliCloud.Cfg
         [Input("sourceOwner")]
         public Input<string>? SourceOwner { get; set; }
 
+        /// <summary>
+        /// The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
@@ -387,7 +447,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? TagKeyScope { get; set; }
 
         /// <summary>
-        /// The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+        /// The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
         /// </summary>
         [Input("tagValueScope")]
         public Input<string>? TagValueScope { get; set; }

@@ -21,7 +21,7 @@ class GetRulesResult:
     """
     A collection of values returned by getRules.
     """
-    def __init__(__self__, config_rule_state=None, enable_details=None, id=None, ids=None, member_id=None, multi_account=None, name_regex=None, names=None, output_file=None, risk_level=None, rule_name=None, rules=None, status=None):
+    def __init__(__self__, config_rule_state=None, enable_details=None, id=None, ids=None, name_regex=None, names=None, output_file=None, risk_level=None, rule_name=None, rules=None, status=None):
         if config_rule_state and not isinstance(config_rule_state, str):
             raise TypeError("Expected argument 'config_rule_state' to be a str")
         if config_rule_state is not None:
@@ -38,12 +38,6 @@ class GetRulesResult:
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
-        if member_id and not isinstance(member_id, int):
-            raise TypeError("Expected argument 'member_id' to be a int")
-        pulumi.set(__self__, "member_id", member_id)
-        if multi_account and not isinstance(multi_account, bool):
-            raise TypeError("Expected argument 'multi_account' to be a bool")
-        pulumi.set(__self__, "multi_account", multi_account)
         if name_regex and not isinstance(name_regex, str):
             raise TypeError("Expected argument 'name_regex' to be a str")
         pulumi.set(__self__, "name_regex", name_regex)
@@ -91,16 +85,6 @@ class GetRulesResult:
         A list of Config Rule IDs.
         """
         return pulumi.get(self, "ids")
-
-    @property
-    @pulumi.getter(name="memberId")
-    def member_id(self) -> Optional[int]:
-        return pulumi.get(self, "member_id")
-
-    @property
-    @pulumi.getter(name="multiAccount")
-    def multi_account(self) -> Optional[bool]:
-        return pulumi.get(self, "multi_account")
 
     @property
     @pulumi.getter(name="nameRegex")
@@ -157,8 +141,6 @@ class AwaitableGetRulesResult(GetRulesResult):
             enable_details=self.enable_details,
             id=self.id,
             ids=self.ids,
-            member_id=self.member_id,
-            multi_account=self.multi_account,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
@@ -171,8 +153,6 @@ class AwaitableGetRulesResult(GetRulesResult):
 def get_rules(config_rule_state: Optional[str] = None,
               enable_details: Optional[bool] = None,
               ids: Optional[Sequence[str]] = None,
-              member_id: Optional[int] = None,
-              multi_account: Optional[bool] = None,
               name_regex: Optional[str] = None,
               output_file: Optional[str] = None,
               risk_level: Optional[int] = None,
@@ -201,8 +181,6 @@ def get_rules(config_rule_state: Optional[str] = None,
     :param str config_rule_state: Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Config Rule IDs.
-    :param int member_id: The ID of the member account to which the rule to be queried belongs. The default is empty. When `multi_account` is set to true, this parameter is valid.
-    :param bool multi_account: Whether the enterprise management account queries the rule details of member accounts.
     :param str name_regex: A regex string to filter results by rule name.
     :param int risk_level: The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
     :param str rule_name: The name of config rule.
@@ -212,8 +190,6 @@ def get_rules(config_rule_state: Optional[str] = None,
     __args__['configRuleState'] = config_rule_state
     __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
-    __args__['memberId'] = member_id
-    __args__['multiAccount'] = multi_account
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['riskLevel'] = risk_level
@@ -230,8 +206,6 @@ def get_rules(config_rule_state: Optional[str] = None,
         enable_details=__ret__.enable_details,
         id=__ret__.id,
         ids=__ret__.ids,
-        member_id=__ret__.member_id,
-        multi_account=__ret__.multi_account,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file,
@@ -245,8 +219,6 @@ def get_rules(config_rule_state: Optional[str] = None,
 def get_rules_output(config_rule_state: Optional[pulumi.Input[Optional[str]]] = None,
                      enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                     member_id: Optional[pulumi.Input[Optional[int]]] = None,
-                     multi_account: Optional[pulumi.Input[Optional[bool]]] = None,
                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
                      risk_level: Optional[pulumi.Input[Optional[int]]] = None,
@@ -275,8 +247,6 @@ def get_rules_output(config_rule_state: Optional[pulumi.Input[Optional[str]]] = 
     :param str config_rule_state: Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Config Rule IDs.
-    :param int member_id: The ID of the member account to which the rule to be queried belongs. The default is empty. When `multi_account` is set to true, this parameter is valid.
-    :param bool multi_account: Whether the enterprise management account queries the rule details of member accounts.
     :param str name_regex: A regex string to filter results by rule name.
     :param int risk_level: The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
     :param str rule_name: The name of config rule.

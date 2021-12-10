@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Cfg
     /// <summary>
     /// Provides a Cloud Config Aggregate Compliance Pack resource.
     /// 
-    /// For information about Cloud Config Aggregate Compliance Pack and how to use it, see [What is Aggregate Compliance Pack](https://help.aliyun.com/).
+    /// For information about Cloud Config Aggregate Compliance Pack and how to use it, see [What is Aggregate Compliance Pack](https://www.alibabacloud.com/help/en/doc-detail/194753.html).
     /// 
     /// &gt; **NOTE:** Available in v1.124.0+.
     /// 
@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.Cfg
     public partial class AggregateCompliancePack : Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of compliance package name.
+        /// The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
         /// </summary>
         [Output("aggregateCompliancePackName")]
         public Output<string> AggregateCompliancePackName { get; private set; } = null!;
@@ -197,7 +197,7 @@ namespace Pulumi.AliCloud.Cfg
     public sealed class AggregateCompliancePackArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of compliance package name.
+        /// The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
         /// </summary>
         [Input("aggregateCompliancePackName", required: true)]
         public Input<string> AggregateCompliancePackName { get; set; } = null!;
@@ -259,7 +259,7 @@ namespace Pulumi.AliCloud.Cfg
     public sealed class AggregateCompliancePackState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of compliance package name.
+        /// The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
         /// </summary>
         [Input("aggregateCompliancePackName")]
         public Input<string>? AggregateCompliancePackName { get; set; }

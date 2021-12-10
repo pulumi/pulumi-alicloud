@@ -13,6 +13,7 @@ from .dedicated_host import *
 from .disk import *
 from .disk_attachment import *
 from .ecs_auto_snapshot_policy_attachment import *
+from .ecs_dedicated_host_cluster import *
 from .ecs_deployment_set import *
 from .ecs_disk import *
 from .ecs_disk_attachment import *
@@ -29,6 +30,7 @@ from .get_auto_snapshot_policies import *
 from .get_commands import *
 from .get_dedicated_hosts import *
 from .get_disks import *
+from .get_ecs_dedicated_host_clusters import *
 from .get_ecs_deployment_sets import *
 from .get_ecs_disks import *
 from .get_ecs_key_pairs import *

@@ -28,12 +28,12 @@ class AccessConfigurationPermissionPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "permissionPolicyDocument":
-            suggest = "permission_policy_document"
-        elif key == "permissionPolicyName":
+        if key == "permissionPolicyName":
             suggest = "permission_policy_name"
         elif key == "permissionPolicyType":
             suggest = "permission_policy_type"
+        elif key == "permissionPolicyDocument":
+            suggest = "permission_policy_document"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AccessConfigurationPermissionPolicy. Access the value via the '{suggest}' property getter instead.")
@@ -47,20 +47,34 @@ class AccessConfigurationPermissionPolicy(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 permission_policy_document: Optional[str] = None,
-                 permission_policy_name: Optional[str] = None,
-                 permission_policy_type: Optional[str] = None):
+                 permission_policy_name: str,
+                 permission_policy_type: str,
+                 permission_policy_document: Optional[str] = None):
         """
-        :param str permission_policy_document: The Content of Policy.
-        :param str permission_policy_name: The Policy Name of policy.
+        :param str permission_policy_name: The Policy Name of policy. The name of the resource. The name must be 1 to 32 characters in length and can contain letters, digits, and hyphens (-).
         :param str permission_policy_type: The Policy Type of policy. Valid values: `System`, `Inline`.
+        :param str permission_policy_document: The Content of Policy.
         """
+        pulumi.set(__self__, "permission_policy_name", permission_policy_name)
+        pulumi.set(__self__, "permission_policy_type", permission_policy_type)
         if permission_policy_document is not None:
             pulumi.set(__self__, "permission_policy_document", permission_policy_document)
-        if permission_policy_name is not None:
-            pulumi.set(__self__, "permission_policy_name", permission_policy_name)
-        if permission_policy_type is not None:
-            pulumi.set(__self__, "permission_policy_type", permission_policy_type)
+
+    @property
+    @pulumi.getter(name="permissionPolicyName")
+    def permission_policy_name(self) -> str:
+        """
+        The Policy Name of policy. The name of the resource. The name must be 1 to 32 characters in length and can contain letters, digits, and hyphens (-).
+        """
+        return pulumi.get(self, "permission_policy_name")
+
+    @property
+    @pulumi.getter(name="permissionPolicyType")
+    def permission_policy_type(self) -> str:
+        """
+        The Policy Type of policy. Valid values: `System`, `Inline`.
+        """
+        return pulumi.get(self, "permission_policy_type")
 
     @property
     @pulumi.getter(name="permissionPolicyDocument")
@@ -69,22 +83,6 @@ class AccessConfigurationPermissionPolicy(dict):
         The Content of Policy.
         """
         return pulumi.get(self, "permission_policy_document")
-
-    @property
-    @pulumi.getter(name="permissionPolicyName")
-    def permission_policy_name(self) -> Optional[str]:
-        """
-        The Policy Name of policy.
-        """
-        return pulumi.get(self, "permission_policy_name")
-
-    @property
-    @pulumi.getter(name="permissionPolicyType")
-    def permission_policy_type(self) -> Optional[str]:
-        """
-        The Policy Type of policy. Valid values: `System`, `Inline`.
-        """
-        return pulumi.get(self, "permission_policy_type")
 
 
 @pulumi.output_type
@@ -112,7 +110,7 @@ class DirectorySamlIdentityProviderConfiguration(dict):
                  encoded_metadata_document: Optional[str] = None,
                  sso_status: Optional[str] = None):
         """
-        :param str encoded_metadata_document: Base64 encoded IdP metadata document.
+        :param str encoded_metadata_document: Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `sso_status` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `sso_status` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
         :param str sso_status: SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
         """
         if encoded_metadata_document is not None:
@@ -124,7 +122,7 @@ class DirectorySamlIdentityProviderConfiguration(dict):
     @pulumi.getter(name="encodedMetadataDocument")
     def encoded_metadata_document(self) -> Optional[str]:
         """
-        Base64 encoded IdP metadata document.
+        Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `sso_status` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `sso_status` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
         """
         return pulumi.get(self, "encoded_metadata_document")
 

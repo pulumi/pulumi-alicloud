@@ -8,6 +8,8 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Config Aggregator resource.
  *
+ * For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregator](https://www.alibabacloud.com/help/en/doc-detail/211197.html).
+ *
  * > **NOTE:** Available in v1.124.0+.
  *
  * ## Example Usage
@@ -74,7 +76,7 @@ export class Aggregator extends pulumi.CustomResource {
      */
     public readonly aggregatorName!: pulumi.Output<string>;
     /**
-     * The type of aggregator. Valid values: `CUSTOM`, `RD`.
+     * The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
      */
     public readonly aggregatorType!: pulumi.Output<string>;
     /**
@@ -141,7 +143,7 @@ export interface AggregatorState {
      */
     aggregatorName?: pulumi.Input<string>;
     /**
-     * The type of aggregator. Valid values: `CUSTOM`, `RD`.
+     * The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
      */
     aggregatorType?: pulumi.Input<string>;
     /**
@@ -167,7 +169,7 @@ export interface AggregatorArgs {
      */
     aggregatorName: pulumi.Input<string>;
     /**
-     * The type of aggregator. Valid values: `CUSTOM`, `RD`.
+     * The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
      */
     aggregatorType?: pulumi.Input<string>;
     /**

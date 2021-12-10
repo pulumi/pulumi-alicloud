@@ -32,6 +32,9 @@ __all__ = [
     'GetDisksDiskMountInstanceResult',
     'GetDisksDiskOperationLockResult',
     'GetDisksOperationLockResult',
+    'GetEcsDedicatedHostClustersClusterResult',
+    'GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityResult',
+    'GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityResult',
     'GetEcsDeploymentSetsSetResult',
     'GetEcsDisksDiskResult',
     'GetEcsDisksDiskMountInstanceResult',
@@ -2382,6 +2385,214 @@ class GetDisksOperationLockResult(dict):
     @pulumi.getter(name="lockReason")
     def lock_reason(self) -> Optional[str]:
         return pulumi.get(self, "lock_reason")
+
+
+@pulumi.output_type
+class GetEcsDedicatedHostClustersClusterResult(dict):
+    def __init__(__self__, *,
+                 dedicated_host_cluster_capacities: Sequence['outputs.GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityResult'],
+                 dedicated_host_cluster_id: str,
+                 dedicated_host_cluster_name: str,
+                 dedicated_host_ids: Sequence[str],
+                 description: str,
+                 id: str,
+                 resource_group_id: str,
+                 tags: Mapping[str, Any],
+                 zone_id: str):
+        """
+        :param Sequence['GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArgs'] dedicated_host_cluster_capacities: The capacity of the dedicated host cluster.
+        :param str dedicated_host_cluster_id: The ID of the dedicated host cluster.
+        :param str dedicated_host_cluster_name: The name of the dedicated host cluster.
+        :param Sequence[str] dedicated_host_ids: The IDs of dedicated hosts in the dedicated host cluster.
+        :param str description: The description of the dedicated host cluster.
+        :param str id: The ID of the Dedicated Host Cluster.
+        :param str resource_group_id: The ID of the resource group to which the dedicated host cluster belongs.
+        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param str zone_id: The zone ID of the dedicated host cluster.
+        """
+        pulumi.set(__self__, "dedicated_host_cluster_capacities", dedicated_host_cluster_capacities)
+        pulumi.set(__self__, "dedicated_host_cluster_id", dedicated_host_cluster_id)
+        pulumi.set(__self__, "dedicated_host_cluster_name", dedicated_host_cluster_name)
+        pulumi.set(__self__, "dedicated_host_ids", dedicated_host_ids)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="dedicatedHostClusterCapacities")
+    def dedicated_host_cluster_capacities(self) -> Sequence['outputs.GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityResult']:
+        """
+        The capacity of the dedicated host cluster.
+        """
+        return pulumi.get(self, "dedicated_host_cluster_capacities")
+
+    @property
+    @pulumi.getter(name="dedicatedHostClusterId")
+    def dedicated_host_cluster_id(self) -> str:
+        """
+        The ID of the dedicated host cluster.
+        """
+        return pulumi.get(self, "dedicated_host_cluster_id")
+
+    @property
+    @pulumi.getter(name="dedicatedHostClusterName")
+    def dedicated_host_cluster_name(self) -> str:
+        """
+        The name of the dedicated host cluster.
+        """
+        return pulumi.get(self, "dedicated_host_cluster_name")
+
+    @property
+    @pulumi.getter(name="dedicatedHostIds")
+    def dedicated_host_ids(self) -> Sequence[str]:
+        """
+        The IDs of dedicated hosts in the dedicated host cluster.
+        """
+        return pulumi.get(self, "dedicated_host_ids")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the dedicated host cluster.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Dedicated Host Cluster.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group to which the dedicated host cluster belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The zone ID of the dedicated host cluster.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityResult(dict):
+    def __init__(__self__, *,
+                 available_memory: int,
+                 available_vcpus: int,
+                 local_storage_capacities: Sequence['outputs.GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityResult'],
+                 total_memory: int,
+                 total_vcpus: int):
+        """
+        :param int available_memory: The available memory size. Unit: `GiB`.
+        :param int available_vcpus: The number of available vCPUs.
+        :param Sequence['GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArgs'] local_storage_capacities: The local storage.
+        :param int total_memory: The total memory size. Unit: `GiB`.
+        :param int total_vcpus: The total number of vCPUs.
+        """
+        pulumi.set(__self__, "available_memory", available_memory)
+        pulumi.set(__self__, "available_vcpus", available_vcpus)
+        pulumi.set(__self__, "local_storage_capacities", local_storage_capacities)
+        pulumi.set(__self__, "total_memory", total_memory)
+        pulumi.set(__self__, "total_vcpus", total_vcpus)
+
+    @property
+    @pulumi.getter(name="availableMemory")
+    def available_memory(self) -> int:
+        """
+        The available memory size. Unit: `GiB`.
+        """
+        return pulumi.get(self, "available_memory")
+
+    @property
+    @pulumi.getter(name="availableVcpus")
+    def available_vcpus(self) -> int:
+        """
+        The number of available vCPUs.
+        """
+        return pulumi.get(self, "available_vcpus")
+
+    @property
+    @pulumi.getter(name="localStorageCapacities")
+    def local_storage_capacities(self) -> Sequence['outputs.GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityResult']:
+        """
+        The local storage.
+        """
+        return pulumi.get(self, "local_storage_capacities")
+
+    @property
+    @pulumi.getter(name="totalMemory")
+    def total_memory(self) -> int:
+        """
+        The total memory size. Unit: `GiB`.
+        """
+        return pulumi.get(self, "total_memory")
+
+    @property
+    @pulumi.getter(name="totalVcpus")
+    def total_vcpus(self) -> int:
+        """
+        The total number of vCPUs.
+        """
+        return pulumi.get(self, "total_vcpus")
+
+
+@pulumi.output_type
+class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityResult(dict):
+    def __init__(__self__, *,
+                 available_disk: int,
+                 data_disk_category: str,
+                 total_disk: int):
+        """
+        :param int available_disk: The available capacity of the local disk. Unit: `GiB`.
+        :param str data_disk_category: The category of the data disk. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`, `cloud_essd`.
+        :param int total_disk: The total capacity of the local disk. Unit: `GiB`.
+        """
+        pulumi.set(__self__, "available_disk", available_disk)
+        pulumi.set(__self__, "data_disk_category", data_disk_category)
+        pulumi.set(__self__, "total_disk", total_disk)
+
+    @property
+    @pulumi.getter(name="availableDisk")
+    def available_disk(self) -> int:
+        """
+        The available capacity of the local disk. Unit: `GiB`.
+        """
+        return pulumi.get(self, "available_disk")
+
+    @property
+    @pulumi.getter(name="dataDiskCategory")
+    def data_disk_category(self) -> str:
+        """
+        The category of the data disk. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`, `cloud_essd`.
+        """
+        return pulumi.get(self, "data_disk_category")
+
+    @property
+    @pulumi.getter(name="totalDisk")
+    def total_disk(self) -> int:
+        """
+        The total capacity of the local disk. Unit: `GiB`.
+        """
+        return pulumi.get(self, "total_disk")
 
 
 @pulumi.output_type
@@ -5560,6 +5771,7 @@ class GetImagesImageResult(dict):
         :param str description: Description of the image.
         :param Sequence['GetImagesImageDiskDeviceMappingArgs'] disk_device_mappings: Description of the system with disks and snapshots under the image.
         :param str id: ID of the image.
+        :param str image_id: The ID of the image.
         :param str image_owner_alias: Alias of the image owner.
         :param str image_version: Version of the image.
         :param bool is_subscribed: Whether the user has subscribed to the terms of service for the image product corresponding to the ProductCode.
@@ -5651,6 +5863,9 @@ class GetImagesImageResult(dict):
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> str:
+        """
+        The ID of the image.
+        """
         return pulumi.get(self, "image_id")
 
     @property

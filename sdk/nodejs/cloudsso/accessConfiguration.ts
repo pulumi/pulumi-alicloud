@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  *
  * For information about Cloud SSO Access Configuration and how to use it, see [What is Access Configuration](https://www.alibabacloud.com/help/en/doc-detail/266737.html).
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available in v1.145.0+.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
  *
@@ -55,7 +55,7 @@ export class AccessConfiguration extends pulumi.CustomResource {
      */
     public /*out*/ readonly accessConfigurationId!: pulumi.Output<string>;
     /**
-     * The AccessConfigurationName of the Access Configuration.
+     * The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
      */
     public readonly accessConfigurationName!: pulumi.Output<string>;
     /**
@@ -137,7 +137,7 @@ export interface AccessConfigurationState {
      */
     accessConfigurationId?: pulumi.Input<string>;
     /**
-     * The AccessConfigurationName of the Access Configuration.
+     * The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
      */
     accessConfigurationName?: pulumi.Input<string>;
     /**
@@ -171,7 +171,7 @@ export interface AccessConfigurationState {
  */
 export interface AccessConfigurationArgs {
     /**
-     * The AccessConfigurationName of the Access Configuration.
+     * The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
      */
     accessConfigurationName: pulumi.Input<string>;
     /**

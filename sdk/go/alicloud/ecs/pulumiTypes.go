@@ -3958,6 +3958,433 @@ func (o GetDisksOperationLockArrayOutput) Index(i pulumi.IntInput) GetDisksOpera
 	}).(GetDisksOperationLockOutput)
 }
 
+type GetEcsDedicatedHostClustersCluster struct {
+	// The capacity of the dedicated host cluster.
+	DedicatedHostClusterCapacities []GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity `pulumi:"dedicatedHostClusterCapacities"`
+	// The ID of the dedicated host cluster.
+	DedicatedHostClusterId string `pulumi:"dedicatedHostClusterId"`
+	// The name of the dedicated host cluster.
+	DedicatedHostClusterName string `pulumi:"dedicatedHostClusterName"`
+	// The IDs of dedicated hosts in the dedicated host cluster.
+	DedicatedHostIds []string `pulumi:"dedicatedHostIds"`
+	// The description of the dedicated host cluster.
+	Description string `pulumi:"description"`
+	// The ID of the Dedicated Host Cluster.
+	Id string `pulumi:"id"`
+	// The ID of the resource group to which the dedicated host cluster belongs.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The zone ID of the dedicated host cluster.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetEcsDedicatedHostClustersClusterInput is an input type that accepts GetEcsDedicatedHostClustersClusterArgs and GetEcsDedicatedHostClustersClusterOutput values.
+// You can construct a concrete instance of `GetEcsDedicatedHostClustersClusterInput` via:
+//
+//          GetEcsDedicatedHostClustersClusterArgs{...}
+type GetEcsDedicatedHostClustersClusterInput interface {
+	pulumi.Input
+
+	ToGetEcsDedicatedHostClustersClusterOutput() GetEcsDedicatedHostClustersClusterOutput
+	ToGetEcsDedicatedHostClustersClusterOutputWithContext(context.Context) GetEcsDedicatedHostClustersClusterOutput
+}
+
+type GetEcsDedicatedHostClustersClusterArgs struct {
+	// The capacity of the dedicated host cluster.
+	DedicatedHostClusterCapacities GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayInput `pulumi:"dedicatedHostClusterCapacities"`
+	// The ID of the dedicated host cluster.
+	DedicatedHostClusterId pulumi.StringInput `pulumi:"dedicatedHostClusterId"`
+	// The name of the dedicated host cluster.
+	DedicatedHostClusterName pulumi.StringInput `pulumi:"dedicatedHostClusterName"`
+	// The IDs of dedicated hosts in the dedicated host cluster.
+	DedicatedHostIds pulumi.StringArrayInput `pulumi:"dedicatedHostIds"`
+	// The description of the dedicated host cluster.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Dedicated Host Cluster.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the resource group to which the dedicated host cluster belongs.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The zone ID of the dedicated host cluster.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetEcsDedicatedHostClustersClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsDedicatedHostClustersCluster)(nil)).Elem()
+}
+
+func (i GetEcsDedicatedHostClustersClusterArgs) ToGetEcsDedicatedHostClustersClusterOutput() GetEcsDedicatedHostClustersClusterOutput {
+	return i.ToGetEcsDedicatedHostClustersClusterOutputWithContext(context.Background())
+}
+
+func (i GetEcsDedicatedHostClustersClusterArgs) ToGetEcsDedicatedHostClustersClusterOutputWithContext(ctx context.Context) GetEcsDedicatedHostClustersClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsDedicatedHostClustersClusterOutput)
+}
+
+// GetEcsDedicatedHostClustersClusterArrayInput is an input type that accepts GetEcsDedicatedHostClustersClusterArray and GetEcsDedicatedHostClustersClusterArrayOutput values.
+// You can construct a concrete instance of `GetEcsDedicatedHostClustersClusterArrayInput` via:
+//
+//          GetEcsDedicatedHostClustersClusterArray{ GetEcsDedicatedHostClustersClusterArgs{...} }
+type GetEcsDedicatedHostClustersClusterArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsDedicatedHostClustersClusterArrayOutput() GetEcsDedicatedHostClustersClusterArrayOutput
+	ToGetEcsDedicatedHostClustersClusterArrayOutputWithContext(context.Context) GetEcsDedicatedHostClustersClusterArrayOutput
+}
+
+type GetEcsDedicatedHostClustersClusterArray []GetEcsDedicatedHostClustersClusterInput
+
+func (GetEcsDedicatedHostClustersClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsDedicatedHostClustersCluster)(nil)).Elem()
+}
+
+func (i GetEcsDedicatedHostClustersClusterArray) ToGetEcsDedicatedHostClustersClusterArrayOutput() GetEcsDedicatedHostClustersClusterArrayOutput {
+	return i.ToGetEcsDedicatedHostClustersClusterArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsDedicatedHostClustersClusterArray) ToGetEcsDedicatedHostClustersClusterArrayOutputWithContext(ctx context.Context) GetEcsDedicatedHostClustersClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsDedicatedHostClustersClusterArrayOutput)
+}
+
+type GetEcsDedicatedHostClustersClusterOutput struct{ *pulumi.OutputState }
+
+func (GetEcsDedicatedHostClustersClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsDedicatedHostClustersCluster)(nil)).Elem()
+}
+
+func (o GetEcsDedicatedHostClustersClusterOutput) ToGetEcsDedicatedHostClustersClusterOutput() GetEcsDedicatedHostClustersClusterOutput {
+	return o
+}
+
+func (o GetEcsDedicatedHostClustersClusterOutput) ToGetEcsDedicatedHostClustersClusterOutputWithContext(ctx context.Context) GetEcsDedicatedHostClustersClusterOutput {
+	return o
+}
+
+// The capacity of the dedicated host cluster.
+func (o GetEcsDedicatedHostClustersClusterOutput) DedicatedHostClusterCapacities() GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayOutput {
+	return o.ApplyT(func(v GetEcsDedicatedHostClustersCluster) []GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity {
+		return v.DedicatedHostClusterCapacities
+	}).(GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayOutput)
+}
+
+// The ID of the dedicated host cluster.
+func (o GetEcsDedicatedHostClustersClusterOutput) DedicatedHostClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDedicatedHostClustersCluster) string { return v.DedicatedHostClusterId }).(pulumi.StringOutput)
+}
+
+// The name of the dedicated host cluster.
+func (o GetEcsDedicatedHostClustersClusterOutput) DedicatedHostClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDedicatedHostClustersCluster) string { return v.DedicatedHostClusterName }).(pulumi.StringOutput)
+}
+
+// The IDs of dedicated hosts in the dedicated host cluster.
+func (o GetEcsDedicatedHostClustersClusterOutput) DedicatedHostIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEcsDedicatedHostClustersCluster) []string { return v.DedicatedHostIds }).(pulumi.StringArrayOutput)
+}
+
+// The description of the dedicated host cluster.
+func (o GetEcsDedicatedHostClustersClusterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDedicatedHostClustersCluster) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Dedicated Host Cluster.
+func (o GetEcsDedicatedHostClustersClusterOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDedicatedHostClustersCluster) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group to which the dedicated host cluster belongs.
+func (o GetEcsDedicatedHostClustersClusterOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDedicatedHostClustersCluster) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o GetEcsDedicatedHostClustersClusterOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetEcsDedicatedHostClustersCluster) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The zone ID of the dedicated host cluster.
+func (o GetEcsDedicatedHostClustersClusterOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDedicatedHostClustersCluster) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetEcsDedicatedHostClustersClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsDedicatedHostClustersClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsDedicatedHostClustersCluster)(nil)).Elem()
+}
+
+func (o GetEcsDedicatedHostClustersClusterArrayOutput) ToGetEcsDedicatedHostClustersClusterArrayOutput() GetEcsDedicatedHostClustersClusterArrayOutput {
+	return o
+}
+
+func (o GetEcsDedicatedHostClustersClusterArrayOutput) ToGetEcsDedicatedHostClustersClusterArrayOutputWithContext(ctx context.Context) GetEcsDedicatedHostClustersClusterArrayOutput {
+	return o
+}
+
+func (o GetEcsDedicatedHostClustersClusterArrayOutput) Index(i pulumi.IntInput) GetEcsDedicatedHostClustersClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsDedicatedHostClustersCluster {
+		return vs[0].([]GetEcsDedicatedHostClustersCluster)[vs[1].(int)]
+	}).(GetEcsDedicatedHostClustersClusterOutput)
+}
+
+type GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity struct {
+	// The available memory size. Unit: `GiB`.
+	AvailableMemory int `pulumi:"availableMemory"`
+	// The number of available vCPUs.
+	AvailableVcpus int `pulumi:"availableVcpus"`
+	// The local storage.
+	LocalStorageCapacities []GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity `pulumi:"localStorageCapacities"`
+	// The total memory size. Unit: `GiB`.
+	TotalMemory int `pulumi:"totalMemory"`
+	// The total number of vCPUs.
+	TotalVcpus int `pulumi:"totalVcpus"`
+}
+
+// GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityInput is an input type that accepts GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArgs and GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutput values.
+// You can construct a concrete instance of `GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityInput` via:
+//
+//          GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArgs{...}
+type GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityInput interface {
+	pulumi.Input
+
+	ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutput() GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutput
+	ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutputWithContext(context.Context) GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutput
+}
+
+type GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArgs struct {
+	// The available memory size. Unit: `GiB`.
+	AvailableMemory pulumi.IntInput `pulumi:"availableMemory"`
+	// The number of available vCPUs.
+	AvailableVcpus pulumi.IntInput `pulumi:"availableVcpus"`
+	// The local storage.
+	LocalStorageCapacities GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayInput `pulumi:"localStorageCapacities"`
+	// The total memory size. Unit: `GiB`.
+	TotalMemory pulumi.IntInput `pulumi:"totalMemory"`
+	// The total number of vCPUs.
+	TotalVcpus pulumi.IntInput `pulumi:"totalVcpus"`
+}
+
+func (GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity)(nil)).Elem()
+}
+
+func (i GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArgs) ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutput() GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutput {
+	return i.ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutputWithContext(context.Background())
+}
+
+func (i GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArgs) ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutputWithContext(ctx context.Context) GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutput)
+}
+
+// GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayInput is an input type that accepts GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArray and GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayOutput values.
+// You can construct a concrete instance of `GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayInput` via:
+//
+//          GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArray{ GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArgs{...} }
+type GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayOutput() GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayOutput
+	ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayOutputWithContext(context.Context) GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayOutput
+}
+
+type GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArray []GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityInput
+
+func (GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity)(nil)).Elem()
+}
+
+func (i GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArray) ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayOutput() GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayOutput {
+	return i.ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArray) ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayOutputWithContext(ctx context.Context) GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayOutput)
+}
+
+type GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutput struct{ *pulumi.OutputState }
+
+func (GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity)(nil)).Elem()
+}
+
+func (o GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutput) ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutput() GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutput {
+	return o
+}
+
+func (o GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutput) ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutputWithContext(ctx context.Context) GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutput {
+	return o
+}
+
+// The available memory size. Unit: `GiB`.
+func (o GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutput) AvailableMemory() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity) int { return v.AvailableMemory }).(pulumi.IntOutput)
+}
+
+// The number of available vCPUs.
+func (o GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutput) AvailableVcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity) int { return v.AvailableVcpus }).(pulumi.IntOutput)
+}
+
+// The local storage.
+func (o GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutput) LocalStorageCapacities() GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayOutput {
+	return o.ApplyT(func(v GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity) []GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity {
+		return v.LocalStorageCapacities
+	}).(GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayOutput)
+}
+
+// The total memory size. Unit: `GiB`.
+func (o GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutput) TotalMemory() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity) int { return v.TotalMemory }).(pulumi.IntOutput)
+}
+
+// The total number of vCPUs.
+func (o GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutput) TotalVcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity) int { return v.TotalVcpus }).(pulumi.IntOutput)
+}
+
+type GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity)(nil)).Elem()
+}
+
+func (o GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayOutput) ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayOutput() GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayOutput {
+	return o
+}
+
+func (o GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayOutput) ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayOutputWithContext(ctx context.Context) GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayOutput {
+	return o
+}
+
+func (o GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayOutput) Index(i pulumi.IntInput) GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity {
+		return vs[0].([]GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity)[vs[1].(int)]
+	}).(GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutput)
+}
+
+type GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity struct {
+	// The available capacity of the local disk. Unit: `GiB`.
+	AvailableDisk int `pulumi:"availableDisk"`
+	// The category of the data disk. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd`, `ephemeralSsd`, `cloudEssd`.
+	DataDiskCategory string `pulumi:"dataDiskCategory"`
+	// The total capacity of the local disk. Unit: `GiB`.
+	TotalDisk int `pulumi:"totalDisk"`
+}
+
+// GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityInput is an input type that accepts GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArgs and GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutput values.
+// You can construct a concrete instance of `GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityInput` via:
+//
+//          GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArgs{...}
+type GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityInput interface {
+	pulumi.Input
+
+	ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutput() GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutput
+	ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutputWithContext(context.Context) GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutput
+}
+
+type GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArgs struct {
+	// The available capacity of the local disk. Unit: `GiB`.
+	AvailableDisk pulumi.IntInput `pulumi:"availableDisk"`
+	// The category of the data disk. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd`, `ephemeralSsd`, `cloudEssd`.
+	DataDiskCategory pulumi.StringInput `pulumi:"dataDiskCategory"`
+	// The total capacity of the local disk. Unit: `GiB`.
+	TotalDisk pulumi.IntInput `pulumi:"totalDisk"`
+}
+
+func (GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity)(nil)).Elem()
+}
+
+func (i GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArgs) ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutput() GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutput {
+	return i.ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutputWithContext(context.Background())
+}
+
+func (i GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArgs) ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutputWithContext(ctx context.Context) GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutput)
+}
+
+// GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayInput is an input type that accepts GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArray and GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayOutput values.
+// You can construct a concrete instance of `GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayInput` via:
+//
+//          GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArray{ GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArgs{...} }
+type GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayInput interface {
+	pulumi.Input
+
+	ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayOutput() GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayOutput
+	ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayOutputWithContext(context.Context) GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayOutput
+}
+
+type GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArray []GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityInput
+
+func (GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity)(nil)).Elem()
+}
+
+func (i GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArray) ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayOutput() GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayOutput {
+	return i.ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayOutputWithContext(context.Background())
+}
+
+func (i GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArray) ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayOutputWithContext(ctx context.Context) GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayOutput)
+}
+
+type GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutput struct{ *pulumi.OutputState }
+
+func (GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity)(nil)).Elem()
+}
+
+func (o GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutput) ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutput() GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutput {
+	return o
+}
+
+func (o GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutput) ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutputWithContext(ctx context.Context) GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutput {
+	return o
+}
+
+// The available capacity of the local disk. Unit: `GiB`.
+func (o GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutput) AvailableDisk() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity) int {
+		return v.AvailableDisk
+	}).(pulumi.IntOutput)
+}
+
+// The category of the data disk. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd`, `ephemeralSsd`, `cloudEssd`.
+func (o GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutput) DataDiskCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity) string {
+		return v.DataDiskCategory
+	}).(pulumi.StringOutput)
+}
+
+// The total capacity of the local disk. Unit: `GiB`.
+func (o GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutput) TotalDisk() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity) int {
+		return v.TotalDisk
+	}).(pulumi.IntOutput)
+}
+
+type GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity)(nil)).Elem()
+}
+
+func (o GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayOutput) ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayOutput() GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayOutput {
+	return o
+}
+
+func (o GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayOutput) ToGetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayOutputWithContext(ctx context.Context) GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayOutput {
+	return o
+}
+
+func (o GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayOutput) Index(i pulumi.IntInput) GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity {
+		return vs[0].([]GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity)[vs[1].(int)]
+	}).(GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutput)
+}
+
 type GetEcsDeploymentSetsSet struct {
 	// The time when the deployment set was created.
 	CreateTime string `pulumi:"createTime"`
@@ -8202,7 +8629,8 @@ type GetImagesImage struct {
 	// Description of the system with disks and snapshots under the image.
 	DiskDeviceMappings []GetImagesImageDiskDeviceMapping `pulumi:"diskDeviceMappings"`
 	// ID of the image.
-	Id      string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The ID of the image.
 	ImageId string `pulumi:"imageId"`
 	// Alias of the image owner.
 	ImageOwnerAlias string `pulumi:"imageOwnerAlias"`
@@ -8266,7 +8694,8 @@ type GetImagesImageArgs struct {
 	// Description of the system with disks and snapshots under the image.
 	DiskDeviceMappings GetImagesImageDiskDeviceMappingArrayInput `pulumi:"diskDeviceMappings"`
 	// ID of the image.
-	Id      pulumi.StringInput `pulumi:"id"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the image.
 	ImageId pulumi.StringInput `pulumi:"imageId"`
 	// Alias of the image owner.
 	ImageOwnerAlias pulumi.StringInput `pulumi:"imageOwnerAlias"`
@@ -8385,6 +8814,7 @@ func (o GetImagesImageOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The ID of the image.
 func (o GetImagesImageOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.ImageId }).(pulumi.StringOutput)
 }
@@ -11310,6 +11740,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDisksDiskOperationLockArrayInput)(nil)).Elem(), GetDisksDiskOperationLockArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDisksOperationLockInput)(nil)).Elem(), GetDisksOperationLockArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDisksOperationLockArrayInput)(nil)).Elem(), GetDisksOperationLockArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsDedicatedHostClustersClusterInput)(nil)).Elem(), GetEcsDedicatedHostClustersClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsDedicatedHostClustersClusterArrayInput)(nil)).Elem(), GetEcsDedicatedHostClustersClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityInput)(nil)).Elem(), GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayInput)(nil)).Elem(), GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityInput)(nil)).Elem(), GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayInput)(nil)).Elem(), GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsDeploymentSetsSetInput)(nil)).Elem(), GetEcsDeploymentSetsSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsDeploymentSetsSetArrayInput)(nil)).Elem(), GetEcsDeploymentSetsSetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsDisksDiskInput)(nil)).Elem(), GetEcsDisksDiskArgs{})
@@ -11425,6 +11861,12 @@ func init() {
 	pulumi.RegisterOutputType(GetDisksDiskOperationLockArrayOutput{})
 	pulumi.RegisterOutputType(GetDisksOperationLockOutput{})
 	pulumi.RegisterOutputType(GetDisksOperationLockArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsDedicatedHostClustersClusterOutput{})
+	pulumi.RegisterOutputType(GetEcsDedicatedHostClustersClusterArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityOutput{})
+	pulumi.RegisterOutputType(GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityArrayOutput{})
+	pulumi.RegisterOutputType(GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityOutput{})
+	pulumi.RegisterOutputType(GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsDeploymentSetsSetOutput{})
 	pulumi.RegisterOutputType(GetEcsDeploymentSetsSetArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsDisksDiskOutput{})

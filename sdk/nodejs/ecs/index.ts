@@ -13,6 +13,7 @@ export * from "./dedicatedHost";
 export * from "./disk";
 export * from "./diskAttachment";
 export * from "./ecsAutoSnapshotPolicyAttachment";
+export * from "./ecsDedicatedHostCluster";
 export * from "./ecsDeploymentSet";
 export * from "./ecsDisk";
 export * from "./ecsDiskAttachment";
@@ -29,6 +30,7 @@ export * from "./getAutoSnapshotPolicies";
 export * from "./getCommands";
 export * from "./getDedicatedHosts";
 export * from "./getDisks";
+export * from "./getEcsDedicatedHostClusters";
 export * from "./getEcsDeploymentSets";
 export * from "./getEcsDisks";
 export * from "./getEcsKeyPairs";
@@ -72,6 +74,7 @@ import { DedicatedHost } from "./dedicatedHost";
 import { Disk } from "./disk";
 import { DiskAttachment } from "./diskAttachment";
 import { EcsAutoSnapshotPolicyAttachment } from "./ecsAutoSnapshotPolicyAttachment";
+import { EcsDedicatedHostCluster } from "./ecsDedicatedHostCluster";
 import { EcsDeploymentSet } from "./ecsDeploymentSet";
 import { EcsDisk } from "./ecsDisk";
 import { EcsDiskAttachment } from "./ecsDiskAttachment";
@@ -120,6 +123,8 @@ const _module = {
                 return new DiskAttachment(name, <any>undefined, { urn })
             case "alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment":
                 return new EcsAutoSnapshotPolicyAttachment(name, <any>undefined, { urn })
+            case "alicloud:ecs/ecsDedicatedHostCluster:EcsDedicatedHostCluster":
+                return new EcsDedicatedHostCluster(name, <any>undefined, { urn })
             case "alicloud:ecs/ecsDeploymentSet:EcsDeploymentSet":
                 return new EcsDeploymentSet(name, <any>undefined, { urn })
             case "alicloud:ecs/ecsDisk:EcsDisk":
@@ -187,6 +192,7 @@ pulumi.runtime.registerResourceModule("alicloud", "ecs/dedicatedHost", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/disk", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/diskAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsAutoSnapshotPolicyAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsDedicatedHostCluster", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsDeploymentSet", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsDisk", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsDiskAttachment", _module)

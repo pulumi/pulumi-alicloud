@@ -121,18 +121,6 @@ namespace Pulumi.AliCloud.Cfg
         }
 
         /// <summary>
-        /// The ID of the member account to which the rule to be queried belongs. The default is empty. When `multi_account` is set to true, this parameter is valid.
-        /// </summary>
-        [Input("memberId")]
-        public int? MemberId { get; set; }
-
-        /// <summary>
-        /// Whether the enterprise management account queries the rule details of member accounts.
-        /// </summary>
-        [Input("multiAccount")]
-        public bool? MultiAccount { get; set; }
-
-        /// <summary>
         /// A regex string to filter results by rule name.
         /// </summary>
         [Input("nameRegex")]
@@ -191,18 +179,6 @@ namespace Pulumi.AliCloud.Cfg
         }
 
         /// <summary>
-        /// The ID of the member account to which the rule to be queried belongs. The default is empty. When `multi_account` is set to true, this parameter is valid.
-        /// </summary>
-        [Input("memberId")]
-        public Input<int>? MemberId { get; set; }
-
-        /// <summary>
-        /// Whether the enterprise management account queries the rule details of member accounts.
-        /// </summary>
-        [Input("multiAccount")]
-        public Input<bool>? MultiAccount { get; set; }
-
-        /// <summary>
         /// A regex string to filter results by rule name.
         /// </summary>
         [Input("nameRegex")]
@@ -248,8 +224,6 @@ namespace Pulumi.AliCloud.Cfg
         /// A list of Config Rule IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
-        public readonly int? MemberId;
-        public readonly bool? MultiAccount;
         public readonly string? NameRegex;
         /// <summary>
         /// A list of Config Rule names.
@@ -277,10 +251,6 @@ namespace Pulumi.AliCloud.Cfg
 
             ImmutableArray<string> ids,
 
-            int? memberId,
-
-            bool? multiAccount,
-
             string? nameRegex,
 
             ImmutableArray<string> names,
@@ -299,8 +269,6 @@ namespace Pulumi.AliCloud.Cfg
             EnableDetails = enableDetails;
             Id = id;
             Ids = ids;
-            MemberId = memberId;
-            MultiAccount = multiAccount;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;

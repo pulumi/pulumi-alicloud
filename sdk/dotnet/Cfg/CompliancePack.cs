@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Cfg
     /// <summary>
     /// Provides a Cloud Config Compliance Pack resource.
     /// 
-    /// For information about Cloud Config Compliance Pack and how to use it, see [What is Compliance Pack](https://help.aliyun.com/).
+    /// For information about Cloud Config Compliance Pack and how to use it, see [What is Compliance Pack](https://www.alibabacloud.com/help/en/doc-detail/194753.html).
     /// 
     /// &gt; **NOTE:** Available in v1.124.0+.
     /// 
@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.Cfg
     public partial class CompliancePack : Pulumi.CustomResource
     {
         /// <summary>
-        /// The Compliance Package Name.
+        /// The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
         /// </summary>
         [Output("compliancePackName")]
         public Output<string> CompliancePackName { get; private set; } = null!;
@@ -175,7 +175,7 @@ namespace Pulumi.AliCloud.Cfg
     public sealed class CompliancePackArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Compliance Package Name.
+        /// The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
         /// </summary>
         [Input("compliancePackName", required: true)]
         public Input<string> CompliancePackName { get; set; } = null!;
@@ -231,7 +231,7 @@ namespace Pulumi.AliCloud.Cfg
     public sealed class CompliancePackState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Compliance Package Name.
+        /// The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
         /// </summary>
         [Input("compliancePackName")]
         public Input<string>? CompliancePackName { get; set; }

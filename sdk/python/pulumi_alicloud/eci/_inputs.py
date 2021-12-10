@@ -27,6 +27,7 @@ __all__ = [
     'ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs',
     'ImageCacheImageRegistryCredentialArgs',
     'OpenApiImageCacheImageRegistryCredentialArgs',
+    'VirtualNodeTaintArgs',
 ]
 
 @pulumi.input_type
@@ -1296,5 +1297,60 @@ class OpenApiImageCacheImageRegistryCredentialArgs:
     @user_name.setter
     def user_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_name", value)
+
+
+@pulumi.input_type
+class VirtualNodeTaintArgs:
+    def __init__(__self__, *,
+                 effect: Optional[pulumi.Input[str]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] effect: The effect of the taint. Valid values: `NoSchedule`, `NoExecute` and `PreferNoSchedule`.
+        :param pulumi.Input[str] key: The key of the taint.
+        :param pulumi.Input[str] value: The value of the taint.
+        """
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[pulumi.Input[str]]:
+        """
+        The effect of the taint. Valid values: `NoSchedule`, `NoExecute` and `PreferNoSchedule`.
+        """
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "effect", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the taint.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the taint.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 

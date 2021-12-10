@@ -11,7 +11,7 @@ import (
 )
 
 // Provides a Alicloud Config Configuration Recorder resource. Cloud Config is a specialized service for evaluating resources. Cloud Config tracks configuration changes of your resources and evaluates configuration compliance. Cloud Config can help you evaluate numerous resources and maintain the continuous compliance of your cloud infrastructure.
-// For information about Alicloud Config Configuration Recorder and how to use it, see [What is Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127388.htm)
+// For information about Alicloud Config Configuration Recorder and how to use it, see [What is Configuration Recorder.](https://www.alibabacloud.com/help/en/doc-detail/153156.html)
 //
 // > **NOTE:** Available in v1.99.0+.
 //
@@ -53,13 +53,14 @@ import (
 type ConfigurationRecorder struct {
 	pulumi.CustomResourceState
 
-	// - Whether to use the enterprise version configuration audit. Valid values: `true` and `fales`. Default value `false`.
-	EnterpriseEdition pulumi.BoolPtrOutput `pulumi:"enterpriseEdition"`
+	EnterpriseEdition pulumi.BoolOutput `pulumi:"enterpriseEdition"`
 	// Status of resource monitoring. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
 	OrganizationEnableStatus pulumi.StringOutput `pulumi:"organizationEnableStatus"`
 	// The ID of the Enterprise management account.
 	OrganizationMasterId pulumi.IntOutput `pulumi:"organizationMasterId"`
 	// A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+	// * If you use an ordinary account, the `resourceTypes` supports the update operation after the process of creation is completed.
+	// * If you use an enterprise account, the `resourceTypes` does not support updating.
 	ResourceTypes pulumi.StringArrayOutput `pulumi:"resourceTypes"`
 	// Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -94,26 +95,28 @@ func GetConfigurationRecorder(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ConfigurationRecorder resources.
 type configurationRecorderState struct {
-	// - Whether to use the enterprise version configuration audit. Valid values: `true` and `fales`. Default value `false`.
 	EnterpriseEdition *bool `pulumi:"enterpriseEdition"`
 	// Status of resource monitoring. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
 	OrganizationEnableStatus *string `pulumi:"organizationEnableStatus"`
 	// The ID of the Enterprise management account.
 	OrganizationMasterId *int `pulumi:"organizationMasterId"`
 	// A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+	// * If you use an ordinary account, the `resourceTypes` supports the update operation after the process of creation is completed.
+	// * If you use an enterprise account, the `resourceTypes` does not support updating.
 	ResourceTypes []string `pulumi:"resourceTypes"`
 	// Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
 	Status *string `pulumi:"status"`
 }
 
 type ConfigurationRecorderState struct {
-	// - Whether to use the enterprise version configuration audit. Valid values: `true` and `fales`. Default value `false`.
 	EnterpriseEdition pulumi.BoolPtrInput
 	// Status of resource monitoring. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
 	OrganizationEnableStatus pulumi.StringPtrInput
 	// The ID of the Enterprise management account.
 	OrganizationMasterId pulumi.IntPtrInput
 	// A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+	// * If you use an ordinary account, the `resourceTypes` supports the update operation after the process of creation is completed.
+	// * If you use an enterprise account, the `resourceTypes` does not support updating.
 	ResourceTypes pulumi.StringArrayInput
 	// Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
 	Status pulumi.StringPtrInput
@@ -124,17 +127,19 @@ func (ConfigurationRecorderState) ElementType() reflect.Type {
 }
 
 type configurationRecorderArgs struct {
-	// - Whether to use the enterprise version configuration audit. Valid values: `true` and `fales`. Default value `false`.
 	EnterpriseEdition *bool `pulumi:"enterpriseEdition"`
 	// A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+	// * If you use an ordinary account, the `resourceTypes` supports the update operation after the process of creation is completed.
+	// * If you use an enterprise account, the `resourceTypes` does not support updating.
 	ResourceTypes []string `pulumi:"resourceTypes"`
 }
 
 // The set of arguments for constructing a ConfigurationRecorder resource.
 type ConfigurationRecorderArgs struct {
-	// - Whether to use the enterprise version configuration audit. Valid values: `true` and `fales`. Default value `false`.
 	EnterpriseEdition pulumi.BoolPtrInput
 	// A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+	// * If you use an ordinary account, the `resourceTypes` supports the update operation after the process of creation is completed.
+	// * If you use an enterprise account, the `resourceTypes` does not support updating.
 	ResourceTypes pulumi.StringArrayInput
 }
 

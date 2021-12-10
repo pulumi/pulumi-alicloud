@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** When you configure access assignment for the first time, access configuration will be automatically deployed.
  *
- * > **NOTE:** Available in v1.141.0+.
+ * > **NOTE:** Available in v1.145.0+.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
  *
@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * Cloud SSO Access Assignment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cloudsso/accessManagement:AccessManagement example <directory_id>:<access_configuration_id>:<target_id>:<principal_id>
+ *  $ pulumi import alicloud:cloudsso/accessManagement:AccessManagement example <directory_id>:<access_configuration_id>:<target_type>:<target_id>:<principal_type>:<principal_id>
  * ```
  */
 export class AccessManagement extends pulumi.CustomResource {
@@ -56,7 +56,7 @@ export class AccessManagement extends pulumi.CustomResource {
      */
     public readonly accessConfigurationId!: pulumi.Output<string>;
     /**
-     * The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `None`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+     * The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
      */
     public readonly deprovisionStrategy!: pulumi.Output<string | undefined>;
     /**
@@ -144,7 +144,7 @@ export interface AccessManagementState {
      */
     accessConfigurationId?: pulumi.Input<string>;
     /**
-     * The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `None`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+     * The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
      */
     deprovisionStrategy?: pulumi.Input<string>;
     /**
@@ -178,7 +178,7 @@ export interface AccessManagementArgs {
      */
     accessConfigurationId: pulumi.Input<string>;
     /**
-     * The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `None`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+     * The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
      */
     deprovisionStrategy?: pulumi.Input<string>;
     /**

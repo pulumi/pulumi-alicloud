@@ -37,6 +37,8 @@ export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Pr
         "architecture": args.architecture,
         "dryRun": args.dryRun,
         "imageFamily": args.imageFamily,
+        "imageId": args.imageId,
+        "imageName": args.imageName,
         "instanceType": args.instanceType,
         "isSupportCloudInit": args.isSupportCloudInit,
         "isSupportIoOptimized": args.isSupportIoOptimized,
@@ -77,6 +79,14 @@ export interface GetImagesArgs {
      * The name of the image family. You can set this parameter to query images of the specified image family. This parameter is empty by default.
      */
     imageFamily?: string;
+    /**
+     * The ID of the image.
+     */
+    imageId?: string;
+    /**
+     * The name of the image.
+     */
+    imageName?: string;
     /**
      * The instance type for which the image can be used.
      */
@@ -155,6 +165,8 @@ export interface GetImagesResult {
      */
     readonly ids: string[];
     readonly imageFamily?: string;
+    readonly imageId?: string;
+    readonly imageName?: string;
     /**
      * A list of images. Each element contains the following attributes:
      */
@@ -208,6 +220,14 @@ export interface GetImagesOutputArgs {
      * The name of the image family. You can set this parameter to query images of the specified image family. This parameter is empty by default.
      */
     imageFamily?: pulumi.Input<string>;
+    /**
+     * The ID of the image.
+     */
+    imageId?: pulumi.Input<string>;
+    /**
+     * The name of the image.
+     */
+    imageName?: pulumi.Input<string>;
     /**
      * The instance type for which the image can be used.
      */

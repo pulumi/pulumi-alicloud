@@ -23,7 +23,7 @@ class CompliancePackArgs:
                  config_rules: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]] = None):
         """
         The set of arguments for constructing a CompliancePack resource.
-        :param pulumi.Input[str] compliance_pack_name: The Compliance Package Name.
+        :param pulumi.Input[str] compliance_pack_name: The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
         :param pulumi.Input[str] description: The Description of compliance pack.
         :param pulumi.Input[int] risk_level: The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
         :param pulumi.Input[str] compliance_pack_template_id: Compliance Package Template Id.
@@ -47,7 +47,7 @@ class CompliancePackArgs:
     @pulumi.getter(name="compliancePackName")
     def compliance_pack_name(self) -> pulumi.Input[str]:
         """
-        The Compliance Package Name.
+        The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
         """
         return pulumi.get(self, "compliance_pack_name")
 
@@ -128,7 +128,7 @@ class _CompliancePackState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CompliancePack resources.
-        :param pulumi.Input[str] compliance_pack_name: The Compliance Package Name.
+        :param pulumi.Input[str] compliance_pack_name: The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
         :param pulumi.Input[str] compliance_pack_template_id: Compliance Package Template Id.
         :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]] config_rule_ids: A list of Config Rule IDs.
         :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]] config_rules: A list of Config Rules.
@@ -158,7 +158,7 @@ class _CompliancePackState:
     @pulumi.getter(name="compliancePackName")
     def compliance_pack_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The Compliance Package Name.
+        The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
         """
         return pulumi.get(self, "compliance_pack_name")
 
@@ -254,7 +254,7 @@ class CompliancePack(pulumi.CustomResource):
         """
         Provides a Cloud Config Compliance Pack resource.
 
-        For information about Cloud Config Compliance Pack and how to use it, see [What is Compliance Pack](https://help.aliyun.com/).
+        For information about Cloud Config Compliance Pack and how to use it, see [What is Compliance Pack](https://www.alibabacloud.com/help/en/doc-detail/194753.html).
 
         > **NOTE:** Available in v1.124.0+.
 
@@ -307,7 +307,7 @@ class CompliancePack(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compliance_pack_name: The Compliance Package Name.
+        :param pulumi.Input[str] compliance_pack_name: The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
         :param pulumi.Input[str] compliance_pack_template_id: Compliance Package Template Id.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleIdArgs']]]] config_rule_ids: A list of Config Rule IDs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleArgs']]]] config_rules: A list of Config Rules.
@@ -323,7 +323,7 @@ class CompliancePack(pulumi.CustomResource):
         """
         Provides a Cloud Config Compliance Pack resource.
 
-        For information about Cloud Config Compliance Pack and how to use it, see [What is Compliance Pack](https://help.aliyun.com/).
+        For information about Cloud Config Compliance Pack and how to use it, see [What is Compliance Pack](https://www.alibabacloud.com/help/en/doc-detail/194753.html).
 
         > **NOTE:** Available in v1.124.0+.
 
@@ -447,7 +447,7 @@ class CompliancePack(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] compliance_pack_name: The Compliance Package Name.
+        :param pulumi.Input[str] compliance_pack_name: The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
         :param pulumi.Input[str] compliance_pack_template_id: Compliance Package Template Id.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleIdArgs']]]] config_rule_ids: A list of Config Rule IDs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleArgs']]]] config_rules: A list of Config Rules.
@@ -472,7 +472,7 @@ class CompliancePack(pulumi.CustomResource):
     @pulumi.getter(name="compliancePackName")
     def compliance_pack_name(self) -> pulumi.Output[str]:
         """
-        The Compliance Package Name.
+        The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
         """
         return pulumi.get(self, "compliance_pack_name")
 

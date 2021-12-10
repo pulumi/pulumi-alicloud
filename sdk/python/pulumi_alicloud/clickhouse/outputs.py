@@ -10,12 +10,78 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'DbClusterDbClusterAccessWhiteList',
     'GetAccountsAccountResult',
     'GetDbClustersClusterResult',
+    'GetDbClustersClusterDbClusterAccessWhiteListResult',
     'GetDbClustersClusterScaleOutStatusResult',
     'GetRegionsRegionResult',
     'GetRegionsRegionZoneIdResult',
 ]
+
+@pulumi.output_type
+class DbClusterDbClusterAccessWhiteList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dbClusterIpArrayAttribute":
+            suggest = "db_cluster_ip_array_attribute"
+        elif key == "dbClusterIpArrayName":
+            suggest = "db_cluster_ip_array_name"
+        elif key == "securityIpList":
+            suggest = "security_ip_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DbClusterDbClusterAccessWhiteList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DbClusterDbClusterAccessWhiteList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DbClusterDbClusterAccessWhiteList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 db_cluster_ip_array_attribute: Optional[str] = None,
+                 db_cluster_ip_array_name: Optional[str] = None,
+                 security_ip_list: Optional[str] = None):
+        """
+        :param str db_cluster_ip_array_attribute: Whitelist grouping attribute.
+        :param str db_cluster_ip_array_name: Whitelist group name.
+        :param str security_ip_list: The IP address list under the whitelist group.
+        """
+        if db_cluster_ip_array_attribute is not None:
+            pulumi.set(__self__, "db_cluster_ip_array_attribute", db_cluster_ip_array_attribute)
+        if db_cluster_ip_array_name is not None:
+            pulumi.set(__self__, "db_cluster_ip_array_name", db_cluster_ip_array_name)
+        if security_ip_list is not None:
+            pulumi.set(__self__, "security_ip_list", security_ip_list)
+
+    @property
+    @pulumi.getter(name="dbClusterIpArrayAttribute")
+    def db_cluster_ip_array_attribute(self) -> Optional[str]:
+        """
+        Whitelist grouping attribute.
+        """
+        return pulumi.get(self, "db_cluster_ip_array_attribute")
+
+    @property
+    @pulumi.getter(name="dbClusterIpArrayName")
+    def db_cluster_ip_array_name(self) -> Optional[str]:
+        """
+        Whitelist group name.
+        """
+        return pulumi.get(self, "db_cluster_ip_array_name")
+
+    @property
+    @pulumi.getter(name="securityIpList")
+    def security_ip_list(self) -> Optional[str]:
+        """
+        The IP address list under the whitelist group.
+        """
+        return pulumi.get(self, "security_ip_list")
+
 
 @pulumi.output_type
 class GetAccountsAccountResult(dict):
@@ -99,6 +165,7 @@ class GetDbClustersClusterResult(dict):
                  commodity_code: str,
                  connection_string: str,
                  create_time: str,
+                 db_cluster_access_white_lists: Sequence['outputs.GetDbClustersClusterDbClusterAccessWhiteListResult'],
                  db_cluster_description: str,
                  db_cluster_id: str,
                  db_cluster_network_type: str,
@@ -136,6 +203,7 @@ class GetDbClustersClusterResult(dict):
         :param str commodity_code: The Commodity Code of the DBCluster.
         :param str connection_string: Connection string.
         :param str create_time: The creation time of the resource.
+        :param Sequence['GetDbClustersClusterDbClusterAccessWhiteListArgs'] db_cluster_access_white_lists: The db cluster access white list.
         :param str db_cluster_description: The DBCluster description.
         :param str db_cluster_network_type: The DBCluster network type.
         :param str db_cluster_type: The DBCluster type.
@@ -172,6 +240,7 @@ class GetDbClustersClusterResult(dict):
         pulumi.set(__self__, "commodity_code", commodity_code)
         pulumi.set(__self__, "connection_string", connection_string)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "db_cluster_access_white_lists", db_cluster_access_white_lists)
         pulumi.set(__self__, "db_cluster_description", db_cluster_description)
         pulumi.set(__self__, "db_cluster_id", db_cluster_id)
         pulumi.set(__self__, "db_cluster_network_type", db_cluster_network_type)
@@ -250,6 +319,14 @@ class GetDbClustersClusterResult(dict):
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="dbClusterAccessWhiteLists")
+    def db_cluster_access_white_lists(self) -> Sequence['outputs.GetDbClustersClusterDbClusterAccessWhiteListResult']:
+        """
+        The db cluster access white list.
+        """
+        return pulumi.get(self, "db_cluster_access_white_lists")
 
     @property
     @pulumi.getter(name="dbClusterDescription")
@@ -487,6 +564,46 @@ class GetDbClustersClusterResult(dict):
         The zone ID of the DBCluster.
         """
         return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetDbClustersClusterDbClusterAccessWhiteListResult(dict):
+    def __init__(__self__, *,
+                 db_cluster_ip_array_attribute: str,
+                 db_cluster_ip_array_name: str,
+                 security_ip_list: str):
+        """
+        :param str db_cluster_ip_array_attribute: Whitelist grouping attribute.
+        :param str db_cluster_ip_array_name: Whitelist group name.
+        :param str security_ip_list: The IP address list under the whitelist group.
+        """
+        pulumi.set(__self__, "db_cluster_ip_array_attribute", db_cluster_ip_array_attribute)
+        pulumi.set(__self__, "db_cluster_ip_array_name", db_cluster_ip_array_name)
+        pulumi.set(__self__, "security_ip_list", security_ip_list)
+
+    @property
+    @pulumi.getter(name="dbClusterIpArrayAttribute")
+    def db_cluster_ip_array_attribute(self) -> str:
+        """
+        Whitelist grouping attribute.
+        """
+        return pulumi.get(self, "db_cluster_ip_array_attribute")
+
+    @property
+    @pulumi.getter(name="dbClusterIpArrayName")
+    def db_cluster_ip_array_name(self) -> str:
+        """
+        Whitelist group name.
+        """
+        return pulumi.get(self, "db_cluster_ip_array_name")
+
+    @property
+    @pulumi.getter(name="securityIpList")
+    def security_ip_list(self) -> str:
+        """
+        The IP address list under the whitelist group.
+        """
+        return pulumi.get(self, "security_ip_list")
 
 
 @pulumi.output_type

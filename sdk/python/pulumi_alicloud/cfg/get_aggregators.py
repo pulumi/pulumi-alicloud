@@ -50,6 +50,9 @@ class GetAggregatorsResult:
     @property
     @pulumi.getter
     def aggregators(self) -> Sequence['outputs.GetAggregatorsAggregatorResult']:
+        """
+        A list of config aggregators. Each element contains the following attributes:
+        """
         return pulumi.get(self, "aggregators")
 
     @property
@@ -78,6 +81,9 @@ class GetAggregatorsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Aggregator names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -88,6 +94,9 @@ class GetAggregatorsResult:
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
 
@@ -135,7 +144,7 @@ def get_aggregators(enable_details: Optional[bool] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of aggregator ids.
     :param str name_regex: A regex string to filter results by aggregator name.
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -189,6 +198,6 @@ def get_aggregators_output(enable_details: Optional[pulumi.Input[Optional[bool]]
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of aggregator ids.
     :param str name_regex: A regex string to filter results by aggregator name.
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
     """
     ...

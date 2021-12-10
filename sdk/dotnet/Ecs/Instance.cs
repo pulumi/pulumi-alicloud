@@ -227,6 +227,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> RoleName { get; private set; } = null!;
 
         /// <summary>
+        /// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
+        /// </summary>
+        [Output("secondaryPrivateIpAddressCount")]
+        public Output<int> SecondaryPrivateIpAddressCount { get; private set; } = null!;
+
+        /// <summary>
         /// A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
         /// </summary>
         [Output("secondaryPrivateIps")]
@@ -591,6 +597,12 @@ namespace Pulumi.AliCloud.Ecs
         [Input("roleName")]
         public Input<string>? RoleName { get; set; }
 
+        /// <summary>
+        /// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
+        /// </summary>
+        [Input("secondaryPrivateIpAddressCount")]
+        public Input<int>? SecondaryPrivateIpAddressCount { get; set; }
+
         [Input("secondaryPrivateIps")]
         private InputList<string>? _secondaryPrivateIps;
 
@@ -946,6 +958,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("roleName")]
         public Input<string>? RoleName { get; set; }
+
+        /// <summary>
+        /// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
+        /// </summary>
+        [Input("secondaryPrivateIpAddressCount")]
+        public Input<int>? SecondaryPrivateIpAddressCount { get; set; }
 
         [Input("secondaryPrivateIps")]
         private InputList<string>? _secondaryPrivateIps;

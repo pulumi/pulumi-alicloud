@@ -6,6 +6,7 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./cluster";
+export * from "./getClusters";
 export * from "./getDiskTypes";
 export * from "./getInstanceTypes";
 export * from "./getMainVersions";

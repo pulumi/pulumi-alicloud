@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudSso
     /// 
     /// For information about Cloud SSO Access Configuration and how to use it, see [What is Access Configuration](https://www.alibabacloud.com/help/en/doc-detail/266737.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.140.0+.
+    /// &gt; **NOTE:** Available in v1.145.0+.
     /// 
     /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
     /// 
@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Output<string> AccessConfigurationId { get; private set; } = null!;
 
         /// <summary>
-        /// The AccessConfigurationName of the Access Configuration.
+        /// The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
         /// </summary>
         [Output("accessConfigurationName")]
         public Output<string> AccessConfigurationName { get; private set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.CloudSso
     public sealed class AccessConfigurationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The AccessConfigurationName of the Access Configuration.
+        /// The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
         /// </summary>
         [Input("accessConfigurationName", required: true)]
         public Input<string> AccessConfigurationName { get; set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? AccessConfigurationId { get; set; }
 
         /// <summary>
-        /// The AccessConfigurationName of the Access Configuration.
+        /// The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
         /// </summary>
         [Input("accessConfigurationName")]
         public Input<string>? AccessConfigurationName { get; set; }

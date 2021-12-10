@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a a Alicloud Config Rule resource. Cloud Config checks the validity of resources based on rules. You can create rules to evaluate resources as needed.
-// For information about Alicloud Config Rule and how to use it, see [What is Alicloud Config Rule](https://www.alibabacloud.com/help/en/doc-detail/127388.htm).
+// For information about Alicloud Config Rule and how to use it, see [What is Alicloud Config Rule](https://www.alibabacloud.com/help/doc-detail/154216.html).
 //
 // > **NOTE:** Available in v1.99.0+.
 //
@@ -100,10 +100,11 @@ type Rule struct {
 	SourceMaximumExecutionFrequency pulumi.StringOutput `pulumi:"sourceMaximumExecutionFrequency"`
 	// Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
 	SourceOwner pulumi.StringOutput `pulumi:"sourceOwner"`
-	Status      pulumi.StringOutput `pulumi:"status"`
+	// The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+	Status pulumi.StringOutput `pulumi:"status"`
 	// The rule monitors the tag key, only applies to rules created based on managed rules.
 	TagKeyScope pulumi.StringPtrOutput `pulumi:"tagKeyScope"`
-	// The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+	// The rule monitors the tag value, use with the `tagKeyScope` options. only applies to rules created based on managed rules.
 	TagValueScope pulumi.StringPtrOutput `pulumi:"tagValueScope"`
 }
 
@@ -184,10 +185,11 @@ type ruleState struct {
 	SourceMaximumExecutionFrequency *string `pulumi:"sourceMaximumExecutionFrequency"`
 	// Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
 	SourceOwner *string `pulumi:"sourceOwner"`
-	Status      *string `pulumi:"status"`
+	// The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+	Status *string `pulumi:"status"`
 	// The rule monitors the tag key, only applies to rules created based on managed rules.
 	TagKeyScope *string `pulumi:"tagKeyScope"`
-	// The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+	// The rule monitors the tag value, use with the `tagKeyScope` options. only applies to rules created based on managed rules.
 	TagValueScope *string `pulumi:"tagValueScope"`
 }
 
@@ -228,10 +230,11 @@ type RuleState struct {
 	SourceMaximumExecutionFrequency pulumi.StringPtrInput
 	// Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
 	SourceOwner pulumi.StringPtrInput
-	Status      pulumi.StringPtrInput
+	// The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+	Status pulumi.StringPtrInput
 	// The rule monitors the tag key, only applies to rules created based on managed rules.
 	TagKeyScope pulumi.StringPtrInput
-	// The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+	// The rule monitors the tag value, use with the `tagKeyScope` options. only applies to rules created based on managed rules.
 	TagValueScope pulumi.StringPtrInput
 }
 
@@ -276,9 +279,11 @@ type ruleArgs struct {
 	SourceMaximumExecutionFrequency *string `pulumi:"sourceMaximumExecutionFrequency"`
 	// Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
 	SourceOwner string `pulumi:"sourceOwner"`
+	// The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+	Status *string `pulumi:"status"`
 	// The rule monitors the tag key, only applies to rules created based on managed rules.
 	TagKeyScope *string `pulumi:"tagKeyScope"`
-	// The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+	// The rule monitors the tag value, use with the `tagKeyScope` options. only applies to rules created based on managed rules.
 	TagValueScope *string `pulumi:"tagValueScope"`
 }
 
@@ -320,9 +325,11 @@ type RuleArgs struct {
 	SourceMaximumExecutionFrequency pulumi.StringPtrInput
 	// Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
 	SourceOwner pulumi.StringInput
+	// The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+	Status pulumi.StringPtrInput
 	// The rule monitors the tag key, only applies to rules created based on managed rules.
 	TagKeyScope pulumi.StringPtrInput
-	// The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+	// The rule monitors the tag value, use with the `tagKeyScope` options. only applies to rules created based on managed rules.
 	TagValueScope pulumi.StringPtrInput
 }
 

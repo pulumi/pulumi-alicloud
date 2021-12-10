@@ -222,6 +222,112 @@ func (o StackGroupParameterArrayOutput) Index(i pulumi.IntInput) StackGroupParam
 	}).(StackGroupParameterOutput)
 }
 
+type StackInstanceParameterOverride struct {
+	// The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+	ParameterKey *string `pulumi:"parameterKey"`
+	// The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+	ParameterValue *string `pulumi:"parameterValue"`
+}
+
+// StackInstanceParameterOverrideInput is an input type that accepts StackInstanceParameterOverrideArgs and StackInstanceParameterOverrideOutput values.
+// You can construct a concrete instance of `StackInstanceParameterOverrideInput` via:
+//
+//          StackInstanceParameterOverrideArgs{...}
+type StackInstanceParameterOverrideInput interface {
+	pulumi.Input
+
+	ToStackInstanceParameterOverrideOutput() StackInstanceParameterOverrideOutput
+	ToStackInstanceParameterOverrideOutputWithContext(context.Context) StackInstanceParameterOverrideOutput
+}
+
+type StackInstanceParameterOverrideArgs struct {
+	// The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+	ParameterKey pulumi.StringPtrInput `pulumi:"parameterKey"`
+	// The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+	ParameterValue pulumi.StringPtrInput `pulumi:"parameterValue"`
+}
+
+func (StackInstanceParameterOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackInstanceParameterOverride)(nil)).Elem()
+}
+
+func (i StackInstanceParameterOverrideArgs) ToStackInstanceParameterOverrideOutput() StackInstanceParameterOverrideOutput {
+	return i.ToStackInstanceParameterOverrideOutputWithContext(context.Background())
+}
+
+func (i StackInstanceParameterOverrideArgs) ToStackInstanceParameterOverrideOutputWithContext(ctx context.Context) StackInstanceParameterOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackInstanceParameterOverrideOutput)
+}
+
+// StackInstanceParameterOverrideArrayInput is an input type that accepts StackInstanceParameterOverrideArray and StackInstanceParameterOverrideArrayOutput values.
+// You can construct a concrete instance of `StackInstanceParameterOverrideArrayInput` via:
+//
+//          StackInstanceParameterOverrideArray{ StackInstanceParameterOverrideArgs{...} }
+type StackInstanceParameterOverrideArrayInput interface {
+	pulumi.Input
+
+	ToStackInstanceParameterOverrideArrayOutput() StackInstanceParameterOverrideArrayOutput
+	ToStackInstanceParameterOverrideArrayOutputWithContext(context.Context) StackInstanceParameterOverrideArrayOutput
+}
+
+type StackInstanceParameterOverrideArray []StackInstanceParameterOverrideInput
+
+func (StackInstanceParameterOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StackInstanceParameterOverride)(nil)).Elem()
+}
+
+func (i StackInstanceParameterOverrideArray) ToStackInstanceParameterOverrideArrayOutput() StackInstanceParameterOverrideArrayOutput {
+	return i.ToStackInstanceParameterOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i StackInstanceParameterOverrideArray) ToStackInstanceParameterOverrideArrayOutputWithContext(ctx context.Context) StackInstanceParameterOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackInstanceParameterOverrideArrayOutput)
+}
+
+type StackInstanceParameterOverrideOutput struct{ *pulumi.OutputState }
+
+func (StackInstanceParameterOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackInstanceParameterOverride)(nil)).Elem()
+}
+
+func (o StackInstanceParameterOverrideOutput) ToStackInstanceParameterOverrideOutput() StackInstanceParameterOverrideOutput {
+	return o
+}
+
+func (o StackInstanceParameterOverrideOutput) ToStackInstanceParameterOverrideOutputWithContext(ctx context.Context) StackInstanceParameterOverrideOutput {
+	return o
+}
+
+// The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+func (o StackInstanceParameterOverrideOutput) ParameterKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StackInstanceParameterOverride) *string { return v.ParameterKey }).(pulumi.StringPtrOutput)
+}
+
+// The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+func (o StackInstanceParameterOverrideOutput) ParameterValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StackInstanceParameterOverride) *string { return v.ParameterValue }).(pulumi.StringPtrOutput)
+}
+
+type StackInstanceParameterOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (StackInstanceParameterOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StackInstanceParameterOverride)(nil)).Elem()
+}
+
+func (o StackInstanceParameterOverrideArrayOutput) ToStackInstanceParameterOverrideArrayOutput() StackInstanceParameterOverrideArrayOutput {
+	return o
+}
+
+func (o StackInstanceParameterOverrideArrayOutput) ToStackInstanceParameterOverrideArrayOutputWithContext(ctx context.Context) StackInstanceParameterOverrideArrayOutput {
+	return o
+}
+
+func (o StackInstanceParameterOverrideArrayOutput) Index(i pulumi.IntInput) StackInstanceParameterOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StackInstanceParameterOverride {
+		return vs[0].([]StackInstanceParameterOverride)[vs[1].(int)]
+	}).(StackInstanceParameterOverrideOutput)
+}
+
 type StackParameter struct {
 	// The parameter key.
 	ParameterKey *string `pulumi:"parameterKey"`
@@ -639,6 +745,121 @@ func (o GetChangeSetsSetParameterArrayOutput) Index(i pulumi.IntInput) GetChange
 	}).(GetChangeSetsSetParameterOutput)
 }
 
+type GetRegionsRegion struct {
+	// The name of the region.
+	LocalName string `pulumi:"localName"`
+	// The endpoint of the region.
+	RegionEndpoint string `pulumi:"regionEndpoint"`
+	// The ID of the region.
+	RegionId string `pulumi:"regionId"`
+}
+
+// GetRegionsRegionInput is an input type that accepts GetRegionsRegionArgs and GetRegionsRegionOutput values.
+// You can construct a concrete instance of `GetRegionsRegionInput` via:
+//
+//          GetRegionsRegionArgs{...}
+type GetRegionsRegionInput interface {
+	pulumi.Input
+
+	ToGetRegionsRegionOutput() GetRegionsRegionOutput
+	ToGetRegionsRegionOutputWithContext(context.Context) GetRegionsRegionOutput
+}
+
+type GetRegionsRegionArgs struct {
+	// The name of the region.
+	LocalName pulumi.StringInput `pulumi:"localName"`
+	// The endpoint of the region.
+	RegionEndpoint pulumi.StringInput `pulumi:"regionEndpoint"`
+	// The ID of the region.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+}
+
+func (GetRegionsRegionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsRegion)(nil)).Elem()
+}
+
+func (i GetRegionsRegionArgs) ToGetRegionsRegionOutput() GetRegionsRegionOutput {
+	return i.ToGetRegionsRegionOutputWithContext(context.Background())
+}
+
+func (i GetRegionsRegionArgs) ToGetRegionsRegionOutputWithContext(ctx context.Context) GetRegionsRegionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionOutput)
+}
+
+// GetRegionsRegionArrayInput is an input type that accepts GetRegionsRegionArray and GetRegionsRegionArrayOutput values.
+// You can construct a concrete instance of `GetRegionsRegionArrayInput` via:
+//
+//          GetRegionsRegionArray{ GetRegionsRegionArgs{...} }
+type GetRegionsRegionArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionsRegionArrayOutput() GetRegionsRegionArrayOutput
+	ToGetRegionsRegionArrayOutputWithContext(context.Context) GetRegionsRegionArrayOutput
+}
+
+type GetRegionsRegionArray []GetRegionsRegionInput
+
+func (GetRegionsRegionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionsRegion)(nil)).Elem()
+}
+
+func (i GetRegionsRegionArray) ToGetRegionsRegionArrayOutput() GetRegionsRegionArrayOutput {
+	return i.ToGetRegionsRegionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionsRegionArray) ToGetRegionsRegionArrayOutputWithContext(ctx context.Context) GetRegionsRegionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionArrayOutput)
+}
+
+type GetRegionsRegionOutput struct{ *pulumi.OutputState }
+
+func (GetRegionsRegionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsRegion)(nil)).Elem()
+}
+
+func (o GetRegionsRegionOutput) ToGetRegionsRegionOutput() GetRegionsRegionOutput {
+	return o
+}
+
+func (o GetRegionsRegionOutput) ToGetRegionsRegionOutputWithContext(ctx context.Context) GetRegionsRegionOutput {
+	return o
+}
+
+// The name of the region.
+func (o GetRegionsRegionOutput) LocalName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionsRegion) string { return v.LocalName }).(pulumi.StringOutput)
+}
+
+// The endpoint of the region.
+func (o GetRegionsRegionOutput) RegionEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionsRegion) string { return v.RegionEndpoint }).(pulumi.StringOutput)
+}
+
+// The ID of the region.
+func (o GetRegionsRegionOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionsRegion) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+type GetRegionsRegionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionsRegionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionsRegion)(nil)).Elem()
+}
+
+func (o GetRegionsRegionArrayOutput) ToGetRegionsRegionArrayOutput() GetRegionsRegionArrayOutput {
+	return o
+}
+
+func (o GetRegionsRegionArrayOutput) ToGetRegionsRegionArrayOutputWithContext(ctx context.Context) GetRegionsRegionArrayOutput {
+	return o
+}
+
+func (o GetRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetRegionsRegionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionsRegion {
+		return vs[0].([]GetRegionsRegion)[vs[1].(int)]
+	}).(GetRegionsRegionOutput)
+}
+
 type GetStackGroupsGroup struct {
 	// The name of the RAM administrator role assumed by ROS.
 	AdministrationRoleName string `pulumi:"administrationRoleName"`
@@ -912,6 +1133,298 @@ func (o GetStackGroupsGroupParameterArrayOutput) Index(i pulumi.IntInput) GetSta
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStackGroupsGroupParameter {
 		return vs[0].([]GetStackGroupsGroupParameter)[vs[1].(int)]
 	}).(GetStackGroupsGroupParameterOutput)
+}
+
+type GetStackInstancesInstance struct {
+	// The ID of the Stack Instance. The value formats as `<stack_group_name>:<stack_instance_account_id>:<stack_instance_region_id>`.
+	Id string `pulumi:"id"`
+	// ParameterOverrides.
+	ParameterOverrides []GetStackInstancesInstanceParameterOverride `pulumi:"parameterOverrides"`
+	// The ID of the stack group.
+	StackGroupId string `pulumi:"stackGroupId"`
+	// The name of the stack group.
+	StackGroupName string `pulumi:"stackGroupName"`
+	// The ID of the stack corresponding to the stack instance.
+	StackId string `pulumi:"stackId"`
+	// The account to which the stack instance belongs.
+	StackInstanceAccountId string `pulumi:"stackInstanceAccountId"`
+	// The region of the stack instance.
+	StackInstanceRegionId string `pulumi:"stackInstanceRegionId"`
+	// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
+	// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
+	// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
+	// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
+	// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
+	// * The create or update operation is not complete.
+	Status string `pulumi:"status"`
+	// The reason why the stack is in its current state.
+	StatusReason string `pulumi:"statusReason"`
+}
+
+// GetStackInstancesInstanceInput is an input type that accepts GetStackInstancesInstanceArgs and GetStackInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetStackInstancesInstanceInput` via:
+//
+//          GetStackInstancesInstanceArgs{...}
+type GetStackInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetStackInstancesInstanceOutput() GetStackInstancesInstanceOutput
+	ToGetStackInstancesInstanceOutputWithContext(context.Context) GetStackInstancesInstanceOutput
+}
+
+type GetStackInstancesInstanceArgs struct {
+	// The ID of the Stack Instance. The value formats as `<stack_group_name>:<stack_instance_account_id>:<stack_instance_region_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// ParameterOverrides.
+	ParameterOverrides GetStackInstancesInstanceParameterOverrideArrayInput `pulumi:"parameterOverrides"`
+	// The ID of the stack group.
+	StackGroupId pulumi.StringInput `pulumi:"stackGroupId"`
+	// The name of the stack group.
+	StackGroupName pulumi.StringInput `pulumi:"stackGroupName"`
+	// The ID of the stack corresponding to the stack instance.
+	StackId pulumi.StringInput `pulumi:"stackId"`
+	// The account to which the stack instance belongs.
+	StackInstanceAccountId pulumi.StringInput `pulumi:"stackInstanceAccountId"`
+	// The region of the stack instance.
+	StackInstanceRegionId pulumi.StringInput `pulumi:"stackInstanceRegionId"`
+	// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
+	// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
+	// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
+	// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
+	// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
+	// * The create or update operation is not complete.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The reason why the stack is in its current state.
+	StatusReason pulumi.StringInput `pulumi:"statusReason"`
+}
+
+func (GetStackInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStackInstancesInstance)(nil)).Elem()
+}
+
+func (i GetStackInstancesInstanceArgs) ToGetStackInstancesInstanceOutput() GetStackInstancesInstanceOutput {
+	return i.ToGetStackInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetStackInstancesInstanceArgs) ToGetStackInstancesInstanceOutputWithContext(ctx context.Context) GetStackInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStackInstancesInstanceOutput)
+}
+
+// GetStackInstancesInstanceArrayInput is an input type that accepts GetStackInstancesInstanceArray and GetStackInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetStackInstancesInstanceArrayInput` via:
+//
+//          GetStackInstancesInstanceArray{ GetStackInstancesInstanceArgs{...} }
+type GetStackInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetStackInstancesInstanceArrayOutput() GetStackInstancesInstanceArrayOutput
+	ToGetStackInstancesInstanceArrayOutputWithContext(context.Context) GetStackInstancesInstanceArrayOutput
+}
+
+type GetStackInstancesInstanceArray []GetStackInstancesInstanceInput
+
+func (GetStackInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStackInstancesInstance)(nil)).Elem()
+}
+
+func (i GetStackInstancesInstanceArray) ToGetStackInstancesInstanceArrayOutput() GetStackInstancesInstanceArrayOutput {
+	return i.ToGetStackInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetStackInstancesInstanceArray) ToGetStackInstancesInstanceArrayOutputWithContext(ctx context.Context) GetStackInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStackInstancesInstanceArrayOutput)
+}
+
+type GetStackInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetStackInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStackInstancesInstance)(nil)).Elem()
+}
+
+func (o GetStackInstancesInstanceOutput) ToGetStackInstancesInstanceOutput() GetStackInstancesInstanceOutput {
+	return o
+}
+
+func (o GetStackInstancesInstanceOutput) ToGetStackInstancesInstanceOutputWithContext(ctx context.Context) GetStackInstancesInstanceOutput {
+	return o
+}
+
+// The ID of the Stack Instance. The value formats as `<stack_group_name>:<stack_instance_account_id>:<stack_instance_region_id>`.
+func (o GetStackInstancesInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// ParameterOverrides.
+func (o GetStackInstancesInstanceOutput) ParameterOverrides() GetStackInstancesInstanceParameterOverrideArrayOutput {
+	return o.ApplyT(func(v GetStackInstancesInstance) []GetStackInstancesInstanceParameterOverride {
+		return v.ParameterOverrides
+	}).(GetStackInstancesInstanceParameterOverrideArrayOutput)
+}
+
+// The ID of the stack group.
+func (o GetStackInstancesInstanceOutput) StackGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackInstancesInstance) string { return v.StackGroupId }).(pulumi.StringOutput)
+}
+
+// The name of the stack group.
+func (o GetStackInstancesInstanceOutput) StackGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackInstancesInstance) string { return v.StackGroupName }).(pulumi.StringOutput)
+}
+
+// The ID of the stack corresponding to the stack instance.
+func (o GetStackInstancesInstanceOutput) StackId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackInstancesInstance) string { return v.StackId }).(pulumi.StringOutput)
+}
+
+// The account to which the stack instance belongs.
+func (o GetStackInstancesInstanceOutput) StackInstanceAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackInstancesInstance) string { return v.StackInstanceAccountId }).(pulumi.StringOutput)
+}
+
+// The region of the stack instance.
+func (o GetStackInstancesInstanceOutput) StackInstanceRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackInstancesInstance) string { return v.StackInstanceRegionId }).(pulumi.StringOutput)
+}
+
+// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
+// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
+// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
+// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
+// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
+// * The create or update operation is not complete.
+func (o GetStackInstancesInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The reason why the stack is in its current state.
+func (o GetStackInstancesInstanceOutput) StatusReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackInstancesInstance) string { return v.StatusReason }).(pulumi.StringOutput)
+}
+
+type GetStackInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStackInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStackInstancesInstance)(nil)).Elem()
+}
+
+func (o GetStackInstancesInstanceArrayOutput) ToGetStackInstancesInstanceArrayOutput() GetStackInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetStackInstancesInstanceArrayOutput) ToGetStackInstancesInstanceArrayOutputWithContext(ctx context.Context) GetStackInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetStackInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetStackInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStackInstancesInstance {
+		return vs[0].([]GetStackInstancesInstance)[vs[1].(int)]
+	}).(GetStackInstancesInstanceOutput)
+}
+
+type GetStackInstancesInstanceParameterOverride struct {
+	// The key of override parameter.
+	ParameterKey string `pulumi:"parameterKey"`
+	// The value of override parameter.
+	ParameterValue string `pulumi:"parameterValue"`
+}
+
+// GetStackInstancesInstanceParameterOverrideInput is an input type that accepts GetStackInstancesInstanceParameterOverrideArgs and GetStackInstancesInstanceParameterOverrideOutput values.
+// You can construct a concrete instance of `GetStackInstancesInstanceParameterOverrideInput` via:
+//
+//          GetStackInstancesInstanceParameterOverrideArgs{...}
+type GetStackInstancesInstanceParameterOverrideInput interface {
+	pulumi.Input
+
+	ToGetStackInstancesInstanceParameterOverrideOutput() GetStackInstancesInstanceParameterOverrideOutput
+	ToGetStackInstancesInstanceParameterOverrideOutputWithContext(context.Context) GetStackInstancesInstanceParameterOverrideOutput
+}
+
+type GetStackInstancesInstanceParameterOverrideArgs struct {
+	// The key of override parameter.
+	ParameterKey pulumi.StringInput `pulumi:"parameterKey"`
+	// The value of override parameter.
+	ParameterValue pulumi.StringInput `pulumi:"parameterValue"`
+}
+
+func (GetStackInstancesInstanceParameterOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStackInstancesInstanceParameterOverride)(nil)).Elem()
+}
+
+func (i GetStackInstancesInstanceParameterOverrideArgs) ToGetStackInstancesInstanceParameterOverrideOutput() GetStackInstancesInstanceParameterOverrideOutput {
+	return i.ToGetStackInstancesInstanceParameterOverrideOutputWithContext(context.Background())
+}
+
+func (i GetStackInstancesInstanceParameterOverrideArgs) ToGetStackInstancesInstanceParameterOverrideOutputWithContext(ctx context.Context) GetStackInstancesInstanceParameterOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStackInstancesInstanceParameterOverrideOutput)
+}
+
+// GetStackInstancesInstanceParameterOverrideArrayInput is an input type that accepts GetStackInstancesInstanceParameterOverrideArray and GetStackInstancesInstanceParameterOverrideArrayOutput values.
+// You can construct a concrete instance of `GetStackInstancesInstanceParameterOverrideArrayInput` via:
+//
+//          GetStackInstancesInstanceParameterOverrideArray{ GetStackInstancesInstanceParameterOverrideArgs{...} }
+type GetStackInstancesInstanceParameterOverrideArrayInput interface {
+	pulumi.Input
+
+	ToGetStackInstancesInstanceParameterOverrideArrayOutput() GetStackInstancesInstanceParameterOverrideArrayOutput
+	ToGetStackInstancesInstanceParameterOverrideArrayOutputWithContext(context.Context) GetStackInstancesInstanceParameterOverrideArrayOutput
+}
+
+type GetStackInstancesInstanceParameterOverrideArray []GetStackInstancesInstanceParameterOverrideInput
+
+func (GetStackInstancesInstanceParameterOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStackInstancesInstanceParameterOverride)(nil)).Elem()
+}
+
+func (i GetStackInstancesInstanceParameterOverrideArray) ToGetStackInstancesInstanceParameterOverrideArrayOutput() GetStackInstancesInstanceParameterOverrideArrayOutput {
+	return i.ToGetStackInstancesInstanceParameterOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i GetStackInstancesInstanceParameterOverrideArray) ToGetStackInstancesInstanceParameterOverrideArrayOutputWithContext(ctx context.Context) GetStackInstancesInstanceParameterOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStackInstancesInstanceParameterOverrideArrayOutput)
+}
+
+type GetStackInstancesInstanceParameterOverrideOutput struct{ *pulumi.OutputState }
+
+func (GetStackInstancesInstanceParameterOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStackInstancesInstanceParameterOverride)(nil)).Elem()
+}
+
+func (o GetStackInstancesInstanceParameterOverrideOutput) ToGetStackInstancesInstanceParameterOverrideOutput() GetStackInstancesInstanceParameterOverrideOutput {
+	return o
+}
+
+func (o GetStackInstancesInstanceParameterOverrideOutput) ToGetStackInstancesInstanceParameterOverrideOutputWithContext(ctx context.Context) GetStackInstancesInstanceParameterOverrideOutput {
+	return o
+}
+
+// The key of override parameter.
+func (o GetStackInstancesInstanceParameterOverrideOutput) ParameterKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackInstancesInstanceParameterOverride) string { return v.ParameterKey }).(pulumi.StringOutput)
+}
+
+// The value of override parameter.
+func (o GetStackInstancesInstanceParameterOverrideOutput) ParameterValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStackInstancesInstanceParameterOverride) string { return v.ParameterValue }).(pulumi.StringOutput)
+}
+
+type GetStackInstancesInstanceParameterOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStackInstancesInstanceParameterOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStackInstancesInstanceParameterOverride)(nil)).Elem()
+}
+
+func (o GetStackInstancesInstanceParameterOverrideArrayOutput) ToGetStackInstancesInstanceParameterOverrideArrayOutput() GetStackInstancesInstanceParameterOverrideArrayOutput {
+	return o
+}
+
+func (o GetStackInstancesInstanceParameterOverrideArrayOutput) ToGetStackInstancesInstanceParameterOverrideArrayOutputWithContext(ctx context.Context) GetStackInstancesInstanceParameterOverrideArrayOutput {
+	return o
+}
+
+func (o GetStackInstancesInstanceParameterOverrideArrayOutput) Index(i pulumi.IntInput) GetStackInstancesInstanceParameterOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStackInstancesInstanceParameterOverride {
+		return vs[0].([]GetStackInstancesInstanceParameterOverride)[vs[1].(int)]
+	}).(GetStackInstancesInstanceParameterOverrideOutput)
 }
 
 type GetStacksStack struct {
@@ -1462,16 +1975,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ChangeSetParameterArrayInput)(nil)).Elem(), ChangeSetParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StackGroupParameterInput)(nil)).Elem(), StackGroupParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StackGroupParameterArrayInput)(nil)).Elem(), StackGroupParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StackInstanceParameterOverrideInput)(nil)).Elem(), StackInstanceParameterOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StackInstanceParameterOverrideArrayInput)(nil)).Elem(), StackInstanceParameterOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StackParameterInput)(nil)).Elem(), StackParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StackParameterArrayInput)(nil)).Elem(), StackParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChangeSetsSetInput)(nil)).Elem(), GetChangeSetsSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChangeSetsSetArrayInput)(nil)).Elem(), GetChangeSetsSetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChangeSetsSetParameterInput)(nil)).Elem(), GetChangeSetsSetParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChangeSetsSetParameterArrayInput)(nil)).Elem(), GetChangeSetsSetParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionInput)(nil)).Elem(), GetRegionsRegionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionArrayInput)(nil)).Elem(), GetRegionsRegionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStackGroupsGroupInput)(nil)).Elem(), GetStackGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStackGroupsGroupArrayInput)(nil)).Elem(), GetStackGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStackGroupsGroupParameterInput)(nil)).Elem(), GetStackGroupsGroupParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStackGroupsGroupParameterArrayInput)(nil)).Elem(), GetStackGroupsGroupParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStackInstancesInstanceInput)(nil)).Elem(), GetStackInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStackInstancesInstanceArrayInput)(nil)).Elem(), GetStackInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStackInstancesInstanceParameterOverrideInput)(nil)).Elem(), GetStackInstancesInstanceParameterOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStackInstancesInstanceParameterOverrideArrayInput)(nil)).Elem(), GetStackInstancesInstanceParameterOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStacksStackInput)(nil)).Elem(), GetStacksStackArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStacksStackArrayInput)(nil)).Elem(), GetStacksStackArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStacksStackParameterInput)(nil)).Elem(), GetStacksStackParameterArgs{})
@@ -1482,16 +2003,24 @@ func init() {
 	pulumi.RegisterOutputType(ChangeSetParameterArrayOutput{})
 	pulumi.RegisterOutputType(StackGroupParameterOutput{})
 	pulumi.RegisterOutputType(StackGroupParameterArrayOutput{})
+	pulumi.RegisterOutputType(StackInstanceParameterOverrideOutput{})
+	pulumi.RegisterOutputType(StackInstanceParameterOverrideArrayOutput{})
 	pulumi.RegisterOutputType(StackParameterOutput{})
 	pulumi.RegisterOutputType(StackParameterArrayOutput{})
 	pulumi.RegisterOutputType(GetChangeSetsSetOutput{})
 	pulumi.RegisterOutputType(GetChangeSetsSetArrayOutput{})
 	pulumi.RegisterOutputType(GetChangeSetsSetParameterOutput{})
 	pulumi.RegisterOutputType(GetChangeSetsSetParameterArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionsRegionOutput{})
+	pulumi.RegisterOutputType(GetRegionsRegionArrayOutput{})
 	pulumi.RegisterOutputType(GetStackGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetStackGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetStackGroupsGroupParameterOutput{})
 	pulumi.RegisterOutputType(GetStackGroupsGroupParameterArrayOutput{})
+	pulumi.RegisterOutputType(GetStackInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetStackInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetStackInstancesInstanceParameterOverrideOutput{})
+	pulumi.RegisterOutputType(GetStackInstancesInstanceParameterOverrideArrayOutput{})
 	pulumi.RegisterOutputType(GetStacksStackOutput{})
 	pulumi.RegisterOutputType(GetStacksStackArrayOutput{})
 	pulumi.RegisterOutputType(GetStacksStackParameterOutput{})

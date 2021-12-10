@@ -12,11 +12,15 @@ from . import outputs
 __all__ = [
     'ChangeSetParameter',
     'StackGroupParameter',
+    'StackInstanceParameterOverride',
     'StackParameter',
     'GetChangeSetsSetResult',
     'GetChangeSetsSetParameterResult',
+    'GetRegionsRegionResult',
     'GetStackGroupsGroupResult',
     'GetStackGroupsGroupParameterResult',
+    'GetStackInstancesInstanceResult',
+    'GetStackInstancesInstanceParameterOverrideResult',
     'GetStacksStackResult',
     'GetStacksStackParameterResult',
     'GetTemplatesTemplateResult',
@@ -116,6 +120,56 @@ class StackGroupParameter(dict):
     def parameter_value(self) -> Optional[str]:
         """
         The parameter value.
+        """
+        return pulumi.get(self, "parameter_value")
+
+
+@pulumi.output_type
+class StackInstanceParameterOverride(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "parameterKey":
+            suggest = "parameter_key"
+        elif key == "parameterValue":
+            suggest = "parameter_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StackInstanceParameterOverride. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StackInstanceParameterOverride.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StackInstanceParameterOverride.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 parameter_key: Optional[str] = None,
+                 parameter_value: Optional[str] = None):
+        """
+        :param str parameter_key: The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+        :param str parameter_value: The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+        """
+        if parameter_key is not None:
+            pulumi.set(__self__, "parameter_key", parameter_key)
+        if parameter_value is not None:
+            pulumi.set(__self__, "parameter_value", parameter_value)
+
+    @property
+    @pulumi.getter(name="parameterKey")
+    def parameter_key(self) -> Optional[str]:
+        """
+        The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+        """
+        return pulumi.get(self, "parameter_key")
+
+    @property
+    @pulumi.getter(name="parameterValue")
+    def parameter_value(self) -> Optional[str]:
+        """
+        The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
         """
         return pulumi.get(self, "parameter_value")
 
@@ -349,6 +403,46 @@ class GetChangeSetsSetParameterResult(dict):
 
 
 @pulumi.output_type
+class GetRegionsRegionResult(dict):
+    def __init__(__self__, *,
+                 local_name: str,
+                 region_endpoint: str,
+                 region_id: str):
+        """
+        :param str local_name: The name of the region.
+        :param str region_endpoint: The endpoint of the region.
+        :param str region_id: The ID of the region.
+        """
+        pulumi.set(__self__, "local_name", local_name)
+        pulumi.set(__self__, "region_endpoint", region_endpoint)
+        pulumi.set(__self__, "region_id", region_id)
+
+    @property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> str:
+        """
+        The name of the region.
+        """
+        return pulumi.get(self, "local_name")
+
+    @property
+    @pulumi.getter(name="regionEndpoint")
+    def region_endpoint(self) -> str:
+        """
+        The endpoint of the region.
+        """
+        return pulumi.get(self, "region_endpoint")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        """
+        The ID of the region.
+        """
+        return pulumi.get(self, "region_id")
+
+
+@pulumi.output_type
 class GetStackGroupsGroupResult(dict):
     def __init__(__self__, *,
                  administration_role_name: str,
@@ -479,6 +573,151 @@ class GetStackGroupsGroupParameterResult(dict):
     def parameter_value(self) -> str:
         """
         The parameter value.
+        """
+        return pulumi.get(self, "parameter_value")
+
+
+@pulumi.output_type
+class GetStackInstancesInstanceResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 parameter_overrides: Sequence['outputs.GetStackInstancesInstanceParameterOverrideResult'],
+                 stack_group_id: str,
+                 stack_group_name: str,
+                 stack_id: str,
+                 stack_instance_account_id: str,
+                 stack_instance_region_id: str,
+                 status: str,
+                 status_reason: str):
+        """
+        :param str id: The ID of the Stack Instance. The value formats as `<stack_group_name>:<stack_instance_account_id>:<stack_instance_region_id>`.
+        :param Sequence['GetStackInstancesInstanceParameterOverrideArgs'] parameter_overrides: ParameterOverrides.
+        :param str stack_group_id: The ID of the stack group.
+        :param str stack_group_name: The name of the stack group.
+        :param str stack_id: The ID of the stack corresponding to the stack instance.
+        :param str stack_instance_account_id: The account to which the stack instance belongs.
+        :param str stack_instance_region_id: The region of the stack instance.
+        :param str status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
+               * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
+               * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
+               * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
+               * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
+               * The create or update operation is not complete.
+        :param str status_reason: The reason why the stack is in its current state.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "parameter_overrides", parameter_overrides)
+        pulumi.set(__self__, "stack_group_id", stack_group_id)
+        pulumi.set(__self__, "stack_group_name", stack_group_name)
+        pulumi.set(__self__, "stack_id", stack_id)
+        pulumi.set(__self__, "stack_instance_account_id", stack_instance_account_id)
+        pulumi.set(__self__, "stack_instance_region_id", stack_instance_region_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "status_reason", status_reason)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Stack Instance. The value formats as `<stack_group_name>:<stack_instance_account_id>:<stack_instance_region_id>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="parameterOverrides")
+    def parameter_overrides(self) -> Sequence['outputs.GetStackInstancesInstanceParameterOverrideResult']:
+        """
+        ParameterOverrides.
+        """
+        return pulumi.get(self, "parameter_overrides")
+
+    @property
+    @pulumi.getter(name="stackGroupId")
+    def stack_group_id(self) -> str:
+        """
+        The ID of the stack group.
+        """
+        return pulumi.get(self, "stack_group_id")
+
+    @property
+    @pulumi.getter(name="stackGroupName")
+    def stack_group_name(self) -> str:
+        """
+        The name of the stack group.
+        """
+        return pulumi.get(self, "stack_group_name")
+
+    @property
+    @pulumi.getter(name="stackId")
+    def stack_id(self) -> str:
+        """
+        The ID of the stack corresponding to the stack instance.
+        """
+        return pulumi.get(self, "stack_id")
+
+    @property
+    @pulumi.getter(name="stackInstanceAccountId")
+    def stack_instance_account_id(self) -> str:
+        """
+        The account to which the stack instance belongs.
+        """
+        return pulumi.get(self, "stack_instance_account_id")
+
+    @property
+    @pulumi.getter(name="stackInstanceRegionId")
+    def stack_instance_region_id(self) -> str:
+        """
+        The region of the stack instance.
+        """
+        return pulumi.get(self, "stack_instance_region_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
+        * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
+        * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
+        * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
+        * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
+        * The create or update operation is not complete.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="statusReason")
+    def status_reason(self) -> str:
+        """
+        The reason why the stack is in its current state.
+        """
+        return pulumi.get(self, "status_reason")
+
+
+@pulumi.output_type
+class GetStackInstancesInstanceParameterOverrideResult(dict):
+    def __init__(__self__, *,
+                 parameter_key: str,
+                 parameter_value: str):
+        """
+        :param str parameter_key: The key of override parameter.
+        :param str parameter_value: The value of override parameter.
+        """
+        pulumi.set(__self__, "parameter_key", parameter_key)
+        pulumi.set(__self__, "parameter_value", parameter_value)
+
+    @property
+    @pulumi.getter(name="parameterKey")
+    def parameter_key(self) -> str:
+        """
+        The key of override parameter.
+        """
+        return pulumi.get(self, "parameter_key")
+
+    @property
+    @pulumi.getter(name="parameterValue")
+    def parameter_value(self) -> str:
+        """
+        The value of override parameter.
         """
         return pulumi.get(self, "parameter_value")
 

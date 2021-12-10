@@ -364,7 +364,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<Outputs.KubernetesTaint>> Taints { get; private set; } = null!;
 
         /// <summary>
-        /// When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        /// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         /// </summary>
         [Output("timezone")]
         public Output<string?> Timezone { get; private set; } = null!;
@@ -896,7 +896,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        /// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
@@ -1430,7 +1430,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        /// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }

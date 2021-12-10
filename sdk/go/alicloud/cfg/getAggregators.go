@@ -61,21 +61,24 @@ type GetAggregatorsArgs struct {
 	// A regex string to filter results by aggregator name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
 	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getAggregators.
 type GetAggregatorsResult struct {
+	// A list of config aggregators. Each element contains the following attributes:
 	Aggregators   []GetAggregatorsAggregator `pulumi:"aggregators"`
 	EnableDetails *bool                      `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Aggregator names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *string  `pulumi:"status"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
 }
 
 func GetAggregatorsOutput(ctx *pulumi.Context, args GetAggregatorsOutputArgs, opts ...pulumi.InvokeOption) GetAggregatorsResultOutput {
@@ -96,7 +99,7 @@ type GetAggregatorsOutputArgs struct {
 	// A regex string to filter results by aggregator name.
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -119,6 +122,7 @@ func (o GetAggregatorsResultOutput) ToGetAggregatorsResultOutputWithContext(ctx 
 	return o
 }
 
+// A list of config aggregators. Each element contains the following attributes:
 func (o GetAggregatorsResultOutput) Aggregators() GetAggregatorsAggregatorArrayOutput {
 	return o.ApplyT(func(v GetAggregatorsResult) []GetAggregatorsAggregator { return v.Aggregators }).(GetAggregatorsAggregatorArrayOutput)
 }
@@ -140,6 +144,7 @@ func (o GetAggregatorsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAggregatorsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Aggregator names.
 func (o GetAggregatorsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAggregatorsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -148,6 +153,7 @@ func (o GetAggregatorsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAggregatorsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the resource.
 func (o GetAggregatorsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAggregatorsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

@@ -2339,6 +2339,121 @@ func (o OpenApiImageCacheImageRegistryCredentialArrayOutput) Index(i pulumi.IntI
 	}).(OpenApiImageCacheImageRegistryCredentialOutput)
 }
 
+type VirtualNodeTaint struct {
+	// The effect of the taint. Valid values: `NoSchedule`, `NoExecute` and `PreferNoSchedule`.
+	Effect *string `pulumi:"effect"`
+	// The key of the taint.
+	Key *string `pulumi:"key"`
+	// The value of the taint.
+	Value *string `pulumi:"value"`
+}
+
+// VirtualNodeTaintInput is an input type that accepts VirtualNodeTaintArgs and VirtualNodeTaintOutput values.
+// You can construct a concrete instance of `VirtualNodeTaintInput` via:
+//
+//          VirtualNodeTaintArgs{...}
+type VirtualNodeTaintInput interface {
+	pulumi.Input
+
+	ToVirtualNodeTaintOutput() VirtualNodeTaintOutput
+	ToVirtualNodeTaintOutputWithContext(context.Context) VirtualNodeTaintOutput
+}
+
+type VirtualNodeTaintArgs struct {
+	// The effect of the taint. Valid values: `NoSchedule`, `NoExecute` and `PreferNoSchedule`.
+	Effect pulumi.StringPtrInput `pulumi:"effect"`
+	// The key of the taint.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The value of the taint.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (VirtualNodeTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNodeTaint)(nil)).Elem()
+}
+
+func (i VirtualNodeTaintArgs) ToVirtualNodeTaintOutput() VirtualNodeTaintOutput {
+	return i.ToVirtualNodeTaintOutputWithContext(context.Background())
+}
+
+func (i VirtualNodeTaintArgs) ToVirtualNodeTaintOutputWithContext(ctx context.Context) VirtualNodeTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeTaintOutput)
+}
+
+// VirtualNodeTaintArrayInput is an input type that accepts VirtualNodeTaintArray and VirtualNodeTaintArrayOutput values.
+// You can construct a concrete instance of `VirtualNodeTaintArrayInput` via:
+//
+//          VirtualNodeTaintArray{ VirtualNodeTaintArgs{...} }
+type VirtualNodeTaintArrayInput interface {
+	pulumi.Input
+
+	ToVirtualNodeTaintArrayOutput() VirtualNodeTaintArrayOutput
+	ToVirtualNodeTaintArrayOutputWithContext(context.Context) VirtualNodeTaintArrayOutput
+}
+
+type VirtualNodeTaintArray []VirtualNodeTaintInput
+
+func (VirtualNodeTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualNodeTaint)(nil)).Elem()
+}
+
+func (i VirtualNodeTaintArray) ToVirtualNodeTaintArrayOutput() VirtualNodeTaintArrayOutput {
+	return i.ToVirtualNodeTaintArrayOutputWithContext(context.Background())
+}
+
+func (i VirtualNodeTaintArray) ToVirtualNodeTaintArrayOutputWithContext(ctx context.Context) VirtualNodeTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeTaintArrayOutput)
+}
+
+type VirtualNodeTaintOutput struct{ *pulumi.OutputState }
+
+func (VirtualNodeTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNodeTaint)(nil)).Elem()
+}
+
+func (o VirtualNodeTaintOutput) ToVirtualNodeTaintOutput() VirtualNodeTaintOutput {
+	return o
+}
+
+func (o VirtualNodeTaintOutput) ToVirtualNodeTaintOutputWithContext(ctx context.Context) VirtualNodeTaintOutput {
+	return o
+}
+
+// The effect of the taint. Valid values: `NoSchedule`, `NoExecute` and `PreferNoSchedule`.
+func (o VirtualNodeTaintOutput) Effect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNodeTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
+}
+
+// The key of the taint.
+func (o VirtualNodeTaintOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNodeTaint) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The value of the taint.
+func (o VirtualNodeTaintOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNodeTaint) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type VirtualNodeTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualNodeTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualNodeTaint)(nil)).Elem()
+}
+
+func (o VirtualNodeTaintArrayOutput) ToVirtualNodeTaintArrayOutput() VirtualNodeTaintArrayOutput {
+	return o
+}
+
+func (o VirtualNodeTaintArrayOutput) ToVirtualNodeTaintArrayOutputWithContext(ctx context.Context) VirtualNodeTaintArrayOutput {
+	return o
+}
+
+func (o VirtualNodeTaintArrayOutput) Index(i pulumi.IntInput) VirtualNodeTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualNodeTaint {
+		return vs[0].([]VirtualNodeTaint)[vs[1].(int)]
+	}).(VirtualNodeTaintOutput)
+}
+
 type GetContainerGroupsGroup struct {
 	// The id if ContainerGroup.
 	ContainerGroupId string `pulumi:"containerGroupId"`
@@ -5083,6 +5198,510 @@ func (o GetImageCachesCachEventArrayOutput) Index(i pulumi.IntInput) GetImageCac
 	}).(GetImageCachesCachEventOutput)
 }
 
+type GetVirtualNodesNode struct {
+	// The Number of CPU.
+	Cpu int `pulumi:"cpu"`
+	// The creation time of the virtual node.
+	CreateTime string `pulumi:"createTime"`
+	// The ENI instance ID.
+	EniInstanceId string `pulumi:"eniInstanceId"`
+	// The event list.
+	Events []GetVirtualNodesNodeEvent `pulumi:"events"`
+	// The ID of the Virtual Node.
+	Id string `pulumi:"id"`
+	// The IP address of a public network.
+	InternetIp string `pulumi:"internetIp"`
+	// The private IP address of the RDS instance.
+	IntranetIp string `pulumi:"intranetIp"`
+	// The memory size.
+	Memory int `pulumi:"memory"`
+	// The ram role.
+	RamRoleName string `pulumi:"ramRoleName"`
+	// The resource group ID.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The security group ID.
+	SecurityGroupId string `pulumi:"securityGroupId"`
+	// The Status of the virtual node.
+	Status string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// Of the virtual node number.
+	VirtualNodeId string `pulumi:"virtualNodeId"`
+	// The name of the virtual node.
+	VirtualNodeName string `pulumi:"virtualNodeName"`
+	VpcId           string `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId string `pulumi:"vswitchId"`
+	// The Zone.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetVirtualNodesNodeInput is an input type that accepts GetVirtualNodesNodeArgs and GetVirtualNodesNodeOutput values.
+// You can construct a concrete instance of `GetVirtualNodesNodeInput` via:
+//
+//          GetVirtualNodesNodeArgs{...}
+type GetVirtualNodesNodeInput interface {
+	pulumi.Input
+
+	ToGetVirtualNodesNodeOutput() GetVirtualNodesNodeOutput
+	ToGetVirtualNodesNodeOutputWithContext(context.Context) GetVirtualNodesNodeOutput
+}
+
+type GetVirtualNodesNodeArgs struct {
+	// The Number of CPU.
+	Cpu pulumi.IntInput `pulumi:"cpu"`
+	// The creation time of the virtual node.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ENI instance ID.
+	EniInstanceId pulumi.StringInput `pulumi:"eniInstanceId"`
+	// The event list.
+	Events GetVirtualNodesNodeEventArrayInput `pulumi:"events"`
+	// The ID of the Virtual Node.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The IP address of a public network.
+	InternetIp pulumi.StringInput `pulumi:"internetIp"`
+	// The private IP address of the RDS instance.
+	IntranetIp pulumi.StringInput `pulumi:"intranetIp"`
+	// The memory size.
+	Memory pulumi.IntInput `pulumi:"memory"`
+	// The ram role.
+	RamRoleName pulumi.StringInput `pulumi:"ramRoleName"`
+	// The resource group ID.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The security group ID.
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	// The Status of the virtual node.
+	Status pulumi.StringInput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// Of the virtual node number.
+	VirtualNodeId pulumi.StringInput `pulumi:"virtualNodeId"`
+	// The name of the virtual node.
+	VirtualNodeName pulumi.StringInput `pulumi:"virtualNodeName"`
+	VpcId           pulumi.StringInput `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// The Zone.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetVirtualNodesNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVirtualNodesNode)(nil)).Elem()
+}
+
+func (i GetVirtualNodesNodeArgs) ToGetVirtualNodesNodeOutput() GetVirtualNodesNodeOutput {
+	return i.ToGetVirtualNodesNodeOutputWithContext(context.Background())
+}
+
+func (i GetVirtualNodesNodeArgs) ToGetVirtualNodesNodeOutputWithContext(ctx context.Context) GetVirtualNodesNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualNodesNodeOutput)
+}
+
+// GetVirtualNodesNodeArrayInput is an input type that accepts GetVirtualNodesNodeArray and GetVirtualNodesNodeArrayOutput values.
+// You can construct a concrete instance of `GetVirtualNodesNodeArrayInput` via:
+//
+//          GetVirtualNodesNodeArray{ GetVirtualNodesNodeArgs{...} }
+type GetVirtualNodesNodeArrayInput interface {
+	pulumi.Input
+
+	ToGetVirtualNodesNodeArrayOutput() GetVirtualNodesNodeArrayOutput
+	ToGetVirtualNodesNodeArrayOutputWithContext(context.Context) GetVirtualNodesNodeArrayOutput
+}
+
+type GetVirtualNodesNodeArray []GetVirtualNodesNodeInput
+
+func (GetVirtualNodesNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVirtualNodesNode)(nil)).Elem()
+}
+
+func (i GetVirtualNodesNodeArray) ToGetVirtualNodesNodeArrayOutput() GetVirtualNodesNodeArrayOutput {
+	return i.ToGetVirtualNodesNodeArrayOutputWithContext(context.Background())
+}
+
+func (i GetVirtualNodesNodeArray) ToGetVirtualNodesNodeArrayOutputWithContext(ctx context.Context) GetVirtualNodesNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualNodesNodeArrayOutput)
+}
+
+type GetVirtualNodesNodeOutput struct{ *pulumi.OutputState }
+
+func (GetVirtualNodesNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVirtualNodesNode)(nil)).Elem()
+}
+
+func (o GetVirtualNodesNodeOutput) ToGetVirtualNodesNodeOutput() GetVirtualNodesNodeOutput {
+	return o
+}
+
+func (o GetVirtualNodesNodeOutput) ToGetVirtualNodesNodeOutputWithContext(ctx context.Context) GetVirtualNodesNodeOutput {
+	return o
+}
+
+// The Number of CPU.
+func (o GetVirtualNodesNodeOutput) Cpu() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVirtualNodesNode) int { return v.Cpu }).(pulumi.IntOutput)
+}
+
+// The creation time of the virtual node.
+func (o GetVirtualNodesNodeOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualNodesNode) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ENI instance ID.
+func (o GetVirtualNodesNodeOutput) EniInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualNodesNode) string { return v.EniInstanceId }).(pulumi.StringOutput)
+}
+
+// The event list.
+func (o GetVirtualNodesNodeOutput) Events() GetVirtualNodesNodeEventArrayOutput {
+	return o.ApplyT(func(v GetVirtualNodesNode) []GetVirtualNodesNodeEvent { return v.Events }).(GetVirtualNodesNodeEventArrayOutput)
+}
+
+// The ID of the Virtual Node.
+func (o GetVirtualNodesNodeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualNodesNode) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The IP address of a public network.
+func (o GetVirtualNodesNodeOutput) InternetIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualNodesNode) string { return v.InternetIp }).(pulumi.StringOutput)
+}
+
+// The private IP address of the RDS instance.
+func (o GetVirtualNodesNodeOutput) IntranetIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualNodesNode) string { return v.IntranetIp }).(pulumi.StringOutput)
+}
+
+// The memory size.
+func (o GetVirtualNodesNodeOutput) Memory() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVirtualNodesNode) int { return v.Memory }).(pulumi.IntOutput)
+}
+
+// The ram role.
+func (o GetVirtualNodesNodeOutput) RamRoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualNodesNode) string { return v.RamRoleName }).(pulumi.StringOutput)
+}
+
+// The resource group ID.
+func (o GetVirtualNodesNodeOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualNodesNode) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The security group ID.
+func (o GetVirtualNodesNodeOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualNodesNode) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// The Status of the virtual node.
+func (o GetVirtualNodesNodeOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualNodesNode) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o GetVirtualNodesNodeOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetVirtualNodesNode) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// Of the virtual node number.
+func (o GetVirtualNodesNodeOutput) VirtualNodeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualNodesNode) string { return v.VirtualNodeId }).(pulumi.StringOutput)
+}
+
+// The name of the virtual node.
+func (o GetVirtualNodesNodeOutput) VirtualNodeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualNodesNode) string { return v.VirtualNodeName }).(pulumi.StringOutput)
+}
+
+func (o GetVirtualNodesNodeOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualNodesNode) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The vswitch id.
+func (o GetVirtualNodesNodeOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualNodesNode) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The Zone.
+func (o GetVirtualNodesNodeOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualNodesNode) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetVirtualNodesNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVirtualNodesNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVirtualNodesNode)(nil)).Elem()
+}
+
+func (o GetVirtualNodesNodeArrayOutput) ToGetVirtualNodesNodeArrayOutput() GetVirtualNodesNodeArrayOutput {
+	return o
+}
+
+func (o GetVirtualNodesNodeArrayOutput) ToGetVirtualNodesNodeArrayOutputWithContext(ctx context.Context) GetVirtualNodesNodeArrayOutput {
+	return o
+}
+
+func (o GetVirtualNodesNodeArrayOutput) Index(i pulumi.IntInput) GetVirtualNodesNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVirtualNodesNode {
+		return vs[0].([]GetVirtualNodesNode)[vs[1].(int)]
+	}).(GetVirtualNodesNodeOutput)
+}
+
+type GetVirtualNodesNodeEvent struct {
+	// The number of occurrences.
+	Count int `pulumi:"count"`
+	// The first presentation time stamp.
+	FirstTimestamp string `pulumi:"firstTimestamp"`
+	// The most recent time stamp.
+	LastTimestamp string `pulumi:"lastTimestamp"`
+	// The event of the message body.
+	Message string `pulumi:"message"`
+	// The name of the event.
+	Name string `pulumi:"name"`
+	// The causes of the incident.
+	Reason string `pulumi:"reason"`
+	// The Event type.
+	Type string `pulumi:"type"`
+}
+
+// GetVirtualNodesNodeEventInput is an input type that accepts GetVirtualNodesNodeEventArgs and GetVirtualNodesNodeEventOutput values.
+// You can construct a concrete instance of `GetVirtualNodesNodeEventInput` via:
+//
+//          GetVirtualNodesNodeEventArgs{...}
+type GetVirtualNodesNodeEventInput interface {
+	pulumi.Input
+
+	ToGetVirtualNodesNodeEventOutput() GetVirtualNodesNodeEventOutput
+	ToGetVirtualNodesNodeEventOutputWithContext(context.Context) GetVirtualNodesNodeEventOutput
+}
+
+type GetVirtualNodesNodeEventArgs struct {
+	// The number of occurrences.
+	Count pulumi.IntInput `pulumi:"count"`
+	// The first presentation time stamp.
+	FirstTimestamp pulumi.StringInput `pulumi:"firstTimestamp"`
+	// The most recent time stamp.
+	LastTimestamp pulumi.StringInput `pulumi:"lastTimestamp"`
+	// The event of the message body.
+	Message pulumi.StringInput `pulumi:"message"`
+	// The name of the event.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The causes of the incident.
+	Reason pulumi.StringInput `pulumi:"reason"`
+	// The Event type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetVirtualNodesNodeEventArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVirtualNodesNodeEvent)(nil)).Elem()
+}
+
+func (i GetVirtualNodesNodeEventArgs) ToGetVirtualNodesNodeEventOutput() GetVirtualNodesNodeEventOutput {
+	return i.ToGetVirtualNodesNodeEventOutputWithContext(context.Background())
+}
+
+func (i GetVirtualNodesNodeEventArgs) ToGetVirtualNodesNodeEventOutputWithContext(ctx context.Context) GetVirtualNodesNodeEventOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualNodesNodeEventOutput)
+}
+
+// GetVirtualNodesNodeEventArrayInput is an input type that accepts GetVirtualNodesNodeEventArray and GetVirtualNodesNodeEventArrayOutput values.
+// You can construct a concrete instance of `GetVirtualNodesNodeEventArrayInput` via:
+//
+//          GetVirtualNodesNodeEventArray{ GetVirtualNodesNodeEventArgs{...} }
+type GetVirtualNodesNodeEventArrayInput interface {
+	pulumi.Input
+
+	ToGetVirtualNodesNodeEventArrayOutput() GetVirtualNodesNodeEventArrayOutput
+	ToGetVirtualNodesNodeEventArrayOutputWithContext(context.Context) GetVirtualNodesNodeEventArrayOutput
+}
+
+type GetVirtualNodesNodeEventArray []GetVirtualNodesNodeEventInput
+
+func (GetVirtualNodesNodeEventArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVirtualNodesNodeEvent)(nil)).Elem()
+}
+
+func (i GetVirtualNodesNodeEventArray) ToGetVirtualNodesNodeEventArrayOutput() GetVirtualNodesNodeEventArrayOutput {
+	return i.ToGetVirtualNodesNodeEventArrayOutputWithContext(context.Background())
+}
+
+func (i GetVirtualNodesNodeEventArray) ToGetVirtualNodesNodeEventArrayOutputWithContext(ctx context.Context) GetVirtualNodesNodeEventArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualNodesNodeEventArrayOutput)
+}
+
+type GetVirtualNodesNodeEventOutput struct{ *pulumi.OutputState }
+
+func (GetVirtualNodesNodeEventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVirtualNodesNodeEvent)(nil)).Elem()
+}
+
+func (o GetVirtualNodesNodeEventOutput) ToGetVirtualNodesNodeEventOutput() GetVirtualNodesNodeEventOutput {
+	return o
+}
+
+func (o GetVirtualNodesNodeEventOutput) ToGetVirtualNodesNodeEventOutputWithContext(ctx context.Context) GetVirtualNodesNodeEventOutput {
+	return o
+}
+
+// The number of occurrences.
+func (o GetVirtualNodesNodeEventOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVirtualNodesNodeEvent) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// The first presentation time stamp.
+func (o GetVirtualNodesNodeEventOutput) FirstTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualNodesNodeEvent) string { return v.FirstTimestamp }).(pulumi.StringOutput)
+}
+
+// The most recent time stamp.
+func (o GetVirtualNodesNodeEventOutput) LastTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualNodesNodeEvent) string { return v.LastTimestamp }).(pulumi.StringOutput)
+}
+
+// The event of the message body.
+func (o GetVirtualNodesNodeEventOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualNodesNodeEvent) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// The name of the event.
+func (o GetVirtualNodesNodeEventOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualNodesNodeEvent) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The causes of the incident.
+func (o GetVirtualNodesNodeEventOutput) Reason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualNodesNodeEvent) string { return v.Reason }).(pulumi.StringOutput)
+}
+
+// The Event type.
+func (o GetVirtualNodesNodeEventOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualNodesNodeEvent) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetVirtualNodesNodeEventArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVirtualNodesNodeEventArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVirtualNodesNodeEvent)(nil)).Elem()
+}
+
+func (o GetVirtualNodesNodeEventArrayOutput) ToGetVirtualNodesNodeEventArrayOutput() GetVirtualNodesNodeEventArrayOutput {
+	return o
+}
+
+func (o GetVirtualNodesNodeEventArrayOutput) ToGetVirtualNodesNodeEventArrayOutputWithContext(ctx context.Context) GetVirtualNodesNodeEventArrayOutput {
+	return o
+}
+
+func (o GetVirtualNodesNodeEventArrayOutput) Index(i pulumi.IntInput) GetVirtualNodesNodeEventOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVirtualNodesNodeEvent {
+		return vs[0].([]GetVirtualNodesNodeEvent)[vs[1].(int)]
+	}).(GetVirtualNodesNodeEventOutput)
+}
+
+type GetZonesZone struct {
+	// The endpoint of the region.
+	RegionEndpoint string `pulumi:"regionEndpoint"`
+	// The list of available zone ids.
+	ZoneIds []string `pulumi:"zoneIds"`
+}
+
+// GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
+// You can construct a concrete instance of `GetZonesZoneInput` via:
+//
+//          GetZonesZoneArgs{...}
+type GetZonesZoneInput interface {
+	pulumi.Input
+
+	ToGetZonesZoneOutput() GetZonesZoneOutput
+	ToGetZonesZoneOutputWithContext(context.Context) GetZonesZoneOutput
+}
+
+type GetZonesZoneArgs struct {
+	// The endpoint of the region.
+	RegionEndpoint pulumi.StringInput `pulumi:"regionEndpoint"`
+	// The list of available zone ids.
+	ZoneIds pulumi.StringArrayInput `pulumi:"zoneIds"`
+}
+
+func (GetZonesZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
+}
+
+func (i GetZonesZoneArgs) ToGetZonesZoneOutput() GetZonesZoneOutput {
+	return i.ToGetZonesZoneOutputWithContext(context.Background())
+}
+
+func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneOutput)
+}
+
+// GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
+// You can construct a concrete instance of `GetZonesZoneArrayInput` via:
+//
+//          GetZonesZoneArray{ GetZonesZoneArgs{...} }
+type GetZonesZoneArrayInput interface {
+	pulumi.Input
+
+	ToGetZonesZoneArrayOutput() GetZonesZoneArrayOutput
+	ToGetZonesZoneArrayOutputWithContext(context.Context) GetZonesZoneArrayOutput
+}
+
+type GetZonesZoneArray []GetZonesZoneInput
+
+func (GetZonesZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
+}
+
+func (i GetZonesZoneArray) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOutput {
+	return i.ToGetZonesZoneArrayOutputWithContext(context.Background())
+}
+
+func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
+}
+
+type GetZonesZoneOutput struct{ *pulumi.OutputState }
+
+func (GetZonesZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
+}
+
+func (o GetZonesZoneOutput) ToGetZonesZoneOutput() GetZonesZoneOutput {
+	return o
+}
+
+func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
+	return o
+}
+
+// The endpoint of the region.
+func (o GetZonesZoneOutput) RegionEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesZone) string { return v.RegionEndpoint }).(pulumi.StringOutput)
+}
+
+// The list of available zone ids.
+func (o GetZonesZoneOutput) ZoneIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetZonesZone) []string { return v.ZoneIds }).(pulumi.StringArrayOutput)
+}
+
+type GetZonesZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZonesZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
+}
+
+func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZonesZone {
+		return vs[0].([]GetZonesZone)[vs[1].(int)]
+	}).(GetZonesZoneOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerInput)(nil)).Elem(), ContainerGroupContainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerGroupContainerArrayInput)(nil)).Elem(), ContainerGroupContainerArray{})
@@ -5120,6 +5739,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageCacheImageRegistryCredentialArrayInput)(nil)).Elem(), ImageCacheImageRegistryCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenApiImageCacheImageRegistryCredentialInput)(nil)).Elem(), OpenApiImageCacheImageRegistryCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpenApiImageCacheImageRegistryCredentialArrayInput)(nil)).Elem(), OpenApiImageCacheImageRegistryCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualNodeTaintInput)(nil)).Elem(), VirtualNodeTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualNodeTaintArrayInput)(nil)).Elem(), VirtualNodeTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupInput)(nil)).Elem(), GetContainerGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupArrayInput)(nil)).Elem(), GetContainerGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupContainerInput)(nil)).Elem(), GetContainerGroupsGroupContainerArgs{})
@@ -5158,6 +5779,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImageCachesCachArrayInput)(nil)).Elem(), GetImageCachesCachArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImageCachesCachEventInput)(nil)).Elem(), GetImageCachesCachEventArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImageCachesCachEventArrayInput)(nil)).Elem(), GetImageCachesCachEventArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualNodesNodeInput)(nil)).Elem(), GetVirtualNodesNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualNodesNodeArrayInput)(nil)).Elem(), GetVirtualNodesNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualNodesNodeEventInput)(nil)).Elem(), GetVirtualNodesNodeEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualNodesNodeEventArrayInput)(nil)).Elem(), GetVirtualNodesNodeEventArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(ContainerGroupContainerOutput{})
 	pulumi.RegisterOutputType(ContainerGroupContainerArrayOutput{})
 	pulumi.RegisterOutputType(ContainerGroupContainerEnvironmentVarOutput{})
@@ -5194,6 +5821,8 @@ func init() {
 	pulumi.RegisterOutputType(ImageCacheImageRegistryCredentialArrayOutput{})
 	pulumi.RegisterOutputType(OpenApiImageCacheImageRegistryCredentialOutput{})
 	pulumi.RegisterOutputType(OpenApiImageCacheImageRegistryCredentialArrayOutput{})
+	pulumi.RegisterOutputType(VirtualNodeTaintOutput{})
+	pulumi.RegisterOutputType(VirtualNodeTaintArrayOutput{})
 	pulumi.RegisterOutputType(GetContainerGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetContainerGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetContainerGroupsGroupContainerOutput{})
@@ -5232,4 +5861,10 @@ func init() {
 	pulumi.RegisterOutputType(GetImageCachesCachArrayOutput{})
 	pulumi.RegisterOutputType(GetImageCachesCachEventOutput{})
 	pulumi.RegisterOutputType(GetImageCachesCachEventArrayOutput{})
+	pulumi.RegisterOutputType(GetVirtualNodesNodeOutput{})
+	pulumi.RegisterOutputType(GetVirtualNodesNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetVirtualNodesNodeEventOutput{})
+	pulumi.RegisterOutputType(GetVirtualNodesNodeEventArrayOutput{})
+	pulumi.RegisterOutputType(GetZonesZoneOutput{})
+	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 }

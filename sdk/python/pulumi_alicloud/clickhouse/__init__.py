@@ -10,4 +10,5 @@ from .db_cluster import *
 from .get_accounts import *
 from .get_db_clusters import *
 from .get_regions import *
+from ._inputs import *
 from . import outputs

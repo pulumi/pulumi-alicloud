@@ -87,19 +87,19 @@ namespace Pulumi.AliCloud.Dts
     public partial class SynchronizationJob : Pulumi.CustomResource
     {
         /// <summary>
-        /// Start time in Unix timestamp format.
+        /// The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
         /// </summary>
         [Output("checkpoint")]
         public Output<string> Checkpoint { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization values include:
+        /// Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
         /// </summary>
         [Output("dataInitialization")]
         public Output<bool> DataInitialization { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to perform incremental data migration for migration types or synchronization values include:
+        /// Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
         /// </summary>
         [Output("dataSynchronization")]
         public Output<bool> DataSynchronization { get; private set; } = null!;
@@ -128,35 +128,41 @@ namespace Pulumi.AliCloud.Dts
         [Output("delayRuleTime")]
         public Output<string?> DelayRuleTime { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
+        /// </summary>
         [Output("destinationEndpointDatabaseName")]
         public Output<string?> DestinationEndpointDatabaseName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of destination database. Valid values: `ADB20`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+        /// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADB20`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
         /// </summary>
         [Output("destinationEndpointEngineName")]
         public Output<string> DestinationEndpointEngineName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of destination instance.
+        /// The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destination_endpoint_instance_type`. For example, the value of `destination_endpoint_instance_type` is:
+        /// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+        /// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
+        /// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
         /// </summary>
         [Output("destinationEndpointInstanceId")]
         public Output<string?> DestinationEndpointInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of destination instance. Valid values: `ads`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
+        /// The type of destination instance. If the target instance is a PolarDB O engine cluster, the target instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. If the target instance is the Kafka version of Message Queuing, the target instance type needs to be `ECS` or `EXPRESS` as a self-built database, and access via ECS or dedicated line. For the correspondence between supported targets and source instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the target instance is a self-built database, you also need to perform corresponding preparations, please refer to the [overview of preparations](https://help.aliyun.com/document_detail/146958.htm). Valid values: `ads`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         /// </summary>
         [Output("destinationEndpointInstanceType")]
         public Output<string> DestinationEndpointInstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// The ip of source endpoint.
+        /// The IP of source endpoint. When `destination_endpoint_instance_type` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
         /// </summary>
         [Output("destinationEndpointIp")]
         public Output<string?> DestinationEndpointIp { get; private set; } = null!;
 
         /// <summary>
-        /// The SID of Oracle database.
+        /// The SID of Oracle database. Note: when the value of DestinationEndpointEngineName is Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
         /// </summary>
         [Output("destinationEndpointOracleSid")]
         public Output<string?> DestinationEndpointOracleSid { get; private set; } = null!;
@@ -168,25 +174,25 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> DestinationEndpointPassword { get; private set; } = null!;
 
         /// <summary>
-        /// The port of source endpoint.
+        /// The port of source endpoint. When the target instance is a self-built database, this parameter is available and must be passed in.
         /// </summary>
         [Output("destinationEndpointPort")]
         public Output<string?> DestinationEndpointPort { get; private set; } = null!;
 
         /// <summary>
-        /// The region of destination instance.
+        /// The region of destination instance. For the target instance region, please refer to the [list of supported regions](https://help.aliyun.com/document_detail/141033.htm). Note: if the target is an Alibaba Cloud database, this parameter must be passed in.
         /// </summary>
         [Output("destinationEndpointRegion")]
         public Output<string?> DestinationEndpointRegion { get; private set; } = null!;
 
         /// <summary>
-        /// The username of database account.
+        /// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
         /// </summary>
         [Output("destinationEndpointUserName")]
         public Output<string?> DestinationEndpointUserName { get; private set; } = null!;
 
         /// <summary>
-        /// Synchronizing instance ID. The ID of `alicloud.dts.SynchronizationInstance`.
+        /// The ID of synchronization instance, it must be an ID of `alicloud.dts.SynchronizationInstance`.
         /// </summary>
         [Output("dtsInstanceId")]
         public Output<string> DtsInstanceId { get; private set; } = null!;
@@ -222,43 +228,46 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> Reserve { get; private set; } = null!;
 
         /// <summary>
-        /// The name of migrate the database.
+        /// The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
         /// </summary>
         [Output("sourceEndpointDatabaseName")]
         public Output<string?> SourceEndpointDatabaseName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+        /// The type of source database. The default value is `MYSQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MYSQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
         /// </summary>
         [Output("sourceEndpointEngineName")]
         public Output<string> SourceEndpointEngineName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of source instance.
+        /// The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `source_endpoint_instance_type`. For example, the value of `source_endpoint_instance_type` is:
+        /// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+        /// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
+        /// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
         /// </summary>
         [Output("sourceEndpointInstanceId")]
         public Output<string?> SourceEndpointInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of source instance. Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
+        /// The type of source instance. If the source instance is a `PolarDB O` engine cluster, the source instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. For the correspondence between supported source and target instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the source instance is a self-built database, you also need to perform corresponding preparations, for details, see [Preparations Overview](https://help.aliyun.com/document_detail/146958.htm). Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         /// </summary>
         [Output("sourceEndpointInstanceType")]
         public Output<string> SourceEndpointInstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// The ip of source endpoint.
+        /// The IP of source endpoint. When `source_endpoint_instance_type` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
         /// </summary>
         [Output("sourceEndpointIp")]
         public Output<string?> SourceEndpointIp { get; private set; } = null!;
 
         /// <summary>
-        /// The SID of Oracle database.
+        /// The SID of Oracle database. When the value of SourceEndpointEngineName is Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
         /// </summary>
         [Output("sourceEndpointOracleSid")]
         public Output<string?> SourceEndpointOracleSid { get; private set; } = null!;
 
         /// <summary>
-        /// The Alibaba Cloud account ID to which the source instance belongs.
+        /// The ID of Alibaba Cloud account to which the source instance belongs. Note: passing in this parameter means performing data migration or synchronization across Alibaba Cloud accounts, and you also need to pass in the `source_endpoint_role` parameter.
         /// </summary>
         [Output("sourceEndpointOwnerId")]
         public Output<string?> SourceEndpointOwnerId { get; private set; } = null!;
@@ -270,25 +279,25 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> SourceEndpointPassword { get; private set; } = null!;
 
         /// <summary>
-        /// The port of source endpoint.
+        /// The port of source endpoint. When the source instance is a self-built database, this parameter is available and must be passed in.
         /// </summary>
         [Output("sourceEndpointPort")]
         public Output<string?> SourceEndpointPort { get; private set; } = null!;
 
         /// <summary>
-        /// The region of source instance.
+        /// Source instance area, please refer to the [list of supported areas](https://help.aliyun.com/document_detail/141033.htm) for details. Note if the source is an Alibaba Cloud database, this parameter must be passed in.
         /// </summary>
         [Output("sourceEndpointRegion")]
         public Output<string?> SourceEndpointRegion { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the role configured for the cloud account to which the source instance belongs.
+        /// The name of the role configured for the cloud account to which the source instance belongs. Note: this parameter must be passed in when performing cross Alibaba Cloud account data migration or synchronization. For the permissions and authorization methods required by this role, please refer to [How to configure RAM authorization when cross-Alibaba Cloud account data migration or synchronization](https://help.aliyun.com/document_detail/48468.htm).
         /// </summary>
         [Output("sourceEndpointRole")]
         public Output<string?> SourceEndpointRole { get; private set; } = null!;
 
         /// <summary>
-        /// The username of database account.
+        /// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
         /// </summary>
         [Output("sourceEndpointUserName")]
         public Output<string?> SourceEndpointUserName { get; private set; } = null!;
@@ -300,7 +309,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to perform a database table structure to migrate or initialization values include:
+        /// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
         /// </summary>
         [Output("structureInitialization")]
         public Output<bool> StructureInitialization { get; private set; } = null!;
@@ -358,19 +367,19 @@ namespace Pulumi.AliCloud.Dts
     public sealed class SynchronizationJobArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Start time in Unix timestamp format.
+        /// The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
         /// </summary>
         [Input("checkpoint")]
         public Input<string>? Checkpoint { get; set; }
 
         /// <summary>
-        /// Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization values include:
+        /// Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
         /// </summary>
         [Input("dataInitialization", required: true)]
         public Input<bool> DataInitialization { get; set; } = null!;
 
         /// <summary>
-        /// Whether to perform incremental data migration for migration types or synchronization values include:
+        /// Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
         /// </summary>
         [Input("dataSynchronization", required: true)]
         public Input<bool> DataSynchronization { get; set; } = null!;
@@ -399,35 +408,41 @@ namespace Pulumi.AliCloud.Dts
         [Input("delayRuleTime")]
         public Input<string>? DelayRuleTime { get; set; }
 
+        /// <summary>
+        /// The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
+        /// </summary>
         [Input("destinationEndpointDatabaseName")]
         public Input<string>? DestinationEndpointDatabaseName { get; set; }
 
         /// <summary>
-        /// The type of destination database. Valid values: `ADB20`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+        /// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADB20`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
         /// </summary>
         [Input("destinationEndpointEngineName", required: true)]
         public Input<string> DestinationEndpointEngineName { get; set; } = null!;
 
         /// <summary>
-        /// The ID of destination instance.
+        /// The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destination_endpoint_instance_type`. For example, the value of `destination_endpoint_instance_type` is:
+        /// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+        /// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
+        /// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
         /// </summary>
         [Input("destinationEndpointInstanceId")]
         public Input<string>? DestinationEndpointInstanceId { get; set; }
 
         /// <summary>
-        /// The type of destination instance. Valid values: `ads`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
+        /// The type of destination instance. If the target instance is a PolarDB O engine cluster, the target instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. If the target instance is the Kafka version of Message Queuing, the target instance type needs to be `ECS` or `EXPRESS` as a self-built database, and access via ECS or dedicated line. For the correspondence between supported targets and source instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the target instance is a self-built database, you also need to perform corresponding preparations, please refer to the [overview of preparations](https://help.aliyun.com/document_detail/146958.htm). Valid values: `ads`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         /// </summary>
         [Input("destinationEndpointInstanceType", required: true)]
         public Input<string> DestinationEndpointInstanceType { get; set; } = null!;
 
         /// <summary>
-        /// The ip of source endpoint.
+        /// The IP of source endpoint. When `destination_endpoint_instance_type` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
         /// </summary>
         [Input("destinationEndpointIp")]
         public Input<string>? DestinationEndpointIp { get; set; }
 
         /// <summary>
-        /// The SID of Oracle database.
+        /// The SID of Oracle database. Note: when the value of DestinationEndpointEngineName is Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
         /// </summary>
         [Input("destinationEndpointOracleSid")]
         public Input<string>? DestinationEndpointOracleSid { get; set; }
@@ -439,25 +454,25 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DestinationEndpointPassword { get; set; }
 
         /// <summary>
-        /// The port of source endpoint.
+        /// The port of source endpoint. When the target instance is a self-built database, this parameter is available and must be passed in.
         /// </summary>
         [Input("destinationEndpointPort")]
         public Input<string>? DestinationEndpointPort { get; set; }
 
         /// <summary>
-        /// The region of destination instance.
+        /// The region of destination instance. For the target instance region, please refer to the [list of supported regions](https://help.aliyun.com/document_detail/141033.htm). Note: if the target is an Alibaba Cloud database, this parameter must be passed in.
         /// </summary>
         [Input("destinationEndpointRegion")]
         public Input<string>? DestinationEndpointRegion { get; set; }
 
         /// <summary>
-        /// The username of database account.
+        /// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
         /// </summary>
         [Input("destinationEndpointUserName")]
         public Input<string>? DestinationEndpointUserName { get; set; }
 
         /// <summary>
-        /// Synchronizing instance ID. The ID of `alicloud.dts.SynchronizationInstance`.
+        /// The ID of synchronization instance, it must be an ID of `alicloud.dts.SynchronizationInstance`.
         /// </summary>
         [Input("dtsInstanceId", required: true)]
         public Input<string> DtsInstanceId { get; set; } = null!;
@@ -493,43 +508,46 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? Reserve { get; set; }
 
         /// <summary>
-        /// The name of migrate the database.
+        /// The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
         /// </summary>
         [Input("sourceEndpointDatabaseName")]
         public Input<string>? SourceEndpointDatabaseName { get; set; }
 
         /// <summary>
-        /// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+        /// The type of source database. The default value is `MYSQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MYSQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
         /// </summary>
         [Input("sourceEndpointEngineName", required: true)]
         public Input<string> SourceEndpointEngineName { get; set; } = null!;
 
         /// <summary>
-        /// The ID of source instance.
+        /// The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `source_endpoint_instance_type`. For example, the value of `source_endpoint_instance_type` is:
+        /// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+        /// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
+        /// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
         /// </summary>
         [Input("sourceEndpointInstanceId")]
         public Input<string>? SourceEndpointInstanceId { get; set; }
 
         /// <summary>
-        /// The type of source instance. Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
+        /// The type of source instance. If the source instance is a `PolarDB O` engine cluster, the source instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. For the correspondence between supported source and target instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the source instance is a self-built database, you also need to perform corresponding preparations, for details, see [Preparations Overview](https://help.aliyun.com/document_detail/146958.htm). Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         /// </summary>
         [Input("sourceEndpointInstanceType", required: true)]
         public Input<string> SourceEndpointInstanceType { get; set; } = null!;
 
         /// <summary>
-        /// The ip of source endpoint.
+        /// The IP of source endpoint. When `source_endpoint_instance_type` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
         /// </summary>
         [Input("sourceEndpointIp")]
         public Input<string>? SourceEndpointIp { get; set; }
 
         /// <summary>
-        /// The SID of Oracle database.
+        /// The SID of Oracle database. When the value of SourceEndpointEngineName is Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
         /// </summary>
         [Input("sourceEndpointOracleSid")]
         public Input<string>? SourceEndpointOracleSid { get; set; }
 
         /// <summary>
-        /// The Alibaba Cloud account ID to which the source instance belongs.
+        /// The ID of Alibaba Cloud account to which the source instance belongs. Note: passing in this parameter means performing data migration or synchronization across Alibaba Cloud accounts, and you also need to pass in the `source_endpoint_role` parameter.
         /// </summary>
         [Input("sourceEndpointOwnerId")]
         public Input<string>? SourceEndpointOwnerId { get; set; }
@@ -541,25 +559,25 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? SourceEndpointPassword { get; set; }
 
         /// <summary>
-        /// The port of source endpoint.
+        /// The port of source endpoint. When the source instance is a self-built database, this parameter is available and must be passed in.
         /// </summary>
         [Input("sourceEndpointPort")]
         public Input<string>? SourceEndpointPort { get; set; }
 
         /// <summary>
-        /// The region of source instance.
+        /// Source instance area, please refer to the [list of supported areas](https://help.aliyun.com/document_detail/141033.htm) for details. Note if the source is an Alibaba Cloud database, this parameter must be passed in.
         /// </summary>
         [Input("sourceEndpointRegion")]
         public Input<string>? SourceEndpointRegion { get; set; }
 
         /// <summary>
-        /// The name of the role configured for the cloud account to which the source instance belongs.
+        /// The name of the role configured for the cloud account to which the source instance belongs. Note: this parameter must be passed in when performing cross Alibaba Cloud account data migration or synchronization. For the permissions and authorization methods required by this role, please refer to [How to configure RAM authorization when cross-Alibaba Cloud account data migration or synchronization](https://help.aliyun.com/document_detail/48468.htm).
         /// </summary>
         [Input("sourceEndpointRole")]
         public Input<string>? SourceEndpointRole { get; set; }
 
         /// <summary>
-        /// The username of database account.
+        /// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
         /// </summary>
         [Input("sourceEndpointUserName")]
         public Input<string>? SourceEndpointUserName { get; set; }
@@ -571,7 +589,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Whether to perform a database table structure to migrate or initialization values include:
+        /// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
         /// </summary>
         [Input("structureInitialization", required: true)]
         public Input<bool> StructureInitialization { get; set; } = null!;
@@ -590,19 +608,19 @@ namespace Pulumi.AliCloud.Dts
     public sealed class SynchronizationJobState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Start time in Unix timestamp format.
+        /// The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
         /// </summary>
         [Input("checkpoint")]
         public Input<string>? Checkpoint { get; set; }
 
         /// <summary>
-        /// Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization values include:
+        /// Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
         /// </summary>
         [Input("dataInitialization")]
         public Input<bool>? DataInitialization { get; set; }
 
         /// <summary>
-        /// Whether to perform incremental data migration for migration types or synchronization values include:
+        /// Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
         /// </summary>
         [Input("dataSynchronization")]
         public Input<bool>? DataSynchronization { get; set; }
@@ -631,35 +649,41 @@ namespace Pulumi.AliCloud.Dts
         [Input("delayRuleTime")]
         public Input<string>? DelayRuleTime { get; set; }
 
+        /// <summary>
+        /// The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
+        /// </summary>
         [Input("destinationEndpointDatabaseName")]
         public Input<string>? DestinationEndpointDatabaseName { get; set; }
 
         /// <summary>
-        /// The type of destination database. Valid values: `ADB20`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+        /// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADB20`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
         /// </summary>
         [Input("destinationEndpointEngineName")]
         public Input<string>? DestinationEndpointEngineName { get; set; }
 
         /// <summary>
-        /// The ID of destination instance.
+        /// The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destination_endpoint_instance_type`. For example, the value of `destination_endpoint_instance_type` is:
+        /// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+        /// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
+        /// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
         /// </summary>
         [Input("destinationEndpointInstanceId")]
         public Input<string>? DestinationEndpointInstanceId { get; set; }
 
         /// <summary>
-        /// The type of destination instance. Valid values: `ads`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
+        /// The type of destination instance. If the target instance is a PolarDB O engine cluster, the target instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. If the target instance is the Kafka version of Message Queuing, the target instance type needs to be `ECS` or `EXPRESS` as a self-built database, and access via ECS or dedicated line. For the correspondence between supported targets and source instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the target instance is a self-built database, you also need to perform corresponding preparations, please refer to the [overview of preparations](https://help.aliyun.com/document_detail/146958.htm). Valid values: `ads`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         /// </summary>
         [Input("destinationEndpointInstanceType")]
         public Input<string>? DestinationEndpointInstanceType { get; set; }
 
         /// <summary>
-        /// The ip of source endpoint.
+        /// The IP of source endpoint. When `destination_endpoint_instance_type` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
         /// </summary>
         [Input("destinationEndpointIp")]
         public Input<string>? DestinationEndpointIp { get; set; }
 
         /// <summary>
-        /// The SID of Oracle database.
+        /// The SID of Oracle database. Note: when the value of DestinationEndpointEngineName is Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
         /// </summary>
         [Input("destinationEndpointOracleSid")]
         public Input<string>? DestinationEndpointOracleSid { get; set; }
@@ -671,25 +695,25 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DestinationEndpointPassword { get; set; }
 
         /// <summary>
-        /// The port of source endpoint.
+        /// The port of source endpoint. When the target instance is a self-built database, this parameter is available and must be passed in.
         /// </summary>
         [Input("destinationEndpointPort")]
         public Input<string>? DestinationEndpointPort { get; set; }
 
         /// <summary>
-        /// The region of destination instance.
+        /// The region of destination instance. For the target instance region, please refer to the [list of supported regions](https://help.aliyun.com/document_detail/141033.htm). Note: if the target is an Alibaba Cloud database, this parameter must be passed in.
         /// </summary>
         [Input("destinationEndpointRegion")]
         public Input<string>? DestinationEndpointRegion { get; set; }
 
         /// <summary>
-        /// The username of database account.
+        /// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
         /// </summary>
         [Input("destinationEndpointUserName")]
         public Input<string>? DestinationEndpointUserName { get; set; }
 
         /// <summary>
-        /// Synchronizing instance ID. The ID of `alicloud.dts.SynchronizationInstance`.
+        /// The ID of synchronization instance, it must be an ID of `alicloud.dts.SynchronizationInstance`.
         /// </summary>
         [Input("dtsInstanceId")]
         public Input<string>? DtsInstanceId { get; set; }
@@ -725,43 +749,46 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? Reserve { get; set; }
 
         /// <summary>
-        /// The name of migrate the database.
+        /// The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
         /// </summary>
         [Input("sourceEndpointDatabaseName")]
         public Input<string>? SourceEndpointDatabaseName { get; set; }
 
         /// <summary>
-        /// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+        /// The type of source database. The default value is `MYSQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MYSQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
         /// </summary>
         [Input("sourceEndpointEngineName")]
         public Input<string>? SourceEndpointEngineName { get; set; }
 
         /// <summary>
-        /// The ID of source instance.
+        /// The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `source_endpoint_instance_type`. For example, the value of `source_endpoint_instance_type` is:
+        /// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+        /// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
+        /// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
         /// </summary>
         [Input("sourceEndpointInstanceId")]
         public Input<string>? SourceEndpointInstanceId { get; set; }
 
         /// <summary>
-        /// The type of source instance. Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
+        /// The type of source instance. If the source instance is a `PolarDB O` engine cluster, the source instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. For the correspondence between supported source and target instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the source instance is a self-built database, you also need to perform corresponding preparations, for details, see [Preparations Overview](https://help.aliyun.com/document_detail/146958.htm). Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         /// </summary>
         [Input("sourceEndpointInstanceType")]
         public Input<string>? SourceEndpointInstanceType { get; set; }
 
         /// <summary>
-        /// The ip of source endpoint.
+        /// The IP of source endpoint. When `source_endpoint_instance_type` is `OTHER`, `EXPRESS`, `DG`, `CEN`, this parameter is available and must be passed in.
         /// </summary>
         [Input("sourceEndpointIp")]
         public Input<string>? SourceEndpointIp { get; set; }
 
         /// <summary>
-        /// The SID of Oracle database.
+        /// The SID of Oracle database. When the value of SourceEndpointEngineName is Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
         /// </summary>
         [Input("sourceEndpointOracleSid")]
         public Input<string>? SourceEndpointOracleSid { get; set; }
 
         /// <summary>
-        /// The Alibaba Cloud account ID to which the source instance belongs.
+        /// The ID of Alibaba Cloud account to which the source instance belongs. Note: passing in this parameter means performing data migration or synchronization across Alibaba Cloud accounts, and you also need to pass in the `source_endpoint_role` parameter.
         /// </summary>
         [Input("sourceEndpointOwnerId")]
         public Input<string>? SourceEndpointOwnerId { get; set; }
@@ -773,25 +800,25 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? SourceEndpointPassword { get; set; }
 
         /// <summary>
-        /// The port of source endpoint.
+        /// The port of source endpoint. When the source instance is a self-built database, this parameter is available and must be passed in.
         /// </summary>
         [Input("sourceEndpointPort")]
         public Input<string>? SourceEndpointPort { get; set; }
 
         /// <summary>
-        /// The region of source instance.
+        /// Source instance area, please refer to the [list of supported areas](https://help.aliyun.com/document_detail/141033.htm) for details. Note if the source is an Alibaba Cloud database, this parameter must be passed in.
         /// </summary>
         [Input("sourceEndpointRegion")]
         public Input<string>? SourceEndpointRegion { get; set; }
 
         /// <summary>
-        /// The name of the role configured for the cloud account to which the source instance belongs.
+        /// The name of the role configured for the cloud account to which the source instance belongs. Note: this parameter must be passed in when performing cross Alibaba Cloud account data migration or synchronization. For the permissions and authorization methods required by this role, please refer to [How to configure RAM authorization when cross-Alibaba Cloud account data migration or synchronization](https://help.aliyun.com/document_detail/48468.htm).
         /// </summary>
         [Input("sourceEndpointRole")]
         public Input<string>? SourceEndpointRole { get; set; }
 
         /// <summary>
-        /// The username of database account.
+        /// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
         /// </summary>
         [Input("sourceEndpointUserName")]
         public Input<string>? SourceEndpointUserName { get; set; }
@@ -803,7 +830,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Whether to perform a database table structure to migrate or initialization values include:
+        /// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
         /// </summary>
         [Input("structureInitialization")]
         public Input<bool>? StructureInitialization { get; set; }

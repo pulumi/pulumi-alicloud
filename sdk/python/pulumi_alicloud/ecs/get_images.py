@@ -21,7 +21,7 @@ class GetImagesResult:
     """
     A collection of values returned by getImages.
     """
-    def __init__(__self__, action_type=None, architecture=None, dry_run=None, id=None, ids=None, image_family=None, images=None, instance_type=None, is_support_cloud_init=None, is_support_io_optimized=None, most_recent=None, name_regex=None, os_type=None, output_file=None, owners=None, resource_group_id=None, snapshot_id=None, status=None, tags=None, usage=None):
+    def __init__(__self__, action_type=None, architecture=None, dry_run=None, id=None, ids=None, image_family=None, image_id=None, image_name=None, images=None, instance_type=None, is_support_cloud_init=None, is_support_io_optimized=None, most_recent=None, name_regex=None, os_type=None, output_file=None, owners=None, resource_group_id=None, snapshot_id=None, status=None, tags=None, usage=None):
         if action_type and not isinstance(action_type, str):
             raise TypeError("Expected argument 'action_type' to be a str")
         pulumi.set(__self__, "action_type", action_type)
@@ -40,6 +40,12 @@ class GetImagesResult:
         if image_family and not isinstance(image_family, str):
             raise TypeError("Expected argument 'image_family' to be a str")
         pulumi.set(__self__, "image_family", image_family)
+        if image_id and not isinstance(image_id, str):
+            raise TypeError("Expected argument 'image_id' to be a str")
+        pulumi.set(__self__, "image_id", image_id)
+        if image_name and not isinstance(image_name, str):
+            raise TypeError("Expected argument 'image_name' to be a str")
+        pulumi.set(__self__, "image_name", image_name)
         if images and not isinstance(images, list):
             raise TypeError("Expected argument 'images' to be a list")
         pulumi.set(__self__, "images", images)
@@ -121,6 +127,16 @@ class GetImagesResult:
     @pulumi.getter(name="imageFamily")
     def image_family(self) -> Optional[str]:
         return pulumi.get(self, "image_family")
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[str]:
+        return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> Optional[str]:
+        return pulumi.get(self, "image_name")
 
     @property
     @pulumi.getter
@@ -214,6 +230,8 @@ class AwaitableGetImagesResult(GetImagesResult):
             id=self.id,
             ids=self.ids,
             image_family=self.image_family,
+            image_id=self.image_id,
+            image_name=self.image_name,
             images=self.images,
             instance_type=self.instance_type,
             is_support_cloud_init=self.is_support_cloud_init,
@@ -234,6 +252,8 @@ def get_images(action_type: Optional[str] = None,
                architecture: Optional[str] = None,
                dry_run: Optional[bool] = None,
                image_family: Optional[str] = None,
+               image_id: Optional[str] = None,
+               image_name: Optional[str] = None,
                instance_type: Optional[str] = None,
                is_support_cloud_init: Optional[bool] = None,
                is_support_io_optimized: Optional[bool] = None,
@@ -272,6 +292,8 @@ def get_images(action_type: Optional[str] = None,
            * `true`: The validity of the request is checked but resources are not queried. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are specified. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
            * `false`: The validity of the request is checked, and a 2XX HTTP status code is returned and resources are queried if the check succeeds.
     :param str image_family: The name of the image family. You can set this parameter to query images of the specified image family. This parameter is empty by default.
+    :param str image_id: The ID of the image.
+    :param str image_name: The name of the image.
     :param str instance_type: The instance type for which the image can be used.
     :param bool is_support_cloud_init: Specifies whether the image supports cloud-init.
     :param bool is_support_io_optimized: Specifies whether the image can be used on I/O optimized instances.
@@ -298,6 +320,8 @@ def get_images(action_type: Optional[str] = None,
     __args__['architecture'] = architecture
     __args__['dryRun'] = dry_run
     __args__['imageFamily'] = image_family
+    __args__['imageId'] = image_id
+    __args__['imageName'] = image_name
     __args__['instanceType'] = instance_type
     __args__['isSupportCloudInit'] = is_support_cloud_init
     __args__['isSupportIoOptimized'] = is_support_io_optimized
@@ -324,6 +348,8 @@ def get_images(action_type: Optional[str] = None,
         id=__ret__.id,
         ids=__ret__.ids,
         image_family=__ret__.image_family,
+        image_id=__ret__.image_id,
+        image_name=__ret__.image_name,
         images=__ret__.images,
         instance_type=__ret__.instance_type,
         is_support_cloud_init=__ret__.is_support_cloud_init,
@@ -345,6 +371,8 @@ def get_images_output(action_type: Optional[pulumi.Input[Optional[str]]] = None,
                       architecture: Optional[pulumi.Input[Optional[str]]] = None,
                       dry_run: Optional[pulumi.Input[Optional[bool]]] = None,
                       image_family: Optional[pulumi.Input[Optional[str]]] = None,
+                      image_id: Optional[pulumi.Input[Optional[str]]] = None,
+                      image_name: Optional[pulumi.Input[Optional[str]]] = None,
                       instance_type: Optional[pulumi.Input[Optional[str]]] = None,
                       is_support_cloud_init: Optional[pulumi.Input[Optional[bool]]] = None,
                       is_support_io_optimized: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -383,6 +411,8 @@ def get_images_output(action_type: Optional[pulumi.Input[Optional[str]]] = None,
            * `true`: The validity of the request is checked but resources are not queried. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are specified. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
            * `false`: The validity of the request is checked, and a 2XX HTTP status code is returned and resources are queried if the check succeeds.
     :param str image_family: The name of the image family. You can set this parameter to query images of the specified image family. This parameter is empty by default.
+    :param str image_id: The ID of the image.
+    :param str image_name: The name of the image.
     :param str instance_type: The instance type for which the image can be used.
     :param bool is_support_cloud_init: Specifies whether the image supports cloud-init.
     :param bool is_support_io_optimized: Specifies whether the image can be used on I/O optimized instances.

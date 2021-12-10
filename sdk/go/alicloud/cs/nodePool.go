@@ -33,6 +33,8 @@ type NodePool struct {
 	FormatDisk pulumi.BoolOutput `pulumi:"formatDisk"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId pulumi.StringOutput `pulumi:"imageId"`
+	// The image type, instead of `platform`. This field cannot be modified. One of `AliyunLinux`, `AliyunLinux3`, `AliyunLinux3Arm64`, `AliyunLinuxUEFI`, `CentOS`, `Windows`,`WindowsCore`,`AliyunLinux Qboot`,`ContainerOS`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+	ImageType pulumi.StringOutput `pulumi:"imageType"`
 	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
 	InstallCloudMonitor pulumi.BoolPtrOutput `pulumi:"installCloudMonitor"`
 	// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
@@ -67,18 +69,28 @@ type NodePool struct {
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// Node payment period unit, valid value: `Month`. Default is `Month`.
 	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
-	// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+	// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `imageType` instead.
+	//
+	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead
 	Platform pulumi.StringOutput `pulumi:"platform"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+	RuntimeName pulumi.StringOutput `pulumi:"runtimeName"`
+	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
+	RuntimeVersion pulumi.StringOutput `pulumi:"runtimeVersion"`
 	// Auto scaling node pool configuration. For more details, see `scalingConfig`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
 	ScalingConfig NodePoolScalingConfigOutput `pulumi:"scalingConfig"`
 	// (Available in 1.105.0+) Id of the Scaling Group.
 	ScalingGroupId pulumi.StringOutput `pulumi:"scalingGroupId"`
 	// The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
 	ScalingPolicy pulumi.StringOutput `pulumi:"scalingPolicy"`
-	// The security group id for worker node.
+	// The security group id for worker node. Field `securityGroupId` has been deprecated from provider version 1.145.0. New field `securityGroupIds` instead.
+	//
+	// Deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
+	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
+	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
 	SpotPriceLimits NodePoolSpotPriceLimitArrayOutput `pulumi:"spotPriceLimits"`
 	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
@@ -151,6 +163,8 @@ type nodePoolState struct {
 	FormatDisk *bool `pulumi:"formatDisk"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId *string `pulumi:"imageId"`
+	// The image type, instead of `platform`. This field cannot be modified. One of `AliyunLinux`, `AliyunLinux3`, `AliyunLinux3Arm64`, `AliyunLinuxUEFI`, `CentOS`, `Windows`,`WindowsCore`,`AliyunLinux Qboot`,`ContainerOS`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+	ImageType *string `pulumi:"imageType"`
 	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
 	// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
@@ -185,18 +199,28 @@ type nodePoolState struct {
 	Period *int `pulumi:"period"`
 	// Node payment period unit, valid value: `Month`. Default is `Month`.
 	PeriodUnit *string `pulumi:"periodUnit"`
-	// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+	// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `imageType` instead.
+	//
+	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead
 	Platform *string `pulumi:"platform"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+	RuntimeName *string `pulumi:"runtimeName"`
+	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
+	RuntimeVersion *string `pulumi:"runtimeVersion"`
 	// Auto scaling node pool configuration. For more details, see `scalingConfig`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
 	ScalingConfig *NodePoolScalingConfig `pulumi:"scalingConfig"`
 	// (Available in 1.105.0+) Id of the Scaling Group.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
 	// The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
 	ScalingPolicy *string `pulumi:"scalingPolicy"`
-	// The security group id for worker node.
+	// The security group id for worker node. Field `securityGroupId` has been deprecated from provider version 1.145.0. New field `securityGroupIds` instead.
+	//
+	// Deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead
 	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
 	SpotPriceLimits []NodePoolSpotPriceLimit `pulumi:"spotPriceLimits"`
 	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
@@ -232,6 +256,8 @@ type NodePoolState struct {
 	FormatDisk pulumi.BoolPtrInput
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId pulumi.StringPtrInput
+	// The image type, instead of `platform`. This field cannot be modified. One of `AliyunLinux`, `AliyunLinux3`, `AliyunLinux3Arm64`, `AliyunLinuxUEFI`, `CentOS`, `Windows`,`WindowsCore`,`AliyunLinux Qboot`,`ContainerOS`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+	ImageType pulumi.StringPtrInput
 	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
 	InstallCloudMonitor pulumi.BoolPtrInput
 	// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
@@ -266,18 +292,28 @@ type NodePoolState struct {
 	Period pulumi.IntPtrInput
 	// Node payment period unit, valid value: `Month`. Default is `Month`.
 	PeriodUnit pulumi.StringPtrInput
-	// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+	// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `imageType` instead.
+	//
+	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead
 	Platform pulumi.StringPtrInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
+	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+	RuntimeName pulumi.StringPtrInput
+	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
+	RuntimeVersion pulumi.StringPtrInput
 	// Auto scaling node pool configuration. For more details, see `scalingConfig`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
 	ScalingConfig NodePoolScalingConfigPtrInput
 	// (Available in 1.105.0+) Id of the Scaling Group.
 	ScalingGroupId pulumi.StringPtrInput
 	// The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
 	ScalingPolicy pulumi.StringPtrInput
-	// The security group id for worker node.
+	// The security group id for worker node. Field `securityGroupId` has been deprecated from provider version 1.145.0. New field `securityGroupIds` instead.
+	//
+	// Deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead
 	SecurityGroupId pulumi.StringPtrInput
+	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
+	SecurityGroupIds pulumi.StringArrayInput
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
 	SpotPriceLimits NodePoolSpotPriceLimitArrayInput
 	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
@@ -317,6 +353,8 @@ type nodePoolArgs struct {
 	FormatDisk *bool `pulumi:"formatDisk"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId *string `pulumi:"imageId"`
+	// The image type, instead of `platform`. This field cannot be modified. One of `AliyunLinux`, `AliyunLinux3`, `AliyunLinux3Arm64`, `AliyunLinuxUEFI`, `CentOS`, `Windows`,`WindowsCore`,`AliyunLinux Qboot`,`ContainerOS`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+	ImageType *string `pulumi:"imageType"`
 	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
 	// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
@@ -351,16 +389,26 @@ type nodePoolArgs struct {
 	Period *int `pulumi:"period"`
 	// Node payment period unit, valid value: `Month`. Default is `Month`.
 	PeriodUnit *string `pulumi:"periodUnit"`
-	// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+	// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `imageType` instead.
+	//
+	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead
 	Platform *string `pulumi:"platform"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+	RuntimeName *string `pulumi:"runtimeName"`
+	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
+	RuntimeVersion *string `pulumi:"runtimeVersion"`
 	// Auto scaling node pool configuration. For more details, see `scalingConfig`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
 	ScalingConfig *NodePoolScalingConfig `pulumi:"scalingConfig"`
 	// The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
 	ScalingPolicy *string `pulumi:"scalingPolicy"`
-	// The security group id for worker node.
+	// The security group id for worker node. Field `securityGroupId` has been deprecated from provider version 1.145.0. New field `securityGroupIds` instead.
+	//
+	// Deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead
 	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
 	SpotPriceLimits []NodePoolSpotPriceLimit `pulumi:"spotPriceLimits"`
 	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
@@ -396,6 +444,8 @@ type NodePoolArgs struct {
 	FormatDisk pulumi.BoolPtrInput
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId pulumi.StringPtrInput
+	// The image type, instead of `platform`. This field cannot be modified. One of `AliyunLinux`, `AliyunLinux3`, `AliyunLinux3Arm64`, `AliyunLinuxUEFI`, `CentOS`, `Windows`,`WindowsCore`,`AliyunLinux Qboot`,`ContainerOS`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+	ImageType pulumi.StringPtrInput
 	// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
 	InstallCloudMonitor pulumi.BoolPtrInput
 	// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
@@ -430,16 +480,26 @@ type NodePoolArgs struct {
 	Period pulumi.IntPtrInput
 	// Node payment period unit, valid value: `Month`. Default is `Month`.
 	PeriodUnit pulumi.StringPtrInput
-	// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+	// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `imageType` instead.
+	//
+	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead
 	Platform pulumi.StringPtrInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
+	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+	RuntimeName pulumi.StringPtrInput
+	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
+	RuntimeVersion pulumi.StringPtrInput
 	// Auto scaling node pool configuration. For more details, see `scalingConfig`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
 	ScalingConfig NodePoolScalingConfigPtrInput
 	// The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
 	ScalingPolicy pulumi.StringPtrInput
-	// The security group id for worker node.
+	// The security group id for worker node. Field `securityGroupId` has been deprecated from provider version 1.145.0. New field `securityGroupIds` instead.
+	//
+	// Deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead
 	SecurityGroupId pulumi.StringPtrInput
+	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
+	SecurityGroupIds pulumi.StringArrayInput
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
 	SpotPriceLimits NodePoolSpotPriceLimitArrayInput
 	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.

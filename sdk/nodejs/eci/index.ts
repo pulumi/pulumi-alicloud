@@ -8,13 +8,17 @@ import * as utilities from "../utilities";
 export * from "./containerGroup";
 export * from "./getContainerGroups";
 export * from "./getImageCaches";
+export * from "./getVirtualNodes";
+export * from "./getZones";
 export * from "./imageCache";
 export * from "./openApiImageCache";
+export * from "./virtualNode";
 
 // Import resources to register:
 import { ContainerGroup } from "./containerGroup";
 import { ImageCache } from "./imageCache";
 import { OpenApiImageCache } from "./openApiImageCache";
+import { VirtualNode } from "./virtualNode";
 
 const _module = {
     version: utilities.getVersion(),
@@ -26,6 +30,8 @@ const _module = {
                 return new ImageCache(name, <any>undefined, { urn })
             case "alicloud:eci/openApiImageCache:OpenApiImageCache":
                 return new OpenApiImageCache(name, <any>undefined, { urn })
+            case "alicloud:eci/virtualNode:VirtualNode":
+                return new VirtualNode(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -34,3 +40,4 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "eci/containerGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eci/imageCache", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eci/openApiImageCache", _module)
+pulumi.runtime.registerResourceModule("alicloud", "eci/virtualNode", _module)

@@ -24,7 +24,7 @@ class AggregatorArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]] aggregator_accounts: The information of account in aggregator.
         :param pulumi.Input[str] aggregator_name: The name of aggregator.
         :param pulumi.Input[str] description: The description of aggregator.
-        :param pulumi.Input[str] aggregator_type: The type of aggregator. Valid values: `CUSTOM`, `RD`.
+        :param pulumi.Input[str] aggregator_type: The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
         """
         pulumi.set(__self__, "aggregator_accounts", aggregator_accounts)
         pulumi.set(__self__, "aggregator_name", aggregator_name)
@@ -72,7 +72,7 @@ class AggregatorArgs:
     @pulumi.getter(name="aggregatorType")
     def aggregator_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of aggregator. Valid values: `CUSTOM`, `RD`.
+        The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
         """
         return pulumi.get(self, "aggregator_type")
 
@@ -93,7 +93,7 @@ class _AggregatorState:
         Input properties used for looking up and filtering Aggregator resources.
         :param pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]] aggregator_accounts: The information of account in aggregator.
         :param pulumi.Input[str] aggregator_name: The name of aggregator.
-        :param pulumi.Input[str] aggregator_type: The type of aggregator. Valid values: `CUSTOM`, `RD`.
+        :param pulumi.Input[str] aggregator_type: The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
         :param pulumi.Input[str] description: The description of aggregator.
         :param pulumi.Input[str] status: The status of the resource.
         """
@@ -136,7 +136,7 @@ class _AggregatorState:
     @pulumi.getter(name="aggregatorType")
     def aggregator_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of aggregator. Valid values: `CUSTOM`, `RD`.
+        The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
         """
         return pulumi.get(self, "aggregator_type")
 
@@ -182,6 +182,8 @@ class Aggregator(pulumi.CustomResource):
         """
         Provides a Cloud Config Aggregator resource.
 
+        For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregator](https://www.alibabacloud.com/help/en/doc-detail/211197.html).
+
         > **NOTE:** Available in v1.124.0+.
 
         ## Example Usage
@@ -214,7 +216,7 @@ class Aggregator(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregatorAggregatorAccountArgs']]]] aggregator_accounts: The information of account in aggregator.
         :param pulumi.Input[str] aggregator_name: The name of aggregator.
-        :param pulumi.Input[str] aggregator_type: The type of aggregator. Valid values: `CUSTOM`, `RD`.
+        :param pulumi.Input[str] aggregator_type: The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
         :param pulumi.Input[str] description: The description of aggregator.
         """
         ...
@@ -225,6 +227,8 @@ class Aggregator(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloud Config Aggregator resource.
+
+        For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregator](https://www.alibabacloud.com/help/en/doc-detail/211197.html).
 
         > **NOTE:** Available in v1.124.0+.
 
@@ -320,7 +324,7 @@ class Aggregator(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregatorAggregatorAccountArgs']]]] aggregator_accounts: The information of account in aggregator.
         :param pulumi.Input[str] aggregator_name: The name of aggregator.
-        :param pulumi.Input[str] aggregator_type: The type of aggregator. Valid values: `CUSTOM`, `RD`.
+        :param pulumi.Input[str] aggregator_type: The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
         :param pulumi.Input[str] description: The description of aggregator.
         :param pulumi.Input[str] status: The status of the resource.
         """
@@ -355,7 +359,7 @@ class Aggregator(pulumi.CustomResource):
     @pulumi.getter(name="aggregatorType")
     def aggregator_type(self) -> pulumi.Output[str]:
         """
-        The type of aggregator. Valid values: `CUSTOM`, `RD`.
+        The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
         """
         return pulumi.get(self, "aggregator_type")
 

@@ -95,7 +95,7 @@ class ManagedKubernetesArgs:
                * ack.pro.small : Professional managed clusters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] control_plane_log_components: List of target components for which logs need to be collected. Supports `apiserver`, `kcm` and `scheduler`.
         :param pulumi.Input[str] control_plane_log_project: Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
-        :param pulumi.Input[str] control_plane_log_ttl: Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
+        :param pulumi.Input[str] control_plane_log_ttl: Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
         :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
@@ -131,7 +131,7 @@ class ManagedKubernetesArgs:
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
         :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes . Detailed below.
         :param pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesTaintArgs']]] taints: Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
-        :param pulumi.Input[str] timezone: When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        :param pulumi.Input[str] timezone: When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         :param pulumi.Input[str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         :param pulumi.Input[str] user_data: Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
@@ -414,7 +414,7 @@ class ManagedKubernetesArgs:
     @pulumi.getter(name="controlPlaneLogTtl")
     def control_plane_log_ttl(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
+        Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
         """
         return pulumi.get(self, "control_plane_log_ttl")
 
@@ -864,7 +864,7 @@ class ManagedKubernetesArgs:
     @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
         """
-        When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         """
         return pulumi.get(self, "timezone")
 
@@ -1165,7 +1165,7 @@ class _ManagedKubernetesState:
         :param pulumi.Input['ManagedKubernetesConnectionsArgs'] connections: Map of kubernetes cluster connection information.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] control_plane_log_components: List of target components for which logs need to be collected. Supports `apiserver`, `kcm` and `scheduler`.
         :param pulumi.Input[str] control_plane_log_project: Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
-        :param pulumi.Input[str] control_plane_log_ttl: Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
+        :param pulumi.Input[str] control_plane_log_ttl: Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
         :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
@@ -1203,7 +1203,7 @@ class _ManagedKubernetesState:
         :param pulumi.Input[str] slb_intranet: The ID of private load balancer where the current cluster master node is located.
         :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes . Detailed below.
         :param pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesTaintArgs']]] taints: Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
-        :param pulumi.Input[str] timezone: When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        :param pulumi.Input[str] timezone: When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         :param pulumi.Input[str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         :param pulumi.Input[str] user_data: Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
@@ -1526,7 +1526,7 @@ class _ManagedKubernetesState:
     @pulumi.getter(name="controlPlaneLogTtl")
     def control_plane_log_ttl(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
+        Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
         """
         return pulumi.get(self, "control_plane_log_ttl")
 
@@ -2018,7 +2018,7 @@ class _ManagedKubernetesState:
     @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
         """
-        When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         """
         return pulumi.get(self, "timezone")
 
@@ -2365,7 +2365,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                * ack.pro.small : Professional managed clusters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] control_plane_log_components: List of target components for which logs need to be collected. Supports `apiserver`, `kcm` and `scheduler`.
         :param pulumi.Input[str] control_plane_log_project: Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
-        :param pulumi.Input[str] control_plane_log_ttl: Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
+        :param pulumi.Input[str] control_plane_log_ttl: Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
         :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
@@ -2401,7 +2401,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
         :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes . Detailed below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesTaintArgs']]]] taints: Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
-        :param pulumi.Input[str] timezone: When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        :param pulumi.Input[str] timezone: When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         :param pulumi.Input[str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         :param pulumi.Input[str] user_data: Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
@@ -2711,7 +2711,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ManagedKubernetesConnectionsArgs']] connections: Map of kubernetes cluster connection information.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] control_plane_log_components: List of target components for which logs need to be collected. Supports `apiserver`, `kcm` and `scheduler`.
         :param pulumi.Input[str] control_plane_log_project: Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
-        :param pulumi.Input[str] control_plane_log_ttl: Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
+        :param pulumi.Input[str] control_plane_log_ttl: Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
         :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
@@ -2749,7 +2749,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] slb_intranet: The ID of private load balancer where the current cluster master node is located.
         :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes . Detailed below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesTaintArgs']]]] taints: Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
-        :param pulumi.Input[str] timezone: When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        :param pulumi.Input[str] timezone: When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         :param pulumi.Input[str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         :param pulumi.Input[str] user_data: Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
@@ -2950,7 +2950,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="controlPlaneLogTtl")
     def control_plane_log_ttl(self) -> pulumi.Output[Optional[str]]:
         """
-        Controls the sampling interval of plane logs. Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
+        Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
         """
         return pulumi.get(self, "control_plane_log_ttl")
 
@@ -3274,7 +3274,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     @pulumi.getter
     def timezone(self) -> pulumi.Output[Optional[str]]:
         """
-        When you create a cluster, set the time zones for the Master and Woker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         """
         return pulumi.get(self, "timezone")
 

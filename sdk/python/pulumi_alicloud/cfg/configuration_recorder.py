@@ -17,8 +17,9 @@ class ConfigurationRecorderArgs:
                  resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a ConfigurationRecorder resource.
-        :param pulumi.Input[bool] enterprise_edition: - Whether to use the enterprise version configuration audit. Valid values: `true` and `fales`. Default value `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+               * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
+               * If you use an enterprise account, the `resource_types` does not support updating.
         """
         if enterprise_edition is not None:
             pulumi.set(__self__, "enterprise_edition", enterprise_edition)
@@ -28,9 +29,6 @@ class ConfigurationRecorderArgs:
     @property
     @pulumi.getter(name="enterpriseEdition")
     def enterprise_edition(self) -> Optional[pulumi.Input[bool]]:
-        """
-        - Whether to use the enterprise version configuration audit. Valid values: `true` and `fales`. Default value `false`.
-        """
         return pulumi.get(self, "enterprise_edition")
 
     @enterprise_edition.setter
@@ -42,6 +40,8 @@ class ConfigurationRecorderArgs:
     def resource_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+        * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
+        * If you use an enterprise account, the `resource_types` does not support updating.
         """
         return pulumi.get(self, "resource_types")
 
@@ -60,10 +60,11 @@ class _ConfigurationRecorderState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ConfigurationRecorder resources.
-        :param pulumi.Input[bool] enterprise_edition: - Whether to use the enterprise version configuration audit. Valid values: `true` and `fales`. Default value `false`.
         :param pulumi.Input[str] organization_enable_status: Status of resource monitoring. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
         :param pulumi.Input[int] organization_master_id: The ID of the Enterprise management account.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+               * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
+               * If you use an enterprise account, the `resource_types` does not support updating.
         :param pulumi.Input[str] status: Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
         """
         if enterprise_edition is not None:
@@ -80,9 +81,6 @@ class _ConfigurationRecorderState:
     @property
     @pulumi.getter(name="enterpriseEdition")
     def enterprise_edition(self) -> Optional[pulumi.Input[bool]]:
-        """
-        - Whether to use the enterprise version configuration audit. Valid values: `true` and `fales`. Default value `false`.
-        """
         return pulumi.get(self, "enterprise_edition")
 
     @enterprise_edition.setter
@@ -118,6 +116,8 @@ class _ConfigurationRecorderState:
     def resource_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+        * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
+        * If you use an enterprise account, the `resource_types` does not support updating.
         """
         return pulumi.get(self, "resource_types")
 
@@ -148,7 +148,7 @@ class ConfigurationRecorder(pulumi.CustomResource):
                  __props__=None):
         """
         Provides a Alicloud Config Configuration Recorder resource. Cloud Config is a specialized service for evaluating resources. Cloud Config tracks configuration changes of your resources and evaluates configuration compliance. Cloud Config can help you evaluate numerous resources and maintain the continuous compliance of your cloud infrastructure.
-        For information about Alicloud Config Configuration Recorder and how to use it, see [What is Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127388.htm)
+        For information about Alicloud Config Configuration Recorder and how to use it, see [What is Configuration Recorder.](https://www.alibabacloud.com/help/en/doc-detail/153156.html)
 
         > **NOTE:** Available in v1.99.0+.
 
@@ -176,8 +176,9 @@ class ConfigurationRecorder(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enterprise_edition: - Whether to use the enterprise version configuration audit. Valid values: `true` and `fales`. Default value `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+               * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
+               * If you use an enterprise account, the `resource_types` does not support updating.
         """
         ...
     @overload
@@ -187,7 +188,7 @@ class ConfigurationRecorder(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Alicloud Config Configuration Recorder resource. Cloud Config is a specialized service for evaluating resources. Cloud Config tracks configuration changes of your resources and evaluates configuration compliance. Cloud Config can help you evaluate numerous resources and maintain the continuous compliance of your cloud infrastructure.
-        For information about Alicloud Config Configuration Recorder and how to use it, see [What is Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127388.htm)
+        For information about Alicloud Config Configuration Recorder and how to use it, see [What is Configuration Recorder.](https://www.alibabacloud.com/help/en/doc-detail/153156.html)
 
         > **NOTE:** Available in v1.99.0+.
 
@@ -269,10 +270,11 @@ class ConfigurationRecorder(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enterprise_edition: - Whether to use the enterprise version configuration audit. Valid values: `true` and `fales`. Default value `false`.
         :param pulumi.Input[str] organization_enable_status: Status of resource monitoring. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
         :param pulumi.Input[int] organization_master_id: The ID of the Enterprise management account.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+               * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
+               * If you use an enterprise account, the `resource_types` does not support updating.
         :param pulumi.Input[str] status: Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -288,10 +290,7 @@ class ConfigurationRecorder(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enterpriseEdition")
-    def enterprise_edition(self) -> pulumi.Output[Optional[bool]]:
-        """
-        - Whether to use the enterprise version configuration audit. Valid values: `true` and `fales`. Default value `false`.
-        """
+    def enterprise_edition(self) -> pulumi.Output[bool]:
         return pulumi.get(self, "enterprise_edition")
 
     @property
@@ -315,6 +314,8 @@ class ConfigurationRecorder(pulumi.CustomResource):
     def resource_types(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+        * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
+        * If you use an enterprise account, the `resource_types` does not support updating.
         """
         return pulumi.get(self, "resource_types")
 

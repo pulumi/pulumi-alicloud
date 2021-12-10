@@ -336,6 +336,1801 @@ func (o ClusterHostGroupArrayOutput) Index(i pulumi.IntInput) ClusterHostGroupOu
 	}).(ClusterHostGroupOutput)
 }
 
+type GetClustersCluster struct {
+	// Cluster connection information.
+	AccessInfos []GetClustersClusterAccessInfo `pulumi:"accessInfos"`
+	// Whether flexible expansion is allowed.
+	AutoScalingAllowed bool `pulumi:"autoScalingAllowed"`
+	// Whether to allow expansion by load.
+	AutoScalingByLoadAllowed bool `pulumi:"autoScalingByLoadAllowed"`
+	// Whether to enable elastic expansion.
+	AutoScalingEnable bool `pulumi:"autoScalingEnable"`
+	// Whether to allow the use of elastic scaling bidding instances.
+	AutoScalingSpotWithLimitAllowed bool `pulumi:"autoScalingSpotWithLimitAllowed"`
+	// List of boot actions.
+	BootstrapActionLists []GetClustersClusterBootstrapActionList `pulumi:"bootstrapActionLists"`
+	// The result of the boot operation.
+	BootstrapFailed bool `pulumi:"bootstrapFailed"`
+	// The ID of the associated cluster.
+	ClusterId string `pulumi:"clusterId"`
+	// The name of the associated cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// Cluster tag, no need to pay attention.
+	CreateResource string `pulumi:"createResource"`
+	// Creation time.
+	CreateTime string `pulumi:"createTime"`
+	// How to create a cluster.
+	CreateType string `pulumi:"createType"`
+	// The hosting type of the cluster.
+	DepositType string `pulumi:"depositType"`
+	// High security cluster.
+	EasEnable bool `pulumi:"easEnable"`
+	// Timeout time.
+	ExpiredTime string `pulumi:"expiredTime"`
+	// Additional information for Stack.
+	ExtraInfo string `pulumi:"extraInfo"`
+	// High availability cluster.
+	HighAvailabilityEnable bool `pulumi:"highAvailabilityEnable"`
+	// List of cluster machine groups.
+	HostGroupLists []GetClustersClusterHostGroupList `pulumi:"hostGroupLists"`
+	// Machine pool information.
+	HostPoolInfos []GetClustersClusterHostPoolInfo `pulumi:"hostPoolInfos"`
+	Id            string                           `pulumi:"id"`
+	// The ID of the image used to create the cluster.
+	ImageId string `pulumi:"imageId"`
+	// Whether to use Hive local Metabase.
+	LocalMetaDb bool `pulumi:"localMetaDb"`
+	// The host type of the cluster. The default is ECS.
+	MachineType string `pulumi:"machineType"`
+	// Metadata type:
+	MetaStoreType string `pulumi:"metaStoreType"`
+	// Cluster network type.
+	NetType string `pulumi:"netType"`
+	// The payment type of the resource.
+	PaymentType string `pulumi:"paymentType"`
+	// The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+	Period int `pulumi:"period"`
+	// The information of the primary cluster associated with the Gateway.
+	RelateClusterInfos []GetClustersClusterRelateClusterInfo `pulumi:"relateClusterInfos"`
+	// Whether to allow disk expansion:
+	ResizeDiskEnable bool `pulumi:"resizeDiskEnable"`
+	// The time (in seconds) that has been running.
+	RunningTime int `pulumi:"runningTime"`
+	// The ID of the security group.
+	SecurityGroupId string `pulumi:"securityGroupId"`
+	// The name of the security group.
+	SecurityGroupName string `pulumi:"securityGroupName"`
+	// Service list.
+	SoftwareInfos []GetClustersClusterSoftwareInfo `pulumi:"softwareInfos"`
+	// Cluster startup time.
+	StartTime string `pulumi:"startTime"`
+	// The cluster status.
+	Status string `pulumi:"status"`
+	// Cluster stop time.
+	StopTime string `pulumi:"stopTime"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The EMR permission name used.
+	UserDefinedEmrEcsRole string `pulumi:"userDefinedEmrEcsRole"`
+	// The user ID.
+	UserId string `pulumi:"userId"`
+	// The VPC ID.
+	VpcId string `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId string `pulumi:"vswitchId"`
+	// The zone ID.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetClustersClusterInput is an input type that accepts GetClustersClusterArgs and GetClustersClusterOutput values.
+// You can construct a concrete instance of `GetClustersClusterInput` via:
+//
+//          GetClustersClusterArgs{...}
+type GetClustersClusterInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterOutput() GetClustersClusterOutput
+	ToGetClustersClusterOutputWithContext(context.Context) GetClustersClusterOutput
+}
+
+type GetClustersClusterArgs struct {
+	// Cluster connection information.
+	AccessInfos GetClustersClusterAccessInfoArrayInput `pulumi:"accessInfos"`
+	// Whether flexible expansion is allowed.
+	AutoScalingAllowed pulumi.BoolInput `pulumi:"autoScalingAllowed"`
+	// Whether to allow expansion by load.
+	AutoScalingByLoadAllowed pulumi.BoolInput `pulumi:"autoScalingByLoadAllowed"`
+	// Whether to enable elastic expansion.
+	AutoScalingEnable pulumi.BoolInput `pulumi:"autoScalingEnable"`
+	// Whether to allow the use of elastic scaling bidding instances.
+	AutoScalingSpotWithLimitAllowed pulumi.BoolInput `pulumi:"autoScalingSpotWithLimitAllowed"`
+	// List of boot actions.
+	BootstrapActionLists GetClustersClusterBootstrapActionListArrayInput `pulumi:"bootstrapActionLists"`
+	// The result of the boot operation.
+	BootstrapFailed pulumi.BoolInput `pulumi:"bootstrapFailed"`
+	// The ID of the associated cluster.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The name of the associated cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// Cluster tag, no need to pay attention.
+	CreateResource pulumi.StringInput `pulumi:"createResource"`
+	// Creation time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// How to create a cluster.
+	CreateType pulumi.StringInput `pulumi:"createType"`
+	// The hosting type of the cluster.
+	DepositType pulumi.StringInput `pulumi:"depositType"`
+	// High security cluster.
+	EasEnable pulumi.BoolInput `pulumi:"easEnable"`
+	// Timeout time.
+	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
+	// Additional information for Stack.
+	ExtraInfo pulumi.StringInput `pulumi:"extraInfo"`
+	// High availability cluster.
+	HighAvailabilityEnable pulumi.BoolInput `pulumi:"highAvailabilityEnable"`
+	// List of cluster machine groups.
+	HostGroupLists GetClustersClusterHostGroupListArrayInput `pulumi:"hostGroupLists"`
+	// Machine pool information.
+	HostPoolInfos GetClustersClusterHostPoolInfoArrayInput `pulumi:"hostPoolInfos"`
+	Id            pulumi.StringInput                       `pulumi:"id"`
+	// The ID of the image used to create the cluster.
+	ImageId pulumi.StringInput `pulumi:"imageId"`
+	// Whether to use Hive local Metabase.
+	LocalMetaDb pulumi.BoolInput `pulumi:"localMetaDb"`
+	// The host type of the cluster. The default is ECS.
+	MachineType pulumi.StringInput `pulumi:"machineType"`
+	// Metadata type:
+	MetaStoreType pulumi.StringInput `pulumi:"metaStoreType"`
+	// Cluster network type.
+	NetType pulumi.StringInput `pulumi:"netType"`
+	// The payment type of the resource.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+	Period pulumi.IntInput `pulumi:"period"`
+	// The information of the primary cluster associated with the Gateway.
+	RelateClusterInfos GetClustersClusterRelateClusterInfoArrayInput `pulumi:"relateClusterInfos"`
+	// Whether to allow disk expansion:
+	ResizeDiskEnable pulumi.BoolInput `pulumi:"resizeDiskEnable"`
+	// The time (in seconds) that has been running.
+	RunningTime pulumi.IntInput `pulumi:"runningTime"`
+	// The ID of the security group.
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	// The name of the security group.
+	SecurityGroupName pulumi.StringInput `pulumi:"securityGroupName"`
+	// Service list.
+	SoftwareInfos GetClustersClusterSoftwareInfoArrayInput `pulumi:"softwareInfos"`
+	// Cluster startup time.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// The cluster status.
+	Status pulumi.StringInput `pulumi:"status"`
+	// Cluster stop time.
+	StopTime pulumi.StringInput `pulumi:"stopTime"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The EMR permission name used.
+	UserDefinedEmrEcsRole pulumi.StringInput `pulumi:"userDefinedEmrEcsRole"`
+	// The user ID.
+	UserId pulumi.StringInput `pulumi:"userId"`
+	// The VPC ID.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// The zone ID.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetClustersClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersCluster)(nil)).Elem()
+}
+
+func (i GetClustersClusterArgs) ToGetClustersClusterOutput() GetClustersClusterOutput {
+	return i.ToGetClustersClusterOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterArgs) ToGetClustersClusterOutputWithContext(ctx context.Context) GetClustersClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterOutput)
+}
+
+// GetClustersClusterArrayInput is an input type that accepts GetClustersClusterArray and GetClustersClusterArrayOutput values.
+// You can construct a concrete instance of `GetClustersClusterArrayInput` via:
+//
+//          GetClustersClusterArray{ GetClustersClusterArgs{...} }
+type GetClustersClusterArrayInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterArrayOutput() GetClustersClusterArrayOutput
+	ToGetClustersClusterArrayOutputWithContext(context.Context) GetClustersClusterArrayOutput
+}
+
+type GetClustersClusterArray []GetClustersClusterInput
+
+func (GetClustersClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersCluster)(nil)).Elem()
+}
+
+func (i GetClustersClusterArray) ToGetClustersClusterArrayOutput() GetClustersClusterArrayOutput {
+	return i.ToGetClustersClusterArrayOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterArray) ToGetClustersClusterArrayOutputWithContext(ctx context.Context) GetClustersClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterArrayOutput)
+}
+
+type GetClustersClusterOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersCluster)(nil)).Elem()
+}
+
+func (o GetClustersClusterOutput) ToGetClustersClusterOutput() GetClustersClusterOutput {
+	return o
+}
+
+func (o GetClustersClusterOutput) ToGetClustersClusterOutputWithContext(ctx context.Context) GetClustersClusterOutput {
+	return o
+}
+
+// Cluster connection information.
+func (o GetClustersClusterOutput) AccessInfos() GetClustersClusterAccessInfoArrayOutput {
+	return o.ApplyT(func(v GetClustersCluster) []GetClustersClusterAccessInfo { return v.AccessInfos }).(GetClustersClusterAccessInfoArrayOutput)
+}
+
+// Whether flexible expansion is allowed.
+func (o GetClustersClusterOutput) AutoScalingAllowed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClustersCluster) bool { return v.AutoScalingAllowed }).(pulumi.BoolOutput)
+}
+
+// Whether to allow expansion by load.
+func (o GetClustersClusterOutput) AutoScalingByLoadAllowed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClustersCluster) bool { return v.AutoScalingByLoadAllowed }).(pulumi.BoolOutput)
+}
+
+// Whether to enable elastic expansion.
+func (o GetClustersClusterOutput) AutoScalingEnable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClustersCluster) bool { return v.AutoScalingEnable }).(pulumi.BoolOutput)
+}
+
+// Whether to allow the use of elastic scaling bidding instances.
+func (o GetClustersClusterOutput) AutoScalingSpotWithLimitAllowed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClustersCluster) bool { return v.AutoScalingSpotWithLimitAllowed }).(pulumi.BoolOutput)
+}
+
+// List of boot actions.
+func (o GetClustersClusterOutput) BootstrapActionLists() GetClustersClusterBootstrapActionListArrayOutput {
+	return o.ApplyT(func(v GetClustersCluster) []GetClustersClusterBootstrapActionList { return v.BootstrapActionLists }).(GetClustersClusterBootstrapActionListArrayOutput)
+}
+
+// The result of the boot operation.
+func (o GetClustersClusterOutput) BootstrapFailed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClustersCluster) bool { return v.BootstrapFailed }).(pulumi.BoolOutput)
+}
+
+// The ID of the associated cluster.
+func (o GetClustersClusterOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The name of the associated cluster.
+func (o GetClustersClusterOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// Cluster tag, no need to pay attention.
+func (o GetClustersClusterOutput) CreateResource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.CreateResource }).(pulumi.StringOutput)
+}
+
+// Creation time.
+func (o GetClustersClusterOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// How to create a cluster.
+func (o GetClustersClusterOutput) CreateType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.CreateType }).(pulumi.StringOutput)
+}
+
+// The hosting type of the cluster.
+func (o GetClustersClusterOutput) DepositType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.DepositType }).(pulumi.StringOutput)
+}
+
+// High security cluster.
+func (o GetClustersClusterOutput) EasEnable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClustersCluster) bool { return v.EasEnable }).(pulumi.BoolOutput)
+}
+
+// Timeout time.
+func (o GetClustersClusterOutput) ExpiredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ExpiredTime }).(pulumi.StringOutput)
+}
+
+// Additional information for Stack.
+func (o GetClustersClusterOutput) ExtraInfo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ExtraInfo }).(pulumi.StringOutput)
+}
+
+// High availability cluster.
+func (o GetClustersClusterOutput) HighAvailabilityEnable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClustersCluster) bool { return v.HighAvailabilityEnable }).(pulumi.BoolOutput)
+}
+
+// List of cluster machine groups.
+func (o GetClustersClusterOutput) HostGroupLists() GetClustersClusterHostGroupListArrayOutput {
+	return o.ApplyT(func(v GetClustersCluster) []GetClustersClusterHostGroupList { return v.HostGroupLists }).(GetClustersClusterHostGroupListArrayOutput)
+}
+
+// Machine pool information.
+func (o GetClustersClusterOutput) HostPoolInfos() GetClustersClusterHostPoolInfoArrayOutput {
+	return o.ApplyT(func(v GetClustersCluster) []GetClustersClusterHostPoolInfo { return v.HostPoolInfos }).(GetClustersClusterHostPoolInfoArrayOutput)
+}
+
+func (o GetClustersClusterOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the image used to create the cluster.
+func (o GetClustersClusterOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// Whether to use Hive local Metabase.
+func (o GetClustersClusterOutput) LocalMetaDb() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClustersCluster) bool { return v.LocalMetaDb }).(pulumi.BoolOutput)
+}
+
+// The host type of the cluster. The default is ECS.
+func (o GetClustersClusterOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+// Metadata type:
+func (o GetClustersClusterOutput) MetaStoreType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.MetaStoreType }).(pulumi.StringOutput)
+}
+
+// Cluster network type.
+func (o GetClustersClusterOutput) NetType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.NetType }).(pulumi.StringOutput)
+}
+
+// The payment type of the resource.
+func (o GetClustersClusterOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+func (o GetClustersClusterOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClustersCluster) int { return v.Period }).(pulumi.IntOutput)
+}
+
+// The information of the primary cluster associated with the Gateway.
+func (o GetClustersClusterOutput) RelateClusterInfos() GetClustersClusterRelateClusterInfoArrayOutput {
+	return o.ApplyT(func(v GetClustersCluster) []GetClustersClusterRelateClusterInfo { return v.RelateClusterInfos }).(GetClustersClusterRelateClusterInfoArrayOutput)
+}
+
+// Whether to allow disk expansion:
+func (o GetClustersClusterOutput) ResizeDiskEnable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClustersCluster) bool { return v.ResizeDiskEnable }).(pulumi.BoolOutput)
+}
+
+// The time (in seconds) that has been running.
+func (o GetClustersClusterOutput) RunningTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClustersCluster) int { return v.RunningTime }).(pulumi.IntOutput)
+}
+
+// The ID of the security group.
+func (o GetClustersClusterOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// The name of the security group.
+func (o GetClustersClusterOutput) SecurityGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.SecurityGroupName }).(pulumi.StringOutput)
+}
+
+// Service list.
+func (o GetClustersClusterOutput) SoftwareInfos() GetClustersClusterSoftwareInfoArrayOutput {
+	return o.ApplyT(func(v GetClustersCluster) []GetClustersClusterSoftwareInfo { return v.SoftwareInfos }).(GetClustersClusterSoftwareInfoArrayOutput)
+}
+
+// Cluster startup time.
+func (o GetClustersClusterOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The cluster status.
+func (o GetClustersClusterOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Cluster stop time.
+func (o GetClustersClusterOutput) StopTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.StopTime }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o GetClustersClusterOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClustersCluster) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The EMR permission name used.
+func (o GetClustersClusterOutput) UserDefinedEmrEcsRole() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.UserDefinedEmrEcsRole }).(pulumi.StringOutput)
+}
+
+// The user ID.
+func (o GetClustersClusterOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+// The VPC ID.
+func (o GetClustersClusterOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The vswitch id.
+func (o GetClustersClusterOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The zone ID.
+func (o GetClustersClusterOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetClustersClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersCluster)(nil)).Elem()
+}
+
+func (o GetClustersClusterArrayOutput) ToGetClustersClusterArrayOutput() GetClustersClusterArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterArrayOutput) ToGetClustersClusterArrayOutputWithContext(ctx context.Context) GetClustersClusterArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterArrayOutput) Index(i pulumi.IntInput) GetClustersClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClustersCluster {
+		return vs[0].([]GetClustersCluster)[vs[1].(int)]
+	}).(GetClustersClusterOutput)
+}
+
+type GetClustersClusterAccessInfo struct {
+	// Link address information list of ZooKeeper.
+	ZkLinks []GetClustersClusterAccessInfoZkLink `pulumi:"zkLinks"`
+}
+
+// GetClustersClusterAccessInfoInput is an input type that accepts GetClustersClusterAccessInfoArgs and GetClustersClusterAccessInfoOutput values.
+// You can construct a concrete instance of `GetClustersClusterAccessInfoInput` via:
+//
+//          GetClustersClusterAccessInfoArgs{...}
+type GetClustersClusterAccessInfoInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterAccessInfoOutput() GetClustersClusterAccessInfoOutput
+	ToGetClustersClusterAccessInfoOutputWithContext(context.Context) GetClustersClusterAccessInfoOutput
+}
+
+type GetClustersClusterAccessInfoArgs struct {
+	// Link address information list of ZooKeeper.
+	ZkLinks GetClustersClusterAccessInfoZkLinkArrayInput `pulumi:"zkLinks"`
+}
+
+func (GetClustersClusterAccessInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterAccessInfo)(nil)).Elem()
+}
+
+func (i GetClustersClusterAccessInfoArgs) ToGetClustersClusterAccessInfoOutput() GetClustersClusterAccessInfoOutput {
+	return i.ToGetClustersClusterAccessInfoOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterAccessInfoArgs) ToGetClustersClusterAccessInfoOutputWithContext(ctx context.Context) GetClustersClusterAccessInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterAccessInfoOutput)
+}
+
+// GetClustersClusterAccessInfoArrayInput is an input type that accepts GetClustersClusterAccessInfoArray and GetClustersClusterAccessInfoArrayOutput values.
+// You can construct a concrete instance of `GetClustersClusterAccessInfoArrayInput` via:
+//
+//          GetClustersClusterAccessInfoArray{ GetClustersClusterAccessInfoArgs{...} }
+type GetClustersClusterAccessInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterAccessInfoArrayOutput() GetClustersClusterAccessInfoArrayOutput
+	ToGetClustersClusterAccessInfoArrayOutputWithContext(context.Context) GetClustersClusterAccessInfoArrayOutput
+}
+
+type GetClustersClusterAccessInfoArray []GetClustersClusterAccessInfoInput
+
+func (GetClustersClusterAccessInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterAccessInfo)(nil)).Elem()
+}
+
+func (i GetClustersClusterAccessInfoArray) ToGetClustersClusterAccessInfoArrayOutput() GetClustersClusterAccessInfoArrayOutput {
+	return i.ToGetClustersClusterAccessInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterAccessInfoArray) ToGetClustersClusterAccessInfoArrayOutputWithContext(ctx context.Context) GetClustersClusterAccessInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterAccessInfoArrayOutput)
+}
+
+type GetClustersClusterAccessInfoOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterAccessInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterAccessInfo)(nil)).Elem()
+}
+
+func (o GetClustersClusterAccessInfoOutput) ToGetClustersClusterAccessInfoOutput() GetClustersClusterAccessInfoOutput {
+	return o
+}
+
+func (o GetClustersClusterAccessInfoOutput) ToGetClustersClusterAccessInfoOutputWithContext(ctx context.Context) GetClustersClusterAccessInfoOutput {
+	return o
+}
+
+// Link address information list of ZooKeeper.
+func (o GetClustersClusterAccessInfoOutput) ZkLinks() GetClustersClusterAccessInfoZkLinkArrayOutput {
+	return o.ApplyT(func(v GetClustersClusterAccessInfo) []GetClustersClusterAccessInfoZkLink { return v.ZkLinks }).(GetClustersClusterAccessInfoZkLinkArrayOutput)
+}
+
+type GetClustersClusterAccessInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterAccessInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterAccessInfo)(nil)).Elem()
+}
+
+func (o GetClustersClusterAccessInfoArrayOutput) ToGetClustersClusterAccessInfoArrayOutput() GetClustersClusterAccessInfoArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterAccessInfoArrayOutput) ToGetClustersClusterAccessInfoArrayOutputWithContext(ctx context.Context) GetClustersClusterAccessInfoArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterAccessInfoArrayOutput) Index(i pulumi.IntInput) GetClustersClusterAccessInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClustersClusterAccessInfo {
+		return vs[0].([]GetClustersClusterAccessInfo)[vs[1].(int)]
+	}).(GetClustersClusterAccessInfoOutput)
+}
+
+type GetClustersClusterAccessInfoZkLink struct {
+	// The access link address of ZooKeeper.
+	Link string `pulumi:"link"`
+	// The port of ZooKeeper.
+	Port string `pulumi:"port"`
+}
+
+// GetClustersClusterAccessInfoZkLinkInput is an input type that accepts GetClustersClusterAccessInfoZkLinkArgs and GetClustersClusterAccessInfoZkLinkOutput values.
+// You can construct a concrete instance of `GetClustersClusterAccessInfoZkLinkInput` via:
+//
+//          GetClustersClusterAccessInfoZkLinkArgs{...}
+type GetClustersClusterAccessInfoZkLinkInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterAccessInfoZkLinkOutput() GetClustersClusterAccessInfoZkLinkOutput
+	ToGetClustersClusterAccessInfoZkLinkOutputWithContext(context.Context) GetClustersClusterAccessInfoZkLinkOutput
+}
+
+type GetClustersClusterAccessInfoZkLinkArgs struct {
+	// The access link address of ZooKeeper.
+	Link pulumi.StringInput `pulumi:"link"`
+	// The port of ZooKeeper.
+	Port pulumi.StringInput `pulumi:"port"`
+}
+
+func (GetClustersClusterAccessInfoZkLinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterAccessInfoZkLink)(nil)).Elem()
+}
+
+func (i GetClustersClusterAccessInfoZkLinkArgs) ToGetClustersClusterAccessInfoZkLinkOutput() GetClustersClusterAccessInfoZkLinkOutput {
+	return i.ToGetClustersClusterAccessInfoZkLinkOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterAccessInfoZkLinkArgs) ToGetClustersClusterAccessInfoZkLinkOutputWithContext(ctx context.Context) GetClustersClusterAccessInfoZkLinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterAccessInfoZkLinkOutput)
+}
+
+// GetClustersClusterAccessInfoZkLinkArrayInput is an input type that accepts GetClustersClusterAccessInfoZkLinkArray and GetClustersClusterAccessInfoZkLinkArrayOutput values.
+// You can construct a concrete instance of `GetClustersClusterAccessInfoZkLinkArrayInput` via:
+//
+//          GetClustersClusterAccessInfoZkLinkArray{ GetClustersClusterAccessInfoZkLinkArgs{...} }
+type GetClustersClusterAccessInfoZkLinkArrayInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterAccessInfoZkLinkArrayOutput() GetClustersClusterAccessInfoZkLinkArrayOutput
+	ToGetClustersClusterAccessInfoZkLinkArrayOutputWithContext(context.Context) GetClustersClusterAccessInfoZkLinkArrayOutput
+}
+
+type GetClustersClusterAccessInfoZkLinkArray []GetClustersClusterAccessInfoZkLinkInput
+
+func (GetClustersClusterAccessInfoZkLinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterAccessInfoZkLink)(nil)).Elem()
+}
+
+func (i GetClustersClusterAccessInfoZkLinkArray) ToGetClustersClusterAccessInfoZkLinkArrayOutput() GetClustersClusterAccessInfoZkLinkArrayOutput {
+	return i.ToGetClustersClusterAccessInfoZkLinkArrayOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterAccessInfoZkLinkArray) ToGetClustersClusterAccessInfoZkLinkArrayOutputWithContext(ctx context.Context) GetClustersClusterAccessInfoZkLinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterAccessInfoZkLinkArrayOutput)
+}
+
+type GetClustersClusterAccessInfoZkLinkOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterAccessInfoZkLinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterAccessInfoZkLink)(nil)).Elem()
+}
+
+func (o GetClustersClusterAccessInfoZkLinkOutput) ToGetClustersClusterAccessInfoZkLinkOutput() GetClustersClusterAccessInfoZkLinkOutput {
+	return o
+}
+
+func (o GetClustersClusterAccessInfoZkLinkOutput) ToGetClustersClusterAccessInfoZkLinkOutputWithContext(ctx context.Context) GetClustersClusterAccessInfoZkLinkOutput {
+	return o
+}
+
+// The access link address of ZooKeeper.
+func (o GetClustersClusterAccessInfoZkLinkOutput) Link() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterAccessInfoZkLink) string { return v.Link }).(pulumi.StringOutput)
+}
+
+// The port of ZooKeeper.
+func (o GetClustersClusterAccessInfoZkLinkOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterAccessInfoZkLink) string { return v.Port }).(pulumi.StringOutput)
+}
+
+type GetClustersClusterAccessInfoZkLinkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterAccessInfoZkLinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterAccessInfoZkLink)(nil)).Elem()
+}
+
+func (o GetClustersClusterAccessInfoZkLinkArrayOutput) ToGetClustersClusterAccessInfoZkLinkArrayOutput() GetClustersClusterAccessInfoZkLinkArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterAccessInfoZkLinkArrayOutput) ToGetClustersClusterAccessInfoZkLinkArrayOutputWithContext(ctx context.Context) GetClustersClusterAccessInfoZkLinkArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterAccessInfoZkLinkArrayOutput) Index(i pulumi.IntInput) GetClustersClusterAccessInfoZkLinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClustersClusterAccessInfoZkLink {
+		return vs[0].([]GetClustersClusterAccessInfoZkLink)[vs[1].(int)]
+	}).(GetClustersClusterAccessInfoZkLinkOutput)
+}
+
+type GetClustersClusterBootstrapActionList struct {
+	// Parameters of the boot operation.
+	Arg string `pulumi:"arg"`
+	// The internal name of the service.
+	Name string `pulumi:"name"`
+	// Boot operation script path.
+	Path string `pulumi:"path"`
+}
+
+// GetClustersClusterBootstrapActionListInput is an input type that accepts GetClustersClusterBootstrapActionListArgs and GetClustersClusterBootstrapActionListOutput values.
+// You can construct a concrete instance of `GetClustersClusterBootstrapActionListInput` via:
+//
+//          GetClustersClusterBootstrapActionListArgs{...}
+type GetClustersClusterBootstrapActionListInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterBootstrapActionListOutput() GetClustersClusterBootstrapActionListOutput
+	ToGetClustersClusterBootstrapActionListOutputWithContext(context.Context) GetClustersClusterBootstrapActionListOutput
+}
+
+type GetClustersClusterBootstrapActionListArgs struct {
+	// Parameters of the boot operation.
+	Arg pulumi.StringInput `pulumi:"arg"`
+	// The internal name of the service.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Boot operation script path.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (GetClustersClusterBootstrapActionListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterBootstrapActionList)(nil)).Elem()
+}
+
+func (i GetClustersClusterBootstrapActionListArgs) ToGetClustersClusterBootstrapActionListOutput() GetClustersClusterBootstrapActionListOutput {
+	return i.ToGetClustersClusterBootstrapActionListOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterBootstrapActionListArgs) ToGetClustersClusterBootstrapActionListOutputWithContext(ctx context.Context) GetClustersClusterBootstrapActionListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterBootstrapActionListOutput)
+}
+
+// GetClustersClusterBootstrapActionListArrayInput is an input type that accepts GetClustersClusterBootstrapActionListArray and GetClustersClusterBootstrapActionListArrayOutput values.
+// You can construct a concrete instance of `GetClustersClusterBootstrapActionListArrayInput` via:
+//
+//          GetClustersClusterBootstrapActionListArray{ GetClustersClusterBootstrapActionListArgs{...} }
+type GetClustersClusterBootstrapActionListArrayInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterBootstrapActionListArrayOutput() GetClustersClusterBootstrapActionListArrayOutput
+	ToGetClustersClusterBootstrapActionListArrayOutputWithContext(context.Context) GetClustersClusterBootstrapActionListArrayOutput
+}
+
+type GetClustersClusterBootstrapActionListArray []GetClustersClusterBootstrapActionListInput
+
+func (GetClustersClusterBootstrapActionListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterBootstrapActionList)(nil)).Elem()
+}
+
+func (i GetClustersClusterBootstrapActionListArray) ToGetClustersClusterBootstrapActionListArrayOutput() GetClustersClusterBootstrapActionListArrayOutput {
+	return i.ToGetClustersClusterBootstrapActionListArrayOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterBootstrapActionListArray) ToGetClustersClusterBootstrapActionListArrayOutputWithContext(ctx context.Context) GetClustersClusterBootstrapActionListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterBootstrapActionListArrayOutput)
+}
+
+type GetClustersClusterBootstrapActionListOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterBootstrapActionListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterBootstrapActionList)(nil)).Elem()
+}
+
+func (o GetClustersClusterBootstrapActionListOutput) ToGetClustersClusterBootstrapActionListOutput() GetClustersClusterBootstrapActionListOutput {
+	return o
+}
+
+func (o GetClustersClusterBootstrapActionListOutput) ToGetClustersClusterBootstrapActionListOutputWithContext(ctx context.Context) GetClustersClusterBootstrapActionListOutput {
+	return o
+}
+
+// Parameters of the boot operation.
+func (o GetClustersClusterBootstrapActionListOutput) Arg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterBootstrapActionList) string { return v.Arg }).(pulumi.StringOutput)
+}
+
+// The internal name of the service.
+func (o GetClustersClusterBootstrapActionListOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterBootstrapActionList) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Boot operation script path.
+func (o GetClustersClusterBootstrapActionListOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterBootstrapActionList) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type GetClustersClusterBootstrapActionListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterBootstrapActionListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterBootstrapActionList)(nil)).Elem()
+}
+
+func (o GetClustersClusterBootstrapActionListArrayOutput) ToGetClustersClusterBootstrapActionListArrayOutput() GetClustersClusterBootstrapActionListArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterBootstrapActionListArrayOutput) ToGetClustersClusterBootstrapActionListArrayOutputWithContext(ctx context.Context) GetClustersClusterBootstrapActionListArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterBootstrapActionListArrayOutput) Index(i pulumi.IntInput) GetClustersClusterBootstrapActionListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClustersClusterBootstrapActionList {
+		return vs[0].([]GetClustersClusterBootstrapActionList)[vs[1].(int)]
+	}).(GetClustersClusterBootstrapActionListOutput)
+}
+
+type GetClustersClusterHostGroupList struct {
+	// Bandwidth.
+	BandWidth string `pulumi:"bandWidth"`
+	// Payment Type.
+	ChargeType string `pulumi:"chargeType"`
+	// The number of CPU cores.
+	CpuCore int `pulumi:"cpuCore"`
+	// Data disk capacity.
+	DiskCapacity int `pulumi:"diskCapacity"`
+	// The number of data disks.
+	DiskCount int `pulumi:"diskCount"`
+	// System disk type:
+	DiskType string `pulumi:"diskType"`
+	// The current operation type of the machine Group:
+	HostGroupChangeType string `pulumi:"hostGroupChangeType"`
+	// The ID of the machine group.
+	HostGroupId string `pulumi:"hostGroupId"`
+	// The name of the machine group.
+	HostGroupName string `pulumi:"hostGroupName"`
+	// Role of host in cluster:
+	HostGroupType string `pulumi:"hostGroupType"`
+	// Machine Group instance.
+	InstanceType string `pulumi:"instanceType"`
+	// Memory size.
+	MemoryCapacity int `pulumi:"memoryCapacity"`
+	// The number of machine group nodes.
+	NodeCount int `pulumi:"nodeCount"`
+	// Machine node.
+	Nodes []GetClustersClusterHostGroupListNode `pulumi:"nodes"`
+	// The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+	Period string `pulumi:"period"`
+}
+
+// GetClustersClusterHostGroupListInput is an input type that accepts GetClustersClusterHostGroupListArgs and GetClustersClusterHostGroupListOutput values.
+// You can construct a concrete instance of `GetClustersClusterHostGroupListInput` via:
+//
+//          GetClustersClusterHostGroupListArgs{...}
+type GetClustersClusterHostGroupListInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterHostGroupListOutput() GetClustersClusterHostGroupListOutput
+	ToGetClustersClusterHostGroupListOutputWithContext(context.Context) GetClustersClusterHostGroupListOutput
+}
+
+type GetClustersClusterHostGroupListArgs struct {
+	// Bandwidth.
+	BandWidth pulumi.StringInput `pulumi:"bandWidth"`
+	// Payment Type.
+	ChargeType pulumi.StringInput `pulumi:"chargeType"`
+	// The number of CPU cores.
+	CpuCore pulumi.IntInput `pulumi:"cpuCore"`
+	// Data disk capacity.
+	DiskCapacity pulumi.IntInput `pulumi:"diskCapacity"`
+	// The number of data disks.
+	DiskCount pulumi.IntInput `pulumi:"diskCount"`
+	// System disk type:
+	DiskType pulumi.StringInput `pulumi:"diskType"`
+	// The current operation type of the machine Group:
+	HostGroupChangeType pulumi.StringInput `pulumi:"hostGroupChangeType"`
+	// The ID of the machine group.
+	HostGroupId pulumi.StringInput `pulumi:"hostGroupId"`
+	// The name of the machine group.
+	HostGroupName pulumi.StringInput `pulumi:"hostGroupName"`
+	// Role of host in cluster:
+	HostGroupType pulumi.StringInput `pulumi:"hostGroupType"`
+	// Machine Group instance.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// Memory size.
+	MemoryCapacity pulumi.IntInput `pulumi:"memoryCapacity"`
+	// The number of machine group nodes.
+	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
+	// Machine node.
+	Nodes GetClustersClusterHostGroupListNodeArrayInput `pulumi:"nodes"`
+	// The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+	Period pulumi.StringInput `pulumi:"period"`
+}
+
+func (GetClustersClusterHostGroupListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterHostGroupList)(nil)).Elem()
+}
+
+func (i GetClustersClusterHostGroupListArgs) ToGetClustersClusterHostGroupListOutput() GetClustersClusterHostGroupListOutput {
+	return i.ToGetClustersClusterHostGroupListOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterHostGroupListArgs) ToGetClustersClusterHostGroupListOutputWithContext(ctx context.Context) GetClustersClusterHostGroupListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterHostGroupListOutput)
+}
+
+// GetClustersClusterHostGroupListArrayInput is an input type that accepts GetClustersClusterHostGroupListArray and GetClustersClusterHostGroupListArrayOutput values.
+// You can construct a concrete instance of `GetClustersClusterHostGroupListArrayInput` via:
+//
+//          GetClustersClusterHostGroupListArray{ GetClustersClusterHostGroupListArgs{...} }
+type GetClustersClusterHostGroupListArrayInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterHostGroupListArrayOutput() GetClustersClusterHostGroupListArrayOutput
+	ToGetClustersClusterHostGroupListArrayOutputWithContext(context.Context) GetClustersClusterHostGroupListArrayOutput
+}
+
+type GetClustersClusterHostGroupListArray []GetClustersClusterHostGroupListInput
+
+func (GetClustersClusterHostGroupListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterHostGroupList)(nil)).Elem()
+}
+
+func (i GetClustersClusterHostGroupListArray) ToGetClustersClusterHostGroupListArrayOutput() GetClustersClusterHostGroupListArrayOutput {
+	return i.ToGetClustersClusterHostGroupListArrayOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterHostGroupListArray) ToGetClustersClusterHostGroupListArrayOutputWithContext(ctx context.Context) GetClustersClusterHostGroupListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterHostGroupListArrayOutput)
+}
+
+type GetClustersClusterHostGroupListOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterHostGroupListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterHostGroupList)(nil)).Elem()
+}
+
+func (o GetClustersClusterHostGroupListOutput) ToGetClustersClusterHostGroupListOutput() GetClustersClusterHostGroupListOutput {
+	return o
+}
+
+func (o GetClustersClusterHostGroupListOutput) ToGetClustersClusterHostGroupListOutputWithContext(ctx context.Context) GetClustersClusterHostGroupListOutput {
+	return o
+}
+
+// Bandwidth.
+func (o GetClustersClusterHostGroupListOutput) BandWidth() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupList) string { return v.BandWidth }).(pulumi.StringOutput)
+}
+
+// Payment Type.
+func (o GetClustersClusterHostGroupListOutput) ChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupList) string { return v.ChargeType }).(pulumi.StringOutput)
+}
+
+// The number of CPU cores.
+func (o GetClustersClusterHostGroupListOutput) CpuCore() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupList) int { return v.CpuCore }).(pulumi.IntOutput)
+}
+
+// Data disk capacity.
+func (o GetClustersClusterHostGroupListOutput) DiskCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupList) int { return v.DiskCapacity }).(pulumi.IntOutput)
+}
+
+// The number of data disks.
+func (o GetClustersClusterHostGroupListOutput) DiskCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupList) int { return v.DiskCount }).(pulumi.IntOutput)
+}
+
+// System disk type:
+func (o GetClustersClusterHostGroupListOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupList) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// The current operation type of the machine Group:
+func (o GetClustersClusterHostGroupListOutput) HostGroupChangeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupList) string { return v.HostGroupChangeType }).(pulumi.StringOutput)
+}
+
+// The ID of the machine group.
+func (o GetClustersClusterHostGroupListOutput) HostGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupList) string { return v.HostGroupId }).(pulumi.StringOutput)
+}
+
+// The name of the machine group.
+func (o GetClustersClusterHostGroupListOutput) HostGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupList) string { return v.HostGroupName }).(pulumi.StringOutput)
+}
+
+// Role of host in cluster:
+func (o GetClustersClusterHostGroupListOutput) HostGroupType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupList) string { return v.HostGroupType }).(pulumi.StringOutput)
+}
+
+// Machine Group instance.
+func (o GetClustersClusterHostGroupListOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupList) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Memory size.
+func (o GetClustersClusterHostGroupListOutput) MemoryCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupList) int { return v.MemoryCapacity }).(pulumi.IntOutput)
+}
+
+// The number of machine group nodes.
+func (o GetClustersClusterHostGroupListOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupList) int { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+// Machine node.
+func (o GetClustersClusterHostGroupListOutput) Nodes() GetClustersClusterHostGroupListNodeArrayOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupList) []GetClustersClusterHostGroupListNode { return v.Nodes }).(GetClustersClusterHostGroupListNodeArrayOutput)
+}
+
+// The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+func (o GetClustersClusterHostGroupListOutput) Period() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupList) string { return v.Period }).(pulumi.StringOutput)
+}
+
+type GetClustersClusterHostGroupListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterHostGroupListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterHostGroupList)(nil)).Elem()
+}
+
+func (o GetClustersClusterHostGroupListArrayOutput) ToGetClustersClusterHostGroupListArrayOutput() GetClustersClusterHostGroupListArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterHostGroupListArrayOutput) ToGetClustersClusterHostGroupListArrayOutputWithContext(ctx context.Context) GetClustersClusterHostGroupListArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterHostGroupListArrayOutput) Index(i pulumi.IntInput) GetClustersClusterHostGroupListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClustersClusterHostGroupList {
+		return vs[0].([]GetClustersClusterHostGroupList)[vs[1].(int)]
+	}).(GetClustersClusterHostGroupListOutput)
+}
+
+type GetClustersClusterHostGroupListNode struct {
+	// Creation time.
+	CreateTime string `pulumi:"createTime"`
+	// Disk information.
+	DiskInfos []GetClustersClusterHostGroupListNodeDiskInfo `pulumi:"diskInfos"`
+	// The timeout of the EMR.
+	EmrExpiredTime string `pulumi:"emrExpiredTime"`
+	// Timeout time.
+	ExpiredTime string `pulumi:"expiredTime"`
+	// The Intranet IP of the EMR.
+	InnerIp string `pulumi:"innerIp"`
+	// The ID of the ECS instance.
+	InstanceId string `pulumi:"instanceId"`
+	// Public IP address.
+	PubIp string `pulumi:"pubIp"`
+	// The cluster status.
+	Status string `pulumi:"status"`
+	// Whether IPV6 is supported.
+	SupportIpv6 bool `pulumi:"supportIpv6"`
+	// The zone ID.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetClustersClusterHostGroupListNodeInput is an input type that accepts GetClustersClusterHostGroupListNodeArgs and GetClustersClusterHostGroupListNodeOutput values.
+// You can construct a concrete instance of `GetClustersClusterHostGroupListNodeInput` via:
+//
+//          GetClustersClusterHostGroupListNodeArgs{...}
+type GetClustersClusterHostGroupListNodeInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterHostGroupListNodeOutput() GetClustersClusterHostGroupListNodeOutput
+	ToGetClustersClusterHostGroupListNodeOutputWithContext(context.Context) GetClustersClusterHostGroupListNodeOutput
+}
+
+type GetClustersClusterHostGroupListNodeArgs struct {
+	// Creation time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Disk information.
+	DiskInfos GetClustersClusterHostGroupListNodeDiskInfoArrayInput `pulumi:"diskInfos"`
+	// The timeout of the EMR.
+	EmrExpiredTime pulumi.StringInput `pulumi:"emrExpiredTime"`
+	// Timeout time.
+	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
+	// The Intranet IP of the EMR.
+	InnerIp pulumi.StringInput `pulumi:"innerIp"`
+	// The ID of the ECS instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// Public IP address.
+	PubIp pulumi.StringInput `pulumi:"pubIp"`
+	// The cluster status.
+	Status pulumi.StringInput `pulumi:"status"`
+	// Whether IPV6 is supported.
+	SupportIpv6 pulumi.BoolInput `pulumi:"supportIpv6"`
+	// The zone ID.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetClustersClusterHostGroupListNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterHostGroupListNode)(nil)).Elem()
+}
+
+func (i GetClustersClusterHostGroupListNodeArgs) ToGetClustersClusterHostGroupListNodeOutput() GetClustersClusterHostGroupListNodeOutput {
+	return i.ToGetClustersClusterHostGroupListNodeOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterHostGroupListNodeArgs) ToGetClustersClusterHostGroupListNodeOutputWithContext(ctx context.Context) GetClustersClusterHostGroupListNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterHostGroupListNodeOutput)
+}
+
+// GetClustersClusterHostGroupListNodeArrayInput is an input type that accepts GetClustersClusterHostGroupListNodeArray and GetClustersClusterHostGroupListNodeArrayOutput values.
+// You can construct a concrete instance of `GetClustersClusterHostGroupListNodeArrayInput` via:
+//
+//          GetClustersClusterHostGroupListNodeArray{ GetClustersClusterHostGroupListNodeArgs{...} }
+type GetClustersClusterHostGroupListNodeArrayInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterHostGroupListNodeArrayOutput() GetClustersClusterHostGroupListNodeArrayOutput
+	ToGetClustersClusterHostGroupListNodeArrayOutputWithContext(context.Context) GetClustersClusterHostGroupListNodeArrayOutput
+}
+
+type GetClustersClusterHostGroupListNodeArray []GetClustersClusterHostGroupListNodeInput
+
+func (GetClustersClusterHostGroupListNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterHostGroupListNode)(nil)).Elem()
+}
+
+func (i GetClustersClusterHostGroupListNodeArray) ToGetClustersClusterHostGroupListNodeArrayOutput() GetClustersClusterHostGroupListNodeArrayOutput {
+	return i.ToGetClustersClusterHostGroupListNodeArrayOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterHostGroupListNodeArray) ToGetClustersClusterHostGroupListNodeArrayOutputWithContext(ctx context.Context) GetClustersClusterHostGroupListNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterHostGroupListNodeArrayOutput)
+}
+
+type GetClustersClusterHostGroupListNodeOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterHostGroupListNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterHostGroupListNode)(nil)).Elem()
+}
+
+func (o GetClustersClusterHostGroupListNodeOutput) ToGetClustersClusterHostGroupListNodeOutput() GetClustersClusterHostGroupListNodeOutput {
+	return o
+}
+
+func (o GetClustersClusterHostGroupListNodeOutput) ToGetClustersClusterHostGroupListNodeOutputWithContext(ctx context.Context) GetClustersClusterHostGroupListNodeOutput {
+	return o
+}
+
+// Creation time.
+func (o GetClustersClusterHostGroupListNodeOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupListNode) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Disk information.
+func (o GetClustersClusterHostGroupListNodeOutput) DiskInfos() GetClustersClusterHostGroupListNodeDiskInfoArrayOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupListNode) []GetClustersClusterHostGroupListNodeDiskInfo {
+		return v.DiskInfos
+	}).(GetClustersClusterHostGroupListNodeDiskInfoArrayOutput)
+}
+
+// The timeout of the EMR.
+func (o GetClustersClusterHostGroupListNodeOutput) EmrExpiredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupListNode) string { return v.EmrExpiredTime }).(pulumi.StringOutput)
+}
+
+// Timeout time.
+func (o GetClustersClusterHostGroupListNodeOutput) ExpiredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupListNode) string { return v.ExpiredTime }).(pulumi.StringOutput)
+}
+
+// The Intranet IP of the EMR.
+func (o GetClustersClusterHostGroupListNodeOutput) InnerIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupListNode) string { return v.InnerIp }).(pulumi.StringOutput)
+}
+
+// The ID of the ECS instance.
+func (o GetClustersClusterHostGroupListNodeOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupListNode) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Public IP address.
+func (o GetClustersClusterHostGroupListNodeOutput) PubIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupListNode) string { return v.PubIp }).(pulumi.StringOutput)
+}
+
+// The cluster status.
+func (o GetClustersClusterHostGroupListNodeOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupListNode) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Whether IPV6 is supported.
+func (o GetClustersClusterHostGroupListNodeOutput) SupportIpv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupListNode) bool { return v.SupportIpv6 }).(pulumi.BoolOutput)
+}
+
+// The zone ID.
+func (o GetClustersClusterHostGroupListNodeOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupListNode) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetClustersClusterHostGroupListNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterHostGroupListNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterHostGroupListNode)(nil)).Elem()
+}
+
+func (o GetClustersClusterHostGroupListNodeArrayOutput) ToGetClustersClusterHostGroupListNodeArrayOutput() GetClustersClusterHostGroupListNodeArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterHostGroupListNodeArrayOutput) ToGetClustersClusterHostGroupListNodeArrayOutputWithContext(ctx context.Context) GetClustersClusterHostGroupListNodeArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterHostGroupListNodeArrayOutput) Index(i pulumi.IntInput) GetClustersClusterHostGroupListNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClustersClusterHostGroupListNode {
+		return vs[0].([]GetClustersClusterHostGroupListNode)[vs[1].(int)]
+	}).(GetClustersClusterHostGroupListNodeOutput)
+}
+
+type GetClustersClusterHostGroupListNodeDiskInfo struct {
+	// The disk name.
+	Device string `pulumi:"device"`
+	// The ID of the disk.
+	DiskId string `pulumi:"diskId"`
+	// The disk name.
+	DiskName string `pulumi:"diskName"`
+	// Disk capacity.
+	Size int `pulumi:"size"`
+	// Disk type.
+	Type string `pulumi:"type"`
+}
+
+// GetClustersClusterHostGroupListNodeDiskInfoInput is an input type that accepts GetClustersClusterHostGroupListNodeDiskInfoArgs and GetClustersClusterHostGroupListNodeDiskInfoOutput values.
+// You can construct a concrete instance of `GetClustersClusterHostGroupListNodeDiskInfoInput` via:
+//
+//          GetClustersClusterHostGroupListNodeDiskInfoArgs{...}
+type GetClustersClusterHostGroupListNodeDiskInfoInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterHostGroupListNodeDiskInfoOutput() GetClustersClusterHostGroupListNodeDiskInfoOutput
+	ToGetClustersClusterHostGroupListNodeDiskInfoOutputWithContext(context.Context) GetClustersClusterHostGroupListNodeDiskInfoOutput
+}
+
+type GetClustersClusterHostGroupListNodeDiskInfoArgs struct {
+	// The disk name.
+	Device pulumi.StringInput `pulumi:"device"`
+	// The ID of the disk.
+	DiskId pulumi.StringInput `pulumi:"diskId"`
+	// The disk name.
+	DiskName pulumi.StringInput `pulumi:"diskName"`
+	// Disk capacity.
+	Size pulumi.IntInput `pulumi:"size"`
+	// Disk type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetClustersClusterHostGroupListNodeDiskInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterHostGroupListNodeDiskInfo)(nil)).Elem()
+}
+
+func (i GetClustersClusterHostGroupListNodeDiskInfoArgs) ToGetClustersClusterHostGroupListNodeDiskInfoOutput() GetClustersClusterHostGroupListNodeDiskInfoOutput {
+	return i.ToGetClustersClusterHostGroupListNodeDiskInfoOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterHostGroupListNodeDiskInfoArgs) ToGetClustersClusterHostGroupListNodeDiskInfoOutputWithContext(ctx context.Context) GetClustersClusterHostGroupListNodeDiskInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterHostGroupListNodeDiskInfoOutput)
+}
+
+// GetClustersClusterHostGroupListNodeDiskInfoArrayInput is an input type that accepts GetClustersClusterHostGroupListNodeDiskInfoArray and GetClustersClusterHostGroupListNodeDiskInfoArrayOutput values.
+// You can construct a concrete instance of `GetClustersClusterHostGroupListNodeDiskInfoArrayInput` via:
+//
+//          GetClustersClusterHostGroupListNodeDiskInfoArray{ GetClustersClusterHostGroupListNodeDiskInfoArgs{...} }
+type GetClustersClusterHostGroupListNodeDiskInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterHostGroupListNodeDiskInfoArrayOutput() GetClustersClusterHostGroupListNodeDiskInfoArrayOutput
+	ToGetClustersClusterHostGroupListNodeDiskInfoArrayOutputWithContext(context.Context) GetClustersClusterHostGroupListNodeDiskInfoArrayOutput
+}
+
+type GetClustersClusterHostGroupListNodeDiskInfoArray []GetClustersClusterHostGroupListNodeDiskInfoInput
+
+func (GetClustersClusterHostGroupListNodeDiskInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterHostGroupListNodeDiskInfo)(nil)).Elem()
+}
+
+func (i GetClustersClusterHostGroupListNodeDiskInfoArray) ToGetClustersClusterHostGroupListNodeDiskInfoArrayOutput() GetClustersClusterHostGroupListNodeDiskInfoArrayOutput {
+	return i.ToGetClustersClusterHostGroupListNodeDiskInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterHostGroupListNodeDiskInfoArray) ToGetClustersClusterHostGroupListNodeDiskInfoArrayOutputWithContext(ctx context.Context) GetClustersClusterHostGroupListNodeDiskInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterHostGroupListNodeDiskInfoArrayOutput)
+}
+
+type GetClustersClusterHostGroupListNodeDiskInfoOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterHostGroupListNodeDiskInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterHostGroupListNodeDiskInfo)(nil)).Elem()
+}
+
+func (o GetClustersClusterHostGroupListNodeDiskInfoOutput) ToGetClustersClusterHostGroupListNodeDiskInfoOutput() GetClustersClusterHostGroupListNodeDiskInfoOutput {
+	return o
+}
+
+func (o GetClustersClusterHostGroupListNodeDiskInfoOutput) ToGetClustersClusterHostGroupListNodeDiskInfoOutputWithContext(ctx context.Context) GetClustersClusterHostGroupListNodeDiskInfoOutput {
+	return o
+}
+
+// The disk name.
+func (o GetClustersClusterHostGroupListNodeDiskInfoOutput) Device() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupListNodeDiskInfo) string { return v.Device }).(pulumi.StringOutput)
+}
+
+// The ID of the disk.
+func (o GetClustersClusterHostGroupListNodeDiskInfoOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupListNodeDiskInfo) string { return v.DiskId }).(pulumi.StringOutput)
+}
+
+// The disk name.
+func (o GetClustersClusterHostGroupListNodeDiskInfoOutput) DiskName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupListNodeDiskInfo) string { return v.DiskName }).(pulumi.StringOutput)
+}
+
+// Disk capacity.
+func (o GetClustersClusterHostGroupListNodeDiskInfoOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupListNodeDiskInfo) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// Disk type.
+func (o GetClustersClusterHostGroupListNodeDiskInfoOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterHostGroupListNodeDiskInfo) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetClustersClusterHostGroupListNodeDiskInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterHostGroupListNodeDiskInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterHostGroupListNodeDiskInfo)(nil)).Elem()
+}
+
+func (o GetClustersClusterHostGroupListNodeDiskInfoArrayOutput) ToGetClustersClusterHostGroupListNodeDiskInfoArrayOutput() GetClustersClusterHostGroupListNodeDiskInfoArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterHostGroupListNodeDiskInfoArrayOutput) ToGetClustersClusterHostGroupListNodeDiskInfoArrayOutputWithContext(ctx context.Context) GetClustersClusterHostGroupListNodeDiskInfoArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterHostGroupListNodeDiskInfoArrayOutput) Index(i pulumi.IntInput) GetClustersClusterHostGroupListNodeDiskInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClustersClusterHostGroupListNodeDiskInfo {
+		return vs[0].([]GetClustersClusterHostGroupListNodeDiskInfo)[vs[1].(int)]
+	}).(GetClustersClusterHostGroupListNodeDiskInfoOutput)
+}
+
+type GetClustersClusterHostPoolInfo struct {
+	// Machine pool ID.
+	HpBizId string `pulumi:"hpBizId"`
+	// The name of the machine pool.
+	HpName string `pulumi:"hpName"`
+}
+
+// GetClustersClusterHostPoolInfoInput is an input type that accepts GetClustersClusterHostPoolInfoArgs and GetClustersClusterHostPoolInfoOutput values.
+// You can construct a concrete instance of `GetClustersClusterHostPoolInfoInput` via:
+//
+//          GetClustersClusterHostPoolInfoArgs{...}
+type GetClustersClusterHostPoolInfoInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterHostPoolInfoOutput() GetClustersClusterHostPoolInfoOutput
+	ToGetClustersClusterHostPoolInfoOutputWithContext(context.Context) GetClustersClusterHostPoolInfoOutput
+}
+
+type GetClustersClusterHostPoolInfoArgs struct {
+	// Machine pool ID.
+	HpBizId pulumi.StringInput `pulumi:"hpBizId"`
+	// The name of the machine pool.
+	HpName pulumi.StringInput `pulumi:"hpName"`
+}
+
+func (GetClustersClusterHostPoolInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterHostPoolInfo)(nil)).Elem()
+}
+
+func (i GetClustersClusterHostPoolInfoArgs) ToGetClustersClusterHostPoolInfoOutput() GetClustersClusterHostPoolInfoOutput {
+	return i.ToGetClustersClusterHostPoolInfoOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterHostPoolInfoArgs) ToGetClustersClusterHostPoolInfoOutputWithContext(ctx context.Context) GetClustersClusterHostPoolInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterHostPoolInfoOutput)
+}
+
+// GetClustersClusterHostPoolInfoArrayInput is an input type that accepts GetClustersClusterHostPoolInfoArray and GetClustersClusterHostPoolInfoArrayOutput values.
+// You can construct a concrete instance of `GetClustersClusterHostPoolInfoArrayInput` via:
+//
+//          GetClustersClusterHostPoolInfoArray{ GetClustersClusterHostPoolInfoArgs{...} }
+type GetClustersClusterHostPoolInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterHostPoolInfoArrayOutput() GetClustersClusterHostPoolInfoArrayOutput
+	ToGetClustersClusterHostPoolInfoArrayOutputWithContext(context.Context) GetClustersClusterHostPoolInfoArrayOutput
+}
+
+type GetClustersClusterHostPoolInfoArray []GetClustersClusterHostPoolInfoInput
+
+func (GetClustersClusterHostPoolInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterHostPoolInfo)(nil)).Elem()
+}
+
+func (i GetClustersClusterHostPoolInfoArray) ToGetClustersClusterHostPoolInfoArrayOutput() GetClustersClusterHostPoolInfoArrayOutput {
+	return i.ToGetClustersClusterHostPoolInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterHostPoolInfoArray) ToGetClustersClusterHostPoolInfoArrayOutputWithContext(ctx context.Context) GetClustersClusterHostPoolInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterHostPoolInfoArrayOutput)
+}
+
+type GetClustersClusterHostPoolInfoOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterHostPoolInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterHostPoolInfo)(nil)).Elem()
+}
+
+func (o GetClustersClusterHostPoolInfoOutput) ToGetClustersClusterHostPoolInfoOutput() GetClustersClusterHostPoolInfoOutput {
+	return o
+}
+
+func (o GetClustersClusterHostPoolInfoOutput) ToGetClustersClusterHostPoolInfoOutputWithContext(ctx context.Context) GetClustersClusterHostPoolInfoOutput {
+	return o
+}
+
+// Machine pool ID.
+func (o GetClustersClusterHostPoolInfoOutput) HpBizId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterHostPoolInfo) string { return v.HpBizId }).(pulumi.StringOutput)
+}
+
+// The name of the machine pool.
+func (o GetClustersClusterHostPoolInfoOutput) HpName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterHostPoolInfo) string { return v.HpName }).(pulumi.StringOutput)
+}
+
+type GetClustersClusterHostPoolInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterHostPoolInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterHostPoolInfo)(nil)).Elem()
+}
+
+func (o GetClustersClusterHostPoolInfoArrayOutput) ToGetClustersClusterHostPoolInfoArrayOutput() GetClustersClusterHostPoolInfoArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterHostPoolInfoArrayOutput) ToGetClustersClusterHostPoolInfoArrayOutputWithContext(ctx context.Context) GetClustersClusterHostPoolInfoArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterHostPoolInfoArrayOutput) Index(i pulumi.IntInput) GetClustersClusterHostPoolInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClustersClusterHostPoolInfo {
+		return vs[0].([]GetClustersClusterHostPoolInfo)[vs[1].(int)]
+	}).(GetClustersClusterHostPoolInfoOutput)
+}
+
+type GetClustersClusterRelateClusterInfo struct {
+	// The ID of the associated cluster.
+	ClusterId string `pulumi:"clusterId"`
+	// The name of the associated cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// Cluster type:
+	ClusterType string `pulumi:"clusterType"`
+	// The cluster status.
+	Status string `pulumi:"status"`
+}
+
+// GetClustersClusterRelateClusterInfoInput is an input type that accepts GetClustersClusterRelateClusterInfoArgs and GetClustersClusterRelateClusterInfoOutput values.
+// You can construct a concrete instance of `GetClustersClusterRelateClusterInfoInput` via:
+//
+//          GetClustersClusterRelateClusterInfoArgs{...}
+type GetClustersClusterRelateClusterInfoInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterRelateClusterInfoOutput() GetClustersClusterRelateClusterInfoOutput
+	ToGetClustersClusterRelateClusterInfoOutputWithContext(context.Context) GetClustersClusterRelateClusterInfoOutput
+}
+
+type GetClustersClusterRelateClusterInfoArgs struct {
+	// The ID of the associated cluster.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The name of the associated cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// Cluster type:
+	ClusterType pulumi.StringInput `pulumi:"clusterType"`
+	// The cluster status.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetClustersClusterRelateClusterInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterRelateClusterInfo)(nil)).Elem()
+}
+
+func (i GetClustersClusterRelateClusterInfoArgs) ToGetClustersClusterRelateClusterInfoOutput() GetClustersClusterRelateClusterInfoOutput {
+	return i.ToGetClustersClusterRelateClusterInfoOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterRelateClusterInfoArgs) ToGetClustersClusterRelateClusterInfoOutputWithContext(ctx context.Context) GetClustersClusterRelateClusterInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterRelateClusterInfoOutput)
+}
+
+// GetClustersClusterRelateClusterInfoArrayInput is an input type that accepts GetClustersClusterRelateClusterInfoArray and GetClustersClusterRelateClusterInfoArrayOutput values.
+// You can construct a concrete instance of `GetClustersClusterRelateClusterInfoArrayInput` via:
+//
+//          GetClustersClusterRelateClusterInfoArray{ GetClustersClusterRelateClusterInfoArgs{...} }
+type GetClustersClusterRelateClusterInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterRelateClusterInfoArrayOutput() GetClustersClusterRelateClusterInfoArrayOutput
+	ToGetClustersClusterRelateClusterInfoArrayOutputWithContext(context.Context) GetClustersClusterRelateClusterInfoArrayOutput
+}
+
+type GetClustersClusterRelateClusterInfoArray []GetClustersClusterRelateClusterInfoInput
+
+func (GetClustersClusterRelateClusterInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterRelateClusterInfo)(nil)).Elem()
+}
+
+func (i GetClustersClusterRelateClusterInfoArray) ToGetClustersClusterRelateClusterInfoArrayOutput() GetClustersClusterRelateClusterInfoArrayOutput {
+	return i.ToGetClustersClusterRelateClusterInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterRelateClusterInfoArray) ToGetClustersClusterRelateClusterInfoArrayOutputWithContext(ctx context.Context) GetClustersClusterRelateClusterInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterRelateClusterInfoArrayOutput)
+}
+
+type GetClustersClusterRelateClusterInfoOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterRelateClusterInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterRelateClusterInfo)(nil)).Elem()
+}
+
+func (o GetClustersClusterRelateClusterInfoOutput) ToGetClustersClusterRelateClusterInfoOutput() GetClustersClusterRelateClusterInfoOutput {
+	return o
+}
+
+func (o GetClustersClusterRelateClusterInfoOutput) ToGetClustersClusterRelateClusterInfoOutputWithContext(ctx context.Context) GetClustersClusterRelateClusterInfoOutput {
+	return o
+}
+
+// The ID of the associated cluster.
+func (o GetClustersClusterRelateClusterInfoOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterRelateClusterInfo) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The name of the associated cluster.
+func (o GetClustersClusterRelateClusterInfoOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterRelateClusterInfo) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// Cluster type:
+func (o GetClustersClusterRelateClusterInfoOutput) ClusterType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterRelateClusterInfo) string { return v.ClusterType }).(pulumi.StringOutput)
+}
+
+// The cluster status.
+func (o GetClustersClusterRelateClusterInfoOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterRelateClusterInfo) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetClustersClusterRelateClusterInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterRelateClusterInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterRelateClusterInfo)(nil)).Elem()
+}
+
+func (o GetClustersClusterRelateClusterInfoArrayOutput) ToGetClustersClusterRelateClusterInfoArrayOutput() GetClustersClusterRelateClusterInfoArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterRelateClusterInfoArrayOutput) ToGetClustersClusterRelateClusterInfoArrayOutputWithContext(ctx context.Context) GetClustersClusterRelateClusterInfoArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterRelateClusterInfoArrayOutput) Index(i pulumi.IntInput) GetClustersClusterRelateClusterInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClustersClusterRelateClusterInfo {
+		return vs[0].([]GetClustersClusterRelateClusterInfo)[vs[1].(int)]
+	}).(GetClustersClusterRelateClusterInfoOutput)
+}
+
+type GetClustersClusterSoftwareInfo struct {
+	// Cluster type:
+	ClusterType string `pulumi:"clusterType"`
+	// E-MapReduce version number.
+	EmrVer string `pulumi:"emrVer"`
+	// Service list.
+	Softwares []GetClustersClusterSoftwareInfoSoftware `pulumi:"softwares"`
+}
+
+// GetClustersClusterSoftwareInfoInput is an input type that accepts GetClustersClusterSoftwareInfoArgs and GetClustersClusterSoftwareInfoOutput values.
+// You can construct a concrete instance of `GetClustersClusterSoftwareInfoInput` via:
+//
+//          GetClustersClusterSoftwareInfoArgs{...}
+type GetClustersClusterSoftwareInfoInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterSoftwareInfoOutput() GetClustersClusterSoftwareInfoOutput
+	ToGetClustersClusterSoftwareInfoOutputWithContext(context.Context) GetClustersClusterSoftwareInfoOutput
+}
+
+type GetClustersClusterSoftwareInfoArgs struct {
+	// Cluster type:
+	ClusterType pulumi.StringInput `pulumi:"clusterType"`
+	// E-MapReduce version number.
+	EmrVer pulumi.StringInput `pulumi:"emrVer"`
+	// Service list.
+	Softwares GetClustersClusterSoftwareInfoSoftwareArrayInput `pulumi:"softwares"`
+}
+
+func (GetClustersClusterSoftwareInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterSoftwareInfo)(nil)).Elem()
+}
+
+func (i GetClustersClusterSoftwareInfoArgs) ToGetClustersClusterSoftwareInfoOutput() GetClustersClusterSoftwareInfoOutput {
+	return i.ToGetClustersClusterSoftwareInfoOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterSoftwareInfoArgs) ToGetClustersClusterSoftwareInfoOutputWithContext(ctx context.Context) GetClustersClusterSoftwareInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterSoftwareInfoOutput)
+}
+
+// GetClustersClusterSoftwareInfoArrayInput is an input type that accepts GetClustersClusterSoftwareInfoArray and GetClustersClusterSoftwareInfoArrayOutput values.
+// You can construct a concrete instance of `GetClustersClusterSoftwareInfoArrayInput` via:
+//
+//          GetClustersClusterSoftwareInfoArray{ GetClustersClusterSoftwareInfoArgs{...} }
+type GetClustersClusterSoftwareInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterSoftwareInfoArrayOutput() GetClustersClusterSoftwareInfoArrayOutput
+	ToGetClustersClusterSoftwareInfoArrayOutputWithContext(context.Context) GetClustersClusterSoftwareInfoArrayOutput
+}
+
+type GetClustersClusterSoftwareInfoArray []GetClustersClusterSoftwareInfoInput
+
+func (GetClustersClusterSoftwareInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterSoftwareInfo)(nil)).Elem()
+}
+
+func (i GetClustersClusterSoftwareInfoArray) ToGetClustersClusterSoftwareInfoArrayOutput() GetClustersClusterSoftwareInfoArrayOutput {
+	return i.ToGetClustersClusterSoftwareInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterSoftwareInfoArray) ToGetClustersClusterSoftwareInfoArrayOutputWithContext(ctx context.Context) GetClustersClusterSoftwareInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterSoftwareInfoArrayOutput)
+}
+
+type GetClustersClusterSoftwareInfoOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterSoftwareInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterSoftwareInfo)(nil)).Elem()
+}
+
+func (o GetClustersClusterSoftwareInfoOutput) ToGetClustersClusterSoftwareInfoOutput() GetClustersClusterSoftwareInfoOutput {
+	return o
+}
+
+func (o GetClustersClusterSoftwareInfoOutput) ToGetClustersClusterSoftwareInfoOutputWithContext(ctx context.Context) GetClustersClusterSoftwareInfoOutput {
+	return o
+}
+
+// Cluster type:
+func (o GetClustersClusterSoftwareInfoOutput) ClusterType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterSoftwareInfo) string { return v.ClusterType }).(pulumi.StringOutput)
+}
+
+// E-MapReduce version number.
+func (o GetClustersClusterSoftwareInfoOutput) EmrVer() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterSoftwareInfo) string { return v.EmrVer }).(pulumi.StringOutput)
+}
+
+// Service list.
+func (o GetClustersClusterSoftwareInfoOutput) Softwares() GetClustersClusterSoftwareInfoSoftwareArrayOutput {
+	return o.ApplyT(func(v GetClustersClusterSoftwareInfo) []GetClustersClusterSoftwareInfoSoftware { return v.Softwares }).(GetClustersClusterSoftwareInfoSoftwareArrayOutput)
+}
+
+type GetClustersClusterSoftwareInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterSoftwareInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterSoftwareInfo)(nil)).Elem()
+}
+
+func (o GetClustersClusterSoftwareInfoArrayOutput) ToGetClustersClusterSoftwareInfoArrayOutput() GetClustersClusterSoftwareInfoArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterSoftwareInfoArrayOutput) ToGetClustersClusterSoftwareInfoArrayOutputWithContext(ctx context.Context) GetClustersClusterSoftwareInfoArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterSoftwareInfoArrayOutput) Index(i pulumi.IntInput) GetClustersClusterSoftwareInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClustersClusterSoftwareInfo {
+		return vs[0].([]GetClustersClusterSoftwareInfo)[vs[1].(int)]
+	}).(GetClustersClusterSoftwareInfoOutput)
+}
+
+type GetClustersClusterSoftwareInfoSoftware struct {
+	// The name of the service.
+	DisplayName string `pulumi:"displayName"`
+	// The internal name of the service.
+	Name string `pulumi:"name"`
+	// Whether it shows.
+	OnlyDisplay bool `pulumi:"onlyDisplay"`
+	// Startup type.
+	StartTpe int `pulumi:"startTpe"`
+	// Service version.
+	Version string `pulumi:"version"`
+}
+
+// GetClustersClusterSoftwareInfoSoftwareInput is an input type that accepts GetClustersClusterSoftwareInfoSoftwareArgs and GetClustersClusterSoftwareInfoSoftwareOutput values.
+// You can construct a concrete instance of `GetClustersClusterSoftwareInfoSoftwareInput` via:
+//
+//          GetClustersClusterSoftwareInfoSoftwareArgs{...}
+type GetClustersClusterSoftwareInfoSoftwareInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterSoftwareInfoSoftwareOutput() GetClustersClusterSoftwareInfoSoftwareOutput
+	ToGetClustersClusterSoftwareInfoSoftwareOutputWithContext(context.Context) GetClustersClusterSoftwareInfoSoftwareOutput
+}
+
+type GetClustersClusterSoftwareInfoSoftwareArgs struct {
+	// The name of the service.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The internal name of the service.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Whether it shows.
+	OnlyDisplay pulumi.BoolInput `pulumi:"onlyDisplay"`
+	// Startup type.
+	StartTpe pulumi.IntInput `pulumi:"startTpe"`
+	// Service version.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetClustersClusterSoftwareInfoSoftwareArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterSoftwareInfoSoftware)(nil)).Elem()
+}
+
+func (i GetClustersClusterSoftwareInfoSoftwareArgs) ToGetClustersClusterSoftwareInfoSoftwareOutput() GetClustersClusterSoftwareInfoSoftwareOutput {
+	return i.ToGetClustersClusterSoftwareInfoSoftwareOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterSoftwareInfoSoftwareArgs) ToGetClustersClusterSoftwareInfoSoftwareOutputWithContext(ctx context.Context) GetClustersClusterSoftwareInfoSoftwareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterSoftwareInfoSoftwareOutput)
+}
+
+// GetClustersClusterSoftwareInfoSoftwareArrayInput is an input type that accepts GetClustersClusterSoftwareInfoSoftwareArray and GetClustersClusterSoftwareInfoSoftwareArrayOutput values.
+// You can construct a concrete instance of `GetClustersClusterSoftwareInfoSoftwareArrayInput` via:
+//
+//          GetClustersClusterSoftwareInfoSoftwareArray{ GetClustersClusterSoftwareInfoSoftwareArgs{...} }
+type GetClustersClusterSoftwareInfoSoftwareArrayInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterSoftwareInfoSoftwareArrayOutput() GetClustersClusterSoftwareInfoSoftwareArrayOutput
+	ToGetClustersClusterSoftwareInfoSoftwareArrayOutputWithContext(context.Context) GetClustersClusterSoftwareInfoSoftwareArrayOutput
+}
+
+type GetClustersClusterSoftwareInfoSoftwareArray []GetClustersClusterSoftwareInfoSoftwareInput
+
+func (GetClustersClusterSoftwareInfoSoftwareArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterSoftwareInfoSoftware)(nil)).Elem()
+}
+
+func (i GetClustersClusterSoftwareInfoSoftwareArray) ToGetClustersClusterSoftwareInfoSoftwareArrayOutput() GetClustersClusterSoftwareInfoSoftwareArrayOutput {
+	return i.ToGetClustersClusterSoftwareInfoSoftwareArrayOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterSoftwareInfoSoftwareArray) ToGetClustersClusterSoftwareInfoSoftwareArrayOutputWithContext(ctx context.Context) GetClustersClusterSoftwareInfoSoftwareArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterSoftwareInfoSoftwareArrayOutput)
+}
+
+type GetClustersClusterSoftwareInfoSoftwareOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterSoftwareInfoSoftwareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterSoftwareInfoSoftware)(nil)).Elem()
+}
+
+func (o GetClustersClusterSoftwareInfoSoftwareOutput) ToGetClustersClusterSoftwareInfoSoftwareOutput() GetClustersClusterSoftwareInfoSoftwareOutput {
+	return o
+}
+
+func (o GetClustersClusterSoftwareInfoSoftwareOutput) ToGetClustersClusterSoftwareInfoSoftwareOutputWithContext(ctx context.Context) GetClustersClusterSoftwareInfoSoftwareOutput {
+	return o
+}
+
+// The name of the service.
+func (o GetClustersClusterSoftwareInfoSoftwareOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterSoftwareInfoSoftware) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The internal name of the service.
+func (o GetClustersClusterSoftwareInfoSoftwareOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterSoftwareInfoSoftware) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether it shows.
+func (o GetClustersClusterSoftwareInfoSoftwareOutput) OnlyDisplay() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClustersClusterSoftwareInfoSoftware) bool { return v.OnlyDisplay }).(pulumi.BoolOutput)
+}
+
+// Startup type.
+func (o GetClustersClusterSoftwareInfoSoftwareOutput) StartTpe() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClustersClusterSoftwareInfoSoftware) int { return v.StartTpe }).(pulumi.IntOutput)
+}
+
+// Service version.
+func (o GetClustersClusterSoftwareInfoSoftwareOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterSoftwareInfoSoftware) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetClustersClusterSoftwareInfoSoftwareArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterSoftwareInfoSoftwareArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterSoftwareInfoSoftware)(nil)).Elem()
+}
+
+func (o GetClustersClusterSoftwareInfoSoftwareArrayOutput) ToGetClustersClusterSoftwareInfoSoftwareArrayOutput() GetClustersClusterSoftwareInfoSoftwareArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterSoftwareInfoSoftwareArrayOutput) ToGetClustersClusterSoftwareInfoSoftwareArrayOutputWithContext(ctx context.Context) GetClustersClusterSoftwareInfoSoftwareArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterSoftwareInfoSoftwareArrayOutput) Index(i pulumi.IntInput) GetClustersClusterSoftwareInfoSoftwareOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClustersClusterSoftwareInfoSoftware {
+		return vs[0].([]GetClustersClusterSoftwareInfoSoftware)[vs[1].(int)]
+	}).(GetClustersClusterSoftwareInfoSoftwareOutput)
+}
+
 type GetDiskTypesType struct {
 	// The maximum value of the data disk to supported the specific instance type
 	Max int `pulumi:"max"`
@@ -686,6 +2481,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterBootstrapActionArrayInput)(nil)).Elem(), ClusterBootstrapActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterHostGroupInput)(nil)).Elem(), ClusterHostGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterHostGroupArrayInput)(nil)).Elem(), ClusterHostGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInput)(nil)).Elem(), GetClustersClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterArrayInput)(nil)).Elem(), GetClustersClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterAccessInfoInput)(nil)).Elem(), GetClustersClusterAccessInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterAccessInfoArrayInput)(nil)).Elem(), GetClustersClusterAccessInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterAccessInfoZkLinkInput)(nil)).Elem(), GetClustersClusterAccessInfoZkLinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterAccessInfoZkLinkArrayInput)(nil)).Elem(), GetClustersClusterAccessInfoZkLinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterBootstrapActionListInput)(nil)).Elem(), GetClustersClusterBootstrapActionListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterBootstrapActionListArrayInput)(nil)).Elem(), GetClustersClusterBootstrapActionListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterHostGroupListInput)(nil)).Elem(), GetClustersClusterHostGroupListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterHostGroupListArrayInput)(nil)).Elem(), GetClustersClusterHostGroupListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterHostGroupListNodeInput)(nil)).Elem(), GetClustersClusterHostGroupListNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterHostGroupListNodeArrayInput)(nil)).Elem(), GetClustersClusterHostGroupListNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterHostGroupListNodeDiskInfoInput)(nil)).Elem(), GetClustersClusterHostGroupListNodeDiskInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterHostGroupListNodeDiskInfoArrayInput)(nil)).Elem(), GetClustersClusterHostGroupListNodeDiskInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterHostPoolInfoInput)(nil)).Elem(), GetClustersClusterHostPoolInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterHostPoolInfoArrayInput)(nil)).Elem(), GetClustersClusterHostPoolInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterRelateClusterInfoInput)(nil)).Elem(), GetClustersClusterRelateClusterInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterRelateClusterInfoArrayInput)(nil)).Elem(), GetClustersClusterRelateClusterInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterSoftwareInfoInput)(nil)).Elem(), GetClustersClusterSoftwareInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterSoftwareInfoArrayInput)(nil)).Elem(), GetClustersClusterSoftwareInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterSoftwareInfoSoftwareInput)(nil)).Elem(), GetClustersClusterSoftwareInfoSoftwareArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterSoftwareInfoSoftwareArrayInput)(nil)).Elem(), GetClustersClusterSoftwareInfoSoftwareArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskTypesTypeInput)(nil)).Elem(), GetDiskTypesTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskTypesTypeArrayInput)(nil)).Elem(), GetDiskTypesTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesTypeInput)(nil)).Elem(), GetInstanceTypesTypeArgs{})
@@ -696,6 +2513,28 @@ func init() {
 	pulumi.RegisterOutputType(ClusterBootstrapActionArrayOutput{})
 	pulumi.RegisterOutputType(ClusterHostGroupOutput{})
 	pulumi.RegisterOutputType(ClusterHostGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterArrayOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterAccessInfoOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterAccessInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterAccessInfoZkLinkOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterAccessInfoZkLinkArrayOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterBootstrapActionListOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterBootstrapActionListArrayOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterHostGroupListOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterHostGroupListArrayOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterHostGroupListNodeOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterHostGroupListNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterHostGroupListNodeDiskInfoOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterHostGroupListNodeDiskInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterHostPoolInfoOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterHostPoolInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterRelateClusterInfoOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterRelateClusterInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterSoftwareInfoOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterSoftwareInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterSoftwareInfoSoftwareOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterSoftwareInfoSoftwareArrayOutput{})
 	pulumi.RegisterOutputType(GetDiskTypesTypeOutput{})
 	pulumi.RegisterOutputType(GetDiskTypesTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypesTypeOutput{})

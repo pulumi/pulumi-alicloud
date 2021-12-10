@@ -8,7 +8,10 @@ import typing
 from .container_group import *
 from .get_container_groups import *
 from .get_image_caches import *
+from .get_virtual_nodes import *
+from .get_zones import *
 from .image_cache import *
 from .open_api_image_cache import *
+from .virtual_node import *
 from ._inputs import *
 from . import outputs

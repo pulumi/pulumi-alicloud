@@ -28,6 +28,7 @@ __all__ = [
     'ContainerGroupVolumeConfigFileVolumeConfigFileToPath',
     'ImageCacheImageRegistryCredential',
     'OpenApiImageCacheImageRegistryCredential',
+    'VirtualNodeTaint',
     'GetContainerGroupsGroupResult',
     'GetContainerGroupsGroupContainerResult',
     'GetContainerGroupsGroupContainerEnvironmentVarResult',
@@ -47,6 +48,9 @@ __all__ = [
     'GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathResult',
     'GetImageCachesCachResult',
     'GetImageCachesCachEventResult',
+    'GetVirtualNodesNodeResult',
+    'GetVirtualNodesNodeEventResult',
+    'GetZonesZoneResult',
 ]
 
 @pulumi.output_type
@@ -1209,6 +1213,49 @@ class OpenApiImageCacheImageRegistryCredential(dict):
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[str]:
         return pulumi.get(self, "user_name")
+
+
+@pulumi.output_type
+class VirtualNodeTaint(dict):
+    def __init__(__self__, *,
+                 effect: Optional[str] = None,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str effect: The effect of the taint. Valid values: `NoSchedule`, `NoExecute` and `PreferNoSchedule`.
+        :param str key: The key of the taint.
+        :param str value: The value of the taint.
+        """
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        """
+        The effect of the taint. Valid values: `NoSchedule`, `NoExecute` and `PreferNoSchedule`.
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The key of the taint.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The value of the taint.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -2632,5 +2679,319 @@ class GetImageCachesCachEventResult(dict):
         The type of event.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetVirtualNodesNodeResult(dict):
+    def __init__(__self__, *,
+                 cpu: int,
+                 create_time: str,
+                 eni_instance_id: str,
+                 events: Sequence['outputs.GetVirtualNodesNodeEventResult'],
+                 id: str,
+                 internet_ip: str,
+                 intranet_ip: str,
+                 memory: int,
+                 ram_role_name: str,
+                 resource_group_id: str,
+                 security_group_id: str,
+                 status: str,
+                 tags: Mapping[str, Any],
+                 virtual_node_id: str,
+                 virtual_node_name: str,
+                 vpc_id: str,
+                 vswitch_id: str,
+                 zone_id: str):
+        """
+        :param int cpu: The Number of CPU.
+        :param str create_time: The creation time of the virtual node.
+        :param str eni_instance_id: The ENI instance ID.
+        :param Sequence['GetVirtualNodesNodeEventArgs'] events: The event list.
+        :param str id: The ID of the Virtual Node.
+        :param str internet_ip: The IP address of a public network.
+        :param str intranet_ip: The private IP address of the RDS instance.
+        :param int memory: The memory size.
+        :param str ram_role_name: The ram role.
+        :param str resource_group_id: The resource group ID.
+        :param str security_group_id: The security group ID.
+        :param str status: The Status of the virtual node.
+        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param str virtual_node_id: Of the virtual node number.
+        :param str virtual_node_name: The name of the virtual node.
+        :param str vswitch_id: The vswitch id.
+        :param str zone_id: The Zone.
+        """
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "eni_instance_id", eni_instance_id)
+        pulumi.set(__self__, "events", events)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "internet_ip", internet_ip)
+        pulumi.set(__self__, "intranet_ip", intranet_ip)
+        pulumi.set(__self__, "memory", memory)
+        pulumi.set(__self__, "ram_role_name", ram_role_name)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "virtual_node_id", virtual_node_id)
+        pulumi.set(__self__, "virtual_node_name", virtual_node_name)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> int:
+        """
+        The Number of CPU.
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the virtual node.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="eniInstanceId")
+    def eni_instance_id(self) -> str:
+        """
+        The ENI instance ID.
+        """
+        return pulumi.get(self, "eni_instance_id")
+
+    @property
+    @pulumi.getter
+    def events(self) -> Sequence['outputs.GetVirtualNodesNodeEventResult']:
+        """
+        The event list.
+        """
+        return pulumi.get(self, "events")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Virtual Node.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="internetIp")
+    def internet_ip(self) -> str:
+        """
+        The IP address of a public network.
+        """
+        return pulumi.get(self, "internet_ip")
+
+    @property
+    @pulumi.getter(name="intranetIp")
+    def intranet_ip(self) -> str:
+        """
+        The private IP address of the RDS instance.
+        """
+        return pulumi.get(self, "intranet_ip")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> int:
+        """
+        The memory size.
+        """
+        return pulumi.get(self, "memory")
+
+    @property
+    @pulumi.getter(name="ramRoleName")
+    def ram_role_name(self) -> str:
+        """
+        The ram role.
+        """
+        return pulumi.get(self, "ram_role_name")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The resource group ID.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> str:
+        """
+        The security group ID.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The Status of the virtual node.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="virtualNodeId")
+    def virtual_node_id(self) -> str:
+        """
+        Of the virtual node number.
+        """
+        return pulumi.get(self, "virtual_node_id")
+
+    @property
+    @pulumi.getter(name="virtualNodeName")
+    def virtual_node_name(self) -> str:
+        """
+        The name of the virtual node.
+        """
+        return pulumi.get(self, "virtual_node_name")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The vswitch id.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The Zone.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetVirtualNodesNodeEventResult(dict):
+    def __init__(__self__, *,
+                 count: int,
+                 first_timestamp: str,
+                 last_timestamp: str,
+                 message: str,
+                 name: str,
+                 reason: str,
+                 type: str):
+        """
+        :param int count: The number of occurrences.
+        :param str first_timestamp: The first presentation time stamp.
+        :param str last_timestamp: The most recent time stamp.
+        :param str message: The event of the message body.
+        :param str name: The name of the event.
+        :param str reason: The causes of the incident.
+        :param str type: The Event type.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "first_timestamp", first_timestamp)
+        pulumi.set(__self__, "last_timestamp", last_timestamp)
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "reason", reason)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        """
+        The number of occurrences.
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter(name="firstTimestamp")
+    def first_timestamp(self) -> str:
+        """
+        The first presentation time stamp.
+        """
+        return pulumi.get(self, "first_timestamp")
+
+    @property
+    @pulumi.getter(name="lastTimestamp")
+    def last_timestamp(self) -> str:
+        """
+        The most recent time stamp.
+        """
+        return pulumi.get(self, "last_timestamp")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        The event of the message body.
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the event.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def reason(self) -> str:
+        """
+        The causes of the incident.
+        """
+        return pulumi.get(self, "reason")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The Event type.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetZonesZoneResult(dict):
+    def __init__(__self__, *,
+                 region_endpoint: str,
+                 zone_ids: Sequence[str]):
+        """
+        :param str region_endpoint: The endpoint of the region.
+        :param Sequence[str] zone_ids: The list of available zone ids.
+        """
+        pulumi.set(__self__, "region_endpoint", region_endpoint)
+        pulumi.set(__self__, "zone_ids", zone_ids)
+
+    @property
+    @pulumi.getter(name="regionEndpoint")
+    def region_endpoint(self) -> str:
+        """
+        The endpoint of the region.
+        """
+        return pulumi.get(self, "region_endpoint")
+
+    @property
+    @pulumi.getter(name="zoneIds")
+    def zone_ids(self) -> Sequence[str]:
+        """
+        The list of available zone ids.
+        """
+        return pulumi.get(self, "zone_ids")
 
 

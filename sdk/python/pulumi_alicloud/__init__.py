@@ -1738,6 +1738,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "dts/consumerChannel",
+  "fqn": "pulumi_alicloud.dts",
+  "classes": {
+   "alicloud:dts/consumerChannel:ConsumerChannel": "ConsumerChannel"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "dts/jobMonitorRule",
   "fqn": "pulumi_alicloud.dts",
   "classes": {
@@ -1798,6 +1806,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.eci",
   "classes": {
    "alicloud:eci/openApiImageCache:OpenApiImageCache": "OpenApiImageCache"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "eci/virtualNode",
+  "fqn": "pulumi_alicloud.eci",
+  "classes": {
+   "alicloud:eci/virtualNode:VirtualNode": "VirtualNode"
   }
  },
  {
@@ -1870,6 +1886,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ecs",
   "classes": {
    "alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment": "EcsAutoSnapshotPolicyAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ecs/ecsDedicatedHostCluster",
+  "fqn": "pulumi_alicloud.ecs",
+  "classes": {
+   "alicloud:ecs/ecsDedicatedHostCluster:EcsDedicatedHostCluster": "EcsDedicatedHostCluster"
   }
  },
  {
@@ -2162,6 +2186,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "eds/command",
+  "fqn": "pulumi_alicloud.eds",
+  "classes": {
+   "alicloud:eds/command:Command": "Command"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "eds/desktop",
   "fqn": "pulumi_alicloud.eds",
   "classes": {
@@ -2174,6 +2206,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.eds",
   "classes": {
    "alicloud:eds/ecdPolicyGroup:EcdPolicyGroup": "EcdPolicyGroup"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "eds/image",
+  "fqn": "pulumi_alicloud.eds",
+  "classes": {
+   "alicloud:eds/image:Image": "Image"
   }
  },
  {
@@ -2954,10 +2994,34 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "oos/application",
+  "fqn": "pulumi_alicloud.oos",
+  "classes": {
+   "alicloud:oos/application:Application": "Application"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "oos/applicationGroup",
+  "fqn": "pulumi_alicloud.oos",
+  "classes": {
+   "alicloud:oos/applicationGroup:ApplicationGroup": "ApplicationGroup"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "oos/execution",
   "fqn": "pulumi_alicloud.oos",
   "classes": {
    "alicloud:oos/execution:Execution": "Execution"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "oos/patchBaseline",
+  "fqn": "pulumi_alicloud.oos",
+  "classes": {
+   "alicloud:oos/patchBaseline:PatchBaseline": "PatchBaseline"
   }
  },
  {
@@ -3638,6 +3702,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ros",
   "classes": {
    "alicloud:ros/stackGroup:StackGroup": "StackGroup"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ros/stackInstance",
+  "fqn": "pulumi_alicloud.ros",
+  "classes": {
+   "alicloud:ros/stackInstance:StackInstance": "StackInstance"
   }
  },
  {

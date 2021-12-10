@@ -675,6 +675,344 @@ func (o GetBundlesBundleDiskArrayOutput) Index(i pulumi.IntInput) GetBundlesBund
 	}).(GetBundlesBundleDiskOutput)
 }
 
+type GetCommandsCommand struct {
+	// The Contents of the Script to Base64 Encoded Transmission.
+	CommandContent string `pulumi:"commandContent"`
+	// The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
+	CommandType string `pulumi:"commandType"`
+	// The Task of Creation Time.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the Command.
+	Id string `pulumi:"id"`
+	// The Implementation of the Target Cloud Desktop Collection.
+	InvokeDesktops []GetCommandsCommandInvokeDesktop `pulumi:"invokeDesktops"`
+	// The invoke id of the Command.
+	InvokeId string `pulumi:"invokeId"`
+	// Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
+	Status string `pulumi:"status"`
+}
+
+// GetCommandsCommandInput is an input type that accepts GetCommandsCommandArgs and GetCommandsCommandOutput values.
+// You can construct a concrete instance of `GetCommandsCommandInput` via:
+//
+//          GetCommandsCommandArgs{...}
+type GetCommandsCommandInput interface {
+	pulumi.Input
+
+	ToGetCommandsCommandOutput() GetCommandsCommandOutput
+	ToGetCommandsCommandOutputWithContext(context.Context) GetCommandsCommandOutput
+}
+
+type GetCommandsCommandArgs struct {
+	// The Contents of the Script to Base64 Encoded Transmission.
+	CommandContent pulumi.StringInput `pulumi:"commandContent"`
+	// The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
+	CommandType pulumi.StringInput `pulumi:"commandType"`
+	// The Task of Creation Time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the Command.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Implementation of the Target Cloud Desktop Collection.
+	InvokeDesktops GetCommandsCommandInvokeDesktopArrayInput `pulumi:"invokeDesktops"`
+	// The invoke id of the Command.
+	InvokeId pulumi.StringInput `pulumi:"invokeId"`
+	// Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetCommandsCommandArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCommandsCommand)(nil)).Elem()
+}
+
+func (i GetCommandsCommandArgs) ToGetCommandsCommandOutput() GetCommandsCommandOutput {
+	return i.ToGetCommandsCommandOutputWithContext(context.Background())
+}
+
+func (i GetCommandsCommandArgs) ToGetCommandsCommandOutputWithContext(ctx context.Context) GetCommandsCommandOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCommandsCommandOutput)
+}
+
+// GetCommandsCommandArrayInput is an input type that accepts GetCommandsCommandArray and GetCommandsCommandArrayOutput values.
+// You can construct a concrete instance of `GetCommandsCommandArrayInput` via:
+//
+//          GetCommandsCommandArray{ GetCommandsCommandArgs{...} }
+type GetCommandsCommandArrayInput interface {
+	pulumi.Input
+
+	ToGetCommandsCommandArrayOutput() GetCommandsCommandArrayOutput
+	ToGetCommandsCommandArrayOutputWithContext(context.Context) GetCommandsCommandArrayOutput
+}
+
+type GetCommandsCommandArray []GetCommandsCommandInput
+
+func (GetCommandsCommandArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCommandsCommand)(nil)).Elem()
+}
+
+func (i GetCommandsCommandArray) ToGetCommandsCommandArrayOutput() GetCommandsCommandArrayOutput {
+	return i.ToGetCommandsCommandArrayOutputWithContext(context.Background())
+}
+
+func (i GetCommandsCommandArray) ToGetCommandsCommandArrayOutputWithContext(ctx context.Context) GetCommandsCommandArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCommandsCommandArrayOutput)
+}
+
+type GetCommandsCommandOutput struct{ *pulumi.OutputState }
+
+func (GetCommandsCommandOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCommandsCommand)(nil)).Elem()
+}
+
+func (o GetCommandsCommandOutput) ToGetCommandsCommandOutput() GetCommandsCommandOutput {
+	return o
+}
+
+func (o GetCommandsCommandOutput) ToGetCommandsCommandOutputWithContext(ctx context.Context) GetCommandsCommandOutput {
+	return o
+}
+
+// The Contents of the Script to Base64 Encoded Transmission.
+func (o GetCommandsCommandOutput) CommandContent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommandsCommand) string { return v.CommandContent }).(pulumi.StringOutput)
+}
+
+// The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
+func (o GetCommandsCommandOutput) CommandType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommandsCommand) string { return v.CommandType }).(pulumi.StringOutput)
+}
+
+// The Task of Creation Time.
+func (o GetCommandsCommandOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommandsCommand) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Command.
+func (o GetCommandsCommandOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommandsCommand) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Implementation of the Target Cloud Desktop Collection.
+func (o GetCommandsCommandOutput) InvokeDesktops() GetCommandsCommandInvokeDesktopArrayOutput {
+	return o.ApplyT(func(v GetCommandsCommand) []GetCommandsCommandInvokeDesktop { return v.InvokeDesktops }).(GetCommandsCommandInvokeDesktopArrayOutput)
+}
+
+// The invoke id of the Command.
+func (o GetCommandsCommandOutput) InvokeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommandsCommand) string { return v.InvokeId }).(pulumi.StringOutput)
+}
+
+// Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
+func (o GetCommandsCommandOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommandsCommand) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetCommandsCommandArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCommandsCommandArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCommandsCommand)(nil)).Elem()
+}
+
+func (o GetCommandsCommandArrayOutput) ToGetCommandsCommandArrayOutput() GetCommandsCommandArrayOutput {
+	return o
+}
+
+func (o GetCommandsCommandArrayOutput) ToGetCommandsCommandArrayOutputWithContext(ctx context.Context) GetCommandsCommandArrayOutput {
+	return o
+}
+
+func (o GetCommandsCommandArrayOutput) Index(i pulumi.IntInput) GetCommandsCommandOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCommandsCommand {
+		return vs[0].([]GetCommandsCommand)[vs[1].(int)]
+	}).(GetCommandsCommandOutput)
+}
+
+type GetCommandsCommandInvokeDesktop struct {
+	// The desktop id of the Desktop.
+	DesktopId string `pulumi:"desktopId"`
+	// Output Field Text Length Exceeds 24 KB of Truncated Discarded Text Length.
+	Dropped int `pulumi:"dropped"`
+	// Command of the Failure Or Perform the Reason for the Failure of the Code.
+	ErrorCode string `pulumi:"errorCode"`
+	// Command of the Failure Or Perform the Reason for the Failure of the Details.
+	ErrorInfo string `pulumi:"errorInfo"`
+	// Command of the Failure Or Perform the Reason for the Failure of the Details.
+	ExitCode string `pulumi:"exitCode"`
+	// The Script Process until the End of Time.
+	FinishTime string `pulumi:"finishTime"`
+	// A Single Cloud Desktop Script Progress Status.
+	InvocationStatus string `pulumi:"invocationStatus"`
+	// Script the Output of the Process.
+	Output string `pulumi:"output"`
+	// Command in the Desktop Implementation.
+	Repeats int `pulumi:"repeats"`
+	// The Script Process on the Desktop, in the Start Timing of the Execution.
+	StartTime string `pulumi:"startTime"`
+	// If You Use the invocation Indicates That the Call of the Time.
+	StopTime string `pulumi:"stopTime"`
+}
+
+// GetCommandsCommandInvokeDesktopInput is an input type that accepts GetCommandsCommandInvokeDesktopArgs and GetCommandsCommandInvokeDesktopOutput values.
+// You can construct a concrete instance of `GetCommandsCommandInvokeDesktopInput` via:
+//
+//          GetCommandsCommandInvokeDesktopArgs{...}
+type GetCommandsCommandInvokeDesktopInput interface {
+	pulumi.Input
+
+	ToGetCommandsCommandInvokeDesktopOutput() GetCommandsCommandInvokeDesktopOutput
+	ToGetCommandsCommandInvokeDesktopOutputWithContext(context.Context) GetCommandsCommandInvokeDesktopOutput
+}
+
+type GetCommandsCommandInvokeDesktopArgs struct {
+	// The desktop id of the Desktop.
+	DesktopId pulumi.StringInput `pulumi:"desktopId"`
+	// Output Field Text Length Exceeds 24 KB of Truncated Discarded Text Length.
+	Dropped pulumi.IntInput `pulumi:"dropped"`
+	// Command of the Failure Or Perform the Reason for the Failure of the Code.
+	ErrorCode pulumi.StringInput `pulumi:"errorCode"`
+	// Command of the Failure Or Perform the Reason for the Failure of the Details.
+	ErrorInfo pulumi.StringInput `pulumi:"errorInfo"`
+	// Command of the Failure Or Perform the Reason for the Failure of the Details.
+	ExitCode pulumi.StringInput `pulumi:"exitCode"`
+	// The Script Process until the End of Time.
+	FinishTime pulumi.StringInput `pulumi:"finishTime"`
+	// A Single Cloud Desktop Script Progress Status.
+	InvocationStatus pulumi.StringInput `pulumi:"invocationStatus"`
+	// Script the Output of the Process.
+	Output pulumi.StringInput `pulumi:"output"`
+	// Command in the Desktop Implementation.
+	Repeats pulumi.IntInput `pulumi:"repeats"`
+	// The Script Process on the Desktop, in the Start Timing of the Execution.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// If You Use the invocation Indicates That the Call of the Time.
+	StopTime pulumi.StringInput `pulumi:"stopTime"`
+}
+
+func (GetCommandsCommandInvokeDesktopArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCommandsCommandInvokeDesktop)(nil)).Elem()
+}
+
+func (i GetCommandsCommandInvokeDesktopArgs) ToGetCommandsCommandInvokeDesktopOutput() GetCommandsCommandInvokeDesktopOutput {
+	return i.ToGetCommandsCommandInvokeDesktopOutputWithContext(context.Background())
+}
+
+func (i GetCommandsCommandInvokeDesktopArgs) ToGetCommandsCommandInvokeDesktopOutputWithContext(ctx context.Context) GetCommandsCommandInvokeDesktopOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCommandsCommandInvokeDesktopOutput)
+}
+
+// GetCommandsCommandInvokeDesktopArrayInput is an input type that accepts GetCommandsCommandInvokeDesktopArray and GetCommandsCommandInvokeDesktopArrayOutput values.
+// You can construct a concrete instance of `GetCommandsCommandInvokeDesktopArrayInput` via:
+//
+//          GetCommandsCommandInvokeDesktopArray{ GetCommandsCommandInvokeDesktopArgs{...} }
+type GetCommandsCommandInvokeDesktopArrayInput interface {
+	pulumi.Input
+
+	ToGetCommandsCommandInvokeDesktopArrayOutput() GetCommandsCommandInvokeDesktopArrayOutput
+	ToGetCommandsCommandInvokeDesktopArrayOutputWithContext(context.Context) GetCommandsCommandInvokeDesktopArrayOutput
+}
+
+type GetCommandsCommandInvokeDesktopArray []GetCommandsCommandInvokeDesktopInput
+
+func (GetCommandsCommandInvokeDesktopArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCommandsCommandInvokeDesktop)(nil)).Elem()
+}
+
+func (i GetCommandsCommandInvokeDesktopArray) ToGetCommandsCommandInvokeDesktopArrayOutput() GetCommandsCommandInvokeDesktopArrayOutput {
+	return i.ToGetCommandsCommandInvokeDesktopArrayOutputWithContext(context.Background())
+}
+
+func (i GetCommandsCommandInvokeDesktopArray) ToGetCommandsCommandInvokeDesktopArrayOutputWithContext(ctx context.Context) GetCommandsCommandInvokeDesktopArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCommandsCommandInvokeDesktopArrayOutput)
+}
+
+type GetCommandsCommandInvokeDesktopOutput struct{ *pulumi.OutputState }
+
+func (GetCommandsCommandInvokeDesktopOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCommandsCommandInvokeDesktop)(nil)).Elem()
+}
+
+func (o GetCommandsCommandInvokeDesktopOutput) ToGetCommandsCommandInvokeDesktopOutput() GetCommandsCommandInvokeDesktopOutput {
+	return o
+}
+
+func (o GetCommandsCommandInvokeDesktopOutput) ToGetCommandsCommandInvokeDesktopOutputWithContext(ctx context.Context) GetCommandsCommandInvokeDesktopOutput {
+	return o
+}
+
+// The desktop id of the Desktop.
+func (o GetCommandsCommandInvokeDesktopOutput) DesktopId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommandsCommandInvokeDesktop) string { return v.DesktopId }).(pulumi.StringOutput)
+}
+
+// Output Field Text Length Exceeds 24 KB of Truncated Discarded Text Length.
+func (o GetCommandsCommandInvokeDesktopOutput) Dropped() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCommandsCommandInvokeDesktop) int { return v.Dropped }).(pulumi.IntOutput)
+}
+
+// Command of the Failure Or Perform the Reason for the Failure of the Code.
+func (o GetCommandsCommandInvokeDesktopOutput) ErrorCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommandsCommandInvokeDesktop) string { return v.ErrorCode }).(pulumi.StringOutput)
+}
+
+// Command of the Failure Or Perform the Reason for the Failure of the Details.
+func (o GetCommandsCommandInvokeDesktopOutput) ErrorInfo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommandsCommandInvokeDesktop) string { return v.ErrorInfo }).(pulumi.StringOutput)
+}
+
+// Command of the Failure Or Perform the Reason for the Failure of the Details.
+func (o GetCommandsCommandInvokeDesktopOutput) ExitCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommandsCommandInvokeDesktop) string { return v.ExitCode }).(pulumi.StringOutput)
+}
+
+// The Script Process until the End of Time.
+func (o GetCommandsCommandInvokeDesktopOutput) FinishTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommandsCommandInvokeDesktop) string { return v.FinishTime }).(pulumi.StringOutput)
+}
+
+// A Single Cloud Desktop Script Progress Status.
+func (o GetCommandsCommandInvokeDesktopOutput) InvocationStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommandsCommandInvokeDesktop) string { return v.InvocationStatus }).(pulumi.StringOutput)
+}
+
+// Script the Output of the Process.
+func (o GetCommandsCommandInvokeDesktopOutput) Output() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommandsCommandInvokeDesktop) string { return v.Output }).(pulumi.StringOutput)
+}
+
+// Command in the Desktop Implementation.
+func (o GetCommandsCommandInvokeDesktopOutput) Repeats() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCommandsCommandInvokeDesktop) int { return v.Repeats }).(pulumi.IntOutput)
+}
+
+// The Script Process on the Desktop, in the Start Timing of the Execution.
+func (o GetCommandsCommandInvokeDesktopOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommandsCommandInvokeDesktop) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// If You Use the invocation Indicates That the Call of the Time.
+func (o GetCommandsCommandInvokeDesktopOutput) StopTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCommandsCommandInvokeDesktop) string { return v.StopTime }).(pulumi.StringOutput)
+}
+
+type GetCommandsCommandInvokeDesktopArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCommandsCommandInvokeDesktopArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCommandsCommandInvokeDesktop)(nil)).Elem()
+}
+
+func (o GetCommandsCommandInvokeDesktopArrayOutput) ToGetCommandsCommandInvokeDesktopArrayOutput() GetCommandsCommandInvokeDesktopArrayOutput {
+	return o
+}
+
+func (o GetCommandsCommandInvokeDesktopArrayOutput) ToGetCommandsCommandInvokeDesktopArrayOutputWithContext(ctx context.Context) GetCommandsCommandInvokeDesktopArrayOutput {
+	return o
+}
+
+func (o GetCommandsCommandInvokeDesktopArrayOutput) Index(i pulumi.IntInput) GetCommandsCommandInvokeDesktopOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCommandsCommandInvokeDesktop {
+		return vs[0].([]GetCommandsCommandInvokeDesktop)[vs[1].(int)]
+	}).(GetCommandsCommandInvokeDesktopOutput)
+}
+
 type GetDesktopsDesktop struct {
 	// The number of CPUs.
 	Cpu int `pulumi:"cpu"`
@@ -905,6 +1243,202 @@ func (o GetDesktopsDesktopArrayOutput) Index(i pulumi.IntInput) GetDesktopsDeskt
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDesktopsDesktop {
 		return vs[0].([]GetDesktopsDesktop)[vs[1].(int)]
 	}).(GetDesktopsDesktopOutput)
+}
+
+type GetImagesImage struct {
+	// The creation time of the image.
+	CreateTime string `pulumi:"createTime"`
+	// The size of data disk of the image.
+	DataDiskSize int `pulumi:"dataDiskSize"`
+	// The description of the image.
+	Description string `pulumi:"description"`
+	// The Gpu Category of the image.
+	GpuCategory bool `pulumi:"gpuCategory"`
+	// The ID of the Image.
+	Id string `pulumi:"id"`
+	// The image id of the image.
+	ImageId string `pulumi:"imageId"`
+	// The image name.
+	ImageName string `pulumi:"imageName"`
+	// The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
+	ImageType string `pulumi:"imageType"`
+	// The os type of the image.
+	OsType string `pulumi:"osType"`
+	// The progress of the image.
+	Progress string `pulumi:"progress"`
+	// The size of the image.
+	Size int `pulumi:"size"`
+	// The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
+	Status string `pulumi:"status"`
+}
+
+// GetImagesImageInput is an input type that accepts GetImagesImageArgs and GetImagesImageOutput values.
+// You can construct a concrete instance of `GetImagesImageInput` via:
+//
+//          GetImagesImageArgs{...}
+type GetImagesImageInput interface {
+	pulumi.Input
+
+	ToGetImagesImageOutput() GetImagesImageOutput
+	ToGetImagesImageOutputWithContext(context.Context) GetImagesImageOutput
+}
+
+type GetImagesImageArgs struct {
+	// The creation time of the image.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The size of data disk of the image.
+	DataDiskSize pulumi.IntInput `pulumi:"dataDiskSize"`
+	// The description of the image.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The Gpu Category of the image.
+	GpuCategory pulumi.BoolInput `pulumi:"gpuCategory"`
+	// The ID of the Image.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The image id of the image.
+	ImageId pulumi.StringInput `pulumi:"imageId"`
+	// The image name.
+	ImageName pulumi.StringInput `pulumi:"imageName"`
+	// The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
+	ImageType pulumi.StringInput `pulumi:"imageType"`
+	// The os type of the image.
+	OsType pulumi.StringInput `pulumi:"osType"`
+	// The progress of the image.
+	Progress pulumi.StringInput `pulumi:"progress"`
+	// The size of the image.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetImagesImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesImage)(nil)).Elem()
+}
+
+func (i GetImagesImageArgs) ToGetImagesImageOutput() GetImagesImageOutput {
+	return i.ToGetImagesImageOutputWithContext(context.Background())
+}
+
+func (i GetImagesImageArgs) ToGetImagesImageOutputWithContext(ctx context.Context) GetImagesImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesImageOutput)
+}
+
+// GetImagesImageArrayInput is an input type that accepts GetImagesImageArray and GetImagesImageArrayOutput values.
+// You can construct a concrete instance of `GetImagesImageArrayInput` via:
+//
+//          GetImagesImageArray{ GetImagesImageArgs{...} }
+type GetImagesImageArrayInput interface {
+	pulumi.Input
+
+	ToGetImagesImageArrayOutput() GetImagesImageArrayOutput
+	ToGetImagesImageArrayOutputWithContext(context.Context) GetImagesImageArrayOutput
+}
+
+type GetImagesImageArray []GetImagesImageInput
+
+func (GetImagesImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetImagesImage)(nil)).Elem()
+}
+
+func (i GetImagesImageArray) ToGetImagesImageArrayOutput() GetImagesImageArrayOutput {
+	return i.ToGetImagesImageArrayOutputWithContext(context.Background())
+}
+
+func (i GetImagesImageArray) ToGetImagesImageArrayOutputWithContext(ctx context.Context) GetImagesImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesImageArrayOutput)
+}
+
+type GetImagesImageOutput struct{ *pulumi.OutputState }
+
+func (GetImagesImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesImage)(nil)).Elem()
+}
+
+func (o GetImagesImageOutput) ToGetImagesImageOutput() GetImagesImageOutput {
+	return o
+}
+
+func (o GetImagesImageOutput) ToGetImagesImageOutputWithContext(ctx context.Context) GetImagesImageOutput {
+	return o
+}
+
+// The creation time of the image.
+func (o GetImagesImageOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The size of data disk of the image.
+func (o GetImagesImageOutput) DataDiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetImagesImage) int { return v.DataDiskSize }).(pulumi.IntOutput)
+}
+
+// The description of the image.
+func (o GetImagesImageOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The Gpu Category of the image.
+func (o GetImagesImageOutput) GpuCategory() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetImagesImage) bool { return v.GpuCategory }).(pulumi.BoolOutput)
+}
+
+// The ID of the Image.
+func (o GetImagesImageOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The image id of the image.
+func (o GetImagesImageOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// The image name.
+func (o GetImagesImageOutput) ImageName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.ImageName }).(pulumi.StringOutput)
+}
+
+// The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
+func (o GetImagesImageOutput) ImageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.ImageType }).(pulumi.StringOutput)
+}
+
+// The os type of the image.
+func (o GetImagesImageOutput) OsType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.OsType }).(pulumi.StringOutput)
+}
+
+// The progress of the image.
+func (o GetImagesImageOutput) Progress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.Progress }).(pulumi.StringOutput)
+}
+
+// The size of the image.
+func (o GetImagesImageOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetImagesImage) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
+func (o GetImagesImageOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImage) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetImagesImageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetImagesImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetImagesImage)(nil)).Elem()
+}
+
+func (o GetImagesImageArrayOutput) ToGetImagesImageArrayOutput() GetImagesImageArrayOutput {
+	return o
+}
+
+func (o GetImagesImageArrayOutput) ToGetImagesImageArrayOutputWithContext(ctx context.Context) GetImagesImageArrayOutput {
+	return o
+}
+
+func (o GetImagesImageArrayOutput) Index(i pulumi.IntInput) GetImagesImageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetImagesImage {
+		return vs[0].([]GetImagesImage)[vs[1].(int)]
+	}).(GetImagesImageOutput)
 }
 
 type GetNasFileSystemsSystem struct {
@@ -2333,8 +2867,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBundlesBundleDesktopTypeAttributeArrayInput)(nil)).Elem(), GetBundlesBundleDesktopTypeAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBundlesBundleDiskInput)(nil)).Elem(), GetBundlesBundleDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBundlesBundleDiskArrayInput)(nil)).Elem(), GetBundlesBundleDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCommandsCommandInput)(nil)).Elem(), GetCommandsCommandArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCommandsCommandArrayInput)(nil)).Elem(), GetCommandsCommandArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCommandsCommandInvokeDesktopInput)(nil)).Elem(), GetCommandsCommandInvokeDesktopArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCommandsCommandInvokeDesktopArrayInput)(nil)).Elem(), GetCommandsCommandInvokeDesktopArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDesktopsDesktopInput)(nil)).Elem(), GetDesktopsDesktopArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDesktopsDesktopArrayInput)(nil)).Elem(), GetDesktopsDesktopArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageInput)(nil)).Elem(), GetImagesImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageArrayInput)(nil)).Elem(), GetImagesImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNasFileSystemsSystemInput)(nil)).Elem(), GetNasFileSystemsSystemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNasFileSystemsSystemArrayInput)(nil)).Elem(), GetNasFileSystemsSystemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkPackagesPackageInput)(nil)).Elem(), GetNetworkPackagesPackageArgs{})
@@ -2359,8 +2899,14 @@ func init() {
 	pulumi.RegisterOutputType(GetBundlesBundleDesktopTypeAttributeArrayOutput{})
 	pulumi.RegisterOutputType(GetBundlesBundleDiskOutput{})
 	pulumi.RegisterOutputType(GetBundlesBundleDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetCommandsCommandOutput{})
+	pulumi.RegisterOutputType(GetCommandsCommandArrayOutput{})
+	pulumi.RegisterOutputType(GetCommandsCommandInvokeDesktopOutput{})
+	pulumi.RegisterOutputType(GetCommandsCommandInvokeDesktopArrayOutput{})
 	pulumi.RegisterOutputType(GetDesktopsDesktopOutput{})
 	pulumi.RegisterOutputType(GetDesktopsDesktopArrayOutput{})
+	pulumi.RegisterOutputType(GetImagesImageOutput{})
+	pulumi.RegisterOutputType(GetImagesImageArrayOutput{})
 	pulumi.RegisterOutputType(GetNasFileSystemsSystemOutput{})
 	pulumi.RegisterOutputType(GetNasFileSystemsSystemArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkPackagesPackageOutput{})

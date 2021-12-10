@@ -10,6 +10,121 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type DbClusterDbClusterAccessWhiteList struct {
+	// Whitelist grouping attribute.
+	DbClusterIpArrayAttribute *string `pulumi:"dbClusterIpArrayAttribute"`
+	// Whitelist group name.
+	DbClusterIpArrayName *string `pulumi:"dbClusterIpArrayName"`
+	// The IP address list under the whitelist group.
+	SecurityIpList *string `pulumi:"securityIpList"`
+}
+
+// DbClusterDbClusterAccessWhiteListInput is an input type that accepts DbClusterDbClusterAccessWhiteListArgs and DbClusterDbClusterAccessWhiteListOutput values.
+// You can construct a concrete instance of `DbClusterDbClusterAccessWhiteListInput` via:
+//
+//          DbClusterDbClusterAccessWhiteListArgs{...}
+type DbClusterDbClusterAccessWhiteListInput interface {
+	pulumi.Input
+
+	ToDbClusterDbClusterAccessWhiteListOutput() DbClusterDbClusterAccessWhiteListOutput
+	ToDbClusterDbClusterAccessWhiteListOutputWithContext(context.Context) DbClusterDbClusterAccessWhiteListOutput
+}
+
+type DbClusterDbClusterAccessWhiteListArgs struct {
+	// Whitelist grouping attribute.
+	DbClusterIpArrayAttribute pulumi.StringPtrInput `pulumi:"dbClusterIpArrayAttribute"`
+	// Whitelist group name.
+	DbClusterIpArrayName pulumi.StringPtrInput `pulumi:"dbClusterIpArrayName"`
+	// The IP address list under the whitelist group.
+	SecurityIpList pulumi.StringPtrInput `pulumi:"securityIpList"`
+}
+
+func (DbClusterDbClusterAccessWhiteListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbClusterDbClusterAccessWhiteList)(nil)).Elem()
+}
+
+func (i DbClusterDbClusterAccessWhiteListArgs) ToDbClusterDbClusterAccessWhiteListOutput() DbClusterDbClusterAccessWhiteListOutput {
+	return i.ToDbClusterDbClusterAccessWhiteListOutputWithContext(context.Background())
+}
+
+func (i DbClusterDbClusterAccessWhiteListArgs) ToDbClusterDbClusterAccessWhiteListOutputWithContext(ctx context.Context) DbClusterDbClusterAccessWhiteListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbClusterDbClusterAccessWhiteListOutput)
+}
+
+// DbClusterDbClusterAccessWhiteListArrayInput is an input type that accepts DbClusterDbClusterAccessWhiteListArray and DbClusterDbClusterAccessWhiteListArrayOutput values.
+// You can construct a concrete instance of `DbClusterDbClusterAccessWhiteListArrayInput` via:
+//
+//          DbClusterDbClusterAccessWhiteListArray{ DbClusterDbClusterAccessWhiteListArgs{...} }
+type DbClusterDbClusterAccessWhiteListArrayInput interface {
+	pulumi.Input
+
+	ToDbClusterDbClusterAccessWhiteListArrayOutput() DbClusterDbClusterAccessWhiteListArrayOutput
+	ToDbClusterDbClusterAccessWhiteListArrayOutputWithContext(context.Context) DbClusterDbClusterAccessWhiteListArrayOutput
+}
+
+type DbClusterDbClusterAccessWhiteListArray []DbClusterDbClusterAccessWhiteListInput
+
+func (DbClusterDbClusterAccessWhiteListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DbClusterDbClusterAccessWhiteList)(nil)).Elem()
+}
+
+func (i DbClusterDbClusterAccessWhiteListArray) ToDbClusterDbClusterAccessWhiteListArrayOutput() DbClusterDbClusterAccessWhiteListArrayOutput {
+	return i.ToDbClusterDbClusterAccessWhiteListArrayOutputWithContext(context.Background())
+}
+
+func (i DbClusterDbClusterAccessWhiteListArray) ToDbClusterDbClusterAccessWhiteListArrayOutputWithContext(ctx context.Context) DbClusterDbClusterAccessWhiteListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbClusterDbClusterAccessWhiteListArrayOutput)
+}
+
+type DbClusterDbClusterAccessWhiteListOutput struct{ *pulumi.OutputState }
+
+func (DbClusterDbClusterAccessWhiteListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbClusterDbClusterAccessWhiteList)(nil)).Elem()
+}
+
+func (o DbClusterDbClusterAccessWhiteListOutput) ToDbClusterDbClusterAccessWhiteListOutput() DbClusterDbClusterAccessWhiteListOutput {
+	return o
+}
+
+func (o DbClusterDbClusterAccessWhiteListOutput) ToDbClusterDbClusterAccessWhiteListOutputWithContext(ctx context.Context) DbClusterDbClusterAccessWhiteListOutput {
+	return o
+}
+
+// Whitelist grouping attribute.
+func (o DbClusterDbClusterAccessWhiteListOutput) DbClusterIpArrayAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbClusterDbClusterAccessWhiteList) *string { return v.DbClusterIpArrayAttribute }).(pulumi.StringPtrOutput)
+}
+
+// Whitelist group name.
+func (o DbClusterDbClusterAccessWhiteListOutput) DbClusterIpArrayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbClusterDbClusterAccessWhiteList) *string { return v.DbClusterIpArrayName }).(pulumi.StringPtrOutput)
+}
+
+// The IP address list under the whitelist group.
+func (o DbClusterDbClusterAccessWhiteListOutput) SecurityIpList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbClusterDbClusterAccessWhiteList) *string { return v.SecurityIpList }).(pulumi.StringPtrOutput)
+}
+
+type DbClusterDbClusterAccessWhiteListArrayOutput struct{ *pulumi.OutputState }
+
+func (DbClusterDbClusterAccessWhiteListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DbClusterDbClusterAccessWhiteList)(nil)).Elem()
+}
+
+func (o DbClusterDbClusterAccessWhiteListArrayOutput) ToDbClusterDbClusterAccessWhiteListArrayOutput() DbClusterDbClusterAccessWhiteListArrayOutput {
+	return o
+}
+
+func (o DbClusterDbClusterAccessWhiteListArrayOutput) ToDbClusterDbClusterAccessWhiteListArrayOutputWithContext(ctx context.Context) DbClusterDbClusterAccessWhiteListArrayOutput {
+	return o
+}
+
+func (o DbClusterDbClusterAccessWhiteListArrayOutput) Index(i pulumi.IntInput) DbClusterDbClusterAccessWhiteListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DbClusterDbClusterAccessWhiteList {
+		return vs[0].([]DbClusterDbClusterAccessWhiteList)[vs[1].(int)]
+	}).(DbClusterDbClusterAccessWhiteListOutput)
+}
+
 type GetAccountsAccount struct {
 	// In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
 	AccountDescription string `pulumi:"accountDescription"`
@@ -165,6 +280,8 @@ type GetDbClustersCluster struct {
 	ConnectionString string `pulumi:"connectionString"`
 	// The creation time of the resource.
 	CreateTime string `pulumi:"createTime"`
+	// The db cluster access white list.
+	DbClusterAccessWhiteLists []GetDbClustersClusterDbClusterAccessWhiteList `pulumi:"dbClusterAccessWhiteLists"`
 	// The DBCluster description.
 	DbClusterDescription string `pulumi:"dbClusterDescription"`
 	DbClusterId          string `pulumi:"dbClusterId"`
@@ -250,6 +367,8 @@ type GetDbClustersClusterArgs struct {
 	ConnectionString pulumi.StringInput `pulumi:"connectionString"`
 	// The creation time of the resource.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The db cluster access white list.
+	DbClusterAccessWhiteLists GetDbClustersClusterDbClusterAccessWhiteListArrayInput `pulumi:"dbClusterAccessWhiteLists"`
 	// The DBCluster description.
 	DbClusterDescription pulumi.StringInput `pulumi:"dbClusterDescription"`
 	DbClusterId          pulumi.StringInput `pulumi:"dbClusterId"`
@@ -390,6 +509,13 @@ func (o GetDbClustersClusterOutput) ConnectionString() pulumi.StringOutput {
 // The creation time of the resource.
 func (o GetDbClustersClusterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbClustersCluster) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The db cluster access white list.
+func (o GetDbClustersClusterOutput) DbClusterAccessWhiteLists() GetDbClustersClusterDbClusterAccessWhiteListArrayOutput {
+	return o.ApplyT(func(v GetDbClustersCluster) []GetDbClustersClusterDbClusterAccessWhiteList {
+		return v.DbClusterAccessWhiteLists
+	}).(GetDbClustersClusterDbClusterAccessWhiteListArrayOutput)
 }
 
 // The DBCluster description.
@@ -559,6 +685,121 @@ func (o GetDbClustersClusterArrayOutput) Index(i pulumi.IntInput) GetDbClustersC
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDbClustersCluster {
 		return vs[0].([]GetDbClustersCluster)[vs[1].(int)]
 	}).(GetDbClustersClusterOutput)
+}
+
+type GetDbClustersClusterDbClusterAccessWhiteList struct {
+	// Whitelist grouping attribute.
+	DbClusterIpArrayAttribute string `pulumi:"dbClusterIpArrayAttribute"`
+	// Whitelist group name.
+	DbClusterIpArrayName string `pulumi:"dbClusterIpArrayName"`
+	// The IP address list under the whitelist group.
+	SecurityIpList string `pulumi:"securityIpList"`
+}
+
+// GetDbClustersClusterDbClusterAccessWhiteListInput is an input type that accepts GetDbClustersClusterDbClusterAccessWhiteListArgs and GetDbClustersClusterDbClusterAccessWhiteListOutput values.
+// You can construct a concrete instance of `GetDbClustersClusterDbClusterAccessWhiteListInput` via:
+//
+//          GetDbClustersClusterDbClusterAccessWhiteListArgs{...}
+type GetDbClustersClusterDbClusterAccessWhiteListInput interface {
+	pulumi.Input
+
+	ToGetDbClustersClusterDbClusterAccessWhiteListOutput() GetDbClustersClusterDbClusterAccessWhiteListOutput
+	ToGetDbClustersClusterDbClusterAccessWhiteListOutputWithContext(context.Context) GetDbClustersClusterDbClusterAccessWhiteListOutput
+}
+
+type GetDbClustersClusterDbClusterAccessWhiteListArgs struct {
+	// Whitelist grouping attribute.
+	DbClusterIpArrayAttribute pulumi.StringInput `pulumi:"dbClusterIpArrayAttribute"`
+	// Whitelist group name.
+	DbClusterIpArrayName pulumi.StringInput `pulumi:"dbClusterIpArrayName"`
+	// The IP address list under the whitelist group.
+	SecurityIpList pulumi.StringInput `pulumi:"securityIpList"`
+}
+
+func (GetDbClustersClusterDbClusterAccessWhiteListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbClustersClusterDbClusterAccessWhiteList)(nil)).Elem()
+}
+
+func (i GetDbClustersClusterDbClusterAccessWhiteListArgs) ToGetDbClustersClusterDbClusterAccessWhiteListOutput() GetDbClustersClusterDbClusterAccessWhiteListOutput {
+	return i.ToGetDbClustersClusterDbClusterAccessWhiteListOutputWithContext(context.Background())
+}
+
+func (i GetDbClustersClusterDbClusterAccessWhiteListArgs) ToGetDbClustersClusterDbClusterAccessWhiteListOutputWithContext(ctx context.Context) GetDbClustersClusterDbClusterAccessWhiteListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbClustersClusterDbClusterAccessWhiteListOutput)
+}
+
+// GetDbClustersClusterDbClusterAccessWhiteListArrayInput is an input type that accepts GetDbClustersClusterDbClusterAccessWhiteListArray and GetDbClustersClusterDbClusterAccessWhiteListArrayOutput values.
+// You can construct a concrete instance of `GetDbClustersClusterDbClusterAccessWhiteListArrayInput` via:
+//
+//          GetDbClustersClusterDbClusterAccessWhiteListArray{ GetDbClustersClusterDbClusterAccessWhiteListArgs{...} }
+type GetDbClustersClusterDbClusterAccessWhiteListArrayInput interface {
+	pulumi.Input
+
+	ToGetDbClustersClusterDbClusterAccessWhiteListArrayOutput() GetDbClustersClusterDbClusterAccessWhiteListArrayOutput
+	ToGetDbClustersClusterDbClusterAccessWhiteListArrayOutputWithContext(context.Context) GetDbClustersClusterDbClusterAccessWhiteListArrayOutput
+}
+
+type GetDbClustersClusterDbClusterAccessWhiteListArray []GetDbClustersClusterDbClusterAccessWhiteListInput
+
+func (GetDbClustersClusterDbClusterAccessWhiteListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDbClustersClusterDbClusterAccessWhiteList)(nil)).Elem()
+}
+
+func (i GetDbClustersClusterDbClusterAccessWhiteListArray) ToGetDbClustersClusterDbClusterAccessWhiteListArrayOutput() GetDbClustersClusterDbClusterAccessWhiteListArrayOutput {
+	return i.ToGetDbClustersClusterDbClusterAccessWhiteListArrayOutputWithContext(context.Background())
+}
+
+func (i GetDbClustersClusterDbClusterAccessWhiteListArray) ToGetDbClustersClusterDbClusterAccessWhiteListArrayOutputWithContext(ctx context.Context) GetDbClustersClusterDbClusterAccessWhiteListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbClustersClusterDbClusterAccessWhiteListArrayOutput)
+}
+
+type GetDbClustersClusterDbClusterAccessWhiteListOutput struct{ *pulumi.OutputState }
+
+func (GetDbClustersClusterDbClusterAccessWhiteListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbClustersClusterDbClusterAccessWhiteList)(nil)).Elem()
+}
+
+func (o GetDbClustersClusterDbClusterAccessWhiteListOutput) ToGetDbClustersClusterDbClusterAccessWhiteListOutput() GetDbClustersClusterDbClusterAccessWhiteListOutput {
+	return o
+}
+
+func (o GetDbClustersClusterDbClusterAccessWhiteListOutput) ToGetDbClustersClusterDbClusterAccessWhiteListOutputWithContext(ctx context.Context) GetDbClustersClusterDbClusterAccessWhiteListOutput {
+	return o
+}
+
+// Whitelist grouping attribute.
+func (o GetDbClustersClusterDbClusterAccessWhiteListOutput) DbClusterIpArrayAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbClustersClusterDbClusterAccessWhiteList) string { return v.DbClusterIpArrayAttribute }).(pulumi.StringOutput)
+}
+
+// Whitelist group name.
+func (o GetDbClustersClusterDbClusterAccessWhiteListOutput) DbClusterIpArrayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbClustersClusterDbClusterAccessWhiteList) string { return v.DbClusterIpArrayName }).(pulumi.StringOutput)
+}
+
+// The IP address list under the whitelist group.
+func (o GetDbClustersClusterDbClusterAccessWhiteListOutput) SecurityIpList() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbClustersClusterDbClusterAccessWhiteList) string { return v.SecurityIpList }).(pulumi.StringOutput)
+}
+
+type GetDbClustersClusterDbClusterAccessWhiteListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDbClustersClusterDbClusterAccessWhiteListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDbClustersClusterDbClusterAccessWhiteList)(nil)).Elem()
+}
+
+func (o GetDbClustersClusterDbClusterAccessWhiteListArrayOutput) ToGetDbClustersClusterDbClusterAccessWhiteListArrayOutput() GetDbClustersClusterDbClusterAccessWhiteListArrayOutput {
+	return o
+}
+
+func (o GetDbClustersClusterDbClusterAccessWhiteListArrayOutput) ToGetDbClustersClusterDbClusterAccessWhiteListArrayOutputWithContext(ctx context.Context) GetDbClustersClusterDbClusterAccessWhiteListArrayOutput {
+	return o
+}
+
+func (o GetDbClustersClusterDbClusterAccessWhiteListArrayOutput) Index(i pulumi.IntInput) GetDbClustersClusterDbClusterAccessWhiteListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDbClustersClusterDbClusterAccessWhiteList {
+		return vs[0].([]GetDbClustersClusterDbClusterAccessWhiteList)[vs[1].(int)]
+	}).(GetDbClustersClusterDbClusterAccessWhiteListOutput)
 }
 
 type GetDbClustersClusterScaleOutStatus struct {
@@ -880,20 +1121,28 @@ func (o GetRegionsRegionZoneIdArrayOutput) Index(i pulumi.IntInput) GetRegionsRe
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DbClusterDbClusterAccessWhiteListInput)(nil)).Elem(), DbClusterDbClusterAccessWhiteListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbClusterDbClusterAccessWhiteListArrayInput)(nil)).Elem(), DbClusterDbClusterAccessWhiteListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountInput)(nil)).Elem(), GetAccountsAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountArrayInput)(nil)).Elem(), GetAccountsAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbClustersClusterInput)(nil)).Elem(), GetDbClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbClustersClusterArrayInput)(nil)).Elem(), GetDbClustersClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbClustersClusterDbClusterAccessWhiteListInput)(nil)).Elem(), GetDbClustersClusterDbClusterAccessWhiteListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbClustersClusterDbClusterAccessWhiteListArrayInput)(nil)).Elem(), GetDbClustersClusterDbClusterAccessWhiteListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbClustersClusterScaleOutStatusInput)(nil)).Elem(), GetDbClustersClusterScaleOutStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbClustersClusterScaleOutStatusArrayInput)(nil)).Elem(), GetDbClustersClusterScaleOutStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionInput)(nil)).Elem(), GetRegionsRegionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionArrayInput)(nil)).Elem(), GetRegionsRegionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionZoneIdInput)(nil)).Elem(), GetRegionsRegionZoneIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionZoneIdArrayInput)(nil)).Elem(), GetRegionsRegionZoneIdArray{})
+	pulumi.RegisterOutputType(DbClusterDbClusterAccessWhiteListOutput{})
+	pulumi.RegisterOutputType(DbClusterDbClusterAccessWhiteListArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetDbClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetDbClustersClusterArrayOutput{})
+	pulumi.RegisterOutputType(GetDbClustersClusterDbClusterAccessWhiteListOutput{})
+	pulumi.RegisterOutputType(GetDbClustersClusterDbClusterAccessWhiteListArrayOutput{})
 	pulumi.RegisterOutputType(GetDbClustersClusterScaleOutStatusOutput{})
 	pulumi.RegisterOutputType(GetDbClustersClusterScaleOutStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionsRegionOutput{})

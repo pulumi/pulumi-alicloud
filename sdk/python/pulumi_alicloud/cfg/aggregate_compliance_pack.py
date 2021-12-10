@@ -24,7 +24,7 @@ class AggregateCompliancePackArgs:
                  config_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]]] = None):
         """
         The set of arguments for constructing a AggregateCompliancePack resource.
-        :param pulumi.Input[str] aggregate_compliance_pack_name: The name of compliance package name.
+        :param pulumi.Input[str] aggregate_compliance_pack_name: The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
         :param pulumi.Input[str] aggregator_id: The ID of aggregator.
         :param pulumi.Input[str] description: The description of compliance package.
         :param pulumi.Input[int] risk_level: The Risk Level. Valid values: `1`, `2`, `3`.
@@ -50,7 +50,7 @@ class AggregateCompliancePackArgs:
     @pulumi.getter(name="aggregateCompliancePackName")
     def aggregate_compliance_pack_name(self) -> pulumi.Input[str]:
         """
-        The name of compliance package name.
+        The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
         """
         return pulumi.get(self, "aggregate_compliance_pack_name")
 
@@ -144,7 +144,7 @@ class _AggregateCompliancePackState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AggregateCompliancePack resources.
-        :param pulumi.Input[str] aggregate_compliance_pack_name: The name of compliance package name.
+        :param pulumi.Input[str] aggregate_compliance_pack_name: The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
         :param pulumi.Input[str] aggregator_id: The ID of aggregator.
         :param pulumi.Input[str] compliance_pack_template_id: The Template ID of compliance package.
         :param pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]] config_rule_ids: A list of Config Rule IDs.
@@ -177,7 +177,7 @@ class _AggregateCompliancePackState:
     @pulumi.getter(name="aggregateCompliancePackName")
     def aggregate_compliance_pack_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of compliance package name.
+        The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
         """
         return pulumi.get(self, "aggregate_compliance_pack_name")
 
@@ -286,7 +286,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
         """
         Provides a Cloud Config Aggregate Compliance Pack resource.
 
-        For information about Cloud Config Aggregate Compliance Pack and how to use it, see [What is Aggregate Compliance Pack](https://help.aliyun.com/).
+        For information about Cloud Config Aggregate Compliance Pack and how to use it, see [What is Aggregate Compliance Pack](https://www.alibabacloud.com/help/en/doc-detail/194753.html).
 
         > **NOTE:** Available in v1.124.0+.
 
@@ -349,7 +349,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] aggregate_compliance_pack_name: The name of compliance package name.
+        :param pulumi.Input[str] aggregate_compliance_pack_name: The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
         :param pulumi.Input[str] aggregator_id: The ID of aggregator.
         :param pulumi.Input[str] compliance_pack_template_id: The Template ID of compliance package.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleIdArgs']]]] config_rule_ids: A list of Config Rule IDs.
@@ -366,7 +366,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
         """
         Provides a Cloud Config Aggregate Compliance Pack resource.
 
-        For information about Cloud Config Aggregate Compliance Pack and how to use it, see [What is Aggregate Compliance Pack](https://help.aliyun.com/).
+        For information about Cloud Config Aggregate Compliance Pack and how to use it, see [What is Aggregate Compliance Pack](https://www.alibabacloud.com/help/en/doc-detail/194753.html).
 
         > **NOTE:** Available in v1.124.0+.
 
@@ -505,7 +505,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] aggregate_compliance_pack_name: The name of compliance package name.
+        :param pulumi.Input[str] aggregate_compliance_pack_name: The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
         :param pulumi.Input[str] aggregator_id: The ID of aggregator.
         :param pulumi.Input[str] compliance_pack_template_id: The Template ID of compliance package.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleIdArgs']]]] config_rule_ids: A list of Config Rule IDs.
@@ -532,7 +532,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
     @pulumi.getter(name="aggregateCompliancePackName")
     def aggregate_compliance_pack_name(self) -> pulumi.Output[str]:
         """
-        The name of compliance package name.
+        The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
         """
         return pulumi.get(self, "aggregate_compliance_pack_name")
 

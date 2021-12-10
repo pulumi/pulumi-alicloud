@@ -17,7 +17,7 @@ import (
 //
 // > **NOTE:** When you configure access assignment for the first time, access configuration will be automatically deployed.
 //
-// > **NOTE:** Available in v1.141.0+.
+// > **NOTE:** Available in v1.145.0+.
 //
 // > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 //
@@ -26,14 +26,14 @@ import (
 // Cloud SSO Access Assignment can be imported using the id, e.g.
 //
 // ```sh
-//  $ pulumi import alicloud:cloudsso/accessManagement:AccessManagement example <directory_id>:<access_configuration_id>:<target_id>:<principal_id>
+//  $ pulumi import alicloud:cloudsso/accessManagement:AccessManagement example <directory_id>:<access_configuration_id>:<target_type>:<target_id>:<principal_type>:<principal_id>
 // ```
 type AccessManagement struct {
 	pulumi.CustomResourceState
 
 	// The Access configuration ID.
 	AccessConfigurationId pulumi.StringOutput `pulumi:"accessConfigurationId"`
-	// The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `None`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+	// The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
 	DeprovisionStrategy pulumi.StringPtrOutput `pulumi:"deprovisionStrategy"`
 	// The ID of the Directory.
 	DirectoryId pulumi.StringOutput `pulumi:"directoryId"`
@@ -96,7 +96,7 @@ func GetAccessManagement(ctx *pulumi.Context,
 type accessManagementState struct {
 	// The Access configuration ID.
 	AccessConfigurationId *string `pulumi:"accessConfigurationId"`
-	// The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `None`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+	// The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
 	DeprovisionStrategy *string `pulumi:"deprovisionStrategy"`
 	// The ID of the Directory.
 	DirectoryId *string `pulumi:"directoryId"`
@@ -113,7 +113,7 @@ type accessManagementState struct {
 type AccessManagementState struct {
 	// The Access configuration ID.
 	AccessConfigurationId pulumi.StringPtrInput
-	// The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `None`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+	// The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
 	DeprovisionStrategy pulumi.StringPtrInput
 	// The ID of the Directory.
 	DirectoryId pulumi.StringPtrInput
@@ -134,7 +134,7 @@ func (AccessManagementState) ElementType() reflect.Type {
 type accessManagementArgs struct {
 	// The Access configuration ID.
 	AccessConfigurationId string `pulumi:"accessConfigurationId"`
-	// The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `None`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+	// The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
 	DeprovisionStrategy *string `pulumi:"deprovisionStrategy"`
 	// The ID of the Directory.
 	DirectoryId string `pulumi:"directoryId"`
@@ -152,7 +152,7 @@ type accessManagementArgs struct {
 type AccessManagementArgs struct {
 	// The Access configuration ID.
 	AccessConfigurationId pulumi.StringInput
-	// The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `None`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+	// The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
 	DeprovisionStrategy pulumi.StringPtrInput
 	// The ID of the Directory.
 	DirectoryId pulumi.StringInput

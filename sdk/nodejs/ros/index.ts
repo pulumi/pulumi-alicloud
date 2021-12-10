@@ -7,17 +7,21 @@ import * as utilities from "../utilities";
 // Export members:
 export * from "./changeSet";
 export * from "./getChangeSets";
+export * from "./getRegions";
 export * from "./getStackGroups";
+export * from "./getStackInstances";
 export * from "./getStacks";
 export * from "./getTemplates";
 export * from "./stack";
 export * from "./stackGroup";
+export * from "./stackInstance";
 export * from "./template";
 
 // Import resources to register:
 import { ChangeSet } from "./changeSet";
 import { Stack } from "./stack";
 import { StackGroup } from "./stackGroup";
+import { StackInstance } from "./stackInstance";
 import { Template } from "./template";
 
 const _module = {
@@ -30,6 +34,8 @@ const _module = {
                 return new Stack(name, <any>undefined, { urn })
             case "alicloud:ros/stackGroup:StackGroup":
                 return new StackGroup(name, <any>undefined, { urn })
+            case "alicloud:ros/stackInstance:StackInstance":
+                return new StackInstance(name, <any>undefined, { urn })
             case "alicloud:ros/template:Template":
                 return new Template(name, <any>undefined, { urn })
             default:
@@ -40,4 +46,5 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "ros/changeSet", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ros/stack", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ros/stackGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ros/stackInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ros/template", _module)

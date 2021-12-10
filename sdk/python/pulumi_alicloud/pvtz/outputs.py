@@ -14,6 +14,7 @@ __all__ = [
     'RuleAttachmentVpc',
     'RuleForwardIp',
     'ZoneAttachmentVpc',
+    'ZoneUserInfo',
     'GetEndpointsEndpointResult',
     'GetEndpointsEndpointIpConfigResult',
     'GetResolverZonesZoneResult',
@@ -221,6 +222,56 @@ class ZoneAttachmentVpc(dict):
         The region of the vpc. If not set, the current region will instead of.
         """
         return pulumi.get(self, "region_id")
+
+
+@pulumi.output_type
+class ZoneUserInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "regionIds":
+            suggest = "region_ids"
+        elif key == "userId":
+            suggest = "user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZoneUserInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZoneUserInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZoneUserInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 region_ids: Optional[Sequence[str]] = None,
+                 user_id: Optional[str] = None):
+        """
+        :param Sequence[str] region_ids: The list of the region IDs.
+        :param str user_id: The user ID belonging to the region is used for cross-account synchronization scenarios.
+        """
+        if region_ids is not None:
+            pulumi.set(__self__, "region_ids", region_ids)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="regionIds")
+    def region_ids(self) -> Optional[Sequence[str]]:
+        """
+        The list of the region IDs.
+        """
+        return pulumi.get(self, "region_ids")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[str]:
+        """
+        The user ID belonging to the region is used for cross-account synchronization scenarios.
+        """
+        return pulumi.get(self, "user_id")
 
 
 @pulumi.output_type

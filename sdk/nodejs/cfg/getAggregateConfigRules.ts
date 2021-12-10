@@ -51,11 +51,11 @@ export function getAggregateConfigRules(args: GetAggregateConfigRulesArgs, opts?
  */
 export interface GetAggregateConfigRulesArgs {
     /**
-     * The name of the rule.
+     * The config rule name.
      */
     aggregateConfigRuleName?: string;
     /**
-     * The ID of Aggregator.
+     * The ID of aggregator.
      */
     aggregatorId: string;
     /**
@@ -72,11 +72,11 @@ export interface GetAggregateConfigRulesArgs {
     nameRegex?: string;
     outputFile?: string;
     /**
-     * The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
+     * Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
      */
     riskLevel?: number;
     /**
-     * The status of the rule.
+     * The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
      */
     status?: string;
 }
@@ -85,7 +85,14 @@ export interface GetAggregateConfigRulesArgs {
  * A collection of values returned by getAggregateConfigRules.
  */
 export interface GetAggregateConfigRulesResult {
+    /**
+     * The name of the rule.
+     */
     readonly aggregateConfigRuleName?: string;
+    /**
+     * The ID of Aggregator.
+     * * `compliance` -The Compliance information.
+     */
     readonly aggregatorId: string;
     readonly enableDetails?: boolean;
     /**
@@ -94,10 +101,22 @@ export interface GetAggregateConfigRulesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Aggregate Config Rule names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
+     */
     readonly riskLevel?: number;
+    /**
+     * A list of Config Aggregate Config Rules. Each element contains the following attributes:
+     */
     readonly rules: outputs.cfg.GetAggregateConfigRulesRule[];
+    /**
+     * The status of the rule.
+     */
     readonly status?: string;
 }
 
@@ -110,11 +129,11 @@ export function getAggregateConfigRulesOutput(args: GetAggregateConfigRulesOutpu
  */
 export interface GetAggregateConfigRulesOutputArgs {
     /**
-     * The name of the rule.
+     * The config rule name.
      */
     aggregateConfigRuleName?: pulumi.Input<string>;
     /**
-     * The ID of Aggregator.
+     * The ID of aggregator.
      */
     aggregatorId: pulumi.Input<string>;
     /**
@@ -131,11 +150,11 @@ export interface GetAggregateConfigRulesOutputArgs {
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
     /**
-     * The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
+     * Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
      */
     riskLevel?: pulumi.Input<number>;
     /**
-     * The status of the rule.
+     * The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
      */
     status?: pulumi.Input<string>;
 }

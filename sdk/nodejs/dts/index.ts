@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./consumerChannel";
+export * from "./getConsumerChannels";
 export * from "./getSubscriptionJobs";
 export * from "./getSynchronizationJobs";
 export * from "./jobMonitorRule";
@@ -13,6 +15,7 @@ export * from "./synchronizationInstance";
 export * from "./synchronizationJob";
 
 // Import resources to register:
+import { ConsumerChannel } from "./consumerChannel";
 import { JobMonitorRule } from "./jobMonitorRule";
 import { SubscriptionJob } from "./subscriptionJob";
 import { SynchronizationInstance } from "./synchronizationInstance";
@@ -22,6 +25,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:dts/consumerChannel:ConsumerChannel":
+                return new ConsumerChannel(name, <any>undefined, { urn })
             case "alicloud:dts/jobMonitorRule:JobMonitorRule":
                 return new JobMonitorRule(name, <any>undefined, { urn })
             case "alicloud:dts/subscriptionJob:SubscriptionJob":
@@ -35,6 +40,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "dts/consumerChannel", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dts/jobMonitorRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dts/subscriptionJob", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dts/synchronizationInstance", _module)

@@ -31,6 +31,15 @@ namespace Pulumi.AliCloud.ClickHouse
     ///         var @default = new AliCloud.ClickHouse.DbCluster("default", new AliCloud.ClickHouse.DbClusterArgs
     ///         {
     ///             Category = "Basic",
+    ///             DbClusterAccessWhiteLists = 
+    ///             {
+    ///                 new AliCloud.ClickHouse.Inputs.DbClusterDbClusterAccessWhiteListArgs
+    ///                 {
+    ///                     DbClusterIpArrayAttribute = "test",
+    ///                     DbClusterIpArrayName = "test",
+    ///                     SecurityIpList = "192.168.0.1",
+    ///                 },
+    ///             },
     ///             DbClusterClass = "S8",
     ///             DbClusterNetworkType = "vpc",
     ///             DbClusterVersion = "20.3.10.75",
@@ -61,6 +70,12 @@ namespace Pulumi.AliCloud.ClickHouse
         /// </summary>
         [Output("category")]
         public Output<string> Category { get; private set; } = null!;
+
+        /// <summary>
+        /// The db cluster access white list.
+        /// </summary>
+        [Output("dbClusterAccessWhiteLists")]
+        public Output<ImmutableArray<Outputs.DbClusterDbClusterAccessWhiteList>> DbClusterAccessWhiteLists { get; private set; } = null!;
 
         /// <summary>
         /// The DBCluster class. According to the category, db_cluster_class has two value ranges:
@@ -206,6 +221,18 @@ namespace Pulumi.AliCloud.ClickHouse
         [Input("category", required: true)]
         public Input<string> Category { get; set; } = null!;
 
+        [Input("dbClusterAccessWhiteLists")]
+        private InputList<Inputs.DbClusterDbClusterAccessWhiteListArgs>? _dbClusterAccessWhiteLists;
+
+        /// <summary>
+        /// The db cluster access white list.
+        /// </summary>
+        public InputList<Inputs.DbClusterDbClusterAccessWhiteListArgs> DbClusterAccessWhiteLists
+        {
+            get => _dbClusterAccessWhiteLists ?? (_dbClusterAccessWhiteLists = new InputList<Inputs.DbClusterDbClusterAccessWhiteListArgs>());
+            set => _dbClusterAccessWhiteLists = value;
+        }
+
         /// <summary>
         /// The DBCluster class. According to the category, db_cluster_class has two value ranges:
         /// * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
@@ -310,6 +337,18 @@ namespace Pulumi.AliCloud.ClickHouse
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
+
+        [Input("dbClusterAccessWhiteLists")]
+        private InputList<Inputs.DbClusterDbClusterAccessWhiteListGetArgs>? _dbClusterAccessWhiteLists;
+
+        /// <summary>
+        /// The db cluster access white list.
+        /// </summary>
+        public InputList<Inputs.DbClusterDbClusterAccessWhiteListGetArgs> DbClusterAccessWhiteLists
+        {
+            get => _dbClusterAccessWhiteLists ?? (_dbClusterAccessWhiteLists = new InputList<Inputs.DbClusterDbClusterAccessWhiteListGetArgs>());
+            set => _dbClusterAccessWhiteLists = value;
+        }
 
         /// <summary>
         /// The DBCluster class. According to the category, db_cluster_class has two value ranges:

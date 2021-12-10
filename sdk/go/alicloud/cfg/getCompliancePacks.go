@@ -61,7 +61,7 @@ type GetCompliancePacksArgs struct {
 	// A regex string to filter results by Compliance Pack name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`
 	Status *string `pulumi:"status"`
 }
 
@@ -69,13 +69,16 @@ type GetCompliancePacksArgs struct {
 type GetCompliancePacksResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                   `pulumi:"id"`
-	Ids        []string                 `pulumi:"ids"`
-	NameRegex  *string                  `pulumi:"nameRegex"`
-	Names      []string                 `pulumi:"names"`
-	OutputFile *string                  `pulumi:"outputFile"`
-	Packs      []GetCompliancePacksPack `pulumi:"packs"`
-	Status     *string                  `pulumi:"status"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Compliance Pack names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Config Compliance Packs. Each element contains the following attributes:
+	Packs []GetCompliancePacksPack `pulumi:"packs"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
 }
 
 func GetCompliancePacksOutput(ctx *pulumi.Context, args GetCompliancePacksOutputArgs, opts ...pulumi.InvokeOption) GetCompliancePacksResultOutput {
@@ -96,7 +99,7 @@ type GetCompliancePacksOutputArgs struct {
 	// A regex string to filter results by Compliance Pack name.
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -136,6 +139,7 @@ func (o GetCompliancePacksResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCompliancePacksResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Compliance Pack names.
 func (o GetCompliancePacksResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCompliancePacksResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -144,10 +148,12 @@ func (o GetCompliancePacksResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCompliancePacksResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Config Compliance Packs. Each element contains the following attributes:
 func (o GetCompliancePacksResultOutput) Packs() GetCompliancePacksPackArrayOutput {
 	return o.ApplyT(func(v GetCompliancePacksResult) []GetCompliancePacksPack { return v.Packs }).(GetCompliancePacksPackArrayOutput)
 }
 
+// The status of the resource.
 func (o GetCompliancePacksResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCompliancePacksResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

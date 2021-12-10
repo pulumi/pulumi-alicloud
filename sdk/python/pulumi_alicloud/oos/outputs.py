@@ -9,9 +9,213 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'GetApplicationGroupsGroupResult',
+    'GetApplicationsApplicationResult',
     'GetExecutionsExecutionResult',
+    'GetPatchBaselinesBaselineResult',
     'GetTemplatesTemplateResult',
 ]
+
+@pulumi.output_type
+class GetApplicationGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 application_group_name: str,
+                 application_name: str,
+                 cms_group_id: str,
+                 create_time: str,
+                 deploy_region_id: str,
+                 description: str,
+                 id: str,
+                 import_tag_key: str,
+                 import_tag_value: str,
+                 update_time: str):
+        """
+        :param str application_group_name: The name of the Application group.
+        :param str application_name: The name of the Application.
+        :param str cms_group_id: The ID of the cloud monitor group.
+        :param str create_time: The Creation time of the resource.
+        :param str deploy_region_id: The region ID of the deployment.
+        :param str description: Application group description information.
+        :param str id: The ID of the Application Group. Its value is same as Queue Name.
+        :param str import_tag_key: Label key.
+        :param str import_tag_value: Label value.
+        :param str update_time: The Update time of the resource.
+        """
+        pulumi.set(__self__, "application_group_name", application_group_name)
+        pulumi.set(__self__, "application_name", application_name)
+        pulumi.set(__self__, "cms_group_id", cms_group_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deploy_region_id", deploy_region_id)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "import_tag_key", import_tag_key)
+        pulumi.set(__self__, "import_tag_value", import_tag_value)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="applicationGroupName")
+    def application_group_name(self) -> str:
+        """
+        The name of the Application group.
+        """
+        return pulumi.get(self, "application_group_name")
+
+    @property
+    @pulumi.getter(name="applicationName")
+    def application_name(self) -> str:
+        """
+        The name of the Application.
+        """
+        return pulumi.get(self, "application_name")
+
+    @property
+    @pulumi.getter(name="cmsGroupId")
+    def cms_group_id(self) -> str:
+        """
+        The ID of the cloud monitor group.
+        """
+        return pulumi.get(self, "cms_group_id")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The Creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deployRegionId")
+    def deploy_region_id(self) -> str:
+        """
+        The region ID of the deployment.
+        """
+        return pulumi.get(self, "deploy_region_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Application group description information.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Application Group. Its value is same as Queue Name.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="importTagKey")
+    def import_tag_key(self) -> str:
+        """
+        Label key.
+        """
+        return pulumi.get(self, "import_tag_key")
+
+    @property
+    @pulumi.getter(name="importTagValue")
+    def import_tag_value(self) -> str:
+        """
+        Label value.
+        """
+        return pulumi.get(self, "import_tag_value")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The Update time of the resource.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class GetApplicationsApplicationResult(dict):
+    def __init__(__self__, *,
+                 application_name: str,
+                 create_time: str,
+                 description: str,
+                 id: str,
+                 resource_group_id: str,
+                 tags: Mapping[str, Any],
+                 update_time: str):
+        """
+        :param str application_name: The name of the application.
+        :param str create_time: The Created time of the application.
+        :param str description: Application group description information.
+        :param str id: The ID of the Application. The value is formate as <application_name>.
+        :param str resource_group_id: The ID of the resource group.
+        :param Mapping[str, Any] tags: The tag of the resource.
+        :param str update_time: The Updated time of the application.
+        """
+        pulumi.set(__self__, "application_name", application_name)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="applicationName")
+    def application_name(self) -> str:
+        """
+        The name of the application.
+        """
+        return pulumi.get(self, "application_name")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The Created time of the application.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Application group description information.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Application. The value is formate as <application_name>.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The Updated time of the application.
+        """
+        return pulumi.get(self, "update_time")
+
 
 @pulumi.output_type
 class GetExecutionsExecutionResult(dict):
@@ -249,6 +453,145 @@ class GetExecutionsExecutionResult(dict):
         The time when the template was updated.
         """
         return pulumi.get(self, "update_date")
+
+
+@pulumi.output_type
+class GetPatchBaselinesBaselineResult(dict):
+    def __init__(__self__, *,
+                 approval_rules: str,
+                 create_time: str,
+                 created_by: str,
+                 description: str,
+                 id: str,
+                 is_default: bool,
+                 operation_system: str,
+                 patch_baseline_id: str,
+                 patch_baseline_name: str,
+                 share_type: str,
+                 updated_by: str,
+                 updated_date: str):
+        """
+        :param str approval_rules: Accept the rules.
+        :param str create_time: The create time of patch baselines.
+        :param str created_by: The user who created the patch baselines.
+        :param str description: Patches baseline description information.
+        :param str id: The ID of the Patch Baseline. Its value is same as `patch_baseline_name`.
+        :param bool is_default: Whether it is the default patch baseline.
+        :param str operation_system: Operating system type.
+        :param str patch_baseline_id: Patch baseline ID.
+        :param str patch_baseline_name: The name of the patch baseline.
+        :param str share_type: Patch baseline sharing type.
+        :param str updated_by: The user who updated the patch baselines.
+        :param str updated_date: The update time of patch baselines.
+        """
+        pulumi.set(__self__, "approval_rules", approval_rules)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_default", is_default)
+        pulumi.set(__self__, "operation_system", operation_system)
+        pulumi.set(__self__, "patch_baseline_id", patch_baseline_id)
+        pulumi.set(__self__, "patch_baseline_name", patch_baseline_name)
+        pulumi.set(__self__, "share_type", share_type)
+        pulumi.set(__self__, "updated_by", updated_by)
+        pulumi.set(__self__, "updated_date", updated_date)
+
+    @property
+    @pulumi.getter(name="approvalRules")
+    def approval_rules(self) -> str:
+        """
+        Accept the rules.
+        """
+        return pulumi.get(self, "approval_rules")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The create time of patch baselines.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        The user who created the patch baselines.
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Patches baseline description information.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Patch Baseline. Its value is same as `patch_baseline_name`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> bool:
+        """
+        Whether it is the default patch baseline.
+        """
+        return pulumi.get(self, "is_default")
+
+    @property
+    @pulumi.getter(name="operationSystem")
+    def operation_system(self) -> str:
+        """
+        Operating system type.
+        """
+        return pulumi.get(self, "operation_system")
+
+    @property
+    @pulumi.getter(name="patchBaselineId")
+    def patch_baseline_id(self) -> str:
+        """
+        Patch baseline ID.
+        """
+        return pulumi.get(self, "patch_baseline_id")
+
+    @property
+    @pulumi.getter(name="patchBaselineName")
+    def patch_baseline_name(self) -> str:
+        """
+        The name of the patch baseline.
+        """
+        return pulumi.get(self, "patch_baseline_name")
+
+    @property
+    @pulumi.getter(name="shareType")
+    def share_type(self) -> str:
+        """
+        Patch baseline sharing type.
+        """
+        return pulumi.get(self, "share_type")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> str:
+        """
+        The user who updated the patch baselines.
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedDate")
+    def updated_date(self) -> str:
+        """
+        The update time of patch baselines.
+        """
+        return pulumi.get(self, "updated_date")
 
 
 @pulumi.output_type

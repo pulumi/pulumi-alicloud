@@ -32,7 +32,14 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := clickhouse.NewDbCluster(ctx, "_default", &clickhouse.DbClusterArgs{
-// 			Category:             pulumi.String("Basic"),
+// 			Category: pulumi.String("Basic"),
+// 			DbClusterAccessWhiteLists: clickhouse.DbClusterDbClusterAccessWhiteListArray{
+// 				&clickhouse.DbClusterDbClusterAccessWhiteListArgs{
+// 					DbClusterIpArrayAttribute: pulumi.String("test"),
+// 					DbClusterIpArrayName:      pulumi.String("test"),
+// 					SecurityIpList:            pulumi.String("192.168.0.1"),
+// 				},
+// 			},
 // 			DbClusterClass:       pulumi.String("S8"),
 // 			DbClusterNetworkType: pulumi.String("vpc"),
 // 			DbClusterVersion:     pulumi.String("20.3.10.75"),
@@ -62,6 +69,8 @@ type DbCluster struct {
 
 	// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
 	Category pulumi.StringOutput `pulumi:"category"`
+	// The db cluster access white list.
+	DbClusterAccessWhiteLists DbClusterDbClusterAccessWhiteListArrayOutput `pulumi:"dbClusterAccessWhiteLists"`
 	// The DBCluster class. According to the category, dbClusterClass has two value ranges:
 	// * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
 	// * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
@@ -151,6 +160,8 @@ func GetDbCluster(ctx *pulumi.Context,
 type dbClusterState struct {
 	// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
 	Category *string `pulumi:"category"`
+	// The db cluster access white list.
+	DbClusterAccessWhiteLists []DbClusterDbClusterAccessWhiteList `pulumi:"dbClusterAccessWhiteLists"`
 	// The DBCluster class. According to the category, dbClusterClass has two value ranges:
 	// * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
 	// * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
@@ -188,6 +199,8 @@ type dbClusterState struct {
 type DbClusterState struct {
 	// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
 	Category pulumi.StringPtrInput
+	// The db cluster access white list.
+	DbClusterAccessWhiteLists DbClusterDbClusterAccessWhiteListArrayInput
 	// The DBCluster class. According to the category, dbClusterClass has two value ranges:
 	// * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
 	// * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
@@ -229,6 +242,8 @@ func (DbClusterState) ElementType() reflect.Type {
 type dbClusterArgs struct {
 	// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
 	Category string `pulumi:"category"`
+	// The db cluster access white list.
+	DbClusterAccessWhiteLists []DbClusterDbClusterAccessWhiteList `pulumi:"dbClusterAccessWhiteLists"`
 	// The DBCluster class. According to the category, dbClusterClass has two value ranges:
 	// * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
 	// * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
@@ -267,6 +282,8 @@ type dbClusterArgs struct {
 type DbClusterArgs struct {
 	// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
 	Category pulumi.StringInput
+	// The db cluster access white list.
+	DbClusterAccessWhiteLists DbClusterDbClusterAccessWhiteListArrayInput
 	// The DBCluster class. According to the category, dbClusterClass has two value ranges:
 	// * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
 	// * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.

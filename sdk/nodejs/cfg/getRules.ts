@@ -38,8 +38,6 @@ export function getRules(args?: GetRulesArgs, opts?: pulumi.InvokeOptions): Prom
         "configRuleState": args.configRuleState,
         "enableDetails": args.enableDetails,
         "ids": args.ids,
-        "memberId": args.memberId,
-        "multiAccount": args.multiAccount,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "riskLevel": args.riskLevel,
@@ -66,14 +64,6 @@ export interface GetRulesArgs {
      * A list of Config Rule IDs.
      */
     ids?: string[];
-    /**
-     * The ID of the member account to which the rule to be queried belongs. The default is empty. When `multiAccount` is set to true, this parameter is valid.
-     */
-    memberId?: number;
-    /**
-     * Whether the enterprise management account queries the rule details of member accounts.
-     */
-    multiAccount?: boolean;
     /**
      * A regex string to filter results by rule name.
      */
@@ -110,8 +100,6 @@ export interface GetRulesResult {
      * A list of Config Rule IDs.
      */
     readonly ids: string[];
-    readonly memberId?: number;
-    readonly multiAccount?: boolean;
     readonly nameRegex?: string;
     /**
      * A list of Config Rule names.
@@ -152,14 +140,6 @@ export interface GetRulesOutputArgs {
      * A list of Config Rule IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The ID of the member account to which the rule to be queried belongs. The default is empty. When `multiAccount` is set to true, this parameter is valid.
-     */
-    memberId?: pulumi.Input<number>;
-    /**
-     * Whether the enterprise management account queries the rule details of member accounts.
-     */
-    multiAccount?: pulumi.Input<boolean>;
     /**
      * A regex string to filter results by rule name.
      */

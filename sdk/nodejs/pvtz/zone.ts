@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -75,9 +76,17 @@ export class Zone extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string | undefined>;
     /**
+     * The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+     */
+    public readonly syncStatus!: pulumi.Output<string | undefined>;
+    /**
      * The IP address of the client.
      */
     public readonly userClientIp!: pulumi.Output<string | undefined>;
+    /**
+     * The user information of the host synchronization task. The details see Block `userInfo`.
+     */
+    public readonly userInfos!: pulumi.Output<outputs.pvtz.ZoneUserInfo[] | undefined>;
     /**
      * The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
      */
@@ -103,7 +112,9 @@ export class Zone extends pulumi.CustomResource {
             inputs["recordCount"] = state ? state.recordCount : undefined;
             inputs["remark"] = state ? state.remark : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            inputs["syncStatus"] = state ? state.syncStatus : undefined;
             inputs["userClientIp"] = state ? state.userClientIp : undefined;
+            inputs["userInfos"] = state ? state.userInfos : undefined;
             inputs["zoneName"] = state ? state.zoneName : undefined;
         } else {
             const args = argsOrState as ZoneArgs | undefined;
@@ -112,7 +123,9 @@ export class Zone extends pulumi.CustomResource {
             inputs["proxyPattern"] = args ? args.proxyPattern : undefined;
             inputs["remark"] = args ? args.remark : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            inputs["syncStatus"] = args ? args.syncStatus : undefined;
             inputs["userClientIp"] = args ? args.userClientIp : undefined;
+            inputs["userInfos"] = args ? args.userInfos : undefined;
             inputs["zoneName"] = args ? args.zoneName : undefined;
             inputs["isPtr"] = undefined /*out*/;
             inputs["recordCount"] = undefined /*out*/;
@@ -162,9 +175,17 @@ export interface ZoneState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
+     * The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+     */
+    syncStatus?: pulumi.Input<string>;
+    /**
      * The IP address of the client.
      */
     userClientIp?: pulumi.Input<string>;
+    /**
+     * The user information of the host synchronization task. The details see Block `userInfo`.
+     */
+    userInfos?: pulumi.Input<pulumi.Input<inputs.pvtz.ZoneUserInfo>[]>;
     /**
      * The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
      */
@@ -201,9 +222,17 @@ export interface ZoneArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
+     * The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+     */
+    syncStatus?: pulumi.Input<string>;
+    /**
      * The IP address of the client.
      */
     userClientIp?: pulumi.Input<string>;
+    /**
+     * The user information of the host synchronization task. The details see Block `userInfo`.
+     */
+    userInfos?: pulumi.Input<pulumi.Input<inputs.pvtz.ZoneUserInfo>[]>;
     /**
      * The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
      */

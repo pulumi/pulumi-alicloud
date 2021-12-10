@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v1.146.0 of the AliCloud Terraform Provider
+  **PLEASE NOTE:* `alicloud.cfg.getRules` will no longer accept the `memberId` or `multiAccount` parameters.
 
 ---
 

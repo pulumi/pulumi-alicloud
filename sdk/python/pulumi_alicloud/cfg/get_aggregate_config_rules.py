@@ -59,11 +59,18 @@ class GetAggregateConfigRulesResult:
     @property
     @pulumi.getter(name="aggregateConfigRuleName")
     def aggregate_config_rule_name(self) -> Optional[str]:
+        """
+        The name of the rule.
+        """
         return pulumi.get(self, "aggregate_config_rule_name")
 
     @property
     @pulumi.getter(name="aggregatorId")
     def aggregator_id(self) -> str:
+        """
+        The ID of Aggregator.
+        * `compliance` -The Compliance information.
+        """
         return pulumi.get(self, "aggregator_id")
 
     @property
@@ -92,6 +99,9 @@ class GetAggregateConfigRulesResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Aggregate Config Rule names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -102,16 +112,25 @@ class GetAggregateConfigRulesResult:
     @property
     @pulumi.getter(name="riskLevel")
     def risk_level(self) -> Optional[int]:
+        """
+        The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
+        """
         return pulumi.get(self, "risk_level")
 
     @property
     @pulumi.getter
     def rules(self) -> Sequence['outputs.GetAggregateConfigRulesRuleResult']:
+        """
+        A list of Config Aggregate Config Rules. Each element contains the following attributes:
+        """
         return pulumi.get(self, "rules")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the rule.
+        """
         return pulumi.get(self, "status")
 
 
@@ -163,13 +182,13 @@ def get_aggregate_config_rules(aggregate_config_rule_name: Optional[str] = None,
     ```
 
 
-    :param str aggregate_config_rule_name: The name of the rule.
-    :param str aggregator_id: The ID of Aggregator.
+    :param str aggregate_config_rule_name: The config rule name.
+    :param str aggregator_id: The ID of aggregator.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Aggregate Config Rule IDs.
     :param str name_regex: A regex string to filter results by Aggregate Config Rule name.
-    :param int risk_level: The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
-    :param str status: The status of the rule.
+    :param int risk_level: Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+    :param str status: The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
     """
     __args__ = dict()
     __args__['aggregateConfigRuleName'] = aggregate_config_rule_name
@@ -230,12 +249,12 @@ def get_aggregate_config_rules_output(aggregate_config_rule_name: Optional[pulum
     ```
 
 
-    :param str aggregate_config_rule_name: The name of the rule.
-    :param str aggregator_id: The ID of Aggregator.
+    :param str aggregate_config_rule_name: The config rule name.
+    :param str aggregator_id: The ID of aggregator.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Aggregate Config Rule IDs.
     :param str name_regex: A regex string to filter results by Aggregate Config Rule name.
-    :param int risk_level: The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
-    :param str status: The status of the rule.
+    :param int risk_level: Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+    :param str status: The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
     """
     ...

@@ -66,7 +66,7 @@ export interface GetAggregateCompliancePacksArgs {
     nameRegex?: string;
     outputFile?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`.
      */
     status?: string;
 }
@@ -83,9 +83,18 @@ export interface GetAggregateCompliancePacksResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Config Aggregate Compliance Pack names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Config Aggregate Compliance Packs. Each element contains the following attributes:
+     */
     readonly packs: outputs.cfg.GetAggregateCompliancePacksPack[];
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
 }
 
@@ -115,7 +124,7 @@ export interface GetAggregateCompliancePacksOutputArgs {
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`.
      */
     status?: pulumi.Input<string>;
 }

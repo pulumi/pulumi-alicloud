@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ImageCache{}
 	case "alicloud:eci/openApiImageCache:OpenApiImageCache":
 		r = &OpenApiImageCache{}
+	case "alicloud:eci/virtualNode:VirtualNode":
+		r = &VirtualNode{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -53,6 +55,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"eci/openApiImageCache",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"eci/virtualNode",
 		&module{version},
 	)
 }

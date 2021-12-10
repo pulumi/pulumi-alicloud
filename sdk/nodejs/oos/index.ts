@@ -5,21 +5,36 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./application";
+export * from "./applicationGroup";
 export * from "./execution";
+export * from "./getApplicationGroups";
+export * from "./getApplications";
 export * from "./getExecutions";
+export * from "./getPatchBaselines";
 export * from "./getTemplates";
+export * from "./patchBaseline";
 export * from "./template";
 
 // Import resources to register:
+import { Application } from "./application";
+import { ApplicationGroup } from "./applicationGroup";
 import { Execution } from "./execution";
+import { PatchBaseline } from "./patchBaseline";
 import { Template } from "./template";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:oos/application:Application":
+                return new Application(name, <any>undefined, { urn })
+            case "alicloud:oos/applicationGroup:ApplicationGroup":
+                return new ApplicationGroup(name, <any>undefined, { urn })
             case "alicloud:oos/execution:Execution":
                 return new Execution(name, <any>undefined, { urn })
+            case "alicloud:oos/patchBaseline:PatchBaseline":
+                return new PatchBaseline(name, <any>undefined, { urn })
             case "alicloud:oos/template:Template":
                 return new Template(name, <any>undefined, { urn })
             default:
@@ -27,5 +42,8 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "oos/application", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oos/applicationGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oos/execution", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oos/patchBaseline", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oos/template", _module)

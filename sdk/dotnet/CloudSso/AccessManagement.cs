@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.CloudSso
     /// 
     /// &gt; **NOTE:** When you configure access assignment for the first time, access configuration will be automatically deployed.
     /// 
-    /// &gt; **NOTE:** Available in v1.141.0+.
+    /// &gt; **NOTE:** Available in v1.145.0+.
     /// 
     /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
     /// 
@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.CloudSso
     /// Cloud SSO Access Assignment can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cloudsso/accessManagement:AccessManagement example &lt;directory_id&gt;:&lt;access_configuration_id&gt;:&lt;target_id&gt;:&lt;principal_id&gt;
+    ///  $ pulumi import alicloud:cloudsso/accessManagement:AccessManagement example &lt;directory_id&gt;:&lt;access_configuration_id&gt;:&lt;target_type&gt;:&lt;target_id&gt;:&lt;principal_type&gt;:&lt;principal_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudsso/accessManagement:AccessManagement")]
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Output<string> AccessConfigurationId { get; private set; } = null!;
 
         /// <summary>
-        /// The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `None`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+        /// The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
         /// </summary>
         [Output("deprovisionStrategy")]
         public Output<string?> DeprovisionStrategy { get; private set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string> AccessConfigurationId { get; set; } = null!;
 
         /// <summary>
-        /// The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `None`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+        /// The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
         /// </summary>
         [Input("deprovisionStrategy")]
         public Input<string>? DeprovisionStrategy { get; set; }
@@ -175,7 +175,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? AccessConfigurationId { get; set; }
 
         /// <summary>
-        /// The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `None`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+        /// The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
         /// </summary>
         [Input("deprovisionStrategy")]
         public Input<string>? DeprovisionStrategy { get; set; }

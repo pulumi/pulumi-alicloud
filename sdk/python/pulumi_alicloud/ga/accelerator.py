@@ -16,8 +16,10 @@ class AcceleratorArgs:
                  duration: pulumi.Input[int],
                  spec: pulumi.Input[str],
                  accelerator_name: Optional[pulumi.Input[str]] = None,
+                 auto_renew_duration: Optional[pulumi.Input[int]] = None,
                  auto_use_coupon: Optional[pulumi.Input[bool]] = None,
-                 description: Optional[pulumi.Input[str]] = None):
+                 description: Optional[pulumi.Input[str]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Accelerator resource.
         :param pulumi.Input[int] duration: The duration. The value range is 1-9.
@@ -29,17 +31,26 @@ class AcceleratorArgs:
                `8`: Medium 2.
                `10`: Medium 3.
         :param pulumi.Input[str] accelerator_name: The Name of the GA instance.
+        :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
+        :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+               - `AutoRenewal`: Enable auto renewal.
+               - `Normal`: Disable auto renewal.
+               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "spec", spec)
         if accelerator_name is not None:
             pulumi.set(__self__, "accelerator_name", accelerator_name)
+        if auto_renew_duration is not None:
+            pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
         if auto_use_coupon is not None:
             pulumi.set(__self__, "auto_use_coupon", auto_use_coupon)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if renewal_status is not None:
+            pulumi.set(__self__, "renewal_status", renewal_status)
 
     @property
     @pulumi.getter
@@ -84,6 +95,18 @@ class AcceleratorArgs:
         pulumi.set(self, "accelerator_name", value)
 
     @property
+    @pulumi.getter(name="autoRenewDuration")
+    def auto_renew_duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        Auto renewal period of an instance, in the unit of month. The value range is 1-12.
+        """
+        return pulumi.get(self, "auto_renew_duration")
+
+    @auto_renew_duration.setter
+    def auto_renew_duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_renew_duration", value)
+
+    @property
     @pulumi.getter(name="autoUseCoupon")
     def auto_use_coupon(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -107,22 +130,44 @@ class AcceleratorArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+    @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+        - `AutoRenewal`: Enable auto renewal.
+        - `Normal`: Disable auto renewal.
+        - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+        """
+        return pulumi.get(self, "renewal_status")
+
+    @renewal_status.setter
+    def renewal_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_status", value)
+
 
 @pulumi.input_type
 class _AcceleratorState:
     def __init__(__self__, *,
                  accelerator_name: Optional[pulumi.Input[str]] = None,
+                 auto_renew_duration: Optional[pulumi.Input[int]] = None,
                  auto_use_coupon: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Accelerator resources.
         :param pulumi.Input[str] accelerator_name: The Name of the GA instance.
+        :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
         :param pulumi.Input[int] duration: The duration. The value range is 1-9.
+        :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+               - `AutoRenewal`: Enable auto renewal.
+               - `Normal`: Disable auto renewal.
+               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance, value:
                `1`: Small 1.
                `2`: Small 2.
@@ -134,12 +179,16 @@ class _AcceleratorState:
         """
         if accelerator_name is not None:
             pulumi.set(__self__, "accelerator_name", accelerator_name)
+        if auto_renew_duration is not None:
+            pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
         if auto_use_coupon is not None:
             pulumi.set(__self__, "auto_use_coupon", auto_use_coupon)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
+        if renewal_status is not None:
+            pulumi.set(__self__, "renewal_status", renewal_status)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
         if status is not None:
@@ -156,6 +205,18 @@ class _AcceleratorState:
     @accelerator_name.setter
     def accelerator_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "accelerator_name", value)
+
+    @property
+    @pulumi.getter(name="autoRenewDuration")
+    def auto_renew_duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        Auto renewal period of an instance, in the unit of month. The value range is 1-12.
+        """
+        return pulumi.get(self, "auto_renew_duration")
+
+    @auto_renew_duration.setter
+    def auto_renew_duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_renew_duration", value)
 
     @property
     @pulumi.getter(name="autoUseCoupon")
@@ -194,6 +255,21 @@ class _AcceleratorState:
         pulumi.set(self, "duration", value)
 
     @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+        - `AutoRenewal`: Enable auto renewal.
+        - `Normal`: Disable auto renewal.
+        - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+        """
+        return pulumi.get(self, "renewal_status")
+
+    @renewal_status.setter
+    def renewal_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_status", value)
+
+    @property
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input[str]]:
         """
@@ -230,9 +306,11 @@ class Accelerator(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accelerator_name: Optional[pulumi.Input[str]] = None,
+                 auto_renew_duration: Optional[pulumi.Input[int]] = None,
                  auto_use_coupon: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -267,9 +345,14 @@ class Accelerator(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accelerator_name: The Name of the GA instance.
+        :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
         :param pulumi.Input[int] duration: The duration. The value range is 1-9.
+        :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+               - `AutoRenewal`: Enable auto renewal.
+               - `Normal`: Disable auto renewal.
+               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance, value:
                `1`: Small 1.
                `2`: Small 2.
@@ -329,9 +412,11 @@ class Accelerator(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accelerator_name: Optional[pulumi.Input[str]] = None,
+                 auto_renew_duration: Optional[pulumi.Input[int]] = None,
                  auto_use_coupon: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -346,11 +431,13 @@ class Accelerator(pulumi.CustomResource):
             __props__ = AcceleratorArgs.__new__(AcceleratorArgs)
 
             __props__.__dict__["accelerator_name"] = accelerator_name
+            __props__.__dict__["auto_renew_duration"] = auto_renew_duration
             __props__.__dict__["auto_use_coupon"] = auto_use_coupon
             __props__.__dict__["description"] = description
             if duration is None and not opts.urn:
                 raise TypeError("Missing required property 'duration'")
             __props__.__dict__["duration"] = duration
+            __props__.__dict__["renewal_status"] = renewal_status
             if spec is None and not opts.urn:
                 raise TypeError("Missing required property 'spec'")
             __props__.__dict__["spec"] = spec
@@ -366,9 +453,11 @@ class Accelerator(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             accelerator_name: Optional[pulumi.Input[str]] = None,
+            auto_renew_duration: Optional[pulumi.Input[int]] = None,
             auto_use_coupon: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             duration: Optional[pulumi.Input[int]] = None,
+            renewal_status: Optional[pulumi.Input[str]] = None,
             spec: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'Accelerator':
         """
@@ -379,9 +468,14 @@ class Accelerator(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accelerator_name: The Name of the GA instance.
+        :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
         :param pulumi.Input[int] duration: The duration. The value range is 1-9.
+        :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+               - `AutoRenewal`: Enable auto renewal.
+               - `Normal`: Disable auto renewal.
+               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance, value:
                `1`: Small 1.
                `2`: Small 2.
@@ -396,9 +490,11 @@ class Accelerator(pulumi.CustomResource):
         __props__ = _AcceleratorState.__new__(_AcceleratorState)
 
         __props__.__dict__["accelerator_name"] = accelerator_name
+        __props__.__dict__["auto_renew_duration"] = auto_renew_duration
         __props__.__dict__["auto_use_coupon"] = auto_use_coupon
         __props__.__dict__["description"] = description
         __props__.__dict__["duration"] = duration
+        __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["spec"] = spec
         __props__.__dict__["status"] = status
         return Accelerator(resource_name, opts=opts, __props__=__props__)
@@ -410,6 +506,14 @@ class Accelerator(pulumi.CustomResource):
         The Name of the GA instance.
         """
         return pulumi.get(self, "accelerator_name")
+
+    @property
+    @pulumi.getter(name="autoRenewDuration")
+    def auto_renew_duration(self) -> pulumi.Output[Optional[int]]:
+        """
+        Auto renewal period of an instance, in the unit of month. The value range is 1-12.
+        """
+        return pulumi.get(self, "auto_renew_duration")
 
     @property
     @pulumi.getter(name="autoUseCoupon")
@@ -434,6 +538,17 @@ class Accelerator(pulumi.CustomResource):
         The duration. The value range is 1-9.
         """
         return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> pulumi.Output[str]:
+        """
+        Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+        - `AutoRenewal`: Enable auto renewal.
+        - `Normal`: Disable auto renewal.
+        - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+        """
+        return pulumi.get(self, "renewal_status")
 
     @property
     @pulumi.getter

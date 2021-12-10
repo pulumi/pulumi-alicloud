@@ -58,6 +58,12 @@ namespace Pulumi.AliCloud.CS
         public Output<string> ImageId { get; private set; } = null!;
 
         /// <summary>
+        /// The image type, instead of `platform`. This field cannot be modified. One of `AliyunLinux`, `AliyunLinux3`, `AliyunLinux3Arm64`, `AliyunLinuxUEFI`, `CentOS`, `Windows`,`WindowsCore`,`AliyunLinux Qboot`,`ContainerOS`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+        /// </summary>
+        [Output("imageType")]
+        public Output<string> ImageType { get; private set; } = null!;
+
+        /// <summary>
         /// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
         /// </summary>
         [Output("installCloudMonitor")]
@@ -160,7 +166,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> PeriodUnit { get; private set; } = null!;
 
         /// <summary>
-        /// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+        /// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
         /// </summary>
         [Output("platform")]
         public Output<string> Platform { get; private set; } = null!;
@@ -170,6 +176,18 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+        /// </summary>
+        [Output("runtimeName")]
+        public Output<string> RuntimeName { get; private set; } = null!;
+
+        /// <summary>
+        /// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
+        /// </summary>
+        [Output("runtimeVersion")]
+        public Output<string> RuntimeVersion { get; private set; } = null!;
 
         /// <summary>
         /// Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
@@ -190,10 +208,16 @@ namespace Pulumi.AliCloud.CS
         public Output<string> ScalingPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// The security group id for worker node.
+        /// The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
         /// </summary>
         [Output("securityGroupId")]
         public Output<string> SecurityGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
+        /// </summary>
+        [Output("securityGroupIds")]
+        public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
         /// The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
@@ -344,6 +368,12 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
+        /// The image type, instead of `platform`. This field cannot be modified. One of `AliyunLinux`, `AliyunLinux3`, `AliyunLinux3Arm64`, `AliyunLinuxUEFI`, `CentOS`, `Windows`,`WindowsCore`,`AliyunLinux Qboot`,`ContainerOS`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+        /// </summary>
+        [Input("imageType")]
+        public Input<string>? ImageType { get; set; }
+
+        /// <summary>
         /// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
         /// </summary>
         [Input("installCloudMonitor")]
@@ -464,7 +494,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
-        /// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+        /// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
@@ -474,6 +504,18 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+        /// </summary>
+        [Input("runtimeName")]
+        public Input<string>? RuntimeName { get; set; }
+
+        /// <summary>
+        /// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
+        /// </summary>
+        [Input("runtimeVersion")]
+        public Input<string>? RuntimeVersion { get; set; }
 
         /// <summary>
         /// Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
@@ -488,10 +530,22 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ScalingPolicy { get; set; }
 
         /// <summary>
-        /// The security group id for worker node.
+        /// The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
+
+        [Input("securityGroupIds")]
+        private InputList<string>? _securityGroupIds;
+
+        /// <summary>
+        /// Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
+        /// </summary>
+        public InputList<string> SecurityGroupIds
+        {
+            get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
+            set => _securityGroupIds = value;
+        }
 
         [Input("spotPriceLimits")]
         private InputList<Inputs.NodePoolSpotPriceLimitArgs>? _spotPriceLimits;
@@ -624,6 +678,12 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
+        /// The image type, instead of `platform`. This field cannot be modified. One of `AliyunLinux`, `AliyunLinux3`, `AliyunLinux3Arm64`, `AliyunLinuxUEFI`, `CentOS`, `Windows`,`WindowsCore`,`AliyunLinux Qboot`,`ContainerOS`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+        /// </summary>
+        [Input("imageType")]
+        public Input<string>? ImageType { get; set; }
+
+        /// <summary>
         /// Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
         /// </summary>
         [Input("installCloudMonitor")]
@@ -744,7 +804,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
-        /// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+        /// The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
@@ -754,6 +814,18 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+        /// </summary>
+        [Input("runtimeName")]
+        public Input<string>? RuntimeName { get; set; }
+
+        /// <summary>
+        /// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
+        /// </summary>
+        [Input("runtimeVersion")]
+        public Input<string>? RuntimeVersion { get; set; }
 
         /// <summary>
         /// Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
@@ -774,10 +846,22 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ScalingPolicy { get; set; }
 
         /// <summary>
-        /// The security group id for worker node.
+        /// The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
+
+        [Input("securityGroupIds")]
+        private InputList<string>? _securityGroupIds;
+
+        /// <summary>
+        /// Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
+        /// </summary>
+        public InputList<string> SecurityGroupIds
+        {
+            get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
+            set => _securityGroupIds = value;
+        }
 
         [Input("spotPriceLimits")]
         private InputList<Inputs.NodePoolSpotPriceLimitGetArgs>? _spotPriceLimits;

@@ -28,7 +28,7 @@ class AccessManagementArgs:
         :param pulumi.Input[str] principal_type: The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
         :param pulumi.Input[str] target_id: The ID of the target to create the resource range.
         :param pulumi.Input[str] target_type: The type of the resource range target to be accessed. Valid values: `RD-Account`.
-        :param pulumi.Input[str] deprovision_strategy: The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `None`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+        :param pulumi.Input[str] deprovision_strategy: The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
         """
         pulumi.set(__self__, "access_configuration_id", access_configuration_id)
         pulumi.set(__self__, "directory_id", directory_id)
@@ -115,7 +115,7 @@ class AccessManagementArgs:
     @pulumi.getter(name="deprovisionStrategy")
     def deprovision_strategy(self) -> Optional[pulumi.Input[str]]:
         """
-        The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `None`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+        The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
         """
         return pulumi.get(self, "deprovision_strategy")
 
@@ -137,7 +137,7 @@ class _AccessManagementState:
         """
         Input properties used for looking up and filtering AccessManagement resources.
         :param pulumi.Input[str] access_configuration_id: The Access configuration ID.
-        :param pulumi.Input[str] deprovision_strategy: The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `None`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+        :param pulumi.Input[str] deprovision_strategy: The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
         :param pulumi.Input[str] directory_id: The ID of the Directory.
         :param pulumi.Input[str] principal_id: The ID of the access assignment.
         :param pulumi.Input[str] principal_type: The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
@@ -175,7 +175,7 @@ class _AccessManagementState:
     @pulumi.getter(name="deprovisionStrategy")
     def deprovision_strategy(self) -> Optional[pulumi.Input[str]]:
         """
-        The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `None`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+        The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
         """
         return pulumi.get(self, "deprovision_strategy")
 
@@ -264,7 +264,7 @@ class AccessManagement(pulumi.CustomResource):
 
         > **NOTE:** When you configure access assignment for the first time, access configuration will be automatically deployed.
 
-        > **NOTE:** Available in v1.141.0+.
+        > **NOTE:** Available in v1.145.0+.
 
         > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
@@ -273,13 +273,13 @@ class AccessManagement(pulumi.CustomResource):
         Cloud SSO Access Assignment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudsso/accessManagement:AccessManagement example <directory_id>:<access_configuration_id>:<target_id>:<principal_id>
+         $ pulumi import alicloud:cloudsso/accessManagement:AccessManagement example <directory_id>:<access_configuration_id>:<target_type>:<target_id>:<principal_type>:<principal_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_configuration_id: The Access configuration ID.
-        :param pulumi.Input[str] deprovision_strategy: The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `None`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+        :param pulumi.Input[str] deprovision_strategy: The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
         :param pulumi.Input[str] directory_id: The ID of the Directory.
         :param pulumi.Input[str] principal_id: The ID of the access assignment.
         :param pulumi.Input[str] principal_type: The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
@@ -299,7 +299,7 @@ class AccessManagement(pulumi.CustomResource):
 
         > **NOTE:** When you configure access assignment for the first time, access configuration will be automatically deployed.
 
-        > **NOTE:** Available in v1.141.0+.
+        > **NOTE:** Available in v1.145.0+.
 
         > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
@@ -308,7 +308,7 @@ class AccessManagement(pulumi.CustomResource):
         Cloud SSO Access Assignment can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:cloudsso/accessManagement:AccessManagement example <directory_id>:<access_configuration_id>:<target_id>:<principal_id>
+         $ pulumi import alicloud:cloudsso/accessManagement:AccessManagement example <directory_id>:<access_configuration_id>:<target_type>:<target_id>:<principal_type>:<principal_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -389,7 +389,7 @@ class AccessManagement(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_configuration_id: The Access configuration ID.
-        :param pulumi.Input[str] deprovision_strategy: The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `None`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+        :param pulumi.Input[str] deprovision_strategy: The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
         :param pulumi.Input[str] directory_id: The ID of the Directory.
         :param pulumi.Input[str] principal_id: The ID of the access assignment.
         :param pulumi.Input[str] principal_type: The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
@@ -421,7 +421,7 @@ class AccessManagement(pulumi.CustomResource):
     @pulumi.getter(name="deprovisionStrategy")
     def deprovision_strategy(self) -> pulumi.Output[Optional[str]]:
         """
-        The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `None`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
+        The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
         """
         return pulumi.get(self, "deprovision_strategy")
 

@@ -56,12 +56,19 @@ type Accelerator struct {
 
 	// The Name of the GA instance.
 	AcceleratorName pulumi.StringPtrOutput `pulumi:"acceleratorName"`
+	// Auto renewal period of an instance, in the unit of month. The value range is 1-12.
+	AutoRenewDuration pulumi.IntPtrOutput `pulumi:"autoRenewDuration"`
 	// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
 	AutoUseCoupon pulumi.BoolPtrOutput `pulumi:"autoUseCoupon"`
 	// Descriptive information of the global acceleration instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The duration. The value range is 1-9.
 	Duration pulumi.IntOutput `pulumi:"duration"`
+	// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+	// - `AutoRenewal`: Enable auto renewal.
+	// - `Normal`: Disable auto renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
 	// The instance type of the GA instance. Specification of global acceleration instance, value:
 	// `1`: Small 1.
 	// `2`: Small 2.
@@ -111,12 +118,19 @@ func GetAccelerator(ctx *pulumi.Context,
 type acceleratorState struct {
 	// The Name of the GA instance.
 	AcceleratorName *string `pulumi:"acceleratorName"`
+	// Auto renewal period of an instance, in the unit of month. The value range is 1-12.
+	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
 	// Descriptive information of the global acceleration instance.
 	Description *string `pulumi:"description"`
 	// The duration. The value range is 1-9.
 	Duration *int `pulumi:"duration"`
+	// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+	// - `AutoRenewal`: Enable auto renewal.
+	// - `Normal`: Disable auto renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The instance type of the GA instance. Specification of global acceleration instance, value:
 	// `1`: Small 1.
 	// `2`: Small 2.
@@ -132,12 +146,19 @@ type acceleratorState struct {
 type AcceleratorState struct {
 	// The Name of the GA instance.
 	AcceleratorName pulumi.StringPtrInput
+	// Auto renewal period of an instance, in the unit of month. The value range is 1-12.
+	AutoRenewDuration pulumi.IntPtrInput
 	// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
 	AutoUseCoupon pulumi.BoolPtrInput
 	// Descriptive information of the global acceleration instance.
 	Description pulumi.StringPtrInput
 	// The duration. The value range is 1-9.
 	Duration pulumi.IntPtrInput
+	// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+	// - `AutoRenewal`: Enable auto renewal.
+	// - `Normal`: Disable auto renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+	RenewalStatus pulumi.StringPtrInput
 	// The instance type of the GA instance. Specification of global acceleration instance, value:
 	// `1`: Small 1.
 	// `2`: Small 2.
@@ -157,12 +178,19 @@ func (AcceleratorState) ElementType() reflect.Type {
 type acceleratorArgs struct {
 	// The Name of the GA instance.
 	AcceleratorName *string `pulumi:"acceleratorName"`
+	// Auto renewal period of an instance, in the unit of month. The value range is 1-12.
+	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
 	// Descriptive information of the global acceleration instance.
 	Description *string `pulumi:"description"`
 	// The duration. The value range is 1-9.
 	Duration int `pulumi:"duration"`
+	// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+	// - `AutoRenewal`: Enable auto renewal.
+	// - `Normal`: Disable auto renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The instance type of the GA instance. Specification of global acceleration instance, value:
 	// `1`: Small 1.
 	// `2`: Small 2.
@@ -177,12 +205,19 @@ type acceleratorArgs struct {
 type AcceleratorArgs struct {
 	// The Name of the GA instance.
 	AcceleratorName pulumi.StringPtrInput
+	// Auto renewal period of an instance, in the unit of month. The value range is 1-12.
+	AutoRenewDuration pulumi.IntPtrInput
 	// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
 	AutoUseCoupon pulumi.BoolPtrInput
 	// Descriptive information of the global acceleration instance.
 	Description pulumi.StringPtrInput
 	// The duration. The value range is 1-9.
 	Duration pulumi.IntInput
+	// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+	// - `AutoRenewal`: Enable auto renewal.
+	// - `Normal`: Disable auto renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+	RenewalStatus pulumi.StringPtrInput
 	// The instance type of the GA instance. Specification of global acceleration instance, value:
 	// `1`: Small 1.
 	// `2`: Small 2.

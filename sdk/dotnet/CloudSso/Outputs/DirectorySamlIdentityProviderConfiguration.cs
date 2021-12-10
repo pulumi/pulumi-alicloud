@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudSso.Outputs
     public sealed class DirectorySamlIdentityProviderConfiguration
     {
         /// <summary>
-        /// Base64 encoded IdP metadata document.
+        /// Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `sso_status` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `sso_status` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
         /// </summary>
         public readonly string? EncodedMetadataDocument;
         /// <summary>

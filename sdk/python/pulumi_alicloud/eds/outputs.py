@@ -15,7 +15,10 @@ __all__ = [
     'GetBundlesBundleResult',
     'GetBundlesBundleDesktopTypeAttributeResult',
     'GetBundlesBundleDiskResult',
+    'GetCommandsCommandResult',
+    'GetCommandsCommandInvokeDesktopResult',
     'GetDesktopsDesktopResult',
+    'GetImagesImageResult',
     'GetNasFileSystemsSystemResult',
     'GetNetworkPackagesPackageResult',
     'GetPolicyGroupsGroupResult',
@@ -383,6 +386,218 @@ class GetBundlesBundleDiskResult(dict):
 
 
 @pulumi.output_type
+class GetCommandsCommandResult(dict):
+    def __init__(__self__, *,
+                 command_content: str,
+                 command_type: str,
+                 create_time: str,
+                 id: str,
+                 invoke_desktops: Sequence['outputs.GetCommandsCommandInvokeDesktopResult'],
+                 invoke_id: str,
+                 status: str):
+        """
+        :param str command_content: The Contents of the Script to Base64 Encoded Transmission.
+        :param str command_type: The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
+        :param str create_time: The Task of Creation Time.
+        :param str id: The ID of the Command.
+        :param Sequence['GetCommandsCommandInvokeDesktopArgs'] invoke_desktops: The Implementation of the Target Cloud Desktop Collection.
+        :param str invoke_id: The invoke id of the Command.
+        :param str status: Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
+        """
+        pulumi.set(__self__, "command_content", command_content)
+        pulumi.set(__self__, "command_type", command_type)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "invoke_desktops", invoke_desktops)
+        pulumi.set(__self__, "invoke_id", invoke_id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="commandContent")
+    def command_content(self) -> str:
+        """
+        The Contents of the Script to Base64 Encoded Transmission.
+        """
+        return pulumi.get(self, "command_content")
+
+    @property
+    @pulumi.getter(name="commandType")
+    def command_type(self) -> str:
+        """
+        The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
+        """
+        return pulumi.get(self, "command_type")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The Task of Creation Time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Command.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="invokeDesktops")
+    def invoke_desktops(self) -> Sequence['outputs.GetCommandsCommandInvokeDesktopResult']:
+        """
+        The Implementation of the Target Cloud Desktop Collection.
+        """
+        return pulumi.get(self, "invoke_desktops")
+
+    @property
+    @pulumi.getter(name="invokeId")
+    def invoke_id(self) -> str:
+        """
+        The invoke id of the Command.
+        """
+        return pulumi.get(self, "invoke_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetCommandsCommandInvokeDesktopResult(dict):
+    def __init__(__self__, *,
+                 desktop_id: str,
+                 dropped: int,
+                 error_code: str,
+                 error_info: str,
+                 exit_code: str,
+                 finish_time: str,
+                 invocation_status: str,
+                 output: str,
+                 repeats: int,
+                 start_time: str,
+                 stop_time: str):
+        """
+        :param str desktop_id: The desktop id of the Desktop.
+        :param int dropped: Output Field Text Length Exceeds 24 KB of Truncated Discarded Text Length.
+        :param str error_code: Command of the Failure Or Perform the Reason for the Failure of the Code.
+        :param str error_info: Command of the Failure Or Perform the Reason for the Failure of the Details.
+        :param str exit_code: Command of the Failure Or Perform the Reason for the Failure of the Details.
+        :param str finish_time: The Script Process until the End of Time.
+        :param str invocation_status: A Single Cloud Desktop Script Progress Status.
+        :param str output: Script the Output of the Process.
+        :param int repeats: Command in the Desktop Implementation.
+        :param str start_time: The Script Process on the Desktop, in the Start Timing of the Execution.
+        :param str stop_time: If You Use the invocation Indicates That the Call of the Time.
+        """
+        pulumi.set(__self__, "desktop_id", desktop_id)
+        pulumi.set(__self__, "dropped", dropped)
+        pulumi.set(__self__, "error_code", error_code)
+        pulumi.set(__self__, "error_info", error_info)
+        pulumi.set(__self__, "exit_code", exit_code)
+        pulumi.set(__self__, "finish_time", finish_time)
+        pulumi.set(__self__, "invocation_status", invocation_status)
+        pulumi.set(__self__, "output", output)
+        pulumi.set(__self__, "repeats", repeats)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "stop_time", stop_time)
+
+    @property
+    @pulumi.getter(name="desktopId")
+    def desktop_id(self) -> str:
+        """
+        The desktop id of the Desktop.
+        """
+        return pulumi.get(self, "desktop_id")
+
+    @property
+    @pulumi.getter
+    def dropped(self) -> int:
+        """
+        Output Field Text Length Exceeds 24 KB of Truncated Discarded Text Length.
+        """
+        return pulumi.get(self, "dropped")
+
+    @property
+    @pulumi.getter(name="errorCode")
+    def error_code(self) -> str:
+        """
+        Command of the Failure Or Perform the Reason for the Failure of the Code.
+        """
+        return pulumi.get(self, "error_code")
+
+    @property
+    @pulumi.getter(name="errorInfo")
+    def error_info(self) -> str:
+        """
+        Command of the Failure Or Perform the Reason for the Failure of the Details.
+        """
+        return pulumi.get(self, "error_info")
+
+    @property
+    @pulumi.getter(name="exitCode")
+    def exit_code(self) -> str:
+        """
+        Command of the Failure Or Perform the Reason for the Failure of the Details.
+        """
+        return pulumi.get(self, "exit_code")
+
+    @property
+    @pulumi.getter(name="finishTime")
+    def finish_time(self) -> str:
+        """
+        The Script Process until the End of Time.
+        """
+        return pulumi.get(self, "finish_time")
+
+    @property
+    @pulumi.getter(name="invocationStatus")
+    def invocation_status(self) -> str:
+        """
+        A Single Cloud Desktop Script Progress Status.
+        """
+        return pulumi.get(self, "invocation_status")
+
+    @property
+    @pulumi.getter
+    def output(self) -> str:
+        """
+        Script the Output of the Process.
+        """
+        return pulumi.get(self, "output")
+
+    @property
+    @pulumi.getter
+    def repeats(self) -> int:
+        """
+        Command in the Desktop Implementation.
+        """
+        return pulumi.get(self, "repeats")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        The Script Process on the Desktop, in the Start Timing of the Execution.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter(name="stopTime")
+    def stop_time(self) -> str:
+        """
+        If You Use the invocation Indicates That the Call of the Time.
+        """
+        return pulumi.get(self, "stop_time")
+
+
+@pulumi.output_type
 class GetDesktopsDesktopResult(dict):
     def __init__(__self__, *,
                  cpu: int,
@@ -563,6 +778,145 @@ class GetDesktopsDesktopResult(dict):
         The system disk size of the Desktop.
         """
         return pulumi.get(self, "system_disk_size")
+
+
+@pulumi.output_type
+class GetImagesImageResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 data_disk_size: int,
+                 description: str,
+                 gpu_category: bool,
+                 id: str,
+                 image_id: str,
+                 image_name: str,
+                 image_type: str,
+                 os_type: str,
+                 progress: str,
+                 size: int,
+                 status: str):
+        """
+        :param str create_time: The creation time of the image.
+        :param int data_disk_size: The size of data disk of the image.
+        :param str description: The description of the image.
+        :param bool gpu_category: The Gpu Category of the image.
+        :param str id: The ID of the Image.
+        :param str image_id: The image id of the image.
+        :param str image_name: The image name.
+        :param str image_type: The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
+        :param str os_type: The os type of the image.
+        :param str progress: The progress of the image.
+        :param int size: The size of the image.
+        :param str status: The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "data_disk_size", data_disk_size)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "gpu_category", gpu_category)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "image_name", image_name)
+        pulumi.set(__self__, "image_type", image_type)
+        pulumi.set(__self__, "os_type", os_type)
+        pulumi.set(__self__, "progress", progress)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the image.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="dataDiskSize")
+    def data_disk_size(self) -> int:
+        """
+        The size of data disk of the image.
+        """
+        return pulumi.get(self, "data_disk_size")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the image.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="gpuCategory")
+    def gpu_category(self) -> bool:
+        """
+        The Gpu Category of the image.
+        """
+        return pulumi.get(self, "gpu_category")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Image.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> str:
+        """
+        The image id of the image.
+        """
+        return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> str:
+        """
+        The image name.
+        """
+        return pulumi.get(self, "image_name")
+
+    @property
+    @pulumi.getter(name="imageType")
+    def image_type(self) -> str:
+        """
+        The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
+        """
+        return pulumi.get(self, "image_type")
+
+    @property
+    @pulumi.getter(name="osType")
+    def os_type(self) -> str:
+        """
+        The os type of the image.
+        """
+        return pulumi.get(self, "os_type")
+
+    @property
+    @pulumi.getter
+    def progress(self) -> str:
+        """
+        The progress of the image.
+        """
+        return pulumi.get(self, "progress")
+
+    @property
+    @pulumi.getter
+    def size(self) -> int:
+        """
+        The size of the image.
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

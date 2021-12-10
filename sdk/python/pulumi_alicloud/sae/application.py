@@ -75,7 +75,7 @@ class ApplicationArgs:
         The set of arguments for constructing a Application resource.
         :param pulumi.Input[str] app_name: Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
         :param pulumi.Input[str] package_type: Application package type. Support FatJar, War and Image. Valid values: `FatJar`, `Image`, `War`.
-        :param pulumi.Input[int] replicas: Initial number of instances.
+        :param pulumi.Input[int] replicas: Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
         :param pulumi.Input[str] app_description: Application description information. No more than 1024 characters.
         :param pulumi.Input[bool] auto_config: The auto config. Valid values: `false`, `true`.
         :param pulumi.Input[bool] auto_enable_application_scaling_rule: The auto enable application scaling rule. Valid values: `false`, `true`.
@@ -268,7 +268,7 @@ class ApplicationArgs:
     @pulumi.getter
     def replicas(self) -> pulumi.Input[int]:
         """
-        Initial number of instances.
+        Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
         """
         return pulumi.get(self, "replicas")
 
@@ -1021,7 +1021,7 @@ class _ApplicationState:
         :param pulumi.Input[str] post_start: Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
         :param pulumi.Input[str] pre_stop: Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
         :param pulumi.Input[str] readiness: Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
-        :param pulumi.Input[int] replicas: Initial number of instances.
+        :param pulumi.Input[int] replicas: Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
         :param pulumi.Input[str] security_group_id: Security group ID.
         :param pulumi.Input[str] sls_configs: SLS  configuration.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `RUNNING`, `STOPPED`.
@@ -1696,7 +1696,7 @@ class _ApplicationState:
     @pulumi.getter
     def replicas(self) -> Optional[pulumi.Input[int]]:
         """
-        Initial number of instances.
+        Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
         """
         return pulumi.get(self, "replicas")
 
@@ -2009,7 +2009,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] post_start: Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
         :param pulumi.Input[str] pre_stop: Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
         :param pulumi.Input[str] readiness: Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
-        :param pulumi.Input[int] replicas: Initial number of instances.
+        :param pulumi.Input[int] replicas: Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
         :param pulumi.Input[str] security_group_id: Security group ID.
         :param pulumi.Input[str] sls_configs: SLS  configuration.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `RUNNING`, `STOPPED`.
@@ -2349,7 +2349,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] post_start: Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
         :param pulumi.Input[str] pre_stop: Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}.
         :param pulumi.Input[str] readiness: Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
-        :param pulumi.Input[int] replicas: Initial number of instances.
+        :param pulumi.Input[int] replicas: Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
         :param pulumi.Input[str] security_group_id: Security group ID.
         :param pulumi.Input[str] sls_configs: SLS  configuration.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `RUNNING`, `STOPPED`.
@@ -2791,7 +2791,7 @@ class Application(pulumi.CustomResource):
     @pulumi.getter
     def replicas(self) -> pulumi.Output[int]:
         """
-        Initial number of instances.
+        Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
         """
         return pulumi.get(self, "replicas")
 

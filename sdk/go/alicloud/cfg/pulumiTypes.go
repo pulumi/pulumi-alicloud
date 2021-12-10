@@ -749,10 +749,10 @@ func (o CompliancePackConfigRuleIdArrayOutput) Index(i pulumi.IntInput) Complian
 
 type GetAggregateCompliancePacksPack struct {
 	// The Aliyun User Id.
-	AccountId string `pulumi:"accountId"`
-	// -The Aggregate Compliance Package Name.
+	AccountId                   string `pulumi:"accountId"`
 	AggregateCompliancePackName string `pulumi:"aggregateCompliancePackName"`
 	// The first ID of the resource.
+	// * `aggregateCompliancePackName` -The Aggregate Compliance Package Name.
 	AggregatorCompliancePackId string `pulumi:"aggregatorCompliancePackId"`
 	// The template ID of the Compliance Package.
 	CompliancePackTemplateId string `pulumi:"compliancePackTemplateId"`
@@ -764,7 +764,7 @@ type GetAggregateCompliancePacksPack struct {
 	Id string `pulumi:"id"`
 	// The Risk Level.
 	RiskLevel int `pulumi:"riskLevel"`
-	// The status of the resource.
+	// The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`.
 	Status string `pulumi:"status"`
 }
 
@@ -781,10 +781,10 @@ type GetAggregateCompliancePacksPackInput interface {
 
 type GetAggregateCompliancePacksPackArgs struct {
 	// The Aliyun User Id.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// -The Aggregate Compliance Package Name.
+	AccountId                   pulumi.StringInput `pulumi:"accountId"`
 	AggregateCompliancePackName pulumi.StringInput `pulumi:"aggregateCompliancePackName"`
 	// The first ID of the resource.
+	// * `aggregateCompliancePackName` -The Aggregate Compliance Package Name.
 	AggregatorCompliancePackId pulumi.StringInput `pulumi:"aggregatorCompliancePackId"`
 	// The template ID of the Compliance Package.
 	CompliancePackTemplateId pulumi.StringInput `pulumi:"compliancePackTemplateId"`
@@ -796,7 +796,7 @@ type GetAggregateCompliancePacksPackArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The Risk Level.
 	RiskLevel pulumi.IntInput `pulumi:"riskLevel"`
-	// The status of the resource.
+	// The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -856,12 +856,12 @@ func (o GetAggregateCompliancePacksPackOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAggregateCompliancePacksPack) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// -The Aggregate Compliance Package Name.
 func (o GetAggregateCompliancePacksPackOutput) AggregateCompliancePackName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAggregateCompliancePacksPack) string { return v.AggregateCompliancePackName }).(pulumi.StringOutput)
 }
 
 // The first ID of the resource.
+// * `aggregateCompliancePackName` -The Aggregate Compliance Package Name.
 func (o GetAggregateCompliancePacksPackOutput) AggregatorCompliancePackId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAggregateCompliancePacksPack) string { return v.AggregatorCompliancePackId }).(pulumi.StringOutput)
 }
@@ -893,7 +893,7 @@ func (o GetAggregateCompliancePacksPackOutput) RiskLevel() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAggregateCompliancePacksPack) int { return v.RiskLevel }).(pulumi.IntOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`.
 func (o GetAggregateCompliancePacksPackOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAggregateCompliancePacksPack) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -1153,12 +1153,13 @@ func (o GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArrayOutput)
 type GetAggregateConfigRulesRule struct {
 	// The Aliyun User ID.
 	AccountId string `pulumi:"accountId"`
-	// The name of the rule.
+	// The config rule name.
 	AggregateConfigRuleName string `pulumi:"aggregateConfigRuleName"`
+	// The ID of aggregator.
+	AggregatorId string `pulumi:"aggregatorId"`
 	// The ID of Compliance Package.
-	CompliancePackId string `pulumi:"compliancePackId"`
-	// -The Compliance information.
-	Compliances []GetAggregateConfigRulesRuleCompliance `pulumi:"compliances"`
+	CompliancePackId string                                  `pulumi:"compliancePackId"`
+	Compliances      []GetAggregateConfigRulesRuleCompliance `pulumi:"compliances"`
 	// The config rule arn.
 	ConfigRuleArn string `pulumi:"configRuleArn"`
 	// The ID of the rule.
@@ -1170,6 +1171,8 @@ type GetAggregateConfigRulesRule struct {
 	// Event source of the Config Rule.
 	EventSource string `pulumi:"eventSource"`
 	// The types of the resources to be evaluated against the rule.
+	// * `sourceIdentifier`- The name of the custom rule or managed rule.
+	// * `sourceOwner`- The source owner of the Config Rule.
 	ExcludeResourceIdsScope string `pulumi:"excludeResourceIdsScope"`
 	// The ID of the Aggregate Config Rule.
 	Id string `pulumi:"id"`
@@ -1184,13 +1187,11 @@ type GetAggregateConfigRulesRule struct {
 	// The scope of resource group ids.
 	ResourceGroupIdsScope string   `pulumi:"resourceGroupIdsScope"`
 	ResourceTypesScopes   []string `pulumi:"resourceTypesScopes"`
-	// The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
-	RiskLevel int `pulumi:"riskLevel"`
-	// The name of the custom rule or managed rule.
+	// Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+	RiskLevel        int    `pulumi:"riskLevel"`
 	SourceIdentifier string `pulumi:"sourceIdentifier"`
-	// The source owner of the Config Rule.
-	SourceOwner string `pulumi:"sourceOwner"`
-	// The status of the rule.
+	SourceOwner      string `pulumi:"sourceOwner"`
+	// The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
 	Status string `pulumi:"status"`
 	// The scope of tay key.
 	TagKeyScope string `pulumi:"tagKeyScope"`
@@ -1212,12 +1213,13 @@ type GetAggregateConfigRulesRuleInput interface {
 type GetAggregateConfigRulesRuleArgs struct {
 	// The Aliyun User ID.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// The name of the rule.
+	// The config rule name.
 	AggregateConfigRuleName pulumi.StringInput `pulumi:"aggregateConfigRuleName"`
+	// The ID of aggregator.
+	AggregatorId pulumi.StringInput `pulumi:"aggregatorId"`
 	// The ID of Compliance Package.
-	CompliancePackId pulumi.StringInput `pulumi:"compliancePackId"`
-	// -The Compliance information.
-	Compliances GetAggregateConfigRulesRuleComplianceArrayInput `pulumi:"compliances"`
+	CompliancePackId pulumi.StringInput                              `pulumi:"compliancePackId"`
+	Compliances      GetAggregateConfigRulesRuleComplianceArrayInput `pulumi:"compliances"`
 	// The config rule arn.
 	ConfigRuleArn pulumi.StringInput `pulumi:"configRuleArn"`
 	// The ID of the rule.
@@ -1229,6 +1231,8 @@ type GetAggregateConfigRulesRuleArgs struct {
 	// Event source of the Config Rule.
 	EventSource pulumi.StringInput `pulumi:"eventSource"`
 	// The types of the resources to be evaluated against the rule.
+	// * `sourceIdentifier`- The name of the custom rule or managed rule.
+	// * `sourceOwner`- The source owner of the Config Rule.
 	ExcludeResourceIdsScope pulumi.StringInput `pulumi:"excludeResourceIdsScope"`
 	// The ID of the Aggregate Config Rule.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -1243,13 +1247,11 @@ type GetAggregateConfigRulesRuleArgs struct {
 	// The scope of resource group ids.
 	ResourceGroupIdsScope pulumi.StringInput      `pulumi:"resourceGroupIdsScope"`
 	ResourceTypesScopes   pulumi.StringArrayInput `pulumi:"resourceTypesScopes"`
-	// The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
-	RiskLevel pulumi.IntInput `pulumi:"riskLevel"`
-	// The name of the custom rule or managed rule.
+	// Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
+	RiskLevel        pulumi.IntInput    `pulumi:"riskLevel"`
 	SourceIdentifier pulumi.StringInput `pulumi:"sourceIdentifier"`
-	// The source owner of the Config Rule.
-	SourceOwner pulumi.StringInput `pulumi:"sourceOwner"`
-	// The status of the rule.
+	SourceOwner      pulumi.StringInput `pulumi:"sourceOwner"`
+	// The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The scope of tay key.
 	TagKeyScope pulumi.StringInput `pulumi:"tagKeyScope"`
@@ -1313,9 +1315,14 @@ func (o GetAggregateConfigRulesRuleOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAggregateConfigRulesRule) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The name of the rule.
+// The config rule name.
 func (o GetAggregateConfigRulesRuleOutput) AggregateConfigRuleName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAggregateConfigRulesRule) string { return v.AggregateConfigRuleName }).(pulumi.StringOutput)
+}
+
+// The ID of aggregator.
+func (o GetAggregateConfigRulesRuleOutput) AggregatorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAggregateConfigRulesRule) string { return v.AggregatorId }).(pulumi.StringOutput)
 }
 
 // The ID of Compliance Package.
@@ -1323,7 +1330,6 @@ func (o GetAggregateConfigRulesRuleOutput) CompliancePackId() pulumi.StringOutpu
 	return o.ApplyT(func(v GetAggregateConfigRulesRule) string { return v.CompliancePackId }).(pulumi.StringOutput)
 }
 
-// -The Compliance information.
 func (o GetAggregateConfigRulesRuleOutput) Compliances() GetAggregateConfigRulesRuleComplianceArrayOutput {
 	return o.ApplyT(func(v GetAggregateConfigRulesRule) []GetAggregateConfigRulesRuleCompliance { return v.Compliances }).(GetAggregateConfigRulesRuleComplianceArrayOutput)
 }
@@ -1354,6 +1360,8 @@ func (o GetAggregateConfigRulesRuleOutput) EventSource() pulumi.StringOutput {
 }
 
 // The types of the resources to be evaluated against the rule.
+// * `sourceIdentifier`- The name of the custom rule or managed rule.
+// * `sourceOwner`- The source owner of the Config Rule.
 func (o GetAggregateConfigRulesRuleOutput) ExcludeResourceIdsScope() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAggregateConfigRulesRule) string { return v.ExcludeResourceIdsScope }).(pulumi.StringOutput)
 }
@@ -1392,22 +1400,20 @@ func (o GetAggregateConfigRulesRuleOutput) ResourceTypesScopes() pulumi.StringAr
 	return o.ApplyT(func(v GetAggregateConfigRulesRule) []string { return v.ResourceTypesScopes }).(pulumi.StringArrayOutput)
 }
 
-// The risk level of the resources that are not compliant with the rule. Valid values: `1`: critical, `2`: warning, `3`: info.
+// Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
 func (o GetAggregateConfigRulesRuleOutput) RiskLevel() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAggregateConfigRulesRule) int { return v.RiskLevel }).(pulumi.IntOutput)
 }
 
-// The name of the custom rule or managed rule.
 func (o GetAggregateConfigRulesRuleOutput) SourceIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAggregateConfigRulesRule) string { return v.SourceIdentifier }).(pulumi.StringOutput)
 }
 
-// The source owner of the Config Rule.
 func (o GetAggregateConfigRulesRuleOutput) SourceOwner() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAggregateConfigRulesRule) string { return v.SourceOwner }).(pulumi.StringOutput)
 }
 
-// The status of the rule.
+// The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
 func (o GetAggregateConfigRulesRuleOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAggregateConfigRulesRule) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -1563,7 +1569,7 @@ type GetAggregatorsAggregator struct {
 	Description string `pulumi:"description"`
 	// The id of the aggregator.
 	Id string `pulumi:"id"`
-	// The status of the resource.
+	// The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
 	Status string `pulumi:"status"`
 }
 
@@ -1593,7 +1599,7 @@ type GetAggregatorsAggregatorArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// The id of the aggregator.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The status of the resource.
+	// The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -1685,7 +1691,7 @@ func (o GetAggregatorsAggregatorOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAggregatorsAggregator) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
 func (o GetAggregatorsAggregatorOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAggregatorsAggregator) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -1842,7 +1848,7 @@ type GetCompliancePacksPack struct {
 	Id string `pulumi:"id"`
 	// The Ris Level.
 	RiskLevel int `pulumi:"riskLevel"`
-	// The status of the resource.
+	// The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`
 	Status string `pulumi:"status"`
 }
 
@@ -1874,7 +1880,7 @@ type GetCompliancePacksPackArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The Ris Level.
 	RiskLevel pulumi.IntInput `pulumi:"riskLevel"`
-	// The status of the resource.
+	// The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -1969,7 +1975,7 @@ func (o GetCompliancePacksPackOutput) RiskLevel() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCompliancePacksPack) int { return v.RiskLevel }).(pulumi.IntOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`
 func (o GetCompliancePacksPackOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCompliancePacksPack) string { return v.Status }).(pulumi.StringOutput)
 }

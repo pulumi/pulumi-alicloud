@@ -10,6 +10,157 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetConsumerChannelsChannel struct {
+	// The ID of the consumer group.
+	ConsumerGroupId string `pulumi:"consumerGroupId"`
+	// The name of the consumer group.
+	ConsumerGroupName string `pulumi:"consumerGroupName"`
+	// The username of the consumer group.
+	ConsumerGroupUserName string `pulumi:"consumerGroupUserName"`
+	// The time point when the client consumed the last message in the subscription channel.
+	ConsumptionCheckpoint string `pulumi:"consumptionCheckpoint"`
+	// The ID of the Consumer Channel.
+	Id string `pulumi:"id"`
+	// The message delay time, for the current time data subscription channel in the earliest time of unconsumed messages of the difference, in Unix timestamp format, which is measured in seconds.
+	MessageDelay int `pulumi:"messageDelay"`
+	// The total number of unconsumed messages.
+	UnconsumedData int `pulumi:"unconsumedData"`
+}
+
+// GetConsumerChannelsChannelInput is an input type that accepts GetConsumerChannelsChannelArgs and GetConsumerChannelsChannelOutput values.
+// You can construct a concrete instance of `GetConsumerChannelsChannelInput` via:
+//
+//          GetConsumerChannelsChannelArgs{...}
+type GetConsumerChannelsChannelInput interface {
+	pulumi.Input
+
+	ToGetConsumerChannelsChannelOutput() GetConsumerChannelsChannelOutput
+	ToGetConsumerChannelsChannelOutputWithContext(context.Context) GetConsumerChannelsChannelOutput
+}
+
+type GetConsumerChannelsChannelArgs struct {
+	// The ID of the consumer group.
+	ConsumerGroupId pulumi.StringInput `pulumi:"consumerGroupId"`
+	// The name of the consumer group.
+	ConsumerGroupName pulumi.StringInput `pulumi:"consumerGroupName"`
+	// The username of the consumer group.
+	ConsumerGroupUserName pulumi.StringInput `pulumi:"consumerGroupUserName"`
+	// The time point when the client consumed the last message in the subscription channel.
+	ConsumptionCheckpoint pulumi.StringInput `pulumi:"consumptionCheckpoint"`
+	// The ID of the Consumer Channel.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The message delay time, for the current time data subscription channel in the earliest time of unconsumed messages of the difference, in Unix timestamp format, which is measured in seconds.
+	MessageDelay pulumi.IntInput `pulumi:"messageDelay"`
+	// The total number of unconsumed messages.
+	UnconsumedData pulumi.IntInput `pulumi:"unconsumedData"`
+}
+
+func (GetConsumerChannelsChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConsumerChannelsChannel)(nil)).Elem()
+}
+
+func (i GetConsumerChannelsChannelArgs) ToGetConsumerChannelsChannelOutput() GetConsumerChannelsChannelOutput {
+	return i.ToGetConsumerChannelsChannelOutputWithContext(context.Background())
+}
+
+func (i GetConsumerChannelsChannelArgs) ToGetConsumerChannelsChannelOutputWithContext(ctx context.Context) GetConsumerChannelsChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConsumerChannelsChannelOutput)
+}
+
+// GetConsumerChannelsChannelArrayInput is an input type that accepts GetConsumerChannelsChannelArray and GetConsumerChannelsChannelArrayOutput values.
+// You can construct a concrete instance of `GetConsumerChannelsChannelArrayInput` via:
+//
+//          GetConsumerChannelsChannelArray{ GetConsumerChannelsChannelArgs{...} }
+type GetConsumerChannelsChannelArrayInput interface {
+	pulumi.Input
+
+	ToGetConsumerChannelsChannelArrayOutput() GetConsumerChannelsChannelArrayOutput
+	ToGetConsumerChannelsChannelArrayOutputWithContext(context.Context) GetConsumerChannelsChannelArrayOutput
+}
+
+type GetConsumerChannelsChannelArray []GetConsumerChannelsChannelInput
+
+func (GetConsumerChannelsChannelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConsumerChannelsChannel)(nil)).Elem()
+}
+
+func (i GetConsumerChannelsChannelArray) ToGetConsumerChannelsChannelArrayOutput() GetConsumerChannelsChannelArrayOutput {
+	return i.ToGetConsumerChannelsChannelArrayOutputWithContext(context.Background())
+}
+
+func (i GetConsumerChannelsChannelArray) ToGetConsumerChannelsChannelArrayOutputWithContext(ctx context.Context) GetConsumerChannelsChannelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConsumerChannelsChannelArrayOutput)
+}
+
+type GetConsumerChannelsChannelOutput struct{ *pulumi.OutputState }
+
+func (GetConsumerChannelsChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConsumerChannelsChannel)(nil)).Elem()
+}
+
+func (o GetConsumerChannelsChannelOutput) ToGetConsumerChannelsChannelOutput() GetConsumerChannelsChannelOutput {
+	return o
+}
+
+func (o GetConsumerChannelsChannelOutput) ToGetConsumerChannelsChannelOutputWithContext(ctx context.Context) GetConsumerChannelsChannelOutput {
+	return o
+}
+
+// The ID of the consumer group.
+func (o GetConsumerChannelsChannelOutput) ConsumerGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerChannelsChannel) string { return v.ConsumerGroupId }).(pulumi.StringOutput)
+}
+
+// The name of the consumer group.
+func (o GetConsumerChannelsChannelOutput) ConsumerGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerChannelsChannel) string { return v.ConsumerGroupName }).(pulumi.StringOutput)
+}
+
+// The username of the consumer group.
+func (o GetConsumerChannelsChannelOutput) ConsumerGroupUserName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerChannelsChannel) string { return v.ConsumerGroupUserName }).(pulumi.StringOutput)
+}
+
+// The time point when the client consumed the last message in the subscription channel.
+func (o GetConsumerChannelsChannelOutput) ConsumptionCheckpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerChannelsChannel) string { return v.ConsumptionCheckpoint }).(pulumi.StringOutput)
+}
+
+// The ID of the Consumer Channel.
+func (o GetConsumerChannelsChannelOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerChannelsChannel) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The message delay time, for the current time data subscription channel in the earliest time of unconsumed messages of the difference, in Unix timestamp format, which is measured in seconds.
+func (o GetConsumerChannelsChannelOutput) MessageDelay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConsumerChannelsChannel) int { return v.MessageDelay }).(pulumi.IntOutput)
+}
+
+// The total number of unconsumed messages.
+func (o GetConsumerChannelsChannelOutput) UnconsumedData() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConsumerChannelsChannel) int { return v.UnconsumedData }).(pulumi.IntOutput)
+}
+
+type GetConsumerChannelsChannelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConsumerChannelsChannelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConsumerChannelsChannel)(nil)).Elem()
+}
+
+func (o GetConsumerChannelsChannelArrayOutput) ToGetConsumerChannelsChannelArrayOutput() GetConsumerChannelsChannelArrayOutput {
+	return o
+}
+
+func (o GetConsumerChannelsChannelArrayOutput) ToGetConsumerChannelsChannelArrayOutputWithContext(ctx context.Context) GetConsumerChannelsChannelArrayOutput {
+	return o
+}
+
+func (o GetConsumerChannelsChannelArrayOutput) Index(i pulumi.IntInput) GetConsumerChannelsChannelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConsumerChannelsChannel {
+		return vs[0].([]GetConsumerChannelsChannel)[vs[1].(int)]
+	}).(GetConsumerChannelsChannelOutput)
+}
+
 type GetSubscriptionJobsJob struct {
 	// Subscription start time in Unix timestamp format.
 	Checkpoint string `pulumi:"checkpoint"`
@@ -469,9 +620,9 @@ type GetSynchronizationJobsJob struct {
 	// Start time in Unix timestamp format.
 	Checkpoint string `pulumi:"checkpoint"`
 	CreateTime string `pulumi:"createTime"`
-	// Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization values include:
+	// Whether to execute DTS supports schema migration, full data migration, or full-data initialization.
 	DataInitialization bool `pulumi:"dataInitialization"`
-	// Whether to perform incremental data migration for migration types or synchronization values include:
+	// Whether to perform incremental data migration for migration types or synchronization.
 	DataSynchronization bool `pulumi:"dataSynchronization"`
 	// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
 	DbList string `pulumi:"dbList"`
@@ -545,9 +696,9 @@ type GetSynchronizationJobsJobArgs struct {
 	// Start time in Unix timestamp format.
 	Checkpoint pulumi.StringInput `pulumi:"checkpoint"`
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization values include:
+	// Whether to execute DTS supports schema migration, full data migration, or full-data initialization.
 	DataInitialization pulumi.BoolInput `pulumi:"dataInitialization"`
-	// Whether to perform incremental data migration for migration types or synchronization values include:
+	// Whether to perform incremental data migration for migration types or synchronization.
 	DataSynchronization pulumi.BoolInput `pulumi:"dataSynchronization"`
 	// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
 	DbList pulumi.StringInput `pulumi:"dbList"`
@@ -666,12 +817,12 @@ func (o GetSynchronizationJobsJobOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSynchronizationJobsJob) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization values include:
+// Whether to execute DTS supports schema migration, full data migration, or full-data initialization.
 func (o GetSynchronizationJobsJobOutput) DataInitialization() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSynchronizationJobsJob) bool { return v.DataInitialization }).(pulumi.BoolOutput)
 }
 
-// Whether to perform incremental data migration for migration types or synchronization values include:
+// Whether to perform incremental data migration for migration types or synchronization.
 func (o GetSynchronizationJobsJobOutput) DataSynchronization() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSynchronizationJobsJob) bool { return v.DataSynchronization }).(pulumi.BoolOutput)
 }
@@ -839,12 +990,16 @@ func (o GetSynchronizationJobsJobArrayOutput) Index(i pulumi.IntInput) GetSynchr
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConsumerChannelsChannelInput)(nil)).Elem(), GetConsumerChannelsChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConsumerChannelsChannelArrayInput)(nil)).Elem(), GetConsumerChannelsChannelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionJobsJobInput)(nil)).Elem(), GetSubscriptionJobsJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionJobsJobArrayInput)(nil)).Elem(), GetSubscriptionJobsJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionJobsJobSubscriptionHostInput)(nil)).Elem(), GetSubscriptionJobsJobSubscriptionHostArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionJobsJobSubscriptionHostArrayInput)(nil)).Elem(), GetSubscriptionJobsJobSubscriptionHostArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSynchronizationJobsJobInput)(nil)).Elem(), GetSynchronizationJobsJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSynchronizationJobsJobArrayInput)(nil)).Elem(), GetSynchronizationJobsJobArray{})
+	pulumi.RegisterOutputType(GetConsumerChannelsChannelOutput{})
+	pulumi.RegisterOutputType(GetConsumerChannelsChannelArrayOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionJobsJobOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionJobsJobArrayOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionJobsJobSubscriptionHostOutput{})

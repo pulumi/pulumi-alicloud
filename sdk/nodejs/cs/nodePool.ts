@@ -67,6 +67,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly imageId!: pulumi.Output<string>;
     /**
+     * The image type, instead of `platform`. This field cannot be modified. One of `AliyunLinux`, `AliyunLinux3`, `AliyunLinux3Arm64`, `AliyunLinuxUEFI`, `CentOS`, `Windows`,`WindowsCore`,`AliyunLinux Qboot`,`ContainerOS`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+     */
+    public readonly imageType!: pulumi.Output<string>;
+    /**
      * Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
      */
     public readonly installCloudMonitor!: pulumi.Output<boolean | undefined>;
@@ -135,13 +139,23 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly periodUnit!: pulumi.Output<string | undefined>;
     /**
-     * The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+     * The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `imageType` instead.
+     *
+     * @deprecated Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead
      */
     public readonly platform!: pulumi.Output<string>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
+     * The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+     */
+    public readonly runtimeName!: pulumi.Output<string>;
+    /**
+     * The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
+     */
+    public readonly runtimeVersion!: pulumi.Output<string>;
     /**
      * Auto scaling node pool configuration. For more details, see `scalingConfig`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
      */
@@ -155,9 +169,15 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly scalingPolicy!: pulumi.Output<string>;
     /**
-     * The security group id for worker node.
+     * The security group id for worker node. Field `securityGroupId` has been deprecated from provider version 1.145.0. New field `securityGroupIds` instead.
+     *
+     * @deprecated Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead
      */
     public readonly securityGroupId!: pulumi.Output<string>;
+    /**
+     * Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
+     */
+    public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
      * The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
      */
@@ -216,6 +236,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["dataDisks"] = state ? state.dataDisks : undefined;
             inputs["formatDisk"] = state ? state.formatDisk : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
+            inputs["imageType"] = state ? state.imageType : undefined;
             inputs["installCloudMonitor"] = state ? state.installCloudMonitor : undefined;
             inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             inputs["instanceTypes"] = state ? state.instanceTypes : undefined;
@@ -235,10 +256,13 @@ export class NodePool extends pulumi.CustomResource {
             inputs["periodUnit"] = state ? state.periodUnit : undefined;
             inputs["platform"] = state ? state.platform : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            inputs["runtimeName"] = state ? state.runtimeName : undefined;
+            inputs["runtimeVersion"] = state ? state.runtimeVersion : undefined;
             inputs["scalingConfig"] = state ? state.scalingConfig : undefined;
             inputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
             inputs["scalingPolicy"] = state ? state.scalingPolicy : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             inputs["spotPriceLimits"] = state ? state.spotPriceLimits : undefined;
             inputs["spotStrategy"] = state ? state.spotStrategy : undefined;
             inputs["systemDiskCategory"] = state ? state.systemDiskCategory : undefined;
@@ -267,6 +291,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["dataDisks"] = args ? args.dataDisks : undefined;
             inputs["formatDisk"] = args ? args.formatDisk : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
+            inputs["imageType"] = args ? args.imageType : undefined;
             inputs["installCloudMonitor"] = args ? args.installCloudMonitor : undefined;
             inputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             inputs["instanceTypes"] = args ? args.instanceTypes : undefined;
@@ -286,9 +311,12 @@ export class NodePool extends pulumi.CustomResource {
             inputs["periodUnit"] = args ? args.periodUnit : undefined;
             inputs["platform"] = args ? args.platform : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            inputs["runtimeName"] = args ? args.runtimeName : undefined;
+            inputs["runtimeVersion"] = args ? args.runtimeVersion : undefined;
             inputs["scalingConfig"] = args ? args.scalingConfig : undefined;
             inputs["scalingPolicy"] = args ? args.scalingPolicy : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             inputs["spotPriceLimits"] = args ? args.spotPriceLimits : undefined;
             inputs["spotStrategy"] = args ? args.spotStrategy : undefined;
             inputs["systemDiskCategory"] = args ? args.systemDiskCategory : undefined;
@@ -337,6 +365,10 @@ export interface NodePoolState {
      * Custom Image support. Must based on CentOS7 or AliyunLinux2.
      */
     imageId?: pulumi.Input<string>;
+    /**
+     * The image type, instead of `platform`. This field cannot be modified. One of `AliyunLinux`, `AliyunLinux3`, `AliyunLinux3Arm64`, `AliyunLinuxUEFI`, `CentOS`, `Windows`,`WindowsCore`,`AliyunLinux Qboot`,`ContainerOS`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+     */
+    imageType?: pulumi.Input<string>;
     /**
      * Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
      */
@@ -406,13 +438,23 @@ export interface NodePoolState {
      */
     periodUnit?: pulumi.Input<string>;
     /**
-     * The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+     * The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `imageType` instead.
+     *
+     * @deprecated Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead
      */
     platform?: pulumi.Input<string>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+     */
+    runtimeName?: pulumi.Input<string>;
+    /**
+     * The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
+     */
+    runtimeVersion?: pulumi.Input<string>;
     /**
      * Auto scaling node pool configuration. For more details, see `scalingConfig`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
      */
@@ -426,9 +468,15 @@ export interface NodePoolState {
      */
     scalingPolicy?: pulumi.Input<string>;
     /**
-     * The security group id for worker node.
+     * The security group id for worker node. Field `securityGroupId` has been deprecated from provider version 1.145.0. New field `securityGroupIds` instead.
+     *
+     * @deprecated Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead
      */
     securityGroupId?: pulumi.Input<string>;
+    /**
+     * Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
+     */
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
      */
@@ -498,6 +546,10 @@ export interface NodePoolArgs {
      */
     imageId?: pulumi.Input<string>;
     /**
+     * The image type, instead of `platform`. This field cannot be modified. One of `AliyunLinux`, `AliyunLinux3`, `AliyunLinux3Arm64`, `AliyunLinuxUEFI`, `CentOS`, `Windows`,`WindowsCore`,`AliyunLinux Qboot`,`ContainerOS`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+     */
+    imageType?: pulumi.Input<string>;
+    /**
      * Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
      */
     installCloudMonitor?: pulumi.Input<boolean>;
@@ -566,13 +618,23 @@ export interface NodePoolArgs {
      */
     periodUnit?: pulumi.Input<string>;
     /**
-     * The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+     * The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `imageType` instead.
+     *
+     * @deprecated Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead
      */
     platform?: pulumi.Input<string>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+     */
+    runtimeName?: pulumi.Input<string>;
+    /**
+     * The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
+     */
+    runtimeVersion?: pulumi.Input<string>;
     /**
      * Auto scaling node pool configuration. For more details, see `scalingConfig`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
      */
@@ -582,9 +644,15 @@ export interface NodePoolArgs {
      */
     scalingPolicy?: pulumi.Input<string>;
     /**
-     * The security group id for worker node.
+     * The security group id for worker node. Field `securityGroupId` has been deprecated from provider version 1.145.0. New field `securityGroupIds` instead.
+     *
+     * @deprecated Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead
      */
     securityGroupId?: pulumi.Input<string>;
+    /**
+     * Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
+     */
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. A maximum of three decimal places are allowed.
      */

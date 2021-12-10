@@ -39,8 +39,12 @@ type Zone struct {
 	Remark pulumi.StringPtrOutput `pulumi:"remark"`
 	// The Id of resource group which the Private Zone belongs.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
+	// The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+	SyncStatus pulumi.StringPtrOutput `pulumi:"syncStatus"`
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrOutput `pulumi:"userClientIp"`
+	// The user information of the host synchronization task. The details see Block `userInfo`.
+	UserInfos ZoneUserInfoArrayOutput `pulumi:"userInfos"`
 	// The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
 	ZoneName pulumi.StringOutput `pulumi:"zoneName"`
 }
@@ -93,8 +97,12 @@ type zoneState struct {
 	Remark *string `pulumi:"remark"`
 	// The Id of resource group which the Private Zone belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+	SyncStatus *string `pulumi:"syncStatus"`
 	// The IP address of the client.
 	UserClientIp *string `pulumi:"userClientIp"`
+	// The user information of the host synchronization task. The details see Block `userInfo`.
+	UserInfos []ZoneUserInfo `pulumi:"userInfos"`
 	// The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
 	ZoneName *string `pulumi:"zoneName"`
 }
@@ -119,8 +127,12 @@ type ZoneState struct {
 	Remark pulumi.StringPtrInput
 	// The Id of resource group which the Private Zone belongs.
 	ResourceGroupId pulumi.StringPtrInput
+	// The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+	SyncStatus pulumi.StringPtrInput
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrInput
+	// The user information of the host synchronization task. The details see Block `userInfo`.
+	UserInfos ZoneUserInfoArrayInput
 	// The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
 	ZoneName pulumi.StringPtrInput
 }
@@ -145,8 +157,12 @@ type zoneArgs struct {
 	Remark *string `pulumi:"remark"`
 	// The Id of resource group which the Private Zone belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+	SyncStatus *string `pulumi:"syncStatus"`
 	// The IP address of the client.
 	UserClientIp *string `pulumi:"userClientIp"`
+	// The user information of the host synchronization task. The details see Block `userInfo`.
+	UserInfos []ZoneUserInfo `pulumi:"userInfos"`
 	// The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
 	ZoneName *string `pulumi:"zoneName"`
 }
@@ -168,8 +184,12 @@ type ZoneArgs struct {
 	Remark pulumi.StringPtrInput
 	// The Id of resource group which the Private Zone belongs.
 	ResourceGroupId pulumi.StringPtrInput
+	// The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+	SyncStatus pulumi.StringPtrInput
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrInput
+	// The user information of the host synchronization task. The details see Block `userInfo`.
+	UserInfos ZoneUserInfoArrayInput
 	// The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
 	ZoneName pulumi.StringPtrInput
 }

@@ -13,6 +13,7 @@ __all__ = [
     'RuleAttachmentVpcArgs',
     'RuleForwardIpArgs',
     'ZoneAttachmentVpcArgs',
+    'ZoneUserInfoArgs',
 ]
 
 @pulumi.input_type
@@ -193,5 +194,44 @@ class ZoneAttachmentVpcArgs:
     @region_id.setter
     def region_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region_id", value)
+
+
+@pulumi.input_type
+class ZoneUserInfoArgs:
+    def __init__(__self__, *,
+                 region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: The list of the region IDs.
+        :param pulumi.Input[str] user_id: The user ID belonging to the region is used for cross-account synchronization scenarios.
+        """
+        if region_ids is not None:
+            pulumi.set(__self__, "region_ids", region_ids)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="regionIds")
+    def region_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of the region IDs.
+        """
+        return pulumi.get(self, "region_ids")
+
+    @region_ids.setter
+    def region_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "region_ids", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user ID belonging to the region is used for cross-account synchronization scenarios.
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_id", value)
 
 

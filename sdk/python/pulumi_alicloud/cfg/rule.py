@@ -28,6 +28,7 @@ class RuleArgs:
                  scope_compliance_resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_detail_message_type: Optional[pulumi.Input[str]] = None,
                  source_maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  tag_key_scope: Optional[pulumi.Input[str]] = None,
                  tag_value_scope: Optional[pulumi.Input[str]] = None):
         """
@@ -47,8 +48,9 @@ class RuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scope_compliance_resource_types: Field `scope_compliance_resource_types` has been deprecated from provider version 1.124.1. New field `resource_types_scope` instead.
         :param pulumi.Input[str] source_detail_message_type: Field `source_detail_message_type` has been deprecated from provider version 1.124.1. New field `config_rule_trigger_types` instead.
         :param pulumi.Input[str] source_maximum_execution_frequency: Field `source_maximum_execution_frequency` has been deprecated from provider version 1.124.1. New field `maximum_execution_frequency` instead.
+        :param pulumi.Input[str] status: The rule status. The valid values: `ACTIVE`, `INACTIVE`.
         :param pulumi.Input[str] tag_key_scope: The rule monitors the tag key, only applies to rules created based on managed rules.
-        :param pulumi.Input[str] tag_value_scope: The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+        :param pulumi.Input[str] tag_value_scope: The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
         """
         pulumi.set(__self__, "risk_level", risk_level)
         pulumi.set(__self__, "rule_name", rule_name)
@@ -85,6 +87,8 @@ class RuleArgs:
             pulumi.log.warn("""source_maximum_execution_frequency is deprecated: Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.""")
         if source_maximum_execution_frequency is not None:
             pulumi.set(__self__, "source_maximum_execution_frequency", source_maximum_execution_frequency)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
         if tag_key_scope is not None:
             pulumi.set(__self__, "tag_key_scope", tag_key_scope)
         if tag_value_scope is not None:
@@ -271,6 +275,18 @@ class RuleArgs:
         pulumi.set(self, "source_maximum_execution_frequency", value)
 
     @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
     @pulumi.getter(name="tagKeyScope")
     def tag_key_scope(self) -> Optional[pulumi.Input[str]]:
         """
@@ -286,7 +302,7 @@ class RuleArgs:
     @pulumi.getter(name="tagValueScope")
     def tag_value_scope(self) -> Optional[pulumi.Input[str]]:
         """
-        The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+        The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
         """
         return pulumi.get(self, "tag_value_scope")
 
@@ -333,8 +349,9 @@ class _RuleState:
         :param pulumi.Input[str] source_identifier: The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
         :param pulumi.Input[str] source_maximum_execution_frequency: Field `source_maximum_execution_frequency` has been deprecated from provider version 1.124.1. New field `maximum_execution_frequency` instead.
         :param pulumi.Input[str] source_owner: Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
+        :param pulumi.Input[str] status: The rule status. The valid values: `ACTIVE`, `INACTIVE`.
         :param pulumi.Input[str] tag_key_scope: The rule monitors the tag key, only applies to rules created based on managed rules.
-        :param pulumi.Input[str] tag_value_scope: The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+        :param pulumi.Input[str] tag_value_scope: The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
         """
         if config_rule_trigger_types is not None:
             pulumi.set(__self__, "config_rule_trigger_types", config_rule_trigger_types)
@@ -565,6 +582,9 @@ class _RuleState:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -587,7 +607,7 @@ class _RuleState:
     @pulumi.getter(name="tagValueScope")
     def tag_value_scope(self) -> Optional[pulumi.Input[str]]:
         """
-        The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+        The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
         """
         return pulumi.get(self, "tag_value_scope")
 
@@ -616,12 +636,13 @@ class Rule(pulumi.CustomResource):
                  source_identifier: Optional[pulumi.Input[str]] = None,
                  source_maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
                  source_owner: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  tag_key_scope: Optional[pulumi.Input[str]] = None,
                  tag_value_scope: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a a Alicloud Config Rule resource. Cloud Config checks the validity of resources based on rules. You can create rules to evaluate resources as needed.
-        For information about Alicloud Config Rule and how to use it, see [What is Alicloud Config Rule](https://www.alibabacloud.com/help/en/doc-detail/127388.htm).
+        For information about Alicloud Config Rule and how to use it, see [What is Alicloud Config Rule](https://www.alibabacloud.com/help/doc-detail/154216.html).
 
         > **NOTE:** Available in v1.99.0+.
 
@@ -674,8 +695,9 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[str] source_identifier: The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
         :param pulumi.Input[str] source_maximum_execution_frequency: Field `source_maximum_execution_frequency` has been deprecated from provider version 1.124.1. New field `maximum_execution_frequency` instead.
         :param pulumi.Input[str] source_owner: Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
+        :param pulumi.Input[str] status: The rule status. The valid values: `ACTIVE`, `INACTIVE`.
         :param pulumi.Input[str] tag_key_scope: The rule monitors the tag key, only applies to rules created based on managed rules.
-        :param pulumi.Input[str] tag_value_scope: The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+        :param pulumi.Input[str] tag_value_scope: The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
         """
         ...
     @overload
@@ -685,7 +707,7 @@ class Rule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a a Alicloud Config Rule resource. Cloud Config checks the validity of resources based on rules. You can create rules to evaluate resources as needed.
-        For information about Alicloud Config Rule and how to use it, see [What is Alicloud Config Rule](https://www.alibabacloud.com/help/en/doc-detail/127388.htm).
+        For information about Alicloud Config Rule and how to use it, see [What is Alicloud Config Rule](https://www.alibabacloud.com/help/doc-detail/154216.html).
 
         > **NOTE:** Available in v1.99.0+.
 
@@ -751,6 +773,7 @@ class Rule(pulumi.CustomResource):
                  source_identifier: Optional[pulumi.Input[str]] = None,
                  source_maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
                  source_owner: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  tag_key_scope: Optional[pulumi.Input[str]] = None,
                  tag_value_scope: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -797,9 +820,9 @@ class Rule(pulumi.CustomResource):
             if source_owner is None and not opts.urn:
                 raise TypeError("Missing required property 'source_owner'")
             __props__.__dict__["source_owner"] = source_owner
+            __props__.__dict__["status"] = status
             __props__.__dict__["tag_key_scope"] = tag_key_scope
             __props__.__dict__["tag_value_scope"] = tag_value_scope
-            __props__.__dict__["status"] = None
         super(Rule, __self__).__init__(
             'alicloud:cfg/rule:Rule',
             resource_name,
@@ -850,8 +873,9 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[str] source_identifier: The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
         :param pulumi.Input[str] source_maximum_execution_frequency: Field `source_maximum_execution_frequency` has been deprecated from provider version 1.124.1. New field `maximum_execution_frequency` instead.
         :param pulumi.Input[str] source_owner: Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
+        :param pulumi.Input[str] status: The rule status. The valid values: `ACTIVE`, `INACTIVE`.
         :param pulumi.Input[str] tag_key_scope: The rule monitors the tag key, only applies to rules created based on managed rules.
-        :param pulumi.Input[str] tag_value_scope: The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+        :param pulumi.Input[str] tag_value_scope: The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1000,6 +1024,9 @@ class Rule(pulumi.CustomResource):
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
+        """
+        The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+        """
         return pulumi.get(self, "status")
 
     @property
@@ -1014,7 +1041,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="tagValueScope")
     def tag_value_scope(self) -> pulumi.Output[Optional[str]]:
         """
-        The rule monitors the tag value, use with the TagKeyScope options. only applies to rules created based on managed rules.
+        The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
         """
         return pulumi.get(self, "tag_value_scope")
 

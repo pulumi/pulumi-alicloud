@@ -67,6 +67,10 @@ export class Accelerator extends pulumi.CustomResource {
      */
     public readonly acceleratorName!: pulumi.Output<string | undefined>;
     /**
+     * Auto renewal period of an instance, in the unit of month. The value range is 1-12.
+     */
+    public readonly autoRenewDuration!: pulumi.Output<number | undefined>;
+    /**
      * Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
      */
     public readonly autoUseCoupon!: pulumi.Output<boolean | undefined>;
@@ -78,6 +82,13 @@ export class Accelerator extends pulumi.CustomResource {
      * The duration. The value range is 1-9.
      */
     public readonly duration!: pulumi.Output<number>;
+    /**
+     * Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+     * - `AutoRenewal`: Enable auto renewal.
+     * - `Normal`: Disable auto renewal.
+     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+     */
+    public readonly renewalStatus!: pulumi.Output<string>;
     /**
      * The instance type of the GA instance. Specification of global acceleration instance, value:
      * `1`: Small 1.
@@ -107,9 +118,11 @@ export class Accelerator extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AcceleratorState | undefined;
             inputs["acceleratorName"] = state ? state.acceleratorName : undefined;
+            inputs["autoRenewDuration"] = state ? state.autoRenewDuration : undefined;
             inputs["autoUseCoupon"] = state ? state.autoUseCoupon : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["duration"] = state ? state.duration : undefined;
+            inputs["renewalStatus"] = state ? state.renewalStatus : undefined;
             inputs["spec"] = state ? state.spec : undefined;
             inputs["status"] = state ? state.status : undefined;
         } else {
@@ -121,9 +134,11 @@ export class Accelerator extends pulumi.CustomResource {
                 throw new Error("Missing required property 'spec'");
             }
             inputs["acceleratorName"] = args ? args.acceleratorName : undefined;
+            inputs["autoRenewDuration"] = args ? args.autoRenewDuration : undefined;
             inputs["autoUseCoupon"] = args ? args.autoUseCoupon : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["duration"] = args ? args.duration : undefined;
+            inputs["renewalStatus"] = args ? args.renewalStatus : undefined;
             inputs["spec"] = args ? args.spec : undefined;
             inputs["status"] = undefined /*out*/;
         }
@@ -143,6 +158,10 @@ export interface AcceleratorState {
      */
     acceleratorName?: pulumi.Input<string>;
     /**
+     * Auto renewal period of an instance, in the unit of month. The value range is 1-12.
+     */
+    autoRenewDuration?: pulumi.Input<number>;
+    /**
      * Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
      */
     autoUseCoupon?: pulumi.Input<boolean>;
@@ -154,6 +173,13 @@ export interface AcceleratorState {
      * The duration. The value range is 1-9.
      */
     duration?: pulumi.Input<number>;
+    /**
+     * Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+     * - `AutoRenewal`: Enable auto renewal.
+     * - `Normal`: Disable auto renewal.
+     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+     */
+    renewalStatus?: pulumi.Input<string>;
     /**
      * The instance type of the GA instance. Specification of global acceleration instance, value:
      * `1`: Small 1.
@@ -179,6 +205,10 @@ export interface AcceleratorArgs {
      */
     acceleratorName?: pulumi.Input<string>;
     /**
+     * Auto renewal period of an instance, in the unit of month. The value range is 1-12.
+     */
+    autoRenewDuration?: pulumi.Input<number>;
+    /**
      * Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
      */
     autoUseCoupon?: pulumi.Input<boolean>;
@@ -190,6 +220,13 @@ export interface AcceleratorArgs {
      * The duration. The value range is 1-9.
      */
     duration: pulumi.Input<number>;
+    /**
+     * Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+     * - `AutoRenewal`: Enable auto renewal.
+     * - `Normal`: Disable auto renewal.
+     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+     */
+    renewalStatus?: pulumi.Input<string>;
     /**
      * The instance type of the GA instance. Specification of global acceleration instance, value:
      * `1`: Small 1.

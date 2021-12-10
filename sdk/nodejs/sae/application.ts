@@ -271,7 +271,7 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly readiness!: pulumi.Output<string | undefined>;
     /**
-     * Initial number of instances.
+     * Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
      */
     public readonly replicas!: pulumi.Output<number>;
     /**
@@ -656,7 +656,7 @@ export interface ApplicationState {
      */
     readiness?: pulumi.Input<string>;
     /**
-     * Initial number of instances.
+     * Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
      */
     replicas?: pulumi.Input<number>;
     /**
@@ -886,7 +886,7 @@ export interface ApplicationArgs {
      */
     readiness?: pulumi.Input<string>;
     /**
-     * Initial number of instances.
+     * Initial number of instances. **NOTE:** the `replicas` supports modification since V1.139.0.
      */
     replicas: pulumi.Input<number>;
     /**
