@@ -10,6 +10,7 @@ from .. import _utilities
 
 __all__ = [
     'InstanceReplicaSetArgs',
+    'ServerlessInstanceSecurityIpGroupArgs',
     'ShardingInstanceConfigServerListArgs',
     'ShardingInstanceMongoListArgs',
     'ShardingInstanceShardListArgs',
@@ -132,6 +133,61 @@ class InstanceReplicaSetArgs:
     @vswitch_id.setter
     def vswitch_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vswitch_id", value)
+
+
+@pulumi.input_type
+class ServerlessInstanceSecurityIpGroupArgs:
+    def __init__(__self__, *,
+                 security_ip_group_attribute: Optional[pulumi.Input[str]] = None,
+                 security_ip_group_name: Optional[pulumi.Input[str]] = None,
+                 security_ip_list: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] security_ip_group_attribute: The attribute of the IP whitelist. This parameter is empty by default.
+        :param pulumi.Input[str] security_ip_group_name: The name of the IP whitelist.
+        :param pulumi.Input[str] security_ip_list: The IP addresses in the whitelist.
+        """
+        if security_ip_group_attribute is not None:
+            pulumi.set(__self__, "security_ip_group_attribute", security_ip_group_attribute)
+        if security_ip_group_name is not None:
+            pulumi.set(__self__, "security_ip_group_name", security_ip_group_name)
+        if security_ip_list is not None:
+            pulumi.set(__self__, "security_ip_list", security_ip_list)
+
+    @property
+    @pulumi.getter(name="securityIpGroupAttribute")
+    def security_ip_group_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        The attribute of the IP whitelist. This parameter is empty by default.
+        """
+        return pulumi.get(self, "security_ip_group_attribute")
+
+    @security_ip_group_attribute.setter
+    def security_ip_group_attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_ip_group_attribute", value)
+
+    @property
+    @pulumi.getter(name="securityIpGroupName")
+    def security_ip_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the IP whitelist.
+        """
+        return pulumi.get(self, "security_ip_group_name")
+
+    @security_ip_group_name.setter
+    def security_ip_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_ip_group_name", value)
+
+    @property
+    @pulumi.getter(name="securityIpList")
+    def security_ip_list(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP addresses in the whitelist.
+        """
+        return pulumi.get(self, "security_ip_list")
+
+    @security_ip_list.setter
+    def security_ip_list(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_ip_list", value)
 
 
 @pulumi.input_type

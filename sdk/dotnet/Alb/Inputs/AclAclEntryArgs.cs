@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
     public sealed class AclAclEntryArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the ACL entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
+        /// The description of the ACL entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public Input<string>? Entry { get; set; }
 
         /// <summary>
-        /// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        /// The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

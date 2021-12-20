@@ -149,6 +149,10 @@ type Instance struct {
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart pulumi.BoolPtrOutput `pulumi:"forceRestart"`
+	// The read-only instances to which you want to synchronize the IP address whitelist.
+	// * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
+	// * If the instance is not attached with a read-only instance, this parameter is empty.
+	FreshWhiteListReadins pulumi.StringPtrOutput `pulumi:"freshWhiteListReadins"`
 	// The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
 	// - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
 	// - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
@@ -203,7 +207,7 @@ type Instance struct {
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
+	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
 	SecurityIpMode pulumi.StringPtrOutput `pulumi:"securityIpMode"`
 	// The type of IP address in the IP address whitelist.
 	SecurityIpType pulumi.StringPtrOutput `pulumi:"securityIpType"`
@@ -377,6 +381,10 @@ type instanceState struct {
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart *bool `pulumi:"forceRestart"`
+	// The read-only instances to which you want to synchronize the IP address whitelist.
+	// * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
+	// * If the instance is not attached with a read-only instance, this parameter is empty.
+	FreshWhiteListReadins *string `pulumi:"freshWhiteListReadins"`
 	// The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
 	// - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
 	// - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
@@ -431,7 +439,7 @@ type instanceState struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
+	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
 	SecurityIpMode *string `pulumi:"securityIpMode"`
 	// The type of IP address in the IP address whitelist.
 	SecurityIpType *string `pulumi:"securityIpType"`
@@ -565,6 +573,10 @@ type InstanceState struct {
 	EngineVersion pulumi.StringPtrInput
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart pulumi.BoolPtrInput
+	// The read-only instances to which you want to synchronize the IP address whitelist.
+	// * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
+	// * If the instance is not attached with a read-only instance, this parameter is empty.
+	FreshWhiteListReadins pulumi.StringPtrInput
 	// The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
 	// - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
 	// - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
@@ -619,7 +631,7 @@ type InstanceState struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds pulumi.StringArrayInput
-	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
+	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
 	SecurityIpMode pulumi.StringPtrInput
 	// The type of IP address in the IP address whitelist.
 	SecurityIpType pulumi.StringPtrInput
@@ -755,6 +767,10 @@ type instanceArgs struct {
 	EngineVersion string `pulumi:"engineVersion"`
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart *bool `pulumi:"forceRestart"`
+	// The read-only instances to which you want to synchronize the IP address whitelist.
+	// * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
+	// * If the instance is not attached with a read-only instance, this parameter is empty.
+	FreshWhiteListReadins *string `pulumi:"freshWhiteListReadins"`
 	// The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
 	// - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
 	// - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
@@ -809,7 +825,7 @@ type instanceArgs struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
+	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
 	SecurityIpMode *string `pulumi:"securityIpMode"`
 	// The type of IP address in the IP address whitelist.
 	SecurityIpType *string `pulumi:"securityIpType"`
@@ -940,6 +956,10 @@ type InstanceArgs struct {
 	EngineVersion pulumi.StringInput
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart pulumi.BoolPtrInput
+	// The read-only instances to which you want to synchronize the IP address whitelist.
+	// * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
+	// * If the instance is not attached with a read-only instance, this parameter is empty.
+	FreshWhiteListReadins pulumi.StringPtrInput
 	// The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
 	// - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
 	// - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
@@ -994,7 +1014,7 @@ type InstanceArgs struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds pulumi.StringArrayInput
-	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
+	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
 	SecurityIpMode pulumi.StringPtrInput
 	// The type of IP address in the IP address whitelist.
 	SecurityIpType pulumi.StringPtrInput

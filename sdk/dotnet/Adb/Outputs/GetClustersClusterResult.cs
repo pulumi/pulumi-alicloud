@@ -70,6 +70,7 @@ namespace Pulumi.AliCloud.Adb.Outputs
         public readonly string LockMode;
         public readonly string LockReason;
         public readonly string MaintainTime;
+        public readonly string Mode;
         /// <summary>
         /// The DBClusterNetworkType of the ADB cluster.
         /// </summary>
@@ -162,6 +163,8 @@ namespace Pulumi.AliCloud.Adb.Outputs
 
             string maintainTime,
 
+            string mode,
+
             string networkType,
 
             string paymentType,
@@ -219,6 +222,7 @@ namespace Pulumi.AliCloud.Adb.Outputs
             LockMode = lockMode;
             LockReason = lockReason;
             MaintainTime = maintainTime;
+            Mode = mode;
             NetworkType = networkType;
             PaymentType = paymentType;
             Port = port;

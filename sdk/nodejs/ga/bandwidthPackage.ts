@@ -9,7 +9,8 @@ import * as utilities from "../utilities";
  *
  * For information about Global Accelerator (GA) Bandwidth Package and how to use it, see [What is Bandwidth Package](https://www.alibabacloud.com/help/en/doc-detail/153241.htm).
  *
- * > **NOTE:** Available in v1.112.0+.
+ * > **NOTE:** At present, The `alicloud.ga.BandwidthPackage` created with `Subscription` cannot be deleted and must wait it to be outdated and release it automatically.
+ * **NOTE:** Available in v1.112.0+.
  *
  * ## Example Usage
  *
@@ -84,7 +85,7 @@ export class BandwidthPackage extends pulumi.CustomResource {
      */
     public readonly bandwidthPackageName!: pulumi.Output<string | undefined>;
     /**
-     * The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`.
+     * The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to Basic, this parameter is required.
      */
     public readonly bandwidthType!: pulumi.Output<string | undefined>;
     /**
@@ -104,7 +105,7 @@ export class BandwidthPackage extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The duration.
+     * The duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0.
      */
     public readonly duration!: pulumi.Output<string | undefined>;
     /**
@@ -112,7 +113,7 @@ export class BandwidthPackage extends pulumi.CustomResource {
      */
     public readonly paymentType!: pulumi.Output<string | undefined>;
     /**
-     * The ratio.
+     * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
      */
     public readonly ratio!: pulumi.Output<number | undefined>;
     /**
@@ -204,7 +205,7 @@ export interface BandwidthPackageState {
      */
     bandwidthPackageName?: pulumi.Input<string>;
     /**
-     * The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`.
+     * The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to Basic, this parameter is required.
      */
     bandwidthType?: pulumi.Input<string>;
     /**
@@ -224,7 +225,7 @@ export interface BandwidthPackageState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The duration.
+     * The duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0.
      */
     duration?: pulumi.Input<string>;
     /**
@@ -232,7 +233,7 @@ export interface BandwidthPackageState {
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * The ratio.
+     * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
      */
     ratio?: pulumi.Input<number>;
     /**
@@ -268,7 +269,7 @@ export interface BandwidthPackageArgs {
      */
     bandwidthPackageName?: pulumi.Input<string>;
     /**
-     * The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`.
+     * The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to Basic, this parameter is required.
      */
     bandwidthType?: pulumi.Input<string>;
     /**
@@ -288,7 +289,7 @@ export interface BandwidthPackageArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The duration.
+     * The duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0.
      */
     duration?: pulumi.Input<string>;
     /**
@@ -296,7 +297,7 @@ export interface BandwidthPackageArgs {
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * The ratio.
+     * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
      */
     ratio?: pulumi.Input<number>;
     /**

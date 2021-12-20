@@ -22,10 +22,10 @@ class AclArgs:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Acl resource.
-        :param pulumi.Input[str] acl_name: The name of the ACL. The name must be 2 to 128 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
-        :param pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]] acl_entries: ACL Entries.
-        :param pulumi.Input[bool] dry_run: Specifies whether to precheck the API request. Valid values: `true`: only prechecks the API request. If you select this option, the specified endpoint service is not created after the request passes the precheck. The system prechecks the required parameters, request format, and service limits. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned. `false` (default): checks the request. After the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
-        :param pulumi.Input[str] resource_group_id: Resource Group to Which the Number.
+        :param pulumi.Input[str] acl_name: The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
+        :param pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]] acl_entries: The list of the ACL entries. You can add up to `20` entries in each call.
+        :param pulumi.Input[bool] dry_run: Specifies whether to precheck the API request.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         """
         pulumi.set(__self__, "acl_name", acl_name)
         if acl_entries is not None:
@@ -41,7 +41,7 @@ class AclArgs:
     @pulumi.getter(name="aclName")
     def acl_name(self) -> pulumi.Input[str]:
         """
-        The name of the ACL. The name must be 2 to 128 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
+        The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
         """
         return pulumi.get(self, "acl_name")
 
@@ -53,7 +53,7 @@ class AclArgs:
     @pulumi.getter(name="aclEntries")
     def acl_entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]]]:
         """
-        ACL Entries.
+        The list of the ACL entries. You can add up to `20` entries in each call.
         """
         return pulumi.get(self, "acl_entries")
 
@@ -65,7 +65,7 @@ class AclArgs:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to precheck the API request. Valid values: `true`: only prechecks the API request. If you select this option, the specified endpoint service is not created after the request passes the precheck. The system prechecks the required parameters, request format, and service limits. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned. `false` (default): checks the request. After the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+        Specifies whether to precheck the API request.
         """
         return pulumi.get(self, "dry_run")
 
@@ -77,7 +77,7 @@ class AclArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource Group to Which the Number.
+        The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -106,11 +106,11 @@ class _AclState:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering Acl resources.
-        :param pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]] acl_entries: ACL Entries.
-        :param pulumi.Input[str] acl_name: The name of the ACL. The name must be 2 to 128 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
-        :param pulumi.Input[bool] dry_run: Specifies whether to precheck the API request. Valid values: `true`: only prechecks the API request. If you select this option, the specified endpoint service is not created after the request passes the precheck. The system prechecks the required parameters, request format, and service limits. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned. `false` (default): checks the request. After the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
-        :param pulumi.Input[str] resource_group_id: Resource Group to Which the Number.
-        :param pulumi.Input[str] status: The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        :param pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]] acl_entries: The list of the ACL entries. You can add up to `20` entries in each call.
+        :param pulumi.Input[str] acl_name: The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
+        :param pulumi.Input[bool] dry_run: Specifies whether to precheck the API request.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] status: The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
         """
         if acl_entries is not None:
             pulumi.set(__self__, "acl_entries", acl_entries)
@@ -129,7 +129,7 @@ class _AclState:
     @pulumi.getter(name="aclEntries")
     def acl_entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]]]:
         """
-        ACL Entries.
+        The list of the ACL entries. You can add up to `20` entries in each call.
         """
         return pulumi.get(self, "acl_entries")
 
@@ -141,7 +141,7 @@ class _AclState:
     @pulumi.getter(name="aclName")
     def acl_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the ACL. The name must be 2 to 128 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
+        The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
         """
         return pulumi.get(self, "acl_name")
 
@@ -153,7 +153,7 @@ class _AclState:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to precheck the API request. Valid values: `true`: only prechecks the API request. If you select this option, the specified endpoint service is not created after the request passes the precheck. The system prechecks the required parameters, request format, and service limits. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned. `false` (default): checks the request. After the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+        Specifies whether to precheck the API request.
         """
         return pulumi.get(self, "dry_run")
 
@@ -165,7 +165,7 @@ class _AclState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource Group to Which the Number.
+        The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -177,7 +177,7 @@ class _AclState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
         """
         return pulumi.get(self, "status")
 
@@ -209,7 +209,7 @@ class Acl(pulumi.CustomResource):
         """
         Provides a Application Load Balancer (ALB) Acl resource.
 
-        For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/doc-detail/213617.htm).
+        For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/doc-detail/200280.html).
 
         > **NOTE:** Available in v1.133.0+.
 
@@ -221,7 +221,12 @@ class Acl(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.alb.Acl("example", acl_name="example_value")
+        example = alicloud.alb.Acl("example",
+            acl_entries=[alicloud.alb.AclAclEntryArgs(
+                description="example_value",
+                entry="10.0.0.0/24",
+            )],
+            acl_name="example_value")
         ```
 
         ## Import
@@ -234,10 +239,10 @@ class Acl(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAclEntryArgs']]]] acl_entries: ACL Entries.
-        :param pulumi.Input[str] acl_name: The name of the ACL. The name must be 2 to 128 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
-        :param pulumi.Input[bool] dry_run: Specifies whether to precheck the API request. Valid values: `true`: only prechecks the API request. If you select this option, the specified endpoint service is not created after the request passes the precheck. The system prechecks the required parameters, request format, and service limits. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned. `false` (default): checks the request. After the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
-        :param pulumi.Input[str] resource_group_id: Resource Group to Which the Number.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAclEntryArgs']]]] acl_entries: The list of the ACL entries. You can add up to `20` entries in each call.
+        :param pulumi.Input[str] acl_name: The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
+        :param pulumi.Input[bool] dry_run: Specifies whether to precheck the API request.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         """
         ...
     @overload
@@ -248,7 +253,7 @@ class Acl(pulumi.CustomResource):
         """
         Provides a Application Load Balancer (ALB) Acl resource.
 
-        For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/doc-detail/213617.htm).
+        For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/doc-detail/200280.html).
 
         > **NOTE:** Available in v1.133.0+.
 
@@ -260,7 +265,12 @@ class Acl(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.alb.Acl("example", acl_name="example_value")
+        example = alicloud.alb.Acl("example",
+            acl_entries=[alicloud.alb.AclAclEntryArgs(
+                description="example_value",
+                entry="10.0.0.0/24",
+            )],
+            acl_name="example_value")
         ```
 
         ## Import
@@ -334,11 +344,11 @@ class Acl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAclEntryArgs']]]] acl_entries: ACL Entries.
-        :param pulumi.Input[str] acl_name: The name of the ACL. The name must be 2 to 128 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
-        :param pulumi.Input[bool] dry_run: Specifies whether to precheck the API request. Valid values: `true`: only prechecks the API request. If you select this option, the specified endpoint service is not created after the request passes the precheck. The system prechecks the required parameters, request format, and service limits. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned. `false` (default): checks the request. After the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
-        :param pulumi.Input[str] resource_group_id: Resource Group to Which the Number.
-        :param pulumi.Input[str] status: The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAclEntryArgs']]]] acl_entries: The list of the ACL entries. You can add up to `20` entries in each call.
+        :param pulumi.Input[str] acl_name: The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
+        :param pulumi.Input[bool] dry_run: Specifies whether to precheck the API request.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] status: The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -356,7 +366,7 @@ class Acl(pulumi.CustomResource):
     @pulumi.getter(name="aclEntries")
     def acl_entries(self) -> pulumi.Output[Optional[Sequence['outputs.AclAclEntry']]]:
         """
-        ACL Entries.
+        The list of the ACL entries. You can add up to `20` entries in each call.
         """
         return pulumi.get(self, "acl_entries")
 
@@ -364,7 +374,7 @@ class Acl(pulumi.CustomResource):
     @pulumi.getter(name="aclName")
     def acl_name(self) -> pulumi.Output[str]:
         """
-        The name of the ACL. The name must be 2 to 128 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
+        The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
         """
         return pulumi.get(self, "acl_name")
 
@@ -372,7 +382,7 @@ class Acl(pulumi.CustomResource):
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
-        Specifies whether to precheck the API request. Valid values: `true`: only prechecks the API request. If you select this option, the specified endpoint service is not created after the request passes the precheck. The system prechecks the required parameters, request format, and service limits. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned. `false` (default): checks the request. After the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+        Specifies whether to precheck the API request.
         """
         return pulumi.get(self, "dry_run")
 
@@ -380,7 +390,7 @@ class Acl(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[str]:
         """
-        Resource Group to Which the Number.
+        The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -388,7 +398,7 @@ class Acl(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
         """
         return pulumi.get(self, "status")
 

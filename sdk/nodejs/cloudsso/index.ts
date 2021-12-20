@@ -6,12 +6,14 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./accessConfiguration";
+export * from "./accessConfigurationProvisioning";
 export * from "./accessManagement";
 export * from "./directory";
 export * from "./getAccessConfigurations";
 export * from "./getDirectories";
 export * from "./getGroups";
 export * from "./getScimServerCredentials";
+export * from "./getService";
 export * from "./getUsers";
 export * from "./group";
 export * from "./scimServerCredential";
@@ -20,6 +22,7 @@ export * from "./userAttachment";
 
 // Import resources to register:
 import { AccessConfiguration } from "./accessConfiguration";
+import { AccessConfigurationProvisioning } from "./accessConfigurationProvisioning";
 import { AccessManagement } from "./accessManagement";
 import { Directory } from "./directory";
 import { Group } from "./group";
@@ -33,6 +36,8 @@ const _module = {
         switch (type) {
             case "alicloud:cloudsso/accessConfiguration:AccessConfiguration":
                 return new AccessConfiguration(name, <any>undefined, { urn })
+            case "alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning":
+                return new AccessConfigurationProvisioning(name, <any>undefined, { urn })
             case "alicloud:cloudsso/accessManagement:AccessManagement":
                 return new AccessManagement(name, <any>undefined, { urn })
             case "alicloud:cloudsso/directory:Directory":
@@ -51,6 +56,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "cloudsso/accessConfiguration", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudsso/accessConfigurationProvisioning", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudsso/accessManagement", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudsso/directory", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudsso/group", _module)

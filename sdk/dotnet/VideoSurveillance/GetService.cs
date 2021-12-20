@@ -19,6 +19,8 @@ namespace Pulumi.AliCloud.VideoSurveillance
         /// 
         /// &gt; **NOTE:** Available in v1.116.0+
         /// 
+        /// &gt; **NOTE:** The Video Surveillance System service is not support in the international site.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -51,6 +53,8 @@ namespace Pulumi.AliCloud.VideoSurveillance
         /// For information about Video Surveillance System and how to use it, see [What is VS](https://help.aliyun.com/product/108765.html).
         /// 
         /// &gt; **NOTE:** Available in v1.116.0+
+        /// 
+        /// &gt; **NOTE:** The Video Surveillance System service is not support in the international site.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

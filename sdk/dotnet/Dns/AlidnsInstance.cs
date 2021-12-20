@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// &gt; **NOTE:** Available in v1.95.0+.
     /// 
+    /// &gt; **NOTE:** The Alidns Instance is not support to be purchase automatically in the international site.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage

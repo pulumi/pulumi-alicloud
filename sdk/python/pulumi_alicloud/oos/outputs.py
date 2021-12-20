@@ -12,7 +12,10 @@ __all__ = [
     'GetApplicationGroupsGroupResult',
     'GetApplicationsApplicationResult',
     'GetExecutionsExecutionResult',
+    'GetParametersParameterResult',
     'GetPatchBaselinesBaselineResult',
+    'GetSecretParametersParameterResult',
+    'GetStateConfigurationsConfigurationResult',
     'GetTemplatesTemplateResult',
 ]
 
@@ -456,6 +459,178 @@ class GetExecutionsExecutionResult(dict):
 
 
 @pulumi.output_type
+class GetParametersParameterResult(dict):
+    def __init__(__self__, *,
+                 constraints: str,
+                 create_time: str,
+                 created_by: str,
+                 description: str,
+                 id: str,
+                 parameter_id: str,
+                 parameter_name: str,
+                 parameter_version: int,
+                 resource_group_id: str,
+                 share_type: str,
+                 tags: Mapping[str, Any],
+                 type: str,
+                 updated_by: str,
+                 updated_date: str,
+                 value: str):
+        """
+        :param str constraints: The constraints of the common parameter.
+        :param str create_time: The time when the common parameter was created.
+        :param str created_by: The user who created the common parameter.
+        :param str description: The description of the common parameter.
+        :param str id: The ID of the Parameter. Its value is same as `parameter_name`.
+        :param str parameter_id: The ID of the common parameter.
+        :param str parameter_name: The name of the common parameter.
+        :param int parameter_version: The version number of the common parameter.
+        :param str resource_group_id: The ID of the Resource Group.
+        :param str share_type: The share type of the common parameter.
+        :param Mapping[str, Any] tags: The tag of the resource.
+        :param str type: The data type of the common parameter.
+        :param str updated_by: The user who updated the common parameter.
+        :param str updated_date: The time when the common parameter was updated.
+        :param str value: The value of the common parameter.
+        """
+        pulumi.set(__self__, "constraints", constraints)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "parameter_id", parameter_id)
+        pulumi.set(__self__, "parameter_name", parameter_name)
+        pulumi.set(__self__, "parameter_version", parameter_version)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "share_type", share_type)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "updated_by", updated_by)
+        pulumi.set(__self__, "updated_date", updated_date)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def constraints(self) -> str:
+        """
+        The constraints of the common parameter.
+        """
+        return pulumi.get(self, "constraints")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the common parameter was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        The user who created the common parameter.
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the common parameter.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Parameter. Its value is same as `parameter_name`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="parameterId")
+    def parameter_id(self) -> str:
+        """
+        The ID of the common parameter.
+        """
+        return pulumi.get(self, "parameter_id")
+
+    @property
+    @pulumi.getter(name="parameterName")
+    def parameter_name(self) -> str:
+        """
+        The name of the common parameter.
+        """
+        return pulumi.get(self, "parameter_name")
+
+    @property
+    @pulumi.getter(name="parameterVersion")
+    def parameter_version(self) -> int:
+        """
+        The version number of the common parameter.
+        """
+        return pulumi.get(self, "parameter_version")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the Resource Group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="shareType")
+    def share_type(self) -> str:
+        """
+        The share type of the common parameter.
+        """
+        return pulumi.get(self, "share_type")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The data type of the common parameter.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> str:
+        """
+        The user who updated the common parameter.
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedDate")
+    def updated_date(self) -> str:
+        """
+        The time when the common parameter was updated.
+        """
+        return pulumi.get(self, "updated_date")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the common parameter.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class GetPatchBaselinesBaselineResult(dict):
     def __init__(__self__, *,
                  approval_rules: str,
@@ -592,6 +767,350 @@ class GetPatchBaselinesBaselineResult(dict):
         The update time of patch baselines.
         """
         return pulumi.get(self, "updated_date")
+
+
+@pulumi.output_type
+class GetSecretParametersParameterResult(dict):
+    def __init__(__self__, *,
+                 constraints: str,
+                 create_time: str,
+                 created_by: str,
+                 description: str,
+                 id: str,
+                 key_id: str,
+                 parameter_version: int,
+                 resource_group_id: str,
+                 secret_parameter_id: str,
+                 secret_parameter_name: str,
+                 share_type: str,
+                 tags: Mapping[str, Any],
+                 type: str,
+                 updated_by: str,
+                 updated_date: str):
+        """
+        :param str constraints: The constraints of the encryption parameter.
+        :param str create_time: The time when the encryption parameter was created.
+        :param str created_by: The user who created the encryption parameter.
+        :param str description: The description of the encryption parameter.
+        :param str id: The ID of the Secret Parameter.
+        :param str key_id: KeyId of KMS used for encryption.
+        :param int parameter_version: The version number of the encryption parameter.
+        :param str resource_group_id: The ID of the Resource Group.
+        :param str secret_parameter_id: The ID of the encryption parameter.
+        :param str secret_parameter_name: The name of the encryption parameter.
+        :param str share_type: The share type of the encryption parameter.
+        :param Mapping[str, Any] tags: The tag of the resource.
+        :param str type: The data type of the encryption parameter.
+        :param str updated_by: The user who updated the encryption parameter.
+        :param str updated_date: The time when the encryption parameter was updated.
+        """
+        pulumi.set(__self__, "constraints", constraints)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "key_id", key_id)
+        pulumi.set(__self__, "parameter_version", parameter_version)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "secret_parameter_id", secret_parameter_id)
+        pulumi.set(__self__, "secret_parameter_name", secret_parameter_name)
+        pulumi.set(__self__, "share_type", share_type)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "updated_by", updated_by)
+        pulumi.set(__self__, "updated_date", updated_date)
+
+    @property
+    @pulumi.getter
+    def constraints(self) -> str:
+        """
+        The constraints of the encryption parameter.
+        """
+        return pulumi.get(self, "constraints")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the encryption parameter was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        The user who created the encryption parameter.
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the encryption parameter.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Secret Parameter.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> str:
+        """
+        KeyId of KMS used for encryption.
+        """
+        return pulumi.get(self, "key_id")
+
+    @property
+    @pulumi.getter(name="parameterVersion")
+    def parameter_version(self) -> int:
+        """
+        The version number of the encryption parameter.
+        """
+        return pulumi.get(self, "parameter_version")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the Resource Group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="secretParameterId")
+    def secret_parameter_id(self) -> str:
+        """
+        The ID of the encryption parameter.
+        """
+        return pulumi.get(self, "secret_parameter_id")
+
+    @property
+    @pulumi.getter(name="secretParameterName")
+    def secret_parameter_name(self) -> str:
+        """
+        The name of the encryption parameter.
+        """
+        return pulumi.get(self, "secret_parameter_name")
+
+    @property
+    @pulumi.getter(name="shareType")
+    def share_type(self) -> str:
+        """
+        The share type of the encryption parameter.
+        """
+        return pulumi.get(self, "share_type")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The data type of the encryption parameter.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> str:
+        """
+        The user who updated the encryption parameter.
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedDate")
+    def updated_date(self) -> str:
+        """
+        The time when the encryption parameter was updated.
+        """
+        return pulumi.get(self, "updated_date")
+
+
+@pulumi.output_type
+class GetStateConfigurationsConfigurationResult(dict):
+    def __init__(__self__, *,
+                 configure_mode: str,
+                 create_time: str,
+                 description: str,
+                 id: str,
+                 parameters: str,
+                 resource_group_id: str,
+                 schedule_expression: str,
+                 schedule_type: str,
+                 state_configuration_id: str,
+                 tags: Mapping[str, Any],
+                 targets: str,
+                 template_id: str,
+                 template_name: str,
+                 template_version: str,
+                 update_time: str):
+        """
+        :param str configure_mode: The configuration mode.
+        :param str create_time: The creation time.
+        :param str description: The description.
+        :param str id: The ID of the State Configuration.
+        :param str parameters: The parameters.
+        :param str resource_group_id: The ID of the resource group.
+        :param str schedule_expression: The schedule expression.
+        :param str schedule_type: The schedule type.
+        :param str state_configuration_id: The ID of the final state configuration.
+        :param Mapping[str, Any] tags: The tag of the resource.
+        :param str targets: The target resource.
+        :param str template_id: The ID of the template.
+        :param str template_name: The name of the template.
+        :param str template_version: The version of the template.
+        :param str update_time: The time when the configuration is updated.
+        """
+        pulumi.set(__self__, "configure_mode", configure_mode)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "parameters", parameters)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "schedule_expression", schedule_expression)
+        pulumi.set(__self__, "schedule_type", schedule_type)
+        pulumi.set(__self__, "state_configuration_id", state_configuration_id)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "targets", targets)
+        pulumi.set(__self__, "template_id", template_id)
+        pulumi.set(__self__, "template_name", template_name)
+        pulumi.set(__self__, "template_version", template_version)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="configureMode")
+    def configure_mode(self) -> str:
+        """
+        The configuration mode.
+        """
+        return pulumi.get(self, "configure_mode")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the State Configuration.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> str:
+        """
+        The parameters.
+        """
+        return pulumi.get(self, "parameters")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="scheduleExpression")
+    def schedule_expression(self) -> str:
+        """
+        The schedule expression.
+        """
+        return pulumi.get(self, "schedule_expression")
+
+    @property
+    @pulumi.getter(name="scheduleType")
+    def schedule_type(self) -> str:
+        """
+        The schedule type.
+        """
+        return pulumi.get(self, "schedule_type")
+
+    @property
+    @pulumi.getter(name="stateConfigurationId")
+    def state_configuration_id(self) -> str:
+        """
+        The ID of the final state configuration.
+        """
+        return pulumi.get(self, "state_configuration_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def targets(self) -> str:
+        """
+        The target resource.
+        """
+        return pulumi.get(self, "targets")
+
+    @property
+    @pulumi.getter(name="templateId")
+    def template_id(self) -> str:
+        """
+        The ID of the template.
+        """
+        return pulumi.get(self, "template_id")
+
+    @property
+    @pulumi.getter(name="templateName")
+    def template_name(self) -> str:
+        """
+        The name of the template.
+        """
+        return pulumi.get(self, "template_name")
+
+    @property
+    @pulumi.getter(name="templateVersion")
+    def template_version(self) -> str:
+        """
+        The version of the template.
+        """
+        return pulumi.get(self, "template_version")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The time when the configuration is updated.
+        """
+        return pulumi.get(self, "update_time")
 
 
 @pulumi.output_type

@@ -73,6 +73,8 @@ def get_service(enable: Optional[str] = None,
 
     > **NOTE:** Available in v1.98.0+
 
+    > **NOTE:** The EDAS service is not support to be open automatically in the international site.
+
     ## Example Usage
 
     ```python
@@ -108,6 +110,8 @@ def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
     For information about EDAS and how to use it, see [What is EDAS](https://www.alibabacloud.com/help/product/29500.htm).
 
     > **NOTE:** Available in v1.98.0+
+
+    > **NOTE:** The EDAS service is not support to be open automatically in the international site.
 
     ## Example Usage
 

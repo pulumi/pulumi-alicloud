@@ -19,6 +19,8 @@ namespace Pulumi.AliCloud.Edas
         /// 
         /// &gt; **NOTE:** Available in v1.98.0+
         /// 
+        /// &gt; **NOTE:** The EDAS service is not support to be open automatically in the international site.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -51,6 +53,8 @@ namespace Pulumi.AliCloud.Edas
         /// For information about EDAS and how to use it, see [What is EDAS](https://www.alibabacloud.com/help/product/29500.htm).
         /// 
         /// &gt; **NOTE:** Available in v1.98.0+
+        /// 
+        /// &gt; **NOTE:** The EDAS service is not support to be open automatically in the international site.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

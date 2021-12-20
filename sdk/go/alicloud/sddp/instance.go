@@ -17,6 +17,8 @@ import (
 //
 // > **NOTE:** Available in v1.136.0+.
 //
+// > **NOTE:** The Data Security Center Instance is not support in the international site.
+//
 // ## Example Usage
 //
 // Basic Usage

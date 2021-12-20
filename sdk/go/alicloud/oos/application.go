@@ -74,7 +74,8 @@ type Application struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
-	Tags            pulumi.MapOutput       `pulumi:"tags"`
+	// The tag of the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 }
 
 // NewApplication registers a new resource with the given unique name, arguments, and options.
@@ -114,8 +115,9 @@ type applicationState struct {
 	// Application group description information.
 	Description *string `pulumi:"description"`
 	// The ID of the resource group.
-	ResourceGroupId *string                `pulumi:"resourceGroupId"`
-	Tags            map[string]interface{} `pulumi:"tags"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The tag of the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 type ApplicationState struct {
@@ -125,7 +127,8 @@ type ApplicationState struct {
 	Description pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	Tags            pulumi.MapInput
+	// The tag of the resource.
+	Tags pulumi.MapInput
 }
 
 func (ApplicationState) ElementType() reflect.Type {
@@ -138,8 +141,9 @@ type applicationArgs struct {
 	// Application group description information.
 	Description *string `pulumi:"description"`
 	// The ID of the resource group.
-	ResourceGroupId *string                `pulumi:"resourceGroupId"`
-	Tags            map[string]interface{} `pulumi:"tags"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The tag of the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Application resource.
@@ -150,7 +154,8 @@ type ApplicationArgs struct {
 	Description pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	Tags            pulumi.MapInput
+	// The tag of the resource.
+	Tags pulumi.MapInput
 }
 
 func (ApplicationArgs) ElementType() reflect.Type {

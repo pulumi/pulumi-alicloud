@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Cfg
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
+        /// The status of the resource. Valid Values:  `0`: creating `1`: normal `2`: deleting.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -164,7 +164,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
+        /// The status of the resource. Valid Values:  `0`: creating `1`: normal `2`: deleting.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

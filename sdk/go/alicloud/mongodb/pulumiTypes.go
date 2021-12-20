@@ -161,6 +161,121 @@ func (o InstanceReplicaSetArrayOutput) Index(i pulumi.IntInput) InstanceReplicaS
 	}).(InstanceReplicaSetOutput)
 }
 
+type ServerlessInstanceSecurityIpGroup struct {
+	// The attribute of the IP whitelist. This parameter is empty by default.
+	SecurityIpGroupAttribute *string `pulumi:"securityIpGroupAttribute"`
+	// The name of the IP whitelist.
+	SecurityIpGroupName *string `pulumi:"securityIpGroupName"`
+	// The IP addresses in the whitelist.
+	SecurityIpList *string `pulumi:"securityIpList"`
+}
+
+// ServerlessInstanceSecurityIpGroupInput is an input type that accepts ServerlessInstanceSecurityIpGroupArgs and ServerlessInstanceSecurityIpGroupOutput values.
+// You can construct a concrete instance of `ServerlessInstanceSecurityIpGroupInput` via:
+//
+//          ServerlessInstanceSecurityIpGroupArgs{...}
+type ServerlessInstanceSecurityIpGroupInput interface {
+	pulumi.Input
+
+	ToServerlessInstanceSecurityIpGroupOutput() ServerlessInstanceSecurityIpGroupOutput
+	ToServerlessInstanceSecurityIpGroupOutputWithContext(context.Context) ServerlessInstanceSecurityIpGroupOutput
+}
+
+type ServerlessInstanceSecurityIpGroupArgs struct {
+	// The attribute of the IP whitelist. This parameter is empty by default.
+	SecurityIpGroupAttribute pulumi.StringPtrInput `pulumi:"securityIpGroupAttribute"`
+	// The name of the IP whitelist.
+	SecurityIpGroupName pulumi.StringPtrInput `pulumi:"securityIpGroupName"`
+	// The IP addresses in the whitelist.
+	SecurityIpList pulumi.StringPtrInput `pulumi:"securityIpList"`
+}
+
+func (ServerlessInstanceSecurityIpGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessInstanceSecurityIpGroup)(nil)).Elem()
+}
+
+func (i ServerlessInstanceSecurityIpGroupArgs) ToServerlessInstanceSecurityIpGroupOutput() ServerlessInstanceSecurityIpGroupOutput {
+	return i.ToServerlessInstanceSecurityIpGroupOutputWithContext(context.Background())
+}
+
+func (i ServerlessInstanceSecurityIpGroupArgs) ToServerlessInstanceSecurityIpGroupOutputWithContext(ctx context.Context) ServerlessInstanceSecurityIpGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessInstanceSecurityIpGroupOutput)
+}
+
+// ServerlessInstanceSecurityIpGroupArrayInput is an input type that accepts ServerlessInstanceSecurityIpGroupArray and ServerlessInstanceSecurityIpGroupArrayOutput values.
+// You can construct a concrete instance of `ServerlessInstanceSecurityIpGroupArrayInput` via:
+//
+//          ServerlessInstanceSecurityIpGroupArray{ ServerlessInstanceSecurityIpGroupArgs{...} }
+type ServerlessInstanceSecurityIpGroupArrayInput interface {
+	pulumi.Input
+
+	ToServerlessInstanceSecurityIpGroupArrayOutput() ServerlessInstanceSecurityIpGroupArrayOutput
+	ToServerlessInstanceSecurityIpGroupArrayOutputWithContext(context.Context) ServerlessInstanceSecurityIpGroupArrayOutput
+}
+
+type ServerlessInstanceSecurityIpGroupArray []ServerlessInstanceSecurityIpGroupInput
+
+func (ServerlessInstanceSecurityIpGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerlessInstanceSecurityIpGroup)(nil)).Elem()
+}
+
+func (i ServerlessInstanceSecurityIpGroupArray) ToServerlessInstanceSecurityIpGroupArrayOutput() ServerlessInstanceSecurityIpGroupArrayOutput {
+	return i.ToServerlessInstanceSecurityIpGroupArrayOutputWithContext(context.Background())
+}
+
+func (i ServerlessInstanceSecurityIpGroupArray) ToServerlessInstanceSecurityIpGroupArrayOutputWithContext(ctx context.Context) ServerlessInstanceSecurityIpGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessInstanceSecurityIpGroupArrayOutput)
+}
+
+type ServerlessInstanceSecurityIpGroupOutput struct{ *pulumi.OutputState }
+
+func (ServerlessInstanceSecurityIpGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessInstanceSecurityIpGroup)(nil)).Elem()
+}
+
+func (o ServerlessInstanceSecurityIpGroupOutput) ToServerlessInstanceSecurityIpGroupOutput() ServerlessInstanceSecurityIpGroupOutput {
+	return o
+}
+
+func (o ServerlessInstanceSecurityIpGroupOutput) ToServerlessInstanceSecurityIpGroupOutputWithContext(ctx context.Context) ServerlessInstanceSecurityIpGroupOutput {
+	return o
+}
+
+// The attribute of the IP whitelist. This parameter is empty by default.
+func (o ServerlessInstanceSecurityIpGroupOutput) SecurityIpGroupAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerlessInstanceSecurityIpGroup) *string { return v.SecurityIpGroupAttribute }).(pulumi.StringPtrOutput)
+}
+
+// The name of the IP whitelist.
+func (o ServerlessInstanceSecurityIpGroupOutput) SecurityIpGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerlessInstanceSecurityIpGroup) *string { return v.SecurityIpGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The IP addresses in the whitelist.
+func (o ServerlessInstanceSecurityIpGroupOutput) SecurityIpList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerlessInstanceSecurityIpGroup) *string { return v.SecurityIpList }).(pulumi.StringPtrOutput)
+}
+
+type ServerlessInstanceSecurityIpGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerlessInstanceSecurityIpGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerlessInstanceSecurityIpGroup)(nil)).Elem()
+}
+
+func (o ServerlessInstanceSecurityIpGroupArrayOutput) ToServerlessInstanceSecurityIpGroupArrayOutput() ServerlessInstanceSecurityIpGroupArrayOutput {
+	return o
+}
+
+func (o ServerlessInstanceSecurityIpGroupArrayOutput) ToServerlessInstanceSecurityIpGroupArrayOutputWithContext(ctx context.Context) ServerlessInstanceSecurityIpGroupArrayOutput {
+	return o
+}
+
+func (o ServerlessInstanceSecurityIpGroupArrayOutput) Index(i pulumi.IntInput) ServerlessInstanceSecurityIpGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerlessInstanceSecurityIpGroup {
+		return vs[0].([]ServerlessInstanceSecurityIpGroup)[vs[1].(int)]
+	}).(ServerlessInstanceSecurityIpGroupOutput)
+}
+
 type ShardingInstanceConfigServerList struct {
 	// The connection address of the Config Server node.
 	ConnectString *string `pulumi:"connectString"`
@@ -573,6 +688,263 @@ func (o ShardingInstanceShardListArrayOutput) Index(i pulumi.IntInput) ShardingI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ShardingInstanceShardList {
 		return vs[0].([]ShardingInstanceShardList)[vs[1].(int)]
 	}).(ShardingInstanceShardListOutput)
+}
+
+type GetAccountsAccount struct {
+	// The description of the account.
+	AccountDescription string `pulumi:"accountDescription"`
+	// The name of the account.
+	AccountName string `pulumi:"accountName"`
+	// The role of the account. Valid values: `db`, `cs`, `mongos`, `logic`, `normal`.
+	CharacterType string `pulumi:"characterType"`
+	// The ID of the Account. The value formats as `<instance_id>:<account_name>`.
+	Id string `pulumi:"id"`
+	// The id of the instance to which the account belongs.
+	InstanceId string `pulumi:"instanceId"`
+	// The status of the account. Valid values: `Unavailable`, `Available`.
+	Status string `pulumi:"status"`
+}
+
+// GetAccountsAccountInput is an input type that accepts GetAccountsAccountArgs and GetAccountsAccountOutput values.
+// You can construct a concrete instance of `GetAccountsAccountInput` via:
+//
+//          GetAccountsAccountArgs{...}
+type GetAccountsAccountInput interface {
+	pulumi.Input
+
+	ToGetAccountsAccountOutput() GetAccountsAccountOutput
+	ToGetAccountsAccountOutputWithContext(context.Context) GetAccountsAccountOutput
+}
+
+type GetAccountsAccountArgs struct {
+	// The description of the account.
+	AccountDescription pulumi.StringInput `pulumi:"accountDescription"`
+	// The name of the account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The role of the account. Valid values: `db`, `cs`, `mongos`, `logic`, `normal`.
+	CharacterType pulumi.StringInput `pulumi:"characterType"`
+	// The ID of the Account. The value formats as `<instance_id>:<account_name>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The id of the instance to which the account belongs.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The status of the account. Valid values: `Unavailable`, `Available`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetAccountsAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountsAccount)(nil)).Elem()
+}
+
+func (i GetAccountsAccountArgs) ToGetAccountsAccountOutput() GetAccountsAccountOutput {
+	return i.ToGetAccountsAccountOutputWithContext(context.Background())
+}
+
+func (i GetAccountsAccountArgs) ToGetAccountsAccountOutputWithContext(ctx context.Context) GetAccountsAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountsAccountOutput)
+}
+
+// GetAccountsAccountArrayInput is an input type that accepts GetAccountsAccountArray and GetAccountsAccountArrayOutput values.
+// You can construct a concrete instance of `GetAccountsAccountArrayInput` via:
+//
+//          GetAccountsAccountArray{ GetAccountsAccountArgs{...} }
+type GetAccountsAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetAccountsAccountArrayOutput() GetAccountsAccountArrayOutput
+	ToGetAccountsAccountArrayOutputWithContext(context.Context) GetAccountsAccountArrayOutput
+}
+
+type GetAccountsAccountArray []GetAccountsAccountInput
+
+func (GetAccountsAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountsAccount)(nil)).Elem()
+}
+
+func (i GetAccountsAccountArray) ToGetAccountsAccountArrayOutput() GetAccountsAccountArrayOutput {
+	return i.ToGetAccountsAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetAccountsAccountArray) ToGetAccountsAccountArrayOutputWithContext(ctx context.Context) GetAccountsAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountsAccountArrayOutput)
+}
+
+type GetAccountsAccountOutput struct{ *pulumi.OutputState }
+
+func (GetAccountsAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountsAccount)(nil)).Elem()
+}
+
+func (o GetAccountsAccountOutput) ToGetAccountsAccountOutput() GetAccountsAccountOutput {
+	return o
+}
+
+func (o GetAccountsAccountOutput) ToGetAccountsAccountOutputWithContext(ctx context.Context) GetAccountsAccountOutput {
+	return o
+}
+
+// The description of the account.
+func (o GetAccountsAccountOutput) AccountDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.AccountDescription }).(pulumi.StringOutput)
+}
+
+// The name of the account.
+func (o GetAccountsAccountOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// The role of the account. Valid values: `db`, `cs`, `mongos`, `logic`, `normal`.
+func (o GetAccountsAccountOutput) CharacterType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.CharacterType }).(pulumi.StringOutput)
+}
+
+// The ID of the Account. The value formats as `<instance_id>:<account_name>`.
+func (o GetAccountsAccountOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The id of the instance to which the account belongs.
+func (o GetAccountsAccountOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The status of the account. Valid values: `Unavailable`, `Available`.
+func (o GetAccountsAccountOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetAccountsAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAccountsAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountsAccount)(nil)).Elem()
+}
+
+func (o GetAccountsAccountArrayOutput) ToGetAccountsAccountArrayOutput() GetAccountsAccountArrayOutput {
+	return o
+}
+
+func (o GetAccountsAccountArrayOutput) ToGetAccountsAccountArrayOutputWithContext(ctx context.Context) GetAccountsAccountArrayOutput {
+	return o
+}
+
+func (o GetAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetAccountsAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountsAccount {
+		return vs[0].([]GetAccountsAccount)[vs[1].(int)]
+	}).(GetAccountsAccountOutput)
+}
+
+type GetAuditPoliciesPolicy struct {
+	// The status of the log audit feature.
+	AuditStatus string `pulumi:"auditStatus"`
+	// The ID of the instance.
+	DbInstanceId string `pulumi:"dbInstanceId"`
+	// The ID of the Audit Policy.
+	Id string `pulumi:"id"`
+}
+
+// GetAuditPoliciesPolicyInput is an input type that accepts GetAuditPoliciesPolicyArgs and GetAuditPoliciesPolicyOutput values.
+// You can construct a concrete instance of `GetAuditPoliciesPolicyInput` via:
+//
+//          GetAuditPoliciesPolicyArgs{...}
+type GetAuditPoliciesPolicyInput interface {
+	pulumi.Input
+
+	ToGetAuditPoliciesPolicyOutput() GetAuditPoliciesPolicyOutput
+	ToGetAuditPoliciesPolicyOutputWithContext(context.Context) GetAuditPoliciesPolicyOutput
+}
+
+type GetAuditPoliciesPolicyArgs struct {
+	// The status of the log audit feature.
+	AuditStatus pulumi.StringInput `pulumi:"auditStatus"`
+	// The ID of the instance.
+	DbInstanceId pulumi.StringInput `pulumi:"dbInstanceId"`
+	// The ID of the Audit Policy.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetAuditPoliciesPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuditPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetAuditPoliciesPolicyArgs) ToGetAuditPoliciesPolicyOutput() GetAuditPoliciesPolicyOutput {
+	return i.ToGetAuditPoliciesPolicyOutputWithContext(context.Background())
+}
+
+func (i GetAuditPoliciesPolicyArgs) ToGetAuditPoliciesPolicyOutputWithContext(ctx context.Context) GetAuditPoliciesPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuditPoliciesPolicyOutput)
+}
+
+// GetAuditPoliciesPolicyArrayInput is an input type that accepts GetAuditPoliciesPolicyArray and GetAuditPoliciesPolicyArrayOutput values.
+// You can construct a concrete instance of `GetAuditPoliciesPolicyArrayInput` via:
+//
+//          GetAuditPoliciesPolicyArray{ GetAuditPoliciesPolicyArgs{...} }
+type GetAuditPoliciesPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetAuditPoliciesPolicyArrayOutput() GetAuditPoliciesPolicyArrayOutput
+	ToGetAuditPoliciesPolicyArrayOutputWithContext(context.Context) GetAuditPoliciesPolicyArrayOutput
+}
+
+type GetAuditPoliciesPolicyArray []GetAuditPoliciesPolicyInput
+
+func (GetAuditPoliciesPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuditPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetAuditPoliciesPolicyArray) ToGetAuditPoliciesPolicyArrayOutput() GetAuditPoliciesPolicyArrayOutput {
+	return i.ToGetAuditPoliciesPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuditPoliciesPolicyArray) ToGetAuditPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetAuditPoliciesPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuditPoliciesPolicyArrayOutput)
+}
+
+type GetAuditPoliciesPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetAuditPoliciesPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuditPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetAuditPoliciesPolicyOutput) ToGetAuditPoliciesPolicyOutput() GetAuditPoliciesPolicyOutput {
+	return o
+}
+
+func (o GetAuditPoliciesPolicyOutput) ToGetAuditPoliciesPolicyOutputWithContext(ctx context.Context) GetAuditPoliciesPolicyOutput {
+	return o
+}
+
+// The status of the log audit feature.
+func (o GetAuditPoliciesPolicyOutput) AuditStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuditPoliciesPolicy) string { return v.AuditStatus }).(pulumi.StringOutput)
+}
+
+// The ID of the instance.
+func (o GetAuditPoliciesPolicyOutput) DbInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuditPoliciesPolicy) string { return v.DbInstanceId }).(pulumi.StringOutput)
+}
+
+// The ID of the Audit Policy.
+func (o GetAuditPoliciesPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuditPoliciesPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetAuditPoliciesPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuditPoliciesPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuditPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetAuditPoliciesPolicyArrayOutput) ToGetAuditPoliciesPolicyArrayOutput() GetAuditPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetAuditPoliciesPolicyArrayOutput) ToGetAuditPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetAuditPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetAuditPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetAuditPoliciesPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuditPoliciesPolicy {
+		return vs[0].([]GetAuditPoliciesPolicy)[vs[1].(int)]
+	}).(GetAuditPoliciesPolicyOutput)
 }
 
 type GetInstancesInstance struct {
@@ -1073,6 +1445,463 @@ func (o GetInstancesInstanceShardArrayOutput) Index(i pulumi.IntInput) GetInstan
 	}).(GetInstancesInstanceShardOutput)
 }
 
+type GetServerlessInstancesInstance struct {
+	// The read/write throughput consumed by the instance.
+	CapacityUnit int `pulumi:"capacityUnit"`
+	// The db instance class.
+	DbInstanceClass string `pulumi:"dbInstanceClass"`
+	// The db instance description.
+	DbInstanceDescription string `pulumi:"dbInstanceDescription"`
+	// The db instance id.
+	DbInstanceId string `pulumi:"dbInstanceId"`
+	// The db instance release protection.
+	DbInstanceReleaseProtection bool `pulumi:"dbInstanceReleaseProtection"`
+	// The db instance storage.
+	DbInstanceStorage int `pulumi:"dbInstanceStorage"`
+	// The database engine of the instance.
+	Engine string `pulumi:"engine"`
+	// The database version number. Valid values: `4.2`.
+	EngineVersion string `pulumi:"engineVersion"`
+	// The time when the subscription instance expires. The time is in the `yyyy-MM-ddTHH:mmZ` format. The time is displayed in UTC.
+	ExpireTime string `pulumi:"expireTime"`
+	// The ID of the Serverless Instance.
+	Id string `pulumi:"id"`
+	// Indicates the type of the instance. Valid values: `0`: physical machine. `1`: ECS. `2`: DOCKER. `18`: k8s new architecture instance.
+	KindCode string `pulumi:"kindCode"`
+	// The locked status of the instance.
+	LockMode string `pulumi:"lockMode"`
+	// The start time of the maintenance window. The time is in the `HH:mmZ` format. The time is displayed in UTC.
+	MaintainEndTime string `pulumi:"maintainEndTime"`
+	// The end time of the maintenance window. The time is in the `HH:mmZ` format. The time is displayed in UTC.
+	MaintainStartTime string `pulumi:"maintainStartTime"`
+	// Instance maximum connections.
+	MaxConnections int `pulumi:"maxConnections"`
+	// The maximum IOPS of the instance.
+	MaxIops int `pulumi:"maxIops"`
+	// The network type of the instance.
+	NetworkType string `pulumi:"networkType"`
+	// The Payment type of the instance.
+	PaymentType string `pulumi:"paymentType"`
+	// The access protocol type of the instance. Valid values: `mongodb`, `dynamodb`.
+	ProtocolType string `pulumi:"protocolType"`
+	// The ID of the resource group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The security ip list.
+	SecurityIpGroups []GetServerlessInstancesInstanceSecurityIpGroup `pulumi:"securityIpGroups"`
+	// The status of the instance.
+	Status string `pulumi:"status"`
+	// The storage engine used by the instance.
+	StorageEngine string `pulumi:"storageEngine"`
+	// The tag of the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// Intranet secret free access mode.
+	VpcAuthMode string `pulumi:"vpcAuthMode"`
+	// The ID of the VPC network.
+	VpcId string `pulumi:"vpcId"`
+	// The id of the vswitch.
+	VswitchId string `pulumi:"vswitchId"`
+	// The ID of the zone.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetServerlessInstancesInstanceInput is an input type that accepts GetServerlessInstancesInstanceArgs and GetServerlessInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetServerlessInstancesInstanceInput` via:
+//
+//          GetServerlessInstancesInstanceArgs{...}
+type GetServerlessInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetServerlessInstancesInstanceOutput() GetServerlessInstancesInstanceOutput
+	ToGetServerlessInstancesInstanceOutputWithContext(context.Context) GetServerlessInstancesInstanceOutput
+}
+
+type GetServerlessInstancesInstanceArgs struct {
+	// The read/write throughput consumed by the instance.
+	CapacityUnit pulumi.IntInput `pulumi:"capacityUnit"`
+	// The db instance class.
+	DbInstanceClass pulumi.StringInput `pulumi:"dbInstanceClass"`
+	// The db instance description.
+	DbInstanceDescription pulumi.StringInput `pulumi:"dbInstanceDescription"`
+	// The db instance id.
+	DbInstanceId pulumi.StringInput `pulumi:"dbInstanceId"`
+	// The db instance release protection.
+	DbInstanceReleaseProtection pulumi.BoolInput `pulumi:"dbInstanceReleaseProtection"`
+	// The db instance storage.
+	DbInstanceStorage pulumi.IntInput `pulumi:"dbInstanceStorage"`
+	// The database engine of the instance.
+	Engine pulumi.StringInput `pulumi:"engine"`
+	// The database version number. Valid values: `4.2`.
+	EngineVersion pulumi.StringInput `pulumi:"engineVersion"`
+	// The time when the subscription instance expires. The time is in the `yyyy-MM-ddTHH:mmZ` format. The time is displayed in UTC.
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+	// The ID of the Serverless Instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Indicates the type of the instance. Valid values: `0`: physical machine. `1`: ECS. `2`: DOCKER. `18`: k8s new architecture instance.
+	KindCode pulumi.StringInput `pulumi:"kindCode"`
+	// The locked status of the instance.
+	LockMode pulumi.StringInput `pulumi:"lockMode"`
+	// The start time of the maintenance window. The time is in the `HH:mmZ` format. The time is displayed in UTC.
+	MaintainEndTime pulumi.StringInput `pulumi:"maintainEndTime"`
+	// The end time of the maintenance window. The time is in the `HH:mmZ` format. The time is displayed in UTC.
+	MaintainStartTime pulumi.StringInput `pulumi:"maintainStartTime"`
+	// Instance maximum connections.
+	MaxConnections pulumi.IntInput `pulumi:"maxConnections"`
+	// The maximum IOPS of the instance.
+	MaxIops pulumi.IntInput `pulumi:"maxIops"`
+	// The network type of the instance.
+	NetworkType pulumi.StringInput `pulumi:"networkType"`
+	// The Payment type of the instance.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// The access protocol type of the instance. Valid values: `mongodb`, `dynamodb`.
+	ProtocolType pulumi.StringInput `pulumi:"protocolType"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The security ip list.
+	SecurityIpGroups GetServerlessInstancesInstanceSecurityIpGroupArrayInput `pulumi:"securityIpGroups"`
+	// The status of the instance.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The storage engine used by the instance.
+	StorageEngine pulumi.StringInput `pulumi:"storageEngine"`
+	// The tag of the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// Intranet secret free access mode.
+	VpcAuthMode pulumi.StringInput `pulumi:"vpcAuthMode"`
+	// The ID of the VPC network.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The id of the vswitch.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// The ID of the zone.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetServerlessInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerlessInstancesInstance)(nil)).Elem()
+}
+
+func (i GetServerlessInstancesInstanceArgs) ToGetServerlessInstancesInstanceOutput() GetServerlessInstancesInstanceOutput {
+	return i.ToGetServerlessInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetServerlessInstancesInstanceArgs) ToGetServerlessInstancesInstanceOutputWithContext(ctx context.Context) GetServerlessInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerlessInstancesInstanceOutput)
+}
+
+// GetServerlessInstancesInstanceArrayInput is an input type that accepts GetServerlessInstancesInstanceArray and GetServerlessInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetServerlessInstancesInstanceArrayInput` via:
+//
+//          GetServerlessInstancesInstanceArray{ GetServerlessInstancesInstanceArgs{...} }
+type GetServerlessInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetServerlessInstancesInstanceArrayOutput() GetServerlessInstancesInstanceArrayOutput
+	ToGetServerlessInstancesInstanceArrayOutputWithContext(context.Context) GetServerlessInstancesInstanceArrayOutput
+}
+
+type GetServerlessInstancesInstanceArray []GetServerlessInstancesInstanceInput
+
+func (GetServerlessInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerlessInstancesInstance)(nil)).Elem()
+}
+
+func (i GetServerlessInstancesInstanceArray) ToGetServerlessInstancesInstanceArrayOutput() GetServerlessInstancesInstanceArrayOutput {
+	return i.ToGetServerlessInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetServerlessInstancesInstanceArray) ToGetServerlessInstancesInstanceArrayOutputWithContext(ctx context.Context) GetServerlessInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerlessInstancesInstanceArrayOutput)
+}
+
+type GetServerlessInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetServerlessInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerlessInstancesInstance)(nil)).Elem()
+}
+
+func (o GetServerlessInstancesInstanceOutput) ToGetServerlessInstancesInstanceOutput() GetServerlessInstancesInstanceOutput {
+	return o
+}
+
+func (o GetServerlessInstancesInstanceOutput) ToGetServerlessInstancesInstanceOutputWithContext(ctx context.Context) GetServerlessInstancesInstanceOutput {
+	return o
+}
+
+// The read/write throughput consumed by the instance.
+func (o GetServerlessInstancesInstanceOutput) CapacityUnit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) int { return v.CapacityUnit }).(pulumi.IntOutput)
+}
+
+// The db instance class.
+func (o GetServerlessInstancesInstanceOutput) DbInstanceClass() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) string { return v.DbInstanceClass }).(pulumi.StringOutput)
+}
+
+// The db instance description.
+func (o GetServerlessInstancesInstanceOutput) DbInstanceDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) string { return v.DbInstanceDescription }).(pulumi.StringOutput)
+}
+
+// The db instance id.
+func (o GetServerlessInstancesInstanceOutput) DbInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) string { return v.DbInstanceId }).(pulumi.StringOutput)
+}
+
+// The db instance release protection.
+func (o GetServerlessInstancesInstanceOutput) DbInstanceReleaseProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) bool { return v.DbInstanceReleaseProtection }).(pulumi.BoolOutput)
+}
+
+// The db instance storage.
+func (o GetServerlessInstancesInstanceOutput) DbInstanceStorage() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) int { return v.DbInstanceStorage }).(pulumi.IntOutput)
+}
+
+// The database engine of the instance.
+func (o GetServerlessInstancesInstanceOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) string { return v.Engine }).(pulumi.StringOutput)
+}
+
+// The database version number. Valid values: `4.2`.
+func (o GetServerlessInstancesInstanceOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) string { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+// The time when the subscription instance expires. The time is in the `yyyy-MM-ddTHH:mmZ` format. The time is displayed in UTC.
+func (o GetServerlessInstancesInstanceOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Serverless Instance.
+func (o GetServerlessInstancesInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Indicates the type of the instance. Valid values: `0`: physical machine. `1`: ECS. `2`: DOCKER. `18`: k8s new architecture instance.
+func (o GetServerlessInstancesInstanceOutput) KindCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) string { return v.KindCode }).(pulumi.StringOutput)
+}
+
+// The locked status of the instance.
+func (o GetServerlessInstancesInstanceOutput) LockMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) string { return v.LockMode }).(pulumi.StringOutput)
+}
+
+// The start time of the maintenance window. The time is in the `HH:mmZ` format. The time is displayed in UTC.
+func (o GetServerlessInstancesInstanceOutput) MaintainEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) string { return v.MaintainEndTime }).(pulumi.StringOutput)
+}
+
+// The end time of the maintenance window. The time is in the `HH:mmZ` format. The time is displayed in UTC.
+func (o GetServerlessInstancesInstanceOutput) MaintainStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) string { return v.MaintainStartTime }).(pulumi.StringOutput)
+}
+
+// Instance maximum connections.
+func (o GetServerlessInstancesInstanceOutput) MaxConnections() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) int { return v.MaxConnections }).(pulumi.IntOutput)
+}
+
+// The maximum IOPS of the instance.
+func (o GetServerlessInstancesInstanceOutput) MaxIops() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) int { return v.MaxIops }).(pulumi.IntOutput)
+}
+
+// The network type of the instance.
+func (o GetServerlessInstancesInstanceOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// The Payment type of the instance.
+func (o GetServerlessInstancesInstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The access protocol type of the instance. Valid values: `mongodb`, `dynamodb`.
+func (o GetServerlessInstancesInstanceOutput) ProtocolType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) string { return v.ProtocolType }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o GetServerlessInstancesInstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The security ip list.
+func (o GetServerlessInstancesInstanceOutput) SecurityIpGroups() GetServerlessInstancesInstanceSecurityIpGroupArrayOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) []GetServerlessInstancesInstanceSecurityIpGroup {
+		return v.SecurityIpGroups
+	}).(GetServerlessInstancesInstanceSecurityIpGroupArrayOutput)
+}
+
+// The status of the instance.
+func (o GetServerlessInstancesInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The storage engine used by the instance.
+func (o GetServerlessInstancesInstanceOutput) StorageEngine() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) string { return v.StorageEngine }).(pulumi.StringOutput)
+}
+
+// The tag of the resource.
+func (o GetServerlessInstancesInstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// Intranet secret free access mode.
+func (o GetServerlessInstancesInstanceOutput) VpcAuthMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) string { return v.VpcAuthMode }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC network.
+func (o GetServerlessInstancesInstanceOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The id of the vswitch.
+func (o GetServerlessInstancesInstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The ID of the zone.
+func (o GetServerlessInstancesInstanceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstance) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetServerlessInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServerlessInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerlessInstancesInstance)(nil)).Elem()
+}
+
+func (o GetServerlessInstancesInstanceArrayOutput) ToGetServerlessInstancesInstanceArrayOutput() GetServerlessInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetServerlessInstancesInstanceArrayOutput) ToGetServerlessInstancesInstanceArrayOutputWithContext(ctx context.Context) GetServerlessInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetServerlessInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetServerlessInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerlessInstancesInstance {
+		return vs[0].([]GetServerlessInstancesInstance)[vs[1].(int)]
+	}).(GetServerlessInstancesInstanceOutput)
+}
+
+type GetServerlessInstancesInstanceSecurityIpGroup struct {
+	// The attribute of the IP whitelist. This parameter is empty by default.
+	SecurityIpGroupAttribute string `pulumi:"securityIpGroupAttribute"`
+	// The name of the IP whitelist.
+	SecurityIpGroupName string `pulumi:"securityIpGroupName"`
+	// The IP addresses in the whitelist.
+	SecurityIpList string `pulumi:"securityIpList"`
+}
+
+// GetServerlessInstancesInstanceSecurityIpGroupInput is an input type that accepts GetServerlessInstancesInstanceSecurityIpGroupArgs and GetServerlessInstancesInstanceSecurityIpGroupOutput values.
+// You can construct a concrete instance of `GetServerlessInstancesInstanceSecurityIpGroupInput` via:
+//
+//          GetServerlessInstancesInstanceSecurityIpGroupArgs{...}
+type GetServerlessInstancesInstanceSecurityIpGroupInput interface {
+	pulumi.Input
+
+	ToGetServerlessInstancesInstanceSecurityIpGroupOutput() GetServerlessInstancesInstanceSecurityIpGroupOutput
+	ToGetServerlessInstancesInstanceSecurityIpGroupOutputWithContext(context.Context) GetServerlessInstancesInstanceSecurityIpGroupOutput
+}
+
+type GetServerlessInstancesInstanceSecurityIpGroupArgs struct {
+	// The attribute of the IP whitelist. This parameter is empty by default.
+	SecurityIpGroupAttribute pulumi.StringInput `pulumi:"securityIpGroupAttribute"`
+	// The name of the IP whitelist.
+	SecurityIpGroupName pulumi.StringInput `pulumi:"securityIpGroupName"`
+	// The IP addresses in the whitelist.
+	SecurityIpList pulumi.StringInput `pulumi:"securityIpList"`
+}
+
+func (GetServerlessInstancesInstanceSecurityIpGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerlessInstancesInstanceSecurityIpGroup)(nil)).Elem()
+}
+
+func (i GetServerlessInstancesInstanceSecurityIpGroupArgs) ToGetServerlessInstancesInstanceSecurityIpGroupOutput() GetServerlessInstancesInstanceSecurityIpGroupOutput {
+	return i.ToGetServerlessInstancesInstanceSecurityIpGroupOutputWithContext(context.Background())
+}
+
+func (i GetServerlessInstancesInstanceSecurityIpGroupArgs) ToGetServerlessInstancesInstanceSecurityIpGroupOutputWithContext(ctx context.Context) GetServerlessInstancesInstanceSecurityIpGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerlessInstancesInstanceSecurityIpGroupOutput)
+}
+
+// GetServerlessInstancesInstanceSecurityIpGroupArrayInput is an input type that accepts GetServerlessInstancesInstanceSecurityIpGroupArray and GetServerlessInstancesInstanceSecurityIpGroupArrayOutput values.
+// You can construct a concrete instance of `GetServerlessInstancesInstanceSecurityIpGroupArrayInput` via:
+//
+//          GetServerlessInstancesInstanceSecurityIpGroupArray{ GetServerlessInstancesInstanceSecurityIpGroupArgs{...} }
+type GetServerlessInstancesInstanceSecurityIpGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetServerlessInstancesInstanceSecurityIpGroupArrayOutput() GetServerlessInstancesInstanceSecurityIpGroupArrayOutput
+	ToGetServerlessInstancesInstanceSecurityIpGroupArrayOutputWithContext(context.Context) GetServerlessInstancesInstanceSecurityIpGroupArrayOutput
+}
+
+type GetServerlessInstancesInstanceSecurityIpGroupArray []GetServerlessInstancesInstanceSecurityIpGroupInput
+
+func (GetServerlessInstancesInstanceSecurityIpGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerlessInstancesInstanceSecurityIpGroup)(nil)).Elem()
+}
+
+func (i GetServerlessInstancesInstanceSecurityIpGroupArray) ToGetServerlessInstancesInstanceSecurityIpGroupArrayOutput() GetServerlessInstancesInstanceSecurityIpGroupArrayOutput {
+	return i.ToGetServerlessInstancesInstanceSecurityIpGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetServerlessInstancesInstanceSecurityIpGroupArray) ToGetServerlessInstancesInstanceSecurityIpGroupArrayOutputWithContext(ctx context.Context) GetServerlessInstancesInstanceSecurityIpGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerlessInstancesInstanceSecurityIpGroupArrayOutput)
+}
+
+type GetServerlessInstancesInstanceSecurityIpGroupOutput struct{ *pulumi.OutputState }
+
+func (GetServerlessInstancesInstanceSecurityIpGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerlessInstancesInstanceSecurityIpGroup)(nil)).Elem()
+}
+
+func (o GetServerlessInstancesInstanceSecurityIpGroupOutput) ToGetServerlessInstancesInstanceSecurityIpGroupOutput() GetServerlessInstancesInstanceSecurityIpGroupOutput {
+	return o
+}
+
+func (o GetServerlessInstancesInstanceSecurityIpGroupOutput) ToGetServerlessInstancesInstanceSecurityIpGroupOutputWithContext(ctx context.Context) GetServerlessInstancesInstanceSecurityIpGroupOutput {
+	return o
+}
+
+// The attribute of the IP whitelist. This parameter is empty by default.
+func (o GetServerlessInstancesInstanceSecurityIpGroupOutput) SecurityIpGroupAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstanceSecurityIpGroup) string { return v.SecurityIpGroupAttribute }).(pulumi.StringOutput)
+}
+
+// The name of the IP whitelist.
+func (o GetServerlessInstancesInstanceSecurityIpGroupOutput) SecurityIpGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstanceSecurityIpGroup) string { return v.SecurityIpGroupName }).(pulumi.StringOutput)
+}
+
+// The IP addresses in the whitelist.
+func (o GetServerlessInstancesInstanceSecurityIpGroupOutput) SecurityIpList() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerlessInstancesInstanceSecurityIpGroup) string { return v.SecurityIpList }).(pulumi.StringOutput)
+}
+
+type GetServerlessInstancesInstanceSecurityIpGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServerlessInstancesInstanceSecurityIpGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerlessInstancesInstanceSecurityIpGroup)(nil)).Elem()
+}
+
+func (o GetServerlessInstancesInstanceSecurityIpGroupArrayOutput) ToGetServerlessInstancesInstanceSecurityIpGroupArrayOutput() GetServerlessInstancesInstanceSecurityIpGroupArrayOutput {
+	return o
+}
+
+func (o GetServerlessInstancesInstanceSecurityIpGroupArrayOutput) ToGetServerlessInstancesInstanceSecurityIpGroupArrayOutputWithContext(ctx context.Context) GetServerlessInstancesInstanceSecurityIpGroupArrayOutput {
+	return o
+}
+
+func (o GetServerlessInstancesInstanceSecurityIpGroupArrayOutput) Index(i pulumi.IntInput) GetServerlessInstancesInstanceSecurityIpGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerlessInstancesInstanceSecurityIpGroup {
+		return vs[0].([]GetServerlessInstancesInstanceSecurityIpGroup)[vs[1].(int)]
+	}).(GetServerlessInstancesInstanceSecurityIpGroupOutput)
+}
+
 type GetZonesZone struct {
 	// ID of the zone.
 	Id string `pulumi:"id"`
@@ -1182,34 +2011,54 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReplicaSetInput)(nil)).Elem(), InstanceReplicaSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReplicaSetArrayInput)(nil)).Elem(), InstanceReplicaSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessInstanceSecurityIpGroupInput)(nil)).Elem(), ServerlessInstanceSecurityIpGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessInstanceSecurityIpGroupArrayInput)(nil)).Elem(), ServerlessInstanceSecurityIpGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceConfigServerListInput)(nil)).Elem(), ShardingInstanceConfigServerListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceConfigServerListArrayInput)(nil)).Elem(), ShardingInstanceConfigServerListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceMongoListInput)(nil)).Elem(), ShardingInstanceMongoListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceMongoListArrayInput)(nil)).Elem(), ShardingInstanceMongoListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceShardListInput)(nil)).Elem(), ShardingInstanceShardListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceShardListArrayInput)(nil)).Elem(), ShardingInstanceShardListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountInput)(nil)).Elem(), GetAccountsAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountArrayInput)(nil)).Elem(), GetAccountsAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuditPoliciesPolicyInput)(nil)).Elem(), GetAuditPoliciesPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuditPoliciesPolicyArrayInput)(nil)).Elem(), GetAuditPoliciesPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceMongoInput)(nil)).Elem(), GetInstancesInstanceMongoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceMongoArrayInput)(nil)).Elem(), GetInstancesInstanceMongoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceShardInput)(nil)).Elem(), GetInstancesInstanceShardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceShardArrayInput)(nil)).Elem(), GetInstancesInstanceShardArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessInstancesInstanceInput)(nil)).Elem(), GetServerlessInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessInstancesInstanceArrayInput)(nil)).Elem(), GetServerlessInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessInstancesInstanceSecurityIpGroupInput)(nil)).Elem(), GetServerlessInstancesInstanceSecurityIpGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessInstancesInstanceSecurityIpGroupArrayInput)(nil)).Elem(), GetServerlessInstancesInstanceSecurityIpGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(InstanceReplicaSetOutput{})
 	pulumi.RegisterOutputType(InstanceReplicaSetArrayOutput{})
+	pulumi.RegisterOutputType(ServerlessInstanceSecurityIpGroupOutput{})
+	pulumi.RegisterOutputType(ServerlessInstanceSecurityIpGroupArrayOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceConfigServerListOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceConfigServerListArrayOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceMongoListOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceMongoListArrayOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceShardListOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceShardListArrayOutput{})
+	pulumi.RegisterOutputType(GetAccountsAccountOutput{})
+	pulumi.RegisterOutputType(GetAccountsAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetAuditPoliciesPolicyOutput{})
+	pulumi.RegisterOutputType(GetAuditPoliciesPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceMongoOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceMongoArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceShardOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceShardArrayOutput{})
+	pulumi.RegisterOutputType(GetServerlessInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetServerlessInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetServerlessInstancesInstanceSecurityIpGroupOutput{})
+	pulumi.RegisterOutputType(GetServerlessInstancesInstanceSecurityIpGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 }

@@ -267,6 +267,148 @@ func (o GetAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetAccountsAccou
 	}).(GetAccountsAccountOutput)
 }
 
+type GetBackupPoliciesPolicy struct {
+	// Data backup days. Valid values: `7` to `730`.
+	BackupRetentionPeriod int `pulumi:"backupRetentionPeriod"`
+	// The db cluster id.
+	DbClusterId string `pulumi:"dbClusterId"`
+	// The ID of the Backup Policy.
+	Id string `pulumi:"id"`
+	// DBCluster Backup period.
+	PreferredBackupPeriods []string `pulumi:"preferredBackupPeriods"`
+	// Backup Time, UTC time.
+	PreferredBackupTime string `pulumi:"preferredBackupTime"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+}
+
+// GetBackupPoliciesPolicyInput is an input type that accepts GetBackupPoliciesPolicyArgs and GetBackupPoliciesPolicyOutput values.
+// You can construct a concrete instance of `GetBackupPoliciesPolicyInput` via:
+//
+//          GetBackupPoliciesPolicyArgs{...}
+type GetBackupPoliciesPolicyInput interface {
+	pulumi.Input
+
+	ToGetBackupPoliciesPolicyOutput() GetBackupPoliciesPolicyOutput
+	ToGetBackupPoliciesPolicyOutputWithContext(context.Context) GetBackupPoliciesPolicyOutput
+}
+
+type GetBackupPoliciesPolicyArgs struct {
+	// Data backup days. Valid values: `7` to `730`.
+	BackupRetentionPeriod pulumi.IntInput `pulumi:"backupRetentionPeriod"`
+	// The db cluster id.
+	DbClusterId pulumi.StringInput `pulumi:"dbClusterId"`
+	// The ID of the Backup Policy.
+	Id pulumi.StringInput `pulumi:"id"`
+	// DBCluster Backup period.
+	PreferredBackupPeriods pulumi.StringArrayInput `pulumi:"preferredBackupPeriods"`
+	// Backup Time, UTC time.
+	PreferredBackupTime pulumi.StringInput `pulumi:"preferredBackupTime"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetBackupPoliciesPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetBackupPoliciesPolicyArgs) ToGetBackupPoliciesPolicyOutput() GetBackupPoliciesPolicyOutput {
+	return i.ToGetBackupPoliciesPolicyOutputWithContext(context.Background())
+}
+
+func (i GetBackupPoliciesPolicyArgs) ToGetBackupPoliciesPolicyOutputWithContext(ctx context.Context) GetBackupPoliciesPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPoliciesPolicyOutput)
+}
+
+// GetBackupPoliciesPolicyArrayInput is an input type that accepts GetBackupPoliciesPolicyArray and GetBackupPoliciesPolicyArrayOutput values.
+// You can construct a concrete instance of `GetBackupPoliciesPolicyArrayInput` via:
+//
+//          GetBackupPoliciesPolicyArray{ GetBackupPoliciesPolicyArgs{...} }
+type GetBackupPoliciesPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetBackupPoliciesPolicyArrayOutput() GetBackupPoliciesPolicyArrayOutput
+	ToGetBackupPoliciesPolicyArrayOutputWithContext(context.Context) GetBackupPoliciesPolicyArrayOutput
+}
+
+type GetBackupPoliciesPolicyArray []GetBackupPoliciesPolicyInput
+
+func (GetBackupPoliciesPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetBackupPoliciesPolicyArray) ToGetBackupPoliciesPolicyArrayOutput() GetBackupPoliciesPolicyArrayOutput {
+	return i.ToGetBackupPoliciesPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackupPoliciesPolicyArray) ToGetBackupPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetBackupPoliciesPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPoliciesPolicyArrayOutput)
+}
+
+type GetBackupPoliciesPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPoliciesPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetBackupPoliciesPolicyOutput) ToGetBackupPoliciesPolicyOutput() GetBackupPoliciesPolicyOutput {
+	return o
+}
+
+func (o GetBackupPoliciesPolicyOutput) ToGetBackupPoliciesPolicyOutputWithContext(ctx context.Context) GetBackupPoliciesPolicyOutput {
+	return o
+}
+
+// Data backup days. Valid values: `7` to `730`.
+func (o GetBackupPoliciesPolicyOutput) BackupRetentionPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackupPoliciesPolicy) int { return v.BackupRetentionPeriod }).(pulumi.IntOutput)
+}
+
+// The db cluster id.
+func (o GetBackupPoliciesPolicyOutput) DbClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPoliciesPolicy) string { return v.DbClusterId }).(pulumi.StringOutput)
+}
+
+// The ID of the Backup Policy.
+func (o GetBackupPoliciesPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPoliciesPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// DBCluster Backup period.
+func (o GetBackupPoliciesPolicyOutput) PreferredBackupPeriods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBackupPoliciesPolicy) []string { return v.PreferredBackupPeriods }).(pulumi.StringArrayOutput)
+}
+
+// Backup Time, UTC time.
+func (o GetBackupPoliciesPolicyOutput) PreferredBackupTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPoliciesPolicy) string { return v.PreferredBackupTime }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetBackupPoliciesPolicyOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPoliciesPolicy) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetBackupPoliciesPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPoliciesPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetBackupPoliciesPolicyArrayOutput) ToGetBackupPoliciesPolicyArrayOutput() GetBackupPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetBackupPoliciesPolicyArrayOutput) ToGetBackupPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetBackupPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetBackupPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetBackupPoliciesPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupPoliciesPolicy {
+		return vs[0].([]GetBackupPoliciesPolicy)[vs[1].(int)]
+	}).(GetBackupPoliciesPolicyOutput)
+}
+
 type GetDbClustersCluster struct {
 	// Alibaba Cloud account Id.
 	AliUid string `pulumi:"aliUid"`
@@ -278,6 +420,8 @@ type GetDbClustersCluster struct {
 	CommodityCode string `pulumi:"commodityCode"`
 	// Connection string.
 	ConnectionString string `pulumi:"connectionString"`
+	// The control version of the DBCluster.
+	ControlVersion string `pulumi:"controlVersion"`
 	// The creation time of the resource.
 	CreateTime string `pulumi:"createTime"`
 	// The db cluster access white list.
@@ -325,6 +469,8 @@ type GetDbClustersCluster struct {
 	PublicPort string `pulumi:"publicPort"`
 	// Scale state.
 	ScaleOutStatuses []GetDbClustersClusterScaleOutStatus `pulumi:"scaleOutStatuses"`
+	// The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+	Status string `pulumi:"status"`
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
 	StorageType string `pulumi:"storageType"`
 	// Support fallback scheme.
@@ -365,6 +511,8 @@ type GetDbClustersClusterArgs struct {
 	CommodityCode pulumi.StringInput `pulumi:"commodityCode"`
 	// Connection string.
 	ConnectionString pulumi.StringInput `pulumi:"connectionString"`
+	// The control version of the DBCluster.
+	ControlVersion pulumi.StringInput `pulumi:"controlVersion"`
 	// The creation time of the resource.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The db cluster access white list.
@@ -412,6 +560,8 @@ type GetDbClustersClusterArgs struct {
 	PublicPort pulumi.StringInput `pulumi:"publicPort"`
 	// Scale state.
 	ScaleOutStatuses GetDbClustersClusterScaleOutStatusArrayInput `pulumi:"scaleOutStatuses"`
+	// The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+	Status pulumi.StringInput `pulumi:"status"`
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
 	StorageType pulumi.StringInput `pulumi:"storageType"`
 	// Support fallback scheme.
@@ -504,6 +654,11 @@ func (o GetDbClustersClusterOutput) CommodityCode() pulumi.StringOutput {
 // Connection string.
 func (o GetDbClustersClusterOutput) ConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbClustersCluster) string { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+// The control version of the DBCluster.
+func (o GetDbClustersClusterOutput) ControlVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbClustersCluster) string { return v.ControlVersion }).(pulumi.StringOutput)
 }
 
 // The creation time of the resource.
@@ -625,6 +780,11 @@ func (o GetDbClustersClusterOutput) PublicPort() pulumi.StringOutput {
 // Scale state.
 func (o GetDbClustersClusterOutput) ScaleOutStatuses() GetDbClustersClusterScaleOutStatusArrayOutput {
 	return o.ApplyT(func(v GetDbClustersCluster) []GetDbClustersClusterScaleOutStatus { return v.ScaleOutStatuses }).(GetDbClustersClusterScaleOutStatusArrayOutput)
+}
+
+// The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+func (o GetDbClustersClusterOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbClustersCluster) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
@@ -1125,6 +1285,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DbClusterDbClusterAccessWhiteListArrayInput)(nil)).Elem(), DbClusterDbClusterAccessWhiteListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountInput)(nil)).Elem(), GetAccountsAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountArrayInput)(nil)).Elem(), GetAccountsAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPoliciesPolicyInput)(nil)).Elem(), GetBackupPoliciesPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPoliciesPolicyArrayInput)(nil)).Elem(), GetBackupPoliciesPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbClustersClusterInput)(nil)).Elem(), GetDbClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbClustersClusterArrayInput)(nil)).Elem(), GetDbClustersClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbClustersClusterDbClusterAccessWhiteListInput)(nil)).Elem(), GetDbClustersClusterDbClusterAccessWhiteListArgs{})
@@ -1139,6 +1301,8 @@ func init() {
 	pulumi.RegisterOutputType(DbClusterDbClusterAccessWhiteListArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetBackupPoliciesPolicyOutput{})
+	pulumi.RegisterOutputType(GetBackupPoliciesPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetDbClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetDbClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetDbClustersClusterDbClusterAccessWhiteListOutput{})

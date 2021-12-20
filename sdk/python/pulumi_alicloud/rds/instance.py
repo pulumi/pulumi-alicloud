@@ -35,6 +35,7 @@ class InstanceArgs:
                  db_time_zone: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
+                 fresh_white_list_readins: Optional[pulumi.Input[str]] = None,
                  ha_config: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -123,6 +124,9 @@ class InstanceArgs:
                - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
+        :param pulumi.Input[str] fresh_white_list_readins: The read-only instances to which you want to synchronize the IP address whitelist.
+               * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
+               * If the instance is not attached with a read-only instance, this parameter is empty.
         :param pulumi.Input[str] ha_config: The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
                - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
                - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
@@ -149,7 +153,7 @@ class InstanceArgs:
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB instance belongs.
         :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
-        :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
+        :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
         :param pulumi.Input[str] security_ip_type: The type of IP address in the IP address whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
@@ -233,6 +237,8 @@ class InstanceArgs:
             pulumi.set(__self__, "encryption_key", encryption_key)
         if force_restart is not None:
             pulumi.set(__self__, "force_restart", force_restart)
+        if fresh_white_list_readins is not None:
+            pulumi.set(__self__, "fresh_white_list_readins", fresh_white_list_readins)
         if ha_config is not None:
             pulumi.set(__self__, "ha_config", ha_config)
         if instance_charge_type is not None:
@@ -580,6 +586,20 @@ class InstanceArgs:
         pulumi.set(self, "force_restart", value)
 
     @property
+    @pulumi.getter(name="freshWhiteListReadins")
+    def fresh_white_list_readins(self) -> Optional[pulumi.Input[str]]:
+        """
+        The read-only instances to which you want to synchronize the IP address whitelist.
+        * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
+        * If the instance is not attached with a read-only instance, this parameter is empty.
+        """
+        return pulumi.get(self, "fresh_white_list_readins")
+
+    @fresh_white_list_readins.setter
+    def fresh_white_list_readins(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fresh_white_list_readins", value)
+
+    @property
     @pulumi.getter(name="haConfig")
     def ha_config(self) -> Optional[pulumi.Input[str]]:
         """
@@ -781,7 +801,7 @@ class InstanceArgs:
     @pulumi.getter(name="securityIpMode")
     def security_ip_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
+        Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
         """
         return pulumi.get(self, "security_ip_mode")
 
@@ -1089,6 +1109,7 @@ class _InstanceState:
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
+                 fresh_white_list_readins: Optional[pulumi.Input[str]] = None,
                  ha_config: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -1173,6 +1194,9 @@ class _InstanceState:
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
+        :param pulumi.Input[str] fresh_white_list_readins: The read-only instances to which you want to synchronize the IP address whitelist.
+               * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
+               * If the instance is not attached with a read-only instance, this parameter is empty.
         :param pulumi.Input[str] ha_config: The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
                - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
                - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
@@ -1207,7 +1231,7 @@ class _InstanceState:
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB instance belongs.
         :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
-        :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
+        :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
         :param pulumi.Input[str] security_ip_type: The type of IP address in the IP address whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
@@ -1294,6 +1318,8 @@ class _InstanceState:
             pulumi.set(__self__, "engine_version", engine_version)
         if force_restart is not None:
             pulumi.set(__self__, "force_restart", force_restart)
+        if fresh_white_list_readins is not None:
+            pulumi.set(__self__, "fresh_white_list_readins", fresh_white_list_readins)
         if ha_config is not None:
             pulumi.set(__self__, "ha_config", ha_config)
         if instance_charge_type is not None:
@@ -1629,6 +1655,20 @@ class _InstanceState:
         pulumi.set(self, "force_restart", value)
 
     @property
+    @pulumi.getter(name="freshWhiteListReadins")
+    def fresh_white_list_readins(self) -> Optional[pulumi.Input[str]]:
+        """
+        The read-only instances to which you want to synchronize the IP address whitelist.
+        * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
+        * If the instance is not attached with a read-only instance, this parameter is empty.
+        """
+        return pulumi.get(self, "fresh_white_list_readins")
+
+    @fresh_white_list_readins.setter
+    def fresh_white_list_readins(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fresh_white_list_readins", value)
+
+    @property
     @pulumi.getter(name="haConfig")
     def ha_config(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1860,7 +1900,7 @@ class _InstanceState:
     @pulumi.getter(name="securityIpMode")
     def security_ip_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
+        Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
         """
         return pulumi.get(self, "security_ip_mode")
 
@@ -2181,6 +2221,7 @@ class Instance(pulumi.CustomResource):
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
+                 fresh_white_list_readins: Optional[pulumi.Input[str]] = None,
                  ha_config: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -2308,6 +2349,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
+        :param pulumi.Input[str] fresh_white_list_readins: The read-only instances to which you want to synchronize the IP address whitelist.
+               * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
+               * If the instance is not attached with a read-only instance, this parameter is empty.
         :param pulumi.Input[str] ha_config: The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
                - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
                - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
@@ -2342,7 +2386,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB instance belongs.
         :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
-        :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
+        :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
         :param pulumi.Input[str] security_ip_type: The type of IP address in the IP address whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
@@ -2473,6 +2517,7 @@ class Instance(pulumi.CustomResource):
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
+                 fresh_white_list_readins: Optional[pulumi.Input[str]] = None,
                  ha_config: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -2547,6 +2592,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'engine_version'")
             __props__.__dict__["engine_version"] = engine_version
             __props__.__dict__["force_restart"] = force_restart
+            __props__.__dict__["fresh_white_list_readins"] = fresh_white_list_readins
             __props__.__dict__["ha_config"] = ha_config
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             __props__.__dict__["instance_name"] = instance_name
@@ -2625,6 +2671,7 @@ class Instance(pulumi.CustomResource):
             engine: Optional[pulumi.Input[str]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
             force_restart: Optional[pulumi.Input[bool]] = None,
+            fresh_white_list_readins: Optional[pulumi.Input[str]] = None,
             ha_config: Optional[pulumi.Input[str]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
@@ -2714,6 +2761,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
+        :param pulumi.Input[str] fresh_white_list_readins: The read-only instances to which you want to synchronize the IP address whitelist.
+               * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
+               * If the instance is not attached with a read-only instance, this parameter is empty.
         :param pulumi.Input[str] ha_config: The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
                - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
                - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
@@ -2748,7 +2798,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB instance belongs.
         :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
-        :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
+        :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
         :param pulumi.Input[str] security_ip_type: The type of IP address in the IP address whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
@@ -2820,6 +2870,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["engine"] = engine
         __props__.__dict__["engine_version"] = engine_version
         __props__.__dict__["force_restart"] = force_restart
+        __props__.__dict__["fresh_white_list_readins"] = fresh_white_list_readins
         __props__.__dict__["ha_config"] = ha_config
         __props__.__dict__["instance_charge_type"] = instance_charge_type
         __props__.__dict__["instance_name"] = instance_name
@@ -3036,6 +3087,16 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "force_restart")
 
     @property
+    @pulumi.getter(name="freshWhiteListReadins")
+    def fresh_white_list_readins(self) -> pulumi.Output[Optional[str]]:
+        """
+        The read-only instances to which you want to synchronize the IP address whitelist.
+        * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
+        * If the instance is not attached with a read-only instance, this parameter is empty.
+        """
+        return pulumi.get(self, "fresh_white_list_readins")
+
+    @property
     @pulumi.getter(name="haConfig")
     def ha_config(self) -> pulumi.Output[str]:
         """
@@ -3195,7 +3256,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="securityIpMode")
     def security_ip_mode(self) -> pulumi.Output[Optional[str]]:
         """
-        Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
+        Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
         """
         return pulumi.get(self, "security_ip_mode")
 

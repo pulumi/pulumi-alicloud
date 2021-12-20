@@ -81,6 +81,8 @@ type DedicatedHostGroup struct {
 	HostReplacePolicy pulumi.StringOutput `pulumi:"hostReplacePolicy"`
 	// The Memory Allocation Ratio of the Dedicated Host Group.
 	MemAllocationRatio pulumi.IntOutput `pulumi:"memAllocationRatio"`
+	// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+	OpenPermission pulumi.BoolOutput `pulumi:"openPermission"`
 	// The virtual private cloud (VPC) ID of the dedicated cluster.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
@@ -134,6 +136,8 @@ type dedicatedHostGroupState struct {
 	HostReplacePolicy *string `pulumi:"hostReplacePolicy"`
 	// The Memory Allocation Ratio of the Dedicated Host Group.
 	MemAllocationRatio *int `pulumi:"memAllocationRatio"`
+	// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+	OpenPermission *bool `pulumi:"openPermission"`
 	// The virtual private cloud (VPC) ID of the dedicated cluster.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -153,6 +157,8 @@ type DedicatedHostGroupState struct {
 	HostReplacePolicy pulumi.StringPtrInput
 	// The Memory Allocation Ratio of the Dedicated Host Group.
 	MemAllocationRatio pulumi.IntPtrInput
+	// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+	OpenPermission pulumi.BoolPtrInput
 	// The virtual private cloud (VPC) ID of the dedicated cluster.
 	VpcId pulumi.StringPtrInput
 }
@@ -176,6 +182,8 @@ type dedicatedHostGroupArgs struct {
 	HostReplacePolicy *string `pulumi:"hostReplacePolicy"`
 	// The Memory Allocation Ratio of the Dedicated Host Group.
 	MemAllocationRatio *int `pulumi:"memAllocationRatio"`
+	// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+	OpenPermission *bool `pulumi:"openPermission"`
 	// The virtual private cloud (VPC) ID of the dedicated cluster.
 	VpcId string `pulumi:"vpcId"`
 }
@@ -196,6 +204,8 @@ type DedicatedHostGroupArgs struct {
 	HostReplacePolicy pulumi.StringPtrInput
 	// The Memory Allocation Ratio of the Dedicated Host Group.
 	MemAllocationRatio pulumi.IntPtrInput
+	// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+	OpenPermission pulumi.BoolPtrInput
 	// The virtual private cloud (VPC) ID of the dedicated cluster.
 	VpcId pulumi.StringInput
 }

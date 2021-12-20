@@ -101,7 +101,7 @@ type AggregateConfigRule struct {
 	ResourceTypesScopes pulumi.StringArrayOutput `pulumi:"resourceTypesScopes"`
 	// The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info.
 	RiskLevel pulumi.IntOutput `pulumi:"riskLevel"`
-	// The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+	// The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
 	SourceIdentifier pulumi.StringOutput `pulumi:"sourceIdentifier"`
 	// Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
 	SourceOwner pulumi.StringOutput `pulumi:"sourceOwner"`
@@ -187,7 +187,7 @@ type aggregateConfigRuleState struct {
 	ResourceTypesScopes []string `pulumi:"resourceTypesScopes"`
 	// The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info.
 	RiskLevel *int `pulumi:"riskLevel"`
-	// The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+	// The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
 	SourceIdentifier *string `pulumi:"sourceIdentifier"`
 	// Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
 	SourceOwner *string `pulumi:"sourceOwner"`
@@ -224,7 +224,7 @@ type AggregateConfigRuleState struct {
 	ResourceTypesScopes pulumi.StringArrayInput
 	// The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info.
 	RiskLevel pulumi.IntPtrInput
-	// The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+	// The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
 	SourceIdentifier pulumi.StringPtrInput
 	// Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
 	SourceOwner pulumi.StringPtrInput
@@ -263,7 +263,7 @@ type aggregateConfigRuleArgs struct {
 	ResourceTypesScopes []string `pulumi:"resourceTypesScopes"`
 	// The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info.
 	RiskLevel int `pulumi:"riskLevel"`
-	// The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+	// The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
 	SourceIdentifier string `pulumi:"sourceIdentifier"`
 	// Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
 	SourceOwner string `pulumi:"sourceOwner"`
@@ -299,7 +299,7 @@ type AggregateConfigRuleArgs struct {
 	ResourceTypesScopes pulumi.StringArrayInput
 	// The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info.
 	RiskLevel pulumi.IntInput
-	// The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+	// The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
 	SourceIdentifier pulumi.StringInput
 	// Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
 	SourceOwner pulumi.StringInput

@@ -16,6 +16,8 @@ import (
 //
 // > **NOTE:** Available in v1.120.0+
 //
+// > **NOTE:** The SAE service is not support in the international site.
+//
 // ## Example Usage
 //
 // ```go

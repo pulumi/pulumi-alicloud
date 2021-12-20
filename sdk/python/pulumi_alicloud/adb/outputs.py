@@ -44,6 +44,7 @@ class GetClustersClusterResult(dict):
                  lock_mode: str,
                  lock_reason: str,
                  maintain_time: str,
+                 mode: str,
                  network_type: str,
                  payment_type: str,
                  port: int,
@@ -106,6 +107,7 @@ class GetClustersClusterResult(dict):
         pulumi.set(__self__, "lock_mode", lock_mode)
         pulumi.set(__self__, "lock_reason", lock_reason)
         pulumi.set(__self__, "maintain_time", maintain_time)
+        pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "network_type", network_type)
         pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "port", port)
@@ -288,6 +290,11 @@ class GetClustersClusterResult(dict):
         return pulumi.get(self, "maintain_time")
 
     @property
+    @pulumi.getter
+    def mode(self) -> str:
+        return pulumi.get(self, "mode")
+
+    @property
     @pulumi.getter(name="networkType")
     def network_type(self) -> str:
         """
@@ -413,6 +420,7 @@ class GetDBClustersClusterResult(dict):
                  lock_mode: str,
                  lock_reason: str,
                  maintain_time: str,
+                 mode: str,
                  network_type: str,
                  payment_type: str,
                  port: int,
@@ -456,6 +464,7 @@ class GetDBClustersClusterResult(dict):
         :param str lock_mode: The lock mode of the cluster.
         :param str lock_reason: The reason why the cluster is locked.
         :param str maintain_time: The maintenance window of the cluster.
+        :param str mode: The lock mode of the cluster.
         :param str payment_type: The payment type of the resource.
         :param int port: The port that is used to access the cluster.
         :param str rds_instance_id: The ID of the ApsaraDB RDS instance from which data is synchronized to the cluster. This parameter is valid only for analytic instances.
@@ -497,6 +506,7 @@ class GetDBClustersClusterResult(dict):
         pulumi.set(__self__, "lock_mode", lock_mode)
         pulumi.set(__self__, "lock_reason", lock_reason)
         pulumi.set(__self__, "maintain_time", maintain_time)
+        pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "network_type", network_type)
         pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "port", port)
@@ -728,6 +738,14 @@ class GetDBClustersClusterResult(dict):
         The maintenance window of the cluster.
         """
         return pulumi.get(self, "maintain_time")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        The lock mode of the cluster.
+        """
+        return pulumi.get(self, "mode")
 
     @property
     @pulumi.getter(name="networkType")

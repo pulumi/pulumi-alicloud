@@ -127,7 +127,7 @@ export class AggregateConfigRule extends pulumi.CustomResource {
      */
     public readonly riskLevel!: pulumi.Output<number>;
     /**
-     * The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+     * The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
      */
     public readonly sourceIdentifier!: pulumi.Output<string>;
     /**
@@ -278,7 +278,7 @@ export interface AggregateConfigRuleState {
      */
     riskLevel?: pulumi.Input<number>;
     /**
-     * The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+     * The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
      */
     sourceIdentifier?: pulumi.Input<string>;
     /**
@@ -348,7 +348,7 @@ export interface AggregateConfigRuleArgs {
      */
     riskLevel: pulumi.Input<number>;
     /**
-     * The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+     * The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
      */
     sourceIdentifier: pulumi.Input<string>;
     /**

@@ -61,7 +61,7 @@ export interface GetAggregatorsArgs {
     nameRegex?: string;
     outputFile?: string;
     /**
-     * The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
+     * The status of the resource. Valid Values:  `0`: creating `1`: normal `2`: deleting.
      */
     status?: string;
 }
@@ -114,7 +114,7 @@ export interface GetAggregatorsOutputArgs {
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
+     * The status of the resource. Valid Values:  `0`: creating `1`: normal `2`: deleting.
      */
     status?: pulumi.Input<string>;
 }

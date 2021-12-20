@@ -64,7 +64,7 @@ export class ConfigurationRecorder extends pulumi.CustomResource {
 
     public readonly enterpriseEdition!: pulumi.Output<boolean>;
     /**
-     * Status of resource monitoring. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
+     * Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
      */
     public /*out*/ readonly organizationEnableStatus!: pulumi.Output<string>;
     /**
@@ -78,7 +78,7 @@ export class ConfigurationRecorder extends pulumi.CustomResource {
      */
     public readonly resourceTypes!: pulumi.Output<string[]>;
     /**
-     * Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
+     * Status of resource monitoring. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -121,7 +121,7 @@ export class ConfigurationRecorder extends pulumi.CustomResource {
 export interface ConfigurationRecorderState {
     enterpriseEdition?: pulumi.Input<boolean>;
     /**
-     * Status of resource monitoring. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
+     * Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
      */
     organizationEnableStatus?: pulumi.Input<string>;
     /**
@@ -135,7 +135,7 @@ export interface ConfigurationRecorderState {
      */
     resourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
+     * Status of resource monitoring. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
      */
     status?: pulumi.Input<string>;
 }

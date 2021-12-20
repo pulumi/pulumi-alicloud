@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         public readonly string AccountId;
         public readonly string AggregateCompliancePackName;
         /// <summary>
-        /// The first ID of the resource.
+        /// The Aggregate Compliance Package Id.
         /// * `aggregate_compliance_pack_name` -The Aggregate Compliance Package Name.
         /// </summary>
         public readonly string AggregatorCompliancePackId;

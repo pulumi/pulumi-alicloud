@@ -80,6 +80,9 @@ export class Application extends pulumi.CustomResource {
      * The ID of the resource group.
      */
     public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    /**
+     * The tag of the resource.
+     */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
@@ -132,6 +135,9 @@ export interface ApplicationState {
      * The ID of the resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The tag of the resource.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
 }
 
@@ -151,5 +157,8 @@ export interface ApplicationArgs {
      * The ID of the resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The tag of the resource.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
 }

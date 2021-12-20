@@ -22,13 +22,41 @@ namespace Pulumi.AliCloud.Ddos.Outputs
         /// </summary>
         public readonly int BaseBandwidth;
         /// <summary>
+        /// The creation time of the instance.
+        /// </summary>
+        public readonly int CreateTime;
+        /// <summary>
+        /// The debt status of the instance.
+        /// </summary>
+        public readonly int DebtStatus;
+        /// <summary>
         /// The instance's count of domain retransmission config.
         /// </summary>
         public readonly int DomainCount;
         /// <summary>
+        /// The edition of the instance. The Valid Values : `0`, `1`, `2`, `9`.
+        /// </summary>
+        public readonly int Edition;
+        /// <summary>
+        /// The enabled of the instance. The Valid Values : `0`, `1`.
+        /// </summary>
+        public readonly int Enabled;
+        /// <summary>
+        /// The expiry time of the instance.
+        /// </summary>
+        public readonly int ExpireTime;
+        /// <summary>
         /// The instance's id.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The ip mode of the instance. The Valid Values : `fnat`, `v6tov4`.
+        /// </summary>
+        public readonly string IpMode;
+        /// <summary>
+        /// The ip version of the instance. The Valid Values : `Ipv4`, `Ipv6`.
+        /// </summary>
+        public readonly string IpVersion;
         /// <summary>
         /// The instance's remark.
         /// </summary>
@@ -38,9 +66,17 @@ namespace Pulumi.AliCloud.Ddos.Outputs
         /// </summary>
         public readonly int PortCount;
         /// <summary>
+        /// The remark of the instance.
+        /// </summary>
+        public readonly string Remark;
+        /// <summary>
         /// The instance's business bandwidth.
         /// </summary>
         public readonly int ServiceBandwidth;
+        /// <summary>
+        /// The status of the instance. The Valid Values : `1`, `2`.
+        /// </summary>
+        public readonly int Status;
 
         [OutputConstructor]
         private GetDdosCooInstancesInstanceResult(
@@ -48,23 +84,50 @@ namespace Pulumi.AliCloud.Ddos.Outputs
 
             int baseBandwidth,
 
+            int createTime,
+
+            int debtStatus,
+
             int domainCount,
 
+            int edition,
+
+            int enabled,
+
+            int expireTime,
+
             string id,
+
+            string ipMode,
+
+            string ipVersion,
 
             string name,
 
             int portCount,
 
-            int serviceBandwidth)
+            string remark,
+
+            int serviceBandwidth,
+
+            int status)
         {
             Bandwidth = bandwidth;
             BaseBandwidth = baseBandwidth;
+            CreateTime = createTime;
+            DebtStatus = debtStatus;
             DomainCount = domainCount;
+            Edition = edition;
+            Enabled = enabled;
+            ExpireTime = expireTime;
             Id = id;
+            IpMode = ipMode;
+            IpVersion = ipVersion;
             Name = name;
             PortCount = portCount;
+            Remark = remark;
             ServiceBandwidth = serviceBandwidth;
+            Status = status;
         }
     }
 }

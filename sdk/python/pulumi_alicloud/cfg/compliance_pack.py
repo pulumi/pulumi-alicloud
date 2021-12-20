@@ -134,7 +134,7 @@ class _CompliancePackState:
         :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]] config_rules: A list of Config Rules.
         :param pulumi.Input[str] description: The Description of compliance pack.
         :param pulumi.Input[int] risk_level: The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
-        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[str] status: The status of the resource. The valid values: `CREATING`, `ACTIVE`.
         """
         if compliance_pack_name is not None:
             pulumi.set(__self__, "compliance_pack_name", compliance_pack_name)
@@ -230,7 +230,7 @@ class _CompliancePackState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource.
+        The status of the resource. The valid values: `CREATING`, `ACTIVE`.
         """
         return pulumi.get(self, "status")
 
@@ -453,7 +453,7 @@ class CompliancePack(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompliancePackConfigRuleArgs']]]] config_rules: A list of Config Rules.
         :param pulumi.Input[str] description: The Description of compliance pack.
         :param pulumi.Input[int] risk_level: The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
-        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[str] status: The status of the resource. The valid values: `CREATING`, `ACTIVE`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -520,7 +520,7 @@ class CompliancePack(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource.
+        The status of the resource. The valid values: `CREATING`, `ACTIVE`.
         """
         return pulumi.get(self, "status")
 

@@ -378,7 +378,7 @@ class GetAggregateCompliancePacksPackResult(dict):
                  status: str):
         """
         :param str account_id: The Aliyun User Id.
-        :param str aggregator_compliance_pack_id: The first ID of the resource.
+        :param str aggregator_compliance_pack_id: The Aggregate Compliance Package Id.
                * `aggregate_compliance_pack_name` -The Aggregate Compliance Package Name.
         :param str compliance_pack_template_id: The template ID of the Compliance Package.
         :param Sequence['GetAggregateCompliancePacksPackConfigRuleArgs'] config_rules: A list of The Aggregate Compliance Package Rules.
@@ -414,7 +414,7 @@ class GetAggregateCompliancePacksPackResult(dict):
     @pulumi.getter(name="aggregatorCompliancePackId")
     def aggregator_compliance_pack_id(self) -> str:
         """
-        The first ID of the resource.
+        The Aggregate Compliance Package Id.
         * `aggregate_compliance_pack_name` -The Aggregate Compliance Package Name.
         """
         return pulumi.get(self, "aggregator_compliance_pack_id")
@@ -585,14 +585,14 @@ class GetAggregateConfigRulesRuleResult(dict):
         :param str config_rule_trigger_types: The trigger types of config rules.
         :param str description: The description of the rule.
         :param str event_source: Event source of the Config Rule.
-        :param str exclude_resource_ids_scope: The types of the resources to be evaluated against the rule.
-               * `source_identifier`- The name of the custom rule or managed rule.
+        :param str exclude_resource_ids_scope: The id of the resources to be evaluated against the rule.
+               * `source_identifier`- The identifier of the managed rule or the arn of the custom function.
                * `source_owner`- The source owner of the Config Rule.
         :param str id: The ID of the Aggregate Config Rule.
         :param Mapping[str, Any] input_parameters: The settings of the input parameters for the rule.
         :param str maximum_execution_frequency: The frequency of the compliance evaluations.
         :param str modified_timestamp: The timestamp when the rule was last modified.
-        :param str region_ids_scope: The Exclude ResourceId List.
+        :param str region_ids_scope: The scope of resource region ids.
         :param str resource_group_ids_scope: The scope of resource group ids.
         :param int risk_level: Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
         :param str status: The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
@@ -705,8 +705,8 @@ class GetAggregateConfigRulesRuleResult(dict):
     @pulumi.getter(name="excludeResourceIdsScope")
     def exclude_resource_ids_scope(self) -> str:
         """
-        The types of the resources to be evaluated against the rule.
-        * `source_identifier`- The name of the custom rule or managed rule.
+        The id of the resources to be evaluated against the rule.
+        * `source_identifier`- The identifier of the managed rule or the arn of the custom function.
         * `source_owner`- The source owner of the Config Rule.
         """
         return pulumi.get(self, "exclude_resource_ids_scope")
@@ -747,7 +747,7 @@ class GetAggregateConfigRulesRuleResult(dict):
     @pulumi.getter(name="regionIdsScope")
     def region_ids_scope(self) -> str:
         """
-        The Exclude ResourceId List.
+        The scope of resource region ids.
         """
         return pulumi.get(self, "region_ids_scope")
 
@@ -855,7 +855,7 @@ class GetAggregatorsAggregatorResult(dict):
         :param str aggregator_type: The type of aggregator.
         :param str description: The description of aggregator.
         :param str id: The id of the aggregator.
-        :param str status: The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
+        :param str status: The status of the resource. Valid Values:  `0`: creating `1`: normal `2`: deleting.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "aggregator_accounts", aggregator_accounts)
@@ -926,7 +926,7 @@ class GetAggregatorsAggregatorResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
+        The status of the resource. Valid Values:  `0`: creating `1`: normal `2`: deleting.
         """
         return pulumi.get(self, "status")
 
@@ -992,7 +992,7 @@ class GetCompliancePacksPackResult(dict):
         :param str description: The description of compliance pack.
         :param str id: The ID of the Compliance Pack.
         :param int risk_level: The Ris Level.
-        :param str status: The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`
+        :param str status: The status of the resource. Valid values `ACTIVE`, `CREATING`.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "compliance_pack_id", compliance_pack_id)
@@ -1072,7 +1072,7 @@ class GetCompliancePacksPackResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`
+        The status of the resource. Valid values `ACTIVE`, `CREATING`.
         """
         return pulumi.get(self, "status")
 
@@ -1169,10 +1169,10 @@ class GetConfigurationRecordersRecorderResult(dict):
         """
         :param str id: The ID of the Config Configuration Recorder. Value as the `account_id`.
                * `account_id`- The ID of the Alicloud account.
-        :param str organization_enable_status: Status of resource monitoring.
+        :param str organization_enable_status: Enterprise version configuration audit enabled status.
         :param int organization_master_id: The ID of the Enterprise management account.
         :param Sequence[str] resource_types: A list of resource types to be monitored.
-        :param str status: Enterprise version configuration audit enabled status.
+        :param str status: Status of resource monitoring.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "id", id)
@@ -1199,7 +1199,7 @@ class GetConfigurationRecordersRecorderResult(dict):
     @pulumi.getter(name="organizationEnableStatus")
     def organization_enable_status(self) -> str:
         """
-        Status of resource monitoring.
+        Enterprise version configuration audit enabled status.
         """
         return pulumi.get(self, "organization_enable_status")
 
@@ -1223,7 +1223,7 @@ class GetConfigurationRecordersRecorderResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        Enterprise version configuration audit enabled status.
+        Status of resource monitoring.
         """
         return pulumi.get(self, "status")
 
@@ -1246,8 +1246,8 @@ class GetDeliveryChannelsChannelResult(dict):
         :param str delivery_channel_id: The ID of the delivery channel.
         :param str delivery_channel_name: The name of the delivery channel.
         :param str delivery_channel_target_arn: The ARN of the delivery destination.
-        :param str delivery_channel_type: The type of the delivery method.
-        :param str description: The description of the delivery method.
+        :param str delivery_channel_type: The type of the delivery channel.
+        :param str description: The description of the delivery channel.
         :param str id: The ID of the Config Delivery Channel.
         :param int status: The status of the config delivery channel. Valid values `0`: Disable delivery channel, `1`: Enable delivery channel.
         """
@@ -1305,7 +1305,7 @@ class GetDeliveryChannelsChannelResult(dict):
     @pulumi.getter(name="deliveryChannelType")
     def delivery_channel_type(self) -> str:
         """
-        The type of the delivery method.
+        The type of the delivery channel.
         """
         return pulumi.get(self, "delivery_channel_type")
 
@@ -1313,7 +1313,7 @@ class GetDeliveryChannelsChannelResult(dict):
     @pulumi.getter
     def description(self) -> str:
         """
-        The description of the delivery method.
+        The description of the delivery channel.
         """
         return pulumi.get(self, "description")
 
@@ -1382,14 +1382,14 @@ class GetRulesRuleResult(dict):
                * `rule_name`- The name of the Config Rule.
         :param str maximum_execution_frequency: (Available in 1.124.1+) The frequency of maximum execution.
         :param str region_ids_scope: (Available in 1.124.1+) The scope of region ids.
-        :param str resource_group_ids_scope: (Available in 1.124.1+) The scope of resource ids.
+        :param str resource_group_ids_scope: (Available in 1.124.1+) The scope of resource group ids.
         :param Sequence[str] resource_types_scopes: (Available in 1.124.1+) The scope of resource types.
         :param int risk_level: The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
         :param str rule_name: The name of config rule.
         :param Sequence[str] scope_compliance_resource_types: The types of the resources to be evaluated against the rule.
         :param str source_detail_message_type: Rule trigger mechanism.
         :param str source_maximum_execution_frequency: Rule execution cycle. 
-               * `source_identifier`- The name of the custom rule or managed rule.
+               * `source_identifier`- The identifier of the managed rule or the arn of the custom function.
                * `source_owner`- The source owner of the Config Rule.
         :param str status: The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
         :param str tag_key_scope: (Available in 1.124.1+) The scope of tag key.
@@ -1535,7 +1535,7 @@ class GetRulesRuleResult(dict):
     @pulumi.getter(name="resourceGroupIdsScope")
     def resource_group_ids_scope(self) -> str:
         """
-        (Available in 1.124.1+) The scope of resource ids.
+        (Available in 1.124.1+) The scope of resource group ids.
         """
         return pulumi.get(self, "resource_group_ids_scope")
 
@@ -1589,7 +1589,7 @@ class GetRulesRuleResult(dict):
     def source_maximum_execution_frequency(self) -> str:
         """
         Rule execution cycle. 
-        * `source_identifier`- The name of the custom rule or managed rule.
+        * `source_identifier`- The identifier of the managed rule or the arn of the custom function.
         * `source_owner`- The source owner of the Config Rule.
         """
         return pulumi.get(self, "source_maximum_execution_frequency")

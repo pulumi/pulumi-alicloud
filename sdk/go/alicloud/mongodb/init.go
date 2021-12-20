@@ -21,8 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:mongodb/account:Account":
+		r = &Account{}
+	case "alicloud:mongodb/auditPolicy:AuditPolicy":
+		r = &AuditPolicy{}
 	case "alicloud:mongodb/instance:Instance":
 		r = &Instance{}
+	case "alicloud:mongodb/serverlessInstance:ServerlessInstance":
+		r = &ServerlessInstance{}
 	case "alicloud:mongodb/shardingInstance:ShardingInstance":
 		r = &ShardingInstance{}
 	default:
@@ -40,7 +46,22 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"mongodb/account",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"mongodb/auditPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"mongodb/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"mongodb/serverlessInstance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -185,7 +185,7 @@ namespace Pulumi.AliCloud.Cfg
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>
-        /// The status of the delivery method.
+        /// The status of the delivery channel.
         /// </summary>
         public readonly int? Status;
 

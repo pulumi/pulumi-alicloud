@@ -288,7 +288,7 @@ class _ControlPolicyState:
         """
         Input properties used for looking up and filtering ControlPolicy resources.
         :param pulumi.Input[str] acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
-        :param pulumi.Input[str] acl_uuid: The unique ID of the access control policy.
+        :param pulumi.Input[str] acl_uuid: (Available in v1.148.0+) The unique ID of the access control policy.
         :param pulumi.Input[str] application_name: The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
         :param pulumi.Input[str] description: The description of the access control policy.
         :param pulumi.Input[str] dest_port: The destination port defined in the access control policy.
@@ -356,7 +356,7 @@ class _ControlPolicyState:
     @pulumi.getter(name="aclUuid")
     def acl_uuid(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique ID of the access control policy.
+        (Available in v1.148.0+) The unique ID of the access control policy.
         """
         return pulumi.get(self, "acl_uuid")
 
@@ -775,7 +775,7 @@ class ControlPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
-        :param pulumi.Input[str] acl_uuid: The unique ID of the access control policy.
+        :param pulumi.Input[str] acl_uuid: (Available in v1.148.0+) The unique ID of the access control policy.
         :param pulumi.Input[str] application_name: The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
         :param pulumi.Input[str] description: The description of the access control policy.
         :param pulumi.Input[str] dest_port: The destination port defined in the access control policy.
@@ -827,7 +827,7 @@ class ControlPolicy(pulumi.CustomResource):
     @pulumi.getter(name="aclUuid")
     def acl_uuid(self) -> pulumi.Output[str]:
         """
-        The unique ID of the access control policy.
+        (Available in v1.148.0+) The unique ID of the access control policy.
         """
         return pulumi.get(self, "acl_uuid")
 

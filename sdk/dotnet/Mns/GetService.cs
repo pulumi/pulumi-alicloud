@@ -19,6 +19,8 @@ namespace Pulumi.AliCloud.Mns
         /// 
         /// &gt; **NOTE:** Available in v1.118.0+
         /// 
+        /// &gt; **NOTE:** The MNS service is not support in the international site.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -51,6 +53,8 @@ namespace Pulumi.AliCloud.Mns
         /// For information about MNS and how to use it, see [What is MNS](https://www.alibabacloud.com/help/en/product/27412.htm).
         /// 
         /// &gt; **NOTE:** Available in v1.118.0+
+        /// 
+        /// &gt; **NOTE:** The MNS service is not support in the international site.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

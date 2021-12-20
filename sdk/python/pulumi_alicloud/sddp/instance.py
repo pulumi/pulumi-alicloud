@@ -581,6 +581,8 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.136.0+.
 
+        > **NOTE:** The Data Security Center Instance is not support in the international site.
+
         ## Example Usage
 
         Basic Usage
@@ -636,6 +638,8 @@ class Instance(pulumi.CustomResource):
         For information about Data Security Center Instance and how to use it, see [What is Instance](https://help.aliyun.com/product/88674.html).
 
         > **NOTE:** Available in v1.136.0+.
+
+        > **NOTE:** The Data Security Center Instance is not support in the international site.
 
         ## Example Usage
 

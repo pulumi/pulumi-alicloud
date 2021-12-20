@@ -73,6 +73,8 @@ def get_service(enable: Optional[str] = None,
 
     > **NOTE:** Available in v1.118.0+
 
+    > **NOTE:** The MNS service is not support in the international site.
+
     ## Example Usage
 
     ```python
@@ -108,6 +110,8 @@ def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
     For information about MNS and how to use it, see [What is MNS](https://www.alibabacloud.com/help/en/product/27412.htm).
 
     > **NOTE:** Available in v1.118.0+
+
+    > **NOTE:** The MNS service is not support in the international site.
 
     ## Example Usage
 

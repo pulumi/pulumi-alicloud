@@ -573,6 +573,8 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.139.0+.
 
+        > **NOTE:** The Cloud Firewall Instance is not support to be purchase automatically in the international site.
+
         ## Example Usage
 
         Basic Usage
@@ -629,6 +631,8 @@ class Instance(pulumi.CustomResource):
         For information about Cloud Firewall Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/product/90174.htm).
 
         > **NOTE:** Available in v1.139.0+.
+
+        > **NOTE:** The Cloud Firewall Instance is not support to be purchase automatically in the international site.
 
         ## Example Usage
 

@@ -135,7 +135,7 @@ def get_db_clusters(db_cluster_description: Optional[str] = None,
     :param str db_cluster_description: The DBCluster description.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of DBCluster IDs.
-    :param str status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+    :param str status: The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
     """
     __args__ = dict()
     __args__['dbClusterDescription'] = db_cluster_description
@@ -197,6 +197,6 @@ def get_db_clusters_output(db_cluster_description: Optional[pulumi.Input[Optiona
     :param str db_cluster_description: The DBCluster description.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of DBCluster IDs.
-    :param str status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+    :param str status: The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
     """
     ...

@@ -27,7 +27,7 @@ class AggregateCompliancePackArgs:
         :param pulumi.Input[str] aggregate_compliance_pack_name: The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
         :param pulumi.Input[str] aggregator_id: The ID of aggregator.
         :param pulumi.Input[str] description: The description of compliance package.
-        :param pulumi.Input[int] risk_level: The Risk Level. Valid values: `1`, `2`, `3`.
+        :param pulumi.Input[int] risk_level: The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
         :param pulumi.Input[str] compliance_pack_template_id: The Template ID of compliance package.
         :param pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]] config_rule_ids: A list of Config Rule IDs.
         :param pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]] config_rules: A list of Config Rules.
@@ -86,7 +86,7 @@ class AggregateCompliancePackArgs:
     @pulumi.getter(name="riskLevel")
     def risk_level(self) -> pulumi.Input[int]:
         """
-        The Risk Level. Valid values: `1`, `2`, `3`.
+        The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
         """
         return pulumi.get(self, "risk_level")
 
@@ -150,8 +150,8 @@ class _AggregateCompliancePackState:
         :param pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]] config_rule_ids: A list of Config Rule IDs.
         :param pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]] config_rules: A list of Config Rules.
         :param pulumi.Input[str] description: The description of compliance package.
-        :param pulumi.Input[int] risk_level: The Risk Level. Valid values: `1`, `2`, `3`.
-        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[int] risk_level: The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+        :param pulumi.Input[str] status: The status of the resource. The valid values: `CREATING`, `ACTIVE`.
         """
         if aggregate_compliance_pack_name is not None:
             pulumi.set(__self__, "aggregate_compliance_pack_name", aggregate_compliance_pack_name)
@@ -249,7 +249,7 @@ class _AggregateCompliancePackState:
     @pulumi.getter(name="riskLevel")
     def risk_level(self) -> Optional[pulumi.Input[int]]:
         """
-        The Risk Level. Valid values: `1`, `2`, `3`.
+        The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
         """
         return pulumi.get(self, "risk_level")
 
@@ -261,7 +261,7 @@ class _AggregateCompliancePackState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource.
+        The status of the resource. The valid values: `CREATING`, `ACTIVE`.
         """
         return pulumi.get(self, "status")
 
@@ -355,7 +355,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleIdArgs']]]] config_rule_ids: A list of Config Rule IDs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleArgs']]]] config_rules: A list of Config Rules.
         :param pulumi.Input[str] description: The description of compliance package.
-        :param pulumi.Input[int] risk_level: The Risk Level. Valid values: `1`, `2`, `3`.
+        :param pulumi.Input[int] risk_level: The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
         """
         ...
     @overload
@@ -511,8 +511,8 @@ class AggregateCompliancePack(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleIdArgs']]]] config_rule_ids: A list of Config Rule IDs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleArgs']]]] config_rules: A list of Config Rules.
         :param pulumi.Input[str] description: The description of compliance package.
-        :param pulumi.Input[int] risk_level: The Risk Level. Valid values: `1`, `2`, `3`.
-        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[int] risk_level: The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
+        :param pulumi.Input[str] status: The status of the resource. The valid values: `CREATING`, `ACTIVE`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -580,7 +580,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
     @pulumi.getter(name="riskLevel")
     def risk_level(self) -> pulumi.Output[int]:
         """
-        The Risk Level. Valid values: `1`, `2`, `3`.
+        The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
         """
         return pulumi.get(self, "risk_level")
 
@@ -588,7 +588,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource.
+        The status of the resource. The valid values: `CREATING`, `ACTIVE`.
         """
         return pulumi.get(self, "status")
 

@@ -210,6 +210,12 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly forceRestart!: pulumi.Output<boolean | undefined>;
     /**
+     * The read-only instances to which you want to synchronize the IP address whitelist.
+     * * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
+     * * If the instance is not attached with a read-only instance, this parameter is empty.
+     */
+    public readonly freshWhiteListReadins!: pulumi.Output<string | undefined>;
+    /**
      * The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
      * - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
      * - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
@@ -296,7 +302,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
-     * Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
+     * Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
      */
     public readonly securityIpMode!: pulumi.Output<string | undefined>;
     /**
@@ -445,6 +451,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["engine"] = state ? state.engine : undefined;
             inputs["engineVersion"] = state ? state.engineVersion : undefined;
             inputs["forceRestart"] = state ? state.forceRestart : undefined;
+            inputs["freshWhiteListReadins"] = state ? state.freshWhiteListReadins : undefined;
             inputs["haConfig"] = state ? state.haConfig : undefined;
             inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             inputs["instanceName"] = state ? state.instanceName : undefined;
@@ -518,6 +525,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["engine"] = args ? args.engine : undefined;
             inputs["engineVersion"] = args ? args.engineVersion : undefined;
             inputs["forceRestart"] = args ? args.forceRestart : undefined;
+            inputs["freshWhiteListReadins"] = args ? args.freshWhiteListReadins : undefined;
             inputs["haConfig"] = args ? args.haConfig : undefined;
             inputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             inputs["instanceName"] = args ? args.instanceName : undefined;
@@ -669,6 +677,12 @@ export interface InstanceState {
      */
     forceRestart?: pulumi.Input<boolean>;
     /**
+     * The read-only instances to which you want to synchronize the IP address whitelist.
+     * * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
+     * * If the instance is not attached with a read-only instance, this parameter is empty.
+     */
+    freshWhiteListReadins?: pulumi.Input<string>;
+    /**
      * The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
      * - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
      * - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
@@ -755,7 +769,7 @@ export interface InstanceState {
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
+     * Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
      */
     securityIpMode?: pulumi.Input<string>;
     /**
@@ -970,6 +984,12 @@ export interface InstanceArgs {
      */
     forceRestart?: pulumi.Input<boolean>;
     /**
+     * The read-only instances to which you want to synchronize the IP address whitelist.
+     * * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
+     * * If the instance is not attached with a read-only instance, this parameter is empty.
+     */
+    freshWhiteListReadins?: pulumi.Input<string>;
+    /**
      * The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
      * - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
      * - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
@@ -1056,7 +1076,7 @@ export interface InstanceArgs {
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
+     * Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
      */
     securityIpMode?: pulumi.Input<string>;
     /**

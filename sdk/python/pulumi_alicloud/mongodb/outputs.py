@@ -11,12 +11,17 @@ from . import outputs
 
 __all__ = [
     'InstanceReplicaSet',
+    'ServerlessInstanceSecurityIpGroup',
     'ShardingInstanceConfigServerList',
     'ShardingInstanceMongoList',
     'ShardingInstanceShardList',
+    'GetAccountsAccountResult',
+    'GetAuditPoliciesPolicyResult',
     'GetInstancesInstanceResult',
     'GetInstancesInstanceMongoResult',
     'GetInstancesInstanceShardResult',
+    'GetServerlessInstancesInstanceResult',
+    'GetServerlessInstancesInstanceSecurityIpGroupResult',
     'GetZonesZoneResult',
 ]
 
@@ -138,6 +143,70 @@ class InstanceReplicaSet(dict):
         The virtual switch ID to launch DB instances in one VPC.
         """
         return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
+class ServerlessInstanceSecurityIpGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "securityIpGroupAttribute":
+            suggest = "security_ip_group_attribute"
+        elif key == "securityIpGroupName":
+            suggest = "security_ip_group_name"
+        elif key == "securityIpList":
+            suggest = "security_ip_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerlessInstanceSecurityIpGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerlessInstanceSecurityIpGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerlessInstanceSecurityIpGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 security_ip_group_attribute: Optional[str] = None,
+                 security_ip_group_name: Optional[str] = None,
+                 security_ip_list: Optional[str] = None):
+        """
+        :param str security_ip_group_attribute: The attribute of the IP whitelist. This parameter is empty by default.
+        :param str security_ip_group_name: The name of the IP whitelist.
+        :param str security_ip_list: The IP addresses in the whitelist.
+        """
+        if security_ip_group_attribute is not None:
+            pulumi.set(__self__, "security_ip_group_attribute", security_ip_group_attribute)
+        if security_ip_group_name is not None:
+            pulumi.set(__self__, "security_ip_group_name", security_ip_group_name)
+        if security_ip_list is not None:
+            pulumi.set(__self__, "security_ip_list", security_ip_list)
+
+    @property
+    @pulumi.getter(name="securityIpGroupAttribute")
+    def security_ip_group_attribute(self) -> Optional[str]:
+        """
+        The attribute of the IP whitelist. This parameter is empty by default.
+        """
+        return pulumi.get(self, "security_ip_group_attribute")
+
+    @property
+    @pulumi.getter(name="securityIpGroupName")
+    def security_ip_group_name(self) -> Optional[str]:
+        """
+        The name of the IP whitelist.
+        """
+        return pulumi.get(self, "security_ip_group_name")
+
+    @property
+    @pulumi.getter(name="securityIpList")
+    def security_ip_list(self) -> Optional[str]:
+        """
+        The IP addresses in the whitelist.
+        """
+        return pulumi.get(self, "security_ip_list")
 
 
 @pulumi.output_type
@@ -425,6 +494,119 @@ class ShardingInstanceShardList(dict):
         The number of read-only nodes in shard node. Valid values: 0 to 5. Default value: 0.
         """
         return pulumi.get(self, "readonly_replicas")
+
+
+@pulumi.output_type
+class GetAccountsAccountResult(dict):
+    def __init__(__self__, *,
+                 account_description: str,
+                 account_name: str,
+                 character_type: str,
+                 id: str,
+                 instance_id: str,
+                 status: str):
+        """
+        :param str account_description: The description of the account.
+        :param str account_name: The name of the account.
+        :param str character_type: The role of the account. Valid values: `db`, `cs`, `mongos`, `logic`, `normal`.
+        :param str id: The ID of the Account. The value formats as `<instance_id>:<account_name>`.
+        :param str instance_id: The id of the instance to which the account belongs.
+        :param str status: The status of the account. Valid values: `Unavailable`, `Available`.
+        """
+        pulumi.set(__self__, "account_description", account_description)
+        pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "character_type", character_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="accountDescription")
+    def account_description(self) -> str:
+        """
+        The description of the account.
+        """
+        return pulumi.get(self, "account_description")
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> str:
+        """
+        The name of the account.
+        """
+        return pulumi.get(self, "account_name")
+
+    @property
+    @pulumi.getter(name="characterType")
+    def character_type(self) -> str:
+        """
+        The role of the account. Valid values: `db`, `cs`, `mongos`, `logic`, `normal`.
+        """
+        return pulumi.get(self, "character_type")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Account. The value formats as `<instance_id>:<account_name>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The id of the instance to which the account belongs.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the account. Valid values: `Unavailable`, `Available`.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetAuditPoliciesPolicyResult(dict):
+    def __init__(__self__, *,
+                 audit_status: str,
+                 db_instance_id: str,
+                 id: str):
+        """
+        :param str audit_status: The status of the log audit feature.
+        :param str db_instance_id: The ID of the instance.
+        :param str id: The ID of the Audit Policy.
+        """
+        pulumi.set(__self__, "audit_status", audit_status)
+        pulumi.set(__self__, "db_instance_id", db_instance_id)
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter(name="auditStatus")
+    def audit_status(self) -> str:
+        """
+        The status of the log audit feature.
+        """
+        return pulumi.get(self, "audit_status")
+
+    @property
+    @pulumi.getter(name="dbInstanceId")
+    def db_instance_id(self) -> str:
+        """
+        The ID of the instance.
+        """
+        return pulumi.get(self, "db_instance_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Audit Policy.
+        """
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type
@@ -732,6 +914,361 @@ class GetInstancesInstanceShardResult(dict):
         Shard disk.
         """
         return pulumi.get(self, "storage")
+
+
+@pulumi.output_type
+class GetServerlessInstancesInstanceResult(dict):
+    def __init__(__self__, *,
+                 capacity_unit: int,
+                 db_instance_class: str,
+                 db_instance_description: str,
+                 db_instance_id: str,
+                 db_instance_release_protection: bool,
+                 db_instance_storage: int,
+                 engine: str,
+                 engine_version: str,
+                 expire_time: str,
+                 id: str,
+                 kind_code: str,
+                 lock_mode: str,
+                 maintain_end_time: str,
+                 maintain_start_time: str,
+                 max_connections: int,
+                 max_iops: int,
+                 network_type: str,
+                 payment_type: str,
+                 protocol_type: str,
+                 resource_group_id: str,
+                 security_ip_groups: Sequence['outputs.GetServerlessInstancesInstanceSecurityIpGroupResult'],
+                 status: str,
+                 storage_engine: str,
+                 tags: Mapping[str, Any],
+                 vpc_auth_mode: str,
+                 vpc_id: str,
+                 vswitch_id: str,
+                 zone_id: str):
+        """
+        :param int capacity_unit: The read/write throughput consumed by the instance.
+        :param str db_instance_class: The db instance class.
+        :param str db_instance_description: The db instance description.
+        :param str db_instance_id: The db instance id.
+        :param bool db_instance_release_protection: The db instance release protection.
+        :param int db_instance_storage: The db instance storage.
+        :param str engine: The database engine of the instance.
+        :param str engine_version: The database version number. Valid values: `4.2`.
+        :param str expire_time: The time when the subscription instance expires. The time is in the `yyyy-MM-ddTHH:mmZ` format. The time is displayed in UTC.
+        :param str id: The ID of the Serverless Instance.
+        :param str kind_code: Indicates the type of the instance. Valid values: `0`: physical machine. `1`: ECS. `2`: DOCKER. `18`: k8s new architecture instance.
+        :param str lock_mode: The locked status of the instance.
+        :param str maintain_end_time: The start time of the maintenance window. The time is in the `HH:mmZ` format. The time is displayed in UTC.
+        :param str maintain_start_time: The end time of the maintenance window. The time is in the `HH:mmZ` format. The time is displayed in UTC.
+        :param int max_connections: Instance maximum connections.
+        :param int max_iops: The maximum IOPS of the instance.
+        :param str network_type: The network type of the instance.
+        :param str payment_type: The Payment type of the instance.
+        :param str protocol_type: The access protocol type of the instance. Valid values: `mongodb`, `dynamodb`.
+        :param str resource_group_id: The ID of the resource group.
+        :param Sequence['GetServerlessInstancesInstanceSecurityIpGroupArgs'] security_ip_groups: The security ip list.
+        :param str status: The status of the instance.
+        :param str storage_engine: The storage engine used by the instance.
+        :param Mapping[str, Any] tags: The tag of the resource.
+        :param str vpc_auth_mode: Intranet secret free access mode.
+        :param str vpc_id: The ID of the VPC network.
+        :param str vswitch_id: The id of the vswitch.
+        :param str zone_id: The ID of the zone.
+        """
+        pulumi.set(__self__, "capacity_unit", capacity_unit)
+        pulumi.set(__self__, "db_instance_class", db_instance_class)
+        pulumi.set(__self__, "db_instance_description", db_instance_description)
+        pulumi.set(__self__, "db_instance_id", db_instance_id)
+        pulumi.set(__self__, "db_instance_release_protection", db_instance_release_protection)
+        pulumi.set(__self__, "db_instance_storage", db_instance_storage)
+        pulumi.set(__self__, "engine", engine)
+        pulumi.set(__self__, "engine_version", engine_version)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "kind_code", kind_code)
+        pulumi.set(__self__, "lock_mode", lock_mode)
+        pulumi.set(__self__, "maintain_end_time", maintain_end_time)
+        pulumi.set(__self__, "maintain_start_time", maintain_start_time)
+        pulumi.set(__self__, "max_connections", max_connections)
+        pulumi.set(__self__, "max_iops", max_iops)
+        pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "protocol_type", protocol_type)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "security_ip_groups", security_ip_groups)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "storage_engine", storage_engine)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "vpc_auth_mode", vpc_auth_mode)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="capacityUnit")
+    def capacity_unit(self) -> int:
+        """
+        The read/write throughput consumed by the instance.
+        """
+        return pulumi.get(self, "capacity_unit")
+
+    @property
+    @pulumi.getter(name="dbInstanceClass")
+    def db_instance_class(self) -> str:
+        """
+        The db instance class.
+        """
+        return pulumi.get(self, "db_instance_class")
+
+    @property
+    @pulumi.getter(name="dbInstanceDescription")
+    def db_instance_description(self) -> str:
+        """
+        The db instance description.
+        """
+        return pulumi.get(self, "db_instance_description")
+
+    @property
+    @pulumi.getter(name="dbInstanceId")
+    def db_instance_id(self) -> str:
+        """
+        The db instance id.
+        """
+        return pulumi.get(self, "db_instance_id")
+
+    @property
+    @pulumi.getter(name="dbInstanceReleaseProtection")
+    def db_instance_release_protection(self) -> bool:
+        """
+        The db instance release protection.
+        """
+        return pulumi.get(self, "db_instance_release_protection")
+
+    @property
+    @pulumi.getter(name="dbInstanceStorage")
+    def db_instance_storage(self) -> int:
+        """
+        The db instance storage.
+        """
+        return pulumi.get(self, "db_instance_storage")
+
+    @property
+    @pulumi.getter
+    def engine(self) -> str:
+        """
+        The database engine of the instance.
+        """
+        return pulumi.get(self, "engine")
+
+    @property
+    @pulumi.getter(name="engineVersion")
+    def engine_version(self) -> str:
+        """
+        The database version number. Valid values: `4.2`.
+        """
+        return pulumi.get(self, "engine_version")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> str:
+        """
+        The time when the subscription instance expires. The time is in the `yyyy-MM-ddTHH:mmZ` format. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Serverless Instance.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="kindCode")
+    def kind_code(self) -> str:
+        """
+        Indicates the type of the instance. Valid values: `0`: physical machine. `1`: ECS. `2`: DOCKER. `18`: k8s new architecture instance.
+        """
+        return pulumi.get(self, "kind_code")
+
+    @property
+    @pulumi.getter(name="lockMode")
+    def lock_mode(self) -> str:
+        """
+        The locked status of the instance.
+        """
+        return pulumi.get(self, "lock_mode")
+
+    @property
+    @pulumi.getter(name="maintainEndTime")
+    def maintain_end_time(self) -> str:
+        """
+        The start time of the maintenance window. The time is in the `HH:mmZ` format. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "maintain_end_time")
+
+    @property
+    @pulumi.getter(name="maintainStartTime")
+    def maintain_start_time(self) -> str:
+        """
+        The end time of the maintenance window. The time is in the `HH:mmZ` format. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "maintain_start_time")
+
+    @property
+    @pulumi.getter(name="maxConnections")
+    def max_connections(self) -> int:
+        """
+        Instance maximum connections.
+        """
+        return pulumi.get(self, "max_connections")
+
+    @property
+    @pulumi.getter(name="maxIops")
+    def max_iops(self) -> int:
+        """
+        The maximum IOPS of the instance.
+        """
+        return pulumi.get(self, "max_iops")
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> str:
+        """
+        The network type of the instance.
+        """
+        return pulumi.get(self, "network_type")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        The Payment type of the instance.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter(name="protocolType")
+    def protocol_type(self) -> str:
+        """
+        The access protocol type of the instance. Valid values: `mongodb`, `dynamodb`.
+        """
+        return pulumi.get(self, "protocol_type")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="securityIpGroups")
+    def security_ip_groups(self) -> Sequence['outputs.GetServerlessInstancesInstanceSecurityIpGroupResult']:
+        """
+        The security ip list.
+        """
+        return pulumi.get(self, "security_ip_groups")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the instance.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="storageEngine")
+    def storage_engine(self) -> str:
+        """
+        The storage engine used by the instance.
+        """
+        return pulumi.get(self, "storage_engine")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="vpcAuthMode")
+    def vpc_auth_mode(self) -> str:
+        """
+        Intranet secret free access mode.
+        """
+        return pulumi.get(self, "vpc_auth_mode")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of the VPC network.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The id of the vswitch.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The ID of the zone.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetServerlessInstancesInstanceSecurityIpGroupResult(dict):
+    def __init__(__self__, *,
+                 security_ip_group_attribute: str,
+                 security_ip_group_name: str,
+                 security_ip_list: str):
+        """
+        :param str security_ip_group_attribute: The attribute of the IP whitelist. This parameter is empty by default.
+        :param str security_ip_group_name: The name of the IP whitelist.
+        :param str security_ip_list: The IP addresses in the whitelist.
+        """
+        pulumi.set(__self__, "security_ip_group_attribute", security_ip_group_attribute)
+        pulumi.set(__self__, "security_ip_group_name", security_ip_group_name)
+        pulumi.set(__self__, "security_ip_list", security_ip_list)
+
+    @property
+    @pulumi.getter(name="securityIpGroupAttribute")
+    def security_ip_group_attribute(self) -> str:
+        """
+        The attribute of the IP whitelist. This parameter is empty by default.
+        """
+        return pulumi.get(self, "security_ip_group_attribute")
+
+    @property
+    @pulumi.getter(name="securityIpGroupName")
+    def security_ip_group_name(self) -> str:
+        """
+        The name of the IP whitelist.
+        """
+        return pulumi.get(self, "security_ip_group_name")
+
+    @property
+    @pulumi.getter(name="securityIpList")
+    def security_ip_list(self) -> str:
+        """
+        The IP addresses in the whitelist.
+        """
+        return pulumi.get(self, "security_ip_list")
 
 
 @pulumi.output_type

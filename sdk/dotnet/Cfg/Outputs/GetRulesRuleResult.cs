@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// </summary>
         public readonly string RegionIdsScope;
         /// <summary>
-        /// (Available in 1.124.1+) The scope of resource ids.
+        /// (Available in 1.124.1+) The scope of resource group ids.
         /// </summary>
         public readonly string ResourceGroupIdsScope;
         /// <summary>
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         public readonly string SourceIdentifier;
         /// <summary>
         /// Rule execution cycle. 
-        /// * `source_identifier`- The name of the custom rule or managed rule.
+        /// * `source_identifier`- The identifier of the managed rule or the arn of the custom function.
         /// * `source_owner`- The source owner of the Config Rule.
         /// </summary>
         public readonly string SourceMaximumExecutionFrequency;

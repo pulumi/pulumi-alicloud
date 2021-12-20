@@ -204,6 +204,14 @@ namespace Pulumi.AliCloud.Rds
         public Output<bool?> ForceRestart { get; private set; } = null!;
 
         /// <summary>
+        /// The read-only instances to which you want to synchronize the IP address whitelist.
+        /// * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
+        /// * If the instance is not attached with a read-only instance, this parameter is empty.
+        /// </summary>
+        [Output("freshWhiteListReadins")]
+        public Output<string?> FreshWhiteListReadins { get; private set; } = null!;
+
+        /// <summary>
         /// The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
         /// - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
         /// - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
@@ -324,7 +332,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
+        /// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
         /// </summary>
         [Output("securityIpMode")]
         public Output<string?> SecurityIpMode { get; private set; } = null!;
@@ -661,6 +669,14 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? ForceRestart { get; set; }
 
         /// <summary>
+        /// The read-only instances to which you want to synchronize the IP address whitelist.
+        /// * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
+        /// * If the instance is not attached with a read-only instance, this parameter is empty.
+        /// </summary>
+        [Input("freshWhiteListReadins")]
+        public Input<string>? FreshWhiteListReadins { get; set; }
+
+        /// <summary>
         /// The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
         /// - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
         /// - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
@@ -793,7 +809,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
+        /// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
         /// </summary>
         [Input("securityIpMode")]
         public Input<string>? SecurityIpMode { get; set; }
@@ -1103,6 +1119,14 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? ForceRestart { get; set; }
 
         /// <summary>
+        /// The read-only instances to which you want to synchronize the IP address whitelist.
+        /// * If the instance is attached with a read-only instance, you can use this parameter to synchronize the IP address whitelist to the read-only instance. If the instance is attached with multiple read-only instances, the read-only instances must be separated by commas (,).
+        /// * If the instance is not attached with a read-only instance, this parameter is empty.
+        /// </summary>
+        [Input("freshWhiteListReadins")]
+        public Input<string>? FreshWhiteListReadins { get; set; }
+
+        /// <summary>
         /// The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
         /// - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
         /// - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
@@ -1235,7 +1259,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
+        /// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
         /// </summary>
         [Input("securityIpMode")]
         public Input<string>? SecurityIpMode { get; set; }

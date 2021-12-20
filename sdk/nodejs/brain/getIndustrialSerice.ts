@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.115.0+
  *
+ * > **NOTE:** The Brain Industrial service is not support in the international site.
+ *
  * ## Example Usage
  *
  * ```typescript

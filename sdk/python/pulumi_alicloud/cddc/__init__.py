@@ -5,6 +5,12 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .dedicated_host import *
+from .dedicated_host_account import *
 from .dedicated_host_group import *
+from .get_dedicated_host_accounts import *
 from .get_dedicated_host_groups import *
+from .get_dedicated_hosts import *
+from .get_host_ecs_level_infos import *
+from .get_zones import *
 from . import outputs

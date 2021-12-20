@@ -100,6 +100,10 @@ export class DedicatedHostGroup extends pulumi.CustomResource {
      */
     public readonly memAllocationRatio!: pulumi.Output<number>;
     /**
+     * Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+     */
+    public readonly openPermission!: pulumi.Output<boolean>;
+    /**
      * The virtual private cloud (VPC) ID of the dedicated cluster.
      */
     public readonly vpcId!: pulumi.Output<string>;
@@ -124,6 +128,7 @@ export class DedicatedHostGroup extends pulumi.CustomResource {
             inputs["engine"] = state ? state.engine : undefined;
             inputs["hostReplacePolicy"] = state ? state.hostReplacePolicy : undefined;
             inputs["memAllocationRatio"] = state ? state.memAllocationRatio : undefined;
+            inputs["openPermission"] = state ? state.openPermission : undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as DedicatedHostGroupArgs | undefined;
@@ -140,6 +145,7 @@ export class DedicatedHostGroup extends pulumi.CustomResource {
             inputs["engine"] = args ? args.engine : undefined;
             inputs["hostReplacePolicy"] = args ? args.hostReplacePolicy : undefined;
             inputs["memAllocationRatio"] = args ? args.memAllocationRatio : undefined;
+            inputs["openPermission"] = args ? args.openPermission : undefined;
             inputs["vpcId"] = args ? args.vpcId : undefined;
         }
         if (!opts.version) {
@@ -182,6 +188,10 @@ export interface DedicatedHostGroupState {
      */
     memAllocationRatio?: pulumi.Input<number>;
     /**
+     * Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+     */
+    openPermission?: pulumi.Input<boolean>;
+    /**
      * The virtual private cloud (VPC) ID of the dedicated cluster.
      */
     vpcId?: pulumi.Input<string>;
@@ -219,6 +229,10 @@ export interface DedicatedHostGroupArgs {
      * The Memory Allocation Ratio of the Dedicated Host Group.
      */
     memAllocationRatio?: pulumi.Input<number>;
+    /**
+     * Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+     */
+    openPermission?: pulumi.Input<boolean>;
     /**
      * The virtual private cloud (VPC) ID of the dedicated cluster.
      */

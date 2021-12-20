@@ -1857,6 +1857,7 @@ func (o GetStocksStockArrayOutput) Index(i pulumi.IntInput) GetStocksStockOutput
 }
 
 type GetStorageBundlesBundle struct {
+	CreateTime        string `pulumi:"createTime"`
 	Description       string `pulumi:"description"`
 	Id                string `pulumi:"id"`
 	Location          string `pulumi:"location"`
@@ -1876,6 +1877,7 @@ type GetStorageBundlesBundleInput interface {
 }
 
 type GetStorageBundlesBundleArgs struct {
+	CreateTime        pulumi.StringInput `pulumi:"createTime"`
 	Description       pulumi.StringInput `pulumi:"description"`
 	Id                pulumi.StringInput `pulumi:"id"`
 	Location          pulumi.StringInput `pulumi:"location"`
@@ -1932,6 +1934,10 @@ func (o GetStorageBundlesBundleOutput) ToGetStorageBundlesBundleOutput() GetStor
 
 func (o GetStorageBundlesBundleOutput) ToGetStorageBundlesBundleOutputWithContext(ctx context.Context) GetStorageBundlesBundleOutput {
 	return o
+}
+
+func (o GetStorageBundlesBundleOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageBundlesBundle) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 func (o GetStorageBundlesBundleOutput) Description() pulumi.StringOutput {

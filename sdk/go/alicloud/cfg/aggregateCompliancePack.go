@@ -130,9 +130,9 @@ type AggregateCompliancePack struct {
 	ConfigRules AggregateCompliancePackConfigRuleArrayOutput `pulumi:"configRules"`
 	// The description of compliance package.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// The Risk Level. Valid values: `1`, `2`, `3`.
+	// The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
 	RiskLevel pulumi.IntOutput `pulumi:"riskLevel"`
-	// The status of the resource.
+	// The status of the resource. The valid values: `CREATING`, `ACTIVE`.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -191,9 +191,9 @@ type aggregateCompliancePackState struct {
 	ConfigRules []AggregateCompliancePackConfigRule `pulumi:"configRules"`
 	// The description of compliance package.
 	Description *string `pulumi:"description"`
-	// The Risk Level. Valid values: `1`, `2`, `3`.
+	// The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
 	RiskLevel *int `pulumi:"riskLevel"`
-	// The status of the resource.
+	// The status of the resource. The valid values: `CREATING`, `ACTIVE`.
 	Status *string `pulumi:"status"`
 }
 
@@ -212,9 +212,9 @@ type AggregateCompliancePackState struct {
 	ConfigRules AggregateCompliancePackConfigRuleArrayInput
 	// The description of compliance package.
 	Description pulumi.StringPtrInput
-	// The Risk Level. Valid values: `1`, `2`, `3`.
+	// The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
 	RiskLevel pulumi.IntPtrInput
-	// The status of the resource.
+	// The status of the resource. The valid values: `CREATING`, `ACTIVE`.
 	Status pulumi.StringPtrInput
 }
 
@@ -237,7 +237,7 @@ type aggregateCompliancePackArgs struct {
 	ConfigRules []AggregateCompliancePackConfigRule `pulumi:"configRules"`
 	// The description of compliance package.
 	Description string `pulumi:"description"`
-	// The Risk Level. Valid values: `1`, `2`, `3`.
+	// The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
 	RiskLevel int `pulumi:"riskLevel"`
 }
 
@@ -257,7 +257,7 @@ type AggregateCompliancePackArgs struct {
 	ConfigRules AggregateCompliancePackConfigRuleArrayInput
 	// The description of compliance package.
 	Description pulumi.StringInput
-	// The Risk Level. Valid values: `1`, `2`, `3`.
+	// The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
 	RiskLevel pulumi.IntInput
 }
 

@@ -12,6 +12,7 @@ from . import outputs
 __all__ = [
     'DbClusterDbClusterAccessWhiteList',
     'GetAccountsAccountResult',
+    'GetBackupPoliciesPolicyResult',
     'GetDbClustersClusterResult',
     'GetDbClustersClusterDbClusterAccessWhiteListResult',
     'GetDbClustersClusterScaleOutStatusResult',
@@ -157,6 +158,79 @@ class GetAccountsAccountResult(dict):
 
 
 @pulumi.output_type
+class GetBackupPoliciesPolicyResult(dict):
+    def __init__(__self__, *,
+                 backup_retention_period: int,
+                 db_cluster_id: str,
+                 id: str,
+                 preferred_backup_periods: Sequence[str],
+                 preferred_backup_time: str,
+                 status: str):
+        """
+        :param int backup_retention_period: Data backup days. Valid values: `7` to `730`.
+        :param str db_cluster_id: The db cluster id.
+        :param str id: The ID of the Backup Policy.
+        :param Sequence[str] preferred_backup_periods: DBCluster Backup period.
+        :param str preferred_backup_time: Backup Time, UTC time.
+        :param str status: The status of the resource.
+        """
+        pulumi.set(__self__, "backup_retention_period", backup_retention_period)
+        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "preferred_backup_periods", preferred_backup_periods)
+        pulumi.set(__self__, "preferred_backup_time", preferred_backup_time)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="backupRetentionPeriod")
+    def backup_retention_period(self) -> int:
+        """
+        Data backup days. Valid values: `7` to `730`.
+        """
+        return pulumi.get(self, "backup_retention_period")
+
+    @property
+    @pulumi.getter(name="dbClusterId")
+    def db_cluster_id(self) -> str:
+        """
+        The db cluster id.
+        """
+        return pulumi.get(self, "db_cluster_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Backup Policy.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="preferredBackupPeriods")
+    def preferred_backup_periods(self) -> Sequence[str]:
+        """
+        DBCluster Backup period.
+        """
+        return pulumi.get(self, "preferred_backup_periods")
+
+    @property
+    @pulumi.getter(name="preferredBackupTime")
+    def preferred_backup_time(self) -> str:
+        """
+        Backup Time, UTC time.
+        """
+        return pulumi.get(self, "preferred_backup_time")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
 class GetDbClustersClusterResult(dict):
     def __init__(__self__, *,
                  ali_uid: str,
@@ -164,6 +238,7 @@ class GetDbClustersClusterResult(dict):
                  category: str,
                  commodity_code: str,
                  connection_string: str,
+                 control_version: str,
                  create_time: str,
                  db_cluster_access_white_lists: Sequence['outputs.GetDbClustersClusterDbClusterAccessWhiteListResult'],
                  db_cluster_description: str,
@@ -188,6 +263,7 @@ class GetDbClustersClusterResult(dict):
                  public_connection_string: str,
                  public_port: str,
                  scale_out_statuses: Sequence['outputs.GetDbClustersClusterScaleOutStatusResult'],
+                 status: str,
                  storage_type: str,
                  support_backup: int,
                  support_https_port: bool,
@@ -202,6 +278,7 @@ class GetDbClustersClusterResult(dict):
         :param str category: Instance family values include: Basic: Basic edition; HighAvailability: high availability edition.
         :param str commodity_code: The Commodity Code of the DBCluster.
         :param str connection_string: Connection string.
+        :param str control_version: The control version of the DBCluster.
         :param str create_time: The creation time of the resource.
         :param Sequence['GetDbClustersClusterDbClusterAccessWhiteListArgs'] db_cluster_access_white_lists: The db cluster access white list.
         :param str db_cluster_description: The DBCluster description.
@@ -225,6 +302,7 @@ class GetDbClustersClusterResult(dict):
         :param str public_connection_string: A public IP address for the connection.
         :param str public_port: Public network port.
         :param Sequence['GetDbClustersClusterScaleOutStatusArgs'] scale_out_statuses: Scale state.
+        :param str status: The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         :param str storage_type: Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
         :param int support_backup: Support fallback scheme.
         :param bool support_https_port: The system supports http port number.
@@ -239,6 +317,7 @@ class GetDbClustersClusterResult(dict):
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "commodity_code", commodity_code)
         pulumi.set(__self__, "connection_string", connection_string)
+        pulumi.set(__self__, "control_version", control_version)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "db_cluster_access_white_lists", db_cluster_access_white_lists)
         pulumi.set(__self__, "db_cluster_description", db_cluster_description)
@@ -263,6 +342,7 @@ class GetDbClustersClusterResult(dict):
         pulumi.set(__self__, "public_connection_string", public_connection_string)
         pulumi.set(__self__, "public_port", public_port)
         pulumi.set(__self__, "scale_out_statuses", scale_out_statuses)
+        pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "storage_type", storage_type)
         pulumi.set(__self__, "support_backup", support_backup)
         pulumi.set(__self__, "support_https_port", support_https_port)
@@ -311,6 +391,14 @@ class GetDbClustersClusterResult(dict):
         Connection string.
         """
         return pulumi.get(self, "connection_string")
+
+    @property
+    @pulumi.getter(name="controlVersion")
+    def control_version(self) -> str:
+        """
+        The control version of the DBCluster.
+        """
+        return pulumi.get(self, "control_version")
 
     @property
     @pulumi.getter(name="createTime")
@@ -500,6 +588,14 @@ class GetDbClustersClusterResult(dict):
         Scale state.
         """
         return pulumi.get(self, "scale_out_statuses")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+        """
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="storageType")

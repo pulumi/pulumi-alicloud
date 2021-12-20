@@ -75,6 +75,9 @@ namespace Pulumi.AliCloud.Oos
         [Output("resourceGroupId")]
         public Output<string?> ResourceGroupId { get; private set; } = null!;
 
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
@@ -144,6 +147,10 @@ namespace Pulumi.AliCloud.Oos
 
         [Input("tags")]
         private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
@@ -177,6 +184,10 @@ namespace Pulumi.AliCloud.Oos
 
         [Input("tags")]
         private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());

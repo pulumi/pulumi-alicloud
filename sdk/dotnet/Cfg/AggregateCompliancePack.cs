@@ -139,13 +139,13 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The Risk Level. Valid values: `1`, `2`, `3`.
+        /// The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
         /// </summary>
         [Output("riskLevel")]
         public Output<int> RiskLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. The valid values: `CREATING`, `ACTIVE`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -246,7 +246,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// The Risk Level. Valid values: `1`, `2`, `3`.
+        /// The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
         /// </summary>
         [Input("riskLevel", required: true)]
         public Input<int> RiskLevel { get; set; } = null!;
@@ -308,13 +308,13 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The Risk Level. Valid values: `1`, `2`, `3`.
+        /// The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
         /// </summary>
         [Input("riskLevel")]
         public Input<int>? RiskLevel { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. The valid values: `CREATING`, `ACTIVE`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

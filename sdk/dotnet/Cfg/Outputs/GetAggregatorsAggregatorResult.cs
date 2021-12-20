@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
+        /// The status of the resource. Valid Values:  `0`: creating `1`: normal `2`: deleting.
         /// </summary>
         public readonly string Status;
 

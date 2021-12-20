@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:cloudsso/accessConfiguration:AccessConfiguration":
 		r = &AccessConfiguration{}
+	case "alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning":
+		r = &AccessConfigurationProvisioning{}
 	case "alicloud:cloudsso/accessManagement:AccessManagement":
 		r = &AccessManagement{}
 	case "alicloud:cloudsso/directory:Directory":
@@ -51,6 +53,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cloudsso/accessConfiguration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudsso/accessConfigurationProvisioning",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

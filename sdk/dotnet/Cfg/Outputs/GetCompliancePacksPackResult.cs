@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// </summary>
         public readonly int RiskLevel;
         /// <summary>
-        /// The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`
+        /// The status of the resource. Valid values `ACTIVE`, `CREATING`.
         /// </summary>
         public readonly string Status;
 

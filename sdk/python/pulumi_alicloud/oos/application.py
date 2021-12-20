@@ -22,6 +22,7 @@ class ApplicationArgs:
         :param pulumi.Input[str] application_name: The name of the application.
         :param pulumi.Input[str] description: Application group description information.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
         pulumi.set(__self__, "application_name", application_name)
         if description is not None:
@@ -70,6 +71,9 @@ class ApplicationArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The tag of the resource.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -89,6 +93,7 @@ class _ApplicationState:
         :param pulumi.Input[str] application_name: The name of the application.
         :param pulumi.Input[str] description: Application group description information.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
         if application_name is not None:
             pulumi.set(__self__, "application_name", application_name)
@@ -138,6 +143,9 @@ class _ApplicationState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The tag of the resource.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -197,6 +205,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] application_name: The name of the application.
         :param pulumi.Input[str] description: Application group description information.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
         ...
     @overload
@@ -302,6 +311,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] application_name: The name of the application.
         :param pulumi.Input[str] description: Application group description information.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -340,5 +350,8 @@ class Application(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        The tag of the resource.
+        """
         return pulumi.get(self, "tags")
 

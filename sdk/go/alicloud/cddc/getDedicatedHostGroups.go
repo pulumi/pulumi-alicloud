@@ -54,8 +54,10 @@ type GetDedicatedHostGroupsArgs struct {
 	// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
 	Engine *string `pulumi:"engine"`
 	// A list of Dedicated Host Group IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// A regex string to filter results by Dedicated Host Group name.
+	NameRegex  *string `pulumi:"nameRegex"`
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getDedicatedHostGroups.
@@ -65,6 +67,8 @@ type GetDedicatedHostGroupsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id         string   `pulumi:"id"`
 	Ids        []string `pulumi:"ids"`
+	NameRegex  *string  `pulumi:"nameRegex"`
+	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 }
 
@@ -82,8 +86,10 @@ type GetDedicatedHostGroupsOutputArgs struct {
 	// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
 	Engine pulumi.StringPtrInput `pulumi:"engine"`
 	// A list of Dedicated Host Group IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Dedicated Host Group name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetDedicatedHostGroupsOutputArgs) ElementType() reflect.Type {
@@ -120,6 +126,14 @@ func (o GetDedicatedHostGroupsResultOutput) Id() pulumi.StringOutput {
 
 func (o GetDedicatedHostGroupsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDedicatedHostGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDedicatedHostGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDedicatedHostGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDedicatedHostGroupsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDedicatedHostGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
 func (o GetDedicatedHostGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {

@@ -138,6 +138,11 @@ type BackupPolicy struct {
 	PreferredBackupPeriods pulumi.StringArrayOutput `pulumi:"preferredBackupPeriods"`
 	// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
 	PreferredBackupTime pulumi.StringPtrOutput `pulumi:"preferredBackupTime"`
+	// The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
+	// * **None**: No archived backup files are retained.
+	// * **Lastest**: Only the most recent archived backup file is retained.
+	// * **All**: All archived backup files are retained.
+	ReleasedKeepPolicy pulumi.StringOutput `pulumi:"releasedKeepPolicy"`
 	// It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
 	//
 	// Deprecated: Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead
@@ -220,6 +225,11 @@ type backupPolicyState struct {
 	PreferredBackupPeriods []string `pulumi:"preferredBackupPeriods"`
 	// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
 	PreferredBackupTime *string `pulumi:"preferredBackupTime"`
+	// The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
+	// * **None**: No archived backup files are retained.
+	// * **Lastest**: Only the most recent archived backup file is retained.
+	// * **All**: All archived backup files are retained.
+	ReleasedKeepPolicy *string `pulumi:"releasedKeepPolicy"`
 	// It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
 	//
 	// Deprecated: Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead
@@ -271,6 +281,11 @@ type BackupPolicyState struct {
 	PreferredBackupPeriods pulumi.StringArrayInput
 	// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
 	PreferredBackupTime pulumi.StringPtrInput
+	// The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
+	// * **None**: No archived backup files are retained.
+	// * **Lastest**: Only the most recent archived backup file is retained.
+	// * **All**: All archived backup files are retained.
+	ReleasedKeepPolicy pulumi.StringPtrInput
 	// It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
 	//
 	// Deprecated: Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead
@@ -326,6 +341,11 @@ type backupPolicyArgs struct {
 	PreferredBackupPeriods []string `pulumi:"preferredBackupPeriods"`
 	// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
 	PreferredBackupTime *string `pulumi:"preferredBackupTime"`
+	// The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
+	// * **None**: No archived backup files are retained.
+	// * **Lastest**: Only the most recent archived backup file is retained.
+	// * **All**: All archived backup files are retained.
+	ReleasedKeepPolicy *string `pulumi:"releasedKeepPolicy"`
 	// It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
 	//
 	// Deprecated: Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead
@@ -378,6 +398,11 @@ type BackupPolicyArgs struct {
 	PreferredBackupPeriods pulumi.StringArrayInput
 	// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
 	PreferredBackupTime pulumi.StringPtrInput
+	// The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
+	// * **None**: No archived backup files are retained.
+	// * **Lastest**: Only the most recent archived backup file is retained.
+	// * **All**: All archived backup files are retained.
+	ReleasedKeepPolicy pulumi.StringPtrInput
 	// It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
 	//
 	// Deprecated: Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead

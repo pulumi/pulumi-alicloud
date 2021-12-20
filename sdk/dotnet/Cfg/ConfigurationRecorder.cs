@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Cfg
         public Output<bool> EnterpriseEdition { get; private set; } = null!;
 
         /// <summary>
-        /// Status of resource monitoring. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
+        /// Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
         /// </summary>
         [Output("organizationEnableStatus")]
         public Output<string> OrganizationEnableStatus { get; private set; } = null!;
@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.Cfg
         public Output<ImmutableArray<string>> ResourceTypes { get; private set; } = null!;
 
         /// <summary>
-        /// Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
+        /// Status of resource monitoring. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<bool>? EnterpriseEdition { get; set; }
 
         /// <summary>
-        /// Status of resource monitoring. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
+        /// Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
         /// </summary>
         [Input("organizationEnableStatus")]
         public Input<string>? OrganizationEnableStatus { get; set; }
@@ -180,7 +180,7 @@ namespace Pulumi.AliCloud.Cfg
         }
 
         /// <summary>
-        /// Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
+        /// Status of resource monitoring. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

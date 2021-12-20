@@ -60,7 +60,7 @@ import (
 type Aggregator struct {
 	pulumi.CustomResourceState
 
-	// The information of account in aggregator.
+	// The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
 	AggregatorAccounts AggregatorAggregatorAccountArrayOutput `pulumi:"aggregatorAccounts"`
 	// The name of aggregator.
 	AggregatorName pulumi.StringOutput `pulumi:"aggregatorName"`
@@ -68,7 +68,7 @@ type Aggregator struct {
 	AggregatorType pulumi.StringOutput `pulumi:"aggregatorType"`
 	// The description of aggregator.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -79,9 +79,6 @@ func NewAggregator(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AggregatorAccounts == nil {
-		return nil, errors.New("invalid value for required argument 'AggregatorAccounts'")
-	}
 	if args.AggregatorName == nil {
 		return nil, errors.New("invalid value for required argument 'AggregatorName'")
 	}
@@ -110,7 +107,7 @@ func GetAggregator(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Aggregator resources.
 type aggregatorState struct {
-	// The information of account in aggregator.
+	// The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
 	AggregatorAccounts []AggregatorAggregatorAccount `pulumi:"aggregatorAccounts"`
 	// The name of aggregator.
 	AggregatorName *string `pulumi:"aggregatorName"`
@@ -118,12 +115,12 @@ type aggregatorState struct {
 	AggregatorType *string `pulumi:"aggregatorType"`
 	// The description of aggregator.
 	Description *string `pulumi:"description"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
 	Status *string `pulumi:"status"`
 }
 
 type AggregatorState struct {
-	// The information of account in aggregator.
+	// The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
 	AggregatorAccounts AggregatorAggregatorAccountArrayInput
 	// The name of aggregator.
 	AggregatorName pulumi.StringPtrInput
@@ -131,7 +128,7 @@ type AggregatorState struct {
 	AggregatorType pulumi.StringPtrInput
 	// The description of aggregator.
 	Description pulumi.StringPtrInput
-	// The status of the resource.
+	// The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
 	Status pulumi.StringPtrInput
 }
 
@@ -140,7 +137,7 @@ func (AggregatorState) ElementType() reflect.Type {
 }
 
 type aggregatorArgs struct {
-	// The information of account in aggregator.
+	// The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
 	AggregatorAccounts []AggregatorAggregatorAccount `pulumi:"aggregatorAccounts"`
 	// The name of aggregator.
 	AggregatorName string `pulumi:"aggregatorName"`
@@ -152,7 +149,7 @@ type aggregatorArgs struct {
 
 // The set of arguments for constructing a Aggregator resource.
 type AggregatorArgs struct {
-	// The information of account in aggregator.
+	// The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
 	AggregatorAccounts AggregatorAggregatorAccountArrayInput
 	// The name of aggregator.
 	AggregatorName pulumi.StringInput

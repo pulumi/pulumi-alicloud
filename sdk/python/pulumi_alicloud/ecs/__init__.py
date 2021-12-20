@@ -22,6 +22,7 @@ from .ecs_key_pair_attachment import *
 from .ecs_launch_template import *
 from .ecs_network_interface import *
 from .ecs_network_interface_attachment import *
+from .ecs_session_manager_status import *
 from .ecs_snapshot import *
 from .eip import *
 from .eip_address import *

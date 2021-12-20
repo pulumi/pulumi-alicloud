@@ -20,7 +20,8 @@ class DedicatedHostGroupArgs:
                  dedicated_host_group_desc: Optional[pulumi.Input[str]] = None,
                  disk_allocation_ratio: Optional[pulumi.Input[int]] = None,
                  host_replace_policy: Optional[pulumi.Input[str]] = None,
-                 mem_allocation_ratio: Optional[pulumi.Input[int]] = None):
+                 mem_allocation_ratio: Optional[pulumi.Input[int]] = None,
+                 open_permission: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a DedicatedHostGroup resource.
         :param pulumi.Input[str] engine: Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
@@ -31,6 +32,7 @@ class DedicatedHostGroupArgs:
         :param pulumi.Input[int] disk_allocation_ratio: The Disk Allocation Ratio of the Dedicated Host Group.
         :param pulumi.Input[str] host_replace_policy: The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
         :param pulumi.Input[int] mem_allocation_ratio: The Memory Allocation Ratio of the Dedicated Host Group.
+        :param pulumi.Input[bool] open_permission: Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
         """
         pulumi.set(__self__, "engine", engine)
         pulumi.set(__self__, "vpc_id", vpc_id)
@@ -46,6 +48,8 @@ class DedicatedHostGroupArgs:
             pulumi.set(__self__, "host_replace_policy", host_replace_policy)
         if mem_allocation_ratio is not None:
             pulumi.set(__self__, "mem_allocation_ratio", mem_allocation_ratio)
+        if open_permission is not None:
+            pulumi.set(__self__, "open_permission", open_permission)
 
     @property
     @pulumi.getter
@@ -143,6 +147,18 @@ class DedicatedHostGroupArgs:
     def mem_allocation_ratio(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "mem_allocation_ratio", value)
 
+    @property
+    @pulumi.getter(name="openPermission")
+    def open_permission(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+        """
+        return pulumi.get(self, "open_permission")
+
+    @open_permission.setter
+    def open_permission(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "open_permission", value)
+
 
 @pulumi.input_type
 class _DedicatedHostGroupState:
@@ -154,6 +170,7 @@ class _DedicatedHostGroupState:
                  engine: Optional[pulumi.Input[str]] = None,
                  host_replace_policy: Optional[pulumi.Input[str]] = None,
                  mem_allocation_ratio: Optional[pulumi.Input[int]] = None,
+                 open_permission: Optional[pulumi.Input[bool]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DedicatedHostGroup resources.
@@ -164,6 +181,7 @@ class _DedicatedHostGroupState:
         :param pulumi.Input[str] engine: Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
         :param pulumi.Input[str] host_replace_policy: The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
         :param pulumi.Input[int] mem_allocation_ratio: The Memory Allocation Ratio of the Dedicated Host Group.
+        :param pulumi.Input[bool] open_permission: Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
         :param pulumi.Input[str] vpc_id: The virtual private cloud (VPC) ID of the dedicated cluster.
         """
         if allocation_policy is not None:
@@ -180,6 +198,8 @@ class _DedicatedHostGroupState:
             pulumi.set(__self__, "host_replace_policy", host_replace_policy)
         if mem_allocation_ratio is not None:
             pulumi.set(__self__, "mem_allocation_ratio", mem_allocation_ratio)
+        if open_permission is not None:
+            pulumi.set(__self__, "open_permission", open_permission)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
 
@@ -268,6 +288,18 @@ class _DedicatedHostGroupState:
         pulumi.set(self, "mem_allocation_ratio", value)
 
     @property
+    @pulumi.getter(name="openPermission")
+    def open_permission(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+        """
+        return pulumi.get(self, "open_permission")
+
+    @open_permission.setter
+    def open_permission(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "open_permission", value)
+
+    @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -292,6 +324,7 @@ class DedicatedHostGroup(pulumi.CustomResource):
                  engine: Optional[pulumi.Input[str]] = None,
                  host_replace_policy: Optional[pulumi.Input[str]] = None,
                  mem_allocation_ratio: Optional[pulumi.Input[int]] = None,
+                 open_permission: Optional[pulumi.Input[bool]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -340,6 +373,7 @@ class DedicatedHostGroup(pulumi.CustomResource):
         :param pulumi.Input[str] engine: Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
         :param pulumi.Input[str] host_replace_policy: The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
         :param pulumi.Input[int] mem_allocation_ratio: The Memory Allocation Ratio of the Dedicated Host Group.
+        :param pulumi.Input[bool] open_permission: Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
         :param pulumi.Input[str] vpc_id: The virtual private cloud (VPC) ID of the dedicated cluster.
         """
         ...
@@ -407,6 +441,7 @@ class DedicatedHostGroup(pulumi.CustomResource):
                  engine: Optional[pulumi.Input[str]] = None,
                  host_replace_policy: Optional[pulumi.Input[str]] = None,
                  mem_allocation_ratio: Optional[pulumi.Input[int]] = None,
+                 open_permission: Optional[pulumi.Input[bool]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -429,6 +464,7 @@ class DedicatedHostGroup(pulumi.CustomResource):
             __props__.__dict__["engine"] = engine
             __props__.__dict__["host_replace_policy"] = host_replace_policy
             __props__.__dict__["mem_allocation_ratio"] = mem_allocation_ratio
+            __props__.__dict__["open_permission"] = open_permission
             if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__.__dict__["vpc_id"] = vpc_id
@@ -449,6 +485,7 @@ class DedicatedHostGroup(pulumi.CustomResource):
             engine: Optional[pulumi.Input[str]] = None,
             host_replace_policy: Optional[pulumi.Input[str]] = None,
             mem_allocation_ratio: Optional[pulumi.Input[int]] = None,
+            open_permission: Optional[pulumi.Input[bool]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None) -> 'DedicatedHostGroup':
         """
         Get an existing DedicatedHostGroup resource's state with the given name, id, and optional extra
@@ -464,6 +501,7 @@ class DedicatedHostGroup(pulumi.CustomResource):
         :param pulumi.Input[str] engine: Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
         :param pulumi.Input[str] host_replace_policy: The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
         :param pulumi.Input[int] mem_allocation_ratio: The Memory Allocation Ratio of the Dedicated Host Group.
+        :param pulumi.Input[bool] open_permission: Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
         :param pulumi.Input[str] vpc_id: The virtual private cloud (VPC) ID of the dedicated cluster.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -477,6 +515,7 @@ class DedicatedHostGroup(pulumi.CustomResource):
         __props__.__dict__["engine"] = engine
         __props__.__dict__["host_replace_policy"] = host_replace_policy
         __props__.__dict__["mem_allocation_ratio"] = mem_allocation_ratio
+        __props__.__dict__["open_permission"] = open_permission
         __props__.__dict__["vpc_id"] = vpc_id
         return DedicatedHostGroup(resource_name, opts=opts, __props__=__props__)
 
@@ -535,6 +574,14 @@ class DedicatedHostGroup(pulumi.CustomResource):
         The Memory Allocation Ratio of the Dedicated Host Group.
         """
         return pulumi.get(self, "mem_allocation_ratio")
+
+    @property
+    @pulumi.getter(name="openPermission")
+    def open_permission(self) -> pulumi.Output[bool]:
+        """
+        Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+        """
+        return pulumi.get(self, "open_permission")
 
     @property
     @pulumi.getter(name="vpcId")

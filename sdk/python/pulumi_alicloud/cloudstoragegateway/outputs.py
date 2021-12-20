@@ -1573,16 +1573,23 @@ class GetStocksStockResult(dict):
 @pulumi.output_type
 class GetStorageBundlesBundleResult(dict):
     def __init__(__self__, *,
+                 create_time: str,
                  description: str,
                  id: str,
                  location: str,
                  storage_bundle_id: str,
                  storage_bundle_name: str):
+        pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "storage_bundle_id", storage_bundle_id)
         pulumi.set(__self__, "storage_bundle_name", storage_bundle_name)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter

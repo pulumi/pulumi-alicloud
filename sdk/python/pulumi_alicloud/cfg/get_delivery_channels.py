@@ -90,7 +90,7 @@ class GetDeliveryChannelsResult:
     @pulumi.getter
     def status(self) -> Optional[int]:
         """
-        The status of the delivery method.
+        The status of the delivery channel.
         """
         return pulumi.get(self, "status")
 

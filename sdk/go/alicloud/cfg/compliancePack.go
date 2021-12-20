@@ -114,7 +114,7 @@ type CompliancePack struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
 	RiskLevel pulumi.IntOutput `pulumi:"riskLevel"`
-	// The status of the resource.
+	// The status of the resource. The valid values: `CREATING`, `ACTIVE`.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -170,7 +170,7 @@ type compliancePackState struct {
 	Description *string `pulumi:"description"`
 	// The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
 	RiskLevel *int `pulumi:"riskLevel"`
-	// The status of the resource.
+	// The status of the resource. The valid values: `CREATING`, `ACTIVE`.
 	Status *string `pulumi:"status"`
 }
 
@@ -189,7 +189,7 @@ type CompliancePackState struct {
 	Description pulumi.StringPtrInput
 	// The Risk Level. Valid values:  `1`: critical, `2`: warning, `3`: info.
 	RiskLevel pulumi.IntPtrInput
-	// The status of the resource.
+	// The status of the resource. The valid values: `CREATING`, `ACTIVE`.
 	Status pulumi.StringPtrInput
 }
 

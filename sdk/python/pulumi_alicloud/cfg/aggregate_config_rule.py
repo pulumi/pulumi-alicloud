@@ -36,7 +36,7 @@ class AggregateConfigRuleArgs:
         :param pulumi.Input[str] config_rule_trigger_types: The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types_scopes: Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
         :param pulumi.Input[int] risk_level: The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info.
-        :param pulumi.Input[str] source_identifier: The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+        :param pulumi.Input[str] source_identifier: The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
         :param pulumi.Input[str] source_owner: Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
         :param pulumi.Input[str] description: The description of the rule.
         :param pulumi.Input[str] exclude_resource_ids_scope: The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
@@ -138,7 +138,7 @@ class AggregateConfigRuleArgs:
     @pulumi.getter(name="sourceIdentifier")
     def source_identifier(self) -> pulumi.Input[str]:
         """
-        The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+        The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
         """
         return pulumi.get(self, "source_identifier")
 
@@ -301,7 +301,7 @@ class _AggregateConfigRuleState:
         :param pulumi.Input[str] resource_group_ids_scope: The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types_scopes: Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
         :param pulumi.Input[int] risk_level: The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info.
-        :param pulumi.Input[str] source_identifier: The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+        :param pulumi.Input[str] source_identifier: The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
         :param pulumi.Input[str] source_owner: Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
         :param pulumi.Input[str] status: The rule status. The valid values: `ACTIVE`, `INACTIVE`.
         :param pulumi.Input[str] tag_key_scope: The rule monitors the tag key, only applies to rules created based on managed rules.
@@ -490,7 +490,7 @@ class _AggregateConfigRuleState:
     @pulumi.getter(name="sourceIdentifier")
     def source_identifier(self) -> Optional[pulumi.Input[str]]:
         """
-        The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+        The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
         """
         return pulumi.get(self, "source_identifier")
 
@@ -626,7 +626,7 @@ class AggregateConfigRule(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_ids_scope: The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types_scopes: Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
         :param pulumi.Input[int] risk_level: The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info.
-        :param pulumi.Input[str] source_identifier: The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+        :param pulumi.Input[str] source_identifier: The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
         :param pulumi.Input[str] source_owner: Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
         :param pulumi.Input[str] status: The rule status. The valid values: `ACTIVE`, `INACTIVE`.
         :param pulumi.Input[str] tag_key_scope: The rule monitors the tag key, only applies to rules created based on managed rules.
@@ -802,7 +802,7 @@ class AggregateConfigRule(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_ids_scope: The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types_scopes: Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
         :param pulumi.Input[int] risk_level: The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info.
-        :param pulumi.Input[str] source_identifier: The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+        :param pulumi.Input[str] source_identifier: The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
         :param pulumi.Input[str] source_owner: Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
         :param pulumi.Input[str] status: The rule status. The valid values: `ACTIVE`, `INACTIVE`.
         :param pulumi.Input[str] tag_key_scope: The rule monitors the tag key, only applies to rules created based on managed rules.
@@ -931,7 +931,7 @@ class AggregateConfigRule(pulumi.CustomResource):
     @pulumi.getter(name="sourceIdentifier")
     def source_identifier(self) -> pulumi.Output[str]:
         """
-        The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+        The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
         """
         return pulumi.get(self, "source_identifier")
 

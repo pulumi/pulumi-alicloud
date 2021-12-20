@@ -123,7 +123,7 @@ namespace Pulumi.AliCloud.Cfg
         public Output<int> RiskLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. The valid values: `CREATING`, `ACTIVE`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -280,7 +280,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<int>? RiskLevel { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. The valid values: `CREATING`, `ACTIVE`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

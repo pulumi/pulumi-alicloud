@@ -34,11 +34,11 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// </summary>
         public readonly string DeliveryChannelTargetArn;
         /// <summary>
-        /// The type of the delivery method.
+        /// The type of the delivery channel.
         /// </summary>
         public readonly string DeliveryChannelType;
         /// <summary>
-        /// The description of the delivery method.
+        /// The description of the delivery channel.
         /// </summary>
         public readonly string Description;
         /// <summary>
