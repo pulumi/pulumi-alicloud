@@ -770,6 +770,22 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cddc/dedicatedHost",
+  "fqn": "pulumi_alicloud.cddc",
+  "classes": {
+   "alicloud:cddc/dedicatedHost:DedicatedHost": "DedicatedHost"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cddc/dedicatedHostAccount",
+  "fqn": "pulumi_alicloud.cddc",
+  "classes": {
+   "alicloud:cddc/dedicatedHostAccount:DedicatedHostAccount": "DedicatedHostAccount"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cddc/dedicatedHostGroup",
   "fqn": "pulumi_alicloud.cddc",
   "classes": {
@@ -1034,6 +1050,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "clickhouse/backupPolicy",
+  "fqn": "pulumi_alicloud.clickhouse",
+  "classes": {
+   "alicloud:clickhouse/backupPolicy:BackupPolicy": "BackupPolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "clickhouse/dbCluster",
   "fqn": "pulumi_alicloud.clickhouse",
   "classes": {
@@ -1102,6 +1126,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cloudsso",
   "classes": {
    "alicloud:cloudsso/accessConfiguration:AccessConfiguration": "AccessConfiguration"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudsso/accessConfigurationProvisioning",
+  "fqn": "pulumi_alicloud.cloudsso",
+  "classes": {
+   "alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning": "AccessConfigurationProvisioning"
   }
  },
  {
@@ -1958,6 +1990,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ecs",
   "classes": {
    "alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment": "EcsNetworkInterfaceAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ecs/ecsSessionManagerStatus",
+  "fqn": "pulumi_alicloud.ecs",
+  "classes": {
+   "alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus": "EcsSessionManagerStatus"
   }
  },
  {
@@ -2938,10 +2978,34 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "mongodb/account",
+  "fqn": "pulumi_alicloud.mongodb",
+  "classes": {
+   "alicloud:mongodb/account:Account": "Account"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "mongodb/auditPolicy",
+  "fqn": "pulumi_alicloud.mongodb",
+  "classes": {
+   "alicloud:mongodb/auditPolicy:AuditPolicy": "AuditPolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "mongodb/instance",
   "fqn": "pulumi_alicloud.mongodb",
   "classes": {
    "alicloud:mongodb/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "mongodb/serverlessInstance",
+  "fqn": "pulumi_alicloud.mongodb",
+  "classes": {
+   "alicloud:mongodb/serverlessInstance:ServerlessInstance": "ServerlessInstance"
   }
  },
  {
@@ -3018,10 +3082,42 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "oos/parameter",
+  "fqn": "pulumi_alicloud.oos",
+  "classes": {
+   "alicloud:oos/parameter:Parameter": "Parameter"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "oos/patchBaseline",
   "fqn": "pulumi_alicloud.oos",
   "classes": {
    "alicloud:oos/patchBaseline:PatchBaseline": "PatchBaseline"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "oos/secretParameter",
+  "fqn": "pulumi_alicloud.oos",
+  "classes": {
+   "alicloud:oos/secretParameter:SecretParameter": "SecretParameter"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "oos/serviceSetting",
+  "fqn": "pulumi_alicloud.oos",
+  "classes": {
+   "alicloud:oos/serviceSetting:ServiceSetting": "ServiceSetting"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "oos/stateConfiguration",
+  "fqn": "pulumi_alicloud.oos",
+  "classes": {
+   "alicloud:oos/stateConfiguration:StateConfiguration": "StateConfiguration"
   }
  },
  {

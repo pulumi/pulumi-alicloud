@@ -36,6 +36,7 @@ export function getDedicatedHostGroups(args?: GetDedicatedHostGroupsArgs, opts?:
     return pulumi.runtime.invoke("alicloud:cddc/getDedicatedHostGroups:getDedicatedHostGroups", {
         "engine": args.engine,
         "ids": args.ids,
+        "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
 }
@@ -52,6 +53,10 @@ export interface GetDedicatedHostGroupsArgs {
      * A list of Dedicated Host Group IDs.
      */
     ids?: string[];
+    /**
+     * A regex string to filter results by Dedicated Host Group name.
+     */
+    nameRegex?: string;
     outputFile?: string;
 }
 
@@ -66,6 +71,8 @@ export interface GetDedicatedHostGroupsResult {
      */
     readonly id: string;
     readonly ids: string[];
+    readonly nameRegex?: string;
+    readonly names: string[];
     readonly outputFile?: string;
 }
 
@@ -85,5 +92,9 @@ export interface GetDedicatedHostGroupsOutputArgs {
      * A list of Dedicated Host Group IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Dedicated Host Group name.
+     */
+    nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
 }

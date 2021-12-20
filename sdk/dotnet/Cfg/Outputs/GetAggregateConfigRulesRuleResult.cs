@@ -51,8 +51,8 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// </summary>
         public readonly string EventSource;
         /// <summary>
-        /// The types of the resources to be evaluated against the rule.
-        /// * `source_identifier`- The name of the custom rule or managed rule.
+        /// The id of the resources to be evaluated against the rule.
+        /// * `source_identifier`- The identifier of the managed rule or the arn of the custom function.
         /// * `source_owner`- The source owner of the Config Rule.
         /// </summary>
         public readonly string ExcludeResourceIdsScope;
@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// </summary>
         public readonly string ModifiedTimestamp;
         /// <summary>
-        /// The Exclude ResourceId List.
+        /// The scope of resource region ids.
         /// </summary>
         public readonly string RegionIdsScope;
         /// <summary>

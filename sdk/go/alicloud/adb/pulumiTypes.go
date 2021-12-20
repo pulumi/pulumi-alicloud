@@ -48,6 +48,7 @@ type GetClustersCluster struct {
 	LockMode     string `pulumi:"lockMode"`
 	LockReason   string `pulumi:"lockReason"`
 	MaintainTime string `pulumi:"maintainTime"`
+	Mode         string `pulumi:"mode"`
 	// The DBClusterNetworkType of the ADB cluster.
 	NetworkType   string `pulumi:"networkType"`
 	PaymentType   string `pulumi:"paymentType"`
@@ -122,6 +123,7 @@ type GetClustersClusterArgs struct {
 	LockMode     pulumi.StringInput `pulumi:"lockMode"`
 	LockReason   pulumi.StringInput `pulumi:"lockReason"`
 	MaintainTime pulumi.StringInput `pulumi:"maintainTime"`
+	Mode         pulumi.StringInput `pulumi:"mode"`
 	// The DBClusterNetworkType of the ADB cluster.
 	NetworkType   pulumi.StringInput `pulumi:"networkType"`
 	PaymentType   pulumi.StringInput `pulumi:"paymentType"`
@@ -316,6 +318,10 @@ func (o GetClustersClusterOutput) MaintainTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.MaintainTime }).(pulumi.StringOutput)
 }
 
+func (o GetClustersClusterOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.Mode }).(pulumi.StringOutput)
+}
+
 // The DBClusterNetworkType of the ADB cluster.
 func (o GetClustersClusterOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.NetworkType }).(pulumi.StringOutput)
@@ -459,7 +465,9 @@ type GetDBClustersCluster struct {
 	LockReason string `pulumi:"lockReason"`
 	// The maintenance window of the cluster.
 	MaintainTime string `pulumi:"maintainTime"`
-	NetworkType  string `pulumi:"networkType"`
+	// The lock mode of the cluster.
+	Mode        string `pulumi:"mode"`
+	NetworkType string `pulumi:"networkType"`
 	// The payment type of the resource.
 	PaymentType string `pulumi:"paymentType"`
 	// The port that is used to access the cluster.
@@ -555,7 +563,9 @@ type GetDBClustersClusterArgs struct {
 	LockReason pulumi.StringInput `pulumi:"lockReason"`
 	// The maintenance window of the cluster.
 	MaintainTime pulumi.StringInput `pulumi:"maintainTime"`
-	NetworkType  pulumi.StringInput `pulumi:"networkType"`
+	// The lock mode of the cluster.
+	Mode        pulumi.StringInput `pulumi:"mode"`
+	NetworkType pulumi.StringInput `pulumi:"networkType"`
 	// The payment type of the resource.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
 	// The port that is used to access the cluster.
@@ -769,6 +779,11 @@ func (o GetDBClustersClusterOutput) LockReason() pulumi.StringOutput {
 // The maintenance window of the cluster.
 func (o GetDBClustersClusterOutput) MaintainTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDBClustersCluster) string { return v.MaintainTime }).(pulumi.StringOutput)
+}
+
+// The lock mode of the cluster.
+func (o GetDBClustersClusterOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClustersCluster) string { return v.Mode }).(pulumi.StringOutput)
 }
 
 func (o GetDBClustersClusterOutput) NetworkType() pulumi.StringOutput {

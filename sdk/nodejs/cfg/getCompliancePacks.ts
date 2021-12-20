@@ -61,7 +61,7 @@ export interface GetCompliancePacksArgs {
     nameRegex?: string;
     outputFile?: string;
     /**
-     * The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`
+     * The status of the resource. Valid values `ACTIVE`, `CREATING`.
      */
     status?: string;
 }
@@ -114,7 +114,7 @@ export interface GetCompliancePacksOutputArgs {
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`
+     * The status of the resource. Valid values `ACTIVE`, `CREATING`.
      */
     status?: pulumi.Input<string>;
 }

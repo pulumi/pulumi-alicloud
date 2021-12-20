@@ -62,7 +62,7 @@ type ControlPolicy struct {
 
 	// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
 	AclAction pulumi.StringOutput `pulumi:"aclAction"`
-	// The unique ID of the access control policy.
+	// (Available in v1.148.0+) The unique ID of the access control policy.
 	AclUuid pulumi.StringOutput `pulumi:"aclUuid"`
 	// The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
 	ApplicationName pulumi.StringOutput `pulumi:"applicationName"`
@@ -154,7 +154,7 @@ func GetControlPolicy(ctx *pulumi.Context,
 type controlPolicyState struct {
 	// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
 	AclAction *string `pulumi:"aclAction"`
-	// The unique ID of the access control policy.
+	// (Available in v1.148.0+) The unique ID of the access control policy.
 	AclUuid *string `pulumi:"aclUuid"`
 	// The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
 	ApplicationName *string `pulumi:"applicationName"`
@@ -191,7 +191,7 @@ type controlPolicyState struct {
 type ControlPolicyState struct {
 	// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
 	AclAction pulumi.StringPtrInput
-	// The unique ID of the access control policy.
+	// (Available in v1.148.0+) The unique ID of the access control policy.
 	AclUuid pulumi.StringPtrInput
 	// The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
 	ApplicationName pulumi.StringPtrInput

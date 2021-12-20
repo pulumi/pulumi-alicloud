@@ -22,6 +22,7 @@ export * from "./ecsKeyPairAttachment";
 export * from "./ecsLaunchTemplate";
 export * from "./ecsNetworkInterface";
 export * from "./ecsNetworkInterfaceAttachment";
+export * from "./ecsSessionManagerStatus";
 export * from "./ecsSnapshot";
 export * from "./eip";
 export * from "./eipAddress";
@@ -83,6 +84,7 @@ import { EcsKeyPairAttachment } from "./ecsKeyPairAttachment";
 import { EcsLaunchTemplate } from "./ecsLaunchTemplate";
 import { EcsNetworkInterface } from "./ecsNetworkInterface";
 import { EcsNetworkInterfaceAttachment } from "./ecsNetworkInterfaceAttachment";
+import { EcsSessionManagerStatus } from "./ecsSessionManagerStatus";
 import { EcsSnapshot } from "./ecsSnapshot";
 import { Eip } from "./eip";
 import { EipAddress } from "./eipAddress";
@@ -141,6 +143,8 @@ const _module = {
                 return new EcsNetworkInterface(name, <any>undefined, { urn })
             case "alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment":
                 return new EcsNetworkInterfaceAttachment(name, <any>undefined, { urn })
+            case "alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus":
+                return new EcsSessionManagerStatus(name, <any>undefined, { urn })
             case "alicloud:ecs/ecsSnapshot:EcsSnapshot":
                 return new EcsSnapshot(name, <any>undefined, { urn })
             case "alicloud:ecs/eip:Eip":
@@ -201,6 +205,7 @@ pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsKeyPairAttachment", _m
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsLaunchTemplate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsNetworkInterface", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsNetworkInterfaceAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsSessionManagerStatus", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsSnapshot", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/eip", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/eipAddress", _module)

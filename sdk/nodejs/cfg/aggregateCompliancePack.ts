@@ -127,11 +127,11 @@ export class AggregateCompliancePack extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * The Risk Level. Valid values: `1`, `2`, `3`.
+     * The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
      */
     public readonly riskLevel!: pulumi.Output<number>;
     /**
-     * The status of the resource.
+     * The status of the resource. The valid values: `CREATING`, `ACTIVE`.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -217,11 +217,11 @@ export interface AggregateCompliancePackState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The Risk Level. Valid values: `1`, `2`, `3`.
+     * The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
      */
     riskLevel?: pulumi.Input<number>;
     /**
-     * The status of the resource.
+     * The status of the resource. The valid values: `CREATING`, `ACTIVE`.
      */
     status?: pulumi.Input<string>;
 }
@@ -257,7 +257,7 @@ export interface AggregateCompliancePackArgs {
      */
     description: pulumi.Input<string>;
     /**
-     * The Risk Level. Valid values: `1`, `2`, `3`.
+     * The Risk Level. Valid values: `1`: critical `2`: warning `3`: info.
      */
     riskLevel: pulumi.Input<number>;
 }

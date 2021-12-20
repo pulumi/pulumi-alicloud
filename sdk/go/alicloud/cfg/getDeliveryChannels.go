@@ -75,7 +75,7 @@ type GetDeliveryChannelsResult struct {
 	// A list of Config Delivery Channel names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	// The status of the delivery method.
+	// The status of the delivery channel.
 	Status *int `pulumi:"status"`
 }
 
@@ -146,7 +146,7 @@ func (o GetDeliveryChannelsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDeliveryChannelsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-// The status of the delivery method.
+// The status of the delivery channel.
 func (o GetDeliveryChannelsResultOutput) Status() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetDeliveryChannelsResult) *int { return v.Status }).(pulumi.IntPtrOutput)
 }

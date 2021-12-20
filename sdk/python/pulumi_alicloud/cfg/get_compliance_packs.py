@@ -144,7 +144,7 @@ def get_compliance_packs(enable_details: Optional[bool] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Compliance Pack IDs.
     :param str name_regex: A regex string to filter results by Compliance Pack name.
-    :param str status: The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`
+    :param str status: The status of the resource. Valid values `ACTIVE`, `CREATING`.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -198,6 +198,6 @@ def get_compliance_packs_output(enable_details: Optional[pulumi.Input[Optional[b
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Compliance Pack IDs.
     :param str name_regex: A regex string to filter results by Compliance Pack name.
-    :param str status: The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`
+    :param str status: The status of the resource. Valid values `ACTIVE`, `CREATING`.
     """
     ...

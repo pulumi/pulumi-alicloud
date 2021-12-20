@@ -751,7 +751,7 @@ type GetAggregateCompliancePacksPack struct {
 	// The Aliyun User Id.
 	AccountId                   string `pulumi:"accountId"`
 	AggregateCompliancePackName string `pulumi:"aggregateCompliancePackName"`
-	// The first ID of the resource.
+	// The Aggregate Compliance Package Id.
 	// * `aggregateCompliancePackName` -The Aggregate Compliance Package Name.
 	AggregatorCompliancePackId string `pulumi:"aggregatorCompliancePackId"`
 	// The template ID of the Compliance Package.
@@ -783,7 +783,7 @@ type GetAggregateCompliancePacksPackArgs struct {
 	// The Aliyun User Id.
 	AccountId                   pulumi.StringInput `pulumi:"accountId"`
 	AggregateCompliancePackName pulumi.StringInput `pulumi:"aggregateCompliancePackName"`
-	// The first ID of the resource.
+	// The Aggregate Compliance Package Id.
 	// * `aggregateCompliancePackName` -The Aggregate Compliance Package Name.
 	AggregatorCompliancePackId pulumi.StringInput `pulumi:"aggregatorCompliancePackId"`
 	// The template ID of the Compliance Package.
@@ -860,7 +860,7 @@ func (o GetAggregateCompliancePacksPackOutput) AggregateCompliancePackName() pul
 	return o.ApplyT(func(v GetAggregateCompliancePacksPack) string { return v.AggregateCompliancePackName }).(pulumi.StringOutput)
 }
 
-// The first ID of the resource.
+// The Aggregate Compliance Package Id.
 // * `aggregateCompliancePackName` -The Aggregate Compliance Package Name.
 func (o GetAggregateCompliancePacksPackOutput) AggregatorCompliancePackId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAggregateCompliancePacksPack) string { return v.AggregatorCompliancePackId }).(pulumi.StringOutput)
@@ -1170,8 +1170,8 @@ type GetAggregateConfigRulesRule struct {
 	Description string `pulumi:"description"`
 	// Event source of the Config Rule.
 	EventSource string `pulumi:"eventSource"`
-	// The types of the resources to be evaluated against the rule.
-	// * `sourceIdentifier`- The name of the custom rule or managed rule.
+	// The id of the resources to be evaluated against the rule.
+	// * `sourceIdentifier`- The identifier of the managed rule or the arn of the custom function.
 	// * `sourceOwner`- The source owner of the Config Rule.
 	ExcludeResourceIdsScope string `pulumi:"excludeResourceIdsScope"`
 	// The ID of the Aggregate Config Rule.
@@ -1182,7 +1182,7 @@ type GetAggregateConfigRulesRule struct {
 	MaximumExecutionFrequency string `pulumi:"maximumExecutionFrequency"`
 	// The timestamp when the rule was last modified.
 	ModifiedTimestamp string `pulumi:"modifiedTimestamp"`
-	// The Exclude ResourceId List.
+	// The scope of resource region ids.
 	RegionIdsScope string `pulumi:"regionIdsScope"`
 	// The scope of resource group ids.
 	ResourceGroupIdsScope string   `pulumi:"resourceGroupIdsScope"`
@@ -1230,8 +1230,8 @@ type GetAggregateConfigRulesRuleArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// Event source of the Config Rule.
 	EventSource pulumi.StringInput `pulumi:"eventSource"`
-	// The types of the resources to be evaluated against the rule.
-	// * `sourceIdentifier`- The name of the custom rule or managed rule.
+	// The id of the resources to be evaluated against the rule.
+	// * `sourceIdentifier`- The identifier of the managed rule or the arn of the custom function.
 	// * `sourceOwner`- The source owner of the Config Rule.
 	ExcludeResourceIdsScope pulumi.StringInput `pulumi:"excludeResourceIdsScope"`
 	// The ID of the Aggregate Config Rule.
@@ -1242,7 +1242,7 @@ type GetAggregateConfigRulesRuleArgs struct {
 	MaximumExecutionFrequency pulumi.StringInput `pulumi:"maximumExecutionFrequency"`
 	// The timestamp when the rule was last modified.
 	ModifiedTimestamp pulumi.StringInput `pulumi:"modifiedTimestamp"`
-	// The Exclude ResourceId List.
+	// The scope of resource region ids.
 	RegionIdsScope pulumi.StringInput `pulumi:"regionIdsScope"`
 	// The scope of resource group ids.
 	ResourceGroupIdsScope pulumi.StringInput      `pulumi:"resourceGroupIdsScope"`
@@ -1359,8 +1359,8 @@ func (o GetAggregateConfigRulesRuleOutput) EventSource() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAggregateConfigRulesRule) string { return v.EventSource }).(pulumi.StringOutput)
 }
 
-// The types of the resources to be evaluated against the rule.
-// * `sourceIdentifier`- The name of the custom rule or managed rule.
+// The id of the resources to be evaluated against the rule.
+// * `sourceIdentifier`- The identifier of the managed rule or the arn of the custom function.
 // * `sourceOwner`- The source owner of the Config Rule.
 func (o GetAggregateConfigRulesRuleOutput) ExcludeResourceIdsScope() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAggregateConfigRulesRule) string { return v.ExcludeResourceIdsScope }).(pulumi.StringOutput)
@@ -1386,7 +1386,7 @@ func (o GetAggregateConfigRulesRuleOutput) ModifiedTimestamp() pulumi.StringOutp
 	return o.ApplyT(func(v GetAggregateConfigRulesRule) string { return v.ModifiedTimestamp }).(pulumi.StringOutput)
 }
 
-// The Exclude ResourceId List.
+// The scope of resource region ids.
 func (o GetAggregateConfigRulesRuleOutput) RegionIdsScope() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAggregateConfigRulesRule) string { return v.RegionIdsScope }).(pulumi.StringOutput)
 }
@@ -1569,7 +1569,7 @@ type GetAggregatorsAggregator struct {
 	Description string `pulumi:"description"`
 	// The id of the aggregator.
 	Id string `pulumi:"id"`
-	// The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
+	// The status of the resource. Valid Values:  `0`: creating `1`: normal `2`: deleting.
 	Status string `pulumi:"status"`
 }
 
@@ -1599,7 +1599,7 @@ type GetAggregatorsAggregatorArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// The id of the aggregator.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
+	// The status of the resource. Valid Values:  `0`: creating `1`: normal `2`: deleting.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -1691,7 +1691,7 @@ func (o GetAggregatorsAggregatorOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAggregatorsAggregator) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
+// The status of the resource. Valid Values:  `0`: creating `1`: normal `2`: deleting.
 func (o GetAggregatorsAggregatorOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAggregatorsAggregator) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -1848,7 +1848,7 @@ type GetCompliancePacksPack struct {
 	Id string `pulumi:"id"`
 	// The Ris Level.
 	RiskLevel int `pulumi:"riskLevel"`
-	// The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`
+	// The status of the resource. Valid values `ACTIVE`, `CREATING`.
 	Status string `pulumi:"status"`
 }
 
@@ -1880,7 +1880,7 @@ type GetCompliancePacksPackArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The Ris Level.
 	RiskLevel pulumi.IntInput `pulumi:"riskLevel"`
-	// The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`
+	// The status of the resource. Valid values `ACTIVE`, `CREATING`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -1975,7 +1975,7 @@ func (o GetCompliancePacksPackOutput) RiskLevel() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCompliancePacksPack) int { return v.RiskLevel }).(pulumi.IntOutput)
 }
 
-// The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`
+// The status of the resource. Valid values `ACTIVE`, `CREATING`.
 func (o GetCompliancePacksPackOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCompliancePacksPack) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2237,13 +2237,13 @@ type GetConfigurationRecordersRecorder struct {
 	// The ID of the Config Configuration Recorder. Value as the `accountId`.
 	// * `accountId`- The ID of the Alicloud account.
 	Id string `pulumi:"id"`
-	// Status of resource monitoring.
+	// Enterprise version configuration audit enabled status.
 	OrganizationEnableStatus string `pulumi:"organizationEnableStatus"`
 	// The ID of the Enterprise management account.
 	OrganizationMasterId int `pulumi:"organizationMasterId"`
 	// A list of resource types to be monitored.
 	ResourceTypes []string `pulumi:"resourceTypes"`
-	// Enterprise version configuration audit enabled status.
+	// Status of resource monitoring.
 	Status string `pulumi:"status"`
 }
 
@@ -2263,13 +2263,13 @@ type GetConfigurationRecordersRecorderArgs struct {
 	// The ID of the Config Configuration Recorder. Value as the `accountId`.
 	// * `accountId`- The ID of the Alicloud account.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Status of resource monitoring.
+	// Enterprise version configuration audit enabled status.
 	OrganizationEnableStatus pulumi.StringInput `pulumi:"organizationEnableStatus"`
 	// The ID of the Enterprise management account.
 	OrganizationMasterId pulumi.IntInput `pulumi:"organizationMasterId"`
 	// A list of resource types to be monitored.
 	ResourceTypes pulumi.StringArrayInput `pulumi:"resourceTypes"`
-	// Enterprise version configuration audit enabled status.
+	// Status of resource monitoring.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -2334,7 +2334,7 @@ func (o GetConfigurationRecordersRecorderOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConfigurationRecordersRecorder) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Status of resource monitoring.
+// Enterprise version configuration audit enabled status.
 func (o GetConfigurationRecordersRecorderOutput) OrganizationEnableStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConfigurationRecordersRecorder) string { return v.OrganizationEnableStatus }).(pulumi.StringOutput)
 }
@@ -2349,7 +2349,7 @@ func (o GetConfigurationRecordersRecorderOutput) ResourceTypes() pulumi.StringAr
 	return o.ApplyT(func(v GetConfigurationRecordersRecorder) []string { return v.ResourceTypes }).(pulumi.StringArrayOutput)
 }
 
-// Enterprise version configuration audit enabled status.
+// Status of resource monitoring.
 func (o GetConfigurationRecordersRecorderOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConfigurationRecordersRecorder) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2385,9 +2385,9 @@ type GetDeliveryChannelsChannel struct {
 	DeliveryChannelName string `pulumi:"deliveryChannelName"`
 	// The ARN of the delivery destination.
 	DeliveryChannelTargetArn string `pulumi:"deliveryChannelTargetArn"`
-	// The type of the delivery method.
+	// The type of the delivery channel.
 	DeliveryChannelType string `pulumi:"deliveryChannelType"`
-	// The description of the delivery method.
+	// The description of the delivery channel.
 	Description string `pulumi:"description"`
 	// The ID of the Config Delivery Channel.
 	Id string `pulumi:"id"`
@@ -2417,9 +2417,9 @@ type GetDeliveryChannelsChannelArgs struct {
 	DeliveryChannelName pulumi.StringInput `pulumi:"deliveryChannelName"`
 	// The ARN of the delivery destination.
 	DeliveryChannelTargetArn pulumi.StringInput `pulumi:"deliveryChannelTargetArn"`
-	// The type of the delivery method.
+	// The type of the delivery channel.
 	DeliveryChannelType pulumi.StringInput `pulumi:"deliveryChannelType"`
-	// The description of the delivery method.
+	// The description of the delivery channel.
 	Description pulumi.StringInput `pulumi:"description"`
 	// The ID of the Config Delivery Channel.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -2503,12 +2503,12 @@ func (o GetDeliveryChannelsChannelOutput) DeliveryChannelTargetArn() pulumi.Stri
 	return o.ApplyT(func(v GetDeliveryChannelsChannel) string { return v.DeliveryChannelTargetArn }).(pulumi.StringOutput)
 }
 
-// The type of the delivery method.
+// The type of the delivery channel.
 func (o GetDeliveryChannelsChannelOutput) DeliveryChannelType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDeliveryChannelsChannel) string { return v.DeliveryChannelType }).(pulumi.StringOutput)
 }
 
-// The description of the delivery method.
+// The description of the delivery channel.
 func (o GetDeliveryChannelsChannelOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDeliveryChannelsChannel) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -2576,7 +2576,7 @@ type GetRulesRule struct {
 	ModifiedTimestamp         string `pulumi:"modifiedTimestamp"`
 	// (Available in 1.124.1+) The scope of region ids.
 	RegionIdsScope string `pulumi:"regionIdsScope"`
-	// (Available in 1.124.1+) The scope of resource ids.
+	// (Available in 1.124.1+) The scope of resource group ids.
 	ResourceGroupIdsScope string `pulumi:"resourceGroupIdsScope"`
 	// (Available in 1.124.1+) The scope of resource types.
 	ResourceTypesScopes []string `pulumi:"resourceTypesScopes"`
@@ -2590,7 +2590,7 @@ type GetRulesRule struct {
 	SourceDetailMessageType string `pulumi:"sourceDetailMessageType"`
 	SourceIdentifier        string `pulumi:"sourceIdentifier"`
 	// Rule execution cycle.
-	// * `sourceIdentifier`- The name of the custom rule or managed rule.
+	// * `sourceIdentifier`- The identifier of the managed rule or the arn of the custom function.
 	// * `sourceOwner`- The source owner of the Config Rule.
 	SourceMaximumExecutionFrequency string `pulumi:"sourceMaximumExecutionFrequency"`
 	SourceOwner                     string `pulumi:"sourceOwner"`
@@ -2646,7 +2646,7 @@ type GetRulesRuleArgs struct {
 	ModifiedTimestamp         pulumi.StringInput `pulumi:"modifiedTimestamp"`
 	// (Available in 1.124.1+) The scope of region ids.
 	RegionIdsScope pulumi.StringInput `pulumi:"regionIdsScope"`
-	// (Available in 1.124.1+) The scope of resource ids.
+	// (Available in 1.124.1+) The scope of resource group ids.
 	ResourceGroupIdsScope pulumi.StringInput `pulumi:"resourceGroupIdsScope"`
 	// (Available in 1.124.1+) The scope of resource types.
 	ResourceTypesScopes pulumi.StringArrayInput `pulumi:"resourceTypesScopes"`
@@ -2660,7 +2660,7 @@ type GetRulesRuleArgs struct {
 	SourceDetailMessageType pulumi.StringInput `pulumi:"sourceDetailMessageType"`
 	SourceIdentifier        pulumi.StringInput `pulumi:"sourceIdentifier"`
 	// Rule execution cycle.
-	// * `sourceIdentifier`- The name of the custom rule or managed rule.
+	// * `sourceIdentifier`- The identifier of the managed rule or the arn of the custom function.
 	// * `sourceOwner`- The source owner of the Config Rule.
 	SourceMaximumExecutionFrequency pulumi.StringInput `pulumi:"sourceMaximumExecutionFrequency"`
 	SourceOwner                     pulumi.StringInput `pulumi:"sourceOwner"`
@@ -2800,7 +2800,7 @@ func (o GetRulesRuleOutput) RegionIdsScope() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.RegionIdsScope }).(pulumi.StringOutput)
 }
 
-// (Available in 1.124.1+) The scope of resource ids.
+// (Available in 1.124.1+) The scope of resource group ids.
 func (o GetRulesRuleOutput) ResourceGroupIdsScope() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.ResourceGroupIdsScope }).(pulumi.StringOutput)
 }
@@ -2835,7 +2835,7 @@ func (o GetRulesRuleOutput) SourceIdentifier() pulumi.StringOutput {
 }
 
 // Rule execution cycle.
-// * `sourceIdentifier`- The name of the custom rule or managed rule.
+// * `sourceIdentifier`- The identifier of the managed rule or the arn of the custom function.
 // * `sourceOwner`- The source owner of the Config Rule.
 func (o GetRulesRuleOutput) SourceMaximumExecutionFrequency() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.SourceMaximumExecutionFrequency }).(pulumi.StringOutput)

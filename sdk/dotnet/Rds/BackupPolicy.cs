@@ -181,6 +181,15 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> PreferredBackupTime { get; private set; } = null!;
 
         /// <summary>
+        /// The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
+        /// * **None**: No archived backup files are retained.
+        /// * **Lastest**: Only the most recent archived backup file is retained.
+        /// * **All**: All archived backup files are retained.
+        /// </summary>
+        [Output("releasedKeepPolicy")]
+        public Output<string> ReleasedKeepPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         /// </summary>
         [Output("retentionPeriod")]
@@ -354,6 +363,15 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? PreferredBackupTime { get; set; }
 
         /// <summary>
+        /// The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
+        /// * **None**: No archived backup files are retained.
+        /// * **Lastest**: Only the most recent archived backup file is retained.
+        /// * **All**: All archived backup files are retained.
+        /// </summary>
+        [Input("releasedKeepPolicy")]
+        public Input<string>? ReleasedKeepPolicy { get; set; }
+
+        /// <summary>
         /// It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         /// </summary>
         [Input("retentionPeriod")]
@@ -486,6 +504,15 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("preferredBackupTime")]
         public Input<string>? PreferredBackupTime { get; set; }
+
+        /// <summary>
+        /// The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
+        /// * **None**: No archived backup files are retained.
+        /// * **Lastest**: Only the most recent archived backup file is retained.
+        /// * **All**: All archived backup files are retained.
+        /// </summary>
+        [Input("releasedKeepPolicy")]
+        public Input<string>? ReleasedKeepPolicy { get; set; }
 
         /// <summary>
         /// It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.

@@ -302,6 +302,7 @@ class GetClustersClusterResult(dict):
                  eas_enable: bool,
                  expired_time: str,
                  extra_info: str,
+                 has_uncompleted_order: bool,
                  high_availability_enable: bool,
                  host_group_lists: Sequence['outputs.GetClustersClusterHostGroupListResult'],
                  host_pool_infos: Sequence['outputs.GetClustersClusterHostPoolInfoResult'],
@@ -323,6 +324,7 @@ class GetClustersClusterResult(dict):
                  status: str,
                  stop_time: str,
                  tags: Mapping[str, Any],
+                 type: str,
                  user_defined_emr_ecs_role: str,
                  user_id: str,
                  vpc_id: str,
@@ -365,6 +367,7 @@ class GetClustersClusterResult(dict):
         :param str status: The cluster status.
         :param str stop_time: Cluster stop time.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param str type: Disk type.
         :param str user_defined_emr_ecs_role: The EMR permission name used.
         :param str user_id: The user ID.
         :param str vpc_id: The VPC ID.
@@ -387,6 +390,7 @@ class GetClustersClusterResult(dict):
         pulumi.set(__self__, "eas_enable", eas_enable)
         pulumi.set(__self__, "expired_time", expired_time)
         pulumi.set(__self__, "extra_info", extra_info)
+        pulumi.set(__self__, "has_uncompleted_order", has_uncompleted_order)
         pulumi.set(__self__, "high_availability_enable", high_availability_enable)
         pulumi.set(__self__, "host_group_lists", host_group_lists)
         pulumi.set(__self__, "host_pool_infos", host_pool_infos)
@@ -408,6 +412,7 @@ class GetClustersClusterResult(dict):
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "stop_time", stop_time)
         pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "user_defined_emr_ecs_role", user_defined_emr_ecs_role)
         pulumi.set(__self__, "user_id", user_id)
         pulumi.set(__self__, "vpc_id", vpc_id)
@@ -541,6 +546,11 @@ class GetClustersClusterResult(dict):
         Additional information for Stack.
         """
         return pulumi.get(self, "extra_info")
+
+    @property
+    @pulumi.getter(name="hasUncompletedOrder")
+    def has_uncompleted_order(self) -> bool:
+        return pulumi.get(self, "has_uncompleted_order")
 
     @property
     @pulumi.getter(name="highAvailabilityEnable")
@@ -706,6 +716,14 @@ class GetClustersClusterResult(dict):
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Disk type.
+        """
+        return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="userDefinedEmrEcsRole")

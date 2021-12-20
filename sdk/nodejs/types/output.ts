@@ -255,6 +255,10 @@ export namespace actiontrail {
          */
         endPoint: string;
         /**
+         * The expired time  of the instance.
+         */
+        expiredTime: number;
+        /**
          * ID of the instance.
          */
         id: string;
@@ -262,6 +266,10 @@ export namespace actiontrail {
          * The peak value of io of the instance.
          */
         ioMax: number;
+        /**
+         * The msg retain of the instance.
+         */
+        msgRetain: number;
         /**
          * Name of the instance.
          */
@@ -286,6 +294,10 @@ export namespace actiontrail {
          * The spec type of the instance.
          */
         specType: string;
+        /**
+         * The SSL end point of the instance.
+         */
+        sslEndPoint: string;
         /**
          * The max num of topic can be create of the instance.
          */
@@ -574,6 +586,7 @@ export namespace adb {
         lockMode: string;
         lockReason: string;
         maintainTime: string;
+        mode: string;
         /**
          * The DBClusterNetworkType of the ADB cluster.
          */
@@ -720,6 +733,10 @@ export namespace adb {
          * The maintenance window of the cluster.
          */
         maintainTime: string;
+        /**
+         * The lock mode of the cluster.
+         */
+        mode: string;
         networkType: string;
         /**
          * The payment type of the resource.
@@ -792,7 +809,7 @@ export namespace adb {
 export namespace alb {
     export interface AclAclEntry {
         /**
-         * The description of the ACL entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
+         * The description of the ACL entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
          */
         description?: string;
         /**
@@ -800,7 +817,7 @@ export namespace alb {
          */
         entry?: string;
         /**
-         * The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+         * The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
          */
         status: string;
     }
@@ -3697,6 +3714,21 @@ export namespace cassandra {
 }
 
 export namespace cddc {
+    export interface GetDedicatedHostAccountsAccount {
+        /**
+         * The name of the Dedicated host account.
+         */
+        accountName: string;
+        /**
+         * The ID of the Dedicated host.
+         */
+        dedicatedHostId: string;
+        /**
+         * The ID of the Dedicated Host Account. The value formats as `<dedicated_host_id>:<account_name>`.
+         */
+        id: string;
+    }
+
     export interface GetDedicatedHostGroupsGroup {
         /**
          * The policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
@@ -3821,6 +3853,163 @@ export namespace cddc {
          * The ZoneIDList of the Dedicated Host Group.
          */
         zoneIdLists: string[];
+    }
+
+    export interface GetDedicatedHostsHost {
+        /**
+         * Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+         */
+        allocationStatus: string;
+        /**
+         * The ID of the bastion host with which the host is associated.
+         */
+        bastionInstanceId: string;
+        /**
+         * The numeric value of the CPU over commit ratio of the dedicated cluster.
+         */
+        cpuAllocationRatio: string;
+        /**
+         * The number of CPU cores used by the host.
+         */
+        cpuUsed: string;
+        /**
+         * The time when the host was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+         */
+        createTime: string;
+        /**
+         * The ID of the dedicated cluster in which the host is created.
+         */
+        dedicatedHostGroupId: string;
+        /**
+         * The ID of the host.
+         */
+        dedicatedHostId: string;
+        /**
+         * The disk usage in percentage.
+         */
+        diskAllocationRatio: string;
+        /**
+         * The Elastic Compute Service (ECS) instance type.
+         */
+        ecsClassCode: string;
+        /**
+         * The time when the host expires. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+         */
+        endTime: string;
+        /**
+         * The type of the database engine that is used by the host.
+         */
+        engine: string;
+        /**
+         * The time when the host expires. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+         */
+        expiredTime: string;
+        /**
+         * The instance type of the host.
+         */
+        hostClass: string;
+        /**
+         * The number of CPU cores specified for the host. Unit: `core`.
+         */
+        hostCpu: string;
+        /**
+         * The memory of the host. Unit: `GB`.
+         */
+        hostMem: string;
+        /**
+         * The name of the host.
+         */
+        hostName: string;
+        /**
+         * The total storage capacity of the host. Unit: `GB`.
+         */
+        hostStorage: string;
+        /**
+         * The storage type of the host.
+         */
+        hostType: string;
+        /**
+         * The ID of the Dedicated Host. The value formats as `<dedicated_host_group_id>:<dedicated_host_id>`.
+         */
+        id: string;
+        /**
+         * The image type of the host.
+         */
+        imageCategory: string;
+        /**
+         * The IP address of the host.
+         */
+        ipAddress: string;
+        /**
+         * The memory usage in percentage.
+         */
+        memAllocationRatio: string;
+        /**
+         * The amount of memory used by the host. Unit: `GB`.
+         */
+        memoryUsed: string;
+        /**
+         * Indicates whether you have the OS permissions on the host. Valid values: `0`: You do not have the OS permissions on the host. `1`: You have the OS permissions on the host.
+         */
+        openPermission: string;
+        /**
+         * The state of the host.
+         */
+        status: string;
+        /**
+         * The storage usage of the host. Unit: `GB`.
+         */
+        storageUsed: string;
+        /**
+         * The tag of the resource.
+         */
+        tags: {[key: string]: any};
+        /**
+         * The ID of the virtual private cloud (VPC) to which the host is connected.
+         */
+        vpcId: string;
+        /**
+         * The ID of the vSwitch.
+         */
+        vswitchId: string;
+        /**
+         * The zone ID of the host.
+         */
+        zoneId: string;
+    }
+
+    export interface GetHostEcsLevelInfosInfo {
+        /**
+         * The description of the host ecs level info.
+         */
+        description: string;
+        /**
+         * The instance family of the host ecs level info.
+         */
+        ecsClass: string;
+        /**
+         * The Elastic Compute Service (ECS) instance type.
+         */
+        ecsClassCode: string;
+        /**
+         * The ApsaraDB RDS instance type of the host ecs level info.
+         */
+        resClassCode: string;
+    }
+
+    export interface GetZonesZone {
+        /**
+         * The ID of the zone.
+         */
+        id: string;
+        /**
+         * The ID of the region.
+         */
+        regionId: string;
+        /**
+         * The ID of the zone.
+         */
+        zoneId: string;
     }
 
 }
@@ -4215,6 +4404,10 @@ export namespace cen {
          * Name of the CEN instance.
          */
         cenInstanceName: string;
+        /**
+         * The creation time of the CEN Instance.
+         */
+        createTime: string;
         /**
          * Description of the CEN instance.
          */
@@ -4910,7 +5103,7 @@ export namespace cfg {
         accountId: string;
         aggregateCompliancePackName: string;
         /**
-         * The first ID of the resource.
+         * The Aggregate Compliance Package Id.
          * * `aggregateCompliancePackName` -The Aggregate Compliance Package Name.
          */
         aggregatorCompliancePackId: string;
@@ -5009,8 +5202,8 @@ export namespace cfg {
          */
         eventSource: string;
         /**
-         * The types of the resources to be evaluated against the rule.
-         * * `sourceIdentifier`- The name of the custom rule or managed rule.
+         * The id of the resources to be evaluated against the rule.
+         * * `sourceIdentifier`- The identifier of the managed rule or the arn of the custom function.
          * * `sourceOwner`- The source owner of the Config Rule.
          */
         excludeResourceIdsScope: string;
@@ -5031,7 +5224,7 @@ export namespace cfg {
          */
         modifiedTimestamp: string;
         /**
-         * The Exclude ResourceId List.
+         * The scope of resource region ids.
          */
         regionIdsScope: string;
         /**
@@ -5100,7 +5293,7 @@ export namespace cfg {
          */
         id: string;
         /**
-         * The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
+         * The status of the resource. Valid Values:  `0`: creating `1`: normal `2`: deleting.
          */
         status: string;
     }
@@ -5154,7 +5347,7 @@ export namespace cfg {
          */
         riskLevel: number;
         /**
-         * The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`
+         * The status of the resource. Valid values `ACTIVE`, `CREATING`.
          */
         status: string;
     }
@@ -5197,7 +5390,7 @@ export namespace cfg {
          */
         id: string;
         /**
-         * Status of resource monitoring.
+         * Enterprise version configuration audit enabled status.
          */
         organizationEnableStatus: string;
         /**
@@ -5209,7 +5402,7 @@ export namespace cfg {
          */
         resourceTypes: string[];
         /**
-         * Enterprise version configuration audit enabled status.
+         * Status of resource monitoring.
          */
         status: string;
     }
@@ -5236,11 +5429,11 @@ export namespace cfg {
          */
         deliveryChannelTargetArn: string;
         /**
-         * The type of the delivery method.
+         * The type of the delivery channel.
          */
         deliveryChannelType: string;
         /**
-         * The description of the delivery method.
+         * The description of the delivery channel.
          */
         description: string;
         /**
@@ -5303,7 +5496,7 @@ export namespace cfg {
          */
         regionIdsScope: string;
         /**
-         * (Available in 1.124.1+) The scope of resource ids.
+         * (Available in 1.124.1+) The scope of resource group ids.
          */
         resourceGroupIdsScope: string;
         /**
@@ -5329,7 +5522,7 @@ export namespace cfg {
         sourceIdentifier: string;
         /**
          * Rule execution cycle. 
-         * * `sourceIdentifier`- The name of the custom rule or managed rule.
+         * * `sourceIdentifier`- The identifier of the managed rule or the arn of the custom function.
          * * `sourceOwner`- The source owner of the Config Rule.
          */
         sourceMaximumExecutionFrequency: string;
@@ -5404,6 +5597,33 @@ export namespace clickhouse {
         status: string;
     }
 
+    export interface GetBackupPoliciesPolicy {
+        /**
+         * Data backup days. Valid values: `7` to `730`.
+         */
+        backupRetentionPeriod: number;
+        /**
+         * The db cluster id.
+         */
+        dbClusterId: string;
+        /**
+         * The ID of the Backup Policy.
+         */
+        id: string;
+        /**
+         * DBCluster Backup period.
+         */
+        preferredBackupPeriods: string[];
+        /**
+         * Backup Time, UTC time.
+         */
+        preferredBackupTime: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+    }
+
     export interface GetDbClustersCluster {
         /**
          * Alibaba Cloud account Id.
@@ -5425,6 +5645,10 @@ export namespace clickhouse {
          * Connection string.
          */
         connectionString: string;
+        /**
+         * The control version of the DBCluster.
+         */
+        controlVersion: string;
         /**
          * The creation time of the resource.
          */
@@ -5518,6 +5742,10 @@ export namespace clickhouse {
          * Scale state.
          */
         scaleOutStatuses: outputs.clickhouse.GetDbClustersClusterScaleOutStatus[];
+        /**
+         * The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+         */
+        status: string;
         /**
          * Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
          */
@@ -6673,6 +6901,7 @@ export namespace cloudstoragegateway {
     }
 
     export interface GetStorageBundlesBundle {
+        createTime: string;
         description: string;
         id: string;
         location: string;
@@ -9237,13 +9466,41 @@ export namespace ddos {
          */
         baseBandwidth: number;
         /**
+         * The creation time of the instance.
+         */
+        createTime: number;
+        /**
+         * The debt status of the instance.
+         */
+        debtStatus: number;
+        /**
          * The instance's count of domain retransmission config.
          */
         domainCount: number;
         /**
+         * The edition of the instance. The Valid Values : `0`, `1`, `2`, `9`.
+         */
+        edition: number;
+        /**
+         * The enabled of the instance. The Valid Values : `0`, `1`.
+         */
+        enabled: number;
+        /**
+         * The expiry time of the instance.
+         */
+        expireTime: number;
+        /**
          * The instance's id.
          */
         id: string;
+        /**
+         * The ip mode of the instance. The Valid Values : `fnat`, `v6tov4`.
+         */
+        ipMode: string;
+        /**
+         * The ip version of the instance. The Valid Values : `Ipv4`, `Ipv6`.
+         */
+        ipVersion: string;
         /**
          * The instance's remark.
          */
@@ -9253,9 +9510,17 @@ export namespace ddos {
          */
         portCount: number;
         /**
+         * The remark of the instance.
+         */
+        remark: string;
+        /**
          * The instance's business bandwidth.
          */
         serviceBandwidth: number;
+        /**
+         * The status of the instance. The Valid Values : `1`, `2`.
+         */
+        status: number;
     }
 
     export interface GetDdosCooPortsPort {
@@ -15374,6 +15639,7 @@ export namespace emr {
          * Additional information for Stack.
          */
         extraInfo: string;
+        hasUncompletedOrder: boolean;
         /**
          * High availability cluster.
          */
@@ -15455,6 +15721,10 @@ export namespace emr {
          * A mapping of tags to assign to the resource.
          */
         tags: {[key: string]: any};
+        /**
+         * Disk type.
+         */
+        type: string;
         /**
          * The EMR permission name used.
          */
@@ -20271,6 +20541,48 @@ export namespace mns {
 }
 
 export namespace mongodb {
+    export interface GetAccountsAccount {
+        /**
+         * The description of the account.
+         */
+        accountDescription: string;
+        /**
+         * The name of the account.
+         */
+        accountName: string;
+        /**
+         * The role of the account. Valid values: `db`, `cs`, `mongos`, `logic`, `normal`.
+         */
+        characterType: string;
+        /**
+         * The ID of the Account. The value formats as `<instance_id>:<account_name>`.
+         */
+        id: string;
+        /**
+         * The id of the instance to which the account belongs.
+         */
+        instanceId: string;
+        /**
+         * The status of the account. Valid values: `Unavailable`, `Available`.
+         */
+        status: string;
+    }
+
+    export interface GetAuditPoliciesPolicy {
+        /**
+         * The status of the log audit feature.
+         */
+        auditStatus: string;
+        /**
+         * The ID of the instance.
+         */
+        dbInstanceId: string;
+        /**
+         * The ID of the Audit Policy.
+         */
+        id: string;
+    }
+
     export interface GetInstancesInstance {
         /**
          * Instance availability zone.
@@ -20384,6 +20696,136 @@ export namespace mongodb {
         storage: number;
     }
 
+    export interface GetServerlessInstancesInstance {
+        /**
+         * The read/write throughput consumed by the instance.
+         */
+        capacityUnit: number;
+        /**
+         * The db instance class.
+         */
+        dbInstanceClass: string;
+        /**
+         * The db instance description.
+         */
+        dbInstanceDescription: string;
+        /**
+         * The db instance id.
+         */
+        dbInstanceId: string;
+        /**
+         * The db instance release protection.
+         */
+        dbInstanceReleaseProtection: boolean;
+        /**
+         * The db instance storage.
+         */
+        dbInstanceStorage: number;
+        /**
+         * The database engine of the instance.
+         */
+        engine: string;
+        /**
+         * The database version number. Valid values: `4.2`.
+         */
+        engineVersion: string;
+        /**
+         * The time when the subscription instance expires. The time is in the `yyyy-MM-ddTHH:mmZ` format. The time is displayed in UTC.
+         */
+        expireTime: string;
+        /**
+         * The ID of the Serverless Instance.
+         */
+        id: string;
+        /**
+         * Indicates the type of the instance. Valid values: `0`: physical machine. `1`: ECS. `2`: DOCKER. `18`: k8s new architecture instance.
+         */
+        kindCode: string;
+        /**
+         * The locked status of the instance.
+         */
+        lockMode: string;
+        /**
+         * The start time of the maintenance window. The time is in the `HH:mmZ` format. The time is displayed in UTC.
+         */
+        maintainEndTime: string;
+        /**
+         * The end time of the maintenance window. The time is in the `HH:mmZ` format. The time is displayed in UTC.
+         */
+        maintainStartTime: string;
+        /**
+         * Instance maximum connections.
+         */
+        maxConnections: number;
+        /**
+         * The maximum IOPS of the instance.
+         */
+        maxIops: number;
+        /**
+         * The network type of the instance.
+         */
+        networkType: string;
+        /**
+         * The Payment type of the instance.
+         */
+        paymentType: string;
+        /**
+         * The access protocol type of the instance. Valid values: `mongodb`, `dynamodb`.
+         */
+        protocolType: string;
+        /**
+         * The ID of the resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * The security ip list.
+         */
+        securityIpGroups: outputs.mongodb.GetServerlessInstancesInstanceSecurityIpGroup[];
+        /**
+         * The status of the instance.
+         */
+        status: string;
+        /**
+         * The storage engine used by the instance.
+         */
+        storageEngine: string;
+        /**
+         * The tag of the resource.
+         */
+        tags: {[key: string]: any};
+        /**
+         * Intranet secret free access mode.
+         */
+        vpcAuthMode: string;
+        /**
+         * The ID of the VPC network.
+         */
+        vpcId: string;
+        /**
+         * The id of the vswitch.
+         */
+        vswitchId: string;
+        /**
+         * The ID of the zone.
+         */
+        zoneId: string;
+    }
+
+    export interface GetServerlessInstancesInstanceSecurityIpGroup {
+        /**
+         * The attribute of the IP whitelist. This parameter is empty by default.
+         */
+        securityIpGroupAttribute: string;
+        /**
+         * The name of the IP whitelist.
+         */
+        securityIpGroupName: string;
+        /**
+         * The IP addresses in the whitelist.
+         */
+        securityIpList: string;
+    }
+
     export interface GetZonesZone {
         /**
          * ID of the zone.
@@ -20424,6 +20866,21 @@ export namespace mongodb {
          * The virtual switch ID to launch DB instances in one VPC.
          */
         vswitchId: string;
+    }
+
+    export interface ServerlessInstanceSecurityIpGroup {
+        /**
+         * The attribute of the IP whitelist. This parameter is empty by default.
+         */
+        securityIpGroupAttribute?: string;
+        /**
+         * The name of the IP whitelist.
+         */
+        securityIpGroupName?: string;
+        /**
+         * The IP addresses in the whitelist.
+         */
+        securityIpList?: string;
     }
 
     export interface ShardingInstanceConfigServerList {
@@ -20948,6 +21405,69 @@ export namespace oos {
         updateDate: string;
     }
 
+    export interface GetParametersParameter {
+        /**
+         * The constraints of the common parameter.
+         */
+        constraints: string;
+        /**
+         * The time when the common parameter was created.
+         */
+        createTime: string;
+        /**
+         * The user who created the common parameter.
+         */
+        createdBy: string;
+        /**
+         * The description of the common parameter.
+         */
+        description: string;
+        /**
+         * The ID of the Parameter. Its value is same as `parameterName`.
+         */
+        id: string;
+        /**
+         * The ID of the common parameter.
+         */
+        parameterId: string;
+        /**
+         * The name of the common parameter.
+         */
+        parameterName: string;
+        /**
+         * The version number of the common parameter.
+         */
+        parameterVersion: number;
+        /**
+         * The ID of the Resource Group.
+         */
+        resourceGroupId: string;
+        /**
+         * The share type of the common parameter.
+         */
+        shareType: string;
+        /**
+         * The tag of the resource.
+         */
+        tags: {[key: string]: any};
+        /**
+         * The data type of the common parameter.
+         */
+        type: string;
+        /**
+         * The user who updated the common parameter.
+         */
+        updatedBy: string;
+        /**
+         * The time when the common parameter was updated.
+         */
+        updatedDate: string;
+        /**
+         * The value of the common parameter.
+         */
+        value: string;
+    }
+
     export interface GetPatchBaselinesBaseline {
         /**
          * Accept the rules.
@@ -20997,6 +21517,132 @@ export namespace oos {
          * The update time of patch baselines.
          */
         updatedDate: string;
+    }
+
+    export interface GetSecretParametersParameter {
+        /**
+         * The constraints of the encryption parameter.
+         */
+        constraints: string;
+        /**
+         * The time when the encryption parameter was created.
+         */
+        createTime: string;
+        /**
+         * The user who created the encryption parameter.
+         */
+        createdBy: string;
+        /**
+         * The description of the encryption parameter.
+         */
+        description: string;
+        /**
+         * The ID of the Secret Parameter.
+         */
+        id: string;
+        /**
+         * KeyId of KMS used for encryption.
+         */
+        keyId: string;
+        /**
+         * The version number of the encryption parameter.
+         */
+        parameterVersion: number;
+        /**
+         * The ID of the Resource Group.
+         */
+        resourceGroupId: string;
+        /**
+         * The ID of the encryption parameter.
+         */
+        secretParameterId: string;
+        /**
+         * The name of the encryption parameter.
+         */
+        secretParameterName: string;
+        /**
+         * The share type of the encryption parameter.
+         */
+        shareType: string;
+        /**
+         * The tag of the resource.
+         */
+        tags: {[key: string]: any};
+        /**
+         * The data type of the encryption parameter.
+         */
+        type: string;
+        /**
+         * The user who updated the encryption parameter.
+         */
+        updatedBy: string;
+        /**
+         * The time when the encryption parameter was updated.
+         */
+        updatedDate: string;
+    }
+
+    export interface GetStateConfigurationsConfiguration {
+        /**
+         * The configuration mode.
+         */
+        configureMode: string;
+        /**
+         * The creation time.
+         */
+        createTime: string;
+        /**
+         * The description.
+         */
+        description: string;
+        /**
+         * The ID of the State Configuration.
+         */
+        id: string;
+        /**
+         * The parameters.
+         */
+        parameters: string;
+        /**
+         * The ID of the resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * The schedule expression.
+         */
+        scheduleExpression: string;
+        /**
+         * The schedule type.
+         */
+        scheduleType: string;
+        /**
+         * The ID of the final state configuration.
+         */
+        stateConfigurationId: string;
+        /**
+         * The tag of the resource.
+         */
+        tags: {[key: string]: any};
+        /**
+         * The target resource.
+         */
+        targets: string;
+        /**
+         * The ID of the template.
+         */
+        templateId: string;
+        /**
+         * The name of the template.
+         */
+        templateName: string;
+        /**
+         * The version of the template.
+         */
+        templateVersion: string;
+        /**
+         * The time when the configuration is updated.
+         */
+        updateTime: string;
     }
 
     export interface GetTemplatesTemplate {

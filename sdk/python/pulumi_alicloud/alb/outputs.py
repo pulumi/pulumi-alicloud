@@ -96,9 +96,9 @@ class AclAclEntry(dict):
                  entry: Optional[str] = None,
                  status: Optional[str] = None):
         """
-        :param str description: The description of the ACL entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
+        :param str description: The description of the ACL entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
         :param str entry: The IP address for the ACL entry.
-        :param str status: The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        :param str status: The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -111,7 +111,7 @@ class AclAclEntry(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of the ACL entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
+        The description of the ACL entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
         """
         return pulumi.get(self, "description")
 
@@ -127,7 +127,7 @@ class AclAclEntry(dict):
     @pulumi.getter
     def status(self) -> Optional[str]:
         """
-        The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
         """
         return pulumi.get(self, "status")
 

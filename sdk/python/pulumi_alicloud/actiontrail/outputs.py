@@ -174,14 +174,17 @@ class GetInstancesInstanceResult(dict):
                  disk_type: int,
                  eip_max: int,
                  end_point: str,
+                 expired_time: int,
                  id: str,
                  io_max: int,
+                 msg_retain: int,
                  name: str,
                  paid_type: str,
                  security_group: str,
                  service_status: int,
                  service_version: str,
                  spec_type: str,
+                 ssl_end_point: str,
                  topic_quota: int,
                  vpc_id: str,
                  vswitch_id: str,
@@ -194,14 +197,17 @@ class GetInstancesInstanceResult(dict):
         :param int disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
         :param int eip_max: The peak bandwidth of the instance.
         :param str end_point: The endPoint to access the instance.
+        :param int expired_time: The expired time  of the instance.
         :param str id: ID of the instance.
         :param int io_max: The peak value of io of the instance.
+        :param int msg_retain: The msg retain of the instance.
         :param str name: Name of the instance.
         :param str paid_type: The paid type of the instance.
         :param str security_group: The security group of the instance.
         :param int service_status: The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error.
         :param str service_version: The kafka openSource version of the instance.
         :param str spec_type: The spec type of the instance.
+        :param str ssl_end_point: The SSL end point of the instance.
         :param int topic_quota: The max num of topic can be create of the instance.
         :param str vpc_id: The ID of attaching VPC to instance.
         :param str vswitch_id: The ID of attaching vswitch to instance.
@@ -214,14 +220,17 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "eip_max", eip_max)
         pulumi.set(__self__, "end_point", end_point)
+        pulumi.set(__self__, "expired_time", expired_time)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "io_max", io_max)
+        pulumi.set(__self__, "msg_retain", msg_retain)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "paid_type", paid_type)
         pulumi.set(__self__, "security_group", security_group)
         pulumi.set(__self__, "service_status", service_status)
         pulumi.set(__self__, "service_version", service_version)
         pulumi.set(__self__, "spec_type", spec_type)
+        pulumi.set(__self__, "ssl_end_point", ssl_end_point)
         pulumi.set(__self__, "topic_quota", topic_quota)
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
@@ -284,6 +293,14 @@ class GetInstancesInstanceResult(dict):
         return pulumi.get(self, "end_point")
 
     @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> int:
+        """
+        The expired time  of the instance.
+        """
+        return pulumi.get(self, "expired_time")
+
+    @property
     @pulumi.getter
     def id(self) -> str:
         """
@@ -298,6 +315,14 @@ class GetInstancesInstanceResult(dict):
         The peak value of io of the instance.
         """
         return pulumi.get(self, "io_max")
+
+    @property
+    @pulumi.getter(name="msgRetain")
+    def msg_retain(self) -> int:
+        """
+        The msg retain of the instance.
+        """
+        return pulumi.get(self, "msg_retain")
 
     @property
     @pulumi.getter
@@ -346,6 +371,14 @@ class GetInstancesInstanceResult(dict):
         The spec type of the instance.
         """
         return pulumi.get(self, "spec_type")
+
+    @property
+    @pulumi.getter(name="sslEndPoint")
+    def ssl_end_point(self) -> str:
+        """
+        The SSL end point of the instance.
+        """
+        return pulumi.get(self, "ssl_end_point")
 
     @property
     @pulumi.getter(name="topicQuota")

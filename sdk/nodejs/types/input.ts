@@ -130,7 +130,7 @@ export namespace adb {
 export namespace alb {
     export interface AclAclEntry {
         /**
-         * The description of the ACL entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
+         * The description of the ACL entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
          */
         description?: pulumi.Input<string>;
         /**
@@ -138,7 +138,7 @@ export namespace alb {
          */
         entry?: pulumi.Input<string>;
         /**
-         * The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+         * The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
          */
         status?: pulumi.Input<string>;
     }
@@ -3804,6 +3804,21 @@ export namespace mongodb {
          * The virtual switch ID to launch DB instances in one VPC.
          */
         vswitchId?: pulumi.Input<string>;
+    }
+
+    export interface ServerlessInstanceSecurityIpGroup {
+        /**
+         * The attribute of the IP whitelist. This parameter is empty by default.
+         */
+        securityIpGroupAttribute?: pulumi.Input<string>;
+        /**
+         * The name of the IP whitelist.
+         */
+        securityIpGroupName?: pulumi.Input<string>;
+        /**
+         * The IP addresses in the whitelist.
+         */
+        securityIpList?: pulumi.Input<string>;
     }
 
     export interface ShardingInstanceConfigServerList {

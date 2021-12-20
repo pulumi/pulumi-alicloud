@@ -121,6 +121,10 @@ namespace Pulumi.AliCloud.Adb.Outputs
         /// The maintenance window of the cluster.
         /// </summary>
         public readonly string MaintainTime;
+        /// <summary>
+        /// The lock mode of the cluster.
+        /// </summary>
+        public readonly string Mode;
         public readonly string NetworkType;
         /// <summary>
         /// The payment type of the resource.
@@ -232,6 +236,8 @@ namespace Pulumi.AliCloud.Adb.Outputs
 
             string maintainTime,
 
+            string mode,
+
             string networkType,
 
             string paymentType,
@@ -289,6 +295,7 @@ namespace Pulumi.AliCloud.Adb.Outputs
             LockMode = lockMode;
             LockReason = lockReason;
             MaintainTime = maintainTime;
+            Mode = mode;
             NetworkType = networkType;
             PaymentType = paymentType;
             Port = port;

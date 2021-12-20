@@ -16,6 +16,8 @@ import (
 //
 // > **NOTE:** Available in v1.118.0+
 //
+// > **NOTE:** The MNS service is not support in the international site.
+//
 // ## Example Usage
 //
 // ```go

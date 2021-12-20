@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> AclAction { get; private set; } = null!;
 
         /// <summary>
-        /// The unique ID of the access control policy.
+        /// (Available in v1.148.0+) The unique ID of the access control policy.
         /// </summary>
         [Output("aclUuid")]
         public Output<string> AclUuid { get; private set; } = null!;
@@ -314,7 +314,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? AclAction { get; set; }
 
         /// <summary>
-        /// The unique ID of the access control policy.
+        /// (Available in v1.148.0+) The unique ID of the access control policy.
         /// </summary>
         [Input("aclUuid")]
         public Input<string>? AclUuid { get; set; }

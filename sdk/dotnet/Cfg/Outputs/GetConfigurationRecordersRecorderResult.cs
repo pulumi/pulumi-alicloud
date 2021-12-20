@@ -20,7 +20,7 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Status of resource monitoring.
+        /// Enterprise version configuration audit enabled status.
         /// </summary>
         public readonly string OrganizationEnableStatus;
         /// <summary>
@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Cfg.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ResourceTypes;
         /// <summary>
-        /// Enterprise version configuration audit enabled status.
+        /// Status of resource monitoring.
         /// </summary>
         public readonly string Status;
 

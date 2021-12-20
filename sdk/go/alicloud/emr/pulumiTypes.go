@@ -368,7 +368,8 @@ type GetClustersCluster struct {
 	// Timeout time.
 	ExpiredTime string `pulumi:"expiredTime"`
 	// Additional information for Stack.
-	ExtraInfo string `pulumi:"extraInfo"`
+	ExtraInfo           string `pulumi:"extraInfo"`
+	HasUncompletedOrder bool   `pulumi:"hasUncompletedOrder"`
 	// High availability cluster.
 	HighAvailabilityEnable bool `pulumi:"highAvailabilityEnable"`
 	// List of cluster machine groups.
@@ -410,6 +411,8 @@ type GetClustersCluster struct {
 	StopTime string `pulumi:"stopTime"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// Disk type.
+	Type string `pulumi:"type"`
 	// The EMR permission name used.
 	UserDefinedEmrEcsRole string `pulumi:"userDefinedEmrEcsRole"`
 	// The user ID.
@@ -465,7 +468,8 @@ type GetClustersClusterArgs struct {
 	// Timeout time.
 	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
 	// Additional information for Stack.
-	ExtraInfo pulumi.StringInput `pulumi:"extraInfo"`
+	ExtraInfo           pulumi.StringInput `pulumi:"extraInfo"`
+	HasUncompletedOrder pulumi.BoolInput   `pulumi:"hasUncompletedOrder"`
 	// High availability cluster.
 	HighAvailabilityEnable pulumi.BoolInput `pulumi:"highAvailabilityEnable"`
 	// List of cluster machine groups.
@@ -507,6 +511,8 @@ type GetClustersClusterArgs struct {
 	StopTime pulumi.StringInput `pulumi:"stopTime"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput `pulumi:"tags"`
+	// Disk type.
+	Type pulumi.StringInput `pulumi:"type"`
 	// The EMR permission name used.
 	UserDefinedEmrEcsRole pulumi.StringInput `pulumi:"userDefinedEmrEcsRole"`
 	// The user ID.
@@ -650,6 +656,10 @@ func (o GetClustersClusterOutput) ExtraInfo() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ExtraInfo }).(pulumi.StringOutput)
 }
 
+func (o GetClustersClusterOutput) HasUncompletedOrder() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClustersCluster) bool { return v.HasUncompletedOrder }).(pulumi.BoolOutput)
+}
+
 // High availability cluster.
 func (o GetClustersClusterOutput) HighAvailabilityEnable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClustersCluster) bool { return v.HighAvailabilityEnable }).(pulumi.BoolOutput)
@@ -752,6 +762,11 @@ func (o GetClustersClusterOutput) StopTime() pulumi.StringOutput {
 // A mapping of tags to assign to the resource.
 func (o GetClustersClusterOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetClustersCluster) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// Disk type.
+func (o GetClustersClusterOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersCluster) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // The EMR permission name used.

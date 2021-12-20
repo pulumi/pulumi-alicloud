@@ -587,6 +587,7 @@ class GetInstancesInstanceResult(dict):
                  cen_bandwidth_package_ids: Sequence[str],
                  cen_id: str,
                  cen_instance_name: str,
+                 create_time: str,
                  description: str,
                  id: str,
                  name: str,
@@ -597,6 +598,7 @@ class GetInstancesInstanceResult(dict):
         :param Sequence[str] cen_bandwidth_package_ids: List of CEN Bandwidth Package IDs in the specified CEN instance.
         :param str cen_id: ID of the CEN instance.
         :param str cen_instance_name: Name of the CEN instance.
+        :param str create_time: The creation time of the CEN Instance.
         :param str description: Description of the CEN instance.
         :param str id: ID of the CEN instance.
         :param str name: Name of the CEN instance.
@@ -607,6 +609,7 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "cen_bandwidth_package_ids", cen_bandwidth_package_ids)
         pulumi.set(__self__, "cen_id", cen_id)
         pulumi.set(__self__, "cen_instance_name", cen_instance_name)
+        pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -637,6 +640,14 @@ class GetInstancesInstanceResult(dict):
         Name of the CEN instance.
         """
         return pulumi.get(self, "cen_instance_name")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the CEN Instance.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter

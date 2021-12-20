@@ -15,34 +15,23 @@ __all__ = ['AggregatorArgs', 'Aggregator']
 @pulumi.input_type
 class AggregatorArgs:
     def __init__(__self__, *,
-                 aggregator_accounts: pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]],
                  aggregator_name: pulumi.Input[str],
                  description: pulumi.Input[str],
+                 aggregator_accounts: Optional[pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]]] = None,
                  aggregator_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Aggregator resource.
-        :param pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]] aggregator_accounts: The information of account in aggregator.
         :param pulumi.Input[str] aggregator_name: The name of aggregator.
         :param pulumi.Input[str] description: The description of aggregator.
+        :param pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]] aggregator_accounts: The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
         :param pulumi.Input[str] aggregator_type: The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
         """
-        pulumi.set(__self__, "aggregator_accounts", aggregator_accounts)
         pulumi.set(__self__, "aggregator_name", aggregator_name)
         pulumi.set(__self__, "description", description)
+        if aggregator_accounts is not None:
+            pulumi.set(__self__, "aggregator_accounts", aggregator_accounts)
         if aggregator_type is not None:
             pulumi.set(__self__, "aggregator_type", aggregator_type)
-
-    @property
-    @pulumi.getter(name="aggregatorAccounts")
-    def aggregator_accounts(self) -> pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]]:
-        """
-        The information of account in aggregator.
-        """
-        return pulumi.get(self, "aggregator_accounts")
-
-    @aggregator_accounts.setter
-    def aggregator_accounts(self, value: pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]]):
-        pulumi.set(self, "aggregator_accounts", value)
 
     @property
     @pulumi.getter(name="aggregatorName")
@@ -69,6 +58,18 @@ class AggregatorArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="aggregatorAccounts")
+    def aggregator_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]]]:
+        """
+        The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
+        """
+        return pulumi.get(self, "aggregator_accounts")
+
+    @aggregator_accounts.setter
+    def aggregator_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]]]):
+        pulumi.set(self, "aggregator_accounts", value)
+
+    @property
     @pulumi.getter(name="aggregatorType")
     def aggregator_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -91,11 +92,11 @@ class _AggregatorState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Aggregator resources.
-        :param pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]] aggregator_accounts: The information of account in aggregator.
+        :param pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]] aggregator_accounts: The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
         :param pulumi.Input[str] aggregator_name: The name of aggregator.
         :param pulumi.Input[str] aggregator_type: The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
         :param pulumi.Input[str] description: The description of aggregator.
-        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[str] status: The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
         """
         if aggregator_accounts is not None:
             pulumi.set(__self__, "aggregator_accounts", aggregator_accounts)
@@ -112,7 +113,7 @@ class _AggregatorState:
     @pulumi.getter(name="aggregatorAccounts")
     def aggregator_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]]]:
         """
-        The information of account in aggregator.
+        The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
         """
         return pulumi.get(self, "aggregator_accounts")
 
@@ -160,7 +161,7 @@ class _AggregatorState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource.
+        The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
         """
         return pulumi.get(self, "status")
 
@@ -214,7 +215,7 @@ class Aggregator(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregatorAggregatorAccountArgs']]]] aggregator_accounts: The information of account in aggregator.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregatorAggregatorAccountArgs']]]] aggregator_accounts: The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
         :param pulumi.Input[str] aggregator_name: The name of aggregator.
         :param pulumi.Input[str] aggregator_type: The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
         :param pulumi.Input[str] description: The description of aggregator.
@@ -289,8 +290,6 @@ class Aggregator(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AggregatorArgs.__new__(AggregatorArgs)
 
-            if aggregator_accounts is None and not opts.urn:
-                raise TypeError("Missing required property 'aggregator_accounts'")
             __props__.__dict__["aggregator_accounts"] = aggregator_accounts
             if aggregator_name is None and not opts.urn:
                 raise TypeError("Missing required property 'aggregator_name'")
@@ -322,11 +321,11 @@ class Aggregator(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregatorAggregatorAccountArgs']]]] aggregator_accounts: The information of account in aggregator.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregatorAggregatorAccountArgs']]]] aggregator_accounts: The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
         :param pulumi.Input[str] aggregator_name: The name of aggregator.
         :param pulumi.Input[str] aggregator_type: The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
         :param pulumi.Input[str] description: The description of aggregator.
-        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[str] status: The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -343,7 +342,7 @@ class Aggregator(pulumi.CustomResource):
     @pulumi.getter(name="aggregatorAccounts")
     def aggregator_accounts(self) -> pulumi.Output[Sequence['outputs.AggregatorAggregatorAccount']]:
         """
-        The information of account in aggregator.
+        The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
         """
         return pulumi.get(self, "aggregator_accounts")
 
@@ -375,7 +374,7 @@ class Aggregator(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource.
+        The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
         """
         return pulumi.get(self, "status")
 

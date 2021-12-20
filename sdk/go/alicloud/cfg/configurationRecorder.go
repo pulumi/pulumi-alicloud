@@ -54,7 +54,7 @@ type ConfigurationRecorder struct {
 	pulumi.CustomResourceState
 
 	EnterpriseEdition pulumi.BoolOutput `pulumi:"enterpriseEdition"`
-	// Status of resource monitoring. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
+	// Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
 	OrganizationEnableStatus pulumi.StringOutput `pulumi:"organizationEnableStatus"`
 	// The ID of the Enterprise management account.
 	OrganizationMasterId pulumi.IntOutput `pulumi:"organizationMasterId"`
@@ -62,7 +62,7 @@ type ConfigurationRecorder struct {
 	// * If you use an ordinary account, the `resourceTypes` supports the update operation after the process of creation is completed.
 	// * If you use an enterprise account, the `resourceTypes` does not support updating.
 	ResourceTypes pulumi.StringArrayOutput `pulumi:"resourceTypes"`
-	// Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
+	// Status of resource monitoring. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -96,7 +96,7 @@ func GetConfigurationRecorder(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ConfigurationRecorder resources.
 type configurationRecorderState struct {
 	EnterpriseEdition *bool `pulumi:"enterpriseEdition"`
-	// Status of resource monitoring. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
+	// Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
 	OrganizationEnableStatus *string `pulumi:"organizationEnableStatus"`
 	// The ID of the Enterprise management account.
 	OrganizationMasterId *int `pulumi:"organizationMasterId"`
@@ -104,13 +104,13 @@ type configurationRecorderState struct {
 	// * If you use an ordinary account, the `resourceTypes` supports the update operation after the process of creation is completed.
 	// * If you use an enterprise account, the `resourceTypes` does not support updating.
 	ResourceTypes []string `pulumi:"resourceTypes"`
-	// Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
+	// Status of resource monitoring. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
 	Status *string `pulumi:"status"`
 }
 
 type ConfigurationRecorderState struct {
 	EnterpriseEdition pulumi.BoolPtrInput
-	// Status of resource monitoring. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
+	// Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
 	OrganizationEnableStatus pulumi.StringPtrInput
 	// The ID of the Enterprise management account.
 	OrganizationMasterId pulumi.IntPtrInput
@@ -118,7 +118,7 @@ type ConfigurationRecorderState struct {
 	// * If you use an ordinary account, the `resourceTypes` supports the update operation after the process of creation is completed.
 	// * If you use an enterprise account, the `resourceTypes` does not support updating.
 	ResourceTypes pulumi.StringArrayInput
-	// Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
+	// Status of resource monitoring. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
 	Status pulumi.StringPtrInput
 }
 

@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:clickhouse/account:Account":
 		r = &Account{}
+	case "alicloud:clickhouse/backupPolicy:BackupPolicy":
+		r = &BackupPolicy{}
 	case "alicloud:clickhouse/dbCluster:DbCluster":
 		r = &DbCluster{}
 	default:
@@ -41,6 +43,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"clickhouse/account",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"clickhouse/backupPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:cddc/dedicatedHost:DedicatedHost":
+		r = &DedicatedHost{}
+	case "alicloud:cddc/dedicatedHostAccount:DedicatedHostAccount":
+		r = &DedicatedHostAccount{}
 	case "alicloud:cddc/dedicatedHostGroup:DedicatedHostGroup":
 		r = &DedicatedHostGroup{}
 	default:
@@ -36,6 +40,16 @@ func init() {
 	if err != nil {
 		fmt.Printf("failed to determine package version. defaulting to v1: %v\n", err)
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cddc/dedicatedHost",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cddc/dedicatedHostAccount",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cddc/dedicatedHostGroup",

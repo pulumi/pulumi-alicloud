@@ -42,6 +42,10 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// </summary>
         public readonly string EndPoint;
         /// <summary>
+        /// The expired time  of the instance.
+        /// </summary>
+        public readonly int ExpiredTime;
+        /// <summary>
         /// ID of the instance.
         /// </summary>
         public readonly string Id;
@@ -49,6 +53,10 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// The peak value of io of the instance.
         /// </summary>
         public readonly int IoMax;
+        /// <summary>
+        /// The msg retain of the instance.
+        /// </summary>
+        public readonly int MsgRetain;
         /// <summary>
         /// Name of the instance.
         /// </summary>
@@ -73,6 +81,10 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// The spec type of the instance.
         /// </summary>
         public readonly string SpecType;
+        /// <summary>
+        /// The SSL end point of the instance.
+        /// </summary>
+        public readonly string SslEndPoint;
         /// <summary>
         /// The max num of topic can be create of the instance.
         /// </summary>
@@ -106,9 +118,13 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
 
             string endPoint,
 
+            int expiredTime,
+
             string id,
 
             int ioMax,
+
+            int msgRetain,
 
             string name,
 
@@ -121,6 +137,8 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
             string serviceVersion,
 
             string specType,
+
+            string sslEndPoint,
 
             int topicQuota,
 
@@ -137,14 +155,17 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
             DiskType = diskType;
             EipMax = eipMax;
             EndPoint = endPoint;
+            ExpiredTime = expiredTime;
             Id = id;
             IoMax = ioMax;
+            MsgRetain = msgRetain;
             Name = name;
             PaidType = paidType;
             SecurityGroup = securityGroup;
             ServiceStatus = serviceStatus;
             ServiceVersion = serviceVersion;
             SpecType = specType;
+            SslEndPoint = sslEndPoint;
             TopicQuota = topicQuota;
             VpcId = vpcId;
             VswitchId = vswitchId;

@@ -146,7 +146,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+        /// The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -186,7 +186,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+        /// The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

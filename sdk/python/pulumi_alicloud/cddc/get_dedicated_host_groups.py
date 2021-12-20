@@ -21,7 +21,7 @@ class GetDedicatedHostGroupsResult:
     """
     A collection of values returned by getDedicatedHostGroups.
     """
-    def __init__(__self__, engine=None, groups=None, id=None, ids=None, output_file=None):
+    def __init__(__self__, engine=None, groups=None, id=None, ids=None, name_regex=None, names=None, output_file=None):
         if engine and not isinstance(engine, str):
             raise TypeError("Expected argument 'engine' to be a str")
         pulumi.set(__self__, "engine", engine)
@@ -34,6 +34,12 @@ class GetDedicatedHostGroupsResult:
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
+        if name_regex and not isinstance(name_regex, str):
+            raise TypeError("Expected argument 'name_regex' to be a str")
+        pulumi.set(__self__, "name_regex", name_regex)
+        if names and not isinstance(names, list):
+            raise TypeError("Expected argument 'names' to be a list")
+        pulumi.set(__self__, "names", names)
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
@@ -62,6 +68,16 @@ class GetDedicatedHostGroupsResult:
         return pulumi.get(self, "ids")
 
     @property
+    @pulumi.getter(name="nameRegex")
+    def name_regex(self) -> Optional[str]:
+        return pulumi.get(self, "name_regex")
+
+    @property
+    @pulumi.getter
+    def names(self) -> Sequence[str]:
+        return pulumi.get(self, "names")
+
+    @property
     @pulumi.getter(name="outputFile")
     def output_file(self) -> Optional[str]:
         return pulumi.get(self, "output_file")
@@ -77,11 +93,14 @@ class AwaitableGetDedicatedHostGroupsResult(GetDedicatedHostGroupsResult):
             groups=self.groups,
             id=self.id,
             ids=self.ids,
+            name_regex=self.name_regex,
+            names=self.names,
             output_file=self.output_file)
 
 
 def get_dedicated_host_groups(engine: Optional[str] = None,
                               ids: Optional[Sequence[str]] = None,
+                              name_regex: Optional[str] = None,
                               output_file: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDedicatedHostGroupsResult:
     """
@@ -104,10 +123,12 @@ def get_dedicated_host_groups(engine: Optional[str] = None,
 
     :param str engine: Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
     :param Sequence[str] ids: A list of Dedicated Host Group IDs.
+    :param str name_regex: A regex string to filter results by Dedicated Host Group name.
     """
     __args__ = dict()
     __args__['engine'] = engine
     __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -120,12 +141,15 @@ def get_dedicated_host_groups(engine: Optional[str] = None,
         groups=__ret__.groups,
         id=__ret__.id,
         ids=__ret__.ids,
+        name_regex=__ret__.name_regex,
+        names=__ret__.names,
         output_file=__ret__.output_file)
 
 
 @_utilities.lift_output_func(get_dedicated_host_groups)
 def get_dedicated_host_groups_output(engine: Optional[pulumi.Input[Optional[str]]] = None,
                                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDedicatedHostGroupsResult]:
     """
@@ -148,5 +172,6 @@ def get_dedicated_host_groups_output(engine: Optional[pulumi.Input[Optional[str]
 
     :param str engine: Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
     :param Sequence[str] ids: A list of Dedicated Host Group IDs.
+    :param str name_regex: A regex string to filter results by Dedicated Host Group name.
     """
     ...

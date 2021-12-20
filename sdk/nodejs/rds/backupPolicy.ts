@@ -159,6 +159,13 @@ export class BackupPolicy extends pulumi.CustomResource {
      */
     public readonly preferredBackupTime!: pulumi.Output<string | undefined>;
     /**
+     * The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
+     * * **None**: No archived backup files are retained.
+     * * **Lastest**: Only the most recent archived backup file is retained.
+     * * **All**: All archived backup files are retained.
+     */
+    public readonly releasedKeepPolicy!: pulumi.Output<string>;
+    /**
      * It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
      *
      * @deprecated Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead
@@ -196,6 +203,7 @@ export class BackupPolicy extends pulumi.CustomResource {
             inputs["logRetentionPeriod"] = state ? state.logRetentionPeriod : undefined;
             inputs["preferredBackupPeriods"] = state ? state.preferredBackupPeriods : undefined;
             inputs["preferredBackupTime"] = state ? state.preferredBackupTime : undefined;
+            inputs["releasedKeepPolicy"] = state ? state.releasedKeepPolicy : undefined;
             inputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
         } else {
             const args = argsOrState as BackupPolicyArgs | undefined;
@@ -220,6 +228,7 @@ export class BackupPolicy extends pulumi.CustomResource {
             inputs["logRetentionPeriod"] = args ? args.logRetentionPeriod : undefined;
             inputs["preferredBackupPeriods"] = args ? args.preferredBackupPeriods : undefined;
             inputs["preferredBackupTime"] = args ? args.preferredBackupTime : undefined;
+            inputs["releasedKeepPolicy"] = args ? args.releasedKeepPolicy : undefined;
             inputs["retentionPeriod"] = args ? args.retentionPeriod : undefined;
         }
         if (!opts.version) {
@@ -314,6 +323,13 @@ export interface BackupPolicyState {
      */
     preferredBackupTime?: pulumi.Input<string>;
     /**
+     * The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
+     * * **None**: No archived backup files are retained.
+     * * **Lastest**: Only the most recent archived backup file is retained.
+     * * **All**: All archived backup files are retained.
+     */
+    releasedKeepPolicy?: pulumi.Input<string>;
+    /**
      * It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
      *
      * @deprecated Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead
@@ -405,6 +421,13 @@ export interface BackupPolicyArgs {
      * DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
      */
     preferredBackupTime?: pulumi.Input<string>;
+    /**
+     * The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
+     * * **None**: No archived backup files are retained.
+     * * **Lastest**: Only the most recent archived backup file is retained.
+     * * **All**: All archived backup files are retained.
+     */
+    releasedKeepPolicy?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
      *

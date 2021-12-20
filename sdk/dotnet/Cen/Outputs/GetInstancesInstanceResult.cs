@@ -26,6 +26,10 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string CenInstanceName;
         /// <summary>
+        /// The creation time of the CEN Instance.
+        /// </summary>
+        public readonly string CreateTime;
+        /// <summary>
         /// Description of the CEN instance.
         /// </summary>
         public readonly string Description;
@@ -58,6 +62,8 @@ namespace Pulumi.AliCloud.Cen.Outputs
 
             string cenInstanceName,
 
+            string createTime,
+
             string description,
 
             string id,
@@ -73,6 +79,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
             CenBandwidthPackageIds = cenBandwidthPackageIds;
             CenId = cenId;
             CenInstanceName = cenInstanceName;
+            CreateTime = createTime;
             Description = description;
             Id = id;
             Name = name;

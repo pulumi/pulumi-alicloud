@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Amqp
     /// <summary>
     /// Provides a RabbitMQ (AMQP) Exchange resource.
     /// 
-    /// For information about RabbitMQ (AMQP) Exchange and how to use it, see [What is Exchange](https://help.aliyun.com/).
+    /// For information about RabbitMQ (AMQP) Exchange and how to use it, see [What is Exchange](https://www.alibabacloud.com/help/product/100989.html).
     /// 
     /// &gt; **NOTE:** Available in v1.128.0+.
     /// 

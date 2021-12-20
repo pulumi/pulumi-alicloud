@@ -73,7 +73,7 @@ export class ControlPolicy extends pulumi.CustomResource {
      */
     public readonly aclAction!: pulumi.Output<string>;
     /**
-     * The unique ID of the access control policy.
+     * (Available in v1.148.0+) The unique ID of the access control policy.
      */
     public /*out*/ readonly aclUuid!: pulumi.Output<string>;
     /**
@@ -230,7 +230,7 @@ export interface ControlPolicyState {
      */
     aclAction?: pulumi.Input<string>;
     /**
-     * The unique ID of the access control policy.
+     * (Available in v1.148.0+) The unique ID of the access control policy.
      */
     aclUuid?: pulumi.Input<string>;
     /**

@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Alb
     /// <summary>
     /// Provides a Application Load Balancer (ALB) Acl resource.
     /// 
-    /// For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/doc-detail/213617.htm).
+    /// For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/doc-detail/200280.html).
     /// 
     /// &gt; **NOTE:** Available in v1.133.0+.
     /// 
@@ -30,6 +30,14 @@ namespace Pulumi.AliCloud.Alb
     ///     {
     ///         var example = new AliCloud.Alb.Acl("example", new AliCloud.Alb.AclArgs
     ///         {
+    ///             AclEntries = 
+    ///             {
+    ///                 new AliCloud.Alb.Inputs.AclAclEntryArgs
+    ///                 {
+    ///                     Description = "example_value",
+    ///                     Entry = "10.0.0.0/24",
+    ///                 },
+    ///             },
     ///             AclName = "example_value",
     ///         });
     ///     }
@@ -49,31 +57,31 @@ namespace Pulumi.AliCloud.Alb
     public partial class Acl : Pulumi.CustomResource
     {
         /// <summary>
-        /// ACL Entries.
+        /// The list of the ACL entries. You can add up to `20` entries in each call.
         /// </summary>
         [Output("aclEntries")]
         public Output<ImmutableArray<Outputs.AclAclEntry>> AclEntries { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the ACL. The name must be 2 to 128 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
+        /// The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
         /// </summary>
         [Output("aclName")]
         public Output<string> AclName { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to precheck the API request. Valid values: `true`: only prechecks the API request. If you select this option, the specified endpoint service is not created after the request passes the precheck. The system prechecks the required parameters, request format, and service limits. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned. `false` (default): checks the request. After the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+        /// Specifies whether to precheck the API request.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// Resource Group to Which the Number.
+        /// The ID of the resource group.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        /// The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -131,7 +139,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.AclAclEntryArgs>? _aclEntries;
 
         /// <summary>
-        /// ACL Entries.
+        /// The list of the ACL entries. You can add up to `20` entries in each call.
         /// </summary>
         public InputList<Inputs.AclAclEntryArgs> AclEntries
         {
@@ -140,19 +148,19 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The name of the ACL. The name must be 2 to 128 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
+        /// The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
         /// </summary>
         [Input("aclName", required: true)]
         public Input<string> AclName { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether to precheck the API request. Valid values: `true`: only prechecks the API request. If you select this option, the specified endpoint service is not created after the request passes the precheck. The system prechecks the required parameters, request format, and service limits. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned. `false` (default): checks the request. After the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+        /// Specifies whether to precheck the API request.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Resource Group to Which the Number.
+        /// The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -176,7 +184,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.AclAclEntryGetArgs>? _aclEntries;
 
         /// <summary>
-        /// ACL Entries.
+        /// The list of the ACL entries. You can add up to `20` entries in each call.
         /// </summary>
         public InputList<Inputs.AclAclEntryGetArgs> AclEntries
         {
@@ -185,25 +193,25 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The name of the ACL. The name must be 2 to 128 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
+        /// The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
         /// </summary>
         [Input("aclName")]
         public Input<string>? AclName { get; set; }
 
         /// <summary>
-        /// Specifies whether to precheck the API request. Valid values: `true`: only prechecks the API request. If you select this option, the specified endpoint service is not created after the request passes the precheck. The system prechecks the required parameters, request format, and service limits. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned. `false` (default): checks the request. After the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+        /// Specifies whether to precheck the API request.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Resource Group to Which the Number.
+        /// The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        /// The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -60,12 +60,12 @@ class _ConfigurationRecorderState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ConfigurationRecorder resources.
-        :param pulumi.Input[str] organization_enable_status: Status of resource monitoring. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
+        :param pulumi.Input[str] organization_enable_status: Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
         :param pulumi.Input[int] organization_master_id: The ID of the Enterprise management account.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
                * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
                * If you use an enterprise account, the `resource_types` does not support updating.
-        :param pulumi.Input[str] status: Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
+        :param pulumi.Input[str] status: Status of resource monitoring. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
         """
         if enterprise_edition is not None:
             pulumi.set(__self__, "enterprise_edition", enterprise_edition)
@@ -91,7 +91,7 @@ class _ConfigurationRecorderState:
     @pulumi.getter(name="organizationEnableStatus")
     def organization_enable_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Status of resource monitoring. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
+        Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
         """
         return pulumi.get(self, "organization_enable_status")
 
@@ -129,7 +129,7 @@ class _ConfigurationRecorderState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
+        Status of resource monitoring. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
         """
         return pulumi.get(self, "status")
 
@@ -270,12 +270,12 @@ class ConfigurationRecorder(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] organization_enable_status: Status of resource monitoring. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
+        :param pulumi.Input[str] organization_enable_status: Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
         :param pulumi.Input[int] organization_master_id: The ID of the Enterprise management account.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
                * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
                * If you use an enterprise account, the `resource_types` does not support updating.
-        :param pulumi.Input[str] status: Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
+        :param pulumi.Input[str] status: Status of resource monitoring. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -297,7 +297,7 @@ class ConfigurationRecorder(pulumi.CustomResource):
     @pulumi.getter(name="organizationEnableStatus")
     def organization_enable_status(self) -> pulumi.Output[str]:
         """
-        Status of resource monitoring. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
+        Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
         """
         return pulumi.get(self, "organization_enable_status")
 
@@ -323,7 +323,7 @@ class ConfigurationRecorder(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
+        Status of resource monitoring. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
         """
         return pulumi.get(self, "status")
 

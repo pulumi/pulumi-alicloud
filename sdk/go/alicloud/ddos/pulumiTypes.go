@@ -763,16 +763,34 @@ type GetDdosCooInstancesInstance struct {
 	Bandwidth int `pulumi:"bandwidth"`
 	// The instance's base defend bandwidth.
 	BaseBandwidth int `pulumi:"baseBandwidth"`
+	// The creation time of the instance.
+	CreateTime int `pulumi:"createTime"`
+	// The debt status of the instance.
+	DebtStatus int `pulumi:"debtStatus"`
 	// The instance's count of domain retransmission config.
 	DomainCount int `pulumi:"domainCount"`
+	// The edition of the instance. The Valid Values : `0`, `1`, `2`, `9`.
+	Edition int `pulumi:"edition"`
+	// The enabled of the instance. The Valid Values : `0`, `1`.
+	Enabled int `pulumi:"enabled"`
+	// The expiry time of the instance.
+	ExpireTime int `pulumi:"expireTime"`
 	// The instance's id.
 	Id string `pulumi:"id"`
+	// The ip mode of the instance. The Valid Values : `fnat`, `v6tov4`.
+	IpMode string `pulumi:"ipMode"`
+	// The ip version of the instance. The Valid Values : `Ipv4`, `Ipv6`.
+	IpVersion string `pulumi:"ipVersion"`
 	// The instance's remark.
 	Name string `pulumi:"name"`
 	// The instance's count of port retransmission config.
 	PortCount int `pulumi:"portCount"`
+	// The remark of the instance.
+	Remark string `pulumi:"remark"`
 	// The instance's business bandwidth.
 	ServiceBandwidth int `pulumi:"serviceBandwidth"`
+	// The status of the instance. The Valid Values : `1`, `2`.
+	Status int `pulumi:"status"`
 }
 
 // GetDdosCooInstancesInstanceInput is an input type that accepts GetDdosCooInstancesInstanceArgs and GetDdosCooInstancesInstanceOutput values.
@@ -791,16 +809,34 @@ type GetDdosCooInstancesInstanceArgs struct {
 	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
 	// The instance's base defend bandwidth.
 	BaseBandwidth pulumi.IntInput `pulumi:"baseBandwidth"`
+	// The creation time of the instance.
+	CreateTime pulumi.IntInput `pulumi:"createTime"`
+	// The debt status of the instance.
+	DebtStatus pulumi.IntInput `pulumi:"debtStatus"`
 	// The instance's count of domain retransmission config.
 	DomainCount pulumi.IntInput `pulumi:"domainCount"`
+	// The edition of the instance. The Valid Values : `0`, `1`, `2`, `9`.
+	Edition pulumi.IntInput `pulumi:"edition"`
+	// The enabled of the instance. The Valid Values : `0`, `1`.
+	Enabled pulumi.IntInput `pulumi:"enabled"`
+	// The expiry time of the instance.
+	ExpireTime pulumi.IntInput `pulumi:"expireTime"`
 	// The instance's id.
 	Id pulumi.StringInput `pulumi:"id"`
+	// The ip mode of the instance. The Valid Values : `fnat`, `v6tov4`.
+	IpMode pulumi.StringInput `pulumi:"ipMode"`
+	// The ip version of the instance. The Valid Values : `Ipv4`, `Ipv6`.
+	IpVersion pulumi.StringInput `pulumi:"ipVersion"`
 	// The instance's remark.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The instance's count of port retransmission config.
 	PortCount pulumi.IntInput `pulumi:"portCount"`
+	// The remark of the instance.
+	Remark pulumi.StringInput `pulumi:"remark"`
 	// The instance's business bandwidth.
 	ServiceBandwidth pulumi.IntInput `pulumi:"serviceBandwidth"`
+	// The status of the instance. The Valid Values : `1`, `2`.
+	Status pulumi.IntInput `pulumi:"status"`
 }
 
 func (GetDdosCooInstancesInstanceArgs) ElementType() reflect.Type {
@@ -864,14 +900,49 @@ func (o GetDdosCooInstancesInstanceOutput) BaseBandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDdosCooInstancesInstance) int { return v.BaseBandwidth }).(pulumi.IntOutput)
 }
 
+// The creation time of the instance.
+func (o GetDdosCooInstancesInstanceOutput) CreateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDdosCooInstancesInstance) int { return v.CreateTime }).(pulumi.IntOutput)
+}
+
+// The debt status of the instance.
+func (o GetDdosCooInstancesInstanceOutput) DebtStatus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDdosCooInstancesInstance) int { return v.DebtStatus }).(pulumi.IntOutput)
+}
+
 // The instance's count of domain retransmission config.
 func (o GetDdosCooInstancesInstanceOutput) DomainCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDdosCooInstancesInstance) int { return v.DomainCount }).(pulumi.IntOutput)
 }
 
+// The edition of the instance. The Valid Values : `0`, `1`, `2`, `9`.
+func (o GetDdosCooInstancesInstanceOutput) Edition() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDdosCooInstancesInstance) int { return v.Edition }).(pulumi.IntOutput)
+}
+
+// The enabled of the instance. The Valid Values : `0`, `1`.
+func (o GetDdosCooInstancesInstanceOutput) Enabled() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDdosCooInstancesInstance) int { return v.Enabled }).(pulumi.IntOutput)
+}
+
+// The expiry time of the instance.
+func (o GetDdosCooInstancesInstanceOutput) ExpireTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDdosCooInstancesInstance) int { return v.ExpireTime }).(pulumi.IntOutput)
+}
+
 // The instance's id.
 func (o GetDdosCooInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDdosCooInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ip mode of the instance. The Valid Values : `fnat`, `v6tov4`.
+func (o GetDdosCooInstancesInstanceOutput) IpMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosCooInstancesInstance) string { return v.IpMode }).(pulumi.StringOutput)
+}
+
+// The ip version of the instance. The Valid Values : `Ipv4`, `Ipv6`.
+func (o GetDdosCooInstancesInstanceOutput) IpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosCooInstancesInstance) string { return v.IpVersion }).(pulumi.StringOutput)
 }
 
 // The instance's remark.
@@ -884,9 +955,19 @@ func (o GetDdosCooInstancesInstanceOutput) PortCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDdosCooInstancesInstance) int { return v.PortCount }).(pulumi.IntOutput)
 }
 
+// The remark of the instance.
+func (o GetDdosCooInstancesInstanceOutput) Remark() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDdosCooInstancesInstance) string { return v.Remark }).(pulumi.StringOutput)
+}
+
 // The instance's business bandwidth.
 func (o GetDdosCooInstancesInstanceOutput) ServiceBandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDdosCooInstancesInstance) int { return v.ServiceBandwidth }).(pulumi.IntOutput)
+}
+
+// The status of the instance. The Valid Values : `1`, `2`.
+func (o GetDdosCooInstancesInstanceOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDdosCooInstancesInstance) int { return v.Status }).(pulumi.IntOutput)
 }
 
 type GetDdosCooInstancesInstanceArrayOutput struct{ *pulumi.OutputState }

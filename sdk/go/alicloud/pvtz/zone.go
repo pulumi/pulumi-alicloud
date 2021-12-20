@@ -39,7 +39,7 @@ type Zone struct {
 	Remark pulumi.StringPtrOutput `pulumi:"remark"`
 	// The Id of resource group which the Private Zone belongs.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
-	// The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+	// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
 	SyncStatus pulumi.StringPtrOutput `pulumi:"syncStatus"`
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrOutput `pulumi:"userClientIp"`
@@ -97,7 +97,7 @@ type zoneState struct {
 	Remark *string `pulumi:"remark"`
 	// The Id of resource group which the Private Zone belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+	// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
 	SyncStatus *string `pulumi:"syncStatus"`
 	// The IP address of the client.
 	UserClientIp *string `pulumi:"userClientIp"`
@@ -127,7 +127,7 @@ type ZoneState struct {
 	Remark pulumi.StringPtrInput
 	// The Id of resource group which the Private Zone belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	// The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+	// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
 	SyncStatus pulumi.StringPtrInput
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrInput
@@ -157,7 +157,7 @@ type zoneArgs struct {
 	Remark *string `pulumi:"remark"`
 	// The Id of resource group which the Private Zone belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+	// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
 	SyncStatus *string `pulumi:"syncStatus"`
 	// The IP address of the client.
 	UserClientIp *string `pulumi:"userClientIp"`
@@ -184,7 +184,7 @@ type ZoneArgs struct {
 	Remark pulumi.StringPtrInput
 	// The Id of resource group which the Private Zone belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	// The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+	// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
 	SyncStatus pulumi.StringPtrInput
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrInput

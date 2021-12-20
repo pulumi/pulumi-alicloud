@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Cfg
     public partial class Aggregator : Pulumi.CustomResource
     {
         /// <summary>
-        /// The information of account in aggregator.
+        /// The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
         /// </summary>
         [Output("aggregatorAccounts")]
         public Output<ImmutableArray<Outputs.AggregatorAggregatorAccount>> AggregatorAccounts { get; private set; } = null!;
@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -134,11 +134,11 @@ namespace Pulumi.AliCloud.Cfg
 
     public sealed class AggregatorArgs : Pulumi.ResourceArgs
     {
-        [Input("aggregatorAccounts", required: true)]
+        [Input("aggregatorAccounts")]
         private InputList<Inputs.AggregatorAggregatorAccountArgs>? _aggregatorAccounts;
 
         /// <summary>
-        /// The information of account in aggregator.
+        /// The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
         /// </summary>
         public InputList<Inputs.AggregatorAggregatorAccountArgs> AggregatorAccounts
         {
@@ -175,7 +175,7 @@ namespace Pulumi.AliCloud.Cfg
         private InputList<Inputs.AggregatorAggregatorAccountGetArgs>? _aggregatorAccounts;
 
         /// <summary>
-        /// The information of account in aggregator.
+        /// The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
         /// </summary>
         public InputList<Inputs.AggregatorAggregatorAccountGetArgs> AggregatorAccounts
         {
@@ -202,7 +202,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

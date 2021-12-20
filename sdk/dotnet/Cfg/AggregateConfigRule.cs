@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Cfg
         public Output<int> RiskLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+        /// The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
         /// </summary>
         [Output("sourceIdentifier")]
         public Output<string> SourceIdentifier { get; private set; } = null!;
@@ -302,7 +302,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<int> RiskLevel { get; set; } = null!;
 
         /// <summary>
-        /// The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+        /// The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
         /// </summary>
         [Input("sourceIdentifier", required: true)]
         public Input<string> SourceIdentifier { get; set; } = null!;
@@ -423,7 +423,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<int>? RiskLevel { get; set; }
 
         /// <summary>
-        /// The identifier of the rule. For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+        /// The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
         /// </summary>
         [Input("sourceIdentifier")]
         public Input<string>? SourceIdentifier { get; set; }

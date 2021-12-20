@@ -31,6 +31,7 @@ class BackupPolicyArgs:
                  log_retention_period: Optional[pulumi.Input[int]] = None,
                  preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_backup_time: Optional[pulumi.Input[str]] = None,
+                 released_keep_policy: Optional[pulumi.Input[str]] = None,
                  retention_period: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a BackupPolicy resource.
@@ -52,6 +53,10 @@ class BackupPolicyArgs:
         :param pulumi.Input[int] log_retention_period: It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
         :param pulumi.Input[str] preferred_backup_time: DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+        :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
+               * **None**: No archived backup files are retained.
+               * **Lastest**: Only the most recent archived backup file is retained.
+               * **All**: All archived backup files are retained.
         :param pulumi.Input[int] retention_period: It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         """
         pulumi.set(__self__, "instance_id", instance_id)
@@ -101,6 +106,8 @@ class BackupPolicyArgs:
             pulumi.set(__self__, "preferred_backup_periods", preferred_backup_periods)
         if preferred_backup_time is not None:
             pulumi.set(__self__, "preferred_backup_time", preferred_backup_time)
+        if released_keep_policy is not None:
+            pulumi.set(__self__, "released_keep_policy", released_keep_policy)
         if retention_period is not None:
             warnings.warn("""Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""", DeprecationWarning)
             pulumi.log.warn("""retention_period is deprecated: Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""")
@@ -324,6 +331,21 @@ class BackupPolicyArgs:
         pulumi.set(self, "preferred_backup_time", value)
 
     @property
+    @pulumi.getter(name="releasedKeepPolicy")
+    def released_keep_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
+        * **None**: No archived backup files are retained.
+        * **Lastest**: Only the most recent archived backup file is retained.
+        * **All**: All archived backup files are retained.
+        """
+        return pulumi.get(self, "released_keep_policy")
+
+    @released_keep_policy.setter
+    def released_keep_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "released_keep_policy", value)
+
+    @property
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> Optional[pulumi.Input[int]]:
         """
@@ -357,6 +379,7 @@ class _BackupPolicyState:
                  log_retention_period: Optional[pulumi.Input[int]] = None,
                  preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_backup_time: Optional[pulumi.Input[str]] = None,
+                 released_keep_policy: Optional[pulumi.Input[str]] = None,
                  retention_period: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering BackupPolicy resources.
@@ -378,6 +401,10 @@ class _BackupPolicyState:
         :param pulumi.Input[int] log_retention_period: It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
         :param pulumi.Input[str] preferred_backup_time: DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+        :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
+               * **None**: No archived backup files are retained.
+               * **Lastest**: Only the most recent archived backup file is retained.
+               * **All**: All archived backup files are retained.
         :param pulumi.Input[int] retention_period: It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         """
         if archive_backup_keep_count is not None:
@@ -428,6 +455,8 @@ class _BackupPolicyState:
             pulumi.set(__self__, "preferred_backup_periods", preferred_backup_periods)
         if preferred_backup_time is not None:
             pulumi.set(__self__, "preferred_backup_time", preferred_backup_time)
+        if released_keep_policy is not None:
+            pulumi.set(__self__, "released_keep_policy", released_keep_policy)
         if retention_period is not None:
             warnings.warn("""Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""", DeprecationWarning)
             pulumi.log.warn("""retention_period is deprecated: Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""")
@@ -651,6 +680,21 @@ class _BackupPolicyState:
         pulumi.set(self, "preferred_backup_time", value)
 
     @property
+    @pulumi.getter(name="releasedKeepPolicy")
+    def released_keep_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
+        * **None**: No archived backup files are retained.
+        * **Lastest**: Only the most recent archived backup file is retained.
+        * **All**: All archived backup files are retained.
+        """
+        return pulumi.get(self, "released_keep_policy")
+
+    @released_keep_policy.setter
+    def released_keep_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "released_keep_policy", value)
+
+    @property
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> Optional[pulumi.Input[int]]:
         """
@@ -686,6 +730,7 @@ class BackupPolicy(pulumi.CustomResource):
                  log_retention_period: Optional[pulumi.Input[int]] = None,
                  preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_backup_time: Optional[pulumi.Input[str]] = None,
+                 released_keep_policy: Optional[pulumi.Input[str]] = None,
                  retention_period: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -753,6 +798,10 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.Input[int] log_retention_period: It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
         :param pulumi.Input[str] preferred_backup_time: DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+        :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
+               * **None**: No archived backup files are retained.
+               * **Lastest**: Only the most recent archived backup file is retained.
+               * **All**: All archived backup files are retained.
         :param pulumi.Input[int] retention_period: It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         """
         ...
@@ -839,6 +888,7 @@ class BackupPolicy(pulumi.CustomResource):
                  log_retention_period: Optional[pulumi.Input[int]] = None,
                  preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_backup_time: Optional[pulumi.Input[str]] = None,
+                 released_keep_policy: Optional[pulumi.Input[str]] = None,
                  retention_period: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         if opts is None:
@@ -884,6 +934,7 @@ class BackupPolicy(pulumi.CustomResource):
             __props__.__dict__["log_retention_period"] = log_retention_period
             __props__.__dict__["preferred_backup_periods"] = preferred_backup_periods
             __props__.__dict__["preferred_backup_time"] = preferred_backup_time
+            __props__.__dict__["released_keep_policy"] = released_keep_policy
             if retention_period is not None and not opts.urn:
                 warnings.warn("""Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""", DeprecationWarning)
                 pulumi.log.warn("""retention_period is deprecated: Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""")
@@ -916,6 +967,7 @@ class BackupPolicy(pulumi.CustomResource):
             log_retention_period: Optional[pulumi.Input[int]] = None,
             preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             preferred_backup_time: Optional[pulumi.Input[str]] = None,
+            released_keep_policy: Optional[pulumi.Input[str]] = None,
             retention_period: Optional[pulumi.Input[int]] = None) -> 'BackupPolicy':
         """
         Get an existing BackupPolicy resource's state with the given name, id, and optional extra
@@ -942,6 +994,10 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.Input[int] log_retention_period: It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
         :param pulumi.Input[str] preferred_backup_time: DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+        :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
+               * **None**: No archived backup files are retained.
+               * **Lastest**: Only the most recent archived backup file is retained.
+               * **All**: All archived backup files are retained.
         :param pulumi.Input[int] retention_period: It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -966,6 +1022,7 @@ class BackupPolicy(pulumi.CustomResource):
         __props__.__dict__["log_retention_period"] = log_retention_period
         __props__.__dict__["preferred_backup_periods"] = preferred_backup_periods
         __props__.__dict__["preferred_backup_time"] = preferred_backup_time
+        __props__.__dict__["released_keep_policy"] = released_keep_policy
         __props__.__dict__["retention_period"] = retention_period
         return BackupPolicy(resource_name, opts=opts, __props__=__props__)
 
@@ -1112,6 +1169,17 @@ class BackupPolicy(pulumi.CustomResource):
         DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
         """
         return pulumi.get(self, "preferred_backup_time")
+
+    @property
+    @pulumi.getter(name="releasedKeepPolicy")
+    def released_keep_policy(self) -> pulumi.Output[str]:
+        """
+        The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
+        * **None**: No archived backup files are retained.
+        * **Lastest**: Only the most recent archived backup file is retained.
+        * **All**: All archived backup files are retained.
+        """
+        return pulumi.get(self, "released_keep_policy")
 
     @property
     @pulumi.getter(name="retentionPeriod")

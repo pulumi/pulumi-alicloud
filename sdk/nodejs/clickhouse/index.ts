@@ -6,13 +6,16 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./account";
+export * from "./backupPolicy";
 export * from "./dbCluster";
 export * from "./getAccounts";
+export * from "./getBackupPolicies";
 export * from "./getDbClusters";
 export * from "./getRegions";
 
 // Import resources to register:
 import { Account } from "./account";
+import { BackupPolicy } from "./backupPolicy";
 import { DbCluster } from "./dbCluster";
 
 const _module = {
@@ -21,6 +24,8 @@ const _module = {
         switch (type) {
             case "alicloud:clickhouse/account:Account":
                 return new Account(name, <any>undefined, { urn })
+            case "alicloud:clickhouse/backupPolicy:BackupPolicy":
+                return new BackupPolicy(name, <any>undefined, { urn })
             case "alicloud:clickhouse/dbCluster:DbCluster":
                 return new DbCluster(name, <any>undefined, { urn })
             default:
@@ -29,4 +34,5 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "clickhouse/account", _module)
+pulumi.runtime.registerResourceModule("alicloud", "clickhouse/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "clickhouse/dbCluster", _module)

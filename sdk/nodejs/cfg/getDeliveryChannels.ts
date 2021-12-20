@@ -84,7 +84,7 @@ export interface GetDeliveryChannelsResult {
     readonly names: string[];
     readonly outputFile?: string;
     /**
-     * The status of the delivery method.
+     * The status of the delivery channel.
      */
     readonly status?: number;
 }

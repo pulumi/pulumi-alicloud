@@ -68,7 +68,7 @@ export class Aggregator extends pulumi.CustomResource {
     }
 
     /**
-     * The information of account in aggregator.
+     * The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
      */
     public readonly aggregatorAccounts!: pulumi.Output<outputs.cfg.AggregatorAggregatorAccount[]>;
     /**
@@ -84,7 +84,7 @@ export class Aggregator extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -108,9 +108,6 @@ export class Aggregator extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as AggregatorArgs | undefined;
-            if ((!args || args.aggregatorAccounts === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'aggregatorAccounts'");
-            }
             if ((!args || args.aggregatorName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'aggregatorName'");
             }
@@ -135,7 +132,7 @@ export class Aggregator extends pulumi.CustomResource {
  */
 export interface AggregatorState {
     /**
-     * The information of account in aggregator.
+     * The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
      */
     aggregatorAccounts?: pulumi.Input<pulumi.Input<inputs.cfg.AggregatorAggregatorAccount>[]>;
     /**
@@ -151,7 +148,7 @@ export interface AggregatorState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
      */
     status?: pulumi.Input<string>;
 }
@@ -161,9 +158,9 @@ export interface AggregatorState {
  */
 export interface AggregatorArgs {
     /**
-     * The information of account in aggregator.
+     * The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
      */
-    aggregatorAccounts: pulumi.Input<pulumi.Input<inputs.cfg.AggregatorAggregatorAccount>[]>;
+    aggregatorAccounts?: pulumi.Input<pulumi.Input<inputs.cfg.AggregatorAggregatorAccount>[]>;
     /**
      * The name of aggregator.
      */

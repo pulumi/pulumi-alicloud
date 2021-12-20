@@ -106,6 +106,12 @@ namespace Pulumi.AliCloud.Cddc
             set => _ids = value;
         }
 
+        /// <summary>
+        /// A regex string to filter results by Dedicated Host Group name.
+        /// </summary>
+        [Input("nameRegex")]
+        public string? NameRegex { get; set; }
+
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -134,6 +140,12 @@ namespace Pulumi.AliCloud.Cddc
             set => _ids = value;
         }
 
+        /// <summary>
+        /// A regex string to filter results by Dedicated Host Group name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
@@ -153,6 +165,8 @@ namespace Pulumi.AliCloud.Cddc
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        public readonly string? NameRegex;
+        public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
 
         [OutputConstructor]
@@ -165,12 +179,18 @@ namespace Pulumi.AliCloud.Cddc
 
             ImmutableArray<string> ids,
 
+            string? nameRegex,
+
+            ImmutableArray<string> names,
+
             string? outputFile)
         {
             Engine = engine;
             Groups = groups;
             Id = id;
             Ids = ids;
+            NameRegex = nameRegex;
+            Names = names;
             OutputFile = outputFile;
         }
     }

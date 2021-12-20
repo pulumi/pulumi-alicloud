@@ -34,6 +34,10 @@ namespace Pulumi.AliCloud.ClickHouse.Outputs
         /// </summary>
         public readonly string ConnectionString;
         /// <summary>
+        /// The control version of the DBCluster.
+        /// </summary>
+        public readonly string ControlVersion;
+        /// <summary>
         /// The creation time of the resource.
         /// </summary>
         public readonly string CreateTime;
@@ -127,6 +131,10 @@ namespace Pulumi.AliCloud.ClickHouse.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDbClustersClusterScaleOutStatusResult> ScaleOutStatuses;
         /// <summary>
+        /// The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+        /// </summary>
+        public readonly string Status;
+        /// <summary>
         /// Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
         /// </summary>
         public readonly string StorageType;
@@ -170,6 +178,8 @@ namespace Pulumi.AliCloud.ClickHouse.Outputs
             string commodityCode,
 
             string connectionString,
+
+            string controlVersion,
 
             string createTime,
 
@@ -219,6 +229,8 @@ namespace Pulumi.AliCloud.ClickHouse.Outputs
 
             ImmutableArray<Outputs.GetDbClustersClusterScaleOutStatusResult> scaleOutStatuses,
 
+            string status,
+
             string storageType,
 
             int supportBackup,
@@ -240,6 +252,7 @@ namespace Pulumi.AliCloud.ClickHouse.Outputs
             Category = category;
             CommodityCode = commodityCode;
             ConnectionString = connectionString;
+            ControlVersion = controlVersion;
             CreateTime = createTime;
             DbClusterAccessWhiteLists = dbClusterAccessWhiteLists;
             DbClusterDescription = dbClusterDescription;
@@ -264,6 +277,7 @@ namespace Pulumi.AliCloud.ClickHouse.Outputs
             PublicConnectionString = publicConnectionString;
             PublicPort = publicPort;
             ScaleOutStatuses = scaleOutStatuses;
+            Status = status;
             StorageType = storageType;
             SupportBackup = supportBackup;
             SupportHttpsPort = supportHttpsPort;

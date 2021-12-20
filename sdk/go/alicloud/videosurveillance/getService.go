@@ -16,6 +16,8 @@ import (
 //
 // > **NOTE:** Available in v1.116.0+
 //
+// > **NOTE:** The Video Surveillance System service is not support in the international site.
+//
 // ## Example Usage
 //
 // ```go

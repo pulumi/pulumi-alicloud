@@ -5,9 +5,15 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .account import *
+from .audit_policy import *
+from .get_accounts import *
+from .get_audit_policies import *
 from .get_instances import *
+from .get_serverless_instances import *
 from .get_zones import *
 from .instance import *
+from .serverless_instance import *
 from .sharding_instance import *
 from ._inputs import *
 from . import outputs

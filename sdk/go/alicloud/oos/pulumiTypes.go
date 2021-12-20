@@ -616,6 +616,229 @@ func (o GetExecutionsExecutionArrayOutput) Index(i pulumi.IntInput) GetExecution
 	}).(GetExecutionsExecutionOutput)
 }
 
+type GetParametersParameter struct {
+	// The constraints of the common parameter.
+	Constraints string `pulumi:"constraints"`
+	// The time when the common parameter was created.
+	CreateTime string `pulumi:"createTime"`
+	// The user who created the common parameter.
+	CreatedBy string `pulumi:"createdBy"`
+	// The description of the common parameter.
+	Description string `pulumi:"description"`
+	// The ID of the Parameter. Its value is same as `parameterName`.
+	Id string `pulumi:"id"`
+	// The ID of the common parameter.
+	ParameterId string `pulumi:"parameterId"`
+	// The name of the common parameter.
+	ParameterName string `pulumi:"parameterName"`
+	// The version number of the common parameter.
+	ParameterVersion int `pulumi:"parameterVersion"`
+	// The ID of the Resource Group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The share type of the common parameter.
+	ShareType string `pulumi:"shareType"`
+	// The tag of the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The data type of the common parameter.
+	Type string `pulumi:"type"`
+	// The user who updated the common parameter.
+	UpdatedBy string `pulumi:"updatedBy"`
+	// The time when the common parameter was updated.
+	UpdatedDate string `pulumi:"updatedDate"`
+	// The value of the common parameter.
+	Value string `pulumi:"value"`
+}
+
+// GetParametersParameterInput is an input type that accepts GetParametersParameterArgs and GetParametersParameterOutput values.
+// You can construct a concrete instance of `GetParametersParameterInput` via:
+//
+//          GetParametersParameterArgs{...}
+type GetParametersParameterInput interface {
+	pulumi.Input
+
+	ToGetParametersParameterOutput() GetParametersParameterOutput
+	ToGetParametersParameterOutputWithContext(context.Context) GetParametersParameterOutput
+}
+
+type GetParametersParameterArgs struct {
+	// The constraints of the common parameter.
+	Constraints pulumi.StringInput `pulumi:"constraints"`
+	// The time when the common parameter was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The user who created the common parameter.
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// The description of the common parameter.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Parameter. Its value is same as `parameterName`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the common parameter.
+	ParameterId pulumi.StringInput `pulumi:"parameterId"`
+	// The name of the common parameter.
+	ParameterName pulumi.StringInput `pulumi:"parameterName"`
+	// The version number of the common parameter.
+	ParameterVersion pulumi.IntInput `pulumi:"parameterVersion"`
+	// The ID of the Resource Group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The share type of the common parameter.
+	ShareType pulumi.StringInput `pulumi:"shareType"`
+	// The tag of the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The data type of the common parameter.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The user who updated the common parameter.
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// The time when the common parameter was updated.
+	UpdatedDate pulumi.StringInput `pulumi:"updatedDate"`
+	// The value of the common parameter.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetParametersParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetParametersParameter)(nil)).Elem()
+}
+
+func (i GetParametersParameterArgs) ToGetParametersParameterOutput() GetParametersParameterOutput {
+	return i.ToGetParametersParameterOutputWithContext(context.Background())
+}
+
+func (i GetParametersParameterArgs) ToGetParametersParameterOutputWithContext(ctx context.Context) GetParametersParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetParametersParameterOutput)
+}
+
+// GetParametersParameterArrayInput is an input type that accepts GetParametersParameterArray and GetParametersParameterArrayOutput values.
+// You can construct a concrete instance of `GetParametersParameterArrayInput` via:
+//
+//          GetParametersParameterArray{ GetParametersParameterArgs{...} }
+type GetParametersParameterArrayInput interface {
+	pulumi.Input
+
+	ToGetParametersParameterArrayOutput() GetParametersParameterArrayOutput
+	ToGetParametersParameterArrayOutputWithContext(context.Context) GetParametersParameterArrayOutput
+}
+
+type GetParametersParameterArray []GetParametersParameterInput
+
+func (GetParametersParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetParametersParameter)(nil)).Elem()
+}
+
+func (i GetParametersParameterArray) ToGetParametersParameterArrayOutput() GetParametersParameterArrayOutput {
+	return i.ToGetParametersParameterArrayOutputWithContext(context.Background())
+}
+
+func (i GetParametersParameterArray) ToGetParametersParameterArrayOutputWithContext(ctx context.Context) GetParametersParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetParametersParameterArrayOutput)
+}
+
+type GetParametersParameterOutput struct{ *pulumi.OutputState }
+
+func (GetParametersParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetParametersParameter)(nil)).Elem()
+}
+
+func (o GetParametersParameterOutput) ToGetParametersParameterOutput() GetParametersParameterOutput {
+	return o
+}
+
+func (o GetParametersParameterOutput) ToGetParametersParameterOutputWithContext(ctx context.Context) GetParametersParameterOutput {
+	return o
+}
+
+// The constraints of the common parameter.
+func (o GetParametersParameterOutput) Constraints() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParametersParameter) string { return v.Constraints }).(pulumi.StringOutput)
+}
+
+// The time when the common parameter was created.
+func (o GetParametersParameterOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParametersParameter) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The user who created the common parameter.
+func (o GetParametersParameterOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParametersParameter) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// The description of the common parameter.
+func (o GetParametersParameterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParametersParameter) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Parameter. Its value is same as `parameterName`.
+func (o GetParametersParameterOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParametersParameter) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the common parameter.
+func (o GetParametersParameterOutput) ParameterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParametersParameter) string { return v.ParameterId }).(pulumi.StringOutput)
+}
+
+// The name of the common parameter.
+func (o GetParametersParameterOutput) ParameterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParametersParameter) string { return v.ParameterName }).(pulumi.StringOutput)
+}
+
+// The version number of the common parameter.
+func (o GetParametersParameterOutput) ParameterVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetParametersParameter) int { return v.ParameterVersion }).(pulumi.IntOutput)
+}
+
+// The ID of the Resource Group.
+func (o GetParametersParameterOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParametersParameter) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The share type of the common parameter.
+func (o GetParametersParameterOutput) ShareType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParametersParameter) string { return v.ShareType }).(pulumi.StringOutput)
+}
+
+// The tag of the resource.
+func (o GetParametersParameterOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetParametersParameter) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The data type of the common parameter.
+func (o GetParametersParameterOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParametersParameter) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The user who updated the common parameter.
+func (o GetParametersParameterOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParametersParameter) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// The time when the common parameter was updated.
+func (o GetParametersParameterOutput) UpdatedDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParametersParameter) string { return v.UpdatedDate }).(pulumi.StringOutput)
+}
+
+// The value of the common parameter.
+func (o GetParametersParameterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParametersParameter) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetParametersParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetParametersParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetParametersParameter)(nil)).Elem()
+}
+
+func (o GetParametersParameterArrayOutput) ToGetParametersParameterArrayOutput() GetParametersParameterArrayOutput {
+	return o
+}
+
+func (o GetParametersParameterArrayOutput) ToGetParametersParameterArrayOutputWithContext(ctx context.Context) GetParametersParameterArrayOutput {
+	return o
+}
+
+func (o GetParametersParameterArrayOutput) Index(i pulumi.IntInput) GetParametersParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetParametersParameter {
+		return vs[0].([]GetParametersParameter)[vs[1].(int)]
+	}).(GetParametersParameterOutput)
+}
+
 type GetPatchBaselinesBaseline struct {
 	// Accept the rules.
 	ApprovalRules string `pulumi:"approvalRules"`
@@ -810,6 +1033,452 @@ func (o GetPatchBaselinesBaselineArrayOutput) Index(i pulumi.IntInput) GetPatchB
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPatchBaselinesBaseline {
 		return vs[0].([]GetPatchBaselinesBaseline)[vs[1].(int)]
 	}).(GetPatchBaselinesBaselineOutput)
+}
+
+type GetSecretParametersParameter struct {
+	// The constraints of the encryption parameter.
+	Constraints string `pulumi:"constraints"`
+	// The time when the encryption parameter was created.
+	CreateTime string `pulumi:"createTime"`
+	// The user who created the encryption parameter.
+	CreatedBy string `pulumi:"createdBy"`
+	// The description of the encryption parameter.
+	Description string `pulumi:"description"`
+	// The ID of the Secret Parameter.
+	Id string `pulumi:"id"`
+	// KeyId of KMS used for encryption.
+	KeyId string `pulumi:"keyId"`
+	// The version number of the encryption parameter.
+	ParameterVersion int `pulumi:"parameterVersion"`
+	// The ID of the Resource Group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The ID of the encryption parameter.
+	SecretParameterId string `pulumi:"secretParameterId"`
+	// The name of the encryption parameter.
+	SecretParameterName string `pulumi:"secretParameterName"`
+	// The share type of the encryption parameter.
+	ShareType string `pulumi:"shareType"`
+	// The tag of the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The data type of the encryption parameter.
+	Type string `pulumi:"type"`
+	// The user who updated the encryption parameter.
+	UpdatedBy string `pulumi:"updatedBy"`
+	// The time when the encryption parameter was updated.
+	UpdatedDate string `pulumi:"updatedDate"`
+}
+
+// GetSecretParametersParameterInput is an input type that accepts GetSecretParametersParameterArgs and GetSecretParametersParameterOutput values.
+// You can construct a concrete instance of `GetSecretParametersParameterInput` via:
+//
+//          GetSecretParametersParameterArgs{...}
+type GetSecretParametersParameterInput interface {
+	pulumi.Input
+
+	ToGetSecretParametersParameterOutput() GetSecretParametersParameterOutput
+	ToGetSecretParametersParameterOutputWithContext(context.Context) GetSecretParametersParameterOutput
+}
+
+type GetSecretParametersParameterArgs struct {
+	// The constraints of the encryption parameter.
+	Constraints pulumi.StringInput `pulumi:"constraints"`
+	// The time when the encryption parameter was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The user who created the encryption parameter.
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// The description of the encryption parameter.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Secret Parameter.
+	Id pulumi.StringInput `pulumi:"id"`
+	// KeyId of KMS used for encryption.
+	KeyId pulumi.StringInput `pulumi:"keyId"`
+	// The version number of the encryption parameter.
+	ParameterVersion pulumi.IntInput `pulumi:"parameterVersion"`
+	// The ID of the Resource Group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The ID of the encryption parameter.
+	SecretParameterId pulumi.StringInput `pulumi:"secretParameterId"`
+	// The name of the encryption parameter.
+	SecretParameterName pulumi.StringInput `pulumi:"secretParameterName"`
+	// The share type of the encryption parameter.
+	ShareType pulumi.StringInput `pulumi:"shareType"`
+	// The tag of the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The data type of the encryption parameter.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The user who updated the encryption parameter.
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// The time when the encryption parameter was updated.
+	UpdatedDate pulumi.StringInput `pulumi:"updatedDate"`
+}
+
+func (GetSecretParametersParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretParametersParameter)(nil)).Elem()
+}
+
+func (i GetSecretParametersParameterArgs) ToGetSecretParametersParameterOutput() GetSecretParametersParameterOutput {
+	return i.ToGetSecretParametersParameterOutputWithContext(context.Background())
+}
+
+func (i GetSecretParametersParameterArgs) ToGetSecretParametersParameterOutputWithContext(ctx context.Context) GetSecretParametersParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretParametersParameterOutput)
+}
+
+// GetSecretParametersParameterArrayInput is an input type that accepts GetSecretParametersParameterArray and GetSecretParametersParameterArrayOutput values.
+// You can construct a concrete instance of `GetSecretParametersParameterArrayInput` via:
+//
+//          GetSecretParametersParameterArray{ GetSecretParametersParameterArgs{...} }
+type GetSecretParametersParameterArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretParametersParameterArrayOutput() GetSecretParametersParameterArrayOutput
+	ToGetSecretParametersParameterArrayOutputWithContext(context.Context) GetSecretParametersParameterArrayOutput
+}
+
+type GetSecretParametersParameterArray []GetSecretParametersParameterInput
+
+func (GetSecretParametersParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretParametersParameter)(nil)).Elem()
+}
+
+func (i GetSecretParametersParameterArray) ToGetSecretParametersParameterArrayOutput() GetSecretParametersParameterArrayOutput {
+	return i.ToGetSecretParametersParameterArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretParametersParameterArray) ToGetSecretParametersParameterArrayOutputWithContext(ctx context.Context) GetSecretParametersParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretParametersParameterArrayOutput)
+}
+
+type GetSecretParametersParameterOutput struct{ *pulumi.OutputState }
+
+func (GetSecretParametersParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretParametersParameter)(nil)).Elem()
+}
+
+func (o GetSecretParametersParameterOutput) ToGetSecretParametersParameterOutput() GetSecretParametersParameterOutput {
+	return o
+}
+
+func (o GetSecretParametersParameterOutput) ToGetSecretParametersParameterOutputWithContext(ctx context.Context) GetSecretParametersParameterOutput {
+	return o
+}
+
+// The constraints of the encryption parameter.
+func (o GetSecretParametersParameterOutput) Constraints() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretParametersParameter) string { return v.Constraints }).(pulumi.StringOutput)
+}
+
+// The time when the encryption parameter was created.
+func (o GetSecretParametersParameterOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretParametersParameter) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The user who created the encryption parameter.
+func (o GetSecretParametersParameterOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretParametersParameter) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// The description of the encryption parameter.
+func (o GetSecretParametersParameterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretParametersParameter) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Secret Parameter.
+func (o GetSecretParametersParameterOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretParametersParameter) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// KeyId of KMS used for encryption.
+func (o GetSecretParametersParameterOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretParametersParameter) string { return v.KeyId }).(pulumi.StringOutput)
+}
+
+// The version number of the encryption parameter.
+func (o GetSecretParametersParameterOutput) ParameterVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSecretParametersParameter) int { return v.ParameterVersion }).(pulumi.IntOutput)
+}
+
+// The ID of the Resource Group.
+func (o GetSecretParametersParameterOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretParametersParameter) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the encryption parameter.
+func (o GetSecretParametersParameterOutput) SecretParameterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretParametersParameter) string { return v.SecretParameterId }).(pulumi.StringOutput)
+}
+
+// The name of the encryption parameter.
+func (o GetSecretParametersParameterOutput) SecretParameterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretParametersParameter) string { return v.SecretParameterName }).(pulumi.StringOutput)
+}
+
+// The share type of the encryption parameter.
+func (o GetSecretParametersParameterOutput) ShareType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretParametersParameter) string { return v.ShareType }).(pulumi.StringOutput)
+}
+
+// The tag of the resource.
+func (o GetSecretParametersParameterOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetSecretParametersParameter) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The data type of the encryption parameter.
+func (o GetSecretParametersParameterOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretParametersParameter) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The user who updated the encryption parameter.
+func (o GetSecretParametersParameterOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretParametersParameter) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// The time when the encryption parameter was updated.
+func (o GetSecretParametersParameterOutput) UpdatedDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretParametersParameter) string { return v.UpdatedDate }).(pulumi.StringOutput)
+}
+
+type GetSecretParametersParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretParametersParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretParametersParameter)(nil)).Elem()
+}
+
+func (o GetSecretParametersParameterArrayOutput) ToGetSecretParametersParameterArrayOutput() GetSecretParametersParameterArrayOutput {
+	return o
+}
+
+func (o GetSecretParametersParameterArrayOutput) ToGetSecretParametersParameterArrayOutputWithContext(ctx context.Context) GetSecretParametersParameterArrayOutput {
+	return o
+}
+
+func (o GetSecretParametersParameterArrayOutput) Index(i pulumi.IntInput) GetSecretParametersParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretParametersParameter {
+		return vs[0].([]GetSecretParametersParameter)[vs[1].(int)]
+	}).(GetSecretParametersParameterOutput)
+}
+
+type GetStateConfigurationsConfiguration struct {
+	// The configuration mode.
+	ConfigureMode string `pulumi:"configureMode"`
+	// The creation time.
+	CreateTime string `pulumi:"createTime"`
+	// The description.
+	Description string `pulumi:"description"`
+	// The ID of the State Configuration.
+	Id string `pulumi:"id"`
+	// The parameters.
+	Parameters string `pulumi:"parameters"`
+	// The ID of the resource group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The schedule expression.
+	ScheduleExpression string `pulumi:"scheduleExpression"`
+	// The schedule type.
+	ScheduleType string `pulumi:"scheduleType"`
+	// The ID of the final state configuration.
+	StateConfigurationId string `pulumi:"stateConfigurationId"`
+	// The tag of the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The target resource.
+	Targets string `pulumi:"targets"`
+	// The ID of the template.
+	TemplateId string `pulumi:"templateId"`
+	// The name of the template.
+	TemplateName string `pulumi:"templateName"`
+	// The version of the template.
+	TemplateVersion string `pulumi:"templateVersion"`
+	// The time when the configuration is updated.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetStateConfigurationsConfigurationInput is an input type that accepts GetStateConfigurationsConfigurationArgs and GetStateConfigurationsConfigurationOutput values.
+// You can construct a concrete instance of `GetStateConfigurationsConfigurationInput` via:
+//
+//          GetStateConfigurationsConfigurationArgs{...}
+type GetStateConfigurationsConfigurationInput interface {
+	pulumi.Input
+
+	ToGetStateConfigurationsConfigurationOutput() GetStateConfigurationsConfigurationOutput
+	ToGetStateConfigurationsConfigurationOutputWithContext(context.Context) GetStateConfigurationsConfigurationOutput
+}
+
+type GetStateConfigurationsConfigurationArgs struct {
+	// The configuration mode.
+	ConfigureMode pulumi.StringInput `pulumi:"configureMode"`
+	// The creation time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the State Configuration.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The parameters.
+	Parameters pulumi.StringInput `pulumi:"parameters"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The schedule expression.
+	ScheduleExpression pulumi.StringInput `pulumi:"scheduleExpression"`
+	// The schedule type.
+	ScheduleType pulumi.StringInput `pulumi:"scheduleType"`
+	// The ID of the final state configuration.
+	StateConfigurationId pulumi.StringInput `pulumi:"stateConfigurationId"`
+	// The tag of the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The target resource.
+	Targets pulumi.StringInput `pulumi:"targets"`
+	// The ID of the template.
+	TemplateId pulumi.StringInput `pulumi:"templateId"`
+	// The name of the template.
+	TemplateName pulumi.StringInput `pulumi:"templateName"`
+	// The version of the template.
+	TemplateVersion pulumi.StringInput `pulumi:"templateVersion"`
+	// The time when the configuration is updated.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetStateConfigurationsConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStateConfigurationsConfiguration)(nil)).Elem()
+}
+
+func (i GetStateConfigurationsConfigurationArgs) ToGetStateConfigurationsConfigurationOutput() GetStateConfigurationsConfigurationOutput {
+	return i.ToGetStateConfigurationsConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetStateConfigurationsConfigurationArgs) ToGetStateConfigurationsConfigurationOutputWithContext(ctx context.Context) GetStateConfigurationsConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStateConfigurationsConfigurationOutput)
+}
+
+// GetStateConfigurationsConfigurationArrayInput is an input type that accepts GetStateConfigurationsConfigurationArray and GetStateConfigurationsConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetStateConfigurationsConfigurationArrayInput` via:
+//
+//          GetStateConfigurationsConfigurationArray{ GetStateConfigurationsConfigurationArgs{...} }
+type GetStateConfigurationsConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetStateConfigurationsConfigurationArrayOutput() GetStateConfigurationsConfigurationArrayOutput
+	ToGetStateConfigurationsConfigurationArrayOutputWithContext(context.Context) GetStateConfigurationsConfigurationArrayOutput
+}
+
+type GetStateConfigurationsConfigurationArray []GetStateConfigurationsConfigurationInput
+
+func (GetStateConfigurationsConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStateConfigurationsConfiguration)(nil)).Elem()
+}
+
+func (i GetStateConfigurationsConfigurationArray) ToGetStateConfigurationsConfigurationArrayOutput() GetStateConfigurationsConfigurationArrayOutput {
+	return i.ToGetStateConfigurationsConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetStateConfigurationsConfigurationArray) ToGetStateConfigurationsConfigurationArrayOutputWithContext(ctx context.Context) GetStateConfigurationsConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStateConfigurationsConfigurationArrayOutput)
+}
+
+type GetStateConfigurationsConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetStateConfigurationsConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStateConfigurationsConfiguration)(nil)).Elem()
+}
+
+func (o GetStateConfigurationsConfigurationOutput) ToGetStateConfigurationsConfigurationOutput() GetStateConfigurationsConfigurationOutput {
+	return o
+}
+
+func (o GetStateConfigurationsConfigurationOutput) ToGetStateConfigurationsConfigurationOutputWithContext(ctx context.Context) GetStateConfigurationsConfigurationOutput {
+	return o
+}
+
+// The configuration mode.
+func (o GetStateConfigurationsConfigurationOutput) ConfigureMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStateConfigurationsConfiguration) string { return v.ConfigureMode }).(pulumi.StringOutput)
+}
+
+// The creation time.
+func (o GetStateConfigurationsConfigurationOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStateConfigurationsConfiguration) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description.
+func (o GetStateConfigurationsConfigurationOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStateConfigurationsConfiguration) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the State Configuration.
+func (o GetStateConfigurationsConfigurationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStateConfigurationsConfiguration) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The parameters.
+func (o GetStateConfigurationsConfigurationOutput) Parameters() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStateConfigurationsConfiguration) string { return v.Parameters }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o GetStateConfigurationsConfigurationOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStateConfigurationsConfiguration) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The schedule expression.
+func (o GetStateConfigurationsConfigurationOutput) ScheduleExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStateConfigurationsConfiguration) string { return v.ScheduleExpression }).(pulumi.StringOutput)
+}
+
+// The schedule type.
+func (o GetStateConfigurationsConfigurationOutput) ScheduleType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStateConfigurationsConfiguration) string { return v.ScheduleType }).(pulumi.StringOutput)
+}
+
+// The ID of the final state configuration.
+func (o GetStateConfigurationsConfigurationOutput) StateConfigurationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStateConfigurationsConfiguration) string { return v.StateConfigurationId }).(pulumi.StringOutput)
+}
+
+// The tag of the resource.
+func (o GetStateConfigurationsConfigurationOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetStateConfigurationsConfiguration) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The target resource.
+func (o GetStateConfigurationsConfigurationOutput) Targets() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStateConfigurationsConfiguration) string { return v.Targets }).(pulumi.StringOutput)
+}
+
+// The ID of the template.
+func (o GetStateConfigurationsConfigurationOutput) TemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStateConfigurationsConfiguration) string { return v.TemplateId }).(pulumi.StringOutput)
+}
+
+// The name of the template.
+func (o GetStateConfigurationsConfigurationOutput) TemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStateConfigurationsConfiguration) string { return v.TemplateName }).(pulumi.StringOutput)
+}
+
+// The version of the template.
+func (o GetStateConfigurationsConfigurationOutput) TemplateVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStateConfigurationsConfiguration) string { return v.TemplateVersion }).(pulumi.StringOutput)
+}
+
+// The time when the configuration is updated.
+func (o GetStateConfigurationsConfigurationOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStateConfigurationsConfiguration) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetStateConfigurationsConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStateConfigurationsConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStateConfigurationsConfiguration)(nil)).Elem()
+}
+
+func (o GetStateConfigurationsConfigurationArrayOutput) ToGetStateConfigurationsConfigurationArrayOutput() GetStateConfigurationsConfigurationArrayOutput {
+	return o
+}
+
+func (o GetStateConfigurationsConfigurationArrayOutput) ToGetStateConfigurationsConfigurationArrayOutputWithContext(ctx context.Context) GetStateConfigurationsConfigurationArrayOutput {
+	return o
+}
+
+func (o GetStateConfigurationsConfigurationArrayOutput) Index(i pulumi.IntInput) GetStateConfigurationsConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStateConfigurationsConfiguration {
+		return vs[0].([]GetStateConfigurationsConfiguration)[vs[1].(int)]
+	}).(GetStateConfigurationsConfigurationOutput)
 }
 
 type GetTemplatesTemplate struct {
@@ -1042,8 +1711,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationsApplicationArrayInput)(nil)).Elem(), GetApplicationsApplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExecutionsExecutionInput)(nil)).Elem(), GetExecutionsExecutionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExecutionsExecutionArrayInput)(nil)).Elem(), GetExecutionsExecutionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetParametersParameterInput)(nil)).Elem(), GetParametersParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetParametersParameterArrayInput)(nil)).Elem(), GetParametersParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPatchBaselinesBaselineInput)(nil)).Elem(), GetPatchBaselinesBaselineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPatchBaselinesBaselineArrayInput)(nil)).Elem(), GetPatchBaselinesBaselineArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretParametersParameterInput)(nil)).Elem(), GetSecretParametersParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretParametersParameterArrayInput)(nil)).Elem(), GetSecretParametersParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStateConfigurationsConfigurationInput)(nil)).Elem(), GetStateConfigurationsConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStateConfigurationsConfigurationArrayInput)(nil)).Elem(), GetStateConfigurationsConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplatesTemplateInput)(nil)).Elem(), GetTemplatesTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplatesTemplateArrayInput)(nil)).Elem(), GetTemplatesTemplateArray{})
 	pulumi.RegisterOutputType(GetApplicationGroupsGroupOutput{})
@@ -1052,8 +1727,14 @@ func init() {
 	pulumi.RegisterOutputType(GetApplicationsApplicationArrayOutput{})
 	pulumi.RegisterOutputType(GetExecutionsExecutionOutput{})
 	pulumi.RegisterOutputType(GetExecutionsExecutionArrayOutput{})
+	pulumi.RegisterOutputType(GetParametersParameterOutput{})
+	pulumi.RegisterOutputType(GetParametersParameterArrayOutput{})
 	pulumi.RegisterOutputType(GetPatchBaselinesBaselineOutput{})
 	pulumi.RegisterOutputType(GetPatchBaselinesBaselineArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretParametersParameterOutput{})
+	pulumi.RegisterOutputType(GetSecretParametersParameterArrayOutput{})
+	pulumi.RegisterOutputType(GetStateConfigurationsConfigurationOutput{})
+	pulumi.RegisterOutputType(GetStateConfigurationsConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetTemplatesTemplateOutput{})
 	pulumi.RegisterOutputType(GetTemplatesTemplateArrayOutput{})
 }

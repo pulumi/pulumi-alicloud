@@ -61,7 +61,7 @@ type GetAggregatorsArgs struct {
 	// A regex string to filter results by aggregator name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
+	// The status of the resource. Valid Values:  `0`: creating `1`: normal `2`: deleting.
 	Status *string `pulumi:"status"`
 }
 
@@ -99,7 +99,7 @@ type GetAggregatorsOutputArgs struct {
 	// A regex string to filter results by aggregator name.
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the resource. Valid Values: `Creating`, `Normal`, `Deleting`.
+	// The status of the resource. Valid Values:  `0`: creating `1`: normal `2`: deleting.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

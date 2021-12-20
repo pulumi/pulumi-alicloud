@@ -73,6 +73,8 @@ def get_service(enable: Optional[str] = None,
 
     > **NOTE:** Available in v1.120.0+
 
+    > **NOTE:** The SAE service is not support in the international site.
+
     ## Example Usage
 
     ```python
@@ -108,6 +110,8 @@ def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
     For information about SAE and how to use it, see [What is SAE](https://help.aliyun.com/document_detail/125720.html).
 
     > **NOTE:** Available in v1.120.0+
+
+    > **NOTE:** The SAE service is not support in the international site.
 
     ## Example Usage
 

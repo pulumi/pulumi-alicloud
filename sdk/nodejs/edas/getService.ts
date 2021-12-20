@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.98.0+
  *
+ * > **NOTE:** The EDAS service is not support to be open automatically in the international site.
+ *
  * ## Example Usage
  *
  * ```typescript

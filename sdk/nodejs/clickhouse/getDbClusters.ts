@@ -71,7 +71,7 @@ export interface GetDbClustersArgs {
     ids?: string[];
     outputFile?: string;
     /**
-     * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+     * The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
      */
     status?: string;
 }
@@ -114,7 +114,7 @@ export interface GetDbClustersOutputArgs {
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
+     * The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
      */
     status?: pulumi.Input<string>;
 }

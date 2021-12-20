@@ -306,10 +306,14 @@ type GetInstancesInstance struct {
 	EipMax int `pulumi:"eipMax"`
 	// The endPoint to access the instance.
 	EndPoint string `pulumi:"endPoint"`
+	// The expired time  of the instance.
+	ExpiredTime int `pulumi:"expiredTime"`
 	// ID of the instance.
 	Id string `pulumi:"id"`
 	// The peak value of io of the instance.
 	IoMax int `pulumi:"ioMax"`
+	// The msg retain of the instance.
+	MsgRetain int `pulumi:"msgRetain"`
 	// Name of the instance.
 	Name string `pulumi:"name"`
 	// The paid type of the instance.
@@ -322,6 +326,8 @@ type GetInstancesInstance struct {
 	ServiceVersion string `pulumi:"serviceVersion"`
 	// The spec type of the instance.
 	SpecType string `pulumi:"specType"`
+	// The SSL end point of the instance.
+	SslEndPoint string `pulumi:"sslEndPoint"`
 	// The max num of topic can be create of the instance.
 	TopicQuota int `pulumi:"topicQuota"`
 	// The ID of attaching VPC to instance.
@@ -358,10 +364,14 @@ type GetInstancesInstanceArgs struct {
 	EipMax pulumi.IntInput `pulumi:"eipMax"`
 	// The endPoint to access the instance.
 	EndPoint pulumi.StringInput `pulumi:"endPoint"`
+	// The expired time  of the instance.
+	ExpiredTime pulumi.IntInput `pulumi:"expiredTime"`
 	// ID of the instance.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The peak value of io of the instance.
 	IoMax pulumi.IntInput `pulumi:"ioMax"`
+	// The msg retain of the instance.
+	MsgRetain pulumi.IntInput `pulumi:"msgRetain"`
 	// Name of the instance.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The paid type of the instance.
@@ -374,6 +384,8 @@ type GetInstancesInstanceArgs struct {
 	ServiceVersion pulumi.StringInput `pulumi:"serviceVersion"`
 	// The spec type of the instance.
 	SpecType pulumi.StringInput `pulumi:"specType"`
+	// The SSL end point of the instance.
+	SslEndPoint pulumi.StringInput `pulumi:"sslEndPoint"`
 	// The max num of topic can be create of the instance.
 	TopicQuota pulumi.IntInput `pulumi:"topicQuota"`
 	// The ID of attaching VPC to instance.
@@ -470,6 +482,11 @@ func (o GetInstancesInstanceOutput) EndPoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.EndPoint }).(pulumi.StringOutput)
 }
 
+// The expired time  of the instance.
+func (o GetInstancesInstanceOutput) ExpiredTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.ExpiredTime }).(pulumi.IntOutput)
+}
+
 // ID of the instance.
 func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
@@ -478,6 +495,11 @@ func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 // The peak value of io of the instance.
 func (o GetInstancesInstanceOutput) IoMax() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.IoMax }).(pulumi.IntOutput)
+}
+
+// The msg retain of the instance.
+func (o GetInstancesInstanceOutput) MsgRetain() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.MsgRetain }).(pulumi.IntOutput)
 }
 
 // Name of the instance.
@@ -508,6 +530,11 @@ func (o GetInstancesInstanceOutput) ServiceVersion() pulumi.StringOutput {
 // The spec type of the instance.
 func (o GetInstancesInstanceOutput) SpecType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.SpecType }).(pulumi.StringOutput)
+}
+
+// The SSL end point of the instance.
+func (o GetInstancesInstanceOutput) SslEndPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.SslEndPoint }).(pulumi.StringOutput)
 }
 
 // The max num of topic can be create of the instance.

@@ -76,7 +76,7 @@ export class Zone extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string | undefined>;
     /**
-     * The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+     * The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
      */
     public readonly syncStatus!: pulumi.Output<string | undefined>;
     /**
@@ -86,7 +86,7 @@ export class Zone extends pulumi.CustomResource {
     /**
      * The user information of the host synchronization task. The details see Block `userInfo`.
      */
-    public readonly userInfos!: pulumi.Output<outputs.pvtz.ZoneUserInfo[] | undefined>;
+    public readonly userInfos!: pulumi.Output<outputs.pvtz.ZoneUserInfo[]>;
     /**
      * The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
      */
@@ -175,7 +175,7 @@ export interface ZoneState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+     * The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
      */
     syncStatus?: pulumi.Input<string>;
     /**
@@ -222,7 +222,7 @@ export interface ZoneArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+     * The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
      */
     syncStatus?: pulumi.Input<string>;
     /**

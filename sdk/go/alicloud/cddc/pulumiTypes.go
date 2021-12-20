@@ -10,6 +10,121 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetDedicatedHostAccountsAccount struct {
+	// The name of the Dedicated host account.
+	AccountName string `pulumi:"accountName"`
+	// The ID of the Dedicated host.
+	DedicatedHostId string `pulumi:"dedicatedHostId"`
+	// The ID of the Dedicated Host Account. The value formats as `<dedicated_host_id>:<account_name>`.
+	Id string `pulumi:"id"`
+}
+
+// GetDedicatedHostAccountsAccountInput is an input type that accepts GetDedicatedHostAccountsAccountArgs and GetDedicatedHostAccountsAccountOutput values.
+// You can construct a concrete instance of `GetDedicatedHostAccountsAccountInput` via:
+//
+//          GetDedicatedHostAccountsAccountArgs{...}
+type GetDedicatedHostAccountsAccountInput interface {
+	pulumi.Input
+
+	ToGetDedicatedHostAccountsAccountOutput() GetDedicatedHostAccountsAccountOutput
+	ToGetDedicatedHostAccountsAccountOutputWithContext(context.Context) GetDedicatedHostAccountsAccountOutput
+}
+
+type GetDedicatedHostAccountsAccountArgs struct {
+	// The name of the Dedicated host account.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// The ID of the Dedicated host.
+	DedicatedHostId pulumi.StringInput `pulumi:"dedicatedHostId"`
+	// The ID of the Dedicated Host Account. The value formats as `<dedicated_host_id>:<account_name>`.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetDedicatedHostAccountsAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedHostAccountsAccount)(nil)).Elem()
+}
+
+func (i GetDedicatedHostAccountsAccountArgs) ToGetDedicatedHostAccountsAccountOutput() GetDedicatedHostAccountsAccountOutput {
+	return i.ToGetDedicatedHostAccountsAccountOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedHostAccountsAccountArgs) ToGetDedicatedHostAccountsAccountOutputWithContext(ctx context.Context) GetDedicatedHostAccountsAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostAccountsAccountOutput)
+}
+
+// GetDedicatedHostAccountsAccountArrayInput is an input type that accepts GetDedicatedHostAccountsAccountArray and GetDedicatedHostAccountsAccountArrayOutput values.
+// You can construct a concrete instance of `GetDedicatedHostAccountsAccountArrayInput` via:
+//
+//          GetDedicatedHostAccountsAccountArray{ GetDedicatedHostAccountsAccountArgs{...} }
+type GetDedicatedHostAccountsAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetDedicatedHostAccountsAccountArrayOutput() GetDedicatedHostAccountsAccountArrayOutput
+	ToGetDedicatedHostAccountsAccountArrayOutputWithContext(context.Context) GetDedicatedHostAccountsAccountArrayOutput
+}
+
+type GetDedicatedHostAccountsAccountArray []GetDedicatedHostAccountsAccountInput
+
+func (GetDedicatedHostAccountsAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedHostAccountsAccount)(nil)).Elem()
+}
+
+func (i GetDedicatedHostAccountsAccountArray) ToGetDedicatedHostAccountsAccountArrayOutput() GetDedicatedHostAccountsAccountArrayOutput {
+	return i.ToGetDedicatedHostAccountsAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedHostAccountsAccountArray) ToGetDedicatedHostAccountsAccountArrayOutputWithContext(ctx context.Context) GetDedicatedHostAccountsAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostAccountsAccountArrayOutput)
+}
+
+type GetDedicatedHostAccountsAccountOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedHostAccountsAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedHostAccountsAccount)(nil)).Elem()
+}
+
+func (o GetDedicatedHostAccountsAccountOutput) ToGetDedicatedHostAccountsAccountOutput() GetDedicatedHostAccountsAccountOutput {
+	return o
+}
+
+func (o GetDedicatedHostAccountsAccountOutput) ToGetDedicatedHostAccountsAccountOutputWithContext(ctx context.Context) GetDedicatedHostAccountsAccountOutput {
+	return o
+}
+
+// The name of the Dedicated host account.
+func (o GetDedicatedHostAccountsAccountOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostAccountsAccount) string { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// The ID of the Dedicated host.
+func (o GetDedicatedHostAccountsAccountOutput) DedicatedHostId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostAccountsAccount) string { return v.DedicatedHostId }).(pulumi.StringOutput)
+}
+
+// The ID of the Dedicated Host Account. The value formats as `<dedicated_host_id>:<account_name>`.
+func (o GetDedicatedHostAccountsAccountOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostAccountsAccount) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetDedicatedHostAccountsAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedHostAccountsAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedHostAccountsAccount)(nil)).Elem()
+}
+
+func (o GetDedicatedHostAccountsAccountArrayOutput) ToGetDedicatedHostAccountsAccountArrayOutput() GetDedicatedHostAccountsAccountArrayOutput {
+	return o
+}
+
+func (o GetDedicatedHostAccountsAccountArrayOutput) ToGetDedicatedHostAccountsAccountArrayOutputWithContext(ctx context.Context) GetDedicatedHostAccountsAccountArrayOutput {
+	return o
+}
+
+func (o GetDedicatedHostAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetDedicatedHostAccountsAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDedicatedHostAccountsAccount {
+		return vs[0].([]GetDedicatedHostAccountsAccount)[vs[1].(int)]
+	}).(GetDedicatedHostAccountsAccountOutput)
+}
+
 type GetDedicatedHostGroupsGroup struct {
 	// The policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
 	AllocationPolicy string `pulumi:"allocationPolicy"`
@@ -543,17 +658,630 @@ func (o GetDedicatedHostGroupsGroupZoneIdListArrayOutput) Index(i pulumi.IntInpu
 	}).(GetDedicatedHostGroupsGroupZoneIdListOutput)
 }
 
+type GetDedicatedHostsHost struct {
+	// Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+	AllocationStatus string `pulumi:"allocationStatus"`
+	// The ID of the bastion host with which the host is associated.
+	BastionInstanceId string `pulumi:"bastionInstanceId"`
+	// The numeric value of the CPU over commit ratio of the dedicated cluster.
+	CpuAllocationRatio string `pulumi:"cpuAllocationRatio"`
+	// The number of CPU cores used by the host.
+	CpuUsed string `pulumi:"cpuUsed"`
+	// The time when the host was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the dedicated cluster in which the host is created.
+	DedicatedHostGroupId string `pulumi:"dedicatedHostGroupId"`
+	// The ID of the host.
+	DedicatedHostId string `pulumi:"dedicatedHostId"`
+	// The disk usage in percentage.
+	DiskAllocationRatio string `pulumi:"diskAllocationRatio"`
+	// The Elastic Compute Service (ECS) instance type.
+	EcsClassCode string `pulumi:"ecsClassCode"`
+	// The time when the host expires. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	EndTime string `pulumi:"endTime"`
+	// The type of the database engine that is used by the host.
+	Engine string `pulumi:"engine"`
+	// The time when the host expires. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	ExpiredTime string `pulumi:"expiredTime"`
+	// The instance type of the host.
+	HostClass string `pulumi:"hostClass"`
+	// The number of CPU cores specified for the host. Unit: `core`.
+	HostCpu string `pulumi:"hostCpu"`
+	// The memory of the host. Unit: `GB`.
+	HostMem string `pulumi:"hostMem"`
+	// The name of the host.
+	HostName string `pulumi:"hostName"`
+	// The total storage capacity of the host. Unit: `GB`.
+	HostStorage string `pulumi:"hostStorage"`
+	// The storage type of the host.
+	HostType string `pulumi:"hostType"`
+	// The ID of the Dedicated Host. The value formats as `<dedicated_host_group_id>:<dedicated_host_id>`.
+	Id string `pulumi:"id"`
+	// The image type of the host.
+	ImageCategory string `pulumi:"imageCategory"`
+	// The IP address of the host.
+	IpAddress string `pulumi:"ipAddress"`
+	// The memory usage in percentage.
+	MemAllocationRatio string `pulumi:"memAllocationRatio"`
+	// The amount of memory used by the host. Unit: `GB`.
+	MemoryUsed string `pulumi:"memoryUsed"`
+	// Indicates whether you have the OS permissions on the host. Valid values: `0`: You do not have the OS permissions on the host. `1`: You have the OS permissions on the host.
+	OpenPermission string `pulumi:"openPermission"`
+	// The state of the host.
+	Status string `pulumi:"status"`
+	// The storage usage of the host. Unit: `GB`.
+	StorageUsed string `pulumi:"storageUsed"`
+	// The tag of the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The ID of the virtual private cloud (VPC) to which the host is connected.
+	VpcId string `pulumi:"vpcId"`
+	// The ID of the vSwitch.
+	VswitchId string `pulumi:"vswitchId"`
+	// The zone ID of the host.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetDedicatedHostsHostInput is an input type that accepts GetDedicatedHostsHostArgs and GetDedicatedHostsHostOutput values.
+// You can construct a concrete instance of `GetDedicatedHostsHostInput` via:
+//
+//          GetDedicatedHostsHostArgs{...}
+type GetDedicatedHostsHostInput interface {
+	pulumi.Input
+
+	ToGetDedicatedHostsHostOutput() GetDedicatedHostsHostOutput
+	ToGetDedicatedHostsHostOutputWithContext(context.Context) GetDedicatedHostsHostOutput
+}
+
+type GetDedicatedHostsHostArgs struct {
+	// Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+	AllocationStatus pulumi.StringInput `pulumi:"allocationStatus"`
+	// The ID of the bastion host with which the host is associated.
+	BastionInstanceId pulumi.StringInput `pulumi:"bastionInstanceId"`
+	// The numeric value of the CPU over commit ratio of the dedicated cluster.
+	CpuAllocationRatio pulumi.StringInput `pulumi:"cpuAllocationRatio"`
+	// The number of CPU cores used by the host.
+	CpuUsed pulumi.StringInput `pulumi:"cpuUsed"`
+	// The time when the host was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the dedicated cluster in which the host is created.
+	DedicatedHostGroupId pulumi.StringInput `pulumi:"dedicatedHostGroupId"`
+	// The ID of the host.
+	DedicatedHostId pulumi.StringInput `pulumi:"dedicatedHostId"`
+	// The disk usage in percentage.
+	DiskAllocationRatio pulumi.StringInput `pulumi:"diskAllocationRatio"`
+	// The Elastic Compute Service (ECS) instance type.
+	EcsClassCode pulumi.StringInput `pulumi:"ecsClassCode"`
+	// The time when the host expires. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// The type of the database engine that is used by the host.
+	Engine pulumi.StringInput `pulumi:"engine"`
+	// The time when the host expires. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
+	// The instance type of the host.
+	HostClass pulumi.StringInput `pulumi:"hostClass"`
+	// The number of CPU cores specified for the host. Unit: `core`.
+	HostCpu pulumi.StringInput `pulumi:"hostCpu"`
+	// The memory of the host. Unit: `GB`.
+	HostMem pulumi.StringInput `pulumi:"hostMem"`
+	// The name of the host.
+	HostName pulumi.StringInput `pulumi:"hostName"`
+	// The total storage capacity of the host. Unit: `GB`.
+	HostStorage pulumi.StringInput `pulumi:"hostStorage"`
+	// The storage type of the host.
+	HostType pulumi.StringInput `pulumi:"hostType"`
+	// The ID of the Dedicated Host. The value formats as `<dedicated_host_group_id>:<dedicated_host_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The image type of the host.
+	ImageCategory pulumi.StringInput `pulumi:"imageCategory"`
+	// The IP address of the host.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// The memory usage in percentage.
+	MemAllocationRatio pulumi.StringInput `pulumi:"memAllocationRatio"`
+	// The amount of memory used by the host. Unit: `GB`.
+	MemoryUsed pulumi.StringInput `pulumi:"memoryUsed"`
+	// Indicates whether you have the OS permissions on the host. Valid values: `0`: You do not have the OS permissions on the host. `1`: You have the OS permissions on the host.
+	OpenPermission pulumi.StringInput `pulumi:"openPermission"`
+	// The state of the host.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The storage usage of the host. Unit: `GB`.
+	StorageUsed pulumi.StringInput `pulumi:"storageUsed"`
+	// The tag of the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The ID of the virtual private cloud (VPC) to which the host is connected.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The ID of the vSwitch.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// The zone ID of the host.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetDedicatedHostsHostArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedHostsHost)(nil)).Elem()
+}
+
+func (i GetDedicatedHostsHostArgs) ToGetDedicatedHostsHostOutput() GetDedicatedHostsHostOutput {
+	return i.ToGetDedicatedHostsHostOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedHostsHostArgs) ToGetDedicatedHostsHostOutputWithContext(ctx context.Context) GetDedicatedHostsHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostsHostOutput)
+}
+
+// GetDedicatedHostsHostArrayInput is an input type that accepts GetDedicatedHostsHostArray and GetDedicatedHostsHostArrayOutput values.
+// You can construct a concrete instance of `GetDedicatedHostsHostArrayInput` via:
+//
+//          GetDedicatedHostsHostArray{ GetDedicatedHostsHostArgs{...} }
+type GetDedicatedHostsHostArrayInput interface {
+	pulumi.Input
+
+	ToGetDedicatedHostsHostArrayOutput() GetDedicatedHostsHostArrayOutput
+	ToGetDedicatedHostsHostArrayOutputWithContext(context.Context) GetDedicatedHostsHostArrayOutput
+}
+
+type GetDedicatedHostsHostArray []GetDedicatedHostsHostInput
+
+func (GetDedicatedHostsHostArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedHostsHost)(nil)).Elem()
+}
+
+func (i GetDedicatedHostsHostArray) ToGetDedicatedHostsHostArrayOutput() GetDedicatedHostsHostArrayOutput {
+	return i.ToGetDedicatedHostsHostArrayOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedHostsHostArray) ToGetDedicatedHostsHostArrayOutputWithContext(ctx context.Context) GetDedicatedHostsHostArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedHostsHostArrayOutput)
+}
+
+type GetDedicatedHostsHostOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedHostsHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedHostsHost)(nil)).Elem()
+}
+
+func (o GetDedicatedHostsHostOutput) ToGetDedicatedHostsHostOutput() GetDedicatedHostsHostOutput {
+	return o
+}
+
+func (o GetDedicatedHostsHostOutput) ToGetDedicatedHostsHostOutputWithContext(ctx context.Context) GetDedicatedHostsHostOutput {
+	return o
+}
+
+// Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+func (o GetDedicatedHostsHostOutput) AllocationStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.AllocationStatus }).(pulumi.StringOutput)
+}
+
+// The ID of the bastion host with which the host is associated.
+func (o GetDedicatedHostsHostOutput) BastionInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.BastionInstanceId }).(pulumi.StringOutput)
+}
+
+// The numeric value of the CPU over commit ratio of the dedicated cluster.
+func (o GetDedicatedHostsHostOutput) CpuAllocationRatio() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.CpuAllocationRatio }).(pulumi.StringOutput)
+}
+
+// The number of CPU cores used by the host.
+func (o GetDedicatedHostsHostOutput) CpuUsed() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.CpuUsed }).(pulumi.StringOutput)
+}
+
+// The time when the host was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+func (o GetDedicatedHostsHostOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the dedicated cluster in which the host is created.
+func (o GetDedicatedHostsHostOutput) DedicatedHostGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.DedicatedHostGroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the host.
+func (o GetDedicatedHostsHostOutput) DedicatedHostId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.DedicatedHostId }).(pulumi.StringOutput)
+}
+
+// The disk usage in percentage.
+func (o GetDedicatedHostsHostOutput) DiskAllocationRatio() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.DiskAllocationRatio }).(pulumi.StringOutput)
+}
+
+// The Elastic Compute Service (ECS) instance type.
+func (o GetDedicatedHostsHostOutput) EcsClassCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.EcsClassCode }).(pulumi.StringOutput)
+}
+
+// The time when the host expires. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+func (o GetDedicatedHostsHostOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The type of the database engine that is used by the host.
+func (o GetDedicatedHostsHostOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.Engine }).(pulumi.StringOutput)
+}
+
+// The time when the host expires. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+func (o GetDedicatedHostsHostOutput) ExpiredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.ExpiredTime }).(pulumi.StringOutput)
+}
+
+// The instance type of the host.
+func (o GetDedicatedHostsHostOutput) HostClass() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.HostClass }).(pulumi.StringOutput)
+}
+
+// The number of CPU cores specified for the host. Unit: `core`.
+func (o GetDedicatedHostsHostOutput) HostCpu() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.HostCpu }).(pulumi.StringOutput)
+}
+
+// The memory of the host. Unit: `GB`.
+func (o GetDedicatedHostsHostOutput) HostMem() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.HostMem }).(pulumi.StringOutput)
+}
+
+// The name of the host.
+func (o GetDedicatedHostsHostOutput) HostName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.HostName }).(pulumi.StringOutput)
+}
+
+// The total storage capacity of the host. Unit: `GB`.
+func (o GetDedicatedHostsHostOutput) HostStorage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.HostStorage }).(pulumi.StringOutput)
+}
+
+// The storage type of the host.
+func (o GetDedicatedHostsHostOutput) HostType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.HostType }).(pulumi.StringOutput)
+}
+
+// The ID of the Dedicated Host. The value formats as `<dedicated_host_group_id>:<dedicated_host_id>`.
+func (o GetDedicatedHostsHostOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The image type of the host.
+func (o GetDedicatedHostsHostOutput) ImageCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.ImageCategory }).(pulumi.StringOutput)
+}
+
+// The IP address of the host.
+func (o GetDedicatedHostsHostOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The memory usage in percentage.
+func (o GetDedicatedHostsHostOutput) MemAllocationRatio() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.MemAllocationRatio }).(pulumi.StringOutput)
+}
+
+// The amount of memory used by the host. Unit: `GB`.
+func (o GetDedicatedHostsHostOutput) MemoryUsed() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.MemoryUsed }).(pulumi.StringOutput)
+}
+
+// Indicates whether you have the OS permissions on the host. Valid values: `0`: You do not have the OS permissions on the host. `1`: You have the OS permissions on the host.
+func (o GetDedicatedHostsHostOutput) OpenPermission() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.OpenPermission }).(pulumi.StringOutput)
+}
+
+// The state of the host.
+func (o GetDedicatedHostsHostOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The storage usage of the host. Unit: `GB`.
+func (o GetDedicatedHostsHostOutput) StorageUsed() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.StorageUsed }).(pulumi.StringOutput)
+}
+
+// The tag of the resource.
+func (o GetDedicatedHostsHostOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The ID of the virtual private cloud (VPC) to which the host is connected.
+func (o GetDedicatedHostsHostOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The ID of the vSwitch.
+func (o GetDedicatedHostsHostOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The zone ID of the host.
+func (o GetDedicatedHostsHostOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedHostsHost) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetDedicatedHostsHostArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedHostsHostArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedHostsHost)(nil)).Elem()
+}
+
+func (o GetDedicatedHostsHostArrayOutput) ToGetDedicatedHostsHostArrayOutput() GetDedicatedHostsHostArrayOutput {
+	return o
+}
+
+func (o GetDedicatedHostsHostArrayOutput) ToGetDedicatedHostsHostArrayOutputWithContext(ctx context.Context) GetDedicatedHostsHostArrayOutput {
+	return o
+}
+
+func (o GetDedicatedHostsHostArrayOutput) Index(i pulumi.IntInput) GetDedicatedHostsHostOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDedicatedHostsHost {
+		return vs[0].([]GetDedicatedHostsHost)[vs[1].(int)]
+	}).(GetDedicatedHostsHostOutput)
+}
+
+type GetHostEcsLevelInfosInfo struct {
+	// The description of the host ecs level info.
+	Description string `pulumi:"description"`
+	// The instance family of the host ecs level info.
+	EcsClass string `pulumi:"ecsClass"`
+	// The Elastic Compute Service (ECS) instance type.
+	EcsClassCode string `pulumi:"ecsClassCode"`
+	// The ApsaraDB RDS instance type of the host ecs level info.
+	ResClassCode string `pulumi:"resClassCode"`
+}
+
+// GetHostEcsLevelInfosInfoInput is an input type that accepts GetHostEcsLevelInfosInfoArgs and GetHostEcsLevelInfosInfoOutput values.
+// You can construct a concrete instance of `GetHostEcsLevelInfosInfoInput` via:
+//
+//          GetHostEcsLevelInfosInfoArgs{...}
+type GetHostEcsLevelInfosInfoInput interface {
+	pulumi.Input
+
+	ToGetHostEcsLevelInfosInfoOutput() GetHostEcsLevelInfosInfoOutput
+	ToGetHostEcsLevelInfosInfoOutputWithContext(context.Context) GetHostEcsLevelInfosInfoOutput
+}
+
+type GetHostEcsLevelInfosInfoArgs struct {
+	// The description of the host ecs level info.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The instance family of the host ecs level info.
+	EcsClass pulumi.StringInput `pulumi:"ecsClass"`
+	// The Elastic Compute Service (ECS) instance type.
+	EcsClassCode pulumi.StringInput `pulumi:"ecsClassCode"`
+	// The ApsaraDB RDS instance type of the host ecs level info.
+	ResClassCode pulumi.StringInput `pulumi:"resClassCode"`
+}
+
+func (GetHostEcsLevelInfosInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostEcsLevelInfosInfo)(nil)).Elem()
+}
+
+func (i GetHostEcsLevelInfosInfoArgs) ToGetHostEcsLevelInfosInfoOutput() GetHostEcsLevelInfosInfoOutput {
+	return i.ToGetHostEcsLevelInfosInfoOutputWithContext(context.Background())
+}
+
+func (i GetHostEcsLevelInfosInfoArgs) ToGetHostEcsLevelInfosInfoOutputWithContext(ctx context.Context) GetHostEcsLevelInfosInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostEcsLevelInfosInfoOutput)
+}
+
+// GetHostEcsLevelInfosInfoArrayInput is an input type that accepts GetHostEcsLevelInfosInfoArray and GetHostEcsLevelInfosInfoArrayOutput values.
+// You can construct a concrete instance of `GetHostEcsLevelInfosInfoArrayInput` via:
+//
+//          GetHostEcsLevelInfosInfoArray{ GetHostEcsLevelInfosInfoArgs{...} }
+type GetHostEcsLevelInfosInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetHostEcsLevelInfosInfoArrayOutput() GetHostEcsLevelInfosInfoArrayOutput
+	ToGetHostEcsLevelInfosInfoArrayOutputWithContext(context.Context) GetHostEcsLevelInfosInfoArrayOutput
+}
+
+type GetHostEcsLevelInfosInfoArray []GetHostEcsLevelInfosInfoInput
+
+func (GetHostEcsLevelInfosInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostEcsLevelInfosInfo)(nil)).Elem()
+}
+
+func (i GetHostEcsLevelInfosInfoArray) ToGetHostEcsLevelInfosInfoArrayOutput() GetHostEcsLevelInfosInfoArrayOutput {
+	return i.ToGetHostEcsLevelInfosInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetHostEcsLevelInfosInfoArray) ToGetHostEcsLevelInfosInfoArrayOutputWithContext(ctx context.Context) GetHostEcsLevelInfosInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostEcsLevelInfosInfoArrayOutput)
+}
+
+type GetHostEcsLevelInfosInfoOutput struct{ *pulumi.OutputState }
+
+func (GetHostEcsLevelInfosInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostEcsLevelInfosInfo)(nil)).Elem()
+}
+
+func (o GetHostEcsLevelInfosInfoOutput) ToGetHostEcsLevelInfosInfoOutput() GetHostEcsLevelInfosInfoOutput {
+	return o
+}
+
+func (o GetHostEcsLevelInfosInfoOutput) ToGetHostEcsLevelInfosInfoOutputWithContext(ctx context.Context) GetHostEcsLevelInfosInfoOutput {
+	return o
+}
+
+// The description of the host ecs level info.
+func (o GetHostEcsLevelInfosInfoOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostEcsLevelInfosInfo) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The instance family of the host ecs level info.
+func (o GetHostEcsLevelInfosInfoOutput) EcsClass() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostEcsLevelInfosInfo) string { return v.EcsClass }).(pulumi.StringOutput)
+}
+
+// The Elastic Compute Service (ECS) instance type.
+func (o GetHostEcsLevelInfosInfoOutput) EcsClassCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostEcsLevelInfosInfo) string { return v.EcsClassCode }).(pulumi.StringOutput)
+}
+
+// The ApsaraDB RDS instance type of the host ecs level info.
+func (o GetHostEcsLevelInfosInfoOutput) ResClassCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostEcsLevelInfosInfo) string { return v.ResClassCode }).(pulumi.StringOutput)
+}
+
+type GetHostEcsLevelInfosInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHostEcsLevelInfosInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostEcsLevelInfosInfo)(nil)).Elem()
+}
+
+func (o GetHostEcsLevelInfosInfoArrayOutput) ToGetHostEcsLevelInfosInfoArrayOutput() GetHostEcsLevelInfosInfoArrayOutput {
+	return o
+}
+
+func (o GetHostEcsLevelInfosInfoArrayOutput) ToGetHostEcsLevelInfosInfoArrayOutputWithContext(ctx context.Context) GetHostEcsLevelInfosInfoArrayOutput {
+	return o
+}
+
+func (o GetHostEcsLevelInfosInfoArrayOutput) Index(i pulumi.IntInput) GetHostEcsLevelInfosInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostEcsLevelInfosInfo {
+		return vs[0].([]GetHostEcsLevelInfosInfo)[vs[1].(int)]
+	}).(GetHostEcsLevelInfosInfoOutput)
+}
+
+type GetZonesZone struct {
+	// The ID of the zone.
+	Id string `pulumi:"id"`
+	// The ID of the region.
+	RegionId string `pulumi:"regionId"`
+	// The ID of the zone.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
+// You can construct a concrete instance of `GetZonesZoneInput` via:
+//
+//          GetZonesZoneArgs{...}
+type GetZonesZoneInput interface {
+	pulumi.Input
+
+	ToGetZonesZoneOutput() GetZonesZoneOutput
+	ToGetZonesZoneOutputWithContext(context.Context) GetZonesZoneOutput
+}
+
+type GetZonesZoneArgs struct {
+	// The ID of the zone.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the region.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The ID of the zone.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetZonesZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
+}
+
+func (i GetZonesZoneArgs) ToGetZonesZoneOutput() GetZonesZoneOutput {
+	return i.ToGetZonesZoneOutputWithContext(context.Background())
+}
+
+func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneOutput)
+}
+
+// GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
+// You can construct a concrete instance of `GetZonesZoneArrayInput` via:
+//
+//          GetZonesZoneArray{ GetZonesZoneArgs{...} }
+type GetZonesZoneArrayInput interface {
+	pulumi.Input
+
+	ToGetZonesZoneArrayOutput() GetZonesZoneArrayOutput
+	ToGetZonesZoneArrayOutputWithContext(context.Context) GetZonesZoneArrayOutput
+}
+
+type GetZonesZoneArray []GetZonesZoneInput
+
+func (GetZonesZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
+}
+
+func (i GetZonesZoneArray) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOutput {
+	return i.ToGetZonesZoneArrayOutputWithContext(context.Background())
+}
+
+func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
+}
+
+type GetZonesZoneOutput struct{ *pulumi.OutputState }
+
+func (GetZonesZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
+}
+
+func (o GetZonesZoneOutput) ToGetZonesZoneOutput() GetZonesZoneOutput {
+	return o
+}
+
+func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
+	return o
+}
+
+// The ID of the zone.
+func (o GetZonesZoneOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the region.
+func (o GetZonesZoneOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesZone) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The ID of the zone.
+func (o GetZonesZoneOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesZone) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetZonesZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZonesZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
+}
+
+func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZonesZone {
+		return vs[0].([]GetZonesZone)[vs[1].(int)]
+	}).(GetZonesZoneOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostAccountsAccountInput)(nil)).Elem(), GetDedicatedHostAccountsAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostAccountsAccountArrayInput)(nil)).Elem(), GetDedicatedHostAccountsAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostGroupsGroupInput)(nil)).Elem(), GetDedicatedHostGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostGroupsGroupArrayInput)(nil)).Elem(), GetDedicatedHostGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeInput)(nil)).Elem(), GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArrayInput)(nil)).Elem(), GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostGroupsGroupZoneIdListInput)(nil)).Elem(), GetDedicatedHostGroupsGroupZoneIdListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostGroupsGroupZoneIdListArrayInput)(nil)).Elem(), GetDedicatedHostGroupsGroupZoneIdListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostsHostInput)(nil)).Elem(), GetDedicatedHostsHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostsHostArrayInput)(nil)).Elem(), GetDedicatedHostsHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostEcsLevelInfosInfoInput)(nil)).Elem(), GetHostEcsLevelInfosInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostEcsLevelInfosInfoArrayInput)(nil)).Elem(), GetHostEcsLevelInfosInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
+	pulumi.RegisterOutputType(GetDedicatedHostAccountsAccountOutput{})
+	pulumi.RegisterOutputType(GetDedicatedHostAccountsAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetDedicatedHostGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetDedicatedHostGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeOutput{})
 	pulumi.RegisterOutputType(GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetDedicatedHostGroupsGroupZoneIdListOutput{})
 	pulumi.RegisterOutputType(GetDedicatedHostGroupsGroupZoneIdListArrayOutput{})
+	pulumi.RegisterOutputType(GetDedicatedHostsHostOutput{})
+	pulumi.RegisterOutputType(GetDedicatedHostsHostArrayOutput{})
+	pulumi.RegisterOutputType(GetHostEcsLevelInfosInfoOutput{})
+	pulumi.RegisterOutputType(GetHostEcsLevelInfosInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetZonesZoneOutput{})
+	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 }

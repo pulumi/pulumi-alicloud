@@ -19,6 +19,8 @@ namespace Pulumi.AliCloud.Sae
         /// 
         /// &gt; **NOTE:** Available in v1.120.0+
         /// 
+        /// &gt; **NOTE:** The SAE service is not support in the international site.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -51,6 +53,8 @@ namespace Pulumi.AliCloud.Sae
         /// For information about SAE and how to use it, see [What is SAE](https://help.aliyun.com/document_detail/125720.html).
         /// 
         /// &gt; **NOTE:** Available in v1.120.0+
+        /// 
+        /// &gt; **NOTE:** The SAE service is not support in the international site.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

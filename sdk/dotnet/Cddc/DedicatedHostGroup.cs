@@ -103,6 +103,12 @@ namespace Pulumi.AliCloud.Cddc
         public Output<int> MemAllocationRatio { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+        /// </summary>
+        [Output("openPermission")]
+        public Output<bool> OpenPermission { get; private set; } = null!;
+
+        /// <summary>
         /// The virtual private cloud (VPC) ID of the dedicated cluster.
         /// </summary>
         [Output("vpcId")]
@@ -197,6 +203,12 @@ namespace Pulumi.AliCloud.Cddc
         public Input<int>? MemAllocationRatio { get; set; }
 
         /// <summary>
+        /// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+        /// </summary>
+        [Input("openPermission")]
+        public Input<bool>? OpenPermission { get; set; }
+
+        /// <summary>
         /// The virtual private cloud (VPC) ID of the dedicated cluster.
         /// </summary>
         [Input("vpcId", required: true)]
@@ -250,6 +262,12 @@ namespace Pulumi.AliCloud.Cddc
         /// </summary>
         [Input("memAllocationRatio")]
         public Input<int>? MemAllocationRatio { get; set; }
+
+        /// <summary>
+        /// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
+        /// </summary>
+        [Input("openPermission")]
+        public Input<bool>? OpenPermission { get; set; }
 
         /// <summary>
         /// The virtual private cloud (VPC) ID of the dedicated cluster.

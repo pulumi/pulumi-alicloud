@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.111.0+
  *
+ * > **NOTE:** The DataHub service is not support in the international site.
+ *
  * ## Example Usage
  *
  * ```typescript

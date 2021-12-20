@@ -859,6 +859,8 @@ type GetInstancesInstance struct {
 	CenId string `pulumi:"cenId"`
 	// Name of the CEN instance.
 	CenInstanceName string `pulumi:"cenInstanceName"`
+	// The creation time of the CEN Instance.
+	CreateTime string `pulumi:"createTime"`
 	// Description of the CEN instance.
 	Description string `pulumi:"description"`
 	// ID of the CEN instance.
@@ -891,6 +893,8 @@ type GetInstancesInstanceArgs struct {
 	CenId pulumi.StringInput `pulumi:"cenId"`
 	// Name of the CEN instance.
 	CenInstanceName pulumi.StringInput `pulumi:"cenInstanceName"`
+	// The creation time of the CEN Instance.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// Description of the CEN instance.
 	Description pulumi.StringInput `pulumi:"description"`
 	// ID of the CEN instance.
@@ -969,6 +973,11 @@ func (o GetInstancesInstanceOutput) CenId() pulumi.StringOutput {
 // Name of the CEN instance.
 func (o GetInstancesInstanceOutput) CenInstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.CenInstanceName }).(pulumi.StringOutput)
+}
+
+// The creation time of the CEN Instance.
+func (o GetInstancesInstanceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // Description of the CEN instance.

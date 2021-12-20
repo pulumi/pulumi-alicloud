@@ -116,7 +116,7 @@ export class CompliancePack extends pulumi.CustomResource {
      */
     public readonly riskLevel!: pulumi.Output<number>;
     /**
-     * The status of the resource.
+     * The status of the resource. The valid values: `CREATING`, `ACTIVE`.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -197,7 +197,7 @@ export interface CompliancePackState {
      */
     riskLevel?: pulumi.Input<number>;
     /**
-     * The status of the resource.
+     * The status of the resource. The valid values: `CREATING`, `ACTIVE`.
      */
     status?: pulumi.Input<string>;
 }

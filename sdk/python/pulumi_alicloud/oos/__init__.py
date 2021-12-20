@@ -11,8 +11,15 @@ from .execution import *
 from .get_application_groups import *
 from .get_applications import *
 from .get_executions import *
+from .get_parameters import *
 from .get_patch_baselines import *
+from .get_secret_parameters import *
+from .get_state_configurations import *
 from .get_templates import *
+from .parameter import *
 from .patch_baseline import *
+from .secret_parameter import *
+from .service_setting import *
+from .state_configuration import *
 from .template import *
 from . import outputs

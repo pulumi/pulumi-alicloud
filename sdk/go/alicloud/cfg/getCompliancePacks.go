@@ -61,7 +61,7 @@ type GetCompliancePacksArgs struct {
 	// A regex string to filter results by Compliance Pack name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`
+	// The status of the resource. Valid values `ACTIVE`, `CREATING`.
 	Status *string `pulumi:"status"`
 }
 
@@ -99,7 +99,7 @@ type GetCompliancePacksOutputArgs struct {
 	// A regex string to filter results by Compliance Pack name.
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`
+	// The status of the resource. Valid values `ACTIVE`, `CREATING`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

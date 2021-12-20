@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Output<string?> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+        /// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `sync_status` to enable/disable the host synchronization task.
         /// </summary>
         [Output("syncStatus")]
         public Output<string?> SyncStatus { get; private set; } = null!;
@@ -170,7 +170,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+        /// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `sync_status` to enable/disable the host synchronization task.
         /// </summary>
         [Input("syncStatus")]
         public Input<string>? SyncStatus { get; set; }
@@ -252,7 +252,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the host synchronization task. Valid values:  `ON`,`OFF`.
+        /// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `sync_status` to enable/disable the host synchronization task.
         /// </summary>
         [Input("syncStatus")]
         public Input<string>? SyncStatus { get; set; }

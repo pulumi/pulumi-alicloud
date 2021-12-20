@@ -17,6 +17,8 @@ namespace Pulumi.AliCloud.Brain
         /// 
         /// &gt; **NOTE:** Available in v1.115.0+
         /// 
+        /// &gt; **NOTE:** The Brain Industrial service is not support in the international site.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -47,6 +49,8 @@ namespace Pulumi.AliCloud.Brain
         /// Using this data source can open Brain Industrial service automatically. If the service has been opened, it will return opened.
         /// 
         /// &gt; **NOTE:** Available in v1.115.0+
+        /// 
+        /// &gt; **NOTE:** The Brain Industrial service is not support in the international site.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

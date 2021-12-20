@@ -13,6 +13,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
     [OutputType]
     public sealed class GetStorageBundlesBundleResult
     {
+        public readonly string CreateTime;
         public readonly string Description;
         public readonly string Id;
         public readonly string Location;
@@ -21,6 +22,8 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
 
         [OutputConstructor]
         private GetStorageBundlesBundleResult(
+            string createTime,
+
             string description,
 
             string id,
@@ -31,6 +34,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
 
             string storageBundleName)
         {
+            CreateTime = createTime;
             Description = description;
             Id = id;
             Location = location;

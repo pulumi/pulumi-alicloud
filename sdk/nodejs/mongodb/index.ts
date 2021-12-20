@@ -5,21 +5,36 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./account";
+export * from "./auditPolicy";
+export * from "./getAccounts";
+export * from "./getAuditPolicies";
 export * from "./getInstances";
+export * from "./getServerlessInstances";
 export * from "./getZones";
 export * from "./instance";
+export * from "./serverlessInstance";
 export * from "./shardingInstance";
 
 // Import resources to register:
+import { Account } from "./account";
+import { AuditPolicy } from "./auditPolicy";
 import { Instance } from "./instance";
+import { ServerlessInstance } from "./serverlessInstance";
 import { ShardingInstance } from "./shardingInstance";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:mongodb/account:Account":
+                return new Account(name, <any>undefined, { urn })
+            case "alicloud:mongodb/auditPolicy:AuditPolicy":
+                return new AuditPolicy(name, <any>undefined, { urn })
             case "alicloud:mongodb/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "alicloud:mongodb/serverlessInstance:ServerlessInstance":
+                return new ServerlessInstance(name, <any>undefined, { urn })
             case "alicloud:mongodb/shardingInstance:ShardingInstance":
                 return new ShardingInstance(name, <any>undefined, { urn })
             default:
@@ -27,5 +42,8 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "mongodb/account", _module)
+pulumi.runtime.registerResourceModule("alicloud", "mongodb/auditPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/instance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "mongodb/serverlessInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/shardingInstance", _module)

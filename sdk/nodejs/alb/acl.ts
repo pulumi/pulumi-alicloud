@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Application Load Balancer (ALB) Acl resource.
  *
- * For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/doc-detail/213617.htm).
+ * For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/doc-detail/200280.html).
  *
  * > **NOTE:** Available in v1.133.0+.
  *
@@ -21,6 +21,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.alb.Acl("example", {
+ *     aclEntries: [{
+ *         description: "example_value",
+ *         entry: "10.0.0.0/24",
+ *     }],
  *     aclName: "example_value",
  * });
  * ```
@@ -62,23 +66,23 @@ export class Acl extends pulumi.CustomResource {
     }
 
     /**
-     * ACL Entries.
+     * The list of the ACL entries. You can add up to `20` entries in each call.
      */
     public readonly aclEntries!: pulumi.Output<outputs.alb.AclAclEntry[] | undefined>;
     /**
-     * The name of the ACL. The name must be 2 to 128 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
+     * The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
      */
     public readonly aclName!: pulumi.Output<string>;
     /**
-     * Specifies whether to precheck the API request. Valid values: `true`: only prechecks the API request. If you select this option, the specified endpoint service is not created after the request passes the precheck. The system prechecks the required parameters, request format, and service limits. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned. `false` (default): checks the request. After the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+     * Specifies whether to precheck the API request.
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
-     * Resource Group to Which the Number.
+     * The ID of the resource group.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+     * The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
@@ -126,23 +130,23 @@ export class Acl extends pulumi.CustomResource {
  */
 export interface AclState {
     /**
-     * ACL Entries.
+     * The list of the ACL entries. You can add up to `20` entries in each call.
      */
     aclEntries?: pulumi.Input<pulumi.Input<inputs.alb.AclAclEntry>[]>;
     /**
-     * The name of the ACL. The name must be 2 to 128 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
+     * The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
      */
     aclName?: pulumi.Input<string>;
     /**
-     * Specifies whether to precheck the API request. Valid values: `true`: only prechecks the API request. If you select this option, the specified endpoint service is not created after the request passes the precheck. The system prechecks the required parameters, request format, and service limits. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned. `false` (default): checks the request. After the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+     * Specifies whether to precheck the API request.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * Resource Group to Which the Number.
+     * The ID of the resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+     * The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
      */
     status?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: any}>;
@@ -153,19 +157,19 @@ export interface AclState {
  */
 export interface AclArgs {
     /**
-     * ACL Entries.
+     * The list of the ACL entries. You can add up to `20` entries in each call.
      */
     aclEntries?: pulumi.Input<pulumi.Input<inputs.alb.AclAclEntry>[]>;
     /**
-     * The name of the ACL. The name must be 2 to 128 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
+     * The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
      */
     aclName: pulumi.Input<string>;
     /**
-     * Specifies whether to precheck the API request. Valid values: `true`: only prechecks the API request. If you select this option, the specified endpoint service is not created after the request passes the precheck. The system prechecks the required parameters, request format, and service limits. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned. `false` (default): checks the request. After the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+     * Specifies whether to precheck the API request.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * Resource Group to Which the Number.
+     * The ID of the resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: any}>;

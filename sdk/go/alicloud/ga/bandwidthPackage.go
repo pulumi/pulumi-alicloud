@@ -15,7 +15,8 @@ import (
 //
 // For information about Global Accelerator (GA) Bandwidth Package and how to use it, see [What is Bandwidth Package](https://www.alibabacloud.com/help/en/doc-detail/153241.htm).
 //
-// > **NOTE:** Available in v1.112.0+.
+// > **NOTE:** At present, The `ga.BandwidthPackage` created with `Subscription` cannot be deleted and must wait it to be outdated and release it automatically.
+// **NOTE:** Available in v1.112.0+.
 //
 // ## Example Usage
 //
@@ -67,7 +68,7 @@ type BandwidthPackage struct {
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
 	// The name of the bandwidth packet.
 	BandwidthPackageName pulumi.StringPtrOutput `pulumi:"bandwidthPackageName"`
-	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`.
+	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to Basic, this parameter is required.
 	BandwidthType pulumi.StringPtrOutput `pulumi:"bandwidthType"`
 	// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
 	BillingType pulumi.StringPtrOutput `pulumi:"billingType"`
@@ -77,11 +78,11 @@ type BandwidthPackage struct {
 	CbnGeographicRegionIdb pulumi.StringPtrOutput `pulumi:"cbnGeographicRegionIdb"`
 	// The description of bandwidth package.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The duration.
+	// The duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0.
 	Duration pulumi.StringPtrOutput `pulumi:"duration"`
 	// The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
 	PaymentType pulumi.StringPtrOutput `pulumi:"paymentType"`
-	// The ratio.
+	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
 	Ratio pulumi.IntPtrOutput `pulumi:"ratio"`
 	// The status of the bandwidth plan.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -134,7 +135,7 @@ type bandwidthPackageState struct {
 	Bandwidth *int `pulumi:"bandwidth"`
 	// The name of the bandwidth packet.
 	BandwidthPackageName *string `pulumi:"bandwidthPackageName"`
-	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`.
+	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to Basic, this parameter is required.
 	BandwidthType *string `pulumi:"bandwidthType"`
 	// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
 	BillingType *string `pulumi:"billingType"`
@@ -144,11 +145,11 @@ type bandwidthPackageState struct {
 	CbnGeographicRegionIdb *string `pulumi:"cbnGeographicRegionIdb"`
 	// The description of bandwidth package.
 	Description *string `pulumi:"description"`
-	// The duration.
+	// The duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0.
 	Duration *string `pulumi:"duration"`
 	// The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
-	// The ratio.
+	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
 	Ratio *int `pulumi:"ratio"`
 	// The status of the bandwidth plan.
 	Status *string `pulumi:"status"`
@@ -167,7 +168,7 @@ type BandwidthPackageState struct {
 	Bandwidth pulumi.IntPtrInput
 	// The name of the bandwidth packet.
 	BandwidthPackageName pulumi.StringPtrInput
-	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`.
+	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to Basic, this parameter is required.
 	BandwidthType pulumi.StringPtrInput
 	// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
 	BillingType pulumi.StringPtrInput
@@ -177,11 +178,11 @@ type BandwidthPackageState struct {
 	CbnGeographicRegionIdb pulumi.StringPtrInput
 	// The description of bandwidth package.
 	Description pulumi.StringPtrInput
-	// The duration.
+	// The duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0.
 	Duration pulumi.StringPtrInput
 	// The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
 	PaymentType pulumi.StringPtrInput
-	// The ratio.
+	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
 	Ratio pulumi.IntPtrInput
 	// The status of the bandwidth plan.
 	Status pulumi.StringPtrInput
@@ -204,7 +205,7 @@ type bandwidthPackageArgs struct {
 	Bandwidth int `pulumi:"bandwidth"`
 	// The name of the bandwidth packet.
 	BandwidthPackageName *string `pulumi:"bandwidthPackageName"`
-	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`.
+	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to Basic, this parameter is required.
 	BandwidthType *string `pulumi:"bandwidthType"`
 	// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
 	BillingType *string `pulumi:"billingType"`
@@ -214,11 +215,11 @@ type bandwidthPackageArgs struct {
 	CbnGeographicRegionIdb *string `pulumi:"cbnGeographicRegionIdb"`
 	// The description of bandwidth package.
 	Description *string `pulumi:"description"`
-	// The duration.
+	// The duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0.
 	Duration *string `pulumi:"duration"`
 	// The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
-	// The ratio.
+	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
 	Ratio *int `pulumi:"ratio"`
 	// The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
 	Type string `pulumi:"type"`
@@ -236,7 +237,7 @@ type BandwidthPackageArgs struct {
 	Bandwidth pulumi.IntInput
 	// The name of the bandwidth packet.
 	BandwidthPackageName pulumi.StringPtrInput
-	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`.
+	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to Basic, this parameter is required.
 	BandwidthType pulumi.StringPtrInput
 	// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
 	BillingType pulumi.StringPtrInput
@@ -246,11 +247,11 @@ type BandwidthPackageArgs struct {
 	CbnGeographicRegionIdb pulumi.StringPtrInput
 	// The description of bandwidth package.
 	Description pulumi.StringPtrInput
-	// The duration.
+	// The duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0.
 	Duration pulumi.StringPtrInput
 	// The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
 	PaymentType pulumi.StringPtrInput
-	// The ratio.
+	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
 	Ratio pulumi.IntPtrInput
 	// The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
 	Type pulumi.StringInput

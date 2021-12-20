@@ -77,6 +77,7 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// Additional information for Stack.
         /// </summary>
         public readonly string ExtraInfo;
+        public readonly bool HasUncompletedOrder;
         /// <summary>
         /// High availability cluster.
         /// </summary>
@@ -159,6 +160,10 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, object> Tags;
         /// <summary>
+        /// Disk type.
+        /// </summary>
+        public readonly string Type;
+        /// <summary>
         /// The EMR permission name used.
         /// </summary>
         public readonly string UserDefinedEmrEcsRole;
@@ -213,6 +218,8 @@ namespace Pulumi.AliCloud.Emr.Outputs
 
             string extraInfo,
 
+            bool hasUncompletedOrder,
+
             bool highAvailabilityEnable,
 
             ImmutableArray<Outputs.GetClustersClusterHostGroupListResult> hostGroupLists,
@@ -255,6 +262,8 @@ namespace Pulumi.AliCloud.Emr.Outputs
 
             ImmutableDictionary<string, object> tags,
 
+            string type,
+
             string userDefinedEmrEcsRole,
 
             string userId,
@@ -281,6 +290,7 @@ namespace Pulumi.AliCloud.Emr.Outputs
             EasEnable = easEnable;
             ExpiredTime = expiredTime;
             ExtraInfo = extraInfo;
+            HasUncompletedOrder = hasUncompletedOrder;
             HighAvailabilityEnable = highAvailabilityEnable;
             HostGroupLists = hostGroupLists;
             HostPoolInfos = hostPoolInfos;
@@ -302,6 +312,7 @@ namespace Pulumi.AliCloud.Emr.Outputs
             Status = status;
             StopTime = stopTime;
             Tags = tags;
+            Type = type;
             UserDefinedEmrEcsRole = userDefinedEmrEcsRole;
             UserId = userId;
             VpcId = vpcId;
