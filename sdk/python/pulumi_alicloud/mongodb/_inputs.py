@@ -14,6 +14,7 @@ __all__ = [
     'ShardingInstanceConfigServerListArgs',
     'ShardingInstanceMongoListArgs',
     'ShardingInstanceShardListArgs',
+    'ShardingNetworkPublicAddressNetworkAddressArgs',
 ]
 
 @pulumi.input_type
@@ -466,5 +467,172 @@ class ShardingInstanceShardListArgs:
     @readonly_replicas.setter
     def readonly_replicas(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "readonly_replicas", value)
+
+
+@pulumi.input_type
+class ShardingNetworkPublicAddressNetworkAddressArgs:
+    def __init__(__self__, *,
+                 expired_time: Optional[pulumi.Input[str]] = None,
+                 ip_address: Optional[pulumi.Input[str]] = None,
+                 network_address: Optional[pulumi.Input[str]] = None,
+                 network_type: Optional[pulumi.Input[str]] = None,
+                 node_id: Optional[pulumi.Input[str]] = None,
+                 node_type: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] expired_time: The remaining duration of the classic network address. Unit: `seconds`.
+        :param pulumi.Input[str] ip_address: The IP address of the instance.
+        :param pulumi.Input[str] network_address: The endpoint of the instance.
+        :param pulumi.Input[str] network_type: The network type.
+        :param pulumi.Input[str] node_id: The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+        :param pulumi.Input[str] node_type: The type of the node.
+        :param pulumi.Input[str] port: The port number.
+        :param pulumi.Input[str] role: The role of the node.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC.
+        :param pulumi.Input[str] vswitch_id: The vSwitch ID of the VPC.
+        """
+        if expired_time is not None:
+            pulumi.set(__self__, "expired_time", expired_time)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if network_address is not None:
+            pulumi.set(__self__, "network_address", network_address)
+        if network_type is not None:
+            pulumi.set(__self__, "network_type", network_type)
+        if node_id is not None:
+            pulumi.set(__self__, "node_id", node_id)
+        if node_type is not None:
+            pulumi.set(__self__, "node_type", node_type)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The remaining duration of the classic network address. Unit: `seconds`.
+        """
+        return pulumi.get(self, "expired_time")
+
+    @expired_time.setter
+    def expired_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expired_time", value)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address of the instance.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter(name="networkAddress")
+    def network_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The endpoint of the instance.
+        """
+        return pulumi.get(self, "network_address")
+
+    @network_address.setter
+    def network_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_address", value)
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network type.
+        """
+        return pulumi.get(self, "network_type")
+
+    @network_type.setter
+    def network_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_type", value)
+
+    @property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+        """
+        return pulumi.get(self, "node_id")
+
+    @node_id.setter
+    def node_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_id", value)
+
+    @property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the node.
+        """
+        return pulumi.get(self, "node_type")
+
+    @node_type.setter
+    def node_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_type", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        The port number.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role of the node.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The vSwitch ID of the VPC.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
 
 

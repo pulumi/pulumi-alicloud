@@ -36,13 +36,13 @@ namespace Pulumi.AliCloud.CloudSso
         public Output<string> AccessConfigurationId { get; private set; } = null!;
 
         /// <summary>
-        /// The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
+        /// The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
         /// </summary>
         [Output("accessConfigurationName")]
         public Output<string> AccessConfigurationName { get; private set; } = null!;
 
         /// <summary>
-        /// The Description of the  Access Configuration.
+        /// The Description of the  Access Configuration. The description can be up to `1024` characters long.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -124,13 +124,13 @@ namespace Pulumi.AliCloud.CloudSso
     public sealed class AccessConfigurationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
+        /// The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
         /// </summary>
         [Input("accessConfigurationName", required: true)]
         public Input<string> AccessConfigurationName { get; set; } = null!;
 
         /// <summary>
-        /// The Description of the  Access Configuration.
+        /// The Description of the  Access Configuration. The description can be up to `1024` characters long.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -185,13 +185,13 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? AccessConfigurationId { get; set; }
 
         /// <summary>
-        /// The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
+        /// The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
         /// </summary>
         [Input("accessConfigurationName")]
         public Input<string>? AccessConfigurationName { get; set; }
 
         /// <summary>
-        /// The Description of the  Access Configuration.
+        /// The Description of the  Access Configuration. The description can be up to `1024` characters long.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

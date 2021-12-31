@@ -11,6 +11,7 @@ from . import outputs
 
 __all__ = [
     'InstanceParameter',
+    'RdsCloneDbInstanceParameter',
     'RdsParameterGroupParamDetail',
     'ReadOnlyInstanceParameter',
     'GetAccountsAccountResult',
@@ -22,6 +23,7 @@ __all__ = [
     'GetInstanceEnginesInstanceEngineZoneIdResult',
     'GetInstancesInstanceResult',
     'GetInstancesInstanceParameterResult',
+    'GetRdsBackupsBackupResult',
     'GetRdsParameterGroupsGroupResult',
     'GetRdsParameterGroupsGroupParamDetailResult',
     'GetZonesZoneResult',
@@ -29,6 +31,25 @@ __all__ = [
 
 @pulumi.output_type
 class InstanceParameter(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 value: str):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class RdsCloneDbInstanceParameter(dict):
     def __init__(__self__, *,
                  name: str,
                  value: str):
@@ -1136,6 +1157,280 @@ class GetInstancesInstanceParameterResult(dict):
         The default value of the parameter.
         """
         return pulumi.get(self, "parameter_value")
+
+
+@pulumi.output_type
+class GetRdsBackupsBackupResult(dict):
+    def __init__(__self__, *,
+                 backup_download_url: str,
+                 backup_end_time: str,
+                 backup_id: str,
+                 backup_initiator: str,
+                 backup_intranet_download_url: str,
+                 backup_method: str,
+                 backup_mode: str,
+                 backup_size: str,
+                 backup_start_time: str,
+                 backup_status: str,
+                 backup_type: str,
+                 consistent_time: str,
+                 copy_only_backup: str,
+                 db_instance_id: str,
+                 encryption: str,
+                 host_instance_id: str,
+                 id: str,
+                 is_avail: int,
+                 meta_status: str,
+                 storage_class: str,
+                 store_status: str):
+        """
+        :param str backup_download_url: The backup download url.
+        :param str backup_end_time: BackupEndTime.
+        :param str backup_id: BackupId.
+        :param str backup_initiator: The initiator of the backup task. Value:
+               * **System**: automatically initiated by the System
+               * **User**: manually initiated by the User.
+        :param str backup_intranet_download_url: The backup intranet download url.
+        :param str backup_method: BackupMethod.
+        :param str backup_mode: BackupMode.
+        :param str backup_size: BackupSize.
+        :param str backup_start_time: BackupStartTime.
+        :param str backup_status: Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
+               * **NoStart**: Not started
+               * **Checking**: check the backup
+               * **Preparing**: Prepare a backup
+               * **Waiting**: Waiting for backup
+               * **Uploading**: Upload backup
+               * **Finished**: Complete backup
+               * **Failed**: backup Failed
+        :param str backup_type: BackupType.
+        :param str consistent_time: The consistency point of the backup set. The return value is a timestamp. **NOTE:** only MySQL 5.6 returns this parameter, and other versions return 0.
+        :param str copy_only_backup: The backup mode is divided into the normal backup mode (full and incremental recovery is supported) and the replication-only mode (full recovery is supported only). **NOTE:** Only SQL Server returns this parameter. Valid values:
+               * **0**: General Backup Mode
+               * **1**: Copy only mode
+        :param str db_instance_id: The db instance id.
+        :param str encryption: The encrypted information of the backup set.
+        :param str host_instance_id: HostInstanceID.
+        :param str id: The ID of the Backup.
+        :param int is_avail: Whether the backup set is available, the value is:
+               * **0**: Not available
+               * **1**: Available.
+        :param str meta_status: The backup set status of the database table. **NOTE:** an empty string indicates that the backup set for database table recovery is not enabled. Valid values:
+               * **OK**: normal.
+               * **LARGE**: There are too many tables that cannot be used for database and table recovery.
+               * **EMPTY**: The backup set that failed to be backed up.
+        :param str storage_class: The storage medium for the backup set. Valid values:
+               * **0**: Regular storage
+               * **1**: Archive storage.
+        :param str store_status: StoreStatus.
+        """
+        pulumi.set(__self__, "backup_download_url", backup_download_url)
+        pulumi.set(__self__, "backup_end_time", backup_end_time)
+        pulumi.set(__self__, "backup_id", backup_id)
+        pulumi.set(__self__, "backup_initiator", backup_initiator)
+        pulumi.set(__self__, "backup_intranet_download_url", backup_intranet_download_url)
+        pulumi.set(__self__, "backup_method", backup_method)
+        pulumi.set(__self__, "backup_mode", backup_mode)
+        pulumi.set(__self__, "backup_size", backup_size)
+        pulumi.set(__self__, "backup_start_time", backup_start_time)
+        pulumi.set(__self__, "backup_status", backup_status)
+        pulumi.set(__self__, "backup_type", backup_type)
+        pulumi.set(__self__, "consistent_time", consistent_time)
+        pulumi.set(__self__, "copy_only_backup", copy_only_backup)
+        pulumi.set(__self__, "db_instance_id", db_instance_id)
+        pulumi.set(__self__, "encryption", encryption)
+        pulumi.set(__self__, "host_instance_id", host_instance_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_avail", is_avail)
+        pulumi.set(__self__, "meta_status", meta_status)
+        pulumi.set(__self__, "storage_class", storage_class)
+        pulumi.set(__self__, "store_status", store_status)
+
+    @property
+    @pulumi.getter(name="backupDownloadUrl")
+    def backup_download_url(self) -> str:
+        """
+        The backup download url.
+        """
+        return pulumi.get(self, "backup_download_url")
+
+    @property
+    @pulumi.getter(name="backupEndTime")
+    def backup_end_time(self) -> str:
+        """
+        BackupEndTime.
+        """
+        return pulumi.get(self, "backup_end_time")
+
+    @property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> str:
+        """
+        BackupId.
+        """
+        return pulumi.get(self, "backup_id")
+
+    @property
+    @pulumi.getter(name="backupInitiator")
+    def backup_initiator(self) -> str:
+        """
+        The initiator of the backup task. Value:
+        * **System**: automatically initiated by the System
+        * **User**: manually initiated by the User.
+        """
+        return pulumi.get(self, "backup_initiator")
+
+    @property
+    @pulumi.getter(name="backupIntranetDownloadUrl")
+    def backup_intranet_download_url(self) -> str:
+        """
+        The backup intranet download url.
+        """
+        return pulumi.get(self, "backup_intranet_download_url")
+
+    @property
+    @pulumi.getter(name="backupMethod")
+    def backup_method(self) -> str:
+        """
+        BackupMethod.
+        """
+        return pulumi.get(self, "backup_method")
+
+    @property
+    @pulumi.getter(name="backupMode")
+    def backup_mode(self) -> str:
+        """
+        BackupMode.
+        """
+        return pulumi.get(self, "backup_mode")
+
+    @property
+    @pulumi.getter(name="backupSize")
+    def backup_size(self) -> str:
+        """
+        BackupSize.
+        """
+        return pulumi.get(self, "backup_size")
+
+    @property
+    @pulumi.getter(name="backupStartTime")
+    def backup_start_time(self) -> str:
+        """
+        BackupStartTime.
+        """
+        return pulumi.get(self, "backup_start_time")
+
+    @property
+    @pulumi.getter(name="backupStatus")
+    def backup_status(self) -> str:
+        """
+        Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
+        * **NoStart**: Not started
+        * **Checking**: check the backup
+        * **Preparing**: Prepare a backup
+        * **Waiting**: Waiting for backup
+        * **Uploading**: Upload backup
+        * **Finished**: Complete backup
+        * **Failed**: backup Failed
+        """
+        return pulumi.get(self, "backup_status")
+
+    @property
+    @pulumi.getter(name="backupType")
+    def backup_type(self) -> str:
+        """
+        BackupType.
+        """
+        return pulumi.get(self, "backup_type")
+
+    @property
+    @pulumi.getter(name="consistentTime")
+    def consistent_time(self) -> str:
+        """
+        The consistency point of the backup set. The return value is a timestamp. **NOTE:** only MySQL 5.6 returns this parameter, and other versions return 0.
+        """
+        return pulumi.get(self, "consistent_time")
+
+    @property
+    @pulumi.getter(name="copyOnlyBackup")
+    def copy_only_backup(self) -> str:
+        """
+        The backup mode is divided into the normal backup mode (full and incremental recovery is supported) and the replication-only mode (full recovery is supported only). **NOTE:** Only SQL Server returns this parameter. Valid values:
+        * **0**: General Backup Mode
+        * **1**: Copy only mode
+        """
+        return pulumi.get(self, "copy_only_backup")
+
+    @property
+    @pulumi.getter(name="dbInstanceId")
+    def db_instance_id(self) -> str:
+        """
+        The db instance id.
+        """
+        return pulumi.get(self, "db_instance_id")
+
+    @property
+    @pulumi.getter
+    def encryption(self) -> str:
+        """
+        The encrypted information of the backup set.
+        """
+        return pulumi.get(self, "encryption")
+
+    @property
+    @pulumi.getter(name="hostInstanceId")
+    def host_instance_id(self) -> str:
+        """
+        HostInstanceID.
+        """
+        return pulumi.get(self, "host_instance_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Backup.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="isAvail")
+    def is_avail(self) -> int:
+        """
+        Whether the backup set is available, the value is:
+        * **0**: Not available
+        * **1**: Available.
+        """
+        return pulumi.get(self, "is_avail")
+
+    @property
+    @pulumi.getter(name="metaStatus")
+    def meta_status(self) -> str:
+        """
+        The backup set status of the database table. **NOTE:** an empty string indicates that the backup set for database table recovery is not enabled. Valid values:
+        * **OK**: normal.
+        * **LARGE**: There are too many tables that cannot be used for database and table recovery.
+        * **EMPTY**: The backup set that failed to be backed up.
+        """
+        return pulumi.get(self, "meta_status")
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> str:
+        """
+        The storage medium for the backup set. Valid values:
+        * **0**: Regular storage
+        * **1**: Archive storage.
+        """
+        return pulumi.get(self, "storage_class")
+
+    @property
+    @pulumi.getter(name="storeStatus")
+    def store_status(self) -> str:
+        """
+        StoreStatus.
+        """
+        return pulumi.get(self, "store_status")
 
 
 @pulumi.output_type

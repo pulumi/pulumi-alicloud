@@ -55,11 +55,11 @@ export class AccessConfiguration extends pulumi.CustomResource {
      */
     public /*out*/ readonly accessConfigurationId!: pulumi.Output<string>;
     /**
-     * The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
+     * The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
      */
     public readonly accessConfigurationName!: pulumi.Output<string>;
     /**
-     * The Description of the  Access Configuration.
+     * The Description of the  Access Configuration. The description can be up to `1024` characters long.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -137,11 +137,11 @@ export interface AccessConfigurationState {
      */
     accessConfigurationId?: pulumi.Input<string>;
     /**
-     * The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
+     * The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
      */
     accessConfigurationName?: pulumi.Input<string>;
     /**
-     * The Description of the  Access Configuration.
+     * The Description of the  Access Configuration. The description can be up to `1024` characters long.
      */
     description?: pulumi.Input<string>;
     /**
@@ -171,11 +171,11 @@ export interface AccessConfigurationState {
  */
 export interface AccessConfigurationArgs {
     /**
-     * The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
+     * The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
      */
     accessConfigurationName: pulumi.Input<string>;
     /**
-     * The Description of the  Access Configuration.
+     * The Description of the  Access Configuration. The description can be up to `1024` characters long.
      */
     description?: pulumi.Input<string>;
     /**

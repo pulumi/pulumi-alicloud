@@ -10,6 +10,166 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetExecutionsExecution struct {
+	// The name of the execution.
+	ExecutionName string `pulumi:"executionName"`
+	// The name of the flow.
+	FlowName string `pulumi:"flowName"`
+	// The ID of the Execution. The value formats as `<flow_name>:<execution_name>`.
+	Id string `pulumi:"id"`
+	// The Input information for this execution.
+	Input string `pulumi:"input"`
+	// The output of the execution.
+	Output string `pulumi:"output"`
+	// The started time of the execution.
+	StartedTime string `pulumi:"startedTime"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+	// The stopped time of the execution.
+	StoppedTime string `pulumi:"stoppedTime"`
+}
+
+// GetExecutionsExecutionInput is an input type that accepts GetExecutionsExecutionArgs and GetExecutionsExecutionOutput values.
+// You can construct a concrete instance of `GetExecutionsExecutionInput` via:
+//
+//          GetExecutionsExecutionArgs{...}
+type GetExecutionsExecutionInput interface {
+	pulumi.Input
+
+	ToGetExecutionsExecutionOutput() GetExecutionsExecutionOutput
+	ToGetExecutionsExecutionOutputWithContext(context.Context) GetExecutionsExecutionOutput
+}
+
+type GetExecutionsExecutionArgs struct {
+	// The name of the execution.
+	ExecutionName pulumi.StringInput `pulumi:"executionName"`
+	// The name of the flow.
+	FlowName pulumi.StringInput `pulumi:"flowName"`
+	// The ID of the Execution. The value formats as `<flow_name>:<execution_name>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Input information for this execution.
+	Input pulumi.StringInput `pulumi:"input"`
+	// The output of the execution.
+	Output pulumi.StringInput `pulumi:"output"`
+	// The started time of the execution.
+	StartedTime pulumi.StringInput `pulumi:"startedTime"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The stopped time of the execution.
+	StoppedTime pulumi.StringInput `pulumi:"stoppedTime"`
+}
+
+func (GetExecutionsExecutionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExecutionsExecution)(nil)).Elem()
+}
+
+func (i GetExecutionsExecutionArgs) ToGetExecutionsExecutionOutput() GetExecutionsExecutionOutput {
+	return i.ToGetExecutionsExecutionOutputWithContext(context.Background())
+}
+
+func (i GetExecutionsExecutionArgs) ToGetExecutionsExecutionOutputWithContext(ctx context.Context) GetExecutionsExecutionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExecutionsExecutionOutput)
+}
+
+// GetExecutionsExecutionArrayInput is an input type that accepts GetExecutionsExecutionArray and GetExecutionsExecutionArrayOutput values.
+// You can construct a concrete instance of `GetExecutionsExecutionArrayInput` via:
+//
+//          GetExecutionsExecutionArray{ GetExecutionsExecutionArgs{...} }
+type GetExecutionsExecutionArrayInput interface {
+	pulumi.Input
+
+	ToGetExecutionsExecutionArrayOutput() GetExecutionsExecutionArrayOutput
+	ToGetExecutionsExecutionArrayOutputWithContext(context.Context) GetExecutionsExecutionArrayOutput
+}
+
+type GetExecutionsExecutionArray []GetExecutionsExecutionInput
+
+func (GetExecutionsExecutionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExecutionsExecution)(nil)).Elem()
+}
+
+func (i GetExecutionsExecutionArray) ToGetExecutionsExecutionArrayOutput() GetExecutionsExecutionArrayOutput {
+	return i.ToGetExecutionsExecutionArrayOutputWithContext(context.Background())
+}
+
+func (i GetExecutionsExecutionArray) ToGetExecutionsExecutionArrayOutputWithContext(ctx context.Context) GetExecutionsExecutionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExecutionsExecutionArrayOutput)
+}
+
+type GetExecutionsExecutionOutput struct{ *pulumi.OutputState }
+
+func (GetExecutionsExecutionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExecutionsExecution)(nil)).Elem()
+}
+
+func (o GetExecutionsExecutionOutput) ToGetExecutionsExecutionOutput() GetExecutionsExecutionOutput {
+	return o
+}
+
+func (o GetExecutionsExecutionOutput) ToGetExecutionsExecutionOutputWithContext(ctx context.Context) GetExecutionsExecutionOutput {
+	return o
+}
+
+// The name of the execution.
+func (o GetExecutionsExecutionOutput) ExecutionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExecutionsExecution) string { return v.ExecutionName }).(pulumi.StringOutput)
+}
+
+// The name of the flow.
+func (o GetExecutionsExecutionOutput) FlowName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExecutionsExecution) string { return v.FlowName }).(pulumi.StringOutput)
+}
+
+// The ID of the Execution. The value formats as `<flow_name>:<execution_name>`.
+func (o GetExecutionsExecutionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExecutionsExecution) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Input information for this execution.
+func (o GetExecutionsExecutionOutput) Input() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExecutionsExecution) string { return v.Input }).(pulumi.StringOutput)
+}
+
+// The output of the execution.
+func (o GetExecutionsExecutionOutput) Output() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExecutionsExecution) string { return v.Output }).(pulumi.StringOutput)
+}
+
+// The started time of the execution.
+func (o GetExecutionsExecutionOutput) StartedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExecutionsExecution) string { return v.StartedTime }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetExecutionsExecutionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExecutionsExecution) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The stopped time of the execution.
+func (o GetExecutionsExecutionOutput) StoppedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExecutionsExecution) string { return v.StoppedTime }).(pulumi.StringOutput)
+}
+
+type GetExecutionsExecutionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExecutionsExecutionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExecutionsExecution)(nil)).Elem()
+}
+
+func (o GetExecutionsExecutionArrayOutput) ToGetExecutionsExecutionArrayOutput() GetExecutionsExecutionArrayOutput {
+	return o
+}
+
+func (o GetExecutionsExecutionArrayOutput) ToGetExecutionsExecutionArrayOutputWithContext(ctx context.Context) GetExecutionsExecutionArrayOutput {
+	return o
+}
+
+func (o GetExecutionsExecutionArrayOutput) Index(i pulumi.IntInput) GetExecutionsExecutionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExecutionsExecution {
+		return vs[0].([]GetExecutionsExecution)[vs[1].(int)]
+	}).(GetExecutionsExecutionOutput)
+}
+
 type GetFlowsFlow struct {
 	// The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
 	Definition string `pulumi:"definition"`
@@ -331,10 +491,14 @@ func (o GetSchedulesScheduleArrayOutput) Index(i pulumi.IntInput) GetSchedulesSc
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExecutionsExecutionInput)(nil)).Elem(), GetExecutionsExecutionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExecutionsExecutionArrayInput)(nil)).Elem(), GetExecutionsExecutionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFlowsFlowInput)(nil)).Elem(), GetFlowsFlowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFlowsFlowArrayInput)(nil)).Elem(), GetFlowsFlowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSchedulesScheduleInput)(nil)).Elem(), GetSchedulesScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSchedulesScheduleArrayInput)(nil)).Elem(), GetSchedulesScheduleArray{})
+	pulumi.RegisterOutputType(GetExecutionsExecutionOutput{})
+	pulumi.RegisterOutputType(GetExecutionsExecutionArrayOutput{})
 	pulumi.RegisterOutputType(GetFlowsFlowOutput{})
 	pulumi.RegisterOutputType(GetFlowsFlowArrayOutput{})
 	pulumi.RegisterOutputType(GetSchedulesScheduleOutput{})

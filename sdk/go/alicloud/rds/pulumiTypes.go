@@ -110,6 +110,106 @@ func (o InstanceParameterArrayOutput) Index(i pulumi.IntInput) InstanceParameter
 	}).(InstanceParameterOutput)
 }
 
+type RdsCloneDbInstanceParameter struct {
+	Name  string `pulumi:"name"`
+	Value string `pulumi:"value"`
+}
+
+// RdsCloneDbInstanceParameterInput is an input type that accepts RdsCloneDbInstanceParameterArgs and RdsCloneDbInstanceParameterOutput values.
+// You can construct a concrete instance of `RdsCloneDbInstanceParameterInput` via:
+//
+//          RdsCloneDbInstanceParameterArgs{...}
+type RdsCloneDbInstanceParameterInput interface {
+	pulumi.Input
+
+	ToRdsCloneDbInstanceParameterOutput() RdsCloneDbInstanceParameterOutput
+	ToRdsCloneDbInstanceParameterOutputWithContext(context.Context) RdsCloneDbInstanceParameterOutput
+}
+
+type RdsCloneDbInstanceParameterArgs struct {
+	Name  pulumi.StringInput `pulumi:"name"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (RdsCloneDbInstanceParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RdsCloneDbInstanceParameter)(nil)).Elem()
+}
+
+func (i RdsCloneDbInstanceParameterArgs) ToRdsCloneDbInstanceParameterOutput() RdsCloneDbInstanceParameterOutput {
+	return i.ToRdsCloneDbInstanceParameterOutputWithContext(context.Background())
+}
+
+func (i RdsCloneDbInstanceParameterArgs) ToRdsCloneDbInstanceParameterOutputWithContext(ctx context.Context) RdsCloneDbInstanceParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RdsCloneDbInstanceParameterOutput)
+}
+
+// RdsCloneDbInstanceParameterArrayInput is an input type that accepts RdsCloneDbInstanceParameterArray and RdsCloneDbInstanceParameterArrayOutput values.
+// You can construct a concrete instance of `RdsCloneDbInstanceParameterArrayInput` via:
+//
+//          RdsCloneDbInstanceParameterArray{ RdsCloneDbInstanceParameterArgs{...} }
+type RdsCloneDbInstanceParameterArrayInput interface {
+	pulumi.Input
+
+	ToRdsCloneDbInstanceParameterArrayOutput() RdsCloneDbInstanceParameterArrayOutput
+	ToRdsCloneDbInstanceParameterArrayOutputWithContext(context.Context) RdsCloneDbInstanceParameterArrayOutput
+}
+
+type RdsCloneDbInstanceParameterArray []RdsCloneDbInstanceParameterInput
+
+func (RdsCloneDbInstanceParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RdsCloneDbInstanceParameter)(nil)).Elem()
+}
+
+func (i RdsCloneDbInstanceParameterArray) ToRdsCloneDbInstanceParameterArrayOutput() RdsCloneDbInstanceParameterArrayOutput {
+	return i.ToRdsCloneDbInstanceParameterArrayOutputWithContext(context.Background())
+}
+
+func (i RdsCloneDbInstanceParameterArray) ToRdsCloneDbInstanceParameterArrayOutputWithContext(ctx context.Context) RdsCloneDbInstanceParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RdsCloneDbInstanceParameterArrayOutput)
+}
+
+type RdsCloneDbInstanceParameterOutput struct{ *pulumi.OutputState }
+
+func (RdsCloneDbInstanceParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RdsCloneDbInstanceParameter)(nil)).Elem()
+}
+
+func (o RdsCloneDbInstanceParameterOutput) ToRdsCloneDbInstanceParameterOutput() RdsCloneDbInstanceParameterOutput {
+	return o
+}
+
+func (o RdsCloneDbInstanceParameterOutput) ToRdsCloneDbInstanceParameterOutputWithContext(ctx context.Context) RdsCloneDbInstanceParameterOutput {
+	return o
+}
+
+func (o RdsCloneDbInstanceParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RdsCloneDbInstanceParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o RdsCloneDbInstanceParameterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v RdsCloneDbInstanceParameter) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type RdsCloneDbInstanceParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (RdsCloneDbInstanceParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RdsCloneDbInstanceParameter)(nil)).Elem()
+}
+
+func (o RdsCloneDbInstanceParameterArrayOutput) ToRdsCloneDbInstanceParameterArrayOutput() RdsCloneDbInstanceParameterArrayOutput {
+	return o
+}
+
+func (o RdsCloneDbInstanceParameterArrayOutput) ToRdsCloneDbInstanceParameterArrayOutputWithContext(ctx context.Context) RdsCloneDbInstanceParameterArrayOutput {
+	return o
+}
+
+func (o RdsCloneDbInstanceParameterArrayOutput) Index(i pulumi.IntInput) RdsCloneDbInstanceParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RdsCloneDbInstanceParameter {
+		return vs[0].([]RdsCloneDbInstanceParameter)[vs[1].(int)]
+	}).(RdsCloneDbInstanceParameterOutput)
+}
+
 type RdsParameterGroupParamDetail struct {
 	// The name of a parameter.
 	ParamName string `pulumi:"paramName"`
@@ -1884,6 +1984,337 @@ func (o GetInstancesInstanceParameterArrayOutput) Index(i pulumi.IntInput) GetIn
 	}).(GetInstancesInstanceParameterOutput)
 }
 
+type GetRdsBackupsBackup struct {
+	// The backup download url.
+	BackupDownloadUrl string `pulumi:"backupDownloadUrl"`
+	// BackupEndTime.
+	BackupEndTime string `pulumi:"backupEndTime"`
+	// BackupId.
+	BackupId string `pulumi:"backupId"`
+	// The initiator of the backup task. Value:
+	// * **System**: automatically initiated by the System
+	// * **User**: manually initiated by the User.
+	BackupInitiator string `pulumi:"backupInitiator"`
+	// The backup intranet download url.
+	BackupIntranetDownloadUrl string `pulumi:"backupIntranetDownloadUrl"`
+	// BackupMethod.
+	BackupMethod string `pulumi:"backupMethod"`
+	// BackupMode.
+	BackupMode string `pulumi:"backupMode"`
+	// BackupSize.
+	BackupSize string `pulumi:"backupSize"`
+	// BackupStartTime.
+	BackupStartTime string `pulumi:"backupStartTime"`
+	// Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
+	// * **NoStart**: Not started
+	// * **Checking**: check the backup
+	// * **Preparing**: Prepare a backup
+	// * **Waiting**: Waiting for backup
+	// * **Uploading**: Upload backup
+	// * **Finished**: Complete backup
+	// * **Failed**: backup Failed
+	BackupStatus string `pulumi:"backupStatus"`
+	// BackupType.
+	BackupType string `pulumi:"backupType"`
+	// The consistency point of the backup set. The return value is a timestamp. **NOTE:** only MySQL 5.6 returns this parameter, and other versions return 0.
+	ConsistentTime string `pulumi:"consistentTime"`
+	// The backup mode is divided into the normal backup mode (full and incremental recovery is supported) and the replication-only mode (full recovery is supported only). **NOTE:** Only SQL Server returns this parameter. Valid values:
+	// * **0**: General Backup Mode
+	// * **1**: Copy only mode
+	CopyOnlyBackup string `pulumi:"copyOnlyBackup"`
+	// The db instance id.
+	DbInstanceId string `pulumi:"dbInstanceId"`
+	// The encrypted information of the backup set.
+	Encryption string `pulumi:"encryption"`
+	// HostInstanceID.
+	HostInstanceId string `pulumi:"hostInstanceId"`
+	// The ID of the Backup.
+	Id string `pulumi:"id"`
+	// Whether the backup set is available, the value is:
+	// * **0**: Not available
+	// * **1**: Available.
+	IsAvail int `pulumi:"isAvail"`
+	// The backup set status of the database table. **NOTE:** an empty string indicates that the backup set for database table recovery is not enabled. Valid values:
+	// * **OK**: normal.
+	// * **LARGE**: There are too many tables that cannot be used for database and table recovery.
+	// * **EMPTY**: The backup set that failed to be backed up.
+	MetaStatus string `pulumi:"metaStatus"`
+	// The storage medium for the backup set. Valid values:
+	// * **0**: Regular storage
+	// * **1**: Archive storage.
+	StorageClass string `pulumi:"storageClass"`
+	// StoreStatus.
+	StoreStatus string `pulumi:"storeStatus"`
+}
+
+// GetRdsBackupsBackupInput is an input type that accepts GetRdsBackupsBackupArgs and GetRdsBackupsBackupOutput values.
+// You can construct a concrete instance of `GetRdsBackupsBackupInput` via:
+//
+//          GetRdsBackupsBackupArgs{...}
+type GetRdsBackupsBackupInput interface {
+	pulumi.Input
+
+	ToGetRdsBackupsBackupOutput() GetRdsBackupsBackupOutput
+	ToGetRdsBackupsBackupOutputWithContext(context.Context) GetRdsBackupsBackupOutput
+}
+
+type GetRdsBackupsBackupArgs struct {
+	// The backup download url.
+	BackupDownloadUrl pulumi.StringInput `pulumi:"backupDownloadUrl"`
+	// BackupEndTime.
+	BackupEndTime pulumi.StringInput `pulumi:"backupEndTime"`
+	// BackupId.
+	BackupId pulumi.StringInput `pulumi:"backupId"`
+	// The initiator of the backup task. Value:
+	// * **System**: automatically initiated by the System
+	// * **User**: manually initiated by the User.
+	BackupInitiator pulumi.StringInput `pulumi:"backupInitiator"`
+	// The backup intranet download url.
+	BackupIntranetDownloadUrl pulumi.StringInput `pulumi:"backupIntranetDownloadUrl"`
+	// BackupMethod.
+	BackupMethod pulumi.StringInput `pulumi:"backupMethod"`
+	// BackupMode.
+	BackupMode pulumi.StringInput `pulumi:"backupMode"`
+	// BackupSize.
+	BackupSize pulumi.StringInput `pulumi:"backupSize"`
+	// BackupStartTime.
+	BackupStartTime pulumi.StringInput `pulumi:"backupStartTime"`
+	// Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
+	// * **NoStart**: Not started
+	// * **Checking**: check the backup
+	// * **Preparing**: Prepare a backup
+	// * **Waiting**: Waiting for backup
+	// * **Uploading**: Upload backup
+	// * **Finished**: Complete backup
+	// * **Failed**: backup Failed
+	BackupStatus pulumi.StringInput `pulumi:"backupStatus"`
+	// BackupType.
+	BackupType pulumi.StringInput `pulumi:"backupType"`
+	// The consistency point of the backup set. The return value is a timestamp. **NOTE:** only MySQL 5.6 returns this parameter, and other versions return 0.
+	ConsistentTime pulumi.StringInput `pulumi:"consistentTime"`
+	// The backup mode is divided into the normal backup mode (full and incremental recovery is supported) and the replication-only mode (full recovery is supported only). **NOTE:** Only SQL Server returns this parameter. Valid values:
+	// * **0**: General Backup Mode
+	// * **1**: Copy only mode
+	CopyOnlyBackup pulumi.StringInput `pulumi:"copyOnlyBackup"`
+	// The db instance id.
+	DbInstanceId pulumi.StringInput `pulumi:"dbInstanceId"`
+	// The encrypted information of the backup set.
+	Encryption pulumi.StringInput `pulumi:"encryption"`
+	// HostInstanceID.
+	HostInstanceId pulumi.StringInput `pulumi:"hostInstanceId"`
+	// The ID of the Backup.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether the backup set is available, the value is:
+	// * **0**: Not available
+	// * **1**: Available.
+	IsAvail pulumi.IntInput `pulumi:"isAvail"`
+	// The backup set status of the database table. **NOTE:** an empty string indicates that the backup set for database table recovery is not enabled. Valid values:
+	// * **OK**: normal.
+	// * **LARGE**: There are too many tables that cannot be used for database and table recovery.
+	// * **EMPTY**: The backup set that failed to be backed up.
+	MetaStatus pulumi.StringInput `pulumi:"metaStatus"`
+	// The storage medium for the backup set. Valid values:
+	// * **0**: Regular storage
+	// * **1**: Archive storage.
+	StorageClass pulumi.StringInput `pulumi:"storageClass"`
+	// StoreStatus.
+	StoreStatus pulumi.StringInput `pulumi:"storeStatus"`
+}
+
+func (GetRdsBackupsBackupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRdsBackupsBackup)(nil)).Elem()
+}
+
+func (i GetRdsBackupsBackupArgs) ToGetRdsBackupsBackupOutput() GetRdsBackupsBackupOutput {
+	return i.ToGetRdsBackupsBackupOutputWithContext(context.Background())
+}
+
+func (i GetRdsBackupsBackupArgs) ToGetRdsBackupsBackupOutputWithContext(ctx context.Context) GetRdsBackupsBackupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRdsBackupsBackupOutput)
+}
+
+// GetRdsBackupsBackupArrayInput is an input type that accepts GetRdsBackupsBackupArray and GetRdsBackupsBackupArrayOutput values.
+// You can construct a concrete instance of `GetRdsBackupsBackupArrayInput` via:
+//
+//          GetRdsBackupsBackupArray{ GetRdsBackupsBackupArgs{...} }
+type GetRdsBackupsBackupArrayInput interface {
+	pulumi.Input
+
+	ToGetRdsBackupsBackupArrayOutput() GetRdsBackupsBackupArrayOutput
+	ToGetRdsBackupsBackupArrayOutputWithContext(context.Context) GetRdsBackupsBackupArrayOutput
+}
+
+type GetRdsBackupsBackupArray []GetRdsBackupsBackupInput
+
+func (GetRdsBackupsBackupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRdsBackupsBackup)(nil)).Elem()
+}
+
+func (i GetRdsBackupsBackupArray) ToGetRdsBackupsBackupArrayOutput() GetRdsBackupsBackupArrayOutput {
+	return i.ToGetRdsBackupsBackupArrayOutputWithContext(context.Background())
+}
+
+func (i GetRdsBackupsBackupArray) ToGetRdsBackupsBackupArrayOutputWithContext(ctx context.Context) GetRdsBackupsBackupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRdsBackupsBackupArrayOutput)
+}
+
+type GetRdsBackupsBackupOutput struct{ *pulumi.OutputState }
+
+func (GetRdsBackupsBackupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRdsBackupsBackup)(nil)).Elem()
+}
+
+func (o GetRdsBackupsBackupOutput) ToGetRdsBackupsBackupOutput() GetRdsBackupsBackupOutput {
+	return o
+}
+
+func (o GetRdsBackupsBackupOutput) ToGetRdsBackupsBackupOutputWithContext(ctx context.Context) GetRdsBackupsBackupOutput {
+	return o
+}
+
+// The backup download url.
+func (o GetRdsBackupsBackupOutput) BackupDownloadUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsBackupsBackup) string { return v.BackupDownloadUrl }).(pulumi.StringOutput)
+}
+
+// BackupEndTime.
+func (o GetRdsBackupsBackupOutput) BackupEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsBackupsBackup) string { return v.BackupEndTime }).(pulumi.StringOutput)
+}
+
+// BackupId.
+func (o GetRdsBackupsBackupOutput) BackupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsBackupsBackup) string { return v.BackupId }).(pulumi.StringOutput)
+}
+
+// The initiator of the backup task. Value:
+// * **System**: automatically initiated by the System
+// * **User**: manually initiated by the User.
+func (o GetRdsBackupsBackupOutput) BackupInitiator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsBackupsBackup) string { return v.BackupInitiator }).(pulumi.StringOutput)
+}
+
+// The backup intranet download url.
+func (o GetRdsBackupsBackupOutput) BackupIntranetDownloadUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsBackupsBackup) string { return v.BackupIntranetDownloadUrl }).(pulumi.StringOutput)
+}
+
+// BackupMethod.
+func (o GetRdsBackupsBackupOutput) BackupMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsBackupsBackup) string { return v.BackupMethod }).(pulumi.StringOutput)
+}
+
+// BackupMode.
+func (o GetRdsBackupsBackupOutput) BackupMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsBackupsBackup) string { return v.BackupMode }).(pulumi.StringOutput)
+}
+
+// BackupSize.
+func (o GetRdsBackupsBackupOutput) BackupSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsBackupsBackup) string { return v.BackupSize }).(pulumi.StringOutput)
+}
+
+// BackupStartTime.
+func (o GetRdsBackupsBackupOutput) BackupStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsBackupsBackup) string { return v.BackupStartTime }).(pulumi.StringOutput)
+}
+
+// Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
+// * **NoStart**: Not started
+// * **Checking**: check the backup
+// * **Preparing**: Prepare a backup
+// * **Waiting**: Waiting for backup
+// * **Uploading**: Upload backup
+// * **Finished**: Complete backup
+// * **Failed**: backup Failed
+func (o GetRdsBackupsBackupOutput) BackupStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsBackupsBackup) string { return v.BackupStatus }).(pulumi.StringOutput)
+}
+
+// BackupType.
+func (o GetRdsBackupsBackupOutput) BackupType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsBackupsBackup) string { return v.BackupType }).(pulumi.StringOutput)
+}
+
+// The consistency point of the backup set. The return value is a timestamp. **NOTE:** only MySQL 5.6 returns this parameter, and other versions return 0.
+func (o GetRdsBackupsBackupOutput) ConsistentTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsBackupsBackup) string { return v.ConsistentTime }).(pulumi.StringOutput)
+}
+
+// The backup mode is divided into the normal backup mode (full and incremental recovery is supported) and the replication-only mode (full recovery is supported only). **NOTE:** Only SQL Server returns this parameter. Valid values:
+// * **0**: General Backup Mode
+// * **1**: Copy only mode
+func (o GetRdsBackupsBackupOutput) CopyOnlyBackup() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsBackupsBackup) string { return v.CopyOnlyBackup }).(pulumi.StringOutput)
+}
+
+// The db instance id.
+func (o GetRdsBackupsBackupOutput) DbInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsBackupsBackup) string { return v.DbInstanceId }).(pulumi.StringOutput)
+}
+
+// The encrypted information of the backup set.
+func (o GetRdsBackupsBackupOutput) Encryption() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsBackupsBackup) string { return v.Encryption }).(pulumi.StringOutput)
+}
+
+// HostInstanceID.
+func (o GetRdsBackupsBackupOutput) HostInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsBackupsBackup) string { return v.HostInstanceId }).(pulumi.StringOutput)
+}
+
+// The ID of the Backup.
+func (o GetRdsBackupsBackupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsBackupsBackup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether the backup set is available, the value is:
+// * **0**: Not available
+// * **1**: Available.
+func (o GetRdsBackupsBackupOutput) IsAvail() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRdsBackupsBackup) int { return v.IsAvail }).(pulumi.IntOutput)
+}
+
+// The backup set status of the database table. **NOTE:** an empty string indicates that the backup set for database table recovery is not enabled. Valid values:
+// * **OK**: normal.
+// * **LARGE**: There are too many tables that cannot be used for database and table recovery.
+// * **EMPTY**: The backup set that failed to be backed up.
+func (o GetRdsBackupsBackupOutput) MetaStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsBackupsBackup) string { return v.MetaStatus }).(pulumi.StringOutput)
+}
+
+// The storage medium for the backup set. Valid values:
+// * **0**: Regular storage
+// * **1**: Archive storage.
+func (o GetRdsBackupsBackupOutput) StorageClass() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsBackupsBackup) string { return v.StorageClass }).(pulumi.StringOutput)
+}
+
+// StoreStatus.
+func (o GetRdsBackupsBackupOutput) StoreStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRdsBackupsBackup) string { return v.StoreStatus }).(pulumi.StringOutput)
+}
+
+type GetRdsBackupsBackupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRdsBackupsBackupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRdsBackupsBackup)(nil)).Elem()
+}
+
+func (o GetRdsBackupsBackupArrayOutput) ToGetRdsBackupsBackupArrayOutput() GetRdsBackupsBackupArrayOutput {
+	return o
+}
+
+func (o GetRdsBackupsBackupArrayOutput) ToGetRdsBackupsBackupArrayOutputWithContext(ctx context.Context) GetRdsBackupsBackupArrayOutput {
+	return o
+}
+
+func (o GetRdsBackupsBackupArrayOutput) Index(i pulumi.IntInput) GetRdsBackupsBackupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRdsBackupsBackup {
+		return vs[0].([]GetRdsBackupsBackup)[vs[1].(int)]
+	}).(GetRdsBackupsBackupOutput)
+}
+
 type GetRdsParameterGroupsGroup struct {
 	Engine             string                                  `pulumi:"engine"`
 	EngineVersion      string                                  `pulumi:"engineVersion"`
@@ -2241,6 +2672,8 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceParameterInput)(nil)).Elem(), InstanceParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceParameterArrayInput)(nil)).Elem(), InstanceParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RdsCloneDbInstanceParameterInput)(nil)).Elem(), RdsCloneDbInstanceParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RdsCloneDbInstanceParameterArrayInput)(nil)).Elem(), RdsCloneDbInstanceParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsParameterGroupParamDetailInput)(nil)).Elem(), RdsParameterGroupParamDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsParameterGroupParamDetailArrayInput)(nil)).Elem(), RdsParameterGroupParamDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReadOnlyInstanceParameterInput)(nil)).Elem(), ReadOnlyInstanceParameterArgs{})
@@ -2262,6 +2695,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceParameterInput)(nil)).Elem(), GetInstancesInstanceParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceParameterArrayInput)(nil)).Elem(), GetInstancesInstanceParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRdsBackupsBackupInput)(nil)).Elem(), GetRdsBackupsBackupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRdsBackupsBackupArrayInput)(nil)).Elem(), GetRdsBackupsBackupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRdsParameterGroupsGroupInput)(nil)).Elem(), GetRdsParameterGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRdsParameterGroupsGroupArrayInput)(nil)).Elem(), GetRdsParameterGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRdsParameterGroupsGroupParamDetailInput)(nil)).Elem(), GetRdsParameterGroupsGroupParamDetailArgs{})
@@ -2270,6 +2705,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(InstanceParameterOutput{})
 	pulumi.RegisterOutputType(InstanceParameterArrayOutput{})
+	pulumi.RegisterOutputType(RdsCloneDbInstanceParameterOutput{})
+	pulumi.RegisterOutputType(RdsCloneDbInstanceParameterArrayOutput{})
 	pulumi.RegisterOutputType(RdsParameterGroupParamDetailOutput{})
 	pulumi.RegisterOutputType(RdsParameterGroupParamDetailArrayOutput{})
 	pulumi.RegisterOutputType(ReadOnlyInstanceParameterOutput{})
@@ -2291,6 +2728,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceParameterOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceParameterArrayOutput{})
+	pulumi.RegisterOutputType(GetRdsBackupsBackupOutput{})
+	pulumi.RegisterOutputType(GetRdsBackupsBackupArrayOutput{})
 	pulumi.RegisterOutputType(GetRdsParameterGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetRdsParameterGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetRdsParameterGroupsGroupParamDetailOutput{})

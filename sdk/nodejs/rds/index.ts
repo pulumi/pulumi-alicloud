@@ -14,10 +14,13 @@ export * from "./getAccounts";
 export * from "./getInstanceClasses";
 export * from "./getInstanceEngines";
 export * from "./getInstances";
+export * from "./getRdsBackups";
 export * from "./getRdsParameterGroups";
 export * from "./getZones";
 export * from "./instance";
 export * from "./rdsAccount";
+export * from "./rdsBackup";
+export * from "./rdsCloneDbInstance";
 export * from "./rdsParameterGroup";
 export * from "./readOnlyInstance";
 export * from "./readWriteSplittingConnection";
@@ -30,6 +33,8 @@ import { Connection } from "./connection";
 import { Database } from "./database";
 import { Instance } from "./instance";
 import { RdsAccount } from "./rdsAccount";
+import { RdsBackup } from "./rdsBackup";
+import { RdsCloneDbInstance } from "./rdsCloneDbInstance";
 import { RdsParameterGroup } from "./rdsParameterGroup";
 import { ReadOnlyInstance } from "./readOnlyInstance";
 import { ReadWriteSplittingConnection } from "./readWriteSplittingConnection";
@@ -52,6 +57,10 @@ const _module = {
                 return new Instance(name, <any>undefined, { urn })
             case "alicloud:rds/rdsAccount:RdsAccount":
                 return new RdsAccount(name, <any>undefined, { urn })
+            case "alicloud:rds/rdsBackup:RdsBackup":
+                return new RdsBackup(name, <any>undefined, { urn })
+            case "alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance":
+                return new RdsCloneDbInstance(name, <any>undefined, { urn })
             case "alicloud:rds/rdsParameterGroup:RdsParameterGroup":
                 return new RdsParameterGroup(name, <any>undefined, { urn })
             case "alicloud:rds/readOnlyInstance:ReadOnlyInstance":
@@ -70,6 +79,8 @@ pulumi.runtime.registerResourceModule("alicloud", "rds/connection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/database", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/rdsAccount", _module)
+pulumi.runtime.registerResourceModule("alicloud", "rds/rdsBackup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "rds/rdsCloneDbInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/rdsParameterGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/readOnlyInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/readWriteSplittingConnection", _module)

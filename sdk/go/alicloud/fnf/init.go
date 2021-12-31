@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:fnf/execution:Execution":
+		r = &Execution{}
 	case "alicloud:fnf/flow:Flow":
 		r = &Flow{}
 	case "alicloud:fnf/schedule:Schedule":
@@ -38,6 +40,11 @@ func init() {
 	if err != nil {
 		fmt.Printf("failed to determine package version. defaulting to v1: %v\n", err)
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"fnf/execution",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"fnf/flow",

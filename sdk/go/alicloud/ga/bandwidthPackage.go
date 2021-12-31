@@ -15,8 +15,9 @@ import (
 //
 // For information about Global Accelerator (GA) Bandwidth Package and how to use it, see [What is Bandwidth Package](https://www.alibabacloud.com/help/en/doc-detail/153241.htm).
 //
-// > **NOTE:** At present, The `ga.BandwidthPackage` created with `Subscription` cannot be deleted and must wait it to be outdated and release it automatically.
-// **NOTE:** Available in v1.112.0+.
+// > **NOTE:** At present, The `ga.BandwidthPackage` created with `Subscription` cannot be deleted. you need to wait until the resource is outdated and released automatically.
+//
+// > **NOTE:** Available in v1.112.0+.
 //
 // ## Example Usage
 //
@@ -68,7 +69,7 @@ type BandwidthPackage struct {
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
 	// The name of the bandwidth packet.
 	BandwidthPackageName pulumi.StringPtrOutput `pulumi:"bandwidthPackageName"`
-	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to Basic, this parameter is required.
+	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
 	BandwidthType pulumi.StringPtrOutput `pulumi:"bandwidthType"`
 	// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
 	BillingType pulumi.StringPtrOutput `pulumi:"billingType"`
@@ -78,7 +79,7 @@ type BandwidthPackage struct {
 	CbnGeographicRegionIdb pulumi.StringPtrOutput `pulumi:"cbnGeographicRegionIdb"`
 	// The description of bandwidth package.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0.
+	// The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `paymentType` is set to `Subscription`, this parameter is required.
 	Duration pulumi.StringPtrOutput `pulumi:"duration"`
 	// The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
 	PaymentType pulumi.StringPtrOutput `pulumi:"paymentType"`
@@ -135,7 +136,7 @@ type bandwidthPackageState struct {
 	Bandwidth *int `pulumi:"bandwidth"`
 	// The name of the bandwidth packet.
 	BandwidthPackageName *string `pulumi:"bandwidthPackageName"`
-	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to Basic, this parameter is required.
+	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
 	BandwidthType *string `pulumi:"bandwidthType"`
 	// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
 	BillingType *string `pulumi:"billingType"`
@@ -145,7 +146,7 @@ type bandwidthPackageState struct {
 	CbnGeographicRegionIdb *string `pulumi:"cbnGeographicRegionIdb"`
 	// The description of bandwidth package.
 	Description *string `pulumi:"description"`
-	// The duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0.
+	// The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `paymentType` is set to `Subscription`, this parameter is required.
 	Duration *string `pulumi:"duration"`
 	// The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
@@ -168,7 +169,7 @@ type BandwidthPackageState struct {
 	Bandwidth pulumi.IntPtrInput
 	// The name of the bandwidth packet.
 	BandwidthPackageName pulumi.StringPtrInput
-	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to Basic, this parameter is required.
+	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
 	BandwidthType pulumi.StringPtrInput
 	// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
 	BillingType pulumi.StringPtrInput
@@ -178,7 +179,7 @@ type BandwidthPackageState struct {
 	CbnGeographicRegionIdb pulumi.StringPtrInput
 	// The description of bandwidth package.
 	Description pulumi.StringPtrInput
-	// The duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0.
+	// The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `paymentType` is set to `Subscription`, this parameter is required.
 	Duration pulumi.StringPtrInput
 	// The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
 	PaymentType pulumi.StringPtrInput
@@ -205,7 +206,7 @@ type bandwidthPackageArgs struct {
 	Bandwidth int `pulumi:"bandwidth"`
 	// The name of the bandwidth packet.
 	BandwidthPackageName *string `pulumi:"bandwidthPackageName"`
-	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to Basic, this parameter is required.
+	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
 	BandwidthType *string `pulumi:"bandwidthType"`
 	// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
 	BillingType *string `pulumi:"billingType"`
@@ -215,7 +216,7 @@ type bandwidthPackageArgs struct {
 	CbnGeographicRegionIdb *string `pulumi:"cbnGeographicRegionIdb"`
 	// The description of bandwidth package.
 	Description *string `pulumi:"description"`
-	// The duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0.
+	// The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `paymentType` is set to `Subscription`, this parameter is required.
 	Duration *string `pulumi:"duration"`
 	// The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
@@ -237,7 +238,7 @@ type BandwidthPackageArgs struct {
 	Bandwidth pulumi.IntInput
 	// The name of the bandwidth packet.
 	BandwidthPackageName pulumi.StringPtrInput
-	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to Basic, this parameter is required.
+	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
 	BandwidthType pulumi.StringPtrInput
 	// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
 	BillingType pulumi.StringPtrInput
@@ -247,7 +248,7 @@ type BandwidthPackageArgs struct {
 	CbnGeographicRegionIdb pulumi.StringPtrInput
 	// The description of bandwidth package.
 	Description pulumi.StringPtrInput
-	// The duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0.
+	// The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `paymentType` is set to `Subscription`, this parameter is required.
 	Duration pulumi.StringPtrInput
 	// The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
 	PaymentType pulumi.StringPtrInput

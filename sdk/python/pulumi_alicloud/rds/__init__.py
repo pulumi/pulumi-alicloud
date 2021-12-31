@@ -14,10 +14,13 @@ from .get_accounts import *
 from .get_instance_classes import *
 from .get_instance_engines import *
 from .get_instances import *
+from .get_rds_backups import *
 from .get_rds_parameter_groups import *
 from .get_zones import *
 from .instance import *
 from .rds_account import *
+from .rds_backup import *
+from .rds_clone_db_instance import *
 from .rds_parameter_group import *
 from .read_only_instance import *
 from .read_write_splitting_connection import *

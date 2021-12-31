@@ -29,23 +29,23 @@ import (
 type User struct {
 	pulumi.CustomResourceState
 
-	// The description of user.
+	// The description of user. The description can be up to `1024` characters long.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The ID of the Directory.
 	DirectoryId pulumi.StringOutput `pulumi:"directoryId"`
-	// The display name of user.
+	// The display name of user. The display name can be up to `256` characters long.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// The User's Contact Email Address.
+	// The User's Contact Email Address. The email can be up to `128` characters long.
 	Email pulumi.StringPtrOutput `pulumi:"email"`
-	// The first name of user.
+	// The first name of user. The firstName can be up to `64` characters long.
 	FirstName pulumi.StringPtrOutput `pulumi:"firstName"`
-	// The last name of user.
+	// The last name of user. The lastName can be up to `64` characters long.
 	LastName pulumi.StringPtrOutput `pulumi:"lastName"`
 	// The status of user. Valid values: `Disabled`, `Enabled`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The User ID of the group.
 	UserId pulumi.StringOutput `pulumi:"userId"`
-	// The name of user.
+	// The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
 	UserName pulumi.StringOutput `pulumi:"userName"`
 }
 
@@ -84,44 +84,44 @@ func GetUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering User resources.
 type userState struct {
-	// The description of user.
+	// The description of user. The description can be up to `1024` characters long.
 	Description *string `pulumi:"description"`
 	// The ID of the Directory.
 	DirectoryId *string `pulumi:"directoryId"`
-	// The display name of user.
+	// The display name of user. The display name can be up to `256` characters long.
 	DisplayName *string `pulumi:"displayName"`
-	// The User's Contact Email Address.
+	// The User's Contact Email Address. The email can be up to `128` characters long.
 	Email *string `pulumi:"email"`
-	// The first name of user.
+	// The first name of user. The firstName can be up to `64` characters long.
 	FirstName *string `pulumi:"firstName"`
-	// The last name of user.
+	// The last name of user. The lastName can be up to `64` characters long.
 	LastName *string `pulumi:"lastName"`
 	// The status of user. Valid values: `Disabled`, `Enabled`.
 	Status *string `pulumi:"status"`
 	// The User ID of the group.
 	UserId *string `pulumi:"userId"`
-	// The name of user.
+	// The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
 	UserName *string `pulumi:"userName"`
 }
 
 type UserState struct {
-	// The description of user.
+	// The description of user. The description can be up to `1024` characters long.
 	Description pulumi.StringPtrInput
 	// The ID of the Directory.
 	DirectoryId pulumi.StringPtrInput
-	// The display name of user.
+	// The display name of user. The display name can be up to `256` characters long.
 	DisplayName pulumi.StringPtrInput
-	// The User's Contact Email Address.
+	// The User's Contact Email Address. The email can be up to `128` characters long.
 	Email pulumi.StringPtrInput
-	// The first name of user.
+	// The first name of user. The firstName can be up to `64` characters long.
 	FirstName pulumi.StringPtrInput
-	// The last name of user.
+	// The last name of user. The lastName can be up to `64` characters long.
 	LastName pulumi.StringPtrInput
 	// The status of user. Valid values: `Disabled`, `Enabled`.
 	Status pulumi.StringPtrInput
 	// The User ID of the group.
 	UserId pulumi.StringPtrInput
-	// The name of user.
+	// The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
 	UserName pulumi.StringPtrInput
 }
 
@@ -130,41 +130,41 @@ func (UserState) ElementType() reflect.Type {
 }
 
 type userArgs struct {
-	// The description of user.
+	// The description of user. The description can be up to `1024` characters long.
 	Description *string `pulumi:"description"`
 	// The ID of the Directory.
 	DirectoryId string `pulumi:"directoryId"`
-	// The display name of user.
+	// The display name of user. The display name can be up to `256` characters long.
 	DisplayName *string `pulumi:"displayName"`
-	// The User's Contact Email Address.
+	// The User's Contact Email Address. The email can be up to `128` characters long.
 	Email *string `pulumi:"email"`
-	// The first name of user.
+	// The first name of user. The firstName can be up to `64` characters long.
 	FirstName *string `pulumi:"firstName"`
-	// The last name of user.
+	// The last name of user. The lastName can be up to `64` characters long.
 	LastName *string `pulumi:"lastName"`
 	// The status of user. Valid values: `Disabled`, `Enabled`.
 	Status *string `pulumi:"status"`
-	// The name of user.
+	// The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
 	UserName string `pulumi:"userName"`
 }
 
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
-	// The description of user.
+	// The description of user. The description can be up to `1024` characters long.
 	Description pulumi.StringPtrInput
 	// The ID of the Directory.
 	DirectoryId pulumi.StringInput
-	// The display name of user.
+	// The display name of user. The display name can be up to `256` characters long.
 	DisplayName pulumi.StringPtrInput
-	// The User's Contact Email Address.
+	// The User's Contact Email Address. The email can be up to `128` characters long.
 	Email pulumi.StringPtrInput
-	// The first name of user.
+	// The first name of user. The firstName can be up to `64` characters long.
 	FirstName pulumi.StringPtrInput
-	// The last name of user.
+	// The last name of user. The lastName can be up to `64` characters long.
 	LastName pulumi.StringPtrInput
 	// The status of user. Valid values: `Disabled`, `Enabled`.
 	Status pulumi.StringPtrInput
-	// The name of user.
+	// The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
 	UserName pulumi.StringInput
 }
 

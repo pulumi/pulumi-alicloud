@@ -50,7 +50,7 @@ export class User extends pulumi.CustomResource {
     }
 
     /**
-     * The description of user.
+     * The description of user. The description can be up to `1024` characters long.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -58,19 +58,19 @@ export class User extends pulumi.CustomResource {
      */
     public readonly directoryId!: pulumi.Output<string>;
     /**
-     * The display name of user.
+     * The display name of user. The display name can be up to `256` characters long.
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * The User's Contact Email Address.
+     * The User's Contact Email Address. The email can be up to `128` characters long.
      */
     public readonly email!: pulumi.Output<string | undefined>;
     /**
-     * The first name of user.
+     * The first name of user. The firstName can be up to `64` characters long.
      */
     public readonly firstName!: pulumi.Output<string | undefined>;
     /**
-     * The last name of user.
+     * The last name of user. The lastName can be up to `64` characters long.
      */
     public readonly lastName!: pulumi.Output<string | undefined>;
     /**
@@ -82,7 +82,7 @@ export class User extends pulumi.CustomResource {
      */
     public /*out*/ readonly userId!: pulumi.Output<string>;
     /**
-     * The name of user.
+     * The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
      */
     public readonly userName!: pulumi.Output<string>;
 
@@ -138,7 +138,7 @@ export class User extends pulumi.CustomResource {
  */
 export interface UserState {
     /**
-     * The description of user.
+     * The description of user. The description can be up to `1024` characters long.
      */
     description?: pulumi.Input<string>;
     /**
@@ -146,19 +146,19 @@ export interface UserState {
      */
     directoryId?: pulumi.Input<string>;
     /**
-     * The display name of user.
+     * The display name of user. The display name can be up to `256` characters long.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The User's Contact Email Address.
+     * The User's Contact Email Address. The email can be up to `128` characters long.
      */
     email?: pulumi.Input<string>;
     /**
-     * The first name of user.
+     * The first name of user. The firstName can be up to `64` characters long.
      */
     firstName?: pulumi.Input<string>;
     /**
-     * The last name of user.
+     * The last name of user. The lastName can be up to `64` characters long.
      */
     lastName?: pulumi.Input<string>;
     /**
@@ -170,7 +170,7 @@ export interface UserState {
      */
     userId?: pulumi.Input<string>;
     /**
-     * The name of user.
+     * The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
      */
     userName?: pulumi.Input<string>;
 }
@@ -180,7 +180,7 @@ export interface UserState {
  */
 export interface UserArgs {
     /**
-     * The description of user.
+     * The description of user. The description can be up to `1024` characters long.
      */
     description?: pulumi.Input<string>;
     /**
@@ -188,19 +188,19 @@ export interface UserArgs {
      */
     directoryId: pulumi.Input<string>;
     /**
-     * The display name of user.
+     * The display name of user. The display name can be up to `256` characters long.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The User's Contact Email Address.
+     * The User's Contact Email Address. The email can be up to `128` characters long.
      */
     email?: pulumi.Input<string>;
     /**
-     * The first name of user.
+     * The first name of user. The firstName can be up to `64` characters long.
      */
     firstName?: pulumi.Input<string>;
     /**
-     * The last name of user.
+     * The last name of user. The lastName can be up to `64` characters long.
      */
     lastName?: pulumi.Input<string>;
     /**
@@ -208,7 +208,7 @@ export interface UserArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * The name of user.
+     * The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
      */
     userName: pulumi.Input<string>;
 }

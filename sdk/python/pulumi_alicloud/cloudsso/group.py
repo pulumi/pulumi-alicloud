@@ -19,8 +19,8 @@ class GroupArgs:
         """
         The set of arguments for constructing a Group resource.
         :param pulumi.Input[str] directory_id: The ID of the Directory.
-        :param pulumi.Input[str] group_name: The Name of the group.
-        :param pulumi.Input[str] description: The Description of the group.
+        :param pulumi.Input[str] group_name: The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+        :param pulumi.Input[str] description: The Description of the group. The description can be up to `1024` characters long.
         """
         pulumi.set(__self__, "directory_id", directory_id)
         pulumi.set(__self__, "group_name", group_name)
@@ -43,7 +43,7 @@ class GroupArgs:
     @pulumi.getter(name="groupName")
     def group_name(self) -> pulumi.Input[str]:
         """
-        The Name of the group.
+        The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         """
         return pulumi.get(self, "group_name")
 
@@ -55,7 +55,7 @@ class GroupArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The Description of the group.
+        The Description of the group. The description can be up to `1024` characters long.
         """
         return pulumi.get(self, "description")
 
@@ -73,10 +73,10 @@ class _GroupState:
                  group_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
-        :param pulumi.Input[str] description: The Description of the group.
+        :param pulumi.Input[str] description: The Description of the group. The description can be up to `1024` characters long.
         :param pulumi.Input[str] directory_id: The ID of the Directory.
         :param pulumi.Input[str] group_id: The GroupId of the group.
-        :param pulumi.Input[str] group_name: The Name of the group.
+        :param pulumi.Input[str] group_name: The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -91,7 +91,7 @@ class _GroupState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The Description of the group.
+        The Description of the group. The description can be up to `1024` characters long.
         """
         return pulumi.get(self, "description")
 
@@ -127,7 +127,7 @@ class _GroupState:
     @pulumi.getter(name="groupName")
     def group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The Name of the group.
+        The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         """
         return pulumi.get(self, "group_name")
 
@@ -164,9 +164,9 @@ class Group(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The Description of the group.
+        :param pulumi.Input[str] description: The Description of the group. The description can be up to `1024` characters long.
         :param pulumi.Input[str] directory_id: The ID of the Directory.
-        :param pulumi.Input[str] group_name: The Name of the group.
+        :param pulumi.Input[str] group_name: The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         """
         ...
     @overload
@@ -250,10 +250,10 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The Description of the group.
+        :param pulumi.Input[str] description: The Description of the group. The description can be up to `1024` characters long.
         :param pulumi.Input[str] directory_id: The ID of the Directory.
         :param pulumi.Input[str] group_id: The GroupId of the group.
-        :param pulumi.Input[str] group_name: The Name of the group.
+        :param pulumi.Input[str] group_name: The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -269,7 +269,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The Description of the group.
+        The Description of the group. The description can be up to `1024` characters long.
         """
         return pulumi.get(self, "description")
 
@@ -293,7 +293,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="groupName")
     def group_name(self) -> pulumi.Output[str]:
         """
-        The Name of the group.
+        The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         """
         return pulumi.get(self, "group_name")
 

@@ -69,6 +69,11 @@ export class Config extends pulumi.CustomResource {
      * Abnormal Alarm General Description of the Configuration Item.
      */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * The language of the request and response. Valid values: `zh`,`en`.
+     * * `zh`: Chinese.
+     * * `en`: English.
+     */
     public readonly lang!: pulumi.Output<string | undefined>;
     /**
      * The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
@@ -121,6 +126,11 @@ export interface ConfigState {
      * Abnormal Alarm General Description of the Configuration Item.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The language of the request and response. Valid values: `zh`,`en`.
+     * * `zh`: Chinese.
+     * * `en`: English.
+     */
     lang?: pulumi.Input<string>;
     /**
      * The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
@@ -143,6 +153,11 @@ export interface ConfigArgs {
      * Abnormal Alarm General Description of the Configuration Item.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The language of the request and response. Valid values: `zh`,`en`.
+     * * `zh`: Chinese.
+     * * `en`: English.
+     */
     lang?: pulumi.Input<string>;
     /**
      * The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:

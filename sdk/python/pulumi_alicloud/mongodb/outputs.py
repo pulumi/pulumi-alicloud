@@ -15,6 +15,7 @@ __all__ = [
     'ShardingInstanceConfigServerList',
     'ShardingInstanceMongoList',
     'ShardingInstanceShardList',
+    'ShardingNetworkPublicAddressNetworkAddress',
     'GetAccountsAccountResult',
     'GetAuditPoliciesPolicyResult',
     'GetInstancesInstanceResult',
@@ -494,6 +495,164 @@ class ShardingInstanceShardList(dict):
         The number of read-only nodes in shard node. Valid values: 0 to 5. Default value: 0.
         """
         return pulumi.get(self, "readonly_replicas")
+
+
+@pulumi.output_type
+class ShardingNetworkPublicAddressNetworkAddress(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expiredTime":
+            suggest = "expired_time"
+        elif key == "ipAddress":
+            suggest = "ip_address"
+        elif key == "networkAddress":
+            suggest = "network_address"
+        elif key == "networkType":
+            suggest = "network_type"
+        elif key == "nodeId":
+            suggest = "node_id"
+        elif key == "nodeType":
+            suggest = "node_type"
+        elif key == "vpcId":
+            suggest = "vpc_id"
+        elif key == "vswitchId":
+            suggest = "vswitch_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ShardingNetworkPublicAddressNetworkAddress. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ShardingNetworkPublicAddressNetworkAddress.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ShardingNetworkPublicAddressNetworkAddress.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 expired_time: Optional[str] = None,
+                 ip_address: Optional[str] = None,
+                 network_address: Optional[str] = None,
+                 network_type: Optional[str] = None,
+                 node_id: Optional[str] = None,
+                 node_type: Optional[str] = None,
+                 port: Optional[str] = None,
+                 role: Optional[str] = None,
+                 vpc_id: Optional[str] = None,
+                 vswitch_id: Optional[str] = None):
+        """
+        :param str expired_time: The remaining duration of the classic network address. Unit: `seconds`.
+        :param str ip_address: The IP address of the instance.
+        :param str network_address: The endpoint of the instance.
+        :param str network_type: The network type.
+        :param str node_id: The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+        :param str node_type: The type of the node.
+        :param str port: The port number.
+        :param str role: The role of the node.
+        :param str vpc_id: The ID of the VPC.
+        :param str vswitch_id: The vSwitch ID of the VPC.
+        """
+        if expired_time is not None:
+            pulumi.set(__self__, "expired_time", expired_time)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if network_address is not None:
+            pulumi.set(__self__, "network_address", network_address)
+        if network_type is not None:
+            pulumi.set(__self__, "network_type", network_type)
+        if node_id is not None:
+            pulumi.set(__self__, "node_id", node_id)
+        if node_type is not None:
+            pulumi.set(__self__, "node_type", node_type)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> Optional[str]:
+        """
+        The remaining duration of the classic network address. Unit: `seconds`.
+        """
+        return pulumi.get(self, "expired_time")
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[str]:
+        """
+        The IP address of the instance.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="networkAddress")
+    def network_address(self) -> Optional[str]:
+        """
+        The endpoint of the instance.
+        """
+        return pulumi.get(self, "network_address")
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> Optional[str]:
+        """
+        The network type.
+        """
+        return pulumi.get(self, "network_type")
+
+    @property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> Optional[str]:
+        """
+        The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+        """
+        return pulumi.get(self, "node_id")
+
+    @property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> Optional[str]:
+        """
+        The type of the node.
+        """
+        return pulumi.get(self, "node_type")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[str]:
+        """
+        The port number.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[str]:
+        """
+        The role of the node.
+        """
+        return pulumi.get(self, "role")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[str]:
+        """
+        The ID of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[str]:
+        """
+        The vSwitch ID of the VPC.
+        """
+        return pulumi.get(self, "vswitch_id")
 
 
 @pulumi.output_type

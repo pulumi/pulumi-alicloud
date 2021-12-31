@@ -21,6 +21,9 @@ class ConfigArgs:
         The set of arguments for constructing a Config resource.
         :param pulumi.Input[str] code: Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
         :param pulumi.Input[str] description: Abnormal Alarm General Description of the Configuration Item.
+        :param pulumi.Input[str] lang: The language of the request and response. Valid values: `zh`,`en`.
+               * `zh`: Chinese.
+               * `en`: English.
         :param pulumi.Input[str] value: The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
                * `access_failed_cnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
                * `access_permission_exprie_max_days`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
@@ -62,6 +65,11 @@ class ConfigArgs:
     @property
     @pulumi.getter
     def lang(self) -> Optional[pulumi.Input[str]]:
+        """
+        The language of the request and response. Valid values: `zh`,`en`.
+        * `zh`: Chinese.
+        * `en`: English.
+        """
         return pulumi.get(self, "lang")
 
     @lang.setter
@@ -95,6 +103,9 @@ class _ConfigState:
         Input properties used for looking up and filtering Config resources.
         :param pulumi.Input[str] code: Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
         :param pulumi.Input[str] description: Abnormal Alarm General Description of the Configuration Item.
+        :param pulumi.Input[str] lang: The language of the request and response. Valid values: `zh`,`en`.
+               * `zh`: Chinese.
+               * `en`: English.
         :param pulumi.Input[str] value: The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
                * `access_failed_cnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
                * `access_permission_exprie_max_days`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
@@ -136,6 +147,11 @@ class _ConfigState:
     @property
     @pulumi.getter
     def lang(self) -> Optional[pulumi.Input[str]]:
+        """
+        The language of the request and response. Valid values: `zh`,`en`.
+        * `zh`: Chinese.
+        * `en`: English.
+        """
         return pulumi.get(self, "lang")
 
     @lang.setter
@@ -200,6 +216,9 @@ class Config(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] code: Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
         :param pulumi.Input[str] description: Abnormal Alarm General Description of the Configuration Item.
+        :param pulumi.Input[str] lang: The language of the request and response. Valid values: `zh`,`en`.
+               * `zh`: Chinese.
+               * `en`: English.
         :param pulumi.Input[str] value: The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
                * `access_failed_cnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
                * `access_permission_exprie_max_days`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
@@ -297,6 +316,9 @@ class Config(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] code: Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
         :param pulumi.Input[str] description: Abnormal Alarm General Description of the Configuration Item.
+        :param pulumi.Input[str] lang: The language of the request and response. Valid values: `zh`,`en`.
+               * `zh`: Chinese.
+               * `en`: English.
         :param pulumi.Input[str] value: The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
                * `access_failed_cnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
                * `access_permission_exprie_max_days`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
@@ -331,6 +353,11 @@ class Config(pulumi.CustomResource):
     @property
     @pulumi.getter
     def lang(self) -> pulumi.Output[Optional[str]]:
+        """
+        The language of the request and response. Valid values: `zh`,`en`.
+        * `zh`: Chinese.
+        * `en`: English.
+        """
         return pulumi.get(self, "lang")
 
     @property

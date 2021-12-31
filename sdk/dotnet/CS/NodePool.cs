@@ -46,6 +46,12 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<Outputs.NodePoolDataDisk>> DataDisks { get; private set; } = null!;
 
         /// <summary>
+        /// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
+        /// </summary>
+        [Output("deploymentSetId")]
+        public Output<string> DeploymentSetId { get; private set; } = null!;
+
+        /// <summary>
         /// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         /// </summary>
         [Output("formatDisk")]
@@ -237,6 +243,9 @@ namespace Pulumi.AliCloud.CS
         [Output("systemDiskCategory")]
         public Output<string?> SystemDiskCategory { get; private set; } = null!;
 
+        /// <summary>
+        /// The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
+        /// </summary>
         [Output("systemDiskPerformanceLevel")]
         public Output<string?> SystemDiskPerformanceLevel { get; private set; } = null!;
 
@@ -270,6 +279,9 @@ namespace Pulumi.AliCloud.CS
         [Output("userData")]
         public Output<string?> UserData { get; private set; } = null!;
 
+        /// <summary>
+        /// The VPC of the nodes in the node pool.
+        /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
@@ -354,6 +366,12 @@ namespace Pulumi.AliCloud.CS
             get => _dataDisks ?? (_dataDisks = new InputList<Inputs.NodePoolDataDiskArgs>());
             set => _dataDisks = value;
         }
+
+        /// <summary>
+        /// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
+        /// </summary>
+        [Input("deploymentSetId")]
+        public Input<string>? DeploymentSetId { get; set; }
 
         /// <summary>
         /// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
@@ -571,6 +589,9 @@ namespace Pulumi.AliCloud.CS
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
 
+        /// <summary>
+        /// The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
+        /// </summary>
         [Input("systemDiskPerformanceLevel")]
         public Input<string>? SystemDiskPerformanceLevel { get; set; }
 
@@ -664,6 +685,12 @@ namespace Pulumi.AliCloud.CS
             get => _dataDisks ?? (_dataDisks = new InputList<Inputs.NodePoolDataDiskGetArgs>());
             set => _dataDisks = value;
         }
+
+        /// <summary>
+        /// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
+        /// </summary>
+        [Input("deploymentSetId")]
+        public Input<string>? DeploymentSetId { get; set; }
 
         /// <summary>
         /// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
@@ -887,6 +914,9 @@ namespace Pulumi.AliCloud.CS
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
 
+        /// <summary>
+        /// The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
+        /// </summary>
         [Input("systemDiskPerformanceLevel")]
         public Input<string>? SystemDiskPerformanceLevel { get; set; }
 
@@ -932,6 +962,9 @@ namespace Pulumi.AliCloud.CS
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
+        /// <summary>
+        /// The VPC of the nodes in the node pool.
+        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 

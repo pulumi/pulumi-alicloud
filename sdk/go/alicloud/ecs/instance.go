@@ -43,6 +43,10 @@ type Instance struct {
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
+	// (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
+	DeploymentSetGroupNo pulumi.StringOutput `pulumi:"deploymentSetGroupNo"`
+	// The ID of the deployment set to which to deploy the instance.
+	DeploymentSetId pulumi.StringPtrOutput `pulumi:"deploymentSetId"`
 	// The description of the data disk.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Specifies whether to send a dry-run request. Default to false.
@@ -210,6 +214,10 @@ type instanceState struct {
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
+	DeploymentSetGroupNo *string `pulumi:"deploymentSetGroupNo"`
+	// The ID of the deployment set to which to deploy the instance.
+	DeploymentSetId *string `pulumi:"deploymentSetId"`
 	// The description of the data disk.
 	Description *string `pulumi:"description"`
 	// Specifies whether to send a dry-run request. Default to false.
@@ -340,6 +348,10 @@ type InstanceState struct {
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
+	// (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
+	DeploymentSetGroupNo pulumi.StringPtrInput
+	// The ID of the deployment set to which to deploy the instance.
+	DeploymentSetId pulumi.StringPtrInput
 	// The description of the data disk.
 	Description pulumi.StringPtrInput
 	// Specifies whether to send a dry-run request. Default to false.
@@ -474,6 +486,8 @@ type instanceArgs struct {
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// The ID of the deployment set to which to deploy the instance.
+	DeploymentSetId *string `pulumi:"deploymentSetId"`
 	// The description of the data disk.
 	Description *string `pulumi:"description"`
 	// Specifies whether to send a dry-run request. Default to false.
@@ -603,6 +617,8 @@ type InstanceArgs struct {
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
+	// The ID of the deployment set to which to deploy the instance.
+	DeploymentSetId pulumi.StringPtrInput
 	// The description of the data disk.
 	Description pulumi.StringPtrInput
 	// Specifies whether to send a dry-run request. Default to false.

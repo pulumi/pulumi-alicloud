@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// For information about Global Accelerator (GA) Accelerator and how to use it, see [What is Accelerator](https://help.aliyun.com/document_detail/153235.html).
     /// 
+    /// &gt; **NOTE:** At present, The `alicloud.ga.Accelerator` cannot be deleted. you need to wait until the resource is outdated and released automatically.
+    /// 
     /// &gt; **NOTE:** Available in v1.111.0+.
     /// 
     /// ## Example Usage

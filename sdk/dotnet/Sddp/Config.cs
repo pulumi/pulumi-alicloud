@@ -61,6 +61,11 @@ namespace Pulumi.AliCloud.Sddp
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// The language of the request and response. Valid values: `zh`,`en`.
+        /// * `zh`: Chinese.
+        /// * `en`: English.
+        /// </summary>
         [Output("lang")]
         public Output<string?> Lang { get; private set; } = null!;
 
@@ -131,6 +136,11 @@ namespace Pulumi.AliCloud.Sddp
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The language of the request and response. Valid values: `zh`,`en`.
+        /// * `zh`: Chinese.
+        /// * `en`: English.
+        /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
@@ -162,6 +172,11 @@ namespace Pulumi.AliCloud.Sddp
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The language of the request and response. Valid values: `zh`,`en`.
+        /// * `zh`: Chinese.
+        /// * `en`: English.
+        /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
