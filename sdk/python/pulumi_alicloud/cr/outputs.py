@@ -11,6 +11,8 @@ from . import outputs
 
 __all__ = [
     'RepoDomainList',
+    'GetChartNamespacesNamespaceResult',
+    'GetChartRepositoriesRepositoryResult',
     'GetEndpointAclPoliciesPolicyResult',
     'GetNamespacesNamespaceResult',
     'GetReposRepoResult',
@@ -59,6 +61,174 @@ class RepoDomainList(dict):
         Domain of vpc endpoint.
         """
         return pulumi.get(self, "vpc")
+
+
+@pulumi.output_type
+class GetChartNamespacesNamespaceResult(dict):
+    def __init__(__self__, *,
+                 auto_create_repo: bool,
+                 chart_namespace_id: str,
+                 default_repo_type: str,
+                 id: str,
+                 instance_id: str,
+                 namespace_name: str):
+        """
+        :param bool auto_create_repo: Indicates whether a repository is automatically created when an image is pushed to the namespace.
+        :param str chart_namespace_id: The ID of the namespace.
+        :param str default_repo_type: The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
+        :param str id: The ID of the Chart Namespace.
+        :param str instance_id: The ID of the namespace.
+        :param str namespace_name: The name of the namespace.
+        """
+        pulumi.set(__self__, "auto_create_repo", auto_create_repo)
+        pulumi.set(__self__, "chart_namespace_id", chart_namespace_id)
+        pulumi.set(__self__, "default_repo_type", default_repo_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "namespace_name", namespace_name)
+
+    @property
+    @pulumi.getter(name="autoCreateRepo")
+    def auto_create_repo(self) -> bool:
+        """
+        Indicates whether a repository is automatically created when an image is pushed to the namespace.
+        """
+        return pulumi.get(self, "auto_create_repo")
+
+    @property
+    @pulumi.getter(name="chartNamespaceId")
+    def chart_namespace_id(self) -> str:
+        """
+        The ID of the namespace.
+        """
+        return pulumi.get(self, "chart_namespace_id")
+
+    @property
+    @pulumi.getter(name="defaultRepoType")
+    def default_repo_type(self) -> str:
+        """
+        The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
+        """
+        return pulumi.get(self, "default_repo_type")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Chart Namespace.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the namespace.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="namespaceName")
+    def namespace_name(self) -> str:
+        """
+        The name of the namespace.
+        """
+        return pulumi.get(self, "namespace_name")
+
+
+@pulumi.output_type
+class GetChartRepositoriesRepositoryResult(dict):
+    def __init__(__self__, *,
+                 chart_repository_id: str,
+                 create_time: str,
+                 id: str,
+                 instance_id: str,
+                 repo_name: str,
+                 repo_namespace_name: str,
+                 repo_type: str,
+                 summary: str):
+        """
+        :param str chart_repository_id: The first ID of the resource.
+        :param str create_time: The creation time of the resource.
+        :param str id: The ID of the Chart Repository.
+        :param str instance_id: The ID of the Container Registry instance.
+        :param str repo_name: The name of the repository.
+        :param str repo_namespace_name: The namespace to which the repository belongs.
+        :param str repo_type: The type of the repository. Valid values: `PUBLIC`,`PRIVATE`.
+        :param str summary: The summary about the repository.
+        """
+        pulumi.set(__self__, "chart_repository_id", chart_repository_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "repo_name", repo_name)
+        pulumi.set(__self__, "repo_namespace_name", repo_namespace_name)
+        pulumi.set(__self__, "repo_type", repo_type)
+        pulumi.set(__self__, "summary", summary)
+
+    @property
+    @pulumi.getter(name="chartRepositoryId")
+    def chart_repository_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "chart_repository_id")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Chart Repository.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the Container Registry instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> str:
+        """
+        The name of the repository.
+        """
+        return pulumi.get(self, "repo_name")
+
+    @property
+    @pulumi.getter(name="repoNamespaceName")
+    def repo_namespace_name(self) -> str:
+        """
+        The namespace to which the repository belongs.
+        """
+        return pulumi.get(self, "repo_namespace_name")
+
+    @property
+    @pulumi.getter(name="repoType")
+    def repo_type(self) -> str:
+        """
+        The type of the repository. Valid values: `PUBLIC`,`PRIVATE`.
+        """
+        return pulumi.get(self, "repo_type")
+
+    @property
+    @pulumi.getter
+    def summary(self) -> str:
+        """
+        The summary about the repository.
+        """
+        return pulumi.get(self, "summary")
 
 
 @pulumi.output_type

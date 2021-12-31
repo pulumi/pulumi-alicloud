@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.CloudSso
     public partial class User : Pulumi.CustomResource
     {
         /// <summary>
-        /// The description of user.
+        /// The description of user. The description can be up to `1024` characters long.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -42,25 +42,25 @@ namespace Pulumi.AliCloud.CloudSso
         public Output<string> DirectoryId { get; private set; } = null!;
 
         /// <summary>
-        /// The display name of user.
+        /// The display name of user. The display name can be up to `256` characters long.
         /// </summary>
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The User's Contact Email Address.
+        /// The User's Contact Email Address. The email can be up to `128` characters long.
         /// </summary>
         [Output("email")]
         public Output<string?> Email { get; private set; } = null!;
 
         /// <summary>
-        /// The first name of user.
+        /// The first name of user. The first_name can be up to `64` characters long.
         /// </summary>
         [Output("firstName")]
         public Output<string?> FirstName { get; private set; } = null!;
 
         /// <summary>
-        /// The last name of user.
+        /// The last name of user. The last_name can be up to `64` characters long.
         /// </summary>
         [Output("lastName")]
         public Output<string?> LastName { get; private set; } = null!;
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Output<string> UserId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of user.
+        /// The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
         /// </summary>
         [Output("userName")]
         public Output<string> UserName { get; private set; } = null!;
@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.CloudSso
     public sealed class UserArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of user.
+        /// The description of user. The description can be up to `1024` characters long.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -142,25 +142,25 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string> DirectoryId { get; set; } = null!;
 
         /// <summary>
-        /// The display name of user.
+        /// The display name of user. The display name can be up to `256` characters long.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The User's Contact Email Address.
+        /// The User's Contact Email Address. The email can be up to `128` characters long.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// The first name of user.
+        /// The first name of user. The first_name can be up to `64` characters long.
         /// </summary>
         [Input("firstName")]
         public Input<string>? FirstName { get; set; }
 
         /// <summary>
-        /// The last name of user.
+        /// The last name of user. The last_name can be up to `64` characters long.
         /// </summary>
         [Input("lastName")]
         public Input<string>? LastName { get; set; }
@@ -172,7 +172,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The name of user.
+        /// The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
         /// </summary>
         [Input("userName", required: true)]
         public Input<string> UserName { get; set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.AliCloud.CloudSso
     public sealed class UserState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of user.
+        /// The description of user. The description can be up to `1024` characters long.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -197,25 +197,25 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? DirectoryId { get; set; }
 
         /// <summary>
-        /// The display name of user.
+        /// The display name of user. The display name can be up to `256` characters long.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The User's Contact Email Address.
+        /// The User's Contact Email Address. The email can be up to `128` characters long.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// The first name of user.
+        /// The first name of user. The first_name can be up to `64` characters long.
         /// </summary>
         [Input("firstName")]
         public Input<string>? FirstName { get; set; }
 
         /// <summary>
-        /// The last name of user.
+        /// The last name of user. The last_name can be up to `64` characters long.
         /// </summary>
         [Input("lastName")]
         public Input<string>? LastName { get; set; }
@@ -233,7 +233,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? UserId { get; set; }
 
         /// <summary>
-        /// The name of user.
+        /// The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
         /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }

@@ -35,6 +35,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Instance{}
 	case "alicloud:rds/rdsAccount:RdsAccount":
 		r = &RdsAccount{}
+	case "alicloud:rds/rdsBackup:RdsBackup":
+		r = &RdsBackup{}
+	case "alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance":
+		r = &RdsCloneDbInstance{}
 	case "alicloud:rds/rdsParameterGroup:RdsParameterGroup":
 		r = &RdsParameterGroup{}
 	case "alicloud:rds/readOnlyInstance:ReadOnlyInstance":
@@ -87,6 +91,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"rds/rdsAccount",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"rds/rdsBackup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"rds/rdsCloneDbInstance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

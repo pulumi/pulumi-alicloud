@@ -14,8 +14,9 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// For information about Global Accelerator (GA) Bandwidth Package and how to use it, see [What is Bandwidth Package](https://www.alibabacloud.com/help/en/doc-detail/153241.htm).
     /// 
-    /// &gt; **NOTE:** At present, The `alicloud.ga.BandwidthPackage` created with `Subscription` cannot be deleted and must wait it to be outdated and release it automatically.
-    /// **NOTE:** Available in v1.112.0+.
+    /// &gt; **NOTE:** At present, The `alicloud.ga.BandwidthPackage` created with `Subscription` cannot be deleted. you need to wait until the resource is outdated and released automatically.
+    /// 
+    /// &gt; **NOTE:** Available in v1.112.0+.
     /// 
     /// ## Example Usage
     /// 
@@ -81,7 +82,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string?> BandwidthPackageName { get; private set; } = null!;
 
         /// <summary>
-        /// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to Basic, this parameter is required.
+        /// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
         /// </summary>
         [Output("bandwidthType")]
         public Output<string?> BandwidthType { get; private set; } = null!;
@@ -111,7 +112,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0.
+        /// The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
         /// </summary>
         [Output("duration")]
         public Output<string?> Duration { get; private set; } = null!;
@@ -213,7 +214,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? BandwidthPackageName { get; set; }
 
         /// <summary>
-        /// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to Basic, this parameter is required.
+        /// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
         /// </summary>
         [Input("bandwidthType")]
         public Input<string>? BandwidthType { get; set; }
@@ -243,7 +244,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0.
+        /// The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
         /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
@@ -300,7 +301,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? BandwidthPackageName { get; set; }
 
         /// <summary>
-        /// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to Basic, this parameter is required.
+        /// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
         /// </summary>
         [Input("bandwidthType")]
         public Input<string>? BandwidthType { get; set; }
@@ -330,7 +331,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0.
+        /// The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
         /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }

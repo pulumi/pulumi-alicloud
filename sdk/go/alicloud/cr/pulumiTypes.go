@@ -185,6 +185,308 @@ func (o RepoDomainListPtrOutput) Vpc() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetChartNamespacesNamespace struct {
+	// Indicates whether a repository is automatically created when an image is pushed to the namespace.
+	AutoCreateRepo bool `pulumi:"autoCreateRepo"`
+	// The ID of the namespace.
+	ChartNamespaceId string `pulumi:"chartNamespaceId"`
+	// The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
+	DefaultRepoType string `pulumi:"defaultRepoType"`
+	// The ID of the Chart Namespace.
+	Id string `pulumi:"id"`
+	// The ID of the namespace.
+	InstanceId string `pulumi:"instanceId"`
+	// The name of the namespace.
+	NamespaceName string `pulumi:"namespaceName"`
+}
+
+// GetChartNamespacesNamespaceInput is an input type that accepts GetChartNamespacesNamespaceArgs and GetChartNamespacesNamespaceOutput values.
+// You can construct a concrete instance of `GetChartNamespacesNamespaceInput` via:
+//
+//          GetChartNamespacesNamespaceArgs{...}
+type GetChartNamespacesNamespaceInput interface {
+	pulumi.Input
+
+	ToGetChartNamespacesNamespaceOutput() GetChartNamespacesNamespaceOutput
+	ToGetChartNamespacesNamespaceOutputWithContext(context.Context) GetChartNamespacesNamespaceOutput
+}
+
+type GetChartNamespacesNamespaceArgs struct {
+	// Indicates whether a repository is automatically created when an image is pushed to the namespace.
+	AutoCreateRepo pulumi.BoolInput `pulumi:"autoCreateRepo"`
+	// The ID of the namespace.
+	ChartNamespaceId pulumi.StringInput `pulumi:"chartNamespaceId"`
+	// The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
+	DefaultRepoType pulumi.StringInput `pulumi:"defaultRepoType"`
+	// The ID of the Chart Namespace.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the namespace.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The name of the namespace.
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+}
+
+func (GetChartNamespacesNamespaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetChartNamespacesNamespace)(nil)).Elem()
+}
+
+func (i GetChartNamespacesNamespaceArgs) ToGetChartNamespacesNamespaceOutput() GetChartNamespacesNamespaceOutput {
+	return i.ToGetChartNamespacesNamespaceOutputWithContext(context.Background())
+}
+
+func (i GetChartNamespacesNamespaceArgs) ToGetChartNamespacesNamespaceOutputWithContext(ctx context.Context) GetChartNamespacesNamespaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetChartNamespacesNamespaceOutput)
+}
+
+// GetChartNamespacesNamespaceArrayInput is an input type that accepts GetChartNamespacesNamespaceArray and GetChartNamespacesNamespaceArrayOutput values.
+// You can construct a concrete instance of `GetChartNamespacesNamespaceArrayInput` via:
+//
+//          GetChartNamespacesNamespaceArray{ GetChartNamespacesNamespaceArgs{...} }
+type GetChartNamespacesNamespaceArrayInput interface {
+	pulumi.Input
+
+	ToGetChartNamespacesNamespaceArrayOutput() GetChartNamespacesNamespaceArrayOutput
+	ToGetChartNamespacesNamespaceArrayOutputWithContext(context.Context) GetChartNamespacesNamespaceArrayOutput
+}
+
+type GetChartNamespacesNamespaceArray []GetChartNamespacesNamespaceInput
+
+func (GetChartNamespacesNamespaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetChartNamespacesNamespace)(nil)).Elem()
+}
+
+func (i GetChartNamespacesNamespaceArray) ToGetChartNamespacesNamespaceArrayOutput() GetChartNamespacesNamespaceArrayOutput {
+	return i.ToGetChartNamespacesNamespaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetChartNamespacesNamespaceArray) ToGetChartNamespacesNamespaceArrayOutputWithContext(ctx context.Context) GetChartNamespacesNamespaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetChartNamespacesNamespaceArrayOutput)
+}
+
+type GetChartNamespacesNamespaceOutput struct{ *pulumi.OutputState }
+
+func (GetChartNamespacesNamespaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetChartNamespacesNamespace)(nil)).Elem()
+}
+
+func (o GetChartNamespacesNamespaceOutput) ToGetChartNamespacesNamespaceOutput() GetChartNamespacesNamespaceOutput {
+	return o
+}
+
+func (o GetChartNamespacesNamespaceOutput) ToGetChartNamespacesNamespaceOutputWithContext(ctx context.Context) GetChartNamespacesNamespaceOutput {
+	return o
+}
+
+// Indicates whether a repository is automatically created when an image is pushed to the namespace.
+func (o GetChartNamespacesNamespaceOutput) AutoCreateRepo() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetChartNamespacesNamespace) bool { return v.AutoCreateRepo }).(pulumi.BoolOutput)
+}
+
+// The ID of the namespace.
+func (o GetChartNamespacesNamespaceOutput) ChartNamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChartNamespacesNamespace) string { return v.ChartNamespaceId }).(pulumi.StringOutput)
+}
+
+// The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
+func (o GetChartNamespacesNamespaceOutput) DefaultRepoType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChartNamespacesNamespace) string { return v.DefaultRepoType }).(pulumi.StringOutput)
+}
+
+// The ID of the Chart Namespace.
+func (o GetChartNamespacesNamespaceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChartNamespacesNamespace) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the namespace.
+func (o GetChartNamespacesNamespaceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChartNamespacesNamespace) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The name of the namespace.
+func (o GetChartNamespacesNamespaceOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChartNamespacesNamespace) string { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+type GetChartNamespacesNamespaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetChartNamespacesNamespaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetChartNamespacesNamespace)(nil)).Elem()
+}
+
+func (o GetChartNamespacesNamespaceArrayOutput) ToGetChartNamespacesNamespaceArrayOutput() GetChartNamespacesNamespaceArrayOutput {
+	return o
+}
+
+func (o GetChartNamespacesNamespaceArrayOutput) ToGetChartNamespacesNamespaceArrayOutputWithContext(ctx context.Context) GetChartNamespacesNamespaceArrayOutput {
+	return o
+}
+
+func (o GetChartNamespacesNamespaceArrayOutput) Index(i pulumi.IntInput) GetChartNamespacesNamespaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetChartNamespacesNamespace {
+		return vs[0].([]GetChartNamespacesNamespace)[vs[1].(int)]
+	}).(GetChartNamespacesNamespaceOutput)
+}
+
+type GetChartRepositoriesRepository struct {
+	// The first ID of the resource.
+	ChartRepositoryId string `pulumi:"chartRepositoryId"`
+	// The creation time of the resource.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the Chart Repository.
+	Id string `pulumi:"id"`
+	// The ID of the Container Registry instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The name of the repository.
+	RepoName string `pulumi:"repoName"`
+	// The namespace to which the repository belongs.
+	RepoNamespaceName string `pulumi:"repoNamespaceName"`
+	// The type of the repository. Valid values: `PUBLIC`,`PRIVATE`.
+	RepoType string `pulumi:"repoType"`
+	// The summary about the repository.
+	Summary string `pulumi:"summary"`
+}
+
+// GetChartRepositoriesRepositoryInput is an input type that accepts GetChartRepositoriesRepositoryArgs and GetChartRepositoriesRepositoryOutput values.
+// You can construct a concrete instance of `GetChartRepositoriesRepositoryInput` via:
+//
+//          GetChartRepositoriesRepositoryArgs{...}
+type GetChartRepositoriesRepositoryInput interface {
+	pulumi.Input
+
+	ToGetChartRepositoriesRepositoryOutput() GetChartRepositoriesRepositoryOutput
+	ToGetChartRepositoriesRepositoryOutputWithContext(context.Context) GetChartRepositoriesRepositoryOutput
+}
+
+type GetChartRepositoriesRepositoryArgs struct {
+	// The first ID of the resource.
+	ChartRepositoryId pulumi.StringInput `pulumi:"chartRepositoryId"`
+	// The creation time of the resource.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the Chart Repository.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the Container Registry instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The name of the repository.
+	RepoName pulumi.StringInput `pulumi:"repoName"`
+	// The namespace to which the repository belongs.
+	RepoNamespaceName pulumi.StringInput `pulumi:"repoNamespaceName"`
+	// The type of the repository. Valid values: `PUBLIC`,`PRIVATE`.
+	RepoType pulumi.StringInput `pulumi:"repoType"`
+	// The summary about the repository.
+	Summary pulumi.StringInput `pulumi:"summary"`
+}
+
+func (GetChartRepositoriesRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetChartRepositoriesRepository)(nil)).Elem()
+}
+
+func (i GetChartRepositoriesRepositoryArgs) ToGetChartRepositoriesRepositoryOutput() GetChartRepositoriesRepositoryOutput {
+	return i.ToGetChartRepositoriesRepositoryOutputWithContext(context.Background())
+}
+
+func (i GetChartRepositoriesRepositoryArgs) ToGetChartRepositoriesRepositoryOutputWithContext(ctx context.Context) GetChartRepositoriesRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetChartRepositoriesRepositoryOutput)
+}
+
+// GetChartRepositoriesRepositoryArrayInput is an input type that accepts GetChartRepositoriesRepositoryArray and GetChartRepositoriesRepositoryArrayOutput values.
+// You can construct a concrete instance of `GetChartRepositoriesRepositoryArrayInput` via:
+//
+//          GetChartRepositoriesRepositoryArray{ GetChartRepositoriesRepositoryArgs{...} }
+type GetChartRepositoriesRepositoryArrayInput interface {
+	pulumi.Input
+
+	ToGetChartRepositoriesRepositoryArrayOutput() GetChartRepositoriesRepositoryArrayOutput
+	ToGetChartRepositoriesRepositoryArrayOutputWithContext(context.Context) GetChartRepositoriesRepositoryArrayOutput
+}
+
+type GetChartRepositoriesRepositoryArray []GetChartRepositoriesRepositoryInput
+
+func (GetChartRepositoriesRepositoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetChartRepositoriesRepository)(nil)).Elem()
+}
+
+func (i GetChartRepositoriesRepositoryArray) ToGetChartRepositoriesRepositoryArrayOutput() GetChartRepositoriesRepositoryArrayOutput {
+	return i.ToGetChartRepositoriesRepositoryArrayOutputWithContext(context.Background())
+}
+
+func (i GetChartRepositoriesRepositoryArray) ToGetChartRepositoriesRepositoryArrayOutputWithContext(ctx context.Context) GetChartRepositoriesRepositoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetChartRepositoriesRepositoryArrayOutput)
+}
+
+type GetChartRepositoriesRepositoryOutput struct{ *pulumi.OutputState }
+
+func (GetChartRepositoriesRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetChartRepositoriesRepository)(nil)).Elem()
+}
+
+func (o GetChartRepositoriesRepositoryOutput) ToGetChartRepositoriesRepositoryOutput() GetChartRepositoriesRepositoryOutput {
+	return o
+}
+
+func (o GetChartRepositoriesRepositoryOutput) ToGetChartRepositoriesRepositoryOutputWithContext(ctx context.Context) GetChartRepositoriesRepositoryOutput {
+	return o
+}
+
+// The first ID of the resource.
+func (o GetChartRepositoriesRepositoryOutput) ChartRepositoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChartRepositoriesRepository) string { return v.ChartRepositoryId }).(pulumi.StringOutput)
+}
+
+// The creation time of the resource.
+func (o GetChartRepositoriesRepositoryOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChartRepositoriesRepository) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Chart Repository.
+func (o GetChartRepositoriesRepositoryOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChartRepositoriesRepository) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the Container Registry instance.
+func (o GetChartRepositoriesRepositoryOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChartRepositoriesRepository) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The name of the repository.
+func (o GetChartRepositoriesRepositoryOutput) RepoName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChartRepositoriesRepository) string { return v.RepoName }).(pulumi.StringOutput)
+}
+
+// The namespace to which the repository belongs.
+func (o GetChartRepositoriesRepositoryOutput) RepoNamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChartRepositoriesRepository) string { return v.RepoNamespaceName }).(pulumi.StringOutput)
+}
+
+// The type of the repository. Valid values: `PUBLIC`,`PRIVATE`.
+func (o GetChartRepositoriesRepositoryOutput) RepoType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChartRepositoriesRepository) string { return v.RepoType }).(pulumi.StringOutput)
+}
+
+// The summary about the repository.
+func (o GetChartRepositoriesRepositoryOutput) Summary() pulumi.StringOutput {
+	return o.ApplyT(func(v GetChartRepositoriesRepository) string { return v.Summary }).(pulumi.StringOutput)
+}
+
+type GetChartRepositoriesRepositoryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetChartRepositoriesRepositoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetChartRepositoriesRepository)(nil)).Elem()
+}
+
+func (o GetChartRepositoriesRepositoryArrayOutput) ToGetChartRepositoriesRepositoryArrayOutput() GetChartRepositoriesRepositoryArrayOutput {
+	return o
+}
+
+func (o GetChartRepositoriesRepositoryArrayOutput) ToGetChartRepositoriesRepositoryArrayOutputWithContext(ctx context.Context) GetChartRepositoriesRepositoryArrayOutput {
+	return o
+}
+
+func (o GetChartRepositoriesRepositoryArrayOutput) Index(i pulumi.IntInput) GetChartRepositoriesRepositoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetChartRepositoriesRepository {
+		return vs[0].([]GetChartRepositoriesRepository)[vs[1].(int)]
+	}).(GetChartRepositoriesRepositoryOutput)
+}
+
 type GetEndpointAclPoliciesPolicy struct {
 	// The description of the entry.
 	Description string `pulumi:"description"`
@@ -799,6 +1101,10 @@ func (o GetReposRepoTagArrayOutput) Index(i pulumi.IntInput) GetReposRepoTagOutp
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoDomainListInput)(nil)).Elem(), RepoDomainListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoDomainListPtrInput)(nil)).Elem(), RepoDomainListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetChartNamespacesNamespaceInput)(nil)).Elem(), GetChartNamespacesNamespaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetChartNamespacesNamespaceArrayInput)(nil)).Elem(), GetChartNamespacesNamespaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetChartRepositoriesRepositoryInput)(nil)).Elem(), GetChartRepositoriesRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetChartRepositoriesRepositoryArrayInput)(nil)).Elem(), GetChartRepositoriesRepositoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointAclPoliciesPolicyInput)(nil)).Elem(), GetEndpointAclPoliciesPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointAclPoliciesPolicyArrayInput)(nil)).Elem(), GetEndpointAclPoliciesPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacesNamespaceInput)(nil)).Elem(), GetNamespacesNamespaceArgs{})
@@ -810,6 +1116,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReposRepoTagArrayInput)(nil)).Elem(), GetReposRepoTagArray{})
 	pulumi.RegisterOutputType(RepoDomainListOutput{})
 	pulumi.RegisterOutputType(RepoDomainListPtrOutput{})
+	pulumi.RegisterOutputType(GetChartNamespacesNamespaceOutput{})
+	pulumi.RegisterOutputType(GetChartNamespacesNamespaceArrayOutput{})
+	pulumi.RegisterOutputType(GetChartRepositoriesRepositoryOutput{})
+	pulumi.RegisterOutputType(GetChartRepositoriesRepositoryArrayOutput{})
 	pulumi.RegisterOutputType(GetEndpointAclPoliciesPolicyOutput{})
 	pulumi.RegisterOutputType(GetEndpointAclPoliciesPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetNamespacesNamespaceOutput{})

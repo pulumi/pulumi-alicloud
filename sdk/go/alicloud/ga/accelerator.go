@@ -15,6 +15,8 @@ import (
 //
 // For information about Global Accelerator (GA) Accelerator and how to use it, see [What is Accelerator](https://help.aliyun.com/document_detail/153235.html).
 //
+// > **NOTE:** At present, The `ga.Accelerator` cannot be deleted. you need to wait until the resource is outdated and released automatically.
+//
 // > **NOTE:** Available in v1.111.0+.
 //
 // ## Example Usage

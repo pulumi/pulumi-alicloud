@@ -59,6 +59,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly dataDisks!: pulumi.Output<outputs.cs.NodePoolDataDisk[] | undefined>;
     /**
+     * The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
+     */
+    public readonly deploymentSetId!: pulumi.Output<string>;
+    /**
      * After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
      */
     public readonly formatDisk!: pulumi.Output<boolean>;
@@ -190,6 +194,9 @@ export class NodePool extends pulumi.CustomResource {
      * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      */
     public readonly systemDiskCategory!: pulumi.Output<string | undefined>;
+    /**
+     * The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
+     */
     public readonly systemDiskPerformanceLevel!: pulumi.Output<string | undefined>;
     /**
      * The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
@@ -211,6 +218,9 @@ export class NodePool extends pulumi.CustomResource {
      * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
      */
     public readonly userData!: pulumi.Output<string | undefined>;
+    /**
+     * The VPC of the nodes in the node pool.
+     */
     public /*out*/ readonly vpcId!: pulumi.Output<string>;
     /**
      * The vswitches used by node pool workers.
@@ -234,6 +244,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
             inputs["dataDisks"] = state ? state.dataDisks : undefined;
+            inputs["deploymentSetId"] = state ? state.deploymentSetId : undefined;
             inputs["formatDisk"] = state ? state.formatDisk : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
             inputs["imageType"] = state ? state.imageType : undefined;
@@ -289,6 +300,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["dataDisks"] = args ? args.dataDisks : undefined;
+            inputs["deploymentSetId"] = args ? args.deploymentSetId : undefined;
             inputs["formatDisk"] = args ? args.formatDisk : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
             inputs["imageType"] = args ? args.imageType : undefined;
@@ -357,6 +369,10 @@ export interface NodePoolState {
      * The data disk configurations of worker nodes, such as the disk type and disk size.
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolDataDisk>[]>;
+    /**
+     * The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
+     */
+    deploymentSetId?: pulumi.Input<string>;
     /**
      * After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
      */
@@ -489,6 +505,9 @@ export interface NodePoolState {
      * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      */
     systemDiskCategory?: pulumi.Input<string>;
+    /**
+     * The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
+     */
     systemDiskPerformanceLevel?: pulumi.Input<string>;
     /**
      * The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
@@ -510,6 +529,9 @@ export interface NodePoolState {
      * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
      */
     userData?: pulumi.Input<string>;
+    /**
+     * The VPC of the nodes in the node pool.
+     */
     vpcId?: pulumi.Input<string>;
     /**
      * The vswitches used by node pool workers.
@@ -537,6 +559,10 @@ export interface NodePoolArgs {
      * The data disk configurations of worker nodes, such as the disk type and disk size.
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolDataDisk>[]>;
+    /**
+     * The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
+     */
+    deploymentSetId?: pulumi.Input<string>;
     /**
      * After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
      */
@@ -665,6 +691,9 @@ export interface NodePoolArgs {
      * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      */
     systemDiskCategory?: pulumi.Input<string>;
+    /**
+     * The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
+     */
     systemDiskPerformanceLevel?: pulumi.Input<string>;
     /**
      * The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.

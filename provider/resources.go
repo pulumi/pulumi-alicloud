@@ -426,6 +426,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cr_namespace":           {Tok: resource(crMod, "Namespace")},
 			"alicloud_cr_ee_instance":         {Tok: resource(crMod, "RegistryEnterpriseInstance")},
 			"alicloud_cr_endpoint_acl_policy": {Tok: resource(crMod, "EndpointAclPolicy")},
+			"alicloud_cr_chart_namespace":     {Tok: resource(crMod, "ChartNamespace")},
+			"alicloud_cr_chart_repository":    {Tok: resource(crMod, "ChartRepository")},
 
 			// CS
 			"alicloud_container_cluster":         {Tok: resource(csMod, "Cluster")},
@@ -468,6 +470,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_db_readonly_instance":               {Tok: resource(rdsMod, "ReadOnlyInstance")},
 			"alicloud_rds_parameter_group":                {Tok: resource(rdsMod, "RdsParameterGroup")},
 			"alicloud_rds_account":                        {Tok: resource(rdsMod, "RdsAccount")},
+			"alicloud_rds_backup":                         {Tok: resource(rdsMod, "RdsBackup")},
+			"alicloud_rds_clone_db_instance":              {Tok: resource(rdsMod, "RdsCloneDbInstance")},
 
 			// DCDN
 			"alicloud_dcdn_domain":        {Tok: resource(dcdnMod, "Domain")},
@@ -661,8 +665,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_fc_alias":                        {Tok: resource(fcMod, "Alias")},
 
 			// FNF
-			"alicloud_fnf_schedule": {Tok: resource(fnfMod, "Schedule")},
-			"alicloud_fnf_flow":     {Tok: resource(fnfMod, "Flow")},
+			"alicloud_fnf_schedule":  {Tok: resource(fnfMod, "Schedule")},
+			"alicloud_fnf_flow":      {Tok: resource(fnfMod, "Flow")},
+			"alicloud_fnf_execution": {Tok: resource(fnfMod, "Execution")},
 
 			// Ga
 			"alicloud_ga_listener":                     {Tok: resource(gaMod, "Listener")},
@@ -758,11 +763,12 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_mhub_app":     {Tok: resource(mhubMod, "App")},
 
 			// MongoDb
-			"alicloud_mongodb_instance":            {Tok: resource(mongoDbMod, "Instance")},
-			"alicloud_mongodb_sharding_instance":   {Tok: resource(mongoDbMod, "ShardingInstance")},
-			"alicloud_mongodb_audit_policy":        {Tok: resource(mongoDbMod, "AuditPolicy")},
-			"alicloud_mongodb_account":             {Tok: resource(mongoDbMod, "Account")},
-			"alicloud_mongodb_serverless_instance": {Tok: resource(mongoDbMod, "ServerlessInstance")},
+			"alicloud_mongodb_instance":                        {Tok: resource(mongoDbMod, "Instance")},
+			"alicloud_mongodb_sharding_instance":               {Tok: resource(mongoDbMod, "ShardingInstance")},
+			"alicloud_mongodb_audit_policy":                    {Tok: resource(mongoDbMod, "AuditPolicy")},
+			"alicloud_mongodb_account":                         {Tok: resource(mongoDbMod, "Account")},
+			"alicloud_mongodb_serverless_instance":             {Tok: resource(mongoDbMod, "ServerlessInstance")},
+			"alicloud_mongodb_sharding_network_public_address": {Tok: resource(mongoDbMod, "ShardingNetworkPublicAddress")},
 
 			// Mns
 			"alicloud_mns_queue":              {Tok: resource(mnsMod, "Queue")},
@@ -1260,6 +1266,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cr_service":               {Tok: dataSource(crMod, "getService")},
 			"alicloud_cr_endpoint_acl_service":  {Tok: dataSource(crMod, "getEndpointAclService")},
 			"alicloud_cr_endpoint_acl_policies": {Tok: dataSource(crMod, "getEndpointAclPolicies")},
+			"alicloud_cr_chart_repositories":    {Tok: dataSource(crMod, "getChartRepositories")},
+			"alicloud_cr_chart_namespaces":      {Tok: dataSource(crMod, "getChartNamespaces")},
 
 			// Cs
 			"alicloud_cs_kubernetes_clusters":            {Tok: dataSource(csMod, "getKubernetesClusters")},
@@ -1446,9 +1454,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_fc_service":        {Tok: dataSource(fcMod, "getService")},
 
 			// FNF
-			"alicloud_fnf_schedules": {Tok: dataSource(fnfMod, "getSchedules")},
-			"alicloud_fnf_flows":     {Tok: dataSource(fnfMod, "getFlows")},
-			"alicloud_fnf_service":   {Tok: dataSource(fnfMod, "getService")},
+			"alicloud_fnf_schedules":  {Tok: dataSource(fnfMod, "getSchedules")},
+			"alicloud_fnf_flows":      {Tok: dataSource(fnfMod, "getFlows")},
+			"alicloud_fnf_service":    {Tok: dataSource(fnfMod, "getService")},
+			"alicloud_fnf_executions": {Tok: dataSource(fnfMod, "getExecutions")},
 
 			// Ga
 			"alicloud_ga_listeners":          {Tok: dataSource(gaMod, "getListeners")},
@@ -1537,11 +1546,12 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_mns_service":             {Tok: dataSource(mnsMod, "getService")},
 
 			// Mongo
-			"alicloud_mongodb_instances":            {Tok: dataSource(mongoDbMod, "getInstances")},
-			"alicloud_mongodb_zones":                {Tok: dataSource(mongoDbMod, "getZones")},
-			"alicloud_mongodb_serverless_instances": {Tok: dataSource(mongoDbMod, "getServerlessInstances")},
-			"alicloud_mongodb_accounts":             {Tok: dataSource(mongoDbMod, "getAccounts")},
-			"alicloud_mongodb_audit_policies":       {Tok: dataSource(mongoDbMod, "getAuditPolicies")},
+			"alicloud_mongodb_instances":                  {Tok: dataSource(mongoDbMod, "getInstances")},
+			"alicloud_mongodb_zones":                      {Tok: dataSource(mongoDbMod, "getZones")},
+			"alicloud_mongodb_serverless_instances":       {Tok: dataSource(mongoDbMod, "getServerlessInstances")},
+			"alicloud_mongodb_accounts":                   {Tok: dataSource(mongoDbMod, "getAccounts")},
+			"alicloud_mongodb_audit_policies":             {Tok: dataSource(mongoDbMod, "getAuditPolicies")},
+			"alicloud_mongodb_sharding_network_addresses": {Tok: dataSource(mongoDbMod, "getShardingNetworkAddresses")},
 
 			// Mse
 			"alicloud_mse_clusters": {Tok: dataSource(mseMod, "getClusters")},
@@ -1637,6 +1647,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_db_zones":             {Tok: dataSource(rdsMod, "getZones")},
 			"alicloud_rds_parameter_groups": {Tok: dataSource(rdsMod, "getRdsParameterGroups")},
 			"alicloud_rds_accounts":         {Tok: dataSource(rdsMod, "getAccounts")},
+			"alicloud_rds_backups":          {Tok: dataSource(rdsMod, "getRdsBackups")},
 
 			// ResourceManager
 			"alicloud_resource_manager_folders":          {Tok: dataSource(resourceManagerMod, "getFolders")},

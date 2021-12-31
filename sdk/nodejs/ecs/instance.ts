@@ -79,6 +79,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
+     * (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
+     */
+    public /*out*/ readonly deploymentSetGroupNo!: pulumi.Output<string>;
+    /**
+     * The ID of the deployment set to which to deploy the instance.
+     */
+    public readonly deploymentSetId!: pulumi.Output<string | undefined>;
+    /**
      * The description of the data disk.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -286,6 +294,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["creditSpecification"] = state ? state.creditSpecification : undefined;
             inputs["dataDisks"] = state ? state.dataDisks : undefined;
             inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            inputs["deploymentSetGroupNo"] = state ? state.deploymentSetGroupNo : undefined;
+            inputs["deploymentSetId"] = state ? state.deploymentSetId : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["dryRun"] = state ? state.dryRun : undefined;
             inputs["forceDelete"] = state ? state.forceDelete : undefined;
@@ -348,6 +358,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["creditSpecification"] = args ? args.creditSpecification : undefined;
             inputs["dataDisks"] = args ? args.dataDisks : undefined;
             inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            inputs["deploymentSetId"] = args ? args.deploymentSetId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["dryRun"] = args ? args.dryRun : undefined;
             inputs["forceDelete"] = args ? args.forceDelete : undefined;
@@ -391,6 +402,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["userData"] = args ? args.userData : undefined;
             inputs["volumeTags"] = args ? args.volumeTags : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
+            inputs["deploymentSetGroupNo"] = undefined /*out*/;
             inputs["publicIp"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -440,6 +452,14 @@ export interface InstanceState {
      * - false: Disable deletion protection.
      */
     deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
+     */
+    deploymentSetGroupNo?: pulumi.Input<string>;
+    /**
+     * The ID of the deployment set to which to deploy the instance.
+     */
+    deploymentSetId?: pulumi.Input<string>;
     /**
      * The description of the data disk.
      */
@@ -669,6 +689,10 @@ export interface InstanceArgs {
      * - false: Disable deletion protection.
      */
     deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * The ID of the deployment set to which to deploy the instance.
+     */
+    deploymentSetId?: pulumi.Input<string>;
     /**
      * The description of the data disk.
      */

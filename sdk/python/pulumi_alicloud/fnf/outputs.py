@@ -9,9 +9,105 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'GetExecutionsExecutionResult',
     'GetFlowsFlowResult',
     'GetSchedulesScheduleResult',
 ]
+
+@pulumi.output_type
+class GetExecutionsExecutionResult(dict):
+    def __init__(__self__, *,
+                 execution_name: str,
+                 flow_name: str,
+                 id: str,
+                 input: str,
+                 output: str,
+                 started_time: str,
+                 status: str,
+                 stopped_time: str):
+        """
+        :param str execution_name: The name of the execution.
+        :param str flow_name: The name of the flow.
+        :param str id: The ID of the Execution. The value formats as `<flow_name>:<execution_name>`.
+        :param str input: The Input information for this execution.
+        :param str output: The output of the execution.
+        :param str started_time: The started time of the execution.
+        :param str status: The status of the resource.
+        :param str stopped_time: The stopped time of the execution.
+        """
+        pulumi.set(__self__, "execution_name", execution_name)
+        pulumi.set(__self__, "flow_name", flow_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "input", input)
+        pulumi.set(__self__, "output", output)
+        pulumi.set(__self__, "started_time", started_time)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "stopped_time", stopped_time)
+
+    @property
+    @pulumi.getter(name="executionName")
+    def execution_name(self) -> str:
+        """
+        The name of the execution.
+        """
+        return pulumi.get(self, "execution_name")
+
+    @property
+    @pulumi.getter(name="flowName")
+    def flow_name(self) -> str:
+        """
+        The name of the flow.
+        """
+        return pulumi.get(self, "flow_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Execution. The value formats as `<flow_name>:<execution_name>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def input(self) -> str:
+        """
+        The Input information for this execution.
+        """
+        return pulumi.get(self, "input")
+
+    @property
+    @pulumi.getter
+    def output(self) -> str:
+        """
+        The output of the execution.
+        """
+        return pulumi.get(self, "output")
+
+    @property
+    @pulumi.getter(name="startedTime")
+    def started_time(self) -> str:
+        """
+        The started time of the execution.
+        """
+        return pulumi.get(self, "started_time")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="stoppedTime")
+    def stopped_time(self) -> str:
+        """
+        The stopped time of the execution.
+        """
+        return pulumi.get(self, "stopped_time")
+
 
 @pulumi.output_type
 class GetFlowsFlowResult(dict):

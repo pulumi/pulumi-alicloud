@@ -1549,6 +1549,7 @@ export namespace cr {
          */
         vpc?: pulumi.Input<string>;
     }
+
 }
 
 export namespace cs {
@@ -3896,6 +3897,49 @@ export namespace mongodb {
         readonlyReplicas?: pulumi.Input<number>;
     }
 
+    export interface ShardingNetworkPublicAddressNetworkAddress {
+        /**
+         * The remaining duration of the classic network address. Unit: `seconds`.
+         */
+        expiredTime?: pulumi.Input<string>;
+        /**
+         * The IP address of the instance.
+         */
+        ipAddress?: pulumi.Input<string>;
+        /**
+         * The endpoint of the instance.
+         */
+        networkAddress?: pulumi.Input<string>;
+        /**
+         * The network type.
+         */
+        networkType?: pulumi.Input<string>;
+        /**
+         * The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+         */
+        nodeId?: pulumi.Input<string>;
+        /**
+         * The type of the node.
+         */
+        nodeType?: pulumi.Input<string>;
+        /**
+         * The port number.
+         */
+        port?: pulumi.Input<string>;
+        /**
+         * The role of the node.
+         */
+        role?: pulumi.Input<string>;
+        /**
+         * The ID of the VPC.
+         */
+        vpcId?: pulumi.Input<string>;
+        /**
+         * The vSwitch ID of the VPC.
+         */
+        vswitchId?: pulumi.Input<string>;
+    }
+
 }
 
 export namespace mse {
@@ -4369,6 +4413,11 @@ export namespace rdc {
 
 export namespace rds {
     export interface InstanceParameter {
+        name: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
+    export interface RdsCloneDbInstanceParameter {
         name: pulumi.Input<string>;
         value: pulumi.Input<string>;
     }

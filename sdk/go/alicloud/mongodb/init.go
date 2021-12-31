@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServerlessInstance{}
 	case "alicloud:mongodb/shardingInstance:ShardingInstance":
 		r = &ShardingInstance{}
+	case "alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress":
+		r = &ShardingNetworkPublicAddress{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -67,6 +69,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"mongodb/shardingInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"mongodb/shardingNetworkPublicAddress",
 		&module{version},
 	)
 }

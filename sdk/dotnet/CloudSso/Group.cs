@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.CloudSso
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>
-        /// The Description of the group.
+        /// The Description of the group. The description can be up to `1024` characters long.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The Name of the group.
+        /// The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         /// </summary>
         [Output("groupName")]
         public Output<string> GroupName { get; private set; } = null!;
@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.CloudSso
     public sealed class GroupArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Description of the group.
+        /// The Description of the group. The description can be up to `1024` characters long.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string> DirectoryId { get; set; } = null!;
 
         /// <summary>
-        /// The Name of the group.
+        /// The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         /// </summary>
         [Input("groupName", required: true)]
         public Input<string> GroupName { get; set; } = null!;
@@ -125,7 +125,7 @@ namespace Pulumi.AliCloud.CloudSso
     public sealed class GroupState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Description of the group.
+        /// The Description of the group. The description can be up to `1024` characters long.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -143,7 +143,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// The Name of the group.
+        /// The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         /// </summary>
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }

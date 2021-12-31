@@ -55,8 +55,11 @@ type Config struct {
 	// Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `accessFailedCnt`, `accessPermissionExprieMaxDays`, `logDatasizeAvgDays`.
 	Code pulumi.StringPtrOutput `pulumi:"code"`
 	// Abnormal Alarm General Description of the Configuration Item.
-	Description pulumi.StringOutput    `pulumi:"description"`
-	Lang        pulumi.StringPtrOutput `pulumi:"lang"`
+	Description pulumi.StringOutput `pulumi:"description"`
+	// The language of the request and response. Valid values: `zh`,`en`.
+	// * `zh`: Chinese.
+	// * `en`: English.
+	Lang pulumi.StringPtrOutput `pulumi:"lang"`
 	// The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
 	// * `accessFailedCnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
 	// * `accessPermissionExprieMaxDays`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
@@ -97,7 +100,10 @@ type configState struct {
 	Code *string `pulumi:"code"`
 	// Abnormal Alarm General Description of the Configuration Item.
 	Description *string `pulumi:"description"`
-	Lang        *string `pulumi:"lang"`
+	// The language of the request and response. Valid values: `zh`,`en`.
+	// * `zh`: Chinese.
+	// * `en`: English.
+	Lang *string `pulumi:"lang"`
 	// The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
 	// * `accessFailedCnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
 	// * `accessPermissionExprieMaxDays`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
@@ -110,7 +116,10 @@ type ConfigState struct {
 	Code pulumi.StringPtrInput
 	// Abnormal Alarm General Description of the Configuration Item.
 	Description pulumi.StringPtrInput
-	Lang        pulumi.StringPtrInput
+	// The language of the request and response. Valid values: `zh`,`en`.
+	// * `zh`: Chinese.
+	// * `en`: English.
+	Lang pulumi.StringPtrInput
 	// The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
 	// * `accessFailedCnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
 	// * `accessPermissionExprieMaxDays`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
@@ -127,7 +136,10 @@ type configArgs struct {
 	Code *string `pulumi:"code"`
 	// Abnormal Alarm General Description of the Configuration Item.
 	Description *string `pulumi:"description"`
-	Lang        *string `pulumi:"lang"`
+	// The language of the request and response. Valid values: `zh`,`en`.
+	// * `zh`: Chinese.
+	// * `en`: English.
+	Lang *string `pulumi:"lang"`
 	// The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
 	// * `accessFailedCnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
 	// * `accessPermissionExprieMaxDays`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
@@ -141,7 +153,10 @@ type ConfigArgs struct {
 	Code pulumi.StringPtrInput
 	// Abnormal Alarm General Description of the Configuration Item.
 	Description pulumi.StringPtrInput
-	Lang        pulumi.StringPtrInput
+	// The language of the request and response. Valid values: `zh`,`en`.
+	// * `zh`: Chinese.
+	// * `en`: English.
+	Lang pulumi.StringPtrInput
 	// The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
 	// * `accessFailedCnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
 	// * `accessPermissionExprieMaxDays`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.

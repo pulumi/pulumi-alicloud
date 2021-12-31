@@ -690,6 +690,184 @@ func (o ShardingInstanceShardListArrayOutput) Index(i pulumi.IntInput) ShardingI
 	}).(ShardingInstanceShardListOutput)
 }
 
+type ShardingNetworkPublicAddressNetworkAddress struct {
+	// The remaining duration of the classic network address. Unit: `seconds`.
+	ExpiredTime *string `pulumi:"expiredTime"`
+	// The IP address of the instance.
+	IpAddress *string `pulumi:"ipAddress"`
+	// The endpoint of the instance.
+	NetworkAddress *string `pulumi:"networkAddress"`
+	// The network type.
+	NetworkType *string `pulumi:"networkType"`
+	// The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+	NodeId *string `pulumi:"nodeId"`
+	// The type of the node.
+	NodeType *string `pulumi:"nodeType"`
+	// The port number.
+	Port *string `pulumi:"port"`
+	// The role of the node.
+	Role *string `pulumi:"role"`
+	// The ID of the VPC.
+	VpcId *string `pulumi:"vpcId"`
+	// The vSwitch ID of the VPC.
+	VswitchId *string `pulumi:"vswitchId"`
+}
+
+// ShardingNetworkPublicAddressNetworkAddressInput is an input type that accepts ShardingNetworkPublicAddressNetworkAddressArgs and ShardingNetworkPublicAddressNetworkAddressOutput values.
+// You can construct a concrete instance of `ShardingNetworkPublicAddressNetworkAddressInput` via:
+//
+//          ShardingNetworkPublicAddressNetworkAddressArgs{...}
+type ShardingNetworkPublicAddressNetworkAddressInput interface {
+	pulumi.Input
+
+	ToShardingNetworkPublicAddressNetworkAddressOutput() ShardingNetworkPublicAddressNetworkAddressOutput
+	ToShardingNetworkPublicAddressNetworkAddressOutputWithContext(context.Context) ShardingNetworkPublicAddressNetworkAddressOutput
+}
+
+type ShardingNetworkPublicAddressNetworkAddressArgs struct {
+	// The remaining duration of the classic network address. Unit: `seconds`.
+	ExpiredTime pulumi.StringPtrInput `pulumi:"expiredTime"`
+	// The IP address of the instance.
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// The endpoint of the instance.
+	NetworkAddress pulumi.StringPtrInput `pulumi:"networkAddress"`
+	// The network type.
+	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
+	// The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
+	// The type of the node.
+	NodeType pulumi.StringPtrInput `pulumi:"nodeType"`
+	// The port number.
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// The role of the node.
+	Role pulumi.StringPtrInput `pulumi:"role"`
+	// The ID of the VPC.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	// The vSwitch ID of the VPC.
+	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
+}
+
+func (ShardingNetworkPublicAddressNetworkAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShardingNetworkPublicAddressNetworkAddress)(nil)).Elem()
+}
+
+func (i ShardingNetworkPublicAddressNetworkAddressArgs) ToShardingNetworkPublicAddressNetworkAddressOutput() ShardingNetworkPublicAddressNetworkAddressOutput {
+	return i.ToShardingNetworkPublicAddressNetworkAddressOutputWithContext(context.Background())
+}
+
+func (i ShardingNetworkPublicAddressNetworkAddressArgs) ToShardingNetworkPublicAddressNetworkAddressOutputWithContext(ctx context.Context) ShardingNetworkPublicAddressNetworkAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShardingNetworkPublicAddressNetworkAddressOutput)
+}
+
+// ShardingNetworkPublicAddressNetworkAddressArrayInput is an input type that accepts ShardingNetworkPublicAddressNetworkAddressArray and ShardingNetworkPublicAddressNetworkAddressArrayOutput values.
+// You can construct a concrete instance of `ShardingNetworkPublicAddressNetworkAddressArrayInput` via:
+//
+//          ShardingNetworkPublicAddressNetworkAddressArray{ ShardingNetworkPublicAddressNetworkAddressArgs{...} }
+type ShardingNetworkPublicAddressNetworkAddressArrayInput interface {
+	pulumi.Input
+
+	ToShardingNetworkPublicAddressNetworkAddressArrayOutput() ShardingNetworkPublicAddressNetworkAddressArrayOutput
+	ToShardingNetworkPublicAddressNetworkAddressArrayOutputWithContext(context.Context) ShardingNetworkPublicAddressNetworkAddressArrayOutput
+}
+
+type ShardingNetworkPublicAddressNetworkAddressArray []ShardingNetworkPublicAddressNetworkAddressInput
+
+func (ShardingNetworkPublicAddressNetworkAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ShardingNetworkPublicAddressNetworkAddress)(nil)).Elem()
+}
+
+func (i ShardingNetworkPublicAddressNetworkAddressArray) ToShardingNetworkPublicAddressNetworkAddressArrayOutput() ShardingNetworkPublicAddressNetworkAddressArrayOutput {
+	return i.ToShardingNetworkPublicAddressNetworkAddressArrayOutputWithContext(context.Background())
+}
+
+func (i ShardingNetworkPublicAddressNetworkAddressArray) ToShardingNetworkPublicAddressNetworkAddressArrayOutputWithContext(ctx context.Context) ShardingNetworkPublicAddressNetworkAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShardingNetworkPublicAddressNetworkAddressArrayOutput)
+}
+
+type ShardingNetworkPublicAddressNetworkAddressOutput struct{ *pulumi.OutputState }
+
+func (ShardingNetworkPublicAddressNetworkAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShardingNetworkPublicAddressNetworkAddress)(nil)).Elem()
+}
+
+func (o ShardingNetworkPublicAddressNetworkAddressOutput) ToShardingNetworkPublicAddressNetworkAddressOutput() ShardingNetworkPublicAddressNetworkAddressOutput {
+	return o
+}
+
+func (o ShardingNetworkPublicAddressNetworkAddressOutput) ToShardingNetworkPublicAddressNetworkAddressOutputWithContext(ctx context.Context) ShardingNetworkPublicAddressNetworkAddressOutput {
+	return o
+}
+
+// The remaining duration of the classic network address. Unit: `seconds`.
+func (o ShardingNetworkPublicAddressNetworkAddressOutput) ExpiredTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShardingNetworkPublicAddressNetworkAddress) *string { return v.ExpiredTime }).(pulumi.StringPtrOutput)
+}
+
+// The IP address of the instance.
+func (o ShardingNetworkPublicAddressNetworkAddressOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShardingNetworkPublicAddressNetworkAddress) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// The endpoint of the instance.
+func (o ShardingNetworkPublicAddressNetworkAddressOutput) NetworkAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShardingNetworkPublicAddressNetworkAddress) *string { return v.NetworkAddress }).(pulumi.StringPtrOutput)
+}
+
+// The network type.
+func (o ShardingNetworkPublicAddressNetworkAddressOutput) NetworkType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShardingNetworkPublicAddressNetworkAddress) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+func (o ShardingNetworkPublicAddressNetworkAddressOutput) NodeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShardingNetworkPublicAddressNetworkAddress) *string { return v.NodeId }).(pulumi.StringPtrOutput)
+}
+
+// The type of the node.
+func (o ShardingNetworkPublicAddressNetworkAddressOutput) NodeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShardingNetworkPublicAddressNetworkAddress) *string { return v.NodeType }).(pulumi.StringPtrOutput)
+}
+
+// The port number.
+func (o ShardingNetworkPublicAddressNetworkAddressOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShardingNetworkPublicAddressNetworkAddress) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// The role of the node.
+func (o ShardingNetworkPublicAddressNetworkAddressOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShardingNetworkPublicAddressNetworkAddress) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the VPC.
+func (o ShardingNetworkPublicAddressNetworkAddressOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShardingNetworkPublicAddressNetworkAddress) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+// The vSwitch ID of the VPC.
+func (o ShardingNetworkPublicAddressNetworkAddressOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShardingNetworkPublicAddressNetworkAddress) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+type ShardingNetworkPublicAddressNetworkAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (ShardingNetworkPublicAddressNetworkAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ShardingNetworkPublicAddressNetworkAddress)(nil)).Elem()
+}
+
+func (o ShardingNetworkPublicAddressNetworkAddressArrayOutput) ToShardingNetworkPublicAddressNetworkAddressArrayOutput() ShardingNetworkPublicAddressNetworkAddressArrayOutput {
+	return o
+}
+
+func (o ShardingNetworkPublicAddressNetworkAddressArrayOutput) ToShardingNetworkPublicAddressNetworkAddressArrayOutputWithContext(ctx context.Context) ShardingNetworkPublicAddressNetworkAddressArrayOutput {
+	return o
+}
+
+func (o ShardingNetworkPublicAddressNetworkAddressArrayOutput) Index(i pulumi.IntInput) ShardingNetworkPublicAddressNetworkAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ShardingNetworkPublicAddressNetworkAddress {
+		return vs[0].([]ShardingNetworkPublicAddressNetworkAddress)[vs[1].(int)]
+	}).(ShardingNetworkPublicAddressNetworkAddressOutput)
+}
+
 type GetAccountsAccount struct {
 	// The description of the account.
 	AccountDescription string `pulumi:"accountDescription"`
@@ -2019,6 +2197,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceMongoListArrayInput)(nil)).Elem(), ShardingInstanceMongoListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceShardListInput)(nil)).Elem(), ShardingInstanceShardListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceShardListArrayInput)(nil)).Elem(), ShardingInstanceShardListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShardingNetworkPublicAddressNetworkAddressInput)(nil)).Elem(), ShardingNetworkPublicAddressNetworkAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShardingNetworkPublicAddressNetworkAddressArrayInput)(nil)).Elem(), ShardingNetworkPublicAddressNetworkAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountInput)(nil)).Elem(), GetAccountsAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountArrayInput)(nil)).Elem(), GetAccountsAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuditPoliciesPolicyInput)(nil)).Elem(), GetAuditPoliciesPolicyArgs{})
@@ -2045,6 +2225,8 @@ func init() {
 	pulumi.RegisterOutputType(ShardingInstanceMongoListArrayOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceShardListOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceShardListArrayOutput{})
+	pulumi.RegisterOutputType(ShardingNetworkPublicAddressNetworkAddressOutput{})
+	pulumi.RegisterOutputType(ShardingNetworkPublicAddressNetworkAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetAuditPoliciesPolicyOutput{})

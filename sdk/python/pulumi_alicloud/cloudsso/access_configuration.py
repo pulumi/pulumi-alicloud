@@ -24,9 +24,9 @@ class AccessConfigurationArgs:
                  session_duration: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a AccessConfiguration resource.
-        :param pulumi.Input[str] access_configuration_name: The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
+        :param pulumi.Input[str] access_configuration_name: The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
         :param pulumi.Input[str] directory_id: The ID of the Directory.
-        :param pulumi.Input[str] description: The Description of the  Access Configuration.
+        :param pulumi.Input[str] description: The Description of the  Access Configuration. The description can be up to `1024` characters long.
         :param pulumi.Input[bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
         :param pulumi.Input[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]] permission_policies: The Policy List. See the following `Block permission_policies`.
         :param pulumi.Input[str] relay_state: The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
@@ -49,7 +49,7 @@ class AccessConfigurationArgs:
     @pulumi.getter(name="accessConfigurationName")
     def access_configuration_name(self) -> pulumi.Input[str]:
         """
-        The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
+        The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
         """
         return pulumi.get(self, "access_configuration_name")
 
@@ -73,7 +73,7 @@ class AccessConfigurationArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The Description of the  Access Configuration.
+        The Description of the  Access Configuration. The description can be up to `1024` characters long.
         """
         return pulumi.get(self, "description")
 
@@ -144,8 +144,8 @@ class _AccessConfigurationState:
         """
         Input properties used for looking up and filtering AccessConfiguration resources.
         :param pulumi.Input[str] access_configuration_id: The AccessConfigurationId of the Access Configuration.
-        :param pulumi.Input[str] access_configuration_name: The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
-        :param pulumi.Input[str] description: The Description of the  Access Configuration.
+        :param pulumi.Input[str] access_configuration_name: The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+        :param pulumi.Input[str] description: The Description of the  Access Configuration. The description can be up to `1024` characters long.
         :param pulumi.Input[str] directory_id: The ID of the Directory.
         :param pulumi.Input[bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
         :param pulumi.Input[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]] permission_policies: The Policy List. See the following `Block permission_policies`.
@@ -185,7 +185,7 @@ class _AccessConfigurationState:
     @pulumi.getter(name="accessConfigurationName")
     def access_configuration_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
+        The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
         """
         return pulumi.get(self, "access_configuration_name")
 
@@ -197,7 +197,7 @@ class _AccessConfigurationState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The Description of the  Access Configuration.
+        The Description of the  Access Configuration. The description can be up to `1024` characters long.
         """
         return pulumi.get(self, "description")
 
@@ -298,8 +298,8 @@ class AccessConfiguration(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_configuration_name: The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
-        :param pulumi.Input[str] description: The Description of the  Access Configuration.
+        :param pulumi.Input[str] access_configuration_name: The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+        :param pulumi.Input[str] description: The Description of the  Access Configuration. The description can be up to `1024` characters long.
         :param pulumi.Input[str] directory_id: The ID of the Directory.
         :param pulumi.Input[bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessConfigurationPermissionPolicyArgs']]]] permission_policies: The Policy List. See the following `Block permission_policies`.
@@ -401,8 +401,8 @@ class AccessConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_configuration_id: The AccessConfigurationId of the Access Configuration.
-        :param pulumi.Input[str] access_configuration_name: The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
-        :param pulumi.Input[str] description: The Description of the  Access Configuration.
+        :param pulumi.Input[str] access_configuration_name: The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+        :param pulumi.Input[str] description: The Description of the  Access Configuration. The description can be up to `1024` characters long.
         :param pulumi.Input[str] directory_id: The ID of the Directory.
         :param pulumi.Input[bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessConfigurationPermissionPolicyArgs']]]] permission_policies: The Policy List. See the following `Block permission_policies`.
@@ -435,7 +435,7 @@ class AccessConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="accessConfigurationName")
     def access_configuration_name(self) -> pulumi.Output[str]:
         """
-        The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
+        The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
         """
         return pulumi.get(self, "access_configuration_name")
 
@@ -443,7 +443,7 @@ class AccessConfiguration(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The Description of the  Access Configuration.
+        The Description of the  Access Configuration. The description can be up to `1024` characters long.
         """
         return pulumi.get(self, "description")
 

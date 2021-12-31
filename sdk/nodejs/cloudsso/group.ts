@@ -50,7 +50,7 @@ export class Group extends pulumi.CustomResource {
     }
 
     /**
-     * The Description of the group.
+     * The Description of the group. The description can be up to `1024` characters long.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -62,7 +62,7 @@ export class Group extends pulumi.CustomResource {
      */
     public /*out*/ readonly groupId!: pulumi.Output<string>;
     /**
-     * The Name of the group.
+     * The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
      */
     public readonly groupName!: pulumi.Output<string>;
 
@@ -108,7 +108,7 @@ export class Group extends pulumi.CustomResource {
  */
 export interface GroupState {
     /**
-     * The Description of the group.
+     * The Description of the group. The description can be up to `1024` characters long.
      */
     description?: pulumi.Input<string>;
     /**
@@ -120,7 +120,7 @@ export interface GroupState {
      */
     groupId?: pulumi.Input<string>;
     /**
-     * The Name of the group.
+     * The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
      */
     groupName?: pulumi.Input<string>;
 }
@@ -130,7 +130,7 @@ export interface GroupState {
  */
 export interface GroupArgs {
     /**
-     * The Description of the group.
+     * The Description of the group. The description can be up to `1024` characters long.
      */
     description?: pulumi.Input<string>;
     /**
@@ -138,7 +138,7 @@ export interface GroupArgs {
      */
     directoryId: pulumi.Input<string>;
     /**
-     * The Name of the group.
+     * The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
      */
     groupName: pulumi.Input<string>;
 }

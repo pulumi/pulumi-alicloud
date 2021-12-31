@@ -29,13 +29,13 @@ import (
 type Group struct {
 	pulumi.CustomResourceState
 
-	// The Description of the group.
+	// The Description of the group. The description can be up to `1024` characters long.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The ID of the Directory.
 	DirectoryId pulumi.StringOutput `pulumi:"directoryId"`
 	// The GroupId of the group.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
-	// The Name of the group.
+	// The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
 	GroupName pulumi.StringOutput `pulumi:"groupName"`
 }
 
@@ -74,24 +74,24 @@ func GetGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
-	// The Description of the group.
+	// The Description of the group. The description can be up to `1024` characters long.
 	Description *string `pulumi:"description"`
 	// The ID of the Directory.
 	DirectoryId *string `pulumi:"directoryId"`
 	// The GroupId of the group.
 	GroupId *string `pulumi:"groupId"`
-	// The Name of the group.
+	// The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
 	GroupName *string `pulumi:"groupName"`
 }
 
 type GroupState struct {
-	// The Description of the group.
+	// The Description of the group. The description can be up to `1024` characters long.
 	Description pulumi.StringPtrInput
 	// The ID of the Directory.
 	DirectoryId pulumi.StringPtrInput
 	// The GroupId of the group.
 	GroupId pulumi.StringPtrInput
-	// The Name of the group.
+	// The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
 	GroupName pulumi.StringPtrInput
 }
 
@@ -100,21 +100,21 @@ func (GroupState) ElementType() reflect.Type {
 }
 
 type groupArgs struct {
-	// The Description of the group.
+	// The Description of the group. The description can be up to `1024` characters long.
 	Description *string `pulumi:"description"`
 	// The ID of the Directory.
 	DirectoryId string `pulumi:"directoryId"`
-	// The Name of the group.
+	// The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
 	GroupName string `pulumi:"groupName"`
 }
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
-	// The Description of the group.
+	// The Description of the group. The description can be up to `1024` characters long.
 	Description pulumi.StringPtrInput
 	// The ID of the Directory.
 	DirectoryId pulumi.StringInput
-	// The Name of the group.
+	// The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
 	GroupName pulumi.StringInput
 }
 

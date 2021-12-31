@@ -1330,6 +1330,22 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cr/chartNamespace",
+  "fqn": "pulumi_alicloud.cr",
+  "classes": {
+   "alicloud:cr/chartNamespace:ChartNamespace": "ChartNamespace"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cr/chartRepository",
+  "fqn": "pulumi_alicloud.cr",
+  "classes": {
+   "alicloud:cr/chartRepository:ChartRepository": "ChartRepository"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cr/endpointAclPolicy",
   "fqn": "pulumi_alicloud.cr",
   "classes": {
@@ -2522,6 +2538,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "fnf/execution",
+  "fqn": "pulumi_alicloud.fnf",
+  "classes": {
+   "alicloud:fnf/execution:Execution": "Execution"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "fnf/flow",
   "fqn": "pulumi_alicloud.fnf",
   "classes": {
@@ -3014,6 +3038,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.mongodb",
   "classes": {
    "alicloud:mongodb/shardingInstance:ShardingInstance": "ShardingInstance"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "mongodb/shardingNetworkPublicAddress",
+  "fqn": "pulumi_alicloud.mongodb",
+  "classes": {
+   "alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress": "ShardingNetworkPublicAddress"
   }
  },
  {
@@ -3550,6 +3582,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.rds",
   "classes": {
    "alicloud:rds/rdsAccount:RdsAccount": "RdsAccount"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "rds/rdsBackup",
+  "fqn": "pulumi_alicloud.rds",
+  "classes": {
+   "alicloud:rds/rdsBackup:RdsBackup": "RdsBackup"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "rds/rdsCloneDbInstance",
+  "fqn": "pulumi_alicloud.rds",
+  "classes": {
+   "alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance": "RdsCloneDbInstance"
   }
  },
  {

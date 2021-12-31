@@ -117,6 +117,9 @@ export class ShardingInstance extends pulumi.CustomResource {
      * Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
      */
     public readonly storageEngine!: pulumi.Output<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The TDE(Transparent Data Encryption) status.
@@ -287,6 +290,9 @@ export interface ShardingInstanceState {
      * Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
      */
     storageEngine?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The TDE(Transparent Data Encryption) status.
@@ -374,6 +380,9 @@ export interface ShardingInstanceArgs {
      * Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
      */
     storageEngine?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The TDE(Transparent Data Encryption) status.

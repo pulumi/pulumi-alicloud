@@ -5,13 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./execution";
 export * from "./flow";
+export * from "./getExecutions";
 export * from "./getFlows";
 export * from "./getSchedules";
 export * from "./getService";
 export * from "./schedule";
 
 // Import resources to register:
+import { Execution } from "./execution";
 import { Flow } from "./flow";
 import { Schedule } from "./schedule";
 
@@ -19,6 +22,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:fnf/execution:Execution":
+                return new Execution(name, <any>undefined, { urn })
             case "alicloud:fnf/flow:Flow":
                 return new Flow(name, <any>undefined, { urn })
             case "alicloud:fnf/schedule:Schedule":
@@ -28,5 +33,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "fnf/execution", _module)
 pulumi.runtime.registerResourceModule("alicloud", "fnf/flow", _module)
 pulumi.runtime.registerResourceModule("alicloud", "fnf/schedule", _module)

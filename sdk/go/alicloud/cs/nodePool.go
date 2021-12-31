@@ -29,6 +29,8 @@ type NodePool struct {
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	DataDisks NodePoolDataDiskArrayOutput `pulumi:"dataDisks"`
+	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
+	DeploymentSetId pulumi.StringOutput `pulumi:"deploymentSetId"`
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
 	FormatDisk pulumi.BoolOutput `pulumi:"formatDisk"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
@@ -96,7 +98,8 @@ type NodePool struct {
 	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
 	SpotStrategy pulumi.StringOutput `pulumi:"spotStrategy"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
-	SystemDiskCategory         pulumi.StringPtrOutput `pulumi:"systemDiskCategory"`
+	SystemDiskCategory pulumi.StringPtrOutput `pulumi:"systemDiskCategory"`
+	// The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
 	SystemDiskPerformanceLevel pulumi.StringPtrOutput `pulumi:"systemDiskPerformanceLevel"`
 	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
 	SystemDiskSize pulumi.IntPtrOutput `pulumi:"systemDiskSize"`
@@ -108,7 +111,8 @@ type NodePool struct {
 	Unschedulable pulumi.BoolPtrOutput `pulumi:"unschedulable"`
 	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
-	VpcId    pulumi.StringOutput    `pulumi:"vpcId"`
+	// The VPC of the nodes in the node pool.
+	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The vswitches used by node pool workers.
 	VswitchIds pulumi.StringArrayOutput `pulumi:"vswitchIds"`
 }
@@ -159,6 +163,8 @@ type nodePoolState struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	DataDisks []NodePoolDataDisk `pulumi:"dataDisks"`
+	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
+	DeploymentSetId *string `pulumi:"deploymentSetId"`
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
 	FormatDisk *bool `pulumi:"formatDisk"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
@@ -226,7 +232,8 @@ type nodePoolState struct {
 	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
-	SystemDiskCategory         *string `pulumi:"systemDiskCategory"`
+	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
+	// The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
 	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
 	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
@@ -238,7 +245,8 @@ type nodePoolState struct {
 	Unschedulable *bool `pulumi:"unschedulable"`
 	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
 	UserData *string `pulumi:"userData"`
-	VpcId    *string `pulumi:"vpcId"`
+	// The VPC of the nodes in the node pool.
+	VpcId *string `pulumi:"vpcId"`
 	// The vswitches used by node pool workers.
 	VswitchIds []string `pulumi:"vswitchIds"`
 }
@@ -252,6 +260,8 @@ type NodePoolState struct {
 	ClusterId pulumi.StringPtrInput
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	DataDisks NodePoolDataDiskArrayInput
+	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
+	DeploymentSetId pulumi.StringPtrInput
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
 	FormatDisk pulumi.BoolPtrInput
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
@@ -319,7 +329,8 @@ type NodePoolState struct {
 	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
 	SpotStrategy pulumi.StringPtrInput
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
-	SystemDiskCategory         pulumi.StringPtrInput
+	SystemDiskCategory pulumi.StringPtrInput
+	// The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
 	SystemDiskPerformanceLevel pulumi.StringPtrInput
 	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
 	SystemDiskSize pulumi.IntPtrInput
@@ -331,7 +342,8 @@ type NodePoolState struct {
 	Unschedulable pulumi.BoolPtrInput
 	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
 	UserData pulumi.StringPtrInput
-	VpcId    pulumi.StringPtrInput
+	// The VPC of the nodes in the node pool.
+	VpcId pulumi.StringPtrInput
 	// The vswitches used by node pool workers.
 	VswitchIds pulumi.StringArrayInput
 }
@@ -349,6 +361,8 @@ type nodePoolArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	DataDisks []NodePoolDataDisk `pulumi:"dataDisks"`
+	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
+	DeploymentSetId *string `pulumi:"deploymentSetId"`
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
 	FormatDisk *bool `pulumi:"formatDisk"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
@@ -414,7 +428,8 @@ type nodePoolArgs struct {
 	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
-	SystemDiskCategory         *string `pulumi:"systemDiskCategory"`
+	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
+	// The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
 	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
 	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
@@ -440,6 +455,8 @@ type NodePoolArgs struct {
 	ClusterId pulumi.StringInput
 	// The data disk configurations of worker nodes, such as the disk type and disk size.
 	DataDisks NodePoolDataDiskArrayInput
+	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
+	DeploymentSetId pulumi.StringPtrInput
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
 	FormatDisk pulumi.BoolPtrInput
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
@@ -505,7 +522,8 @@ type NodePoolArgs struct {
 	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`.
 	SpotStrategy pulumi.StringPtrInput
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
-	SystemDiskCategory         pulumi.StringPtrInput
+	SystemDiskCategory pulumi.StringPtrInput
+	// The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
 	SystemDiskPerformanceLevel pulumi.StringPtrInput
 	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
 	SystemDiskSize pulumi.IntPtrInput

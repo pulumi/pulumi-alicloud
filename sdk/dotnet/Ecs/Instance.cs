@@ -70,6 +70,18 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
+        /// </summary>
+        [Output("deploymentSetGroupNo")]
+        public Output<string> DeploymentSetGroupNo { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the deployment set to which to deploy the instance.
+        /// </summary>
+        [Output("deploymentSetId")]
+        public Output<string?> DeploymentSetId { get; private set; } = null!;
+
+        /// <summary>
         /// The description of the data disk.
         /// </summary>
         [Output("description")]
@@ -441,6 +453,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
+        /// The ID of the deployment set to which to deploy the instance.
+        /// </summary>
+        [Input("deploymentSetId")]
+        public Input<string>? DeploymentSetId { get; set; }
+
+        /// <summary>
         /// The description of the data disk.
         /// </summary>
         [Input("description")]
@@ -795,6 +813,18 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
+        /// </summary>
+        [Input("deploymentSetGroupNo")]
+        public Input<string>? DeploymentSetGroupNo { get; set; }
+
+        /// <summary>
+        /// The ID of the deployment set to which to deploy the instance.
+        /// </summary>
+        [Input("deploymentSetId")]
+        public Input<string>? DeploymentSetId { get; set; }
 
         /// <summary>
         /// The description of the data disk.

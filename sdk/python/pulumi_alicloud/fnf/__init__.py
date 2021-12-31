@@ -5,7 +5,9 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .execution import *
 from .flow import *
+from .get_executions import *
 from .get_flows import *
 from .get_schedules import *
 from .get_service import *

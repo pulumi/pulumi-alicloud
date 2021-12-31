@@ -31,9 +31,9 @@ type AccessConfiguration struct {
 
 	// The AccessConfigurationId of the Access Configuration.
 	AccessConfigurationId pulumi.StringOutput `pulumi:"accessConfigurationId"`
-	// The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
+	// The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
 	AccessConfigurationName pulumi.StringOutput `pulumi:"accessConfigurationName"`
-	// The Description of the  Access Configuration.
+	// The Description of the  Access Configuration. The description can be up to `1024` characters long.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The ID of the Directory.
 	DirectoryId pulumi.StringOutput `pulumi:"directoryId"`
@@ -84,9 +84,9 @@ func GetAccessConfiguration(ctx *pulumi.Context,
 type accessConfigurationState struct {
 	// The AccessConfigurationId of the Access Configuration.
 	AccessConfigurationId *string `pulumi:"accessConfigurationId"`
-	// The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
+	// The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
 	AccessConfigurationName *string `pulumi:"accessConfigurationName"`
-	// The Description of the  Access Configuration.
+	// The Description of the  Access Configuration. The description can be up to `1024` characters long.
 	Description *string `pulumi:"description"`
 	// The ID of the Directory.
 	DirectoryId *string `pulumi:"directoryId"`
@@ -103,9 +103,9 @@ type accessConfigurationState struct {
 type AccessConfigurationState struct {
 	// The AccessConfigurationId of the Access Configuration.
 	AccessConfigurationId pulumi.StringPtrInput
-	// The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
+	// The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
 	AccessConfigurationName pulumi.StringPtrInput
-	// The Description of the  Access Configuration.
+	// The Description of the  Access Configuration. The description can be up to `1024` characters long.
 	Description pulumi.StringPtrInput
 	// The ID of the Directory.
 	DirectoryId pulumi.StringPtrInput
@@ -124,9 +124,9 @@ func (AccessConfigurationState) ElementType() reflect.Type {
 }
 
 type accessConfigurationArgs struct {
-	// The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
+	// The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
 	AccessConfigurationName string `pulumi:"accessConfigurationName"`
-	// The Description of the  Access Configuration.
+	// The Description of the  Access Configuration. The description can be up to `1024` characters long.
 	Description *string `pulumi:"description"`
 	// The ID of the Directory.
 	DirectoryId string `pulumi:"directoryId"`
@@ -142,9 +142,9 @@ type accessConfigurationArgs struct {
 
 // The set of arguments for constructing a AccessConfiguration resource.
 type AccessConfigurationArgs struct {
-	// The AccessConfigurationName of the Access Configuration. The name of the resource. The name must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-).
+	// The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
 	AccessConfigurationName pulumi.StringInput
-	// The Description of the  Access Configuration.
+	// The Description of the  Access Configuration. The description can be up to `1024` characters long.
 	Description pulumi.StringPtrInput
 	// The ID of the Directory.
 	DirectoryId pulumi.StringInput

@@ -7758,6 +7758,68 @@ export namespace config {
 }
 
 export namespace cr {
+    export interface GetChartNamespacesNamespace {
+        /**
+         * Indicates whether a repository is automatically created when an image is pushed to the namespace.
+         */
+        autoCreateRepo: boolean;
+        /**
+         * The ID of the namespace.
+         */
+        chartNamespaceId: string;
+        /**
+         * The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
+         */
+        defaultRepoType: string;
+        /**
+         * The ID of the Chart Namespace.
+         */
+        id: string;
+        /**
+         * The ID of the namespace.
+         */
+        instanceId: string;
+        /**
+         * The name of the namespace.
+         */
+        namespaceName: string;
+    }
+
+    export interface GetChartRepositoriesRepository {
+        /**
+         * The first ID of the resource.
+         */
+        chartRepositoryId: string;
+        /**
+         * The creation time of the resource.
+         */
+        createTime: string;
+        /**
+         * The ID of the Chart Repository.
+         */
+        id: string;
+        /**
+         * The ID of the Container Registry instance.
+         */
+        instanceId: string;
+        /**
+         * The name of the repository.
+         */
+        repoName: string;
+        /**
+         * The namespace to which the repository belongs.
+         */
+        repoNamespaceName: string;
+        /**
+         * The type of the repository. Valid values: `PUBLIC`,`PRIVATE`.
+         */
+        repoType: string;
+        /**
+         * The summary about the repository.
+         */
+        summary: string;
+    }
+
     export interface GetEndpointAclPoliciesPolicy {
         /**
          * The description of the entry.
@@ -7883,7 +7945,6 @@ export namespace cr {
          */
         vpc: string;
     }
-
 }
 
 export namespace cs {
@@ -17343,6 +17404,41 @@ export namespace fc {
 }
 
 export namespace fnf {
+    export interface GetExecutionsExecution {
+        /**
+         * The name of the execution.
+         */
+        executionName: string;
+        /**
+         * The name of the flow.
+         */
+        flowName: string;
+        /**
+         * The ID of the Execution. The value formats as `<flow_name>:<execution_name>`.
+         */
+        id: string;
+        /**
+         * The Input information for this execution.
+         */
+        input: string;
+        /**
+         * The output of the execution.
+         */
+        output: string;
+        /**
+         * The started time of the execution.
+         */
+        startedTime: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+        /**
+         * The stopped time of the execution.
+         */
+        stoppedTime: string;
+    }
+
     export interface GetFlowsFlow {
         /**
          * The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
@@ -20957,6 +21053,49 @@ export namespace mongodb {
          */
         readonlyReplicas: number;
     }
+
+    export interface ShardingNetworkPublicAddressNetworkAddress {
+        /**
+         * The remaining duration of the classic network address. Unit: `seconds`.
+         */
+        expiredTime: string;
+        /**
+         * The IP address of the instance.
+         */
+        ipAddress: string;
+        /**
+         * The endpoint of the instance.
+         */
+        networkAddress: string;
+        /**
+         * The network type.
+         */
+        networkType: string;
+        /**
+         * The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+         */
+        nodeId: string;
+        /**
+         * The type of the node.
+         */
+        nodeType: string;
+        /**
+         * The port number.
+         */
+        port: string;
+        /**
+         * The role of the node.
+         */
+        role: string;
+        /**
+         * The ID of the VPC.
+         */
+        vpcId: string;
+        /**
+         * The vSwitch ID of the VPC.
+         */
+        vswitchId: string;
+    }
 }
 
 export namespace mse {
@@ -24234,6 +24373,111 @@ export namespace rds {
         parameterValue: string;
     }
 
+    export interface GetRdsBackupsBackup {
+        /**
+         * The backup download url.
+         */
+        backupDownloadUrl: string;
+        /**
+         * BackupEndTime.
+         */
+        backupEndTime: string;
+        /**
+         * BackupId.
+         */
+        backupId: string;
+        /**
+         * The initiator of the backup task. Value:
+         * * **System**: automatically initiated by the System
+         * * **User**: manually initiated by the User.
+         */
+        backupInitiator: string;
+        /**
+         * The backup intranet download url.
+         */
+        backupIntranetDownloadUrl: string;
+        /**
+         * BackupMethod.
+         */
+        backupMethod: string;
+        /**
+         * BackupMode.
+         */
+        backupMode: string;
+        /**
+         * BackupSize.
+         */
+        backupSize: string;
+        /**
+         * BackupStartTime.
+         */
+        backupStartTime: string;
+        /**
+         * Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
+         * * **NoStart**: Not started
+         * * **Checking**: check the backup
+         * * **Preparing**: Prepare a backup
+         * * **Waiting**: Waiting for backup
+         * * **Uploading**: Upload backup
+         * * **Finished**: Complete backup
+         * * **Failed**: backup Failed
+         */
+        backupStatus: string;
+        /**
+         * BackupType.
+         */
+        backupType: string;
+        /**
+         * The consistency point of the backup set. The return value is a timestamp. **NOTE:** only MySQL 5.6 returns this parameter, and other versions return 0.
+         */
+        consistentTime: string;
+        /**
+         * The backup mode is divided into the normal backup mode (full and incremental recovery is supported) and the replication-only mode (full recovery is supported only). **NOTE:** Only SQL Server returns this parameter. Valid values:
+         * * **0**: General Backup Mode
+         * * **1**: Copy only mode
+         */
+        copyOnlyBackup: string;
+        /**
+         * The db instance id.
+         */
+        dbInstanceId: string;
+        /**
+         * The encrypted information of the backup set.
+         */
+        encryption: string;
+        /**
+         * HostInstanceID.
+         */
+        hostInstanceId: string;
+        /**
+         * The ID of the Backup.
+         */
+        id: string;
+        /**
+         * Whether the backup set is available, the value is:
+         * * **0**: Not available
+         * * **1**: Available.
+         */
+        isAvail: number;
+        /**
+         * The backup set status of the database table. **NOTE:** an empty string indicates that the backup set for database table recovery is not enabled. Valid values:
+         * * **OK**: normal.
+         * * **LARGE**: There are too many tables that cannot be used for database and table recovery.
+         * * **EMPTY**: The backup set that failed to be backed up.
+         */
+        metaStatus: string;
+        /**
+         * The storage medium for the backup set. Valid values:
+         * * **0**: Regular storage
+         * * **1**: Archive storage.
+         */
+        storageClass: string;
+        /**
+         * StoreStatus.
+         */
+        storeStatus: string;
+    }
+
     export interface GetRdsParameterGroupsGroup {
         engine: string;
         engineVersion: string;
@@ -24264,6 +24508,11 @@ export namespace rds {
     }
 
     export interface InstanceParameter {
+        name: string;
+        value: string;
+    }
+
+    export interface RdsCloneDbInstanceParameter {
         name: string;
         value: string;
     }

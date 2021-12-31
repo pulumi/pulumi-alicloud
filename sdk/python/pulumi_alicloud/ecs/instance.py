@@ -25,6 +25,7 @@ class InstanceArgs:
                  credit_specification: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
@@ -83,6 +84,7 @@ class InstanceArgs:
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
+        :param pulumi.Input[str] deployment_set_id: The ID of the deployment set to which to deploy the instance.
         :param pulumi.Input[str] description: The description of the data disk.
         :param pulumi.Input[bool] dry_run: Specifies whether to send a dry-run request. Default to false. 
                - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
@@ -157,6 +159,8 @@ class InstanceArgs:
             pulumi.set(__self__, "data_disks", data_disks)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if deployment_set_id is not None:
+            pulumi.set(__self__, "deployment_set_id", deployment_set_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dry_run is not None:
@@ -369,6 +373,18 @@ class InstanceArgs:
     @deletion_protection.setter
     def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter(name="deploymentSetId")
+    def deployment_set_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the deployment set to which to deploy the instance.
+        """
+        return pulumi.get(self, "deployment_set_id")
+
+    @deployment_set_id.setter
+    def deployment_set_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deployment_set_id", value)
 
     @property
     @pulumi.getter
@@ -868,6 +884,8 @@ class _InstanceState:
                  credit_specification: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 deployment_set_group_no: Optional[pulumi.Input[str]] = None,
+                 deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
@@ -927,6 +945,8 @@ class _InstanceState:
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
+        :param pulumi.Input[str] deployment_set_group_no: (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
+        :param pulumi.Input[str] deployment_set_id: The ID of the deployment set to which to deploy the instance.
         :param pulumi.Input[str] description: The description of the data disk.
         :param pulumi.Input[bool] dry_run: Specifies whether to send a dry-run request. Default to false. 
                - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
@@ -1002,6 +1022,10 @@ class _InstanceState:
             pulumi.set(__self__, "data_disks", data_disks)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if deployment_set_group_no is not None:
+            pulumi.set(__self__, "deployment_set_group_no", deployment_set_group_no)
+        if deployment_set_id is not None:
+            pulumi.set(__self__, "deployment_set_id", deployment_set_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dry_run is not None:
@@ -1186,6 +1210,30 @@ class _InstanceState:
     @deletion_protection.setter
     def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter(name="deploymentSetGroupNo")
+    def deployment_set_group_no(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
+        """
+        return pulumi.get(self, "deployment_set_group_no")
+
+    @deployment_set_group_no.setter
+    def deployment_set_group_no(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deployment_set_group_no", value)
+
+    @property
+    @pulumi.getter(name="deploymentSetId")
+    def deployment_set_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the deployment set to which to deploy the instance.
+        """
+        return pulumi.get(self, "deployment_set_id")
+
+    @deployment_set_id.setter
+    def deployment_set_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deployment_set_id", value)
 
     @property
     @pulumi.getter
@@ -1735,6 +1783,7 @@ class Instance(pulumi.CustomResource):
                  credit_specification: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDataDiskArgs']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
@@ -1803,6 +1852,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
+        :param pulumi.Input[str] deployment_set_id: The ID of the deployment set to which to deploy the instance.
         :param pulumi.Input[str] description: The description of the data disk.
         :param pulumi.Input[bool] dry_run: Specifies whether to send a dry-run request. Default to false. 
                - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
@@ -1897,6 +1947,7 @@ class Instance(pulumi.CustomResource):
                  credit_specification: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDataDiskArgs']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
@@ -1962,6 +2013,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["credit_specification"] = credit_specification
             __props__.__dict__["data_disks"] = data_disks
             __props__.__dict__["deletion_protection"] = deletion_protection
+            __props__.__dict__["deployment_set_id"] = deployment_set_id
             __props__.__dict__["description"] = description
             __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["force_delete"] = force_delete
@@ -2017,6 +2069,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["user_data"] = user_data
             __props__.__dict__["volume_tags"] = volume_tags
             __props__.__dict__["vswitch_id"] = vswitch_id
+            __props__.__dict__["deployment_set_group_no"] = None
             __props__.__dict__["public_ip"] = None
         super(Instance, __self__).__init__(
             'alicloud:ecs/instance:Instance',
@@ -2035,6 +2088,8 @@ class Instance(pulumi.CustomResource):
             credit_specification: Optional[pulumi.Input[str]] = None,
             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDataDiskArgs']]]]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
+            deployment_set_group_no: Optional[pulumi.Input[str]] = None,
+            deployment_set_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
             force_delete: Optional[pulumi.Input[bool]] = None,
@@ -2099,6 +2154,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
+        :param pulumi.Input[str] deployment_set_group_no: (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
+        :param pulumi.Input[str] deployment_set_id: The ID of the deployment set to which to deploy the instance.
         :param pulumi.Input[str] description: The description of the data disk.
         :param pulumi.Input[bool] dry_run: Specifies whether to send a dry-run request. Default to false. 
                - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
@@ -2168,6 +2225,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["credit_specification"] = credit_specification
         __props__.__dict__["data_disks"] = data_disks
         __props__.__dict__["deletion_protection"] = deletion_protection
+        __props__.__dict__["deployment_set_group_no"] = deployment_set_group_no
+        __props__.__dict__["deployment_set_id"] = deployment_set_id
         __props__.__dict__["description"] = description
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["force_delete"] = force_delete
@@ -2275,6 +2334,22 @@ class Instance(pulumi.CustomResource):
         - false: Disable deletion protection.
         """
         return pulumi.get(self, "deletion_protection")
+
+    @property
+    @pulumi.getter(name="deploymentSetGroupNo")
+    def deployment_set_group_no(self) -> pulumi.Output[str]:
+        """
+        (Optional, Available in 1.149.0+) The group number of the instance in a deployment set when the deployment set is use.
+        """
+        return pulumi.get(self, "deployment_set_group_no")
+
+    @property
+    @pulumi.getter(name="deploymentSetId")
+    def deployment_set_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the deployment set to which to deploy the instance.
+        """
+        return pulumi.get(self, "deployment_set_id")
 
     @property
     @pulumi.getter

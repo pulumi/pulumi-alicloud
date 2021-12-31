@@ -24,12 +24,12 @@ class UserArgs:
         """
         The set of arguments for constructing a User resource.
         :param pulumi.Input[str] directory_id: The ID of the Directory.
-        :param pulumi.Input[str] user_name: The name of user.
-        :param pulumi.Input[str] description: The description of user.
-        :param pulumi.Input[str] display_name: The display name of user.
-        :param pulumi.Input[str] email: The User's Contact Email Address.
-        :param pulumi.Input[str] first_name: The first name of user.
-        :param pulumi.Input[str] last_name: The last name of user.
+        :param pulumi.Input[str] user_name: The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
+        :param pulumi.Input[str] description: The description of user. The description can be up to `1024` characters long.
+        :param pulumi.Input[str] display_name: The display name of user. The display name can be up to `256` characters long.
+        :param pulumi.Input[str] email: The User's Contact Email Address. The email can be up to `128` characters long.
+        :param pulumi.Input[str] first_name: The first name of user. The first_name can be up to `64` characters long.
+        :param pulumi.Input[str] last_name: The last name of user. The last_name can be up to `64` characters long.
         :param pulumi.Input[str] status: The status of user. Valid values: `Disabled`, `Enabled`.
         """
         pulumi.set(__self__, "directory_id", directory_id)
@@ -63,7 +63,7 @@ class UserArgs:
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Input[str]:
         """
-        The name of user.
+        The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
         """
         return pulumi.get(self, "user_name")
 
@@ -75,7 +75,7 @@ class UserArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of user.
+        The description of user. The description can be up to `1024` characters long.
         """
         return pulumi.get(self, "description")
 
@@ -87,7 +87,7 @@ class UserArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The display name of user.
+        The display name of user. The display name can be up to `256` characters long.
         """
         return pulumi.get(self, "display_name")
 
@@ -99,7 +99,7 @@ class UserArgs:
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[str]]:
         """
-        The User's Contact Email Address.
+        The User's Contact Email Address. The email can be up to `128` characters long.
         """
         return pulumi.get(self, "email")
 
@@ -111,7 +111,7 @@ class UserArgs:
     @pulumi.getter(name="firstName")
     def first_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The first name of user.
+        The first name of user. The first_name can be up to `64` characters long.
         """
         return pulumi.get(self, "first_name")
 
@@ -123,7 +123,7 @@ class UserArgs:
     @pulumi.getter(name="lastName")
     def last_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The last name of user.
+        The last name of user. The last_name can be up to `64` characters long.
         """
         return pulumi.get(self, "last_name")
 
@@ -158,15 +158,15 @@ class _UserState:
                  user_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering User resources.
-        :param pulumi.Input[str] description: The description of user.
+        :param pulumi.Input[str] description: The description of user. The description can be up to `1024` characters long.
         :param pulumi.Input[str] directory_id: The ID of the Directory.
-        :param pulumi.Input[str] display_name: The display name of user.
-        :param pulumi.Input[str] email: The User's Contact Email Address.
-        :param pulumi.Input[str] first_name: The first name of user.
-        :param pulumi.Input[str] last_name: The last name of user.
+        :param pulumi.Input[str] display_name: The display name of user. The display name can be up to `256` characters long.
+        :param pulumi.Input[str] email: The User's Contact Email Address. The email can be up to `128` characters long.
+        :param pulumi.Input[str] first_name: The first name of user. The first_name can be up to `64` characters long.
+        :param pulumi.Input[str] last_name: The last name of user. The last_name can be up to `64` characters long.
         :param pulumi.Input[str] status: The status of user. Valid values: `Disabled`, `Enabled`.
         :param pulumi.Input[str] user_id: The User ID of the group.
-        :param pulumi.Input[str] user_name: The name of user.
+        :param pulumi.Input[str] user_name: The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -191,7 +191,7 @@ class _UserState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of user.
+        The description of user. The description can be up to `1024` characters long.
         """
         return pulumi.get(self, "description")
 
@@ -215,7 +215,7 @@ class _UserState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The display name of user.
+        The display name of user. The display name can be up to `256` characters long.
         """
         return pulumi.get(self, "display_name")
 
@@ -227,7 +227,7 @@ class _UserState:
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[str]]:
         """
-        The User's Contact Email Address.
+        The User's Contact Email Address. The email can be up to `128` characters long.
         """
         return pulumi.get(self, "email")
 
@@ -239,7 +239,7 @@ class _UserState:
     @pulumi.getter(name="firstName")
     def first_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The first name of user.
+        The first name of user. The first_name can be up to `64` characters long.
         """
         return pulumi.get(self, "first_name")
 
@@ -251,7 +251,7 @@ class _UserState:
     @pulumi.getter(name="lastName")
     def last_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The last name of user.
+        The last name of user. The last_name can be up to `64` characters long.
         """
         return pulumi.get(self, "last_name")
 
@@ -287,7 +287,7 @@ class _UserState:
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of user.
+        The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
         """
         return pulumi.get(self, "user_name")
 
@@ -329,14 +329,14 @@ class User(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of user.
+        :param pulumi.Input[str] description: The description of user. The description can be up to `1024` characters long.
         :param pulumi.Input[str] directory_id: The ID of the Directory.
-        :param pulumi.Input[str] display_name: The display name of user.
-        :param pulumi.Input[str] email: The User's Contact Email Address.
-        :param pulumi.Input[str] first_name: The first name of user.
-        :param pulumi.Input[str] last_name: The last name of user.
+        :param pulumi.Input[str] display_name: The display name of user. The display name can be up to `256` characters long.
+        :param pulumi.Input[str] email: The User's Contact Email Address. The email can be up to `128` characters long.
+        :param pulumi.Input[str] first_name: The first name of user. The first_name can be up to `64` characters long.
+        :param pulumi.Input[str] last_name: The last name of user. The last_name can be up to `64` characters long.
         :param pulumi.Input[str] status: The status of user. Valid values: `Disabled`, `Enabled`.
-        :param pulumi.Input[str] user_name: The name of user.
+        :param pulumi.Input[str] user_name: The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
         """
         ...
     @overload
@@ -435,15 +435,15 @@ class User(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of user.
+        :param pulumi.Input[str] description: The description of user. The description can be up to `1024` characters long.
         :param pulumi.Input[str] directory_id: The ID of the Directory.
-        :param pulumi.Input[str] display_name: The display name of user.
-        :param pulumi.Input[str] email: The User's Contact Email Address.
-        :param pulumi.Input[str] first_name: The first name of user.
-        :param pulumi.Input[str] last_name: The last name of user.
+        :param pulumi.Input[str] display_name: The display name of user. The display name can be up to `256` characters long.
+        :param pulumi.Input[str] email: The User's Contact Email Address. The email can be up to `128` characters long.
+        :param pulumi.Input[str] first_name: The first name of user. The first_name can be up to `64` characters long.
+        :param pulumi.Input[str] last_name: The last name of user. The last_name can be up to `64` characters long.
         :param pulumi.Input[str] status: The status of user. Valid values: `Disabled`, `Enabled`.
         :param pulumi.Input[str] user_id: The User ID of the group.
-        :param pulumi.Input[str] user_name: The name of user.
+        :param pulumi.Input[str] user_name: The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -464,7 +464,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of user.
+        The description of user. The description can be up to `1024` characters long.
         """
         return pulumi.get(self, "description")
 
@@ -480,7 +480,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The display name of user.
+        The display name of user. The display name can be up to `256` characters long.
         """
         return pulumi.get(self, "display_name")
 
@@ -488,7 +488,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter
     def email(self) -> pulumi.Output[Optional[str]]:
         """
-        The User's Contact Email Address.
+        The User's Contact Email Address. The email can be up to `128` characters long.
         """
         return pulumi.get(self, "email")
 
@@ -496,7 +496,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="firstName")
     def first_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The first name of user.
+        The first name of user. The first_name can be up to `64` characters long.
         """
         return pulumi.get(self, "first_name")
 
@@ -504,7 +504,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="lastName")
     def last_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The last name of user.
+        The last name of user. The last_name can be up to `64` characters long.
         """
         return pulumi.get(self, "last_name")
 
@@ -528,7 +528,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Output[str]:
         """
-        The name of user.
+        The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
         """
         return pulumi.get(self, "user_name")
 

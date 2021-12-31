@@ -15,6 +15,7 @@ export * from "./getZones";
 export * from "./instance";
 export * from "./serverlessInstance";
 export * from "./shardingInstance";
+export * from "./shardingNetworkPublicAddress";
 
 // Import resources to register:
 import { Account } from "./account";
@@ -22,6 +23,7 @@ import { AuditPolicy } from "./auditPolicy";
 import { Instance } from "./instance";
 import { ServerlessInstance } from "./serverlessInstance";
 import { ShardingInstance } from "./shardingInstance";
+import { ShardingNetworkPublicAddress } from "./shardingNetworkPublicAddress";
 
 const _module = {
     version: utilities.getVersion(),
@@ -37,6 +39,8 @@ const _module = {
                 return new ServerlessInstance(name, <any>undefined, { urn })
             case "alicloud:mongodb/shardingInstance:ShardingInstance":
                 return new ShardingInstance(name, <any>undefined, { urn })
+            case "alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress":
+                return new ShardingNetworkPublicAddress(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -47,3 +51,4 @@ pulumi.runtime.registerResourceModule("alicloud", "mongodb/auditPolicy", _module
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/serverlessInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/shardingInstance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "mongodb/shardingNetworkPublicAddress", _module)

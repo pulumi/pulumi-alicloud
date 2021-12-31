@@ -5,7 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./chartNamespace";
+export * from "./chartRepository";
 export * from "./endpointAclPolicy";
+export * from "./getChartNamespaces";
+export * from "./getChartRepositories";
 export * from "./getEndpointAclPolicies";
 export * from "./getEndpointAclService";
 export * from "./getNamespaces";
@@ -16,6 +20,8 @@ export * from "./registryEnterpriseInstance";
 export * from "./repo";
 
 // Import resources to register:
+import { ChartNamespace } from "./chartNamespace";
+import { ChartRepository } from "./chartRepository";
 import { EndpointAclPolicy } from "./endpointAclPolicy";
 import { Namespace } from "./namespace";
 import { RegistryEnterpriseInstance } from "./registryEnterpriseInstance";
@@ -25,6 +31,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:cr/chartNamespace:ChartNamespace":
+                return new ChartNamespace(name, <any>undefined, { urn })
+            case "alicloud:cr/chartRepository:ChartRepository":
+                return new ChartRepository(name, <any>undefined, { urn })
             case "alicloud:cr/endpointAclPolicy:EndpointAclPolicy":
                 return new EndpointAclPolicy(name, <any>undefined, { urn })
             case "alicloud:cr/namespace:Namespace":
@@ -38,6 +48,8 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "cr/chartNamespace", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cr/chartRepository", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/endpointAclPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/namespace", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/registryEnterpriseInstance", _module)
