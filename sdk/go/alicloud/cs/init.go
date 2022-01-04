@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EdgeKubernetes{}
 	case "alicloud:cs/kubernetes:Kubernetes":
 		r = &Kubernetes{}
+	case "alicloud:cs/kubernetesAddon:KubernetesAddon":
+		r = &KubernetesAddon{}
 	case "alicloud:cs/kubernetesAutoscaler:KubernetesAutoscaler":
 		r = &KubernetesAutoscaler{}
 	case "alicloud:cs/kubernetesPermission:KubernetesPermission":
@@ -85,6 +87,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cs/kubernetes",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cs/kubernetesAddon",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

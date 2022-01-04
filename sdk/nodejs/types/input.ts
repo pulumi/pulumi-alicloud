@@ -66,6 +66,7 @@ export interface ProviderEndpoint {
     fc?: pulumi.Input<string>;
     fnf?: pulumi.Input<string>;
     ga?: pulumi.Input<string>;
+    gaplus?: pulumi.Input<string>;
     gds?: pulumi.Input<string>;
     gpdb?: pulumi.Input<string>;
     gwsecd?: pulumi.Input<string>;
@@ -1241,7 +1242,7 @@ export namespace cloudsso {
          */
         permissionPolicyDocument?: pulumi.Input<string>;
         /**
-         * The Policy Name of policy. The name of the resource. The name must be 1 to 32 characters in length and can contain letters, digits, and hyphens (-).
+         * The Policy Name of policy. The name of the resource.
          */
         permissionPolicyName: pulumi.Input<string>;
         /**
@@ -1649,29 +1650,42 @@ export namespace cs {
         privateIp?: pulumi.Input<string>;
     }
 
-    export interface GetKubernetesPermissionPermission {
+    export interface GetKubernetesAddonsAddon {
         /**
-         * ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
-         * * `isRamRole` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+         * The current version of addon, if this field is an empty string, it means that the addon is not installed.
          */
-        isOwner?: boolean;
-        isRamRole?: boolean;
+        currentVersion?: string;
         /**
-         * The permission settings to manage ACK clusters.
+         * The name of addon.
          */
-        resourceId: string;
+        name?: string;
         /**
-         * The authorization type. Valid values `cluster`, `namespace` and `console`.
+         * The next version of this addon can be upgraded to.
          */
-        resourceType: string;
+        nextVersion?: string;
         /**
-         * The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
+         * Whether the addon is a system addon.
          */
-        roleName: string;
+        required?: boolean;
+    }
+
+    export interface GetKubernetesAddonsAddonArgs {
         /**
-         * The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
+         * The current version of addon, if this field is an empty string, it means that the addon is not installed.
          */
-        roleType?: string;
+        currentVersion?: pulumi.Input<string>;
+        /**
+         * The name of addon.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The next version of this addon can be upgraded to.
+         */
+        nextVersion?: pulumi.Input<string>;
+        /**
+         * Whether the addon is a system addon.
+         */
+        required?: pulumi.Input<boolean>;
     }
 
     export interface GetKubernetesPermissionPermissionArgs {
@@ -1697,6 +1711,31 @@ export namespace cs {
          * The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
          */
         roleType?: pulumi.Input<string>;
+    }
+
+    export interface GetKubernetesPermissionPermission {
+        /**
+         * ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
+         * * `isRamRole` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+         */
+        isOwner?: boolean;
+        isRamRole?: boolean;
+        /**
+         * The permission settings to manage ACK clusters.
+         */
+        resourceId: string;
+        /**
+         * The authorization type. Valid values `cluster`, `namespace` and `console`.
+         */
+        resourceType: string;
+        /**
+         * The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
+         */
+        roleName: string;
+        /**
+         * The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
+         */
+        roleType?: string;
     }
 
     export interface KubernetesAddon {
@@ -3276,6 +3315,17 @@ export namespace fnf {
 }
 
 export namespace ga {
+    export interface AclAclEntry {
+        /**
+         * The IP entry that you want to add to the ACL.
+         */
+        entry?: pulumi.Input<string>;
+        /**
+         * The description of the IP entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
+         */
+        entryDescription?: pulumi.Input<string>;
+    }
+
     export interface EndpointGroupEndpointConfiguration {
         /**
          * Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.

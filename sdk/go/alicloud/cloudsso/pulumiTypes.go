@@ -13,7 +13,7 @@ import (
 type AccessConfigurationPermissionPolicy struct {
 	// The Content of Policy.
 	PermissionPolicyDocument *string `pulumi:"permissionPolicyDocument"`
-	// The Policy Name of policy. The name of the resource. The name must be 1 to 32 characters in length and can contain letters, digits, and hyphens (-).
+	// The Policy Name of policy. The name of the resource.
 	PermissionPolicyName string `pulumi:"permissionPolicyName"`
 	// The Policy Type of policy. Valid values: `System`, `Inline`.
 	PermissionPolicyType string `pulumi:"permissionPolicyType"`
@@ -33,7 +33,7 @@ type AccessConfigurationPermissionPolicyInput interface {
 type AccessConfigurationPermissionPolicyArgs struct {
 	// The Content of Policy.
 	PermissionPolicyDocument pulumi.StringPtrInput `pulumi:"permissionPolicyDocument"`
-	// The Policy Name of policy. The name of the resource. The name must be 1 to 32 characters in length and can contain letters, digits, and hyphens (-).
+	// The Policy Name of policy. The name of the resource.
 	PermissionPolicyName pulumi.StringInput `pulumi:"permissionPolicyName"`
 	// The Policy Type of policy. Valid values: `System`, `Inline`.
 	PermissionPolicyType pulumi.StringInput `pulumi:"permissionPolicyType"`
@@ -95,7 +95,7 @@ func (o AccessConfigurationPermissionPolicyOutput) PermissionPolicyDocument() pu
 	return o.ApplyT(func(v AccessConfigurationPermissionPolicy) *string { return v.PermissionPolicyDocument }).(pulumi.StringPtrOutput)
 }
 
-// The Policy Name of policy. The name of the resource. The name must be 1 to 32 characters in length and can contain letters, digits, and hyphens (-).
+// The Policy Name of policy. The name of the resource.
 func (o AccessConfigurationPermissionPolicyOutput) PermissionPolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessConfigurationPermissionPolicy) string { return v.PermissionPolicyName }).(pulumi.StringOutput)
 }

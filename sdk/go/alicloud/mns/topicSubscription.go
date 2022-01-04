@@ -22,17 +22,17 @@ type TopicSubscription struct {
 	pulumi.CustomResourceState
 
 	// The endpoint has three format. Available values format:
-	// - HTTP Format: http://xxx.com/xxx
-	// - Queue Format: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-	// - Email Format: mail:directmail:{MailAddress}
+	// - `HTTP Format`: http://xxx.com/xxx
+	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
+	// - `Email Format`: mail:directmail:{MailAddress}
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// The length should be shorter than 16.
 	FilterTag pulumi.StringPtrOutput `pulumi:"filterTag"`
 	// Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
+	// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: `SIMPLIFIED`, `XML` and `JSON`. Default to `SIMPLIFIED`.
 	NotifyContentFormat pulumi.StringPtrOutput `pulumi:"notifyContentFormat"`
-	// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
+	// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
 	NotifyStrategy pulumi.StringPtrOutput `pulumi:"notifyStrategy"`
 	// The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
 	TopicName pulumi.StringOutput `pulumi:"topicName"`
@@ -74,17 +74,17 @@ func GetTopicSubscription(ctx *pulumi.Context,
 // Input properties used for looking up and filtering TopicSubscription resources.
 type topicSubscriptionState struct {
 	// The endpoint has three format. Available values format:
-	// - HTTP Format: http://xxx.com/xxx
-	// - Queue Format: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-	// - Email Format: mail:directmail:{MailAddress}
+	// - `HTTP Format`: http://xxx.com/xxx
+	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
+	// - `Email Format`: mail:directmail:{MailAddress}
 	Endpoint *string `pulumi:"endpoint"`
 	// The length should be shorter than 16.
 	FilterTag *string `pulumi:"filterTag"`
 	// Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
 	Name *string `pulumi:"name"`
-	// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
+	// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: `SIMPLIFIED`, `XML` and `JSON`. Default to `SIMPLIFIED`.
 	NotifyContentFormat *string `pulumi:"notifyContentFormat"`
-	// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
+	// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
 	NotifyStrategy *string `pulumi:"notifyStrategy"`
 	// The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
 	TopicName *string `pulumi:"topicName"`
@@ -92,17 +92,17 @@ type topicSubscriptionState struct {
 
 type TopicSubscriptionState struct {
 	// The endpoint has three format. Available values format:
-	// - HTTP Format: http://xxx.com/xxx
-	// - Queue Format: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-	// - Email Format: mail:directmail:{MailAddress}
+	// - `HTTP Format`: http://xxx.com/xxx
+	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
+	// - `Email Format`: mail:directmail:{MailAddress}
 	Endpoint pulumi.StringPtrInput
 	// The length should be shorter than 16.
 	FilterTag pulumi.StringPtrInput
 	// Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
 	Name pulumi.StringPtrInput
-	// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
+	// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: `SIMPLIFIED`, `XML` and `JSON`. Default to `SIMPLIFIED`.
 	NotifyContentFormat pulumi.StringPtrInput
-	// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
+	// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
 	NotifyStrategy pulumi.StringPtrInput
 	// The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
 	TopicName pulumi.StringPtrInput
@@ -114,17 +114,17 @@ func (TopicSubscriptionState) ElementType() reflect.Type {
 
 type topicSubscriptionArgs struct {
 	// The endpoint has three format. Available values format:
-	// - HTTP Format: http://xxx.com/xxx
-	// - Queue Format: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-	// - Email Format: mail:directmail:{MailAddress}
+	// - `HTTP Format`: http://xxx.com/xxx
+	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
+	// - `Email Format`: mail:directmail:{MailAddress}
 	Endpoint string `pulumi:"endpoint"`
 	// The length should be shorter than 16.
 	FilterTag *string `pulumi:"filterTag"`
 	// Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
 	Name *string `pulumi:"name"`
-	// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
+	// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: `SIMPLIFIED`, `XML` and `JSON`. Default to `SIMPLIFIED`.
 	NotifyContentFormat *string `pulumi:"notifyContentFormat"`
-	// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
+	// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
 	NotifyStrategy *string `pulumi:"notifyStrategy"`
 	// The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
 	TopicName string `pulumi:"topicName"`
@@ -133,17 +133,17 @@ type topicSubscriptionArgs struct {
 // The set of arguments for constructing a TopicSubscription resource.
 type TopicSubscriptionArgs struct {
 	// The endpoint has three format. Available values format:
-	// - HTTP Format: http://xxx.com/xxx
-	// - Queue Format: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-	// - Email Format: mail:directmail:{MailAddress}
+	// - `HTTP Format`: http://xxx.com/xxx
+	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
+	// - `Email Format`: mail:directmail:{MailAddress}
 	Endpoint pulumi.StringInput
 	// The length should be shorter than 16.
 	FilterTag pulumi.StringPtrInput
 	// Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
 	Name pulumi.StringPtrInput
-	// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
+	// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: `SIMPLIFIED`, `XML` and `JSON`. Default to `SIMPLIFIED`.
 	NotifyContentFormat pulumi.StringPtrInput
-	// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
+	// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
 	NotifyStrategy pulumi.StringPtrInput
 	// The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
 	TopicName pulumi.StringInput

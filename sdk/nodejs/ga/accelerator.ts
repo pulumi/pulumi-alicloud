@@ -81,9 +81,17 @@ export class Accelerator extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The duration. The value range is 1-9.
+     * The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricingCycle` are both required.
+     * * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+     * * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
      */
     public readonly duration!: pulumi.Output<number>;
+    /**
+     * The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+     * * `Month`: billed on a monthly basis.
+     * * `Year`: billed on an annual basis.
+     */
+    public readonly pricingCycle!: pulumi.Output<string>;
     /**
      * Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
      * - `AutoRenewal`: Enable auto renewal.
@@ -124,6 +132,7 @@ export class Accelerator extends pulumi.CustomResource {
             inputs["autoUseCoupon"] = state ? state.autoUseCoupon : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["duration"] = state ? state.duration : undefined;
+            inputs["pricingCycle"] = state ? state.pricingCycle : undefined;
             inputs["renewalStatus"] = state ? state.renewalStatus : undefined;
             inputs["spec"] = state ? state.spec : undefined;
             inputs["status"] = state ? state.status : undefined;
@@ -140,6 +149,7 @@ export class Accelerator extends pulumi.CustomResource {
             inputs["autoUseCoupon"] = args ? args.autoUseCoupon : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["duration"] = args ? args.duration : undefined;
+            inputs["pricingCycle"] = args ? args.pricingCycle : undefined;
             inputs["renewalStatus"] = args ? args.renewalStatus : undefined;
             inputs["spec"] = args ? args.spec : undefined;
             inputs["status"] = undefined /*out*/;
@@ -172,9 +182,17 @@ export interface AcceleratorState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The duration. The value range is 1-9.
+     * The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricingCycle` are both required.
+     * * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+     * * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
      */
     duration?: pulumi.Input<number>;
+    /**
+     * The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+     * * `Month`: billed on a monthly basis.
+     * * `Year`: billed on an annual basis.
+     */
+    pricingCycle?: pulumi.Input<string>;
     /**
      * Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
      * - `AutoRenewal`: Enable auto renewal.
@@ -219,9 +237,17 @@ export interface AcceleratorArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The duration. The value range is 1-9.
+     * The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricingCycle` are both required.
+     * * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+     * * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
      */
     duration: pulumi.Input<number>;
+    /**
+     * The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+     * * `Month`: billed on a monthly basis.
+     * * `Year`: billed on an annual basis.
+     */
+    pricingCycle?: pulumi.Input<string>;
     /**
      * Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
      * - `AutoRenewal`: Enable auto renewal.

@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.CloudSso.Inputs
         public Input<string>? PermissionPolicyDocument { get; set; }
 
         /// <summary>
-        /// The Policy Name of policy. The name of the resource. The name must be 1 to 32 characters in length and can contain letters, digits, and hyphens (-).
+        /// The Policy Name of policy. The name of the resource.
         /// </summary>
         [Input("permissionPolicyName", required: true)]
         public Input<string> PermissionPolicyName { get; set; } = null!;

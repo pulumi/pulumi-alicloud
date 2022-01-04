@@ -11,6 +11,7 @@ from .get_accounts import *
 from .get_audit_policies import *
 from .get_instances import *
 from .get_serverless_instances import *
+from .get_sharding_network_public_addresses import *
 from .get_zones import *
 from .instance import *
 from .serverless_instance import *

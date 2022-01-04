@@ -64,8 +64,14 @@ type Accelerator struct {
 	AutoUseCoupon pulumi.BoolPtrOutput `pulumi:"autoUseCoupon"`
 	// Descriptive information of the global acceleration instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The duration. The value range is 1-9.
+	// The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricingCycle` are both required.
+	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
 	Duration pulumi.IntOutput `pulumi:"duration"`
+	// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+	// * `Month`: billed on a monthly basis.
+	// * `Year`: billed on an annual basis.
+	PricingCycle pulumi.StringOutput `pulumi:"pricingCycle"`
 	// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
 	// - `AutoRenewal`: Enable auto renewal.
 	// - `Normal`: Disable auto renewal.
@@ -126,8 +132,14 @@ type acceleratorState struct {
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
 	// Descriptive information of the global acceleration instance.
 	Description *string `pulumi:"description"`
-	// The duration. The value range is 1-9.
+	// The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricingCycle` are both required.
+	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
 	Duration *int `pulumi:"duration"`
+	// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+	// * `Month`: billed on a monthly basis.
+	// * `Year`: billed on an annual basis.
+	PricingCycle *string `pulumi:"pricingCycle"`
 	// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
 	// - `AutoRenewal`: Enable auto renewal.
 	// - `Normal`: Disable auto renewal.
@@ -154,8 +166,14 @@ type AcceleratorState struct {
 	AutoUseCoupon pulumi.BoolPtrInput
 	// Descriptive information of the global acceleration instance.
 	Description pulumi.StringPtrInput
-	// The duration. The value range is 1-9.
+	// The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricingCycle` are both required.
+	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
 	Duration pulumi.IntPtrInput
+	// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+	// * `Month`: billed on a monthly basis.
+	// * `Year`: billed on an annual basis.
+	PricingCycle pulumi.StringPtrInput
 	// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
 	// - `AutoRenewal`: Enable auto renewal.
 	// - `Normal`: Disable auto renewal.
@@ -186,8 +204,14 @@ type acceleratorArgs struct {
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
 	// Descriptive information of the global acceleration instance.
 	Description *string `pulumi:"description"`
-	// The duration. The value range is 1-9.
+	// The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricingCycle` are both required.
+	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
 	Duration int `pulumi:"duration"`
+	// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+	// * `Month`: billed on a monthly basis.
+	// * `Year`: billed on an annual basis.
+	PricingCycle *string `pulumi:"pricingCycle"`
 	// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
 	// - `AutoRenewal`: Enable auto renewal.
 	// - `Normal`: Disable auto renewal.
@@ -213,8 +237,14 @@ type AcceleratorArgs struct {
 	AutoUseCoupon pulumi.BoolPtrInput
 	// Descriptive information of the global acceleration instance.
 	Description pulumi.StringPtrInput
-	// The duration. The value range is 1-9.
+	// The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricingCycle` are both required.
+	// * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
 	Duration pulumi.IntInput
+	// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+	// * `Month`: billed on a monthly basis.
+	// * `Year`: billed on an annual basis.
+	PricingCycle pulumi.StringPtrInput
 	// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
 	// - `AutoRenewal`: Enable auto renewal.
 	// - `Normal`: Disable auto renewal.

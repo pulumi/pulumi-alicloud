@@ -19,9 +19,12 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-testAccCenTransitRouter";
- * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {description: "terraform01"});
+ * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {
+ *     cenInstanceName: name,
+ *     description: "terraform01",
+ * });
  * const defaultTransitRouter = new alicloud.cen.TransitRouter("defaultTransitRouter", {
- *     name: name,
+ *     transitRouterName: name,
  *     cenId: defaultInstance.id,
  * });
  * ```

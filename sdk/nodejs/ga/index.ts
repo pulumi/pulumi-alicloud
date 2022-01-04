@@ -6,11 +6,16 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./accelerator";
+export * from "./acl";
+export * from "./aclAttachment";
+export * from "./additionalCertificate";
 export * from "./bandwidthPackage";
 export * from "./bandwidthPackageAttachment";
 export * from "./endpointGroup";
 export * from "./forwardingRule";
 export * from "./getAccelerators";
+export * from "./getAcls";
+export * from "./getAdditionalCertificates";
 export * from "./getBandwidthPackages";
 export * from "./getEndpointGroups";
 export * from "./getForwardingRules";
@@ -21,6 +26,9 @@ export * from "./listener";
 
 // Import resources to register:
 import { Accelerator } from "./accelerator";
+import { Acl } from "./acl";
+import { AclAttachment } from "./aclAttachment";
+import { AdditionalCertificate } from "./additionalCertificate";
 import { BandwidthPackage } from "./bandwidthPackage";
 import { BandwidthPackageAttachment } from "./bandwidthPackageAttachment";
 import { EndpointGroup } from "./endpointGroup";
@@ -34,6 +42,12 @@ const _module = {
         switch (type) {
             case "alicloud:ga/accelerator:Accelerator":
                 return new Accelerator(name, <any>undefined, { urn })
+            case "alicloud:ga/acl:Acl":
+                return new Acl(name, <any>undefined, { urn })
+            case "alicloud:ga/aclAttachment:AclAttachment":
+                return new AclAttachment(name, <any>undefined, { urn })
+            case "alicloud:ga/additionalCertificate:AdditionalCertificate":
+                return new AdditionalCertificate(name, <any>undefined, { urn })
             case "alicloud:ga/bandwidthPackage:BandwidthPackage":
                 return new BandwidthPackage(name, <any>undefined, { urn })
             case "alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment":
@@ -52,6 +66,9 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "ga/accelerator", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ga/acl", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ga/aclAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ga/additionalCertificate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/bandwidthPackage", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/bandwidthPackageAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/endpointGroup", _module)

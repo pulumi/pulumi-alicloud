@@ -243,6 +243,7 @@ type ProviderEndpoint struct {
 	Fc                  *string `pulumi:"fc"`
 	Fnf                 *string `pulumi:"fnf"`
 	Ga                  *string `pulumi:"ga"`
+	Gaplus              *string `pulumi:"gaplus"`
 	Gds                 *string `pulumi:"gds"`
 	Gpdb                *string `pulumi:"gpdb"`
 	Gwsecd              *string `pulumi:"gwsecd"`
@@ -364,6 +365,7 @@ type ProviderEndpointArgs struct {
 	Fc                  pulumi.StringPtrInput `pulumi:"fc"`
 	Fnf                 pulumi.StringPtrInput `pulumi:"fnf"`
 	Ga                  pulumi.StringPtrInput `pulumi:"ga"`
+	Gaplus              pulumi.StringPtrInput `pulumi:"gaplus"`
 	Gds                 pulumi.StringPtrInput `pulumi:"gds"`
 	Gpdb                pulumi.StringPtrInput `pulumi:"gpdb"`
 	Gwsecd              pulumi.StringPtrInput `pulumi:"gwsecd"`
@@ -684,6 +686,10 @@ func (o ProviderEndpointOutput) Fnf() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Ga() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ga }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Gaplus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Gaplus }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Gds() pulumi.StringPtrOutput {

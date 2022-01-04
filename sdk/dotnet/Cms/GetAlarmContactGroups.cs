@@ -16,6 +16,31 @@ namespace Pulumi.AliCloud.Cms
         /// This data source provides the CMS Groups of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.101.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Cms.GetAlarmContactGroups.InvokeAsync(new AliCloud.Cms.GetAlarmContactGroupsArgs
+        ///         {
+        ///             NameRegex = "tf-testacc",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAlarmContactGroupsResult> InvokeAsync(GetAlarmContactGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAlarmContactGroupsResult>("alicloud:cms/getAlarmContactGroups:getAlarmContactGroups", args ?? new GetAlarmContactGroupsArgs(), options.WithVersion());
@@ -24,6 +49,31 @@ namespace Pulumi.AliCloud.Cms
         /// This data source provides the CMS Groups of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.101.0+.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.Cms.GetAlarmContactGroups.InvokeAsync(new AliCloud.Cms.GetAlarmContactGroupsArgs
+        ///         {
+        ///             NameRegex = "tf-testacc",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAlarmContactGroupsResult> Invoke(GetAlarmContactGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetAlarmContactGroupsResult>("alicloud:cms/getAlarmContactGroups:getAlarmContactGroups", args ?? new GetAlarmContactGroupsInvokeArgs(), options.WithVersion());

@@ -2080,6 +2080,193 @@ func (o GetServerlessInstancesInstanceSecurityIpGroupArrayOutput) Index(i pulumi
 	}).(GetServerlessInstancesInstanceSecurityIpGroupOutput)
 }
 
+type GetShardingNetworkPublicAddressesAddress struct {
+	// The db instance id.
+	DbInstanceId string `pulumi:"dbInstanceId"`
+	// The remaining duration of the classic network address. Unit: `seconds`.
+	ExpiredTime string `pulumi:"expiredTime"`
+	// The IP address of the instance.
+	IpAddress string `pulumi:"ipAddress"`
+	// The endpoint of the instance.
+	NetworkAddress string `pulumi:"networkAddress"`
+	// The network type.
+	NetworkType string `pulumi:"networkType"`
+	// The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+	NodeId string `pulumi:"nodeId"`
+	// The type of the node.
+	NodeType string `pulumi:"nodeType"`
+	// The port number.
+	Port string `pulumi:"port"`
+	// The role of the node.
+	Role string `pulumi:"role"`
+	// The ID of the VPC.
+	VpcId string `pulumi:"vpcId"`
+	// The vSwitch ID of the VPC.
+	VswitchId string `pulumi:"vswitchId"`
+}
+
+// GetShardingNetworkPublicAddressesAddressInput is an input type that accepts GetShardingNetworkPublicAddressesAddressArgs and GetShardingNetworkPublicAddressesAddressOutput values.
+// You can construct a concrete instance of `GetShardingNetworkPublicAddressesAddressInput` via:
+//
+//          GetShardingNetworkPublicAddressesAddressArgs{...}
+type GetShardingNetworkPublicAddressesAddressInput interface {
+	pulumi.Input
+
+	ToGetShardingNetworkPublicAddressesAddressOutput() GetShardingNetworkPublicAddressesAddressOutput
+	ToGetShardingNetworkPublicAddressesAddressOutputWithContext(context.Context) GetShardingNetworkPublicAddressesAddressOutput
+}
+
+type GetShardingNetworkPublicAddressesAddressArgs struct {
+	// The db instance id.
+	DbInstanceId pulumi.StringInput `pulumi:"dbInstanceId"`
+	// The remaining duration of the classic network address. Unit: `seconds`.
+	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
+	// The IP address of the instance.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// The endpoint of the instance.
+	NetworkAddress pulumi.StringInput `pulumi:"networkAddress"`
+	// The network type.
+	NetworkType pulumi.StringInput `pulumi:"networkType"`
+	// The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+	NodeId pulumi.StringInput `pulumi:"nodeId"`
+	// The type of the node.
+	NodeType pulumi.StringInput `pulumi:"nodeType"`
+	// The port number.
+	Port pulumi.StringInput `pulumi:"port"`
+	// The role of the node.
+	Role pulumi.StringInput `pulumi:"role"`
+	// The ID of the VPC.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The vSwitch ID of the VPC.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+}
+
+func (GetShardingNetworkPublicAddressesAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetShardingNetworkPublicAddressesAddress)(nil)).Elem()
+}
+
+func (i GetShardingNetworkPublicAddressesAddressArgs) ToGetShardingNetworkPublicAddressesAddressOutput() GetShardingNetworkPublicAddressesAddressOutput {
+	return i.ToGetShardingNetworkPublicAddressesAddressOutputWithContext(context.Background())
+}
+
+func (i GetShardingNetworkPublicAddressesAddressArgs) ToGetShardingNetworkPublicAddressesAddressOutputWithContext(ctx context.Context) GetShardingNetworkPublicAddressesAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetShardingNetworkPublicAddressesAddressOutput)
+}
+
+// GetShardingNetworkPublicAddressesAddressArrayInput is an input type that accepts GetShardingNetworkPublicAddressesAddressArray and GetShardingNetworkPublicAddressesAddressArrayOutput values.
+// You can construct a concrete instance of `GetShardingNetworkPublicAddressesAddressArrayInput` via:
+//
+//          GetShardingNetworkPublicAddressesAddressArray{ GetShardingNetworkPublicAddressesAddressArgs{...} }
+type GetShardingNetworkPublicAddressesAddressArrayInput interface {
+	pulumi.Input
+
+	ToGetShardingNetworkPublicAddressesAddressArrayOutput() GetShardingNetworkPublicAddressesAddressArrayOutput
+	ToGetShardingNetworkPublicAddressesAddressArrayOutputWithContext(context.Context) GetShardingNetworkPublicAddressesAddressArrayOutput
+}
+
+type GetShardingNetworkPublicAddressesAddressArray []GetShardingNetworkPublicAddressesAddressInput
+
+func (GetShardingNetworkPublicAddressesAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetShardingNetworkPublicAddressesAddress)(nil)).Elem()
+}
+
+func (i GetShardingNetworkPublicAddressesAddressArray) ToGetShardingNetworkPublicAddressesAddressArrayOutput() GetShardingNetworkPublicAddressesAddressArrayOutput {
+	return i.ToGetShardingNetworkPublicAddressesAddressArrayOutputWithContext(context.Background())
+}
+
+func (i GetShardingNetworkPublicAddressesAddressArray) ToGetShardingNetworkPublicAddressesAddressArrayOutputWithContext(ctx context.Context) GetShardingNetworkPublicAddressesAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetShardingNetworkPublicAddressesAddressArrayOutput)
+}
+
+type GetShardingNetworkPublicAddressesAddressOutput struct{ *pulumi.OutputState }
+
+func (GetShardingNetworkPublicAddressesAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetShardingNetworkPublicAddressesAddress)(nil)).Elem()
+}
+
+func (o GetShardingNetworkPublicAddressesAddressOutput) ToGetShardingNetworkPublicAddressesAddressOutput() GetShardingNetworkPublicAddressesAddressOutput {
+	return o
+}
+
+func (o GetShardingNetworkPublicAddressesAddressOutput) ToGetShardingNetworkPublicAddressesAddressOutputWithContext(ctx context.Context) GetShardingNetworkPublicAddressesAddressOutput {
+	return o
+}
+
+// The db instance id.
+func (o GetShardingNetworkPublicAddressesAddressOutput) DbInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShardingNetworkPublicAddressesAddress) string { return v.DbInstanceId }).(pulumi.StringOutput)
+}
+
+// The remaining duration of the classic network address. Unit: `seconds`.
+func (o GetShardingNetworkPublicAddressesAddressOutput) ExpiredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShardingNetworkPublicAddressesAddress) string { return v.ExpiredTime }).(pulumi.StringOutput)
+}
+
+// The IP address of the instance.
+func (o GetShardingNetworkPublicAddressesAddressOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShardingNetworkPublicAddressesAddress) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The endpoint of the instance.
+func (o GetShardingNetworkPublicAddressesAddressOutput) NetworkAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShardingNetworkPublicAddressesAddress) string { return v.NetworkAddress }).(pulumi.StringOutput)
+}
+
+// The network type.
+func (o GetShardingNetworkPublicAddressesAddressOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShardingNetworkPublicAddressesAddress) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+func (o GetShardingNetworkPublicAddressesAddressOutput) NodeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShardingNetworkPublicAddressesAddress) string { return v.NodeId }).(pulumi.StringOutput)
+}
+
+// The type of the node.
+func (o GetShardingNetworkPublicAddressesAddressOutput) NodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShardingNetworkPublicAddressesAddress) string { return v.NodeType }).(pulumi.StringOutput)
+}
+
+// The port number.
+func (o GetShardingNetworkPublicAddressesAddressOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShardingNetworkPublicAddressesAddress) string { return v.Port }).(pulumi.StringOutput)
+}
+
+// The role of the node.
+func (o GetShardingNetworkPublicAddressesAddressOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShardingNetworkPublicAddressesAddress) string { return v.Role }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC.
+func (o GetShardingNetworkPublicAddressesAddressOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShardingNetworkPublicAddressesAddress) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The vSwitch ID of the VPC.
+func (o GetShardingNetworkPublicAddressesAddressOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShardingNetworkPublicAddressesAddress) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+type GetShardingNetworkPublicAddressesAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetShardingNetworkPublicAddressesAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetShardingNetworkPublicAddressesAddress)(nil)).Elem()
+}
+
+func (o GetShardingNetworkPublicAddressesAddressArrayOutput) ToGetShardingNetworkPublicAddressesAddressArrayOutput() GetShardingNetworkPublicAddressesAddressArrayOutput {
+	return o
+}
+
+func (o GetShardingNetworkPublicAddressesAddressArrayOutput) ToGetShardingNetworkPublicAddressesAddressArrayOutputWithContext(ctx context.Context) GetShardingNetworkPublicAddressesAddressArrayOutput {
+	return o
+}
+
+func (o GetShardingNetworkPublicAddressesAddressArrayOutput) Index(i pulumi.IntInput) GetShardingNetworkPublicAddressesAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetShardingNetworkPublicAddressesAddress {
+		return vs[0].([]GetShardingNetworkPublicAddressesAddress)[vs[1].(int)]
+	}).(GetShardingNetworkPublicAddressesAddressOutput)
+}
+
 type GetZonesZone struct {
 	// ID of the zone.
 	Id string `pulumi:"id"`
@@ -2213,6 +2400,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessInstancesInstanceArrayInput)(nil)).Elem(), GetServerlessInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessInstancesInstanceSecurityIpGroupInput)(nil)).Elem(), GetServerlessInstancesInstanceSecurityIpGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessInstancesInstanceSecurityIpGroupArrayInput)(nil)).Elem(), GetServerlessInstancesInstanceSecurityIpGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetShardingNetworkPublicAddressesAddressInput)(nil)).Elem(), GetShardingNetworkPublicAddressesAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetShardingNetworkPublicAddressesAddressArrayInput)(nil)).Elem(), GetShardingNetworkPublicAddressesAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(InstanceReplicaSetOutput{})
@@ -2241,6 +2430,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServerlessInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetServerlessInstancesInstanceSecurityIpGroupOutput{})
 	pulumi.RegisterOutputType(GetServerlessInstancesInstanceSecurityIpGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetShardingNetworkPublicAddressesAddressOutput{})
+	pulumi.RegisterOutputType(GetShardingNetworkPublicAddressesAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 }

@@ -19,10 +19,13 @@ class AcceleratorArgs:
                  auto_renew_duration: Optional[pulumi.Input[int]] = None,
                  auto_use_coupon: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 pricing_cycle: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Accelerator resource.
-        :param pulumi.Input[int] duration: The duration. The value range is 1-9.
+        :param pulumi.Input[int] duration: The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
+               * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+               * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
         :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance, value:
                `1`: Small 1.
                `2`: Small 2.
@@ -34,6 +37,9 @@ class AcceleratorArgs:
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
+        :param pulumi.Input[str] pricing_cycle: The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+               * `Month`: billed on a monthly basis.
+               * `Year`: billed on an annual basis.
         :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
                - `AutoRenewal`: Enable auto renewal.
                - `Normal`: Disable auto renewal.
@@ -49,6 +55,8 @@ class AcceleratorArgs:
             pulumi.set(__self__, "auto_use_coupon", auto_use_coupon)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if pricing_cycle is not None:
+            pulumi.set(__self__, "pricing_cycle", pricing_cycle)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
 
@@ -56,7 +64,9 @@ class AcceleratorArgs:
     @pulumi.getter
     def duration(self) -> pulumi.Input[int]:
         """
-        The duration. The value range is 1-9.
+        The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
+        * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+        * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
         """
         return pulumi.get(self, "duration")
 
@@ -131,6 +141,20 @@ class AcceleratorArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="pricingCycle")
+    def pricing_cycle(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+        * `Month`: billed on a monthly basis.
+        * `Year`: billed on an annual basis.
+        """
+        return pulumi.get(self, "pricing_cycle")
+
+    @pricing_cycle.setter
+    def pricing_cycle(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pricing_cycle", value)
+
+    @property
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -154,6 +178,7 @@ class _AcceleratorState:
                  auto_use_coupon: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
+                 pricing_cycle: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
@@ -163,7 +188,12 @@ class _AcceleratorState:
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
-        :param pulumi.Input[int] duration: The duration. The value range is 1-9.
+        :param pulumi.Input[int] duration: The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
+               * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+               * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
+        :param pulumi.Input[str] pricing_cycle: The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+               * `Month`: billed on a monthly basis.
+               * `Year`: billed on an annual basis.
         :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
                - `AutoRenewal`: Enable auto renewal.
                - `Normal`: Disable auto renewal.
@@ -187,6 +217,8 @@ class _AcceleratorState:
             pulumi.set(__self__, "description", description)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
+        if pricing_cycle is not None:
+            pulumi.set(__self__, "pricing_cycle", pricing_cycle)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
         if spec is not None:
@@ -246,13 +278,29 @@ class _AcceleratorState:
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[int]]:
         """
-        The duration. The value range is 1-9.
+        The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
+        * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+        * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
         """
         return pulumi.get(self, "duration")
 
     @duration.setter
     def duration(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter(name="pricingCycle")
+    def pricing_cycle(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+        * `Month`: billed on a monthly basis.
+        * `Year`: billed on an annual basis.
+        """
+        return pulumi.get(self, "pricing_cycle")
+
+    @pricing_cycle.setter
+    def pricing_cycle(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pricing_cycle", value)
 
     @property
     @pulumi.getter(name="renewalStatus")
@@ -310,6 +358,7 @@ class Accelerator(pulumi.CustomResource):
                  auto_use_coupon: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
+                 pricing_cycle: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -350,7 +399,12 @@ class Accelerator(pulumi.CustomResource):
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
-        :param pulumi.Input[int] duration: The duration. The value range is 1-9.
+        :param pulumi.Input[int] duration: The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
+               * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+               * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
+        :param pulumi.Input[str] pricing_cycle: The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+               * `Month`: billed on a monthly basis.
+               * `Year`: billed on an annual basis.
         :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
                - `AutoRenewal`: Enable auto renewal.
                - `Normal`: Disable auto renewal.
@@ -420,6 +474,7 @@ class Accelerator(pulumi.CustomResource):
                  auto_use_coupon: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
+                 pricing_cycle: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -441,6 +496,7 @@ class Accelerator(pulumi.CustomResource):
             if duration is None and not opts.urn:
                 raise TypeError("Missing required property 'duration'")
             __props__.__dict__["duration"] = duration
+            __props__.__dict__["pricing_cycle"] = pricing_cycle
             __props__.__dict__["renewal_status"] = renewal_status
             if spec is None and not opts.urn:
                 raise TypeError("Missing required property 'spec'")
@@ -461,6 +517,7 @@ class Accelerator(pulumi.CustomResource):
             auto_use_coupon: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             duration: Optional[pulumi.Input[int]] = None,
+            pricing_cycle: Optional[pulumi.Input[str]] = None,
             renewal_status: Optional[pulumi.Input[str]] = None,
             spec: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'Accelerator':
@@ -475,7 +532,12 @@ class Accelerator(pulumi.CustomResource):
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
-        :param pulumi.Input[int] duration: The duration. The value range is 1-9.
+        :param pulumi.Input[int] duration: The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
+               * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+               * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
+        :param pulumi.Input[str] pricing_cycle: The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+               * `Month`: billed on a monthly basis.
+               * `Year`: billed on an annual basis.
         :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
                - `AutoRenewal`: Enable auto renewal.
                - `Normal`: Disable auto renewal.
@@ -498,6 +560,7 @@ class Accelerator(pulumi.CustomResource):
         __props__.__dict__["auto_use_coupon"] = auto_use_coupon
         __props__.__dict__["description"] = description
         __props__.__dict__["duration"] = duration
+        __props__.__dict__["pricing_cycle"] = pricing_cycle
         __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["spec"] = spec
         __props__.__dict__["status"] = status
@@ -539,9 +602,21 @@ class Accelerator(pulumi.CustomResource):
     @pulumi.getter
     def duration(self) -> pulumi.Output[int]:
         """
-        The duration. The value range is 1-9.
+        The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
+        * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+        * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
         """
         return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="pricingCycle")
+    def pricing_cycle(self) -> pulumi.Output[str]:
+        """
+        The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+        * `Month`: billed on a monthly basis.
+        * `Year`: billed on an annual basis.
+        """
+        return pulumi.get(self, "pricing_cycle")
 
     @property
     @pulumi.getter(name="renewalStatus")

@@ -444,6 +444,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cs_edge_kubernetes":        {Tok: resource(csMod, "EdgeKubernetes")},
 			"alicloud_cs_kubernetes_permissions": {Tok: resource(csMod, "KubernetesPermission")},
 			"alicloud_cs_autoscaling_config":     {Tok: resource(csMod, "AutoscalingConfig")},
+			"alicloud_cs_kubernetes_addon":       {Tok: resource(csMod, "KubernetesAddon")},
 
 			// DataHub
 			"alicloud_datahub_project":      {Tok: resource(datahubMod, "Project")},
@@ -677,6 +678,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ga_ip_set":                       {Tok: resource(gaMod, "IpSet")},
 			"alicloud_ga_bandwidth_package_attachment": {Tok: resource(gaMod, "BandwidthPackageAttachment")},
 			"alicloud_ga_forwarding_rule":              {Tok: resource(gaMod, "ForwardingRule")},
+			"alicloud_ga_acl":                          {Tok: resource(gaMod, "Acl")},
+			"alicloud_ga_acl_attachment":               {Tok: resource(gaMod, "AclAttachment")},
+			"alicloud_ga_additional_certificate":       {Tok: resource(gaMod, "AdditionalCertificate")},
 
 			// Gpdb
 			"alicloud_gpdb_connection":       {Tok: resource(gpdbMod, "Connection")},
@@ -1280,6 +1284,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cr_ee_sync_rules":                  {Tok: dataSource(csMod, "getRegistryEnterpriseSyncRules")},
 			"alicloud_ack_service":                       {Tok: dataSource(csMod, "getAckService")},
 			"alicloud_cs_kubernetes_permissions":         {Tok: dataSource(csMod, "getKubernetesPermission")},
+			"alicloud_cs_kubernetes_addons":              {Tok: dataSource(csMod, "getKubernetesAddons")},
 
 			// Database Filesystem
 			"alicloud_dbfs_instances": {Tok: dataSource(databaseFilesystemMod, "getInstances")},
@@ -1460,12 +1465,14 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_fnf_executions": {Tok: dataSource(fnfMod, "getExecutions")},
 
 			// Ga
-			"alicloud_ga_listeners":          {Tok: dataSource(gaMod, "getListeners")},
-			"alicloud_ga_accelerators":       {Tok: dataSource(gaMod, "getAccelerators")},
-			"alicloud_ga_bandwidth_packages": {Tok: dataSource(gaMod, "getBandwidthPackages")},
-			"alicloud_ga_endpoint_groups":    {Tok: dataSource(gaMod, "getEndpointGroups")},
-			"alicloud_ga_ip_sets":            {Tok: dataSource(gaMod, "getIpSets")},
-			"alicloud_ga_forwarding_rules":   {Tok: dataSource(gaMod, "getForwardingRules")},
+			"alicloud_ga_listeners":               {Tok: dataSource(gaMod, "getListeners")},
+			"alicloud_ga_accelerators":            {Tok: dataSource(gaMod, "getAccelerators")},
+			"alicloud_ga_bandwidth_packages":      {Tok: dataSource(gaMod, "getBandwidthPackages")},
+			"alicloud_ga_endpoint_groups":         {Tok: dataSource(gaMod, "getEndpointGroups")},
+			"alicloud_ga_ip_sets":                 {Tok: dataSource(gaMod, "getIpSets")},
+			"alicloud_ga_forwarding_rules":        {Tok: dataSource(gaMod, "getForwardingRules")},
+			"alicloud_ga_additional_certificates": {Tok: dataSource(gaMod, "getAdditionalCertificates")},
+			"alicloud_ga_acls":                    {Tok: dataSource(gaMod, "getAcls")},
 
 			// Gpdb
 			"alicloud_gpdb_instances": {Tok: dataSource(gpdbMod, "getInstances")},
@@ -1546,12 +1553,12 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_mns_service":             {Tok: dataSource(mnsMod, "getService")},
 
 			// Mongo
-			"alicloud_mongodb_instances":                  {Tok: dataSource(mongoDbMod, "getInstances")},
-			"alicloud_mongodb_zones":                      {Tok: dataSource(mongoDbMod, "getZones")},
-			"alicloud_mongodb_serverless_instances":       {Tok: dataSource(mongoDbMod, "getServerlessInstances")},
-			"alicloud_mongodb_accounts":                   {Tok: dataSource(mongoDbMod, "getAccounts")},
-			"alicloud_mongodb_audit_policies":             {Tok: dataSource(mongoDbMod, "getAuditPolicies")},
-			"alicloud_mongodb_sharding_network_addresses": {Tok: dataSource(mongoDbMod, "getShardingNetworkAddresses")},
+			"alicloud_mongodb_instances":                         {Tok: dataSource(mongoDbMod, "getInstances")},
+			"alicloud_mongodb_zones":                             {Tok: dataSource(mongoDbMod, "getZones")},
+			"alicloud_mongodb_serverless_instances":              {Tok: dataSource(mongoDbMod, "getServerlessInstances")},
+			"alicloud_mongodb_accounts":                          {Tok: dataSource(mongoDbMod, "getAccounts")},
+			"alicloud_mongodb_audit_policies":                    {Tok: dataSource(mongoDbMod, "getAuditPolicies")},
+			"alicloud_mongodb_sharding_network_public_addresses": {Tok: dataSource(mongoDbMod, "getShardingNetworkPublicAddresses")},
 
 			// Mse
 			"alicloud_mse_clusters": {Tok: dataSource(mseMod, "getClusters")},

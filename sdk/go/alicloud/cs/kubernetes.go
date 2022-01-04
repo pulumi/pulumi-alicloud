@@ -21,7 +21,7 @@ import (
 type Kubernetes struct {
 	pulumi.CustomResourceState
 
-	Addons KubernetesAddonArrayOutput `pulumi:"addons"`
+	Addons KubernetesAddonTypeArrayOutput `pulumi:"addons"`
 	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well.
 	ApiAudiences pulumi.StringArrayOutput `pulumi:"apiAudiences"`
 	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
@@ -224,7 +224,7 @@ func GetKubernetes(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Kubernetes resources.
 type kubernetesState struct {
-	Addons []KubernetesAddon `pulumi:"addons"`
+	Addons []KubernetesAddonType `pulumi:"addons"`
 	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well.
 	ApiAudiences []string `pulumi:"apiAudiences"`
 	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
@@ -384,7 +384,7 @@ type kubernetesState struct {
 }
 
 type KubernetesState struct {
-	Addons KubernetesAddonArrayInput
+	Addons KubernetesAddonTypeArrayInput
 	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well.
 	ApiAudiences pulumi.StringArrayInput
 	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
@@ -548,7 +548,7 @@ func (KubernetesState) ElementType() reflect.Type {
 }
 
 type kubernetesArgs struct {
-	Addons []KubernetesAddon `pulumi:"addons"`
+	Addons []KubernetesAddonType `pulumi:"addons"`
 	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well.
 	ApiAudiences []string `pulumi:"apiAudiences"`
 	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
@@ -690,7 +690,7 @@ type kubernetesArgs struct {
 
 // The set of arguments for constructing a Kubernetes resource.
 type KubernetesArgs struct {
-	Addons KubernetesAddonArrayInput
+	Addons KubernetesAddonTypeArrayInput
 	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well.
 	ApiAudiences pulumi.StringArrayInput
 	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.

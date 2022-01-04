@@ -267,68 +267,6 @@ class ForwardingRule(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.120.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_accelerator = alicloud.ga.Accelerator("exampleAccelerator",
-            duration=1,
-            auto_use_coupon=True,
-            spec="1")
-        de_bandwidth_package = alicloud.ga.BandwidthPackage("deBandwidthPackage",
-            bandwidth=100,
-            type="Basic",
-            bandwidth_type="Basic",
-            payment_type="PayAsYouGo",
-            billing_type="PayBy95",
-            ratio=30)
-        de_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("deBandwidthPackageAttachment",
-            accelerator_id=example_accelerator.id,
-            bandwidth_package_id=de_bandwidth_package.id)
-        example_listener = alicloud.ga.Listener("exampleListener",
-            accelerator_id=example_accelerator.id,
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=70,
-                to_port=70,
-            )],
-            protocol="HTTP",
-            opts=pulumi.ResourceOptions(depends_on=[de_bandwidth_package_attachment]))
-        example_eip_address = alicloud.ecs.EipAddress("exampleEipAddress",
-            bandwidth="10",
-            internet_charge_type="PayByBandwidth")
-        example_endpoint_group = alicloud.ga.EndpointGroup("exampleEndpointGroup",
-            accelerator_id=example_accelerator.id,
-            endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
-                endpoint=example_eip_address.ip_address,
-                type="PublicIp",
-                weight=20,
-            )],
-            endpoint_group_region="cn-hangzhou",
-            listener_id=example_listener.id)
-        example_forwarding_rule = alicloud.ga.ForwardingRule("exampleForwardingRule",
-            accelerator_id=example_accelerator.id,
-            listener_id=example_listener.id,
-            rule_conditions=[alicloud.ga.ForwardingRuleRuleConditionArgs(
-                rule_condition_type="Path",
-                path_config=alicloud.ga.ForwardingRuleRuleConditionPathConfigArgs(
-                    values=["/test"],
-                ),
-            )],
-            rule_actions=[alicloud.ga.ForwardingRuleRuleActionArgs(
-                order=30,
-                rule_action_type="ForwardGroup",
-                forward_group_config=alicloud.ga.ForwardingRuleRuleActionForwardGroupConfigArgs(
-                    server_group_tuples=[alicloud.ga.ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs(
-                        endpoint_group_id=example_endpoint_group.id,
-                    )],
-                ),
-            )])
-        ```
-
         ## Import
 
         Ga Forwarding Rule can be imported using the id, e.g.
@@ -358,68 +296,6 @@ class ForwardingRule(pulumi.CustomResource):
         For information about Global Accelerator (GA) Forwarding Rule and how to use it, see [What is Forwarding Rule](https://www.alibabacloud.com/help/zh/doc-detail/205815.htm).
 
         > **NOTE:** Available in v1.120.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_accelerator = alicloud.ga.Accelerator("exampleAccelerator",
-            duration=1,
-            auto_use_coupon=True,
-            spec="1")
-        de_bandwidth_package = alicloud.ga.BandwidthPackage("deBandwidthPackage",
-            bandwidth=100,
-            type="Basic",
-            bandwidth_type="Basic",
-            payment_type="PayAsYouGo",
-            billing_type="PayBy95",
-            ratio=30)
-        de_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("deBandwidthPackageAttachment",
-            accelerator_id=example_accelerator.id,
-            bandwidth_package_id=de_bandwidth_package.id)
-        example_listener = alicloud.ga.Listener("exampleListener",
-            accelerator_id=example_accelerator.id,
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=70,
-                to_port=70,
-            )],
-            protocol="HTTP",
-            opts=pulumi.ResourceOptions(depends_on=[de_bandwidth_package_attachment]))
-        example_eip_address = alicloud.ecs.EipAddress("exampleEipAddress",
-            bandwidth="10",
-            internet_charge_type="PayByBandwidth")
-        example_endpoint_group = alicloud.ga.EndpointGroup("exampleEndpointGroup",
-            accelerator_id=example_accelerator.id,
-            endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
-                endpoint=example_eip_address.ip_address,
-                type="PublicIp",
-                weight=20,
-            )],
-            endpoint_group_region="cn-hangzhou",
-            listener_id=example_listener.id)
-        example_forwarding_rule = alicloud.ga.ForwardingRule("exampleForwardingRule",
-            accelerator_id=example_accelerator.id,
-            listener_id=example_listener.id,
-            rule_conditions=[alicloud.ga.ForwardingRuleRuleConditionArgs(
-                rule_condition_type="Path",
-                path_config=alicloud.ga.ForwardingRuleRuleConditionPathConfigArgs(
-                    values=["/test"],
-                ),
-            )],
-            rule_actions=[alicloud.ga.ForwardingRuleRuleActionArgs(
-                order=30,
-                rule_action_type="ForwardGroup",
-                forward_group_config=alicloud.ga.ForwardingRuleRuleActionForwardGroupConfigArgs(
-                    server_group_tuples=[alicloud.ga.ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs(
-                        endpoint_group_id=example_endpoint_group.id,
-                    )],
-                ),
-            )])
-        ```
 
         ## Import
 

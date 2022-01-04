@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = pulumi.output(alicloud.CmsAlarmContactGroup({
+ * const example = pulumi.output(alicloud.cms.getAlarmContactGroups({
  *     nameRegex: "tf-testacc",
  * }));
  * ```

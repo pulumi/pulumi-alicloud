@@ -212,6 +212,26 @@ class TransitRouter(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.126.0+
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testAccCenTransitRouter"
+        default_instance = alicloud.cen.Instance("defaultInstance",
+            cen_instance_name=name,
+            description="terraform01")
+        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter",
+            transit_router_name=name,
+            cen_id=default_instance.id)
+        ```
+
         ## Import
 
         CEN instance can be imported using the id, e.g.
@@ -237,6 +257,26 @@ class TransitRouter(pulumi.CustomResource):
         Provides a CEN transit router resource that associate the transitRouter with the CEN instance.[What is Cen Transit Router](https://help.aliyun.com/document_detail/261169.html)
 
         > **NOTE:** Available in 1.126.0+
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testAccCenTransitRouter"
+        default_instance = alicloud.cen.Instance("defaultInstance",
+            cen_instance_name=name,
+            description="terraform01")
+        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter",
+            transit_router_name=name,
+            cen_id=default_instance.id)
+        ```
 
         ## Import
 

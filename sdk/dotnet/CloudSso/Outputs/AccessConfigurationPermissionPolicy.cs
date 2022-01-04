@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.CloudSso.Outputs
         /// </summary>
         public readonly string? PermissionPolicyDocument;
         /// <summary>
-        /// The Policy Name of policy. The name of the resource. The name must be 1 to 32 characters in length and can contain letters, digits, and hyphens (-).
+        /// The Policy Name of policy. The name of the resource.
         /// </summary>
         public readonly string PermissionPolicyName;
         /// <summary>

@@ -5989,7 +5989,7 @@ export namespace cloudsso {
          */
         permissionPolicyDocument?: string;
         /**
-         * The Policy Name of policy. The name of the resource. The name must be 1 to 32 characters in length and can contain letters, digits, and hyphens (-).
+         * The Policy Name of policy. The name of the resource.
          */
         permissionPolicyName: string;
         /**
@@ -7700,6 +7700,7 @@ export namespace config {
         fc?: string;
         fnf?: string;
         ga?: string;
+        gaplus?: string;
         gds?: string;
         gpdb?: string;
         gwsecd?: string;
@@ -8103,6 +8104,25 @@ export namespace cs {
          * The private IP address of node.
          */
         privateIp: string;
+    }
+
+    export interface GetKubernetesAddonsAddon {
+        /**
+         * The current version of addon, if this field is an empty string, it means that the addon is not installed.
+         */
+        currentVersion: string;
+        /**
+         * The name of addon.
+         */
+        name: string;
+        /**
+         * The next version of this addon can be upgraded to.
+         */
+        nextVersion: string;
+        /**
+         * Whether the addon is a system addon.
+         */
+        required: boolean;
     }
 
     export interface GetKubernetesClustersCluster {
@@ -17512,6 +17532,17 @@ export namespace fnf {
 }
 
 export namespace ga {
+    export interface AclAclEntry {
+        /**
+         * The IP entry that you want to add to the ACL.
+         */
+        entry?: string;
+        /**
+         * The description of the IP entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
+         */
+        entryDescription?: string;
+    }
+
     export interface EndpointGroupEndpointConfiguration {
         /**
          * Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
@@ -17683,6 +17714,67 @@ export namespace ga {
          * Instance ID of the cross-domain acceleration package.
          */
         instanceId: string;
+    }
+
+    export interface GetAclsAcl {
+        /**
+         * The entries of the Acl.
+         */
+        aclEntries: outputs.ga.GetAclsAclAclEntry[];
+        /**
+         * The  ID of the Acl.
+         */
+        aclId: string;
+        /**
+         * The name of the acl.
+         */
+        aclName: string;
+        /**
+         * The address ip version.
+         */
+        addressIpVersion: string;
+        /**
+         * The ID of the Acl. Its value is same as `aclId`.
+         */
+        id: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+    }
+
+    export interface GetAclsAclAclEntry {
+        /**
+         * The IP entry that you want to add to the ACL.
+         */
+        entry: string;
+        /**
+         * The description of the IP entry.
+         */
+        entryDescription: string;
+    }
+
+    export interface GetAdditionalCertificatesCertificate {
+        /**
+         * The ID of the GA instance.
+         */
+        acceleratorId: string;
+        /**
+         * The Certificate ID.
+         */
+        certificateId: string;
+        /**
+         * The domain name specified by the certificate.
+         */
+        domain: string;
+        /**
+         * The ID of the Additional Certificate. The value formats as `<accelerator_id>:<listener_id>:<domain>`.
+         */
+        id: string;
+        /**
+         * The ID of the listener. Only HTTPS listeners support this parameter.
+         */
+        listenerId: string;
     }
 
     export interface GetBandwidthPackagesPackage {
@@ -18016,6 +18108,7 @@ export namespace ga {
          */
         toPort: number;
     }
+
 }
 
 export namespace gpdb {
@@ -20920,6 +21013,53 @@ export namespace mongodb {
          * The IP addresses in the whitelist.
          */
         securityIpList: string;
+    }
+
+    export interface GetShardingNetworkPublicAddressesAddress {
+        /**
+         * The db instance id.
+         */
+        dbInstanceId: string;
+        /**
+         * The remaining duration of the classic network address. Unit: `seconds`.
+         */
+        expiredTime: string;
+        /**
+         * The IP address of the instance.
+         */
+        ipAddress: string;
+        /**
+         * The endpoint of the instance.
+         */
+        networkAddress: string;
+        /**
+         * The network type.
+         */
+        networkType: string;
+        /**
+         * The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+         */
+        nodeId: string;
+        /**
+         * The type of the node.
+         */
+        nodeType: string;
+        /**
+         * The port number.
+         */
+        port: string;
+        /**
+         * The role of the node.
+         */
+        role: string;
+        /**
+         * The ID of the VPC.
+         */
+        vpcId: string;
+        /**
+         * The vSwitch ID of the VPC.
+         */
+        vswitchId: string;
     }
 
     export interface GetZonesZone {

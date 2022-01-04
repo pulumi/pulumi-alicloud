@@ -14,6 +14,35 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// &gt; **NOTE:** Available in 1.126.0+
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "tf-testAccCenTransitRouter";
+    ///         var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new AliCloud.Cen.InstanceArgs
+    ///         {
+    ///             CenInstanceName = name,
+    ///             Description = "terraform01",
+    ///         });
+    ///         var defaultTransitRouter = new AliCloud.Cen.TransitRouter("defaultTransitRouter", new AliCloud.Cen.TransitRouterArgs
+    ///         {
+    ///             TransitRouterName = name,
+    ///             CenId = defaultInstance.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// CEN instance can be imported using the id, e.g.
