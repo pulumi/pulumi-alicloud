@@ -108,7 +108,8 @@ export interface GetInstanceTypesArgs {
      */
     spotStrategy?: string;
     /**
-     * Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`. Default to `cloudEfficiency`.
+     * Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`. 
+     * **NOTE**: Its default value `cloudEfficiency` has been removed from the version v1.150.0.
      */
     systemDiskCategory?: string;
 }
@@ -211,7 +212,8 @@ export interface GetInstanceTypesOutputArgs {
      */
     spotStrategy?: pulumi.Input<string>;
     /**
-     * Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`. Default to `cloudEfficiency`.
+     * Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`. 
+     * **NOTE**: Its default value `cloudEfficiency` has been removed from the version v1.150.0.
      */
     systemDiskCategory?: pulumi.Input<string>;
 }

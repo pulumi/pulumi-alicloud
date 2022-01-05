@@ -22,14 +22,14 @@ class TopicSubscriptionArgs:
         """
         The set of arguments for constructing a TopicSubscription resource.
         :param pulumi.Input[str] endpoint: The endpoint has three format. Available values format:
-               - HTTP Format: http://xxx.com/xxx
-               - Queue Format: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-               - Email Format: mail:directmail:{MailAddress}
+               - `HTTP Format`: http://xxx.com/xxx
+               - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
+               - `Email Format`: mail:directmail:{MailAddress}
         :param pulumi.Input[str] topic_name: The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
         :param pulumi.Input[str] filter_tag: The length should be shorter than 16.
         :param pulumi.Input[str] name: Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
-        :param pulumi.Input[str] notify_content_format: The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
-        :param pulumi.Input[str] notify_strategy: The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
+        :param pulumi.Input[str] notify_content_format: The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: `SIMPLIFIED`, `XML` and `JSON`. Default to `SIMPLIFIED`.
+        :param pulumi.Input[str] notify_strategy: The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
         """
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "topic_name", topic_name)
@@ -47,9 +47,9 @@ class TopicSubscriptionArgs:
     def endpoint(self) -> pulumi.Input[str]:
         """
         The endpoint has three format. Available values format:
-        - HTTP Format: http://xxx.com/xxx
-        - Queue Format: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-        - Email Format: mail:directmail:{MailAddress}
+        - `HTTP Format`: http://xxx.com/xxx
+        - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
+        - `Email Format`: mail:directmail:{MailAddress}
         """
         return pulumi.get(self, "endpoint")
 
@@ -97,7 +97,7 @@ class TopicSubscriptionArgs:
     @pulumi.getter(name="notifyContentFormat")
     def notify_content_format(self) -> Optional[pulumi.Input[str]]:
         """
-        The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
+        The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: `SIMPLIFIED`, `XML` and `JSON`. Default to `SIMPLIFIED`.
         """
         return pulumi.get(self, "notify_content_format")
 
@@ -109,7 +109,7 @@ class TopicSubscriptionArgs:
     @pulumi.getter(name="notifyStrategy")
     def notify_strategy(self) -> Optional[pulumi.Input[str]]:
         """
-        The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
+        The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
         """
         return pulumi.get(self, "notify_strategy")
 
@@ -130,13 +130,13 @@ class _TopicSubscriptionState:
         """
         Input properties used for looking up and filtering TopicSubscription resources.
         :param pulumi.Input[str] endpoint: The endpoint has three format. Available values format:
-               - HTTP Format: http://xxx.com/xxx
-               - Queue Format: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-               - Email Format: mail:directmail:{MailAddress}
+               - `HTTP Format`: http://xxx.com/xxx
+               - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
+               - `Email Format`: mail:directmail:{MailAddress}
         :param pulumi.Input[str] filter_tag: The length should be shorter than 16.
         :param pulumi.Input[str] name: Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
-        :param pulumi.Input[str] notify_content_format: The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
-        :param pulumi.Input[str] notify_strategy: The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
+        :param pulumi.Input[str] notify_content_format: The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: `SIMPLIFIED`, `XML` and `JSON`. Default to `SIMPLIFIED`.
+        :param pulumi.Input[str] notify_strategy: The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
         :param pulumi.Input[str] topic_name: The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
         """
         if endpoint is not None:
@@ -157,9 +157,9 @@ class _TopicSubscriptionState:
     def endpoint(self) -> Optional[pulumi.Input[str]]:
         """
         The endpoint has three format. Available values format:
-        - HTTP Format: http://xxx.com/xxx
-        - Queue Format: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-        - Email Format: mail:directmail:{MailAddress}
+        - `HTTP Format`: http://xxx.com/xxx
+        - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
+        - `Email Format`: mail:directmail:{MailAddress}
         """
         return pulumi.get(self, "endpoint")
 
@@ -195,7 +195,7 @@ class _TopicSubscriptionState:
     @pulumi.getter(name="notifyContentFormat")
     def notify_content_format(self) -> Optional[pulumi.Input[str]]:
         """
-        The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
+        The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: `SIMPLIFIED`, `XML` and `JSON`. Default to `SIMPLIFIED`.
         """
         return pulumi.get(self, "notify_content_format")
 
@@ -207,7 +207,7 @@ class _TopicSubscriptionState:
     @pulumi.getter(name="notifyStrategy")
     def notify_strategy(self) -> Optional[pulumi.Input[str]]:
         """
-        The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
+        The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
         """
         return pulumi.get(self, "notify_strategy")
 
@@ -252,13 +252,13 @@ class TopicSubscription(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] endpoint: The endpoint has three format. Available values format:
-               - HTTP Format: http://xxx.com/xxx
-               - Queue Format: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-               - Email Format: mail:directmail:{MailAddress}
+               - `HTTP Format`: http://xxx.com/xxx
+               - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
+               - `Email Format`: mail:directmail:{MailAddress}
         :param pulumi.Input[str] filter_tag: The length should be shorter than 16.
         :param pulumi.Input[str] name: Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
-        :param pulumi.Input[str] notify_content_format: The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
-        :param pulumi.Input[str] notify_strategy: The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
+        :param pulumi.Input[str] notify_content_format: The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: `SIMPLIFIED`, `XML` and `JSON`. Default to `SIMPLIFIED`.
+        :param pulumi.Input[str] notify_strategy: The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
         :param pulumi.Input[str] topic_name: The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
         """
         ...
@@ -343,13 +343,13 @@ class TopicSubscription(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] endpoint: The endpoint has three format. Available values format:
-               - HTTP Format: http://xxx.com/xxx
-               - Queue Format: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-               - Email Format: mail:directmail:{MailAddress}
+               - `HTTP Format`: http://xxx.com/xxx
+               - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
+               - `Email Format`: mail:directmail:{MailAddress}
         :param pulumi.Input[str] filter_tag: The length should be shorter than 16.
         :param pulumi.Input[str] name: Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
-        :param pulumi.Input[str] notify_content_format: The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
-        :param pulumi.Input[str] notify_strategy: The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
+        :param pulumi.Input[str] notify_content_format: The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: `SIMPLIFIED`, `XML` and `JSON`. Default to `SIMPLIFIED`.
+        :param pulumi.Input[str] notify_strategy: The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
         :param pulumi.Input[str] topic_name: The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -369,9 +369,9 @@ class TopicSubscription(pulumi.CustomResource):
     def endpoint(self) -> pulumi.Output[str]:
         """
         The endpoint has three format. Available values format:
-        - HTTP Format: http://xxx.com/xxx
-        - Queue Format: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-        - Email Format: mail:directmail:{MailAddress}
+        - `HTTP Format`: http://xxx.com/xxx
+        - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
+        - `Email Format`: mail:directmail:{MailAddress}
         """
         return pulumi.get(self, "endpoint")
 
@@ -395,7 +395,7 @@ class TopicSubscription(pulumi.CustomResource):
     @pulumi.getter(name="notifyContentFormat")
     def notify_content_format(self) -> pulumi.Output[Optional[str]]:
         """
-        The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
+        The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: `SIMPLIFIED`, `XML` and `JSON`. Default to `SIMPLIFIED`.
         """
         return pulumi.get(self, "notify_content_format")
 
@@ -403,7 +403,7 @@ class TopicSubscription(pulumi.CustomResource):
     @pulumi.getter(name="notifyStrategy")
     def notify_strategy(self) -> pulumi.Output[Optional[str]]:
         """
-        The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
+        The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
         """
         return pulumi.get(self, "notify_strategy")
 

@@ -122,6 +122,7 @@ class ProviderEndpointArgs:
                  fc: Optional[pulumi.Input[str]] = None,
                  fnf: Optional[pulumi.Input[str]] = None,
                  ga: Optional[pulumi.Input[str]] = None,
+                 gaplus: Optional[pulumi.Input[str]] = None,
                  gds: Optional[pulumi.Input[str]] = None,
                  gpdb: Optional[pulumi.Input[str]] = None,
                  gwsecd: Optional[pulumi.Input[str]] = None,
@@ -283,6 +284,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "fnf", fnf)
         if ga is not None:
             pulumi.set(__self__, "ga", ga)
+        if gaplus is not None:
+            pulumi.set(__self__, "gaplus", gaplus)
         if gds is not None:
             pulumi.set(__self__, "gds", gds)
         if gpdb is not None:
@@ -875,6 +878,15 @@ class ProviderEndpointArgs:
     @ga.setter
     def ga(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ga", value)
+
+    @property
+    @pulumi.getter
+    def gaplus(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "gaplus")
+
+    @gaplus.setter
+    def gaplus(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gaplus", value)
 
     @property
     @pulumi.getter

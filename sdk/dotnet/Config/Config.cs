@@ -310,6 +310,7 @@ namespace Pulumi.AliCloud
                 public string? Fc { get; set; } = null!;
                 public string? Fnf { get; set; } = null!;
                 public string? Ga { get; set; } = null!;
+                public string? Gaplus { get; set; } = null!;
                 public string? Gds { get; set; } = null!;
                 public string? Gpdb { get; set; } = null!;
                 public string? Gwsecd { get; set; } = null!;

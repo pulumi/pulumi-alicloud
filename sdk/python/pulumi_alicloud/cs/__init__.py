@@ -11,6 +11,7 @@ from .cluster import *
 from .edge_kubernetes import *
 from .get_ack_service import *
 from .get_edge_kubernetes_clusters import *
+from .get_kubernetes_addons import *
 from .get_kubernetes_clusters import *
 from .get_kubernetes_permission import *
 from .get_managed_kubernetes_clusters import *
@@ -20,6 +21,7 @@ from .get_registry_enterprise_repos import *
 from .get_registry_enterprise_sync_rules import *
 from .get_serverless_kubernetes_clusters import *
 from .kubernetes import *
+from .kubernetes_addon import *
 from .kubernetes_autoscaler import *
 from .kubernetes_permission import *
 from .managed_kubernetes import *

@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.Rds
     /// <summary>
     /// Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
     /// 
+    /// &gt; **NOTE:** At present, a database can only have one database owner.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

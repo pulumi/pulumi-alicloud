@@ -184,6 +184,8 @@ class AccountPrivilege(pulumi.CustomResource):
         """
         Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
 
+        > **NOTE:** At present, a database can only have one database owner.
+
         ## Example Usage
 
         ```python
@@ -257,6 +259,8 @@ class AccountPrivilege(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
+
+        > **NOTE:** At present, a database can only have one database owner.
 
         ## Example Usage
 

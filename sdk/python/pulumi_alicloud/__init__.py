@@ -1418,6 +1418,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cs/kubernetesAddon",
+  "fqn": "pulumi_alicloud.cs",
+  "classes": {
+   "alicloud:cs/kubernetesAddon:KubernetesAddon": "KubernetesAddon"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cs/kubernetesAutoscaler",
   "fqn": "pulumi_alicloud.cs",
   "classes": {
@@ -2566,6 +2574,30 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ga",
   "classes": {
    "alicloud:ga/accelerator:Accelerator": "Accelerator"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ga/acl",
+  "fqn": "pulumi_alicloud.ga",
+  "classes": {
+   "alicloud:ga/acl:Acl": "Acl"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ga/aclAttachment",
+  "fqn": "pulumi_alicloud.ga",
+  "classes": {
+   "alicloud:ga/aclAttachment:AclAttachment": "AclAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ga/additionalCertificate",
+  "fqn": "pulumi_alicloud.ga",
+  "classes": {
+   "alicloud:ga/additionalCertificate:AdditionalCertificate": "AdditionalCertificate"
   }
  },
  {

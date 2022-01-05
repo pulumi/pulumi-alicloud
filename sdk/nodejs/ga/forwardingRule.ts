@@ -21,64 +21,130 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const exampleAccelerator = new alicloud.ga.Accelerator("exampleAccelerator", {
- *     duration: 1,
- *     autoUseCoupon: true,
- *     spec: "1",
+ *     duration: 3,
+ *     spec: "2",
+ *     acceleratorName: "ga-tf",
+ *     autoUseCoupon: false,
+ *     description: "ga-tf description",
+ *     autoRenewDuration: "2",
+ *     renewalStatus: "AutoRenewal",
  * });
- * const deBandwidthPackage = new alicloud.ga.BandwidthPackage("deBandwidthPackage", {
- *     bandwidth: "100",
+ * const exampleBandwidthPackage = new alicloud.ga.BandwidthPackage("exampleBandwidthPackage", {
  *     type: "Basic",
+ *     bandwidth: 20,
  *     bandwidthType: "Basic",
- *     paymentType: "PayAsYouGo",
- *     billingType: "PayBy95",
- *     ratio: 30,
+ *     duration: 1,
+ *     timeouts: [{
+ *         create: "5m",
+ *     }],
+ *     autoPay: true,
+ *     paymentType: "Subscription",
+ *     billingType: "PayByTraffic",
+ *     ratio: 40,
+ *     autoUseCoupon: false,
+ *     bandwidthPackageName: "bandwidth_package_name_tf",
+ *     description: "bandwidth_package_name_tf_description",
  * });
- * const deBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("deBandwidthPackageAttachment", {
+ * const exampleBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", {
  *     acceleratorId: exampleAccelerator.id,
- *     bandwidthPackageId: deBandwidthPackage.id,
+ *     bandwidthPackageId: exampleBandwidthPackage.id,
  * });
  * const exampleListener = new alicloud.ga.Listener("exampleListener", {
  *     acceleratorId: exampleAccelerator.id,
  *     portRanges: [{
- *         fromPort: 70,
- *         toPort: 70,
+ *         fromPort: 60,
+ *         toPort: 60,
  *     }],
+ *     clientAffinity: "SOURCE_IP",
+ *     description: "alicloud_ga_listener_description",
  *     protocol: "HTTP",
+ *     proxyProtocol: true,
  * }, {
- *     dependsOn: [deBandwidthPackageAttachment],
+ *     dependsOn: [exampleBandwidthPackageAttachment],
+ * });
+ * const exampleIpSet = new alicloud.ga.IpSet("exampleIpSet", {
+ *     accelerateRegionId: "cn-shanghai",
+ *     acceleratorId: exampleAccelerator.id,
+ *     bandwidth: "20",
+ * }, {
+ *     dependsOn: [exampleBandwidthPackageAttachment],
  * });
  * const exampleEipAddress = new alicloud.ecs.EipAddress("exampleEipAddress", {
  *     bandwidth: "10",
  *     internetChargeType: "PayByBandwidth",
  * });
- * const exampleEndpointGroup = new alicloud.ga.EndpointGroup("exampleEndpointGroup", {
+ * const _default = new alicloud.ga.EndpointGroup("default", {
  *     acceleratorId: exampleAccelerator.id,
  *     endpointConfigurations: [{
  *         endpoint: exampleEipAddress.ipAddress,
  *         type: "PublicIp",
  *         weight: "20",
+ *         enableClientipPreservation: true,
  *     }],
- *     endpointGroupRegion: "cn-hangzhou",
+ *     endpointGroupRegion: "cn-shanghai",
  *     listenerId: exampleListener.id,
+ *     description: "alicloud_ga_endpoint_group_description",
+ *     endpointGroupType: "default",
+ *     endpointRequestProtocol: "HTTPS",
+ *     healthCheckIntervalSeconds: 4,
+ *     healthCheckPath: "/path",
+ *     thresholdCount: 4,
+ *     trafficPercentage: 20,
+ *     portOverrides: {
+ *         endpointPort: 80,
+ *         listenerPort: 60,
+ *     },
+ * });
+ * const virtual = new alicloud.ga.EndpointGroup("virtual", {
+ *     acceleratorId: exampleAccelerator.id,
+ *     endpointConfigurations: [{
+ *         endpoint: exampleEipAddress.ipAddress,
+ *         type: "PublicIp",
+ *         weight: "20",
+ *         enableClientipPreservation: true,
+ *     }],
+ *     endpointGroupRegion: "cn-shanghai",
+ *     listenerId: exampleListener.id,
+ *     description: "alicloud_ga_endpoint_group_description",
+ *     endpointGroupType: "virtual",
+ *     endpointRequestProtocol: "HTTPS",
+ *     healthCheckIntervalSeconds: 4,
+ *     healthCheckPath: "/path",
+ *     thresholdCount: 4,
+ *     trafficPercentage: 20,
+ *     portOverrides: {
+ *         endpointPort: 80,
+ *         listenerPort: 60,
+ *     },
  * });
  * const exampleForwardingRule = new alicloud.ga.ForwardingRule("exampleForwardingRule", {
  *     acceleratorId: exampleAccelerator.id,
  *     listenerId: exampleListener.id,
- *     ruleConditions: [{
- *         ruleConditionType: "Path",
- *         pathConfig: {
- *             values: ["/test"],
+ *     ruleConditions: [
+ *         {
+ *             ruleConditionType: "Path",
+ *             pathConfig: {
+ *                 values: ["/testpathconfig"],
+ *             },
  *         },
- *     }],
+ *         {
+ *             ruleConditionType: "Host",
+ *             hostConfigs: [{
+ *                 values: ["www.test.com"],
+ *             }],
+ *         },
+ *     ],
  *     ruleActions: [{
- *         order: "30",
+ *         order: "40",
  *         ruleActionType: "ForwardGroup",
  *         forwardGroupConfig: {
  *             serverGroupTuples: [{
- *                 endpointGroupId: exampleEndpointGroup.id,
+ *                 endpointGroupId: _default.id,
  *             }],
  *         },
  *     }],
+ *     priority: 2,
+ *     forwardingRuleName: "forwarding_rule_name",
  * });
  * ```
  *

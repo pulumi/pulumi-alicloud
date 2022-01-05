@@ -106,6 +106,7 @@ class Endpoints(dict):
                  fc: Optional[str] = None,
                  fnf: Optional[str] = None,
                  ga: Optional[str] = None,
+                 gaplus: Optional[str] = None,
                  gds: Optional[str] = None,
                  gpdb: Optional[str] = None,
                  gwsecd: Optional[str] = None,
@@ -267,6 +268,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "fnf", fnf)
         if ga is not None:
             pulumi.set(__self__, "ga", ga)
+        if gaplus is not None:
+            pulumi.set(__self__, "gaplus", gaplus)
         if gds is not None:
             pulumi.set(__self__, "gds", gds)
         if gpdb is not None:
@@ -643,6 +646,11 @@ class Endpoints(dict):
     @pulumi.getter
     def ga(self) -> Optional[str]:
         return pulumi.get(self, "ga")
+
+    @property
+    @pulumi.getter
+    def gaplus(self) -> Optional[str]:
+        return pulumi.get(self, "gaplus")
 
     @property
     @pulumi.getter

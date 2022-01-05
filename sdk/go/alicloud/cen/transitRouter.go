@@ -15,6 +15,45 @@ import (
 //
 // > **NOTE:** Available in 1.126.0+
 //
+// ## Example Usage
+//
+// Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		cfg := config.New(ctx, "")
+// 		name := "tf-testAccCenTransitRouter"
+// 		if param := cfg.Get("name"); param != "" {
+// 			name = param
+// 		}
+// 		defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
+// 			CenInstanceName: pulumi.String(name),
+// 			Description:     pulumi.String("terraform01"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cen.NewTransitRouter(ctx, "defaultTransitRouter", &cen.TransitRouterArgs{
+// 			TransitRouterName: pulumi.String(name),
+// 			CenId:             defaultInstance.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // CEN instance can be imported using the id, e.g.

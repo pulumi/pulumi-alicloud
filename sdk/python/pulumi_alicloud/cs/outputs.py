@@ -47,6 +47,7 @@ __all__ = [
     'GetEdgeKubernetesClustersClusterResult',
     'GetEdgeKubernetesClustersClusterConnectionsResult',
     'GetEdgeKubernetesClustersClusterWorkerNodeResult',
+    'GetKubernetesAddonsAddonResult',
     'GetKubernetesClustersClusterResult',
     'GetKubernetesClustersClusterConnectionsResult',
     'GetKubernetesClustersClusterLogConfigResult',
@@ -2332,6 +2333,57 @@ class GetEdgeKubernetesClustersClusterWorkerNodeResult(dict):
         The private IP address of node.
         """
         return pulumi.get(self, "private_ip")
+
+
+@pulumi.output_type
+class GetKubernetesAddonsAddonResult(dict):
+    def __init__(__self__, *,
+                 current_version: str,
+                 name: str,
+                 next_version: str,
+                 required: bool):
+        """
+        :param str current_version: The current version of addon, if this field is an empty string, it means that the addon is not installed.
+        :param str name: The name of addon.
+        :param str next_version: The next version of this addon can be upgraded to.
+        :param bool required: Whether the addon is a system addon.
+        """
+        pulumi.set(__self__, "current_version", current_version)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "next_version", next_version)
+        pulumi.set(__self__, "required", required)
+
+    @property
+    @pulumi.getter(name="currentVersion")
+    def current_version(self) -> str:
+        """
+        The current version of addon, if this field is an empty string, it means that the addon is not installed.
+        """
+        return pulumi.get(self, "current_version")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of addon.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nextVersion")
+    def next_version(self) -> str:
+        """
+        The next version of this addon can be upgraded to.
+        """
+        return pulumi.get(self, "next_version")
+
+    @property
+    @pulumi.getter
+    def required(self) -> bool:
+        """
+        Whether the addon is a system addon.
+        """
+        return pulumi.get(self, "required")
 
 
 @pulumi.output_type

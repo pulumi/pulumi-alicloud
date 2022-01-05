@@ -23,6 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:ga/accelerator:Accelerator":
 		r = &Accelerator{}
+	case "alicloud:ga/acl:Acl":
+		r = &Acl{}
+	case "alicloud:ga/aclAttachment:AclAttachment":
+		r = &AclAttachment{}
+	case "alicloud:ga/additionalCertificate:AdditionalCertificate":
+		r = &AdditionalCertificate{}
 	case "alicloud:ga/bandwidthPackage:BandwidthPackage":
 		r = &BandwidthPackage{}
 	case "alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment":
@@ -51,6 +57,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ga/accelerator",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ga/acl",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ga/aclAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ga/additionalCertificate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

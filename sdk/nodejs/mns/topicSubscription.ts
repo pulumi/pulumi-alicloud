@@ -43,9 +43,9 @@ export class TopicSubscription extends pulumi.CustomResource {
 
     /**
      * The endpoint has three format. Available values format:
-     * - HTTP Format: http://xxx.com/xxx
-     * - Queue Format: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-     * - Email Format: mail:directmail:{MailAddress}
+     * - `HTTP Format`: http://xxx.com/xxx
+     * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
+     * - `Email Format`: mail:directmail:{MailAddress}
      */
     public readonly endpoint!: pulumi.Output<string>;
     /**
@@ -57,11 +57,11 @@ export class TopicSubscription extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
+     * The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: `SIMPLIFIED`, `XML` and `JSON`. Default to `SIMPLIFIED`.
      */
     public readonly notifyContentFormat!: pulumi.Output<string | undefined>;
     /**
-     * The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
+     * The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
      */
     public readonly notifyStrategy!: pulumi.Output<string | undefined>;
     /**
@@ -116,9 +116,9 @@ export class TopicSubscription extends pulumi.CustomResource {
 export interface TopicSubscriptionState {
     /**
      * The endpoint has three format. Available values format:
-     * - HTTP Format: http://xxx.com/xxx
-     * - Queue Format: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-     * - Email Format: mail:directmail:{MailAddress}
+     * - `HTTP Format`: http://xxx.com/xxx
+     * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
+     * - `Email Format`: mail:directmail:{MailAddress}
      */
     endpoint?: pulumi.Input<string>;
     /**
@@ -130,11 +130,11 @@ export interface TopicSubscriptionState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
+     * The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: `SIMPLIFIED`, `XML` and `JSON`. Default to `SIMPLIFIED`.
      */
     notifyContentFormat?: pulumi.Input<string>;
     /**
-     * The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
+     * The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
      */
     notifyStrategy?: pulumi.Input<string>;
     /**
@@ -149,9 +149,9 @@ export interface TopicSubscriptionState {
 export interface TopicSubscriptionArgs {
     /**
      * The endpoint has three format. Available values format:
-     * - HTTP Format: http://xxx.com/xxx
-     * - Queue Format: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-     * - Email Format: mail:directmail:{MailAddress}
+     * - `HTTP Format`: http://xxx.com/xxx
+     * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
+     * - `Email Format`: mail:directmail:{MailAddress}
      */
     endpoint: pulumi.Input<string>;
     /**
@@ -163,11 +163,11 @@ export interface TopicSubscriptionArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
+     * The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: `SIMPLIFIED`, `XML` and `JSON`. Default to `SIMPLIFIED`.
      */
     notifyContentFormat?: pulumi.Input<string>;
     /**
-     * The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
+     * The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
      */
     notifyStrategy?: pulumi.Input<string>;
     /**

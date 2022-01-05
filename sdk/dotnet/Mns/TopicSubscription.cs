@@ -23,9 +23,9 @@ namespace Pulumi.AliCloud.Mns
     {
         /// <summary>
         /// The endpoint has three format. Available values format:
-        /// - HTTP Format: http://xxx.com/xxx
-        /// - Queue Format: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-        /// - Email Format: mail:directmail:{MailAddress}
+        /// - `HTTP Format`: http://xxx.com/xxx
+        /// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
+        /// - `Email Format`: mail:directmail:{MailAddress}
         /// </summary>
         [Output("endpoint")]
         public Output<string> Endpoint { get; private set; } = null!;
@@ -43,13 +43,13 @@ namespace Pulumi.AliCloud.Mns
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
+        /// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: `SIMPLIFIED`, `XML` and `JSON`. Default to `SIMPLIFIED`.
         /// </summary>
         [Output("notifyContentFormat")]
         public Output<string?> NotifyContentFormat { get; private set; } = null!;
 
         /// <summary>
-        /// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
+        /// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
         /// </summary>
         [Output("notifyStrategy")]
         public Output<string?> NotifyStrategy { get; private set; } = null!;
@@ -108,9 +108,9 @@ namespace Pulumi.AliCloud.Mns
     {
         /// <summary>
         /// The endpoint has three format. Available values format:
-        /// - HTTP Format: http://xxx.com/xxx
-        /// - Queue Format: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-        /// - Email Format: mail:directmail:{MailAddress}
+        /// - `HTTP Format`: http://xxx.com/xxx
+        /// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
+        /// - `Email Format`: mail:directmail:{MailAddress}
         /// </summary>
         [Input("endpoint", required: true)]
         public Input<string> Endpoint { get; set; } = null!;
@@ -128,13 +128,13 @@ namespace Pulumi.AliCloud.Mns
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
+        /// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: `SIMPLIFIED`, `XML` and `JSON`. Default to `SIMPLIFIED`.
         /// </summary>
         [Input("notifyContentFormat")]
         public Input<string>? NotifyContentFormat { get; set; }
 
         /// <summary>
-        /// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
+        /// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
         /// </summary>
         [Input("notifyStrategy")]
         public Input<string>? NotifyStrategy { get; set; }
@@ -154,9 +154,9 @@ namespace Pulumi.AliCloud.Mns
     {
         /// <summary>
         /// The endpoint has three format. Available values format:
-        /// - HTTP Format: http://xxx.com/xxx
-        /// - Queue Format: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-        /// - Email Format: mail:directmail:{MailAddress}
+        /// - `HTTP Format`: http://xxx.com/xxx
+        /// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
+        /// - `Email Format`: mail:directmail:{MailAddress}
         /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
@@ -174,13 +174,13 @@ namespace Pulumi.AliCloud.Mns
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
+        /// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: `SIMPLIFIED`, `XML` and `JSON`. Default to `SIMPLIFIED`.
         /// </summary>
         [Input("notifyContentFormat")]
         public Input<string>? NotifyContentFormat { get; set; }
 
         /// <summary>
-        /// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
+        /// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
         /// </summary>
         [Input("notifyStrategy")]
         public Input<string>? NotifyStrategy { get; set; }

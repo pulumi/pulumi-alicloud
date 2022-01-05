@@ -83,7 +83,8 @@ type GetInstanceTypesArgs struct {
 	SortedBy    *string `pulumi:"sortedBy"`
 	// Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
-	// Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`. Default to `cloudEfficiency`.
+	// Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`.
+	// **NOTE**: Its default value `cloudEfficiency` has been removed from the version v1.150.0.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 }
 
@@ -151,7 +152,8 @@ type GetInstanceTypesOutputArgs struct {
 	SortedBy    pulumi.StringPtrInput `pulumi:"sortedBy"`
 	// Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
 	SpotStrategy pulumi.StringPtrInput `pulumi:"spotStrategy"`
-	// Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`. Default to `cloudEfficiency`.
+	// Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`.
+	// **NOTE**: Its default value `cloudEfficiency` has been removed from the version v1.150.0.
 	SystemDiskCategory pulumi.StringPtrInput `pulumi:"systemDiskCategory"`
 }
 

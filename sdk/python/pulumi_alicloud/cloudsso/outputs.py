@@ -51,7 +51,7 @@ class AccessConfigurationPermissionPolicy(dict):
                  permission_policy_type: str,
                  permission_policy_document: Optional[str] = None):
         """
-        :param str permission_policy_name: The Policy Name of policy. The name of the resource. The name must be 1 to 32 characters in length and can contain letters, digits, and hyphens (-).
+        :param str permission_policy_name: The Policy Name of policy. The name of the resource.
         :param str permission_policy_type: The Policy Type of policy. Valid values: `System`, `Inline`.
         :param str permission_policy_document: The Content of Policy.
         """
@@ -64,7 +64,7 @@ class AccessConfigurationPermissionPolicy(dict):
     @pulumi.getter(name="permissionPolicyName")
     def permission_policy_name(self) -> str:
         """
-        The Policy Name of policy. The name of the resource. The name must be 1 to 32 characters in length and can contain letters, digits, and hyphens (-).
+        The Policy Name of policy. The name of the resource.
         """
         return pulumi.get(self, "permission_policy_name")
 

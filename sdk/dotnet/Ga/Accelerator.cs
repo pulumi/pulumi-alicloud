@@ -77,10 +77,20 @@ namespace Pulumi.AliCloud.Ga
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The duration. The value range is 1-9.
+        /// The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
+        /// * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+        /// * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
         /// </summary>
         [Output("duration")]
         public Output<int> Duration { get; private set; } = null!;
+
+        /// <summary>
+        /// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+        /// * `Month`: billed on a monthly basis.
+        /// * `Year`: billed on an annual basis.
+        /// </summary>
+        [Output("pricingCycle")]
+        public Output<string> PricingCycle { get; private set; } = null!;
 
         /// <summary>
         /// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
@@ -180,10 +190,20 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The duration. The value range is 1-9.
+        /// The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
+        /// * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+        /// * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
         /// </summary>
         [Input("duration", required: true)]
         public Input<int> Duration { get; set; } = null!;
+
+        /// <summary>
+        /// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+        /// * `Month`: billed on a monthly basis.
+        /// * `Year`: billed on an annual basis.
+        /// </summary>
+        [Input("pricingCycle")]
+        public Input<string>? PricingCycle { get; set; }
 
         /// <summary>
         /// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
@@ -238,10 +258,20 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The duration. The value range is 1-9.
+        /// The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
+        /// * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
+        /// * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
         /// </summary>
         [Input("duration")]
         public Input<int>? Duration { get; set; }
+
+        /// <summary>
+        /// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+        /// * `Month`: billed on a monthly basis.
+        /// * `Year`: billed on an annual basis.
+        /// </summary>
+        [Input("pricingCycle")]
+        public Input<string>? PricingCycle { get; set; }
 
         /// <summary>
         /// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:

@@ -10,6 +10,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AclAclEntry',
     'EndpointGroupEndpointConfiguration',
     'EndpointGroupPortOverrides',
     'ForwardingRuleRuleAction',
@@ -23,6 +24,9 @@ __all__ = [
     'GetAcceleratorsAcceleratorResult',
     'GetAcceleratorsAcceleratorBasicBandwidthPackageResult',
     'GetAcceleratorsAcceleratorCrossDomainBandwidthPackageResult',
+    'GetAclsAclResult',
+    'GetAclsAclAclEntryResult',
+    'GetAdditionalCertificatesCertificateResult',
     'GetBandwidthPackagesPackageResult',
     'GetEndpointGroupsGroupResult',
     'GetEndpointGroupsGroupEndpointConfigurationResult',
@@ -39,6 +43,54 @@ __all__ = [
     'GetListenersListenerCertificateResult',
     'GetListenersListenerPortRangeResult',
 ]
+
+@pulumi.output_type
+class AclAclEntry(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entryDescription":
+            suggest = "entry_description"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AclAclEntry. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AclAclEntry.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AclAclEntry.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entry: Optional[str] = None,
+                 entry_description: Optional[str] = None):
+        """
+        :param str entry: The IP entry that you want to add to the ACL.
+        :param str entry_description: The description of the IP entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
+        """
+        if entry is not None:
+            pulumi.set(__self__, "entry", entry)
+        if entry_description is not None:
+            pulumi.set(__self__, "entry_description", entry_description)
+
+    @property
+    @pulumi.getter
+    def entry(self) -> Optional[str]:
+        """
+        The IP entry that you want to add to the ACL.
+        """
+        return pulumi.get(self, "entry")
+
+    @property
+    @pulumi.getter(name="entryDescription")
+    def entry_description(self) -> Optional[str]:
+        """
+        The description of the IP entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
+        """
+        return pulumi.get(self, "entry_description")
+
 
 @pulumi.output_type
 class EndpointGroupEndpointConfiguration(dict):
@@ -684,6 +736,170 @@ class GetAcceleratorsAcceleratorCrossDomainBandwidthPackageResult(dict):
         Instance ID of the cross-domain acceleration package.
         """
         return pulumi.get(self, "instance_id")
+
+
+@pulumi.output_type
+class GetAclsAclResult(dict):
+    def __init__(__self__, *,
+                 acl_entries: Sequence['outputs.GetAclsAclAclEntryResult'],
+                 acl_id: str,
+                 acl_name: str,
+                 address_ip_version: str,
+                 id: str,
+                 status: str):
+        """
+        :param Sequence['GetAclsAclAclEntryArgs'] acl_entries: The entries of the Acl.
+        :param str acl_id: The  ID of the Acl.
+        :param str acl_name: The name of the acl.
+        :param str address_ip_version: The address ip version.
+        :param str id: The ID of the Acl. Its value is same as `acl_id`.
+        :param str status: The status of the resource.
+        """
+        pulumi.set(__self__, "acl_entries", acl_entries)
+        pulumi.set(__self__, "acl_id", acl_id)
+        pulumi.set(__self__, "acl_name", acl_name)
+        pulumi.set(__self__, "address_ip_version", address_ip_version)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="aclEntries")
+    def acl_entries(self) -> Sequence['outputs.GetAclsAclAclEntryResult']:
+        """
+        The entries of the Acl.
+        """
+        return pulumi.get(self, "acl_entries")
+
+    @property
+    @pulumi.getter(name="aclId")
+    def acl_id(self) -> str:
+        """
+        The  ID of the Acl.
+        """
+        return pulumi.get(self, "acl_id")
+
+    @property
+    @pulumi.getter(name="aclName")
+    def acl_name(self) -> str:
+        """
+        The name of the acl.
+        """
+        return pulumi.get(self, "acl_name")
+
+    @property
+    @pulumi.getter(name="addressIpVersion")
+    def address_ip_version(self) -> str:
+        """
+        The address ip version.
+        """
+        return pulumi.get(self, "address_ip_version")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Acl. Its value is same as `acl_id`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetAclsAclAclEntryResult(dict):
+    def __init__(__self__, *,
+                 entry: str,
+                 entry_description: str):
+        """
+        :param str entry: The IP entry that you want to add to the ACL.
+        :param str entry_description: The description of the IP entry.
+        """
+        pulumi.set(__self__, "entry", entry)
+        pulumi.set(__self__, "entry_description", entry_description)
+
+    @property
+    @pulumi.getter
+    def entry(self) -> str:
+        """
+        The IP entry that you want to add to the ACL.
+        """
+        return pulumi.get(self, "entry")
+
+    @property
+    @pulumi.getter(name="entryDescription")
+    def entry_description(self) -> str:
+        """
+        The description of the IP entry.
+        """
+        return pulumi.get(self, "entry_description")
+
+
+@pulumi.output_type
+class GetAdditionalCertificatesCertificateResult(dict):
+    def __init__(__self__, *,
+                 accelerator_id: str,
+                 certificate_id: str,
+                 domain: str,
+                 id: str,
+                 listener_id: str):
+        """
+        :param str accelerator_id: The ID of the GA instance.
+        :param str certificate_id: The Certificate ID.
+        :param str domain: The domain name specified by the certificate.
+        :param str id: The ID of the Additional Certificate. The value formats as `<accelerator_id>:<listener_id>:<domain>`.
+        :param str listener_id: The ID of the listener. Only HTTPS listeners support this parameter.
+        """
+        pulumi.set(__self__, "accelerator_id", accelerator_id)
+        pulumi.set(__self__, "certificate_id", certificate_id)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "listener_id", listener_id)
+
+    @property
+    @pulumi.getter(name="acceleratorId")
+    def accelerator_id(self) -> str:
+        """
+        The ID of the GA instance.
+        """
+        return pulumi.get(self, "accelerator_id")
+
+    @property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> str:
+        """
+        The Certificate ID.
+        """
+        return pulumi.get(self, "certificate_id")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        The domain name specified by the certificate.
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Additional Certificate. The value formats as `<accelerator_id>:<listener_id>:<domain>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="listenerId")
+    def listener_id(self) -> str:
+        """
+        The ID of the listener. Only HTTPS listeners support this parameter.
+        """
+        return pulumi.get(self, "listener_id")
 
 
 @pulumi.output_type

@@ -1125,113 +1125,113 @@ func (o EdgeKubernetesWorkerNodeArrayOutput) Index(i pulumi.IntInput) EdgeKubern
 	}).(EdgeKubernetesWorkerNodeOutput)
 }
 
-type KubernetesAddon struct {
+type KubernetesAddonType struct {
 	Config   *string `pulumi:"config"`
 	Disabled *bool   `pulumi:"disabled"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name *string `pulumi:"name"`
 }
 
-// KubernetesAddonInput is an input type that accepts KubernetesAddonArgs and KubernetesAddonOutput values.
-// You can construct a concrete instance of `KubernetesAddonInput` via:
+// KubernetesAddonTypeInput is an input type that accepts KubernetesAddonTypeArgs and KubernetesAddonTypeOutput values.
+// You can construct a concrete instance of `KubernetesAddonTypeInput` via:
 //
-//          KubernetesAddonArgs{...}
-type KubernetesAddonInput interface {
+//          KubernetesAddonTypeArgs{...}
+type KubernetesAddonTypeInput interface {
 	pulumi.Input
 
-	ToKubernetesAddonOutput() KubernetesAddonOutput
-	ToKubernetesAddonOutputWithContext(context.Context) KubernetesAddonOutput
+	ToKubernetesAddonTypeOutput() KubernetesAddonTypeOutput
+	ToKubernetesAddonTypeOutputWithContext(context.Context) KubernetesAddonTypeOutput
 }
 
-type KubernetesAddonArgs struct {
+type KubernetesAddonTypeArgs struct {
 	Config   pulumi.StringPtrInput `pulumi:"config"`
 	Disabled pulumi.BoolPtrInput   `pulumi:"disabled"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
-func (KubernetesAddonArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesAddon)(nil)).Elem()
+func (KubernetesAddonTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesAddonType)(nil)).Elem()
 }
 
-func (i KubernetesAddonArgs) ToKubernetesAddonOutput() KubernetesAddonOutput {
-	return i.ToKubernetesAddonOutputWithContext(context.Background())
+func (i KubernetesAddonTypeArgs) ToKubernetesAddonTypeOutput() KubernetesAddonTypeOutput {
+	return i.ToKubernetesAddonTypeOutputWithContext(context.Background())
 }
 
-func (i KubernetesAddonArgs) ToKubernetesAddonOutputWithContext(ctx context.Context) KubernetesAddonOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAddonOutput)
+func (i KubernetesAddonTypeArgs) ToKubernetesAddonTypeOutputWithContext(ctx context.Context) KubernetesAddonTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAddonTypeOutput)
 }
 
-// KubernetesAddonArrayInput is an input type that accepts KubernetesAddonArray and KubernetesAddonArrayOutput values.
-// You can construct a concrete instance of `KubernetesAddonArrayInput` via:
+// KubernetesAddonTypeArrayInput is an input type that accepts KubernetesAddonTypeArray and KubernetesAddonTypeArrayOutput values.
+// You can construct a concrete instance of `KubernetesAddonTypeArrayInput` via:
 //
-//          KubernetesAddonArray{ KubernetesAddonArgs{...} }
-type KubernetesAddonArrayInput interface {
+//          KubernetesAddonTypeArray{ KubernetesAddonTypeArgs{...} }
+type KubernetesAddonTypeArrayInput interface {
 	pulumi.Input
 
-	ToKubernetesAddonArrayOutput() KubernetesAddonArrayOutput
-	ToKubernetesAddonArrayOutputWithContext(context.Context) KubernetesAddonArrayOutput
+	ToKubernetesAddonTypeArrayOutput() KubernetesAddonTypeArrayOutput
+	ToKubernetesAddonTypeArrayOutputWithContext(context.Context) KubernetesAddonTypeArrayOutput
 }
 
-type KubernetesAddonArray []KubernetesAddonInput
+type KubernetesAddonTypeArray []KubernetesAddonTypeInput
 
-func (KubernetesAddonArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KubernetesAddon)(nil)).Elem()
+func (KubernetesAddonTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesAddonType)(nil)).Elem()
 }
 
-func (i KubernetesAddonArray) ToKubernetesAddonArrayOutput() KubernetesAddonArrayOutput {
-	return i.ToKubernetesAddonArrayOutputWithContext(context.Background())
+func (i KubernetesAddonTypeArray) ToKubernetesAddonTypeArrayOutput() KubernetesAddonTypeArrayOutput {
+	return i.ToKubernetesAddonTypeArrayOutputWithContext(context.Background())
 }
 
-func (i KubernetesAddonArray) ToKubernetesAddonArrayOutputWithContext(ctx context.Context) KubernetesAddonArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAddonArrayOutput)
+func (i KubernetesAddonTypeArray) ToKubernetesAddonTypeArrayOutputWithContext(ctx context.Context) KubernetesAddonTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAddonTypeArrayOutput)
 }
 
-type KubernetesAddonOutput struct{ *pulumi.OutputState }
+type KubernetesAddonTypeOutput struct{ *pulumi.OutputState }
 
-func (KubernetesAddonOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesAddon)(nil)).Elem()
+func (KubernetesAddonTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesAddonType)(nil)).Elem()
 }
 
-func (o KubernetesAddonOutput) ToKubernetesAddonOutput() KubernetesAddonOutput {
+func (o KubernetesAddonTypeOutput) ToKubernetesAddonTypeOutput() KubernetesAddonTypeOutput {
 	return o
 }
 
-func (o KubernetesAddonOutput) ToKubernetesAddonOutputWithContext(ctx context.Context) KubernetesAddonOutput {
+func (o KubernetesAddonTypeOutput) ToKubernetesAddonTypeOutputWithContext(ctx context.Context) KubernetesAddonTypeOutput {
 	return o
 }
 
-func (o KubernetesAddonOutput) Config() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesAddon) *string { return v.Config }).(pulumi.StringPtrOutput)
+func (o KubernetesAddonTypeOutput) Config() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesAddonType) *string { return v.Config }).(pulumi.StringPtrOutput)
 }
 
-func (o KubernetesAddonOutput) Disabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v KubernetesAddon) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+func (o KubernetesAddonTypeOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KubernetesAddonType) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
 // The kubernetes cluster's name. It is unique in one Alicloud account.
-func (o KubernetesAddonOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesAddon) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o KubernetesAddonTypeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesAddonType) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-type KubernetesAddonArrayOutput struct{ *pulumi.OutputState }
+type KubernetesAddonTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (KubernetesAddonArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KubernetesAddon)(nil)).Elem()
+func (KubernetesAddonTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesAddonType)(nil)).Elem()
 }
 
-func (o KubernetesAddonArrayOutput) ToKubernetesAddonArrayOutput() KubernetesAddonArrayOutput {
+func (o KubernetesAddonTypeArrayOutput) ToKubernetesAddonTypeArrayOutput() KubernetesAddonTypeArrayOutput {
 	return o
 }
 
-func (o KubernetesAddonArrayOutput) ToKubernetesAddonArrayOutputWithContext(ctx context.Context) KubernetesAddonArrayOutput {
+func (o KubernetesAddonTypeArrayOutput) ToKubernetesAddonTypeArrayOutputWithContext(ctx context.Context) KubernetesAddonTypeArrayOutput {
 	return o
 }
 
-func (o KubernetesAddonArrayOutput) Index(i pulumi.IntInput) KubernetesAddonOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesAddon {
-		return vs[0].([]KubernetesAddon)[vs[1].(int)]
-	}).(KubernetesAddonOutput)
+func (o KubernetesAddonTypeArrayOutput) Index(i pulumi.IntInput) KubernetesAddonTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesAddonType {
+		return vs[0].([]KubernetesAddonType)[vs[1].(int)]
+	}).(KubernetesAddonTypeOutput)
 }
 
 type KubernetesAutoscalerNodepool struct {
@@ -5211,6 +5211,130 @@ func (o GetEdgeKubernetesClustersClusterWorkerNodeArrayOutput) Index(i pulumi.In
 	}).(GetEdgeKubernetesClustersClusterWorkerNodeOutput)
 }
 
+type GetKubernetesAddonsAddon struct {
+	// The current version of addon, if this field is an empty string, it means that the addon is not installed.
+	CurrentVersion string `pulumi:"currentVersion"`
+	// The name of addon.
+	Name string `pulumi:"name"`
+	// The next version of this addon can be upgraded to.
+	NextVersion string `pulumi:"nextVersion"`
+	// Whether the addon is a system addon.
+	Required bool `pulumi:"required"`
+}
+
+// GetKubernetesAddonsAddonInput is an input type that accepts GetKubernetesAddonsAddonArgs and GetKubernetesAddonsAddonOutput values.
+// You can construct a concrete instance of `GetKubernetesAddonsAddonInput` via:
+//
+//          GetKubernetesAddonsAddonArgs{...}
+type GetKubernetesAddonsAddonInput interface {
+	pulumi.Input
+
+	ToGetKubernetesAddonsAddonOutput() GetKubernetesAddonsAddonOutput
+	ToGetKubernetesAddonsAddonOutputWithContext(context.Context) GetKubernetesAddonsAddonOutput
+}
+
+type GetKubernetesAddonsAddonArgs struct {
+	// The current version of addon, if this field is an empty string, it means that the addon is not installed.
+	CurrentVersion pulumi.StringInput `pulumi:"currentVersion"`
+	// The name of addon.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The next version of this addon can be upgraded to.
+	NextVersion pulumi.StringInput `pulumi:"nextVersion"`
+	// Whether the addon is a system addon.
+	Required pulumi.BoolInput `pulumi:"required"`
+}
+
+func (GetKubernetesAddonsAddonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesAddonsAddon)(nil)).Elem()
+}
+
+func (i GetKubernetesAddonsAddonArgs) ToGetKubernetesAddonsAddonOutput() GetKubernetesAddonsAddonOutput {
+	return i.ToGetKubernetesAddonsAddonOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesAddonsAddonArgs) ToGetKubernetesAddonsAddonOutputWithContext(ctx context.Context) GetKubernetesAddonsAddonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesAddonsAddonOutput)
+}
+
+// GetKubernetesAddonsAddonArrayInput is an input type that accepts GetKubernetesAddonsAddonArray and GetKubernetesAddonsAddonArrayOutput values.
+// You can construct a concrete instance of `GetKubernetesAddonsAddonArrayInput` via:
+//
+//          GetKubernetesAddonsAddonArray{ GetKubernetesAddonsAddonArgs{...} }
+type GetKubernetesAddonsAddonArrayInput interface {
+	pulumi.Input
+
+	ToGetKubernetesAddonsAddonArrayOutput() GetKubernetesAddonsAddonArrayOutput
+	ToGetKubernetesAddonsAddonArrayOutputWithContext(context.Context) GetKubernetesAddonsAddonArrayOutput
+}
+
+type GetKubernetesAddonsAddonArray []GetKubernetesAddonsAddonInput
+
+func (GetKubernetesAddonsAddonArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesAddonsAddon)(nil)).Elem()
+}
+
+func (i GetKubernetesAddonsAddonArray) ToGetKubernetesAddonsAddonArrayOutput() GetKubernetesAddonsAddonArrayOutput {
+	return i.ToGetKubernetesAddonsAddonArrayOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesAddonsAddonArray) ToGetKubernetesAddonsAddonArrayOutputWithContext(ctx context.Context) GetKubernetesAddonsAddonArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesAddonsAddonArrayOutput)
+}
+
+type GetKubernetesAddonsAddonOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesAddonsAddonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesAddonsAddon)(nil)).Elem()
+}
+
+func (o GetKubernetesAddonsAddonOutput) ToGetKubernetesAddonsAddonOutput() GetKubernetesAddonsAddonOutput {
+	return o
+}
+
+func (o GetKubernetesAddonsAddonOutput) ToGetKubernetesAddonsAddonOutputWithContext(ctx context.Context) GetKubernetesAddonsAddonOutput {
+	return o
+}
+
+// The current version of addon, if this field is an empty string, it means that the addon is not installed.
+func (o GetKubernetesAddonsAddonOutput) CurrentVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesAddonsAddon) string { return v.CurrentVersion }).(pulumi.StringOutput)
+}
+
+// The name of addon.
+func (o GetKubernetesAddonsAddonOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesAddonsAddon) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The next version of this addon can be upgraded to.
+func (o GetKubernetesAddonsAddonOutput) NextVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesAddonsAddon) string { return v.NextVersion }).(pulumi.StringOutput)
+}
+
+// Whether the addon is a system addon.
+func (o GetKubernetesAddonsAddonOutput) Required() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesAddonsAddon) bool { return v.Required }).(pulumi.BoolOutput)
+}
+
+type GetKubernetesAddonsAddonArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesAddonsAddonArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesAddonsAddon)(nil)).Elem()
+}
+
+func (o GetKubernetesAddonsAddonArrayOutput) ToGetKubernetesAddonsAddonArrayOutput() GetKubernetesAddonsAddonArrayOutput {
+	return o
+}
+
+func (o GetKubernetesAddonsAddonArrayOutput) ToGetKubernetesAddonsAddonArrayOutputWithContext(ctx context.Context) GetKubernetesAddonsAddonArrayOutput {
+	return o
+}
+
+func (o GetKubernetesAddonsAddonArrayOutput) Index(i pulumi.IntInput) GetKubernetesAddonsAddonOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesAddonsAddon {
+		return vs[0].([]GetKubernetesAddonsAddon)[vs[1].(int)]
+	}).(GetKubernetesAddonsAddonOutput)
+}
+
 type GetKubernetesClustersCluster struct {
 	// The ID of availability zone.
 	AvailabilityZone   string `pulumi:"availabilityZone"`
@@ -7848,8 +7972,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesWorkerDataDiskArrayInput)(nil)).Elem(), EdgeKubernetesWorkerDataDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesWorkerNodeInput)(nil)).Elem(), EdgeKubernetesWorkerNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesWorkerNodeArrayInput)(nil)).Elem(), EdgeKubernetesWorkerNodeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesAddonInput)(nil)).Elem(), KubernetesAddonArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesAddonArrayInput)(nil)).Elem(), KubernetesAddonArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesAddonTypeInput)(nil)).Elem(), KubernetesAddonTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesAddonTypeArrayInput)(nil)).Elem(), KubernetesAddonTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesAutoscalerNodepoolInput)(nil)).Elem(), KubernetesAutoscalerNodepoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesAutoscalerNodepoolArrayInput)(nil)).Elem(), KubernetesAutoscalerNodepoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesCertificateAuthorityInput)(nil)).Elem(), KubernetesCertificateAuthorityArgs{})
@@ -7905,6 +8029,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgeKubernetesClustersClusterConnectionsInput)(nil)).Elem(), GetEdgeKubernetesClustersClusterConnectionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgeKubernetesClustersClusterWorkerNodeInput)(nil)).Elem(), GetEdgeKubernetesClustersClusterWorkerNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgeKubernetesClustersClusterWorkerNodeArrayInput)(nil)).Elem(), GetEdgeKubernetesClustersClusterWorkerNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesAddonsAddonInput)(nil)).Elem(), GetKubernetesAddonsAddonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesAddonsAddonArrayInput)(nil)).Elem(), GetKubernetesAddonsAddonArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClustersClusterInput)(nil)).Elem(), GetKubernetesClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClustersClusterArrayInput)(nil)).Elem(), GetKubernetesClustersClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClustersClusterConnectionsInput)(nil)).Elem(), GetKubernetesClustersClusterConnectionsArgs{})
@@ -7952,8 +8078,8 @@ func init() {
 	pulumi.RegisterOutputType(EdgeKubernetesWorkerDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesWorkerNodeOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesWorkerNodeArrayOutput{})
-	pulumi.RegisterOutputType(KubernetesAddonOutput{})
-	pulumi.RegisterOutputType(KubernetesAddonArrayOutput{})
+	pulumi.RegisterOutputType(KubernetesAddonTypeOutput{})
+	pulumi.RegisterOutputType(KubernetesAddonTypeArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesAutoscalerNodepoolOutput{})
 	pulumi.RegisterOutputType(KubernetesAutoscalerNodepoolArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesCertificateAuthorityOutput{})
@@ -8009,6 +8135,8 @@ func init() {
 	pulumi.RegisterOutputType(GetEdgeKubernetesClustersClusterConnectionsOutput{})
 	pulumi.RegisterOutputType(GetEdgeKubernetesClustersClusterWorkerNodeOutput{})
 	pulumi.RegisterOutputType(GetEdgeKubernetesClustersClusterWorkerNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesAddonsAddonOutput{})
+	pulumi.RegisterOutputType(GetKubernetesAddonsAddonArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClustersClusterConnectionsOutput{})

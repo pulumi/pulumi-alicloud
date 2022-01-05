@@ -132,6 +132,7 @@ type Endpoints struct {
 	Fc                  *string `pulumi:"fc"`
 	Fnf                 *string `pulumi:"fnf"`
 	Ga                  *string `pulumi:"ga"`
+	Gaplus              *string `pulumi:"gaplus"`
 	Gds                 *string `pulumi:"gds"`
 	Gpdb                *string `pulumi:"gpdb"`
 	Gwsecd              *string `pulumi:"gwsecd"`
@@ -253,6 +254,7 @@ type EndpointsArgs struct {
 	Fc                  pulumi.StringPtrInput `pulumi:"fc"`
 	Fnf                 pulumi.StringPtrInput `pulumi:"fnf"`
 	Ga                  pulumi.StringPtrInput `pulumi:"ga"`
+	Gaplus              pulumi.StringPtrInput `pulumi:"gaplus"`
 	Gds                 pulumi.StringPtrInput `pulumi:"gds"`
 	Gpdb                pulumi.StringPtrInput `pulumi:"gpdb"`
 	Gwsecd              pulumi.StringPtrInput `pulumi:"gwsecd"`
@@ -573,6 +575,10 @@ func (o EndpointsOutput) Fnf() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Ga() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Ga }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Gaplus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Gaplus }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Gds() pulumi.StringPtrOutput {

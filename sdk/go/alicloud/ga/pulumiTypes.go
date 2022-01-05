@@ -10,6 +10,112 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type AclAclEntry struct {
+	// The IP entry that you want to add to the ACL.
+	Entry *string `pulumi:"entry"`
+	// The description of the IP entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
+	EntryDescription *string `pulumi:"entryDescription"`
+}
+
+// AclAclEntryInput is an input type that accepts AclAclEntryArgs and AclAclEntryOutput values.
+// You can construct a concrete instance of `AclAclEntryInput` via:
+//
+//          AclAclEntryArgs{...}
+type AclAclEntryInput interface {
+	pulumi.Input
+
+	ToAclAclEntryOutput() AclAclEntryOutput
+	ToAclAclEntryOutputWithContext(context.Context) AclAclEntryOutput
+}
+
+type AclAclEntryArgs struct {
+	// The IP entry that you want to add to the ACL.
+	Entry pulumi.StringPtrInput `pulumi:"entry"`
+	// The description of the IP entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
+	EntryDescription pulumi.StringPtrInput `pulumi:"entryDescription"`
+}
+
+func (AclAclEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclAclEntry)(nil)).Elem()
+}
+
+func (i AclAclEntryArgs) ToAclAclEntryOutput() AclAclEntryOutput {
+	return i.ToAclAclEntryOutputWithContext(context.Background())
+}
+
+func (i AclAclEntryArgs) ToAclAclEntryOutputWithContext(ctx context.Context) AclAclEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclAclEntryOutput)
+}
+
+// AclAclEntryArrayInput is an input type that accepts AclAclEntryArray and AclAclEntryArrayOutput values.
+// You can construct a concrete instance of `AclAclEntryArrayInput` via:
+//
+//          AclAclEntryArray{ AclAclEntryArgs{...} }
+type AclAclEntryArrayInput interface {
+	pulumi.Input
+
+	ToAclAclEntryArrayOutput() AclAclEntryArrayOutput
+	ToAclAclEntryArrayOutputWithContext(context.Context) AclAclEntryArrayOutput
+}
+
+type AclAclEntryArray []AclAclEntryInput
+
+func (AclAclEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclAclEntry)(nil)).Elem()
+}
+
+func (i AclAclEntryArray) ToAclAclEntryArrayOutput() AclAclEntryArrayOutput {
+	return i.ToAclAclEntryArrayOutputWithContext(context.Background())
+}
+
+func (i AclAclEntryArray) ToAclAclEntryArrayOutputWithContext(ctx context.Context) AclAclEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclAclEntryArrayOutput)
+}
+
+type AclAclEntryOutput struct{ *pulumi.OutputState }
+
+func (AclAclEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclAclEntry)(nil)).Elem()
+}
+
+func (o AclAclEntryOutput) ToAclAclEntryOutput() AclAclEntryOutput {
+	return o
+}
+
+func (o AclAclEntryOutput) ToAclAclEntryOutputWithContext(ctx context.Context) AclAclEntryOutput {
+	return o
+}
+
+// The IP entry that you want to add to the ACL.
+func (o AclAclEntryOutput) Entry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AclAclEntry) *string { return v.Entry }).(pulumi.StringPtrOutput)
+}
+
+// The description of the IP entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
+func (o AclAclEntryOutput) EntryDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AclAclEntry) *string { return v.EntryDescription }).(pulumi.StringPtrOutput)
+}
+
+type AclAclEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (AclAclEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclAclEntry)(nil)).Elem()
+}
+
+func (o AclAclEntryArrayOutput) ToAclAclEntryArrayOutput() AclAclEntryArrayOutput {
+	return o
+}
+
+func (o AclAclEntryArrayOutput) ToAclAclEntryArrayOutputWithContext(ctx context.Context) AclAclEntryArrayOutput {
+	return o
+}
+
+func (o AclAclEntryArrayOutput) Index(i pulumi.IntInput) AclAclEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclAclEntry {
+		return vs[0].([]AclAclEntry)[vs[1].(int)]
+	}).(AclAclEntryOutput)
+}
+
 type EndpointGroupEndpointConfiguration struct {
 	// Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
 	EnableClientipPreservation *bool `pulumi:"enableClientipPreservation"`
@@ -1547,6 +1653,387 @@ func (o GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput) Index(
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAcceleratorsAcceleratorCrossDomainBandwidthPackage {
 		return vs[0].([]GetAcceleratorsAcceleratorCrossDomainBandwidthPackage)[vs[1].(int)]
 	}).(GetAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput)
+}
+
+type GetAclsAcl struct {
+	// The entries of the Acl.
+	AclEntries []GetAclsAclAclEntry `pulumi:"aclEntries"`
+	// The  ID of the Acl.
+	AclId string `pulumi:"aclId"`
+	// The name of the acl.
+	AclName string `pulumi:"aclName"`
+	// The address ip version.
+	AddressIpVersion string `pulumi:"addressIpVersion"`
+	// The ID of the Acl. Its value is same as `aclId`.
+	Id string `pulumi:"id"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+}
+
+// GetAclsAclInput is an input type that accepts GetAclsAclArgs and GetAclsAclOutput values.
+// You can construct a concrete instance of `GetAclsAclInput` via:
+//
+//          GetAclsAclArgs{...}
+type GetAclsAclInput interface {
+	pulumi.Input
+
+	ToGetAclsAclOutput() GetAclsAclOutput
+	ToGetAclsAclOutputWithContext(context.Context) GetAclsAclOutput
+}
+
+type GetAclsAclArgs struct {
+	// The entries of the Acl.
+	AclEntries GetAclsAclAclEntryArrayInput `pulumi:"aclEntries"`
+	// The  ID of the Acl.
+	AclId pulumi.StringInput `pulumi:"aclId"`
+	// The name of the acl.
+	AclName pulumi.StringInput `pulumi:"aclName"`
+	// The address ip version.
+	AddressIpVersion pulumi.StringInput `pulumi:"addressIpVersion"`
+	// The ID of the Acl. Its value is same as `aclId`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetAclsAclArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclsAcl)(nil)).Elem()
+}
+
+func (i GetAclsAclArgs) ToGetAclsAclOutput() GetAclsAclOutput {
+	return i.ToGetAclsAclOutputWithContext(context.Background())
+}
+
+func (i GetAclsAclArgs) ToGetAclsAclOutputWithContext(ctx context.Context) GetAclsAclOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclsAclOutput)
+}
+
+// GetAclsAclArrayInput is an input type that accepts GetAclsAclArray and GetAclsAclArrayOutput values.
+// You can construct a concrete instance of `GetAclsAclArrayInput` via:
+//
+//          GetAclsAclArray{ GetAclsAclArgs{...} }
+type GetAclsAclArrayInput interface {
+	pulumi.Input
+
+	ToGetAclsAclArrayOutput() GetAclsAclArrayOutput
+	ToGetAclsAclArrayOutputWithContext(context.Context) GetAclsAclArrayOutput
+}
+
+type GetAclsAclArray []GetAclsAclInput
+
+func (GetAclsAclArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclsAcl)(nil)).Elem()
+}
+
+func (i GetAclsAclArray) ToGetAclsAclArrayOutput() GetAclsAclArrayOutput {
+	return i.ToGetAclsAclArrayOutputWithContext(context.Background())
+}
+
+func (i GetAclsAclArray) ToGetAclsAclArrayOutputWithContext(ctx context.Context) GetAclsAclArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclsAclArrayOutput)
+}
+
+type GetAclsAclOutput struct{ *pulumi.OutputState }
+
+func (GetAclsAclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclsAcl)(nil)).Elem()
+}
+
+func (o GetAclsAclOutput) ToGetAclsAclOutput() GetAclsAclOutput {
+	return o
+}
+
+func (o GetAclsAclOutput) ToGetAclsAclOutputWithContext(ctx context.Context) GetAclsAclOutput {
+	return o
+}
+
+// The entries of the Acl.
+func (o GetAclsAclOutput) AclEntries() GetAclsAclAclEntryArrayOutput {
+	return o.ApplyT(func(v GetAclsAcl) []GetAclsAclAclEntry { return v.AclEntries }).(GetAclsAclAclEntryArrayOutput)
+}
+
+// The  ID of the Acl.
+func (o GetAclsAclOutput) AclId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclsAcl) string { return v.AclId }).(pulumi.StringOutput)
+}
+
+// The name of the acl.
+func (o GetAclsAclOutput) AclName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclsAcl) string { return v.AclName }).(pulumi.StringOutput)
+}
+
+// The address ip version.
+func (o GetAclsAclOutput) AddressIpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclsAcl) string { return v.AddressIpVersion }).(pulumi.StringOutput)
+}
+
+// The ID of the Acl. Its value is same as `aclId`.
+func (o GetAclsAclOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclsAcl) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetAclsAclOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclsAcl) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetAclsAclArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAclsAclArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclsAcl)(nil)).Elem()
+}
+
+func (o GetAclsAclArrayOutput) ToGetAclsAclArrayOutput() GetAclsAclArrayOutput {
+	return o
+}
+
+func (o GetAclsAclArrayOutput) ToGetAclsAclArrayOutputWithContext(ctx context.Context) GetAclsAclArrayOutput {
+	return o
+}
+
+func (o GetAclsAclArrayOutput) Index(i pulumi.IntInput) GetAclsAclOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclsAcl {
+		return vs[0].([]GetAclsAcl)[vs[1].(int)]
+	}).(GetAclsAclOutput)
+}
+
+type GetAclsAclAclEntry struct {
+	// The IP entry that you want to add to the ACL.
+	Entry string `pulumi:"entry"`
+	// The description of the IP entry.
+	EntryDescription string `pulumi:"entryDescription"`
+}
+
+// GetAclsAclAclEntryInput is an input type that accepts GetAclsAclAclEntryArgs and GetAclsAclAclEntryOutput values.
+// You can construct a concrete instance of `GetAclsAclAclEntryInput` via:
+//
+//          GetAclsAclAclEntryArgs{...}
+type GetAclsAclAclEntryInput interface {
+	pulumi.Input
+
+	ToGetAclsAclAclEntryOutput() GetAclsAclAclEntryOutput
+	ToGetAclsAclAclEntryOutputWithContext(context.Context) GetAclsAclAclEntryOutput
+}
+
+type GetAclsAclAclEntryArgs struct {
+	// The IP entry that you want to add to the ACL.
+	Entry pulumi.StringInput `pulumi:"entry"`
+	// The description of the IP entry.
+	EntryDescription pulumi.StringInput `pulumi:"entryDescription"`
+}
+
+func (GetAclsAclAclEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclsAclAclEntry)(nil)).Elem()
+}
+
+func (i GetAclsAclAclEntryArgs) ToGetAclsAclAclEntryOutput() GetAclsAclAclEntryOutput {
+	return i.ToGetAclsAclAclEntryOutputWithContext(context.Background())
+}
+
+func (i GetAclsAclAclEntryArgs) ToGetAclsAclAclEntryOutputWithContext(ctx context.Context) GetAclsAclAclEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclsAclAclEntryOutput)
+}
+
+// GetAclsAclAclEntryArrayInput is an input type that accepts GetAclsAclAclEntryArray and GetAclsAclAclEntryArrayOutput values.
+// You can construct a concrete instance of `GetAclsAclAclEntryArrayInput` via:
+//
+//          GetAclsAclAclEntryArray{ GetAclsAclAclEntryArgs{...} }
+type GetAclsAclAclEntryArrayInput interface {
+	pulumi.Input
+
+	ToGetAclsAclAclEntryArrayOutput() GetAclsAclAclEntryArrayOutput
+	ToGetAclsAclAclEntryArrayOutputWithContext(context.Context) GetAclsAclAclEntryArrayOutput
+}
+
+type GetAclsAclAclEntryArray []GetAclsAclAclEntryInput
+
+func (GetAclsAclAclEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclsAclAclEntry)(nil)).Elem()
+}
+
+func (i GetAclsAclAclEntryArray) ToGetAclsAclAclEntryArrayOutput() GetAclsAclAclEntryArrayOutput {
+	return i.ToGetAclsAclAclEntryArrayOutputWithContext(context.Background())
+}
+
+func (i GetAclsAclAclEntryArray) ToGetAclsAclAclEntryArrayOutputWithContext(ctx context.Context) GetAclsAclAclEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclsAclAclEntryArrayOutput)
+}
+
+type GetAclsAclAclEntryOutput struct{ *pulumi.OutputState }
+
+func (GetAclsAclAclEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclsAclAclEntry)(nil)).Elem()
+}
+
+func (o GetAclsAclAclEntryOutput) ToGetAclsAclAclEntryOutput() GetAclsAclAclEntryOutput {
+	return o
+}
+
+func (o GetAclsAclAclEntryOutput) ToGetAclsAclAclEntryOutputWithContext(ctx context.Context) GetAclsAclAclEntryOutput {
+	return o
+}
+
+// The IP entry that you want to add to the ACL.
+func (o GetAclsAclAclEntryOutput) Entry() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclsAclAclEntry) string { return v.Entry }).(pulumi.StringOutput)
+}
+
+// The description of the IP entry.
+func (o GetAclsAclAclEntryOutput) EntryDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclsAclAclEntry) string { return v.EntryDescription }).(pulumi.StringOutput)
+}
+
+type GetAclsAclAclEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAclsAclAclEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclsAclAclEntry)(nil)).Elem()
+}
+
+func (o GetAclsAclAclEntryArrayOutput) ToGetAclsAclAclEntryArrayOutput() GetAclsAclAclEntryArrayOutput {
+	return o
+}
+
+func (o GetAclsAclAclEntryArrayOutput) ToGetAclsAclAclEntryArrayOutputWithContext(ctx context.Context) GetAclsAclAclEntryArrayOutput {
+	return o
+}
+
+func (o GetAclsAclAclEntryArrayOutput) Index(i pulumi.IntInput) GetAclsAclAclEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclsAclAclEntry {
+		return vs[0].([]GetAclsAclAclEntry)[vs[1].(int)]
+	}).(GetAclsAclAclEntryOutput)
+}
+
+type GetAdditionalCertificatesCertificate struct {
+	// The ID of the GA instance.
+	AcceleratorId string `pulumi:"acceleratorId"`
+	// The Certificate ID.
+	CertificateId string `pulumi:"certificateId"`
+	// The domain name specified by the certificate.
+	Domain string `pulumi:"domain"`
+	// The ID of the Additional Certificate. The value formats as `<accelerator_id>:<listener_id>:<domain>`.
+	Id string `pulumi:"id"`
+	// The ID of the listener. Only HTTPS listeners support this parameter.
+	ListenerId string `pulumi:"listenerId"`
+}
+
+// GetAdditionalCertificatesCertificateInput is an input type that accepts GetAdditionalCertificatesCertificateArgs and GetAdditionalCertificatesCertificateOutput values.
+// You can construct a concrete instance of `GetAdditionalCertificatesCertificateInput` via:
+//
+//          GetAdditionalCertificatesCertificateArgs{...}
+type GetAdditionalCertificatesCertificateInput interface {
+	pulumi.Input
+
+	ToGetAdditionalCertificatesCertificateOutput() GetAdditionalCertificatesCertificateOutput
+	ToGetAdditionalCertificatesCertificateOutputWithContext(context.Context) GetAdditionalCertificatesCertificateOutput
+}
+
+type GetAdditionalCertificatesCertificateArgs struct {
+	// The ID of the GA instance.
+	AcceleratorId pulumi.StringInput `pulumi:"acceleratorId"`
+	// The Certificate ID.
+	CertificateId pulumi.StringInput `pulumi:"certificateId"`
+	// The domain name specified by the certificate.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The ID of the Additional Certificate. The value formats as `<accelerator_id>:<listener_id>:<domain>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the listener. Only HTTPS listeners support this parameter.
+	ListenerId pulumi.StringInput `pulumi:"listenerId"`
+}
+
+func (GetAdditionalCertificatesCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAdditionalCertificatesCertificate)(nil)).Elem()
+}
+
+func (i GetAdditionalCertificatesCertificateArgs) ToGetAdditionalCertificatesCertificateOutput() GetAdditionalCertificatesCertificateOutput {
+	return i.ToGetAdditionalCertificatesCertificateOutputWithContext(context.Background())
+}
+
+func (i GetAdditionalCertificatesCertificateArgs) ToGetAdditionalCertificatesCertificateOutputWithContext(ctx context.Context) GetAdditionalCertificatesCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAdditionalCertificatesCertificateOutput)
+}
+
+// GetAdditionalCertificatesCertificateArrayInput is an input type that accepts GetAdditionalCertificatesCertificateArray and GetAdditionalCertificatesCertificateArrayOutput values.
+// You can construct a concrete instance of `GetAdditionalCertificatesCertificateArrayInput` via:
+//
+//          GetAdditionalCertificatesCertificateArray{ GetAdditionalCertificatesCertificateArgs{...} }
+type GetAdditionalCertificatesCertificateArrayInput interface {
+	pulumi.Input
+
+	ToGetAdditionalCertificatesCertificateArrayOutput() GetAdditionalCertificatesCertificateArrayOutput
+	ToGetAdditionalCertificatesCertificateArrayOutputWithContext(context.Context) GetAdditionalCertificatesCertificateArrayOutput
+}
+
+type GetAdditionalCertificatesCertificateArray []GetAdditionalCertificatesCertificateInput
+
+func (GetAdditionalCertificatesCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAdditionalCertificatesCertificate)(nil)).Elem()
+}
+
+func (i GetAdditionalCertificatesCertificateArray) ToGetAdditionalCertificatesCertificateArrayOutput() GetAdditionalCertificatesCertificateArrayOutput {
+	return i.ToGetAdditionalCertificatesCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i GetAdditionalCertificatesCertificateArray) ToGetAdditionalCertificatesCertificateArrayOutputWithContext(ctx context.Context) GetAdditionalCertificatesCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAdditionalCertificatesCertificateArrayOutput)
+}
+
+type GetAdditionalCertificatesCertificateOutput struct{ *pulumi.OutputState }
+
+func (GetAdditionalCertificatesCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAdditionalCertificatesCertificate)(nil)).Elem()
+}
+
+func (o GetAdditionalCertificatesCertificateOutput) ToGetAdditionalCertificatesCertificateOutput() GetAdditionalCertificatesCertificateOutput {
+	return o
+}
+
+func (o GetAdditionalCertificatesCertificateOutput) ToGetAdditionalCertificatesCertificateOutputWithContext(ctx context.Context) GetAdditionalCertificatesCertificateOutput {
+	return o
+}
+
+// The ID of the GA instance.
+func (o GetAdditionalCertificatesCertificateOutput) AcceleratorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdditionalCertificatesCertificate) string { return v.AcceleratorId }).(pulumi.StringOutput)
+}
+
+// The Certificate ID.
+func (o GetAdditionalCertificatesCertificateOutput) CertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdditionalCertificatesCertificate) string { return v.CertificateId }).(pulumi.StringOutput)
+}
+
+// The domain name specified by the certificate.
+func (o GetAdditionalCertificatesCertificateOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdditionalCertificatesCertificate) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The ID of the Additional Certificate. The value formats as `<accelerator_id>:<listener_id>:<domain>`.
+func (o GetAdditionalCertificatesCertificateOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdditionalCertificatesCertificate) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the listener. Only HTTPS listeners support this parameter.
+func (o GetAdditionalCertificatesCertificateOutput) ListenerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAdditionalCertificatesCertificate) string { return v.ListenerId }).(pulumi.StringOutput)
+}
+
+type GetAdditionalCertificatesCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAdditionalCertificatesCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAdditionalCertificatesCertificate)(nil)).Elem()
+}
+
+func (o GetAdditionalCertificatesCertificateArrayOutput) ToGetAdditionalCertificatesCertificateArrayOutput() GetAdditionalCertificatesCertificateArrayOutput {
+	return o
+}
+
+func (o GetAdditionalCertificatesCertificateArrayOutput) ToGetAdditionalCertificatesCertificateArrayOutputWithContext(ctx context.Context) GetAdditionalCertificatesCertificateArrayOutput {
+	return o
+}
+
+func (o GetAdditionalCertificatesCertificateArrayOutput) Index(i pulumi.IntInput) GetAdditionalCertificatesCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAdditionalCertificatesCertificate {
+		return vs[0].([]GetAdditionalCertificatesCertificate)[vs[1].(int)]
+	}).(GetAdditionalCertificatesCertificateOutput)
 }
 
 type GetBandwidthPackagesPackage struct {
@@ -3540,6 +4027,8 @@ func (o GetListenersListenerPortRangeArrayOutput) Index(i pulumi.IntInput) GetLi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AclAclEntryInput)(nil)).Elem(), AclAclEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclAclEntryArrayInput)(nil)).Elem(), AclAclEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointGroupEndpointConfigurationInput)(nil)).Elem(), EndpointGroupEndpointConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointGroupEndpointConfigurationArrayInput)(nil)).Elem(), EndpointGroupEndpointConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointGroupPortOverridesInput)(nil)).Elem(), EndpointGroupPortOverridesArgs{})
@@ -3565,6 +4054,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAcceleratorsAcceleratorBasicBandwidthPackageArrayInput)(nil)).Elem(), GetAcceleratorsAcceleratorBasicBandwidthPackageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAcceleratorsAcceleratorCrossDomainBandwidthPackageInput)(nil)).Elem(), GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayInput)(nil)).Elem(), GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclsAclInput)(nil)).Elem(), GetAclsAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclsAclArrayInput)(nil)).Elem(), GetAclsAclArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclsAclAclEntryInput)(nil)).Elem(), GetAclsAclAclEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclsAclAclEntryArrayInput)(nil)).Elem(), GetAclsAclAclEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAdditionalCertificatesCertificateInput)(nil)).Elem(), GetAdditionalCertificatesCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAdditionalCertificatesCertificateArrayInput)(nil)).Elem(), GetAdditionalCertificatesCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBandwidthPackagesPackageInput)(nil)).Elem(), GetBandwidthPackagesPackageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBandwidthPackagesPackageArrayInput)(nil)).Elem(), GetBandwidthPackagesPackageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointGroupsGroupInput)(nil)).Elem(), GetEndpointGroupsGroupArgs{})
@@ -3595,6 +4090,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerCertificateArrayInput)(nil)).Elem(), GetListenersListenerCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerPortRangeInput)(nil)).Elem(), GetListenersListenerPortRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerPortRangeArrayInput)(nil)).Elem(), GetListenersListenerPortRangeArray{})
+	pulumi.RegisterOutputType(AclAclEntryOutput{})
+	pulumi.RegisterOutputType(AclAclEntryArrayOutput{})
 	pulumi.RegisterOutputType(EndpointGroupEndpointConfigurationOutput{})
 	pulumi.RegisterOutputType(EndpointGroupEndpointConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(EndpointGroupPortOverridesOutput{})
@@ -3620,6 +4117,12 @@ func init() {
 	pulumi.RegisterOutputType(GetAcceleratorsAcceleratorBasicBandwidthPackageArrayOutput{})
 	pulumi.RegisterOutputType(GetAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput{})
 	pulumi.RegisterOutputType(GetAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput{})
+	pulumi.RegisterOutputType(GetAclsAclOutput{})
+	pulumi.RegisterOutputType(GetAclsAclArrayOutput{})
+	pulumi.RegisterOutputType(GetAclsAclAclEntryOutput{})
+	pulumi.RegisterOutputType(GetAclsAclAclEntryArrayOutput{})
+	pulumi.RegisterOutputType(GetAdditionalCertificatesCertificateOutput{})
+	pulumi.RegisterOutputType(GetAdditionalCertificatesCertificateArrayOutput{})
 	pulumi.RegisterOutputType(GetBandwidthPackagesPackageOutput{})
 	pulumi.RegisterOutputType(GetBandwidthPackagesPackageArrayOutput{})
 	pulumi.RegisterOutputType(GetEndpointGroupsGroupOutput{})

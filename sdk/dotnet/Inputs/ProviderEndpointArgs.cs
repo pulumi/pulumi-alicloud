@@ -174,6 +174,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("ga")]
         public Input<string>? Ga { get; set; }
 
+        [Input("gaplus")]
+        public Input<string>? Gaplus { get; set; }
+
         [Input("gds")]
         public Input<string>? Gds { get; set; }
 

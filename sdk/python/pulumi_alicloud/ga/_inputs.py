@@ -9,6 +9,7 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'AclAclEntryArgs',
     'EndpointGroupEndpointConfigurationArgs',
     'EndpointGroupPortOverridesArgs',
     'ForwardingRuleRuleActionArgs',
@@ -20,6 +21,45 @@ __all__ = [
     'ListenerCertificateArgs',
     'ListenerPortRangeArgs',
 ]
+
+@pulumi.input_type
+class AclAclEntryArgs:
+    def __init__(__self__, *,
+                 entry: Optional[pulumi.Input[str]] = None,
+                 entry_description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] entry: The IP entry that you want to add to the ACL.
+        :param pulumi.Input[str] entry_description: The description of the IP entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
+        """
+        if entry is not None:
+            pulumi.set(__self__, "entry", entry)
+        if entry_description is not None:
+            pulumi.set(__self__, "entry_description", entry_description)
+
+    @property
+    @pulumi.getter
+    def entry(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP entry that you want to add to the ACL.
+        """
+        return pulumi.get(self, "entry")
+
+    @entry.setter
+    def entry(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entry", value)
+
+    @property
+    @pulumi.getter(name="entryDescription")
+    def entry_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the IP entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
+        """
+        return pulumi.get(self, "entry_description")
+
+    @entry_description.setter
+    def entry_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entry_description", value)
+
 
 @pulumi.input_type
 class EndpointGroupEndpointConfigurationArgs:

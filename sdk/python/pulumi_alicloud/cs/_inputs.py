@@ -43,6 +43,7 @@ __all__ = [
     'NodePoolTaintArgs',
     'ServerlessKubernetesAddonArgs',
     'SwarmNodeArgs',
+    'GetKubernetesAddonsAddonArgs',
     'GetKubernetesPermissionPermissionArgs',
 ]
 
@@ -2265,6 +2266,73 @@ class SwarmNodeArgs:
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
+class GetKubernetesAddonsAddonArgs:
+    def __init__(__self__, *,
+                 current_version: str,
+                 name: str,
+                 next_version: str,
+                 required: bool):
+        """
+        :param str current_version: The current version of addon, if this field is an empty string, it means that the addon is not installed.
+        :param str name: The name of addon.
+        :param str next_version: The next version of this addon can be upgraded to.
+        :param bool required: Whether the addon is a system addon.
+        """
+        pulumi.set(__self__, "current_version", current_version)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "next_version", next_version)
+        pulumi.set(__self__, "required", required)
+
+    @property
+    @pulumi.getter(name="currentVersion")
+    def current_version(self) -> str:
+        """
+        The current version of addon, if this field is an empty string, it means that the addon is not installed.
+        """
+        return pulumi.get(self, "current_version")
+
+    @current_version.setter
+    def current_version(self, value: str):
+        pulumi.set(self, "current_version", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of addon.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nextVersion")
+    def next_version(self) -> str:
+        """
+        The next version of this addon can be upgraded to.
+        """
+        return pulumi.get(self, "next_version")
+
+    @next_version.setter
+    def next_version(self, value: str):
+        pulumi.set(self, "next_version", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> bool:
+        """
+        Whether the addon is a system addon.
+        """
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: bool):
+        pulumi.set(self, "required", value)
 
 
 @pulumi.input_type
