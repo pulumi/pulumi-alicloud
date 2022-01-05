@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade terraform-provider-alicloud to v1.150.0
+_(none)_
 
 ---
+
+## 3.14.0 (2022-01-05)
+* Upgrade terraform-provider-alicloud to v1.150.0
 
 ## 3.13.0 (2022-01-04)
 * Upgrade terraform-provider-alicloud to v1.149.0
