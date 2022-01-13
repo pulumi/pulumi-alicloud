@@ -100,7 +100,7 @@ export class Trail extends pulumi.CustomResource {
      */
     public readonly roleName!: pulumi.Output<string>;
     /**
-     * The unique ARN of the Log Service project.
+     * The unique ARN of the Log Service project. Ensure that `slsProjectArn` is valid .
      */
     public readonly slsProjectArn!: pulumi.Output<string | undefined>;
     /**
@@ -212,7 +212,7 @@ export interface TrailState {
      */
     roleName?: pulumi.Input<string>;
     /**
-     * The unique ARN of the Log Service project.
+     * The unique ARN of the Log Service project. Ensure that `slsProjectArn` is valid .
      */
     slsProjectArn?: pulumi.Input<string>;
     /**
@@ -276,7 +276,7 @@ export interface TrailArgs {
      */
     roleName?: pulumi.Input<string>;
     /**
-     * The unique ARN of the Log Service project.
+     * The unique ARN of the Log Service project. Ensure that `slsProjectArn` is valid .
      */
     slsProjectArn?: pulumi.Input<string>;
     /**

@@ -57,7 +57,7 @@ class GetTransitRoutersResult:
     @pulumi.getter(name="cenId")
     def cen_id(self) -> str:
         """
-        ID of the CEN instance.
+        The ID of the CEN instance.
         """
         return pulumi.get(self, "cen_id")
 
@@ -71,7 +71,7 @@ class GetTransitRoutersResult:
 
     @property
     @pulumi.getter
-    def ids(self) -> Sequence[str]:
+    def ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ids")
 
     @property
@@ -82,6 +82,9 @@ class GetTransitRoutersResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of  CEN Transit Routers names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -99,9 +102,9 @@ class GetTransitRoutersResult:
 
     @property
     @pulumi.getter(name="transitRouterId")
-    def transit_router_id(self) -> str:
+    def transit_router_id(self) -> Optional[str]:
         """
-        ID of the transit router.
+        The ID of the transit router.
         """
         return pulumi.get(self, "transit_router_id")
 
@@ -138,6 +141,7 @@ class AwaitableGetTransitRoutersResult(GetTransitRoutersResult):
 
 
 def get_transit_routers(cen_id: Optional[str] = None,
+                        ids: Optional[Sequence[str]] = None,
                         name_regex: Optional[str] = None,
                         output_file: Optional[str] = None,
                         status: Optional[str] = None,
@@ -160,13 +164,16 @@ def get_transit_routers(cen_id: Optional[str] = None,
     ```
 
 
-    :param str cen_id: ID of the CEN instance.
+    :param str cen_id: The ID of the CEN instance.
+    :param Sequence[str] ids: A list of resource id. The element value is same as <cen_id>:<transit_router_id>`.
+    :param str name_regex: A regex string to filter CEN Transit Routers by name.
     :param str status: The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
-    :param str transit_router_id: ID of the transit router.
+    :param str transit_router_id: The ID of the transit router.
     :param Sequence[str] transit_router_ids: A list of ID of the transit router.
     """
     __args__ = dict()
     __args__['cenId'] = cen_id
+    __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['status'] = status
@@ -193,10 +200,11 @@ def get_transit_routers(cen_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_transit_routers)
 def get_transit_routers_output(cen_id: Optional[pulumi.Input[str]] = None,
+                               ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                status: Optional[pulumi.Input[Optional[str]]] = None,
-                               transit_router_id: Optional[pulumi.Input[str]] = None,
+                               transit_router_id: Optional[pulumi.Input[Optional[str]]] = None,
                                transit_router_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRoutersResult]:
     """
@@ -215,9 +223,11 @@ def get_transit_routers_output(cen_id: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str cen_id: ID of the CEN instance.
+    :param str cen_id: The ID of the CEN instance.
+    :param Sequence[str] ids: A list of resource id. The element value is same as <cen_id>:<transit_router_id>`.
+    :param str name_regex: A regex string to filter CEN Transit Routers by name.
     :param str status: The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
-    :param str transit_router_id: ID of the transit router.
+    :param str transit_router_id: The ID of the transit router.
     :param Sequence[str] transit_router_ids: A list of ID of the transit router.
     """
     ...

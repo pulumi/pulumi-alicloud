@@ -1468,7 +1468,7 @@ type GetGatewaysGateway struct {
 	IsReleaseAfterExpiration bool `pulumi:"isReleaseAfterExpiration"`
 	// gateway location.
 	Location string `pulumi:"location"`
-	// gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`.
+	// gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`, `Subscription`.
 	PaymentType string `pulumi:"paymentType"`
 	// gateway public network bandwidth.
 	PublicNetworkBandwidth int    `pulumi:"publicNetworkBandwidth"`
@@ -1532,7 +1532,7 @@ type GetGatewaysGatewayArgs struct {
 	IsReleaseAfterExpiration pulumi.BoolInput `pulumi:"isReleaseAfterExpiration"`
 	// gateway location.
 	Location pulumi.StringInput `pulumi:"location"`
-	// gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`.
+	// gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`, `Subscription`.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
 	// gateway public network bandwidth.
 	PublicNetworkBandwidth pulumi.IntInput    `pulumi:"publicNetworkBandwidth"`
@@ -1686,7 +1686,7 @@ func (o GetGatewaysGatewayOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`.
+// gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`, `Subscription`.
 func (o GetGatewaysGatewayOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.PaymentType }).(pulumi.StringOutput)
 }

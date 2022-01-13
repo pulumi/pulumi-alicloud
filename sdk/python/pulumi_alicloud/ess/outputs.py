@@ -11,6 +11,7 @@ from . import outputs
 
 __all__ = [
     'ScalingConfigurationDataDisk',
+    'ScalingConfigurationSpotPriceLimit',
     'ScalingGroupVServerGroupsVserverGroup',
     'ScalingGroupVServerGroupsVserverGroupVserverAttribute',
     'ScalingRuleStepAdjustment',
@@ -19,6 +20,7 @@ __all__ = [
     'GetNotificationsNotificationResult',
     'GetScalingConfigurationsConfigurationResult',
     'GetScalingConfigurationsConfigurationDataDiskResult',
+    'GetScalingConfigurationsConfigurationSpotPriceLimitResult',
     'GetScalingGroupsGroupResult',
     'GetScalingRulesRuleResult',
     'GetScheduledTasksTaskResult',
@@ -140,6 +142,52 @@ class ScalingConfigurationDataDisk(dict):
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[str]:
         return pulumi.get(self, "snapshot_id")
+
+
+@pulumi.output_type
+class ScalingConfigurationSpotPriceLimit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceType":
+            suggest = "instance_type"
+        elif key == "priceLimit":
+            suggest = "price_limit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScalingConfigurationSpotPriceLimit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScalingConfigurationSpotPriceLimit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScalingConfigurationSpotPriceLimit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_type: Optional[str] = None,
+                 price_limit: Optional[float] = None):
+        """
+        :param str instance_type: Resource type of an ECS instance.
+        """
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if price_limit is not None:
+            pulumi.set(__self__, "price_limit", price_limit)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[str]:
+        """
+        Resource type of an ECS instance.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="priceLimit")
+    def price_limit(self) -> Optional[float]:
+        return pulumi.get(self, "price_limit")
 
 
 @pulumi.output_type
@@ -620,6 +668,8 @@ class GetScalingConfigurationsConfigurationResult(dict):
                  name: str,
                  scaling_group_id: str,
                  security_group_id: str,
+                 spot_price_limits: Sequence['outputs.GetScalingConfigurationsConfigurationSpotPriceLimitResult'],
+                 spot_strategy: str,
                  system_disk_category: str,
                  system_disk_performance_level: str,
                  system_disk_size: int):
@@ -631,7 +681,7 @@ class GetScalingConfigurationsConfigurationResult(dict):
         :param str id: ID of the scaling rule.
         :param str image_id: Image ID of the scaling configuration.
         :param str instance_name: (Optional,Available in 1.143.0+) InstanceName of an ECS instance.
-        :param str instance_type: Instance type of the scaling configuration.
+        :param str instance_type: Resource type of an ECS instance.
         :param str internet_charge_type: Internet charge type of the scaling configuration.
         :param int internet_max_bandwidth_in: Internet max bandwidth in of the scaling configuration.
         :param int internet_max_bandwidth_out: Internet max bandwidth of the scaling configuration.
@@ -639,6 +689,8 @@ class GetScalingConfigurationsConfigurationResult(dict):
         :param str name: Name of the scaling configuration.
         :param str scaling_group_id: Scaling group id the scaling configurations belong to.
         :param str security_group_id: Security group ID of the scaling configuration.
+        :param Sequence['GetScalingConfigurationsConfigurationSpotPriceLimitArgs'] spot_price_limits: (Optional, Available in 1.151.0+) The maximum price hourly for instance types.
+        :param str spot_strategy: (Optional, Available in 1.151.0+) The spot strategy for a Pay-As-You-Go instance.
         :param str system_disk_category: System disk category of the scaling configuration.
         :param str system_disk_performance_level: The performance level of the ESSD used as the system disk.
         :param int system_disk_size: System disk size of the scaling configuration.
@@ -658,6 +710,8 @@ class GetScalingConfigurationsConfigurationResult(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "scaling_group_id", scaling_group_id)
         pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "spot_price_limits", spot_price_limits)
+        pulumi.set(__self__, "spot_strategy", spot_strategy)
         pulumi.set(__self__, "system_disk_category", system_disk_category)
         pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
         pulumi.set(__self__, "system_disk_size", system_disk_size)
@@ -722,7 +776,7 @@ class GetScalingConfigurationsConfigurationResult(dict):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> str:
         """
-        Instance type of the scaling configuration.
+        Resource type of an ECS instance.
         """
         return pulumi.get(self, "instance_type")
 
@@ -781,6 +835,22 @@ class GetScalingConfigurationsConfigurationResult(dict):
         Security group ID of the scaling configuration.
         """
         return pulumi.get(self, "security_group_id")
+
+    @property
+    @pulumi.getter(name="spotPriceLimits")
+    def spot_price_limits(self) -> Sequence['outputs.GetScalingConfigurationsConfigurationSpotPriceLimitResult']:
+        """
+        (Optional, Available in 1.151.0+) The maximum price hourly for instance types.
+        """
+        return pulumi.get(self, "spot_price_limits")
+
+    @property
+    @pulumi.getter(name="spotStrategy")
+    def spot_strategy(self) -> str:
+        """
+        (Optional, Available in 1.151.0+) The spot strategy for a Pay-As-You-Go instance.
+        """
+        return pulumi.get(self, "spot_strategy")
 
     @property
     @pulumi.getter(name="systemDiskCategory")
@@ -884,6 +954,37 @@ class GetScalingConfigurationsConfigurationDataDiskResult(dict):
         Size of data disk.
         """
         return pulumi.get(self, "snapshot_id")
+
+
+@pulumi.output_type
+class GetScalingConfigurationsConfigurationSpotPriceLimitResult(dict):
+    def __init__(__self__, *,
+                 instance_type: Optional[str] = None,
+                 price_limit: Optional[float] = None):
+        """
+        :param str instance_type: Resource type of an ECS instance.
+        :param float price_limit: Price limit hourly of instance type.
+        """
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if price_limit is not None:
+            pulumi.set(__self__, "price_limit", price_limit)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[str]:
+        """
+        Resource type of an ECS instance.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="priceLimit")
+    def price_limit(self) -> Optional[float]:
+        """
+        Price limit hourly of instance type.
+        """
+        return pulumi.get(self, "price_limit")
 
 
 @pulumi.output_type

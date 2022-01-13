@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AlidnsInstance{}
 	case "alicloud:dns/alidnsRecord:AlidnsRecord":
 		r = &AlidnsRecord{}
+	case "alicloud:dns/customLine:CustomLine":
+		r = &CustomLine{}
 	case "alicloud:dns/ddosBgpInstance:DdosBgpInstance":
 		r = &DdosBgpInstance{}
 	case "alicloud:dns/ddosCooInstance:DdosCooInstance":
@@ -43,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DomainGroup{}
 	case "alicloud:dns/group:Group":
 		r = &Group{}
+	case "alicloud:dns/gtmInstance:GtmInstance":
+		r = &GtmInstance{}
 	case "alicloud:dns/instance:Instance":
 		r = &Instance{}
 	case "alicloud:dns/record:Record":
@@ -82,6 +86,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"dns/customLine",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"dns/ddosBgpInstance",
 		&module{version},
 	)
@@ -113,6 +122,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"dns/group",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dns/gtmInstance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

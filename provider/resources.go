@@ -514,6 +514,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_alidns_domain":            {Tok: resource(dnsMod, "AlidnsDomain")},
 			"alicloud_alidns_instance":          {Tok: resource(dnsMod, "AlidnsInstance")},
 			"alicloud_alidns_domain_attachment": {Tok: resource(dnsMod, "AlidnsDomainAttachment")},
+			"alicloud_alidns_custom_line":       {Tok: resource(dnsMod, "CustomLine")},
+			"alicloud_alidns_gtm_instance":      {Tok: resource(dnsMod, "GtmInstance")},
 
 			// Drds
 			"alicloud_drds_instance": {Tok: resource(drdsMod, "Instance")},
@@ -921,11 +923,12 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// ros
-			"alicloud_ros_change_set":     {Tok: resource(rosMod, "ChangeSet")},
-			"alicloud_ros_stack_group":    {Tok: resource(rosMod, "StackGroup")},
-			"alicloud_ros_stack":          {Tok: resource(rosMod, "Stack")},
-			"alicloud_ros_template":       {Tok: resource(rosMod, "Template")},
-			"alicloud_ros_stack_instance": {Tok: resource(rosMod, "StackInstance")},
+			"alicloud_ros_change_set":       {Tok: resource(rosMod, "ChangeSet")},
+			"alicloud_ros_stack_group":      {Tok: resource(rosMod, "StackGroup")},
+			"alicloud_ros_stack":            {Tok: resource(rosMod, "Stack")},
+			"alicloud_ros_template":         {Tok: resource(rosMod, "Template")},
+			"alicloud_ros_stack_instance":   {Tok: resource(rosMod, "StackInstance")},
+			"alicloud_ros_template_scratch": {Tok: resource(rosMod, "TemplateScratch")},
 
 			// Sae
 			"alicloud_sae_namespace":   {Tok: resource(saeMod, "Namespace")},
@@ -1051,6 +1054,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_vpc_ipv6_egress_rule":                   {Tok: resource(vpcMod, "Ipv6EgressRule")},
 			"alicloud_vpc_ipv6_gateway":                       {Tok: resource(vpcMod, "Ipv6Gateway")},
 			"alicloud_vpc_ipv6_internet_bandwidth":            {Tok: resource(vpcMod, "Ipv6InternetBandwidth")},
+			"alicloud_vpc_vbr_ha":                             {Tok: resource(vpcMod, "VbrHa")},
 
 			// Vod
 			"alicloud_vod_domain": {Tok: resource(vodMod, "Domain")},
@@ -1342,6 +1346,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_alidns_records":       {Tok: dataSource(dnsMod, "getAlidnsRecords")},
 			"alicloud_alidns_domains":       {Tok: dataSource(dnsMod, "getAlidnsDomains")},
 			"alicloud_alidns_instances":     {Tok: dataSource(dnsMod, "getAlidnsInstances")},
+			"alicloud_alidns_gtm_instances": {Tok: dataSource(dnsMod, "getGtmInstances")},
+			"alicloud_alidns_custom_lines":  {Tok: dataSource(dnsMod, "getCustomLines")},
 
 			// Drds
 			"alicloud_drds_instances": {Tok: dataSource(drdsMod, "getInstances")},
@@ -1685,12 +1691,13 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ons_service":   {Tok: dataSource(rocketMqMod, "getService")},
 
 			//Ros
-			"alicloud_ros_change_sets":     {Tok: dataSource(rosMod, "getChangeSets")},
-			"alicloud_ros_stack_groups":    {Tok: dataSource(rosMod, "getStackGroups")},
-			"alicloud_ros_stacks":          {Tok: dataSource(rosMod, "getStacks")},
-			"alicloud_ros_templates":       {Tok: dataSource(rosMod, "getTemplates")},
-			"alicloud_ros_stack_instances": {Tok: dataSource(rosMod, "getStackInstances")},
-			"alicloud_ros_regions":         {Tok: dataSource(rosMod, "getRegions")},
+			"alicloud_ros_change_sets":        {Tok: dataSource(rosMod, "getChangeSets")},
+			"alicloud_ros_stack_groups":       {Tok: dataSource(rosMod, "getStackGroups")},
+			"alicloud_ros_stacks":             {Tok: dataSource(rosMod, "getStacks")},
+			"alicloud_ros_templates":          {Tok: dataSource(rosMod, "getTemplates")},
+			"alicloud_ros_stack_instances":    {Tok: dataSource(rosMod, "getStackInstances")},
+			"alicloud_ros_regions":            {Tok: dataSource(rosMod, "getRegions")},
+			"alicloud_ros_template_scratches": {Tok: dataSource(rosMod, "getTemplateScratches")},
 
 			// Sae
 			"alicloud_sae_service":                 {Tok: dataSource(saeMod, "getService")},

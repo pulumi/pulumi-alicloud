@@ -11,10 +11,12 @@ from .get_regions import *
 from .get_stack_groups import *
 from .get_stack_instances import *
 from .get_stacks import *
+from .get_template_scratches import *
 from .get_templates import *
 from .stack import *
 from .stack_group import *
 from .stack_instance import *
 from .template import *
+from .template_scratch import *
 from ._inputs import *
 from . import outputs

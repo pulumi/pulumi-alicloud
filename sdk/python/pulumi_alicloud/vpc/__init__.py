@@ -63,5 +63,6 @@ from .traffic_mirror_filter import *
 from .traffic_mirror_filter_egress_rule import *
 from .traffic_mirror_filter_ingress_rule import *
 from .traffic_mirror_session import *
+from .vbr_ha import *
 from ._inputs import *
 from . import outputs

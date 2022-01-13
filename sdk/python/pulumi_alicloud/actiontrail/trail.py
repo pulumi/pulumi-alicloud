@@ -36,7 +36,7 @@ class TrailArgs:
         :param pulumi.Input[str] oss_key_prefix: The prefix of the specified OSS bucket name. This parameter can be left empty.
         :param pulumi.Input[str] oss_write_role_arn: The unique ARN of the Oss role.
         :param pulumi.Input[str] role_name: Field `name` has been deprecated from version 1.118.0.
-        :param pulumi.Input[str] sls_project_arn: The unique ARN of the Log Service project.
+        :param pulumi.Input[str] sls_project_arn: The unique ARN of the Log Service project. Ensure that `sls_project_arn` is valid .
         :param pulumi.Input[str] sls_write_role_arn: The unique ARN of the Log Service role.
         :param pulumi.Input[str] status: The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
         :param pulumi.Input[str] trail_name: The name of the trail to be created, which must be unique for an account.
@@ -178,7 +178,7 @@ class TrailArgs:
     @pulumi.getter(name="slsProjectArn")
     def sls_project_arn(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique ARN of the Log Service project.
+        The unique ARN of the Log Service project. Ensure that `sls_project_arn` is valid .
         """
         return pulumi.get(self, "sls_project_arn")
 
@@ -261,7 +261,7 @@ class _TrailState:
         :param pulumi.Input[str] oss_key_prefix: The prefix of the specified OSS bucket name. This parameter can be left empty.
         :param pulumi.Input[str] oss_write_role_arn: The unique ARN of the Oss role.
         :param pulumi.Input[str] role_name: Field `name` has been deprecated from version 1.118.0.
-        :param pulumi.Input[str] sls_project_arn: The unique ARN of the Log Service project.
+        :param pulumi.Input[str] sls_project_arn: The unique ARN of the Log Service project. Ensure that `sls_project_arn` is valid .
         :param pulumi.Input[str] sls_write_role_arn: The unique ARN of the Log Service role.
         :param pulumi.Input[str] status: The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
         :param pulumi.Input[str] trail_name: The name of the trail to be created, which must be unique for an account.
@@ -403,7 +403,7 @@ class _TrailState:
     @pulumi.getter(name="slsProjectArn")
     def sls_project_arn(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique ARN of the Log Service project.
+        The unique ARN of the Log Service project. Ensure that `sls_project_arn` is valid .
         """
         return pulumi.get(self, "sls_project_arn")
 
@@ -517,7 +517,7 @@ class Trail(pulumi.CustomResource):
         :param pulumi.Input[str] oss_key_prefix: The prefix of the specified OSS bucket name. This parameter can be left empty.
         :param pulumi.Input[str] oss_write_role_arn: The unique ARN of the Oss role.
         :param pulumi.Input[str] role_name: Field `name` has been deprecated from version 1.118.0.
-        :param pulumi.Input[str] sls_project_arn: The unique ARN of the Log Service project.
+        :param pulumi.Input[str] sls_project_arn: The unique ARN of the Log Service project. Ensure that `sls_project_arn` is valid .
         :param pulumi.Input[str] sls_write_role_arn: The unique ARN of the Log Service role.
         :param pulumi.Input[str] status: The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
         :param pulumi.Input[str] trail_name: The name of the trail to be created, which must be unique for an account.
@@ -657,7 +657,7 @@ class Trail(pulumi.CustomResource):
         :param pulumi.Input[str] oss_key_prefix: The prefix of the specified OSS bucket name. This parameter can be left empty.
         :param pulumi.Input[str] oss_write_role_arn: The unique ARN of the Oss role.
         :param pulumi.Input[str] role_name: Field `name` has been deprecated from version 1.118.0.
-        :param pulumi.Input[str] sls_project_arn: The unique ARN of the Log Service project.
+        :param pulumi.Input[str] sls_project_arn: The unique ARN of the Log Service project. Ensure that `sls_project_arn` is valid .
         :param pulumi.Input[str] sls_write_role_arn: The unique ARN of the Log Service role.
         :param pulumi.Input[str] status: The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
         :param pulumi.Input[str] trail_name: The name of the trail to be created, which must be unique for an account.
@@ -750,7 +750,7 @@ class Trail(pulumi.CustomResource):
     @pulumi.getter(name="slsProjectArn")
     def sls_project_arn(self) -> pulumi.Output[Optional[str]]:
         """
-        The unique ARN of the Log Service project.
+        The unique ARN of the Log Service project. Ensure that `sls_project_arn` is valid .
         """
         return pulumi.get(self, "sls_project_arn")
 

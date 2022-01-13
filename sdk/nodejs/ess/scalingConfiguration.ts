@@ -163,6 +163,14 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
     /**
+     * Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+     */
+    public readonly spotPriceLimits!: pulumi.Output<outputs.ess.ScalingConfigurationSpotPriceLimit[] | undefined>;
+    /**
+     * The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
+     */
+    public readonly spotStrategy!: pulumi.Output<string | undefined>;
+    /**
      * The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
      */
     public readonly substitute!: pulumi.Output<string>;
@@ -243,6 +251,8 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             inputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            inputs["spotPriceLimits"] = state ? state.spotPriceLimits : undefined;
+            inputs["spotStrategy"] = state ? state.spotStrategy : undefined;
             inputs["substitute"] = state ? state.substitute : undefined;
             inputs["systemDiskAutoSnapshotPolicyId"] = state ? state.systemDiskAutoSnapshotPolicyId : undefined;
             inputs["systemDiskCategory"] = state ? state.systemDiskCategory : undefined;
@@ -286,6 +296,8 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             inputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            inputs["spotPriceLimits"] = args ? args.spotPriceLimits : undefined;
+            inputs["spotStrategy"] = args ? args.spotStrategy : undefined;
             inputs["substitute"] = args ? args.substitute : undefined;
             inputs["systemDiskAutoSnapshotPolicyId"] = args ? args.systemDiskAutoSnapshotPolicyId : undefined;
             inputs["systemDiskCategory"] = args ? args.systemDiskCategory : undefined;
@@ -427,6 +439,14 @@ export interface ScalingConfigurationState {
      * List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+     */
+    spotPriceLimits?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationSpotPriceLimit>[]>;
+    /**
+     * The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
+     */
+    spotStrategy?: pulumi.Input<string>;
     /**
      * The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
      */
@@ -591,6 +611,14 @@ export interface ScalingConfigurationArgs {
      * List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+     */
+    spotPriceLimits?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationSpotPriceLimit>[]>;
+    /**
+     * The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
+     */
+    spotStrategy?: pulumi.Input<string>;
     /**
      * The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
      */

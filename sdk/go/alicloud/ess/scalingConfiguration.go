@@ -83,6 +83,10 @@ type ScalingConfiguration struct {
 	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
 	// List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
+	// Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+	SpotPriceLimits ScalingConfigurationSpotPriceLimitArrayOutput `pulumi:"spotPriceLimits"`
+	// The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
+	SpotStrategy pulumi.StringPtrOutput `pulumi:"spotStrategy"`
 	// The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
 	Substitute pulumi.StringOutput `pulumi:"substitute"`
 	// The id of auto snapshot policy for system disk.
@@ -199,6 +203,10 @@ type scalingConfigurationState struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+	SpotPriceLimits []ScalingConfigurationSpotPriceLimit `pulumi:"spotPriceLimits"`
+	// The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
+	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
 	Substitute *string `pulumi:"substitute"`
 	// The id of auto snapshot policy for system disk.
@@ -284,6 +292,10 @@ type ScalingConfigurationState struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
 	SecurityGroupIds pulumi.StringArrayInput
+	// Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+	SpotPriceLimits ScalingConfigurationSpotPriceLimitArrayInput
+	// The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
+	SpotStrategy pulumi.StringPtrInput
 	// The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
 	Substitute pulumi.StringPtrInput
 	// The id of auto snapshot policy for system disk.
@@ -373,6 +385,10 @@ type scalingConfigurationArgs struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+	SpotPriceLimits []ScalingConfigurationSpotPriceLimit `pulumi:"spotPriceLimits"`
+	// The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
+	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
 	Substitute *string `pulumi:"substitute"`
 	// The id of auto snapshot policy for system disk.
@@ -459,6 +475,10 @@ type ScalingConfigurationArgs struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
 	SecurityGroupIds pulumi.StringArrayInput
+	// Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+	SpotPriceLimits ScalingConfigurationSpotPriceLimitArrayInput
+	// The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
+	SpotStrategy pulumi.StringPtrInput
 	// The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
 	Substitute pulumi.StringPtrInput
 	// The id of auto snapshot policy for system disk.

@@ -10,20 +10,164 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'CustomLineIpSegmentList',
+    'GtmInstanceAlertConfig',
     'GetAlidnsDomainGroupsGroupResult',
     'GetAlidnsDomainsDomainResult',
     'GetAlidnsDomainsDomainRecordLineResult',
     'GetAlidnsInstancesInstanceResult',
     'GetAlidnsRecordsRecordResult',
+    'GetCustomLinesLineResult',
+    'GetCustomLinesLineIpSegmentListResult',
     'GetDomainGroupsGroupResult',
     'GetDomainRecordsRecordResult',
     'GetDomainsDomainResult',
     'GetDomainsDomainRecordLineResult',
     'GetGroupsGroupResult',
+    'GetGtmInstancesInstanceResult',
+    'GetGtmInstancesInstanceAlertConfigResult',
     'GetInstancesInstanceResult',
     'GetRecordsRecordResult',
     'GetResolutionLinesLineResult',
 ]
+
+@pulumi.output_type
+class CustomLineIpSegmentList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endIp":
+            suggest = "end_ip"
+        elif key == "startIp":
+            suggest = "start_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomLineIpSegmentList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomLineIpSegmentList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomLineIpSegmentList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_ip: str,
+                 start_ip: str):
+        """
+        :param str end_ip: The end IP address of the CIDR block.
+        :param str start_ip: The start IP address of the CIDR block.
+        """
+        pulumi.set(__self__, "end_ip", end_ip)
+        pulumi.set(__self__, "start_ip", start_ip)
+
+    @property
+    @pulumi.getter(name="endIp")
+    def end_ip(self) -> str:
+        """
+        The end IP address of the CIDR block.
+        """
+        return pulumi.get(self, "end_ip")
+
+    @property
+    @pulumi.getter(name="startIp")
+    def start_ip(self) -> str:
+        """
+        The start IP address of the CIDR block.
+        """
+        return pulumi.get(self, "start_ip")
+
+
+@pulumi.output_type
+class GtmInstanceAlertConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dingtalkNotice":
+            suggest = "dingtalk_notice"
+        elif key == "emailNotice":
+            suggest = "email_notice"
+        elif key == "noticeType":
+            suggest = "notice_type"
+        elif key == "smsNotice":
+            suggest = "sms_notice"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GtmInstanceAlertConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GtmInstanceAlertConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GtmInstanceAlertConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dingtalk_notice: Optional[bool] = None,
+                 email_notice: Optional[bool] = None,
+                 notice_type: Optional[str] = None,
+                 sms_notice: Optional[bool] = None):
+        """
+        :param bool dingtalk_notice: Whether to configure DingTalk notifications. Valid values: `true`, `false`.
+        :param bool email_notice: Whether to configure mail notification. Valid values: `true`, `false`.
+        :param str notice_type: The Alarm Event Type.
+               - `ADDR_ALERT`: Address not available.
+               - `ADDR_RESUME`: Address Recovery available.
+               - `ADDR_POOL_GROUP_UNAVAILABLE`: Address pool collection not available.
+               - `ADDR_POOL_GROUP_AVAILABLE`: Address pool collection recovery available.
+               - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
+               - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
+        :param bool sms_notice: Whether to configure SMS notification. Valid values: `true`, `false`.
+        """
+        if dingtalk_notice is not None:
+            pulumi.set(__self__, "dingtalk_notice", dingtalk_notice)
+        if email_notice is not None:
+            pulumi.set(__self__, "email_notice", email_notice)
+        if notice_type is not None:
+            pulumi.set(__self__, "notice_type", notice_type)
+        if sms_notice is not None:
+            pulumi.set(__self__, "sms_notice", sms_notice)
+
+    @property
+    @pulumi.getter(name="dingtalkNotice")
+    def dingtalk_notice(self) -> Optional[bool]:
+        """
+        Whether to configure DingTalk notifications. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "dingtalk_notice")
+
+    @property
+    @pulumi.getter(name="emailNotice")
+    def email_notice(self) -> Optional[bool]:
+        """
+        Whether to configure mail notification. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "email_notice")
+
+    @property
+    @pulumi.getter(name="noticeType")
+    def notice_type(self) -> Optional[str]:
+        """
+        The Alarm Event Type.
+        - `ADDR_ALERT`: Address not available.
+        - `ADDR_RESUME`: Address Recovery available.
+        - `ADDR_POOL_GROUP_UNAVAILABLE`: Address pool collection not available.
+        - `ADDR_POOL_GROUP_AVAILABLE`: Address pool collection recovery available.
+        - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
+        - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
+        """
+        return pulumi.get(self, "notice_type")
+
+    @property
+    @pulumi.getter(name="smsNotice")
+    def sms_notice(self) -> Optional[bool]:
+        """
+        Whether to configure SMS notification. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "sms_notice")
+
 
 @pulumi.output_type
 class GetAlidnsDomainGroupsGroupResult(dict):
@@ -614,6 +758,108 @@ class GetAlidnsRecordsRecordResult(dict):
 
 
 @pulumi.output_type
+class GetCustomLinesLineResult(dict):
+    def __init__(__self__, *,
+                 code: str,
+                 custom_line_id: str,
+                 custom_line_name: str,
+                 domain_name: str,
+                 id: str,
+                 ip_segment_lists: Sequence['outputs.GetCustomLinesLineIpSegmentListResult']):
+        """
+        :param str code: The Custom line Code.
+        :param str custom_line_id: The first ID of the resource.
+        :param str custom_line_name: Line name.
+        :param str domain_name: The Domain name.
+        :param str id: The ID of the Custom Line.
+        :param Sequence['GetCustomLinesLineIpSegmentListArgs'] ip_segment_lists: The IP segment list.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "custom_line_id", custom_line_id)
+        pulumi.set(__self__, "custom_line_name", custom_line_name)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip_segment_lists", ip_segment_lists)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        The Custom line Code.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter(name="customLineId")
+    def custom_line_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "custom_line_id")
+
+    @property
+    @pulumi.getter(name="customLineName")
+    def custom_line_name(self) -> str:
+        """
+        Line name.
+        """
+        return pulumi.get(self, "custom_line_name")
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> str:
+        """
+        The Domain name.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Custom Line.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipSegmentLists")
+    def ip_segment_lists(self) -> Sequence['outputs.GetCustomLinesLineIpSegmentListResult']:
+        """
+        The IP segment list.
+        """
+        return pulumi.get(self, "ip_segment_lists")
+
+
+@pulumi.output_type
+class GetCustomLinesLineIpSegmentListResult(dict):
+    def __init__(__self__, *,
+                 end_ip: str,
+                 start_ip: str):
+        """
+        :param str end_ip: The end IP address of the CIDR block.
+        :param str start_ip: The start IP address of the CIDR block.
+        """
+        pulumi.set(__self__, "end_ip", end_ip)
+        pulumi.set(__self__, "start_ip", start_ip)
+
+    @property
+    @pulumi.getter(name="endIp")
+    def end_ip(self) -> str:
+        """
+        The end IP address of the CIDR block.
+        """
+        return pulumi.get(self, "end_ip")
+
+    @property
+    @pulumi.getter(name="startIp")
+    def start_ip(self) -> str:
+        """
+        The start IP address of the CIDR block.
+        """
+        return pulumi.get(self, "start_ip")
+
+
+@pulumi.output_type
 class GetDomainGroupsGroupResult(dict):
     def __init__(__self__, *,
                  group_id: str,
@@ -1011,6 +1257,251 @@ class GetGroupsGroupResult(dict):
         Name of the group.
         """
         return pulumi.get(self, "group_name")
+
+
+@pulumi.output_type
+class GetGtmInstancesInstanceResult(dict):
+    def __init__(__self__, *,
+                 alert_configs: Sequence['outputs.GetGtmInstancesInstanceAlertConfigResult'],
+                 alert_groups: Sequence[str],
+                 cname_type: str,
+                 create_time: str,
+                 expire_time: str,
+                 id: str,
+                 instance_id: str,
+                 instance_name: str,
+                 package_edition: str,
+                 payment_type: str,
+                 public_cname_mode: str,
+                 public_rr: str,
+                 public_user_domain_name: str,
+                 public_zone_name: str,
+                 resource_group_id: str,
+                 strategy_mode: str,
+                 ttl: int):
+        """
+        :param Sequence['GetGtmInstancesInstanceAlertConfigArgs'] alert_configs: The alert notification methods.
+        :param Sequence[str] alert_groups: The alert group.
+        :param str cname_type: The access type of the CNAME domain name.
+        :param str create_time: The CreateTime of the Gtm Instance.
+        :param str expire_time: The ExpireTime of the Gtm Instance.
+        :param str id: The ID of the Gtm Instance.
+        :param str instance_id: The ID of the Gtm Instance.
+        :param str instance_name: The name of the Gtm Instance.
+        :param str package_edition: The version of the instance.
+        :param str payment_type: The paymentype of the resource.
+        :param str public_cname_mode: The Public Network domain name access method.
+        :param str public_rr: The CNAME access domain name.
+        :param str public_user_domain_name: The website domain name that the user uses on the Internet.
+        :param str public_zone_name: The domain name that is used to access GTM over the Internet.
+        :param str resource_group_id: The ID of the resource group.
+        :param str strategy_mode: The type of the access policy.
+        :param int ttl: The global time to live.
+        """
+        pulumi.set(__self__, "alert_configs", alert_configs)
+        pulumi.set(__self__, "alert_groups", alert_groups)
+        pulumi.set(__self__, "cname_type", cname_type)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "package_edition", package_edition)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "public_cname_mode", public_cname_mode)
+        pulumi.set(__self__, "public_rr", public_rr)
+        pulumi.set(__self__, "public_user_domain_name", public_user_domain_name)
+        pulumi.set(__self__, "public_zone_name", public_zone_name)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "strategy_mode", strategy_mode)
+        pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter(name="alertConfigs")
+    def alert_configs(self) -> Sequence['outputs.GetGtmInstancesInstanceAlertConfigResult']:
+        """
+        The alert notification methods.
+        """
+        return pulumi.get(self, "alert_configs")
+
+    @property
+    @pulumi.getter(name="alertGroups")
+    def alert_groups(self) -> Sequence[str]:
+        """
+        The alert group.
+        """
+        return pulumi.get(self, "alert_groups")
+
+    @property
+    @pulumi.getter(name="cnameType")
+    def cname_type(self) -> str:
+        """
+        The access type of the CNAME domain name.
+        """
+        return pulumi.get(self, "cname_type")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The CreateTime of the Gtm Instance.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> str:
+        """
+        The ExpireTime of the Gtm Instance.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Gtm Instance.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the Gtm Instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> str:
+        """
+        The name of the Gtm Instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter(name="packageEdition")
+    def package_edition(self) -> str:
+        """
+        The version of the instance.
+        """
+        return pulumi.get(self, "package_edition")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        The paymentype of the resource.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter(name="publicCnameMode")
+    def public_cname_mode(self) -> str:
+        """
+        The Public Network domain name access method.
+        """
+        return pulumi.get(self, "public_cname_mode")
+
+    @property
+    @pulumi.getter(name="publicRr")
+    def public_rr(self) -> str:
+        """
+        The CNAME access domain name.
+        """
+        return pulumi.get(self, "public_rr")
+
+    @property
+    @pulumi.getter(name="publicUserDomainName")
+    def public_user_domain_name(self) -> str:
+        """
+        The website domain name that the user uses on the Internet.
+        """
+        return pulumi.get(self, "public_user_domain_name")
+
+    @property
+    @pulumi.getter(name="publicZoneName")
+    def public_zone_name(self) -> str:
+        """
+        The domain name that is used to access GTM over the Internet.
+        """
+        return pulumi.get(self, "public_zone_name")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="strategyMode")
+    def strategy_mode(self) -> str:
+        """
+        The type of the access policy.
+        """
+        return pulumi.get(self, "strategy_mode")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> int:
+        """
+        The global time to live.
+        """
+        return pulumi.get(self, "ttl")
+
+
+@pulumi.output_type
+class GetGtmInstancesInstanceAlertConfigResult(dict):
+    def __init__(__self__, *,
+                 dingtalk_notice: bool,
+                 email_notice: bool,
+                 notice_type: str,
+                 sms_notice: bool):
+        """
+        :param bool dingtalk_notice: Whether to configure DingTalk notifications.
+        :param bool email_notice: Whether to configure mail notification.
+        :param str notice_type: The Alarm Event Type.
+        :param bool sms_notice: Whether to configure SMS notification.
+        """
+        pulumi.set(__self__, "dingtalk_notice", dingtalk_notice)
+        pulumi.set(__self__, "email_notice", email_notice)
+        pulumi.set(__self__, "notice_type", notice_type)
+        pulumi.set(__self__, "sms_notice", sms_notice)
+
+    @property
+    @pulumi.getter(name="dingtalkNotice")
+    def dingtalk_notice(self) -> bool:
+        """
+        Whether to configure DingTalk notifications.
+        """
+        return pulumi.get(self, "dingtalk_notice")
+
+    @property
+    @pulumi.getter(name="emailNotice")
+    def email_notice(self) -> bool:
+        """
+        Whether to configure mail notification.
+        """
+        return pulumi.get(self, "email_notice")
+
+    @property
+    @pulumi.getter(name="noticeType")
+    def notice_type(self) -> str:
+        """
+        The Alarm Event Type.
+        """
+        return pulumi.get(self, "notice_type")
+
+    @property
+    @pulumi.getter(name="smsNotice")
+    def sms_notice(self) -> bool:
+        """
+        Whether to configure SMS notification.
+        """
+        return pulumi.get(self, "sms_notice")
 
 
 @pulumi.output_type

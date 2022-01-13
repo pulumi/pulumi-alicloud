@@ -193,7 +193,7 @@ export class LaunchTemplate extends pulumi.CustomResource {
      */
     public readonly userdata!: pulumi.Output<string>;
     public readonly versionDescription!: pulumi.Output<string | undefined>;
-    public readonly vpcId!: pulumi.Output<string | undefined>;
+    public readonly vpcId!: pulumi.Output<string>;
     /**
      * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
      */
@@ -201,7 +201,7 @@ export class LaunchTemplate extends pulumi.CustomResource {
     /**
      * The zone ID of the instance.
      */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a LaunchTemplate resource with the given unique name, arguments, and options.

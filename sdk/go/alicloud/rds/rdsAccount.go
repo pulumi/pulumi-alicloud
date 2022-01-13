@@ -77,7 +77,8 @@ import (
 // 			return err
 // 		}
 // 		_, err = rds.NewRdsAccount(ctx, "account", &rds.RdsAccountArgs{
-// 			InstanceId:      instance.ID(),
+// 			DbInstanceId:    instance.ID(),
+// 			AccountName:     pulumi.String("tftestnormal12"),
 // 			AccountPassword: pulumi.String("Test12345"),
 // 		})
 // 		if err != nil {
@@ -110,20 +111,30 @@ type RdsAccount struct {
 	AccountType pulumi.StringOutput `pulumi:"accountType"`
 	// The Id of instance in which account belongs.
 	DbInstanceId pulumi.StringOutput `pulumi:"dbInstanceId"`
+	// The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
+	//
 	// Deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
+	//
 	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
+	// The attribute has been deprecated from 1.120.0 and using `accountName` instead.
+	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
+	//
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// The status of the resource. Valid values: `Available`, `Unavailable`.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The attribute has been deprecated from 1.120.0 and using `accountType` instead.
+	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -169,20 +180,30 @@ type rdsAccountState struct {
 	AccountType *string `pulumi:"accountType"`
 	// The Id of instance in which account belongs.
 	DbInstanceId *string `pulumi:"dbInstanceId"`
+	// The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
+	//
 	// Deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
 	Description *string `pulumi:"description"`
+	// The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
+	//
 	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
 	InstanceId *string `pulumi:"instanceId"`
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	// The attribute has been deprecated from 1.120.0 and using `accountName` instead.
+	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
 	Name *string `pulumi:"name"`
+	// The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
+	//
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
 	Password *string `pulumi:"password"`
 	// The status of the resource. Valid values: `Available`, `Unavailable`.
 	Status *string `pulumi:"status"`
+	// The attribute has been deprecated from 1.120.0 and using `accountType` instead.
+	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type *string `pulumi:"type"`
 }
@@ -200,20 +221,30 @@ type RdsAccountState struct {
 	AccountType pulumi.StringPtrInput
 	// The Id of instance in which account belongs.
 	DbInstanceId pulumi.StringPtrInput
+	// The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
+	//
 	// Deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
 	Description pulumi.StringPtrInput
+	// The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
+	//
 	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
 	InstanceId pulumi.StringPtrInput
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapInput
+	// The attribute has been deprecated from 1.120.0 and using `accountName` instead.
+	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
 	Name pulumi.StringPtrInput
+	// The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
+	//
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
 	Password pulumi.StringPtrInput
 	// The status of the resource. Valid values: `Available`, `Unavailable`.
 	Status pulumi.StringPtrInput
+	// The attribute has been deprecated from 1.120.0 and using `accountType` instead.
+	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type pulumi.StringPtrInput
 }
@@ -235,18 +266,28 @@ type rdsAccountArgs struct {
 	AccountType *string `pulumi:"accountType"`
 	// The Id of instance in which account belongs.
 	DbInstanceId *string `pulumi:"dbInstanceId"`
+	// The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
+	//
 	// Deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
 	Description *string `pulumi:"description"`
+	// The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
+	//
 	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
 	InstanceId *string `pulumi:"instanceId"`
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
+	// The attribute has been deprecated from 1.120.0 and using `accountName` instead.
+	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
 	Name *string `pulumi:"name"`
+	// The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
+	//
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
 	Password *string `pulumi:"password"`
+	// The attribute has been deprecated from 1.120.0 and using `accountType` instead.
+	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type *string `pulumi:"type"`
 }
@@ -265,18 +306,28 @@ type RdsAccountArgs struct {
 	AccountType pulumi.StringPtrInput
 	// The Id of instance in which account belongs.
 	DbInstanceId pulumi.StringPtrInput
+	// The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
+	//
 	// Deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
 	Description pulumi.StringPtrInput
+	// The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
+	//
 	// Deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
 	InstanceId pulumi.StringPtrInput
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapInput
+	// The attribute has been deprecated from 1.120.0 and using `accountName` instead.
+	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
 	Name pulumi.StringPtrInput
+	// The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
+	//
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
 	Password pulumi.StringPtrInput
+	// The attribute has been deprecated from 1.120.0 and using `accountType` instead.
+	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type pulumi.StringPtrInput
 }

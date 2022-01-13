@@ -10,6 +10,254 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type CustomLineIpSegmentList struct {
+	// The end IP address of the CIDR block.
+	EndIp string `pulumi:"endIp"`
+	// The start IP address of the CIDR block.
+	StartIp string `pulumi:"startIp"`
+}
+
+// CustomLineIpSegmentListInput is an input type that accepts CustomLineIpSegmentListArgs and CustomLineIpSegmentListOutput values.
+// You can construct a concrete instance of `CustomLineIpSegmentListInput` via:
+//
+//          CustomLineIpSegmentListArgs{...}
+type CustomLineIpSegmentListInput interface {
+	pulumi.Input
+
+	ToCustomLineIpSegmentListOutput() CustomLineIpSegmentListOutput
+	ToCustomLineIpSegmentListOutputWithContext(context.Context) CustomLineIpSegmentListOutput
+}
+
+type CustomLineIpSegmentListArgs struct {
+	// The end IP address of the CIDR block.
+	EndIp pulumi.StringInput `pulumi:"endIp"`
+	// The start IP address of the CIDR block.
+	StartIp pulumi.StringInput `pulumi:"startIp"`
+}
+
+func (CustomLineIpSegmentListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomLineIpSegmentList)(nil)).Elem()
+}
+
+func (i CustomLineIpSegmentListArgs) ToCustomLineIpSegmentListOutput() CustomLineIpSegmentListOutput {
+	return i.ToCustomLineIpSegmentListOutputWithContext(context.Background())
+}
+
+func (i CustomLineIpSegmentListArgs) ToCustomLineIpSegmentListOutputWithContext(ctx context.Context) CustomLineIpSegmentListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomLineIpSegmentListOutput)
+}
+
+// CustomLineIpSegmentListArrayInput is an input type that accepts CustomLineIpSegmentListArray and CustomLineIpSegmentListArrayOutput values.
+// You can construct a concrete instance of `CustomLineIpSegmentListArrayInput` via:
+//
+//          CustomLineIpSegmentListArray{ CustomLineIpSegmentListArgs{...} }
+type CustomLineIpSegmentListArrayInput interface {
+	pulumi.Input
+
+	ToCustomLineIpSegmentListArrayOutput() CustomLineIpSegmentListArrayOutput
+	ToCustomLineIpSegmentListArrayOutputWithContext(context.Context) CustomLineIpSegmentListArrayOutput
+}
+
+type CustomLineIpSegmentListArray []CustomLineIpSegmentListInput
+
+func (CustomLineIpSegmentListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomLineIpSegmentList)(nil)).Elem()
+}
+
+func (i CustomLineIpSegmentListArray) ToCustomLineIpSegmentListArrayOutput() CustomLineIpSegmentListArrayOutput {
+	return i.ToCustomLineIpSegmentListArrayOutputWithContext(context.Background())
+}
+
+func (i CustomLineIpSegmentListArray) ToCustomLineIpSegmentListArrayOutputWithContext(ctx context.Context) CustomLineIpSegmentListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomLineIpSegmentListArrayOutput)
+}
+
+type CustomLineIpSegmentListOutput struct{ *pulumi.OutputState }
+
+func (CustomLineIpSegmentListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomLineIpSegmentList)(nil)).Elem()
+}
+
+func (o CustomLineIpSegmentListOutput) ToCustomLineIpSegmentListOutput() CustomLineIpSegmentListOutput {
+	return o
+}
+
+func (o CustomLineIpSegmentListOutput) ToCustomLineIpSegmentListOutputWithContext(ctx context.Context) CustomLineIpSegmentListOutput {
+	return o
+}
+
+// The end IP address of the CIDR block.
+func (o CustomLineIpSegmentListOutput) EndIp() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomLineIpSegmentList) string { return v.EndIp }).(pulumi.StringOutput)
+}
+
+// The start IP address of the CIDR block.
+func (o CustomLineIpSegmentListOutput) StartIp() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomLineIpSegmentList) string { return v.StartIp }).(pulumi.StringOutput)
+}
+
+type CustomLineIpSegmentListArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomLineIpSegmentListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomLineIpSegmentList)(nil)).Elem()
+}
+
+func (o CustomLineIpSegmentListArrayOutput) ToCustomLineIpSegmentListArrayOutput() CustomLineIpSegmentListArrayOutput {
+	return o
+}
+
+func (o CustomLineIpSegmentListArrayOutput) ToCustomLineIpSegmentListArrayOutputWithContext(ctx context.Context) CustomLineIpSegmentListArrayOutput {
+	return o
+}
+
+func (o CustomLineIpSegmentListArrayOutput) Index(i pulumi.IntInput) CustomLineIpSegmentListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomLineIpSegmentList {
+		return vs[0].([]CustomLineIpSegmentList)[vs[1].(int)]
+	}).(CustomLineIpSegmentListOutput)
+}
+
+type GtmInstanceAlertConfig struct {
+	// Whether to configure DingTalk notifications. Valid values: `true`, `false`.
+	DingtalkNotice *bool `pulumi:"dingtalkNotice"`
+	// Whether to configure mail notification. Valid values: `true`, `false`.
+	EmailNotice *bool `pulumi:"emailNotice"`
+	// The Alarm Event Type.
+	// - `ADDR_ALERT`: Address not available.
+	// - `ADDR_RESUME`: Address Recovery available.
+	// - `ADDR_POOL_GROUP_UNAVAILABLE`: Address pool collection not available.
+	// - `ADDR_POOL_GROUP_AVAILABLE`: Address pool collection recovery available.
+	// - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
+	// - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
+	NoticeType *string `pulumi:"noticeType"`
+	// Whether to configure SMS notification. Valid values: `true`, `false`.
+	SmsNotice *bool `pulumi:"smsNotice"`
+}
+
+// GtmInstanceAlertConfigInput is an input type that accepts GtmInstanceAlertConfigArgs and GtmInstanceAlertConfigOutput values.
+// You can construct a concrete instance of `GtmInstanceAlertConfigInput` via:
+//
+//          GtmInstanceAlertConfigArgs{...}
+type GtmInstanceAlertConfigInput interface {
+	pulumi.Input
+
+	ToGtmInstanceAlertConfigOutput() GtmInstanceAlertConfigOutput
+	ToGtmInstanceAlertConfigOutputWithContext(context.Context) GtmInstanceAlertConfigOutput
+}
+
+type GtmInstanceAlertConfigArgs struct {
+	// Whether to configure DingTalk notifications. Valid values: `true`, `false`.
+	DingtalkNotice pulumi.BoolPtrInput `pulumi:"dingtalkNotice"`
+	// Whether to configure mail notification. Valid values: `true`, `false`.
+	EmailNotice pulumi.BoolPtrInput `pulumi:"emailNotice"`
+	// The Alarm Event Type.
+	// - `ADDR_ALERT`: Address not available.
+	// - `ADDR_RESUME`: Address Recovery available.
+	// - `ADDR_POOL_GROUP_UNAVAILABLE`: Address pool collection not available.
+	// - `ADDR_POOL_GROUP_AVAILABLE`: Address pool collection recovery available.
+	// - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
+	// - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
+	NoticeType pulumi.StringPtrInput `pulumi:"noticeType"`
+	// Whether to configure SMS notification. Valid values: `true`, `false`.
+	SmsNotice pulumi.BoolPtrInput `pulumi:"smsNotice"`
+}
+
+func (GtmInstanceAlertConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GtmInstanceAlertConfig)(nil)).Elem()
+}
+
+func (i GtmInstanceAlertConfigArgs) ToGtmInstanceAlertConfigOutput() GtmInstanceAlertConfigOutput {
+	return i.ToGtmInstanceAlertConfigOutputWithContext(context.Background())
+}
+
+func (i GtmInstanceAlertConfigArgs) ToGtmInstanceAlertConfigOutputWithContext(ctx context.Context) GtmInstanceAlertConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GtmInstanceAlertConfigOutput)
+}
+
+// GtmInstanceAlertConfigArrayInput is an input type that accepts GtmInstanceAlertConfigArray and GtmInstanceAlertConfigArrayOutput values.
+// You can construct a concrete instance of `GtmInstanceAlertConfigArrayInput` via:
+//
+//          GtmInstanceAlertConfigArray{ GtmInstanceAlertConfigArgs{...} }
+type GtmInstanceAlertConfigArrayInput interface {
+	pulumi.Input
+
+	ToGtmInstanceAlertConfigArrayOutput() GtmInstanceAlertConfigArrayOutput
+	ToGtmInstanceAlertConfigArrayOutputWithContext(context.Context) GtmInstanceAlertConfigArrayOutput
+}
+
+type GtmInstanceAlertConfigArray []GtmInstanceAlertConfigInput
+
+func (GtmInstanceAlertConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GtmInstanceAlertConfig)(nil)).Elem()
+}
+
+func (i GtmInstanceAlertConfigArray) ToGtmInstanceAlertConfigArrayOutput() GtmInstanceAlertConfigArrayOutput {
+	return i.ToGtmInstanceAlertConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GtmInstanceAlertConfigArray) ToGtmInstanceAlertConfigArrayOutputWithContext(ctx context.Context) GtmInstanceAlertConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GtmInstanceAlertConfigArrayOutput)
+}
+
+type GtmInstanceAlertConfigOutput struct{ *pulumi.OutputState }
+
+func (GtmInstanceAlertConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GtmInstanceAlertConfig)(nil)).Elem()
+}
+
+func (o GtmInstanceAlertConfigOutput) ToGtmInstanceAlertConfigOutput() GtmInstanceAlertConfigOutput {
+	return o
+}
+
+func (o GtmInstanceAlertConfigOutput) ToGtmInstanceAlertConfigOutputWithContext(ctx context.Context) GtmInstanceAlertConfigOutput {
+	return o
+}
+
+// Whether to configure DingTalk notifications. Valid values: `true`, `false`.
+func (o GtmInstanceAlertConfigOutput) DingtalkNotice() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GtmInstanceAlertConfig) *bool { return v.DingtalkNotice }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to configure mail notification. Valid values: `true`, `false`.
+func (o GtmInstanceAlertConfigOutput) EmailNotice() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GtmInstanceAlertConfig) *bool { return v.EmailNotice }).(pulumi.BoolPtrOutput)
+}
+
+// The Alarm Event Type.
+// - `ADDR_ALERT`: Address not available.
+// - `ADDR_RESUME`: Address Recovery available.
+// - `ADDR_POOL_GROUP_UNAVAILABLE`: Address pool collection not available.
+// - `ADDR_POOL_GROUP_AVAILABLE`: Address pool collection recovery available.
+// - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
+// - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
+func (o GtmInstanceAlertConfigOutput) NoticeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GtmInstanceAlertConfig) *string { return v.NoticeType }).(pulumi.StringPtrOutput)
+}
+
+// Whether to configure SMS notification. Valid values: `true`, `false`.
+func (o GtmInstanceAlertConfigOutput) SmsNotice() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GtmInstanceAlertConfig) *bool { return v.SmsNotice }).(pulumi.BoolPtrOutput)
+}
+
+type GtmInstanceAlertConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GtmInstanceAlertConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GtmInstanceAlertConfig)(nil)).Elem()
+}
+
+func (o GtmInstanceAlertConfigArrayOutput) ToGtmInstanceAlertConfigArrayOutput() GtmInstanceAlertConfigArrayOutput {
+	return o
+}
+
+func (o GtmInstanceAlertConfigArrayOutput) ToGtmInstanceAlertConfigArrayOutputWithContext(ctx context.Context) GtmInstanceAlertConfigArrayOutput {
+	return o
+}
+
+func (o GtmInstanceAlertConfigArrayOutput) Index(i pulumi.IntInput) GtmInstanceAlertConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GtmInstanceAlertConfig {
+		return vs[0].([]GtmInstanceAlertConfig)[vs[1].(int)]
+	}).(GtmInstanceAlertConfigOutput)
+}
+
 type GetAlidnsDomainGroupsGroup struct {
 	// Number of domain names in the group.
 	DomainCount int `pulumi:"domainCount"`
@@ -903,6 +1151,254 @@ func (o GetAlidnsRecordsRecordArrayOutput) Index(i pulumi.IntInput) GetAlidnsRec
 	}).(GetAlidnsRecordsRecordOutput)
 }
 
+type GetCustomLinesLine struct {
+	// The Custom line Code.
+	Code string `pulumi:"code"`
+	// The first ID of the resource.
+	CustomLineId string `pulumi:"customLineId"`
+	// Line name.
+	CustomLineName string `pulumi:"customLineName"`
+	// The Domain name.
+	DomainName string `pulumi:"domainName"`
+	// The ID of the Custom Line.
+	Id string `pulumi:"id"`
+	// The IP segment list.
+	IpSegmentLists []GetCustomLinesLineIpSegmentList `pulumi:"ipSegmentLists"`
+}
+
+// GetCustomLinesLineInput is an input type that accepts GetCustomLinesLineArgs and GetCustomLinesLineOutput values.
+// You can construct a concrete instance of `GetCustomLinesLineInput` via:
+//
+//          GetCustomLinesLineArgs{...}
+type GetCustomLinesLineInput interface {
+	pulumi.Input
+
+	ToGetCustomLinesLineOutput() GetCustomLinesLineOutput
+	ToGetCustomLinesLineOutputWithContext(context.Context) GetCustomLinesLineOutput
+}
+
+type GetCustomLinesLineArgs struct {
+	// The Custom line Code.
+	Code pulumi.StringInput `pulumi:"code"`
+	// The first ID of the resource.
+	CustomLineId pulumi.StringInput `pulumi:"customLineId"`
+	// Line name.
+	CustomLineName pulumi.StringInput `pulumi:"customLineName"`
+	// The Domain name.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// The ID of the Custom Line.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The IP segment list.
+	IpSegmentLists GetCustomLinesLineIpSegmentListArrayInput `pulumi:"ipSegmentLists"`
+}
+
+func (GetCustomLinesLineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomLinesLine)(nil)).Elem()
+}
+
+func (i GetCustomLinesLineArgs) ToGetCustomLinesLineOutput() GetCustomLinesLineOutput {
+	return i.ToGetCustomLinesLineOutputWithContext(context.Background())
+}
+
+func (i GetCustomLinesLineArgs) ToGetCustomLinesLineOutputWithContext(ctx context.Context) GetCustomLinesLineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomLinesLineOutput)
+}
+
+// GetCustomLinesLineArrayInput is an input type that accepts GetCustomLinesLineArray and GetCustomLinesLineArrayOutput values.
+// You can construct a concrete instance of `GetCustomLinesLineArrayInput` via:
+//
+//          GetCustomLinesLineArray{ GetCustomLinesLineArgs{...} }
+type GetCustomLinesLineArrayInput interface {
+	pulumi.Input
+
+	ToGetCustomLinesLineArrayOutput() GetCustomLinesLineArrayOutput
+	ToGetCustomLinesLineArrayOutputWithContext(context.Context) GetCustomLinesLineArrayOutput
+}
+
+type GetCustomLinesLineArray []GetCustomLinesLineInput
+
+func (GetCustomLinesLineArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomLinesLine)(nil)).Elem()
+}
+
+func (i GetCustomLinesLineArray) ToGetCustomLinesLineArrayOutput() GetCustomLinesLineArrayOutput {
+	return i.ToGetCustomLinesLineArrayOutputWithContext(context.Background())
+}
+
+func (i GetCustomLinesLineArray) ToGetCustomLinesLineArrayOutputWithContext(ctx context.Context) GetCustomLinesLineArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomLinesLineArrayOutput)
+}
+
+type GetCustomLinesLineOutput struct{ *pulumi.OutputState }
+
+func (GetCustomLinesLineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomLinesLine)(nil)).Elem()
+}
+
+func (o GetCustomLinesLineOutput) ToGetCustomLinesLineOutput() GetCustomLinesLineOutput {
+	return o
+}
+
+func (o GetCustomLinesLineOutput) ToGetCustomLinesLineOutputWithContext(ctx context.Context) GetCustomLinesLineOutput {
+	return o
+}
+
+// The Custom line Code.
+func (o GetCustomLinesLineOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomLinesLine) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource.
+func (o GetCustomLinesLineOutput) CustomLineId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomLinesLine) string { return v.CustomLineId }).(pulumi.StringOutput)
+}
+
+// Line name.
+func (o GetCustomLinesLineOutput) CustomLineName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomLinesLine) string { return v.CustomLineName }).(pulumi.StringOutput)
+}
+
+// The Domain name.
+func (o GetCustomLinesLineOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomLinesLine) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The ID of the Custom Line.
+func (o GetCustomLinesLineOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomLinesLine) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The IP segment list.
+func (o GetCustomLinesLineOutput) IpSegmentLists() GetCustomLinesLineIpSegmentListArrayOutput {
+	return o.ApplyT(func(v GetCustomLinesLine) []GetCustomLinesLineIpSegmentList { return v.IpSegmentLists }).(GetCustomLinesLineIpSegmentListArrayOutput)
+}
+
+type GetCustomLinesLineArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCustomLinesLineArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomLinesLine)(nil)).Elem()
+}
+
+func (o GetCustomLinesLineArrayOutput) ToGetCustomLinesLineArrayOutput() GetCustomLinesLineArrayOutput {
+	return o
+}
+
+func (o GetCustomLinesLineArrayOutput) ToGetCustomLinesLineArrayOutputWithContext(ctx context.Context) GetCustomLinesLineArrayOutput {
+	return o
+}
+
+func (o GetCustomLinesLineArrayOutput) Index(i pulumi.IntInput) GetCustomLinesLineOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomLinesLine {
+		return vs[0].([]GetCustomLinesLine)[vs[1].(int)]
+	}).(GetCustomLinesLineOutput)
+}
+
+type GetCustomLinesLineIpSegmentList struct {
+	// The end IP address of the CIDR block.
+	EndIp string `pulumi:"endIp"`
+	// The start IP address of the CIDR block.
+	StartIp string `pulumi:"startIp"`
+}
+
+// GetCustomLinesLineIpSegmentListInput is an input type that accepts GetCustomLinesLineIpSegmentListArgs and GetCustomLinesLineIpSegmentListOutput values.
+// You can construct a concrete instance of `GetCustomLinesLineIpSegmentListInput` via:
+//
+//          GetCustomLinesLineIpSegmentListArgs{...}
+type GetCustomLinesLineIpSegmentListInput interface {
+	pulumi.Input
+
+	ToGetCustomLinesLineIpSegmentListOutput() GetCustomLinesLineIpSegmentListOutput
+	ToGetCustomLinesLineIpSegmentListOutputWithContext(context.Context) GetCustomLinesLineIpSegmentListOutput
+}
+
+type GetCustomLinesLineIpSegmentListArgs struct {
+	// The end IP address of the CIDR block.
+	EndIp pulumi.StringInput `pulumi:"endIp"`
+	// The start IP address of the CIDR block.
+	StartIp pulumi.StringInput `pulumi:"startIp"`
+}
+
+func (GetCustomLinesLineIpSegmentListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomLinesLineIpSegmentList)(nil)).Elem()
+}
+
+func (i GetCustomLinesLineIpSegmentListArgs) ToGetCustomLinesLineIpSegmentListOutput() GetCustomLinesLineIpSegmentListOutput {
+	return i.ToGetCustomLinesLineIpSegmentListOutputWithContext(context.Background())
+}
+
+func (i GetCustomLinesLineIpSegmentListArgs) ToGetCustomLinesLineIpSegmentListOutputWithContext(ctx context.Context) GetCustomLinesLineIpSegmentListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomLinesLineIpSegmentListOutput)
+}
+
+// GetCustomLinesLineIpSegmentListArrayInput is an input type that accepts GetCustomLinesLineIpSegmentListArray and GetCustomLinesLineIpSegmentListArrayOutput values.
+// You can construct a concrete instance of `GetCustomLinesLineIpSegmentListArrayInput` via:
+//
+//          GetCustomLinesLineIpSegmentListArray{ GetCustomLinesLineIpSegmentListArgs{...} }
+type GetCustomLinesLineIpSegmentListArrayInput interface {
+	pulumi.Input
+
+	ToGetCustomLinesLineIpSegmentListArrayOutput() GetCustomLinesLineIpSegmentListArrayOutput
+	ToGetCustomLinesLineIpSegmentListArrayOutputWithContext(context.Context) GetCustomLinesLineIpSegmentListArrayOutput
+}
+
+type GetCustomLinesLineIpSegmentListArray []GetCustomLinesLineIpSegmentListInput
+
+func (GetCustomLinesLineIpSegmentListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomLinesLineIpSegmentList)(nil)).Elem()
+}
+
+func (i GetCustomLinesLineIpSegmentListArray) ToGetCustomLinesLineIpSegmentListArrayOutput() GetCustomLinesLineIpSegmentListArrayOutput {
+	return i.ToGetCustomLinesLineIpSegmentListArrayOutputWithContext(context.Background())
+}
+
+func (i GetCustomLinesLineIpSegmentListArray) ToGetCustomLinesLineIpSegmentListArrayOutputWithContext(ctx context.Context) GetCustomLinesLineIpSegmentListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomLinesLineIpSegmentListArrayOutput)
+}
+
+type GetCustomLinesLineIpSegmentListOutput struct{ *pulumi.OutputState }
+
+func (GetCustomLinesLineIpSegmentListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomLinesLineIpSegmentList)(nil)).Elem()
+}
+
+func (o GetCustomLinesLineIpSegmentListOutput) ToGetCustomLinesLineIpSegmentListOutput() GetCustomLinesLineIpSegmentListOutput {
+	return o
+}
+
+func (o GetCustomLinesLineIpSegmentListOutput) ToGetCustomLinesLineIpSegmentListOutputWithContext(ctx context.Context) GetCustomLinesLineIpSegmentListOutput {
+	return o
+}
+
+// The end IP address of the CIDR block.
+func (o GetCustomLinesLineIpSegmentListOutput) EndIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomLinesLineIpSegmentList) string { return v.EndIp }).(pulumi.StringOutput)
+}
+
+// The start IP address of the CIDR block.
+func (o GetCustomLinesLineIpSegmentListOutput) StartIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomLinesLineIpSegmentList) string { return v.StartIp }).(pulumi.StringOutput)
+}
+
+type GetCustomLinesLineIpSegmentListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCustomLinesLineIpSegmentListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomLinesLineIpSegmentList)(nil)).Elem()
+}
+
+func (o GetCustomLinesLineIpSegmentListArrayOutput) ToGetCustomLinesLineIpSegmentListArrayOutput() GetCustomLinesLineIpSegmentListArrayOutput {
+	return o
+}
+
+func (o GetCustomLinesLineIpSegmentListArrayOutput) ToGetCustomLinesLineIpSegmentListArrayOutputWithContext(ctx context.Context) GetCustomLinesLineIpSegmentListArrayOutput {
+	return o
+}
+
+func (o GetCustomLinesLineIpSegmentListArrayOutput) Index(i pulumi.IntInput) GetCustomLinesLineIpSegmentListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomLinesLineIpSegmentList {
+		return vs[0].([]GetCustomLinesLineIpSegmentList)[vs[1].(int)]
+	}).(GetCustomLinesLineIpSegmentListOutput)
+}
+
 type GetDomainGroupsGroup struct {
 	GroupId   string `pulumi:"groupId"`
 	GroupName string `pulumi:"groupName"`
@@ -1652,6 +2148,371 @@ func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput
 	}).(GetGroupsGroupOutput)
 }
 
+type GetGtmInstancesInstance struct {
+	// The alert notification methods.
+	AlertConfigs []GetGtmInstancesInstanceAlertConfig `pulumi:"alertConfigs"`
+	// The alert group.
+	AlertGroups []string `pulumi:"alertGroups"`
+	// The access type of the CNAME domain name.
+	CnameType string `pulumi:"cnameType"`
+	// The CreateTime of the Gtm Instance.
+	CreateTime string `pulumi:"createTime"`
+	// The ExpireTime of the Gtm Instance.
+	ExpireTime string `pulumi:"expireTime"`
+	// The ID of the Gtm Instance.
+	Id string `pulumi:"id"`
+	// The ID of the Gtm Instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The name of the Gtm Instance.
+	InstanceName string `pulumi:"instanceName"`
+	// The version of the instance.
+	PackageEdition string `pulumi:"packageEdition"`
+	// The paymentype of the resource.
+	PaymentType string `pulumi:"paymentType"`
+	// The Public Network domain name access method.
+	PublicCnameMode string `pulumi:"publicCnameMode"`
+	// The CNAME access domain name.
+	PublicRr string `pulumi:"publicRr"`
+	// The website domain name that the user uses on the Internet.
+	PublicUserDomainName string `pulumi:"publicUserDomainName"`
+	// The domain name that is used to access GTM over the Internet.
+	PublicZoneName string `pulumi:"publicZoneName"`
+	// The ID of the resource group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The type of the access policy.
+	StrategyMode string `pulumi:"strategyMode"`
+	// The global time to live.
+	Ttl int `pulumi:"ttl"`
+}
+
+// GetGtmInstancesInstanceInput is an input type that accepts GetGtmInstancesInstanceArgs and GetGtmInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetGtmInstancesInstanceInput` via:
+//
+//          GetGtmInstancesInstanceArgs{...}
+type GetGtmInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetGtmInstancesInstanceOutput() GetGtmInstancesInstanceOutput
+	ToGetGtmInstancesInstanceOutputWithContext(context.Context) GetGtmInstancesInstanceOutput
+}
+
+type GetGtmInstancesInstanceArgs struct {
+	// The alert notification methods.
+	AlertConfigs GetGtmInstancesInstanceAlertConfigArrayInput `pulumi:"alertConfigs"`
+	// The alert group.
+	AlertGroups pulumi.StringArrayInput `pulumi:"alertGroups"`
+	// The access type of the CNAME domain name.
+	CnameType pulumi.StringInput `pulumi:"cnameType"`
+	// The CreateTime of the Gtm Instance.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ExpireTime of the Gtm Instance.
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+	// The ID of the Gtm Instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the Gtm Instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The name of the Gtm Instance.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// The version of the instance.
+	PackageEdition pulumi.StringInput `pulumi:"packageEdition"`
+	// The paymentype of the resource.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// The Public Network domain name access method.
+	PublicCnameMode pulumi.StringInput `pulumi:"publicCnameMode"`
+	// The CNAME access domain name.
+	PublicRr pulumi.StringInput `pulumi:"publicRr"`
+	// The website domain name that the user uses on the Internet.
+	PublicUserDomainName pulumi.StringInput `pulumi:"publicUserDomainName"`
+	// The domain name that is used to access GTM over the Internet.
+	PublicZoneName pulumi.StringInput `pulumi:"publicZoneName"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The type of the access policy.
+	StrategyMode pulumi.StringInput `pulumi:"strategyMode"`
+	// The global time to live.
+	Ttl pulumi.IntInput `pulumi:"ttl"`
+}
+
+func (GetGtmInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGtmInstancesInstance)(nil)).Elem()
+}
+
+func (i GetGtmInstancesInstanceArgs) ToGetGtmInstancesInstanceOutput() GetGtmInstancesInstanceOutput {
+	return i.ToGetGtmInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetGtmInstancesInstanceArgs) ToGetGtmInstancesInstanceOutputWithContext(ctx context.Context) GetGtmInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGtmInstancesInstanceOutput)
+}
+
+// GetGtmInstancesInstanceArrayInput is an input type that accepts GetGtmInstancesInstanceArray and GetGtmInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetGtmInstancesInstanceArrayInput` via:
+//
+//          GetGtmInstancesInstanceArray{ GetGtmInstancesInstanceArgs{...} }
+type GetGtmInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetGtmInstancesInstanceArrayOutput() GetGtmInstancesInstanceArrayOutput
+	ToGetGtmInstancesInstanceArrayOutputWithContext(context.Context) GetGtmInstancesInstanceArrayOutput
+}
+
+type GetGtmInstancesInstanceArray []GetGtmInstancesInstanceInput
+
+func (GetGtmInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGtmInstancesInstance)(nil)).Elem()
+}
+
+func (i GetGtmInstancesInstanceArray) ToGetGtmInstancesInstanceArrayOutput() GetGtmInstancesInstanceArrayOutput {
+	return i.ToGetGtmInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetGtmInstancesInstanceArray) ToGetGtmInstancesInstanceArrayOutputWithContext(ctx context.Context) GetGtmInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGtmInstancesInstanceArrayOutput)
+}
+
+type GetGtmInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetGtmInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGtmInstancesInstance)(nil)).Elem()
+}
+
+func (o GetGtmInstancesInstanceOutput) ToGetGtmInstancesInstanceOutput() GetGtmInstancesInstanceOutput {
+	return o
+}
+
+func (o GetGtmInstancesInstanceOutput) ToGetGtmInstancesInstanceOutputWithContext(ctx context.Context) GetGtmInstancesInstanceOutput {
+	return o
+}
+
+// The alert notification methods.
+func (o GetGtmInstancesInstanceOutput) AlertConfigs() GetGtmInstancesInstanceAlertConfigArrayOutput {
+	return o.ApplyT(func(v GetGtmInstancesInstance) []GetGtmInstancesInstanceAlertConfig { return v.AlertConfigs }).(GetGtmInstancesInstanceAlertConfigArrayOutput)
+}
+
+// The alert group.
+func (o GetGtmInstancesInstanceOutput) AlertGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGtmInstancesInstance) []string { return v.AlertGroups }).(pulumi.StringArrayOutput)
+}
+
+// The access type of the CNAME domain name.
+func (o GetGtmInstancesInstanceOutput) CnameType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGtmInstancesInstance) string { return v.CnameType }).(pulumi.StringOutput)
+}
+
+// The CreateTime of the Gtm Instance.
+func (o GetGtmInstancesInstanceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGtmInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ExpireTime of the Gtm Instance.
+func (o GetGtmInstancesInstanceOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGtmInstancesInstance) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Gtm Instance.
+func (o GetGtmInstancesInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGtmInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the Gtm Instance.
+func (o GetGtmInstancesInstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGtmInstancesInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The name of the Gtm Instance.
+func (o GetGtmInstancesInstanceOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGtmInstancesInstance) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The version of the instance.
+func (o GetGtmInstancesInstanceOutput) PackageEdition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGtmInstancesInstance) string { return v.PackageEdition }).(pulumi.StringOutput)
+}
+
+// The paymentype of the resource.
+func (o GetGtmInstancesInstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGtmInstancesInstance) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The Public Network domain name access method.
+func (o GetGtmInstancesInstanceOutput) PublicCnameMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGtmInstancesInstance) string { return v.PublicCnameMode }).(pulumi.StringOutput)
+}
+
+// The CNAME access domain name.
+func (o GetGtmInstancesInstanceOutput) PublicRr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGtmInstancesInstance) string { return v.PublicRr }).(pulumi.StringOutput)
+}
+
+// The website domain name that the user uses on the Internet.
+func (o GetGtmInstancesInstanceOutput) PublicUserDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGtmInstancesInstance) string { return v.PublicUserDomainName }).(pulumi.StringOutput)
+}
+
+// The domain name that is used to access GTM over the Internet.
+func (o GetGtmInstancesInstanceOutput) PublicZoneName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGtmInstancesInstance) string { return v.PublicZoneName }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o GetGtmInstancesInstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGtmInstancesInstance) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The type of the access policy.
+func (o GetGtmInstancesInstanceOutput) StrategyMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGtmInstancesInstance) string { return v.StrategyMode }).(pulumi.StringOutput)
+}
+
+// The global time to live.
+func (o GetGtmInstancesInstanceOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGtmInstancesInstance) int { return v.Ttl }).(pulumi.IntOutput)
+}
+
+type GetGtmInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGtmInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGtmInstancesInstance)(nil)).Elem()
+}
+
+func (o GetGtmInstancesInstanceArrayOutput) ToGetGtmInstancesInstanceArrayOutput() GetGtmInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetGtmInstancesInstanceArrayOutput) ToGetGtmInstancesInstanceArrayOutputWithContext(ctx context.Context) GetGtmInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetGtmInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetGtmInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGtmInstancesInstance {
+		return vs[0].([]GetGtmInstancesInstance)[vs[1].(int)]
+	}).(GetGtmInstancesInstanceOutput)
+}
+
+type GetGtmInstancesInstanceAlertConfig struct {
+	// Whether to configure DingTalk notifications.
+	DingtalkNotice bool `pulumi:"dingtalkNotice"`
+	// Whether to configure mail notification.
+	EmailNotice bool `pulumi:"emailNotice"`
+	// The Alarm Event Type.
+	NoticeType string `pulumi:"noticeType"`
+	// Whether to configure SMS notification.
+	SmsNotice bool `pulumi:"smsNotice"`
+}
+
+// GetGtmInstancesInstanceAlertConfigInput is an input type that accepts GetGtmInstancesInstanceAlertConfigArgs and GetGtmInstancesInstanceAlertConfigOutput values.
+// You can construct a concrete instance of `GetGtmInstancesInstanceAlertConfigInput` via:
+//
+//          GetGtmInstancesInstanceAlertConfigArgs{...}
+type GetGtmInstancesInstanceAlertConfigInput interface {
+	pulumi.Input
+
+	ToGetGtmInstancesInstanceAlertConfigOutput() GetGtmInstancesInstanceAlertConfigOutput
+	ToGetGtmInstancesInstanceAlertConfigOutputWithContext(context.Context) GetGtmInstancesInstanceAlertConfigOutput
+}
+
+type GetGtmInstancesInstanceAlertConfigArgs struct {
+	// Whether to configure DingTalk notifications.
+	DingtalkNotice pulumi.BoolInput `pulumi:"dingtalkNotice"`
+	// Whether to configure mail notification.
+	EmailNotice pulumi.BoolInput `pulumi:"emailNotice"`
+	// The Alarm Event Type.
+	NoticeType pulumi.StringInput `pulumi:"noticeType"`
+	// Whether to configure SMS notification.
+	SmsNotice pulumi.BoolInput `pulumi:"smsNotice"`
+}
+
+func (GetGtmInstancesInstanceAlertConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGtmInstancesInstanceAlertConfig)(nil)).Elem()
+}
+
+func (i GetGtmInstancesInstanceAlertConfigArgs) ToGetGtmInstancesInstanceAlertConfigOutput() GetGtmInstancesInstanceAlertConfigOutput {
+	return i.ToGetGtmInstancesInstanceAlertConfigOutputWithContext(context.Background())
+}
+
+func (i GetGtmInstancesInstanceAlertConfigArgs) ToGetGtmInstancesInstanceAlertConfigOutputWithContext(ctx context.Context) GetGtmInstancesInstanceAlertConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGtmInstancesInstanceAlertConfigOutput)
+}
+
+// GetGtmInstancesInstanceAlertConfigArrayInput is an input type that accepts GetGtmInstancesInstanceAlertConfigArray and GetGtmInstancesInstanceAlertConfigArrayOutput values.
+// You can construct a concrete instance of `GetGtmInstancesInstanceAlertConfigArrayInput` via:
+//
+//          GetGtmInstancesInstanceAlertConfigArray{ GetGtmInstancesInstanceAlertConfigArgs{...} }
+type GetGtmInstancesInstanceAlertConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetGtmInstancesInstanceAlertConfigArrayOutput() GetGtmInstancesInstanceAlertConfigArrayOutput
+	ToGetGtmInstancesInstanceAlertConfigArrayOutputWithContext(context.Context) GetGtmInstancesInstanceAlertConfigArrayOutput
+}
+
+type GetGtmInstancesInstanceAlertConfigArray []GetGtmInstancesInstanceAlertConfigInput
+
+func (GetGtmInstancesInstanceAlertConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGtmInstancesInstanceAlertConfig)(nil)).Elem()
+}
+
+func (i GetGtmInstancesInstanceAlertConfigArray) ToGetGtmInstancesInstanceAlertConfigArrayOutput() GetGtmInstancesInstanceAlertConfigArrayOutput {
+	return i.ToGetGtmInstancesInstanceAlertConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetGtmInstancesInstanceAlertConfigArray) ToGetGtmInstancesInstanceAlertConfigArrayOutputWithContext(ctx context.Context) GetGtmInstancesInstanceAlertConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGtmInstancesInstanceAlertConfigArrayOutput)
+}
+
+type GetGtmInstancesInstanceAlertConfigOutput struct{ *pulumi.OutputState }
+
+func (GetGtmInstancesInstanceAlertConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGtmInstancesInstanceAlertConfig)(nil)).Elem()
+}
+
+func (o GetGtmInstancesInstanceAlertConfigOutput) ToGetGtmInstancesInstanceAlertConfigOutput() GetGtmInstancesInstanceAlertConfigOutput {
+	return o
+}
+
+func (o GetGtmInstancesInstanceAlertConfigOutput) ToGetGtmInstancesInstanceAlertConfigOutputWithContext(ctx context.Context) GetGtmInstancesInstanceAlertConfigOutput {
+	return o
+}
+
+// Whether to configure DingTalk notifications.
+func (o GetGtmInstancesInstanceAlertConfigOutput) DingtalkNotice() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGtmInstancesInstanceAlertConfig) bool { return v.DingtalkNotice }).(pulumi.BoolOutput)
+}
+
+// Whether to configure mail notification.
+func (o GetGtmInstancesInstanceAlertConfigOutput) EmailNotice() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGtmInstancesInstanceAlertConfig) bool { return v.EmailNotice }).(pulumi.BoolOutput)
+}
+
+// The Alarm Event Type.
+func (o GetGtmInstancesInstanceAlertConfigOutput) NoticeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGtmInstancesInstanceAlertConfig) string { return v.NoticeType }).(pulumi.StringOutput)
+}
+
+// Whether to configure SMS notification.
+func (o GetGtmInstancesInstanceAlertConfigOutput) SmsNotice() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGtmInstancesInstanceAlertConfig) bool { return v.SmsNotice }).(pulumi.BoolOutput)
+}
+
+type GetGtmInstancesInstanceAlertConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGtmInstancesInstanceAlertConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGtmInstancesInstanceAlertConfig)(nil)).Elem()
+}
+
+func (o GetGtmInstancesInstanceAlertConfigArrayOutput) ToGetGtmInstancesInstanceAlertConfigArrayOutput() GetGtmInstancesInstanceAlertConfigArrayOutput {
+	return o
+}
+
+func (o GetGtmInstancesInstanceAlertConfigArrayOutput) ToGetGtmInstancesInstanceAlertConfigArrayOutputWithContext(ctx context.Context) GetGtmInstancesInstanceAlertConfigArrayOutput {
+	return o
+}
+
+func (o GetGtmInstancesInstanceAlertConfigArrayOutput) Index(i pulumi.IntInput) GetGtmInstancesInstanceAlertConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGtmInstancesInstanceAlertConfig {
+		return vs[0].([]GetGtmInstancesInstanceAlertConfig)[vs[1].(int)]
+	}).(GetGtmInstancesInstanceAlertConfigOutput)
+}
+
 type GetInstancesInstance struct {
 	// DNS security level.
 	DnsSecurity string `pulumi:"dnsSecurity"`
@@ -2097,6 +2958,10 @@ func (o GetResolutionLinesLineArrayOutput) Index(i pulumi.IntInput) GetResolutio
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomLineIpSegmentListInput)(nil)).Elem(), CustomLineIpSegmentListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomLineIpSegmentListArrayInput)(nil)).Elem(), CustomLineIpSegmentListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GtmInstanceAlertConfigInput)(nil)).Elem(), GtmInstanceAlertConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GtmInstanceAlertConfigArrayInput)(nil)).Elem(), GtmInstanceAlertConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlidnsDomainGroupsGroupInput)(nil)).Elem(), GetAlidnsDomainGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlidnsDomainGroupsGroupArrayInput)(nil)).Elem(), GetAlidnsDomainGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlidnsDomainsDomainInput)(nil)).Elem(), GetAlidnsDomainsDomainArgs{})
@@ -2107,6 +2972,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlidnsInstancesInstanceArrayInput)(nil)).Elem(), GetAlidnsInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlidnsRecordsRecordInput)(nil)).Elem(), GetAlidnsRecordsRecordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlidnsRecordsRecordArrayInput)(nil)).Elem(), GetAlidnsRecordsRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomLinesLineInput)(nil)).Elem(), GetCustomLinesLineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomLinesLineArrayInput)(nil)).Elem(), GetCustomLinesLineArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomLinesLineIpSegmentListInput)(nil)).Elem(), GetCustomLinesLineIpSegmentListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomLinesLineIpSegmentListArrayInput)(nil)).Elem(), GetCustomLinesLineIpSegmentListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainGroupsGroupInput)(nil)).Elem(), GetDomainGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainGroupsGroupArrayInput)(nil)).Elem(), GetDomainGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainRecordsRecordInput)(nil)).Elem(), GetDomainRecordsRecordArgs{})
@@ -2117,12 +2986,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainRecordLineArrayInput)(nil)).Elem(), GetDomainsDomainRecordLineArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupInput)(nil)).Elem(), GetGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupArrayInput)(nil)).Elem(), GetGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGtmInstancesInstanceInput)(nil)).Elem(), GetGtmInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGtmInstancesInstanceArrayInput)(nil)).Elem(), GetGtmInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGtmInstancesInstanceAlertConfigInput)(nil)).Elem(), GetGtmInstancesInstanceAlertConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGtmInstancesInstanceAlertConfigArrayInput)(nil)).Elem(), GetGtmInstancesInstanceAlertConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsRecordInput)(nil)).Elem(), GetRecordsRecordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsRecordArrayInput)(nil)).Elem(), GetRecordsRecordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResolutionLinesLineInput)(nil)).Elem(), GetResolutionLinesLineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResolutionLinesLineArrayInput)(nil)).Elem(), GetResolutionLinesLineArray{})
+	pulumi.RegisterOutputType(CustomLineIpSegmentListOutput{})
+	pulumi.RegisterOutputType(CustomLineIpSegmentListArrayOutput{})
+	pulumi.RegisterOutputType(GtmInstanceAlertConfigOutput{})
+	pulumi.RegisterOutputType(GtmInstanceAlertConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetAlidnsDomainGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetAlidnsDomainGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetAlidnsDomainsDomainOutput{})
@@ -2133,6 +3010,10 @@ func init() {
 	pulumi.RegisterOutputType(GetAlidnsInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetAlidnsRecordsRecordOutput{})
 	pulumi.RegisterOutputType(GetAlidnsRecordsRecordArrayOutput{})
+	pulumi.RegisterOutputType(GetCustomLinesLineOutput{})
+	pulumi.RegisterOutputType(GetCustomLinesLineArrayOutput{})
+	pulumi.RegisterOutputType(GetCustomLinesLineIpSegmentListOutput{})
+	pulumi.RegisterOutputType(GetCustomLinesLineIpSegmentListArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetDomainGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainRecordsRecordOutput{})
@@ -2143,6 +3024,10 @@ func init() {
 	pulumi.RegisterOutputType(GetDomainsDomainRecordLineArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetGtmInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetGtmInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetGtmInstancesInstanceAlertConfigOutput{})
+	pulumi.RegisterOutputType(GetGtmInstancesInstanceAlertConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetRecordsRecordOutput{})

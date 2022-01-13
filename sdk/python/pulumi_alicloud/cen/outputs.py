@@ -2122,13 +2122,14 @@ class GetTransitRoutersTransitRouterResult(dict):
                  type: str,
                  xgw_vip: str):
         """
-        :param str ali_uid: UID of the Aliyun.
-        :param str cen_id: ID of the CEN instance.
+        :param str ali_uid: The UID of the Aliyun.
+        :param str cen_id: The ID of the CEN instance.
+        :param str id: The ID of the resource, It is formatted to `<cen_id>:<transit_router_id>`. **NOTE:** Before 1.151.0, It is formatted to `<transit_router_id>`.
         :param str status: The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
         :param str transit_router_description: The description of the transit router.
-        :param str transit_router_id: ID of the transit router.
+        :param str transit_router_id: The ID of the transit router.
         :param str transit_router_name: The name of the transit router.
-        :param str type: Type of the transit router.
+        :param str type: The Type of the transit router.
         :param str xgw_vip: The vip of the XGW.
         """
         pulumi.set(__self__, "ali_uid", ali_uid)
@@ -2145,7 +2146,7 @@ class GetTransitRoutersTransitRouterResult(dict):
     @pulumi.getter(name="aliUid")
     def ali_uid(self) -> str:
         """
-        UID of the Aliyun.
+        The UID of the Aliyun.
         """
         return pulumi.get(self, "ali_uid")
 
@@ -2153,13 +2154,16 @@ class GetTransitRoutersTransitRouterResult(dict):
     @pulumi.getter(name="cenId")
     def cen_id(self) -> str:
         """
-        ID of the CEN instance.
+        The ID of the CEN instance.
         """
         return pulumi.get(self, "cen_id")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The ID of the resource, It is formatted to `<cen_id>:<transit_router_id>`. **NOTE:** Before 1.151.0, It is formatted to `<transit_router_id>`.
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -2182,7 +2186,7 @@ class GetTransitRoutersTransitRouterResult(dict):
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> str:
         """
-        ID of the transit router.
+        The ID of the transit router.
         """
         return pulumi.get(self, "transit_router_id")
 
@@ -2198,7 +2202,7 @@ class GetTransitRoutersTransitRouterResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Type of the transit router.
+        The Type of the transit router.
         """
         return pulumi.get(self, "type")
 

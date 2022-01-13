@@ -167,6 +167,109 @@ func (o ScalingConfigurationDataDiskArrayOutput) Index(i pulumi.IntInput) Scalin
 	}).(ScalingConfigurationDataDiskOutput)
 }
 
+type ScalingConfigurationSpotPriceLimit struct {
+	// Resource type of an ECS instance.
+	InstanceType *string  `pulumi:"instanceType"`
+	PriceLimit   *float64 `pulumi:"priceLimit"`
+}
+
+// ScalingConfigurationSpotPriceLimitInput is an input type that accepts ScalingConfigurationSpotPriceLimitArgs and ScalingConfigurationSpotPriceLimitOutput values.
+// You can construct a concrete instance of `ScalingConfigurationSpotPriceLimitInput` via:
+//
+//          ScalingConfigurationSpotPriceLimitArgs{...}
+type ScalingConfigurationSpotPriceLimitInput interface {
+	pulumi.Input
+
+	ToScalingConfigurationSpotPriceLimitOutput() ScalingConfigurationSpotPriceLimitOutput
+	ToScalingConfigurationSpotPriceLimitOutputWithContext(context.Context) ScalingConfigurationSpotPriceLimitOutput
+}
+
+type ScalingConfigurationSpotPriceLimitArgs struct {
+	// Resource type of an ECS instance.
+	InstanceType pulumi.StringPtrInput  `pulumi:"instanceType"`
+	PriceLimit   pulumi.Float64PtrInput `pulumi:"priceLimit"`
+}
+
+func (ScalingConfigurationSpotPriceLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfigurationSpotPriceLimit)(nil)).Elem()
+}
+
+func (i ScalingConfigurationSpotPriceLimitArgs) ToScalingConfigurationSpotPriceLimitOutput() ScalingConfigurationSpotPriceLimitOutput {
+	return i.ToScalingConfigurationSpotPriceLimitOutputWithContext(context.Background())
+}
+
+func (i ScalingConfigurationSpotPriceLimitArgs) ToScalingConfigurationSpotPriceLimitOutputWithContext(ctx context.Context) ScalingConfigurationSpotPriceLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationSpotPriceLimitOutput)
+}
+
+// ScalingConfigurationSpotPriceLimitArrayInput is an input type that accepts ScalingConfigurationSpotPriceLimitArray and ScalingConfigurationSpotPriceLimitArrayOutput values.
+// You can construct a concrete instance of `ScalingConfigurationSpotPriceLimitArrayInput` via:
+//
+//          ScalingConfigurationSpotPriceLimitArray{ ScalingConfigurationSpotPriceLimitArgs{...} }
+type ScalingConfigurationSpotPriceLimitArrayInput interface {
+	pulumi.Input
+
+	ToScalingConfigurationSpotPriceLimitArrayOutput() ScalingConfigurationSpotPriceLimitArrayOutput
+	ToScalingConfigurationSpotPriceLimitArrayOutputWithContext(context.Context) ScalingConfigurationSpotPriceLimitArrayOutput
+}
+
+type ScalingConfigurationSpotPriceLimitArray []ScalingConfigurationSpotPriceLimitInput
+
+func (ScalingConfigurationSpotPriceLimitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingConfigurationSpotPriceLimit)(nil)).Elem()
+}
+
+func (i ScalingConfigurationSpotPriceLimitArray) ToScalingConfigurationSpotPriceLimitArrayOutput() ScalingConfigurationSpotPriceLimitArrayOutput {
+	return i.ToScalingConfigurationSpotPriceLimitArrayOutputWithContext(context.Background())
+}
+
+func (i ScalingConfigurationSpotPriceLimitArray) ToScalingConfigurationSpotPriceLimitArrayOutputWithContext(ctx context.Context) ScalingConfigurationSpotPriceLimitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationSpotPriceLimitArrayOutput)
+}
+
+type ScalingConfigurationSpotPriceLimitOutput struct{ *pulumi.OutputState }
+
+func (ScalingConfigurationSpotPriceLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfigurationSpotPriceLimit)(nil)).Elem()
+}
+
+func (o ScalingConfigurationSpotPriceLimitOutput) ToScalingConfigurationSpotPriceLimitOutput() ScalingConfigurationSpotPriceLimitOutput {
+	return o
+}
+
+func (o ScalingConfigurationSpotPriceLimitOutput) ToScalingConfigurationSpotPriceLimitOutputWithContext(ctx context.Context) ScalingConfigurationSpotPriceLimitOutput {
+	return o
+}
+
+// Resource type of an ECS instance.
+func (o ScalingConfigurationSpotPriceLimitOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationSpotPriceLimit) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+func (o ScalingConfigurationSpotPriceLimitOutput) PriceLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationSpotPriceLimit) *float64 { return v.PriceLimit }).(pulumi.Float64PtrOutput)
+}
+
+type ScalingConfigurationSpotPriceLimitArrayOutput struct{ *pulumi.OutputState }
+
+func (ScalingConfigurationSpotPriceLimitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingConfigurationSpotPriceLimit)(nil)).Elem()
+}
+
+func (o ScalingConfigurationSpotPriceLimitArrayOutput) ToScalingConfigurationSpotPriceLimitArrayOutput() ScalingConfigurationSpotPriceLimitArrayOutput {
+	return o
+}
+
+func (o ScalingConfigurationSpotPriceLimitArrayOutput) ToScalingConfigurationSpotPriceLimitArrayOutputWithContext(ctx context.Context) ScalingConfigurationSpotPriceLimitArrayOutput {
+	return o
+}
+
+func (o ScalingConfigurationSpotPriceLimitArrayOutput) Index(i pulumi.IntInput) ScalingConfigurationSpotPriceLimitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingConfigurationSpotPriceLimit {
+		return vs[0].([]ScalingConfigurationSpotPriceLimit)[vs[1].(int)]
+	}).(ScalingConfigurationSpotPriceLimitOutput)
+}
+
 type ScalingGroupVServerGroupsVserverGroup struct {
 	LoadbalancerId    string                                                  `pulumi:"loadbalancerId"`
 	VserverAttributes []ScalingGroupVServerGroupsVserverGroupVserverAttribute `pulumi:"vserverAttributes"`
@@ -1012,7 +1115,7 @@ type GetScalingConfigurationsConfiguration struct {
 	ImageId string `pulumi:"imageId"`
 	// (Optional,Available in 1.143.0+) InstanceName of an ECS instance.
 	InstanceName string `pulumi:"instanceName"`
-	// Instance type of the scaling configuration.
+	// Resource type of an ECS instance.
 	InstanceType string `pulumi:"instanceType"`
 	// Internet charge type of the scaling configuration.
 	InternetChargeType string `pulumi:"internetChargeType"`
@@ -1028,6 +1131,10 @@ type GetScalingConfigurationsConfiguration struct {
 	ScalingGroupId string `pulumi:"scalingGroupId"`
 	// Security group ID of the scaling configuration.
 	SecurityGroupId string `pulumi:"securityGroupId"`
+	// (Optional, Available in 1.151.0+) The maximum price hourly for instance types.
+	SpotPriceLimits []GetScalingConfigurationsConfigurationSpotPriceLimit `pulumi:"spotPriceLimits"`
+	// (Optional, Available in 1.151.0+) The spot strategy for a Pay-As-You-Go instance.
+	SpotStrategy string `pulumi:"spotStrategy"`
 	// System disk category of the scaling configuration.
 	SystemDiskCategory string `pulumi:"systemDiskCategory"`
 	// The performance level of the ESSD used as the system disk.
@@ -1062,7 +1169,7 @@ type GetScalingConfigurationsConfigurationArgs struct {
 	ImageId pulumi.StringInput `pulumi:"imageId"`
 	// (Optional,Available in 1.143.0+) InstanceName of an ECS instance.
 	InstanceName pulumi.StringInput `pulumi:"instanceName"`
-	// Instance type of the scaling configuration.
+	// Resource type of an ECS instance.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
 	// Internet charge type of the scaling configuration.
 	InternetChargeType pulumi.StringInput `pulumi:"internetChargeType"`
@@ -1078,6 +1185,10 @@ type GetScalingConfigurationsConfigurationArgs struct {
 	ScalingGroupId pulumi.StringInput `pulumi:"scalingGroupId"`
 	// Security group ID of the scaling configuration.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	// (Optional, Available in 1.151.0+) The maximum price hourly for instance types.
+	SpotPriceLimits GetScalingConfigurationsConfigurationSpotPriceLimitArrayInput `pulumi:"spotPriceLimits"`
+	// (Optional, Available in 1.151.0+) The spot strategy for a Pay-As-You-Go instance.
+	SpotStrategy pulumi.StringInput `pulumi:"spotStrategy"`
 	// System disk category of the scaling configuration.
 	SystemDiskCategory pulumi.StringInput `pulumi:"systemDiskCategory"`
 	// The performance level of the ESSD used as the system disk.
@@ -1174,7 +1285,7 @@ func (o GetScalingConfigurationsConfigurationOutput) InstanceName() pulumi.Strin
 	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.InstanceName }).(pulumi.StringOutput)
 }
 
-// Instance type of the scaling configuration.
+// Resource type of an ECS instance.
 func (o GetScalingConfigurationsConfigurationOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.InstanceType }).(pulumi.StringOutput)
 }
@@ -1212,6 +1323,18 @@ func (o GetScalingConfigurationsConfigurationOutput) ScalingGroupId() pulumi.Str
 // Security group ID of the scaling configuration.
 func (o GetScalingConfigurationsConfigurationOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// (Optional, Available in 1.151.0+) The maximum price hourly for instance types.
+func (o GetScalingConfigurationsConfigurationOutput) SpotPriceLimits() GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) []GetScalingConfigurationsConfigurationSpotPriceLimit {
+		return v.SpotPriceLimits
+	}).(GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput)
+}
+
+// (Optional, Available in 1.151.0+) The spot strategy for a Pay-As-You-Go instance.
+func (o GetScalingConfigurationsConfigurationOutput) SpotStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.SpotStrategy }).(pulumi.StringOutput)
 }
 
 // System disk category of the scaling configuration.
@@ -1389,6 +1512,112 @@ func (o GetScalingConfigurationsConfigurationDataDiskArrayOutput) Index(i pulumi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScalingConfigurationsConfigurationDataDisk {
 		return vs[0].([]GetScalingConfigurationsConfigurationDataDisk)[vs[1].(int)]
 	}).(GetScalingConfigurationsConfigurationDataDiskOutput)
+}
+
+type GetScalingConfigurationsConfigurationSpotPriceLimit struct {
+	// Resource type of an ECS instance.
+	InstanceType *string `pulumi:"instanceType"`
+	// Price limit hourly of instance type.
+	PriceLimit *float64 `pulumi:"priceLimit"`
+}
+
+// GetScalingConfigurationsConfigurationSpotPriceLimitInput is an input type that accepts GetScalingConfigurationsConfigurationSpotPriceLimitArgs and GetScalingConfigurationsConfigurationSpotPriceLimitOutput values.
+// You can construct a concrete instance of `GetScalingConfigurationsConfigurationSpotPriceLimitInput` via:
+//
+//          GetScalingConfigurationsConfigurationSpotPriceLimitArgs{...}
+type GetScalingConfigurationsConfigurationSpotPriceLimitInput interface {
+	pulumi.Input
+
+	ToGetScalingConfigurationsConfigurationSpotPriceLimitOutput() GetScalingConfigurationsConfigurationSpotPriceLimitOutput
+	ToGetScalingConfigurationsConfigurationSpotPriceLimitOutputWithContext(context.Context) GetScalingConfigurationsConfigurationSpotPriceLimitOutput
+}
+
+type GetScalingConfigurationsConfigurationSpotPriceLimitArgs struct {
+	// Resource type of an ECS instance.
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// Price limit hourly of instance type.
+	PriceLimit pulumi.Float64PtrInput `pulumi:"priceLimit"`
+}
+
+func (GetScalingConfigurationsConfigurationSpotPriceLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScalingConfigurationsConfigurationSpotPriceLimit)(nil)).Elem()
+}
+
+func (i GetScalingConfigurationsConfigurationSpotPriceLimitArgs) ToGetScalingConfigurationsConfigurationSpotPriceLimitOutput() GetScalingConfigurationsConfigurationSpotPriceLimitOutput {
+	return i.ToGetScalingConfigurationsConfigurationSpotPriceLimitOutputWithContext(context.Background())
+}
+
+func (i GetScalingConfigurationsConfigurationSpotPriceLimitArgs) ToGetScalingConfigurationsConfigurationSpotPriceLimitOutputWithContext(ctx context.Context) GetScalingConfigurationsConfigurationSpotPriceLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScalingConfigurationsConfigurationSpotPriceLimitOutput)
+}
+
+// GetScalingConfigurationsConfigurationSpotPriceLimitArrayInput is an input type that accepts GetScalingConfigurationsConfigurationSpotPriceLimitArray and GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput values.
+// You can construct a concrete instance of `GetScalingConfigurationsConfigurationSpotPriceLimitArrayInput` via:
+//
+//          GetScalingConfigurationsConfigurationSpotPriceLimitArray{ GetScalingConfigurationsConfigurationSpotPriceLimitArgs{...} }
+type GetScalingConfigurationsConfigurationSpotPriceLimitArrayInput interface {
+	pulumi.Input
+
+	ToGetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput() GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput
+	ToGetScalingConfigurationsConfigurationSpotPriceLimitArrayOutputWithContext(context.Context) GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput
+}
+
+type GetScalingConfigurationsConfigurationSpotPriceLimitArray []GetScalingConfigurationsConfigurationSpotPriceLimitInput
+
+func (GetScalingConfigurationsConfigurationSpotPriceLimitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScalingConfigurationsConfigurationSpotPriceLimit)(nil)).Elem()
+}
+
+func (i GetScalingConfigurationsConfigurationSpotPriceLimitArray) ToGetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput() GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput {
+	return i.ToGetScalingConfigurationsConfigurationSpotPriceLimitArrayOutputWithContext(context.Background())
+}
+
+func (i GetScalingConfigurationsConfigurationSpotPriceLimitArray) ToGetScalingConfigurationsConfigurationSpotPriceLimitArrayOutputWithContext(ctx context.Context) GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput)
+}
+
+type GetScalingConfigurationsConfigurationSpotPriceLimitOutput struct{ *pulumi.OutputState }
+
+func (GetScalingConfigurationsConfigurationSpotPriceLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScalingConfigurationsConfigurationSpotPriceLimit)(nil)).Elem()
+}
+
+func (o GetScalingConfigurationsConfigurationSpotPriceLimitOutput) ToGetScalingConfigurationsConfigurationSpotPriceLimitOutput() GetScalingConfigurationsConfigurationSpotPriceLimitOutput {
+	return o
+}
+
+func (o GetScalingConfigurationsConfigurationSpotPriceLimitOutput) ToGetScalingConfigurationsConfigurationSpotPriceLimitOutputWithContext(ctx context.Context) GetScalingConfigurationsConfigurationSpotPriceLimitOutput {
+	return o
+}
+
+// Resource type of an ECS instance.
+func (o GetScalingConfigurationsConfigurationSpotPriceLimitOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsConfigurationSpotPriceLimit) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// Price limit hourly of instance type.
+func (o GetScalingConfigurationsConfigurationSpotPriceLimitOutput) PriceLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetScalingConfigurationsConfigurationSpotPriceLimit) *float64 { return v.PriceLimit }).(pulumi.Float64PtrOutput)
+}
+
+type GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput struct{ *pulumi.OutputState }
+
+func (GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScalingConfigurationsConfigurationSpotPriceLimit)(nil)).Elem()
+}
+
+func (o GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput) ToGetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput() GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput {
+	return o
+}
+
+func (o GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput) ToGetScalingConfigurationsConfigurationSpotPriceLimitArrayOutputWithContext(ctx context.Context) GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput {
+	return o
+}
+
+func (o GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput) Index(i pulumi.IntInput) GetScalingConfigurationsConfigurationSpotPriceLimitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScalingConfigurationsConfigurationSpotPriceLimit {
+		return vs[0].([]GetScalingConfigurationsConfigurationSpotPriceLimit)[vs[1].(int)]
+	}).(GetScalingConfigurationsConfigurationSpotPriceLimitOutput)
 }
 
 type GetScalingGroupsGroup struct {
@@ -2009,6 +2238,8 @@ func (o GetScheduledTasksTaskArrayOutput) Index(i pulumi.IntInput) GetScheduledT
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationDataDiskInput)(nil)).Elem(), ScalingConfigurationDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationDataDiskArrayInput)(nil)).Elem(), ScalingConfigurationDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationSpotPriceLimitInput)(nil)).Elem(), ScalingConfigurationSpotPriceLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationSpotPriceLimitArrayInput)(nil)).Elem(), ScalingConfigurationSpotPriceLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupVServerGroupsVserverGroupInput)(nil)).Elem(), ScalingGroupVServerGroupsVserverGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupVServerGroupsVserverGroupArrayInput)(nil)).Elem(), ScalingGroupVServerGroupsVserverGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupVServerGroupsVserverGroupVserverAttributeInput)(nil)).Elem(), ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs{})
@@ -2025,6 +2256,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingConfigurationsConfigurationArrayInput)(nil)).Elem(), GetScalingConfigurationsConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingConfigurationsConfigurationDataDiskInput)(nil)).Elem(), GetScalingConfigurationsConfigurationDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingConfigurationsConfigurationDataDiskArrayInput)(nil)).Elem(), GetScalingConfigurationsConfigurationDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingConfigurationsConfigurationSpotPriceLimitInput)(nil)).Elem(), GetScalingConfigurationsConfigurationSpotPriceLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingConfigurationsConfigurationSpotPriceLimitArrayInput)(nil)).Elem(), GetScalingConfigurationsConfigurationSpotPriceLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingGroupsGroupInput)(nil)).Elem(), GetScalingGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingGroupsGroupArrayInput)(nil)).Elem(), GetScalingGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingRulesRuleInput)(nil)).Elem(), GetScalingRulesRuleArgs{})
@@ -2033,6 +2266,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScheduledTasksTaskArrayInput)(nil)).Elem(), GetScheduledTasksTaskArray{})
 	pulumi.RegisterOutputType(ScalingConfigurationDataDiskOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(ScalingConfigurationSpotPriceLimitOutput{})
+	pulumi.RegisterOutputType(ScalingConfigurationSpotPriceLimitArrayOutput{})
 	pulumi.RegisterOutputType(ScalingGroupVServerGroupsVserverGroupOutput{})
 	pulumi.RegisterOutputType(ScalingGroupVServerGroupsVserverGroupArrayOutput{})
 	pulumi.RegisterOutputType(ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput{})
@@ -2049,6 +2284,8 @@ func init() {
 	pulumi.RegisterOutputType(GetScalingConfigurationsConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetScalingConfigurationsConfigurationDataDiskOutput{})
 	pulumi.RegisterOutputType(GetScalingConfigurationsConfigurationDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetScalingConfigurationsConfigurationSpotPriceLimitOutput{})
+	pulumi.RegisterOutputType(GetScalingConfigurationsConfigurationSpotPriceLimitArrayOutput{})
 	pulumi.RegisterOutputType(GetScalingGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetScalingGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetScalingRulesRuleOutput{})

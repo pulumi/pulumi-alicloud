@@ -196,6 +196,18 @@ namespace Pulumi.AliCloud.Ess
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
+        /// Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+        /// </summary>
+        [Output("spotPriceLimits")]
+        public Output<ImmutableArray<Outputs.ScalingConfigurationSpotPriceLimit>> SpotPriceLimits { get; private set; } = null!;
+
+        /// <summary>
+        /// The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
+        /// </summary>
+        [Output("spotStrategy")]
+        public Output<string?> SpotStrategy { get; private set; } = null!;
+
+        /// <summary>
         /// The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
         /// </summary>
         [Output("substitute")]
@@ -502,6 +514,24 @@ namespace Pulumi.AliCloud.Ess
             set => _securityGroupIds = value;
         }
 
+        [Input("spotPriceLimits")]
+        private InputList<Inputs.ScalingConfigurationSpotPriceLimitArgs>? _spotPriceLimits;
+
+        /// <summary>
+        /// Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+        /// </summary>
+        public InputList<Inputs.ScalingConfigurationSpotPriceLimitArgs> SpotPriceLimits
+        {
+            get => _spotPriceLimits ?? (_spotPriceLimits = new InputList<Inputs.ScalingConfigurationSpotPriceLimitArgs>());
+            set => _spotPriceLimits = value;
+        }
+
+        /// <summary>
+        /// The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
+        /// </summary>
+        [Input("spotStrategy")]
+        public Input<string>? SpotStrategy { get; set; }
+
         /// <summary>
         /// The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
         /// </summary>
@@ -775,6 +805,24 @@ namespace Pulumi.AliCloud.Ess
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
             set => _securityGroupIds = value;
         }
+
+        [Input("spotPriceLimits")]
+        private InputList<Inputs.ScalingConfigurationSpotPriceLimitGetArgs>? _spotPriceLimits;
+
+        /// <summary>
+        /// Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+        /// </summary>
+        public InputList<Inputs.ScalingConfigurationSpotPriceLimitGetArgs> SpotPriceLimits
+        {
+            get => _spotPriceLimits ?? (_spotPriceLimits = new InputList<Inputs.ScalingConfigurationSpotPriceLimitGetArgs>());
+            set => _spotPriceLimits = value;
+        }
+
+        /// <summary>
+        /// The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
+        /// </summary>
+        [Input("spotStrategy")]
+        public Input<string>? SpotStrategy { get; set; }
 
         /// <summary>
         /// The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.

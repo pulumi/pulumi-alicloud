@@ -44,7 +44,8 @@ import * as utilities from "../utilities";
  *     instanceName: name,
  * });
  * const account = new alicloud.rds.RdsAccount("account", {
- *     instanceId: instance.id,
+ *     dbInstanceId: instance.id,
+ *     accountName: "tftestnormal12",
  *     accountPassword: "Test12345",
  * });
  * ```
@@ -108,10 +109,14 @@ export class RdsAccount extends pulumi.CustomResource {
      */
     public readonly dbInstanceId!: pulumi.Output<string>;
     /**
+     * The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
+     *
      * @deprecated Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
+     *
      * @deprecated Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
      */
     public readonly instanceId!: pulumi.Output<string>;
@@ -124,10 +129,14 @@ export class RdsAccount extends pulumi.CustomResource {
      */
     public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
+     * The attribute has been deprecated from 1.120.0 and using `accountName` instead.
+     *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
+     *
      * @deprecated Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
      */
     public readonly password!: pulumi.Output<string>;
@@ -136,6 +145,8 @@ export class RdsAccount extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
+     * The attribute has been deprecated from 1.120.0 and using `accountType` instead.
+     *
      * @deprecated Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
      */
     public readonly type!: pulumi.Output<string>;
@@ -216,10 +227,14 @@ export interface RdsAccountState {
      */
     dbInstanceId?: pulumi.Input<string>;
     /**
+     * The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
+     *
      * @deprecated Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
      */
     description?: pulumi.Input<string>;
     /**
+     * The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
+     *
      * @deprecated Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
      */
     instanceId?: pulumi.Input<string>;
@@ -232,10 +247,14 @@ export interface RdsAccountState {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
+     * The attribute has been deprecated from 1.120.0 and using `accountName` instead.
+     *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
      */
     name?: pulumi.Input<string>;
     /**
+     * The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
+     *
      * @deprecated Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
      */
     password?: pulumi.Input<string>;
@@ -244,6 +263,8 @@ export interface RdsAccountState {
      */
     status?: pulumi.Input<string>;
     /**
+     * The attribute has been deprecated from 1.120.0 and using `accountType` instead.
+     *
      * @deprecated Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
      */
     type?: pulumi.Input<string>;
@@ -276,10 +297,14 @@ export interface RdsAccountArgs {
      */
     dbInstanceId?: pulumi.Input<string>;
     /**
+     * The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
+     *
      * @deprecated Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
      */
     description?: pulumi.Input<string>;
     /**
+     * The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
+     *
      * @deprecated Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
      */
     instanceId?: pulumi.Input<string>;
@@ -292,14 +317,20 @@ export interface RdsAccountArgs {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
+     * The attribute has been deprecated from 1.120.0 and using `accountName` instead.
+     *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
      */
     name?: pulumi.Input<string>;
     /**
+     * The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
+     *
      * @deprecated Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
      */
     password?: pulumi.Input<string>;
     /**
+     * The attribute has been deprecated from 1.120.0 and using `accountType` instead.
+     *
      * @deprecated Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
      */
     type?: pulumi.Input<string>;

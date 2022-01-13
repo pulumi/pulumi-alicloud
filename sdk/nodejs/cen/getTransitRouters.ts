@@ -32,6 +32,7 @@ export function getTransitRouters(args: GetTransitRoutersArgs, opts?: pulumi.Inv
     }
     return pulumi.runtime.invoke("alicloud:cen/getTransitRouters:getTransitRouters", {
         "cenId": args.cenId,
+        "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "status": args.status,
@@ -45,9 +46,16 @@ export function getTransitRouters(args: GetTransitRoutersArgs, opts?: pulumi.Inv
  */
 export interface GetTransitRoutersArgs {
     /**
-     * ID of the CEN instance.
+     * The ID of the CEN instance.
      */
     cenId: string;
+    /**
+     * A list of resource id. The element value is same as <cen_id>:<transit_router_id>`.
+     */
+    ids?: string[];
+    /**
+     * A regex string to filter CEN Transit Routers by name.
+     */
     nameRegex?: string;
     outputFile?: string;
     /**
@@ -55,9 +63,9 @@ export interface GetTransitRoutersArgs {
      */
     status?: string;
     /**
-     * ID of the transit router.
+     * The ID of the transit router.
      */
-    transitRouterId: string;
+    transitRouterId?: string;
     /**
      * A list of ID of the transit router.
      */
@@ -69,15 +77,18 @@ export interface GetTransitRoutersArgs {
  */
 export interface GetTransitRoutersResult {
     /**
-     * ID of the CEN instance.
+     * The ID of the CEN instance.
      */
     readonly cenId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly ids: string[];
+    readonly ids?: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of  CEN Transit Routers names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     /**
@@ -85,9 +96,9 @@ export interface GetTransitRoutersResult {
      */
     readonly status?: string;
     /**
-     * ID of the transit router.
+     * The ID of the transit router.
      */
-    readonly transitRouterId: string;
+    readonly transitRouterId?: string;
     readonly transitRouterIds?: string[];
     /**
      * A list of CEN Transit Routers. Each element contains the following attributes:
@@ -104,9 +115,16 @@ export function getTransitRoutersOutput(args: GetTransitRoutersOutputArgs, opts?
  */
 export interface GetTransitRoutersOutputArgs {
     /**
-     * ID of the CEN instance.
+     * The ID of the CEN instance.
      */
     cenId: pulumi.Input<string>;
+    /**
+     * A list of resource id. The element value is same as <cen_id>:<transit_router_id>`.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter CEN Transit Routers by name.
+     */
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
     /**
@@ -114,9 +132,9 @@ export interface GetTransitRoutersOutputArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * ID of the transit router.
+     * The ID of the transit router.
      */
-    transitRouterId: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string>;
     /**
      * A list of ID of the transit router.
      */

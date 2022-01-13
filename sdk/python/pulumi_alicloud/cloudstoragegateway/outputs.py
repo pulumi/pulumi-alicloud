@@ -1302,7 +1302,7 @@ class GetGatewaysGatewayResult(dict):
         :param str ip: gateway public ip.
         :param bool is_release_after_expiration: whether subscription gateway is released after expiration or not.
         :param str location: gateway location.
-        :param str payment_type: gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`.
+        :param str payment_type: gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`, `Subscription`.
         :param int public_network_bandwidth: gateway public network bandwidth.
         :param str status: gateway status.
         :param str storage_bundle_id: storage bundle id.
@@ -1475,7 +1475,7 @@ class GetGatewaysGatewayResult(dict):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> str:
         """
-        gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`.
+        gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`, `Subscription`.
         """
         return pulumi.get(self, "payment_type")
 

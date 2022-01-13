@@ -4940,13 +4940,16 @@ export namespace cen {
 
     export interface GetTransitRoutersTransitRouter {
         /**
-         * UID of the Aliyun.
+         * The UID of the Aliyun.
          */
         aliUid: string;
         /**
-         * ID of the CEN instance.
+         * The ID of the CEN instance.
          */
         cenId: string;
+        /**
+         * The ID of the resource, It is formatted to `<cen_id>:<transit_router_id>`. **NOTE:** Before 1.151.0, It is formatted to `<transit_router_id>`.
+         */
         id: string;
         /**
          * The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
@@ -4957,7 +4960,7 @@ export namespace cen {
          */
         transitRouterDescription: string;
         /**
-         * ID of the transit router.
+         * The ID of the transit router.
          */
         transitRouterId: string;
         /**
@@ -4965,7 +4968,7 @@ export namespace cen {
          */
         transitRouterName: string;
         /**
-         * Type of the transit router.
+         * The Type of the transit router.
          */
         type: string;
         /**
@@ -6855,7 +6858,7 @@ export namespace cloudstoragegateway {
          */
         location: string;
         /**
-         * gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`.
+         * gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`, `Subscription`.
          */
         paymentType: string;
         /**
@@ -10212,6 +10215,17 @@ export namespace dms {
 }
 
 export namespace dns {
+    export interface CustomLineIpSegmentList {
+        /**
+         * The end IP address of the CIDR block.
+         */
+        endIp: string;
+        /**
+         * The start IP address of the CIDR block.
+         */
+        startIp: string;
+    }
+
     export interface GetAlidnsDomainGroupsGroup {
         /**
          * Number of domain names in the group.
@@ -10425,6 +10439,44 @@ export namespace dns {
         value: string;
     }
 
+    export interface GetCustomLinesLine {
+        /**
+         * The Custom line Code.
+         */
+        code: string;
+        /**
+         * The first ID of the resource.
+         */
+        customLineId: string;
+        /**
+         * Line name.
+         */
+        customLineName: string;
+        /**
+         * The Domain name.
+         */
+        domainName: string;
+        /**
+         * The ID of the Custom Line.
+         */
+        id: string;
+        /**
+         * The IP segment list.
+         */
+        ipSegmentLists: outputs.dns.GetCustomLinesLineIpSegmentList[];
+    }
+
+    export interface GetCustomLinesLineIpSegmentList {
+        /**
+         * The end IP address of the CIDR block.
+         */
+        endIp: string;
+        /**
+         * The start IP address of the CIDR block.
+         */
+        startIp: string;
+    }
+
     export interface GetDomainGroupsGroup {
         groupId: string;
         groupName: string;
@@ -10544,6 +10596,96 @@ export namespace dns {
         groupName: string;
     }
 
+    export interface GetGtmInstancesInstance {
+        /**
+         * The alert notification methods.
+         */
+        alertConfigs: outputs.dns.GetGtmInstancesInstanceAlertConfig[];
+        /**
+         * The alert group.
+         */
+        alertGroups: string[];
+        /**
+         * The access type of the CNAME domain name.
+         */
+        cnameType: string;
+        /**
+         * The CreateTime of the Gtm Instance.
+         */
+        createTime: string;
+        /**
+         * The ExpireTime of the Gtm Instance.
+         */
+        expireTime: string;
+        /**
+         * The ID of the Gtm Instance.
+         */
+        id: string;
+        /**
+         * The ID of the Gtm Instance.
+         */
+        instanceId: string;
+        /**
+         * The name of the Gtm Instance.
+         */
+        instanceName: string;
+        /**
+         * The version of the instance.
+         */
+        packageEdition: string;
+        /**
+         * The paymentype of the resource.
+         */
+        paymentType: string;
+        /**
+         * The Public Network domain name access method.
+         */
+        publicCnameMode: string;
+        /**
+         * The CNAME access domain name.
+         */
+        publicRr: string;
+        /**
+         * The website domain name that the user uses on the Internet.
+         */
+        publicUserDomainName: string;
+        /**
+         * The domain name that is used to access GTM over the Internet.
+         */
+        publicZoneName: string;
+        /**
+         * The ID of the resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * The type of the access policy.
+         */
+        strategyMode: string;
+        /**
+         * The global time to live.
+         */
+        ttl: number;
+    }
+
+    export interface GetGtmInstancesInstanceAlertConfig {
+        /**
+         * Whether to configure DingTalk notifications.
+         */
+        dingtalkNotice: boolean;
+        /**
+         * Whether to configure mail notification.
+         */
+        emailNotice: boolean;
+        /**
+         * The Alarm Event Type.
+         */
+        noticeType: string;
+        /**
+         * Whether to configure SMS notification.
+         */
+        smsNotice: boolean;
+    }
+
     export interface GetInstancesInstance {
         /**
          * DNS security level.
@@ -10626,6 +10768,31 @@ export namespace dns {
          * Line name.
          */
         lineName: string;
+    }
+
+    export interface GtmInstanceAlertConfig {
+        /**
+         * Whether to configure DingTalk notifications. Valid values: `true`, `false`.
+         */
+        dingtalkNotice?: boolean;
+        /**
+         * Whether to configure mail notification. Valid values: `true`, `false`.
+         */
+        emailNotice?: boolean;
+        /**
+         * The Alarm Event Type.
+         * - `ADDR_ALERT`: Address not available.
+         * - `ADDR_RESUME`: Address Recovery available.
+         * - `ADDR_POOL_GROUP_UNAVAILABLE`: Address pool collection not available.
+         * - `ADDR_POOL_GROUP_AVAILABLE`: Address pool collection recovery available.
+         * - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
+         * - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
+         */
+        noticeType?: string;
+        /**
+         * Whether to configure SMS notification. Valid values: `true`, `false`.
+         */
+        smsNotice?: boolean;
     }
 
 }
@@ -16283,7 +16450,7 @@ export namespace ess {
          */
         instanceName: string;
         /**
-         * Instance type of the scaling configuration.
+         * Resource type of an ECS instance.
          */
         instanceType: string;
         /**
@@ -16314,6 +16481,14 @@ export namespace ess {
          * Security group ID of the scaling configuration.
          */
         securityGroupId: string;
+        /**
+         * (Optional, Available in 1.151.0+) The maximum price hourly for instance types.
+         */
+        spotPriceLimits: outputs.ess.GetScalingConfigurationsConfigurationSpotPriceLimit[];
+        /**
+         * (Optional, Available in 1.151.0+) The spot strategy for a Pay-As-You-Go instance.
+         */
+        spotStrategy: string;
         /**
          * System disk category of the scaling configuration.
          */
@@ -16353,6 +16528,17 @@ export namespace ess {
          * Size of data disk.
          */
         snapshotId?: string;
+    }
+
+    export interface GetScalingConfigurationsConfigurationSpotPriceLimit {
+        /**
+         * Resource type of an ECS instance.
+         */
+        instanceType?: string;
+        /**
+         * Price limit hourly of instance type.
+         */
+        priceLimit?: number;
     }
 
     export interface GetScalingGroupsGroup {
@@ -16528,6 +16714,14 @@ export namespace ess {
         performanceLevel?: string;
         size?: number;
         snapshotId?: string;
+    }
+
+    export interface ScalingConfigurationSpotPriceLimit {
+        /**
+         * Resource type of an ECS instance.
+         */
+        instanceType?: string;
+        priceLimit?: number;
     }
 
     export interface ScalingGroupVServerGroupsVserverGroup {
@@ -25529,6 +25723,108 @@ export namespace ros {
         parameterValue: string;
     }
 
+    export interface GetTemplateScratchesScratch {
+        /**
+         * The creation time of the resource.
+         */
+        createTime: string;
+        /**
+         * The description of the Template Scratch.
+         */
+        description: string;
+        /**
+         * The ID of the Template Scratch.
+         */
+        id: string;
+        /**
+         * The Logical ID generation strategy of the Template Scratch.
+         */
+        logicalIdStrategy: string;
+        /**
+         * Priority parameter.
+         */
+        preferenceParameters: outputs.ros.GetTemplateScratchesScratchPreferenceParameter[];
+        /**
+         * Source resource grouping.
+         */
+        sourceResourceGroups: outputs.ros.GetTemplateScratchesScratchSourceResourceGroup[];
+        /**
+         * Source resource.
+         */
+        sourceResources: outputs.ros.GetTemplateScratchesScratchSourceResource[];
+        /**
+         * The Source label list.
+         */
+        sourceTags: outputs.ros.GetTemplateScratchesScratchSourceTag[];
+        /**
+         * A list of resource stacks associated with the resource scene.
+         */
+        stacks: outputs.ros.GetTemplateScratchesScratchStack[];
+        /**
+         * The status of the resource.
+         */
+        status: string;
+        /**
+         * The ID of the Template Scratch.
+         */
+        templateScratchId: string;
+        /**
+         * The type of the Template Scratch.
+         */
+        templateScratchType: string;
+    }
+
+    export interface GetTemplateScratchesScratchPreferenceParameter {
+        /**
+         * Priority parameter key.
+         */
+        parameterKey: string;
+        /**
+         * Priority parameter value.
+         */
+        parameterValue: string;
+    }
+
+    export interface GetTemplateScratchesScratchSourceResource {
+        /**
+         * The ID of the Source Resource.
+         */
+        resourceId: string;
+        /**
+         * The type of the Source resource.
+         */
+        resourceType: string;
+    }
+
+    export interface GetTemplateScratchesScratchSourceResourceGroup {
+        /**
+         * The ID of the Source Resource Group.
+         */
+        resourceGroupId: string;
+        /**
+         * Source resource type filter list.
+         */
+        resourceTypeFilters: string[];
+    }
+
+    export interface GetTemplateScratchesScratchSourceTag {
+        /**
+         * Source label.
+         */
+        resourceTags: {[key: string]: any};
+        /**
+         * Source resource type filter list.
+         */
+        resourceTypeFilters: string[];
+    }
+
+    export interface GetTemplateScratchesScratchStack {
+        /**
+         * The ID of the Resource stack.
+         */
+        stackId: string;
+    }
+
     export interface GetTemplatesTemplate {
         /**
          * The ID of the change set.
@@ -25607,6 +25903,50 @@ export namespace ros {
          * The parameter value.
          */
         parameterValue: string;
+    }
+
+    export interface TemplateScratchPreferenceParameter {
+        /**
+         * Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+         */
+        parameterKey: string;
+        /**
+         * Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+         */
+        parameterValue: string;
+    }
+
+    export interface TemplateScratchSourceResource {
+        /**
+         * The ID of the Source Resource.
+         */
+        resourceId: string;
+        /**
+         * The type of the Source resource.
+         */
+        resourceType: string;
+    }
+
+    export interface TemplateScratchSourceResourceGroup {
+        /**
+         * The ID of the Source Resource Group.
+         */
+        resourceGroupId: string;
+        /**
+         * Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+         */
+        resourceTypeFilters?: string[];
+    }
+
+    export interface TemplateScratchSourceTag {
+        /**
+         * Source label. **NOTE:** A maximum of 10 source labels can be configured.
+         */
+        resourceTags: {[key: string]: any};
+        /**
+         * Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+         */
+        resourceTypeFilters?: string[];
     }
 
 }

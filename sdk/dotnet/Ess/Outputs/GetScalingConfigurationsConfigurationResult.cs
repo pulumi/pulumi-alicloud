@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string InstanceName;
         /// <summary>
-        /// Instance type of the scaling configuration.
+        /// Resource type of an ECS instance.
         /// </summary>
         public readonly string InstanceType;
         /// <summary>
@@ -73,6 +73,14 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// Security group ID of the scaling configuration.
         /// </summary>
         public readonly string SecurityGroupId;
+        /// <summary>
+        /// (Optional, Available in 1.151.0+) The maximum price hourly for instance types.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetScalingConfigurationsConfigurationSpotPriceLimitResult> SpotPriceLimits;
+        /// <summary>
+        /// (Optional, Available in 1.151.0+) The spot strategy for a Pay-As-You-Go instance.
+        /// </summary>
+        public readonly string SpotStrategy;
         /// <summary>
         /// System disk category of the scaling configuration.
         /// </summary>
@@ -118,6 +126,10 @@ namespace Pulumi.AliCloud.Ess.Outputs
 
             string securityGroupId,
 
+            ImmutableArray<Outputs.GetScalingConfigurationsConfigurationSpotPriceLimitResult> spotPriceLimits,
+
+            string spotStrategy,
+
             string systemDiskCategory,
 
             string systemDiskPerformanceLevel,
@@ -139,6 +151,8 @@ namespace Pulumi.AliCloud.Ess.Outputs
             Name = name;
             ScalingGroupId = scalingGroupId;
             SecurityGroupId = securityGroupId;
+            SpotPriceLimits = spotPriceLimits;
+            SpotStrategy = spotStrategy;
             SystemDiskCategory = systemDiskCategory;
             SystemDiskPerformanceLevel = systemDiskPerformanceLevel;
             SystemDiskSize = systemDiskSize;

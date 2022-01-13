@@ -85,11 +85,26 @@ namespace Pulumi.AliCloud.Cen
     public sealed class GetTransitRoutersArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// ID of the CEN instance.
+        /// The ID of the CEN instance.
         /// </summary>
         [Input("cenId", required: true)]
         public string CenId { get; set; } = null!;
 
+        [Input("ids")]
+        private List<string>? _ids;
+
+        /// <summary>
+        /// A list of resource id. The element value is same as &lt;cen_id&gt;:&lt;transit_router_id&gt;`.
+        /// </summary>
+        public List<string> Ids
+        {
+            get => _ids ?? (_ids = new List<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter CEN Transit Routers by name.
+        /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
@@ -103,10 +118,10 @@ namespace Pulumi.AliCloud.Cen
         public string? Status { get; set; }
 
         /// <summary>
-        /// ID of the transit router.
+        /// The ID of the transit router.
         /// </summary>
-        [Input("transitRouterId", required: true)]
-        public string TransitRouterId { get; set; } = null!;
+        [Input("transitRouterId")]
+        public string? TransitRouterId { get; set; }
 
         [Input("transitRouterIds")]
         private List<string>? _transitRouterIds;
@@ -128,11 +143,26 @@ namespace Pulumi.AliCloud.Cen
     public sealed class GetTransitRoutersInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// ID of the CEN instance.
+        /// The ID of the CEN instance.
         /// </summary>
         [Input("cenId", required: true)]
         public Input<string> CenId { get; set; } = null!;
 
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of resource id. The element value is same as &lt;cen_id&gt;:&lt;transit_router_id&gt;`.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// A regex string to filter CEN Transit Routers by name.
+        /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
@@ -146,10 +176,10 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// ID of the transit router.
+        /// The ID of the transit router.
         /// </summary>
-        [Input("transitRouterId", required: true)]
-        public Input<string> TransitRouterId { get; set; } = null!;
+        [Input("transitRouterId")]
+        public Input<string>? TransitRouterId { get; set; }
 
         [Input("transitRouterIds")]
         private InputList<string>? _transitRouterIds;
@@ -173,7 +203,7 @@ namespace Pulumi.AliCloud.Cen
     public sealed class GetTransitRoutersResult
     {
         /// <summary>
-        /// ID of the CEN instance.
+        /// The ID of the CEN instance.
         /// </summary>
         public readonly string CenId;
         /// <summary>
@@ -182,6 +212,9 @@ namespace Pulumi.AliCloud.Cen
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of  CEN Transit Routers names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>
@@ -189,9 +222,9 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public readonly string? Status;
         /// <summary>
-        /// ID of the transit router.
+        /// The ID of the transit router.
         /// </summary>
-        public readonly string TransitRouterId;
+        public readonly string? TransitRouterId;
         public readonly ImmutableArray<string> TransitRouterIds;
         /// <summary>
         /// A list of CEN Transit Routers. Each element contains the following attributes:
@@ -214,7 +247,7 @@ namespace Pulumi.AliCloud.Cen
 
             string? status,
 
-            string transitRouterId,
+            string? transitRouterId,
 
             ImmutableArray<string> transitRouterIds,
 

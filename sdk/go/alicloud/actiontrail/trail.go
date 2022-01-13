@@ -73,7 +73,7 @@ type Trail struct {
 	//
 	// Deprecated: Field 'role_name' has been deprecated from version 1.118.0
 	RoleName pulumi.StringOutput `pulumi:"roleName"`
-	// The unique ARN of the Log Service project.
+	// The unique ARN of the Log Service project. Ensure that `slsProjectArn` is valid .
 	SlsProjectArn pulumi.StringPtrOutput `pulumi:"slsProjectArn"`
 	// The unique ARN of the Log Service role.
 	SlsWriteRoleArn pulumi.StringPtrOutput `pulumi:"slsWriteRoleArn"`
@@ -136,7 +136,7 @@ type trailState struct {
 	//
 	// Deprecated: Field 'role_name' has been deprecated from version 1.118.0
 	RoleName *string `pulumi:"roleName"`
-	// The unique ARN of the Log Service project.
+	// The unique ARN of the Log Service project. Ensure that `slsProjectArn` is valid .
 	SlsProjectArn *string `pulumi:"slsProjectArn"`
 	// The unique ARN of the Log Service role.
 	SlsWriteRoleArn *string `pulumi:"slsWriteRoleArn"`
@@ -171,7 +171,7 @@ type TrailState struct {
 	//
 	// Deprecated: Field 'role_name' has been deprecated from version 1.118.0
 	RoleName pulumi.StringPtrInput
-	// The unique ARN of the Log Service project.
+	// The unique ARN of the Log Service project. Ensure that `slsProjectArn` is valid .
 	SlsProjectArn pulumi.StringPtrInput
 	// The unique ARN of the Log Service role.
 	SlsWriteRoleArn pulumi.StringPtrInput
@@ -210,7 +210,7 @@ type trailArgs struct {
 	//
 	// Deprecated: Field 'role_name' has been deprecated from version 1.118.0
 	RoleName *string `pulumi:"roleName"`
-	// The unique ARN of the Log Service project.
+	// The unique ARN of the Log Service project. Ensure that `slsProjectArn` is valid .
 	SlsProjectArn *string `pulumi:"slsProjectArn"`
 	// The unique ARN of the Log Service role.
 	SlsWriteRoleArn *string `pulumi:"slsWriteRoleArn"`
@@ -246,7 +246,7 @@ type TrailArgs struct {
 	//
 	// Deprecated: Field 'role_name' has been deprecated from version 1.118.0
 	RoleName pulumi.StringPtrInput
-	// The unique ARN of the Log Service project.
+	// The unique ARN of the Log Service project. Ensure that `slsProjectArn` is valid .
 	SlsProjectArn pulumi.StringPtrInput
 	// The unique ARN of the Log Service role.
 	SlsWriteRoleArn pulumi.StringPtrInput

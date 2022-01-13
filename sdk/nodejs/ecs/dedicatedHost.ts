@@ -6,49 +6,6 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * This resouce used to create a dedicated host and store its initial version. For information about Aliecs Dedicated Host and how to use it, see [What is Resource Aliecs Dedicated Host](https://www.alibabacloud.com/help/doc-detail/134238.htm).
- *
- * > **NOTE:** Available in 1.91.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultDedicatedHost = new alicloud.ecs.DedicatedHost("default", {
- *     dedicatedHostName: "dedicated_host_name",
- *     dedicatedHostType: "ddh.g5",
- *     description: "From_Terraform",
- *     tags: {
- *         Create: "Terraform",
- *         For: "DDH",
- *     },
- * });
- * ```
- *
- * Create Prepaid DDH
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultDedicatedHost = new alicloud.ecs.DedicatedHost("default", {
- *     dedicatedHostName: "dedicated_host_name",
- *     dedicatedHostType: "ddh.g5",
- *     description: "From_Terraform",
- *     expiredTime: "1",
- *     paymentType: "PrePaid",
- *     saleCycle: "Month",
- *     tags: {
- *         Create: "Terraform",
- *         For: "DDH",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Ecs dedicated host can be imported using the id, e.g.
@@ -96,7 +53,7 @@ export class DedicatedHost extends pulumi.CustomResource {
     /**
      * The automatic release time of the dedicated host. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
      */
-    public readonly autoReleaseTime!: pulumi.Output<string | undefined>;
+    public readonly autoReleaseTime!: pulumi.Output<string>;
     /**
      * Specifies whether to automatically renew the subscription dedicated host.
      */
@@ -148,7 +105,7 @@ export class DedicatedHost extends pulumi.CustomResource {
     /**
      * The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
      */
-    public readonly paymentType!: pulumi.Output<string | undefined>;
+    public readonly paymentType!: pulumi.Output<string>;
     /**
      * The ID of the resource group to which the dedicated host belongs.
      */
