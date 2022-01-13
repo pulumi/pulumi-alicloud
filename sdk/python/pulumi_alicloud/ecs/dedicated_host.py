@@ -710,47 +710,6 @@ class DedicatedHost(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resouce used to create a dedicated host and store its initial version. For information about Aliecs Dedicated Host and how to use it, see [What is Resource Aliecs Dedicated Host](https://www.alibabacloud.com/help/doc-detail/134238.htm).
-
-        > **NOTE:** Available in 1.91.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.ecs.DedicatedHost("default",
-            dedicated_host_name="dedicated_host_name",
-            dedicated_host_type="ddh.g5",
-            description="From_Terraform",
-            tags={
-                "Create": "Terraform",
-                "For": "DDH",
-            })
-        ```
-
-        Create Prepaid DDH
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.ecs.DedicatedHost("default",
-            dedicated_host_name="dedicated_host_name",
-            dedicated_host_type="ddh.g5",
-            description="From_Terraform",
-            expired_time="1",
-            payment_type="PrePaid",
-            sale_cycle="Month",
-            tags={
-                "Create": "Terraform",
-                "For": "DDH",
-            })
-        ```
-
         ## Import
 
         Ecs dedicated host can be imported using the id, e.g.
@@ -789,47 +748,6 @@ class DedicatedHost(pulumi.CustomResource):
                  args: DedicatedHostArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resouce used to create a dedicated host and store its initial version. For information about Aliecs Dedicated Host and how to use it, see [What is Resource Aliecs Dedicated Host](https://www.alibabacloud.com/help/doc-detail/134238.htm).
-
-        > **NOTE:** Available in 1.91.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.ecs.DedicatedHost("default",
-            dedicated_host_name="dedicated_host_name",
-            dedicated_host_type="ddh.g5",
-            description="From_Terraform",
-            tags={
-                "Create": "Terraform",
-                "For": "DDH",
-            })
-        ```
-
-        Create Prepaid DDH
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.ecs.DedicatedHost("default",
-            dedicated_host_name="dedicated_host_name",
-            dedicated_host_type="ddh.g5",
-            description="From_Terraform",
-            expired_time="1",
-            payment_type="PrePaid",
-            sale_cycle="Month",
-            tags={
-                "Create": "Terraform",
-                "For": "DDH",
-            })
-        ```
-
         ## Import
 
         Ecs dedicated host can be imported using the id, e.g.
@@ -1013,7 +931,7 @@ class DedicatedHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoReleaseTime")
-    def auto_release_time(self) -> pulumi.Output[Optional[str]]:
+    def auto_release_time(self) -> pulumi.Output[str]:
         """
         The automatic release time of the dedicated host. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
         """
@@ -1117,7 +1035,7 @@ class DedicatedHost(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> pulumi.Output[Optional[str]]:
+    def payment_type(self) -> pulumi.Output[str]:
         """
         The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
         """

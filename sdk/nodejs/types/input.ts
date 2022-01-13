@@ -2241,6 +2241,41 @@ export namespace dms {
 }
 
 export namespace dns {
+    export interface CustomLineIpSegmentList {
+        /**
+         * The end IP address of the CIDR block.
+         */
+        endIp: pulumi.Input<string>;
+        /**
+         * The start IP address of the CIDR block.
+         */
+        startIp: pulumi.Input<string>;
+    }
+
+    export interface GtmInstanceAlertConfig {
+        /**
+         * Whether to configure DingTalk notifications. Valid values: `true`, `false`.
+         */
+        dingtalkNotice?: pulumi.Input<boolean>;
+        /**
+         * Whether to configure mail notification. Valid values: `true`, `false`.
+         */
+        emailNotice?: pulumi.Input<boolean>;
+        /**
+         * The Alarm Event Type.
+         * - `ADDR_ALERT`: Address not available.
+         * - `ADDR_RESUME`: Address Recovery available.
+         * - `ADDR_POOL_GROUP_UNAVAILABLE`: Address pool collection not available.
+         * - `ADDR_POOL_GROUP_AVAILABLE`: Address pool collection recovery available.
+         * - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
+         * - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
+         */
+        noticeType?: pulumi.Input<string>;
+        /**
+         * Whether to configure SMS notification. Valid values: `true`, `false`.
+         */
+        smsNotice?: pulumi.Input<boolean>;
+    }
 }
 
 export namespace drds {
@@ -3090,6 +3125,14 @@ export namespace ess {
         performanceLevel?: pulumi.Input<string>;
         size?: pulumi.Input<number>;
         snapshotId?: pulumi.Input<string>;
+    }
+
+    export interface ScalingConfigurationSpotPriceLimit {
+        /**
+         * Resource type of an ECS instance.
+         */
+        instanceType?: pulumi.Input<string>;
+        priceLimit?: pulumi.Input<number>;
     }
 
     export interface ScalingGroupVServerGroupsVserverGroup {
@@ -4550,6 +4593,50 @@ export namespace ros {
          * The parameter value.
          */
         parameterValue: pulumi.Input<string>;
+    }
+
+    export interface TemplateScratchPreferenceParameter {
+        /**
+         * Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+         */
+        parameterKey: pulumi.Input<string>;
+        /**
+         * Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+         */
+        parameterValue: pulumi.Input<string>;
+    }
+
+    export interface TemplateScratchSourceResource {
+        /**
+         * The ID of the Source Resource.
+         */
+        resourceId: pulumi.Input<string>;
+        /**
+         * The type of the Source resource.
+         */
+        resourceType: pulumi.Input<string>;
+    }
+
+    export interface TemplateScratchSourceResourceGroup {
+        /**
+         * The ID of the Source Resource Group.
+         */
+        resourceGroupId: pulumi.Input<string>;
+        /**
+         * Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+         */
+        resourceTypeFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface TemplateScratchSourceTag {
+        /**
+         * Source label. **NOTE:** A maximum of 10 source labels can be configured.
+         */
+        resourceTags: pulumi.Input<{[key: string]: any}>;
+        /**
+         * Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+         */
+        resourceTypeFilters?: pulumi.Input<pulumi.Input<string>[]>;
     }
 }
 

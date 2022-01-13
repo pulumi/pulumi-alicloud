@@ -3342,20 +3342,21 @@ func (o GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput) Index(i 
 }
 
 type GetTransitRoutersTransitRouter struct {
-	// UID of the Aliyun.
+	// The UID of the Aliyun.
 	AliUid string `pulumi:"aliUid"`
-	// ID of the CEN instance.
+	// The ID of the CEN instance.
 	CenId string `pulumi:"cenId"`
-	Id    string `pulumi:"id"`
+	// The ID of the resource, It is formatted to `<cen_id>:<transit_router_id>`. **NOTE:** Before 1.151.0, It is formatted to `<transit_router_id>`.
+	Id string `pulumi:"id"`
 	// The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
 	Status string `pulumi:"status"`
 	// The description of the transit router.
 	TransitRouterDescription string `pulumi:"transitRouterDescription"`
-	// ID of the transit router.
+	// The ID of the transit router.
 	TransitRouterId string `pulumi:"transitRouterId"`
 	// The name of the transit router.
 	TransitRouterName string `pulumi:"transitRouterName"`
-	// Type of the transit router.
+	// The Type of the transit router.
 	Type string `pulumi:"type"`
 	// The vip of the XGW.
 	XgwVip string `pulumi:"xgwVip"`
@@ -3373,20 +3374,21 @@ type GetTransitRoutersTransitRouterInput interface {
 }
 
 type GetTransitRoutersTransitRouterArgs struct {
-	// UID of the Aliyun.
+	// The UID of the Aliyun.
 	AliUid pulumi.StringInput `pulumi:"aliUid"`
-	// ID of the CEN instance.
+	// The ID of the CEN instance.
 	CenId pulumi.StringInput `pulumi:"cenId"`
-	Id    pulumi.StringInput `pulumi:"id"`
+	// The ID of the resource, It is formatted to `<cen_id>:<transit_router_id>`. **NOTE:** Before 1.151.0, It is formatted to `<transit_router_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
 	// The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The description of the transit router.
 	TransitRouterDescription pulumi.StringInput `pulumi:"transitRouterDescription"`
-	// ID of the transit router.
+	// The ID of the transit router.
 	TransitRouterId pulumi.StringInput `pulumi:"transitRouterId"`
 	// The name of the transit router.
 	TransitRouterName pulumi.StringInput `pulumi:"transitRouterName"`
-	// Type of the transit router.
+	// The Type of the transit router.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The vip of the XGW.
 	XgwVip pulumi.StringInput `pulumi:"xgwVip"`
@@ -3443,16 +3445,17 @@ func (o GetTransitRoutersTransitRouterOutput) ToGetTransitRoutersTransitRouterOu
 	return o
 }
 
-// UID of the Aliyun.
+// The UID of the Aliyun.
 func (o GetTransitRoutersTransitRouterOutput) AliUid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRoutersTransitRouter) string { return v.AliUid }).(pulumi.StringOutput)
 }
 
-// ID of the CEN instance.
+// The ID of the CEN instance.
 func (o GetTransitRoutersTransitRouterOutput) CenId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRoutersTransitRouter) string { return v.CenId }).(pulumi.StringOutput)
 }
 
+// The ID of the resource, It is formatted to `<cen_id>:<transit_router_id>`. **NOTE:** Before 1.151.0, It is formatted to `<transit_router_id>`.
 func (o GetTransitRoutersTransitRouterOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRoutersTransitRouter) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -3467,7 +3470,7 @@ func (o GetTransitRoutersTransitRouterOutput) TransitRouterDescription() pulumi.
 	return o.ApplyT(func(v GetTransitRoutersTransitRouter) string { return v.TransitRouterDescription }).(pulumi.StringOutput)
 }
 
-// ID of the transit router.
+// The ID of the transit router.
 func (o GetTransitRoutersTransitRouterOutput) TransitRouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRoutersTransitRouter) string { return v.TransitRouterId }).(pulumi.StringOutput)
 }
@@ -3477,7 +3480,7 @@ func (o GetTransitRoutersTransitRouterOutput) TransitRouterName() pulumi.StringO
 	return o.ApplyT(func(v GetTransitRoutersTransitRouter) string { return v.TransitRouterName }).(pulumi.StringOutput)
 }
 
-// Type of the transit router.
+// The Type of the transit router.
 func (o GetTransitRoutersTransitRouterOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRoutersTransitRouter) string { return v.Type }).(pulumi.StringOutput)
 }

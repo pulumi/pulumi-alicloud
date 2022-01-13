@@ -10,6 +10,7 @@ from .. import _utilities
 
 __all__ = [
     'ScalingConfigurationDataDiskArgs',
+    'ScalingConfigurationSpotPriceLimitArgs',
     'ScalingGroupVServerGroupsVserverGroupArgs',
     'ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs',
     'ScalingRuleStepAdjustmentArgs',
@@ -153,6 +154,41 @@ class ScalingConfigurationDataDiskArgs:
     @snapshot_id.setter
     def snapshot_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "snapshot_id", value)
+
+
+@pulumi.input_type
+class ScalingConfigurationSpotPriceLimitArgs:
+    def __init__(__self__, *,
+                 instance_type: Optional[pulumi.Input[str]] = None,
+                 price_limit: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[str] instance_type: Resource type of an ECS instance.
+        """
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if price_limit is not None:
+            pulumi.set(__self__, "price_limit", price_limit)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource type of an ECS instance.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter(name="priceLimit")
+    def price_limit(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "price_limit")
+
+    @price_limit.setter
+    def price_limit(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "price_limit", value)
 
 
 @pulumi.input_type

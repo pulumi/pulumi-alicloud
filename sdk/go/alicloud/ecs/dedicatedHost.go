@@ -11,73 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resouce used to create a dedicated host and store its initial version. For information about Aliecs Dedicated Host and how to use it, see [What is Resource Aliecs Dedicated Host](https://www.alibabacloud.com/help/doc-detail/134238.htm).
-//
-// > **NOTE:** Available in 1.91.0+.
-//
-// ## Example Usage
-//
-// Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewDedicatedHost(ctx, "_default", &ecs.DedicatedHostArgs{
-// 			DedicatedHostName: pulumi.String("dedicated_host_name"),
-// 			DedicatedHostType: pulumi.String("ddh.g5"),
-// 			Description:       pulumi.String("From_Terraform"),
-// 			Tags: pulumi.AnyMap{
-// 				"Create": pulumi.Any("Terraform"),
-// 				"For":    pulumi.Any("DDH"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// Create Prepaid DDH
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewDedicatedHost(ctx, "_default", &ecs.DedicatedHostArgs{
-// 			DedicatedHostName: pulumi.String("dedicated_host_name"),
-// 			DedicatedHostType: pulumi.String("ddh.g5"),
-// 			Description:       pulumi.String("From_Terraform"),
-// 			ExpiredTime:       pulumi.String("1"),
-// 			PaymentType:       pulumi.String("PrePaid"),
-// 			SaleCycle:         pulumi.String("Month"),
-// 			Tags: pulumi.AnyMap{
-// 				"Create": pulumi.Any("Terraform"),
-// 				"For":    pulumi.Any("DDH"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // Ecs dedicated host can be imported using the id, e.g.
@@ -93,7 +26,7 @@ type DedicatedHost struct {
 	// Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you do not specify the DedicatedHostId parameter when you create an instance on a dedicated host, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. Valid values: `on`, `off`. Default: `on`.
 	AutoPlacement pulumi.StringPtrOutput `pulumi:"autoPlacement"`
 	// The automatic release time of the dedicated host. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
-	AutoReleaseTime pulumi.StringPtrOutput `pulumi:"autoReleaseTime"`
+	AutoReleaseTime pulumi.StringOutput `pulumi:"autoReleaseTime"`
 	// Specifies whether to automatically renew the subscription dedicated host.
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
 	// The auto-renewal period of the dedicated host. Unit: months. Valid values: `1`, `2`, `3`, `6`, and `12`. takes effect and is required only when the AutoRenew parameter is set to true.
@@ -119,7 +52,7 @@ type DedicatedHost struct {
 	// dedicated host network parameters. contains the following attributes:
 	NetworkAttributes DedicatedHostNetworkAttributeArrayOutput `pulumi:"networkAttributes"`
 	// The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
-	PaymentType pulumi.StringPtrOutput `pulumi:"paymentType"`
+	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The ID of the resource group to which the dedicated host belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The unit of the subscription period of the dedicated host.

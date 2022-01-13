@@ -9,6 +9,7 @@ export * from "./alidnsDomain";
 export * from "./alidnsDomainAttachment";
 export * from "./alidnsInstance";
 export * from "./alidnsRecord";
+export * from "./customLine";
 export * from "./ddosBgpInstance";
 export * from "./ddosCooInstance";
 export * from "./dnsDomain";
@@ -19,15 +20,18 @@ export * from "./getAlidnsDomainGroups";
 export * from "./getAlidnsDomains";
 export * from "./getAlidnsInstances";
 export * from "./getAlidnsRecords";
+export * from "./getCustomLines";
 export * from "./getDomainGroups";
 export * from "./getDomainRecords";
 export * from "./getDomainTxtGuid";
 export * from "./getDomains";
 export * from "./getGroups";
+export * from "./getGtmInstances";
 export * from "./getInstances";
 export * from "./getRecords";
 export * from "./getResolutionLines";
 export * from "./group";
+export * from "./gtmInstance";
 export * from "./instance";
 export * from "./record";
 
@@ -36,6 +40,7 @@ import { AlidnsDomain } from "./alidnsDomain";
 import { AlidnsDomainAttachment } from "./alidnsDomainAttachment";
 import { AlidnsInstance } from "./alidnsInstance";
 import { AlidnsRecord } from "./alidnsRecord";
+import { CustomLine } from "./customLine";
 import { DdosBgpInstance } from "./ddosBgpInstance";
 import { DdosCooInstance } from "./ddosCooInstance";
 import { DnsDomain } from "./dnsDomain";
@@ -43,6 +48,7 @@ import { Domain } from "./domain";
 import { DomainAttachment } from "./domainAttachment";
 import { DomainGroup } from "./domainGroup";
 import { Group } from "./group";
+import { GtmInstance } from "./gtmInstance";
 import { Instance } from "./instance";
 import { Record } from "./record";
 
@@ -58,6 +64,8 @@ const _module = {
                 return new AlidnsInstance(name, <any>undefined, { urn })
             case "alicloud:dns/alidnsRecord:AlidnsRecord":
                 return new AlidnsRecord(name, <any>undefined, { urn })
+            case "alicloud:dns/customLine:CustomLine":
+                return new CustomLine(name, <any>undefined, { urn })
             case "alicloud:dns/ddosBgpInstance:DdosBgpInstance":
                 return new DdosBgpInstance(name, <any>undefined, { urn })
             case "alicloud:dns/ddosCooInstance:DdosCooInstance":
@@ -72,6 +80,8 @@ const _module = {
                 return new DomainGroup(name, <any>undefined, { urn })
             case "alicloud:dns/group:Group":
                 return new Group(name, <any>undefined, { urn })
+            case "alicloud:dns/gtmInstance:GtmInstance":
+                return new GtmInstance(name, <any>undefined, { urn })
             case "alicloud:dns/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
             case "alicloud:dns/record:Record":
@@ -85,6 +95,7 @@ pulumi.runtime.registerResourceModule("alicloud", "dns/alidnsDomain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dns/alidnsDomainAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dns/alidnsInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dns/alidnsRecord", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dns/customLine", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dns/ddosBgpInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dns/ddosCooInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dns/dnsDomain", _module)
@@ -92,5 +103,6 @@ pulumi.runtime.registerResourceModule("alicloud", "dns/domain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dns/domainAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dns/domainGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dns/group", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dns/gtmInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dns/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dns/record", _module)

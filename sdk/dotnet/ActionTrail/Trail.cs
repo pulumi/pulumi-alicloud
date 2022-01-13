@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.ActionTrail
         public Output<string> RoleName { get; private set; } = null!;
 
         /// <summary>
-        /// The unique ARN of the Log Service project.
+        /// The unique ARN of the Log Service project. Ensure that `sls_project_arn` is valid .
         /// </summary>
         [Output("slsProjectArn")]
         public Output<string?> SlsProjectArn { get; private set; } = null!;
@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.ActionTrail
         public Input<string>? RoleName { get; set; }
 
         /// <summary>
-        /// The unique ARN of the Log Service project.
+        /// The unique ARN of the Log Service project. Ensure that `sls_project_arn` is valid .
         /// </summary>
         [Input("slsProjectArn")]
         public Input<string>? SlsProjectArn { get; set; }
@@ -307,7 +307,7 @@ namespace Pulumi.AliCloud.ActionTrail
         public Input<string>? RoleName { get; set; }
 
         /// <summary>
-        /// The unique ARN of the Log Service project.
+        /// The unique ARN of the Log Service project. Ensure that `sls_project_arn` is valid .
         /// </summary>
         [Input("slsProjectArn")]
         public Input<string>? SlsProjectArn { get; set; }

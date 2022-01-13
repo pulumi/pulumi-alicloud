@@ -434,6 +434,530 @@ func (o StackParameterArrayOutput) Index(i pulumi.IntInput) StackParameterOutput
 	}).(StackParameterOutput)
 }
 
+type TemplateScratchPreferenceParameter struct {
+	// Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+	ParameterKey string `pulumi:"parameterKey"`
+	// Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+	ParameterValue string `pulumi:"parameterValue"`
+}
+
+// TemplateScratchPreferenceParameterInput is an input type that accepts TemplateScratchPreferenceParameterArgs and TemplateScratchPreferenceParameterOutput values.
+// You can construct a concrete instance of `TemplateScratchPreferenceParameterInput` via:
+//
+//          TemplateScratchPreferenceParameterArgs{...}
+type TemplateScratchPreferenceParameterInput interface {
+	pulumi.Input
+
+	ToTemplateScratchPreferenceParameterOutput() TemplateScratchPreferenceParameterOutput
+	ToTemplateScratchPreferenceParameterOutputWithContext(context.Context) TemplateScratchPreferenceParameterOutput
+}
+
+type TemplateScratchPreferenceParameterArgs struct {
+	// Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+	ParameterKey pulumi.StringInput `pulumi:"parameterKey"`
+	// Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+	ParameterValue pulumi.StringInput `pulumi:"parameterValue"`
+}
+
+func (TemplateScratchPreferenceParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateScratchPreferenceParameter)(nil)).Elem()
+}
+
+func (i TemplateScratchPreferenceParameterArgs) ToTemplateScratchPreferenceParameterOutput() TemplateScratchPreferenceParameterOutput {
+	return i.ToTemplateScratchPreferenceParameterOutputWithContext(context.Background())
+}
+
+func (i TemplateScratchPreferenceParameterArgs) ToTemplateScratchPreferenceParameterOutputWithContext(ctx context.Context) TemplateScratchPreferenceParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateScratchPreferenceParameterOutput)
+}
+
+// TemplateScratchPreferenceParameterArrayInput is an input type that accepts TemplateScratchPreferenceParameterArray and TemplateScratchPreferenceParameterArrayOutput values.
+// You can construct a concrete instance of `TemplateScratchPreferenceParameterArrayInput` via:
+//
+//          TemplateScratchPreferenceParameterArray{ TemplateScratchPreferenceParameterArgs{...} }
+type TemplateScratchPreferenceParameterArrayInput interface {
+	pulumi.Input
+
+	ToTemplateScratchPreferenceParameterArrayOutput() TemplateScratchPreferenceParameterArrayOutput
+	ToTemplateScratchPreferenceParameterArrayOutputWithContext(context.Context) TemplateScratchPreferenceParameterArrayOutput
+}
+
+type TemplateScratchPreferenceParameterArray []TemplateScratchPreferenceParameterInput
+
+func (TemplateScratchPreferenceParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TemplateScratchPreferenceParameter)(nil)).Elem()
+}
+
+func (i TemplateScratchPreferenceParameterArray) ToTemplateScratchPreferenceParameterArrayOutput() TemplateScratchPreferenceParameterArrayOutput {
+	return i.ToTemplateScratchPreferenceParameterArrayOutputWithContext(context.Background())
+}
+
+func (i TemplateScratchPreferenceParameterArray) ToTemplateScratchPreferenceParameterArrayOutputWithContext(ctx context.Context) TemplateScratchPreferenceParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateScratchPreferenceParameterArrayOutput)
+}
+
+type TemplateScratchPreferenceParameterOutput struct{ *pulumi.OutputState }
+
+func (TemplateScratchPreferenceParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateScratchPreferenceParameter)(nil)).Elem()
+}
+
+func (o TemplateScratchPreferenceParameterOutput) ToTemplateScratchPreferenceParameterOutput() TemplateScratchPreferenceParameterOutput {
+	return o
+}
+
+func (o TemplateScratchPreferenceParameterOutput) ToTemplateScratchPreferenceParameterOutputWithContext(ctx context.Context) TemplateScratchPreferenceParameterOutput {
+	return o
+}
+
+// Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+func (o TemplateScratchPreferenceParameterOutput) ParameterKey() pulumi.StringOutput {
+	return o.ApplyT(func(v TemplateScratchPreferenceParameter) string { return v.ParameterKey }).(pulumi.StringOutput)
+}
+
+// Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+func (o TemplateScratchPreferenceParameterOutput) ParameterValue() pulumi.StringOutput {
+	return o.ApplyT(func(v TemplateScratchPreferenceParameter) string { return v.ParameterValue }).(pulumi.StringOutput)
+}
+
+type TemplateScratchPreferenceParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (TemplateScratchPreferenceParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TemplateScratchPreferenceParameter)(nil)).Elem()
+}
+
+func (o TemplateScratchPreferenceParameterArrayOutput) ToTemplateScratchPreferenceParameterArrayOutput() TemplateScratchPreferenceParameterArrayOutput {
+	return o
+}
+
+func (o TemplateScratchPreferenceParameterArrayOutput) ToTemplateScratchPreferenceParameterArrayOutputWithContext(ctx context.Context) TemplateScratchPreferenceParameterArrayOutput {
+	return o
+}
+
+func (o TemplateScratchPreferenceParameterArrayOutput) Index(i pulumi.IntInput) TemplateScratchPreferenceParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TemplateScratchPreferenceParameter {
+		return vs[0].([]TemplateScratchPreferenceParameter)[vs[1].(int)]
+	}).(TemplateScratchPreferenceParameterOutput)
+}
+
+type TemplateScratchSourceResource struct {
+	// The ID of the Source Resource.
+	ResourceId string `pulumi:"resourceId"`
+	// The type of the Source resource.
+	ResourceType string `pulumi:"resourceType"`
+}
+
+// TemplateScratchSourceResourceInput is an input type that accepts TemplateScratchSourceResourceArgs and TemplateScratchSourceResourceOutput values.
+// You can construct a concrete instance of `TemplateScratchSourceResourceInput` via:
+//
+//          TemplateScratchSourceResourceArgs{...}
+type TemplateScratchSourceResourceInput interface {
+	pulumi.Input
+
+	ToTemplateScratchSourceResourceOutput() TemplateScratchSourceResourceOutput
+	ToTemplateScratchSourceResourceOutputWithContext(context.Context) TemplateScratchSourceResourceOutput
+}
+
+type TemplateScratchSourceResourceArgs struct {
+	// The ID of the Source Resource.
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+	// The type of the Source resource.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+}
+
+func (TemplateScratchSourceResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateScratchSourceResource)(nil)).Elem()
+}
+
+func (i TemplateScratchSourceResourceArgs) ToTemplateScratchSourceResourceOutput() TemplateScratchSourceResourceOutput {
+	return i.ToTemplateScratchSourceResourceOutputWithContext(context.Background())
+}
+
+func (i TemplateScratchSourceResourceArgs) ToTemplateScratchSourceResourceOutputWithContext(ctx context.Context) TemplateScratchSourceResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateScratchSourceResourceOutput)
+}
+
+// TemplateScratchSourceResourceArrayInput is an input type that accepts TemplateScratchSourceResourceArray and TemplateScratchSourceResourceArrayOutput values.
+// You can construct a concrete instance of `TemplateScratchSourceResourceArrayInput` via:
+//
+//          TemplateScratchSourceResourceArray{ TemplateScratchSourceResourceArgs{...} }
+type TemplateScratchSourceResourceArrayInput interface {
+	pulumi.Input
+
+	ToTemplateScratchSourceResourceArrayOutput() TemplateScratchSourceResourceArrayOutput
+	ToTemplateScratchSourceResourceArrayOutputWithContext(context.Context) TemplateScratchSourceResourceArrayOutput
+}
+
+type TemplateScratchSourceResourceArray []TemplateScratchSourceResourceInput
+
+func (TemplateScratchSourceResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TemplateScratchSourceResource)(nil)).Elem()
+}
+
+func (i TemplateScratchSourceResourceArray) ToTemplateScratchSourceResourceArrayOutput() TemplateScratchSourceResourceArrayOutput {
+	return i.ToTemplateScratchSourceResourceArrayOutputWithContext(context.Background())
+}
+
+func (i TemplateScratchSourceResourceArray) ToTemplateScratchSourceResourceArrayOutputWithContext(ctx context.Context) TemplateScratchSourceResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateScratchSourceResourceArrayOutput)
+}
+
+type TemplateScratchSourceResourceOutput struct{ *pulumi.OutputState }
+
+func (TemplateScratchSourceResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateScratchSourceResource)(nil)).Elem()
+}
+
+func (o TemplateScratchSourceResourceOutput) ToTemplateScratchSourceResourceOutput() TemplateScratchSourceResourceOutput {
+	return o
+}
+
+func (o TemplateScratchSourceResourceOutput) ToTemplateScratchSourceResourceOutputWithContext(ctx context.Context) TemplateScratchSourceResourceOutput {
+	return o
+}
+
+// The ID of the Source Resource.
+func (o TemplateScratchSourceResourceOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v TemplateScratchSourceResource) string { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+// The type of the Source resource.
+func (o TemplateScratchSourceResourceOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v TemplateScratchSourceResource) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+type TemplateScratchSourceResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (TemplateScratchSourceResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TemplateScratchSourceResource)(nil)).Elem()
+}
+
+func (o TemplateScratchSourceResourceArrayOutput) ToTemplateScratchSourceResourceArrayOutput() TemplateScratchSourceResourceArrayOutput {
+	return o
+}
+
+func (o TemplateScratchSourceResourceArrayOutput) ToTemplateScratchSourceResourceArrayOutputWithContext(ctx context.Context) TemplateScratchSourceResourceArrayOutput {
+	return o
+}
+
+func (o TemplateScratchSourceResourceArrayOutput) Index(i pulumi.IntInput) TemplateScratchSourceResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TemplateScratchSourceResource {
+		return vs[0].([]TemplateScratchSourceResource)[vs[1].(int)]
+	}).(TemplateScratchSourceResourceOutput)
+}
+
+type TemplateScratchSourceResourceGroup struct {
+	// The ID of the Source Resource Group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+	ResourceTypeFilters []string `pulumi:"resourceTypeFilters"`
+}
+
+// TemplateScratchSourceResourceGroupInput is an input type that accepts TemplateScratchSourceResourceGroupArgs and TemplateScratchSourceResourceGroupOutput values.
+// You can construct a concrete instance of `TemplateScratchSourceResourceGroupInput` via:
+//
+//          TemplateScratchSourceResourceGroupArgs{...}
+type TemplateScratchSourceResourceGroupInput interface {
+	pulumi.Input
+
+	ToTemplateScratchSourceResourceGroupOutput() TemplateScratchSourceResourceGroupOutput
+	ToTemplateScratchSourceResourceGroupOutputWithContext(context.Context) TemplateScratchSourceResourceGroupOutput
+}
+
+type TemplateScratchSourceResourceGroupArgs struct {
+	// The ID of the Source Resource Group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+	ResourceTypeFilters pulumi.StringArrayInput `pulumi:"resourceTypeFilters"`
+}
+
+func (TemplateScratchSourceResourceGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateScratchSourceResourceGroup)(nil)).Elem()
+}
+
+func (i TemplateScratchSourceResourceGroupArgs) ToTemplateScratchSourceResourceGroupOutput() TemplateScratchSourceResourceGroupOutput {
+	return i.ToTemplateScratchSourceResourceGroupOutputWithContext(context.Background())
+}
+
+func (i TemplateScratchSourceResourceGroupArgs) ToTemplateScratchSourceResourceGroupOutputWithContext(ctx context.Context) TemplateScratchSourceResourceGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateScratchSourceResourceGroupOutput)
+}
+
+func (i TemplateScratchSourceResourceGroupArgs) ToTemplateScratchSourceResourceGroupPtrOutput() TemplateScratchSourceResourceGroupPtrOutput {
+	return i.ToTemplateScratchSourceResourceGroupPtrOutputWithContext(context.Background())
+}
+
+func (i TemplateScratchSourceResourceGroupArgs) ToTemplateScratchSourceResourceGroupPtrOutputWithContext(ctx context.Context) TemplateScratchSourceResourceGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateScratchSourceResourceGroupOutput).ToTemplateScratchSourceResourceGroupPtrOutputWithContext(ctx)
+}
+
+// TemplateScratchSourceResourceGroupPtrInput is an input type that accepts TemplateScratchSourceResourceGroupArgs, TemplateScratchSourceResourceGroupPtr and TemplateScratchSourceResourceGroupPtrOutput values.
+// You can construct a concrete instance of `TemplateScratchSourceResourceGroupPtrInput` via:
+//
+//          TemplateScratchSourceResourceGroupArgs{...}
+//
+//  or:
+//
+//          nil
+type TemplateScratchSourceResourceGroupPtrInput interface {
+	pulumi.Input
+
+	ToTemplateScratchSourceResourceGroupPtrOutput() TemplateScratchSourceResourceGroupPtrOutput
+	ToTemplateScratchSourceResourceGroupPtrOutputWithContext(context.Context) TemplateScratchSourceResourceGroupPtrOutput
+}
+
+type templateScratchSourceResourceGroupPtrType TemplateScratchSourceResourceGroupArgs
+
+func TemplateScratchSourceResourceGroupPtr(v *TemplateScratchSourceResourceGroupArgs) TemplateScratchSourceResourceGroupPtrInput {
+	return (*templateScratchSourceResourceGroupPtrType)(v)
+}
+
+func (*templateScratchSourceResourceGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TemplateScratchSourceResourceGroup)(nil)).Elem()
+}
+
+func (i *templateScratchSourceResourceGroupPtrType) ToTemplateScratchSourceResourceGroupPtrOutput() TemplateScratchSourceResourceGroupPtrOutput {
+	return i.ToTemplateScratchSourceResourceGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *templateScratchSourceResourceGroupPtrType) ToTemplateScratchSourceResourceGroupPtrOutputWithContext(ctx context.Context) TemplateScratchSourceResourceGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateScratchSourceResourceGroupPtrOutput)
+}
+
+type TemplateScratchSourceResourceGroupOutput struct{ *pulumi.OutputState }
+
+func (TemplateScratchSourceResourceGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateScratchSourceResourceGroup)(nil)).Elem()
+}
+
+func (o TemplateScratchSourceResourceGroupOutput) ToTemplateScratchSourceResourceGroupOutput() TemplateScratchSourceResourceGroupOutput {
+	return o
+}
+
+func (o TemplateScratchSourceResourceGroupOutput) ToTemplateScratchSourceResourceGroupOutputWithContext(ctx context.Context) TemplateScratchSourceResourceGroupOutput {
+	return o
+}
+
+func (o TemplateScratchSourceResourceGroupOutput) ToTemplateScratchSourceResourceGroupPtrOutput() TemplateScratchSourceResourceGroupPtrOutput {
+	return o.ToTemplateScratchSourceResourceGroupPtrOutputWithContext(context.Background())
+}
+
+func (o TemplateScratchSourceResourceGroupOutput) ToTemplateScratchSourceResourceGroupPtrOutputWithContext(ctx context.Context) TemplateScratchSourceResourceGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TemplateScratchSourceResourceGroup) *TemplateScratchSourceResourceGroup {
+		return &v
+	}).(TemplateScratchSourceResourceGroupPtrOutput)
+}
+
+// The ID of the Source Resource Group.
+func (o TemplateScratchSourceResourceGroupOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v TemplateScratchSourceResourceGroup) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+func (o TemplateScratchSourceResourceGroupOutput) ResourceTypeFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TemplateScratchSourceResourceGroup) []string { return v.ResourceTypeFilters }).(pulumi.StringArrayOutput)
+}
+
+type TemplateScratchSourceResourceGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (TemplateScratchSourceResourceGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TemplateScratchSourceResourceGroup)(nil)).Elem()
+}
+
+func (o TemplateScratchSourceResourceGroupPtrOutput) ToTemplateScratchSourceResourceGroupPtrOutput() TemplateScratchSourceResourceGroupPtrOutput {
+	return o
+}
+
+func (o TemplateScratchSourceResourceGroupPtrOutput) ToTemplateScratchSourceResourceGroupPtrOutputWithContext(ctx context.Context) TemplateScratchSourceResourceGroupPtrOutput {
+	return o
+}
+
+func (o TemplateScratchSourceResourceGroupPtrOutput) Elem() TemplateScratchSourceResourceGroupOutput {
+	return o.ApplyT(func(v *TemplateScratchSourceResourceGroup) TemplateScratchSourceResourceGroup {
+		if v != nil {
+			return *v
+		}
+		var ret TemplateScratchSourceResourceGroup
+		return ret
+	}).(TemplateScratchSourceResourceGroupOutput)
+}
+
+// The ID of the Source Resource Group.
+func (o TemplateScratchSourceResourceGroupPtrOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TemplateScratchSourceResourceGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+func (o TemplateScratchSourceResourceGroupPtrOutput) ResourceTypeFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TemplateScratchSourceResourceGroup) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceTypeFilters
+	}).(pulumi.StringArrayOutput)
+}
+
+type TemplateScratchSourceTag struct {
+	// Source label. **NOTE:** A maximum of 10 source labels can be configured.
+	ResourceTags map[string]interface{} `pulumi:"resourceTags"`
+	// Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+	ResourceTypeFilters []string `pulumi:"resourceTypeFilters"`
+}
+
+// TemplateScratchSourceTagInput is an input type that accepts TemplateScratchSourceTagArgs and TemplateScratchSourceTagOutput values.
+// You can construct a concrete instance of `TemplateScratchSourceTagInput` via:
+//
+//          TemplateScratchSourceTagArgs{...}
+type TemplateScratchSourceTagInput interface {
+	pulumi.Input
+
+	ToTemplateScratchSourceTagOutput() TemplateScratchSourceTagOutput
+	ToTemplateScratchSourceTagOutputWithContext(context.Context) TemplateScratchSourceTagOutput
+}
+
+type TemplateScratchSourceTagArgs struct {
+	// Source label. **NOTE:** A maximum of 10 source labels can be configured.
+	ResourceTags pulumi.MapInput `pulumi:"resourceTags"`
+	// Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+	ResourceTypeFilters pulumi.StringArrayInput `pulumi:"resourceTypeFilters"`
+}
+
+func (TemplateScratchSourceTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateScratchSourceTag)(nil)).Elem()
+}
+
+func (i TemplateScratchSourceTagArgs) ToTemplateScratchSourceTagOutput() TemplateScratchSourceTagOutput {
+	return i.ToTemplateScratchSourceTagOutputWithContext(context.Background())
+}
+
+func (i TemplateScratchSourceTagArgs) ToTemplateScratchSourceTagOutputWithContext(ctx context.Context) TemplateScratchSourceTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateScratchSourceTagOutput)
+}
+
+func (i TemplateScratchSourceTagArgs) ToTemplateScratchSourceTagPtrOutput() TemplateScratchSourceTagPtrOutput {
+	return i.ToTemplateScratchSourceTagPtrOutputWithContext(context.Background())
+}
+
+func (i TemplateScratchSourceTagArgs) ToTemplateScratchSourceTagPtrOutputWithContext(ctx context.Context) TemplateScratchSourceTagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateScratchSourceTagOutput).ToTemplateScratchSourceTagPtrOutputWithContext(ctx)
+}
+
+// TemplateScratchSourceTagPtrInput is an input type that accepts TemplateScratchSourceTagArgs, TemplateScratchSourceTagPtr and TemplateScratchSourceTagPtrOutput values.
+// You can construct a concrete instance of `TemplateScratchSourceTagPtrInput` via:
+//
+//          TemplateScratchSourceTagArgs{...}
+//
+//  or:
+//
+//          nil
+type TemplateScratchSourceTagPtrInput interface {
+	pulumi.Input
+
+	ToTemplateScratchSourceTagPtrOutput() TemplateScratchSourceTagPtrOutput
+	ToTemplateScratchSourceTagPtrOutputWithContext(context.Context) TemplateScratchSourceTagPtrOutput
+}
+
+type templateScratchSourceTagPtrType TemplateScratchSourceTagArgs
+
+func TemplateScratchSourceTagPtr(v *TemplateScratchSourceTagArgs) TemplateScratchSourceTagPtrInput {
+	return (*templateScratchSourceTagPtrType)(v)
+}
+
+func (*templateScratchSourceTagPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TemplateScratchSourceTag)(nil)).Elem()
+}
+
+func (i *templateScratchSourceTagPtrType) ToTemplateScratchSourceTagPtrOutput() TemplateScratchSourceTagPtrOutput {
+	return i.ToTemplateScratchSourceTagPtrOutputWithContext(context.Background())
+}
+
+func (i *templateScratchSourceTagPtrType) ToTemplateScratchSourceTagPtrOutputWithContext(ctx context.Context) TemplateScratchSourceTagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateScratchSourceTagPtrOutput)
+}
+
+type TemplateScratchSourceTagOutput struct{ *pulumi.OutputState }
+
+func (TemplateScratchSourceTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateScratchSourceTag)(nil)).Elem()
+}
+
+func (o TemplateScratchSourceTagOutput) ToTemplateScratchSourceTagOutput() TemplateScratchSourceTagOutput {
+	return o
+}
+
+func (o TemplateScratchSourceTagOutput) ToTemplateScratchSourceTagOutputWithContext(ctx context.Context) TemplateScratchSourceTagOutput {
+	return o
+}
+
+func (o TemplateScratchSourceTagOutput) ToTemplateScratchSourceTagPtrOutput() TemplateScratchSourceTagPtrOutput {
+	return o.ToTemplateScratchSourceTagPtrOutputWithContext(context.Background())
+}
+
+func (o TemplateScratchSourceTagOutput) ToTemplateScratchSourceTagPtrOutputWithContext(ctx context.Context) TemplateScratchSourceTagPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TemplateScratchSourceTag) *TemplateScratchSourceTag {
+		return &v
+	}).(TemplateScratchSourceTagPtrOutput)
+}
+
+// Source label. **NOTE:** A maximum of 10 source labels can be configured.
+func (o TemplateScratchSourceTagOutput) ResourceTags() pulumi.MapOutput {
+	return o.ApplyT(func(v TemplateScratchSourceTag) map[string]interface{} { return v.ResourceTags }).(pulumi.MapOutput)
+}
+
+// Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+func (o TemplateScratchSourceTagOutput) ResourceTypeFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TemplateScratchSourceTag) []string { return v.ResourceTypeFilters }).(pulumi.StringArrayOutput)
+}
+
+type TemplateScratchSourceTagPtrOutput struct{ *pulumi.OutputState }
+
+func (TemplateScratchSourceTagPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TemplateScratchSourceTag)(nil)).Elem()
+}
+
+func (o TemplateScratchSourceTagPtrOutput) ToTemplateScratchSourceTagPtrOutput() TemplateScratchSourceTagPtrOutput {
+	return o
+}
+
+func (o TemplateScratchSourceTagPtrOutput) ToTemplateScratchSourceTagPtrOutputWithContext(ctx context.Context) TemplateScratchSourceTagPtrOutput {
+	return o
+}
+
+func (o TemplateScratchSourceTagPtrOutput) Elem() TemplateScratchSourceTagOutput {
+	return o.ApplyT(func(v *TemplateScratchSourceTag) TemplateScratchSourceTag {
+		if v != nil {
+			return *v
+		}
+		var ret TemplateScratchSourceTag
+		return ret
+	}).(TemplateScratchSourceTagOutput)
+}
+
+// Source label. **NOTE:** A maximum of 10 source labels can be configured.
+func (o TemplateScratchSourceTagPtrOutput) ResourceTags() pulumi.MapOutput {
+	return o.ApplyT(func(v *TemplateScratchSourceTag) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceTags
+	}).(pulumi.MapOutput)
+}
+
+// Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+func (o TemplateScratchSourceTagPtrOutput) ResourceTypeFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TemplateScratchSourceTag) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceTypeFilters
+	}).(pulumi.StringArrayOutput)
+}
+
 type GetChangeSetsSet struct {
 	// The ID of the change set.
 	ChangeSetId string `pulumi:"changeSetId"`
@@ -1783,6 +2307,729 @@ func (o GetStacksStackParameterArrayOutput) Index(i pulumi.IntInput) GetStacksSt
 	}).(GetStacksStackParameterOutput)
 }
 
+type GetTemplateScratchesScratch struct {
+	// The creation time of the resource.
+	CreateTime string `pulumi:"createTime"`
+	// The description of the Template Scratch.
+	Description string `pulumi:"description"`
+	// The ID of the Template Scratch.
+	Id string `pulumi:"id"`
+	// The Logical ID generation strategy of the Template Scratch.
+	LogicalIdStrategy string `pulumi:"logicalIdStrategy"`
+	// Priority parameter.
+	PreferenceParameters []GetTemplateScratchesScratchPreferenceParameter `pulumi:"preferenceParameters"`
+	// Source resource grouping.
+	SourceResourceGroups []GetTemplateScratchesScratchSourceResourceGroup `pulumi:"sourceResourceGroups"`
+	// Source resource.
+	SourceResources []GetTemplateScratchesScratchSourceResource `pulumi:"sourceResources"`
+	// The Source label list.
+	SourceTags []GetTemplateScratchesScratchSourceTag `pulumi:"sourceTags"`
+	// A list of resource stacks associated with the resource scene.
+	Stacks []GetTemplateScratchesScratchStack `pulumi:"stacks"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+	// The ID of the Template Scratch.
+	TemplateScratchId string `pulumi:"templateScratchId"`
+	// The type of the Template Scratch.
+	TemplateScratchType string `pulumi:"templateScratchType"`
+}
+
+// GetTemplateScratchesScratchInput is an input type that accepts GetTemplateScratchesScratchArgs and GetTemplateScratchesScratchOutput values.
+// You can construct a concrete instance of `GetTemplateScratchesScratchInput` via:
+//
+//          GetTemplateScratchesScratchArgs{...}
+type GetTemplateScratchesScratchInput interface {
+	pulumi.Input
+
+	ToGetTemplateScratchesScratchOutput() GetTemplateScratchesScratchOutput
+	ToGetTemplateScratchesScratchOutputWithContext(context.Context) GetTemplateScratchesScratchOutput
+}
+
+type GetTemplateScratchesScratchArgs struct {
+	// The creation time of the resource.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the Template Scratch.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Template Scratch.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Logical ID generation strategy of the Template Scratch.
+	LogicalIdStrategy pulumi.StringInput `pulumi:"logicalIdStrategy"`
+	// Priority parameter.
+	PreferenceParameters GetTemplateScratchesScratchPreferenceParameterArrayInput `pulumi:"preferenceParameters"`
+	// Source resource grouping.
+	SourceResourceGroups GetTemplateScratchesScratchSourceResourceGroupArrayInput `pulumi:"sourceResourceGroups"`
+	// Source resource.
+	SourceResources GetTemplateScratchesScratchSourceResourceArrayInput `pulumi:"sourceResources"`
+	// The Source label list.
+	SourceTags GetTemplateScratchesScratchSourceTagArrayInput `pulumi:"sourceTags"`
+	// A list of resource stacks associated with the resource scene.
+	Stacks GetTemplateScratchesScratchStackArrayInput `pulumi:"stacks"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the Template Scratch.
+	TemplateScratchId pulumi.StringInput `pulumi:"templateScratchId"`
+	// The type of the Template Scratch.
+	TemplateScratchType pulumi.StringInput `pulumi:"templateScratchType"`
+}
+
+func (GetTemplateScratchesScratchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTemplateScratchesScratch)(nil)).Elem()
+}
+
+func (i GetTemplateScratchesScratchArgs) ToGetTemplateScratchesScratchOutput() GetTemplateScratchesScratchOutput {
+	return i.ToGetTemplateScratchesScratchOutputWithContext(context.Background())
+}
+
+func (i GetTemplateScratchesScratchArgs) ToGetTemplateScratchesScratchOutputWithContext(ctx context.Context) GetTemplateScratchesScratchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateScratchesScratchOutput)
+}
+
+// GetTemplateScratchesScratchArrayInput is an input type that accepts GetTemplateScratchesScratchArray and GetTemplateScratchesScratchArrayOutput values.
+// You can construct a concrete instance of `GetTemplateScratchesScratchArrayInput` via:
+//
+//          GetTemplateScratchesScratchArray{ GetTemplateScratchesScratchArgs{...} }
+type GetTemplateScratchesScratchArrayInput interface {
+	pulumi.Input
+
+	ToGetTemplateScratchesScratchArrayOutput() GetTemplateScratchesScratchArrayOutput
+	ToGetTemplateScratchesScratchArrayOutputWithContext(context.Context) GetTemplateScratchesScratchArrayOutput
+}
+
+type GetTemplateScratchesScratchArray []GetTemplateScratchesScratchInput
+
+func (GetTemplateScratchesScratchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTemplateScratchesScratch)(nil)).Elem()
+}
+
+func (i GetTemplateScratchesScratchArray) ToGetTemplateScratchesScratchArrayOutput() GetTemplateScratchesScratchArrayOutput {
+	return i.ToGetTemplateScratchesScratchArrayOutputWithContext(context.Background())
+}
+
+func (i GetTemplateScratchesScratchArray) ToGetTemplateScratchesScratchArrayOutputWithContext(ctx context.Context) GetTemplateScratchesScratchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateScratchesScratchArrayOutput)
+}
+
+type GetTemplateScratchesScratchOutput struct{ *pulumi.OutputState }
+
+func (GetTemplateScratchesScratchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTemplateScratchesScratch)(nil)).Elem()
+}
+
+func (o GetTemplateScratchesScratchOutput) ToGetTemplateScratchesScratchOutput() GetTemplateScratchesScratchOutput {
+	return o
+}
+
+func (o GetTemplateScratchesScratchOutput) ToGetTemplateScratchesScratchOutputWithContext(ctx context.Context) GetTemplateScratchesScratchOutput {
+	return o
+}
+
+// The creation time of the resource.
+func (o GetTemplateScratchesScratchOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateScratchesScratch) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the Template Scratch.
+func (o GetTemplateScratchesScratchOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateScratchesScratch) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Template Scratch.
+func (o GetTemplateScratchesScratchOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateScratchesScratch) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Logical ID generation strategy of the Template Scratch.
+func (o GetTemplateScratchesScratchOutput) LogicalIdStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateScratchesScratch) string { return v.LogicalIdStrategy }).(pulumi.StringOutput)
+}
+
+// Priority parameter.
+func (o GetTemplateScratchesScratchOutput) PreferenceParameters() GetTemplateScratchesScratchPreferenceParameterArrayOutput {
+	return o.ApplyT(func(v GetTemplateScratchesScratch) []GetTemplateScratchesScratchPreferenceParameter {
+		return v.PreferenceParameters
+	}).(GetTemplateScratchesScratchPreferenceParameterArrayOutput)
+}
+
+// Source resource grouping.
+func (o GetTemplateScratchesScratchOutput) SourceResourceGroups() GetTemplateScratchesScratchSourceResourceGroupArrayOutput {
+	return o.ApplyT(func(v GetTemplateScratchesScratch) []GetTemplateScratchesScratchSourceResourceGroup {
+		return v.SourceResourceGroups
+	}).(GetTemplateScratchesScratchSourceResourceGroupArrayOutput)
+}
+
+// Source resource.
+func (o GetTemplateScratchesScratchOutput) SourceResources() GetTemplateScratchesScratchSourceResourceArrayOutput {
+	return o.ApplyT(func(v GetTemplateScratchesScratch) []GetTemplateScratchesScratchSourceResource {
+		return v.SourceResources
+	}).(GetTemplateScratchesScratchSourceResourceArrayOutput)
+}
+
+// The Source label list.
+func (o GetTemplateScratchesScratchOutput) SourceTags() GetTemplateScratchesScratchSourceTagArrayOutput {
+	return o.ApplyT(func(v GetTemplateScratchesScratch) []GetTemplateScratchesScratchSourceTag { return v.SourceTags }).(GetTemplateScratchesScratchSourceTagArrayOutput)
+}
+
+// A list of resource stacks associated with the resource scene.
+func (o GetTemplateScratchesScratchOutput) Stacks() GetTemplateScratchesScratchStackArrayOutput {
+	return o.ApplyT(func(v GetTemplateScratchesScratch) []GetTemplateScratchesScratchStack { return v.Stacks }).(GetTemplateScratchesScratchStackArrayOutput)
+}
+
+// The status of the resource.
+func (o GetTemplateScratchesScratchOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateScratchesScratch) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the Template Scratch.
+func (o GetTemplateScratchesScratchOutput) TemplateScratchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateScratchesScratch) string { return v.TemplateScratchId }).(pulumi.StringOutput)
+}
+
+// The type of the Template Scratch.
+func (o GetTemplateScratchesScratchOutput) TemplateScratchType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateScratchesScratch) string { return v.TemplateScratchType }).(pulumi.StringOutput)
+}
+
+type GetTemplateScratchesScratchArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTemplateScratchesScratchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTemplateScratchesScratch)(nil)).Elem()
+}
+
+func (o GetTemplateScratchesScratchArrayOutput) ToGetTemplateScratchesScratchArrayOutput() GetTemplateScratchesScratchArrayOutput {
+	return o
+}
+
+func (o GetTemplateScratchesScratchArrayOutput) ToGetTemplateScratchesScratchArrayOutputWithContext(ctx context.Context) GetTemplateScratchesScratchArrayOutput {
+	return o
+}
+
+func (o GetTemplateScratchesScratchArrayOutput) Index(i pulumi.IntInput) GetTemplateScratchesScratchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTemplateScratchesScratch {
+		return vs[0].([]GetTemplateScratchesScratch)[vs[1].(int)]
+	}).(GetTemplateScratchesScratchOutput)
+}
+
+type GetTemplateScratchesScratchPreferenceParameter struct {
+	// Priority parameter key.
+	ParameterKey string `pulumi:"parameterKey"`
+	// Priority parameter value.
+	ParameterValue string `pulumi:"parameterValue"`
+}
+
+// GetTemplateScratchesScratchPreferenceParameterInput is an input type that accepts GetTemplateScratchesScratchPreferenceParameterArgs and GetTemplateScratchesScratchPreferenceParameterOutput values.
+// You can construct a concrete instance of `GetTemplateScratchesScratchPreferenceParameterInput` via:
+//
+//          GetTemplateScratchesScratchPreferenceParameterArgs{...}
+type GetTemplateScratchesScratchPreferenceParameterInput interface {
+	pulumi.Input
+
+	ToGetTemplateScratchesScratchPreferenceParameterOutput() GetTemplateScratchesScratchPreferenceParameterOutput
+	ToGetTemplateScratchesScratchPreferenceParameterOutputWithContext(context.Context) GetTemplateScratchesScratchPreferenceParameterOutput
+}
+
+type GetTemplateScratchesScratchPreferenceParameterArgs struct {
+	// Priority parameter key.
+	ParameterKey pulumi.StringInput `pulumi:"parameterKey"`
+	// Priority parameter value.
+	ParameterValue pulumi.StringInput `pulumi:"parameterValue"`
+}
+
+func (GetTemplateScratchesScratchPreferenceParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTemplateScratchesScratchPreferenceParameter)(nil)).Elem()
+}
+
+func (i GetTemplateScratchesScratchPreferenceParameterArgs) ToGetTemplateScratchesScratchPreferenceParameterOutput() GetTemplateScratchesScratchPreferenceParameterOutput {
+	return i.ToGetTemplateScratchesScratchPreferenceParameterOutputWithContext(context.Background())
+}
+
+func (i GetTemplateScratchesScratchPreferenceParameterArgs) ToGetTemplateScratchesScratchPreferenceParameterOutputWithContext(ctx context.Context) GetTemplateScratchesScratchPreferenceParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateScratchesScratchPreferenceParameterOutput)
+}
+
+// GetTemplateScratchesScratchPreferenceParameterArrayInput is an input type that accepts GetTemplateScratchesScratchPreferenceParameterArray and GetTemplateScratchesScratchPreferenceParameterArrayOutput values.
+// You can construct a concrete instance of `GetTemplateScratchesScratchPreferenceParameterArrayInput` via:
+//
+//          GetTemplateScratchesScratchPreferenceParameterArray{ GetTemplateScratchesScratchPreferenceParameterArgs{...} }
+type GetTemplateScratchesScratchPreferenceParameterArrayInput interface {
+	pulumi.Input
+
+	ToGetTemplateScratchesScratchPreferenceParameterArrayOutput() GetTemplateScratchesScratchPreferenceParameterArrayOutput
+	ToGetTemplateScratchesScratchPreferenceParameterArrayOutputWithContext(context.Context) GetTemplateScratchesScratchPreferenceParameterArrayOutput
+}
+
+type GetTemplateScratchesScratchPreferenceParameterArray []GetTemplateScratchesScratchPreferenceParameterInput
+
+func (GetTemplateScratchesScratchPreferenceParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTemplateScratchesScratchPreferenceParameter)(nil)).Elem()
+}
+
+func (i GetTemplateScratchesScratchPreferenceParameterArray) ToGetTemplateScratchesScratchPreferenceParameterArrayOutput() GetTemplateScratchesScratchPreferenceParameterArrayOutput {
+	return i.ToGetTemplateScratchesScratchPreferenceParameterArrayOutputWithContext(context.Background())
+}
+
+func (i GetTemplateScratchesScratchPreferenceParameterArray) ToGetTemplateScratchesScratchPreferenceParameterArrayOutputWithContext(ctx context.Context) GetTemplateScratchesScratchPreferenceParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateScratchesScratchPreferenceParameterArrayOutput)
+}
+
+type GetTemplateScratchesScratchPreferenceParameterOutput struct{ *pulumi.OutputState }
+
+func (GetTemplateScratchesScratchPreferenceParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTemplateScratchesScratchPreferenceParameter)(nil)).Elem()
+}
+
+func (o GetTemplateScratchesScratchPreferenceParameterOutput) ToGetTemplateScratchesScratchPreferenceParameterOutput() GetTemplateScratchesScratchPreferenceParameterOutput {
+	return o
+}
+
+func (o GetTemplateScratchesScratchPreferenceParameterOutput) ToGetTemplateScratchesScratchPreferenceParameterOutputWithContext(ctx context.Context) GetTemplateScratchesScratchPreferenceParameterOutput {
+	return o
+}
+
+// Priority parameter key.
+func (o GetTemplateScratchesScratchPreferenceParameterOutput) ParameterKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateScratchesScratchPreferenceParameter) string { return v.ParameterKey }).(pulumi.StringOutput)
+}
+
+// Priority parameter value.
+func (o GetTemplateScratchesScratchPreferenceParameterOutput) ParameterValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateScratchesScratchPreferenceParameter) string { return v.ParameterValue }).(pulumi.StringOutput)
+}
+
+type GetTemplateScratchesScratchPreferenceParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTemplateScratchesScratchPreferenceParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTemplateScratchesScratchPreferenceParameter)(nil)).Elem()
+}
+
+func (o GetTemplateScratchesScratchPreferenceParameterArrayOutput) ToGetTemplateScratchesScratchPreferenceParameterArrayOutput() GetTemplateScratchesScratchPreferenceParameterArrayOutput {
+	return o
+}
+
+func (o GetTemplateScratchesScratchPreferenceParameterArrayOutput) ToGetTemplateScratchesScratchPreferenceParameterArrayOutputWithContext(ctx context.Context) GetTemplateScratchesScratchPreferenceParameterArrayOutput {
+	return o
+}
+
+func (o GetTemplateScratchesScratchPreferenceParameterArrayOutput) Index(i pulumi.IntInput) GetTemplateScratchesScratchPreferenceParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTemplateScratchesScratchPreferenceParameter {
+		return vs[0].([]GetTemplateScratchesScratchPreferenceParameter)[vs[1].(int)]
+	}).(GetTemplateScratchesScratchPreferenceParameterOutput)
+}
+
+type GetTemplateScratchesScratchSourceResource struct {
+	// The ID of the Source Resource.
+	ResourceId string `pulumi:"resourceId"`
+	// The type of the Source resource.
+	ResourceType string `pulumi:"resourceType"`
+}
+
+// GetTemplateScratchesScratchSourceResourceInput is an input type that accepts GetTemplateScratchesScratchSourceResourceArgs and GetTemplateScratchesScratchSourceResourceOutput values.
+// You can construct a concrete instance of `GetTemplateScratchesScratchSourceResourceInput` via:
+//
+//          GetTemplateScratchesScratchSourceResourceArgs{...}
+type GetTemplateScratchesScratchSourceResourceInput interface {
+	pulumi.Input
+
+	ToGetTemplateScratchesScratchSourceResourceOutput() GetTemplateScratchesScratchSourceResourceOutput
+	ToGetTemplateScratchesScratchSourceResourceOutputWithContext(context.Context) GetTemplateScratchesScratchSourceResourceOutput
+}
+
+type GetTemplateScratchesScratchSourceResourceArgs struct {
+	// The ID of the Source Resource.
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+	// The type of the Source resource.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+}
+
+func (GetTemplateScratchesScratchSourceResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTemplateScratchesScratchSourceResource)(nil)).Elem()
+}
+
+func (i GetTemplateScratchesScratchSourceResourceArgs) ToGetTemplateScratchesScratchSourceResourceOutput() GetTemplateScratchesScratchSourceResourceOutput {
+	return i.ToGetTemplateScratchesScratchSourceResourceOutputWithContext(context.Background())
+}
+
+func (i GetTemplateScratchesScratchSourceResourceArgs) ToGetTemplateScratchesScratchSourceResourceOutputWithContext(ctx context.Context) GetTemplateScratchesScratchSourceResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateScratchesScratchSourceResourceOutput)
+}
+
+// GetTemplateScratchesScratchSourceResourceArrayInput is an input type that accepts GetTemplateScratchesScratchSourceResourceArray and GetTemplateScratchesScratchSourceResourceArrayOutput values.
+// You can construct a concrete instance of `GetTemplateScratchesScratchSourceResourceArrayInput` via:
+//
+//          GetTemplateScratchesScratchSourceResourceArray{ GetTemplateScratchesScratchSourceResourceArgs{...} }
+type GetTemplateScratchesScratchSourceResourceArrayInput interface {
+	pulumi.Input
+
+	ToGetTemplateScratchesScratchSourceResourceArrayOutput() GetTemplateScratchesScratchSourceResourceArrayOutput
+	ToGetTemplateScratchesScratchSourceResourceArrayOutputWithContext(context.Context) GetTemplateScratchesScratchSourceResourceArrayOutput
+}
+
+type GetTemplateScratchesScratchSourceResourceArray []GetTemplateScratchesScratchSourceResourceInput
+
+func (GetTemplateScratchesScratchSourceResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTemplateScratchesScratchSourceResource)(nil)).Elem()
+}
+
+func (i GetTemplateScratchesScratchSourceResourceArray) ToGetTemplateScratchesScratchSourceResourceArrayOutput() GetTemplateScratchesScratchSourceResourceArrayOutput {
+	return i.ToGetTemplateScratchesScratchSourceResourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetTemplateScratchesScratchSourceResourceArray) ToGetTemplateScratchesScratchSourceResourceArrayOutputWithContext(ctx context.Context) GetTemplateScratchesScratchSourceResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateScratchesScratchSourceResourceArrayOutput)
+}
+
+type GetTemplateScratchesScratchSourceResourceOutput struct{ *pulumi.OutputState }
+
+func (GetTemplateScratchesScratchSourceResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTemplateScratchesScratchSourceResource)(nil)).Elem()
+}
+
+func (o GetTemplateScratchesScratchSourceResourceOutput) ToGetTemplateScratchesScratchSourceResourceOutput() GetTemplateScratchesScratchSourceResourceOutput {
+	return o
+}
+
+func (o GetTemplateScratchesScratchSourceResourceOutput) ToGetTemplateScratchesScratchSourceResourceOutputWithContext(ctx context.Context) GetTemplateScratchesScratchSourceResourceOutput {
+	return o
+}
+
+// The ID of the Source Resource.
+func (o GetTemplateScratchesScratchSourceResourceOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateScratchesScratchSourceResource) string { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+// The type of the Source resource.
+func (o GetTemplateScratchesScratchSourceResourceOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateScratchesScratchSourceResource) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+type GetTemplateScratchesScratchSourceResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTemplateScratchesScratchSourceResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTemplateScratchesScratchSourceResource)(nil)).Elem()
+}
+
+func (o GetTemplateScratchesScratchSourceResourceArrayOutput) ToGetTemplateScratchesScratchSourceResourceArrayOutput() GetTemplateScratchesScratchSourceResourceArrayOutput {
+	return o
+}
+
+func (o GetTemplateScratchesScratchSourceResourceArrayOutput) ToGetTemplateScratchesScratchSourceResourceArrayOutputWithContext(ctx context.Context) GetTemplateScratchesScratchSourceResourceArrayOutput {
+	return o
+}
+
+func (o GetTemplateScratchesScratchSourceResourceArrayOutput) Index(i pulumi.IntInput) GetTemplateScratchesScratchSourceResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTemplateScratchesScratchSourceResource {
+		return vs[0].([]GetTemplateScratchesScratchSourceResource)[vs[1].(int)]
+	}).(GetTemplateScratchesScratchSourceResourceOutput)
+}
+
+type GetTemplateScratchesScratchSourceResourceGroup struct {
+	// The ID of the Source Resource Group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// Source resource type filter list.
+	ResourceTypeFilters []string `pulumi:"resourceTypeFilters"`
+}
+
+// GetTemplateScratchesScratchSourceResourceGroupInput is an input type that accepts GetTemplateScratchesScratchSourceResourceGroupArgs and GetTemplateScratchesScratchSourceResourceGroupOutput values.
+// You can construct a concrete instance of `GetTemplateScratchesScratchSourceResourceGroupInput` via:
+//
+//          GetTemplateScratchesScratchSourceResourceGroupArgs{...}
+type GetTemplateScratchesScratchSourceResourceGroupInput interface {
+	pulumi.Input
+
+	ToGetTemplateScratchesScratchSourceResourceGroupOutput() GetTemplateScratchesScratchSourceResourceGroupOutput
+	ToGetTemplateScratchesScratchSourceResourceGroupOutputWithContext(context.Context) GetTemplateScratchesScratchSourceResourceGroupOutput
+}
+
+type GetTemplateScratchesScratchSourceResourceGroupArgs struct {
+	// The ID of the Source Resource Group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// Source resource type filter list.
+	ResourceTypeFilters pulumi.StringArrayInput `pulumi:"resourceTypeFilters"`
+}
+
+func (GetTemplateScratchesScratchSourceResourceGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTemplateScratchesScratchSourceResourceGroup)(nil)).Elem()
+}
+
+func (i GetTemplateScratchesScratchSourceResourceGroupArgs) ToGetTemplateScratchesScratchSourceResourceGroupOutput() GetTemplateScratchesScratchSourceResourceGroupOutput {
+	return i.ToGetTemplateScratchesScratchSourceResourceGroupOutputWithContext(context.Background())
+}
+
+func (i GetTemplateScratchesScratchSourceResourceGroupArgs) ToGetTemplateScratchesScratchSourceResourceGroupOutputWithContext(ctx context.Context) GetTemplateScratchesScratchSourceResourceGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateScratchesScratchSourceResourceGroupOutput)
+}
+
+// GetTemplateScratchesScratchSourceResourceGroupArrayInput is an input type that accepts GetTemplateScratchesScratchSourceResourceGroupArray and GetTemplateScratchesScratchSourceResourceGroupArrayOutput values.
+// You can construct a concrete instance of `GetTemplateScratchesScratchSourceResourceGroupArrayInput` via:
+//
+//          GetTemplateScratchesScratchSourceResourceGroupArray{ GetTemplateScratchesScratchSourceResourceGroupArgs{...} }
+type GetTemplateScratchesScratchSourceResourceGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetTemplateScratchesScratchSourceResourceGroupArrayOutput() GetTemplateScratchesScratchSourceResourceGroupArrayOutput
+	ToGetTemplateScratchesScratchSourceResourceGroupArrayOutputWithContext(context.Context) GetTemplateScratchesScratchSourceResourceGroupArrayOutput
+}
+
+type GetTemplateScratchesScratchSourceResourceGroupArray []GetTemplateScratchesScratchSourceResourceGroupInput
+
+func (GetTemplateScratchesScratchSourceResourceGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTemplateScratchesScratchSourceResourceGroup)(nil)).Elem()
+}
+
+func (i GetTemplateScratchesScratchSourceResourceGroupArray) ToGetTemplateScratchesScratchSourceResourceGroupArrayOutput() GetTemplateScratchesScratchSourceResourceGroupArrayOutput {
+	return i.ToGetTemplateScratchesScratchSourceResourceGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetTemplateScratchesScratchSourceResourceGroupArray) ToGetTemplateScratchesScratchSourceResourceGroupArrayOutputWithContext(ctx context.Context) GetTemplateScratchesScratchSourceResourceGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateScratchesScratchSourceResourceGroupArrayOutput)
+}
+
+type GetTemplateScratchesScratchSourceResourceGroupOutput struct{ *pulumi.OutputState }
+
+func (GetTemplateScratchesScratchSourceResourceGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTemplateScratchesScratchSourceResourceGroup)(nil)).Elem()
+}
+
+func (o GetTemplateScratchesScratchSourceResourceGroupOutput) ToGetTemplateScratchesScratchSourceResourceGroupOutput() GetTemplateScratchesScratchSourceResourceGroupOutput {
+	return o
+}
+
+func (o GetTemplateScratchesScratchSourceResourceGroupOutput) ToGetTemplateScratchesScratchSourceResourceGroupOutputWithContext(ctx context.Context) GetTemplateScratchesScratchSourceResourceGroupOutput {
+	return o
+}
+
+// The ID of the Source Resource Group.
+func (o GetTemplateScratchesScratchSourceResourceGroupOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateScratchesScratchSourceResourceGroup) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Source resource type filter list.
+func (o GetTemplateScratchesScratchSourceResourceGroupOutput) ResourceTypeFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTemplateScratchesScratchSourceResourceGroup) []string { return v.ResourceTypeFilters }).(pulumi.StringArrayOutput)
+}
+
+type GetTemplateScratchesScratchSourceResourceGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTemplateScratchesScratchSourceResourceGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTemplateScratchesScratchSourceResourceGroup)(nil)).Elem()
+}
+
+func (o GetTemplateScratchesScratchSourceResourceGroupArrayOutput) ToGetTemplateScratchesScratchSourceResourceGroupArrayOutput() GetTemplateScratchesScratchSourceResourceGroupArrayOutput {
+	return o
+}
+
+func (o GetTemplateScratchesScratchSourceResourceGroupArrayOutput) ToGetTemplateScratchesScratchSourceResourceGroupArrayOutputWithContext(ctx context.Context) GetTemplateScratchesScratchSourceResourceGroupArrayOutput {
+	return o
+}
+
+func (o GetTemplateScratchesScratchSourceResourceGroupArrayOutput) Index(i pulumi.IntInput) GetTemplateScratchesScratchSourceResourceGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTemplateScratchesScratchSourceResourceGroup {
+		return vs[0].([]GetTemplateScratchesScratchSourceResourceGroup)[vs[1].(int)]
+	}).(GetTemplateScratchesScratchSourceResourceGroupOutput)
+}
+
+type GetTemplateScratchesScratchSourceTag struct {
+	// Source label.
+	ResourceTags map[string]interface{} `pulumi:"resourceTags"`
+	// Source resource type filter list.
+	ResourceTypeFilters []string `pulumi:"resourceTypeFilters"`
+}
+
+// GetTemplateScratchesScratchSourceTagInput is an input type that accepts GetTemplateScratchesScratchSourceTagArgs and GetTemplateScratchesScratchSourceTagOutput values.
+// You can construct a concrete instance of `GetTemplateScratchesScratchSourceTagInput` via:
+//
+//          GetTemplateScratchesScratchSourceTagArgs{...}
+type GetTemplateScratchesScratchSourceTagInput interface {
+	pulumi.Input
+
+	ToGetTemplateScratchesScratchSourceTagOutput() GetTemplateScratchesScratchSourceTagOutput
+	ToGetTemplateScratchesScratchSourceTagOutputWithContext(context.Context) GetTemplateScratchesScratchSourceTagOutput
+}
+
+type GetTemplateScratchesScratchSourceTagArgs struct {
+	// Source label.
+	ResourceTags pulumi.MapInput `pulumi:"resourceTags"`
+	// Source resource type filter list.
+	ResourceTypeFilters pulumi.StringArrayInput `pulumi:"resourceTypeFilters"`
+}
+
+func (GetTemplateScratchesScratchSourceTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTemplateScratchesScratchSourceTag)(nil)).Elem()
+}
+
+func (i GetTemplateScratchesScratchSourceTagArgs) ToGetTemplateScratchesScratchSourceTagOutput() GetTemplateScratchesScratchSourceTagOutput {
+	return i.ToGetTemplateScratchesScratchSourceTagOutputWithContext(context.Background())
+}
+
+func (i GetTemplateScratchesScratchSourceTagArgs) ToGetTemplateScratchesScratchSourceTagOutputWithContext(ctx context.Context) GetTemplateScratchesScratchSourceTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateScratchesScratchSourceTagOutput)
+}
+
+// GetTemplateScratchesScratchSourceTagArrayInput is an input type that accepts GetTemplateScratchesScratchSourceTagArray and GetTemplateScratchesScratchSourceTagArrayOutput values.
+// You can construct a concrete instance of `GetTemplateScratchesScratchSourceTagArrayInput` via:
+//
+//          GetTemplateScratchesScratchSourceTagArray{ GetTemplateScratchesScratchSourceTagArgs{...} }
+type GetTemplateScratchesScratchSourceTagArrayInput interface {
+	pulumi.Input
+
+	ToGetTemplateScratchesScratchSourceTagArrayOutput() GetTemplateScratchesScratchSourceTagArrayOutput
+	ToGetTemplateScratchesScratchSourceTagArrayOutputWithContext(context.Context) GetTemplateScratchesScratchSourceTagArrayOutput
+}
+
+type GetTemplateScratchesScratchSourceTagArray []GetTemplateScratchesScratchSourceTagInput
+
+func (GetTemplateScratchesScratchSourceTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTemplateScratchesScratchSourceTag)(nil)).Elem()
+}
+
+func (i GetTemplateScratchesScratchSourceTagArray) ToGetTemplateScratchesScratchSourceTagArrayOutput() GetTemplateScratchesScratchSourceTagArrayOutput {
+	return i.ToGetTemplateScratchesScratchSourceTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetTemplateScratchesScratchSourceTagArray) ToGetTemplateScratchesScratchSourceTagArrayOutputWithContext(ctx context.Context) GetTemplateScratchesScratchSourceTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateScratchesScratchSourceTagArrayOutput)
+}
+
+type GetTemplateScratchesScratchSourceTagOutput struct{ *pulumi.OutputState }
+
+func (GetTemplateScratchesScratchSourceTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTemplateScratchesScratchSourceTag)(nil)).Elem()
+}
+
+func (o GetTemplateScratchesScratchSourceTagOutput) ToGetTemplateScratchesScratchSourceTagOutput() GetTemplateScratchesScratchSourceTagOutput {
+	return o
+}
+
+func (o GetTemplateScratchesScratchSourceTagOutput) ToGetTemplateScratchesScratchSourceTagOutputWithContext(ctx context.Context) GetTemplateScratchesScratchSourceTagOutput {
+	return o
+}
+
+// Source label.
+func (o GetTemplateScratchesScratchSourceTagOutput) ResourceTags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetTemplateScratchesScratchSourceTag) map[string]interface{} { return v.ResourceTags }).(pulumi.MapOutput)
+}
+
+// Source resource type filter list.
+func (o GetTemplateScratchesScratchSourceTagOutput) ResourceTypeFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTemplateScratchesScratchSourceTag) []string { return v.ResourceTypeFilters }).(pulumi.StringArrayOutput)
+}
+
+type GetTemplateScratchesScratchSourceTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTemplateScratchesScratchSourceTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTemplateScratchesScratchSourceTag)(nil)).Elem()
+}
+
+func (o GetTemplateScratchesScratchSourceTagArrayOutput) ToGetTemplateScratchesScratchSourceTagArrayOutput() GetTemplateScratchesScratchSourceTagArrayOutput {
+	return o
+}
+
+func (o GetTemplateScratchesScratchSourceTagArrayOutput) ToGetTemplateScratchesScratchSourceTagArrayOutputWithContext(ctx context.Context) GetTemplateScratchesScratchSourceTagArrayOutput {
+	return o
+}
+
+func (o GetTemplateScratchesScratchSourceTagArrayOutput) Index(i pulumi.IntInput) GetTemplateScratchesScratchSourceTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTemplateScratchesScratchSourceTag {
+		return vs[0].([]GetTemplateScratchesScratchSourceTag)[vs[1].(int)]
+	}).(GetTemplateScratchesScratchSourceTagOutput)
+}
+
+type GetTemplateScratchesScratchStack struct {
+	// The ID of the Resource stack.
+	StackId string `pulumi:"stackId"`
+}
+
+// GetTemplateScratchesScratchStackInput is an input type that accepts GetTemplateScratchesScratchStackArgs and GetTemplateScratchesScratchStackOutput values.
+// You can construct a concrete instance of `GetTemplateScratchesScratchStackInput` via:
+//
+//          GetTemplateScratchesScratchStackArgs{...}
+type GetTemplateScratchesScratchStackInput interface {
+	pulumi.Input
+
+	ToGetTemplateScratchesScratchStackOutput() GetTemplateScratchesScratchStackOutput
+	ToGetTemplateScratchesScratchStackOutputWithContext(context.Context) GetTemplateScratchesScratchStackOutput
+}
+
+type GetTemplateScratchesScratchStackArgs struct {
+	// The ID of the Resource stack.
+	StackId pulumi.StringInput `pulumi:"stackId"`
+}
+
+func (GetTemplateScratchesScratchStackArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTemplateScratchesScratchStack)(nil)).Elem()
+}
+
+func (i GetTemplateScratchesScratchStackArgs) ToGetTemplateScratchesScratchStackOutput() GetTemplateScratchesScratchStackOutput {
+	return i.ToGetTemplateScratchesScratchStackOutputWithContext(context.Background())
+}
+
+func (i GetTemplateScratchesScratchStackArgs) ToGetTemplateScratchesScratchStackOutputWithContext(ctx context.Context) GetTemplateScratchesScratchStackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateScratchesScratchStackOutput)
+}
+
+// GetTemplateScratchesScratchStackArrayInput is an input type that accepts GetTemplateScratchesScratchStackArray and GetTemplateScratchesScratchStackArrayOutput values.
+// You can construct a concrete instance of `GetTemplateScratchesScratchStackArrayInput` via:
+//
+//          GetTemplateScratchesScratchStackArray{ GetTemplateScratchesScratchStackArgs{...} }
+type GetTemplateScratchesScratchStackArrayInput interface {
+	pulumi.Input
+
+	ToGetTemplateScratchesScratchStackArrayOutput() GetTemplateScratchesScratchStackArrayOutput
+	ToGetTemplateScratchesScratchStackArrayOutputWithContext(context.Context) GetTemplateScratchesScratchStackArrayOutput
+}
+
+type GetTemplateScratchesScratchStackArray []GetTemplateScratchesScratchStackInput
+
+func (GetTemplateScratchesScratchStackArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTemplateScratchesScratchStack)(nil)).Elem()
+}
+
+func (i GetTemplateScratchesScratchStackArray) ToGetTemplateScratchesScratchStackArrayOutput() GetTemplateScratchesScratchStackArrayOutput {
+	return i.ToGetTemplateScratchesScratchStackArrayOutputWithContext(context.Background())
+}
+
+func (i GetTemplateScratchesScratchStackArray) ToGetTemplateScratchesScratchStackArrayOutputWithContext(ctx context.Context) GetTemplateScratchesScratchStackArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTemplateScratchesScratchStackArrayOutput)
+}
+
+type GetTemplateScratchesScratchStackOutput struct{ *pulumi.OutputState }
+
+func (GetTemplateScratchesScratchStackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTemplateScratchesScratchStack)(nil)).Elem()
+}
+
+func (o GetTemplateScratchesScratchStackOutput) ToGetTemplateScratchesScratchStackOutput() GetTemplateScratchesScratchStackOutput {
+	return o
+}
+
+func (o GetTemplateScratchesScratchStackOutput) ToGetTemplateScratchesScratchStackOutputWithContext(ctx context.Context) GetTemplateScratchesScratchStackOutput {
+	return o
+}
+
+// The ID of the Resource stack.
+func (o GetTemplateScratchesScratchStackOutput) StackId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTemplateScratchesScratchStack) string { return v.StackId }).(pulumi.StringOutput)
+}
+
+type GetTemplateScratchesScratchStackArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTemplateScratchesScratchStackArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTemplateScratchesScratchStack)(nil)).Elem()
+}
+
+func (o GetTemplateScratchesScratchStackArrayOutput) ToGetTemplateScratchesScratchStackArrayOutput() GetTemplateScratchesScratchStackArrayOutput {
+	return o
+}
+
+func (o GetTemplateScratchesScratchStackArrayOutput) ToGetTemplateScratchesScratchStackArrayOutputWithContext(ctx context.Context) GetTemplateScratchesScratchStackArrayOutput {
+	return o
+}
+
+func (o GetTemplateScratchesScratchStackArrayOutput) Index(i pulumi.IntInput) GetTemplateScratchesScratchStackOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTemplateScratchesScratchStack {
+		return vs[0].([]GetTemplateScratchesScratchStack)[vs[1].(int)]
+	}).(GetTemplateScratchesScratchStackOutput)
+}
+
 type GetTemplatesTemplate struct {
 	// The ID of the change set.
 	ChangeSetId string `pulumi:"changeSetId"`
@@ -1979,6 +3226,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StackInstanceParameterOverrideArrayInput)(nil)).Elem(), StackInstanceParameterOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StackParameterInput)(nil)).Elem(), StackParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StackParameterArrayInput)(nil)).Elem(), StackParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateScratchPreferenceParameterInput)(nil)).Elem(), TemplateScratchPreferenceParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateScratchPreferenceParameterArrayInput)(nil)).Elem(), TemplateScratchPreferenceParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateScratchSourceResourceInput)(nil)).Elem(), TemplateScratchSourceResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateScratchSourceResourceArrayInput)(nil)).Elem(), TemplateScratchSourceResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateScratchSourceResourceGroupInput)(nil)).Elem(), TemplateScratchSourceResourceGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateScratchSourceResourceGroupPtrInput)(nil)).Elem(), TemplateScratchSourceResourceGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateScratchSourceTagInput)(nil)).Elem(), TemplateScratchSourceTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateScratchSourceTagPtrInput)(nil)).Elem(), TemplateScratchSourceTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChangeSetsSetInput)(nil)).Elem(), GetChangeSetsSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChangeSetsSetArrayInput)(nil)).Elem(), GetChangeSetsSetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChangeSetsSetParameterInput)(nil)).Elem(), GetChangeSetsSetParameterArgs{})
@@ -1997,6 +3252,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStacksStackArrayInput)(nil)).Elem(), GetStacksStackArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStacksStackParameterInput)(nil)).Elem(), GetStacksStackParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStacksStackParameterArrayInput)(nil)).Elem(), GetStacksStackParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateScratchesScratchInput)(nil)).Elem(), GetTemplateScratchesScratchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateScratchesScratchArrayInput)(nil)).Elem(), GetTemplateScratchesScratchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateScratchesScratchPreferenceParameterInput)(nil)).Elem(), GetTemplateScratchesScratchPreferenceParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateScratchesScratchPreferenceParameterArrayInput)(nil)).Elem(), GetTemplateScratchesScratchPreferenceParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateScratchesScratchSourceResourceInput)(nil)).Elem(), GetTemplateScratchesScratchSourceResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateScratchesScratchSourceResourceArrayInput)(nil)).Elem(), GetTemplateScratchesScratchSourceResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateScratchesScratchSourceResourceGroupInput)(nil)).Elem(), GetTemplateScratchesScratchSourceResourceGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateScratchesScratchSourceResourceGroupArrayInput)(nil)).Elem(), GetTemplateScratchesScratchSourceResourceGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateScratchesScratchSourceTagInput)(nil)).Elem(), GetTemplateScratchesScratchSourceTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateScratchesScratchSourceTagArrayInput)(nil)).Elem(), GetTemplateScratchesScratchSourceTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateScratchesScratchStackInput)(nil)).Elem(), GetTemplateScratchesScratchStackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplateScratchesScratchStackArrayInput)(nil)).Elem(), GetTemplateScratchesScratchStackArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplatesTemplateInput)(nil)).Elem(), GetTemplatesTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplatesTemplateArrayInput)(nil)).Elem(), GetTemplatesTemplateArray{})
 	pulumi.RegisterOutputType(ChangeSetParameterOutput{})
@@ -2007,6 +3274,14 @@ func init() {
 	pulumi.RegisterOutputType(StackInstanceParameterOverrideArrayOutput{})
 	pulumi.RegisterOutputType(StackParameterOutput{})
 	pulumi.RegisterOutputType(StackParameterArrayOutput{})
+	pulumi.RegisterOutputType(TemplateScratchPreferenceParameterOutput{})
+	pulumi.RegisterOutputType(TemplateScratchPreferenceParameterArrayOutput{})
+	pulumi.RegisterOutputType(TemplateScratchSourceResourceOutput{})
+	pulumi.RegisterOutputType(TemplateScratchSourceResourceArrayOutput{})
+	pulumi.RegisterOutputType(TemplateScratchSourceResourceGroupOutput{})
+	pulumi.RegisterOutputType(TemplateScratchSourceResourceGroupPtrOutput{})
+	pulumi.RegisterOutputType(TemplateScratchSourceTagOutput{})
+	pulumi.RegisterOutputType(TemplateScratchSourceTagPtrOutput{})
 	pulumi.RegisterOutputType(GetChangeSetsSetOutput{})
 	pulumi.RegisterOutputType(GetChangeSetsSetArrayOutput{})
 	pulumi.RegisterOutputType(GetChangeSetsSetParameterOutput{})
@@ -2025,6 +3300,18 @@ func init() {
 	pulumi.RegisterOutputType(GetStacksStackArrayOutput{})
 	pulumi.RegisterOutputType(GetStacksStackParameterOutput{})
 	pulumi.RegisterOutputType(GetStacksStackParameterArrayOutput{})
+	pulumi.RegisterOutputType(GetTemplateScratchesScratchOutput{})
+	pulumi.RegisterOutputType(GetTemplateScratchesScratchArrayOutput{})
+	pulumi.RegisterOutputType(GetTemplateScratchesScratchPreferenceParameterOutput{})
+	pulumi.RegisterOutputType(GetTemplateScratchesScratchPreferenceParameterArrayOutput{})
+	pulumi.RegisterOutputType(GetTemplateScratchesScratchSourceResourceOutput{})
+	pulumi.RegisterOutputType(GetTemplateScratchesScratchSourceResourceArrayOutput{})
+	pulumi.RegisterOutputType(GetTemplateScratchesScratchSourceResourceGroupOutput{})
+	pulumi.RegisterOutputType(GetTemplateScratchesScratchSourceResourceGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetTemplateScratchesScratchSourceTagOutput{})
+	pulumi.RegisterOutputType(GetTemplateScratchesScratchSourceTagArrayOutput{})
+	pulumi.RegisterOutputType(GetTemplateScratchesScratchStackOutput{})
+	pulumi.RegisterOutputType(GetTemplateScratchesScratchStackArrayOutput{})
 	pulumi.RegisterOutputType(GetTemplatesTemplateOutput{})
 	pulumi.RegisterOutputType(GetTemplatesTemplateArrayOutput{})
 }

@@ -117,11 +117,11 @@ type LaunchTemplate struct {
 	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
 	Userdata           pulumi.StringOutput    `pulumi:"userdata"`
 	VersionDescription pulumi.StringPtrOutput `pulumi:"versionDescription"`
-	VpcId              pulumi.StringPtrOutput `pulumi:"vpcId"`
+	VpcId              pulumi.StringOutput    `pulumi:"vpcId"`
 	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The zone ID of the instance.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewLaunchTemplate registers a new resource with the given unique name, arguments, and options.

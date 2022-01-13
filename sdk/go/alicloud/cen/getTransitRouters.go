@@ -48,32 +48,36 @@ func GetTransitRouters(ctx *pulumi.Context, args *GetTransitRoutersArgs, opts ..
 
 // A collection of arguments for invoking getTransitRouters.
 type GetTransitRoutersArgs struct {
-	// ID of the CEN instance.
-	CenId      string  `pulumi:"cenId"`
+	// The ID of the CEN instance.
+	CenId string `pulumi:"cenId"`
+	// A list of resource id. The element value is same as <cen_id>:<transit_router_id>`.
+	Ids []string `pulumi:"ids"`
+	// A regex string to filter CEN Transit Routers by name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
 	Status *string `pulumi:"status"`
-	// ID of the transit router.
-	TransitRouterId string `pulumi:"transitRouterId"`
+	// The ID of the transit router.
+	TransitRouterId *string `pulumi:"transitRouterId"`
 	// A list of ID of the transit router.
 	TransitRouterIds []string `pulumi:"transitRouterIds"`
 }
 
 // A collection of values returned by getTransitRouters.
 type GetTransitRoutersResult struct {
-	// ID of the CEN instance.
+	// The ID of the CEN instance.
 	CenId string `pulumi:"cenId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of  CEN Transit Routers names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	// The status of the transit router attachment.
 	Status *string `pulumi:"status"`
-	// ID of the transit router.
-	TransitRouterId  string   `pulumi:"transitRouterId"`
+	// The ID of the transit router.
+	TransitRouterId  *string  `pulumi:"transitRouterId"`
 	TransitRouterIds []string `pulumi:"transitRouterIds"`
 	// A list of CEN Transit Routers. Each element contains the following attributes:
 	TransitRouters []GetTransitRoutersTransitRouter `pulumi:"transitRouters"`
@@ -90,14 +94,17 @@ func GetTransitRoutersOutput(ctx *pulumi.Context, args GetTransitRoutersOutputAr
 
 // A collection of arguments for invoking getTransitRouters.
 type GetTransitRoutersOutputArgs struct {
-	// ID of the CEN instance.
-	CenId      pulumi.StringInput    `pulumi:"cenId"`
+	// The ID of the CEN instance.
+	CenId pulumi.StringInput `pulumi:"cenId"`
+	// A list of resource id. The element value is same as <cen_id>:<transit_router_id>`.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter CEN Transit Routers by name.
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// ID of the transit router.
-	TransitRouterId pulumi.StringInput `pulumi:"transitRouterId"`
+	// The ID of the transit router.
+	TransitRouterId pulumi.StringPtrInput `pulumi:"transitRouterId"`
 	// A list of ID of the transit router.
 	TransitRouterIds pulumi.StringArrayInput `pulumi:"transitRouterIds"`
 }
@@ -121,7 +128,7 @@ func (o GetTransitRoutersResultOutput) ToGetTransitRoutersResultOutputWithContex
 	return o
 }
 
-// ID of the CEN instance.
+// The ID of the CEN instance.
 func (o GetTransitRoutersResultOutput) CenId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRoutersResult) string { return v.CenId }).(pulumi.StringOutput)
 }
@@ -139,6 +146,7 @@ func (o GetTransitRoutersResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTransitRoutersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of  CEN Transit Routers names.
 func (o GetTransitRoutersResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTransitRoutersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -152,9 +160,9 @@ func (o GetTransitRoutersResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTransitRoutersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// ID of the transit router.
-func (o GetTransitRoutersResultOutput) TransitRouterId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTransitRoutersResult) string { return v.TransitRouterId }).(pulumi.StringOutput)
+// The ID of the transit router.
+func (o GetTransitRoutersResultOutput) TransitRouterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTransitRoutersResult) *string { return v.TransitRouterId }).(pulumi.StringPtrOutput)
 }
 
 func (o GetTransitRoutersResultOutput) TransitRouterIds() pulumi.StringArrayOutput {

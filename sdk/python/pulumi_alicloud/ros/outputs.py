@@ -14,6 +14,10 @@ __all__ = [
     'StackGroupParameter',
     'StackInstanceParameterOverride',
     'StackParameter',
+    'TemplateScratchPreferenceParameter',
+    'TemplateScratchSourceResource',
+    'TemplateScratchSourceResourceGroup',
+    'TemplateScratchSourceTag',
     'GetChangeSetsSetResult',
     'GetChangeSetsSetParameterResult',
     'GetRegionsRegionResult',
@@ -23,6 +27,12 @@ __all__ = [
     'GetStackInstancesInstanceParameterOverrideResult',
     'GetStacksStackResult',
     'GetStacksStackParameterResult',
+    'GetTemplateScratchesScratchResult',
+    'GetTemplateScratchesScratchPreferenceParameterResult',
+    'GetTemplateScratchesScratchSourceResourceResult',
+    'GetTemplateScratchesScratchSourceResourceGroupResult',
+    'GetTemplateScratchesScratchSourceTagResult',
+    'GetTemplateScratchesScratchStackResult',
     'GetTemplatesTemplateResult',
 ]
 
@@ -221,6 +231,200 @@ class StackParameter(dict):
         The parameter key.
         """
         return pulumi.get(self, "parameter_key")
+
+
+@pulumi.output_type
+class TemplateScratchPreferenceParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "parameterKey":
+            suggest = "parameter_key"
+        elif key == "parameterValue":
+            suggest = "parameter_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TemplateScratchPreferenceParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TemplateScratchPreferenceParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TemplateScratchPreferenceParameter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 parameter_key: str,
+                 parameter_value: str):
+        """
+        :param str parameter_key: Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+        :param str parameter_value: Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+        """
+        pulumi.set(__self__, "parameter_key", parameter_key)
+        pulumi.set(__self__, "parameter_value", parameter_value)
+
+    @property
+    @pulumi.getter(name="parameterKey")
+    def parameter_key(self) -> str:
+        """
+        Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+        """
+        return pulumi.get(self, "parameter_key")
+
+    @property
+    @pulumi.getter(name="parameterValue")
+    def parameter_value(self) -> str:
+        """
+        Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+        """
+        return pulumi.get(self, "parameter_value")
+
+
+@pulumi.output_type
+class TemplateScratchSourceResource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceId":
+            suggest = "resource_id"
+        elif key == "resourceType":
+            suggest = "resource_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TemplateScratchSourceResource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TemplateScratchSourceResource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TemplateScratchSourceResource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_id: str,
+                 resource_type: str):
+        """
+        :param str resource_id: The ID of the Source Resource.
+        :param str resource_type: The type of the Source resource.
+        """
+        pulumi.set(__self__, "resource_id", resource_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> str:
+        """
+        The ID of the Source Resource.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> str:
+        """
+        The type of the Source resource.
+        """
+        return pulumi.get(self, "resource_type")
+
+
+@pulumi.output_type
+class TemplateScratchSourceResourceGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceGroupId":
+            suggest = "resource_group_id"
+        elif key == "resourceTypeFilters":
+            suggest = "resource_type_filters"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TemplateScratchSourceResourceGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TemplateScratchSourceResourceGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TemplateScratchSourceResourceGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_group_id: str,
+                 resource_type_filters: Optional[Sequence[str]] = None):
+        """
+        :param str resource_group_id: The ID of the Source Resource Group.
+        :param Sequence[str] resource_type_filters: Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+        """
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if resource_type_filters is not None:
+            pulumi.set(__self__, "resource_type_filters", resource_type_filters)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the Source Resource Group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="resourceTypeFilters")
+    def resource_type_filters(self) -> Optional[Sequence[str]]:
+        """
+        Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+        """
+        return pulumi.get(self, "resource_type_filters")
+
+
+@pulumi.output_type
+class TemplateScratchSourceTag(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceTags":
+            suggest = "resource_tags"
+        elif key == "resourceTypeFilters":
+            suggest = "resource_type_filters"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TemplateScratchSourceTag. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TemplateScratchSourceTag.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TemplateScratchSourceTag.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_tags: Mapping[str, Any],
+                 resource_type_filters: Optional[Sequence[str]] = None):
+        """
+        :param Mapping[str, Any] resource_tags: Source label. **NOTE:** A maximum of 10 source labels can be configured.
+        :param Sequence[str] resource_type_filters: Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+        """
+        pulumi.set(__self__, "resource_tags", resource_tags)
+        if resource_type_filters is not None:
+            pulumi.set(__self__, "resource_type_filters", resource_type_filters)
+
+    @property
+    @pulumi.getter(name="resourceTags")
+    def resource_tags(self) -> Mapping[str, Any]:
+        """
+        Source label. **NOTE:** A maximum of 10 source labels can be configured.
+        """
+        return pulumi.get(self, "resource_tags")
+
+    @property
+    @pulumi.getter(name="resourceTypeFilters")
+    def resource_type_filters(self) -> Optional[Sequence[str]]:
+        """
+        Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+        """
+        return pulumi.get(self, "resource_type_filters")
 
 
 @pulumi.output_type
@@ -954,6 +1158,279 @@ class GetStacksStackParameterResult(dict):
         The value of parameters.
         """
         return pulumi.get(self, "parameter_value")
+
+
+@pulumi.output_type
+class GetTemplateScratchesScratchResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 description: str,
+                 id: str,
+                 logical_id_strategy: str,
+                 preference_parameters: Sequence['outputs.GetTemplateScratchesScratchPreferenceParameterResult'],
+                 source_resource_groups: Sequence['outputs.GetTemplateScratchesScratchSourceResourceGroupResult'],
+                 source_resources: Sequence['outputs.GetTemplateScratchesScratchSourceResourceResult'],
+                 source_tags: Sequence['outputs.GetTemplateScratchesScratchSourceTagResult'],
+                 stacks: Sequence['outputs.GetTemplateScratchesScratchStackResult'],
+                 status: str,
+                 template_scratch_id: str,
+                 template_scratch_type: str):
+        """
+        :param str create_time: The creation time of the resource.
+        :param str description: The description of the Template Scratch.
+        :param str id: The ID of the Template Scratch.
+        :param str logical_id_strategy: The Logical ID generation strategy of the Template Scratch.
+        :param Sequence['GetTemplateScratchesScratchPreferenceParameterArgs'] preference_parameters: Priority parameter.
+        :param Sequence['GetTemplateScratchesScratchSourceResourceGroupArgs'] source_resource_groups: Source resource grouping.
+        :param Sequence['GetTemplateScratchesScratchSourceResourceArgs'] source_resources: Source resource.
+        :param Sequence['GetTemplateScratchesScratchSourceTagArgs'] source_tags: The Source label list.
+        :param Sequence['GetTemplateScratchesScratchStackArgs'] stacks: A list of resource stacks associated with the resource scene.
+        :param str status: The status of the resource.
+        :param str template_scratch_id: The ID of the Template Scratch.
+        :param str template_scratch_type: The type of the Template Scratch.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "logical_id_strategy", logical_id_strategy)
+        pulumi.set(__self__, "preference_parameters", preference_parameters)
+        pulumi.set(__self__, "source_resource_groups", source_resource_groups)
+        pulumi.set(__self__, "source_resources", source_resources)
+        pulumi.set(__self__, "source_tags", source_tags)
+        pulumi.set(__self__, "stacks", stacks)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "template_scratch_id", template_scratch_id)
+        pulumi.set(__self__, "template_scratch_type", template_scratch_type)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the Template Scratch.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Template Scratch.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="logicalIdStrategy")
+    def logical_id_strategy(self) -> str:
+        """
+        The Logical ID generation strategy of the Template Scratch.
+        """
+        return pulumi.get(self, "logical_id_strategy")
+
+    @property
+    @pulumi.getter(name="preferenceParameters")
+    def preference_parameters(self) -> Sequence['outputs.GetTemplateScratchesScratchPreferenceParameterResult']:
+        """
+        Priority parameter.
+        """
+        return pulumi.get(self, "preference_parameters")
+
+    @property
+    @pulumi.getter(name="sourceResourceGroups")
+    def source_resource_groups(self) -> Sequence['outputs.GetTemplateScratchesScratchSourceResourceGroupResult']:
+        """
+        Source resource grouping.
+        """
+        return pulumi.get(self, "source_resource_groups")
+
+    @property
+    @pulumi.getter(name="sourceResources")
+    def source_resources(self) -> Sequence['outputs.GetTemplateScratchesScratchSourceResourceResult']:
+        """
+        Source resource.
+        """
+        return pulumi.get(self, "source_resources")
+
+    @property
+    @pulumi.getter(name="sourceTags")
+    def source_tags(self) -> Sequence['outputs.GetTemplateScratchesScratchSourceTagResult']:
+        """
+        The Source label list.
+        """
+        return pulumi.get(self, "source_tags")
+
+    @property
+    @pulumi.getter
+    def stacks(self) -> Sequence['outputs.GetTemplateScratchesScratchStackResult']:
+        """
+        A list of resource stacks associated with the resource scene.
+        """
+        return pulumi.get(self, "stacks")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="templateScratchId")
+    def template_scratch_id(self) -> str:
+        """
+        The ID of the Template Scratch.
+        """
+        return pulumi.get(self, "template_scratch_id")
+
+    @property
+    @pulumi.getter(name="templateScratchType")
+    def template_scratch_type(self) -> str:
+        """
+        The type of the Template Scratch.
+        """
+        return pulumi.get(self, "template_scratch_type")
+
+
+@pulumi.output_type
+class GetTemplateScratchesScratchPreferenceParameterResult(dict):
+    def __init__(__self__, *,
+                 parameter_key: str,
+                 parameter_value: str):
+        """
+        :param str parameter_key: Priority parameter key.
+        :param str parameter_value: Priority parameter value.
+        """
+        pulumi.set(__self__, "parameter_key", parameter_key)
+        pulumi.set(__self__, "parameter_value", parameter_value)
+
+    @property
+    @pulumi.getter(name="parameterKey")
+    def parameter_key(self) -> str:
+        """
+        Priority parameter key.
+        """
+        return pulumi.get(self, "parameter_key")
+
+    @property
+    @pulumi.getter(name="parameterValue")
+    def parameter_value(self) -> str:
+        """
+        Priority parameter value.
+        """
+        return pulumi.get(self, "parameter_value")
+
+
+@pulumi.output_type
+class GetTemplateScratchesScratchSourceResourceResult(dict):
+    def __init__(__self__, *,
+                 resource_id: str,
+                 resource_type: str):
+        """
+        :param str resource_id: The ID of the Source Resource.
+        :param str resource_type: The type of the Source resource.
+        """
+        pulumi.set(__self__, "resource_id", resource_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> str:
+        """
+        The ID of the Source Resource.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> str:
+        """
+        The type of the Source resource.
+        """
+        return pulumi.get(self, "resource_type")
+
+
+@pulumi.output_type
+class GetTemplateScratchesScratchSourceResourceGroupResult(dict):
+    def __init__(__self__, *,
+                 resource_group_id: str,
+                 resource_type_filters: Sequence[str]):
+        """
+        :param str resource_group_id: The ID of the Source Resource Group.
+        :param Sequence[str] resource_type_filters: Source resource type filter list.
+        """
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "resource_type_filters", resource_type_filters)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the Source Resource Group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="resourceTypeFilters")
+    def resource_type_filters(self) -> Sequence[str]:
+        """
+        Source resource type filter list.
+        """
+        return pulumi.get(self, "resource_type_filters")
+
+
+@pulumi.output_type
+class GetTemplateScratchesScratchSourceTagResult(dict):
+    def __init__(__self__, *,
+                 resource_tags: Mapping[str, Any],
+                 resource_type_filters: Sequence[str]):
+        """
+        :param Mapping[str, Any] resource_tags: Source label.
+        :param Sequence[str] resource_type_filters: Source resource type filter list.
+        """
+        pulumi.set(__self__, "resource_tags", resource_tags)
+        pulumi.set(__self__, "resource_type_filters", resource_type_filters)
+
+    @property
+    @pulumi.getter(name="resourceTags")
+    def resource_tags(self) -> Mapping[str, Any]:
+        """
+        Source label.
+        """
+        return pulumi.get(self, "resource_tags")
+
+    @property
+    @pulumi.getter(name="resourceTypeFilters")
+    def resource_type_filters(self) -> Sequence[str]:
+        """
+        Source resource type filter list.
+        """
+        return pulumi.get(self, "resource_type_filters")
+
+
+@pulumi.output_type
+class GetTemplateScratchesScratchStackResult(dict):
+    def __init__(__self__, *,
+                 stack_id: str):
+        """
+        :param str stack_id: The ID of the Resource stack.
+        """
+        pulumi.set(__self__, "stack_id", stack_id)
+
+    @property
+    @pulumi.getter(name="stackId")
+    def stack_id(self) -> str:
+        """
+        The ID of the Resource stack.
+        """
+        return pulumi.get(self, "stack_id")
 
 
 @pulumi.output_type

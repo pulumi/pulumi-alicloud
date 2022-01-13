@@ -1714,6 +1714,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "dns/customLine",
+  "fqn": "pulumi_alicloud.dns",
+  "classes": {
+   "alicloud:dns/customLine:CustomLine": "CustomLine"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "dns/ddosBgpInstance",
   "fqn": "pulumi_alicloud.dns",
   "classes": {
@@ -1766,6 +1774,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.dns",
   "classes": {
    "alicloud:dns/group:Group": "Group"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "dns/gtmInstance",
+  "fqn": "pulumi_alicloud.dns",
+  "classes": {
+   "alicloud:dns/gtmInstance:GtmInstance": "GtmInstance"
   }
  },
  {
@@ -3898,6 +3914,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "ros/templateScratch",
+  "fqn": "pulumi_alicloud.ros",
+  "classes": {
+   "alicloud:ros/templateScratch:TemplateScratch": "TemplateScratch"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "sae/application",
   "fqn": "pulumi_alicloud.sae",
   "classes": {
@@ -4398,6 +4422,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.vpc",
   "classes": {
    "alicloud:vpc/trafficMirrorSession:TrafficMirrorSession": "TrafficMirrorSession"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "vpc/vbrHa",
+  "fqn": "pulumi_alicloud.vpc",
+  "classes": {
+   "alicloud:vpc/vbrHa:VbrHa": "VbrHa"
   }
  },
  {

@@ -14,13 +14,16 @@ namespace Pulumi.AliCloud.Cen.Outputs
     public sealed class GetTransitRoutersTransitRouterResult
     {
         /// <summary>
-        /// UID of the Aliyun.
+        /// The UID of the Aliyun.
         /// </summary>
         public readonly string AliUid;
         /// <summary>
-        /// ID of the CEN instance.
+        /// The ID of the CEN instance.
         /// </summary>
         public readonly string CenId;
+        /// <summary>
+        /// The ID of the resource, It is formatted to `&lt;cen_id&gt;:&lt;transit_router_id&gt;`. **NOTE:** Before 1.151.0, It is formatted to `&lt;transit_router_id&gt;`.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
@@ -31,7 +34,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string TransitRouterDescription;
         /// <summary>
-        /// ID of the transit router.
+        /// The ID of the transit router.
         /// </summary>
         public readonly string TransitRouterId;
         /// <summary>
@@ -39,7 +42,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string TransitRouterName;
         /// <summary>
-        /// Type of the transit router.
+        /// The Type of the transit router.
         /// </summary>
         public readonly string Type;
         /// <summary>

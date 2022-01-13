@@ -58,7 +58,8 @@ namespace Pulumi.AliCloud.Rds
     ///         });
     ///         var account = new AliCloud.Rds.RdsAccount("account", new AliCloud.Rds.RdsAccountArgs
     ///         {
-    ///             InstanceId = instance.Id,
+    ///             DbInstanceId = instance.Id,
+    ///             AccountName = "tftestnormal12",
     ///             AccountPassword = "Test12345",
     ///         });
     ///     }
@@ -109,9 +110,15 @@ namespace Pulumi.AliCloud.Rds
         [Output("dbInstanceId")]
         public Output<string> DbInstanceId { get; private set; } = null!;
 
+        /// <summary>
+        /// The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
+        /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
@@ -127,9 +134,15 @@ namespace Pulumi.AliCloud.Rds
         [Output("kmsEncryptionContext")]
         public Output<ImmutableDictionary<string, object>?> KmsEncryptionContext { get; private set; } = null!;
 
+        /// <summary>
+        /// The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
 
@@ -139,6 +152,9 @@ namespace Pulumi.AliCloud.Rds
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+        /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
@@ -220,9 +236,15 @@ namespace Pulumi.AliCloud.Rds
         [Input("dbInstanceId")]
         public Input<string>? DbInstanceId { get; set; }
 
+        /// <summary>
+        /// The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
+        /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
@@ -244,12 +266,21 @@ namespace Pulumi.AliCloud.Rds
             set => _kmsEncryptionContext = value;
         }
 
+        /// <summary>
+        /// The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
+        /// <summary>
+        /// The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
@@ -292,9 +323,15 @@ namespace Pulumi.AliCloud.Rds
         [Input("dbInstanceId")]
         public Input<string>? DbInstanceId { get; set; }
 
+        /// <summary>
+        /// The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
+        /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
@@ -316,9 +353,15 @@ namespace Pulumi.AliCloud.Rds
             set => _kmsEncryptionContext = value;
         }
 
+        /// <summary>
+        /// The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
@@ -328,6 +371,9 @@ namespace Pulumi.AliCloud.Rds
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        /// <summary>
+        /// The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

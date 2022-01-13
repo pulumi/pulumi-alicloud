@@ -63,6 +63,7 @@ export * from "./trafficMirrorFilter";
 export * from "./trafficMirrorFilterEgressRule";
 export * from "./trafficMirrorFilterIngressRule";
 export * from "./trafficMirrorSession";
+export * from "./vbrHa";
 
 // Import resources to register:
 import { CommonBandwithPackage } from "./commonBandwithPackage";
@@ -96,6 +97,7 @@ import { TrafficMirrorFilter } from "./trafficMirrorFilter";
 import { TrafficMirrorFilterEgressRule } from "./trafficMirrorFilterEgressRule";
 import { TrafficMirrorFilterIngressRule } from "./trafficMirrorFilterIngressRule";
 import { TrafficMirrorSession } from "./trafficMirrorSession";
+import { VbrHa } from "./vbrHa";
 
 const _module = {
     version: utilities.getVersion(),
@@ -163,6 +165,8 @@ const _module = {
                 return new TrafficMirrorFilterIngressRule(name, <any>undefined, { urn })
             case "alicloud:vpc/trafficMirrorSession:TrafficMirrorSession":
                 return new TrafficMirrorSession(name, <any>undefined, { urn })
+            case "alicloud:vpc/vbrHa:VbrHa":
+                return new VbrHa(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -199,3 +203,4 @@ pulumi.runtime.registerResourceModule("alicloud", "vpc/trafficMirrorFilter", _mo
 pulumi.runtime.registerResourceModule("alicloud", "vpc/trafficMirrorFilterEgressRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/trafficMirrorFilterIngressRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/trafficMirrorSession", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/vbrHa", _module)

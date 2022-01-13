@@ -10,67 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
-    /// This resouce used to create a dedicated host and store its initial version. For information about Aliecs Dedicated Host and how to use it, see [What is Resource Aliecs Dedicated Host](https://www.alibabacloud.com/help/doc-detail/134238.htm).
-    /// 
-    /// &gt; **NOTE:** Available in 1.91.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new AliCloud.Ecs.DedicatedHost("default", new AliCloud.Ecs.DedicatedHostArgs
-    ///         {
-    ///             DedicatedHostName = "dedicated_host_name",
-    ///             DedicatedHostType = "ddh.g5",
-    ///             Description = "From_Terraform",
-    ///             Tags = 
-    ///             {
-    ///                 { "Create", "Terraform" },
-    ///                 { "For", "DDH" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// Create Prepaid DDH
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new AliCloud.Ecs.DedicatedHost("default", new AliCloud.Ecs.DedicatedHostArgs
-    ///         {
-    ///             DedicatedHostName = "dedicated_host_name",
-    ///             DedicatedHostType = "ddh.g5",
-    ///             Description = "From_Terraform",
-    ///             ExpiredTime = "1",
-    ///             PaymentType = "PrePaid",
-    ///             SaleCycle = "Month",
-    ///             Tags = 
-    ///             {
-    ///                 { "Create", "Terraform" },
-    ///                 { "For", "DDH" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Ecs dedicated host can be imported using the id, e.g.
@@ -98,7 +37,7 @@ namespace Pulumi.AliCloud.Ecs
         /// The automatic release time of the dedicated host. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
         /// </summary>
         [Output("autoReleaseTime")]
-        public Output<string?> AutoReleaseTime { get; private set; } = null!;
+        public Output<string> AutoReleaseTime { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether to automatically renew the subscription dedicated host.
@@ -176,7 +115,7 @@ namespace Pulumi.AliCloud.Ecs
         /// The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
         /// </summary>
         [Output("paymentType")]
-        public Output<string?> PaymentType { get; private set; } = null!;
+        public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the resource group to which the dedicated host belongs.

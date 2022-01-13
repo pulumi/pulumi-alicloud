@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
         /// </summary>
         public readonly string Location;
         /// <summary>
-        /// gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`.
+        /// gateway payment type. The Payment type of gateway. The valid value: `PayAsYouGo`, `Subscription`.
         /// </summary>
         public readonly string PaymentType;
         /// <summary>

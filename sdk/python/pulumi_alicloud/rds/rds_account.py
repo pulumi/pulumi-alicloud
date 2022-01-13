@@ -34,8 +34,13 @@ class RdsAccountArgs:
                `Normal`: Common privilege.
                `Super`: High privilege.
         :param pulumi.Input[str] db_instance_id: The Id of instance in which account belongs.
+        :param pulumi.Input[str] description: The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+        :param pulumi.Input[str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+        :param pulumi.Input[str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        :param pulumi.Input[str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
         """
         if account_description is not None:
             pulumi.set(__self__, "account_description", account_description)
@@ -142,6 +147,9 @@ class RdsAccountArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -151,6 +159,9 @@ class RdsAccountArgs:
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
+        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -184,6 +195,9 @@ class RdsAccountArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -193,6 +207,9 @@ class RdsAccountArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -202,6 +219,9 @@ class RdsAccountArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -234,9 +254,14 @@ class _RdsAccountState:
                `Normal`: Common privilege.
                `Super`: High privilege.
         :param pulumi.Input[str] db_instance_id: The Id of instance in which account belongs.
+        :param pulumi.Input[str] description: The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+        :param pulumi.Input[str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+        :param pulumi.Input[str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Available`, `Unavailable`.
+        :param pulumi.Input[str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
         """
         if account_description is not None:
             pulumi.set(__self__, "account_description", account_description)
@@ -345,6 +370,9 @@ class _RdsAccountState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -354,6 +382,9 @@ class _RdsAccountState:
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
+        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -387,6 +418,9 @@ class _RdsAccountState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -396,6 +430,9 @@ class _RdsAccountState:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -417,6 +454,9 @@ class _RdsAccountState:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -481,7 +521,8 @@ class RdsAccount(pulumi.CustomResource):
             vswitch_id=default_switch.id,
             instance_name=name)
         account = alicloud.rds.RdsAccount("account",
-            instance_id=instance.id,
+            db_instance_id=instance.id,
+            account_name="tftestnormal12",
             account_password="Test12345")
         ```
 
@@ -502,8 +543,13 @@ class RdsAccount(pulumi.CustomResource):
                `Normal`: Common privilege.
                `Super`: High privilege.
         :param pulumi.Input[str] db_instance_id: The Id of instance in which account belongs.
+        :param pulumi.Input[str] description: The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+        :param pulumi.Input[str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+        :param pulumi.Input[str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        :param pulumi.Input[str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
         """
         ...
     @overload
@@ -550,7 +596,8 @@ class RdsAccount(pulumi.CustomResource):
             vswitch_id=default_switch.id,
             instance_name=name)
         account = alicloud.rds.RdsAccount("account",
-            instance_id=instance.id,
+            db_instance_id=instance.id,
+            account_name="tftestnormal12",
             account_password="Test12345")
         ```
 
@@ -666,9 +713,14 @@ class RdsAccount(pulumi.CustomResource):
                `Normal`: Common privilege.
                `Super`: High privilege.
         :param pulumi.Input[str] db_instance_id: The Id of instance in which account belongs.
+        :param pulumi.Input[str] description: The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+        :param pulumi.Input[str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+        :param pulumi.Input[str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Available`, `Unavailable`.
+        :param pulumi.Input[str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -734,11 +786,17 @@ class RdsAccount(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
+        """
+        The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
+        """
+        The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
+        """
         return pulumi.get(self, "instance_id")
 
     @property
@@ -760,11 +818,17 @@ class RdsAccount(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def password(self) -> pulumi.Output[str]:
+        """
+        The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        """
         return pulumi.get(self, "password")
 
     @property
@@ -778,5 +842,8 @@ class RdsAccount(pulumi.CustomResource):
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
+        """
+        The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+        """
         return pulumi.get(self, "type")
 

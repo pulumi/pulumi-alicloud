@@ -203,11 +203,11 @@ type EcsLaunchTemplate struct {
 	Userdata pulumi.StringOutput `pulumi:"userdata"`
 	// The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	VersionDescription pulumi.StringPtrOutput `pulumi:"versionDescription"`
-	VpcId              pulumi.StringPtrOutput `pulumi:"vpcId"`
+	VpcId              pulumi.StringOutput    `pulumi:"vpcId"`
 	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The zone ID of the instance.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewEcsLaunchTemplate registers a new resource with the given unique name, arguments, and options.

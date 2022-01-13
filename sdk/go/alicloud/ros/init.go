@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &StackInstance{}
 	case "alicloud:ros/template:Template":
 		r = &Template{}
+	case "alicloud:ros/templateScratch:TemplateScratch":
+		r = &TemplateScratch{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -67,6 +69,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ros/template",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ros/templateScratch",
 		&module{version},
 	)
 }

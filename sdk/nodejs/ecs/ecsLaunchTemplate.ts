@@ -293,7 +293,7 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
      * The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
     public readonly versionDescription!: pulumi.Output<string | undefined>;
-    public readonly vpcId!: pulumi.Output<string | undefined>;
+    public readonly vpcId!: pulumi.Output<string>;
     /**
      * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
      */
@@ -301,7 +301,7 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
     /**
      * The zone ID of the instance.
      */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a EcsLaunchTemplate resource with the given unique name, arguments, and options.

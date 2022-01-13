@@ -44,6 +44,8 @@ class ScalingConfigurationArgs:
                  scaling_configuration_name: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]] = None,
+                 spot_strategy: Optional[pulumi.Input[str]] = None,
                  substitute: Optional[pulumi.Input[str]] = None,
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
@@ -84,6 +86,8 @@ class ScalingConfigurationArgs:
         :param pulumi.Input[str] scaling_configuration_name: Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
         :param pulumi.Input[str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]] spot_price_limits: Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+        :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
         :param pulumi.Input[str] substitute: The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The id of auto snapshot policy for system disk.
         :param pulumi.Input[str] system_disk_category: Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
@@ -159,6 +163,10 @@ class ScalingConfigurationArgs:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if spot_price_limits is not None:
+            pulumi.set(__self__, "spot_price_limits", spot_price_limits)
+        if spot_strategy is not None:
+            pulumi.set(__self__, "spot_strategy", spot_strategy)
         if substitute is not None:
             pulumi.set(__self__, "substitute", substitute)
         if system_disk_auto_snapshot_policy_id is not None:
@@ -527,6 +535,30 @@ class ScalingConfigurationArgs:
         pulumi.set(self, "security_group_ids", value)
 
     @property
+    @pulumi.getter(name="spotPriceLimits")
+    def spot_price_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]]:
+        """
+        Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+        """
+        return pulumi.get(self, "spot_price_limits")
+
+    @spot_price_limits.setter
+    def spot_price_limits(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]]):
+        pulumi.set(self, "spot_price_limits", value)
+
+    @property
+    @pulumi.getter(name="spotStrategy")
+    def spot_strategy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
+        """
+        return pulumi.get(self, "spot_strategy")
+
+    @spot_strategy.setter
+    def spot_strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spot_strategy", value)
+
+    @property
     @pulumi.getter
     def substitute(self) -> Optional[pulumi.Input[str]]:
         """
@@ -669,6 +701,8 @@ class _ScalingConfigurationState:
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]] = None,
+                 spot_strategy: Optional[pulumi.Input[str]] = None,
                  substitute: Optional[pulumi.Input[str]] = None,
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
@@ -709,6 +743,8 @@ class _ScalingConfigurationState:
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling configuration.
         :param pulumi.Input[str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]] spot_price_limits: Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+        :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
         :param pulumi.Input[str] substitute: The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The id of auto snapshot policy for system disk.
         :param pulumi.Input[str] system_disk_category: Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
@@ -785,6 +821,10 @@ class _ScalingConfigurationState:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if spot_price_limits is not None:
+            pulumi.set(__self__, "spot_price_limits", spot_price_limits)
+        if spot_strategy is not None:
+            pulumi.set(__self__, "spot_strategy", spot_strategy)
         if substitute is not None:
             pulumi.set(__self__, "substitute", substitute)
         if system_disk_auto_snapshot_policy_id is not None:
@@ -1153,6 +1193,30 @@ class _ScalingConfigurationState:
         pulumi.set(self, "security_group_ids", value)
 
     @property
+    @pulumi.getter(name="spotPriceLimits")
+    def spot_price_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]]:
+        """
+        Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+        """
+        return pulumi.get(self, "spot_price_limits")
+
+    @spot_price_limits.setter
+    def spot_price_limits(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]]):
+        pulumi.set(self, "spot_price_limits", value)
+
+    @property
+    @pulumi.getter(name="spotStrategy")
+    def spot_strategy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
+        """
+        return pulumi.get(self, "spot_strategy")
+
+    @spot_strategy.setter
+    def spot_strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spot_strategy", value)
+
+    @property
     @pulumi.getter
     def substitute(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1297,6 +1361,8 @@ class ScalingConfiguration(pulumi.CustomResource):
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationSpotPriceLimitArgs']]]]] = None,
+                 spot_strategy: Optional[pulumi.Input[str]] = None,
                  substitute: Optional[pulumi.Input[str]] = None,
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
@@ -1347,6 +1413,8 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling configuration.
         :param pulumi.Input[str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationSpotPriceLimitArgs']]]] spot_price_limits: Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+        :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
         :param pulumi.Input[str] substitute: The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The id of auto snapshot policy for system disk.
         :param pulumi.Input[str] system_disk_category: Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
@@ -1418,6 +1486,8 @@ class ScalingConfiguration(pulumi.CustomResource):
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationSpotPriceLimitArgs']]]]] = None,
+                 spot_strategy: Optional[pulumi.Input[str]] = None,
                  substitute: Optional[pulumi.Input[str]] = None,
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
@@ -1476,6 +1546,8 @@ class ScalingConfiguration(pulumi.CustomResource):
             __props__.__dict__["scaling_group_id"] = scaling_group_id
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["security_group_ids"] = security_group_ids
+            __props__.__dict__["spot_price_limits"] = spot_price_limits
+            __props__.__dict__["spot_strategy"] = spot_strategy
             __props__.__dict__["substitute"] = substitute
             __props__.__dict__["system_disk_auto_snapshot_policy_id"] = system_disk_auto_snapshot_policy_id
             __props__.__dict__["system_disk_category"] = system_disk_category
@@ -1524,6 +1596,8 @@ class ScalingConfiguration(pulumi.CustomResource):
             scaling_group_id: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationSpotPriceLimitArgs']]]]] = None,
+            spot_strategy: Optional[pulumi.Input[str]] = None,
             substitute: Optional[pulumi.Input[str]] = None,
             system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
             system_disk_category: Optional[pulumi.Input[str]] = None,
@@ -1569,6 +1643,8 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling configuration.
         :param pulumi.Input[str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationSpotPriceLimitArgs']]]] spot_price_limits: Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+        :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
         :param pulumi.Input[str] substitute: The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The id of auto snapshot policy for system disk.
         :param pulumi.Input[str] system_disk_category: Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
@@ -1614,6 +1690,8 @@ class ScalingConfiguration(pulumi.CustomResource):
         __props__.__dict__["scaling_group_id"] = scaling_group_id
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["security_group_ids"] = security_group_ids
+        __props__.__dict__["spot_price_limits"] = spot_price_limits
+        __props__.__dict__["spot_strategy"] = spot_strategy
         __props__.__dict__["substitute"] = substitute
         __props__.__dict__["system_disk_auto_snapshot_policy_id"] = system_disk_auto_snapshot_policy_id
         __props__.__dict__["system_disk_category"] = system_disk_category
@@ -1856,6 +1934,22 @@ class ScalingConfiguration(pulumi.CustomResource):
         List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
         """
         return pulumi.get(self, "security_group_ids")
+
+    @property
+    @pulumi.getter(name="spotPriceLimits")
+    def spot_price_limits(self) -> pulumi.Output[Optional[Sequence['outputs.ScalingConfigurationSpotPriceLimit']]]:
+        """
+        Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+        """
+        return pulumi.get(self, "spot_price_limits")
+
+    @property
+    @pulumi.getter(name="spotStrategy")
+    def spot_strategy(self) -> pulumi.Output[Optional[str]]:
+        """
+        The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
+        """
+        return pulumi.get(self, "spot_strategy")
 
     @property
     @pulumi.getter

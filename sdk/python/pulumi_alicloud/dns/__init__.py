@@ -9,6 +9,7 @@ from .alidns_domain import *
 from .alidns_domain_attachment import *
 from .alidns_instance import *
 from .alidns_record import *
+from .custom_line import *
 from .ddos_bgp_instance import *
 from .ddos_coo_instance import *
 from .dns_domain import *
@@ -19,15 +20,19 @@ from .get_alidns_domain_groups import *
 from .get_alidns_domains import *
 from .get_alidns_instances import *
 from .get_alidns_records import *
+from .get_custom_lines import *
 from .get_domain_groups import *
 from .get_domain_records import *
 from .get_domain_txt_guid import *
 from .get_domains import *
 from .get_groups import *
+from .get_gtm_instances import *
 from .get_instances import *
 from .get_records import *
 from .get_resolution_lines import *
 from .group import *
+from .gtm_instance import *
 from .instance import *
 from .record import *
+from ._inputs import *
 from . import outputs

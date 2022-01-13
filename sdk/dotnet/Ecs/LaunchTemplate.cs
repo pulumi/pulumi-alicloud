@@ -245,7 +245,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> VersionDescription { get; private set; } = null!;
 
         [Output("vpcId")]
-        public Output<string?> VpcId { get; private set; } = null!;
+        public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
         /// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
@@ -257,7 +257,7 @@ namespace Pulumi.AliCloud.Ecs
         /// The zone ID of the instance.
         /// </summary>
         [Output("zoneId")]
-        public Output<string?> ZoneId { get; private set; } = null!;
+        public Output<string> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
