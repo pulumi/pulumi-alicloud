@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CloudAuth
 {
@@ -36,18 +35,13 @@ namespace Pulumi.AliCloud.CloudAuth
         ///             BizName = "example-value",
         ///             BizType = "example-value",
         ///         });
-        ///         var defaultFaceConfigs = Output.Tuple(defaultFaceConfig.Id, defaultFaceConfig.BizName).Apply(values =&gt;
+        ///         var defaultFaceConfigs = AliCloud.CloudAuth.GetFaceConfigs.Invoke(new AliCloud.CloudAuth.GetFaceConfigsInvokeArgs
         ///         {
-        ///             var id = values.Item1;
-        ///             var bizName = values.Item2;
-        ///             return AliCloud.CloudAuth.GetFaceConfigs.InvokeAsync(new AliCloud.CloudAuth.GetFaceConfigsArgs
+        ///             Ids = 
         ///             {
-        ///                 Ids = 
-        ///                 {
-        ///                     id,
-        ///                 },
-        ///                 NameRegex = bizName,
-        ///             });
+        ///                 defaultFaceConfig.Id,
+        ///             },
+        ///             NameRegex = defaultFaceConfig.BizName,
         ///         });
         ///         this.FaceConfig = defaultFaceConfigs.Apply(defaultFaceConfigs =&gt; defaultFaceConfigs.Configs?[0]);
         ///     }
@@ -60,7 +54,7 @@ namespace Pulumi.AliCloud.CloudAuth
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFaceConfigsResult> InvokeAsync(GetFaceConfigsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFaceConfigsResult>("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", args ?? new GetFaceConfigsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFaceConfigsResult>("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", args ?? new GetFaceConfigsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cloudauth Face Configs of the current Alibaba Cloud user.
@@ -86,18 +80,13 @@ namespace Pulumi.AliCloud.CloudAuth
         ///             BizName = "example-value",
         ///             BizType = "example-value",
         ///         });
-        ///         var defaultFaceConfigs = Output.Tuple(defaultFaceConfig.Id, defaultFaceConfig.BizName).Apply(values =&gt;
+        ///         var defaultFaceConfigs = AliCloud.CloudAuth.GetFaceConfigs.Invoke(new AliCloud.CloudAuth.GetFaceConfigsInvokeArgs
         ///         {
-        ///             var id = values.Item1;
-        ///             var bizName = values.Item2;
-        ///             return AliCloud.CloudAuth.GetFaceConfigs.InvokeAsync(new AliCloud.CloudAuth.GetFaceConfigsArgs
+        ///             Ids = 
         ///             {
-        ///                 Ids = 
-        ///                 {
-        ///                     id,
-        ///                 },
-        ///                 NameRegex = bizName,
-        ///             });
+        ///                 defaultFaceConfig.Id,
+        ///             },
+        ///             NameRegex = defaultFaceConfig.BizName,
         ///         });
         ///         this.FaceConfig = defaultFaceConfigs.Apply(defaultFaceConfigs =&gt; defaultFaceConfigs.Configs?[0]);
         ///     }
@@ -110,7 +99,7 @@ namespace Pulumi.AliCloud.CloudAuth
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetFaceConfigsResult> Invoke(GetFaceConfigsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFaceConfigsResult>("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", args ?? new GetFaceConfigsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetFaceConfigsResult>("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", args ?? new GetFaceConfigsInvokeArgs(), options.WithDefaults());
     }
 
 

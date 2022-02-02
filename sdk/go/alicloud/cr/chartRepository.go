@@ -188,7 +188,7 @@ type ChartRepositoryInput interface {
 }
 
 func (*ChartRepository) ElementType() reflect.Type {
-	return reflect.TypeOf((*ChartRepository)(nil))
+	return reflect.TypeOf((**ChartRepository)(nil)).Elem()
 }
 
 func (i *ChartRepository) ToChartRepositoryOutput() ChartRepositoryOutput {
@@ -197,35 +197,6 @@ func (i *ChartRepository) ToChartRepositoryOutput() ChartRepositoryOutput {
 
 func (i *ChartRepository) ToChartRepositoryOutputWithContext(ctx context.Context) ChartRepositoryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ChartRepositoryOutput)
-}
-
-func (i *ChartRepository) ToChartRepositoryPtrOutput() ChartRepositoryPtrOutput {
-	return i.ToChartRepositoryPtrOutputWithContext(context.Background())
-}
-
-func (i *ChartRepository) ToChartRepositoryPtrOutputWithContext(ctx context.Context) ChartRepositoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ChartRepositoryPtrOutput)
-}
-
-type ChartRepositoryPtrInput interface {
-	pulumi.Input
-
-	ToChartRepositoryPtrOutput() ChartRepositoryPtrOutput
-	ToChartRepositoryPtrOutputWithContext(ctx context.Context) ChartRepositoryPtrOutput
-}
-
-type chartRepositoryPtrType ChartRepositoryArgs
-
-func (*chartRepositoryPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ChartRepository)(nil))
-}
-
-func (i *chartRepositoryPtrType) ToChartRepositoryPtrOutput() ChartRepositoryPtrOutput {
-	return i.ToChartRepositoryPtrOutputWithContext(context.Background())
-}
-
-func (i *chartRepositoryPtrType) ToChartRepositoryPtrOutputWithContext(ctx context.Context) ChartRepositoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ChartRepositoryPtrOutput)
 }
 
 // ChartRepositoryArrayInput is an input type that accepts ChartRepositoryArray and ChartRepositoryArrayOutput values.
@@ -281,7 +252,7 @@ func (i ChartRepositoryMap) ToChartRepositoryMapOutputWithContext(ctx context.Co
 type ChartRepositoryOutput struct{ *pulumi.OutputState }
 
 func (ChartRepositoryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ChartRepository)(nil))
+	return reflect.TypeOf((**ChartRepository)(nil)).Elem()
 }
 
 func (o ChartRepositoryOutput) ToChartRepositoryOutput() ChartRepositoryOutput {
@@ -292,44 +263,10 @@ func (o ChartRepositoryOutput) ToChartRepositoryOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o ChartRepositoryOutput) ToChartRepositoryPtrOutput() ChartRepositoryPtrOutput {
-	return o.ToChartRepositoryPtrOutputWithContext(context.Background())
-}
-
-func (o ChartRepositoryOutput) ToChartRepositoryPtrOutputWithContext(ctx context.Context) ChartRepositoryPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ChartRepository) *ChartRepository {
-		return &v
-	}).(ChartRepositoryPtrOutput)
-}
-
-type ChartRepositoryPtrOutput struct{ *pulumi.OutputState }
-
-func (ChartRepositoryPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ChartRepository)(nil))
-}
-
-func (o ChartRepositoryPtrOutput) ToChartRepositoryPtrOutput() ChartRepositoryPtrOutput {
-	return o
-}
-
-func (o ChartRepositoryPtrOutput) ToChartRepositoryPtrOutputWithContext(ctx context.Context) ChartRepositoryPtrOutput {
-	return o
-}
-
-func (o ChartRepositoryPtrOutput) Elem() ChartRepositoryOutput {
-	return o.ApplyT(func(v *ChartRepository) ChartRepository {
-		if v != nil {
-			return *v
-		}
-		var ret ChartRepository
-		return ret
-	}).(ChartRepositoryOutput)
-}
-
 type ChartRepositoryArrayOutput struct{ *pulumi.OutputState }
 
 func (ChartRepositoryArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ChartRepository)(nil))
+	return reflect.TypeOf((*[]*ChartRepository)(nil)).Elem()
 }
 
 func (o ChartRepositoryArrayOutput) ToChartRepositoryArrayOutput() ChartRepositoryArrayOutput {
@@ -341,15 +278,15 @@ func (o ChartRepositoryArrayOutput) ToChartRepositoryArrayOutputWithContext(ctx 
 }
 
 func (o ChartRepositoryArrayOutput) Index(i pulumi.IntInput) ChartRepositoryOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ChartRepository {
-		return vs[0].([]ChartRepository)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ChartRepository {
+		return vs[0].([]*ChartRepository)[vs[1].(int)]
 	}).(ChartRepositoryOutput)
 }
 
 type ChartRepositoryMapOutput struct{ *pulumi.OutputState }
 
 func (ChartRepositoryMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ChartRepository)(nil))
+	return reflect.TypeOf((*map[string]*ChartRepository)(nil)).Elem()
 }
 
 func (o ChartRepositoryMapOutput) ToChartRepositoryMapOutput() ChartRepositoryMapOutput {
@@ -361,18 +298,16 @@ func (o ChartRepositoryMapOutput) ToChartRepositoryMapOutputWithContext(ctx cont
 }
 
 func (o ChartRepositoryMapOutput) MapIndex(k pulumi.StringInput) ChartRepositoryOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ChartRepository {
-		return vs[0].(map[string]ChartRepository)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ChartRepository {
+		return vs[0].(map[string]*ChartRepository)[vs[1].(string)]
 	}).(ChartRepositoryOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ChartRepositoryInput)(nil)).Elem(), &ChartRepository{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ChartRepositoryPtrInput)(nil)).Elem(), &ChartRepository{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChartRepositoryArrayInput)(nil)).Elem(), ChartRepositoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChartRepositoryMapInput)(nil)).Elem(), ChartRepositoryMap{})
 	pulumi.RegisterOutputType(ChartRepositoryOutput{})
-	pulumi.RegisterOutputType(ChartRepositoryPtrOutput{})
 	pulumi.RegisterOutputType(ChartRepositoryArrayOutput{})
 	pulumi.RegisterOutputType(ChartRepositoryMapOutput{})
 }

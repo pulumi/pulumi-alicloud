@@ -77,15 +77,15 @@ export class FirewallRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: FirewallRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FirewallRuleArgs | FirewallRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallRuleState | undefined;
-            inputs["firewallRuleId"] = state ? state.firewallRuleId : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["remark"] = state ? state.remark : undefined;
-            inputs["ruleProtocol"] = state ? state.ruleProtocol : undefined;
+            resourceInputs["firewallRuleId"] = state ? state.firewallRuleId : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["remark"] = state ? state.remark : undefined;
+            resourceInputs["ruleProtocol"] = state ? state.ruleProtocol : undefined;
         } else {
             const args = argsOrState as FirewallRuleArgs | undefined;
             if ((!args || args.instanceId === undefined) && !opts.urn) {
@@ -97,16 +97,14 @@ export class FirewallRule extends pulumi.CustomResource {
             if ((!args || args.ruleProtocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ruleProtocol'");
             }
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["remark"] = args ? args.remark : undefined;
-            inputs["ruleProtocol"] = args ? args.ruleProtocol : undefined;
-            inputs["firewallRuleId"] = undefined /*out*/;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["remark"] = args ? args.remark : undefined;
+            resourceInputs["ruleProtocol"] = args ? args.ruleProtocol : undefined;
+            resourceInputs["firewallRuleId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(FirewallRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(FirewallRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

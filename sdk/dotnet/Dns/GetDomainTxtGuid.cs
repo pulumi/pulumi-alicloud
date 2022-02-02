@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dns
 {
@@ -48,7 +47,7 @@ namespace Pulumi.AliCloud.Dns
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDomainTxtGuidResult> InvokeAsync(GetDomainTxtGuidArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainTxtGuidResult>("alicloud:dns/getDomainTxtGuid:getDomainTxtGuid", args ?? new GetDomainTxtGuidArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainTxtGuidResult>("alicloud:dns/getDomainTxtGuid:getDomainTxtGuid", args ?? new GetDomainTxtGuidArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides the generation of txt records to realize the retrieval and verification of domain names.
@@ -86,7 +85,7 @@ namespace Pulumi.AliCloud.Dns
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDomainTxtGuidResult> Invoke(GetDomainTxtGuidInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDomainTxtGuidResult>("alicloud:dns/getDomainTxtGuid:getDomainTxtGuid", args ?? new GetDomainTxtGuidInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDomainTxtGuidResult>("alicloud:dns/getDomainTxtGuid:getDomainTxtGuid", args ?? new GetDomainTxtGuidInvokeArgs(), options.WithDefaults());
     }
 
 

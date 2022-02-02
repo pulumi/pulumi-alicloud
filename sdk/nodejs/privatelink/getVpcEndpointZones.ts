@@ -29,9 +29,7 @@ export function getVpcEndpointZones(args: GetVpcEndpointZonesArgs, opts?: pulumi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:privatelink/getVpcEndpointZones:getVpcEndpointZones", {
         "endpointId": args.endpointId,
         "outputFile": args.outputFile,

@@ -34,7 +34,7 @@ import (
 // 		if param := cfg.Get("name"); param != "" {
 // 			name = param
 // 		}
-// 		_, err := mhub.NewProduct(ctx, "_default", &mhub.ProductArgs{
+// 		_, err := mhub.NewProduct(ctx, "default", &mhub.ProductArgs{
 // 			ProductName: pulumi.String(name),
 // 		})
 // 		if err != nil {

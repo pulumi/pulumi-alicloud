@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.SimpleApplicationServer
 {
@@ -78,7 +77,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerSnapshotsResult> InvokeAsync(GetServerSnapshotsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServerSnapshotsResult>("alicloud:simpleapplicationserver/getServerSnapshots:getServerSnapshots", args ?? new GetServerSnapshotsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServerSnapshotsResult>("alicloud:simpleapplicationserver/getServerSnapshots:getServerSnapshots", args ?? new GetServerSnapshotsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Simple Application Server Snapshots of the current Alibaba Cloud user.
@@ -146,7 +145,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServerSnapshotsResult> Invoke(GetServerSnapshotsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServerSnapshotsResult>("alicloud:simpleapplicationserver/getServerSnapshots:getServerSnapshots", args ?? new GetServerSnapshotsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetServerSnapshotsResult>("alicloud:simpleapplicationserver/getServerSnapshots:getServerSnapshots", args ?? new GetServerSnapshotsInvokeArgs(), options.WithDefaults());
     }
 
 

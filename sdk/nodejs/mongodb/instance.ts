@@ -172,38 +172,38 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            inputs["accountPassword"] = state ? state.accountPassword : undefined;
-            inputs["autoRenew"] = state ? state.autoRenew : undefined;
-            inputs["backupPeriods"] = state ? state.backupPeriods : undefined;
-            inputs["backupTime"] = state ? state.backupTime : undefined;
-            inputs["dbInstanceClass"] = state ? state.dbInstanceClass : undefined;
-            inputs["dbInstanceStorage"] = state ? state.dbInstanceStorage : undefined;
-            inputs["engineVersion"] = state ? state.engineVersion : undefined;
-            inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
-            inputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
-            inputs["maintainEndTime"] = state ? state.maintainEndTime : undefined;
-            inputs["maintainStartTime"] = state ? state.maintainStartTime : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["orderType"] = state ? state.orderType : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["replicaSetName"] = state ? state.replicaSetName : undefined;
-            inputs["replicaSets"] = state ? state.replicaSets : undefined;
-            inputs["replicationFactor"] = state ? state.replicationFactor : undefined;
-            inputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
-            inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            inputs["securityIpLists"] = state ? state.securityIpLists : undefined;
-            inputs["sslAction"] = state ? state.sslAction : undefined;
-            inputs["sslStatus"] = state ? state.sslStatus : undefined;
-            inputs["storageEngine"] = state ? state.storageEngine : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["tdeStatus"] = state ? state.tdeStatus : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountPassword"] = state ? state.accountPassword : undefined;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["backupPeriods"] = state ? state.backupPeriods : undefined;
+            resourceInputs["backupTime"] = state ? state.backupTime : undefined;
+            resourceInputs["dbInstanceClass"] = state ? state.dbInstanceClass : undefined;
+            resourceInputs["dbInstanceStorage"] = state ? state.dbInstanceStorage : undefined;
+            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
+            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
+            resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
+            resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
+            resourceInputs["maintainEndTime"] = state ? state.maintainEndTime : undefined;
+            resourceInputs["maintainStartTime"] = state ? state.maintainStartTime : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["orderType"] = state ? state.orderType : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["replicaSetName"] = state ? state.replicaSetName : undefined;
+            resourceInputs["replicaSets"] = state ? state.replicaSets : undefined;
+            resourceInputs["replicationFactor"] = state ? state.replicationFactor : undefined;
+            resourceInputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
+            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["securityIpLists"] = state ? state.securityIpLists : undefined;
+            resourceInputs["sslAction"] = state ? state.sslAction : undefined;
+            resourceInputs["sslStatus"] = state ? state.sslStatus : undefined;
+            resourceInputs["storageEngine"] = state ? state.storageEngine : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["tdeStatus"] = state ? state.tdeStatus : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.dbInstanceClass === undefined) && !opts.urn) {
@@ -215,39 +215,37 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.engineVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'engineVersion'");
             }
-            inputs["accountPassword"] = args ? args.accountPassword : undefined;
-            inputs["autoRenew"] = args ? args.autoRenew : undefined;
-            inputs["backupPeriods"] = args ? args.backupPeriods : undefined;
-            inputs["backupTime"] = args ? args.backupTime : undefined;
-            inputs["dbInstanceClass"] = args ? args.dbInstanceClass : undefined;
-            inputs["dbInstanceStorage"] = args ? args.dbInstanceStorage : undefined;
-            inputs["engineVersion"] = args ? args.engineVersion : undefined;
-            inputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            inputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
-            inputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
-            inputs["maintainEndTime"] = args ? args.maintainEndTime : undefined;
-            inputs["maintainStartTime"] = args ? args.maintainStartTime : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["orderType"] = args ? args.orderType : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["replicationFactor"] = args ? args.replicationFactor : undefined;
-            inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            inputs["securityIpLists"] = args ? args.securityIpLists : undefined;
-            inputs["sslAction"] = args ? args.sslAction : undefined;
-            inputs["storageEngine"] = args ? args.storageEngine : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["tdeStatus"] = args ? args.tdeStatus : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["replicaSetName"] = undefined /*out*/;
-            inputs["replicaSets"] = undefined /*out*/;
-            inputs["retentionPeriod"] = undefined /*out*/;
-            inputs["sslStatus"] = undefined /*out*/;
+            resourceInputs["accountPassword"] = args ? args.accountPassword : undefined;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["backupPeriods"] = args ? args.backupPeriods : undefined;
+            resourceInputs["backupTime"] = args ? args.backupTime : undefined;
+            resourceInputs["dbInstanceClass"] = args ? args.dbInstanceClass : undefined;
+            resourceInputs["dbInstanceStorage"] = args ? args.dbInstanceStorage : undefined;
+            resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
+            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
+            resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
+            resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
+            resourceInputs["maintainEndTime"] = args ? args.maintainEndTime : undefined;
+            resourceInputs["maintainStartTime"] = args ? args.maintainStartTime : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["orderType"] = args ? args.orderType : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["replicationFactor"] = args ? args.replicationFactor : undefined;
+            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["securityIpLists"] = args ? args.securityIpLists : undefined;
+            resourceInputs["sslAction"] = args ? args.sslAction : undefined;
+            resourceInputs["storageEngine"] = args ? args.storageEngine : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["tdeStatus"] = args ? args.tdeStatus : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["replicaSetName"] = undefined /*out*/;
+            resourceInputs["replicaSets"] = undefined /*out*/;
+            resourceInputs["retentionPeriod"] = undefined /*out*/;
+            resourceInputs["sslStatus"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Instance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

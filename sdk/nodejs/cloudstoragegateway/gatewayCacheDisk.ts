@@ -122,16 +122,16 @@ export class GatewayCacheDisk extends pulumi.CustomResource {
      */
     constructor(name: string, args: GatewayCacheDiskArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GatewayCacheDiskArgs | GatewayCacheDiskState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayCacheDiskState | undefined;
-            inputs["cacheDiskCategory"] = state ? state.cacheDiskCategory : undefined;
-            inputs["cacheDiskSizeInGb"] = state ? state.cacheDiskSizeInGb : undefined;
-            inputs["cacheId"] = state ? state.cacheId : undefined;
-            inputs["gatewayId"] = state ? state.gatewayId : undefined;
-            inputs["localFilePath"] = state ? state.localFilePath : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["cacheDiskCategory"] = state ? state.cacheDiskCategory : undefined;
+            resourceInputs["cacheDiskSizeInGb"] = state ? state.cacheDiskSizeInGb : undefined;
+            resourceInputs["cacheId"] = state ? state.cacheId : undefined;
+            resourceInputs["gatewayId"] = state ? state.gatewayId : undefined;
+            resourceInputs["localFilePath"] = state ? state.localFilePath : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as GatewayCacheDiskArgs | undefined;
             if ((!args || args.cacheDiskSizeInGb === undefined) && !opts.urn) {
@@ -140,17 +140,15 @@ export class GatewayCacheDisk extends pulumi.CustomResource {
             if ((!args || args.gatewayId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'gatewayId'");
             }
-            inputs["cacheDiskCategory"] = args ? args.cacheDiskCategory : undefined;
-            inputs["cacheDiskSizeInGb"] = args ? args.cacheDiskSizeInGb : undefined;
-            inputs["gatewayId"] = args ? args.gatewayId : undefined;
-            inputs["cacheId"] = undefined /*out*/;
-            inputs["localFilePath"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["cacheDiskCategory"] = args ? args.cacheDiskCategory : undefined;
+            resourceInputs["cacheDiskSizeInGb"] = args ? args.cacheDiskSizeInGb : undefined;
+            resourceInputs["gatewayId"] = args ? args.gatewayId : undefined;
+            resourceInputs["cacheId"] = undefined /*out*/;
+            resourceInputs["localFilePath"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(GatewayCacheDisk.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(GatewayCacheDisk.__pulumiType, name, resourceInputs, opts);
     }
 }
 

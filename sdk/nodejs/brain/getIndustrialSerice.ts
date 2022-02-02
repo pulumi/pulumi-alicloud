@@ -28,9 +28,7 @@ export function getIndustrialSerice(args?: GetIndustrialSericeArgs, opts?: pulum
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:brain/getIndustrialSerice:getIndustrialSerice", {
         "enable": args.enable,
     }, opts);

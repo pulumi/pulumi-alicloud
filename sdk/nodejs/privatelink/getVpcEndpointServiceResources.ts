@@ -29,9 +29,7 @@ export function getVpcEndpointServiceResources(args: GetVpcEndpointServiceResour
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:privatelink/getVpcEndpointServiceResources:getVpcEndpointServiceResources", {
         "outputFile": args.outputFile,
         "serviceId": args.serviceId,

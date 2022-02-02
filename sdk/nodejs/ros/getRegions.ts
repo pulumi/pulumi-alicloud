@@ -28,9 +28,7 @@ export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ros/getRegions:getRegions", {
         "outputFile": args.outputFile,
     }, opts);

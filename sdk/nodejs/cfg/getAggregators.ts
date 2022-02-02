@@ -31,9 +31,7 @@ export function getAggregators(args?: GetAggregatorsArgs, opts?: pulumi.InvokeOp
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cfg/getAggregators:getAggregators", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,

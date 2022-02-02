@@ -107,38 +107,36 @@ export class EnterpriseUser extends pulumi.CustomResource {
      */
     constructor(name: string, args: EnterpriseUserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EnterpriseUserArgs | EnterpriseUserState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnterpriseUserState | undefined;
-            inputs["maxExecuteCount"] = state ? state.maxExecuteCount : undefined;
-            inputs["maxResultCount"] = state ? state.maxResultCount : undefined;
-            inputs["mobile"] = state ? state.mobile : undefined;
-            inputs["nickName"] = state ? state.nickName : undefined;
-            inputs["roleNames"] = state ? state.roleNames : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tid"] = state ? state.tid : undefined;
-            inputs["uid"] = state ? state.uid : undefined;
-            inputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["maxExecuteCount"] = state ? state.maxExecuteCount : undefined;
+            resourceInputs["maxResultCount"] = state ? state.maxResultCount : undefined;
+            resourceInputs["mobile"] = state ? state.mobile : undefined;
+            resourceInputs["nickName"] = state ? state.nickName : undefined;
+            resourceInputs["roleNames"] = state ? state.roleNames : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tid"] = state ? state.tid : undefined;
+            resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["userName"] = state ? state.userName : undefined;
         } else {
             const args = argsOrState as EnterpriseUserArgs | undefined;
             if ((!args || args.uid === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'uid'");
             }
-            inputs["maxExecuteCount"] = args ? args.maxExecuteCount : undefined;
-            inputs["maxResultCount"] = args ? args.maxResultCount : undefined;
-            inputs["mobile"] = args ? args.mobile : undefined;
-            inputs["nickName"] = args ? args.nickName : undefined;
-            inputs["roleNames"] = args ? args.roleNames : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["tid"] = args ? args.tid : undefined;
-            inputs["uid"] = args ? args.uid : undefined;
-            inputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["maxExecuteCount"] = args ? args.maxExecuteCount : undefined;
+            resourceInputs["maxResultCount"] = args ? args.maxResultCount : undefined;
+            resourceInputs["mobile"] = args ? args.mobile : undefined;
+            resourceInputs["nickName"] = args ? args.nickName : undefined;
+            resourceInputs["roleNames"] = args ? args.roleNames : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["tid"] = args ? args.tid : undefined;
+            resourceInputs["uid"] = args ? args.uid : undefined;
+            resourceInputs["userName"] = args ? args.userName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EnterpriseUser.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EnterpriseUser.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -366,7 +366,7 @@ type DesktopInput interface {
 }
 
 func (*Desktop) ElementType() reflect.Type {
-	return reflect.TypeOf((*Desktop)(nil))
+	return reflect.TypeOf((**Desktop)(nil)).Elem()
 }
 
 func (i *Desktop) ToDesktopOutput() DesktopOutput {
@@ -375,35 +375,6 @@ func (i *Desktop) ToDesktopOutput() DesktopOutput {
 
 func (i *Desktop) ToDesktopOutputWithContext(ctx context.Context) DesktopOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DesktopOutput)
-}
-
-func (i *Desktop) ToDesktopPtrOutput() DesktopPtrOutput {
-	return i.ToDesktopPtrOutputWithContext(context.Background())
-}
-
-func (i *Desktop) ToDesktopPtrOutputWithContext(ctx context.Context) DesktopPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DesktopPtrOutput)
-}
-
-type DesktopPtrInput interface {
-	pulumi.Input
-
-	ToDesktopPtrOutput() DesktopPtrOutput
-	ToDesktopPtrOutputWithContext(ctx context.Context) DesktopPtrOutput
-}
-
-type desktopPtrType DesktopArgs
-
-func (*desktopPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Desktop)(nil))
-}
-
-func (i *desktopPtrType) ToDesktopPtrOutput() DesktopPtrOutput {
-	return i.ToDesktopPtrOutputWithContext(context.Background())
-}
-
-func (i *desktopPtrType) ToDesktopPtrOutputWithContext(ctx context.Context) DesktopPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DesktopPtrOutput)
 }
 
 // DesktopArrayInput is an input type that accepts DesktopArray and DesktopArrayOutput values.
@@ -459,7 +430,7 @@ func (i DesktopMap) ToDesktopMapOutputWithContext(ctx context.Context) DesktopMa
 type DesktopOutput struct{ *pulumi.OutputState }
 
 func (DesktopOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Desktop)(nil))
+	return reflect.TypeOf((**Desktop)(nil)).Elem()
 }
 
 func (o DesktopOutput) ToDesktopOutput() DesktopOutput {
@@ -470,44 +441,10 @@ func (o DesktopOutput) ToDesktopOutputWithContext(ctx context.Context) DesktopOu
 	return o
 }
 
-func (o DesktopOutput) ToDesktopPtrOutput() DesktopPtrOutput {
-	return o.ToDesktopPtrOutputWithContext(context.Background())
-}
-
-func (o DesktopOutput) ToDesktopPtrOutputWithContext(ctx context.Context) DesktopPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Desktop) *Desktop {
-		return &v
-	}).(DesktopPtrOutput)
-}
-
-type DesktopPtrOutput struct{ *pulumi.OutputState }
-
-func (DesktopPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Desktop)(nil))
-}
-
-func (o DesktopPtrOutput) ToDesktopPtrOutput() DesktopPtrOutput {
-	return o
-}
-
-func (o DesktopPtrOutput) ToDesktopPtrOutputWithContext(ctx context.Context) DesktopPtrOutput {
-	return o
-}
-
-func (o DesktopPtrOutput) Elem() DesktopOutput {
-	return o.ApplyT(func(v *Desktop) Desktop {
-		if v != nil {
-			return *v
-		}
-		var ret Desktop
-		return ret
-	}).(DesktopOutput)
-}
-
 type DesktopArrayOutput struct{ *pulumi.OutputState }
 
 func (DesktopArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Desktop)(nil))
+	return reflect.TypeOf((*[]*Desktop)(nil)).Elem()
 }
 
 func (o DesktopArrayOutput) ToDesktopArrayOutput() DesktopArrayOutput {
@@ -519,15 +456,15 @@ func (o DesktopArrayOutput) ToDesktopArrayOutputWithContext(ctx context.Context)
 }
 
 func (o DesktopArrayOutput) Index(i pulumi.IntInput) DesktopOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Desktop {
-		return vs[0].([]Desktop)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Desktop {
+		return vs[0].([]*Desktop)[vs[1].(int)]
 	}).(DesktopOutput)
 }
 
 type DesktopMapOutput struct{ *pulumi.OutputState }
 
 func (DesktopMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Desktop)(nil))
+	return reflect.TypeOf((*map[string]*Desktop)(nil)).Elem()
 }
 
 func (o DesktopMapOutput) ToDesktopMapOutput() DesktopMapOutput {
@@ -539,18 +476,16 @@ func (o DesktopMapOutput) ToDesktopMapOutputWithContext(ctx context.Context) Des
 }
 
 func (o DesktopMapOutput) MapIndex(k pulumi.StringInput) DesktopOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Desktop {
-		return vs[0].(map[string]Desktop)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Desktop {
+		return vs[0].(map[string]*Desktop)[vs[1].(string)]
 	}).(DesktopOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DesktopInput)(nil)).Elem(), &Desktop{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DesktopPtrInput)(nil)).Elem(), &Desktop{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DesktopArrayInput)(nil)).Elem(), DesktopArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DesktopMapInput)(nil)).Elem(), DesktopMap{})
 	pulumi.RegisterOutputType(DesktopOutput{})
-	pulumi.RegisterOutputType(DesktopPtrOutput{})
 	pulumi.RegisterOutputType(DesktopArrayOutput{})
 	pulumi.RegisterOutputType(DesktopMapOutput{})
 }

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Eci
 {
@@ -57,7 +56,7 @@ namespace Pulumi.AliCloud.Eci
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVirtualNodesResult> InvokeAsync(GetVirtualNodesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVirtualNodesResult>("alicloud:eci/getVirtualNodes:getVirtualNodes", args ?? new GetVirtualNodesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVirtualNodesResult>("alicloud:eci/getVirtualNodes:getVirtualNodes", args ?? new GetVirtualNodesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Eci Virtual Nodes of the current Alibaba Cloud user.
@@ -104,7 +103,7 @@ namespace Pulumi.AliCloud.Eci
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVirtualNodesResult> Invoke(GetVirtualNodesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVirtualNodesResult>("alicloud:eci/getVirtualNodes:getVirtualNodes", args ?? new GetVirtualNodesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetVirtualNodesResult>("alicloud:eci/getVirtualNodes:getVirtualNodes", args ?? new GetVirtualNodesInvokeArgs(), options.WithDefaults());
     }
 
 

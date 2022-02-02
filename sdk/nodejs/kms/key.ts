@@ -176,57 +176,55 @@ export class Key extends pulumi.CustomResource {
      */
     constructor(name: string, args?: KeyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KeyArgs | KeyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeyState | undefined;
-            inputs["arn"] = state ? state.arn : undefined;
-            inputs["automaticRotation"] = state ? state.automaticRotation : undefined;
-            inputs["creationDate"] = state ? state.creationDate : undefined;
-            inputs["creator"] = state ? state.creator : undefined;
-            inputs["deleteDate"] = state ? state.deleteDate : undefined;
-            inputs["deletionWindowInDays"] = state ? state.deletionWindowInDays : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["isEnabled"] = state ? state.isEnabled : undefined;
-            inputs["keySpec"] = state ? state.keySpec : undefined;
-            inputs["keyState"] = state ? state.keyState : undefined;
-            inputs["keyUsage"] = state ? state.keyUsage : undefined;
-            inputs["lastRotationDate"] = state ? state.lastRotationDate : undefined;
-            inputs["materialExpireTime"] = state ? state.materialExpireTime : undefined;
-            inputs["nextRotationDate"] = state ? state.nextRotationDate : undefined;
-            inputs["origin"] = state ? state.origin : undefined;
-            inputs["pendingWindowInDays"] = state ? state.pendingWindowInDays : undefined;
-            inputs["primaryKeyVersion"] = state ? state.primaryKeyVersion : undefined;
-            inputs["protectionLevel"] = state ? state.protectionLevel : undefined;
-            inputs["rotationInterval"] = state ? state.rotationInterval : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["arn"] = state ? state.arn : undefined;
+            resourceInputs["automaticRotation"] = state ? state.automaticRotation : undefined;
+            resourceInputs["creationDate"] = state ? state.creationDate : undefined;
+            resourceInputs["creator"] = state ? state.creator : undefined;
+            resourceInputs["deleteDate"] = state ? state.deleteDate : undefined;
+            resourceInputs["deletionWindowInDays"] = state ? state.deletionWindowInDays : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["isEnabled"] = state ? state.isEnabled : undefined;
+            resourceInputs["keySpec"] = state ? state.keySpec : undefined;
+            resourceInputs["keyState"] = state ? state.keyState : undefined;
+            resourceInputs["keyUsage"] = state ? state.keyUsage : undefined;
+            resourceInputs["lastRotationDate"] = state ? state.lastRotationDate : undefined;
+            resourceInputs["materialExpireTime"] = state ? state.materialExpireTime : undefined;
+            resourceInputs["nextRotationDate"] = state ? state.nextRotationDate : undefined;
+            resourceInputs["origin"] = state ? state.origin : undefined;
+            resourceInputs["pendingWindowInDays"] = state ? state.pendingWindowInDays : undefined;
+            resourceInputs["primaryKeyVersion"] = state ? state.primaryKeyVersion : undefined;
+            resourceInputs["protectionLevel"] = state ? state.protectionLevel : undefined;
+            resourceInputs["rotationInterval"] = state ? state.rotationInterval : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as KeyArgs | undefined;
-            inputs["automaticRotation"] = args ? args.automaticRotation : undefined;
-            inputs["deletionWindowInDays"] = args ? args.deletionWindowInDays : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["isEnabled"] = args ? args.isEnabled : undefined;
-            inputs["keySpec"] = args ? args.keySpec : undefined;
-            inputs["keyState"] = args ? args.keyState : undefined;
-            inputs["keyUsage"] = args ? args.keyUsage : undefined;
-            inputs["origin"] = args ? args.origin : undefined;
-            inputs["pendingWindowInDays"] = args ? args.pendingWindowInDays : undefined;
-            inputs["protectionLevel"] = args ? args.protectionLevel : undefined;
-            inputs["rotationInterval"] = args ? args.rotationInterval : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["arn"] = undefined /*out*/;
-            inputs["creationDate"] = undefined /*out*/;
-            inputs["creator"] = undefined /*out*/;
-            inputs["deleteDate"] = undefined /*out*/;
-            inputs["lastRotationDate"] = undefined /*out*/;
-            inputs["materialExpireTime"] = undefined /*out*/;
-            inputs["nextRotationDate"] = undefined /*out*/;
-            inputs["primaryKeyVersion"] = undefined /*out*/;
+            resourceInputs["automaticRotation"] = args ? args.automaticRotation : undefined;
+            resourceInputs["deletionWindowInDays"] = args ? args.deletionWindowInDays : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["isEnabled"] = args ? args.isEnabled : undefined;
+            resourceInputs["keySpec"] = args ? args.keySpec : undefined;
+            resourceInputs["keyState"] = args ? args.keyState : undefined;
+            resourceInputs["keyUsage"] = args ? args.keyUsage : undefined;
+            resourceInputs["origin"] = args ? args.origin : undefined;
+            resourceInputs["pendingWindowInDays"] = args ? args.pendingWindowInDays : undefined;
+            resourceInputs["protectionLevel"] = args ? args.protectionLevel : undefined;
+            resourceInputs["rotationInterval"] = args ? args.rotationInterval : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["arn"] = undefined /*out*/;
+            resourceInputs["creationDate"] = undefined /*out*/;
+            resourceInputs["creator"] = undefined /*out*/;
+            resourceInputs["deleteDate"] = undefined /*out*/;
+            resourceInputs["lastRotationDate"] = undefined /*out*/;
+            resourceInputs["materialExpireTime"] = undefined /*out*/;
+            resourceInputs["nextRotationDate"] = undefined /*out*/;
+            resourceInputs["primaryKeyVersion"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Key.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Key.__pulumiType, name, resourceInputs, opts);
     }
 }
 

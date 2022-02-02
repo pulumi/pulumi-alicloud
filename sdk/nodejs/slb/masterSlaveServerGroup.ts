@@ -194,28 +194,26 @@ export class MasterSlaveServerGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: MasterSlaveServerGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MasterSlaveServerGroupArgs | MasterSlaveServerGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MasterSlaveServerGroupState | undefined;
-            inputs["deleteProtectionValidation"] = state ? state.deleteProtectionValidation : undefined;
-            inputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["servers"] = state ? state.servers : undefined;
+            resourceInputs["deleteProtectionValidation"] = state ? state.deleteProtectionValidation : undefined;
+            resourceInputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["servers"] = state ? state.servers : undefined;
         } else {
             const args = argsOrState as MasterSlaveServerGroupArgs | undefined;
             if ((!args || args.loadBalancerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
-            inputs["deleteProtectionValidation"] = args ? args.deleteProtectionValidation : undefined;
-            inputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["servers"] = args ? args.servers : undefined;
+            resourceInputs["deleteProtectionValidation"] = args ? args.deleteProtectionValidation : undefined;
+            resourceInputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["servers"] = args ? args.servers : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(MasterSlaveServerGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(MasterSlaveServerGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

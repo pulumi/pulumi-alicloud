@@ -86,25 +86,23 @@ export class TrafficMirrorFilter extends pulumi.CustomResource {
      */
     constructor(name: string, args?: TrafficMirrorFilterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TrafficMirrorFilterArgs | TrafficMirrorFilterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TrafficMirrorFilterState | undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["trafficMirrorFilterDescription"] = state ? state.trafficMirrorFilterDescription : undefined;
-            inputs["trafficMirrorFilterName"] = state ? state.trafficMirrorFilterName : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["trafficMirrorFilterDescription"] = state ? state.trafficMirrorFilterDescription : undefined;
+            resourceInputs["trafficMirrorFilterName"] = state ? state.trafficMirrorFilterName : undefined;
         } else {
             const args = argsOrState as TrafficMirrorFilterArgs | undefined;
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["trafficMirrorFilterDescription"] = args ? args.trafficMirrorFilterDescription : undefined;
-            inputs["trafficMirrorFilterName"] = args ? args.trafficMirrorFilterName : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["trafficMirrorFilterDescription"] = args ? args.trafficMirrorFilterDescription : undefined;
+            resourceInputs["trafficMirrorFilterName"] = args ? args.trafficMirrorFilterName : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TrafficMirrorFilter.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TrafficMirrorFilter.__pulumiType, name, resourceInputs, opts);
     }
 }
 

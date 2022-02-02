@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CloudSso
 {
@@ -58,7 +57,7 @@ namespace Pulumi.AliCloud.CloudSso
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDirectoriesResult> InvokeAsync(GetDirectoriesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDirectoriesResult>("alicloud:cloudsso/getDirectories:getDirectories", args ?? new GetDirectoriesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDirectoriesResult>("alicloud:cloudsso/getDirectories:getDirectories", args ?? new GetDirectoriesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cloud Sso Directories of the current Alibaba Cloud user.
@@ -106,7 +105,7 @@ namespace Pulumi.AliCloud.CloudSso
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDirectoriesResult> Invoke(GetDirectoriesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDirectoriesResult>("alicloud:cloudsso/getDirectories:getDirectories", args ?? new GetDirectoriesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDirectoriesResult>("alicloud:cloudsso/getDirectories:getDirectories", args ?? new GetDirectoriesInvokeArgs(), options.WithDefaults());
     }
 
 

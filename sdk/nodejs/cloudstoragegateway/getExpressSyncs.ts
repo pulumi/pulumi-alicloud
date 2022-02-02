@@ -32,9 +32,7 @@ export function getExpressSyncs(args?: GetExpressSyncsArgs, opts?: pulumi.Invoke
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cloudstoragegateway/getExpressSyncs:getExpressSyncs", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

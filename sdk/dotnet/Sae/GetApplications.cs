@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Sae
 {
@@ -68,13 +67,13 @@ namespace Pulumi.AliCloud.Sae
         ///             Cpu = 500,
         ///             Memory = 2048,
         ///         });
-        ///         var defaultApplications = defaultApplication.Id.Apply(id =&gt; AliCloud.Sae.GetApplications.InvokeAsync(new AliCloud.Sae.GetApplicationsArgs
+        ///         var defaultApplications = AliCloud.Sae.GetApplications.Invoke(new AliCloud.Sae.GetApplicationsInvokeArgs
         ///         {
         ///             Ids = 
         ///             {
-        ///                 id,
+        ///                 defaultApplication.Id,
         ///             },
-        ///         }));
+        ///         });
         ///         this.SaeApplicationId = defaultApplications.Apply(defaultApplications =&gt; defaultApplications.Applications?[0]?.Id);
         ///     }
         /// 
@@ -86,7 +85,7 @@ namespace Pulumi.AliCloud.Sae
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetApplicationsResult> InvokeAsync(GetApplicationsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationsResult>("alicloud:sae/getApplications:getApplications", args ?? new GetApplicationsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationsResult>("alicloud:sae/getApplications:getApplications", args ?? new GetApplicationsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Sae Applications of the current Alibaba Cloud user.
@@ -144,13 +143,13 @@ namespace Pulumi.AliCloud.Sae
         ///             Cpu = 500,
         ///             Memory = 2048,
         ///         });
-        ///         var defaultApplications = defaultApplication.Id.Apply(id =&gt; AliCloud.Sae.GetApplications.InvokeAsync(new AliCloud.Sae.GetApplicationsArgs
+        ///         var defaultApplications = AliCloud.Sae.GetApplications.Invoke(new AliCloud.Sae.GetApplicationsInvokeArgs
         ///         {
         ///             Ids = 
         ///             {
-        ///                 id,
+        ///                 defaultApplication.Id,
         ///             },
-        ///         }));
+        ///         });
         ///         this.SaeApplicationId = defaultApplications.Apply(defaultApplications =&gt; defaultApplications.Applications?[0]?.Id);
         ///     }
         /// 
@@ -162,7 +161,7 @@ namespace Pulumi.AliCloud.Sae
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetApplicationsResult> Invoke(GetApplicationsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetApplicationsResult>("alicloud:sae/getApplications:getApplications", args ?? new GetApplicationsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetApplicationsResult>("alicloud:sae/getApplications:getApplications", args ?? new GetApplicationsInvokeArgs(), options.WithDefaults());
     }
 
 

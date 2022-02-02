@@ -101,27 +101,25 @@ export class ServiceSetting extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ServiceSettingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceSettingArgs | ServiceSettingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceSettingState | undefined;
-            inputs["deliveryOssBucketName"] = state ? state.deliveryOssBucketName : undefined;
-            inputs["deliveryOssEnabled"] = state ? state.deliveryOssEnabled : undefined;
-            inputs["deliveryOssKeyPrefix"] = state ? state.deliveryOssKeyPrefix : undefined;
-            inputs["deliverySlsEnabled"] = state ? state.deliverySlsEnabled : undefined;
-            inputs["deliverySlsProjectName"] = state ? state.deliverySlsProjectName : undefined;
+            resourceInputs["deliveryOssBucketName"] = state ? state.deliveryOssBucketName : undefined;
+            resourceInputs["deliveryOssEnabled"] = state ? state.deliveryOssEnabled : undefined;
+            resourceInputs["deliveryOssKeyPrefix"] = state ? state.deliveryOssKeyPrefix : undefined;
+            resourceInputs["deliverySlsEnabled"] = state ? state.deliverySlsEnabled : undefined;
+            resourceInputs["deliverySlsProjectName"] = state ? state.deliverySlsProjectName : undefined;
         } else {
             const args = argsOrState as ServiceSettingArgs | undefined;
-            inputs["deliveryOssBucketName"] = args ? args.deliveryOssBucketName : undefined;
-            inputs["deliveryOssEnabled"] = args ? args.deliveryOssEnabled : undefined;
-            inputs["deliveryOssKeyPrefix"] = args ? args.deliveryOssKeyPrefix : undefined;
-            inputs["deliverySlsEnabled"] = args ? args.deliverySlsEnabled : undefined;
-            inputs["deliverySlsProjectName"] = args ? args.deliverySlsProjectName : undefined;
+            resourceInputs["deliveryOssBucketName"] = args ? args.deliveryOssBucketName : undefined;
+            resourceInputs["deliveryOssEnabled"] = args ? args.deliveryOssEnabled : undefined;
+            resourceInputs["deliveryOssKeyPrefix"] = args ? args.deliveryOssKeyPrefix : undefined;
+            resourceInputs["deliverySlsEnabled"] = args ? args.deliverySlsEnabled : undefined;
+            resourceInputs["deliverySlsProjectName"] = args ? args.deliverySlsProjectName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ServiceSetting.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ServiceSetting.__pulumiType, name, resourceInputs, opts);
     }
 }
 

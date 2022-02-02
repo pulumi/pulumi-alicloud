@@ -162,7 +162,7 @@ type VpcEndpointServiceResourceInput interface {
 }
 
 func (*VpcEndpointServiceResource) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcEndpointServiceResource)(nil))
+	return reflect.TypeOf((**VpcEndpointServiceResource)(nil)).Elem()
 }
 
 func (i *VpcEndpointServiceResource) ToVpcEndpointServiceResourceOutput() VpcEndpointServiceResourceOutput {
@@ -171,35 +171,6 @@ func (i *VpcEndpointServiceResource) ToVpcEndpointServiceResourceOutput() VpcEnd
 
 func (i *VpcEndpointServiceResource) ToVpcEndpointServiceResourceOutputWithContext(ctx context.Context) VpcEndpointServiceResourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointServiceResourceOutput)
-}
-
-func (i *VpcEndpointServiceResource) ToVpcEndpointServiceResourcePtrOutput() VpcEndpointServiceResourcePtrOutput {
-	return i.ToVpcEndpointServiceResourcePtrOutputWithContext(context.Background())
-}
-
-func (i *VpcEndpointServiceResource) ToVpcEndpointServiceResourcePtrOutputWithContext(ctx context.Context) VpcEndpointServiceResourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointServiceResourcePtrOutput)
-}
-
-type VpcEndpointServiceResourcePtrInput interface {
-	pulumi.Input
-
-	ToVpcEndpointServiceResourcePtrOutput() VpcEndpointServiceResourcePtrOutput
-	ToVpcEndpointServiceResourcePtrOutputWithContext(ctx context.Context) VpcEndpointServiceResourcePtrOutput
-}
-
-type vpcEndpointServiceResourcePtrType VpcEndpointServiceResourceArgs
-
-func (*vpcEndpointServiceResourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VpcEndpointServiceResource)(nil))
-}
-
-func (i *vpcEndpointServiceResourcePtrType) ToVpcEndpointServiceResourcePtrOutput() VpcEndpointServiceResourcePtrOutput {
-	return i.ToVpcEndpointServiceResourcePtrOutputWithContext(context.Background())
-}
-
-func (i *vpcEndpointServiceResourcePtrType) ToVpcEndpointServiceResourcePtrOutputWithContext(ctx context.Context) VpcEndpointServiceResourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointServiceResourcePtrOutput)
 }
 
 // VpcEndpointServiceResourceArrayInput is an input type that accepts VpcEndpointServiceResourceArray and VpcEndpointServiceResourceArrayOutput values.
@@ -255,7 +226,7 @@ func (i VpcEndpointServiceResourceMap) ToVpcEndpointServiceResourceMapOutputWith
 type VpcEndpointServiceResourceOutput struct{ *pulumi.OutputState }
 
 func (VpcEndpointServiceResourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcEndpointServiceResource)(nil))
+	return reflect.TypeOf((**VpcEndpointServiceResource)(nil)).Elem()
 }
 
 func (o VpcEndpointServiceResourceOutput) ToVpcEndpointServiceResourceOutput() VpcEndpointServiceResourceOutput {
@@ -266,44 +237,10 @@ func (o VpcEndpointServiceResourceOutput) ToVpcEndpointServiceResourceOutputWith
 	return o
 }
 
-func (o VpcEndpointServiceResourceOutput) ToVpcEndpointServiceResourcePtrOutput() VpcEndpointServiceResourcePtrOutput {
-	return o.ToVpcEndpointServiceResourcePtrOutputWithContext(context.Background())
-}
-
-func (o VpcEndpointServiceResourceOutput) ToVpcEndpointServiceResourcePtrOutputWithContext(ctx context.Context) VpcEndpointServiceResourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcEndpointServiceResource) *VpcEndpointServiceResource {
-		return &v
-	}).(VpcEndpointServiceResourcePtrOutput)
-}
-
-type VpcEndpointServiceResourcePtrOutput struct{ *pulumi.OutputState }
-
-func (VpcEndpointServiceResourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VpcEndpointServiceResource)(nil))
-}
-
-func (o VpcEndpointServiceResourcePtrOutput) ToVpcEndpointServiceResourcePtrOutput() VpcEndpointServiceResourcePtrOutput {
-	return o
-}
-
-func (o VpcEndpointServiceResourcePtrOutput) ToVpcEndpointServiceResourcePtrOutputWithContext(ctx context.Context) VpcEndpointServiceResourcePtrOutput {
-	return o
-}
-
-func (o VpcEndpointServiceResourcePtrOutput) Elem() VpcEndpointServiceResourceOutput {
-	return o.ApplyT(func(v *VpcEndpointServiceResource) VpcEndpointServiceResource {
-		if v != nil {
-			return *v
-		}
-		var ret VpcEndpointServiceResource
-		return ret
-	}).(VpcEndpointServiceResourceOutput)
-}
-
 type VpcEndpointServiceResourceArrayOutput struct{ *pulumi.OutputState }
 
 func (VpcEndpointServiceResourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VpcEndpointServiceResource)(nil))
+	return reflect.TypeOf((*[]*VpcEndpointServiceResource)(nil)).Elem()
 }
 
 func (o VpcEndpointServiceResourceArrayOutput) ToVpcEndpointServiceResourceArrayOutput() VpcEndpointServiceResourceArrayOutput {
@@ -315,15 +252,15 @@ func (o VpcEndpointServiceResourceArrayOutput) ToVpcEndpointServiceResourceArray
 }
 
 func (o VpcEndpointServiceResourceArrayOutput) Index(i pulumi.IntInput) VpcEndpointServiceResourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpcEndpointServiceResource {
-		return vs[0].([]VpcEndpointServiceResource)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VpcEndpointServiceResource {
+		return vs[0].([]*VpcEndpointServiceResource)[vs[1].(int)]
 	}).(VpcEndpointServiceResourceOutput)
 }
 
 type VpcEndpointServiceResourceMapOutput struct{ *pulumi.OutputState }
 
 func (VpcEndpointServiceResourceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]VpcEndpointServiceResource)(nil))
+	return reflect.TypeOf((*map[string]*VpcEndpointServiceResource)(nil)).Elem()
 }
 
 func (o VpcEndpointServiceResourceMapOutput) ToVpcEndpointServiceResourceMapOutput() VpcEndpointServiceResourceMapOutput {
@@ -335,18 +272,16 @@ func (o VpcEndpointServiceResourceMapOutput) ToVpcEndpointServiceResourceMapOutp
 }
 
 func (o VpcEndpointServiceResourceMapOutput) MapIndex(k pulumi.StringInput) VpcEndpointServiceResourceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) VpcEndpointServiceResource {
-		return vs[0].(map[string]VpcEndpointServiceResource)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *VpcEndpointServiceResource {
+		return vs[0].(map[string]*VpcEndpointServiceResource)[vs[1].(string)]
 	}).(VpcEndpointServiceResourceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcEndpointServiceResourceInput)(nil)).Elem(), &VpcEndpointServiceResource{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VpcEndpointServiceResourcePtrInput)(nil)).Elem(), &VpcEndpointServiceResource{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcEndpointServiceResourceArrayInput)(nil)).Elem(), VpcEndpointServiceResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcEndpointServiceResourceMapInput)(nil)).Elem(), VpcEndpointServiceResourceMap{})
 	pulumi.RegisterOutputType(VpcEndpointServiceResourceOutput{})
-	pulumi.RegisterOutputType(VpcEndpointServiceResourcePtrOutput{})
 	pulumi.RegisterOutputType(VpcEndpointServiceResourceArrayOutput{})
 	pulumi.RegisterOutputType(VpcEndpointServiceResourceMapOutput{})
 }

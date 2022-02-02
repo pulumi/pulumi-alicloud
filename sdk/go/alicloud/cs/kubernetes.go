@@ -842,7 +842,7 @@ type KubernetesInput interface {
 }
 
 func (*Kubernetes) ElementType() reflect.Type {
-	return reflect.TypeOf((*Kubernetes)(nil))
+	return reflect.TypeOf((**Kubernetes)(nil)).Elem()
 }
 
 func (i *Kubernetes) ToKubernetesOutput() KubernetesOutput {
@@ -851,35 +851,6 @@ func (i *Kubernetes) ToKubernetesOutput() KubernetesOutput {
 
 func (i *Kubernetes) ToKubernetesOutputWithContext(ctx context.Context) KubernetesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesOutput)
-}
-
-func (i *Kubernetes) ToKubernetesPtrOutput() KubernetesPtrOutput {
-	return i.ToKubernetesPtrOutputWithContext(context.Background())
-}
-
-func (i *Kubernetes) ToKubernetesPtrOutputWithContext(ctx context.Context) KubernetesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesPtrOutput)
-}
-
-type KubernetesPtrInput interface {
-	pulumi.Input
-
-	ToKubernetesPtrOutput() KubernetesPtrOutput
-	ToKubernetesPtrOutputWithContext(ctx context.Context) KubernetesPtrOutput
-}
-
-type kubernetesPtrType KubernetesArgs
-
-func (*kubernetesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Kubernetes)(nil))
-}
-
-func (i *kubernetesPtrType) ToKubernetesPtrOutput() KubernetesPtrOutput {
-	return i.ToKubernetesPtrOutputWithContext(context.Background())
-}
-
-func (i *kubernetesPtrType) ToKubernetesPtrOutputWithContext(ctx context.Context) KubernetesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesPtrOutput)
 }
 
 // KubernetesArrayInput is an input type that accepts KubernetesArray and KubernetesArrayOutput values.
@@ -935,7 +906,7 @@ func (i KubernetesMap) ToKubernetesMapOutputWithContext(ctx context.Context) Kub
 type KubernetesOutput struct{ *pulumi.OutputState }
 
 func (KubernetesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Kubernetes)(nil))
+	return reflect.TypeOf((**Kubernetes)(nil)).Elem()
 }
 
 func (o KubernetesOutput) ToKubernetesOutput() KubernetesOutput {
@@ -946,44 +917,10 @@ func (o KubernetesOutput) ToKubernetesOutputWithContext(ctx context.Context) Kub
 	return o
 }
 
-func (o KubernetesOutput) ToKubernetesPtrOutput() KubernetesPtrOutput {
-	return o.ToKubernetesPtrOutputWithContext(context.Background())
-}
-
-func (o KubernetesOutput) ToKubernetesPtrOutputWithContext(ctx context.Context) KubernetesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Kubernetes) *Kubernetes {
-		return &v
-	}).(KubernetesPtrOutput)
-}
-
-type KubernetesPtrOutput struct{ *pulumi.OutputState }
-
-func (KubernetesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Kubernetes)(nil))
-}
-
-func (o KubernetesPtrOutput) ToKubernetesPtrOutput() KubernetesPtrOutput {
-	return o
-}
-
-func (o KubernetesPtrOutput) ToKubernetesPtrOutputWithContext(ctx context.Context) KubernetesPtrOutput {
-	return o
-}
-
-func (o KubernetesPtrOutput) Elem() KubernetesOutput {
-	return o.ApplyT(func(v *Kubernetes) Kubernetes {
-		if v != nil {
-			return *v
-		}
-		var ret Kubernetes
-		return ret
-	}).(KubernetesOutput)
-}
-
 type KubernetesArrayOutput struct{ *pulumi.OutputState }
 
 func (KubernetesArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Kubernetes)(nil))
+	return reflect.TypeOf((*[]*Kubernetes)(nil)).Elem()
 }
 
 func (o KubernetesArrayOutput) ToKubernetesArrayOutput() KubernetesArrayOutput {
@@ -995,15 +932,15 @@ func (o KubernetesArrayOutput) ToKubernetesArrayOutputWithContext(ctx context.Co
 }
 
 func (o KubernetesArrayOutput) Index(i pulumi.IntInput) KubernetesOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Kubernetes {
-		return vs[0].([]Kubernetes)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Kubernetes {
+		return vs[0].([]*Kubernetes)[vs[1].(int)]
 	}).(KubernetesOutput)
 }
 
 type KubernetesMapOutput struct{ *pulumi.OutputState }
 
 func (KubernetesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Kubernetes)(nil))
+	return reflect.TypeOf((*map[string]*Kubernetes)(nil)).Elem()
 }
 
 func (o KubernetesMapOutput) ToKubernetesMapOutput() KubernetesMapOutput {
@@ -1015,18 +952,16 @@ func (o KubernetesMapOutput) ToKubernetesMapOutputWithContext(ctx context.Contex
 }
 
 func (o KubernetesMapOutput) MapIndex(k pulumi.StringInput) KubernetesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Kubernetes {
-		return vs[0].(map[string]Kubernetes)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Kubernetes {
+		return vs[0].(map[string]*Kubernetes)[vs[1].(string)]
 	}).(KubernetesOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesInput)(nil)).Elem(), &Kubernetes{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesPtrInput)(nil)).Elem(), &Kubernetes{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesArrayInput)(nil)).Elem(), KubernetesArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesMapInput)(nil)).Elem(), KubernetesMap{})
 	pulumi.RegisterOutputType(KubernetesOutput{})
-	pulumi.RegisterOutputType(KubernetesPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesMapOutput{})
 }

@@ -33,9 +33,7 @@ export function getRestoreJobs(args: GetRestoreJobsArgs, opts?: pulumi.InvokeOpt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:hbr/getRestoreJobs:getRestoreJobs", {
         "outputFile": args.outputFile,
         "restoreIds": args.restoreIds,

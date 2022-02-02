@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ga
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.Ga
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAcceleratorsResult> InvokeAsync(GetAcceleratorsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAcceleratorsResult>("alicloud:ga/getAccelerators:getAccelerators", args ?? new GetAcceleratorsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAcceleratorsResult>("alicloud:ga/getAccelerators:getAccelerators", args ?? new GetAcceleratorsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.Ga
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAcceleratorsResult> Invoke(GetAcceleratorsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAcceleratorsResult>("alicloud:ga/getAccelerators:getAccelerators", args ?? new GetAcceleratorsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAcceleratorsResult>("alicloud:ga/getAccelerators:getAccelerators", args ?? new GetAcceleratorsInvokeArgs(), options.WithDefaults());
     }
 
 

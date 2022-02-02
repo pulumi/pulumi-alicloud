@@ -30,9 +30,7 @@ export function getResolverZones(args?: GetResolverZonesArgs, opts?: pulumi.Invo
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:pvtz/getResolverZones:getResolverZones", {
         "outputFile": args.outputFile,
         "status": args.status,

@@ -72,13 +72,13 @@ export class ShardingNetworkPublicAddress extends pulumi.CustomResource {
      */
     constructor(name: string, args: ShardingNetworkPublicAddressArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ShardingNetworkPublicAddressArgs | ShardingNetworkPublicAddressState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ShardingNetworkPublicAddressState | undefined;
-            inputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            inputs["networkAddresses"] = state ? state.networkAddresses : undefined;
-            inputs["nodeId"] = state ? state.nodeId : undefined;
+            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
+            resourceInputs["networkAddresses"] = state ? state.networkAddresses : undefined;
+            resourceInputs["nodeId"] = state ? state.nodeId : undefined;
         } else {
             const args = argsOrState as ShardingNetworkPublicAddressArgs | undefined;
             if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
@@ -87,14 +87,12 @@ export class ShardingNetworkPublicAddress extends pulumi.CustomResource {
             if ((!args || args.nodeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodeId'");
             }
-            inputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            inputs["nodeId"] = args ? args.nodeId : undefined;
-            inputs["networkAddresses"] = undefined /*out*/;
+            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
+            resourceInputs["nodeId"] = args ? args.nodeId : undefined;
+            resourceInputs["networkAddresses"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ShardingNetworkPublicAddress.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ShardingNetworkPublicAddress.__pulumiType, name, resourceInputs, opts);
     }
 }
 

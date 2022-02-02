@@ -84,13 +84,13 @@ export class Namespace extends pulumi.CustomResource {
      */
     constructor(name: string, args: NamespaceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NamespaceArgs | NamespaceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NamespaceState | undefined;
-            inputs["namespaceDescription"] = state ? state.namespaceDescription : undefined;
-            inputs["namespaceId"] = state ? state.namespaceId : undefined;
-            inputs["namespaceName"] = state ? state.namespaceName : undefined;
+            resourceInputs["namespaceDescription"] = state ? state.namespaceDescription : undefined;
+            resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
+            resourceInputs["namespaceName"] = state ? state.namespaceName : undefined;
         } else {
             const args = argsOrState as NamespaceArgs | undefined;
             if ((!args || args.namespaceId === undefined) && !opts.urn) {
@@ -99,14 +99,12 @@ export class Namespace extends pulumi.CustomResource {
             if ((!args || args.namespaceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'namespaceName'");
             }
-            inputs["namespaceDescription"] = args ? args.namespaceDescription : undefined;
-            inputs["namespaceId"] = args ? args.namespaceId : undefined;
-            inputs["namespaceName"] = args ? args.namespaceName : undefined;
+            resourceInputs["namespaceDescription"] = args ? args.namespaceDescription : undefined;
+            resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
+            resourceInputs["namespaceName"] = args ? args.namespaceName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Namespace.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Namespace.__pulumiType, name, resourceInputs, opts);
     }
 }
 

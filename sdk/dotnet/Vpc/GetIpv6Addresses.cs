@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -67,7 +66,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetIpv6AddressesResult> InvokeAsync(GetIpv6AddressesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIpv6AddressesResult>("alicloud:vpc/getIpv6Addresses:getIpv6Addresses", args ?? new GetIpv6AddressesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetIpv6AddressesResult>("alicloud:vpc/getIpv6Addresses:getIpv6Addresses", args ?? new GetIpv6AddressesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vpc Ipv6 Addresses of the current Alibaba Cloud user.
@@ -124,7 +123,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetIpv6AddressesResult> Invoke(GetIpv6AddressesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIpv6AddressesResult>("alicloud:vpc/getIpv6Addresses:getIpv6Addresses", args ?? new GetIpv6AddressesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetIpv6AddressesResult>("alicloud:vpc/getIpv6Addresses:getIpv6Addresses", args ?? new GetIpv6AddressesInvokeArgs(), options.WithDefaults());
     }
 
 

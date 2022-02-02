@@ -28,9 +28,7 @@ export function getConnections(args?: GetConnectionsArgs, opts?: pulumi.InvokeOp
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:vpn/getConnections:getConnections", {
         "customerGatewayId": args.customerGatewayId,
         "ids": args.ids,

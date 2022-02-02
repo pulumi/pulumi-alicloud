@@ -88,17 +88,17 @@ export class Rule extends pulumi.CustomResource {
      */
     constructor(name: string, args: RuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RuleArgs | RuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuleState | undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["listenerId"] = state ? state.listenerId : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["ruleActions"] = state ? state.ruleActions : undefined;
-            inputs["ruleConditions"] = state ? state.ruleConditions : undefined;
-            inputs["ruleName"] = state ? state.ruleName : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["ruleActions"] = state ? state.ruleActions : undefined;
+            resourceInputs["ruleConditions"] = state ? state.ruleConditions : undefined;
+            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as RuleArgs | undefined;
             if ((!args || args.listenerId === undefined) && !opts.urn) {
@@ -116,18 +116,16 @@ export class Rule extends pulumi.CustomResource {
             if ((!args || args.ruleName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ruleName'");
             }
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["listenerId"] = args ? args.listenerId : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["ruleActions"] = args ? args.ruleActions : undefined;
-            inputs["ruleConditions"] = args ? args.ruleConditions : undefined;
-            inputs["ruleName"] = args ? args.ruleName : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["listenerId"] = args ? args.listenerId : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["ruleActions"] = args ? args.ruleActions : undefined;
+            resourceInputs["ruleConditions"] = args ? args.ruleConditions : undefined;
+            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Rule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Rule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

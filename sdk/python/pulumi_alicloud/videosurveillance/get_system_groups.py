@@ -142,7 +142,7 @@ def get_system_groups(ids: Optional[Sequence[str]] = None,
         out_protocol="flv",
         play_domain="your_plan_domain",
         push_domain="your_push_domain")
-    default_system_groups = default_system_group.id.apply(lambda id: alicloud.videosurveillance.get_system_groups(ids=[id]))
+    default_system_groups = alicloud.videosurveillance.get_system_groups_output(ids=[default_system_group.id])
     pulumi.export("vsGroup", default_system_groups.ids[0])
     ```
 
@@ -205,7 +205,7 @@ def get_system_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
         out_protocol="flv",
         play_domain="your_plan_domain",
         push_domain="your_push_domain")
-    default_system_groups = default_system_group.id.apply(lambda id: alicloud.videosurveillance.get_system_groups(ids=[id]))
+    default_system_groups = alicloud.videosurveillance.get_system_groups_output(ids=[default_system_group.id])
     pulumi.export("vsGroup", default_system_groups.ids[0])
     ```
 

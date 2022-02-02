@@ -31,9 +31,7 @@ export function getAggregateConfigRules(args: GetAggregateConfigRulesArgs, opts?
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", {
         "aggregateConfigRuleName": args.aggregateConfigRuleName,
         "aggregatorId": args.aggregatorId,

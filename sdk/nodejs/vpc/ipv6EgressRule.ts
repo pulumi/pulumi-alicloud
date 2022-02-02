@@ -81,16 +81,16 @@ export class Ipv6EgressRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: Ipv6EgressRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: Ipv6EgressRuleArgs | Ipv6EgressRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as Ipv6EgressRuleState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["instanceType"] = state ? state.instanceType : undefined;
-            inputs["ipv6EgressRuleName"] = state ? state.ipv6EgressRuleName : undefined;
-            inputs["ipv6GatewayId"] = state ? state.ipv6GatewayId : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
+            resourceInputs["ipv6EgressRuleName"] = state ? state.ipv6EgressRuleName : undefined;
+            resourceInputs["ipv6GatewayId"] = state ? state.ipv6GatewayId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as Ipv6EgressRuleArgs | undefined;
             if ((!args || args.instanceId === undefined) && !opts.urn) {
@@ -99,17 +99,15 @@ export class Ipv6EgressRule extends pulumi.CustomResource {
             if ((!args || args.ipv6GatewayId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ipv6GatewayId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["instanceType"] = args ? args.instanceType : undefined;
-            inputs["ipv6EgressRuleName"] = args ? args.ipv6EgressRuleName : undefined;
-            inputs["ipv6GatewayId"] = args ? args.ipv6GatewayId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
+            resourceInputs["ipv6EgressRuleName"] = args ? args.ipv6EgressRuleName : undefined;
+            resourceInputs["ipv6GatewayId"] = args ? args.ipv6GatewayId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Ipv6EgressRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Ipv6EgressRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

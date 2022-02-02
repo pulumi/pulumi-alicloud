@@ -106,7 +106,7 @@ type RouteTableAttachmentInput interface {
 }
 
 func (*RouteTableAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteTableAttachment)(nil))
+	return reflect.TypeOf((**RouteTableAttachment)(nil)).Elem()
 }
 
 func (i *RouteTableAttachment) ToRouteTableAttachmentOutput() RouteTableAttachmentOutput {
@@ -115,35 +115,6 @@ func (i *RouteTableAttachment) ToRouteTableAttachmentOutput() RouteTableAttachme
 
 func (i *RouteTableAttachment) ToRouteTableAttachmentOutputWithContext(ctx context.Context) RouteTableAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouteTableAttachmentOutput)
-}
-
-func (i *RouteTableAttachment) ToRouteTableAttachmentPtrOutput() RouteTableAttachmentPtrOutput {
-	return i.ToRouteTableAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *RouteTableAttachment) ToRouteTableAttachmentPtrOutputWithContext(ctx context.Context) RouteTableAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteTableAttachmentPtrOutput)
-}
-
-type RouteTableAttachmentPtrInput interface {
-	pulumi.Input
-
-	ToRouteTableAttachmentPtrOutput() RouteTableAttachmentPtrOutput
-	ToRouteTableAttachmentPtrOutputWithContext(ctx context.Context) RouteTableAttachmentPtrOutput
-}
-
-type routeTableAttachmentPtrType RouteTableAttachmentArgs
-
-func (*routeTableAttachmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RouteTableAttachment)(nil))
-}
-
-func (i *routeTableAttachmentPtrType) ToRouteTableAttachmentPtrOutput() RouteTableAttachmentPtrOutput {
-	return i.ToRouteTableAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *routeTableAttachmentPtrType) ToRouteTableAttachmentPtrOutputWithContext(ctx context.Context) RouteTableAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteTableAttachmentPtrOutput)
 }
 
 // RouteTableAttachmentArrayInput is an input type that accepts RouteTableAttachmentArray and RouteTableAttachmentArrayOutput values.
@@ -199,7 +170,7 @@ func (i RouteTableAttachmentMap) ToRouteTableAttachmentMapOutputWithContext(ctx 
 type RouteTableAttachmentOutput struct{ *pulumi.OutputState }
 
 func (RouteTableAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteTableAttachment)(nil))
+	return reflect.TypeOf((**RouteTableAttachment)(nil)).Elem()
 }
 
 func (o RouteTableAttachmentOutput) ToRouteTableAttachmentOutput() RouteTableAttachmentOutput {
@@ -210,44 +181,10 @@ func (o RouteTableAttachmentOutput) ToRouteTableAttachmentOutputWithContext(ctx 
 	return o
 }
 
-func (o RouteTableAttachmentOutput) ToRouteTableAttachmentPtrOutput() RouteTableAttachmentPtrOutput {
-	return o.ToRouteTableAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (o RouteTableAttachmentOutput) ToRouteTableAttachmentPtrOutputWithContext(ctx context.Context) RouteTableAttachmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouteTableAttachment) *RouteTableAttachment {
-		return &v
-	}).(RouteTableAttachmentPtrOutput)
-}
-
-type RouteTableAttachmentPtrOutput struct{ *pulumi.OutputState }
-
-func (RouteTableAttachmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RouteTableAttachment)(nil))
-}
-
-func (o RouteTableAttachmentPtrOutput) ToRouteTableAttachmentPtrOutput() RouteTableAttachmentPtrOutput {
-	return o
-}
-
-func (o RouteTableAttachmentPtrOutput) ToRouteTableAttachmentPtrOutputWithContext(ctx context.Context) RouteTableAttachmentPtrOutput {
-	return o
-}
-
-func (o RouteTableAttachmentPtrOutput) Elem() RouteTableAttachmentOutput {
-	return o.ApplyT(func(v *RouteTableAttachment) RouteTableAttachment {
-		if v != nil {
-			return *v
-		}
-		var ret RouteTableAttachment
-		return ret
-	}).(RouteTableAttachmentOutput)
-}
-
 type RouteTableAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (RouteTableAttachmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RouteTableAttachment)(nil))
+	return reflect.TypeOf((*[]*RouteTableAttachment)(nil)).Elem()
 }
 
 func (o RouteTableAttachmentArrayOutput) ToRouteTableAttachmentArrayOutput() RouteTableAttachmentArrayOutput {
@@ -259,15 +196,15 @@ func (o RouteTableAttachmentArrayOutput) ToRouteTableAttachmentArrayOutputWithCo
 }
 
 func (o RouteTableAttachmentArrayOutput) Index(i pulumi.IntInput) RouteTableAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteTableAttachment {
-		return vs[0].([]RouteTableAttachment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RouteTableAttachment {
+		return vs[0].([]*RouteTableAttachment)[vs[1].(int)]
 	}).(RouteTableAttachmentOutput)
 }
 
 type RouteTableAttachmentMapOutput struct{ *pulumi.OutputState }
 
 func (RouteTableAttachmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]RouteTableAttachment)(nil))
+	return reflect.TypeOf((*map[string]*RouteTableAttachment)(nil)).Elem()
 }
 
 func (o RouteTableAttachmentMapOutput) ToRouteTableAttachmentMapOutput() RouteTableAttachmentMapOutput {
@@ -279,18 +216,16 @@ func (o RouteTableAttachmentMapOutput) ToRouteTableAttachmentMapOutputWithContex
 }
 
 func (o RouteTableAttachmentMapOutput) MapIndex(k pulumi.StringInput) RouteTableAttachmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RouteTableAttachment {
-		return vs[0].(map[string]RouteTableAttachment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *RouteTableAttachment {
+		return vs[0].(map[string]*RouteTableAttachment)[vs[1].(string)]
 	}).(RouteTableAttachmentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RouteTableAttachmentInput)(nil)).Elem(), &RouteTableAttachment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RouteTableAttachmentPtrInput)(nil)).Elem(), &RouteTableAttachment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouteTableAttachmentArrayInput)(nil)).Elem(), RouteTableAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouteTableAttachmentMapInput)(nil)).Elem(), RouteTableAttachmentMap{})
 	pulumi.RegisterOutputType(RouteTableAttachmentOutput{})
-	pulumi.RegisterOutputType(RouteTableAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(RouteTableAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(RouteTableAttachmentMapOutput{})
 }

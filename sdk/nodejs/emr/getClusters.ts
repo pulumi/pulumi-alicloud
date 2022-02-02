@@ -131,9 +131,9 @@ import * as utilities from "../utilities";
  * });
  * const ids = alicloud.emr.getClusters({});
  * export const emrClusterId1 = ids.then(ids => ids.clusters?[0]?.id);
- * const nameRegex = defaultCluster.name.apply(name => alicloud.emr.getClusters({
- *     nameRegex: name,
- * }));
+ * const nameRegex = alicloud.emr.getClustersOutput({
+ *     nameRegex: defaultCluster.name,
+ * });
  * export const emrClusterId2 = nameRegex.apply(nameRegex => nameRegex.clusters?[0]?.id);
  * ```
  */
@@ -143,9 +143,7 @@ export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions)
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:emr/getClusters:getClusters", {
         "clusterName": args.clusterName,
         "clusterTypeLists": args.clusterTypeLists,

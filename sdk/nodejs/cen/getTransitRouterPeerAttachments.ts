@@ -28,9 +28,7 @@ export function getTransitRouterPeerAttachments(args: GetTransitRouterPeerAttach
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cen/getTransitRouterPeerAttachments:getTransitRouterPeerAttachments", {
         "cenId": args.cenId,
         "ids": args.ids,

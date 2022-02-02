@@ -103,16 +103,16 @@ export class AccessRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccessRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessRuleArgs | AccessRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessRuleState | undefined;
-            inputs["accessGroupName"] = state ? state.accessGroupName : undefined;
-            inputs["accessRuleId"] = state ? state.accessRuleId : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["rwAccessType"] = state ? state.rwAccessType : undefined;
-            inputs["sourceCidrIp"] = state ? state.sourceCidrIp : undefined;
-            inputs["userAccessType"] = state ? state.userAccessType : undefined;
+            resourceInputs["accessGroupName"] = state ? state.accessGroupName : undefined;
+            resourceInputs["accessRuleId"] = state ? state.accessRuleId : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["rwAccessType"] = state ? state.rwAccessType : undefined;
+            resourceInputs["sourceCidrIp"] = state ? state.sourceCidrIp : undefined;
+            resourceInputs["userAccessType"] = state ? state.userAccessType : undefined;
         } else {
             const args = argsOrState as AccessRuleArgs | undefined;
             if ((!args || args.accessGroupName === undefined) && !opts.urn) {
@@ -121,17 +121,15 @@ export class AccessRule extends pulumi.CustomResource {
             if ((!args || args.sourceCidrIp === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceCidrIp'");
             }
-            inputs["accessGroupName"] = args ? args.accessGroupName : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["rwAccessType"] = args ? args.rwAccessType : undefined;
-            inputs["sourceCidrIp"] = args ? args.sourceCidrIp : undefined;
-            inputs["userAccessType"] = args ? args.userAccessType : undefined;
-            inputs["accessRuleId"] = undefined /*out*/;
+            resourceInputs["accessGroupName"] = args ? args.accessGroupName : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["rwAccessType"] = args ? args.rwAccessType : undefined;
+            resourceInputs["sourceCidrIp"] = args ? args.sourceCidrIp : undefined;
+            resourceInputs["userAccessType"] = args ? args.userAccessType : undefined;
+            resourceInputs["accessRuleId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AccessRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AccessRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

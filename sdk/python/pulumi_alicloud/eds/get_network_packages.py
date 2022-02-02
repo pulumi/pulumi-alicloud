@@ -104,7 +104,7 @@ def get_network_packages(ids: Optional[Sequence[str]] = None,
     default_network_package = alicloud.eds.NetworkPackage("defaultNetworkPackage",
         bandwidth=10,
         office_site_id=default_simple_office_site.id)
-    default_network_packages = default_network_package.id.apply(lambda id: alicloud.eds.get_network_packages(ids=[id]))
+    default_network_packages = alicloud.eds.get_network_packages_output(ids=[default_network_package.id])
     pulumi.export("ecdNetworkPackageId1", default_network_packages.packages[0].id)
     ```
 
@@ -155,7 +155,7 @@ def get_network_packages_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     default_network_package = alicloud.eds.NetworkPackage("defaultNetworkPackage",
         bandwidth=10,
         office_site_id=default_simple_office_site.id)
-    default_network_packages = default_network_package.id.apply(lambda id: alicloud.eds.get_network_packages(ids=[id]))
+    default_network_packages = alicloud.eds.get_network_packages_output(ids=[default_network_package.id])
     pulumi.export("ecdNetworkPackageId1", default_network_packages.packages[0].id)
     ```
 

@@ -400,7 +400,7 @@ type K8sApplicationInput interface {
 }
 
 func (*K8sApplication) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sApplication)(nil))
+	return reflect.TypeOf((**K8sApplication)(nil)).Elem()
 }
 
 func (i *K8sApplication) ToK8sApplicationOutput() K8sApplicationOutput {
@@ -409,35 +409,6 @@ func (i *K8sApplication) ToK8sApplicationOutput() K8sApplicationOutput {
 
 func (i *K8sApplication) ToK8sApplicationOutputWithContext(ctx context.Context) K8sApplicationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(K8sApplicationOutput)
-}
-
-func (i *K8sApplication) ToK8sApplicationPtrOutput() K8sApplicationPtrOutput {
-	return i.ToK8sApplicationPtrOutputWithContext(context.Background())
-}
-
-func (i *K8sApplication) ToK8sApplicationPtrOutputWithContext(ctx context.Context) K8sApplicationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sApplicationPtrOutput)
-}
-
-type K8sApplicationPtrInput interface {
-	pulumi.Input
-
-	ToK8sApplicationPtrOutput() K8sApplicationPtrOutput
-	ToK8sApplicationPtrOutputWithContext(ctx context.Context) K8sApplicationPtrOutput
-}
-
-type k8sApplicationPtrType K8sApplicationArgs
-
-func (*k8sApplicationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sApplication)(nil))
-}
-
-func (i *k8sApplicationPtrType) ToK8sApplicationPtrOutput() K8sApplicationPtrOutput {
-	return i.ToK8sApplicationPtrOutputWithContext(context.Background())
-}
-
-func (i *k8sApplicationPtrType) ToK8sApplicationPtrOutputWithContext(ctx context.Context) K8sApplicationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sApplicationPtrOutput)
 }
 
 // K8sApplicationArrayInput is an input type that accepts K8sApplicationArray and K8sApplicationArrayOutput values.
@@ -493,7 +464,7 @@ func (i K8sApplicationMap) ToK8sApplicationMapOutputWithContext(ctx context.Cont
 type K8sApplicationOutput struct{ *pulumi.OutputState }
 
 func (K8sApplicationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sApplication)(nil))
+	return reflect.TypeOf((**K8sApplication)(nil)).Elem()
 }
 
 func (o K8sApplicationOutput) ToK8sApplicationOutput() K8sApplicationOutput {
@@ -504,44 +475,10 @@ func (o K8sApplicationOutput) ToK8sApplicationOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o K8sApplicationOutput) ToK8sApplicationPtrOutput() K8sApplicationPtrOutput {
-	return o.ToK8sApplicationPtrOutputWithContext(context.Background())
-}
-
-func (o K8sApplicationOutput) ToK8sApplicationPtrOutputWithContext(ctx context.Context) K8sApplicationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sApplication) *K8sApplication {
-		return &v
-	}).(K8sApplicationPtrOutput)
-}
-
-type K8sApplicationPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sApplicationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sApplication)(nil))
-}
-
-func (o K8sApplicationPtrOutput) ToK8sApplicationPtrOutput() K8sApplicationPtrOutput {
-	return o
-}
-
-func (o K8sApplicationPtrOutput) ToK8sApplicationPtrOutputWithContext(ctx context.Context) K8sApplicationPtrOutput {
-	return o
-}
-
-func (o K8sApplicationPtrOutput) Elem() K8sApplicationOutput {
-	return o.ApplyT(func(v *K8sApplication) K8sApplication {
-		if v != nil {
-			return *v
-		}
-		var ret K8sApplication
-		return ret
-	}).(K8sApplicationOutput)
-}
-
 type K8sApplicationArrayOutput struct{ *pulumi.OutputState }
 
 func (K8sApplicationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sApplication)(nil))
+	return reflect.TypeOf((*[]*K8sApplication)(nil)).Elem()
 }
 
 func (o K8sApplicationArrayOutput) ToK8sApplicationArrayOutput() K8sApplicationArrayOutput {
@@ -553,15 +490,15 @@ func (o K8sApplicationArrayOutput) ToK8sApplicationArrayOutputWithContext(ctx co
 }
 
 func (o K8sApplicationArrayOutput) Index(i pulumi.IntInput) K8sApplicationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sApplication {
-		return vs[0].([]K8sApplication)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *K8sApplication {
+		return vs[0].([]*K8sApplication)[vs[1].(int)]
 	}).(K8sApplicationOutput)
 }
 
 type K8sApplicationMapOutput struct{ *pulumi.OutputState }
 
 func (K8sApplicationMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]K8sApplication)(nil))
+	return reflect.TypeOf((*map[string]*K8sApplication)(nil)).Elem()
 }
 
 func (o K8sApplicationMapOutput) ToK8sApplicationMapOutput() K8sApplicationMapOutput {
@@ -573,18 +510,16 @@ func (o K8sApplicationMapOutput) ToK8sApplicationMapOutputWithContext(ctx contex
 }
 
 func (o K8sApplicationMapOutput) MapIndex(k pulumi.StringInput) K8sApplicationOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) K8sApplication {
-		return vs[0].(map[string]K8sApplication)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *K8sApplication {
+		return vs[0].(map[string]*K8sApplication)[vs[1].(string)]
 	}).(K8sApplicationOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sApplicationInput)(nil)).Elem(), &K8sApplication{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sApplicationPtrInput)(nil)).Elem(), &K8sApplication{})
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sApplicationArrayInput)(nil)).Elem(), K8sApplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sApplicationMapInput)(nil)).Elem(), K8sApplicationMap{})
 	pulumi.RegisterOutputType(K8sApplicationOutput{})
-	pulumi.RegisterOutputType(K8sApplicationPtrOutput{})
 	pulumi.RegisterOutputType(K8sApplicationArrayOutput{})
 	pulumi.RegisterOutputType(K8sApplicationMapOutput{})
 }

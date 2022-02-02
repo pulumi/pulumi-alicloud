@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -80,7 +79,7 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsDedicatedHostClustersResult> InvokeAsync(GetEcsDedicatedHostClustersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsDedicatedHostClustersResult>("alicloud:ecs/getEcsDedicatedHostClusters:getEcsDedicatedHostClusters", args ?? new GetEcsDedicatedHostClustersArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsDedicatedHostClustersResult>("alicloud:ecs/getEcsDedicatedHostClusters:getEcsDedicatedHostClusters", args ?? new GetEcsDedicatedHostClustersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.
@@ -150,7 +149,7 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsDedicatedHostClustersResult> Invoke(GetEcsDedicatedHostClustersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEcsDedicatedHostClustersResult>("alicloud:ecs/getEcsDedicatedHostClusters:getEcsDedicatedHostClusters", args ?? new GetEcsDedicatedHostClustersInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetEcsDedicatedHostClustersResult>("alicloud:ecs/getEcsDedicatedHostClusters:getEcsDedicatedHostClusters", args ?? new GetEcsDedicatedHostClustersInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -31,9 +31,7 @@ export function getShardingNetworkPublicAddresses(args: GetShardingNetworkPublic
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:mongodb/getShardingNetworkPublicAddresses:getShardingNetworkPublicAddresses", {
         "dbInstanceId": args.dbInstanceId,
         "nodeId": args.nodeId,

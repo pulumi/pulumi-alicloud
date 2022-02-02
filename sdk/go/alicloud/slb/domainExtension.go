@@ -149,7 +149,7 @@ type DomainExtensionInput interface {
 }
 
 func (*DomainExtension) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainExtension)(nil))
+	return reflect.TypeOf((**DomainExtension)(nil)).Elem()
 }
 
 func (i *DomainExtension) ToDomainExtensionOutput() DomainExtensionOutput {
@@ -158,35 +158,6 @@ func (i *DomainExtension) ToDomainExtensionOutput() DomainExtensionOutput {
 
 func (i *DomainExtension) ToDomainExtensionOutputWithContext(ctx context.Context) DomainExtensionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainExtensionOutput)
-}
-
-func (i *DomainExtension) ToDomainExtensionPtrOutput() DomainExtensionPtrOutput {
-	return i.ToDomainExtensionPtrOutputWithContext(context.Background())
-}
-
-func (i *DomainExtension) ToDomainExtensionPtrOutputWithContext(ctx context.Context) DomainExtensionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainExtensionPtrOutput)
-}
-
-type DomainExtensionPtrInput interface {
-	pulumi.Input
-
-	ToDomainExtensionPtrOutput() DomainExtensionPtrOutput
-	ToDomainExtensionPtrOutputWithContext(ctx context.Context) DomainExtensionPtrOutput
-}
-
-type domainExtensionPtrType DomainExtensionArgs
-
-func (*domainExtensionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainExtension)(nil))
-}
-
-func (i *domainExtensionPtrType) ToDomainExtensionPtrOutput() DomainExtensionPtrOutput {
-	return i.ToDomainExtensionPtrOutputWithContext(context.Background())
-}
-
-func (i *domainExtensionPtrType) ToDomainExtensionPtrOutputWithContext(ctx context.Context) DomainExtensionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainExtensionPtrOutput)
 }
 
 // DomainExtensionArrayInput is an input type that accepts DomainExtensionArray and DomainExtensionArrayOutput values.
@@ -242,7 +213,7 @@ func (i DomainExtensionMap) ToDomainExtensionMapOutputWithContext(ctx context.Co
 type DomainExtensionOutput struct{ *pulumi.OutputState }
 
 func (DomainExtensionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainExtension)(nil))
+	return reflect.TypeOf((**DomainExtension)(nil)).Elem()
 }
 
 func (o DomainExtensionOutput) ToDomainExtensionOutput() DomainExtensionOutput {
@@ -253,44 +224,10 @@ func (o DomainExtensionOutput) ToDomainExtensionOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o DomainExtensionOutput) ToDomainExtensionPtrOutput() DomainExtensionPtrOutput {
-	return o.ToDomainExtensionPtrOutputWithContext(context.Background())
-}
-
-func (o DomainExtensionOutput) ToDomainExtensionPtrOutputWithContext(ctx context.Context) DomainExtensionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainExtension) *DomainExtension {
-		return &v
-	}).(DomainExtensionPtrOutput)
-}
-
-type DomainExtensionPtrOutput struct{ *pulumi.OutputState }
-
-func (DomainExtensionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainExtension)(nil))
-}
-
-func (o DomainExtensionPtrOutput) ToDomainExtensionPtrOutput() DomainExtensionPtrOutput {
-	return o
-}
-
-func (o DomainExtensionPtrOutput) ToDomainExtensionPtrOutputWithContext(ctx context.Context) DomainExtensionPtrOutput {
-	return o
-}
-
-func (o DomainExtensionPtrOutput) Elem() DomainExtensionOutput {
-	return o.ApplyT(func(v *DomainExtension) DomainExtension {
-		if v != nil {
-			return *v
-		}
-		var ret DomainExtension
-		return ret
-	}).(DomainExtensionOutput)
-}
-
 type DomainExtensionArrayOutput struct{ *pulumi.OutputState }
 
 func (DomainExtensionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DomainExtension)(nil))
+	return reflect.TypeOf((*[]*DomainExtension)(nil)).Elem()
 }
 
 func (o DomainExtensionArrayOutput) ToDomainExtensionArrayOutput() DomainExtensionArrayOutput {
@@ -302,15 +239,15 @@ func (o DomainExtensionArrayOutput) ToDomainExtensionArrayOutputWithContext(ctx 
 }
 
 func (o DomainExtensionArrayOutput) Index(i pulumi.IntInput) DomainExtensionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DomainExtension {
-		return vs[0].([]DomainExtension)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DomainExtension {
+		return vs[0].([]*DomainExtension)[vs[1].(int)]
 	}).(DomainExtensionOutput)
 }
 
 type DomainExtensionMapOutput struct{ *pulumi.OutputState }
 
 func (DomainExtensionMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DomainExtension)(nil))
+	return reflect.TypeOf((*map[string]*DomainExtension)(nil)).Elem()
 }
 
 func (o DomainExtensionMapOutput) ToDomainExtensionMapOutput() DomainExtensionMapOutput {
@@ -322,18 +259,16 @@ func (o DomainExtensionMapOutput) ToDomainExtensionMapOutputWithContext(ctx cont
 }
 
 func (o DomainExtensionMapOutput) MapIndex(k pulumi.StringInput) DomainExtensionOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DomainExtension {
-		return vs[0].(map[string]DomainExtension)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DomainExtension {
+		return vs[0].(map[string]*DomainExtension)[vs[1].(string)]
 	}).(DomainExtensionOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainExtensionInput)(nil)).Elem(), &DomainExtension{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DomainExtensionPtrInput)(nil)).Elem(), &DomainExtension{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainExtensionArrayInput)(nil)).Elem(), DomainExtensionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainExtensionMapInput)(nil)).Elem(), DomainExtensionMap{})
 	pulumi.RegisterOutputType(DomainExtensionOutput{})
-	pulumi.RegisterOutputType(DomainExtensionPtrOutput{})
 	pulumi.RegisterOutputType(DomainExtensionArrayOutput{})
 	pulumi.RegisterOutputType(DomainExtensionMapOutput{})
 }

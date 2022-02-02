@@ -33,7 +33,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := yundun.NewDBAuditInstance(ctx, "_default", &yundun.DBAuditInstanceArgs{
+// 		_, err := yundun.NewDBAuditInstance(ctx, "default", &yundun.DBAuditInstanceArgs{
 // 			Description: pulumi.String("Terraform-test"),
 // 			Period:      pulumi.Int(1),
 // 			PlanCode:    pulumi.String("alpha.professional"),
@@ -180,7 +180,7 @@ type DBAuditInstanceInput interface {
 }
 
 func (*DBAuditInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*DBAuditInstance)(nil))
+	return reflect.TypeOf((**DBAuditInstance)(nil)).Elem()
 }
 
 func (i *DBAuditInstance) ToDBAuditInstanceOutput() DBAuditInstanceOutput {
@@ -189,35 +189,6 @@ func (i *DBAuditInstance) ToDBAuditInstanceOutput() DBAuditInstanceOutput {
 
 func (i *DBAuditInstance) ToDBAuditInstanceOutputWithContext(ctx context.Context) DBAuditInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DBAuditInstanceOutput)
-}
-
-func (i *DBAuditInstance) ToDBAuditInstancePtrOutput() DBAuditInstancePtrOutput {
-	return i.ToDBAuditInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *DBAuditInstance) ToDBAuditInstancePtrOutputWithContext(ctx context.Context) DBAuditInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DBAuditInstancePtrOutput)
-}
-
-type DBAuditInstancePtrInput interface {
-	pulumi.Input
-
-	ToDBAuditInstancePtrOutput() DBAuditInstancePtrOutput
-	ToDBAuditInstancePtrOutputWithContext(ctx context.Context) DBAuditInstancePtrOutput
-}
-
-type dbauditInstancePtrType DBAuditInstanceArgs
-
-func (*dbauditInstancePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DBAuditInstance)(nil))
-}
-
-func (i *dbauditInstancePtrType) ToDBAuditInstancePtrOutput() DBAuditInstancePtrOutput {
-	return i.ToDBAuditInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *dbauditInstancePtrType) ToDBAuditInstancePtrOutputWithContext(ctx context.Context) DBAuditInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DBAuditInstancePtrOutput)
 }
 
 // DBAuditInstanceArrayInput is an input type that accepts DBAuditInstanceArray and DBAuditInstanceArrayOutput values.
@@ -273,7 +244,7 @@ func (i DBAuditInstanceMap) ToDBAuditInstanceMapOutputWithContext(ctx context.Co
 type DBAuditInstanceOutput struct{ *pulumi.OutputState }
 
 func (DBAuditInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DBAuditInstance)(nil))
+	return reflect.TypeOf((**DBAuditInstance)(nil)).Elem()
 }
 
 func (o DBAuditInstanceOutput) ToDBAuditInstanceOutput() DBAuditInstanceOutput {
@@ -284,44 +255,10 @@ func (o DBAuditInstanceOutput) ToDBAuditInstanceOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o DBAuditInstanceOutput) ToDBAuditInstancePtrOutput() DBAuditInstancePtrOutput {
-	return o.ToDBAuditInstancePtrOutputWithContext(context.Background())
-}
-
-func (o DBAuditInstanceOutput) ToDBAuditInstancePtrOutputWithContext(ctx context.Context) DBAuditInstancePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DBAuditInstance) *DBAuditInstance {
-		return &v
-	}).(DBAuditInstancePtrOutput)
-}
-
-type DBAuditInstancePtrOutput struct{ *pulumi.OutputState }
-
-func (DBAuditInstancePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DBAuditInstance)(nil))
-}
-
-func (o DBAuditInstancePtrOutput) ToDBAuditInstancePtrOutput() DBAuditInstancePtrOutput {
-	return o
-}
-
-func (o DBAuditInstancePtrOutput) ToDBAuditInstancePtrOutputWithContext(ctx context.Context) DBAuditInstancePtrOutput {
-	return o
-}
-
-func (o DBAuditInstancePtrOutput) Elem() DBAuditInstanceOutput {
-	return o.ApplyT(func(v *DBAuditInstance) DBAuditInstance {
-		if v != nil {
-			return *v
-		}
-		var ret DBAuditInstance
-		return ret
-	}).(DBAuditInstanceOutput)
-}
-
 type DBAuditInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (DBAuditInstanceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DBAuditInstance)(nil))
+	return reflect.TypeOf((*[]*DBAuditInstance)(nil)).Elem()
 }
 
 func (o DBAuditInstanceArrayOutput) ToDBAuditInstanceArrayOutput() DBAuditInstanceArrayOutput {
@@ -333,15 +270,15 @@ func (o DBAuditInstanceArrayOutput) ToDBAuditInstanceArrayOutputWithContext(ctx 
 }
 
 func (o DBAuditInstanceArrayOutput) Index(i pulumi.IntInput) DBAuditInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DBAuditInstance {
-		return vs[0].([]DBAuditInstance)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DBAuditInstance {
+		return vs[0].([]*DBAuditInstance)[vs[1].(int)]
 	}).(DBAuditInstanceOutput)
 }
 
 type DBAuditInstanceMapOutput struct{ *pulumi.OutputState }
 
 func (DBAuditInstanceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DBAuditInstance)(nil))
+	return reflect.TypeOf((*map[string]*DBAuditInstance)(nil)).Elem()
 }
 
 func (o DBAuditInstanceMapOutput) ToDBAuditInstanceMapOutput() DBAuditInstanceMapOutput {
@@ -353,18 +290,16 @@ func (o DBAuditInstanceMapOutput) ToDBAuditInstanceMapOutputWithContext(ctx cont
 }
 
 func (o DBAuditInstanceMapOutput) MapIndex(k pulumi.StringInput) DBAuditInstanceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DBAuditInstance {
-		return vs[0].(map[string]DBAuditInstance)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DBAuditInstance {
+		return vs[0].(map[string]*DBAuditInstance)[vs[1].(string)]
 	}).(DBAuditInstanceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DBAuditInstanceInput)(nil)).Elem(), &DBAuditInstance{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DBAuditInstancePtrInput)(nil)).Elem(), &DBAuditInstance{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DBAuditInstanceArrayInput)(nil)).Elem(), DBAuditInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DBAuditInstanceMapInput)(nil)).Elem(), DBAuditInstanceMap{})
 	pulumi.RegisterOutputType(DBAuditInstanceOutput{})
-	pulumi.RegisterOutputType(DBAuditInstancePtrOutput{})
 	pulumi.RegisterOutputType(DBAuditInstanceArrayOutput{})
 	pulumi.RegisterOutputType(DBAuditInstanceMapOutput{})
 }

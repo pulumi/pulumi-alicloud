@@ -136,17 +136,17 @@ export class ReadWriteSplittingConnection extends pulumi.CustomResource {
      */
     constructor(name: string, args: ReadWriteSplittingConnectionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ReadWriteSplittingConnectionArgs | ReadWriteSplittingConnectionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReadWriteSplittingConnectionState | undefined;
-            inputs["connectionPrefix"] = state ? state.connectionPrefix : undefined;
-            inputs["connectionString"] = state ? state.connectionString : undefined;
-            inputs["distributionType"] = state ? state.distributionType : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["maxDelayTime"] = state ? state.maxDelayTime : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["connectionPrefix"] = state ? state.connectionPrefix : undefined;
+            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
+            resourceInputs["distributionType"] = state ? state.distributionType : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["maxDelayTime"] = state ? state.maxDelayTime : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as ReadWriteSplittingConnectionArgs | undefined;
             if ((!args || args.distributionType === undefined) && !opts.urn) {
@@ -155,18 +155,16 @@ export class ReadWriteSplittingConnection extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["connectionPrefix"] = args ? args.connectionPrefix : undefined;
-            inputs["distributionType"] = args ? args.distributionType : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["maxDelayTime"] = args ? args.maxDelayTime : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["weight"] = args ? args.weight : undefined;
-            inputs["connectionString"] = undefined /*out*/;
+            resourceInputs["connectionPrefix"] = args ? args.connectionPrefix : undefined;
+            resourceInputs["distributionType"] = args ? args.distributionType : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["maxDelayTime"] = args ? args.maxDelayTime : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["connectionString"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ReadWriteSplittingConnection.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ReadWriteSplittingConnection.__pulumiType, name, resourceInputs, opts);
     }
 }
 

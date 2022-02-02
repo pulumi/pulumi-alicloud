@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ClickHouse
 {
@@ -43,13 +42,13 @@ namespace Pulumi.AliCloud.ClickHouse
         ///             StorageType = "cloud_essd",
         ///             VswitchId = "your_vswitch_id",
         ///         });
-        ///         var defaultDbClusters = defaultDbCluster.Id.Apply(id =&gt; AliCloud.ClickHouse.GetDbClusters.InvokeAsync(new AliCloud.ClickHouse.GetDbClustersArgs
+        ///         var defaultDbClusters = AliCloud.ClickHouse.GetDbClusters.Invoke(new AliCloud.ClickHouse.GetDbClustersInvokeArgs
         ///         {
         ///             Ids = 
         ///             {
-        ///                 id,
+        ///                 defaultDbCluster.Id,
         ///             },
-        ///         }));
+        ///         });
         ///         this.DbCluster = defaultDbClusters.Apply(defaultDbClusters =&gt; defaultDbClusters.Ids?[0]);
         ///     }
         /// 
@@ -61,7 +60,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDbClustersResult> InvokeAsync(GetDbClustersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDbClustersResult>("alicloud:clickhouse/getDbClusters:getDbClusters", args ?? new GetDbClustersArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDbClustersResult>("alicloud:clickhouse/getDbClusters:getDbClusters", args ?? new GetDbClustersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Click House DBCluster of the current Alibaba Cloud user.
@@ -94,13 +93,13 @@ namespace Pulumi.AliCloud.ClickHouse
         ///             StorageType = "cloud_essd",
         ///             VswitchId = "your_vswitch_id",
         ///         });
-        ///         var defaultDbClusters = defaultDbCluster.Id.Apply(id =&gt; AliCloud.ClickHouse.GetDbClusters.InvokeAsync(new AliCloud.ClickHouse.GetDbClustersArgs
+        ///         var defaultDbClusters = AliCloud.ClickHouse.GetDbClusters.Invoke(new AliCloud.ClickHouse.GetDbClustersInvokeArgs
         ///         {
         ///             Ids = 
         ///             {
-        ///                 id,
+        ///                 defaultDbCluster.Id,
         ///             },
-        ///         }));
+        ///         });
         ///         this.DbCluster = defaultDbClusters.Apply(defaultDbClusters =&gt; defaultDbClusters.Ids?[0]);
         ///     }
         /// 
@@ -112,7 +111,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDbClustersResult> Invoke(GetDbClustersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDbClustersResult>("alicloud:clickhouse/getDbClusters:getDbClusters", args ?? new GetDbClustersInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDbClustersResult>("alicloud:clickhouse/getDbClusters:getDbClusters", args ?? new GetDbClustersInvokeArgs(), options.WithDefaults());
     }
 
 

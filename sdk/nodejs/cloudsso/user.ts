@@ -95,19 +95,19 @@ export class User extends pulumi.CustomResource {
      */
     constructor(name: string, args: UserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["directoryId"] = state ? state.directoryId : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["email"] = state ? state.email : undefined;
-            inputs["firstName"] = state ? state.firstName : undefined;
-            inputs["lastName"] = state ? state.lastName : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["userId"] = state ? state.userId : undefined;
-            inputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["directoryId"] = state ? state.directoryId : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["email"] = state ? state.email : undefined;
+            resourceInputs["firstName"] = state ? state.firstName : undefined;
+            resourceInputs["lastName"] = state ? state.lastName : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["userName"] = state ? state.userName : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
             if ((!args || args.directoryId === undefined) && !opts.urn) {
@@ -116,20 +116,18 @@ export class User extends pulumi.CustomResource {
             if ((!args || args.userName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userName'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["directoryId"] = args ? args.directoryId : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["email"] = args ? args.email : undefined;
-            inputs["firstName"] = args ? args.firstName : undefined;
-            inputs["lastName"] = args ? args.lastName : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["userName"] = args ? args.userName : undefined;
-            inputs["userId"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["directoryId"] = args ? args.directoryId : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["email"] = args ? args.email : undefined;
+            resourceInputs["firstName"] = args ? args.firstName : undefined;
+            resourceInputs["lastName"] = args ? args.lastName : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["userId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(User.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(User.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -605,32 +605,32 @@ export class Cluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: ClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterArgs | ClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            inputs["bootstrapActions"] = state ? state.bootstrapActions : undefined;
-            inputs["chargeType"] = state ? state.chargeType : undefined;
-            inputs["clusterType"] = state ? state.clusterType : undefined;
-            inputs["depositType"] = state ? state.depositType : undefined;
-            inputs["easEnable"] = state ? state.easEnable : undefined;
-            inputs["emrVer"] = state ? state.emrVer : undefined;
-            inputs["highAvailabilityEnable"] = state ? state.highAvailabilityEnable : undefined;
-            inputs["hostGroups"] = state ? state.hostGroups : undefined;
-            inputs["isOpenPublicIp"] = state ? state.isOpenPublicIp : undefined;
-            inputs["keyPairName"] = state ? state.keyPairName : undefined;
-            inputs["masterPwd"] = state ? state.masterPwd : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["optionSoftwareLists"] = state ? state.optionSoftwareLists : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["relatedClusterId"] = state ? state.relatedClusterId : undefined;
-            inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            inputs["sshEnable"] = state ? state.sshEnable : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["useLocalMetadb"] = state ? state.useLocalMetadb : undefined;
-            inputs["userDefinedEmrEcsRole"] = state ? state.userDefinedEmrEcsRole : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["bootstrapActions"] = state ? state.bootstrapActions : undefined;
+            resourceInputs["chargeType"] = state ? state.chargeType : undefined;
+            resourceInputs["clusterType"] = state ? state.clusterType : undefined;
+            resourceInputs["depositType"] = state ? state.depositType : undefined;
+            resourceInputs["easEnable"] = state ? state.easEnable : undefined;
+            resourceInputs["emrVer"] = state ? state.emrVer : undefined;
+            resourceInputs["highAvailabilityEnable"] = state ? state.highAvailabilityEnable : undefined;
+            resourceInputs["hostGroups"] = state ? state.hostGroups : undefined;
+            resourceInputs["isOpenPublicIp"] = state ? state.isOpenPublicIp : undefined;
+            resourceInputs["keyPairName"] = state ? state.keyPairName : undefined;
+            resourceInputs["masterPwd"] = state ? state.masterPwd : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["optionSoftwareLists"] = state ? state.optionSoftwareLists : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["relatedClusterId"] = state ? state.relatedClusterId : undefined;
+            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["sshEnable"] = state ? state.sshEnable : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["useLocalMetadb"] = state ? state.useLocalMetadb : undefined;
+            resourceInputs["userDefinedEmrEcsRole"] = state ? state.userDefinedEmrEcsRole : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
             if ((!args || args.clusterType === undefined) && !opts.urn) {
@@ -642,33 +642,31 @@ export class Cluster extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["bootstrapActions"] = args ? args.bootstrapActions : undefined;
-            inputs["chargeType"] = args ? args.chargeType : undefined;
-            inputs["clusterType"] = args ? args.clusterType : undefined;
-            inputs["depositType"] = args ? args.depositType : undefined;
-            inputs["easEnable"] = args ? args.easEnable : undefined;
-            inputs["emrVer"] = args ? args.emrVer : undefined;
-            inputs["highAvailabilityEnable"] = args ? args.highAvailabilityEnable : undefined;
-            inputs["hostGroups"] = args ? args.hostGroups : undefined;
-            inputs["isOpenPublicIp"] = args ? args.isOpenPublicIp : undefined;
-            inputs["keyPairName"] = args ? args.keyPairName : undefined;
-            inputs["masterPwd"] = args ? args.masterPwd : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["optionSoftwareLists"] = args ? args.optionSoftwareLists : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["relatedClusterId"] = args ? args.relatedClusterId : undefined;
-            inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            inputs["sshEnable"] = args ? args.sshEnable : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["useLocalMetadb"] = args ? args.useLocalMetadb : undefined;
-            inputs["userDefinedEmrEcsRole"] = args ? args.userDefinedEmrEcsRole : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["bootstrapActions"] = args ? args.bootstrapActions : undefined;
+            resourceInputs["chargeType"] = args ? args.chargeType : undefined;
+            resourceInputs["clusterType"] = args ? args.clusterType : undefined;
+            resourceInputs["depositType"] = args ? args.depositType : undefined;
+            resourceInputs["easEnable"] = args ? args.easEnable : undefined;
+            resourceInputs["emrVer"] = args ? args.emrVer : undefined;
+            resourceInputs["highAvailabilityEnable"] = args ? args.highAvailabilityEnable : undefined;
+            resourceInputs["hostGroups"] = args ? args.hostGroups : undefined;
+            resourceInputs["isOpenPublicIp"] = args ? args.isOpenPublicIp : undefined;
+            resourceInputs["keyPairName"] = args ? args.keyPairName : undefined;
+            resourceInputs["masterPwd"] = args ? args.masterPwd : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["optionSoftwareLists"] = args ? args.optionSoftwareLists : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["relatedClusterId"] = args ? args.relatedClusterId : undefined;
+            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["sshEnable"] = args ? args.sshEnable : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["useLocalMetadb"] = args ? args.useLocalMetadb : undefined;
+            resourceInputs["userDefinedEmrEcsRole"] = args ? args.userDefinedEmrEcsRole : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Cluster.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Cluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

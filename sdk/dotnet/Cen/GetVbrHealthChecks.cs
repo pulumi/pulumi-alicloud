@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cen
 {
@@ -18,7 +17,7 @@ namespace Pulumi.AliCloud.Cen
         /// &gt; **NOTE:** Available in 1.98.0+
         /// </summary>
         public static Task<GetVbrHealthChecksResult> InvokeAsync(GetVbrHealthChecksArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVbrHealthChecksResult>("alicloud:cen/getVbrHealthChecks:getVbrHealthChecks", args ?? new GetVbrHealthChecksArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVbrHealthChecksResult>("alicloud:cen/getVbrHealthChecks:getVbrHealthChecks", args ?? new GetVbrHealthChecksArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides CEN VBR Health Checks available to the user.
@@ -26,7 +25,7 @@ namespace Pulumi.AliCloud.Cen
         /// &gt; **NOTE:** Available in 1.98.0+
         /// </summary>
         public static Output<GetVbrHealthChecksResult> Invoke(GetVbrHealthChecksInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVbrHealthChecksResult>("alicloud:cen/getVbrHealthChecks:getVbrHealthChecks", args ?? new GetVbrHealthChecksInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetVbrHealthChecksResult>("alicloud:cen/getVbrHealthChecks:getVbrHealthChecks", args ?? new GetVbrHealthChecksInvokeArgs(), options.WithDefaults());
     }
 
 

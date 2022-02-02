@@ -65,29 +65,29 @@ export class Swarm extends pulumi.CustomResource {
      */
     constructor(name: string, args: SwarmArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SwarmArgs | SwarmState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SwarmState | undefined;
-            inputs["agentVersion"] = state ? state.agentVersion : undefined;
-            inputs["cidrBlock"] = state ? state.cidrBlock : undefined;
-            inputs["diskCategory"] = state ? state.diskCategory : undefined;
-            inputs["diskSize"] = state ? state.diskSize : undefined;
-            inputs["imageId"] = state ? state.imageId : undefined;
-            inputs["instanceType"] = state ? state.instanceType : undefined;
-            inputs["isOutdated"] = state ? state.isOutdated : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namePrefix"] = state ? state.namePrefix : undefined;
-            inputs["needSlb"] = state ? state.needSlb : undefined;
-            inputs["nodeNumber"] = state ? state.nodeNumber : undefined;
-            inputs["nodes"] = state ? state.nodes : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["releaseEip"] = state ? state.releaseEip : undefined;
-            inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["slbId"] = state ? state.slbId : undefined;
-            inputs["vpcId"] = state ? state.vpcId : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["agentVersion"] = state ? state.agentVersion : undefined;
+            resourceInputs["cidrBlock"] = state ? state.cidrBlock : undefined;
+            resourceInputs["diskCategory"] = state ? state.diskCategory : undefined;
+            resourceInputs["diskSize"] = state ? state.diskSize : undefined;
+            resourceInputs["imageId"] = state ? state.imageId : undefined;
+            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
+            resourceInputs["isOutdated"] = state ? state.isOutdated : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
+            resourceInputs["needSlb"] = state ? state.needSlb : undefined;
+            resourceInputs["nodeNumber"] = state ? state.nodeNumber : undefined;
+            resourceInputs["nodes"] = state ? state.nodes : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["releaseEip"] = state ? state.releaseEip : undefined;
+            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["slbId"] = state ? state.slbId : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as SwarmArgs | undefined;
             if ((!args || args.cidrBlock === undefined) && !opts.urn) {
@@ -102,30 +102,28 @@ export class Swarm extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            inputs["cidrBlock"] = args ? args.cidrBlock : undefined;
-            inputs["diskCategory"] = args ? args.diskCategory : undefined;
-            inputs["diskSize"] = args ? args.diskSize : undefined;
-            inputs["imageId"] = args ? args.imageId : undefined;
-            inputs["instanceType"] = args ? args.instanceType : undefined;
-            inputs["isOutdated"] = args ? args.isOutdated : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namePrefix"] = args ? args.namePrefix : undefined;
-            inputs["needSlb"] = args ? args.needSlb : undefined;
-            inputs["nodeNumber"] = args ? args.nodeNumber : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["releaseEip"] = args ? args.releaseEip : undefined;
-            inputs["size"] = args ? args.size : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["agentVersion"] = undefined /*out*/;
-            inputs["nodes"] = undefined /*out*/;
-            inputs["securityGroupId"] = undefined /*out*/;
-            inputs["slbId"] = undefined /*out*/;
-            inputs["vpcId"] = undefined /*out*/;
+            resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
+            resourceInputs["diskCategory"] = args ? args.diskCategory : undefined;
+            resourceInputs["diskSize"] = args ? args.diskSize : undefined;
+            resourceInputs["imageId"] = args ? args.imageId : undefined;
+            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
+            resourceInputs["isOutdated"] = args ? args.isOutdated : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
+            resourceInputs["needSlb"] = args ? args.needSlb : undefined;
+            resourceInputs["nodeNumber"] = args ? args.nodeNumber : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["releaseEip"] = args ? args.releaseEip : undefined;
+            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["agentVersion"] = undefined /*out*/;
+            resourceInputs["nodes"] = undefined /*out*/;
+            resourceInputs["securityGroupId"] = undefined /*out*/;
+            resourceInputs["slbId"] = undefined /*out*/;
+            resourceInputs["vpcId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Swarm.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Swarm.__pulumiType, name, resourceInputs, opts);
     }
 }
 

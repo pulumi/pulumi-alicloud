@@ -82,17 +82,17 @@ export class DeliveryChannel extends pulumi.CustomResource {
      */
     constructor(name: string, args: DeliveryChannelArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DeliveryChannelArgs | DeliveryChannelState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DeliveryChannelState | undefined;
-            inputs["deliveryChannelAssumeRoleArn"] = state ? state.deliveryChannelAssumeRoleArn : undefined;
-            inputs["deliveryChannelCondition"] = state ? state.deliveryChannelCondition : undefined;
-            inputs["deliveryChannelName"] = state ? state.deliveryChannelName : undefined;
-            inputs["deliveryChannelTargetArn"] = state ? state.deliveryChannelTargetArn : undefined;
-            inputs["deliveryChannelType"] = state ? state.deliveryChannelType : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["deliveryChannelAssumeRoleArn"] = state ? state.deliveryChannelAssumeRoleArn : undefined;
+            resourceInputs["deliveryChannelCondition"] = state ? state.deliveryChannelCondition : undefined;
+            resourceInputs["deliveryChannelName"] = state ? state.deliveryChannelName : undefined;
+            resourceInputs["deliveryChannelTargetArn"] = state ? state.deliveryChannelTargetArn : undefined;
+            resourceInputs["deliveryChannelType"] = state ? state.deliveryChannelType : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as DeliveryChannelArgs | undefined;
             if ((!args || args.deliveryChannelAssumeRoleArn === undefined) && !opts.urn) {
@@ -104,18 +104,16 @@ export class DeliveryChannel extends pulumi.CustomResource {
             if ((!args || args.deliveryChannelType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'deliveryChannelType'");
             }
-            inputs["deliveryChannelAssumeRoleArn"] = args ? args.deliveryChannelAssumeRoleArn : undefined;
-            inputs["deliveryChannelCondition"] = args ? args.deliveryChannelCondition : undefined;
-            inputs["deliveryChannelName"] = args ? args.deliveryChannelName : undefined;
-            inputs["deliveryChannelTargetArn"] = args ? args.deliveryChannelTargetArn : undefined;
-            inputs["deliveryChannelType"] = args ? args.deliveryChannelType : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["status"] = args ? args.status : undefined;
+            resourceInputs["deliveryChannelAssumeRoleArn"] = args ? args.deliveryChannelAssumeRoleArn : undefined;
+            resourceInputs["deliveryChannelCondition"] = args ? args.deliveryChannelCondition : undefined;
+            resourceInputs["deliveryChannelName"] = args ? args.deliveryChannelName : undefined;
+            resourceInputs["deliveryChannelTargetArn"] = args ? args.deliveryChannelTargetArn : undefined;
+            resourceInputs["deliveryChannelType"] = args ? args.deliveryChannelType : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DeliveryChannel.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DeliveryChannel.__pulumiType, name, resourceInputs, opts);
     }
 }
 

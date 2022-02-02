@@ -187,7 +187,7 @@ type ServerGroupInput interface {
 }
 
 func (*ServerGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerGroup)(nil))
+	return reflect.TypeOf((**ServerGroup)(nil)).Elem()
 }
 
 func (i *ServerGroup) ToServerGroupOutput() ServerGroupOutput {
@@ -196,35 +196,6 @@ func (i *ServerGroup) ToServerGroupOutput() ServerGroupOutput {
 
 func (i *ServerGroup) ToServerGroupOutputWithContext(ctx context.Context) ServerGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupOutput)
-}
-
-func (i *ServerGroup) ToServerGroupPtrOutput() ServerGroupPtrOutput {
-	return i.ToServerGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *ServerGroup) ToServerGroupPtrOutputWithContext(ctx context.Context) ServerGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupPtrOutput)
-}
-
-type ServerGroupPtrInput interface {
-	pulumi.Input
-
-	ToServerGroupPtrOutput() ServerGroupPtrOutput
-	ToServerGroupPtrOutputWithContext(ctx context.Context) ServerGroupPtrOutput
-}
-
-type serverGroupPtrType ServerGroupArgs
-
-func (*serverGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServerGroup)(nil))
-}
-
-func (i *serverGroupPtrType) ToServerGroupPtrOutput() ServerGroupPtrOutput {
-	return i.ToServerGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *serverGroupPtrType) ToServerGroupPtrOutputWithContext(ctx context.Context) ServerGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupPtrOutput)
 }
 
 // ServerGroupArrayInput is an input type that accepts ServerGroupArray and ServerGroupArrayOutput values.
@@ -280,7 +251,7 @@ func (i ServerGroupMap) ToServerGroupMapOutputWithContext(ctx context.Context) S
 type ServerGroupOutput struct{ *pulumi.OutputState }
 
 func (ServerGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerGroup)(nil))
+	return reflect.TypeOf((**ServerGroup)(nil)).Elem()
 }
 
 func (o ServerGroupOutput) ToServerGroupOutput() ServerGroupOutput {
@@ -291,44 +262,10 @@ func (o ServerGroupOutput) ToServerGroupOutputWithContext(ctx context.Context) S
 	return o
 }
 
-func (o ServerGroupOutput) ToServerGroupPtrOutput() ServerGroupPtrOutput {
-	return o.ToServerGroupPtrOutputWithContext(context.Background())
-}
-
-func (o ServerGroupOutput) ToServerGroupPtrOutputWithContext(ctx context.Context) ServerGroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerGroup) *ServerGroup {
-		return &v
-	}).(ServerGroupPtrOutput)
-}
-
-type ServerGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (ServerGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServerGroup)(nil))
-}
-
-func (o ServerGroupPtrOutput) ToServerGroupPtrOutput() ServerGroupPtrOutput {
-	return o
-}
-
-func (o ServerGroupPtrOutput) ToServerGroupPtrOutputWithContext(ctx context.Context) ServerGroupPtrOutput {
-	return o
-}
-
-func (o ServerGroupPtrOutput) Elem() ServerGroupOutput {
-	return o.ApplyT(func(v *ServerGroup) ServerGroup {
-		if v != nil {
-			return *v
-		}
-		var ret ServerGroup
-		return ret
-	}).(ServerGroupOutput)
-}
-
 type ServerGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (ServerGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServerGroup)(nil))
+	return reflect.TypeOf((*[]*ServerGroup)(nil)).Elem()
 }
 
 func (o ServerGroupArrayOutput) ToServerGroupArrayOutput() ServerGroupArrayOutput {
@@ -340,15 +277,15 @@ func (o ServerGroupArrayOutput) ToServerGroupArrayOutputWithContext(ctx context.
 }
 
 func (o ServerGroupArrayOutput) Index(i pulumi.IntInput) ServerGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerGroup {
-		return vs[0].([]ServerGroup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServerGroup {
+		return vs[0].([]*ServerGroup)[vs[1].(int)]
 	}).(ServerGroupOutput)
 }
 
 type ServerGroupMapOutput struct{ *pulumi.OutputState }
 
 func (ServerGroupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ServerGroup)(nil))
+	return reflect.TypeOf((*map[string]*ServerGroup)(nil)).Elem()
 }
 
 func (o ServerGroupMapOutput) ToServerGroupMapOutput() ServerGroupMapOutput {
@@ -360,18 +297,16 @@ func (o ServerGroupMapOutput) ToServerGroupMapOutputWithContext(ctx context.Cont
 }
 
 func (o ServerGroupMapOutput) MapIndex(k pulumi.StringInput) ServerGroupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServerGroup {
-		return vs[0].(map[string]ServerGroup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ServerGroup {
+		return vs[0].(map[string]*ServerGroup)[vs[1].(string)]
 	}).(ServerGroupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupInput)(nil)).Elem(), &ServerGroup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupPtrInput)(nil)).Elem(), &ServerGroup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupArrayInput)(nil)).Elem(), ServerGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupMapInput)(nil)).Elem(), ServerGroupMap{})
 	pulumi.RegisterOutputType(ServerGroupOutput{})
-	pulumi.RegisterOutputType(ServerGroupPtrOutput{})
 	pulumi.RegisterOutputType(ServerGroupArrayOutput{})
 	pulumi.RegisterOutputType(ServerGroupMapOutput{})
 }

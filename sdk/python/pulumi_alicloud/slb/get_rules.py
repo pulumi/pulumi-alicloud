@@ -160,7 +160,7 @@ def get_rules(frontend_port: Optional[int] = None,
         domain="*.aliyun.com",
         url="/image",
         server_group_id=default_server_group.id)
-    sample_ds = default_application_load_balancer.id.apply(lambda id: alicloud.slb.get_rules(load_balancer_id=id,
+    sample_ds = default_application_load_balancer.id.apply(lambda id: alicloud.slb.get_rules_output(load_balancer_id=id,
         frontend_port=22))
     pulumi.export("firstSlbRuleId", sample_ds.slb_rules[0].id)
     ```
@@ -239,7 +239,7 @@ def get_rules_output(frontend_port: Optional[pulumi.Input[int]] = None,
         domain="*.aliyun.com",
         url="/image",
         server_group_id=default_server_group.id)
-    sample_ds = default_application_load_balancer.id.apply(lambda id: alicloud.slb.get_rules(load_balancer_id=id,
+    sample_ds = default_application_load_balancer.id.apply(lambda id: alicloud.slb.get_rules_output(load_balancer_id=id,
         frontend_port=22))
     pulumi.export("firstSlbRuleId", sample_ds.slb_rules[0].id)
     ```

@@ -112,43 +112,41 @@ export class Policy extends pulumi.CustomResource {
      */
     constructor(name: string, args?: PolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PolicyArgs | PolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
-            inputs["attachmentCount"] = state ? state.attachmentCount : undefined;
-            inputs["defaultVersion"] = state ? state.defaultVersion : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["document"] = state ? state.document : undefined;
-            inputs["force"] = state ? state.force : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["policyDocument"] = state ? state.policyDocument : undefined;
-            inputs["policyName"] = state ? state.policyName : undefined;
-            inputs["rotateStrategy"] = state ? state.rotateStrategy : undefined;
-            inputs["statements"] = state ? state.statements : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["version"] = state ? state.version : undefined;
-            inputs["versionId"] = state ? state.versionId : undefined;
+            resourceInputs["attachmentCount"] = state ? state.attachmentCount : undefined;
+            resourceInputs["defaultVersion"] = state ? state.defaultVersion : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["document"] = state ? state.document : undefined;
+            resourceInputs["force"] = state ? state.force : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["policyDocument"] = state ? state.policyDocument : undefined;
+            resourceInputs["policyName"] = state ? state.policyName : undefined;
+            resourceInputs["rotateStrategy"] = state ? state.rotateStrategy : undefined;
+            resourceInputs["statements"] = state ? state.statements : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["versionId"] = state ? state.versionId : undefined;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["document"] = args ? args.document : undefined;
-            inputs["force"] = args ? args.force : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["policyDocument"] = args ? args.policyDocument : undefined;
-            inputs["policyName"] = args ? args.policyName : undefined;
-            inputs["rotateStrategy"] = args ? args.rotateStrategy : undefined;
-            inputs["statements"] = args ? args.statements : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["attachmentCount"] = undefined /*out*/;
-            inputs["defaultVersion"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
-            inputs["versionId"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["document"] = args ? args.document : undefined;
+            resourceInputs["force"] = args ? args.force : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["policyDocument"] = args ? args.policyDocument : undefined;
+            resourceInputs["policyName"] = args ? args.policyName : undefined;
+            resourceInputs["rotateStrategy"] = args ? args.rotateStrategy : undefined;
+            resourceInputs["statements"] = args ? args.statements : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["attachmentCount"] = undefined /*out*/;
+            resourceInputs["defaultVersion"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["versionId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Policy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Policy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

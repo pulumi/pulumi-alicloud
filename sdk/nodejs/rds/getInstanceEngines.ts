@@ -32,9 +32,7 @@ export function getInstanceEngines(args?: GetInstanceEnginesArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:rds/getInstanceEngines:getInstanceEngines", {
         "category": args.category,
         "dbInstanceStorageType": args.dbInstanceStorageType,

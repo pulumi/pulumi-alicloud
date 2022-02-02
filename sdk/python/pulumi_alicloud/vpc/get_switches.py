@@ -261,7 +261,7 @@ def get_switches(cidr_block: Optional[str] = None,
         cidr_block="172.16.0.0/24",
         vpc_id=vpc.id,
         vswitch_name=name)
-    default_switches = vswitch.vswitch_name.apply(lambda vswitch_name: alicloud.vpc.get_switches(name_regex=vswitch_name))
+    default_switches = alicloud.vpc.get_switches_output(name_regex=vswitch.vswitch_name)
     ```
 
 
@@ -358,7 +358,7 @@ def get_switches_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None
         cidr_block="172.16.0.0/24",
         vpc_id=vpc.id,
         vswitch_name=name)
-    default_switches = vswitch.vswitch_name.apply(lambda vswitch_name: alicloud.vpc.get_switches(name_regex=vswitch_name))
+    default_switches = alicloud.vpc.get_switches_output(name_regex=vswitch.vswitch_name)
     ```
 
 

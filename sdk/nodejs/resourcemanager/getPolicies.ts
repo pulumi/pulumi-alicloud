@@ -31,9 +31,7 @@ export function getPolicies(args?: GetPoliciesArgs, opts?: pulumi.InvokeOptions)
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:resourcemanager/getPolicies:getPolicies", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

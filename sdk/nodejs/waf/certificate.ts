@@ -103,16 +103,16 @@ export class Certificate extends pulumi.CustomResource {
      */
     constructor(name: string, args: CertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CertificateArgs | CertificateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CertificateState | undefined;
-            inputs["certificate"] = state ? state.certificate : undefined;
-            inputs["certificateId"] = state ? state.certificateId : undefined;
-            inputs["certificateName"] = state ? state.certificateName : undefined;
-            inputs["domain"] = state ? state.domain : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["privateKey"] = state ? state.privateKey : undefined;
+            resourceInputs["certificate"] = state ? state.certificate : undefined;
+            resourceInputs["certificateId"] = state ? state.certificateId : undefined;
+            resourceInputs["certificateName"] = state ? state.certificateName : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
         } else {
             const args = argsOrState as CertificateArgs | undefined;
             if ((!args || args.domain === undefined) && !opts.urn) {
@@ -121,17 +121,15 @@ export class Certificate extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["certificate"] = args ? args.certificate : undefined;
-            inputs["certificateId"] = args ? args.certificateId : undefined;
-            inputs["certificateName"] = args ? args.certificateName : undefined;
-            inputs["domain"] = args ? args.domain : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["privateKey"] = args ? args.privateKey : undefined;
+            resourceInputs["certificate"] = args ? args.certificate : undefined;
+            resourceInputs["certificateId"] = args ? args.certificateId : undefined;
+            resourceInputs["certificateName"] = args ? args.certificateName : undefined;
+            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Certificate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Certificate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

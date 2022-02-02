@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -62,7 +61,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTrafficMirrorFilterEgressRulesResult> InvokeAsync(GetTrafficMirrorFilterEgressRulesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTrafficMirrorFilterEgressRulesResult>("alicloud:vpc/getTrafficMirrorFilterEgressRules:getTrafficMirrorFilterEgressRules", args ?? new GetTrafficMirrorFilterEgressRulesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTrafficMirrorFilterEgressRulesResult>("alicloud:vpc/getTrafficMirrorFilterEgressRules:getTrafficMirrorFilterEgressRules", args ?? new GetTrafficMirrorFilterEgressRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vpc Traffic Mirror Filter Egress Rules of the current Alibaba Cloud user.
@@ -114,7 +113,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTrafficMirrorFilterEgressRulesResult> Invoke(GetTrafficMirrorFilterEgressRulesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTrafficMirrorFilterEgressRulesResult>("alicloud:vpc/getTrafficMirrorFilterEgressRules:getTrafficMirrorFilterEgressRules", args ?? new GetTrafficMirrorFilterEgressRulesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTrafficMirrorFilterEgressRulesResult>("alicloud:vpc/getTrafficMirrorFilterEgressRules:getTrafficMirrorFilterEgressRules", args ?? new GetTrafficMirrorFilterEgressRulesInvokeArgs(), options.WithDefaults());
     }
 
 

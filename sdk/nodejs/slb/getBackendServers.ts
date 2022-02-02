@@ -28,9 +28,7 @@ export function getBackendServers(args: GetBackendServersArgs, opts?: pulumi.Inv
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:slb/getBackendServers:getBackendServers", {
         "ids": args.ids,
         "loadBalancerId": args.loadBalancerId,

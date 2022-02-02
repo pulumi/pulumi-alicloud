@@ -37,9 +37,7 @@ export function getVirtualNodes(args?: GetVirtualNodesArgs, opts?: pulumi.Invoke
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:eci/getVirtualNodes:getVirtualNodes", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

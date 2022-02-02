@@ -158,9 +158,9 @@ def get_topics(enable_details: Optional[bool] = None,
         instance_id=default_instance.id,
         message_type=0,
         remark="dafault_ons_topic_remark")
-    topics_ds = default_topic.instance_id.apply(lambda instance_id: alicloud.rocketmq.get_topics(instance_id=instance_id,
+    topics_ds = alicloud.rocketmq.get_topics_output(instance_id=default_topic.instance_id,
         name_regex=topic,
-        output_file="topics.txt"))
+        output_file="topics.txt")
     pulumi.export("firstTopicName", topics_ds.topics[0].topic_name)
     ```
 
@@ -229,9 +229,9 @@ def get_topics_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = N
         instance_id=default_instance.id,
         message_type=0,
         remark="dafault_ons_topic_remark")
-    topics_ds = default_topic.instance_id.apply(lambda instance_id: alicloud.rocketmq.get_topics(instance_id=instance_id,
+    topics_ds = alicloud.rocketmq.get_topics_output(instance_id=default_topic.instance_id,
         name_regex=topic,
-        output_file="topics.txt"))
+        output_file="topics.txt")
     pulumi.export("firstTopicName", topics_ds.topics[0].topic_name)
     ```
 

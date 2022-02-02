@@ -167,7 +167,7 @@ type ChartNamespaceInput interface {
 }
 
 func (*ChartNamespace) ElementType() reflect.Type {
-	return reflect.TypeOf((*ChartNamespace)(nil))
+	return reflect.TypeOf((**ChartNamespace)(nil)).Elem()
 }
 
 func (i *ChartNamespace) ToChartNamespaceOutput() ChartNamespaceOutput {
@@ -176,35 +176,6 @@ func (i *ChartNamespace) ToChartNamespaceOutput() ChartNamespaceOutput {
 
 func (i *ChartNamespace) ToChartNamespaceOutputWithContext(ctx context.Context) ChartNamespaceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ChartNamespaceOutput)
-}
-
-func (i *ChartNamespace) ToChartNamespacePtrOutput() ChartNamespacePtrOutput {
-	return i.ToChartNamespacePtrOutputWithContext(context.Background())
-}
-
-func (i *ChartNamespace) ToChartNamespacePtrOutputWithContext(ctx context.Context) ChartNamespacePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ChartNamespacePtrOutput)
-}
-
-type ChartNamespacePtrInput interface {
-	pulumi.Input
-
-	ToChartNamespacePtrOutput() ChartNamespacePtrOutput
-	ToChartNamespacePtrOutputWithContext(ctx context.Context) ChartNamespacePtrOutput
-}
-
-type chartNamespacePtrType ChartNamespaceArgs
-
-func (*chartNamespacePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ChartNamespace)(nil))
-}
-
-func (i *chartNamespacePtrType) ToChartNamespacePtrOutput() ChartNamespacePtrOutput {
-	return i.ToChartNamespacePtrOutputWithContext(context.Background())
-}
-
-func (i *chartNamespacePtrType) ToChartNamespacePtrOutputWithContext(ctx context.Context) ChartNamespacePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ChartNamespacePtrOutput)
 }
 
 // ChartNamespaceArrayInput is an input type that accepts ChartNamespaceArray and ChartNamespaceArrayOutput values.
@@ -260,7 +231,7 @@ func (i ChartNamespaceMap) ToChartNamespaceMapOutputWithContext(ctx context.Cont
 type ChartNamespaceOutput struct{ *pulumi.OutputState }
 
 func (ChartNamespaceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ChartNamespace)(nil))
+	return reflect.TypeOf((**ChartNamespace)(nil)).Elem()
 }
 
 func (o ChartNamespaceOutput) ToChartNamespaceOutput() ChartNamespaceOutput {
@@ -271,44 +242,10 @@ func (o ChartNamespaceOutput) ToChartNamespaceOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o ChartNamespaceOutput) ToChartNamespacePtrOutput() ChartNamespacePtrOutput {
-	return o.ToChartNamespacePtrOutputWithContext(context.Background())
-}
-
-func (o ChartNamespaceOutput) ToChartNamespacePtrOutputWithContext(ctx context.Context) ChartNamespacePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ChartNamespace) *ChartNamespace {
-		return &v
-	}).(ChartNamespacePtrOutput)
-}
-
-type ChartNamespacePtrOutput struct{ *pulumi.OutputState }
-
-func (ChartNamespacePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ChartNamespace)(nil))
-}
-
-func (o ChartNamespacePtrOutput) ToChartNamespacePtrOutput() ChartNamespacePtrOutput {
-	return o
-}
-
-func (o ChartNamespacePtrOutput) ToChartNamespacePtrOutputWithContext(ctx context.Context) ChartNamespacePtrOutput {
-	return o
-}
-
-func (o ChartNamespacePtrOutput) Elem() ChartNamespaceOutput {
-	return o.ApplyT(func(v *ChartNamespace) ChartNamespace {
-		if v != nil {
-			return *v
-		}
-		var ret ChartNamespace
-		return ret
-	}).(ChartNamespaceOutput)
-}
-
 type ChartNamespaceArrayOutput struct{ *pulumi.OutputState }
 
 func (ChartNamespaceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ChartNamespace)(nil))
+	return reflect.TypeOf((*[]*ChartNamespace)(nil)).Elem()
 }
 
 func (o ChartNamespaceArrayOutput) ToChartNamespaceArrayOutput() ChartNamespaceArrayOutput {
@@ -320,15 +257,15 @@ func (o ChartNamespaceArrayOutput) ToChartNamespaceArrayOutputWithContext(ctx co
 }
 
 func (o ChartNamespaceArrayOutput) Index(i pulumi.IntInput) ChartNamespaceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ChartNamespace {
-		return vs[0].([]ChartNamespace)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ChartNamespace {
+		return vs[0].([]*ChartNamespace)[vs[1].(int)]
 	}).(ChartNamespaceOutput)
 }
 
 type ChartNamespaceMapOutput struct{ *pulumi.OutputState }
 
 func (ChartNamespaceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ChartNamespace)(nil))
+	return reflect.TypeOf((*map[string]*ChartNamespace)(nil)).Elem()
 }
 
 func (o ChartNamespaceMapOutput) ToChartNamespaceMapOutput() ChartNamespaceMapOutput {
@@ -340,18 +277,16 @@ func (o ChartNamespaceMapOutput) ToChartNamespaceMapOutputWithContext(ctx contex
 }
 
 func (o ChartNamespaceMapOutput) MapIndex(k pulumi.StringInput) ChartNamespaceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ChartNamespace {
-		return vs[0].(map[string]ChartNamespace)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ChartNamespace {
+		return vs[0].(map[string]*ChartNamespace)[vs[1].(string)]
 	}).(ChartNamespaceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ChartNamespaceInput)(nil)).Elem(), &ChartNamespace{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ChartNamespacePtrInput)(nil)).Elem(), &ChartNamespace{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChartNamespaceArrayInput)(nil)).Elem(), ChartNamespaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChartNamespaceMapInput)(nil)).Elem(), ChartNamespaceMap{})
 	pulumi.RegisterOutputType(ChartNamespaceOutput{})
-	pulumi.RegisterOutputType(ChartNamespacePtrOutput{})
 	pulumi.RegisterOutputType(ChartNamespaceArrayOutput{})
 	pulumi.RegisterOutputType(ChartNamespaceMapOutput{})
 }

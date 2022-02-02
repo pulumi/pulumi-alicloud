@@ -136,7 +136,7 @@ type HostGroupAccountUserAttachmentInput interface {
 }
 
 func (*HostGroupAccountUserAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*HostGroupAccountUserAttachment)(nil))
+	return reflect.TypeOf((**HostGroupAccountUserAttachment)(nil)).Elem()
 }
 
 func (i *HostGroupAccountUserAttachment) ToHostGroupAccountUserAttachmentOutput() HostGroupAccountUserAttachmentOutput {
@@ -145,35 +145,6 @@ func (i *HostGroupAccountUserAttachment) ToHostGroupAccountUserAttachmentOutput(
 
 func (i *HostGroupAccountUserAttachment) ToHostGroupAccountUserAttachmentOutputWithContext(ctx context.Context) HostGroupAccountUserAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostGroupAccountUserAttachmentOutput)
-}
-
-func (i *HostGroupAccountUserAttachment) ToHostGroupAccountUserAttachmentPtrOutput() HostGroupAccountUserAttachmentPtrOutput {
-	return i.ToHostGroupAccountUserAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *HostGroupAccountUserAttachment) ToHostGroupAccountUserAttachmentPtrOutputWithContext(ctx context.Context) HostGroupAccountUserAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HostGroupAccountUserAttachmentPtrOutput)
-}
-
-type HostGroupAccountUserAttachmentPtrInput interface {
-	pulumi.Input
-
-	ToHostGroupAccountUserAttachmentPtrOutput() HostGroupAccountUserAttachmentPtrOutput
-	ToHostGroupAccountUserAttachmentPtrOutputWithContext(ctx context.Context) HostGroupAccountUserAttachmentPtrOutput
-}
-
-type hostGroupAccountUserAttachmentPtrType HostGroupAccountUserAttachmentArgs
-
-func (*hostGroupAccountUserAttachmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**HostGroupAccountUserAttachment)(nil))
-}
-
-func (i *hostGroupAccountUserAttachmentPtrType) ToHostGroupAccountUserAttachmentPtrOutput() HostGroupAccountUserAttachmentPtrOutput {
-	return i.ToHostGroupAccountUserAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *hostGroupAccountUserAttachmentPtrType) ToHostGroupAccountUserAttachmentPtrOutputWithContext(ctx context.Context) HostGroupAccountUserAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HostGroupAccountUserAttachmentPtrOutput)
 }
 
 // HostGroupAccountUserAttachmentArrayInput is an input type that accepts HostGroupAccountUserAttachmentArray and HostGroupAccountUserAttachmentArrayOutput values.
@@ -229,7 +200,7 @@ func (i HostGroupAccountUserAttachmentMap) ToHostGroupAccountUserAttachmentMapOu
 type HostGroupAccountUserAttachmentOutput struct{ *pulumi.OutputState }
 
 func (HostGroupAccountUserAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HostGroupAccountUserAttachment)(nil))
+	return reflect.TypeOf((**HostGroupAccountUserAttachment)(nil)).Elem()
 }
 
 func (o HostGroupAccountUserAttachmentOutput) ToHostGroupAccountUserAttachmentOutput() HostGroupAccountUserAttachmentOutput {
@@ -240,44 +211,10 @@ func (o HostGroupAccountUserAttachmentOutput) ToHostGroupAccountUserAttachmentOu
 	return o
 }
 
-func (o HostGroupAccountUserAttachmentOutput) ToHostGroupAccountUserAttachmentPtrOutput() HostGroupAccountUserAttachmentPtrOutput {
-	return o.ToHostGroupAccountUserAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (o HostGroupAccountUserAttachmentOutput) ToHostGroupAccountUserAttachmentPtrOutputWithContext(ctx context.Context) HostGroupAccountUserAttachmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v HostGroupAccountUserAttachment) *HostGroupAccountUserAttachment {
-		return &v
-	}).(HostGroupAccountUserAttachmentPtrOutput)
-}
-
-type HostGroupAccountUserAttachmentPtrOutput struct{ *pulumi.OutputState }
-
-func (HostGroupAccountUserAttachmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**HostGroupAccountUserAttachment)(nil))
-}
-
-func (o HostGroupAccountUserAttachmentPtrOutput) ToHostGroupAccountUserAttachmentPtrOutput() HostGroupAccountUserAttachmentPtrOutput {
-	return o
-}
-
-func (o HostGroupAccountUserAttachmentPtrOutput) ToHostGroupAccountUserAttachmentPtrOutputWithContext(ctx context.Context) HostGroupAccountUserAttachmentPtrOutput {
-	return o
-}
-
-func (o HostGroupAccountUserAttachmentPtrOutput) Elem() HostGroupAccountUserAttachmentOutput {
-	return o.ApplyT(func(v *HostGroupAccountUserAttachment) HostGroupAccountUserAttachment {
-		if v != nil {
-			return *v
-		}
-		var ret HostGroupAccountUserAttachment
-		return ret
-	}).(HostGroupAccountUserAttachmentOutput)
-}
-
 type HostGroupAccountUserAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (HostGroupAccountUserAttachmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]HostGroupAccountUserAttachment)(nil))
+	return reflect.TypeOf((*[]*HostGroupAccountUserAttachment)(nil)).Elem()
 }
 
 func (o HostGroupAccountUserAttachmentArrayOutput) ToHostGroupAccountUserAttachmentArrayOutput() HostGroupAccountUserAttachmentArrayOutput {
@@ -289,15 +226,15 @@ func (o HostGroupAccountUserAttachmentArrayOutput) ToHostGroupAccountUserAttachm
 }
 
 func (o HostGroupAccountUserAttachmentArrayOutput) Index(i pulumi.IntInput) HostGroupAccountUserAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostGroupAccountUserAttachment {
-		return vs[0].([]HostGroupAccountUserAttachment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HostGroupAccountUserAttachment {
+		return vs[0].([]*HostGroupAccountUserAttachment)[vs[1].(int)]
 	}).(HostGroupAccountUserAttachmentOutput)
 }
 
 type HostGroupAccountUserAttachmentMapOutput struct{ *pulumi.OutputState }
 
 func (HostGroupAccountUserAttachmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]HostGroupAccountUserAttachment)(nil))
+	return reflect.TypeOf((*map[string]*HostGroupAccountUserAttachment)(nil)).Elem()
 }
 
 func (o HostGroupAccountUserAttachmentMapOutput) ToHostGroupAccountUserAttachmentMapOutput() HostGroupAccountUserAttachmentMapOutput {
@@ -309,18 +246,16 @@ func (o HostGroupAccountUserAttachmentMapOutput) ToHostGroupAccountUserAttachmen
 }
 
 func (o HostGroupAccountUserAttachmentMapOutput) MapIndex(k pulumi.StringInput) HostGroupAccountUserAttachmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) HostGroupAccountUserAttachment {
-		return vs[0].(map[string]HostGroupAccountUserAttachment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *HostGroupAccountUserAttachment {
+		return vs[0].(map[string]*HostGroupAccountUserAttachment)[vs[1].(string)]
 	}).(HostGroupAccountUserAttachmentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HostGroupAccountUserAttachmentInput)(nil)).Elem(), &HostGroupAccountUserAttachment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HostGroupAccountUserAttachmentPtrInput)(nil)).Elem(), &HostGroupAccountUserAttachment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostGroupAccountUserAttachmentArrayInput)(nil)).Elem(), HostGroupAccountUserAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostGroupAccountUserAttachmentMapInput)(nil)).Elem(), HostGroupAccountUserAttachmentMap{})
 	pulumi.RegisterOutputType(HostGroupAccountUserAttachmentOutput{})
-	pulumi.RegisterOutputType(HostGroupAccountUserAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(HostGroupAccountUserAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(HostGroupAccountUserAttachmentMapOutput{})
 }

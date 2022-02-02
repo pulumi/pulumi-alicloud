@@ -212,7 +212,7 @@ type GatewayCacheDiskInput interface {
 }
 
 func (*GatewayCacheDisk) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayCacheDisk)(nil))
+	return reflect.TypeOf((**GatewayCacheDisk)(nil)).Elem()
 }
 
 func (i *GatewayCacheDisk) ToGatewayCacheDiskOutput() GatewayCacheDiskOutput {
@@ -221,35 +221,6 @@ func (i *GatewayCacheDisk) ToGatewayCacheDiskOutput() GatewayCacheDiskOutput {
 
 func (i *GatewayCacheDisk) ToGatewayCacheDiskOutputWithContext(ctx context.Context) GatewayCacheDiskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayCacheDiskOutput)
-}
-
-func (i *GatewayCacheDisk) ToGatewayCacheDiskPtrOutput() GatewayCacheDiskPtrOutput {
-	return i.ToGatewayCacheDiskPtrOutputWithContext(context.Background())
-}
-
-func (i *GatewayCacheDisk) ToGatewayCacheDiskPtrOutputWithContext(ctx context.Context) GatewayCacheDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayCacheDiskPtrOutput)
-}
-
-type GatewayCacheDiskPtrInput interface {
-	pulumi.Input
-
-	ToGatewayCacheDiskPtrOutput() GatewayCacheDiskPtrOutput
-	ToGatewayCacheDiskPtrOutputWithContext(ctx context.Context) GatewayCacheDiskPtrOutput
-}
-
-type gatewayCacheDiskPtrType GatewayCacheDiskArgs
-
-func (*gatewayCacheDiskPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GatewayCacheDisk)(nil))
-}
-
-func (i *gatewayCacheDiskPtrType) ToGatewayCacheDiskPtrOutput() GatewayCacheDiskPtrOutput {
-	return i.ToGatewayCacheDiskPtrOutputWithContext(context.Background())
-}
-
-func (i *gatewayCacheDiskPtrType) ToGatewayCacheDiskPtrOutputWithContext(ctx context.Context) GatewayCacheDiskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayCacheDiskPtrOutput)
 }
 
 // GatewayCacheDiskArrayInput is an input type that accepts GatewayCacheDiskArray and GatewayCacheDiskArrayOutput values.
@@ -305,7 +276,7 @@ func (i GatewayCacheDiskMap) ToGatewayCacheDiskMapOutputWithContext(ctx context.
 type GatewayCacheDiskOutput struct{ *pulumi.OutputState }
 
 func (GatewayCacheDiskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayCacheDisk)(nil))
+	return reflect.TypeOf((**GatewayCacheDisk)(nil)).Elem()
 }
 
 func (o GatewayCacheDiskOutput) ToGatewayCacheDiskOutput() GatewayCacheDiskOutput {
@@ -316,44 +287,10 @@ func (o GatewayCacheDiskOutput) ToGatewayCacheDiskOutputWithContext(ctx context.
 	return o
 }
 
-func (o GatewayCacheDiskOutput) ToGatewayCacheDiskPtrOutput() GatewayCacheDiskPtrOutput {
-	return o.ToGatewayCacheDiskPtrOutputWithContext(context.Background())
-}
-
-func (o GatewayCacheDiskOutput) ToGatewayCacheDiskPtrOutputWithContext(ctx context.Context) GatewayCacheDiskPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayCacheDisk) *GatewayCacheDisk {
-		return &v
-	}).(GatewayCacheDiskPtrOutput)
-}
-
-type GatewayCacheDiskPtrOutput struct{ *pulumi.OutputState }
-
-func (GatewayCacheDiskPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GatewayCacheDisk)(nil))
-}
-
-func (o GatewayCacheDiskPtrOutput) ToGatewayCacheDiskPtrOutput() GatewayCacheDiskPtrOutput {
-	return o
-}
-
-func (o GatewayCacheDiskPtrOutput) ToGatewayCacheDiskPtrOutputWithContext(ctx context.Context) GatewayCacheDiskPtrOutput {
-	return o
-}
-
-func (o GatewayCacheDiskPtrOutput) Elem() GatewayCacheDiskOutput {
-	return o.ApplyT(func(v *GatewayCacheDisk) GatewayCacheDisk {
-		if v != nil {
-			return *v
-		}
-		var ret GatewayCacheDisk
-		return ret
-	}).(GatewayCacheDiskOutput)
-}
-
 type GatewayCacheDiskArrayOutput struct{ *pulumi.OutputState }
 
 func (GatewayCacheDiskArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GatewayCacheDisk)(nil))
+	return reflect.TypeOf((*[]*GatewayCacheDisk)(nil)).Elem()
 }
 
 func (o GatewayCacheDiskArrayOutput) ToGatewayCacheDiskArrayOutput() GatewayCacheDiskArrayOutput {
@@ -365,15 +302,15 @@ func (o GatewayCacheDiskArrayOutput) ToGatewayCacheDiskArrayOutputWithContext(ct
 }
 
 func (o GatewayCacheDiskArrayOutput) Index(i pulumi.IntInput) GatewayCacheDiskOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewayCacheDisk {
-		return vs[0].([]GatewayCacheDisk)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GatewayCacheDisk {
+		return vs[0].([]*GatewayCacheDisk)[vs[1].(int)]
 	}).(GatewayCacheDiskOutput)
 }
 
 type GatewayCacheDiskMapOutput struct{ *pulumi.OutputState }
 
 func (GatewayCacheDiskMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GatewayCacheDisk)(nil))
+	return reflect.TypeOf((*map[string]*GatewayCacheDisk)(nil)).Elem()
 }
 
 func (o GatewayCacheDiskMapOutput) ToGatewayCacheDiskMapOutput() GatewayCacheDiskMapOutput {
@@ -385,18 +322,16 @@ func (o GatewayCacheDiskMapOutput) ToGatewayCacheDiskMapOutputWithContext(ctx co
 }
 
 func (o GatewayCacheDiskMapOutput) MapIndex(k pulumi.StringInput) GatewayCacheDiskOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GatewayCacheDisk {
-		return vs[0].(map[string]GatewayCacheDisk)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *GatewayCacheDisk {
+		return vs[0].(map[string]*GatewayCacheDisk)[vs[1].(string)]
 	}).(GatewayCacheDiskOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayCacheDiskInput)(nil)).Elem(), &GatewayCacheDisk{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GatewayCacheDiskPtrInput)(nil)).Elem(), &GatewayCacheDisk{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayCacheDiskArrayInput)(nil)).Elem(), GatewayCacheDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayCacheDiskMapInput)(nil)).Elem(), GatewayCacheDiskMap{})
 	pulumi.RegisterOutputType(GatewayCacheDiskOutput{})
-	pulumi.RegisterOutputType(GatewayCacheDiskPtrOutput{})
 	pulumi.RegisterOutputType(GatewayCacheDiskArrayOutput{})
 	pulumi.RegisterOutputType(GatewayCacheDiskMapOutput{})
 }

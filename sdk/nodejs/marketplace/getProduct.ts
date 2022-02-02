@@ -30,9 +30,7 @@ export function getProduct(args: GetProductArgs, opts?: pulumi.InvokeOptions): P
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:marketplace/getProduct:getProduct", {
         "availableRegion": args.availableRegion,
         "productCode": args.productCode,

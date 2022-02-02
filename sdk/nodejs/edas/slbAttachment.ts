@@ -97,18 +97,18 @@ export class SlbAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: SlbAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SlbAttachmentArgs | SlbAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SlbAttachmentState | undefined;
-            inputs["appId"] = state ? state.appId : undefined;
-            inputs["listenerPort"] = state ? state.listenerPort : undefined;
-            inputs["slbId"] = state ? state.slbId : undefined;
-            inputs["slbIp"] = state ? state.slbIp : undefined;
-            inputs["slbStatus"] = state ? state.slbStatus : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["vserverGroupId"] = state ? state.vserverGroupId : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["appId"] = state ? state.appId : undefined;
+            resourceInputs["listenerPort"] = state ? state.listenerPort : undefined;
+            resourceInputs["slbId"] = state ? state.slbId : undefined;
+            resourceInputs["slbIp"] = state ? state.slbIp : undefined;
+            resourceInputs["slbStatus"] = state ? state.slbStatus : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["vserverGroupId"] = state ? state.vserverGroupId : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as SlbAttachmentArgs | undefined;
             if ((!args || args.appId === undefined) && !opts.urn) {
@@ -123,19 +123,17 @@ export class SlbAttachment extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["appId"] = args ? args.appId : undefined;
-            inputs["listenerPort"] = args ? args.listenerPort : undefined;
-            inputs["slbId"] = args ? args.slbId : undefined;
-            inputs["slbIp"] = args ? args.slbIp : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["vserverGroupId"] = args ? args.vserverGroupId : undefined;
-            inputs["slbStatus"] = undefined /*out*/;
-            inputs["vswitchId"] = undefined /*out*/;
+            resourceInputs["appId"] = args ? args.appId : undefined;
+            resourceInputs["listenerPort"] = args ? args.listenerPort : undefined;
+            resourceInputs["slbId"] = args ? args.slbId : undefined;
+            resourceInputs["slbIp"] = args ? args.slbIp : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["vserverGroupId"] = args ? args.vserverGroupId : undefined;
+            resourceInputs["slbStatus"] = undefined /*out*/;
+            resourceInputs["vswitchId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SlbAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SlbAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

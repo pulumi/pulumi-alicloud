@@ -36,9 +36,7 @@ export function getTrafficMirrorFilterEgressRules(args: GetTrafficMirrorFilterEg
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:vpc/getTrafficMirrorFilterEgressRules:getTrafficMirrorFilterEgressRules", {
         "ids": args.ids,
         "outputFile": args.outputFile,

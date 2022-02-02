@@ -82,13 +82,13 @@ export class HostAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: HostAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HostAttachmentArgs | HostAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostAttachmentState | undefined;
-            inputs["hostGroupId"] = state ? state.hostGroupId : undefined;
-            inputs["hostId"] = state ? state.hostId : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["hostGroupId"] = state ? state.hostGroupId : undefined;
+            resourceInputs["hostId"] = state ? state.hostId : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
         } else {
             const args = argsOrState as HostAttachmentArgs | undefined;
             if ((!args || args.hostGroupId === undefined) && !opts.urn) {
@@ -100,14 +100,12 @@ export class HostAttachment extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["hostGroupId"] = args ? args.hostGroupId : undefined;
-            inputs["hostId"] = args ? args.hostId : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["hostGroupId"] = args ? args.hostGroupId : undefined;
+            resourceInputs["hostId"] = args ? args.hostId : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(HostAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(HostAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

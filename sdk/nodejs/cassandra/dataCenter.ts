@@ -153,27 +153,27 @@ export class DataCenter extends pulumi.CustomResource {
      */
     constructor(name: string, args: DataCenterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DataCenterArgs | DataCenterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DataCenterState | undefined;
-            inputs["autoRenew"] = state ? state.autoRenew : undefined;
-            inputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["dataCenterId"] = state ? state.dataCenterId : undefined;
-            inputs["dataCenterName"] = state ? state.dataCenterName : undefined;
-            inputs["diskSize"] = state ? state.diskSize : undefined;
-            inputs["diskType"] = state ? state.diskType : undefined;
-            inputs["enablePublic"] = state ? state.enablePublic : undefined;
-            inputs["instanceType"] = state ? state.instanceType : undefined;
-            inputs["nodeCount"] = state ? state.nodeCount : undefined;
-            inputs["payType"] = state ? state.payType : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["periodUnit"] = state ? state.periodUnit : undefined;
-            inputs["publicPoints"] = state ? state.publicPoints : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["dataCenterId"] = state ? state.dataCenterId : undefined;
+            resourceInputs["dataCenterName"] = state ? state.dataCenterName : undefined;
+            resourceInputs["diskSize"] = state ? state.diskSize : undefined;
+            resourceInputs["diskType"] = state ? state.diskType : undefined;
+            resourceInputs["enablePublic"] = state ? state.enablePublic : undefined;
+            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
+            resourceInputs["nodeCount"] = state ? state.nodeCount : undefined;
+            resourceInputs["payType"] = state ? state.payType : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
+            resourceInputs["publicPoints"] = state ? state.publicPoints : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as DataCenterArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
@@ -191,28 +191,26 @@ export class DataCenter extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            inputs["autoRenew"] = args ? args.autoRenew : undefined;
-            inputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["dataCenterName"] = args ? args.dataCenterName : undefined;
-            inputs["diskSize"] = args ? args.diskSize : undefined;
-            inputs["diskType"] = args ? args.diskType : undefined;
-            inputs["enablePublic"] = args ? args.enablePublic : undefined;
-            inputs["instanceType"] = args ? args.instanceType : undefined;
-            inputs["nodeCount"] = args ? args.nodeCount : undefined;
-            inputs["payType"] = args ? args.payType : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["periodUnit"] = args ? args.periodUnit : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["dataCenterId"] = undefined /*out*/;
-            inputs["publicPoints"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["dataCenterName"] = args ? args.dataCenterName : undefined;
+            resourceInputs["diskSize"] = args ? args.diskSize : undefined;
+            resourceInputs["diskType"] = args ? args.diskType : undefined;
+            resourceInputs["enablePublic"] = args ? args.enablePublic : undefined;
+            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
+            resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
+            resourceInputs["payType"] = args ? args.payType : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["dataCenterId"] = undefined /*out*/;
+            resourceInputs["publicPoints"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DataCenter.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DataCenter.__pulumiType, name, resourceInputs, opts);
     }
 }
 

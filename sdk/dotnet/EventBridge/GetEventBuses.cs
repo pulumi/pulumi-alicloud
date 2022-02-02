@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.EventBridge
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.EventBridge
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEventBusesResult> InvokeAsync(GetEventBusesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEventBusesResult>("alicloud:eventbridge/getEventBuses:getEventBuses", args ?? new GetEventBusesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEventBusesResult>("alicloud:eventbridge/getEventBuses:getEventBuses", args ?? new GetEventBusesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.EventBridge
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEventBusesResult> Invoke(GetEventBusesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEventBusesResult>("alicloud:eventbridge/getEventBuses:getEventBuses", args ?? new GetEventBusesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetEventBusesResult>("alicloud:eventbridge/getEventBuses:getEventBuses", args ?? new GetEventBusesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -103,16 +103,16 @@ export class AppTemplate extends pulumi.CustomResource {
      */
     constructor(name: string, args: AppTemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AppTemplateArgs | AppTemplateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppTemplateState | undefined;
-            inputs["appTemplateName"] = state ? state.appTemplateName : undefined;
-            inputs["componentLists"] = state ? state.componentLists : undefined;
-            inputs["configLists"] = state ? state.configLists : undefined;
-            inputs["integrationMode"] = state ? state.integrationMode : undefined;
-            inputs["scene"] = state ? state.scene : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["appTemplateName"] = state ? state.appTemplateName : undefined;
+            resourceInputs["componentLists"] = state ? state.componentLists : undefined;
+            resourceInputs["configLists"] = state ? state.configLists : undefined;
+            resourceInputs["integrationMode"] = state ? state.integrationMode : undefined;
+            resourceInputs["scene"] = state ? state.scene : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as AppTemplateArgs | undefined;
             if ((!args || args.appTemplateName === undefined) && !opts.urn) {
@@ -121,17 +121,15 @@ export class AppTemplate extends pulumi.CustomResource {
             if ((!args || args.componentLists === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'componentLists'");
             }
-            inputs["appTemplateName"] = args ? args.appTemplateName : undefined;
-            inputs["componentLists"] = args ? args.componentLists : undefined;
-            inputs["configLists"] = args ? args.configLists : undefined;
-            inputs["integrationMode"] = args ? args.integrationMode : undefined;
-            inputs["scene"] = args ? args.scene : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["appTemplateName"] = args ? args.appTemplateName : undefined;
+            resourceInputs["componentLists"] = args ? args.componentLists : undefined;
+            resourceInputs["configLists"] = args ? args.configLists : undefined;
+            resourceInputs["integrationMode"] = args ? args.integrationMode : undefined;
+            resourceInputs["scene"] = args ? args.scene : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AppTemplate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AppTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

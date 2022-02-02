@@ -143,26 +143,26 @@ export class QuotaApplication extends pulumi.CustomResource {
      */
     constructor(name: string, args: QuotaApplicationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QuotaApplicationArgs | QuotaApplicationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QuotaApplicationState | undefined;
-            inputs["approveValue"] = state ? state.approveValue : undefined;
-            inputs["auditMode"] = state ? state.auditMode : undefined;
-            inputs["auditReason"] = state ? state.auditReason : undefined;
-            inputs["desireValue"] = state ? state.desireValue : undefined;
-            inputs["dimensions"] = state ? state.dimensions : undefined;
-            inputs["effectiveTime"] = state ? state.effectiveTime : undefined;
-            inputs["expireTime"] = state ? state.expireTime : undefined;
-            inputs["noticeType"] = state ? state.noticeType : undefined;
-            inputs["productCode"] = state ? state.productCode : undefined;
-            inputs["quotaActionCode"] = state ? state.quotaActionCode : undefined;
-            inputs["quotaCategory"] = state ? state.quotaCategory : undefined;
-            inputs["quotaDescription"] = state ? state.quotaDescription : undefined;
-            inputs["quotaName"] = state ? state.quotaName : undefined;
-            inputs["quotaUnit"] = state ? state.quotaUnit : undefined;
-            inputs["reason"] = state ? state.reason : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["approveValue"] = state ? state.approveValue : undefined;
+            resourceInputs["auditMode"] = state ? state.auditMode : undefined;
+            resourceInputs["auditReason"] = state ? state.auditReason : undefined;
+            resourceInputs["desireValue"] = state ? state.desireValue : undefined;
+            resourceInputs["dimensions"] = state ? state.dimensions : undefined;
+            resourceInputs["effectiveTime"] = state ? state.effectiveTime : undefined;
+            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
+            resourceInputs["noticeType"] = state ? state.noticeType : undefined;
+            resourceInputs["productCode"] = state ? state.productCode : undefined;
+            resourceInputs["quotaActionCode"] = state ? state.quotaActionCode : undefined;
+            resourceInputs["quotaCategory"] = state ? state.quotaCategory : undefined;
+            resourceInputs["quotaDescription"] = state ? state.quotaDescription : undefined;
+            resourceInputs["quotaName"] = state ? state.quotaName : undefined;
+            resourceInputs["quotaUnit"] = state ? state.quotaUnit : undefined;
+            resourceInputs["reason"] = state ? state.reason : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as QuotaApplicationArgs | undefined;
             if ((!args || args.desireValue === undefined) && !opts.urn) {
@@ -177,27 +177,25 @@ export class QuotaApplication extends pulumi.CustomResource {
             if ((!args || args.reason === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'reason'");
             }
-            inputs["auditMode"] = args ? args.auditMode : undefined;
-            inputs["desireValue"] = args ? args.desireValue : undefined;
-            inputs["dimensions"] = args ? args.dimensions : undefined;
-            inputs["noticeType"] = args ? args.noticeType : undefined;
-            inputs["productCode"] = args ? args.productCode : undefined;
-            inputs["quotaActionCode"] = args ? args.quotaActionCode : undefined;
-            inputs["quotaCategory"] = args ? args.quotaCategory : undefined;
-            inputs["reason"] = args ? args.reason : undefined;
-            inputs["approveValue"] = undefined /*out*/;
-            inputs["auditReason"] = undefined /*out*/;
-            inputs["effectiveTime"] = undefined /*out*/;
-            inputs["expireTime"] = undefined /*out*/;
-            inputs["quotaDescription"] = undefined /*out*/;
-            inputs["quotaName"] = undefined /*out*/;
-            inputs["quotaUnit"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["auditMode"] = args ? args.auditMode : undefined;
+            resourceInputs["desireValue"] = args ? args.desireValue : undefined;
+            resourceInputs["dimensions"] = args ? args.dimensions : undefined;
+            resourceInputs["noticeType"] = args ? args.noticeType : undefined;
+            resourceInputs["productCode"] = args ? args.productCode : undefined;
+            resourceInputs["quotaActionCode"] = args ? args.quotaActionCode : undefined;
+            resourceInputs["quotaCategory"] = args ? args.quotaCategory : undefined;
+            resourceInputs["reason"] = args ? args.reason : undefined;
+            resourceInputs["approveValue"] = undefined /*out*/;
+            resourceInputs["auditReason"] = undefined /*out*/;
+            resourceInputs["effectiveTime"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["quotaDescription"] = undefined /*out*/;
+            resourceInputs["quotaName"] = undefined /*out*/;
+            resourceInputs["quotaUnit"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(QuotaApplication.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(QuotaApplication.__pulumiType, name, resourceInputs, opts);
     }
 }
 

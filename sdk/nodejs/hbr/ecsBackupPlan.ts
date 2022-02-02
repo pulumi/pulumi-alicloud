@@ -159,24 +159,24 @@ export class EcsBackupPlan extends pulumi.CustomResource {
      */
     constructor(name: string, args: EcsBackupPlanArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EcsBackupPlanArgs | EcsBackupPlanState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsBackupPlanState | undefined;
-            inputs["backupType"] = state ? state.backupType : undefined;
-            inputs["detail"] = state ? state.detail : undefined;
-            inputs["disabled"] = state ? state.disabled : undefined;
-            inputs["ecsBackupPlanName"] = state ? state.ecsBackupPlanName : undefined;
-            inputs["exclude"] = state ? state.exclude : undefined;
-            inputs["include"] = state ? state.include : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["options"] = state ? state.options : undefined;
-            inputs["paths"] = state ? state.paths : undefined;
-            inputs["retention"] = state ? state.retention : undefined;
-            inputs["schedule"] = state ? state.schedule : undefined;
-            inputs["speedLimit"] = state ? state.speedLimit : undefined;
-            inputs["updatePaths"] = state ? state.updatePaths : undefined;
-            inputs["vaultId"] = state ? state.vaultId : undefined;
+            resourceInputs["backupType"] = state ? state.backupType : undefined;
+            resourceInputs["detail"] = state ? state.detail : undefined;
+            resourceInputs["disabled"] = state ? state.disabled : undefined;
+            resourceInputs["ecsBackupPlanName"] = state ? state.ecsBackupPlanName : undefined;
+            resourceInputs["exclude"] = state ? state.exclude : undefined;
+            resourceInputs["include"] = state ? state.include : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["options"] = state ? state.options : undefined;
+            resourceInputs["paths"] = state ? state.paths : undefined;
+            resourceInputs["retention"] = state ? state.retention : undefined;
+            resourceInputs["schedule"] = state ? state.schedule : undefined;
+            resourceInputs["speedLimit"] = state ? state.speedLimit : undefined;
+            resourceInputs["updatePaths"] = state ? state.updatePaths : undefined;
+            resourceInputs["vaultId"] = state ? state.vaultId : undefined;
         } else {
             const args = argsOrState as EcsBackupPlanArgs | undefined;
             if ((!args || args.backupType === undefined) && !opts.urn) {
@@ -197,25 +197,23 @@ export class EcsBackupPlan extends pulumi.CustomResource {
             if ((!args || args.vaultId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vaultId'");
             }
-            inputs["backupType"] = args ? args.backupType : undefined;
-            inputs["detail"] = args ? args.detail : undefined;
-            inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["ecsBackupPlanName"] = args ? args.ecsBackupPlanName : undefined;
-            inputs["exclude"] = args ? args.exclude : undefined;
-            inputs["include"] = args ? args.include : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["options"] = args ? args.options : undefined;
-            inputs["paths"] = args ? args.paths : undefined;
-            inputs["retention"] = args ? args.retention : undefined;
-            inputs["schedule"] = args ? args.schedule : undefined;
-            inputs["speedLimit"] = args ? args.speedLimit : undefined;
-            inputs["updatePaths"] = args ? args.updatePaths : undefined;
-            inputs["vaultId"] = args ? args.vaultId : undefined;
+            resourceInputs["backupType"] = args ? args.backupType : undefined;
+            resourceInputs["detail"] = args ? args.detail : undefined;
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
+            resourceInputs["ecsBackupPlanName"] = args ? args.ecsBackupPlanName : undefined;
+            resourceInputs["exclude"] = args ? args.exclude : undefined;
+            resourceInputs["include"] = args ? args.include : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["options"] = args ? args.options : undefined;
+            resourceInputs["paths"] = args ? args.paths : undefined;
+            resourceInputs["retention"] = args ? args.retention : undefined;
+            resourceInputs["schedule"] = args ? args.schedule : undefined;
+            resourceInputs["speedLimit"] = args ? args.speedLimit : undefined;
+            resourceInputs["updatePaths"] = args ? args.updatePaths : undefined;
+            resourceInputs["vaultId"] = args ? args.vaultId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EcsBackupPlan.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EcsBackupPlan.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -194,37 +194,37 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            inputs["account"] = state ? state.account : undefined;
-            inputs["autoRenew"] = state ? state.autoRenew : undefined;
-            inputs["coldStorageSize"] = state ? state.coldStorageSize : undefined;
-            inputs["coreDiskSize"] = state ? state.coreDiskSize : undefined;
-            inputs["coreDiskType"] = state ? state.coreDiskType : undefined;
-            inputs["coreInstanceQuantity"] = state ? state.coreInstanceQuantity : undefined;
-            inputs["coreInstanceType"] = state ? state.coreInstanceType : undefined;
-            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            inputs["duration"] = state ? state.duration : undefined;
-            inputs["engine"] = state ? state.engine : undefined;
-            inputs["engineVersion"] = state ? state.engineVersion : undefined;
-            inputs["immediateDeleteFlag"] = state ? state.immediateDeleteFlag : undefined;
-            inputs["ipWhite"] = state ? state.ipWhite : undefined;
-            inputs["maintainEndTime"] = state ? state.maintainEndTime : undefined;
-            inputs["maintainStartTime"] = state ? state.maintainStartTime : undefined;
-            inputs["masterInstanceQuantity"] = state ? state.masterInstanceQuantity : undefined;
-            inputs["masterInstanceType"] = state ? state.masterInstanceType : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["payType"] = state ? state.payType : undefined;
-            inputs["securityGroups"] = state ? state.securityGroups : undefined;
-            inputs["slbConnAddrs"] = state ? state.slbConnAddrs : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["uiProxyConnAddrs"] = state ? state.uiProxyConnAddrs : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
-            inputs["zkConnAddrs"] = state ? state.zkConnAddrs : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["account"] = state ? state.account : undefined;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["coldStorageSize"] = state ? state.coldStorageSize : undefined;
+            resourceInputs["coreDiskSize"] = state ? state.coreDiskSize : undefined;
+            resourceInputs["coreDiskType"] = state ? state.coreDiskType : undefined;
+            resourceInputs["coreInstanceQuantity"] = state ? state.coreInstanceQuantity : undefined;
+            resourceInputs["coreInstanceType"] = state ? state.coreInstanceType : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["duration"] = state ? state.duration : undefined;
+            resourceInputs["engine"] = state ? state.engine : undefined;
+            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
+            resourceInputs["immediateDeleteFlag"] = state ? state.immediateDeleteFlag : undefined;
+            resourceInputs["ipWhite"] = state ? state.ipWhite : undefined;
+            resourceInputs["maintainEndTime"] = state ? state.maintainEndTime : undefined;
+            resourceInputs["maintainStartTime"] = state ? state.maintainStartTime : undefined;
+            resourceInputs["masterInstanceQuantity"] = state ? state.masterInstanceQuantity : undefined;
+            resourceInputs["masterInstanceType"] = state ? state.masterInstanceType : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["payType"] = state ? state.payType : undefined;
+            resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
+            resourceInputs["slbConnAddrs"] = state ? state.slbConnAddrs : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["uiProxyConnAddrs"] = state ? state.uiProxyConnAddrs : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["zkConnAddrs"] = state ? state.zkConnAddrs : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.coreInstanceType === undefined) && !opts.urn) {
@@ -236,38 +236,36 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.masterInstanceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'masterInstanceType'");
             }
-            inputs["account"] = args ? args.account : undefined;
-            inputs["autoRenew"] = args ? args.autoRenew : undefined;
-            inputs["coldStorageSize"] = args ? args.coldStorageSize : undefined;
-            inputs["coreDiskSize"] = args ? args.coreDiskSize : undefined;
-            inputs["coreDiskType"] = args ? args.coreDiskType : undefined;
-            inputs["coreInstanceQuantity"] = args ? args.coreInstanceQuantity : undefined;
-            inputs["coreInstanceType"] = args ? args.coreInstanceType : undefined;
-            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            inputs["duration"] = args ? args.duration : undefined;
-            inputs["engine"] = args ? args.engine : undefined;
-            inputs["engineVersion"] = args ? args.engineVersion : undefined;
-            inputs["immediateDeleteFlag"] = args ? args.immediateDeleteFlag : undefined;
-            inputs["ipWhite"] = args ? args.ipWhite : undefined;
-            inputs["maintainEndTime"] = args ? args.maintainEndTime : undefined;
-            inputs["maintainStartTime"] = args ? args.maintainStartTime : undefined;
-            inputs["masterInstanceType"] = args ? args.masterInstanceType : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["payType"] = args ? args.payType : undefined;
-            inputs["securityGroups"] = args ? args.securityGroups : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["masterInstanceQuantity"] = undefined /*out*/;
-            inputs["slbConnAddrs"] = undefined /*out*/;
-            inputs["uiProxyConnAddrs"] = undefined /*out*/;
-            inputs["zkConnAddrs"] = undefined /*out*/;
+            resourceInputs["account"] = args ? args.account : undefined;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["coldStorageSize"] = args ? args.coldStorageSize : undefined;
+            resourceInputs["coreDiskSize"] = args ? args.coreDiskSize : undefined;
+            resourceInputs["coreDiskType"] = args ? args.coreDiskType : undefined;
+            resourceInputs["coreInstanceQuantity"] = args ? args.coreInstanceQuantity : undefined;
+            resourceInputs["coreInstanceType"] = args ? args.coreInstanceType : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["duration"] = args ? args.duration : undefined;
+            resourceInputs["engine"] = args ? args.engine : undefined;
+            resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
+            resourceInputs["immediateDeleteFlag"] = args ? args.immediateDeleteFlag : undefined;
+            resourceInputs["ipWhite"] = args ? args.ipWhite : undefined;
+            resourceInputs["maintainEndTime"] = args ? args.maintainEndTime : undefined;
+            resourceInputs["maintainStartTime"] = args ? args.maintainStartTime : undefined;
+            resourceInputs["masterInstanceType"] = args ? args.masterInstanceType : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["payType"] = args ? args.payType : undefined;
+            resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["masterInstanceQuantity"] = undefined /*out*/;
+            resourceInputs["slbConnAddrs"] = undefined /*out*/;
+            resourceInputs["uiProxyConnAddrs"] = undefined /*out*/;
+            resourceInputs["zkConnAddrs"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Instance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

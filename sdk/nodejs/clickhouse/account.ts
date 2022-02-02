@@ -109,16 +109,16 @@ export class Account extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccountArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountArgs | AccountState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
-            inputs["accountDescription"] = state ? state.accountDescription : undefined;
-            inputs["accountName"] = state ? state.accountName : undefined;
-            inputs["accountPassword"] = state ? state.accountPassword : undefined;
-            inputs["dbClusterId"] = state ? state.dbClusterId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["accountDescription"] = state ? state.accountDescription : undefined;
+            resourceInputs["accountName"] = state ? state.accountName : undefined;
+            resourceInputs["accountPassword"] = state ? state.accountPassword : undefined;
+            resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as AccountArgs | undefined;
             if ((!args || args.accountName === undefined) && !opts.urn) {
@@ -130,17 +130,15 @@ export class Account extends pulumi.CustomResource {
             if ((!args || args.dbClusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
-            inputs["accountDescription"] = args ? args.accountDescription : undefined;
-            inputs["accountName"] = args ? args.accountName : undefined;
-            inputs["accountPassword"] = args ? args.accountPassword : undefined;
-            inputs["dbClusterId"] = args ? args.dbClusterId : undefined;
-            inputs["status"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["accountDescription"] = args ? args.accountDescription : undefined;
+            resourceInputs["accountName"] = args ? args.accountName : undefined;
+            resourceInputs["accountPassword"] = args ? args.accountPassword : undefined;
+            resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Account.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Account.__pulumiType, name, resourceInputs, opts);
     }
 }
 

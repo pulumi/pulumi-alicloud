@@ -117,18 +117,18 @@ export class FlowLog extends pulumi.CustomResource {
      */
     constructor(name: string, args: FlowLogArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FlowLogArgs | FlowLogState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlowLogState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["flowLogName"] = state ? state.flowLogName : undefined;
-            inputs["logStoreName"] = state ? state.logStoreName : undefined;
-            inputs["projectName"] = state ? state.projectName : undefined;
-            inputs["resourceId"] = state ? state.resourceId : undefined;
-            inputs["resourceType"] = state ? state.resourceType : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["trafficType"] = state ? state.trafficType : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["flowLogName"] = state ? state.flowLogName : undefined;
+            resourceInputs["logStoreName"] = state ? state.logStoreName : undefined;
+            resourceInputs["projectName"] = state ? state.projectName : undefined;
+            resourceInputs["resourceId"] = state ? state.resourceId : undefined;
+            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["trafficType"] = state ? state.trafficType : undefined;
         } else {
             const args = argsOrState as FlowLogArgs | undefined;
             if ((!args || args.logStoreName === undefined) && !opts.urn) {
@@ -146,19 +146,17 @@ export class FlowLog extends pulumi.CustomResource {
             if ((!args || args.trafficType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'trafficType'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["flowLogName"] = args ? args.flowLogName : undefined;
-            inputs["logStoreName"] = args ? args.logStoreName : undefined;
-            inputs["projectName"] = args ? args.projectName : undefined;
-            inputs["resourceId"] = args ? args.resourceId : undefined;
-            inputs["resourceType"] = args ? args.resourceType : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["trafficType"] = args ? args.trafficType : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["flowLogName"] = args ? args.flowLogName : undefined;
+            resourceInputs["logStoreName"] = args ? args.logStoreName : undefined;
+            resourceInputs["projectName"] = args ? args.projectName : undefined;
+            resourceInputs["resourceId"] = args ? args.resourceId : undefined;
+            resourceInputs["resourceType"] = args ? args.resourceType : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["trafficType"] = args ? args.trafficType : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(FlowLog.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(FlowLog.__pulumiType, name, resourceInputs, opts);
     }
 }
 

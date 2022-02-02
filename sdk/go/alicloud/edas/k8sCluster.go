@@ -29,7 +29,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := edas.NewK8sCluster(ctx, "_default", &edas.K8sClusterArgs{
+// 		_, err := edas.NewK8sCluster(ctx, "default", &edas.K8sClusterArgs{
 // 			CsClusterId: pulumi.String("xxxx-xxx-xxx"),
 // 		})
 // 		if err != nil {
@@ -174,7 +174,7 @@ type K8sClusterInput interface {
 }
 
 func (*K8sCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sCluster)(nil))
+	return reflect.TypeOf((**K8sCluster)(nil)).Elem()
 }
 
 func (i *K8sCluster) ToK8sClusterOutput() K8sClusterOutput {
@@ -183,35 +183,6 @@ func (i *K8sCluster) ToK8sClusterOutput() K8sClusterOutput {
 
 func (i *K8sCluster) ToK8sClusterOutputWithContext(ctx context.Context) K8sClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(K8sClusterOutput)
-}
-
-func (i *K8sCluster) ToK8sClusterPtrOutput() K8sClusterPtrOutput {
-	return i.ToK8sClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *K8sCluster) ToK8sClusterPtrOutputWithContext(ctx context.Context) K8sClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sClusterPtrOutput)
-}
-
-type K8sClusterPtrInput interface {
-	pulumi.Input
-
-	ToK8sClusterPtrOutput() K8sClusterPtrOutput
-	ToK8sClusterPtrOutputWithContext(ctx context.Context) K8sClusterPtrOutput
-}
-
-type k8sClusterPtrType K8sClusterArgs
-
-func (*k8sClusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sCluster)(nil))
-}
-
-func (i *k8sClusterPtrType) ToK8sClusterPtrOutput() K8sClusterPtrOutput {
-	return i.ToK8sClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *k8sClusterPtrType) ToK8sClusterPtrOutputWithContext(ctx context.Context) K8sClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(K8sClusterPtrOutput)
 }
 
 // K8sClusterArrayInput is an input type that accepts K8sClusterArray and K8sClusterArrayOutput values.
@@ -267,7 +238,7 @@ func (i K8sClusterMap) ToK8sClusterMapOutputWithContext(ctx context.Context) K8s
 type K8sClusterOutput struct{ *pulumi.OutputState }
 
 func (K8sClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*K8sCluster)(nil))
+	return reflect.TypeOf((**K8sCluster)(nil)).Elem()
 }
 
 func (o K8sClusterOutput) ToK8sClusterOutput() K8sClusterOutput {
@@ -278,44 +249,10 @@ func (o K8sClusterOutput) ToK8sClusterOutputWithContext(ctx context.Context) K8s
 	return o
 }
 
-func (o K8sClusterOutput) ToK8sClusterPtrOutput() K8sClusterPtrOutput {
-	return o.ToK8sClusterPtrOutputWithContext(context.Background())
-}
-
-func (o K8sClusterOutput) ToK8sClusterPtrOutputWithContext(ctx context.Context) K8sClusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v K8sCluster) *K8sCluster {
-		return &v
-	}).(K8sClusterPtrOutput)
-}
-
-type K8sClusterPtrOutput struct{ *pulumi.OutputState }
-
-func (K8sClusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**K8sCluster)(nil))
-}
-
-func (o K8sClusterPtrOutput) ToK8sClusterPtrOutput() K8sClusterPtrOutput {
-	return o
-}
-
-func (o K8sClusterPtrOutput) ToK8sClusterPtrOutputWithContext(ctx context.Context) K8sClusterPtrOutput {
-	return o
-}
-
-func (o K8sClusterPtrOutput) Elem() K8sClusterOutput {
-	return o.ApplyT(func(v *K8sCluster) K8sCluster {
-		if v != nil {
-			return *v
-		}
-		var ret K8sCluster
-		return ret
-	}).(K8sClusterOutput)
-}
-
 type K8sClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (K8sClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]K8sCluster)(nil))
+	return reflect.TypeOf((*[]*K8sCluster)(nil)).Elem()
 }
 
 func (o K8sClusterArrayOutput) ToK8sClusterArrayOutput() K8sClusterArrayOutput {
@@ -327,15 +264,15 @@ func (o K8sClusterArrayOutput) ToK8sClusterArrayOutputWithContext(ctx context.Co
 }
 
 func (o K8sClusterArrayOutput) Index(i pulumi.IntInput) K8sClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) K8sCluster {
-		return vs[0].([]K8sCluster)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *K8sCluster {
+		return vs[0].([]*K8sCluster)[vs[1].(int)]
 	}).(K8sClusterOutput)
 }
 
 type K8sClusterMapOutput struct{ *pulumi.OutputState }
 
 func (K8sClusterMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]K8sCluster)(nil))
+	return reflect.TypeOf((*map[string]*K8sCluster)(nil)).Elem()
 }
 
 func (o K8sClusterMapOutput) ToK8sClusterMapOutput() K8sClusterMapOutput {
@@ -347,18 +284,16 @@ func (o K8sClusterMapOutput) ToK8sClusterMapOutputWithContext(ctx context.Contex
 }
 
 func (o K8sClusterMapOutput) MapIndex(k pulumi.StringInput) K8sClusterOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) K8sCluster {
-		return vs[0].(map[string]K8sCluster)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *K8sCluster {
+		return vs[0].(map[string]*K8sCluster)[vs[1].(string)]
 	}).(K8sClusterOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sClusterInput)(nil)).Elem(), &K8sCluster{})
-	pulumi.RegisterInputType(reflect.TypeOf((*K8sClusterPtrInput)(nil)).Elem(), &K8sCluster{})
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sClusterArrayInput)(nil)).Elem(), K8sClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*K8sClusterMapInput)(nil)).Elem(), K8sClusterMap{})
 	pulumi.RegisterOutputType(K8sClusterOutput{})
-	pulumi.RegisterOutputType(K8sClusterPtrOutput{})
 	pulumi.RegisterOutputType(K8sClusterArrayOutput{})
 	pulumi.RegisterOutputType(K8sClusterMapOutput{})
 }

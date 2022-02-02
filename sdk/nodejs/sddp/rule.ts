@@ -150,25 +150,25 @@ export class Rule extends pulumi.CustomResource {
      */
     constructor(name: string, args: RuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RuleArgs | RuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuleState | undefined;
-            inputs["category"] = state ? state.category : undefined;
-            inputs["content"] = state ? state.content : undefined;
-            inputs["contentCategory"] = state ? state.contentCategory : undefined;
-            inputs["customType"] = state ? state.customType : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["lang"] = state ? state.lang : undefined;
-            inputs["productCode"] = state ? state.productCode : undefined;
-            inputs["productId"] = state ? state.productId : undefined;
-            inputs["riskLevelId"] = state ? state.riskLevelId : undefined;
-            inputs["ruleName"] = state ? state.ruleName : undefined;
-            inputs["ruleType"] = state ? state.ruleType : undefined;
-            inputs["statExpress"] = state ? state.statExpress : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["target"] = state ? state.target : undefined;
-            inputs["warnLevel"] = state ? state.warnLevel : undefined;
+            resourceInputs["category"] = state ? state.category : undefined;
+            resourceInputs["content"] = state ? state.content : undefined;
+            resourceInputs["contentCategory"] = state ? state.contentCategory : undefined;
+            resourceInputs["customType"] = state ? state.customType : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["lang"] = state ? state.lang : undefined;
+            resourceInputs["productCode"] = state ? state.productCode : undefined;
+            resourceInputs["productId"] = state ? state.productId : undefined;
+            resourceInputs["riskLevelId"] = state ? state.riskLevelId : undefined;
+            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
+            resourceInputs["ruleType"] = state ? state.ruleType : undefined;
+            resourceInputs["statExpress"] = state ? state.statExpress : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["target"] = state ? state.target : undefined;
+            resourceInputs["warnLevel"] = state ? state.warnLevel : undefined;
         } else {
             const args = argsOrState as RuleArgs | undefined;
             if ((!args || args.category === undefined) && !opts.urn) {
@@ -180,26 +180,24 @@ export class Rule extends pulumi.CustomResource {
             if ((!args || args.ruleName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ruleName'");
             }
-            inputs["category"] = args ? args.category : undefined;
-            inputs["content"] = args ? args.content : undefined;
-            inputs["contentCategory"] = args ? args.contentCategory : undefined;
-            inputs["customType"] = args ? args.customType : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["lang"] = args ? args.lang : undefined;
-            inputs["productCode"] = args ? args.productCode : undefined;
-            inputs["productId"] = args ? args.productId : undefined;
-            inputs["riskLevelId"] = args ? args.riskLevelId : undefined;
-            inputs["ruleName"] = args ? args.ruleName : undefined;
-            inputs["ruleType"] = args ? args.ruleType : undefined;
-            inputs["statExpress"] = args ? args.statExpress : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["target"] = args ? args.target : undefined;
-            inputs["warnLevel"] = args ? args.warnLevel : undefined;
+            resourceInputs["category"] = args ? args.category : undefined;
+            resourceInputs["content"] = args ? args.content : undefined;
+            resourceInputs["contentCategory"] = args ? args.contentCategory : undefined;
+            resourceInputs["customType"] = args ? args.customType : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["lang"] = args ? args.lang : undefined;
+            resourceInputs["productCode"] = args ? args.productCode : undefined;
+            resourceInputs["productId"] = args ? args.productId : undefined;
+            resourceInputs["riskLevelId"] = args ? args.riskLevelId : undefined;
+            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
+            resourceInputs["ruleType"] = args ? args.ruleType : undefined;
+            resourceInputs["statExpress"] = args ? args.statExpress : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["target"] = args ? args.target : undefined;
+            resourceInputs["warnLevel"] = args ? args.warnLevel : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Rule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Rule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cassandra
 {
@@ -46,7 +45,7 @@ namespace Pulumi.AliCloud.Cassandra
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBackupPlansResult> InvokeAsync(GetBackupPlansArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackupPlansResult>("alicloud:cassandra/getBackupPlans:getBackupPlans", args ?? new GetBackupPlansArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBackupPlansResult>("alicloud:cassandra/getBackupPlans:getBackupPlans", args ?? new GetBackupPlansArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cassandra Backup Plans of the current Alibaba Cloud user.
@@ -82,7 +81,7 @@ namespace Pulumi.AliCloud.Cassandra
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBackupPlansResult> Invoke(GetBackupPlansInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBackupPlansResult>("alicloud:cassandra/getBackupPlans:getBackupPlans", args ?? new GetBackupPlansInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetBackupPlansResult>("alicloud:cassandra/getBackupPlans:getBackupPlans", args ?? new GetBackupPlansInvokeArgs(), options.WithDefaults());
     }
 
 

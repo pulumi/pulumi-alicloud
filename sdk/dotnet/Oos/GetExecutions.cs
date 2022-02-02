@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Oos
 {
@@ -49,7 +48,7 @@ namespace Pulumi.AliCloud.Oos
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetExecutionsResult> InvokeAsync(GetExecutionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetExecutionsResult>("alicloud:oos/getExecutions:getExecutions", args ?? new GetExecutionsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetExecutionsResult>("alicloud:oos/getExecutions:getExecutions", args ?? new GetExecutionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.
@@ -88,7 +87,7 @@ namespace Pulumi.AliCloud.Oos
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetExecutionsResult> Invoke(GetExecutionsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetExecutionsResult>("alicloud:oos/getExecutions:getExecutions", args ?? new GetExecutionsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetExecutionsResult>("alicloud:oos/getExecutions:getExecutions", args ?? new GetExecutionsInvokeArgs(), options.WithDefaults());
     }
 
 

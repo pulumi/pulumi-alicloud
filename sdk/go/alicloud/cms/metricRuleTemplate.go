@@ -236,7 +236,7 @@ type MetricRuleTemplateInput interface {
 }
 
 func (*MetricRuleTemplate) ElementType() reflect.Type {
-	return reflect.TypeOf((*MetricRuleTemplate)(nil))
+	return reflect.TypeOf((**MetricRuleTemplate)(nil)).Elem()
 }
 
 func (i *MetricRuleTemplate) ToMetricRuleTemplateOutput() MetricRuleTemplateOutput {
@@ -245,35 +245,6 @@ func (i *MetricRuleTemplate) ToMetricRuleTemplateOutput() MetricRuleTemplateOutp
 
 func (i *MetricRuleTemplate) ToMetricRuleTemplateOutputWithContext(ctx context.Context) MetricRuleTemplateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplateOutput)
-}
-
-func (i *MetricRuleTemplate) ToMetricRuleTemplatePtrOutput() MetricRuleTemplatePtrOutput {
-	return i.ToMetricRuleTemplatePtrOutputWithContext(context.Background())
-}
-
-func (i *MetricRuleTemplate) ToMetricRuleTemplatePtrOutputWithContext(ctx context.Context) MetricRuleTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplatePtrOutput)
-}
-
-type MetricRuleTemplatePtrInput interface {
-	pulumi.Input
-
-	ToMetricRuleTemplatePtrOutput() MetricRuleTemplatePtrOutput
-	ToMetricRuleTemplatePtrOutputWithContext(ctx context.Context) MetricRuleTemplatePtrOutput
-}
-
-type metricRuleTemplatePtrType MetricRuleTemplateArgs
-
-func (*metricRuleTemplatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MetricRuleTemplate)(nil))
-}
-
-func (i *metricRuleTemplatePtrType) ToMetricRuleTemplatePtrOutput() MetricRuleTemplatePtrOutput {
-	return i.ToMetricRuleTemplatePtrOutputWithContext(context.Background())
-}
-
-func (i *metricRuleTemplatePtrType) ToMetricRuleTemplatePtrOutputWithContext(ctx context.Context) MetricRuleTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleTemplatePtrOutput)
 }
 
 // MetricRuleTemplateArrayInput is an input type that accepts MetricRuleTemplateArray and MetricRuleTemplateArrayOutput values.
@@ -329,7 +300,7 @@ func (i MetricRuleTemplateMap) ToMetricRuleTemplateMapOutputWithContext(ctx cont
 type MetricRuleTemplateOutput struct{ *pulumi.OutputState }
 
 func (MetricRuleTemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MetricRuleTemplate)(nil))
+	return reflect.TypeOf((**MetricRuleTemplate)(nil)).Elem()
 }
 
 func (o MetricRuleTemplateOutput) ToMetricRuleTemplateOutput() MetricRuleTemplateOutput {
@@ -340,44 +311,10 @@ func (o MetricRuleTemplateOutput) ToMetricRuleTemplateOutputWithContext(ctx cont
 	return o
 }
 
-func (o MetricRuleTemplateOutput) ToMetricRuleTemplatePtrOutput() MetricRuleTemplatePtrOutput {
-	return o.ToMetricRuleTemplatePtrOutputWithContext(context.Background())
-}
-
-func (o MetricRuleTemplateOutput) ToMetricRuleTemplatePtrOutputWithContext(ctx context.Context) MetricRuleTemplatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricRuleTemplate) *MetricRuleTemplate {
-		return &v
-	}).(MetricRuleTemplatePtrOutput)
-}
-
-type MetricRuleTemplatePtrOutput struct{ *pulumi.OutputState }
-
-func (MetricRuleTemplatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MetricRuleTemplate)(nil))
-}
-
-func (o MetricRuleTemplatePtrOutput) ToMetricRuleTemplatePtrOutput() MetricRuleTemplatePtrOutput {
-	return o
-}
-
-func (o MetricRuleTemplatePtrOutput) ToMetricRuleTemplatePtrOutputWithContext(ctx context.Context) MetricRuleTemplatePtrOutput {
-	return o
-}
-
-func (o MetricRuleTemplatePtrOutput) Elem() MetricRuleTemplateOutput {
-	return o.ApplyT(func(v *MetricRuleTemplate) MetricRuleTemplate {
-		if v != nil {
-			return *v
-		}
-		var ret MetricRuleTemplate
-		return ret
-	}).(MetricRuleTemplateOutput)
-}
-
 type MetricRuleTemplateArrayOutput struct{ *pulumi.OutputState }
 
 func (MetricRuleTemplateArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MetricRuleTemplate)(nil))
+	return reflect.TypeOf((*[]*MetricRuleTemplate)(nil)).Elem()
 }
 
 func (o MetricRuleTemplateArrayOutput) ToMetricRuleTemplateArrayOutput() MetricRuleTemplateArrayOutput {
@@ -389,15 +326,15 @@ func (o MetricRuleTemplateArrayOutput) ToMetricRuleTemplateArrayOutputWithContex
 }
 
 func (o MetricRuleTemplateArrayOutput) Index(i pulumi.IntInput) MetricRuleTemplateOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricRuleTemplate {
-		return vs[0].([]MetricRuleTemplate)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MetricRuleTemplate {
+		return vs[0].([]*MetricRuleTemplate)[vs[1].(int)]
 	}).(MetricRuleTemplateOutput)
 }
 
 type MetricRuleTemplateMapOutput struct{ *pulumi.OutputState }
 
 func (MetricRuleTemplateMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MetricRuleTemplate)(nil))
+	return reflect.TypeOf((*map[string]*MetricRuleTemplate)(nil)).Elem()
 }
 
 func (o MetricRuleTemplateMapOutput) ToMetricRuleTemplateMapOutput() MetricRuleTemplateMapOutput {
@@ -409,18 +346,16 @@ func (o MetricRuleTemplateMapOutput) ToMetricRuleTemplateMapOutputWithContext(ct
 }
 
 func (o MetricRuleTemplateMapOutput) MapIndex(k pulumi.StringInput) MetricRuleTemplateOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MetricRuleTemplate {
-		return vs[0].(map[string]MetricRuleTemplate)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MetricRuleTemplate {
+		return vs[0].(map[string]*MetricRuleTemplate)[vs[1].(string)]
 	}).(MetricRuleTemplateOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricRuleTemplateInput)(nil)).Elem(), &MetricRuleTemplate{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MetricRuleTemplatePtrInput)(nil)).Elem(), &MetricRuleTemplate{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricRuleTemplateArrayInput)(nil)).Elem(), MetricRuleTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricRuleTemplateMapInput)(nil)).Elem(), MetricRuleTemplateMap{})
 	pulumi.RegisterOutputType(MetricRuleTemplateOutput{})
-	pulumi.RegisterOutputType(MetricRuleTemplatePtrOutput{})
 	pulumi.RegisterOutputType(MetricRuleTemplateArrayOutput{})
 	pulumi.RegisterOutputType(MetricRuleTemplateMapOutput{})
 }

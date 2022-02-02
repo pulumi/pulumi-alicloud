@@ -121,17 +121,17 @@ export class Account extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccountArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountArgs | AccountState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
-            inputs["accountDescription"] = state ? state.accountDescription : undefined;
-            inputs["accountName"] = state ? state.accountName : undefined;
-            inputs["accountPassword"] = state ? state.accountPassword : undefined;
-            inputs["accountType"] = state ? state.accountType : undefined;
-            inputs["dbClusterId"] = state ? state.dbClusterId : undefined;
-            inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
-            inputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
+            resourceInputs["accountDescription"] = state ? state.accountDescription : undefined;
+            resourceInputs["accountName"] = state ? state.accountName : undefined;
+            resourceInputs["accountPassword"] = state ? state.accountPassword : undefined;
+            resourceInputs["accountType"] = state ? state.accountType : undefined;
+            resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
+            resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
+            resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
         } else {
             const args = argsOrState as AccountArgs | undefined;
             if ((!args || args.accountName === undefined) && !opts.urn) {
@@ -143,18 +143,16 @@ export class Account extends pulumi.CustomResource {
             if ((!args || args.dbClusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
-            inputs["accountDescription"] = args ? args.accountDescription : undefined;
-            inputs["accountName"] = args ? args.accountName : undefined;
-            inputs["accountPassword"] = args ? args.accountPassword : undefined;
-            inputs["accountType"] = args ? args.accountType : undefined;
-            inputs["dbClusterId"] = args ? args.dbClusterId : undefined;
-            inputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
-            inputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
+            resourceInputs["accountDescription"] = args ? args.accountDescription : undefined;
+            resourceInputs["accountName"] = args ? args.accountName : undefined;
+            resourceInputs["accountPassword"] = args ? args.accountPassword : undefined;
+            resourceInputs["accountType"] = args ? args.accountType : undefined;
+            resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
+            resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
+            resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Account.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Account.__pulumiType, name, resourceInputs, opts);
     }
 }
 

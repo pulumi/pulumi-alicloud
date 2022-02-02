@@ -32,9 +32,7 @@ export function getSaslAcls(args: GetSaslAclsArgs, opts?: pulumi.InvokeOptions):
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:actiontrail/getSaslAcls:getSaslAcls", {
         "aclResourceName": args.aclResourceName,
         "aclResourceType": args.aclResourceType,

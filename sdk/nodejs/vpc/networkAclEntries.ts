@@ -55,26 +55,24 @@ export class NetworkAclEntries extends pulumi.CustomResource {
      */
     constructor(name: string, args: NetworkAclEntriesArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NetworkAclEntriesArgs | NetworkAclEntriesState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkAclEntriesState | undefined;
-            inputs["egresses"] = state ? state.egresses : undefined;
-            inputs["ingresses"] = state ? state.ingresses : undefined;
-            inputs["networkAclId"] = state ? state.networkAclId : undefined;
+            resourceInputs["egresses"] = state ? state.egresses : undefined;
+            resourceInputs["ingresses"] = state ? state.ingresses : undefined;
+            resourceInputs["networkAclId"] = state ? state.networkAclId : undefined;
         } else {
             const args = argsOrState as NetworkAclEntriesArgs | undefined;
             if ((!args || args.networkAclId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkAclId'");
             }
-            inputs["egresses"] = args ? args.egresses : undefined;
-            inputs["ingresses"] = args ? args.ingresses : undefined;
-            inputs["networkAclId"] = args ? args.networkAclId : undefined;
+            resourceInputs["egresses"] = args ? args.egresses : undefined;
+            resourceInputs["ingresses"] = args ? args.ingresses : undefined;
+            resourceInputs["networkAclId"] = args ? args.networkAclId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(NetworkAclEntries.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(NetworkAclEntries.__pulumiType, name, resourceInputs, opts);
     }
 }
 

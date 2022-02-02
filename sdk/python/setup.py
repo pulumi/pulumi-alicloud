@@ -55,6 +55,7 @@ setup(name='pulumi_alicloud',
       package_data={
           'pulumi_alicloud': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[

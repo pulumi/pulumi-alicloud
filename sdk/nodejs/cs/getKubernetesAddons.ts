@@ -27,9 +27,7 @@ export function getKubernetesAddons(args: GetKubernetesAddonsArgs, opts?: pulumi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cs/getKubernetesAddons:getKubernetesAddons", {
         "addons": args.addons,
         "clusterId": args.clusterId,

@@ -325,7 +325,7 @@ type TransitRouterPeerAttachmentInput interface {
 }
 
 func (*TransitRouterPeerAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransitRouterPeerAttachment)(nil))
+	return reflect.TypeOf((**TransitRouterPeerAttachment)(nil)).Elem()
 }
 
 func (i *TransitRouterPeerAttachment) ToTransitRouterPeerAttachmentOutput() TransitRouterPeerAttachmentOutput {
@@ -334,35 +334,6 @@ func (i *TransitRouterPeerAttachment) ToTransitRouterPeerAttachmentOutput() Tran
 
 func (i *TransitRouterPeerAttachment) ToTransitRouterPeerAttachmentOutputWithContext(ctx context.Context) TransitRouterPeerAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterPeerAttachmentOutput)
-}
-
-func (i *TransitRouterPeerAttachment) ToTransitRouterPeerAttachmentPtrOutput() TransitRouterPeerAttachmentPtrOutput {
-	return i.ToTransitRouterPeerAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *TransitRouterPeerAttachment) ToTransitRouterPeerAttachmentPtrOutputWithContext(ctx context.Context) TransitRouterPeerAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterPeerAttachmentPtrOutput)
-}
-
-type TransitRouterPeerAttachmentPtrInput interface {
-	pulumi.Input
-
-	ToTransitRouterPeerAttachmentPtrOutput() TransitRouterPeerAttachmentPtrOutput
-	ToTransitRouterPeerAttachmentPtrOutputWithContext(ctx context.Context) TransitRouterPeerAttachmentPtrOutput
-}
-
-type transitRouterPeerAttachmentPtrType TransitRouterPeerAttachmentArgs
-
-func (*transitRouterPeerAttachmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransitRouterPeerAttachment)(nil))
-}
-
-func (i *transitRouterPeerAttachmentPtrType) ToTransitRouterPeerAttachmentPtrOutput() TransitRouterPeerAttachmentPtrOutput {
-	return i.ToTransitRouterPeerAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *transitRouterPeerAttachmentPtrType) ToTransitRouterPeerAttachmentPtrOutputWithContext(ctx context.Context) TransitRouterPeerAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterPeerAttachmentPtrOutput)
 }
 
 // TransitRouterPeerAttachmentArrayInput is an input type that accepts TransitRouterPeerAttachmentArray and TransitRouterPeerAttachmentArrayOutput values.
@@ -418,7 +389,7 @@ func (i TransitRouterPeerAttachmentMap) ToTransitRouterPeerAttachmentMapOutputWi
 type TransitRouterPeerAttachmentOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterPeerAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransitRouterPeerAttachment)(nil))
+	return reflect.TypeOf((**TransitRouterPeerAttachment)(nil)).Elem()
 }
 
 func (o TransitRouterPeerAttachmentOutput) ToTransitRouterPeerAttachmentOutput() TransitRouterPeerAttachmentOutput {
@@ -429,44 +400,10 @@ func (o TransitRouterPeerAttachmentOutput) ToTransitRouterPeerAttachmentOutputWi
 	return o
 }
 
-func (o TransitRouterPeerAttachmentOutput) ToTransitRouterPeerAttachmentPtrOutput() TransitRouterPeerAttachmentPtrOutput {
-	return o.ToTransitRouterPeerAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (o TransitRouterPeerAttachmentOutput) ToTransitRouterPeerAttachmentPtrOutputWithContext(ctx context.Context) TransitRouterPeerAttachmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransitRouterPeerAttachment) *TransitRouterPeerAttachment {
-		return &v
-	}).(TransitRouterPeerAttachmentPtrOutput)
-}
-
-type TransitRouterPeerAttachmentPtrOutput struct{ *pulumi.OutputState }
-
-func (TransitRouterPeerAttachmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransitRouterPeerAttachment)(nil))
-}
-
-func (o TransitRouterPeerAttachmentPtrOutput) ToTransitRouterPeerAttachmentPtrOutput() TransitRouterPeerAttachmentPtrOutput {
-	return o
-}
-
-func (o TransitRouterPeerAttachmentPtrOutput) ToTransitRouterPeerAttachmentPtrOutputWithContext(ctx context.Context) TransitRouterPeerAttachmentPtrOutput {
-	return o
-}
-
-func (o TransitRouterPeerAttachmentPtrOutput) Elem() TransitRouterPeerAttachmentOutput {
-	return o.ApplyT(func(v *TransitRouterPeerAttachment) TransitRouterPeerAttachment {
-		if v != nil {
-			return *v
-		}
-		var ret TransitRouterPeerAttachment
-		return ret
-	}).(TransitRouterPeerAttachmentOutput)
-}
-
 type TransitRouterPeerAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterPeerAttachmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TransitRouterPeerAttachment)(nil))
+	return reflect.TypeOf((*[]*TransitRouterPeerAttachment)(nil)).Elem()
 }
 
 func (o TransitRouterPeerAttachmentArrayOutput) ToTransitRouterPeerAttachmentArrayOutput() TransitRouterPeerAttachmentArrayOutput {
@@ -478,15 +415,15 @@ func (o TransitRouterPeerAttachmentArrayOutput) ToTransitRouterPeerAttachmentArr
 }
 
 func (o TransitRouterPeerAttachmentArrayOutput) Index(i pulumi.IntInput) TransitRouterPeerAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransitRouterPeerAttachment {
-		return vs[0].([]TransitRouterPeerAttachment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TransitRouterPeerAttachment {
+		return vs[0].([]*TransitRouterPeerAttachment)[vs[1].(int)]
 	}).(TransitRouterPeerAttachmentOutput)
 }
 
 type TransitRouterPeerAttachmentMapOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterPeerAttachmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]TransitRouterPeerAttachment)(nil))
+	return reflect.TypeOf((*map[string]*TransitRouterPeerAttachment)(nil)).Elem()
 }
 
 func (o TransitRouterPeerAttachmentMapOutput) ToTransitRouterPeerAttachmentMapOutput() TransitRouterPeerAttachmentMapOutput {
@@ -498,18 +435,16 @@ func (o TransitRouterPeerAttachmentMapOutput) ToTransitRouterPeerAttachmentMapOu
 }
 
 func (o TransitRouterPeerAttachmentMapOutput) MapIndex(k pulumi.StringInput) TransitRouterPeerAttachmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TransitRouterPeerAttachment {
-		return vs[0].(map[string]TransitRouterPeerAttachment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TransitRouterPeerAttachment {
+		return vs[0].(map[string]*TransitRouterPeerAttachment)[vs[1].(string)]
 	}).(TransitRouterPeerAttachmentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterPeerAttachmentInput)(nil)).Elem(), &TransitRouterPeerAttachment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterPeerAttachmentPtrInput)(nil)).Elem(), &TransitRouterPeerAttachment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterPeerAttachmentArrayInput)(nil)).Elem(), TransitRouterPeerAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterPeerAttachmentMapInput)(nil)).Elem(), TransitRouterPeerAttachmentMap{})
 	pulumi.RegisterOutputType(TransitRouterPeerAttachmentOutput{})
-	pulumi.RegisterOutputType(TransitRouterPeerAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(TransitRouterPeerAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(TransitRouterPeerAttachmentMapOutput{})
 }

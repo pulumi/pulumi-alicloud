@@ -72,30 +72,28 @@ export class ZoneAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: ZoneAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ZoneAttachmentArgs | ZoneAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneAttachmentState | undefined;
-            inputs["lang"] = state ? state.lang : undefined;
-            inputs["userClientIp"] = state ? state.userClientIp : undefined;
-            inputs["vpcIds"] = state ? state.vpcIds : undefined;
-            inputs["vpcs"] = state ? state.vpcs : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["lang"] = state ? state.lang : undefined;
+            resourceInputs["userClientIp"] = state ? state.userClientIp : undefined;
+            resourceInputs["vpcIds"] = state ? state.vpcIds : undefined;
+            resourceInputs["vpcs"] = state ? state.vpcs : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ZoneAttachmentArgs | undefined;
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["lang"] = args ? args.lang : undefined;
-            inputs["userClientIp"] = args ? args.userClientIp : undefined;
-            inputs["vpcIds"] = args ? args.vpcIds : undefined;
-            inputs["vpcs"] = args ? args.vpcs : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["lang"] = args ? args.lang : undefined;
+            resourceInputs["userClientIp"] = args ? args.userClientIp : undefined;
+            resourceInputs["vpcIds"] = args ? args.vpcIds : undefined;
+            resourceInputs["vpcs"] = args ? args.vpcs : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ZoneAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ZoneAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

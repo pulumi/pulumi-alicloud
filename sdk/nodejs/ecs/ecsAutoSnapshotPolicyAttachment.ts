@@ -79,12 +79,12 @@ export class EcsAutoSnapshotPolicyAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: EcsAutoSnapshotPolicyAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EcsAutoSnapshotPolicyAttachmentArgs | EcsAutoSnapshotPolicyAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsAutoSnapshotPolicyAttachmentState | undefined;
-            inputs["autoSnapshotPolicyId"] = state ? state.autoSnapshotPolicyId : undefined;
-            inputs["diskId"] = state ? state.diskId : undefined;
+            resourceInputs["autoSnapshotPolicyId"] = state ? state.autoSnapshotPolicyId : undefined;
+            resourceInputs["diskId"] = state ? state.diskId : undefined;
         } else {
             const args = argsOrState as EcsAutoSnapshotPolicyAttachmentArgs | undefined;
             if ((!args || args.autoSnapshotPolicyId === undefined) && !opts.urn) {
@@ -93,13 +93,11 @@ export class EcsAutoSnapshotPolicyAttachment extends pulumi.CustomResource {
             if ((!args || args.diskId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'diskId'");
             }
-            inputs["autoSnapshotPolicyId"] = args ? args.autoSnapshotPolicyId : undefined;
-            inputs["diskId"] = args ? args.diskId : undefined;
+            resourceInputs["autoSnapshotPolicyId"] = args ? args.autoSnapshotPolicyId : undefined;
+            resourceInputs["diskId"] = args ? args.diskId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EcsAutoSnapshotPolicyAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EcsAutoSnapshotPolicyAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

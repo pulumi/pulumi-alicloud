@@ -91,24 +91,22 @@ export class HistoryDeliveryJob extends pulumi.CustomResource {
      */
     constructor(name: string, args: HistoryDeliveryJobArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HistoryDeliveryJobArgs | HistoryDeliveryJobState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HistoryDeliveryJobState | undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["trailName"] = state ? state.trailName : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["trailName"] = state ? state.trailName : undefined;
         } else {
             const args = argsOrState as HistoryDeliveryJobArgs | undefined;
             if ((!args || args.trailName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'trailName'");
             }
-            inputs["trailName"] = args ? args.trailName : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["trailName"] = args ? args.trailName : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(HistoryDeliveryJob.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(HistoryDeliveryJob.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -175,7 +175,7 @@ type EcsDedicatedHostClusterInput interface {
 }
 
 func (*EcsDedicatedHostCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*EcsDedicatedHostCluster)(nil))
+	return reflect.TypeOf((**EcsDedicatedHostCluster)(nil)).Elem()
 }
 
 func (i *EcsDedicatedHostCluster) ToEcsDedicatedHostClusterOutput() EcsDedicatedHostClusterOutput {
@@ -184,35 +184,6 @@ func (i *EcsDedicatedHostCluster) ToEcsDedicatedHostClusterOutput() EcsDedicated
 
 func (i *EcsDedicatedHostCluster) ToEcsDedicatedHostClusterOutputWithContext(ctx context.Context) EcsDedicatedHostClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsDedicatedHostClusterOutput)
-}
-
-func (i *EcsDedicatedHostCluster) ToEcsDedicatedHostClusterPtrOutput() EcsDedicatedHostClusterPtrOutput {
-	return i.ToEcsDedicatedHostClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *EcsDedicatedHostCluster) ToEcsDedicatedHostClusterPtrOutputWithContext(ctx context.Context) EcsDedicatedHostClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EcsDedicatedHostClusterPtrOutput)
-}
-
-type EcsDedicatedHostClusterPtrInput interface {
-	pulumi.Input
-
-	ToEcsDedicatedHostClusterPtrOutput() EcsDedicatedHostClusterPtrOutput
-	ToEcsDedicatedHostClusterPtrOutputWithContext(ctx context.Context) EcsDedicatedHostClusterPtrOutput
-}
-
-type ecsDedicatedHostClusterPtrType EcsDedicatedHostClusterArgs
-
-func (*ecsDedicatedHostClusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EcsDedicatedHostCluster)(nil))
-}
-
-func (i *ecsDedicatedHostClusterPtrType) ToEcsDedicatedHostClusterPtrOutput() EcsDedicatedHostClusterPtrOutput {
-	return i.ToEcsDedicatedHostClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *ecsDedicatedHostClusterPtrType) ToEcsDedicatedHostClusterPtrOutputWithContext(ctx context.Context) EcsDedicatedHostClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EcsDedicatedHostClusterPtrOutput)
 }
 
 // EcsDedicatedHostClusterArrayInput is an input type that accepts EcsDedicatedHostClusterArray and EcsDedicatedHostClusterArrayOutput values.
@@ -268,7 +239,7 @@ func (i EcsDedicatedHostClusterMap) ToEcsDedicatedHostClusterMapOutputWithContex
 type EcsDedicatedHostClusterOutput struct{ *pulumi.OutputState }
 
 func (EcsDedicatedHostClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EcsDedicatedHostCluster)(nil))
+	return reflect.TypeOf((**EcsDedicatedHostCluster)(nil)).Elem()
 }
 
 func (o EcsDedicatedHostClusterOutput) ToEcsDedicatedHostClusterOutput() EcsDedicatedHostClusterOutput {
@@ -279,44 +250,10 @@ func (o EcsDedicatedHostClusterOutput) ToEcsDedicatedHostClusterOutputWithContex
 	return o
 }
 
-func (o EcsDedicatedHostClusterOutput) ToEcsDedicatedHostClusterPtrOutput() EcsDedicatedHostClusterPtrOutput {
-	return o.ToEcsDedicatedHostClusterPtrOutputWithContext(context.Background())
-}
-
-func (o EcsDedicatedHostClusterOutput) ToEcsDedicatedHostClusterPtrOutputWithContext(ctx context.Context) EcsDedicatedHostClusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EcsDedicatedHostCluster) *EcsDedicatedHostCluster {
-		return &v
-	}).(EcsDedicatedHostClusterPtrOutput)
-}
-
-type EcsDedicatedHostClusterPtrOutput struct{ *pulumi.OutputState }
-
-func (EcsDedicatedHostClusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EcsDedicatedHostCluster)(nil))
-}
-
-func (o EcsDedicatedHostClusterPtrOutput) ToEcsDedicatedHostClusterPtrOutput() EcsDedicatedHostClusterPtrOutput {
-	return o
-}
-
-func (o EcsDedicatedHostClusterPtrOutput) ToEcsDedicatedHostClusterPtrOutputWithContext(ctx context.Context) EcsDedicatedHostClusterPtrOutput {
-	return o
-}
-
-func (o EcsDedicatedHostClusterPtrOutput) Elem() EcsDedicatedHostClusterOutput {
-	return o.ApplyT(func(v *EcsDedicatedHostCluster) EcsDedicatedHostCluster {
-		if v != nil {
-			return *v
-		}
-		var ret EcsDedicatedHostCluster
-		return ret
-	}).(EcsDedicatedHostClusterOutput)
-}
-
 type EcsDedicatedHostClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsDedicatedHostClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EcsDedicatedHostCluster)(nil))
+	return reflect.TypeOf((*[]*EcsDedicatedHostCluster)(nil)).Elem()
 }
 
 func (o EcsDedicatedHostClusterArrayOutput) ToEcsDedicatedHostClusterArrayOutput() EcsDedicatedHostClusterArrayOutput {
@@ -328,15 +265,15 @@ func (o EcsDedicatedHostClusterArrayOutput) ToEcsDedicatedHostClusterArrayOutput
 }
 
 func (o EcsDedicatedHostClusterArrayOutput) Index(i pulumi.IntInput) EcsDedicatedHostClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EcsDedicatedHostCluster {
-		return vs[0].([]EcsDedicatedHostCluster)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsDedicatedHostCluster {
+		return vs[0].([]*EcsDedicatedHostCluster)[vs[1].(int)]
 	}).(EcsDedicatedHostClusterOutput)
 }
 
 type EcsDedicatedHostClusterMapOutput struct{ *pulumi.OutputState }
 
 func (EcsDedicatedHostClusterMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]EcsDedicatedHostCluster)(nil))
+	return reflect.TypeOf((*map[string]*EcsDedicatedHostCluster)(nil)).Elem()
 }
 
 func (o EcsDedicatedHostClusterMapOutput) ToEcsDedicatedHostClusterMapOutput() EcsDedicatedHostClusterMapOutput {
@@ -348,18 +285,16 @@ func (o EcsDedicatedHostClusterMapOutput) ToEcsDedicatedHostClusterMapOutputWith
 }
 
 func (o EcsDedicatedHostClusterMapOutput) MapIndex(k pulumi.StringInput) EcsDedicatedHostClusterOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EcsDedicatedHostCluster {
-		return vs[0].(map[string]EcsDedicatedHostCluster)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *EcsDedicatedHostCluster {
+		return vs[0].(map[string]*EcsDedicatedHostCluster)[vs[1].(string)]
 	}).(EcsDedicatedHostClusterOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsDedicatedHostClusterInput)(nil)).Elem(), &EcsDedicatedHostCluster{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EcsDedicatedHostClusterPtrInput)(nil)).Elem(), &EcsDedicatedHostCluster{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsDedicatedHostClusterArrayInput)(nil)).Elem(), EcsDedicatedHostClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsDedicatedHostClusterMapInput)(nil)).Elem(), EcsDedicatedHostClusterMap{})
 	pulumi.RegisterOutputType(EcsDedicatedHostClusterOutput{})
-	pulumi.RegisterOutputType(EcsDedicatedHostClusterPtrOutput{})
 	pulumi.RegisterOutputType(EcsDedicatedHostClusterArrayOutput{})
 	pulumi.RegisterOutputType(EcsDedicatedHostClusterMapOutput{})
 }

@@ -105,12 +105,12 @@ export class ControlPolicyAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: ControlPolicyAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ControlPolicyAttachmentArgs | ControlPolicyAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ControlPolicyAttachmentState | undefined;
-            inputs["policyId"] = state ? state.policyId : undefined;
-            inputs["targetId"] = state ? state.targetId : undefined;
+            resourceInputs["policyId"] = state ? state.policyId : undefined;
+            resourceInputs["targetId"] = state ? state.targetId : undefined;
         } else {
             const args = argsOrState as ControlPolicyAttachmentArgs | undefined;
             if ((!args || args.policyId === undefined) && !opts.urn) {
@@ -119,13 +119,11 @@ export class ControlPolicyAttachment extends pulumi.CustomResource {
             if ((!args || args.targetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetId'");
             }
-            inputs["policyId"] = args ? args.policyId : undefined;
-            inputs["targetId"] = args ? args.targetId : undefined;
+            resourceInputs["policyId"] = args ? args.policyId : undefined;
+            resourceInputs["targetId"] = args ? args.targetId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ControlPolicyAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ControlPolicyAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

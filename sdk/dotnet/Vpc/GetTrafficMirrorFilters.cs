@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -70,7 +69,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTrafficMirrorFiltersResult> InvokeAsync(GetTrafficMirrorFiltersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTrafficMirrorFiltersResult>("alicloud:vpc/getTrafficMirrorFilters:getTrafficMirrorFilters", args ?? new GetTrafficMirrorFiltersArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTrafficMirrorFiltersResult>("alicloud:vpc/getTrafficMirrorFilters:getTrafficMirrorFilters", args ?? new GetTrafficMirrorFiltersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
@@ -130,7 +129,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTrafficMirrorFiltersResult> Invoke(GetTrafficMirrorFiltersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTrafficMirrorFiltersResult>("alicloud:vpc/getTrafficMirrorFilters:getTrafficMirrorFilters", args ?? new GetTrafficMirrorFiltersInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTrafficMirrorFiltersResult>("alicloud:vpc/getTrafficMirrorFilters:getTrafficMirrorFilters", args ?? new GetTrafficMirrorFiltersInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.SimpleApplicationServer
 {
@@ -77,7 +76,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerDisksResult> InvokeAsync(GetServerDisksArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServerDisksResult>("alicloud:simpleapplicationserver/getServerDisks:getServerDisks", args ?? new GetServerDisksArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServerDisksResult>("alicloud:simpleapplicationserver/getServerDisks:getServerDisks", args ?? new GetServerDisksArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Simple Application Server Disks of the current Alibaba Cloud user.
@@ -144,7 +143,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServerDisksResult> Invoke(GetServerDisksInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServerDisksResult>("alicloud:simpleapplicationserver/getServerDisks:getServerDisks", args ?? new GetServerDisksInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetServerDisksResult>("alicloud:simpleapplicationserver/getServerDisks:getServerDisks", args ?? new GetServerDisksInvokeArgs(), options.WithDefaults());
     }
 
 

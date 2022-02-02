@@ -31,9 +31,7 @@ export function getIndustrialPidProjects(args?: GetIndustrialPidProjectsArgs, op
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:brain/getIndustrialPidProjects:getIndustrialPidProjects", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

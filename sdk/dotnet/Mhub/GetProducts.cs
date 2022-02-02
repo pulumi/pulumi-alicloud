@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Mhub
 {
@@ -56,7 +55,7 @@ namespace Pulumi.AliCloud.Mhub
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProductsResult> InvokeAsync(GetProductsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProductsResult>("alicloud:mhub/getProducts:getProducts", args ?? new GetProductsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProductsResult>("alicloud:mhub/getProducts:getProducts", args ?? new GetProductsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Mhub Products of the current Alibaba Cloud user.
@@ -102,7 +101,7 @@ namespace Pulumi.AliCloud.Mhub
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProductsResult> Invoke(GetProductsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProductsResult>("alicloud:mhub/getProducts:getProducts", args ?? new GetProductsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetProductsResult>("alicloud:mhub/getProducts:getProducts", args ?? new GetProductsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -139,18 +139,18 @@ export class CustomDomain extends pulumi.CustomResource {
      */
     constructor(name: string, args: CustomDomainArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CustomDomainArgs | CustomDomainState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomDomainState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["apiVersion"] = state ? state.apiVersion : undefined;
-            inputs["certConfig"] = state ? state.certConfig : undefined;
-            inputs["createdTime"] = state ? state.createdTime : undefined;
-            inputs["domainName"] = state ? state.domainName : undefined;
-            inputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
-            inputs["protocol"] = state ? state.protocol : undefined;
-            inputs["routeConfigs"] = state ? state.routeConfigs : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["apiVersion"] = state ? state.apiVersion : undefined;
+            resourceInputs["certConfig"] = state ? state.certConfig : undefined;
+            resourceInputs["createdTime"] = state ? state.createdTime : undefined;
+            resourceInputs["domainName"] = state ? state.domainName : undefined;
+            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["routeConfigs"] = state ? state.routeConfigs : undefined;
         } else {
             const args = argsOrState as CustomDomainArgs | undefined;
             if ((!args || args.domainName === undefined) && !opts.urn) {
@@ -159,19 +159,17 @@ export class CustomDomain extends pulumi.CustomResource {
             if ((!args || args.protocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            inputs["certConfig"] = args ? args.certConfig : undefined;
-            inputs["domainName"] = args ? args.domainName : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["routeConfigs"] = args ? args.routeConfigs : undefined;
-            inputs["accountId"] = undefined /*out*/;
-            inputs["apiVersion"] = undefined /*out*/;
-            inputs["createdTime"] = undefined /*out*/;
-            inputs["lastModifiedTime"] = undefined /*out*/;
+            resourceInputs["certConfig"] = args ? args.certConfig : undefined;
+            resourceInputs["domainName"] = args ? args.domainName : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["routeConfigs"] = args ? args.routeConfigs : undefined;
+            resourceInputs["accountId"] = undefined /*out*/;
+            resourceInputs["apiVersion"] = undefined /*out*/;
+            resourceInputs["createdTime"] = undefined /*out*/;
+            resourceInputs["lastModifiedTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CustomDomain.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CustomDomain.__pulumiType, name, resourceInputs, opts);
     }
 }
 

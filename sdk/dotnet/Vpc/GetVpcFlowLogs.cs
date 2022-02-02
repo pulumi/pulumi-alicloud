@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVpcFlowLogsResult> InvokeAsync(GetVpcFlowLogsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVpcFlowLogsResult>("alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs", args ?? new GetVpcFlowLogsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVpcFlowLogsResult>("alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs", args ?? new GetVpcFlowLogsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vpc Flow Logs of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVpcFlowLogsResult> Invoke(GetVpcFlowLogsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVpcFlowLogsResult>("alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs", args ?? new GetVpcFlowLogsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetVpcFlowLogsResult>("alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs", args ?? new GetVpcFlowLogsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -66,29 +66,27 @@ export class AutoscalingConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args?: AutoscalingConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AutoscalingConfigArgs | AutoscalingConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AutoscalingConfigState | undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["coolDownDuration"] = state ? state.coolDownDuration : undefined;
-            inputs["gpuUtilizationThreshold"] = state ? state.gpuUtilizationThreshold : undefined;
-            inputs["scanInterval"] = state ? state.scanInterval : undefined;
-            inputs["unneededDuration"] = state ? state.unneededDuration : undefined;
-            inputs["utilizationThreshold"] = state ? state.utilizationThreshold : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["coolDownDuration"] = state ? state.coolDownDuration : undefined;
+            resourceInputs["gpuUtilizationThreshold"] = state ? state.gpuUtilizationThreshold : undefined;
+            resourceInputs["scanInterval"] = state ? state.scanInterval : undefined;
+            resourceInputs["unneededDuration"] = state ? state.unneededDuration : undefined;
+            resourceInputs["utilizationThreshold"] = state ? state.utilizationThreshold : undefined;
         } else {
             const args = argsOrState as AutoscalingConfigArgs | undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["coolDownDuration"] = args ? args.coolDownDuration : undefined;
-            inputs["gpuUtilizationThreshold"] = args ? args.gpuUtilizationThreshold : undefined;
-            inputs["scanInterval"] = args ? args.scanInterval : undefined;
-            inputs["unneededDuration"] = args ? args.unneededDuration : undefined;
-            inputs["utilizationThreshold"] = args ? args.utilizationThreshold : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["coolDownDuration"] = args ? args.coolDownDuration : undefined;
+            resourceInputs["gpuUtilizationThreshold"] = args ? args.gpuUtilizationThreshold : undefined;
+            resourceInputs["scanInterval"] = args ? args.scanInterval : undefined;
+            resourceInputs["unneededDuration"] = args ? args.unneededDuration : undefined;
+            resourceInputs["utilizationThreshold"] = args ? args.utilizationThreshold : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AutoscalingConfig.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AutoscalingConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

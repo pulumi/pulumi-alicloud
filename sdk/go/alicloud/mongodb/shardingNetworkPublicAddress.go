@@ -120,7 +120,7 @@ type ShardingNetworkPublicAddressInput interface {
 }
 
 func (*ShardingNetworkPublicAddress) ElementType() reflect.Type {
-	return reflect.TypeOf((*ShardingNetworkPublicAddress)(nil))
+	return reflect.TypeOf((**ShardingNetworkPublicAddress)(nil)).Elem()
 }
 
 func (i *ShardingNetworkPublicAddress) ToShardingNetworkPublicAddressOutput() ShardingNetworkPublicAddressOutput {
@@ -129,35 +129,6 @@ func (i *ShardingNetworkPublicAddress) ToShardingNetworkPublicAddressOutput() Sh
 
 func (i *ShardingNetworkPublicAddress) ToShardingNetworkPublicAddressOutputWithContext(ctx context.Context) ShardingNetworkPublicAddressOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ShardingNetworkPublicAddressOutput)
-}
-
-func (i *ShardingNetworkPublicAddress) ToShardingNetworkPublicAddressPtrOutput() ShardingNetworkPublicAddressPtrOutput {
-	return i.ToShardingNetworkPublicAddressPtrOutputWithContext(context.Background())
-}
-
-func (i *ShardingNetworkPublicAddress) ToShardingNetworkPublicAddressPtrOutputWithContext(ctx context.Context) ShardingNetworkPublicAddressPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ShardingNetworkPublicAddressPtrOutput)
-}
-
-type ShardingNetworkPublicAddressPtrInput interface {
-	pulumi.Input
-
-	ToShardingNetworkPublicAddressPtrOutput() ShardingNetworkPublicAddressPtrOutput
-	ToShardingNetworkPublicAddressPtrOutputWithContext(ctx context.Context) ShardingNetworkPublicAddressPtrOutput
-}
-
-type shardingNetworkPublicAddressPtrType ShardingNetworkPublicAddressArgs
-
-func (*shardingNetworkPublicAddressPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ShardingNetworkPublicAddress)(nil))
-}
-
-func (i *shardingNetworkPublicAddressPtrType) ToShardingNetworkPublicAddressPtrOutput() ShardingNetworkPublicAddressPtrOutput {
-	return i.ToShardingNetworkPublicAddressPtrOutputWithContext(context.Background())
-}
-
-func (i *shardingNetworkPublicAddressPtrType) ToShardingNetworkPublicAddressPtrOutputWithContext(ctx context.Context) ShardingNetworkPublicAddressPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ShardingNetworkPublicAddressPtrOutput)
 }
 
 // ShardingNetworkPublicAddressArrayInput is an input type that accepts ShardingNetworkPublicAddressArray and ShardingNetworkPublicAddressArrayOutput values.
@@ -213,7 +184,7 @@ func (i ShardingNetworkPublicAddressMap) ToShardingNetworkPublicAddressMapOutput
 type ShardingNetworkPublicAddressOutput struct{ *pulumi.OutputState }
 
 func (ShardingNetworkPublicAddressOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ShardingNetworkPublicAddress)(nil))
+	return reflect.TypeOf((**ShardingNetworkPublicAddress)(nil)).Elem()
 }
 
 func (o ShardingNetworkPublicAddressOutput) ToShardingNetworkPublicAddressOutput() ShardingNetworkPublicAddressOutput {
@@ -224,44 +195,10 @@ func (o ShardingNetworkPublicAddressOutput) ToShardingNetworkPublicAddressOutput
 	return o
 }
 
-func (o ShardingNetworkPublicAddressOutput) ToShardingNetworkPublicAddressPtrOutput() ShardingNetworkPublicAddressPtrOutput {
-	return o.ToShardingNetworkPublicAddressPtrOutputWithContext(context.Background())
-}
-
-func (o ShardingNetworkPublicAddressOutput) ToShardingNetworkPublicAddressPtrOutputWithContext(ctx context.Context) ShardingNetworkPublicAddressPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShardingNetworkPublicAddress) *ShardingNetworkPublicAddress {
-		return &v
-	}).(ShardingNetworkPublicAddressPtrOutput)
-}
-
-type ShardingNetworkPublicAddressPtrOutput struct{ *pulumi.OutputState }
-
-func (ShardingNetworkPublicAddressPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ShardingNetworkPublicAddress)(nil))
-}
-
-func (o ShardingNetworkPublicAddressPtrOutput) ToShardingNetworkPublicAddressPtrOutput() ShardingNetworkPublicAddressPtrOutput {
-	return o
-}
-
-func (o ShardingNetworkPublicAddressPtrOutput) ToShardingNetworkPublicAddressPtrOutputWithContext(ctx context.Context) ShardingNetworkPublicAddressPtrOutput {
-	return o
-}
-
-func (o ShardingNetworkPublicAddressPtrOutput) Elem() ShardingNetworkPublicAddressOutput {
-	return o.ApplyT(func(v *ShardingNetworkPublicAddress) ShardingNetworkPublicAddress {
-		if v != nil {
-			return *v
-		}
-		var ret ShardingNetworkPublicAddress
-		return ret
-	}).(ShardingNetworkPublicAddressOutput)
-}
-
 type ShardingNetworkPublicAddressArrayOutput struct{ *pulumi.OutputState }
 
 func (ShardingNetworkPublicAddressArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ShardingNetworkPublicAddress)(nil))
+	return reflect.TypeOf((*[]*ShardingNetworkPublicAddress)(nil)).Elem()
 }
 
 func (o ShardingNetworkPublicAddressArrayOutput) ToShardingNetworkPublicAddressArrayOutput() ShardingNetworkPublicAddressArrayOutput {
@@ -273,15 +210,15 @@ func (o ShardingNetworkPublicAddressArrayOutput) ToShardingNetworkPublicAddressA
 }
 
 func (o ShardingNetworkPublicAddressArrayOutput) Index(i pulumi.IntInput) ShardingNetworkPublicAddressOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ShardingNetworkPublicAddress {
-		return vs[0].([]ShardingNetworkPublicAddress)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ShardingNetworkPublicAddress {
+		return vs[0].([]*ShardingNetworkPublicAddress)[vs[1].(int)]
 	}).(ShardingNetworkPublicAddressOutput)
 }
 
 type ShardingNetworkPublicAddressMapOutput struct{ *pulumi.OutputState }
 
 func (ShardingNetworkPublicAddressMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ShardingNetworkPublicAddress)(nil))
+	return reflect.TypeOf((*map[string]*ShardingNetworkPublicAddress)(nil)).Elem()
 }
 
 func (o ShardingNetworkPublicAddressMapOutput) ToShardingNetworkPublicAddressMapOutput() ShardingNetworkPublicAddressMapOutput {
@@ -293,18 +230,16 @@ func (o ShardingNetworkPublicAddressMapOutput) ToShardingNetworkPublicAddressMap
 }
 
 func (o ShardingNetworkPublicAddressMapOutput) MapIndex(k pulumi.StringInput) ShardingNetworkPublicAddressOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ShardingNetworkPublicAddress {
-		return vs[0].(map[string]ShardingNetworkPublicAddress)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ShardingNetworkPublicAddress {
+		return vs[0].(map[string]*ShardingNetworkPublicAddress)[vs[1].(string)]
 	}).(ShardingNetworkPublicAddressOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingNetworkPublicAddressInput)(nil)).Elem(), &ShardingNetworkPublicAddress{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ShardingNetworkPublicAddressPtrInput)(nil)).Elem(), &ShardingNetworkPublicAddress{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingNetworkPublicAddressArrayInput)(nil)).Elem(), ShardingNetworkPublicAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingNetworkPublicAddressMapInput)(nil)).Elem(), ShardingNetworkPublicAddressMap{})
 	pulumi.RegisterOutputType(ShardingNetworkPublicAddressOutput{})
-	pulumi.RegisterOutputType(ShardingNetworkPublicAddressPtrOutput{})
 	pulumi.RegisterOutputType(ShardingNetworkPublicAddressArrayOutput{})
 	pulumi.RegisterOutputType(ShardingNetworkPublicAddressMapOutput{})
 }

@@ -32,9 +32,7 @@ export function getScalingConfigurations(args?: GetScalingConfigurationsArgs, op
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ess/getScalingConfigurations:getScalingConfigurations", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

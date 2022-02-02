@@ -34,9 +34,7 @@ export function getAlarms(args?: GetAlarmsArgs, opts?: pulumi.InvokeOptions): Pr
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ess/getAlarms:getAlarms", {
         "ids": args.ids,
         "metricType": args.metricType,

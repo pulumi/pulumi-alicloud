@@ -115,16 +115,16 @@ export class Rule extends pulumi.CustomResource {
      */
     constructor(name: string, args: RuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RuleArgs | RuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuleState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["eventBusName"] = state ? state.eventBusName : undefined;
-            inputs["filterPattern"] = state ? state.filterPattern : undefined;
-            inputs["ruleName"] = state ? state.ruleName : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["targets"] = state ? state.targets : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["eventBusName"] = state ? state.eventBusName : undefined;
+            resourceInputs["filterPattern"] = state ? state.filterPattern : undefined;
+            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["targets"] = state ? state.targets : undefined;
         } else {
             const args = argsOrState as RuleArgs | undefined;
             if ((!args || args.eventBusName === undefined) && !opts.urn) {
@@ -139,17 +139,15 @@ export class Rule extends pulumi.CustomResource {
             if ((!args || args.targets === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targets'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["eventBusName"] = args ? args.eventBusName : undefined;
-            inputs["filterPattern"] = args ? args.filterPattern : undefined;
-            inputs["ruleName"] = args ? args.ruleName : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["targets"] = args ? args.targets : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["eventBusName"] = args ? args.eventBusName : undefined;
+            resourceInputs["filterPattern"] = args ? args.filterPattern : undefined;
+            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["targets"] = args ? args.targets : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Rule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Rule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

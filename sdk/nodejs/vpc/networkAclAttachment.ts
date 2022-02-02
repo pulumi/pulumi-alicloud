@@ -51,12 +51,12 @@ export class NetworkAclAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: NetworkAclAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NetworkAclAttachmentArgs | NetworkAclAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkAclAttachmentState | undefined;
-            inputs["networkAclId"] = state ? state.networkAclId : undefined;
-            inputs["resources"] = state ? state.resources : undefined;
+            resourceInputs["networkAclId"] = state ? state.networkAclId : undefined;
+            resourceInputs["resources"] = state ? state.resources : undefined;
         } else {
             const args = argsOrState as NetworkAclAttachmentArgs | undefined;
             if ((!args || args.networkAclId === undefined) && !opts.urn) {
@@ -65,13 +65,11 @@ export class NetworkAclAttachment extends pulumi.CustomResource {
             if ((!args || args.resources === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resources'");
             }
-            inputs["networkAclId"] = args ? args.networkAclId : undefined;
-            inputs["resources"] = args ? args.resources : undefined;
+            resourceInputs["networkAclId"] = args ? args.networkAclId : undefined;
+            resourceInputs["resources"] = args ? args.resources : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(NetworkAclAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(NetworkAclAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.KVStore
 {
@@ -45,7 +44,7 @@ namespace Pulumi.AliCloud.KVStore
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPermissionResult> InvokeAsync(GetPermissionArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPermissionResult>("alicloud:kvstore/getPermission:getPermission", args ?? new GetPermissionArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPermissionResult>("alicloud:kvstore/getPermission:getPermission", args ?? new GetPermissionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Assigns a RAM role to ApsaraDB for Redis.
@@ -80,7 +79,7 @@ namespace Pulumi.AliCloud.KVStore
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPermissionResult> Invoke(GetPermissionInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPermissionResult>("alicloud:kvstore/getPermission:getPermission", args ?? new GetPermissionInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetPermissionResult>("alicloud:kvstore/getPermission:getPermission", args ?? new GetPermissionInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -9,9 +9,7 @@ export function getPlaintext(args: GetPlaintextArgs, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:kms/getPlaintext:getPlaintext", {
         "ciphertextBlob": args.ciphertextBlob,
         "encryptionContext": args.encryptionContext,

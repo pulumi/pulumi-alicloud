@@ -238,39 +238,39 @@ export class RouteMap extends pulumi.CustomResource {
      */
     constructor(name: string, args: RouteMapArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouteMapArgs | RouteMapState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouteMapState | undefined;
-            inputs["asPathMatchMode"] = state ? state.asPathMatchMode : undefined;
-            inputs["cenId"] = state ? state.cenId : undefined;
-            inputs["cenRegionId"] = state ? state.cenRegionId : undefined;
-            inputs["cidrMatchMode"] = state ? state.cidrMatchMode : undefined;
-            inputs["communityMatchMode"] = state ? state.communityMatchMode : undefined;
-            inputs["communityOperateMode"] = state ? state.communityOperateMode : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["destinationChildInstanceTypes"] = state ? state.destinationChildInstanceTypes : undefined;
-            inputs["destinationCidrBlocks"] = state ? state.destinationCidrBlocks : undefined;
-            inputs["destinationInstanceIds"] = state ? state.destinationInstanceIds : undefined;
-            inputs["destinationInstanceIdsReverseMatch"] = state ? state.destinationInstanceIdsReverseMatch : undefined;
-            inputs["destinationRouteTableIds"] = state ? state.destinationRouteTableIds : undefined;
-            inputs["mapResult"] = state ? state.mapResult : undefined;
-            inputs["matchAsns"] = state ? state.matchAsns : undefined;
-            inputs["matchCommunitySets"] = state ? state.matchCommunitySets : undefined;
-            inputs["nextPriority"] = state ? state.nextPriority : undefined;
-            inputs["operateCommunitySets"] = state ? state.operateCommunitySets : undefined;
-            inputs["preference"] = state ? state.preference : undefined;
-            inputs["prependAsPaths"] = state ? state.prependAsPaths : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["routeMapId"] = state ? state.routeMapId : undefined;
-            inputs["routeTypes"] = state ? state.routeTypes : undefined;
-            inputs["sourceChildInstanceTypes"] = state ? state.sourceChildInstanceTypes : undefined;
-            inputs["sourceInstanceIds"] = state ? state.sourceInstanceIds : undefined;
-            inputs["sourceInstanceIdsReverseMatch"] = state ? state.sourceInstanceIdsReverseMatch : undefined;
-            inputs["sourceRegionIds"] = state ? state.sourceRegionIds : undefined;
-            inputs["sourceRouteTableIds"] = state ? state.sourceRouteTableIds : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["transmitDirection"] = state ? state.transmitDirection : undefined;
+            resourceInputs["asPathMatchMode"] = state ? state.asPathMatchMode : undefined;
+            resourceInputs["cenId"] = state ? state.cenId : undefined;
+            resourceInputs["cenRegionId"] = state ? state.cenRegionId : undefined;
+            resourceInputs["cidrMatchMode"] = state ? state.cidrMatchMode : undefined;
+            resourceInputs["communityMatchMode"] = state ? state.communityMatchMode : undefined;
+            resourceInputs["communityOperateMode"] = state ? state.communityOperateMode : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["destinationChildInstanceTypes"] = state ? state.destinationChildInstanceTypes : undefined;
+            resourceInputs["destinationCidrBlocks"] = state ? state.destinationCidrBlocks : undefined;
+            resourceInputs["destinationInstanceIds"] = state ? state.destinationInstanceIds : undefined;
+            resourceInputs["destinationInstanceIdsReverseMatch"] = state ? state.destinationInstanceIdsReverseMatch : undefined;
+            resourceInputs["destinationRouteTableIds"] = state ? state.destinationRouteTableIds : undefined;
+            resourceInputs["mapResult"] = state ? state.mapResult : undefined;
+            resourceInputs["matchAsns"] = state ? state.matchAsns : undefined;
+            resourceInputs["matchCommunitySets"] = state ? state.matchCommunitySets : undefined;
+            resourceInputs["nextPriority"] = state ? state.nextPriority : undefined;
+            resourceInputs["operateCommunitySets"] = state ? state.operateCommunitySets : undefined;
+            resourceInputs["preference"] = state ? state.preference : undefined;
+            resourceInputs["prependAsPaths"] = state ? state.prependAsPaths : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["routeMapId"] = state ? state.routeMapId : undefined;
+            resourceInputs["routeTypes"] = state ? state.routeTypes : undefined;
+            resourceInputs["sourceChildInstanceTypes"] = state ? state.sourceChildInstanceTypes : undefined;
+            resourceInputs["sourceInstanceIds"] = state ? state.sourceInstanceIds : undefined;
+            resourceInputs["sourceInstanceIdsReverseMatch"] = state ? state.sourceInstanceIdsReverseMatch : undefined;
+            resourceInputs["sourceRegionIds"] = state ? state.sourceRegionIds : undefined;
+            resourceInputs["sourceRouteTableIds"] = state ? state.sourceRouteTableIds : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["transmitDirection"] = state ? state.transmitDirection : undefined;
         } else {
             const args = argsOrState as RouteMapArgs | undefined;
             if ((!args || args.cenId === undefined) && !opts.urn) {
@@ -288,40 +288,38 @@ export class RouteMap extends pulumi.CustomResource {
             if ((!args || args.transmitDirection === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'transmitDirection'");
             }
-            inputs["asPathMatchMode"] = args ? args.asPathMatchMode : undefined;
-            inputs["cenId"] = args ? args.cenId : undefined;
-            inputs["cenRegionId"] = args ? args.cenRegionId : undefined;
-            inputs["cidrMatchMode"] = args ? args.cidrMatchMode : undefined;
-            inputs["communityMatchMode"] = args ? args.communityMatchMode : undefined;
-            inputs["communityOperateMode"] = args ? args.communityOperateMode : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["destinationChildInstanceTypes"] = args ? args.destinationChildInstanceTypes : undefined;
-            inputs["destinationCidrBlocks"] = args ? args.destinationCidrBlocks : undefined;
-            inputs["destinationInstanceIds"] = args ? args.destinationInstanceIds : undefined;
-            inputs["destinationInstanceIdsReverseMatch"] = args ? args.destinationInstanceIdsReverseMatch : undefined;
-            inputs["destinationRouteTableIds"] = args ? args.destinationRouteTableIds : undefined;
-            inputs["mapResult"] = args ? args.mapResult : undefined;
-            inputs["matchAsns"] = args ? args.matchAsns : undefined;
-            inputs["matchCommunitySets"] = args ? args.matchCommunitySets : undefined;
-            inputs["nextPriority"] = args ? args.nextPriority : undefined;
-            inputs["operateCommunitySets"] = args ? args.operateCommunitySets : undefined;
-            inputs["preference"] = args ? args.preference : undefined;
-            inputs["prependAsPaths"] = args ? args.prependAsPaths : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["routeTypes"] = args ? args.routeTypes : undefined;
-            inputs["sourceChildInstanceTypes"] = args ? args.sourceChildInstanceTypes : undefined;
-            inputs["sourceInstanceIds"] = args ? args.sourceInstanceIds : undefined;
-            inputs["sourceInstanceIdsReverseMatch"] = args ? args.sourceInstanceIdsReverseMatch : undefined;
-            inputs["sourceRegionIds"] = args ? args.sourceRegionIds : undefined;
-            inputs["sourceRouteTableIds"] = args ? args.sourceRouteTableIds : undefined;
-            inputs["transmitDirection"] = args ? args.transmitDirection : undefined;
-            inputs["routeMapId"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["asPathMatchMode"] = args ? args.asPathMatchMode : undefined;
+            resourceInputs["cenId"] = args ? args.cenId : undefined;
+            resourceInputs["cenRegionId"] = args ? args.cenRegionId : undefined;
+            resourceInputs["cidrMatchMode"] = args ? args.cidrMatchMode : undefined;
+            resourceInputs["communityMatchMode"] = args ? args.communityMatchMode : undefined;
+            resourceInputs["communityOperateMode"] = args ? args.communityOperateMode : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["destinationChildInstanceTypes"] = args ? args.destinationChildInstanceTypes : undefined;
+            resourceInputs["destinationCidrBlocks"] = args ? args.destinationCidrBlocks : undefined;
+            resourceInputs["destinationInstanceIds"] = args ? args.destinationInstanceIds : undefined;
+            resourceInputs["destinationInstanceIdsReverseMatch"] = args ? args.destinationInstanceIdsReverseMatch : undefined;
+            resourceInputs["destinationRouteTableIds"] = args ? args.destinationRouteTableIds : undefined;
+            resourceInputs["mapResult"] = args ? args.mapResult : undefined;
+            resourceInputs["matchAsns"] = args ? args.matchAsns : undefined;
+            resourceInputs["matchCommunitySets"] = args ? args.matchCommunitySets : undefined;
+            resourceInputs["nextPriority"] = args ? args.nextPriority : undefined;
+            resourceInputs["operateCommunitySets"] = args ? args.operateCommunitySets : undefined;
+            resourceInputs["preference"] = args ? args.preference : undefined;
+            resourceInputs["prependAsPaths"] = args ? args.prependAsPaths : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["routeTypes"] = args ? args.routeTypes : undefined;
+            resourceInputs["sourceChildInstanceTypes"] = args ? args.sourceChildInstanceTypes : undefined;
+            resourceInputs["sourceInstanceIds"] = args ? args.sourceInstanceIds : undefined;
+            resourceInputs["sourceInstanceIdsReverseMatch"] = args ? args.sourceInstanceIdsReverseMatch : undefined;
+            resourceInputs["sourceRegionIds"] = args ? args.sourceRegionIds : undefined;
+            resourceInputs["sourceRouteTableIds"] = args ? args.sourceRouteTableIds : undefined;
+            resourceInputs["transmitDirection"] = args ? args.transmitDirection : undefined;
+            resourceInputs["routeMapId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RouteMap.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RouteMap.__pulumiType, name, resourceInputs, opts);
     }
 }
 

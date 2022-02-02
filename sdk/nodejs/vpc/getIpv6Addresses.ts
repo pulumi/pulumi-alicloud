@@ -42,9 +42,7 @@ export function getIpv6Addresses(args?: GetIpv6AddressesArgs, opts?: pulumi.Invo
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:vpc/getIpv6Addresses:getIpv6Addresses", {
         "associatedInstanceId": args.associatedInstanceId,
         "ids": args.ids,

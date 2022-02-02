@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -44,7 +43,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTrafficMirrorServiceResult> InvokeAsync(GetTrafficMirrorServiceArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTrafficMirrorServiceResult>("alicloud:vpc/getTrafficMirrorService:getTrafficMirrorService", args ?? new GetTrafficMirrorServiceArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTrafficMirrorServiceResult>("alicloud:vpc/getTrafficMirrorService:getTrafficMirrorService", args ?? new GetTrafficMirrorServiceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Using this data source can open VPC Traffic Mirror service automatically. If the service has been opened, it will return opened.
@@ -78,7 +77,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTrafficMirrorServiceResult> Invoke(GetTrafficMirrorServiceInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTrafficMirrorServiceResult>("alicloud:vpc/getTrafficMirrorService:getTrafficMirrorService", args ?? new GetTrafficMirrorServiceInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTrafficMirrorServiceResult>("alicloud:vpc/getTrafficMirrorService:getTrafficMirrorService", args ?? new GetTrafficMirrorServiceInvokeArgs(), options.WithDefaults());
     }
 
 

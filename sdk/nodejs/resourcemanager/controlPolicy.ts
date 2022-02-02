@@ -104,14 +104,14 @@ export class ControlPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: ControlPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ControlPolicyArgs | ControlPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ControlPolicyState | undefined;
-            inputs["controlPolicyName"] = state ? state.controlPolicyName : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["effectScope"] = state ? state.effectScope : undefined;
-            inputs["policyDocument"] = state ? state.policyDocument : undefined;
+            resourceInputs["controlPolicyName"] = state ? state.controlPolicyName : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectScope"] = state ? state.effectScope : undefined;
+            resourceInputs["policyDocument"] = state ? state.policyDocument : undefined;
         } else {
             const args = argsOrState as ControlPolicyArgs | undefined;
             if ((!args || args.controlPolicyName === undefined) && !opts.urn) {
@@ -123,15 +123,13 @@ export class ControlPolicy extends pulumi.CustomResource {
             if ((!args || args.policyDocument === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyDocument'");
             }
-            inputs["controlPolicyName"] = args ? args.controlPolicyName : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["effectScope"] = args ? args.effectScope : undefined;
-            inputs["policyDocument"] = args ? args.policyDocument : undefined;
+            resourceInputs["controlPolicyName"] = args ? args.controlPolicyName : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["effectScope"] = args ? args.effectScope : undefined;
+            resourceInputs["policyDocument"] = args ? args.policyDocument : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ControlPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ControlPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

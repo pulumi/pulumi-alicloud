@@ -99,7 +99,7 @@ type NetworkAclAttachmentInput interface {
 }
 
 func (*NetworkAclAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkAclAttachment)(nil))
+	return reflect.TypeOf((**NetworkAclAttachment)(nil)).Elem()
 }
 
 func (i *NetworkAclAttachment) ToNetworkAclAttachmentOutput() NetworkAclAttachmentOutput {
@@ -108,35 +108,6 @@ func (i *NetworkAclAttachment) ToNetworkAclAttachmentOutput() NetworkAclAttachme
 
 func (i *NetworkAclAttachment) ToNetworkAclAttachmentOutputWithContext(ctx context.Context) NetworkAclAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclAttachmentOutput)
-}
-
-func (i *NetworkAclAttachment) ToNetworkAclAttachmentPtrOutput() NetworkAclAttachmentPtrOutput {
-	return i.ToNetworkAclAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *NetworkAclAttachment) ToNetworkAclAttachmentPtrOutputWithContext(ctx context.Context) NetworkAclAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclAttachmentPtrOutput)
-}
-
-type NetworkAclAttachmentPtrInput interface {
-	pulumi.Input
-
-	ToNetworkAclAttachmentPtrOutput() NetworkAclAttachmentPtrOutput
-	ToNetworkAclAttachmentPtrOutputWithContext(ctx context.Context) NetworkAclAttachmentPtrOutput
-}
-
-type networkAclAttachmentPtrType NetworkAclAttachmentArgs
-
-func (*networkAclAttachmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkAclAttachment)(nil))
-}
-
-func (i *networkAclAttachmentPtrType) ToNetworkAclAttachmentPtrOutput() NetworkAclAttachmentPtrOutput {
-	return i.ToNetworkAclAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *networkAclAttachmentPtrType) ToNetworkAclAttachmentPtrOutputWithContext(ctx context.Context) NetworkAclAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclAttachmentPtrOutput)
 }
 
 // NetworkAclAttachmentArrayInput is an input type that accepts NetworkAclAttachmentArray and NetworkAclAttachmentArrayOutput values.
@@ -192,7 +163,7 @@ func (i NetworkAclAttachmentMap) ToNetworkAclAttachmentMapOutputWithContext(ctx 
 type NetworkAclAttachmentOutput struct{ *pulumi.OutputState }
 
 func (NetworkAclAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkAclAttachment)(nil))
+	return reflect.TypeOf((**NetworkAclAttachment)(nil)).Elem()
 }
 
 func (o NetworkAclAttachmentOutput) ToNetworkAclAttachmentOutput() NetworkAclAttachmentOutput {
@@ -203,44 +174,10 @@ func (o NetworkAclAttachmentOutput) ToNetworkAclAttachmentOutputWithContext(ctx 
 	return o
 }
 
-func (o NetworkAclAttachmentOutput) ToNetworkAclAttachmentPtrOutput() NetworkAclAttachmentPtrOutput {
-	return o.ToNetworkAclAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (o NetworkAclAttachmentOutput) ToNetworkAclAttachmentPtrOutputWithContext(ctx context.Context) NetworkAclAttachmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkAclAttachment) *NetworkAclAttachment {
-		return &v
-	}).(NetworkAclAttachmentPtrOutput)
-}
-
-type NetworkAclAttachmentPtrOutput struct{ *pulumi.OutputState }
-
-func (NetworkAclAttachmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkAclAttachment)(nil))
-}
-
-func (o NetworkAclAttachmentPtrOutput) ToNetworkAclAttachmentPtrOutput() NetworkAclAttachmentPtrOutput {
-	return o
-}
-
-func (o NetworkAclAttachmentPtrOutput) ToNetworkAclAttachmentPtrOutputWithContext(ctx context.Context) NetworkAclAttachmentPtrOutput {
-	return o
-}
-
-func (o NetworkAclAttachmentPtrOutput) Elem() NetworkAclAttachmentOutput {
-	return o.ApplyT(func(v *NetworkAclAttachment) NetworkAclAttachment {
-		if v != nil {
-			return *v
-		}
-		var ret NetworkAclAttachment
-		return ret
-	}).(NetworkAclAttachmentOutput)
-}
-
 type NetworkAclAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (NetworkAclAttachmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NetworkAclAttachment)(nil))
+	return reflect.TypeOf((*[]*NetworkAclAttachment)(nil)).Elem()
 }
 
 func (o NetworkAclAttachmentArrayOutput) ToNetworkAclAttachmentArrayOutput() NetworkAclAttachmentArrayOutput {
@@ -252,15 +189,15 @@ func (o NetworkAclAttachmentArrayOutput) ToNetworkAclAttachmentArrayOutputWithCo
 }
 
 func (o NetworkAclAttachmentArrayOutput) Index(i pulumi.IntInput) NetworkAclAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkAclAttachment {
-		return vs[0].([]NetworkAclAttachment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkAclAttachment {
+		return vs[0].([]*NetworkAclAttachment)[vs[1].(int)]
 	}).(NetworkAclAttachmentOutput)
 }
 
 type NetworkAclAttachmentMapOutput struct{ *pulumi.OutputState }
 
 func (NetworkAclAttachmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]NetworkAclAttachment)(nil))
+	return reflect.TypeOf((*map[string]*NetworkAclAttachment)(nil)).Elem()
 }
 
 func (o NetworkAclAttachmentMapOutput) ToNetworkAclAttachmentMapOutput() NetworkAclAttachmentMapOutput {
@@ -272,18 +209,16 @@ func (o NetworkAclAttachmentMapOutput) ToNetworkAclAttachmentMapOutputWithContex
 }
 
 func (o NetworkAclAttachmentMapOutput) MapIndex(k pulumi.StringInput) NetworkAclAttachmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NetworkAclAttachment {
-		return vs[0].(map[string]NetworkAclAttachment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *NetworkAclAttachment {
+		return vs[0].(map[string]*NetworkAclAttachment)[vs[1].(string)]
 	}).(NetworkAclAttachmentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclAttachmentInput)(nil)).Elem(), &NetworkAclAttachment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclAttachmentPtrInput)(nil)).Elem(), &NetworkAclAttachment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclAttachmentArrayInput)(nil)).Elem(), NetworkAclAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclAttachmentMapInput)(nil)).Elem(), NetworkAclAttachmentMap{})
 	pulumi.RegisterOutputType(NetworkAclAttachmentOutput{})
-	pulumi.RegisterOutputType(NetworkAclAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(NetworkAclAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(NetworkAclAttachmentMapOutput{})
 }

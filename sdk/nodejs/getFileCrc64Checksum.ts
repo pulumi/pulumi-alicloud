@@ -27,9 +27,7 @@ export function getFileCrc64Checksum(args: GetFileCrc64ChecksumArgs, opts?: pulu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:index/getFileCrc64Checksum:getFileCrc64Checksum", {
         "filename": args.filename,
         "outputFile": args.outputFile,

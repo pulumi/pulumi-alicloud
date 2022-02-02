@@ -293,7 +293,7 @@ type ForwardEntryInput interface {
 }
 
 func (*ForwardEntry) ElementType() reflect.Type {
-	return reflect.TypeOf((*ForwardEntry)(nil))
+	return reflect.TypeOf((**ForwardEntry)(nil)).Elem()
 }
 
 func (i *ForwardEntry) ToForwardEntryOutput() ForwardEntryOutput {
@@ -302,35 +302,6 @@ func (i *ForwardEntry) ToForwardEntryOutput() ForwardEntryOutput {
 
 func (i *ForwardEntry) ToForwardEntryOutputWithContext(ctx context.Context) ForwardEntryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ForwardEntryOutput)
-}
-
-func (i *ForwardEntry) ToForwardEntryPtrOutput() ForwardEntryPtrOutput {
-	return i.ToForwardEntryPtrOutputWithContext(context.Background())
-}
-
-func (i *ForwardEntry) ToForwardEntryPtrOutputWithContext(ctx context.Context) ForwardEntryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ForwardEntryPtrOutput)
-}
-
-type ForwardEntryPtrInput interface {
-	pulumi.Input
-
-	ToForwardEntryPtrOutput() ForwardEntryPtrOutput
-	ToForwardEntryPtrOutputWithContext(ctx context.Context) ForwardEntryPtrOutput
-}
-
-type forwardEntryPtrType ForwardEntryArgs
-
-func (*forwardEntryPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ForwardEntry)(nil))
-}
-
-func (i *forwardEntryPtrType) ToForwardEntryPtrOutput() ForwardEntryPtrOutput {
-	return i.ToForwardEntryPtrOutputWithContext(context.Background())
-}
-
-func (i *forwardEntryPtrType) ToForwardEntryPtrOutputWithContext(ctx context.Context) ForwardEntryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ForwardEntryPtrOutput)
 }
 
 // ForwardEntryArrayInput is an input type that accepts ForwardEntryArray and ForwardEntryArrayOutput values.
@@ -386,7 +357,7 @@ func (i ForwardEntryMap) ToForwardEntryMapOutputWithContext(ctx context.Context)
 type ForwardEntryOutput struct{ *pulumi.OutputState }
 
 func (ForwardEntryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ForwardEntry)(nil))
+	return reflect.TypeOf((**ForwardEntry)(nil)).Elem()
 }
 
 func (o ForwardEntryOutput) ToForwardEntryOutput() ForwardEntryOutput {
@@ -397,44 +368,10 @@ func (o ForwardEntryOutput) ToForwardEntryOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ForwardEntryOutput) ToForwardEntryPtrOutput() ForwardEntryPtrOutput {
-	return o.ToForwardEntryPtrOutputWithContext(context.Background())
-}
-
-func (o ForwardEntryOutput) ToForwardEntryPtrOutputWithContext(ctx context.Context) ForwardEntryPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ForwardEntry) *ForwardEntry {
-		return &v
-	}).(ForwardEntryPtrOutput)
-}
-
-type ForwardEntryPtrOutput struct{ *pulumi.OutputState }
-
-func (ForwardEntryPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ForwardEntry)(nil))
-}
-
-func (o ForwardEntryPtrOutput) ToForwardEntryPtrOutput() ForwardEntryPtrOutput {
-	return o
-}
-
-func (o ForwardEntryPtrOutput) ToForwardEntryPtrOutputWithContext(ctx context.Context) ForwardEntryPtrOutput {
-	return o
-}
-
-func (o ForwardEntryPtrOutput) Elem() ForwardEntryOutput {
-	return o.ApplyT(func(v *ForwardEntry) ForwardEntry {
-		if v != nil {
-			return *v
-		}
-		var ret ForwardEntry
-		return ret
-	}).(ForwardEntryOutput)
-}
-
 type ForwardEntryArrayOutput struct{ *pulumi.OutputState }
 
 func (ForwardEntryArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ForwardEntry)(nil))
+	return reflect.TypeOf((*[]*ForwardEntry)(nil)).Elem()
 }
 
 func (o ForwardEntryArrayOutput) ToForwardEntryArrayOutput() ForwardEntryArrayOutput {
@@ -446,15 +383,15 @@ func (o ForwardEntryArrayOutput) ToForwardEntryArrayOutputWithContext(ctx contex
 }
 
 func (o ForwardEntryArrayOutput) Index(i pulumi.IntInput) ForwardEntryOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ForwardEntry {
-		return vs[0].([]ForwardEntry)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ForwardEntry {
+		return vs[0].([]*ForwardEntry)[vs[1].(int)]
 	}).(ForwardEntryOutput)
 }
 
 type ForwardEntryMapOutput struct{ *pulumi.OutputState }
 
 func (ForwardEntryMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ForwardEntry)(nil))
+	return reflect.TypeOf((*map[string]*ForwardEntry)(nil)).Elem()
 }
 
 func (o ForwardEntryMapOutput) ToForwardEntryMapOutput() ForwardEntryMapOutput {
@@ -466,18 +403,16 @@ func (o ForwardEntryMapOutput) ToForwardEntryMapOutputWithContext(ctx context.Co
 }
 
 func (o ForwardEntryMapOutput) MapIndex(k pulumi.StringInput) ForwardEntryOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ForwardEntry {
-		return vs[0].(map[string]ForwardEntry)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ForwardEntry {
+		return vs[0].(map[string]*ForwardEntry)[vs[1].(string)]
 	}).(ForwardEntryOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardEntryInput)(nil)).Elem(), &ForwardEntry{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ForwardEntryPtrInput)(nil)).Elem(), &ForwardEntry{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardEntryArrayInput)(nil)).Elem(), ForwardEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardEntryMapInput)(nil)).Elem(), ForwardEntryMap{})
 	pulumi.RegisterOutputType(ForwardEntryOutput{})
-	pulumi.RegisterOutputType(ForwardEntryPtrOutput{})
 	pulumi.RegisterOutputType(ForwardEntryArrayOutput{})
 	pulumi.RegisterOutputType(ForwardEntryMapOutput{})
 }

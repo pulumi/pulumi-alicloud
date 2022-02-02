@@ -19,10 +19,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.cloudstoragegateway.StorageBundle("example", {storageBundleName: "example_value"});
- * const nameRegex = example.id.apply(id => alicloud.cloudstoragegateway.getGateways({
- *     storageBundleId: id,
+ * const nameRegex = alicloud.cloudstoragegateway.getGatewaysOutput({
+ *     storageBundleId: example.id,
  *     nameRegex: "^my-Gateway",
- * }));
+ * });
  * export const cloudStorageGatewayGatewayId = nameRegex.apply(nameRegex => nameRegex.gateways?[0]?.id);
  * ```
  */
@@ -31,9 +31,7 @@ export function getGateways(args: GetGatewaysArgs, opts?: pulumi.InvokeOptions):
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cloudstoragegateway/getGateways:getGateways", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

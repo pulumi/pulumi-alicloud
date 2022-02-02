@@ -83,13 +83,13 @@ export class ImageExport extends pulumi.CustomResource {
      */
     constructor(name: string, args: ImageExportArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ImageExportArgs | ImageExportState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageExportState | undefined;
-            inputs["imageId"] = state ? state.imageId : undefined;
-            inputs["ossBucket"] = state ? state.ossBucket : undefined;
-            inputs["ossPrefix"] = state ? state.ossPrefix : undefined;
+            resourceInputs["imageId"] = state ? state.imageId : undefined;
+            resourceInputs["ossBucket"] = state ? state.ossBucket : undefined;
+            resourceInputs["ossPrefix"] = state ? state.ossPrefix : undefined;
         } else {
             const args = argsOrState as ImageExportArgs | undefined;
             if ((!args || args.imageId === undefined) && !opts.urn) {
@@ -98,14 +98,12 @@ export class ImageExport extends pulumi.CustomResource {
             if ((!args || args.ossBucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ossBucket'");
             }
-            inputs["imageId"] = args ? args.imageId : undefined;
-            inputs["ossBucket"] = args ? args.ossBucket : undefined;
-            inputs["ossPrefix"] = args ? args.ossPrefix : undefined;
+            resourceInputs["imageId"] = args ? args.imageId : undefined;
+            resourceInputs["ossBucket"] = args ? args.ossBucket : undefined;
+            resourceInputs["ossPrefix"] = args ? args.ossPrefix : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ImageExport.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ImageExport.__pulumiType, name, resourceInputs, opts);
     }
 }
 

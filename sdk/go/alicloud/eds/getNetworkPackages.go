@@ -43,6 +43,11 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		defaultNetworkPackages := eds.GetNetworkPackagesOutput(ctx, eds.GetNetworkPackagesOutputArgs{
+// 			Ids: pulumi.StringArray{
+// 				defaultNetworkPackage.ID(),
+// 			},
+// 		}, nil)
 // 		ctx.Export("ecdNetworkPackageId1", defaultNetworkPackages.ApplyT(func(defaultNetworkPackages eds.GetNetworkPackagesResult) (string, error) {
 // 			return defaultNetworkPackages.Packages[0].Id, nil
 // 		}).(pulumi.StringOutput))

@@ -128,24 +128,24 @@ export class Secret extends pulumi.CustomResource {
      */
     constructor(name: string, args: SecretArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecretArgs | SecretState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretState | undefined;
-            inputs["arn"] = state ? state.arn : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["enableAutomaticRotation"] = state ? state.enableAutomaticRotation : undefined;
-            inputs["encryptionKeyId"] = state ? state.encryptionKeyId : undefined;
-            inputs["forceDeleteWithoutRecovery"] = state ? state.forceDeleteWithoutRecovery : undefined;
-            inputs["plannedDeleteTime"] = state ? state.plannedDeleteTime : undefined;
-            inputs["recoveryWindowInDays"] = state ? state.recoveryWindowInDays : undefined;
-            inputs["rotationInterval"] = state ? state.rotationInterval : undefined;
-            inputs["secretData"] = state ? state.secretData : undefined;
-            inputs["secretDataType"] = state ? state.secretDataType : undefined;
-            inputs["secretName"] = state ? state.secretName : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["versionId"] = state ? state.versionId : undefined;
-            inputs["versionStages"] = state ? state.versionStages : undefined;
+            resourceInputs["arn"] = state ? state.arn : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enableAutomaticRotation"] = state ? state.enableAutomaticRotation : undefined;
+            resourceInputs["encryptionKeyId"] = state ? state.encryptionKeyId : undefined;
+            resourceInputs["forceDeleteWithoutRecovery"] = state ? state.forceDeleteWithoutRecovery : undefined;
+            resourceInputs["plannedDeleteTime"] = state ? state.plannedDeleteTime : undefined;
+            resourceInputs["recoveryWindowInDays"] = state ? state.recoveryWindowInDays : undefined;
+            resourceInputs["rotationInterval"] = state ? state.rotationInterval : undefined;
+            resourceInputs["secretData"] = state ? state.secretData : undefined;
+            resourceInputs["secretDataType"] = state ? state.secretDataType : undefined;
+            resourceInputs["secretName"] = state ? state.secretName : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["versionId"] = state ? state.versionId : undefined;
+            resourceInputs["versionStages"] = state ? state.versionStages : undefined;
         } else {
             const args = argsOrState as SecretArgs | undefined;
             if ((!args || args.secretData === undefined) && !opts.urn) {
@@ -157,25 +157,23 @@ export class Secret extends pulumi.CustomResource {
             if ((!args || args.versionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'versionId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enableAutomaticRotation"] = args ? args.enableAutomaticRotation : undefined;
-            inputs["encryptionKeyId"] = args ? args.encryptionKeyId : undefined;
-            inputs["forceDeleteWithoutRecovery"] = args ? args.forceDeleteWithoutRecovery : undefined;
-            inputs["recoveryWindowInDays"] = args ? args.recoveryWindowInDays : undefined;
-            inputs["rotationInterval"] = args ? args.rotationInterval : undefined;
-            inputs["secretData"] = args ? args.secretData : undefined;
-            inputs["secretDataType"] = args ? args.secretDataType : undefined;
-            inputs["secretName"] = args ? args.secretName : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["versionId"] = args ? args.versionId : undefined;
-            inputs["versionStages"] = args ? args.versionStages : undefined;
-            inputs["arn"] = undefined /*out*/;
-            inputs["plannedDeleteTime"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableAutomaticRotation"] = args ? args.enableAutomaticRotation : undefined;
+            resourceInputs["encryptionKeyId"] = args ? args.encryptionKeyId : undefined;
+            resourceInputs["forceDeleteWithoutRecovery"] = args ? args.forceDeleteWithoutRecovery : undefined;
+            resourceInputs["recoveryWindowInDays"] = args ? args.recoveryWindowInDays : undefined;
+            resourceInputs["rotationInterval"] = args ? args.rotationInterval : undefined;
+            resourceInputs["secretData"] = args ? args.secretData : undefined;
+            resourceInputs["secretDataType"] = args ? args.secretDataType : undefined;
+            resourceInputs["secretName"] = args ? args.secretName : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["versionId"] = args ? args.versionId : undefined;
+            resourceInputs["versionStages"] = args ? args.versionStages : undefined;
+            resourceInputs["arn"] = undefined /*out*/;
+            resourceInputs["plannedDeleteTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Secret.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Secret.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -38,9 +38,7 @@ export function getHosts(args: GetHostsArgs, opts?: pulumi.InvokeOptions): Promi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:bastionhost/getHosts:getHosts", {
         "enableDetails": args.enableDetails,
         "hostAddress": args.hostAddress,

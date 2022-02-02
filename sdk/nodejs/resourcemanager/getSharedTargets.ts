@@ -30,9 +30,7 @@ export function getSharedTargets(args?: GetSharedTargetsArgs, opts?: pulumi.Invo
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:resourcemanager/getSharedTargets:getSharedTargets", {
         "ids": args.ids,
         "outputFile": args.outputFile,

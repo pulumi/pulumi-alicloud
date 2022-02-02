@@ -162,25 +162,25 @@ export class DedicatedHost extends pulumi.CustomResource {
      */
     constructor(name: string, args: DedicatedHostArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DedicatedHostArgs | DedicatedHostState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DedicatedHostState | undefined;
-            inputs["allocationStatus"] = state ? state.allocationStatus : undefined;
-            inputs["autoRenew"] = state ? state.autoRenew : undefined;
-            inputs["dedicatedHostGroupId"] = state ? state.dedicatedHostGroupId : undefined;
-            inputs["dedicatedHostId"] = state ? state.dedicatedHostId : undefined;
-            inputs["hostClass"] = state ? state.hostClass : undefined;
-            inputs["hostName"] = state ? state.hostName : undefined;
-            inputs["imageCategory"] = state ? state.imageCategory : undefined;
-            inputs["osPassword"] = state ? state.osPassword : undefined;
-            inputs["paymentType"] = state ? state.paymentType : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["usedTime"] = state ? state.usedTime : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["allocationStatus"] = state ? state.allocationStatus : undefined;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["dedicatedHostGroupId"] = state ? state.dedicatedHostGroupId : undefined;
+            resourceInputs["dedicatedHostId"] = state ? state.dedicatedHostId : undefined;
+            resourceInputs["hostClass"] = state ? state.hostClass : undefined;
+            resourceInputs["hostName"] = state ? state.hostName : undefined;
+            resourceInputs["imageCategory"] = state ? state.imageCategory : undefined;
+            resourceInputs["osPassword"] = state ? state.osPassword : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["usedTime"] = state ? state.usedTime : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as DedicatedHostArgs | undefined;
             if ((!args || args.dedicatedHostGroupId === undefined) && !opts.urn) {
@@ -198,26 +198,24 @@ export class DedicatedHost extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["allocationStatus"] = args ? args.allocationStatus : undefined;
-            inputs["autoRenew"] = args ? args.autoRenew : undefined;
-            inputs["dedicatedHostGroupId"] = args ? args.dedicatedHostGroupId : undefined;
-            inputs["hostClass"] = args ? args.hostClass : undefined;
-            inputs["hostName"] = args ? args.hostName : undefined;
-            inputs["imageCategory"] = args ? args.imageCategory : undefined;
-            inputs["osPassword"] = args ? args.osPassword : undefined;
-            inputs["paymentType"] = args ? args.paymentType : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["usedTime"] = args ? args.usedTime : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["dedicatedHostId"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["allocationStatus"] = args ? args.allocationStatus : undefined;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["dedicatedHostGroupId"] = args ? args.dedicatedHostGroupId : undefined;
+            resourceInputs["hostClass"] = args ? args.hostClass : undefined;
+            resourceInputs["hostName"] = args ? args.hostName : undefined;
+            resourceInputs["imageCategory"] = args ? args.imageCategory : undefined;
+            resourceInputs["osPassword"] = args ? args.osPassword : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["usedTime"] = args ? args.usedTime : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["dedicatedHostId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DedicatedHost.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DedicatedHost.__pulumiType, name, resourceInputs, opts);
     }
 }
 

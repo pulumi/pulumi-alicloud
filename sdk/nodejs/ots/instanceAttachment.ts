@@ -93,14 +93,14 @@ export class InstanceAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceAttachmentArgs | InstanceAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceAttachmentState | undefined;
-            inputs["instanceName"] = state ? state.instanceName : undefined;
-            inputs["vpcId"] = state ? state.vpcId : undefined;
-            inputs["vpcName"] = state ? state.vpcName : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["vpcName"] = state ? state.vpcName : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as InstanceAttachmentArgs | undefined;
             if ((!args || args.instanceName === undefined) && !opts.urn) {
@@ -112,15 +112,13 @@ export class InstanceAttachment extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            inputs["instanceName"] = args ? args.instanceName : undefined;
-            inputs["vpcName"] = args ? args.vpcName : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["vpcId"] = undefined /*out*/;
+            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
+            resourceInputs["vpcName"] = args ? args.vpcName : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["vpcId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(InstanceAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(InstanceAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

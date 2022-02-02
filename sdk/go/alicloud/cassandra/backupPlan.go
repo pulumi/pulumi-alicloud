@@ -155,7 +155,7 @@ type BackupPlanInput interface {
 }
 
 func (*BackupPlan) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackupPlan)(nil))
+	return reflect.TypeOf((**BackupPlan)(nil)).Elem()
 }
 
 func (i *BackupPlan) ToBackupPlanOutput() BackupPlanOutput {
@@ -164,35 +164,6 @@ func (i *BackupPlan) ToBackupPlanOutput() BackupPlanOutput {
 
 func (i *BackupPlan) ToBackupPlanOutputWithContext(ctx context.Context) BackupPlanOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanOutput)
-}
-
-func (i *BackupPlan) ToBackupPlanPtrOutput() BackupPlanPtrOutput {
-	return i.ToBackupPlanPtrOutputWithContext(context.Background())
-}
-
-func (i *BackupPlan) ToBackupPlanPtrOutputWithContext(ctx context.Context) BackupPlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanPtrOutput)
-}
-
-type BackupPlanPtrInput interface {
-	pulumi.Input
-
-	ToBackupPlanPtrOutput() BackupPlanPtrOutput
-	ToBackupPlanPtrOutputWithContext(ctx context.Context) BackupPlanPtrOutput
-}
-
-type backupPlanPtrType BackupPlanArgs
-
-func (*backupPlanPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BackupPlan)(nil))
-}
-
-func (i *backupPlanPtrType) ToBackupPlanPtrOutput() BackupPlanPtrOutput {
-	return i.ToBackupPlanPtrOutputWithContext(context.Background())
-}
-
-func (i *backupPlanPtrType) ToBackupPlanPtrOutputWithContext(ctx context.Context) BackupPlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanPtrOutput)
 }
 
 // BackupPlanArrayInput is an input type that accepts BackupPlanArray and BackupPlanArrayOutput values.
@@ -248,7 +219,7 @@ func (i BackupPlanMap) ToBackupPlanMapOutputWithContext(ctx context.Context) Bac
 type BackupPlanOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackupPlan)(nil))
+	return reflect.TypeOf((**BackupPlan)(nil)).Elem()
 }
 
 func (o BackupPlanOutput) ToBackupPlanOutput() BackupPlanOutput {
@@ -259,44 +230,10 @@ func (o BackupPlanOutput) ToBackupPlanOutputWithContext(ctx context.Context) Bac
 	return o
 }
 
-func (o BackupPlanOutput) ToBackupPlanPtrOutput() BackupPlanPtrOutput {
-	return o.ToBackupPlanPtrOutputWithContext(context.Background())
-}
-
-func (o BackupPlanOutput) ToBackupPlanPtrOutputWithContext(ctx context.Context) BackupPlanPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPlan) *BackupPlan {
-		return &v
-	}).(BackupPlanPtrOutput)
-}
-
-type BackupPlanPtrOutput struct{ *pulumi.OutputState }
-
-func (BackupPlanPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BackupPlan)(nil))
-}
-
-func (o BackupPlanPtrOutput) ToBackupPlanPtrOutput() BackupPlanPtrOutput {
-	return o
-}
-
-func (o BackupPlanPtrOutput) ToBackupPlanPtrOutputWithContext(ctx context.Context) BackupPlanPtrOutput {
-	return o
-}
-
-func (o BackupPlanPtrOutput) Elem() BackupPlanOutput {
-	return o.ApplyT(func(v *BackupPlan) BackupPlan {
-		if v != nil {
-			return *v
-		}
-		var ret BackupPlan
-		return ret
-	}).(BackupPlanOutput)
-}
-
 type BackupPlanArrayOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BackupPlan)(nil))
+	return reflect.TypeOf((*[]*BackupPlan)(nil)).Elem()
 }
 
 func (o BackupPlanArrayOutput) ToBackupPlanArrayOutput() BackupPlanArrayOutput {
@@ -308,15 +245,15 @@ func (o BackupPlanArrayOutput) ToBackupPlanArrayOutputWithContext(ctx context.Co
 }
 
 func (o BackupPlanArrayOutput) Index(i pulumi.IntInput) BackupPlanOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackupPlan {
-		return vs[0].([]BackupPlan)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BackupPlan {
+		return vs[0].([]*BackupPlan)[vs[1].(int)]
 	}).(BackupPlanOutput)
 }
 
 type BackupPlanMapOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]BackupPlan)(nil))
+	return reflect.TypeOf((*map[string]*BackupPlan)(nil)).Elem()
 }
 
 func (o BackupPlanMapOutput) ToBackupPlanMapOutput() BackupPlanMapOutput {
@@ -328,18 +265,16 @@ func (o BackupPlanMapOutput) ToBackupPlanMapOutputWithContext(ctx context.Contex
 }
 
 func (o BackupPlanMapOutput) MapIndex(k pulumi.StringInput) BackupPlanOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BackupPlan {
-		return vs[0].(map[string]BackupPlan)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *BackupPlan {
+		return vs[0].(map[string]*BackupPlan)[vs[1].(string)]
 	}).(BackupPlanOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanInput)(nil)).Elem(), &BackupPlan{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanPtrInput)(nil)).Elem(), &BackupPlan{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanArrayInput)(nil)).Elem(), BackupPlanArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanMapInput)(nil)).Elem(), BackupPlanMap{})
 	pulumi.RegisterOutputType(BackupPlanOutput{})
-	pulumi.RegisterOutputType(BackupPlanPtrOutput{})
 	pulumi.RegisterOutputType(BackupPlanArrayOutput{})
 	pulumi.RegisterOutputType(BackupPlanMapOutput{})
 }

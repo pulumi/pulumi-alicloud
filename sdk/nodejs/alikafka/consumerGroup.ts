@@ -103,13 +103,13 @@ export class ConsumerGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: ConsumerGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConsumerGroupArgs | ConsumerGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConsumerGroupState | undefined;
-            inputs["consumerId"] = state ? state.consumerId : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["consumerId"] = state ? state.consumerId : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as ConsumerGroupArgs | undefined;
             if ((!args || args.consumerId === undefined) && !opts.urn) {
@@ -118,14 +118,12 @@ export class ConsumerGroup extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["consumerId"] = args ? args.consumerId : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["consumerId"] = args ? args.consumerId : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ConsumerGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ConsumerGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

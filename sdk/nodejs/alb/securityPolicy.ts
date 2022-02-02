@@ -102,17 +102,17 @@ export class SecurityPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: SecurityPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecurityPolicyArgs | SecurityPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityPolicyState | undefined;
-            inputs["ciphers"] = state ? state.ciphers : undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["securityPolicyName"] = state ? state.securityPolicyName : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["tlsVersions"] = state ? state.tlsVersions : undefined;
+            resourceInputs["ciphers"] = state ? state.ciphers : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["securityPolicyName"] = state ? state.securityPolicyName : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["tlsVersions"] = state ? state.tlsVersions : undefined;
         } else {
             const args = argsOrState as SecurityPolicyArgs | undefined;
             if ((!args || args.ciphers === undefined) && !opts.urn) {
@@ -124,18 +124,16 @@ export class SecurityPolicy extends pulumi.CustomResource {
             if ((!args || args.tlsVersions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tlsVersions'");
             }
-            inputs["ciphers"] = args ? args.ciphers : undefined;
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["securityPolicyName"] = args ? args.securityPolicyName : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["tlsVersions"] = args ? args.tlsVersions : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["ciphers"] = args ? args.ciphers : undefined;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["securityPolicyName"] = args ? args.securityPolicyName : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["tlsVersions"] = args ? args.tlsVersions : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SecurityPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SecurityPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

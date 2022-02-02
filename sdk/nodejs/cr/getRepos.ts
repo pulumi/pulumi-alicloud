@@ -31,9 +31,7 @@ export function getRepos(args?: GetReposArgs, opts?: pulumi.InvokeOptions): Prom
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cr/getRepos:getRepos", {
         "enableDetails": args.enableDetails,
         "nameRegex": args.nameRegex,

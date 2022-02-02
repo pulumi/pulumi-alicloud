@@ -98,43 +98,41 @@ export class TrailDeprecated extends pulumi.CustomResource {
     /** @deprecated Resource renamed to `Trail` */
     constructor(name: string, argsOrState?: TrailDeprecatedArgs | TrailDeprecatedState, opts?: pulumi.CustomResourceOptions) {
         pulumi.log.warn("TrailDeprecated is deprecated: Resource renamed to `Trail`")
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TrailDeprecatedState | undefined;
-            inputs["eventRw"] = state ? state.eventRw : undefined;
-            inputs["isOrganizationTrail"] = state ? state.isOrganizationTrail : undefined;
-            inputs["mnsTopicArn"] = state ? state.mnsTopicArn : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["ossBucketName"] = state ? state.ossBucketName : undefined;
-            inputs["ossKeyPrefix"] = state ? state.ossKeyPrefix : undefined;
-            inputs["ossWriteRoleArn"] = state ? state.ossWriteRoleArn : undefined;
-            inputs["roleName"] = state ? state.roleName : undefined;
-            inputs["slsProjectArn"] = state ? state.slsProjectArn : undefined;
-            inputs["slsWriteRoleArn"] = state ? state.slsWriteRoleArn : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["trailName"] = state ? state.trailName : undefined;
-            inputs["trailRegion"] = state ? state.trailRegion : undefined;
+            resourceInputs["eventRw"] = state ? state.eventRw : undefined;
+            resourceInputs["isOrganizationTrail"] = state ? state.isOrganizationTrail : undefined;
+            resourceInputs["mnsTopicArn"] = state ? state.mnsTopicArn : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["ossBucketName"] = state ? state.ossBucketName : undefined;
+            resourceInputs["ossKeyPrefix"] = state ? state.ossKeyPrefix : undefined;
+            resourceInputs["ossWriteRoleArn"] = state ? state.ossWriteRoleArn : undefined;
+            resourceInputs["roleName"] = state ? state.roleName : undefined;
+            resourceInputs["slsProjectArn"] = state ? state.slsProjectArn : undefined;
+            resourceInputs["slsWriteRoleArn"] = state ? state.slsWriteRoleArn : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["trailName"] = state ? state.trailName : undefined;
+            resourceInputs["trailRegion"] = state ? state.trailRegion : undefined;
         } else {
             const args = argsOrState as TrailDeprecatedArgs | undefined;
-            inputs["eventRw"] = args ? args.eventRw : undefined;
-            inputs["isOrganizationTrail"] = args ? args.isOrganizationTrail : undefined;
-            inputs["mnsTopicArn"] = args ? args.mnsTopicArn : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["ossBucketName"] = args ? args.ossBucketName : undefined;
-            inputs["ossKeyPrefix"] = args ? args.ossKeyPrefix : undefined;
-            inputs["ossWriteRoleArn"] = args ? args.ossWriteRoleArn : undefined;
-            inputs["roleName"] = args ? args.roleName : undefined;
-            inputs["slsProjectArn"] = args ? args.slsProjectArn : undefined;
-            inputs["slsWriteRoleArn"] = args ? args.slsWriteRoleArn : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["trailName"] = args ? args.trailName : undefined;
-            inputs["trailRegion"] = args ? args.trailRegion : undefined;
+            resourceInputs["eventRw"] = args ? args.eventRw : undefined;
+            resourceInputs["isOrganizationTrail"] = args ? args.isOrganizationTrail : undefined;
+            resourceInputs["mnsTopicArn"] = args ? args.mnsTopicArn : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["ossBucketName"] = args ? args.ossBucketName : undefined;
+            resourceInputs["ossKeyPrefix"] = args ? args.ossKeyPrefix : undefined;
+            resourceInputs["ossWriteRoleArn"] = args ? args.ossWriteRoleArn : undefined;
+            resourceInputs["roleName"] = args ? args.roleName : undefined;
+            resourceInputs["slsProjectArn"] = args ? args.slsProjectArn : undefined;
+            resourceInputs["slsWriteRoleArn"] = args ? args.slsWriteRoleArn : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["trailName"] = args ? args.trailName : undefined;
+            resourceInputs["trailRegion"] = args ? args.trailRegion : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TrailDeprecated.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TrailDeprecated.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -31,9 +31,7 @@ export function getDeliveryChannels(args?: GetDeliveryChannelsArgs, opts?: pulum
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cfg/getDeliveryChannels:getDeliveryChannels", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

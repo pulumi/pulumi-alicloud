@@ -111,17 +111,17 @@ export class AlarmContact extends pulumi.CustomResource {
      */
     constructor(name: string, args: AlarmContactArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AlarmContactArgs | AlarmContactState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlarmContactState | undefined;
-            inputs["alarmContactName"] = state ? state.alarmContactName : undefined;
-            inputs["channelsAliim"] = state ? state.channelsAliim : undefined;
-            inputs["channelsDingWebHook"] = state ? state.channelsDingWebHook : undefined;
-            inputs["channelsMail"] = state ? state.channelsMail : undefined;
-            inputs["channelsSms"] = state ? state.channelsSms : undefined;
-            inputs["describe"] = state ? state.describe : undefined;
-            inputs["lang"] = state ? state.lang : undefined;
+            resourceInputs["alarmContactName"] = state ? state.alarmContactName : undefined;
+            resourceInputs["channelsAliim"] = state ? state.channelsAliim : undefined;
+            resourceInputs["channelsDingWebHook"] = state ? state.channelsDingWebHook : undefined;
+            resourceInputs["channelsMail"] = state ? state.channelsMail : undefined;
+            resourceInputs["channelsSms"] = state ? state.channelsSms : undefined;
+            resourceInputs["describe"] = state ? state.describe : undefined;
+            resourceInputs["lang"] = state ? state.lang : undefined;
         } else {
             const args = argsOrState as AlarmContactArgs | undefined;
             if ((!args || args.alarmContactName === undefined) && !opts.urn) {
@@ -130,18 +130,16 @@ export class AlarmContact extends pulumi.CustomResource {
             if ((!args || args.describe === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'describe'");
             }
-            inputs["alarmContactName"] = args ? args.alarmContactName : undefined;
-            inputs["channelsAliim"] = args ? args.channelsAliim : undefined;
-            inputs["channelsDingWebHook"] = args ? args.channelsDingWebHook : undefined;
-            inputs["channelsMail"] = args ? args.channelsMail : undefined;
-            inputs["channelsSms"] = args ? args.channelsSms : undefined;
-            inputs["describe"] = args ? args.describe : undefined;
-            inputs["lang"] = args ? args.lang : undefined;
+            resourceInputs["alarmContactName"] = args ? args.alarmContactName : undefined;
+            resourceInputs["channelsAliim"] = args ? args.channelsAliim : undefined;
+            resourceInputs["channelsDingWebHook"] = args ? args.channelsDingWebHook : undefined;
+            resourceInputs["channelsMail"] = args ? args.channelsMail : undefined;
+            resourceInputs["channelsSms"] = args ? args.channelsSms : undefined;
+            resourceInputs["describe"] = args ? args.describe : undefined;
+            resourceInputs["lang"] = args ? args.lang : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AlarmContact.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AlarmContact.__pulumiType, name, resourceInputs, opts);
     }
 }
 

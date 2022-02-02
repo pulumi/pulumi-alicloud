@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CloudSso
 {
@@ -61,7 +60,7 @@ namespace Pulumi.AliCloud.CloudSso
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccessConfigurationsResult> InvokeAsync(GetAccessConfigurationsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccessConfigurationsResult>("alicloud:cloudsso/getAccessConfigurations:getAccessConfigurations", args ?? new GetAccessConfigurationsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccessConfigurationsResult>("alicloud:cloudsso/getAccessConfigurations:getAccessConfigurations", args ?? new GetAccessConfigurationsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cloud Sso Access Configurations of the current Alibaba Cloud user.
@@ -112,7 +111,7 @@ namespace Pulumi.AliCloud.CloudSso
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccessConfigurationsResult> Invoke(GetAccessConfigurationsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccessConfigurationsResult>("alicloud:cloudsso/getAccessConfigurations:getAccessConfigurations", args ?? new GetAccessConfigurationsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAccessConfigurationsResult>("alicloud:cloudsso/getAccessConfigurations:getAccessConfigurations", args ?? new GetAccessConfigurationsInvokeArgs(), options.WithDefaults());
     }
 
 

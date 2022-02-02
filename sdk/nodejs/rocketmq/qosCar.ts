@@ -122,20 +122,20 @@ export class QosCar extends pulumi.CustomResource {
      */
     constructor(name: string, args: QosCarArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QosCarArgs | QosCarState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QosCarState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["limitType"] = state ? state.limitType : undefined;
-            inputs["maxBandwidthAbs"] = state ? state.maxBandwidthAbs : undefined;
-            inputs["maxBandwidthPercent"] = state ? state.maxBandwidthPercent : undefined;
-            inputs["minBandwidthAbs"] = state ? state.minBandwidthAbs : undefined;
-            inputs["minBandwidthPercent"] = state ? state.minBandwidthPercent : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["percentSourceType"] = state ? state.percentSourceType : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["qosId"] = state ? state.qosId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["limitType"] = state ? state.limitType : undefined;
+            resourceInputs["maxBandwidthAbs"] = state ? state.maxBandwidthAbs : undefined;
+            resourceInputs["maxBandwidthPercent"] = state ? state.maxBandwidthPercent : undefined;
+            resourceInputs["minBandwidthAbs"] = state ? state.minBandwidthAbs : undefined;
+            resourceInputs["minBandwidthPercent"] = state ? state.minBandwidthPercent : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["percentSourceType"] = state ? state.percentSourceType : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["qosId"] = state ? state.qosId : undefined;
         } else {
             const args = argsOrState as QosCarArgs | undefined;
             if ((!args || args.limitType === undefined) && !opts.urn) {
@@ -147,21 +147,19 @@ export class QosCar extends pulumi.CustomResource {
             if ((!args || args.qosId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'qosId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["limitType"] = args ? args.limitType : undefined;
-            inputs["maxBandwidthAbs"] = args ? args.maxBandwidthAbs : undefined;
-            inputs["maxBandwidthPercent"] = args ? args.maxBandwidthPercent : undefined;
-            inputs["minBandwidthAbs"] = args ? args.minBandwidthAbs : undefined;
-            inputs["minBandwidthPercent"] = args ? args.minBandwidthPercent : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["percentSourceType"] = args ? args.percentSourceType : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["qosId"] = args ? args.qosId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["limitType"] = args ? args.limitType : undefined;
+            resourceInputs["maxBandwidthAbs"] = args ? args.maxBandwidthAbs : undefined;
+            resourceInputs["maxBandwidthPercent"] = args ? args.maxBandwidthPercent : undefined;
+            resourceInputs["minBandwidthAbs"] = args ? args.minBandwidthAbs : undefined;
+            resourceInputs["minBandwidthPercent"] = args ? args.minBandwidthPercent : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["percentSourceType"] = args ? args.percentSourceType : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["qosId"] = args ? args.qosId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(QosCar.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(QosCar.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -212,7 +212,7 @@ def get_route_tables(ids: Optional[Sequence[str]] = None,
         description=name,
         route_table_name=name,
         vpc_id=foo_network.id)
-    foo_route_tables = foo_route_table.id.apply(lambda id: alicloud.vpc.get_route_tables(ids=[id]))
+    foo_route_tables = alicloud.vpc.get_route_tables_output(ids=[foo_route_table.id])
     pulumi.export("routeTableIds", foo_route_tables.ids)
     ```
 
@@ -294,7 +294,7 @@ def get_route_tables_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
         description=name,
         route_table_name=name,
         vpc_id=foo_network.id)
-    foo_route_tables = foo_route_table.id.apply(lambda id: alicloud.vpc.get_route_tables(ids=[id]))
+    foo_route_tables = alicloud.vpc.get_route_tables_output(ids=[foo_route_table.id])
     pulumi.export("routeTableIds", foo_route_tables.ids)
     ```
 

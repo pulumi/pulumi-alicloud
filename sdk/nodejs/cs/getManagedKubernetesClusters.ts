@@ -31,9 +31,7 @@ export function getManagedKubernetesClusters(args?: GetManagedKubernetesClusters
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,

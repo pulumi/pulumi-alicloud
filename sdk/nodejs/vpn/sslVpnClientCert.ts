@@ -79,34 +79,32 @@ export class SslVpnClientCert extends pulumi.CustomResource {
      */
     constructor(name: string, args: SslVpnClientCertArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SslVpnClientCertArgs | SslVpnClientCertState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SslVpnClientCertState | undefined;
-            inputs["caCert"] = state ? state.caCert : undefined;
-            inputs["clientCert"] = state ? state.clientCert : undefined;
-            inputs["clientConfig"] = state ? state.clientConfig : undefined;
-            inputs["clientKey"] = state ? state.clientKey : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["sslVpnServerId"] = state ? state.sslVpnServerId : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["caCert"] = state ? state.caCert : undefined;
+            resourceInputs["clientCert"] = state ? state.clientCert : undefined;
+            resourceInputs["clientConfig"] = state ? state.clientConfig : undefined;
+            resourceInputs["clientKey"] = state ? state.clientKey : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["sslVpnServerId"] = state ? state.sslVpnServerId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as SslVpnClientCertArgs | undefined;
             if ((!args || args.sslVpnServerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sslVpnServerId'");
             }
-            inputs["name"] = args ? args.name : undefined;
-            inputs["sslVpnServerId"] = args ? args.sslVpnServerId : undefined;
-            inputs["caCert"] = undefined /*out*/;
-            inputs["clientCert"] = undefined /*out*/;
-            inputs["clientConfig"] = undefined /*out*/;
-            inputs["clientKey"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["sslVpnServerId"] = args ? args.sslVpnServerId : undefined;
+            resourceInputs["caCert"] = undefined /*out*/;
+            resourceInputs["clientCert"] = undefined /*out*/;
+            resourceInputs["clientConfig"] = undefined /*out*/;
+            resourceInputs["clientKey"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SslVpnClientCert.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SslVpnClientCert.__pulumiType, name, resourceInputs, opts);
     }
 }
 

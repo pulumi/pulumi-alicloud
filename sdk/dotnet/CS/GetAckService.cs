@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CS
 {
@@ -44,7 +43,7 @@ namespace Pulumi.AliCloud.CS
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAckServiceResult> InvokeAsync(GetAckServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAckServiceResult>("alicloud:cs/getAckService:getAckService", args ?? new GetAckServiceArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAckServiceResult>("alicloud:cs/getAckService:getAckService", args ?? new GetAckServiceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Using this data source can open Container Service (CS) service automatically. If the service has been opened, it will return opened.
@@ -78,7 +77,7 @@ namespace Pulumi.AliCloud.CS
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAckServiceResult> Invoke(GetAckServiceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAckServiceResult>("alicloud:cs/getAckService:getAckService", args ?? new GetAckServiceInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAckServiceResult>("alicloud:cs/getAckService:getAckService", args ?? new GetAckServiceInvokeArgs(), options.WithDefaults());
     }
 
 

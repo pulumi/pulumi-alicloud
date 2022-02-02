@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ess
 {
@@ -45,7 +44,7 @@ namespace Pulumi.AliCloud.Ess
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetLifecycleHooksResult> InvokeAsync(GetLifecycleHooksArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLifecycleHooksResult>("alicloud:ess/getLifecycleHooks:getLifecycleHooks", args ?? new GetLifecycleHooksArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetLifecycleHooksResult>("alicloud:ess/getLifecycleHooks:getLifecycleHooks", args ?? new GetLifecycleHooksArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides available lifecycle hook resources. 
@@ -80,7 +79,7 @@ namespace Pulumi.AliCloud.Ess
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetLifecycleHooksResult> Invoke(GetLifecycleHooksInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetLifecycleHooksResult>("alicloud:ess/getLifecycleHooks:getLifecycleHooks", args ?? new GetLifecycleHooksInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetLifecycleHooksResult>("alicloud:ess/getLifecycleHooks:getLifecycleHooks", args ?? new GetLifecycleHooksInvokeArgs(), options.WithDefaults());
     }
 
 

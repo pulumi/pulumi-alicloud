@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Brain
 {
@@ -51,7 +50,7 @@ namespace Pulumi.AliCloud.Brain
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetIndustrialPidLoopsResult> InvokeAsync(GetIndustrialPidLoopsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIndustrialPidLoopsResult>("alicloud:brain/getIndustrialPidLoops:getIndustrialPidLoops", args ?? new GetIndustrialPidLoopsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetIndustrialPidLoopsResult>("alicloud:brain/getIndustrialPidLoops:getIndustrialPidLoops", args ?? new GetIndustrialPidLoopsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.
@@ -92,7 +91,7 @@ namespace Pulumi.AliCloud.Brain
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetIndustrialPidLoopsResult> Invoke(GetIndustrialPidLoopsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIndustrialPidLoopsResult>("alicloud:brain/getIndustrialPidLoops:getIndustrialPidLoops", args ?? new GetIndustrialPidLoopsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetIndustrialPidLoopsResult>("alicloud:brain/getIndustrialPidLoops:getIndustrialPidLoops", args ?? new GetIndustrialPidLoopsInvokeArgs(), options.WithDefaults());
     }
 
 

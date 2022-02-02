@@ -188,7 +188,7 @@ type GatewaySmbUserInput interface {
 }
 
 func (*GatewaySmbUser) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewaySmbUser)(nil))
+	return reflect.TypeOf((**GatewaySmbUser)(nil)).Elem()
 }
 
 func (i *GatewaySmbUser) ToGatewaySmbUserOutput() GatewaySmbUserOutput {
@@ -197,35 +197,6 @@ func (i *GatewaySmbUser) ToGatewaySmbUserOutput() GatewaySmbUserOutput {
 
 func (i *GatewaySmbUser) ToGatewaySmbUserOutputWithContext(ctx context.Context) GatewaySmbUserOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewaySmbUserOutput)
-}
-
-func (i *GatewaySmbUser) ToGatewaySmbUserPtrOutput() GatewaySmbUserPtrOutput {
-	return i.ToGatewaySmbUserPtrOutputWithContext(context.Background())
-}
-
-func (i *GatewaySmbUser) ToGatewaySmbUserPtrOutputWithContext(ctx context.Context) GatewaySmbUserPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewaySmbUserPtrOutput)
-}
-
-type GatewaySmbUserPtrInput interface {
-	pulumi.Input
-
-	ToGatewaySmbUserPtrOutput() GatewaySmbUserPtrOutput
-	ToGatewaySmbUserPtrOutputWithContext(ctx context.Context) GatewaySmbUserPtrOutput
-}
-
-type gatewaySmbUserPtrType GatewaySmbUserArgs
-
-func (*gatewaySmbUserPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GatewaySmbUser)(nil))
-}
-
-func (i *gatewaySmbUserPtrType) ToGatewaySmbUserPtrOutput() GatewaySmbUserPtrOutput {
-	return i.ToGatewaySmbUserPtrOutputWithContext(context.Background())
-}
-
-func (i *gatewaySmbUserPtrType) ToGatewaySmbUserPtrOutputWithContext(ctx context.Context) GatewaySmbUserPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewaySmbUserPtrOutput)
 }
 
 // GatewaySmbUserArrayInput is an input type that accepts GatewaySmbUserArray and GatewaySmbUserArrayOutput values.
@@ -281,7 +252,7 @@ func (i GatewaySmbUserMap) ToGatewaySmbUserMapOutputWithContext(ctx context.Cont
 type GatewaySmbUserOutput struct{ *pulumi.OutputState }
 
 func (GatewaySmbUserOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewaySmbUser)(nil))
+	return reflect.TypeOf((**GatewaySmbUser)(nil)).Elem()
 }
 
 func (o GatewaySmbUserOutput) ToGatewaySmbUserOutput() GatewaySmbUserOutput {
@@ -292,44 +263,10 @@ func (o GatewaySmbUserOutput) ToGatewaySmbUserOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o GatewaySmbUserOutput) ToGatewaySmbUserPtrOutput() GatewaySmbUserPtrOutput {
-	return o.ToGatewaySmbUserPtrOutputWithContext(context.Background())
-}
-
-func (o GatewaySmbUserOutput) ToGatewaySmbUserPtrOutputWithContext(ctx context.Context) GatewaySmbUserPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewaySmbUser) *GatewaySmbUser {
-		return &v
-	}).(GatewaySmbUserPtrOutput)
-}
-
-type GatewaySmbUserPtrOutput struct{ *pulumi.OutputState }
-
-func (GatewaySmbUserPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GatewaySmbUser)(nil))
-}
-
-func (o GatewaySmbUserPtrOutput) ToGatewaySmbUserPtrOutput() GatewaySmbUserPtrOutput {
-	return o
-}
-
-func (o GatewaySmbUserPtrOutput) ToGatewaySmbUserPtrOutputWithContext(ctx context.Context) GatewaySmbUserPtrOutput {
-	return o
-}
-
-func (o GatewaySmbUserPtrOutput) Elem() GatewaySmbUserOutput {
-	return o.ApplyT(func(v *GatewaySmbUser) GatewaySmbUser {
-		if v != nil {
-			return *v
-		}
-		var ret GatewaySmbUser
-		return ret
-	}).(GatewaySmbUserOutput)
-}
-
 type GatewaySmbUserArrayOutput struct{ *pulumi.OutputState }
 
 func (GatewaySmbUserArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GatewaySmbUser)(nil))
+	return reflect.TypeOf((*[]*GatewaySmbUser)(nil)).Elem()
 }
 
 func (o GatewaySmbUserArrayOutput) ToGatewaySmbUserArrayOutput() GatewaySmbUserArrayOutput {
@@ -341,15 +278,15 @@ func (o GatewaySmbUserArrayOutput) ToGatewaySmbUserArrayOutputWithContext(ctx co
 }
 
 func (o GatewaySmbUserArrayOutput) Index(i pulumi.IntInput) GatewaySmbUserOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewaySmbUser {
-		return vs[0].([]GatewaySmbUser)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GatewaySmbUser {
+		return vs[0].([]*GatewaySmbUser)[vs[1].(int)]
 	}).(GatewaySmbUserOutput)
 }
 
 type GatewaySmbUserMapOutput struct{ *pulumi.OutputState }
 
 func (GatewaySmbUserMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GatewaySmbUser)(nil))
+	return reflect.TypeOf((*map[string]*GatewaySmbUser)(nil)).Elem()
 }
 
 func (o GatewaySmbUserMapOutput) ToGatewaySmbUserMapOutput() GatewaySmbUserMapOutput {
@@ -361,18 +298,16 @@ func (o GatewaySmbUserMapOutput) ToGatewaySmbUserMapOutputWithContext(ctx contex
 }
 
 func (o GatewaySmbUserMapOutput) MapIndex(k pulumi.StringInput) GatewaySmbUserOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GatewaySmbUser {
-		return vs[0].(map[string]GatewaySmbUser)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *GatewaySmbUser {
+		return vs[0].(map[string]*GatewaySmbUser)[vs[1].(string)]
 	}).(GatewaySmbUserOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaySmbUserInput)(nil)).Elem(), &GatewaySmbUser{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GatewaySmbUserPtrInput)(nil)).Elem(), &GatewaySmbUser{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaySmbUserArrayInput)(nil)).Elem(), GatewaySmbUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaySmbUserMapInput)(nil)).Elem(), GatewaySmbUserMap{})
 	pulumi.RegisterOutputType(GatewaySmbUserOutput{})
-	pulumi.RegisterOutputType(GatewaySmbUserPtrOutput{})
 	pulumi.RegisterOutputType(GatewaySmbUserArrayOutput{})
 	pulumi.RegisterOutputType(GatewaySmbUserMapOutput{})
 }

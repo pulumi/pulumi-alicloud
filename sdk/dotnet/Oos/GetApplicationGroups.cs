@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Oos
 {
@@ -59,7 +58,7 @@ namespace Pulumi.AliCloud.Oos
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetApplicationGroupsResult> InvokeAsync(GetApplicationGroupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationGroupsResult>("alicloud:oos/getApplicationGroups:getApplicationGroups", args ?? new GetApplicationGroupsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationGroupsResult>("alicloud:oos/getApplicationGroups:getApplicationGroups", args ?? new GetApplicationGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Oos Application Groups of the current Alibaba Cloud user.
@@ -108,7 +107,7 @@ namespace Pulumi.AliCloud.Oos
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetApplicationGroupsResult> Invoke(GetApplicationGroupsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetApplicationGroupsResult>("alicloud:oos/getApplicationGroups:getApplicationGroups", args ?? new GetApplicationGroupsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetApplicationGroupsResult>("alicloud:oos/getApplicationGroups:getApplicationGroups", args ?? new GetApplicationGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

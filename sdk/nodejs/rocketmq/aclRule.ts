@@ -122,20 +122,20 @@ export class AclRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: AclRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AclRuleArgs | AclRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclRuleState | undefined;
-            inputs["aclId"] = state ? state.aclId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["destCidr"] = state ? state.destCidr : undefined;
-            inputs["destPortRange"] = state ? state.destPortRange : undefined;
-            inputs["direction"] = state ? state.direction : undefined;
-            inputs["ipProtocol"] = state ? state.ipProtocol : undefined;
-            inputs["policy"] = state ? state.policy : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["sourceCidr"] = state ? state.sourceCidr : undefined;
-            inputs["sourcePortRange"] = state ? state.sourcePortRange : undefined;
+            resourceInputs["aclId"] = state ? state.aclId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["destCidr"] = state ? state.destCidr : undefined;
+            resourceInputs["destPortRange"] = state ? state.destPortRange : undefined;
+            resourceInputs["direction"] = state ? state.direction : undefined;
+            resourceInputs["ipProtocol"] = state ? state.ipProtocol : undefined;
+            resourceInputs["policy"] = state ? state.policy : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["sourceCidr"] = state ? state.sourceCidr : undefined;
+            resourceInputs["sourcePortRange"] = state ? state.sourcePortRange : undefined;
         } else {
             const args = argsOrState as AclRuleArgs | undefined;
             if ((!args || args.aclId === undefined) && !opts.urn) {
@@ -162,21 +162,19 @@ export class AclRule extends pulumi.CustomResource {
             if ((!args || args.sourcePortRange === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourcePortRange'");
             }
-            inputs["aclId"] = args ? args.aclId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["destCidr"] = args ? args.destCidr : undefined;
-            inputs["destPortRange"] = args ? args.destPortRange : undefined;
-            inputs["direction"] = args ? args.direction : undefined;
-            inputs["ipProtocol"] = args ? args.ipProtocol : undefined;
-            inputs["policy"] = args ? args.policy : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["sourceCidr"] = args ? args.sourceCidr : undefined;
-            inputs["sourcePortRange"] = args ? args.sourcePortRange : undefined;
+            resourceInputs["aclId"] = args ? args.aclId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["destCidr"] = args ? args.destCidr : undefined;
+            resourceInputs["destPortRange"] = args ? args.destPortRange : undefined;
+            resourceInputs["direction"] = args ? args.direction : undefined;
+            resourceInputs["ipProtocol"] = args ? args.ipProtocol : undefined;
+            resourceInputs["policy"] = args ? args.policy : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["sourceCidr"] = args ? args.sourceCidr : undefined;
+            resourceInputs["sourcePortRange"] = args ? args.sourcePortRange : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AclRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AclRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

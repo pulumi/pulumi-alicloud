@@ -124,15 +124,15 @@ export class ProtectionModule extends pulumi.CustomResource {
      */
     constructor(name: string, args: ProtectionModuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProtectionModuleArgs | ProtectionModuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProtectionModuleState | undefined;
-            inputs["defenseType"] = state ? state.defenseType : undefined;
-            inputs["domain"] = state ? state.domain : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["mode"] = state ? state.mode : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["defenseType"] = state ? state.defenseType : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["mode"] = state ? state.mode : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ProtectionModuleArgs | undefined;
             if ((!args || args.defenseType === undefined) && !opts.urn) {
@@ -147,16 +147,14 @@ export class ProtectionModule extends pulumi.CustomResource {
             if ((!args || args.mode === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'mode'");
             }
-            inputs["defenseType"] = args ? args.defenseType : undefined;
-            inputs["domain"] = args ? args.domain : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["mode"] = args ? args.mode : undefined;
-            inputs["status"] = args ? args.status : undefined;
+            resourceInputs["defenseType"] = args ? args.defenseType : undefined;
+            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["mode"] = args ? args.mode : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ProtectionModule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ProtectionModule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

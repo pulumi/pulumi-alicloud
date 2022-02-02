@@ -114,42 +114,40 @@ export class ReservedInstance extends pulumi.CustomResource {
      */
     constructor(name: string, args: ReservedInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ReservedInstanceArgs | ReservedInstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReservedInstanceState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["instanceAmount"] = state ? state.instanceAmount : undefined;
-            inputs["instanceType"] = state ? state.instanceType : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["offeringType"] = state ? state.offeringType : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["periodUnit"] = state ? state.periodUnit : undefined;
-            inputs["platform"] = state ? state.platform : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["scope"] = state ? state.scope : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["instanceAmount"] = state ? state.instanceAmount : undefined;
+            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["offeringType"] = state ? state.offeringType : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
+            resourceInputs["platform"] = state ? state.platform : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["scope"] = state ? state.scope : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ReservedInstanceArgs | undefined;
             if ((!args || args.instanceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["instanceAmount"] = args ? args.instanceAmount : undefined;
-            inputs["instanceType"] = args ? args.instanceType : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["offeringType"] = args ? args.offeringType : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["periodUnit"] = args ? args.periodUnit : undefined;
-            inputs["platform"] = args ? args.platform : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["scope"] = args ? args.scope : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["instanceAmount"] = args ? args.instanceAmount : undefined;
+            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["offeringType"] = args ? args.offeringType : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
+            resourceInputs["platform"] = args ? args.platform : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["scope"] = args ? args.scope : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ReservedInstance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ReservedInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

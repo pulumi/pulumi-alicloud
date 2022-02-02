@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -75,7 +74,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetIpv6EgressRulesResult> InvokeAsync(GetIpv6EgressRulesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIpv6EgressRulesResult>("alicloud:vpc/getIpv6EgressRules:getIpv6EgressRules", args ?? new GetIpv6EgressRulesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetIpv6EgressRulesResult>("alicloud:vpc/getIpv6EgressRules:getIpv6EgressRules", args ?? new GetIpv6EgressRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vpc Ipv6 Egress Rules of the current Alibaba Cloud user.
@@ -140,7 +139,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetIpv6EgressRulesResult> Invoke(GetIpv6EgressRulesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIpv6EgressRulesResult>("alicloud:vpc/getIpv6EgressRules:getIpv6EgressRules", args ?? new GetIpv6EgressRulesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetIpv6EgressRulesResult>("alicloud:vpc/getIpv6EgressRules:getIpv6EgressRules", args ?? new GetIpv6EgressRulesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -196,7 +196,7 @@ type EcsKeyPairInput interface {
 }
 
 func (*EcsKeyPair) ElementType() reflect.Type {
-	return reflect.TypeOf((*EcsKeyPair)(nil))
+	return reflect.TypeOf((**EcsKeyPair)(nil)).Elem()
 }
 
 func (i *EcsKeyPair) ToEcsKeyPairOutput() EcsKeyPairOutput {
@@ -205,35 +205,6 @@ func (i *EcsKeyPair) ToEcsKeyPairOutput() EcsKeyPairOutput {
 
 func (i *EcsKeyPair) ToEcsKeyPairOutputWithContext(ctx context.Context) EcsKeyPairOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsKeyPairOutput)
-}
-
-func (i *EcsKeyPair) ToEcsKeyPairPtrOutput() EcsKeyPairPtrOutput {
-	return i.ToEcsKeyPairPtrOutputWithContext(context.Background())
-}
-
-func (i *EcsKeyPair) ToEcsKeyPairPtrOutputWithContext(ctx context.Context) EcsKeyPairPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EcsKeyPairPtrOutput)
-}
-
-type EcsKeyPairPtrInput interface {
-	pulumi.Input
-
-	ToEcsKeyPairPtrOutput() EcsKeyPairPtrOutput
-	ToEcsKeyPairPtrOutputWithContext(ctx context.Context) EcsKeyPairPtrOutput
-}
-
-type ecsKeyPairPtrType EcsKeyPairArgs
-
-func (*ecsKeyPairPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EcsKeyPair)(nil))
-}
-
-func (i *ecsKeyPairPtrType) ToEcsKeyPairPtrOutput() EcsKeyPairPtrOutput {
-	return i.ToEcsKeyPairPtrOutputWithContext(context.Background())
-}
-
-func (i *ecsKeyPairPtrType) ToEcsKeyPairPtrOutputWithContext(ctx context.Context) EcsKeyPairPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EcsKeyPairPtrOutput)
 }
 
 // EcsKeyPairArrayInput is an input type that accepts EcsKeyPairArray and EcsKeyPairArrayOutput values.
@@ -289,7 +260,7 @@ func (i EcsKeyPairMap) ToEcsKeyPairMapOutputWithContext(ctx context.Context) Ecs
 type EcsKeyPairOutput struct{ *pulumi.OutputState }
 
 func (EcsKeyPairOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EcsKeyPair)(nil))
+	return reflect.TypeOf((**EcsKeyPair)(nil)).Elem()
 }
 
 func (o EcsKeyPairOutput) ToEcsKeyPairOutput() EcsKeyPairOutput {
@@ -300,44 +271,10 @@ func (o EcsKeyPairOutput) ToEcsKeyPairOutputWithContext(ctx context.Context) Ecs
 	return o
 }
 
-func (o EcsKeyPairOutput) ToEcsKeyPairPtrOutput() EcsKeyPairPtrOutput {
-	return o.ToEcsKeyPairPtrOutputWithContext(context.Background())
-}
-
-func (o EcsKeyPairOutput) ToEcsKeyPairPtrOutputWithContext(ctx context.Context) EcsKeyPairPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EcsKeyPair) *EcsKeyPair {
-		return &v
-	}).(EcsKeyPairPtrOutput)
-}
-
-type EcsKeyPairPtrOutput struct{ *pulumi.OutputState }
-
-func (EcsKeyPairPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EcsKeyPair)(nil))
-}
-
-func (o EcsKeyPairPtrOutput) ToEcsKeyPairPtrOutput() EcsKeyPairPtrOutput {
-	return o
-}
-
-func (o EcsKeyPairPtrOutput) ToEcsKeyPairPtrOutputWithContext(ctx context.Context) EcsKeyPairPtrOutput {
-	return o
-}
-
-func (o EcsKeyPairPtrOutput) Elem() EcsKeyPairOutput {
-	return o.ApplyT(func(v *EcsKeyPair) EcsKeyPair {
-		if v != nil {
-			return *v
-		}
-		var ret EcsKeyPair
-		return ret
-	}).(EcsKeyPairOutput)
-}
-
 type EcsKeyPairArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsKeyPairArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EcsKeyPair)(nil))
+	return reflect.TypeOf((*[]*EcsKeyPair)(nil)).Elem()
 }
 
 func (o EcsKeyPairArrayOutput) ToEcsKeyPairArrayOutput() EcsKeyPairArrayOutput {
@@ -349,15 +286,15 @@ func (o EcsKeyPairArrayOutput) ToEcsKeyPairArrayOutputWithContext(ctx context.Co
 }
 
 func (o EcsKeyPairArrayOutput) Index(i pulumi.IntInput) EcsKeyPairOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EcsKeyPair {
-		return vs[0].([]EcsKeyPair)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsKeyPair {
+		return vs[0].([]*EcsKeyPair)[vs[1].(int)]
 	}).(EcsKeyPairOutput)
 }
 
 type EcsKeyPairMapOutput struct{ *pulumi.OutputState }
 
 func (EcsKeyPairMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]EcsKeyPair)(nil))
+	return reflect.TypeOf((*map[string]*EcsKeyPair)(nil)).Elem()
 }
 
 func (o EcsKeyPairMapOutput) ToEcsKeyPairMapOutput() EcsKeyPairMapOutput {
@@ -369,18 +306,16 @@ func (o EcsKeyPairMapOutput) ToEcsKeyPairMapOutputWithContext(ctx context.Contex
 }
 
 func (o EcsKeyPairMapOutput) MapIndex(k pulumi.StringInput) EcsKeyPairOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EcsKeyPair {
-		return vs[0].(map[string]EcsKeyPair)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *EcsKeyPair {
+		return vs[0].(map[string]*EcsKeyPair)[vs[1].(string)]
 	}).(EcsKeyPairOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsKeyPairInput)(nil)).Elem(), &EcsKeyPair{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EcsKeyPairPtrInput)(nil)).Elem(), &EcsKeyPair{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsKeyPairArrayInput)(nil)).Elem(), EcsKeyPairArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsKeyPairMapInput)(nil)).Elem(), EcsKeyPairMap{})
 	pulumi.RegisterOutputType(EcsKeyPairOutput{})
-	pulumi.RegisterOutputType(EcsKeyPairPtrOutput{})
 	pulumi.RegisterOutputType(EcsKeyPairArrayOutput{})
 	pulumi.RegisterOutputType(EcsKeyPairMapOutput{})
 }

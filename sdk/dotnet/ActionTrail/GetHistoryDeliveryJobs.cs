@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ActionTrail
 {
@@ -60,7 +59,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetHistoryDeliveryJobsResult> InvokeAsync(GetHistoryDeliveryJobsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHistoryDeliveryJobsResult>("alicloud:actiontrail/getHistoryDeliveryJobs:getHistoryDeliveryJobs", args ?? new GetHistoryDeliveryJobsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetHistoryDeliveryJobsResult>("alicloud:actiontrail/getHistoryDeliveryJobs:getHistoryDeliveryJobs", args ?? new GetHistoryDeliveryJobsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
@@ -110,7 +109,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetHistoryDeliveryJobsResult> Invoke(GetHistoryDeliveryJobsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHistoryDeliveryJobsResult>("alicloud:actiontrail/getHistoryDeliveryJobs:getHistoryDeliveryJobs", args ?? new GetHistoryDeliveryJobsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetHistoryDeliveryJobsResult>("alicloud:actiontrail/getHistoryDeliveryJobs:getHistoryDeliveryJobs", args ?? new GetHistoryDeliveryJobsInvokeArgs(), options.WithDefaults());
     }
 
 

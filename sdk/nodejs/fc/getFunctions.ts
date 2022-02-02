@@ -27,9 +27,7 @@ export function getFunctions(args: GetFunctionsArgs, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:fc/getFunctions:getFunctions", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

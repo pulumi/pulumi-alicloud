@@ -31,9 +31,7 @@ export function getScalingGroups(args?: GetScalingGroupsArgs, opts?: pulumi.Invo
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ess/getScalingGroups:getScalingGroups", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

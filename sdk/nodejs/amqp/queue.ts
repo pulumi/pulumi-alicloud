@@ -133,21 +133,21 @@ export class Queue extends pulumi.CustomResource {
      */
     constructor(name: string, args: QueueArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QueueArgs | QueueState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QueueState | undefined;
-            inputs["autoDeleteState"] = state ? state.autoDeleteState : undefined;
-            inputs["autoExpireState"] = state ? state.autoExpireState : undefined;
-            inputs["deadLetterExchange"] = state ? state.deadLetterExchange : undefined;
-            inputs["deadLetterRoutingKey"] = state ? state.deadLetterRoutingKey : undefined;
-            inputs["exclusiveState"] = state ? state.exclusiveState : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["maxLength"] = state ? state.maxLength : undefined;
-            inputs["maximumPriority"] = state ? state.maximumPriority : undefined;
-            inputs["messageTtl"] = state ? state.messageTtl : undefined;
-            inputs["queueName"] = state ? state.queueName : undefined;
-            inputs["virtualHostName"] = state ? state.virtualHostName : undefined;
+            resourceInputs["autoDeleteState"] = state ? state.autoDeleteState : undefined;
+            resourceInputs["autoExpireState"] = state ? state.autoExpireState : undefined;
+            resourceInputs["deadLetterExchange"] = state ? state.deadLetterExchange : undefined;
+            resourceInputs["deadLetterRoutingKey"] = state ? state.deadLetterRoutingKey : undefined;
+            resourceInputs["exclusiveState"] = state ? state.exclusiveState : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["maxLength"] = state ? state.maxLength : undefined;
+            resourceInputs["maximumPriority"] = state ? state.maximumPriority : undefined;
+            resourceInputs["messageTtl"] = state ? state.messageTtl : undefined;
+            resourceInputs["queueName"] = state ? state.queueName : undefined;
+            resourceInputs["virtualHostName"] = state ? state.virtualHostName : undefined;
         } else {
             const args = argsOrState as QueueArgs | undefined;
             if ((!args || args.instanceId === undefined) && !opts.urn) {
@@ -159,22 +159,20 @@ export class Queue extends pulumi.CustomResource {
             if ((!args || args.virtualHostName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'virtualHostName'");
             }
-            inputs["autoDeleteState"] = args ? args.autoDeleteState : undefined;
-            inputs["autoExpireState"] = args ? args.autoExpireState : undefined;
-            inputs["deadLetterExchange"] = args ? args.deadLetterExchange : undefined;
-            inputs["deadLetterRoutingKey"] = args ? args.deadLetterRoutingKey : undefined;
-            inputs["exclusiveState"] = args ? args.exclusiveState : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["maxLength"] = args ? args.maxLength : undefined;
-            inputs["maximumPriority"] = args ? args.maximumPriority : undefined;
-            inputs["messageTtl"] = args ? args.messageTtl : undefined;
-            inputs["queueName"] = args ? args.queueName : undefined;
-            inputs["virtualHostName"] = args ? args.virtualHostName : undefined;
+            resourceInputs["autoDeleteState"] = args ? args.autoDeleteState : undefined;
+            resourceInputs["autoExpireState"] = args ? args.autoExpireState : undefined;
+            resourceInputs["deadLetterExchange"] = args ? args.deadLetterExchange : undefined;
+            resourceInputs["deadLetterRoutingKey"] = args ? args.deadLetterRoutingKey : undefined;
+            resourceInputs["exclusiveState"] = args ? args.exclusiveState : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["maxLength"] = args ? args.maxLength : undefined;
+            resourceInputs["maximumPriority"] = args ? args.maximumPriority : undefined;
+            resourceInputs["messageTtl"] = args ? args.messageTtl : undefined;
+            resourceInputs["queueName"] = args ? args.queueName : undefined;
+            resourceInputs["virtualHostName"] = args ? args.virtualHostName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Queue.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Queue.__pulumiType, name, resourceInputs, opts);
     }
 }
 

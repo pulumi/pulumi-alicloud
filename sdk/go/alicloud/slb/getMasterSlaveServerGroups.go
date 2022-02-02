@@ -138,6 +138,9 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		sampleDs := slb.GetMasterSlaveServerGroupsOutput(ctx, slb.GetMasterSlaveServerGroupsOutputArgs{
+// 			LoadBalancerId: instanceApplicationLoadBalancer.ID(),
+// 		}, nil)
 // 		ctx.Export("firstSlbServerGroupId", sampleDs.ApplyT(func(sampleDs slb.GetMasterSlaveServerGroupsResult) (string, error) {
 // 			return sampleDs.Groups[0].Id, nil
 // 		}).(pulumi.StringOutput))

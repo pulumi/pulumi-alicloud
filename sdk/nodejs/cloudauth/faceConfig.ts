@@ -83,13 +83,13 @@ export class FaceConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args: FaceConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FaceConfigArgs | FaceConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FaceConfigState | undefined;
-            inputs["bizName"] = state ? state.bizName : undefined;
-            inputs["bizType"] = state ? state.bizType : undefined;
-            inputs["gmtModified"] = state ? state.gmtModified : undefined;
+            resourceInputs["bizName"] = state ? state.bizName : undefined;
+            resourceInputs["bizType"] = state ? state.bizType : undefined;
+            resourceInputs["gmtModified"] = state ? state.gmtModified : undefined;
         } else {
             const args = argsOrState as FaceConfigArgs | undefined;
             if ((!args || args.bizName === undefined) && !opts.urn) {
@@ -98,14 +98,12 @@ export class FaceConfig extends pulumi.CustomResource {
             if ((!args || args.bizType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bizType'");
             }
-            inputs["bizName"] = args ? args.bizName : undefined;
-            inputs["bizType"] = args ? args.bizType : undefined;
-            inputs["gmtModified"] = undefined /*out*/;
+            resourceInputs["bizName"] = args ? args.bizName : undefined;
+            resourceInputs["bizType"] = args ? args.bizType : undefined;
+            resourceInputs["gmtModified"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(FaceConfig.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(FaceConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

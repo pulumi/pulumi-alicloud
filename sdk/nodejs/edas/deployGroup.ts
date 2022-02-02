@@ -81,13 +81,13 @@ export class DeployGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: DeployGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DeployGroupArgs | DeployGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DeployGroupState | undefined;
-            inputs["appId"] = state ? state.appId : undefined;
-            inputs["groupName"] = state ? state.groupName : undefined;
-            inputs["groupType"] = state ? state.groupType : undefined;
+            resourceInputs["appId"] = state ? state.appId : undefined;
+            resourceInputs["groupName"] = state ? state.groupName : undefined;
+            resourceInputs["groupType"] = state ? state.groupType : undefined;
         } else {
             const args = argsOrState as DeployGroupArgs | undefined;
             if ((!args || args.appId === undefined) && !opts.urn) {
@@ -96,14 +96,12 @@ export class DeployGroup extends pulumi.CustomResource {
             if ((!args || args.groupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupName'");
             }
-            inputs["appId"] = args ? args.appId : undefined;
-            inputs["groupName"] = args ? args.groupName : undefined;
-            inputs["groupType"] = undefined /*out*/;
+            resourceInputs["appId"] = args ? args.appId : undefined;
+            resourceInputs["groupName"] = args ? args.groupName : undefined;
+            resourceInputs["groupType"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DeployGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DeployGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

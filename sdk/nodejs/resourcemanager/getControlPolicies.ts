@@ -31,9 +31,7 @@ export function getControlPolicies(args?: GetControlPoliciesArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:resourcemanager/getControlPolicies:getControlPolicies", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,

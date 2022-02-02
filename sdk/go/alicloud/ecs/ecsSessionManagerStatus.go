@@ -31,7 +31,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewEcsSessionManagerStatus(ctx, "_default", &ecs.EcsSessionManagerStatusArgs{
+// 		_, err := ecs.NewEcsSessionManagerStatus(ctx, "default", &ecs.EcsSessionManagerStatusArgs{
 // 			SessionManagerStatusName: pulumi.String("sessionManagerStatus"),
 // 			Status:                   pulumi.String("Disabled"),
 // 		})
@@ -138,7 +138,7 @@ type EcsSessionManagerStatusInput interface {
 }
 
 func (*EcsSessionManagerStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*EcsSessionManagerStatus)(nil))
+	return reflect.TypeOf((**EcsSessionManagerStatus)(nil)).Elem()
 }
 
 func (i *EcsSessionManagerStatus) ToEcsSessionManagerStatusOutput() EcsSessionManagerStatusOutput {
@@ -147,35 +147,6 @@ func (i *EcsSessionManagerStatus) ToEcsSessionManagerStatusOutput() EcsSessionMa
 
 func (i *EcsSessionManagerStatus) ToEcsSessionManagerStatusOutputWithContext(ctx context.Context) EcsSessionManagerStatusOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsSessionManagerStatusOutput)
-}
-
-func (i *EcsSessionManagerStatus) ToEcsSessionManagerStatusPtrOutput() EcsSessionManagerStatusPtrOutput {
-	return i.ToEcsSessionManagerStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *EcsSessionManagerStatus) ToEcsSessionManagerStatusPtrOutputWithContext(ctx context.Context) EcsSessionManagerStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EcsSessionManagerStatusPtrOutput)
-}
-
-type EcsSessionManagerStatusPtrInput interface {
-	pulumi.Input
-
-	ToEcsSessionManagerStatusPtrOutput() EcsSessionManagerStatusPtrOutput
-	ToEcsSessionManagerStatusPtrOutputWithContext(ctx context.Context) EcsSessionManagerStatusPtrOutput
-}
-
-type ecsSessionManagerStatusPtrType EcsSessionManagerStatusArgs
-
-func (*ecsSessionManagerStatusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EcsSessionManagerStatus)(nil))
-}
-
-func (i *ecsSessionManagerStatusPtrType) ToEcsSessionManagerStatusPtrOutput() EcsSessionManagerStatusPtrOutput {
-	return i.ToEcsSessionManagerStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *ecsSessionManagerStatusPtrType) ToEcsSessionManagerStatusPtrOutputWithContext(ctx context.Context) EcsSessionManagerStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EcsSessionManagerStatusPtrOutput)
 }
 
 // EcsSessionManagerStatusArrayInput is an input type that accepts EcsSessionManagerStatusArray and EcsSessionManagerStatusArrayOutput values.
@@ -231,7 +202,7 @@ func (i EcsSessionManagerStatusMap) ToEcsSessionManagerStatusMapOutputWithContex
 type EcsSessionManagerStatusOutput struct{ *pulumi.OutputState }
 
 func (EcsSessionManagerStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EcsSessionManagerStatus)(nil))
+	return reflect.TypeOf((**EcsSessionManagerStatus)(nil)).Elem()
 }
 
 func (o EcsSessionManagerStatusOutput) ToEcsSessionManagerStatusOutput() EcsSessionManagerStatusOutput {
@@ -242,44 +213,10 @@ func (o EcsSessionManagerStatusOutput) ToEcsSessionManagerStatusOutputWithContex
 	return o
 }
 
-func (o EcsSessionManagerStatusOutput) ToEcsSessionManagerStatusPtrOutput() EcsSessionManagerStatusPtrOutput {
-	return o.ToEcsSessionManagerStatusPtrOutputWithContext(context.Background())
-}
-
-func (o EcsSessionManagerStatusOutput) ToEcsSessionManagerStatusPtrOutputWithContext(ctx context.Context) EcsSessionManagerStatusPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EcsSessionManagerStatus) *EcsSessionManagerStatus {
-		return &v
-	}).(EcsSessionManagerStatusPtrOutput)
-}
-
-type EcsSessionManagerStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (EcsSessionManagerStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EcsSessionManagerStatus)(nil))
-}
-
-func (o EcsSessionManagerStatusPtrOutput) ToEcsSessionManagerStatusPtrOutput() EcsSessionManagerStatusPtrOutput {
-	return o
-}
-
-func (o EcsSessionManagerStatusPtrOutput) ToEcsSessionManagerStatusPtrOutputWithContext(ctx context.Context) EcsSessionManagerStatusPtrOutput {
-	return o
-}
-
-func (o EcsSessionManagerStatusPtrOutput) Elem() EcsSessionManagerStatusOutput {
-	return o.ApplyT(func(v *EcsSessionManagerStatus) EcsSessionManagerStatus {
-		if v != nil {
-			return *v
-		}
-		var ret EcsSessionManagerStatus
-		return ret
-	}).(EcsSessionManagerStatusOutput)
-}
-
 type EcsSessionManagerStatusArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsSessionManagerStatusArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EcsSessionManagerStatus)(nil))
+	return reflect.TypeOf((*[]*EcsSessionManagerStatus)(nil)).Elem()
 }
 
 func (o EcsSessionManagerStatusArrayOutput) ToEcsSessionManagerStatusArrayOutput() EcsSessionManagerStatusArrayOutput {
@@ -291,15 +228,15 @@ func (o EcsSessionManagerStatusArrayOutput) ToEcsSessionManagerStatusArrayOutput
 }
 
 func (o EcsSessionManagerStatusArrayOutput) Index(i pulumi.IntInput) EcsSessionManagerStatusOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EcsSessionManagerStatus {
-		return vs[0].([]EcsSessionManagerStatus)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsSessionManagerStatus {
+		return vs[0].([]*EcsSessionManagerStatus)[vs[1].(int)]
 	}).(EcsSessionManagerStatusOutput)
 }
 
 type EcsSessionManagerStatusMapOutput struct{ *pulumi.OutputState }
 
 func (EcsSessionManagerStatusMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]EcsSessionManagerStatus)(nil))
+	return reflect.TypeOf((*map[string]*EcsSessionManagerStatus)(nil)).Elem()
 }
 
 func (o EcsSessionManagerStatusMapOutput) ToEcsSessionManagerStatusMapOutput() EcsSessionManagerStatusMapOutput {
@@ -311,18 +248,16 @@ func (o EcsSessionManagerStatusMapOutput) ToEcsSessionManagerStatusMapOutputWith
 }
 
 func (o EcsSessionManagerStatusMapOutput) MapIndex(k pulumi.StringInput) EcsSessionManagerStatusOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EcsSessionManagerStatus {
-		return vs[0].(map[string]EcsSessionManagerStatus)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *EcsSessionManagerStatus {
+		return vs[0].(map[string]*EcsSessionManagerStatus)[vs[1].(string)]
 	}).(EcsSessionManagerStatusOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsSessionManagerStatusInput)(nil)).Elem(), &EcsSessionManagerStatus{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EcsSessionManagerStatusPtrInput)(nil)).Elem(), &EcsSessionManagerStatus{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsSessionManagerStatusArrayInput)(nil)).Elem(), EcsSessionManagerStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsSessionManagerStatusMapInput)(nil)).Elem(), EcsSessionManagerStatusMap{})
 	pulumi.RegisterOutputType(EcsSessionManagerStatusOutput{})
-	pulumi.RegisterOutputType(EcsSessionManagerStatusPtrOutput{})
 	pulumi.RegisterOutputType(EcsSessionManagerStatusArrayOutput{})
 	pulumi.RegisterOutputType(EcsSessionManagerStatusMapOutput{})
 }

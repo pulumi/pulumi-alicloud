@@ -32,9 +32,7 @@ export function getFlowlogs(args?: GetFlowlogsArgs, opts?: pulumi.InvokeOptions)
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cen/getFlowlogs:getFlowlogs", {
         "cenId": args.cenId,
         "description": args.description,

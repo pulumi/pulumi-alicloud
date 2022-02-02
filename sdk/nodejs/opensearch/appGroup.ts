@@ -120,20 +120,20 @@ export class AppGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: AppGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AppGroupArgs | AppGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppGroupState | undefined;
-            inputs["appGroupName"] = state ? state.appGroupName : undefined;
-            inputs["chargeWay"] = state ? state.chargeWay : undefined;
-            inputs["currentVersion"] = state ? state.currentVersion : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["orderType"] = state ? state.orderType : undefined;
-            inputs["orders"] = state ? state.orders : undefined;
-            inputs["paymentType"] = state ? state.paymentType : undefined;
-            inputs["quota"] = state ? state.quota : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["appGroupName"] = state ? state.appGroupName : undefined;
+            resourceInputs["chargeWay"] = state ? state.chargeWay : undefined;
+            resourceInputs["currentVersion"] = state ? state.currentVersion : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["orderType"] = state ? state.orderType : undefined;
+            resourceInputs["orders"] = state ? state.orders : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["quota"] = state ? state.quota : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as AppGroupArgs | undefined;
             if ((!args || args.appGroupName === undefined) && !opts.urn) {
@@ -148,21 +148,19 @@ export class AppGroup extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["appGroupName"] = args ? args.appGroupName : undefined;
-            inputs["chargeWay"] = args ? args.chargeWay : undefined;
-            inputs["currentVersion"] = args ? args.currentVersion : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["orderType"] = args ? args.orderType : undefined;
-            inputs["orders"] = args ? args.orders : undefined;
-            inputs["paymentType"] = args ? args.paymentType : undefined;
-            inputs["quota"] = args ? args.quota : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["appGroupName"] = args ? args.appGroupName : undefined;
+            resourceInputs["chargeWay"] = args ? args.chargeWay : undefined;
+            resourceInputs["currentVersion"] = args ? args.currentVersion : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["orderType"] = args ? args.orderType : undefined;
+            resourceInputs["orders"] = args ? args.orders : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["quota"] = args ? args.quota : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AppGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AppGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

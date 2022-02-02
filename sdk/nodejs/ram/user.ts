@@ -75,29 +75,27 @@ export class User extends pulumi.CustomResource {
      */
     constructor(name: string, args?: UserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            inputs["comments"] = state ? state.comments : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["email"] = state ? state.email : undefined;
-            inputs["force"] = state ? state.force : undefined;
-            inputs["mobile"] = state ? state.mobile : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["comments"] = state ? state.comments : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["email"] = state ? state.email : undefined;
+            resourceInputs["force"] = state ? state.force : undefined;
+            resourceInputs["mobile"] = state ? state.mobile : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            inputs["comments"] = args ? args.comments : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["email"] = args ? args.email : undefined;
-            inputs["force"] = args ? args.force : undefined;
-            inputs["mobile"] = args ? args.mobile : undefined;
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["comments"] = args ? args.comments : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["email"] = args ? args.email : undefined;
+            resourceInputs["force"] = args ? args.force : undefined;
+            resourceInputs["mobile"] = args ? args.mobile : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(User.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(User.__pulumiType, name, resourceInputs, opts);
     }
 }
 

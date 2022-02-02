@@ -34,9 +34,7 @@ export function getServerPlans(args?: GetServerPlansArgs, opts?: pulumi.InvokeOp
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:simpleapplicationserver/getServerPlans:getServerPlans", {
         "bandwidth": args.bandwidth,
         "core": args.core,

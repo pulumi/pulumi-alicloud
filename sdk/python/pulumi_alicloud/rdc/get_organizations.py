@@ -123,7 +123,7 @@ def get_organizations(ids: Optional[Sequence[str]] = None,
     default = alicloud.rdc.Organization("default",
         organization_name=name,
         source=name)
-    ids = default.id.apply(lambda id: alicloud.rdc.get_organizations(ids=[id]))
+    ids = alicloud.rdc.get_organizations_output(ids=[default.id])
     pulumi.export("rdcOrganizationId1", ids.id)
     name_regex = alicloud.rdc.get_organizations(name_regex="^my-Organization")
     pulumi.export("rdcOrganizationId2", name_regex.id)
@@ -181,7 +181,7 @@ def get_organizations_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     default = alicloud.rdc.Organization("default",
         organization_name=name,
         source=name)
-    ids = default.id.apply(lambda id: alicloud.rdc.get_organizations(ids=[id]))
+    ids = alicloud.rdc.get_organizations_output(ids=[default.id])
     pulumi.export("rdcOrganizationId1", ids.id)
     name_regex = alicloud.rdc.get_organizations(name_regex="^my-Organization")
     pulumi.export("rdcOrganizationId2", name_regex.id)

@@ -217,7 +217,7 @@ type RdsBackupInput interface {
 }
 
 func (*RdsBackup) ElementType() reflect.Type {
-	return reflect.TypeOf((*RdsBackup)(nil))
+	return reflect.TypeOf((**RdsBackup)(nil)).Elem()
 }
 
 func (i *RdsBackup) ToRdsBackupOutput() RdsBackupOutput {
@@ -226,35 +226,6 @@ func (i *RdsBackup) ToRdsBackupOutput() RdsBackupOutput {
 
 func (i *RdsBackup) ToRdsBackupOutputWithContext(ctx context.Context) RdsBackupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RdsBackupOutput)
-}
-
-func (i *RdsBackup) ToRdsBackupPtrOutput() RdsBackupPtrOutput {
-	return i.ToRdsBackupPtrOutputWithContext(context.Background())
-}
-
-func (i *RdsBackup) ToRdsBackupPtrOutputWithContext(ctx context.Context) RdsBackupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RdsBackupPtrOutput)
-}
-
-type RdsBackupPtrInput interface {
-	pulumi.Input
-
-	ToRdsBackupPtrOutput() RdsBackupPtrOutput
-	ToRdsBackupPtrOutputWithContext(ctx context.Context) RdsBackupPtrOutput
-}
-
-type rdsBackupPtrType RdsBackupArgs
-
-func (*rdsBackupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RdsBackup)(nil))
-}
-
-func (i *rdsBackupPtrType) ToRdsBackupPtrOutput() RdsBackupPtrOutput {
-	return i.ToRdsBackupPtrOutputWithContext(context.Background())
-}
-
-func (i *rdsBackupPtrType) ToRdsBackupPtrOutputWithContext(ctx context.Context) RdsBackupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RdsBackupPtrOutput)
 }
 
 // RdsBackupArrayInput is an input type that accepts RdsBackupArray and RdsBackupArrayOutput values.
@@ -310,7 +281,7 @@ func (i RdsBackupMap) ToRdsBackupMapOutputWithContext(ctx context.Context) RdsBa
 type RdsBackupOutput struct{ *pulumi.OutputState }
 
 func (RdsBackupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RdsBackup)(nil))
+	return reflect.TypeOf((**RdsBackup)(nil)).Elem()
 }
 
 func (o RdsBackupOutput) ToRdsBackupOutput() RdsBackupOutput {
@@ -321,44 +292,10 @@ func (o RdsBackupOutput) ToRdsBackupOutputWithContext(ctx context.Context) RdsBa
 	return o
 }
 
-func (o RdsBackupOutput) ToRdsBackupPtrOutput() RdsBackupPtrOutput {
-	return o.ToRdsBackupPtrOutputWithContext(context.Background())
-}
-
-func (o RdsBackupOutput) ToRdsBackupPtrOutputWithContext(ctx context.Context) RdsBackupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RdsBackup) *RdsBackup {
-		return &v
-	}).(RdsBackupPtrOutput)
-}
-
-type RdsBackupPtrOutput struct{ *pulumi.OutputState }
-
-func (RdsBackupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RdsBackup)(nil))
-}
-
-func (o RdsBackupPtrOutput) ToRdsBackupPtrOutput() RdsBackupPtrOutput {
-	return o
-}
-
-func (o RdsBackupPtrOutput) ToRdsBackupPtrOutputWithContext(ctx context.Context) RdsBackupPtrOutput {
-	return o
-}
-
-func (o RdsBackupPtrOutput) Elem() RdsBackupOutput {
-	return o.ApplyT(func(v *RdsBackup) RdsBackup {
-		if v != nil {
-			return *v
-		}
-		var ret RdsBackup
-		return ret
-	}).(RdsBackupOutput)
-}
-
 type RdsBackupArrayOutput struct{ *pulumi.OutputState }
 
 func (RdsBackupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RdsBackup)(nil))
+	return reflect.TypeOf((*[]*RdsBackup)(nil)).Elem()
 }
 
 func (o RdsBackupArrayOutput) ToRdsBackupArrayOutput() RdsBackupArrayOutput {
@@ -370,15 +307,15 @@ func (o RdsBackupArrayOutput) ToRdsBackupArrayOutputWithContext(ctx context.Cont
 }
 
 func (o RdsBackupArrayOutput) Index(i pulumi.IntInput) RdsBackupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RdsBackup {
-		return vs[0].([]RdsBackup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RdsBackup {
+		return vs[0].([]*RdsBackup)[vs[1].(int)]
 	}).(RdsBackupOutput)
 }
 
 type RdsBackupMapOutput struct{ *pulumi.OutputState }
 
 func (RdsBackupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]RdsBackup)(nil))
+	return reflect.TypeOf((*map[string]*RdsBackup)(nil)).Elem()
 }
 
 func (o RdsBackupMapOutput) ToRdsBackupMapOutput() RdsBackupMapOutput {
@@ -390,18 +327,16 @@ func (o RdsBackupMapOutput) ToRdsBackupMapOutputWithContext(ctx context.Context)
 }
 
 func (o RdsBackupMapOutput) MapIndex(k pulumi.StringInput) RdsBackupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RdsBackup {
-		return vs[0].(map[string]RdsBackup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *RdsBackup {
+		return vs[0].(map[string]*RdsBackup)[vs[1].(string)]
 	}).(RdsBackupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsBackupInput)(nil)).Elem(), &RdsBackup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RdsBackupPtrInput)(nil)).Elem(), &RdsBackup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsBackupArrayInput)(nil)).Elem(), RdsBackupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsBackupMapInput)(nil)).Elem(), RdsBackupMap{})
 	pulumi.RegisterOutputType(RdsBackupOutput{})
-	pulumi.RegisterOutputType(RdsBackupPtrOutput{})
 	pulumi.RegisterOutputType(RdsBackupArrayOutput{})
 	pulumi.RegisterOutputType(RdsBackupMapOutput{})
 }

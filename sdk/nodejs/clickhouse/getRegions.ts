@@ -32,9 +32,7 @@ export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:clickhouse/getRegions:getRegions", {
         "current": args.current,
         "outputFile": args.outputFile,

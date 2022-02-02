@@ -54,21 +54,21 @@ export class Application extends pulumi.CustomResource {
      */
     constructor(name: string, args: ApplicationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApplicationArgs | ApplicationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationState | undefined;
-            inputs["blueGreen"] = state ? state.blueGreen : undefined;
-            inputs["blueGreenConfirm"] = state ? state.blueGreenConfirm : undefined;
-            inputs["clusterName"] = state ? state.clusterName : undefined;
-            inputs["defaultDomain"] = state ? state.defaultDomain : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["environment"] = state ? state.environment : undefined;
-            inputs["latestImage"] = state ? state.latestImage : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["services"] = state ? state.services : undefined;
-            inputs["template"] = state ? state.template : undefined;
-            inputs["version"] = state ? state.version : undefined;
+            resourceInputs["blueGreen"] = state ? state.blueGreen : undefined;
+            resourceInputs["blueGreenConfirm"] = state ? state.blueGreenConfirm : undefined;
+            resourceInputs["clusterName"] = state ? state.clusterName : undefined;
+            resourceInputs["defaultDomain"] = state ? state.defaultDomain : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["environment"] = state ? state.environment : undefined;
+            resourceInputs["latestImage"] = state ? state.latestImage : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["services"] = state ? state.services : undefined;
+            resourceInputs["template"] = state ? state.template : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as ApplicationArgs | undefined;
             if ((!args || args.clusterName === undefined) && !opts.urn) {
@@ -77,22 +77,20 @@ export class Application extends pulumi.CustomResource {
             if ((!args || args.template === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'template'");
             }
-            inputs["blueGreen"] = args ? args.blueGreen : undefined;
-            inputs["blueGreenConfirm"] = args ? args.blueGreenConfirm : undefined;
-            inputs["clusterName"] = args ? args.clusterName : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["environment"] = args ? args.environment : undefined;
-            inputs["latestImage"] = args ? args.latestImage : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["template"] = args ? args.template : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["defaultDomain"] = undefined /*out*/;
-            inputs["services"] = undefined /*out*/;
+            resourceInputs["blueGreen"] = args ? args.blueGreen : undefined;
+            resourceInputs["blueGreenConfirm"] = args ? args.blueGreenConfirm : undefined;
+            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["environment"] = args ? args.environment : undefined;
+            resourceInputs["latestImage"] = args ? args.latestImage : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["template"] = args ? args.template : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["defaultDomain"] = undefined /*out*/;
+            resourceInputs["services"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Application.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Application.__pulumiType, name, resourceInputs, opts);
     }
 }
 

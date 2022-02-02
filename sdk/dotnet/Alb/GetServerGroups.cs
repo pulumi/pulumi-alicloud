@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Alb
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.Alb
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerGroupsResult> InvokeAsync(GetServerGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServerGroupsResult>("alicloud:alb/getServerGroups:getServerGroups", args ?? new GetServerGroupsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServerGroupsResult>("alicloud:alb/getServerGroups:getServerGroups", args ?? new GetServerGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Alb Server Groups of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.Alb
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServerGroupsResult> Invoke(GetServerGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServerGroupsResult>("alicloud:alb/getServerGroups:getServerGroups", args ?? new GetServerGroupsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetServerGroupsResult>("alicloud:alb/getServerGroups:getServerGroups", args ?? new GetServerGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

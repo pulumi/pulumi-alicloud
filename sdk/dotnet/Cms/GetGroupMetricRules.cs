@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cms
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.Cms
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupMetricRulesResult> InvokeAsync(GetGroupMetricRulesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupMetricRulesResult>("alicloud:cms/getGroupMetricRules:getGroupMetricRules", args ?? new GetGroupMetricRulesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupMetricRulesResult>("alicloud:cms/getGroupMetricRules:getGroupMetricRules", args ?? new GetGroupMetricRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.Cms
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGroupMetricRulesResult> Invoke(GetGroupMetricRulesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGroupMetricRulesResult>("alicloud:cms/getGroupMetricRules:getGroupMetricRules", args ?? new GetGroupMetricRulesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetGroupMetricRulesResult>("alicloud:cms/getGroupMetricRules:getGroupMetricRules", args ?? new GetGroupMetricRulesInvokeArgs(), options.WithDefaults());
     }
 
 

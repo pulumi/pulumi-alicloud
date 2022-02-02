@@ -31,9 +31,7 @@ export function getHpcClusters(args?: GetHpcClustersArgs, opts?: pulumi.InvokeOp
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ecs/getHpcClusters:getHpcClusters", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

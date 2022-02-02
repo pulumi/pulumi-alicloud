@@ -214,7 +214,7 @@ type SaslUserInput interface {
 }
 
 func (*SaslUser) ElementType() reflect.Type {
-	return reflect.TypeOf((*SaslUser)(nil))
+	return reflect.TypeOf((**SaslUser)(nil)).Elem()
 }
 
 func (i *SaslUser) ToSaslUserOutput() SaslUserOutput {
@@ -223,35 +223,6 @@ func (i *SaslUser) ToSaslUserOutput() SaslUserOutput {
 
 func (i *SaslUser) ToSaslUserOutputWithContext(ctx context.Context) SaslUserOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SaslUserOutput)
-}
-
-func (i *SaslUser) ToSaslUserPtrOutput() SaslUserPtrOutput {
-	return i.ToSaslUserPtrOutputWithContext(context.Background())
-}
-
-func (i *SaslUser) ToSaslUserPtrOutputWithContext(ctx context.Context) SaslUserPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SaslUserPtrOutput)
-}
-
-type SaslUserPtrInput interface {
-	pulumi.Input
-
-	ToSaslUserPtrOutput() SaslUserPtrOutput
-	ToSaslUserPtrOutputWithContext(ctx context.Context) SaslUserPtrOutput
-}
-
-type saslUserPtrType SaslUserArgs
-
-func (*saslUserPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SaslUser)(nil))
-}
-
-func (i *saslUserPtrType) ToSaslUserPtrOutput() SaslUserPtrOutput {
-	return i.ToSaslUserPtrOutputWithContext(context.Background())
-}
-
-func (i *saslUserPtrType) ToSaslUserPtrOutputWithContext(ctx context.Context) SaslUserPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SaslUserPtrOutput)
 }
 
 // SaslUserArrayInput is an input type that accepts SaslUserArray and SaslUserArrayOutput values.
@@ -307,7 +278,7 @@ func (i SaslUserMap) ToSaslUserMapOutputWithContext(ctx context.Context) SaslUse
 type SaslUserOutput struct{ *pulumi.OutputState }
 
 func (SaslUserOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SaslUser)(nil))
+	return reflect.TypeOf((**SaslUser)(nil)).Elem()
 }
 
 func (o SaslUserOutput) ToSaslUserOutput() SaslUserOutput {
@@ -318,44 +289,10 @@ func (o SaslUserOutput) ToSaslUserOutputWithContext(ctx context.Context) SaslUse
 	return o
 }
 
-func (o SaslUserOutput) ToSaslUserPtrOutput() SaslUserPtrOutput {
-	return o.ToSaslUserPtrOutputWithContext(context.Background())
-}
-
-func (o SaslUserOutput) ToSaslUserPtrOutputWithContext(ctx context.Context) SaslUserPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SaslUser) *SaslUser {
-		return &v
-	}).(SaslUserPtrOutput)
-}
-
-type SaslUserPtrOutput struct{ *pulumi.OutputState }
-
-func (SaslUserPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SaslUser)(nil))
-}
-
-func (o SaslUserPtrOutput) ToSaslUserPtrOutput() SaslUserPtrOutput {
-	return o
-}
-
-func (o SaslUserPtrOutput) ToSaslUserPtrOutputWithContext(ctx context.Context) SaslUserPtrOutput {
-	return o
-}
-
-func (o SaslUserPtrOutput) Elem() SaslUserOutput {
-	return o.ApplyT(func(v *SaslUser) SaslUser {
-		if v != nil {
-			return *v
-		}
-		var ret SaslUser
-		return ret
-	}).(SaslUserOutput)
-}
-
 type SaslUserArrayOutput struct{ *pulumi.OutputState }
 
 func (SaslUserArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SaslUser)(nil))
+	return reflect.TypeOf((*[]*SaslUser)(nil)).Elem()
 }
 
 func (o SaslUserArrayOutput) ToSaslUserArrayOutput() SaslUserArrayOutput {
@@ -367,15 +304,15 @@ func (o SaslUserArrayOutput) ToSaslUserArrayOutputWithContext(ctx context.Contex
 }
 
 func (o SaslUserArrayOutput) Index(i pulumi.IntInput) SaslUserOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SaslUser {
-		return vs[0].([]SaslUser)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SaslUser {
+		return vs[0].([]*SaslUser)[vs[1].(int)]
 	}).(SaslUserOutput)
 }
 
 type SaslUserMapOutput struct{ *pulumi.OutputState }
 
 func (SaslUserMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SaslUser)(nil))
+	return reflect.TypeOf((*map[string]*SaslUser)(nil)).Elem()
 }
 
 func (o SaslUserMapOutput) ToSaslUserMapOutput() SaslUserMapOutput {
@@ -387,18 +324,16 @@ func (o SaslUserMapOutput) ToSaslUserMapOutputWithContext(ctx context.Context) S
 }
 
 func (o SaslUserMapOutput) MapIndex(k pulumi.StringInput) SaslUserOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SaslUser {
-		return vs[0].(map[string]SaslUser)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SaslUser {
+		return vs[0].(map[string]*SaslUser)[vs[1].(string)]
 	}).(SaslUserOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SaslUserInput)(nil)).Elem(), &SaslUser{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SaslUserPtrInput)(nil)).Elem(), &SaslUser{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SaslUserArrayInput)(nil)).Elem(), SaslUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SaslUserMapInput)(nil)).Elem(), SaslUserMap{})
 	pulumi.RegisterOutputType(SaslUserOutput{})
-	pulumi.RegisterOutputType(SaslUserPtrOutput{})
 	pulumi.RegisterOutputType(SaslUserArrayOutput{})
 	pulumi.RegisterOutputType(SaslUserMapOutput{})
 }

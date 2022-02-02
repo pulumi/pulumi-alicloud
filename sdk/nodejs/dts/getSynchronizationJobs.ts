@@ -28,9 +28,7 @@ export function getSynchronizationJobs(args?: GetSynchronizationJobsArgs, opts?:
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,

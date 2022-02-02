@@ -44,9 +44,7 @@ export function getNatGateways(args?: GetNatGatewaysArgs, opts?: pulumi.InvokeOp
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:vpc/getNatGateways:getNatGateways", {
         "dryRun": args.dryRun,
         "enableDetails": args.enableDetails,

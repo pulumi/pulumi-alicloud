@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Slb
 {
@@ -112,10 +111,10 @@ namespace Pulumi.AliCloud.Slb
         ///                 },
         ///             },
         ///         });
-        ///         var sampleDs = instanceApplicationLoadBalancer.Id.Apply(id =&gt; AliCloud.Slb.GetMasterSlaveServerGroups.InvokeAsync(new AliCloud.Slb.GetMasterSlaveServerGroupsArgs
+        ///         var sampleDs = AliCloud.Slb.GetMasterSlaveServerGroups.Invoke(new AliCloud.Slb.GetMasterSlaveServerGroupsInvokeArgs
         ///         {
-        ///             LoadBalancerId = id,
-        ///         }));
+        ///             LoadBalancerId = instanceApplicationLoadBalancer.Id,
+        ///         });
         ///         this.FirstSlbServerGroupId = sampleDs.Apply(sampleDs =&gt; sampleDs.Groups?[0]?.Id);
         ///     }
         /// 
@@ -127,7 +126,7 @@ namespace Pulumi.AliCloud.Slb
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMasterSlaveServerGroupsResult> InvokeAsync(GetMasterSlaveServerGroupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMasterSlaveServerGroupsResult>("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", args ?? new GetMasterSlaveServerGroupsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMasterSlaveServerGroupsResult>("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", args ?? new GetMasterSlaveServerGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the master slave server groups related to a server load balancer.
@@ -229,10 +228,10 @@ namespace Pulumi.AliCloud.Slb
         ///                 },
         ///             },
         ///         });
-        ///         var sampleDs = instanceApplicationLoadBalancer.Id.Apply(id =&gt; AliCloud.Slb.GetMasterSlaveServerGroups.InvokeAsync(new AliCloud.Slb.GetMasterSlaveServerGroupsArgs
+        ///         var sampleDs = AliCloud.Slb.GetMasterSlaveServerGroups.Invoke(new AliCloud.Slb.GetMasterSlaveServerGroupsInvokeArgs
         ///         {
-        ///             LoadBalancerId = id,
-        ///         }));
+        ///             LoadBalancerId = instanceApplicationLoadBalancer.Id,
+        ///         });
         ///         this.FirstSlbServerGroupId = sampleDs.Apply(sampleDs =&gt; sampleDs.Groups?[0]?.Id);
         ///     }
         /// 
@@ -244,7 +243,7 @@ namespace Pulumi.AliCloud.Slb
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMasterSlaveServerGroupsResult> Invoke(GetMasterSlaveServerGroupsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMasterSlaveServerGroupsResult>("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", args ?? new GetMasterSlaveServerGroupsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetMasterSlaveServerGroupsResult>("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", args ?? new GetMasterSlaveServerGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

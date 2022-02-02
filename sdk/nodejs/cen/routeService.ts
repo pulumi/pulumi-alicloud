@@ -116,17 +116,17 @@ export class RouteService extends pulumi.CustomResource {
      */
     constructor(name: string, args: RouteServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouteServiceArgs | RouteServiceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouteServiceState | undefined;
-            inputs["accessRegionId"] = state ? state.accessRegionId : undefined;
-            inputs["cenId"] = state ? state.cenId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["host"] = state ? state.host : undefined;
-            inputs["hostRegionId"] = state ? state.hostRegionId : undefined;
-            inputs["hostVpcId"] = state ? state.hostVpcId : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["accessRegionId"] = state ? state.accessRegionId : undefined;
+            resourceInputs["cenId"] = state ? state.cenId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["host"] = state ? state.host : undefined;
+            resourceInputs["hostRegionId"] = state ? state.hostRegionId : undefined;
+            resourceInputs["hostVpcId"] = state ? state.hostVpcId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as RouteServiceArgs | undefined;
             if ((!args || args.accessRegionId === undefined) && !opts.urn) {
@@ -144,18 +144,16 @@ export class RouteService extends pulumi.CustomResource {
             if ((!args || args.hostVpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'hostVpcId'");
             }
-            inputs["accessRegionId"] = args ? args.accessRegionId : undefined;
-            inputs["cenId"] = args ? args.cenId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["host"] = args ? args.host : undefined;
-            inputs["hostRegionId"] = args ? args.hostRegionId : undefined;
-            inputs["hostVpcId"] = args ? args.hostVpcId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["accessRegionId"] = args ? args.accessRegionId : undefined;
+            resourceInputs["cenId"] = args ? args.cenId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["host"] = args ? args.host : undefined;
+            resourceInputs["hostRegionId"] = args ? args.hostRegionId : undefined;
+            resourceInputs["hostVpcId"] = args ? args.hostVpcId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RouteService.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RouteService.__pulumiType, name, resourceInputs, opts);
     }
 }
 

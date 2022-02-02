@@ -29,9 +29,7 @@ export function getAlidnsInstances(args?: GetAlidnsInstancesArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:dns/getAlidnsInstances:getAlidnsInstances", {
         "domainType": args.domainType,
         "ids": args.ids,

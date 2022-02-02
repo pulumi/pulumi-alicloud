@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Rds
 {
     public static class GetRdsParameterGroups
     {
         public static Task<GetRdsParameterGroupsResult> InvokeAsync(GetRdsParameterGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRdsParameterGroupsResult>("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", args ?? new GetRdsParameterGroupsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRdsParameterGroupsResult>("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", args ?? new GetRdsParameterGroupsArgs(), options.WithDefaults());
 
         public static Output<GetRdsParameterGroupsResult> Invoke(GetRdsParameterGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRdsParameterGroupsResult>("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", args ?? new GetRdsParameterGroupsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRdsParameterGroupsResult>("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", args ?? new GetRdsParameterGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

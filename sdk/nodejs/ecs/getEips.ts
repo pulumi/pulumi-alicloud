@@ -13,9 +13,7 @@ export function getEips(args?: GetEipsArgs, opts?: pulumi.InvokeOptions): Promis
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ecs/getEips:getEips", {
         "addressName": args.addressName,
         "associatedInstanceId": args.associatedInstanceId,

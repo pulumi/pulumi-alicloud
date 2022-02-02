@@ -171,30 +171,30 @@ export class GtmInstance extends pulumi.CustomResource {
      */
     constructor(name: string, args: GtmInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GtmInstanceArgs | GtmInstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GtmInstanceState | undefined;
-            inputs["alertConfigs"] = state ? state.alertConfigs : undefined;
-            inputs["alertGroups"] = state ? state.alertGroups : undefined;
-            inputs["cnameType"] = state ? state.cnameType : undefined;
-            inputs["forceUpdate"] = state ? state.forceUpdate : undefined;
-            inputs["healthCheckTaskCount"] = state ? state.healthCheckTaskCount : undefined;
-            inputs["instanceName"] = state ? state.instanceName : undefined;
-            inputs["lang"] = state ? state.lang : undefined;
-            inputs["packageEdition"] = state ? state.packageEdition : undefined;
-            inputs["paymentType"] = state ? state.paymentType : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["publicCnameMode"] = state ? state.publicCnameMode : undefined;
-            inputs["publicRr"] = state ? state.publicRr : undefined;
-            inputs["publicUserDomainName"] = state ? state.publicUserDomainName : undefined;
-            inputs["publicZoneName"] = state ? state.publicZoneName : undefined;
-            inputs["renewPeriod"] = state ? state.renewPeriod : undefined;
-            inputs["renewalStatus"] = state ? state.renewalStatus : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["smsNotificationCount"] = state ? state.smsNotificationCount : undefined;
-            inputs["strategyMode"] = state ? state.strategyMode : undefined;
-            inputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["alertConfigs"] = state ? state.alertConfigs : undefined;
+            resourceInputs["alertGroups"] = state ? state.alertGroups : undefined;
+            resourceInputs["cnameType"] = state ? state.cnameType : undefined;
+            resourceInputs["forceUpdate"] = state ? state.forceUpdate : undefined;
+            resourceInputs["healthCheckTaskCount"] = state ? state.healthCheckTaskCount : undefined;
+            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
+            resourceInputs["lang"] = state ? state.lang : undefined;
+            resourceInputs["packageEdition"] = state ? state.packageEdition : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["publicCnameMode"] = state ? state.publicCnameMode : undefined;
+            resourceInputs["publicRr"] = state ? state.publicRr : undefined;
+            resourceInputs["publicUserDomainName"] = state ? state.publicUserDomainName : undefined;
+            resourceInputs["publicZoneName"] = state ? state.publicZoneName : undefined;
+            resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
+            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["smsNotificationCount"] = state ? state.smsNotificationCount : undefined;
+            resourceInputs["strategyMode"] = state ? state.strategyMode : undefined;
+            resourceInputs["ttl"] = state ? state.ttl : undefined;
         } else {
             const args = argsOrState as GtmInstanceArgs | undefined;
             if ((!args || args.healthCheckTaskCount === undefined) && !opts.urn) {
@@ -215,31 +215,29 @@ export class GtmInstance extends pulumi.CustomResource {
             if ((!args || args.smsNotificationCount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'smsNotificationCount'");
             }
-            inputs["alertConfigs"] = args ? args.alertConfigs : undefined;
-            inputs["alertGroups"] = args ? args.alertGroups : undefined;
-            inputs["cnameType"] = args ? args.cnameType : undefined;
-            inputs["forceUpdate"] = args ? args.forceUpdate : undefined;
-            inputs["healthCheckTaskCount"] = args ? args.healthCheckTaskCount : undefined;
-            inputs["instanceName"] = args ? args.instanceName : undefined;
-            inputs["lang"] = args ? args.lang : undefined;
-            inputs["packageEdition"] = args ? args.packageEdition : undefined;
-            inputs["paymentType"] = args ? args.paymentType : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["publicCnameMode"] = args ? args.publicCnameMode : undefined;
-            inputs["publicRr"] = args ? args.publicRr : undefined;
-            inputs["publicUserDomainName"] = args ? args.publicUserDomainName : undefined;
-            inputs["publicZoneName"] = args ? args.publicZoneName : undefined;
-            inputs["renewPeriod"] = args ? args.renewPeriod : undefined;
-            inputs["renewalStatus"] = args ? args.renewalStatus : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["smsNotificationCount"] = args ? args.smsNotificationCount : undefined;
-            inputs["strategyMode"] = args ? args.strategyMode : undefined;
-            inputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["alertConfigs"] = args ? args.alertConfigs : undefined;
+            resourceInputs["alertGroups"] = args ? args.alertGroups : undefined;
+            resourceInputs["cnameType"] = args ? args.cnameType : undefined;
+            resourceInputs["forceUpdate"] = args ? args.forceUpdate : undefined;
+            resourceInputs["healthCheckTaskCount"] = args ? args.healthCheckTaskCount : undefined;
+            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
+            resourceInputs["lang"] = args ? args.lang : undefined;
+            resourceInputs["packageEdition"] = args ? args.packageEdition : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["publicCnameMode"] = args ? args.publicCnameMode : undefined;
+            resourceInputs["publicRr"] = args ? args.publicRr : undefined;
+            resourceInputs["publicUserDomainName"] = args ? args.publicUserDomainName : undefined;
+            resourceInputs["publicZoneName"] = args ? args.publicZoneName : undefined;
+            resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
+            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["smsNotificationCount"] = args ? args.smsNotificationCount : undefined;
+            resourceInputs["strategyMode"] = args ? args.strategyMode : undefined;
+            resourceInputs["ttl"] = args ? args.ttl : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(GtmInstance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(GtmInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

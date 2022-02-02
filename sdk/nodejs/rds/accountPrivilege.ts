@@ -126,14 +126,14 @@ export class AccountPrivilege extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccountPrivilegeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountPrivilegeArgs | AccountPrivilegeState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountPrivilegeState | undefined;
-            inputs["accountName"] = state ? state.accountName : undefined;
-            inputs["dbNames"] = state ? state.dbNames : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["privilege"] = state ? state.privilege : undefined;
+            resourceInputs["accountName"] = state ? state.accountName : undefined;
+            resourceInputs["dbNames"] = state ? state.dbNames : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["privilege"] = state ? state.privilege : undefined;
         } else {
             const args = argsOrState as AccountPrivilegeArgs | undefined;
             if ((!args || args.accountName === undefined) && !opts.urn) {
@@ -145,15 +145,13 @@ export class AccountPrivilege extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["accountName"] = args ? args.accountName : undefined;
-            inputs["dbNames"] = args ? args.dbNames : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["privilege"] = args ? args.privilege : undefined;
+            resourceInputs["accountName"] = args ? args.accountName : undefined;
+            resourceInputs["dbNames"] = args ? args.dbNames : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["privilege"] = args ? args.privilege : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AccountPrivilege.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AccountPrivilege.__pulumiType, name, resourceInputs, opts);
     }
 }
 

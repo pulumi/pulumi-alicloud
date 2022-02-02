@@ -83,13 +83,13 @@ export class VpcEndpointServiceUser extends pulumi.CustomResource {
      */
     constructor(name: string, args: VpcEndpointServiceUserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VpcEndpointServiceUserArgs | VpcEndpointServiceUserState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcEndpointServiceUserState | undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["serviceId"] = state ? state.serviceId : undefined;
-            inputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
+            resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as VpcEndpointServiceUserArgs | undefined;
             if ((!args || args.serviceId === undefined) && !opts.urn) {
@@ -98,14 +98,12 @@ export class VpcEndpointServiceUser extends pulumi.CustomResource {
             if ((!args || args.userId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["serviceId"] = args ? args.serviceId : undefined;
-            inputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
+            resourceInputs["userId"] = args ? args.userId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(VpcEndpointServiceUser.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(VpcEndpointServiceUser.__pulumiType, name, resourceInputs, opts);
     }
 }
 

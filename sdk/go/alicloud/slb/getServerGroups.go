@@ -70,6 +70,9 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		sampleDs := slb.GetServerGroupsOutput(ctx, slb.GetServerGroupsOutputArgs{
+// 			LoadBalancerId: defaultApplicationLoadBalancer.ID(),
+// 		}, nil)
 // 		ctx.Export("firstSlbServerGroupId", sampleDs.ApplyT(func(sampleDs slb.GetServerGroupsResult) (string, error) {
 // 			return sampleDs.SlbServerGroups[0].Id, nil
 // 		}).(pulumi.StringOutput))

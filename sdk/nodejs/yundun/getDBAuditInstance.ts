@@ -11,9 +11,7 @@ export function getDBAuditInstance(args?: GetDBAuditInstanceArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", {
         "descriptionRegex": args.descriptionRegex,
         "ids": args.ids,

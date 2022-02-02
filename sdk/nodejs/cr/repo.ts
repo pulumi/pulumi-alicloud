@@ -102,16 +102,16 @@ export class Repo extends pulumi.CustomResource {
      */
     constructor(name: string, args: RepoArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RepoArgs | RepoState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RepoState | undefined;
-            inputs["detail"] = state ? state.detail : undefined;
-            inputs["domainList"] = state ? state.domainList : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namespace"] = state ? state.namespace : undefined;
-            inputs["repoType"] = state ? state.repoType : undefined;
-            inputs["summary"] = state ? state.summary : undefined;
+            resourceInputs["detail"] = state ? state.detail : undefined;
+            resourceInputs["domainList"] = state ? state.domainList : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namespace"] = state ? state.namespace : undefined;
+            resourceInputs["repoType"] = state ? state.repoType : undefined;
+            resourceInputs["summary"] = state ? state.summary : undefined;
         } else {
             const args = argsOrState as RepoArgs | undefined;
             if ((!args || args.namespace === undefined) && !opts.urn) {
@@ -123,17 +123,15 @@ export class Repo extends pulumi.CustomResource {
             if ((!args || args.summary === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'summary'");
             }
-            inputs["detail"] = args ? args.detail : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namespace"] = args ? args.namespace : undefined;
-            inputs["repoType"] = args ? args.repoType : undefined;
-            inputs["summary"] = args ? args.summary : undefined;
-            inputs["domainList"] = undefined /*out*/;
+            resourceInputs["detail"] = args ? args.detail : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namespace"] = args ? args.namespace : undefined;
+            resourceInputs["repoType"] = args ? args.repoType : undefined;
+            resourceInputs["summary"] = args ? args.summary : undefined;
+            resourceInputs["domainList"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Repo.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Repo.__pulumiType, name, resourceInputs, opts);
     }
 }
 

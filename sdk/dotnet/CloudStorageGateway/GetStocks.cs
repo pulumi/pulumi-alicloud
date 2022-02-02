@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CloudStorageGateway
 {
@@ -46,7 +45,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetStocksResult> InvokeAsync(GetStocksArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetStocksResult>("alicloud:cloudstoragegateway/getStocks:getStocks", args ?? new GetStocksArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetStocksResult>("alicloud:cloudstoragegateway/getStocks:getStocks", args ?? new GetStocksArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cloud Storage Gateway Stocks of the current Alibaba Cloud user.
@@ -82,7 +81,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetStocksResult> Invoke(GetStocksInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetStocksResult>("alicloud:cloudstoragegateway/getStocks:getStocks", args ?? new GetStocksInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetStocksResult>("alicloud:cloudstoragegateway/getStocks:getStocks", args ?? new GetStocksInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -106,7 +106,7 @@ type CommonBandwithPackageAttachmentInput interface {
 }
 
 func (*CommonBandwithPackageAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*CommonBandwithPackageAttachment)(nil))
+	return reflect.TypeOf((**CommonBandwithPackageAttachment)(nil)).Elem()
 }
 
 func (i *CommonBandwithPackageAttachment) ToCommonBandwithPackageAttachmentOutput() CommonBandwithPackageAttachmentOutput {
@@ -115,35 +115,6 @@ func (i *CommonBandwithPackageAttachment) ToCommonBandwithPackageAttachmentOutpu
 
 func (i *CommonBandwithPackageAttachment) ToCommonBandwithPackageAttachmentOutputWithContext(ctx context.Context) CommonBandwithPackageAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CommonBandwithPackageAttachmentOutput)
-}
-
-func (i *CommonBandwithPackageAttachment) ToCommonBandwithPackageAttachmentPtrOutput() CommonBandwithPackageAttachmentPtrOutput {
-	return i.ToCommonBandwithPackageAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *CommonBandwithPackageAttachment) ToCommonBandwithPackageAttachmentPtrOutputWithContext(ctx context.Context) CommonBandwithPackageAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CommonBandwithPackageAttachmentPtrOutput)
-}
-
-type CommonBandwithPackageAttachmentPtrInput interface {
-	pulumi.Input
-
-	ToCommonBandwithPackageAttachmentPtrOutput() CommonBandwithPackageAttachmentPtrOutput
-	ToCommonBandwithPackageAttachmentPtrOutputWithContext(ctx context.Context) CommonBandwithPackageAttachmentPtrOutput
-}
-
-type commonBandwithPackageAttachmentPtrType CommonBandwithPackageAttachmentArgs
-
-func (*commonBandwithPackageAttachmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CommonBandwithPackageAttachment)(nil))
-}
-
-func (i *commonBandwithPackageAttachmentPtrType) ToCommonBandwithPackageAttachmentPtrOutput() CommonBandwithPackageAttachmentPtrOutput {
-	return i.ToCommonBandwithPackageAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *commonBandwithPackageAttachmentPtrType) ToCommonBandwithPackageAttachmentPtrOutputWithContext(ctx context.Context) CommonBandwithPackageAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CommonBandwithPackageAttachmentPtrOutput)
 }
 
 // CommonBandwithPackageAttachmentArrayInput is an input type that accepts CommonBandwithPackageAttachmentArray and CommonBandwithPackageAttachmentArrayOutput values.
@@ -199,7 +170,7 @@ func (i CommonBandwithPackageAttachmentMap) ToCommonBandwithPackageAttachmentMap
 type CommonBandwithPackageAttachmentOutput struct{ *pulumi.OutputState }
 
 func (CommonBandwithPackageAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CommonBandwithPackageAttachment)(nil))
+	return reflect.TypeOf((**CommonBandwithPackageAttachment)(nil)).Elem()
 }
 
 func (o CommonBandwithPackageAttachmentOutput) ToCommonBandwithPackageAttachmentOutput() CommonBandwithPackageAttachmentOutput {
@@ -210,44 +181,10 @@ func (o CommonBandwithPackageAttachmentOutput) ToCommonBandwithPackageAttachment
 	return o
 }
 
-func (o CommonBandwithPackageAttachmentOutput) ToCommonBandwithPackageAttachmentPtrOutput() CommonBandwithPackageAttachmentPtrOutput {
-	return o.ToCommonBandwithPackageAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (o CommonBandwithPackageAttachmentOutput) ToCommonBandwithPackageAttachmentPtrOutputWithContext(ctx context.Context) CommonBandwithPackageAttachmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CommonBandwithPackageAttachment) *CommonBandwithPackageAttachment {
-		return &v
-	}).(CommonBandwithPackageAttachmentPtrOutput)
-}
-
-type CommonBandwithPackageAttachmentPtrOutput struct{ *pulumi.OutputState }
-
-func (CommonBandwithPackageAttachmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CommonBandwithPackageAttachment)(nil))
-}
-
-func (o CommonBandwithPackageAttachmentPtrOutput) ToCommonBandwithPackageAttachmentPtrOutput() CommonBandwithPackageAttachmentPtrOutput {
-	return o
-}
-
-func (o CommonBandwithPackageAttachmentPtrOutput) ToCommonBandwithPackageAttachmentPtrOutputWithContext(ctx context.Context) CommonBandwithPackageAttachmentPtrOutput {
-	return o
-}
-
-func (o CommonBandwithPackageAttachmentPtrOutput) Elem() CommonBandwithPackageAttachmentOutput {
-	return o.ApplyT(func(v *CommonBandwithPackageAttachment) CommonBandwithPackageAttachment {
-		if v != nil {
-			return *v
-		}
-		var ret CommonBandwithPackageAttachment
-		return ret
-	}).(CommonBandwithPackageAttachmentOutput)
-}
-
 type CommonBandwithPackageAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (CommonBandwithPackageAttachmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CommonBandwithPackageAttachment)(nil))
+	return reflect.TypeOf((*[]*CommonBandwithPackageAttachment)(nil)).Elem()
 }
 
 func (o CommonBandwithPackageAttachmentArrayOutput) ToCommonBandwithPackageAttachmentArrayOutput() CommonBandwithPackageAttachmentArrayOutput {
@@ -259,15 +196,15 @@ func (o CommonBandwithPackageAttachmentArrayOutput) ToCommonBandwithPackageAttac
 }
 
 func (o CommonBandwithPackageAttachmentArrayOutput) Index(i pulumi.IntInput) CommonBandwithPackageAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CommonBandwithPackageAttachment {
-		return vs[0].([]CommonBandwithPackageAttachment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CommonBandwithPackageAttachment {
+		return vs[0].([]*CommonBandwithPackageAttachment)[vs[1].(int)]
 	}).(CommonBandwithPackageAttachmentOutput)
 }
 
 type CommonBandwithPackageAttachmentMapOutput struct{ *pulumi.OutputState }
 
 func (CommonBandwithPackageAttachmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CommonBandwithPackageAttachment)(nil))
+	return reflect.TypeOf((*map[string]*CommonBandwithPackageAttachment)(nil)).Elem()
 }
 
 func (o CommonBandwithPackageAttachmentMapOutput) ToCommonBandwithPackageAttachmentMapOutput() CommonBandwithPackageAttachmentMapOutput {
@@ -279,18 +216,16 @@ func (o CommonBandwithPackageAttachmentMapOutput) ToCommonBandwithPackageAttachm
 }
 
 func (o CommonBandwithPackageAttachmentMapOutput) MapIndex(k pulumi.StringInput) CommonBandwithPackageAttachmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CommonBandwithPackageAttachment {
-		return vs[0].(map[string]CommonBandwithPackageAttachment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CommonBandwithPackageAttachment {
+		return vs[0].(map[string]*CommonBandwithPackageAttachment)[vs[1].(string)]
 	}).(CommonBandwithPackageAttachmentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CommonBandwithPackageAttachmentInput)(nil)).Elem(), &CommonBandwithPackageAttachment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CommonBandwithPackageAttachmentPtrInput)(nil)).Elem(), &CommonBandwithPackageAttachment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CommonBandwithPackageAttachmentArrayInput)(nil)).Elem(), CommonBandwithPackageAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CommonBandwithPackageAttachmentMapInput)(nil)).Elem(), CommonBandwithPackageAttachmentMap{})
 	pulumi.RegisterOutputType(CommonBandwithPackageAttachmentOutput{})
-	pulumi.RegisterOutputType(CommonBandwithPackageAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(CommonBandwithPackageAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(CommonBandwithPackageAttachmentMapOutput{})
 }

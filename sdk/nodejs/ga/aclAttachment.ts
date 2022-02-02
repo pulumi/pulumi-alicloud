@@ -79,15 +79,15 @@ export class AclAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: AclAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AclAttachmentArgs | AclAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclAttachmentState | undefined;
-            inputs["aclId"] = state ? state.aclId : undefined;
-            inputs["aclType"] = state ? state.aclType : undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["listenerId"] = state ? state.listenerId : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["aclId"] = state ? state.aclId : undefined;
+            resourceInputs["aclType"] = state ? state.aclType : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as AclAttachmentArgs | undefined;
             if ((!args || args.aclId === undefined) && !opts.urn) {
@@ -99,16 +99,14 @@ export class AclAttachment extends pulumi.CustomResource {
             if ((!args || args.listenerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'listenerId'");
             }
-            inputs["aclId"] = args ? args.aclId : undefined;
-            inputs["aclType"] = args ? args.aclType : undefined;
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["listenerId"] = args ? args.listenerId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["aclId"] = args ? args.aclId : undefined;
+            resourceInputs["aclType"] = args ? args.aclType : undefined;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["listenerId"] = args ? args.listenerId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AclAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AclAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

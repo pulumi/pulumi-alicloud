@@ -129,42 +129,40 @@ export class MetricRuleTemplate extends pulumi.CustomResource {
      */
     constructor(name: string, args: MetricRuleTemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MetricRuleTemplateArgs | MetricRuleTemplateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MetricRuleTemplateState | undefined;
-            inputs["alertTemplates"] = state ? state.alertTemplates : undefined;
-            inputs["applyMode"] = state ? state.applyMode : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["enableEndTime"] = state ? state.enableEndTime : undefined;
-            inputs["enableStartTime"] = state ? state.enableStartTime : undefined;
-            inputs["groupId"] = state ? state.groupId : undefined;
-            inputs["metricRuleTemplateName"] = state ? state.metricRuleTemplateName : undefined;
-            inputs["notifyLevel"] = state ? state.notifyLevel : undefined;
-            inputs["restVersion"] = state ? state.restVersion : undefined;
-            inputs["silenceTime"] = state ? state.silenceTime : undefined;
-            inputs["webhook"] = state ? state.webhook : undefined;
+            resourceInputs["alertTemplates"] = state ? state.alertTemplates : undefined;
+            resourceInputs["applyMode"] = state ? state.applyMode : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enableEndTime"] = state ? state.enableEndTime : undefined;
+            resourceInputs["enableStartTime"] = state ? state.enableStartTime : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["metricRuleTemplateName"] = state ? state.metricRuleTemplateName : undefined;
+            resourceInputs["notifyLevel"] = state ? state.notifyLevel : undefined;
+            resourceInputs["restVersion"] = state ? state.restVersion : undefined;
+            resourceInputs["silenceTime"] = state ? state.silenceTime : undefined;
+            resourceInputs["webhook"] = state ? state.webhook : undefined;
         } else {
             const args = argsOrState as MetricRuleTemplateArgs | undefined;
             if ((!args || args.metricRuleTemplateName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'metricRuleTemplateName'");
             }
-            inputs["alertTemplates"] = args ? args.alertTemplates : undefined;
-            inputs["applyMode"] = args ? args.applyMode : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enableEndTime"] = args ? args.enableEndTime : undefined;
-            inputs["enableStartTime"] = args ? args.enableStartTime : undefined;
-            inputs["groupId"] = args ? args.groupId : undefined;
-            inputs["metricRuleTemplateName"] = args ? args.metricRuleTemplateName : undefined;
-            inputs["notifyLevel"] = args ? args.notifyLevel : undefined;
-            inputs["silenceTime"] = args ? args.silenceTime : undefined;
-            inputs["webhook"] = args ? args.webhook : undefined;
-            inputs["restVersion"] = undefined /*out*/;
+            resourceInputs["alertTemplates"] = args ? args.alertTemplates : undefined;
+            resourceInputs["applyMode"] = args ? args.applyMode : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableEndTime"] = args ? args.enableEndTime : undefined;
+            resourceInputs["enableStartTime"] = args ? args.enableStartTime : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["metricRuleTemplateName"] = args ? args.metricRuleTemplateName : undefined;
+            resourceInputs["notifyLevel"] = args ? args.notifyLevel : undefined;
+            resourceInputs["silenceTime"] = args ? args.silenceTime : undefined;
+            resourceInputs["webhook"] = args ? args.webhook : undefined;
+            resourceInputs["restVersion"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(MetricRuleTemplate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(MetricRuleTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

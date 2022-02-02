@@ -131,8 +131,8 @@ def get_config_maps(ids: Optional[Sequence[str]] = None,
             "env.shell": "/bin/sh",
         }),
         namespace_id=example_namespace.namespace_id)
-    name_regex = example_namespace.namespace_id.apply(lambda namespace_id: alicloud.sae.get_config_maps(namespace_id=namespace_id,
-        name_regex="^example"))
+    name_regex = alicloud.sae.get_config_maps_output(namespace_id=example_namespace.namespace_id,
+        name_regex="^example")
     pulumi.export("saeConfigMapId", name_regex.maps[0].id)
     ```
 
@@ -196,8 +196,8 @@ def get_config_maps_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
             "env.shell": "/bin/sh",
         }),
         namespace_id=example_namespace.namespace_id)
-    name_regex = example_namespace.namespace_id.apply(lambda namespace_id: alicloud.sae.get_config_maps(namespace_id=namespace_id,
-        name_regex="^example"))
+    name_regex = alicloud.sae.get_config_maps_output(namespace_id=example_namespace.namespace_id,
+        name_regex="^example")
     pulumi.export("saeConfigMapId", name_regex.maps[0].id)
     ```
 

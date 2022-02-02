@@ -95,21 +95,21 @@ export class SslVpnServer extends pulumi.CustomResource {
      */
     constructor(name: string, args: SslVpnServerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SslVpnServerArgs | SslVpnServerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SslVpnServerState | undefined;
-            inputs["cipher"] = state ? state.cipher : undefined;
-            inputs["clientIpPool"] = state ? state.clientIpPool : undefined;
-            inputs["compress"] = state ? state.compress : undefined;
-            inputs["connections"] = state ? state.connections : undefined;
-            inputs["internetIp"] = state ? state.internetIp : undefined;
-            inputs["localSubnet"] = state ? state.localSubnet : undefined;
-            inputs["maxConnections"] = state ? state.maxConnections : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["protocol"] = state ? state.protocol : undefined;
-            inputs["vpnGatewayId"] = state ? state.vpnGatewayId : undefined;
+            resourceInputs["cipher"] = state ? state.cipher : undefined;
+            resourceInputs["clientIpPool"] = state ? state.clientIpPool : undefined;
+            resourceInputs["compress"] = state ? state.compress : undefined;
+            resourceInputs["connections"] = state ? state.connections : undefined;
+            resourceInputs["internetIp"] = state ? state.internetIp : undefined;
+            resourceInputs["localSubnet"] = state ? state.localSubnet : undefined;
+            resourceInputs["maxConnections"] = state ? state.maxConnections : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["vpnGatewayId"] = state ? state.vpnGatewayId : undefined;
         } else {
             const args = argsOrState as SslVpnServerArgs | undefined;
             if ((!args || args.clientIpPool === undefined) && !opts.urn) {
@@ -121,22 +121,20 @@ export class SslVpnServer extends pulumi.CustomResource {
             if ((!args || args.vpnGatewayId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpnGatewayId'");
             }
-            inputs["cipher"] = args ? args.cipher : undefined;
-            inputs["clientIpPool"] = args ? args.clientIpPool : undefined;
-            inputs["compress"] = args ? args.compress : undefined;
-            inputs["localSubnet"] = args ? args.localSubnet : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["vpnGatewayId"] = args ? args.vpnGatewayId : undefined;
-            inputs["connections"] = undefined /*out*/;
-            inputs["internetIp"] = undefined /*out*/;
-            inputs["maxConnections"] = undefined /*out*/;
+            resourceInputs["cipher"] = args ? args.cipher : undefined;
+            resourceInputs["clientIpPool"] = args ? args.clientIpPool : undefined;
+            resourceInputs["compress"] = args ? args.compress : undefined;
+            resourceInputs["localSubnet"] = args ? args.localSubnet : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["vpnGatewayId"] = args ? args.vpnGatewayId : undefined;
+            resourceInputs["connections"] = undefined /*out*/;
+            resourceInputs["internetIp"] = undefined /*out*/;
+            resourceInputs["maxConnections"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SslVpnServer.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SslVpnServer.__pulumiType, name, resourceInputs, opts);
     }
 }
 

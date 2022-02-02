@@ -10,9 +10,7 @@ export function getApplicationInfos(args: GetApplicationInfosArgs, opts?: pulumi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:quotas/getApplicationInfos:getApplicationInfos", {
         "dimensions": args.dimensions,
         "enableDetails": args.enableDetails,

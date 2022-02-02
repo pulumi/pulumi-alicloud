@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     instanceId: defaultInstance.id,
  *     remark: "dafault_ons_group_remark",
  * });
- * const groupsDs = defaultGroup.instanceId.apply(instanceId => alicloud.rocketmq.getGroups({
+ * const groupsDs = defaultGroup.instanceId.apply(instanceId => alicloud.rocketmq.getGroupsOutput({
  *     instanceId: instanceId,
  *     nameRegex: _var.group_id,
  *     outputFile: "groups.txt",
@@ -41,9 +41,7 @@ export function getGroups(args: GetGroupsArgs, opts?: pulumi.InvokeOptions): Pro
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:rocketmq/getGroups:getGroups", {
         "groupIdRegex": args.groupIdRegex,
         "groupType": args.groupType,

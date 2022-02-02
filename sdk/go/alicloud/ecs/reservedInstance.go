@@ -27,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewReservedInstance(ctx, "_default", &ecs.ReservedInstanceArgs{
+// 		_, err := ecs.NewReservedInstance(ctx, "default", &ecs.ReservedInstanceArgs{
 // 			InstanceType:   pulumi.String("ecs.g6.large"),
 // 			InstanceAmount: pulumi.Int(1),
 // 			PeriodUnit:     pulumi.String("Year"),
@@ -222,7 +222,7 @@ type ReservedInstanceInput interface {
 }
 
 func (*ReservedInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReservedInstance)(nil))
+	return reflect.TypeOf((**ReservedInstance)(nil)).Elem()
 }
 
 func (i *ReservedInstance) ToReservedInstanceOutput() ReservedInstanceOutput {
@@ -231,35 +231,6 @@ func (i *ReservedInstance) ToReservedInstanceOutput() ReservedInstanceOutput {
 
 func (i *ReservedInstance) ToReservedInstanceOutputWithContext(ctx context.Context) ReservedInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReservedInstanceOutput)
-}
-
-func (i *ReservedInstance) ToReservedInstancePtrOutput() ReservedInstancePtrOutput {
-	return i.ToReservedInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *ReservedInstance) ToReservedInstancePtrOutputWithContext(ctx context.Context) ReservedInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReservedInstancePtrOutput)
-}
-
-type ReservedInstancePtrInput interface {
-	pulumi.Input
-
-	ToReservedInstancePtrOutput() ReservedInstancePtrOutput
-	ToReservedInstancePtrOutputWithContext(ctx context.Context) ReservedInstancePtrOutput
-}
-
-type reservedInstancePtrType ReservedInstanceArgs
-
-func (*reservedInstancePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ReservedInstance)(nil))
-}
-
-func (i *reservedInstancePtrType) ToReservedInstancePtrOutput() ReservedInstancePtrOutput {
-	return i.ToReservedInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *reservedInstancePtrType) ToReservedInstancePtrOutputWithContext(ctx context.Context) ReservedInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReservedInstancePtrOutput)
 }
 
 // ReservedInstanceArrayInput is an input type that accepts ReservedInstanceArray and ReservedInstanceArrayOutput values.
@@ -315,7 +286,7 @@ func (i ReservedInstanceMap) ToReservedInstanceMapOutputWithContext(ctx context.
 type ReservedInstanceOutput struct{ *pulumi.OutputState }
 
 func (ReservedInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReservedInstance)(nil))
+	return reflect.TypeOf((**ReservedInstance)(nil)).Elem()
 }
 
 func (o ReservedInstanceOutput) ToReservedInstanceOutput() ReservedInstanceOutput {
@@ -326,44 +297,10 @@ func (o ReservedInstanceOutput) ToReservedInstanceOutputWithContext(ctx context.
 	return o
 }
 
-func (o ReservedInstanceOutput) ToReservedInstancePtrOutput() ReservedInstancePtrOutput {
-	return o.ToReservedInstancePtrOutputWithContext(context.Background())
-}
-
-func (o ReservedInstanceOutput) ToReservedInstancePtrOutputWithContext(ctx context.Context) ReservedInstancePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReservedInstance) *ReservedInstance {
-		return &v
-	}).(ReservedInstancePtrOutput)
-}
-
-type ReservedInstancePtrOutput struct{ *pulumi.OutputState }
-
-func (ReservedInstancePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ReservedInstance)(nil))
-}
-
-func (o ReservedInstancePtrOutput) ToReservedInstancePtrOutput() ReservedInstancePtrOutput {
-	return o
-}
-
-func (o ReservedInstancePtrOutput) ToReservedInstancePtrOutputWithContext(ctx context.Context) ReservedInstancePtrOutput {
-	return o
-}
-
-func (o ReservedInstancePtrOutput) Elem() ReservedInstanceOutput {
-	return o.ApplyT(func(v *ReservedInstance) ReservedInstance {
-		if v != nil {
-			return *v
-		}
-		var ret ReservedInstance
-		return ret
-	}).(ReservedInstanceOutput)
-}
-
 type ReservedInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (ReservedInstanceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ReservedInstance)(nil))
+	return reflect.TypeOf((*[]*ReservedInstance)(nil)).Elem()
 }
 
 func (o ReservedInstanceArrayOutput) ToReservedInstanceArrayOutput() ReservedInstanceArrayOutput {
@@ -375,15 +312,15 @@ func (o ReservedInstanceArrayOutput) ToReservedInstanceArrayOutputWithContext(ct
 }
 
 func (o ReservedInstanceArrayOutput) Index(i pulumi.IntInput) ReservedInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReservedInstance {
-		return vs[0].([]ReservedInstance)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ReservedInstance {
+		return vs[0].([]*ReservedInstance)[vs[1].(int)]
 	}).(ReservedInstanceOutput)
 }
 
 type ReservedInstanceMapOutput struct{ *pulumi.OutputState }
 
 func (ReservedInstanceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ReservedInstance)(nil))
+	return reflect.TypeOf((*map[string]*ReservedInstance)(nil)).Elem()
 }
 
 func (o ReservedInstanceMapOutput) ToReservedInstanceMapOutput() ReservedInstanceMapOutput {
@@ -395,18 +332,16 @@ func (o ReservedInstanceMapOutput) ToReservedInstanceMapOutputWithContext(ctx co
 }
 
 func (o ReservedInstanceMapOutput) MapIndex(k pulumi.StringInput) ReservedInstanceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ReservedInstance {
-		return vs[0].(map[string]ReservedInstance)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ReservedInstance {
+		return vs[0].(map[string]*ReservedInstance)[vs[1].(string)]
 	}).(ReservedInstanceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservedInstanceInput)(nil)).Elem(), &ReservedInstance{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ReservedInstancePtrInput)(nil)).Elem(), &ReservedInstance{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservedInstanceArrayInput)(nil)).Elem(), ReservedInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservedInstanceMapInput)(nil)).Elem(), ReservedInstanceMap{})
 	pulumi.RegisterOutputType(ReservedInstanceOutput{})
-	pulumi.RegisterOutputType(ReservedInstancePtrOutput{})
 	pulumi.RegisterOutputType(ReservedInstanceArrayOutput{})
 	pulumi.RegisterOutputType(ReservedInstanceMapOutput{})
 }

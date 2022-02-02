@@ -90,36 +90,34 @@ export class NetworkAcl extends pulumi.CustomResource {
      */
     constructor(name: string, args: NetworkAclArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NetworkAclArgs | NetworkAclState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkAclState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["egressAclEntries"] = state ? state.egressAclEntries : undefined;
-            inputs["ingressAclEntries"] = state ? state.ingressAclEntries : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networkAclName"] = state ? state.networkAclName : undefined;
-            inputs["resources"] = state ? state.resources : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["egressAclEntries"] = state ? state.egressAclEntries : undefined;
+            resourceInputs["ingressAclEntries"] = state ? state.ingressAclEntries : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkAclName"] = state ? state.networkAclName : undefined;
+            resourceInputs["resources"] = state ? state.resources : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as NetworkAclArgs | undefined;
             if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["egressAclEntries"] = args ? args.egressAclEntries : undefined;
-            inputs["ingressAclEntries"] = args ? args.ingressAclEntries : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networkAclName"] = args ? args.networkAclName : undefined;
-            inputs["resources"] = args ? args.resources : undefined;
-            inputs["vpcId"] = args ? args.vpcId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["egressAclEntries"] = args ? args.egressAclEntries : undefined;
+            resourceInputs["ingressAclEntries"] = args ? args.ingressAclEntries : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkAclName"] = args ? args.networkAclName : undefined;
+            resourceInputs["resources"] = args ? args.resources : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(NetworkAcl.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(NetworkAcl.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -149,15 +149,15 @@ export class ConsumerChannel extends pulumi.CustomResource {
      */
     constructor(name: string, args: ConsumerChannelArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConsumerChannelArgs | ConsumerChannelState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConsumerChannelState | undefined;
-            inputs["consumerGroupId"] = state ? state.consumerGroupId : undefined;
-            inputs["consumerGroupName"] = state ? state.consumerGroupName : undefined;
-            inputs["consumerGroupPassword"] = state ? state.consumerGroupPassword : undefined;
-            inputs["consumerGroupUserName"] = state ? state.consumerGroupUserName : undefined;
-            inputs["dtsInstanceId"] = state ? state.dtsInstanceId : undefined;
+            resourceInputs["consumerGroupId"] = state ? state.consumerGroupId : undefined;
+            resourceInputs["consumerGroupName"] = state ? state.consumerGroupName : undefined;
+            resourceInputs["consumerGroupPassword"] = state ? state.consumerGroupPassword : undefined;
+            resourceInputs["consumerGroupUserName"] = state ? state.consumerGroupUserName : undefined;
+            resourceInputs["dtsInstanceId"] = state ? state.dtsInstanceId : undefined;
         } else {
             const args = argsOrState as ConsumerChannelArgs | undefined;
             if ((!args || args.consumerGroupName === undefined) && !opts.urn) {
@@ -172,16 +172,14 @@ export class ConsumerChannel extends pulumi.CustomResource {
             if ((!args || args.dtsInstanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dtsInstanceId'");
             }
-            inputs["consumerGroupName"] = args ? args.consumerGroupName : undefined;
-            inputs["consumerGroupPassword"] = args ? args.consumerGroupPassword : undefined;
-            inputs["consumerGroupUserName"] = args ? args.consumerGroupUserName : undefined;
-            inputs["dtsInstanceId"] = args ? args.dtsInstanceId : undefined;
-            inputs["consumerGroupId"] = undefined /*out*/;
+            resourceInputs["consumerGroupName"] = args ? args.consumerGroupName : undefined;
+            resourceInputs["consumerGroupPassword"] = args ? args.consumerGroupPassword : undefined;
+            resourceInputs["consumerGroupUserName"] = args ? args.consumerGroupUserName : undefined;
+            resourceInputs["dtsInstanceId"] = args ? args.dtsInstanceId : undefined;
+            resourceInputs["consumerGroupId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ConsumerChannel.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ConsumerChannel.__pulumiType, name, resourceInputs, opts);
     }
 }
 

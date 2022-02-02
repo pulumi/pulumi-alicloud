@@ -77,32 +77,30 @@ export class RouteEntry extends pulumi.CustomResource {
      */
     constructor(name: string, args: RouteEntryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouteEntryArgs | RouteEntryState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouteEntryState | undefined;
-            inputs["destinationCidrblock"] = state ? state.destinationCidrblock : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["nexthopId"] = state ? state.nexthopId : undefined;
-            inputs["nexthopType"] = state ? state.nexthopType : undefined;
-            inputs["routeTableId"] = state ? state.routeTableId : undefined;
-            inputs["routerId"] = state ? state.routerId : undefined;
+            resourceInputs["destinationCidrblock"] = state ? state.destinationCidrblock : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nexthopId"] = state ? state.nexthopId : undefined;
+            resourceInputs["nexthopType"] = state ? state.nexthopType : undefined;
+            resourceInputs["routeTableId"] = state ? state.routeTableId : undefined;
+            resourceInputs["routerId"] = state ? state.routerId : undefined;
         } else {
             const args = argsOrState as RouteEntryArgs | undefined;
             if ((!args || args.routeTableId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'routeTableId'");
             }
-            inputs["destinationCidrblock"] = args ? args.destinationCidrblock : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["nexthopId"] = args ? args.nexthopId : undefined;
-            inputs["nexthopType"] = args ? args.nexthopType : undefined;
-            inputs["routeTableId"] = args ? args.routeTableId : undefined;
-            inputs["routerId"] = args ? args.routerId : undefined;
+            resourceInputs["destinationCidrblock"] = args ? args.destinationCidrblock : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nexthopId"] = args ? args.nexthopId : undefined;
+            resourceInputs["nexthopType"] = args ? args.nexthopType : undefined;
+            resourceInputs["routeTableId"] = args ? args.routeTableId : undefined;
+            resourceInputs["routerId"] = args ? args.routerId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RouteEntry.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RouteEntry.__pulumiType, name, resourceInputs, opts);
     }
 }
 

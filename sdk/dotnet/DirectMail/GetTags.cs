@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.DirectMail
 {
@@ -56,7 +55,7 @@ namespace Pulumi.AliCloud.DirectMail
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTagsResult> InvokeAsync(GetTagsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTagsResult>("alicloud:directmail/getTags:getTags", args ?? new GetTagsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTagsResult>("alicloud:directmail/getTags:getTags", args ?? new GetTagsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Direct Mail Tags of the current Alibaba Cloud user.
@@ -102,7 +101,7 @@ namespace Pulumi.AliCloud.DirectMail
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTagsResult> Invoke(GetTagsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTagsResult>("alicloud:directmail/getTags:getTags", args ?? new GetTagsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTagsResult>("alicloud:directmail/getTags:getTags", args ?? new GetTagsInvokeArgs(), options.WithDefaults());
     }
 
 

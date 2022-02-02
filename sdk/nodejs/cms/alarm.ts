@@ -175,30 +175,30 @@ export class Alarm extends pulumi.CustomResource {
      */
     constructor(name: string, args: AlarmArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AlarmArgs | AlarmState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlarmState | undefined;
-            inputs["contactGroups"] = state ? state.contactGroups : undefined;
-            inputs["dimensions"] = state ? state.dimensions : undefined;
-            inputs["effectiveInterval"] = state ? state.effectiveInterval : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["endTime"] = state ? state.endTime : undefined;
-            inputs["escalationsCritical"] = state ? state.escalationsCritical : undefined;
-            inputs["escalationsInfo"] = state ? state.escalationsInfo : undefined;
-            inputs["escalationsWarn"] = state ? state.escalationsWarn : undefined;
-            inputs["metric"] = state ? state.metric : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["operator"] = state ? state.operator : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["silenceTime"] = state ? state.silenceTime : undefined;
-            inputs["startTime"] = state ? state.startTime : undefined;
-            inputs["statistics"] = state ? state.statistics : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["threshold"] = state ? state.threshold : undefined;
-            inputs["triggeredCount"] = state ? state.triggeredCount : undefined;
-            inputs["webhook"] = state ? state.webhook : undefined;
+            resourceInputs["contactGroups"] = state ? state.contactGroups : undefined;
+            resourceInputs["dimensions"] = state ? state.dimensions : undefined;
+            resourceInputs["effectiveInterval"] = state ? state.effectiveInterval : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["endTime"] = state ? state.endTime : undefined;
+            resourceInputs["escalationsCritical"] = state ? state.escalationsCritical : undefined;
+            resourceInputs["escalationsInfo"] = state ? state.escalationsInfo : undefined;
+            resourceInputs["escalationsWarn"] = state ? state.escalationsWarn : undefined;
+            resourceInputs["metric"] = state ? state.metric : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["operator"] = state ? state.operator : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["silenceTime"] = state ? state.silenceTime : undefined;
+            resourceInputs["startTime"] = state ? state.startTime : undefined;
+            resourceInputs["statistics"] = state ? state.statistics : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["threshold"] = state ? state.threshold : undefined;
+            resourceInputs["triggeredCount"] = state ? state.triggeredCount : undefined;
+            resourceInputs["webhook"] = state ? state.webhook : undefined;
         } else {
             const args = argsOrState as AlarmArgs | undefined;
             if ((!args || args.contactGroups === undefined) && !opts.urn) {
@@ -213,31 +213,29 @@ export class Alarm extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["contactGroups"] = args ? args.contactGroups : undefined;
-            inputs["dimensions"] = args ? args.dimensions : undefined;
-            inputs["effectiveInterval"] = args ? args.effectiveInterval : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["endTime"] = args ? args.endTime : undefined;
-            inputs["escalationsCritical"] = args ? args.escalationsCritical : undefined;
-            inputs["escalationsInfo"] = args ? args.escalationsInfo : undefined;
-            inputs["escalationsWarn"] = args ? args.escalationsWarn : undefined;
-            inputs["metric"] = args ? args.metric : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["operator"] = args ? args.operator : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["silenceTime"] = args ? args.silenceTime : undefined;
-            inputs["startTime"] = args ? args.startTime : undefined;
-            inputs["statistics"] = args ? args.statistics : undefined;
-            inputs["threshold"] = args ? args.threshold : undefined;
-            inputs["triggeredCount"] = args ? args.triggeredCount : undefined;
-            inputs["webhook"] = args ? args.webhook : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["contactGroups"] = args ? args.contactGroups : undefined;
+            resourceInputs["dimensions"] = args ? args.dimensions : undefined;
+            resourceInputs["effectiveInterval"] = args ? args.effectiveInterval : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["endTime"] = args ? args.endTime : undefined;
+            resourceInputs["escalationsCritical"] = args ? args.escalationsCritical : undefined;
+            resourceInputs["escalationsInfo"] = args ? args.escalationsInfo : undefined;
+            resourceInputs["escalationsWarn"] = args ? args.escalationsWarn : undefined;
+            resourceInputs["metric"] = args ? args.metric : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["operator"] = args ? args.operator : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["silenceTime"] = args ? args.silenceTime : undefined;
+            resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["statistics"] = args ? args.statistics : undefined;
+            resourceInputs["threshold"] = args ? args.threshold : undefined;
+            resourceInputs["triggeredCount"] = args ? args.triggeredCount : undefined;
+            resourceInputs["webhook"] = args ? args.webhook : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Alarm.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Alarm.__pulumiType, name, resourceInputs, opts);
     }
 }
 

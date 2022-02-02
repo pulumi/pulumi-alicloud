@@ -34,7 +34,7 @@ import (
 // 		if param := cfg.Get("name"); param != "" {
 // 			name = param
 // 		}
-// 		_, err := mhub.NewApp(ctx, "_default", &mhub.AppArgs{
+// 		_, err := mhub.NewApp(ctx, "default", &mhub.AppArgs{
 // 			AppName:     pulumi.String(name),
 // 			ProductId:   pulumi.Any(alicloud_mhub_product.Default.Id),
 // 			PackageName: pulumi.String("com.test.android"),

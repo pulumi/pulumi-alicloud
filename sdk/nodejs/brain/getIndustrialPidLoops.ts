@@ -31,9 +31,7 @@ export function getIndustrialPidLoops(args: GetIndustrialPidLoopsArgs, opts?: pu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:brain/getIndustrialPidLoops:getIndustrialPidLoops", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,

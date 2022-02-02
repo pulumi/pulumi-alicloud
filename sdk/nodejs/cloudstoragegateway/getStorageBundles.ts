@@ -10,9 +10,7 @@ export function getStorageBundles(args: GetStorageBundlesArgs, opts?: pulumi.Inv
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cloudstoragegateway/getStorageBundles:getStorageBundles", {
         "backendBucketRegionId": args.backendBucketRegionId,
         "ids": args.ids,

@@ -143,25 +143,25 @@ export class Domain extends pulumi.CustomResource {
      */
     constructor(name: string, args: DomainArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainArgs | DomainState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
-            inputs["certName"] = state ? state.certName : undefined;
-            inputs["checkUrl"] = state ? state.checkUrl : undefined;
-            inputs["cname"] = state ? state.cname : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["domainName"] = state ? state.domainName : undefined;
-            inputs["gmtCreated"] = state ? state.gmtCreated : undefined;
-            inputs["gmtModified"] = state ? state.gmtModified : undefined;
-            inputs["scope"] = state ? state.scope : undefined;
-            inputs["sources"] = state ? state.sources : undefined;
-            inputs["sslProtocol"] = state ? state.sslProtocol : undefined;
-            inputs["sslPub"] = state ? state.sslPub : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["topLevelDomain"] = state ? state.topLevelDomain : undefined;
-            inputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["certName"] = state ? state.certName : undefined;
+            resourceInputs["checkUrl"] = state ? state.checkUrl : undefined;
+            resourceInputs["cname"] = state ? state.cname : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["domainName"] = state ? state.domainName : undefined;
+            resourceInputs["gmtCreated"] = state ? state.gmtCreated : undefined;
+            resourceInputs["gmtModified"] = state ? state.gmtModified : undefined;
+            resourceInputs["scope"] = state ? state.scope : undefined;
+            resourceInputs["sources"] = state ? state.sources : undefined;
+            resourceInputs["sslProtocol"] = state ? state.sslProtocol : undefined;
+            resourceInputs["sslPub"] = state ? state.sslPub : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["topLevelDomain"] = state ? state.topLevelDomain : undefined;
+            resourceInputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as DomainArgs | undefined;
             if ((!args || args.domainName === undefined) && !opts.urn) {
@@ -170,26 +170,24 @@ export class Domain extends pulumi.CustomResource {
             if ((!args || args.sources === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sources'");
             }
-            inputs["checkUrl"] = args ? args.checkUrl : undefined;
-            inputs["domainName"] = args ? args.domainName : undefined;
-            inputs["scope"] = args ? args.scope : undefined;
-            inputs["sources"] = args ? args.sources : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["topLevelDomain"] = args ? args.topLevelDomain : undefined;
-            inputs["certName"] = undefined /*out*/;
-            inputs["cname"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["gmtCreated"] = undefined /*out*/;
-            inputs["gmtModified"] = undefined /*out*/;
-            inputs["sslProtocol"] = undefined /*out*/;
-            inputs["sslPub"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["weight"] = undefined /*out*/;
+            resourceInputs["checkUrl"] = args ? args.checkUrl : undefined;
+            resourceInputs["domainName"] = args ? args.domainName : undefined;
+            resourceInputs["scope"] = args ? args.scope : undefined;
+            resourceInputs["sources"] = args ? args.sources : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["topLevelDomain"] = args ? args.topLevelDomain : undefined;
+            resourceInputs["certName"] = undefined /*out*/;
+            resourceInputs["cname"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["gmtCreated"] = undefined /*out*/;
+            resourceInputs["gmtModified"] = undefined /*out*/;
+            resourceInputs["sslProtocol"] = undefined /*out*/;
+            resourceInputs["sslPub"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["weight"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Domain.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Domain.__pulumiType, name, resourceInputs, opts);
     }
 }
 

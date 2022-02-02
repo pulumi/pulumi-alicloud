@@ -31,9 +31,7 @@ export function getAlidnsRecords(args: GetAlidnsRecordsArgs, opts?: pulumi.Invok
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:dns/getAlidnsRecords:getAlidnsRecords", {
         "direction": args.direction,
         "domainName": args.domainName,

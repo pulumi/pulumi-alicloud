@@ -290,7 +290,7 @@ type GatewayBlockVolumeInput interface {
 }
 
 func (*GatewayBlockVolume) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayBlockVolume)(nil))
+	return reflect.TypeOf((**GatewayBlockVolume)(nil)).Elem()
 }
 
 func (i *GatewayBlockVolume) ToGatewayBlockVolumeOutput() GatewayBlockVolumeOutput {
@@ -299,35 +299,6 @@ func (i *GatewayBlockVolume) ToGatewayBlockVolumeOutput() GatewayBlockVolumeOutp
 
 func (i *GatewayBlockVolume) ToGatewayBlockVolumeOutputWithContext(ctx context.Context) GatewayBlockVolumeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayBlockVolumeOutput)
-}
-
-func (i *GatewayBlockVolume) ToGatewayBlockVolumePtrOutput() GatewayBlockVolumePtrOutput {
-	return i.ToGatewayBlockVolumePtrOutputWithContext(context.Background())
-}
-
-func (i *GatewayBlockVolume) ToGatewayBlockVolumePtrOutputWithContext(ctx context.Context) GatewayBlockVolumePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayBlockVolumePtrOutput)
-}
-
-type GatewayBlockVolumePtrInput interface {
-	pulumi.Input
-
-	ToGatewayBlockVolumePtrOutput() GatewayBlockVolumePtrOutput
-	ToGatewayBlockVolumePtrOutputWithContext(ctx context.Context) GatewayBlockVolumePtrOutput
-}
-
-type gatewayBlockVolumePtrType GatewayBlockVolumeArgs
-
-func (*gatewayBlockVolumePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GatewayBlockVolume)(nil))
-}
-
-func (i *gatewayBlockVolumePtrType) ToGatewayBlockVolumePtrOutput() GatewayBlockVolumePtrOutput {
-	return i.ToGatewayBlockVolumePtrOutputWithContext(context.Background())
-}
-
-func (i *gatewayBlockVolumePtrType) ToGatewayBlockVolumePtrOutputWithContext(ctx context.Context) GatewayBlockVolumePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayBlockVolumePtrOutput)
 }
 
 // GatewayBlockVolumeArrayInput is an input type that accepts GatewayBlockVolumeArray and GatewayBlockVolumeArrayOutput values.
@@ -383,7 +354,7 @@ func (i GatewayBlockVolumeMap) ToGatewayBlockVolumeMapOutputWithContext(ctx cont
 type GatewayBlockVolumeOutput struct{ *pulumi.OutputState }
 
 func (GatewayBlockVolumeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayBlockVolume)(nil))
+	return reflect.TypeOf((**GatewayBlockVolume)(nil)).Elem()
 }
 
 func (o GatewayBlockVolumeOutput) ToGatewayBlockVolumeOutput() GatewayBlockVolumeOutput {
@@ -394,44 +365,10 @@ func (o GatewayBlockVolumeOutput) ToGatewayBlockVolumeOutputWithContext(ctx cont
 	return o
 }
 
-func (o GatewayBlockVolumeOutput) ToGatewayBlockVolumePtrOutput() GatewayBlockVolumePtrOutput {
-	return o.ToGatewayBlockVolumePtrOutputWithContext(context.Background())
-}
-
-func (o GatewayBlockVolumeOutput) ToGatewayBlockVolumePtrOutputWithContext(ctx context.Context) GatewayBlockVolumePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayBlockVolume) *GatewayBlockVolume {
-		return &v
-	}).(GatewayBlockVolumePtrOutput)
-}
-
-type GatewayBlockVolumePtrOutput struct{ *pulumi.OutputState }
-
-func (GatewayBlockVolumePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GatewayBlockVolume)(nil))
-}
-
-func (o GatewayBlockVolumePtrOutput) ToGatewayBlockVolumePtrOutput() GatewayBlockVolumePtrOutput {
-	return o
-}
-
-func (o GatewayBlockVolumePtrOutput) ToGatewayBlockVolumePtrOutputWithContext(ctx context.Context) GatewayBlockVolumePtrOutput {
-	return o
-}
-
-func (o GatewayBlockVolumePtrOutput) Elem() GatewayBlockVolumeOutput {
-	return o.ApplyT(func(v *GatewayBlockVolume) GatewayBlockVolume {
-		if v != nil {
-			return *v
-		}
-		var ret GatewayBlockVolume
-		return ret
-	}).(GatewayBlockVolumeOutput)
-}
-
 type GatewayBlockVolumeArrayOutput struct{ *pulumi.OutputState }
 
 func (GatewayBlockVolumeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GatewayBlockVolume)(nil))
+	return reflect.TypeOf((*[]*GatewayBlockVolume)(nil)).Elem()
 }
 
 func (o GatewayBlockVolumeArrayOutput) ToGatewayBlockVolumeArrayOutput() GatewayBlockVolumeArrayOutput {
@@ -443,15 +380,15 @@ func (o GatewayBlockVolumeArrayOutput) ToGatewayBlockVolumeArrayOutputWithContex
 }
 
 func (o GatewayBlockVolumeArrayOutput) Index(i pulumi.IntInput) GatewayBlockVolumeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewayBlockVolume {
-		return vs[0].([]GatewayBlockVolume)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GatewayBlockVolume {
+		return vs[0].([]*GatewayBlockVolume)[vs[1].(int)]
 	}).(GatewayBlockVolumeOutput)
 }
 
 type GatewayBlockVolumeMapOutput struct{ *pulumi.OutputState }
 
 func (GatewayBlockVolumeMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GatewayBlockVolume)(nil))
+	return reflect.TypeOf((*map[string]*GatewayBlockVolume)(nil)).Elem()
 }
 
 func (o GatewayBlockVolumeMapOutput) ToGatewayBlockVolumeMapOutput() GatewayBlockVolumeMapOutput {
@@ -463,18 +400,16 @@ func (o GatewayBlockVolumeMapOutput) ToGatewayBlockVolumeMapOutputWithContext(ct
 }
 
 func (o GatewayBlockVolumeMapOutput) MapIndex(k pulumi.StringInput) GatewayBlockVolumeOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GatewayBlockVolume {
-		return vs[0].(map[string]GatewayBlockVolume)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *GatewayBlockVolume {
+		return vs[0].(map[string]*GatewayBlockVolume)[vs[1].(string)]
 	}).(GatewayBlockVolumeOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayBlockVolumeInput)(nil)).Elem(), &GatewayBlockVolume{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GatewayBlockVolumePtrInput)(nil)).Elem(), &GatewayBlockVolume{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayBlockVolumeArrayInput)(nil)).Elem(), GatewayBlockVolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayBlockVolumeMapInput)(nil)).Elem(), GatewayBlockVolumeMap{})
 	pulumi.RegisterOutputType(GatewayBlockVolumeOutput{})
-	pulumi.RegisterOutputType(GatewayBlockVolumePtrOutput{})
 	pulumi.RegisterOutputType(GatewayBlockVolumeArrayOutput{})
 	pulumi.RegisterOutputType(GatewayBlockVolumeMapOutput{})
 }

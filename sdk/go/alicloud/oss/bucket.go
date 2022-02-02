@@ -28,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucket(ctx, "bucket_acl", &oss.BucketArgs{
+// 		_, err := oss.NewBucket(ctx, "bucket-acl", &oss.BucketArgs{
 // 			Acl:    pulumi.String("private"),
 // 			Bucket: pulumi.String("bucket-170309-acl"),
 // 		})
@@ -52,7 +52,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucket(ctx, "bucket_website", &oss.BucketArgs{
+// 		_, err := oss.NewBucket(ctx, "bucket-website", &oss.BucketArgs{
 // 			Bucket: pulumi.String("bucket-170309-website"),
 // 			Website: &oss.BucketWebsiteArgs{
 // 				ErrorDocument: pulumi.String("error.html"),
@@ -79,14 +79,14 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucket(ctx, "bucket_target", &oss.BucketArgs{
+// 		_, err := oss.NewBucket(ctx, "bucket-target", &oss.BucketArgs{
 // 			Bucket: pulumi.String("bucket-170309-acl"),
 // 			Acl:    pulumi.String("public-read"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = oss.NewBucket(ctx, "bucket_logging", &oss.BucketArgs{
+// 		_, err = oss.NewBucket(ctx, "bucket-logging", &oss.BucketArgs{
 // 			Bucket: pulumi.String("bucket-170309-logging"),
 // 			Logging: &oss.BucketLoggingArgs{
 // 				TargetBucket: bucket_target.ID(),
@@ -113,7 +113,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucket(ctx, "bucket_referer", &oss.BucketArgs{
+// 		_, err := oss.NewBucket(ctx, "bucket-referer", &oss.BucketArgs{
 // 			Acl:    pulumi.String("private"),
 // 			Bucket: pulumi.String("bucket-170309-referer"),
 // 			RefererConfig: &oss.BucketRefererConfigArgs{
@@ -144,7 +144,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucket(ctx, "bucket_lifecycle", &oss.BucketArgs{
+// 		_, err := oss.NewBucket(ctx, "bucket-lifecycle", &oss.BucketArgs{
 // 			Acl:    pulumi.String("public-read"),
 // 			Bucket: pulumi.String("bucket-170309-lifecycle"),
 // 			LifecycleRules: oss.BucketLifecycleRuleArray{
@@ -163,7 +163,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = oss.NewBucket(ctx, "bucket_versioning_lifecycle", &oss.BucketArgs{
+// 		_, err = oss.NewBucket(ctx, "bucket-versioning-lifecycle", &oss.BucketArgs{
 // 			Acl:    pulumi.String("private"),
 // 			Bucket: pulumi.String("bucket-170309-lifecycle"),
 // 			LifecycleRules: oss.BucketLifecycleRuleArray{
@@ -219,7 +219,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucket(ctx, "bucket_policy", &oss.BucketArgs{
+// 		_, err := oss.NewBucket(ctx, "bucket-policy", &oss.BucketArgs{
 // 			Acl:    pulumi.String("private"),
 // 			Bucket: pulumi.String("bucket-170309-policy"),
 // 			Policy: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v", "  {\"Statement\":\n", "      [{\"Action\":\n", "          [\"oss:PutObject\", \"oss:GetObject\", \"oss:DeleteBucket\"],\n", "        \"Effect\":\"Allow\",\n", "        \"Resource\":\n", "            [\"acs:oss:*:*:*\"]}],\n", "   \"Version\":\"1\"}\n", "  \n")),
@@ -244,7 +244,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucket(ctx, "bucket_storageclass", &oss.BucketArgs{
+// 		_, err := oss.NewBucket(ctx, "bucket-storageclass", &oss.BucketArgs{
 // 			Bucket:       pulumi.String("bucket-170309-storageclass"),
 // 			StorageClass: pulumi.String("IA"),
 // 		})
@@ -268,7 +268,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucket(ctx, "bucket_sserule", &oss.BucketArgs{
+// 		_, err := oss.NewBucket(ctx, "bucket-sserule", &oss.BucketArgs{
 // 			Acl:    pulumi.String("private"),
 // 			Bucket: pulumi.String("bucket-170309-sserule"),
 // 			ServerSideEncryptionRule: &oss.BucketServerSideEncryptionRuleArgs{
@@ -296,7 +296,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucket(ctx, "bucket_tags", &oss.BucketArgs{
+// 		_, err := oss.NewBucket(ctx, "bucket-tags", &oss.BucketArgs{
 // 			Acl:    pulumi.String("private"),
 // 			Bucket: pulumi.String("bucket-170309-tags"),
 // 			Tags: pulumi.AnyMap{
@@ -324,7 +324,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucket(ctx, "bucket_versioning", &oss.BucketArgs{
+// 		_, err := oss.NewBucket(ctx, "bucket-versioning", &oss.BucketArgs{
 // 			Acl:    pulumi.String("private"),
 // 			Bucket: pulumi.String("bucket-170309-versioning"),
 // 			Versioning: &oss.BucketVersioningArgs{
@@ -351,7 +351,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucket(ctx, "bucket_redundancytype", &oss.BucketArgs{
+// 		_, err := oss.NewBucket(ctx, "bucket-redundancytype", &oss.BucketArgs{
 // 			Bucket:         pulumi.String("bucket_name"),
 // 			RedundancyType: pulumi.String("ZRS"),
 // 		})
@@ -375,7 +375,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := oss.NewBucket(ctx, "bucket_accelerate", &oss.BucketArgs{
+// 		_, err := oss.NewBucket(ctx, "bucket-accelerate", &oss.BucketArgs{
 // 			Bucket: pulumi.String("bucket_name"),
 // 			TransferAcceleration: &oss.BucketTransferAccelerationArgs{
 // 				Enabled: pulumi.Bool(false),
@@ -653,7 +653,7 @@ type BucketInput interface {
 }
 
 func (*Bucket) ElementType() reflect.Type {
-	return reflect.TypeOf((*Bucket)(nil))
+	return reflect.TypeOf((**Bucket)(nil)).Elem()
 }
 
 func (i *Bucket) ToBucketOutput() BucketOutput {
@@ -662,35 +662,6 @@ func (i *Bucket) ToBucketOutput() BucketOutput {
 
 func (i *Bucket) ToBucketOutputWithContext(ctx context.Context) BucketOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BucketOutput)
-}
-
-func (i *Bucket) ToBucketPtrOutput() BucketPtrOutput {
-	return i.ToBucketPtrOutputWithContext(context.Background())
-}
-
-func (i *Bucket) ToBucketPtrOutputWithContext(ctx context.Context) BucketPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketPtrOutput)
-}
-
-type BucketPtrInput interface {
-	pulumi.Input
-
-	ToBucketPtrOutput() BucketPtrOutput
-	ToBucketPtrOutputWithContext(ctx context.Context) BucketPtrOutput
-}
-
-type bucketPtrType BucketArgs
-
-func (*bucketPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Bucket)(nil))
-}
-
-func (i *bucketPtrType) ToBucketPtrOutput() BucketPtrOutput {
-	return i.ToBucketPtrOutputWithContext(context.Background())
-}
-
-func (i *bucketPtrType) ToBucketPtrOutputWithContext(ctx context.Context) BucketPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketPtrOutput)
 }
 
 // BucketArrayInput is an input type that accepts BucketArray and BucketArrayOutput values.
@@ -746,7 +717,7 @@ func (i BucketMap) ToBucketMapOutputWithContext(ctx context.Context) BucketMapOu
 type BucketOutput struct{ *pulumi.OutputState }
 
 func (BucketOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Bucket)(nil))
+	return reflect.TypeOf((**Bucket)(nil)).Elem()
 }
 
 func (o BucketOutput) ToBucketOutput() BucketOutput {
@@ -757,44 +728,10 @@ func (o BucketOutput) ToBucketOutputWithContext(ctx context.Context) BucketOutpu
 	return o
 }
 
-func (o BucketOutput) ToBucketPtrOutput() BucketPtrOutput {
-	return o.ToBucketPtrOutputWithContext(context.Background())
-}
-
-func (o BucketOutput) ToBucketPtrOutputWithContext(ctx context.Context) BucketPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Bucket) *Bucket {
-		return &v
-	}).(BucketPtrOutput)
-}
-
-type BucketPtrOutput struct{ *pulumi.OutputState }
-
-func (BucketPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Bucket)(nil))
-}
-
-func (o BucketPtrOutput) ToBucketPtrOutput() BucketPtrOutput {
-	return o
-}
-
-func (o BucketPtrOutput) ToBucketPtrOutputWithContext(ctx context.Context) BucketPtrOutput {
-	return o
-}
-
-func (o BucketPtrOutput) Elem() BucketOutput {
-	return o.ApplyT(func(v *Bucket) Bucket {
-		if v != nil {
-			return *v
-		}
-		var ret Bucket
-		return ret
-	}).(BucketOutput)
-}
-
 type BucketArrayOutput struct{ *pulumi.OutputState }
 
 func (BucketArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Bucket)(nil))
+	return reflect.TypeOf((*[]*Bucket)(nil)).Elem()
 }
 
 func (o BucketArrayOutput) ToBucketArrayOutput() BucketArrayOutput {
@@ -806,15 +743,15 @@ func (o BucketArrayOutput) ToBucketArrayOutputWithContext(ctx context.Context) B
 }
 
 func (o BucketArrayOutput) Index(i pulumi.IntInput) BucketOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Bucket {
-		return vs[0].([]Bucket)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Bucket {
+		return vs[0].([]*Bucket)[vs[1].(int)]
 	}).(BucketOutput)
 }
 
 type BucketMapOutput struct{ *pulumi.OutputState }
 
 func (BucketMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Bucket)(nil))
+	return reflect.TypeOf((*map[string]*Bucket)(nil)).Elem()
 }
 
 func (o BucketMapOutput) ToBucketMapOutput() BucketMapOutput {
@@ -826,18 +763,16 @@ func (o BucketMapOutput) ToBucketMapOutputWithContext(ctx context.Context) Bucke
 }
 
 func (o BucketMapOutput) MapIndex(k pulumi.StringInput) BucketOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Bucket {
-		return vs[0].(map[string]Bucket)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Bucket {
+		return vs[0].(map[string]*Bucket)[vs[1].(string)]
 	}).(BucketOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketInput)(nil)).Elem(), &Bucket{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketPtrInput)(nil)).Elem(), &Bucket{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketArrayInput)(nil)).Elem(), BucketArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketMapInput)(nil)).Elem(), BucketMap{})
 	pulumi.RegisterOutputType(BucketOutput{})
-	pulumi.RegisterOutputType(BucketPtrOutput{})
 	pulumi.RegisterOutputType(BucketArrayOutput{})
 	pulumi.RegisterOutputType(BucketMapOutput{})
 }

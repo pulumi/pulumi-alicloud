@@ -32,9 +32,7 @@ export function getKeyPairs(args?: GetKeyPairsArgs, opts?: pulumi.InvokeOptions)
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ecp/getKeyPairs:getKeyPairs", {
         "ids": args.ids,
         "keyPairFingerPrint": args.keyPairFingerPrint,

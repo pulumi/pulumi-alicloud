@@ -34,13 +34,18 @@ import (
 // 		if param := cfg.Get("name"); param != "" {
 // 			name = param
 // 		}
-// 		_, err := rdc.NewOrganization(ctx, "_default", &rdc.OrganizationArgs{
+// 		_, err := rdc.NewOrganization(ctx, "default", &rdc.OrganizationArgs{
 // 			OrganizationName: pulumi.String(name),
 // 			Source:           pulumi.String(name),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
+// 		ids := rdc.GetOrganizationsOutput(ctx, rdc.GetOrganizationsOutputArgs{
+// 			Ids: pulumi.StringArray{
+// 				_default.ID(),
+// 			},
+// 		}, nil)
 // 		ctx.Export("rdcOrganizationId1", ids.ApplyT(func(ids rdc.GetOrganizationsResult) (string, error) {
 // 			return ids.Id, nil
 // 		}).(pulumi.StringOutput))

@@ -65,13 +65,13 @@ export class PolicyVersion extends pulumi.CustomResource {
      */
     constructor(name: string, args: PolicyVersionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PolicyVersionArgs | PolicyVersionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyVersionState | undefined;
-            inputs["isDefaultVersion"] = state ? state.isDefaultVersion : undefined;
-            inputs["policyDocument"] = state ? state.policyDocument : undefined;
-            inputs["policyName"] = state ? state.policyName : undefined;
+            resourceInputs["isDefaultVersion"] = state ? state.isDefaultVersion : undefined;
+            resourceInputs["policyDocument"] = state ? state.policyDocument : undefined;
+            resourceInputs["policyName"] = state ? state.policyName : undefined;
         } else {
             const args = argsOrState as PolicyVersionArgs | undefined;
             if ((!args || args.policyDocument === undefined) && !opts.urn) {
@@ -80,14 +80,12 @@ export class PolicyVersion extends pulumi.CustomResource {
             if ((!args || args.policyName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyName'");
             }
-            inputs["isDefaultVersion"] = args ? args.isDefaultVersion : undefined;
-            inputs["policyDocument"] = args ? args.policyDocument : undefined;
-            inputs["policyName"] = args ? args.policyName : undefined;
+            resourceInputs["isDefaultVersion"] = args ? args.isDefaultVersion : undefined;
+            resourceInputs["policyDocument"] = args ? args.policyDocument : undefined;
+            resourceInputs["policyName"] = args ? args.policyName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(PolicyVersion.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(PolicyVersion.__pulumiType, name, resourceInputs, opts);
     }
 }
 

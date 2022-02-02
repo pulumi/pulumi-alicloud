@@ -125,7 +125,7 @@ type BastionHostInstanceInput interface {
 }
 
 func (*BastionHostInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*BastionHostInstance)(nil))
+	return reflect.TypeOf((**BastionHostInstance)(nil)).Elem()
 }
 
 func (i *BastionHostInstance) ToBastionHostInstanceOutput() BastionHostInstanceOutput {
@@ -134,35 +134,6 @@ func (i *BastionHostInstance) ToBastionHostInstanceOutput() BastionHostInstanceO
 
 func (i *BastionHostInstance) ToBastionHostInstanceOutputWithContext(ctx context.Context) BastionHostInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BastionHostInstanceOutput)
-}
-
-func (i *BastionHostInstance) ToBastionHostInstancePtrOutput() BastionHostInstancePtrOutput {
-	return i.ToBastionHostInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *BastionHostInstance) ToBastionHostInstancePtrOutputWithContext(ctx context.Context) BastionHostInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BastionHostInstancePtrOutput)
-}
-
-type BastionHostInstancePtrInput interface {
-	pulumi.Input
-
-	ToBastionHostInstancePtrOutput() BastionHostInstancePtrOutput
-	ToBastionHostInstancePtrOutputWithContext(ctx context.Context) BastionHostInstancePtrOutput
-}
-
-type bastionHostInstancePtrType BastionHostInstanceArgs
-
-func (*bastionHostInstancePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BastionHostInstance)(nil))
-}
-
-func (i *bastionHostInstancePtrType) ToBastionHostInstancePtrOutput() BastionHostInstancePtrOutput {
-	return i.ToBastionHostInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *bastionHostInstancePtrType) ToBastionHostInstancePtrOutputWithContext(ctx context.Context) BastionHostInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BastionHostInstancePtrOutput)
 }
 
 // BastionHostInstanceArrayInput is an input type that accepts BastionHostInstanceArray and BastionHostInstanceArrayOutput values.
@@ -218,7 +189,7 @@ func (i BastionHostInstanceMap) ToBastionHostInstanceMapOutputWithContext(ctx co
 type BastionHostInstanceOutput struct{ *pulumi.OutputState }
 
 func (BastionHostInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BastionHostInstance)(nil))
+	return reflect.TypeOf((**BastionHostInstance)(nil)).Elem()
 }
 
 func (o BastionHostInstanceOutput) ToBastionHostInstanceOutput() BastionHostInstanceOutput {
@@ -229,44 +200,10 @@ func (o BastionHostInstanceOutput) ToBastionHostInstanceOutputWithContext(ctx co
 	return o
 }
 
-func (o BastionHostInstanceOutput) ToBastionHostInstancePtrOutput() BastionHostInstancePtrOutput {
-	return o.ToBastionHostInstancePtrOutputWithContext(context.Background())
-}
-
-func (o BastionHostInstanceOutput) ToBastionHostInstancePtrOutputWithContext(ctx context.Context) BastionHostInstancePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BastionHostInstance) *BastionHostInstance {
-		return &v
-	}).(BastionHostInstancePtrOutput)
-}
-
-type BastionHostInstancePtrOutput struct{ *pulumi.OutputState }
-
-func (BastionHostInstancePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BastionHostInstance)(nil))
-}
-
-func (o BastionHostInstancePtrOutput) ToBastionHostInstancePtrOutput() BastionHostInstancePtrOutput {
-	return o
-}
-
-func (o BastionHostInstancePtrOutput) ToBastionHostInstancePtrOutputWithContext(ctx context.Context) BastionHostInstancePtrOutput {
-	return o
-}
-
-func (o BastionHostInstancePtrOutput) Elem() BastionHostInstanceOutput {
-	return o.ApplyT(func(v *BastionHostInstance) BastionHostInstance {
-		if v != nil {
-			return *v
-		}
-		var ret BastionHostInstance
-		return ret
-	}).(BastionHostInstanceOutput)
-}
-
 type BastionHostInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (BastionHostInstanceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BastionHostInstance)(nil))
+	return reflect.TypeOf((*[]*BastionHostInstance)(nil)).Elem()
 }
 
 func (o BastionHostInstanceArrayOutput) ToBastionHostInstanceArrayOutput() BastionHostInstanceArrayOutput {
@@ -278,15 +215,15 @@ func (o BastionHostInstanceArrayOutput) ToBastionHostInstanceArrayOutputWithCont
 }
 
 func (o BastionHostInstanceArrayOutput) Index(i pulumi.IntInput) BastionHostInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BastionHostInstance {
-		return vs[0].([]BastionHostInstance)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BastionHostInstance {
+		return vs[0].([]*BastionHostInstance)[vs[1].(int)]
 	}).(BastionHostInstanceOutput)
 }
 
 type BastionHostInstanceMapOutput struct{ *pulumi.OutputState }
 
 func (BastionHostInstanceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]BastionHostInstance)(nil))
+	return reflect.TypeOf((*map[string]*BastionHostInstance)(nil)).Elem()
 }
 
 func (o BastionHostInstanceMapOutput) ToBastionHostInstanceMapOutput() BastionHostInstanceMapOutput {
@@ -298,18 +235,16 @@ func (o BastionHostInstanceMapOutput) ToBastionHostInstanceMapOutputWithContext(
 }
 
 func (o BastionHostInstanceMapOutput) MapIndex(k pulumi.StringInput) BastionHostInstanceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BastionHostInstance {
-		return vs[0].(map[string]BastionHostInstance)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *BastionHostInstance {
+		return vs[0].(map[string]*BastionHostInstance)[vs[1].(string)]
 	}).(BastionHostInstanceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BastionHostInstanceInput)(nil)).Elem(), &BastionHostInstance{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BastionHostInstancePtrInput)(nil)).Elem(), &BastionHostInstance{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BastionHostInstanceArrayInput)(nil)).Elem(), BastionHostInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BastionHostInstanceMapInput)(nil)).Elem(), BastionHostInstanceMap{})
 	pulumi.RegisterOutputType(BastionHostInstanceOutput{})
-	pulumi.RegisterOutputType(BastionHostInstancePtrOutput{})
 	pulumi.RegisterOutputType(BastionHostInstanceArrayOutput{})
 	pulumi.RegisterOutputType(BastionHostInstanceMapOutput{})
 }

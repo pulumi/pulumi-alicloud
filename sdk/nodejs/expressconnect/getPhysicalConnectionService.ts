@@ -28,9 +28,7 @@ export function getPhysicalConnectionService(args?: GetPhysicalConnectionService
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:expressconnect/getPhysicalConnectionService:getPhysicalConnectionService", {
         "enable": args.enable,
     }, opts);

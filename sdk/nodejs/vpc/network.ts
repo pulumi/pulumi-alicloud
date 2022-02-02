@@ -110,47 +110,45 @@ export class Network extends pulumi.CustomResource {
      */
     constructor(name: string, args?: NetworkArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NetworkArgs | NetworkState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkState | undefined;
-            inputs["cidrBlock"] = state ? state.cidrBlock : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["enableIpv6"] = state ? state.enableIpv6 : undefined;
-            inputs["ipv6CidrBlock"] = state ? state.ipv6CidrBlock : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["routeTableId"] = state ? state.routeTableId : undefined;
-            inputs["routerId"] = state ? state.routerId : undefined;
-            inputs["routerTableId"] = state ? state.routerTableId : undefined;
-            inputs["secondaryCidrBlocks"] = state ? state.secondaryCidrBlocks : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["userCidrs"] = state ? state.userCidrs : undefined;
-            inputs["vpcName"] = state ? state.vpcName : undefined;
+            resourceInputs["cidrBlock"] = state ? state.cidrBlock : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["enableIpv6"] = state ? state.enableIpv6 : undefined;
+            resourceInputs["ipv6CidrBlock"] = state ? state.ipv6CidrBlock : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["routeTableId"] = state ? state.routeTableId : undefined;
+            resourceInputs["routerId"] = state ? state.routerId : undefined;
+            resourceInputs["routerTableId"] = state ? state.routerTableId : undefined;
+            resourceInputs["secondaryCidrBlocks"] = state ? state.secondaryCidrBlocks : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["userCidrs"] = state ? state.userCidrs : undefined;
+            resourceInputs["vpcName"] = state ? state.vpcName : undefined;
         } else {
             const args = argsOrState as NetworkArgs | undefined;
-            inputs["cidrBlock"] = args ? args.cidrBlock : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["enableIpv6"] = args ? args.enableIpv6 : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["secondaryCidrBlocks"] = args ? args.secondaryCidrBlocks : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["userCidrs"] = args ? args.userCidrs : undefined;
-            inputs["vpcName"] = args ? args.vpcName : undefined;
-            inputs["ipv6CidrBlock"] = undefined /*out*/;
-            inputs["routeTableId"] = undefined /*out*/;
-            inputs["routerId"] = undefined /*out*/;
-            inputs["routerTableId"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["enableIpv6"] = args ? args.enableIpv6 : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["secondaryCidrBlocks"] = args ? args.secondaryCidrBlocks : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["userCidrs"] = args ? args.userCidrs : undefined;
+            resourceInputs["vpcName"] = args ? args.vpcName : undefined;
+            resourceInputs["ipv6CidrBlock"] = undefined /*out*/;
+            resourceInputs["routeTableId"] = undefined /*out*/;
+            resourceInputs["routerId"] = undefined /*out*/;
+            resourceInputs["routerTableId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Network.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Network.__pulumiType, name, resourceInputs, opts);
     }
 }
 

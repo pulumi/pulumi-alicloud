@@ -122,20 +122,20 @@ export class StateConfiguration extends pulumi.CustomResource {
      */
     constructor(name: string, args: StateConfigurationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StateConfigurationArgs | StateConfigurationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StateConfigurationState | undefined;
-            inputs["configureMode"] = state ? state.configureMode : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["parameters"] = state ? state.parameters : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["scheduleExpression"] = state ? state.scheduleExpression : undefined;
-            inputs["scheduleType"] = state ? state.scheduleType : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["targets"] = state ? state.targets : undefined;
-            inputs["templateName"] = state ? state.templateName : undefined;
-            inputs["templateVersion"] = state ? state.templateVersion : undefined;
+            resourceInputs["configureMode"] = state ? state.configureMode : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["scheduleExpression"] = state ? state.scheduleExpression : undefined;
+            resourceInputs["scheduleType"] = state ? state.scheduleType : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["targets"] = state ? state.targets : undefined;
+            resourceInputs["templateName"] = state ? state.templateName : undefined;
+            resourceInputs["templateVersion"] = state ? state.templateVersion : undefined;
         } else {
             const args = argsOrState as StateConfigurationArgs | undefined;
             if ((!args || args.scheduleExpression === undefined) && !opts.urn) {
@@ -150,21 +150,19 @@ export class StateConfiguration extends pulumi.CustomResource {
             if ((!args || args.templateName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'templateName'");
             }
-            inputs["configureMode"] = args ? args.configureMode : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["parameters"] = args ? args.parameters : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["scheduleExpression"] = args ? args.scheduleExpression : undefined;
-            inputs["scheduleType"] = args ? args.scheduleType : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["targets"] = args ? args.targets : undefined;
-            inputs["templateName"] = args ? args.templateName : undefined;
-            inputs["templateVersion"] = args ? args.templateVersion : undefined;
+            resourceInputs["configureMode"] = args ? args.configureMode : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["scheduleExpression"] = args ? args.scheduleExpression : undefined;
+            resourceInputs["scheduleType"] = args ? args.scheduleType : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["targets"] = args ? args.targets : undefined;
+            resourceInputs["templateName"] = args ? args.templateName : undefined;
+            resourceInputs["templateVersion"] = args ? args.templateVersion : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(StateConfiguration.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(StateConfiguration.__pulumiType, name, resourceInputs, opts);
     }
 }
 

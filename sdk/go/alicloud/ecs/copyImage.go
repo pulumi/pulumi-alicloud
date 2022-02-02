@@ -134,7 +134,7 @@ type CopyImageInput interface {
 }
 
 func (*CopyImage) ElementType() reflect.Type {
-	return reflect.TypeOf((*CopyImage)(nil))
+	return reflect.TypeOf((**CopyImage)(nil)).Elem()
 }
 
 func (i *CopyImage) ToCopyImageOutput() CopyImageOutput {
@@ -143,35 +143,6 @@ func (i *CopyImage) ToCopyImageOutput() CopyImageOutput {
 
 func (i *CopyImage) ToCopyImageOutputWithContext(ctx context.Context) CopyImageOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CopyImageOutput)
-}
-
-func (i *CopyImage) ToCopyImagePtrOutput() CopyImagePtrOutput {
-	return i.ToCopyImagePtrOutputWithContext(context.Background())
-}
-
-func (i *CopyImage) ToCopyImagePtrOutputWithContext(ctx context.Context) CopyImagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CopyImagePtrOutput)
-}
-
-type CopyImagePtrInput interface {
-	pulumi.Input
-
-	ToCopyImagePtrOutput() CopyImagePtrOutput
-	ToCopyImagePtrOutputWithContext(ctx context.Context) CopyImagePtrOutput
-}
-
-type copyImagePtrType CopyImageArgs
-
-func (*copyImagePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CopyImage)(nil))
-}
-
-func (i *copyImagePtrType) ToCopyImagePtrOutput() CopyImagePtrOutput {
-	return i.ToCopyImagePtrOutputWithContext(context.Background())
-}
-
-func (i *copyImagePtrType) ToCopyImagePtrOutputWithContext(ctx context.Context) CopyImagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CopyImagePtrOutput)
 }
 
 // CopyImageArrayInput is an input type that accepts CopyImageArray and CopyImageArrayOutput values.
@@ -227,7 +198,7 @@ func (i CopyImageMap) ToCopyImageMapOutputWithContext(ctx context.Context) CopyI
 type CopyImageOutput struct{ *pulumi.OutputState }
 
 func (CopyImageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CopyImage)(nil))
+	return reflect.TypeOf((**CopyImage)(nil)).Elem()
 }
 
 func (o CopyImageOutput) ToCopyImageOutput() CopyImageOutput {
@@ -238,44 +209,10 @@ func (o CopyImageOutput) ToCopyImageOutputWithContext(ctx context.Context) CopyI
 	return o
 }
 
-func (o CopyImageOutput) ToCopyImagePtrOutput() CopyImagePtrOutput {
-	return o.ToCopyImagePtrOutputWithContext(context.Background())
-}
-
-func (o CopyImageOutput) ToCopyImagePtrOutputWithContext(ctx context.Context) CopyImagePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CopyImage) *CopyImage {
-		return &v
-	}).(CopyImagePtrOutput)
-}
-
-type CopyImagePtrOutput struct{ *pulumi.OutputState }
-
-func (CopyImagePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CopyImage)(nil))
-}
-
-func (o CopyImagePtrOutput) ToCopyImagePtrOutput() CopyImagePtrOutput {
-	return o
-}
-
-func (o CopyImagePtrOutput) ToCopyImagePtrOutputWithContext(ctx context.Context) CopyImagePtrOutput {
-	return o
-}
-
-func (o CopyImagePtrOutput) Elem() CopyImageOutput {
-	return o.ApplyT(func(v *CopyImage) CopyImage {
-		if v != nil {
-			return *v
-		}
-		var ret CopyImage
-		return ret
-	}).(CopyImageOutput)
-}
-
 type CopyImageArrayOutput struct{ *pulumi.OutputState }
 
 func (CopyImageArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CopyImage)(nil))
+	return reflect.TypeOf((*[]*CopyImage)(nil)).Elem()
 }
 
 func (o CopyImageArrayOutput) ToCopyImageArrayOutput() CopyImageArrayOutput {
@@ -287,15 +224,15 @@ func (o CopyImageArrayOutput) ToCopyImageArrayOutputWithContext(ctx context.Cont
 }
 
 func (o CopyImageArrayOutput) Index(i pulumi.IntInput) CopyImageOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CopyImage {
-		return vs[0].([]CopyImage)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CopyImage {
+		return vs[0].([]*CopyImage)[vs[1].(int)]
 	}).(CopyImageOutput)
 }
 
 type CopyImageMapOutput struct{ *pulumi.OutputState }
 
 func (CopyImageMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CopyImage)(nil))
+	return reflect.TypeOf((*map[string]*CopyImage)(nil)).Elem()
 }
 
 func (o CopyImageMapOutput) ToCopyImageMapOutput() CopyImageMapOutput {
@@ -307,18 +244,16 @@ func (o CopyImageMapOutput) ToCopyImageMapOutputWithContext(ctx context.Context)
 }
 
 func (o CopyImageMapOutput) MapIndex(k pulumi.StringInput) CopyImageOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CopyImage {
-		return vs[0].(map[string]CopyImage)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CopyImage {
+		return vs[0].(map[string]*CopyImage)[vs[1].(string)]
 	}).(CopyImageOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CopyImageInput)(nil)).Elem(), &CopyImage{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CopyImagePtrInput)(nil)).Elem(), &CopyImage{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CopyImageArrayInput)(nil)).Elem(), CopyImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CopyImageMapInput)(nil)).Elem(), CopyImageMap{})
 	pulumi.RegisterOutputType(CopyImageOutput{})
-	pulumi.RegisterOutputType(CopyImagePtrOutput{})
 	pulumi.RegisterOutputType(CopyImageArrayOutput{})
 	pulumi.RegisterOutputType(CopyImageMapOutput{})
 }

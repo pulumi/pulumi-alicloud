@@ -37,9 +37,9 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultSwitch.id,
  *     description: name,
  * });
- * const defaultEndpoints = defaultCluster.id.apply(id => alicloud.polardb.getEndpoints({
- *     dbClusterId: id,
- * }));
+ * const defaultEndpoints = alicloud.polardb.getEndpointsOutput({
+ *     dbClusterId: defaultCluster.id,
+ * });
  * const endpoint = new alicloud.polardb.EndpointAddress("endpoint", {
  *     dbClusterId: defaultCluster.id,
  *     dbEndpointId: defaultEndpoints.apply(defaultEndpoints => defaultEndpoints.endpoints?[0]?.dbEndpointId),
@@ -122,17 +122,17 @@ export class EndpointAddress extends pulumi.CustomResource {
      */
     constructor(name: string, args: EndpointAddressArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EndpointAddressArgs | EndpointAddressState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EndpointAddressState | undefined;
-            inputs["connectionPrefix"] = state ? state.connectionPrefix : undefined;
-            inputs["connectionString"] = state ? state.connectionString : undefined;
-            inputs["dbClusterId"] = state ? state.dbClusterId : undefined;
-            inputs["dbEndpointId"] = state ? state.dbEndpointId : undefined;
-            inputs["ipAddress"] = state ? state.ipAddress : undefined;
-            inputs["netType"] = state ? state.netType : undefined;
-            inputs["port"] = state ? state.port : undefined;
+            resourceInputs["connectionPrefix"] = state ? state.connectionPrefix : undefined;
+            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
+            resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
+            resourceInputs["dbEndpointId"] = state ? state.dbEndpointId : undefined;
+            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
+            resourceInputs["netType"] = state ? state.netType : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
         } else {
             const args = argsOrState as EndpointAddressArgs | undefined;
             if ((!args || args.dbClusterId === undefined) && !opts.urn) {
@@ -141,18 +141,16 @@ export class EndpointAddress extends pulumi.CustomResource {
             if ((!args || args.dbEndpointId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbEndpointId'");
             }
-            inputs["connectionPrefix"] = args ? args.connectionPrefix : undefined;
-            inputs["dbClusterId"] = args ? args.dbClusterId : undefined;
-            inputs["dbEndpointId"] = args ? args.dbEndpointId : undefined;
-            inputs["netType"] = args ? args.netType : undefined;
-            inputs["connectionString"] = undefined /*out*/;
-            inputs["ipAddress"] = undefined /*out*/;
-            inputs["port"] = undefined /*out*/;
+            resourceInputs["connectionPrefix"] = args ? args.connectionPrefix : undefined;
+            resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
+            resourceInputs["dbEndpointId"] = args ? args.dbEndpointId : undefined;
+            resourceInputs["netType"] = args ? args.netType : undefined;
+            resourceInputs["connectionString"] = undefined /*out*/;
+            resourceInputs["ipAddress"] = undefined /*out*/;
+            resourceInputs["port"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EndpointAddress.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EndpointAddress.__pulumiType, name, resourceInputs, opts);
     }
 }
 

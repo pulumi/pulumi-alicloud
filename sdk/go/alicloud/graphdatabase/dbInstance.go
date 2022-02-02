@@ -241,7 +241,7 @@ type DbInstanceInput interface {
 }
 
 func (*DbInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*DbInstance)(nil))
+	return reflect.TypeOf((**DbInstance)(nil)).Elem()
 }
 
 func (i *DbInstance) ToDbInstanceOutput() DbInstanceOutput {
@@ -250,35 +250,6 @@ func (i *DbInstance) ToDbInstanceOutput() DbInstanceOutput {
 
 func (i *DbInstance) ToDbInstanceOutputWithContext(ctx context.Context) DbInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DbInstanceOutput)
-}
-
-func (i *DbInstance) ToDbInstancePtrOutput() DbInstancePtrOutput {
-	return i.ToDbInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *DbInstance) ToDbInstancePtrOutputWithContext(ctx context.Context) DbInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePtrOutput)
-}
-
-type DbInstancePtrInput interface {
-	pulumi.Input
-
-	ToDbInstancePtrOutput() DbInstancePtrOutput
-	ToDbInstancePtrOutputWithContext(ctx context.Context) DbInstancePtrOutput
-}
-
-type dbInstancePtrType DbInstanceArgs
-
-func (*dbInstancePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DbInstance)(nil))
-}
-
-func (i *dbInstancePtrType) ToDbInstancePtrOutput() DbInstancePtrOutput {
-	return i.ToDbInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *dbInstancePtrType) ToDbInstancePtrOutputWithContext(ctx context.Context) DbInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePtrOutput)
 }
 
 // DbInstanceArrayInput is an input type that accepts DbInstanceArray and DbInstanceArrayOutput values.
@@ -334,7 +305,7 @@ func (i DbInstanceMap) ToDbInstanceMapOutputWithContext(ctx context.Context) DbI
 type DbInstanceOutput struct{ *pulumi.OutputState }
 
 func (DbInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DbInstance)(nil))
+	return reflect.TypeOf((**DbInstance)(nil)).Elem()
 }
 
 func (o DbInstanceOutput) ToDbInstanceOutput() DbInstanceOutput {
@@ -345,44 +316,10 @@ func (o DbInstanceOutput) ToDbInstanceOutputWithContext(ctx context.Context) DbI
 	return o
 }
 
-func (o DbInstanceOutput) ToDbInstancePtrOutput() DbInstancePtrOutput {
-	return o.ToDbInstancePtrOutputWithContext(context.Background())
-}
-
-func (o DbInstanceOutput) ToDbInstancePtrOutputWithContext(ctx context.Context) DbInstancePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbInstance) *DbInstance {
-		return &v
-	}).(DbInstancePtrOutput)
-}
-
-type DbInstancePtrOutput struct{ *pulumi.OutputState }
-
-func (DbInstancePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DbInstance)(nil))
-}
-
-func (o DbInstancePtrOutput) ToDbInstancePtrOutput() DbInstancePtrOutput {
-	return o
-}
-
-func (o DbInstancePtrOutput) ToDbInstancePtrOutputWithContext(ctx context.Context) DbInstancePtrOutput {
-	return o
-}
-
-func (o DbInstancePtrOutput) Elem() DbInstanceOutput {
-	return o.ApplyT(func(v *DbInstance) DbInstance {
-		if v != nil {
-			return *v
-		}
-		var ret DbInstance
-		return ret
-	}).(DbInstanceOutput)
-}
-
 type DbInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (DbInstanceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DbInstance)(nil))
+	return reflect.TypeOf((*[]*DbInstance)(nil)).Elem()
 }
 
 func (o DbInstanceArrayOutput) ToDbInstanceArrayOutput() DbInstanceArrayOutput {
@@ -394,15 +331,15 @@ func (o DbInstanceArrayOutput) ToDbInstanceArrayOutputWithContext(ctx context.Co
 }
 
 func (o DbInstanceArrayOutput) Index(i pulumi.IntInput) DbInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DbInstance {
-		return vs[0].([]DbInstance)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DbInstance {
+		return vs[0].([]*DbInstance)[vs[1].(int)]
 	}).(DbInstanceOutput)
 }
 
 type DbInstanceMapOutput struct{ *pulumi.OutputState }
 
 func (DbInstanceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DbInstance)(nil))
+	return reflect.TypeOf((*map[string]*DbInstance)(nil)).Elem()
 }
 
 func (o DbInstanceMapOutput) ToDbInstanceMapOutput() DbInstanceMapOutput {
@@ -414,18 +351,16 @@ func (o DbInstanceMapOutput) ToDbInstanceMapOutputWithContext(ctx context.Contex
 }
 
 func (o DbInstanceMapOutput) MapIndex(k pulumi.StringInput) DbInstanceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DbInstance {
-		return vs[0].(map[string]DbInstance)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DbInstance {
+		return vs[0].(map[string]*DbInstance)[vs[1].(string)]
 	}).(DbInstanceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DbInstanceInput)(nil)).Elem(), &DbInstance{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DbInstancePtrInput)(nil)).Elem(), &DbInstance{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbInstanceArrayInput)(nil)).Elem(), DbInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbInstanceMapInput)(nil)).Elem(), DbInstanceMap{})
 	pulumi.RegisterOutputType(DbInstanceOutput{})
-	pulumi.RegisterOutputType(DbInstancePtrOutput{})
 	pulumi.RegisterOutputType(DbInstanceArrayOutput{})
 	pulumi.RegisterOutputType(DbInstanceMapOutput{})
 }

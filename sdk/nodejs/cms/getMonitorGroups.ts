@@ -31,9 +31,7 @@ export function getMonitorGroups(args?: GetMonitorGroupsArgs, opts?: pulumi.Invo
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cms/getMonitorGroups:getMonitorGroups", {
         "dynamicTagRuleId": args.dynamicTagRuleId,
         "ids": args.ids,

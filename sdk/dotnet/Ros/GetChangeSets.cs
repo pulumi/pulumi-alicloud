@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ros
 {
@@ -51,7 +50,7 @@ namespace Pulumi.AliCloud.Ros
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetChangeSetsResult> InvokeAsync(GetChangeSetsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetChangeSetsResult>("alicloud:ros/getChangeSets:getChangeSets", args ?? new GetChangeSetsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetChangeSetsResult>("alicloud:ros/getChangeSets:getChangeSets", args ?? new GetChangeSetsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ros Change Sets of the current Alibaba Cloud user.
@@ -92,7 +91,7 @@ namespace Pulumi.AliCloud.Ros
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetChangeSetsResult> Invoke(GetChangeSetsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetChangeSetsResult>("alicloud:ros/getChangeSets:getChangeSets", args ?? new GetChangeSetsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetChangeSetsResult>("alicloud:ros/getChangeSets:getChangeSets", args ?? new GetChangeSetsInvokeArgs(), options.WithDefaults());
     }
 
 

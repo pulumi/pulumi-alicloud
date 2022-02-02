@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ExpressConnect
 {
@@ -56,7 +55,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPhysicalConnectionsResult> InvokeAsync(GetPhysicalConnectionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPhysicalConnectionsResult>("alicloud:expressconnect/getPhysicalConnections:getPhysicalConnections", args ?? new GetPhysicalConnectionsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPhysicalConnectionsResult>("alicloud:expressconnect/getPhysicalConnections:getPhysicalConnections", args ?? new GetPhysicalConnectionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
@@ -102,7 +101,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPhysicalConnectionsResult> Invoke(GetPhysicalConnectionsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPhysicalConnectionsResult>("alicloud:expressconnect/getPhysicalConnections:getPhysicalConnections", args ?? new GetPhysicalConnectionsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetPhysicalConnectionsResult>("alicloud:expressconnect/getPhysicalConnections:getPhysicalConnections", args ?? new GetPhysicalConnectionsInvokeArgs(), options.WithDefaults());
     }
 
 

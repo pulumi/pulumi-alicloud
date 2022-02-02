@@ -169,7 +169,7 @@ type MailAddressInput interface {
 }
 
 func (*MailAddress) ElementType() reflect.Type {
-	return reflect.TypeOf((*MailAddress)(nil))
+	return reflect.TypeOf((**MailAddress)(nil)).Elem()
 }
 
 func (i *MailAddress) ToMailAddressOutput() MailAddressOutput {
@@ -178,35 +178,6 @@ func (i *MailAddress) ToMailAddressOutput() MailAddressOutput {
 
 func (i *MailAddress) ToMailAddressOutputWithContext(ctx context.Context) MailAddressOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MailAddressOutput)
-}
-
-func (i *MailAddress) ToMailAddressPtrOutput() MailAddressPtrOutput {
-	return i.ToMailAddressPtrOutputWithContext(context.Background())
-}
-
-func (i *MailAddress) ToMailAddressPtrOutputWithContext(ctx context.Context) MailAddressPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MailAddressPtrOutput)
-}
-
-type MailAddressPtrInput interface {
-	pulumi.Input
-
-	ToMailAddressPtrOutput() MailAddressPtrOutput
-	ToMailAddressPtrOutputWithContext(ctx context.Context) MailAddressPtrOutput
-}
-
-type mailAddressPtrType MailAddressArgs
-
-func (*mailAddressPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MailAddress)(nil))
-}
-
-func (i *mailAddressPtrType) ToMailAddressPtrOutput() MailAddressPtrOutput {
-	return i.ToMailAddressPtrOutputWithContext(context.Background())
-}
-
-func (i *mailAddressPtrType) ToMailAddressPtrOutputWithContext(ctx context.Context) MailAddressPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MailAddressPtrOutput)
 }
 
 // MailAddressArrayInput is an input type that accepts MailAddressArray and MailAddressArrayOutput values.
@@ -262,7 +233,7 @@ func (i MailAddressMap) ToMailAddressMapOutputWithContext(ctx context.Context) M
 type MailAddressOutput struct{ *pulumi.OutputState }
 
 func (MailAddressOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MailAddress)(nil))
+	return reflect.TypeOf((**MailAddress)(nil)).Elem()
 }
 
 func (o MailAddressOutput) ToMailAddressOutput() MailAddressOutput {
@@ -273,44 +244,10 @@ func (o MailAddressOutput) ToMailAddressOutputWithContext(ctx context.Context) M
 	return o
 }
 
-func (o MailAddressOutput) ToMailAddressPtrOutput() MailAddressPtrOutput {
-	return o.ToMailAddressPtrOutputWithContext(context.Background())
-}
-
-func (o MailAddressOutput) ToMailAddressPtrOutputWithContext(ctx context.Context) MailAddressPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MailAddress) *MailAddress {
-		return &v
-	}).(MailAddressPtrOutput)
-}
-
-type MailAddressPtrOutput struct{ *pulumi.OutputState }
-
-func (MailAddressPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MailAddress)(nil))
-}
-
-func (o MailAddressPtrOutput) ToMailAddressPtrOutput() MailAddressPtrOutput {
-	return o
-}
-
-func (o MailAddressPtrOutput) ToMailAddressPtrOutputWithContext(ctx context.Context) MailAddressPtrOutput {
-	return o
-}
-
-func (o MailAddressPtrOutput) Elem() MailAddressOutput {
-	return o.ApplyT(func(v *MailAddress) MailAddress {
-		if v != nil {
-			return *v
-		}
-		var ret MailAddress
-		return ret
-	}).(MailAddressOutput)
-}
-
 type MailAddressArrayOutput struct{ *pulumi.OutputState }
 
 func (MailAddressArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MailAddress)(nil))
+	return reflect.TypeOf((*[]*MailAddress)(nil)).Elem()
 }
 
 func (o MailAddressArrayOutput) ToMailAddressArrayOutput() MailAddressArrayOutput {
@@ -322,15 +259,15 @@ func (o MailAddressArrayOutput) ToMailAddressArrayOutputWithContext(ctx context.
 }
 
 func (o MailAddressArrayOutput) Index(i pulumi.IntInput) MailAddressOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MailAddress {
-		return vs[0].([]MailAddress)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MailAddress {
+		return vs[0].([]*MailAddress)[vs[1].(int)]
 	}).(MailAddressOutput)
 }
 
 type MailAddressMapOutput struct{ *pulumi.OutputState }
 
 func (MailAddressMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MailAddress)(nil))
+	return reflect.TypeOf((*map[string]*MailAddress)(nil)).Elem()
 }
 
 func (o MailAddressMapOutput) ToMailAddressMapOutput() MailAddressMapOutput {
@@ -342,18 +279,16 @@ func (o MailAddressMapOutput) ToMailAddressMapOutputWithContext(ctx context.Cont
 }
 
 func (o MailAddressMapOutput) MapIndex(k pulumi.StringInput) MailAddressOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MailAddress {
-		return vs[0].(map[string]MailAddress)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MailAddress {
+		return vs[0].(map[string]*MailAddress)[vs[1].(string)]
 	}).(MailAddressOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MailAddressInput)(nil)).Elem(), &MailAddress{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MailAddressPtrInput)(nil)).Elem(), &MailAddress{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MailAddressArrayInput)(nil)).Elem(), MailAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MailAddressMapInput)(nil)).Elem(), MailAddressMap{})
 	pulumi.RegisterOutputType(MailAddressOutput{})
-	pulumi.RegisterOutputType(MailAddressPtrOutput{})
 	pulumi.RegisterOutputType(MailAddressArrayOutput{})
 	pulumi.RegisterOutputType(MailAddressMapOutput{})
 }

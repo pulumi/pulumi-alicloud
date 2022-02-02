@@ -248,7 +248,7 @@ type ReadWriteSplittingConnectionInput interface {
 }
 
 func (*ReadWriteSplittingConnection) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReadWriteSplittingConnection)(nil))
+	return reflect.TypeOf((**ReadWriteSplittingConnection)(nil)).Elem()
 }
 
 func (i *ReadWriteSplittingConnection) ToReadWriteSplittingConnectionOutput() ReadWriteSplittingConnectionOutput {
@@ -257,35 +257,6 @@ func (i *ReadWriteSplittingConnection) ToReadWriteSplittingConnectionOutput() Re
 
 func (i *ReadWriteSplittingConnection) ToReadWriteSplittingConnectionOutputWithContext(ctx context.Context) ReadWriteSplittingConnectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReadWriteSplittingConnectionOutput)
-}
-
-func (i *ReadWriteSplittingConnection) ToReadWriteSplittingConnectionPtrOutput() ReadWriteSplittingConnectionPtrOutput {
-	return i.ToReadWriteSplittingConnectionPtrOutputWithContext(context.Background())
-}
-
-func (i *ReadWriteSplittingConnection) ToReadWriteSplittingConnectionPtrOutputWithContext(ctx context.Context) ReadWriteSplittingConnectionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReadWriteSplittingConnectionPtrOutput)
-}
-
-type ReadWriteSplittingConnectionPtrInput interface {
-	pulumi.Input
-
-	ToReadWriteSplittingConnectionPtrOutput() ReadWriteSplittingConnectionPtrOutput
-	ToReadWriteSplittingConnectionPtrOutputWithContext(ctx context.Context) ReadWriteSplittingConnectionPtrOutput
-}
-
-type readWriteSplittingConnectionPtrType ReadWriteSplittingConnectionArgs
-
-func (*readWriteSplittingConnectionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ReadWriteSplittingConnection)(nil))
-}
-
-func (i *readWriteSplittingConnectionPtrType) ToReadWriteSplittingConnectionPtrOutput() ReadWriteSplittingConnectionPtrOutput {
-	return i.ToReadWriteSplittingConnectionPtrOutputWithContext(context.Background())
-}
-
-func (i *readWriteSplittingConnectionPtrType) ToReadWriteSplittingConnectionPtrOutputWithContext(ctx context.Context) ReadWriteSplittingConnectionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReadWriteSplittingConnectionPtrOutput)
 }
 
 // ReadWriteSplittingConnectionArrayInput is an input type that accepts ReadWriteSplittingConnectionArray and ReadWriteSplittingConnectionArrayOutput values.
@@ -341,7 +312,7 @@ func (i ReadWriteSplittingConnectionMap) ToReadWriteSplittingConnectionMapOutput
 type ReadWriteSplittingConnectionOutput struct{ *pulumi.OutputState }
 
 func (ReadWriteSplittingConnectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReadWriteSplittingConnection)(nil))
+	return reflect.TypeOf((**ReadWriteSplittingConnection)(nil)).Elem()
 }
 
 func (o ReadWriteSplittingConnectionOutput) ToReadWriteSplittingConnectionOutput() ReadWriteSplittingConnectionOutput {
@@ -352,44 +323,10 @@ func (o ReadWriteSplittingConnectionOutput) ToReadWriteSplittingConnectionOutput
 	return o
 }
 
-func (o ReadWriteSplittingConnectionOutput) ToReadWriteSplittingConnectionPtrOutput() ReadWriteSplittingConnectionPtrOutput {
-	return o.ToReadWriteSplittingConnectionPtrOutputWithContext(context.Background())
-}
-
-func (o ReadWriteSplittingConnectionOutput) ToReadWriteSplittingConnectionPtrOutputWithContext(ctx context.Context) ReadWriteSplittingConnectionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReadWriteSplittingConnection) *ReadWriteSplittingConnection {
-		return &v
-	}).(ReadWriteSplittingConnectionPtrOutput)
-}
-
-type ReadWriteSplittingConnectionPtrOutput struct{ *pulumi.OutputState }
-
-func (ReadWriteSplittingConnectionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ReadWriteSplittingConnection)(nil))
-}
-
-func (o ReadWriteSplittingConnectionPtrOutput) ToReadWriteSplittingConnectionPtrOutput() ReadWriteSplittingConnectionPtrOutput {
-	return o
-}
-
-func (o ReadWriteSplittingConnectionPtrOutput) ToReadWriteSplittingConnectionPtrOutputWithContext(ctx context.Context) ReadWriteSplittingConnectionPtrOutput {
-	return o
-}
-
-func (o ReadWriteSplittingConnectionPtrOutput) Elem() ReadWriteSplittingConnectionOutput {
-	return o.ApplyT(func(v *ReadWriteSplittingConnection) ReadWriteSplittingConnection {
-		if v != nil {
-			return *v
-		}
-		var ret ReadWriteSplittingConnection
-		return ret
-	}).(ReadWriteSplittingConnectionOutput)
-}
-
 type ReadWriteSplittingConnectionArrayOutput struct{ *pulumi.OutputState }
 
 func (ReadWriteSplittingConnectionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ReadWriteSplittingConnection)(nil))
+	return reflect.TypeOf((*[]*ReadWriteSplittingConnection)(nil)).Elem()
 }
 
 func (o ReadWriteSplittingConnectionArrayOutput) ToReadWriteSplittingConnectionArrayOutput() ReadWriteSplittingConnectionArrayOutput {
@@ -401,15 +338,15 @@ func (o ReadWriteSplittingConnectionArrayOutput) ToReadWriteSplittingConnectionA
 }
 
 func (o ReadWriteSplittingConnectionArrayOutput) Index(i pulumi.IntInput) ReadWriteSplittingConnectionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReadWriteSplittingConnection {
-		return vs[0].([]ReadWriteSplittingConnection)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ReadWriteSplittingConnection {
+		return vs[0].([]*ReadWriteSplittingConnection)[vs[1].(int)]
 	}).(ReadWriteSplittingConnectionOutput)
 }
 
 type ReadWriteSplittingConnectionMapOutput struct{ *pulumi.OutputState }
 
 func (ReadWriteSplittingConnectionMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ReadWriteSplittingConnection)(nil))
+	return reflect.TypeOf((*map[string]*ReadWriteSplittingConnection)(nil)).Elem()
 }
 
 func (o ReadWriteSplittingConnectionMapOutput) ToReadWriteSplittingConnectionMapOutput() ReadWriteSplittingConnectionMapOutput {
@@ -421,18 +358,16 @@ func (o ReadWriteSplittingConnectionMapOutput) ToReadWriteSplittingConnectionMap
 }
 
 func (o ReadWriteSplittingConnectionMapOutput) MapIndex(k pulumi.StringInput) ReadWriteSplittingConnectionOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ReadWriteSplittingConnection {
-		return vs[0].(map[string]ReadWriteSplittingConnection)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ReadWriteSplittingConnection {
+		return vs[0].(map[string]*ReadWriteSplittingConnection)[vs[1].(string)]
 	}).(ReadWriteSplittingConnectionOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReadWriteSplittingConnectionInput)(nil)).Elem(), &ReadWriteSplittingConnection{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ReadWriteSplittingConnectionPtrInput)(nil)).Elem(), &ReadWriteSplittingConnection{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReadWriteSplittingConnectionArrayInput)(nil)).Elem(), ReadWriteSplittingConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReadWriteSplittingConnectionMapInput)(nil)).Elem(), ReadWriteSplittingConnectionMap{})
 	pulumi.RegisterOutputType(ReadWriteSplittingConnectionOutput{})
-	pulumi.RegisterOutputType(ReadWriteSplittingConnectionPtrOutput{})
 	pulumi.RegisterOutputType(ReadWriteSplittingConnectionArrayOutput{})
 	pulumi.RegisterOutputType(ReadWriteSplittingConnectionMapOutput{})
 }

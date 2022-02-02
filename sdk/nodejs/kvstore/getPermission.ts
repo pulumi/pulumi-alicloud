@@ -30,9 +30,7 @@ export function getPermission(args?: GetPermissionArgs, opts?: pulumi.InvokeOpti
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:kvstore/getPermission:getPermission", {
         "enable": args.enable,
     }, opts);

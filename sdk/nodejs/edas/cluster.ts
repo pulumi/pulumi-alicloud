@@ -92,15 +92,15 @@ export class Cluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: ClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterArgs | ClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            inputs["clusterName"] = state ? state.clusterName : undefined;
-            inputs["clusterType"] = state ? state.clusterType : undefined;
-            inputs["logicalRegionId"] = state ? state.logicalRegionId : undefined;
-            inputs["networkMode"] = state ? state.networkMode : undefined;
-            inputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["clusterName"] = state ? state.clusterName : undefined;
+            resourceInputs["clusterType"] = state ? state.clusterType : undefined;
+            resourceInputs["logicalRegionId"] = state ? state.logicalRegionId : undefined;
+            resourceInputs["networkMode"] = state ? state.networkMode : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
             if ((!args || args.clusterName === undefined) && !opts.urn) {
@@ -112,16 +112,14 @@ export class Cluster extends pulumi.CustomResource {
             if ((!args || args.networkMode === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkMode'");
             }
-            inputs["clusterName"] = args ? args.clusterName : undefined;
-            inputs["clusterType"] = args ? args.clusterType : undefined;
-            inputs["logicalRegionId"] = args ? args.logicalRegionId : undefined;
-            inputs["networkMode"] = args ? args.networkMode : undefined;
-            inputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
+            resourceInputs["clusterType"] = args ? args.clusterType : undefined;
+            resourceInputs["logicalRegionId"] = args ? args.logicalRegionId : undefined;
+            resourceInputs["networkMode"] = args ? args.networkMode : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Cluster.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Cluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

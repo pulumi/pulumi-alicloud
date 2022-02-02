@@ -24,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := slb.NewApplicationLoadBalancer(ctx, "_default", &slb.ApplicationLoadBalancerArgs{
+// 		_, err := slb.NewApplicationLoadBalancer(ctx, "default", &slb.ApplicationLoadBalancerArgs{
 // 			LoadBalancerName: pulumi.String("tf-testAccSlbListenertcp"),
 // 		})
 // 		if err != nil {
@@ -50,6 +50,9 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		sampleDs := slb.GetListenersOutput(ctx, slb.GetListenersOutputArgs{
+// 			LoadBalancerId: _default.ID(),
+// 		}, nil)
 // 		ctx.Export("firstSlbListenerProtocol", sampleDs.ApplyT(func(sampleDs slb.GetListenersResult) (string, error) {
 // 			return sampleDs.SlbListeners[0].Protocol, nil
 // 		}).(pulumi.StringOutput))

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.GraphDatabase
 {
@@ -71,7 +70,7 @@ namespace Pulumi.AliCloud.GraphDatabase
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDbInstancesResult> InvokeAsync(GetDbInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDbInstancesResult>("alicloud:graphdatabase/getDbInstances:getDbInstances", args ?? new GetDbInstancesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDbInstancesResult>("alicloud:graphdatabase/getDbInstances:getDbInstances", args ?? new GetDbInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
@@ -132,7 +131,7 @@ namespace Pulumi.AliCloud.GraphDatabase
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDbInstancesResult> Invoke(GetDbInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDbInstancesResult>("alicloud:graphdatabase/getDbInstances:getDbInstances", args ?? new GetDbInstancesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDbInstancesResult>("alicloud:graphdatabase/getDbInstances:getDbInstances", args ?? new GetDbInstancesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -75,29 +75,27 @@ export class Queue extends pulumi.CustomResource {
      */
     constructor(name: string, args?: QueueArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QueueArgs | QueueState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QueueState | undefined;
-            inputs["delaySeconds"] = state ? state.delaySeconds : undefined;
-            inputs["maximumMessageSize"] = state ? state.maximumMessageSize : undefined;
-            inputs["messageRetentionPeriod"] = state ? state.messageRetentionPeriod : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["pollingWaitSeconds"] = state ? state.pollingWaitSeconds : undefined;
-            inputs["visibilityTimeout"] = state ? state.visibilityTimeout : undefined;
+            resourceInputs["delaySeconds"] = state ? state.delaySeconds : undefined;
+            resourceInputs["maximumMessageSize"] = state ? state.maximumMessageSize : undefined;
+            resourceInputs["messageRetentionPeriod"] = state ? state.messageRetentionPeriod : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["pollingWaitSeconds"] = state ? state.pollingWaitSeconds : undefined;
+            resourceInputs["visibilityTimeout"] = state ? state.visibilityTimeout : undefined;
         } else {
             const args = argsOrState as QueueArgs | undefined;
-            inputs["delaySeconds"] = args ? args.delaySeconds : undefined;
-            inputs["maximumMessageSize"] = args ? args.maximumMessageSize : undefined;
-            inputs["messageRetentionPeriod"] = args ? args.messageRetentionPeriod : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["pollingWaitSeconds"] = args ? args.pollingWaitSeconds : undefined;
-            inputs["visibilityTimeout"] = args ? args.visibilityTimeout : undefined;
+            resourceInputs["delaySeconds"] = args ? args.delaySeconds : undefined;
+            resourceInputs["maximumMessageSize"] = args ? args.maximumMessageSize : undefined;
+            resourceInputs["messageRetentionPeriod"] = args ? args.messageRetentionPeriod : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["pollingWaitSeconds"] = args ? args.pollingWaitSeconds : undefined;
+            resourceInputs["visibilityTimeout"] = args ? args.visibilityTimeout : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Queue.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Queue.__pulumiType, name, resourceInputs, opts);
     }
 }
 

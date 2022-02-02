@@ -125,8 +125,8 @@ def get_gateway_smb_users(gateway_id: Optional[str] = None,
         username="your_username",
         password="password",
         gateway_id=default_gateway.id)
-    ids = pulumi.Output.all(default_gateway.id, default_gateway_smb_user.id).apply(lambda defaultGatewayId, defaultGatewaySmbUserId: alicloud.cloudstoragegateway.get_gateway_smb_users(gateway_id=default_gateway_id,
-        ids=[default_gateway_smb_user_id]))
+    ids = alicloud.cloudstoragegateway.get_gateway_smb_users_output(gateway_id=default_gateway.id,
+        ids=[default_gateway_smb_user.id])
     pulumi.export("cloudStorageGatewayGatewaySmbUserId1", ids.users[0].id)
     ```
 
@@ -192,8 +192,8 @@ def get_gateway_smb_users_output(gateway_id: Optional[pulumi.Input[str]] = None,
         username="your_username",
         password="password",
         gateway_id=default_gateway.id)
-    ids = pulumi.Output.all(default_gateway.id, default_gateway_smb_user.id).apply(lambda defaultGatewayId, defaultGatewaySmbUserId: alicloud.cloudstoragegateway.get_gateway_smb_users(gateway_id=default_gateway_id,
-        ids=[default_gateway_smb_user_id]))
+    ids = alicloud.cloudstoragegateway.get_gateway_smb_users_output(gateway_id=default_gateway.id,
+        ids=[default_gateway_smb_user.id])
     pulumi.export("cloudStorageGatewayGatewaySmbUserId1", ids.users[0].id)
     ```
 

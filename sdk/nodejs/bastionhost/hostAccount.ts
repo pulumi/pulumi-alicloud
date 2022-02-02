@@ -106,18 +106,18 @@ export class HostAccount extends pulumi.CustomResource {
      */
     constructor(name: string, args: HostAccountArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HostAccountArgs | HostAccountState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostAccountState | undefined;
-            inputs["hostAccountId"] = state ? state.hostAccountId : undefined;
-            inputs["hostAccountName"] = state ? state.hostAccountName : undefined;
-            inputs["hostId"] = state ? state.hostId : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["passPhrase"] = state ? state.passPhrase : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["privateKey"] = state ? state.privateKey : undefined;
-            inputs["protocolName"] = state ? state.protocolName : undefined;
+            resourceInputs["hostAccountId"] = state ? state.hostAccountId : undefined;
+            resourceInputs["hostAccountName"] = state ? state.hostAccountName : undefined;
+            resourceInputs["hostId"] = state ? state.hostId : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["passPhrase"] = state ? state.passPhrase : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
+            resourceInputs["protocolName"] = state ? state.protocolName : undefined;
         } else {
             const args = argsOrState as HostAccountArgs | undefined;
             if ((!args || args.hostAccountName === undefined) && !opts.urn) {
@@ -132,19 +132,17 @@ export class HostAccount extends pulumi.CustomResource {
             if ((!args || args.protocolName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocolName'");
             }
-            inputs["hostAccountName"] = args ? args.hostAccountName : undefined;
-            inputs["hostId"] = args ? args.hostId : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["passPhrase"] = args ? args.passPhrase : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["privateKey"] = args ? args.privateKey : undefined;
-            inputs["protocolName"] = args ? args.protocolName : undefined;
-            inputs["hostAccountId"] = undefined /*out*/;
+            resourceInputs["hostAccountName"] = args ? args.hostAccountName : undefined;
+            resourceInputs["hostId"] = args ? args.hostId : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["passPhrase"] = args ? args.passPhrase : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
+            resourceInputs["protocolName"] = args ? args.protocolName : undefined;
+            resourceInputs["hostAccountId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(HostAccount.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(HostAccount.__pulumiType, name, resourceInputs, opts);
     }
 }
 

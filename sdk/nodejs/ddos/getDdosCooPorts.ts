@@ -30,9 +30,7 @@ export function getDdosCooPorts(args: GetDdosCooPortsArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ddos/getDdosCooPorts:getDdosCooPorts", {
         "frontendPort": args.frontendPort,
         "frontendProtocol": args.frontendProtocol,

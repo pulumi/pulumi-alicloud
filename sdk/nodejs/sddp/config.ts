@@ -92,25 +92,23 @@ export class Config extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConfigArgs | ConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConfigState | undefined;
-            inputs["code"] = state ? state.code : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["lang"] = state ? state.lang : undefined;
-            inputs["value"] = state ? state.value : undefined;
+            resourceInputs["code"] = state ? state.code : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["lang"] = state ? state.lang : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as ConfigArgs | undefined;
-            inputs["code"] = args ? args.code : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["lang"] = args ? args.lang : undefined;
-            inputs["value"] = args ? args.value : undefined;
+            resourceInputs["code"] = args ? args.code : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["lang"] = args ? args.lang : undefined;
+            resourceInputs["value"] = args ? args.value : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Config.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Config.__pulumiType, name, resourceInputs, opts);
     }
 }
 

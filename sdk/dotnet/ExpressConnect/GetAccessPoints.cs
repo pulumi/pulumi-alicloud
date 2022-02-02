@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ExpressConnect
 {
@@ -56,7 +55,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccessPointsResult> InvokeAsync(GetAccessPointsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccessPointsResult>("alicloud:expressconnect/getAccessPoints:getAccessPoints", args ?? new GetAccessPointsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccessPointsResult>("alicloud:expressconnect/getAccessPoints:getAccessPoints", args ?? new GetAccessPointsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Express Connect Access Points of the current Alibaba Cloud user.
@@ -102,7 +101,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccessPointsResult> Invoke(GetAccessPointsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccessPointsResult>("alicloud:expressconnect/getAccessPoints:getAccessPoints", args ?? new GetAccessPointsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAccessPointsResult>("alicloud:expressconnect/getAccessPoints:getAccessPoints", args ?? new GetAccessPointsInvokeArgs(), options.WithDefaults());
     }
 
 

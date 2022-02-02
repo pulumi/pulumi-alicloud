@@ -35,9 +35,7 @@ export function getNetworks(args?: GetNetworksArgs, opts?: pulumi.InvokeOptions)
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cloudconnect/getNetworks:getNetworks", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

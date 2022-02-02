@@ -137,7 +137,7 @@ type DedicatedHostAccountInput interface {
 }
 
 func (*DedicatedHostAccount) ElementType() reflect.Type {
-	return reflect.TypeOf((*DedicatedHostAccount)(nil))
+	return reflect.TypeOf((**DedicatedHostAccount)(nil)).Elem()
 }
 
 func (i *DedicatedHostAccount) ToDedicatedHostAccountOutput() DedicatedHostAccountOutput {
@@ -146,35 +146,6 @@ func (i *DedicatedHostAccount) ToDedicatedHostAccountOutput() DedicatedHostAccou
 
 func (i *DedicatedHostAccount) ToDedicatedHostAccountOutputWithContext(ctx context.Context) DedicatedHostAccountOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedHostAccountOutput)
-}
-
-func (i *DedicatedHostAccount) ToDedicatedHostAccountPtrOutput() DedicatedHostAccountPtrOutput {
-	return i.ToDedicatedHostAccountPtrOutputWithContext(context.Background())
-}
-
-func (i *DedicatedHostAccount) ToDedicatedHostAccountPtrOutputWithContext(ctx context.Context) DedicatedHostAccountPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DedicatedHostAccountPtrOutput)
-}
-
-type DedicatedHostAccountPtrInput interface {
-	pulumi.Input
-
-	ToDedicatedHostAccountPtrOutput() DedicatedHostAccountPtrOutput
-	ToDedicatedHostAccountPtrOutputWithContext(ctx context.Context) DedicatedHostAccountPtrOutput
-}
-
-type dedicatedHostAccountPtrType DedicatedHostAccountArgs
-
-func (*dedicatedHostAccountPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DedicatedHostAccount)(nil))
-}
-
-func (i *dedicatedHostAccountPtrType) ToDedicatedHostAccountPtrOutput() DedicatedHostAccountPtrOutput {
-	return i.ToDedicatedHostAccountPtrOutputWithContext(context.Background())
-}
-
-func (i *dedicatedHostAccountPtrType) ToDedicatedHostAccountPtrOutputWithContext(ctx context.Context) DedicatedHostAccountPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DedicatedHostAccountPtrOutput)
 }
 
 // DedicatedHostAccountArrayInput is an input type that accepts DedicatedHostAccountArray and DedicatedHostAccountArrayOutput values.
@@ -230,7 +201,7 @@ func (i DedicatedHostAccountMap) ToDedicatedHostAccountMapOutputWithContext(ctx 
 type DedicatedHostAccountOutput struct{ *pulumi.OutputState }
 
 func (DedicatedHostAccountOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DedicatedHostAccount)(nil))
+	return reflect.TypeOf((**DedicatedHostAccount)(nil)).Elem()
 }
 
 func (o DedicatedHostAccountOutput) ToDedicatedHostAccountOutput() DedicatedHostAccountOutput {
@@ -241,44 +212,10 @@ func (o DedicatedHostAccountOutput) ToDedicatedHostAccountOutputWithContext(ctx 
 	return o
 }
 
-func (o DedicatedHostAccountOutput) ToDedicatedHostAccountPtrOutput() DedicatedHostAccountPtrOutput {
-	return o.ToDedicatedHostAccountPtrOutputWithContext(context.Background())
-}
-
-func (o DedicatedHostAccountOutput) ToDedicatedHostAccountPtrOutputWithContext(ctx context.Context) DedicatedHostAccountPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DedicatedHostAccount) *DedicatedHostAccount {
-		return &v
-	}).(DedicatedHostAccountPtrOutput)
-}
-
-type DedicatedHostAccountPtrOutput struct{ *pulumi.OutputState }
-
-func (DedicatedHostAccountPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DedicatedHostAccount)(nil))
-}
-
-func (o DedicatedHostAccountPtrOutput) ToDedicatedHostAccountPtrOutput() DedicatedHostAccountPtrOutput {
-	return o
-}
-
-func (o DedicatedHostAccountPtrOutput) ToDedicatedHostAccountPtrOutputWithContext(ctx context.Context) DedicatedHostAccountPtrOutput {
-	return o
-}
-
-func (o DedicatedHostAccountPtrOutput) Elem() DedicatedHostAccountOutput {
-	return o.ApplyT(func(v *DedicatedHostAccount) DedicatedHostAccount {
-		if v != nil {
-			return *v
-		}
-		var ret DedicatedHostAccount
-		return ret
-	}).(DedicatedHostAccountOutput)
-}
-
 type DedicatedHostAccountArrayOutput struct{ *pulumi.OutputState }
 
 func (DedicatedHostAccountArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DedicatedHostAccount)(nil))
+	return reflect.TypeOf((*[]*DedicatedHostAccount)(nil)).Elem()
 }
 
 func (o DedicatedHostAccountArrayOutput) ToDedicatedHostAccountArrayOutput() DedicatedHostAccountArrayOutput {
@@ -290,15 +227,15 @@ func (o DedicatedHostAccountArrayOutput) ToDedicatedHostAccountArrayOutputWithCo
 }
 
 func (o DedicatedHostAccountArrayOutput) Index(i pulumi.IntInput) DedicatedHostAccountOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DedicatedHostAccount {
-		return vs[0].([]DedicatedHostAccount)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DedicatedHostAccount {
+		return vs[0].([]*DedicatedHostAccount)[vs[1].(int)]
 	}).(DedicatedHostAccountOutput)
 }
 
 type DedicatedHostAccountMapOutput struct{ *pulumi.OutputState }
 
 func (DedicatedHostAccountMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DedicatedHostAccount)(nil))
+	return reflect.TypeOf((*map[string]*DedicatedHostAccount)(nil)).Elem()
 }
 
 func (o DedicatedHostAccountMapOutput) ToDedicatedHostAccountMapOutput() DedicatedHostAccountMapOutput {
@@ -310,18 +247,16 @@ func (o DedicatedHostAccountMapOutput) ToDedicatedHostAccountMapOutputWithContex
 }
 
 func (o DedicatedHostAccountMapOutput) MapIndex(k pulumi.StringInput) DedicatedHostAccountOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DedicatedHostAccount {
-		return vs[0].(map[string]DedicatedHostAccount)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DedicatedHostAccount {
+		return vs[0].(map[string]*DedicatedHostAccount)[vs[1].(string)]
 	}).(DedicatedHostAccountOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DedicatedHostAccountInput)(nil)).Elem(), &DedicatedHostAccount{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DedicatedHostAccountPtrInput)(nil)).Elem(), &DedicatedHostAccount{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DedicatedHostAccountArrayInput)(nil)).Elem(), DedicatedHostAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DedicatedHostAccountMapInput)(nil)).Elem(), DedicatedHostAccountMap{})
 	pulumi.RegisterOutputType(DedicatedHostAccountOutput{})
-	pulumi.RegisterOutputType(DedicatedHostAccountPtrOutput{})
 	pulumi.RegisterOutputType(DedicatedHostAccountArrayOutput{})
 	pulumi.RegisterOutputType(DedicatedHostAccountMapOutput{})
 }

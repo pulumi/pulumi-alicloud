@@ -119,18 +119,18 @@ export class VbrHealthCheck extends pulumi.CustomResource {
      */
     constructor(name: string, args: VbrHealthCheckArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VbrHealthCheckArgs | VbrHealthCheckState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VbrHealthCheckState | undefined;
-            inputs["cenId"] = state ? state.cenId : undefined;
-            inputs["healthCheckInterval"] = state ? state.healthCheckInterval : undefined;
-            inputs["healthCheckSourceIp"] = state ? state.healthCheckSourceIp : undefined;
-            inputs["healthCheckTargetIp"] = state ? state.healthCheckTargetIp : undefined;
-            inputs["healthyThreshold"] = state ? state.healthyThreshold : undefined;
-            inputs["vbrInstanceId"] = state ? state.vbrInstanceId : undefined;
-            inputs["vbrInstanceOwnerId"] = state ? state.vbrInstanceOwnerId : undefined;
-            inputs["vbrInstanceRegionId"] = state ? state.vbrInstanceRegionId : undefined;
+            resourceInputs["cenId"] = state ? state.cenId : undefined;
+            resourceInputs["healthCheckInterval"] = state ? state.healthCheckInterval : undefined;
+            resourceInputs["healthCheckSourceIp"] = state ? state.healthCheckSourceIp : undefined;
+            resourceInputs["healthCheckTargetIp"] = state ? state.healthCheckTargetIp : undefined;
+            resourceInputs["healthyThreshold"] = state ? state.healthyThreshold : undefined;
+            resourceInputs["vbrInstanceId"] = state ? state.vbrInstanceId : undefined;
+            resourceInputs["vbrInstanceOwnerId"] = state ? state.vbrInstanceOwnerId : undefined;
+            resourceInputs["vbrInstanceRegionId"] = state ? state.vbrInstanceRegionId : undefined;
         } else {
             const args = argsOrState as VbrHealthCheckArgs | undefined;
             if ((!args || args.cenId === undefined) && !opts.urn) {
@@ -145,19 +145,17 @@ export class VbrHealthCheck extends pulumi.CustomResource {
             if ((!args || args.vbrInstanceRegionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vbrInstanceRegionId'");
             }
-            inputs["cenId"] = args ? args.cenId : undefined;
-            inputs["healthCheckInterval"] = args ? args.healthCheckInterval : undefined;
-            inputs["healthCheckSourceIp"] = args ? args.healthCheckSourceIp : undefined;
-            inputs["healthCheckTargetIp"] = args ? args.healthCheckTargetIp : undefined;
-            inputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
-            inputs["vbrInstanceId"] = args ? args.vbrInstanceId : undefined;
-            inputs["vbrInstanceOwnerId"] = args ? args.vbrInstanceOwnerId : undefined;
-            inputs["vbrInstanceRegionId"] = args ? args.vbrInstanceRegionId : undefined;
+            resourceInputs["cenId"] = args ? args.cenId : undefined;
+            resourceInputs["healthCheckInterval"] = args ? args.healthCheckInterval : undefined;
+            resourceInputs["healthCheckSourceIp"] = args ? args.healthCheckSourceIp : undefined;
+            resourceInputs["healthCheckTargetIp"] = args ? args.healthCheckTargetIp : undefined;
+            resourceInputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
+            resourceInputs["vbrInstanceId"] = args ? args.vbrInstanceId : undefined;
+            resourceInputs["vbrInstanceOwnerId"] = args ? args.vbrInstanceOwnerId : undefined;
+            resourceInputs["vbrInstanceRegionId"] = args ? args.vbrInstanceRegionId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(VbrHealthCheck.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(VbrHealthCheck.__pulumiType, name, resourceInputs, opts);
     }
 }
 

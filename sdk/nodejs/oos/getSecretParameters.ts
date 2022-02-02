@@ -16,9 +16,7 @@ export function getSecretParameters(args?: GetSecretParametersArgs, opts?: pulum
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:oos/getSecretParameters:getSecretParameters", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,

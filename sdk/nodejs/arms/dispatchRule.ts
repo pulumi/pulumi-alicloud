@@ -141,17 +141,17 @@ export class DispatchRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: DispatchRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DispatchRuleArgs | DispatchRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DispatchRuleState | undefined;
-            inputs["dispatchRuleName"] = state ? state.dispatchRuleName : undefined;
-            inputs["dispatchType"] = state ? state.dispatchType : undefined;
-            inputs["groupRules"] = state ? state.groupRules : undefined;
-            inputs["isRecover"] = state ? state.isRecover : undefined;
-            inputs["labelMatchExpressionGrids"] = state ? state.labelMatchExpressionGrids : undefined;
-            inputs["notifyRules"] = state ? state.notifyRules : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["dispatchRuleName"] = state ? state.dispatchRuleName : undefined;
+            resourceInputs["dispatchType"] = state ? state.dispatchType : undefined;
+            resourceInputs["groupRules"] = state ? state.groupRules : undefined;
+            resourceInputs["isRecover"] = state ? state.isRecover : undefined;
+            resourceInputs["labelMatchExpressionGrids"] = state ? state.labelMatchExpressionGrids : undefined;
+            resourceInputs["notifyRules"] = state ? state.notifyRules : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as DispatchRuleArgs | undefined;
             if ((!args || args.dispatchRuleName === undefined) && !opts.urn) {
@@ -166,18 +166,16 @@ export class DispatchRule extends pulumi.CustomResource {
             if ((!args || args.notifyRules === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'notifyRules'");
             }
-            inputs["dispatchRuleName"] = args ? args.dispatchRuleName : undefined;
-            inputs["dispatchType"] = args ? args.dispatchType : undefined;
-            inputs["groupRules"] = args ? args.groupRules : undefined;
-            inputs["isRecover"] = args ? args.isRecover : undefined;
-            inputs["labelMatchExpressionGrids"] = args ? args.labelMatchExpressionGrids : undefined;
-            inputs["notifyRules"] = args ? args.notifyRules : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["dispatchRuleName"] = args ? args.dispatchRuleName : undefined;
+            resourceInputs["dispatchType"] = args ? args.dispatchType : undefined;
+            resourceInputs["groupRules"] = args ? args.groupRules : undefined;
+            resourceInputs["isRecover"] = args ? args.isRecover : undefined;
+            resourceInputs["labelMatchExpressionGrids"] = args ? args.labelMatchExpressionGrids : undefined;
+            resourceInputs["notifyRules"] = args ? args.notifyRules : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DispatchRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DispatchRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

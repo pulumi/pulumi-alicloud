@@ -71,26 +71,24 @@ export class ScimServerCredential extends pulumi.CustomResource {
      */
     constructor(name: string, args: ScimServerCredentialArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ScimServerCredentialArgs | ScimServerCredentialState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ScimServerCredentialState | undefined;
-            inputs["credentialId"] = state ? state.credentialId : undefined;
-            inputs["directoryId"] = state ? state.directoryId : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["credentialId"] = state ? state.credentialId : undefined;
+            resourceInputs["directoryId"] = state ? state.directoryId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ScimServerCredentialArgs | undefined;
             if ((!args || args.directoryId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'directoryId'");
             }
-            inputs["directoryId"] = args ? args.directoryId : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["credentialId"] = undefined /*out*/;
+            resourceInputs["directoryId"] = args ? args.directoryId : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["credentialId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ScimServerCredential.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ScimServerCredential.__pulumiType, name, resourceInputs, opts);
     }
 }
 

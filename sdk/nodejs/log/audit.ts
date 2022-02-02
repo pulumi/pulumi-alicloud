@@ -252,15 +252,15 @@ export class Audit extends pulumi.CustomResource {
      */
     constructor(name: string, args: AuditArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AuditArgs | AuditState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuditState | undefined;
-            inputs["aliuid"] = state ? state.aliuid : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["multiAccounts"] = state ? state.multiAccounts : undefined;
-            inputs["resourceDirectoryType"] = state ? state.resourceDirectoryType : undefined;
-            inputs["variableMap"] = state ? state.variableMap : undefined;
+            resourceInputs["aliuid"] = state ? state.aliuid : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["multiAccounts"] = state ? state.multiAccounts : undefined;
+            resourceInputs["resourceDirectoryType"] = state ? state.resourceDirectoryType : undefined;
+            resourceInputs["variableMap"] = state ? state.variableMap : undefined;
         } else {
             const args = argsOrState as AuditArgs | undefined;
             if ((!args || args.aliuid === undefined) && !opts.urn) {
@@ -269,16 +269,14 @@ export class Audit extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["aliuid"] = args ? args.aliuid : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["multiAccounts"] = args ? args.multiAccounts : undefined;
-            inputs["resourceDirectoryType"] = args ? args.resourceDirectoryType : undefined;
-            inputs["variableMap"] = args ? args.variableMap : undefined;
+            resourceInputs["aliuid"] = args ? args.aliuid : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["multiAccounts"] = args ? args.multiAccounts : undefined;
+            resourceInputs["resourceDirectoryType"] = args ? args.resourceDirectoryType : undefined;
+            resourceInputs["variableMap"] = args ? args.variableMap : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Audit.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Audit.__pulumiType, name, resourceInputs, opts);
     }
 }
 

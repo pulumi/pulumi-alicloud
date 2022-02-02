@@ -164,33 +164,33 @@ export class Cluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: ClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterArgs | ClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            inputs["autoRenew"] = state ? state.autoRenew : undefined;
-            inputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
-            inputs["clusterName"] = state ? state.clusterName : undefined;
-            inputs["dataCenterName"] = state ? state.dataCenterName : undefined;
-            inputs["diskSize"] = state ? state.diskSize : undefined;
-            inputs["diskType"] = state ? state.diskType : undefined;
-            inputs["enablePublic"] = state ? state.enablePublic : undefined;
-            inputs["instanceType"] = state ? state.instanceType : undefined;
-            inputs["ipWhite"] = state ? state.ipWhite : undefined;
-            inputs["maintainEndTime"] = state ? state.maintainEndTime : undefined;
-            inputs["maintainStartTime"] = state ? state.maintainStartTime : undefined;
-            inputs["majorVersion"] = state ? state.majorVersion : undefined;
-            inputs["nodeCount"] = state ? state.nodeCount : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["payType"] = state ? state.payType : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["periodUnit"] = state ? state.periodUnit : undefined;
-            inputs["publicPoints"] = state ? state.publicPoints : undefined;
-            inputs["securityGroups"] = state ? state.securityGroups : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
+            resourceInputs["clusterName"] = state ? state.clusterName : undefined;
+            resourceInputs["dataCenterName"] = state ? state.dataCenterName : undefined;
+            resourceInputs["diskSize"] = state ? state.diskSize : undefined;
+            resourceInputs["diskType"] = state ? state.diskType : undefined;
+            resourceInputs["enablePublic"] = state ? state.enablePublic : undefined;
+            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
+            resourceInputs["ipWhite"] = state ? state.ipWhite : undefined;
+            resourceInputs["maintainEndTime"] = state ? state.maintainEndTime : undefined;
+            resourceInputs["maintainStartTime"] = state ? state.maintainStartTime : undefined;
+            resourceInputs["majorVersion"] = state ? state.majorVersion : undefined;
+            resourceInputs["nodeCount"] = state ? state.nodeCount : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["payType"] = state ? state.payType : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
+            resourceInputs["publicPoints"] = state ? state.publicPoints : undefined;
+            resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
             if ((!args || args.instanceType === undefined) && !opts.urn) {
@@ -208,34 +208,32 @@ export class Cluster extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            inputs["autoRenew"] = args ? args.autoRenew : undefined;
-            inputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
-            inputs["clusterName"] = args ? args.clusterName : undefined;
-            inputs["dataCenterName"] = args ? args.dataCenterName : undefined;
-            inputs["diskSize"] = args ? args.diskSize : undefined;
-            inputs["diskType"] = args ? args.diskType : undefined;
-            inputs["enablePublic"] = args ? args.enablePublic : undefined;
-            inputs["instanceType"] = args ? args.instanceType : undefined;
-            inputs["ipWhite"] = args ? args.ipWhite : undefined;
-            inputs["maintainEndTime"] = args ? args.maintainEndTime : undefined;
-            inputs["maintainStartTime"] = args ? args.maintainStartTime : undefined;
-            inputs["majorVersion"] = args ? args.majorVersion : undefined;
-            inputs["nodeCount"] = args ? args.nodeCount : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["payType"] = args ? args.payType : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["periodUnit"] = args ? args.periodUnit : undefined;
-            inputs["securityGroups"] = args ? args.securityGroups : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["publicPoints"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
+            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
+            resourceInputs["dataCenterName"] = args ? args.dataCenterName : undefined;
+            resourceInputs["diskSize"] = args ? args.diskSize : undefined;
+            resourceInputs["diskType"] = args ? args.diskType : undefined;
+            resourceInputs["enablePublic"] = args ? args.enablePublic : undefined;
+            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
+            resourceInputs["ipWhite"] = args ? args.ipWhite : undefined;
+            resourceInputs["maintainEndTime"] = args ? args.maintainEndTime : undefined;
+            resourceInputs["maintainStartTime"] = args ? args.maintainStartTime : undefined;
+            resourceInputs["majorVersion"] = args ? args.majorVersion : undefined;
+            resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["payType"] = args ? args.payType : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
+            resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["publicPoints"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Cluster.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Cluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

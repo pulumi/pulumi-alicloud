@@ -87,14 +87,14 @@ export class Organization extends pulumi.CustomResource {
      */
     constructor(name: string, args: OrganizationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OrganizationArgs | OrganizationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationState | undefined;
-            inputs["desiredMemberCount"] = state ? state.desiredMemberCount : undefined;
-            inputs["organizationName"] = state ? state.organizationName : undefined;
-            inputs["realPk"] = state ? state.realPk : undefined;
-            inputs["source"] = state ? state.source : undefined;
+            resourceInputs["desiredMemberCount"] = state ? state.desiredMemberCount : undefined;
+            resourceInputs["organizationName"] = state ? state.organizationName : undefined;
+            resourceInputs["realPk"] = state ? state.realPk : undefined;
+            resourceInputs["source"] = state ? state.source : undefined;
         } else {
             const args = argsOrState as OrganizationArgs | undefined;
             if ((!args || args.organizationName === undefined) && !opts.urn) {
@@ -103,15 +103,13 @@ export class Organization extends pulumi.CustomResource {
             if ((!args || args.source === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
-            inputs["desiredMemberCount"] = args ? args.desiredMemberCount : undefined;
-            inputs["organizationName"] = args ? args.organizationName : undefined;
-            inputs["realPk"] = args ? args.realPk : undefined;
-            inputs["source"] = args ? args.source : undefined;
+            resourceInputs["desiredMemberCount"] = args ? args.desiredMemberCount : undefined;
+            resourceInputs["organizationName"] = args ? args.organizationName : undefined;
+            resourceInputs["realPk"] = args ? args.realPk : undefined;
+            resourceInputs["source"] = args ? args.source : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Organization.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Organization.__pulumiType, name, resourceInputs, opts);
     }
 }
 

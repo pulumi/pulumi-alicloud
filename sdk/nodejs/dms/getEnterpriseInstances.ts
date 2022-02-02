@@ -34,9 +34,7 @@ export function getEnterpriseInstances(args?: GetEnterpriseInstancesArgs, opts?:
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:dms/getEnterpriseInstances:getEnterpriseInstances", {
         "envType": args.envType,
         "instanceAliasRegex": args.instanceAliasRegex,

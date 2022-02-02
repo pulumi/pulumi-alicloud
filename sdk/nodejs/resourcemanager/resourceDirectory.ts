@@ -93,25 +93,23 @@ export class ResourceDirectory extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ResourceDirectoryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ResourceDirectoryArgs | ResourceDirectoryState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourceDirectoryState | undefined;
-            inputs["masterAccountId"] = state ? state.masterAccountId : undefined;
-            inputs["masterAccountName"] = state ? state.masterAccountName : undefined;
-            inputs["rootFolderId"] = state ? state.rootFolderId : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["masterAccountId"] = state ? state.masterAccountId : undefined;
+            resourceInputs["masterAccountName"] = state ? state.masterAccountName : undefined;
+            resourceInputs["rootFolderId"] = state ? state.rootFolderId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ResourceDirectoryArgs | undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["masterAccountId"] = undefined /*out*/;
-            inputs["masterAccountName"] = undefined /*out*/;
-            inputs["rootFolderId"] = undefined /*out*/;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["masterAccountId"] = undefined /*out*/;
+            resourceInputs["masterAccountName"] = undefined /*out*/;
+            resourceInputs["rootFolderId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ResourceDirectory.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ResourceDirectory.__pulumiType, name, resourceInputs, opts);
     }
 }
 

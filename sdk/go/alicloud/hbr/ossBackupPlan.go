@@ -234,7 +234,7 @@ type OssBackupPlanInput interface {
 }
 
 func (*OssBackupPlan) ElementType() reflect.Type {
-	return reflect.TypeOf((*OssBackupPlan)(nil))
+	return reflect.TypeOf((**OssBackupPlan)(nil)).Elem()
 }
 
 func (i *OssBackupPlan) ToOssBackupPlanOutput() OssBackupPlanOutput {
@@ -243,35 +243,6 @@ func (i *OssBackupPlan) ToOssBackupPlanOutput() OssBackupPlanOutput {
 
 func (i *OssBackupPlan) ToOssBackupPlanOutputWithContext(ctx context.Context) OssBackupPlanOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OssBackupPlanOutput)
-}
-
-func (i *OssBackupPlan) ToOssBackupPlanPtrOutput() OssBackupPlanPtrOutput {
-	return i.ToOssBackupPlanPtrOutputWithContext(context.Background())
-}
-
-func (i *OssBackupPlan) ToOssBackupPlanPtrOutputWithContext(ctx context.Context) OssBackupPlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OssBackupPlanPtrOutput)
-}
-
-type OssBackupPlanPtrInput interface {
-	pulumi.Input
-
-	ToOssBackupPlanPtrOutput() OssBackupPlanPtrOutput
-	ToOssBackupPlanPtrOutputWithContext(ctx context.Context) OssBackupPlanPtrOutput
-}
-
-type ossBackupPlanPtrType OssBackupPlanArgs
-
-func (*ossBackupPlanPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OssBackupPlan)(nil))
-}
-
-func (i *ossBackupPlanPtrType) ToOssBackupPlanPtrOutput() OssBackupPlanPtrOutput {
-	return i.ToOssBackupPlanPtrOutputWithContext(context.Background())
-}
-
-func (i *ossBackupPlanPtrType) ToOssBackupPlanPtrOutputWithContext(ctx context.Context) OssBackupPlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OssBackupPlanPtrOutput)
 }
 
 // OssBackupPlanArrayInput is an input type that accepts OssBackupPlanArray and OssBackupPlanArrayOutput values.
@@ -327,7 +298,7 @@ func (i OssBackupPlanMap) ToOssBackupPlanMapOutputWithContext(ctx context.Contex
 type OssBackupPlanOutput struct{ *pulumi.OutputState }
 
 func (OssBackupPlanOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OssBackupPlan)(nil))
+	return reflect.TypeOf((**OssBackupPlan)(nil)).Elem()
 }
 
 func (o OssBackupPlanOutput) ToOssBackupPlanOutput() OssBackupPlanOutput {
@@ -338,44 +309,10 @@ func (o OssBackupPlanOutput) ToOssBackupPlanOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o OssBackupPlanOutput) ToOssBackupPlanPtrOutput() OssBackupPlanPtrOutput {
-	return o.ToOssBackupPlanPtrOutputWithContext(context.Background())
-}
-
-func (o OssBackupPlanOutput) ToOssBackupPlanPtrOutputWithContext(ctx context.Context) OssBackupPlanPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OssBackupPlan) *OssBackupPlan {
-		return &v
-	}).(OssBackupPlanPtrOutput)
-}
-
-type OssBackupPlanPtrOutput struct{ *pulumi.OutputState }
-
-func (OssBackupPlanPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OssBackupPlan)(nil))
-}
-
-func (o OssBackupPlanPtrOutput) ToOssBackupPlanPtrOutput() OssBackupPlanPtrOutput {
-	return o
-}
-
-func (o OssBackupPlanPtrOutput) ToOssBackupPlanPtrOutputWithContext(ctx context.Context) OssBackupPlanPtrOutput {
-	return o
-}
-
-func (o OssBackupPlanPtrOutput) Elem() OssBackupPlanOutput {
-	return o.ApplyT(func(v *OssBackupPlan) OssBackupPlan {
-		if v != nil {
-			return *v
-		}
-		var ret OssBackupPlan
-		return ret
-	}).(OssBackupPlanOutput)
-}
-
 type OssBackupPlanArrayOutput struct{ *pulumi.OutputState }
 
 func (OssBackupPlanArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OssBackupPlan)(nil))
+	return reflect.TypeOf((*[]*OssBackupPlan)(nil)).Elem()
 }
 
 func (o OssBackupPlanArrayOutput) ToOssBackupPlanArrayOutput() OssBackupPlanArrayOutput {
@@ -387,15 +324,15 @@ func (o OssBackupPlanArrayOutput) ToOssBackupPlanArrayOutputWithContext(ctx cont
 }
 
 func (o OssBackupPlanArrayOutput) Index(i pulumi.IntInput) OssBackupPlanOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OssBackupPlan {
-		return vs[0].([]OssBackupPlan)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OssBackupPlan {
+		return vs[0].([]*OssBackupPlan)[vs[1].(int)]
 	}).(OssBackupPlanOutput)
 }
 
 type OssBackupPlanMapOutput struct{ *pulumi.OutputState }
 
 func (OssBackupPlanMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]OssBackupPlan)(nil))
+	return reflect.TypeOf((*map[string]*OssBackupPlan)(nil)).Elem()
 }
 
 func (o OssBackupPlanMapOutput) ToOssBackupPlanMapOutput() OssBackupPlanMapOutput {
@@ -407,18 +344,16 @@ func (o OssBackupPlanMapOutput) ToOssBackupPlanMapOutputWithContext(ctx context.
 }
 
 func (o OssBackupPlanMapOutput) MapIndex(k pulumi.StringInput) OssBackupPlanOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) OssBackupPlan {
-		return vs[0].(map[string]OssBackupPlan)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *OssBackupPlan {
+		return vs[0].(map[string]*OssBackupPlan)[vs[1].(string)]
 	}).(OssBackupPlanOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OssBackupPlanInput)(nil)).Elem(), &OssBackupPlan{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OssBackupPlanPtrInput)(nil)).Elem(), &OssBackupPlan{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OssBackupPlanArrayInput)(nil)).Elem(), OssBackupPlanArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OssBackupPlanMapInput)(nil)).Elem(), OssBackupPlanMap{})
 	pulumi.RegisterOutputType(OssBackupPlanOutput{})
-	pulumi.RegisterOutputType(OssBackupPlanPtrOutput{})
 	pulumi.RegisterOutputType(OssBackupPlanArrayOutput{})
 	pulumi.RegisterOutputType(OssBackupPlanMapOutput{})
 }

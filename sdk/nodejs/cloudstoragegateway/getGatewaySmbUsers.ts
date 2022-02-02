@@ -42,10 +42,10 @@ import * as utilities from "../utilities";
  *     password: "password",
  *     gatewayId: defaultGateway.id,
  * });
- * const ids = pulumi.all([defaultGateway.id, defaultGatewaySmbUser.id]).apply(([defaultGatewayId, defaultGatewaySmbUserId]) => alicloud.cloudstoragegateway.getGatewaySmbUsers({
- *     gatewayId: defaultGatewayId,
- *     ids: [defaultGatewaySmbUserId],
- * }));
+ * const ids = alicloud.cloudstoragegateway.getGatewaySmbUsersOutput({
+ *     gatewayId: defaultGateway.id,
+ *     ids: [defaultGatewaySmbUser.id],
+ * });
  * export const cloudStorageGatewayGatewaySmbUserId1 = ids.apply(ids => ids.users?[0]?.id);
  * ```
  */
@@ -54,9 +54,7 @@ export function getGatewaySmbUsers(args: GetGatewaySmbUsersArgs, opts?: pulumi.I
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cloudstoragegateway/getGatewaySmbUsers:getGatewaySmbUsers", {
         "gatewayId": args.gatewayId,
         "ids": args.ids,

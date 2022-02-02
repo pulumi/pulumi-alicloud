@@ -27,9 +27,7 @@ export function getBucketObjects(args: GetBucketObjectsArgs, opts?: pulumi.Invok
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:oss/getBucketObjects:getBucketObjects", {
         "bucketName": args.bucketName,
         "keyPrefix": args.keyPrefix,

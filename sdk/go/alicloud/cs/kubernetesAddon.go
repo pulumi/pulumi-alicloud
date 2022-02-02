@@ -121,7 +121,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cs.NewKubernetesAddon(ctx, "ack_node_problem_detector", &cs.KubernetesAddonArgs{
+// 		_, err := cs.NewKubernetesAddon(ctx, "ack-node-problem-detector", &cs.KubernetesAddonArgs{
 // 			ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
 // 			Version:   pulumi.String("1.2.7"),
 // 		})
@@ -144,7 +144,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cs.NewKubernetesAddon(ctx, "ack_node_problem_detector", &cs.KubernetesAddonArgs{
+// 		_, err := cs.NewKubernetesAddon(ctx, "ack-node-problem-detector", &cs.KubernetesAddonArgs{
 // 			ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
 // 			Version:   pulumi.String("1.2.8"),
 // 		})
@@ -279,7 +279,7 @@ type KubernetesAddonInput interface {
 }
 
 func (*KubernetesAddon) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesAddon)(nil))
+	return reflect.TypeOf((**KubernetesAddon)(nil)).Elem()
 }
 
 func (i *KubernetesAddon) ToKubernetesAddonOutput() KubernetesAddonOutput {
@@ -288,35 +288,6 @@ func (i *KubernetesAddon) ToKubernetesAddonOutput() KubernetesAddonOutput {
 
 func (i *KubernetesAddon) ToKubernetesAddonOutputWithContext(ctx context.Context) KubernetesAddonOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAddonOutput)
-}
-
-func (i *KubernetesAddon) ToKubernetesAddonPtrOutput() KubernetesAddonPtrOutput {
-	return i.ToKubernetesAddonPtrOutputWithContext(context.Background())
-}
-
-func (i *KubernetesAddon) ToKubernetesAddonPtrOutputWithContext(ctx context.Context) KubernetesAddonPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAddonPtrOutput)
-}
-
-type KubernetesAddonPtrInput interface {
-	pulumi.Input
-
-	ToKubernetesAddonPtrOutput() KubernetesAddonPtrOutput
-	ToKubernetesAddonPtrOutputWithContext(ctx context.Context) KubernetesAddonPtrOutput
-}
-
-type kubernetesAddonPtrType KubernetesAddonArgs
-
-func (*kubernetesAddonPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KubernetesAddon)(nil))
-}
-
-func (i *kubernetesAddonPtrType) ToKubernetesAddonPtrOutput() KubernetesAddonPtrOutput {
-	return i.ToKubernetesAddonPtrOutputWithContext(context.Background())
-}
-
-func (i *kubernetesAddonPtrType) ToKubernetesAddonPtrOutputWithContext(ctx context.Context) KubernetesAddonPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAddonPtrOutput)
 }
 
 // KubernetesAddonArrayInput is an input type that accepts KubernetesAddonArray and KubernetesAddonArrayOutput values.
@@ -372,7 +343,7 @@ func (i KubernetesAddonMap) ToKubernetesAddonMapOutputWithContext(ctx context.Co
 type KubernetesAddonOutput struct{ *pulumi.OutputState }
 
 func (KubernetesAddonOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesAddon)(nil))
+	return reflect.TypeOf((**KubernetesAddon)(nil)).Elem()
 }
 
 func (o KubernetesAddonOutput) ToKubernetesAddonOutput() KubernetesAddonOutput {
@@ -383,44 +354,10 @@ func (o KubernetesAddonOutput) ToKubernetesAddonOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o KubernetesAddonOutput) ToKubernetesAddonPtrOutput() KubernetesAddonPtrOutput {
-	return o.ToKubernetesAddonPtrOutputWithContext(context.Background())
-}
-
-func (o KubernetesAddonOutput) ToKubernetesAddonPtrOutputWithContext(ctx context.Context) KubernetesAddonPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesAddon) *KubernetesAddon {
-		return &v
-	}).(KubernetesAddonPtrOutput)
-}
-
-type KubernetesAddonPtrOutput struct{ *pulumi.OutputState }
-
-func (KubernetesAddonPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KubernetesAddon)(nil))
-}
-
-func (o KubernetesAddonPtrOutput) ToKubernetesAddonPtrOutput() KubernetesAddonPtrOutput {
-	return o
-}
-
-func (o KubernetesAddonPtrOutput) ToKubernetesAddonPtrOutputWithContext(ctx context.Context) KubernetesAddonPtrOutput {
-	return o
-}
-
-func (o KubernetesAddonPtrOutput) Elem() KubernetesAddonOutput {
-	return o.ApplyT(func(v *KubernetesAddon) KubernetesAddon {
-		if v != nil {
-			return *v
-		}
-		var ret KubernetesAddon
-		return ret
-	}).(KubernetesAddonOutput)
-}
-
 type KubernetesAddonArrayOutput struct{ *pulumi.OutputState }
 
 func (KubernetesAddonArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KubernetesAddon)(nil))
+	return reflect.TypeOf((*[]*KubernetesAddon)(nil)).Elem()
 }
 
 func (o KubernetesAddonArrayOutput) ToKubernetesAddonArrayOutput() KubernetesAddonArrayOutput {
@@ -432,15 +369,15 @@ func (o KubernetesAddonArrayOutput) ToKubernetesAddonArrayOutputWithContext(ctx 
 }
 
 func (o KubernetesAddonArrayOutput) Index(i pulumi.IntInput) KubernetesAddonOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesAddon {
-		return vs[0].([]KubernetesAddon)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KubernetesAddon {
+		return vs[0].([]*KubernetesAddon)[vs[1].(int)]
 	}).(KubernetesAddonOutput)
 }
 
 type KubernetesAddonMapOutput struct{ *pulumi.OutputState }
 
 func (KubernetesAddonMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]KubernetesAddon)(nil))
+	return reflect.TypeOf((*map[string]*KubernetesAddon)(nil)).Elem()
 }
 
 func (o KubernetesAddonMapOutput) ToKubernetesAddonMapOutput() KubernetesAddonMapOutput {
@@ -452,18 +389,16 @@ func (o KubernetesAddonMapOutput) ToKubernetesAddonMapOutputWithContext(ctx cont
 }
 
 func (o KubernetesAddonMapOutput) MapIndex(k pulumi.StringInput) KubernetesAddonOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) KubernetesAddon {
-		return vs[0].(map[string]KubernetesAddon)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *KubernetesAddon {
+		return vs[0].(map[string]*KubernetesAddon)[vs[1].(string)]
 	}).(KubernetesAddonOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesAddonInput)(nil)).Elem(), &KubernetesAddon{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesAddonPtrInput)(nil)).Elem(), &KubernetesAddon{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesAddonArrayInput)(nil)).Elem(), KubernetesAddonArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesAddonMapInput)(nil)).Elem(), KubernetesAddonMap{})
 	pulumi.RegisterOutputType(KubernetesAddonOutput{})
-	pulumi.RegisterOutputType(KubernetesAddonPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesAddonArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesAddonMapOutput{})
 }

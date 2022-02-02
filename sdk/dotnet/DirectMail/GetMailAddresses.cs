@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.DirectMail
 {
@@ -49,7 +48,7 @@ namespace Pulumi.AliCloud.DirectMail
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMailAddressesResult> InvokeAsync(GetMailAddressesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMailAddressesResult>("alicloud:directmail/getMailAddresses:getMailAddresses", args ?? new GetMailAddressesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMailAddressesResult>("alicloud:directmail/getMailAddresses:getMailAddresses", args ?? new GetMailAddressesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
@@ -88,7 +87,7 @@ namespace Pulumi.AliCloud.DirectMail
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMailAddressesResult> Invoke(GetMailAddressesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMailAddressesResult>("alicloud:directmail/getMailAddresses:getMailAddresses", args ?? new GetMailAddressesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetMailAddressesResult>("alicloud:directmail/getMailAddresses:getMailAddresses", args ?? new GetMailAddressesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -117,18 +117,18 @@ export class Schedule extends pulumi.CustomResource {
      */
     constructor(name: string, args: ScheduleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ScheduleArgs | ScheduleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ScheduleState | undefined;
-            inputs["cronExpression"] = state ? state.cronExpression : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["enable"] = state ? state.enable : undefined;
-            inputs["flowName"] = state ? state.flowName : undefined;
-            inputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
-            inputs["payload"] = state ? state.payload : undefined;
-            inputs["scheduleId"] = state ? state.scheduleId : undefined;
-            inputs["scheduleName"] = state ? state.scheduleName : undefined;
+            resourceInputs["cronExpression"] = state ? state.cronExpression : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enable"] = state ? state.enable : undefined;
+            resourceInputs["flowName"] = state ? state.flowName : undefined;
+            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
+            resourceInputs["payload"] = state ? state.payload : undefined;
+            resourceInputs["scheduleId"] = state ? state.scheduleId : undefined;
+            resourceInputs["scheduleName"] = state ? state.scheduleName : undefined;
         } else {
             const args = argsOrState as ScheduleArgs | undefined;
             if ((!args || args.cronExpression === undefined) && !opts.urn) {
@@ -140,19 +140,17 @@ export class Schedule extends pulumi.CustomResource {
             if ((!args || args.scheduleName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scheduleName'");
             }
-            inputs["cronExpression"] = args ? args.cronExpression : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enable"] = args ? args.enable : undefined;
-            inputs["flowName"] = args ? args.flowName : undefined;
-            inputs["payload"] = args ? args.payload : undefined;
-            inputs["scheduleName"] = args ? args.scheduleName : undefined;
-            inputs["lastModifiedTime"] = undefined /*out*/;
-            inputs["scheduleId"] = undefined /*out*/;
+            resourceInputs["cronExpression"] = args ? args.cronExpression : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enable"] = args ? args.enable : undefined;
+            resourceInputs["flowName"] = args ? args.flowName : undefined;
+            resourceInputs["payload"] = args ? args.payload : undefined;
+            resourceInputs["scheduleName"] = args ? args.scheduleName : undefined;
+            resourceInputs["lastModifiedTime"] = undefined /*out*/;
+            resourceInputs["scheduleId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Schedule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Schedule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

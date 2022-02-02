@@ -103,14 +103,14 @@ export class Database extends pulumi.CustomResource {
      */
     constructor(name: string, args: DatabaseArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatabaseArgs | DatabaseState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
-            inputs["characterSetName"] = state ? state.characterSetName : undefined;
-            inputs["dbClusterId"] = state ? state.dbClusterId : undefined;
-            inputs["dbDescription"] = state ? state.dbDescription : undefined;
-            inputs["dbName"] = state ? state.dbName : undefined;
+            resourceInputs["characterSetName"] = state ? state.characterSetName : undefined;
+            resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
+            resourceInputs["dbDescription"] = state ? state.dbDescription : undefined;
+            resourceInputs["dbName"] = state ? state.dbName : undefined;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
             if ((!args || args.dbClusterId === undefined) && !opts.urn) {
@@ -119,15 +119,13 @@ export class Database extends pulumi.CustomResource {
             if ((!args || args.dbName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbName'");
             }
-            inputs["characterSetName"] = args ? args.characterSetName : undefined;
-            inputs["dbClusterId"] = args ? args.dbClusterId : undefined;
-            inputs["dbDescription"] = args ? args.dbDescription : undefined;
-            inputs["dbName"] = args ? args.dbName : undefined;
+            resourceInputs["characterSetName"] = args ? args.characterSetName : undefined;
+            resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
+            resourceInputs["dbDescription"] = args ? args.dbDescription : undefined;
+            resourceInputs["dbName"] = args ? args.dbName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Database.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Database.__pulumiType, name, resourceInputs, opts);
     }
 }
 

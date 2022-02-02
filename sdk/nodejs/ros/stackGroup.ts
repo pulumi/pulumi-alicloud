@@ -131,48 +131,46 @@ export class StackGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: StackGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StackGroupArgs | StackGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StackGroupState | undefined;
-            inputs["accountIds"] = state ? state.accountIds : undefined;
-            inputs["administrationRoleName"] = state ? state.administrationRoleName : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["executionRoleName"] = state ? state.executionRoleName : undefined;
-            inputs["operationDescription"] = state ? state.operationDescription : undefined;
-            inputs["operationPreferences"] = state ? state.operationPreferences : undefined;
-            inputs["parameters"] = state ? state.parameters : undefined;
-            inputs["regionIds"] = state ? state.regionIds : undefined;
-            inputs["stackGroupId"] = state ? state.stackGroupId : undefined;
-            inputs["stackGroupName"] = state ? state.stackGroupName : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["templateBody"] = state ? state.templateBody : undefined;
-            inputs["templateUrl"] = state ? state.templateUrl : undefined;
-            inputs["templateVersion"] = state ? state.templateVersion : undefined;
+            resourceInputs["accountIds"] = state ? state.accountIds : undefined;
+            resourceInputs["administrationRoleName"] = state ? state.administrationRoleName : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["executionRoleName"] = state ? state.executionRoleName : undefined;
+            resourceInputs["operationDescription"] = state ? state.operationDescription : undefined;
+            resourceInputs["operationPreferences"] = state ? state.operationPreferences : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
+            resourceInputs["regionIds"] = state ? state.regionIds : undefined;
+            resourceInputs["stackGroupId"] = state ? state.stackGroupId : undefined;
+            resourceInputs["stackGroupName"] = state ? state.stackGroupName : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["templateBody"] = state ? state.templateBody : undefined;
+            resourceInputs["templateUrl"] = state ? state.templateUrl : undefined;
+            resourceInputs["templateVersion"] = state ? state.templateVersion : undefined;
         } else {
             const args = argsOrState as StackGroupArgs | undefined;
             if ((!args || args.stackGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'stackGroupName'");
             }
-            inputs["accountIds"] = args ? args.accountIds : undefined;
-            inputs["administrationRoleName"] = args ? args.administrationRoleName : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["executionRoleName"] = args ? args.executionRoleName : undefined;
-            inputs["operationDescription"] = args ? args.operationDescription : undefined;
-            inputs["operationPreferences"] = args ? args.operationPreferences : undefined;
-            inputs["parameters"] = args ? args.parameters : undefined;
-            inputs["regionIds"] = args ? args.regionIds : undefined;
-            inputs["stackGroupName"] = args ? args.stackGroupName : undefined;
-            inputs["templateBody"] = args ? args.templateBody : undefined;
-            inputs["templateUrl"] = args ? args.templateUrl : undefined;
-            inputs["templateVersion"] = args ? args.templateVersion : undefined;
-            inputs["stackGroupId"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["accountIds"] = args ? args.accountIds : undefined;
+            resourceInputs["administrationRoleName"] = args ? args.administrationRoleName : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["executionRoleName"] = args ? args.executionRoleName : undefined;
+            resourceInputs["operationDescription"] = args ? args.operationDescription : undefined;
+            resourceInputs["operationPreferences"] = args ? args.operationPreferences : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["regionIds"] = args ? args.regionIds : undefined;
+            resourceInputs["stackGroupName"] = args ? args.stackGroupName : undefined;
+            resourceInputs["templateBody"] = args ? args.templateBody : undefined;
+            resourceInputs["templateUrl"] = args ? args.templateUrl : undefined;
+            resourceInputs["templateVersion"] = args ? args.templateVersion : undefined;
+            resourceInputs["stackGroupId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(StackGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(StackGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

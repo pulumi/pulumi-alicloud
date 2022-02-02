@@ -44,9 +44,7 @@ export function getIpv6Gateways(args?: GetIpv6GatewaysArgs, opts?: pulumi.Invoke
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:vpc/getIpv6Gateways:getIpv6Gateways", {
         "ids": args.ids,
         "ipv6GatewayName": args.ipv6GatewayName,

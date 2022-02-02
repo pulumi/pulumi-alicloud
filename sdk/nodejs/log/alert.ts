@@ -162,23 +162,23 @@ export class Alert extends pulumi.CustomResource {
      */
     constructor(name: string, args: AlertArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AlertArgs | AlertState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlertState | undefined;
-            inputs["alertDescription"] = state ? state.alertDescription : undefined;
-            inputs["alertDisplayname"] = state ? state.alertDisplayname : undefined;
-            inputs["alertName"] = state ? state.alertName : undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["dashboard"] = state ? state.dashboard : undefined;
-            inputs["muteUntil"] = state ? state.muteUntil : undefined;
-            inputs["notificationLists"] = state ? state.notificationLists : undefined;
-            inputs["notifyThreshold"] = state ? state.notifyThreshold : undefined;
-            inputs["projectName"] = state ? state.projectName : undefined;
-            inputs["queryLists"] = state ? state.queryLists : undefined;
-            inputs["scheduleInterval"] = state ? state.scheduleInterval : undefined;
-            inputs["scheduleType"] = state ? state.scheduleType : undefined;
-            inputs["throttling"] = state ? state.throttling : undefined;
+            resourceInputs["alertDescription"] = state ? state.alertDescription : undefined;
+            resourceInputs["alertDisplayname"] = state ? state.alertDisplayname : undefined;
+            resourceInputs["alertName"] = state ? state.alertName : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["dashboard"] = state ? state.dashboard : undefined;
+            resourceInputs["muteUntil"] = state ? state.muteUntil : undefined;
+            resourceInputs["notificationLists"] = state ? state.notificationLists : undefined;
+            resourceInputs["notifyThreshold"] = state ? state.notifyThreshold : undefined;
+            resourceInputs["projectName"] = state ? state.projectName : undefined;
+            resourceInputs["queryLists"] = state ? state.queryLists : undefined;
+            resourceInputs["scheduleInterval"] = state ? state.scheduleInterval : undefined;
+            resourceInputs["scheduleType"] = state ? state.scheduleType : undefined;
+            resourceInputs["throttling"] = state ? state.throttling : undefined;
         } else {
             const args = argsOrState as AlertArgs | undefined;
             if ((!args || args.alertDisplayname === undefined) && !opts.urn) {
@@ -202,24 +202,22 @@ export class Alert extends pulumi.CustomResource {
             if ((!args || args.queryLists === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'queryLists'");
             }
-            inputs["alertDescription"] = args ? args.alertDescription : undefined;
-            inputs["alertDisplayname"] = args ? args.alertDisplayname : undefined;
-            inputs["alertName"] = args ? args.alertName : undefined;
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["dashboard"] = args ? args.dashboard : undefined;
-            inputs["muteUntil"] = args ? args.muteUntil : undefined;
-            inputs["notificationLists"] = args ? args.notificationLists : undefined;
-            inputs["notifyThreshold"] = args ? args.notifyThreshold : undefined;
-            inputs["projectName"] = args ? args.projectName : undefined;
-            inputs["queryLists"] = args ? args.queryLists : undefined;
-            inputs["scheduleInterval"] = args ? args.scheduleInterval : undefined;
-            inputs["scheduleType"] = args ? args.scheduleType : undefined;
-            inputs["throttling"] = args ? args.throttling : undefined;
+            resourceInputs["alertDescription"] = args ? args.alertDescription : undefined;
+            resourceInputs["alertDisplayname"] = args ? args.alertDisplayname : undefined;
+            resourceInputs["alertName"] = args ? args.alertName : undefined;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["dashboard"] = args ? args.dashboard : undefined;
+            resourceInputs["muteUntil"] = args ? args.muteUntil : undefined;
+            resourceInputs["notificationLists"] = args ? args.notificationLists : undefined;
+            resourceInputs["notifyThreshold"] = args ? args.notifyThreshold : undefined;
+            resourceInputs["projectName"] = args ? args.projectName : undefined;
+            resourceInputs["queryLists"] = args ? args.queryLists : undefined;
+            resourceInputs["scheduleInterval"] = args ? args.scheduleInterval : undefined;
+            resourceInputs["scheduleType"] = args ? args.scheduleType : undefined;
+            resourceInputs["throttling"] = args ? args.throttling : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Alert.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Alert.__pulumiType, name, resourceInputs, opts);
     }
 }
 

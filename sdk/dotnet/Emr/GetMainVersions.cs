@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Emr
 {
@@ -53,7 +52,7 @@ namespace Pulumi.AliCloud.Emr
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMainVersionsResult> InvokeAsync(GetMainVersionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMainVersionsResult>("alicloud:emr/getMainVersions:getMainVersions", args ?? new GetMainVersionsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMainVersionsResult>("alicloud:emr/getMainVersions:getMainVersions", args ?? new GetMainVersionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `alicloud.emr.getMainVersions` data source provides a collection of emr 
@@ -96,7 +95,7 @@ namespace Pulumi.AliCloud.Emr
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMainVersionsResult> Invoke(GetMainVersionsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMainVersionsResult>("alicloud:emr/getMainVersions:getMainVersions", args ?? new GetMainVersionsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetMainVersionsResult>("alicloud:emr/getMainVersions:getMainVersions", args ?? new GetMainVersionsInvokeArgs(), options.WithDefaults());
     }
 
 

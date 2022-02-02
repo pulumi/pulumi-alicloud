@@ -30,9 +30,7 @@ export function getResolutionLines(args?: GetResolutionLinesArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:dns/getResolutionLines:getResolutionLines", {
         "domainName": args.domainName,
         "lang": args.lang,

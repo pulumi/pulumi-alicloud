@@ -187,7 +187,7 @@ type SslVpnServerInput interface {
 }
 
 func (*SslVpnServer) ElementType() reflect.Type {
-	return reflect.TypeOf((*SslVpnServer)(nil))
+	return reflect.TypeOf((**SslVpnServer)(nil)).Elem()
 }
 
 func (i *SslVpnServer) ToSslVpnServerOutput() SslVpnServerOutput {
@@ -196,35 +196,6 @@ func (i *SslVpnServer) ToSslVpnServerOutput() SslVpnServerOutput {
 
 func (i *SslVpnServer) ToSslVpnServerOutputWithContext(ctx context.Context) SslVpnServerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SslVpnServerOutput)
-}
-
-func (i *SslVpnServer) ToSslVpnServerPtrOutput() SslVpnServerPtrOutput {
-	return i.ToSslVpnServerPtrOutputWithContext(context.Background())
-}
-
-func (i *SslVpnServer) ToSslVpnServerPtrOutputWithContext(ctx context.Context) SslVpnServerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SslVpnServerPtrOutput)
-}
-
-type SslVpnServerPtrInput interface {
-	pulumi.Input
-
-	ToSslVpnServerPtrOutput() SslVpnServerPtrOutput
-	ToSslVpnServerPtrOutputWithContext(ctx context.Context) SslVpnServerPtrOutput
-}
-
-type sslVpnServerPtrType SslVpnServerArgs
-
-func (*sslVpnServerPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SslVpnServer)(nil))
-}
-
-func (i *sslVpnServerPtrType) ToSslVpnServerPtrOutput() SslVpnServerPtrOutput {
-	return i.ToSslVpnServerPtrOutputWithContext(context.Background())
-}
-
-func (i *sslVpnServerPtrType) ToSslVpnServerPtrOutputWithContext(ctx context.Context) SslVpnServerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SslVpnServerPtrOutput)
 }
 
 // SslVpnServerArrayInput is an input type that accepts SslVpnServerArray and SslVpnServerArrayOutput values.
@@ -280,7 +251,7 @@ func (i SslVpnServerMap) ToSslVpnServerMapOutputWithContext(ctx context.Context)
 type SslVpnServerOutput struct{ *pulumi.OutputState }
 
 func (SslVpnServerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SslVpnServer)(nil))
+	return reflect.TypeOf((**SslVpnServer)(nil)).Elem()
 }
 
 func (o SslVpnServerOutput) ToSslVpnServerOutput() SslVpnServerOutput {
@@ -291,44 +262,10 @@ func (o SslVpnServerOutput) ToSslVpnServerOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o SslVpnServerOutput) ToSslVpnServerPtrOutput() SslVpnServerPtrOutput {
-	return o.ToSslVpnServerPtrOutputWithContext(context.Background())
-}
-
-func (o SslVpnServerOutput) ToSslVpnServerPtrOutputWithContext(ctx context.Context) SslVpnServerPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SslVpnServer) *SslVpnServer {
-		return &v
-	}).(SslVpnServerPtrOutput)
-}
-
-type SslVpnServerPtrOutput struct{ *pulumi.OutputState }
-
-func (SslVpnServerPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SslVpnServer)(nil))
-}
-
-func (o SslVpnServerPtrOutput) ToSslVpnServerPtrOutput() SslVpnServerPtrOutput {
-	return o
-}
-
-func (o SslVpnServerPtrOutput) ToSslVpnServerPtrOutputWithContext(ctx context.Context) SslVpnServerPtrOutput {
-	return o
-}
-
-func (o SslVpnServerPtrOutput) Elem() SslVpnServerOutput {
-	return o.ApplyT(func(v *SslVpnServer) SslVpnServer {
-		if v != nil {
-			return *v
-		}
-		var ret SslVpnServer
-		return ret
-	}).(SslVpnServerOutput)
-}
-
 type SslVpnServerArrayOutput struct{ *pulumi.OutputState }
 
 func (SslVpnServerArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SslVpnServer)(nil))
+	return reflect.TypeOf((*[]*SslVpnServer)(nil)).Elem()
 }
 
 func (o SslVpnServerArrayOutput) ToSslVpnServerArrayOutput() SslVpnServerArrayOutput {
@@ -340,15 +277,15 @@ func (o SslVpnServerArrayOutput) ToSslVpnServerArrayOutputWithContext(ctx contex
 }
 
 func (o SslVpnServerArrayOutput) Index(i pulumi.IntInput) SslVpnServerOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SslVpnServer {
-		return vs[0].([]SslVpnServer)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SslVpnServer {
+		return vs[0].([]*SslVpnServer)[vs[1].(int)]
 	}).(SslVpnServerOutput)
 }
 
 type SslVpnServerMapOutput struct{ *pulumi.OutputState }
 
 func (SslVpnServerMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SslVpnServer)(nil))
+	return reflect.TypeOf((*map[string]*SslVpnServer)(nil)).Elem()
 }
 
 func (o SslVpnServerMapOutput) ToSslVpnServerMapOutput() SslVpnServerMapOutput {
@@ -360,18 +297,16 @@ func (o SslVpnServerMapOutput) ToSslVpnServerMapOutputWithContext(ctx context.Co
 }
 
 func (o SslVpnServerMapOutput) MapIndex(k pulumi.StringInput) SslVpnServerOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SslVpnServer {
-		return vs[0].(map[string]SslVpnServer)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SslVpnServer {
+		return vs[0].(map[string]*SslVpnServer)[vs[1].(string)]
 	}).(SslVpnServerOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SslVpnServerInput)(nil)).Elem(), &SslVpnServer{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SslVpnServerPtrInput)(nil)).Elem(), &SslVpnServer{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SslVpnServerArrayInput)(nil)).Elem(), SslVpnServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SslVpnServerMapInput)(nil)).Elem(), SslVpnServerMap{})
 	pulumi.RegisterOutputType(SslVpnServerOutput{})
-	pulumi.RegisterOutputType(SslVpnServerPtrOutput{})
 	pulumi.RegisterOutputType(SslVpnServerArrayOutput{})
 	pulumi.RegisterOutputType(SslVpnServerMapOutput{})
 }

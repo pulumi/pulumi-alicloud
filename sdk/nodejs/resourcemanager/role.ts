@@ -110,17 +110,17 @@ export class Role extends pulumi.CustomResource {
      */
     constructor(name: string, args: RoleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RoleArgs | RoleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoleState | undefined;
-            inputs["arn"] = state ? state.arn : undefined;
-            inputs["assumeRolePolicyDocument"] = state ? state.assumeRolePolicyDocument : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["maxSessionDuration"] = state ? state.maxSessionDuration : undefined;
-            inputs["roleId"] = state ? state.roleId : undefined;
-            inputs["roleName"] = state ? state.roleName : undefined;
-            inputs["updateDate"] = state ? state.updateDate : undefined;
+            resourceInputs["arn"] = state ? state.arn : undefined;
+            resourceInputs["assumeRolePolicyDocument"] = state ? state.assumeRolePolicyDocument : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["maxSessionDuration"] = state ? state.maxSessionDuration : undefined;
+            resourceInputs["roleId"] = state ? state.roleId : undefined;
+            resourceInputs["roleName"] = state ? state.roleName : undefined;
+            resourceInputs["updateDate"] = state ? state.updateDate : undefined;
         } else {
             const args = argsOrState as RoleArgs | undefined;
             if ((!args || args.assumeRolePolicyDocument === undefined) && !opts.urn) {
@@ -129,18 +129,16 @@ export class Role extends pulumi.CustomResource {
             if ((!args || args.roleName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'roleName'");
             }
-            inputs["assumeRolePolicyDocument"] = args ? args.assumeRolePolicyDocument : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["maxSessionDuration"] = args ? args.maxSessionDuration : undefined;
-            inputs["roleName"] = args ? args.roleName : undefined;
-            inputs["arn"] = undefined /*out*/;
-            inputs["roleId"] = undefined /*out*/;
-            inputs["updateDate"] = undefined /*out*/;
+            resourceInputs["assumeRolePolicyDocument"] = args ? args.assumeRolePolicyDocument : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["maxSessionDuration"] = args ? args.maxSessionDuration : undefined;
+            resourceInputs["roleName"] = args ? args.roleName : undefined;
+            resourceInputs["arn"] = undefined /*out*/;
+            resourceInputs["roleId"] = undefined /*out*/;
+            resourceInputs["updateDate"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Role.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Role.__pulumiType, name, resourceInputs, opts);
     }
 }
 

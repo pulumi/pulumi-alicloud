@@ -89,25 +89,23 @@ export class Directory extends pulumi.CustomResource {
      */
     constructor(name: string, args?: DirectoryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DirectoryArgs | DirectoryState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DirectoryState | undefined;
-            inputs["directoryName"] = state ? state.directoryName : undefined;
-            inputs["mfaAuthenticationStatus"] = state ? state.mfaAuthenticationStatus : undefined;
-            inputs["samlIdentityProviderConfiguration"] = state ? state.samlIdentityProviderConfiguration : undefined;
-            inputs["scimSynchronizationStatus"] = state ? state.scimSynchronizationStatus : undefined;
+            resourceInputs["directoryName"] = state ? state.directoryName : undefined;
+            resourceInputs["mfaAuthenticationStatus"] = state ? state.mfaAuthenticationStatus : undefined;
+            resourceInputs["samlIdentityProviderConfiguration"] = state ? state.samlIdentityProviderConfiguration : undefined;
+            resourceInputs["scimSynchronizationStatus"] = state ? state.scimSynchronizationStatus : undefined;
         } else {
             const args = argsOrState as DirectoryArgs | undefined;
-            inputs["directoryName"] = args ? args.directoryName : undefined;
-            inputs["mfaAuthenticationStatus"] = args ? args.mfaAuthenticationStatus : undefined;
-            inputs["samlIdentityProviderConfiguration"] = args ? args.samlIdentityProviderConfiguration : undefined;
-            inputs["scimSynchronizationStatus"] = args ? args.scimSynchronizationStatus : undefined;
+            resourceInputs["directoryName"] = args ? args.directoryName : undefined;
+            resourceInputs["mfaAuthenticationStatus"] = args ? args.mfaAuthenticationStatus : undefined;
+            resourceInputs["samlIdentityProviderConfiguration"] = args ? args.samlIdentityProviderConfiguration : undefined;
+            resourceInputs["scimSynchronizationStatus"] = args ? args.scimSynchronizationStatus : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Directory.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Directory.__pulumiType, name, resourceInputs, opts);
     }
 }
 

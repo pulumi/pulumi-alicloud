@@ -40,9 +40,7 @@ export function getExchanges(args: GetExchangesArgs, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:amqp/getExchanges:getExchanges", {
         "ids": args.ids,
         "instanceId": args.instanceId,

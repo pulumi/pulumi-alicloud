@@ -30,9 +30,7 @@ export function getStores(args: GetStoresArgs, opts?: pulumi.InvokeOptions): Pro
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:log/getStores:getStores", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

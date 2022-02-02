@@ -64,17 +64,17 @@ export class DiskAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: DiskAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DiskAttachmentArgs | DiskAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DiskAttachmentState | undefined;
-            inputs["bootable"] = state ? state.bootable : undefined;
-            inputs["deleteWithInstance"] = state ? state.deleteWithInstance : undefined;
-            inputs["device"] = state ? state.device : undefined;
-            inputs["diskId"] = state ? state.diskId : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["keyPairName"] = state ? state.keyPairName : undefined;
-            inputs["password"] = state ? state.password : undefined;
+            resourceInputs["bootable"] = state ? state.bootable : undefined;
+            resourceInputs["deleteWithInstance"] = state ? state.deleteWithInstance : undefined;
+            resourceInputs["device"] = state ? state.device : undefined;
+            resourceInputs["diskId"] = state ? state.diskId : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["keyPairName"] = state ? state.keyPairName : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
         } else {
             const args = argsOrState as DiskAttachmentArgs | undefined;
             if ((!args || args.diskId === undefined) && !opts.urn) {
@@ -83,18 +83,16 @@ export class DiskAttachment extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["bootable"] = args ? args.bootable : undefined;
-            inputs["deleteWithInstance"] = args ? args.deleteWithInstance : undefined;
-            inputs["diskId"] = args ? args.diskId : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["keyPairName"] = args ? args.keyPairName : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["device"] = undefined /*out*/;
+            resourceInputs["bootable"] = args ? args.bootable : undefined;
+            resourceInputs["deleteWithInstance"] = args ? args.deleteWithInstance : undefined;
+            resourceInputs["diskId"] = args ? args.diskId : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["keyPairName"] = args ? args.keyPairName : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["device"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DiskAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DiskAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

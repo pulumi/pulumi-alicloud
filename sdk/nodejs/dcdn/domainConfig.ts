@@ -109,15 +109,15 @@ export class DomainConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args: DomainConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainConfigArgs | DomainConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainConfigState | undefined;
-            inputs["configId"] = state ? state.configId : undefined;
-            inputs["domainName"] = state ? state.domainName : undefined;
-            inputs["functionArgs"] = state ? state.functionArgs : undefined;
-            inputs["functionName"] = state ? state.functionName : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["configId"] = state ? state.configId : undefined;
+            resourceInputs["domainName"] = state ? state.domainName : undefined;
+            resourceInputs["functionArgs"] = state ? state.functionArgs : undefined;
+            resourceInputs["functionName"] = state ? state.functionName : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as DomainConfigArgs | undefined;
             if ((!args || args.domainName === undefined) && !opts.urn) {
@@ -129,16 +129,14 @@ export class DomainConfig extends pulumi.CustomResource {
             if ((!args || args.functionName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'functionName'");
             }
-            inputs["domainName"] = args ? args.domainName : undefined;
-            inputs["functionArgs"] = args ? args.functionArgs : undefined;
-            inputs["functionName"] = args ? args.functionName : undefined;
-            inputs["configId"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["domainName"] = args ? args.domainName : undefined;
+            resourceInputs["functionArgs"] = args ? args.functionArgs : undefined;
+            resourceInputs["functionName"] = args ? args.functionName : undefined;
+            resourceInputs["configId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DomainConfig.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DomainConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

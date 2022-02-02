@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cfg
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.Cfg
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAggregatorsResult> InvokeAsync(GetAggregatorsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAggregatorsResult>("alicloud:cfg/getAggregators:getAggregators", args ?? new GetAggregatorsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAggregatorsResult>("alicloud:cfg/getAggregators:getAggregators", args ?? new GetAggregatorsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Config Aggregators of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.Cfg
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAggregatorsResult> Invoke(GetAggregatorsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAggregatorsResult>("alicloud:cfg/getAggregators:getAggregators", args ?? new GetAggregatorsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAggregatorsResult>("alicloud:cfg/getAggregators:getAggregators", args ?? new GetAggregatorsInvokeArgs(), options.WithDefaults());
     }
 
 

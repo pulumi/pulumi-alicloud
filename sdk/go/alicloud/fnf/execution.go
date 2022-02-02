@@ -183,7 +183,7 @@ type ExecutionInput interface {
 }
 
 func (*Execution) ElementType() reflect.Type {
-	return reflect.TypeOf((*Execution)(nil))
+	return reflect.TypeOf((**Execution)(nil)).Elem()
 }
 
 func (i *Execution) ToExecutionOutput() ExecutionOutput {
@@ -192,35 +192,6 @@ func (i *Execution) ToExecutionOutput() ExecutionOutput {
 
 func (i *Execution) ToExecutionOutputWithContext(ctx context.Context) ExecutionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExecutionOutput)
-}
-
-func (i *Execution) ToExecutionPtrOutput() ExecutionPtrOutput {
-	return i.ToExecutionPtrOutputWithContext(context.Background())
-}
-
-func (i *Execution) ToExecutionPtrOutputWithContext(ctx context.Context) ExecutionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExecutionPtrOutput)
-}
-
-type ExecutionPtrInput interface {
-	pulumi.Input
-
-	ToExecutionPtrOutput() ExecutionPtrOutput
-	ToExecutionPtrOutputWithContext(ctx context.Context) ExecutionPtrOutput
-}
-
-type executionPtrType ExecutionArgs
-
-func (*executionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Execution)(nil))
-}
-
-func (i *executionPtrType) ToExecutionPtrOutput() ExecutionPtrOutput {
-	return i.ToExecutionPtrOutputWithContext(context.Background())
-}
-
-func (i *executionPtrType) ToExecutionPtrOutputWithContext(ctx context.Context) ExecutionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExecutionPtrOutput)
 }
 
 // ExecutionArrayInput is an input type that accepts ExecutionArray and ExecutionArrayOutput values.
@@ -276,7 +247,7 @@ func (i ExecutionMap) ToExecutionMapOutputWithContext(ctx context.Context) Execu
 type ExecutionOutput struct{ *pulumi.OutputState }
 
 func (ExecutionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Execution)(nil))
+	return reflect.TypeOf((**Execution)(nil)).Elem()
 }
 
 func (o ExecutionOutput) ToExecutionOutput() ExecutionOutput {
@@ -287,44 +258,10 @@ func (o ExecutionOutput) ToExecutionOutputWithContext(ctx context.Context) Execu
 	return o
 }
 
-func (o ExecutionOutput) ToExecutionPtrOutput() ExecutionPtrOutput {
-	return o.ToExecutionPtrOutputWithContext(context.Background())
-}
-
-func (o ExecutionOutput) ToExecutionPtrOutputWithContext(ctx context.Context) ExecutionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Execution) *Execution {
-		return &v
-	}).(ExecutionPtrOutput)
-}
-
-type ExecutionPtrOutput struct{ *pulumi.OutputState }
-
-func (ExecutionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Execution)(nil))
-}
-
-func (o ExecutionPtrOutput) ToExecutionPtrOutput() ExecutionPtrOutput {
-	return o
-}
-
-func (o ExecutionPtrOutput) ToExecutionPtrOutputWithContext(ctx context.Context) ExecutionPtrOutput {
-	return o
-}
-
-func (o ExecutionPtrOutput) Elem() ExecutionOutput {
-	return o.ApplyT(func(v *Execution) Execution {
-		if v != nil {
-			return *v
-		}
-		var ret Execution
-		return ret
-	}).(ExecutionOutput)
-}
-
 type ExecutionArrayOutput struct{ *pulumi.OutputState }
 
 func (ExecutionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Execution)(nil))
+	return reflect.TypeOf((*[]*Execution)(nil)).Elem()
 }
 
 func (o ExecutionArrayOutput) ToExecutionArrayOutput() ExecutionArrayOutput {
@@ -336,15 +273,15 @@ func (o ExecutionArrayOutput) ToExecutionArrayOutputWithContext(ctx context.Cont
 }
 
 func (o ExecutionArrayOutput) Index(i pulumi.IntInput) ExecutionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Execution {
-		return vs[0].([]Execution)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Execution {
+		return vs[0].([]*Execution)[vs[1].(int)]
 	}).(ExecutionOutput)
 }
 
 type ExecutionMapOutput struct{ *pulumi.OutputState }
 
 func (ExecutionMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Execution)(nil))
+	return reflect.TypeOf((*map[string]*Execution)(nil)).Elem()
 }
 
 func (o ExecutionMapOutput) ToExecutionMapOutput() ExecutionMapOutput {
@@ -356,18 +293,16 @@ func (o ExecutionMapOutput) ToExecutionMapOutputWithContext(ctx context.Context)
 }
 
 func (o ExecutionMapOutput) MapIndex(k pulumi.StringInput) ExecutionOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Execution {
-		return vs[0].(map[string]Execution)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Execution {
+		return vs[0].(map[string]*Execution)[vs[1].(string)]
 	}).(ExecutionOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionInput)(nil)).Elem(), &Execution{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionPtrInput)(nil)).Elem(), &Execution{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionArrayInput)(nil)).Elem(), ExecutionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionMapInput)(nil)).Elem(), ExecutionMap{})
 	pulumi.RegisterOutputType(ExecutionOutput{})
-	pulumi.RegisterOutputType(ExecutionPtrOutput{})
 	pulumi.RegisterOutputType(ExecutionArrayOutput{})
 	pulumi.RegisterOutputType(ExecutionMapOutput{})
 }

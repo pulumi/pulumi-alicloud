@@ -38,9 +38,7 @@ export function getPrometheusAlertRules(args: GetPrometheusAlertRulesArgs, opts?
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules", {
         "clusterId": args.clusterId,
         "ids": args.ids,

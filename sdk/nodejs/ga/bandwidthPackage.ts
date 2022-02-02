@@ -135,24 +135,24 @@ export class BandwidthPackage extends pulumi.CustomResource {
      */
     constructor(name: string, args: BandwidthPackageArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BandwidthPackageArgs | BandwidthPackageState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BandwidthPackageState | undefined;
-            inputs["autoPay"] = state ? state.autoPay : undefined;
-            inputs["autoUseCoupon"] = state ? state.autoUseCoupon : undefined;
-            inputs["bandwidth"] = state ? state.bandwidth : undefined;
-            inputs["bandwidthPackageName"] = state ? state.bandwidthPackageName : undefined;
-            inputs["bandwidthType"] = state ? state.bandwidthType : undefined;
-            inputs["billingType"] = state ? state.billingType : undefined;
-            inputs["cbnGeographicRegionIda"] = state ? state.cbnGeographicRegionIda : undefined;
-            inputs["cbnGeographicRegionIdb"] = state ? state.cbnGeographicRegionIdb : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["duration"] = state ? state.duration : undefined;
-            inputs["paymentType"] = state ? state.paymentType : undefined;
-            inputs["ratio"] = state ? state.ratio : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
+            resourceInputs["autoUseCoupon"] = state ? state.autoUseCoupon : undefined;
+            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
+            resourceInputs["bandwidthPackageName"] = state ? state.bandwidthPackageName : undefined;
+            resourceInputs["bandwidthType"] = state ? state.bandwidthType : undefined;
+            resourceInputs["billingType"] = state ? state.billingType : undefined;
+            resourceInputs["cbnGeographicRegionIda"] = state ? state.cbnGeographicRegionIda : undefined;
+            resourceInputs["cbnGeographicRegionIdb"] = state ? state.cbnGeographicRegionIdb : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["duration"] = state ? state.duration : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["ratio"] = state ? state.ratio : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as BandwidthPackageArgs | undefined;
             if ((!args || args.bandwidth === undefined) && !opts.urn) {
@@ -161,25 +161,23 @@ export class BandwidthPackage extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["autoPay"] = args ? args.autoPay : undefined;
-            inputs["autoUseCoupon"] = args ? args.autoUseCoupon : undefined;
-            inputs["bandwidth"] = args ? args.bandwidth : undefined;
-            inputs["bandwidthPackageName"] = args ? args.bandwidthPackageName : undefined;
-            inputs["bandwidthType"] = args ? args.bandwidthType : undefined;
-            inputs["billingType"] = args ? args.billingType : undefined;
-            inputs["cbnGeographicRegionIda"] = args ? args.cbnGeographicRegionIda : undefined;
-            inputs["cbnGeographicRegionIdb"] = args ? args.cbnGeographicRegionIdb : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["duration"] = args ? args.duration : undefined;
-            inputs["paymentType"] = args ? args.paymentType : undefined;
-            inputs["ratio"] = args ? args.ratio : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
+            resourceInputs["autoUseCoupon"] = args ? args.autoUseCoupon : undefined;
+            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
+            resourceInputs["bandwidthPackageName"] = args ? args.bandwidthPackageName : undefined;
+            resourceInputs["bandwidthType"] = args ? args.bandwidthType : undefined;
+            resourceInputs["billingType"] = args ? args.billingType : undefined;
+            resourceInputs["cbnGeographicRegionIda"] = args ? args.cbnGeographicRegionIda : undefined;
+            resourceInputs["cbnGeographicRegionIdb"] = args ? args.cbnGeographicRegionIdb : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["duration"] = args ? args.duration : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["ratio"] = args ? args.ratio : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(BandwidthPackage.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(BandwidthPackage.__pulumiType, name, resourceInputs, opts);
     }
 }
 

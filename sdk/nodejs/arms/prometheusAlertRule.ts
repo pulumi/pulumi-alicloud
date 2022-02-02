@@ -119,21 +119,21 @@ export class PrometheusAlertRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: PrometheusAlertRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PrometheusAlertRuleArgs | PrometheusAlertRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PrometheusAlertRuleState | undefined;
-            inputs["annotations"] = state ? state.annotations : undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["dispatchRuleId"] = state ? state.dispatchRuleId : undefined;
-            inputs["duration"] = state ? state.duration : undefined;
-            inputs["expression"] = state ? state.expression : undefined;
-            inputs["labels"] = state ? state.labels : undefined;
-            inputs["message"] = state ? state.message : undefined;
-            inputs["notifyType"] = state ? state.notifyType : undefined;
-            inputs["prometheusAlertRuleName"] = state ? state.prometheusAlertRuleName : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["dispatchRuleId"] = state ? state.dispatchRuleId : undefined;
+            resourceInputs["duration"] = state ? state.duration : undefined;
+            resourceInputs["expression"] = state ? state.expression : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["message"] = state ? state.message : undefined;
+            resourceInputs["notifyType"] = state ? state.notifyType : undefined;
+            resourceInputs["prometheusAlertRuleName"] = state ? state.prometheusAlertRuleName : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as PrometheusAlertRuleArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
@@ -151,22 +151,20 @@ export class PrometheusAlertRule extends pulumi.CustomResource {
             if ((!args || args.prometheusAlertRuleName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'prometheusAlertRuleName'");
             }
-            inputs["annotations"] = args ? args.annotations : undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["dispatchRuleId"] = args ? args.dispatchRuleId : undefined;
-            inputs["duration"] = args ? args.duration : undefined;
-            inputs["expression"] = args ? args.expression : undefined;
-            inputs["labels"] = args ? args.labels : undefined;
-            inputs["message"] = args ? args.message : undefined;
-            inputs["notifyType"] = args ? args.notifyType : undefined;
-            inputs["prometheusAlertRuleName"] = args ? args.prometheusAlertRuleName : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["dispatchRuleId"] = args ? args.dispatchRuleId : undefined;
+            resourceInputs["duration"] = args ? args.duration : undefined;
+            resourceInputs["expression"] = args ? args.expression : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["message"] = args ? args.message : undefined;
+            resourceInputs["notifyType"] = args ? args.notifyType : undefined;
+            resourceInputs["prometheusAlertRuleName"] = args ? args.prometheusAlertRuleName : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(PrometheusAlertRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(PrometheusAlertRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

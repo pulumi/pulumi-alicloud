@@ -32,9 +32,7 @@ export function getSecurityPolicies(args?: GetSecurityPoliciesArgs, opts?: pulum
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:alb/getSecurityPolicies:getSecurityPolicies", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

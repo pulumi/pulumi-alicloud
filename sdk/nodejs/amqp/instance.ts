@@ -148,25 +148,25 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            inputs["instanceName"] = state ? state.instanceName : undefined;
-            inputs["instanceType"] = state ? state.instanceType : undefined;
-            inputs["logistics"] = state ? state.logistics : undefined;
-            inputs["maxEipTps"] = state ? state.maxEipTps : undefined;
-            inputs["maxTps"] = state ? state.maxTps : undefined;
-            inputs["modifyType"] = state ? state.modifyType : undefined;
-            inputs["paymentType"] = state ? state.paymentType : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["queueCapacity"] = state ? state.queueCapacity : undefined;
-            inputs["renewalDuration"] = state ? state.renewalDuration : undefined;
-            inputs["renewalDurationUnit"] = state ? state.renewalDurationUnit : undefined;
-            inputs["renewalStatus"] = state ? state.renewalStatus : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["storageSize"] = state ? state.storageSize : undefined;
-            inputs["supportEip"] = state ? state.supportEip : undefined;
+            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
+            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
+            resourceInputs["logistics"] = state ? state.logistics : undefined;
+            resourceInputs["maxEipTps"] = state ? state.maxEipTps : undefined;
+            resourceInputs["maxTps"] = state ? state.maxTps : undefined;
+            resourceInputs["modifyType"] = state ? state.modifyType : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["queueCapacity"] = state ? state.queueCapacity : undefined;
+            resourceInputs["renewalDuration"] = state ? state.renewalDuration : undefined;
+            resourceInputs["renewalDurationUnit"] = state ? state.renewalDurationUnit : undefined;
+            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["storageSize"] = state ? state.storageSize : undefined;
+            resourceInputs["supportEip"] = state ? state.supportEip : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.instanceType === undefined) && !opts.urn) {
@@ -184,26 +184,24 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.supportEip === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'supportEip'");
             }
-            inputs["instanceName"] = args ? args.instanceName : undefined;
-            inputs["instanceType"] = args ? args.instanceType : undefined;
-            inputs["logistics"] = args ? args.logistics : undefined;
-            inputs["maxEipTps"] = args ? args.maxEipTps : undefined;
-            inputs["maxTps"] = args ? args.maxTps : undefined;
-            inputs["modifyType"] = args ? args.modifyType : undefined;
-            inputs["paymentType"] = args ? args.paymentType : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["queueCapacity"] = args ? args.queueCapacity : undefined;
-            inputs["renewalDuration"] = args ? args.renewalDuration : undefined;
-            inputs["renewalDurationUnit"] = args ? args.renewalDurationUnit : undefined;
-            inputs["renewalStatus"] = args ? args.renewalStatus : undefined;
-            inputs["storageSize"] = args ? args.storageSize : undefined;
-            inputs["supportEip"] = args ? args.supportEip : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
+            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
+            resourceInputs["logistics"] = args ? args.logistics : undefined;
+            resourceInputs["maxEipTps"] = args ? args.maxEipTps : undefined;
+            resourceInputs["maxTps"] = args ? args.maxTps : undefined;
+            resourceInputs["modifyType"] = args ? args.modifyType : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["queueCapacity"] = args ? args.queueCapacity : undefined;
+            resourceInputs["renewalDuration"] = args ? args.renewalDuration : undefined;
+            resourceInputs["renewalDurationUnit"] = args ? args.renewalDurationUnit : undefined;
+            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
+            resourceInputs["storageSize"] = args ? args.storageSize : undefined;
+            resourceInputs["supportEip"] = args ? args.supportEip : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Instance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

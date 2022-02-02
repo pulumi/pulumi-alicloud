@@ -89,17 +89,17 @@ export class AccessManagement extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccessManagementArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessManagementArgs | AccessManagementState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessManagementState | undefined;
-            inputs["accessConfigurationId"] = state ? state.accessConfigurationId : undefined;
-            inputs["deprovisionStrategy"] = state ? state.deprovisionStrategy : undefined;
-            inputs["directoryId"] = state ? state.directoryId : undefined;
-            inputs["principalId"] = state ? state.principalId : undefined;
-            inputs["principalType"] = state ? state.principalType : undefined;
-            inputs["targetId"] = state ? state.targetId : undefined;
-            inputs["targetType"] = state ? state.targetType : undefined;
+            resourceInputs["accessConfigurationId"] = state ? state.accessConfigurationId : undefined;
+            resourceInputs["deprovisionStrategy"] = state ? state.deprovisionStrategy : undefined;
+            resourceInputs["directoryId"] = state ? state.directoryId : undefined;
+            resourceInputs["principalId"] = state ? state.principalId : undefined;
+            resourceInputs["principalType"] = state ? state.principalType : undefined;
+            resourceInputs["targetId"] = state ? state.targetId : undefined;
+            resourceInputs["targetType"] = state ? state.targetType : undefined;
         } else {
             const args = argsOrState as AccessManagementArgs | undefined;
             if ((!args || args.accessConfigurationId === undefined) && !opts.urn) {
@@ -120,18 +120,16 @@ export class AccessManagement extends pulumi.CustomResource {
             if ((!args || args.targetType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetType'");
             }
-            inputs["accessConfigurationId"] = args ? args.accessConfigurationId : undefined;
-            inputs["deprovisionStrategy"] = args ? args.deprovisionStrategy : undefined;
-            inputs["directoryId"] = args ? args.directoryId : undefined;
-            inputs["principalId"] = args ? args.principalId : undefined;
-            inputs["principalType"] = args ? args.principalType : undefined;
-            inputs["targetId"] = args ? args.targetId : undefined;
-            inputs["targetType"] = args ? args.targetType : undefined;
+            resourceInputs["accessConfigurationId"] = args ? args.accessConfigurationId : undefined;
+            resourceInputs["deprovisionStrategy"] = args ? args.deprovisionStrategy : undefined;
+            resourceInputs["directoryId"] = args ? args.directoryId : undefined;
+            resourceInputs["principalId"] = args ? args.principalId : undefined;
+            resourceInputs["principalType"] = args ? args.principalType : undefined;
+            resourceInputs["targetId"] = args ? args.targetId : undefined;
+            resourceInputs["targetType"] = args ? args.targetType : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AccessManagement.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AccessManagement.__pulumiType, name, resourceInputs, opts);
     }
 }
 

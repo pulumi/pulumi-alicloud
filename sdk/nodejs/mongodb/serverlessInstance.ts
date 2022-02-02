@@ -179,29 +179,29 @@ export class ServerlessInstance extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServerlessInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServerlessInstanceArgs | ServerlessInstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerlessInstanceState | undefined;
-            inputs["accountPassword"] = state ? state.accountPassword : undefined;
-            inputs["autoRenew"] = state ? state.autoRenew : undefined;
-            inputs["capacityUnit"] = state ? state.capacityUnit : undefined;
-            inputs["dbInstanceDescription"] = state ? state.dbInstanceDescription : undefined;
-            inputs["dbInstanceStorage"] = state ? state.dbInstanceStorage : undefined;
-            inputs["engine"] = state ? state.engine : undefined;
-            inputs["engineVersion"] = state ? state.engineVersion : undefined;
-            inputs["maintainEndTime"] = state ? state.maintainEndTime : undefined;
-            inputs["maintainStartTime"] = state ? state.maintainStartTime : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["periodPriceType"] = state ? state.periodPriceType : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["securityIpGroups"] = state ? state.securityIpGroups : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["storageEngine"] = state ? state.storageEngine : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["vpcId"] = state ? state.vpcId : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountPassword"] = state ? state.accountPassword : undefined;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["capacityUnit"] = state ? state.capacityUnit : undefined;
+            resourceInputs["dbInstanceDescription"] = state ? state.dbInstanceDescription : undefined;
+            resourceInputs["dbInstanceStorage"] = state ? state.dbInstanceStorage : undefined;
+            resourceInputs["engine"] = state ? state.engine : undefined;
+            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
+            resourceInputs["maintainEndTime"] = state ? state.maintainEndTime : undefined;
+            resourceInputs["maintainStartTime"] = state ? state.maintainStartTime : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["periodPriceType"] = state ? state.periodPriceType : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["securityIpGroups"] = state ? state.securityIpGroups : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["storageEngine"] = state ? state.storageEngine : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ServerlessInstanceArgs | undefined;
             if ((!args || args.accountPassword === undefined) && !opts.urn) {
@@ -225,30 +225,28 @@ export class ServerlessInstance extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["accountPassword"] = args ? args.accountPassword : undefined;
-            inputs["autoRenew"] = args ? args.autoRenew : undefined;
-            inputs["capacityUnit"] = args ? args.capacityUnit : undefined;
-            inputs["dbInstanceDescription"] = args ? args.dbInstanceDescription : undefined;
-            inputs["dbInstanceStorage"] = args ? args.dbInstanceStorage : undefined;
-            inputs["engine"] = args ? args.engine : undefined;
-            inputs["engineVersion"] = args ? args.engineVersion : undefined;
-            inputs["maintainEndTime"] = args ? args.maintainEndTime : undefined;
-            inputs["maintainStartTime"] = args ? args.maintainStartTime : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["periodPriceType"] = args ? args.periodPriceType : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["securityIpGroups"] = args ? args.securityIpGroups : undefined;
-            inputs["storageEngine"] = args ? args.storageEngine : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["vpcId"] = args ? args.vpcId : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["accountPassword"] = args ? args.accountPassword : undefined;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["capacityUnit"] = args ? args.capacityUnit : undefined;
+            resourceInputs["dbInstanceDescription"] = args ? args.dbInstanceDescription : undefined;
+            resourceInputs["dbInstanceStorage"] = args ? args.dbInstanceStorage : undefined;
+            resourceInputs["engine"] = args ? args.engine : undefined;
+            resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
+            resourceInputs["maintainEndTime"] = args ? args.maintainEndTime : undefined;
+            resourceInputs["maintainStartTime"] = args ? args.maintainStartTime : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["periodPriceType"] = args ? args.periodPriceType : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["securityIpGroups"] = args ? args.securityIpGroups : undefined;
+            resourceInputs["storageEngine"] = args ? args.storageEngine : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ServerlessInstance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ServerlessInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -29,9 +29,7 @@ export function getConsumerGroups(args: GetConsumerGroupsArgs, opts?: pulumi.Inv
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:actiontrail/getConsumerGroups:getConsumerGroups", {
         "consumerIdRegex": args.consumerIdRegex,
         "instanceId": args.instanceId,

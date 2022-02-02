@@ -34,9 +34,7 @@ export function getAccessPoints(args?: GetAccessPointsArgs, opts?: pulumi.Invoke
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:expressconnect/getAccessPoints:getAccessPoints", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

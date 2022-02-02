@@ -117,19 +117,19 @@ export class DedicatedHostGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: DedicatedHostGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DedicatedHostGroupArgs | DedicatedHostGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DedicatedHostGroupState | undefined;
-            inputs["allocationPolicy"] = state ? state.allocationPolicy : undefined;
-            inputs["cpuAllocationRatio"] = state ? state.cpuAllocationRatio : undefined;
-            inputs["dedicatedHostGroupDesc"] = state ? state.dedicatedHostGroupDesc : undefined;
-            inputs["diskAllocationRatio"] = state ? state.diskAllocationRatio : undefined;
-            inputs["engine"] = state ? state.engine : undefined;
-            inputs["hostReplacePolicy"] = state ? state.hostReplacePolicy : undefined;
-            inputs["memAllocationRatio"] = state ? state.memAllocationRatio : undefined;
-            inputs["openPermission"] = state ? state.openPermission : undefined;
-            inputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["allocationPolicy"] = state ? state.allocationPolicy : undefined;
+            resourceInputs["cpuAllocationRatio"] = state ? state.cpuAllocationRatio : undefined;
+            resourceInputs["dedicatedHostGroupDesc"] = state ? state.dedicatedHostGroupDesc : undefined;
+            resourceInputs["diskAllocationRatio"] = state ? state.diskAllocationRatio : undefined;
+            resourceInputs["engine"] = state ? state.engine : undefined;
+            resourceInputs["hostReplacePolicy"] = state ? state.hostReplacePolicy : undefined;
+            resourceInputs["memAllocationRatio"] = state ? state.memAllocationRatio : undefined;
+            resourceInputs["openPermission"] = state ? state.openPermission : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as DedicatedHostGroupArgs | undefined;
             if ((!args || args.engine === undefined) && !opts.urn) {
@@ -138,20 +138,18 @@ export class DedicatedHostGroup extends pulumi.CustomResource {
             if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            inputs["allocationPolicy"] = args ? args.allocationPolicy : undefined;
-            inputs["cpuAllocationRatio"] = args ? args.cpuAllocationRatio : undefined;
-            inputs["dedicatedHostGroupDesc"] = args ? args.dedicatedHostGroupDesc : undefined;
-            inputs["diskAllocationRatio"] = args ? args.diskAllocationRatio : undefined;
-            inputs["engine"] = args ? args.engine : undefined;
-            inputs["hostReplacePolicy"] = args ? args.hostReplacePolicy : undefined;
-            inputs["memAllocationRatio"] = args ? args.memAllocationRatio : undefined;
-            inputs["openPermission"] = args ? args.openPermission : undefined;
-            inputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["allocationPolicy"] = args ? args.allocationPolicy : undefined;
+            resourceInputs["cpuAllocationRatio"] = args ? args.cpuAllocationRatio : undefined;
+            resourceInputs["dedicatedHostGroupDesc"] = args ? args.dedicatedHostGroupDesc : undefined;
+            resourceInputs["diskAllocationRatio"] = args ? args.diskAllocationRatio : undefined;
+            resourceInputs["engine"] = args ? args.engine : undefined;
+            resourceInputs["hostReplacePolicy"] = args ? args.hostReplacePolicy : undefined;
+            resourceInputs["memAllocationRatio"] = args ? args.memAllocationRatio : undefined;
+            resourceInputs["openPermission"] = args ? args.openPermission : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DedicatedHostGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DedicatedHostGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

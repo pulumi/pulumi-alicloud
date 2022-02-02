@@ -130,37 +130,35 @@ export class ServerCertificate extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ServerCertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServerCertificateArgs | ServerCertificateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerCertificateState | undefined;
-            inputs["alicloudCertifacteId"] = state ? state.alicloudCertifacteId : undefined;
-            inputs["alicloudCertifacteName"] = state ? state.alicloudCertifacteName : undefined;
-            inputs["alicloudCertificateId"] = state ? state.alicloudCertificateId : undefined;
-            inputs["alicloudCertificateName"] = state ? state.alicloudCertificateName : undefined;
-            inputs["alicloudCertificateRegionId"] = state ? state.alicloudCertificateRegionId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["privateKey"] = state ? state.privateKey : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["serverCertificate"] = state ? state.serverCertificate : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["alicloudCertifacteId"] = state ? state.alicloudCertifacteId : undefined;
+            resourceInputs["alicloudCertifacteName"] = state ? state.alicloudCertifacteName : undefined;
+            resourceInputs["alicloudCertificateId"] = state ? state.alicloudCertificateId : undefined;
+            resourceInputs["alicloudCertificateName"] = state ? state.alicloudCertificateName : undefined;
+            resourceInputs["alicloudCertificateRegionId"] = state ? state.alicloudCertificateRegionId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["serverCertificate"] = state ? state.serverCertificate : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as ServerCertificateArgs | undefined;
-            inputs["alicloudCertifacteId"] = args ? args.alicloudCertifacteId : undefined;
-            inputs["alicloudCertifacteName"] = args ? args.alicloudCertifacteName : undefined;
-            inputs["alicloudCertificateId"] = args ? args.alicloudCertificateId : undefined;
-            inputs["alicloudCertificateName"] = args ? args.alicloudCertificateName : undefined;
-            inputs["alicloudCertificateRegionId"] = args ? args.alicloudCertificateRegionId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["privateKey"] = args ? args.privateKey : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["serverCertificate"] = args ? args.serverCertificate : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["alicloudCertifacteId"] = args ? args.alicloudCertifacteId : undefined;
+            resourceInputs["alicloudCertifacteName"] = args ? args.alicloudCertifacteName : undefined;
+            resourceInputs["alicloudCertificateId"] = args ? args.alicloudCertificateId : undefined;
+            resourceInputs["alicloudCertificateName"] = args ? args.alicloudCertificateName : undefined;
+            resourceInputs["alicloudCertificateRegionId"] = args ? args.alicloudCertificateRegionId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["serverCertificate"] = args ? args.serverCertificate : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ServerCertificate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ServerCertificate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -157,29 +157,29 @@ export class VirtualBorderRouter extends pulumi.CustomResource {
      */
     constructor(name: string, args: VirtualBorderRouterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VirtualBorderRouterArgs | VirtualBorderRouterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VirtualBorderRouterState | undefined;
-            inputs["associatedPhysicalConnections"] = state ? state.associatedPhysicalConnections : undefined;
-            inputs["bandwidth"] = state ? state.bandwidth : undefined;
-            inputs["circuitCode"] = state ? state.circuitCode : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["detectMultiplier"] = state ? state.detectMultiplier : undefined;
-            inputs["enableIpv6"] = state ? state.enableIpv6 : undefined;
-            inputs["localGatewayIp"] = state ? state.localGatewayIp : undefined;
-            inputs["localIpv6GatewayIp"] = state ? state.localIpv6GatewayIp : undefined;
-            inputs["minRxInterval"] = state ? state.minRxInterval : undefined;
-            inputs["minTxInterval"] = state ? state.minTxInterval : undefined;
-            inputs["peerGatewayIp"] = state ? state.peerGatewayIp : undefined;
-            inputs["peerIpv6GatewayIp"] = state ? state.peerIpv6GatewayIp : undefined;
-            inputs["peeringIpv6SubnetMask"] = state ? state.peeringIpv6SubnetMask : undefined;
-            inputs["peeringSubnetMask"] = state ? state.peeringSubnetMask : undefined;
-            inputs["physicalConnectionId"] = state ? state.physicalConnectionId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["vbrOwnerId"] = state ? state.vbrOwnerId : undefined;
-            inputs["virtualBorderRouterName"] = state ? state.virtualBorderRouterName : undefined;
-            inputs["vlanId"] = state ? state.vlanId : undefined;
+            resourceInputs["associatedPhysicalConnections"] = state ? state.associatedPhysicalConnections : undefined;
+            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
+            resourceInputs["circuitCode"] = state ? state.circuitCode : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["detectMultiplier"] = state ? state.detectMultiplier : undefined;
+            resourceInputs["enableIpv6"] = state ? state.enableIpv6 : undefined;
+            resourceInputs["localGatewayIp"] = state ? state.localGatewayIp : undefined;
+            resourceInputs["localIpv6GatewayIp"] = state ? state.localIpv6GatewayIp : undefined;
+            resourceInputs["minRxInterval"] = state ? state.minRxInterval : undefined;
+            resourceInputs["minTxInterval"] = state ? state.minTxInterval : undefined;
+            resourceInputs["peerGatewayIp"] = state ? state.peerGatewayIp : undefined;
+            resourceInputs["peerIpv6GatewayIp"] = state ? state.peerIpv6GatewayIp : undefined;
+            resourceInputs["peeringIpv6SubnetMask"] = state ? state.peeringIpv6SubnetMask : undefined;
+            resourceInputs["peeringSubnetMask"] = state ? state.peeringSubnetMask : undefined;
+            resourceInputs["physicalConnectionId"] = state ? state.physicalConnectionId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["vbrOwnerId"] = state ? state.vbrOwnerId : undefined;
+            resourceInputs["virtualBorderRouterName"] = state ? state.virtualBorderRouterName : undefined;
+            resourceInputs["vlanId"] = state ? state.vlanId : undefined;
         } else {
             const args = argsOrState as VirtualBorderRouterArgs | undefined;
             if ((!args || args.localGatewayIp === undefined) && !opts.urn) {
@@ -197,30 +197,28 @@ export class VirtualBorderRouter extends pulumi.CustomResource {
             if ((!args || args.vlanId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vlanId'");
             }
-            inputs["associatedPhysicalConnections"] = args ? args.associatedPhysicalConnections : undefined;
-            inputs["bandwidth"] = args ? args.bandwidth : undefined;
-            inputs["circuitCode"] = args ? args.circuitCode : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["detectMultiplier"] = args ? args.detectMultiplier : undefined;
-            inputs["enableIpv6"] = args ? args.enableIpv6 : undefined;
-            inputs["localGatewayIp"] = args ? args.localGatewayIp : undefined;
-            inputs["localIpv6GatewayIp"] = args ? args.localIpv6GatewayIp : undefined;
-            inputs["minRxInterval"] = args ? args.minRxInterval : undefined;
-            inputs["minTxInterval"] = args ? args.minTxInterval : undefined;
-            inputs["peerGatewayIp"] = args ? args.peerGatewayIp : undefined;
-            inputs["peerIpv6GatewayIp"] = args ? args.peerIpv6GatewayIp : undefined;
-            inputs["peeringIpv6SubnetMask"] = args ? args.peeringIpv6SubnetMask : undefined;
-            inputs["peeringSubnetMask"] = args ? args.peeringSubnetMask : undefined;
-            inputs["physicalConnectionId"] = args ? args.physicalConnectionId : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["vbrOwnerId"] = args ? args.vbrOwnerId : undefined;
-            inputs["virtualBorderRouterName"] = args ? args.virtualBorderRouterName : undefined;
-            inputs["vlanId"] = args ? args.vlanId : undefined;
+            resourceInputs["associatedPhysicalConnections"] = args ? args.associatedPhysicalConnections : undefined;
+            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
+            resourceInputs["circuitCode"] = args ? args.circuitCode : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["detectMultiplier"] = args ? args.detectMultiplier : undefined;
+            resourceInputs["enableIpv6"] = args ? args.enableIpv6 : undefined;
+            resourceInputs["localGatewayIp"] = args ? args.localGatewayIp : undefined;
+            resourceInputs["localIpv6GatewayIp"] = args ? args.localIpv6GatewayIp : undefined;
+            resourceInputs["minRxInterval"] = args ? args.minRxInterval : undefined;
+            resourceInputs["minTxInterval"] = args ? args.minTxInterval : undefined;
+            resourceInputs["peerGatewayIp"] = args ? args.peerGatewayIp : undefined;
+            resourceInputs["peerIpv6GatewayIp"] = args ? args.peerIpv6GatewayIp : undefined;
+            resourceInputs["peeringIpv6SubnetMask"] = args ? args.peeringIpv6SubnetMask : undefined;
+            resourceInputs["peeringSubnetMask"] = args ? args.peeringSubnetMask : undefined;
+            resourceInputs["physicalConnectionId"] = args ? args.physicalConnectionId : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["vbrOwnerId"] = args ? args.vbrOwnerId : undefined;
+            resourceInputs["virtualBorderRouterName"] = args ? args.virtualBorderRouterName : undefined;
+            resourceInputs["vlanId"] = args ? args.vlanId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(VirtualBorderRouter.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(VirtualBorderRouter.__pulumiType, name, resourceInputs, opts);
     }
 }
 

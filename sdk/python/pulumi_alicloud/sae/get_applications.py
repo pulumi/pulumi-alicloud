@@ -195,7 +195,7 @@ def get_applications(app_name: Optional[str] = None,
         replicas=5,
         cpu=500,
         memory=2048)
-    default_applications = default_application.id.apply(lambda id: alicloud.sae.get_applications(ids=[id]))
+    default_applications = alicloud.sae.get_applications_output(ids=[default_application.id])
     pulumi.export("saeApplicationId", default_applications.applications[0].id)
     ```
 
@@ -295,7 +295,7 @@ def get_applications_output(app_name: Optional[pulumi.Input[Optional[str]]] = No
         replicas=5,
         cpu=500,
         memory=2048)
-    default_applications = default_application.id.apply(lambda id: alicloud.sae.get_applications(ids=[id]))
+    default_applications = alicloud.sae.get_applications_output(ids=[default_application.id])
     pulumi.export("saeApplicationId", default_applications.applications[0].id)
     ```
 

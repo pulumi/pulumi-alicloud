@@ -55,11 +55,11 @@ import * as utilities from "../utilities";
  *     desktopId: defaultDesktop.id,
  *     description: "example_value",
  * });
- * const ids = defaultImage.id.apply(id => alicloud.eds.getImages({
- *     ids: [id],
- * }));
+ * const ids = alicloud.eds.getImagesOutput({
+ *     ids: [defaultImage.id],
+ * });
  * export const ecdImageId1 = ids.apply(ids => ids.images?[0]?.id);
- * const nameRegex = defaultImage.imageName.apply(imageName => alicloud.eds.getImages({
+ * const nameRegex = defaultImage.imageName.apply(imageName => alicloud.eds.getImagesOutput({
  *     nameRegex: imageName,
  * }));
  * export const ecdImageId2 = nameRegex.apply(nameRegex => nameRegex.images?[0]?.id);
@@ -71,9 +71,7 @@ export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Pr
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:eds/getImages:getImages", {
         "ids": args.ids,
         "imageType": args.imageType,

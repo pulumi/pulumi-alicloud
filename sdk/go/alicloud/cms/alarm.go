@@ -395,7 +395,7 @@ type AlarmInput interface {
 }
 
 func (*Alarm) ElementType() reflect.Type {
-	return reflect.TypeOf((*Alarm)(nil))
+	return reflect.TypeOf((**Alarm)(nil)).Elem()
 }
 
 func (i *Alarm) ToAlarmOutput() AlarmOutput {
@@ -404,35 +404,6 @@ func (i *Alarm) ToAlarmOutput() AlarmOutput {
 
 func (i *Alarm) ToAlarmOutputWithContext(ctx context.Context) AlarmOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlarmOutput)
-}
-
-func (i *Alarm) ToAlarmPtrOutput() AlarmPtrOutput {
-	return i.ToAlarmPtrOutputWithContext(context.Background())
-}
-
-func (i *Alarm) ToAlarmPtrOutputWithContext(ctx context.Context) AlarmPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AlarmPtrOutput)
-}
-
-type AlarmPtrInput interface {
-	pulumi.Input
-
-	ToAlarmPtrOutput() AlarmPtrOutput
-	ToAlarmPtrOutputWithContext(ctx context.Context) AlarmPtrOutput
-}
-
-type alarmPtrType AlarmArgs
-
-func (*alarmPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Alarm)(nil))
-}
-
-func (i *alarmPtrType) ToAlarmPtrOutput() AlarmPtrOutput {
-	return i.ToAlarmPtrOutputWithContext(context.Background())
-}
-
-func (i *alarmPtrType) ToAlarmPtrOutputWithContext(ctx context.Context) AlarmPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AlarmPtrOutput)
 }
 
 // AlarmArrayInput is an input type that accepts AlarmArray and AlarmArrayOutput values.
@@ -488,7 +459,7 @@ func (i AlarmMap) ToAlarmMapOutputWithContext(ctx context.Context) AlarmMapOutpu
 type AlarmOutput struct{ *pulumi.OutputState }
 
 func (AlarmOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Alarm)(nil))
+	return reflect.TypeOf((**Alarm)(nil)).Elem()
 }
 
 func (o AlarmOutput) ToAlarmOutput() AlarmOutput {
@@ -499,44 +470,10 @@ func (o AlarmOutput) ToAlarmOutputWithContext(ctx context.Context) AlarmOutput {
 	return o
 }
 
-func (o AlarmOutput) ToAlarmPtrOutput() AlarmPtrOutput {
-	return o.ToAlarmPtrOutputWithContext(context.Background())
-}
-
-func (o AlarmOutput) ToAlarmPtrOutputWithContext(ctx context.Context) AlarmPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Alarm) *Alarm {
-		return &v
-	}).(AlarmPtrOutput)
-}
-
-type AlarmPtrOutput struct{ *pulumi.OutputState }
-
-func (AlarmPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Alarm)(nil))
-}
-
-func (o AlarmPtrOutput) ToAlarmPtrOutput() AlarmPtrOutput {
-	return o
-}
-
-func (o AlarmPtrOutput) ToAlarmPtrOutputWithContext(ctx context.Context) AlarmPtrOutput {
-	return o
-}
-
-func (o AlarmPtrOutput) Elem() AlarmOutput {
-	return o.ApplyT(func(v *Alarm) Alarm {
-		if v != nil {
-			return *v
-		}
-		var ret Alarm
-		return ret
-	}).(AlarmOutput)
-}
-
 type AlarmArrayOutput struct{ *pulumi.OutputState }
 
 func (AlarmArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Alarm)(nil))
+	return reflect.TypeOf((*[]*Alarm)(nil)).Elem()
 }
 
 func (o AlarmArrayOutput) ToAlarmArrayOutput() AlarmArrayOutput {
@@ -548,15 +485,15 @@ func (o AlarmArrayOutput) ToAlarmArrayOutputWithContext(ctx context.Context) Ala
 }
 
 func (o AlarmArrayOutput) Index(i pulumi.IntInput) AlarmOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Alarm {
-		return vs[0].([]Alarm)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Alarm {
+		return vs[0].([]*Alarm)[vs[1].(int)]
 	}).(AlarmOutput)
 }
 
 type AlarmMapOutput struct{ *pulumi.OutputState }
 
 func (AlarmMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Alarm)(nil))
+	return reflect.TypeOf((*map[string]*Alarm)(nil)).Elem()
 }
 
 func (o AlarmMapOutput) ToAlarmMapOutput() AlarmMapOutput {
@@ -568,18 +505,16 @@ func (o AlarmMapOutput) ToAlarmMapOutputWithContext(ctx context.Context) AlarmMa
 }
 
 func (o AlarmMapOutput) MapIndex(k pulumi.StringInput) AlarmOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Alarm {
-		return vs[0].(map[string]Alarm)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Alarm {
+		return vs[0].(map[string]*Alarm)[vs[1].(string)]
 	}).(AlarmOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmInput)(nil)).Elem(), &Alarm{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AlarmPtrInput)(nil)).Elem(), &Alarm{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmArrayInput)(nil)).Elem(), AlarmArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmMapInput)(nil)).Elem(), AlarmMap{})
 	pulumi.RegisterOutputType(AlarmOutput{})
-	pulumi.RegisterOutputType(AlarmPtrOutput{})
 	pulumi.RegisterOutputType(AlarmArrayOutput{})
 	pulumi.RegisterOutputType(AlarmMapOutput{})
 }

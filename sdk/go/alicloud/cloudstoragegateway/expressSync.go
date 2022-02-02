@@ -262,7 +262,7 @@ type ExpressSyncInput interface {
 }
 
 func (*ExpressSync) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExpressSync)(nil))
+	return reflect.TypeOf((**ExpressSync)(nil)).Elem()
 }
 
 func (i *ExpressSync) ToExpressSyncOutput() ExpressSyncOutput {
@@ -271,35 +271,6 @@ func (i *ExpressSync) ToExpressSyncOutput() ExpressSyncOutput {
 
 func (i *ExpressSync) ToExpressSyncOutputWithContext(ctx context.Context) ExpressSyncOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressSyncOutput)
-}
-
-func (i *ExpressSync) ToExpressSyncPtrOutput() ExpressSyncPtrOutput {
-	return i.ToExpressSyncPtrOutputWithContext(context.Background())
-}
-
-func (i *ExpressSync) ToExpressSyncPtrOutputWithContext(ctx context.Context) ExpressSyncPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExpressSyncPtrOutput)
-}
-
-type ExpressSyncPtrInput interface {
-	pulumi.Input
-
-	ToExpressSyncPtrOutput() ExpressSyncPtrOutput
-	ToExpressSyncPtrOutputWithContext(ctx context.Context) ExpressSyncPtrOutput
-}
-
-type expressSyncPtrType ExpressSyncArgs
-
-func (*expressSyncPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExpressSync)(nil))
-}
-
-func (i *expressSyncPtrType) ToExpressSyncPtrOutput() ExpressSyncPtrOutput {
-	return i.ToExpressSyncPtrOutputWithContext(context.Background())
-}
-
-func (i *expressSyncPtrType) ToExpressSyncPtrOutputWithContext(ctx context.Context) ExpressSyncPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExpressSyncPtrOutput)
 }
 
 // ExpressSyncArrayInput is an input type that accepts ExpressSyncArray and ExpressSyncArrayOutput values.
@@ -355,7 +326,7 @@ func (i ExpressSyncMap) ToExpressSyncMapOutputWithContext(ctx context.Context) E
 type ExpressSyncOutput struct{ *pulumi.OutputState }
 
 func (ExpressSyncOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExpressSync)(nil))
+	return reflect.TypeOf((**ExpressSync)(nil)).Elem()
 }
 
 func (o ExpressSyncOutput) ToExpressSyncOutput() ExpressSyncOutput {
@@ -366,44 +337,10 @@ func (o ExpressSyncOutput) ToExpressSyncOutputWithContext(ctx context.Context) E
 	return o
 }
 
-func (o ExpressSyncOutput) ToExpressSyncPtrOutput() ExpressSyncPtrOutput {
-	return o.ToExpressSyncPtrOutputWithContext(context.Background())
-}
-
-func (o ExpressSyncOutput) ToExpressSyncPtrOutputWithContext(ctx context.Context) ExpressSyncPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExpressSync) *ExpressSync {
-		return &v
-	}).(ExpressSyncPtrOutput)
-}
-
-type ExpressSyncPtrOutput struct{ *pulumi.OutputState }
-
-func (ExpressSyncPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExpressSync)(nil))
-}
-
-func (o ExpressSyncPtrOutput) ToExpressSyncPtrOutput() ExpressSyncPtrOutput {
-	return o
-}
-
-func (o ExpressSyncPtrOutput) ToExpressSyncPtrOutputWithContext(ctx context.Context) ExpressSyncPtrOutput {
-	return o
-}
-
-func (o ExpressSyncPtrOutput) Elem() ExpressSyncOutput {
-	return o.ApplyT(func(v *ExpressSync) ExpressSync {
-		if v != nil {
-			return *v
-		}
-		var ret ExpressSync
-		return ret
-	}).(ExpressSyncOutput)
-}
-
 type ExpressSyncArrayOutput struct{ *pulumi.OutputState }
 
 func (ExpressSyncArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ExpressSync)(nil))
+	return reflect.TypeOf((*[]*ExpressSync)(nil)).Elem()
 }
 
 func (o ExpressSyncArrayOutput) ToExpressSyncArrayOutput() ExpressSyncArrayOutput {
@@ -415,15 +352,15 @@ func (o ExpressSyncArrayOutput) ToExpressSyncArrayOutputWithContext(ctx context.
 }
 
 func (o ExpressSyncArrayOutput) Index(i pulumi.IntInput) ExpressSyncOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExpressSync {
-		return vs[0].([]ExpressSync)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ExpressSync {
+		return vs[0].([]*ExpressSync)[vs[1].(int)]
 	}).(ExpressSyncOutput)
 }
 
 type ExpressSyncMapOutput struct{ *pulumi.OutputState }
 
 func (ExpressSyncMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ExpressSync)(nil))
+	return reflect.TypeOf((*map[string]*ExpressSync)(nil)).Elem()
 }
 
 func (o ExpressSyncMapOutput) ToExpressSyncMapOutput() ExpressSyncMapOutput {
@@ -435,18 +372,16 @@ func (o ExpressSyncMapOutput) ToExpressSyncMapOutputWithContext(ctx context.Cont
 }
 
 func (o ExpressSyncMapOutput) MapIndex(k pulumi.StringInput) ExpressSyncOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ExpressSync {
-		return vs[0].(map[string]ExpressSync)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ExpressSync {
+		return vs[0].(map[string]*ExpressSync)[vs[1].(string)]
 	}).(ExpressSyncOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExpressSyncInput)(nil)).Elem(), &ExpressSync{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExpressSyncPtrInput)(nil)).Elem(), &ExpressSync{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExpressSyncArrayInput)(nil)).Elem(), ExpressSyncArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExpressSyncMapInput)(nil)).Elem(), ExpressSyncMap{})
 	pulumi.RegisterOutputType(ExpressSyncOutput{})
-	pulumi.RegisterOutputType(ExpressSyncPtrOutput{})
 	pulumi.RegisterOutputType(ExpressSyncArrayOutput{})
 	pulumi.RegisterOutputType(ExpressSyncMapOutput{})
 }

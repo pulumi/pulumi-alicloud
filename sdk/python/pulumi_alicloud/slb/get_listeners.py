@@ -139,7 +139,7 @@ def get_listeners(description_regex: Optional[str] = None,
         health_check_connect_port=20,
         health_check_uri="/console",
         established_timeout=600)
-    sample_ds = default.id.apply(lambda id: alicloud.slb.get_listeners(load_balancer_id=id))
+    sample_ds = alicloud.slb.get_listeners_output(load_balancer_id=default.id)
     pulumi.export("firstSlbListenerProtocol", sample_ds.slb_listeners[0].protocol)
     ```
 
@@ -204,7 +204,7 @@ def get_listeners_output(description_regex: Optional[pulumi.Input[Optional[str]]
         health_check_connect_port=20,
         health_check_uri="/console",
         established_timeout=600)
-    sample_ds = default.id.apply(lambda id: alicloud.slb.get_listeners(load_balancer_id=id))
+    sample_ds = alicloud.slb.get_listeners_output(load_balancer_id=default.id)
     pulumi.export("firstSlbListenerProtocol", sample_ds.slb_listeners[0].protocol)
     ```
 

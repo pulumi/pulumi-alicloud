@@ -117,38 +117,36 @@ export class TemplateScratch extends pulumi.CustomResource {
      */
     constructor(name: string, args: TemplateScratchArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TemplateScratchArgs | TemplateScratchState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TemplateScratchState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["executionMode"] = state ? state.executionMode : undefined;
-            inputs["logicalIdStrategy"] = state ? state.logicalIdStrategy : undefined;
-            inputs["preferenceParameters"] = state ? state.preferenceParameters : undefined;
-            inputs["sourceResourceGroup"] = state ? state.sourceResourceGroup : undefined;
-            inputs["sourceResources"] = state ? state.sourceResources : undefined;
-            inputs["sourceTag"] = state ? state.sourceTag : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["templateScratchType"] = state ? state.templateScratchType : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["executionMode"] = state ? state.executionMode : undefined;
+            resourceInputs["logicalIdStrategy"] = state ? state.logicalIdStrategy : undefined;
+            resourceInputs["preferenceParameters"] = state ? state.preferenceParameters : undefined;
+            resourceInputs["sourceResourceGroup"] = state ? state.sourceResourceGroup : undefined;
+            resourceInputs["sourceResources"] = state ? state.sourceResources : undefined;
+            resourceInputs["sourceTag"] = state ? state.sourceTag : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["templateScratchType"] = state ? state.templateScratchType : undefined;
         } else {
             const args = argsOrState as TemplateScratchArgs | undefined;
             if ((!args || args.templateScratchType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'templateScratchType'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["executionMode"] = args ? args.executionMode : undefined;
-            inputs["logicalIdStrategy"] = args ? args.logicalIdStrategy : undefined;
-            inputs["preferenceParameters"] = args ? args.preferenceParameters : undefined;
-            inputs["sourceResourceGroup"] = args ? args.sourceResourceGroup : undefined;
-            inputs["sourceResources"] = args ? args.sourceResources : undefined;
-            inputs["sourceTag"] = args ? args.sourceTag : undefined;
-            inputs["templateScratchType"] = args ? args.templateScratchType : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["executionMode"] = args ? args.executionMode : undefined;
+            resourceInputs["logicalIdStrategy"] = args ? args.logicalIdStrategy : undefined;
+            resourceInputs["preferenceParameters"] = args ? args.preferenceParameters : undefined;
+            resourceInputs["sourceResourceGroup"] = args ? args.sourceResourceGroup : undefined;
+            resourceInputs["sourceResources"] = args ? args.sourceResources : undefined;
+            resourceInputs["sourceTag"] = args ? args.sourceTag : undefined;
+            resourceInputs["templateScratchType"] = args ? args.templateScratchType : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TemplateScratch.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TemplateScratch.__pulumiType, name, resourceInputs, opts);
     }
 }
 

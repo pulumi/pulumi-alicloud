@@ -33,7 +33,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewImageExport(ctx, "_default", &ecs.ImageExportArgs{
+// 		_, err := ecs.NewImageExport(ctx, "default", &ecs.ImageExportArgs{
 // 			ImageId:   pulumi.String("m-bp1gxy***"),
 // 			OssBucket: pulumi.String("ecsimageexportconfig"),
 // 			OssPrefix: pulumi.String("ecsExport"),
@@ -148,7 +148,7 @@ type ImageExportInput interface {
 }
 
 func (*ImageExport) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageExport)(nil))
+	return reflect.TypeOf((**ImageExport)(nil)).Elem()
 }
 
 func (i *ImageExport) ToImageExportOutput() ImageExportOutput {
@@ -157,35 +157,6 @@ func (i *ImageExport) ToImageExportOutput() ImageExportOutput {
 
 func (i *ImageExport) ToImageExportOutputWithContext(ctx context.Context) ImageExportOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageExportOutput)
-}
-
-func (i *ImageExport) ToImageExportPtrOutput() ImageExportPtrOutput {
-	return i.ToImageExportPtrOutputWithContext(context.Background())
-}
-
-func (i *ImageExport) ToImageExportPtrOutputWithContext(ctx context.Context) ImageExportPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageExportPtrOutput)
-}
-
-type ImageExportPtrInput interface {
-	pulumi.Input
-
-	ToImageExportPtrOutput() ImageExportPtrOutput
-	ToImageExportPtrOutputWithContext(ctx context.Context) ImageExportPtrOutput
-}
-
-type imageExportPtrType ImageExportArgs
-
-func (*imageExportPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageExport)(nil))
-}
-
-func (i *imageExportPtrType) ToImageExportPtrOutput() ImageExportPtrOutput {
-	return i.ToImageExportPtrOutputWithContext(context.Background())
-}
-
-func (i *imageExportPtrType) ToImageExportPtrOutputWithContext(ctx context.Context) ImageExportPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageExportPtrOutput)
 }
 
 // ImageExportArrayInput is an input type that accepts ImageExportArray and ImageExportArrayOutput values.
@@ -241,7 +212,7 @@ func (i ImageExportMap) ToImageExportMapOutputWithContext(ctx context.Context) I
 type ImageExportOutput struct{ *pulumi.OutputState }
 
 func (ImageExportOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageExport)(nil))
+	return reflect.TypeOf((**ImageExport)(nil)).Elem()
 }
 
 func (o ImageExportOutput) ToImageExportOutput() ImageExportOutput {
@@ -252,44 +223,10 @@ func (o ImageExportOutput) ToImageExportOutputWithContext(ctx context.Context) I
 	return o
 }
 
-func (o ImageExportOutput) ToImageExportPtrOutput() ImageExportPtrOutput {
-	return o.ToImageExportPtrOutputWithContext(context.Background())
-}
-
-func (o ImageExportOutput) ToImageExportPtrOutputWithContext(ctx context.Context) ImageExportPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageExport) *ImageExport {
-		return &v
-	}).(ImageExportPtrOutput)
-}
-
-type ImageExportPtrOutput struct{ *pulumi.OutputState }
-
-func (ImageExportPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageExport)(nil))
-}
-
-func (o ImageExportPtrOutput) ToImageExportPtrOutput() ImageExportPtrOutput {
-	return o
-}
-
-func (o ImageExportPtrOutput) ToImageExportPtrOutputWithContext(ctx context.Context) ImageExportPtrOutput {
-	return o
-}
-
-func (o ImageExportPtrOutput) Elem() ImageExportOutput {
-	return o.ApplyT(func(v *ImageExport) ImageExport {
-		if v != nil {
-			return *v
-		}
-		var ret ImageExport
-		return ret
-	}).(ImageExportOutput)
-}
-
 type ImageExportArrayOutput struct{ *pulumi.OutputState }
 
 func (ImageExportArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ImageExport)(nil))
+	return reflect.TypeOf((*[]*ImageExport)(nil)).Elem()
 }
 
 func (o ImageExportArrayOutput) ToImageExportArrayOutput() ImageExportArrayOutput {
@@ -301,15 +238,15 @@ func (o ImageExportArrayOutput) ToImageExportArrayOutputWithContext(ctx context.
 }
 
 func (o ImageExportArrayOutput) Index(i pulumi.IntInput) ImageExportOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageExport {
-		return vs[0].([]ImageExport)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ImageExport {
+		return vs[0].([]*ImageExport)[vs[1].(int)]
 	}).(ImageExportOutput)
 }
 
 type ImageExportMapOutput struct{ *pulumi.OutputState }
 
 func (ImageExportMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ImageExport)(nil))
+	return reflect.TypeOf((*map[string]*ImageExport)(nil)).Elem()
 }
 
 func (o ImageExportMapOutput) ToImageExportMapOutput() ImageExportMapOutput {
@@ -321,18 +258,16 @@ func (o ImageExportMapOutput) ToImageExportMapOutputWithContext(ctx context.Cont
 }
 
 func (o ImageExportMapOutput) MapIndex(k pulumi.StringInput) ImageExportOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ImageExport {
-		return vs[0].(map[string]ImageExport)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ImageExport {
+		return vs[0].(map[string]*ImageExport)[vs[1].(string)]
 	}).(ImageExportOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageExportInput)(nil)).Elem(), &ImageExport{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ImageExportPtrInput)(nil)).Elem(), &ImageExport{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageExportArrayInput)(nil)).Elem(), ImageExportArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageExportMapInput)(nil)).Elem(), ImageExportMap{})
 	pulumi.RegisterOutputType(ImageExportOutput{})
-	pulumi.RegisterOutputType(ImageExportPtrOutput{})
 	pulumi.RegisterOutputType(ImageExportArrayOutput{})
 	pulumi.RegisterOutputType(ImageExportMapOutput{})
 }

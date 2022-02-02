@@ -120,58 +120,56 @@ export class NatGateway extends pulumi.CustomResource {
      */
     constructor(name: string, args: NatGatewayArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NatGatewayArgs | NatGatewayState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NatGatewayState | undefined;
-            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["force"] = state ? state.force : undefined;
-            inputs["forwardTableIds"] = state ? state.forwardTableIds : undefined;
-            inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            inputs["internetChargeType"] = state ? state.internetChargeType : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["natGatewayName"] = state ? state.natGatewayName : undefined;
-            inputs["natType"] = state ? state.natType : undefined;
-            inputs["networkType"] = state ? state.networkType : undefined;
-            inputs["paymentType"] = state ? state.paymentType : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["snatTableIds"] = state ? state.snatTableIds : undefined;
-            inputs["specification"] = state ? state.specification : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["vpcId"] = state ? state.vpcId : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["force"] = state ? state.force : undefined;
+            resourceInputs["forwardTableIds"] = state ? state.forwardTableIds : undefined;
+            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
+            resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["natGatewayName"] = state ? state.natGatewayName : undefined;
+            resourceInputs["natType"] = state ? state.natType : undefined;
+            resourceInputs["networkType"] = state ? state.networkType : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["snatTableIds"] = state ? state.snatTableIds : undefined;
+            resourceInputs["specification"] = state ? state.specification : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as NatGatewayArgs | undefined;
             if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["force"] = args ? args.force : undefined;
-            inputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            inputs["internetChargeType"] = args ? args.internetChargeType : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["natGatewayName"] = args ? args.natGatewayName : undefined;
-            inputs["natType"] = args ? args.natType : undefined;
-            inputs["networkType"] = args ? args.networkType : undefined;
-            inputs["paymentType"] = args ? args.paymentType : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["specification"] = args ? args.specification : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["vpcId"] = args ? args.vpcId : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["forwardTableIds"] = undefined /*out*/;
-            inputs["snatTableIds"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["force"] = args ? args.force : undefined;
+            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
+            resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["natGatewayName"] = args ? args.natGatewayName : undefined;
+            resourceInputs["natType"] = args ? args.natType : undefined;
+            resourceInputs["networkType"] = args ? args.networkType : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["specification"] = args ? args.specification : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["forwardTableIds"] = undefined /*out*/;
+            resourceInputs["snatTableIds"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(NatGateway.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(NatGateway.__pulumiType, name, resourceInputs, opts);
     }
 }
 

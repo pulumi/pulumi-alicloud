@@ -110,40 +110,38 @@ export class Account extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccountArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountArgs | AccountState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
-            inputs["accountNamePrefix"] = state ? state.accountNamePrefix : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["joinMethod"] = state ? state.joinMethod : undefined;
-            inputs["joinTime"] = state ? state.joinTime : undefined;
-            inputs["modifyTime"] = state ? state.modifyTime : undefined;
-            inputs["payerAccountId"] = state ? state.payerAccountId : undefined;
-            inputs["resourceDirectoryId"] = state ? state.resourceDirectoryId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["accountNamePrefix"] = state ? state.accountNamePrefix : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["joinMethod"] = state ? state.joinMethod : undefined;
+            resourceInputs["joinTime"] = state ? state.joinTime : undefined;
+            resourceInputs["modifyTime"] = state ? state.modifyTime : undefined;
+            resourceInputs["payerAccountId"] = state ? state.payerAccountId : undefined;
+            resourceInputs["resourceDirectoryId"] = state ? state.resourceDirectoryId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as AccountArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["accountNamePrefix"] = args ? args.accountNamePrefix : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["folderId"] = args ? args.folderId : undefined;
-            inputs["payerAccountId"] = args ? args.payerAccountId : undefined;
-            inputs["joinMethod"] = undefined /*out*/;
-            inputs["joinTime"] = undefined /*out*/;
-            inputs["modifyTime"] = undefined /*out*/;
-            inputs["resourceDirectoryId"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["accountNamePrefix"] = args ? args.accountNamePrefix : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["folderId"] = args ? args.folderId : undefined;
+            resourceInputs["payerAccountId"] = args ? args.payerAccountId : undefined;
+            resourceInputs["joinMethod"] = undefined /*out*/;
+            resourceInputs["joinTime"] = undefined /*out*/;
+            resourceInputs["modifyTime"] = undefined /*out*/;
+            resourceInputs["resourceDirectoryId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Account.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Account.__pulumiType, name, resourceInputs, opts);
     }
 }
 

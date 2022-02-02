@@ -242,7 +242,7 @@ type NatIpInput interface {
 }
 
 func (*NatIp) ElementType() reflect.Type {
-	return reflect.TypeOf((*NatIp)(nil))
+	return reflect.TypeOf((**NatIp)(nil)).Elem()
 }
 
 func (i *NatIp) ToNatIpOutput() NatIpOutput {
@@ -251,35 +251,6 @@ func (i *NatIp) ToNatIpOutput() NatIpOutput {
 
 func (i *NatIp) ToNatIpOutputWithContext(ctx context.Context) NatIpOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NatIpOutput)
-}
-
-func (i *NatIp) ToNatIpPtrOutput() NatIpPtrOutput {
-	return i.ToNatIpPtrOutputWithContext(context.Background())
-}
-
-func (i *NatIp) ToNatIpPtrOutputWithContext(ctx context.Context) NatIpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NatIpPtrOutput)
-}
-
-type NatIpPtrInput interface {
-	pulumi.Input
-
-	ToNatIpPtrOutput() NatIpPtrOutput
-	ToNatIpPtrOutputWithContext(ctx context.Context) NatIpPtrOutput
-}
-
-type natIpPtrType NatIpArgs
-
-func (*natIpPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NatIp)(nil))
-}
-
-func (i *natIpPtrType) ToNatIpPtrOutput() NatIpPtrOutput {
-	return i.ToNatIpPtrOutputWithContext(context.Background())
-}
-
-func (i *natIpPtrType) ToNatIpPtrOutputWithContext(ctx context.Context) NatIpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NatIpPtrOutput)
 }
 
 // NatIpArrayInput is an input type that accepts NatIpArray and NatIpArrayOutput values.
@@ -335,7 +306,7 @@ func (i NatIpMap) ToNatIpMapOutputWithContext(ctx context.Context) NatIpMapOutpu
 type NatIpOutput struct{ *pulumi.OutputState }
 
 func (NatIpOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NatIp)(nil))
+	return reflect.TypeOf((**NatIp)(nil)).Elem()
 }
 
 func (o NatIpOutput) ToNatIpOutput() NatIpOutput {
@@ -346,44 +317,10 @@ func (o NatIpOutput) ToNatIpOutputWithContext(ctx context.Context) NatIpOutput {
 	return o
 }
 
-func (o NatIpOutput) ToNatIpPtrOutput() NatIpPtrOutput {
-	return o.ToNatIpPtrOutputWithContext(context.Background())
-}
-
-func (o NatIpOutput) ToNatIpPtrOutputWithContext(ctx context.Context) NatIpPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NatIp) *NatIp {
-		return &v
-	}).(NatIpPtrOutput)
-}
-
-type NatIpPtrOutput struct{ *pulumi.OutputState }
-
-func (NatIpPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NatIp)(nil))
-}
-
-func (o NatIpPtrOutput) ToNatIpPtrOutput() NatIpPtrOutput {
-	return o
-}
-
-func (o NatIpPtrOutput) ToNatIpPtrOutputWithContext(ctx context.Context) NatIpPtrOutput {
-	return o
-}
-
-func (o NatIpPtrOutput) Elem() NatIpOutput {
-	return o.ApplyT(func(v *NatIp) NatIp {
-		if v != nil {
-			return *v
-		}
-		var ret NatIp
-		return ret
-	}).(NatIpOutput)
-}
-
 type NatIpArrayOutput struct{ *pulumi.OutputState }
 
 func (NatIpArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NatIp)(nil))
+	return reflect.TypeOf((*[]*NatIp)(nil)).Elem()
 }
 
 func (o NatIpArrayOutput) ToNatIpArrayOutput() NatIpArrayOutput {
@@ -395,15 +332,15 @@ func (o NatIpArrayOutput) ToNatIpArrayOutputWithContext(ctx context.Context) Nat
 }
 
 func (o NatIpArrayOutput) Index(i pulumi.IntInput) NatIpOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NatIp {
-		return vs[0].([]NatIp)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NatIp {
+		return vs[0].([]*NatIp)[vs[1].(int)]
 	}).(NatIpOutput)
 }
 
 type NatIpMapOutput struct{ *pulumi.OutputState }
 
 func (NatIpMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]NatIp)(nil))
+	return reflect.TypeOf((*map[string]*NatIp)(nil)).Elem()
 }
 
 func (o NatIpMapOutput) ToNatIpMapOutput() NatIpMapOutput {
@@ -415,18 +352,16 @@ func (o NatIpMapOutput) ToNatIpMapOutputWithContext(ctx context.Context) NatIpMa
 }
 
 func (o NatIpMapOutput) MapIndex(k pulumi.StringInput) NatIpOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NatIp {
-		return vs[0].(map[string]NatIp)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *NatIp {
+		return vs[0].(map[string]*NatIp)[vs[1].(string)]
 	}).(NatIpOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NatIpInput)(nil)).Elem(), &NatIp{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NatIpPtrInput)(nil)).Elem(), &NatIp{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NatIpArrayInput)(nil)).Elem(), NatIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NatIpMapInput)(nil)).Elem(), NatIpMap{})
 	pulumi.RegisterOutputType(NatIpOutput{})
-	pulumi.RegisterOutputType(NatIpPtrOutput{})
 	pulumi.RegisterOutputType(NatIpArrayOutput{})
 	pulumi.RegisterOutputType(NatIpMapOutput{})
 }

@@ -92,18 +92,18 @@ export class AccessConfiguration extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccessConfigurationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessConfigurationArgs | AccessConfigurationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessConfigurationState | undefined;
-            inputs["accessConfigurationId"] = state ? state.accessConfigurationId : undefined;
-            inputs["accessConfigurationName"] = state ? state.accessConfigurationName : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["directoryId"] = state ? state.directoryId : undefined;
-            inputs["forceRemovePermissionPolicies"] = state ? state.forceRemovePermissionPolicies : undefined;
-            inputs["permissionPolicies"] = state ? state.permissionPolicies : undefined;
-            inputs["relayState"] = state ? state.relayState : undefined;
-            inputs["sessionDuration"] = state ? state.sessionDuration : undefined;
+            resourceInputs["accessConfigurationId"] = state ? state.accessConfigurationId : undefined;
+            resourceInputs["accessConfigurationName"] = state ? state.accessConfigurationName : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["directoryId"] = state ? state.directoryId : undefined;
+            resourceInputs["forceRemovePermissionPolicies"] = state ? state.forceRemovePermissionPolicies : undefined;
+            resourceInputs["permissionPolicies"] = state ? state.permissionPolicies : undefined;
+            resourceInputs["relayState"] = state ? state.relayState : undefined;
+            resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
         } else {
             const args = argsOrState as AccessConfigurationArgs | undefined;
             if ((!args || args.accessConfigurationName === undefined) && !opts.urn) {
@@ -112,19 +112,17 @@ export class AccessConfiguration extends pulumi.CustomResource {
             if ((!args || args.directoryId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'directoryId'");
             }
-            inputs["accessConfigurationName"] = args ? args.accessConfigurationName : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["directoryId"] = args ? args.directoryId : undefined;
-            inputs["forceRemovePermissionPolicies"] = args ? args.forceRemovePermissionPolicies : undefined;
-            inputs["permissionPolicies"] = args ? args.permissionPolicies : undefined;
-            inputs["relayState"] = args ? args.relayState : undefined;
-            inputs["sessionDuration"] = args ? args.sessionDuration : undefined;
-            inputs["accessConfigurationId"] = undefined /*out*/;
+            resourceInputs["accessConfigurationName"] = args ? args.accessConfigurationName : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["directoryId"] = args ? args.directoryId : undefined;
+            resourceInputs["forceRemovePermissionPolicies"] = args ? args.forceRemovePermissionPolicies : undefined;
+            resourceInputs["permissionPolicies"] = args ? args.permissionPolicies : undefined;
+            resourceInputs["relayState"] = args ? args.relayState : undefined;
+            resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
+            resourceInputs["accessConfigurationId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AccessConfiguration.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AccessConfiguration.__pulumiType, name, resourceInputs, opts);
     }
 }
 

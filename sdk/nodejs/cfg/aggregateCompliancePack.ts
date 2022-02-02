@@ -144,18 +144,18 @@ export class AggregateCompliancePack extends pulumi.CustomResource {
      */
     constructor(name: string, args: AggregateCompliancePackArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AggregateCompliancePackArgs | AggregateCompliancePackState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AggregateCompliancePackState | undefined;
-            inputs["aggregateCompliancePackName"] = state ? state.aggregateCompliancePackName : undefined;
-            inputs["aggregatorId"] = state ? state.aggregatorId : undefined;
-            inputs["compliancePackTemplateId"] = state ? state.compliancePackTemplateId : undefined;
-            inputs["configRuleIds"] = state ? state.configRuleIds : undefined;
-            inputs["configRules"] = state ? state.configRules : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["riskLevel"] = state ? state.riskLevel : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["aggregateCompliancePackName"] = state ? state.aggregateCompliancePackName : undefined;
+            resourceInputs["aggregatorId"] = state ? state.aggregatorId : undefined;
+            resourceInputs["compliancePackTemplateId"] = state ? state.compliancePackTemplateId : undefined;
+            resourceInputs["configRuleIds"] = state ? state.configRuleIds : undefined;
+            resourceInputs["configRules"] = state ? state.configRules : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["riskLevel"] = state ? state.riskLevel : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as AggregateCompliancePackArgs | undefined;
             if ((!args || args.aggregateCompliancePackName === undefined) && !opts.urn) {
@@ -170,19 +170,17 @@ export class AggregateCompliancePack extends pulumi.CustomResource {
             if ((!args || args.riskLevel === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'riskLevel'");
             }
-            inputs["aggregateCompliancePackName"] = args ? args.aggregateCompliancePackName : undefined;
-            inputs["aggregatorId"] = args ? args.aggregatorId : undefined;
-            inputs["compliancePackTemplateId"] = args ? args.compliancePackTemplateId : undefined;
-            inputs["configRuleIds"] = args ? args.configRuleIds : undefined;
-            inputs["configRules"] = args ? args.configRules : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["riskLevel"] = args ? args.riskLevel : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["aggregateCompliancePackName"] = args ? args.aggregateCompliancePackName : undefined;
+            resourceInputs["aggregatorId"] = args ? args.aggregatorId : undefined;
+            resourceInputs["compliancePackTemplateId"] = args ? args.compliancePackTemplateId : undefined;
+            resourceInputs["configRuleIds"] = args ? args.configRuleIds : undefined;
+            resourceInputs["configRules"] = args ? args.configRules : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["riskLevel"] = args ? args.riskLevel : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AggregateCompliancePack.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AggregateCompliancePack.__pulumiType, name, resourceInputs, opts);
     }
 }
 

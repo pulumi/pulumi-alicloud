@@ -89,14 +89,14 @@ export class LoginProfile extends pulumi.CustomResource {
      */
     constructor(name: string, args: LoginProfileArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LoginProfileArgs | LoginProfileState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoginProfileState | undefined;
-            inputs["mfaBindRequired"] = state ? state.mfaBindRequired : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["passwordResetRequired"] = state ? state.passwordResetRequired : undefined;
-            inputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["mfaBindRequired"] = state ? state.mfaBindRequired : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["passwordResetRequired"] = state ? state.passwordResetRequired : undefined;
+            resourceInputs["userName"] = state ? state.userName : undefined;
         } else {
             const args = argsOrState as LoginProfileArgs | undefined;
             if ((!args || args.password === undefined) && !opts.urn) {
@@ -105,15 +105,13 @@ export class LoginProfile extends pulumi.CustomResource {
             if ((!args || args.userName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userName'");
             }
-            inputs["mfaBindRequired"] = args ? args.mfaBindRequired : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["passwordResetRequired"] = args ? args.passwordResetRequired : undefined;
-            inputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["mfaBindRequired"] = args ? args.mfaBindRequired : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["passwordResetRequired"] = args ? args.passwordResetRequired : undefined;
+            resourceInputs["userName"] = args ? args.userName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(LoginProfile.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(LoginProfile.__pulumiType, name, resourceInputs, opts);
     }
 }
 

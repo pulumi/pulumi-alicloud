@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Kms
 {
@@ -48,7 +47,7 @@ namespace Pulumi.AliCloud.Kms
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAliasesResult> InvokeAsync(GetAliasesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAliasesResult>("alicloud:kms/getAliases:getAliases", args ?? new GetAliasesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAliasesResult>("alicloud:kms/getAliases:getAliases", args ?? new GetAliasesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of KMS aliases in an Alibaba Cloud account according to the specified filters.
@@ -86,7 +85,7 @@ namespace Pulumi.AliCloud.Kms
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAliasesResult> Invoke(GetAliasesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAliasesResult>("alicloud:kms/getAliases:getAliases", args ?? new GetAliasesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAliasesResult>("alicloud:kms/getAliases:getAliases", args ?? new GetAliasesInvokeArgs(), options.WithDefaults());
     }
 
 

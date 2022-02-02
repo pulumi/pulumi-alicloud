@@ -27,9 +27,9 @@ import * as utilities from "../utilities";
  *     bandwidth: "10",
  *     officeSiteId: defaultSimpleOfficeSite.id,
  * });
- * const defaultNetworkPackages = defaultNetworkPackage.id.apply(id => alicloud.eds.getNetworkPackages({
- *     ids: [id],
- * }));
+ * const defaultNetworkPackages = alicloud.eds.getNetworkPackagesOutput({
+ *     ids: [defaultNetworkPackage.id],
+ * });
  * export const ecdNetworkPackageId1 = defaultNetworkPackages.apply(defaultNetworkPackages => defaultNetworkPackages.packages?[0]?.id);
  * ```
  */
@@ -39,9 +39,7 @@ export function getNetworkPackages(args?: GetNetworkPackagesArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:eds/getNetworkPackages:getNetworkPackages", {
         "ids": args.ids,
         "outputFile": args.outputFile,

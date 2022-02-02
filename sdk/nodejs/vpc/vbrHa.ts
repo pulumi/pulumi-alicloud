@@ -81,16 +81,16 @@ export class VbrHa extends pulumi.CustomResource {
      */
     constructor(name: string, args: VbrHaArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VbrHaArgs | VbrHaState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VbrHaState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["peerVbrId"] = state ? state.peerVbrId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["vbrHaName"] = state ? state.vbrHaName : undefined;
-            inputs["vbrId"] = state ? state.vbrId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["peerVbrId"] = state ? state.peerVbrId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["vbrHaName"] = state ? state.vbrHaName : undefined;
+            resourceInputs["vbrId"] = state ? state.vbrId : undefined;
         } else {
             const args = argsOrState as VbrHaArgs | undefined;
             if ((!args || args.peerVbrId === undefined) && !opts.urn) {
@@ -99,17 +99,15 @@ export class VbrHa extends pulumi.CustomResource {
             if ((!args || args.vbrId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vbrId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["peerVbrId"] = args ? args.peerVbrId : undefined;
-            inputs["vbrHaName"] = args ? args.vbrHaName : undefined;
-            inputs["vbrId"] = args ? args.vbrId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["peerVbrId"] = args ? args.peerVbrId : undefined;
+            resourceInputs["vbrHaName"] = args ? args.vbrHaName : undefined;
+            resourceInputs["vbrId"] = args ? args.vbrId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(VbrHa.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(VbrHa.__pulumiType, name, resourceInputs, opts);
     }
 }
 

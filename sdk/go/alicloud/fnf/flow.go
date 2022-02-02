@@ -34,7 +34,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ram.NewRole(ctx, "_default", &ram.RoleArgs{
+// 		_, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
 // 			Document: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "  {\n", "    \"Statement\": [\n", "      {\n", "        \"Action\": \"sts:AssumeRole\",\n", "        \"Effect\": \"Allow\",\n", "        \"Principal\": {\n", "          \"Service\": [\n", "            \"fnf.aliyuncs.com\"\n", "          ]\n", "        }\n", "      }\n", "    ],\n", "    \"Version\": \"1\"\n", "  }\n")),
 // 		})
 // 		if err != nil {
@@ -194,7 +194,7 @@ type FlowInput interface {
 }
 
 func (*Flow) ElementType() reflect.Type {
-	return reflect.TypeOf((*Flow)(nil))
+	return reflect.TypeOf((**Flow)(nil)).Elem()
 }
 
 func (i *Flow) ToFlowOutput() FlowOutput {
@@ -203,35 +203,6 @@ func (i *Flow) ToFlowOutput() FlowOutput {
 
 func (i *Flow) ToFlowOutputWithContext(ctx context.Context) FlowOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlowOutput)
-}
-
-func (i *Flow) ToFlowPtrOutput() FlowPtrOutput {
-	return i.ToFlowPtrOutputWithContext(context.Background())
-}
-
-func (i *Flow) ToFlowPtrOutputWithContext(ctx context.Context) FlowPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FlowPtrOutput)
-}
-
-type FlowPtrInput interface {
-	pulumi.Input
-
-	ToFlowPtrOutput() FlowPtrOutput
-	ToFlowPtrOutputWithContext(ctx context.Context) FlowPtrOutput
-}
-
-type flowPtrType FlowArgs
-
-func (*flowPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Flow)(nil))
-}
-
-func (i *flowPtrType) ToFlowPtrOutput() FlowPtrOutput {
-	return i.ToFlowPtrOutputWithContext(context.Background())
-}
-
-func (i *flowPtrType) ToFlowPtrOutputWithContext(ctx context.Context) FlowPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FlowPtrOutput)
 }
 
 // FlowArrayInput is an input type that accepts FlowArray and FlowArrayOutput values.
@@ -287,7 +258,7 @@ func (i FlowMap) ToFlowMapOutputWithContext(ctx context.Context) FlowMapOutput {
 type FlowOutput struct{ *pulumi.OutputState }
 
 func (FlowOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Flow)(nil))
+	return reflect.TypeOf((**Flow)(nil)).Elem()
 }
 
 func (o FlowOutput) ToFlowOutput() FlowOutput {
@@ -298,44 +269,10 @@ func (o FlowOutput) ToFlowOutputWithContext(ctx context.Context) FlowOutput {
 	return o
 }
 
-func (o FlowOutput) ToFlowPtrOutput() FlowPtrOutput {
-	return o.ToFlowPtrOutputWithContext(context.Background())
-}
-
-func (o FlowOutput) ToFlowPtrOutputWithContext(ctx context.Context) FlowPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Flow) *Flow {
-		return &v
-	}).(FlowPtrOutput)
-}
-
-type FlowPtrOutput struct{ *pulumi.OutputState }
-
-func (FlowPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Flow)(nil))
-}
-
-func (o FlowPtrOutput) ToFlowPtrOutput() FlowPtrOutput {
-	return o
-}
-
-func (o FlowPtrOutput) ToFlowPtrOutputWithContext(ctx context.Context) FlowPtrOutput {
-	return o
-}
-
-func (o FlowPtrOutput) Elem() FlowOutput {
-	return o.ApplyT(func(v *Flow) Flow {
-		if v != nil {
-			return *v
-		}
-		var ret Flow
-		return ret
-	}).(FlowOutput)
-}
-
 type FlowArrayOutput struct{ *pulumi.OutputState }
 
 func (FlowArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Flow)(nil))
+	return reflect.TypeOf((*[]*Flow)(nil)).Elem()
 }
 
 func (o FlowArrayOutput) ToFlowArrayOutput() FlowArrayOutput {
@@ -347,15 +284,15 @@ func (o FlowArrayOutput) ToFlowArrayOutputWithContext(ctx context.Context) FlowA
 }
 
 func (o FlowArrayOutput) Index(i pulumi.IntInput) FlowOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Flow {
-		return vs[0].([]Flow)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Flow {
+		return vs[0].([]*Flow)[vs[1].(int)]
 	}).(FlowOutput)
 }
 
 type FlowMapOutput struct{ *pulumi.OutputState }
 
 func (FlowMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Flow)(nil))
+	return reflect.TypeOf((*map[string]*Flow)(nil)).Elem()
 }
 
 func (o FlowMapOutput) ToFlowMapOutput() FlowMapOutput {
@@ -367,18 +304,16 @@ func (o FlowMapOutput) ToFlowMapOutputWithContext(ctx context.Context) FlowMapOu
 }
 
 func (o FlowMapOutput) MapIndex(k pulumi.StringInput) FlowOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Flow {
-		return vs[0].(map[string]Flow)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Flow {
+		return vs[0].(map[string]*Flow)[vs[1].(string)]
 	}).(FlowOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FlowInput)(nil)).Elem(), &Flow{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FlowPtrInput)(nil)).Elem(), &Flow{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlowArrayInput)(nil)).Elem(), FlowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlowMapInput)(nil)).Elem(), FlowMap{})
 	pulumi.RegisterOutputType(FlowOutput{})
-	pulumi.RegisterOutputType(FlowPtrOutput{})
 	pulumi.RegisterOutputType(FlowArrayOutput{})
 	pulumi.RegisterOutputType(FlowMapOutput{})
 }

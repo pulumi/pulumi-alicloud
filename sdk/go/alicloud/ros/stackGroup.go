@@ -249,7 +249,7 @@ type StackGroupInput interface {
 }
 
 func (*StackGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackGroup)(nil))
+	return reflect.TypeOf((**StackGroup)(nil)).Elem()
 }
 
 func (i *StackGroup) ToStackGroupOutput() StackGroupOutput {
@@ -258,35 +258,6 @@ func (i *StackGroup) ToStackGroupOutput() StackGroupOutput {
 
 func (i *StackGroup) ToStackGroupOutputWithContext(ctx context.Context) StackGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StackGroupOutput)
-}
-
-func (i *StackGroup) ToStackGroupPtrOutput() StackGroupPtrOutput {
-	return i.ToStackGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *StackGroup) ToStackGroupPtrOutputWithContext(ctx context.Context) StackGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StackGroupPtrOutput)
-}
-
-type StackGroupPtrInput interface {
-	pulumi.Input
-
-	ToStackGroupPtrOutput() StackGroupPtrOutput
-	ToStackGroupPtrOutputWithContext(ctx context.Context) StackGroupPtrOutput
-}
-
-type stackGroupPtrType StackGroupArgs
-
-func (*stackGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StackGroup)(nil))
-}
-
-func (i *stackGroupPtrType) ToStackGroupPtrOutput() StackGroupPtrOutput {
-	return i.ToStackGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *stackGroupPtrType) ToStackGroupPtrOutputWithContext(ctx context.Context) StackGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StackGroupPtrOutput)
 }
 
 // StackGroupArrayInput is an input type that accepts StackGroupArray and StackGroupArrayOutput values.
@@ -342,7 +313,7 @@ func (i StackGroupMap) ToStackGroupMapOutputWithContext(ctx context.Context) Sta
 type StackGroupOutput struct{ *pulumi.OutputState }
 
 func (StackGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackGroup)(nil))
+	return reflect.TypeOf((**StackGroup)(nil)).Elem()
 }
 
 func (o StackGroupOutput) ToStackGroupOutput() StackGroupOutput {
@@ -353,44 +324,10 @@ func (o StackGroupOutput) ToStackGroupOutputWithContext(ctx context.Context) Sta
 	return o
 }
 
-func (o StackGroupOutput) ToStackGroupPtrOutput() StackGroupPtrOutput {
-	return o.ToStackGroupPtrOutputWithContext(context.Background())
-}
-
-func (o StackGroupOutput) ToStackGroupPtrOutputWithContext(ctx context.Context) StackGroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StackGroup) *StackGroup {
-		return &v
-	}).(StackGroupPtrOutput)
-}
-
-type StackGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (StackGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StackGroup)(nil))
-}
-
-func (o StackGroupPtrOutput) ToStackGroupPtrOutput() StackGroupPtrOutput {
-	return o
-}
-
-func (o StackGroupPtrOutput) ToStackGroupPtrOutputWithContext(ctx context.Context) StackGroupPtrOutput {
-	return o
-}
-
-func (o StackGroupPtrOutput) Elem() StackGroupOutput {
-	return o.ApplyT(func(v *StackGroup) StackGroup {
-		if v != nil {
-			return *v
-		}
-		var ret StackGroup
-		return ret
-	}).(StackGroupOutput)
-}
-
 type StackGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (StackGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StackGroup)(nil))
+	return reflect.TypeOf((*[]*StackGroup)(nil)).Elem()
 }
 
 func (o StackGroupArrayOutput) ToStackGroupArrayOutput() StackGroupArrayOutput {
@@ -402,15 +339,15 @@ func (o StackGroupArrayOutput) ToStackGroupArrayOutputWithContext(ctx context.Co
 }
 
 func (o StackGroupArrayOutput) Index(i pulumi.IntInput) StackGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StackGroup {
-		return vs[0].([]StackGroup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StackGroup {
+		return vs[0].([]*StackGroup)[vs[1].(int)]
 	}).(StackGroupOutput)
 }
 
 type StackGroupMapOutput struct{ *pulumi.OutputState }
 
 func (StackGroupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]StackGroup)(nil))
+	return reflect.TypeOf((*map[string]*StackGroup)(nil)).Elem()
 }
 
 func (o StackGroupMapOutput) ToStackGroupMapOutput() StackGroupMapOutput {
@@ -422,18 +359,16 @@ func (o StackGroupMapOutput) ToStackGroupMapOutputWithContext(ctx context.Contex
 }
 
 func (o StackGroupMapOutput) MapIndex(k pulumi.StringInput) StackGroupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) StackGroup {
-		return vs[0].(map[string]StackGroup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *StackGroup {
+		return vs[0].(map[string]*StackGroup)[vs[1].(string)]
 	}).(StackGroupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StackGroupInput)(nil)).Elem(), &StackGroup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StackGroupPtrInput)(nil)).Elem(), &StackGroup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StackGroupArrayInput)(nil)).Elem(), StackGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StackGroupMapInput)(nil)).Elem(), StackGroupMap{})
 	pulumi.RegisterOutputType(StackGroupOutput{})
-	pulumi.RegisterOutputType(StackGroupPtrOutput{})
 	pulumi.RegisterOutputType(StackGroupArrayOutput{})
 	pulumi.RegisterOutputType(StackGroupMapOutput{})
 }

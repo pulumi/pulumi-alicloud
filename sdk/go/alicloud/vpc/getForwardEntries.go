@@ -88,6 +88,9 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		_ = vpc.GetForwardEntriesOutput(ctx, vpc.GetForwardEntriesOutputArgs{
+// 			ForwardTableId: defaultForwardEntry.ForwardTableId,
+// 		}, nil)
 // 		return nil
 // 	})
 // }

@@ -134,38 +134,36 @@ export class Topic extends pulumi.CustomResource {
      */
     constructor(name: string, args: TopicArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TopicArgs | TopicState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TopicState | undefined;
-            inputs["comment"] = state ? state.comment : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["lastModifyTime"] = state ? state.lastModifyTime : undefined;
-            inputs["lifeCycle"] = state ? state.lifeCycle : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["projectName"] = state ? state.projectName : undefined;
-            inputs["recordSchema"] = state ? state.recordSchema : undefined;
-            inputs["recordType"] = state ? state.recordType : undefined;
-            inputs["shardCount"] = state ? state.shardCount : undefined;
+            resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["lastModifyTime"] = state ? state.lastModifyTime : undefined;
+            resourceInputs["lifeCycle"] = state ? state.lifeCycle : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["projectName"] = state ? state.projectName : undefined;
+            resourceInputs["recordSchema"] = state ? state.recordSchema : undefined;
+            resourceInputs["recordType"] = state ? state.recordType : undefined;
+            resourceInputs["shardCount"] = state ? state.shardCount : undefined;
         } else {
             const args = argsOrState as TopicArgs | undefined;
             if ((!args || args.projectName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
-            inputs["comment"] = args ? args.comment : undefined;
-            inputs["lifeCycle"] = args ? args.lifeCycle : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["projectName"] = args ? args.projectName : undefined;
-            inputs["recordSchema"] = args ? args.recordSchema : undefined;
-            inputs["recordType"] = args ? args.recordType : undefined;
-            inputs["shardCount"] = args ? args.shardCount : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["lastModifyTime"] = undefined /*out*/;
+            resourceInputs["comment"] = args ? args.comment : undefined;
+            resourceInputs["lifeCycle"] = args ? args.lifeCycle : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["projectName"] = args ? args.projectName : undefined;
+            resourceInputs["recordSchema"] = args ? args.recordSchema : undefined;
+            resourceInputs["recordType"] = args ? args.recordType : undefined;
+            resourceInputs["shardCount"] = args ? args.shardCount : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["lastModifyTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Topic.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Topic.__pulumiType, name, resourceInputs, opts);
     }
 }
 

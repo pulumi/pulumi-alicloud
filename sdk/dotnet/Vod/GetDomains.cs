@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vod
 {
@@ -50,18 +49,18 @@ namespace Pulumi.AliCloud.Vod
         ///                 { "key2", "value2" },
         ///             },
         ///         });
-        ///         var defaultDomains = defaultDomain.Id.Apply(id =&gt; AliCloud.Vod.GetDomains.InvokeAsync(new AliCloud.Vod.GetDomainsArgs
+        ///         var defaultDomains = AliCloud.Vod.GetDomains.Invoke(new AliCloud.Vod.GetDomainsInvokeArgs
         ///         {
         ///             Ids = 
         ///             {
-        ///                 id,
+        ///                 defaultDomain.Id,
         ///             },
         ///             Tags = 
         ///             {
         ///                 { "key1", "value1" },
         ///                 { "key2", "value2" },
         ///             },
-        ///         }));
+        ///         });
         ///         this.VodDomain = defaultDomains.Apply(defaultDomains =&gt; defaultDomains.Domains?[0]);
         ///     }
         /// 
@@ -73,7 +72,7 @@ namespace Pulumi.AliCloud.Vod
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:vod/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:vod/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vod Domains of the current Alibaba Cloud user.
@@ -113,18 +112,18 @@ namespace Pulumi.AliCloud.Vod
         ///                 { "key2", "value2" },
         ///             },
         ///         });
-        ///         var defaultDomains = defaultDomain.Id.Apply(id =&gt; AliCloud.Vod.GetDomains.InvokeAsync(new AliCloud.Vod.GetDomainsArgs
+        ///         var defaultDomains = AliCloud.Vod.GetDomains.Invoke(new AliCloud.Vod.GetDomainsInvokeArgs
         ///         {
         ///             Ids = 
         ///             {
-        ///                 id,
+        ///                 defaultDomain.Id,
         ///             },
         ///             Tags = 
         ///             {
         ///                 { "key1", "value1" },
         ///                 { "key2", "value2" },
         ///             },
-        ///         }));
+        ///         });
         ///         this.VodDomain = defaultDomains.Apply(defaultDomains =&gt; defaultDomains.Domains?[0]);
         ///     }
         /// 
@@ -136,7 +135,7 @@ namespace Pulumi.AliCloud.Vod
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:vod/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:vod/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());
     }
 
 

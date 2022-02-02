@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cfg
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.Cfg
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCompliancePacksResult> InvokeAsync(GetCompliancePacksArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCompliancePacksResult>("alicloud:cfg/getCompliancePacks:getCompliancePacks", args ?? new GetCompliancePacksArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCompliancePacksResult>("alicloud:cfg/getCompliancePacks:getCompliancePacks", args ?? new GetCompliancePacksArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Config Compliance Packs of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.Cfg
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetCompliancePacksResult> Invoke(GetCompliancePacksInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCompliancePacksResult>("alicloud:cfg/getCompliancePacks:getCompliancePacks", args ?? new GetCompliancePacksInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetCompliancePacksResult>("alicloud:cfg/getCompliancePacks:getCompliancePacks", args ?? new GetCompliancePacksInvokeArgs(), options.WithDefaults());
     }
 
 

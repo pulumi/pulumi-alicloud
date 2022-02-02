@@ -48,9 +48,7 @@ export function getIpv6EgressRules(args: GetIpv6EgressRulesArgs, opts?: pulumi.I
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:vpc/getIpv6EgressRules:getIpv6EgressRules", {
         "ids": args.ids,
         "instanceId": args.instanceId,

@@ -65,15 +65,15 @@ export class Certificate extends pulumi.CustomResource {
     /** @deprecated This resource has been deprecated in favour of ServiceCertificate */
     constructor(name: string, argsOrState?: CertificateArgs | CertificateState, opts?: pulumi.CustomResourceOptions) {
         pulumi.log.warn("Certificate is deprecated: This resource has been deprecated in favour of ServiceCertificate")
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CertificateState | undefined;
-            inputs["cert"] = state ? state.cert : undefined;
-            inputs["certificateName"] = state ? state.certificateName : undefined;
-            inputs["key"] = state ? state.key : undefined;
-            inputs["lang"] = state ? state.lang : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["cert"] = state ? state.cert : undefined;
+            resourceInputs["certificateName"] = state ? state.certificateName : undefined;
+            resourceInputs["key"] = state ? state.key : undefined;
+            resourceInputs["lang"] = state ? state.lang : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as CertificateArgs | undefined;
             if ((!args || args.cert === undefined) && !opts.urn) {
@@ -82,16 +82,14 @@ export class Certificate extends pulumi.CustomResource {
             if ((!args || args.key === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            inputs["cert"] = args ? args.cert : undefined;
-            inputs["certificateName"] = args ? args.certificateName : undefined;
-            inputs["key"] = args ? args.key : undefined;
-            inputs["lang"] = args ? args.lang : undefined;
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["cert"] = args ? args.cert : undefined;
+            resourceInputs["certificateName"] = args ? args.certificateName : undefined;
+            resourceInputs["key"] = args ? args.key : undefined;
+            resourceInputs["lang"] = args ? args.lang : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Certificate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Certificate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

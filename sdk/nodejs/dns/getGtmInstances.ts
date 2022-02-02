@@ -28,9 +28,7 @@ export function getGtmInstances(args?: GetGtmInstancesArgs, opts?: pulumi.Invoke
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:dns/getGtmInstances:getGtmInstances", {
         "ids": args.ids,
         "lang": args.lang,

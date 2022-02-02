@@ -97,14 +97,14 @@ export class ConfigMap extends pulumi.CustomResource {
      */
     constructor(name: string, args: ConfigMapArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConfigMapArgs | ConfigMapState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConfigMapState | undefined;
-            inputs["data"] = state ? state.data : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namespaceId"] = state ? state.namespaceId : undefined;
+            resourceInputs["data"] = state ? state.data : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
         } else {
             const args = argsOrState as ConfigMapArgs | undefined;
             if ((!args || args.data === undefined) && !opts.urn) {
@@ -113,15 +113,13 @@ export class ConfigMap extends pulumi.CustomResource {
             if ((!args || args.namespaceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'namespaceId'");
             }
-            inputs["data"] = args ? args.data : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namespaceId"] = args ? args.namespaceId : undefined;
+            resourceInputs["data"] = args ? args.data : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ConfigMap.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ConfigMap.__pulumiType, name, resourceInputs, opts);
     }
 }
 

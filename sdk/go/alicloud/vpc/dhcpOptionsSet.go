@@ -185,7 +185,7 @@ type DhcpOptionsSetInput interface {
 }
 
 func (*DhcpOptionsSet) ElementType() reflect.Type {
-	return reflect.TypeOf((*DhcpOptionsSet)(nil))
+	return reflect.TypeOf((**DhcpOptionsSet)(nil)).Elem()
 }
 
 func (i *DhcpOptionsSet) ToDhcpOptionsSetOutput() DhcpOptionsSetOutput {
@@ -194,35 +194,6 @@ func (i *DhcpOptionsSet) ToDhcpOptionsSetOutput() DhcpOptionsSetOutput {
 
 func (i *DhcpOptionsSet) ToDhcpOptionsSetOutputWithContext(ctx context.Context) DhcpOptionsSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DhcpOptionsSetOutput)
-}
-
-func (i *DhcpOptionsSet) ToDhcpOptionsSetPtrOutput() DhcpOptionsSetPtrOutput {
-	return i.ToDhcpOptionsSetPtrOutputWithContext(context.Background())
-}
-
-func (i *DhcpOptionsSet) ToDhcpOptionsSetPtrOutputWithContext(ctx context.Context) DhcpOptionsSetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DhcpOptionsSetPtrOutput)
-}
-
-type DhcpOptionsSetPtrInput interface {
-	pulumi.Input
-
-	ToDhcpOptionsSetPtrOutput() DhcpOptionsSetPtrOutput
-	ToDhcpOptionsSetPtrOutputWithContext(ctx context.Context) DhcpOptionsSetPtrOutput
-}
-
-type dhcpOptionsSetPtrType DhcpOptionsSetArgs
-
-func (*dhcpOptionsSetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DhcpOptionsSet)(nil))
-}
-
-func (i *dhcpOptionsSetPtrType) ToDhcpOptionsSetPtrOutput() DhcpOptionsSetPtrOutput {
-	return i.ToDhcpOptionsSetPtrOutputWithContext(context.Background())
-}
-
-func (i *dhcpOptionsSetPtrType) ToDhcpOptionsSetPtrOutputWithContext(ctx context.Context) DhcpOptionsSetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DhcpOptionsSetPtrOutput)
 }
 
 // DhcpOptionsSetArrayInput is an input type that accepts DhcpOptionsSetArray and DhcpOptionsSetArrayOutput values.
@@ -278,7 +249,7 @@ func (i DhcpOptionsSetMap) ToDhcpOptionsSetMapOutputWithContext(ctx context.Cont
 type DhcpOptionsSetOutput struct{ *pulumi.OutputState }
 
 func (DhcpOptionsSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DhcpOptionsSet)(nil))
+	return reflect.TypeOf((**DhcpOptionsSet)(nil)).Elem()
 }
 
 func (o DhcpOptionsSetOutput) ToDhcpOptionsSetOutput() DhcpOptionsSetOutput {
@@ -289,44 +260,10 @@ func (o DhcpOptionsSetOutput) ToDhcpOptionsSetOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o DhcpOptionsSetOutput) ToDhcpOptionsSetPtrOutput() DhcpOptionsSetPtrOutput {
-	return o.ToDhcpOptionsSetPtrOutputWithContext(context.Background())
-}
-
-func (o DhcpOptionsSetOutput) ToDhcpOptionsSetPtrOutputWithContext(ctx context.Context) DhcpOptionsSetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DhcpOptionsSet) *DhcpOptionsSet {
-		return &v
-	}).(DhcpOptionsSetPtrOutput)
-}
-
-type DhcpOptionsSetPtrOutput struct{ *pulumi.OutputState }
-
-func (DhcpOptionsSetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DhcpOptionsSet)(nil))
-}
-
-func (o DhcpOptionsSetPtrOutput) ToDhcpOptionsSetPtrOutput() DhcpOptionsSetPtrOutput {
-	return o
-}
-
-func (o DhcpOptionsSetPtrOutput) ToDhcpOptionsSetPtrOutputWithContext(ctx context.Context) DhcpOptionsSetPtrOutput {
-	return o
-}
-
-func (o DhcpOptionsSetPtrOutput) Elem() DhcpOptionsSetOutput {
-	return o.ApplyT(func(v *DhcpOptionsSet) DhcpOptionsSet {
-		if v != nil {
-			return *v
-		}
-		var ret DhcpOptionsSet
-		return ret
-	}).(DhcpOptionsSetOutput)
-}
-
 type DhcpOptionsSetArrayOutput struct{ *pulumi.OutputState }
 
 func (DhcpOptionsSetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DhcpOptionsSet)(nil))
+	return reflect.TypeOf((*[]*DhcpOptionsSet)(nil)).Elem()
 }
 
 func (o DhcpOptionsSetArrayOutput) ToDhcpOptionsSetArrayOutput() DhcpOptionsSetArrayOutput {
@@ -338,15 +275,15 @@ func (o DhcpOptionsSetArrayOutput) ToDhcpOptionsSetArrayOutputWithContext(ctx co
 }
 
 func (o DhcpOptionsSetArrayOutput) Index(i pulumi.IntInput) DhcpOptionsSetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DhcpOptionsSet {
-		return vs[0].([]DhcpOptionsSet)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DhcpOptionsSet {
+		return vs[0].([]*DhcpOptionsSet)[vs[1].(int)]
 	}).(DhcpOptionsSetOutput)
 }
 
 type DhcpOptionsSetMapOutput struct{ *pulumi.OutputState }
 
 func (DhcpOptionsSetMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DhcpOptionsSet)(nil))
+	return reflect.TypeOf((*map[string]*DhcpOptionsSet)(nil)).Elem()
 }
 
 func (o DhcpOptionsSetMapOutput) ToDhcpOptionsSetMapOutput() DhcpOptionsSetMapOutput {
@@ -358,18 +295,16 @@ func (o DhcpOptionsSetMapOutput) ToDhcpOptionsSetMapOutputWithContext(ctx contex
 }
 
 func (o DhcpOptionsSetMapOutput) MapIndex(k pulumi.StringInput) DhcpOptionsSetOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DhcpOptionsSet {
-		return vs[0].(map[string]DhcpOptionsSet)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DhcpOptionsSet {
+		return vs[0].(map[string]*DhcpOptionsSet)[vs[1].(string)]
 	}).(DhcpOptionsSetOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DhcpOptionsSetInput)(nil)).Elem(), &DhcpOptionsSet{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DhcpOptionsSetPtrInput)(nil)).Elem(), &DhcpOptionsSet{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DhcpOptionsSetArrayInput)(nil)).Elem(), DhcpOptionsSetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DhcpOptionsSetMapInput)(nil)).Elem(), DhcpOptionsSetMap{})
 	pulumi.RegisterOutputType(DhcpOptionsSetOutput{})
-	pulumi.RegisterOutputType(DhcpOptionsSetPtrOutput{})
 	pulumi.RegisterOutputType(DhcpOptionsSetArrayOutput{})
 	pulumi.RegisterOutputType(DhcpOptionsSetMapOutput{})
 }

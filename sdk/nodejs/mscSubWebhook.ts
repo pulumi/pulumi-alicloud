@@ -77,12 +77,12 @@ export class MscSubWebhook extends pulumi.CustomResource {
      */
     constructor(name: string, args: MscSubWebhookArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MscSubWebhookArgs | MscSubWebhookState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MscSubWebhookState | undefined;
-            inputs["serverUrl"] = state ? state.serverUrl : undefined;
-            inputs["webhookName"] = state ? state.webhookName : undefined;
+            resourceInputs["serverUrl"] = state ? state.serverUrl : undefined;
+            resourceInputs["webhookName"] = state ? state.webhookName : undefined;
         } else {
             const args = argsOrState as MscSubWebhookArgs | undefined;
             if ((!args || args.serverUrl === undefined) && !opts.urn) {
@@ -91,13 +91,11 @@ export class MscSubWebhook extends pulumi.CustomResource {
             if ((!args || args.webhookName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'webhookName'");
             }
-            inputs["serverUrl"] = args ? args.serverUrl : undefined;
-            inputs["webhookName"] = args ? args.webhookName : undefined;
+            resourceInputs["serverUrl"] = args ? args.serverUrl : undefined;
+            resourceInputs["webhookName"] = args ? args.webhookName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(MscSubWebhook.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(MscSubWebhook.__pulumiType, name, resourceInputs, opts);
     }
 }
 

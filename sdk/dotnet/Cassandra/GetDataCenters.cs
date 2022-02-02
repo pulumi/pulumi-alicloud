@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cassandra
 {
@@ -43,7 +42,7 @@ namespace Pulumi.AliCloud.Cassandra
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDataCentersResult> InvokeAsync(GetDataCentersArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDataCentersResult>("alicloud:cassandra/getDataCenters:getDataCenters", args ?? new GetDataCentersArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDataCentersResult>("alicloud:cassandra/getDataCenters:getDataCenters", args ?? new GetDataCentersArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `alicloud.cassandra.getDataCenters` data source provides a collection of Cassandra Data Centers available in Alicloud account.
@@ -76,7 +75,7 @@ namespace Pulumi.AliCloud.Cassandra
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDataCentersResult> Invoke(GetDataCentersInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDataCentersResult>("alicloud:cassandra/getDataCenters:getDataCenters", args ?? new GetDataCentersInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDataCentersResult>("alicloud:cassandra/getDataCenters:getDataCenters", args ?? new GetDataCentersInvokeArgs(), options.WithDefaults());
     }
 
 

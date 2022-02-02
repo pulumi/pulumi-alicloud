@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Pvtz
 {
@@ -46,7 +45,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetResolverZonesResult> InvokeAsync(GetResolverZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResolverZonesResult>("alicloud:pvtz/getResolverZones:getResolverZones", args ?? new GetResolverZonesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetResolverZonesResult>("alicloud:pvtz/getResolverZones:getResolverZones", args ?? new GetResolverZonesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the available zones with the Private Zone Resolver of the current Alibaba Cloud user.
@@ -82,7 +81,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetResolverZonesResult> Invoke(GetResolverZonesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetResolverZonesResult>("alicloud:pvtz/getResolverZones:getResolverZones", args ?? new GetResolverZonesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetResolverZonesResult>("alicloud:pvtz/getResolverZones:getResolverZones", args ?? new GetResolverZonesInvokeArgs(), options.WithDefaults());
     }
 
 

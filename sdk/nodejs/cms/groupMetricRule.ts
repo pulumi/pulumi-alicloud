@@ -166,27 +166,27 @@ export class GroupMetricRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: GroupMetricRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupMetricRuleArgs | GroupMetricRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupMetricRuleState | undefined;
-            inputs["category"] = state ? state.category : undefined;
-            inputs["contactGroups"] = state ? state.contactGroups : undefined;
-            inputs["dimensions"] = state ? state.dimensions : undefined;
-            inputs["effectiveInterval"] = state ? state.effectiveInterval : undefined;
-            inputs["emailSubject"] = state ? state.emailSubject : undefined;
-            inputs["escalations"] = state ? state.escalations : undefined;
-            inputs["groupId"] = state ? state.groupId : undefined;
-            inputs["groupMetricRuleName"] = state ? state.groupMetricRuleName : undefined;
-            inputs["interval"] = state ? state.interval : undefined;
-            inputs["metricName"] = state ? state.metricName : undefined;
-            inputs["namespace"] = state ? state.namespace : undefined;
-            inputs["noEffectiveInterval"] = state ? state.noEffectiveInterval : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["ruleId"] = state ? state.ruleId : undefined;
-            inputs["silenceTime"] = state ? state.silenceTime : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["webhook"] = state ? state.webhook : undefined;
+            resourceInputs["category"] = state ? state.category : undefined;
+            resourceInputs["contactGroups"] = state ? state.contactGroups : undefined;
+            resourceInputs["dimensions"] = state ? state.dimensions : undefined;
+            resourceInputs["effectiveInterval"] = state ? state.effectiveInterval : undefined;
+            resourceInputs["emailSubject"] = state ? state.emailSubject : undefined;
+            resourceInputs["escalations"] = state ? state.escalations : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["groupMetricRuleName"] = state ? state.groupMetricRuleName : undefined;
+            resourceInputs["interval"] = state ? state.interval : undefined;
+            resourceInputs["metricName"] = state ? state.metricName : undefined;
+            resourceInputs["namespace"] = state ? state.namespace : undefined;
+            resourceInputs["noEffectiveInterval"] = state ? state.noEffectiveInterval : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["ruleId"] = state ? state.ruleId : undefined;
+            resourceInputs["silenceTime"] = state ? state.silenceTime : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["webhook"] = state ? state.webhook : undefined;
         } else {
             const args = argsOrState as GroupMetricRuleArgs | undefined;
             if ((!args || args.category === undefined) && !opts.urn) {
@@ -210,28 +210,26 @@ export class GroupMetricRule extends pulumi.CustomResource {
             if ((!args || args.ruleId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ruleId'");
             }
-            inputs["category"] = args ? args.category : undefined;
-            inputs["contactGroups"] = args ? args.contactGroups : undefined;
-            inputs["dimensions"] = args ? args.dimensions : undefined;
-            inputs["effectiveInterval"] = args ? args.effectiveInterval : undefined;
-            inputs["emailSubject"] = args ? args.emailSubject : undefined;
-            inputs["escalations"] = args ? args.escalations : undefined;
-            inputs["groupId"] = args ? args.groupId : undefined;
-            inputs["groupMetricRuleName"] = args ? args.groupMetricRuleName : undefined;
-            inputs["interval"] = args ? args.interval : undefined;
-            inputs["metricName"] = args ? args.metricName : undefined;
-            inputs["namespace"] = args ? args.namespace : undefined;
-            inputs["noEffectiveInterval"] = args ? args.noEffectiveInterval : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["ruleId"] = args ? args.ruleId : undefined;
-            inputs["silenceTime"] = args ? args.silenceTime : undefined;
-            inputs["webhook"] = args ? args.webhook : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["category"] = args ? args.category : undefined;
+            resourceInputs["contactGroups"] = args ? args.contactGroups : undefined;
+            resourceInputs["dimensions"] = args ? args.dimensions : undefined;
+            resourceInputs["effectiveInterval"] = args ? args.effectiveInterval : undefined;
+            resourceInputs["emailSubject"] = args ? args.emailSubject : undefined;
+            resourceInputs["escalations"] = args ? args.escalations : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["groupMetricRuleName"] = args ? args.groupMetricRuleName : undefined;
+            resourceInputs["interval"] = args ? args.interval : undefined;
+            resourceInputs["metricName"] = args ? args.metricName : undefined;
+            resourceInputs["namespace"] = args ? args.namespace : undefined;
+            resourceInputs["noEffectiveInterval"] = args ? args.noEffectiveInterval : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["ruleId"] = args ? args.ruleId : undefined;
+            resourceInputs["silenceTime"] = args ? args.silenceTime : undefined;
+            resourceInputs["webhook"] = args ? args.webhook : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(GroupMetricRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(GroupMetricRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

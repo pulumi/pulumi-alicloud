@@ -105,18 +105,18 @@ export class IndustrialPidLoop extends pulumi.CustomResource {
      */
     constructor(name: string, args: IndustrialPidLoopArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IndustrialPidLoopArgs | IndustrialPidLoopState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IndustrialPidLoopState | undefined;
-            inputs["pidLoopConfiguration"] = state ? state.pidLoopConfiguration : undefined;
-            inputs["pidLoopDcsType"] = state ? state.pidLoopDcsType : undefined;
-            inputs["pidLoopDesc"] = state ? state.pidLoopDesc : undefined;
-            inputs["pidLoopIsCrucial"] = state ? state.pidLoopIsCrucial : undefined;
-            inputs["pidLoopName"] = state ? state.pidLoopName : undefined;
-            inputs["pidLoopType"] = state ? state.pidLoopType : undefined;
-            inputs["pidProjectId"] = state ? state.pidProjectId : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["pidLoopConfiguration"] = state ? state.pidLoopConfiguration : undefined;
+            resourceInputs["pidLoopDcsType"] = state ? state.pidLoopDcsType : undefined;
+            resourceInputs["pidLoopDesc"] = state ? state.pidLoopDesc : undefined;
+            resourceInputs["pidLoopIsCrucial"] = state ? state.pidLoopIsCrucial : undefined;
+            resourceInputs["pidLoopName"] = state ? state.pidLoopName : undefined;
+            resourceInputs["pidLoopType"] = state ? state.pidLoopType : undefined;
+            resourceInputs["pidProjectId"] = state ? state.pidProjectId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as IndustrialPidLoopArgs | undefined;
             if ((!args || args.pidLoopConfiguration === undefined) && !opts.urn) {
@@ -137,19 +137,17 @@ export class IndustrialPidLoop extends pulumi.CustomResource {
             if ((!args || args.pidProjectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'pidProjectId'");
             }
-            inputs["pidLoopConfiguration"] = args ? args.pidLoopConfiguration : undefined;
-            inputs["pidLoopDcsType"] = args ? args.pidLoopDcsType : undefined;
-            inputs["pidLoopDesc"] = args ? args.pidLoopDesc : undefined;
-            inputs["pidLoopIsCrucial"] = args ? args.pidLoopIsCrucial : undefined;
-            inputs["pidLoopName"] = args ? args.pidLoopName : undefined;
-            inputs["pidLoopType"] = args ? args.pidLoopType : undefined;
-            inputs["pidProjectId"] = args ? args.pidProjectId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["pidLoopConfiguration"] = args ? args.pidLoopConfiguration : undefined;
+            resourceInputs["pidLoopDcsType"] = args ? args.pidLoopDcsType : undefined;
+            resourceInputs["pidLoopDesc"] = args ? args.pidLoopDesc : undefined;
+            resourceInputs["pidLoopIsCrucial"] = args ? args.pidLoopIsCrucial : undefined;
+            resourceInputs["pidLoopName"] = args ? args.pidLoopName : undefined;
+            resourceInputs["pidLoopType"] = args ? args.pidLoopType : undefined;
+            resourceInputs["pidProjectId"] = args ? args.pidProjectId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(IndustrialPidLoop.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(IndustrialPidLoop.__pulumiType, name, resourceInputs, opts);
     }
 }
 

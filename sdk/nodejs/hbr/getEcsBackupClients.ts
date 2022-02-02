@@ -35,9 +35,7 @@ export function getEcsBackupClients(args?: GetEcsBackupClientsArgs, opts?: pulum
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:hbr/getEcsBackupClients:getEcsBackupClients", {
         "ids": args.ids,
         "instanceIds": args.instanceIds,

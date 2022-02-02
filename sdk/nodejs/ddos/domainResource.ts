@@ -106,16 +106,16 @@ export class DomainResource extends pulumi.CustomResource {
      */
     constructor(name: string, args: DomainResourceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainResourceArgs | DomainResourceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainResourceState | undefined;
-            inputs["domain"] = state ? state.domain : undefined;
-            inputs["httpsExt"] = state ? state.httpsExt : undefined;
-            inputs["instanceIds"] = state ? state.instanceIds : undefined;
-            inputs["proxyTypes"] = state ? state.proxyTypes : undefined;
-            inputs["realServers"] = state ? state.realServers : undefined;
-            inputs["rsType"] = state ? state.rsType : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["httpsExt"] = state ? state.httpsExt : undefined;
+            resourceInputs["instanceIds"] = state ? state.instanceIds : undefined;
+            resourceInputs["proxyTypes"] = state ? state.proxyTypes : undefined;
+            resourceInputs["realServers"] = state ? state.realServers : undefined;
+            resourceInputs["rsType"] = state ? state.rsType : undefined;
         } else {
             const args = argsOrState as DomainResourceArgs | undefined;
             if ((!args || args.domain === undefined) && !opts.urn) {
@@ -133,17 +133,15 @@ export class DomainResource extends pulumi.CustomResource {
             if ((!args || args.rsType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'rsType'");
             }
-            inputs["domain"] = args ? args.domain : undefined;
-            inputs["httpsExt"] = args ? args.httpsExt : undefined;
-            inputs["instanceIds"] = args ? args.instanceIds : undefined;
-            inputs["proxyTypes"] = args ? args.proxyTypes : undefined;
-            inputs["realServers"] = args ? args.realServers : undefined;
-            inputs["rsType"] = args ? args.rsType : undefined;
+            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["httpsExt"] = args ? args.httpsExt : undefined;
+            resourceInputs["instanceIds"] = args ? args.instanceIds : undefined;
+            resourceInputs["proxyTypes"] = args ? args.proxyTypes : undefined;
+            resourceInputs["realServers"] = args ? args.realServers : undefined;
+            resourceInputs["rsType"] = args ? args.rsType : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DomainResource.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DomainResource.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -97,37 +97,35 @@ export class Role extends pulumi.CustomResource {
      */
     constructor(name: string, args?: RoleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RoleArgs | RoleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoleState | undefined;
-            inputs["arn"] = state ? state.arn : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["document"] = state ? state.document : undefined;
-            inputs["force"] = state ? state.force : undefined;
-            inputs["maxSessionDuration"] = state ? state.maxSessionDuration : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["ramUsers"] = state ? state.ramUsers : undefined;
-            inputs["roleId"] = state ? state.roleId : undefined;
-            inputs["services"] = state ? state.services : undefined;
-            inputs["version"] = state ? state.version : undefined;
+            resourceInputs["arn"] = state ? state.arn : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["document"] = state ? state.document : undefined;
+            resourceInputs["force"] = state ? state.force : undefined;
+            resourceInputs["maxSessionDuration"] = state ? state.maxSessionDuration : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["ramUsers"] = state ? state.ramUsers : undefined;
+            resourceInputs["roleId"] = state ? state.roleId : undefined;
+            resourceInputs["services"] = state ? state.services : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as RoleArgs | undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["document"] = args ? args.document : undefined;
-            inputs["force"] = args ? args.force : undefined;
-            inputs["maxSessionDuration"] = args ? args.maxSessionDuration : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["ramUsers"] = args ? args.ramUsers : undefined;
-            inputs["services"] = args ? args.services : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["arn"] = undefined /*out*/;
-            inputs["roleId"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["document"] = args ? args.document : undefined;
+            resourceInputs["force"] = args ? args.force : undefined;
+            resourceInputs["maxSessionDuration"] = args ? args.maxSessionDuration : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["ramUsers"] = args ? args.ramUsers : undefined;
+            resourceInputs["services"] = args ? args.services : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["arn"] = undefined /*out*/;
+            resourceInputs["roleId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Role.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Role.__pulumiType, name, resourceInputs, opts);
     }
 }
 

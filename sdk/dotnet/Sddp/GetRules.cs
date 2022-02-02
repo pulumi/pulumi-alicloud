@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Sddp
 {
@@ -39,13 +38,13 @@ namespace Pulumi.AliCloud.Sddp
         ///             RiskLevelId = "4",
         ///             ProductCode = "ODPS",
         ///         });
-        ///         var defaultRules = defaultRule.Id.Apply(id =&gt; AliCloud.Sddp.GetRules.InvokeAsync(new AliCloud.Sddp.GetRulesArgs
+        ///         var defaultRules = AliCloud.Sddp.GetRules.Invoke(new AliCloud.Sddp.GetRulesInvokeArgs
         ///         {
         ///             Ids = 
         ///             {
-        ///                 id,
+        ///                 defaultRule.Id,
         ///             },
-        ///         }));
+        ///         });
         ///         this.SddpRuleId = defaultRules.Apply(defaultRules =&gt; defaultRules.Id);
         ///     }
         /// 
@@ -57,7 +56,7 @@ namespace Pulumi.AliCloud.Sddp
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRulesResult> InvokeAsync(GetRulesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:sddp/getRules:getRules", args ?? new GetRulesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:sddp/getRules:getRules", args ?? new GetRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Sddp Rules of the current Alibaba Cloud user.
@@ -86,13 +85,13 @@ namespace Pulumi.AliCloud.Sddp
         ///             RiskLevelId = "4",
         ///             ProductCode = "ODPS",
         ///         });
-        ///         var defaultRules = defaultRule.Id.Apply(id =&gt; AliCloud.Sddp.GetRules.InvokeAsync(new AliCloud.Sddp.GetRulesArgs
+        ///         var defaultRules = AliCloud.Sddp.GetRules.Invoke(new AliCloud.Sddp.GetRulesInvokeArgs
         ///         {
         ///             Ids = 
         ///             {
-        ///                 id,
+        ///                 defaultRule.Id,
         ///             },
-        ///         }));
+        ///         });
         ///         this.SddpRuleId = defaultRules.Apply(defaultRules =&gt; defaultRules.Id);
         ///     }
         /// 
@@ -104,7 +103,7 @@ namespace Pulumi.AliCloud.Sddp
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRulesResult> Invoke(GetRulesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:sddp/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:sddp/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithDefaults());
     }
 
 

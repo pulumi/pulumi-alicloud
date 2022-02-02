@@ -119,17 +119,17 @@ export class Topic extends pulumi.CustomResource {
      */
     constructor(name: string, args: TopicArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TopicArgs | TopicState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TopicState | undefined;
-            inputs["compactTopic"] = state ? state.compactTopic : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["localTopic"] = state ? state.localTopic : undefined;
-            inputs["partitionNum"] = state ? state.partitionNum : undefined;
-            inputs["remark"] = state ? state.remark : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["topic"] = state ? state.topic : undefined;
+            resourceInputs["compactTopic"] = state ? state.compactTopic : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["localTopic"] = state ? state.localTopic : undefined;
+            resourceInputs["partitionNum"] = state ? state.partitionNum : undefined;
+            resourceInputs["remark"] = state ? state.remark : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["topic"] = state ? state.topic : undefined;
         } else {
             const args = argsOrState as TopicArgs | undefined;
             if ((!args || args.instanceId === undefined) && !opts.urn) {
@@ -141,18 +141,16 @@ export class Topic extends pulumi.CustomResource {
             if ((!args || args.topic === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topic'");
             }
-            inputs["compactTopic"] = args ? args.compactTopic : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["localTopic"] = args ? args.localTopic : undefined;
-            inputs["partitionNum"] = args ? args.partitionNum : undefined;
-            inputs["remark"] = args ? args.remark : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["topic"] = args ? args.topic : undefined;
+            resourceInputs["compactTopic"] = args ? args.compactTopic : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["localTopic"] = args ? args.localTopic : undefined;
+            resourceInputs["partitionNum"] = args ? args.partitionNum : undefined;
+            resourceInputs["remark"] = args ? args.remark : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["topic"] = args ? args.topic : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Topic.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Topic.__pulumiType, name, resourceInputs, opts);
     }
 }
 

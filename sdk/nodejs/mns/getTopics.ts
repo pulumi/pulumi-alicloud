@@ -27,9 +27,7 @@ export function getTopics(args?: GetTopicsArgs, opts?: pulumi.InvokeOptions): Pr
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:mns/getTopics:getTopics", {
         "namePrefix": args.namePrefix,
         "outputFile": args.outputFile,

@@ -74,22 +74,20 @@ export class Product extends pulumi.CustomResource {
      */
     constructor(name: string, args: ProductArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProductArgs | ProductState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProductState | undefined;
-            inputs["productName"] = state ? state.productName : undefined;
+            resourceInputs["productName"] = state ? state.productName : undefined;
         } else {
             const args = argsOrState as ProductArgs | undefined;
             if ((!args || args.productName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'productName'");
             }
-            inputs["productName"] = args ? args.productName : undefined;
+            resourceInputs["productName"] = args ? args.productName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Product.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Product.__pulumiType, name, resourceInputs, opts);
     }
 }
 

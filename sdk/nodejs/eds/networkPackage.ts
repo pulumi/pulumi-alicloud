@@ -92,14 +92,14 @@ export class NetworkPackage extends pulumi.CustomResource {
      */
     constructor(name: string, args: NetworkPackageArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NetworkPackageArgs | NetworkPackageState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkPackageState | undefined;
-            inputs["bandwidth"] = state ? state.bandwidth : undefined;
-            inputs["internetChargeType"] = state ? state.internetChargeType : undefined;
-            inputs["officeSiteId"] = state ? state.officeSiteId : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
+            resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
+            resourceInputs["officeSiteId"] = state ? state.officeSiteId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as NetworkPackageArgs | undefined;
             if ((!args || args.bandwidth === undefined) && !opts.urn) {
@@ -108,15 +108,13 @@ export class NetworkPackage extends pulumi.CustomResource {
             if ((!args || args.officeSiteId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'officeSiteId'");
             }
-            inputs["bandwidth"] = args ? args.bandwidth : undefined;
-            inputs["officeSiteId"] = args ? args.officeSiteId : undefined;
-            inputs["internetChargeType"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
+            resourceInputs["officeSiteId"] = args ? args.officeSiteId : undefined;
+            resourceInputs["internetChargeType"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(NetworkPackage.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(NetworkPackage.__pulumiType, name, resourceInputs, opts);
     }
 }
 

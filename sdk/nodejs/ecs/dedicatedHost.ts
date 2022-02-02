@@ -136,62 +136,60 @@ export class DedicatedHost extends pulumi.CustomResource {
      */
     constructor(name: string, args: DedicatedHostArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DedicatedHostArgs | DedicatedHostState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DedicatedHostState | undefined;
-            inputs["actionOnMaintenance"] = state ? state.actionOnMaintenance : undefined;
-            inputs["autoPlacement"] = state ? state.autoPlacement : undefined;
-            inputs["autoReleaseTime"] = state ? state.autoReleaseTime : undefined;
-            inputs["autoRenew"] = state ? state.autoRenew : undefined;
-            inputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
-            inputs["cpuOverCommitRatio"] = state ? state.cpuOverCommitRatio : undefined;
-            inputs["dedicatedHostClusterId"] = state ? state.dedicatedHostClusterId : undefined;
-            inputs["dedicatedHostName"] = state ? state.dedicatedHostName : undefined;
-            inputs["dedicatedHostType"] = state ? state.dedicatedHostType : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["detailFee"] = state ? state.detailFee : undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["expiredTime"] = state ? state.expiredTime : undefined;
-            inputs["minQuantity"] = state ? state.minQuantity : undefined;
-            inputs["networkAttributes"] = state ? state.networkAttributes : undefined;
-            inputs["paymentType"] = state ? state.paymentType : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["saleCycle"] = state ? state.saleCycle : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["actionOnMaintenance"] = state ? state.actionOnMaintenance : undefined;
+            resourceInputs["autoPlacement"] = state ? state.autoPlacement : undefined;
+            resourceInputs["autoReleaseTime"] = state ? state.autoReleaseTime : undefined;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
+            resourceInputs["cpuOverCommitRatio"] = state ? state.cpuOverCommitRatio : undefined;
+            resourceInputs["dedicatedHostClusterId"] = state ? state.dedicatedHostClusterId : undefined;
+            resourceInputs["dedicatedHostName"] = state ? state.dedicatedHostName : undefined;
+            resourceInputs["dedicatedHostType"] = state ? state.dedicatedHostType : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["detailFee"] = state ? state.detailFee : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["expiredTime"] = state ? state.expiredTime : undefined;
+            resourceInputs["minQuantity"] = state ? state.minQuantity : undefined;
+            resourceInputs["networkAttributes"] = state ? state.networkAttributes : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["saleCycle"] = state ? state.saleCycle : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as DedicatedHostArgs | undefined;
             if ((!args || args.dedicatedHostType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dedicatedHostType'");
             }
-            inputs["actionOnMaintenance"] = args ? args.actionOnMaintenance : undefined;
-            inputs["autoPlacement"] = args ? args.autoPlacement : undefined;
-            inputs["autoReleaseTime"] = args ? args.autoReleaseTime : undefined;
-            inputs["autoRenew"] = args ? args.autoRenew : undefined;
-            inputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
-            inputs["cpuOverCommitRatio"] = args ? args.cpuOverCommitRatio : undefined;
-            inputs["dedicatedHostClusterId"] = args ? args.dedicatedHostClusterId : undefined;
-            inputs["dedicatedHostName"] = args ? args.dedicatedHostName : undefined;
-            inputs["dedicatedHostType"] = args ? args.dedicatedHostType : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["detailFee"] = args ? args.detailFee : undefined;
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["expiredTime"] = args ? args.expiredTime : undefined;
-            inputs["minQuantity"] = args ? args.minQuantity : undefined;
-            inputs["networkAttributes"] = args ? args.networkAttributes : undefined;
-            inputs["paymentType"] = args ? args.paymentType : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["saleCycle"] = args ? args.saleCycle : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["actionOnMaintenance"] = args ? args.actionOnMaintenance : undefined;
+            resourceInputs["autoPlacement"] = args ? args.autoPlacement : undefined;
+            resourceInputs["autoReleaseTime"] = args ? args.autoReleaseTime : undefined;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
+            resourceInputs["cpuOverCommitRatio"] = args ? args.cpuOverCommitRatio : undefined;
+            resourceInputs["dedicatedHostClusterId"] = args ? args.dedicatedHostClusterId : undefined;
+            resourceInputs["dedicatedHostName"] = args ? args.dedicatedHostName : undefined;
+            resourceInputs["dedicatedHostType"] = args ? args.dedicatedHostType : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["detailFee"] = args ? args.detailFee : undefined;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["expiredTime"] = args ? args.expiredTime : undefined;
+            resourceInputs["minQuantity"] = args ? args.minQuantity : undefined;
+            resourceInputs["networkAttributes"] = args ? args.networkAttributes : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["saleCycle"] = args ? args.saleCycle : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DedicatedHost.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DedicatedHost.__pulumiType, name, resourceInputs, opts);
     }
 }
 

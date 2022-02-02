@@ -118,32 +118,30 @@ export class NatIpCidr extends pulumi.CustomResource {
      */
     constructor(name: string, args: NatIpCidrArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NatIpCidrArgs | NatIpCidrState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NatIpCidrState | undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["natGatewayId"] = state ? state.natGatewayId : undefined;
-            inputs["natIpCidr"] = state ? state.natIpCidr : undefined;
-            inputs["natIpCidrDescription"] = state ? state.natIpCidrDescription : undefined;
-            inputs["natIpCidrName"] = state ? state.natIpCidrName : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["natGatewayId"] = state ? state.natGatewayId : undefined;
+            resourceInputs["natIpCidr"] = state ? state.natIpCidr : undefined;
+            resourceInputs["natIpCidrDescription"] = state ? state.natIpCidrDescription : undefined;
+            resourceInputs["natIpCidrName"] = state ? state.natIpCidrName : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as NatIpCidrArgs | undefined;
             if ((!args || args.natGatewayId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'natGatewayId'");
             }
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["natGatewayId"] = args ? args.natGatewayId : undefined;
-            inputs["natIpCidr"] = args ? args.natIpCidr : undefined;
-            inputs["natIpCidrDescription"] = args ? args.natIpCidrDescription : undefined;
-            inputs["natIpCidrName"] = args ? args.natIpCidrName : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["natGatewayId"] = args ? args.natGatewayId : undefined;
+            resourceInputs["natIpCidr"] = args ? args.natIpCidr : undefined;
+            resourceInputs["natIpCidrDescription"] = args ? args.natIpCidrDescription : undefined;
+            resourceInputs["natIpCidrName"] = args ? args.natIpCidrName : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(NatIpCidr.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(NatIpCidr.__pulumiType, name, resourceInputs, opts);
     }
 }
 

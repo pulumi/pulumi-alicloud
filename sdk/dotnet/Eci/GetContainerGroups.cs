@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Eci
 {
@@ -49,7 +48,7 @@ namespace Pulumi.AliCloud.Eci
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetContainerGroupsResult> InvokeAsync(GetContainerGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetContainerGroupsResult>("alicloud:eci/getContainerGroups:getContainerGroups", args ?? new GetContainerGroupsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetContainerGroupsResult>("alicloud:eci/getContainerGroups:getContainerGroups", args ?? new GetContainerGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Eci Container Groups of the current Alibaba Cloud user.
@@ -88,7 +87,7 @@ namespace Pulumi.AliCloud.Eci
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetContainerGroupsResult> Invoke(GetContainerGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetContainerGroupsResult>("alicloud:eci/getContainerGroups:getContainerGroups", args ?? new GetContainerGroupsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetContainerGroupsResult>("alicloud:eci/getContainerGroups:getContainerGroups", args ?? new GetContainerGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

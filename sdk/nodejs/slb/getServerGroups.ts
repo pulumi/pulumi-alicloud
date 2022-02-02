@@ -35,9 +35,9 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultSwitch.id,
  * });
  * const defaultServerGroup = new alicloud.slb.ServerGroup("defaultServerGroup", {loadBalancerId: defaultApplicationLoadBalancer.id});
- * const sampleDs = defaultApplicationLoadBalancer.id.apply(id => alicloud.slb.getServerGroups({
- *     loadBalancerId: id,
- * }));
+ * const sampleDs = alicloud.slb.getServerGroupsOutput({
+ *     loadBalancerId: defaultApplicationLoadBalancer.id,
+ * });
  * export const firstSlbServerGroupId = sampleDs.apply(sampleDs => sampleDs.slbServerGroups?[0]?.id);
  * ```
  */
@@ -46,9 +46,7 @@ export function getServerGroups(args: GetServerGroupsArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:slb/getServerGroups:getServerGroups", {
         "ids": args.ids,
         "loadBalancerId": args.loadBalancerId,

@@ -73,6 +73,9 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		defaultEndpoints := polardb.GetEndpointsOutput(ctx, polardb.GetEndpointsOutputArgs{
+// 			DbClusterId: defaultCluster.ID(),
+// 		}, nil)
 // 		_, err = polardb.NewEndpointAddress(ctx, "endpoint", &polardb.EndpointAddressArgs{
 // 			DbClusterId: defaultCluster.ID(),
 // 			DbEndpointId: defaultEndpoints.ApplyT(func(defaultEndpoints polardb.GetEndpointsResult) (string, error) {
@@ -222,7 +225,7 @@ type EndpointAddressInput interface {
 }
 
 func (*EndpointAddress) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointAddress)(nil))
+	return reflect.TypeOf((**EndpointAddress)(nil)).Elem()
 }
 
 func (i *EndpointAddress) ToEndpointAddressOutput() EndpointAddressOutput {
@@ -231,35 +234,6 @@ func (i *EndpointAddress) ToEndpointAddressOutput() EndpointAddressOutput {
 
 func (i *EndpointAddress) ToEndpointAddressOutputWithContext(ctx context.Context) EndpointAddressOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointAddressOutput)
-}
-
-func (i *EndpointAddress) ToEndpointAddressPtrOutput() EndpointAddressPtrOutput {
-	return i.ToEndpointAddressPtrOutputWithContext(context.Background())
-}
-
-func (i *EndpointAddress) ToEndpointAddressPtrOutputWithContext(ctx context.Context) EndpointAddressPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointAddressPtrOutput)
-}
-
-type EndpointAddressPtrInput interface {
-	pulumi.Input
-
-	ToEndpointAddressPtrOutput() EndpointAddressPtrOutput
-	ToEndpointAddressPtrOutputWithContext(ctx context.Context) EndpointAddressPtrOutput
-}
-
-type endpointAddressPtrType EndpointAddressArgs
-
-func (*endpointAddressPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EndpointAddress)(nil))
-}
-
-func (i *endpointAddressPtrType) ToEndpointAddressPtrOutput() EndpointAddressPtrOutput {
-	return i.ToEndpointAddressPtrOutputWithContext(context.Background())
-}
-
-func (i *endpointAddressPtrType) ToEndpointAddressPtrOutputWithContext(ctx context.Context) EndpointAddressPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointAddressPtrOutput)
 }
 
 // EndpointAddressArrayInput is an input type that accepts EndpointAddressArray and EndpointAddressArrayOutput values.
@@ -315,7 +289,7 @@ func (i EndpointAddressMap) ToEndpointAddressMapOutputWithContext(ctx context.Co
 type EndpointAddressOutput struct{ *pulumi.OutputState }
 
 func (EndpointAddressOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointAddress)(nil))
+	return reflect.TypeOf((**EndpointAddress)(nil)).Elem()
 }
 
 func (o EndpointAddressOutput) ToEndpointAddressOutput() EndpointAddressOutput {
@@ -326,44 +300,10 @@ func (o EndpointAddressOutput) ToEndpointAddressOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o EndpointAddressOutput) ToEndpointAddressPtrOutput() EndpointAddressPtrOutput {
-	return o.ToEndpointAddressPtrOutputWithContext(context.Background())
-}
-
-func (o EndpointAddressOutput) ToEndpointAddressPtrOutputWithContext(ctx context.Context) EndpointAddressPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointAddress) *EndpointAddress {
-		return &v
-	}).(EndpointAddressPtrOutput)
-}
-
-type EndpointAddressPtrOutput struct{ *pulumi.OutputState }
-
-func (EndpointAddressPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EndpointAddress)(nil))
-}
-
-func (o EndpointAddressPtrOutput) ToEndpointAddressPtrOutput() EndpointAddressPtrOutput {
-	return o
-}
-
-func (o EndpointAddressPtrOutput) ToEndpointAddressPtrOutputWithContext(ctx context.Context) EndpointAddressPtrOutput {
-	return o
-}
-
-func (o EndpointAddressPtrOutput) Elem() EndpointAddressOutput {
-	return o.ApplyT(func(v *EndpointAddress) EndpointAddress {
-		if v != nil {
-			return *v
-		}
-		var ret EndpointAddress
-		return ret
-	}).(EndpointAddressOutput)
-}
-
 type EndpointAddressArrayOutput struct{ *pulumi.OutputState }
 
 func (EndpointAddressArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EndpointAddress)(nil))
+	return reflect.TypeOf((*[]*EndpointAddress)(nil)).Elem()
 }
 
 func (o EndpointAddressArrayOutput) ToEndpointAddressArrayOutput() EndpointAddressArrayOutput {
@@ -375,15 +315,15 @@ func (o EndpointAddressArrayOutput) ToEndpointAddressArrayOutputWithContext(ctx 
 }
 
 func (o EndpointAddressArrayOutput) Index(i pulumi.IntInput) EndpointAddressOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointAddress {
-		return vs[0].([]EndpointAddress)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EndpointAddress {
+		return vs[0].([]*EndpointAddress)[vs[1].(int)]
 	}).(EndpointAddressOutput)
 }
 
 type EndpointAddressMapOutput struct{ *pulumi.OutputState }
 
 func (EndpointAddressMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]EndpointAddress)(nil))
+	return reflect.TypeOf((*map[string]*EndpointAddress)(nil)).Elem()
 }
 
 func (o EndpointAddressMapOutput) ToEndpointAddressMapOutput() EndpointAddressMapOutput {
@@ -395,18 +335,16 @@ func (o EndpointAddressMapOutput) ToEndpointAddressMapOutputWithContext(ctx cont
 }
 
 func (o EndpointAddressMapOutput) MapIndex(k pulumi.StringInput) EndpointAddressOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EndpointAddress {
-		return vs[0].(map[string]EndpointAddress)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *EndpointAddress {
+		return vs[0].(map[string]*EndpointAddress)[vs[1].(string)]
 	}).(EndpointAddressOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointAddressInput)(nil)).Elem(), &EndpointAddress{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EndpointAddressPtrInput)(nil)).Elem(), &EndpointAddress{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointAddressArrayInput)(nil)).Elem(), EndpointAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointAddressMapInput)(nil)).Elem(), EndpointAddressMap{})
 	pulumi.RegisterOutputType(EndpointAddressOutput{})
-	pulumi.RegisterOutputType(EndpointAddressPtrOutput{})
 	pulumi.RegisterOutputType(EndpointAddressArrayOutput{})
 	pulumi.RegisterOutputType(EndpointAddressMapOutput{})
 }

@@ -62,9 +62,7 @@ export function getNatIps(args: GetNatIpsArgs, opts?: pulumi.InvokeOptions): Pro
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:vpc/getNatIps:getNatIps", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

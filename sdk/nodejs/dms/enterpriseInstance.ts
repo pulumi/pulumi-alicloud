@@ -189,39 +189,39 @@ export class EnterpriseInstance extends pulumi.CustomResource {
      */
     constructor(name: string, args: EnterpriseInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EnterpriseInstanceArgs | EnterpriseInstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnterpriseInstanceState | undefined;
-            inputs["dataLinkName"] = state ? state.dataLinkName : undefined;
-            inputs["databasePassword"] = state ? state.databasePassword : undefined;
-            inputs["databaseUser"] = state ? state.databaseUser : undefined;
-            inputs["dbaId"] = state ? state.dbaId : undefined;
-            inputs["dbaNickName"] = state ? state.dbaNickName : undefined;
-            inputs["dbaUid"] = state ? state.dbaUid : undefined;
-            inputs["ddlOnline"] = state ? state.ddlOnline : undefined;
-            inputs["ecsInstanceId"] = state ? state.ecsInstanceId : undefined;
-            inputs["ecsRegion"] = state ? state.ecsRegion : undefined;
-            inputs["envType"] = state ? state.envType : undefined;
-            inputs["exportTimeout"] = state ? state.exportTimeout : undefined;
-            inputs["host"] = state ? state.host : undefined;
-            inputs["instanceAlias"] = state ? state.instanceAlias : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["instanceName"] = state ? state.instanceName : undefined;
-            inputs["instanceSource"] = state ? state.instanceSource : undefined;
-            inputs["instanceType"] = state ? state.instanceType : undefined;
-            inputs["networkType"] = state ? state.networkType : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["queryTimeout"] = state ? state.queryTimeout : undefined;
-            inputs["safeRule"] = state ? state.safeRule : undefined;
-            inputs["safeRuleId"] = state ? state.safeRuleId : undefined;
-            inputs["sid"] = state ? state.sid : undefined;
-            inputs["skipTest"] = state ? state.skipTest : undefined;
-            inputs["state"] = state ? state.state : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tid"] = state ? state.tid : undefined;
-            inputs["useDsql"] = state ? state.useDsql : undefined;
-            inputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["dataLinkName"] = state ? state.dataLinkName : undefined;
+            resourceInputs["databasePassword"] = state ? state.databasePassword : undefined;
+            resourceInputs["databaseUser"] = state ? state.databaseUser : undefined;
+            resourceInputs["dbaId"] = state ? state.dbaId : undefined;
+            resourceInputs["dbaNickName"] = state ? state.dbaNickName : undefined;
+            resourceInputs["dbaUid"] = state ? state.dbaUid : undefined;
+            resourceInputs["ddlOnline"] = state ? state.ddlOnline : undefined;
+            resourceInputs["ecsInstanceId"] = state ? state.ecsInstanceId : undefined;
+            resourceInputs["ecsRegion"] = state ? state.ecsRegion : undefined;
+            resourceInputs["envType"] = state ? state.envType : undefined;
+            resourceInputs["exportTimeout"] = state ? state.exportTimeout : undefined;
+            resourceInputs["host"] = state ? state.host : undefined;
+            resourceInputs["instanceAlias"] = state ? state.instanceAlias : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
+            resourceInputs["instanceSource"] = state ? state.instanceSource : undefined;
+            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
+            resourceInputs["networkType"] = state ? state.networkType : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["queryTimeout"] = state ? state.queryTimeout : undefined;
+            resourceInputs["safeRule"] = state ? state.safeRule : undefined;
+            resourceInputs["safeRuleId"] = state ? state.safeRuleId : undefined;
+            resourceInputs["sid"] = state ? state.sid : undefined;
+            resourceInputs["skipTest"] = state ? state.skipTest : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tid"] = state ? state.tid : undefined;
+            resourceInputs["useDsql"] = state ? state.useDsql : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as EnterpriseInstanceArgs | undefined;
             if ((!args || args.databasePassword === undefined) && !opts.urn) {
@@ -260,40 +260,38 @@ export class EnterpriseInstance extends pulumi.CustomResource {
             if ((!args || args.safeRule === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'safeRule'");
             }
-            inputs["dataLinkName"] = args ? args.dataLinkName : undefined;
-            inputs["databasePassword"] = args ? args.databasePassword : undefined;
-            inputs["databaseUser"] = args ? args.databaseUser : undefined;
-            inputs["dbaId"] = args ? args.dbaId : undefined;
-            inputs["dbaUid"] = args ? args.dbaUid : undefined;
-            inputs["ddlOnline"] = args ? args.ddlOnline : undefined;
-            inputs["ecsInstanceId"] = args ? args.ecsInstanceId : undefined;
-            inputs["ecsRegion"] = args ? args.ecsRegion : undefined;
-            inputs["envType"] = args ? args.envType : undefined;
-            inputs["exportTimeout"] = args ? args.exportTimeout : undefined;
-            inputs["host"] = args ? args.host : undefined;
-            inputs["instanceAlias"] = args ? args.instanceAlias : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["instanceName"] = args ? args.instanceName : undefined;
-            inputs["instanceSource"] = args ? args.instanceSource : undefined;
-            inputs["instanceType"] = args ? args.instanceType : undefined;
-            inputs["networkType"] = args ? args.networkType : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["queryTimeout"] = args ? args.queryTimeout : undefined;
-            inputs["safeRule"] = args ? args.safeRule : undefined;
-            inputs["safeRuleId"] = args ? args.safeRuleId : undefined;
-            inputs["sid"] = args ? args.sid : undefined;
-            inputs["skipTest"] = args ? args.skipTest : undefined;
-            inputs["tid"] = args ? args.tid : undefined;
-            inputs["useDsql"] = args ? args.useDsql : undefined;
-            inputs["vpcId"] = args ? args.vpcId : undefined;
-            inputs["dbaNickName"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["dataLinkName"] = args ? args.dataLinkName : undefined;
+            resourceInputs["databasePassword"] = args ? args.databasePassword : undefined;
+            resourceInputs["databaseUser"] = args ? args.databaseUser : undefined;
+            resourceInputs["dbaId"] = args ? args.dbaId : undefined;
+            resourceInputs["dbaUid"] = args ? args.dbaUid : undefined;
+            resourceInputs["ddlOnline"] = args ? args.ddlOnline : undefined;
+            resourceInputs["ecsInstanceId"] = args ? args.ecsInstanceId : undefined;
+            resourceInputs["ecsRegion"] = args ? args.ecsRegion : undefined;
+            resourceInputs["envType"] = args ? args.envType : undefined;
+            resourceInputs["exportTimeout"] = args ? args.exportTimeout : undefined;
+            resourceInputs["host"] = args ? args.host : undefined;
+            resourceInputs["instanceAlias"] = args ? args.instanceAlias : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
+            resourceInputs["instanceSource"] = args ? args.instanceSource : undefined;
+            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
+            resourceInputs["networkType"] = args ? args.networkType : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["queryTimeout"] = args ? args.queryTimeout : undefined;
+            resourceInputs["safeRule"] = args ? args.safeRule : undefined;
+            resourceInputs["safeRuleId"] = args ? args.safeRuleId : undefined;
+            resourceInputs["sid"] = args ? args.sid : undefined;
+            resourceInputs["skipTest"] = args ? args.skipTest : undefined;
+            resourceInputs["tid"] = args ? args.tid : undefined;
+            resourceInputs["useDsql"] = args ? args.useDsql : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["dbaNickName"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EnterpriseInstance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EnterpriseInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

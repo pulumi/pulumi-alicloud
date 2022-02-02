@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Arms
 {
@@ -59,7 +58,7 @@ namespace Pulumi.AliCloud.Arms
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPrometheusAlertRulesResult> InvokeAsync(GetPrometheusAlertRulesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPrometheusAlertRulesResult>("alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules", args ?? new GetPrometheusAlertRulesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPrometheusAlertRulesResult>("alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules", args ?? new GetPrometheusAlertRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Arms Prometheus Alert Rules of the current Alibaba Cloud user.
@@ -108,7 +107,7 @@ namespace Pulumi.AliCloud.Arms
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPrometheusAlertRulesResult> Invoke(GetPrometheusAlertRulesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPrometheusAlertRulesResult>("alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules", args ?? new GetPrometheusAlertRulesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetPrometheusAlertRulesResult>("alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules", args ?? new GetPrometheusAlertRulesInvokeArgs(), options.WithDefaults());
     }
 
 

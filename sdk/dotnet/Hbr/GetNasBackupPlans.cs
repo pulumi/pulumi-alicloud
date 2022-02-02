@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Hbr
 {
@@ -46,7 +45,7 @@ namespace Pulumi.AliCloud.Hbr
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNasBackupPlansResult> InvokeAsync(GetNasBackupPlansArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNasBackupPlansResult>("alicloud:hbr/getNasBackupPlans:getNasBackupPlans", args ?? new GetNasBackupPlansArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNasBackupPlansResult>("alicloud:hbr/getNasBackupPlans:getNasBackupPlans", args ?? new GetNasBackupPlansArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Hbr NasBackupPlans of the current Alibaba Cloud user.
@@ -82,7 +81,7 @@ namespace Pulumi.AliCloud.Hbr
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNasBackupPlansResult> Invoke(GetNasBackupPlansInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNasBackupPlansResult>("alicloud:hbr/getNasBackupPlans:getNasBackupPlans", args ?? new GetNasBackupPlansInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetNasBackupPlansResult>("alicloud:hbr/getNasBackupPlans:getNasBackupPlans", args ?? new GetNasBackupPlansInvokeArgs(), options.WithDefaults());
     }
 
 

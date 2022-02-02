@@ -126,7 +126,7 @@ type BackendServerInput interface {
 }
 
 func (*BackendServer) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackendServer)(nil))
+	return reflect.TypeOf((**BackendServer)(nil)).Elem()
 }
 
 func (i *BackendServer) ToBackendServerOutput() BackendServerOutput {
@@ -135,35 +135,6 @@ func (i *BackendServer) ToBackendServerOutput() BackendServerOutput {
 
 func (i *BackendServer) ToBackendServerOutputWithContext(ctx context.Context) BackendServerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServerOutput)
-}
-
-func (i *BackendServer) ToBackendServerPtrOutput() BackendServerPtrOutput {
-	return i.ToBackendServerPtrOutputWithContext(context.Background())
-}
-
-func (i *BackendServer) ToBackendServerPtrOutputWithContext(ctx context.Context) BackendServerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackendServerPtrOutput)
-}
-
-type BackendServerPtrInput interface {
-	pulumi.Input
-
-	ToBackendServerPtrOutput() BackendServerPtrOutput
-	ToBackendServerPtrOutputWithContext(ctx context.Context) BackendServerPtrOutput
-}
-
-type backendServerPtrType BackendServerArgs
-
-func (*backendServerPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BackendServer)(nil))
-}
-
-func (i *backendServerPtrType) ToBackendServerPtrOutput() BackendServerPtrOutput {
-	return i.ToBackendServerPtrOutputWithContext(context.Background())
-}
-
-func (i *backendServerPtrType) ToBackendServerPtrOutputWithContext(ctx context.Context) BackendServerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackendServerPtrOutput)
 }
 
 // BackendServerArrayInput is an input type that accepts BackendServerArray and BackendServerArrayOutput values.
@@ -219,7 +190,7 @@ func (i BackendServerMap) ToBackendServerMapOutputWithContext(ctx context.Contex
 type BackendServerOutput struct{ *pulumi.OutputState }
 
 func (BackendServerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackendServer)(nil))
+	return reflect.TypeOf((**BackendServer)(nil)).Elem()
 }
 
 func (o BackendServerOutput) ToBackendServerOutput() BackendServerOutput {
@@ -230,44 +201,10 @@ func (o BackendServerOutput) ToBackendServerOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o BackendServerOutput) ToBackendServerPtrOutput() BackendServerPtrOutput {
-	return o.ToBackendServerPtrOutputWithContext(context.Background())
-}
-
-func (o BackendServerOutput) ToBackendServerPtrOutputWithContext(ctx context.Context) BackendServerPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendServer) *BackendServer {
-		return &v
-	}).(BackendServerPtrOutput)
-}
-
-type BackendServerPtrOutput struct{ *pulumi.OutputState }
-
-func (BackendServerPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BackendServer)(nil))
-}
-
-func (o BackendServerPtrOutput) ToBackendServerPtrOutput() BackendServerPtrOutput {
-	return o
-}
-
-func (o BackendServerPtrOutput) ToBackendServerPtrOutputWithContext(ctx context.Context) BackendServerPtrOutput {
-	return o
-}
-
-func (o BackendServerPtrOutput) Elem() BackendServerOutput {
-	return o.ApplyT(func(v *BackendServer) BackendServer {
-		if v != nil {
-			return *v
-		}
-		var ret BackendServer
-		return ret
-	}).(BackendServerOutput)
-}
-
 type BackendServerArrayOutput struct{ *pulumi.OutputState }
 
 func (BackendServerArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BackendServer)(nil))
+	return reflect.TypeOf((*[]*BackendServer)(nil)).Elem()
 }
 
 func (o BackendServerArrayOutput) ToBackendServerArrayOutput() BackendServerArrayOutput {
@@ -279,15 +216,15 @@ func (o BackendServerArrayOutput) ToBackendServerArrayOutputWithContext(ctx cont
 }
 
 func (o BackendServerArrayOutput) Index(i pulumi.IntInput) BackendServerOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendServer {
-		return vs[0].([]BackendServer)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BackendServer {
+		return vs[0].([]*BackendServer)[vs[1].(int)]
 	}).(BackendServerOutput)
 }
 
 type BackendServerMapOutput struct{ *pulumi.OutputState }
 
 func (BackendServerMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]BackendServer)(nil))
+	return reflect.TypeOf((*map[string]*BackendServer)(nil)).Elem()
 }
 
 func (o BackendServerMapOutput) ToBackendServerMapOutput() BackendServerMapOutput {
@@ -299,18 +236,16 @@ func (o BackendServerMapOutput) ToBackendServerMapOutputWithContext(ctx context.
 }
 
 func (o BackendServerMapOutput) MapIndex(k pulumi.StringInput) BackendServerOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BackendServer {
-		return vs[0].(map[string]BackendServer)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *BackendServer {
+		return vs[0].(map[string]*BackendServer)[vs[1].(string)]
 	}).(BackendServerOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServerInput)(nil)).Elem(), &BackendServer{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BackendServerPtrInput)(nil)).Elem(), &BackendServer{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServerArrayInput)(nil)).Elem(), BackendServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServerMapInput)(nil)).Elem(), BackendServerMap{})
 	pulumi.RegisterOutputType(BackendServerOutput{})
-	pulumi.RegisterOutputType(BackendServerPtrOutput{})
 	pulumi.RegisterOutputType(BackendServerArrayOutput{})
 	pulumi.RegisterOutputType(BackendServerMapOutput{})
 }

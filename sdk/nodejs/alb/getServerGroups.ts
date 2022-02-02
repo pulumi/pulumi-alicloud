@@ -32,9 +32,7 @@ export function getServerGroups(args?: GetServerGroupsArgs, opts?: pulumi.Invoke
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:alb/getServerGroups:getServerGroups", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,

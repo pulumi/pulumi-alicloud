@@ -114,34 +114,32 @@ export class ImageImport extends pulumi.CustomResource {
      */
     constructor(name: string, args: ImageImportArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ImageImportArgs | ImageImportState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageImportState | undefined;
-            inputs["architecture"] = state ? state.architecture : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["diskDeviceMappings"] = state ? state.diskDeviceMappings : undefined;
-            inputs["imageName"] = state ? state.imageName : undefined;
-            inputs["licenseType"] = state ? state.licenseType : undefined;
-            inputs["osType"] = state ? state.osType : undefined;
-            inputs["platform"] = state ? state.platform : undefined;
+            resourceInputs["architecture"] = state ? state.architecture : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["diskDeviceMappings"] = state ? state.diskDeviceMappings : undefined;
+            resourceInputs["imageName"] = state ? state.imageName : undefined;
+            resourceInputs["licenseType"] = state ? state.licenseType : undefined;
+            resourceInputs["osType"] = state ? state.osType : undefined;
+            resourceInputs["platform"] = state ? state.platform : undefined;
         } else {
             const args = argsOrState as ImageImportArgs | undefined;
             if ((!args || args.diskDeviceMappings === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'diskDeviceMappings'");
             }
-            inputs["architecture"] = args ? args.architecture : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["diskDeviceMappings"] = args ? args.diskDeviceMappings : undefined;
-            inputs["imageName"] = args ? args.imageName : undefined;
-            inputs["licenseType"] = args ? args.licenseType : undefined;
-            inputs["osType"] = args ? args.osType : undefined;
-            inputs["platform"] = args ? args.platform : undefined;
+            resourceInputs["architecture"] = args ? args.architecture : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["diskDeviceMappings"] = args ? args.diskDeviceMappings : undefined;
+            resourceInputs["imageName"] = args ? args.imageName : undefined;
+            resourceInputs["licenseType"] = args ? args.licenseType : undefined;
+            resourceInputs["osType"] = args ? args.osType : undefined;
+            resourceInputs["platform"] = args ? args.platform : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ImageImport.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ImageImport.__pulumiType, name, resourceInputs, opts);
     }
 }
 

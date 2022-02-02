@@ -134,27 +134,27 @@ export class GatewayBlockVolume extends pulumi.CustomResource {
      */
     constructor(name: string, args: GatewayBlockVolumeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GatewayBlockVolumeArgs | GatewayBlockVolumeState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayBlockVolumeState | undefined;
-            inputs["cacheMode"] = state ? state.cacheMode : undefined;
-            inputs["chapEnabled"] = state ? state.chapEnabled : undefined;
-            inputs["chapInPassword"] = state ? state.chapInPassword : undefined;
-            inputs["chapInUser"] = state ? state.chapInUser : undefined;
-            inputs["chunkSize"] = state ? state.chunkSize : undefined;
-            inputs["gatewayBlockVolumeName"] = state ? state.gatewayBlockVolumeName : undefined;
-            inputs["gatewayId"] = state ? state.gatewayId : undefined;
-            inputs["indexId"] = state ? state.indexId : undefined;
-            inputs["isSourceDeletion"] = state ? state.isSourceDeletion : undefined;
-            inputs["localPath"] = state ? state.localPath : undefined;
-            inputs["ossBucketName"] = state ? state.ossBucketName : undefined;
-            inputs["ossBucketSsl"] = state ? state.ossBucketSsl : undefined;
-            inputs["ossEndpoint"] = state ? state.ossEndpoint : undefined;
-            inputs["protocol"] = state ? state.protocol : undefined;
-            inputs["recovery"] = state ? state.recovery : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["cacheMode"] = state ? state.cacheMode : undefined;
+            resourceInputs["chapEnabled"] = state ? state.chapEnabled : undefined;
+            resourceInputs["chapInPassword"] = state ? state.chapInPassword : undefined;
+            resourceInputs["chapInUser"] = state ? state.chapInUser : undefined;
+            resourceInputs["chunkSize"] = state ? state.chunkSize : undefined;
+            resourceInputs["gatewayBlockVolumeName"] = state ? state.gatewayBlockVolumeName : undefined;
+            resourceInputs["gatewayId"] = state ? state.gatewayId : undefined;
+            resourceInputs["indexId"] = state ? state.indexId : undefined;
+            resourceInputs["isSourceDeletion"] = state ? state.isSourceDeletion : undefined;
+            resourceInputs["localPath"] = state ? state.localPath : undefined;
+            resourceInputs["ossBucketName"] = state ? state.ossBucketName : undefined;
+            resourceInputs["ossBucketSsl"] = state ? state.ossBucketSsl : undefined;
+            resourceInputs["ossEndpoint"] = state ? state.ossEndpoint : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["recovery"] = state ? state.recovery : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as GatewayBlockVolumeArgs | undefined;
             if ((!args || args.gatewayBlockVolumeName === undefined) && !opts.urn) {
@@ -172,28 +172,26 @@ export class GatewayBlockVolume extends pulumi.CustomResource {
             if ((!args || args.protocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            inputs["cacheMode"] = args ? args.cacheMode : undefined;
-            inputs["chapEnabled"] = args ? args.chapEnabled : undefined;
-            inputs["chapInPassword"] = args ? args.chapInPassword : undefined;
-            inputs["chapInUser"] = args ? args.chapInUser : undefined;
-            inputs["chunkSize"] = args ? args.chunkSize : undefined;
-            inputs["gatewayBlockVolumeName"] = args ? args.gatewayBlockVolumeName : undefined;
-            inputs["gatewayId"] = args ? args.gatewayId : undefined;
-            inputs["isSourceDeletion"] = args ? args.isSourceDeletion : undefined;
-            inputs["localPath"] = args ? args.localPath : undefined;
-            inputs["ossBucketName"] = args ? args.ossBucketName : undefined;
-            inputs["ossBucketSsl"] = args ? args.ossBucketSsl : undefined;
-            inputs["ossEndpoint"] = args ? args.ossEndpoint : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["recovery"] = args ? args.recovery : undefined;
-            inputs["size"] = args ? args.size : undefined;
-            inputs["indexId"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["cacheMode"] = args ? args.cacheMode : undefined;
+            resourceInputs["chapEnabled"] = args ? args.chapEnabled : undefined;
+            resourceInputs["chapInPassword"] = args ? args.chapInPassword : undefined;
+            resourceInputs["chapInUser"] = args ? args.chapInUser : undefined;
+            resourceInputs["chunkSize"] = args ? args.chunkSize : undefined;
+            resourceInputs["gatewayBlockVolumeName"] = args ? args.gatewayBlockVolumeName : undefined;
+            resourceInputs["gatewayId"] = args ? args.gatewayId : undefined;
+            resourceInputs["isSourceDeletion"] = args ? args.isSourceDeletion : undefined;
+            resourceInputs["localPath"] = args ? args.localPath : undefined;
+            resourceInputs["ossBucketName"] = args ? args.ossBucketName : undefined;
+            resourceInputs["ossBucketSsl"] = args ? args.ossBucketSsl : undefined;
+            resourceInputs["ossEndpoint"] = args ? args.ossEndpoint : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["recovery"] = args ? args.recovery : undefined;
+            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["indexId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(GatewayBlockVolume.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(GatewayBlockVolume.__pulumiType, name, resourceInputs, opts);
     }
 }
 

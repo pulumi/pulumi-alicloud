@@ -28,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := eds.NewEcdPolicyGroup(ctx, "_default", &eds.EcdPolicyGroupArgs{
+// 		_, err := eds.NewEcdPolicyGroup(ctx, "default", &eds.EcdPolicyGroupArgs{
 // 			PolicyGroupName: pulumi.String("my-policy-group"),
 // 			Clipboard:       pulumi.String("read"),
 // 			LocalDrive:      pulumi.String("read"),

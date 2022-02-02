@@ -139,7 +139,7 @@ def get_server_groups(ids: Optional[Sequence[str]] = None,
         load_balancer_name=name,
         vswitch_id=default_switch.id)
     default_server_group = alicloud.slb.ServerGroup("defaultServerGroup", load_balancer_id=default_application_load_balancer.id)
-    sample_ds = default_application_load_balancer.id.apply(lambda id: alicloud.slb.get_server_groups(load_balancer_id=id))
+    sample_ds = alicloud.slb.get_server_groups_output(load_balancer_id=default_application_load_balancer.id)
     pulumi.export("firstSlbServerGroupId", sample_ds.slb_server_groups[0].id)
     ```
 
@@ -202,7 +202,7 @@ def get_server_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
         load_balancer_name=name,
         vswitch_id=default_switch.id)
     default_server_group = alicloud.slb.ServerGroup("defaultServerGroup", load_balancer_id=default_application_load_balancer.id)
-    sample_ds = default_application_load_balancer.id.apply(lambda id: alicloud.slb.get_server_groups(load_balancer_id=id))
+    sample_ds = alicloud.slb.get_server_groups_output(load_balancer_id=default_application_load_balancer.id)
     pulumi.export("firstSlbServerGroupId", sample_ds.slb_server_groups[0].id)
     ```
 

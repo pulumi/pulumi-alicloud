@@ -87,21 +87,21 @@ export class SecurityGroupRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: SecurityGroupRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecurityGroupRuleArgs | SecurityGroupRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityGroupRuleState | undefined;
-            inputs["cidrIp"] = state ? state.cidrIp : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["ipProtocol"] = state ? state.ipProtocol : undefined;
-            inputs["nicType"] = state ? state.nicType : undefined;
-            inputs["policy"] = state ? state.policy : undefined;
-            inputs["portRange"] = state ? state.portRange : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            inputs["sourceGroupOwnerAccount"] = state ? state.sourceGroupOwnerAccount : undefined;
-            inputs["sourceSecurityGroupId"] = state ? state.sourceSecurityGroupId : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["cidrIp"] = state ? state.cidrIp : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["ipProtocol"] = state ? state.ipProtocol : undefined;
+            resourceInputs["nicType"] = state ? state.nicType : undefined;
+            resourceInputs["policy"] = state ? state.policy : undefined;
+            resourceInputs["portRange"] = state ? state.portRange : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["sourceGroupOwnerAccount"] = state ? state.sourceGroupOwnerAccount : undefined;
+            resourceInputs["sourceSecurityGroupId"] = state ? state.sourceSecurityGroupId : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as SecurityGroupRuleArgs | undefined;
             if ((!args || args.ipProtocol === undefined) && !opts.urn) {
@@ -113,22 +113,20 @@ export class SecurityGroupRule extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["cidrIp"] = args ? args.cidrIp : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["ipProtocol"] = args ? args.ipProtocol : undefined;
-            inputs["nicType"] = args ? args.nicType : undefined;
-            inputs["policy"] = args ? args.policy : undefined;
-            inputs["portRange"] = args ? args.portRange : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            inputs["sourceGroupOwnerAccount"] = args ? args.sourceGroupOwnerAccount : undefined;
-            inputs["sourceSecurityGroupId"] = args ? args.sourceSecurityGroupId : undefined;
-            inputs["type"] = args ? args.type : undefined;
+            resourceInputs["cidrIp"] = args ? args.cidrIp : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["ipProtocol"] = args ? args.ipProtocol : undefined;
+            resourceInputs["nicType"] = args ? args.nicType : undefined;
+            resourceInputs["policy"] = args ? args.policy : undefined;
+            resourceInputs["portRange"] = args ? args.portRange : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["sourceGroupOwnerAccount"] = args ? args.sourceGroupOwnerAccount : undefined;
+            resourceInputs["sourceSecurityGroupId"] = args ? args.sourceSecurityGroupId : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SecurityGroupRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SecurityGroupRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

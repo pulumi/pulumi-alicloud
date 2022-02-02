@@ -27,9 +27,7 @@ export function getTransitRouterRouteTableAssociations(args: GetTransitRouterRou
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cen/getTransitRouterRouteTableAssociations:getTransitRouterRouteTableAssociations", {
         "ids": args.ids,
         "outputFile": args.outputFile,

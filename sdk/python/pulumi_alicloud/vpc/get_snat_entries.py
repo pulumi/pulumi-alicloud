@@ -207,7 +207,7 @@ def get_snat_entries(ids: Optional[Sequence[str]] = None,
         snat_table_id=foo_nat_gateway.snat_table_ids,
         source_vswitch_id=foo_switch.id,
         snat_ip=foo_eip_address.ip_address)
-    foo_snat_entries = foo_snat_entry.snat_table_id.apply(lambda snat_table_id: alicloud.vpc.get_snat_entries(snat_table_id=snat_table_id))
+    foo_snat_entries = alicloud.vpc.get_snat_entries_output(snat_table_id=foo_snat_entry.snat_table_id)
     ```
 
 
@@ -295,7 +295,7 @@ def get_snat_entries_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
         snat_table_id=foo_nat_gateway.snat_table_ids,
         source_vswitch_id=foo_switch.id,
         snat_ip=foo_eip_address.ip_address)
-    foo_snat_entries = foo_snat_entry.snat_table_id.apply(lambda snat_table_id: alicloud.vpc.get_snat_entries(snat_table_id=snat_table_id))
+    foo_snat_entries = alicloud.vpc.get_snat_entries_output(snat_table_id=foo_snat_entry.snat_table_id)
     ```
 
 

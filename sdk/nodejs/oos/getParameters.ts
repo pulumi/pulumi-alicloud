@@ -47,9 +47,7 @@ export function getParameters(args?: GetParametersArgs, opts?: pulumi.InvokeOpti
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:oos/getParameters:getParameters", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,

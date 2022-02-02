@@ -90,12 +90,12 @@ export class MonitorGroupInstances extends pulumi.CustomResource {
      */
     constructor(name: string, args: MonitorGroupInstancesArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MonitorGroupInstancesArgs | MonitorGroupInstancesState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MonitorGroupInstancesState | undefined;
-            inputs["groupId"] = state ? state.groupId : undefined;
-            inputs["instances"] = state ? state.instances : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["instances"] = state ? state.instances : undefined;
         } else {
             const args = argsOrState as MonitorGroupInstancesArgs | undefined;
             if ((!args || args.groupId === undefined) && !opts.urn) {
@@ -104,13 +104,11 @@ export class MonitorGroupInstances extends pulumi.CustomResource {
             if ((!args || args.instances === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instances'");
             }
-            inputs["groupId"] = args ? args.groupId : undefined;
-            inputs["instances"] = args ? args.instances : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["instances"] = args ? args.instances : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(MonitorGroupInstances.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(MonitorGroupInstances.__pulumiType, name, resourceInputs, opts);
     }
 }
 

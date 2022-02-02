@@ -104,13 +104,13 @@ export class GroupPolicyAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: GroupPolicyAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupPolicyAttachmentArgs | GroupPolicyAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupPolicyAttachmentState | undefined;
-            inputs["groupName"] = state ? state.groupName : undefined;
-            inputs["policyName"] = state ? state.policyName : undefined;
-            inputs["policyType"] = state ? state.policyType : undefined;
+            resourceInputs["groupName"] = state ? state.groupName : undefined;
+            resourceInputs["policyName"] = state ? state.policyName : undefined;
+            resourceInputs["policyType"] = state ? state.policyType : undefined;
         } else {
             const args = argsOrState as GroupPolicyAttachmentArgs | undefined;
             if ((!args || args.groupName === undefined) && !opts.urn) {
@@ -122,14 +122,12 @@ export class GroupPolicyAttachment extends pulumi.CustomResource {
             if ((!args || args.policyType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyType'");
             }
-            inputs["groupName"] = args ? args.groupName : undefined;
-            inputs["policyName"] = args ? args.policyName : undefined;
-            inputs["policyType"] = args ? args.policyType : undefined;
+            resourceInputs["groupName"] = args ? args.groupName : undefined;
+            resourceInputs["policyName"] = args ? args.policyName : undefined;
+            resourceInputs["policyType"] = args ? args.policyType : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(GroupPolicyAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(GroupPolicyAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cms
 {
@@ -55,13 +54,13 @@ namespace Pulumi.AliCloud.Cms
         ///                 },
         ///             },
         ///         });
-        ///         var ids = defaultDynamicTagGroup.Id.Apply(id =&gt; AliCloud.Cms.GetDynamicTagGroups.InvokeAsync(new AliCloud.Cms.GetDynamicTagGroupsArgs
+        ///         var ids = AliCloud.Cms.GetDynamicTagGroups.Invoke(new AliCloud.Cms.GetDynamicTagGroupsInvokeArgs
         ///         {
         ///             Ids = 
         ///             {
-        ///                 id,
+        ///                 defaultDynamicTagGroup.Id,
         ///             },
-        ///         }));
+        ///         });
         ///         this.CmsDynamicTagGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
         ///     }
         /// 
@@ -73,7 +72,7 @@ namespace Pulumi.AliCloud.Cms
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDynamicTagGroupsResult> InvokeAsync(GetDynamicTagGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDynamicTagGroupsResult>("alicloud:cms/getDynamicTagGroups:getDynamicTagGroups", args ?? new GetDynamicTagGroupsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDynamicTagGroupsResult>("alicloud:cms/getDynamicTagGroups:getDynamicTagGroups", args ?? new GetDynamicTagGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cms Dynamic Tag Groups of the current Alibaba Cloud user.
@@ -118,13 +117,13 @@ namespace Pulumi.AliCloud.Cms
         ///                 },
         ///             },
         ///         });
-        ///         var ids = defaultDynamicTagGroup.Id.Apply(id =&gt; AliCloud.Cms.GetDynamicTagGroups.InvokeAsync(new AliCloud.Cms.GetDynamicTagGroupsArgs
+        ///         var ids = AliCloud.Cms.GetDynamicTagGroups.Invoke(new AliCloud.Cms.GetDynamicTagGroupsInvokeArgs
         ///         {
         ///             Ids = 
         ///             {
-        ///                 id,
+        ///                 defaultDynamicTagGroup.Id,
         ///             },
-        ///         }));
+        ///         });
         ///         this.CmsDynamicTagGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
         ///     }
         /// 
@@ -136,7 +135,7 @@ namespace Pulumi.AliCloud.Cms
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDynamicTagGroupsResult> Invoke(GetDynamicTagGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDynamicTagGroupsResult>("alicloud:cms/getDynamicTagGroups:getDynamicTagGroups", args ?? new GetDynamicTagGroupsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDynamicTagGroupsResult>("alicloud:cms/getDynamicTagGroups:getDynamicTagGroups", args ?? new GetDynamicTagGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

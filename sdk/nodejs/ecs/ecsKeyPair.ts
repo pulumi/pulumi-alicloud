@@ -104,33 +104,31 @@ export class EcsKeyPair extends pulumi.CustomResource {
      */
     constructor(name: string, args?: EcsKeyPairArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EcsKeyPairArgs | EcsKeyPairState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsKeyPairState | undefined;
-            inputs["fingerPrint"] = state ? state.fingerPrint : undefined;
-            inputs["keyFile"] = state ? state.keyFile : undefined;
-            inputs["keyName"] = state ? state.keyName : undefined;
-            inputs["keyNamePrefix"] = state ? state.keyNamePrefix : undefined;
-            inputs["keyPairName"] = state ? state.keyPairName : undefined;
-            inputs["publicKey"] = state ? state.publicKey : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["fingerPrint"] = state ? state.fingerPrint : undefined;
+            resourceInputs["keyFile"] = state ? state.keyFile : undefined;
+            resourceInputs["keyName"] = state ? state.keyName : undefined;
+            resourceInputs["keyNamePrefix"] = state ? state.keyNamePrefix : undefined;
+            resourceInputs["keyPairName"] = state ? state.keyPairName : undefined;
+            resourceInputs["publicKey"] = state ? state.publicKey : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as EcsKeyPairArgs | undefined;
-            inputs["keyFile"] = args ? args.keyFile : undefined;
-            inputs["keyName"] = args ? args.keyName : undefined;
-            inputs["keyNamePrefix"] = args ? args.keyNamePrefix : undefined;
-            inputs["keyPairName"] = args ? args.keyPairName : undefined;
-            inputs["publicKey"] = args ? args.publicKey : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["fingerPrint"] = undefined /*out*/;
+            resourceInputs["keyFile"] = args ? args.keyFile : undefined;
+            resourceInputs["keyName"] = args ? args.keyName : undefined;
+            resourceInputs["keyNamePrefix"] = args ? args.keyNamePrefix : undefined;
+            resourceInputs["keyPairName"] = args ? args.keyPairName : undefined;
+            resourceInputs["publicKey"] = args ? args.publicKey : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["fingerPrint"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EcsKeyPair.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EcsKeyPair.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -45,9 +45,7 @@ export function getSecurityGroupRules(args: GetSecurityGroupRulesArgs, opts?: pu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ecs/getSecurityGroupRules:getSecurityGroupRules", {
         "direction": args.direction,
         "groupId": args.groupId,

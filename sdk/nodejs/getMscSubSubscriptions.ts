@@ -28,9 +28,7 @@ export function getMscSubSubscriptions(args?: GetMscSubSubscriptionsArgs, opts?:
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:index/getMscSubSubscriptions:getMscSubSubscriptions", {
         "outputFile": args.outputFile,
     }, opts);

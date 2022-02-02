@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -66,10 +65,10 @@ namespace Pulumi.AliCloud.Vpc
         ///             SourceVswitchId = fooSwitch.Id,
         ///             SnatIp = fooEipAddress.IpAddress,
         ///         });
-        ///         var fooSnatEntries = fooSnatEntry.SnatTableId.Apply(snatTableId =&gt; AliCloud.Vpc.GetSnatEntries.InvokeAsync(new AliCloud.Vpc.GetSnatEntriesArgs
+        ///         var fooSnatEntries = AliCloud.Vpc.GetSnatEntries.Invoke(new AliCloud.Vpc.GetSnatEntriesInvokeArgs
         ///         {
-        ///             SnatTableId = snatTableId,
-        ///         }));
+        ///             SnatTableId = fooSnatEntry.SnatTableId,
+        ///         });
         ///     }
         /// 
         /// }
@@ -78,7 +77,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSnatEntriesResult> InvokeAsync(GetSnatEntriesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSnatEntriesResult>("alicloud:vpc/getSnatEntries:getSnatEntries", args ?? new GetSnatEntriesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSnatEntriesResult>("alicloud:vpc/getSnatEntries:getSnatEntries", args ?? new GetSnatEntriesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
@@ -134,10 +133,10 @@ namespace Pulumi.AliCloud.Vpc
         ///             SourceVswitchId = fooSwitch.Id,
         ///             SnatIp = fooEipAddress.IpAddress,
         ///         });
-        ///         var fooSnatEntries = fooSnatEntry.SnatTableId.Apply(snatTableId =&gt; AliCloud.Vpc.GetSnatEntries.InvokeAsync(new AliCloud.Vpc.GetSnatEntriesArgs
+        ///         var fooSnatEntries = AliCloud.Vpc.GetSnatEntries.Invoke(new AliCloud.Vpc.GetSnatEntriesInvokeArgs
         ///         {
-        ///             SnatTableId = snatTableId,
-        ///         }));
+        ///             SnatTableId = fooSnatEntry.SnatTableId,
+        ///         });
         ///     }
         /// 
         /// }
@@ -146,7 +145,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSnatEntriesResult> Invoke(GetSnatEntriesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSnatEntriesResult>("alicloud:vpc/getSnatEntries:getSnatEntries", args ?? new GetSnatEntriesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSnatEntriesResult>("alicloud:vpc/getSnatEntries:getSnatEntries", args ?? new GetSnatEntriesInvokeArgs(), options.WithDefaults());
     }
 
 

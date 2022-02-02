@@ -142,17 +142,17 @@ export class Ingress extends pulumi.CustomResource {
      */
     constructor(name: string, args: IngressArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IngressArgs | IngressState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IngressState | undefined;
-            inputs["certId"] = state ? state.certId : undefined;
-            inputs["defaultRule"] = state ? state.defaultRule : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["listenerPort"] = state ? state.listenerPort : undefined;
-            inputs["namespaceId"] = state ? state.namespaceId : undefined;
-            inputs["rules"] = state ? state.rules : undefined;
-            inputs["slbId"] = state ? state.slbId : undefined;
+            resourceInputs["certId"] = state ? state.certId : undefined;
+            resourceInputs["defaultRule"] = state ? state.defaultRule : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["listenerPort"] = state ? state.listenerPort : undefined;
+            resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
+            resourceInputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["slbId"] = state ? state.slbId : undefined;
         } else {
             const args = argsOrState as IngressArgs | undefined;
             if ((!args || args.listenerPort === undefined) && !opts.urn) {
@@ -167,18 +167,16 @@ export class Ingress extends pulumi.CustomResource {
             if ((!args || args.slbId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'slbId'");
             }
-            inputs["certId"] = args ? args.certId : undefined;
-            inputs["defaultRule"] = args ? args.defaultRule : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["listenerPort"] = args ? args.listenerPort : undefined;
-            inputs["namespaceId"] = args ? args.namespaceId : undefined;
-            inputs["rules"] = args ? args.rules : undefined;
-            inputs["slbId"] = args ? args.slbId : undefined;
+            resourceInputs["certId"] = args ? args.certId : undefined;
+            resourceInputs["defaultRule"] = args ? args.defaultRule : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["listenerPort"] = args ? args.listenerPort : undefined;
+            resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
+            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["slbId"] = args ? args.slbId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Ingress.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Ingress.__pulumiType, name, resourceInputs, opts);
     }
 }
 

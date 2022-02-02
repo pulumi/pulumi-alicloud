@@ -92,16 +92,16 @@ export class Subscription extends pulumi.CustomResource {
      */
     constructor(name: string, args: SubscriptionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SubscriptionArgs | SubscriptionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SubscriptionState | undefined;
-            inputs["comment"] = state ? state.comment : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["lastModifyTime"] = state ? state.lastModifyTime : undefined;
-            inputs["projectName"] = state ? state.projectName : undefined;
-            inputs["subId"] = state ? state.subId : undefined;
-            inputs["topicName"] = state ? state.topicName : undefined;
+            resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["lastModifyTime"] = state ? state.lastModifyTime : undefined;
+            resourceInputs["projectName"] = state ? state.projectName : undefined;
+            resourceInputs["subId"] = state ? state.subId : undefined;
+            resourceInputs["topicName"] = state ? state.topicName : undefined;
         } else {
             const args = argsOrState as SubscriptionArgs | undefined;
             if ((!args || args.projectName === undefined) && !opts.urn) {
@@ -110,17 +110,15 @@ export class Subscription extends pulumi.CustomResource {
             if ((!args || args.topicName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topicName'");
             }
-            inputs["comment"] = args ? args.comment : undefined;
-            inputs["projectName"] = args ? args.projectName : undefined;
-            inputs["topicName"] = args ? args.topicName : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["lastModifyTime"] = undefined /*out*/;
-            inputs["subId"] = undefined /*out*/;
+            resourceInputs["comment"] = args ? args.comment : undefined;
+            resourceInputs["projectName"] = args ? args.projectName : undefined;
+            resourceInputs["topicName"] = args ? args.topicName : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["lastModifyTime"] = undefined /*out*/;
+            resourceInputs["subId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Subscription.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Subscription.__pulumiType, name, resourceInputs, opts);
     }
 }
 

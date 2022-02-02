@@ -29,7 +29,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := edas.NewApplicationDeployment(ctx, "_default", &edas.ApplicationDeploymentArgs{
+// 		_, err := edas.NewApplicationDeployment(ctx, "default", &edas.ApplicationDeploymentArgs{
 // 			AppId:          pulumi.Any(_var.App_id),
 // 			GroupId:        pulumi.Any(_var.Group_id),
 // 			PackageVersion: pulumi.Any(_var.Package_version),
@@ -159,7 +159,7 @@ type ApplicationDeploymentInput interface {
 }
 
 func (*ApplicationDeployment) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationDeployment)(nil))
+	return reflect.TypeOf((**ApplicationDeployment)(nil)).Elem()
 }
 
 func (i *ApplicationDeployment) ToApplicationDeploymentOutput() ApplicationDeploymentOutput {
@@ -168,35 +168,6 @@ func (i *ApplicationDeployment) ToApplicationDeploymentOutput() ApplicationDeplo
 
 func (i *ApplicationDeployment) ToApplicationDeploymentOutputWithContext(ctx context.Context) ApplicationDeploymentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationDeploymentOutput)
-}
-
-func (i *ApplicationDeployment) ToApplicationDeploymentPtrOutput() ApplicationDeploymentPtrOutput {
-	return i.ToApplicationDeploymentPtrOutputWithContext(context.Background())
-}
-
-func (i *ApplicationDeployment) ToApplicationDeploymentPtrOutputWithContext(ctx context.Context) ApplicationDeploymentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationDeploymentPtrOutput)
-}
-
-type ApplicationDeploymentPtrInput interface {
-	pulumi.Input
-
-	ToApplicationDeploymentPtrOutput() ApplicationDeploymentPtrOutput
-	ToApplicationDeploymentPtrOutputWithContext(ctx context.Context) ApplicationDeploymentPtrOutput
-}
-
-type applicationDeploymentPtrType ApplicationDeploymentArgs
-
-func (*applicationDeploymentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApplicationDeployment)(nil))
-}
-
-func (i *applicationDeploymentPtrType) ToApplicationDeploymentPtrOutput() ApplicationDeploymentPtrOutput {
-	return i.ToApplicationDeploymentPtrOutputWithContext(context.Background())
-}
-
-func (i *applicationDeploymentPtrType) ToApplicationDeploymentPtrOutputWithContext(ctx context.Context) ApplicationDeploymentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationDeploymentPtrOutput)
 }
 
 // ApplicationDeploymentArrayInput is an input type that accepts ApplicationDeploymentArray and ApplicationDeploymentArrayOutput values.
@@ -252,7 +223,7 @@ func (i ApplicationDeploymentMap) ToApplicationDeploymentMapOutputWithContext(ct
 type ApplicationDeploymentOutput struct{ *pulumi.OutputState }
 
 func (ApplicationDeploymentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationDeployment)(nil))
+	return reflect.TypeOf((**ApplicationDeployment)(nil)).Elem()
 }
 
 func (o ApplicationDeploymentOutput) ToApplicationDeploymentOutput() ApplicationDeploymentOutput {
@@ -263,44 +234,10 @@ func (o ApplicationDeploymentOutput) ToApplicationDeploymentOutputWithContext(ct
 	return o
 }
 
-func (o ApplicationDeploymentOutput) ToApplicationDeploymentPtrOutput() ApplicationDeploymentPtrOutput {
-	return o.ToApplicationDeploymentPtrOutputWithContext(context.Background())
-}
-
-func (o ApplicationDeploymentOutput) ToApplicationDeploymentPtrOutputWithContext(ctx context.Context) ApplicationDeploymentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationDeployment) *ApplicationDeployment {
-		return &v
-	}).(ApplicationDeploymentPtrOutput)
-}
-
-type ApplicationDeploymentPtrOutput struct{ *pulumi.OutputState }
-
-func (ApplicationDeploymentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApplicationDeployment)(nil))
-}
-
-func (o ApplicationDeploymentPtrOutput) ToApplicationDeploymentPtrOutput() ApplicationDeploymentPtrOutput {
-	return o
-}
-
-func (o ApplicationDeploymentPtrOutput) ToApplicationDeploymentPtrOutputWithContext(ctx context.Context) ApplicationDeploymentPtrOutput {
-	return o
-}
-
-func (o ApplicationDeploymentPtrOutput) Elem() ApplicationDeploymentOutput {
-	return o.ApplyT(func(v *ApplicationDeployment) ApplicationDeployment {
-		if v != nil {
-			return *v
-		}
-		var ret ApplicationDeployment
-		return ret
-	}).(ApplicationDeploymentOutput)
-}
-
 type ApplicationDeploymentArrayOutput struct{ *pulumi.OutputState }
 
 func (ApplicationDeploymentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApplicationDeployment)(nil))
+	return reflect.TypeOf((*[]*ApplicationDeployment)(nil)).Elem()
 }
 
 func (o ApplicationDeploymentArrayOutput) ToApplicationDeploymentArrayOutput() ApplicationDeploymentArrayOutput {
@@ -312,15 +249,15 @@ func (o ApplicationDeploymentArrayOutput) ToApplicationDeploymentArrayOutputWith
 }
 
 func (o ApplicationDeploymentArrayOutput) Index(i pulumi.IntInput) ApplicationDeploymentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationDeployment {
-		return vs[0].([]ApplicationDeployment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationDeployment {
+		return vs[0].([]*ApplicationDeployment)[vs[1].(int)]
 	}).(ApplicationDeploymentOutput)
 }
 
 type ApplicationDeploymentMapOutput struct{ *pulumi.OutputState }
 
 func (ApplicationDeploymentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ApplicationDeployment)(nil))
+	return reflect.TypeOf((*map[string]*ApplicationDeployment)(nil)).Elem()
 }
 
 func (o ApplicationDeploymentMapOutput) ToApplicationDeploymentMapOutput() ApplicationDeploymentMapOutput {
@@ -332,18 +269,16 @@ func (o ApplicationDeploymentMapOutput) ToApplicationDeploymentMapOutputWithCont
 }
 
 func (o ApplicationDeploymentMapOutput) MapIndex(k pulumi.StringInput) ApplicationDeploymentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ApplicationDeployment {
-		return vs[0].(map[string]ApplicationDeployment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ApplicationDeployment {
+		return vs[0].(map[string]*ApplicationDeployment)[vs[1].(string)]
 	}).(ApplicationDeploymentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationDeploymentInput)(nil)).Elem(), &ApplicationDeployment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationDeploymentPtrInput)(nil)).Elem(), &ApplicationDeployment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationDeploymentArrayInput)(nil)).Elem(), ApplicationDeploymentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationDeploymentMapInput)(nil)).Elem(), ApplicationDeploymentMap{})
 	pulumi.RegisterOutputType(ApplicationDeploymentOutput{})
-	pulumi.RegisterOutputType(ApplicationDeploymentPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationDeploymentArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationDeploymentMapOutput{})
 }

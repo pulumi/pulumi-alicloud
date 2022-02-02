@@ -29,9 +29,7 @@ export function getBackupPolicies(args: GetBackupPoliciesArgs, opts?: pulumi.Inv
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:clickhouse/getBackupPolicies:getBackupPolicies", {
         "dbClusterId": args.dbClusterId,
         "outputFile": args.outputFile,

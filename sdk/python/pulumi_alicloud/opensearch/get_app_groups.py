@@ -169,7 +169,7 @@ def get_app_groups(enable_details: Optional[bool] = None,
             compute_resource=20,
             spec="opensearch.share.common",
         ))
-    default_app_groups = default_app_group.id.apply(lambda id: alicloud.opensearch.get_app_groups(ids=[id]))
+    default_app_groups = alicloud.opensearch.get_app_groups_output(ids=[default_app_group.id])
     pulumi.export("appGroups", default_app_groups.groups)
     ```
 
@@ -246,7 +246,7 @@ def get_app_groups_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
             compute_resource=20,
             spec="opensearch.share.common",
         ))
-    default_app_groups = default_app_group.id.apply(lambda id: alicloud.opensearch.get_app_groups(ids=[id]))
+    default_app_groups = alicloud.opensearch.get_app_groups_output(ids=[default_app_group.id])
     pulumi.export("appGroups", default_app_groups.groups)
     ```
 

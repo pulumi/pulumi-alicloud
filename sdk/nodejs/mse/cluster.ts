@@ -130,23 +130,23 @@ export class Cluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: ClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterArgs | ClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            inputs["aclEntryLists"] = state ? state.aclEntryLists : undefined;
-            inputs["clusterAliasName"] = state ? state.clusterAliasName : undefined;
-            inputs["clusterSpecification"] = state ? state.clusterSpecification : undefined;
-            inputs["clusterType"] = state ? state.clusterType : undefined;
-            inputs["clusterVersion"] = state ? state.clusterVersion : undefined;
-            inputs["diskType"] = state ? state.diskType : undefined;
-            inputs["instanceCount"] = state ? state.instanceCount : undefined;
-            inputs["netType"] = state ? state.netType : undefined;
-            inputs["privateSlbSpecification"] = state ? state.privateSlbSpecification : undefined;
-            inputs["pubNetworkFlow"] = state ? state.pubNetworkFlow : undefined;
-            inputs["pubSlbSpecification"] = state ? state.pubSlbSpecification : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["aclEntryLists"] = state ? state.aclEntryLists : undefined;
+            resourceInputs["clusterAliasName"] = state ? state.clusterAliasName : undefined;
+            resourceInputs["clusterSpecification"] = state ? state.clusterSpecification : undefined;
+            resourceInputs["clusterType"] = state ? state.clusterType : undefined;
+            resourceInputs["clusterVersion"] = state ? state.clusterVersion : undefined;
+            resourceInputs["diskType"] = state ? state.diskType : undefined;
+            resourceInputs["instanceCount"] = state ? state.instanceCount : undefined;
+            resourceInputs["netType"] = state ? state.netType : undefined;
+            resourceInputs["privateSlbSpecification"] = state ? state.privateSlbSpecification : undefined;
+            resourceInputs["pubNetworkFlow"] = state ? state.pubNetworkFlow : undefined;
+            resourceInputs["pubSlbSpecification"] = state ? state.pubSlbSpecification : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
             if ((!args || args.clusterSpecification === undefined) && !opts.urn) {
@@ -164,24 +164,22 @@ export class Cluster extends pulumi.CustomResource {
             if ((!args || args.netType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'netType'");
             }
-            inputs["aclEntryLists"] = args ? args.aclEntryLists : undefined;
-            inputs["clusterAliasName"] = args ? args.clusterAliasName : undefined;
-            inputs["clusterSpecification"] = args ? args.clusterSpecification : undefined;
-            inputs["clusterType"] = args ? args.clusterType : undefined;
-            inputs["clusterVersion"] = args ? args.clusterVersion : undefined;
-            inputs["diskType"] = args ? args.diskType : undefined;
-            inputs["instanceCount"] = args ? args.instanceCount : undefined;
-            inputs["netType"] = args ? args.netType : undefined;
-            inputs["privateSlbSpecification"] = args ? args.privateSlbSpecification : undefined;
-            inputs["pubNetworkFlow"] = args ? args.pubNetworkFlow : undefined;
-            inputs["pubSlbSpecification"] = args ? args.pubSlbSpecification : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["aclEntryLists"] = args ? args.aclEntryLists : undefined;
+            resourceInputs["clusterAliasName"] = args ? args.clusterAliasName : undefined;
+            resourceInputs["clusterSpecification"] = args ? args.clusterSpecification : undefined;
+            resourceInputs["clusterType"] = args ? args.clusterType : undefined;
+            resourceInputs["clusterVersion"] = args ? args.clusterVersion : undefined;
+            resourceInputs["diskType"] = args ? args.diskType : undefined;
+            resourceInputs["instanceCount"] = args ? args.instanceCount : undefined;
+            resourceInputs["netType"] = args ? args.netType : undefined;
+            resourceInputs["privateSlbSpecification"] = args ? args.privateSlbSpecification : undefined;
+            resourceInputs["pubNetworkFlow"] = args ? args.pubNetworkFlow : undefined;
+            resourceInputs["pubSlbSpecification"] = args ? args.pubSlbSpecification : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Cluster.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Cluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

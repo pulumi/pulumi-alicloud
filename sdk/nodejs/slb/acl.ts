@@ -126,27 +126,25 @@ export class Acl extends pulumi.CustomResource {
      */
     constructor(name: string, args?: AclArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AclArgs | AclState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclState | undefined;
-            inputs["entryLists"] = state ? state.entryLists : undefined;
-            inputs["ipVersion"] = state ? state.ipVersion : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["entryLists"] = state ? state.entryLists : undefined;
+            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as AclArgs | undefined;
-            inputs["entryLists"] = args ? args.entryLists : undefined;
-            inputs["ipVersion"] = args ? args.ipVersion : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["entryLists"] = args ? args.entryLists : undefined;
+            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Acl.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Acl.__pulumiType, name, resourceInputs, opts);
     }
 }
 

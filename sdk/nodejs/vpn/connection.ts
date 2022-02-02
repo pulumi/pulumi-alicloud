@@ -88,19 +88,19 @@ export class Connection extends pulumi.CustomResource {
      */
     constructor(name: string, args: ConnectionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConnectionArgs | ConnectionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
-            inputs["customerGatewayId"] = state ? state.customerGatewayId : undefined;
-            inputs["effectImmediately"] = state ? state.effectImmediately : undefined;
-            inputs["ikeConfigs"] = state ? state.ikeConfigs : undefined;
-            inputs["ipsecConfigs"] = state ? state.ipsecConfigs : undefined;
-            inputs["localSubnets"] = state ? state.localSubnets : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["remoteSubnets"] = state ? state.remoteSubnets : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["vpnGatewayId"] = state ? state.vpnGatewayId : undefined;
+            resourceInputs["customerGatewayId"] = state ? state.customerGatewayId : undefined;
+            resourceInputs["effectImmediately"] = state ? state.effectImmediately : undefined;
+            resourceInputs["ikeConfigs"] = state ? state.ikeConfigs : undefined;
+            resourceInputs["ipsecConfigs"] = state ? state.ipsecConfigs : undefined;
+            resourceInputs["localSubnets"] = state ? state.localSubnets : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["remoteSubnets"] = state ? state.remoteSubnets : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["vpnGatewayId"] = state ? state.vpnGatewayId : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
             if ((!args || args.customerGatewayId === undefined) && !opts.urn) {
@@ -115,20 +115,18 @@ export class Connection extends pulumi.CustomResource {
             if ((!args || args.vpnGatewayId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpnGatewayId'");
             }
-            inputs["customerGatewayId"] = args ? args.customerGatewayId : undefined;
-            inputs["effectImmediately"] = args ? args.effectImmediately : undefined;
-            inputs["ikeConfigs"] = args ? args.ikeConfigs : undefined;
-            inputs["ipsecConfigs"] = args ? args.ipsecConfigs : undefined;
-            inputs["localSubnets"] = args ? args.localSubnets : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["remoteSubnets"] = args ? args.remoteSubnets : undefined;
-            inputs["vpnGatewayId"] = args ? args.vpnGatewayId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["customerGatewayId"] = args ? args.customerGatewayId : undefined;
+            resourceInputs["effectImmediately"] = args ? args.effectImmediately : undefined;
+            resourceInputs["ikeConfigs"] = args ? args.ikeConfigs : undefined;
+            resourceInputs["ipsecConfigs"] = args ? args.ipsecConfigs : undefined;
+            resourceInputs["localSubnets"] = args ? args.localSubnets : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["remoteSubnets"] = args ? args.remoteSubnets : undefined;
+            resourceInputs["vpnGatewayId"] = args ? args.vpnGatewayId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Connection.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Connection.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -122,7 +122,7 @@ type AuditPolicyInput interface {
 }
 
 func (*AuditPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditPolicy)(nil))
+	return reflect.TypeOf((**AuditPolicy)(nil)).Elem()
 }
 
 func (i *AuditPolicy) ToAuditPolicyOutput() AuditPolicyOutput {
@@ -131,35 +131,6 @@ func (i *AuditPolicy) ToAuditPolicyOutput() AuditPolicyOutput {
 
 func (i *AuditPolicy) ToAuditPolicyOutputWithContext(ctx context.Context) AuditPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuditPolicyOutput)
-}
-
-func (i *AuditPolicy) ToAuditPolicyPtrOutput() AuditPolicyPtrOutput {
-	return i.ToAuditPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *AuditPolicy) ToAuditPolicyPtrOutputWithContext(ctx context.Context) AuditPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditPolicyPtrOutput)
-}
-
-type AuditPolicyPtrInput interface {
-	pulumi.Input
-
-	ToAuditPolicyPtrOutput() AuditPolicyPtrOutput
-	ToAuditPolicyPtrOutputWithContext(ctx context.Context) AuditPolicyPtrOutput
-}
-
-type auditPolicyPtrType AuditPolicyArgs
-
-func (*auditPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuditPolicy)(nil))
-}
-
-func (i *auditPolicyPtrType) ToAuditPolicyPtrOutput() AuditPolicyPtrOutput {
-	return i.ToAuditPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *auditPolicyPtrType) ToAuditPolicyPtrOutputWithContext(ctx context.Context) AuditPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditPolicyPtrOutput)
 }
 
 // AuditPolicyArrayInput is an input type that accepts AuditPolicyArray and AuditPolicyArrayOutput values.
@@ -215,7 +186,7 @@ func (i AuditPolicyMap) ToAuditPolicyMapOutputWithContext(ctx context.Context) A
 type AuditPolicyOutput struct{ *pulumi.OutputState }
 
 func (AuditPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditPolicy)(nil))
+	return reflect.TypeOf((**AuditPolicy)(nil)).Elem()
 }
 
 func (o AuditPolicyOutput) ToAuditPolicyOutput() AuditPolicyOutput {
@@ -226,44 +197,10 @@ func (o AuditPolicyOutput) ToAuditPolicyOutputWithContext(ctx context.Context) A
 	return o
 }
 
-func (o AuditPolicyOutput) ToAuditPolicyPtrOutput() AuditPolicyPtrOutput {
-	return o.ToAuditPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o AuditPolicyOutput) ToAuditPolicyPtrOutputWithContext(ctx context.Context) AuditPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuditPolicy) *AuditPolicy {
-		return &v
-	}).(AuditPolicyPtrOutput)
-}
-
-type AuditPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (AuditPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuditPolicy)(nil))
-}
-
-func (o AuditPolicyPtrOutput) ToAuditPolicyPtrOutput() AuditPolicyPtrOutput {
-	return o
-}
-
-func (o AuditPolicyPtrOutput) ToAuditPolicyPtrOutputWithContext(ctx context.Context) AuditPolicyPtrOutput {
-	return o
-}
-
-func (o AuditPolicyPtrOutput) Elem() AuditPolicyOutput {
-	return o.ApplyT(func(v *AuditPolicy) AuditPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret AuditPolicy
-		return ret
-	}).(AuditPolicyOutput)
-}
-
 type AuditPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (AuditPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditPolicy)(nil))
+	return reflect.TypeOf((*[]*AuditPolicy)(nil)).Elem()
 }
 
 func (o AuditPolicyArrayOutput) ToAuditPolicyArrayOutput() AuditPolicyArrayOutput {
@@ -275,15 +212,15 @@ func (o AuditPolicyArrayOutput) ToAuditPolicyArrayOutputWithContext(ctx context.
 }
 
 func (o AuditPolicyArrayOutput) Index(i pulumi.IntInput) AuditPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditPolicy {
-		return vs[0].([]AuditPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuditPolicy {
+		return vs[0].([]*AuditPolicy)[vs[1].(int)]
 	}).(AuditPolicyOutput)
 }
 
 type AuditPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (AuditPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AuditPolicy)(nil))
+	return reflect.TypeOf((*map[string]*AuditPolicy)(nil)).Elem()
 }
 
 func (o AuditPolicyMapOutput) ToAuditPolicyMapOutput() AuditPolicyMapOutput {
@@ -295,18 +232,16 @@ func (o AuditPolicyMapOutput) ToAuditPolicyMapOutputWithContext(ctx context.Cont
 }
 
 func (o AuditPolicyMapOutput) MapIndex(k pulumi.StringInput) AuditPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AuditPolicy {
-		return vs[0].(map[string]AuditPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AuditPolicy {
+		return vs[0].(map[string]*AuditPolicy)[vs[1].(string)]
 	}).(AuditPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditPolicyInput)(nil)).Elem(), &AuditPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditPolicyPtrInput)(nil)).Elem(), &AuditPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditPolicyArrayInput)(nil)).Elem(), AuditPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditPolicyMapInput)(nil)).Elem(), AuditPolicyMap{})
 	pulumi.RegisterOutputType(AuditPolicyOutput{})
-	pulumi.RegisterOutputType(AuditPolicyPtrOutput{})
 	pulumi.RegisterOutputType(AuditPolicyArrayOutput{})
 	pulumi.RegisterOutputType(AuditPolicyMapOutput{})
 }

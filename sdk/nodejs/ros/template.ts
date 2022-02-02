@@ -94,30 +94,28 @@ export class Template extends pulumi.CustomResource {
      */
     constructor(name: string, args: TemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TemplateArgs | TemplateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TemplateState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["templateBody"] = state ? state.templateBody : undefined;
-            inputs["templateName"] = state ? state.templateName : undefined;
-            inputs["templateUrl"] = state ? state.templateUrl : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["templateBody"] = state ? state.templateBody : undefined;
+            resourceInputs["templateName"] = state ? state.templateName : undefined;
+            resourceInputs["templateUrl"] = state ? state.templateUrl : undefined;
         } else {
             const args = argsOrState as TemplateArgs | undefined;
             if ((!args || args.templateName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'templateName'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["templateBody"] = args ? args.templateBody : undefined;
-            inputs["templateName"] = args ? args.templateName : undefined;
-            inputs["templateUrl"] = args ? args.templateUrl : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["templateBody"] = args ? args.templateBody : undefined;
+            resourceInputs["templateName"] = args ? args.templateName : undefined;
+            resourceInputs["templateUrl"] = args ? args.templateUrl : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Template.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Template.__pulumiType, name, resourceInputs, opts);
     }
 }
 

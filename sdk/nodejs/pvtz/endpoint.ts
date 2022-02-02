@@ -82,16 +82,16 @@ export class Endpoint extends pulumi.CustomResource {
      */
     constructor(name: string, args: EndpointArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EndpointArgs | EndpointState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EndpointState | undefined;
-            inputs["endpointName"] = state ? state.endpointName : undefined;
-            inputs["ipConfigs"] = state ? state.ipConfigs : undefined;
-            inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["vpcId"] = state ? state.vpcId : undefined;
-            inputs["vpcRegionId"] = state ? state.vpcRegionId : undefined;
+            resourceInputs["endpointName"] = state ? state.endpointName : undefined;
+            resourceInputs["ipConfigs"] = state ? state.ipConfigs : undefined;
+            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["vpcRegionId"] = state ? state.vpcRegionId : undefined;
         } else {
             const args = argsOrState as EndpointArgs | undefined;
             if ((!args || args.endpointName === undefined) && !opts.urn) {
@@ -109,17 +109,15 @@ export class Endpoint extends pulumi.CustomResource {
             if ((!args || args.vpcRegionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcRegionId'");
             }
-            inputs["endpointName"] = args ? args.endpointName : undefined;
-            inputs["ipConfigs"] = args ? args.ipConfigs : undefined;
-            inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            inputs["vpcId"] = args ? args.vpcId : undefined;
-            inputs["vpcRegionId"] = args ? args.vpcRegionId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["endpointName"] = args ? args.endpointName : undefined;
+            resourceInputs["ipConfigs"] = args ? args.ipConfigs : undefined;
+            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["vpcRegionId"] = args ? args.vpcRegionId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Endpoint.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Endpoint.__pulumiType, name, resourceInputs, opts);
     }
 }
 

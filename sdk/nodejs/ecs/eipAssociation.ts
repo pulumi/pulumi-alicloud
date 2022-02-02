@@ -71,15 +71,15 @@ export class EipAssociation extends pulumi.CustomResource {
      */
     constructor(name: string, args: EipAssociationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EipAssociationArgs | EipAssociationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EipAssociationState | undefined;
-            inputs["allocationId"] = state ? state.allocationId : undefined;
-            inputs["force"] = state ? state.force : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["instanceType"] = state ? state.instanceType : undefined;
-            inputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
+            resourceInputs["allocationId"] = state ? state.allocationId : undefined;
+            resourceInputs["force"] = state ? state.force : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
+            resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
         } else {
             const args = argsOrState as EipAssociationArgs | undefined;
             if ((!args || args.allocationId === undefined) && !opts.urn) {
@@ -88,16 +88,14 @@ export class EipAssociation extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["allocationId"] = args ? args.allocationId : undefined;
-            inputs["force"] = args ? args.force : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["instanceType"] = args ? args.instanceType : undefined;
-            inputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
+            resourceInputs["allocationId"] = args ? args.allocationId : undefined;
+            resourceInputs["force"] = args ? args.force : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
+            resourceInputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EipAssociation.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EipAssociation.__pulumiType, name, resourceInputs, opts);
     }
 }
 

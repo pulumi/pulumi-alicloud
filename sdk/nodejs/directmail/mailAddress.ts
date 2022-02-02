@@ -96,15 +96,15 @@ export class MailAddress extends pulumi.CustomResource {
      */
     constructor(name: string, args: MailAddressArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MailAddressArgs | MailAddressState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MailAddressState | undefined;
-            inputs["accountName"] = state ? state.accountName : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["replyAddress"] = state ? state.replyAddress : undefined;
-            inputs["sendtype"] = state ? state.sendtype : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["accountName"] = state ? state.accountName : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["replyAddress"] = state ? state.replyAddress : undefined;
+            resourceInputs["sendtype"] = state ? state.sendtype : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as MailAddressArgs | undefined;
             if ((!args || args.accountName === undefined) && !opts.urn) {
@@ -113,16 +113,14 @@ export class MailAddress extends pulumi.CustomResource {
             if ((!args || args.sendtype === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sendtype'");
             }
-            inputs["accountName"] = args ? args.accountName : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["replyAddress"] = args ? args.replyAddress : undefined;
-            inputs["sendtype"] = args ? args.sendtype : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["accountName"] = args ? args.accountName : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["replyAddress"] = args ? args.replyAddress : undefined;
+            resourceInputs["sendtype"] = args ? args.sendtype : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(MailAddress.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(MailAddress.__pulumiType, name, resourceInputs, opts);
     }
 }
 

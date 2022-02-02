@@ -139,14 +139,14 @@ export class EcsNetworkInterfaceAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: EcsNetworkInterfaceAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EcsNetworkInterfaceAttachmentArgs | EcsNetworkInterfaceAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsNetworkInterfaceAttachmentState | undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["networkInterfaceId"] = state ? state.networkInterfaceId : undefined;
-            inputs["trunkNetworkInstanceId"] = state ? state.trunkNetworkInstanceId : undefined;
-            inputs["waitForNetworkConfigurationReady"] = state ? state.waitForNetworkConfigurationReady : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["networkInterfaceId"] = state ? state.networkInterfaceId : undefined;
+            resourceInputs["trunkNetworkInstanceId"] = state ? state.trunkNetworkInstanceId : undefined;
+            resourceInputs["waitForNetworkConfigurationReady"] = state ? state.waitForNetworkConfigurationReady : undefined;
         } else {
             const args = argsOrState as EcsNetworkInterfaceAttachmentArgs | undefined;
             if ((!args || args.instanceId === undefined) && !opts.urn) {
@@ -155,15 +155,13 @@ export class EcsNetworkInterfaceAttachment extends pulumi.CustomResource {
             if ((!args || args.networkInterfaceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkInterfaceId'");
             }
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["networkInterfaceId"] = args ? args.networkInterfaceId : undefined;
-            inputs["trunkNetworkInstanceId"] = args ? args.trunkNetworkInstanceId : undefined;
-            inputs["waitForNetworkConfigurationReady"] = args ? args.waitForNetworkConfigurationReady : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["networkInterfaceId"] = args ? args.networkInterfaceId : undefined;
+            resourceInputs["trunkNetworkInstanceId"] = args ? args.trunkNetworkInstanceId : undefined;
+            resourceInputs["waitForNetworkConfigurationReady"] = args ? args.waitForNetworkConfigurationReady : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EcsNetworkInterfaceAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EcsNetworkInterfaceAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

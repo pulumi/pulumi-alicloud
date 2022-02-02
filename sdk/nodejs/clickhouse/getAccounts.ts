@@ -39,10 +39,10 @@ import * as utilities from "../utilities";
  *     accountName: name,
  *     accountPassword: pwd,
  * });
- * const defaultAccounts = pulumi.all([defaultAccount.id, defaultDbCluster.id]).apply(([defaultAccountId, defaultDbClusterId]) => alicloud.clickhouse.getAccounts({
- *     ids: [defaultAccountId],
- *     dbClusterId: defaultDbClusterId,
- * }));
+ * const defaultAccounts = alicloud.clickhouse.getAccountsOutput({
+ *     ids: [defaultAccount.id],
+ *     dbClusterId: defaultDbCluster.id,
+ * });
  * export const accountId = defaultAccounts.apply(defaultAccounts => defaultAccounts.ids?[0]);
  * ```
  */
@@ -51,9 +51,7 @@ export function getAccounts(args: GetAccountsArgs, opts?: pulumi.InvokeOptions):
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:clickhouse/getAccounts:getAccounts", {
         "dbClusterId": args.dbClusterId,
         "ids": args.ids,

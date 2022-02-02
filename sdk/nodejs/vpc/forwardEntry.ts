@@ -141,21 +141,21 @@ export class ForwardEntry extends pulumi.CustomResource {
      */
     constructor(name: string, args: ForwardEntryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ForwardEntryArgs | ForwardEntryState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ForwardEntryState | undefined;
-            inputs["externalIp"] = state ? state.externalIp : undefined;
-            inputs["externalPort"] = state ? state.externalPort : undefined;
-            inputs["forwardEntryId"] = state ? state.forwardEntryId : undefined;
-            inputs["forwardEntryName"] = state ? state.forwardEntryName : undefined;
-            inputs["forwardTableId"] = state ? state.forwardTableId : undefined;
-            inputs["internalIp"] = state ? state.internalIp : undefined;
-            inputs["internalPort"] = state ? state.internalPort : undefined;
-            inputs["ipProtocol"] = state ? state.ipProtocol : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["portBreak"] = state ? state.portBreak : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["externalIp"] = state ? state.externalIp : undefined;
+            resourceInputs["externalPort"] = state ? state.externalPort : undefined;
+            resourceInputs["forwardEntryId"] = state ? state.forwardEntryId : undefined;
+            resourceInputs["forwardEntryName"] = state ? state.forwardEntryName : undefined;
+            resourceInputs["forwardTableId"] = state ? state.forwardTableId : undefined;
+            resourceInputs["internalIp"] = state ? state.internalIp : undefined;
+            resourceInputs["internalPort"] = state ? state.internalPort : undefined;
+            resourceInputs["ipProtocol"] = state ? state.ipProtocol : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["portBreak"] = state ? state.portBreak : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ForwardEntryArgs | undefined;
             if ((!args || args.externalIp === undefined) && !opts.urn) {
@@ -176,22 +176,20 @@ export class ForwardEntry extends pulumi.CustomResource {
             if ((!args || args.ipProtocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ipProtocol'");
             }
-            inputs["externalIp"] = args ? args.externalIp : undefined;
-            inputs["externalPort"] = args ? args.externalPort : undefined;
-            inputs["forwardEntryName"] = args ? args.forwardEntryName : undefined;
-            inputs["forwardTableId"] = args ? args.forwardTableId : undefined;
-            inputs["internalIp"] = args ? args.internalIp : undefined;
-            inputs["internalPort"] = args ? args.internalPort : undefined;
-            inputs["ipProtocol"] = args ? args.ipProtocol : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["portBreak"] = args ? args.portBreak : undefined;
-            inputs["forwardEntryId"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["externalIp"] = args ? args.externalIp : undefined;
+            resourceInputs["externalPort"] = args ? args.externalPort : undefined;
+            resourceInputs["forwardEntryName"] = args ? args.forwardEntryName : undefined;
+            resourceInputs["forwardTableId"] = args ? args.forwardTableId : undefined;
+            resourceInputs["internalIp"] = args ? args.internalIp : undefined;
+            resourceInputs["internalPort"] = args ? args.internalPort : undefined;
+            resourceInputs["ipProtocol"] = args ? args.ipProtocol : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["portBreak"] = args ? args.portBreak : undefined;
+            resourceInputs["forwardEntryId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ForwardEntry.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ForwardEntry.__pulumiType, name, resourceInputs, opts);
     }
 }
 

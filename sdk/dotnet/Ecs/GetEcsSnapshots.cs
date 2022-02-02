@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsSnapshotsResult> InvokeAsync(GetEcsSnapshotsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsSnapshotsResult>("alicloud:ecs/getEcsSnapshots:getEcsSnapshots", args ?? new GetEcsSnapshotsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsSnapshotsResult>("alicloud:ecs/getEcsSnapshots:getEcsSnapshots", args ?? new GetEcsSnapshotsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsSnapshotsResult> Invoke(GetEcsSnapshotsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEcsSnapshotsResult>("alicloud:ecs/getEcsSnapshots:getEcsSnapshots", args ?? new GetEcsSnapshotsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetEcsSnapshotsResult>("alicloud:ecs/getEcsSnapshots:getEcsSnapshots", args ?? new GetEcsSnapshotsInvokeArgs(), options.WithDefaults());
     }
 
 

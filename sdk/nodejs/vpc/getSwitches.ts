@@ -39,9 +39,7 @@ export function getSwitches(args?: GetSwitchesArgs, opts?: pulumi.InvokeOptions)
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:vpc/getSwitches:getSwitches", {
         "cidrBlock": args.cidrBlock,
         "dryRun": args.dryRun,

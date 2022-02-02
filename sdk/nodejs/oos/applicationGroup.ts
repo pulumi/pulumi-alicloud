@@ -109,16 +109,16 @@ export class ApplicationGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: ApplicationGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApplicationGroupArgs | ApplicationGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationGroupState | undefined;
-            inputs["applicationGroupName"] = state ? state.applicationGroupName : undefined;
-            inputs["applicationName"] = state ? state.applicationName : undefined;
-            inputs["deployRegionId"] = state ? state.deployRegionId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["importTagKey"] = state ? state.importTagKey : undefined;
-            inputs["importTagValue"] = state ? state.importTagValue : undefined;
+            resourceInputs["applicationGroupName"] = state ? state.applicationGroupName : undefined;
+            resourceInputs["applicationName"] = state ? state.applicationName : undefined;
+            resourceInputs["deployRegionId"] = state ? state.deployRegionId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["importTagKey"] = state ? state.importTagKey : undefined;
+            resourceInputs["importTagValue"] = state ? state.importTagValue : undefined;
         } else {
             const args = argsOrState as ApplicationGroupArgs | undefined;
             if ((!args || args.applicationGroupName === undefined) && !opts.urn) {
@@ -130,17 +130,15 @@ export class ApplicationGroup extends pulumi.CustomResource {
             if ((!args || args.deployRegionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'deployRegionId'");
             }
-            inputs["applicationGroupName"] = args ? args.applicationGroupName : undefined;
-            inputs["applicationName"] = args ? args.applicationName : undefined;
-            inputs["deployRegionId"] = args ? args.deployRegionId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["importTagKey"] = args ? args.importTagKey : undefined;
-            inputs["importTagValue"] = args ? args.importTagValue : undefined;
+            resourceInputs["applicationGroupName"] = args ? args.applicationGroupName : undefined;
+            resourceInputs["applicationName"] = args ? args.applicationName : undefined;
+            resourceInputs["deployRegionId"] = args ? args.deployRegionId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["importTagKey"] = args ? args.importTagKey : undefined;
+            resourceInputs["importTagValue"] = args ? args.importTagValue : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ApplicationGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ApplicationGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

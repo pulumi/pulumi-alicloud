@@ -74,19 +74,17 @@ export class Qos extends pulumi.CustomResource {
      */
     constructor(name: string, args?: QosArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QosArgs | QosState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QosState | undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as QosArgs | undefined;
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Qos.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Qos.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -148,7 +148,7 @@ type VbrHaInput interface {
 }
 
 func (*VbrHa) ElementType() reflect.Type {
-	return reflect.TypeOf((*VbrHa)(nil))
+	return reflect.TypeOf((**VbrHa)(nil)).Elem()
 }
 
 func (i *VbrHa) ToVbrHaOutput() VbrHaOutput {
@@ -157,35 +157,6 @@ func (i *VbrHa) ToVbrHaOutput() VbrHaOutput {
 
 func (i *VbrHa) ToVbrHaOutputWithContext(ctx context.Context) VbrHaOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VbrHaOutput)
-}
-
-func (i *VbrHa) ToVbrHaPtrOutput() VbrHaPtrOutput {
-	return i.ToVbrHaPtrOutputWithContext(context.Background())
-}
-
-func (i *VbrHa) ToVbrHaPtrOutputWithContext(ctx context.Context) VbrHaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VbrHaPtrOutput)
-}
-
-type VbrHaPtrInput interface {
-	pulumi.Input
-
-	ToVbrHaPtrOutput() VbrHaPtrOutput
-	ToVbrHaPtrOutputWithContext(ctx context.Context) VbrHaPtrOutput
-}
-
-type vbrHaPtrType VbrHaArgs
-
-func (*vbrHaPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VbrHa)(nil))
-}
-
-func (i *vbrHaPtrType) ToVbrHaPtrOutput() VbrHaPtrOutput {
-	return i.ToVbrHaPtrOutputWithContext(context.Background())
-}
-
-func (i *vbrHaPtrType) ToVbrHaPtrOutputWithContext(ctx context.Context) VbrHaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VbrHaPtrOutput)
 }
 
 // VbrHaArrayInput is an input type that accepts VbrHaArray and VbrHaArrayOutput values.
@@ -241,7 +212,7 @@ func (i VbrHaMap) ToVbrHaMapOutputWithContext(ctx context.Context) VbrHaMapOutpu
 type VbrHaOutput struct{ *pulumi.OutputState }
 
 func (VbrHaOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VbrHa)(nil))
+	return reflect.TypeOf((**VbrHa)(nil)).Elem()
 }
 
 func (o VbrHaOutput) ToVbrHaOutput() VbrHaOutput {
@@ -252,44 +223,10 @@ func (o VbrHaOutput) ToVbrHaOutputWithContext(ctx context.Context) VbrHaOutput {
 	return o
 }
 
-func (o VbrHaOutput) ToVbrHaPtrOutput() VbrHaPtrOutput {
-	return o.ToVbrHaPtrOutputWithContext(context.Background())
-}
-
-func (o VbrHaOutput) ToVbrHaPtrOutputWithContext(ctx context.Context) VbrHaPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VbrHa) *VbrHa {
-		return &v
-	}).(VbrHaPtrOutput)
-}
-
-type VbrHaPtrOutput struct{ *pulumi.OutputState }
-
-func (VbrHaPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VbrHa)(nil))
-}
-
-func (o VbrHaPtrOutput) ToVbrHaPtrOutput() VbrHaPtrOutput {
-	return o
-}
-
-func (o VbrHaPtrOutput) ToVbrHaPtrOutputWithContext(ctx context.Context) VbrHaPtrOutput {
-	return o
-}
-
-func (o VbrHaPtrOutput) Elem() VbrHaOutput {
-	return o.ApplyT(func(v *VbrHa) VbrHa {
-		if v != nil {
-			return *v
-		}
-		var ret VbrHa
-		return ret
-	}).(VbrHaOutput)
-}
-
 type VbrHaArrayOutput struct{ *pulumi.OutputState }
 
 func (VbrHaArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VbrHa)(nil))
+	return reflect.TypeOf((*[]*VbrHa)(nil)).Elem()
 }
 
 func (o VbrHaArrayOutput) ToVbrHaArrayOutput() VbrHaArrayOutput {
@@ -301,15 +238,15 @@ func (o VbrHaArrayOutput) ToVbrHaArrayOutputWithContext(ctx context.Context) Vbr
 }
 
 func (o VbrHaArrayOutput) Index(i pulumi.IntInput) VbrHaOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VbrHa {
-		return vs[0].([]VbrHa)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VbrHa {
+		return vs[0].([]*VbrHa)[vs[1].(int)]
 	}).(VbrHaOutput)
 }
 
 type VbrHaMapOutput struct{ *pulumi.OutputState }
 
 func (VbrHaMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]VbrHa)(nil))
+	return reflect.TypeOf((*map[string]*VbrHa)(nil)).Elem()
 }
 
 func (o VbrHaMapOutput) ToVbrHaMapOutput() VbrHaMapOutput {
@@ -321,18 +258,16 @@ func (o VbrHaMapOutput) ToVbrHaMapOutputWithContext(ctx context.Context) VbrHaMa
 }
 
 func (o VbrHaMapOutput) MapIndex(k pulumi.StringInput) VbrHaOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) VbrHa {
-		return vs[0].(map[string]VbrHa)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *VbrHa {
+		return vs[0].(map[string]*VbrHa)[vs[1].(string)]
 	}).(VbrHaOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VbrHaInput)(nil)).Elem(), &VbrHa{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VbrHaPtrInput)(nil)).Elem(), &VbrHa{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VbrHaArrayInput)(nil)).Elem(), VbrHaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VbrHaMapInput)(nil)).Elem(), VbrHaMap{})
 	pulumi.RegisterOutputType(VbrHaOutput{})
-	pulumi.RegisterOutputType(VbrHaPtrOutput{})
 	pulumi.RegisterOutputType(VbrHaArrayOutput{})
 	pulumi.RegisterOutputType(VbrHaMapOutput{})
 }

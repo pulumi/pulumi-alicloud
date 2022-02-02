@@ -285,7 +285,7 @@ type EipAddressInput interface {
 }
 
 func (*EipAddress) ElementType() reflect.Type {
-	return reflect.TypeOf((*EipAddress)(nil))
+	return reflect.TypeOf((**EipAddress)(nil)).Elem()
 }
 
 func (i *EipAddress) ToEipAddressOutput() EipAddressOutput {
@@ -294,35 +294,6 @@ func (i *EipAddress) ToEipAddressOutput() EipAddressOutput {
 
 func (i *EipAddress) ToEipAddressOutputWithContext(ctx context.Context) EipAddressOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EipAddressOutput)
-}
-
-func (i *EipAddress) ToEipAddressPtrOutput() EipAddressPtrOutput {
-	return i.ToEipAddressPtrOutputWithContext(context.Background())
-}
-
-func (i *EipAddress) ToEipAddressPtrOutputWithContext(ctx context.Context) EipAddressPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EipAddressPtrOutput)
-}
-
-type EipAddressPtrInput interface {
-	pulumi.Input
-
-	ToEipAddressPtrOutput() EipAddressPtrOutput
-	ToEipAddressPtrOutputWithContext(ctx context.Context) EipAddressPtrOutput
-}
-
-type eipAddressPtrType EipAddressArgs
-
-func (*eipAddressPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EipAddress)(nil))
-}
-
-func (i *eipAddressPtrType) ToEipAddressPtrOutput() EipAddressPtrOutput {
-	return i.ToEipAddressPtrOutputWithContext(context.Background())
-}
-
-func (i *eipAddressPtrType) ToEipAddressPtrOutputWithContext(ctx context.Context) EipAddressPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EipAddressPtrOutput)
 }
 
 // EipAddressArrayInput is an input type that accepts EipAddressArray and EipAddressArrayOutput values.
@@ -378,7 +349,7 @@ func (i EipAddressMap) ToEipAddressMapOutputWithContext(ctx context.Context) Eip
 type EipAddressOutput struct{ *pulumi.OutputState }
 
 func (EipAddressOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EipAddress)(nil))
+	return reflect.TypeOf((**EipAddress)(nil)).Elem()
 }
 
 func (o EipAddressOutput) ToEipAddressOutput() EipAddressOutput {
@@ -389,44 +360,10 @@ func (o EipAddressOutput) ToEipAddressOutputWithContext(ctx context.Context) Eip
 	return o
 }
 
-func (o EipAddressOutput) ToEipAddressPtrOutput() EipAddressPtrOutput {
-	return o.ToEipAddressPtrOutputWithContext(context.Background())
-}
-
-func (o EipAddressOutput) ToEipAddressPtrOutputWithContext(ctx context.Context) EipAddressPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EipAddress) *EipAddress {
-		return &v
-	}).(EipAddressPtrOutput)
-}
-
-type EipAddressPtrOutput struct{ *pulumi.OutputState }
-
-func (EipAddressPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EipAddress)(nil))
-}
-
-func (o EipAddressPtrOutput) ToEipAddressPtrOutput() EipAddressPtrOutput {
-	return o
-}
-
-func (o EipAddressPtrOutput) ToEipAddressPtrOutputWithContext(ctx context.Context) EipAddressPtrOutput {
-	return o
-}
-
-func (o EipAddressPtrOutput) Elem() EipAddressOutput {
-	return o.ApplyT(func(v *EipAddress) EipAddress {
-		if v != nil {
-			return *v
-		}
-		var ret EipAddress
-		return ret
-	}).(EipAddressOutput)
-}
-
 type EipAddressArrayOutput struct{ *pulumi.OutputState }
 
 func (EipAddressArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EipAddress)(nil))
+	return reflect.TypeOf((*[]*EipAddress)(nil)).Elem()
 }
 
 func (o EipAddressArrayOutput) ToEipAddressArrayOutput() EipAddressArrayOutput {
@@ -438,15 +375,15 @@ func (o EipAddressArrayOutput) ToEipAddressArrayOutputWithContext(ctx context.Co
 }
 
 func (o EipAddressArrayOutput) Index(i pulumi.IntInput) EipAddressOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EipAddress {
-		return vs[0].([]EipAddress)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EipAddress {
+		return vs[0].([]*EipAddress)[vs[1].(int)]
 	}).(EipAddressOutput)
 }
 
 type EipAddressMapOutput struct{ *pulumi.OutputState }
 
 func (EipAddressMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]EipAddress)(nil))
+	return reflect.TypeOf((*map[string]*EipAddress)(nil)).Elem()
 }
 
 func (o EipAddressMapOutput) ToEipAddressMapOutput() EipAddressMapOutput {
@@ -458,18 +395,16 @@ func (o EipAddressMapOutput) ToEipAddressMapOutputWithContext(ctx context.Contex
 }
 
 func (o EipAddressMapOutput) MapIndex(k pulumi.StringInput) EipAddressOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EipAddress {
-		return vs[0].(map[string]EipAddress)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *EipAddress {
+		return vs[0].(map[string]*EipAddress)[vs[1].(string)]
 	}).(EipAddressOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EipAddressInput)(nil)).Elem(), &EipAddress{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EipAddressPtrInput)(nil)).Elem(), &EipAddress{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EipAddressArrayInput)(nil)).Elem(), EipAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EipAddressMapInput)(nil)).Elem(), EipAddressMap{})
 	pulumi.RegisterOutputType(EipAddressOutput{})
-	pulumi.RegisterOutputType(EipAddressPtrOutput{})
 	pulumi.RegisterOutputType(EipAddressArrayOutput{})
 	pulumi.RegisterOutputType(EipAddressMapOutput{})
 }

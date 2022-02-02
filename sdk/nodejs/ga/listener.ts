@@ -134,19 +134,19 @@ export class Listener extends pulumi.CustomResource {
      */
     constructor(name: string, args: ListenerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ListenerArgs | ListenerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ListenerState | undefined;
-            inputs["acceleratorId"] = state ? state.acceleratorId : undefined;
-            inputs["certificates"] = state ? state.certificates : undefined;
-            inputs["clientAffinity"] = state ? state.clientAffinity : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["portRanges"] = state ? state.portRanges : undefined;
-            inputs["protocol"] = state ? state.protocol : undefined;
-            inputs["proxyProtocol"] = state ? state.proxyProtocol : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["acceleratorId"] = state ? state.acceleratorId : undefined;
+            resourceInputs["certificates"] = state ? state.certificates : undefined;
+            resourceInputs["clientAffinity"] = state ? state.clientAffinity : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["portRanges"] = state ? state.portRanges : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["proxyProtocol"] = state ? state.proxyProtocol : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ListenerArgs | undefined;
             if ((!args || args.acceleratorId === undefined) && !opts.urn) {
@@ -155,20 +155,18 @@ export class Listener extends pulumi.CustomResource {
             if ((!args || args.portRanges === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'portRanges'");
             }
-            inputs["acceleratorId"] = args ? args.acceleratorId : undefined;
-            inputs["certificates"] = args ? args.certificates : undefined;
-            inputs["clientAffinity"] = args ? args.clientAffinity : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["portRanges"] = args ? args.portRanges : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["proxyProtocol"] = args ? args.proxyProtocol : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["acceleratorId"] = args ? args.acceleratorId : undefined;
+            resourceInputs["certificates"] = args ? args.certificates : undefined;
+            resourceInputs["clientAffinity"] = args ? args.clientAffinity : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["portRanges"] = args ? args.portRanges : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["proxyProtocol"] = args ? args.proxyProtocol : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Listener.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Listener.__pulumiType, name, resourceInputs, opts);
     }
 }
 

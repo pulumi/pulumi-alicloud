@@ -136,7 +136,7 @@ type MscSubWebhookInput interface {
 }
 
 func (*MscSubWebhook) ElementType() reflect.Type {
-	return reflect.TypeOf((*MscSubWebhook)(nil))
+	return reflect.TypeOf((**MscSubWebhook)(nil)).Elem()
 }
 
 func (i *MscSubWebhook) ToMscSubWebhookOutput() MscSubWebhookOutput {
@@ -145,35 +145,6 @@ func (i *MscSubWebhook) ToMscSubWebhookOutput() MscSubWebhookOutput {
 
 func (i *MscSubWebhook) ToMscSubWebhookOutputWithContext(ctx context.Context) MscSubWebhookOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MscSubWebhookOutput)
-}
-
-func (i *MscSubWebhook) ToMscSubWebhookPtrOutput() MscSubWebhookPtrOutput {
-	return i.ToMscSubWebhookPtrOutputWithContext(context.Background())
-}
-
-func (i *MscSubWebhook) ToMscSubWebhookPtrOutputWithContext(ctx context.Context) MscSubWebhookPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MscSubWebhookPtrOutput)
-}
-
-type MscSubWebhookPtrInput interface {
-	pulumi.Input
-
-	ToMscSubWebhookPtrOutput() MscSubWebhookPtrOutput
-	ToMscSubWebhookPtrOutputWithContext(ctx context.Context) MscSubWebhookPtrOutput
-}
-
-type mscSubWebhookPtrType MscSubWebhookArgs
-
-func (*mscSubWebhookPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MscSubWebhook)(nil))
-}
-
-func (i *mscSubWebhookPtrType) ToMscSubWebhookPtrOutput() MscSubWebhookPtrOutput {
-	return i.ToMscSubWebhookPtrOutputWithContext(context.Background())
-}
-
-func (i *mscSubWebhookPtrType) ToMscSubWebhookPtrOutputWithContext(ctx context.Context) MscSubWebhookPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MscSubWebhookPtrOutput)
 }
 
 // MscSubWebhookArrayInput is an input type that accepts MscSubWebhookArray and MscSubWebhookArrayOutput values.
@@ -229,7 +200,7 @@ func (i MscSubWebhookMap) ToMscSubWebhookMapOutputWithContext(ctx context.Contex
 type MscSubWebhookOutput struct{ *pulumi.OutputState }
 
 func (MscSubWebhookOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MscSubWebhook)(nil))
+	return reflect.TypeOf((**MscSubWebhook)(nil)).Elem()
 }
 
 func (o MscSubWebhookOutput) ToMscSubWebhookOutput() MscSubWebhookOutput {
@@ -240,44 +211,10 @@ func (o MscSubWebhookOutput) ToMscSubWebhookOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o MscSubWebhookOutput) ToMscSubWebhookPtrOutput() MscSubWebhookPtrOutput {
-	return o.ToMscSubWebhookPtrOutputWithContext(context.Background())
-}
-
-func (o MscSubWebhookOutput) ToMscSubWebhookPtrOutputWithContext(ctx context.Context) MscSubWebhookPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MscSubWebhook) *MscSubWebhook {
-		return &v
-	}).(MscSubWebhookPtrOutput)
-}
-
-type MscSubWebhookPtrOutput struct{ *pulumi.OutputState }
-
-func (MscSubWebhookPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MscSubWebhook)(nil))
-}
-
-func (o MscSubWebhookPtrOutput) ToMscSubWebhookPtrOutput() MscSubWebhookPtrOutput {
-	return o
-}
-
-func (o MscSubWebhookPtrOutput) ToMscSubWebhookPtrOutputWithContext(ctx context.Context) MscSubWebhookPtrOutput {
-	return o
-}
-
-func (o MscSubWebhookPtrOutput) Elem() MscSubWebhookOutput {
-	return o.ApplyT(func(v *MscSubWebhook) MscSubWebhook {
-		if v != nil {
-			return *v
-		}
-		var ret MscSubWebhook
-		return ret
-	}).(MscSubWebhookOutput)
-}
-
 type MscSubWebhookArrayOutput struct{ *pulumi.OutputState }
 
 func (MscSubWebhookArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MscSubWebhook)(nil))
+	return reflect.TypeOf((*[]*MscSubWebhook)(nil)).Elem()
 }
 
 func (o MscSubWebhookArrayOutput) ToMscSubWebhookArrayOutput() MscSubWebhookArrayOutput {
@@ -289,15 +226,15 @@ func (o MscSubWebhookArrayOutput) ToMscSubWebhookArrayOutputWithContext(ctx cont
 }
 
 func (o MscSubWebhookArrayOutput) Index(i pulumi.IntInput) MscSubWebhookOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MscSubWebhook {
-		return vs[0].([]MscSubWebhook)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MscSubWebhook {
+		return vs[0].([]*MscSubWebhook)[vs[1].(int)]
 	}).(MscSubWebhookOutput)
 }
 
 type MscSubWebhookMapOutput struct{ *pulumi.OutputState }
 
 func (MscSubWebhookMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MscSubWebhook)(nil))
+	return reflect.TypeOf((*map[string]*MscSubWebhook)(nil)).Elem()
 }
 
 func (o MscSubWebhookMapOutput) ToMscSubWebhookMapOutput() MscSubWebhookMapOutput {
@@ -309,18 +246,16 @@ func (o MscSubWebhookMapOutput) ToMscSubWebhookMapOutputWithContext(ctx context.
 }
 
 func (o MscSubWebhookMapOutput) MapIndex(k pulumi.StringInput) MscSubWebhookOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MscSubWebhook {
-		return vs[0].(map[string]MscSubWebhook)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MscSubWebhook {
+		return vs[0].(map[string]*MscSubWebhook)[vs[1].(string)]
 	}).(MscSubWebhookOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MscSubWebhookInput)(nil)).Elem(), &MscSubWebhook{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MscSubWebhookPtrInput)(nil)).Elem(), &MscSubWebhook{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MscSubWebhookArrayInput)(nil)).Elem(), MscSubWebhookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MscSubWebhookMapInput)(nil)).Elem(), MscSubWebhookMap{})
 	pulumi.RegisterOutputType(MscSubWebhookOutput{})
-	pulumi.RegisterOutputType(MscSubWebhookPtrOutput{})
 	pulumi.RegisterOutputType(MscSubWebhookArrayOutput{})
 	pulumi.RegisterOutputType(MscSubWebhookMapOutput{})
 }

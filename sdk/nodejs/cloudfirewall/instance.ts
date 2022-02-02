@@ -155,29 +155,29 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            inputs["bandWidth"] = state ? state.bandWidth : undefined;
-            inputs["cfwLog"] = state ? state.cfwLog : undefined;
-            inputs["cfwLogStorage"] = state ? state.cfwLogStorage : undefined;
-            inputs["cfwService"] = state ? state.cfwService : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["endTime"] = state ? state.endTime : undefined;
-            inputs["fwVpcNumber"] = state ? state.fwVpcNumber : undefined;
-            inputs["instanceCount"] = state ? state.instanceCount : undefined;
-            inputs["ipNumber"] = state ? state.ipNumber : undefined;
-            inputs["logistics"] = state ? state.logistics : undefined;
-            inputs["modifyType"] = state ? state.modifyType : undefined;
-            inputs["paymentType"] = state ? state.paymentType : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["releaseTime"] = state ? state.releaseTime : undefined;
-            inputs["renewPeriod"] = state ? state.renewPeriod : undefined;
-            inputs["renewalDurationUnit"] = state ? state.renewalDurationUnit : undefined;
-            inputs["renewalStatus"] = state ? state.renewalStatus : undefined;
-            inputs["spec"] = state ? state.spec : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["bandWidth"] = state ? state.bandWidth : undefined;
+            resourceInputs["cfwLog"] = state ? state.cfwLog : undefined;
+            resourceInputs["cfwLogStorage"] = state ? state.cfwLogStorage : undefined;
+            resourceInputs["cfwService"] = state ? state.cfwService : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["endTime"] = state ? state.endTime : undefined;
+            resourceInputs["fwVpcNumber"] = state ? state.fwVpcNumber : undefined;
+            resourceInputs["instanceCount"] = state ? state.instanceCount : undefined;
+            resourceInputs["ipNumber"] = state ? state.ipNumber : undefined;
+            resourceInputs["logistics"] = state ? state.logistics : undefined;
+            resourceInputs["modifyType"] = state ? state.modifyType : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["releaseTime"] = state ? state.releaseTime : undefined;
+            resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
+            resourceInputs["renewalDurationUnit"] = state ? state.renewalDurationUnit : undefined;
+            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
+            resourceInputs["spec"] = state ? state.spec : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.bandWidth === undefined) && !opts.urn) {
@@ -204,30 +204,28 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.spec === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'spec'");
             }
-            inputs["bandWidth"] = args ? args.bandWidth : undefined;
-            inputs["cfwLog"] = args ? args.cfwLog : undefined;
-            inputs["cfwLogStorage"] = args ? args.cfwLogStorage : undefined;
-            inputs["cfwService"] = args ? args.cfwService : undefined;
-            inputs["fwVpcNumber"] = args ? args.fwVpcNumber : undefined;
-            inputs["instanceCount"] = args ? args.instanceCount : undefined;
-            inputs["ipNumber"] = args ? args.ipNumber : undefined;
-            inputs["logistics"] = args ? args.logistics : undefined;
-            inputs["modifyType"] = args ? args.modifyType : undefined;
-            inputs["paymentType"] = args ? args.paymentType : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["renewPeriod"] = args ? args.renewPeriod : undefined;
-            inputs["renewalStatus"] = args ? args.renewalStatus : undefined;
-            inputs["spec"] = args ? args.spec : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["endTime"] = undefined /*out*/;
-            inputs["releaseTime"] = undefined /*out*/;
-            inputs["renewalDurationUnit"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["bandWidth"] = args ? args.bandWidth : undefined;
+            resourceInputs["cfwLog"] = args ? args.cfwLog : undefined;
+            resourceInputs["cfwLogStorage"] = args ? args.cfwLogStorage : undefined;
+            resourceInputs["cfwService"] = args ? args.cfwService : undefined;
+            resourceInputs["fwVpcNumber"] = args ? args.fwVpcNumber : undefined;
+            resourceInputs["instanceCount"] = args ? args.instanceCount : undefined;
+            resourceInputs["ipNumber"] = args ? args.ipNumber : undefined;
+            resourceInputs["logistics"] = args ? args.logistics : undefined;
+            resourceInputs["modifyType"] = args ? args.modifyType : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
+            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
+            resourceInputs["spec"] = args ? args.spec : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["releaseTime"] = undefined /*out*/;
+            resourceInputs["renewalDurationUnit"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Instance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

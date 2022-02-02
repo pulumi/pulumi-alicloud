@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ResourceManager
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSharedResourcesResult> InvokeAsync(GetSharedResourcesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSharedResourcesResult>("alicloud:resourcemanager/getSharedResources:getSharedResources", args ?? new GetSharedResourcesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSharedResourcesResult>("alicloud:resourcemanager/getSharedResources:getSharedResources", args ?? new GetSharedResourcesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSharedResourcesResult> Invoke(GetSharedResourcesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSharedResourcesResult>("alicloud:resourcemanager/getSharedResources:getSharedResources", args ?? new GetSharedResourcesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSharedResourcesResult>("alicloud:resourcemanager/getSharedResources:getSharedResources", args ?? new GetSharedResourcesInvokeArgs(), options.WithDefaults());
     }
 
 

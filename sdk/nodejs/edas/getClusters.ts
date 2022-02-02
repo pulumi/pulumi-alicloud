@@ -29,9 +29,7 @@ export function getClusters(args: GetClustersArgs, opts?: pulumi.InvokeOptions):
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:edas/getClusters:getClusters", {
         "ids": args.ids,
         "logicalRegionId": args.logicalRegionId,

@@ -31,9 +31,7 @@ export function getTemplates(args?: GetTemplatesArgs, opts?: pulumi.InvokeOption
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ros/getTemplates:getTemplates", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,

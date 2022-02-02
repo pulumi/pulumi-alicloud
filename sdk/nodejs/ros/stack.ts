@@ -168,62 +168,60 @@ export class Stack extends pulumi.CustomResource {
      */
     constructor(name: string, args: StackArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StackArgs | StackState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StackState | undefined;
-            inputs["createOption"] = state ? state.createOption : undefined;
-            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            inputs["disableRollback"] = state ? state.disableRollback : undefined;
-            inputs["notificationUrls"] = state ? state.notificationUrls : undefined;
-            inputs["parameters"] = state ? state.parameters : undefined;
-            inputs["ramRoleName"] = state ? state.ramRoleName : undefined;
-            inputs["replacementOption"] = state ? state.replacementOption : undefined;
-            inputs["retainAllResources"] = state ? state.retainAllResources : undefined;
-            inputs["retainResources"] = state ? state.retainResources : undefined;
-            inputs["stackName"] = state ? state.stackName : undefined;
-            inputs["stackPolicyBody"] = state ? state.stackPolicyBody : undefined;
-            inputs["stackPolicyDuringUpdateBody"] = state ? state.stackPolicyDuringUpdateBody : undefined;
-            inputs["stackPolicyDuringUpdateUrl"] = state ? state.stackPolicyDuringUpdateUrl : undefined;
-            inputs["stackPolicyUrl"] = state ? state.stackPolicyUrl : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["templateBody"] = state ? state.templateBody : undefined;
-            inputs["templateUrl"] = state ? state.templateUrl : undefined;
-            inputs["templateVersion"] = state ? state.templateVersion : undefined;
-            inputs["timeoutInMinutes"] = state ? state.timeoutInMinutes : undefined;
-            inputs["usePreviousParameters"] = state ? state.usePreviousParameters : undefined;
+            resourceInputs["createOption"] = state ? state.createOption : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["disableRollback"] = state ? state.disableRollback : undefined;
+            resourceInputs["notificationUrls"] = state ? state.notificationUrls : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
+            resourceInputs["ramRoleName"] = state ? state.ramRoleName : undefined;
+            resourceInputs["replacementOption"] = state ? state.replacementOption : undefined;
+            resourceInputs["retainAllResources"] = state ? state.retainAllResources : undefined;
+            resourceInputs["retainResources"] = state ? state.retainResources : undefined;
+            resourceInputs["stackName"] = state ? state.stackName : undefined;
+            resourceInputs["stackPolicyBody"] = state ? state.stackPolicyBody : undefined;
+            resourceInputs["stackPolicyDuringUpdateBody"] = state ? state.stackPolicyDuringUpdateBody : undefined;
+            resourceInputs["stackPolicyDuringUpdateUrl"] = state ? state.stackPolicyDuringUpdateUrl : undefined;
+            resourceInputs["stackPolicyUrl"] = state ? state.stackPolicyUrl : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["templateBody"] = state ? state.templateBody : undefined;
+            resourceInputs["templateUrl"] = state ? state.templateUrl : undefined;
+            resourceInputs["templateVersion"] = state ? state.templateVersion : undefined;
+            resourceInputs["timeoutInMinutes"] = state ? state.timeoutInMinutes : undefined;
+            resourceInputs["usePreviousParameters"] = state ? state.usePreviousParameters : undefined;
         } else {
             const args = argsOrState as StackArgs | undefined;
             if ((!args || args.stackName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'stackName'");
             }
-            inputs["createOption"] = args ? args.createOption : undefined;
-            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            inputs["disableRollback"] = args ? args.disableRollback : undefined;
-            inputs["notificationUrls"] = args ? args.notificationUrls : undefined;
-            inputs["parameters"] = args ? args.parameters : undefined;
-            inputs["ramRoleName"] = args ? args.ramRoleName : undefined;
-            inputs["replacementOption"] = args ? args.replacementOption : undefined;
-            inputs["retainAllResources"] = args ? args.retainAllResources : undefined;
-            inputs["retainResources"] = args ? args.retainResources : undefined;
-            inputs["stackName"] = args ? args.stackName : undefined;
-            inputs["stackPolicyBody"] = args ? args.stackPolicyBody : undefined;
-            inputs["stackPolicyDuringUpdateBody"] = args ? args.stackPolicyDuringUpdateBody : undefined;
-            inputs["stackPolicyDuringUpdateUrl"] = args ? args.stackPolicyDuringUpdateUrl : undefined;
-            inputs["stackPolicyUrl"] = args ? args.stackPolicyUrl : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["templateBody"] = args ? args.templateBody : undefined;
-            inputs["templateUrl"] = args ? args.templateUrl : undefined;
-            inputs["templateVersion"] = args ? args.templateVersion : undefined;
-            inputs["timeoutInMinutes"] = args ? args.timeoutInMinutes : undefined;
-            inputs["usePreviousParameters"] = args ? args.usePreviousParameters : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["createOption"] = args ? args.createOption : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["disableRollback"] = args ? args.disableRollback : undefined;
+            resourceInputs["notificationUrls"] = args ? args.notificationUrls : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["ramRoleName"] = args ? args.ramRoleName : undefined;
+            resourceInputs["replacementOption"] = args ? args.replacementOption : undefined;
+            resourceInputs["retainAllResources"] = args ? args.retainAllResources : undefined;
+            resourceInputs["retainResources"] = args ? args.retainResources : undefined;
+            resourceInputs["stackName"] = args ? args.stackName : undefined;
+            resourceInputs["stackPolicyBody"] = args ? args.stackPolicyBody : undefined;
+            resourceInputs["stackPolicyDuringUpdateBody"] = args ? args.stackPolicyDuringUpdateBody : undefined;
+            resourceInputs["stackPolicyDuringUpdateUrl"] = args ? args.stackPolicyDuringUpdateUrl : undefined;
+            resourceInputs["stackPolicyUrl"] = args ? args.stackPolicyUrl : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["templateBody"] = args ? args.templateBody : undefined;
+            resourceInputs["templateUrl"] = args ? args.templateUrl : undefined;
+            resourceInputs["templateVersion"] = args ? args.templateVersion : undefined;
+            resourceInputs["timeoutInMinutes"] = args ? args.timeoutInMinutes : undefined;
+            resourceInputs["usePreviousParameters"] = args ? args.usePreviousParameters : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Stack.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Stack.__pulumiType, name, resourceInputs, opts);
     }
 }
 

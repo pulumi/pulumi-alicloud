@@ -57,7 +57,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = cloudconnect.NewNetworkGrant(ctx, "_default", &cloudconnect.NetworkGrantArgs{
+// 		_, err = cloudconnect.NewNetworkGrant(ctx, "default", &cloudconnect.NetworkGrantArgs{
 // 			CcnId:  ccn.ID(),
 // 			CenId:  cen.ID(),
 // 			CenUid: pulumi.String("xxxxxx"),
@@ -181,7 +181,7 @@ type NetworkGrantInput interface {
 }
 
 func (*NetworkGrant) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkGrant)(nil))
+	return reflect.TypeOf((**NetworkGrant)(nil)).Elem()
 }
 
 func (i *NetworkGrant) ToNetworkGrantOutput() NetworkGrantOutput {
@@ -190,35 +190,6 @@ func (i *NetworkGrant) ToNetworkGrantOutput() NetworkGrantOutput {
 
 func (i *NetworkGrant) ToNetworkGrantOutputWithContext(ctx context.Context) NetworkGrantOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkGrantOutput)
-}
-
-func (i *NetworkGrant) ToNetworkGrantPtrOutput() NetworkGrantPtrOutput {
-	return i.ToNetworkGrantPtrOutputWithContext(context.Background())
-}
-
-func (i *NetworkGrant) ToNetworkGrantPtrOutputWithContext(ctx context.Context) NetworkGrantPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkGrantPtrOutput)
-}
-
-type NetworkGrantPtrInput interface {
-	pulumi.Input
-
-	ToNetworkGrantPtrOutput() NetworkGrantPtrOutput
-	ToNetworkGrantPtrOutputWithContext(ctx context.Context) NetworkGrantPtrOutput
-}
-
-type networkGrantPtrType NetworkGrantArgs
-
-func (*networkGrantPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkGrant)(nil))
-}
-
-func (i *networkGrantPtrType) ToNetworkGrantPtrOutput() NetworkGrantPtrOutput {
-	return i.ToNetworkGrantPtrOutputWithContext(context.Background())
-}
-
-func (i *networkGrantPtrType) ToNetworkGrantPtrOutputWithContext(ctx context.Context) NetworkGrantPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkGrantPtrOutput)
 }
 
 // NetworkGrantArrayInput is an input type that accepts NetworkGrantArray and NetworkGrantArrayOutput values.
@@ -274,7 +245,7 @@ func (i NetworkGrantMap) ToNetworkGrantMapOutputWithContext(ctx context.Context)
 type NetworkGrantOutput struct{ *pulumi.OutputState }
 
 func (NetworkGrantOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkGrant)(nil))
+	return reflect.TypeOf((**NetworkGrant)(nil)).Elem()
 }
 
 func (o NetworkGrantOutput) ToNetworkGrantOutput() NetworkGrantOutput {
@@ -285,44 +256,10 @@ func (o NetworkGrantOutput) ToNetworkGrantOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o NetworkGrantOutput) ToNetworkGrantPtrOutput() NetworkGrantPtrOutput {
-	return o.ToNetworkGrantPtrOutputWithContext(context.Background())
-}
-
-func (o NetworkGrantOutput) ToNetworkGrantPtrOutputWithContext(ctx context.Context) NetworkGrantPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkGrant) *NetworkGrant {
-		return &v
-	}).(NetworkGrantPtrOutput)
-}
-
-type NetworkGrantPtrOutput struct{ *pulumi.OutputState }
-
-func (NetworkGrantPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkGrant)(nil))
-}
-
-func (o NetworkGrantPtrOutput) ToNetworkGrantPtrOutput() NetworkGrantPtrOutput {
-	return o
-}
-
-func (o NetworkGrantPtrOutput) ToNetworkGrantPtrOutputWithContext(ctx context.Context) NetworkGrantPtrOutput {
-	return o
-}
-
-func (o NetworkGrantPtrOutput) Elem() NetworkGrantOutput {
-	return o.ApplyT(func(v *NetworkGrant) NetworkGrant {
-		if v != nil {
-			return *v
-		}
-		var ret NetworkGrant
-		return ret
-	}).(NetworkGrantOutput)
-}
-
 type NetworkGrantArrayOutput struct{ *pulumi.OutputState }
 
 func (NetworkGrantArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NetworkGrant)(nil))
+	return reflect.TypeOf((*[]*NetworkGrant)(nil)).Elem()
 }
 
 func (o NetworkGrantArrayOutput) ToNetworkGrantArrayOutput() NetworkGrantArrayOutput {
@@ -334,15 +271,15 @@ func (o NetworkGrantArrayOutput) ToNetworkGrantArrayOutputWithContext(ctx contex
 }
 
 func (o NetworkGrantArrayOutput) Index(i pulumi.IntInput) NetworkGrantOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkGrant {
-		return vs[0].([]NetworkGrant)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkGrant {
+		return vs[0].([]*NetworkGrant)[vs[1].(int)]
 	}).(NetworkGrantOutput)
 }
 
 type NetworkGrantMapOutput struct{ *pulumi.OutputState }
 
 func (NetworkGrantMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]NetworkGrant)(nil))
+	return reflect.TypeOf((*map[string]*NetworkGrant)(nil)).Elem()
 }
 
 func (o NetworkGrantMapOutput) ToNetworkGrantMapOutput() NetworkGrantMapOutput {
@@ -354,18 +291,16 @@ func (o NetworkGrantMapOutput) ToNetworkGrantMapOutputWithContext(ctx context.Co
 }
 
 func (o NetworkGrantMapOutput) MapIndex(k pulumi.StringInput) NetworkGrantOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NetworkGrant {
-		return vs[0].(map[string]NetworkGrant)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *NetworkGrant {
+		return vs[0].(map[string]*NetworkGrant)[vs[1].(string)]
 	}).(NetworkGrantOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkGrantInput)(nil)).Elem(), &NetworkGrant{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NetworkGrantPtrInput)(nil)).Elem(), &NetworkGrant{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkGrantArrayInput)(nil)).Elem(), NetworkGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkGrantMapInput)(nil)).Elem(), NetworkGrantMap{})
 	pulumi.RegisterOutputType(NetworkGrantOutput{})
-	pulumi.RegisterOutputType(NetworkGrantPtrOutput{})
 	pulumi.RegisterOutputType(NetworkGrantArrayOutput{})
 	pulumi.RegisterOutputType(NetworkGrantMapOutput{})
 }

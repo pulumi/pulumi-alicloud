@@ -98,16 +98,16 @@ export class User extends pulumi.CustomResource {
      */
     constructor(name: string, args: UserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["accountName"] = state ? state.accountName : undefined;
-            inputs["adminUser"] = state ? state.adminUser : undefined;
-            inputs["authAdminUser"] = state ? state.authAdminUser : undefined;
-            inputs["nickName"] = state ? state.nickName : undefined;
-            inputs["userType"] = state ? state.userType : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["accountName"] = state ? state.accountName : undefined;
+            resourceInputs["adminUser"] = state ? state.adminUser : undefined;
+            resourceInputs["authAdminUser"] = state ? state.authAdminUser : undefined;
+            resourceInputs["nickName"] = state ? state.nickName : undefined;
+            resourceInputs["userType"] = state ? state.userType : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
             if ((!args || args.accountName === undefined) && !opts.urn) {
@@ -125,17 +125,15 @@ export class User extends pulumi.CustomResource {
             if ((!args || args.userType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userType'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["accountName"] = args ? args.accountName : undefined;
-            inputs["adminUser"] = args ? args.adminUser : undefined;
-            inputs["authAdminUser"] = args ? args.authAdminUser : undefined;
-            inputs["nickName"] = args ? args.nickName : undefined;
-            inputs["userType"] = args ? args.userType : undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["accountName"] = args ? args.accountName : undefined;
+            resourceInputs["adminUser"] = args ? args.adminUser : undefined;
+            resourceInputs["authAdminUser"] = args ? args.authAdminUser : undefined;
+            resourceInputs["nickName"] = args ? args.nickName : undefined;
+            resourceInputs["userType"] = args ? args.userType : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(User.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(User.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Emr
 {
@@ -208,10 +207,10 @@ namespace Pulumi.AliCloud.Emr
         ///         });
         ///         var ids = Output.Create(AliCloud.Emr.GetClusters.InvokeAsync());
         ///         this.EmrClusterId1 = ids.Apply(ids =&gt; ids.Clusters?[0]?.Id);
-        ///         var nameRegex = defaultCluster.Name.Apply(name =&gt; AliCloud.Emr.GetClusters.InvokeAsync(new AliCloud.Emr.GetClustersArgs
+        ///         var nameRegex = AliCloud.Emr.GetClusters.Invoke(new AliCloud.Emr.GetClustersInvokeArgs
         ///         {
-        ///             NameRegex = name,
-        ///         }));
+        ///             NameRegex = defaultCluster.Name,
+        ///         });
         ///         this.EmrClusterId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Clusters?[0]?.Id);
         ///     }
         /// 
@@ -225,7 +224,7 @@ namespace Pulumi.AliCloud.Emr
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:emr/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:emr/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Emr Clusters of the current Alibaba Cloud user.
@@ -423,10 +422,10 @@ namespace Pulumi.AliCloud.Emr
         ///         });
         ///         var ids = Output.Create(AliCloud.Emr.GetClusters.InvokeAsync());
         ///         this.EmrClusterId1 = ids.Apply(ids =&gt; ids.Clusters?[0]?.Id);
-        ///         var nameRegex = defaultCluster.Name.Apply(name =&gt; AliCloud.Emr.GetClusters.InvokeAsync(new AliCloud.Emr.GetClustersArgs
+        ///         var nameRegex = AliCloud.Emr.GetClusters.Invoke(new AliCloud.Emr.GetClustersInvokeArgs
         ///         {
-        ///             NameRegex = name,
-        ///         }));
+        ///             NameRegex = defaultCluster.Name,
+        ///         });
         ///         this.EmrClusterId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Clusters?[0]?.Id);
         ///     }
         /// 
@@ -440,7 +439,7 @@ namespace Pulumi.AliCloud.Emr
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:emr/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:emr/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
     }
 
 

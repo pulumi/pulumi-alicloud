@@ -122,21 +122,21 @@ export class Host extends pulumi.CustomResource {
      */
     constructor(name: string, args: HostArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HostArgs | HostState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostState | undefined;
-            inputs["activeAddressType"] = state ? state.activeAddressType : undefined;
-            inputs["comment"] = state ? state.comment : undefined;
-            inputs["hostId"] = state ? state.hostId : undefined;
-            inputs["hostName"] = state ? state.hostName : undefined;
-            inputs["hostPrivateAddress"] = state ? state.hostPrivateAddress : undefined;
-            inputs["hostPublicAddress"] = state ? state.hostPublicAddress : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["instanceRegionId"] = state ? state.instanceRegionId : undefined;
-            inputs["osType"] = state ? state.osType : undefined;
-            inputs["source"] = state ? state.source : undefined;
-            inputs["sourceInstanceId"] = state ? state.sourceInstanceId : undefined;
+            resourceInputs["activeAddressType"] = state ? state.activeAddressType : undefined;
+            resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["hostId"] = state ? state.hostId : undefined;
+            resourceInputs["hostName"] = state ? state.hostName : undefined;
+            resourceInputs["hostPrivateAddress"] = state ? state.hostPrivateAddress : undefined;
+            resourceInputs["hostPublicAddress"] = state ? state.hostPublicAddress : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["instanceRegionId"] = state ? state.instanceRegionId : undefined;
+            resourceInputs["osType"] = state ? state.osType : undefined;
+            resourceInputs["source"] = state ? state.source : undefined;
+            resourceInputs["sourceInstanceId"] = state ? state.sourceInstanceId : undefined;
         } else {
             const args = argsOrState as HostArgs | undefined;
             if ((!args || args.activeAddressType === undefined) && !opts.urn) {
@@ -154,22 +154,20 @@ export class Host extends pulumi.CustomResource {
             if ((!args || args.source === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
-            inputs["activeAddressType"] = args ? args.activeAddressType : undefined;
-            inputs["comment"] = args ? args.comment : undefined;
-            inputs["hostName"] = args ? args.hostName : undefined;
-            inputs["hostPrivateAddress"] = args ? args.hostPrivateAddress : undefined;
-            inputs["hostPublicAddress"] = args ? args.hostPublicAddress : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["instanceRegionId"] = args ? args.instanceRegionId : undefined;
-            inputs["osType"] = args ? args.osType : undefined;
-            inputs["source"] = args ? args.source : undefined;
-            inputs["sourceInstanceId"] = args ? args.sourceInstanceId : undefined;
-            inputs["hostId"] = undefined /*out*/;
+            resourceInputs["activeAddressType"] = args ? args.activeAddressType : undefined;
+            resourceInputs["comment"] = args ? args.comment : undefined;
+            resourceInputs["hostName"] = args ? args.hostName : undefined;
+            resourceInputs["hostPrivateAddress"] = args ? args.hostPrivateAddress : undefined;
+            resourceInputs["hostPublicAddress"] = args ? args.hostPublicAddress : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["instanceRegionId"] = args ? args.instanceRegionId : undefined;
+            resourceInputs["osType"] = args ? args.osType : undefined;
+            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["sourceInstanceId"] = args ? args.sourceInstanceId : undefined;
+            resourceInputs["hostId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Host.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Host.__pulumiType, name, resourceInputs, opts);
     }
 }
 

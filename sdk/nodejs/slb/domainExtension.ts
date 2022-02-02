@@ -168,15 +168,15 @@ export class DomainExtension extends pulumi.CustomResource {
      */
     constructor(name: string, args: DomainExtensionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainExtensionArgs | DomainExtensionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainExtensionState | undefined;
-            inputs["deleteProtectionValidation"] = state ? state.deleteProtectionValidation : undefined;
-            inputs["domain"] = state ? state.domain : undefined;
-            inputs["frontendPort"] = state ? state.frontendPort : undefined;
-            inputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
-            inputs["serverCertificateId"] = state ? state.serverCertificateId : undefined;
+            resourceInputs["deleteProtectionValidation"] = state ? state.deleteProtectionValidation : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["frontendPort"] = state ? state.frontendPort : undefined;
+            resourceInputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
+            resourceInputs["serverCertificateId"] = state ? state.serverCertificateId : undefined;
         } else {
             const args = argsOrState as DomainExtensionArgs | undefined;
             if ((!args || args.domain === undefined) && !opts.urn) {
@@ -191,16 +191,14 @@ export class DomainExtension extends pulumi.CustomResource {
             if ((!args || args.serverCertificateId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serverCertificateId'");
             }
-            inputs["deleteProtectionValidation"] = args ? args.deleteProtectionValidation : undefined;
-            inputs["domain"] = args ? args.domain : undefined;
-            inputs["frontendPort"] = args ? args.frontendPort : undefined;
-            inputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
-            inputs["serverCertificateId"] = args ? args.serverCertificateId : undefined;
+            resourceInputs["deleteProtectionValidation"] = args ? args.deleteProtectionValidation : undefined;
+            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["frontendPort"] = args ? args.frontendPort : undefined;
+            resourceInputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
+            resourceInputs["serverCertificateId"] = args ? args.serverCertificateId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DomainExtension.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DomainExtension.__pulumiType, name, resourceInputs, opts);
     }
 }
 

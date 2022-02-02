@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dns
 {
@@ -47,7 +46,7 @@ namespace Pulumi.AliCloud.Dns
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAlidnsDomainGroupsResult> InvokeAsync(GetAlidnsDomainGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAlidnsDomainGroupsResult>("alicloud:dns/getAlidnsDomainGroups:getAlidnsDomainGroups", args ?? new GetAlidnsDomainGroupsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAlidnsDomainGroupsResult>("alicloud:dns/getAlidnsDomainGroups:getAlidnsDomainGroups", args ?? new GetAlidnsDomainGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of Alidns Domain Groups in an Alibaba Cloud account according to the specified filters.
@@ -84,7 +83,7 @@ namespace Pulumi.AliCloud.Dns
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAlidnsDomainGroupsResult> Invoke(GetAlidnsDomainGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAlidnsDomainGroupsResult>("alicloud:dns/getAlidnsDomainGroups:getAlidnsDomainGroups", args ?? new GetAlidnsDomainGroupsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAlidnsDomainGroupsResult>("alicloud:dns/getAlidnsDomainGroups:getAlidnsDomainGroups", args ?? new GetAlidnsDomainGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

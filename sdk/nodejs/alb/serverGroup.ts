@@ -190,39 +190,37 @@ export class ServerGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ServerGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServerGroupArgs | ServerGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerGroupState | undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["healthCheckConfig"] = state ? state.healthCheckConfig : undefined;
-            inputs["protocol"] = state ? state.protocol : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["scheduler"] = state ? state.scheduler : undefined;
-            inputs["serverGroupName"] = state ? state.serverGroupName : undefined;
-            inputs["servers"] = state ? state.servers : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["stickySessionConfig"] = state ? state.stickySessionConfig : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["healthCheckConfig"] = state ? state.healthCheckConfig : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["scheduler"] = state ? state.scheduler : undefined;
+            resourceInputs["serverGroupName"] = state ? state.serverGroupName : undefined;
+            resourceInputs["servers"] = state ? state.servers : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["stickySessionConfig"] = state ? state.stickySessionConfig : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as ServerGroupArgs | undefined;
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["healthCheckConfig"] = args ? args.healthCheckConfig : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["scheduler"] = args ? args.scheduler : undefined;
-            inputs["serverGroupName"] = args ? args.serverGroupName : undefined;
-            inputs["servers"] = args ? args.servers : undefined;
-            inputs["stickySessionConfig"] = args ? args.stickySessionConfig : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["vpcId"] = args ? args.vpcId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["healthCheckConfig"] = args ? args.healthCheckConfig : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["scheduler"] = args ? args.scheduler : undefined;
+            resourceInputs["serverGroupName"] = args ? args.serverGroupName : undefined;
+            resourceInputs["servers"] = args ? args.servers : undefined;
+            resourceInputs["stickySessionConfig"] = args ? args.stickySessionConfig : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ServerGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ServerGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -108,30 +108,28 @@ export class MountTarget extends pulumi.CustomResource {
      */
     constructor(name: string, args: MountTargetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MountTargetArgs | MountTargetState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MountTargetState | undefined;
-            inputs["accessGroupName"] = state ? state.accessGroupName : undefined;
-            inputs["fileSystemId"] = state ? state.fileSystemId : undefined;
-            inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["accessGroupName"] = state ? state.accessGroupName : undefined;
+            resourceInputs["fileSystemId"] = state ? state.fileSystemId : undefined;
+            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as MountTargetArgs | undefined;
             if ((!args || args.fileSystemId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'fileSystemId'");
             }
-            inputs["accessGroupName"] = args ? args.accessGroupName : undefined;
-            inputs["fileSystemId"] = args ? args.fileSystemId : undefined;
-            inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["accessGroupName"] = args ? args.accessGroupName : undefined;
+            resourceInputs["fileSystemId"] = args ? args.fileSystemId : undefined;
+            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(MountTarget.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(MountTarget.__pulumiType, name, resourceInputs, opts);
     }
 }
 

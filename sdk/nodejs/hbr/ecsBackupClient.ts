@@ -136,42 +136,40 @@ export class EcsBackupClient extends pulumi.CustomResource {
      */
     constructor(name: string, args: EcsBackupClientArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EcsBackupClientArgs | EcsBackupClientState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsBackupClientState | undefined;
-            inputs["dataNetworkType"] = state ? state.dataNetworkType : undefined;
-            inputs["dataProxySetting"] = state ? state.dataProxySetting : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["maxCpuCore"] = state ? state.maxCpuCore : undefined;
-            inputs["maxWorker"] = state ? state.maxWorker : undefined;
-            inputs["proxyHost"] = state ? state.proxyHost : undefined;
-            inputs["proxyPassword"] = state ? state.proxyPassword : undefined;
-            inputs["proxyPort"] = state ? state.proxyPort : undefined;
-            inputs["proxyUser"] = state ? state.proxyUser : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["useHttps"] = state ? state.useHttps : undefined;
+            resourceInputs["dataNetworkType"] = state ? state.dataNetworkType : undefined;
+            resourceInputs["dataProxySetting"] = state ? state.dataProxySetting : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["maxCpuCore"] = state ? state.maxCpuCore : undefined;
+            resourceInputs["maxWorker"] = state ? state.maxWorker : undefined;
+            resourceInputs["proxyHost"] = state ? state.proxyHost : undefined;
+            resourceInputs["proxyPassword"] = state ? state.proxyPassword : undefined;
+            resourceInputs["proxyPort"] = state ? state.proxyPort : undefined;
+            resourceInputs["proxyUser"] = state ? state.proxyUser : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["useHttps"] = state ? state.useHttps : undefined;
         } else {
             const args = argsOrState as EcsBackupClientArgs | undefined;
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["dataNetworkType"] = args ? args.dataNetworkType : undefined;
-            inputs["dataProxySetting"] = args ? args.dataProxySetting : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["maxCpuCore"] = args ? args.maxCpuCore : undefined;
-            inputs["maxWorker"] = args ? args.maxWorker : undefined;
-            inputs["proxyHost"] = args ? args.proxyHost : undefined;
-            inputs["proxyPassword"] = args ? args.proxyPassword : undefined;
-            inputs["proxyPort"] = args ? args.proxyPort : undefined;
-            inputs["proxyUser"] = args ? args.proxyUser : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["useHttps"] = args ? args.useHttps : undefined;
+            resourceInputs["dataNetworkType"] = args ? args.dataNetworkType : undefined;
+            resourceInputs["dataProxySetting"] = args ? args.dataProxySetting : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["maxCpuCore"] = args ? args.maxCpuCore : undefined;
+            resourceInputs["maxWorker"] = args ? args.maxWorker : undefined;
+            resourceInputs["proxyHost"] = args ? args.proxyHost : undefined;
+            resourceInputs["proxyPassword"] = args ? args.proxyPassword : undefined;
+            resourceInputs["proxyPort"] = args ? args.proxyPort : undefined;
+            resourceInputs["proxyUser"] = args ? args.proxyUser : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["useHttps"] = args ? args.useHttps : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EcsBackupClient.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EcsBackupClient.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -29,9 +29,7 @@ export function getAuditPolicies(args: GetAuditPoliciesArgs, opts?: pulumi.Invok
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:mongodb/getAuditPolicies:getAuditPolicies", {
         "dbInstanceId": args.dbInstanceId,
         "outputFile": args.outputFile,

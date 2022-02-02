@@ -63,23 +63,21 @@ export class Topic extends pulumi.CustomResource {
      */
     constructor(name: string, args?: TopicArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TopicArgs | TopicState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TopicState | undefined;
-            inputs["loggingEnabled"] = state ? state.loggingEnabled : undefined;
-            inputs["maximumMessageSize"] = state ? state.maximumMessageSize : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["loggingEnabled"] = state ? state.loggingEnabled : undefined;
+            resourceInputs["maximumMessageSize"] = state ? state.maximumMessageSize : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as TopicArgs | undefined;
-            inputs["loggingEnabled"] = args ? args.loggingEnabled : undefined;
-            inputs["maximumMessageSize"] = args ? args.maximumMessageSize : undefined;
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["loggingEnabled"] = args ? args.loggingEnabled : undefined;
+            resourceInputs["maximumMessageSize"] = args ? args.maximumMessageSize : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Topic.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Topic.__pulumiType, name, resourceInputs, opts);
     }
 }
 

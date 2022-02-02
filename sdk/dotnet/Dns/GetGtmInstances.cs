@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dns
 {
@@ -43,7 +42,7 @@ namespace Pulumi.AliCloud.Dns
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGtmInstancesResult> InvokeAsync(GetGtmInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGtmInstancesResult>("alicloud:dns/getGtmInstances:getGtmInstances", args ?? new GetGtmInstancesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGtmInstancesResult>("alicloud:dns/getGtmInstances:getGtmInstances", args ?? new GetGtmInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Alidns Gtm Instances of the current Alibaba Cloud user.
@@ -76,7 +75,7 @@ namespace Pulumi.AliCloud.Dns
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGtmInstancesResult> Invoke(GetGtmInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGtmInstancesResult>("alicloud:dns/getGtmInstances:getGtmInstances", args ?? new GetGtmInstancesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetGtmInstancesResult>("alicloud:dns/getGtmInstances:getGtmInstances", args ?? new GetGtmInstancesInvokeArgs(), options.WithDefaults());
     }
 
 

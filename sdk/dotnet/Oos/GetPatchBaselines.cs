@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Oos
 {
@@ -18,7 +17,7 @@ namespace Pulumi.AliCloud.Oos
         /// &gt; **NOTE:** Available in v1.146.0+.
         /// </summary>
         public static Task<GetPatchBaselinesResult> InvokeAsync(GetPatchBaselinesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPatchBaselinesResult>("alicloud:oos/getPatchBaselines:getPatchBaselines", args ?? new GetPatchBaselinesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPatchBaselinesResult>("alicloud:oos/getPatchBaselines:getPatchBaselines", args ?? new GetPatchBaselinesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Oos Patch Baselines of the current Alibaba Cloud user.
@@ -26,7 +25,7 @@ namespace Pulumi.AliCloud.Oos
         /// &gt; **NOTE:** Available in v1.146.0+.
         /// </summary>
         public static Output<GetPatchBaselinesResult> Invoke(GetPatchBaselinesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPatchBaselinesResult>("alicloud:oos/getPatchBaselines:getPatchBaselines", args ?? new GetPatchBaselinesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetPatchBaselinesResult>("alicloud:oos/getPatchBaselines:getPatchBaselines", args ?? new GetPatchBaselinesInvokeArgs(), options.WithDefaults());
     }
 
 

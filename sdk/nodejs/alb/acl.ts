@@ -96,32 +96,30 @@ export class Acl extends pulumi.CustomResource {
      */
     constructor(name: string, args: AclArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AclArgs | AclState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclState | undefined;
-            inputs["aclEntries"] = state ? state.aclEntries : undefined;
-            inputs["aclName"] = state ? state.aclName : undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["aclEntries"] = state ? state.aclEntries : undefined;
+            resourceInputs["aclName"] = state ? state.aclName : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as AclArgs | undefined;
             if ((!args || args.aclName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'aclName'");
             }
-            inputs["aclEntries"] = args ? args.aclEntries : undefined;
-            inputs["aclName"] = args ? args.aclName : undefined;
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["aclEntries"] = args ? args.aclEntries : undefined;
+            resourceInputs["aclName"] = args ? args.aclName : undefined;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Acl.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Acl.__pulumiType, name, resourceInputs, opts);
     }
 }
 

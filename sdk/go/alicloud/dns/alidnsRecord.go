@@ -236,7 +236,7 @@ type AlidnsRecordInput interface {
 }
 
 func (*AlidnsRecord) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlidnsRecord)(nil))
+	return reflect.TypeOf((**AlidnsRecord)(nil)).Elem()
 }
 
 func (i *AlidnsRecord) ToAlidnsRecordOutput() AlidnsRecordOutput {
@@ -245,35 +245,6 @@ func (i *AlidnsRecord) ToAlidnsRecordOutput() AlidnsRecordOutput {
 
 func (i *AlidnsRecord) ToAlidnsRecordOutputWithContext(ctx context.Context) AlidnsRecordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlidnsRecordOutput)
-}
-
-func (i *AlidnsRecord) ToAlidnsRecordPtrOutput() AlidnsRecordPtrOutput {
-	return i.ToAlidnsRecordPtrOutputWithContext(context.Background())
-}
-
-func (i *AlidnsRecord) ToAlidnsRecordPtrOutputWithContext(ctx context.Context) AlidnsRecordPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AlidnsRecordPtrOutput)
-}
-
-type AlidnsRecordPtrInput interface {
-	pulumi.Input
-
-	ToAlidnsRecordPtrOutput() AlidnsRecordPtrOutput
-	ToAlidnsRecordPtrOutputWithContext(ctx context.Context) AlidnsRecordPtrOutput
-}
-
-type alidnsRecordPtrType AlidnsRecordArgs
-
-func (*alidnsRecordPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AlidnsRecord)(nil))
-}
-
-func (i *alidnsRecordPtrType) ToAlidnsRecordPtrOutput() AlidnsRecordPtrOutput {
-	return i.ToAlidnsRecordPtrOutputWithContext(context.Background())
-}
-
-func (i *alidnsRecordPtrType) ToAlidnsRecordPtrOutputWithContext(ctx context.Context) AlidnsRecordPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AlidnsRecordPtrOutput)
 }
 
 // AlidnsRecordArrayInput is an input type that accepts AlidnsRecordArray and AlidnsRecordArrayOutput values.
@@ -329,7 +300,7 @@ func (i AlidnsRecordMap) ToAlidnsRecordMapOutputWithContext(ctx context.Context)
 type AlidnsRecordOutput struct{ *pulumi.OutputState }
 
 func (AlidnsRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AlidnsRecord)(nil))
+	return reflect.TypeOf((**AlidnsRecord)(nil)).Elem()
 }
 
 func (o AlidnsRecordOutput) ToAlidnsRecordOutput() AlidnsRecordOutput {
@@ -340,44 +311,10 @@ func (o AlidnsRecordOutput) ToAlidnsRecordOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o AlidnsRecordOutput) ToAlidnsRecordPtrOutput() AlidnsRecordPtrOutput {
-	return o.ToAlidnsRecordPtrOutputWithContext(context.Background())
-}
-
-func (o AlidnsRecordOutput) ToAlidnsRecordPtrOutputWithContext(ctx context.Context) AlidnsRecordPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlidnsRecord) *AlidnsRecord {
-		return &v
-	}).(AlidnsRecordPtrOutput)
-}
-
-type AlidnsRecordPtrOutput struct{ *pulumi.OutputState }
-
-func (AlidnsRecordPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AlidnsRecord)(nil))
-}
-
-func (o AlidnsRecordPtrOutput) ToAlidnsRecordPtrOutput() AlidnsRecordPtrOutput {
-	return o
-}
-
-func (o AlidnsRecordPtrOutput) ToAlidnsRecordPtrOutputWithContext(ctx context.Context) AlidnsRecordPtrOutput {
-	return o
-}
-
-func (o AlidnsRecordPtrOutput) Elem() AlidnsRecordOutput {
-	return o.ApplyT(func(v *AlidnsRecord) AlidnsRecord {
-		if v != nil {
-			return *v
-		}
-		var ret AlidnsRecord
-		return ret
-	}).(AlidnsRecordOutput)
-}
-
 type AlidnsRecordArrayOutput struct{ *pulumi.OutputState }
 
 func (AlidnsRecordArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AlidnsRecord)(nil))
+	return reflect.TypeOf((*[]*AlidnsRecord)(nil)).Elem()
 }
 
 func (o AlidnsRecordArrayOutput) ToAlidnsRecordArrayOutput() AlidnsRecordArrayOutput {
@@ -389,15 +326,15 @@ func (o AlidnsRecordArrayOutput) ToAlidnsRecordArrayOutputWithContext(ctx contex
 }
 
 func (o AlidnsRecordArrayOutput) Index(i pulumi.IntInput) AlidnsRecordOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlidnsRecord {
-		return vs[0].([]AlidnsRecord)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AlidnsRecord {
+		return vs[0].([]*AlidnsRecord)[vs[1].(int)]
 	}).(AlidnsRecordOutput)
 }
 
 type AlidnsRecordMapOutput struct{ *pulumi.OutputState }
 
 func (AlidnsRecordMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AlidnsRecord)(nil))
+	return reflect.TypeOf((*map[string]*AlidnsRecord)(nil)).Elem()
 }
 
 func (o AlidnsRecordMapOutput) ToAlidnsRecordMapOutput() AlidnsRecordMapOutput {
@@ -409,18 +346,16 @@ func (o AlidnsRecordMapOutput) ToAlidnsRecordMapOutputWithContext(ctx context.Co
 }
 
 func (o AlidnsRecordMapOutput) MapIndex(k pulumi.StringInput) AlidnsRecordOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AlidnsRecord {
-		return vs[0].(map[string]AlidnsRecord)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AlidnsRecord {
+		return vs[0].(map[string]*AlidnsRecord)[vs[1].(string)]
 	}).(AlidnsRecordOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlidnsRecordInput)(nil)).Elem(), &AlidnsRecord{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AlidnsRecordPtrInput)(nil)).Elem(), &AlidnsRecord{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlidnsRecordArrayInput)(nil)).Elem(), AlidnsRecordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlidnsRecordMapInput)(nil)).Elem(), AlidnsRecordMap{})
 	pulumi.RegisterOutputType(AlidnsRecordOutput{})
-	pulumi.RegisterOutputType(AlidnsRecordPtrOutput{})
 	pulumi.RegisterOutputType(AlidnsRecordArrayOutput{})
 	pulumi.RegisterOutputType(AlidnsRecordMapOutput{})
 }

@@ -83,15 +83,15 @@ export class ApplicationScale extends pulumi.CustomResource {
      */
     constructor(name: string, args: ApplicationScaleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApplicationScaleArgs | ApplicationScaleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationScaleState | undefined;
-            inputs["appId"] = state ? state.appId : undefined;
-            inputs["deployGroup"] = state ? state.deployGroup : undefined;
-            inputs["eccInfo"] = state ? state.eccInfo : undefined;
-            inputs["ecuInfos"] = state ? state.ecuInfos : undefined;
-            inputs["forceStatus"] = state ? state.forceStatus : undefined;
+            resourceInputs["appId"] = state ? state.appId : undefined;
+            resourceInputs["deployGroup"] = state ? state.deployGroup : undefined;
+            resourceInputs["eccInfo"] = state ? state.eccInfo : undefined;
+            resourceInputs["ecuInfos"] = state ? state.ecuInfos : undefined;
+            resourceInputs["forceStatus"] = state ? state.forceStatus : undefined;
         } else {
             const args = argsOrState as ApplicationScaleArgs | undefined;
             if ((!args || args.appId === undefined) && !opts.urn) {
@@ -103,16 +103,14 @@ export class ApplicationScale extends pulumi.CustomResource {
             if ((!args || args.ecuInfos === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ecuInfos'");
             }
-            inputs["appId"] = args ? args.appId : undefined;
-            inputs["deployGroup"] = args ? args.deployGroup : undefined;
-            inputs["ecuInfos"] = args ? args.ecuInfos : undefined;
-            inputs["forceStatus"] = args ? args.forceStatus : undefined;
-            inputs["eccInfo"] = undefined /*out*/;
+            resourceInputs["appId"] = args ? args.appId : undefined;
+            resourceInputs["deployGroup"] = args ? args.deployGroup : undefined;
+            resourceInputs["ecuInfos"] = args ? args.ecuInfos : undefined;
+            resourceInputs["forceStatus"] = args ? args.forceStatus : undefined;
+            resourceInputs["eccInfo"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ApplicationScale.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ApplicationScale.__pulumiType, name, resourceInputs, opts);
     }
 }
 

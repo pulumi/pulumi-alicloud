@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Amqp
 {
@@ -61,7 +60,7 @@ namespace Pulumi.AliCloud.Amqp
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetExchangesResult> InvokeAsync(GetExchangesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetExchangesResult>("alicloud:amqp/getExchanges:getExchanges", args ?? new GetExchangesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetExchangesResult>("alicloud:amqp/getExchanges:getExchanges", args ?? new GetExchangesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Amqp Exchanges of the current Alibaba Cloud user.
@@ -112,7 +111,7 @@ namespace Pulumi.AliCloud.Amqp
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetExchangesResult> Invoke(GetExchangesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetExchangesResult>("alicloud:amqp/getExchanges:getExchanges", args ?? new GetExchangesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetExchangesResult>("alicloud:amqp/getExchanges:getExchanges", args ?? new GetExchangesInvokeArgs(), options.WithDefaults());
     }
 
 

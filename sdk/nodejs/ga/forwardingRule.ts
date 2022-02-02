@@ -226,18 +226,18 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: ForwardingRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ForwardingRuleArgs | ForwardingRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ForwardingRuleState | undefined;
-            inputs["acceleratorId"] = state ? state.acceleratorId : undefined;
-            inputs["forwardingRuleId"] = state ? state.forwardingRuleId : undefined;
-            inputs["forwardingRuleName"] = state ? state.forwardingRuleName : undefined;
-            inputs["forwardingRuleStatus"] = state ? state.forwardingRuleStatus : undefined;
-            inputs["listenerId"] = state ? state.listenerId : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["ruleActions"] = state ? state.ruleActions : undefined;
-            inputs["ruleConditions"] = state ? state.ruleConditions : undefined;
+            resourceInputs["acceleratorId"] = state ? state.acceleratorId : undefined;
+            resourceInputs["forwardingRuleId"] = state ? state.forwardingRuleId : undefined;
+            resourceInputs["forwardingRuleName"] = state ? state.forwardingRuleName : undefined;
+            resourceInputs["forwardingRuleStatus"] = state ? state.forwardingRuleStatus : undefined;
+            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["ruleActions"] = state ? state.ruleActions : undefined;
+            resourceInputs["ruleConditions"] = state ? state.ruleConditions : undefined;
         } else {
             const args = argsOrState as ForwardingRuleArgs | undefined;
             if ((!args || args.acceleratorId === undefined) && !opts.urn) {
@@ -252,19 +252,17 @@ export class ForwardingRule extends pulumi.CustomResource {
             if ((!args || args.ruleConditions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ruleConditions'");
             }
-            inputs["acceleratorId"] = args ? args.acceleratorId : undefined;
-            inputs["forwardingRuleName"] = args ? args.forwardingRuleName : undefined;
-            inputs["listenerId"] = args ? args.listenerId : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["ruleActions"] = args ? args.ruleActions : undefined;
-            inputs["ruleConditions"] = args ? args.ruleConditions : undefined;
-            inputs["forwardingRuleId"] = undefined /*out*/;
-            inputs["forwardingRuleStatus"] = undefined /*out*/;
+            resourceInputs["acceleratorId"] = args ? args.acceleratorId : undefined;
+            resourceInputs["forwardingRuleName"] = args ? args.forwardingRuleName : undefined;
+            resourceInputs["listenerId"] = args ? args.listenerId : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["ruleActions"] = args ? args.ruleActions : undefined;
+            resourceInputs["ruleConditions"] = args ? args.ruleConditions : undefined;
+            resourceInputs["forwardingRuleId"] = undefined /*out*/;
+            resourceInputs["forwardingRuleStatus"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ForwardingRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ForwardingRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -271,7 +271,7 @@ type ProtectionModuleInput interface {
 }
 
 func (*ProtectionModule) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProtectionModule)(nil))
+	return reflect.TypeOf((**ProtectionModule)(nil)).Elem()
 }
 
 func (i *ProtectionModule) ToProtectionModuleOutput() ProtectionModuleOutput {
@@ -280,35 +280,6 @@ func (i *ProtectionModule) ToProtectionModuleOutput() ProtectionModuleOutput {
 
 func (i *ProtectionModule) ToProtectionModuleOutputWithContext(ctx context.Context) ProtectionModuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProtectionModuleOutput)
-}
-
-func (i *ProtectionModule) ToProtectionModulePtrOutput() ProtectionModulePtrOutput {
-	return i.ToProtectionModulePtrOutputWithContext(context.Background())
-}
-
-func (i *ProtectionModule) ToProtectionModulePtrOutputWithContext(ctx context.Context) ProtectionModulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProtectionModulePtrOutput)
-}
-
-type ProtectionModulePtrInput interface {
-	pulumi.Input
-
-	ToProtectionModulePtrOutput() ProtectionModulePtrOutput
-	ToProtectionModulePtrOutputWithContext(ctx context.Context) ProtectionModulePtrOutput
-}
-
-type protectionModulePtrType ProtectionModuleArgs
-
-func (*protectionModulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProtectionModule)(nil))
-}
-
-func (i *protectionModulePtrType) ToProtectionModulePtrOutput() ProtectionModulePtrOutput {
-	return i.ToProtectionModulePtrOutputWithContext(context.Background())
-}
-
-func (i *protectionModulePtrType) ToProtectionModulePtrOutputWithContext(ctx context.Context) ProtectionModulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProtectionModulePtrOutput)
 }
 
 // ProtectionModuleArrayInput is an input type that accepts ProtectionModuleArray and ProtectionModuleArrayOutput values.
@@ -364,7 +335,7 @@ func (i ProtectionModuleMap) ToProtectionModuleMapOutputWithContext(ctx context.
 type ProtectionModuleOutput struct{ *pulumi.OutputState }
 
 func (ProtectionModuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProtectionModule)(nil))
+	return reflect.TypeOf((**ProtectionModule)(nil)).Elem()
 }
 
 func (o ProtectionModuleOutput) ToProtectionModuleOutput() ProtectionModuleOutput {
@@ -375,44 +346,10 @@ func (o ProtectionModuleOutput) ToProtectionModuleOutputWithContext(ctx context.
 	return o
 }
 
-func (o ProtectionModuleOutput) ToProtectionModulePtrOutput() ProtectionModulePtrOutput {
-	return o.ToProtectionModulePtrOutputWithContext(context.Background())
-}
-
-func (o ProtectionModuleOutput) ToProtectionModulePtrOutputWithContext(ctx context.Context) ProtectionModulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProtectionModule) *ProtectionModule {
-		return &v
-	}).(ProtectionModulePtrOutput)
-}
-
-type ProtectionModulePtrOutput struct{ *pulumi.OutputState }
-
-func (ProtectionModulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProtectionModule)(nil))
-}
-
-func (o ProtectionModulePtrOutput) ToProtectionModulePtrOutput() ProtectionModulePtrOutput {
-	return o
-}
-
-func (o ProtectionModulePtrOutput) ToProtectionModulePtrOutputWithContext(ctx context.Context) ProtectionModulePtrOutput {
-	return o
-}
-
-func (o ProtectionModulePtrOutput) Elem() ProtectionModuleOutput {
-	return o.ApplyT(func(v *ProtectionModule) ProtectionModule {
-		if v != nil {
-			return *v
-		}
-		var ret ProtectionModule
-		return ret
-	}).(ProtectionModuleOutput)
-}
-
 type ProtectionModuleArrayOutput struct{ *pulumi.OutputState }
 
 func (ProtectionModuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProtectionModule)(nil))
+	return reflect.TypeOf((*[]*ProtectionModule)(nil)).Elem()
 }
 
 func (o ProtectionModuleArrayOutput) ToProtectionModuleArrayOutput() ProtectionModuleArrayOutput {
@@ -424,15 +361,15 @@ func (o ProtectionModuleArrayOutput) ToProtectionModuleArrayOutputWithContext(ct
 }
 
 func (o ProtectionModuleArrayOutput) Index(i pulumi.IntInput) ProtectionModuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProtectionModule {
-		return vs[0].([]ProtectionModule)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProtectionModule {
+		return vs[0].([]*ProtectionModule)[vs[1].(int)]
 	}).(ProtectionModuleOutput)
 }
 
 type ProtectionModuleMapOutput struct{ *pulumi.OutputState }
 
 func (ProtectionModuleMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ProtectionModule)(nil))
+	return reflect.TypeOf((*map[string]*ProtectionModule)(nil)).Elem()
 }
 
 func (o ProtectionModuleMapOutput) ToProtectionModuleMapOutput() ProtectionModuleMapOutput {
@@ -444,18 +381,16 @@ func (o ProtectionModuleMapOutput) ToProtectionModuleMapOutputWithContext(ctx co
 }
 
 func (o ProtectionModuleMapOutput) MapIndex(k pulumi.StringInput) ProtectionModuleOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProtectionModule {
-		return vs[0].(map[string]ProtectionModule)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ProtectionModule {
+		return vs[0].(map[string]*ProtectionModule)[vs[1].(string)]
 	}).(ProtectionModuleOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProtectionModuleInput)(nil)).Elem(), &ProtectionModule{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProtectionModulePtrInput)(nil)).Elem(), &ProtectionModule{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProtectionModuleArrayInput)(nil)).Elem(), ProtectionModuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProtectionModuleMapInput)(nil)).Elem(), ProtectionModuleMap{})
 	pulumi.RegisterOutputType(ProtectionModuleOutput{})
-	pulumi.RegisterOutputType(ProtectionModulePtrOutput{})
 	pulumi.RegisterOutputType(ProtectionModuleArrayOutput{})
 	pulumi.RegisterOutputType(ProtectionModuleMapOutput{})
 }

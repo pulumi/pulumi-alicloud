@@ -88,14 +88,14 @@ export class PatchBaseline extends pulumi.CustomResource {
      */
     constructor(name: string, args: PatchBaselineArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PatchBaselineArgs | PatchBaselineState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PatchBaselineState | undefined;
-            inputs["approvalRules"] = state ? state.approvalRules : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["operationSystem"] = state ? state.operationSystem : undefined;
-            inputs["patchBaselineName"] = state ? state.patchBaselineName : undefined;
+            resourceInputs["approvalRules"] = state ? state.approvalRules : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["operationSystem"] = state ? state.operationSystem : undefined;
+            resourceInputs["patchBaselineName"] = state ? state.patchBaselineName : undefined;
         } else {
             const args = argsOrState as PatchBaselineArgs | undefined;
             if ((!args || args.approvalRules === undefined) && !opts.urn) {
@@ -107,15 +107,13 @@ export class PatchBaseline extends pulumi.CustomResource {
             if ((!args || args.patchBaselineName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'patchBaselineName'");
             }
-            inputs["approvalRules"] = args ? args.approvalRules : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["operationSystem"] = args ? args.operationSystem : undefined;
-            inputs["patchBaselineName"] = args ? args.patchBaselineName : undefined;
+            resourceInputs["approvalRules"] = args ? args.approvalRules : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["operationSystem"] = args ? args.operationSystem : undefined;
+            resourceInputs["patchBaselineName"] = args ? args.patchBaselineName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(PatchBaseline.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(PatchBaseline.__pulumiType, name, resourceInputs, opts);
     }
 }
 

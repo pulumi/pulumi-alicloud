@@ -127,27 +127,27 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            inputs["attachMode"] = state ? state.attachMode : undefined;
-            inputs["attachPoint"] = state ? state.attachPoint : undefined;
-            inputs["category"] = state ? state.category : undefined;
-            inputs["deleteSnapshot"] = state ? state.deleteSnapshot : undefined;
-            inputs["ecsLists"] = state ? state.ecsLists : undefined;
-            inputs["enableRaid"] = state ? state.enableRaid : undefined;
-            inputs["encryption"] = state ? state.encryption : undefined;
-            inputs["instanceName"] = state ? state.instanceName : undefined;
-            inputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
-            inputs["performanceLevel"] = state ? state.performanceLevel : undefined;
-            inputs["raidStripeUnitNumber"] = state ? state.raidStripeUnitNumber : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["snapshotId"] = state ? state.snapshotId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["usedScene"] = state ? state.usedScene : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["attachMode"] = state ? state.attachMode : undefined;
+            resourceInputs["attachPoint"] = state ? state.attachPoint : undefined;
+            resourceInputs["category"] = state ? state.category : undefined;
+            resourceInputs["deleteSnapshot"] = state ? state.deleteSnapshot : undefined;
+            resourceInputs["ecsLists"] = state ? state.ecsLists : undefined;
+            resourceInputs["enableRaid"] = state ? state.enableRaid : undefined;
+            resourceInputs["encryption"] = state ? state.encryption : undefined;
+            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
+            resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
+            resourceInputs["performanceLevel"] = state ? state.performanceLevel : undefined;
+            resourceInputs["raidStripeUnitNumber"] = state ? state.raidStripeUnitNumber : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["usedScene"] = state ? state.usedScene : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.instanceName === undefined) && !opts.urn) {
@@ -159,28 +159,26 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["attachMode"] = args ? args.attachMode : undefined;
-            inputs["attachPoint"] = args ? args.attachPoint : undefined;
-            inputs["category"] = args ? args.category : undefined;
-            inputs["deleteSnapshot"] = args ? args.deleteSnapshot : undefined;
-            inputs["ecsLists"] = args ? args.ecsLists : undefined;
-            inputs["enableRaid"] = args ? args.enableRaid : undefined;
-            inputs["encryption"] = args ? args.encryption : undefined;
-            inputs["instanceName"] = args ? args.instanceName : undefined;
-            inputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
-            inputs["performanceLevel"] = args ? args.performanceLevel : undefined;
-            inputs["raidStripeUnitNumber"] = args ? args.raidStripeUnitNumber : undefined;
-            inputs["size"] = args ? args.size : undefined;
-            inputs["snapshotId"] = args ? args.snapshotId : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["usedScene"] = args ? args.usedScene : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["attachMode"] = args ? args.attachMode : undefined;
+            resourceInputs["attachPoint"] = args ? args.attachPoint : undefined;
+            resourceInputs["category"] = args ? args.category : undefined;
+            resourceInputs["deleteSnapshot"] = args ? args.deleteSnapshot : undefined;
+            resourceInputs["ecsLists"] = args ? args.ecsLists : undefined;
+            resourceInputs["enableRaid"] = args ? args.enableRaid : undefined;
+            resourceInputs["encryption"] = args ? args.encryption : undefined;
+            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
+            resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
+            resourceInputs["performanceLevel"] = args ? args.performanceLevel : undefined;
+            resourceInputs["raidStripeUnitNumber"] = args ? args.raidStripeUnitNumber : undefined;
+            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["usedScene"] = args ? args.usedScene : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Instance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

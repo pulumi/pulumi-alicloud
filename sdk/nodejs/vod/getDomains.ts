@@ -31,13 +31,13 @@ import * as utilities from "../utilities";
  *         key2: "value2",
  *     },
  * });
- * const defaultDomains = defaultDomain.id.apply(id => alicloud.vod.getDomains({
- *     ids: [id],
+ * const defaultDomains = alicloud.vod.getDomainsOutput({
+ *     ids: [defaultDomain.id],
  *     tags: {
  *         key1: "value1",
  *         key2: "value2",
  *     },
- * }));
+ * });
  * export const vodDomain = defaultDomains.apply(defaultDomains => defaultDomains.domains?[0]);
  * ```
  */
@@ -47,9 +47,7 @@ export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:vod/getDomains:getDomains", {
         "domainSearchType": args.domainSearchType,
         "ids": args.ids,

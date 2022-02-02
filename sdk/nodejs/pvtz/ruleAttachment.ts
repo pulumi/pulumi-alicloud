@@ -66,12 +66,12 @@ export class RuleAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: RuleAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RuleAttachmentArgs | RuleAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuleAttachmentState | undefined;
-            inputs["ruleId"] = state ? state.ruleId : undefined;
-            inputs["vpcs"] = state ? state.vpcs : undefined;
+            resourceInputs["ruleId"] = state ? state.ruleId : undefined;
+            resourceInputs["vpcs"] = state ? state.vpcs : undefined;
         } else {
             const args = argsOrState as RuleAttachmentArgs | undefined;
             if ((!args || args.ruleId === undefined) && !opts.urn) {
@@ -80,13 +80,11 @@ export class RuleAttachment extends pulumi.CustomResource {
             if ((!args || args.vpcs === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcs'");
             }
-            inputs["ruleId"] = args ? args.ruleId : undefined;
-            inputs["vpcs"] = args ? args.vpcs : undefined;
+            resourceInputs["ruleId"] = args ? args.ruleId : undefined;
+            resourceInputs["vpcs"] = args ? args.vpcs : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RuleAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RuleAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

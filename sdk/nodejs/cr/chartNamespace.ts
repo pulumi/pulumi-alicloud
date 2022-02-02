@@ -93,14 +93,14 @@ export class ChartNamespace extends pulumi.CustomResource {
      */
     constructor(name: string, args: ChartNamespaceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ChartNamespaceArgs | ChartNamespaceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ChartNamespaceState | undefined;
-            inputs["autoCreateRepo"] = state ? state.autoCreateRepo : undefined;
-            inputs["defaultRepoType"] = state ? state.defaultRepoType : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["namespaceName"] = state ? state.namespaceName : undefined;
+            resourceInputs["autoCreateRepo"] = state ? state.autoCreateRepo : undefined;
+            resourceInputs["defaultRepoType"] = state ? state.defaultRepoType : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["namespaceName"] = state ? state.namespaceName : undefined;
         } else {
             const args = argsOrState as ChartNamespaceArgs | undefined;
             if ((!args || args.instanceId === undefined) && !opts.urn) {
@@ -109,15 +109,13 @@ export class ChartNamespace extends pulumi.CustomResource {
             if ((!args || args.namespaceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'namespaceName'");
             }
-            inputs["autoCreateRepo"] = args ? args.autoCreateRepo : undefined;
-            inputs["defaultRepoType"] = args ? args.defaultRepoType : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["namespaceName"] = args ? args.namespaceName : undefined;
+            resourceInputs["autoCreateRepo"] = args ? args.autoCreateRepo : undefined;
+            resourceInputs["defaultRepoType"] = args ? args.defaultRepoType : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["namespaceName"] = args ? args.namespaceName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ChartNamespace.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ChartNamespace.__pulumiType, name, resourceInputs, opts);
     }
 }
 

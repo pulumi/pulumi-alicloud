@@ -73,14 +73,14 @@ export class AdditionalCertificate extends pulumi.CustomResource {
      */
     constructor(name: string, args: AdditionalCertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AdditionalCertificateArgs | AdditionalCertificateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AdditionalCertificateState | undefined;
-            inputs["acceleratorId"] = state ? state.acceleratorId : undefined;
-            inputs["certificateId"] = state ? state.certificateId : undefined;
-            inputs["domain"] = state ? state.domain : undefined;
-            inputs["listenerId"] = state ? state.listenerId : undefined;
+            resourceInputs["acceleratorId"] = state ? state.acceleratorId : undefined;
+            resourceInputs["certificateId"] = state ? state.certificateId : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
         } else {
             const args = argsOrState as AdditionalCertificateArgs | undefined;
             if ((!args || args.acceleratorId === undefined) && !opts.urn) {
@@ -95,15 +95,13 @@ export class AdditionalCertificate extends pulumi.CustomResource {
             if ((!args || args.listenerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'listenerId'");
             }
-            inputs["acceleratorId"] = args ? args.acceleratorId : undefined;
-            inputs["certificateId"] = args ? args.certificateId : undefined;
-            inputs["domain"] = args ? args.domain : undefined;
-            inputs["listenerId"] = args ? args.listenerId : undefined;
+            resourceInputs["acceleratorId"] = args ? args.acceleratorId : undefined;
+            resourceInputs["certificateId"] = args ? args.certificateId : undefined;
+            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["listenerId"] = args ? args.listenerId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AdditionalCertificate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AdditionalCertificate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

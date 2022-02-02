@@ -81,23 +81,21 @@ export class DomainGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args?: DomainGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainGroupArgs | DomainGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainGroupState | undefined;
-            inputs["domainGroupName"] = state ? state.domainGroupName : undefined;
-            inputs["groupName"] = state ? state.groupName : undefined;
-            inputs["lang"] = state ? state.lang : undefined;
+            resourceInputs["domainGroupName"] = state ? state.domainGroupName : undefined;
+            resourceInputs["groupName"] = state ? state.groupName : undefined;
+            resourceInputs["lang"] = state ? state.lang : undefined;
         } else {
             const args = argsOrState as DomainGroupArgs | undefined;
-            inputs["domainGroupName"] = args ? args.domainGroupName : undefined;
-            inputs["groupName"] = args ? args.groupName : undefined;
-            inputs["lang"] = args ? args.lang : undefined;
+            resourceInputs["domainGroupName"] = args ? args.domainGroupName : undefined;
+            resourceInputs["groupName"] = args ? args.groupName : undefined;
+            resourceInputs["lang"] = args ? args.lang : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DomainGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DomainGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

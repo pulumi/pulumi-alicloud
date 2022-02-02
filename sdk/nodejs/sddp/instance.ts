@@ -157,31 +157,31 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            inputs["authed"] = state ? state.authed : undefined;
-            inputs["dataphin"] = state ? state.dataphin : undefined;
-            inputs["dataphinCount"] = state ? state.dataphinCount : undefined;
-            inputs["instanceNum"] = state ? state.instanceNum : undefined;
-            inputs["logistics"] = state ? state.logistics : undefined;
-            inputs["modifyType"] = state ? state.modifyType : undefined;
-            inputs["odpsSet"] = state ? state.odpsSet : undefined;
-            inputs["ossBucketSet"] = state ? state.ossBucketSet : undefined;
-            inputs["ossSize"] = state ? state.ossSize : undefined;
-            inputs["paymentType"] = state ? state.paymentType : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["rdsSet"] = state ? state.rdsSet : undefined;
-            inputs["remainDays"] = state ? state.remainDays : undefined;
-            inputs["renewPeriod"] = state ? state.renewPeriod : undefined;
-            inputs["renewalStatus"] = state ? state.renewalStatus : undefined;
-            inputs["sdCbool"] = state ? state.sdCbool : undefined;
-            inputs["sdc"] = state ? state.sdc : undefined;
-            inputs["sddpVersion"] = state ? state.sddpVersion : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["udCbool"] = state ? state.udCbool : undefined;
-            inputs["udc"] = state ? state.udc : undefined;
+            resourceInputs["authed"] = state ? state.authed : undefined;
+            resourceInputs["dataphin"] = state ? state.dataphin : undefined;
+            resourceInputs["dataphinCount"] = state ? state.dataphinCount : undefined;
+            resourceInputs["instanceNum"] = state ? state.instanceNum : undefined;
+            resourceInputs["logistics"] = state ? state.logistics : undefined;
+            resourceInputs["modifyType"] = state ? state.modifyType : undefined;
+            resourceInputs["odpsSet"] = state ? state.odpsSet : undefined;
+            resourceInputs["ossBucketSet"] = state ? state.ossBucketSet : undefined;
+            resourceInputs["ossSize"] = state ? state.ossSize : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["rdsSet"] = state ? state.rdsSet : undefined;
+            resourceInputs["remainDays"] = state ? state.remainDays : undefined;
+            resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
+            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
+            resourceInputs["sdCbool"] = state ? state.sdCbool : undefined;
+            resourceInputs["sdc"] = state ? state.sdc : undefined;
+            resourceInputs["sddpVersion"] = state ? state.sddpVersion : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["udCbool"] = state ? state.udCbool : undefined;
+            resourceInputs["udc"] = state ? state.udc : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.paymentType === undefined) && !opts.urn) {
@@ -205,32 +205,30 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.udc === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'udc'");
             }
-            inputs["dataphin"] = args ? args.dataphin : undefined;
-            inputs["dataphinCount"] = args ? args.dataphinCount : undefined;
-            inputs["logistics"] = args ? args.logistics : undefined;
-            inputs["modifyType"] = args ? args.modifyType : undefined;
-            inputs["paymentType"] = args ? args.paymentType : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["renewPeriod"] = args ? args.renewPeriod : undefined;
-            inputs["renewalStatus"] = args ? args.renewalStatus : undefined;
-            inputs["sdCbool"] = args ? args.sdCbool : undefined;
-            inputs["sdc"] = args ? args.sdc : undefined;
-            inputs["sddpVersion"] = args ? args.sddpVersion : undefined;
-            inputs["udCbool"] = args ? args.udCbool : undefined;
-            inputs["udc"] = args ? args.udc : undefined;
-            inputs["authed"] = undefined /*out*/;
-            inputs["instanceNum"] = undefined /*out*/;
-            inputs["odpsSet"] = undefined /*out*/;
-            inputs["ossBucketSet"] = undefined /*out*/;
-            inputs["ossSize"] = undefined /*out*/;
-            inputs["rdsSet"] = undefined /*out*/;
-            inputs["remainDays"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["dataphin"] = args ? args.dataphin : undefined;
+            resourceInputs["dataphinCount"] = args ? args.dataphinCount : undefined;
+            resourceInputs["logistics"] = args ? args.logistics : undefined;
+            resourceInputs["modifyType"] = args ? args.modifyType : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
+            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
+            resourceInputs["sdCbool"] = args ? args.sdCbool : undefined;
+            resourceInputs["sdc"] = args ? args.sdc : undefined;
+            resourceInputs["sddpVersion"] = args ? args.sddpVersion : undefined;
+            resourceInputs["udCbool"] = args ? args.udCbool : undefined;
+            resourceInputs["udc"] = args ? args.udc : undefined;
+            resourceInputs["authed"] = undefined /*out*/;
+            resourceInputs["instanceNum"] = undefined /*out*/;
+            resourceInputs["odpsSet"] = undefined /*out*/;
+            resourceInputs["ossBucketSet"] = undefined /*out*/;
+            resourceInputs["ossSize"] = undefined /*out*/;
+            resourceInputs["rdsSet"] = undefined /*out*/;
+            resourceInputs["remainDays"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Instance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

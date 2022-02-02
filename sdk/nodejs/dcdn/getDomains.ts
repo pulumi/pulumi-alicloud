@@ -16,9 +16,7 @@ export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:dcdn/getDomains:getDomains", {
         "changeEndTime": args.changeEndTime,
         "changeStartTime": args.changeStartTime,

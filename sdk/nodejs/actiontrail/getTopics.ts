@@ -30,9 +30,7 @@ export function getTopics(args: GetTopicsArgs, opts?: pulumi.InvokeOptions): Pro
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:actiontrail/getTopics:getTopics", {
         "instanceId": args.instanceId,
         "nameRegex": args.nameRegex,

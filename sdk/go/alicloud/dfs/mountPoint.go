@@ -177,7 +177,7 @@ type MountPointInput interface {
 }
 
 func (*MountPoint) ElementType() reflect.Type {
-	return reflect.TypeOf((*MountPoint)(nil))
+	return reflect.TypeOf((**MountPoint)(nil)).Elem()
 }
 
 func (i *MountPoint) ToMountPointOutput() MountPointOutput {
@@ -186,35 +186,6 @@ func (i *MountPoint) ToMountPointOutput() MountPointOutput {
 
 func (i *MountPoint) ToMountPointOutputWithContext(ctx context.Context) MountPointOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MountPointOutput)
-}
-
-func (i *MountPoint) ToMountPointPtrOutput() MountPointPtrOutput {
-	return i.ToMountPointPtrOutputWithContext(context.Background())
-}
-
-func (i *MountPoint) ToMountPointPtrOutputWithContext(ctx context.Context) MountPointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MountPointPtrOutput)
-}
-
-type MountPointPtrInput interface {
-	pulumi.Input
-
-	ToMountPointPtrOutput() MountPointPtrOutput
-	ToMountPointPtrOutputWithContext(ctx context.Context) MountPointPtrOutput
-}
-
-type mountPointPtrType MountPointArgs
-
-func (*mountPointPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MountPoint)(nil))
-}
-
-func (i *mountPointPtrType) ToMountPointPtrOutput() MountPointPtrOutput {
-	return i.ToMountPointPtrOutputWithContext(context.Background())
-}
-
-func (i *mountPointPtrType) ToMountPointPtrOutputWithContext(ctx context.Context) MountPointPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MountPointPtrOutput)
 }
 
 // MountPointArrayInput is an input type that accepts MountPointArray and MountPointArrayOutput values.
@@ -270,7 +241,7 @@ func (i MountPointMap) ToMountPointMapOutputWithContext(ctx context.Context) Mou
 type MountPointOutput struct{ *pulumi.OutputState }
 
 func (MountPointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MountPoint)(nil))
+	return reflect.TypeOf((**MountPoint)(nil)).Elem()
 }
 
 func (o MountPointOutput) ToMountPointOutput() MountPointOutput {
@@ -281,44 +252,10 @@ func (o MountPointOutput) ToMountPointOutputWithContext(ctx context.Context) Mou
 	return o
 }
 
-func (o MountPointOutput) ToMountPointPtrOutput() MountPointPtrOutput {
-	return o.ToMountPointPtrOutputWithContext(context.Background())
-}
-
-func (o MountPointOutput) ToMountPointPtrOutputWithContext(ctx context.Context) MountPointPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MountPoint) *MountPoint {
-		return &v
-	}).(MountPointPtrOutput)
-}
-
-type MountPointPtrOutput struct{ *pulumi.OutputState }
-
-func (MountPointPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MountPoint)(nil))
-}
-
-func (o MountPointPtrOutput) ToMountPointPtrOutput() MountPointPtrOutput {
-	return o
-}
-
-func (o MountPointPtrOutput) ToMountPointPtrOutputWithContext(ctx context.Context) MountPointPtrOutput {
-	return o
-}
-
-func (o MountPointPtrOutput) Elem() MountPointOutput {
-	return o.ApplyT(func(v *MountPoint) MountPoint {
-		if v != nil {
-			return *v
-		}
-		var ret MountPoint
-		return ret
-	}).(MountPointOutput)
-}
-
 type MountPointArrayOutput struct{ *pulumi.OutputState }
 
 func (MountPointArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MountPoint)(nil))
+	return reflect.TypeOf((*[]*MountPoint)(nil)).Elem()
 }
 
 func (o MountPointArrayOutput) ToMountPointArrayOutput() MountPointArrayOutput {
@@ -330,15 +267,15 @@ func (o MountPointArrayOutput) ToMountPointArrayOutputWithContext(ctx context.Co
 }
 
 func (o MountPointArrayOutput) Index(i pulumi.IntInput) MountPointOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MountPoint {
-		return vs[0].([]MountPoint)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MountPoint {
+		return vs[0].([]*MountPoint)[vs[1].(int)]
 	}).(MountPointOutput)
 }
 
 type MountPointMapOutput struct{ *pulumi.OutputState }
 
 func (MountPointMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MountPoint)(nil))
+	return reflect.TypeOf((*map[string]*MountPoint)(nil)).Elem()
 }
 
 func (o MountPointMapOutput) ToMountPointMapOutput() MountPointMapOutput {
@@ -350,18 +287,16 @@ func (o MountPointMapOutput) ToMountPointMapOutputWithContext(ctx context.Contex
 }
 
 func (o MountPointMapOutput) MapIndex(k pulumi.StringInput) MountPointOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MountPoint {
-		return vs[0].(map[string]MountPoint)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MountPoint {
+		return vs[0].(map[string]*MountPoint)[vs[1].(string)]
 	}).(MountPointOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MountPointInput)(nil)).Elem(), &MountPoint{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MountPointPtrInput)(nil)).Elem(), &MountPoint{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MountPointArrayInput)(nil)).Elem(), MountPointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MountPointMapInput)(nil)).Elem(), MountPointMap{})
 	pulumi.RegisterOutputType(MountPointOutput{})
-	pulumi.RegisterOutputType(MountPointPtrOutput{})
 	pulumi.RegisterOutputType(MountPointArrayOutput{})
 	pulumi.RegisterOutputType(MountPointMapOutput{})
 }

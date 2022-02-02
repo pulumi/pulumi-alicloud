@@ -29,9 +29,7 @@ export function getBindings(args: GetBindingsArgs, opts?: pulumi.InvokeOptions):
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:amqp/getBindings:getBindings", {
         "instanceId": args.instanceId,
         "outputFile": args.outputFile,

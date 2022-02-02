@@ -42,9 +42,7 @@ export function getTrafficMirrorFilters(args?: GetTrafficMirrorFiltersArgs, opts
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:vpc/getTrafficMirrorFilters:getTrafficMirrorFilters", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

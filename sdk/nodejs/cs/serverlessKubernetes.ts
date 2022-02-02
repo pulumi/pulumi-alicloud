@@ -160,74 +160,72 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServerlessKubernetesArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServerlessKubernetesArgs | ServerlessKubernetesState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerlessKubernetesState | undefined;
-            inputs["addons"] = state ? state.addons : undefined;
-            inputs["clientCert"] = state ? state.clientCert : undefined;
-            inputs["clientKey"] = state ? state.clientKey : undefined;
-            inputs["clusterCaCert"] = state ? state.clusterCaCert : undefined;
-            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            inputs["endpointPublicAccessEnabled"] = state ? state.endpointPublicAccessEnabled : undefined;
-            inputs["forceUpdate"] = state ? state.forceUpdate : undefined;
-            inputs["kubeConfig"] = state ? state.kubeConfig : undefined;
-            inputs["loadBalancerSpec"] = state ? state.loadBalancerSpec : undefined;
-            inputs["loggingType"] = state ? state.loggingType : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namePrefix"] = state ? state.namePrefix : undefined;
-            inputs["newNatGateway"] = state ? state.newNatGateway : undefined;
-            inputs["privateZone"] = state ? state.privateZone : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["retainResources"] = state ? state.retainResources : undefined;
-            inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            inputs["serviceCidr"] = state ? state.serviceCidr : undefined;
-            inputs["serviceDiscoveryTypes"] = state ? state.serviceDiscoveryTypes : undefined;
-            inputs["slsProjectName"] = state ? state.slsProjectName : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["timeZone"] = state ? state.timeZone : undefined;
-            inputs["version"] = state ? state.version : undefined;
-            inputs["vpcId"] = state ? state.vpcId : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
-            inputs["vswitchIds"] = state ? state.vswitchIds : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["addons"] = state ? state.addons : undefined;
+            resourceInputs["clientCert"] = state ? state.clientCert : undefined;
+            resourceInputs["clientKey"] = state ? state.clientKey : undefined;
+            resourceInputs["clusterCaCert"] = state ? state.clusterCaCert : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["endpointPublicAccessEnabled"] = state ? state.endpointPublicAccessEnabled : undefined;
+            resourceInputs["forceUpdate"] = state ? state.forceUpdate : undefined;
+            resourceInputs["kubeConfig"] = state ? state.kubeConfig : undefined;
+            resourceInputs["loadBalancerSpec"] = state ? state.loadBalancerSpec : undefined;
+            resourceInputs["loggingType"] = state ? state.loggingType : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
+            resourceInputs["newNatGateway"] = state ? state.newNatGateway : undefined;
+            resourceInputs["privateZone"] = state ? state.privateZone : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["retainResources"] = state ? state.retainResources : undefined;
+            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["serviceCidr"] = state ? state.serviceCidr : undefined;
+            resourceInputs["serviceDiscoveryTypes"] = state ? state.serviceDiscoveryTypes : undefined;
+            resourceInputs["slsProjectName"] = state ? state.slsProjectName : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["timeZone"] = state ? state.timeZone : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["vswitchIds"] = state ? state.vswitchIds : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ServerlessKubernetesArgs | undefined;
             if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            inputs["addons"] = args ? args.addons : undefined;
-            inputs["clientCert"] = args ? args.clientCert : undefined;
-            inputs["clientKey"] = args ? args.clientKey : undefined;
-            inputs["clusterCaCert"] = args ? args.clusterCaCert : undefined;
-            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            inputs["endpointPublicAccessEnabled"] = args ? args.endpointPublicAccessEnabled : undefined;
-            inputs["forceUpdate"] = args ? args.forceUpdate : undefined;
-            inputs["kubeConfig"] = args ? args.kubeConfig : undefined;
-            inputs["loadBalancerSpec"] = args ? args.loadBalancerSpec : undefined;
-            inputs["loggingType"] = args ? args.loggingType : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namePrefix"] = args ? args.namePrefix : undefined;
-            inputs["newNatGateway"] = args ? args.newNatGateway : undefined;
-            inputs["privateZone"] = args ? args.privateZone : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["retainResources"] = args ? args.retainResources : undefined;
-            inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            inputs["serviceCidr"] = args ? args.serviceCidr : undefined;
-            inputs["serviceDiscoveryTypes"] = args ? args.serviceDiscoveryTypes : undefined;
-            inputs["slsProjectName"] = args ? args.slsProjectName : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["timeZone"] = args ? args.timeZone : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["vpcId"] = args ? args.vpcId : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["vswitchIds"] = args ? args.vswitchIds : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["addons"] = args ? args.addons : undefined;
+            resourceInputs["clientCert"] = args ? args.clientCert : undefined;
+            resourceInputs["clientKey"] = args ? args.clientKey : undefined;
+            resourceInputs["clusterCaCert"] = args ? args.clusterCaCert : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["endpointPublicAccessEnabled"] = args ? args.endpointPublicAccessEnabled : undefined;
+            resourceInputs["forceUpdate"] = args ? args.forceUpdate : undefined;
+            resourceInputs["kubeConfig"] = args ? args.kubeConfig : undefined;
+            resourceInputs["loadBalancerSpec"] = args ? args.loadBalancerSpec : undefined;
+            resourceInputs["loggingType"] = args ? args.loggingType : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
+            resourceInputs["newNatGateway"] = args ? args.newNatGateway : undefined;
+            resourceInputs["privateZone"] = args ? args.privateZone : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["retainResources"] = args ? args.retainResources : undefined;
+            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["serviceCidr"] = args ? args.serviceCidr : undefined;
+            resourceInputs["serviceDiscoveryTypes"] = args ? args.serviceDiscoveryTypes : undefined;
+            resourceInputs["slsProjectName"] = args ? args.slsProjectName : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["vswitchIds"] = args ? args.vswitchIds : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ServerlessKubernetes.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ServerlessKubernetes.__pulumiType, name, resourceInputs, opts);
     }
 }
 

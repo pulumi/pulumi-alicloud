@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -78,7 +77,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetIpv6GatewaysResult> InvokeAsync(GetIpv6GatewaysArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIpv6GatewaysResult>("alicloud:vpc/getIpv6Gateways:getIpv6Gateways", args ?? new GetIpv6GatewaysArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetIpv6GatewaysResult>("alicloud:vpc/getIpv6Gateways:getIpv6Gateways", args ?? new GetIpv6GatewaysArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vpc Ipv6 Gateways of the current Alibaba Cloud user.
@@ -146,7 +145,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetIpv6GatewaysResult> Invoke(GetIpv6GatewaysInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIpv6GatewaysResult>("alicloud:vpc/getIpv6Gateways:getIpv6Gateways", args ?? new GetIpv6GatewaysInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetIpv6GatewaysResult>("alicloud:vpc/getIpv6Gateways:getIpv6Gateways", args ?? new GetIpv6GatewaysInvokeArgs(), options.WithDefaults());
     }
 
 

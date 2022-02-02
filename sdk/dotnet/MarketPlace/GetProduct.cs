@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.MarketPlace
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.MarketPlace
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProductResult> InvokeAsync(GetProductArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProductResult>("alicloud:marketplace/getProduct:getProduct", args ?? new GetProductArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProductResult>("alicloud:marketplace/getProduct:getProduct", args ?? new GetProductArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Market product item details of Alibaba Cloud.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.MarketPlace
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProductResult> Invoke(GetProductInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProductResult>("alicloud:marketplace/getProduct:getProduct", args ?? new GetProductInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetProductResult>("alicloud:marketplace/getProduct:getProduct", args ?? new GetProductInvokeArgs(), options.WithDefaults());
     }
 
 

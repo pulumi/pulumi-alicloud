@@ -31,9 +31,7 @@ export function getGroupMetricRules(args?: GetGroupMetricRulesArgs, opts?: pulum
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cms/getGroupMetricRules:getGroupMetricRules", {
         "dimensions": args.dimensions,
         "enableState": args.enableState,

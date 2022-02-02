@@ -33,7 +33,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rocketmq.NewClientUser(ctx, "_default", &rocketmq.ClientUserArgs{
+// 		_, err := rocketmq.NewClientUser(ctx, "default", &rocketmq.ClientUserArgs{
 // 			Bandwidth: pulumi.Int(20),
 // 			ClientIp:  pulumi.String("192.1.10.0"),
 // 			Password:  pulumi.String("xxxxxxx"),
@@ -197,7 +197,7 @@ type ClientUserInput interface {
 }
 
 func (*ClientUser) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClientUser)(nil))
+	return reflect.TypeOf((**ClientUser)(nil)).Elem()
 }
 
 func (i *ClientUser) ToClientUserOutput() ClientUserOutput {
@@ -206,35 +206,6 @@ func (i *ClientUser) ToClientUserOutput() ClientUserOutput {
 
 func (i *ClientUser) ToClientUserOutputWithContext(ctx context.Context) ClientUserOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClientUserOutput)
-}
-
-func (i *ClientUser) ToClientUserPtrOutput() ClientUserPtrOutput {
-	return i.ToClientUserPtrOutputWithContext(context.Background())
-}
-
-func (i *ClientUser) ToClientUserPtrOutputWithContext(ctx context.Context) ClientUserPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClientUserPtrOutput)
-}
-
-type ClientUserPtrInput interface {
-	pulumi.Input
-
-	ToClientUserPtrOutput() ClientUserPtrOutput
-	ToClientUserPtrOutputWithContext(ctx context.Context) ClientUserPtrOutput
-}
-
-type clientUserPtrType ClientUserArgs
-
-func (*clientUserPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClientUser)(nil))
-}
-
-func (i *clientUserPtrType) ToClientUserPtrOutput() ClientUserPtrOutput {
-	return i.ToClientUserPtrOutputWithContext(context.Background())
-}
-
-func (i *clientUserPtrType) ToClientUserPtrOutputWithContext(ctx context.Context) ClientUserPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClientUserPtrOutput)
 }
 
 // ClientUserArrayInput is an input type that accepts ClientUserArray and ClientUserArrayOutput values.
@@ -290,7 +261,7 @@ func (i ClientUserMap) ToClientUserMapOutputWithContext(ctx context.Context) Cli
 type ClientUserOutput struct{ *pulumi.OutputState }
 
 func (ClientUserOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClientUser)(nil))
+	return reflect.TypeOf((**ClientUser)(nil)).Elem()
 }
 
 func (o ClientUserOutput) ToClientUserOutput() ClientUserOutput {
@@ -301,44 +272,10 @@ func (o ClientUserOutput) ToClientUserOutputWithContext(ctx context.Context) Cli
 	return o
 }
 
-func (o ClientUserOutput) ToClientUserPtrOutput() ClientUserPtrOutput {
-	return o.ToClientUserPtrOutputWithContext(context.Background())
-}
-
-func (o ClientUserOutput) ToClientUserPtrOutputWithContext(ctx context.Context) ClientUserPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientUser) *ClientUser {
-		return &v
-	}).(ClientUserPtrOutput)
-}
-
-type ClientUserPtrOutput struct{ *pulumi.OutputState }
-
-func (ClientUserPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClientUser)(nil))
-}
-
-func (o ClientUserPtrOutput) ToClientUserPtrOutput() ClientUserPtrOutput {
-	return o
-}
-
-func (o ClientUserPtrOutput) ToClientUserPtrOutputWithContext(ctx context.Context) ClientUserPtrOutput {
-	return o
-}
-
-func (o ClientUserPtrOutput) Elem() ClientUserOutput {
-	return o.ApplyT(func(v *ClientUser) ClientUser {
-		if v != nil {
-			return *v
-		}
-		var ret ClientUser
-		return ret
-	}).(ClientUserOutput)
-}
-
 type ClientUserArrayOutput struct{ *pulumi.OutputState }
 
 func (ClientUserArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ClientUser)(nil))
+	return reflect.TypeOf((*[]*ClientUser)(nil)).Elem()
 }
 
 func (o ClientUserArrayOutput) ToClientUserArrayOutput() ClientUserArrayOutput {
@@ -350,15 +287,15 @@ func (o ClientUserArrayOutput) ToClientUserArrayOutputWithContext(ctx context.Co
 }
 
 func (o ClientUserArrayOutput) Index(i pulumi.IntInput) ClientUserOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClientUser {
-		return vs[0].([]ClientUser)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClientUser {
+		return vs[0].([]*ClientUser)[vs[1].(int)]
 	}).(ClientUserOutput)
 }
 
 type ClientUserMapOutput struct{ *pulumi.OutputState }
 
 func (ClientUserMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ClientUser)(nil))
+	return reflect.TypeOf((*map[string]*ClientUser)(nil)).Elem()
 }
 
 func (o ClientUserMapOutput) ToClientUserMapOutput() ClientUserMapOutput {
@@ -370,18 +307,16 @@ func (o ClientUserMapOutput) ToClientUserMapOutputWithContext(ctx context.Contex
 }
 
 func (o ClientUserMapOutput) MapIndex(k pulumi.StringInput) ClientUserOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClientUser {
-		return vs[0].(map[string]ClientUser)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ClientUser {
+		return vs[0].(map[string]*ClientUser)[vs[1].(string)]
 	}).(ClientUserOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientUserInput)(nil)).Elem(), &ClientUser{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClientUserPtrInput)(nil)).Elem(), &ClientUser{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientUserArrayInput)(nil)).Elem(), ClientUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientUserMapInput)(nil)).Elem(), ClientUserMap{})
 	pulumi.RegisterOutputType(ClientUserOutput{})
-	pulumi.RegisterOutputType(ClientUserPtrOutput{})
 	pulumi.RegisterOutputType(ClientUserArrayOutput{})
 	pulumi.RegisterOutputType(ClientUserMapOutput{})
 }

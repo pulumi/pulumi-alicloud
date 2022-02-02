@@ -92,14 +92,14 @@ export class CustomLine extends pulumi.CustomResource {
      */
     constructor(name: string, args: CustomLineArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CustomLineArgs | CustomLineState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomLineState | undefined;
-            inputs["customLineName"] = state ? state.customLineName : undefined;
-            inputs["domainName"] = state ? state.domainName : undefined;
-            inputs["ipSegmentLists"] = state ? state.ipSegmentLists : undefined;
-            inputs["lang"] = state ? state.lang : undefined;
+            resourceInputs["customLineName"] = state ? state.customLineName : undefined;
+            resourceInputs["domainName"] = state ? state.domainName : undefined;
+            resourceInputs["ipSegmentLists"] = state ? state.ipSegmentLists : undefined;
+            resourceInputs["lang"] = state ? state.lang : undefined;
         } else {
             const args = argsOrState as CustomLineArgs | undefined;
             if ((!args || args.customLineName === undefined) && !opts.urn) {
@@ -111,15 +111,13 @@ export class CustomLine extends pulumi.CustomResource {
             if ((!args || args.ipSegmentLists === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ipSegmentLists'");
             }
-            inputs["customLineName"] = args ? args.customLineName : undefined;
-            inputs["domainName"] = args ? args.domainName : undefined;
-            inputs["ipSegmentLists"] = args ? args.ipSegmentLists : undefined;
-            inputs["lang"] = args ? args.lang : undefined;
+            resourceInputs["customLineName"] = args ? args.customLineName : undefined;
+            resourceInputs["domainName"] = args ? args.domainName : undefined;
+            resourceInputs["ipSegmentLists"] = args ? args.ipSegmentLists : undefined;
+            resourceInputs["lang"] = args ? args.lang : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CustomLine.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CustomLine.__pulumiType, name, resourceInputs, opts);
     }
 }
 

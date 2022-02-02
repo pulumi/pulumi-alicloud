@@ -121,22 +121,22 @@ export class ImageCache extends pulumi.CustomResource {
      */
     constructor(name: string, args: ImageCacheArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ImageCacheArgs | ImageCacheState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageCacheState | undefined;
-            inputs["containerGroupId"] = state ? state.containerGroupId : undefined;
-            inputs["eipInstanceId"] = state ? state.eipInstanceId : undefined;
-            inputs["imageCacheName"] = state ? state.imageCacheName : undefined;
-            inputs["imageCacheSize"] = state ? state.imageCacheSize : undefined;
-            inputs["imageRegistryCredentials"] = state ? state.imageRegistryCredentials : undefined;
-            inputs["images"] = state ? state.images : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["retentionDays"] = state ? state.retentionDays : undefined;
-            inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["containerGroupId"] = state ? state.containerGroupId : undefined;
+            resourceInputs["eipInstanceId"] = state ? state.eipInstanceId : undefined;
+            resourceInputs["imageCacheName"] = state ? state.imageCacheName : undefined;
+            resourceInputs["imageCacheSize"] = state ? state.imageCacheSize : undefined;
+            resourceInputs["imageRegistryCredentials"] = state ? state.imageRegistryCredentials : undefined;
+            resourceInputs["images"] = state ? state.images : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["retentionDays"] = state ? state.retentionDays : undefined;
+            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ImageCacheArgs | undefined;
             if ((!args || args.imageCacheName === undefined) && !opts.urn) {
@@ -151,23 +151,21 @@ export class ImageCache extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            inputs["eipInstanceId"] = args ? args.eipInstanceId : undefined;
-            inputs["imageCacheName"] = args ? args.imageCacheName : undefined;
-            inputs["imageCacheSize"] = args ? args.imageCacheSize : undefined;
-            inputs["imageRegistryCredentials"] = args ? args.imageRegistryCredentials : undefined;
-            inputs["images"] = args ? args.images : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["retentionDays"] = args ? args.retentionDays : undefined;
-            inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["containerGroupId"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["eipInstanceId"] = args ? args.eipInstanceId : undefined;
+            resourceInputs["imageCacheName"] = args ? args.imageCacheName : undefined;
+            resourceInputs["imageCacheSize"] = args ? args.imageCacheSize : undefined;
+            resourceInputs["imageRegistryCredentials"] = args ? args.imageRegistryCredentials : undefined;
+            resourceInputs["images"] = args ? args.images : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
+            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["containerGroupId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ImageCache.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ImageCache.__pulumiType, name, resourceInputs, opts);
     }
 }
 

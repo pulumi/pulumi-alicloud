@@ -32,12 +32,19 @@ import (
 // 		if param := cfg.Get("name"); param != "" {
 // 			name = param
 // 		}
-// 		_, err := rocketmq.NewInstance(ctx, "_default", &rocketmq.InstanceArgs{
+// 		_, err := rocketmq.NewInstance(ctx, "default", &rocketmq.InstanceArgs{
 // 			Remark: pulumi.String("default_ons_instance_remark"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
+// 		instancesDs := rocketmq.GetInstancesOutput(ctx, rocketmq.GetInstancesOutputArgs{
+// 			Ids: pulumi.StringArray{
+// 				_default.ID(),
+// 			},
+// 			NameRegex:  _default.Name,
+// 			OutputFile: pulumi.String("instances.txt"),
+// 		}, nil)
 // 		ctx.Export("firstInstanceId", instancesDs.ApplyT(func(instancesDs rocketmq.GetInstancesResult) (string, error) {
 // 			return instancesDs.Instances[0].InstanceId, nil
 // 		}).(pulumi.StringOutput))

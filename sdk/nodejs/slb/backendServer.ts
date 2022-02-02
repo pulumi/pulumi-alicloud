@@ -143,26 +143,24 @@ export class BackendServer extends pulumi.CustomResource {
      */
     constructor(name: string, args: BackendServerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BackendServerArgs | BackendServerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackendServerState | undefined;
-            inputs["backendServers"] = state ? state.backendServers : undefined;
-            inputs["deleteProtectionValidation"] = state ? state.deleteProtectionValidation : undefined;
-            inputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
+            resourceInputs["backendServers"] = state ? state.backendServers : undefined;
+            resourceInputs["deleteProtectionValidation"] = state ? state.deleteProtectionValidation : undefined;
+            resourceInputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
         } else {
             const args = argsOrState as BackendServerArgs | undefined;
             if ((!args || args.loadBalancerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
-            inputs["backendServers"] = args ? args.backendServers : undefined;
-            inputs["deleteProtectionValidation"] = args ? args.deleteProtectionValidation : undefined;
-            inputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
+            resourceInputs["backendServers"] = args ? args.backendServers : undefined;
+            resourceInputs["deleteProtectionValidation"] = args ? args.deleteProtectionValidation : undefined;
+            resourceInputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(BackendServer.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(BackendServer.__pulumiType, name, resourceInputs, opts);
     }
 }
 

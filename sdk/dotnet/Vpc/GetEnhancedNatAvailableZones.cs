@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
     public static class GetEnhancedNatAvailableZones
     {
         public static Task<GetEnhancedNatAvailableZonesResult> InvokeAsync(GetEnhancedNatAvailableZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEnhancedNatAvailableZonesResult>("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", args ?? new GetEnhancedNatAvailableZonesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEnhancedNatAvailableZonesResult>("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", args ?? new GetEnhancedNatAvailableZonesArgs(), options.WithDefaults());
 
         public static Output<GetEnhancedNatAvailableZonesResult> Invoke(GetEnhancedNatAvailableZonesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEnhancedNatAvailableZonesResult>("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", args ?? new GetEnhancedNatAvailableZonesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetEnhancedNatAvailableZonesResult>("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", args ?? new GetEnhancedNatAvailableZonesInvokeArgs(), options.WithDefaults());
     }
 
 

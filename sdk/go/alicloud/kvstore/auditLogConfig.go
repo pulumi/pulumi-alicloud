@@ -166,7 +166,7 @@ type AuditLogConfigInput interface {
 }
 
 func (*AuditLogConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditLogConfig)(nil))
+	return reflect.TypeOf((**AuditLogConfig)(nil)).Elem()
 }
 
 func (i *AuditLogConfig) ToAuditLogConfigOutput() AuditLogConfigOutput {
@@ -175,35 +175,6 @@ func (i *AuditLogConfig) ToAuditLogConfigOutput() AuditLogConfigOutput {
 
 func (i *AuditLogConfig) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
-}
-
-func (i *AuditLogConfig) ToAuditLogConfigPtrOutput() AuditLogConfigPtrOutput {
-	return i.ToAuditLogConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *AuditLogConfig) ToAuditLogConfigPtrOutputWithContext(ctx context.Context) AuditLogConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigPtrOutput)
-}
-
-type AuditLogConfigPtrInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigPtrOutput() AuditLogConfigPtrOutput
-	ToAuditLogConfigPtrOutputWithContext(ctx context.Context) AuditLogConfigPtrOutput
-}
-
-type auditLogConfigPtrType AuditLogConfigArgs
-
-func (*auditLogConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuditLogConfig)(nil))
-}
-
-func (i *auditLogConfigPtrType) ToAuditLogConfigPtrOutput() AuditLogConfigPtrOutput {
-	return i.ToAuditLogConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *auditLogConfigPtrType) ToAuditLogConfigPtrOutputWithContext(ctx context.Context) AuditLogConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigPtrOutput)
 }
 
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
@@ -259,7 +230,7 @@ func (i AuditLogConfigMap) ToAuditLogConfigMapOutputWithContext(ctx context.Cont
 type AuditLogConfigOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditLogConfig)(nil))
+	return reflect.TypeOf((**AuditLogConfig)(nil)).Elem()
 }
 
 func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
@@ -270,44 +241,10 @@ func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o AuditLogConfigOutput) ToAuditLogConfigPtrOutput() AuditLogConfigPtrOutput {
-	return o.ToAuditLogConfigPtrOutputWithContext(context.Background())
-}
-
-func (o AuditLogConfigOutput) ToAuditLogConfigPtrOutputWithContext(ctx context.Context) AuditLogConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuditLogConfig) *AuditLogConfig {
-		return &v
-	}).(AuditLogConfigPtrOutput)
-}
-
-type AuditLogConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (AuditLogConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuditLogConfig)(nil))
-}
-
-func (o AuditLogConfigPtrOutput) ToAuditLogConfigPtrOutput() AuditLogConfigPtrOutput {
-	return o
-}
-
-func (o AuditLogConfigPtrOutput) ToAuditLogConfigPtrOutputWithContext(ctx context.Context) AuditLogConfigPtrOutput {
-	return o
-}
-
-func (o AuditLogConfigPtrOutput) Elem() AuditLogConfigOutput {
-	return o.ApplyT(func(v *AuditLogConfig) AuditLogConfig {
-		if v != nil {
-			return *v
-		}
-		var ret AuditLogConfig
-		return ret
-	}).(AuditLogConfigOutput)
-}
-
 type AuditLogConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditLogConfig)(nil))
+	return reflect.TypeOf((*[]*AuditLogConfig)(nil)).Elem()
 }
 
 func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutput() AuditLogConfigArrayOutput {
@@ -319,15 +256,15 @@ func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx co
 }
 
 func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditLogConfig {
-		return vs[0].([]AuditLogConfig)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuditLogConfig {
+		return vs[0].([]*AuditLogConfig)[vs[1].(int)]
 	}).(AuditLogConfigOutput)
 }
 
 type AuditLogConfigMapOutput struct{ *pulumi.OutputState }
 
 func (AuditLogConfigMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AuditLogConfig)(nil))
+	return reflect.TypeOf((*map[string]*AuditLogConfig)(nil)).Elem()
 }
 
 func (o AuditLogConfigMapOutput) ToAuditLogConfigMapOutput() AuditLogConfigMapOutput {
@@ -339,18 +276,16 @@ func (o AuditLogConfigMapOutput) ToAuditLogConfigMapOutputWithContext(ctx contex
 }
 
 func (o AuditLogConfigMapOutput) MapIndex(k pulumi.StringInput) AuditLogConfigOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AuditLogConfig {
-		return vs[0].(map[string]AuditLogConfig)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AuditLogConfig {
+		return vs[0].(map[string]*AuditLogConfig)[vs[1].(string)]
 	}).(AuditLogConfigOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), &AuditLogConfig{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigPtrInput)(nil)).Elem(), &AuditLogConfig{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigMapInput)(nil)).Elem(), AuditLogConfigMap{})
 	pulumi.RegisterOutputType(AuditLogConfigOutput{})
-	pulumi.RegisterOutputType(AuditLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigMapOutput{})
 }

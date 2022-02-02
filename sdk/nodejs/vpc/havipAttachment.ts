@@ -59,12 +59,12 @@ export class HAVipAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: HAVipAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HAVipAttachmentArgs | HAVipAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HAVipAttachmentState | undefined;
-            inputs["havipId"] = state ? state.havipId : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["havipId"] = state ? state.havipId : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
         } else {
             const args = argsOrState as HAVipAttachmentArgs | undefined;
             if ((!args || args.havipId === undefined) && !opts.urn) {
@@ -73,13 +73,11 @@ export class HAVipAttachment extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["havipId"] = args ? args.havipId : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["havipId"] = args ? args.havipId : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(HAVipAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(HAVipAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

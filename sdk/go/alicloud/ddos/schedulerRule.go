@@ -256,7 +256,7 @@ type SchedulerRuleInput interface {
 }
 
 func (*SchedulerRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchedulerRule)(nil))
+	return reflect.TypeOf((**SchedulerRule)(nil)).Elem()
 }
 
 func (i *SchedulerRule) ToSchedulerRuleOutput() SchedulerRuleOutput {
@@ -265,35 +265,6 @@ func (i *SchedulerRule) ToSchedulerRuleOutput() SchedulerRuleOutput {
 
 func (i *SchedulerRule) ToSchedulerRuleOutputWithContext(ctx context.Context) SchedulerRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulerRuleOutput)
-}
-
-func (i *SchedulerRule) ToSchedulerRulePtrOutput() SchedulerRulePtrOutput {
-	return i.ToSchedulerRulePtrOutputWithContext(context.Background())
-}
-
-func (i *SchedulerRule) ToSchedulerRulePtrOutputWithContext(ctx context.Context) SchedulerRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchedulerRulePtrOutput)
-}
-
-type SchedulerRulePtrInput interface {
-	pulumi.Input
-
-	ToSchedulerRulePtrOutput() SchedulerRulePtrOutput
-	ToSchedulerRulePtrOutputWithContext(ctx context.Context) SchedulerRulePtrOutput
-}
-
-type schedulerRulePtrType SchedulerRuleArgs
-
-func (*schedulerRulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SchedulerRule)(nil))
-}
-
-func (i *schedulerRulePtrType) ToSchedulerRulePtrOutput() SchedulerRulePtrOutput {
-	return i.ToSchedulerRulePtrOutputWithContext(context.Background())
-}
-
-func (i *schedulerRulePtrType) ToSchedulerRulePtrOutputWithContext(ctx context.Context) SchedulerRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchedulerRulePtrOutput)
 }
 
 // SchedulerRuleArrayInput is an input type that accepts SchedulerRuleArray and SchedulerRuleArrayOutput values.
@@ -349,7 +320,7 @@ func (i SchedulerRuleMap) ToSchedulerRuleMapOutputWithContext(ctx context.Contex
 type SchedulerRuleOutput struct{ *pulumi.OutputState }
 
 func (SchedulerRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchedulerRule)(nil))
+	return reflect.TypeOf((**SchedulerRule)(nil)).Elem()
 }
 
 func (o SchedulerRuleOutput) ToSchedulerRuleOutput() SchedulerRuleOutput {
@@ -360,44 +331,10 @@ func (o SchedulerRuleOutput) ToSchedulerRuleOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o SchedulerRuleOutput) ToSchedulerRulePtrOutput() SchedulerRulePtrOutput {
-	return o.ToSchedulerRulePtrOutputWithContext(context.Background())
-}
-
-func (o SchedulerRuleOutput) ToSchedulerRulePtrOutputWithContext(ctx context.Context) SchedulerRulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchedulerRule) *SchedulerRule {
-		return &v
-	}).(SchedulerRulePtrOutput)
-}
-
-type SchedulerRulePtrOutput struct{ *pulumi.OutputState }
-
-func (SchedulerRulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SchedulerRule)(nil))
-}
-
-func (o SchedulerRulePtrOutput) ToSchedulerRulePtrOutput() SchedulerRulePtrOutput {
-	return o
-}
-
-func (o SchedulerRulePtrOutput) ToSchedulerRulePtrOutputWithContext(ctx context.Context) SchedulerRulePtrOutput {
-	return o
-}
-
-func (o SchedulerRulePtrOutput) Elem() SchedulerRuleOutput {
-	return o.ApplyT(func(v *SchedulerRule) SchedulerRule {
-		if v != nil {
-			return *v
-		}
-		var ret SchedulerRule
-		return ret
-	}).(SchedulerRuleOutput)
-}
-
 type SchedulerRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (SchedulerRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SchedulerRule)(nil))
+	return reflect.TypeOf((*[]*SchedulerRule)(nil)).Elem()
 }
 
 func (o SchedulerRuleArrayOutput) ToSchedulerRuleArrayOutput() SchedulerRuleArrayOutput {
@@ -409,15 +346,15 @@ func (o SchedulerRuleArrayOutput) ToSchedulerRuleArrayOutputWithContext(ctx cont
 }
 
 func (o SchedulerRuleArrayOutput) Index(i pulumi.IntInput) SchedulerRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SchedulerRule {
-		return vs[0].([]SchedulerRule)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SchedulerRule {
+		return vs[0].([]*SchedulerRule)[vs[1].(int)]
 	}).(SchedulerRuleOutput)
 }
 
 type SchedulerRuleMapOutput struct{ *pulumi.OutputState }
 
 func (SchedulerRuleMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SchedulerRule)(nil))
+	return reflect.TypeOf((*map[string]*SchedulerRule)(nil)).Elem()
 }
 
 func (o SchedulerRuleMapOutput) ToSchedulerRuleMapOutput() SchedulerRuleMapOutput {
@@ -429,18 +366,16 @@ func (o SchedulerRuleMapOutput) ToSchedulerRuleMapOutputWithContext(ctx context.
 }
 
 func (o SchedulerRuleMapOutput) MapIndex(k pulumi.StringInput) SchedulerRuleOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SchedulerRule {
-		return vs[0].(map[string]SchedulerRule)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SchedulerRule {
+		return vs[0].(map[string]*SchedulerRule)[vs[1].(string)]
 	}).(SchedulerRuleOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerRuleInput)(nil)).Elem(), &SchedulerRule{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerRulePtrInput)(nil)).Elem(), &SchedulerRule{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerRuleArrayInput)(nil)).Elem(), SchedulerRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerRuleMapInput)(nil)).Elem(), SchedulerRuleMap{})
 	pulumi.RegisterOutputType(SchedulerRuleOutput{})
-	pulumi.RegisterOutputType(SchedulerRulePtrOutput{})
 	pulumi.RegisterOutputType(SchedulerRuleArrayOutput{})
 	pulumi.RegisterOutputType(SchedulerRuleMapOutput{})
 }

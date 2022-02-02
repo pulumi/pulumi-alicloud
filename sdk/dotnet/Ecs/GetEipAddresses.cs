@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEipAddressesResult> InvokeAsync(GetEipAddressesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEipAddressesResult>("alicloud:ecs/getEipAddresses:getEipAddresses", args ?? new GetEipAddressesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEipAddressesResult>("alicloud:ecs/getEipAddresses:getEipAddresses", args ?? new GetEipAddressesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Eip Addresses of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEipAddressesResult> Invoke(GetEipAddressesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEipAddressesResult>("alicloud:ecs/getEipAddresses:getEipAddresses", args ?? new GetEipAddressesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetEipAddressesResult>("alicloud:ecs/getEipAddresses:getEipAddresses", args ?? new GetEipAddressesInvokeArgs(), options.WithDefaults());
     }
 
 

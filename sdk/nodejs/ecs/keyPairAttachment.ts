@@ -57,28 +57,26 @@ export class KeyPairAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: KeyPairAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KeyPairAttachmentArgs | KeyPairAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeyPairAttachmentState | undefined;
-            inputs["force"] = state ? state.force : undefined;
-            inputs["instanceIds"] = state ? state.instanceIds : undefined;
-            inputs["keyName"] = state ? state.keyName : undefined;
-            inputs["keyPairName"] = state ? state.keyPairName : undefined;
+            resourceInputs["force"] = state ? state.force : undefined;
+            resourceInputs["instanceIds"] = state ? state.instanceIds : undefined;
+            resourceInputs["keyName"] = state ? state.keyName : undefined;
+            resourceInputs["keyPairName"] = state ? state.keyPairName : undefined;
         } else {
             const args = argsOrState as KeyPairAttachmentArgs | undefined;
             if ((!args || args.instanceIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceIds'");
             }
-            inputs["force"] = args ? args.force : undefined;
-            inputs["instanceIds"] = args ? args.instanceIds : undefined;
-            inputs["keyName"] = args ? args.keyName : undefined;
-            inputs["keyPairName"] = args ? args.keyPairName : undefined;
+            resourceInputs["force"] = args ? args.force : undefined;
+            resourceInputs["instanceIds"] = args ? args.instanceIds : undefined;
+            resourceInputs["keyName"] = args ? args.keyName : undefined;
+            resourceInputs["keyPairName"] = args ? args.keyPairName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(KeyPairAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(KeyPairAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("alicloud:index/getAccount:getAccount", InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("alicloud:index/getAccount:getAccount", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

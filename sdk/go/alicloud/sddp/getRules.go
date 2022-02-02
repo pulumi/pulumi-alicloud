@@ -38,6 +38,11 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		defaultRules := sddp.GetRulesOutput(ctx, sddp.GetRulesOutputArgs{
+// 			Ids: pulumi.StringArray{
+// 				defaultRule.ID(),
+// 			},
+// 		}, nil)
 // 		ctx.Export("sddpRuleId", defaultRules.ApplyT(func(defaultRules sddp.GetRulesResult) (string, error) {
 // 			return defaultRules.Id, nil
 // 		}).(pulumi.StringOutput))

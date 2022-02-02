@@ -50,18 +50,18 @@ export class BastionHostInstance extends pulumi.CustomResource {
      */
     constructor(name: string, args: BastionHostInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BastionHostInstanceArgs | BastionHostInstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BastionHostInstanceState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["enablePublicAccess"] = state ? state.enablePublicAccess : undefined;
-            inputs["licenseCode"] = state ? state.licenseCode : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enablePublicAccess"] = state ? state.enablePublicAccess : undefined;
+            resourceInputs["licenseCode"] = state ? state.licenseCode : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as BastionHostInstanceArgs | undefined;
             if ((!args || args.description === undefined) && !opts.urn) {
@@ -76,19 +76,17 @@ export class BastionHostInstance extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enablePublicAccess"] = args ? args.enablePublicAccess : undefined;
-            inputs["licenseCode"] = args ? args.licenseCode : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enablePublicAccess"] = args ? args.enablePublicAccess : undefined;
+            resourceInputs["licenseCode"] = args ? args.licenseCode : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(BastionHostInstance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(BastionHostInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -31,7 +31,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vpc.NewNetwork(ctx, "_default", &vpc.NetworkArgs{
+// 		_, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 // 			VpcName:    pulumi.String("example_value"),
 // 			EnableIpv6: pulumi.Bool(true),
 // 		})
@@ -168,7 +168,7 @@ type Ipv6GatewayInput interface {
 }
 
 func (*Ipv6Gateway) ElementType() reflect.Type {
-	return reflect.TypeOf((*Ipv6Gateway)(nil))
+	return reflect.TypeOf((**Ipv6Gateway)(nil)).Elem()
 }
 
 func (i *Ipv6Gateway) ToIpv6GatewayOutput() Ipv6GatewayOutput {
@@ -177,35 +177,6 @@ func (i *Ipv6Gateway) ToIpv6GatewayOutput() Ipv6GatewayOutput {
 
 func (i *Ipv6Gateway) ToIpv6GatewayOutputWithContext(ctx context.Context) Ipv6GatewayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(Ipv6GatewayOutput)
-}
-
-func (i *Ipv6Gateway) ToIpv6GatewayPtrOutput() Ipv6GatewayPtrOutput {
-	return i.ToIpv6GatewayPtrOutputWithContext(context.Background())
-}
-
-func (i *Ipv6Gateway) ToIpv6GatewayPtrOutputWithContext(ctx context.Context) Ipv6GatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Ipv6GatewayPtrOutput)
-}
-
-type Ipv6GatewayPtrInput interface {
-	pulumi.Input
-
-	ToIpv6GatewayPtrOutput() Ipv6GatewayPtrOutput
-	ToIpv6GatewayPtrOutputWithContext(ctx context.Context) Ipv6GatewayPtrOutput
-}
-
-type ipv6GatewayPtrType Ipv6GatewayArgs
-
-func (*ipv6GatewayPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Ipv6Gateway)(nil))
-}
-
-func (i *ipv6GatewayPtrType) ToIpv6GatewayPtrOutput() Ipv6GatewayPtrOutput {
-	return i.ToIpv6GatewayPtrOutputWithContext(context.Background())
-}
-
-func (i *ipv6GatewayPtrType) ToIpv6GatewayPtrOutputWithContext(ctx context.Context) Ipv6GatewayPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Ipv6GatewayPtrOutput)
 }
 
 // Ipv6GatewayArrayInput is an input type that accepts Ipv6GatewayArray and Ipv6GatewayArrayOutput values.
@@ -261,7 +232,7 @@ func (i Ipv6GatewayMap) ToIpv6GatewayMapOutputWithContext(ctx context.Context) I
 type Ipv6GatewayOutput struct{ *pulumi.OutputState }
 
 func (Ipv6GatewayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Ipv6Gateway)(nil))
+	return reflect.TypeOf((**Ipv6Gateway)(nil)).Elem()
 }
 
 func (o Ipv6GatewayOutput) ToIpv6GatewayOutput() Ipv6GatewayOutput {
@@ -272,44 +243,10 @@ func (o Ipv6GatewayOutput) ToIpv6GatewayOutputWithContext(ctx context.Context) I
 	return o
 }
 
-func (o Ipv6GatewayOutput) ToIpv6GatewayPtrOutput() Ipv6GatewayPtrOutput {
-	return o.ToIpv6GatewayPtrOutputWithContext(context.Background())
-}
-
-func (o Ipv6GatewayOutput) ToIpv6GatewayPtrOutputWithContext(ctx context.Context) Ipv6GatewayPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Ipv6Gateway) *Ipv6Gateway {
-		return &v
-	}).(Ipv6GatewayPtrOutput)
-}
-
-type Ipv6GatewayPtrOutput struct{ *pulumi.OutputState }
-
-func (Ipv6GatewayPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Ipv6Gateway)(nil))
-}
-
-func (o Ipv6GatewayPtrOutput) ToIpv6GatewayPtrOutput() Ipv6GatewayPtrOutput {
-	return o
-}
-
-func (o Ipv6GatewayPtrOutput) ToIpv6GatewayPtrOutputWithContext(ctx context.Context) Ipv6GatewayPtrOutput {
-	return o
-}
-
-func (o Ipv6GatewayPtrOutput) Elem() Ipv6GatewayOutput {
-	return o.ApplyT(func(v *Ipv6Gateway) Ipv6Gateway {
-		if v != nil {
-			return *v
-		}
-		var ret Ipv6Gateway
-		return ret
-	}).(Ipv6GatewayOutput)
-}
-
 type Ipv6GatewayArrayOutput struct{ *pulumi.OutputState }
 
 func (Ipv6GatewayArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Ipv6Gateway)(nil))
+	return reflect.TypeOf((*[]*Ipv6Gateway)(nil)).Elem()
 }
 
 func (o Ipv6GatewayArrayOutput) ToIpv6GatewayArrayOutput() Ipv6GatewayArrayOutput {
@@ -321,15 +258,15 @@ func (o Ipv6GatewayArrayOutput) ToIpv6GatewayArrayOutputWithContext(ctx context.
 }
 
 func (o Ipv6GatewayArrayOutput) Index(i pulumi.IntInput) Ipv6GatewayOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Ipv6Gateway {
-		return vs[0].([]Ipv6Gateway)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Ipv6Gateway {
+		return vs[0].([]*Ipv6Gateway)[vs[1].(int)]
 	}).(Ipv6GatewayOutput)
 }
 
 type Ipv6GatewayMapOutput struct{ *pulumi.OutputState }
 
 func (Ipv6GatewayMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Ipv6Gateway)(nil))
+	return reflect.TypeOf((*map[string]*Ipv6Gateway)(nil)).Elem()
 }
 
 func (o Ipv6GatewayMapOutput) ToIpv6GatewayMapOutput() Ipv6GatewayMapOutput {
@@ -341,18 +278,16 @@ func (o Ipv6GatewayMapOutput) ToIpv6GatewayMapOutputWithContext(ctx context.Cont
 }
 
 func (o Ipv6GatewayMapOutput) MapIndex(k pulumi.StringInput) Ipv6GatewayOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Ipv6Gateway {
-		return vs[0].(map[string]Ipv6Gateway)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Ipv6Gateway {
+		return vs[0].(map[string]*Ipv6Gateway)[vs[1].(string)]
 	}).(Ipv6GatewayOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*Ipv6GatewayInput)(nil)).Elem(), &Ipv6Gateway{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Ipv6GatewayPtrInput)(nil)).Elem(), &Ipv6Gateway{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Ipv6GatewayArrayInput)(nil)).Elem(), Ipv6GatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Ipv6GatewayMapInput)(nil)).Elem(), Ipv6GatewayMap{})
 	pulumi.RegisterOutputType(Ipv6GatewayOutput{})
-	pulumi.RegisterOutputType(Ipv6GatewayPtrOutput{})
 	pulumi.RegisterOutputType(Ipv6GatewayArrayOutput{})
 	pulumi.RegisterOutputType(Ipv6GatewayMapOutput{})
 }

@@ -113,24 +113,24 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     constructor(name: string, args: LoadBalancerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LoadBalancerArgs | LoadBalancerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerState | undefined;
-            inputs["accessLogConfig"] = state ? state.accessLogConfig : undefined;
-            inputs["addressAllocatedMode"] = state ? state.addressAllocatedMode : undefined;
-            inputs["addressType"] = state ? state.addressType : undefined;
-            inputs["deletionProtectionEnabled"] = state ? state.deletionProtectionEnabled : undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["loadBalancerBillingConfig"] = state ? state.loadBalancerBillingConfig : undefined;
-            inputs["loadBalancerEdition"] = state ? state.loadBalancerEdition : undefined;
-            inputs["loadBalancerName"] = state ? state.loadBalancerName : undefined;
-            inputs["modificationProtectionConfig"] = state ? state.modificationProtectionConfig : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["vpcId"] = state ? state.vpcId : undefined;
-            inputs["zoneMappings"] = state ? state.zoneMappings : undefined;
+            resourceInputs["accessLogConfig"] = state ? state.accessLogConfig : undefined;
+            resourceInputs["addressAllocatedMode"] = state ? state.addressAllocatedMode : undefined;
+            resourceInputs["addressType"] = state ? state.addressType : undefined;
+            resourceInputs["deletionProtectionEnabled"] = state ? state.deletionProtectionEnabled : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["loadBalancerBillingConfig"] = state ? state.loadBalancerBillingConfig : undefined;
+            resourceInputs["loadBalancerEdition"] = state ? state.loadBalancerEdition : undefined;
+            resourceInputs["loadBalancerName"] = state ? state.loadBalancerName : undefined;
+            resourceInputs["modificationProtectionConfig"] = state ? state.modificationProtectionConfig : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["zoneMappings"] = state ? state.zoneMappings : undefined;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
             if ((!args || args.addressType === undefined) && !opts.urn) {
@@ -151,25 +151,23 @@ export class LoadBalancer extends pulumi.CustomResource {
             if ((!args || args.zoneMappings === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneMappings'");
             }
-            inputs["accessLogConfig"] = args ? args.accessLogConfig : undefined;
-            inputs["addressAllocatedMode"] = args ? args.addressAllocatedMode : undefined;
-            inputs["addressType"] = args ? args.addressType : undefined;
-            inputs["deletionProtectionEnabled"] = args ? args.deletionProtectionEnabled : undefined;
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["loadBalancerBillingConfig"] = args ? args.loadBalancerBillingConfig : undefined;
-            inputs["loadBalancerEdition"] = args ? args.loadBalancerEdition : undefined;
-            inputs["loadBalancerName"] = args ? args.loadBalancerName : undefined;
-            inputs["modificationProtectionConfig"] = args ? args.modificationProtectionConfig : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["vpcId"] = args ? args.vpcId : undefined;
-            inputs["zoneMappings"] = args ? args.zoneMappings : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["accessLogConfig"] = args ? args.accessLogConfig : undefined;
+            resourceInputs["addressAllocatedMode"] = args ? args.addressAllocatedMode : undefined;
+            resourceInputs["addressType"] = args ? args.addressType : undefined;
+            resourceInputs["deletionProtectionEnabled"] = args ? args.deletionProtectionEnabled : undefined;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["loadBalancerBillingConfig"] = args ? args.loadBalancerBillingConfig : undefined;
+            resourceInputs["loadBalancerEdition"] = args ? args.loadBalancerEdition : undefined;
+            resourceInputs["loadBalancerName"] = args ? args.loadBalancerName : undefined;
+            resourceInputs["modificationProtectionConfig"] = args ? args.modificationProtectionConfig : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["zoneMappings"] = args ? args.zoneMappings : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(LoadBalancer.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(LoadBalancer.__pulumiType, name, resourceInputs, opts);
     }
 }
 

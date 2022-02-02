@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.RocketMQ
 {
@@ -44,12 +43,12 @@ namespace Pulumi.AliCloud.RocketMQ
         ///             MessageType = 0,
         ///             Remark = "dafault_ons_topic_remark",
         ///         });
-        ///         var topicsDs = defaultTopic.InstanceId.Apply(instanceId =&gt; AliCloud.RocketMQ.GetTopics.InvokeAsync(new AliCloud.RocketMQ.GetTopicsArgs
+        ///         var topicsDs = AliCloud.RocketMQ.GetTopics.Invoke(new AliCloud.RocketMQ.GetTopicsInvokeArgs
         ///         {
-        ///             InstanceId = instanceId,
+        ///             InstanceId = defaultTopic.InstanceId,
         ///             NameRegex = topic,
         ///             OutputFile = "topics.txt",
-        ///         }));
+        ///         });
         ///         this.FirstTopicName = topicsDs.Apply(topicsDs =&gt; topicsDs.Topics?[0]?.TopicName);
         ///     }
         /// 
@@ -61,7 +60,7 @@ namespace Pulumi.AliCloud.RocketMQ
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTopicsResult> InvokeAsync(GetTopicsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicsResult>("alicloud:rocketmq/getTopics:getTopics", args ?? new GetTopicsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicsResult>("alicloud:rocketmq/getTopics:getTopics", args ?? new GetTopicsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
@@ -95,12 +94,12 @@ namespace Pulumi.AliCloud.RocketMQ
         ///             MessageType = 0,
         ///             Remark = "dafault_ons_topic_remark",
         ///         });
-        ///         var topicsDs = defaultTopic.InstanceId.Apply(instanceId =&gt; AliCloud.RocketMQ.GetTopics.InvokeAsync(new AliCloud.RocketMQ.GetTopicsArgs
+        ///         var topicsDs = AliCloud.RocketMQ.GetTopics.Invoke(new AliCloud.RocketMQ.GetTopicsInvokeArgs
         ///         {
-        ///             InstanceId = instanceId,
+        ///             InstanceId = defaultTopic.InstanceId,
         ///             NameRegex = topic,
         ///             OutputFile = "topics.txt",
-        ///         }));
+        ///         });
         ///         this.FirstTopicName = topicsDs.Apply(topicsDs =&gt; topicsDs.Topics?[0]?.TopicName);
         ///     }
         /// 
@@ -112,7 +111,7 @@ namespace Pulumi.AliCloud.RocketMQ
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTopicsResult> Invoke(GetTopicsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTopicsResult>("alicloud:rocketmq/getTopics:getTopics", args ?? new GetTopicsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTopicsResult>("alicloud:rocketmq/getTopics:getTopics", args ?? new GetTopicsInvokeArgs(), options.WithDefaults());
     }
 
 

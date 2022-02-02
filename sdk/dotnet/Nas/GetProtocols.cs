@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Nas
 {
@@ -46,7 +45,7 @@ namespace Pulumi.AliCloud.Nas
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProtocolsResult> InvokeAsync(GetProtocolsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProtocolsResult>("alicloud:nas/getProtocols:getProtocols", args ?? new GetProtocolsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProtocolsResult>("alicloud:nas/getProtocols:getProtocols", args ?? new GetProtocolsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provide  a data source to retrieve the type of protocol used to create NAS file system.
@@ -82,7 +81,7 @@ namespace Pulumi.AliCloud.Nas
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProtocolsResult> Invoke(GetProtocolsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProtocolsResult>("alicloud:nas/getProtocols:getProtocols", args ?? new GetProtocolsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetProtocolsResult>("alicloud:nas/getProtocols:getProtocols", args ?? new GetProtocolsInvokeArgs(), options.WithDefaults());
     }
 
 

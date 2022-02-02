@@ -144,7 +144,7 @@ type ConsumerChannelInput interface {
 }
 
 func (*ConsumerChannel) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsumerChannel)(nil))
+	return reflect.TypeOf((**ConsumerChannel)(nil)).Elem()
 }
 
 func (i *ConsumerChannel) ToConsumerChannelOutput() ConsumerChannelOutput {
@@ -153,35 +153,6 @@ func (i *ConsumerChannel) ToConsumerChannelOutput() ConsumerChannelOutput {
 
 func (i *ConsumerChannel) ToConsumerChannelOutputWithContext(ctx context.Context) ConsumerChannelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumerChannelOutput)
-}
-
-func (i *ConsumerChannel) ToConsumerChannelPtrOutput() ConsumerChannelPtrOutput {
-	return i.ToConsumerChannelPtrOutputWithContext(context.Background())
-}
-
-func (i *ConsumerChannel) ToConsumerChannelPtrOutputWithContext(ctx context.Context) ConsumerChannelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConsumerChannelPtrOutput)
-}
-
-type ConsumerChannelPtrInput interface {
-	pulumi.Input
-
-	ToConsumerChannelPtrOutput() ConsumerChannelPtrOutput
-	ToConsumerChannelPtrOutputWithContext(ctx context.Context) ConsumerChannelPtrOutput
-}
-
-type consumerChannelPtrType ConsumerChannelArgs
-
-func (*consumerChannelPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConsumerChannel)(nil))
-}
-
-func (i *consumerChannelPtrType) ToConsumerChannelPtrOutput() ConsumerChannelPtrOutput {
-	return i.ToConsumerChannelPtrOutputWithContext(context.Background())
-}
-
-func (i *consumerChannelPtrType) ToConsumerChannelPtrOutputWithContext(ctx context.Context) ConsumerChannelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConsumerChannelPtrOutput)
 }
 
 // ConsumerChannelArrayInput is an input type that accepts ConsumerChannelArray and ConsumerChannelArrayOutput values.
@@ -237,7 +208,7 @@ func (i ConsumerChannelMap) ToConsumerChannelMapOutputWithContext(ctx context.Co
 type ConsumerChannelOutput struct{ *pulumi.OutputState }
 
 func (ConsumerChannelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsumerChannel)(nil))
+	return reflect.TypeOf((**ConsumerChannel)(nil)).Elem()
 }
 
 func (o ConsumerChannelOutput) ToConsumerChannelOutput() ConsumerChannelOutput {
@@ -248,44 +219,10 @@ func (o ConsumerChannelOutput) ToConsumerChannelOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o ConsumerChannelOutput) ToConsumerChannelPtrOutput() ConsumerChannelPtrOutput {
-	return o.ToConsumerChannelPtrOutputWithContext(context.Background())
-}
-
-func (o ConsumerChannelOutput) ToConsumerChannelPtrOutputWithContext(ctx context.Context) ConsumerChannelPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsumerChannel) *ConsumerChannel {
-		return &v
-	}).(ConsumerChannelPtrOutput)
-}
-
-type ConsumerChannelPtrOutput struct{ *pulumi.OutputState }
-
-func (ConsumerChannelPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConsumerChannel)(nil))
-}
-
-func (o ConsumerChannelPtrOutput) ToConsumerChannelPtrOutput() ConsumerChannelPtrOutput {
-	return o
-}
-
-func (o ConsumerChannelPtrOutput) ToConsumerChannelPtrOutputWithContext(ctx context.Context) ConsumerChannelPtrOutput {
-	return o
-}
-
-func (o ConsumerChannelPtrOutput) Elem() ConsumerChannelOutput {
-	return o.ApplyT(func(v *ConsumerChannel) ConsumerChannel {
-		if v != nil {
-			return *v
-		}
-		var ret ConsumerChannel
-		return ret
-	}).(ConsumerChannelOutput)
-}
-
 type ConsumerChannelArrayOutput struct{ *pulumi.OutputState }
 
 func (ConsumerChannelArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConsumerChannel)(nil))
+	return reflect.TypeOf((*[]*ConsumerChannel)(nil)).Elem()
 }
 
 func (o ConsumerChannelArrayOutput) ToConsumerChannelArrayOutput() ConsumerChannelArrayOutput {
@@ -297,15 +234,15 @@ func (o ConsumerChannelArrayOutput) ToConsumerChannelArrayOutputWithContext(ctx 
 }
 
 func (o ConsumerChannelArrayOutput) Index(i pulumi.IntInput) ConsumerChannelOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConsumerChannel {
-		return vs[0].([]ConsumerChannel)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConsumerChannel {
+		return vs[0].([]*ConsumerChannel)[vs[1].(int)]
 	}).(ConsumerChannelOutput)
 }
 
 type ConsumerChannelMapOutput struct{ *pulumi.OutputState }
 
 func (ConsumerChannelMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ConsumerChannel)(nil))
+	return reflect.TypeOf((*map[string]*ConsumerChannel)(nil)).Elem()
 }
 
 func (o ConsumerChannelMapOutput) ToConsumerChannelMapOutput() ConsumerChannelMapOutput {
@@ -317,18 +254,16 @@ func (o ConsumerChannelMapOutput) ToConsumerChannelMapOutputWithContext(ctx cont
 }
 
 func (o ConsumerChannelMapOutput) MapIndex(k pulumi.StringInput) ConsumerChannelOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ConsumerChannel {
-		return vs[0].(map[string]ConsumerChannel)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ConsumerChannel {
+		return vs[0].(map[string]*ConsumerChannel)[vs[1].(string)]
 	}).(ConsumerChannelOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerChannelInput)(nil)).Elem(), &ConsumerChannel{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerChannelPtrInput)(nil)).Elem(), &ConsumerChannel{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerChannelArrayInput)(nil)).Elem(), ConsumerChannelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerChannelMapInput)(nil)).Elem(), ConsumerChannelMap{})
 	pulumi.RegisterOutputType(ConsumerChannelOutput{})
-	pulumi.RegisterOutputType(ConsumerChannelPtrOutput{})
 	pulumi.RegisterOutputType(ConsumerChannelArrayOutput{})
 	pulumi.RegisterOutputType(ConsumerChannelMapOutput{})
 }

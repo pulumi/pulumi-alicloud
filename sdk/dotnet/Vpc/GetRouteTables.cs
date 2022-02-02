@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -42,13 +41,13 @@ namespace Pulumi.AliCloud.Vpc
         ///             RouteTableName = name,
         ///             VpcId = fooNetwork.Id,
         ///         });
-        ///         var fooRouteTables = fooRouteTable.Id.Apply(id =&gt; AliCloud.Vpc.GetRouteTables.InvokeAsync(new AliCloud.Vpc.GetRouteTablesArgs
+        ///         var fooRouteTables = AliCloud.Vpc.GetRouteTables.Invoke(new AliCloud.Vpc.GetRouteTablesInvokeArgs
         ///         {
         ///             Ids = 
         ///             {
-        ///                 id,
+        ///                 fooRouteTable.Id,
         ///             },
-        ///         }));
+        ///         });
         ///         this.RouteTableIds = fooRouteTables.Apply(fooRouteTables =&gt; fooRouteTables.Ids);
         ///     }
         /// 
@@ -60,7 +59,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouteTablesResult> InvokeAsync(GetRouteTablesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRouteTablesResult>("alicloud:vpc/getRouteTables:getRouteTables", args ?? new GetRouteTablesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRouteTablesResult>("alicloud:vpc/getRouteTables:getRouteTables", args ?? new GetRouteTablesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of Route Tables owned by an Alibaba Cloud account.
@@ -92,13 +91,13 @@ namespace Pulumi.AliCloud.Vpc
         ///             RouteTableName = name,
         ///             VpcId = fooNetwork.Id,
         ///         });
-        ///         var fooRouteTables = fooRouteTable.Id.Apply(id =&gt; AliCloud.Vpc.GetRouteTables.InvokeAsync(new AliCloud.Vpc.GetRouteTablesArgs
+        ///         var fooRouteTables = AliCloud.Vpc.GetRouteTables.Invoke(new AliCloud.Vpc.GetRouteTablesInvokeArgs
         ///         {
         ///             Ids = 
         ///             {
-        ///                 id,
+        ///                 fooRouteTable.Id,
         ///             },
-        ///         }));
+        ///         });
         ///         this.RouteTableIds = fooRouteTables.Apply(fooRouteTables =&gt; fooRouteTables.Ids);
         ///     }
         /// 
@@ -110,7 +109,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRouteTablesResult> Invoke(GetRouteTablesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRouteTablesResult>("alicloud:vpc/getRouteTables:getRouteTables", args ?? new GetRouteTablesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRouteTablesResult>("alicloud:vpc/getRouteTables:getRouteTables", args ?? new GetRouteTablesInvokeArgs(), options.WithDefaults());
     }
 
 

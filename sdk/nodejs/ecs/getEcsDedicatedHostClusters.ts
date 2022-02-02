@@ -46,9 +46,7 @@ export function getEcsDedicatedHostClusters(args?: GetEcsDedicatedHostClustersAr
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ecs/getEcsDedicatedHostClusters:getEcsDedicatedHostClusters", {
         "dedicatedHostClusterIds": args.dedicatedHostClusterIds,
         "dedicatedHostClusterName": args.dedicatedHostClusterName,

@@ -89,6 +89,11 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		ids := eds.GetDesktopsOutput(ctx, eds.GetDesktopsOutputArgs{
+// 			Ids: pulumi.StringArray{
+// 				defaultDesktop.ID(),
+// 			},
+// 		}, nil)
 // 		ctx.Export("ecdDesktopId1", ids.ApplyT(func(ids eds.GetDesktopsResult) (string, error) {
 // 			return ids.Desktops[0].Id, nil
 // 		}).(pulumi.StringOutput))

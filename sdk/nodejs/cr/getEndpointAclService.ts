@@ -32,9 +32,7 @@ export function getEndpointAclService(args: GetEndpointAclServiceArgs, opts?: pu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cr/getEndpointAclService:getEndpointAclService", {
         "enable": args.enable,
         "endpointType": args.endpointType,

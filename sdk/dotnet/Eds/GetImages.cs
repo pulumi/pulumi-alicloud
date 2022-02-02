@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Eds
 {
@@ -81,15 +80,15 @@ namespace Pulumi.AliCloud.Eds
         ///             DesktopId = defaultDesktop.Id,
         ///             Description = "example_value",
         ///         });
-        ///         var ids = defaultImage.Id.Apply(id =&gt; AliCloud.Eds.GetImages.InvokeAsync(new AliCloud.Eds.GetImagesArgs
+        ///         var ids = AliCloud.Eds.GetImages.Invoke(new AliCloud.Eds.GetImagesInvokeArgs
         ///         {
         ///             Ids = 
         ///             {
-        ///                 id,
+        ///                 defaultImage.Id,
         ///             },
-        ///         }));
+        ///         });
         ///         this.EcdImageId1 = ids.Apply(ids =&gt; ids.Images?[0]?.Id);
-        ///         var nameRegex = defaultImage.ImageName.Apply(imageName =&gt; AliCloud.Eds.GetImages.InvokeAsync(new AliCloud.Eds.GetImagesArgs
+        ///         var nameRegex = defaultImage.ImageName.Apply(imageName =&gt; AliCloud.Eds.GetImages.Invoke(new AliCloud.Eds.GetImagesInvokeArgs
         ///         {
         ///             NameRegex = imageName,
         ///         }));
@@ -106,7 +105,7 @@ namespace Pulumi.AliCloud.Eds
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetImagesResult> InvokeAsync(GetImagesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("alicloud:eds/getImages:getImages", args ?? new GetImagesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("alicloud:eds/getImages:getImages", args ?? new GetImagesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecd Images of the current Alibaba Cloud user.
@@ -177,15 +176,15 @@ namespace Pulumi.AliCloud.Eds
         ///             DesktopId = defaultDesktop.Id,
         ///             Description = "example_value",
         ///         });
-        ///         var ids = defaultImage.Id.Apply(id =&gt; AliCloud.Eds.GetImages.InvokeAsync(new AliCloud.Eds.GetImagesArgs
+        ///         var ids = AliCloud.Eds.GetImages.Invoke(new AliCloud.Eds.GetImagesInvokeArgs
         ///         {
         ///             Ids = 
         ///             {
-        ///                 id,
+        ///                 defaultImage.Id,
         ///             },
-        ///         }));
+        ///         });
         ///         this.EcdImageId1 = ids.Apply(ids =&gt; ids.Images?[0]?.Id);
-        ///         var nameRegex = defaultImage.ImageName.Apply(imageName =&gt; AliCloud.Eds.GetImages.InvokeAsync(new AliCloud.Eds.GetImagesArgs
+        ///         var nameRegex = defaultImage.ImageName.Apply(imageName =&gt; AliCloud.Eds.GetImages.Invoke(new AliCloud.Eds.GetImagesInvokeArgs
         ///         {
         ///             NameRegex = imageName,
         ///         }));
@@ -202,7 +201,7 @@ namespace Pulumi.AliCloud.Eds
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetImagesResult> Invoke(GetImagesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetImagesResult>("alicloud:eds/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetImagesResult>("alicloud:eds/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithDefaults());
     }
 
 

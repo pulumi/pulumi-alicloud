@@ -15,9 +15,7 @@ export function getTransitRouterVbrAttachments(args: GetTransitRouterVbrAttachme
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cen/getTransitRouterVbrAttachments:getTransitRouterVbrAttachments", {
         "cenId": args.cenId,
         "ids": args.ids,

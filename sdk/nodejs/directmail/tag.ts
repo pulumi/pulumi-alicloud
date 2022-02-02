@@ -74,22 +74,20 @@ export class Tag extends pulumi.CustomResource {
      */
     constructor(name: string, args: TagArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TagArgs | TagState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TagState | undefined;
-            inputs["tagName"] = state ? state.tagName : undefined;
+            resourceInputs["tagName"] = state ? state.tagName : undefined;
         } else {
             const args = argsOrState as TagArgs | undefined;
             if ((!args || args.tagName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tagName'");
             }
-            inputs["tagName"] = args ? args.tagName : undefined;
+            resourceInputs["tagName"] = args ? args.tagName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Tag.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Tag.__pulumiType, name, resourceInputs, opts);
     }
 }
 

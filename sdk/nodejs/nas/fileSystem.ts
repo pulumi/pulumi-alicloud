@@ -130,18 +130,18 @@ export class FileSystem extends pulumi.CustomResource {
      */
     constructor(name: string, args: FileSystemArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FileSystemArgs | FileSystemState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FileSystemState | undefined;
-            inputs["capacity"] = state ? state.capacity : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["encryptType"] = state ? state.encryptType : undefined;
-            inputs["fileSystemType"] = state ? state.fileSystemType : undefined;
-            inputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
-            inputs["protocolType"] = state ? state.protocolType : undefined;
-            inputs["storageType"] = state ? state.storageType : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["capacity"] = state ? state.capacity : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["encryptType"] = state ? state.encryptType : undefined;
+            resourceInputs["fileSystemType"] = state ? state.fileSystemType : undefined;
+            resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
+            resourceInputs["protocolType"] = state ? state.protocolType : undefined;
+            resourceInputs["storageType"] = state ? state.storageType : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as FileSystemArgs | undefined;
             if ((!args || args.protocolType === undefined) && !opts.urn) {
@@ -150,19 +150,17 @@ export class FileSystem extends pulumi.CustomResource {
             if ((!args || args.storageType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'storageType'");
             }
-            inputs["capacity"] = args ? args.capacity : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["encryptType"] = args ? args.encryptType : undefined;
-            inputs["fileSystemType"] = args ? args.fileSystemType : undefined;
-            inputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
-            inputs["protocolType"] = args ? args.protocolType : undefined;
-            inputs["storageType"] = args ? args.storageType : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["capacity"] = args ? args.capacity : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["encryptType"] = args ? args.encryptType : undefined;
+            resourceInputs["fileSystemType"] = args ? args.fileSystemType : undefined;
+            resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
+            resourceInputs["protocolType"] = args ? args.protocolType : undefined;
+            resourceInputs["storageType"] = args ? args.storageType : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(FileSystem.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(FileSystem.__pulumiType, name, resourceInputs, opts);
     }
 }
 

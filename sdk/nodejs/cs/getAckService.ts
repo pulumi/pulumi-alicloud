@@ -28,9 +28,7 @@ export function getAckService(args: GetAckServiceArgs, opts?: pulumi.InvokeOptio
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cs/getAckService:getAckService", {
         "enable": args.enable,
         "type": args.type,

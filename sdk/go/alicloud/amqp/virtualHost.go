@@ -138,7 +138,7 @@ type VirtualHostInput interface {
 }
 
 func (*VirtualHost) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualHost)(nil))
+	return reflect.TypeOf((**VirtualHost)(nil)).Elem()
 }
 
 func (i *VirtualHost) ToVirtualHostOutput() VirtualHostOutput {
@@ -147,35 +147,6 @@ func (i *VirtualHost) ToVirtualHostOutput() VirtualHostOutput {
 
 func (i *VirtualHost) ToVirtualHostOutputWithContext(ctx context.Context) VirtualHostOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualHostOutput)
-}
-
-func (i *VirtualHost) ToVirtualHostPtrOutput() VirtualHostPtrOutput {
-	return i.ToVirtualHostPtrOutputWithContext(context.Background())
-}
-
-func (i *VirtualHost) ToVirtualHostPtrOutputWithContext(ctx context.Context) VirtualHostPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualHostPtrOutput)
-}
-
-type VirtualHostPtrInput interface {
-	pulumi.Input
-
-	ToVirtualHostPtrOutput() VirtualHostPtrOutput
-	ToVirtualHostPtrOutputWithContext(ctx context.Context) VirtualHostPtrOutput
-}
-
-type virtualHostPtrType VirtualHostArgs
-
-func (*virtualHostPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualHost)(nil))
-}
-
-func (i *virtualHostPtrType) ToVirtualHostPtrOutput() VirtualHostPtrOutput {
-	return i.ToVirtualHostPtrOutputWithContext(context.Background())
-}
-
-func (i *virtualHostPtrType) ToVirtualHostPtrOutputWithContext(ctx context.Context) VirtualHostPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualHostPtrOutput)
 }
 
 // VirtualHostArrayInput is an input type that accepts VirtualHostArray and VirtualHostArrayOutput values.
@@ -231,7 +202,7 @@ func (i VirtualHostMap) ToVirtualHostMapOutputWithContext(ctx context.Context) V
 type VirtualHostOutput struct{ *pulumi.OutputState }
 
 func (VirtualHostOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualHost)(nil))
+	return reflect.TypeOf((**VirtualHost)(nil)).Elem()
 }
 
 func (o VirtualHostOutput) ToVirtualHostOutput() VirtualHostOutput {
@@ -242,44 +213,10 @@ func (o VirtualHostOutput) ToVirtualHostOutputWithContext(ctx context.Context) V
 	return o
 }
 
-func (o VirtualHostOutput) ToVirtualHostPtrOutput() VirtualHostPtrOutput {
-	return o.ToVirtualHostPtrOutputWithContext(context.Background())
-}
-
-func (o VirtualHostOutput) ToVirtualHostPtrOutputWithContext(ctx context.Context) VirtualHostPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualHost) *VirtualHost {
-		return &v
-	}).(VirtualHostPtrOutput)
-}
-
-type VirtualHostPtrOutput struct{ *pulumi.OutputState }
-
-func (VirtualHostPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualHost)(nil))
-}
-
-func (o VirtualHostPtrOutput) ToVirtualHostPtrOutput() VirtualHostPtrOutput {
-	return o
-}
-
-func (o VirtualHostPtrOutput) ToVirtualHostPtrOutputWithContext(ctx context.Context) VirtualHostPtrOutput {
-	return o
-}
-
-func (o VirtualHostPtrOutput) Elem() VirtualHostOutput {
-	return o.ApplyT(func(v *VirtualHost) VirtualHost {
-		if v != nil {
-			return *v
-		}
-		var ret VirtualHost
-		return ret
-	}).(VirtualHostOutput)
-}
-
 type VirtualHostArrayOutput struct{ *pulumi.OutputState }
 
 func (VirtualHostArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VirtualHost)(nil))
+	return reflect.TypeOf((*[]*VirtualHost)(nil)).Elem()
 }
 
 func (o VirtualHostArrayOutput) ToVirtualHostArrayOutput() VirtualHostArrayOutput {
@@ -291,15 +228,15 @@ func (o VirtualHostArrayOutput) ToVirtualHostArrayOutputWithContext(ctx context.
 }
 
 func (o VirtualHostArrayOutput) Index(i pulumi.IntInput) VirtualHostOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualHost {
-		return vs[0].([]VirtualHost)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VirtualHost {
+		return vs[0].([]*VirtualHost)[vs[1].(int)]
 	}).(VirtualHostOutput)
 }
 
 type VirtualHostMapOutput struct{ *pulumi.OutputState }
 
 func (VirtualHostMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]VirtualHost)(nil))
+	return reflect.TypeOf((*map[string]*VirtualHost)(nil)).Elem()
 }
 
 func (o VirtualHostMapOutput) ToVirtualHostMapOutput() VirtualHostMapOutput {
@@ -311,18 +248,16 @@ func (o VirtualHostMapOutput) ToVirtualHostMapOutputWithContext(ctx context.Cont
 }
 
 func (o VirtualHostMapOutput) MapIndex(k pulumi.StringInput) VirtualHostOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) VirtualHost {
-		return vs[0].(map[string]VirtualHost)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *VirtualHost {
+		return vs[0].(map[string]*VirtualHost)[vs[1].(string)]
 	}).(VirtualHostOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualHostInput)(nil)).Elem(), &VirtualHost{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VirtualHostPtrInput)(nil)).Elem(), &VirtualHost{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualHostArrayInput)(nil)).Elem(), VirtualHostArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualHostMapInput)(nil)).Elem(), VirtualHostMap{})
 	pulumi.RegisterOutputType(VirtualHostOutput{})
-	pulumi.RegisterOutputType(VirtualHostPtrOutput{})
 	pulumi.RegisterOutputType(VirtualHostArrayOutput{})
 	pulumi.RegisterOutputType(VirtualHostMapOutput{})
 }

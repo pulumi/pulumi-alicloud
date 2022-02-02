@@ -178,54 +178,52 @@ export class EcsNetworkInterface extends pulumi.CustomResource {
      */
     constructor(name: string, args: EcsNetworkInterfaceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EcsNetworkInterfaceArgs | EcsNetworkInterfaceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsNetworkInterfaceState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["mac"] = state ? state.mac : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networkInterfaceName"] = state ? state.networkInterfaceName : undefined;
-            inputs["primaryIpAddress"] = state ? state.primaryIpAddress : undefined;
-            inputs["privateIp"] = state ? state.privateIp : undefined;
-            inputs["privateIpAddresses"] = state ? state.privateIpAddresses : undefined;
-            inputs["privateIps"] = state ? state.privateIps : undefined;
-            inputs["privateIpsCount"] = state ? state.privateIpsCount : undefined;
-            inputs["queueNumber"] = state ? state.queueNumber : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["secondaryPrivateIpAddressCount"] = state ? state.secondaryPrivateIpAddressCount : undefined;
-            inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            inputs["securityGroups"] = state ? state.securityGroups : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["mac"] = state ? state.mac : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkInterfaceName"] = state ? state.networkInterfaceName : undefined;
+            resourceInputs["primaryIpAddress"] = state ? state.primaryIpAddress : undefined;
+            resourceInputs["privateIp"] = state ? state.privateIp : undefined;
+            resourceInputs["privateIpAddresses"] = state ? state.privateIpAddresses : undefined;
+            resourceInputs["privateIps"] = state ? state.privateIps : undefined;
+            resourceInputs["privateIpsCount"] = state ? state.privateIpsCount : undefined;
+            resourceInputs["queueNumber"] = state ? state.queueNumber : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["secondaryPrivateIpAddressCount"] = state ? state.secondaryPrivateIpAddressCount : undefined;
+            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as EcsNetworkInterfaceArgs | undefined;
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networkInterfaceName"] = args ? args.networkInterfaceName : undefined;
-            inputs["primaryIpAddress"] = args ? args.primaryIpAddress : undefined;
-            inputs["privateIp"] = args ? args.privateIp : undefined;
-            inputs["privateIpAddresses"] = args ? args.privateIpAddresses : undefined;
-            inputs["privateIps"] = args ? args.privateIps : undefined;
-            inputs["privateIpsCount"] = args ? args.privateIpsCount : undefined;
-            inputs["queueNumber"] = args ? args.queueNumber : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["secondaryPrivateIpAddressCount"] = args ? args.secondaryPrivateIpAddressCount : undefined;
-            inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            inputs["securityGroups"] = args ? args.securityGroups : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["mac"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkInterfaceName"] = args ? args.networkInterfaceName : undefined;
+            resourceInputs["primaryIpAddress"] = args ? args.primaryIpAddress : undefined;
+            resourceInputs["privateIp"] = args ? args.privateIp : undefined;
+            resourceInputs["privateIpAddresses"] = args ? args.privateIpAddresses : undefined;
+            resourceInputs["privateIps"] = args ? args.privateIps : undefined;
+            resourceInputs["privateIpsCount"] = args ? args.privateIpsCount : undefined;
+            resourceInputs["queueNumber"] = args ? args.queueNumber : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["secondaryPrivateIpAddressCount"] = args ? args.secondaryPrivateIpAddressCount : undefined;
+            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["mac"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EcsNetworkInterface.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EcsNetworkInterface.__pulumiType, name, resourceInputs, opts);
     }
 }
 

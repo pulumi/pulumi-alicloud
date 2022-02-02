@@ -108,20 +108,20 @@ export class SiteMonitor extends pulumi.CustomResource {
      */
     constructor(name: string, args: SiteMonitorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SiteMonitorArgs | SiteMonitorState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SiteMonitorState | undefined;
-            inputs["address"] = state ? state.address : undefined;
-            inputs["alertIds"] = state ? state.alertIds : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["interval"] = state ? state.interval : undefined;
-            inputs["ispCities"] = state ? state.ispCities : undefined;
-            inputs["optionsJson"] = state ? state.optionsJson : undefined;
-            inputs["taskName"] = state ? state.taskName : undefined;
-            inputs["taskState"] = state ? state.taskState : undefined;
-            inputs["taskType"] = state ? state.taskType : undefined;
-            inputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["address"] = state ? state.address : undefined;
+            resourceInputs["alertIds"] = state ? state.alertIds : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["interval"] = state ? state.interval : undefined;
+            resourceInputs["ispCities"] = state ? state.ispCities : undefined;
+            resourceInputs["optionsJson"] = state ? state.optionsJson : undefined;
+            resourceInputs["taskName"] = state ? state.taskName : undefined;
+            resourceInputs["taskState"] = state ? state.taskState : undefined;
+            resourceInputs["taskType"] = state ? state.taskType : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as SiteMonitorArgs | undefined;
             if ((!args || args.address === undefined) && !opts.urn) {
@@ -133,21 +133,19 @@ export class SiteMonitor extends pulumi.CustomResource {
             if ((!args || args.taskType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'taskType'");
             }
-            inputs["address"] = args ? args.address : undefined;
-            inputs["alertIds"] = args ? args.alertIds : undefined;
-            inputs["interval"] = args ? args.interval : undefined;
-            inputs["ispCities"] = args ? args.ispCities : undefined;
-            inputs["optionsJson"] = args ? args.optionsJson : undefined;
-            inputs["taskName"] = args ? args.taskName : undefined;
-            inputs["taskType"] = args ? args.taskType : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["taskState"] = undefined /*out*/;
-            inputs["updateTime"] = undefined /*out*/;
+            resourceInputs["address"] = args ? args.address : undefined;
+            resourceInputs["alertIds"] = args ? args.alertIds : undefined;
+            resourceInputs["interval"] = args ? args.interval : undefined;
+            resourceInputs["ispCities"] = args ? args.ispCities : undefined;
+            resourceInputs["optionsJson"] = args ? args.optionsJson : undefined;
+            resourceInputs["taskName"] = args ? args.taskName : undefined;
+            resourceInputs["taskType"] = args ? args.taskType : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["taskState"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SiteMonitor.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SiteMonitor.__pulumiType, name, resourceInputs, opts);
     }
 }
 

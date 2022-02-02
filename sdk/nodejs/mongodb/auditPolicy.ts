@@ -69,13 +69,13 @@ export class AuditPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: AuditPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AuditPolicyArgs | AuditPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuditPolicyState | undefined;
-            inputs["auditStatus"] = state ? state.auditStatus : undefined;
-            inputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            inputs["storagePeriod"] = state ? state.storagePeriod : undefined;
+            resourceInputs["auditStatus"] = state ? state.auditStatus : undefined;
+            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
+            resourceInputs["storagePeriod"] = state ? state.storagePeriod : undefined;
         } else {
             const args = argsOrState as AuditPolicyArgs | undefined;
             if ((!args || args.auditStatus === undefined) && !opts.urn) {
@@ -84,14 +84,12 @@ export class AuditPolicy extends pulumi.CustomResource {
             if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            inputs["auditStatus"] = args ? args.auditStatus : undefined;
-            inputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            inputs["storagePeriod"] = args ? args.storagePeriod : undefined;
+            resourceInputs["auditStatus"] = args ? args.auditStatus : undefined;
+            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
+            resourceInputs["storagePeriod"] = args ? args.storagePeriod : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AuditPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AuditPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

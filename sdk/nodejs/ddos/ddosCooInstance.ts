@@ -113,18 +113,18 @@ export class DdosCooInstance extends pulumi.CustomResource {
      */
     constructor(name: string, args: DdosCooInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DdosCooInstanceArgs | DdosCooInstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DdosCooInstanceState | undefined;
-            inputs["bandwidth"] = state ? state.bandwidth : undefined;
-            inputs["baseBandwidth"] = state ? state.baseBandwidth : undefined;
-            inputs["domainCount"] = state ? state.domainCount : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["portCount"] = state ? state.portCount : undefined;
-            inputs["productType"] = state ? state.productType : undefined;
-            inputs["serviceBandwidth"] = state ? state.serviceBandwidth : undefined;
+            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
+            resourceInputs["baseBandwidth"] = state ? state.baseBandwidth : undefined;
+            resourceInputs["domainCount"] = state ? state.domainCount : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["portCount"] = state ? state.portCount : undefined;
+            resourceInputs["productType"] = state ? state.productType : undefined;
+            resourceInputs["serviceBandwidth"] = state ? state.serviceBandwidth : undefined;
         } else {
             const args = argsOrState as DdosCooInstanceArgs | undefined;
             if ((!args || args.bandwidth === undefined) && !opts.urn) {
@@ -142,21 +142,19 @@ export class DdosCooInstance extends pulumi.CustomResource {
             if ((!args || args.serviceBandwidth === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceBandwidth'");
             }
-            inputs["bandwidth"] = args ? args.bandwidth : undefined;
-            inputs["baseBandwidth"] = args ? args.baseBandwidth : undefined;
-            inputs["domainCount"] = args ? args.domainCount : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["portCount"] = args ? args.portCount : undefined;
-            inputs["productType"] = args ? args.productType : undefined;
-            inputs["serviceBandwidth"] = args ? args.serviceBandwidth : undefined;
+            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
+            resourceInputs["baseBandwidth"] = args ? args.baseBandwidth : undefined;
+            resourceInputs["domainCount"] = args ? args.domainCount : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["portCount"] = args ? args.portCount : undefined;
+            resourceInputs["productType"] = args ? args.productType : undefined;
+            resourceInputs["serviceBandwidth"] = args ? args.serviceBandwidth : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "alicloud:dns/ddosCooInstance:DdosCooInstance" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
-        super(DdosCooInstance.__pulumiType, name, inputs, opts);
+        super(DdosCooInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

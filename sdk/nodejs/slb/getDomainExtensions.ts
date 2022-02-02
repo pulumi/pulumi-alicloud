@@ -28,9 +28,7 @@ export function getDomainExtensions(args: GetDomainExtensionsArgs, opts?: pulumi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:slb/getDomainExtensions:getDomainExtensions", {
         "frontendPort": args.frontendPort,
         "ids": args.ids,

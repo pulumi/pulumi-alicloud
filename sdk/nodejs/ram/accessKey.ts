@@ -112,31 +112,29 @@ export class AccessKey extends pulumi.CustomResource {
      */
     constructor(name: string, args?: AccessKeyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessKeyArgs | AccessKeyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessKeyState | undefined;
-            inputs["encryptedSecret"] = state ? state.encryptedSecret : undefined;
-            inputs["keyFingerprint"] = state ? state.keyFingerprint : undefined;
-            inputs["pgpKey"] = state ? state.pgpKey : undefined;
-            inputs["secret"] = state ? state.secret : undefined;
-            inputs["secretFile"] = state ? state.secretFile : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["encryptedSecret"] = state ? state.encryptedSecret : undefined;
+            resourceInputs["keyFingerprint"] = state ? state.keyFingerprint : undefined;
+            resourceInputs["pgpKey"] = state ? state.pgpKey : undefined;
+            resourceInputs["secret"] = state ? state.secret : undefined;
+            resourceInputs["secretFile"] = state ? state.secretFile : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["userName"] = state ? state.userName : undefined;
         } else {
             const args = argsOrState as AccessKeyArgs | undefined;
-            inputs["pgpKey"] = args ? args.pgpKey : undefined;
-            inputs["secretFile"] = args ? args.secretFile : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["userName"] = args ? args.userName : undefined;
-            inputs["encryptedSecret"] = undefined /*out*/;
-            inputs["keyFingerprint"] = undefined /*out*/;
-            inputs["secret"] = undefined /*out*/;
+            resourceInputs["pgpKey"] = args ? args.pgpKey : undefined;
+            resourceInputs["secretFile"] = args ? args.secretFile : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["encryptedSecret"] = undefined /*out*/;
+            resourceInputs["keyFingerprint"] = undefined /*out*/;
+            resourceInputs["secret"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AccessKey.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AccessKey.__pulumiType, name, resourceInputs, opts);
     }
 }
 

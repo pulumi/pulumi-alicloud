@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ehpc
 {
@@ -36,13 +35,13 @@ namespace Pulumi.AliCloud.Ehpc
         ///             JobTemplateName = "example_value",
         ///             CommandLine = "./LammpsTest/lammps.pbs",
         ///         });
-        ///         var ids = @default.Id.Apply(id =&gt; AliCloud.Ehpc.GetJobTemplates.InvokeAsync(new AliCloud.Ehpc.GetJobTemplatesArgs
+        ///         var ids = AliCloud.Ehpc.GetJobTemplates.Invoke(new AliCloud.Ehpc.GetJobTemplatesInvokeArgs
         ///         {
         ///             Ids = 
         ///             {
-        ///                 id,
+        ///                 @default.Id,
         ///             },
-        ///         }));
+        ///         });
         ///         this.EhpcJobTemplateId1 = ids.Apply(ids =&gt; ids.Id);
         ///     }
         /// 
@@ -54,7 +53,7 @@ namespace Pulumi.AliCloud.Ehpc
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetJobTemplatesResult> InvokeAsync(GetJobTemplatesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetJobTemplatesResult>("alicloud:ehpc/getJobTemplates:getJobTemplates", args ?? new GetJobTemplatesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetJobTemplatesResult>("alicloud:ehpc/getJobTemplates:getJobTemplates", args ?? new GetJobTemplatesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ehpc Job Templates of the current Alibaba Cloud user.
@@ -80,13 +79,13 @@ namespace Pulumi.AliCloud.Ehpc
         ///             JobTemplateName = "example_value",
         ///             CommandLine = "./LammpsTest/lammps.pbs",
         ///         });
-        ///         var ids = @default.Id.Apply(id =&gt; AliCloud.Ehpc.GetJobTemplates.InvokeAsync(new AliCloud.Ehpc.GetJobTemplatesArgs
+        ///         var ids = AliCloud.Ehpc.GetJobTemplates.Invoke(new AliCloud.Ehpc.GetJobTemplatesInvokeArgs
         ///         {
         ///             Ids = 
         ///             {
-        ///                 id,
+        ///                 @default.Id,
         ///             },
-        ///         }));
+        ///         });
         ///         this.EhpcJobTemplateId1 = ids.Apply(ids =&gt; ids.Id);
         ///     }
         /// 
@@ -98,7 +97,7 @@ namespace Pulumi.AliCloud.Ehpc
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetJobTemplatesResult> Invoke(GetJobTemplatesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetJobTemplatesResult>("alicloud:ehpc/getJobTemplates:getJobTemplates", args ?? new GetJobTemplatesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetJobTemplatesResult>("alicloud:ehpc/getJobTemplates:getJobTemplates", args ?? new GetJobTemplatesInvokeArgs(), options.WithDefaults());
     }
 
 

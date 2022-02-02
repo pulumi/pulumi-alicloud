@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Log
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.Log
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetStoresResult> InvokeAsync(GetStoresArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetStoresResult>("alicloud:log/getStores:getStores", args ?? new GetStoresArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetStoresResult>("alicloud:log/getStores:getStores", args ?? new GetStoresArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Log Stores of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.Log
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetStoresResult> Invoke(GetStoresInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetStoresResult>("alicloud:log/getStores:getStores", args ?? new GetStoresInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetStoresResult>("alicloud:log/getStores:getStores", args ?? new GetStoresInvokeArgs(), options.WithDefaults());
     }
 
 

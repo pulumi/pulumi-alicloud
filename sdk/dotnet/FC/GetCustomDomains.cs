@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.FC
 {
@@ -44,7 +43,7 @@ namespace Pulumi.AliCloud.FC
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCustomDomainsResult> InvokeAsync(GetCustomDomainsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCustomDomainsResult>("alicloud:fc/getCustomDomains:getCustomDomains", args ?? new GetCustomDomainsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCustomDomainsResult>("alicloud:fc/getCustomDomains:getCustomDomains", args ?? new GetCustomDomainsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Function Compute custom domains of the current Alibaba Cloud user.
@@ -78,7 +77,7 @@ namespace Pulumi.AliCloud.FC
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetCustomDomainsResult> Invoke(GetCustomDomainsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCustomDomainsResult>("alicloud:fc/getCustomDomains:getCustomDomains", args ?? new GetCustomDomainsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetCustomDomainsResult>("alicloud:fc/getCustomDomains:getCustomDomains", args ?? new GetCustomDomainsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -132,7 +132,7 @@ type KeyVersionInput interface {
 }
 
 func (*KeyVersion) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyVersion)(nil))
+	return reflect.TypeOf((**KeyVersion)(nil)).Elem()
 }
 
 func (i *KeyVersion) ToKeyVersionOutput() KeyVersionOutput {
@@ -141,35 +141,6 @@ func (i *KeyVersion) ToKeyVersionOutput() KeyVersionOutput {
 
 func (i *KeyVersion) ToKeyVersionOutputWithContext(ctx context.Context) KeyVersionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVersionOutput)
-}
-
-func (i *KeyVersion) ToKeyVersionPtrOutput() KeyVersionPtrOutput {
-	return i.ToKeyVersionPtrOutputWithContext(context.Background())
-}
-
-func (i *KeyVersion) ToKeyVersionPtrOutputWithContext(ctx context.Context) KeyVersionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyVersionPtrOutput)
-}
-
-type KeyVersionPtrInput interface {
-	pulumi.Input
-
-	ToKeyVersionPtrOutput() KeyVersionPtrOutput
-	ToKeyVersionPtrOutputWithContext(ctx context.Context) KeyVersionPtrOutput
-}
-
-type keyVersionPtrType KeyVersionArgs
-
-func (*keyVersionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyVersion)(nil))
-}
-
-func (i *keyVersionPtrType) ToKeyVersionPtrOutput() KeyVersionPtrOutput {
-	return i.ToKeyVersionPtrOutputWithContext(context.Background())
-}
-
-func (i *keyVersionPtrType) ToKeyVersionPtrOutputWithContext(ctx context.Context) KeyVersionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyVersionPtrOutput)
 }
 
 // KeyVersionArrayInput is an input type that accepts KeyVersionArray and KeyVersionArrayOutput values.
@@ -225,7 +196,7 @@ func (i KeyVersionMap) ToKeyVersionMapOutputWithContext(ctx context.Context) Key
 type KeyVersionOutput struct{ *pulumi.OutputState }
 
 func (KeyVersionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyVersion)(nil))
+	return reflect.TypeOf((**KeyVersion)(nil)).Elem()
 }
 
 func (o KeyVersionOutput) ToKeyVersionOutput() KeyVersionOutput {
@@ -236,44 +207,10 @@ func (o KeyVersionOutput) ToKeyVersionOutputWithContext(ctx context.Context) Key
 	return o
 }
 
-func (o KeyVersionOutput) ToKeyVersionPtrOutput() KeyVersionPtrOutput {
-	return o.ToKeyVersionPtrOutputWithContext(context.Background())
-}
-
-func (o KeyVersionOutput) ToKeyVersionPtrOutputWithContext(ctx context.Context) KeyVersionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyVersion) *KeyVersion {
-		return &v
-	}).(KeyVersionPtrOutput)
-}
-
-type KeyVersionPtrOutput struct{ *pulumi.OutputState }
-
-func (KeyVersionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyVersion)(nil))
-}
-
-func (o KeyVersionPtrOutput) ToKeyVersionPtrOutput() KeyVersionPtrOutput {
-	return o
-}
-
-func (o KeyVersionPtrOutput) ToKeyVersionPtrOutputWithContext(ctx context.Context) KeyVersionPtrOutput {
-	return o
-}
-
-func (o KeyVersionPtrOutput) Elem() KeyVersionOutput {
-	return o.ApplyT(func(v *KeyVersion) KeyVersion {
-		if v != nil {
-			return *v
-		}
-		var ret KeyVersion
-		return ret
-	}).(KeyVersionOutput)
-}
-
 type KeyVersionArrayOutput struct{ *pulumi.OutputState }
 
 func (KeyVersionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KeyVersion)(nil))
+	return reflect.TypeOf((*[]*KeyVersion)(nil)).Elem()
 }
 
 func (o KeyVersionArrayOutput) ToKeyVersionArrayOutput() KeyVersionArrayOutput {
@@ -285,15 +222,15 @@ func (o KeyVersionArrayOutput) ToKeyVersionArrayOutputWithContext(ctx context.Co
 }
 
 func (o KeyVersionArrayOutput) Index(i pulumi.IntInput) KeyVersionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeyVersion {
-		return vs[0].([]KeyVersion)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KeyVersion {
+		return vs[0].([]*KeyVersion)[vs[1].(int)]
 	}).(KeyVersionOutput)
 }
 
 type KeyVersionMapOutput struct{ *pulumi.OutputState }
 
 func (KeyVersionMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]KeyVersion)(nil))
+	return reflect.TypeOf((*map[string]*KeyVersion)(nil)).Elem()
 }
 
 func (o KeyVersionMapOutput) ToKeyVersionMapOutput() KeyVersionMapOutput {
@@ -305,18 +242,16 @@ func (o KeyVersionMapOutput) ToKeyVersionMapOutputWithContext(ctx context.Contex
 }
 
 func (o KeyVersionMapOutput) MapIndex(k pulumi.StringInput) KeyVersionOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) KeyVersion {
-		return vs[0].(map[string]KeyVersion)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *KeyVersion {
+		return vs[0].(map[string]*KeyVersion)[vs[1].(string)]
 	}).(KeyVersionOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyVersionInput)(nil)).Elem(), &KeyVersion{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyVersionPtrInput)(nil)).Elem(), &KeyVersion{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyVersionArrayInput)(nil)).Elem(), KeyVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyVersionMapInput)(nil)).Elem(), KeyVersionMap{})
 	pulumi.RegisterOutputType(KeyVersionOutput{})
-	pulumi.RegisterOutputType(KeyVersionPtrOutput{})
 	pulumi.RegisterOutputType(KeyVersionArrayOutput{})
 	pulumi.RegisterOutputType(KeyVersionMapOutput{})
 }

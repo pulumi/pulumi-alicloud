@@ -174,7 +174,7 @@ type DeliveryChannelInput interface {
 }
 
 func (*DeliveryChannel) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeliveryChannel)(nil))
+	return reflect.TypeOf((**DeliveryChannel)(nil)).Elem()
 }
 
 func (i *DeliveryChannel) ToDeliveryChannelOutput() DeliveryChannelOutput {
@@ -183,35 +183,6 @@ func (i *DeliveryChannel) ToDeliveryChannelOutput() DeliveryChannelOutput {
 
 func (i *DeliveryChannel) ToDeliveryChannelOutputWithContext(ctx context.Context) DeliveryChannelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelOutput)
-}
-
-func (i *DeliveryChannel) ToDeliveryChannelPtrOutput() DeliveryChannelPtrOutput {
-	return i.ToDeliveryChannelPtrOutputWithContext(context.Background())
-}
-
-func (i *DeliveryChannel) ToDeliveryChannelPtrOutputWithContext(ctx context.Context) DeliveryChannelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelPtrOutput)
-}
-
-type DeliveryChannelPtrInput interface {
-	pulumi.Input
-
-	ToDeliveryChannelPtrOutput() DeliveryChannelPtrOutput
-	ToDeliveryChannelPtrOutputWithContext(ctx context.Context) DeliveryChannelPtrOutput
-}
-
-type deliveryChannelPtrType DeliveryChannelArgs
-
-func (*deliveryChannelPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeliveryChannel)(nil))
-}
-
-func (i *deliveryChannelPtrType) ToDeliveryChannelPtrOutput() DeliveryChannelPtrOutput {
-	return i.ToDeliveryChannelPtrOutputWithContext(context.Background())
-}
-
-func (i *deliveryChannelPtrType) ToDeliveryChannelPtrOutputWithContext(ctx context.Context) DeliveryChannelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelPtrOutput)
 }
 
 // DeliveryChannelArrayInput is an input type that accepts DeliveryChannelArray and DeliveryChannelArrayOutput values.
@@ -267,7 +238,7 @@ func (i DeliveryChannelMap) ToDeliveryChannelMapOutputWithContext(ctx context.Co
 type DeliveryChannelOutput struct{ *pulumi.OutputState }
 
 func (DeliveryChannelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeliveryChannel)(nil))
+	return reflect.TypeOf((**DeliveryChannel)(nil)).Elem()
 }
 
 func (o DeliveryChannelOutput) ToDeliveryChannelOutput() DeliveryChannelOutput {
@@ -278,44 +249,10 @@ func (o DeliveryChannelOutput) ToDeliveryChannelOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o DeliveryChannelOutput) ToDeliveryChannelPtrOutput() DeliveryChannelPtrOutput {
-	return o.ToDeliveryChannelPtrOutputWithContext(context.Background())
-}
-
-func (o DeliveryChannelOutput) ToDeliveryChannelPtrOutputWithContext(ctx context.Context) DeliveryChannelPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryChannel) *DeliveryChannel {
-		return &v
-	}).(DeliveryChannelPtrOutput)
-}
-
-type DeliveryChannelPtrOutput struct{ *pulumi.OutputState }
-
-func (DeliveryChannelPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeliveryChannel)(nil))
-}
-
-func (o DeliveryChannelPtrOutput) ToDeliveryChannelPtrOutput() DeliveryChannelPtrOutput {
-	return o
-}
-
-func (o DeliveryChannelPtrOutput) ToDeliveryChannelPtrOutputWithContext(ctx context.Context) DeliveryChannelPtrOutput {
-	return o
-}
-
-func (o DeliveryChannelPtrOutput) Elem() DeliveryChannelOutput {
-	return o.ApplyT(func(v *DeliveryChannel) DeliveryChannel {
-		if v != nil {
-			return *v
-		}
-		var ret DeliveryChannel
-		return ret
-	}).(DeliveryChannelOutput)
-}
-
 type DeliveryChannelArrayOutput struct{ *pulumi.OutputState }
 
 func (DeliveryChannelArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DeliveryChannel)(nil))
+	return reflect.TypeOf((*[]*DeliveryChannel)(nil)).Elem()
 }
 
 func (o DeliveryChannelArrayOutput) ToDeliveryChannelArrayOutput() DeliveryChannelArrayOutput {
@@ -327,15 +264,15 @@ func (o DeliveryChannelArrayOutput) ToDeliveryChannelArrayOutputWithContext(ctx 
 }
 
 func (o DeliveryChannelArrayOutput) Index(i pulumi.IntInput) DeliveryChannelOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeliveryChannel {
-		return vs[0].([]DeliveryChannel)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DeliveryChannel {
+		return vs[0].([]*DeliveryChannel)[vs[1].(int)]
 	}).(DeliveryChannelOutput)
 }
 
 type DeliveryChannelMapOutput struct{ *pulumi.OutputState }
 
 func (DeliveryChannelMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DeliveryChannel)(nil))
+	return reflect.TypeOf((*map[string]*DeliveryChannel)(nil)).Elem()
 }
 
 func (o DeliveryChannelMapOutput) ToDeliveryChannelMapOutput() DeliveryChannelMapOutput {
@@ -347,18 +284,16 @@ func (o DeliveryChannelMapOutput) ToDeliveryChannelMapOutputWithContext(ctx cont
 }
 
 func (o DeliveryChannelMapOutput) MapIndex(k pulumi.StringInput) DeliveryChannelOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DeliveryChannel {
-		return vs[0].(map[string]DeliveryChannel)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DeliveryChannel {
+		return vs[0].(map[string]*DeliveryChannel)[vs[1].(string)]
 	}).(DeliveryChannelOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryChannelInput)(nil)).Elem(), &DeliveryChannel{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryChannelPtrInput)(nil)).Elem(), &DeliveryChannel{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryChannelArrayInput)(nil)).Elem(), DeliveryChannelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryChannelMapInput)(nil)).Elem(), DeliveryChannelMap{})
 	pulumi.RegisterOutputType(DeliveryChannelOutput{})
-	pulumi.RegisterOutputType(DeliveryChannelPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryChannelArrayOutput{})
 	pulumi.RegisterOutputType(DeliveryChannelMapOutput{})
 }

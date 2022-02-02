@@ -32,10 +32,10 @@ import * as utilities from "../utilities";
  *     }),
  *     namespaceId: exampleNamespace.namespaceId,
  * });
- * const nameRegex = exampleNamespace.namespaceId.apply(namespaceId => alicloud.sae.getConfigMaps({
- *     namespaceId: namespaceId,
+ * const nameRegex = alicloud.sae.getConfigMapsOutput({
+ *     namespaceId: exampleNamespace.namespaceId,
  *     nameRegex: "^example",
- * }));
+ * });
  * export const saeConfigMapId = nameRegex.apply(nameRegex => nameRegex.maps?[0]?.id);
  * ```
  */
@@ -44,9 +44,7 @@ export function getConfigMaps(args: GetConfigMapsArgs, opts?: pulumi.InvokeOptio
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:sae/getConfigMaps:getConfigMaps", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

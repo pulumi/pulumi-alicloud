@@ -111,13 +111,13 @@ export class InstanceGrant extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceGrantArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceGrantArgs | InstanceGrantState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceGrantState | undefined;
-            inputs["cenId"] = state ? state.cenId : undefined;
-            inputs["cenOwnerId"] = state ? state.cenOwnerId : undefined;
-            inputs["childInstanceId"] = state ? state.childInstanceId : undefined;
+            resourceInputs["cenId"] = state ? state.cenId : undefined;
+            resourceInputs["cenOwnerId"] = state ? state.cenOwnerId : undefined;
+            resourceInputs["childInstanceId"] = state ? state.childInstanceId : undefined;
         } else {
             const args = argsOrState as InstanceGrantArgs | undefined;
             if ((!args || args.cenId === undefined) && !opts.urn) {
@@ -129,14 +129,12 @@ export class InstanceGrant extends pulumi.CustomResource {
             if ((!args || args.childInstanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'childInstanceId'");
             }
-            inputs["cenId"] = args ? args.cenId : undefined;
-            inputs["cenOwnerId"] = args ? args.cenOwnerId : undefined;
-            inputs["childInstanceId"] = args ? args.childInstanceId : undefined;
+            resourceInputs["cenId"] = args ? args.cenId : undefined;
+            resourceInputs["cenOwnerId"] = args ? args.cenOwnerId : undefined;
+            resourceInputs["childInstanceId"] = args ? args.childInstanceId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(InstanceGrant.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(InstanceGrant.__pulumiType, name, resourceInputs, opts);
     }
 }
 

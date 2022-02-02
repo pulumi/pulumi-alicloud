@@ -133,7 +133,7 @@ type ZoneAttachmentInput interface {
 }
 
 func (*ZoneAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneAttachment)(nil))
+	return reflect.TypeOf((**ZoneAttachment)(nil)).Elem()
 }
 
 func (i *ZoneAttachment) ToZoneAttachmentOutput() ZoneAttachmentOutput {
@@ -142,35 +142,6 @@ func (i *ZoneAttachment) ToZoneAttachmentOutput() ZoneAttachmentOutput {
 
 func (i *ZoneAttachment) ToZoneAttachmentOutputWithContext(ctx context.Context) ZoneAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneAttachmentOutput)
-}
-
-func (i *ZoneAttachment) ToZoneAttachmentPtrOutput() ZoneAttachmentPtrOutput {
-	return i.ToZoneAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *ZoneAttachment) ToZoneAttachmentPtrOutputWithContext(ctx context.Context) ZoneAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZoneAttachmentPtrOutput)
-}
-
-type ZoneAttachmentPtrInput interface {
-	pulumi.Input
-
-	ToZoneAttachmentPtrOutput() ZoneAttachmentPtrOutput
-	ToZoneAttachmentPtrOutputWithContext(ctx context.Context) ZoneAttachmentPtrOutput
-}
-
-type zoneAttachmentPtrType ZoneAttachmentArgs
-
-func (*zoneAttachmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZoneAttachment)(nil))
-}
-
-func (i *zoneAttachmentPtrType) ToZoneAttachmentPtrOutput() ZoneAttachmentPtrOutput {
-	return i.ToZoneAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *zoneAttachmentPtrType) ToZoneAttachmentPtrOutputWithContext(ctx context.Context) ZoneAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZoneAttachmentPtrOutput)
 }
 
 // ZoneAttachmentArrayInput is an input type that accepts ZoneAttachmentArray and ZoneAttachmentArrayOutput values.
@@ -226,7 +197,7 @@ func (i ZoneAttachmentMap) ToZoneAttachmentMapOutputWithContext(ctx context.Cont
 type ZoneAttachmentOutput struct{ *pulumi.OutputState }
 
 func (ZoneAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneAttachment)(nil))
+	return reflect.TypeOf((**ZoneAttachment)(nil)).Elem()
 }
 
 func (o ZoneAttachmentOutput) ToZoneAttachmentOutput() ZoneAttachmentOutput {
@@ -237,44 +208,10 @@ func (o ZoneAttachmentOutput) ToZoneAttachmentOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o ZoneAttachmentOutput) ToZoneAttachmentPtrOutput() ZoneAttachmentPtrOutput {
-	return o.ToZoneAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (o ZoneAttachmentOutput) ToZoneAttachmentPtrOutputWithContext(ctx context.Context) ZoneAttachmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneAttachment) *ZoneAttachment {
-		return &v
-	}).(ZoneAttachmentPtrOutput)
-}
-
-type ZoneAttachmentPtrOutput struct{ *pulumi.OutputState }
-
-func (ZoneAttachmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZoneAttachment)(nil))
-}
-
-func (o ZoneAttachmentPtrOutput) ToZoneAttachmentPtrOutput() ZoneAttachmentPtrOutput {
-	return o
-}
-
-func (o ZoneAttachmentPtrOutput) ToZoneAttachmentPtrOutputWithContext(ctx context.Context) ZoneAttachmentPtrOutput {
-	return o
-}
-
-func (o ZoneAttachmentPtrOutput) Elem() ZoneAttachmentOutput {
-	return o.ApplyT(func(v *ZoneAttachment) ZoneAttachment {
-		if v != nil {
-			return *v
-		}
-		var ret ZoneAttachment
-		return ret
-	}).(ZoneAttachmentOutput)
-}
-
 type ZoneAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (ZoneAttachmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ZoneAttachment)(nil))
+	return reflect.TypeOf((*[]*ZoneAttachment)(nil)).Elem()
 }
 
 func (o ZoneAttachmentArrayOutput) ToZoneAttachmentArrayOutput() ZoneAttachmentArrayOutput {
@@ -286,15 +223,15 @@ func (o ZoneAttachmentArrayOutput) ToZoneAttachmentArrayOutputWithContext(ctx co
 }
 
 func (o ZoneAttachmentArrayOutput) Index(i pulumi.IntInput) ZoneAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZoneAttachment {
-		return vs[0].([]ZoneAttachment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ZoneAttachment {
+		return vs[0].([]*ZoneAttachment)[vs[1].(int)]
 	}).(ZoneAttachmentOutput)
 }
 
 type ZoneAttachmentMapOutput struct{ *pulumi.OutputState }
 
 func (ZoneAttachmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ZoneAttachment)(nil))
+	return reflect.TypeOf((*map[string]*ZoneAttachment)(nil)).Elem()
 }
 
 func (o ZoneAttachmentMapOutput) ToZoneAttachmentMapOutput() ZoneAttachmentMapOutput {
@@ -306,18 +243,16 @@ func (o ZoneAttachmentMapOutput) ToZoneAttachmentMapOutputWithContext(ctx contex
 }
 
 func (o ZoneAttachmentMapOutput) MapIndex(k pulumi.StringInput) ZoneAttachmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ZoneAttachment {
-		return vs[0].(map[string]ZoneAttachment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ZoneAttachment {
+		return vs[0].(map[string]*ZoneAttachment)[vs[1].(string)]
 	}).(ZoneAttachmentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneAttachmentInput)(nil)).Elem(), &ZoneAttachment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZoneAttachmentPtrInput)(nil)).Elem(), &ZoneAttachment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneAttachmentArrayInput)(nil)).Elem(), ZoneAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneAttachmentMapInput)(nil)).Elem(), ZoneAttachmentMap{})
 	pulumi.RegisterOutputType(ZoneAttachmentOutput{})
-	pulumi.RegisterOutputType(ZoneAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(ZoneAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(ZoneAttachmentMapOutput{})
 }

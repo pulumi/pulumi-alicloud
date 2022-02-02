@@ -63,26 +63,24 @@ export class CustomerGateway extends pulumi.CustomResource {
      */
     constructor(name: string, args: CustomerGatewayArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CustomerGatewayArgs | CustomerGatewayState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomerGatewayState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["ipAddress"] = state ? state.ipAddress : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as CustomerGatewayArgs | undefined;
             if ((!args || args.ipAddress === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ipAddress'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["ipAddress"] = args ? args.ipAddress : undefined;
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CustomerGateway.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CustomerGateway.__pulumiType, name, resourceInputs, opts);
     }
 }
 

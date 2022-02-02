@@ -224,41 +224,41 @@ export class K8sApplication extends pulumi.CustomResource {
      */
     constructor(name: string, args: K8sApplicationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: K8sApplicationArgs | K8sApplicationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as K8sApplicationState | undefined;
-            inputs["applicationDescriotion"] = state ? state.applicationDescriotion : undefined;
-            inputs["applicationName"] = state ? state.applicationName : undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["command"] = state ? state.command : undefined;
-            inputs["commandArgs"] = state ? state.commandArgs : undefined;
-            inputs["edasContainerVersion"] = state ? state.edasContainerVersion : undefined;
-            inputs["envs"] = state ? state.envs : undefined;
-            inputs["imageUrl"] = state ? state.imageUrl : undefined;
-            inputs["internetSlbId"] = state ? state.internetSlbId : undefined;
-            inputs["internetSlbPort"] = state ? state.internetSlbPort : undefined;
-            inputs["internetSlbProtocol"] = state ? state.internetSlbProtocol : undefined;
-            inputs["internetTargetPort"] = state ? state.internetTargetPort : undefined;
-            inputs["jdk"] = state ? state.jdk : undefined;
-            inputs["limitMCpu"] = state ? state.limitMCpu : undefined;
-            inputs["limitMem"] = state ? state.limitMem : undefined;
-            inputs["liveness"] = state ? state.liveness : undefined;
-            inputs["localVolume"] = state ? state.localVolume : undefined;
-            inputs["logicalRegionId"] = state ? state.logicalRegionId : undefined;
-            inputs["mountDescs"] = state ? state.mountDescs : undefined;
-            inputs["namespace"] = state ? state.namespace : undefined;
-            inputs["nasId"] = state ? state.nasId : undefined;
-            inputs["packageType"] = state ? state.packageType : undefined;
-            inputs["packageUrl"] = state ? state.packageUrl : undefined;
-            inputs["packageVersion"] = state ? state.packageVersion : undefined;
-            inputs["postStart"] = state ? state.postStart : undefined;
-            inputs["preStop"] = state ? state.preStop : undefined;
-            inputs["readiness"] = state ? state.readiness : undefined;
-            inputs["replicas"] = state ? state.replicas : undefined;
-            inputs["requestsMCpu"] = state ? state.requestsMCpu : undefined;
-            inputs["requestsMem"] = state ? state.requestsMem : undefined;
-            inputs["webContainer"] = state ? state.webContainer : undefined;
+            resourceInputs["applicationDescriotion"] = state ? state.applicationDescriotion : undefined;
+            resourceInputs["applicationName"] = state ? state.applicationName : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["command"] = state ? state.command : undefined;
+            resourceInputs["commandArgs"] = state ? state.commandArgs : undefined;
+            resourceInputs["edasContainerVersion"] = state ? state.edasContainerVersion : undefined;
+            resourceInputs["envs"] = state ? state.envs : undefined;
+            resourceInputs["imageUrl"] = state ? state.imageUrl : undefined;
+            resourceInputs["internetSlbId"] = state ? state.internetSlbId : undefined;
+            resourceInputs["internetSlbPort"] = state ? state.internetSlbPort : undefined;
+            resourceInputs["internetSlbProtocol"] = state ? state.internetSlbProtocol : undefined;
+            resourceInputs["internetTargetPort"] = state ? state.internetTargetPort : undefined;
+            resourceInputs["jdk"] = state ? state.jdk : undefined;
+            resourceInputs["limitMCpu"] = state ? state.limitMCpu : undefined;
+            resourceInputs["limitMem"] = state ? state.limitMem : undefined;
+            resourceInputs["liveness"] = state ? state.liveness : undefined;
+            resourceInputs["localVolume"] = state ? state.localVolume : undefined;
+            resourceInputs["logicalRegionId"] = state ? state.logicalRegionId : undefined;
+            resourceInputs["mountDescs"] = state ? state.mountDescs : undefined;
+            resourceInputs["namespace"] = state ? state.namespace : undefined;
+            resourceInputs["nasId"] = state ? state.nasId : undefined;
+            resourceInputs["packageType"] = state ? state.packageType : undefined;
+            resourceInputs["packageUrl"] = state ? state.packageUrl : undefined;
+            resourceInputs["packageVersion"] = state ? state.packageVersion : undefined;
+            resourceInputs["postStart"] = state ? state.postStart : undefined;
+            resourceInputs["preStop"] = state ? state.preStop : undefined;
+            resourceInputs["readiness"] = state ? state.readiness : undefined;
+            resourceInputs["replicas"] = state ? state.replicas : undefined;
+            resourceInputs["requestsMCpu"] = state ? state.requestsMCpu : undefined;
+            resourceInputs["requestsMem"] = state ? state.requestsMem : undefined;
+            resourceInputs["webContainer"] = state ? state.webContainer : undefined;
         } else {
             const args = argsOrState as K8sApplicationArgs | undefined;
             if ((!args || args.applicationName === undefined) && !opts.urn) {
@@ -267,42 +267,40 @@ export class K8sApplication extends pulumi.CustomResource {
             if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            inputs["applicationDescriotion"] = args ? args.applicationDescriotion : undefined;
-            inputs["applicationName"] = args ? args.applicationName : undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["command"] = args ? args.command : undefined;
-            inputs["commandArgs"] = args ? args.commandArgs : undefined;
-            inputs["edasContainerVersion"] = args ? args.edasContainerVersion : undefined;
-            inputs["envs"] = args ? args.envs : undefined;
-            inputs["imageUrl"] = args ? args.imageUrl : undefined;
-            inputs["internetSlbId"] = args ? args.internetSlbId : undefined;
-            inputs["internetSlbPort"] = args ? args.internetSlbPort : undefined;
-            inputs["internetSlbProtocol"] = args ? args.internetSlbProtocol : undefined;
-            inputs["internetTargetPort"] = args ? args.internetTargetPort : undefined;
-            inputs["jdk"] = args ? args.jdk : undefined;
-            inputs["limitMCpu"] = args ? args.limitMCpu : undefined;
-            inputs["limitMem"] = args ? args.limitMem : undefined;
-            inputs["liveness"] = args ? args.liveness : undefined;
-            inputs["localVolume"] = args ? args.localVolume : undefined;
-            inputs["logicalRegionId"] = args ? args.logicalRegionId : undefined;
-            inputs["mountDescs"] = args ? args.mountDescs : undefined;
-            inputs["namespace"] = args ? args.namespace : undefined;
-            inputs["nasId"] = args ? args.nasId : undefined;
-            inputs["packageType"] = args ? args.packageType : undefined;
-            inputs["packageUrl"] = args ? args.packageUrl : undefined;
-            inputs["packageVersion"] = args ? args.packageVersion : undefined;
-            inputs["postStart"] = args ? args.postStart : undefined;
-            inputs["preStop"] = args ? args.preStop : undefined;
-            inputs["readiness"] = args ? args.readiness : undefined;
-            inputs["replicas"] = args ? args.replicas : undefined;
-            inputs["requestsMCpu"] = args ? args.requestsMCpu : undefined;
-            inputs["requestsMem"] = args ? args.requestsMem : undefined;
-            inputs["webContainer"] = args ? args.webContainer : undefined;
+            resourceInputs["applicationDescriotion"] = args ? args.applicationDescriotion : undefined;
+            resourceInputs["applicationName"] = args ? args.applicationName : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["command"] = args ? args.command : undefined;
+            resourceInputs["commandArgs"] = args ? args.commandArgs : undefined;
+            resourceInputs["edasContainerVersion"] = args ? args.edasContainerVersion : undefined;
+            resourceInputs["envs"] = args ? args.envs : undefined;
+            resourceInputs["imageUrl"] = args ? args.imageUrl : undefined;
+            resourceInputs["internetSlbId"] = args ? args.internetSlbId : undefined;
+            resourceInputs["internetSlbPort"] = args ? args.internetSlbPort : undefined;
+            resourceInputs["internetSlbProtocol"] = args ? args.internetSlbProtocol : undefined;
+            resourceInputs["internetTargetPort"] = args ? args.internetTargetPort : undefined;
+            resourceInputs["jdk"] = args ? args.jdk : undefined;
+            resourceInputs["limitMCpu"] = args ? args.limitMCpu : undefined;
+            resourceInputs["limitMem"] = args ? args.limitMem : undefined;
+            resourceInputs["liveness"] = args ? args.liveness : undefined;
+            resourceInputs["localVolume"] = args ? args.localVolume : undefined;
+            resourceInputs["logicalRegionId"] = args ? args.logicalRegionId : undefined;
+            resourceInputs["mountDescs"] = args ? args.mountDescs : undefined;
+            resourceInputs["namespace"] = args ? args.namespace : undefined;
+            resourceInputs["nasId"] = args ? args.nasId : undefined;
+            resourceInputs["packageType"] = args ? args.packageType : undefined;
+            resourceInputs["packageUrl"] = args ? args.packageUrl : undefined;
+            resourceInputs["packageVersion"] = args ? args.packageVersion : undefined;
+            resourceInputs["postStart"] = args ? args.postStart : undefined;
+            resourceInputs["preStop"] = args ? args.preStop : undefined;
+            resourceInputs["readiness"] = args ? args.readiness : undefined;
+            resourceInputs["replicas"] = args ? args.replicas : undefined;
+            resourceInputs["requestsMCpu"] = args ? args.requestsMCpu : undefined;
+            resourceInputs["requestsMem"] = args ? args.requestsMem : undefined;
+            resourceInputs["webContainer"] = args ? args.webContainer : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(K8sApplication.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(K8sApplication.__pulumiType, name, resourceInputs, opts);
     }
 }
 

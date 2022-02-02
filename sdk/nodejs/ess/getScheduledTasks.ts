@@ -30,9 +30,7 @@ export function getScheduledTasks(args?: GetScheduledTasksArgs, opts?: pulumi.In
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ess/getScheduledTasks:getScheduledTasks", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

@@ -221,43 +221,43 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            inputs["clientNodeAmount"] = state ? state.clientNodeAmount : undefined;
-            inputs["clientNodeSpec"] = state ? state.clientNodeSpec : undefined;
-            inputs["dataNodeAmount"] = state ? state.dataNodeAmount : undefined;
-            inputs["dataNodeDiskEncrypted"] = state ? state.dataNodeDiskEncrypted : undefined;
-            inputs["dataNodeDiskSize"] = state ? state.dataNodeDiskSize : undefined;
-            inputs["dataNodeDiskType"] = state ? state.dataNodeDiskType : undefined;
-            inputs["dataNodeSpec"] = state ? state.dataNodeSpec : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["domain"] = state ? state.domain : undefined;
-            inputs["enableKibanaPrivateNetwork"] = state ? state.enableKibanaPrivateNetwork : undefined;
-            inputs["enableKibanaPublicNetwork"] = state ? state.enableKibanaPublicNetwork : undefined;
-            inputs["enablePublic"] = state ? state.enablePublic : undefined;
-            inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            inputs["kibanaDomain"] = state ? state.kibanaDomain : undefined;
-            inputs["kibanaPort"] = state ? state.kibanaPort : undefined;
-            inputs["kibanaPrivateWhitelists"] = state ? state.kibanaPrivateWhitelists : undefined;
-            inputs["kibanaWhitelists"] = state ? state.kibanaWhitelists : undefined;
-            inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
-            inputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
-            inputs["masterNodeSpec"] = state ? state.masterNodeSpec : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["privateWhitelists"] = state ? state.privateWhitelists : undefined;
-            inputs["protocol"] = state ? state.protocol : undefined;
-            inputs["publicWhitelists"] = state ? state.publicWhitelists : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["settingConfig"] = state ? state.settingConfig : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["version"] = state ? state.version : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
-            inputs["zoneCount"] = state ? state.zoneCount : undefined;
+            resourceInputs["clientNodeAmount"] = state ? state.clientNodeAmount : undefined;
+            resourceInputs["clientNodeSpec"] = state ? state.clientNodeSpec : undefined;
+            resourceInputs["dataNodeAmount"] = state ? state.dataNodeAmount : undefined;
+            resourceInputs["dataNodeDiskEncrypted"] = state ? state.dataNodeDiskEncrypted : undefined;
+            resourceInputs["dataNodeDiskSize"] = state ? state.dataNodeDiskSize : undefined;
+            resourceInputs["dataNodeDiskType"] = state ? state.dataNodeDiskType : undefined;
+            resourceInputs["dataNodeSpec"] = state ? state.dataNodeSpec : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["enableKibanaPrivateNetwork"] = state ? state.enableKibanaPrivateNetwork : undefined;
+            resourceInputs["enableKibanaPublicNetwork"] = state ? state.enableKibanaPublicNetwork : undefined;
+            resourceInputs["enablePublic"] = state ? state.enablePublic : undefined;
+            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
+            resourceInputs["kibanaDomain"] = state ? state.kibanaDomain : undefined;
+            resourceInputs["kibanaPort"] = state ? state.kibanaPort : undefined;
+            resourceInputs["kibanaPrivateWhitelists"] = state ? state.kibanaPrivateWhitelists : undefined;
+            resourceInputs["kibanaWhitelists"] = state ? state.kibanaWhitelists : undefined;
+            resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
+            resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
+            resourceInputs["masterNodeSpec"] = state ? state.masterNodeSpec : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["privateWhitelists"] = state ? state.privateWhitelists : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["publicWhitelists"] = state ? state.publicWhitelists : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["settingConfig"] = state ? state.settingConfig : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["zoneCount"] = state ? state.zoneCount : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.dataNodeAmount === undefined) && !opts.urn) {
@@ -278,44 +278,42 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            inputs["clientNodeAmount"] = args ? args.clientNodeAmount : undefined;
-            inputs["clientNodeSpec"] = args ? args.clientNodeSpec : undefined;
-            inputs["dataNodeAmount"] = args ? args.dataNodeAmount : undefined;
-            inputs["dataNodeDiskEncrypted"] = args ? args.dataNodeDiskEncrypted : undefined;
-            inputs["dataNodeDiskSize"] = args ? args.dataNodeDiskSize : undefined;
-            inputs["dataNodeDiskType"] = args ? args.dataNodeDiskType : undefined;
-            inputs["dataNodeSpec"] = args ? args.dataNodeSpec : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enableKibanaPrivateNetwork"] = args ? args.enableKibanaPrivateNetwork : undefined;
-            inputs["enableKibanaPublicNetwork"] = args ? args.enableKibanaPublicNetwork : undefined;
-            inputs["enablePublic"] = args ? args.enablePublic : undefined;
-            inputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            inputs["kibanaPrivateWhitelists"] = args ? args.kibanaPrivateWhitelists : undefined;
-            inputs["kibanaWhitelists"] = args ? args.kibanaWhitelists : undefined;
-            inputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
-            inputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
-            inputs["masterNodeSpec"] = args ? args.masterNodeSpec : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["privateWhitelists"] = args ? args.privateWhitelists : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["publicWhitelists"] = args ? args.publicWhitelists : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["settingConfig"] = args ? args.settingConfig : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["zoneCount"] = args ? args.zoneCount : undefined;
-            inputs["domain"] = undefined /*out*/;
-            inputs["kibanaDomain"] = undefined /*out*/;
-            inputs["kibanaPort"] = undefined /*out*/;
-            inputs["port"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["clientNodeAmount"] = args ? args.clientNodeAmount : undefined;
+            resourceInputs["clientNodeSpec"] = args ? args.clientNodeSpec : undefined;
+            resourceInputs["dataNodeAmount"] = args ? args.dataNodeAmount : undefined;
+            resourceInputs["dataNodeDiskEncrypted"] = args ? args.dataNodeDiskEncrypted : undefined;
+            resourceInputs["dataNodeDiskSize"] = args ? args.dataNodeDiskSize : undefined;
+            resourceInputs["dataNodeDiskType"] = args ? args.dataNodeDiskType : undefined;
+            resourceInputs["dataNodeSpec"] = args ? args.dataNodeSpec : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableKibanaPrivateNetwork"] = args ? args.enableKibanaPrivateNetwork : undefined;
+            resourceInputs["enableKibanaPublicNetwork"] = args ? args.enableKibanaPublicNetwork : undefined;
+            resourceInputs["enablePublic"] = args ? args.enablePublic : undefined;
+            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
+            resourceInputs["kibanaPrivateWhitelists"] = args ? args.kibanaPrivateWhitelists : undefined;
+            resourceInputs["kibanaWhitelists"] = args ? args.kibanaWhitelists : undefined;
+            resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
+            resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
+            resourceInputs["masterNodeSpec"] = args ? args.masterNodeSpec : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["privateWhitelists"] = args ? args.privateWhitelists : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["publicWhitelists"] = args ? args.publicWhitelists : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["settingConfig"] = args ? args.settingConfig : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["zoneCount"] = args ? args.zoneCount : undefined;
+            resourceInputs["domain"] = undefined /*out*/;
+            resourceInputs["kibanaDomain"] = undefined /*out*/;
+            resourceInputs["kibanaPort"] = undefined /*out*/;
+            resourceInputs["port"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Instance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

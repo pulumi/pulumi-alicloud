@@ -27,9 +27,7 @@ export function getRouteEntries(args: GetRouteEntriesArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cen/getRouteEntries:getRouteEntries", {
         "cidrBlock": args.cidrBlock,
         "instanceId": args.instanceId,

@@ -179,26 +179,26 @@ export class EndpointGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: EndpointGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EndpointGroupArgs | EndpointGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EndpointGroupState | undefined;
-            inputs["acceleratorId"] = state ? state.acceleratorId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["endpointConfigurations"] = state ? state.endpointConfigurations : undefined;
-            inputs["endpointGroupRegion"] = state ? state.endpointGroupRegion : undefined;
-            inputs["endpointGroupType"] = state ? state.endpointGroupType : undefined;
-            inputs["endpointRequestProtocol"] = state ? state.endpointRequestProtocol : undefined;
-            inputs["healthCheckIntervalSeconds"] = state ? state.healthCheckIntervalSeconds : undefined;
-            inputs["healthCheckPath"] = state ? state.healthCheckPath : undefined;
-            inputs["healthCheckPort"] = state ? state.healthCheckPort : undefined;
-            inputs["healthCheckProtocol"] = state ? state.healthCheckProtocol : undefined;
-            inputs["listenerId"] = state ? state.listenerId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["portOverrides"] = state ? state.portOverrides : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["thresholdCount"] = state ? state.thresholdCount : undefined;
-            inputs["trafficPercentage"] = state ? state.trafficPercentage : undefined;
+            resourceInputs["acceleratorId"] = state ? state.acceleratorId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["endpointConfigurations"] = state ? state.endpointConfigurations : undefined;
+            resourceInputs["endpointGroupRegion"] = state ? state.endpointGroupRegion : undefined;
+            resourceInputs["endpointGroupType"] = state ? state.endpointGroupType : undefined;
+            resourceInputs["endpointRequestProtocol"] = state ? state.endpointRequestProtocol : undefined;
+            resourceInputs["healthCheckIntervalSeconds"] = state ? state.healthCheckIntervalSeconds : undefined;
+            resourceInputs["healthCheckPath"] = state ? state.healthCheckPath : undefined;
+            resourceInputs["healthCheckPort"] = state ? state.healthCheckPort : undefined;
+            resourceInputs["healthCheckProtocol"] = state ? state.healthCheckProtocol : undefined;
+            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["portOverrides"] = state ? state.portOverrides : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["thresholdCount"] = state ? state.thresholdCount : undefined;
+            resourceInputs["trafficPercentage"] = state ? state.trafficPercentage : undefined;
         } else {
             const args = argsOrState as EndpointGroupArgs | undefined;
             if ((!args || args.acceleratorId === undefined) && !opts.urn) {
@@ -213,27 +213,25 @@ export class EndpointGroup extends pulumi.CustomResource {
             if ((!args || args.listenerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'listenerId'");
             }
-            inputs["acceleratorId"] = args ? args.acceleratorId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["endpointConfigurations"] = args ? args.endpointConfigurations : undefined;
-            inputs["endpointGroupRegion"] = args ? args.endpointGroupRegion : undefined;
-            inputs["endpointGroupType"] = args ? args.endpointGroupType : undefined;
-            inputs["endpointRequestProtocol"] = args ? args.endpointRequestProtocol : undefined;
-            inputs["healthCheckIntervalSeconds"] = args ? args.healthCheckIntervalSeconds : undefined;
-            inputs["healthCheckPath"] = args ? args.healthCheckPath : undefined;
-            inputs["healthCheckPort"] = args ? args.healthCheckPort : undefined;
-            inputs["healthCheckProtocol"] = args ? args.healthCheckProtocol : undefined;
-            inputs["listenerId"] = args ? args.listenerId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["portOverrides"] = args ? args.portOverrides : undefined;
-            inputs["thresholdCount"] = args ? args.thresholdCount : undefined;
-            inputs["trafficPercentage"] = args ? args.trafficPercentage : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["acceleratorId"] = args ? args.acceleratorId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["endpointConfigurations"] = args ? args.endpointConfigurations : undefined;
+            resourceInputs["endpointGroupRegion"] = args ? args.endpointGroupRegion : undefined;
+            resourceInputs["endpointGroupType"] = args ? args.endpointGroupType : undefined;
+            resourceInputs["endpointRequestProtocol"] = args ? args.endpointRequestProtocol : undefined;
+            resourceInputs["healthCheckIntervalSeconds"] = args ? args.healthCheckIntervalSeconds : undefined;
+            resourceInputs["healthCheckPath"] = args ? args.healthCheckPath : undefined;
+            resourceInputs["healthCheckPort"] = args ? args.healthCheckPort : undefined;
+            resourceInputs["healthCheckProtocol"] = args ? args.healthCheckProtocol : undefined;
+            resourceInputs["listenerId"] = args ? args.listenerId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["portOverrides"] = args ? args.portOverrides : undefined;
+            resourceInputs["thresholdCount"] = args ? args.thresholdCount : undefined;
+            resourceInputs["trafficPercentage"] = args ? args.trafficPercentage : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EndpointGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EndpointGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

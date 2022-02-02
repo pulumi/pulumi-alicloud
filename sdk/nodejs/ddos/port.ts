@@ -103,15 +103,15 @@ export class Port extends pulumi.CustomResource {
      */
     constructor(name: string, args: PortArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PortArgs | PortState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PortState | undefined;
-            inputs["backendPort"] = state ? state.backendPort : undefined;
-            inputs["frontendPort"] = state ? state.frontendPort : undefined;
-            inputs["frontendProtocol"] = state ? state.frontendProtocol : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["realServers"] = state ? state.realServers : undefined;
+            resourceInputs["backendPort"] = state ? state.backendPort : undefined;
+            resourceInputs["frontendPort"] = state ? state.frontendPort : undefined;
+            resourceInputs["frontendProtocol"] = state ? state.frontendProtocol : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["realServers"] = state ? state.realServers : undefined;
         } else {
             const args = argsOrState as PortArgs | undefined;
             if ((!args || args.frontendPort === undefined) && !opts.urn) {
@@ -126,16 +126,14 @@ export class Port extends pulumi.CustomResource {
             if ((!args || args.realServers === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'realServers'");
             }
-            inputs["backendPort"] = args ? args.backendPort : undefined;
-            inputs["frontendPort"] = args ? args.frontendPort : undefined;
-            inputs["frontendProtocol"] = args ? args.frontendProtocol : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["realServers"] = args ? args.realServers : undefined;
+            resourceInputs["backendPort"] = args ? args.backendPort : undefined;
+            resourceInputs["frontendPort"] = args ? args.frontendPort : undefined;
+            resourceInputs["frontendProtocol"] = args ? args.frontendProtocol : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["realServers"] = args ? args.realServers : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Port.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Port.__pulumiType, name, resourceInputs, opts);
     }
 }
 

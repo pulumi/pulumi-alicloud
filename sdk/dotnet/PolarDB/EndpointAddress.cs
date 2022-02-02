@@ -52,10 +52,10 @@ namespace Pulumi.AliCloud.PolarDB
     ///             VswitchId = defaultSwitch.Id,
     ///             Description = name,
     ///         });
-    ///         var defaultEndpoints = defaultCluster.Id.Apply(id =&gt; AliCloud.PolarDB.GetEndpoints.InvokeAsync(new AliCloud.PolarDB.GetEndpointsArgs
+    ///         var defaultEndpoints = AliCloud.PolarDB.GetEndpoints.Invoke(new AliCloud.PolarDB.GetEndpointsInvokeArgs
     ///         {
-    ///             DbClusterId = id,
-    ///         }));
+    ///             DbClusterId = defaultCluster.Id,
+    ///         });
     ///         var endpoint = new AliCloud.PolarDB.EndpointAddress("endpoint", new AliCloud.PolarDB.EndpointAddressArgs
     ///         {
     ///             DbClusterId = defaultCluster.Id,

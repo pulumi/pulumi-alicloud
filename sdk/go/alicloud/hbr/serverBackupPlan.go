@@ -206,7 +206,7 @@ type ServerBackupPlanInput interface {
 }
 
 func (*ServerBackupPlan) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerBackupPlan)(nil))
+	return reflect.TypeOf((**ServerBackupPlan)(nil)).Elem()
 }
 
 func (i *ServerBackupPlan) ToServerBackupPlanOutput() ServerBackupPlanOutput {
@@ -215,35 +215,6 @@ func (i *ServerBackupPlan) ToServerBackupPlanOutput() ServerBackupPlanOutput {
 
 func (i *ServerBackupPlan) ToServerBackupPlanOutputWithContext(ctx context.Context) ServerBackupPlanOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerBackupPlanOutput)
-}
-
-func (i *ServerBackupPlan) ToServerBackupPlanPtrOutput() ServerBackupPlanPtrOutput {
-	return i.ToServerBackupPlanPtrOutputWithContext(context.Background())
-}
-
-func (i *ServerBackupPlan) ToServerBackupPlanPtrOutputWithContext(ctx context.Context) ServerBackupPlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerBackupPlanPtrOutput)
-}
-
-type ServerBackupPlanPtrInput interface {
-	pulumi.Input
-
-	ToServerBackupPlanPtrOutput() ServerBackupPlanPtrOutput
-	ToServerBackupPlanPtrOutputWithContext(ctx context.Context) ServerBackupPlanPtrOutput
-}
-
-type serverBackupPlanPtrType ServerBackupPlanArgs
-
-func (*serverBackupPlanPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServerBackupPlan)(nil))
-}
-
-func (i *serverBackupPlanPtrType) ToServerBackupPlanPtrOutput() ServerBackupPlanPtrOutput {
-	return i.ToServerBackupPlanPtrOutputWithContext(context.Background())
-}
-
-func (i *serverBackupPlanPtrType) ToServerBackupPlanPtrOutputWithContext(ctx context.Context) ServerBackupPlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerBackupPlanPtrOutput)
 }
 
 // ServerBackupPlanArrayInput is an input type that accepts ServerBackupPlanArray and ServerBackupPlanArrayOutput values.
@@ -299,7 +270,7 @@ func (i ServerBackupPlanMap) ToServerBackupPlanMapOutputWithContext(ctx context.
 type ServerBackupPlanOutput struct{ *pulumi.OutputState }
 
 func (ServerBackupPlanOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerBackupPlan)(nil))
+	return reflect.TypeOf((**ServerBackupPlan)(nil)).Elem()
 }
 
 func (o ServerBackupPlanOutput) ToServerBackupPlanOutput() ServerBackupPlanOutput {
@@ -310,44 +281,10 @@ func (o ServerBackupPlanOutput) ToServerBackupPlanOutputWithContext(ctx context.
 	return o
 }
 
-func (o ServerBackupPlanOutput) ToServerBackupPlanPtrOutput() ServerBackupPlanPtrOutput {
-	return o.ToServerBackupPlanPtrOutputWithContext(context.Background())
-}
-
-func (o ServerBackupPlanOutput) ToServerBackupPlanPtrOutputWithContext(ctx context.Context) ServerBackupPlanPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerBackupPlan) *ServerBackupPlan {
-		return &v
-	}).(ServerBackupPlanPtrOutput)
-}
-
-type ServerBackupPlanPtrOutput struct{ *pulumi.OutputState }
-
-func (ServerBackupPlanPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServerBackupPlan)(nil))
-}
-
-func (o ServerBackupPlanPtrOutput) ToServerBackupPlanPtrOutput() ServerBackupPlanPtrOutput {
-	return o
-}
-
-func (o ServerBackupPlanPtrOutput) ToServerBackupPlanPtrOutputWithContext(ctx context.Context) ServerBackupPlanPtrOutput {
-	return o
-}
-
-func (o ServerBackupPlanPtrOutput) Elem() ServerBackupPlanOutput {
-	return o.ApplyT(func(v *ServerBackupPlan) ServerBackupPlan {
-		if v != nil {
-			return *v
-		}
-		var ret ServerBackupPlan
-		return ret
-	}).(ServerBackupPlanOutput)
-}
-
 type ServerBackupPlanArrayOutput struct{ *pulumi.OutputState }
 
 func (ServerBackupPlanArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServerBackupPlan)(nil))
+	return reflect.TypeOf((*[]*ServerBackupPlan)(nil)).Elem()
 }
 
 func (o ServerBackupPlanArrayOutput) ToServerBackupPlanArrayOutput() ServerBackupPlanArrayOutput {
@@ -359,15 +296,15 @@ func (o ServerBackupPlanArrayOutput) ToServerBackupPlanArrayOutputWithContext(ct
 }
 
 func (o ServerBackupPlanArrayOutput) Index(i pulumi.IntInput) ServerBackupPlanOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerBackupPlan {
-		return vs[0].([]ServerBackupPlan)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServerBackupPlan {
+		return vs[0].([]*ServerBackupPlan)[vs[1].(int)]
 	}).(ServerBackupPlanOutput)
 }
 
 type ServerBackupPlanMapOutput struct{ *pulumi.OutputState }
 
 func (ServerBackupPlanMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ServerBackupPlan)(nil))
+	return reflect.TypeOf((*map[string]*ServerBackupPlan)(nil)).Elem()
 }
 
 func (o ServerBackupPlanMapOutput) ToServerBackupPlanMapOutput() ServerBackupPlanMapOutput {
@@ -379,18 +316,16 @@ func (o ServerBackupPlanMapOutput) ToServerBackupPlanMapOutputWithContext(ctx co
 }
 
 func (o ServerBackupPlanMapOutput) MapIndex(k pulumi.StringInput) ServerBackupPlanOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServerBackupPlan {
-		return vs[0].(map[string]ServerBackupPlan)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ServerBackupPlan {
+		return vs[0].(map[string]*ServerBackupPlan)[vs[1].(string)]
 	}).(ServerBackupPlanOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBackupPlanInput)(nil)).Elem(), &ServerBackupPlan{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServerBackupPlanPtrInput)(nil)).Elem(), &ServerBackupPlan{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBackupPlanArrayInput)(nil)).Elem(), ServerBackupPlanArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBackupPlanMapInput)(nil)).Elem(), ServerBackupPlanMap{})
 	pulumi.RegisterOutputType(ServerBackupPlanOutput{})
-	pulumi.RegisterOutputType(ServerBackupPlanPtrOutput{})
 	pulumi.RegisterOutputType(ServerBackupPlanArrayOutput{})
 	pulumi.RegisterOutputType(ServerBackupPlanMapOutput{})
 }

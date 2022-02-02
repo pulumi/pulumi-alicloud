@@ -138,18 +138,18 @@ export class FunctionAsyncInvokeConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args: FunctionAsyncInvokeConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FunctionAsyncInvokeConfigArgs | FunctionAsyncInvokeConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FunctionAsyncInvokeConfigState | undefined;
-            inputs["createdTime"] = state ? state.createdTime : undefined;
-            inputs["destinationConfig"] = state ? state.destinationConfig : undefined;
-            inputs["functionName"] = state ? state.functionName : undefined;
-            inputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
-            inputs["maximumEventAgeInSeconds"] = state ? state.maximumEventAgeInSeconds : undefined;
-            inputs["maximumRetryAttempts"] = state ? state.maximumRetryAttempts : undefined;
-            inputs["qualifier"] = state ? state.qualifier : undefined;
-            inputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["createdTime"] = state ? state.createdTime : undefined;
+            resourceInputs["destinationConfig"] = state ? state.destinationConfig : undefined;
+            resourceInputs["functionName"] = state ? state.functionName : undefined;
+            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
+            resourceInputs["maximumEventAgeInSeconds"] = state ? state.maximumEventAgeInSeconds : undefined;
+            resourceInputs["maximumRetryAttempts"] = state ? state.maximumRetryAttempts : undefined;
+            resourceInputs["qualifier"] = state ? state.qualifier : undefined;
+            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
         } else {
             const args = argsOrState as FunctionAsyncInvokeConfigArgs | undefined;
             if ((!args || args.functionName === undefined) && !opts.urn) {
@@ -158,19 +158,17 @@ export class FunctionAsyncInvokeConfig extends pulumi.CustomResource {
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            inputs["destinationConfig"] = args ? args.destinationConfig : undefined;
-            inputs["functionName"] = args ? args.functionName : undefined;
-            inputs["maximumEventAgeInSeconds"] = args ? args.maximumEventAgeInSeconds : undefined;
-            inputs["maximumRetryAttempts"] = args ? args.maximumRetryAttempts : undefined;
-            inputs["qualifier"] = args ? args.qualifier : undefined;
-            inputs["serviceName"] = args ? args.serviceName : undefined;
-            inputs["createdTime"] = undefined /*out*/;
-            inputs["lastModifiedTime"] = undefined /*out*/;
+            resourceInputs["destinationConfig"] = args ? args.destinationConfig : undefined;
+            resourceInputs["functionName"] = args ? args.functionName : undefined;
+            resourceInputs["maximumEventAgeInSeconds"] = args ? args.maximumEventAgeInSeconds : undefined;
+            resourceInputs["maximumRetryAttempts"] = args ? args.maximumRetryAttempts : undefined;
+            resourceInputs["qualifier"] = args ? args.qualifier : undefined;
+            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["createdTime"] = undefined /*out*/;
+            resourceInputs["lastModifiedTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(FunctionAsyncInvokeConfig.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(FunctionAsyncInvokeConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

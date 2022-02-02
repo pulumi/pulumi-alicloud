@@ -32,9 +32,7 @@ export function getDispatchRules(args?: GetDispatchRulesArgs, opts?: pulumi.Invo
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:arms/getDispatchRules:getDispatchRules", {
         "dispatchRuleName": args.dispatchRuleName,
         "enableDetails": args.enableDetails,

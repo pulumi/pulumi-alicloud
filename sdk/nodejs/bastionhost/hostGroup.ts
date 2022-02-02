@@ -87,14 +87,14 @@ export class HostGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: HostGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HostGroupArgs | HostGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostGroupState | undefined;
-            inputs["comment"] = state ? state.comment : undefined;
-            inputs["hostGroupId"] = state ? state.hostGroupId : undefined;
-            inputs["hostGroupName"] = state ? state.hostGroupName : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["hostGroupId"] = state ? state.hostGroupId : undefined;
+            resourceInputs["hostGroupName"] = state ? state.hostGroupName : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
         } else {
             const args = argsOrState as HostGroupArgs | undefined;
             if ((!args || args.hostGroupName === undefined) && !opts.urn) {
@@ -103,15 +103,13 @@ export class HostGroup extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["comment"] = args ? args.comment : undefined;
-            inputs["hostGroupName"] = args ? args.hostGroupName : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["hostGroupId"] = undefined /*out*/;
+            resourceInputs["comment"] = args ? args.comment : undefined;
+            resourceInputs["hostGroupName"] = args ? args.hostGroupName : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["hostGroupId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(HostGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(HostGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

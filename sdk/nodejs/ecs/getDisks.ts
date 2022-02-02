@@ -11,9 +11,7 @@ export function getDisks(args?: GetDisksArgs, opts?: pulumi.InvokeOptions): Prom
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ecs/getDisks:getDisks", {
         "additionalAttributes": args.additionalAttributes,
         "autoSnapshotPolicyId": args.autoSnapshotPolicyId,
