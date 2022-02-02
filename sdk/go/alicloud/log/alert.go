@@ -309,7 +309,7 @@ type AlertInput interface {
 }
 
 func (*Alert) ElementType() reflect.Type {
-	return reflect.TypeOf((*Alert)(nil))
+	return reflect.TypeOf((**Alert)(nil)).Elem()
 }
 
 func (i *Alert) ToAlertOutput() AlertOutput {
@@ -318,35 +318,6 @@ func (i *Alert) ToAlertOutput() AlertOutput {
 
 func (i *Alert) ToAlertOutputWithContext(ctx context.Context) AlertOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlertOutput)
-}
-
-func (i *Alert) ToAlertPtrOutput() AlertPtrOutput {
-	return i.ToAlertPtrOutputWithContext(context.Background())
-}
-
-func (i *Alert) ToAlertPtrOutputWithContext(ctx context.Context) AlertPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AlertPtrOutput)
-}
-
-type AlertPtrInput interface {
-	pulumi.Input
-
-	ToAlertPtrOutput() AlertPtrOutput
-	ToAlertPtrOutputWithContext(ctx context.Context) AlertPtrOutput
-}
-
-type alertPtrType AlertArgs
-
-func (*alertPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Alert)(nil))
-}
-
-func (i *alertPtrType) ToAlertPtrOutput() AlertPtrOutput {
-	return i.ToAlertPtrOutputWithContext(context.Background())
-}
-
-func (i *alertPtrType) ToAlertPtrOutputWithContext(ctx context.Context) AlertPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AlertPtrOutput)
 }
 
 // AlertArrayInput is an input type that accepts AlertArray and AlertArrayOutput values.
@@ -402,7 +373,7 @@ func (i AlertMap) ToAlertMapOutputWithContext(ctx context.Context) AlertMapOutpu
 type AlertOutput struct{ *pulumi.OutputState }
 
 func (AlertOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Alert)(nil))
+	return reflect.TypeOf((**Alert)(nil)).Elem()
 }
 
 func (o AlertOutput) ToAlertOutput() AlertOutput {
@@ -413,44 +384,10 @@ func (o AlertOutput) ToAlertOutputWithContext(ctx context.Context) AlertOutput {
 	return o
 }
 
-func (o AlertOutput) ToAlertPtrOutput() AlertPtrOutput {
-	return o.ToAlertPtrOutputWithContext(context.Background())
-}
-
-func (o AlertOutput) ToAlertPtrOutputWithContext(ctx context.Context) AlertPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Alert) *Alert {
-		return &v
-	}).(AlertPtrOutput)
-}
-
-type AlertPtrOutput struct{ *pulumi.OutputState }
-
-func (AlertPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Alert)(nil))
-}
-
-func (o AlertPtrOutput) ToAlertPtrOutput() AlertPtrOutput {
-	return o
-}
-
-func (o AlertPtrOutput) ToAlertPtrOutputWithContext(ctx context.Context) AlertPtrOutput {
-	return o
-}
-
-func (o AlertPtrOutput) Elem() AlertOutput {
-	return o.ApplyT(func(v *Alert) Alert {
-		if v != nil {
-			return *v
-		}
-		var ret Alert
-		return ret
-	}).(AlertOutput)
-}
-
 type AlertArrayOutput struct{ *pulumi.OutputState }
 
 func (AlertArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Alert)(nil))
+	return reflect.TypeOf((*[]*Alert)(nil)).Elem()
 }
 
 func (o AlertArrayOutput) ToAlertArrayOutput() AlertArrayOutput {
@@ -462,15 +399,15 @@ func (o AlertArrayOutput) ToAlertArrayOutputWithContext(ctx context.Context) Ale
 }
 
 func (o AlertArrayOutput) Index(i pulumi.IntInput) AlertOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Alert {
-		return vs[0].([]Alert)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Alert {
+		return vs[0].([]*Alert)[vs[1].(int)]
 	}).(AlertOutput)
 }
 
 type AlertMapOutput struct{ *pulumi.OutputState }
 
 func (AlertMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Alert)(nil))
+	return reflect.TypeOf((*map[string]*Alert)(nil)).Elem()
 }
 
 func (o AlertMapOutput) ToAlertMapOutput() AlertMapOutput {
@@ -482,18 +419,16 @@ func (o AlertMapOutput) ToAlertMapOutputWithContext(ctx context.Context) AlertMa
 }
 
 func (o AlertMapOutput) MapIndex(k pulumi.StringInput) AlertOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Alert {
-		return vs[0].(map[string]Alert)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Alert {
+		return vs[0].(map[string]*Alert)[vs[1].(string)]
 	}).(AlertOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertInput)(nil)).Elem(), &Alert{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AlertPtrInput)(nil)).Elem(), &Alert{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertArrayInput)(nil)).Elem(), AlertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertMapInput)(nil)).Elem(), AlertMap{})
 	pulumi.RegisterOutputType(AlertOutput{})
-	pulumi.RegisterOutputType(AlertPtrOutput{})
 	pulumi.RegisterOutputType(AlertArrayOutput{})
 	pulumi.RegisterOutputType(AlertMapOutput{})
 }

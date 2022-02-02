@@ -79,12 +79,12 @@ export class KeyPair extends pulumi.CustomResource {
      */
     constructor(name: string, args: KeyPairArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KeyPairArgs | KeyPairState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeyPairState | undefined;
-            inputs["keyPairName"] = state ? state.keyPairName : undefined;
-            inputs["publicKeyBody"] = state ? state.publicKeyBody : undefined;
+            resourceInputs["keyPairName"] = state ? state.keyPairName : undefined;
+            resourceInputs["publicKeyBody"] = state ? state.publicKeyBody : undefined;
         } else {
             const args = argsOrState as KeyPairArgs | undefined;
             if ((!args || args.keyPairName === undefined) && !opts.urn) {
@@ -93,13 +93,11 @@ export class KeyPair extends pulumi.CustomResource {
             if ((!args || args.publicKeyBody === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'publicKeyBody'");
             }
-            inputs["keyPairName"] = args ? args.keyPairName : undefined;
-            inputs["publicKeyBody"] = args ? args.publicKeyBody : undefined;
+            resourceInputs["keyPairName"] = args ? args.keyPairName : undefined;
+            resourceInputs["publicKeyBody"] = args ? args.publicKeyBody : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(KeyPair.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(KeyPair.__pulumiType, name, resourceInputs, opts);
     }
 }
 

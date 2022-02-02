@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Eds
 {
@@ -43,7 +42,7 @@ namespace Pulumi.AliCloud.Eds
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBundlesResult> InvokeAsync(GetBundlesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBundlesResult>("alicloud:eds/getBundles:getBundles", args ?? new GetBundlesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBundlesResult>("alicloud:eds/getBundles:getBundles", args ?? new GetBundlesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecd bundles of the current Alibaba Cloud user.
@@ -76,7 +75,7 @@ namespace Pulumi.AliCloud.Eds
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBundlesResult> Invoke(GetBundlesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBundlesResult>("alicloud:eds/getBundles:getBundles", args ?? new GetBundlesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetBundlesResult>("alicloud:eds/getBundles:getBundles", args ?? new GetBundlesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CloudStorageGateway
 {
@@ -59,7 +58,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGatewayBlockVolumesResult> InvokeAsync(GetGatewayBlockVolumesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGatewayBlockVolumesResult>("alicloud:cloudstoragegateway/getGatewayBlockVolumes:getGatewayBlockVolumes", args ?? new GetGatewayBlockVolumesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGatewayBlockVolumesResult>("alicloud:cloudstoragegateway/getGatewayBlockVolumes:getGatewayBlockVolumes", args ?? new GetGatewayBlockVolumesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cloud Storage Gateway Gateway Block Volumes of the current Alibaba Cloud user.
@@ -108,7 +107,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGatewayBlockVolumesResult> Invoke(GetGatewayBlockVolumesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGatewayBlockVolumesResult>("alicloud:cloudstoragegateway/getGatewayBlockVolumes:getGatewayBlockVolumes", args ?? new GetGatewayBlockVolumesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetGatewayBlockVolumesResult>("alicloud:cloudstoragegateway/getGatewayBlockVolumes:getGatewayBlockVolumes", args ?? new GetGatewayBlockVolumesInvokeArgs(), options.WithDefaults());
     }
 
 

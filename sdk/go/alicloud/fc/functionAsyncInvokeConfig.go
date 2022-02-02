@@ -247,7 +247,7 @@ type FunctionAsyncInvokeConfigInput interface {
 }
 
 func (*FunctionAsyncInvokeConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*FunctionAsyncInvokeConfig)(nil))
+	return reflect.TypeOf((**FunctionAsyncInvokeConfig)(nil)).Elem()
 }
 
 func (i *FunctionAsyncInvokeConfig) ToFunctionAsyncInvokeConfigOutput() FunctionAsyncInvokeConfigOutput {
@@ -256,35 +256,6 @@ func (i *FunctionAsyncInvokeConfig) ToFunctionAsyncInvokeConfigOutput() Function
 
 func (i *FunctionAsyncInvokeConfig) ToFunctionAsyncInvokeConfigOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionAsyncInvokeConfigOutput)
-}
-
-func (i *FunctionAsyncInvokeConfig) ToFunctionAsyncInvokeConfigPtrOutput() FunctionAsyncInvokeConfigPtrOutput {
-	return i.ToFunctionAsyncInvokeConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *FunctionAsyncInvokeConfig) ToFunctionAsyncInvokeConfigPtrOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAsyncInvokeConfigPtrOutput)
-}
-
-type FunctionAsyncInvokeConfigPtrInput interface {
-	pulumi.Input
-
-	ToFunctionAsyncInvokeConfigPtrOutput() FunctionAsyncInvokeConfigPtrOutput
-	ToFunctionAsyncInvokeConfigPtrOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigPtrOutput
-}
-
-type functionAsyncInvokeConfigPtrType FunctionAsyncInvokeConfigArgs
-
-func (*functionAsyncInvokeConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FunctionAsyncInvokeConfig)(nil))
-}
-
-func (i *functionAsyncInvokeConfigPtrType) ToFunctionAsyncInvokeConfigPtrOutput() FunctionAsyncInvokeConfigPtrOutput {
-	return i.ToFunctionAsyncInvokeConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *functionAsyncInvokeConfigPtrType) ToFunctionAsyncInvokeConfigPtrOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionAsyncInvokeConfigPtrOutput)
 }
 
 // FunctionAsyncInvokeConfigArrayInput is an input type that accepts FunctionAsyncInvokeConfigArray and FunctionAsyncInvokeConfigArrayOutput values.
@@ -340,7 +311,7 @@ func (i FunctionAsyncInvokeConfigMap) ToFunctionAsyncInvokeConfigMapOutputWithCo
 type FunctionAsyncInvokeConfigOutput struct{ *pulumi.OutputState }
 
 func (FunctionAsyncInvokeConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FunctionAsyncInvokeConfig)(nil))
+	return reflect.TypeOf((**FunctionAsyncInvokeConfig)(nil)).Elem()
 }
 
 func (o FunctionAsyncInvokeConfigOutput) ToFunctionAsyncInvokeConfigOutput() FunctionAsyncInvokeConfigOutput {
@@ -351,44 +322,10 @@ func (o FunctionAsyncInvokeConfigOutput) ToFunctionAsyncInvokeConfigOutputWithCo
 	return o
 }
 
-func (o FunctionAsyncInvokeConfigOutput) ToFunctionAsyncInvokeConfigPtrOutput() FunctionAsyncInvokeConfigPtrOutput {
-	return o.ToFunctionAsyncInvokeConfigPtrOutputWithContext(context.Background())
-}
-
-func (o FunctionAsyncInvokeConfigOutput) ToFunctionAsyncInvokeConfigPtrOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionAsyncInvokeConfig) *FunctionAsyncInvokeConfig {
-		return &v
-	}).(FunctionAsyncInvokeConfigPtrOutput)
-}
-
-type FunctionAsyncInvokeConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (FunctionAsyncInvokeConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FunctionAsyncInvokeConfig)(nil))
-}
-
-func (o FunctionAsyncInvokeConfigPtrOutput) ToFunctionAsyncInvokeConfigPtrOutput() FunctionAsyncInvokeConfigPtrOutput {
-	return o
-}
-
-func (o FunctionAsyncInvokeConfigPtrOutput) ToFunctionAsyncInvokeConfigPtrOutputWithContext(ctx context.Context) FunctionAsyncInvokeConfigPtrOutput {
-	return o
-}
-
-func (o FunctionAsyncInvokeConfigPtrOutput) Elem() FunctionAsyncInvokeConfigOutput {
-	return o.ApplyT(func(v *FunctionAsyncInvokeConfig) FunctionAsyncInvokeConfig {
-		if v != nil {
-			return *v
-		}
-		var ret FunctionAsyncInvokeConfig
-		return ret
-	}).(FunctionAsyncInvokeConfigOutput)
-}
-
 type FunctionAsyncInvokeConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (FunctionAsyncInvokeConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FunctionAsyncInvokeConfig)(nil))
+	return reflect.TypeOf((*[]*FunctionAsyncInvokeConfig)(nil)).Elem()
 }
 
 func (o FunctionAsyncInvokeConfigArrayOutput) ToFunctionAsyncInvokeConfigArrayOutput() FunctionAsyncInvokeConfigArrayOutput {
@@ -400,15 +337,15 @@ func (o FunctionAsyncInvokeConfigArrayOutput) ToFunctionAsyncInvokeConfigArrayOu
 }
 
 func (o FunctionAsyncInvokeConfigArrayOutput) Index(i pulumi.IntInput) FunctionAsyncInvokeConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FunctionAsyncInvokeConfig {
-		return vs[0].([]FunctionAsyncInvokeConfig)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FunctionAsyncInvokeConfig {
+		return vs[0].([]*FunctionAsyncInvokeConfig)[vs[1].(int)]
 	}).(FunctionAsyncInvokeConfigOutput)
 }
 
 type FunctionAsyncInvokeConfigMapOutput struct{ *pulumi.OutputState }
 
 func (FunctionAsyncInvokeConfigMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]FunctionAsyncInvokeConfig)(nil))
+	return reflect.TypeOf((*map[string]*FunctionAsyncInvokeConfig)(nil)).Elem()
 }
 
 func (o FunctionAsyncInvokeConfigMapOutput) ToFunctionAsyncInvokeConfigMapOutput() FunctionAsyncInvokeConfigMapOutput {
@@ -420,18 +357,16 @@ func (o FunctionAsyncInvokeConfigMapOutput) ToFunctionAsyncInvokeConfigMapOutput
 }
 
 func (o FunctionAsyncInvokeConfigMapOutput) MapIndex(k pulumi.StringInput) FunctionAsyncInvokeConfigOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FunctionAsyncInvokeConfig {
-		return vs[0].(map[string]FunctionAsyncInvokeConfig)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *FunctionAsyncInvokeConfig {
+		return vs[0].(map[string]*FunctionAsyncInvokeConfig)[vs[1].(string)]
 	}).(FunctionAsyncInvokeConfigOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionAsyncInvokeConfigInput)(nil)).Elem(), &FunctionAsyncInvokeConfig{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FunctionAsyncInvokeConfigPtrInput)(nil)).Elem(), &FunctionAsyncInvokeConfig{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionAsyncInvokeConfigArrayInput)(nil)).Elem(), FunctionAsyncInvokeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionAsyncInvokeConfigMapInput)(nil)).Elem(), FunctionAsyncInvokeConfigMap{})
 	pulumi.RegisterOutputType(FunctionAsyncInvokeConfigOutput{})
-	pulumi.RegisterOutputType(FunctionAsyncInvokeConfigPtrOutput{})
 	pulumi.RegisterOutputType(FunctionAsyncInvokeConfigArrayOutput{})
 	pulumi.RegisterOutputType(FunctionAsyncInvokeConfigMapOutput{})
 }

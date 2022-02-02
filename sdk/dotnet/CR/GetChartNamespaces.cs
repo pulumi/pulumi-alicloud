@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CR
 {
@@ -18,7 +17,7 @@ namespace Pulumi.AliCloud.CR
         /// &gt; **NOTE:** Available in v1.149.0+.
         /// </summary>
         public static Task<GetChartNamespacesResult> InvokeAsync(GetChartNamespacesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetChartNamespacesResult>("alicloud:cr/getChartNamespaces:getChartNamespaces", args ?? new GetChartNamespacesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetChartNamespacesResult>("alicloud:cr/getChartNamespaces:getChartNamespaces", args ?? new GetChartNamespacesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cr Chart Namespaces of the current Alibaba Cloud user.
@@ -26,7 +25,7 @@ namespace Pulumi.AliCloud.CR
         /// &gt; **NOTE:** Available in v1.149.0+.
         /// </summary>
         public static Output<GetChartNamespacesResult> Invoke(GetChartNamespacesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetChartNamespacesResult>("alicloud:cr/getChartNamespaces:getChartNamespaces", args ?? new GetChartNamespacesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetChartNamespacesResult>("alicloud:cr/getChartNamespaces:getChartNamespaces", args ?? new GetChartNamespacesInvokeArgs(), options.WithDefaults());
     }
 
 

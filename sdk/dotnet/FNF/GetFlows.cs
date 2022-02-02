@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.FNF
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.FNF
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFlowsResult> InvokeAsync(GetFlowsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFlowsResult>("alicloud:fnf/getFlows:getFlows", args ?? new GetFlowsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFlowsResult>("alicloud:fnf/getFlows:getFlows", args ?? new GetFlowsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Fnf Flows of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.FNF
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetFlowsResult> Invoke(GetFlowsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFlowsResult>("alicloud:fnf/getFlows:getFlows", args ?? new GetFlowsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetFlowsResult>("alicloud:fnf/getFlows:getFlows", args ?? new GetFlowsInvokeArgs(), options.WithDefaults());
     }
 
 

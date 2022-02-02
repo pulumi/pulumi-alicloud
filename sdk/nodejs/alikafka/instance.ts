@@ -161,27 +161,27 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            inputs["config"] = state ? state.config : undefined;
-            inputs["deployType"] = state ? state.deployType : undefined;
-            inputs["diskSize"] = state ? state.diskSize : undefined;
-            inputs["diskType"] = state ? state.diskType : undefined;
-            inputs["eipMax"] = state ? state.eipMax : undefined;
-            inputs["endPoint"] = state ? state.endPoint : undefined;
-            inputs["ioMax"] = state ? state.ioMax : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["paidType"] = state ? state.paidType : undefined;
-            inputs["securityGroup"] = state ? state.securityGroup : undefined;
-            inputs["serviceVersion"] = state ? state.serviceVersion : undefined;
-            inputs["specType"] = state ? state.specType : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["topicQuota"] = state ? state.topicQuota : undefined;
-            inputs["vpcId"] = state ? state.vpcId : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["deployType"] = state ? state.deployType : undefined;
+            resourceInputs["diskSize"] = state ? state.diskSize : undefined;
+            resourceInputs["diskType"] = state ? state.diskType : undefined;
+            resourceInputs["eipMax"] = state ? state.eipMax : undefined;
+            resourceInputs["endPoint"] = state ? state.endPoint : undefined;
+            resourceInputs["ioMax"] = state ? state.ioMax : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["paidType"] = state ? state.paidType : undefined;
+            resourceInputs["securityGroup"] = state ? state.securityGroup : undefined;
+            resourceInputs["serviceVersion"] = state ? state.serviceVersion : undefined;
+            resourceInputs["specType"] = state ? state.specType : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["topicQuota"] = state ? state.topicQuota : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.deployType === undefined) && !opts.urn) {
@@ -202,28 +202,26 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            inputs["config"] = args ? args.config : undefined;
-            inputs["deployType"] = args ? args.deployType : undefined;
-            inputs["diskSize"] = args ? args.diskSize : undefined;
-            inputs["diskType"] = args ? args.diskType : undefined;
-            inputs["eipMax"] = args ? args.eipMax : undefined;
-            inputs["ioMax"] = args ? args.ioMax : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["paidType"] = args ? args.paidType : undefined;
-            inputs["securityGroup"] = args ? args.securityGroup : undefined;
-            inputs["serviceVersion"] = args ? args.serviceVersion : undefined;
-            inputs["specType"] = args ? args.specType : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["topicQuota"] = args ? args.topicQuota : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["endPoint"] = undefined /*out*/;
-            inputs["vpcId"] = undefined /*out*/;
-            inputs["zoneId"] = undefined /*out*/;
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["deployType"] = args ? args.deployType : undefined;
+            resourceInputs["diskSize"] = args ? args.diskSize : undefined;
+            resourceInputs["diskType"] = args ? args.diskType : undefined;
+            resourceInputs["eipMax"] = args ? args.eipMax : undefined;
+            resourceInputs["ioMax"] = args ? args.ioMax : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["paidType"] = args ? args.paidType : undefined;
+            resourceInputs["securityGroup"] = args ? args.securityGroup : undefined;
+            resourceInputs["serviceVersion"] = args ? args.serviceVersion : undefined;
+            resourceInputs["specType"] = args ? args.specType : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["topicQuota"] = args ? args.topicQuota : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["endPoint"] = undefined /*out*/;
+            resourceInputs["vpcId"] = undefined /*out*/;
+            resourceInputs["zoneId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Instance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

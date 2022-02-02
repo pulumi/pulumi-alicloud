@@ -97,30 +97,28 @@ export class EcsDedicatedHostCluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: EcsDedicatedHostClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EcsDedicatedHostClusterArgs | EcsDedicatedHostClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsDedicatedHostClusterState | undefined;
-            inputs["dedicatedHostClusterName"] = state ? state.dedicatedHostClusterName : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["dedicatedHostClusterName"] = state ? state.dedicatedHostClusterName : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as EcsDedicatedHostClusterArgs | undefined;
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["dedicatedHostClusterName"] = args ? args.dedicatedHostClusterName : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["dedicatedHostClusterName"] = args ? args.dedicatedHostClusterName : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EcsDedicatedHostCluster.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EcsDedicatedHostCluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

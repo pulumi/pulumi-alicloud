@@ -103,18 +103,18 @@ export class ClientUser extends pulumi.CustomResource {
      */
     constructor(name: string, args: ClientUserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClientUserArgs | ClientUserState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClientUserState | undefined;
-            inputs["bandwidth"] = state ? state.bandwidth : undefined;
-            inputs["clientIp"] = state ? state.clientIp : undefined;
-            inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
-            inputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["sagId"] = state ? state.sagId : undefined;
-            inputs["userMail"] = state ? state.userMail : undefined;
-            inputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
+            resourceInputs["clientIp"] = state ? state.clientIp : undefined;
+            resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
+            resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["sagId"] = state ? state.sagId : undefined;
+            resourceInputs["userMail"] = state ? state.userMail : undefined;
+            resourceInputs["userName"] = state ? state.userName : undefined;
         } else {
             const args = argsOrState as ClientUserArgs | undefined;
             if ((!args || args.bandwidth === undefined) && !opts.urn) {
@@ -126,19 +126,17 @@ export class ClientUser extends pulumi.CustomResource {
             if ((!args || args.userMail === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userMail'");
             }
-            inputs["bandwidth"] = args ? args.bandwidth : undefined;
-            inputs["clientIp"] = args ? args.clientIp : undefined;
-            inputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
-            inputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["sagId"] = args ? args.sagId : undefined;
-            inputs["userMail"] = args ? args.userMail : undefined;
-            inputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
+            resourceInputs["clientIp"] = args ? args.clientIp : undefined;
+            resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
+            resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["sagId"] = args ? args.sagId : undefined;
+            resourceInputs["userMail"] = args ? args.userMail : undefined;
+            resourceInputs["userName"] = args ? args.userName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ClientUser.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ClientUser.__pulumiType, name, resourceInputs, opts);
     }
 }
 

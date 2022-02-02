@@ -31,9 +31,7 @@ export function getReceivers(args?: GetReceiversArgs, opts?: pulumi.InvokeOption
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:directmail/getReceivers:getReceivers", {
         "ids": args.ids,
         "keyWord": args.keyWord,

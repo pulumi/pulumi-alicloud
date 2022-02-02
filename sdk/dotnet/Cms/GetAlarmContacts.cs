@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cms
 {
@@ -49,7 +48,7 @@ namespace Pulumi.AliCloud.Cms
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAlarmContactsResult> InvokeAsync(GetAlarmContactsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAlarmContactsResult>("alicloud:cms/getAlarmContacts:getAlarmContacts", args ?? new GetAlarmContactsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAlarmContactsResult>("alicloud:cms/getAlarmContacts:getAlarmContacts", args ?? new GetAlarmContactsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides a list of alarm contact owned by an Alibaba Cloud account.
@@ -88,7 +87,7 @@ namespace Pulumi.AliCloud.Cms
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAlarmContactsResult> Invoke(GetAlarmContactsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAlarmContactsResult>("alicloud:cms/getAlarmContacts:getAlarmContacts", args ?? new GetAlarmContactsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAlarmContactsResult>("alicloud:cms/getAlarmContacts:getAlarmContacts", args ?? new GetAlarmContactsInvokeArgs(), options.WithDefaults());
     }
 
 

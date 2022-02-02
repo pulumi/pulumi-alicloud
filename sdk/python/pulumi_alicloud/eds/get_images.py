@@ -157,9 +157,9 @@ def get_images(ids: Optional[Sequence[str]] = None,
         image_name="your_image_name",
         desktop_id=default_desktop.id,
         description="example_value")
-    ids = default_image.id.apply(lambda id: alicloud.eds.get_images(ids=[id]))
+    ids = alicloud.eds.get_images_output(ids=[default_image.id])
     pulumi.export("ecdImageId1", ids.images[0].id)
-    name_regex = default_image.image_name.apply(lambda image_name: alicloud.eds.get_images(name_regex=image_name))
+    name_regex = default_image.image_name.apply(lambda image_name: alicloud.eds.get_images_output(name_regex=image_name))
     pulumi.export("ecdImageId2", name_regex.images[0].id)
     ```
 
@@ -243,9 +243,9 @@ def get_images_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
         image_name="your_image_name",
         desktop_id=default_desktop.id,
         description="example_value")
-    ids = default_image.id.apply(lambda id: alicloud.eds.get_images(ids=[id]))
+    ids = alicloud.eds.get_images_output(ids=[default_image.id])
     pulumi.export("ecdImageId1", ids.images[0].id)
-    name_regex = default_image.image_name.apply(lambda image_name: alicloud.eds.get_images(name_regex=image_name))
+    name_regex = default_image.image_name.apply(lambda image_name: alicloud.eds.get_images_output(name_regex=image_name))
     pulumi.export("ecdImageId2", name_regex.images[0].id)
     ```
 

@@ -250,44 +250,44 @@ export class GatewayFileShare extends pulumi.CustomResource {
      */
     constructor(name: string, args: GatewayFileShareArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GatewayFileShareArgs | GatewayFileShareState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayFileShareState | undefined;
-            inputs["accessBasedEnumeration"] = state ? state.accessBasedEnumeration : undefined;
-            inputs["backendLimit"] = state ? state.backendLimit : undefined;
-            inputs["browsable"] = state ? state.browsable : undefined;
-            inputs["bypassCacheRead"] = state ? state.bypassCacheRead : undefined;
-            inputs["cacheMode"] = state ? state.cacheMode : undefined;
-            inputs["directIo"] = state ? state.directIo : undefined;
-            inputs["downloadLimit"] = state ? state.downloadLimit : undefined;
-            inputs["fastReclaim"] = state ? state.fastReclaim : undefined;
-            inputs["feLimit"] = state ? state.feLimit : undefined;
-            inputs["gatewayFileShareName"] = state ? state.gatewayFileShareName : undefined;
-            inputs["gatewayId"] = state ? state.gatewayId : undefined;
-            inputs["ignoreDelete"] = state ? state.ignoreDelete : undefined;
-            inputs["inPlace"] = state ? state.inPlace : undefined;
-            inputs["indexId"] = state ? state.indexId : undefined;
-            inputs["lagPeriod"] = state ? state.lagPeriod : undefined;
-            inputs["localPath"] = state ? state.localPath : undefined;
-            inputs["nfsV4Optimization"] = state ? state.nfsV4Optimization : undefined;
-            inputs["ossBucketName"] = state ? state.ossBucketName : undefined;
-            inputs["ossBucketSsl"] = state ? state.ossBucketSsl : undefined;
-            inputs["ossEndpoint"] = state ? state.ossEndpoint : undefined;
-            inputs["partialSyncPaths"] = state ? state.partialSyncPaths : undefined;
-            inputs["pathPrefix"] = state ? state.pathPrefix : undefined;
-            inputs["pollingInterval"] = state ? state.pollingInterval : undefined;
-            inputs["protocol"] = state ? state.protocol : undefined;
-            inputs["remoteSync"] = state ? state.remoteSync : undefined;
-            inputs["remoteSyncDownload"] = state ? state.remoteSyncDownload : undefined;
-            inputs["roClientList"] = state ? state.roClientList : undefined;
-            inputs["roUserList"] = state ? state.roUserList : undefined;
-            inputs["rwClientList"] = state ? state.rwClientList : undefined;
-            inputs["rwUserList"] = state ? state.rwUserList : undefined;
-            inputs["squash"] = state ? state.squash : undefined;
-            inputs["supportArchive"] = state ? state.supportArchive : undefined;
-            inputs["transferAcceleration"] = state ? state.transferAcceleration : undefined;
-            inputs["windowsAcl"] = state ? state.windowsAcl : undefined;
+            resourceInputs["accessBasedEnumeration"] = state ? state.accessBasedEnumeration : undefined;
+            resourceInputs["backendLimit"] = state ? state.backendLimit : undefined;
+            resourceInputs["browsable"] = state ? state.browsable : undefined;
+            resourceInputs["bypassCacheRead"] = state ? state.bypassCacheRead : undefined;
+            resourceInputs["cacheMode"] = state ? state.cacheMode : undefined;
+            resourceInputs["directIo"] = state ? state.directIo : undefined;
+            resourceInputs["downloadLimit"] = state ? state.downloadLimit : undefined;
+            resourceInputs["fastReclaim"] = state ? state.fastReclaim : undefined;
+            resourceInputs["feLimit"] = state ? state.feLimit : undefined;
+            resourceInputs["gatewayFileShareName"] = state ? state.gatewayFileShareName : undefined;
+            resourceInputs["gatewayId"] = state ? state.gatewayId : undefined;
+            resourceInputs["ignoreDelete"] = state ? state.ignoreDelete : undefined;
+            resourceInputs["inPlace"] = state ? state.inPlace : undefined;
+            resourceInputs["indexId"] = state ? state.indexId : undefined;
+            resourceInputs["lagPeriod"] = state ? state.lagPeriod : undefined;
+            resourceInputs["localPath"] = state ? state.localPath : undefined;
+            resourceInputs["nfsV4Optimization"] = state ? state.nfsV4Optimization : undefined;
+            resourceInputs["ossBucketName"] = state ? state.ossBucketName : undefined;
+            resourceInputs["ossBucketSsl"] = state ? state.ossBucketSsl : undefined;
+            resourceInputs["ossEndpoint"] = state ? state.ossEndpoint : undefined;
+            resourceInputs["partialSyncPaths"] = state ? state.partialSyncPaths : undefined;
+            resourceInputs["pathPrefix"] = state ? state.pathPrefix : undefined;
+            resourceInputs["pollingInterval"] = state ? state.pollingInterval : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["remoteSync"] = state ? state.remoteSync : undefined;
+            resourceInputs["remoteSyncDownload"] = state ? state.remoteSyncDownload : undefined;
+            resourceInputs["roClientList"] = state ? state.roClientList : undefined;
+            resourceInputs["roUserList"] = state ? state.roUserList : undefined;
+            resourceInputs["rwClientList"] = state ? state.rwClientList : undefined;
+            resourceInputs["rwUserList"] = state ? state.rwUserList : undefined;
+            resourceInputs["squash"] = state ? state.squash : undefined;
+            resourceInputs["supportArchive"] = state ? state.supportArchive : undefined;
+            resourceInputs["transferAcceleration"] = state ? state.transferAcceleration : undefined;
+            resourceInputs["windowsAcl"] = state ? state.windowsAcl : undefined;
         } else {
             const args = argsOrState as GatewayFileShareArgs | undefined;
             if ((!args || args.gatewayFileShareName === undefined) && !opts.urn) {
@@ -308,45 +308,43 @@ export class GatewayFileShare extends pulumi.CustomResource {
             if ((!args || args.protocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            inputs["accessBasedEnumeration"] = args ? args.accessBasedEnumeration : undefined;
-            inputs["backendLimit"] = args ? args.backendLimit : undefined;
-            inputs["browsable"] = args ? args.browsable : undefined;
-            inputs["bypassCacheRead"] = args ? args.bypassCacheRead : undefined;
-            inputs["cacheMode"] = args ? args.cacheMode : undefined;
-            inputs["directIo"] = args ? args.directIo : undefined;
-            inputs["downloadLimit"] = args ? args.downloadLimit : undefined;
-            inputs["fastReclaim"] = args ? args.fastReclaim : undefined;
-            inputs["feLimit"] = args ? args.feLimit : undefined;
-            inputs["gatewayFileShareName"] = args ? args.gatewayFileShareName : undefined;
-            inputs["gatewayId"] = args ? args.gatewayId : undefined;
-            inputs["ignoreDelete"] = args ? args.ignoreDelete : undefined;
-            inputs["inPlace"] = args ? args.inPlace : undefined;
-            inputs["lagPeriod"] = args ? args.lagPeriod : undefined;
-            inputs["localPath"] = args ? args.localPath : undefined;
-            inputs["nfsV4Optimization"] = args ? args.nfsV4Optimization : undefined;
-            inputs["ossBucketName"] = args ? args.ossBucketName : undefined;
-            inputs["ossBucketSsl"] = args ? args.ossBucketSsl : undefined;
-            inputs["ossEndpoint"] = args ? args.ossEndpoint : undefined;
-            inputs["partialSyncPaths"] = args ? args.partialSyncPaths : undefined;
-            inputs["pathPrefix"] = args ? args.pathPrefix : undefined;
-            inputs["pollingInterval"] = args ? args.pollingInterval : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["remoteSync"] = args ? args.remoteSync : undefined;
-            inputs["remoteSyncDownload"] = args ? args.remoteSyncDownload : undefined;
-            inputs["roClientList"] = args ? args.roClientList : undefined;
-            inputs["roUserList"] = args ? args.roUserList : undefined;
-            inputs["rwClientList"] = args ? args.rwClientList : undefined;
-            inputs["rwUserList"] = args ? args.rwUserList : undefined;
-            inputs["squash"] = args ? args.squash : undefined;
-            inputs["supportArchive"] = args ? args.supportArchive : undefined;
-            inputs["transferAcceleration"] = args ? args.transferAcceleration : undefined;
-            inputs["windowsAcl"] = args ? args.windowsAcl : undefined;
-            inputs["indexId"] = undefined /*out*/;
+            resourceInputs["accessBasedEnumeration"] = args ? args.accessBasedEnumeration : undefined;
+            resourceInputs["backendLimit"] = args ? args.backendLimit : undefined;
+            resourceInputs["browsable"] = args ? args.browsable : undefined;
+            resourceInputs["bypassCacheRead"] = args ? args.bypassCacheRead : undefined;
+            resourceInputs["cacheMode"] = args ? args.cacheMode : undefined;
+            resourceInputs["directIo"] = args ? args.directIo : undefined;
+            resourceInputs["downloadLimit"] = args ? args.downloadLimit : undefined;
+            resourceInputs["fastReclaim"] = args ? args.fastReclaim : undefined;
+            resourceInputs["feLimit"] = args ? args.feLimit : undefined;
+            resourceInputs["gatewayFileShareName"] = args ? args.gatewayFileShareName : undefined;
+            resourceInputs["gatewayId"] = args ? args.gatewayId : undefined;
+            resourceInputs["ignoreDelete"] = args ? args.ignoreDelete : undefined;
+            resourceInputs["inPlace"] = args ? args.inPlace : undefined;
+            resourceInputs["lagPeriod"] = args ? args.lagPeriod : undefined;
+            resourceInputs["localPath"] = args ? args.localPath : undefined;
+            resourceInputs["nfsV4Optimization"] = args ? args.nfsV4Optimization : undefined;
+            resourceInputs["ossBucketName"] = args ? args.ossBucketName : undefined;
+            resourceInputs["ossBucketSsl"] = args ? args.ossBucketSsl : undefined;
+            resourceInputs["ossEndpoint"] = args ? args.ossEndpoint : undefined;
+            resourceInputs["partialSyncPaths"] = args ? args.partialSyncPaths : undefined;
+            resourceInputs["pathPrefix"] = args ? args.pathPrefix : undefined;
+            resourceInputs["pollingInterval"] = args ? args.pollingInterval : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["remoteSync"] = args ? args.remoteSync : undefined;
+            resourceInputs["remoteSyncDownload"] = args ? args.remoteSyncDownload : undefined;
+            resourceInputs["roClientList"] = args ? args.roClientList : undefined;
+            resourceInputs["roUserList"] = args ? args.roUserList : undefined;
+            resourceInputs["rwClientList"] = args ? args.rwClientList : undefined;
+            resourceInputs["rwUserList"] = args ? args.rwUserList : undefined;
+            resourceInputs["squash"] = args ? args.squash : undefined;
+            resourceInputs["supportArchive"] = args ? args.supportArchive : undefined;
+            resourceInputs["transferAcceleration"] = args ? args.transferAcceleration : undefined;
+            resourceInputs["windowsAcl"] = args ? args.windowsAcl : undefined;
+            resourceInputs["indexId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(GatewayFileShare.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(GatewayFileShare.__pulumiType, name, resourceInputs, opts);
     }
 }
 

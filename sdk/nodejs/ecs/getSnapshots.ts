@@ -11,9 +11,7 @@ export function getSnapshots(args?: GetSnapshotsArgs, opts?: pulumi.InvokeOption
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ecs/getSnapshots:getSnapshots", {
         "category": args.category,
         "dryRun": args.dryRun,

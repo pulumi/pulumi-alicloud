@@ -33,9 +33,7 @@ export function getAccessRules(args: GetAccessRulesArgs, opts?: pulumi.InvokeOpt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:dfs/getAccessRules:getAccessRules", {
         "accessGroupId": args.accessGroupId,
         "ids": args.ids,

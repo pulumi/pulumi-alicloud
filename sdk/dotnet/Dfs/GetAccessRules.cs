@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dfs
 {
@@ -51,7 +50,7 @@ namespace Pulumi.AliCloud.Dfs
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccessRulesResult> InvokeAsync(GetAccessRulesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccessRulesResult>("alicloud:dfs/getAccessRules:getAccessRules", args ?? new GetAccessRulesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccessRulesResult>("alicloud:dfs/getAccessRules:getAccessRules", args ?? new GetAccessRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Dfs Access Rules of the current Alibaba Cloud user.
@@ -92,7 +91,7 @@ namespace Pulumi.AliCloud.Dfs
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccessRulesResult> Invoke(GetAccessRulesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccessRulesResult>("alicloud:dfs/getAccessRules:getAccessRules", args ?? new GetAccessRulesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAccessRulesResult>("alicloud:dfs/getAccessRules:getAccessRules", args ?? new GetAccessRulesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -112,7 +112,7 @@ type RuleAttachmentInput interface {
 }
 
 func (*RuleAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*RuleAttachment)(nil))
+	return reflect.TypeOf((**RuleAttachment)(nil)).Elem()
 }
 
 func (i *RuleAttachment) ToRuleAttachmentOutput() RuleAttachmentOutput {
@@ -121,35 +121,6 @@ func (i *RuleAttachment) ToRuleAttachmentOutput() RuleAttachmentOutput {
 
 func (i *RuleAttachment) ToRuleAttachmentOutputWithContext(ctx context.Context) RuleAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RuleAttachmentOutput)
-}
-
-func (i *RuleAttachment) ToRuleAttachmentPtrOutput() RuleAttachmentPtrOutput {
-	return i.ToRuleAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *RuleAttachment) ToRuleAttachmentPtrOutputWithContext(ctx context.Context) RuleAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuleAttachmentPtrOutput)
-}
-
-type RuleAttachmentPtrInput interface {
-	pulumi.Input
-
-	ToRuleAttachmentPtrOutput() RuleAttachmentPtrOutput
-	ToRuleAttachmentPtrOutputWithContext(ctx context.Context) RuleAttachmentPtrOutput
-}
-
-type ruleAttachmentPtrType RuleAttachmentArgs
-
-func (*ruleAttachmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RuleAttachment)(nil))
-}
-
-func (i *ruleAttachmentPtrType) ToRuleAttachmentPtrOutput() RuleAttachmentPtrOutput {
-	return i.ToRuleAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *ruleAttachmentPtrType) ToRuleAttachmentPtrOutputWithContext(ctx context.Context) RuleAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuleAttachmentPtrOutput)
 }
 
 // RuleAttachmentArrayInput is an input type that accepts RuleAttachmentArray and RuleAttachmentArrayOutput values.
@@ -205,7 +176,7 @@ func (i RuleAttachmentMap) ToRuleAttachmentMapOutputWithContext(ctx context.Cont
 type RuleAttachmentOutput struct{ *pulumi.OutputState }
 
 func (RuleAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RuleAttachment)(nil))
+	return reflect.TypeOf((**RuleAttachment)(nil)).Elem()
 }
 
 func (o RuleAttachmentOutput) ToRuleAttachmentOutput() RuleAttachmentOutput {
@@ -216,44 +187,10 @@ func (o RuleAttachmentOutput) ToRuleAttachmentOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o RuleAttachmentOutput) ToRuleAttachmentPtrOutput() RuleAttachmentPtrOutput {
-	return o.ToRuleAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (o RuleAttachmentOutput) ToRuleAttachmentPtrOutputWithContext(ctx context.Context) RuleAttachmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleAttachment) *RuleAttachment {
-		return &v
-	}).(RuleAttachmentPtrOutput)
-}
-
-type RuleAttachmentPtrOutput struct{ *pulumi.OutputState }
-
-func (RuleAttachmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RuleAttachment)(nil))
-}
-
-func (o RuleAttachmentPtrOutput) ToRuleAttachmentPtrOutput() RuleAttachmentPtrOutput {
-	return o
-}
-
-func (o RuleAttachmentPtrOutput) ToRuleAttachmentPtrOutputWithContext(ctx context.Context) RuleAttachmentPtrOutput {
-	return o
-}
-
-func (o RuleAttachmentPtrOutput) Elem() RuleAttachmentOutput {
-	return o.ApplyT(func(v *RuleAttachment) RuleAttachment {
-		if v != nil {
-			return *v
-		}
-		var ret RuleAttachment
-		return ret
-	}).(RuleAttachmentOutput)
-}
-
 type RuleAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (RuleAttachmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RuleAttachment)(nil))
+	return reflect.TypeOf((*[]*RuleAttachment)(nil)).Elem()
 }
 
 func (o RuleAttachmentArrayOutput) ToRuleAttachmentArrayOutput() RuleAttachmentArrayOutput {
@@ -265,15 +202,15 @@ func (o RuleAttachmentArrayOutput) ToRuleAttachmentArrayOutputWithContext(ctx co
 }
 
 func (o RuleAttachmentArrayOutput) Index(i pulumi.IntInput) RuleAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleAttachment {
-		return vs[0].([]RuleAttachment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RuleAttachment {
+		return vs[0].([]*RuleAttachment)[vs[1].(int)]
 	}).(RuleAttachmentOutput)
 }
 
 type RuleAttachmentMapOutput struct{ *pulumi.OutputState }
 
 func (RuleAttachmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]RuleAttachment)(nil))
+	return reflect.TypeOf((*map[string]*RuleAttachment)(nil)).Elem()
 }
 
 func (o RuleAttachmentMapOutput) ToRuleAttachmentMapOutput() RuleAttachmentMapOutput {
@@ -285,18 +222,16 @@ func (o RuleAttachmentMapOutput) ToRuleAttachmentMapOutputWithContext(ctx contex
 }
 
 func (o RuleAttachmentMapOutput) MapIndex(k pulumi.StringInput) RuleAttachmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RuleAttachment {
-		return vs[0].(map[string]RuleAttachment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *RuleAttachment {
+		return vs[0].(map[string]*RuleAttachment)[vs[1].(string)]
 	}).(RuleAttachmentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleAttachmentInput)(nil)).Elem(), &RuleAttachment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RuleAttachmentPtrInput)(nil)).Elem(), &RuleAttachment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleAttachmentArrayInput)(nil)).Elem(), RuleAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleAttachmentMapInput)(nil)).Elem(), RuleAttachmentMap{})
 	pulumi.RegisterOutputType(RuleAttachmentOutput{})
-	pulumi.RegisterOutputType(RuleAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(RuleAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(RuleAttachmentMapOutput{})
 }

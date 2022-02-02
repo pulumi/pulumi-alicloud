@@ -31,7 +31,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := videosurveillance.NewSystemGroup(ctx, "_default", &videosurveillance.SystemGroupArgs{
+// 		_, err := videosurveillance.NewSystemGroup(ctx, "default", &videosurveillance.SystemGroupArgs{
 // 			GroupName:   pulumi.String("your_group_name"),
 // 			InProtocol:  pulumi.String("rtmp"),
 // 			OutProtocol: pulumi.String("flv"),
@@ -252,7 +252,7 @@ type SystemGroupInput interface {
 }
 
 func (*SystemGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemGroup)(nil))
+	return reflect.TypeOf((**SystemGroup)(nil)).Elem()
 }
 
 func (i *SystemGroup) ToSystemGroupOutput() SystemGroupOutput {
@@ -261,35 +261,6 @@ func (i *SystemGroup) ToSystemGroupOutput() SystemGroupOutput {
 
 func (i *SystemGroup) ToSystemGroupOutputWithContext(ctx context.Context) SystemGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SystemGroupOutput)
-}
-
-func (i *SystemGroup) ToSystemGroupPtrOutput() SystemGroupPtrOutput {
-	return i.ToSystemGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *SystemGroup) ToSystemGroupPtrOutputWithContext(ctx context.Context) SystemGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SystemGroupPtrOutput)
-}
-
-type SystemGroupPtrInput interface {
-	pulumi.Input
-
-	ToSystemGroupPtrOutput() SystemGroupPtrOutput
-	ToSystemGroupPtrOutputWithContext(ctx context.Context) SystemGroupPtrOutput
-}
-
-type systemGroupPtrType SystemGroupArgs
-
-func (*systemGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystemGroup)(nil))
-}
-
-func (i *systemGroupPtrType) ToSystemGroupPtrOutput() SystemGroupPtrOutput {
-	return i.ToSystemGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *systemGroupPtrType) ToSystemGroupPtrOutputWithContext(ctx context.Context) SystemGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SystemGroupPtrOutput)
 }
 
 // SystemGroupArrayInput is an input type that accepts SystemGroupArray and SystemGroupArrayOutput values.
@@ -345,7 +316,7 @@ func (i SystemGroupMap) ToSystemGroupMapOutputWithContext(ctx context.Context) S
 type SystemGroupOutput struct{ *pulumi.OutputState }
 
 func (SystemGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemGroup)(nil))
+	return reflect.TypeOf((**SystemGroup)(nil)).Elem()
 }
 
 func (o SystemGroupOutput) ToSystemGroupOutput() SystemGroupOutput {
@@ -356,44 +327,10 @@ func (o SystemGroupOutput) ToSystemGroupOutputWithContext(ctx context.Context) S
 	return o
 }
 
-func (o SystemGroupOutput) ToSystemGroupPtrOutput() SystemGroupPtrOutput {
-	return o.ToSystemGroupPtrOutputWithContext(context.Background())
-}
-
-func (o SystemGroupOutput) ToSystemGroupPtrOutputWithContext(ctx context.Context) SystemGroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemGroup) *SystemGroup {
-		return &v
-	}).(SystemGroupPtrOutput)
-}
-
-type SystemGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (SystemGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystemGroup)(nil))
-}
-
-func (o SystemGroupPtrOutput) ToSystemGroupPtrOutput() SystemGroupPtrOutput {
-	return o
-}
-
-func (o SystemGroupPtrOutput) ToSystemGroupPtrOutputWithContext(ctx context.Context) SystemGroupPtrOutput {
-	return o
-}
-
-func (o SystemGroupPtrOutput) Elem() SystemGroupOutput {
-	return o.ApplyT(func(v *SystemGroup) SystemGroup {
-		if v != nil {
-			return *v
-		}
-		var ret SystemGroup
-		return ret
-	}).(SystemGroupOutput)
-}
-
 type SystemGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (SystemGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SystemGroup)(nil))
+	return reflect.TypeOf((*[]*SystemGroup)(nil)).Elem()
 }
 
 func (o SystemGroupArrayOutput) ToSystemGroupArrayOutput() SystemGroupArrayOutput {
@@ -405,15 +342,15 @@ func (o SystemGroupArrayOutput) ToSystemGroupArrayOutputWithContext(ctx context.
 }
 
 func (o SystemGroupArrayOutput) Index(i pulumi.IntInput) SystemGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SystemGroup {
-		return vs[0].([]SystemGroup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SystemGroup {
+		return vs[0].([]*SystemGroup)[vs[1].(int)]
 	}).(SystemGroupOutput)
 }
 
 type SystemGroupMapOutput struct{ *pulumi.OutputState }
 
 func (SystemGroupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SystemGroup)(nil))
+	return reflect.TypeOf((*map[string]*SystemGroup)(nil)).Elem()
 }
 
 func (o SystemGroupMapOutput) ToSystemGroupMapOutput() SystemGroupMapOutput {
@@ -425,18 +362,16 @@ func (o SystemGroupMapOutput) ToSystemGroupMapOutputWithContext(ctx context.Cont
 }
 
 func (o SystemGroupMapOutput) MapIndex(k pulumi.StringInput) SystemGroupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SystemGroup {
-		return vs[0].(map[string]SystemGroup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SystemGroup {
+		return vs[0].(map[string]*SystemGroup)[vs[1].(string)]
 	}).(SystemGroupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SystemGroupInput)(nil)).Elem(), &SystemGroup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SystemGroupPtrInput)(nil)).Elem(), &SystemGroup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SystemGroupArrayInput)(nil)).Elem(), SystemGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SystemGroupMapInput)(nil)).Elem(), SystemGroupMap{})
 	pulumi.RegisterOutputType(SystemGroupOutput{})
-	pulumi.RegisterOutputType(SystemGroupPtrOutput{})
 	pulumi.RegisterOutputType(SystemGroupArrayOutput{})
 	pulumi.RegisterOutputType(SystemGroupMapOutput{})
 }

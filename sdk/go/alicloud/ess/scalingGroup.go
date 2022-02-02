@@ -321,7 +321,7 @@ type ScalingGroupInput interface {
 }
 
 func (*ScalingGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScalingGroup)(nil))
+	return reflect.TypeOf((**ScalingGroup)(nil)).Elem()
 }
 
 func (i *ScalingGroup) ToScalingGroupOutput() ScalingGroupOutput {
@@ -330,35 +330,6 @@ func (i *ScalingGroup) ToScalingGroupOutput() ScalingGroupOutput {
 
 func (i *ScalingGroup) ToScalingGroupOutputWithContext(ctx context.Context) ScalingGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupOutput)
-}
-
-func (i *ScalingGroup) ToScalingGroupPtrOutput() ScalingGroupPtrOutput {
-	return i.ToScalingGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *ScalingGroup) ToScalingGroupPtrOutputWithContext(ctx context.Context) ScalingGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupPtrOutput)
-}
-
-type ScalingGroupPtrInput interface {
-	pulumi.Input
-
-	ToScalingGroupPtrOutput() ScalingGroupPtrOutput
-	ToScalingGroupPtrOutputWithContext(ctx context.Context) ScalingGroupPtrOutput
-}
-
-type scalingGroupPtrType ScalingGroupArgs
-
-func (*scalingGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScalingGroup)(nil))
-}
-
-func (i *scalingGroupPtrType) ToScalingGroupPtrOutput() ScalingGroupPtrOutput {
-	return i.ToScalingGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *scalingGroupPtrType) ToScalingGroupPtrOutputWithContext(ctx context.Context) ScalingGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupPtrOutput)
 }
 
 // ScalingGroupArrayInput is an input type that accepts ScalingGroupArray and ScalingGroupArrayOutput values.
@@ -414,7 +385,7 @@ func (i ScalingGroupMap) ToScalingGroupMapOutputWithContext(ctx context.Context)
 type ScalingGroupOutput struct{ *pulumi.OutputState }
 
 func (ScalingGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScalingGroup)(nil))
+	return reflect.TypeOf((**ScalingGroup)(nil)).Elem()
 }
 
 func (o ScalingGroupOutput) ToScalingGroupOutput() ScalingGroupOutput {
@@ -425,44 +396,10 @@ func (o ScalingGroupOutput) ToScalingGroupOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ScalingGroupOutput) ToScalingGroupPtrOutput() ScalingGroupPtrOutput {
-	return o.ToScalingGroupPtrOutputWithContext(context.Background())
-}
-
-func (o ScalingGroupOutput) ToScalingGroupPtrOutputWithContext(ctx context.Context) ScalingGroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScalingGroup) *ScalingGroup {
-		return &v
-	}).(ScalingGroupPtrOutput)
-}
-
-type ScalingGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (ScalingGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScalingGroup)(nil))
-}
-
-func (o ScalingGroupPtrOutput) ToScalingGroupPtrOutput() ScalingGroupPtrOutput {
-	return o
-}
-
-func (o ScalingGroupPtrOutput) ToScalingGroupPtrOutputWithContext(ctx context.Context) ScalingGroupPtrOutput {
-	return o
-}
-
-func (o ScalingGroupPtrOutput) Elem() ScalingGroupOutput {
-	return o.ApplyT(func(v *ScalingGroup) ScalingGroup {
-		if v != nil {
-			return *v
-		}
-		var ret ScalingGroup
-		return ret
-	}).(ScalingGroupOutput)
-}
-
 type ScalingGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (ScalingGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ScalingGroup)(nil))
+	return reflect.TypeOf((*[]*ScalingGroup)(nil)).Elem()
 }
 
 func (o ScalingGroupArrayOutput) ToScalingGroupArrayOutput() ScalingGroupArrayOutput {
@@ -474,15 +411,15 @@ func (o ScalingGroupArrayOutput) ToScalingGroupArrayOutputWithContext(ctx contex
 }
 
 func (o ScalingGroupArrayOutput) Index(i pulumi.IntInput) ScalingGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingGroup {
-		return vs[0].([]ScalingGroup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ScalingGroup {
+		return vs[0].([]*ScalingGroup)[vs[1].(int)]
 	}).(ScalingGroupOutput)
 }
 
 type ScalingGroupMapOutput struct{ *pulumi.OutputState }
 
 func (ScalingGroupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ScalingGroup)(nil))
+	return reflect.TypeOf((*map[string]*ScalingGroup)(nil)).Elem()
 }
 
 func (o ScalingGroupMapOutput) ToScalingGroupMapOutput() ScalingGroupMapOutput {
@@ -494,18 +431,16 @@ func (o ScalingGroupMapOutput) ToScalingGroupMapOutputWithContext(ctx context.Co
 }
 
 func (o ScalingGroupMapOutput) MapIndex(k pulumi.StringInput) ScalingGroupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ScalingGroup {
-		return vs[0].(map[string]ScalingGroup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ScalingGroup {
+		return vs[0].(map[string]*ScalingGroup)[vs[1].(string)]
 	}).(ScalingGroupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupInput)(nil)).Elem(), &ScalingGroup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupPtrInput)(nil)).Elem(), &ScalingGroup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupArrayInput)(nil)).Elem(), ScalingGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupMapInput)(nil)).Elem(), ScalingGroupMap{})
 	pulumi.RegisterOutputType(ScalingGroupOutput{})
-	pulumi.RegisterOutputType(ScalingGroupPtrOutput{})
 	pulumi.RegisterOutputType(ScalingGroupArrayOutput{})
 	pulumi.RegisterOutputType(ScalingGroupMapOutput{})
 }

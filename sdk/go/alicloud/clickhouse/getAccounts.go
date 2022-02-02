@@ -62,6 +62,12 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		defaultAccounts := clickhouse.GetAccountsOutput(ctx, clickhouse.GetAccountsOutputArgs{
+// 			Ids: pulumi.StringArray{
+// 				defaultAccount.ID(),
+// 			},
+// 			DbClusterId: defaultDbCluster.ID(),
+// 		}, nil)
 // 		ctx.Export("accountId", defaultAccounts.ApplyT(func(defaultAccounts clickhouse.GetAccountsResult) (string, error) {
 // 			return defaultAccounts.Ids[0], nil
 // 		}).(pulumi.StringOutput))

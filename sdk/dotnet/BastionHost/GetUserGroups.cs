@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.BastionHost
 {
@@ -59,7 +58,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetUserGroupsResult> InvokeAsync(GetUserGroupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUserGroupsResult>("alicloud:bastionhost/getUserGroups:getUserGroups", args ?? new GetUserGroupsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetUserGroupsResult>("alicloud:bastionhost/getUserGroups:getUserGroups", args ?? new GetUserGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Bastionhost User Groups of the current Alibaba Cloud user.
@@ -108,7 +107,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetUserGroupsResult> Invoke(GetUserGroupsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetUserGroupsResult>("alicloud:bastionhost/getUserGroups:getUserGroups", args ?? new GetUserGroupsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetUserGroupsResult>("alicloud:bastionhost/getUserGroups:getUserGroups", args ?? new GetUserGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

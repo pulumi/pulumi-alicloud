@@ -149,7 +149,7 @@ type ScalingGroupVServerGroupsInput interface {
 }
 
 func (*ScalingGroupVServerGroups) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScalingGroupVServerGroups)(nil))
+	return reflect.TypeOf((**ScalingGroupVServerGroups)(nil)).Elem()
 }
 
 func (i *ScalingGroupVServerGroups) ToScalingGroupVServerGroupsOutput() ScalingGroupVServerGroupsOutput {
@@ -158,35 +158,6 @@ func (i *ScalingGroupVServerGroups) ToScalingGroupVServerGroupsOutput() ScalingG
 
 func (i *ScalingGroupVServerGroups) ToScalingGroupVServerGroupsOutputWithContext(ctx context.Context) ScalingGroupVServerGroupsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupVServerGroupsOutput)
-}
-
-func (i *ScalingGroupVServerGroups) ToScalingGroupVServerGroupsPtrOutput() ScalingGroupVServerGroupsPtrOutput {
-	return i.ToScalingGroupVServerGroupsPtrOutputWithContext(context.Background())
-}
-
-func (i *ScalingGroupVServerGroups) ToScalingGroupVServerGroupsPtrOutputWithContext(ctx context.Context) ScalingGroupVServerGroupsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupVServerGroupsPtrOutput)
-}
-
-type ScalingGroupVServerGroupsPtrInput interface {
-	pulumi.Input
-
-	ToScalingGroupVServerGroupsPtrOutput() ScalingGroupVServerGroupsPtrOutput
-	ToScalingGroupVServerGroupsPtrOutputWithContext(ctx context.Context) ScalingGroupVServerGroupsPtrOutput
-}
-
-type scalingGroupVServerGroupsPtrType ScalingGroupVServerGroupsArgs
-
-func (*scalingGroupVServerGroupsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScalingGroupVServerGroups)(nil))
-}
-
-func (i *scalingGroupVServerGroupsPtrType) ToScalingGroupVServerGroupsPtrOutput() ScalingGroupVServerGroupsPtrOutput {
-	return i.ToScalingGroupVServerGroupsPtrOutputWithContext(context.Background())
-}
-
-func (i *scalingGroupVServerGroupsPtrType) ToScalingGroupVServerGroupsPtrOutputWithContext(ctx context.Context) ScalingGroupVServerGroupsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupVServerGroupsPtrOutput)
 }
 
 // ScalingGroupVServerGroupsArrayInput is an input type that accepts ScalingGroupVServerGroupsArray and ScalingGroupVServerGroupsArrayOutput values.
@@ -242,7 +213,7 @@ func (i ScalingGroupVServerGroupsMap) ToScalingGroupVServerGroupsMapOutputWithCo
 type ScalingGroupVServerGroupsOutput struct{ *pulumi.OutputState }
 
 func (ScalingGroupVServerGroupsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScalingGroupVServerGroups)(nil))
+	return reflect.TypeOf((**ScalingGroupVServerGroups)(nil)).Elem()
 }
 
 func (o ScalingGroupVServerGroupsOutput) ToScalingGroupVServerGroupsOutput() ScalingGroupVServerGroupsOutput {
@@ -253,44 +224,10 @@ func (o ScalingGroupVServerGroupsOutput) ToScalingGroupVServerGroupsOutputWithCo
 	return o
 }
 
-func (o ScalingGroupVServerGroupsOutput) ToScalingGroupVServerGroupsPtrOutput() ScalingGroupVServerGroupsPtrOutput {
-	return o.ToScalingGroupVServerGroupsPtrOutputWithContext(context.Background())
-}
-
-func (o ScalingGroupVServerGroupsOutput) ToScalingGroupVServerGroupsPtrOutputWithContext(ctx context.Context) ScalingGroupVServerGroupsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScalingGroupVServerGroups) *ScalingGroupVServerGroups {
-		return &v
-	}).(ScalingGroupVServerGroupsPtrOutput)
-}
-
-type ScalingGroupVServerGroupsPtrOutput struct{ *pulumi.OutputState }
-
-func (ScalingGroupVServerGroupsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScalingGroupVServerGroups)(nil))
-}
-
-func (o ScalingGroupVServerGroupsPtrOutput) ToScalingGroupVServerGroupsPtrOutput() ScalingGroupVServerGroupsPtrOutput {
-	return o
-}
-
-func (o ScalingGroupVServerGroupsPtrOutput) ToScalingGroupVServerGroupsPtrOutputWithContext(ctx context.Context) ScalingGroupVServerGroupsPtrOutput {
-	return o
-}
-
-func (o ScalingGroupVServerGroupsPtrOutput) Elem() ScalingGroupVServerGroupsOutput {
-	return o.ApplyT(func(v *ScalingGroupVServerGroups) ScalingGroupVServerGroups {
-		if v != nil {
-			return *v
-		}
-		var ret ScalingGroupVServerGroups
-		return ret
-	}).(ScalingGroupVServerGroupsOutput)
-}
-
 type ScalingGroupVServerGroupsArrayOutput struct{ *pulumi.OutputState }
 
 func (ScalingGroupVServerGroupsArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ScalingGroupVServerGroups)(nil))
+	return reflect.TypeOf((*[]*ScalingGroupVServerGroups)(nil)).Elem()
 }
 
 func (o ScalingGroupVServerGroupsArrayOutput) ToScalingGroupVServerGroupsArrayOutput() ScalingGroupVServerGroupsArrayOutput {
@@ -302,15 +239,15 @@ func (o ScalingGroupVServerGroupsArrayOutput) ToScalingGroupVServerGroupsArrayOu
 }
 
 func (o ScalingGroupVServerGroupsArrayOutput) Index(i pulumi.IntInput) ScalingGroupVServerGroupsOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingGroupVServerGroups {
-		return vs[0].([]ScalingGroupVServerGroups)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ScalingGroupVServerGroups {
+		return vs[0].([]*ScalingGroupVServerGroups)[vs[1].(int)]
 	}).(ScalingGroupVServerGroupsOutput)
 }
 
 type ScalingGroupVServerGroupsMapOutput struct{ *pulumi.OutputState }
 
 func (ScalingGroupVServerGroupsMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ScalingGroupVServerGroups)(nil))
+	return reflect.TypeOf((*map[string]*ScalingGroupVServerGroups)(nil)).Elem()
 }
 
 func (o ScalingGroupVServerGroupsMapOutput) ToScalingGroupVServerGroupsMapOutput() ScalingGroupVServerGroupsMapOutput {
@@ -322,18 +259,16 @@ func (o ScalingGroupVServerGroupsMapOutput) ToScalingGroupVServerGroupsMapOutput
 }
 
 func (o ScalingGroupVServerGroupsMapOutput) MapIndex(k pulumi.StringInput) ScalingGroupVServerGroupsOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ScalingGroupVServerGroups {
-		return vs[0].(map[string]ScalingGroupVServerGroups)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ScalingGroupVServerGroups {
+		return vs[0].(map[string]*ScalingGroupVServerGroups)[vs[1].(string)]
 	}).(ScalingGroupVServerGroupsOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupVServerGroupsInput)(nil)).Elem(), &ScalingGroupVServerGroups{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupVServerGroupsPtrInput)(nil)).Elem(), &ScalingGroupVServerGroups{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupVServerGroupsArrayInput)(nil)).Elem(), ScalingGroupVServerGroupsArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupVServerGroupsMapInput)(nil)).Elem(), ScalingGroupVServerGroupsMap{})
 	pulumi.RegisterOutputType(ScalingGroupVServerGroupsOutput{})
-	pulumi.RegisterOutputType(ScalingGroupVServerGroupsPtrOutput{})
 	pulumi.RegisterOutputType(ScalingGroupVServerGroupsArrayOutput{})
 	pulumi.RegisterOutputType(ScalingGroupVServerGroupsMapOutput{})
 }

@@ -132,27 +132,27 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: ScalingGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ScalingGroupArgs | ScalingGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ScalingGroupState | undefined;
-            inputs["dbInstanceIds"] = state ? state.dbInstanceIds : undefined;
-            inputs["defaultCooldown"] = state ? state.defaultCooldown : undefined;
-            inputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
-            inputs["groupDeletionProtection"] = state ? state.groupDeletionProtection : undefined;
-            inputs["launchTemplateId"] = state ? state.launchTemplateId : undefined;
-            inputs["loadbalancerIds"] = state ? state.loadbalancerIds : undefined;
-            inputs["maxSize"] = state ? state.maxSize : undefined;
-            inputs["minSize"] = state ? state.minSize : undefined;
-            inputs["multiAzPolicy"] = state ? state.multiAzPolicy : undefined;
-            inputs["onDemandBaseCapacity"] = state ? state.onDemandBaseCapacity : undefined;
-            inputs["onDemandPercentageAboveBaseCapacity"] = state ? state.onDemandPercentageAboveBaseCapacity : undefined;
-            inputs["removalPolicies"] = state ? state.removalPolicies : undefined;
-            inputs["scalingGroupName"] = state ? state.scalingGroupName : undefined;
-            inputs["spotInstancePools"] = state ? state.spotInstancePools : undefined;
-            inputs["spotInstanceRemedy"] = state ? state.spotInstanceRemedy : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
-            inputs["vswitchIds"] = state ? state.vswitchIds : undefined;
+            resourceInputs["dbInstanceIds"] = state ? state.dbInstanceIds : undefined;
+            resourceInputs["defaultCooldown"] = state ? state.defaultCooldown : undefined;
+            resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
+            resourceInputs["groupDeletionProtection"] = state ? state.groupDeletionProtection : undefined;
+            resourceInputs["launchTemplateId"] = state ? state.launchTemplateId : undefined;
+            resourceInputs["loadbalancerIds"] = state ? state.loadbalancerIds : undefined;
+            resourceInputs["maxSize"] = state ? state.maxSize : undefined;
+            resourceInputs["minSize"] = state ? state.minSize : undefined;
+            resourceInputs["multiAzPolicy"] = state ? state.multiAzPolicy : undefined;
+            resourceInputs["onDemandBaseCapacity"] = state ? state.onDemandBaseCapacity : undefined;
+            resourceInputs["onDemandPercentageAboveBaseCapacity"] = state ? state.onDemandPercentageAboveBaseCapacity : undefined;
+            resourceInputs["removalPolicies"] = state ? state.removalPolicies : undefined;
+            resourceInputs["scalingGroupName"] = state ? state.scalingGroupName : undefined;
+            resourceInputs["spotInstancePools"] = state ? state.spotInstancePools : undefined;
+            resourceInputs["spotInstanceRemedy"] = state ? state.spotInstanceRemedy : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["vswitchIds"] = state ? state.vswitchIds : undefined;
         } else {
             const args = argsOrState as ScalingGroupArgs | undefined;
             if ((!args || args.maxSize === undefined) && !opts.urn) {
@@ -161,28 +161,26 @@ export class ScalingGroup extends pulumi.CustomResource {
             if ((!args || args.minSize === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'minSize'");
             }
-            inputs["dbInstanceIds"] = args ? args.dbInstanceIds : undefined;
-            inputs["defaultCooldown"] = args ? args.defaultCooldown : undefined;
-            inputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
-            inputs["groupDeletionProtection"] = args ? args.groupDeletionProtection : undefined;
-            inputs["launchTemplateId"] = args ? args.launchTemplateId : undefined;
-            inputs["loadbalancerIds"] = args ? args.loadbalancerIds : undefined;
-            inputs["maxSize"] = args ? args.maxSize : undefined;
-            inputs["minSize"] = args ? args.minSize : undefined;
-            inputs["multiAzPolicy"] = args ? args.multiAzPolicy : undefined;
-            inputs["onDemandBaseCapacity"] = args ? args.onDemandBaseCapacity : undefined;
-            inputs["onDemandPercentageAboveBaseCapacity"] = args ? args.onDemandPercentageAboveBaseCapacity : undefined;
-            inputs["removalPolicies"] = args ? args.removalPolicies : undefined;
-            inputs["scalingGroupName"] = args ? args.scalingGroupName : undefined;
-            inputs["spotInstancePools"] = args ? args.spotInstancePools : undefined;
-            inputs["spotInstanceRemedy"] = args ? args.spotInstanceRemedy : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["vswitchIds"] = args ? args.vswitchIds : undefined;
+            resourceInputs["dbInstanceIds"] = args ? args.dbInstanceIds : undefined;
+            resourceInputs["defaultCooldown"] = args ? args.defaultCooldown : undefined;
+            resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
+            resourceInputs["groupDeletionProtection"] = args ? args.groupDeletionProtection : undefined;
+            resourceInputs["launchTemplateId"] = args ? args.launchTemplateId : undefined;
+            resourceInputs["loadbalancerIds"] = args ? args.loadbalancerIds : undefined;
+            resourceInputs["maxSize"] = args ? args.maxSize : undefined;
+            resourceInputs["minSize"] = args ? args.minSize : undefined;
+            resourceInputs["multiAzPolicy"] = args ? args.multiAzPolicy : undefined;
+            resourceInputs["onDemandBaseCapacity"] = args ? args.onDemandBaseCapacity : undefined;
+            resourceInputs["onDemandPercentageAboveBaseCapacity"] = args ? args.onDemandPercentageAboveBaseCapacity : undefined;
+            resourceInputs["removalPolicies"] = args ? args.removalPolicies : undefined;
+            resourceInputs["scalingGroupName"] = args ? args.scalingGroupName : undefined;
+            resourceInputs["spotInstancePools"] = args ? args.spotInstancePools : undefined;
+            resourceInputs["spotInstanceRemedy"] = args ? args.spotInstanceRemedy : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["vswitchIds"] = args ? args.vswitchIds : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ScalingGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ScalingGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

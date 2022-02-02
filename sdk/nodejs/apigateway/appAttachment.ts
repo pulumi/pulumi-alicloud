@@ -58,14 +58,14 @@ export class AppAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: AppAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AppAttachmentArgs | AppAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppAttachmentState | undefined;
-            inputs["apiId"] = state ? state.apiId : undefined;
-            inputs["appId"] = state ? state.appId : undefined;
-            inputs["groupId"] = state ? state.groupId : undefined;
-            inputs["stageName"] = state ? state.stageName : undefined;
+            resourceInputs["apiId"] = state ? state.apiId : undefined;
+            resourceInputs["appId"] = state ? state.appId : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["stageName"] = state ? state.stageName : undefined;
         } else {
             const args = argsOrState as AppAttachmentArgs | undefined;
             if ((!args || args.apiId === undefined) && !opts.urn) {
@@ -80,15 +80,13 @@ export class AppAttachment extends pulumi.CustomResource {
             if ((!args || args.stageName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'stageName'");
             }
-            inputs["apiId"] = args ? args.apiId : undefined;
-            inputs["appId"] = args ? args.appId : undefined;
-            inputs["groupId"] = args ? args.groupId : undefined;
-            inputs["stageName"] = args ? args.stageName : undefined;
+            resourceInputs["apiId"] = args ? args.apiId : undefined;
+            resourceInputs["appId"] = args ? args.appId : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["stageName"] = args ? args.stageName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AppAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AppAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -32,9 +32,9 @@ import * as utilities from "../utilities";
  *     healthCheckUri: "/console",
  *     establishedTimeout: 600,
  * });
- * const sampleDs = _default.id.apply(id => alicloud.slb.getListeners({
- *     loadBalancerId: id,
- * }));
+ * const sampleDs = alicloud.slb.getListenersOutput({
+ *     loadBalancerId: _default.id,
+ * });
  * export const firstSlbListenerProtocol = sampleDs.apply(sampleDs => sampleDs.slbListeners?[0]?.protocol);
  * ```
  */
@@ -43,9 +43,7 @@ export function getListeners(args: GetListenersArgs, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:slb/getListeners:getListeners", {
         "descriptionRegex": args.descriptionRegex,
         "frontendPort": args.frontendPort,

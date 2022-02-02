@@ -91,14 +91,14 @@ export class TlsCipherPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: TlsCipherPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TlsCipherPolicyArgs | TlsCipherPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TlsCipherPolicyState | undefined;
-            inputs["ciphers"] = state ? state.ciphers : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tlsCipherPolicyName"] = state ? state.tlsCipherPolicyName : undefined;
-            inputs["tlsVersions"] = state ? state.tlsVersions : undefined;
+            resourceInputs["ciphers"] = state ? state.ciphers : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tlsCipherPolicyName"] = state ? state.tlsCipherPolicyName : undefined;
+            resourceInputs["tlsVersions"] = state ? state.tlsVersions : undefined;
         } else {
             const args = argsOrState as TlsCipherPolicyArgs | undefined;
             if ((!args || args.ciphers === undefined) && !opts.urn) {
@@ -110,15 +110,13 @@ export class TlsCipherPolicy extends pulumi.CustomResource {
             if ((!args || args.tlsVersions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tlsVersions'");
             }
-            inputs["ciphers"] = args ? args.ciphers : undefined;
-            inputs["tlsCipherPolicyName"] = args ? args.tlsCipherPolicyName : undefined;
-            inputs["tlsVersions"] = args ? args.tlsVersions : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["ciphers"] = args ? args.ciphers : undefined;
+            resourceInputs["tlsCipherPolicyName"] = args ? args.tlsCipherPolicyName : undefined;
+            resourceInputs["tlsVersions"] = args ? args.tlsVersions : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TlsCipherPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TlsCipherPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

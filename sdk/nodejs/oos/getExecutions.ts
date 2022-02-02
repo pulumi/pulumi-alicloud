@@ -31,9 +31,7 @@ export function getExecutions(args?: GetExecutionsArgs, opts?: pulumi.InvokeOpti
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:oos/getExecutions:getExecutions", {
         "category": args.category,
         "endDate": args.endDate,

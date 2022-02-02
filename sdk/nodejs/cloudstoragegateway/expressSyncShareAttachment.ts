@@ -139,13 +139,13 @@ export class ExpressSyncShareAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: ExpressSyncShareAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ExpressSyncShareAttachmentArgs | ExpressSyncShareAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExpressSyncShareAttachmentState | undefined;
-            inputs["expressSyncId"] = state ? state.expressSyncId : undefined;
-            inputs["gatewayId"] = state ? state.gatewayId : undefined;
-            inputs["shareName"] = state ? state.shareName : undefined;
+            resourceInputs["expressSyncId"] = state ? state.expressSyncId : undefined;
+            resourceInputs["gatewayId"] = state ? state.gatewayId : undefined;
+            resourceInputs["shareName"] = state ? state.shareName : undefined;
         } else {
             const args = argsOrState as ExpressSyncShareAttachmentArgs | undefined;
             if ((!args || args.expressSyncId === undefined) && !opts.urn) {
@@ -157,14 +157,12 @@ export class ExpressSyncShareAttachment extends pulumi.CustomResource {
             if ((!args || args.shareName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'shareName'");
             }
-            inputs["expressSyncId"] = args ? args.expressSyncId : undefined;
-            inputs["gatewayId"] = args ? args.gatewayId : undefined;
-            inputs["shareName"] = args ? args.shareName : undefined;
+            resourceInputs["expressSyncId"] = args ? args.expressSyncId : undefined;
+            resourceInputs["gatewayId"] = args ? args.gatewayId : undefined;
+            resourceInputs["shareName"] = args ? args.shareName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ExpressSyncShareAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ExpressSyncShareAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

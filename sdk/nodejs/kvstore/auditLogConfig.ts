@@ -92,30 +92,28 @@ export class AuditLogConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args: AuditLogConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AuditLogConfigArgs | AuditLogConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuditLogConfigState | undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["dbAudit"] = state ? state.dbAudit : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["retention"] = state ? state.retention : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["dbAudit"] = state ? state.dbAudit : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["retention"] = state ? state.retention : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as AuditLogConfigArgs | undefined;
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["dbAudit"] = args ? args.dbAudit : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["retention"] = args ? args.retention : undefined;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["dbAudit"] = args ? args.dbAudit : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["retention"] = args ? args.retention : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AuditLogConfig.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AuditLogConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

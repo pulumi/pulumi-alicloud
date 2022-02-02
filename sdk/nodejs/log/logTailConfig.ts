@@ -79,17 +79,17 @@ export class LogTailConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args: LogTailConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LogTailConfigArgs | LogTailConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LogTailConfigState | undefined;
-            inputs["inputDetail"] = state ? state.inputDetail : undefined;
-            inputs["inputType"] = state ? state.inputType : undefined;
-            inputs["logSample"] = state ? state.logSample : undefined;
-            inputs["logstore"] = state ? state.logstore : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["outputType"] = state ? state.outputType : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["inputDetail"] = state ? state.inputDetail : undefined;
+            resourceInputs["inputType"] = state ? state.inputType : undefined;
+            resourceInputs["logSample"] = state ? state.logSample : undefined;
+            resourceInputs["logstore"] = state ? state.logstore : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["outputType"] = state ? state.outputType : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as LogTailConfigArgs | undefined;
             if ((!args || args.inputDetail === undefined) && !opts.urn) {
@@ -107,18 +107,16 @@ export class LogTailConfig extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["inputDetail"] = args ? args.inputDetail : undefined;
-            inputs["inputType"] = args ? args.inputType : undefined;
-            inputs["logSample"] = args ? args.logSample : undefined;
-            inputs["logstore"] = args ? args.logstore : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["outputType"] = args ? args.outputType : undefined;
-            inputs["project"] = args ? args.project : undefined;
+            resourceInputs["inputDetail"] = args ? args.inputDetail : undefined;
+            resourceInputs["inputType"] = args ? args.inputType : undefined;
+            resourceInputs["logSample"] = args ? args.logSample : undefined;
+            resourceInputs["logstore"] = args ? args.logstore : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["outputType"] = args ? args.outputType : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(LogTailConfig.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(LogTailConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

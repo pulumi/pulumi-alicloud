@@ -27,9 +27,7 @@ export function getBuckets(args?: GetBucketsArgs, opts?: pulumi.InvokeOptions): 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:oss/getBuckets:getBuckets", {
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,

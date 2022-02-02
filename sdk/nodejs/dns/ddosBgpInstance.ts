@@ -107,17 +107,17 @@ export class DdosBgpInstance extends pulumi.CustomResource {
     /** @deprecated alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance */
     constructor(name: string, argsOrState?: DdosBgpInstanceArgs | DdosBgpInstanceState, opts?: pulumi.CustomResourceOptions) {
         pulumi.log.warn("DdosBgpInstance is deprecated: alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance")
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DdosBgpInstanceState | undefined;
-            inputs["bandwidth"] = state ? state.bandwidth : undefined;
-            inputs["baseBandwidth"] = state ? state.baseBandwidth : undefined;
-            inputs["ipCount"] = state ? state.ipCount : undefined;
-            inputs["ipType"] = state ? state.ipType : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
+            resourceInputs["baseBandwidth"] = state ? state.baseBandwidth : undefined;
+            resourceInputs["ipCount"] = state ? state.ipCount : undefined;
+            resourceInputs["ipType"] = state ? state.ipType : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as DdosBgpInstanceArgs | undefined;
             if ((!args || args.bandwidth === undefined) && !opts.urn) {
@@ -129,18 +129,16 @@ export class DdosBgpInstance extends pulumi.CustomResource {
             if ((!args || args.ipType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ipType'");
             }
-            inputs["bandwidth"] = args ? args.bandwidth : undefined;
-            inputs["baseBandwidth"] = args ? args.baseBandwidth : undefined;
-            inputs["ipCount"] = args ? args.ipCount : undefined;
-            inputs["ipType"] = args ? args.ipType : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["type"] = args ? args.type : undefined;
+            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
+            resourceInputs["baseBandwidth"] = args ? args.baseBandwidth : undefined;
+            resourceInputs["ipCount"] = args ? args.ipCount : undefined;
+            resourceInputs["ipType"] = args ? args.ipType : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DdosBgpInstance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DdosBgpInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

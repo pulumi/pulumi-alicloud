@@ -33,6 +33,12 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		_ = vpc.GetCommonBandwidthPackagesOutput(ctx, vpc.GetCommonBandwidthPackagesOutputArgs{
+// 			Ids: pulumi.StringArray{
+// 				fooCommonBandwithPackage.ID(),
+// 			},
+// 			NameRegex: pulumi.String("^tf-testAcc.*"),
+// 		}, nil)
 // 		return nil
 // 	})
 // }

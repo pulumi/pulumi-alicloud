@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.SimpleApplicationServer
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerPlansResult> InvokeAsync(GetServerPlansArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServerPlansResult>("alicloud:simpleapplicationserver/getServerPlans:getServerPlans", args ?? new GetServerPlansArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServerPlansResult>("alicloud:simpleapplicationserver/getServerPlans:getServerPlans", args ?? new GetServerPlansArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Simple Application Server Plans of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServerPlansResult> Invoke(GetServerPlansInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServerPlansResult>("alicloud:simpleapplicationserver/getServerPlans:getServerPlans", args ?? new GetServerPlansInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetServerPlansResult>("alicloud:simpleapplicationserver/getServerPlans:getServerPlans", args ?? new GetServerPlansInvokeArgs(), options.WithDefaults());
     }
 
 

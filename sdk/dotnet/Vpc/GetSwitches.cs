@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -42,10 +41,10 @@ namespace Pulumi.AliCloud.Vpc
         ///             VpcId = vpc.Id,
         ///             VswitchName = name,
         ///         });
-        ///         var defaultSwitches = vswitch.VswitchName.Apply(vswitchName =&gt; AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
+        ///         var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new AliCloud.Vpc.GetSwitchesInvokeArgs
         ///         {
-        ///             NameRegex = vswitchName,
-        ///         }));
+        ///             NameRegex = vswitch.VswitchName,
+        ///         });
         ///     }
         /// 
         /// }
@@ -54,7 +53,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSwitchesResult> InvokeAsync(GetSwitchesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSwitchesResult>("alicloud:vpc/getSwitches:getSwitches", args ?? new GetSwitchesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSwitchesResult>("alicloud:vpc/getSwitches:getSwitches", args ?? new GetSwitchesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of VSwitches owned by an Alibaba Cloud account.
@@ -86,10 +85,10 @@ namespace Pulumi.AliCloud.Vpc
         ///             VpcId = vpc.Id,
         ///             VswitchName = name,
         ///         });
-        ///         var defaultSwitches = vswitch.VswitchName.Apply(vswitchName =&gt; AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
+        ///         var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new AliCloud.Vpc.GetSwitchesInvokeArgs
         ///         {
-        ///             NameRegex = vswitchName,
-        ///         }));
+        ///             NameRegex = vswitch.VswitchName,
+        ///         });
         ///     }
         /// 
         /// }
@@ -98,7 +97,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSwitchesResult> Invoke(GetSwitchesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSwitchesResult>("alicloud:vpc/getSwitches:getSwitches", args ?? new GetSwitchesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSwitchesResult>("alicloud:vpc/getSwitches:getSwitches", args ?? new GetSwitchesInvokeArgs(), options.WithDefaults());
     }
 
 

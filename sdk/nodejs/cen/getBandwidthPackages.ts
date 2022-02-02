@@ -27,9 +27,7 @@ export function getBandwidthPackages(args?: GetBandwidthPackagesArgs, opts?: pul
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cen/getBandwidthPackages:getBandwidthPackages", {
         "ids": args.ids,
         "includeReservationData": args.includeReservationData,

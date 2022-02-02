@@ -474,7 +474,7 @@ type SubscriptionJobInput interface {
 }
 
 func (*SubscriptionJob) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubscriptionJob)(nil))
+	return reflect.TypeOf((**SubscriptionJob)(nil)).Elem()
 }
 
 func (i *SubscriptionJob) ToSubscriptionJobOutput() SubscriptionJobOutput {
@@ -483,35 +483,6 @@ func (i *SubscriptionJob) ToSubscriptionJobOutput() SubscriptionJobOutput {
 
 func (i *SubscriptionJob) ToSubscriptionJobOutputWithContext(ctx context.Context) SubscriptionJobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionJobOutput)
-}
-
-func (i *SubscriptionJob) ToSubscriptionJobPtrOutput() SubscriptionJobPtrOutput {
-	return i.ToSubscriptionJobPtrOutputWithContext(context.Background())
-}
-
-func (i *SubscriptionJob) ToSubscriptionJobPtrOutputWithContext(ctx context.Context) SubscriptionJobPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionJobPtrOutput)
-}
-
-type SubscriptionJobPtrInput interface {
-	pulumi.Input
-
-	ToSubscriptionJobPtrOutput() SubscriptionJobPtrOutput
-	ToSubscriptionJobPtrOutputWithContext(ctx context.Context) SubscriptionJobPtrOutput
-}
-
-type subscriptionJobPtrType SubscriptionJobArgs
-
-func (*subscriptionJobPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubscriptionJob)(nil))
-}
-
-func (i *subscriptionJobPtrType) ToSubscriptionJobPtrOutput() SubscriptionJobPtrOutput {
-	return i.ToSubscriptionJobPtrOutputWithContext(context.Background())
-}
-
-func (i *subscriptionJobPtrType) ToSubscriptionJobPtrOutputWithContext(ctx context.Context) SubscriptionJobPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionJobPtrOutput)
 }
 
 // SubscriptionJobArrayInput is an input type that accepts SubscriptionJobArray and SubscriptionJobArrayOutput values.
@@ -567,7 +538,7 @@ func (i SubscriptionJobMap) ToSubscriptionJobMapOutputWithContext(ctx context.Co
 type SubscriptionJobOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubscriptionJob)(nil))
+	return reflect.TypeOf((**SubscriptionJob)(nil)).Elem()
 }
 
 func (o SubscriptionJobOutput) ToSubscriptionJobOutput() SubscriptionJobOutput {
@@ -578,44 +549,10 @@ func (o SubscriptionJobOutput) ToSubscriptionJobOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o SubscriptionJobOutput) ToSubscriptionJobPtrOutput() SubscriptionJobPtrOutput {
-	return o.ToSubscriptionJobPtrOutputWithContext(context.Background())
-}
-
-func (o SubscriptionJobOutput) ToSubscriptionJobPtrOutputWithContext(ctx context.Context) SubscriptionJobPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionJob) *SubscriptionJob {
-		return &v
-	}).(SubscriptionJobPtrOutput)
-}
-
-type SubscriptionJobPtrOutput struct{ *pulumi.OutputState }
-
-func (SubscriptionJobPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubscriptionJob)(nil))
-}
-
-func (o SubscriptionJobPtrOutput) ToSubscriptionJobPtrOutput() SubscriptionJobPtrOutput {
-	return o
-}
-
-func (o SubscriptionJobPtrOutput) ToSubscriptionJobPtrOutputWithContext(ctx context.Context) SubscriptionJobPtrOutput {
-	return o
-}
-
-func (o SubscriptionJobPtrOutput) Elem() SubscriptionJobOutput {
-	return o.ApplyT(func(v *SubscriptionJob) SubscriptionJob {
-		if v != nil {
-			return *v
-		}
-		var ret SubscriptionJob
-		return ret
-	}).(SubscriptionJobOutput)
-}
-
 type SubscriptionJobArrayOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionJobArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SubscriptionJob)(nil))
+	return reflect.TypeOf((*[]*SubscriptionJob)(nil)).Elem()
 }
 
 func (o SubscriptionJobArrayOutput) ToSubscriptionJobArrayOutput() SubscriptionJobArrayOutput {
@@ -627,15 +564,15 @@ func (o SubscriptionJobArrayOutput) ToSubscriptionJobArrayOutputWithContext(ctx 
 }
 
 func (o SubscriptionJobArrayOutput) Index(i pulumi.IntInput) SubscriptionJobOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubscriptionJob {
-		return vs[0].([]SubscriptionJob)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SubscriptionJob {
+		return vs[0].([]*SubscriptionJob)[vs[1].(int)]
 	}).(SubscriptionJobOutput)
 }
 
 type SubscriptionJobMapOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionJobMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SubscriptionJob)(nil))
+	return reflect.TypeOf((*map[string]*SubscriptionJob)(nil)).Elem()
 }
 
 func (o SubscriptionJobMapOutput) ToSubscriptionJobMapOutput() SubscriptionJobMapOutput {
@@ -647,18 +584,16 @@ func (o SubscriptionJobMapOutput) ToSubscriptionJobMapOutputWithContext(ctx cont
 }
 
 func (o SubscriptionJobMapOutput) MapIndex(k pulumi.StringInput) SubscriptionJobOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SubscriptionJob {
-		return vs[0].(map[string]SubscriptionJob)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SubscriptionJob {
+		return vs[0].(map[string]*SubscriptionJob)[vs[1].(string)]
 	}).(SubscriptionJobOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionJobInput)(nil)).Elem(), &SubscriptionJob{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionJobPtrInput)(nil)).Elem(), &SubscriptionJob{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionJobArrayInput)(nil)).Elem(), SubscriptionJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionJobMapInput)(nil)).Elem(), SubscriptionJobMap{})
 	pulumi.RegisterOutputType(SubscriptionJobOutput{})
-	pulumi.RegisterOutputType(SubscriptionJobPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionJobArrayOutput{})
 	pulumi.RegisterOutputType(SubscriptionJobMapOutput{})
 }

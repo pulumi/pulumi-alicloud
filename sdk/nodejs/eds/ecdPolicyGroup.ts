@@ -144,45 +144,43 @@ export class EcdPolicyGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args?: EcdPolicyGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EcdPolicyGroupArgs | EcdPolicyGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcdPolicyGroupState | undefined;
-            inputs["authorizeAccessPolicyRules"] = state ? state.authorizeAccessPolicyRules : undefined;
-            inputs["authorizeSecurityPolicyRules"] = state ? state.authorizeSecurityPolicyRules : undefined;
-            inputs["clipboard"] = state ? state.clipboard : undefined;
-            inputs["domainList"] = state ? state.domainList : undefined;
-            inputs["htmlAccess"] = state ? state.htmlAccess : undefined;
-            inputs["htmlFileTransfer"] = state ? state.htmlFileTransfer : undefined;
-            inputs["localDrive"] = state ? state.localDrive : undefined;
-            inputs["policyGroupName"] = state ? state.policyGroupName : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["usbRedirect"] = state ? state.usbRedirect : undefined;
-            inputs["visualQuality"] = state ? state.visualQuality : undefined;
-            inputs["watermark"] = state ? state.watermark : undefined;
-            inputs["watermarkTransparency"] = state ? state.watermarkTransparency : undefined;
-            inputs["watermarkType"] = state ? state.watermarkType : undefined;
+            resourceInputs["authorizeAccessPolicyRules"] = state ? state.authorizeAccessPolicyRules : undefined;
+            resourceInputs["authorizeSecurityPolicyRules"] = state ? state.authorizeSecurityPolicyRules : undefined;
+            resourceInputs["clipboard"] = state ? state.clipboard : undefined;
+            resourceInputs["domainList"] = state ? state.domainList : undefined;
+            resourceInputs["htmlAccess"] = state ? state.htmlAccess : undefined;
+            resourceInputs["htmlFileTransfer"] = state ? state.htmlFileTransfer : undefined;
+            resourceInputs["localDrive"] = state ? state.localDrive : undefined;
+            resourceInputs["policyGroupName"] = state ? state.policyGroupName : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["usbRedirect"] = state ? state.usbRedirect : undefined;
+            resourceInputs["visualQuality"] = state ? state.visualQuality : undefined;
+            resourceInputs["watermark"] = state ? state.watermark : undefined;
+            resourceInputs["watermarkTransparency"] = state ? state.watermarkTransparency : undefined;
+            resourceInputs["watermarkType"] = state ? state.watermarkType : undefined;
         } else {
             const args = argsOrState as EcdPolicyGroupArgs | undefined;
-            inputs["authorizeAccessPolicyRules"] = args ? args.authorizeAccessPolicyRules : undefined;
-            inputs["authorizeSecurityPolicyRules"] = args ? args.authorizeSecurityPolicyRules : undefined;
-            inputs["clipboard"] = args ? args.clipboard : undefined;
-            inputs["domainList"] = args ? args.domainList : undefined;
-            inputs["htmlAccess"] = args ? args.htmlAccess : undefined;
-            inputs["htmlFileTransfer"] = args ? args.htmlFileTransfer : undefined;
-            inputs["localDrive"] = args ? args.localDrive : undefined;
-            inputs["policyGroupName"] = args ? args.policyGroupName : undefined;
-            inputs["usbRedirect"] = args ? args.usbRedirect : undefined;
-            inputs["visualQuality"] = args ? args.visualQuality : undefined;
-            inputs["watermark"] = args ? args.watermark : undefined;
-            inputs["watermarkTransparency"] = args ? args.watermarkTransparency : undefined;
-            inputs["watermarkType"] = args ? args.watermarkType : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["authorizeAccessPolicyRules"] = args ? args.authorizeAccessPolicyRules : undefined;
+            resourceInputs["authorizeSecurityPolicyRules"] = args ? args.authorizeSecurityPolicyRules : undefined;
+            resourceInputs["clipboard"] = args ? args.clipboard : undefined;
+            resourceInputs["domainList"] = args ? args.domainList : undefined;
+            resourceInputs["htmlAccess"] = args ? args.htmlAccess : undefined;
+            resourceInputs["htmlFileTransfer"] = args ? args.htmlFileTransfer : undefined;
+            resourceInputs["localDrive"] = args ? args.localDrive : undefined;
+            resourceInputs["policyGroupName"] = args ? args.policyGroupName : undefined;
+            resourceInputs["usbRedirect"] = args ? args.usbRedirect : undefined;
+            resourceInputs["visualQuality"] = args ? args.visualQuality : undefined;
+            resourceInputs["watermark"] = args ? args.watermark : undefined;
+            resourceInputs["watermarkTransparency"] = args ? args.watermarkTransparency : undefined;
+            resourceInputs["watermarkType"] = args ? args.watermarkType : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EcdPolicyGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EcdPolicyGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

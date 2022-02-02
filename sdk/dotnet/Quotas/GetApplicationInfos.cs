@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Quotas
 {
     public static class GetApplicationInfos
     {
         public static Task<GetApplicationInfosResult> InvokeAsync(GetApplicationInfosArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationInfosResult>("alicloud:quotas/getApplicationInfos:getApplicationInfos", args ?? new GetApplicationInfosArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationInfosResult>("alicloud:quotas/getApplicationInfos:getApplicationInfos", args ?? new GetApplicationInfosArgs(), options.WithDefaults());
 
         public static Output<GetApplicationInfosResult> Invoke(GetApplicationInfosInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetApplicationInfosResult>("alicloud:quotas/getApplicationInfos:getApplicationInfos", args ?? new GetApplicationInfosInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetApplicationInfosResult>("alicloud:quotas/getApplicationInfos:getApplicationInfos", args ?? new GetApplicationInfosInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -160,29 +160,29 @@ export class OssShipper extends pulumi.CustomResource {
      */
     constructor(name: string, args: OssShipperArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OssShipperArgs | OssShipperState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OssShipperState | undefined;
-            inputs["bufferInterval"] = state ? state.bufferInterval : undefined;
-            inputs["bufferSize"] = state ? state.bufferSize : undefined;
-            inputs["compressType"] = state ? state.compressType : undefined;
-            inputs["csvConfigColumns"] = state ? state.csvConfigColumns : undefined;
-            inputs["csvConfigDelimiter"] = state ? state.csvConfigDelimiter : undefined;
-            inputs["csvConfigHeader"] = state ? state.csvConfigHeader : undefined;
-            inputs["csvConfigLinefeed"] = state ? state.csvConfigLinefeed : undefined;
-            inputs["csvConfigNullidentifier"] = state ? state.csvConfigNullidentifier : undefined;
-            inputs["csvConfigQuote"] = state ? state.csvConfigQuote : undefined;
-            inputs["format"] = state ? state.format : undefined;
-            inputs["jsonEnableTag"] = state ? state.jsonEnableTag : undefined;
-            inputs["logstoreName"] = state ? state.logstoreName : undefined;
-            inputs["ossBucket"] = state ? state.ossBucket : undefined;
-            inputs["ossPrefix"] = state ? state.ossPrefix : undefined;
-            inputs["parquetConfigs"] = state ? state.parquetConfigs : undefined;
-            inputs["pathFormat"] = state ? state.pathFormat : undefined;
-            inputs["projectName"] = state ? state.projectName : undefined;
-            inputs["roleArn"] = state ? state.roleArn : undefined;
-            inputs["shipperName"] = state ? state.shipperName : undefined;
+            resourceInputs["bufferInterval"] = state ? state.bufferInterval : undefined;
+            resourceInputs["bufferSize"] = state ? state.bufferSize : undefined;
+            resourceInputs["compressType"] = state ? state.compressType : undefined;
+            resourceInputs["csvConfigColumns"] = state ? state.csvConfigColumns : undefined;
+            resourceInputs["csvConfigDelimiter"] = state ? state.csvConfigDelimiter : undefined;
+            resourceInputs["csvConfigHeader"] = state ? state.csvConfigHeader : undefined;
+            resourceInputs["csvConfigLinefeed"] = state ? state.csvConfigLinefeed : undefined;
+            resourceInputs["csvConfigNullidentifier"] = state ? state.csvConfigNullidentifier : undefined;
+            resourceInputs["csvConfigQuote"] = state ? state.csvConfigQuote : undefined;
+            resourceInputs["format"] = state ? state.format : undefined;
+            resourceInputs["jsonEnableTag"] = state ? state.jsonEnableTag : undefined;
+            resourceInputs["logstoreName"] = state ? state.logstoreName : undefined;
+            resourceInputs["ossBucket"] = state ? state.ossBucket : undefined;
+            resourceInputs["ossPrefix"] = state ? state.ossPrefix : undefined;
+            resourceInputs["parquetConfigs"] = state ? state.parquetConfigs : undefined;
+            resourceInputs["pathFormat"] = state ? state.pathFormat : undefined;
+            resourceInputs["projectName"] = state ? state.projectName : undefined;
+            resourceInputs["roleArn"] = state ? state.roleArn : undefined;
+            resourceInputs["shipperName"] = state ? state.shipperName : undefined;
         } else {
             const args = argsOrState as OssShipperArgs | undefined;
             if ((!args || args.bufferInterval === undefined) && !opts.urn) {
@@ -209,30 +209,28 @@ export class OssShipper extends pulumi.CustomResource {
             if ((!args || args.shipperName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'shipperName'");
             }
-            inputs["bufferInterval"] = args ? args.bufferInterval : undefined;
-            inputs["bufferSize"] = args ? args.bufferSize : undefined;
-            inputs["compressType"] = args ? args.compressType : undefined;
-            inputs["csvConfigColumns"] = args ? args.csvConfigColumns : undefined;
-            inputs["csvConfigDelimiter"] = args ? args.csvConfigDelimiter : undefined;
-            inputs["csvConfigHeader"] = args ? args.csvConfigHeader : undefined;
-            inputs["csvConfigLinefeed"] = args ? args.csvConfigLinefeed : undefined;
-            inputs["csvConfigNullidentifier"] = args ? args.csvConfigNullidentifier : undefined;
-            inputs["csvConfigQuote"] = args ? args.csvConfigQuote : undefined;
-            inputs["format"] = args ? args.format : undefined;
-            inputs["jsonEnableTag"] = args ? args.jsonEnableTag : undefined;
-            inputs["logstoreName"] = args ? args.logstoreName : undefined;
-            inputs["ossBucket"] = args ? args.ossBucket : undefined;
-            inputs["ossPrefix"] = args ? args.ossPrefix : undefined;
-            inputs["parquetConfigs"] = args ? args.parquetConfigs : undefined;
-            inputs["pathFormat"] = args ? args.pathFormat : undefined;
-            inputs["projectName"] = args ? args.projectName : undefined;
-            inputs["roleArn"] = args ? args.roleArn : undefined;
-            inputs["shipperName"] = args ? args.shipperName : undefined;
+            resourceInputs["bufferInterval"] = args ? args.bufferInterval : undefined;
+            resourceInputs["bufferSize"] = args ? args.bufferSize : undefined;
+            resourceInputs["compressType"] = args ? args.compressType : undefined;
+            resourceInputs["csvConfigColumns"] = args ? args.csvConfigColumns : undefined;
+            resourceInputs["csvConfigDelimiter"] = args ? args.csvConfigDelimiter : undefined;
+            resourceInputs["csvConfigHeader"] = args ? args.csvConfigHeader : undefined;
+            resourceInputs["csvConfigLinefeed"] = args ? args.csvConfigLinefeed : undefined;
+            resourceInputs["csvConfigNullidentifier"] = args ? args.csvConfigNullidentifier : undefined;
+            resourceInputs["csvConfigQuote"] = args ? args.csvConfigQuote : undefined;
+            resourceInputs["format"] = args ? args.format : undefined;
+            resourceInputs["jsonEnableTag"] = args ? args.jsonEnableTag : undefined;
+            resourceInputs["logstoreName"] = args ? args.logstoreName : undefined;
+            resourceInputs["ossBucket"] = args ? args.ossBucket : undefined;
+            resourceInputs["ossPrefix"] = args ? args.ossPrefix : undefined;
+            resourceInputs["parquetConfigs"] = args ? args.parquetConfigs : undefined;
+            resourceInputs["pathFormat"] = args ? args.pathFormat : undefined;
+            resourceInputs["projectName"] = args ? args.projectName : undefined;
+            resourceInputs["roleArn"] = args ? args.roleArn : undefined;
+            resourceInputs["shipperName"] = args ? args.shipperName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(OssShipper.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(OssShipper.__pulumiType, name, resourceInputs, opts);
     }
 }
 

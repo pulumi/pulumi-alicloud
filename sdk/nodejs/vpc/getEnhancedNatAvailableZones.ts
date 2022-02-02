@@ -11,9 +11,7 @@ export function getEnhancedNatAvailableZones(args?: GetEnhancedNatAvailableZones
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", {
         "outputFile": args.outputFile,
     }, opts);

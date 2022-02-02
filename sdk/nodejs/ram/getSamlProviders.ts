@@ -31,9 +31,7 @@ export function getSamlProviders(args?: GetSamlProvidersArgs, opts?: pulumi.Invo
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ram/getSamlProviders:getSamlProviders", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,

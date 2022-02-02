@@ -57,11 +57,11 @@ import * as utilities from "../utilities";
  *     desktopName: "your_desktop_name",
  *     endUserIds: [defaultUser.id],
  * });
- * const ids = defaultDesktop.id.apply(id => alicloud.eds.getDesktops({
- *     ids: [id],
- * }));
+ * const ids = alicloud.eds.getDesktopsOutput({
+ *     ids: [defaultDesktop.id],
+ * });
  * export const ecdDesktopId1 = ids.apply(ids => ids.desktops?[0]?.id);
- * const nameRegex = defaultDesktop.desktopName.apply(desktopName => alicloud.eds.getDesktops({
+ * const nameRegex = defaultDesktop.desktopName.apply(desktopName => alicloud.eds.getDesktopsOutput({
  *     nameRegex: desktopName,
  * }));
  * export const ecdDesktopId2 = nameRegex.apply(nameRegex => nameRegex.desktops?[0]?.id);
@@ -73,9 +73,7 @@ export function getDesktops(args?: GetDesktopsArgs, opts?: pulumi.InvokeOptions)
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:eds/getDesktops:getDesktops", {
         "desktopName": args.desktopName,
         "endUserIds": args.endUserIds,

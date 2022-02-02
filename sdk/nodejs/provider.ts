@@ -105,37 +105,35 @@ export class Provider extends pulumi.ProviderResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            inputs["accessKey"] = args ? args.accessKey : undefined;
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["assumeRole"] = pulumi.output(args ? args.assumeRole : undefined).apply(JSON.stringify);
-            inputs["clientConnectTimeout"] = pulumi.output(args ? args.clientConnectTimeout : undefined).apply(JSON.stringify);
-            inputs["clientReadTimeout"] = pulumi.output(args ? args.clientReadTimeout : undefined).apply(JSON.stringify);
-            inputs["configurationSource"] = args ? args.configurationSource : undefined;
-            inputs["credentialsUri"] = args ? args.credentialsUri : undefined;
-            inputs["ecsRoleName"] = (args ? args.ecsRoleName : undefined) ?? utilities.getEnv("ALICLOUD_ECS_ROLE_NAME");
-            inputs["endpoints"] = pulumi.output(args ? args.endpoints : undefined).apply(JSON.stringify);
-            inputs["fc"] = args ? args.fc : undefined;
-            inputs["logEndpoint"] = args ? args.logEndpoint : undefined;
-            inputs["mnsEndpoint"] = args ? args.mnsEndpoint : undefined;
-            inputs["otsInstanceName"] = args ? args.otsInstanceName : undefined;
-            inputs["profile"] = (args ? args.profile : undefined) ?? utilities.getEnv("ALICLOUD_PROFILE");
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["region"] = (args ? args.region : undefined) ?? utilities.getEnv("ALICLOUD_REGION");
-            inputs["secretKey"] = args ? args.secretKey : undefined;
-            inputs["secureTransport"] = args ? args.secureTransport : undefined;
-            inputs["securityToken"] = args ? args.securityToken : undefined;
-            inputs["securityTransport"] = args ? args.securityTransport : undefined;
-            inputs["sharedCredentialsFile"] = args ? args.sharedCredentialsFile : undefined;
-            inputs["skipRegionValidation"] = pulumi.output(args ? args.skipRegionValidation : undefined).apply(JSON.stringify);
-            inputs["sourceIp"] = args ? args.sourceIp : undefined;
+            resourceInputs["accessKey"] = args ? args.accessKey : undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["assumeRole"] = pulumi.output(args ? args.assumeRole : undefined).apply(JSON.stringify);
+            resourceInputs["clientConnectTimeout"] = pulumi.output(args ? args.clientConnectTimeout : undefined).apply(JSON.stringify);
+            resourceInputs["clientReadTimeout"] = pulumi.output(args ? args.clientReadTimeout : undefined).apply(JSON.stringify);
+            resourceInputs["configurationSource"] = args ? args.configurationSource : undefined;
+            resourceInputs["credentialsUri"] = args ? args.credentialsUri : undefined;
+            resourceInputs["ecsRoleName"] = (args ? args.ecsRoleName : undefined) ?? utilities.getEnv("ALICLOUD_ECS_ROLE_NAME");
+            resourceInputs["endpoints"] = pulumi.output(args ? args.endpoints : undefined).apply(JSON.stringify);
+            resourceInputs["fc"] = args ? args.fc : undefined;
+            resourceInputs["logEndpoint"] = args ? args.logEndpoint : undefined;
+            resourceInputs["mnsEndpoint"] = args ? args.mnsEndpoint : undefined;
+            resourceInputs["otsInstanceName"] = args ? args.otsInstanceName : undefined;
+            resourceInputs["profile"] = (args ? args.profile : undefined) ?? utilities.getEnv("ALICLOUD_PROFILE");
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["region"] = (args ? args.region : undefined) ?? utilities.getEnv("ALICLOUD_REGION");
+            resourceInputs["secretKey"] = args ? args.secretKey : undefined;
+            resourceInputs["secureTransport"] = args ? args.secureTransport : undefined;
+            resourceInputs["securityToken"] = args ? args.securityToken : undefined;
+            resourceInputs["securityTransport"] = args ? args.securityTransport : undefined;
+            resourceInputs["sharedCredentialsFile"] = args ? args.sharedCredentialsFile : undefined;
+            resourceInputs["skipRegionValidation"] = pulumi.output(args ? args.skipRegionValidation : undefined).apply(JSON.stringify);
+            resourceInputs["sourceIp"] = args ? args.sourceIp : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Provider.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }
 

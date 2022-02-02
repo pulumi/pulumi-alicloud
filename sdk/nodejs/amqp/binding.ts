@@ -126,17 +126,17 @@ export class Binding extends pulumi.CustomResource {
      */
     constructor(name: string, args: BindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BindingArgs | BindingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BindingState | undefined;
-            inputs["argument"] = state ? state.argument : undefined;
-            inputs["bindingKey"] = state ? state.bindingKey : undefined;
-            inputs["bindingType"] = state ? state.bindingType : undefined;
-            inputs["destinationName"] = state ? state.destinationName : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["sourceExchange"] = state ? state.sourceExchange : undefined;
-            inputs["virtualHostName"] = state ? state.virtualHostName : undefined;
+            resourceInputs["argument"] = state ? state.argument : undefined;
+            resourceInputs["bindingKey"] = state ? state.bindingKey : undefined;
+            resourceInputs["bindingType"] = state ? state.bindingType : undefined;
+            resourceInputs["destinationName"] = state ? state.destinationName : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["sourceExchange"] = state ? state.sourceExchange : undefined;
+            resourceInputs["virtualHostName"] = state ? state.virtualHostName : undefined;
         } else {
             const args = argsOrState as BindingArgs | undefined;
             if ((!args || args.bindingKey === undefined) && !opts.urn) {
@@ -157,18 +157,16 @@ export class Binding extends pulumi.CustomResource {
             if ((!args || args.virtualHostName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'virtualHostName'");
             }
-            inputs["argument"] = args ? args.argument : undefined;
-            inputs["bindingKey"] = args ? args.bindingKey : undefined;
-            inputs["bindingType"] = args ? args.bindingType : undefined;
-            inputs["destinationName"] = args ? args.destinationName : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["sourceExchange"] = args ? args.sourceExchange : undefined;
-            inputs["virtualHostName"] = args ? args.virtualHostName : undefined;
+            resourceInputs["argument"] = args ? args.argument : undefined;
+            resourceInputs["bindingKey"] = args ? args.bindingKey : undefined;
+            resourceInputs["bindingType"] = args ? args.bindingType : undefined;
+            resourceInputs["destinationName"] = args ? args.destinationName : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["sourceExchange"] = args ? args.sourceExchange : undefined;
+            resourceInputs["virtualHostName"] = args ? args.virtualHostName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Binding.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Binding.__pulumiType, name, resourceInputs, opts);
     }
 }
 

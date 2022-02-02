@@ -112,36 +112,34 @@ export class RdsBackup extends pulumi.CustomResource {
      */
     constructor(name: string, args: RdsBackupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RdsBackupArgs | RdsBackupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RdsBackupState | undefined;
-            inputs["backupId"] = state ? state.backupId : undefined;
-            inputs["backupMethod"] = state ? state.backupMethod : undefined;
-            inputs["backupStrategy"] = state ? state.backupStrategy : undefined;
-            inputs["backupType"] = state ? state.backupType : undefined;
-            inputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            inputs["dbName"] = state ? state.dbName : undefined;
-            inputs["removeFromState"] = state ? state.removeFromState : undefined;
-            inputs["storeStatus"] = state ? state.storeStatus : undefined;
+            resourceInputs["backupId"] = state ? state.backupId : undefined;
+            resourceInputs["backupMethod"] = state ? state.backupMethod : undefined;
+            resourceInputs["backupStrategy"] = state ? state.backupStrategy : undefined;
+            resourceInputs["backupType"] = state ? state.backupType : undefined;
+            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
+            resourceInputs["dbName"] = state ? state.dbName : undefined;
+            resourceInputs["removeFromState"] = state ? state.removeFromState : undefined;
+            resourceInputs["storeStatus"] = state ? state.storeStatus : undefined;
         } else {
             const args = argsOrState as RdsBackupArgs | undefined;
             if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            inputs["backupMethod"] = args ? args.backupMethod : undefined;
-            inputs["backupStrategy"] = args ? args.backupStrategy : undefined;
-            inputs["backupType"] = args ? args.backupType : undefined;
-            inputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            inputs["dbName"] = args ? args.dbName : undefined;
-            inputs["removeFromState"] = args ? args.removeFromState : undefined;
-            inputs["backupId"] = undefined /*out*/;
-            inputs["storeStatus"] = undefined /*out*/;
+            resourceInputs["backupMethod"] = args ? args.backupMethod : undefined;
+            resourceInputs["backupStrategy"] = args ? args.backupStrategy : undefined;
+            resourceInputs["backupType"] = args ? args.backupType : undefined;
+            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
+            resourceInputs["dbName"] = args ? args.dbName : undefined;
+            resourceInputs["removeFromState"] = args ? args.removeFromState : undefined;
+            resourceInputs["backupId"] = undefined /*out*/;
+            resourceInputs["storeStatus"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RdsBackup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RdsBackup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -71,13 +71,13 @@ export class UserAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: UserAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UserAttachmentArgs | UserAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserAttachmentState | undefined;
-            inputs["directoryId"] = state ? state.directoryId : undefined;
-            inputs["groupId"] = state ? state.groupId : undefined;
-            inputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["directoryId"] = state ? state.directoryId : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as UserAttachmentArgs | undefined;
             if ((!args || args.directoryId === undefined) && !opts.urn) {
@@ -89,14 +89,12 @@ export class UserAttachment extends pulumi.CustomResource {
             if ((!args || args.userId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            inputs["directoryId"] = args ? args.directoryId : undefined;
-            inputs["groupId"] = args ? args.groupId : undefined;
-            inputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["directoryId"] = args ? args.directoryId : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["userId"] = args ? args.userId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(UserAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(UserAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

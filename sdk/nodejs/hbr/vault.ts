@@ -90,30 +90,28 @@ export class Vault extends pulumi.CustomResource {
      */
     constructor(name: string, args: VaultArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VaultArgs | VaultState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VaultState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["vaultName"] = state ? state.vaultName : undefined;
-            inputs["vaultStorageClass"] = state ? state.vaultStorageClass : undefined;
-            inputs["vaultType"] = state ? state.vaultType : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["vaultName"] = state ? state.vaultName : undefined;
+            resourceInputs["vaultStorageClass"] = state ? state.vaultStorageClass : undefined;
+            resourceInputs["vaultType"] = state ? state.vaultType : undefined;
         } else {
             const args = argsOrState as VaultArgs | undefined;
             if ((!args || args.vaultName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vaultName'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["vaultName"] = args ? args.vaultName : undefined;
-            inputs["vaultStorageClass"] = args ? args.vaultStorageClass : undefined;
-            inputs["vaultType"] = args ? args.vaultType : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["vaultName"] = args ? args.vaultName : undefined;
+            resourceInputs["vaultStorageClass"] = args ? args.vaultStorageClass : undefined;
+            resourceInputs["vaultType"] = args ? args.vaultType : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Vault.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Vault.__pulumiType, name, resourceInputs, opts);
     }
 }
 

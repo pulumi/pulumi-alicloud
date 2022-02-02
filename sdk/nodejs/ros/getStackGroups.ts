@@ -31,9 +31,7 @@ export function getStackGroups(args?: GetStackGroupsArgs, opts?: pulumi.InvokeOp
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ros/getStackGroups:getStackGroups", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,

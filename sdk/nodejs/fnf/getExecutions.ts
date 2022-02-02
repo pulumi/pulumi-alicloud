@@ -33,9 +33,7 @@ export function getExecutions(args: GetExecutionsArgs, opts?: pulumi.InvokeOptio
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:fnf/getExecutions:getExecutions", {
         "enableDetails": args.enableDetails,
         "flowName": args.flowName,

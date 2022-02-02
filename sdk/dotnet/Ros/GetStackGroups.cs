@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ros
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.Ros
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetStackGroupsResult> InvokeAsync(GetStackGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetStackGroupsResult>("alicloud:ros/getStackGroups:getStackGroups", args ?? new GetStackGroupsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetStackGroupsResult>("alicloud:ros/getStackGroups:getStackGroups", args ?? new GetStackGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ros Stack Groups of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.Ros
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetStackGroupsResult> Invoke(GetStackGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetStackGroupsResult>("alicloud:ros/getStackGroups:getStackGroups", args ?? new GetStackGroupsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetStackGroupsResult>("alicloud:ros/getStackGroups:getStackGroups", args ?? new GetStackGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

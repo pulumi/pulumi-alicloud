@@ -95,13 +95,13 @@ export class ControlPolicyOrder extends pulumi.CustomResource {
      */
     constructor(name: string, args: ControlPolicyOrderArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ControlPolicyOrderArgs | ControlPolicyOrderState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ControlPolicyOrderState | undefined;
-            inputs["aclUuid"] = state ? state.aclUuid : undefined;
-            inputs["direction"] = state ? state.direction : undefined;
-            inputs["order"] = state ? state.order : undefined;
+            resourceInputs["aclUuid"] = state ? state.aclUuid : undefined;
+            resourceInputs["direction"] = state ? state.direction : undefined;
+            resourceInputs["order"] = state ? state.order : undefined;
         } else {
             const args = argsOrState as ControlPolicyOrderArgs | undefined;
             if ((!args || args.aclUuid === undefined) && !opts.urn) {
@@ -110,14 +110,12 @@ export class ControlPolicyOrder extends pulumi.CustomResource {
             if ((!args || args.direction === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'direction'");
             }
-            inputs["aclUuid"] = args ? args.aclUuid : undefined;
-            inputs["direction"] = args ? args.direction : undefined;
-            inputs["order"] = args ? args.order : undefined;
+            resourceInputs["aclUuid"] = args ? args.aclUuid : undefined;
+            resourceInputs["direction"] = args ? args.direction : undefined;
+            resourceInputs["order"] = args ? args.order : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ControlPolicyOrder.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ControlPolicyOrder.__pulumiType, name, resourceInputs, opts);
     }
 }
 

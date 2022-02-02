@@ -29,11 +29,11 @@ import * as utilities from "../utilities";
  *     messageType: 0,
  *     remark: "dafault_ons_topic_remark",
  * });
- * const topicsDs = defaultTopic.instanceId.apply(instanceId => alicloud.rocketmq.getTopics({
- *     instanceId: instanceId,
+ * const topicsDs = alicloud.rocketmq.getTopicsOutput({
+ *     instanceId: defaultTopic.instanceId,
  *     nameRegex: topic,
  *     outputFile: "topics.txt",
- * }));
+ * });
  * export const firstTopicName = topicsDs.apply(topicsDs => topicsDs.topics?[0]?.topicName);
  * ```
  */
@@ -42,9 +42,7 @@ export function getTopics(args: GetTopicsArgs, opts?: pulumi.InvokeOptions): Pro
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:rocketmq/getTopics:getTopics", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,

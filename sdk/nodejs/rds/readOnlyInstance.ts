@@ -239,38 +239,38 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
      */
     constructor(name: string, args: ReadOnlyInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ReadOnlyInstanceArgs | ReadOnlyInstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReadOnlyInstanceState | undefined;
-            inputs["acl"] = state ? state.acl : undefined;
-            inputs["caType"] = state ? state.caType : undefined;
-            inputs["clientCaCert"] = state ? state.clientCaCert : undefined;
-            inputs["clientCaEnabled"] = state ? state.clientCaEnabled : undefined;
-            inputs["clientCertRevocationList"] = state ? state.clientCertRevocationList : undefined;
-            inputs["clientCrlEnabled"] = state ? state.clientCrlEnabled : undefined;
-            inputs["connectionString"] = state ? state.connectionString : undefined;
-            inputs["engine"] = state ? state.engine : undefined;
-            inputs["engineVersion"] = state ? state.engineVersion : undefined;
-            inputs["forceRestart"] = state ? state.forceRestart : undefined;
-            inputs["instanceName"] = state ? state.instanceName : undefined;
-            inputs["instanceStorage"] = state ? state.instanceStorage : undefined;
-            inputs["instanceType"] = state ? state.instanceType : undefined;
-            inputs["masterDbInstanceId"] = state ? state.masterDbInstanceId : undefined;
-            inputs["parameters"] = state ? state.parameters : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["replicationAcl"] = state ? state.replicationAcl : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["serverCert"] = state ? state.serverCert : undefined;
-            inputs["serverKey"] = state ? state.serverKey : undefined;
-            inputs["sslEnabled"] = state ? state.sslEnabled : undefined;
-            inputs["switchTime"] = state ? state.switchTime : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["targetMinorVersion"] = state ? state.targetMinorVersion : undefined;
-            inputs["upgradeDbInstanceKernelVersion"] = state ? state.upgradeDbInstanceKernelVersion : undefined;
-            inputs["upgradeTime"] = state ? state.upgradeTime : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["acl"] = state ? state.acl : undefined;
+            resourceInputs["caType"] = state ? state.caType : undefined;
+            resourceInputs["clientCaCert"] = state ? state.clientCaCert : undefined;
+            resourceInputs["clientCaEnabled"] = state ? state.clientCaEnabled : undefined;
+            resourceInputs["clientCertRevocationList"] = state ? state.clientCertRevocationList : undefined;
+            resourceInputs["clientCrlEnabled"] = state ? state.clientCrlEnabled : undefined;
+            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
+            resourceInputs["engine"] = state ? state.engine : undefined;
+            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
+            resourceInputs["forceRestart"] = state ? state.forceRestart : undefined;
+            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
+            resourceInputs["instanceStorage"] = state ? state.instanceStorage : undefined;
+            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
+            resourceInputs["masterDbInstanceId"] = state ? state.masterDbInstanceId : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["replicationAcl"] = state ? state.replicationAcl : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["serverCert"] = state ? state.serverCert : undefined;
+            resourceInputs["serverKey"] = state ? state.serverKey : undefined;
+            resourceInputs["sslEnabled"] = state ? state.sslEnabled : undefined;
+            resourceInputs["switchTime"] = state ? state.switchTime : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["targetMinorVersion"] = state ? state.targetMinorVersion : undefined;
+            resourceInputs["upgradeDbInstanceKernelVersion"] = state ? state.upgradeDbInstanceKernelVersion : undefined;
+            resourceInputs["upgradeTime"] = state ? state.upgradeTime : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ReadOnlyInstanceArgs | undefined;
             if ((!args || args.engineVersion === undefined) && !opts.urn) {
@@ -285,39 +285,37 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
             if ((!args || args.masterDbInstanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'masterDbInstanceId'");
             }
-            inputs["acl"] = args ? args.acl : undefined;
-            inputs["caType"] = args ? args.caType : undefined;
-            inputs["clientCaCert"] = args ? args.clientCaCert : undefined;
-            inputs["clientCaEnabled"] = args ? args.clientCaEnabled : undefined;
-            inputs["clientCertRevocationList"] = args ? args.clientCertRevocationList : undefined;
-            inputs["clientCrlEnabled"] = args ? args.clientCrlEnabled : undefined;
-            inputs["engineVersion"] = args ? args.engineVersion : undefined;
-            inputs["forceRestart"] = args ? args.forceRestart : undefined;
-            inputs["instanceName"] = args ? args.instanceName : undefined;
-            inputs["instanceStorage"] = args ? args.instanceStorage : undefined;
-            inputs["instanceType"] = args ? args.instanceType : undefined;
-            inputs["masterDbInstanceId"] = args ? args.masterDbInstanceId : undefined;
-            inputs["parameters"] = args ? args.parameters : undefined;
-            inputs["replicationAcl"] = args ? args.replicationAcl : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["serverCert"] = args ? args.serverCert : undefined;
-            inputs["serverKey"] = args ? args.serverKey : undefined;
-            inputs["sslEnabled"] = args ? args.sslEnabled : undefined;
-            inputs["switchTime"] = args ? args.switchTime : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["targetMinorVersion"] = args ? args.targetMinorVersion : undefined;
-            inputs["upgradeDbInstanceKernelVersion"] = args ? args.upgradeDbInstanceKernelVersion : undefined;
-            inputs["upgradeTime"] = args ? args.upgradeTime : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["connectionString"] = undefined /*out*/;
-            inputs["engine"] = undefined /*out*/;
-            inputs["port"] = undefined /*out*/;
+            resourceInputs["acl"] = args ? args.acl : undefined;
+            resourceInputs["caType"] = args ? args.caType : undefined;
+            resourceInputs["clientCaCert"] = args ? args.clientCaCert : undefined;
+            resourceInputs["clientCaEnabled"] = args ? args.clientCaEnabled : undefined;
+            resourceInputs["clientCertRevocationList"] = args ? args.clientCertRevocationList : undefined;
+            resourceInputs["clientCrlEnabled"] = args ? args.clientCrlEnabled : undefined;
+            resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
+            resourceInputs["forceRestart"] = args ? args.forceRestart : undefined;
+            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
+            resourceInputs["instanceStorage"] = args ? args.instanceStorage : undefined;
+            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
+            resourceInputs["masterDbInstanceId"] = args ? args.masterDbInstanceId : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["replicationAcl"] = args ? args.replicationAcl : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["serverCert"] = args ? args.serverCert : undefined;
+            resourceInputs["serverKey"] = args ? args.serverKey : undefined;
+            resourceInputs["sslEnabled"] = args ? args.sslEnabled : undefined;
+            resourceInputs["switchTime"] = args ? args.switchTime : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["targetMinorVersion"] = args ? args.targetMinorVersion : undefined;
+            resourceInputs["upgradeDbInstanceKernelVersion"] = args ? args.upgradeDbInstanceKernelVersion : undefined;
+            resourceInputs["upgradeTime"] = args ? args.upgradeTime : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["connectionString"] = undefined /*out*/;
+            resourceInputs["engine"] = undefined /*out*/;
+            resourceInputs["port"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ReadOnlyInstance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ReadOnlyInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

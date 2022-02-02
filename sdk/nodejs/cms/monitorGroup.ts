@@ -96,27 +96,25 @@ export class MonitorGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args?: MonitorGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MonitorGroupArgs | MonitorGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MonitorGroupState | undefined;
-            inputs["contactGroups"] = state ? state.contactGroups : undefined;
-            inputs["monitorGroupName"] = state ? state.monitorGroupName : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["resourceGroupName"] = state ? state.resourceGroupName : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["contactGroups"] = state ? state.contactGroups : undefined;
+            resourceInputs["monitorGroupName"] = state ? state.monitorGroupName : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["resourceGroupName"] = state ? state.resourceGroupName : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as MonitorGroupArgs | undefined;
-            inputs["contactGroups"] = args ? args.contactGroups : undefined;
-            inputs["monitorGroupName"] = args ? args.monitorGroupName : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["contactGroups"] = args ? args.contactGroups : undefined;
+            resourceInputs["monitorGroupName"] = args ? args.monitorGroupName : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(MonitorGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(MonitorGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

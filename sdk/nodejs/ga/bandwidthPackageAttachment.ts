@@ -100,14 +100,14 @@ export class BandwidthPackageAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: BandwidthPackageAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BandwidthPackageAttachmentArgs | BandwidthPackageAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BandwidthPackageAttachmentState | undefined;
-            inputs["acceleratorId"] = state ? state.acceleratorId : undefined;
-            inputs["accelerators"] = state ? state.accelerators : undefined;
-            inputs["bandwidthPackageId"] = state ? state.bandwidthPackageId : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["acceleratorId"] = state ? state.acceleratorId : undefined;
+            resourceInputs["accelerators"] = state ? state.accelerators : undefined;
+            resourceInputs["bandwidthPackageId"] = state ? state.bandwidthPackageId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as BandwidthPackageAttachmentArgs | undefined;
             if ((!args || args.acceleratorId === undefined) && !opts.urn) {
@@ -116,15 +116,13 @@ export class BandwidthPackageAttachment extends pulumi.CustomResource {
             if ((!args || args.bandwidthPackageId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bandwidthPackageId'");
             }
-            inputs["acceleratorId"] = args ? args.acceleratorId : undefined;
-            inputs["bandwidthPackageId"] = args ? args.bandwidthPackageId : undefined;
-            inputs["accelerators"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["acceleratorId"] = args ? args.acceleratorId : undefined;
+            resourceInputs["bandwidthPackageId"] = args ? args.bandwidthPackageId : undefined;
+            resourceInputs["accelerators"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(BandwidthPackageAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(BandwidthPackageAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

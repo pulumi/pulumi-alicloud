@@ -31,9 +31,7 @@ export function getIndustrialPidOrganizations(args?: GetIndustrialPidOrganizatio
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:brain/getIndustrialPidOrganizations:getIndustrialPidOrganizations", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

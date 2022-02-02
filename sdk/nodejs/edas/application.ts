@@ -123,21 +123,21 @@ export class Application extends pulumi.CustomResource {
      */
     constructor(name: string, args: ApplicationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApplicationArgs | ApplicationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationState | undefined;
-            inputs["applicationName"] = state ? state.applicationName : undefined;
-            inputs["buildPackId"] = state ? state.buildPackId : undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["descriotion"] = state ? state.descriotion : undefined;
-            inputs["ecuInfos"] = state ? state.ecuInfos : undefined;
-            inputs["groupId"] = state ? state.groupId : undefined;
-            inputs["healthCheckUrl"] = state ? state.healthCheckUrl : undefined;
-            inputs["logicalRegionId"] = state ? state.logicalRegionId : undefined;
-            inputs["packageType"] = state ? state.packageType : undefined;
-            inputs["packageVersion"] = state ? state.packageVersion : undefined;
-            inputs["warUrl"] = state ? state.warUrl : undefined;
+            resourceInputs["applicationName"] = state ? state.applicationName : undefined;
+            resourceInputs["buildPackId"] = state ? state.buildPackId : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["descriotion"] = state ? state.descriotion : undefined;
+            resourceInputs["ecuInfos"] = state ? state.ecuInfos : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["healthCheckUrl"] = state ? state.healthCheckUrl : undefined;
+            resourceInputs["logicalRegionId"] = state ? state.logicalRegionId : undefined;
+            resourceInputs["packageType"] = state ? state.packageType : undefined;
+            resourceInputs["packageVersion"] = state ? state.packageVersion : undefined;
+            resourceInputs["warUrl"] = state ? state.warUrl : undefined;
         } else {
             const args = argsOrState as ApplicationArgs | undefined;
             if ((!args || args.applicationName === undefined) && !opts.urn) {
@@ -149,22 +149,20 @@ export class Application extends pulumi.CustomResource {
             if ((!args || args.packageType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'packageType'");
             }
-            inputs["applicationName"] = args ? args.applicationName : undefined;
-            inputs["buildPackId"] = args ? args.buildPackId : undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["descriotion"] = args ? args.descriotion : undefined;
-            inputs["ecuInfos"] = args ? args.ecuInfos : undefined;
-            inputs["groupId"] = args ? args.groupId : undefined;
-            inputs["healthCheckUrl"] = args ? args.healthCheckUrl : undefined;
-            inputs["logicalRegionId"] = args ? args.logicalRegionId : undefined;
-            inputs["packageType"] = args ? args.packageType : undefined;
-            inputs["packageVersion"] = args ? args.packageVersion : undefined;
-            inputs["warUrl"] = args ? args.warUrl : undefined;
+            resourceInputs["applicationName"] = args ? args.applicationName : undefined;
+            resourceInputs["buildPackId"] = args ? args.buildPackId : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["descriotion"] = args ? args.descriotion : undefined;
+            resourceInputs["ecuInfos"] = args ? args.ecuInfos : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["healthCheckUrl"] = args ? args.healthCheckUrl : undefined;
+            resourceInputs["logicalRegionId"] = args ? args.logicalRegionId : undefined;
+            resourceInputs["packageType"] = args ? args.packageType : undefined;
+            resourceInputs["packageVersion"] = args ? args.packageVersion : undefined;
+            resourceInputs["warUrl"] = args ? args.warUrl : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Application.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Application.__pulumiType, name, resourceInputs, opts);
     }
 }
 

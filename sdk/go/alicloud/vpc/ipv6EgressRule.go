@@ -148,7 +148,7 @@ type Ipv6EgressRuleInput interface {
 }
 
 func (*Ipv6EgressRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*Ipv6EgressRule)(nil))
+	return reflect.TypeOf((**Ipv6EgressRule)(nil)).Elem()
 }
 
 func (i *Ipv6EgressRule) ToIpv6EgressRuleOutput() Ipv6EgressRuleOutput {
@@ -157,35 +157,6 @@ func (i *Ipv6EgressRule) ToIpv6EgressRuleOutput() Ipv6EgressRuleOutput {
 
 func (i *Ipv6EgressRule) ToIpv6EgressRuleOutputWithContext(ctx context.Context) Ipv6EgressRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(Ipv6EgressRuleOutput)
-}
-
-func (i *Ipv6EgressRule) ToIpv6EgressRulePtrOutput() Ipv6EgressRulePtrOutput {
-	return i.ToIpv6EgressRulePtrOutputWithContext(context.Background())
-}
-
-func (i *Ipv6EgressRule) ToIpv6EgressRulePtrOutputWithContext(ctx context.Context) Ipv6EgressRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Ipv6EgressRulePtrOutput)
-}
-
-type Ipv6EgressRulePtrInput interface {
-	pulumi.Input
-
-	ToIpv6EgressRulePtrOutput() Ipv6EgressRulePtrOutput
-	ToIpv6EgressRulePtrOutputWithContext(ctx context.Context) Ipv6EgressRulePtrOutput
-}
-
-type ipv6EgressRulePtrType Ipv6EgressRuleArgs
-
-func (*ipv6EgressRulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Ipv6EgressRule)(nil))
-}
-
-func (i *ipv6EgressRulePtrType) ToIpv6EgressRulePtrOutput() Ipv6EgressRulePtrOutput {
-	return i.ToIpv6EgressRulePtrOutputWithContext(context.Background())
-}
-
-func (i *ipv6EgressRulePtrType) ToIpv6EgressRulePtrOutputWithContext(ctx context.Context) Ipv6EgressRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Ipv6EgressRulePtrOutput)
 }
 
 // Ipv6EgressRuleArrayInput is an input type that accepts Ipv6EgressRuleArray and Ipv6EgressRuleArrayOutput values.
@@ -241,7 +212,7 @@ func (i Ipv6EgressRuleMap) ToIpv6EgressRuleMapOutputWithContext(ctx context.Cont
 type Ipv6EgressRuleOutput struct{ *pulumi.OutputState }
 
 func (Ipv6EgressRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Ipv6EgressRule)(nil))
+	return reflect.TypeOf((**Ipv6EgressRule)(nil)).Elem()
 }
 
 func (o Ipv6EgressRuleOutput) ToIpv6EgressRuleOutput() Ipv6EgressRuleOutput {
@@ -252,44 +223,10 @@ func (o Ipv6EgressRuleOutput) ToIpv6EgressRuleOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o Ipv6EgressRuleOutput) ToIpv6EgressRulePtrOutput() Ipv6EgressRulePtrOutput {
-	return o.ToIpv6EgressRulePtrOutputWithContext(context.Background())
-}
-
-func (o Ipv6EgressRuleOutput) ToIpv6EgressRulePtrOutputWithContext(ctx context.Context) Ipv6EgressRulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Ipv6EgressRule) *Ipv6EgressRule {
-		return &v
-	}).(Ipv6EgressRulePtrOutput)
-}
-
-type Ipv6EgressRulePtrOutput struct{ *pulumi.OutputState }
-
-func (Ipv6EgressRulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Ipv6EgressRule)(nil))
-}
-
-func (o Ipv6EgressRulePtrOutput) ToIpv6EgressRulePtrOutput() Ipv6EgressRulePtrOutput {
-	return o
-}
-
-func (o Ipv6EgressRulePtrOutput) ToIpv6EgressRulePtrOutputWithContext(ctx context.Context) Ipv6EgressRulePtrOutput {
-	return o
-}
-
-func (o Ipv6EgressRulePtrOutput) Elem() Ipv6EgressRuleOutput {
-	return o.ApplyT(func(v *Ipv6EgressRule) Ipv6EgressRule {
-		if v != nil {
-			return *v
-		}
-		var ret Ipv6EgressRule
-		return ret
-	}).(Ipv6EgressRuleOutput)
-}
-
 type Ipv6EgressRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (Ipv6EgressRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Ipv6EgressRule)(nil))
+	return reflect.TypeOf((*[]*Ipv6EgressRule)(nil)).Elem()
 }
 
 func (o Ipv6EgressRuleArrayOutput) ToIpv6EgressRuleArrayOutput() Ipv6EgressRuleArrayOutput {
@@ -301,15 +238,15 @@ func (o Ipv6EgressRuleArrayOutput) ToIpv6EgressRuleArrayOutputWithContext(ctx co
 }
 
 func (o Ipv6EgressRuleArrayOutput) Index(i pulumi.IntInput) Ipv6EgressRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Ipv6EgressRule {
-		return vs[0].([]Ipv6EgressRule)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Ipv6EgressRule {
+		return vs[0].([]*Ipv6EgressRule)[vs[1].(int)]
 	}).(Ipv6EgressRuleOutput)
 }
 
 type Ipv6EgressRuleMapOutput struct{ *pulumi.OutputState }
 
 func (Ipv6EgressRuleMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Ipv6EgressRule)(nil))
+	return reflect.TypeOf((*map[string]*Ipv6EgressRule)(nil)).Elem()
 }
 
 func (o Ipv6EgressRuleMapOutput) ToIpv6EgressRuleMapOutput() Ipv6EgressRuleMapOutput {
@@ -321,18 +258,16 @@ func (o Ipv6EgressRuleMapOutput) ToIpv6EgressRuleMapOutputWithContext(ctx contex
 }
 
 func (o Ipv6EgressRuleMapOutput) MapIndex(k pulumi.StringInput) Ipv6EgressRuleOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Ipv6EgressRule {
-		return vs[0].(map[string]Ipv6EgressRule)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Ipv6EgressRule {
+		return vs[0].(map[string]*Ipv6EgressRule)[vs[1].(string)]
 	}).(Ipv6EgressRuleOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*Ipv6EgressRuleInput)(nil)).Elem(), &Ipv6EgressRule{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Ipv6EgressRulePtrInput)(nil)).Elem(), &Ipv6EgressRule{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Ipv6EgressRuleArrayInput)(nil)).Elem(), Ipv6EgressRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Ipv6EgressRuleMapInput)(nil)).Elem(), Ipv6EgressRuleMap{})
 	pulumi.RegisterOutputType(Ipv6EgressRuleOutput{})
-	pulumi.RegisterOutputType(Ipv6EgressRulePtrOutput{})
 	pulumi.RegisterOutputType(Ipv6EgressRuleArrayOutput{})
 	pulumi.RegisterOutputType(Ipv6EgressRuleMapOutput{})
 }

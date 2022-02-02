@@ -241,7 +241,7 @@ type ImageCacheInput interface {
 }
 
 func (*ImageCache) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageCache)(nil))
+	return reflect.TypeOf((**ImageCache)(nil)).Elem()
 }
 
 func (i *ImageCache) ToImageCacheOutput() ImageCacheOutput {
@@ -250,35 +250,6 @@ func (i *ImageCache) ToImageCacheOutput() ImageCacheOutput {
 
 func (i *ImageCache) ToImageCacheOutputWithContext(ctx context.Context) ImageCacheOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageCacheOutput)
-}
-
-func (i *ImageCache) ToImageCachePtrOutput() ImageCachePtrOutput {
-	return i.ToImageCachePtrOutputWithContext(context.Background())
-}
-
-func (i *ImageCache) ToImageCachePtrOutputWithContext(ctx context.Context) ImageCachePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageCachePtrOutput)
-}
-
-type ImageCachePtrInput interface {
-	pulumi.Input
-
-	ToImageCachePtrOutput() ImageCachePtrOutput
-	ToImageCachePtrOutputWithContext(ctx context.Context) ImageCachePtrOutput
-}
-
-type imageCachePtrType ImageCacheArgs
-
-func (*imageCachePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageCache)(nil))
-}
-
-func (i *imageCachePtrType) ToImageCachePtrOutput() ImageCachePtrOutput {
-	return i.ToImageCachePtrOutputWithContext(context.Background())
-}
-
-func (i *imageCachePtrType) ToImageCachePtrOutputWithContext(ctx context.Context) ImageCachePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageCachePtrOutput)
 }
 
 // ImageCacheArrayInput is an input type that accepts ImageCacheArray and ImageCacheArrayOutput values.
@@ -334,7 +305,7 @@ func (i ImageCacheMap) ToImageCacheMapOutputWithContext(ctx context.Context) Ima
 type ImageCacheOutput struct{ *pulumi.OutputState }
 
 func (ImageCacheOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageCache)(nil))
+	return reflect.TypeOf((**ImageCache)(nil)).Elem()
 }
 
 func (o ImageCacheOutput) ToImageCacheOutput() ImageCacheOutput {
@@ -345,44 +316,10 @@ func (o ImageCacheOutput) ToImageCacheOutputWithContext(ctx context.Context) Ima
 	return o
 }
 
-func (o ImageCacheOutput) ToImageCachePtrOutput() ImageCachePtrOutput {
-	return o.ToImageCachePtrOutputWithContext(context.Background())
-}
-
-func (o ImageCacheOutput) ToImageCachePtrOutputWithContext(ctx context.Context) ImageCachePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageCache) *ImageCache {
-		return &v
-	}).(ImageCachePtrOutput)
-}
-
-type ImageCachePtrOutput struct{ *pulumi.OutputState }
-
-func (ImageCachePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ImageCache)(nil))
-}
-
-func (o ImageCachePtrOutput) ToImageCachePtrOutput() ImageCachePtrOutput {
-	return o
-}
-
-func (o ImageCachePtrOutput) ToImageCachePtrOutputWithContext(ctx context.Context) ImageCachePtrOutput {
-	return o
-}
-
-func (o ImageCachePtrOutput) Elem() ImageCacheOutput {
-	return o.ApplyT(func(v *ImageCache) ImageCache {
-		if v != nil {
-			return *v
-		}
-		var ret ImageCache
-		return ret
-	}).(ImageCacheOutput)
-}
-
 type ImageCacheArrayOutput struct{ *pulumi.OutputState }
 
 func (ImageCacheArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ImageCache)(nil))
+	return reflect.TypeOf((*[]*ImageCache)(nil)).Elem()
 }
 
 func (o ImageCacheArrayOutput) ToImageCacheArrayOutput() ImageCacheArrayOutput {
@@ -394,15 +331,15 @@ func (o ImageCacheArrayOutput) ToImageCacheArrayOutputWithContext(ctx context.Co
 }
 
 func (o ImageCacheArrayOutput) Index(i pulumi.IntInput) ImageCacheOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageCache {
-		return vs[0].([]ImageCache)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ImageCache {
+		return vs[0].([]*ImageCache)[vs[1].(int)]
 	}).(ImageCacheOutput)
 }
 
 type ImageCacheMapOutput struct{ *pulumi.OutputState }
 
 func (ImageCacheMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ImageCache)(nil))
+	return reflect.TypeOf((*map[string]*ImageCache)(nil)).Elem()
 }
 
 func (o ImageCacheMapOutput) ToImageCacheMapOutput() ImageCacheMapOutput {
@@ -414,18 +351,16 @@ func (o ImageCacheMapOutput) ToImageCacheMapOutputWithContext(ctx context.Contex
 }
 
 func (o ImageCacheMapOutput) MapIndex(k pulumi.StringInput) ImageCacheOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ImageCache {
-		return vs[0].(map[string]ImageCache)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ImageCache {
+		return vs[0].(map[string]*ImageCache)[vs[1].(string)]
 	}).(ImageCacheOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageCacheInput)(nil)).Elem(), &ImageCache{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ImageCachePtrInput)(nil)).Elem(), &ImageCache{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageCacheArrayInput)(nil)).Elem(), ImageCacheArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageCacheMapInput)(nil)).Elem(), ImageCacheMap{})
 	pulumi.RegisterOutputType(ImageCacheOutput{})
-	pulumi.RegisterOutputType(ImageCachePtrOutput{})
 	pulumi.RegisterOutputType(ImageCacheArrayOutput{})
 	pulumi.RegisterOutputType(ImageCacheMapOutput{})
 }

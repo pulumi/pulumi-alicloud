@@ -190,7 +190,7 @@ type DomainConfigInput interface {
 }
 
 func (*DomainConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainConfig)(nil))
+	return reflect.TypeOf((**DomainConfig)(nil)).Elem()
 }
 
 func (i *DomainConfig) ToDomainConfigOutput() DomainConfigOutput {
@@ -199,35 +199,6 @@ func (i *DomainConfig) ToDomainConfigOutput() DomainConfigOutput {
 
 func (i *DomainConfig) ToDomainConfigOutputWithContext(ctx context.Context) DomainConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigOutput)
-}
-
-func (i *DomainConfig) ToDomainConfigPtrOutput() DomainConfigPtrOutput {
-	return i.ToDomainConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *DomainConfig) ToDomainConfigPtrOutputWithContext(ctx context.Context) DomainConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigPtrOutput)
-}
-
-type DomainConfigPtrInput interface {
-	pulumi.Input
-
-	ToDomainConfigPtrOutput() DomainConfigPtrOutput
-	ToDomainConfigPtrOutputWithContext(ctx context.Context) DomainConfigPtrOutput
-}
-
-type domainConfigPtrType DomainConfigArgs
-
-func (*domainConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainConfig)(nil))
-}
-
-func (i *domainConfigPtrType) ToDomainConfigPtrOutput() DomainConfigPtrOutput {
-	return i.ToDomainConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *domainConfigPtrType) ToDomainConfigPtrOutputWithContext(ctx context.Context) DomainConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigPtrOutput)
 }
 
 // DomainConfigArrayInput is an input type that accepts DomainConfigArray and DomainConfigArrayOutput values.
@@ -283,7 +254,7 @@ func (i DomainConfigMap) ToDomainConfigMapOutputWithContext(ctx context.Context)
 type DomainConfigOutput struct{ *pulumi.OutputState }
 
 func (DomainConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainConfig)(nil))
+	return reflect.TypeOf((**DomainConfig)(nil)).Elem()
 }
 
 func (o DomainConfigOutput) ToDomainConfigOutput() DomainConfigOutput {
@@ -294,44 +265,10 @@ func (o DomainConfigOutput) ToDomainConfigOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o DomainConfigOutput) ToDomainConfigPtrOutput() DomainConfigPtrOutput {
-	return o.ToDomainConfigPtrOutputWithContext(context.Background())
-}
-
-func (o DomainConfigOutput) ToDomainConfigPtrOutputWithContext(ctx context.Context) DomainConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainConfig) *DomainConfig {
-		return &v
-	}).(DomainConfigPtrOutput)
-}
-
-type DomainConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (DomainConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainConfig)(nil))
-}
-
-func (o DomainConfigPtrOutput) ToDomainConfigPtrOutput() DomainConfigPtrOutput {
-	return o
-}
-
-func (o DomainConfigPtrOutput) ToDomainConfigPtrOutputWithContext(ctx context.Context) DomainConfigPtrOutput {
-	return o
-}
-
-func (o DomainConfigPtrOutput) Elem() DomainConfigOutput {
-	return o.ApplyT(func(v *DomainConfig) DomainConfig {
-		if v != nil {
-			return *v
-		}
-		var ret DomainConfig
-		return ret
-	}).(DomainConfigOutput)
-}
-
 type DomainConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (DomainConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DomainConfig)(nil))
+	return reflect.TypeOf((*[]*DomainConfig)(nil)).Elem()
 }
 
 func (o DomainConfigArrayOutput) ToDomainConfigArrayOutput() DomainConfigArrayOutput {
@@ -343,15 +280,15 @@ func (o DomainConfigArrayOutput) ToDomainConfigArrayOutputWithContext(ctx contex
 }
 
 func (o DomainConfigArrayOutput) Index(i pulumi.IntInput) DomainConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DomainConfig {
-		return vs[0].([]DomainConfig)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DomainConfig {
+		return vs[0].([]*DomainConfig)[vs[1].(int)]
 	}).(DomainConfigOutput)
 }
 
 type DomainConfigMapOutput struct{ *pulumi.OutputState }
 
 func (DomainConfigMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DomainConfig)(nil))
+	return reflect.TypeOf((*map[string]*DomainConfig)(nil)).Elem()
 }
 
 func (o DomainConfigMapOutput) ToDomainConfigMapOutput() DomainConfigMapOutput {
@@ -363,18 +300,16 @@ func (o DomainConfigMapOutput) ToDomainConfigMapOutputWithContext(ctx context.Co
 }
 
 func (o DomainConfigMapOutput) MapIndex(k pulumi.StringInput) DomainConfigOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DomainConfig {
-		return vs[0].(map[string]DomainConfig)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DomainConfig {
+		return vs[0].(map[string]*DomainConfig)[vs[1].(string)]
 	}).(DomainConfigOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainConfigInput)(nil)).Elem(), &DomainConfig{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DomainConfigPtrInput)(nil)).Elem(), &DomainConfig{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainConfigArrayInput)(nil)).Elem(), DomainConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainConfigMapInput)(nil)).Elem(), DomainConfigMap{})
 	pulumi.RegisterOutputType(DomainConfigOutput{})
-	pulumi.RegisterOutputType(DomainConfigPtrOutput{})
 	pulumi.RegisterOutputType(DomainConfigArrayOutput{})
 	pulumi.RegisterOutputType(DomainConfigMapOutput{})
 }

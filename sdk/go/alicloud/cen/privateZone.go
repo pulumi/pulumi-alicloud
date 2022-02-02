@@ -200,7 +200,7 @@ type PrivateZoneInput interface {
 }
 
 func (*PrivateZone) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateZone)(nil))
+	return reflect.TypeOf((**PrivateZone)(nil)).Elem()
 }
 
 func (i *PrivateZone) ToPrivateZoneOutput() PrivateZoneOutput {
@@ -209,35 +209,6 @@ func (i *PrivateZone) ToPrivateZoneOutput() PrivateZoneOutput {
 
 func (i *PrivateZone) ToPrivateZoneOutputWithContext(ctx context.Context) PrivateZoneOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateZoneOutput)
-}
-
-func (i *PrivateZone) ToPrivateZonePtrOutput() PrivateZonePtrOutput {
-	return i.ToPrivateZonePtrOutputWithContext(context.Background())
-}
-
-func (i *PrivateZone) ToPrivateZonePtrOutputWithContext(ctx context.Context) PrivateZonePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateZonePtrOutput)
-}
-
-type PrivateZonePtrInput interface {
-	pulumi.Input
-
-	ToPrivateZonePtrOutput() PrivateZonePtrOutput
-	ToPrivateZonePtrOutputWithContext(ctx context.Context) PrivateZonePtrOutput
-}
-
-type privateZonePtrType PrivateZoneArgs
-
-func (*privateZonePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateZone)(nil))
-}
-
-func (i *privateZonePtrType) ToPrivateZonePtrOutput() PrivateZonePtrOutput {
-	return i.ToPrivateZonePtrOutputWithContext(context.Background())
-}
-
-func (i *privateZonePtrType) ToPrivateZonePtrOutputWithContext(ctx context.Context) PrivateZonePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateZonePtrOutput)
 }
 
 // PrivateZoneArrayInput is an input type that accepts PrivateZoneArray and PrivateZoneArrayOutput values.
@@ -293,7 +264,7 @@ func (i PrivateZoneMap) ToPrivateZoneMapOutputWithContext(ctx context.Context) P
 type PrivateZoneOutput struct{ *pulumi.OutputState }
 
 func (PrivateZoneOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateZone)(nil))
+	return reflect.TypeOf((**PrivateZone)(nil)).Elem()
 }
 
 func (o PrivateZoneOutput) ToPrivateZoneOutput() PrivateZoneOutput {
@@ -304,44 +275,10 @@ func (o PrivateZoneOutput) ToPrivateZoneOutputWithContext(ctx context.Context) P
 	return o
 }
 
-func (o PrivateZoneOutput) ToPrivateZonePtrOutput() PrivateZonePtrOutput {
-	return o.ToPrivateZonePtrOutputWithContext(context.Background())
-}
-
-func (o PrivateZoneOutput) ToPrivateZonePtrOutputWithContext(ctx context.Context) PrivateZonePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateZone) *PrivateZone {
-		return &v
-	}).(PrivateZonePtrOutput)
-}
-
-type PrivateZonePtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateZonePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateZone)(nil))
-}
-
-func (o PrivateZonePtrOutput) ToPrivateZonePtrOutput() PrivateZonePtrOutput {
-	return o
-}
-
-func (o PrivateZonePtrOutput) ToPrivateZonePtrOutputWithContext(ctx context.Context) PrivateZonePtrOutput {
-	return o
-}
-
-func (o PrivateZonePtrOutput) Elem() PrivateZoneOutput {
-	return o.ApplyT(func(v *PrivateZone) PrivateZone {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateZone
-		return ret
-	}).(PrivateZoneOutput)
-}
-
 type PrivateZoneArrayOutput struct{ *pulumi.OutputState }
 
 func (PrivateZoneArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateZone)(nil))
+	return reflect.TypeOf((*[]*PrivateZone)(nil)).Elem()
 }
 
 func (o PrivateZoneArrayOutput) ToPrivateZoneArrayOutput() PrivateZoneArrayOutput {
@@ -353,15 +290,15 @@ func (o PrivateZoneArrayOutput) ToPrivateZoneArrayOutputWithContext(ctx context.
 }
 
 func (o PrivateZoneArrayOutput) Index(i pulumi.IntInput) PrivateZoneOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateZone {
-		return vs[0].([]PrivateZone)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PrivateZone {
+		return vs[0].([]*PrivateZone)[vs[1].(int)]
 	}).(PrivateZoneOutput)
 }
 
 type PrivateZoneMapOutput struct{ *pulumi.OutputState }
 
 func (PrivateZoneMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]PrivateZone)(nil))
+	return reflect.TypeOf((*map[string]*PrivateZone)(nil)).Elem()
 }
 
 func (o PrivateZoneMapOutput) ToPrivateZoneMapOutput() PrivateZoneMapOutput {
@@ -373,18 +310,16 @@ func (o PrivateZoneMapOutput) ToPrivateZoneMapOutputWithContext(ctx context.Cont
 }
 
 func (o PrivateZoneMapOutput) MapIndex(k pulumi.StringInput) PrivateZoneOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PrivateZone {
-		return vs[0].(map[string]PrivateZone)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *PrivateZone {
+		return vs[0].(map[string]*PrivateZone)[vs[1].(string)]
 	}).(PrivateZoneOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateZoneInput)(nil)).Elem(), &PrivateZone{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PrivateZonePtrInput)(nil)).Elem(), &PrivateZone{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateZoneArrayInput)(nil)).Elem(), PrivateZoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateZoneMapInput)(nil)).Elem(), PrivateZoneMap{})
 	pulumi.RegisterOutputType(PrivateZoneOutput{})
-	pulumi.RegisterOutputType(PrivateZonePtrOutput{})
 	pulumi.RegisterOutputType(PrivateZoneArrayOutput{})
 	pulumi.RegisterOutputType(PrivateZoneMapOutput{})
 }

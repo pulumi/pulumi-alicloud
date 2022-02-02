@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -56,7 +55,7 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsDeploymentSetsResult> InvokeAsync(GetEcsDeploymentSetsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsDeploymentSetsResult>("alicloud:ecs/getEcsDeploymentSets:getEcsDeploymentSets", args ?? new GetEcsDeploymentSetsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsDeploymentSetsResult>("alicloud:ecs/getEcsDeploymentSets:getEcsDeploymentSets", args ?? new GetEcsDeploymentSetsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
@@ -102,7 +101,7 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsDeploymentSetsResult> Invoke(GetEcsDeploymentSetsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEcsDeploymentSetsResult>("alicloud:ecs/getEcsDeploymentSets:getEcsDeploymentSets", args ?? new GetEcsDeploymentSetsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetEcsDeploymentSetsResult>("alicloud:ecs/getEcsDeploymentSets:getEcsDeploymentSets", args ?? new GetEcsDeploymentSetsInvokeArgs(), options.WithDefaults());
     }
 
 

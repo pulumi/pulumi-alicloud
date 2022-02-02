@@ -52,6 +52,11 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		topicsDs := rocketmq.GetTopicsOutput(ctx, rocketmq.GetTopicsOutputArgs{
+// 			InstanceId: defaultTopic.InstanceId,
+// 			NameRegex:  pulumi.String(topic),
+// 			OutputFile: pulumi.String("topics.txt"),
+// 		}, nil)
 // 		ctx.Export("firstTopicName", topicsDs.ApplyT(func(topicsDs rocketmq.GetTopicsResult) (string, error) {
 // 			return topicsDs.Topics[0].TopicName, nil
 // 		}).(pulumi.StringOutput))

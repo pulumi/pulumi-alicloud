@@ -82,13 +82,13 @@ export class UserAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: UserAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UserAttachmentArgs | UserAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserAttachmentState | undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["userGroupId"] = state ? state.userGroupId : undefined;
-            inputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["userGroupId"] = state ? state.userGroupId : undefined;
+            resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as UserAttachmentArgs | undefined;
             if ((!args || args.instanceId === undefined) && !opts.urn) {
@@ -100,14 +100,12 @@ export class UserAttachment extends pulumi.CustomResource {
             if ((!args || args.userId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["userGroupId"] = args ? args.userGroupId : undefined;
-            inputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["userGroupId"] = args ? args.userGroupId : undefined;
+            resourceInputs["userId"] = args ? args.userId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(UserAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(UserAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

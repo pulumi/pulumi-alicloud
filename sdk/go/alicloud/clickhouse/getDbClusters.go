@@ -42,6 +42,11 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		defaultDbClusters := clickhouse.GetDbClustersOutput(ctx, clickhouse.GetDbClustersOutputArgs{
+// 			Ids: pulumi.StringArray{
+// 				defaultDbCluster.ID(),
+// 			},
+// 		}, nil)
 // 		ctx.Export("dbCluster", defaultDbClusters.ApplyT(func(defaultDbClusters clickhouse.GetDbClustersResult) (string, error) {
 // 			return defaultDbClusters.Ids[0], nil
 // 		}).(pulumi.StringOutput))

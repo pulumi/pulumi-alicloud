@@ -81,16 +81,16 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            inputs["force"] = state ? state.force : undefined;
-            inputs["instanceName"] = state ? state.instanceName : undefined;
-            inputs["instanceType"] = state ? state.instanceType : undefined;
-            inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["force"] = state ? state.force : undefined;
+            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
+            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
+            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.instanceType === undefined) && !opts.urn) {
@@ -102,17 +102,15 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            inputs["force"] = args ? args.force : undefined;
-            inputs["instanceName"] = args ? args.instanceName : undefined;
-            inputs["instanceType"] = args ? args.instanceType : undefined;
-            inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["force"] = args ? args.force : undefined;
+            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
+            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
+            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Instance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

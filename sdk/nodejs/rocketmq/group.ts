@@ -108,34 +108,32 @@ export class Group extends pulumi.CustomResource {
      */
     constructor(name: string, args: GroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupArgs | GroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            inputs["groupId"] = state ? state.groupId : undefined;
-            inputs["groupName"] = state ? state.groupName : undefined;
-            inputs["groupType"] = state ? state.groupType : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["readEnable"] = state ? state.readEnable : undefined;
-            inputs["remark"] = state ? state.remark : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["groupName"] = state ? state.groupName : undefined;
+            resourceInputs["groupType"] = state ? state.groupType : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["readEnable"] = state ? state.readEnable : undefined;
+            resourceInputs["remark"] = state ? state.remark : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["groupId"] = args ? args.groupId : undefined;
-            inputs["groupName"] = args ? args.groupName : undefined;
-            inputs["groupType"] = args ? args.groupType : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["readEnable"] = args ? args.readEnable : undefined;
-            inputs["remark"] = args ? args.remark : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["groupName"] = args ? args.groupName : undefined;
+            resourceInputs["groupType"] = args ? args.groupType : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["readEnable"] = args ? args.readEnable : undefined;
+            resourceInputs["remark"] = args ? args.remark : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Group.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Group.__pulumiType, name, resourceInputs, opts);
     }
 }
 

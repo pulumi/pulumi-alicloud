@@ -30,9 +30,7 @@ export function getCustomLines(args: GetCustomLinesArgs, opts?: pulumi.InvokeOpt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:dns/getCustomLines:getCustomLines", {
         "domainName": args.domainName,
         "enableDetails": args.enableDetails,

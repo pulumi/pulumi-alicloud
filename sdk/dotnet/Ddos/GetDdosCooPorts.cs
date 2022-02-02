@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ddos
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.Ddos
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDdosCooPortsResult> InvokeAsync(GetDdosCooPortsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDdosCooPortsResult>("alicloud:ddos/getDdosCooPorts:getDdosCooPorts", args ?? new GetDdosCooPortsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDdosCooPortsResult>("alicloud:ddos/getDdosCooPorts:getDdosCooPorts", args ?? new GetDdosCooPortsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ddoscoo Ports of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.Ddos
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDdosCooPortsResult> Invoke(GetDdosCooPortsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDdosCooPortsResult>("alicloud:ddos/getDdosCooPorts:getDdosCooPorts", args ?? new GetDdosCooPortsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDdosCooPortsResult>("alicloud:ddos/getDdosCooPorts:getDdosCooPorts", args ?? new GetDdosCooPortsInvokeArgs(), options.WithDefaults());
     }
 
 

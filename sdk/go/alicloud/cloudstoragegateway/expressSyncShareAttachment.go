@@ -248,7 +248,7 @@ type ExpressSyncShareAttachmentInput interface {
 }
 
 func (*ExpressSyncShareAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExpressSyncShareAttachment)(nil))
+	return reflect.TypeOf((**ExpressSyncShareAttachment)(nil)).Elem()
 }
 
 func (i *ExpressSyncShareAttachment) ToExpressSyncShareAttachmentOutput() ExpressSyncShareAttachmentOutput {
@@ -257,35 +257,6 @@ func (i *ExpressSyncShareAttachment) ToExpressSyncShareAttachmentOutput() Expres
 
 func (i *ExpressSyncShareAttachment) ToExpressSyncShareAttachmentOutputWithContext(ctx context.Context) ExpressSyncShareAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressSyncShareAttachmentOutput)
-}
-
-func (i *ExpressSyncShareAttachment) ToExpressSyncShareAttachmentPtrOutput() ExpressSyncShareAttachmentPtrOutput {
-	return i.ToExpressSyncShareAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *ExpressSyncShareAttachment) ToExpressSyncShareAttachmentPtrOutputWithContext(ctx context.Context) ExpressSyncShareAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExpressSyncShareAttachmentPtrOutput)
-}
-
-type ExpressSyncShareAttachmentPtrInput interface {
-	pulumi.Input
-
-	ToExpressSyncShareAttachmentPtrOutput() ExpressSyncShareAttachmentPtrOutput
-	ToExpressSyncShareAttachmentPtrOutputWithContext(ctx context.Context) ExpressSyncShareAttachmentPtrOutput
-}
-
-type expressSyncShareAttachmentPtrType ExpressSyncShareAttachmentArgs
-
-func (*expressSyncShareAttachmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExpressSyncShareAttachment)(nil))
-}
-
-func (i *expressSyncShareAttachmentPtrType) ToExpressSyncShareAttachmentPtrOutput() ExpressSyncShareAttachmentPtrOutput {
-	return i.ToExpressSyncShareAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *expressSyncShareAttachmentPtrType) ToExpressSyncShareAttachmentPtrOutputWithContext(ctx context.Context) ExpressSyncShareAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExpressSyncShareAttachmentPtrOutput)
 }
 
 // ExpressSyncShareAttachmentArrayInput is an input type that accepts ExpressSyncShareAttachmentArray and ExpressSyncShareAttachmentArrayOutput values.
@@ -341,7 +312,7 @@ func (i ExpressSyncShareAttachmentMap) ToExpressSyncShareAttachmentMapOutputWith
 type ExpressSyncShareAttachmentOutput struct{ *pulumi.OutputState }
 
 func (ExpressSyncShareAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExpressSyncShareAttachment)(nil))
+	return reflect.TypeOf((**ExpressSyncShareAttachment)(nil)).Elem()
 }
 
 func (o ExpressSyncShareAttachmentOutput) ToExpressSyncShareAttachmentOutput() ExpressSyncShareAttachmentOutput {
@@ -352,44 +323,10 @@ func (o ExpressSyncShareAttachmentOutput) ToExpressSyncShareAttachmentOutputWith
 	return o
 }
 
-func (o ExpressSyncShareAttachmentOutput) ToExpressSyncShareAttachmentPtrOutput() ExpressSyncShareAttachmentPtrOutput {
-	return o.ToExpressSyncShareAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (o ExpressSyncShareAttachmentOutput) ToExpressSyncShareAttachmentPtrOutputWithContext(ctx context.Context) ExpressSyncShareAttachmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExpressSyncShareAttachment) *ExpressSyncShareAttachment {
-		return &v
-	}).(ExpressSyncShareAttachmentPtrOutput)
-}
-
-type ExpressSyncShareAttachmentPtrOutput struct{ *pulumi.OutputState }
-
-func (ExpressSyncShareAttachmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExpressSyncShareAttachment)(nil))
-}
-
-func (o ExpressSyncShareAttachmentPtrOutput) ToExpressSyncShareAttachmentPtrOutput() ExpressSyncShareAttachmentPtrOutput {
-	return o
-}
-
-func (o ExpressSyncShareAttachmentPtrOutput) ToExpressSyncShareAttachmentPtrOutputWithContext(ctx context.Context) ExpressSyncShareAttachmentPtrOutput {
-	return o
-}
-
-func (o ExpressSyncShareAttachmentPtrOutput) Elem() ExpressSyncShareAttachmentOutput {
-	return o.ApplyT(func(v *ExpressSyncShareAttachment) ExpressSyncShareAttachment {
-		if v != nil {
-			return *v
-		}
-		var ret ExpressSyncShareAttachment
-		return ret
-	}).(ExpressSyncShareAttachmentOutput)
-}
-
 type ExpressSyncShareAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (ExpressSyncShareAttachmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ExpressSyncShareAttachment)(nil))
+	return reflect.TypeOf((*[]*ExpressSyncShareAttachment)(nil)).Elem()
 }
 
 func (o ExpressSyncShareAttachmentArrayOutput) ToExpressSyncShareAttachmentArrayOutput() ExpressSyncShareAttachmentArrayOutput {
@@ -401,15 +338,15 @@ func (o ExpressSyncShareAttachmentArrayOutput) ToExpressSyncShareAttachmentArray
 }
 
 func (o ExpressSyncShareAttachmentArrayOutput) Index(i pulumi.IntInput) ExpressSyncShareAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExpressSyncShareAttachment {
-		return vs[0].([]ExpressSyncShareAttachment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ExpressSyncShareAttachment {
+		return vs[0].([]*ExpressSyncShareAttachment)[vs[1].(int)]
 	}).(ExpressSyncShareAttachmentOutput)
 }
 
 type ExpressSyncShareAttachmentMapOutput struct{ *pulumi.OutputState }
 
 func (ExpressSyncShareAttachmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ExpressSyncShareAttachment)(nil))
+	return reflect.TypeOf((*map[string]*ExpressSyncShareAttachment)(nil)).Elem()
 }
 
 func (o ExpressSyncShareAttachmentMapOutput) ToExpressSyncShareAttachmentMapOutput() ExpressSyncShareAttachmentMapOutput {
@@ -421,18 +358,16 @@ func (o ExpressSyncShareAttachmentMapOutput) ToExpressSyncShareAttachmentMapOutp
 }
 
 func (o ExpressSyncShareAttachmentMapOutput) MapIndex(k pulumi.StringInput) ExpressSyncShareAttachmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ExpressSyncShareAttachment {
-		return vs[0].(map[string]ExpressSyncShareAttachment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ExpressSyncShareAttachment {
+		return vs[0].(map[string]*ExpressSyncShareAttachment)[vs[1].(string)]
 	}).(ExpressSyncShareAttachmentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExpressSyncShareAttachmentInput)(nil)).Elem(), &ExpressSyncShareAttachment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExpressSyncShareAttachmentPtrInput)(nil)).Elem(), &ExpressSyncShareAttachment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExpressSyncShareAttachmentArrayInput)(nil)).Elem(), ExpressSyncShareAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExpressSyncShareAttachmentMapInput)(nil)).Elem(), ExpressSyncShareAttachmentMap{})
 	pulumi.RegisterOutputType(ExpressSyncShareAttachmentOutput{})
-	pulumi.RegisterOutputType(ExpressSyncShareAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(ExpressSyncShareAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(ExpressSyncShareAttachmentMapOutput{})
 }

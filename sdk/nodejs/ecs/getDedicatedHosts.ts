@@ -32,9 +32,7 @@ export function getDedicatedHosts(args?: GetDedicatedHostsArgs, opts?: pulumi.In
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ecs/getDedicatedHosts:getDedicatedHosts", {
         "dedicatedHostId": args.dedicatedHostId,
         "dedicatedHostName": args.dedicatedHostName,

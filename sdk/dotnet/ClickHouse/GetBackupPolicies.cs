@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ClickHouse
 {
@@ -46,7 +45,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBackupPoliciesResult> InvokeAsync(GetBackupPoliciesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackupPoliciesResult>("alicloud:clickhouse/getBackupPolicies:getBackupPolicies", args ?? new GetBackupPoliciesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBackupPoliciesResult>("alicloud:clickhouse/getBackupPolicies:getBackupPolicies", args ?? new GetBackupPoliciesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Click House Backup Policies of the current Alibaba Cloud user.
@@ -82,7 +81,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBackupPoliciesResult> Invoke(GetBackupPoliciesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBackupPoliciesResult>("alicloud:clickhouse/getBackupPolicies:getBackupPolicies", args ?? new GetBackupPoliciesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetBackupPoliciesResult>("alicloud:clickhouse/getBackupPolicies:getBackupPolicies", args ?? new GetBackupPoliciesInvokeArgs(), options.WithDefaults());
     }
 
 

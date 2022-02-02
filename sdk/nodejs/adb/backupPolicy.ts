@@ -67,14 +67,14 @@ export class BackupPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: BackupPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BackupPolicyArgs | BackupPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupPolicyState | undefined;
-            inputs["backupRetentionPeriod"] = state ? state.backupRetentionPeriod : undefined;
-            inputs["dbClusterId"] = state ? state.dbClusterId : undefined;
-            inputs["preferredBackupPeriods"] = state ? state.preferredBackupPeriods : undefined;
-            inputs["preferredBackupTime"] = state ? state.preferredBackupTime : undefined;
+            resourceInputs["backupRetentionPeriod"] = state ? state.backupRetentionPeriod : undefined;
+            resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
+            resourceInputs["preferredBackupPeriods"] = state ? state.preferredBackupPeriods : undefined;
+            resourceInputs["preferredBackupTime"] = state ? state.preferredBackupTime : undefined;
         } else {
             const args = argsOrState as BackupPolicyArgs | undefined;
             if ((!args || args.dbClusterId === undefined) && !opts.urn) {
@@ -86,15 +86,13 @@ export class BackupPolicy extends pulumi.CustomResource {
             if ((!args || args.preferredBackupTime === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'preferredBackupTime'");
             }
-            inputs["dbClusterId"] = args ? args.dbClusterId : undefined;
-            inputs["preferredBackupPeriods"] = args ? args.preferredBackupPeriods : undefined;
-            inputs["preferredBackupTime"] = args ? args.preferredBackupTime : undefined;
-            inputs["backupRetentionPeriod"] = undefined /*out*/;
+            resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
+            resourceInputs["preferredBackupPeriods"] = args ? args.preferredBackupPeriods : undefined;
+            resourceInputs["preferredBackupTime"] = args ? args.preferredBackupTime : undefined;
+            resourceInputs["backupRetentionPeriod"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(BackupPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(BackupPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

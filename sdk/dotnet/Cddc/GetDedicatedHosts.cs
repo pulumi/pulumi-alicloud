@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cddc
 {
@@ -103,7 +102,7 @@ namespace Pulumi.AliCloud.Cddc
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDedicatedHostsResult> InvokeAsync(GetDedicatedHostsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDedicatedHostsResult>("alicloud:cddc/getDedicatedHosts:getDedicatedHosts", args ?? new GetDedicatedHostsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDedicatedHostsResult>("alicloud:cddc/getDedicatedHosts:getDedicatedHosts", args ?? new GetDedicatedHostsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cddc Dedicated Hosts of the current Alibaba Cloud user.
@@ -196,7 +195,7 @@ namespace Pulumi.AliCloud.Cddc
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDedicatedHostsResult> Invoke(GetDedicatedHostsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDedicatedHostsResult>("alicloud:cddc/getDedicatedHosts:getDedicatedHosts", args ?? new GetDedicatedHostsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDedicatedHostsResult>("alicloud:cddc/getDedicatedHosts:getDedicatedHosts", args ?? new GetDedicatedHostsInvokeArgs(), options.WithDefaults());
     }
 
 

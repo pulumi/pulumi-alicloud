@@ -175,7 +175,7 @@ def get_route_entries(cidr_block: Optional[str] = None,
         priority=1,
         security_group_id=tf_test_foo.id,
         type="ingress")
-    foo_route_entries = foo_route_entry.route_table_id.apply(lambda route_table_id: alicloud.vpc.get_route_entries(route_table_id=route_table_id))
+    foo_route_entries = alicloud.vpc.get_route_entries_output(route_table_id=foo_route_entry.route_table_id)
     ```
 
 
@@ -269,7 +269,7 @@ def get_route_entries_output(cidr_block: Optional[pulumi.Input[Optional[str]]] =
         priority=1,
         security_group_id=tf_test_foo.id,
         type="ingress")
-    foo_route_entries = foo_route_entry.route_table_id.apply(lambda route_table_id: alicloud.vpc.get_route_entries(route_table_id=route_table_id))
+    foo_route_entries = alicloud.vpc.get_route_entries_output(route_table_id=foo_route_entry.route_table_id)
     ```
 
 

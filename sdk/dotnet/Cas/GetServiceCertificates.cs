@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cas
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.Cas
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceCertificatesResult> InvokeAsync(GetServiceCertificatesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceCertificatesResult>("alicloud:cas/getServiceCertificates:getServiceCertificates", args ?? new GetServiceCertificatesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceCertificatesResult>("alicloud:cas/getServiceCertificates:getServiceCertificates", args ?? new GetServiceCertificatesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ssl Certificates Service Certificates of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.Cas
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServiceCertificatesResult> Invoke(GetServiceCertificatesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceCertificatesResult>("alicloud:cas/getServiceCertificates:getServiceCertificates", args ?? new GetServiceCertificatesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetServiceCertificatesResult>("alicloud:cas/getServiceCertificates:getServiceCertificates", args ?? new GetServiceCertificatesInvokeArgs(), options.WithDefaults());
     }
 
 

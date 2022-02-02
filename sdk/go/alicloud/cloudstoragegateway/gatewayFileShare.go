@@ -537,7 +537,7 @@ type GatewayFileShareInput interface {
 }
 
 func (*GatewayFileShare) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayFileShare)(nil))
+	return reflect.TypeOf((**GatewayFileShare)(nil)).Elem()
 }
 
 func (i *GatewayFileShare) ToGatewayFileShareOutput() GatewayFileShareOutput {
@@ -546,35 +546,6 @@ func (i *GatewayFileShare) ToGatewayFileShareOutput() GatewayFileShareOutput {
 
 func (i *GatewayFileShare) ToGatewayFileShareOutputWithContext(ctx context.Context) GatewayFileShareOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayFileShareOutput)
-}
-
-func (i *GatewayFileShare) ToGatewayFileSharePtrOutput() GatewayFileSharePtrOutput {
-	return i.ToGatewayFileSharePtrOutputWithContext(context.Background())
-}
-
-func (i *GatewayFileShare) ToGatewayFileSharePtrOutputWithContext(ctx context.Context) GatewayFileSharePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayFileSharePtrOutput)
-}
-
-type GatewayFileSharePtrInput interface {
-	pulumi.Input
-
-	ToGatewayFileSharePtrOutput() GatewayFileSharePtrOutput
-	ToGatewayFileSharePtrOutputWithContext(ctx context.Context) GatewayFileSharePtrOutput
-}
-
-type gatewayFileSharePtrType GatewayFileShareArgs
-
-func (*gatewayFileSharePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GatewayFileShare)(nil))
-}
-
-func (i *gatewayFileSharePtrType) ToGatewayFileSharePtrOutput() GatewayFileSharePtrOutput {
-	return i.ToGatewayFileSharePtrOutputWithContext(context.Background())
-}
-
-func (i *gatewayFileSharePtrType) ToGatewayFileSharePtrOutputWithContext(ctx context.Context) GatewayFileSharePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayFileSharePtrOutput)
 }
 
 // GatewayFileShareArrayInput is an input type that accepts GatewayFileShareArray and GatewayFileShareArrayOutput values.
@@ -630,7 +601,7 @@ func (i GatewayFileShareMap) ToGatewayFileShareMapOutputWithContext(ctx context.
 type GatewayFileShareOutput struct{ *pulumi.OutputState }
 
 func (GatewayFileShareOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayFileShare)(nil))
+	return reflect.TypeOf((**GatewayFileShare)(nil)).Elem()
 }
 
 func (o GatewayFileShareOutput) ToGatewayFileShareOutput() GatewayFileShareOutput {
@@ -641,44 +612,10 @@ func (o GatewayFileShareOutput) ToGatewayFileShareOutputWithContext(ctx context.
 	return o
 }
 
-func (o GatewayFileShareOutput) ToGatewayFileSharePtrOutput() GatewayFileSharePtrOutput {
-	return o.ToGatewayFileSharePtrOutputWithContext(context.Background())
-}
-
-func (o GatewayFileShareOutput) ToGatewayFileSharePtrOutputWithContext(ctx context.Context) GatewayFileSharePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayFileShare) *GatewayFileShare {
-		return &v
-	}).(GatewayFileSharePtrOutput)
-}
-
-type GatewayFileSharePtrOutput struct{ *pulumi.OutputState }
-
-func (GatewayFileSharePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GatewayFileShare)(nil))
-}
-
-func (o GatewayFileSharePtrOutput) ToGatewayFileSharePtrOutput() GatewayFileSharePtrOutput {
-	return o
-}
-
-func (o GatewayFileSharePtrOutput) ToGatewayFileSharePtrOutputWithContext(ctx context.Context) GatewayFileSharePtrOutput {
-	return o
-}
-
-func (o GatewayFileSharePtrOutput) Elem() GatewayFileShareOutput {
-	return o.ApplyT(func(v *GatewayFileShare) GatewayFileShare {
-		if v != nil {
-			return *v
-		}
-		var ret GatewayFileShare
-		return ret
-	}).(GatewayFileShareOutput)
-}
-
 type GatewayFileShareArrayOutput struct{ *pulumi.OutputState }
 
 func (GatewayFileShareArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GatewayFileShare)(nil))
+	return reflect.TypeOf((*[]*GatewayFileShare)(nil)).Elem()
 }
 
 func (o GatewayFileShareArrayOutput) ToGatewayFileShareArrayOutput() GatewayFileShareArrayOutput {
@@ -690,15 +627,15 @@ func (o GatewayFileShareArrayOutput) ToGatewayFileShareArrayOutputWithContext(ct
 }
 
 func (o GatewayFileShareArrayOutput) Index(i pulumi.IntInput) GatewayFileShareOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewayFileShare {
-		return vs[0].([]GatewayFileShare)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GatewayFileShare {
+		return vs[0].([]*GatewayFileShare)[vs[1].(int)]
 	}).(GatewayFileShareOutput)
 }
 
 type GatewayFileShareMapOutput struct{ *pulumi.OutputState }
 
 func (GatewayFileShareMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GatewayFileShare)(nil))
+	return reflect.TypeOf((*map[string]*GatewayFileShare)(nil)).Elem()
 }
 
 func (o GatewayFileShareMapOutput) ToGatewayFileShareMapOutput() GatewayFileShareMapOutput {
@@ -710,18 +647,16 @@ func (o GatewayFileShareMapOutput) ToGatewayFileShareMapOutputWithContext(ctx co
 }
 
 func (o GatewayFileShareMapOutput) MapIndex(k pulumi.StringInput) GatewayFileShareOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GatewayFileShare {
-		return vs[0].(map[string]GatewayFileShare)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *GatewayFileShare {
+		return vs[0].(map[string]*GatewayFileShare)[vs[1].(string)]
 	}).(GatewayFileShareOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayFileShareInput)(nil)).Elem(), &GatewayFileShare{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GatewayFileSharePtrInput)(nil)).Elem(), &GatewayFileShare{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayFileShareArrayInput)(nil)).Elem(), GatewayFileShareArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayFileShareMapInput)(nil)).Elem(), GatewayFileShareMap{})
 	pulumi.RegisterOutputType(GatewayFileShareOutput{})
-	pulumi.RegisterOutputType(GatewayFileSharePtrOutput{})
 	pulumi.RegisterOutputType(GatewayFileShareArrayOutput{})
 	pulumi.RegisterOutputType(GatewayFileShareMapOutput{})
 }

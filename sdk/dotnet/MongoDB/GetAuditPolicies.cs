@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.MongoDB
 {
@@ -46,7 +45,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAuditPoliciesResult> InvokeAsync(GetAuditPoliciesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAuditPoliciesResult>("alicloud:mongodb/getAuditPolicies:getAuditPolicies", args ?? new GetAuditPoliciesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAuditPoliciesResult>("alicloud:mongodb/getAuditPolicies:getAuditPolicies", args ?? new GetAuditPoliciesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Mongodb Audit Policies of the current Alibaba Cloud user.
@@ -82,7 +81,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAuditPoliciesResult> Invoke(GetAuditPoliciesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAuditPoliciesResult>("alicloud:mongodb/getAuditPolicies:getAuditPolicies", args ?? new GetAuditPoliciesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAuditPoliciesResult>("alicloud:mongodb/getAuditPolicies:getAuditPolicies", args ?? new GetAuditPoliciesInvokeArgs(), options.WithDefaults());
     }
 
 

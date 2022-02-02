@@ -93,15 +93,15 @@ export class RealTimeLogDelivery extends pulumi.CustomResource {
      */
     constructor(name: string, args: RealTimeLogDeliveryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RealTimeLogDeliveryArgs | RealTimeLogDeliveryState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RealTimeLogDeliveryState | undefined;
-            inputs["domain"] = state ? state.domain : undefined;
-            inputs["logstore"] = state ? state.logstore : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["slsRegion"] = state ? state.slsRegion : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["logstore"] = state ? state.logstore : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["slsRegion"] = state ? state.slsRegion : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as RealTimeLogDeliveryArgs | undefined;
             if ((!args || args.domain === undefined) && !opts.urn) {
@@ -116,16 +116,14 @@ export class RealTimeLogDelivery extends pulumi.CustomResource {
             if ((!args || args.slsRegion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'slsRegion'");
             }
-            inputs["domain"] = args ? args.domain : undefined;
-            inputs["logstore"] = args ? args.logstore : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["slsRegion"] = args ? args.slsRegion : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["logstore"] = args ? args.logstore : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["slsRegion"] = args ? args.slsRegion : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RealTimeLogDelivery.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RealTimeLogDelivery.__pulumiType, name, resourceInputs, opts);
     }
 }
 

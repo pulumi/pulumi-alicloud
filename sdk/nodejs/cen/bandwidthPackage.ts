@@ -122,44 +122,42 @@ export class BandwidthPackage extends pulumi.CustomResource {
      */
     constructor(name: string, args: BandwidthPackageArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BandwidthPackageArgs | BandwidthPackageState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BandwidthPackageState | undefined;
-            inputs["bandwidth"] = state ? state.bandwidth : undefined;
-            inputs["cenBandwidthPackageName"] = state ? state.cenBandwidthPackageName : undefined;
-            inputs["chargeType"] = state ? state.chargeType : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["expiredTime"] = state ? state.expiredTime : undefined;
-            inputs["geographicRegionAId"] = state ? state.geographicRegionAId : undefined;
-            inputs["geographicRegionBId"] = state ? state.geographicRegionBId : undefined;
-            inputs["geographicRegionIds"] = state ? state.geographicRegionIds : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["paymentType"] = state ? state.paymentType : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
+            resourceInputs["cenBandwidthPackageName"] = state ? state.cenBandwidthPackageName : undefined;
+            resourceInputs["chargeType"] = state ? state.chargeType : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["expiredTime"] = state ? state.expiredTime : undefined;
+            resourceInputs["geographicRegionAId"] = state ? state.geographicRegionAId : undefined;
+            resourceInputs["geographicRegionBId"] = state ? state.geographicRegionBId : undefined;
+            resourceInputs["geographicRegionIds"] = state ? state.geographicRegionIds : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as BandwidthPackageArgs | undefined;
             if ((!args || args.bandwidth === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bandwidth'");
             }
-            inputs["bandwidth"] = args ? args.bandwidth : undefined;
-            inputs["cenBandwidthPackageName"] = args ? args.cenBandwidthPackageName : undefined;
-            inputs["chargeType"] = args ? args.chargeType : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["geographicRegionAId"] = args ? args.geographicRegionAId : undefined;
-            inputs["geographicRegionBId"] = args ? args.geographicRegionBId : undefined;
-            inputs["geographicRegionIds"] = args ? args.geographicRegionIds : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["paymentType"] = args ? args.paymentType : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["expiredTime"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
+            resourceInputs["cenBandwidthPackageName"] = args ? args.cenBandwidthPackageName : undefined;
+            resourceInputs["chargeType"] = args ? args.chargeType : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["geographicRegionAId"] = args ? args.geographicRegionAId : undefined;
+            resourceInputs["geographicRegionBId"] = args ? args.geographicRegionBId : undefined;
+            resourceInputs["geographicRegionIds"] = args ? args.geographicRegionIds : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["expiredTime"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(BandwidthPackage.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(BandwidthPackage.__pulumiType, name, resourceInputs, opts);
     }
 }
 

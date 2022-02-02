@@ -16,9 +16,7 @@ export function getPatchBaselines(args?: GetPatchBaselinesArgs, opts?: pulumi.In
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:oos/getPatchBaselines:getPatchBaselines", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,

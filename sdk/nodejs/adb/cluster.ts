@@ -128,34 +128,34 @@ export class Cluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: ClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterArgs | ClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            inputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
-            inputs["computeResource"] = state ? state.computeResource : undefined;
-            inputs["connectionString"] = state ? state.connectionString : undefined;
-            inputs["dbClusterCategory"] = state ? state.dbClusterCategory : undefined;
-            inputs["dbClusterClass"] = state ? state.dbClusterClass : undefined;
-            inputs["dbClusterVersion"] = state ? state.dbClusterVersion : undefined;
-            inputs["dbNodeClass"] = state ? state.dbNodeClass : undefined;
-            inputs["dbNodeCount"] = state ? state.dbNodeCount : undefined;
-            inputs["dbNodeStorage"] = state ? state.dbNodeStorage : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["elasticIoResource"] = state ? state.elasticIoResource : undefined;
-            inputs["maintainTime"] = state ? state.maintainTime : undefined;
-            inputs["mode"] = state ? state.mode : undefined;
-            inputs["modifyType"] = state ? state.modifyType : undefined;
-            inputs["payType"] = state ? state.payType : undefined;
-            inputs["paymentType"] = state ? state.paymentType : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["renewalStatus"] = state ? state.renewalStatus : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["securityIps"] = state ? state.securityIps : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
+            resourceInputs["computeResource"] = state ? state.computeResource : undefined;
+            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
+            resourceInputs["dbClusterCategory"] = state ? state.dbClusterCategory : undefined;
+            resourceInputs["dbClusterClass"] = state ? state.dbClusterClass : undefined;
+            resourceInputs["dbClusterVersion"] = state ? state.dbClusterVersion : undefined;
+            resourceInputs["dbNodeClass"] = state ? state.dbNodeClass : undefined;
+            resourceInputs["dbNodeCount"] = state ? state.dbNodeCount : undefined;
+            resourceInputs["dbNodeStorage"] = state ? state.dbNodeStorage : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["elasticIoResource"] = state ? state.elasticIoResource : undefined;
+            resourceInputs["maintainTime"] = state ? state.maintainTime : undefined;
+            resourceInputs["mode"] = state ? state.mode : undefined;
+            resourceInputs["modifyType"] = state ? state.modifyType : undefined;
+            resourceInputs["payType"] = state ? state.payType : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["securityIps"] = state ? state.securityIps : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
             if ((!args || args.dbClusterCategory === undefined) && !opts.urn) {
@@ -164,35 +164,33 @@ export class Cluster extends pulumi.CustomResource {
             if ((!args || args.mode === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'mode'");
             }
-            inputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
-            inputs["computeResource"] = args ? args.computeResource : undefined;
-            inputs["dbClusterCategory"] = args ? args.dbClusterCategory : undefined;
-            inputs["dbClusterClass"] = args ? args.dbClusterClass : undefined;
-            inputs["dbClusterVersion"] = args ? args.dbClusterVersion : undefined;
-            inputs["dbNodeClass"] = args ? args.dbNodeClass : undefined;
-            inputs["dbNodeCount"] = args ? args.dbNodeCount : undefined;
-            inputs["dbNodeStorage"] = args ? args.dbNodeStorage : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["elasticIoResource"] = args ? args.elasticIoResource : undefined;
-            inputs["maintainTime"] = args ? args.maintainTime : undefined;
-            inputs["mode"] = args ? args.mode : undefined;
-            inputs["modifyType"] = args ? args.modifyType : undefined;
-            inputs["payType"] = args ? args.payType : undefined;
-            inputs["paymentType"] = args ? args.paymentType : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["renewalStatus"] = args ? args.renewalStatus : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["securityIps"] = args ? args.securityIps : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["connectionString"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
+            resourceInputs["computeResource"] = args ? args.computeResource : undefined;
+            resourceInputs["dbClusterCategory"] = args ? args.dbClusterCategory : undefined;
+            resourceInputs["dbClusterClass"] = args ? args.dbClusterClass : undefined;
+            resourceInputs["dbClusterVersion"] = args ? args.dbClusterVersion : undefined;
+            resourceInputs["dbNodeClass"] = args ? args.dbNodeClass : undefined;
+            resourceInputs["dbNodeCount"] = args ? args.dbNodeCount : undefined;
+            resourceInputs["dbNodeStorage"] = args ? args.dbNodeStorage : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["elasticIoResource"] = args ? args.elasticIoResource : undefined;
+            resourceInputs["maintainTime"] = args ? args.maintainTime : undefined;
+            resourceInputs["mode"] = args ? args.mode : undefined;
+            resourceInputs["modifyType"] = args ? args.modifyType : undefined;
+            resourceInputs["payType"] = args ? args.payType : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["securityIps"] = args ? args.securityIps : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["connectionString"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Cluster.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Cluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

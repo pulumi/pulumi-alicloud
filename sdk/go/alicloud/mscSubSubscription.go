@@ -209,7 +209,7 @@ type MscSubSubscriptionInput interface {
 }
 
 func (*MscSubSubscription) ElementType() reflect.Type {
-	return reflect.TypeOf((*MscSubSubscription)(nil))
+	return reflect.TypeOf((**MscSubSubscription)(nil)).Elem()
 }
 
 func (i *MscSubSubscription) ToMscSubSubscriptionOutput() MscSubSubscriptionOutput {
@@ -218,35 +218,6 @@ func (i *MscSubSubscription) ToMscSubSubscriptionOutput() MscSubSubscriptionOutp
 
 func (i *MscSubSubscription) ToMscSubSubscriptionOutputWithContext(ctx context.Context) MscSubSubscriptionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MscSubSubscriptionOutput)
-}
-
-func (i *MscSubSubscription) ToMscSubSubscriptionPtrOutput() MscSubSubscriptionPtrOutput {
-	return i.ToMscSubSubscriptionPtrOutputWithContext(context.Background())
-}
-
-func (i *MscSubSubscription) ToMscSubSubscriptionPtrOutputWithContext(ctx context.Context) MscSubSubscriptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MscSubSubscriptionPtrOutput)
-}
-
-type MscSubSubscriptionPtrInput interface {
-	pulumi.Input
-
-	ToMscSubSubscriptionPtrOutput() MscSubSubscriptionPtrOutput
-	ToMscSubSubscriptionPtrOutputWithContext(ctx context.Context) MscSubSubscriptionPtrOutput
-}
-
-type mscSubSubscriptionPtrType MscSubSubscriptionArgs
-
-func (*mscSubSubscriptionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MscSubSubscription)(nil))
-}
-
-func (i *mscSubSubscriptionPtrType) ToMscSubSubscriptionPtrOutput() MscSubSubscriptionPtrOutput {
-	return i.ToMscSubSubscriptionPtrOutputWithContext(context.Background())
-}
-
-func (i *mscSubSubscriptionPtrType) ToMscSubSubscriptionPtrOutputWithContext(ctx context.Context) MscSubSubscriptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MscSubSubscriptionPtrOutput)
 }
 
 // MscSubSubscriptionArrayInput is an input type that accepts MscSubSubscriptionArray and MscSubSubscriptionArrayOutput values.
@@ -302,7 +273,7 @@ func (i MscSubSubscriptionMap) ToMscSubSubscriptionMapOutputWithContext(ctx cont
 type MscSubSubscriptionOutput struct{ *pulumi.OutputState }
 
 func (MscSubSubscriptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MscSubSubscription)(nil))
+	return reflect.TypeOf((**MscSubSubscription)(nil)).Elem()
 }
 
 func (o MscSubSubscriptionOutput) ToMscSubSubscriptionOutput() MscSubSubscriptionOutput {
@@ -313,44 +284,10 @@ func (o MscSubSubscriptionOutput) ToMscSubSubscriptionOutputWithContext(ctx cont
 	return o
 }
 
-func (o MscSubSubscriptionOutput) ToMscSubSubscriptionPtrOutput() MscSubSubscriptionPtrOutput {
-	return o.ToMscSubSubscriptionPtrOutputWithContext(context.Background())
-}
-
-func (o MscSubSubscriptionOutput) ToMscSubSubscriptionPtrOutputWithContext(ctx context.Context) MscSubSubscriptionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MscSubSubscription) *MscSubSubscription {
-		return &v
-	}).(MscSubSubscriptionPtrOutput)
-}
-
-type MscSubSubscriptionPtrOutput struct{ *pulumi.OutputState }
-
-func (MscSubSubscriptionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MscSubSubscription)(nil))
-}
-
-func (o MscSubSubscriptionPtrOutput) ToMscSubSubscriptionPtrOutput() MscSubSubscriptionPtrOutput {
-	return o
-}
-
-func (o MscSubSubscriptionPtrOutput) ToMscSubSubscriptionPtrOutputWithContext(ctx context.Context) MscSubSubscriptionPtrOutput {
-	return o
-}
-
-func (o MscSubSubscriptionPtrOutput) Elem() MscSubSubscriptionOutput {
-	return o.ApplyT(func(v *MscSubSubscription) MscSubSubscription {
-		if v != nil {
-			return *v
-		}
-		var ret MscSubSubscription
-		return ret
-	}).(MscSubSubscriptionOutput)
-}
-
 type MscSubSubscriptionArrayOutput struct{ *pulumi.OutputState }
 
 func (MscSubSubscriptionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MscSubSubscription)(nil))
+	return reflect.TypeOf((*[]*MscSubSubscription)(nil)).Elem()
 }
 
 func (o MscSubSubscriptionArrayOutput) ToMscSubSubscriptionArrayOutput() MscSubSubscriptionArrayOutput {
@@ -362,15 +299,15 @@ func (o MscSubSubscriptionArrayOutput) ToMscSubSubscriptionArrayOutputWithContex
 }
 
 func (o MscSubSubscriptionArrayOutput) Index(i pulumi.IntInput) MscSubSubscriptionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MscSubSubscription {
-		return vs[0].([]MscSubSubscription)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MscSubSubscription {
+		return vs[0].([]*MscSubSubscription)[vs[1].(int)]
 	}).(MscSubSubscriptionOutput)
 }
 
 type MscSubSubscriptionMapOutput struct{ *pulumi.OutputState }
 
 func (MscSubSubscriptionMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MscSubSubscription)(nil))
+	return reflect.TypeOf((*map[string]*MscSubSubscription)(nil)).Elem()
 }
 
 func (o MscSubSubscriptionMapOutput) ToMscSubSubscriptionMapOutput() MscSubSubscriptionMapOutput {
@@ -382,18 +319,16 @@ func (o MscSubSubscriptionMapOutput) ToMscSubSubscriptionMapOutputWithContext(ct
 }
 
 func (o MscSubSubscriptionMapOutput) MapIndex(k pulumi.StringInput) MscSubSubscriptionOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MscSubSubscription {
-		return vs[0].(map[string]MscSubSubscription)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MscSubSubscription {
+		return vs[0].(map[string]*MscSubSubscription)[vs[1].(string)]
 	}).(MscSubSubscriptionOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MscSubSubscriptionInput)(nil)).Elem(), &MscSubSubscription{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MscSubSubscriptionPtrInput)(nil)).Elem(), &MscSubSubscription{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MscSubSubscriptionArrayInput)(nil)).Elem(), MscSubSubscriptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MscSubSubscriptionMapInput)(nil)).Elem(), MscSubSubscriptionMap{})
 	pulumi.RegisterOutputType(MscSubSubscriptionOutput{})
-	pulumi.RegisterOutputType(MscSubSubscriptionPtrOutput{})
 	pulumi.RegisterOutputType(MscSubSubscriptionArrayOutput{})
 	pulumi.RegisterOutputType(MscSubSubscriptionMapOutput{})
 }

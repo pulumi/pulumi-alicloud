@@ -146,27 +146,27 @@ export class ControlPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: ControlPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ControlPolicyArgs | ControlPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ControlPolicyState | undefined;
-            inputs["aclAction"] = state ? state.aclAction : undefined;
-            inputs["aclUuid"] = state ? state.aclUuid : undefined;
-            inputs["applicationName"] = state ? state.applicationName : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["destPort"] = state ? state.destPort : undefined;
-            inputs["destPortGroup"] = state ? state.destPortGroup : undefined;
-            inputs["destPortType"] = state ? state.destPortType : undefined;
-            inputs["destination"] = state ? state.destination : undefined;
-            inputs["destinationType"] = state ? state.destinationType : undefined;
-            inputs["direction"] = state ? state.direction : undefined;
-            inputs["ipVersion"] = state ? state.ipVersion : undefined;
-            inputs["lang"] = state ? state.lang : undefined;
-            inputs["proto"] = state ? state.proto : undefined;
-            inputs["release"] = state ? state.release : undefined;
-            inputs["source"] = state ? state.source : undefined;
-            inputs["sourceIp"] = state ? state.sourceIp : undefined;
-            inputs["sourceType"] = state ? state.sourceType : undefined;
+            resourceInputs["aclAction"] = state ? state.aclAction : undefined;
+            resourceInputs["aclUuid"] = state ? state.aclUuid : undefined;
+            resourceInputs["applicationName"] = state ? state.applicationName : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["destPort"] = state ? state.destPort : undefined;
+            resourceInputs["destPortGroup"] = state ? state.destPortGroup : undefined;
+            resourceInputs["destPortType"] = state ? state.destPortType : undefined;
+            resourceInputs["destination"] = state ? state.destination : undefined;
+            resourceInputs["destinationType"] = state ? state.destinationType : undefined;
+            resourceInputs["direction"] = state ? state.direction : undefined;
+            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
+            resourceInputs["lang"] = state ? state.lang : undefined;
+            resourceInputs["proto"] = state ? state.proto : undefined;
+            resourceInputs["release"] = state ? state.release : undefined;
+            resourceInputs["source"] = state ? state.source : undefined;
+            resourceInputs["sourceIp"] = state ? state.sourceIp : undefined;
+            resourceInputs["sourceType"] = state ? state.sourceType : undefined;
         } else {
             const args = argsOrState as ControlPolicyArgs | undefined;
             if ((!args || args.aclAction === undefined) && !opts.urn) {
@@ -196,28 +196,26 @@ export class ControlPolicy extends pulumi.CustomResource {
             if ((!args || args.sourceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceType'");
             }
-            inputs["aclAction"] = args ? args.aclAction : undefined;
-            inputs["applicationName"] = args ? args.applicationName : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["destPort"] = args ? args.destPort : undefined;
-            inputs["destPortGroup"] = args ? args.destPortGroup : undefined;
-            inputs["destPortType"] = args ? args.destPortType : undefined;
-            inputs["destination"] = args ? args.destination : undefined;
-            inputs["destinationType"] = args ? args.destinationType : undefined;
-            inputs["direction"] = args ? args.direction : undefined;
-            inputs["ipVersion"] = args ? args.ipVersion : undefined;
-            inputs["lang"] = args ? args.lang : undefined;
-            inputs["proto"] = args ? args.proto : undefined;
-            inputs["release"] = args ? args.release : undefined;
-            inputs["source"] = args ? args.source : undefined;
-            inputs["sourceIp"] = args ? args.sourceIp : undefined;
-            inputs["sourceType"] = args ? args.sourceType : undefined;
-            inputs["aclUuid"] = undefined /*out*/;
+            resourceInputs["aclAction"] = args ? args.aclAction : undefined;
+            resourceInputs["applicationName"] = args ? args.applicationName : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["destPort"] = args ? args.destPort : undefined;
+            resourceInputs["destPortGroup"] = args ? args.destPortGroup : undefined;
+            resourceInputs["destPortType"] = args ? args.destPortType : undefined;
+            resourceInputs["destination"] = args ? args.destination : undefined;
+            resourceInputs["destinationType"] = args ? args.destinationType : undefined;
+            resourceInputs["direction"] = args ? args.direction : undefined;
+            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
+            resourceInputs["lang"] = args ? args.lang : undefined;
+            resourceInputs["proto"] = args ? args.proto : undefined;
+            resourceInputs["release"] = args ? args.release : undefined;
+            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["sourceIp"] = args ? args.sourceIp : undefined;
+            resourceInputs["sourceType"] = args ? args.sourceType : undefined;
+            resourceInputs["aclUuid"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ControlPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ControlPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

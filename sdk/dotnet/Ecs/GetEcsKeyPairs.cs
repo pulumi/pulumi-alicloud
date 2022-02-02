@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsKeyPairsResult> InvokeAsync(GetEcsKeyPairsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsKeyPairsResult>("alicloud:ecs/getEcsKeyPairs:getEcsKeyPairs", args ?? new GetEcsKeyPairsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsKeyPairsResult>("alicloud:ecs/getEcsKeyPairs:getEcsKeyPairs", args ?? new GetEcsKeyPairsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsKeyPairsResult> Invoke(GetEcsKeyPairsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEcsKeyPairsResult>("alicloud:ecs/getEcsKeyPairs:getEcsKeyPairs", args ?? new GetEcsKeyPairsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetEcsKeyPairsResult>("alicloud:ecs/getEcsKeyPairs:getEcsKeyPairs", args ?? new GetEcsKeyPairsInvokeArgs(), options.WithDefaults());
     }
 
 

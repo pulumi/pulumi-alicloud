@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworkAclsResult> InvokeAsync(GetNetworkAclsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkAclsResult>("alicloud:vpc/getNetworkAcls:getNetworkAcls", args ?? new GetNetworkAclsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkAclsResult>("alicloud:vpc/getNetworkAcls:getNetworkAcls", args ?? new GetNetworkAclsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Network Acls of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNetworkAclsResult> Invoke(GetNetworkAclsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNetworkAclsResult>("alicloud:vpc/getNetworkAcls:getNetworkAcls", args ?? new GetNetworkAclsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetNetworkAclsResult>("alicloud:vpc/getNetworkAcls:getNetworkAcls", args ?? new GetNetworkAclsInvokeArgs(), options.WithDefaults());
     }
 
 

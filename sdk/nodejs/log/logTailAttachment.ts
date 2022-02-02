@@ -123,13 +123,13 @@ export class LogTailAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: LogTailAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LogTailAttachmentArgs | LogTailAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LogTailAttachmentState | undefined;
-            inputs["logtailConfigName"] = state ? state.logtailConfigName : undefined;
-            inputs["machineGroupName"] = state ? state.machineGroupName : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["logtailConfigName"] = state ? state.logtailConfigName : undefined;
+            resourceInputs["machineGroupName"] = state ? state.machineGroupName : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as LogTailAttachmentArgs | undefined;
             if ((!args || args.logtailConfigName === undefined) && !opts.urn) {
@@ -141,14 +141,12 @@ export class LogTailAttachment extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["logtailConfigName"] = args ? args.logtailConfigName : undefined;
-            inputs["machineGroupName"] = args ? args.machineGroupName : undefined;
-            inputs["project"] = args ? args.project : undefined;
+            resourceInputs["logtailConfigName"] = args ? args.logtailConfigName : undefined;
+            resourceInputs["machineGroupName"] = args ? args.machineGroupName : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(LogTailAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(LogTailAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

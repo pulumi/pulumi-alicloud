@@ -59,6 +59,10 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		nameRegex := sae.GetConfigMapsOutput(ctx, sae.GetConfigMapsOutputArgs{
+// 			NamespaceId: exampleNamespace.NamespaceId,
+// 			NameRegex:   pulumi.String("^example"),
+// 		}, nil)
 // 		ctx.Export("saeConfigMapId", nameRegex.ApplyT(func(nameRegex sae.GetConfigMapsResult) (string, error) {
 // 			return nameRegex.Maps[0].Id, nil
 // 		}).(pulumi.StringOutput))

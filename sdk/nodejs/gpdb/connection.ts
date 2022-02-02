@@ -110,30 +110,28 @@ export class Connection extends pulumi.CustomResource {
      */
     constructor(name: string, args: ConnectionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConnectionArgs | ConnectionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
-            inputs["connectionPrefix"] = state ? state.connectionPrefix : undefined;
-            inputs["connectionString"] = state ? state.connectionString : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["ipAddress"] = state ? state.ipAddress : undefined;
-            inputs["port"] = state ? state.port : undefined;
+            resourceInputs["connectionPrefix"] = state ? state.connectionPrefix : undefined;
+            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["connectionPrefix"] = args ? args.connectionPrefix : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["connectionString"] = undefined /*out*/;
-            inputs["ipAddress"] = undefined /*out*/;
+            resourceInputs["connectionPrefix"] = args ? args.connectionPrefix : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["connectionString"] = undefined /*out*/;
+            resourceInputs["ipAddress"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Connection.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Connection.__pulumiType, name, resourceInputs, opts);
     }
 }
 

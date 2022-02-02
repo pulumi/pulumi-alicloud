@@ -87,14 +87,14 @@ export class MscSubContract extends pulumi.CustomResource {
      */
     constructor(name: string, args: MscSubContractArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MscSubContractArgs | MscSubContractState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MscSubContractState | undefined;
-            inputs["contactName"] = state ? state.contactName : undefined;
-            inputs["email"] = state ? state.email : undefined;
-            inputs["mobile"] = state ? state.mobile : undefined;
-            inputs["position"] = state ? state.position : undefined;
+            resourceInputs["contactName"] = state ? state.contactName : undefined;
+            resourceInputs["email"] = state ? state.email : undefined;
+            resourceInputs["mobile"] = state ? state.mobile : undefined;
+            resourceInputs["position"] = state ? state.position : undefined;
         } else {
             const args = argsOrState as MscSubContractArgs | undefined;
             if ((!args || args.contactName === undefined) && !opts.urn) {
@@ -109,15 +109,13 @@ export class MscSubContract extends pulumi.CustomResource {
             if ((!args || args.position === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'position'");
             }
-            inputs["contactName"] = args ? args.contactName : undefined;
-            inputs["email"] = args ? args.email : undefined;
-            inputs["mobile"] = args ? args.mobile : undefined;
-            inputs["position"] = args ? args.position : undefined;
+            resourceInputs["contactName"] = args ? args.contactName : undefined;
+            resourceInputs["email"] = args ? args.email : undefined;
+            resourceInputs["mobile"] = args ? args.mobile : undefined;
+            resourceInputs["position"] = args ? args.position : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(MscSubContract.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(MscSubContract.__pulumiType, name, resourceInputs, opts);
     }
 }
 

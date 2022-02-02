@@ -57,6 +57,11 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		ids := cms.GetDynamicTagGroupsOutput(ctx, cms.GetDynamicTagGroupsOutputArgs{
+// 			Ids: pulumi.StringArray{
+// 				defaultDynamicTagGroup.ID(),
+// 			},
+// 		}, nil)
 // 		ctx.Export("cmsDynamicTagGroupId1", ids.ApplyT(func(ids cms.GetDynamicTagGroupsResult) (string, error) {
 // 			return ids.Groups[0].Id, nil
 // 		}).(pulumi.StringOutput))

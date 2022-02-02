@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ens
 {
@@ -47,7 +46,7 @@ namespace Pulumi.AliCloud.Ens
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKeyPairsResult> InvokeAsync(GetKeyPairsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKeyPairsResult>("alicloud:ens/getKeyPairs:getKeyPairs", args ?? new GetKeyPairsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKeyPairsResult>("alicloud:ens/getKeyPairs:getKeyPairs", args ?? new GetKeyPairsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ens Key Pairs of the current Alibaba Cloud user.
@@ -84,7 +83,7 @@ namespace Pulumi.AliCloud.Ens
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKeyPairsResult> Invoke(GetKeyPairsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKeyPairsResult>("alicloud:ens/getKeyPairs:getKeyPairs", args ?? new GetKeyPairsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetKeyPairsResult>("alicloud:ens/getKeyPairs:getKeyPairs", args ?? new GetKeyPairsInvokeArgs(), options.WithDefaults());
     }
 
 

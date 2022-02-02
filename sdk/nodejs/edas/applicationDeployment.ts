@@ -83,15 +83,15 @@ export class ApplicationDeployment extends pulumi.CustomResource {
      */
     constructor(name: string, args: ApplicationDeploymentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApplicationDeploymentArgs | ApplicationDeploymentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationDeploymentState | undefined;
-            inputs["appId"] = state ? state.appId : undefined;
-            inputs["groupId"] = state ? state.groupId : undefined;
-            inputs["lastPackageVersion"] = state ? state.lastPackageVersion : undefined;
-            inputs["packageVersion"] = state ? state.packageVersion : undefined;
-            inputs["warUrl"] = state ? state.warUrl : undefined;
+            resourceInputs["appId"] = state ? state.appId : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["lastPackageVersion"] = state ? state.lastPackageVersion : undefined;
+            resourceInputs["packageVersion"] = state ? state.packageVersion : undefined;
+            resourceInputs["warUrl"] = state ? state.warUrl : undefined;
         } else {
             const args = argsOrState as ApplicationDeploymentArgs | undefined;
             if ((!args || args.appId === undefined) && !opts.urn) {
@@ -103,16 +103,14 @@ export class ApplicationDeployment extends pulumi.CustomResource {
             if ((!args || args.warUrl === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'warUrl'");
             }
-            inputs["appId"] = args ? args.appId : undefined;
-            inputs["groupId"] = args ? args.groupId : undefined;
-            inputs["packageVersion"] = args ? args.packageVersion : undefined;
-            inputs["warUrl"] = args ? args.warUrl : undefined;
-            inputs["lastPackageVersion"] = undefined /*out*/;
+            resourceInputs["appId"] = args ? args.appId : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["packageVersion"] = args ? args.packageVersion : undefined;
+            resourceInputs["warUrl"] = args ? args.warUrl : undefined;
+            resourceInputs["lastPackageVersion"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ApplicationDeployment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ApplicationDeployment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

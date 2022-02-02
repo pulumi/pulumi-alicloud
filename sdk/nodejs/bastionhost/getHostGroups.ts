@@ -38,9 +38,7 @@ export function getHostGroups(args: GetHostGroupsArgs, opts?: pulumi.InvokeOptio
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:bastionhost/getHostGroups:getHostGroups", {
         "hostGroupName": args.hostGroupName,
         "ids": args.ids,

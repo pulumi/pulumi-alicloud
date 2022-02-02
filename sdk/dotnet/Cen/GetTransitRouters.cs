@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cen
 {
@@ -44,7 +43,7 @@ namespace Pulumi.AliCloud.Cen
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTransitRoutersResult> InvokeAsync(GetTransitRoutersArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTransitRoutersResult>("alicloud:cen/getTransitRouters:getTransitRouters", args ?? new GetTransitRoutersArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTransitRoutersResult>("alicloud:cen/getTransitRouters:getTransitRouters", args ?? new GetTransitRoutersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)
@@ -78,7 +77,7 @@ namespace Pulumi.AliCloud.Cen
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTransitRoutersResult> Invoke(GetTransitRoutersInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTransitRoutersResult>("alicloud:cen/getTransitRouters:getTransitRouters", args ?? new GetTransitRoutersInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetTransitRoutersResult>("alicloud:cen/getTransitRouters:getTransitRouters", args ?? new GetTransitRoutersInvokeArgs(), options.WithDefaults());
     }
 
 

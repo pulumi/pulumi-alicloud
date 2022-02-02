@@ -138,7 +138,7 @@ type AdditionalCertificateInput interface {
 }
 
 func (*AdditionalCertificate) ElementType() reflect.Type {
-	return reflect.TypeOf((*AdditionalCertificate)(nil))
+	return reflect.TypeOf((**AdditionalCertificate)(nil)).Elem()
 }
 
 func (i *AdditionalCertificate) ToAdditionalCertificateOutput() AdditionalCertificateOutput {
@@ -147,35 +147,6 @@ func (i *AdditionalCertificate) ToAdditionalCertificateOutput() AdditionalCertif
 
 func (i *AdditionalCertificate) ToAdditionalCertificateOutputWithContext(ctx context.Context) AdditionalCertificateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AdditionalCertificateOutput)
-}
-
-func (i *AdditionalCertificate) ToAdditionalCertificatePtrOutput() AdditionalCertificatePtrOutput {
-	return i.ToAdditionalCertificatePtrOutputWithContext(context.Background())
-}
-
-func (i *AdditionalCertificate) ToAdditionalCertificatePtrOutputWithContext(ctx context.Context) AdditionalCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AdditionalCertificatePtrOutput)
-}
-
-type AdditionalCertificatePtrInput interface {
-	pulumi.Input
-
-	ToAdditionalCertificatePtrOutput() AdditionalCertificatePtrOutput
-	ToAdditionalCertificatePtrOutputWithContext(ctx context.Context) AdditionalCertificatePtrOutput
-}
-
-type additionalCertificatePtrType AdditionalCertificateArgs
-
-func (*additionalCertificatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AdditionalCertificate)(nil))
-}
-
-func (i *additionalCertificatePtrType) ToAdditionalCertificatePtrOutput() AdditionalCertificatePtrOutput {
-	return i.ToAdditionalCertificatePtrOutputWithContext(context.Background())
-}
-
-func (i *additionalCertificatePtrType) ToAdditionalCertificatePtrOutputWithContext(ctx context.Context) AdditionalCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AdditionalCertificatePtrOutput)
 }
 
 // AdditionalCertificateArrayInput is an input type that accepts AdditionalCertificateArray and AdditionalCertificateArrayOutput values.
@@ -231,7 +202,7 @@ func (i AdditionalCertificateMap) ToAdditionalCertificateMapOutputWithContext(ct
 type AdditionalCertificateOutput struct{ *pulumi.OutputState }
 
 func (AdditionalCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AdditionalCertificate)(nil))
+	return reflect.TypeOf((**AdditionalCertificate)(nil)).Elem()
 }
 
 func (o AdditionalCertificateOutput) ToAdditionalCertificateOutput() AdditionalCertificateOutput {
@@ -242,44 +213,10 @@ func (o AdditionalCertificateOutput) ToAdditionalCertificateOutputWithContext(ct
 	return o
 }
 
-func (o AdditionalCertificateOutput) ToAdditionalCertificatePtrOutput() AdditionalCertificatePtrOutput {
-	return o.ToAdditionalCertificatePtrOutputWithContext(context.Background())
-}
-
-func (o AdditionalCertificateOutput) ToAdditionalCertificatePtrOutputWithContext(ctx context.Context) AdditionalCertificatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AdditionalCertificate) *AdditionalCertificate {
-		return &v
-	}).(AdditionalCertificatePtrOutput)
-}
-
-type AdditionalCertificatePtrOutput struct{ *pulumi.OutputState }
-
-func (AdditionalCertificatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AdditionalCertificate)(nil))
-}
-
-func (o AdditionalCertificatePtrOutput) ToAdditionalCertificatePtrOutput() AdditionalCertificatePtrOutput {
-	return o
-}
-
-func (o AdditionalCertificatePtrOutput) ToAdditionalCertificatePtrOutputWithContext(ctx context.Context) AdditionalCertificatePtrOutput {
-	return o
-}
-
-func (o AdditionalCertificatePtrOutput) Elem() AdditionalCertificateOutput {
-	return o.ApplyT(func(v *AdditionalCertificate) AdditionalCertificate {
-		if v != nil {
-			return *v
-		}
-		var ret AdditionalCertificate
-		return ret
-	}).(AdditionalCertificateOutput)
-}
-
 type AdditionalCertificateArrayOutput struct{ *pulumi.OutputState }
 
 func (AdditionalCertificateArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AdditionalCertificate)(nil))
+	return reflect.TypeOf((*[]*AdditionalCertificate)(nil)).Elem()
 }
 
 func (o AdditionalCertificateArrayOutput) ToAdditionalCertificateArrayOutput() AdditionalCertificateArrayOutput {
@@ -291,15 +228,15 @@ func (o AdditionalCertificateArrayOutput) ToAdditionalCertificateArrayOutputWith
 }
 
 func (o AdditionalCertificateArrayOutput) Index(i pulumi.IntInput) AdditionalCertificateOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AdditionalCertificate {
-		return vs[0].([]AdditionalCertificate)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AdditionalCertificate {
+		return vs[0].([]*AdditionalCertificate)[vs[1].(int)]
 	}).(AdditionalCertificateOutput)
 }
 
 type AdditionalCertificateMapOutput struct{ *pulumi.OutputState }
 
 func (AdditionalCertificateMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AdditionalCertificate)(nil))
+	return reflect.TypeOf((*map[string]*AdditionalCertificate)(nil)).Elem()
 }
 
 func (o AdditionalCertificateMapOutput) ToAdditionalCertificateMapOutput() AdditionalCertificateMapOutput {
@@ -311,18 +248,16 @@ func (o AdditionalCertificateMapOutput) ToAdditionalCertificateMapOutputWithCont
 }
 
 func (o AdditionalCertificateMapOutput) MapIndex(k pulumi.StringInput) AdditionalCertificateOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AdditionalCertificate {
-		return vs[0].(map[string]AdditionalCertificate)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AdditionalCertificate {
+		return vs[0].(map[string]*AdditionalCertificate)[vs[1].(string)]
 	}).(AdditionalCertificateOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AdditionalCertificateInput)(nil)).Elem(), &AdditionalCertificate{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AdditionalCertificatePtrInput)(nil)).Elem(), &AdditionalCertificate{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AdditionalCertificateArrayInput)(nil)).Elem(), AdditionalCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AdditionalCertificateMapInput)(nil)).Elem(), AdditionalCertificateMap{})
 	pulumi.RegisterOutputType(AdditionalCertificateOutput{})
-	pulumi.RegisterOutputType(AdditionalCertificatePtrOutput{})
 	pulumi.RegisterOutputType(AdditionalCertificateArrayOutput{})
 	pulumi.RegisterOutputType(AdditionalCertificateMapOutput{})
 }

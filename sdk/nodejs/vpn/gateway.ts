@@ -102,23 +102,23 @@ export class Gateway extends pulumi.CustomResource {
      */
     constructor(name: string, args: GatewayArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GatewayArgs | GatewayState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayState | undefined;
-            inputs["bandwidth"] = state ? state.bandwidth : undefined;
-            inputs["businessStatus"] = state ? state.businessStatus : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["enableIpsec"] = state ? state.enableIpsec : undefined;
-            inputs["enableSsl"] = state ? state.enableSsl : undefined;
-            inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            inputs["internetIp"] = state ? state.internetIp : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["sslConnections"] = state ? state.sslConnections : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["vpcId"] = state ? state.vpcId : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
+            resourceInputs["businessStatus"] = state ? state.businessStatus : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enableIpsec"] = state ? state.enableIpsec : undefined;
+            resourceInputs["enableSsl"] = state ? state.enableSsl : undefined;
+            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
+            resourceInputs["internetIp"] = state ? state.internetIp : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["sslConnections"] = state ? state.sslConnections : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as GatewayArgs | undefined;
             if ((!args || args.bandwidth === undefined) && !opts.urn) {
@@ -127,24 +127,22 @@ export class Gateway extends pulumi.CustomResource {
             if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            inputs["bandwidth"] = args ? args.bandwidth : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enableIpsec"] = args ? args.enableIpsec : undefined;
-            inputs["enableSsl"] = args ? args.enableSsl : undefined;
-            inputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["sslConnections"] = args ? args.sslConnections : undefined;
-            inputs["vpcId"] = args ? args.vpcId : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["businessStatus"] = undefined /*out*/;
-            inputs["internetIp"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableIpsec"] = args ? args.enableIpsec : undefined;
+            resourceInputs["enableSsl"] = args ? args.enableSsl : undefined;
+            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["sslConnections"] = args ? args.sslConnections : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["businessStatus"] = undefined /*out*/;
+            resourceInputs["internetIp"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Gateway.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Gateway.__pulumiType, name, resourceInputs, opts);
     }
 }
 

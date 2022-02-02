@@ -107,13 +107,13 @@ export class UserPolicyAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: UserPolicyAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UserPolicyAttachmentArgs | UserPolicyAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserPolicyAttachmentState | undefined;
-            inputs["policyName"] = state ? state.policyName : undefined;
-            inputs["policyType"] = state ? state.policyType : undefined;
-            inputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["policyName"] = state ? state.policyName : undefined;
+            resourceInputs["policyType"] = state ? state.policyType : undefined;
+            resourceInputs["userName"] = state ? state.userName : undefined;
         } else {
             const args = argsOrState as UserPolicyAttachmentArgs | undefined;
             if ((!args || args.policyName === undefined) && !opts.urn) {
@@ -125,14 +125,12 @@ export class UserPolicyAttachment extends pulumi.CustomResource {
             if ((!args || args.userName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userName'");
             }
-            inputs["policyName"] = args ? args.policyName : undefined;
-            inputs["policyType"] = args ? args.policyType : undefined;
-            inputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["policyName"] = args ? args.policyName : undefined;
+            resourceInputs["policyType"] = args ? args.policyType : undefined;
+            resourceInputs["userName"] = args ? args.userName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(UserPolicyAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(UserPolicyAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

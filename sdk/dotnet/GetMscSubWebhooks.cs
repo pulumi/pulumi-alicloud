@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud
 {
@@ -56,7 +55,7 @@ namespace Pulumi.AliCloud
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMscSubWebhooksResult> InvokeAsync(GetMscSubWebhooksArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMscSubWebhooksResult>("alicloud:index/getMscSubWebhooks:getMscSubWebhooks", args ?? new GetMscSubWebhooksArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMscSubWebhooksResult>("alicloud:index/getMscSubWebhooks:getMscSubWebhooks", args ?? new GetMscSubWebhooksArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Msc Sub Webhooks of the current Alibaba Cloud user.
@@ -102,7 +101,7 @@ namespace Pulumi.AliCloud
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMscSubWebhooksResult> Invoke(GetMscSubWebhooksInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMscSubWebhooksResult>("alicloud:index/getMscSubWebhooks:getMscSubWebhooks", args ?? new GetMscSubWebhooksInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetMscSubWebhooksResult>("alicloud:index/getMscSubWebhooks:getMscSubWebhooks", args ?? new GetMscSubWebhooksInvokeArgs(), options.WithDefaults());
     }
 
 

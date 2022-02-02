@@ -895,7 +895,7 @@ type RdsCloneDbInstanceInput interface {
 }
 
 func (*RdsCloneDbInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*RdsCloneDbInstance)(nil))
+	return reflect.TypeOf((**RdsCloneDbInstance)(nil)).Elem()
 }
 
 func (i *RdsCloneDbInstance) ToRdsCloneDbInstanceOutput() RdsCloneDbInstanceOutput {
@@ -904,35 +904,6 @@ func (i *RdsCloneDbInstance) ToRdsCloneDbInstanceOutput() RdsCloneDbInstanceOutp
 
 func (i *RdsCloneDbInstance) ToRdsCloneDbInstanceOutputWithContext(ctx context.Context) RdsCloneDbInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RdsCloneDbInstanceOutput)
-}
-
-func (i *RdsCloneDbInstance) ToRdsCloneDbInstancePtrOutput() RdsCloneDbInstancePtrOutput {
-	return i.ToRdsCloneDbInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *RdsCloneDbInstance) ToRdsCloneDbInstancePtrOutputWithContext(ctx context.Context) RdsCloneDbInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RdsCloneDbInstancePtrOutput)
-}
-
-type RdsCloneDbInstancePtrInput interface {
-	pulumi.Input
-
-	ToRdsCloneDbInstancePtrOutput() RdsCloneDbInstancePtrOutput
-	ToRdsCloneDbInstancePtrOutputWithContext(ctx context.Context) RdsCloneDbInstancePtrOutput
-}
-
-type rdsCloneDbInstancePtrType RdsCloneDbInstanceArgs
-
-func (*rdsCloneDbInstancePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RdsCloneDbInstance)(nil))
-}
-
-func (i *rdsCloneDbInstancePtrType) ToRdsCloneDbInstancePtrOutput() RdsCloneDbInstancePtrOutput {
-	return i.ToRdsCloneDbInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *rdsCloneDbInstancePtrType) ToRdsCloneDbInstancePtrOutputWithContext(ctx context.Context) RdsCloneDbInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RdsCloneDbInstancePtrOutput)
 }
 
 // RdsCloneDbInstanceArrayInput is an input type that accepts RdsCloneDbInstanceArray and RdsCloneDbInstanceArrayOutput values.
@@ -988,7 +959,7 @@ func (i RdsCloneDbInstanceMap) ToRdsCloneDbInstanceMapOutputWithContext(ctx cont
 type RdsCloneDbInstanceOutput struct{ *pulumi.OutputState }
 
 func (RdsCloneDbInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RdsCloneDbInstance)(nil))
+	return reflect.TypeOf((**RdsCloneDbInstance)(nil)).Elem()
 }
 
 func (o RdsCloneDbInstanceOutput) ToRdsCloneDbInstanceOutput() RdsCloneDbInstanceOutput {
@@ -999,44 +970,10 @@ func (o RdsCloneDbInstanceOutput) ToRdsCloneDbInstanceOutputWithContext(ctx cont
 	return o
 }
 
-func (o RdsCloneDbInstanceOutput) ToRdsCloneDbInstancePtrOutput() RdsCloneDbInstancePtrOutput {
-	return o.ToRdsCloneDbInstancePtrOutputWithContext(context.Background())
-}
-
-func (o RdsCloneDbInstanceOutput) ToRdsCloneDbInstancePtrOutputWithContext(ctx context.Context) RdsCloneDbInstancePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RdsCloneDbInstance) *RdsCloneDbInstance {
-		return &v
-	}).(RdsCloneDbInstancePtrOutput)
-}
-
-type RdsCloneDbInstancePtrOutput struct{ *pulumi.OutputState }
-
-func (RdsCloneDbInstancePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RdsCloneDbInstance)(nil))
-}
-
-func (o RdsCloneDbInstancePtrOutput) ToRdsCloneDbInstancePtrOutput() RdsCloneDbInstancePtrOutput {
-	return o
-}
-
-func (o RdsCloneDbInstancePtrOutput) ToRdsCloneDbInstancePtrOutputWithContext(ctx context.Context) RdsCloneDbInstancePtrOutput {
-	return o
-}
-
-func (o RdsCloneDbInstancePtrOutput) Elem() RdsCloneDbInstanceOutput {
-	return o.ApplyT(func(v *RdsCloneDbInstance) RdsCloneDbInstance {
-		if v != nil {
-			return *v
-		}
-		var ret RdsCloneDbInstance
-		return ret
-	}).(RdsCloneDbInstanceOutput)
-}
-
 type RdsCloneDbInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (RdsCloneDbInstanceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RdsCloneDbInstance)(nil))
+	return reflect.TypeOf((*[]*RdsCloneDbInstance)(nil)).Elem()
 }
 
 func (o RdsCloneDbInstanceArrayOutput) ToRdsCloneDbInstanceArrayOutput() RdsCloneDbInstanceArrayOutput {
@@ -1048,15 +985,15 @@ func (o RdsCloneDbInstanceArrayOutput) ToRdsCloneDbInstanceArrayOutputWithContex
 }
 
 func (o RdsCloneDbInstanceArrayOutput) Index(i pulumi.IntInput) RdsCloneDbInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RdsCloneDbInstance {
-		return vs[0].([]RdsCloneDbInstance)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RdsCloneDbInstance {
+		return vs[0].([]*RdsCloneDbInstance)[vs[1].(int)]
 	}).(RdsCloneDbInstanceOutput)
 }
 
 type RdsCloneDbInstanceMapOutput struct{ *pulumi.OutputState }
 
 func (RdsCloneDbInstanceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]RdsCloneDbInstance)(nil))
+	return reflect.TypeOf((*map[string]*RdsCloneDbInstance)(nil)).Elem()
 }
 
 func (o RdsCloneDbInstanceMapOutput) ToRdsCloneDbInstanceMapOutput() RdsCloneDbInstanceMapOutput {
@@ -1068,18 +1005,16 @@ func (o RdsCloneDbInstanceMapOutput) ToRdsCloneDbInstanceMapOutputWithContext(ct
 }
 
 func (o RdsCloneDbInstanceMapOutput) MapIndex(k pulumi.StringInput) RdsCloneDbInstanceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RdsCloneDbInstance {
-		return vs[0].(map[string]RdsCloneDbInstance)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *RdsCloneDbInstance {
+		return vs[0].(map[string]*RdsCloneDbInstance)[vs[1].(string)]
 	}).(RdsCloneDbInstanceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsCloneDbInstanceInput)(nil)).Elem(), &RdsCloneDbInstance{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RdsCloneDbInstancePtrInput)(nil)).Elem(), &RdsCloneDbInstance{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsCloneDbInstanceArrayInput)(nil)).Elem(), RdsCloneDbInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsCloneDbInstanceMapInput)(nil)).Elem(), RdsCloneDbInstanceMap{})
 	pulumi.RegisterOutputType(RdsCloneDbInstanceOutput{})
-	pulumi.RegisterOutputType(RdsCloneDbInstancePtrOutput{})
 	pulumi.RegisterOutputType(RdsCloneDbInstanceArrayOutput{})
 	pulumi.RegisterOutputType(RdsCloneDbInstanceMapOutput{})
 }

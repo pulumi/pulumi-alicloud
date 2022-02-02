@@ -100,7 +100,7 @@ type RoleAttachmentInput interface {
 }
 
 func (*RoleAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoleAttachment)(nil))
+	return reflect.TypeOf((**RoleAttachment)(nil)).Elem()
 }
 
 func (i *RoleAttachment) ToRoleAttachmentOutput() RoleAttachmentOutput {
@@ -109,35 +109,6 @@ func (i *RoleAttachment) ToRoleAttachmentOutput() RoleAttachmentOutput {
 
 func (i *RoleAttachment) ToRoleAttachmentOutputWithContext(ctx context.Context) RoleAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RoleAttachmentOutput)
-}
-
-func (i *RoleAttachment) ToRoleAttachmentPtrOutput() RoleAttachmentPtrOutput {
-	return i.ToRoleAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *RoleAttachment) ToRoleAttachmentPtrOutputWithContext(ctx context.Context) RoleAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoleAttachmentPtrOutput)
-}
-
-type RoleAttachmentPtrInput interface {
-	pulumi.Input
-
-	ToRoleAttachmentPtrOutput() RoleAttachmentPtrOutput
-	ToRoleAttachmentPtrOutputWithContext(ctx context.Context) RoleAttachmentPtrOutput
-}
-
-type roleAttachmentPtrType RoleAttachmentArgs
-
-func (*roleAttachmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RoleAttachment)(nil))
-}
-
-func (i *roleAttachmentPtrType) ToRoleAttachmentPtrOutput() RoleAttachmentPtrOutput {
-	return i.ToRoleAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *roleAttachmentPtrType) ToRoleAttachmentPtrOutputWithContext(ctx context.Context) RoleAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoleAttachmentPtrOutput)
 }
 
 // RoleAttachmentArrayInput is an input type that accepts RoleAttachmentArray and RoleAttachmentArrayOutput values.
@@ -193,7 +164,7 @@ func (i RoleAttachmentMap) ToRoleAttachmentMapOutputWithContext(ctx context.Cont
 type RoleAttachmentOutput struct{ *pulumi.OutputState }
 
 func (RoleAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoleAttachment)(nil))
+	return reflect.TypeOf((**RoleAttachment)(nil)).Elem()
 }
 
 func (o RoleAttachmentOutput) ToRoleAttachmentOutput() RoleAttachmentOutput {
@@ -204,44 +175,10 @@ func (o RoleAttachmentOutput) ToRoleAttachmentOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o RoleAttachmentOutput) ToRoleAttachmentPtrOutput() RoleAttachmentPtrOutput {
-	return o.ToRoleAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (o RoleAttachmentOutput) ToRoleAttachmentPtrOutputWithContext(ctx context.Context) RoleAttachmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoleAttachment) *RoleAttachment {
-		return &v
-	}).(RoleAttachmentPtrOutput)
-}
-
-type RoleAttachmentPtrOutput struct{ *pulumi.OutputState }
-
-func (RoleAttachmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RoleAttachment)(nil))
-}
-
-func (o RoleAttachmentPtrOutput) ToRoleAttachmentPtrOutput() RoleAttachmentPtrOutput {
-	return o
-}
-
-func (o RoleAttachmentPtrOutput) ToRoleAttachmentPtrOutputWithContext(ctx context.Context) RoleAttachmentPtrOutput {
-	return o
-}
-
-func (o RoleAttachmentPtrOutput) Elem() RoleAttachmentOutput {
-	return o.ApplyT(func(v *RoleAttachment) RoleAttachment {
-		if v != nil {
-			return *v
-		}
-		var ret RoleAttachment
-		return ret
-	}).(RoleAttachmentOutput)
-}
-
 type RoleAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (RoleAttachmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RoleAttachment)(nil))
+	return reflect.TypeOf((*[]*RoleAttachment)(nil)).Elem()
 }
 
 func (o RoleAttachmentArrayOutput) ToRoleAttachmentArrayOutput() RoleAttachmentArrayOutput {
@@ -253,15 +190,15 @@ func (o RoleAttachmentArrayOutput) ToRoleAttachmentArrayOutputWithContext(ctx co
 }
 
 func (o RoleAttachmentArrayOutput) Index(i pulumi.IntInput) RoleAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoleAttachment {
-		return vs[0].([]RoleAttachment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RoleAttachment {
+		return vs[0].([]*RoleAttachment)[vs[1].(int)]
 	}).(RoleAttachmentOutput)
 }
 
 type RoleAttachmentMapOutput struct{ *pulumi.OutputState }
 
 func (RoleAttachmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]RoleAttachment)(nil))
+	return reflect.TypeOf((*map[string]*RoleAttachment)(nil)).Elem()
 }
 
 func (o RoleAttachmentMapOutput) ToRoleAttachmentMapOutput() RoleAttachmentMapOutput {
@@ -273,18 +210,16 @@ func (o RoleAttachmentMapOutput) ToRoleAttachmentMapOutputWithContext(ctx contex
 }
 
 func (o RoleAttachmentMapOutput) MapIndex(k pulumi.StringInput) RoleAttachmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RoleAttachment {
-		return vs[0].(map[string]RoleAttachment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *RoleAttachment {
+		return vs[0].(map[string]*RoleAttachment)[vs[1].(string)]
 	}).(RoleAttachmentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RoleAttachmentInput)(nil)).Elem(), &RoleAttachment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RoleAttachmentPtrInput)(nil)).Elem(), &RoleAttachment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoleAttachmentArrayInput)(nil)).Elem(), RoleAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoleAttachmentMapInput)(nil)).Elem(), RoleAttachmentMap{})
 	pulumi.RegisterOutputType(RoleAttachmentOutput{})
-	pulumi.RegisterOutputType(RoleAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(RoleAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(RoleAttachmentMapOutput{})
 }

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dfs
 {
@@ -56,7 +55,7 @@ namespace Pulumi.AliCloud.Dfs
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFileSystemsResult> InvokeAsync(GetFileSystemsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFileSystemsResult>("alicloud:dfs/getFileSystems:getFileSystems", args ?? new GetFileSystemsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFileSystemsResult>("alicloud:dfs/getFileSystems:getFileSystems", args ?? new GetFileSystemsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Dfs File Systems of the current Alibaba Cloud user.
@@ -102,7 +101,7 @@ namespace Pulumi.AliCloud.Dfs
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetFileSystemsResult> Invoke(GetFileSystemsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFileSystemsResult>("alicloud:dfs/getFileSystems:getFileSystems", args ?? new GetFileSystemsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetFileSystemsResult>("alicloud:dfs/getFileSystems:getFileSystems", args ?? new GetFileSystemsInvokeArgs(), options.WithDefaults());
     }
 
 

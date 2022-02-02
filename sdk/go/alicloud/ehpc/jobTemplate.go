@@ -31,7 +31,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ehpc.NewJobTemplate(ctx, "_default", &ehpc.JobTemplateArgs{
+// 		_, err := ehpc.NewJobTemplate(ctx, "default", &ehpc.JobTemplateArgs{
 // 			CommandLine:     pulumi.String("./LammpsTest/lammps.pbs"),
 // 			JobTemplateName: pulumi.String("example_value"),
 // 		})
@@ -288,7 +288,7 @@ type JobTemplateInput interface {
 }
 
 func (*JobTemplate) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobTemplate)(nil))
+	return reflect.TypeOf((**JobTemplate)(nil)).Elem()
 }
 
 func (i *JobTemplate) ToJobTemplateOutput() JobTemplateOutput {
@@ -297,35 +297,6 @@ func (i *JobTemplate) ToJobTemplateOutput() JobTemplateOutput {
 
 func (i *JobTemplate) ToJobTemplateOutputWithContext(ctx context.Context) JobTemplateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateOutput)
-}
-
-func (i *JobTemplate) ToJobTemplatePtrOutput() JobTemplatePtrOutput {
-	return i.ToJobTemplatePtrOutputWithContext(context.Background())
-}
-
-func (i *JobTemplate) ToJobTemplatePtrOutputWithContext(ctx context.Context) JobTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobTemplatePtrOutput)
-}
-
-type JobTemplatePtrInput interface {
-	pulumi.Input
-
-	ToJobTemplatePtrOutput() JobTemplatePtrOutput
-	ToJobTemplatePtrOutputWithContext(ctx context.Context) JobTemplatePtrOutput
-}
-
-type jobTemplatePtrType JobTemplateArgs
-
-func (*jobTemplatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobTemplate)(nil))
-}
-
-func (i *jobTemplatePtrType) ToJobTemplatePtrOutput() JobTemplatePtrOutput {
-	return i.ToJobTemplatePtrOutputWithContext(context.Background())
-}
-
-func (i *jobTemplatePtrType) ToJobTemplatePtrOutputWithContext(ctx context.Context) JobTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobTemplatePtrOutput)
 }
 
 // JobTemplateArrayInput is an input type that accepts JobTemplateArray and JobTemplateArrayOutput values.
@@ -381,7 +352,7 @@ func (i JobTemplateMap) ToJobTemplateMapOutputWithContext(ctx context.Context) J
 type JobTemplateOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobTemplate)(nil))
+	return reflect.TypeOf((**JobTemplate)(nil)).Elem()
 }
 
 func (o JobTemplateOutput) ToJobTemplateOutput() JobTemplateOutput {
@@ -392,44 +363,10 @@ func (o JobTemplateOutput) ToJobTemplateOutputWithContext(ctx context.Context) J
 	return o
 }
 
-func (o JobTemplateOutput) ToJobTemplatePtrOutput() JobTemplatePtrOutput {
-	return o.ToJobTemplatePtrOutputWithContext(context.Background())
-}
-
-func (o JobTemplateOutput) ToJobTemplatePtrOutputWithContext(ctx context.Context) JobTemplatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplate) *JobTemplate {
-		return &v
-	}).(JobTemplatePtrOutput)
-}
-
-type JobTemplatePtrOutput struct{ *pulumi.OutputState }
-
-func (JobTemplatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobTemplate)(nil))
-}
-
-func (o JobTemplatePtrOutput) ToJobTemplatePtrOutput() JobTemplatePtrOutput {
-	return o
-}
-
-func (o JobTemplatePtrOutput) ToJobTemplatePtrOutputWithContext(ctx context.Context) JobTemplatePtrOutput {
-	return o
-}
-
-func (o JobTemplatePtrOutput) Elem() JobTemplateOutput {
-	return o.ApplyT(func(v *JobTemplate) JobTemplate {
-		if v != nil {
-			return *v
-		}
-		var ret JobTemplate
-		return ret
-	}).(JobTemplateOutput)
-}
-
 type JobTemplateArrayOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JobTemplate)(nil))
+	return reflect.TypeOf((*[]*JobTemplate)(nil)).Elem()
 }
 
 func (o JobTemplateArrayOutput) ToJobTemplateArrayOutput() JobTemplateArrayOutput {
@@ -441,15 +378,15 @@ func (o JobTemplateArrayOutput) ToJobTemplateArrayOutputWithContext(ctx context.
 }
 
 func (o JobTemplateArrayOutput) Index(i pulumi.IntInput) JobTemplateOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTemplate {
-		return vs[0].([]JobTemplate)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *JobTemplate {
+		return vs[0].([]*JobTemplate)[vs[1].(int)]
 	}).(JobTemplateOutput)
 }
 
 type JobTemplateMapOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]JobTemplate)(nil))
+	return reflect.TypeOf((*map[string]*JobTemplate)(nil)).Elem()
 }
 
 func (o JobTemplateMapOutput) ToJobTemplateMapOutput() JobTemplateMapOutput {
@@ -461,18 +398,16 @@ func (o JobTemplateMapOutput) ToJobTemplateMapOutputWithContext(ctx context.Cont
 }
 
 func (o JobTemplateMapOutput) MapIndex(k pulumi.StringInput) JobTemplateOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) JobTemplate {
-		return vs[0].(map[string]JobTemplate)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *JobTemplate {
+		return vs[0].(map[string]*JobTemplate)[vs[1].(string)]
 	}).(JobTemplateOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateInput)(nil)).Elem(), &JobTemplate{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplatePtrInput)(nil)).Elem(), &JobTemplate{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateArrayInput)(nil)).Elem(), JobTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateMapInput)(nil)).Elem(), JobTemplateMap{})
 	pulumi.RegisterOutputType(JobTemplateOutput{})
-	pulumi.RegisterOutputType(JobTemplatePtrOutput{})
 	pulumi.RegisterOutputType(JobTemplateArrayOutput{})
 	pulumi.RegisterOutputType(JobTemplateMapOutput{})
 }

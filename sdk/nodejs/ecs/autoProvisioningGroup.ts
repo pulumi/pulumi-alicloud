@@ -191,30 +191,30 @@ export class AutoProvisioningGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: AutoProvisioningGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AutoProvisioningGroupArgs | AutoProvisioningGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AutoProvisioningGroupState | undefined;
-            inputs["autoProvisioningGroupName"] = state ? state.autoProvisioningGroupName : undefined;
-            inputs["autoProvisioningGroupType"] = state ? state.autoProvisioningGroupType : undefined;
-            inputs["defaultTargetCapacityType"] = state ? state.defaultTargetCapacityType : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["excessCapacityTerminationPolicy"] = state ? state.excessCapacityTerminationPolicy : undefined;
-            inputs["launchTemplateConfigs"] = state ? state.launchTemplateConfigs : undefined;
-            inputs["launchTemplateId"] = state ? state.launchTemplateId : undefined;
-            inputs["launchTemplateVersion"] = state ? state.launchTemplateVersion : undefined;
-            inputs["maxSpotPrice"] = state ? state.maxSpotPrice : undefined;
-            inputs["payAsYouGoAllocationStrategy"] = state ? state.payAsYouGoAllocationStrategy : undefined;
-            inputs["payAsYouGoTargetCapacity"] = state ? state.payAsYouGoTargetCapacity : undefined;
-            inputs["spotAllocationStrategy"] = state ? state.spotAllocationStrategy : undefined;
-            inputs["spotInstanceInterruptionBehavior"] = state ? state.spotInstanceInterruptionBehavior : undefined;
-            inputs["spotInstancePoolsToUseCount"] = state ? state.spotInstancePoolsToUseCount : undefined;
-            inputs["spotTargetCapacity"] = state ? state.spotTargetCapacity : undefined;
-            inputs["terminateInstances"] = state ? state.terminateInstances : undefined;
-            inputs["terminateInstancesWithExpiration"] = state ? state.terminateInstancesWithExpiration : undefined;
-            inputs["totalTargetCapacity"] = state ? state.totalTargetCapacity : undefined;
-            inputs["validFrom"] = state ? state.validFrom : undefined;
-            inputs["validUntil"] = state ? state.validUntil : undefined;
+            resourceInputs["autoProvisioningGroupName"] = state ? state.autoProvisioningGroupName : undefined;
+            resourceInputs["autoProvisioningGroupType"] = state ? state.autoProvisioningGroupType : undefined;
+            resourceInputs["defaultTargetCapacityType"] = state ? state.defaultTargetCapacityType : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["excessCapacityTerminationPolicy"] = state ? state.excessCapacityTerminationPolicy : undefined;
+            resourceInputs["launchTemplateConfigs"] = state ? state.launchTemplateConfigs : undefined;
+            resourceInputs["launchTemplateId"] = state ? state.launchTemplateId : undefined;
+            resourceInputs["launchTemplateVersion"] = state ? state.launchTemplateVersion : undefined;
+            resourceInputs["maxSpotPrice"] = state ? state.maxSpotPrice : undefined;
+            resourceInputs["payAsYouGoAllocationStrategy"] = state ? state.payAsYouGoAllocationStrategy : undefined;
+            resourceInputs["payAsYouGoTargetCapacity"] = state ? state.payAsYouGoTargetCapacity : undefined;
+            resourceInputs["spotAllocationStrategy"] = state ? state.spotAllocationStrategy : undefined;
+            resourceInputs["spotInstanceInterruptionBehavior"] = state ? state.spotInstanceInterruptionBehavior : undefined;
+            resourceInputs["spotInstancePoolsToUseCount"] = state ? state.spotInstancePoolsToUseCount : undefined;
+            resourceInputs["spotTargetCapacity"] = state ? state.spotTargetCapacity : undefined;
+            resourceInputs["terminateInstances"] = state ? state.terminateInstances : undefined;
+            resourceInputs["terminateInstancesWithExpiration"] = state ? state.terminateInstancesWithExpiration : undefined;
+            resourceInputs["totalTargetCapacity"] = state ? state.totalTargetCapacity : undefined;
+            resourceInputs["validFrom"] = state ? state.validFrom : undefined;
+            resourceInputs["validUntil"] = state ? state.validUntil : undefined;
         } else {
             const args = argsOrState as AutoProvisioningGroupArgs | undefined;
             if ((!args || args.launchTemplateConfigs === undefined) && !opts.urn) {
@@ -226,31 +226,29 @@ export class AutoProvisioningGroup extends pulumi.CustomResource {
             if ((!args || args.totalTargetCapacity === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'totalTargetCapacity'");
             }
-            inputs["autoProvisioningGroupName"] = args ? args.autoProvisioningGroupName : undefined;
-            inputs["autoProvisioningGroupType"] = args ? args.autoProvisioningGroupType : undefined;
-            inputs["defaultTargetCapacityType"] = args ? args.defaultTargetCapacityType : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["excessCapacityTerminationPolicy"] = args ? args.excessCapacityTerminationPolicy : undefined;
-            inputs["launchTemplateConfigs"] = args ? args.launchTemplateConfigs : undefined;
-            inputs["launchTemplateId"] = args ? args.launchTemplateId : undefined;
-            inputs["launchTemplateVersion"] = args ? args.launchTemplateVersion : undefined;
-            inputs["maxSpotPrice"] = args ? args.maxSpotPrice : undefined;
-            inputs["payAsYouGoAllocationStrategy"] = args ? args.payAsYouGoAllocationStrategy : undefined;
-            inputs["payAsYouGoTargetCapacity"] = args ? args.payAsYouGoTargetCapacity : undefined;
-            inputs["spotAllocationStrategy"] = args ? args.spotAllocationStrategy : undefined;
-            inputs["spotInstanceInterruptionBehavior"] = args ? args.spotInstanceInterruptionBehavior : undefined;
-            inputs["spotInstancePoolsToUseCount"] = args ? args.spotInstancePoolsToUseCount : undefined;
-            inputs["spotTargetCapacity"] = args ? args.spotTargetCapacity : undefined;
-            inputs["terminateInstances"] = args ? args.terminateInstances : undefined;
-            inputs["terminateInstancesWithExpiration"] = args ? args.terminateInstancesWithExpiration : undefined;
-            inputs["totalTargetCapacity"] = args ? args.totalTargetCapacity : undefined;
-            inputs["validFrom"] = args ? args.validFrom : undefined;
-            inputs["validUntil"] = args ? args.validUntil : undefined;
+            resourceInputs["autoProvisioningGroupName"] = args ? args.autoProvisioningGroupName : undefined;
+            resourceInputs["autoProvisioningGroupType"] = args ? args.autoProvisioningGroupType : undefined;
+            resourceInputs["defaultTargetCapacityType"] = args ? args.defaultTargetCapacityType : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["excessCapacityTerminationPolicy"] = args ? args.excessCapacityTerminationPolicy : undefined;
+            resourceInputs["launchTemplateConfigs"] = args ? args.launchTemplateConfigs : undefined;
+            resourceInputs["launchTemplateId"] = args ? args.launchTemplateId : undefined;
+            resourceInputs["launchTemplateVersion"] = args ? args.launchTemplateVersion : undefined;
+            resourceInputs["maxSpotPrice"] = args ? args.maxSpotPrice : undefined;
+            resourceInputs["payAsYouGoAllocationStrategy"] = args ? args.payAsYouGoAllocationStrategy : undefined;
+            resourceInputs["payAsYouGoTargetCapacity"] = args ? args.payAsYouGoTargetCapacity : undefined;
+            resourceInputs["spotAllocationStrategy"] = args ? args.spotAllocationStrategy : undefined;
+            resourceInputs["spotInstanceInterruptionBehavior"] = args ? args.spotInstanceInterruptionBehavior : undefined;
+            resourceInputs["spotInstancePoolsToUseCount"] = args ? args.spotInstancePoolsToUseCount : undefined;
+            resourceInputs["spotTargetCapacity"] = args ? args.spotTargetCapacity : undefined;
+            resourceInputs["terminateInstances"] = args ? args.terminateInstances : undefined;
+            resourceInputs["terminateInstancesWithExpiration"] = args ? args.terminateInstancesWithExpiration : undefined;
+            resourceInputs["totalTargetCapacity"] = args ? args.totalTargetCapacity : undefined;
+            resourceInputs["validFrom"] = args ? args.validFrom : undefined;
+            resourceInputs["validUntil"] = args ? args.validUntil : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AutoProvisioningGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AutoProvisioningGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

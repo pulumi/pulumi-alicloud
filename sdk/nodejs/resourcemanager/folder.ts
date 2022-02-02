@@ -79,24 +79,22 @@ export class Folder extends pulumi.CustomResource {
      */
     constructor(name: string, args: FolderArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FolderArgs | FolderState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FolderState | undefined;
-            inputs["folderName"] = state ? state.folderName : undefined;
-            inputs["parentFolderId"] = state ? state.parentFolderId : undefined;
+            resourceInputs["folderName"] = state ? state.folderName : undefined;
+            resourceInputs["parentFolderId"] = state ? state.parentFolderId : undefined;
         } else {
             const args = argsOrState as FolderArgs | undefined;
             if ((!args || args.folderName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'folderName'");
             }
-            inputs["folderName"] = args ? args.folderName : undefined;
-            inputs["parentFolderId"] = args ? args.parentFolderId : undefined;
+            resourceInputs["folderName"] = args ? args.folderName : undefined;
+            resourceInputs["parentFolderId"] = args ? args.parentFolderId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Folder.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Folder.__pulumiType, name, resourceInputs, opts);
     }
 }
 

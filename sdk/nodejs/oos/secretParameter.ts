@@ -93,18 +93,18 @@ export class SecretParameter extends pulumi.CustomResource {
      */
     constructor(name: string, args: SecretParameterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecretParameterArgs | SecretParameterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretParameterState | undefined;
-            inputs["constraints"] = state ? state.constraints : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["keyId"] = state ? state.keyId : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["secretParameterName"] = state ? state.secretParameterName : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["value"] = state ? state.value : undefined;
+            resourceInputs["constraints"] = state ? state.constraints : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["keyId"] = state ? state.keyId : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["secretParameterName"] = state ? state.secretParameterName : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as SecretParameterArgs | undefined;
             if ((!args || args.secretParameterName === undefined) && !opts.urn) {
@@ -113,19 +113,17 @@ export class SecretParameter extends pulumi.CustomResource {
             if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            inputs["constraints"] = args ? args.constraints : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["keyId"] = args ? args.keyId : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["secretParameterName"] = args ? args.secretParameterName : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["value"] = args ? args.value : undefined;
+            resourceInputs["constraints"] = args ? args.constraints : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["keyId"] = args ? args.keyId : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["secretParameterName"] = args ? args.secretParameterName : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["value"] = args ? args.value : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SecretParameter.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SecretParameter.__pulumiType, name, resourceInputs, opts);
     }
 }
 

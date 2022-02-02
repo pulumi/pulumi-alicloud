@@ -91,27 +91,25 @@ export class ConfigurationRecorder extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ConfigurationRecorderArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConfigurationRecorderArgs | ConfigurationRecorderState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConfigurationRecorderState | undefined;
-            inputs["enterpriseEdition"] = state ? state.enterpriseEdition : undefined;
-            inputs["organizationEnableStatus"] = state ? state.organizationEnableStatus : undefined;
-            inputs["organizationMasterId"] = state ? state.organizationMasterId : undefined;
-            inputs["resourceTypes"] = state ? state.resourceTypes : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["enterpriseEdition"] = state ? state.enterpriseEdition : undefined;
+            resourceInputs["organizationEnableStatus"] = state ? state.organizationEnableStatus : undefined;
+            resourceInputs["organizationMasterId"] = state ? state.organizationMasterId : undefined;
+            resourceInputs["resourceTypes"] = state ? state.resourceTypes : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ConfigurationRecorderArgs | undefined;
-            inputs["enterpriseEdition"] = args ? args.enterpriseEdition : undefined;
-            inputs["resourceTypes"] = args ? args.resourceTypes : undefined;
-            inputs["organizationEnableStatus"] = undefined /*out*/;
-            inputs["organizationMasterId"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["enterpriseEdition"] = args ? args.enterpriseEdition : undefined;
+            resourceInputs["resourceTypes"] = args ? args.resourceTypes : undefined;
+            resourceInputs["organizationEnableStatus"] = undefined /*out*/;
+            resourceInputs["organizationMasterId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ConfigurationRecorder.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ConfigurationRecorder.__pulumiType, name, resourceInputs, opts);
     }
 }
 

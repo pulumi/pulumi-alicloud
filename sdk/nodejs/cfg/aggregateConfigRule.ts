@@ -156,27 +156,27 @@ export class AggregateConfigRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: AggregateConfigRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AggregateConfigRuleArgs | AggregateConfigRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AggregateConfigRuleState | undefined;
-            inputs["aggregateConfigRuleName"] = state ? state.aggregateConfigRuleName : undefined;
-            inputs["aggregatorId"] = state ? state.aggregatorId : undefined;
-            inputs["configRuleId"] = state ? state.configRuleId : undefined;
-            inputs["configRuleTriggerTypes"] = state ? state.configRuleTriggerTypes : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["excludeResourceIdsScope"] = state ? state.excludeResourceIdsScope : undefined;
-            inputs["inputParameters"] = state ? state.inputParameters : undefined;
-            inputs["maximumExecutionFrequency"] = state ? state.maximumExecutionFrequency : undefined;
-            inputs["regionIdsScope"] = state ? state.regionIdsScope : undefined;
-            inputs["resourceGroupIdsScope"] = state ? state.resourceGroupIdsScope : undefined;
-            inputs["resourceTypesScopes"] = state ? state.resourceTypesScopes : undefined;
-            inputs["riskLevel"] = state ? state.riskLevel : undefined;
-            inputs["sourceIdentifier"] = state ? state.sourceIdentifier : undefined;
-            inputs["sourceOwner"] = state ? state.sourceOwner : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tagKeyScope"] = state ? state.tagKeyScope : undefined;
-            inputs["tagValueScope"] = state ? state.tagValueScope : undefined;
+            resourceInputs["aggregateConfigRuleName"] = state ? state.aggregateConfigRuleName : undefined;
+            resourceInputs["aggregatorId"] = state ? state.aggregatorId : undefined;
+            resourceInputs["configRuleId"] = state ? state.configRuleId : undefined;
+            resourceInputs["configRuleTriggerTypes"] = state ? state.configRuleTriggerTypes : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["excludeResourceIdsScope"] = state ? state.excludeResourceIdsScope : undefined;
+            resourceInputs["inputParameters"] = state ? state.inputParameters : undefined;
+            resourceInputs["maximumExecutionFrequency"] = state ? state.maximumExecutionFrequency : undefined;
+            resourceInputs["regionIdsScope"] = state ? state.regionIdsScope : undefined;
+            resourceInputs["resourceGroupIdsScope"] = state ? state.resourceGroupIdsScope : undefined;
+            resourceInputs["resourceTypesScopes"] = state ? state.resourceTypesScopes : undefined;
+            resourceInputs["riskLevel"] = state ? state.riskLevel : undefined;
+            resourceInputs["sourceIdentifier"] = state ? state.sourceIdentifier : undefined;
+            resourceInputs["sourceOwner"] = state ? state.sourceOwner : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tagKeyScope"] = state ? state.tagKeyScope : undefined;
+            resourceInputs["tagValueScope"] = state ? state.tagValueScope : undefined;
         } else {
             const args = argsOrState as AggregateConfigRuleArgs | undefined;
             if ((!args || args.aggregateConfigRuleName === undefined) && !opts.urn) {
@@ -200,28 +200,26 @@ export class AggregateConfigRule extends pulumi.CustomResource {
             if ((!args || args.sourceOwner === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceOwner'");
             }
-            inputs["aggregateConfigRuleName"] = args ? args.aggregateConfigRuleName : undefined;
-            inputs["aggregatorId"] = args ? args.aggregatorId : undefined;
-            inputs["configRuleTriggerTypes"] = args ? args.configRuleTriggerTypes : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["excludeResourceIdsScope"] = args ? args.excludeResourceIdsScope : undefined;
-            inputs["inputParameters"] = args ? args.inputParameters : undefined;
-            inputs["maximumExecutionFrequency"] = args ? args.maximumExecutionFrequency : undefined;
-            inputs["regionIdsScope"] = args ? args.regionIdsScope : undefined;
-            inputs["resourceGroupIdsScope"] = args ? args.resourceGroupIdsScope : undefined;
-            inputs["resourceTypesScopes"] = args ? args.resourceTypesScopes : undefined;
-            inputs["riskLevel"] = args ? args.riskLevel : undefined;
-            inputs["sourceIdentifier"] = args ? args.sourceIdentifier : undefined;
-            inputs["sourceOwner"] = args ? args.sourceOwner : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["tagKeyScope"] = args ? args.tagKeyScope : undefined;
-            inputs["tagValueScope"] = args ? args.tagValueScope : undefined;
-            inputs["configRuleId"] = undefined /*out*/;
+            resourceInputs["aggregateConfigRuleName"] = args ? args.aggregateConfigRuleName : undefined;
+            resourceInputs["aggregatorId"] = args ? args.aggregatorId : undefined;
+            resourceInputs["configRuleTriggerTypes"] = args ? args.configRuleTriggerTypes : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["excludeResourceIdsScope"] = args ? args.excludeResourceIdsScope : undefined;
+            resourceInputs["inputParameters"] = args ? args.inputParameters : undefined;
+            resourceInputs["maximumExecutionFrequency"] = args ? args.maximumExecutionFrequency : undefined;
+            resourceInputs["regionIdsScope"] = args ? args.regionIdsScope : undefined;
+            resourceInputs["resourceGroupIdsScope"] = args ? args.resourceGroupIdsScope : undefined;
+            resourceInputs["resourceTypesScopes"] = args ? args.resourceTypesScopes : undefined;
+            resourceInputs["riskLevel"] = args ? args.riskLevel : undefined;
+            resourceInputs["sourceIdentifier"] = args ? args.sourceIdentifier : undefined;
+            resourceInputs["sourceOwner"] = args ? args.sourceOwner : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["tagKeyScope"] = args ? args.tagKeyScope : undefined;
+            resourceInputs["tagValueScope"] = args ? args.tagValueScope : undefined;
+            resourceInputs["configRuleId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AggregateConfigRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AggregateConfigRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

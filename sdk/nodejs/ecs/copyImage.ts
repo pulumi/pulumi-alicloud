@@ -55,20 +55,20 @@ export class CopyImage extends pulumi.CustomResource {
      */
     constructor(name: string, args: CopyImageArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CopyImageArgs | CopyImageState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CopyImageState | undefined;
-            inputs["deleteAutoSnapshot"] = state ? state.deleteAutoSnapshot : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["encrypted"] = state ? state.encrypted : undefined;
-            inputs["force"] = state ? state.force : undefined;
-            inputs["imageName"] = state ? state.imageName : undefined;
-            inputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["sourceImageId"] = state ? state.sourceImageId : undefined;
-            inputs["sourceRegionId"] = state ? state.sourceRegionId : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["deleteAutoSnapshot"] = state ? state.deleteAutoSnapshot : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["encrypted"] = state ? state.encrypted : undefined;
+            resourceInputs["force"] = state ? state.force : undefined;
+            resourceInputs["imageName"] = state ? state.imageName : undefined;
+            resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["sourceImageId"] = state ? state.sourceImageId : undefined;
+            resourceInputs["sourceRegionId"] = state ? state.sourceRegionId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as CopyImageArgs | undefined;
             if ((!args || args.sourceImageId === undefined) && !opts.urn) {
@@ -77,21 +77,19 @@ export class CopyImage extends pulumi.CustomResource {
             if ((!args || args.sourceRegionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceRegionId'");
             }
-            inputs["deleteAutoSnapshot"] = args ? args.deleteAutoSnapshot : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["encrypted"] = args ? args.encrypted : undefined;
-            inputs["force"] = args ? args.force : undefined;
-            inputs["imageName"] = args ? args.imageName : undefined;
-            inputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["sourceImageId"] = args ? args.sourceImageId : undefined;
-            inputs["sourceRegionId"] = args ? args.sourceRegionId : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["deleteAutoSnapshot"] = args ? args.deleteAutoSnapshot : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["encrypted"] = args ? args.encrypted : undefined;
+            resourceInputs["force"] = args ? args.force : undefined;
+            resourceInputs["imageName"] = args ? args.imageName : undefined;
+            resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["sourceImageId"] = args ? args.sourceImageId : undefined;
+            resourceInputs["sourceRegionId"] = args ? args.sourceRegionId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CopyImage.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CopyImage.__pulumiType, name, resourceInputs, opts);
     }
 }
 

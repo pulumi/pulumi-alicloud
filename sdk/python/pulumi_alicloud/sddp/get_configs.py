@@ -100,8 +100,8 @@ def get_configs(ids: Optional[Sequence[str]] = None,
     default_config = alicloud.sddp.Config("defaultConfig",
         code="access_failed_cnt",
         value="10")
-    default_configs = default_config.id.apply(lambda id: alicloud.sddp.get_configs(ids=[id],
-        output_file="./t.json"))
+    default_configs = alicloud.sddp.get_configs_output(ids=[default_config.id],
+        output_file="./t.json")
     pulumi.export("sddpConfigId", default_configs.ids)
     ```
 
@@ -147,8 +147,8 @@ def get_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
     default_config = alicloud.sddp.Config("defaultConfig",
         code="access_failed_cnt",
         value="10")
-    default_configs = default_config.id.apply(lambda id: alicloud.sddp.get_configs(ids=[id],
-        output_file="./t.json"))
+    default_configs = alicloud.sddp.get_configs_output(ids=[default_config.id],
+        output_file="./t.json")
     pulumi.export("sddpConfigId", default_configs.ids)
     ```
 

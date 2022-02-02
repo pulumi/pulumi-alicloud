@@ -160,28 +160,28 @@ export class Domain extends pulumi.CustomResource {
      */
     constructor(name: string, args: DomainArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainArgs | DomainState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
-            inputs["clusterType"] = state ? state.clusterType : undefined;
-            inputs["cname"] = state ? state.cname : undefined;
-            inputs["connectionTime"] = state ? state.connectionTime : undefined;
-            inputs["domain"] = state ? state.domain : undefined;
-            inputs["domainName"] = state ? state.domainName : undefined;
-            inputs["http2Ports"] = state ? state.http2Ports : undefined;
-            inputs["httpPorts"] = state ? state.httpPorts : undefined;
-            inputs["httpToUserIp"] = state ? state.httpToUserIp : undefined;
-            inputs["httpsPorts"] = state ? state.httpsPorts : undefined;
-            inputs["httpsRedirect"] = state ? state.httpsRedirect : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["isAccessProduct"] = state ? state.isAccessProduct : undefined;
-            inputs["loadBalancing"] = state ? state.loadBalancing : undefined;
-            inputs["logHeaders"] = state ? state.logHeaders : undefined;
-            inputs["readTime"] = state ? state.readTime : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["sourceIps"] = state ? state.sourceIps : undefined;
-            inputs["writeTime"] = state ? state.writeTime : undefined;
+            resourceInputs["clusterType"] = state ? state.clusterType : undefined;
+            resourceInputs["cname"] = state ? state.cname : undefined;
+            resourceInputs["connectionTime"] = state ? state.connectionTime : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["domainName"] = state ? state.domainName : undefined;
+            resourceInputs["http2Ports"] = state ? state.http2Ports : undefined;
+            resourceInputs["httpPorts"] = state ? state.httpPorts : undefined;
+            resourceInputs["httpToUserIp"] = state ? state.httpToUserIp : undefined;
+            resourceInputs["httpsPorts"] = state ? state.httpsPorts : undefined;
+            resourceInputs["httpsRedirect"] = state ? state.httpsRedirect : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["isAccessProduct"] = state ? state.isAccessProduct : undefined;
+            resourceInputs["loadBalancing"] = state ? state.loadBalancing : undefined;
+            resourceInputs["logHeaders"] = state ? state.logHeaders : undefined;
+            resourceInputs["readTime"] = state ? state.readTime : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["sourceIps"] = state ? state.sourceIps : undefined;
+            resourceInputs["writeTime"] = state ? state.writeTime : undefined;
         } else {
             const args = argsOrState as DomainArgs | undefined;
             if ((!args || args.instanceId === undefined) && !opts.urn) {
@@ -190,29 +190,27 @@ export class Domain extends pulumi.CustomResource {
             if ((!args || args.isAccessProduct === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'isAccessProduct'");
             }
-            inputs["clusterType"] = args ? args.clusterType : undefined;
-            inputs["connectionTime"] = args ? args.connectionTime : undefined;
-            inputs["domain"] = args ? args.domain : undefined;
-            inputs["domainName"] = args ? args.domainName : undefined;
-            inputs["http2Ports"] = args ? args.http2Ports : undefined;
-            inputs["httpPorts"] = args ? args.httpPorts : undefined;
-            inputs["httpToUserIp"] = args ? args.httpToUserIp : undefined;
-            inputs["httpsPorts"] = args ? args.httpsPorts : undefined;
-            inputs["httpsRedirect"] = args ? args.httpsRedirect : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["isAccessProduct"] = args ? args.isAccessProduct : undefined;
-            inputs["loadBalancing"] = args ? args.loadBalancing : undefined;
-            inputs["logHeaders"] = args ? args.logHeaders : undefined;
-            inputs["readTime"] = args ? args.readTime : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["sourceIps"] = args ? args.sourceIps : undefined;
-            inputs["writeTime"] = args ? args.writeTime : undefined;
-            inputs["cname"] = undefined /*out*/;
+            resourceInputs["clusterType"] = args ? args.clusterType : undefined;
+            resourceInputs["connectionTime"] = args ? args.connectionTime : undefined;
+            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["domainName"] = args ? args.domainName : undefined;
+            resourceInputs["http2Ports"] = args ? args.http2Ports : undefined;
+            resourceInputs["httpPorts"] = args ? args.httpPorts : undefined;
+            resourceInputs["httpToUserIp"] = args ? args.httpToUserIp : undefined;
+            resourceInputs["httpsPorts"] = args ? args.httpsPorts : undefined;
+            resourceInputs["httpsRedirect"] = args ? args.httpsRedirect : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["isAccessProduct"] = args ? args.isAccessProduct : undefined;
+            resourceInputs["loadBalancing"] = args ? args.loadBalancing : undefined;
+            resourceInputs["logHeaders"] = args ? args.logHeaders : undefined;
+            resourceInputs["readTime"] = args ? args.readTime : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["sourceIps"] = args ? args.sourceIps : undefined;
+            resourceInputs["writeTime"] = args ? args.writeTime : undefined;
+            resourceInputs["cname"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Domain.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Domain.__pulumiType, name, resourceInputs, opts);
     }
 }
 

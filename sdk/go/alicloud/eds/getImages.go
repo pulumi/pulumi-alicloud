@@ -85,6 +85,11 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		ids := eds.GetImagesOutput(ctx, eds.GetImagesOutputArgs{
+// 			Ids: pulumi.StringArray{
+// 				defaultImage.ID(),
+// 			},
+// 		}, nil)
 // 		ctx.Export("ecdImageId1", ids.ApplyT(func(ids eds.GetImagesResult) (string, error) {
 // 			return ids.Images[0].Id, nil
 // 		}).(pulumi.StringOutput))

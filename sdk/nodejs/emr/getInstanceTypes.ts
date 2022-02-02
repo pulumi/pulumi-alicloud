@@ -37,9 +37,7 @@ export function getInstanceTypes(args: GetInstanceTypesArgs, opts?: pulumi.Invok
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:emr/getInstanceTypes:getInstanceTypes", {
         "clusterType": args.clusterType,
         "destinationResource": args.destinationResource,

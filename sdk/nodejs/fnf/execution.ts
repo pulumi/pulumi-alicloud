@@ -117,14 +117,14 @@ export class Execution extends pulumi.CustomResource {
      */
     constructor(name: string, args: ExecutionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ExecutionArgs | ExecutionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExecutionState | undefined;
-            inputs["executionName"] = state ? state.executionName : undefined;
-            inputs["flowName"] = state ? state.flowName : undefined;
-            inputs["input"] = state ? state.input : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["executionName"] = state ? state.executionName : undefined;
+            resourceInputs["flowName"] = state ? state.flowName : undefined;
+            resourceInputs["input"] = state ? state.input : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ExecutionArgs | undefined;
             if ((!args || args.executionName === undefined) && !opts.urn) {
@@ -133,15 +133,13 @@ export class Execution extends pulumi.CustomResource {
             if ((!args || args.flowName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'flowName'");
             }
-            inputs["executionName"] = args ? args.executionName : undefined;
-            inputs["flowName"] = args ? args.flowName : undefined;
-            inputs["input"] = args ? args.input : undefined;
-            inputs["status"] = args ? args.status : undefined;
+            resourceInputs["executionName"] = args ? args.executionName : undefined;
+            resourceInputs["flowName"] = args ? args.flowName : undefined;
+            resourceInputs["input"] = args ? args.input : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Execution.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Execution.__pulumiType, name, resourceInputs, opts);
     }
 }
 

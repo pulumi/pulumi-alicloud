@@ -96,7 +96,7 @@ type KubernetesPermissionInput interface {
 }
 
 func (*KubernetesPermission) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesPermission)(nil))
+	return reflect.TypeOf((**KubernetesPermission)(nil)).Elem()
 }
 
 func (i *KubernetesPermission) ToKubernetesPermissionOutput() KubernetesPermissionOutput {
@@ -105,35 +105,6 @@ func (i *KubernetesPermission) ToKubernetesPermissionOutput() KubernetesPermissi
 
 func (i *KubernetesPermission) ToKubernetesPermissionOutputWithContext(ctx context.Context) KubernetesPermissionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesPermissionOutput)
-}
-
-func (i *KubernetesPermission) ToKubernetesPermissionPtrOutput() KubernetesPermissionPtrOutput {
-	return i.ToKubernetesPermissionPtrOutputWithContext(context.Background())
-}
-
-func (i *KubernetesPermission) ToKubernetesPermissionPtrOutputWithContext(ctx context.Context) KubernetesPermissionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesPermissionPtrOutput)
-}
-
-type KubernetesPermissionPtrInput interface {
-	pulumi.Input
-
-	ToKubernetesPermissionPtrOutput() KubernetesPermissionPtrOutput
-	ToKubernetesPermissionPtrOutputWithContext(ctx context.Context) KubernetesPermissionPtrOutput
-}
-
-type kubernetesPermissionPtrType KubernetesPermissionArgs
-
-func (*kubernetesPermissionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KubernetesPermission)(nil))
-}
-
-func (i *kubernetesPermissionPtrType) ToKubernetesPermissionPtrOutput() KubernetesPermissionPtrOutput {
-	return i.ToKubernetesPermissionPtrOutputWithContext(context.Background())
-}
-
-func (i *kubernetesPermissionPtrType) ToKubernetesPermissionPtrOutputWithContext(ctx context.Context) KubernetesPermissionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesPermissionPtrOutput)
 }
 
 // KubernetesPermissionArrayInput is an input type that accepts KubernetesPermissionArray and KubernetesPermissionArrayOutput values.
@@ -189,7 +160,7 @@ func (i KubernetesPermissionMap) ToKubernetesPermissionMapOutputWithContext(ctx 
 type KubernetesPermissionOutput struct{ *pulumi.OutputState }
 
 func (KubernetesPermissionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesPermission)(nil))
+	return reflect.TypeOf((**KubernetesPermission)(nil)).Elem()
 }
 
 func (o KubernetesPermissionOutput) ToKubernetesPermissionOutput() KubernetesPermissionOutput {
@@ -200,44 +171,10 @@ func (o KubernetesPermissionOutput) ToKubernetesPermissionOutputWithContext(ctx 
 	return o
 }
 
-func (o KubernetesPermissionOutput) ToKubernetesPermissionPtrOutput() KubernetesPermissionPtrOutput {
-	return o.ToKubernetesPermissionPtrOutputWithContext(context.Background())
-}
-
-func (o KubernetesPermissionOutput) ToKubernetesPermissionPtrOutputWithContext(ctx context.Context) KubernetesPermissionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesPermission) *KubernetesPermission {
-		return &v
-	}).(KubernetesPermissionPtrOutput)
-}
-
-type KubernetesPermissionPtrOutput struct{ *pulumi.OutputState }
-
-func (KubernetesPermissionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KubernetesPermission)(nil))
-}
-
-func (o KubernetesPermissionPtrOutput) ToKubernetesPermissionPtrOutput() KubernetesPermissionPtrOutput {
-	return o
-}
-
-func (o KubernetesPermissionPtrOutput) ToKubernetesPermissionPtrOutputWithContext(ctx context.Context) KubernetesPermissionPtrOutput {
-	return o
-}
-
-func (o KubernetesPermissionPtrOutput) Elem() KubernetesPermissionOutput {
-	return o.ApplyT(func(v *KubernetesPermission) KubernetesPermission {
-		if v != nil {
-			return *v
-		}
-		var ret KubernetesPermission
-		return ret
-	}).(KubernetesPermissionOutput)
-}
-
 type KubernetesPermissionArrayOutput struct{ *pulumi.OutputState }
 
 func (KubernetesPermissionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KubernetesPermission)(nil))
+	return reflect.TypeOf((*[]*KubernetesPermission)(nil)).Elem()
 }
 
 func (o KubernetesPermissionArrayOutput) ToKubernetesPermissionArrayOutput() KubernetesPermissionArrayOutput {
@@ -249,15 +186,15 @@ func (o KubernetesPermissionArrayOutput) ToKubernetesPermissionArrayOutputWithCo
 }
 
 func (o KubernetesPermissionArrayOutput) Index(i pulumi.IntInput) KubernetesPermissionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesPermission {
-		return vs[0].([]KubernetesPermission)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KubernetesPermission {
+		return vs[0].([]*KubernetesPermission)[vs[1].(int)]
 	}).(KubernetesPermissionOutput)
 }
 
 type KubernetesPermissionMapOutput struct{ *pulumi.OutputState }
 
 func (KubernetesPermissionMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]KubernetesPermission)(nil))
+	return reflect.TypeOf((*map[string]*KubernetesPermission)(nil)).Elem()
 }
 
 func (o KubernetesPermissionMapOutput) ToKubernetesPermissionMapOutput() KubernetesPermissionMapOutput {
@@ -269,18 +206,16 @@ func (o KubernetesPermissionMapOutput) ToKubernetesPermissionMapOutputWithContex
 }
 
 func (o KubernetesPermissionMapOutput) MapIndex(k pulumi.StringInput) KubernetesPermissionOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) KubernetesPermission {
-		return vs[0].(map[string]KubernetesPermission)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *KubernetesPermission {
+		return vs[0].(map[string]*KubernetesPermission)[vs[1].(string)]
 	}).(KubernetesPermissionOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesPermissionInput)(nil)).Elem(), &KubernetesPermission{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesPermissionPtrInput)(nil)).Elem(), &KubernetesPermission{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesPermissionArrayInput)(nil)).Elem(), KubernetesPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesPermissionMapInput)(nil)).Elem(), KubernetesPermissionMap{})
 	pulumi.RegisterOutputType(KubernetesPermissionOutput{})
-	pulumi.RegisterOutputType(KubernetesPermissionPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesPermissionArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesPermissionMapOutput{})
 }

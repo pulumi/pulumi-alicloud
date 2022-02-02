@@ -30,9 +30,7 @@ export function getContainerGroups(args?: GetContainerGroupsArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:eci/getContainerGroups:getContainerGroups", {
         "containerGroupName": args.containerGroupName,
         "enableDetails": args.enableDetails,

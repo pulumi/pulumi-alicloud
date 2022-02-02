@@ -28,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dms.NewEnterpriseInstance(ctx, "_default", &dms.EnterpriseInstanceArgs{
+// 		_, err := dms.NewEnterpriseInstance(ctx, "default", &dms.EnterpriseInstanceArgs{
 // 			DatabasePassword: pulumi.String("Yourpassword123"),
 // 			DatabaseUser:     pulumi.String("your_user_name"),
 // 			DbaUid:           pulumi.Int("1182725234xxxxxxx"),
@@ -432,7 +432,7 @@ type EnterpriseInstanceInput interface {
 }
 
 func (*EnterpriseInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnterpriseInstance)(nil))
+	return reflect.TypeOf((**EnterpriseInstance)(nil)).Elem()
 }
 
 func (i *EnterpriseInstance) ToEnterpriseInstanceOutput() EnterpriseInstanceOutput {
@@ -441,35 +441,6 @@ func (i *EnterpriseInstance) ToEnterpriseInstanceOutput() EnterpriseInstanceOutp
 
 func (i *EnterpriseInstance) ToEnterpriseInstanceOutputWithContext(ctx context.Context) EnterpriseInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseInstanceOutput)
-}
-
-func (i *EnterpriseInstance) ToEnterpriseInstancePtrOutput() EnterpriseInstancePtrOutput {
-	return i.ToEnterpriseInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *EnterpriseInstance) ToEnterpriseInstancePtrOutputWithContext(ctx context.Context) EnterpriseInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseInstancePtrOutput)
-}
-
-type EnterpriseInstancePtrInput interface {
-	pulumi.Input
-
-	ToEnterpriseInstancePtrOutput() EnterpriseInstancePtrOutput
-	ToEnterpriseInstancePtrOutputWithContext(ctx context.Context) EnterpriseInstancePtrOutput
-}
-
-type enterpriseInstancePtrType EnterpriseInstanceArgs
-
-func (*enterpriseInstancePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnterpriseInstance)(nil))
-}
-
-func (i *enterpriseInstancePtrType) ToEnterpriseInstancePtrOutput() EnterpriseInstancePtrOutput {
-	return i.ToEnterpriseInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *enterpriseInstancePtrType) ToEnterpriseInstancePtrOutputWithContext(ctx context.Context) EnterpriseInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseInstancePtrOutput)
 }
 
 // EnterpriseInstanceArrayInput is an input type that accepts EnterpriseInstanceArray and EnterpriseInstanceArrayOutput values.
@@ -525,7 +496,7 @@ func (i EnterpriseInstanceMap) ToEnterpriseInstanceMapOutputWithContext(ctx cont
 type EnterpriseInstanceOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnterpriseInstance)(nil))
+	return reflect.TypeOf((**EnterpriseInstance)(nil)).Elem()
 }
 
 func (o EnterpriseInstanceOutput) ToEnterpriseInstanceOutput() EnterpriseInstanceOutput {
@@ -536,44 +507,10 @@ func (o EnterpriseInstanceOutput) ToEnterpriseInstanceOutputWithContext(ctx cont
 	return o
 }
 
-func (o EnterpriseInstanceOutput) ToEnterpriseInstancePtrOutput() EnterpriseInstancePtrOutput {
-	return o.ToEnterpriseInstancePtrOutputWithContext(context.Background())
-}
-
-func (o EnterpriseInstanceOutput) ToEnterpriseInstancePtrOutputWithContext(ctx context.Context) EnterpriseInstancePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseInstance) *EnterpriseInstance {
-		return &v
-	}).(EnterpriseInstancePtrOutput)
-}
-
-type EnterpriseInstancePtrOutput struct{ *pulumi.OutputState }
-
-func (EnterpriseInstancePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnterpriseInstance)(nil))
-}
-
-func (o EnterpriseInstancePtrOutput) ToEnterpriseInstancePtrOutput() EnterpriseInstancePtrOutput {
-	return o
-}
-
-func (o EnterpriseInstancePtrOutput) ToEnterpriseInstancePtrOutputWithContext(ctx context.Context) EnterpriseInstancePtrOutput {
-	return o
-}
-
-func (o EnterpriseInstancePtrOutput) Elem() EnterpriseInstanceOutput {
-	return o.ApplyT(func(v *EnterpriseInstance) EnterpriseInstance {
-		if v != nil {
-			return *v
-		}
-		var ret EnterpriseInstance
-		return ret
-	}).(EnterpriseInstanceOutput)
-}
-
 type EnterpriseInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseInstanceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EnterpriseInstance)(nil))
+	return reflect.TypeOf((*[]*EnterpriseInstance)(nil)).Elem()
 }
 
 func (o EnterpriseInstanceArrayOutput) ToEnterpriseInstanceArrayOutput() EnterpriseInstanceArrayOutput {
@@ -585,15 +522,15 @@ func (o EnterpriseInstanceArrayOutput) ToEnterpriseInstanceArrayOutputWithContex
 }
 
 func (o EnterpriseInstanceArrayOutput) Index(i pulumi.IntInput) EnterpriseInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseInstance {
-		return vs[0].([]EnterpriseInstance)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EnterpriseInstance {
+		return vs[0].([]*EnterpriseInstance)[vs[1].(int)]
 	}).(EnterpriseInstanceOutput)
 }
 
 type EnterpriseInstanceMapOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseInstanceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]EnterpriseInstance)(nil))
+	return reflect.TypeOf((*map[string]*EnterpriseInstance)(nil)).Elem()
 }
 
 func (o EnterpriseInstanceMapOutput) ToEnterpriseInstanceMapOutput() EnterpriseInstanceMapOutput {
@@ -605,18 +542,16 @@ func (o EnterpriseInstanceMapOutput) ToEnterpriseInstanceMapOutputWithContext(ct
 }
 
 func (o EnterpriseInstanceMapOutput) MapIndex(k pulumi.StringInput) EnterpriseInstanceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EnterpriseInstance {
-		return vs[0].(map[string]EnterpriseInstance)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *EnterpriseInstance {
+		return vs[0].(map[string]*EnterpriseInstance)[vs[1].(string)]
 	}).(EnterpriseInstanceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseInstanceInput)(nil)).Elem(), &EnterpriseInstance{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseInstancePtrInput)(nil)).Elem(), &EnterpriseInstance{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseInstanceArrayInput)(nil)).Elem(), EnterpriseInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseInstanceMapInput)(nil)).Elem(), EnterpriseInstanceMap{})
 	pulumi.RegisterOutputType(EnterpriseInstanceOutput{})
-	pulumi.RegisterOutputType(EnterpriseInstancePtrOutput{})
 	pulumi.RegisterOutputType(EnterpriseInstanceArrayOutput{})
 	pulumi.RegisterOutputType(EnterpriseInstanceMapOutput{})
 }

@@ -33,9 +33,7 @@ export function getAcls(args?: GetAclsArgs, opts?: pulumi.InvokeOptions): Promis
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:sag/getAcls:getAcls", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

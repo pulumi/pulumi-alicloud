@@ -11,9 +11,7 @@ export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.Invo
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:slb/getLoadBalancers:getLoadBalancers", {
         "address": args.address,
         "addressIpVersion": args.addressIpVersion,

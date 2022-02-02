@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ResourceManager
 {
@@ -44,7 +43,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetResourceGroupsResult> InvokeAsync(GetResourceGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResourceGroupsResult>("alicloud:resourcemanager/getResourceGroups:getResourceGroups", args ?? new GetResourceGroupsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetResourceGroupsResult>("alicloud:resourcemanager/getResourceGroups:getResourceGroups", args ?? new GetResourceGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides resource groups of the current Alibaba Cloud user.
@@ -78,7 +77,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetResourceGroupsResult> Invoke(GetResourceGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetResourceGroupsResult>("alicloud:resourcemanager/getResourceGroups:getResourceGroups", args ?? new GetResourceGroupsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetResourceGroupsResult>("alicloud:resourcemanager/getResourceGroups:getResourceGroups", args ?? new GetResourceGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

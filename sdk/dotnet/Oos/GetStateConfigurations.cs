@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Oos
 {
@@ -43,7 +42,7 @@ namespace Pulumi.AliCloud.Oos
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetStateConfigurationsResult> InvokeAsync(GetStateConfigurationsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetStateConfigurationsResult>("alicloud:oos/getStateConfigurations:getStateConfigurations", args ?? new GetStateConfigurationsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetStateConfigurationsResult>("alicloud:oos/getStateConfigurations:getStateConfigurations", args ?? new GetStateConfigurationsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Oos State Configurations of the current Alibaba Cloud user.
@@ -76,7 +75,7 @@ namespace Pulumi.AliCloud.Oos
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetStateConfigurationsResult> Invoke(GetStateConfigurationsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetStateConfigurationsResult>("alicloud:oos/getStateConfigurations:getStateConfigurations", args ?? new GetStateConfigurationsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetStateConfigurationsResult>("alicloud:oos/getStateConfigurations:getStateConfigurations", args ?? new GetStateConfigurationsInvokeArgs(), options.WithDefaults());
     }
 
 

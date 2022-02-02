@@ -98,15 +98,15 @@ export class Alias extends pulumi.CustomResource {
      */
     constructor(name: string, args: AliasArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AliasArgs | AliasState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AliasState | undefined;
-            inputs["aliasName"] = state ? state.aliasName : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["routingConfig"] = state ? state.routingConfig : undefined;
-            inputs["serviceName"] = state ? state.serviceName : undefined;
-            inputs["serviceVersion"] = state ? state.serviceVersion : undefined;
+            resourceInputs["aliasName"] = state ? state.aliasName : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["routingConfig"] = state ? state.routingConfig : undefined;
+            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["serviceVersion"] = state ? state.serviceVersion : undefined;
         } else {
             const args = argsOrState as AliasArgs | undefined;
             if ((!args || args.aliasName === undefined) && !opts.urn) {
@@ -118,16 +118,14 @@ export class Alias extends pulumi.CustomResource {
             if ((!args || args.serviceVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceVersion'");
             }
-            inputs["aliasName"] = args ? args.aliasName : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["routingConfig"] = args ? args.routingConfig : undefined;
-            inputs["serviceName"] = args ? args.serviceName : undefined;
-            inputs["serviceVersion"] = args ? args.serviceVersion : undefined;
+            resourceInputs["aliasName"] = args ? args.aliasName : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["routingConfig"] = args ? args.routingConfig : undefined;
+            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["serviceVersion"] = args ? args.serviceVersion : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Alias.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Alias.__pulumiType, name, resourceInputs, opts);
     }
 }
 

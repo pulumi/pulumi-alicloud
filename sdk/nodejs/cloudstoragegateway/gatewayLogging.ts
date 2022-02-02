@@ -124,14 +124,14 @@ export class GatewayLogging extends pulumi.CustomResource {
      */
     constructor(name: string, args: GatewayLoggingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GatewayLoggingArgs | GatewayLoggingState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayLoggingState | undefined;
-            inputs["gatewayId"] = state ? state.gatewayId : undefined;
-            inputs["slsLogstore"] = state ? state.slsLogstore : undefined;
-            inputs["slsProject"] = state ? state.slsProject : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["gatewayId"] = state ? state.gatewayId : undefined;
+            resourceInputs["slsLogstore"] = state ? state.slsLogstore : undefined;
+            resourceInputs["slsProject"] = state ? state.slsProject : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as GatewayLoggingArgs | undefined;
             if ((!args || args.gatewayId === undefined) && !opts.urn) {
@@ -143,15 +143,13 @@ export class GatewayLogging extends pulumi.CustomResource {
             if ((!args || args.slsProject === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'slsProject'");
             }
-            inputs["gatewayId"] = args ? args.gatewayId : undefined;
-            inputs["slsLogstore"] = args ? args.slsLogstore : undefined;
-            inputs["slsProject"] = args ? args.slsProject : undefined;
-            inputs["status"] = args ? args.status : undefined;
+            resourceInputs["gatewayId"] = args ? args.gatewayId : undefined;
+            resourceInputs["slsLogstore"] = args ? args.slsLogstore : undefined;
+            resourceInputs["slsProject"] = args ? args.slsProject : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(GatewayLogging.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(GatewayLogging.__pulumiType, name, resourceInputs, opts);
     }
 }
 

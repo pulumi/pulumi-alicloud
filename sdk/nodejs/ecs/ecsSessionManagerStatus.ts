@@ -79,12 +79,12 @@ export class EcsSessionManagerStatus extends pulumi.CustomResource {
      */
     constructor(name: string, args: EcsSessionManagerStatusArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EcsSessionManagerStatusArgs | EcsSessionManagerStatusState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsSessionManagerStatusState | undefined;
-            inputs["sessionManagerStatusName"] = state ? state.sessionManagerStatusName : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["sessionManagerStatusName"] = state ? state.sessionManagerStatusName : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as EcsSessionManagerStatusArgs | undefined;
             if ((!args || args.sessionManagerStatusName === undefined) && !opts.urn) {
@@ -93,13 +93,11 @@ export class EcsSessionManagerStatus extends pulumi.CustomResource {
             if ((!args || args.status === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'status'");
             }
-            inputs["sessionManagerStatusName"] = args ? args.sessionManagerStatusName : undefined;
-            inputs["status"] = args ? args.status : undefined;
+            resourceInputs["sessionManagerStatusName"] = args ? args.sessionManagerStatusName : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EcsSessionManagerStatus.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EcsSessionManagerStatus.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -212,7 +212,7 @@ def get_rules(category: Optional[int] = None,
         rule_name="rule_name",
         risk_level_id="4",
         product_code="ODPS")
-    default_rules = default_rule.id.apply(lambda id: alicloud.sddp.get_rules(ids=[id]))
+    default_rules = alicloud.sddp.get_rules_output(ids=[default_rule.id])
     pulumi.export("sddpRuleId", default_rules.id)
     ```
 
@@ -302,7 +302,7 @@ def get_rules_output(category: Optional[pulumi.Input[Optional[int]]] = None,
         rule_name="rule_name",
         risk_level_id="4",
         product_code="ODPS")
-    default_rules = default_rule.id.apply(lambda id: alicloud.sddp.get_rules(ids=[id]))
+    default_rules = alicloud.sddp.get_rules_output(ids=[default_rule.id])
     pulumi.export("sddpRuleId", default_rules.id)
     ```
 

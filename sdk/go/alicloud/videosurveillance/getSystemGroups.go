@@ -38,6 +38,11 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		defaultSystemGroups := videosurveillance.GetSystemGroupsOutput(ctx, videosurveillance.GetSystemGroupsOutputArgs{
+// 			Ids: pulumi.StringArray{
+// 				defaultSystemGroup.ID(),
+// 			},
+// 		}, nil)
 // 		ctx.Export("vsGroup", defaultSystemGroups.ApplyT(func(defaultSystemGroups videosurveillance.GetSystemGroupsResult) (string, error) {
 // 			return defaultSystemGroups.Ids[0], nil
 // 		}).(pulumi.StringOutput))

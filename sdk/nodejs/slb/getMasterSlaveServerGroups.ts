@@ -77,9 +77,9 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  * });
- * const sampleDs = instanceApplicationLoadBalancer.id.apply(id => alicloud.slb.getMasterSlaveServerGroups({
- *     loadBalancerId: id,
- * }));
+ * const sampleDs = alicloud.slb.getMasterSlaveServerGroupsOutput({
+ *     loadBalancerId: instanceApplicationLoadBalancer.id,
+ * });
  * export const firstSlbServerGroupId = sampleDs.apply(sampleDs => sampleDs.groups?[0]?.id);
  * ```
  */
@@ -88,9 +88,7 @@ export function getMasterSlaveServerGroups(args: GetMasterSlaveServerGroupsArgs,
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", {
         "ids": args.ids,
         "loadBalancerId": args.loadBalancerId,

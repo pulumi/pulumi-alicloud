@@ -40,9 +40,7 @@ export function getAccessConfigurations(args: GetAccessConfigurationsArgs, opts?
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cloudsso/getAccessConfigurations:getAccessConfigurations", {
         "directoryId": args.directoryId,
         "enableDetails": args.enableDetails,

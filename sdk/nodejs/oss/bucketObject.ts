@@ -139,26 +139,26 @@ export class BucketObject extends pulumi.CustomResource {
      */
     constructor(name: string, args: BucketObjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BucketObjectArgs | BucketObjectState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketObjectState | undefined;
-            inputs["acl"] = state ? state.acl : undefined;
-            inputs["bucket"] = state ? state.bucket : undefined;
-            inputs["cacheControl"] = state ? state.cacheControl : undefined;
-            inputs["content"] = state ? state.content : undefined;
-            inputs["contentDisposition"] = state ? state.contentDisposition : undefined;
-            inputs["contentEncoding"] = state ? state.contentEncoding : undefined;
-            inputs["contentLength"] = state ? state.contentLength : undefined;
-            inputs["contentMd5"] = state ? state.contentMd5 : undefined;
-            inputs["contentType"] = state ? state.contentType : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["expires"] = state ? state.expires : undefined;
-            inputs["key"] = state ? state.key : undefined;
-            inputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
-            inputs["serverSideEncryption"] = state ? state.serverSideEncryption : undefined;
-            inputs["source"] = state ? state.source : undefined;
-            inputs["versionId"] = state ? state.versionId : undefined;
+            resourceInputs["acl"] = state ? state.acl : undefined;
+            resourceInputs["bucket"] = state ? state.bucket : undefined;
+            resourceInputs["cacheControl"] = state ? state.cacheControl : undefined;
+            resourceInputs["content"] = state ? state.content : undefined;
+            resourceInputs["contentDisposition"] = state ? state.contentDisposition : undefined;
+            resourceInputs["contentEncoding"] = state ? state.contentEncoding : undefined;
+            resourceInputs["contentLength"] = state ? state.contentLength : undefined;
+            resourceInputs["contentMd5"] = state ? state.contentMd5 : undefined;
+            resourceInputs["contentType"] = state ? state.contentType : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["expires"] = state ? state.expires : undefined;
+            resourceInputs["key"] = state ? state.key : undefined;
+            resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
+            resourceInputs["serverSideEncryption"] = state ? state.serverSideEncryption : undefined;
+            resourceInputs["source"] = state ? state.source : undefined;
+            resourceInputs["versionId"] = state ? state.versionId : undefined;
         } else {
             const args = argsOrState as BucketObjectArgs | undefined;
             if ((!args || args.bucket === undefined) && !opts.urn) {
@@ -167,27 +167,25 @@ export class BucketObject extends pulumi.CustomResource {
             if ((!args || args.key === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            inputs["acl"] = args ? args.acl : undefined;
-            inputs["bucket"] = args ? args.bucket : undefined;
-            inputs["cacheControl"] = args ? args.cacheControl : undefined;
-            inputs["content"] = args ? args.content : undefined;
-            inputs["contentDisposition"] = args ? args.contentDisposition : undefined;
-            inputs["contentEncoding"] = args ? args.contentEncoding : undefined;
-            inputs["contentMd5"] = args ? args.contentMd5 : undefined;
-            inputs["contentType"] = args ? args.contentType : undefined;
-            inputs["expires"] = args ? args.expires : undefined;
-            inputs["key"] = args ? args.key : undefined;
-            inputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
-            inputs["serverSideEncryption"] = args ? args.serverSideEncryption : undefined;
-            inputs["source"] = args ? args.source : undefined;
-            inputs["contentLength"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
-            inputs["versionId"] = undefined /*out*/;
+            resourceInputs["acl"] = args ? args.acl : undefined;
+            resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["cacheControl"] = args ? args.cacheControl : undefined;
+            resourceInputs["content"] = args ? args.content : undefined;
+            resourceInputs["contentDisposition"] = args ? args.contentDisposition : undefined;
+            resourceInputs["contentEncoding"] = args ? args.contentEncoding : undefined;
+            resourceInputs["contentMd5"] = args ? args.contentMd5 : undefined;
+            resourceInputs["contentType"] = args ? args.contentType : undefined;
+            resourceInputs["expires"] = args ? args.expires : undefined;
+            resourceInputs["key"] = args ? args.key : undefined;
+            resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
+            resourceInputs["serverSideEncryption"] = args ? args.serverSideEncryption : undefined;
+            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["contentLength"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["versionId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(BucketObject.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(BucketObject.__pulumiType, name, resourceInputs, opts);
     }
 }
 

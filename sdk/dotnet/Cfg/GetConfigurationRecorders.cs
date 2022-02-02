@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cfg
 {
@@ -43,7 +42,7 @@ namespace Pulumi.AliCloud.Cfg
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetConfigurationRecordersResult> InvokeAsync(GetConfigurationRecordersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConfigurationRecordersResult>("alicloud:cfg/getConfigurationRecorders:getConfigurationRecorders", args ?? new GetConfigurationRecordersArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetConfigurationRecordersResult>("alicloud:cfg/getConfigurationRecorders:getConfigurationRecorders", args ?? new GetConfigurationRecordersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Config Configuration Recorders of the current Alibaba Cloud user.
@@ -76,7 +75,7 @@ namespace Pulumi.AliCloud.Cfg
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetConfigurationRecordersResult> Invoke(GetConfigurationRecordersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConfigurationRecordersResult>("alicloud:cfg/getConfigurationRecorders:getConfigurationRecorders", args ?? new GetConfigurationRecordersInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetConfigurationRecordersResult>("alicloud:cfg/getConfigurationRecorders:getConfigurationRecorders", args ?? new GetConfigurationRecordersInvokeArgs(), options.WithDefaults());
     }
 
 

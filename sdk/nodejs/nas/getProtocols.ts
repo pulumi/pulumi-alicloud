@@ -29,9 +29,7 @@ export function getProtocols(args: GetProtocolsArgs, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:nas/getProtocols:getProtocols", {
         "outputFile": args.outputFile,
         "type": args.type,

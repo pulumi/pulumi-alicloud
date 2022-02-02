@@ -183,29 +183,29 @@ export class Desktop extends pulumi.CustomResource {
      */
     constructor(name: string, args: DesktopArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DesktopArgs | DesktopState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DesktopState | undefined;
-            inputs["amount"] = state ? state.amount : undefined;
-            inputs["autoPay"] = state ? state.autoPay : undefined;
-            inputs["autoRenew"] = state ? state.autoRenew : undefined;
-            inputs["bundleId"] = state ? state.bundleId : undefined;
-            inputs["desktopName"] = state ? state.desktopName : undefined;
-            inputs["desktopType"] = state ? state.desktopType : undefined;
-            inputs["endUserIds"] = state ? state.endUserIds : undefined;
-            inputs["hostName"] = state ? state.hostName : undefined;
-            inputs["officeSiteId"] = state ? state.officeSiteId : undefined;
-            inputs["paymentType"] = state ? state.paymentType : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["periodUnit"] = state ? state.periodUnit : undefined;
-            inputs["policyGroupId"] = state ? state.policyGroupId : undefined;
-            inputs["rootDiskSizeGib"] = state ? state.rootDiskSizeGib : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["stoppedMode"] = state ? state.stoppedMode : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["userAssignMode"] = state ? state.userAssignMode : undefined;
-            inputs["userDiskSizeGib"] = state ? state.userDiskSizeGib : undefined;
+            resourceInputs["amount"] = state ? state.amount : undefined;
+            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["bundleId"] = state ? state.bundleId : undefined;
+            resourceInputs["desktopName"] = state ? state.desktopName : undefined;
+            resourceInputs["desktopType"] = state ? state.desktopType : undefined;
+            resourceInputs["endUserIds"] = state ? state.endUserIds : undefined;
+            resourceInputs["hostName"] = state ? state.hostName : undefined;
+            resourceInputs["officeSiteId"] = state ? state.officeSiteId : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
+            resourceInputs["policyGroupId"] = state ? state.policyGroupId : undefined;
+            resourceInputs["rootDiskSizeGib"] = state ? state.rootDiskSizeGib : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["stoppedMode"] = state ? state.stoppedMode : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["userAssignMode"] = state ? state.userAssignMode : undefined;
+            resourceInputs["userDiskSizeGib"] = state ? state.userDiskSizeGib : undefined;
         } else {
             const args = argsOrState as DesktopArgs | undefined;
             if ((!args || args.bundleId === undefined) && !opts.urn) {
@@ -217,30 +217,28 @@ export class Desktop extends pulumi.CustomResource {
             if ((!args || args.policyGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyGroupId'");
             }
-            inputs["amount"] = args ? args.amount : undefined;
-            inputs["autoPay"] = args ? args.autoPay : undefined;
-            inputs["autoRenew"] = args ? args.autoRenew : undefined;
-            inputs["bundleId"] = args ? args.bundleId : undefined;
-            inputs["desktopName"] = args ? args.desktopName : undefined;
-            inputs["desktopType"] = args ? args.desktopType : undefined;
-            inputs["endUserIds"] = args ? args.endUserIds : undefined;
-            inputs["hostName"] = args ? args.hostName : undefined;
-            inputs["officeSiteId"] = args ? args.officeSiteId : undefined;
-            inputs["paymentType"] = args ? args.paymentType : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["periodUnit"] = args ? args.periodUnit : undefined;
-            inputs["policyGroupId"] = args ? args.policyGroupId : undefined;
-            inputs["rootDiskSizeGib"] = args ? args.rootDiskSizeGib : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["stoppedMode"] = args ? args.stoppedMode : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["userAssignMode"] = args ? args.userAssignMode : undefined;
-            inputs["userDiskSizeGib"] = args ? args.userDiskSizeGib : undefined;
+            resourceInputs["amount"] = args ? args.amount : undefined;
+            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["bundleId"] = args ? args.bundleId : undefined;
+            resourceInputs["desktopName"] = args ? args.desktopName : undefined;
+            resourceInputs["desktopType"] = args ? args.desktopType : undefined;
+            resourceInputs["endUserIds"] = args ? args.endUserIds : undefined;
+            resourceInputs["hostName"] = args ? args.hostName : undefined;
+            resourceInputs["officeSiteId"] = args ? args.officeSiteId : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
+            resourceInputs["policyGroupId"] = args ? args.policyGroupId : undefined;
+            resourceInputs["rootDiskSizeGib"] = args ? args.rootDiskSizeGib : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["stoppedMode"] = args ? args.stoppedMode : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["userAssignMode"] = args ? args.userAssignMode : undefined;
+            resourceInputs["userDiskSizeGib"] = args ? args.userDiskSizeGib : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Desktop.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Desktop.__pulumiType, name, resourceInputs, opts);
     }
 }
 

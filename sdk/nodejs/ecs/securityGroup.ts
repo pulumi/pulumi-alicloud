@@ -87,33 +87,31 @@ export class SecurityGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args?: SecurityGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecurityGroupArgs | SecurityGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityGroupState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["innerAccess"] = state ? state.innerAccess : undefined;
-            inputs["innerAccessPolicy"] = state ? state.innerAccessPolicy : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["securityGroupType"] = state ? state.securityGroupType : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["innerAccess"] = state ? state.innerAccess : undefined;
+            resourceInputs["innerAccessPolicy"] = state ? state.innerAccessPolicy : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["securityGroupType"] = state ? state.securityGroupType : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as SecurityGroupArgs | undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["innerAccess"] = args ? args.innerAccess : undefined;
-            inputs["innerAccessPolicy"] = args ? args.innerAccessPolicy : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["securityGroupType"] = args ? args.securityGroupType : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["innerAccess"] = args ? args.innerAccess : undefined;
+            resourceInputs["innerAccessPolicy"] = args ? args.innerAccessPolicy : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["securityGroupType"] = args ? args.securityGroupType : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SecurityGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SecurityGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

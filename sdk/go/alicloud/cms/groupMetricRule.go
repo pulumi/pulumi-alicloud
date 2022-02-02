@@ -328,7 +328,7 @@ type GroupMetricRuleInput interface {
 }
 
 func (*GroupMetricRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupMetricRule)(nil))
+	return reflect.TypeOf((**GroupMetricRule)(nil)).Elem()
 }
 
 func (i *GroupMetricRule) ToGroupMetricRuleOutput() GroupMetricRuleOutput {
@@ -337,35 +337,6 @@ func (i *GroupMetricRule) ToGroupMetricRuleOutput() GroupMetricRuleOutput {
 
 func (i *GroupMetricRule) ToGroupMetricRuleOutputWithContext(ctx context.Context) GroupMetricRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRuleOutput)
-}
-
-func (i *GroupMetricRule) ToGroupMetricRulePtrOutput() GroupMetricRulePtrOutput {
-	return i.ToGroupMetricRulePtrOutputWithContext(context.Background())
-}
-
-func (i *GroupMetricRule) ToGroupMetricRulePtrOutputWithContext(ctx context.Context) GroupMetricRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRulePtrOutput)
-}
-
-type GroupMetricRulePtrInput interface {
-	pulumi.Input
-
-	ToGroupMetricRulePtrOutput() GroupMetricRulePtrOutput
-	ToGroupMetricRulePtrOutputWithContext(ctx context.Context) GroupMetricRulePtrOutput
-}
-
-type groupMetricRulePtrType GroupMetricRuleArgs
-
-func (*groupMetricRulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GroupMetricRule)(nil))
-}
-
-func (i *groupMetricRulePtrType) ToGroupMetricRulePtrOutput() GroupMetricRulePtrOutput {
-	return i.ToGroupMetricRulePtrOutputWithContext(context.Background())
-}
-
-func (i *groupMetricRulePtrType) ToGroupMetricRulePtrOutputWithContext(ctx context.Context) GroupMetricRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupMetricRulePtrOutput)
 }
 
 // GroupMetricRuleArrayInput is an input type that accepts GroupMetricRuleArray and GroupMetricRuleArrayOutput values.
@@ -421,7 +392,7 @@ func (i GroupMetricRuleMap) ToGroupMetricRuleMapOutputWithContext(ctx context.Co
 type GroupMetricRuleOutput struct{ *pulumi.OutputState }
 
 func (GroupMetricRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupMetricRule)(nil))
+	return reflect.TypeOf((**GroupMetricRule)(nil)).Elem()
 }
 
 func (o GroupMetricRuleOutput) ToGroupMetricRuleOutput() GroupMetricRuleOutput {
@@ -432,44 +403,10 @@ func (o GroupMetricRuleOutput) ToGroupMetricRuleOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o GroupMetricRuleOutput) ToGroupMetricRulePtrOutput() GroupMetricRulePtrOutput {
-	return o.ToGroupMetricRulePtrOutputWithContext(context.Background())
-}
-
-func (o GroupMetricRuleOutput) ToGroupMetricRulePtrOutputWithContext(ctx context.Context) GroupMetricRulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupMetricRule) *GroupMetricRule {
-		return &v
-	}).(GroupMetricRulePtrOutput)
-}
-
-type GroupMetricRulePtrOutput struct{ *pulumi.OutputState }
-
-func (GroupMetricRulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GroupMetricRule)(nil))
-}
-
-func (o GroupMetricRulePtrOutput) ToGroupMetricRulePtrOutput() GroupMetricRulePtrOutput {
-	return o
-}
-
-func (o GroupMetricRulePtrOutput) ToGroupMetricRulePtrOutputWithContext(ctx context.Context) GroupMetricRulePtrOutput {
-	return o
-}
-
-func (o GroupMetricRulePtrOutput) Elem() GroupMetricRuleOutput {
-	return o.ApplyT(func(v *GroupMetricRule) GroupMetricRule {
-		if v != nil {
-			return *v
-		}
-		var ret GroupMetricRule
-		return ret
-	}).(GroupMetricRuleOutput)
-}
-
 type GroupMetricRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (GroupMetricRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GroupMetricRule)(nil))
+	return reflect.TypeOf((*[]*GroupMetricRule)(nil)).Elem()
 }
 
 func (o GroupMetricRuleArrayOutput) ToGroupMetricRuleArrayOutput() GroupMetricRuleArrayOutput {
@@ -481,15 +418,15 @@ func (o GroupMetricRuleArrayOutput) ToGroupMetricRuleArrayOutputWithContext(ctx 
 }
 
 func (o GroupMetricRuleArrayOutput) Index(i pulumi.IntInput) GroupMetricRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupMetricRule {
-		return vs[0].([]GroupMetricRule)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupMetricRule {
+		return vs[0].([]*GroupMetricRule)[vs[1].(int)]
 	}).(GroupMetricRuleOutput)
 }
 
 type GroupMetricRuleMapOutput struct{ *pulumi.OutputState }
 
 func (GroupMetricRuleMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GroupMetricRule)(nil))
+	return reflect.TypeOf((*map[string]*GroupMetricRule)(nil)).Elem()
 }
 
 func (o GroupMetricRuleMapOutput) ToGroupMetricRuleMapOutput() GroupMetricRuleMapOutput {
@@ -501,18 +438,16 @@ func (o GroupMetricRuleMapOutput) ToGroupMetricRuleMapOutputWithContext(ctx cont
 }
 
 func (o GroupMetricRuleMapOutput) MapIndex(k pulumi.StringInput) GroupMetricRuleOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GroupMetricRule {
-		return vs[0].(map[string]GroupMetricRule)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *GroupMetricRule {
+		return vs[0].(map[string]*GroupMetricRule)[vs[1].(string)]
 	}).(GroupMetricRuleOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleInput)(nil)).Elem(), &GroupMetricRule{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRulePtrInput)(nil)).Elem(), &GroupMetricRule{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleArrayInput)(nil)).Elem(), GroupMetricRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleMapInput)(nil)).Elem(), GroupMetricRuleMap{})
 	pulumi.RegisterOutputType(GroupMetricRuleOutput{})
-	pulumi.RegisterOutputType(GroupMetricRulePtrOutput{})
 	pulumi.RegisterOutputType(GroupMetricRuleArrayOutput{})
 	pulumi.RegisterOutputType(GroupMetricRuleMapOutput{})
 }

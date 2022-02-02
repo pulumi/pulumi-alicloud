@@ -224,7 +224,7 @@ type RouterInterfaceConnectionInput interface {
 }
 
 func (*RouterInterfaceConnection) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouterInterfaceConnection)(nil))
+	return reflect.TypeOf((**RouterInterfaceConnection)(nil)).Elem()
 }
 
 func (i *RouterInterfaceConnection) ToRouterInterfaceConnectionOutput() RouterInterfaceConnectionOutput {
@@ -233,35 +233,6 @@ func (i *RouterInterfaceConnection) ToRouterInterfaceConnectionOutput() RouterIn
 
 func (i *RouterInterfaceConnection) ToRouterInterfaceConnectionOutputWithContext(ctx context.Context) RouterInterfaceConnectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouterInterfaceConnectionOutput)
-}
-
-func (i *RouterInterfaceConnection) ToRouterInterfaceConnectionPtrOutput() RouterInterfaceConnectionPtrOutput {
-	return i.ToRouterInterfaceConnectionPtrOutputWithContext(context.Background())
-}
-
-func (i *RouterInterfaceConnection) ToRouterInterfaceConnectionPtrOutputWithContext(ctx context.Context) RouterInterfaceConnectionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouterInterfaceConnectionPtrOutput)
-}
-
-type RouterInterfaceConnectionPtrInput interface {
-	pulumi.Input
-
-	ToRouterInterfaceConnectionPtrOutput() RouterInterfaceConnectionPtrOutput
-	ToRouterInterfaceConnectionPtrOutputWithContext(ctx context.Context) RouterInterfaceConnectionPtrOutput
-}
-
-type routerInterfaceConnectionPtrType RouterInterfaceConnectionArgs
-
-func (*routerInterfaceConnectionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RouterInterfaceConnection)(nil))
-}
-
-func (i *routerInterfaceConnectionPtrType) ToRouterInterfaceConnectionPtrOutput() RouterInterfaceConnectionPtrOutput {
-	return i.ToRouterInterfaceConnectionPtrOutputWithContext(context.Background())
-}
-
-func (i *routerInterfaceConnectionPtrType) ToRouterInterfaceConnectionPtrOutputWithContext(ctx context.Context) RouterInterfaceConnectionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouterInterfaceConnectionPtrOutput)
 }
 
 // RouterInterfaceConnectionArrayInput is an input type that accepts RouterInterfaceConnectionArray and RouterInterfaceConnectionArrayOutput values.
@@ -317,7 +288,7 @@ func (i RouterInterfaceConnectionMap) ToRouterInterfaceConnectionMapOutputWithCo
 type RouterInterfaceConnectionOutput struct{ *pulumi.OutputState }
 
 func (RouterInterfaceConnectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouterInterfaceConnection)(nil))
+	return reflect.TypeOf((**RouterInterfaceConnection)(nil)).Elem()
 }
 
 func (o RouterInterfaceConnectionOutput) ToRouterInterfaceConnectionOutput() RouterInterfaceConnectionOutput {
@@ -328,44 +299,10 @@ func (o RouterInterfaceConnectionOutput) ToRouterInterfaceConnectionOutputWithCo
 	return o
 }
 
-func (o RouterInterfaceConnectionOutput) ToRouterInterfaceConnectionPtrOutput() RouterInterfaceConnectionPtrOutput {
-	return o.ToRouterInterfaceConnectionPtrOutputWithContext(context.Background())
-}
-
-func (o RouterInterfaceConnectionOutput) ToRouterInterfaceConnectionPtrOutputWithContext(ctx context.Context) RouterInterfaceConnectionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouterInterfaceConnection) *RouterInterfaceConnection {
-		return &v
-	}).(RouterInterfaceConnectionPtrOutput)
-}
-
-type RouterInterfaceConnectionPtrOutput struct{ *pulumi.OutputState }
-
-func (RouterInterfaceConnectionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RouterInterfaceConnection)(nil))
-}
-
-func (o RouterInterfaceConnectionPtrOutput) ToRouterInterfaceConnectionPtrOutput() RouterInterfaceConnectionPtrOutput {
-	return o
-}
-
-func (o RouterInterfaceConnectionPtrOutput) ToRouterInterfaceConnectionPtrOutputWithContext(ctx context.Context) RouterInterfaceConnectionPtrOutput {
-	return o
-}
-
-func (o RouterInterfaceConnectionPtrOutput) Elem() RouterInterfaceConnectionOutput {
-	return o.ApplyT(func(v *RouterInterfaceConnection) RouterInterfaceConnection {
-		if v != nil {
-			return *v
-		}
-		var ret RouterInterfaceConnection
-		return ret
-	}).(RouterInterfaceConnectionOutput)
-}
-
 type RouterInterfaceConnectionArrayOutput struct{ *pulumi.OutputState }
 
 func (RouterInterfaceConnectionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RouterInterfaceConnection)(nil))
+	return reflect.TypeOf((*[]*RouterInterfaceConnection)(nil)).Elem()
 }
 
 func (o RouterInterfaceConnectionArrayOutput) ToRouterInterfaceConnectionArrayOutput() RouterInterfaceConnectionArrayOutput {
@@ -377,15 +314,15 @@ func (o RouterInterfaceConnectionArrayOutput) ToRouterInterfaceConnectionArrayOu
 }
 
 func (o RouterInterfaceConnectionArrayOutput) Index(i pulumi.IntInput) RouterInterfaceConnectionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterInterfaceConnection {
-		return vs[0].([]RouterInterfaceConnection)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RouterInterfaceConnection {
+		return vs[0].([]*RouterInterfaceConnection)[vs[1].(int)]
 	}).(RouterInterfaceConnectionOutput)
 }
 
 type RouterInterfaceConnectionMapOutput struct{ *pulumi.OutputState }
 
 func (RouterInterfaceConnectionMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]RouterInterfaceConnection)(nil))
+	return reflect.TypeOf((*map[string]*RouterInterfaceConnection)(nil)).Elem()
 }
 
 func (o RouterInterfaceConnectionMapOutput) ToRouterInterfaceConnectionMapOutput() RouterInterfaceConnectionMapOutput {
@@ -397,18 +334,16 @@ func (o RouterInterfaceConnectionMapOutput) ToRouterInterfaceConnectionMapOutput
 }
 
 func (o RouterInterfaceConnectionMapOutput) MapIndex(k pulumi.StringInput) RouterInterfaceConnectionOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RouterInterfaceConnection {
-		return vs[0].(map[string]RouterInterfaceConnection)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *RouterInterfaceConnection {
+		return vs[0].(map[string]*RouterInterfaceConnection)[vs[1].(string)]
 	}).(RouterInterfaceConnectionOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterInterfaceConnectionInput)(nil)).Elem(), &RouterInterfaceConnection{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RouterInterfaceConnectionPtrInput)(nil)).Elem(), &RouterInterfaceConnection{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterInterfaceConnectionArrayInput)(nil)).Elem(), RouterInterfaceConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterInterfaceConnectionMapInput)(nil)).Elem(), RouterInterfaceConnectionMap{})
 	pulumi.RegisterOutputType(RouterInterfaceConnectionOutput{})
-	pulumi.RegisterOutputType(RouterInterfaceConnectionPtrOutput{})
 	pulumi.RegisterOutputType(RouterInterfaceConnectionArrayOutput{})
 	pulumi.RegisterOutputType(RouterInterfaceConnectionMapOutput{})
 }

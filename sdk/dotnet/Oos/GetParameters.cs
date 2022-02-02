@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Oos
 {
@@ -82,7 +81,7 @@ namespace Pulumi.AliCloud.Oos
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetParametersResult> InvokeAsync(GetParametersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetParametersResult>("alicloud:oos/getParameters:getParameters", args ?? new GetParametersArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetParametersResult>("alicloud:oos/getParameters:getParameters", args ?? new GetParametersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Oos Parameters of the current Alibaba Cloud user.
@@ -154,7 +153,7 @@ namespace Pulumi.AliCloud.Oos
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetParametersResult> Invoke(GetParametersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetParametersResult>("alicloud:oos/getParameters:getParameters", args ?? new GetParametersInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetParametersResult>("alicloud:oos/getParameters:getParameters", args ?? new GetParametersInvokeArgs(), options.WithDefaults());
     }
 
 

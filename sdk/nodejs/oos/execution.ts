@@ -183,62 +183,60 @@ export class Execution extends pulumi.CustomResource {
      */
     constructor(name: string, args: ExecutionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ExecutionArgs | ExecutionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExecutionState | undefined;
-            inputs["counters"] = state ? state.counters : undefined;
-            inputs["createDate"] = state ? state.createDate : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["endDate"] = state ? state.endDate : undefined;
-            inputs["executedBy"] = state ? state.executedBy : undefined;
-            inputs["isParent"] = state ? state.isParent : undefined;
-            inputs["loopMode"] = state ? state.loopMode : undefined;
-            inputs["mode"] = state ? state.mode : undefined;
-            inputs["outputs"] = state ? state.outputs : undefined;
-            inputs["parameters"] = state ? state.parameters : undefined;
-            inputs["parentExecutionId"] = state ? state.parentExecutionId : undefined;
-            inputs["ramRole"] = state ? state.ramRole : undefined;
-            inputs["safetyCheck"] = state ? state.safetyCheck : undefined;
-            inputs["startDate"] = state ? state.startDate : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["statusMessage"] = state ? state.statusMessage : undefined;
-            inputs["templateContent"] = state ? state.templateContent : undefined;
-            inputs["templateId"] = state ? state.templateId : undefined;
-            inputs["templateName"] = state ? state.templateName : undefined;
-            inputs["templateVersion"] = state ? state.templateVersion : undefined;
-            inputs["updateDate"] = state ? state.updateDate : undefined;
+            resourceInputs["counters"] = state ? state.counters : undefined;
+            resourceInputs["createDate"] = state ? state.createDate : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["endDate"] = state ? state.endDate : undefined;
+            resourceInputs["executedBy"] = state ? state.executedBy : undefined;
+            resourceInputs["isParent"] = state ? state.isParent : undefined;
+            resourceInputs["loopMode"] = state ? state.loopMode : undefined;
+            resourceInputs["mode"] = state ? state.mode : undefined;
+            resourceInputs["outputs"] = state ? state.outputs : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
+            resourceInputs["parentExecutionId"] = state ? state.parentExecutionId : undefined;
+            resourceInputs["ramRole"] = state ? state.ramRole : undefined;
+            resourceInputs["safetyCheck"] = state ? state.safetyCheck : undefined;
+            resourceInputs["startDate"] = state ? state.startDate : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["statusMessage"] = state ? state.statusMessage : undefined;
+            resourceInputs["templateContent"] = state ? state.templateContent : undefined;
+            resourceInputs["templateId"] = state ? state.templateId : undefined;
+            resourceInputs["templateName"] = state ? state.templateName : undefined;
+            resourceInputs["templateVersion"] = state ? state.templateVersion : undefined;
+            resourceInputs["updateDate"] = state ? state.updateDate : undefined;
         } else {
             const args = argsOrState as ExecutionArgs | undefined;
             if ((!args || args.templateName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'templateName'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["loopMode"] = args ? args.loopMode : undefined;
-            inputs["mode"] = args ? args.mode : undefined;
-            inputs["parameters"] = args ? args.parameters : undefined;
-            inputs["parentExecutionId"] = args ? args.parentExecutionId : undefined;
-            inputs["safetyCheck"] = args ? args.safetyCheck : undefined;
-            inputs["templateContent"] = args ? args.templateContent : undefined;
-            inputs["templateName"] = args ? args.templateName : undefined;
-            inputs["templateVersion"] = args ? args.templateVersion : undefined;
-            inputs["counters"] = undefined /*out*/;
-            inputs["createDate"] = undefined /*out*/;
-            inputs["endDate"] = undefined /*out*/;
-            inputs["executedBy"] = undefined /*out*/;
-            inputs["isParent"] = undefined /*out*/;
-            inputs["outputs"] = undefined /*out*/;
-            inputs["ramRole"] = undefined /*out*/;
-            inputs["startDate"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["statusMessage"] = undefined /*out*/;
-            inputs["templateId"] = undefined /*out*/;
-            inputs["updateDate"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["loopMode"] = args ? args.loopMode : undefined;
+            resourceInputs["mode"] = args ? args.mode : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["parentExecutionId"] = args ? args.parentExecutionId : undefined;
+            resourceInputs["safetyCheck"] = args ? args.safetyCheck : undefined;
+            resourceInputs["templateContent"] = args ? args.templateContent : undefined;
+            resourceInputs["templateName"] = args ? args.templateName : undefined;
+            resourceInputs["templateVersion"] = args ? args.templateVersion : undefined;
+            resourceInputs["counters"] = undefined /*out*/;
+            resourceInputs["createDate"] = undefined /*out*/;
+            resourceInputs["endDate"] = undefined /*out*/;
+            resourceInputs["executedBy"] = undefined /*out*/;
+            resourceInputs["isParent"] = undefined /*out*/;
+            resourceInputs["outputs"] = undefined /*out*/;
+            resourceInputs["ramRole"] = undefined /*out*/;
+            resourceInputs["startDate"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["statusMessage"] = undefined /*out*/;
+            resourceInputs["templateId"] = undefined /*out*/;
+            resourceInputs["updateDate"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Execution.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Execution.__pulumiType, name, resourceInputs, opts);
     }
 }
 

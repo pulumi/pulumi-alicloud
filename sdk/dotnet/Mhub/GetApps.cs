@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Mhub
 {
@@ -59,7 +58,7 @@ namespace Pulumi.AliCloud.Mhub
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAppsResult> InvokeAsync(GetAppsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAppsResult>("alicloud:mhub/getApps:getApps", args ?? new GetAppsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAppsResult>("alicloud:mhub/getApps:getApps", args ?? new GetAppsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Mhub Apps of the current Alibaba Cloud user.
@@ -108,7 +107,7 @@ namespace Pulumi.AliCloud.Mhub
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAppsResult> Invoke(GetAppsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAppsResult>("alicloud:mhub/getApps:getApps", args ?? new GetAppsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAppsResult>("alicloud:mhub/getApps:getApps", args ?? new GetAppsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CS
 {
@@ -45,7 +44,7 @@ namespace Pulumi.AliCloud.CS
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetManagedKubernetesClustersResult> InvokeAsync(GetManagedKubernetesClustersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetManagedKubernetesClustersResult>("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", args ?? new GetManagedKubernetesClustersArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetManagedKubernetesClustersResult>("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", args ?? new GetManagedKubernetesClustersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
@@ -80,7 +79,7 @@ namespace Pulumi.AliCloud.CS
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetManagedKubernetesClustersResult> Invoke(GetManagedKubernetesClustersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetManagedKubernetesClustersResult>("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", args ?? new GetManagedKubernetesClustersInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetManagedKubernetesClustersResult>("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", args ?? new GetManagedKubernetesClustersInvokeArgs(), options.WithDefaults());
     }
 
 

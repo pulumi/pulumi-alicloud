@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Imp
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.Imp
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAppTemplatesResult> InvokeAsync(GetAppTemplatesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAppTemplatesResult>("alicloud:imp/getAppTemplates:getAppTemplates", args ?? new GetAppTemplatesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAppTemplatesResult>("alicloud:imp/getAppTemplates:getAppTemplates", args ?? new GetAppTemplatesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Imp App Templates of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.Imp
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAppTemplatesResult> Invoke(GetAppTemplatesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAppTemplatesResult>("alicloud:imp/getAppTemplates:getAppTemplates", args ?? new GetAppTemplatesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAppTemplatesResult>("alicloud:imp/getAppTemplates:getAppTemplates", args ?? new GetAppTemplatesInvokeArgs(), options.WithDefaults());
     }
 
 

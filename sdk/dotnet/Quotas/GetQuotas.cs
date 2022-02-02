@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Quotas
 {
@@ -47,7 +46,7 @@ namespace Pulumi.AliCloud.Quotas
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetQuotasResult> InvokeAsync(GetQuotasArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQuotasResult>("alicloud:quotas/getQuotas:getQuotas", args ?? new GetQuotasArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetQuotasResult>("alicloud:quotas/getQuotas:getQuotas", args ?? new GetQuotasArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Quotas Quotas of the current Alibaba Cloud user.
@@ -84,7 +83,7 @@ namespace Pulumi.AliCloud.Quotas
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetQuotasResult> Invoke(GetQuotasInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetQuotasResult>("alicloud:quotas/getQuotas:getQuotas", args ?? new GetQuotasInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetQuotasResult>("alicloud:quotas/getQuotas:getQuotas", args ?? new GetQuotasInvokeArgs(), options.WithDefaults());
     }
 
 

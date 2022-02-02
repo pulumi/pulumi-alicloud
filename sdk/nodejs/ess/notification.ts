@@ -117,13 +117,13 @@ export class Notification extends pulumi.CustomResource {
      */
     constructor(name: string, args: NotificationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NotificationArgs | NotificationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NotificationState | undefined;
-            inputs["notificationArn"] = state ? state.notificationArn : undefined;
-            inputs["notificationTypes"] = state ? state.notificationTypes : undefined;
-            inputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
+            resourceInputs["notificationArn"] = state ? state.notificationArn : undefined;
+            resourceInputs["notificationTypes"] = state ? state.notificationTypes : undefined;
+            resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
         } else {
             const args = argsOrState as NotificationArgs | undefined;
             if ((!args || args.notificationArn === undefined) && !opts.urn) {
@@ -135,14 +135,12 @@ export class Notification extends pulumi.CustomResource {
             if ((!args || args.scalingGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
-            inputs["notificationArn"] = args ? args.notificationArn : undefined;
-            inputs["notificationTypes"] = args ? args.notificationTypes : undefined;
-            inputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
+            resourceInputs["notificationArn"] = args ? args.notificationArn : undefined;
+            resourceInputs["notificationTypes"] = args ? args.notificationTypes : undefined;
+            resourceInputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Notification.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Notification.__pulumiType, name, resourceInputs, opts);
     }
 }
 

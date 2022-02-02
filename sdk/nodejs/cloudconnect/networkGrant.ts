@@ -103,13 +103,13 @@ export class NetworkGrant extends pulumi.CustomResource {
      */
     constructor(name: string, args: NetworkGrantArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NetworkGrantArgs | NetworkGrantState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkGrantState | undefined;
-            inputs["ccnId"] = state ? state.ccnId : undefined;
-            inputs["cenId"] = state ? state.cenId : undefined;
-            inputs["cenUid"] = state ? state.cenUid : undefined;
+            resourceInputs["ccnId"] = state ? state.ccnId : undefined;
+            resourceInputs["cenId"] = state ? state.cenId : undefined;
+            resourceInputs["cenUid"] = state ? state.cenUid : undefined;
         } else {
             const args = argsOrState as NetworkGrantArgs | undefined;
             if ((!args || args.ccnId === undefined) && !opts.urn) {
@@ -121,14 +121,12 @@ export class NetworkGrant extends pulumi.CustomResource {
             if ((!args || args.cenUid === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cenUid'");
             }
-            inputs["ccnId"] = args ? args.ccnId : undefined;
-            inputs["cenId"] = args ? args.cenId : undefined;
-            inputs["cenUid"] = args ? args.cenUid : undefined;
+            resourceInputs["ccnId"] = args ? args.ccnId : undefined;
+            resourceInputs["cenId"] = args ? args.cenId : undefined;
+            resourceInputs["cenUid"] = args ? args.cenUid : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(NetworkGrant.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(NetworkGrant.__pulumiType, name, resourceInputs, opts);
     }
 }
 

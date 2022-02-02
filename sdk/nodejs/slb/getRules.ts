@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  *     url: "/image",
  *     serverGroupId: defaultServerGroup.id,
  * });
- * const sampleDs = defaultApplicationLoadBalancer.id.apply(id => alicloud.slb.getRules({
+ * const sampleDs = defaultApplicationLoadBalancer.id.apply(id => alicloud.slb.getRulesOutput({
  *     loadBalancerId: id,
  *     frontendPort: 22,
  * }));
@@ -59,9 +59,7 @@ export function getRules(args: GetRulesArgs, opts?: pulumi.InvokeOptions): Promi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:slb/getRules:getRules", {
         "frontendPort": args.frontendPort,
         "ids": args.ids,

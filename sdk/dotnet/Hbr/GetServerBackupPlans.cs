@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Hbr
 {
@@ -61,7 +60,7 @@ namespace Pulumi.AliCloud.Hbr
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerBackupPlansResult> InvokeAsync(GetServerBackupPlansArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServerBackupPlansResult>("alicloud:hbr/getServerBackupPlans:getServerBackupPlans", args ?? new GetServerBackupPlansArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServerBackupPlansResult>("alicloud:hbr/getServerBackupPlans:getServerBackupPlans", args ?? new GetServerBackupPlansArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Hbr Server Backup Plans of the current Alibaba Cloud user.
@@ -112,7 +111,7 @@ namespace Pulumi.AliCloud.Hbr
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServerBackupPlansResult> Invoke(GetServerBackupPlansInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServerBackupPlansResult>("alicloud:hbr/getServerBackupPlans:getServerBackupPlans", args ?? new GetServerBackupPlansInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetServerBackupPlansResult>("alicloud:hbr/getServerBackupPlans:getServerBackupPlans", args ?? new GetServerBackupPlansInvokeArgs(), options.WithDefaults());
     }
 
 

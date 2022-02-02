@@ -29,9 +29,7 @@ export function getDomainTxtGuid(args: GetDomainTxtGuidArgs, opts?: pulumi.Invok
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:dns/getDomainTxtGuid:getDomainTxtGuid", {
         "domainName": args.domainName,
         "lang": args.lang,

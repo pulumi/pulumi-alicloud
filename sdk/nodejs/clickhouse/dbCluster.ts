@@ -154,27 +154,27 @@ export class DbCluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: DbClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DbClusterArgs | DbClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DbClusterState | undefined;
-            inputs["category"] = state ? state.category : undefined;
-            inputs["dbClusterAccessWhiteLists"] = state ? state.dbClusterAccessWhiteLists : undefined;
-            inputs["dbClusterClass"] = state ? state.dbClusterClass : undefined;
-            inputs["dbClusterDescription"] = state ? state.dbClusterDescription : undefined;
-            inputs["dbClusterNetworkType"] = state ? state.dbClusterNetworkType : undefined;
-            inputs["dbClusterVersion"] = state ? state.dbClusterVersion : undefined;
-            inputs["dbNodeGroupCount"] = state ? state.dbNodeGroupCount : undefined;
-            inputs["dbNodeStorage"] = state ? state.dbNodeStorage : undefined;
-            inputs["encryptionKey"] = state ? state.encryptionKey : undefined;
-            inputs["encryptionType"] = state ? state.encryptionType : undefined;
-            inputs["maintainTime"] = state ? state.maintainTime : undefined;
-            inputs["paymentType"] = state ? state.paymentType : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["storageType"] = state ? state.storageType : undefined;
-            inputs["usedTime"] = state ? state.usedTime : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["category"] = state ? state.category : undefined;
+            resourceInputs["dbClusterAccessWhiteLists"] = state ? state.dbClusterAccessWhiteLists : undefined;
+            resourceInputs["dbClusterClass"] = state ? state.dbClusterClass : undefined;
+            resourceInputs["dbClusterDescription"] = state ? state.dbClusterDescription : undefined;
+            resourceInputs["dbClusterNetworkType"] = state ? state.dbClusterNetworkType : undefined;
+            resourceInputs["dbClusterVersion"] = state ? state.dbClusterVersion : undefined;
+            resourceInputs["dbNodeGroupCount"] = state ? state.dbNodeGroupCount : undefined;
+            resourceInputs["dbNodeStorage"] = state ? state.dbNodeStorage : undefined;
+            resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
+            resourceInputs["encryptionType"] = state ? state.encryptionType : undefined;
+            resourceInputs["maintainTime"] = state ? state.maintainTime : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["storageType"] = state ? state.storageType : undefined;
+            resourceInputs["usedTime"] = state ? state.usedTime : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as DbClusterArgs | undefined;
             if ((!args || args.category === undefined) && !opts.urn) {
@@ -201,28 +201,26 @@ export class DbCluster extends pulumi.CustomResource {
             if ((!args || args.storageType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'storageType'");
             }
-            inputs["category"] = args ? args.category : undefined;
-            inputs["dbClusterAccessWhiteLists"] = args ? args.dbClusterAccessWhiteLists : undefined;
-            inputs["dbClusterClass"] = args ? args.dbClusterClass : undefined;
-            inputs["dbClusterDescription"] = args ? args.dbClusterDescription : undefined;
-            inputs["dbClusterNetworkType"] = args ? args.dbClusterNetworkType : undefined;
-            inputs["dbClusterVersion"] = args ? args.dbClusterVersion : undefined;
-            inputs["dbNodeGroupCount"] = args ? args.dbNodeGroupCount : undefined;
-            inputs["dbNodeStorage"] = args ? args.dbNodeStorage : undefined;
-            inputs["encryptionKey"] = args ? args.encryptionKey : undefined;
-            inputs["encryptionType"] = args ? args.encryptionType : undefined;
-            inputs["maintainTime"] = args ? args.maintainTime : undefined;
-            inputs["paymentType"] = args ? args.paymentType : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["storageType"] = args ? args.storageType : undefined;
-            inputs["usedTime"] = args ? args.usedTime : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["category"] = args ? args.category : undefined;
+            resourceInputs["dbClusterAccessWhiteLists"] = args ? args.dbClusterAccessWhiteLists : undefined;
+            resourceInputs["dbClusterClass"] = args ? args.dbClusterClass : undefined;
+            resourceInputs["dbClusterDescription"] = args ? args.dbClusterDescription : undefined;
+            resourceInputs["dbClusterNetworkType"] = args ? args.dbClusterNetworkType : undefined;
+            resourceInputs["dbClusterVersion"] = args ? args.dbClusterVersion : undefined;
+            resourceInputs["dbNodeGroupCount"] = args ? args.dbNodeGroupCount : undefined;
+            resourceInputs["dbNodeStorage"] = args ? args.dbNodeStorage : undefined;
+            resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
+            resourceInputs["encryptionType"] = args ? args.encryptionType : undefined;
+            resourceInputs["maintainTime"] = args ? args.maintainTime : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["storageType"] = args ? args.storageType : undefined;
+            resourceInputs["usedTime"] = args ? args.usedTime : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DbCluster.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DbCluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

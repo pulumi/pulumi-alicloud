@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CR
 {
@@ -51,7 +50,7 @@ namespace Pulumi.AliCloud.CR
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetChartRepositoriesResult> InvokeAsync(GetChartRepositoriesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetChartRepositoriesResult>("alicloud:cr/getChartRepositories:getChartRepositories", args ?? new GetChartRepositoriesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetChartRepositoriesResult>("alicloud:cr/getChartRepositories:getChartRepositories", args ?? new GetChartRepositoriesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cr Chart Repositories of the current Alibaba Cloud user.
@@ -92,7 +91,7 @@ namespace Pulumi.AliCloud.CR
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetChartRepositoriesResult> Invoke(GetChartRepositoriesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetChartRepositoriesResult>("alicloud:cr/getChartRepositories:getChartRepositories", args ?? new GetChartRepositoriesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetChartRepositoriesResult>("alicloud:cr/getChartRepositories:getChartRepositories", args ?? new GetChartRepositoriesInvokeArgs(), options.WithDefaults());
     }
 
 

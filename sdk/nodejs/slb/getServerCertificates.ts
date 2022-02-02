@@ -25,9 +25,7 @@ export function getServerCertificates(args?: GetServerCertificatesArgs, opts?: p
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:slb/getServerCertificates:getServerCertificates", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

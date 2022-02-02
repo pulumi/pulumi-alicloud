@@ -109,24 +109,24 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: TransitRouterVpcAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TransitRouterVpcAttachmentArgs | TransitRouterVpcAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransitRouterVpcAttachmentState | undefined;
-            inputs["autoCreateVpcRoute"] = state ? state.autoCreateVpcRoute : undefined;
-            inputs["cenId"] = state ? state.cenId : undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["resourceType"] = state ? state.resourceType : undefined;
-            inputs["routeTableAssociationEnabled"] = state ? state.routeTableAssociationEnabled : undefined;
-            inputs["routeTablePropagationEnabled"] = state ? state.routeTablePropagationEnabled : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["transitRouterAttachmentDescription"] = state ? state.transitRouterAttachmentDescription : undefined;
-            inputs["transitRouterAttachmentId"] = state ? state.transitRouterAttachmentId : undefined;
-            inputs["transitRouterAttachmentName"] = state ? state.transitRouterAttachmentName : undefined;
-            inputs["transitRouterId"] = state ? state.transitRouterId : undefined;
-            inputs["vpcId"] = state ? state.vpcId : undefined;
-            inputs["vpcOwnerId"] = state ? state.vpcOwnerId : undefined;
-            inputs["zoneMappings"] = state ? state.zoneMappings : undefined;
+            resourceInputs["autoCreateVpcRoute"] = state ? state.autoCreateVpcRoute : undefined;
+            resourceInputs["cenId"] = state ? state.cenId : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
+            resourceInputs["routeTableAssociationEnabled"] = state ? state.routeTableAssociationEnabled : undefined;
+            resourceInputs["routeTablePropagationEnabled"] = state ? state.routeTablePropagationEnabled : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["transitRouterAttachmentDescription"] = state ? state.transitRouterAttachmentDescription : undefined;
+            resourceInputs["transitRouterAttachmentId"] = state ? state.transitRouterAttachmentId : undefined;
+            resourceInputs["transitRouterAttachmentName"] = state ? state.transitRouterAttachmentName : undefined;
+            resourceInputs["transitRouterId"] = state ? state.transitRouterId : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["vpcOwnerId"] = state ? state.vpcOwnerId : undefined;
+            resourceInputs["zoneMappings"] = state ? state.zoneMappings : undefined;
         } else {
             const args = argsOrState as TransitRouterVpcAttachmentArgs | undefined;
             if ((!args || args.cenId === undefined) && !opts.urn) {
@@ -138,25 +138,23 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
             if ((!args || args.zoneMappings === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneMappings'");
             }
-            inputs["autoCreateVpcRoute"] = args ? args.autoCreateVpcRoute : undefined;
-            inputs["cenId"] = args ? args.cenId : undefined;
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["resourceType"] = args ? args.resourceType : undefined;
-            inputs["routeTableAssociationEnabled"] = args ? args.routeTableAssociationEnabled : undefined;
-            inputs["routeTablePropagationEnabled"] = args ? args.routeTablePropagationEnabled : undefined;
-            inputs["transitRouterAttachmentDescription"] = args ? args.transitRouterAttachmentDescription : undefined;
-            inputs["transitRouterAttachmentName"] = args ? args.transitRouterAttachmentName : undefined;
-            inputs["transitRouterId"] = args ? args.transitRouterId : undefined;
-            inputs["vpcId"] = args ? args.vpcId : undefined;
-            inputs["vpcOwnerId"] = args ? args.vpcOwnerId : undefined;
-            inputs["zoneMappings"] = args ? args.zoneMappings : undefined;
-            inputs["status"] = undefined /*out*/;
-            inputs["transitRouterAttachmentId"] = undefined /*out*/;
+            resourceInputs["autoCreateVpcRoute"] = args ? args.autoCreateVpcRoute : undefined;
+            resourceInputs["cenId"] = args ? args.cenId : undefined;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["resourceType"] = args ? args.resourceType : undefined;
+            resourceInputs["routeTableAssociationEnabled"] = args ? args.routeTableAssociationEnabled : undefined;
+            resourceInputs["routeTablePropagationEnabled"] = args ? args.routeTablePropagationEnabled : undefined;
+            resourceInputs["transitRouterAttachmentDescription"] = args ? args.transitRouterAttachmentDescription : undefined;
+            resourceInputs["transitRouterAttachmentName"] = args ? args.transitRouterAttachmentName : undefined;
+            resourceInputs["transitRouterId"] = args ? args.transitRouterId : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["vpcOwnerId"] = args ? args.vpcOwnerId : undefined;
+            resourceInputs["zoneMappings"] = args ? args.zoneMappings : undefined;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["transitRouterAttachmentId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TransitRouterVpcAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TransitRouterVpcAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ddos
 {
@@ -49,7 +48,7 @@ namespace Pulumi.AliCloud.Ddos
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDdosCooDomainResourcesResult> InvokeAsync(GetDdosCooDomainResourcesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDdosCooDomainResourcesResult>("alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources", args ?? new GetDdosCooDomainResourcesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDdosCooDomainResourcesResult>("alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources", args ?? new GetDdosCooDomainResourcesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ddoscoo Domain Resources of the current Alibaba Cloud user.
@@ -88,7 +87,7 @@ namespace Pulumi.AliCloud.Ddos
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDdosCooDomainResourcesResult> Invoke(GetDdosCooDomainResourcesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDdosCooDomainResourcesResult>("alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources", args ?? new GetDdosCooDomainResourcesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDdosCooDomainResourcesResult>("alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources", args ?? new GetDdosCooDomainResourcesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -90,14 +90,14 @@ export class RegistryEnterpriseNamespace extends pulumi.CustomResource {
      */
     constructor(name: string, args: RegistryEnterpriseNamespaceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegistryEnterpriseNamespaceArgs | RegistryEnterpriseNamespaceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegistryEnterpriseNamespaceState | undefined;
-            inputs["autoCreate"] = state ? state.autoCreate : undefined;
-            inputs["defaultVisibility"] = state ? state.defaultVisibility : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["autoCreate"] = state ? state.autoCreate : undefined;
+            resourceInputs["defaultVisibility"] = state ? state.defaultVisibility : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as RegistryEnterpriseNamespaceArgs | undefined;
             if ((!args || args.autoCreate === undefined) && !opts.urn) {
@@ -109,15 +109,13 @@ export class RegistryEnterpriseNamespace extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["autoCreate"] = args ? args.autoCreate : undefined;
-            inputs["defaultVisibility"] = args ? args.defaultVisibility : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["autoCreate"] = args ? args.autoCreate : undefined;
+            resourceInputs["defaultVisibility"] = args ? args.defaultVisibility : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RegistryEnterpriseNamespace.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RegistryEnterpriseNamespace.__pulumiType, name, resourceInputs, opts);
     }
 }
 

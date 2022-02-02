@@ -109,8 +109,8 @@ def get_face_configs(ids: Optional[Sequence[str]] = None,
     default_face_config = alicloud.cloudauth.FaceConfig("defaultFaceConfig",
         biz_name="example-value",
         biz_type="example-value")
-    default_face_configs = pulumi.Output.all(default_face_config.id, default_face_config.biz_name).apply(lambda id, biz_name: alicloud.cloudauth.get_face_configs(ids=[id],
-        name_regex=biz_name))
+    default_face_configs = alicloud.cloudauth.get_face_configs_output(ids=[default_face_config.id],
+        name_regex=default_face_config.biz_name)
     pulumi.export("faceConfig", default_face_configs.configs[0])
     ```
 
@@ -158,8 +158,8 @@ def get_face_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     default_face_config = alicloud.cloudauth.FaceConfig("defaultFaceConfig",
         biz_name="example-value",
         biz_type="example-value")
-    default_face_configs = pulumi.Output.all(default_face_config.id, default_face_config.biz_name).apply(lambda id, biz_name: alicloud.cloudauth.get_face_configs(ids=[id],
-        name_regex=biz_name))
+    default_face_configs = alicloud.cloudauth.get_face_configs_output(ids=[default_face_config.id],
+        name_regex=default_face_config.biz_name)
     pulumi.export("faceConfig", default_face_configs.configs[0])
     ```
 

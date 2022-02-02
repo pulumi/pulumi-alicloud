@@ -106,34 +106,32 @@ export class NasFileSystem extends pulumi.CustomResource {
      */
     constructor(name: string, args: NasFileSystemArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NasFileSystemArgs | NasFileSystemState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NasFileSystemState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["fileSystemId"] = state ? state.fileSystemId : undefined;
-            inputs["mountTargetDomain"] = state ? state.mountTargetDomain : undefined;
-            inputs["nasFileSystemName"] = state ? state.nasFileSystemName : undefined;
-            inputs["officeSiteId"] = state ? state.officeSiteId : undefined;
-            inputs["reset"] = state ? state.reset : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["fileSystemId"] = state ? state.fileSystemId : undefined;
+            resourceInputs["mountTargetDomain"] = state ? state.mountTargetDomain : undefined;
+            resourceInputs["nasFileSystemName"] = state ? state.nasFileSystemName : undefined;
+            resourceInputs["officeSiteId"] = state ? state.officeSiteId : undefined;
+            resourceInputs["reset"] = state ? state.reset : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as NasFileSystemArgs | undefined;
             if ((!args || args.officeSiteId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'officeSiteId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["fileSystemId"] = args ? args.fileSystemId : undefined;
-            inputs["mountTargetDomain"] = args ? args.mountTargetDomain : undefined;
-            inputs["nasFileSystemName"] = args ? args.nasFileSystemName : undefined;
-            inputs["officeSiteId"] = args ? args.officeSiteId : undefined;
-            inputs["reset"] = args ? args.reset : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["fileSystemId"] = args ? args.fileSystemId : undefined;
+            resourceInputs["mountTargetDomain"] = args ? args.mountTargetDomain : undefined;
+            resourceInputs["nasFileSystemName"] = args ? args.nasFileSystemName : undefined;
+            resourceInputs["officeSiteId"] = args ? args.officeSiteId : undefined;
+            resourceInputs["reset"] = args ? args.reset : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(NasFileSystem.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(NasFileSystem.__pulumiType, name, resourceInputs, opts);
     }
 }
 

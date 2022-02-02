@@ -30,9 +30,7 @@ export function getMailAddresses(args?: GetMailAddressesArgs, opts?: pulumi.Invo
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:directmail/getMailAddresses:getMailAddresses", {
         "ids": args.ids,
         "keyWord": args.keyWord,

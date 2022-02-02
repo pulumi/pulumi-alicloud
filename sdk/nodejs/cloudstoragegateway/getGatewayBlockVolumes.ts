@@ -38,9 +38,7 @@ export function getGatewayBlockVolumes(args: GetGatewayBlockVolumesArgs, opts?: 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cloudstoragegateway/getGatewayBlockVolumes:getGatewayBlockVolumes", {
         "gatewayId": args.gatewayId,
         "ids": args.ids,

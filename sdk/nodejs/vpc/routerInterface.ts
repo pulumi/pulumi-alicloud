@@ -129,27 +129,27 @@ export class RouterInterface extends pulumi.CustomResource {
      */
     constructor(name: string, args: RouterInterfaceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouterInterfaceArgs | RouterInterfaceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterInterfaceState | undefined;
-            inputs["accessPointId"] = state ? state.accessPointId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["healthCheckSourceIp"] = state ? state.healthCheckSourceIp : undefined;
-            inputs["healthCheckTargetIp"] = state ? state.healthCheckTargetIp : undefined;
-            inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["oppositeAccessPointId"] = state ? state.oppositeAccessPointId : undefined;
-            inputs["oppositeInterfaceId"] = state ? state.oppositeInterfaceId : undefined;
-            inputs["oppositeInterfaceOwnerId"] = state ? state.oppositeInterfaceOwnerId : undefined;
-            inputs["oppositeRegion"] = state ? state.oppositeRegion : undefined;
-            inputs["oppositeRouterId"] = state ? state.oppositeRouterId : undefined;
-            inputs["oppositeRouterType"] = state ? state.oppositeRouterType : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["routerId"] = state ? state.routerId : undefined;
-            inputs["routerType"] = state ? state.routerType : undefined;
-            inputs["specification"] = state ? state.specification : undefined;
+            resourceInputs["accessPointId"] = state ? state.accessPointId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["healthCheckSourceIp"] = state ? state.healthCheckSourceIp : undefined;
+            resourceInputs["healthCheckTargetIp"] = state ? state.healthCheckTargetIp : undefined;
+            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["oppositeAccessPointId"] = state ? state.oppositeAccessPointId : undefined;
+            resourceInputs["oppositeInterfaceId"] = state ? state.oppositeInterfaceId : undefined;
+            resourceInputs["oppositeInterfaceOwnerId"] = state ? state.oppositeInterfaceOwnerId : undefined;
+            resourceInputs["oppositeRegion"] = state ? state.oppositeRegion : undefined;
+            resourceInputs["oppositeRouterId"] = state ? state.oppositeRouterId : undefined;
+            resourceInputs["oppositeRouterType"] = state ? state.oppositeRouterType : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["routerId"] = state ? state.routerId : undefined;
+            resourceInputs["routerType"] = state ? state.routerType : undefined;
+            resourceInputs["specification"] = state ? state.specification : undefined;
         } else {
             const args = argsOrState as RouterInterfaceArgs | undefined;
             if ((!args || args.oppositeRegion === undefined) && !opts.urn) {
@@ -164,28 +164,26 @@ export class RouterInterface extends pulumi.CustomResource {
             if ((!args || args.routerType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'routerType'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["healthCheckSourceIp"] = args ? args.healthCheckSourceIp : undefined;
-            inputs["healthCheckTargetIp"] = args ? args.healthCheckTargetIp : undefined;
-            inputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["oppositeAccessPointId"] = args ? args.oppositeAccessPointId : undefined;
-            inputs["oppositeRegion"] = args ? args.oppositeRegion : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["routerId"] = args ? args.routerId : undefined;
-            inputs["routerType"] = args ? args.routerType : undefined;
-            inputs["specification"] = args ? args.specification : undefined;
-            inputs["accessPointId"] = undefined /*out*/;
-            inputs["oppositeInterfaceId"] = undefined /*out*/;
-            inputs["oppositeInterfaceOwnerId"] = undefined /*out*/;
-            inputs["oppositeRouterId"] = undefined /*out*/;
-            inputs["oppositeRouterType"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["healthCheckSourceIp"] = args ? args.healthCheckSourceIp : undefined;
+            resourceInputs["healthCheckTargetIp"] = args ? args.healthCheckTargetIp : undefined;
+            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["oppositeAccessPointId"] = args ? args.oppositeAccessPointId : undefined;
+            resourceInputs["oppositeRegion"] = args ? args.oppositeRegion : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["routerId"] = args ? args.routerId : undefined;
+            resourceInputs["routerType"] = args ? args.routerType : undefined;
+            resourceInputs["specification"] = args ? args.specification : undefined;
+            resourceInputs["accessPointId"] = undefined /*out*/;
+            resourceInputs["oppositeInterfaceId"] = undefined /*out*/;
+            resourceInputs["oppositeInterfaceOwnerId"] = undefined /*out*/;
+            resourceInputs["oppositeRouterId"] = undefined /*out*/;
+            resourceInputs["oppositeRouterType"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RouterInterface.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RouterInterface.__pulumiType, name, resourceInputs, opts);
     }
 }
 

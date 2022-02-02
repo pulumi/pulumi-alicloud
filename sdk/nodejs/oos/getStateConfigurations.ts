@@ -28,9 +28,7 @@ export function getStateConfigurations(args?: GetStateConfigurationsArgs, opts?:
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:oos/getStateConfigurations:getStateConfigurations", {
         "ids": args.ids,
         "outputFile": args.outputFile,

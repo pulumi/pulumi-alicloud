@@ -71,15 +71,15 @@ export class MachineGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: MachineGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MachineGroupArgs | MachineGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MachineGroupState | undefined;
-            inputs["identifyLists"] = state ? state.identifyLists : undefined;
-            inputs["identifyType"] = state ? state.identifyType : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["topic"] = state ? state.topic : undefined;
+            resourceInputs["identifyLists"] = state ? state.identifyLists : undefined;
+            resourceInputs["identifyType"] = state ? state.identifyType : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["topic"] = state ? state.topic : undefined;
         } else {
             const args = argsOrState as MachineGroupArgs | undefined;
             if ((!args || args.identifyLists === undefined) && !opts.urn) {
@@ -88,16 +88,14 @@ export class MachineGroup extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["identifyLists"] = args ? args.identifyLists : undefined;
-            inputs["identifyType"] = args ? args.identifyType : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["topic"] = args ? args.topic : undefined;
+            resourceInputs["identifyLists"] = args ? args.identifyLists : undefined;
+            resourceInputs["identifyType"] = args ? args.identifyType : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["topic"] = args ? args.topic : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(MachineGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(MachineGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

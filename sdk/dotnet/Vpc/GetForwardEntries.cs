@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -70,10 +69,10 @@ namespace Pulumi.AliCloud.Vpc
         ///             InternalPort = "8080",
         ///             IpProtocol = "tcp",
         ///         });
-        ///         var defaultForwardEntries = defaultForwardEntry.ForwardTableId.Apply(forwardTableId =&gt; AliCloud.Vpc.GetForwardEntries.InvokeAsync(new AliCloud.Vpc.GetForwardEntriesArgs
+        ///         var defaultForwardEntries = AliCloud.Vpc.GetForwardEntries.Invoke(new AliCloud.Vpc.GetForwardEntriesInvokeArgs
         ///         {
-        ///             ForwardTableId = forwardTableId,
-        ///         }));
+        ///             ForwardTableId = defaultForwardEntry.ForwardTableId,
+        ///         });
         ///     }
         /// 
         /// }
@@ -82,7 +81,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetForwardEntriesResult> InvokeAsync(GetForwardEntriesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetForwardEntriesResult>("alicloud:vpc/getForwardEntries:getForwardEntries", args ?? new GetForwardEntriesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetForwardEntriesResult>("alicloud:vpc/getForwardEntries:getForwardEntries", args ?? new GetForwardEntriesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of Forward Entries owned by an Alibaba Cloud account.
@@ -142,10 +141,10 @@ namespace Pulumi.AliCloud.Vpc
         ///             InternalPort = "8080",
         ///             IpProtocol = "tcp",
         ///         });
-        ///         var defaultForwardEntries = defaultForwardEntry.ForwardTableId.Apply(forwardTableId =&gt; AliCloud.Vpc.GetForwardEntries.InvokeAsync(new AliCloud.Vpc.GetForwardEntriesArgs
+        ///         var defaultForwardEntries = AliCloud.Vpc.GetForwardEntries.Invoke(new AliCloud.Vpc.GetForwardEntriesInvokeArgs
         ///         {
-        ///             ForwardTableId = forwardTableId,
-        ///         }));
+        ///             ForwardTableId = defaultForwardEntry.ForwardTableId,
+        ///         });
         ///     }
         /// 
         /// }
@@ -154,7 +153,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetForwardEntriesResult> Invoke(GetForwardEntriesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetForwardEntriesResult>("alicloud:vpc/getForwardEntries:getForwardEntries", args ?? new GetForwardEntriesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetForwardEntriesResult>("alicloud:vpc/getForwardEntries:getForwardEntries", args ?? new GetForwardEntriesInvokeArgs(), options.WithDefaults());
     }
 
 

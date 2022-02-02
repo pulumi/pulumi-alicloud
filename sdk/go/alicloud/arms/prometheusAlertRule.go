@@ -236,7 +236,7 @@ type PrometheusAlertRuleInput interface {
 }
 
 func (*PrometheusAlertRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrometheusAlertRule)(nil))
+	return reflect.TypeOf((**PrometheusAlertRule)(nil)).Elem()
 }
 
 func (i *PrometheusAlertRule) ToPrometheusAlertRuleOutput() PrometheusAlertRuleOutput {
@@ -245,35 +245,6 @@ func (i *PrometheusAlertRule) ToPrometheusAlertRuleOutput() PrometheusAlertRuleO
 
 func (i *PrometheusAlertRule) ToPrometheusAlertRuleOutputWithContext(ctx context.Context) PrometheusAlertRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PrometheusAlertRuleOutput)
-}
-
-func (i *PrometheusAlertRule) ToPrometheusAlertRulePtrOutput() PrometheusAlertRulePtrOutput {
-	return i.ToPrometheusAlertRulePtrOutputWithContext(context.Background())
-}
-
-func (i *PrometheusAlertRule) ToPrometheusAlertRulePtrOutputWithContext(ctx context.Context) PrometheusAlertRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrometheusAlertRulePtrOutput)
-}
-
-type PrometheusAlertRulePtrInput interface {
-	pulumi.Input
-
-	ToPrometheusAlertRulePtrOutput() PrometheusAlertRulePtrOutput
-	ToPrometheusAlertRulePtrOutputWithContext(ctx context.Context) PrometheusAlertRulePtrOutput
-}
-
-type prometheusAlertRulePtrType PrometheusAlertRuleArgs
-
-func (*prometheusAlertRulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrometheusAlertRule)(nil))
-}
-
-func (i *prometheusAlertRulePtrType) ToPrometheusAlertRulePtrOutput() PrometheusAlertRulePtrOutput {
-	return i.ToPrometheusAlertRulePtrOutputWithContext(context.Background())
-}
-
-func (i *prometheusAlertRulePtrType) ToPrometheusAlertRulePtrOutputWithContext(ctx context.Context) PrometheusAlertRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrometheusAlertRulePtrOutput)
 }
 
 // PrometheusAlertRuleArrayInput is an input type that accepts PrometheusAlertRuleArray and PrometheusAlertRuleArrayOutput values.
@@ -329,7 +300,7 @@ func (i PrometheusAlertRuleMap) ToPrometheusAlertRuleMapOutputWithContext(ctx co
 type PrometheusAlertRuleOutput struct{ *pulumi.OutputState }
 
 func (PrometheusAlertRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrometheusAlertRule)(nil))
+	return reflect.TypeOf((**PrometheusAlertRule)(nil)).Elem()
 }
 
 func (o PrometheusAlertRuleOutput) ToPrometheusAlertRuleOutput() PrometheusAlertRuleOutput {
@@ -340,44 +311,10 @@ func (o PrometheusAlertRuleOutput) ToPrometheusAlertRuleOutputWithContext(ctx co
 	return o
 }
 
-func (o PrometheusAlertRuleOutput) ToPrometheusAlertRulePtrOutput() PrometheusAlertRulePtrOutput {
-	return o.ToPrometheusAlertRulePtrOutputWithContext(context.Background())
-}
-
-func (o PrometheusAlertRuleOutput) ToPrometheusAlertRulePtrOutputWithContext(ctx context.Context) PrometheusAlertRulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrometheusAlertRule) *PrometheusAlertRule {
-		return &v
-	}).(PrometheusAlertRulePtrOutput)
-}
-
-type PrometheusAlertRulePtrOutput struct{ *pulumi.OutputState }
-
-func (PrometheusAlertRulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrometheusAlertRule)(nil))
-}
-
-func (o PrometheusAlertRulePtrOutput) ToPrometheusAlertRulePtrOutput() PrometheusAlertRulePtrOutput {
-	return o
-}
-
-func (o PrometheusAlertRulePtrOutput) ToPrometheusAlertRulePtrOutputWithContext(ctx context.Context) PrometheusAlertRulePtrOutput {
-	return o
-}
-
-func (o PrometheusAlertRulePtrOutput) Elem() PrometheusAlertRuleOutput {
-	return o.ApplyT(func(v *PrometheusAlertRule) PrometheusAlertRule {
-		if v != nil {
-			return *v
-		}
-		var ret PrometheusAlertRule
-		return ret
-	}).(PrometheusAlertRuleOutput)
-}
-
 type PrometheusAlertRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (PrometheusAlertRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrometheusAlertRule)(nil))
+	return reflect.TypeOf((*[]*PrometheusAlertRule)(nil)).Elem()
 }
 
 func (o PrometheusAlertRuleArrayOutput) ToPrometheusAlertRuleArrayOutput() PrometheusAlertRuleArrayOutput {
@@ -389,15 +326,15 @@ func (o PrometheusAlertRuleArrayOutput) ToPrometheusAlertRuleArrayOutputWithCont
 }
 
 func (o PrometheusAlertRuleArrayOutput) Index(i pulumi.IntInput) PrometheusAlertRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrometheusAlertRule {
-		return vs[0].([]PrometheusAlertRule)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PrometheusAlertRule {
+		return vs[0].([]*PrometheusAlertRule)[vs[1].(int)]
 	}).(PrometheusAlertRuleOutput)
 }
 
 type PrometheusAlertRuleMapOutput struct{ *pulumi.OutputState }
 
 func (PrometheusAlertRuleMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]PrometheusAlertRule)(nil))
+	return reflect.TypeOf((*map[string]*PrometheusAlertRule)(nil)).Elem()
 }
 
 func (o PrometheusAlertRuleMapOutput) ToPrometheusAlertRuleMapOutput() PrometheusAlertRuleMapOutput {
@@ -409,18 +346,16 @@ func (o PrometheusAlertRuleMapOutput) ToPrometheusAlertRuleMapOutputWithContext(
 }
 
 func (o PrometheusAlertRuleMapOutput) MapIndex(k pulumi.StringInput) PrometheusAlertRuleOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PrometheusAlertRule {
-		return vs[0].(map[string]PrometheusAlertRule)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *PrometheusAlertRule {
+		return vs[0].(map[string]*PrometheusAlertRule)[vs[1].(string)]
 	}).(PrometheusAlertRuleOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusAlertRuleInput)(nil)).Elem(), &PrometheusAlertRule{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusAlertRulePtrInput)(nil)).Elem(), &PrometheusAlertRule{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusAlertRuleArrayInput)(nil)).Elem(), PrometheusAlertRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusAlertRuleMapInput)(nil)).Elem(), PrometheusAlertRuleMap{})
 	pulumi.RegisterOutputType(PrometheusAlertRuleOutput{})
-	pulumi.RegisterOutputType(PrometheusAlertRulePtrOutput{})
 	pulumi.RegisterOutputType(PrometheusAlertRuleArrayOutput{})
 	pulumi.RegisterOutputType(PrometheusAlertRuleMapOutput{})
 }

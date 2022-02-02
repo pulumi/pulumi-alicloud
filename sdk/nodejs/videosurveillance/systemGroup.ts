@@ -134,25 +134,25 @@ export class SystemGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: SystemGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SystemGroupArgs | SystemGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SystemGroupState | undefined;
-            inputs["callback"] = state ? state.callback : undefined;
-            inputs["captureImage"] = state ? state.captureImage : undefined;
-            inputs["captureInterval"] = state ? state.captureInterval : undefined;
-            inputs["captureOssBucket"] = state ? state.captureOssBucket : undefined;
-            inputs["captureOssPath"] = state ? state.captureOssPath : undefined;
-            inputs["captureVideo"] = state ? state.captureVideo : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["groupName"] = state ? state.groupName : undefined;
-            inputs["inProtocol"] = state ? state.inProtocol : undefined;
-            inputs["lazyPull"] = state ? state.lazyPull : undefined;
-            inputs["outProtocol"] = state ? state.outProtocol : undefined;
-            inputs["playDomain"] = state ? state.playDomain : undefined;
-            inputs["pushDomain"] = state ? state.pushDomain : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["callback"] = state ? state.callback : undefined;
+            resourceInputs["captureImage"] = state ? state.captureImage : undefined;
+            resourceInputs["captureInterval"] = state ? state.captureInterval : undefined;
+            resourceInputs["captureOssBucket"] = state ? state.captureOssBucket : undefined;
+            resourceInputs["captureOssPath"] = state ? state.captureOssPath : undefined;
+            resourceInputs["captureVideo"] = state ? state.captureVideo : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["groupName"] = state ? state.groupName : undefined;
+            resourceInputs["inProtocol"] = state ? state.inProtocol : undefined;
+            resourceInputs["lazyPull"] = state ? state.lazyPull : undefined;
+            resourceInputs["outProtocol"] = state ? state.outProtocol : undefined;
+            resourceInputs["playDomain"] = state ? state.playDomain : undefined;
+            resourceInputs["pushDomain"] = state ? state.pushDomain : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as SystemGroupArgs | undefined;
             if ((!args || args.groupName === undefined) && !opts.urn) {
@@ -170,26 +170,24 @@ export class SystemGroup extends pulumi.CustomResource {
             if ((!args || args.pushDomain === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'pushDomain'");
             }
-            inputs["callback"] = args ? args.callback : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["groupName"] = args ? args.groupName : undefined;
-            inputs["inProtocol"] = args ? args.inProtocol : undefined;
-            inputs["outProtocol"] = args ? args.outProtocol : undefined;
-            inputs["playDomain"] = args ? args.playDomain : undefined;
-            inputs["pushDomain"] = args ? args.pushDomain : undefined;
-            inputs["captureImage"] = undefined /*out*/;
-            inputs["captureInterval"] = undefined /*out*/;
-            inputs["captureOssBucket"] = undefined /*out*/;
-            inputs["captureOssPath"] = undefined /*out*/;
-            inputs["captureVideo"] = undefined /*out*/;
-            inputs["lazyPull"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["callback"] = args ? args.callback : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["groupName"] = args ? args.groupName : undefined;
+            resourceInputs["inProtocol"] = args ? args.inProtocol : undefined;
+            resourceInputs["outProtocol"] = args ? args.outProtocol : undefined;
+            resourceInputs["playDomain"] = args ? args.playDomain : undefined;
+            resourceInputs["pushDomain"] = args ? args.pushDomain : undefined;
+            resourceInputs["captureImage"] = undefined /*out*/;
+            resourceInputs["captureInterval"] = undefined /*out*/;
+            resourceInputs["captureOssBucket"] = undefined /*out*/;
+            resourceInputs["captureOssPath"] = undefined /*out*/;
+            resourceInputs["captureVideo"] = undefined /*out*/;
+            resourceInputs["lazyPull"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SystemGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SystemGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

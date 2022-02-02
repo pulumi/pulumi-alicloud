@@ -208,7 +208,7 @@ type NatIpCidrInput interface {
 }
 
 func (*NatIpCidr) ElementType() reflect.Type {
-	return reflect.TypeOf((*NatIpCidr)(nil))
+	return reflect.TypeOf((**NatIpCidr)(nil)).Elem()
 }
 
 func (i *NatIpCidr) ToNatIpCidrOutput() NatIpCidrOutput {
@@ -217,35 +217,6 @@ func (i *NatIpCidr) ToNatIpCidrOutput() NatIpCidrOutput {
 
 func (i *NatIpCidr) ToNatIpCidrOutputWithContext(ctx context.Context) NatIpCidrOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NatIpCidrOutput)
-}
-
-func (i *NatIpCidr) ToNatIpCidrPtrOutput() NatIpCidrPtrOutput {
-	return i.ToNatIpCidrPtrOutputWithContext(context.Background())
-}
-
-func (i *NatIpCidr) ToNatIpCidrPtrOutputWithContext(ctx context.Context) NatIpCidrPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NatIpCidrPtrOutput)
-}
-
-type NatIpCidrPtrInput interface {
-	pulumi.Input
-
-	ToNatIpCidrPtrOutput() NatIpCidrPtrOutput
-	ToNatIpCidrPtrOutputWithContext(ctx context.Context) NatIpCidrPtrOutput
-}
-
-type natIpCidrPtrType NatIpCidrArgs
-
-func (*natIpCidrPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NatIpCidr)(nil))
-}
-
-func (i *natIpCidrPtrType) ToNatIpCidrPtrOutput() NatIpCidrPtrOutput {
-	return i.ToNatIpCidrPtrOutputWithContext(context.Background())
-}
-
-func (i *natIpCidrPtrType) ToNatIpCidrPtrOutputWithContext(ctx context.Context) NatIpCidrPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NatIpCidrPtrOutput)
 }
 
 // NatIpCidrArrayInput is an input type that accepts NatIpCidrArray and NatIpCidrArrayOutput values.
@@ -301,7 +272,7 @@ func (i NatIpCidrMap) ToNatIpCidrMapOutputWithContext(ctx context.Context) NatIp
 type NatIpCidrOutput struct{ *pulumi.OutputState }
 
 func (NatIpCidrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NatIpCidr)(nil))
+	return reflect.TypeOf((**NatIpCidr)(nil)).Elem()
 }
 
 func (o NatIpCidrOutput) ToNatIpCidrOutput() NatIpCidrOutput {
@@ -312,44 +283,10 @@ func (o NatIpCidrOutput) ToNatIpCidrOutputWithContext(ctx context.Context) NatIp
 	return o
 }
 
-func (o NatIpCidrOutput) ToNatIpCidrPtrOutput() NatIpCidrPtrOutput {
-	return o.ToNatIpCidrPtrOutputWithContext(context.Background())
-}
-
-func (o NatIpCidrOutput) ToNatIpCidrPtrOutputWithContext(ctx context.Context) NatIpCidrPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NatIpCidr) *NatIpCidr {
-		return &v
-	}).(NatIpCidrPtrOutput)
-}
-
-type NatIpCidrPtrOutput struct{ *pulumi.OutputState }
-
-func (NatIpCidrPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NatIpCidr)(nil))
-}
-
-func (o NatIpCidrPtrOutput) ToNatIpCidrPtrOutput() NatIpCidrPtrOutput {
-	return o
-}
-
-func (o NatIpCidrPtrOutput) ToNatIpCidrPtrOutputWithContext(ctx context.Context) NatIpCidrPtrOutput {
-	return o
-}
-
-func (o NatIpCidrPtrOutput) Elem() NatIpCidrOutput {
-	return o.ApplyT(func(v *NatIpCidr) NatIpCidr {
-		if v != nil {
-			return *v
-		}
-		var ret NatIpCidr
-		return ret
-	}).(NatIpCidrOutput)
-}
-
 type NatIpCidrArrayOutput struct{ *pulumi.OutputState }
 
 func (NatIpCidrArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NatIpCidr)(nil))
+	return reflect.TypeOf((*[]*NatIpCidr)(nil)).Elem()
 }
 
 func (o NatIpCidrArrayOutput) ToNatIpCidrArrayOutput() NatIpCidrArrayOutput {
@@ -361,15 +298,15 @@ func (o NatIpCidrArrayOutput) ToNatIpCidrArrayOutputWithContext(ctx context.Cont
 }
 
 func (o NatIpCidrArrayOutput) Index(i pulumi.IntInput) NatIpCidrOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NatIpCidr {
-		return vs[0].([]NatIpCidr)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NatIpCidr {
+		return vs[0].([]*NatIpCidr)[vs[1].(int)]
 	}).(NatIpCidrOutput)
 }
 
 type NatIpCidrMapOutput struct{ *pulumi.OutputState }
 
 func (NatIpCidrMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]NatIpCidr)(nil))
+	return reflect.TypeOf((*map[string]*NatIpCidr)(nil)).Elem()
 }
 
 func (o NatIpCidrMapOutput) ToNatIpCidrMapOutput() NatIpCidrMapOutput {
@@ -381,18 +318,16 @@ func (o NatIpCidrMapOutput) ToNatIpCidrMapOutputWithContext(ctx context.Context)
 }
 
 func (o NatIpCidrMapOutput) MapIndex(k pulumi.StringInput) NatIpCidrOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NatIpCidr {
-		return vs[0].(map[string]NatIpCidr)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *NatIpCidr {
+		return vs[0].(map[string]*NatIpCidr)[vs[1].(string)]
 	}).(NatIpCidrOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NatIpCidrInput)(nil)).Elem(), &NatIpCidr{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NatIpCidrPtrInput)(nil)).Elem(), &NatIpCidr{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NatIpCidrArrayInput)(nil)).Elem(), NatIpCidrArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NatIpCidrMapInput)(nil)).Elem(), NatIpCidrMap{})
 	pulumi.RegisterOutputType(NatIpCidrOutput{})
-	pulumi.RegisterOutputType(NatIpCidrPtrOutput{})
 	pulumi.RegisterOutputType(NatIpCidrArrayOutput{})
 	pulumi.RegisterOutputType(NatIpCidrMapOutput{})
 }

@@ -27,9 +27,7 @@ export function getBandwidthLimits(args?: GetBandwidthLimitsArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cen/getBandwidthLimits:getBandwidthLimits", {
         "instanceIds": args.instanceIds,
         "outputFile": args.outputFile,

@@ -111,17 +111,17 @@ export class Parameter extends pulumi.CustomResource {
      */
     constructor(name: string, args: ParameterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ParameterArgs | ParameterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ParameterState | undefined;
-            inputs["constraints"] = state ? state.constraints : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["parameterName"] = state ? state.parameterName : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["value"] = state ? state.value : undefined;
+            resourceInputs["constraints"] = state ? state.constraints : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["parameterName"] = state ? state.parameterName : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as ParameterArgs | undefined;
             if ((!args || args.parameterName === undefined) && !opts.urn) {
@@ -133,18 +133,16 @@ export class Parameter extends pulumi.CustomResource {
             if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            inputs["constraints"] = args ? args.constraints : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["parameterName"] = args ? args.parameterName : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["value"] = args ? args.value : undefined;
+            resourceInputs["constraints"] = args ? args.constraints : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["parameterName"] = args ? args.parameterName : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["value"] = args ? args.value : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Parameter.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Parameter.__pulumiType, name, resourceInputs, opts);
     }
 }
 

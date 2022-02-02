@@ -32,9 +32,7 @@ export function getDatabases(args: GetDatabasesArgs, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:polardb/getDatabases:getDatabases", {
         "dbClusterId": args.dbClusterId,
         "nameRegex": args.nameRegex,

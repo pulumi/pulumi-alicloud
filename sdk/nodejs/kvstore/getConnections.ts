@@ -15,9 +15,7 @@ export function getConnections(args: GetConnectionsArgs, opts?: pulumi.InvokeOpt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:kvstore/getConnections:getConnections", {
         "ids": args.ids,
         "outputFile": args.outputFile,

@@ -135,19 +135,19 @@ export class StackInstance extends pulumi.CustomResource {
      */
     constructor(name: string, args: StackInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StackInstanceArgs | StackInstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StackInstanceState | undefined;
-            inputs["operationDescription"] = state ? state.operationDescription : undefined;
-            inputs["operationPreferences"] = state ? state.operationPreferences : undefined;
-            inputs["parameterOverrides"] = state ? state.parameterOverrides : undefined;
-            inputs["retainStacks"] = state ? state.retainStacks : undefined;
-            inputs["stackGroupName"] = state ? state.stackGroupName : undefined;
-            inputs["stackInstanceAccountId"] = state ? state.stackInstanceAccountId : undefined;
-            inputs["stackInstanceRegionId"] = state ? state.stackInstanceRegionId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["timeoutInMinutes"] = state ? state.timeoutInMinutes : undefined;
+            resourceInputs["operationDescription"] = state ? state.operationDescription : undefined;
+            resourceInputs["operationPreferences"] = state ? state.operationPreferences : undefined;
+            resourceInputs["parameterOverrides"] = state ? state.parameterOverrides : undefined;
+            resourceInputs["retainStacks"] = state ? state.retainStacks : undefined;
+            resourceInputs["stackGroupName"] = state ? state.stackGroupName : undefined;
+            resourceInputs["stackInstanceAccountId"] = state ? state.stackInstanceAccountId : undefined;
+            resourceInputs["stackInstanceRegionId"] = state ? state.stackInstanceRegionId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["timeoutInMinutes"] = state ? state.timeoutInMinutes : undefined;
         } else {
             const args = argsOrState as StackInstanceArgs | undefined;
             if ((!args || args.stackGroupName === undefined) && !opts.urn) {
@@ -159,20 +159,18 @@ export class StackInstance extends pulumi.CustomResource {
             if ((!args || args.stackInstanceRegionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'stackInstanceRegionId'");
             }
-            inputs["operationDescription"] = args ? args.operationDescription : undefined;
-            inputs["operationPreferences"] = args ? args.operationPreferences : undefined;
-            inputs["parameterOverrides"] = args ? args.parameterOverrides : undefined;
-            inputs["retainStacks"] = args ? args.retainStacks : undefined;
-            inputs["stackGroupName"] = args ? args.stackGroupName : undefined;
-            inputs["stackInstanceAccountId"] = args ? args.stackInstanceAccountId : undefined;
-            inputs["stackInstanceRegionId"] = args ? args.stackInstanceRegionId : undefined;
-            inputs["timeoutInMinutes"] = args ? args.timeoutInMinutes : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["operationDescription"] = args ? args.operationDescription : undefined;
+            resourceInputs["operationPreferences"] = args ? args.operationPreferences : undefined;
+            resourceInputs["parameterOverrides"] = args ? args.parameterOverrides : undefined;
+            resourceInputs["retainStacks"] = args ? args.retainStacks : undefined;
+            resourceInputs["stackGroupName"] = args ? args.stackGroupName : undefined;
+            resourceInputs["stackInstanceAccountId"] = args ? args.stackInstanceAccountId : undefined;
+            resourceInputs["stackInstanceRegionId"] = args ? args.stackInstanceRegionId : undefined;
+            resourceInputs["timeoutInMinutes"] = args ? args.timeoutInMinutes : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(StackInstance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(StackInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -153,27 +153,27 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            inputs["bigScreen"] = state ? state.bigScreen : undefined;
-            inputs["exclusiveIpPackage"] = state ? state.exclusiveIpPackage : undefined;
-            inputs["extBandwidth"] = state ? state.extBandwidth : undefined;
-            inputs["extDomainPackage"] = state ? state.extDomainPackage : undefined;
-            inputs["logStorage"] = state ? state.logStorage : undefined;
-            inputs["logTime"] = state ? state.logTime : undefined;
-            inputs["modifyType"] = state ? state.modifyType : undefined;
-            inputs["packageCode"] = state ? state.packageCode : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["prefessionalService"] = state ? state.prefessionalService : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["renewPeriod"] = state ? state.renewPeriod : undefined;
-            inputs["renewalStatus"] = state ? state.renewalStatus : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["subscriptionType"] = state ? state.subscriptionType : undefined;
-            inputs["wafLog"] = state ? state.wafLog : undefined;
+            resourceInputs["bigScreen"] = state ? state.bigScreen : undefined;
+            resourceInputs["exclusiveIpPackage"] = state ? state.exclusiveIpPackage : undefined;
+            resourceInputs["extBandwidth"] = state ? state.extBandwidth : undefined;
+            resourceInputs["extDomainPackage"] = state ? state.extDomainPackage : undefined;
+            resourceInputs["logStorage"] = state ? state.logStorage : undefined;
+            resourceInputs["logTime"] = state ? state.logTime : undefined;
+            resourceInputs["modifyType"] = state ? state.modifyType : undefined;
+            resourceInputs["packageCode"] = state ? state.packageCode : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["prefessionalService"] = state ? state.prefessionalService : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
+            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["subscriptionType"] = state ? state.subscriptionType : undefined;
+            resourceInputs["wafLog"] = state ? state.wafLog : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.bigScreen === undefined) && !opts.urn) {
@@ -206,28 +206,26 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.wafLog === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'wafLog'");
             }
-            inputs["bigScreen"] = args ? args.bigScreen : undefined;
-            inputs["exclusiveIpPackage"] = args ? args.exclusiveIpPackage : undefined;
-            inputs["extBandwidth"] = args ? args.extBandwidth : undefined;
-            inputs["extDomainPackage"] = args ? args.extDomainPackage : undefined;
-            inputs["logStorage"] = args ? args.logStorage : undefined;
-            inputs["logTime"] = args ? args.logTime : undefined;
-            inputs["modifyType"] = args ? args.modifyType : undefined;
-            inputs["packageCode"] = args ? args.packageCode : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["prefessionalService"] = args ? args.prefessionalService : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["renewPeriod"] = args ? args.renewPeriod : undefined;
-            inputs["renewalStatus"] = args ? args.renewalStatus : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["subscriptionType"] = args ? args.subscriptionType : undefined;
-            inputs["wafLog"] = args ? args.wafLog : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["bigScreen"] = args ? args.bigScreen : undefined;
+            resourceInputs["exclusiveIpPackage"] = args ? args.exclusiveIpPackage : undefined;
+            resourceInputs["extBandwidth"] = args ? args.extBandwidth : undefined;
+            resourceInputs["extDomainPackage"] = args ? args.extDomainPackage : undefined;
+            resourceInputs["logStorage"] = args ? args.logStorage : undefined;
+            resourceInputs["logTime"] = args ? args.logTime : undefined;
+            resourceInputs["modifyType"] = args ? args.modifyType : undefined;
+            resourceInputs["packageCode"] = args ? args.packageCode : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["prefessionalService"] = args ? args.prefessionalService : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
+            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["subscriptionType"] = args ? args.subscriptionType : undefined;
+            resourceInputs["wafLog"] = args ? args.wafLog : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Instance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

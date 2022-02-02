@@ -25,9 +25,9 @@ import * as utilities from "../utilities";
  *     playDomain: "your_plan_domain",
  *     pushDomain: "your_push_domain",
  * });
- * const defaultSystemGroups = defaultSystemGroup.id.apply(id => alicloud.videosurveillance.getSystemGroups({
- *     ids: [id],
- * }));
+ * const defaultSystemGroups = alicloud.videosurveillance.getSystemGroupsOutput({
+ *     ids: [defaultSystemGroup.id],
+ * });
  * export const vsGroup = defaultSystemGroups.apply(defaultSystemGroups => defaultSystemGroups.ids?[0]);
  * ```
  */
@@ -37,9 +37,7 @@ export function getSystemGroups(args?: GetSystemGroupsArgs, opts?: pulumi.Invoke
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:videosurveillance/getSystemGroups:getSystemGroups", {
         "ids": args.ids,
         "inProtocol": args.inProtocol,

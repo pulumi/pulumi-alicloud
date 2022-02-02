@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Hbr
 {
@@ -129,7 +128,7 @@ namespace Pulumi.AliCloud.Hbr
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBackupJobsResult> InvokeAsync(GetBackupJobsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackupJobsResult>("alicloud:hbr/getBackupJobs:getBackupJobs", args ?? new GetBackupJobsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBackupJobsResult>("alicloud:hbr/getBackupJobs:getBackupJobs", args ?? new GetBackupJobsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Hbr Backup Jobs of the current Alibaba Cloud user.
@@ -248,7 +247,7 @@ namespace Pulumi.AliCloud.Hbr
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBackupJobsResult> Invoke(GetBackupJobsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBackupJobsResult>("alicloud:hbr/getBackupJobs:getBackupJobs", args ?? new GetBackupJobsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetBackupJobsResult>("alicloud:hbr/getBackupJobs:getBackupJobs", args ?? new GetBackupJobsInvokeArgs(), options.WithDefaults());
     }
 
 

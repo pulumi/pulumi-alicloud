@@ -78,24 +78,22 @@ export class EventBus extends pulumi.CustomResource {
      */
     constructor(name: string, args: EventBusArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EventBusArgs | EventBusState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EventBusState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["eventBusName"] = state ? state.eventBusName : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["eventBusName"] = state ? state.eventBusName : undefined;
         } else {
             const args = argsOrState as EventBusArgs | undefined;
             if ((!args || args.eventBusName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'eventBusName'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["eventBusName"] = args ? args.eventBusName : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["eventBusName"] = args ? args.eventBusName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EventBus.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EventBus.__pulumiType, name, resourceInputs, opts);
     }
 }
 

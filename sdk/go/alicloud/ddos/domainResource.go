@@ -217,7 +217,7 @@ type DomainResourceInput interface {
 }
 
 func (*DomainResource) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainResource)(nil))
+	return reflect.TypeOf((**DomainResource)(nil)).Elem()
 }
 
 func (i *DomainResource) ToDomainResourceOutput() DomainResourceOutput {
@@ -226,35 +226,6 @@ func (i *DomainResource) ToDomainResourceOutput() DomainResourceOutput {
 
 func (i *DomainResource) ToDomainResourceOutputWithContext(ctx context.Context) DomainResourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainResourceOutput)
-}
-
-func (i *DomainResource) ToDomainResourcePtrOutput() DomainResourcePtrOutput {
-	return i.ToDomainResourcePtrOutputWithContext(context.Background())
-}
-
-func (i *DomainResource) ToDomainResourcePtrOutputWithContext(ctx context.Context) DomainResourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainResourcePtrOutput)
-}
-
-type DomainResourcePtrInput interface {
-	pulumi.Input
-
-	ToDomainResourcePtrOutput() DomainResourcePtrOutput
-	ToDomainResourcePtrOutputWithContext(ctx context.Context) DomainResourcePtrOutput
-}
-
-type domainResourcePtrType DomainResourceArgs
-
-func (*domainResourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainResource)(nil))
-}
-
-func (i *domainResourcePtrType) ToDomainResourcePtrOutput() DomainResourcePtrOutput {
-	return i.ToDomainResourcePtrOutputWithContext(context.Background())
-}
-
-func (i *domainResourcePtrType) ToDomainResourcePtrOutputWithContext(ctx context.Context) DomainResourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainResourcePtrOutput)
 }
 
 // DomainResourceArrayInput is an input type that accepts DomainResourceArray and DomainResourceArrayOutput values.
@@ -310,7 +281,7 @@ func (i DomainResourceMap) ToDomainResourceMapOutputWithContext(ctx context.Cont
 type DomainResourceOutput struct{ *pulumi.OutputState }
 
 func (DomainResourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainResource)(nil))
+	return reflect.TypeOf((**DomainResource)(nil)).Elem()
 }
 
 func (o DomainResourceOutput) ToDomainResourceOutput() DomainResourceOutput {
@@ -321,44 +292,10 @@ func (o DomainResourceOutput) ToDomainResourceOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o DomainResourceOutput) ToDomainResourcePtrOutput() DomainResourcePtrOutput {
-	return o.ToDomainResourcePtrOutputWithContext(context.Background())
-}
-
-func (o DomainResourceOutput) ToDomainResourcePtrOutputWithContext(ctx context.Context) DomainResourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainResource) *DomainResource {
-		return &v
-	}).(DomainResourcePtrOutput)
-}
-
-type DomainResourcePtrOutput struct{ *pulumi.OutputState }
-
-func (DomainResourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainResource)(nil))
-}
-
-func (o DomainResourcePtrOutput) ToDomainResourcePtrOutput() DomainResourcePtrOutput {
-	return o
-}
-
-func (o DomainResourcePtrOutput) ToDomainResourcePtrOutputWithContext(ctx context.Context) DomainResourcePtrOutput {
-	return o
-}
-
-func (o DomainResourcePtrOutput) Elem() DomainResourceOutput {
-	return o.ApplyT(func(v *DomainResource) DomainResource {
-		if v != nil {
-			return *v
-		}
-		var ret DomainResource
-		return ret
-	}).(DomainResourceOutput)
-}
-
 type DomainResourceArrayOutput struct{ *pulumi.OutputState }
 
 func (DomainResourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DomainResource)(nil))
+	return reflect.TypeOf((*[]*DomainResource)(nil)).Elem()
 }
 
 func (o DomainResourceArrayOutput) ToDomainResourceArrayOutput() DomainResourceArrayOutput {
@@ -370,15 +307,15 @@ func (o DomainResourceArrayOutput) ToDomainResourceArrayOutputWithContext(ctx co
 }
 
 func (o DomainResourceArrayOutput) Index(i pulumi.IntInput) DomainResourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DomainResource {
-		return vs[0].([]DomainResource)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DomainResource {
+		return vs[0].([]*DomainResource)[vs[1].(int)]
 	}).(DomainResourceOutput)
 }
 
 type DomainResourceMapOutput struct{ *pulumi.OutputState }
 
 func (DomainResourceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DomainResource)(nil))
+	return reflect.TypeOf((*map[string]*DomainResource)(nil)).Elem()
 }
 
 func (o DomainResourceMapOutput) ToDomainResourceMapOutput() DomainResourceMapOutput {
@@ -390,18 +327,16 @@ func (o DomainResourceMapOutput) ToDomainResourceMapOutputWithContext(ctx contex
 }
 
 func (o DomainResourceMapOutput) MapIndex(k pulumi.StringInput) DomainResourceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DomainResource {
-		return vs[0].(map[string]DomainResource)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DomainResource {
+		return vs[0].(map[string]*DomainResource)[vs[1].(string)]
 	}).(DomainResourceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainResourceInput)(nil)).Elem(), &DomainResource{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DomainResourcePtrInput)(nil)).Elem(), &DomainResource{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainResourceArrayInput)(nil)).Elem(), DomainResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainResourceMapInput)(nil)).Elem(), DomainResourceMap{})
 	pulumi.RegisterOutputType(DomainResourceOutput{})
-	pulumi.RegisterOutputType(DomainResourcePtrOutput{})
 	pulumi.RegisterOutputType(DomainResourceArrayOutput{})
 	pulumi.RegisterOutputType(DomainResourceMapOutput{})
 }

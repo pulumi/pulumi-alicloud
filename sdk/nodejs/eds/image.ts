@@ -120,28 +120,26 @@ export class Image extends pulumi.CustomResource {
      */
     constructor(name: string, args: ImageArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ImageArgs | ImageState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["desktopId"] = state ? state.desktopId : undefined;
-            inputs["imageName"] = state ? state.imageName : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["desktopId"] = state ? state.desktopId : undefined;
+            resourceInputs["imageName"] = state ? state.imageName : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ImageArgs | undefined;
             if ((!args || args.desktopId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'desktopId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["desktopId"] = args ? args.desktopId : undefined;
-            inputs["imageName"] = args ? args.imageName : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["desktopId"] = args ? args.desktopId : undefined;
+            resourceInputs["imageName"] = args ? args.imageName : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Image.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Image.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Pvtz
 {
@@ -56,7 +55,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEndpointsResult> InvokeAsync(GetEndpointsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointsResult>("alicloud:pvtz/getEndpoints:getEndpoints", args ?? new GetEndpointsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointsResult>("alicloud:pvtz/getEndpoints:getEndpoints", args ?? new GetEndpointsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Pvtz Endpoints of the current Alibaba Cloud user.
@@ -102,7 +101,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEndpointsResult> Invoke(GetEndpointsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEndpointsResult>("alicloud:pvtz/getEndpoints:getEndpoints", args ?? new GetEndpointsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetEndpointsResult>("alicloud:pvtz/getEndpoints:getEndpoints", args ?? new GetEndpointsInvokeArgs(), options.WithDefaults());
     }
 
 

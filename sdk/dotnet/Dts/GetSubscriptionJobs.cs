@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dts
 {
@@ -43,7 +42,7 @@ namespace Pulumi.AliCloud.Dts
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSubscriptionJobsResult> InvokeAsync(GetSubscriptionJobsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSubscriptionJobsResult>("alicloud:dts/getSubscriptionJobs:getSubscriptionJobs", args ?? new GetSubscriptionJobsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSubscriptionJobsResult>("alicloud:dts/getSubscriptionJobs:getSubscriptionJobs", args ?? new GetSubscriptionJobsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
@@ -76,7 +75,7 @@ namespace Pulumi.AliCloud.Dts
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSubscriptionJobsResult> Invoke(GetSubscriptionJobsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSubscriptionJobsResult>("alicloud:dts/getSubscriptionJobs:getSubscriptionJobs", args ?? new GetSubscriptionJobsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSubscriptionJobsResult>("alicloud:dts/getSubscriptionJobs:getSubscriptionJobs", args ?? new GetSubscriptionJobsInvokeArgs(), options.WithDefaults());
     }
 
 

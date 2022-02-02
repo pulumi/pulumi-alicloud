@@ -90,7 +90,7 @@ def get_job_templates(ids: Optional[Sequence[str]] = None,
     default = alicloud.ehpc.JobTemplate("default",
         job_template_name="example_value",
         command_line="./LammpsTest/lammps.pbs")
-    ids = default.id.apply(lambda id: alicloud.ehpc.get_job_templates(ids=[id]))
+    ids = alicloud.ehpc.get_job_templates_output(ids=[default.id])
     pulumi.export("ehpcJobTemplateId1", ids.id)
     ```
 
@@ -133,7 +133,7 @@ def get_job_templates_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     default = alicloud.ehpc.JobTemplate("default",
         job_template_name="example_value",
         command_line="./LammpsTest/lammps.pbs")
-    ids = default.id.apply(lambda id: alicloud.ehpc.get_job_templates(ids=[id]))
+    ids = alicloud.ehpc.get_job_templates_output(ids=[default.id])
     pulumi.export("ehpcJobTemplateId1", ids.id)
     ```
 

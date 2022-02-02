@@ -168,7 +168,7 @@ type DnsDomainInput interface {
 }
 
 func (*DnsDomain) ElementType() reflect.Type {
-	return reflect.TypeOf((*DnsDomain)(nil))
+	return reflect.TypeOf((**DnsDomain)(nil)).Elem()
 }
 
 func (i *DnsDomain) ToDnsDomainOutput() DnsDomainOutput {
@@ -177,35 +177,6 @@ func (i *DnsDomain) ToDnsDomainOutput() DnsDomainOutput {
 
 func (i *DnsDomain) ToDnsDomainOutputWithContext(ctx context.Context) DnsDomainOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DnsDomainOutput)
-}
-
-func (i *DnsDomain) ToDnsDomainPtrOutput() DnsDomainPtrOutput {
-	return i.ToDnsDomainPtrOutputWithContext(context.Background())
-}
-
-func (i *DnsDomain) ToDnsDomainPtrOutputWithContext(ctx context.Context) DnsDomainPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DnsDomainPtrOutput)
-}
-
-type DnsDomainPtrInput interface {
-	pulumi.Input
-
-	ToDnsDomainPtrOutput() DnsDomainPtrOutput
-	ToDnsDomainPtrOutputWithContext(ctx context.Context) DnsDomainPtrOutput
-}
-
-type dnsDomainPtrType DnsDomainArgs
-
-func (*dnsDomainPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DnsDomain)(nil))
-}
-
-func (i *dnsDomainPtrType) ToDnsDomainPtrOutput() DnsDomainPtrOutput {
-	return i.ToDnsDomainPtrOutputWithContext(context.Background())
-}
-
-func (i *dnsDomainPtrType) ToDnsDomainPtrOutputWithContext(ctx context.Context) DnsDomainPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DnsDomainPtrOutput)
 }
 
 // DnsDomainArrayInput is an input type that accepts DnsDomainArray and DnsDomainArrayOutput values.
@@ -261,7 +232,7 @@ func (i DnsDomainMap) ToDnsDomainMapOutputWithContext(ctx context.Context) DnsDo
 type DnsDomainOutput struct{ *pulumi.OutputState }
 
 func (DnsDomainOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DnsDomain)(nil))
+	return reflect.TypeOf((**DnsDomain)(nil)).Elem()
 }
 
 func (o DnsDomainOutput) ToDnsDomainOutput() DnsDomainOutput {
@@ -272,44 +243,10 @@ func (o DnsDomainOutput) ToDnsDomainOutputWithContext(ctx context.Context) DnsDo
 	return o
 }
 
-func (o DnsDomainOutput) ToDnsDomainPtrOutput() DnsDomainPtrOutput {
-	return o.ToDnsDomainPtrOutputWithContext(context.Background())
-}
-
-func (o DnsDomainOutput) ToDnsDomainPtrOutputWithContext(ctx context.Context) DnsDomainPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DnsDomain) *DnsDomain {
-		return &v
-	}).(DnsDomainPtrOutput)
-}
-
-type DnsDomainPtrOutput struct{ *pulumi.OutputState }
-
-func (DnsDomainPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DnsDomain)(nil))
-}
-
-func (o DnsDomainPtrOutput) ToDnsDomainPtrOutput() DnsDomainPtrOutput {
-	return o
-}
-
-func (o DnsDomainPtrOutput) ToDnsDomainPtrOutputWithContext(ctx context.Context) DnsDomainPtrOutput {
-	return o
-}
-
-func (o DnsDomainPtrOutput) Elem() DnsDomainOutput {
-	return o.ApplyT(func(v *DnsDomain) DnsDomain {
-		if v != nil {
-			return *v
-		}
-		var ret DnsDomain
-		return ret
-	}).(DnsDomainOutput)
-}
-
 type DnsDomainArrayOutput struct{ *pulumi.OutputState }
 
 func (DnsDomainArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DnsDomain)(nil))
+	return reflect.TypeOf((*[]*DnsDomain)(nil)).Elem()
 }
 
 func (o DnsDomainArrayOutput) ToDnsDomainArrayOutput() DnsDomainArrayOutput {
@@ -321,15 +258,15 @@ func (o DnsDomainArrayOutput) ToDnsDomainArrayOutputWithContext(ctx context.Cont
 }
 
 func (o DnsDomainArrayOutput) Index(i pulumi.IntInput) DnsDomainOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DnsDomain {
-		return vs[0].([]DnsDomain)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DnsDomain {
+		return vs[0].([]*DnsDomain)[vs[1].(int)]
 	}).(DnsDomainOutput)
 }
 
 type DnsDomainMapOutput struct{ *pulumi.OutputState }
 
 func (DnsDomainMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DnsDomain)(nil))
+	return reflect.TypeOf((*map[string]*DnsDomain)(nil)).Elem()
 }
 
 func (o DnsDomainMapOutput) ToDnsDomainMapOutput() DnsDomainMapOutput {
@@ -341,18 +278,16 @@ func (o DnsDomainMapOutput) ToDnsDomainMapOutputWithContext(ctx context.Context)
 }
 
 func (o DnsDomainMapOutput) MapIndex(k pulumi.StringInput) DnsDomainOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DnsDomain {
-		return vs[0].(map[string]DnsDomain)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DnsDomain {
+		return vs[0].(map[string]*DnsDomain)[vs[1].(string)]
 	}).(DnsDomainOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsDomainInput)(nil)).Elem(), &DnsDomain{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DnsDomainPtrInput)(nil)).Elem(), &DnsDomain{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsDomainArrayInput)(nil)).Elem(), DnsDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsDomainMapInput)(nil)).Elem(), DnsDomainMap{})
 	pulumi.RegisterOutputType(DnsDomainOutput{})
-	pulumi.RegisterOutputType(DnsDomainPtrOutput{})
 	pulumi.RegisterOutputType(DnsDomainArrayOutput{})
 	pulumi.RegisterOutputType(DnsDomainMapOutput{})
 }

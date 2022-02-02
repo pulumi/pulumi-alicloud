@@ -34,9 +34,7 @@ export function getAdditionalCertificates(args: GetAdditionalCertificatesArgs, o
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ga/getAdditionalCertificates:getAdditionalCertificates", {
         "acceleratorId": args.acceleratorId,
         "ids": args.ids,

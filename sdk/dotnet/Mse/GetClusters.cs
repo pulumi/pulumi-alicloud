@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Mse
 {
@@ -48,7 +47,7 @@ namespace Pulumi.AliCloud.Mse
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:mse/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:mse/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of MSE Clusters in an Alibaba Cloud account according to the specified filters.
@@ -86,7 +85,7 @@ namespace Pulumi.AliCloud.Mse
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:mse/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:mse/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -29,9 +29,7 @@ export function getRouterInterfaces(args?: GetRouterInterfacesArgs, opts?: pulum
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

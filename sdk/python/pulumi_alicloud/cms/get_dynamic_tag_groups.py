@@ -122,7 +122,7 @@ def get_dynamic_tag_groups(ids: Optional[Sequence[str]] = None,
             tag_value="your_tag_value",
             tag_value_match_function="all",
         )])
-    ids = default_dynamic_tag_group.id.apply(lambda id: alicloud.cms.get_dynamic_tag_groups(ids=[id]))
+    ids = alicloud.cms.get_dynamic_tag_groups_output(ids=[default_dynamic_tag_group.id])
     pulumi.export("cmsDynamicTagGroupId1", ids.groups[0].id)
     ```
 
@@ -185,7 +185,7 @@ def get_dynamic_tag_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[s
             tag_value="your_tag_value",
             tag_value_match_function="all",
         )])
-    ids = default_dynamic_tag_group.id.apply(lambda id: alicloud.cms.get_dynamic_tag_groups(ids=[id]))
+    ids = alicloud.cms.get_dynamic_tag_groups_output(ids=[default_dynamic_tag_group.id])
     pulumi.export("cmsDynamicTagGroupId1", ids.groups[0].id)
     ```
 

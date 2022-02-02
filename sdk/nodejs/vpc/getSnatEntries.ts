@@ -42,9 +42,9 @@ import * as utilities from "../utilities";
  *     sourceVswitchId: fooSwitch.id,
  *     snatIp: fooEipAddress.ipAddress,
  * });
- * const fooSnatEntries = fooSnatEntry.snatTableId.apply(snatTableId => alicloud.vpc.getSnatEntries({
- *     snatTableId: snatTableId,
- * }));
+ * const fooSnatEntries = alicloud.vpc.getSnatEntriesOutput({
+ *     snatTableId: fooSnatEntry.snatTableId,
+ * });
  * ```
  */
 export function getSnatEntries(args: GetSnatEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetSnatEntriesResult> {
@@ -52,9 +52,7 @@ export function getSnatEntries(args: GetSnatEntriesArgs, opts?: pulumi.InvokeOpt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:vpc/getSnatEntries:getSnatEntries", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

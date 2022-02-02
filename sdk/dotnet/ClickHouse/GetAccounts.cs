@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ClickHouse
 {
@@ -54,18 +53,13 @@ namespace Pulumi.AliCloud.ClickHouse
         ///             AccountName = name,
         ///             AccountPassword = pwd,
         ///         });
-        ///         var defaultAccounts = Output.Tuple(defaultAccount.Id, defaultDbCluster.Id).Apply(values =&gt;
+        ///         var defaultAccounts = AliCloud.ClickHouse.GetAccounts.Invoke(new AliCloud.ClickHouse.GetAccountsInvokeArgs
         ///         {
-        ///             var defaultAccountId = values.Item1;
-        ///             var defaultDbClusterId = values.Item2;
-        ///             return AliCloud.ClickHouse.GetAccounts.InvokeAsync(new AliCloud.ClickHouse.GetAccountsArgs
+        ///             Ids = 
         ///             {
-        ///                 Ids = 
-        ///                 {
-        ///                     defaultAccountId,
-        ///                 },
-        ///                 DbClusterId = defaultDbClusterId,
-        ///             });
+        ///                 defaultAccount.Id,
+        ///             },
+        ///             DbClusterId = defaultDbCluster.Id,
         ///         });
         ///         this.AccountId = defaultAccounts.Apply(defaultAccounts =&gt; defaultAccounts.Ids?[0]);
         ///     }
@@ -78,7 +72,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountsResult> InvokeAsync(GetAccountsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("alicloud:clickhouse/getAccounts:getAccounts", args ?? new GetAccountsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("alicloud:clickhouse/getAccounts:getAccounts", args ?? new GetAccountsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Click House Accounts of the current Alibaba Cloud user.
@@ -122,18 +116,13 @@ namespace Pulumi.AliCloud.ClickHouse
         ///             AccountName = name,
         ///             AccountPassword = pwd,
         ///         });
-        ///         var defaultAccounts = Output.Tuple(defaultAccount.Id, defaultDbCluster.Id).Apply(values =&gt;
+        ///         var defaultAccounts = AliCloud.ClickHouse.GetAccounts.Invoke(new AliCloud.ClickHouse.GetAccountsInvokeArgs
         ///         {
-        ///             var defaultAccountId = values.Item1;
-        ///             var defaultDbClusterId = values.Item2;
-        ///             return AliCloud.ClickHouse.GetAccounts.InvokeAsync(new AliCloud.ClickHouse.GetAccountsArgs
+        ///             Ids = 
         ///             {
-        ///                 Ids = 
-        ///                 {
-        ///                     defaultAccountId,
-        ///                 },
-        ///                 DbClusterId = defaultDbClusterId,
-        ///             });
+        ///                 defaultAccount.Id,
+        ///             },
+        ///             DbClusterId = defaultDbCluster.Id,
         ///         });
         ///         this.AccountId = defaultAccounts.Apply(defaultAccounts =&gt; defaultAccounts.Ids?[0]);
         ///     }
@@ -146,7 +135,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccountsResult> Invoke(GetAccountsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("alicloud:clickhouse/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("alicloud:clickhouse/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithDefaults());
     }
 
 

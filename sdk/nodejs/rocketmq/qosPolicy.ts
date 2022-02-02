@@ -127,21 +127,21 @@ export class QosPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: QosPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QosPolicyArgs | QosPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QosPolicyState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["destCidr"] = state ? state.destCidr : undefined;
-            inputs["destPortRange"] = state ? state.destPortRange : undefined;
-            inputs["endTime"] = state ? state.endTime : undefined;
-            inputs["ipProtocol"] = state ? state.ipProtocol : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["qosId"] = state ? state.qosId : undefined;
-            inputs["sourceCidr"] = state ? state.sourceCidr : undefined;
-            inputs["sourcePortRange"] = state ? state.sourcePortRange : undefined;
-            inputs["startTime"] = state ? state.startTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["destCidr"] = state ? state.destCidr : undefined;
+            resourceInputs["destPortRange"] = state ? state.destPortRange : undefined;
+            resourceInputs["endTime"] = state ? state.endTime : undefined;
+            resourceInputs["ipProtocol"] = state ? state.ipProtocol : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["qosId"] = state ? state.qosId : undefined;
+            resourceInputs["sourceCidr"] = state ? state.sourceCidr : undefined;
+            resourceInputs["sourcePortRange"] = state ? state.sourcePortRange : undefined;
+            resourceInputs["startTime"] = state ? state.startTime : undefined;
         } else {
             const args = argsOrState as QosPolicyArgs | undefined;
             if ((!args || args.destCidr === undefined) && !opts.urn) {
@@ -165,22 +165,20 @@ export class QosPolicy extends pulumi.CustomResource {
             if ((!args || args.sourcePortRange === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourcePortRange'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["destCidr"] = args ? args.destCidr : undefined;
-            inputs["destPortRange"] = args ? args.destPortRange : undefined;
-            inputs["endTime"] = args ? args.endTime : undefined;
-            inputs["ipProtocol"] = args ? args.ipProtocol : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["qosId"] = args ? args.qosId : undefined;
-            inputs["sourceCidr"] = args ? args.sourceCidr : undefined;
-            inputs["sourcePortRange"] = args ? args.sourcePortRange : undefined;
-            inputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["destCidr"] = args ? args.destCidr : undefined;
+            resourceInputs["destPortRange"] = args ? args.destPortRange : undefined;
+            resourceInputs["endTime"] = args ? args.endTime : undefined;
+            resourceInputs["ipProtocol"] = args ? args.ipProtocol : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["qosId"] = args ? args.qosId : undefined;
+            resourceInputs["sourceCidr"] = args ? args.sourceCidr : undefined;
+            resourceInputs["sourcePortRange"] = args ? args.sourcePortRange : undefined;
+            resourceInputs["startTime"] = args ? args.startTime : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(QosPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(QosPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ResourceManager
 {
@@ -44,7 +43,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRolesResult> InvokeAsync(GetRolesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRolesResult>("alicloud:resourcemanager/getRoles:getRoles", args ?? new GetRolesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRolesResult>("alicloud:resourcemanager/getRoles:getRoles", args ?? new GetRolesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Resource Manager Roles of the current Alibaba Cloud user.
@@ -78,7 +77,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRolesResult> Invoke(GetRolesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRolesResult>("alicloud:resourcemanager/getRoles:getRoles", args ?? new GetRolesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRolesResult>("alicloud:resourcemanager/getRoles:getRoles", args ?? new GetRolesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -130,69 +130,67 @@ export class Disk extends pulumi.CustomResource {
      */
     constructor(name: string, args?: DiskArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DiskArgs | DiskState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DiskState | undefined;
-            inputs["advancedFeatures"] = state ? state.advancedFeatures : undefined;
-            inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
-            inputs["category"] = state ? state.category : undefined;
-            inputs["dedicatedBlockStorageClusterId"] = state ? state.dedicatedBlockStorageClusterId : undefined;
-            inputs["deleteAutoSnapshot"] = state ? state.deleteAutoSnapshot : undefined;
-            inputs["deleteWithInstance"] = state ? state.deleteWithInstance : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["diskName"] = state ? state.diskName : undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["enableAutoSnapshot"] = state ? state.enableAutoSnapshot : undefined;
-            inputs["encryptAlgorithm"] = state ? state.encryptAlgorithm : undefined;
-            inputs["encrypted"] = state ? state.encrypted : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["paymentType"] = state ? state.paymentType : undefined;
-            inputs["performanceLevel"] = state ? state.performanceLevel : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["snapshotId"] = state ? state.snapshotId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["storageSetId"] = state ? state.storageSetId : undefined;
-            inputs["storageSetPartitionNumber"] = state ? state.storageSetPartitionNumber : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["advancedFeatures"] = state ? state.advancedFeatures : undefined;
+            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
+            resourceInputs["category"] = state ? state.category : undefined;
+            resourceInputs["dedicatedBlockStorageClusterId"] = state ? state.dedicatedBlockStorageClusterId : undefined;
+            resourceInputs["deleteAutoSnapshot"] = state ? state.deleteAutoSnapshot : undefined;
+            resourceInputs["deleteWithInstance"] = state ? state.deleteWithInstance : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["diskName"] = state ? state.diskName : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["enableAutoSnapshot"] = state ? state.enableAutoSnapshot : undefined;
+            resourceInputs["encryptAlgorithm"] = state ? state.encryptAlgorithm : undefined;
+            resourceInputs["encrypted"] = state ? state.encrypted : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["performanceLevel"] = state ? state.performanceLevel : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["storageSetId"] = state ? state.storageSetId : undefined;
+            resourceInputs["storageSetPartitionNumber"] = state ? state.storageSetPartitionNumber : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as DiskArgs | undefined;
-            inputs["advancedFeatures"] = args ? args.advancedFeatures : undefined;
-            inputs["availabilityZone"] = args ? args.availabilityZone : undefined;
-            inputs["category"] = args ? args.category : undefined;
-            inputs["dedicatedBlockStorageClusterId"] = args ? args.dedicatedBlockStorageClusterId : undefined;
-            inputs["deleteAutoSnapshot"] = args ? args.deleteAutoSnapshot : undefined;
-            inputs["deleteWithInstance"] = args ? args.deleteWithInstance : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["diskName"] = args ? args.diskName : undefined;
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["enableAutoSnapshot"] = args ? args.enableAutoSnapshot : undefined;
-            inputs["encryptAlgorithm"] = args ? args.encryptAlgorithm : undefined;
-            inputs["encrypted"] = args ? args.encrypted : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["paymentType"] = args ? args.paymentType : undefined;
-            inputs["performanceLevel"] = args ? args.performanceLevel : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["size"] = args ? args.size : undefined;
-            inputs["snapshotId"] = args ? args.snapshotId : undefined;
-            inputs["storageSetId"] = args ? args.storageSetId : undefined;
-            inputs["storageSetPartitionNumber"] = args ? args.storageSetPartitionNumber : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["advancedFeatures"] = args ? args.advancedFeatures : undefined;
+            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
+            resourceInputs["category"] = args ? args.category : undefined;
+            resourceInputs["dedicatedBlockStorageClusterId"] = args ? args.dedicatedBlockStorageClusterId : undefined;
+            resourceInputs["deleteAutoSnapshot"] = args ? args.deleteAutoSnapshot : undefined;
+            resourceInputs["deleteWithInstance"] = args ? args.deleteWithInstance : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["diskName"] = args ? args.diskName : undefined;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["enableAutoSnapshot"] = args ? args.enableAutoSnapshot : undefined;
+            resourceInputs["encryptAlgorithm"] = args ? args.encryptAlgorithm : undefined;
+            resourceInputs["encrypted"] = args ? args.encrypted : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["performanceLevel"] = args ? args.performanceLevel : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
+            resourceInputs["storageSetId"] = args ? args.storageSetId : undefined;
+            resourceInputs["storageSetPartitionNumber"] = args ? args.storageSetPartitionNumber : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Disk.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Disk.__pulumiType, name, resourceInputs, opts);
     }
 }
 

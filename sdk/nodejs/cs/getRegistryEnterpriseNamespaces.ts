@@ -31,9 +31,7 @@ export function getRegistryEnterpriseNamespaces(args: GetRegistryEnterpriseNames
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cs/getRegistryEnterpriseNamespaces:getRegistryEnterpriseNamespaces", {
         "ids": args.ids,
         "instanceId": args.instanceId,

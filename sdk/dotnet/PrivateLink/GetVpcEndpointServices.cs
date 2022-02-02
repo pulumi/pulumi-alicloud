@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.PrivateLink
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.PrivateLink
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVpcEndpointServicesResult> InvokeAsync(GetVpcEndpointServicesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVpcEndpointServicesResult>("alicloud:privatelink/getVpcEndpointServices:getVpcEndpointServices", args ?? new GetVpcEndpointServicesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVpcEndpointServicesResult>("alicloud:privatelink/getVpcEndpointServices:getVpcEndpointServices", args ?? new GetVpcEndpointServicesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.PrivateLink
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVpcEndpointServicesResult> Invoke(GetVpcEndpointServicesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVpcEndpointServicesResult>("alicloud:privatelink/getVpcEndpointServices:getVpcEndpointServices", args ?? new GetVpcEndpointServicesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetVpcEndpointServicesResult>("alicloud:privatelink/getVpcEndpointServices:getVpcEndpointServices", args ?? new GetVpcEndpointServicesInvokeArgs(), options.WithDefaults());
     }
 
 

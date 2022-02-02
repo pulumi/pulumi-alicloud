@@ -141,28 +141,28 @@ export class Domain extends pulumi.CustomResource {
      */
     constructor(name: string, args: DomainArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainArgs | DomainState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
-            inputs["authConfig"] = state ? state.authConfig : undefined;
-            inputs["blockIps"] = state ? state.blockIps : undefined;
-            inputs["cacheConfigs"] = state ? state.cacheConfigs : undefined;
-            inputs["cdnType"] = state ? state.cdnType : undefined;
-            inputs["certificateConfig"] = state ? state.certificateConfig : undefined;
-            inputs["domainName"] = state ? state.domainName : undefined;
-            inputs["httpHeaderConfigs"] = state ? state.httpHeaderConfigs : undefined;
-            inputs["optimizeEnable"] = state ? state.optimizeEnable : undefined;
-            inputs["page404Config"] = state ? state.page404Config : undefined;
-            inputs["pageCompressEnable"] = state ? state.pageCompressEnable : undefined;
-            inputs["parameterFilterConfig"] = state ? state.parameterFilterConfig : undefined;
-            inputs["rangeEnable"] = state ? state.rangeEnable : undefined;
-            inputs["referConfig"] = state ? state.referConfig : undefined;
-            inputs["scope"] = state ? state.scope : undefined;
-            inputs["sourcePort"] = state ? state.sourcePort : undefined;
-            inputs["sourceType"] = state ? state.sourceType : undefined;
-            inputs["sources"] = state ? state.sources : undefined;
-            inputs["videoSeekEnable"] = state ? state.videoSeekEnable : undefined;
+            resourceInputs["authConfig"] = state ? state.authConfig : undefined;
+            resourceInputs["blockIps"] = state ? state.blockIps : undefined;
+            resourceInputs["cacheConfigs"] = state ? state.cacheConfigs : undefined;
+            resourceInputs["cdnType"] = state ? state.cdnType : undefined;
+            resourceInputs["certificateConfig"] = state ? state.certificateConfig : undefined;
+            resourceInputs["domainName"] = state ? state.domainName : undefined;
+            resourceInputs["httpHeaderConfigs"] = state ? state.httpHeaderConfigs : undefined;
+            resourceInputs["optimizeEnable"] = state ? state.optimizeEnable : undefined;
+            resourceInputs["page404Config"] = state ? state.page404Config : undefined;
+            resourceInputs["pageCompressEnable"] = state ? state.pageCompressEnable : undefined;
+            resourceInputs["parameterFilterConfig"] = state ? state.parameterFilterConfig : undefined;
+            resourceInputs["rangeEnable"] = state ? state.rangeEnable : undefined;
+            resourceInputs["referConfig"] = state ? state.referConfig : undefined;
+            resourceInputs["scope"] = state ? state.scope : undefined;
+            resourceInputs["sourcePort"] = state ? state.sourcePort : undefined;
+            resourceInputs["sourceType"] = state ? state.sourceType : undefined;
+            resourceInputs["sources"] = state ? state.sources : undefined;
+            resourceInputs["videoSeekEnable"] = state ? state.videoSeekEnable : undefined;
         } else {
             const args = argsOrState as DomainArgs | undefined;
             if ((!args || args.cdnType === undefined) && !opts.urn) {
@@ -171,29 +171,27 @@ export class Domain extends pulumi.CustomResource {
             if ((!args || args.domainName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            inputs["authConfig"] = args ? args.authConfig : undefined;
-            inputs["blockIps"] = args ? args.blockIps : undefined;
-            inputs["cacheConfigs"] = args ? args.cacheConfigs : undefined;
-            inputs["cdnType"] = args ? args.cdnType : undefined;
-            inputs["certificateConfig"] = args ? args.certificateConfig : undefined;
-            inputs["domainName"] = args ? args.domainName : undefined;
-            inputs["httpHeaderConfigs"] = args ? args.httpHeaderConfigs : undefined;
-            inputs["optimizeEnable"] = args ? args.optimizeEnable : undefined;
-            inputs["page404Config"] = args ? args.page404Config : undefined;
-            inputs["pageCompressEnable"] = args ? args.pageCompressEnable : undefined;
-            inputs["parameterFilterConfig"] = args ? args.parameterFilterConfig : undefined;
-            inputs["rangeEnable"] = args ? args.rangeEnable : undefined;
-            inputs["referConfig"] = args ? args.referConfig : undefined;
-            inputs["scope"] = args ? args.scope : undefined;
-            inputs["sourcePort"] = args ? args.sourcePort : undefined;
-            inputs["sourceType"] = args ? args.sourceType : undefined;
-            inputs["sources"] = args ? args.sources : undefined;
-            inputs["videoSeekEnable"] = args ? args.videoSeekEnable : undefined;
+            resourceInputs["authConfig"] = args ? args.authConfig : undefined;
+            resourceInputs["blockIps"] = args ? args.blockIps : undefined;
+            resourceInputs["cacheConfigs"] = args ? args.cacheConfigs : undefined;
+            resourceInputs["cdnType"] = args ? args.cdnType : undefined;
+            resourceInputs["certificateConfig"] = args ? args.certificateConfig : undefined;
+            resourceInputs["domainName"] = args ? args.domainName : undefined;
+            resourceInputs["httpHeaderConfigs"] = args ? args.httpHeaderConfigs : undefined;
+            resourceInputs["optimizeEnable"] = args ? args.optimizeEnable : undefined;
+            resourceInputs["page404Config"] = args ? args.page404Config : undefined;
+            resourceInputs["pageCompressEnable"] = args ? args.pageCompressEnable : undefined;
+            resourceInputs["parameterFilterConfig"] = args ? args.parameterFilterConfig : undefined;
+            resourceInputs["rangeEnable"] = args ? args.rangeEnable : undefined;
+            resourceInputs["referConfig"] = args ? args.referConfig : undefined;
+            resourceInputs["scope"] = args ? args.scope : undefined;
+            resourceInputs["sourcePort"] = args ? args.sourcePort : undefined;
+            resourceInputs["sourceType"] = args ? args.sourceType : undefined;
+            resourceInputs["sources"] = args ? args.sources : undefined;
+            resourceInputs["videoSeekEnable"] = args ? args.videoSeekEnable : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Domain.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Domain.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -75,14 +75,14 @@ export class Group extends pulumi.CustomResource {
      */
     constructor(name: string, args: GroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupArgs | GroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["directoryId"] = state ? state.directoryId : undefined;
-            inputs["groupId"] = state ? state.groupId : undefined;
-            inputs["groupName"] = state ? state.groupName : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["directoryId"] = state ? state.directoryId : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["groupName"] = state ? state.groupName : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
             if ((!args || args.directoryId === undefined) && !opts.urn) {
@@ -91,15 +91,13 @@ export class Group extends pulumi.CustomResource {
             if ((!args || args.groupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupName'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["directoryId"] = args ? args.directoryId : undefined;
-            inputs["groupName"] = args ? args.groupName : undefined;
-            inputs["groupId"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["directoryId"] = args ? args.directoryId : undefined;
+            resourceInputs["groupName"] = args ? args.groupName : undefined;
+            resourceInputs["groupId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Group.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Group.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -84,19 +84,19 @@ export class Record extends pulumi.CustomResource {
      */
     constructor(name: string, args: RecordArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RecordArgs | RecordState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RecordState | undefined;
-            inputs["hostRecord"] = state ? state.hostRecord : undefined;
-            inputs["locked"] = state ? state.locked : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["routing"] = state ? state.routing : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["ttl"] = state ? state.ttl : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["value"] = state ? state.value : undefined;
+            resourceInputs["hostRecord"] = state ? state.hostRecord : undefined;
+            resourceInputs["locked"] = state ? state.locked : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["routing"] = state ? state.routing : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as RecordArgs | undefined;
             if ((!args || args.hostRecord === undefined) && !opts.urn) {
@@ -108,20 +108,18 @@ export class Record extends pulumi.CustomResource {
             if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            inputs["hostRecord"] = args ? args.hostRecord : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["routing"] = args ? args.routing : undefined;
-            inputs["ttl"] = args ? args.ttl : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["value"] = args ? args.value : undefined;
-            inputs["locked"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["hostRecord"] = args ? args.hostRecord : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["routing"] = args ? args.routing : undefined;
+            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["locked"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Record.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Record.__pulumiType, name, resourceInputs, opts);
     }
 }
 

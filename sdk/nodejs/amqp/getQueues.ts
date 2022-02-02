@@ -40,9 +40,7 @@ export function getQueues(args: GetQueuesArgs, opts?: pulumi.InvokeOptions): Pro
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:amqp/getQueues:getQueues", {
         "ids": args.ids,
         "instanceId": args.instanceId,

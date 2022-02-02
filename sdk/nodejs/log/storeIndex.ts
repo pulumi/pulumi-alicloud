@@ -68,14 +68,14 @@ export class StoreIndex extends pulumi.CustomResource {
      */
     constructor(name: string, args: StoreIndexArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StoreIndexArgs | StoreIndexState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StoreIndexState | undefined;
-            inputs["fieldSearches"] = state ? state.fieldSearches : undefined;
-            inputs["fullText"] = state ? state.fullText : undefined;
-            inputs["logstore"] = state ? state.logstore : undefined;
-            inputs["project"] = state ? state.project : undefined;
+            resourceInputs["fieldSearches"] = state ? state.fieldSearches : undefined;
+            resourceInputs["fullText"] = state ? state.fullText : undefined;
+            resourceInputs["logstore"] = state ? state.logstore : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as StoreIndexArgs | undefined;
             if ((!args || args.logstore === undefined) && !opts.urn) {
@@ -84,15 +84,13 @@ export class StoreIndex extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["fieldSearches"] = args ? args.fieldSearches : undefined;
-            inputs["fullText"] = args ? args.fullText : undefined;
-            inputs["logstore"] = args ? args.logstore : undefined;
-            inputs["project"] = args ? args.project : undefined;
+            resourceInputs["fieldSearches"] = args ? args.fieldSearches : undefined;
+            resourceInputs["fullText"] = args ? args.fullText : undefined;
+            resourceInputs["logstore"] = args ? args.logstore : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(StoreIndex.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(StoreIndex.__pulumiType, name, resourceInputs, opts);
     }
 }
 

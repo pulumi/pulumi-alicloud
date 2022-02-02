@@ -27,9 +27,7 @@ export function getRegionRouteEntries(args: GetRegionRouteEntriesArgs, opts?: pu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cen/getRegionRouteEntries:getRegionRouteEntries", {
         "instanceId": args.instanceId,
         "outputFile": args.outputFile,

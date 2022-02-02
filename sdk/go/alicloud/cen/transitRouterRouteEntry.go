@@ -172,7 +172,7 @@ type TransitRouterRouteEntryInput interface {
 }
 
 func (*TransitRouterRouteEntry) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransitRouterRouteEntry)(nil))
+	return reflect.TypeOf((**TransitRouterRouteEntry)(nil)).Elem()
 }
 
 func (i *TransitRouterRouteEntry) ToTransitRouterRouteEntryOutput() TransitRouterRouteEntryOutput {
@@ -181,35 +181,6 @@ func (i *TransitRouterRouteEntry) ToTransitRouterRouteEntryOutput() TransitRoute
 
 func (i *TransitRouterRouteEntry) ToTransitRouterRouteEntryOutputWithContext(ctx context.Context) TransitRouterRouteEntryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterRouteEntryOutput)
-}
-
-func (i *TransitRouterRouteEntry) ToTransitRouterRouteEntryPtrOutput() TransitRouterRouteEntryPtrOutput {
-	return i.ToTransitRouterRouteEntryPtrOutputWithContext(context.Background())
-}
-
-func (i *TransitRouterRouteEntry) ToTransitRouterRouteEntryPtrOutputWithContext(ctx context.Context) TransitRouterRouteEntryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterRouteEntryPtrOutput)
-}
-
-type TransitRouterRouteEntryPtrInput interface {
-	pulumi.Input
-
-	ToTransitRouterRouteEntryPtrOutput() TransitRouterRouteEntryPtrOutput
-	ToTransitRouterRouteEntryPtrOutputWithContext(ctx context.Context) TransitRouterRouteEntryPtrOutput
-}
-
-type transitRouterRouteEntryPtrType TransitRouterRouteEntryArgs
-
-func (*transitRouterRouteEntryPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransitRouterRouteEntry)(nil))
-}
-
-func (i *transitRouterRouteEntryPtrType) ToTransitRouterRouteEntryPtrOutput() TransitRouterRouteEntryPtrOutput {
-	return i.ToTransitRouterRouteEntryPtrOutputWithContext(context.Background())
-}
-
-func (i *transitRouterRouteEntryPtrType) ToTransitRouterRouteEntryPtrOutputWithContext(ctx context.Context) TransitRouterRouteEntryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterRouteEntryPtrOutput)
 }
 
 // TransitRouterRouteEntryArrayInput is an input type that accepts TransitRouterRouteEntryArray and TransitRouterRouteEntryArrayOutput values.
@@ -265,7 +236,7 @@ func (i TransitRouterRouteEntryMap) ToTransitRouterRouteEntryMapOutputWithContex
 type TransitRouterRouteEntryOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterRouteEntryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransitRouterRouteEntry)(nil))
+	return reflect.TypeOf((**TransitRouterRouteEntry)(nil)).Elem()
 }
 
 func (o TransitRouterRouteEntryOutput) ToTransitRouterRouteEntryOutput() TransitRouterRouteEntryOutput {
@@ -276,44 +247,10 @@ func (o TransitRouterRouteEntryOutput) ToTransitRouterRouteEntryOutputWithContex
 	return o
 }
 
-func (o TransitRouterRouteEntryOutput) ToTransitRouterRouteEntryPtrOutput() TransitRouterRouteEntryPtrOutput {
-	return o.ToTransitRouterRouteEntryPtrOutputWithContext(context.Background())
-}
-
-func (o TransitRouterRouteEntryOutput) ToTransitRouterRouteEntryPtrOutputWithContext(ctx context.Context) TransitRouterRouteEntryPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransitRouterRouteEntry) *TransitRouterRouteEntry {
-		return &v
-	}).(TransitRouterRouteEntryPtrOutput)
-}
-
-type TransitRouterRouteEntryPtrOutput struct{ *pulumi.OutputState }
-
-func (TransitRouterRouteEntryPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransitRouterRouteEntry)(nil))
-}
-
-func (o TransitRouterRouteEntryPtrOutput) ToTransitRouterRouteEntryPtrOutput() TransitRouterRouteEntryPtrOutput {
-	return o
-}
-
-func (o TransitRouterRouteEntryPtrOutput) ToTransitRouterRouteEntryPtrOutputWithContext(ctx context.Context) TransitRouterRouteEntryPtrOutput {
-	return o
-}
-
-func (o TransitRouterRouteEntryPtrOutput) Elem() TransitRouterRouteEntryOutput {
-	return o.ApplyT(func(v *TransitRouterRouteEntry) TransitRouterRouteEntry {
-		if v != nil {
-			return *v
-		}
-		var ret TransitRouterRouteEntry
-		return ret
-	}).(TransitRouterRouteEntryOutput)
-}
-
 type TransitRouterRouteEntryArrayOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterRouteEntryArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TransitRouterRouteEntry)(nil))
+	return reflect.TypeOf((*[]*TransitRouterRouteEntry)(nil)).Elem()
 }
 
 func (o TransitRouterRouteEntryArrayOutput) ToTransitRouterRouteEntryArrayOutput() TransitRouterRouteEntryArrayOutput {
@@ -325,15 +262,15 @@ func (o TransitRouterRouteEntryArrayOutput) ToTransitRouterRouteEntryArrayOutput
 }
 
 func (o TransitRouterRouteEntryArrayOutput) Index(i pulumi.IntInput) TransitRouterRouteEntryOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransitRouterRouteEntry {
-		return vs[0].([]TransitRouterRouteEntry)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TransitRouterRouteEntry {
+		return vs[0].([]*TransitRouterRouteEntry)[vs[1].(int)]
 	}).(TransitRouterRouteEntryOutput)
 }
 
 type TransitRouterRouteEntryMapOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterRouteEntryMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]TransitRouterRouteEntry)(nil))
+	return reflect.TypeOf((*map[string]*TransitRouterRouteEntry)(nil)).Elem()
 }
 
 func (o TransitRouterRouteEntryMapOutput) ToTransitRouterRouteEntryMapOutput() TransitRouterRouteEntryMapOutput {
@@ -345,18 +282,16 @@ func (o TransitRouterRouteEntryMapOutput) ToTransitRouterRouteEntryMapOutputWith
 }
 
 func (o TransitRouterRouteEntryMapOutput) MapIndex(k pulumi.StringInput) TransitRouterRouteEntryOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TransitRouterRouteEntry {
-		return vs[0].(map[string]TransitRouterRouteEntry)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TransitRouterRouteEntry {
+		return vs[0].(map[string]*TransitRouterRouteEntry)[vs[1].(string)]
 	}).(TransitRouterRouteEntryOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterRouteEntryInput)(nil)).Elem(), &TransitRouterRouteEntry{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterRouteEntryPtrInput)(nil)).Elem(), &TransitRouterRouteEntry{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterRouteEntryArrayInput)(nil)).Elem(), TransitRouterRouteEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterRouteEntryMapInput)(nil)).Elem(), TransitRouterRouteEntryMap{})
 	pulumi.RegisterOutputType(TransitRouterRouteEntryOutput{})
-	pulumi.RegisterOutputType(TransitRouterRouteEntryPtrOutput{})
 	pulumi.RegisterOutputType(TransitRouterRouteEntryArrayOutput{})
 	pulumi.RegisterOutputType(TransitRouterRouteEntryMapOutput{})
 }

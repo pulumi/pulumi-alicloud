@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cen
 {
@@ -52,7 +51,7 @@ namespace Pulumi.AliCloud.Cen
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouteMapsResult> InvokeAsync(GetRouteMapsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRouteMapsResult>("alicloud:cen/getRouteMaps:getRouteMaps", args ?? new GetRouteMapsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRouteMapsResult>("alicloud:cen/getRouteMaps:getRouteMaps", args ?? new GetRouteMapsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides CEN Route Maps available to the user.
@@ -94,7 +93,7 @@ namespace Pulumi.AliCloud.Cen
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRouteMapsResult> Invoke(GetRouteMapsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRouteMapsResult>("alicloud:cen/getRouteMaps:getRouteMaps", args ?? new GetRouteMapsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRouteMapsResult>("alicloud:cen/getRouteMaps:getRouteMaps", args ?? new GetRouteMapsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -91,15 +91,15 @@ export class JobMonitorRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: JobMonitorRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: JobMonitorRuleArgs | JobMonitorRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as JobMonitorRuleState | undefined;
-            inputs["delayRuleTime"] = state ? state.delayRuleTime : undefined;
-            inputs["dtsJobId"] = state ? state.dtsJobId : undefined;
-            inputs["phone"] = state ? state.phone : undefined;
-            inputs["state"] = state ? state.state : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["delayRuleTime"] = state ? state.delayRuleTime : undefined;
+            resourceInputs["dtsJobId"] = state ? state.dtsJobId : undefined;
+            resourceInputs["phone"] = state ? state.phone : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as JobMonitorRuleArgs | undefined;
             if ((!args || args.dtsJobId === undefined) && !opts.urn) {
@@ -108,16 +108,14 @@ export class JobMonitorRule extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["delayRuleTime"] = args ? args.delayRuleTime : undefined;
-            inputs["dtsJobId"] = args ? args.dtsJobId : undefined;
-            inputs["phone"] = args ? args.phone : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["type"] = args ? args.type : undefined;
+            resourceInputs["delayRuleTime"] = args ? args.delayRuleTime : undefined;
+            resourceInputs["dtsJobId"] = args ? args.dtsJobId : undefined;
+            resourceInputs["phone"] = args ? args.phone : undefined;
+            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(JobMonitorRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(JobMonitorRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

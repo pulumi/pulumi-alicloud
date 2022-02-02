@@ -29,9 +29,7 @@ export function getAlarmContactGroups(args?: GetAlarmContactGroupsArgs, opts?: p
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cms/getAlarmContactGroups:getAlarmContactGroups", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

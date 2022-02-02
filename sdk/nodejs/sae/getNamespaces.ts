@@ -30,9 +30,7 @@ export function getNamespaces(args?: GetNamespacesArgs, opts?: pulumi.InvokeOpti
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:sae/getNamespaces:getNamespaces", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

@@ -101,17 +101,17 @@ export class Command extends pulumi.CustomResource {
      */
     constructor(name: string, args: CommandArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CommandArgs | CommandState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CommandState | undefined;
-            inputs["commandContent"] = state ? state.commandContent : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["enableParameter"] = state ? state.enableParameter : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["timeout"] = state ? state.timeout : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["workingDir"] = state ? state.workingDir : undefined;
+            resourceInputs["commandContent"] = state ? state.commandContent : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enableParameter"] = state ? state.enableParameter : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["timeout"] = state ? state.timeout : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["workingDir"] = state ? state.workingDir : undefined;
         } else {
             const args = argsOrState as CommandArgs | undefined;
             if ((!args || args.commandContent === undefined) && !opts.urn) {
@@ -120,18 +120,16 @@ export class Command extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["commandContent"] = args ? args.commandContent : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enableParameter"] = args ? args.enableParameter : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["timeout"] = args ? args.timeout : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["workingDir"] = args ? args.workingDir : undefined;
+            resourceInputs["commandContent"] = args ? args.commandContent : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableParameter"] = args ? args.enableParameter : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["workingDir"] = args ? args.workingDir : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Command.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Command.__pulumiType, name, resourceInputs, opts);
     }
 }
 

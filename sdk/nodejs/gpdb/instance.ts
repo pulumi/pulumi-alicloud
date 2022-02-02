@@ -132,20 +132,20 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["engine"] = state ? state.engine : undefined;
-            inputs["engineVersion"] = state ? state.engineVersion : undefined;
-            inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            inputs["instanceClass"] = state ? state.instanceClass : undefined;
-            inputs["instanceGroupCount"] = state ? state.instanceGroupCount : undefined;
-            inputs["securityIpLists"] = state ? state.securityIpLists : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["engine"] = state ? state.engine : undefined;
+            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
+            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
+            resourceInputs["instanceClass"] = state ? state.instanceClass : undefined;
+            resourceInputs["instanceGroupCount"] = state ? state.instanceGroupCount : undefined;
+            resourceInputs["securityIpLists"] = state ? state.securityIpLists : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.instanceClass === undefined) && !opts.urn) {
@@ -154,21 +154,19 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.instanceGroupCount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceGroupCount'");
             }
-            inputs["availabilityZone"] = args ? args.availabilityZone : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["engine"] = args ? args.engine : undefined;
-            inputs["engineVersion"] = args ? args.engineVersion : undefined;
-            inputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            inputs["instanceClass"] = args ? args.instanceClass : undefined;
-            inputs["instanceGroupCount"] = args ? args.instanceGroupCount : undefined;
-            inputs["securityIpLists"] = args ? args.securityIpLists : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["engine"] = args ? args.engine : undefined;
+            resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
+            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
+            resourceInputs["instanceClass"] = args ? args.instanceClass : undefined;
+            resourceInputs["instanceGroupCount"] = args ? args.instanceGroupCount : undefined;
+            resourceInputs["securityIpLists"] = args ? args.securityIpLists : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Instance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -28,9 +28,7 @@ export function getTransitRouterService(args?: GetTransitRouterServiceArgs, opts
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cen/getTransitRouterService:getTransitRouterService", {
         "enable": args.enable,
     }, opts);

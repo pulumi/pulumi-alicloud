@@ -377,7 +377,7 @@ type ServerlessInstanceInput interface {
 }
 
 func (*ServerlessInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerlessInstance)(nil))
+	return reflect.TypeOf((**ServerlessInstance)(nil)).Elem()
 }
 
 func (i *ServerlessInstance) ToServerlessInstanceOutput() ServerlessInstanceOutput {
@@ -386,35 +386,6 @@ func (i *ServerlessInstance) ToServerlessInstanceOutput() ServerlessInstanceOutp
 
 func (i *ServerlessInstance) ToServerlessInstanceOutputWithContext(ctx context.Context) ServerlessInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerlessInstanceOutput)
-}
-
-func (i *ServerlessInstance) ToServerlessInstancePtrOutput() ServerlessInstancePtrOutput {
-	return i.ToServerlessInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *ServerlessInstance) ToServerlessInstancePtrOutputWithContext(ctx context.Context) ServerlessInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerlessInstancePtrOutput)
-}
-
-type ServerlessInstancePtrInput interface {
-	pulumi.Input
-
-	ToServerlessInstancePtrOutput() ServerlessInstancePtrOutput
-	ToServerlessInstancePtrOutputWithContext(ctx context.Context) ServerlessInstancePtrOutput
-}
-
-type serverlessInstancePtrType ServerlessInstanceArgs
-
-func (*serverlessInstancePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServerlessInstance)(nil))
-}
-
-func (i *serverlessInstancePtrType) ToServerlessInstancePtrOutput() ServerlessInstancePtrOutput {
-	return i.ToServerlessInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *serverlessInstancePtrType) ToServerlessInstancePtrOutputWithContext(ctx context.Context) ServerlessInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerlessInstancePtrOutput)
 }
 
 // ServerlessInstanceArrayInput is an input type that accepts ServerlessInstanceArray and ServerlessInstanceArrayOutput values.
@@ -470,7 +441,7 @@ func (i ServerlessInstanceMap) ToServerlessInstanceMapOutputWithContext(ctx cont
 type ServerlessInstanceOutput struct{ *pulumi.OutputState }
 
 func (ServerlessInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerlessInstance)(nil))
+	return reflect.TypeOf((**ServerlessInstance)(nil)).Elem()
 }
 
 func (o ServerlessInstanceOutput) ToServerlessInstanceOutput() ServerlessInstanceOutput {
@@ -481,44 +452,10 @@ func (o ServerlessInstanceOutput) ToServerlessInstanceOutputWithContext(ctx cont
 	return o
 }
 
-func (o ServerlessInstanceOutput) ToServerlessInstancePtrOutput() ServerlessInstancePtrOutput {
-	return o.ToServerlessInstancePtrOutputWithContext(context.Background())
-}
-
-func (o ServerlessInstanceOutput) ToServerlessInstancePtrOutputWithContext(ctx context.Context) ServerlessInstancePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerlessInstance) *ServerlessInstance {
-		return &v
-	}).(ServerlessInstancePtrOutput)
-}
-
-type ServerlessInstancePtrOutput struct{ *pulumi.OutputState }
-
-func (ServerlessInstancePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServerlessInstance)(nil))
-}
-
-func (o ServerlessInstancePtrOutput) ToServerlessInstancePtrOutput() ServerlessInstancePtrOutput {
-	return o
-}
-
-func (o ServerlessInstancePtrOutput) ToServerlessInstancePtrOutputWithContext(ctx context.Context) ServerlessInstancePtrOutput {
-	return o
-}
-
-func (o ServerlessInstancePtrOutput) Elem() ServerlessInstanceOutput {
-	return o.ApplyT(func(v *ServerlessInstance) ServerlessInstance {
-		if v != nil {
-			return *v
-		}
-		var ret ServerlessInstance
-		return ret
-	}).(ServerlessInstanceOutput)
-}
-
 type ServerlessInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (ServerlessInstanceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServerlessInstance)(nil))
+	return reflect.TypeOf((*[]*ServerlessInstance)(nil)).Elem()
 }
 
 func (o ServerlessInstanceArrayOutput) ToServerlessInstanceArrayOutput() ServerlessInstanceArrayOutput {
@@ -530,15 +467,15 @@ func (o ServerlessInstanceArrayOutput) ToServerlessInstanceArrayOutputWithContex
 }
 
 func (o ServerlessInstanceArrayOutput) Index(i pulumi.IntInput) ServerlessInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerlessInstance {
-		return vs[0].([]ServerlessInstance)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServerlessInstance {
+		return vs[0].([]*ServerlessInstance)[vs[1].(int)]
 	}).(ServerlessInstanceOutput)
 }
 
 type ServerlessInstanceMapOutput struct{ *pulumi.OutputState }
 
 func (ServerlessInstanceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ServerlessInstance)(nil))
+	return reflect.TypeOf((*map[string]*ServerlessInstance)(nil)).Elem()
 }
 
 func (o ServerlessInstanceMapOutput) ToServerlessInstanceMapOutput() ServerlessInstanceMapOutput {
@@ -550,18 +487,16 @@ func (o ServerlessInstanceMapOutput) ToServerlessInstanceMapOutputWithContext(ct
 }
 
 func (o ServerlessInstanceMapOutput) MapIndex(k pulumi.StringInput) ServerlessInstanceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServerlessInstance {
-		return vs[0].(map[string]ServerlessInstance)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ServerlessInstance {
+		return vs[0].(map[string]*ServerlessInstance)[vs[1].(string)]
 	}).(ServerlessInstanceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessInstanceInput)(nil)).Elem(), &ServerlessInstance{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessInstancePtrInput)(nil)).Elem(), &ServerlessInstance{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessInstanceArrayInput)(nil)).Elem(), ServerlessInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessInstanceMapInput)(nil)).Elem(), ServerlessInstanceMap{})
 	pulumi.RegisterOutputType(ServerlessInstanceOutput{})
-	pulumi.RegisterOutputType(ServerlessInstancePtrOutput{})
 	pulumi.RegisterOutputType(ServerlessInstanceArrayOutput{})
 	pulumi.RegisterOutputType(ServerlessInstanceMapOutput{})
 }

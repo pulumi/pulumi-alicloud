@@ -149,13 +149,13 @@ export class ScalingGroupVServerGroups extends pulumi.CustomResource {
      */
     constructor(name: string, args: ScalingGroupVServerGroupsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ScalingGroupVServerGroupsArgs | ScalingGroupVServerGroupsState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ScalingGroupVServerGroupsState | undefined;
-            inputs["force"] = state ? state.force : undefined;
-            inputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
-            inputs["vserverGroups"] = state ? state.vserverGroups : undefined;
+            resourceInputs["force"] = state ? state.force : undefined;
+            resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
+            resourceInputs["vserverGroups"] = state ? state.vserverGroups : undefined;
         } else {
             const args = argsOrState as ScalingGroupVServerGroupsArgs | undefined;
             if ((!args || args.scalingGroupId === undefined) && !opts.urn) {
@@ -164,14 +164,12 @@ export class ScalingGroupVServerGroups extends pulumi.CustomResource {
             if ((!args || args.vserverGroups === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vserverGroups'");
             }
-            inputs["force"] = args ? args.force : undefined;
-            inputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
-            inputs["vserverGroups"] = args ? args.vserverGroups : undefined;
+            resourceInputs["force"] = args ? args.force : undefined;
+            resourceInputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
+            resourceInputs["vserverGroups"] = args ? args.vserverGroups : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ScalingGroupVServerGroups.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ScalingGroupVServerGroups.__pulumiType, name, resourceInputs, opts);
     }
 }
 

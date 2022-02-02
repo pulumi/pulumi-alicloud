@@ -30,7 +30,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewEcsLaunchTemplate(ctx, "_default", &ecs.EcsLaunchTemplateArgs{
+// 		_, err := ecs.NewEcsLaunchTemplate(ctx, "default", &ecs.EcsLaunchTemplateArgs{
 // 			DataDisks: ecs.EcsLaunchTemplateDataDiskArray{
 // 				&ecs.EcsLaunchTemplateDataDiskArgs{
 // 					Category:           pulumi.String("cloud"),
@@ -651,7 +651,7 @@ type EcsLaunchTemplateInput interface {
 }
 
 func (*EcsLaunchTemplate) ElementType() reflect.Type {
-	return reflect.TypeOf((*EcsLaunchTemplate)(nil))
+	return reflect.TypeOf((**EcsLaunchTemplate)(nil)).Elem()
 }
 
 func (i *EcsLaunchTemplate) ToEcsLaunchTemplateOutput() EcsLaunchTemplateOutput {
@@ -660,35 +660,6 @@ func (i *EcsLaunchTemplate) ToEcsLaunchTemplateOutput() EcsLaunchTemplateOutput 
 
 func (i *EcsLaunchTemplate) ToEcsLaunchTemplateOutputWithContext(ctx context.Context) EcsLaunchTemplateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsLaunchTemplateOutput)
-}
-
-func (i *EcsLaunchTemplate) ToEcsLaunchTemplatePtrOutput() EcsLaunchTemplatePtrOutput {
-	return i.ToEcsLaunchTemplatePtrOutputWithContext(context.Background())
-}
-
-func (i *EcsLaunchTemplate) ToEcsLaunchTemplatePtrOutputWithContext(ctx context.Context) EcsLaunchTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EcsLaunchTemplatePtrOutput)
-}
-
-type EcsLaunchTemplatePtrInput interface {
-	pulumi.Input
-
-	ToEcsLaunchTemplatePtrOutput() EcsLaunchTemplatePtrOutput
-	ToEcsLaunchTemplatePtrOutputWithContext(ctx context.Context) EcsLaunchTemplatePtrOutput
-}
-
-type ecsLaunchTemplatePtrType EcsLaunchTemplateArgs
-
-func (*ecsLaunchTemplatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EcsLaunchTemplate)(nil))
-}
-
-func (i *ecsLaunchTemplatePtrType) ToEcsLaunchTemplatePtrOutput() EcsLaunchTemplatePtrOutput {
-	return i.ToEcsLaunchTemplatePtrOutputWithContext(context.Background())
-}
-
-func (i *ecsLaunchTemplatePtrType) ToEcsLaunchTemplatePtrOutputWithContext(ctx context.Context) EcsLaunchTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EcsLaunchTemplatePtrOutput)
 }
 
 // EcsLaunchTemplateArrayInput is an input type that accepts EcsLaunchTemplateArray and EcsLaunchTemplateArrayOutput values.
@@ -744,7 +715,7 @@ func (i EcsLaunchTemplateMap) ToEcsLaunchTemplateMapOutputWithContext(ctx contex
 type EcsLaunchTemplateOutput struct{ *pulumi.OutputState }
 
 func (EcsLaunchTemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EcsLaunchTemplate)(nil))
+	return reflect.TypeOf((**EcsLaunchTemplate)(nil)).Elem()
 }
 
 func (o EcsLaunchTemplateOutput) ToEcsLaunchTemplateOutput() EcsLaunchTemplateOutput {
@@ -755,44 +726,10 @@ func (o EcsLaunchTemplateOutput) ToEcsLaunchTemplateOutputWithContext(ctx contex
 	return o
 }
 
-func (o EcsLaunchTemplateOutput) ToEcsLaunchTemplatePtrOutput() EcsLaunchTemplatePtrOutput {
-	return o.ToEcsLaunchTemplatePtrOutputWithContext(context.Background())
-}
-
-func (o EcsLaunchTemplateOutput) ToEcsLaunchTemplatePtrOutputWithContext(ctx context.Context) EcsLaunchTemplatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EcsLaunchTemplate) *EcsLaunchTemplate {
-		return &v
-	}).(EcsLaunchTemplatePtrOutput)
-}
-
-type EcsLaunchTemplatePtrOutput struct{ *pulumi.OutputState }
-
-func (EcsLaunchTemplatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EcsLaunchTemplate)(nil))
-}
-
-func (o EcsLaunchTemplatePtrOutput) ToEcsLaunchTemplatePtrOutput() EcsLaunchTemplatePtrOutput {
-	return o
-}
-
-func (o EcsLaunchTemplatePtrOutput) ToEcsLaunchTemplatePtrOutputWithContext(ctx context.Context) EcsLaunchTemplatePtrOutput {
-	return o
-}
-
-func (o EcsLaunchTemplatePtrOutput) Elem() EcsLaunchTemplateOutput {
-	return o.ApplyT(func(v *EcsLaunchTemplate) EcsLaunchTemplate {
-		if v != nil {
-			return *v
-		}
-		var ret EcsLaunchTemplate
-		return ret
-	}).(EcsLaunchTemplateOutput)
-}
-
 type EcsLaunchTemplateArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsLaunchTemplateArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EcsLaunchTemplate)(nil))
+	return reflect.TypeOf((*[]*EcsLaunchTemplate)(nil)).Elem()
 }
 
 func (o EcsLaunchTemplateArrayOutput) ToEcsLaunchTemplateArrayOutput() EcsLaunchTemplateArrayOutput {
@@ -804,15 +741,15 @@ func (o EcsLaunchTemplateArrayOutput) ToEcsLaunchTemplateArrayOutputWithContext(
 }
 
 func (o EcsLaunchTemplateArrayOutput) Index(i pulumi.IntInput) EcsLaunchTemplateOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EcsLaunchTemplate {
-		return vs[0].([]EcsLaunchTemplate)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsLaunchTemplate {
+		return vs[0].([]*EcsLaunchTemplate)[vs[1].(int)]
 	}).(EcsLaunchTemplateOutput)
 }
 
 type EcsLaunchTemplateMapOutput struct{ *pulumi.OutputState }
 
 func (EcsLaunchTemplateMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]EcsLaunchTemplate)(nil))
+	return reflect.TypeOf((*map[string]*EcsLaunchTemplate)(nil)).Elem()
 }
 
 func (o EcsLaunchTemplateMapOutput) ToEcsLaunchTemplateMapOutput() EcsLaunchTemplateMapOutput {
@@ -824,18 +761,16 @@ func (o EcsLaunchTemplateMapOutput) ToEcsLaunchTemplateMapOutputWithContext(ctx 
 }
 
 func (o EcsLaunchTemplateMapOutput) MapIndex(k pulumi.StringInput) EcsLaunchTemplateOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EcsLaunchTemplate {
-		return vs[0].(map[string]EcsLaunchTemplate)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *EcsLaunchTemplate {
+		return vs[0].(map[string]*EcsLaunchTemplate)[vs[1].(string)]
 	}).(EcsLaunchTemplateOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsLaunchTemplateInput)(nil)).Elem(), &EcsLaunchTemplate{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EcsLaunchTemplatePtrInput)(nil)).Elem(), &EcsLaunchTemplate{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsLaunchTemplateArrayInput)(nil)).Elem(), EcsLaunchTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsLaunchTemplateMapInput)(nil)).Elem(), EcsLaunchTemplateMap{})
 	pulumi.RegisterOutputType(EcsLaunchTemplateOutput{})
-	pulumi.RegisterOutputType(EcsLaunchTemplatePtrOutput{})
 	pulumi.RegisterOutputType(EcsLaunchTemplateArrayOutput{})
 	pulumi.RegisterOutputType(EcsLaunchTemplateMapOutput{})
 }

@@ -151,7 +151,7 @@ type AclAttachmentInput interface {
 }
 
 func (*AclAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclAttachment)(nil))
+	return reflect.TypeOf((**AclAttachment)(nil)).Elem()
 }
 
 func (i *AclAttachment) ToAclAttachmentOutput() AclAttachmentOutput {
@@ -160,35 +160,6 @@ func (i *AclAttachment) ToAclAttachmentOutput() AclAttachmentOutput {
 
 func (i *AclAttachment) ToAclAttachmentOutputWithContext(ctx context.Context) AclAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclAttachmentOutput)
-}
-
-func (i *AclAttachment) ToAclAttachmentPtrOutput() AclAttachmentPtrOutput {
-	return i.ToAclAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *AclAttachment) ToAclAttachmentPtrOutputWithContext(ctx context.Context) AclAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AclAttachmentPtrOutput)
-}
-
-type AclAttachmentPtrInput interface {
-	pulumi.Input
-
-	ToAclAttachmentPtrOutput() AclAttachmentPtrOutput
-	ToAclAttachmentPtrOutputWithContext(ctx context.Context) AclAttachmentPtrOutput
-}
-
-type aclAttachmentPtrType AclAttachmentArgs
-
-func (*aclAttachmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AclAttachment)(nil))
-}
-
-func (i *aclAttachmentPtrType) ToAclAttachmentPtrOutput() AclAttachmentPtrOutput {
-	return i.ToAclAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *aclAttachmentPtrType) ToAclAttachmentPtrOutputWithContext(ctx context.Context) AclAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AclAttachmentPtrOutput)
 }
 
 // AclAttachmentArrayInput is an input type that accepts AclAttachmentArray and AclAttachmentArrayOutput values.
@@ -244,7 +215,7 @@ func (i AclAttachmentMap) ToAclAttachmentMapOutputWithContext(ctx context.Contex
 type AclAttachmentOutput struct{ *pulumi.OutputState }
 
 func (AclAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclAttachment)(nil))
+	return reflect.TypeOf((**AclAttachment)(nil)).Elem()
 }
 
 func (o AclAttachmentOutput) ToAclAttachmentOutput() AclAttachmentOutput {
@@ -255,44 +226,10 @@ func (o AclAttachmentOutput) ToAclAttachmentOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o AclAttachmentOutput) ToAclAttachmentPtrOutput() AclAttachmentPtrOutput {
-	return o.ToAclAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (o AclAttachmentOutput) ToAclAttachmentPtrOutputWithContext(ctx context.Context) AclAttachmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AclAttachment) *AclAttachment {
-		return &v
-	}).(AclAttachmentPtrOutput)
-}
-
-type AclAttachmentPtrOutput struct{ *pulumi.OutputState }
-
-func (AclAttachmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AclAttachment)(nil))
-}
-
-func (o AclAttachmentPtrOutput) ToAclAttachmentPtrOutput() AclAttachmentPtrOutput {
-	return o
-}
-
-func (o AclAttachmentPtrOutput) ToAclAttachmentPtrOutputWithContext(ctx context.Context) AclAttachmentPtrOutput {
-	return o
-}
-
-func (o AclAttachmentPtrOutput) Elem() AclAttachmentOutput {
-	return o.ApplyT(func(v *AclAttachment) AclAttachment {
-		if v != nil {
-			return *v
-		}
-		var ret AclAttachment
-		return ret
-	}).(AclAttachmentOutput)
-}
-
 type AclAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (AclAttachmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AclAttachment)(nil))
+	return reflect.TypeOf((*[]*AclAttachment)(nil)).Elem()
 }
 
 func (o AclAttachmentArrayOutput) ToAclAttachmentArrayOutput() AclAttachmentArrayOutput {
@@ -304,15 +241,15 @@ func (o AclAttachmentArrayOutput) ToAclAttachmentArrayOutputWithContext(ctx cont
 }
 
 func (o AclAttachmentArrayOutput) Index(i pulumi.IntInput) AclAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclAttachment {
-		return vs[0].([]AclAttachment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AclAttachment {
+		return vs[0].([]*AclAttachment)[vs[1].(int)]
 	}).(AclAttachmentOutput)
 }
 
 type AclAttachmentMapOutput struct{ *pulumi.OutputState }
 
 func (AclAttachmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AclAttachment)(nil))
+	return reflect.TypeOf((*map[string]*AclAttachment)(nil)).Elem()
 }
 
 func (o AclAttachmentMapOutput) ToAclAttachmentMapOutput() AclAttachmentMapOutput {
@@ -324,18 +261,16 @@ func (o AclAttachmentMapOutput) ToAclAttachmentMapOutputWithContext(ctx context.
 }
 
 func (o AclAttachmentMapOutput) MapIndex(k pulumi.StringInput) AclAttachmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AclAttachment {
-		return vs[0].(map[string]AclAttachment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AclAttachment {
+		return vs[0].(map[string]*AclAttachment)[vs[1].(string)]
 	}).(AclAttachmentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AclAttachmentInput)(nil)).Elem(), &AclAttachment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AclAttachmentPtrInput)(nil)).Elem(), &AclAttachment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AclAttachmentArrayInput)(nil)).Elem(), AclAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AclAttachmentMapInput)(nil)).Elem(), AclAttachmentMap{})
 	pulumi.RegisterOutputType(AclAttachmentOutput{})
-	pulumi.RegisterOutputType(AclAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(AclAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(AclAttachmentMapOutput{})
 }

@@ -100,34 +100,32 @@ export class K8sCluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: K8sClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: K8sClusterArgs | K8sClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as K8sClusterState | undefined;
-            inputs["clusterImportStatus"] = state ? state.clusterImportStatus : undefined;
-            inputs["clusterName"] = state ? state.clusterName : undefined;
-            inputs["clusterType"] = state ? state.clusterType : undefined;
-            inputs["csClusterId"] = state ? state.csClusterId : undefined;
-            inputs["namespaceId"] = state ? state.namespaceId : undefined;
-            inputs["networkMode"] = state ? state.networkMode : undefined;
-            inputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["clusterImportStatus"] = state ? state.clusterImportStatus : undefined;
+            resourceInputs["clusterName"] = state ? state.clusterName : undefined;
+            resourceInputs["clusterType"] = state ? state.clusterType : undefined;
+            resourceInputs["csClusterId"] = state ? state.csClusterId : undefined;
+            resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
+            resourceInputs["networkMode"] = state ? state.networkMode : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as K8sClusterArgs | undefined;
             if ((!args || args.csClusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'csClusterId'");
             }
-            inputs["csClusterId"] = args ? args.csClusterId : undefined;
-            inputs["namespaceId"] = args ? args.namespaceId : undefined;
-            inputs["clusterImportStatus"] = undefined /*out*/;
-            inputs["clusterName"] = undefined /*out*/;
-            inputs["clusterType"] = undefined /*out*/;
-            inputs["networkMode"] = undefined /*out*/;
-            inputs["vpcId"] = undefined /*out*/;
+            resourceInputs["csClusterId"] = args ? args.csClusterId : undefined;
+            resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
+            resourceInputs["clusterImportStatus"] = undefined /*out*/;
+            resourceInputs["clusterName"] = undefined /*out*/;
+            resourceInputs["clusterType"] = undefined /*out*/;
+            resourceInputs["networkMode"] = undefined /*out*/;
+            resourceInputs["vpcId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(K8sCluster.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(K8sCluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

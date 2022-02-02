@@ -132,7 +132,7 @@ type AutoscalingConfigInput interface {
 }
 
 func (*AutoscalingConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutoscalingConfig)(nil))
+	return reflect.TypeOf((**AutoscalingConfig)(nil)).Elem()
 }
 
 func (i *AutoscalingConfig) ToAutoscalingConfigOutput() AutoscalingConfigOutput {
@@ -141,35 +141,6 @@ func (i *AutoscalingConfig) ToAutoscalingConfigOutput() AutoscalingConfigOutput 
 
 func (i *AutoscalingConfig) ToAutoscalingConfigOutputWithContext(ctx context.Context) AutoscalingConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingConfigOutput)
-}
-
-func (i *AutoscalingConfig) ToAutoscalingConfigPtrOutput() AutoscalingConfigPtrOutput {
-	return i.ToAutoscalingConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *AutoscalingConfig) ToAutoscalingConfigPtrOutputWithContext(ctx context.Context) AutoscalingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingConfigPtrOutput)
-}
-
-type AutoscalingConfigPtrInput interface {
-	pulumi.Input
-
-	ToAutoscalingConfigPtrOutput() AutoscalingConfigPtrOutput
-	ToAutoscalingConfigPtrOutputWithContext(ctx context.Context) AutoscalingConfigPtrOutput
-}
-
-type autoscalingConfigPtrType AutoscalingConfigArgs
-
-func (*autoscalingConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AutoscalingConfig)(nil))
-}
-
-func (i *autoscalingConfigPtrType) ToAutoscalingConfigPtrOutput() AutoscalingConfigPtrOutput {
-	return i.ToAutoscalingConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *autoscalingConfigPtrType) ToAutoscalingConfigPtrOutputWithContext(ctx context.Context) AutoscalingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingConfigPtrOutput)
 }
 
 // AutoscalingConfigArrayInput is an input type that accepts AutoscalingConfigArray and AutoscalingConfigArrayOutput values.
@@ -225,7 +196,7 @@ func (i AutoscalingConfigMap) ToAutoscalingConfigMapOutputWithContext(ctx contex
 type AutoscalingConfigOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutoscalingConfig)(nil))
+	return reflect.TypeOf((**AutoscalingConfig)(nil)).Elem()
 }
 
 func (o AutoscalingConfigOutput) ToAutoscalingConfigOutput() AutoscalingConfigOutput {
@@ -236,44 +207,10 @@ func (o AutoscalingConfigOutput) ToAutoscalingConfigOutputWithContext(ctx contex
 	return o
 }
 
-func (o AutoscalingConfigOutput) ToAutoscalingConfigPtrOutput() AutoscalingConfigPtrOutput {
-	return o.ToAutoscalingConfigPtrOutputWithContext(context.Background())
-}
-
-func (o AutoscalingConfigOutput) ToAutoscalingConfigPtrOutputWithContext(ctx context.Context) AutoscalingConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoscalingConfig) *AutoscalingConfig {
-		return &v
-	}).(AutoscalingConfigPtrOutput)
-}
-
-type AutoscalingConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (AutoscalingConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AutoscalingConfig)(nil))
-}
-
-func (o AutoscalingConfigPtrOutput) ToAutoscalingConfigPtrOutput() AutoscalingConfigPtrOutput {
-	return o
-}
-
-func (o AutoscalingConfigPtrOutput) ToAutoscalingConfigPtrOutputWithContext(ctx context.Context) AutoscalingConfigPtrOutput {
-	return o
-}
-
-func (o AutoscalingConfigPtrOutput) Elem() AutoscalingConfigOutput {
-	return o.ApplyT(func(v *AutoscalingConfig) AutoscalingConfig {
-		if v != nil {
-			return *v
-		}
-		var ret AutoscalingConfig
-		return ret
-	}).(AutoscalingConfigOutput)
-}
-
 type AutoscalingConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AutoscalingConfig)(nil))
+	return reflect.TypeOf((*[]*AutoscalingConfig)(nil)).Elem()
 }
 
 func (o AutoscalingConfigArrayOutput) ToAutoscalingConfigArrayOutput() AutoscalingConfigArrayOutput {
@@ -285,15 +222,15 @@ func (o AutoscalingConfigArrayOutput) ToAutoscalingConfigArrayOutputWithContext(
 }
 
 func (o AutoscalingConfigArrayOutput) Index(i pulumi.IntInput) AutoscalingConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutoscalingConfig {
-		return vs[0].([]AutoscalingConfig)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AutoscalingConfig {
+		return vs[0].([]*AutoscalingConfig)[vs[1].(int)]
 	}).(AutoscalingConfigOutput)
 }
 
 type AutoscalingConfigMapOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingConfigMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AutoscalingConfig)(nil))
+	return reflect.TypeOf((*map[string]*AutoscalingConfig)(nil)).Elem()
 }
 
 func (o AutoscalingConfigMapOutput) ToAutoscalingConfigMapOutput() AutoscalingConfigMapOutput {
@@ -305,18 +242,16 @@ func (o AutoscalingConfigMapOutput) ToAutoscalingConfigMapOutputWithContext(ctx 
 }
 
 func (o AutoscalingConfigMapOutput) MapIndex(k pulumi.StringInput) AutoscalingConfigOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AutoscalingConfig {
-		return vs[0].(map[string]AutoscalingConfig)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AutoscalingConfig {
+		return vs[0].(map[string]*AutoscalingConfig)[vs[1].(string)]
 	}).(AutoscalingConfigOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingConfigInput)(nil)).Elem(), &AutoscalingConfig{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingConfigPtrInput)(nil)).Elem(), &AutoscalingConfig{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingConfigArrayInput)(nil)).Elem(), AutoscalingConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingConfigMapInput)(nil)).Elem(), AutoscalingConfigMap{})
 	pulumi.RegisterOutputType(AutoscalingConfigOutput{})
-	pulumi.RegisterOutputType(AutoscalingConfigPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalingConfigArrayOutput{})
 	pulumi.RegisterOutputType(AutoscalingConfigMapOutput{})
 }

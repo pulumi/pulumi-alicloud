@@ -167,25 +167,25 @@ export class TransitRouterPeerAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: TransitRouterPeerAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TransitRouterPeerAttachmentArgs | TransitRouterPeerAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransitRouterPeerAttachmentState | undefined;
-            inputs["autoPublishRouteEnabled"] = state ? state.autoPublishRouteEnabled : undefined;
-            inputs["bandwidth"] = state ? state.bandwidth : undefined;
-            inputs["cenBandwidthPackageId"] = state ? state.cenBandwidthPackageId : undefined;
-            inputs["cenId"] = state ? state.cenId : undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["peerTransitRouterId"] = state ? state.peerTransitRouterId : undefined;
-            inputs["peerTransitRouterRegionId"] = state ? state.peerTransitRouterRegionId : undefined;
-            inputs["resourceType"] = state ? state.resourceType : undefined;
-            inputs["routeTableAssociationEnabled"] = state ? state.routeTableAssociationEnabled : undefined;
-            inputs["routeTablePropagationEnabled"] = state ? state.routeTablePropagationEnabled : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["transitRouterAttachmentDescription"] = state ? state.transitRouterAttachmentDescription : undefined;
-            inputs["transitRouterAttachmentId"] = state ? state.transitRouterAttachmentId : undefined;
-            inputs["transitRouterAttachmentName"] = state ? state.transitRouterAttachmentName : undefined;
-            inputs["transitRouterId"] = state ? state.transitRouterId : undefined;
+            resourceInputs["autoPublishRouteEnabled"] = state ? state.autoPublishRouteEnabled : undefined;
+            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
+            resourceInputs["cenBandwidthPackageId"] = state ? state.cenBandwidthPackageId : undefined;
+            resourceInputs["cenId"] = state ? state.cenId : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["peerTransitRouterId"] = state ? state.peerTransitRouterId : undefined;
+            resourceInputs["peerTransitRouterRegionId"] = state ? state.peerTransitRouterRegionId : undefined;
+            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
+            resourceInputs["routeTableAssociationEnabled"] = state ? state.routeTableAssociationEnabled : undefined;
+            resourceInputs["routeTablePropagationEnabled"] = state ? state.routeTablePropagationEnabled : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["transitRouterAttachmentDescription"] = state ? state.transitRouterAttachmentDescription : undefined;
+            resourceInputs["transitRouterAttachmentId"] = state ? state.transitRouterAttachmentId : undefined;
+            resourceInputs["transitRouterAttachmentName"] = state ? state.transitRouterAttachmentName : undefined;
+            resourceInputs["transitRouterId"] = state ? state.transitRouterId : undefined;
         } else {
             const args = argsOrState as TransitRouterPeerAttachmentArgs | undefined;
             if ((!args || args.cenId === undefined) && !opts.urn) {
@@ -197,26 +197,24 @@ export class TransitRouterPeerAttachment extends pulumi.CustomResource {
             if ((!args || args.peerTransitRouterRegionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'peerTransitRouterRegionId'");
             }
-            inputs["autoPublishRouteEnabled"] = args ? args.autoPublishRouteEnabled : undefined;
-            inputs["bandwidth"] = args ? args.bandwidth : undefined;
-            inputs["cenBandwidthPackageId"] = args ? args.cenBandwidthPackageId : undefined;
-            inputs["cenId"] = args ? args.cenId : undefined;
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["peerTransitRouterId"] = args ? args.peerTransitRouterId : undefined;
-            inputs["peerTransitRouterRegionId"] = args ? args.peerTransitRouterRegionId : undefined;
-            inputs["resourceType"] = args ? args.resourceType : undefined;
-            inputs["routeTableAssociationEnabled"] = args ? args.routeTableAssociationEnabled : undefined;
-            inputs["routeTablePropagationEnabled"] = args ? args.routeTablePropagationEnabled : undefined;
-            inputs["transitRouterAttachmentDescription"] = args ? args.transitRouterAttachmentDescription : undefined;
-            inputs["transitRouterAttachmentName"] = args ? args.transitRouterAttachmentName : undefined;
-            inputs["transitRouterId"] = args ? args.transitRouterId : undefined;
-            inputs["status"] = undefined /*out*/;
-            inputs["transitRouterAttachmentId"] = undefined /*out*/;
+            resourceInputs["autoPublishRouteEnabled"] = args ? args.autoPublishRouteEnabled : undefined;
+            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
+            resourceInputs["cenBandwidthPackageId"] = args ? args.cenBandwidthPackageId : undefined;
+            resourceInputs["cenId"] = args ? args.cenId : undefined;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["peerTransitRouterId"] = args ? args.peerTransitRouterId : undefined;
+            resourceInputs["peerTransitRouterRegionId"] = args ? args.peerTransitRouterRegionId : undefined;
+            resourceInputs["resourceType"] = args ? args.resourceType : undefined;
+            resourceInputs["routeTableAssociationEnabled"] = args ? args.routeTableAssociationEnabled : undefined;
+            resourceInputs["routeTablePropagationEnabled"] = args ? args.routeTablePropagationEnabled : undefined;
+            resourceInputs["transitRouterAttachmentDescription"] = args ? args.transitRouterAttachmentDescription : undefined;
+            resourceInputs["transitRouterAttachmentName"] = args ? args.transitRouterAttachmentName : undefined;
+            resourceInputs["transitRouterId"] = args ? args.transitRouterId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["transitRouterAttachmentId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TransitRouterPeerAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TransitRouterPeerAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

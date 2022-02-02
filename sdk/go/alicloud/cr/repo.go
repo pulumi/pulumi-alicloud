@@ -31,14 +31,14 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cr.NewNamespace(ctx, "my_namespace", &cr.NamespaceArgs{
+// 		_, err := cr.NewNamespace(ctx, "my-namespace", &cr.NamespaceArgs{
 // 			AutoCreate:        pulumi.Bool(false),
 // 			DefaultVisibility: pulumi.String("PUBLIC"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = cr.NewRepo(ctx, "my_repo", &cr.RepoArgs{
+// 		_, err = cr.NewRepo(ctx, "my-repo", &cr.RepoArgs{
 // 			Namespace: my_namespace.Name,
 // 			Summary:   pulumi.String("this is summary of my new repo"),
 // 			RepoType:  pulumi.String("PUBLIC"),
@@ -186,7 +186,7 @@ type RepoInput interface {
 }
 
 func (*Repo) ElementType() reflect.Type {
-	return reflect.TypeOf((*Repo)(nil))
+	return reflect.TypeOf((**Repo)(nil)).Elem()
 }
 
 func (i *Repo) ToRepoOutput() RepoOutput {
@@ -195,35 +195,6 @@ func (i *Repo) ToRepoOutput() RepoOutput {
 
 func (i *Repo) ToRepoOutputWithContext(ctx context.Context) RepoOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RepoOutput)
-}
-
-func (i *Repo) ToRepoPtrOutput() RepoPtrOutput {
-	return i.ToRepoPtrOutputWithContext(context.Background())
-}
-
-func (i *Repo) ToRepoPtrOutputWithContext(ctx context.Context) RepoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RepoPtrOutput)
-}
-
-type RepoPtrInput interface {
-	pulumi.Input
-
-	ToRepoPtrOutput() RepoPtrOutput
-	ToRepoPtrOutputWithContext(ctx context.Context) RepoPtrOutput
-}
-
-type repoPtrType RepoArgs
-
-func (*repoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Repo)(nil))
-}
-
-func (i *repoPtrType) ToRepoPtrOutput() RepoPtrOutput {
-	return i.ToRepoPtrOutputWithContext(context.Background())
-}
-
-func (i *repoPtrType) ToRepoPtrOutputWithContext(ctx context.Context) RepoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RepoPtrOutput)
 }
 
 // RepoArrayInput is an input type that accepts RepoArray and RepoArrayOutput values.
@@ -279,7 +250,7 @@ func (i RepoMap) ToRepoMapOutputWithContext(ctx context.Context) RepoMapOutput {
 type RepoOutput struct{ *pulumi.OutputState }
 
 func (RepoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Repo)(nil))
+	return reflect.TypeOf((**Repo)(nil)).Elem()
 }
 
 func (o RepoOutput) ToRepoOutput() RepoOutput {
@@ -290,44 +261,10 @@ func (o RepoOutput) ToRepoOutputWithContext(ctx context.Context) RepoOutput {
 	return o
 }
 
-func (o RepoOutput) ToRepoPtrOutput() RepoPtrOutput {
-	return o.ToRepoPtrOutputWithContext(context.Background())
-}
-
-func (o RepoOutput) ToRepoPtrOutputWithContext(ctx context.Context) RepoPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Repo) *Repo {
-		return &v
-	}).(RepoPtrOutput)
-}
-
-type RepoPtrOutput struct{ *pulumi.OutputState }
-
-func (RepoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Repo)(nil))
-}
-
-func (o RepoPtrOutput) ToRepoPtrOutput() RepoPtrOutput {
-	return o
-}
-
-func (o RepoPtrOutput) ToRepoPtrOutputWithContext(ctx context.Context) RepoPtrOutput {
-	return o
-}
-
-func (o RepoPtrOutput) Elem() RepoOutput {
-	return o.ApplyT(func(v *Repo) Repo {
-		if v != nil {
-			return *v
-		}
-		var ret Repo
-		return ret
-	}).(RepoOutput)
-}
-
 type RepoArrayOutput struct{ *pulumi.OutputState }
 
 func (RepoArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Repo)(nil))
+	return reflect.TypeOf((*[]*Repo)(nil)).Elem()
 }
 
 func (o RepoArrayOutput) ToRepoArrayOutput() RepoArrayOutput {
@@ -339,15 +276,15 @@ func (o RepoArrayOutput) ToRepoArrayOutputWithContext(ctx context.Context) RepoA
 }
 
 func (o RepoArrayOutput) Index(i pulumi.IntInput) RepoOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Repo {
-		return vs[0].([]Repo)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Repo {
+		return vs[0].([]*Repo)[vs[1].(int)]
 	}).(RepoOutput)
 }
 
 type RepoMapOutput struct{ *pulumi.OutputState }
 
 func (RepoMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Repo)(nil))
+	return reflect.TypeOf((*map[string]*Repo)(nil)).Elem()
 }
 
 func (o RepoMapOutput) ToRepoMapOutput() RepoMapOutput {
@@ -359,18 +296,16 @@ func (o RepoMapOutput) ToRepoMapOutputWithContext(ctx context.Context) RepoMapOu
 }
 
 func (o RepoMapOutput) MapIndex(k pulumi.StringInput) RepoOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Repo {
-		return vs[0].(map[string]Repo)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Repo {
+		return vs[0].(map[string]*Repo)[vs[1].(string)]
 	}).(RepoOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoInput)(nil)).Elem(), &Repo{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RepoPtrInput)(nil)).Elem(), &Repo{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoArrayInput)(nil)).Elem(), RepoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoMapInput)(nil)).Elem(), RepoMap{})
 	pulumi.RegisterOutputType(RepoOutput{})
-	pulumi.RegisterOutputType(RepoPtrOutput{})
 	pulumi.RegisterOutputType(RepoArrayOutput{})
 	pulumi.RegisterOutputType(RepoMapOutput{})
 }

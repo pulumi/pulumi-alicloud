@@ -97,20 +97,20 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            inputs["autoRenew"] = state ? state.autoRenew : undefined;
-            inputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
-            inputs["dataDiskSize"] = state ? state.dataDiskSize : undefined;
-            inputs["imageId"] = state ? state.imageId : undefined;
-            inputs["instanceName"] = state ? state.instanceName : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["paymentType"] = state ? state.paymentType : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["planId"] = state ? state.planId : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
+            resourceInputs["dataDiskSize"] = state ? state.dataDiskSize : undefined;
+            resourceInputs["imageId"] = state ? state.imageId : undefined;
+            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["planId"] = state ? state.planId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.imageId === undefined) && !opts.urn) {
@@ -122,21 +122,19 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.planId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'planId'");
             }
-            inputs["autoRenew"] = args ? args.autoRenew : undefined;
-            inputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
-            inputs["dataDiskSize"] = args ? args.dataDiskSize : undefined;
-            inputs["imageId"] = args ? args.imageId : undefined;
-            inputs["instanceName"] = args ? args.instanceName : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["paymentType"] = args ? args.paymentType : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["planId"] = args ? args.planId : undefined;
-            inputs["status"] = args ? args.status : undefined;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
+            resourceInputs["dataDiskSize"] = args ? args.dataDiskSize : undefined;
+            resourceInputs["imageId"] = args ? args.imageId : undefined;
+            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["planId"] = args ? args.planId : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Instance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

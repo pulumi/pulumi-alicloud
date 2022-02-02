@@ -126,7 +126,7 @@ type TransitRouterRouteTableAssociationInput interface {
 }
 
 func (*TransitRouterRouteTableAssociation) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransitRouterRouteTableAssociation)(nil))
+	return reflect.TypeOf((**TransitRouterRouteTableAssociation)(nil)).Elem()
 }
 
 func (i *TransitRouterRouteTableAssociation) ToTransitRouterRouteTableAssociationOutput() TransitRouterRouteTableAssociationOutput {
@@ -135,35 +135,6 @@ func (i *TransitRouterRouteTableAssociation) ToTransitRouterRouteTableAssociatio
 
 func (i *TransitRouterRouteTableAssociation) ToTransitRouterRouteTableAssociationOutputWithContext(ctx context.Context) TransitRouterRouteTableAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterRouteTableAssociationOutput)
-}
-
-func (i *TransitRouterRouteTableAssociation) ToTransitRouterRouteTableAssociationPtrOutput() TransitRouterRouteTableAssociationPtrOutput {
-	return i.ToTransitRouterRouteTableAssociationPtrOutputWithContext(context.Background())
-}
-
-func (i *TransitRouterRouteTableAssociation) ToTransitRouterRouteTableAssociationPtrOutputWithContext(ctx context.Context) TransitRouterRouteTableAssociationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterRouteTableAssociationPtrOutput)
-}
-
-type TransitRouterRouteTableAssociationPtrInput interface {
-	pulumi.Input
-
-	ToTransitRouterRouteTableAssociationPtrOutput() TransitRouterRouteTableAssociationPtrOutput
-	ToTransitRouterRouteTableAssociationPtrOutputWithContext(ctx context.Context) TransitRouterRouteTableAssociationPtrOutput
-}
-
-type transitRouterRouteTableAssociationPtrType TransitRouterRouteTableAssociationArgs
-
-func (*transitRouterRouteTableAssociationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransitRouterRouteTableAssociation)(nil))
-}
-
-func (i *transitRouterRouteTableAssociationPtrType) ToTransitRouterRouteTableAssociationPtrOutput() TransitRouterRouteTableAssociationPtrOutput {
-	return i.ToTransitRouterRouteTableAssociationPtrOutputWithContext(context.Background())
-}
-
-func (i *transitRouterRouteTableAssociationPtrType) ToTransitRouterRouteTableAssociationPtrOutputWithContext(ctx context.Context) TransitRouterRouteTableAssociationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterRouteTableAssociationPtrOutput)
 }
 
 // TransitRouterRouteTableAssociationArrayInput is an input type that accepts TransitRouterRouteTableAssociationArray and TransitRouterRouteTableAssociationArrayOutput values.
@@ -219,7 +190,7 @@ func (i TransitRouterRouteTableAssociationMap) ToTransitRouterRouteTableAssociat
 type TransitRouterRouteTableAssociationOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterRouteTableAssociationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransitRouterRouteTableAssociation)(nil))
+	return reflect.TypeOf((**TransitRouterRouteTableAssociation)(nil)).Elem()
 }
 
 func (o TransitRouterRouteTableAssociationOutput) ToTransitRouterRouteTableAssociationOutput() TransitRouterRouteTableAssociationOutput {
@@ -230,44 +201,10 @@ func (o TransitRouterRouteTableAssociationOutput) ToTransitRouterRouteTableAssoc
 	return o
 }
 
-func (o TransitRouterRouteTableAssociationOutput) ToTransitRouterRouteTableAssociationPtrOutput() TransitRouterRouteTableAssociationPtrOutput {
-	return o.ToTransitRouterRouteTableAssociationPtrOutputWithContext(context.Background())
-}
-
-func (o TransitRouterRouteTableAssociationOutput) ToTransitRouterRouteTableAssociationPtrOutputWithContext(ctx context.Context) TransitRouterRouteTableAssociationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransitRouterRouteTableAssociation) *TransitRouterRouteTableAssociation {
-		return &v
-	}).(TransitRouterRouteTableAssociationPtrOutput)
-}
-
-type TransitRouterRouteTableAssociationPtrOutput struct{ *pulumi.OutputState }
-
-func (TransitRouterRouteTableAssociationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransitRouterRouteTableAssociation)(nil))
-}
-
-func (o TransitRouterRouteTableAssociationPtrOutput) ToTransitRouterRouteTableAssociationPtrOutput() TransitRouterRouteTableAssociationPtrOutput {
-	return o
-}
-
-func (o TransitRouterRouteTableAssociationPtrOutput) ToTransitRouterRouteTableAssociationPtrOutputWithContext(ctx context.Context) TransitRouterRouteTableAssociationPtrOutput {
-	return o
-}
-
-func (o TransitRouterRouteTableAssociationPtrOutput) Elem() TransitRouterRouteTableAssociationOutput {
-	return o.ApplyT(func(v *TransitRouterRouteTableAssociation) TransitRouterRouteTableAssociation {
-		if v != nil {
-			return *v
-		}
-		var ret TransitRouterRouteTableAssociation
-		return ret
-	}).(TransitRouterRouteTableAssociationOutput)
-}
-
 type TransitRouterRouteTableAssociationArrayOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterRouteTableAssociationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TransitRouterRouteTableAssociation)(nil))
+	return reflect.TypeOf((*[]*TransitRouterRouteTableAssociation)(nil)).Elem()
 }
 
 func (o TransitRouterRouteTableAssociationArrayOutput) ToTransitRouterRouteTableAssociationArrayOutput() TransitRouterRouteTableAssociationArrayOutput {
@@ -279,15 +216,15 @@ func (o TransitRouterRouteTableAssociationArrayOutput) ToTransitRouterRouteTable
 }
 
 func (o TransitRouterRouteTableAssociationArrayOutput) Index(i pulumi.IntInput) TransitRouterRouteTableAssociationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransitRouterRouteTableAssociation {
-		return vs[0].([]TransitRouterRouteTableAssociation)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TransitRouterRouteTableAssociation {
+		return vs[0].([]*TransitRouterRouteTableAssociation)[vs[1].(int)]
 	}).(TransitRouterRouteTableAssociationOutput)
 }
 
 type TransitRouterRouteTableAssociationMapOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterRouteTableAssociationMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]TransitRouterRouteTableAssociation)(nil))
+	return reflect.TypeOf((*map[string]*TransitRouterRouteTableAssociation)(nil)).Elem()
 }
 
 func (o TransitRouterRouteTableAssociationMapOutput) ToTransitRouterRouteTableAssociationMapOutput() TransitRouterRouteTableAssociationMapOutput {
@@ -299,18 +236,16 @@ func (o TransitRouterRouteTableAssociationMapOutput) ToTransitRouterRouteTableAs
 }
 
 func (o TransitRouterRouteTableAssociationMapOutput) MapIndex(k pulumi.StringInput) TransitRouterRouteTableAssociationOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TransitRouterRouteTableAssociation {
-		return vs[0].(map[string]TransitRouterRouteTableAssociation)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TransitRouterRouteTableAssociation {
+		return vs[0].(map[string]*TransitRouterRouteTableAssociation)[vs[1].(string)]
 	}).(TransitRouterRouteTableAssociationOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterRouteTableAssociationInput)(nil)).Elem(), &TransitRouterRouteTableAssociation{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterRouteTableAssociationPtrInput)(nil)).Elem(), &TransitRouterRouteTableAssociation{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterRouteTableAssociationArrayInput)(nil)).Elem(), TransitRouterRouteTableAssociationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterRouteTableAssociationMapInput)(nil)).Elem(), TransitRouterRouteTableAssociationMap{})
 	pulumi.RegisterOutputType(TransitRouterRouteTableAssociationOutput{})
-	pulumi.RegisterOutputType(TransitRouterRouteTableAssociationPtrOutput{})
 	pulumi.RegisterOutputType(TransitRouterRouteTableAssociationArrayOutput{})
 	pulumi.RegisterOutputType(TransitRouterRouteTableAssociationMapOutput{})
 }

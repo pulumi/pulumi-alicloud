@@ -118,17 +118,17 @@ export class Exchange extends pulumi.CustomResource {
      */
     constructor(name: string, args: ExchangeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ExchangeArgs | ExchangeState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExchangeState | undefined;
-            inputs["alternateExchange"] = state ? state.alternateExchange : undefined;
-            inputs["autoDeleteState"] = state ? state.autoDeleteState : undefined;
-            inputs["exchangeName"] = state ? state.exchangeName : undefined;
-            inputs["exchangeType"] = state ? state.exchangeType : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["internal"] = state ? state.internal : undefined;
-            inputs["virtualHostName"] = state ? state.virtualHostName : undefined;
+            resourceInputs["alternateExchange"] = state ? state.alternateExchange : undefined;
+            resourceInputs["autoDeleteState"] = state ? state.autoDeleteState : undefined;
+            resourceInputs["exchangeName"] = state ? state.exchangeName : undefined;
+            resourceInputs["exchangeType"] = state ? state.exchangeType : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["internal"] = state ? state.internal : undefined;
+            resourceInputs["virtualHostName"] = state ? state.virtualHostName : undefined;
         } else {
             const args = argsOrState as ExchangeArgs | undefined;
             if ((!args || args.autoDeleteState === undefined) && !opts.urn) {
@@ -149,18 +149,16 @@ export class Exchange extends pulumi.CustomResource {
             if ((!args || args.virtualHostName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'virtualHostName'");
             }
-            inputs["alternateExchange"] = args ? args.alternateExchange : undefined;
-            inputs["autoDeleteState"] = args ? args.autoDeleteState : undefined;
-            inputs["exchangeName"] = args ? args.exchangeName : undefined;
-            inputs["exchangeType"] = args ? args.exchangeType : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["internal"] = args ? args.internal : undefined;
-            inputs["virtualHostName"] = args ? args.virtualHostName : undefined;
+            resourceInputs["alternateExchange"] = args ? args.alternateExchange : undefined;
+            resourceInputs["autoDeleteState"] = args ? args.autoDeleteState : undefined;
+            resourceInputs["exchangeName"] = args ? args.exchangeName : undefined;
+            resourceInputs["exchangeType"] = args ? args.exchangeType : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["internal"] = args ? args.internal : undefined;
+            resourceInputs["virtualHostName"] = args ? args.virtualHostName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Exchange.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Exchange.__pulumiType, name, resourceInputs, opts);
     }
 }
 

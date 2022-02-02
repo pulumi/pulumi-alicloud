@@ -106,30 +106,28 @@ export class CaCertificate extends pulumi.CustomResource {
      */
     constructor(name: string, args: CaCertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CaCertificateArgs | CaCertificateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CaCertificateState | undefined;
-            inputs["caCertificate"] = state ? state.caCertificate : undefined;
-            inputs["caCertificateName"] = state ? state.caCertificateName : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["caCertificate"] = state ? state.caCertificate : undefined;
+            resourceInputs["caCertificateName"] = state ? state.caCertificateName : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as CaCertificateArgs | undefined;
             if ((!args || args.caCertificate === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'caCertificate'");
             }
-            inputs["caCertificate"] = args ? args.caCertificate : undefined;
-            inputs["caCertificateName"] = args ? args.caCertificateName : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["caCertificate"] = args ? args.caCertificate : undefined;
+            resourceInputs["caCertificateName"] = args ? args.caCertificateName : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CaCertificate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CaCertificate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

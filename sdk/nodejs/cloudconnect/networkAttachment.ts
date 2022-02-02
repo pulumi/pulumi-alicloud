@@ -84,12 +84,12 @@ export class NetworkAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: NetworkAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NetworkAttachmentArgs | NetworkAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkAttachmentState | undefined;
-            inputs["ccnId"] = state ? state.ccnId : undefined;
-            inputs["sagId"] = state ? state.sagId : undefined;
+            resourceInputs["ccnId"] = state ? state.ccnId : undefined;
+            resourceInputs["sagId"] = state ? state.sagId : undefined;
         } else {
             const args = argsOrState as NetworkAttachmentArgs | undefined;
             if ((!args || args.ccnId === undefined) && !opts.urn) {
@@ -98,13 +98,11 @@ export class NetworkAttachment extends pulumi.CustomResource {
             if ((!args || args.sagId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sagId'");
             }
-            inputs["ccnId"] = args ? args.ccnId : undefined;
-            inputs["sagId"] = args ? args.sagId : undefined;
+            resourceInputs["ccnId"] = args ? args.ccnId : undefined;
+            resourceInputs["sagId"] = args ? args.sagId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(NetworkAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(NetworkAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

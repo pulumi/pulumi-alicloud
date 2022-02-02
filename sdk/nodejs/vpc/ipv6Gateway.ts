@@ -95,30 +95,28 @@ export class Ipv6Gateway extends pulumi.CustomResource {
      */
     constructor(name: string, args: Ipv6GatewayArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: Ipv6GatewayArgs | Ipv6GatewayState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as Ipv6GatewayState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["ipv6GatewayName"] = state ? state.ipv6GatewayName : undefined;
-            inputs["spec"] = state ? state.spec : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["ipv6GatewayName"] = state ? state.ipv6GatewayName : undefined;
+            resourceInputs["spec"] = state ? state.spec : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as Ipv6GatewayArgs | undefined;
             if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["ipv6GatewayName"] = args ? args.ipv6GatewayName : undefined;
-            inputs["spec"] = args ? args.spec : undefined;
-            inputs["vpcId"] = args ? args.vpcId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["ipv6GatewayName"] = args ? args.ipv6GatewayName : undefined;
+            resourceInputs["spec"] = args ? args.spec : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Ipv6Gateway.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Ipv6Gateway.__pulumiType, name, resourceInputs, opts);
     }
 }
 

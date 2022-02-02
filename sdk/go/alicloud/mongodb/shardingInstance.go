@@ -321,7 +321,7 @@ type ShardingInstanceInput interface {
 }
 
 func (*ShardingInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*ShardingInstance)(nil))
+	return reflect.TypeOf((**ShardingInstance)(nil)).Elem()
 }
 
 func (i *ShardingInstance) ToShardingInstanceOutput() ShardingInstanceOutput {
@@ -330,35 +330,6 @@ func (i *ShardingInstance) ToShardingInstanceOutput() ShardingInstanceOutput {
 
 func (i *ShardingInstance) ToShardingInstanceOutputWithContext(ctx context.Context) ShardingInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ShardingInstanceOutput)
-}
-
-func (i *ShardingInstance) ToShardingInstancePtrOutput() ShardingInstancePtrOutput {
-	return i.ToShardingInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *ShardingInstance) ToShardingInstancePtrOutputWithContext(ctx context.Context) ShardingInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ShardingInstancePtrOutput)
-}
-
-type ShardingInstancePtrInput interface {
-	pulumi.Input
-
-	ToShardingInstancePtrOutput() ShardingInstancePtrOutput
-	ToShardingInstancePtrOutputWithContext(ctx context.Context) ShardingInstancePtrOutput
-}
-
-type shardingInstancePtrType ShardingInstanceArgs
-
-func (*shardingInstancePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ShardingInstance)(nil))
-}
-
-func (i *shardingInstancePtrType) ToShardingInstancePtrOutput() ShardingInstancePtrOutput {
-	return i.ToShardingInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *shardingInstancePtrType) ToShardingInstancePtrOutputWithContext(ctx context.Context) ShardingInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ShardingInstancePtrOutput)
 }
 
 // ShardingInstanceArrayInput is an input type that accepts ShardingInstanceArray and ShardingInstanceArrayOutput values.
@@ -414,7 +385,7 @@ func (i ShardingInstanceMap) ToShardingInstanceMapOutputWithContext(ctx context.
 type ShardingInstanceOutput struct{ *pulumi.OutputState }
 
 func (ShardingInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ShardingInstance)(nil))
+	return reflect.TypeOf((**ShardingInstance)(nil)).Elem()
 }
 
 func (o ShardingInstanceOutput) ToShardingInstanceOutput() ShardingInstanceOutput {
@@ -425,44 +396,10 @@ func (o ShardingInstanceOutput) ToShardingInstanceOutputWithContext(ctx context.
 	return o
 }
 
-func (o ShardingInstanceOutput) ToShardingInstancePtrOutput() ShardingInstancePtrOutput {
-	return o.ToShardingInstancePtrOutputWithContext(context.Background())
-}
-
-func (o ShardingInstanceOutput) ToShardingInstancePtrOutputWithContext(ctx context.Context) ShardingInstancePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShardingInstance) *ShardingInstance {
-		return &v
-	}).(ShardingInstancePtrOutput)
-}
-
-type ShardingInstancePtrOutput struct{ *pulumi.OutputState }
-
-func (ShardingInstancePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ShardingInstance)(nil))
-}
-
-func (o ShardingInstancePtrOutput) ToShardingInstancePtrOutput() ShardingInstancePtrOutput {
-	return o
-}
-
-func (o ShardingInstancePtrOutput) ToShardingInstancePtrOutputWithContext(ctx context.Context) ShardingInstancePtrOutput {
-	return o
-}
-
-func (o ShardingInstancePtrOutput) Elem() ShardingInstanceOutput {
-	return o.ApplyT(func(v *ShardingInstance) ShardingInstance {
-		if v != nil {
-			return *v
-		}
-		var ret ShardingInstance
-		return ret
-	}).(ShardingInstanceOutput)
-}
-
 type ShardingInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (ShardingInstanceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ShardingInstance)(nil))
+	return reflect.TypeOf((*[]*ShardingInstance)(nil)).Elem()
 }
 
 func (o ShardingInstanceArrayOutput) ToShardingInstanceArrayOutput() ShardingInstanceArrayOutput {
@@ -474,15 +411,15 @@ func (o ShardingInstanceArrayOutput) ToShardingInstanceArrayOutputWithContext(ct
 }
 
 func (o ShardingInstanceArrayOutput) Index(i pulumi.IntInput) ShardingInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ShardingInstance {
-		return vs[0].([]ShardingInstance)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ShardingInstance {
+		return vs[0].([]*ShardingInstance)[vs[1].(int)]
 	}).(ShardingInstanceOutput)
 }
 
 type ShardingInstanceMapOutput struct{ *pulumi.OutputState }
 
 func (ShardingInstanceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ShardingInstance)(nil))
+	return reflect.TypeOf((*map[string]*ShardingInstance)(nil)).Elem()
 }
 
 func (o ShardingInstanceMapOutput) ToShardingInstanceMapOutput() ShardingInstanceMapOutput {
@@ -494,18 +431,16 @@ func (o ShardingInstanceMapOutput) ToShardingInstanceMapOutputWithContext(ctx co
 }
 
 func (o ShardingInstanceMapOutput) MapIndex(k pulumi.StringInput) ShardingInstanceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ShardingInstance {
-		return vs[0].(map[string]ShardingInstance)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ShardingInstance {
+		return vs[0].(map[string]*ShardingInstance)[vs[1].(string)]
 	}).(ShardingInstanceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceInput)(nil)).Elem(), &ShardingInstance{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstancePtrInput)(nil)).Elem(), &ShardingInstance{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceArrayInput)(nil)).Elem(), ShardingInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingInstanceMapInput)(nil)).Elem(), ShardingInstanceMap{})
 	pulumi.RegisterOutputType(ShardingInstanceOutput{})
-	pulumi.RegisterOutputType(ShardingInstancePtrOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceArrayOutput{})
 	pulumi.RegisterOutputType(ShardingInstanceMapOutput{})
 }

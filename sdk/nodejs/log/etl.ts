@@ -283,33 +283,33 @@ export class Etl extends pulumi.CustomResource {
      */
     constructor(name: string, args: EtlArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EtlArgs | EtlState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EtlState | undefined;
-            inputs["accessKeyId"] = state ? state.accessKeyId : undefined;
-            inputs["accessKeySecret"] = state ? state.accessKeySecret : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["etlName"] = state ? state.etlName : undefined;
-            inputs["etlSinks"] = state ? state.etlSinks : undefined;
-            inputs["etlType"] = state ? state.etlType : undefined;
-            inputs["fromTime"] = state ? state.fromTime : undefined;
-            inputs["kmsEncryptedAccessKeyId"] = state ? state.kmsEncryptedAccessKeyId : undefined;
-            inputs["kmsEncryptedAccessKeySecret"] = state ? state.kmsEncryptedAccessKeySecret : undefined;
-            inputs["kmsEncryptionAccessKeyIdContext"] = state ? state.kmsEncryptionAccessKeyIdContext : undefined;
-            inputs["kmsEncryptionAccessKeySecretContext"] = state ? state.kmsEncryptionAccessKeySecretContext : undefined;
-            inputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
-            inputs["logstore"] = state ? state.logstore : undefined;
-            inputs["parameters"] = state ? state.parameters : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["roleArn"] = state ? state.roleArn : undefined;
-            inputs["schedule"] = state ? state.schedule : undefined;
-            inputs["script"] = state ? state.script : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["toTime"] = state ? state.toTime : undefined;
-            inputs["version"] = state ? state.version : undefined;
+            resourceInputs["accessKeyId"] = state ? state.accessKeyId : undefined;
+            resourceInputs["accessKeySecret"] = state ? state.accessKeySecret : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["etlName"] = state ? state.etlName : undefined;
+            resourceInputs["etlSinks"] = state ? state.etlSinks : undefined;
+            resourceInputs["etlType"] = state ? state.etlType : undefined;
+            resourceInputs["fromTime"] = state ? state.fromTime : undefined;
+            resourceInputs["kmsEncryptedAccessKeyId"] = state ? state.kmsEncryptedAccessKeyId : undefined;
+            resourceInputs["kmsEncryptedAccessKeySecret"] = state ? state.kmsEncryptedAccessKeySecret : undefined;
+            resourceInputs["kmsEncryptionAccessKeyIdContext"] = state ? state.kmsEncryptionAccessKeyIdContext : undefined;
+            resourceInputs["kmsEncryptionAccessKeySecretContext"] = state ? state.kmsEncryptionAccessKeySecretContext : undefined;
+            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
+            resourceInputs["logstore"] = state ? state.logstore : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["roleArn"] = state ? state.roleArn : undefined;
+            resourceInputs["schedule"] = state ? state.schedule : undefined;
+            resourceInputs["script"] = state ? state.script : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["toTime"] = state ? state.toTime : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as EtlArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -330,34 +330,32 @@ export class Etl extends pulumi.CustomResource {
             if ((!args || args.script === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'script'");
             }
-            inputs["accessKeyId"] = args ? args.accessKeyId : undefined;
-            inputs["accessKeySecret"] = args ? args.accessKeySecret : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["etlName"] = args ? args.etlName : undefined;
-            inputs["etlSinks"] = args ? args.etlSinks : undefined;
-            inputs["etlType"] = args ? args.etlType : undefined;
-            inputs["fromTime"] = args ? args.fromTime : undefined;
-            inputs["kmsEncryptedAccessKeyId"] = args ? args.kmsEncryptedAccessKeyId : undefined;
-            inputs["kmsEncryptedAccessKeySecret"] = args ? args.kmsEncryptedAccessKeySecret : undefined;
-            inputs["kmsEncryptionAccessKeyIdContext"] = args ? args.kmsEncryptionAccessKeyIdContext : undefined;
-            inputs["kmsEncryptionAccessKeySecretContext"] = args ? args.kmsEncryptionAccessKeySecretContext : undefined;
-            inputs["lastModifiedTime"] = args ? args.lastModifiedTime : undefined;
-            inputs["logstore"] = args ? args.logstore : undefined;
-            inputs["parameters"] = args ? args.parameters : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["roleArn"] = args ? args.roleArn : undefined;
-            inputs["schedule"] = args ? args.schedule : undefined;
-            inputs["script"] = args ? args.script : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["toTime"] = args ? args.toTime : undefined;
-            inputs["version"] = args ? args.version : undefined;
+            resourceInputs["accessKeyId"] = args ? args.accessKeyId : undefined;
+            resourceInputs["accessKeySecret"] = args ? args.accessKeySecret : undefined;
+            resourceInputs["createTime"] = args ? args.createTime : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["etlName"] = args ? args.etlName : undefined;
+            resourceInputs["etlSinks"] = args ? args.etlSinks : undefined;
+            resourceInputs["etlType"] = args ? args.etlType : undefined;
+            resourceInputs["fromTime"] = args ? args.fromTime : undefined;
+            resourceInputs["kmsEncryptedAccessKeyId"] = args ? args.kmsEncryptedAccessKeyId : undefined;
+            resourceInputs["kmsEncryptedAccessKeySecret"] = args ? args.kmsEncryptedAccessKeySecret : undefined;
+            resourceInputs["kmsEncryptionAccessKeyIdContext"] = args ? args.kmsEncryptionAccessKeyIdContext : undefined;
+            resourceInputs["kmsEncryptionAccessKeySecretContext"] = args ? args.kmsEncryptionAccessKeySecretContext : undefined;
+            resourceInputs["lastModifiedTime"] = args ? args.lastModifiedTime : undefined;
+            resourceInputs["logstore"] = args ? args.logstore : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["roleArn"] = args ? args.roleArn : undefined;
+            resourceInputs["schedule"] = args ? args.schedule : undefined;
+            resourceInputs["script"] = args ? args.script : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["toTime"] = args ? args.toTime : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Etl.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Etl.__pulumiType, name, resourceInputs, opts);
     }
 }
 

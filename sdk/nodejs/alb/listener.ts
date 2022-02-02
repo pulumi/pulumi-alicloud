@@ -130,28 +130,28 @@ export class Listener extends pulumi.CustomResource {
      */
     constructor(name: string, args: ListenerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ListenerArgs | ListenerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ListenerState | undefined;
-            inputs["accessLogRecordCustomizedHeadersEnabled"] = state ? state.accessLogRecordCustomizedHeadersEnabled : undefined;
-            inputs["accessLogTracingConfig"] = state ? state.accessLogTracingConfig : undefined;
-            inputs["aclConfig"] = state ? state.aclConfig : undefined;
-            inputs["certificates"] = state ? state.certificates : undefined;
-            inputs["defaultActions"] = state ? state.defaultActions : undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["gzipEnabled"] = state ? state.gzipEnabled : undefined;
-            inputs["http2Enabled"] = state ? state.http2Enabled : undefined;
-            inputs["idleTimeout"] = state ? state.idleTimeout : undefined;
-            inputs["listenerDescription"] = state ? state.listenerDescription : undefined;
-            inputs["listenerPort"] = state ? state.listenerPort : undefined;
-            inputs["listenerProtocol"] = state ? state.listenerProtocol : undefined;
-            inputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
-            inputs["quicConfig"] = state ? state.quicConfig : undefined;
-            inputs["requestTimeout"] = state ? state.requestTimeout : undefined;
-            inputs["securityPolicyId"] = state ? state.securityPolicyId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["xforwardedForConfig"] = state ? state.xforwardedForConfig : undefined;
+            resourceInputs["accessLogRecordCustomizedHeadersEnabled"] = state ? state.accessLogRecordCustomizedHeadersEnabled : undefined;
+            resourceInputs["accessLogTracingConfig"] = state ? state.accessLogTracingConfig : undefined;
+            resourceInputs["aclConfig"] = state ? state.aclConfig : undefined;
+            resourceInputs["certificates"] = state ? state.certificates : undefined;
+            resourceInputs["defaultActions"] = state ? state.defaultActions : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["gzipEnabled"] = state ? state.gzipEnabled : undefined;
+            resourceInputs["http2Enabled"] = state ? state.http2Enabled : undefined;
+            resourceInputs["idleTimeout"] = state ? state.idleTimeout : undefined;
+            resourceInputs["listenerDescription"] = state ? state.listenerDescription : undefined;
+            resourceInputs["listenerPort"] = state ? state.listenerPort : undefined;
+            resourceInputs["listenerProtocol"] = state ? state.listenerProtocol : undefined;
+            resourceInputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
+            resourceInputs["quicConfig"] = state ? state.quicConfig : undefined;
+            resourceInputs["requestTimeout"] = state ? state.requestTimeout : undefined;
+            resourceInputs["securityPolicyId"] = state ? state.securityPolicyId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["xforwardedForConfig"] = state ? state.xforwardedForConfig : undefined;
         } else {
             const args = argsOrState as ListenerArgs | undefined;
             if ((!args || args.listenerPort === undefined) && !opts.urn) {
@@ -163,29 +163,27 @@ export class Listener extends pulumi.CustomResource {
             if ((!args || args.loadBalancerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
-            inputs["accessLogRecordCustomizedHeadersEnabled"] = args ? args.accessLogRecordCustomizedHeadersEnabled : undefined;
-            inputs["accessLogTracingConfig"] = args ? args.accessLogTracingConfig : undefined;
-            inputs["aclConfig"] = args ? args.aclConfig : undefined;
-            inputs["certificates"] = args ? args.certificates : undefined;
-            inputs["defaultActions"] = args ? args.defaultActions : undefined;
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["gzipEnabled"] = args ? args.gzipEnabled : undefined;
-            inputs["http2Enabled"] = args ? args.http2Enabled : undefined;
-            inputs["idleTimeout"] = args ? args.idleTimeout : undefined;
-            inputs["listenerDescription"] = args ? args.listenerDescription : undefined;
-            inputs["listenerPort"] = args ? args.listenerPort : undefined;
-            inputs["listenerProtocol"] = args ? args.listenerProtocol : undefined;
-            inputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
-            inputs["quicConfig"] = args ? args.quicConfig : undefined;
-            inputs["requestTimeout"] = args ? args.requestTimeout : undefined;
-            inputs["securityPolicyId"] = args ? args.securityPolicyId : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["xforwardedForConfig"] = args ? args.xforwardedForConfig : undefined;
+            resourceInputs["accessLogRecordCustomizedHeadersEnabled"] = args ? args.accessLogRecordCustomizedHeadersEnabled : undefined;
+            resourceInputs["accessLogTracingConfig"] = args ? args.accessLogTracingConfig : undefined;
+            resourceInputs["aclConfig"] = args ? args.aclConfig : undefined;
+            resourceInputs["certificates"] = args ? args.certificates : undefined;
+            resourceInputs["defaultActions"] = args ? args.defaultActions : undefined;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["gzipEnabled"] = args ? args.gzipEnabled : undefined;
+            resourceInputs["http2Enabled"] = args ? args.http2Enabled : undefined;
+            resourceInputs["idleTimeout"] = args ? args.idleTimeout : undefined;
+            resourceInputs["listenerDescription"] = args ? args.listenerDescription : undefined;
+            resourceInputs["listenerPort"] = args ? args.listenerPort : undefined;
+            resourceInputs["listenerProtocol"] = args ? args.listenerProtocol : undefined;
+            resourceInputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
+            resourceInputs["quicConfig"] = args ? args.quicConfig : undefined;
+            resourceInputs["requestTimeout"] = args ? args.requestTimeout : undefined;
+            resourceInputs["securityPolicyId"] = args ? args.securityPolicyId : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["xforwardedForConfig"] = args ? args.xforwardedForConfig : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Listener.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Listener.__pulumiType, name, resourceInputs, opts);
     }
 }
 

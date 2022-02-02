@@ -31,7 +31,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dns.NewCustomLine(ctx, "_default", &dns.CustomLineArgs{
+// 		_, err := dns.NewCustomLine(ctx, "default", &dns.CustomLineArgs{
 // 			CustomLineName: pulumi.String("tf-testacc"),
 // 			DomainName:     pulumi.String("your_domain_name"),
 // 			IpSegmentLists: dns.CustomLineIpSegmentListArray{
@@ -167,7 +167,7 @@ type CustomLineInput interface {
 }
 
 func (*CustomLine) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomLine)(nil))
+	return reflect.TypeOf((**CustomLine)(nil)).Elem()
 }
 
 func (i *CustomLine) ToCustomLineOutput() CustomLineOutput {
@@ -176,35 +176,6 @@ func (i *CustomLine) ToCustomLineOutput() CustomLineOutput {
 
 func (i *CustomLine) ToCustomLineOutputWithContext(ctx context.Context) CustomLineOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomLineOutput)
-}
-
-func (i *CustomLine) ToCustomLinePtrOutput() CustomLinePtrOutput {
-	return i.ToCustomLinePtrOutputWithContext(context.Background())
-}
-
-func (i *CustomLine) ToCustomLinePtrOutputWithContext(ctx context.Context) CustomLinePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomLinePtrOutput)
-}
-
-type CustomLinePtrInput interface {
-	pulumi.Input
-
-	ToCustomLinePtrOutput() CustomLinePtrOutput
-	ToCustomLinePtrOutputWithContext(ctx context.Context) CustomLinePtrOutput
-}
-
-type customLinePtrType CustomLineArgs
-
-func (*customLinePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomLine)(nil))
-}
-
-func (i *customLinePtrType) ToCustomLinePtrOutput() CustomLinePtrOutput {
-	return i.ToCustomLinePtrOutputWithContext(context.Background())
-}
-
-func (i *customLinePtrType) ToCustomLinePtrOutputWithContext(ctx context.Context) CustomLinePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomLinePtrOutput)
 }
 
 // CustomLineArrayInput is an input type that accepts CustomLineArray and CustomLineArrayOutput values.
@@ -260,7 +231,7 @@ func (i CustomLineMap) ToCustomLineMapOutputWithContext(ctx context.Context) Cus
 type CustomLineOutput struct{ *pulumi.OutputState }
 
 func (CustomLineOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomLine)(nil))
+	return reflect.TypeOf((**CustomLine)(nil)).Elem()
 }
 
 func (o CustomLineOutput) ToCustomLineOutput() CustomLineOutput {
@@ -271,44 +242,10 @@ func (o CustomLineOutput) ToCustomLineOutputWithContext(ctx context.Context) Cus
 	return o
 }
 
-func (o CustomLineOutput) ToCustomLinePtrOutput() CustomLinePtrOutput {
-	return o.ToCustomLinePtrOutputWithContext(context.Background())
-}
-
-func (o CustomLineOutput) ToCustomLinePtrOutputWithContext(ctx context.Context) CustomLinePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomLine) *CustomLine {
-		return &v
-	}).(CustomLinePtrOutput)
-}
-
-type CustomLinePtrOutput struct{ *pulumi.OutputState }
-
-func (CustomLinePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomLine)(nil))
-}
-
-func (o CustomLinePtrOutput) ToCustomLinePtrOutput() CustomLinePtrOutput {
-	return o
-}
-
-func (o CustomLinePtrOutput) ToCustomLinePtrOutputWithContext(ctx context.Context) CustomLinePtrOutput {
-	return o
-}
-
-func (o CustomLinePtrOutput) Elem() CustomLineOutput {
-	return o.ApplyT(func(v *CustomLine) CustomLine {
-		if v != nil {
-			return *v
-		}
-		var ret CustomLine
-		return ret
-	}).(CustomLineOutput)
-}
-
 type CustomLineArrayOutput struct{ *pulumi.OutputState }
 
 func (CustomLineArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CustomLine)(nil))
+	return reflect.TypeOf((*[]*CustomLine)(nil)).Elem()
 }
 
 func (o CustomLineArrayOutput) ToCustomLineArrayOutput() CustomLineArrayOutput {
@@ -320,15 +257,15 @@ func (o CustomLineArrayOutput) ToCustomLineArrayOutputWithContext(ctx context.Co
 }
 
 func (o CustomLineArrayOutput) Index(i pulumi.IntInput) CustomLineOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomLine {
-		return vs[0].([]CustomLine)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CustomLine {
+		return vs[0].([]*CustomLine)[vs[1].(int)]
 	}).(CustomLineOutput)
 }
 
 type CustomLineMapOutput struct{ *pulumi.OutputState }
 
 func (CustomLineMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CustomLine)(nil))
+	return reflect.TypeOf((*map[string]*CustomLine)(nil)).Elem()
 }
 
 func (o CustomLineMapOutput) ToCustomLineMapOutput() CustomLineMapOutput {
@@ -340,18 +277,16 @@ func (o CustomLineMapOutput) ToCustomLineMapOutputWithContext(ctx context.Contex
 }
 
 func (o CustomLineMapOutput) MapIndex(k pulumi.StringInput) CustomLineOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CustomLine {
-		return vs[0].(map[string]CustomLine)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CustomLine {
+		return vs[0].(map[string]*CustomLine)[vs[1].(string)]
 	}).(CustomLineOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomLineInput)(nil)).Elem(), &CustomLine{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CustomLinePtrInput)(nil)).Elem(), &CustomLine{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomLineArrayInput)(nil)).Elem(), CustomLineArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomLineMapInput)(nil)).Elem(), CustomLineMap{})
 	pulumi.RegisterOutputType(CustomLineOutput{})
-	pulumi.RegisterOutputType(CustomLinePtrOutput{})
 	pulumi.RegisterOutputType(CustomLineArrayOutput{})
 	pulumi.RegisterOutputType(CustomLineMapOutput{})
 }

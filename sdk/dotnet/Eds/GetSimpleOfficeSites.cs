@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Eds
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.Eds
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSimpleOfficeSitesResult> InvokeAsync(GetSimpleOfficeSitesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSimpleOfficeSitesResult>("alicloud:eds/getSimpleOfficeSites:getSimpleOfficeSites", args ?? new GetSimpleOfficeSitesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSimpleOfficeSitesResult>("alicloud:eds/getSimpleOfficeSites:getSimpleOfficeSites", args ?? new GetSimpleOfficeSitesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.Eds
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSimpleOfficeSitesResult> Invoke(GetSimpleOfficeSitesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSimpleOfficeSitesResult>("alicloud:eds/getSimpleOfficeSites:getSimpleOfficeSites", args ?? new GetSimpleOfficeSitesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSimpleOfficeSitesResult>("alicloud:eds/getSimpleOfficeSites:getSimpleOfficeSites", args ?? new GetSimpleOfficeSitesInvokeArgs(), options.WithDefaults());
     }
 
 

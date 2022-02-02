@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.FNF
 {
@@ -51,7 +50,7 @@ namespace Pulumi.AliCloud.FNF
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSchedulesResult> InvokeAsync(GetSchedulesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSchedulesResult>("alicloud:fnf/getSchedules:getSchedules", args ?? new GetSchedulesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSchedulesResult>("alicloud:fnf/getSchedules:getSchedules", args ?? new GetSchedulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Fnf Schedules of the current Alibaba Cloud user.
@@ -92,7 +91,7 @@ namespace Pulumi.AliCloud.FNF
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSchedulesResult> Invoke(GetSchedulesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSchedulesResult>("alicloud:fnf/getSchedules:getSchedules", args ?? new GetSchedulesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSchedulesResult>("alicloud:fnf/getSchedules:getSchedules", args ?? new GetSchedulesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -28,9 +28,7 @@ export function getTrafficMirrorService(args?: GetTrafficMirrorServiceArgs, opts
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:vpc/getTrafficMirrorService:getTrafficMirrorService", {
         "enable": args.enable,
     }, opts);

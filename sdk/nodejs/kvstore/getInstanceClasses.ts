@@ -35,9 +35,7 @@ export function getInstanceClasses(args: GetInstanceClassesArgs, opts?: pulumi.I
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:kvstore/getInstanceClasses:getInstanceClasses", {
         "architecture": args.architecture,
         "editionType": args.editionType,

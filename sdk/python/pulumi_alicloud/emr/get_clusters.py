@@ -317,7 +317,7 @@ def get_clusters(cluster_name: Optional[str] = None,
         })
     ids = alicloud.emr.get_clusters()
     pulumi.export("emrClusterId1", ids.clusters[0].id)
-    name_regex = default_cluster.name.apply(lambda name: alicloud.emr.get_clusters(name_regex=name))
+    name_regex = alicloud.emr.get_clusters_output(name_regex=default_cluster.name)
     pulumi.export("emrClusterId2", name_regex.clusters[0].id)
     ```
 
@@ -507,7 +507,7 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = No
         })
     ids = alicloud.emr.get_clusters()
     pulumi.export("emrClusterId1", ids.clusters[0].id)
-    name_regex = default_cluster.name.apply(lambda name: alicloud.emr.get_clusters(name_regex=name))
+    name_regex = alicloud.emr.get_clusters_output(name_regex=default_cluster.name)
     pulumi.export("emrClusterId2", name_regex.clusters[0].id)
     ```
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Slb
 {
@@ -49,7 +48,7 @@ namespace Pulumi.AliCloud.Slb
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetApplicationLoadBalancersResult> InvokeAsync(GetApplicationLoadBalancersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationLoadBalancersResult>("alicloud:slb/getApplicationLoadBalancers:getApplicationLoadBalancers", args ?? new GetApplicationLoadBalancersArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationLoadBalancersResult>("alicloud:slb/getApplicationLoadBalancers:getApplicationLoadBalancers", args ?? new GetApplicationLoadBalancersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the server load balancers of the current Alibaba Cloud user.
@@ -88,7 +87,7 @@ namespace Pulumi.AliCloud.Slb
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetApplicationLoadBalancersResult> Invoke(GetApplicationLoadBalancersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetApplicationLoadBalancersResult>("alicloud:slb/getApplicationLoadBalancers:getApplicationLoadBalancers", args ?? new GetApplicationLoadBalancersInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetApplicationLoadBalancersResult>("alicloud:slb/getApplicationLoadBalancers:getApplicationLoadBalancers", args ?? new GetApplicationLoadBalancersInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -31,7 +31,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := eds.NewSimpleOfficeSite(ctx, "_default", &eds.SimpleOfficeSiteArgs{
+// 		_, err := eds.NewSimpleOfficeSite(ctx, "default", &eds.SimpleOfficeSiteArgs{
 // 			CidrBlock:         pulumi.String("172.16.0.0/12"),
 // 			DesktopAccessType: pulumi.String("Internet"),
 // 			OfficeSiteName:    pulumi.String("your_office_site_name"),
@@ -158,7 +158,7 @@ type NetworkPackageInput interface {
 }
 
 func (*NetworkPackage) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkPackage)(nil))
+	return reflect.TypeOf((**NetworkPackage)(nil)).Elem()
 }
 
 func (i *NetworkPackage) ToNetworkPackageOutput() NetworkPackageOutput {
@@ -167,35 +167,6 @@ func (i *NetworkPackage) ToNetworkPackageOutput() NetworkPackageOutput {
 
 func (i *NetworkPackage) ToNetworkPackageOutputWithContext(ctx context.Context) NetworkPackageOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPackageOutput)
-}
-
-func (i *NetworkPackage) ToNetworkPackagePtrOutput() NetworkPackagePtrOutput {
-	return i.ToNetworkPackagePtrOutputWithContext(context.Background())
-}
-
-func (i *NetworkPackage) ToNetworkPackagePtrOutputWithContext(ctx context.Context) NetworkPackagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkPackagePtrOutput)
-}
-
-type NetworkPackagePtrInput interface {
-	pulumi.Input
-
-	ToNetworkPackagePtrOutput() NetworkPackagePtrOutput
-	ToNetworkPackagePtrOutputWithContext(ctx context.Context) NetworkPackagePtrOutput
-}
-
-type networkPackagePtrType NetworkPackageArgs
-
-func (*networkPackagePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkPackage)(nil))
-}
-
-func (i *networkPackagePtrType) ToNetworkPackagePtrOutput() NetworkPackagePtrOutput {
-	return i.ToNetworkPackagePtrOutputWithContext(context.Background())
-}
-
-func (i *networkPackagePtrType) ToNetworkPackagePtrOutputWithContext(ctx context.Context) NetworkPackagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkPackagePtrOutput)
 }
 
 // NetworkPackageArrayInput is an input type that accepts NetworkPackageArray and NetworkPackageArrayOutput values.
@@ -251,7 +222,7 @@ func (i NetworkPackageMap) ToNetworkPackageMapOutputWithContext(ctx context.Cont
 type NetworkPackageOutput struct{ *pulumi.OutputState }
 
 func (NetworkPackageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkPackage)(nil))
+	return reflect.TypeOf((**NetworkPackage)(nil)).Elem()
 }
 
 func (o NetworkPackageOutput) ToNetworkPackageOutput() NetworkPackageOutput {
@@ -262,44 +233,10 @@ func (o NetworkPackageOutput) ToNetworkPackageOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o NetworkPackageOutput) ToNetworkPackagePtrOutput() NetworkPackagePtrOutput {
-	return o.ToNetworkPackagePtrOutputWithContext(context.Background())
-}
-
-func (o NetworkPackageOutput) ToNetworkPackagePtrOutputWithContext(ctx context.Context) NetworkPackagePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkPackage) *NetworkPackage {
-		return &v
-	}).(NetworkPackagePtrOutput)
-}
-
-type NetworkPackagePtrOutput struct{ *pulumi.OutputState }
-
-func (NetworkPackagePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NetworkPackage)(nil))
-}
-
-func (o NetworkPackagePtrOutput) ToNetworkPackagePtrOutput() NetworkPackagePtrOutput {
-	return o
-}
-
-func (o NetworkPackagePtrOutput) ToNetworkPackagePtrOutputWithContext(ctx context.Context) NetworkPackagePtrOutput {
-	return o
-}
-
-func (o NetworkPackagePtrOutput) Elem() NetworkPackageOutput {
-	return o.ApplyT(func(v *NetworkPackage) NetworkPackage {
-		if v != nil {
-			return *v
-		}
-		var ret NetworkPackage
-		return ret
-	}).(NetworkPackageOutput)
-}
-
 type NetworkPackageArrayOutput struct{ *pulumi.OutputState }
 
 func (NetworkPackageArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NetworkPackage)(nil))
+	return reflect.TypeOf((*[]*NetworkPackage)(nil)).Elem()
 }
 
 func (o NetworkPackageArrayOutput) ToNetworkPackageArrayOutput() NetworkPackageArrayOutput {
@@ -311,15 +248,15 @@ func (o NetworkPackageArrayOutput) ToNetworkPackageArrayOutputWithContext(ctx co
 }
 
 func (o NetworkPackageArrayOutput) Index(i pulumi.IntInput) NetworkPackageOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkPackage {
-		return vs[0].([]NetworkPackage)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkPackage {
+		return vs[0].([]*NetworkPackage)[vs[1].(int)]
 	}).(NetworkPackageOutput)
 }
 
 type NetworkPackageMapOutput struct{ *pulumi.OutputState }
 
 func (NetworkPackageMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]NetworkPackage)(nil))
+	return reflect.TypeOf((*map[string]*NetworkPackage)(nil)).Elem()
 }
 
 func (o NetworkPackageMapOutput) ToNetworkPackageMapOutput() NetworkPackageMapOutput {
@@ -331,18 +268,16 @@ func (o NetworkPackageMapOutput) ToNetworkPackageMapOutputWithContext(ctx contex
 }
 
 func (o NetworkPackageMapOutput) MapIndex(k pulumi.StringInput) NetworkPackageOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NetworkPackage {
-		return vs[0].(map[string]NetworkPackage)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *NetworkPackage {
+		return vs[0].(map[string]*NetworkPackage)[vs[1].(string)]
 	}).(NetworkPackageOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPackageInput)(nil)).Elem(), &NetworkPackage{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPackagePtrInput)(nil)).Elem(), &NetworkPackage{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPackageArrayInput)(nil)).Elem(), NetworkPackageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPackageMapInput)(nil)).Elem(), NetworkPackageMap{})
 	pulumi.RegisterOutputType(NetworkPackageOutput{})
-	pulumi.RegisterOutputType(NetworkPackagePtrOutput{})
 	pulumi.RegisterOutputType(NetworkPackageArrayOutput{})
 	pulumi.RegisterOutputType(NetworkPackageMapOutput{})
 }

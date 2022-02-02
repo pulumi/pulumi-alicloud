@@ -30,9 +30,7 @@ export function getPolicies(args?: GetPoliciesArgs, opts?: pulumi.InvokeOptions)
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ram/getPolicies:getPolicies", {
         "enableDetails": args.enableDetails,
         "groupName": args.groupName,

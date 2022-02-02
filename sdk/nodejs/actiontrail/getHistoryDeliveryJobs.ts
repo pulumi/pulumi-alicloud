@@ -35,9 +35,7 @@ export function getHistoryDeliveryJobs(args?: GetHistoryDeliveryJobsArgs, opts?:
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:actiontrail/getHistoryDeliveryJobs:getHistoryDeliveryJobs", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,

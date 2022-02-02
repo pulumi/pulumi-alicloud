@@ -37,7 +37,7 @@ import (
 // 		if param := cfg.Get("name"); param != "" {
 // 			name = param
 // 		}
-// 		_, err := alb.NewSecurityPolicy(ctx, "_default", &alb.SecurityPolicyArgs{
+// 		_, err := alb.NewSecurityPolicy(ctx, "default", &alb.SecurityPolicyArgs{
 // 			SecurityPolicyName: pulumi.String(name),
 // 			TlsVersions: pulumi.StringArray{
 // 				pulumi.String("TLSv1.0"),
@@ -194,7 +194,7 @@ type SecurityPolicyInput interface {
 }
 
 func (*SecurityPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicy)(nil))
+	return reflect.TypeOf((**SecurityPolicy)(nil)).Elem()
 }
 
 func (i *SecurityPolicy) ToSecurityPolicyOutput() SecurityPolicyOutput {
@@ -203,35 +203,6 @@ func (i *SecurityPolicy) ToSecurityPolicyOutput() SecurityPolicyOutput {
 
 func (i *SecurityPolicy) ToSecurityPolicyOutputWithContext(ctx context.Context) SecurityPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyOutput)
-}
-
-func (i *SecurityPolicy) ToSecurityPolicyPtrOutput() SecurityPolicyPtrOutput {
-	return i.ToSecurityPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *SecurityPolicy) ToSecurityPolicyPtrOutputWithContext(ctx context.Context) SecurityPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyPtrOutput)
-}
-
-type SecurityPolicyPtrInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyPtrOutput() SecurityPolicyPtrOutput
-	ToSecurityPolicyPtrOutputWithContext(ctx context.Context) SecurityPolicyPtrOutput
-}
-
-type securityPolicyPtrType SecurityPolicyArgs
-
-func (*securityPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityPolicy)(nil))
-}
-
-func (i *securityPolicyPtrType) ToSecurityPolicyPtrOutput() SecurityPolicyPtrOutput {
-	return i.ToSecurityPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *securityPolicyPtrType) ToSecurityPolicyPtrOutputWithContext(ctx context.Context) SecurityPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyPtrOutput)
 }
 
 // SecurityPolicyArrayInput is an input type that accepts SecurityPolicyArray and SecurityPolicyArrayOutput values.
@@ -287,7 +258,7 @@ func (i SecurityPolicyMap) ToSecurityPolicyMapOutputWithContext(ctx context.Cont
 type SecurityPolicyOutput struct{ *pulumi.OutputState }
 
 func (SecurityPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicy)(nil))
+	return reflect.TypeOf((**SecurityPolicy)(nil)).Elem()
 }
 
 func (o SecurityPolicyOutput) ToSecurityPolicyOutput() SecurityPolicyOutput {
@@ -298,44 +269,10 @@ func (o SecurityPolicyOutput) ToSecurityPolicyOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o SecurityPolicyOutput) ToSecurityPolicyPtrOutput() SecurityPolicyPtrOutput {
-	return o.ToSecurityPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o SecurityPolicyOutput) ToSecurityPolicyPtrOutputWithContext(ctx context.Context) SecurityPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicy) *SecurityPolicy {
-		return &v
-	}).(SecurityPolicyPtrOutput)
-}
-
-type SecurityPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityPolicy)(nil))
-}
-
-func (o SecurityPolicyPtrOutput) ToSecurityPolicyPtrOutput() SecurityPolicyPtrOutput {
-	return o
-}
-
-func (o SecurityPolicyPtrOutput) ToSecurityPolicyPtrOutputWithContext(ctx context.Context) SecurityPolicyPtrOutput {
-	return o
-}
-
-func (o SecurityPolicyPtrOutput) Elem() SecurityPolicyOutput {
-	return o.ApplyT(func(v *SecurityPolicy) SecurityPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret SecurityPolicy
-		return ret
-	}).(SecurityPolicyOutput)
-}
-
 type SecurityPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (SecurityPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicy)(nil))
+	return reflect.TypeOf((*[]*SecurityPolicy)(nil)).Elem()
 }
 
 func (o SecurityPolicyArrayOutput) ToSecurityPolicyArrayOutput() SecurityPolicyArrayOutput {
@@ -347,15 +284,15 @@ func (o SecurityPolicyArrayOutput) ToSecurityPolicyArrayOutputWithContext(ctx co
 }
 
 func (o SecurityPolicyArrayOutput) Index(i pulumi.IntInput) SecurityPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicy {
-		return vs[0].([]SecurityPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecurityPolicy {
+		return vs[0].([]*SecurityPolicy)[vs[1].(int)]
 	}).(SecurityPolicyOutput)
 }
 
 type SecurityPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (SecurityPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SecurityPolicy)(nil))
+	return reflect.TypeOf((*map[string]*SecurityPolicy)(nil)).Elem()
 }
 
 func (o SecurityPolicyMapOutput) ToSecurityPolicyMapOutput() SecurityPolicyMapOutput {
@@ -367,18 +304,16 @@ func (o SecurityPolicyMapOutput) ToSecurityPolicyMapOutputWithContext(ctx contex
 }
 
 func (o SecurityPolicyMapOutput) MapIndex(k pulumi.StringInput) SecurityPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SecurityPolicy {
-		return vs[0].(map[string]SecurityPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SecurityPolicy {
+		return vs[0].(map[string]*SecurityPolicy)[vs[1].(string)]
 	}).(SecurityPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyInput)(nil)).Elem(), &SecurityPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyPtrInput)(nil)).Elem(), &SecurityPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyArrayInput)(nil)).Elem(), SecurityPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyMapInput)(nil)).Elem(), SecurityPolicyMap{})
 	pulumi.RegisterOutputType(SecurityPolicyOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyArrayOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyMapOutput{})
 }

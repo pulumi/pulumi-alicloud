@@ -359,59 +359,57 @@ export class Bucket extends pulumi.CustomResource {
      */
     constructor(name: string, args?: BucketArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BucketArgs | BucketState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketState | undefined;
-            inputs["acl"] = state ? state.acl : undefined;
-            inputs["bucket"] = state ? state.bucket : undefined;
-            inputs["corsRules"] = state ? state.corsRules : undefined;
-            inputs["creationDate"] = state ? state.creationDate : undefined;
-            inputs["extranetEndpoint"] = state ? state.extranetEndpoint : undefined;
-            inputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            inputs["intranetEndpoint"] = state ? state.intranetEndpoint : undefined;
-            inputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
-            inputs["location"] = state ? state.location : undefined;
-            inputs["logging"] = state ? state.logging : undefined;
-            inputs["loggingIsenable"] = state ? state.loggingIsenable : undefined;
-            inputs["owner"] = state ? state.owner : undefined;
-            inputs["policy"] = state ? state.policy : undefined;
-            inputs["redundancyType"] = state ? state.redundancyType : undefined;
-            inputs["refererConfig"] = state ? state.refererConfig : undefined;
-            inputs["serverSideEncryptionRule"] = state ? state.serverSideEncryptionRule : undefined;
-            inputs["storageClass"] = state ? state.storageClass : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["transferAcceleration"] = state ? state.transferAcceleration : undefined;
-            inputs["versioning"] = state ? state.versioning : undefined;
-            inputs["website"] = state ? state.website : undefined;
+            resourceInputs["acl"] = state ? state.acl : undefined;
+            resourceInputs["bucket"] = state ? state.bucket : undefined;
+            resourceInputs["corsRules"] = state ? state.corsRules : undefined;
+            resourceInputs["creationDate"] = state ? state.creationDate : undefined;
+            resourceInputs["extranetEndpoint"] = state ? state.extranetEndpoint : undefined;
+            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
+            resourceInputs["intranetEndpoint"] = state ? state.intranetEndpoint : undefined;
+            resourceInputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["logging"] = state ? state.logging : undefined;
+            resourceInputs["loggingIsenable"] = state ? state.loggingIsenable : undefined;
+            resourceInputs["owner"] = state ? state.owner : undefined;
+            resourceInputs["policy"] = state ? state.policy : undefined;
+            resourceInputs["redundancyType"] = state ? state.redundancyType : undefined;
+            resourceInputs["refererConfig"] = state ? state.refererConfig : undefined;
+            resourceInputs["serverSideEncryptionRule"] = state ? state.serverSideEncryptionRule : undefined;
+            resourceInputs["storageClass"] = state ? state.storageClass : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["transferAcceleration"] = state ? state.transferAcceleration : undefined;
+            resourceInputs["versioning"] = state ? state.versioning : undefined;
+            resourceInputs["website"] = state ? state.website : undefined;
         } else {
             const args = argsOrState as BucketArgs | undefined;
-            inputs["acl"] = args ? args.acl : undefined;
-            inputs["bucket"] = args ? args.bucket : undefined;
-            inputs["corsRules"] = args ? args.corsRules : undefined;
-            inputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            inputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
-            inputs["logging"] = args ? args.logging : undefined;
-            inputs["loggingIsenable"] = args ? args.loggingIsenable : undefined;
-            inputs["policy"] = args ? args.policy : undefined;
-            inputs["redundancyType"] = args ? args.redundancyType : undefined;
-            inputs["refererConfig"] = args ? args.refererConfig : undefined;
-            inputs["serverSideEncryptionRule"] = args ? args.serverSideEncryptionRule : undefined;
-            inputs["storageClass"] = args ? args.storageClass : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["transferAcceleration"] = args ? args.transferAcceleration : undefined;
-            inputs["versioning"] = args ? args.versioning : undefined;
-            inputs["website"] = args ? args.website : undefined;
-            inputs["creationDate"] = undefined /*out*/;
-            inputs["extranetEndpoint"] = undefined /*out*/;
-            inputs["intranetEndpoint"] = undefined /*out*/;
-            inputs["location"] = undefined /*out*/;
-            inputs["owner"] = undefined /*out*/;
+            resourceInputs["acl"] = args ? args.acl : undefined;
+            resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["corsRules"] = args ? args.corsRules : undefined;
+            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
+            resourceInputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
+            resourceInputs["logging"] = args ? args.logging : undefined;
+            resourceInputs["loggingIsenable"] = args ? args.loggingIsenable : undefined;
+            resourceInputs["policy"] = args ? args.policy : undefined;
+            resourceInputs["redundancyType"] = args ? args.redundancyType : undefined;
+            resourceInputs["refererConfig"] = args ? args.refererConfig : undefined;
+            resourceInputs["serverSideEncryptionRule"] = args ? args.serverSideEncryptionRule : undefined;
+            resourceInputs["storageClass"] = args ? args.storageClass : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["transferAcceleration"] = args ? args.transferAcceleration : undefined;
+            resourceInputs["versioning"] = args ? args.versioning : undefined;
+            resourceInputs["website"] = args ? args.website : undefined;
+            resourceInputs["creationDate"] = undefined /*out*/;
+            resourceInputs["extranetEndpoint"] = undefined /*out*/;
+            resourceInputs["intranetEndpoint"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["owner"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Bucket.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Bucket.__pulumiType, name, resourceInputs, opts);
     }
 }
 

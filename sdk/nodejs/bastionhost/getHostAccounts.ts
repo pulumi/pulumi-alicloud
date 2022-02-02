@@ -40,9 +40,7 @@ export function getHostAccounts(args: GetHostAccountsArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:bastionhost/getHostAccounts:getHostAccounts", {
         "hostAccountName": args.hostAccountName,
         "hostId": args.hostId,

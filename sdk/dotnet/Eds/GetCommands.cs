@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Eds
 {
@@ -94,7 +93,7 @@ namespace Pulumi.AliCloud.Eds
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCommandsResult> InvokeAsync(GetCommandsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCommandsResult>("alicloud:eds/getCommands:getCommands", args ?? new GetCommandsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCommandsResult>("alicloud:eds/getCommands:getCommands", args ?? new GetCommandsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecd Commands of the current Alibaba Cloud user.
@@ -178,7 +177,7 @@ namespace Pulumi.AliCloud.Eds
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetCommandsResult> Invoke(GetCommandsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCommandsResult>("alicloud:eds/getCommands:getCommands", args ?? new GetCommandsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetCommandsResult>("alicloud:eds/getCommands:getCommands", args ?? new GetCommandsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.SimpleApplicationServer
 {
@@ -51,7 +50,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerFirewallRulesResult> InvokeAsync(GetServerFirewallRulesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServerFirewallRulesResult>("alicloud:simpleapplicationserver/getServerFirewallRules:getServerFirewallRules", args ?? new GetServerFirewallRulesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServerFirewallRulesResult>("alicloud:simpleapplicationserver/getServerFirewallRules:getServerFirewallRules", args ?? new GetServerFirewallRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Simple Application Server Firewall Rules of the current Alibaba Cloud user.
@@ -92,7 +91,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServerFirewallRulesResult> Invoke(GetServerFirewallRulesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServerFirewallRulesResult>("alicloud:simpleapplicationserver/getServerFirewallRules:getServerFirewallRules", args ?? new GetServerFirewallRulesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetServerFirewallRulesResult>("alicloud:simpleapplicationserver/getServerFirewallRules:getServerFirewallRules", args ?? new GetServerFirewallRulesInvokeArgs(), options.WithDefaults());
     }
 
 

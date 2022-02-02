@@ -35,9 +35,7 @@ export function getInstanceEngines(args: GetInstanceEnginesArgs, opts?: pulumi.I
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:kvstore/getInstanceEngines:getInstanceEngines", {
         "engine": args.engine,
         "engineVersion": args.engineVersion,

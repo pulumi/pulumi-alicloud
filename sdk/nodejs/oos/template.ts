@@ -158,26 +158,26 @@ export class Template extends pulumi.CustomResource {
      */
     constructor(name: string, args: TemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TemplateArgs | TemplateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TemplateState | undefined;
-            inputs["autoDeleteExecutions"] = state ? state.autoDeleteExecutions : undefined;
-            inputs["content"] = state ? state.content : undefined;
-            inputs["createdBy"] = state ? state.createdBy : undefined;
-            inputs["createdDate"] = state ? state.createdDate : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["hasTrigger"] = state ? state.hasTrigger : undefined;
-            inputs["shareType"] = state ? state.shareType : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["templateFormat"] = state ? state.templateFormat : undefined;
-            inputs["templateId"] = state ? state.templateId : undefined;
-            inputs["templateName"] = state ? state.templateName : undefined;
-            inputs["templateType"] = state ? state.templateType : undefined;
-            inputs["templateVersion"] = state ? state.templateVersion : undefined;
-            inputs["updatedBy"] = state ? state.updatedBy : undefined;
-            inputs["updatedDate"] = state ? state.updatedDate : undefined;
-            inputs["versionName"] = state ? state.versionName : undefined;
+            resourceInputs["autoDeleteExecutions"] = state ? state.autoDeleteExecutions : undefined;
+            resourceInputs["content"] = state ? state.content : undefined;
+            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
+            resourceInputs["createdDate"] = state ? state.createdDate : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["hasTrigger"] = state ? state.hasTrigger : undefined;
+            resourceInputs["shareType"] = state ? state.shareType : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["templateFormat"] = state ? state.templateFormat : undefined;
+            resourceInputs["templateId"] = state ? state.templateId : undefined;
+            resourceInputs["templateName"] = state ? state.templateName : undefined;
+            resourceInputs["templateType"] = state ? state.templateType : undefined;
+            resourceInputs["templateVersion"] = state ? state.templateVersion : undefined;
+            resourceInputs["updatedBy"] = state ? state.updatedBy : undefined;
+            resourceInputs["updatedDate"] = state ? state.updatedDate : undefined;
+            resourceInputs["versionName"] = state ? state.versionName : undefined;
         } else {
             const args = argsOrState as TemplateArgs | undefined;
             if ((!args || args.content === undefined) && !opts.urn) {
@@ -186,27 +186,25 @@ export class Template extends pulumi.CustomResource {
             if ((!args || args.templateName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'templateName'");
             }
-            inputs["autoDeleteExecutions"] = args ? args.autoDeleteExecutions : undefined;
-            inputs["content"] = args ? args.content : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["templateName"] = args ? args.templateName : undefined;
-            inputs["versionName"] = args ? args.versionName : undefined;
-            inputs["createdBy"] = undefined /*out*/;
-            inputs["createdDate"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["hasTrigger"] = undefined /*out*/;
-            inputs["shareType"] = undefined /*out*/;
-            inputs["templateFormat"] = undefined /*out*/;
-            inputs["templateId"] = undefined /*out*/;
-            inputs["templateType"] = undefined /*out*/;
-            inputs["templateVersion"] = undefined /*out*/;
-            inputs["updatedBy"] = undefined /*out*/;
-            inputs["updatedDate"] = undefined /*out*/;
+            resourceInputs["autoDeleteExecutions"] = args ? args.autoDeleteExecutions : undefined;
+            resourceInputs["content"] = args ? args.content : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["templateName"] = args ? args.templateName : undefined;
+            resourceInputs["versionName"] = args ? args.versionName : undefined;
+            resourceInputs["createdBy"] = undefined /*out*/;
+            resourceInputs["createdDate"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["hasTrigger"] = undefined /*out*/;
+            resourceInputs["shareType"] = undefined /*out*/;
+            resourceInputs["templateFormat"] = undefined /*out*/;
+            resourceInputs["templateId"] = undefined /*out*/;
+            resourceInputs["templateType"] = undefined /*out*/;
+            resourceInputs["templateVersion"] = undefined /*out*/;
+            resourceInputs["updatedBy"] = undefined /*out*/;
+            resourceInputs["updatedDate"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Template.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Template.__pulumiType, name, resourceInputs, opts);
     }
 }
 

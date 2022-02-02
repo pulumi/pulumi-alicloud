@@ -510,7 +510,7 @@ class NasBackupPlan(pulumi.CustomResource):
             storage_type="Performance",
             description=name,
             encrypt_type=1)
-        default_file_systems = default_file_system.description.apply(lambda description: alicloud.nas.get_file_systems(protocol_type="NFS",
+        default_file_systems = default_file_system.description.apply(lambda description: alicloud.nas.get_file_systems_output(protocol_type="NFS",
             description_regex=description))
         default_nas_backup_plan = alicloud.hbr.NasBackupPlan("defaultNasBackupPlan",
             nas_backup_plan_name=name,
@@ -576,7 +576,7 @@ class NasBackupPlan(pulumi.CustomResource):
             storage_type="Performance",
             description=name,
             encrypt_type=1)
-        default_file_systems = default_file_system.description.apply(lambda description: alicloud.nas.get_file_systems(protocol_type="NFS",
+        default_file_systems = default_file_system.description.apply(lambda description: alicloud.nas.get_file_systems_output(protocol_type="NFS",
             description_regex=description))
         default_nas_backup_plan = alicloud.hbr.NasBackupPlan("defaultNasBackupPlan",
             nas_backup_plan_name=name,

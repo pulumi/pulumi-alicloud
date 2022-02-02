@@ -30,9 +30,7 @@ export function getFileSystems(args?: GetFileSystemsArgs, opts?: pulumi.InvokeOp
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:nas/getFileSystems:getFileSystems", {
         "descriptionRegex": args.descriptionRegex,
         "ids": args.ids,

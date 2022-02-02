@@ -128,41 +128,39 @@ export class Image extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ImageArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ImageArgs | ImageState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageState | undefined;
-            inputs["architecture"] = state ? state.architecture : undefined;
-            inputs["deleteAutoSnapshot"] = state ? state.deleteAutoSnapshot : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["diskDeviceMappings"] = state ? state.diskDeviceMappings : undefined;
-            inputs["force"] = state ? state.force : undefined;
-            inputs["imageName"] = state ? state.imageName : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["platform"] = state ? state.platform : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["snapshotId"] = state ? state.snapshotId : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["architecture"] = state ? state.architecture : undefined;
+            resourceInputs["deleteAutoSnapshot"] = state ? state.deleteAutoSnapshot : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["diskDeviceMappings"] = state ? state.diskDeviceMappings : undefined;
+            resourceInputs["force"] = state ? state.force : undefined;
+            resourceInputs["imageName"] = state ? state.imageName : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["platform"] = state ? state.platform : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as ImageArgs | undefined;
-            inputs["architecture"] = args ? args.architecture : undefined;
-            inputs["deleteAutoSnapshot"] = args ? args.deleteAutoSnapshot : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["diskDeviceMappings"] = args ? args.diskDeviceMappings : undefined;
-            inputs["force"] = args ? args.force : undefined;
-            inputs["imageName"] = args ? args.imageName : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["platform"] = args ? args.platform : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["snapshotId"] = args ? args.snapshotId : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["architecture"] = args ? args.architecture : undefined;
+            resourceInputs["deleteAutoSnapshot"] = args ? args.deleteAutoSnapshot : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["diskDeviceMappings"] = args ? args.diskDeviceMappings : undefined;
+            resourceInputs["force"] = args ? args.force : undefined;
+            resourceInputs["imageName"] = args ? args.imageName : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["platform"] = args ? args.platform : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Image.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Image.__pulumiType, name, resourceInputs, opts);
     }
 }
 

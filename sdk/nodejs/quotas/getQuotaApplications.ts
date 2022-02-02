@@ -30,9 +30,7 @@ export function getQuotaApplications(args: GetQuotaApplicationsArgs, opts?: pulu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:quotas/getQuotaApplications:getQuotaApplications", {
         "dimensions": args.dimensions,
         "enableDetails": args.enableDetails,

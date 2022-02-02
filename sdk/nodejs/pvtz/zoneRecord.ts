@@ -100,22 +100,22 @@ export class ZoneRecord extends pulumi.CustomResource {
      */
     constructor(name: string, args: ZoneRecordArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ZoneRecordArgs | ZoneRecordState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneRecordState | undefined;
-            inputs["lang"] = state ? state.lang : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["recordId"] = state ? state.recordId : undefined;
-            inputs["remark"] = state ? state.remark : undefined;
-            inputs["resourceRecord"] = state ? state.resourceRecord : undefined;
-            inputs["rr"] = state ? state.rr : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["ttl"] = state ? state.ttl : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["userClientIp"] = state ? state.userClientIp : undefined;
-            inputs["value"] = state ? state.value : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["lang"] = state ? state.lang : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["recordId"] = state ? state.recordId : undefined;
+            resourceInputs["remark"] = state ? state.remark : undefined;
+            resourceInputs["resourceRecord"] = state ? state.resourceRecord : undefined;
+            resourceInputs["rr"] = state ? state.rr : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["userClientIp"] = state ? state.userClientIp : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ZoneRecordArgs | undefined;
             if ((!args || args.type === undefined) && !opts.urn) {
@@ -127,23 +127,21 @@ export class ZoneRecord extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["lang"] = args ? args.lang : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["remark"] = args ? args.remark : undefined;
-            inputs["resourceRecord"] = args ? args.resourceRecord : undefined;
-            inputs["rr"] = args ? args.rr : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["ttl"] = args ? args.ttl : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["userClientIp"] = args ? args.userClientIp : undefined;
-            inputs["value"] = args ? args.value : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["recordId"] = undefined /*out*/;
+            resourceInputs["lang"] = args ? args.lang : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["remark"] = args ? args.remark : undefined;
+            resourceInputs["resourceRecord"] = args ? args.resourceRecord : undefined;
+            resourceInputs["rr"] = args ? args.rr : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["userClientIp"] = args ? args.userClientIp : undefined;
+            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["recordId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ZoneRecord.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ZoneRecord.__pulumiType, name, resourceInputs, opts);
     }
 }
 

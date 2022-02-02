@@ -363,7 +363,7 @@ type GtmInstanceInput interface {
 }
 
 func (*GtmInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*GtmInstance)(nil))
+	return reflect.TypeOf((**GtmInstance)(nil)).Elem()
 }
 
 func (i *GtmInstance) ToGtmInstanceOutput() GtmInstanceOutput {
@@ -372,35 +372,6 @@ func (i *GtmInstance) ToGtmInstanceOutput() GtmInstanceOutput {
 
 func (i *GtmInstance) ToGtmInstanceOutputWithContext(ctx context.Context) GtmInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GtmInstanceOutput)
-}
-
-func (i *GtmInstance) ToGtmInstancePtrOutput() GtmInstancePtrOutput {
-	return i.ToGtmInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *GtmInstance) ToGtmInstancePtrOutputWithContext(ctx context.Context) GtmInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GtmInstancePtrOutput)
-}
-
-type GtmInstancePtrInput interface {
-	pulumi.Input
-
-	ToGtmInstancePtrOutput() GtmInstancePtrOutput
-	ToGtmInstancePtrOutputWithContext(ctx context.Context) GtmInstancePtrOutput
-}
-
-type gtmInstancePtrType GtmInstanceArgs
-
-func (*gtmInstancePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GtmInstance)(nil))
-}
-
-func (i *gtmInstancePtrType) ToGtmInstancePtrOutput() GtmInstancePtrOutput {
-	return i.ToGtmInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *gtmInstancePtrType) ToGtmInstancePtrOutputWithContext(ctx context.Context) GtmInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GtmInstancePtrOutput)
 }
 
 // GtmInstanceArrayInput is an input type that accepts GtmInstanceArray and GtmInstanceArrayOutput values.
@@ -456,7 +427,7 @@ func (i GtmInstanceMap) ToGtmInstanceMapOutputWithContext(ctx context.Context) G
 type GtmInstanceOutput struct{ *pulumi.OutputState }
 
 func (GtmInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GtmInstance)(nil))
+	return reflect.TypeOf((**GtmInstance)(nil)).Elem()
 }
 
 func (o GtmInstanceOutput) ToGtmInstanceOutput() GtmInstanceOutput {
@@ -467,44 +438,10 @@ func (o GtmInstanceOutput) ToGtmInstanceOutputWithContext(ctx context.Context) G
 	return o
 }
 
-func (o GtmInstanceOutput) ToGtmInstancePtrOutput() GtmInstancePtrOutput {
-	return o.ToGtmInstancePtrOutputWithContext(context.Background())
-}
-
-func (o GtmInstanceOutput) ToGtmInstancePtrOutputWithContext(ctx context.Context) GtmInstancePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GtmInstance) *GtmInstance {
-		return &v
-	}).(GtmInstancePtrOutput)
-}
-
-type GtmInstancePtrOutput struct{ *pulumi.OutputState }
-
-func (GtmInstancePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GtmInstance)(nil))
-}
-
-func (o GtmInstancePtrOutput) ToGtmInstancePtrOutput() GtmInstancePtrOutput {
-	return o
-}
-
-func (o GtmInstancePtrOutput) ToGtmInstancePtrOutputWithContext(ctx context.Context) GtmInstancePtrOutput {
-	return o
-}
-
-func (o GtmInstancePtrOutput) Elem() GtmInstanceOutput {
-	return o.ApplyT(func(v *GtmInstance) GtmInstance {
-		if v != nil {
-			return *v
-		}
-		var ret GtmInstance
-		return ret
-	}).(GtmInstanceOutput)
-}
-
 type GtmInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (GtmInstanceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GtmInstance)(nil))
+	return reflect.TypeOf((*[]*GtmInstance)(nil)).Elem()
 }
 
 func (o GtmInstanceArrayOutput) ToGtmInstanceArrayOutput() GtmInstanceArrayOutput {
@@ -516,15 +453,15 @@ func (o GtmInstanceArrayOutput) ToGtmInstanceArrayOutputWithContext(ctx context.
 }
 
 func (o GtmInstanceArrayOutput) Index(i pulumi.IntInput) GtmInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GtmInstance {
-		return vs[0].([]GtmInstance)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GtmInstance {
+		return vs[0].([]*GtmInstance)[vs[1].(int)]
 	}).(GtmInstanceOutput)
 }
 
 type GtmInstanceMapOutput struct{ *pulumi.OutputState }
 
 func (GtmInstanceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GtmInstance)(nil))
+	return reflect.TypeOf((*map[string]*GtmInstance)(nil)).Elem()
 }
 
 func (o GtmInstanceMapOutput) ToGtmInstanceMapOutput() GtmInstanceMapOutput {
@@ -536,18 +473,16 @@ func (o GtmInstanceMapOutput) ToGtmInstanceMapOutputWithContext(ctx context.Cont
 }
 
 func (o GtmInstanceMapOutput) MapIndex(k pulumi.StringInput) GtmInstanceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GtmInstance {
-		return vs[0].(map[string]GtmInstance)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *GtmInstance {
+		return vs[0].(map[string]*GtmInstance)[vs[1].(string)]
 	}).(GtmInstanceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GtmInstanceInput)(nil)).Elem(), &GtmInstance{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GtmInstancePtrInput)(nil)).Elem(), &GtmInstance{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GtmInstanceArrayInput)(nil)).Elem(), GtmInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GtmInstanceMapInput)(nil)).Elem(), GtmInstanceMap{})
 	pulumi.RegisterOutputType(GtmInstanceOutput{})
-	pulumi.RegisterOutputType(GtmInstancePtrOutput{})
 	pulumi.RegisterOutputType(GtmInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GtmInstanceMapOutput{})
 }

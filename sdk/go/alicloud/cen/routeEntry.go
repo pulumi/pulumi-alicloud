@@ -261,7 +261,7 @@ type RouteEntryInput interface {
 }
 
 func (*RouteEntry) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteEntry)(nil))
+	return reflect.TypeOf((**RouteEntry)(nil)).Elem()
 }
 
 func (i *RouteEntry) ToRouteEntryOutput() RouteEntryOutput {
@@ -270,35 +270,6 @@ func (i *RouteEntry) ToRouteEntryOutput() RouteEntryOutput {
 
 func (i *RouteEntry) ToRouteEntryOutputWithContext(ctx context.Context) RouteEntryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouteEntryOutput)
-}
-
-func (i *RouteEntry) ToRouteEntryPtrOutput() RouteEntryPtrOutput {
-	return i.ToRouteEntryPtrOutputWithContext(context.Background())
-}
-
-func (i *RouteEntry) ToRouteEntryPtrOutputWithContext(ctx context.Context) RouteEntryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteEntryPtrOutput)
-}
-
-type RouteEntryPtrInput interface {
-	pulumi.Input
-
-	ToRouteEntryPtrOutput() RouteEntryPtrOutput
-	ToRouteEntryPtrOutputWithContext(ctx context.Context) RouteEntryPtrOutput
-}
-
-type routeEntryPtrType RouteEntryArgs
-
-func (*routeEntryPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RouteEntry)(nil))
-}
-
-func (i *routeEntryPtrType) ToRouteEntryPtrOutput() RouteEntryPtrOutput {
-	return i.ToRouteEntryPtrOutputWithContext(context.Background())
-}
-
-func (i *routeEntryPtrType) ToRouteEntryPtrOutputWithContext(ctx context.Context) RouteEntryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteEntryPtrOutput)
 }
 
 // RouteEntryArrayInput is an input type that accepts RouteEntryArray and RouteEntryArrayOutput values.
@@ -354,7 +325,7 @@ func (i RouteEntryMap) ToRouteEntryMapOutputWithContext(ctx context.Context) Rou
 type RouteEntryOutput struct{ *pulumi.OutputState }
 
 func (RouteEntryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteEntry)(nil))
+	return reflect.TypeOf((**RouteEntry)(nil)).Elem()
 }
 
 func (o RouteEntryOutput) ToRouteEntryOutput() RouteEntryOutput {
@@ -365,44 +336,10 @@ func (o RouteEntryOutput) ToRouteEntryOutputWithContext(ctx context.Context) Rou
 	return o
 }
 
-func (o RouteEntryOutput) ToRouteEntryPtrOutput() RouteEntryPtrOutput {
-	return o.ToRouteEntryPtrOutputWithContext(context.Background())
-}
-
-func (o RouteEntryOutput) ToRouteEntryPtrOutputWithContext(ctx context.Context) RouteEntryPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouteEntry) *RouteEntry {
-		return &v
-	}).(RouteEntryPtrOutput)
-}
-
-type RouteEntryPtrOutput struct{ *pulumi.OutputState }
-
-func (RouteEntryPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RouteEntry)(nil))
-}
-
-func (o RouteEntryPtrOutput) ToRouteEntryPtrOutput() RouteEntryPtrOutput {
-	return o
-}
-
-func (o RouteEntryPtrOutput) ToRouteEntryPtrOutputWithContext(ctx context.Context) RouteEntryPtrOutput {
-	return o
-}
-
-func (o RouteEntryPtrOutput) Elem() RouteEntryOutput {
-	return o.ApplyT(func(v *RouteEntry) RouteEntry {
-		if v != nil {
-			return *v
-		}
-		var ret RouteEntry
-		return ret
-	}).(RouteEntryOutput)
-}
-
 type RouteEntryArrayOutput struct{ *pulumi.OutputState }
 
 func (RouteEntryArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RouteEntry)(nil))
+	return reflect.TypeOf((*[]*RouteEntry)(nil)).Elem()
 }
 
 func (o RouteEntryArrayOutput) ToRouteEntryArrayOutput() RouteEntryArrayOutput {
@@ -414,15 +351,15 @@ func (o RouteEntryArrayOutput) ToRouteEntryArrayOutputWithContext(ctx context.Co
 }
 
 func (o RouteEntryArrayOutput) Index(i pulumi.IntInput) RouteEntryOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteEntry {
-		return vs[0].([]RouteEntry)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RouteEntry {
+		return vs[0].([]*RouteEntry)[vs[1].(int)]
 	}).(RouteEntryOutput)
 }
 
 type RouteEntryMapOutput struct{ *pulumi.OutputState }
 
 func (RouteEntryMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]RouteEntry)(nil))
+	return reflect.TypeOf((*map[string]*RouteEntry)(nil)).Elem()
 }
 
 func (o RouteEntryMapOutput) ToRouteEntryMapOutput() RouteEntryMapOutput {
@@ -434,18 +371,16 @@ func (o RouteEntryMapOutput) ToRouteEntryMapOutputWithContext(ctx context.Contex
 }
 
 func (o RouteEntryMapOutput) MapIndex(k pulumi.StringInput) RouteEntryOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RouteEntry {
-		return vs[0].(map[string]RouteEntry)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *RouteEntry {
+		return vs[0].(map[string]*RouteEntry)[vs[1].(string)]
 	}).(RouteEntryOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RouteEntryInput)(nil)).Elem(), &RouteEntry{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RouteEntryPtrInput)(nil)).Elem(), &RouteEntry{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouteEntryArrayInput)(nil)).Elem(), RouteEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouteEntryMapInput)(nil)).Elem(), RouteEntryMap{})
 	pulumi.RegisterOutputType(RouteEntryOutput{})
-	pulumi.RegisterOutputType(RouteEntryPtrOutput{})
 	pulumi.RegisterOutputType(RouteEntryArrayOutput{})
 	pulumi.RegisterOutputType(RouteEntryMapOutput{})
 }

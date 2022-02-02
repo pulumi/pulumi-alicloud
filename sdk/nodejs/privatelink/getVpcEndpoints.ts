@@ -31,9 +31,7 @@ export function getVpcEndpoints(args?: GetVpcEndpointsArgs, opts?: pulumi.Invoke
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:privatelink/getVpcEndpoints:getVpcEndpoints", {
         "connectionStatus": args.connectionStatus,
         "enableDetails": args.enableDetails,

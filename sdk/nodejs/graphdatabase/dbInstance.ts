@@ -120,22 +120,22 @@ export class DbInstance extends pulumi.CustomResource {
      */
     constructor(name: string, args: DbInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DbInstanceArgs | DbInstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DbInstanceState | undefined;
-            inputs["dbInstanceCategory"] = state ? state.dbInstanceCategory : undefined;
-            inputs["dbInstanceDescription"] = state ? state.dbInstanceDescription : undefined;
-            inputs["dbInstanceIpArrays"] = state ? state.dbInstanceIpArrays : undefined;
-            inputs["dbInstanceNetworkType"] = state ? state.dbInstanceNetworkType : undefined;
-            inputs["dbInstanceStorageType"] = state ? state.dbInstanceStorageType : undefined;
-            inputs["dbNodeClass"] = state ? state.dbNodeClass : undefined;
-            inputs["dbNodeStorage"] = state ? state.dbNodeStorage : undefined;
-            inputs["dbVersion"] = state ? state.dbVersion : undefined;
-            inputs["paymentType"] = state ? state.paymentType : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["dbInstanceCategory"] = state ? state.dbInstanceCategory : undefined;
+            resourceInputs["dbInstanceDescription"] = state ? state.dbInstanceDescription : undefined;
+            resourceInputs["dbInstanceIpArrays"] = state ? state.dbInstanceIpArrays : undefined;
+            resourceInputs["dbInstanceNetworkType"] = state ? state.dbInstanceNetworkType : undefined;
+            resourceInputs["dbInstanceStorageType"] = state ? state.dbInstanceStorageType : undefined;
+            resourceInputs["dbNodeClass"] = state ? state.dbNodeClass : undefined;
+            resourceInputs["dbNodeStorage"] = state ? state.dbNodeStorage : undefined;
+            resourceInputs["dbVersion"] = state ? state.dbVersion : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as DbInstanceArgs | undefined;
             if ((!args || args.dbInstanceCategory === undefined) && !opts.urn) {
@@ -159,23 +159,21 @@ export class DbInstance extends pulumi.CustomResource {
             if ((!args || args.paymentType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            inputs["dbInstanceCategory"] = args ? args.dbInstanceCategory : undefined;
-            inputs["dbInstanceDescription"] = args ? args.dbInstanceDescription : undefined;
-            inputs["dbInstanceIpArrays"] = args ? args.dbInstanceIpArrays : undefined;
-            inputs["dbInstanceNetworkType"] = args ? args.dbInstanceNetworkType : undefined;
-            inputs["dbInstanceStorageType"] = args ? args.dbInstanceStorageType : undefined;
-            inputs["dbNodeClass"] = args ? args.dbNodeClass : undefined;
-            inputs["dbNodeStorage"] = args ? args.dbNodeStorage : undefined;
-            inputs["dbVersion"] = args ? args.dbVersion : undefined;
-            inputs["paymentType"] = args ? args.paymentType : undefined;
-            inputs["status"] = undefined /*out*/;
-            inputs["vswitchId"] = undefined /*out*/;
-            inputs["zoneId"] = undefined /*out*/;
+            resourceInputs["dbInstanceCategory"] = args ? args.dbInstanceCategory : undefined;
+            resourceInputs["dbInstanceDescription"] = args ? args.dbInstanceDescription : undefined;
+            resourceInputs["dbInstanceIpArrays"] = args ? args.dbInstanceIpArrays : undefined;
+            resourceInputs["dbInstanceNetworkType"] = args ? args.dbInstanceNetworkType : undefined;
+            resourceInputs["dbInstanceStorageType"] = args ? args.dbInstanceStorageType : undefined;
+            resourceInputs["dbNodeClass"] = args ? args.dbNodeClass : undefined;
+            resourceInputs["dbNodeStorage"] = args ? args.dbNodeStorage : undefined;
+            resourceInputs["dbVersion"] = args ? args.dbVersion : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["vswitchId"] = undefined /*out*/;
+            resourceInputs["zoneId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DbInstance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DbInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

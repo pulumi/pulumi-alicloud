@@ -105,16 +105,16 @@ export class DynamicTagGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: DynamicTagGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DynamicTagGroupArgs | DynamicTagGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DynamicTagGroupState | undefined;
-            inputs["contactGroupLists"] = state ? state.contactGroupLists : undefined;
-            inputs["matchExpressFilterRelation"] = state ? state.matchExpressFilterRelation : undefined;
-            inputs["matchExpresses"] = state ? state.matchExpresses : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tagKey"] = state ? state.tagKey : undefined;
-            inputs["templateIdLists"] = state ? state.templateIdLists : undefined;
+            resourceInputs["contactGroupLists"] = state ? state.contactGroupLists : undefined;
+            resourceInputs["matchExpressFilterRelation"] = state ? state.matchExpressFilterRelation : undefined;
+            resourceInputs["matchExpresses"] = state ? state.matchExpresses : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tagKey"] = state ? state.tagKey : undefined;
+            resourceInputs["templateIdLists"] = state ? state.templateIdLists : undefined;
         } else {
             const args = argsOrState as DynamicTagGroupArgs | undefined;
             if ((!args || args.contactGroupLists === undefined) && !opts.urn) {
@@ -126,17 +126,15 @@ export class DynamicTagGroup extends pulumi.CustomResource {
             if ((!args || args.tagKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tagKey'");
             }
-            inputs["contactGroupLists"] = args ? args.contactGroupLists : undefined;
-            inputs["matchExpressFilterRelation"] = args ? args.matchExpressFilterRelation : undefined;
-            inputs["matchExpresses"] = args ? args.matchExpresses : undefined;
-            inputs["tagKey"] = args ? args.tagKey : undefined;
-            inputs["templateIdLists"] = args ? args.templateIdLists : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["contactGroupLists"] = args ? args.contactGroupLists : undefined;
+            resourceInputs["matchExpressFilterRelation"] = args ? args.matchExpressFilterRelation : undefined;
+            resourceInputs["matchExpresses"] = args ? args.matchExpresses : undefined;
+            resourceInputs["tagKey"] = args ? args.tagKey : undefined;
+            resourceInputs["templateIdLists"] = args ? args.templateIdLists : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DynamicTagGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DynamicTagGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -31,9 +31,7 @@ export function getStacks(args?: GetStacksArgs, opts?: pulumi.InvokeOptions): Pr
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ros/getStacks:getStacks", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,

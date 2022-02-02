@@ -29,9 +29,9 @@ import * as utilities from "../utilities";
  *     storageType: "cloud_essd",
  *     vswitchId: "your_vswitch_id",
  * });
- * const defaultDbClusters = defaultDbCluster.id.apply(id => alicloud.clickhouse.getDbClusters({
- *     ids: [id],
- * }));
+ * const defaultDbClusters = alicloud.clickhouse.getDbClustersOutput({
+ *     ids: [defaultDbCluster.id],
+ * });
  * export const dbCluster = defaultDbClusters.apply(defaultDbClusters => defaultDbClusters.ids?[0]);
  * ```
  */
@@ -41,9 +41,7 @@ export function getDbClusters(args?: GetDbClustersArgs, opts?: pulumi.InvokeOpti
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:clickhouse/getDbClusters:getDbClusters", {
         "dbClusterDescription": args.dbClusterDescription,
         "enableDetails": args.enableDetails,

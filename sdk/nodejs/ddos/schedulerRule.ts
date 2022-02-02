@@ -121,16 +121,16 @@ export class SchedulerRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: SchedulerRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SchedulerRuleArgs | SchedulerRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SchedulerRuleState | undefined;
-            inputs["cname"] = state ? state.cname : undefined;
-            inputs["param"] = state ? state.param : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["ruleName"] = state ? state.ruleName : undefined;
-            inputs["ruleType"] = state ? state.ruleType : undefined;
-            inputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["cname"] = state ? state.cname : undefined;
+            resourceInputs["param"] = state ? state.param : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
+            resourceInputs["ruleType"] = state ? state.ruleType : undefined;
+            resourceInputs["rules"] = state ? state.rules : undefined;
         } else {
             const args = argsOrState as SchedulerRuleArgs | undefined;
             if ((!args || args.ruleName === undefined) && !opts.urn) {
@@ -142,17 +142,15 @@ export class SchedulerRule extends pulumi.CustomResource {
             if ((!args || args.rules === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
             }
-            inputs["param"] = args ? args.param : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["ruleName"] = args ? args.ruleName : undefined;
-            inputs["ruleType"] = args ? args.ruleType : undefined;
-            inputs["rules"] = args ? args.rules : undefined;
-            inputs["cname"] = undefined /*out*/;
+            resourceInputs["param"] = args ? args.param : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
+            resourceInputs["ruleType"] = args ? args.ruleType : undefined;
+            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["cname"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SchedulerRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SchedulerRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

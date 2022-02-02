@@ -71,15 +71,15 @@ export class RouteEntry extends pulumi.CustomResource {
      */
     constructor(name: string, args: RouteEntryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouteEntryArgs | RouteEntryState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouteEntryState | undefined;
-            inputs["nextHop"] = state ? state.nextHop : undefined;
-            inputs["publishVpc"] = state ? state.publishVpc : undefined;
-            inputs["routeDest"] = state ? state.routeDest : undefined;
-            inputs["vpnGatewayId"] = state ? state.vpnGatewayId : undefined;
-            inputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["nextHop"] = state ? state.nextHop : undefined;
+            resourceInputs["publishVpc"] = state ? state.publishVpc : undefined;
+            resourceInputs["routeDest"] = state ? state.routeDest : undefined;
+            resourceInputs["vpnGatewayId"] = state ? state.vpnGatewayId : undefined;
+            resourceInputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as RouteEntryArgs | undefined;
             if ((!args || args.nextHop === undefined) && !opts.urn) {
@@ -97,16 +97,14 @@ export class RouteEntry extends pulumi.CustomResource {
             if ((!args || args.weight === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'weight'");
             }
-            inputs["nextHop"] = args ? args.nextHop : undefined;
-            inputs["publishVpc"] = args ? args.publishVpc : undefined;
-            inputs["routeDest"] = args ? args.routeDest : undefined;
-            inputs["vpnGatewayId"] = args ? args.vpnGatewayId : undefined;
-            inputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["nextHop"] = args ? args.nextHop : undefined;
+            resourceInputs["publishVpc"] = args ? args.publishVpc : undefined;
+            resourceInputs["routeDest"] = args ? args.routeDest : undefined;
+            resourceInputs["vpnGatewayId"] = args ? args.vpnGatewayId : undefined;
+            resourceInputs["weight"] = args ? args.weight : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RouteEntry.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RouteEntry.__pulumiType, name, resourceInputs, opts);
     }
 }
 

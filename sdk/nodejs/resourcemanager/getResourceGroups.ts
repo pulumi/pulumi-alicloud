@@ -29,9 +29,7 @@ export function getResourceGroups(args?: GetResourceGroupsArgs, opts?: pulumi.In
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:resourcemanager/getResourceGroups:getResourceGroups", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,

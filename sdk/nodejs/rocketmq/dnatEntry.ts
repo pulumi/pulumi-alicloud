@@ -106,17 +106,17 @@ export class DnatEntry extends pulumi.CustomResource {
      */
     constructor(name: string, args: DnatEntryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DnatEntryArgs | DnatEntryState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DnatEntryState | undefined;
-            inputs["externalIp"] = state ? state.externalIp : undefined;
-            inputs["externalPort"] = state ? state.externalPort : undefined;
-            inputs["internalIp"] = state ? state.internalIp : undefined;
-            inputs["internalPort"] = state ? state.internalPort : undefined;
-            inputs["ipProtocol"] = state ? state.ipProtocol : undefined;
-            inputs["sagId"] = state ? state.sagId : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["externalIp"] = state ? state.externalIp : undefined;
+            resourceInputs["externalPort"] = state ? state.externalPort : undefined;
+            resourceInputs["internalIp"] = state ? state.internalIp : undefined;
+            resourceInputs["internalPort"] = state ? state.internalPort : undefined;
+            resourceInputs["ipProtocol"] = state ? state.ipProtocol : undefined;
+            resourceInputs["sagId"] = state ? state.sagId : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as DnatEntryArgs | undefined;
             if ((!args || args.externalPort === undefined) && !opts.urn) {
@@ -137,18 +137,16 @@ export class DnatEntry extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["externalIp"] = args ? args.externalIp : undefined;
-            inputs["externalPort"] = args ? args.externalPort : undefined;
-            inputs["internalIp"] = args ? args.internalIp : undefined;
-            inputs["internalPort"] = args ? args.internalPort : undefined;
-            inputs["ipProtocol"] = args ? args.ipProtocol : undefined;
-            inputs["sagId"] = args ? args.sagId : undefined;
-            inputs["type"] = args ? args.type : undefined;
+            resourceInputs["externalIp"] = args ? args.externalIp : undefined;
+            resourceInputs["externalPort"] = args ? args.externalPort : undefined;
+            resourceInputs["internalIp"] = args ? args.internalIp : undefined;
+            resourceInputs["internalPort"] = args ? args.internalPort : undefined;
+            resourceInputs["ipProtocol"] = args ? args.ipProtocol : undefined;
+            resourceInputs["sagId"] = args ? args.sagId : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DnatEntry.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DnatEntry.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -69,13 +69,13 @@ export class SharedTarget extends pulumi.CustomResource {
      */
     constructor(name: string, args: SharedTargetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SharedTargetArgs | SharedTargetState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SharedTargetState | undefined;
-            inputs["resourceShareId"] = state ? state.resourceShareId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["targetId"] = state ? state.targetId : undefined;
+            resourceInputs["resourceShareId"] = state ? state.resourceShareId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["targetId"] = state ? state.targetId : undefined;
         } else {
             const args = argsOrState as SharedTargetArgs | undefined;
             if ((!args || args.resourceShareId === undefined) && !opts.urn) {
@@ -84,14 +84,12 @@ export class SharedTarget extends pulumi.CustomResource {
             if ((!args || args.targetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetId'");
             }
-            inputs["resourceShareId"] = args ? args.resourceShareId : undefined;
-            inputs["targetId"] = args ? args.targetId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["resourceShareId"] = args ? args.resourceShareId : undefined;
+            resourceInputs["targetId"] = args ? args.targetId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SharedTarget.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SharedTarget.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -127,23 +127,23 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
      */
     constructor(name: string, args: RegistryEnterpriseInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegistryEnterpriseInstanceArgs | RegistryEnterpriseInstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegistryEnterpriseInstanceState | undefined;
-            inputs["createdTime"] = state ? state.createdTime : undefined;
-            inputs["customOssBucket"] = state ? state.customOssBucket : undefined;
-            inputs["endTime"] = state ? state.endTime : undefined;
-            inputs["instanceName"] = state ? state.instanceName : undefined;
-            inputs["instanceType"] = state ? state.instanceType : undefined;
-            inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
-            inputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["paymentType"] = state ? state.paymentType : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["renewPeriod"] = state ? state.renewPeriod : undefined;
-            inputs["renewalStatus"] = state ? state.renewalStatus : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["createdTime"] = state ? state.createdTime : undefined;
+            resourceInputs["customOssBucket"] = state ? state.customOssBucket : undefined;
+            resourceInputs["endTime"] = state ? state.endTime : undefined;
+            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
+            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
+            resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
+            resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
+            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as RegistryEnterpriseInstanceArgs | undefined;
             if ((!args || args.instanceName === undefined) && !opts.urn) {
@@ -152,24 +152,22 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
             if ((!args || args.instanceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            inputs["customOssBucket"] = args ? args.customOssBucket : undefined;
-            inputs["instanceName"] = args ? args.instanceName : undefined;
-            inputs["instanceType"] = args ? args.instanceType : undefined;
-            inputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
-            inputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["paymentType"] = args ? args.paymentType : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["renewPeriod"] = args ? args.renewPeriod : undefined;
-            inputs["renewalStatus"] = args ? args.renewalStatus : undefined;
-            inputs["createdTime"] = undefined /*out*/;
-            inputs["endTime"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["customOssBucket"] = args ? args.customOssBucket : undefined;
+            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
+            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
+            resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
+            resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
+            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
+            resourceInputs["createdTime"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RegistryEnterpriseInstance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RegistryEnterpriseInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

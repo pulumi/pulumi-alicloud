@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Hbr
 {
@@ -46,7 +45,7 @@ namespace Pulumi.AliCloud.Hbr
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsBackupPlansResult> InvokeAsync(GetEcsBackupPlansArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsBackupPlansResult>("alicloud:hbr/getEcsBackupPlans:getEcsBackupPlans", args ?? new GetEcsBackupPlansArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsBackupPlansResult>("alicloud:hbr/getEcsBackupPlans:getEcsBackupPlans", args ?? new GetEcsBackupPlansArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Hbr EcsBackupPlans of the current Alibaba Cloud user.
@@ -82,7 +81,7 @@ namespace Pulumi.AliCloud.Hbr
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsBackupPlansResult> Invoke(GetEcsBackupPlansInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEcsBackupPlansResult>("alicloud:hbr/getEcsBackupPlans:getEcsBackupPlans", args ?? new GetEcsBackupPlansInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetEcsBackupPlansResult>("alicloud:hbr/getEcsBackupPlans:getEcsBackupPlans", args ?? new GetEcsBackupPlansInvokeArgs(), options.WithDefaults());
     }
 
 

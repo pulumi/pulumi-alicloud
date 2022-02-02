@@ -32,9 +32,7 @@ export function getAlertContacts(args?: GetAlertContactsArgs, opts?: pulumi.Invo
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:arms/getAlertContacts:getAlertContacts", {
         "alertContactName": args.alertContactName,
         "email": args.email,

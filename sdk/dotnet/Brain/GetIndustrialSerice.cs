@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Brain
 {
@@ -43,7 +42,7 @@ namespace Pulumi.AliCloud.Brain
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetIndustrialSericeResult> InvokeAsync(GetIndustrialSericeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIndustrialSericeResult>("alicloud:brain/getIndustrialSerice:getIndustrialSerice", args ?? new GetIndustrialSericeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetIndustrialSericeResult>("alicloud:brain/getIndustrialSerice:getIndustrialSerice", args ?? new GetIndustrialSericeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Using this data source can open Brain Industrial service automatically. If the service has been opened, it will return opened.
@@ -76,7 +75,7 @@ namespace Pulumi.AliCloud.Brain
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetIndustrialSericeResult> Invoke(GetIndustrialSericeInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIndustrialSericeResult>("alicloud:brain/getIndustrialSerice:getIndustrialSerice", args ?? new GetIndustrialSericeInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetIndustrialSericeResult>("alicloud:brain/getIndustrialSerice:getIndustrialSerice", args ?? new GetIndustrialSericeInvokeArgs(), options.WithDefaults());
     }
 
 

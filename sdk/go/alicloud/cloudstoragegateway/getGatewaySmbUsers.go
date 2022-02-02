@@ -72,6 +72,12 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		ids := cloudstoragegateway.GetGatewaySmbUsersOutput(ctx, cloudstoragegateway.GetGatewaySmbUsersOutputArgs{
+// 			GatewayId: defaultGateway.ID(),
+// 			Ids: pulumi.StringArray{
+// 				defaultGatewaySmbUser.ID(),
+// 			},
+// 		}, nil)
 // 		ctx.Export("cloudStorageGatewayGatewaySmbUserId1", ids.ApplyT(func(ids cloudstoragegateway.GetGatewaySmbUsersResult) (string, error) {
 // 			return ids.Users[0].Id, nil
 // 		}).(pulumi.StringOutput))

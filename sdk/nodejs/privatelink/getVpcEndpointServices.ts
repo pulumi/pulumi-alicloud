@@ -31,9 +31,7 @@ export function getVpcEndpointServices(args?: GetVpcEndpointServicesArgs, opts?:
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:privatelink/getVpcEndpointServices:getVpcEndpointServices", {
         "autoAcceptConnection": args.autoAcceptConnection,
         "ids": args.ids,

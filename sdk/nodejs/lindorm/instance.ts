@@ -169,38 +169,38 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            inputs["coldStorage"] = state ? state.coldStorage : undefined;
-            inputs["coreNum"] = state ? state.coreNum : undefined;
-            inputs["coreSpec"] = state ? state.coreSpec : undefined;
-            inputs["deletionProection"] = state ? state.deletionProection : undefined;
-            inputs["diskCategory"] = state ? state.diskCategory : undefined;
-            inputs["duration"] = state ? state.duration : undefined;
-            inputs["fileEngineNodeCount"] = state ? state.fileEngineNodeCount : undefined;
-            inputs["fileEngineSpecification"] = state ? state.fileEngineSpecification : undefined;
-            inputs["groupName"] = state ? state.groupName : undefined;
-            inputs["instanceName"] = state ? state.instanceName : undefined;
-            inputs["instanceStorage"] = state ? state.instanceStorage : undefined;
-            inputs["ipWhiteLists"] = state ? state.ipWhiteLists : undefined;
-            inputs["ltsNodeCount"] = state ? state.ltsNodeCount : undefined;
-            inputs["ltsNodeSpecification"] = state ? state.ltsNodeSpecification : undefined;
-            inputs["paymentType"] = state ? state.paymentType : undefined;
-            inputs["phoenixNodeCount"] = state ? state.phoenixNodeCount : undefined;
-            inputs["phoenixNodeSpecification"] = state ? state.phoenixNodeSpecification : undefined;
-            inputs["pricingCycle"] = state ? state.pricingCycle : undefined;
-            inputs["searchEngineNodeCount"] = state ? state.searchEngineNodeCount : undefined;
-            inputs["searchEngineSpecification"] = state ? state.searchEngineSpecification : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tableEngineNodeCount"] = state ? state.tableEngineNodeCount : undefined;
-            inputs["tableEngineSpecification"] = state ? state.tableEngineSpecification : undefined;
-            inputs["timeSeriesEngineNodeCount"] = state ? state.timeSeriesEngineNodeCount : undefined;
-            inputs["timeSeriresEngineSpecification"] = state ? state.timeSeriresEngineSpecification : undefined;
-            inputs["upgradeType"] = state ? state.upgradeType : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["coldStorage"] = state ? state.coldStorage : undefined;
+            resourceInputs["coreNum"] = state ? state.coreNum : undefined;
+            resourceInputs["coreSpec"] = state ? state.coreSpec : undefined;
+            resourceInputs["deletionProection"] = state ? state.deletionProection : undefined;
+            resourceInputs["diskCategory"] = state ? state.diskCategory : undefined;
+            resourceInputs["duration"] = state ? state.duration : undefined;
+            resourceInputs["fileEngineNodeCount"] = state ? state.fileEngineNodeCount : undefined;
+            resourceInputs["fileEngineSpecification"] = state ? state.fileEngineSpecification : undefined;
+            resourceInputs["groupName"] = state ? state.groupName : undefined;
+            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
+            resourceInputs["instanceStorage"] = state ? state.instanceStorage : undefined;
+            resourceInputs["ipWhiteLists"] = state ? state.ipWhiteLists : undefined;
+            resourceInputs["ltsNodeCount"] = state ? state.ltsNodeCount : undefined;
+            resourceInputs["ltsNodeSpecification"] = state ? state.ltsNodeSpecification : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["phoenixNodeCount"] = state ? state.phoenixNodeCount : undefined;
+            resourceInputs["phoenixNodeSpecification"] = state ? state.phoenixNodeSpecification : undefined;
+            resourceInputs["pricingCycle"] = state ? state.pricingCycle : undefined;
+            resourceInputs["searchEngineNodeCount"] = state ? state.searchEngineNodeCount : undefined;
+            resourceInputs["searchEngineSpecification"] = state ? state.searchEngineSpecification : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tableEngineNodeCount"] = state ? state.tableEngineNodeCount : undefined;
+            resourceInputs["tableEngineSpecification"] = state ? state.tableEngineSpecification : undefined;
+            resourceInputs["timeSeriesEngineNodeCount"] = state ? state.timeSeriesEngineNodeCount : undefined;
+            resourceInputs["timeSeriresEngineSpecification"] = state ? state.timeSeriresEngineSpecification : undefined;
+            resourceInputs["upgradeType"] = state ? state.upgradeType : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.diskCategory === undefined) && !opts.urn) {
@@ -212,39 +212,37 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            inputs["coldStorage"] = args ? args.coldStorage : undefined;
-            inputs["coreNum"] = args ? args.coreNum : undefined;
-            inputs["coreSpec"] = args ? args.coreSpec : undefined;
-            inputs["deletionProection"] = args ? args.deletionProection : undefined;
-            inputs["diskCategory"] = args ? args.diskCategory : undefined;
-            inputs["duration"] = args ? args.duration : undefined;
-            inputs["fileEngineNodeCount"] = args ? args.fileEngineNodeCount : undefined;
-            inputs["fileEngineSpecification"] = args ? args.fileEngineSpecification : undefined;
-            inputs["groupName"] = args ? args.groupName : undefined;
-            inputs["instanceName"] = args ? args.instanceName : undefined;
-            inputs["instanceStorage"] = args ? args.instanceStorage : undefined;
-            inputs["ipWhiteLists"] = args ? args.ipWhiteLists : undefined;
-            inputs["ltsNodeCount"] = args ? args.ltsNodeCount : undefined;
-            inputs["ltsNodeSpecification"] = args ? args.ltsNodeSpecification : undefined;
-            inputs["paymentType"] = args ? args.paymentType : undefined;
-            inputs["phoenixNodeCount"] = args ? args.phoenixNodeCount : undefined;
-            inputs["phoenixNodeSpecification"] = args ? args.phoenixNodeSpecification : undefined;
-            inputs["pricingCycle"] = args ? args.pricingCycle : undefined;
-            inputs["searchEngineNodeCount"] = args ? args.searchEngineNodeCount : undefined;
-            inputs["searchEngineSpecification"] = args ? args.searchEngineSpecification : undefined;
-            inputs["tableEngineNodeCount"] = args ? args.tableEngineNodeCount : undefined;
-            inputs["tableEngineSpecification"] = args ? args.tableEngineSpecification : undefined;
-            inputs["timeSeriesEngineNodeCount"] = args ? args.timeSeriesEngineNodeCount : undefined;
-            inputs["timeSeriresEngineSpecification"] = args ? args.timeSeriresEngineSpecification : undefined;
-            inputs["upgradeType"] = args ? args.upgradeType : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["coldStorage"] = args ? args.coldStorage : undefined;
+            resourceInputs["coreNum"] = args ? args.coreNum : undefined;
+            resourceInputs["coreSpec"] = args ? args.coreSpec : undefined;
+            resourceInputs["deletionProection"] = args ? args.deletionProection : undefined;
+            resourceInputs["diskCategory"] = args ? args.diskCategory : undefined;
+            resourceInputs["duration"] = args ? args.duration : undefined;
+            resourceInputs["fileEngineNodeCount"] = args ? args.fileEngineNodeCount : undefined;
+            resourceInputs["fileEngineSpecification"] = args ? args.fileEngineSpecification : undefined;
+            resourceInputs["groupName"] = args ? args.groupName : undefined;
+            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
+            resourceInputs["instanceStorage"] = args ? args.instanceStorage : undefined;
+            resourceInputs["ipWhiteLists"] = args ? args.ipWhiteLists : undefined;
+            resourceInputs["ltsNodeCount"] = args ? args.ltsNodeCount : undefined;
+            resourceInputs["ltsNodeSpecification"] = args ? args.ltsNodeSpecification : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["phoenixNodeCount"] = args ? args.phoenixNodeCount : undefined;
+            resourceInputs["phoenixNodeSpecification"] = args ? args.phoenixNodeSpecification : undefined;
+            resourceInputs["pricingCycle"] = args ? args.pricingCycle : undefined;
+            resourceInputs["searchEngineNodeCount"] = args ? args.searchEngineNodeCount : undefined;
+            resourceInputs["searchEngineSpecification"] = args ? args.searchEngineSpecification : undefined;
+            resourceInputs["tableEngineNodeCount"] = args ? args.tableEngineNodeCount : undefined;
+            resourceInputs["tableEngineSpecification"] = args ? args.tableEngineSpecification : undefined;
+            resourceInputs["timeSeriesEngineNodeCount"] = args ? args.timeSeriesEngineNodeCount : undefined;
+            resourceInputs["timeSeriresEngineSpecification"] = args ? args.timeSeriresEngineSpecification : undefined;
+            resourceInputs["upgradeType"] = args ? args.upgradeType : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Instance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

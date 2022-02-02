@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Amqp
 {
@@ -44,7 +43,7 @@ namespace Pulumi.AliCloud.Amqp
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBindingsResult> InvokeAsync(GetBindingsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBindingsResult>("alicloud:amqp/getBindings:getBindings", args ?? new GetBindingsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBindingsResult>("alicloud:amqp/getBindings:getBindings", args ?? new GetBindingsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Amqp Bindings of the current Alibaba Cloud user.
@@ -78,7 +77,7 @@ namespace Pulumi.AliCloud.Amqp
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBindingsResult> Invoke(GetBindingsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBindingsResult>("alicloud:amqp/getBindings:getBindings", args ?? new GetBindingsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetBindingsResult>("alicloud:amqp/getBindings:getBindings", args ?? new GetBindingsInvokeArgs(), options.WithDefaults());
     }
 
 

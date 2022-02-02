@@ -165,7 +165,7 @@ type ServiceMeshInput interface {
 }
 
 func (*ServiceMesh) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceMesh)(nil))
+	return reflect.TypeOf((**ServiceMesh)(nil)).Elem()
 }
 
 func (i *ServiceMesh) ToServiceMeshOutput() ServiceMeshOutput {
@@ -174,35 +174,6 @@ func (i *ServiceMesh) ToServiceMeshOutput() ServiceMeshOutput {
 
 func (i *ServiceMesh) ToServiceMeshOutputWithContext(ctx context.Context) ServiceMeshOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshOutput)
-}
-
-func (i *ServiceMesh) ToServiceMeshPtrOutput() ServiceMeshPtrOutput {
-	return i.ToServiceMeshPtrOutputWithContext(context.Background())
-}
-
-func (i *ServiceMesh) ToServiceMeshPtrOutputWithContext(ctx context.Context) ServiceMeshPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshPtrOutput)
-}
-
-type ServiceMeshPtrInput interface {
-	pulumi.Input
-
-	ToServiceMeshPtrOutput() ServiceMeshPtrOutput
-	ToServiceMeshPtrOutputWithContext(ctx context.Context) ServiceMeshPtrOutput
-}
-
-type serviceMeshPtrType ServiceMeshArgs
-
-func (*serviceMeshPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceMesh)(nil))
-}
-
-func (i *serviceMeshPtrType) ToServiceMeshPtrOutput() ServiceMeshPtrOutput {
-	return i.ToServiceMeshPtrOutputWithContext(context.Background())
-}
-
-func (i *serviceMeshPtrType) ToServiceMeshPtrOutputWithContext(ctx context.Context) ServiceMeshPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshPtrOutput)
 }
 
 // ServiceMeshArrayInput is an input type that accepts ServiceMeshArray and ServiceMeshArrayOutput values.
@@ -258,7 +229,7 @@ func (i ServiceMeshMap) ToServiceMeshMapOutputWithContext(ctx context.Context) S
 type ServiceMeshOutput struct{ *pulumi.OutputState }
 
 func (ServiceMeshOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceMesh)(nil))
+	return reflect.TypeOf((**ServiceMesh)(nil)).Elem()
 }
 
 func (o ServiceMeshOutput) ToServiceMeshOutput() ServiceMeshOutput {
@@ -269,44 +240,10 @@ func (o ServiceMeshOutput) ToServiceMeshOutputWithContext(ctx context.Context) S
 	return o
 }
 
-func (o ServiceMeshOutput) ToServiceMeshPtrOutput() ServiceMeshPtrOutput {
-	return o.ToServiceMeshPtrOutputWithContext(context.Background())
-}
-
-func (o ServiceMeshOutput) ToServiceMeshPtrOutputWithContext(ctx context.Context) ServiceMeshPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMesh) *ServiceMesh {
-		return &v
-	}).(ServiceMeshPtrOutput)
-}
-
-type ServiceMeshPtrOutput struct{ *pulumi.OutputState }
-
-func (ServiceMeshPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceMesh)(nil))
-}
-
-func (o ServiceMeshPtrOutput) ToServiceMeshPtrOutput() ServiceMeshPtrOutput {
-	return o
-}
-
-func (o ServiceMeshPtrOutput) ToServiceMeshPtrOutputWithContext(ctx context.Context) ServiceMeshPtrOutput {
-	return o
-}
-
-func (o ServiceMeshPtrOutput) Elem() ServiceMeshOutput {
-	return o.ApplyT(func(v *ServiceMesh) ServiceMesh {
-		if v != nil {
-			return *v
-		}
-		var ret ServiceMesh
-		return ret
-	}).(ServiceMeshOutput)
-}
-
 type ServiceMeshArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceMeshArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceMesh)(nil))
+	return reflect.TypeOf((*[]*ServiceMesh)(nil)).Elem()
 }
 
 func (o ServiceMeshArrayOutput) ToServiceMeshArrayOutput() ServiceMeshArrayOutput {
@@ -318,15 +255,15 @@ func (o ServiceMeshArrayOutput) ToServiceMeshArrayOutputWithContext(ctx context.
 }
 
 func (o ServiceMeshArrayOutput) Index(i pulumi.IntInput) ServiceMeshOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceMesh {
-		return vs[0].([]ServiceMesh)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceMesh {
+		return vs[0].([]*ServiceMesh)[vs[1].(int)]
 	}).(ServiceMeshOutput)
 }
 
 type ServiceMeshMapOutput struct{ *pulumi.OutputState }
 
 func (ServiceMeshMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ServiceMesh)(nil))
+	return reflect.TypeOf((*map[string]*ServiceMesh)(nil)).Elem()
 }
 
 func (o ServiceMeshMapOutput) ToServiceMeshMapOutput() ServiceMeshMapOutput {
@@ -338,18 +275,16 @@ func (o ServiceMeshMapOutput) ToServiceMeshMapOutputWithContext(ctx context.Cont
 }
 
 func (o ServiceMeshMapOutput) MapIndex(k pulumi.StringInput) ServiceMeshOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServiceMesh {
-		return vs[0].(map[string]ServiceMesh)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ServiceMesh {
+		return vs[0].(map[string]*ServiceMesh)[vs[1].(string)]
 	}).(ServiceMeshOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshInput)(nil)).Elem(), &ServiceMesh{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshPtrInput)(nil)).Elem(), &ServiceMesh{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshArrayInput)(nil)).Elem(), ServiceMeshArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMapInput)(nil)).Elem(), ServiceMeshMap{})
 	pulumi.RegisterOutputType(ServiceMeshOutput{})
-	pulumi.RegisterOutputType(ServiceMeshPtrOutput{})
 	pulumi.RegisterOutputType(ServiceMeshArrayOutput{})
 	pulumi.RegisterOutputType(ServiceMeshMapOutput{})
 }

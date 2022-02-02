@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.SimpleApplicationServer
 {
@@ -56,7 +55,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerCustomImagesResult> InvokeAsync(GetServerCustomImagesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServerCustomImagesResult>("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", args ?? new GetServerCustomImagesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServerCustomImagesResult>("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", args ?? new GetServerCustomImagesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Simple Application Server Custom Images of the current Alibaba Cloud user.
@@ -102,7 +101,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServerCustomImagesResult> Invoke(GetServerCustomImagesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServerCustomImagesResult>("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", args ?? new GetServerCustomImagesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetServerCustomImagesResult>("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", args ?? new GetServerCustomImagesInvokeArgs(), options.WithDefaults());
     }
 
 

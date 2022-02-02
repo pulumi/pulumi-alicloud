@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CloudStorageGateway
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetExpressSyncsResult> InvokeAsync(GetExpressSyncsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetExpressSyncsResult>("alicloud:cloudstoragegateway/getExpressSyncs:getExpressSyncs", args ?? new GetExpressSyncsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetExpressSyncsResult>("alicloud:cloudstoragegateway/getExpressSyncs:getExpressSyncs", args ?? new GetExpressSyncsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cloud Storage Gateway Express Syncs of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetExpressSyncsResult> Invoke(GetExpressSyncsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetExpressSyncsResult>("alicloud:cloudstoragegateway/getExpressSyncs:getExpressSyncs", args ?? new GetExpressSyncsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetExpressSyncsResult>("alicloud:cloudstoragegateway/getExpressSyncs:getExpressSyncs", args ?? new GetExpressSyncsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ga
 {
@@ -51,7 +50,7 @@ namespace Pulumi.AliCloud.Ga
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetForwardingRulesResult> InvokeAsync(GetForwardingRulesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetForwardingRulesResult>("alicloud:ga/getForwardingRules:getForwardingRules", args ?? new GetForwardingRulesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetForwardingRulesResult>("alicloud:ga/getForwardingRules:getForwardingRules", args ?? new GetForwardingRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Global Accelerator (GA) Forwarding Rules of the current Alibaba Cloud user.
@@ -92,7 +91,7 @@ namespace Pulumi.AliCloud.Ga
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetForwardingRulesResult> Invoke(GetForwardingRulesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetForwardingRulesResult>("alicloud:ga/getForwardingRules:getForwardingRules", args ?? new GetForwardingRulesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetForwardingRulesResult>("alicloud:ga/getForwardingRules:getForwardingRules", args ?? new GetForwardingRulesInvokeArgs(), options.WithDefaults());
     }
 
 

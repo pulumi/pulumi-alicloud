@@ -78,24 +78,22 @@ export class StorageBundle extends pulumi.CustomResource {
      */
     constructor(name: string, args: StorageBundleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StorageBundleArgs | StorageBundleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StorageBundleState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["storageBundleName"] = state ? state.storageBundleName : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["storageBundleName"] = state ? state.storageBundleName : undefined;
         } else {
             const args = argsOrState as StorageBundleArgs | undefined;
             if ((!args || args.storageBundleName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'storageBundleName'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["storageBundleName"] = args ? args.storageBundleName : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["storageBundleName"] = args ? args.storageBundleName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(StorageBundle.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(StorageBundle.__pulumiType, name, resourceInputs, opts);
     }
 }
 

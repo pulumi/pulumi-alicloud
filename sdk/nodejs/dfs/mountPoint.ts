@@ -89,18 +89,18 @@ export class MountPoint extends pulumi.CustomResource {
      */
     constructor(name: string, args: MountPointArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MountPointArgs | MountPointState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MountPointState | undefined;
-            inputs["accessGroupId"] = state ? state.accessGroupId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["fileSystemId"] = state ? state.fileSystemId : undefined;
-            inputs["mountPointId"] = state ? state.mountPointId : undefined;
-            inputs["networkType"] = state ? state.networkType : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["vpcId"] = state ? state.vpcId : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["accessGroupId"] = state ? state.accessGroupId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["fileSystemId"] = state ? state.fileSystemId : undefined;
+            resourceInputs["mountPointId"] = state ? state.mountPointId : undefined;
+            resourceInputs["networkType"] = state ? state.networkType : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as MountPointArgs | undefined;
             if ((!args || args.accessGroupId === undefined) && !opts.urn) {
@@ -118,19 +118,17 @@ export class MountPoint extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            inputs["accessGroupId"] = args ? args.accessGroupId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["fileSystemId"] = args ? args.fileSystemId : undefined;
-            inputs["networkType"] = args ? args.networkType : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["vpcId"] = args ? args.vpcId : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["mountPointId"] = undefined /*out*/;
+            resourceInputs["accessGroupId"] = args ? args.accessGroupId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["fileSystemId"] = args ? args.fileSystemId : undefined;
+            resourceInputs["networkType"] = args ? args.networkType : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["mountPointId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(MountPoint.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(MountPoint.__pulumiType, name, resourceInputs, opts);
     }
 }
 

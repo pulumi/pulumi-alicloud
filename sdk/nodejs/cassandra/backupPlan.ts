@@ -81,16 +81,16 @@ export class BackupPlan extends pulumi.CustomResource {
      */
     constructor(name: string, args: BackupPlanArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BackupPlanArgs | BackupPlanState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupPlanState | undefined;
-            inputs["active"] = state ? state.active : undefined;
-            inputs["backupPeriod"] = state ? state.backupPeriod : undefined;
-            inputs["backupTime"] = state ? state.backupTime : undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["dataCenterId"] = state ? state.dataCenterId : undefined;
-            inputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
+            resourceInputs["active"] = state ? state.active : undefined;
+            resourceInputs["backupPeriod"] = state ? state.backupPeriod : undefined;
+            resourceInputs["backupTime"] = state ? state.backupTime : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["dataCenterId"] = state ? state.dataCenterId : undefined;
+            resourceInputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
         } else {
             const args = argsOrState as BackupPlanArgs | undefined;
             if ((!args || args.backupTime === undefined) && !opts.urn) {
@@ -102,17 +102,15 @@ export class BackupPlan extends pulumi.CustomResource {
             if ((!args || args.dataCenterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dataCenterId'");
             }
-            inputs["active"] = args ? args.active : undefined;
-            inputs["backupPeriod"] = args ? args.backupPeriod : undefined;
-            inputs["backupTime"] = args ? args.backupTime : undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["dataCenterId"] = args ? args.dataCenterId : undefined;
-            inputs["retentionPeriod"] = args ? args.retentionPeriod : undefined;
+            resourceInputs["active"] = args ? args.active : undefined;
+            resourceInputs["backupPeriod"] = args ? args.backupPeriod : undefined;
+            resourceInputs["backupTime"] = args ? args.backupTime : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["dataCenterId"] = args ? args.dataCenterId : undefined;
+            resourceInputs["retentionPeriod"] = args ? args.retentionPeriod : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(BackupPlan.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(BackupPlan.__pulumiType, name, resourceInputs, opts);
     }
 }
 

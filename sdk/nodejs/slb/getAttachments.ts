@@ -26,9 +26,7 @@ export function getAttachments(args: GetAttachmentsArgs, opts?: pulumi.InvokeOpt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:slb/getAttachments:getAttachments", {
         "instanceIds": args.instanceIds,
         "loadBalancerId": args.loadBalancerId,

@@ -150,7 +150,7 @@ type HostAttachmentInput interface {
 }
 
 func (*HostAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*HostAttachment)(nil))
+	return reflect.TypeOf((**HostAttachment)(nil)).Elem()
 }
 
 func (i *HostAttachment) ToHostAttachmentOutput() HostAttachmentOutput {
@@ -159,35 +159,6 @@ func (i *HostAttachment) ToHostAttachmentOutput() HostAttachmentOutput {
 
 func (i *HostAttachment) ToHostAttachmentOutputWithContext(ctx context.Context) HostAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostAttachmentOutput)
-}
-
-func (i *HostAttachment) ToHostAttachmentPtrOutput() HostAttachmentPtrOutput {
-	return i.ToHostAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *HostAttachment) ToHostAttachmentPtrOutputWithContext(ctx context.Context) HostAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HostAttachmentPtrOutput)
-}
-
-type HostAttachmentPtrInput interface {
-	pulumi.Input
-
-	ToHostAttachmentPtrOutput() HostAttachmentPtrOutput
-	ToHostAttachmentPtrOutputWithContext(ctx context.Context) HostAttachmentPtrOutput
-}
-
-type hostAttachmentPtrType HostAttachmentArgs
-
-func (*hostAttachmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**HostAttachment)(nil))
-}
-
-func (i *hostAttachmentPtrType) ToHostAttachmentPtrOutput() HostAttachmentPtrOutput {
-	return i.ToHostAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *hostAttachmentPtrType) ToHostAttachmentPtrOutputWithContext(ctx context.Context) HostAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HostAttachmentPtrOutput)
 }
 
 // HostAttachmentArrayInput is an input type that accepts HostAttachmentArray and HostAttachmentArrayOutput values.
@@ -243,7 +214,7 @@ func (i HostAttachmentMap) ToHostAttachmentMapOutputWithContext(ctx context.Cont
 type HostAttachmentOutput struct{ *pulumi.OutputState }
 
 func (HostAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HostAttachment)(nil))
+	return reflect.TypeOf((**HostAttachment)(nil)).Elem()
 }
 
 func (o HostAttachmentOutput) ToHostAttachmentOutput() HostAttachmentOutput {
@@ -254,44 +225,10 @@ func (o HostAttachmentOutput) ToHostAttachmentOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o HostAttachmentOutput) ToHostAttachmentPtrOutput() HostAttachmentPtrOutput {
-	return o.ToHostAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (o HostAttachmentOutput) ToHostAttachmentPtrOutputWithContext(ctx context.Context) HostAttachmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v HostAttachment) *HostAttachment {
-		return &v
-	}).(HostAttachmentPtrOutput)
-}
-
-type HostAttachmentPtrOutput struct{ *pulumi.OutputState }
-
-func (HostAttachmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**HostAttachment)(nil))
-}
-
-func (o HostAttachmentPtrOutput) ToHostAttachmentPtrOutput() HostAttachmentPtrOutput {
-	return o
-}
-
-func (o HostAttachmentPtrOutput) ToHostAttachmentPtrOutputWithContext(ctx context.Context) HostAttachmentPtrOutput {
-	return o
-}
-
-func (o HostAttachmentPtrOutput) Elem() HostAttachmentOutput {
-	return o.ApplyT(func(v *HostAttachment) HostAttachment {
-		if v != nil {
-			return *v
-		}
-		var ret HostAttachment
-		return ret
-	}).(HostAttachmentOutput)
-}
-
 type HostAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (HostAttachmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]HostAttachment)(nil))
+	return reflect.TypeOf((*[]*HostAttachment)(nil)).Elem()
 }
 
 func (o HostAttachmentArrayOutput) ToHostAttachmentArrayOutput() HostAttachmentArrayOutput {
@@ -303,15 +240,15 @@ func (o HostAttachmentArrayOutput) ToHostAttachmentArrayOutputWithContext(ctx co
 }
 
 func (o HostAttachmentArrayOutput) Index(i pulumi.IntInput) HostAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostAttachment {
-		return vs[0].([]HostAttachment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HostAttachment {
+		return vs[0].([]*HostAttachment)[vs[1].(int)]
 	}).(HostAttachmentOutput)
 }
 
 type HostAttachmentMapOutput struct{ *pulumi.OutputState }
 
 func (HostAttachmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]HostAttachment)(nil))
+	return reflect.TypeOf((*map[string]*HostAttachment)(nil)).Elem()
 }
 
 func (o HostAttachmentMapOutput) ToHostAttachmentMapOutput() HostAttachmentMapOutput {
@@ -323,18 +260,16 @@ func (o HostAttachmentMapOutput) ToHostAttachmentMapOutputWithContext(ctx contex
 }
 
 func (o HostAttachmentMapOutput) MapIndex(k pulumi.StringInput) HostAttachmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) HostAttachment {
-		return vs[0].(map[string]HostAttachment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *HostAttachment {
+		return vs[0].(map[string]*HostAttachment)[vs[1].(string)]
 	}).(HostAttachmentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HostAttachmentInput)(nil)).Elem(), &HostAttachment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HostAttachmentPtrInput)(nil)).Elem(), &HostAttachment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostAttachmentArrayInput)(nil)).Elem(), HostAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostAttachmentMapInput)(nil)).Elem(), HostAttachmentMap{})
 	pulumi.RegisterOutputType(HostAttachmentOutput{})
-	pulumi.RegisterOutputType(HostAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(HostAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(HostAttachmentMapOutput{})
 }

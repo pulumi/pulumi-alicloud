@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -70,7 +69,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetIpv6InternetBandwidthsResult> InvokeAsync(GetIpv6InternetBandwidthsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIpv6InternetBandwidthsResult>("alicloud:vpc/getIpv6InternetBandwidths:getIpv6InternetBandwidths", args ?? new GetIpv6InternetBandwidthsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetIpv6InternetBandwidthsResult>("alicloud:vpc/getIpv6InternetBandwidths:getIpv6InternetBandwidths", args ?? new GetIpv6InternetBandwidthsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vpc Ipv6 Internet Bandwidths of the current Alibaba Cloud user.
@@ -130,7 +129,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetIpv6InternetBandwidthsResult> Invoke(GetIpv6InternetBandwidthsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIpv6InternetBandwidthsResult>("alicloud:vpc/getIpv6InternetBandwidths:getIpv6InternetBandwidths", args ?? new GetIpv6InternetBandwidthsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetIpv6InternetBandwidthsResult>("alicloud:vpc/getIpv6InternetBandwidths:getIpv6InternetBandwidths", args ?? new GetIpv6InternetBandwidthsInvokeArgs(), options.WithDefaults());
     }
 
 

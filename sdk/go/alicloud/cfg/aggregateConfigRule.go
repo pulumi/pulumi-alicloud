@@ -323,7 +323,7 @@ type AggregateConfigRuleInput interface {
 }
 
 func (*AggregateConfigRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*AggregateConfigRule)(nil))
+	return reflect.TypeOf((**AggregateConfigRule)(nil)).Elem()
 }
 
 func (i *AggregateConfigRule) ToAggregateConfigRuleOutput() AggregateConfigRuleOutput {
@@ -332,35 +332,6 @@ func (i *AggregateConfigRule) ToAggregateConfigRuleOutput() AggregateConfigRuleO
 
 func (i *AggregateConfigRule) ToAggregateConfigRuleOutputWithContext(ctx context.Context) AggregateConfigRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AggregateConfigRuleOutput)
-}
-
-func (i *AggregateConfigRule) ToAggregateConfigRulePtrOutput() AggregateConfigRulePtrOutput {
-	return i.ToAggregateConfigRulePtrOutputWithContext(context.Background())
-}
-
-func (i *AggregateConfigRule) ToAggregateConfigRulePtrOutputWithContext(ctx context.Context) AggregateConfigRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AggregateConfigRulePtrOutput)
-}
-
-type AggregateConfigRulePtrInput interface {
-	pulumi.Input
-
-	ToAggregateConfigRulePtrOutput() AggregateConfigRulePtrOutput
-	ToAggregateConfigRulePtrOutputWithContext(ctx context.Context) AggregateConfigRulePtrOutput
-}
-
-type aggregateConfigRulePtrType AggregateConfigRuleArgs
-
-func (*aggregateConfigRulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AggregateConfigRule)(nil))
-}
-
-func (i *aggregateConfigRulePtrType) ToAggregateConfigRulePtrOutput() AggregateConfigRulePtrOutput {
-	return i.ToAggregateConfigRulePtrOutputWithContext(context.Background())
-}
-
-func (i *aggregateConfigRulePtrType) ToAggregateConfigRulePtrOutputWithContext(ctx context.Context) AggregateConfigRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AggregateConfigRulePtrOutput)
 }
 
 // AggregateConfigRuleArrayInput is an input type that accepts AggregateConfigRuleArray and AggregateConfigRuleArrayOutput values.
@@ -416,7 +387,7 @@ func (i AggregateConfigRuleMap) ToAggregateConfigRuleMapOutputWithContext(ctx co
 type AggregateConfigRuleOutput struct{ *pulumi.OutputState }
 
 func (AggregateConfigRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AggregateConfigRule)(nil))
+	return reflect.TypeOf((**AggregateConfigRule)(nil)).Elem()
 }
 
 func (o AggregateConfigRuleOutput) ToAggregateConfigRuleOutput() AggregateConfigRuleOutput {
@@ -427,44 +398,10 @@ func (o AggregateConfigRuleOutput) ToAggregateConfigRuleOutputWithContext(ctx co
 	return o
 }
 
-func (o AggregateConfigRuleOutput) ToAggregateConfigRulePtrOutput() AggregateConfigRulePtrOutput {
-	return o.ToAggregateConfigRulePtrOutputWithContext(context.Background())
-}
-
-func (o AggregateConfigRuleOutput) ToAggregateConfigRulePtrOutputWithContext(ctx context.Context) AggregateConfigRulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AggregateConfigRule) *AggregateConfigRule {
-		return &v
-	}).(AggregateConfigRulePtrOutput)
-}
-
-type AggregateConfigRulePtrOutput struct{ *pulumi.OutputState }
-
-func (AggregateConfigRulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AggregateConfigRule)(nil))
-}
-
-func (o AggregateConfigRulePtrOutput) ToAggregateConfigRulePtrOutput() AggregateConfigRulePtrOutput {
-	return o
-}
-
-func (o AggregateConfigRulePtrOutput) ToAggregateConfigRulePtrOutputWithContext(ctx context.Context) AggregateConfigRulePtrOutput {
-	return o
-}
-
-func (o AggregateConfigRulePtrOutput) Elem() AggregateConfigRuleOutput {
-	return o.ApplyT(func(v *AggregateConfigRule) AggregateConfigRule {
-		if v != nil {
-			return *v
-		}
-		var ret AggregateConfigRule
-		return ret
-	}).(AggregateConfigRuleOutput)
-}
-
 type AggregateConfigRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (AggregateConfigRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AggregateConfigRule)(nil))
+	return reflect.TypeOf((*[]*AggregateConfigRule)(nil)).Elem()
 }
 
 func (o AggregateConfigRuleArrayOutput) ToAggregateConfigRuleArrayOutput() AggregateConfigRuleArrayOutput {
@@ -476,15 +413,15 @@ func (o AggregateConfigRuleArrayOutput) ToAggregateConfigRuleArrayOutputWithCont
 }
 
 func (o AggregateConfigRuleArrayOutput) Index(i pulumi.IntInput) AggregateConfigRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AggregateConfigRule {
-		return vs[0].([]AggregateConfigRule)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AggregateConfigRule {
+		return vs[0].([]*AggregateConfigRule)[vs[1].(int)]
 	}).(AggregateConfigRuleOutput)
 }
 
 type AggregateConfigRuleMapOutput struct{ *pulumi.OutputState }
 
 func (AggregateConfigRuleMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AggregateConfigRule)(nil))
+	return reflect.TypeOf((*map[string]*AggregateConfigRule)(nil)).Elem()
 }
 
 func (o AggregateConfigRuleMapOutput) ToAggregateConfigRuleMapOutput() AggregateConfigRuleMapOutput {
@@ -496,18 +433,16 @@ func (o AggregateConfigRuleMapOutput) ToAggregateConfigRuleMapOutputWithContext(
 }
 
 func (o AggregateConfigRuleMapOutput) MapIndex(k pulumi.StringInput) AggregateConfigRuleOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AggregateConfigRule {
-		return vs[0].(map[string]AggregateConfigRule)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AggregateConfigRule {
+		return vs[0].(map[string]*AggregateConfigRule)[vs[1].(string)]
 	}).(AggregateConfigRuleOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AggregateConfigRuleInput)(nil)).Elem(), &AggregateConfigRule{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AggregateConfigRulePtrInput)(nil)).Elem(), &AggregateConfigRule{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AggregateConfigRuleArrayInput)(nil)).Elem(), AggregateConfigRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AggregateConfigRuleMapInput)(nil)).Elem(), AggregateConfigRuleMap{})
 	pulumi.RegisterOutputType(AggregateConfigRuleOutput{})
-	pulumi.RegisterOutputType(AggregateConfigRulePtrOutput{})
 	pulumi.RegisterOutputType(AggregateConfigRuleArrayOutput{})
 	pulumi.RegisterOutputType(AggregateConfigRuleMapOutput{})
 }

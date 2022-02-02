@@ -120,16 +120,16 @@ export class Table extends pulumi.CustomResource {
      */
     constructor(name: string, args: TableArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TableArgs | TableState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TableState | undefined;
-            inputs["deviationCellVersionInSec"] = state ? state.deviationCellVersionInSec : undefined;
-            inputs["instanceName"] = state ? state.instanceName : undefined;
-            inputs["maxVersion"] = state ? state.maxVersion : undefined;
-            inputs["primaryKeys"] = state ? state.primaryKeys : undefined;
-            inputs["tableName"] = state ? state.tableName : undefined;
-            inputs["timeToLive"] = state ? state.timeToLive : undefined;
+            resourceInputs["deviationCellVersionInSec"] = state ? state.deviationCellVersionInSec : undefined;
+            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
+            resourceInputs["maxVersion"] = state ? state.maxVersion : undefined;
+            resourceInputs["primaryKeys"] = state ? state.primaryKeys : undefined;
+            resourceInputs["tableName"] = state ? state.tableName : undefined;
+            resourceInputs["timeToLive"] = state ? state.timeToLive : undefined;
         } else {
             const args = argsOrState as TableArgs | undefined;
             if ((!args || args.instanceName === undefined) && !opts.urn) {
@@ -147,17 +147,15 @@ export class Table extends pulumi.CustomResource {
             if ((!args || args.timeToLive === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timeToLive'");
             }
-            inputs["deviationCellVersionInSec"] = args ? args.deviationCellVersionInSec : undefined;
-            inputs["instanceName"] = args ? args.instanceName : undefined;
-            inputs["maxVersion"] = args ? args.maxVersion : undefined;
-            inputs["primaryKeys"] = args ? args.primaryKeys : undefined;
-            inputs["tableName"] = args ? args.tableName : undefined;
-            inputs["timeToLive"] = args ? args.timeToLive : undefined;
+            resourceInputs["deviationCellVersionInSec"] = args ? args.deviationCellVersionInSec : undefined;
+            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
+            resourceInputs["maxVersion"] = args ? args.maxVersion : undefined;
+            resourceInputs["primaryKeys"] = args ? args.primaryKeys : undefined;
+            resourceInputs["tableName"] = args ? args.tableName : undefined;
+            resourceInputs["timeToLive"] = args ? args.timeToLive : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Table.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Table.__pulumiType, name, resourceInputs, opts);
     }
 }
 

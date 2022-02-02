@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     projectId: "xxxx",
  *     folderPath: "Business Flow/tfTestAcc/folderDi",
  * });
- * const ids = pulumi.all([_default.folderId, _default.projectId]).apply(([folderId, projectId]) => alicloud.dataworks.getFolders({
+ * const ids = pulumi.all([_default.folderId, _default.projectId]).apply(([folderId, projectId]) => alicloud.dataworks.getFoldersOutput({
  *     ids: [folderId],
  *     projectId: projectId,
  *     parentFolderPath: "Business Flow/tfTestAcc/folderDi",
@@ -35,9 +35,7 @@ export function getFolders(args: GetFoldersArgs, opts?: pulumi.InvokeOptions): P
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:dataworks/getFolders:getFolders", {
         "ids": args.ids,
         "outputFile": args.outputFile,

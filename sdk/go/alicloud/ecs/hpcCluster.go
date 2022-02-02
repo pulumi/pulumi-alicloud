@@ -130,7 +130,7 @@ type HpcClusterInput interface {
 }
 
 func (*HpcCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*HpcCluster)(nil))
+	return reflect.TypeOf((**HpcCluster)(nil)).Elem()
 }
 
 func (i *HpcCluster) ToHpcClusterOutput() HpcClusterOutput {
@@ -139,35 +139,6 @@ func (i *HpcCluster) ToHpcClusterOutput() HpcClusterOutput {
 
 func (i *HpcCluster) ToHpcClusterOutputWithContext(ctx context.Context) HpcClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HpcClusterOutput)
-}
-
-func (i *HpcCluster) ToHpcClusterPtrOutput() HpcClusterPtrOutput {
-	return i.ToHpcClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *HpcCluster) ToHpcClusterPtrOutputWithContext(ctx context.Context) HpcClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HpcClusterPtrOutput)
-}
-
-type HpcClusterPtrInput interface {
-	pulumi.Input
-
-	ToHpcClusterPtrOutput() HpcClusterPtrOutput
-	ToHpcClusterPtrOutputWithContext(ctx context.Context) HpcClusterPtrOutput
-}
-
-type hpcClusterPtrType HpcClusterArgs
-
-func (*hpcClusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**HpcCluster)(nil))
-}
-
-func (i *hpcClusterPtrType) ToHpcClusterPtrOutput() HpcClusterPtrOutput {
-	return i.ToHpcClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *hpcClusterPtrType) ToHpcClusterPtrOutputWithContext(ctx context.Context) HpcClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HpcClusterPtrOutput)
 }
 
 // HpcClusterArrayInput is an input type that accepts HpcClusterArray and HpcClusterArrayOutput values.
@@ -223,7 +194,7 @@ func (i HpcClusterMap) ToHpcClusterMapOutputWithContext(ctx context.Context) Hpc
 type HpcClusterOutput struct{ *pulumi.OutputState }
 
 func (HpcClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HpcCluster)(nil))
+	return reflect.TypeOf((**HpcCluster)(nil)).Elem()
 }
 
 func (o HpcClusterOutput) ToHpcClusterOutput() HpcClusterOutput {
@@ -234,44 +205,10 @@ func (o HpcClusterOutput) ToHpcClusterOutputWithContext(ctx context.Context) Hpc
 	return o
 }
 
-func (o HpcClusterOutput) ToHpcClusterPtrOutput() HpcClusterPtrOutput {
-	return o.ToHpcClusterPtrOutputWithContext(context.Background())
-}
-
-func (o HpcClusterOutput) ToHpcClusterPtrOutputWithContext(ctx context.Context) HpcClusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v HpcCluster) *HpcCluster {
-		return &v
-	}).(HpcClusterPtrOutput)
-}
-
-type HpcClusterPtrOutput struct{ *pulumi.OutputState }
-
-func (HpcClusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**HpcCluster)(nil))
-}
-
-func (o HpcClusterPtrOutput) ToHpcClusterPtrOutput() HpcClusterPtrOutput {
-	return o
-}
-
-func (o HpcClusterPtrOutput) ToHpcClusterPtrOutputWithContext(ctx context.Context) HpcClusterPtrOutput {
-	return o
-}
-
-func (o HpcClusterPtrOutput) Elem() HpcClusterOutput {
-	return o.ApplyT(func(v *HpcCluster) HpcCluster {
-		if v != nil {
-			return *v
-		}
-		var ret HpcCluster
-		return ret
-	}).(HpcClusterOutput)
-}
-
 type HpcClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (HpcClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]HpcCluster)(nil))
+	return reflect.TypeOf((*[]*HpcCluster)(nil)).Elem()
 }
 
 func (o HpcClusterArrayOutput) ToHpcClusterArrayOutput() HpcClusterArrayOutput {
@@ -283,15 +220,15 @@ func (o HpcClusterArrayOutput) ToHpcClusterArrayOutputWithContext(ctx context.Co
 }
 
 func (o HpcClusterArrayOutput) Index(i pulumi.IntInput) HpcClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HpcCluster {
-		return vs[0].([]HpcCluster)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HpcCluster {
+		return vs[0].([]*HpcCluster)[vs[1].(int)]
 	}).(HpcClusterOutput)
 }
 
 type HpcClusterMapOutput struct{ *pulumi.OutputState }
 
 func (HpcClusterMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]HpcCluster)(nil))
+	return reflect.TypeOf((*map[string]*HpcCluster)(nil)).Elem()
 }
 
 func (o HpcClusterMapOutput) ToHpcClusterMapOutput() HpcClusterMapOutput {
@@ -303,18 +240,16 @@ func (o HpcClusterMapOutput) ToHpcClusterMapOutputWithContext(ctx context.Contex
 }
 
 func (o HpcClusterMapOutput) MapIndex(k pulumi.StringInput) HpcClusterOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) HpcCluster {
-		return vs[0].(map[string]HpcCluster)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *HpcCluster {
+		return vs[0].(map[string]*HpcCluster)[vs[1].(string)]
 	}).(HpcClusterOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HpcClusterInput)(nil)).Elem(), &HpcCluster{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HpcClusterPtrInput)(nil)).Elem(), &HpcCluster{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HpcClusterArrayInput)(nil)).Elem(), HpcClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HpcClusterMapInput)(nil)).Elem(), HpcClusterMap{})
 	pulumi.RegisterOutputType(HpcClusterOutput{})
-	pulumi.RegisterOutputType(HpcClusterPtrOutput{})
 	pulumi.RegisterOutputType(HpcClusterArrayOutput{})
 	pulumi.RegisterOutputType(HpcClusterMapOutput{})
 }

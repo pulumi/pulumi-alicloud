@@ -33,7 +33,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rocketmq.NewDnatEntry(ctx, "_default", &rocketmq.DnatEntryArgs{
+// 		_, err := rocketmq.NewDnatEntry(ctx, "default", &rocketmq.DnatEntryArgs{
 // 			ExternalIp:   pulumi.String("1.0.0.2"),
 // 			ExternalPort: pulumi.String("1"),
 // 			InternalIp:   pulumi.String("10.0.0.2"),
@@ -207,7 +207,7 @@ type DnatEntryInput interface {
 }
 
 func (*DnatEntry) ElementType() reflect.Type {
-	return reflect.TypeOf((*DnatEntry)(nil))
+	return reflect.TypeOf((**DnatEntry)(nil)).Elem()
 }
 
 func (i *DnatEntry) ToDnatEntryOutput() DnatEntryOutput {
@@ -216,35 +216,6 @@ func (i *DnatEntry) ToDnatEntryOutput() DnatEntryOutput {
 
 func (i *DnatEntry) ToDnatEntryOutputWithContext(ctx context.Context) DnatEntryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DnatEntryOutput)
-}
-
-func (i *DnatEntry) ToDnatEntryPtrOutput() DnatEntryPtrOutput {
-	return i.ToDnatEntryPtrOutputWithContext(context.Background())
-}
-
-func (i *DnatEntry) ToDnatEntryPtrOutputWithContext(ctx context.Context) DnatEntryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DnatEntryPtrOutput)
-}
-
-type DnatEntryPtrInput interface {
-	pulumi.Input
-
-	ToDnatEntryPtrOutput() DnatEntryPtrOutput
-	ToDnatEntryPtrOutputWithContext(ctx context.Context) DnatEntryPtrOutput
-}
-
-type dnatEntryPtrType DnatEntryArgs
-
-func (*dnatEntryPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DnatEntry)(nil))
-}
-
-func (i *dnatEntryPtrType) ToDnatEntryPtrOutput() DnatEntryPtrOutput {
-	return i.ToDnatEntryPtrOutputWithContext(context.Background())
-}
-
-func (i *dnatEntryPtrType) ToDnatEntryPtrOutputWithContext(ctx context.Context) DnatEntryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DnatEntryPtrOutput)
 }
 
 // DnatEntryArrayInput is an input type that accepts DnatEntryArray and DnatEntryArrayOutput values.
@@ -300,7 +271,7 @@ func (i DnatEntryMap) ToDnatEntryMapOutputWithContext(ctx context.Context) DnatE
 type DnatEntryOutput struct{ *pulumi.OutputState }
 
 func (DnatEntryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DnatEntry)(nil))
+	return reflect.TypeOf((**DnatEntry)(nil)).Elem()
 }
 
 func (o DnatEntryOutput) ToDnatEntryOutput() DnatEntryOutput {
@@ -311,44 +282,10 @@ func (o DnatEntryOutput) ToDnatEntryOutputWithContext(ctx context.Context) DnatE
 	return o
 }
 
-func (o DnatEntryOutput) ToDnatEntryPtrOutput() DnatEntryPtrOutput {
-	return o.ToDnatEntryPtrOutputWithContext(context.Background())
-}
-
-func (o DnatEntryOutput) ToDnatEntryPtrOutputWithContext(ctx context.Context) DnatEntryPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DnatEntry) *DnatEntry {
-		return &v
-	}).(DnatEntryPtrOutput)
-}
-
-type DnatEntryPtrOutput struct{ *pulumi.OutputState }
-
-func (DnatEntryPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DnatEntry)(nil))
-}
-
-func (o DnatEntryPtrOutput) ToDnatEntryPtrOutput() DnatEntryPtrOutput {
-	return o
-}
-
-func (o DnatEntryPtrOutput) ToDnatEntryPtrOutputWithContext(ctx context.Context) DnatEntryPtrOutput {
-	return o
-}
-
-func (o DnatEntryPtrOutput) Elem() DnatEntryOutput {
-	return o.ApplyT(func(v *DnatEntry) DnatEntry {
-		if v != nil {
-			return *v
-		}
-		var ret DnatEntry
-		return ret
-	}).(DnatEntryOutput)
-}
-
 type DnatEntryArrayOutput struct{ *pulumi.OutputState }
 
 func (DnatEntryArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DnatEntry)(nil))
+	return reflect.TypeOf((*[]*DnatEntry)(nil)).Elem()
 }
 
 func (o DnatEntryArrayOutput) ToDnatEntryArrayOutput() DnatEntryArrayOutput {
@@ -360,15 +297,15 @@ func (o DnatEntryArrayOutput) ToDnatEntryArrayOutputWithContext(ctx context.Cont
 }
 
 func (o DnatEntryArrayOutput) Index(i pulumi.IntInput) DnatEntryOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DnatEntry {
-		return vs[0].([]DnatEntry)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DnatEntry {
+		return vs[0].([]*DnatEntry)[vs[1].(int)]
 	}).(DnatEntryOutput)
 }
 
 type DnatEntryMapOutput struct{ *pulumi.OutputState }
 
 func (DnatEntryMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DnatEntry)(nil))
+	return reflect.TypeOf((*map[string]*DnatEntry)(nil)).Elem()
 }
 
 func (o DnatEntryMapOutput) ToDnatEntryMapOutput() DnatEntryMapOutput {
@@ -380,18 +317,16 @@ func (o DnatEntryMapOutput) ToDnatEntryMapOutputWithContext(ctx context.Context)
 }
 
 func (o DnatEntryMapOutput) MapIndex(k pulumi.StringInput) DnatEntryOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DnatEntry {
-		return vs[0].(map[string]DnatEntry)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DnatEntry {
+		return vs[0].(map[string]*DnatEntry)[vs[1].(string)]
 	}).(DnatEntryOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DnatEntryInput)(nil)).Elem(), &DnatEntry{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DnatEntryPtrInput)(nil)).Elem(), &DnatEntry{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnatEntryArrayInput)(nil)).Elem(), DnatEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnatEntryMapInput)(nil)).Elem(), DnatEntryMap{})
 	pulumi.RegisterOutputType(DnatEntryOutput{})
-	pulumi.RegisterOutputType(DnatEntryPtrOutput{})
 	pulumi.RegisterOutputType(DnatEntryArrayOutput{})
 	pulumi.RegisterOutputType(DnatEntryMapOutput{})
 }

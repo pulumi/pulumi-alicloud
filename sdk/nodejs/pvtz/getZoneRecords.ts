@@ -27,9 +27,7 @@ export function getZoneRecords(args: GetZoneRecordsArgs, opts?: pulumi.InvokeOpt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:pvtz/getZoneRecords:getZoneRecords", {
         "ids": args.ids,
         "keyword": args.keyword,

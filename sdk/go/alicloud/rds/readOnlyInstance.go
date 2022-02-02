@@ -593,7 +593,7 @@ type ReadOnlyInstanceInput interface {
 }
 
 func (*ReadOnlyInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReadOnlyInstance)(nil))
+	return reflect.TypeOf((**ReadOnlyInstance)(nil)).Elem()
 }
 
 func (i *ReadOnlyInstance) ToReadOnlyInstanceOutput() ReadOnlyInstanceOutput {
@@ -602,35 +602,6 @@ func (i *ReadOnlyInstance) ToReadOnlyInstanceOutput() ReadOnlyInstanceOutput {
 
 func (i *ReadOnlyInstance) ToReadOnlyInstanceOutputWithContext(ctx context.Context) ReadOnlyInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReadOnlyInstanceOutput)
-}
-
-func (i *ReadOnlyInstance) ToReadOnlyInstancePtrOutput() ReadOnlyInstancePtrOutput {
-	return i.ToReadOnlyInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *ReadOnlyInstance) ToReadOnlyInstancePtrOutputWithContext(ctx context.Context) ReadOnlyInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReadOnlyInstancePtrOutput)
-}
-
-type ReadOnlyInstancePtrInput interface {
-	pulumi.Input
-
-	ToReadOnlyInstancePtrOutput() ReadOnlyInstancePtrOutput
-	ToReadOnlyInstancePtrOutputWithContext(ctx context.Context) ReadOnlyInstancePtrOutput
-}
-
-type readOnlyInstancePtrType ReadOnlyInstanceArgs
-
-func (*readOnlyInstancePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ReadOnlyInstance)(nil))
-}
-
-func (i *readOnlyInstancePtrType) ToReadOnlyInstancePtrOutput() ReadOnlyInstancePtrOutput {
-	return i.ToReadOnlyInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *readOnlyInstancePtrType) ToReadOnlyInstancePtrOutputWithContext(ctx context.Context) ReadOnlyInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReadOnlyInstancePtrOutput)
 }
 
 // ReadOnlyInstanceArrayInput is an input type that accepts ReadOnlyInstanceArray and ReadOnlyInstanceArrayOutput values.
@@ -686,7 +657,7 @@ func (i ReadOnlyInstanceMap) ToReadOnlyInstanceMapOutputWithContext(ctx context.
 type ReadOnlyInstanceOutput struct{ *pulumi.OutputState }
 
 func (ReadOnlyInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReadOnlyInstance)(nil))
+	return reflect.TypeOf((**ReadOnlyInstance)(nil)).Elem()
 }
 
 func (o ReadOnlyInstanceOutput) ToReadOnlyInstanceOutput() ReadOnlyInstanceOutput {
@@ -697,44 +668,10 @@ func (o ReadOnlyInstanceOutput) ToReadOnlyInstanceOutputWithContext(ctx context.
 	return o
 }
 
-func (o ReadOnlyInstanceOutput) ToReadOnlyInstancePtrOutput() ReadOnlyInstancePtrOutput {
-	return o.ToReadOnlyInstancePtrOutputWithContext(context.Background())
-}
-
-func (o ReadOnlyInstanceOutput) ToReadOnlyInstancePtrOutputWithContext(ctx context.Context) ReadOnlyInstancePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReadOnlyInstance) *ReadOnlyInstance {
-		return &v
-	}).(ReadOnlyInstancePtrOutput)
-}
-
-type ReadOnlyInstancePtrOutput struct{ *pulumi.OutputState }
-
-func (ReadOnlyInstancePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ReadOnlyInstance)(nil))
-}
-
-func (o ReadOnlyInstancePtrOutput) ToReadOnlyInstancePtrOutput() ReadOnlyInstancePtrOutput {
-	return o
-}
-
-func (o ReadOnlyInstancePtrOutput) ToReadOnlyInstancePtrOutputWithContext(ctx context.Context) ReadOnlyInstancePtrOutput {
-	return o
-}
-
-func (o ReadOnlyInstancePtrOutput) Elem() ReadOnlyInstanceOutput {
-	return o.ApplyT(func(v *ReadOnlyInstance) ReadOnlyInstance {
-		if v != nil {
-			return *v
-		}
-		var ret ReadOnlyInstance
-		return ret
-	}).(ReadOnlyInstanceOutput)
-}
-
 type ReadOnlyInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (ReadOnlyInstanceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ReadOnlyInstance)(nil))
+	return reflect.TypeOf((*[]*ReadOnlyInstance)(nil)).Elem()
 }
 
 func (o ReadOnlyInstanceArrayOutput) ToReadOnlyInstanceArrayOutput() ReadOnlyInstanceArrayOutput {
@@ -746,15 +683,15 @@ func (o ReadOnlyInstanceArrayOutput) ToReadOnlyInstanceArrayOutputWithContext(ct
 }
 
 func (o ReadOnlyInstanceArrayOutput) Index(i pulumi.IntInput) ReadOnlyInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReadOnlyInstance {
-		return vs[0].([]ReadOnlyInstance)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ReadOnlyInstance {
+		return vs[0].([]*ReadOnlyInstance)[vs[1].(int)]
 	}).(ReadOnlyInstanceOutput)
 }
 
 type ReadOnlyInstanceMapOutput struct{ *pulumi.OutputState }
 
 func (ReadOnlyInstanceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ReadOnlyInstance)(nil))
+	return reflect.TypeOf((*map[string]*ReadOnlyInstance)(nil)).Elem()
 }
 
 func (o ReadOnlyInstanceMapOutput) ToReadOnlyInstanceMapOutput() ReadOnlyInstanceMapOutput {
@@ -766,18 +703,16 @@ func (o ReadOnlyInstanceMapOutput) ToReadOnlyInstanceMapOutputWithContext(ctx co
 }
 
 func (o ReadOnlyInstanceMapOutput) MapIndex(k pulumi.StringInput) ReadOnlyInstanceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ReadOnlyInstance {
-		return vs[0].(map[string]ReadOnlyInstance)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ReadOnlyInstance {
+		return vs[0].(map[string]*ReadOnlyInstance)[vs[1].(string)]
 	}).(ReadOnlyInstanceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReadOnlyInstanceInput)(nil)).Elem(), &ReadOnlyInstance{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ReadOnlyInstancePtrInput)(nil)).Elem(), &ReadOnlyInstance{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReadOnlyInstanceArrayInput)(nil)).Elem(), ReadOnlyInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReadOnlyInstanceMapInput)(nil)).Elem(), ReadOnlyInstanceMap{})
 	pulumi.RegisterOutputType(ReadOnlyInstanceOutput{})
-	pulumi.RegisterOutputType(ReadOnlyInstancePtrOutput{})
 	pulumi.RegisterOutputType(ReadOnlyInstanceArrayOutput{})
 	pulumi.RegisterOutputType(ReadOnlyInstanceMapOutput{})
 }

@@ -225,7 +225,7 @@ type RouteServiceInput interface {
 }
 
 func (*RouteService) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteService)(nil))
+	return reflect.TypeOf((**RouteService)(nil)).Elem()
 }
 
 func (i *RouteService) ToRouteServiceOutput() RouteServiceOutput {
@@ -234,35 +234,6 @@ func (i *RouteService) ToRouteServiceOutput() RouteServiceOutput {
 
 func (i *RouteService) ToRouteServiceOutputWithContext(ctx context.Context) RouteServiceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouteServiceOutput)
-}
-
-func (i *RouteService) ToRouteServicePtrOutput() RouteServicePtrOutput {
-	return i.ToRouteServicePtrOutputWithContext(context.Background())
-}
-
-func (i *RouteService) ToRouteServicePtrOutputWithContext(ctx context.Context) RouteServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteServicePtrOutput)
-}
-
-type RouteServicePtrInput interface {
-	pulumi.Input
-
-	ToRouteServicePtrOutput() RouteServicePtrOutput
-	ToRouteServicePtrOutputWithContext(ctx context.Context) RouteServicePtrOutput
-}
-
-type routeServicePtrType RouteServiceArgs
-
-func (*routeServicePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RouteService)(nil))
-}
-
-func (i *routeServicePtrType) ToRouteServicePtrOutput() RouteServicePtrOutput {
-	return i.ToRouteServicePtrOutputWithContext(context.Background())
-}
-
-func (i *routeServicePtrType) ToRouteServicePtrOutputWithContext(ctx context.Context) RouteServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteServicePtrOutput)
 }
 
 // RouteServiceArrayInput is an input type that accepts RouteServiceArray and RouteServiceArrayOutput values.
@@ -318,7 +289,7 @@ func (i RouteServiceMap) ToRouteServiceMapOutputWithContext(ctx context.Context)
 type RouteServiceOutput struct{ *pulumi.OutputState }
 
 func (RouteServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteService)(nil))
+	return reflect.TypeOf((**RouteService)(nil)).Elem()
 }
 
 func (o RouteServiceOutput) ToRouteServiceOutput() RouteServiceOutput {
@@ -329,44 +300,10 @@ func (o RouteServiceOutput) ToRouteServiceOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o RouteServiceOutput) ToRouteServicePtrOutput() RouteServicePtrOutput {
-	return o.ToRouteServicePtrOutputWithContext(context.Background())
-}
-
-func (o RouteServiceOutput) ToRouteServicePtrOutputWithContext(ctx context.Context) RouteServicePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouteService) *RouteService {
-		return &v
-	}).(RouteServicePtrOutput)
-}
-
-type RouteServicePtrOutput struct{ *pulumi.OutputState }
-
-func (RouteServicePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RouteService)(nil))
-}
-
-func (o RouteServicePtrOutput) ToRouteServicePtrOutput() RouteServicePtrOutput {
-	return o
-}
-
-func (o RouteServicePtrOutput) ToRouteServicePtrOutputWithContext(ctx context.Context) RouteServicePtrOutput {
-	return o
-}
-
-func (o RouteServicePtrOutput) Elem() RouteServiceOutput {
-	return o.ApplyT(func(v *RouteService) RouteService {
-		if v != nil {
-			return *v
-		}
-		var ret RouteService
-		return ret
-	}).(RouteServiceOutput)
-}
-
 type RouteServiceArrayOutput struct{ *pulumi.OutputState }
 
 func (RouteServiceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RouteService)(nil))
+	return reflect.TypeOf((*[]*RouteService)(nil)).Elem()
 }
 
 func (o RouteServiceArrayOutput) ToRouteServiceArrayOutput() RouteServiceArrayOutput {
@@ -378,15 +315,15 @@ func (o RouteServiceArrayOutput) ToRouteServiceArrayOutputWithContext(ctx contex
 }
 
 func (o RouteServiceArrayOutput) Index(i pulumi.IntInput) RouteServiceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteService {
-		return vs[0].([]RouteService)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RouteService {
+		return vs[0].([]*RouteService)[vs[1].(int)]
 	}).(RouteServiceOutput)
 }
 
 type RouteServiceMapOutput struct{ *pulumi.OutputState }
 
 func (RouteServiceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]RouteService)(nil))
+	return reflect.TypeOf((*map[string]*RouteService)(nil)).Elem()
 }
 
 func (o RouteServiceMapOutput) ToRouteServiceMapOutput() RouteServiceMapOutput {
@@ -398,18 +335,16 @@ func (o RouteServiceMapOutput) ToRouteServiceMapOutputWithContext(ctx context.Co
 }
 
 func (o RouteServiceMapOutput) MapIndex(k pulumi.StringInput) RouteServiceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RouteService {
-		return vs[0].(map[string]RouteService)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *RouteService {
+		return vs[0].(map[string]*RouteService)[vs[1].(string)]
 	}).(RouteServiceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RouteServiceInput)(nil)).Elem(), &RouteService{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RouteServicePtrInput)(nil)).Elem(), &RouteService{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouteServiceArrayInput)(nil)).Elem(), RouteServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouteServiceMapInput)(nil)).Elem(), RouteServiceMap{})
 	pulumi.RegisterOutputType(RouteServiceOutput{})
-	pulumi.RegisterOutputType(RouteServicePtrOutput{})
 	pulumi.RegisterOutputType(RouteServiceArrayOutput{})
 	pulumi.RegisterOutputType(RouteServiceMapOutput{})
 }

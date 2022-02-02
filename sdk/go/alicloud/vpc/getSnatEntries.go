@@ -84,6 +84,9 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		_ = vpc.GetSnatEntriesOutput(ctx, vpc.GetSnatEntriesOutputArgs{
+// 			SnatTableId: fooSnatEntry.SnatTableId,
+// 		}, nil)
 // 		return nil
 // 	})
 // }

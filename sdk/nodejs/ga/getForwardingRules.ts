@@ -31,9 +31,7 @@ export function getForwardingRules(args: GetForwardingRulesArgs, opts?: pulumi.I
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ga/getForwardingRules:getForwardingRules", {
         "acceleratorId": args.acceleratorId,
         "ids": args.ids,

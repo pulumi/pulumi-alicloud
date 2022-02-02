@@ -81,28 +81,26 @@ export class Folder extends pulumi.CustomResource {
      */
     constructor(name: string, args: FolderArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FolderArgs | FolderState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FolderState | undefined;
-            inputs["folderId"] = state ? state.folderId : undefined;
-            inputs["folderPath"] = state ? state.folderPath : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["projectIdentifier"] = state ? state.projectIdentifier : undefined;
+            resourceInputs["folderId"] = state ? state.folderId : undefined;
+            resourceInputs["folderPath"] = state ? state.folderPath : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["projectIdentifier"] = state ? state.projectIdentifier : undefined;
         } else {
             const args = argsOrState as FolderArgs | undefined;
             if ((!args || args.folderPath === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'folderPath'");
             }
-            inputs["folderPath"] = args ? args.folderPath : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["projectIdentifier"] = args ? args.projectIdentifier : undefined;
-            inputs["folderId"] = undefined /*out*/;
+            resourceInputs["folderPath"] = args ? args.folderPath : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["projectIdentifier"] = args ? args.projectIdentifier : undefined;
+            resourceInputs["folderId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Folder.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Folder.__pulumiType, name, resourceInputs, opts);
     }
 }
 

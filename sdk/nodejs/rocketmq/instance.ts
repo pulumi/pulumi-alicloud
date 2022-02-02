@@ -109,33 +109,31 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args?: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            inputs["instanceName"] = state ? state.instanceName : undefined;
-            inputs["instanceStatus"] = state ? state.instanceStatus : undefined;
-            inputs["instanceType"] = state ? state.instanceType : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["releaseTime"] = state ? state.releaseTime : undefined;
-            inputs["remark"] = state ? state.remark : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
+            resourceInputs["instanceStatus"] = state ? state.instanceStatus : undefined;
+            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["releaseTime"] = state ? state.releaseTime : undefined;
+            resourceInputs["remark"] = state ? state.remark : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            inputs["instanceName"] = args ? args.instanceName : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["remark"] = args ? args.remark : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["instanceStatus"] = undefined /*out*/;
-            inputs["instanceType"] = undefined /*out*/;
-            inputs["releaseTime"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["remark"] = args ? args.remark : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["instanceStatus"] = undefined /*out*/;
+            resourceInputs["instanceType"] = undefined /*out*/;
+            resourceInputs["releaseTime"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Instance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

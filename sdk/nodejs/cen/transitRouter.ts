@@ -100,34 +100,32 @@ export class TransitRouter extends pulumi.CustomResource {
      */
     constructor(name: string, args: TransitRouterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TransitRouterArgs | TransitRouterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransitRouterState | undefined;
-            inputs["cenId"] = state ? state.cenId : undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["transitRouterDescription"] = state ? state.transitRouterDescription : undefined;
-            inputs["transitRouterId"] = state ? state.transitRouterId : undefined;
-            inputs["transitRouterName"] = state ? state.transitRouterName : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["cenId"] = state ? state.cenId : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["transitRouterDescription"] = state ? state.transitRouterDescription : undefined;
+            resourceInputs["transitRouterId"] = state ? state.transitRouterId : undefined;
+            resourceInputs["transitRouterName"] = state ? state.transitRouterName : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as TransitRouterArgs | undefined;
             if ((!args || args.cenId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cenId'");
             }
-            inputs["cenId"] = args ? args.cenId : undefined;
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["transitRouterDescription"] = args ? args.transitRouterDescription : undefined;
-            inputs["transitRouterName"] = args ? args.transitRouterName : undefined;
-            inputs["status"] = undefined /*out*/;
-            inputs["transitRouterId"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["cenId"] = args ? args.cenId : undefined;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["transitRouterDescription"] = args ? args.transitRouterDescription : undefined;
+            resourceInputs["transitRouterName"] = args ? args.transitRouterName : undefined;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["transitRouterId"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TransitRouter.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TransitRouter.__pulumiType, name, resourceInputs, opts);
     }
 }
 

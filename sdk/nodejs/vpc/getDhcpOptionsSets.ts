@@ -48,9 +48,7 @@ export function getDhcpOptionsSets(args?: GetDhcpOptionsSetsArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:vpc/getDhcpOptionsSets:getDhcpOptionsSets", {
         "dhcpOptionsSetName": args.dhcpOptionsSetName,
         "domainName": args.domainName,

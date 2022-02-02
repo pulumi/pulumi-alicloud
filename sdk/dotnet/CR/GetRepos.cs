@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CR
 {
@@ -45,7 +44,7 @@ namespace Pulumi.AliCloud.CR
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetReposResult> InvokeAsync(GetReposArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetReposResult>("alicloud:cr/getRepos:getRepos", args ?? new GetReposArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetReposResult>("alicloud:cr/getRepos:getRepos", args ?? new GetReposArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list Container Registry repositories on Alibaba Cloud.
@@ -80,7 +79,7 @@ namespace Pulumi.AliCloud.CR
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetReposResult> Invoke(GetReposInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetReposResult>("alicloud:cr/getRepos:getRepos", args ?? new GetReposInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetReposResult>("alicloud:cr/getRepos:getRepos", args ?? new GetReposInvokeArgs(), options.WithDefaults());
     }
 
 

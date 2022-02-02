@@ -188,7 +188,7 @@ type Ipv6InternetBandwidthInput interface {
 }
 
 func (*Ipv6InternetBandwidth) ElementType() reflect.Type {
-	return reflect.TypeOf((*Ipv6InternetBandwidth)(nil))
+	return reflect.TypeOf((**Ipv6InternetBandwidth)(nil)).Elem()
 }
 
 func (i *Ipv6InternetBandwidth) ToIpv6InternetBandwidthOutput() Ipv6InternetBandwidthOutput {
@@ -197,35 +197,6 @@ func (i *Ipv6InternetBandwidth) ToIpv6InternetBandwidthOutput() Ipv6InternetBand
 
 func (i *Ipv6InternetBandwidth) ToIpv6InternetBandwidthOutputWithContext(ctx context.Context) Ipv6InternetBandwidthOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(Ipv6InternetBandwidthOutput)
-}
-
-func (i *Ipv6InternetBandwidth) ToIpv6InternetBandwidthPtrOutput() Ipv6InternetBandwidthPtrOutput {
-	return i.ToIpv6InternetBandwidthPtrOutputWithContext(context.Background())
-}
-
-func (i *Ipv6InternetBandwidth) ToIpv6InternetBandwidthPtrOutputWithContext(ctx context.Context) Ipv6InternetBandwidthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Ipv6InternetBandwidthPtrOutput)
-}
-
-type Ipv6InternetBandwidthPtrInput interface {
-	pulumi.Input
-
-	ToIpv6InternetBandwidthPtrOutput() Ipv6InternetBandwidthPtrOutput
-	ToIpv6InternetBandwidthPtrOutputWithContext(ctx context.Context) Ipv6InternetBandwidthPtrOutput
-}
-
-type ipv6InternetBandwidthPtrType Ipv6InternetBandwidthArgs
-
-func (*ipv6InternetBandwidthPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Ipv6InternetBandwidth)(nil))
-}
-
-func (i *ipv6InternetBandwidthPtrType) ToIpv6InternetBandwidthPtrOutput() Ipv6InternetBandwidthPtrOutput {
-	return i.ToIpv6InternetBandwidthPtrOutputWithContext(context.Background())
-}
-
-func (i *ipv6InternetBandwidthPtrType) ToIpv6InternetBandwidthPtrOutputWithContext(ctx context.Context) Ipv6InternetBandwidthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Ipv6InternetBandwidthPtrOutput)
 }
 
 // Ipv6InternetBandwidthArrayInput is an input type that accepts Ipv6InternetBandwidthArray and Ipv6InternetBandwidthArrayOutput values.
@@ -281,7 +252,7 @@ func (i Ipv6InternetBandwidthMap) ToIpv6InternetBandwidthMapOutputWithContext(ct
 type Ipv6InternetBandwidthOutput struct{ *pulumi.OutputState }
 
 func (Ipv6InternetBandwidthOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Ipv6InternetBandwidth)(nil))
+	return reflect.TypeOf((**Ipv6InternetBandwidth)(nil)).Elem()
 }
 
 func (o Ipv6InternetBandwidthOutput) ToIpv6InternetBandwidthOutput() Ipv6InternetBandwidthOutput {
@@ -292,44 +263,10 @@ func (o Ipv6InternetBandwidthOutput) ToIpv6InternetBandwidthOutputWithContext(ct
 	return o
 }
 
-func (o Ipv6InternetBandwidthOutput) ToIpv6InternetBandwidthPtrOutput() Ipv6InternetBandwidthPtrOutput {
-	return o.ToIpv6InternetBandwidthPtrOutputWithContext(context.Background())
-}
-
-func (o Ipv6InternetBandwidthOutput) ToIpv6InternetBandwidthPtrOutputWithContext(ctx context.Context) Ipv6InternetBandwidthPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Ipv6InternetBandwidth) *Ipv6InternetBandwidth {
-		return &v
-	}).(Ipv6InternetBandwidthPtrOutput)
-}
-
-type Ipv6InternetBandwidthPtrOutput struct{ *pulumi.OutputState }
-
-func (Ipv6InternetBandwidthPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Ipv6InternetBandwidth)(nil))
-}
-
-func (o Ipv6InternetBandwidthPtrOutput) ToIpv6InternetBandwidthPtrOutput() Ipv6InternetBandwidthPtrOutput {
-	return o
-}
-
-func (o Ipv6InternetBandwidthPtrOutput) ToIpv6InternetBandwidthPtrOutputWithContext(ctx context.Context) Ipv6InternetBandwidthPtrOutput {
-	return o
-}
-
-func (o Ipv6InternetBandwidthPtrOutput) Elem() Ipv6InternetBandwidthOutput {
-	return o.ApplyT(func(v *Ipv6InternetBandwidth) Ipv6InternetBandwidth {
-		if v != nil {
-			return *v
-		}
-		var ret Ipv6InternetBandwidth
-		return ret
-	}).(Ipv6InternetBandwidthOutput)
-}
-
 type Ipv6InternetBandwidthArrayOutput struct{ *pulumi.OutputState }
 
 func (Ipv6InternetBandwidthArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Ipv6InternetBandwidth)(nil))
+	return reflect.TypeOf((*[]*Ipv6InternetBandwidth)(nil)).Elem()
 }
 
 func (o Ipv6InternetBandwidthArrayOutput) ToIpv6InternetBandwidthArrayOutput() Ipv6InternetBandwidthArrayOutput {
@@ -341,15 +278,15 @@ func (o Ipv6InternetBandwidthArrayOutput) ToIpv6InternetBandwidthArrayOutputWith
 }
 
 func (o Ipv6InternetBandwidthArrayOutput) Index(i pulumi.IntInput) Ipv6InternetBandwidthOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Ipv6InternetBandwidth {
-		return vs[0].([]Ipv6InternetBandwidth)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Ipv6InternetBandwidth {
+		return vs[0].([]*Ipv6InternetBandwidth)[vs[1].(int)]
 	}).(Ipv6InternetBandwidthOutput)
 }
 
 type Ipv6InternetBandwidthMapOutput struct{ *pulumi.OutputState }
 
 func (Ipv6InternetBandwidthMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Ipv6InternetBandwidth)(nil))
+	return reflect.TypeOf((*map[string]*Ipv6InternetBandwidth)(nil)).Elem()
 }
 
 func (o Ipv6InternetBandwidthMapOutput) ToIpv6InternetBandwidthMapOutput() Ipv6InternetBandwidthMapOutput {
@@ -361,18 +298,16 @@ func (o Ipv6InternetBandwidthMapOutput) ToIpv6InternetBandwidthMapOutputWithCont
 }
 
 func (o Ipv6InternetBandwidthMapOutput) MapIndex(k pulumi.StringInput) Ipv6InternetBandwidthOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Ipv6InternetBandwidth {
-		return vs[0].(map[string]Ipv6InternetBandwidth)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Ipv6InternetBandwidth {
+		return vs[0].(map[string]*Ipv6InternetBandwidth)[vs[1].(string)]
 	}).(Ipv6InternetBandwidthOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*Ipv6InternetBandwidthInput)(nil)).Elem(), &Ipv6InternetBandwidth{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Ipv6InternetBandwidthPtrInput)(nil)).Elem(), &Ipv6InternetBandwidth{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Ipv6InternetBandwidthArrayInput)(nil)).Elem(), Ipv6InternetBandwidthArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Ipv6InternetBandwidthMapInput)(nil)).Elem(), Ipv6InternetBandwidthMap{})
 	pulumi.RegisterOutputType(Ipv6InternetBandwidthOutput{})
-	pulumi.RegisterOutputType(Ipv6InternetBandwidthPtrOutput{})
 	pulumi.RegisterOutputType(Ipv6InternetBandwidthArrayOutput{})
 	pulumi.RegisterOutputType(Ipv6InternetBandwidthMapOutput{})
 }

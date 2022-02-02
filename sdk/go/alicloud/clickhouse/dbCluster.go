@@ -31,7 +31,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := clickhouse.NewDbCluster(ctx, "_default", &clickhouse.DbClusterArgs{
+// 		_, err := clickhouse.NewDbCluster(ctx, "default", &clickhouse.DbClusterArgs{
 // 			Category: pulumi.String("Basic"),
 // 			DbClusterAccessWhiteLists: clickhouse.DbClusterDbClusterAccessWhiteListArray{
 // 				&clickhouse.DbClusterDbClusterAccessWhiteListArgs{
@@ -330,7 +330,7 @@ type DbClusterInput interface {
 }
 
 func (*DbCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*DbCluster)(nil))
+	return reflect.TypeOf((**DbCluster)(nil)).Elem()
 }
 
 func (i *DbCluster) ToDbClusterOutput() DbClusterOutput {
@@ -339,35 +339,6 @@ func (i *DbCluster) ToDbClusterOutput() DbClusterOutput {
 
 func (i *DbCluster) ToDbClusterOutputWithContext(ctx context.Context) DbClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DbClusterOutput)
-}
-
-func (i *DbCluster) ToDbClusterPtrOutput() DbClusterPtrOutput {
-	return i.ToDbClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *DbCluster) ToDbClusterPtrOutputWithContext(ctx context.Context) DbClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DbClusterPtrOutput)
-}
-
-type DbClusterPtrInput interface {
-	pulumi.Input
-
-	ToDbClusterPtrOutput() DbClusterPtrOutput
-	ToDbClusterPtrOutputWithContext(ctx context.Context) DbClusterPtrOutput
-}
-
-type dbClusterPtrType DbClusterArgs
-
-func (*dbClusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DbCluster)(nil))
-}
-
-func (i *dbClusterPtrType) ToDbClusterPtrOutput() DbClusterPtrOutput {
-	return i.ToDbClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *dbClusterPtrType) ToDbClusterPtrOutputWithContext(ctx context.Context) DbClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DbClusterPtrOutput)
 }
 
 // DbClusterArrayInput is an input type that accepts DbClusterArray and DbClusterArrayOutput values.
@@ -423,7 +394,7 @@ func (i DbClusterMap) ToDbClusterMapOutputWithContext(ctx context.Context) DbClu
 type DbClusterOutput struct{ *pulumi.OutputState }
 
 func (DbClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DbCluster)(nil))
+	return reflect.TypeOf((**DbCluster)(nil)).Elem()
 }
 
 func (o DbClusterOutput) ToDbClusterOutput() DbClusterOutput {
@@ -434,44 +405,10 @@ func (o DbClusterOutput) ToDbClusterOutputWithContext(ctx context.Context) DbClu
 	return o
 }
 
-func (o DbClusterOutput) ToDbClusterPtrOutput() DbClusterPtrOutput {
-	return o.ToDbClusterPtrOutputWithContext(context.Background())
-}
-
-func (o DbClusterOutput) ToDbClusterPtrOutputWithContext(ctx context.Context) DbClusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbCluster) *DbCluster {
-		return &v
-	}).(DbClusterPtrOutput)
-}
-
-type DbClusterPtrOutput struct{ *pulumi.OutputState }
-
-func (DbClusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DbCluster)(nil))
-}
-
-func (o DbClusterPtrOutput) ToDbClusterPtrOutput() DbClusterPtrOutput {
-	return o
-}
-
-func (o DbClusterPtrOutput) ToDbClusterPtrOutputWithContext(ctx context.Context) DbClusterPtrOutput {
-	return o
-}
-
-func (o DbClusterPtrOutput) Elem() DbClusterOutput {
-	return o.ApplyT(func(v *DbCluster) DbCluster {
-		if v != nil {
-			return *v
-		}
-		var ret DbCluster
-		return ret
-	}).(DbClusterOutput)
-}
-
 type DbClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (DbClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DbCluster)(nil))
+	return reflect.TypeOf((*[]*DbCluster)(nil)).Elem()
 }
 
 func (o DbClusterArrayOutput) ToDbClusterArrayOutput() DbClusterArrayOutput {
@@ -483,15 +420,15 @@ func (o DbClusterArrayOutput) ToDbClusterArrayOutputWithContext(ctx context.Cont
 }
 
 func (o DbClusterArrayOutput) Index(i pulumi.IntInput) DbClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DbCluster {
-		return vs[0].([]DbCluster)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DbCluster {
+		return vs[0].([]*DbCluster)[vs[1].(int)]
 	}).(DbClusterOutput)
 }
 
 type DbClusterMapOutput struct{ *pulumi.OutputState }
 
 func (DbClusterMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DbCluster)(nil))
+	return reflect.TypeOf((*map[string]*DbCluster)(nil)).Elem()
 }
 
 func (o DbClusterMapOutput) ToDbClusterMapOutput() DbClusterMapOutput {
@@ -503,18 +440,16 @@ func (o DbClusterMapOutput) ToDbClusterMapOutputWithContext(ctx context.Context)
 }
 
 func (o DbClusterMapOutput) MapIndex(k pulumi.StringInput) DbClusterOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DbCluster {
-		return vs[0].(map[string]DbCluster)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DbCluster {
+		return vs[0].(map[string]*DbCluster)[vs[1].(string)]
 	}).(DbClusterOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DbClusterInput)(nil)).Elem(), &DbCluster{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DbClusterPtrInput)(nil)).Elem(), &DbCluster{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbClusterArrayInput)(nil)).Elem(), DbClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbClusterMapInput)(nil)).Elem(), DbClusterMap{})
 	pulumi.RegisterOutputType(DbClusterOutput{})
-	pulumi.RegisterOutputType(DbClusterPtrOutput{})
 	pulumi.RegisterOutputType(DbClusterArrayOutput{})
 	pulumi.RegisterOutputType(DbClusterMapOutput{})
 }

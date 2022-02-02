@@ -106,17 +106,17 @@ export class QuotaAlarm extends pulumi.CustomResource {
      */
     constructor(name: string, args: QuotaAlarmArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QuotaAlarmArgs | QuotaAlarmState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QuotaAlarmState | undefined;
-            inputs["productCode"] = state ? state.productCode : undefined;
-            inputs["quotaActionCode"] = state ? state.quotaActionCode : undefined;
-            inputs["quotaAlarmName"] = state ? state.quotaAlarmName : undefined;
-            inputs["quotaDimensions"] = state ? state.quotaDimensions : undefined;
-            inputs["threshold"] = state ? state.threshold : undefined;
-            inputs["thresholdPercent"] = state ? state.thresholdPercent : undefined;
-            inputs["webHook"] = state ? state.webHook : undefined;
+            resourceInputs["productCode"] = state ? state.productCode : undefined;
+            resourceInputs["quotaActionCode"] = state ? state.quotaActionCode : undefined;
+            resourceInputs["quotaAlarmName"] = state ? state.quotaAlarmName : undefined;
+            resourceInputs["quotaDimensions"] = state ? state.quotaDimensions : undefined;
+            resourceInputs["threshold"] = state ? state.threshold : undefined;
+            resourceInputs["thresholdPercent"] = state ? state.thresholdPercent : undefined;
+            resourceInputs["webHook"] = state ? state.webHook : undefined;
         } else {
             const args = argsOrState as QuotaAlarmArgs | undefined;
             if ((!args || args.productCode === undefined) && !opts.urn) {
@@ -128,18 +128,16 @@ export class QuotaAlarm extends pulumi.CustomResource {
             if ((!args || args.quotaAlarmName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'quotaAlarmName'");
             }
-            inputs["productCode"] = args ? args.productCode : undefined;
-            inputs["quotaActionCode"] = args ? args.quotaActionCode : undefined;
-            inputs["quotaAlarmName"] = args ? args.quotaAlarmName : undefined;
-            inputs["quotaDimensions"] = args ? args.quotaDimensions : undefined;
-            inputs["threshold"] = args ? args.threshold : undefined;
-            inputs["thresholdPercent"] = args ? args.thresholdPercent : undefined;
-            inputs["webHook"] = args ? args.webHook : undefined;
+            resourceInputs["productCode"] = args ? args.productCode : undefined;
+            resourceInputs["quotaActionCode"] = args ? args.quotaActionCode : undefined;
+            resourceInputs["quotaAlarmName"] = args ? args.quotaAlarmName : undefined;
+            resourceInputs["quotaDimensions"] = args ? args.quotaDimensions : undefined;
+            resourceInputs["threshold"] = args ? args.threshold : undefined;
+            resourceInputs["thresholdPercent"] = args ? args.thresholdPercent : undefined;
+            resourceInputs["webHook"] = args ? args.webHook : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(QuotaAlarm.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(QuotaAlarm.__pulumiType, name, resourceInputs, opts);
     }
 }
 

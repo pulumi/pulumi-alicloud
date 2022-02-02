@@ -154,13 +154,13 @@ export class Attachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: AttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AttachmentArgs | AttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AttachmentState | undefined;
-            inputs["force"] = state ? state.force : undefined;
-            inputs["instanceIds"] = state ? state.instanceIds : undefined;
-            inputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
+            resourceInputs["force"] = state ? state.force : undefined;
+            resourceInputs["instanceIds"] = state ? state.instanceIds : undefined;
+            resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
         } else {
             const args = argsOrState as AttachmentArgs | undefined;
             if ((!args || args.instanceIds === undefined) && !opts.urn) {
@@ -169,14 +169,12 @@ export class Attachment extends pulumi.CustomResource {
             if ((!args || args.scalingGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
-            inputs["force"] = args ? args.force : undefined;
-            inputs["instanceIds"] = args ? args.instanceIds : undefined;
-            inputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
+            resourceInputs["force"] = args ? args.force : undefined;
+            resourceInputs["instanceIds"] = args ? args.instanceIds : undefined;
+            resourceInputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Attachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Attachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

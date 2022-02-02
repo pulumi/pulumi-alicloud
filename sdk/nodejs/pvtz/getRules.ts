@@ -32,9 +32,7 @@ export function getRules(args?: GetRulesArgs, opts?: pulumi.InvokeOptions): Prom
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:pvtz/getRules:getRules", {
         "endpointId": args.endpointId,
         "ids": args.ids,

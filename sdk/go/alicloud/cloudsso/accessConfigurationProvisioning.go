@@ -148,7 +148,7 @@ type AccessConfigurationProvisioningInput interface {
 }
 
 func (*AccessConfigurationProvisioning) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessConfigurationProvisioning)(nil))
+	return reflect.TypeOf((**AccessConfigurationProvisioning)(nil)).Elem()
 }
 
 func (i *AccessConfigurationProvisioning) ToAccessConfigurationProvisioningOutput() AccessConfigurationProvisioningOutput {
@@ -157,35 +157,6 @@ func (i *AccessConfigurationProvisioning) ToAccessConfigurationProvisioningOutpu
 
 func (i *AccessConfigurationProvisioning) ToAccessConfigurationProvisioningOutputWithContext(ctx context.Context) AccessConfigurationProvisioningOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessConfigurationProvisioningOutput)
-}
-
-func (i *AccessConfigurationProvisioning) ToAccessConfigurationProvisioningPtrOutput() AccessConfigurationProvisioningPtrOutput {
-	return i.ToAccessConfigurationProvisioningPtrOutputWithContext(context.Background())
-}
-
-func (i *AccessConfigurationProvisioning) ToAccessConfigurationProvisioningPtrOutputWithContext(ctx context.Context) AccessConfigurationProvisioningPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessConfigurationProvisioningPtrOutput)
-}
-
-type AccessConfigurationProvisioningPtrInput interface {
-	pulumi.Input
-
-	ToAccessConfigurationProvisioningPtrOutput() AccessConfigurationProvisioningPtrOutput
-	ToAccessConfigurationProvisioningPtrOutputWithContext(ctx context.Context) AccessConfigurationProvisioningPtrOutput
-}
-
-type accessConfigurationProvisioningPtrType AccessConfigurationProvisioningArgs
-
-func (*accessConfigurationProvisioningPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccessConfigurationProvisioning)(nil))
-}
-
-func (i *accessConfigurationProvisioningPtrType) ToAccessConfigurationProvisioningPtrOutput() AccessConfigurationProvisioningPtrOutput {
-	return i.ToAccessConfigurationProvisioningPtrOutputWithContext(context.Background())
-}
-
-func (i *accessConfigurationProvisioningPtrType) ToAccessConfigurationProvisioningPtrOutputWithContext(ctx context.Context) AccessConfigurationProvisioningPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessConfigurationProvisioningPtrOutput)
 }
 
 // AccessConfigurationProvisioningArrayInput is an input type that accepts AccessConfigurationProvisioningArray and AccessConfigurationProvisioningArrayOutput values.
@@ -241,7 +212,7 @@ func (i AccessConfigurationProvisioningMap) ToAccessConfigurationProvisioningMap
 type AccessConfigurationProvisioningOutput struct{ *pulumi.OutputState }
 
 func (AccessConfigurationProvisioningOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessConfigurationProvisioning)(nil))
+	return reflect.TypeOf((**AccessConfigurationProvisioning)(nil)).Elem()
 }
 
 func (o AccessConfigurationProvisioningOutput) ToAccessConfigurationProvisioningOutput() AccessConfigurationProvisioningOutput {
@@ -252,44 +223,10 @@ func (o AccessConfigurationProvisioningOutput) ToAccessConfigurationProvisioning
 	return o
 }
 
-func (o AccessConfigurationProvisioningOutput) ToAccessConfigurationProvisioningPtrOutput() AccessConfigurationProvisioningPtrOutput {
-	return o.ToAccessConfigurationProvisioningPtrOutputWithContext(context.Background())
-}
-
-func (o AccessConfigurationProvisioningOutput) ToAccessConfigurationProvisioningPtrOutputWithContext(ctx context.Context) AccessConfigurationProvisioningPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessConfigurationProvisioning) *AccessConfigurationProvisioning {
-		return &v
-	}).(AccessConfigurationProvisioningPtrOutput)
-}
-
-type AccessConfigurationProvisioningPtrOutput struct{ *pulumi.OutputState }
-
-func (AccessConfigurationProvisioningPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccessConfigurationProvisioning)(nil))
-}
-
-func (o AccessConfigurationProvisioningPtrOutput) ToAccessConfigurationProvisioningPtrOutput() AccessConfigurationProvisioningPtrOutput {
-	return o
-}
-
-func (o AccessConfigurationProvisioningPtrOutput) ToAccessConfigurationProvisioningPtrOutputWithContext(ctx context.Context) AccessConfigurationProvisioningPtrOutput {
-	return o
-}
-
-func (o AccessConfigurationProvisioningPtrOutput) Elem() AccessConfigurationProvisioningOutput {
-	return o.ApplyT(func(v *AccessConfigurationProvisioning) AccessConfigurationProvisioning {
-		if v != nil {
-			return *v
-		}
-		var ret AccessConfigurationProvisioning
-		return ret
-	}).(AccessConfigurationProvisioningOutput)
-}
-
 type AccessConfigurationProvisioningArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessConfigurationProvisioningArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AccessConfigurationProvisioning)(nil))
+	return reflect.TypeOf((*[]*AccessConfigurationProvisioning)(nil)).Elem()
 }
 
 func (o AccessConfigurationProvisioningArrayOutput) ToAccessConfigurationProvisioningArrayOutput() AccessConfigurationProvisioningArrayOutput {
@@ -301,15 +238,15 @@ func (o AccessConfigurationProvisioningArrayOutput) ToAccessConfigurationProvisi
 }
 
 func (o AccessConfigurationProvisioningArrayOutput) Index(i pulumi.IntInput) AccessConfigurationProvisioningOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessConfigurationProvisioning {
-		return vs[0].([]AccessConfigurationProvisioning)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessConfigurationProvisioning {
+		return vs[0].([]*AccessConfigurationProvisioning)[vs[1].(int)]
 	}).(AccessConfigurationProvisioningOutput)
 }
 
 type AccessConfigurationProvisioningMapOutput struct{ *pulumi.OutputState }
 
 func (AccessConfigurationProvisioningMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AccessConfigurationProvisioning)(nil))
+	return reflect.TypeOf((*map[string]*AccessConfigurationProvisioning)(nil)).Elem()
 }
 
 func (o AccessConfigurationProvisioningMapOutput) ToAccessConfigurationProvisioningMapOutput() AccessConfigurationProvisioningMapOutput {
@@ -321,18 +258,16 @@ func (o AccessConfigurationProvisioningMapOutput) ToAccessConfigurationProvision
 }
 
 func (o AccessConfigurationProvisioningMapOutput) MapIndex(k pulumi.StringInput) AccessConfigurationProvisioningOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AccessConfigurationProvisioning {
-		return vs[0].(map[string]AccessConfigurationProvisioning)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AccessConfigurationProvisioning {
+		return vs[0].(map[string]*AccessConfigurationProvisioning)[vs[1].(string)]
 	}).(AccessConfigurationProvisioningOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessConfigurationProvisioningInput)(nil)).Elem(), &AccessConfigurationProvisioning{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AccessConfigurationProvisioningPtrInput)(nil)).Elem(), &AccessConfigurationProvisioning{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessConfigurationProvisioningArrayInput)(nil)).Elem(), AccessConfigurationProvisioningArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessConfigurationProvisioningMapInput)(nil)).Elem(), AccessConfigurationProvisioningMap{})
 	pulumi.RegisterOutputType(AccessConfigurationProvisioningOutput{})
-	pulumi.RegisterOutputType(AccessConfigurationProvisioningPtrOutput{})
 	pulumi.RegisterOutputType(AccessConfigurationProvisioningArrayOutput{})
 	pulumi.RegisterOutputType(AccessConfigurationProvisioningMapOutput{})
 }

@@ -128,23 +128,23 @@ export class SynchronizationInstance extends pulumi.CustomResource {
      */
     constructor(name: string, args: SynchronizationInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SynchronizationInstanceArgs | SynchronizationInstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SynchronizationInstanceState | undefined;
-            inputs["computeUnit"] = state ? state.computeUnit : undefined;
-            inputs["databaseCount"] = state ? state.databaseCount : undefined;
-            inputs["destinationEndpointEngineName"] = state ? state.destinationEndpointEngineName : undefined;
-            inputs["destinationEndpointRegion"] = state ? state.destinationEndpointRegion : undefined;
-            inputs["instanceClass"] = state ? state.instanceClass : undefined;
-            inputs["paymentDuration"] = state ? state.paymentDuration : undefined;
-            inputs["paymentDurationUnit"] = state ? state.paymentDurationUnit : undefined;
-            inputs["paymentType"] = state ? state.paymentType : undefined;
-            inputs["quantity"] = state ? state.quantity : undefined;
-            inputs["sourceEndpointEngineName"] = state ? state.sourceEndpointEngineName : undefined;
-            inputs["sourceEndpointRegion"] = state ? state.sourceEndpointRegion : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["syncArchitecture"] = state ? state.syncArchitecture : undefined;
+            resourceInputs["computeUnit"] = state ? state.computeUnit : undefined;
+            resourceInputs["databaseCount"] = state ? state.databaseCount : undefined;
+            resourceInputs["destinationEndpointEngineName"] = state ? state.destinationEndpointEngineName : undefined;
+            resourceInputs["destinationEndpointRegion"] = state ? state.destinationEndpointRegion : undefined;
+            resourceInputs["instanceClass"] = state ? state.instanceClass : undefined;
+            resourceInputs["paymentDuration"] = state ? state.paymentDuration : undefined;
+            resourceInputs["paymentDurationUnit"] = state ? state.paymentDurationUnit : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["quantity"] = state ? state.quantity : undefined;
+            resourceInputs["sourceEndpointEngineName"] = state ? state.sourceEndpointEngineName : undefined;
+            resourceInputs["sourceEndpointRegion"] = state ? state.sourceEndpointRegion : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["syncArchitecture"] = state ? state.syncArchitecture : undefined;
         } else {
             const args = argsOrState as SynchronizationInstanceArgs | undefined;
             if ((!args || args.destinationEndpointEngineName === undefined) && !opts.urn) {
@@ -162,24 +162,22 @@ export class SynchronizationInstance extends pulumi.CustomResource {
             if ((!args || args.sourceEndpointRegion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceEndpointRegion'");
             }
-            inputs["computeUnit"] = args ? args.computeUnit : undefined;
-            inputs["databaseCount"] = args ? args.databaseCount : undefined;
-            inputs["destinationEndpointEngineName"] = args ? args.destinationEndpointEngineName : undefined;
-            inputs["destinationEndpointRegion"] = args ? args.destinationEndpointRegion : undefined;
-            inputs["instanceClass"] = args ? args.instanceClass : undefined;
-            inputs["paymentDuration"] = args ? args.paymentDuration : undefined;
-            inputs["paymentDurationUnit"] = args ? args.paymentDurationUnit : undefined;
-            inputs["paymentType"] = args ? args.paymentType : undefined;
-            inputs["quantity"] = args ? args.quantity : undefined;
-            inputs["sourceEndpointEngineName"] = args ? args.sourceEndpointEngineName : undefined;
-            inputs["sourceEndpointRegion"] = args ? args.sourceEndpointRegion : undefined;
-            inputs["syncArchitecture"] = args ? args.syncArchitecture : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["computeUnit"] = args ? args.computeUnit : undefined;
+            resourceInputs["databaseCount"] = args ? args.databaseCount : undefined;
+            resourceInputs["destinationEndpointEngineName"] = args ? args.destinationEndpointEngineName : undefined;
+            resourceInputs["destinationEndpointRegion"] = args ? args.destinationEndpointRegion : undefined;
+            resourceInputs["instanceClass"] = args ? args.instanceClass : undefined;
+            resourceInputs["paymentDuration"] = args ? args.paymentDuration : undefined;
+            resourceInputs["paymentDurationUnit"] = args ? args.paymentDurationUnit : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["quantity"] = args ? args.quantity : undefined;
+            resourceInputs["sourceEndpointEngineName"] = args ? args.sourceEndpointEngineName : undefined;
+            resourceInputs["sourceEndpointRegion"] = args ? args.sourceEndpointRegion : undefined;
+            resourceInputs["syncArchitecture"] = args ? args.syncArchitecture : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SynchronizationInstance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SynchronizationInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

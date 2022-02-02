@@ -121,17 +121,17 @@ export class Flow extends pulumi.CustomResource {
      */
     constructor(name: string, args: FlowArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FlowArgs | FlowState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlowState | undefined;
-            inputs["definition"] = state ? state.definition : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["flowId"] = state ? state.flowId : undefined;
-            inputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["roleArn"] = state ? state.roleArn : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["definition"] = state ? state.definition : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["flowId"] = state ? state.flowId : undefined;
+            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["roleArn"] = state ? state.roleArn : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as FlowArgs | undefined;
             if ((!args || args.definition === undefined) && !opts.urn) {
@@ -143,18 +143,16 @@ export class Flow extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["definition"] = args ? args.definition : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["roleArn"] = args ? args.roleArn : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["flowId"] = undefined /*out*/;
-            inputs["lastModifiedTime"] = undefined /*out*/;
+            resourceInputs["definition"] = args ? args.definition : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["roleArn"] = args ? args.roleArn : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["flowId"] = undefined /*out*/;
+            resourceInputs["lastModifiedTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Flow.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Flow.__pulumiType, name, resourceInputs, opts);
     }
 }
 

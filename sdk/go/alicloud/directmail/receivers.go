@@ -154,7 +154,7 @@ type ReceiversInput interface {
 }
 
 func (*Receivers) ElementType() reflect.Type {
-	return reflect.TypeOf((*Receivers)(nil))
+	return reflect.TypeOf((**Receivers)(nil)).Elem()
 }
 
 func (i *Receivers) ToReceiversOutput() ReceiversOutput {
@@ -163,35 +163,6 @@ func (i *Receivers) ToReceiversOutput() ReceiversOutput {
 
 func (i *Receivers) ToReceiversOutputWithContext(ctx context.Context) ReceiversOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReceiversOutput)
-}
-
-func (i *Receivers) ToReceiversPtrOutput() ReceiversPtrOutput {
-	return i.ToReceiversPtrOutputWithContext(context.Background())
-}
-
-func (i *Receivers) ToReceiversPtrOutputWithContext(ctx context.Context) ReceiversPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReceiversPtrOutput)
-}
-
-type ReceiversPtrInput interface {
-	pulumi.Input
-
-	ToReceiversPtrOutput() ReceiversPtrOutput
-	ToReceiversPtrOutputWithContext(ctx context.Context) ReceiversPtrOutput
-}
-
-type receiversPtrType ReceiversArgs
-
-func (*receiversPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Receivers)(nil))
-}
-
-func (i *receiversPtrType) ToReceiversPtrOutput() ReceiversPtrOutput {
-	return i.ToReceiversPtrOutputWithContext(context.Background())
-}
-
-func (i *receiversPtrType) ToReceiversPtrOutputWithContext(ctx context.Context) ReceiversPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReceiversPtrOutput)
 }
 
 // ReceiversArrayInput is an input type that accepts ReceiversArray and ReceiversArrayOutput values.
@@ -247,7 +218,7 @@ func (i ReceiversMap) ToReceiversMapOutputWithContext(ctx context.Context) Recei
 type ReceiversOutput struct{ *pulumi.OutputState }
 
 func (ReceiversOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Receivers)(nil))
+	return reflect.TypeOf((**Receivers)(nil)).Elem()
 }
 
 func (o ReceiversOutput) ToReceiversOutput() ReceiversOutput {
@@ -258,44 +229,10 @@ func (o ReceiversOutput) ToReceiversOutputWithContext(ctx context.Context) Recei
 	return o
 }
 
-func (o ReceiversOutput) ToReceiversPtrOutput() ReceiversPtrOutput {
-	return o.ToReceiversPtrOutputWithContext(context.Background())
-}
-
-func (o ReceiversOutput) ToReceiversPtrOutputWithContext(ctx context.Context) ReceiversPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Receivers) *Receivers {
-		return &v
-	}).(ReceiversPtrOutput)
-}
-
-type ReceiversPtrOutput struct{ *pulumi.OutputState }
-
-func (ReceiversPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Receivers)(nil))
-}
-
-func (o ReceiversPtrOutput) ToReceiversPtrOutput() ReceiversPtrOutput {
-	return o
-}
-
-func (o ReceiversPtrOutput) ToReceiversPtrOutputWithContext(ctx context.Context) ReceiversPtrOutput {
-	return o
-}
-
-func (o ReceiversPtrOutput) Elem() ReceiversOutput {
-	return o.ApplyT(func(v *Receivers) Receivers {
-		if v != nil {
-			return *v
-		}
-		var ret Receivers
-		return ret
-	}).(ReceiversOutput)
-}
-
 type ReceiversArrayOutput struct{ *pulumi.OutputState }
 
 func (ReceiversArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Receivers)(nil))
+	return reflect.TypeOf((*[]*Receivers)(nil)).Elem()
 }
 
 func (o ReceiversArrayOutput) ToReceiversArrayOutput() ReceiversArrayOutput {
@@ -307,15 +244,15 @@ func (o ReceiversArrayOutput) ToReceiversArrayOutputWithContext(ctx context.Cont
 }
 
 func (o ReceiversArrayOutput) Index(i pulumi.IntInput) ReceiversOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Receivers {
-		return vs[0].([]Receivers)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Receivers {
+		return vs[0].([]*Receivers)[vs[1].(int)]
 	}).(ReceiversOutput)
 }
 
 type ReceiversMapOutput struct{ *pulumi.OutputState }
 
 func (ReceiversMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Receivers)(nil))
+	return reflect.TypeOf((*map[string]*Receivers)(nil)).Elem()
 }
 
 func (o ReceiversMapOutput) ToReceiversMapOutput() ReceiversMapOutput {
@@ -327,18 +264,16 @@ func (o ReceiversMapOutput) ToReceiversMapOutputWithContext(ctx context.Context)
 }
 
 func (o ReceiversMapOutput) MapIndex(k pulumi.StringInput) ReceiversOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Receivers {
-		return vs[0].(map[string]Receivers)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Receivers {
+		return vs[0].(map[string]*Receivers)[vs[1].(string)]
 	}).(ReceiversOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReceiversInput)(nil)).Elem(), &Receivers{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ReceiversPtrInput)(nil)).Elem(), &Receivers{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReceiversArrayInput)(nil)).Elem(), ReceiversArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReceiversMapInput)(nil)).Elem(), ReceiversMap{})
 	pulumi.RegisterOutputType(ReceiversOutput{})
-	pulumi.RegisterOutputType(ReceiversPtrOutput{})
 	pulumi.RegisterOutputType(ReceiversArrayOutput{})
 	pulumi.RegisterOutputType(ReceiversMapOutput{})
 }

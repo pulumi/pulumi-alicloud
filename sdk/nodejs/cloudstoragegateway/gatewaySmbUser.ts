@@ -103,13 +103,13 @@ export class GatewaySmbUser extends pulumi.CustomResource {
      */
     constructor(name: string, args: GatewaySmbUserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GatewaySmbUserArgs | GatewaySmbUserState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewaySmbUserState | undefined;
-            inputs["gatewayId"] = state ? state.gatewayId : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["username"] = state ? state.username : undefined;
+            resourceInputs["gatewayId"] = state ? state.gatewayId : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as GatewaySmbUserArgs | undefined;
             if ((!args || args.gatewayId === undefined) && !opts.urn) {
@@ -121,14 +121,12 @@ export class GatewaySmbUser extends pulumi.CustomResource {
             if ((!args || args.username === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            inputs["gatewayId"] = args ? args.gatewayId : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["username"] = args ? args.username : undefined;
+            resourceInputs["gatewayId"] = args ? args.gatewayId : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["username"] = args ? args.username : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(GatewaySmbUser.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(GatewaySmbUser.__pulumiType, name, resourceInputs, opts);
     }
 }
 

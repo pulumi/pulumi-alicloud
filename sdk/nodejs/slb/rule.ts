@@ -156,32 +156,32 @@ export class Rule extends pulumi.CustomResource {
      */
     constructor(name: string, args: RuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RuleArgs | RuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuleState | undefined;
-            inputs["cookie"] = state ? state.cookie : undefined;
-            inputs["cookieTimeout"] = state ? state.cookieTimeout : undefined;
-            inputs["deleteProtectionValidation"] = state ? state.deleteProtectionValidation : undefined;
-            inputs["domain"] = state ? state.domain : undefined;
-            inputs["frontendPort"] = state ? state.frontendPort : undefined;
-            inputs["healthCheck"] = state ? state.healthCheck : undefined;
-            inputs["healthCheckConnectPort"] = state ? state.healthCheckConnectPort : undefined;
-            inputs["healthCheckDomain"] = state ? state.healthCheckDomain : undefined;
-            inputs["healthCheckHttpCode"] = state ? state.healthCheckHttpCode : undefined;
-            inputs["healthCheckInterval"] = state ? state.healthCheckInterval : undefined;
-            inputs["healthCheckTimeout"] = state ? state.healthCheckTimeout : undefined;
-            inputs["healthCheckUri"] = state ? state.healthCheckUri : undefined;
-            inputs["healthyThreshold"] = state ? state.healthyThreshold : undefined;
-            inputs["listenerSync"] = state ? state.listenerSync : undefined;
-            inputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["scheduler"] = state ? state.scheduler : undefined;
-            inputs["serverGroupId"] = state ? state.serverGroupId : undefined;
-            inputs["stickySession"] = state ? state.stickySession : undefined;
-            inputs["stickySessionType"] = state ? state.stickySessionType : undefined;
-            inputs["unhealthyThreshold"] = state ? state.unhealthyThreshold : undefined;
-            inputs["url"] = state ? state.url : undefined;
+            resourceInputs["cookie"] = state ? state.cookie : undefined;
+            resourceInputs["cookieTimeout"] = state ? state.cookieTimeout : undefined;
+            resourceInputs["deleteProtectionValidation"] = state ? state.deleteProtectionValidation : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["frontendPort"] = state ? state.frontendPort : undefined;
+            resourceInputs["healthCheck"] = state ? state.healthCheck : undefined;
+            resourceInputs["healthCheckConnectPort"] = state ? state.healthCheckConnectPort : undefined;
+            resourceInputs["healthCheckDomain"] = state ? state.healthCheckDomain : undefined;
+            resourceInputs["healthCheckHttpCode"] = state ? state.healthCheckHttpCode : undefined;
+            resourceInputs["healthCheckInterval"] = state ? state.healthCheckInterval : undefined;
+            resourceInputs["healthCheckTimeout"] = state ? state.healthCheckTimeout : undefined;
+            resourceInputs["healthCheckUri"] = state ? state.healthCheckUri : undefined;
+            resourceInputs["healthyThreshold"] = state ? state.healthyThreshold : undefined;
+            resourceInputs["listenerSync"] = state ? state.listenerSync : undefined;
+            resourceInputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["scheduler"] = state ? state.scheduler : undefined;
+            resourceInputs["serverGroupId"] = state ? state.serverGroupId : undefined;
+            resourceInputs["stickySession"] = state ? state.stickySession : undefined;
+            resourceInputs["stickySessionType"] = state ? state.stickySessionType : undefined;
+            resourceInputs["unhealthyThreshold"] = state ? state.unhealthyThreshold : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as RuleArgs | undefined;
             if ((!args || args.frontendPort === undefined) && !opts.urn) {
@@ -193,33 +193,31 @@ export class Rule extends pulumi.CustomResource {
             if ((!args || args.serverGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serverGroupId'");
             }
-            inputs["cookie"] = args ? args.cookie : undefined;
-            inputs["cookieTimeout"] = args ? args.cookieTimeout : undefined;
-            inputs["deleteProtectionValidation"] = args ? args.deleteProtectionValidation : undefined;
-            inputs["domain"] = args ? args.domain : undefined;
-            inputs["frontendPort"] = args ? args.frontendPort : undefined;
-            inputs["healthCheck"] = args ? args.healthCheck : undefined;
-            inputs["healthCheckConnectPort"] = args ? args.healthCheckConnectPort : undefined;
-            inputs["healthCheckDomain"] = args ? args.healthCheckDomain : undefined;
-            inputs["healthCheckHttpCode"] = args ? args.healthCheckHttpCode : undefined;
-            inputs["healthCheckInterval"] = args ? args.healthCheckInterval : undefined;
-            inputs["healthCheckTimeout"] = args ? args.healthCheckTimeout : undefined;
-            inputs["healthCheckUri"] = args ? args.healthCheckUri : undefined;
-            inputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
-            inputs["listenerSync"] = args ? args.listenerSync : undefined;
-            inputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["scheduler"] = args ? args.scheduler : undefined;
-            inputs["serverGroupId"] = args ? args.serverGroupId : undefined;
-            inputs["stickySession"] = args ? args.stickySession : undefined;
-            inputs["stickySessionType"] = args ? args.stickySessionType : undefined;
-            inputs["unhealthyThreshold"] = args ? args.unhealthyThreshold : undefined;
-            inputs["url"] = args ? args.url : undefined;
+            resourceInputs["cookie"] = args ? args.cookie : undefined;
+            resourceInputs["cookieTimeout"] = args ? args.cookieTimeout : undefined;
+            resourceInputs["deleteProtectionValidation"] = args ? args.deleteProtectionValidation : undefined;
+            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["frontendPort"] = args ? args.frontendPort : undefined;
+            resourceInputs["healthCheck"] = args ? args.healthCheck : undefined;
+            resourceInputs["healthCheckConnectPort"] = args ? args.healthCheckConnectPort : undefined;
+            resourceInputs["healthCheckDomain"] = args ? args.healthCheckDomain : undefined;
+            resourceInputs["healthCheckHttpCode"] = args ? args.healthCheckHttpCode : undefined;
+            resourceInputs["healthCheckInterval"] = args ? args.healthCheckInterval : undefined;
+            resourceInputs["healthCheckTimeout"] = args ? args.healthCheckTimeout : undefined;
+            resourceInputs["healthCheckUri"] = args ? args.healthCheckUri : undefined;
+            resourceInputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
+            resourceInputs["listenerSync"] = args ? args.listenerSync : undefined;
+            resourceInputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["scheduler"] = args ? args.scheduler : undefined;
+            resourceInputs["serverGroupId"] = args ? args.serverGroupId : undefined;
+            resourceInputs["stickySession"] = args ? args.stickySession : undefined;
+            resourceInputs["stickySessionType"] = args ? args.stickySessionType : undefined;
+            resourceInputs["unhealthyThreshold"] = args ? args.unhealthyThreshold : undefined;
+            resourceInputs["url"] = args ? args.url : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Rule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Rule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

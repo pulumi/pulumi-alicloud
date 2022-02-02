@@ -384,7 +384,7 @@ type EcsNetworkInterfaceInput interface {
 }
 
 func (*EcsNetworkInterface) ElementType() reflect.Type {
-	return reflect.TypeOf((*EcsNetworkInterface)(nil))
+	return reflect.TypeOf((**EcsNetworkInterface)(nil)).Elem()
 }
 
 func (i *EcsNetworkInterface) ToEcsNetworkInterfaceOutput() EcsNetworkInterfaceOutput {
@@ -393,35 +393,6 @@ func (i *EcsNetworkInterface) ToEcsNetworkInterfaceOutput() EcsNetworkInterfaceO
 
 func (i *EcsNetworkInterface) ToEcsNetworkInterfaceOutputWithContext(ctx context.Context) EcsNetworkInterfaceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsNetworkInterfaceOutput)
-}
-
-func (i *EcsNetworkInterface) ToEcsNetworkInterfacePtrOutput() EcsNetworkInterfacePtrOutput {
-	return i.ToEcsNetworkInterfacePtrOutputWithContext(context.Background())
-}
-
-func (i *EcsNetworkInterface) ToEcsNetworkInterfacePtrOutputWithContext(ctx context.Context) EcsNetworkInterfacePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EcsNetworkInterfacePtrOutput)
-}
-
-type EcsNetworkInterfacePtrInput interface {
-	pulumi.Input
-
-	ToEcsNetworkInterfacePtrOutput() EcsNetworkInterfacePtrOutput
-	ToEcsNetworkInterfacePtrOutputWithContext(ctx context.Context) EcsNetworkInterfacePtrOutput
-}
-
-type ecsNetworkInterfacePtrType EcsNetworkInterfaceArgs
-
-func (*ecsNetworkInterfacePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EcsNetworkInterface)(nil))
-}
-
-func (i *ecsNetworkInterfacePtrType) ToEcsNetworkInterfacePtrOutput() EcsNetworkInterfacePtrOutput {
-	return i.ToEcsNetworkInterfacePtrOutputWithContext(context.Background())
-}
-
-func (i *ecsNetworkInterfacePtrType) ToEcsNetworkInterfacePtrOutputWithContext(ctx context.Context) EcsNetworkInterfacePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EcsNetworkInterfacePtrOutput)
 }
 
 // EcsNetworkInterfaceArrayInput is an input type that accepts EcsNetworkInterfaceArray and EcsNetworkInterfaceArrayOutput values.
@@ -477,7 +448,7 @@ func (i EcsNetworkInterfaceMap) ToEcsNetworkInterfaceMapOutputWithContext(ctx co
 type EcsNetworkInterfaceOutput struct{ *pulumi.OutputState }
 
 func (EcsNetworkInterfaceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EcsNetworkInterface)(nil))
+	return reflect.TypeOf((**EcsNetworkInterface)(nil)).Elem()
 }
 
 func (o EcsNetworkInterfaceOutput) ToEcsNetworkInterfaceOutput() EcsNetworkInterfaceOutput {
@@ -488,44 +459,10 @@ func (o EcsNetworkInterfaceOutput) ToEcsNetworkInterfaceOutputWithContext(ctx co
 	return o
 }
 
-func (o EcsNetworkInterfaceOutput) ToEcsNetworkInterfacePtrOutput() EcsNetworkInterfacePtrOutput {
-	return o.ToEcsNetworkInterfacePtrOutputWithContext(context.Background())
-}
-
-func (o EcsNetworkInterfaceOutput) ToEcsNetworkInterfacePtrOutputWithContext(ctx context.Context) EcsNetworkInterfacePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EcsNetworkInterface) *EcsNetworkInterface {
-		return &v
-	}).(EcsNetworkInterfacePtrOutput)
-}
-
-type EcsNetworkInterfacePtrOutput struct{ *pulumi.OutputState }
-
-func (EcsNetworkInterfacePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EcsNetworkInterface)(nil))
-}
-
-func (o EcsNetworkInterfacePtrOutput) ToEcsNetworkInterfacePtrOutput() EcsNetworkInterfacePtrOutput {
-	return o
-}
-
-func (o EcsNetworkInterfacePtrOutput) ToEcsNetworkInterfacePtrOutputWithContext(ctx context.Context) EcsNetworkInterfacePtrOutput {
-	return o
-}
-
-func (o EcsNetworkInterfacePtrOutput) Elem() EcsNetworkInterfaceOutput {
-	return o.ApplyT(func(v *EcsNetworkInterface) EcsNetworkInterface {
-		if v != nil {
-			return *v
-		}
-		var ret EcsNetworkInterface
-		return ret
-	}).(EcsNetworkInterfaceOutput)
-}
-
 type EcsNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsNetworkInterfaceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EcsNetworkInterface)(nil))
+	return reflect.TypeOf((*[]*EcsNetworkInterface)(nil)).Elem()
 }
 
 func (o EcsNetworkInterfaceArrayOutput) ToEcsNetworkInterfaceArrayOutput() EcsNetworkInterfaceArrayOutput {
@@ -537,15 +474,15 @@ func (o EcsNetworkInterfaceArrayOutput) ToEcsNetworkInterfaceArrayOutputWithCont
 }
 
 func (o EcsNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) EcsNetworkInterfaceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EcsNetworkInterface {
-		return vs[0].([]EcsNetworkInterface)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsNetworkInterface {
+		return vs[0].([]*EcsNetworkInterface)[vs[1].(int)]
 	}).(EcsNetworkInterfaceOutput)
 }
 
 type EcsNetworkInterfaceMapOutput struct{ *pulumi.OutputState }
 
 func (EcsNetworkInterfaceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]EcsNetworkInterface)(nil))
+	return reflect.TypeOf((*map[string]*EcsNetworkInterface)(nil)).Elem()
 }
 
 func (o EcsNetworkInterfaceMapOutput) ToEcsNetworkInterfaceMapOutput() EcsNetworkInterfaceMapOutput {
@@ -557,18 +494,16 @@ func (o EcsNetworkInterfaceMapOutput) ToEcsNetworkInterfaceMapOutputWithContext(
 }
 
 func (o EcsNetworkInterfaceMapOutput) MapIndex(k pulumi.StringInput) EcsNetworkInterfaceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EcsNetworkInterface {
-		return vs[0].(map[string]EcsNetworkInterface)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *EcsNetworkInterface {
+		return vs[0].(map[string]*EcsNetworkInterface)[vs[1].(string)]
 	}).(EcsNetworkInterfaceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsNetworkInterfaceInput)(nil)).Elem(), &EcsNetworkInterface{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EcsNetworkInterfacePtrInput)(nil)).Elem(), &EcsNetworkInterface{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsNetworkInterfaceArrayInput)(nil)).Elem(), EcsNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsNetworkInterfaceMapInput)(nil)).Elem(), EcsNetworkInterfaceMap{})
 	pulumi.RegisterOutputType(EcsNetworkInterfaceOutput{})
-	pulumi.RegisterOutputType(EcsNetworkInterfacePtrOutput{})
 	pulumi.RegisterOutputType(EcsNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(EcsNetworkInterfaceMapOutput{})
 }

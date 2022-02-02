@@ -127,22 +127,22 @@ export class RegistryEnterpriseSyncRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: RegistryEnterpriseSyncRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegistryEnterpriseSyncRuleArgs | RegistryEnterpriseSyncRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegistryEnterpriseSyncRuleState | undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namespaceName"] = state ? state.namespaceName : undefined;
-            inputs["repoName"] = state ? state.repoName : undefined;
-            inputs["ruleId"] = state ? state.ruleId : undefined;
-            inputs["syncDirection"] = state ? state.syncDirection : undefined;
-            inputs["syncScope"] = state ? state.syncScope : undefined;
-            inputs["tagFilter"] = state ? state.tagFilter : undefined;
-            inputs["targetInstanceId"] = state ? state.targetInstanceId : undefined;
-            inputs["targetNamespaceName"] = state ? state.targetNamespaceName : undefined;
-            inputs["targetRegionId"] = state ? state.targetRegionId : undefined;
-            inputs["targetRepoName"] = state ? state.targetRepoName : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namespaceName"] = state ? state.namespaceName : undefined;
+            resourceInputs["repoName"] = state ? state.repoName : undefined;
+            resourceInputs["ruleId"] = state ? state.ruleId : undefined;
+            resourceInputs["syncDirection"] = state ? state.syncDirection : undefined;
+            resourceInputs["syncScope"] = state ? state.syncScope : undefined;
+            resourceInputs["tagFilter"] = state ? state.tagFilter : undefined;
+            resourceInputs["targetInstanceId"] = state ? state.targetInstanceId : undefined;
+            resourceInputs["targetNamespaceName"] = state ? state.targetNamespaceName : undefined;
+            resourceInputs["targetRegionId"] = state ? state.targetRegionId : undefined;
+            resourceInputs["targetRepoName"] = state ? state.targetRepoName : undefined;
         } else {
             const args = argsOrState as RegistryEnterpriseSyncRuleArgs | undefined;
             if ((!args || args.instanceId === undefined) && !opts.urn) {
@@ -163,23 +163,21 @@ export class RegistryEnterpriseSyncRule extends pulumi.CustomResource {
             if ((!args || args.targetRegionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetRegionId'");
             }
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namespaceName"] = args ? args.namespaceName : undefined;
-            inputs["repoName"] = args ? args.repoName : undefined;
-            inputs["tagFilter"] = args ? args.tagFilter : undefined;
-            inputs["targetInstanceId"] = args ? args.targetInstanceId : undefined;
-            inputs["targetNamespaceName"] = args ? args.targetNamespaceName : undefined;
-            inputs["targetRegionId"] = args ? args.targetRegionId : undefined;
-            inputs["targetRepoName"] = args ? args.targetRepoName : undefined;
-            inputs["ruleId"] = undefined /*out*/;
-            inputs["syncDirection"] = undefined /*out*/;
-            inputs["syncScope"] = undefined /*out*/;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namespaceName"] = args ? args.namespaceName : undefined;
+            resourceInputs["repoName"] = args ? args.repoName : undefined;
+            resourceInputs["tagFilter"] = args ? args.tagFilter : undefined;
+            resourceInputs["targetInstanceId"] = args ? args.targetInstanceId : undefined;
+            resourceInputs["targetNamespaceName"] = args ? args.targetNamespaceName : undefined;
+            resourceInputs["targetRegionId"] = args ? args.targetRegionId : undefined;
+            resourceInputs["targetRepoName"] = args ? args.targetRepoName : undefined;
+            resourceInputs["ruleId"] = undefined /*out*/;
+            resourceInputs["syncDirection"] = undefined /*out*/;
+            resourceInputs["syncScope"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RegistryEnterpriseSyncRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RegistryEnterpriseSyncRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

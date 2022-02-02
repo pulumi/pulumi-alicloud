@@ -287,7 +287,7 @@ type VirtualNodeInput interface {
 }
 
 func (*VirtualNode) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualNode)(nil))
+	return reflect.TypeOf((**VirtualNode)(nil)).Elem()
 }
 
 func (i *VirtualNode) ToVirtualNodeOutput() VirtualNodeOutput {
@@ -296,35 +296,6 @@ func (i *VirtualNode) ToVirtualNodeOutput() VirtualNodeOutput {
 
 func (i *VirtualNode) ToVirtualNodeOutputWithContext(ctx context.Context) VirtualNodeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeOutput)
-}
-
-func (i *VirtualNode) ToVirtualNodePtrOutput() VirtualNodePtrOutput {
-	return i.ToVirtualNodePtrOutputWithContext(context.Background())
-}
-
-func (i *VirtualNode) ToVirtualNodePtrOutputWithContext(ctx context.Context) VirtualNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodePtrOutput)
-}
-
-type VirtualNodePtrInput interface {
-	pulumi.Input
-
-	ToVirtualNodePtrOutput() VirtualNodePtrOutput
-	ToVirtualNodePtrOutputWithContext(ctx context.Context) VirtualNodePtrOutput
-}
-
-type virtualNodePtrType VirtualNodeArgs
-
-func (*virtualNodePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualNode)(nil))
-}
-
-func (i *virtualNodePtrType) ToVirtualNodePtrOutput() VirtualNodePtrOutput {
-	return i.ToVirtualNodePtrOutputWithContext(context.Background())
-}
-
-func (i *virtualNodePtrType) ToVirtualNodePtrOutputWithContext(ctx context.Context) VirtualNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodePtrOutput)
 }
 
 // VirtualNodeArrayInput is an input type that accepts VirtualNodeArray and VirtualNodeArrayOutput values.
@@ -380,7 +351,7 @@ func (i VirtualNodeMap) ToVirtualNodeMapOutputWithContext(ctx context.Context) V
 type VirtualNodeOutput struct{ *pulumi.OutputState }
 
 func (VirtualNodeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualNode)(nil))
+	return reflect.TypeOf((**VirtualNode)(nil)).Elem()
 }
 
 func (o VirtualNodeOutput) ToVirtualNodeOutput() VirtualNodeOutput {
@@ -391,44 +362,10 @@ func (o VirtualNodeOutput) ToVirtualNodeOutputWithContext(ctx context.Context) V
 	return o
 }
 
-func (o VirtualNodeOutput) ToVirtualNodePtrOutput() VirtualNodePtrOutput {
-	return o.ToVirtualNodePtrOutputWithContext(context.Background())
-}
-
-func (o VirtualNodeOutput) ToVirtualNodePtrOutputWithContext(ctx context.Context) VirtualNodePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualNode) *VirtualNode {
-		return &v
-	}).(VirtualNodePtrOutput)
-}
-
-type VirtualNodePtrOutput struct{ *pulumi.OutputState }
-
-func (VirtualNodePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualNode)(nil))
-}
-
-func (o VirtualNodePtrOutput) ToVirtualNodePtrOutput() VirtualNodePtrOutput {
-	return o
-}
-
-func (o VirtualNodePtrOutput) ToVirtualNodePtrOutputWithContext(ctx context.Context) VirtualNodePtrOutput {
-	return o
-}
-
-func (o VirtualNodePtrOutput) Elem() VirtualNodeOutput {
-	return o.ApplyT(func(v *VirtualNode) VirtualNode {
-		if v != nil {
-			return *v
-		}
-		var ret VirtualNode
-		return ret
-	}).(VirtualNodeOutput)
-}
-
 type VirtualNodeArrayOutput struct{ *pulumi.OutputState }
 
 func (VirtualNodeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VirtualNode)(nil))
+	return reflect.TypeOf((*[]*VirtualNode)(nil)).Elem()
 }
 
 func (o VirtualNodeArrayOutput) ToVirtualNodeArrayOutput() VirtualNodeArrayOutput {
@@ -440,15 +377,15 @@ func (o VirtualNodeArrayOutput) ToVirtualNodeArrayOutputWithContext(ctx context.
 }
 
 func (o VirtualNodeArrayOutput) Index(i pulumi.IntInput) VirtualNodeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualNode {
-		return vs[0].([]VirtualNode)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VirtualNode {
+		return vs[0].([]*VirtualNode)[vs[1].(int)]
 	}).(VirtualNodeOutput)
 }
 
 type VirtualNodeMapOutput struct{ *pulumi.OutputState }
 
 func (VirtualNodeMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]VirtualNode)(nil))
+	return reflect.TypeOf((*map[string]*VirtualNode)(nil)).Elem()
 }
 
 func (o VirtualNodeMapOutput) ToVirtualNodeMapOutput() VirtualNodeMapOutput {
@@ -460,18 +397,16 @@ func (o VirtualNodeMapOutput) ToVirtualNodeMapOutputWithContext(ctx context.Cont
 }
 
 func (o VirtualNodeMapOutput) MapIndex(k pulumi.StringInput) VirtualNodeOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) VirtualNode {
-		return vs[0].(map[string]VirtualNode)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *VirtualNode {
+		return vs[0].(map[string]*VirtualNode)[vs[1].(string)]
 	}).(VirtualNodeOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualNodeInput)(nil)).Elem(), &VirtualNode{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VirtualNodePtrInput)(nil)).Elem(), &VirtualNode{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualNodeArrayInput)(nil)).Elem(), VirtualNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualNodeMapInput)(nil)).Elem(), VirtualNodeMap{})
 	pulumi.RegisterOutputType(VirtualNodeOutput{})
-	pulumi.RegisterOutputType(VirtualNodePtrOutput{})
 	pulumi.RegisterOutputType(VirtualNodeArrayOutput{})
 	pulumi.RegisterOutputType(VirtualNodeMapOutput{})
 }

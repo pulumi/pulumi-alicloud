@@ -126,19 +126,19 @@ export class AutoSnapshotPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: AutoSnapshotPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AutoSnapshotPolicyArgs | AutoSnapshotPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AutoSnapshotPolicyState | undefined;
-            inputs["copiedSnapshotsRetentionDays"] = state ? state.copiedSnapshotsRetentionDays : undefined;
-            inputs["enableCrossRegionCopy"] = state ? state.enableCrossRegionCopy : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["repeatWeekdays"] = state ? state.repeatWeekdays : undefined;
-            inputs["retentionDays"] = state ? state.retentionDays : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["targetCopyRegions"] = state ? state.targetCopyRegions : undefined;
-            inputs["timePoints"] = state ? state.timePoints : undefined;
+            resourceInputs["copiedSnapshotsRetentionDays"] = state ? state.copiedSnapshotsRetentionDays : undefined;
+            resourceInputs["enableCrossRegionCopy"] = state ? state.enableCrossRegionCopy : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["repeatWeekdays"] = state ? state.repeatWeekdays : undefined;
+            resourceInputs["retentionDays"] = state ? state.retentionDays : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["targetCopyRegions"] = state ? state.targetCopyRegions : undefined;
+            resourceInputs["timePoints"] = state ? state.timePoints : undefined;
         } else {
             const args = argsOrState as AutoSnapshotPolicyArgs | undefined;
             if ((!args || args.repeatWeekdays === undefined) && !opts.urn) {
@@ -150,20 +150,18 @@ export class AutoSnapshotPolicy extends pulumi.CustomResource {
             if ((!args || args.timePoints === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timePoints'");
             }
-            inputs["copiedSnapshotsRetentionDays"] = args ? args.copiedSnapshotsRetentionDays : undefined;
-            inputs["enableCrossRegionCopy"] = args ? args.enableCrossRegionCopy : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["repeatWeekdays"] = args ? args.repeatWeekdays : undefined;
-            inputs["retentionDays"] = args ? args.retentionDays : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["targetCopyRegions"] = args ? args.targetCopyRegions : undefined;
-            inputs["timePoints"] = args ? args.timePoints : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["copiedSnapshotsRetentionDays"] = args ? args.copiedSnapshotsRetentionDays : undefined;
+            resourceInputs["enableCrossRegionCopy"] = args ? args.enableCrossRegionCopy : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["repeatWeekdays"] = args ? args.repeatWeekdays : undefined;
+            resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["targetCopyRegions"] = args ? args.targetCopyRegions : undefined;
+            resourceInputs["timePoints"] = args ? args.timePoints : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AutoSnapshotPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AutoSnapshotPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

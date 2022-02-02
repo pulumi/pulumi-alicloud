@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cfg
 {
@@ -51,7 +50,7 @@ namespace Pulumi.AliCloud.Cfg
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAggregateConfigRulesResult> InvokeAsync(GetAggregateConfigRulesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAggregateConfigRulesResult>("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", args ?? new GetAggregateConfigRulesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAggregateConfigRulesResult>("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", args ?? new GetAggregateConfigRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
@@ -92,7 +91,7 @@ namespace Pulumi.AliCloud.Cfg
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAggregateConfigRulesResult> Invoke(GetAggregateConfigRulesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAggregateConfigRulesResult>("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", args ?? new GetAggregateConfigRulesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAggregateConfigRulesResult>("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", args ?? new GetAggregateConfigRulesInvokeArgs(), options.WithDefaults());
     }
 
 

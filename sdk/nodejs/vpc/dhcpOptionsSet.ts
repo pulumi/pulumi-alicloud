@@ -106,33 +106,31 @@ export class DhcpOptionsSet extends pulumi.CustomResource {
      */
     constructor(name: string, args?: DhcpOptionsSetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DhcpOptionsSetArgs | DhcpOptionsSetState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DhcpOptionsSetState | undefined;
-            inputs["associateVpcs"] = state ? state.associateVpcs : undefined;
-            inputs["dhcpOptionsSetDescription"] = state ? state.dhcpOptionsSetDescription : undefined;
-            inputs["dhcpOptionsSetName"] = state ? state.dhcpOptionsSetName : undefined;
-            inputs["domainName"] = state ? state.domainName : undefined;
-            inputs["domainNameServers"] = state ? state.domainNameServers : undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["ownerId"] = state ? state.ownerId : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["associateVpcs"] = state ? state.associateVpcs : undefined;
+            resourceInputs["dhcpOptionsSetDescription"] = state ? state.dhcpOptionsSetDescription : undefined;
+            resourceInputs["dhcpOptionsSetName"] = state ? state.dhcpOptionsSetName : undefined;
+            resourceInputs["domainName"] = state ? state.domainName : undefined;
+            resourceInputs["domainNameServers"] = state ? state.domainNameServers : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["ownerId"] = state ? state.ownerId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as DhcpOptionsSetArgs | undefined;
-            inputs["associateVpcs"] = args ? args.associateVpcs : undefined;
-            inputs["dhcpOptionsSetDescription"] = args ? args.dhcpOptionsSetDescription : undefined;
-            inputs["dhcpOptionsSetName"] = args ? args.dhcpOptionsSetName : undefined;
-            inputs["domainName"] = args ? args.domainName : undefined;
-            inputs["domainNameServers"] = args ? args.domainNameServers : undefined;
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["ownerId"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["associateVpcs"] = args ? args.associateVpcs : undefined;
+            resourceInputs["dhcpOptionsSetDescription"] = args ? args.dhcpOptionsSetDescription : undefined;
+            resourceInputs["dhcpOptionsSetName"] = args ? args.dhcpOptionsSetName : undefined;
+            resourceInputs["domainName"] = args ? args.domainName : undefined;
+            resourceInputs["domainNameServers"] = args ? args.domainNameServers : undefined;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["ownerId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DhcpOptionsSet.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DhcpOptionsSet.__pulumiType, name, resourceInputs, opts);
     }
 }
 

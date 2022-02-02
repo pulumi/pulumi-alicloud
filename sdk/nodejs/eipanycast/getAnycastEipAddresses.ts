@@ -31,9 +31,7 @@ export function getAnycastEipAddresses(args?: GetAnycastEipAddressesArgs, opts?:
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:eipanycast/getAnycastEipAddresses:getAnycastEipAddresses", {
         "anycastEipAddressName": args.anycastEipAddressName,
         "bindInstanceIds": args.bindInstanceIds,

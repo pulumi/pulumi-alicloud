@@ -74,9 +74,7 @@ export function getBackupJobs(args: GetBackupJobsArgs, opts?: pulumi.InvokeOptio
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:hbr/getBackupJobs:getBackupJobs", {
         "filters": args.filters,
         "ids": args.ids,

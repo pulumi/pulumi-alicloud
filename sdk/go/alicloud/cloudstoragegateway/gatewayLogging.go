@@ -231,7 +231,7 @@ type GatewayLoggingInput interface {
 }
 
 func (*GatewayLogging) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayLogging)(nil))
+	return reflect.TypeOf((**GatewayLogging)(nil)).Elem()
 }
 
 func (i *GatewayLogging) ToGatewayLoggingOutput() GatewayLoggingOutput {
@@ -240,35 +240,6 @@ func (i *GatewayLogging) ToGatewayLoggingOutput() GatewayLoggingOutput {
 
 func (i *GatewayLogging) ToGatewayLoggingOutputWithContext(ctx context.Context) GatewayLoggingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayLoggingOutput)
-}
-
-func (i *GatewayLogging) ToGatewayLoggingPtrOutput() GatewayLoggingPtrOutput {
-	return i.ToGatewayLoggingPtrOutputWithContext(context.Background())
-}
-
-func (i *GatewayLogging) ToGatewayLoggingPtrOutputWithContext(ctx context.Context) GatewayLoggingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayLoggingPtrOutput)
-}
-
-type GatewayLoggingPtrInput interface {
-	pulumi.Input
-
-	ToGatewayLoggingPtrOutput() GatewayLoggingPtrOutput
-	ToGatewayLoggingPtrOutputWithContext(ctx context.Context) GatewayLoggingPtrOutput
-}
-
-type gatewayLoggingPtrType GatewayLoggingArgs
-
-func (*gatewayLoggingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GatewayLogging)(nil))
-}
-
-func (i *gatewayLoggingPtrType) ToGatewayLoggingPtrOutput() GatewayLoggingPtrOutput {
-	return i.ToGatewayLoggingPtrOutputWithContext(context.Background())
-}
-
-func (i *gatewayLoggingPtrType) ToGatewayLoggingPtrOutputWithContext(ctx context.Context) GatewayLoggingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayLoggingPtrOutput)
 }
 
 // GatewayLoggingArrayInput is an input type that accepts GatewayLoggingArray and GatewayLoggingArrayOutput values.
@@ -324,7 +295,7 @@ func (i GatewayLoggingMap) ToGatewayLoggingMapOutputWithContext(ctx context.Cont
 type GatewayLoggingOutput struct{ *pulumi.OutputState }
 
 func (GatewayLoggingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayLogging)(nil))
+	return reflect.TypeOf((**GatewayLogging)(nil)).Elem()
 }
 
 func (o GatewayLoggingOutput) ToGatewayLoggingOutput() GatewayLoggingOutput {
@@ -335,44 +306,10 @@ func (o GatewayLoggingOutput) ToGatewayLoggingOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o GatewayLoggingOutput) ToGatewayLoggingPtrOutput() GatewayLoggingPtrOutput {
-	return o.ToGatewayLoggingPtrOutputWithContext(context.Background())
-}
-
-func (o GatewayLoggingOutput) ToGatewayLoggingPtrOutputWithContext(ctx context.Context) GatewayLoggingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayLogging) *GatewayLogging {
-		return &v
-	}).(GatewayLoggingPtrOutput)
-}
-
-type GatewayLoggingPtrOutput struct{ *pulumi.OutputState }
-
-func (GatewayLoggingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GatewayLogging)(nil))
-}
-
-func (o GatewayLoggingPtrOutput) ToGatewayLoggingPtrOutput() GatewayLoggingPtrOutput {
-	return o
-}
-
-func (o GatewayLoggingPtrOutput) ToGatewayLoggingPtrOutputWithContext(ctx context.Context) GatewayLoggingPtrOutput {
-	return o
-}
-
-func (o GatewayLoggingPtrOutput) Elem() GatewayLoggingOutput {
-	return o.ApplyT(func(v *GatewayLogging) GatewayLogging {
-		if v != nil {
-			return *v
-		}
-		var ret GatewayLogging
-		return ret
-	}).(GatewayLoggingOutput)
-}
-
 type GatewayLoggingArrayOutput struct{ *pulumi.OutputState }
 
 func (GatewayLoggingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GatewayLogging)(nil))
+	return reflect.TypeOf((*[]*GatewayLogging)(nil)).Elem()
 }
 
 func (o GatewayLoggingArrayOutput) ToGatewayLoggingArrayOutput() GatewayLoggingArrayOutput {
@@ -384,15 +321,15 @@ func (o GatewayLoggingArrayOutput) ToGatewayLoggingArrayOutputWithContext(ctx co
 }
 
 func (o GatewayLoggingArrayOutput) Index(i pulumi.IntInput) GatewayLoggingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewayLogging {
-		return vs[0].([]GatewayLogging)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GatewayLogging {
+		return vs[0].([]*GatewayLogging)[vs[1].(int)]
 	}).(GatewayLoggingOutput)
 }
 
 type GatewayLoggingMapOutput struct{ *pulumi.OutputState }
 
 func (GatewayLoggingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GatewayLogging)(nil))
+	return reflect.TypeOf((*map[string]*GatewayLogging)(nil)).Elem()
 }
 
 func (o GatewayLoggingMapOutput) ToGatewayLoggingMapOutput() GatewayLoggingMapOutput {
@@ -404,18 +341,16 @@ func (o GatewayLoggingMapOutput) ToGatewayLoggingMapOutputWithContext(ctx contex
 }
 
 func (o GatewayLoggingMapOutput) MapIndex(k pulumi.StringInput) GatewayLoggingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GatewayLogging {
-		return vs[0].(map[string]GatewayLogging)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *GatewayLogging {
+		return vs[0].(map[string]*GatewayLogging)[vs[1].(string)]
 	}).(GatewayLoggingOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayLoggingInput)(nil)).Elem(), &GatewayLogging{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GatewayLoggingPtrInput)(nil)).Elem(), &GatewayLogging{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayLoggingArrayInput)(nil)).Elem(), GatewayLoggingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayLoggingMapInput)(nil)).Elem(), GatewayLoggingMap{})
 	pulumi.RegisterOutputType(GatewayLoggingOutput{})
-	pulumi.RegisterOutputType(GatewayLoggingPtrOutput{})
 	pulumi.RegisterOutputType(GatewayLoggingArrayOutput{})
 	pulumi.RegisterOutputType(GatewayLoggingMapOutput{})
 }

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.RocketMQ
 {
@@ -35,19 +34,14 @@ namespace Pulumi.AliCloud.RocketMQ
         ///         {
         ///             Remark = "default_ons_instance_remark",
         ///         });
-        ///         var instancesDs = Output.Tuple(@default.Id, @default.Name).Apply(values =&gt;
+        ///         var instancesDs = AliCloud.RocketMQ.GetInstances.Invoke(new AliCloud.RocketMQ.GetInstancesInvokeArgs
         ///         {
-        ///             var id = values.Item1;
-        ///             var name = values.Item2;
-        ///             return AliCloud.RocketMQ.GetInstances.InvokeAsync(new AliCloud.RocketMQ.GetInstancesArgs
+        ///             Ids = 
         ///             {
-        ///                 Ids = 
-        ///                 {
-        ///                     id,
-        ///                 },
-        ///                 NameRegex = name,
-        ///                 OutputFile = "instances.txt",
-        ///             });
+        ///                 @default.Id,
+        ///             },
+        ///             NameRegex = @default.Name,
+        ///             OutputFile = "instances.txt",
         ///         });
         ///         this.FirstInstanceId = instancesDs.Apply(instancesDs =&gt; instancesDs.Instances?[0]?.InstanceId);
         ///     }
@@ -60,7 +54,7 @@ namespace Pulumi.AliCloud.RocketMQ
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:rocketmq/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:rocketmq/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of ONS Instances in an Alibaba Cloud account according to the specified filters.
@@ -85,19 +79,14 @@ namespace Pulumi.AliCloud.RocketMQ
         ///         {
         ///             Remark = "default_ons_instance_remark",
         ///         });
-        ///         var instancesDs = Output.Tuple(@default.Id, @default.Name).Apply(values =&gt;
+        ///         var instancesDs = AliCloud.RocketMQ.GetInstances.Invoke(new AliCloud.RocketMQ.GetInstancesInvokeArgs
         ///         {
-        ///             var id = values.Item1;
-        ///             var name = values.Item2;
-        ///             return AliCloud.RocketMQ.GetInstances.InvokeAsync(new AliCloud.RocketMQ.GetInstancesArgs
+        ///             Ids = 
         ///             {
-        ///                 Ids = 
-        ///                 {
-        ///                     id,
-        ///                 },
-        ///                 NameRegex = name,
-        ///                 OutputFile = "instances.txt",
-        ///             });
+        ///                 @default.Id,
+        ///             },
+        ///             NameRegex = @default.Name,
+        ///             OutputFile = "instances.txt",
         ///         });
         ///         this.FirstInstanceId = instancesDs.Apply(instancesDs =&gt; instancesDs.Instances?[0]?.InstanceId);
         ///     }
@@ -110,7 +99,7 @@ namespace Pulumi.AliCloud.RocketMQ
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:rocketmq/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:rocketmq/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -33,9 +33,9 @@ import * as utilities from "../utilities";
  *         tagValueMatchFunction: "all",
  *     }],
  * });
- * const ids = defaultDynamicTagGroup.id.apply(id => alicloud.cms.getDynamicTagGroups({
- *     ids: [id],
- * }));
+ * const ids = alicloud.cms.getDynamicTagGroupsOutput({
+ *     ids: [defaultDynamicTagGroup.id],
+ * });
  * export const cmsDynamicTagGroupId1 = ids.apply(ids => ids.groups?[0]?.id);
  * ```
  */
@@ -45,9 +45,7 @@ export function getDynamicTagGroups(args?: GetDynamicTagGroupsArgs, opts?: pulum
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cms/getDynamicTagGroups:getDynamicTagGroups", {
         "ids": args.ids,
         "outputFile": args.outputFile,

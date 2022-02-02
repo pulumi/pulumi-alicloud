@@ -33,9 +33,7 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:waf/getInstances:getInstances", {
         "ids": args.ids,
         "instanceSource": args.instanceSource,

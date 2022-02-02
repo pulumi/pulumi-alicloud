@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Arms
 {
@@ -46,7 +45,7 @@ namespace Pulumi.AliCloud.Arms
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAlertContactGroupsResult> InvokeAsync(GetAlertContactGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAlertContactGroupsResult>("alicloud:arms/getAlertContactGroups:getAlertContactGroups", args ?? new GetAlertContactGroupsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAlertContactGroupsResult>("alicloud:arms/getAlertContactGroups:getAlertContactGroups", args ?? new GetAlertContactGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Arms Alert Contact Groups of the current Alibaba Cloud user.
@@ -82,7 +81,7 @@ namespace Pulumi.AliCloud.Arms
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAlertContactGroupsResult> Invoke(GetAlertContactGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAlertContactGroupsResult>("alicloud:arms/getAlertContactGroups:getAlertContactGroups", args ?? new GetAlertContactGroupsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAlertContactGroupsResult>("alicloud:arms/getAlertContactGroups:getAlertContactGroups", args ?? new GetAlertContactGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

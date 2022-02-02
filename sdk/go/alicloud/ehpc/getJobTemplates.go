@@ -28,13 +28,18 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ehpc.NewJobTemplate(ctx, "_default", &ehpc.JobTemplateArgs{
+// 		_, err := ehpc.NewJobTemplate(ctx, "default", &ehpc.JobTemplateArgs{
 // 			JobTemplateName: pulumi.String("example_value"),
 // 			CommandLine:     pulumi.String("./LammpsTest/lammps.pbs"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
+// 		ids := ehpc.GetJobTemplatesOutput(ctx, ehpc.GetJobTemplatesOutputArgs{
+// 			Ids: pulumi.StringArray{
+// 				_default.ID(),
+// 			},
+// 		}, nil)
 // 		ctx.Export("ehpcJobTemplateId1", ids.ApplyT(func(ids ehpc.GetJobTemplatesResult) (string, error) {
 // 			return ids.Id, nil
 // 		}).(pulumi.StringOutput))

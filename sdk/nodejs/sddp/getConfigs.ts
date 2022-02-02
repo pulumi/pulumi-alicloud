@@ -22,10 +22,10 @@ import * as utilities from "../utilities";
  *     code: "access_failed_cnt",
  *     value: 10,
  * });
- * const defaultConfigs = defaultConfig.id.apply(id => alicloud.sddp.getConfigs({
- *     ids: [id],
+ * const defaultConfigs = alicloud.sddp.getConfigsOutput({
+ *     ids: [defaultConfig.id],
  *     outputFile: "./t.json",
- * }));
+ * });
  * export const sddpConfigId = defaultConfigs.apply(defaultConfigs => defaultConfigs.ids);
  * ```
  */
@@ -35,9 +35,7 @@ export function getConfigs(args?: GetConfigsArgs, opts?: pulumi.InvokeOptions): 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:sddp/getConfigs:getConfigs", {
         "ids": args.ids,
         "lang": args.lang,

@@ -103,17 +103,17 @@ export class InstanceAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceAttachmentArgs | InstanceAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceAttachmentState | undefined;
-            inputs["cenOwnerId"] = state ? state.cenOwnerId : undefined;
-            inputs["childInstanceId"] = state ? state.childInstanceId : undefined;
-            inputs["childInstanceOwnerId"] = state ? state.childInstanceOwnerId : undefined;
-            inputs["childInstanceRegionId"] = state ? state.childInstanceRegionId : undefined;
-            inputs["childInstanceType"] = state ? state.childInstanceType : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["cenOwnerId"] = state ? state.cenOwnerId : undefined;
+            resourceInputs["childInstanceId"] = state ? state.childInstanceId : undefined;
+            resourceInputs["childInstanceOwnerId"] = state ? state.childInstanceOwnerId : undefined;
+            resourceInputs["childInstanceRegionId"] = state ? state.childInstanceRegionId : undefined;
+            resourceInputs["childInstanceType"] = state ? state.childInstanceType : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as InstanceAttachmentArgs | undefined;
             if ((!args || args.childInstanceId === undefined) && !opts.urn) {
@@ -128,18 +128,16 @@ export class InstanceAttachment extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["cenOwnerId"] = args ? args.cenOwnerId : undefined;
-            inputs["childInstanceId"] = args ? args.childInstanceId : undefined;
-            inputs["childInstanceOwnerId"] = args ? args.childInstanceOwnerId : undefined;
-            inputs["childInstanceRegionId"] = args ? args.childInstanceRegionId : undefined;
-            inputs["childInstanceType"] = args ? args.childInstanceType : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["cenOwnerId"] = args ? args.cenOwnerId : undefined;
+            resourceInputs["childInstanceId"] = args ? args.childInstanceId : undefined;
+            resourceInputs["childInstanceOwnerId"] = args ? args.childInstanceOwnerId : undefined;
+            resourceInputs["childInstanceRegionId"] = args ? args.childInstanceRegionId : undefined;
+            resourceInputs["childInstanceType"] = args ? args.childInstanceType : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(InstanceAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(InstanceAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

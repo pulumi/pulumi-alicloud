@@ -29,9 +29,7 @@ export function getBackupPlans(args: GetBackupPlansArgs, opts?: pulumi.InvokeOpt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cassandra/getBackupPlans:getBackupPlans", {
         "clusterId": args.clusterId,
         "outputFile": args.outputFile,

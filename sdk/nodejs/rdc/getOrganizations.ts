@@ -24,9 +24,9 @@ import * as utilities from "../utilities";
  *     organizationName: name,
  *     source: name,
  * });
- * const ids = _default.id.apply(id => alicloud.rdc.getOrganizations({
- *     ids: [id],
- * }));
+ * const ids = alicloud.rdc.getOrganizationsOutput({
+ *     ids: [_default.id],
+ * });
  * export const rdcOrganizationId1 = ids.apply(ids => ids.id);
  * const nameRegex = alicloud.rdc.getOrganizations({
  *     nameRegex: "^my-Organization",
@@ -40,9 +40,7 @@ export function getOrganizations(args?: GetOrganizationsArgs, opts?: pulumi.Invo
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:rdc/getOrganizations:getOrganizations", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

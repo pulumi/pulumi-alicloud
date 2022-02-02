@@ -30,9 +30,7 @@ export function getDBClusters(args?: GetDBClustersArgs, opts?: pulumi.InvokeOpti
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:adb/getDBClusters:getDBClusters", {
         "description": args.description,
         "descriptionRegex": args.descriptionRegex,

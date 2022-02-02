@@ -51,24 +51,22 @@ export class KubernetesPermission extends pulumi.CustomResource {
      */
     constructor(name: string, args: KubernetesPermissionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KubernetesPermissionArgs | KubernetesPermissionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KubernetesPermissionState | undefined;
-            inputs["permissions"] = state ? state.permissions : undefined;
-            inputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["permissions"] = state ? state.permissions : undefined;
+            resourceInputs["uid"] = state ? state.uid : undefined;
         } else {
             const args = argsOrState as KubernetesPermissionArgs | undefined;
             if ((!args || args.uid === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'uid'");
             }
-            inputs["permissions"] = args ? args.permissions : undefined;
-            inputs["uid"] = args ? args.uid : undefined;
+            resourceInputs["permissions"] = args ? args.permissions : undefined;
+            resourceInputs["uid"] = args ? args.uid : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(KubernetesPermission.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(KubernetesPermission.__pulumiType, name, resourceInputs, opts);
     }
 }
 

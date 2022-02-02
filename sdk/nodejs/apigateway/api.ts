@@ -116,26 +116,26 @@ export class Api extends pulumi.CustomResource {
      */
     constructor(name: string, args: ApiArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApiArgs | ApiState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiState | undefined;
-            inputs["apiId"] = state ? state.apiId : undefined;
-            inputs["authType"] = state ? state.authType : undefined;
-            inputs["constantParameters"] = state ? state.constantParameters : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["fcServiceConfig"] = state ? state.fcServiceConfig : undefined;
-            inputs["forceNonceCheck"] = state ? state.forceNonceCheck : undefined;
-            inputs["groupId"] = state ? state.groupId : undefined;
-            inputs["httpServiceConfig"] = state ? state.httpServiceConfig : undefined;
-            inputs["httpVpcServiceConfig"] = state ? state.httpVpcServiceConfig : undefined;
-            inputs["mockServiceConfig"] = state ? state.mockServiceConfig : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["requestConfig"] = state ? state.requestConfig : undefined;
-            inputs["requestParameters"] = state ? state.requestParameters : undefined;
-            inputs["serviceType"] = state ? state.serviceType : undefined;
-            inputs["stageNames"] = state ? state.stageNames : undefined;
-            inputs["systemParameters"] = state ? state.systemParameters : undefined;
+            resourceInputs["apiId"] = state ? state.apiId : undefined;
+            resourceInputs["authType"] = state ? state.authType : undefined;
+            resourceInputs["constantParameters"] = state ? state.constantParameters : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["fcServiceConfig"] = state ? state.fcServiceConfig : undefined;
+            resourceInputs["forceNonceCheck"] = state ? state.forceNonceCheck : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["httpServiceConfig"] = state ? state.httpServiceConfig : undefined;
+            resourceInputs["httpVpcServiceConfig"] = state ? state.httpVpcServiceConfig : undefined;
+            resourceInputs["mockServiceConfig"] = state ? state.mockServiceConfig : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["requestConfig"] = state ? state.requestConfig : undefined;
+            resourceInputs["requestParameters"] = state ? state.requestParameters : undefined;
+            resourceInputs["serviceType"] = state ? state.serviceType : undefined;
+            resourceInputs["stageNames"] = state ? state.stageNames : undefined;
+            resourceInputs["systemParameters"] = state ? state.systemParameters : undefined;
         } else {
             const args = argsOrState as ApiArgs | undefined;
             if ((!args || args.authType === undefined) && !opts.urn) {
@@ -153,27 +153,25 @@ export class Api extends pulumi.CustomResource {
             if ((!args || args.serviceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceType'");
             }
-            inputs["authType"] = args ? args.authType : undefined;
-            inputs["constantParameters"] = args ? args.constantParameters : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["fcServiceConfig"] = args ? args.fcServiceConfig : undefined;
-            inputs["forceNonceCheck"] = args ? args.forceNonceCheck : undefined;
-            inputs["groupId"] = args ? args.groupId : undefined;
-            inputs["httpServiceConfig"] = args ? args.httpServiceConfig : undefined;
-            inputs["httpVpcServiceConfig"] = args ? args.httpVpcServiceConfig : undefined;
-            inputs["mockServiceConfig"] = args ? args.mockServiceConfig : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["requestConfig"] = args ? args.requestConfig : undefined;
-            inputs["requestParameters"] = args ? args.requestParameters : undefined;
-            inputs["serviceType"] = args ? args.serviceType : undefined;
-            inputs["stageNames"] = args ? args.stageNames : undefined;
-            inputs["systemParameters"] = args ? args.systemParameters : undefined;
-            inputs["apiId"] = undefined /*out*/;
+            resourceInputs["authType"] = args ? args.authType : undefined;
+            resourceInputs["constantParameters"] = args ? args.constantParameters : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["fcServiceConfig"] = args ? args.fcServiceConfig : undefined;
+            resourceInputs["forceNonceCheck"] = args ? args.forceNonceCheck : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["httpServiceConfig"] = args ? args.httpServiceConfig : undefined;
+            resourceInputs["httpVpcServiceConfig"] = args ? args.httpVpcServiceConfig : undefined;
+            resourceInputs["mockServiceConfig"] = args ? args.mockServiceConfig : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["requestConfig"] = args ? args.requestConfig : undefined;
+            resourceInputs["requestParameters"] = args ? args.requestParameters : undefined;
+            resourceInputs["serviceType"] = args ? args.serviceType : undefined;
+            resourceInputs["stageNames"] = args ? args.stageNames : undefined;
+            resourceInputs["systemParameters"] = args ? args.systemParameters : undefined;
+            resourceInputs["apiId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Api.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Api.__pulumiType, name, resourceInputs, opts);
     }
 }
 

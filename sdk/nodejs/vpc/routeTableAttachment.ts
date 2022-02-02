@@ -59,12 +59,12 @@ export class RouteTableAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: RouteTableAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouteTableAttachmentArgs | RouteTableAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouteTableAttachmentState | undefined;
-            inputs["routeTableId"] = state ? state.routeTableId : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["routeTableId"] = state ? state.routeTableId : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as RouteTableAttachmentArgs | undefined;
             if ((!args || args.routeTableId === undefined) && !opts.urn) {
@@ -73,13 +73,11 @@ export class RouteTableAttachment extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            inputs["routeTableId"] = args ? args.routeTableId : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["routeTableId"] = args ? args.routeTableId : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RouteTableAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RouteTableAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -13,9 +13,7 @@ export function getCertificates(args?: GetCertificatesArgs, opts?: pulumi.Invoke
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cas/getCertificates:getCertificates", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,

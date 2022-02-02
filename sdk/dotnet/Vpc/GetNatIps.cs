@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -110,7 +109,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNatIpsResult> InvokeAsync(GetNatIpsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNatIpsResult>("alicloud:vpc/getNatIps:getNatIps", args ?? new GetNatIpsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNatIpsResult>("alicloud:vpc/getNatIps:getNatIps", args ?? new GetNatIpsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vpc Nat Ips of the current Alibaba Cloud user.
@@ -210,7 +209,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNatIpsResult> Invoke(GetNatIpsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNatIpsResult>("alicloud:vpc/getNatIps:getNatIps", args ?? new GetNatIpsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetNatIpsResult>("alicloud:vpc/getNatIps:getNatIps", args ?? new GetNatIpsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -142,21 +142,21 @@ export class PhysicalConnection extends pulumi.CustomResource {
      */
     constructor(name: string, args: PhysicalConnectionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PhysicalConnectionArgs | PhysicalConnectionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PhysicalConnectionState | undefined;
-            inputs["accessPointId"] = state ? state.accessPointId : undefined;
-            inputs["bandwidth"] = state ? state.bandwidth : undefined;
-            inputs["circuitCode"] = state ? state.circuitCode : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["lineOperator"] = state ? state.lineOperator : undefined;
-            inputs["peerLocation"] = state ? state.peerLocation : undefined;
-            inputs["physicalConnectionName"] = state ? state.physicalConnectionName : undefined;
-            inputs["portType"] = state ? state.portType : undefined;
-            inputs["redundantPhysicalConnectionId"] = state ? state.redundantPhysicalConnectionId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["accessPointId"] = state ? state.accessPointId : undefined;
+            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
+            resourceInputs["circuitCode"] = state ? state.circuitCode : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["lineOperator"] = state ? state.lineOperator : undefined;
+            resourceInputs["peerLocation"] = state ? state.peerLocation : undefined;
+            resourceInputs["physicalConnectionName"] = state ? state.physicalConnectionName : undefined;
+            resourceInputs["portType"] = state ? state.portType : undefined;
+            resourceInputs["redundantPhysicalConnectionId"] = state ? state.redundantPhysicalConnectionId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as PhysicalConnectionArgs | undefined;
             if ((!args || args.accessPointId === undefined) && !opts.urn) {
@@ -168,22 +168,20 @@ export class PhysicalConnection extends pulumi.CustomResource {
             if ((!args || args.peerLocation === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'peerLocation'");
             }
-            inputs["accessPointId"] = args ? args.accessPointId : undefined;
-            inputs["bandwidth"] = args ? args.bandwidth : undefined;
-            inputs["circuitCode"] = args ? args.circuitCode : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["lineOperator"] = args ? args.lineOperator : undefined;
-            inputs["peerLocation"] = args ? args.peerLocation : undefined;
-            inputs["physicalConnectionName"] = args ? args.physicalConnectionName : undefined;
-            inputs["portType"] = args ? args.portType : undefined;
-            inputs["redundantPhysicalConnectionId"] = args ? args.redundantPhysicalConnectionId : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["type"] = args ? args.type : undefined;
+            resourceInputs["accessPointId"] = args ? args.accessPointId : undefined;
+            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
+            resourceInputs["circuitCode"] = args ? args.circuitCode : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["lineOperator"] = args ? args.lineOperator : undefined;
+            resourceInputs["peerLocation"] = args ? args.peerLocation : undefined;
+            resourceInputs["physicalConnectionName"] = args ? args.physicalConnectionName : undefined;
+            resourceInputs["portType"] = args ? args.portType : undefined;
+            resourceInputs["redundantPhysicalConnectionId"] = args ? args.redundantPhysicalConnectionId : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(PhysicalConnection.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(PhysicalConnection.__pulumiType, name, resourceInputs, opts);
     }
 }
 

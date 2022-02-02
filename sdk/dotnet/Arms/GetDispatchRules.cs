@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Arms
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.Arms
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDispatchRulesResult> InvokeAsync(GetDispatchRulesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDispatchRulesResult>("alicloud:arms/getDispatchRules:getDispatchRules", args ?? new GetDispatchRulesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDispatchRulesResult>("alicloud:arms/getDispatchRules:getDispatchRules", args ?? new GetDispatchRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.Arms
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDispatchRulesResult> Invoke(GetDispatchRulesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDispatchRulesResult>("alicloud:arms/getDispatchRules:getDispatchRules", args ?? new GetDispatchRulesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDispatchRulesResult>("alicloud:arms/getDispatchRules:getDispatchRules", args ?? new GetDispatchRulesInvokeArgs(), options.WithDefaults());
     }
 
 

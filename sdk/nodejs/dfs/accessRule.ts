@@ -105,16 +105,16 @@ export class AccessRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccessRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessRuleArgs | AccessRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessRuleState | undefined;
-            inputs["accessGroupId"] = state ? state.accessGroupId : undefined;
-            inputs["accessRuleId"] = state ? state.accessRuleId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["networkSegment"] = state ? state.networkSegment : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["rwAccessType"] = state ? state.rwAccessType : undefined;
+            resourceInputs["accessGroupId"] = state ? state.accessGroupId : undefined;
+            resourceInputs["accessRuleId"] = state ? state.accessRuleId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["networkSegment"] = state ? state.networkSegment : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["rwAccessType"] = state ? state.rwAccessType : undefined;
         } else {
             const args = argsOrState as AccessRuleArgs | undefined;
             if ((!args || args.accessGroupId === undefined) && !opts.urn) {
@@ -129,17 +129,15 @@ export class AccessRule extends pulumi.CustomResource {
             if ((!args || args.rwAccessType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'rwAccessType'");
             }
-            inputs["accessGroupId"] = args ? args.accessGroupId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["networkSegment"] = args ? args.networkSegment : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["rwAccessType"] = args ? args.rwAccessType : undefined;
-            inputs["accessRuleId"] = undefined /*out*/;
+            resourceInputs["accessGroupId"] = args ? args.accessGroupId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["networkSegment"] = args ? args.networkSegment : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["rwAccessType"] = args ? args.rwAccessType : undefined;
+            resourceInputs["accessRuleId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AccessRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AccessRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

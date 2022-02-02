@@ -81,17 +81,17 @@ export class SnatEntry extends pulumi.CustomResource {
      */
     constructor(name: string, args: SnatEntryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SnatEntryArgs | SnatEntryState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnatEntryState | undefined;
-            inputs["snatEntryId"] = state ? state.snatEntryId : undefined;
-            inputs["snatEntryName"] = state ? state.snatEntryName : undefined;
-            inputs["snatIp"] = state ? state.snatIp : undefined;
-            inputs["snatTableId"] = state ? state.snatTableId : undefined;
-            inputs["sourceCidr"] = state ? state.sourceCidr : undefined;
-            inputs["sourceVswitchId"] = state ? state.sourceVswitchId : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["snatEntryId"] = state ? state.snatEntryId : undefined;
+            resourceInputs["snatEntryName"] = state ? state.snatEntryName : undefined;
+            resourceInputs["snatIp"] = state ? state.snatIp : undefined;
+            resourceInputs["snatTableId"] = state ? state.snatTableId : undefined;
+            resourceInputs["sourceCidr"] = state ? state.sourceCidr : undefined;
+            resourceInputs["sourceVswitchId"] = state ? state.sourceVswitchId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as SnatEntryArgs | undefined;
             if ((!args || args.snatIp === undefined) && !opts.urn) {
@@ -100,18 +100,16 @@ export class SnatEntry extends pulumi.CustomResource {
             if ((!args || args.snatTableId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'snatTableId'");
             }
-            inputs["snatEntryName"] = args ? args.snatEntryName : undefined;
-            inputs["snatIp"] = args ? args.snatIp : undefined;
-            inputs["snatTableId"] = args ? args.snatTableId : undefined;
-            inputs["sourceCidr"] = args ? args.sourceCidr : undefined;
-            inputs["sourceVswitchId"] = args ? args.sourceVswitchId : undefined;
-            inputs["snatEntryId"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["snatEntryName"] = args ? args.snatEntryName : undefined;
+            resourceInputs["snatIp"] = args ? args.snatIp : undefined;
+            resourceInputs["snatTableId"] = args ? args.snatTableId : undefined;
+            resourceInputs["sourceCidr"] = args ? args.sourceCidr : undefined;
+            resourceInputs["sourceVswitchId"] = args ? args.sourceVswitchId : undefined;
+            resourceInputs["snatEntryId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SnatEntry.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SnatEntry.__pulumiType, name, resourceInputs, opts);
     }
 }
 

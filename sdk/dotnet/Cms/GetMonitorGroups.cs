@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cms
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.Cms
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMonitorGroupsResult> InvokeAsync(GetMonitorGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMonitorGroupsResult>("alicloud:cms/getMonitorGroups:getMonitorGroups", args ?? new GetMonitorGroupsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMonitorGroupsResult>("alicloud:cms/getMonitorGroups:getMonitorGroups", args ?? new GetMonitorGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.Cms
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMonitorGroupsResult> Invoke(GetMonitorGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMonitorGroupsResult>("alicloud:cms/getMonitorGroups:getMonitorGroups", args ?? new GetMonitorGroupsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetMonitorGroupsResult>("alicloud:cms/getMonitorGroups:getMonitorGroups", args ?? new GetMonitorGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

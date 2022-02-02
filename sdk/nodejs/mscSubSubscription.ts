@@ -113,40 +113,38 @@ export class MscSubSubscription extends pulumi.CustomResource {
      */
     constructor(name: string, args: MscSubSubscriptionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MscSubSubscriptionArgs | MscSubSubscriptionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MscSubSubscriptionState | undefined;
-            inputs["channel"] = state ? state.channel : undefined;
-            inputs["contactIds"] = state ? state.contactIds : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["emailStatus"] = state ? state.emailStatus : undefined;
-            inputs["itemName"] = state ? state.itemName : undefined;
-            inputs["pmsgStatus"] = state ? state.pmsgStatus : undefined;
-            inputs["smsStatus"] = state ? state.smsStatus : undefined;
-            inputs["ttsStatus"] = state ? state.ttsStatus : undefined;
-            inputs["webhookIds"] = state ? state.webhookIds : undefined;
-            inputs["webhookStatus"] = state ? state.webhookStatus : undefined;
+            resourceInputs["channel"] = state ? state.channel : undefined;
+            resourceInputs["contactIds"] = state ? state.contactIds : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["emailStatus"] = state ? state.emailStatus : undefined;
+            resourceInputs["itemName"] = state ? state.itemName : undefined;
+            resourceInputs["pmsgStatus"] = state ? state.pmsgStatus : undefined;
+            resourceInputs["smsStatus"] = state ? state.smsStatus : undefined;
+            resourceInputs["ttsStatus"] = state ? state.ttsStatus : undefined;
+            resourceInputs["webhookIds"] = state ? state.webhookIds : undefined;
+            resourceInputs["webhookStatus"] = state ? state.webhookStatus : undefined;
         } else {
             const args = argsOrState as MscSubSubscriptionArgs | undefined;
             if ((!args || args.itemName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'itemName'");
             }
-            inputs["contactIds"] = args ? args.contactIds : undefined;
-            inputs["emailStatus"] = args ? args.emailStatus : undefined;
-            inputs["itemName"] = args ? args.itemName : undefined;
-            inputs["pmsgStatus"] = args ? args.pmsgStatus : undefined;
-            inputs["smsStatus"] = args ? args.smsStatus : undefined;
-            inputs["ttsStatus"] = args ? args.ttsStatus : undefined;
-            inputs["webhookIds"] = args ? args.webhookIds : undefined;
-            inputs["webhookStatus"] = args ? args.webhookStatus : undefined;
-            inputs["channel"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
+            resourceInputs["contactIds"] = args ? args.contactIds : undefined;
+            resourceInputs["emailStatus"] = args ? args.emailStatus : undefined;
+            resourceInputs["itemName"] = args ? args.itemName : undefined;
+            resourceInputs["pmsgStatus"] = args ? args.pmsgStatus : undefined;
+            resourceInputs["smsStatus"] = args ? args.smsStatus : undefined;
+            resourceInputs["ttsStatus"] = args ? args.ttsStatus : undefined;
+            resourceInputs["webhookIds"] = args ? args.webhookIds : undefined;
+            resourceInputs["webhookStatus"] = args ? args.webhookStatus : undefined;
+            resourceInputs["channel"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(MscSubSubscription.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(MscSubSubscription.__pulumiType, name, resourceInputs, opts);
     }
 }
 

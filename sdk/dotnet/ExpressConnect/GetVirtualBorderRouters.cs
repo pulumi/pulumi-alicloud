@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ExpressConnect
 {
@@ -76,7 +75,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVirtualBorderRoutersResult> InvokeAsync(GetVirtualBorderRoutersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVirtualBorderRoutersResult>("alicloud:expressconnect/getVirtualBorderRouters:getVirtualBorderRouters", args ?? new GetVirtualBorderRoutersArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVirtualBorderRoutersResult>("alicloud:expressconnect/getVirtualBorderRouters:getVirtualBorderRouters", args ?? new GetVirtualBorderRoutersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.
@@ -142,7 +141,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVirtualBorderRoutersResult> Invoke(GetVirtualBorderRoutersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVirtualBorderRoutersResult>("alicloud:expressconnect/getVirtualBorderRouters:getVirtualBorderRouters", args ?? new GetVirtualBorderRoutersInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetVirtualBorderRoutersResult>("alicloud:expressconnect/getVirtualBorderRouters:getVirtualBorderRouters", args ?? new GetVirtualBorderRoutersInvokeArgs(), options.WithDefaults());
     }
 
 

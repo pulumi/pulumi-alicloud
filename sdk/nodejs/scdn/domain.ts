@@ -110,18 +110,18 @@ export class Domain extends pulumi.CustomResource {
      */
     constructor(name: string, args: DomainArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainArgs | DomainState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
-            inputs["bizName"] = state ? state.bizName : undefined;
-            inputs["certInfos"] = state ? state.certInfos : undefined;
-            inputs["checkUrl"] = state ? state.checkUrl : undefined;
-            inputs["domainName"] = state ? state.domainName : undefined;
-            inputs["forceSet"] = state ? state.forceSet : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["sources"] = state ? state.sources : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["bizName"] = state ? state.bizName : undefined;
+            resourceInputs["certInfos"] = state ? state.certInfos : undefined;
+            resourceInputs["checkUrl"] = state ? state.checkUrl : undefined;
+            resourceInputs["domainName"] = state ? state.domainName : undefined;
+            resourceInputs["forceSet"] = state ? state.forceSet : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["sources"] = state ? state.sources : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as DomainArgs | undefined;
             if ((!args || args.domainName === undefined) && !opts.urn) {
@@ -130,19 +130,17 @@ export class Domain extends pulumi.CustomResource {
             if ((!args || args.sources === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sources'");
             }
-            inputs["bizName"] = args ? args.bizName : undefined;
-            inputs["certInfos"] = args ? args.certInfos : undefined;
-            inputs["checkUrl"] = args ? args.checkUrl : undefined;
-            inputs["domainName"] = args ? args.domainName : undefined;
-            inputs["forceSet"] = args ? args.forceSet : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["sources"] = args ? args.sources : undefined;
-            inputs["status"] = args ? args.status : undefined;
+            resourceInputs["bizName"] = args ? args.bizName : undefined;
+            resourceInputs["certInfos"] = args ? args.certInfos : undefined;
+            resourceInputs["checkUrl"] = args ? args.checkUrl : undefined;
+            resourceInputs["domainName"] = args ? args.domainName : undefined;
+            resourceInputs["forceSet"] = args ? args.forceSet : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["sources"] = args ? args.sources : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Domain.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Domain.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -136,31 +136,31 @@ export class Function extends pulumi.CustomResource {
      */
     constructor(name: string, args: FunctionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FunctionArgs | FunctionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FunctionState | undefined;
-            inputs["caPort"] = state ? state.caPort : undefined;
-            inputs["codeChecksum"] = state ? state.codeChecksum : undefined;
-            inputs["customContainerConfig"] = state ? state.customContainerConfig : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["environmentVariables"] = state ? state.environmentVariables : undefined;
-            inputs["filename"] = state ? state.filename : undefined;
-            inputs["functionId"] = state ? state.functionId : undefined;
-            inputs["handler"] = state ? state.handler : undefined;
-            inputs["initializationTimeout"] = state ? state.initializationTimeout : undefined;
-            inputs["initializer"] = state ? state.initializer : undefined;
-            inputs["instanceConcurrency"] = state ? state.instanceConcurrency : undefined;
-            inputs["instanceType"] = state ? state.instanceType : undefined;
-            inputs["lastModified"] = state ? state.lastModified : undefined;
-            inputs["memorySize"] = state ? state.memorySize : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namePrefix"] = state ? state.namePrefix : undefined;
-            inputs["ossBucket"] = state ? state.ossBucket : undefined;
-            inputs["ossKey"] = state ? state.ossKey : undefined;
-            inputs["runtime"] = state ? state.runtime : undefined;
-            inputs["service"] = state ? state.service : undefined;
-            inputs["timeout"] = state ? state.timeout : undefined;
+            resourceInputs["caPort"] = state ? state.caPort : undefined;
+            resourceInputs["codeChecksum"] = state ? state.codeChecksum : undefined;
+            resourceInputs["customContainerConfig"] = state ? state.customContainerConfig : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["environmentVariables"] = state ? state.environmentVariables : undefined;
+            resourceInputs["filename"] = state ? state.filename : undefined;
+            resourceInputs["functionId"] = state ? state.functionId : undefined;
+            resourceInputs["handler"] = state ? state.handler : undefined;
+            resourceInputs["initializationTimeout"] = state ? state.initializationTimeout : undefined;
+            resourceInputs["initializer"] = state ? state.initializer : undefined;
+            resourceInputs["instanceConcurrency"] = state ? state.instanceConcurrency : undefined;
+            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
+            resourceInputs["lastModified"] = state ? state.lastModified : undefined;
+            resourceInputs["memorySize"] = state ? state.memorySize : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
+            resourceInputs["ossBucket"] = state ? state.ossBucket : undefined;
+            resourceInputs["ossKey"] = state ? state.ossKey : undefined;
+            resourceInputs["runtime"] = state ? state.runtime : undefined;
+            resourceInputs["service"] = state ? state.service : undefined;
+            resourceInputs["timeout"] = state ? state.timeout : undefined;
         } else {
             const args = argsOrState as FunctionArgs | undefined;
             if ((!args || args.handler === undefined) && !opts.urn) {
@@ -172,32 +172,30 @@ export class Function extends pulumi.CustomResource {
             if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            inputs["caPort"] = args ? args.caPort : undefined;
-            inputs["codeChecksum"] = args ? args.codeChecksum : undefined;
-            inputs["customContainerConfig"] = args ? args.customContainerConfig : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["environmentVariables"] = args ? args.environmentVariables : undefined;
-            inputs["filename"] = args ? args.filename : undefined;
-            inputs["handler"] = args ? args.handler : undefined;
-            inputs["initializationTimeout"] = args ? args.initializationTimeout : undefined;
-            inputs["initializer"] = args ? args.initializer : undefined;
-            inputs["instanceConcurrency"] = args ? args.instanceConcurrency : undefined;
-            inputs["instanceType"] = args ? args.instanceType : undefined;
-            inputs["memorySize"] = args ? args.memorySize : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namePrefix"] = args ? args.namePrefix : undefined;
-            inputs["ossBucket"] = args ? args.ossBucket : undefined;
-            inputs["ossKey"] = args ? args.ossKey : undefined;
-            inputs["runtime"] = args ? args.runtime : undefined;
-            inputs["service"] = args ? args.service : undefined;
-            inputs["timeout"] = args ? args.timeout : undefined;
-            inputs["functionId"] = undefined /*out*/;
-            inputs["lastModified"] = undefined /*out*/;
+            resourceInputs["caPort"] = args ? args.caPort : undefined;
+            resourceInputs["codeChecksum"] = args ? args.codeChecksum : undefined;
+            resourceInputs["customContainerConfig"] = args ? args.customContainerConfig : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["environmentVariables"] = args ? args.environmentVariables : undefined;
+            resourceInputs["filename"] = args ? args.filename : undefined;
+            resourceInputs["handler"] = args ? args.handler : undefined;
+            resourceInputs["initializationTimeout"] = args ? args.initializationTimeout : undefined;
+            resourceInputs["initializer"] = args ? args.initializer : undefined;
+            resourceInputs["instanceConcurrency"] = args ? args.instanceConcurrency : undefined;
+            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
+            resourceInputs["memorySize"] = args ? args.memorySize : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
+            resourceInputs["ossBucket"] = args ? args.ossBucket : undefined;
+            resourceInputs["ossKey"] = args ? args.ossKey : undefined;
+            resourceInputs["runtime"] = args ? args.runtime : undefined;
+            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["functionId"] = undefined /*out*/;
+            resourceInputs["lastModified"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Function.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Function.__pulumiType, name, resourceInputs, opts);
     }
 }
 

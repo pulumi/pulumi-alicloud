@@ -69,13 +69,13 @@ export class Snapshot extends pulumi.CustomResource {
      */
     constructor(name: string, args: SnapshotArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SnapshotArgs | SnapshotState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnapshotState | undefined;
-            inputs["diskId"] = state ? state.diskId : undefined;
-            inputs["snapshotName"] = state ? state.snapshotName : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["diskId"] = state ? state.diskId : undefined;
+            resourceInputs["snapshotName"] = state ? state.snapshotName : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as SnapshotArgs | undefined;
             if ((!args || args.diskId === undefined) && !opts.urn) {
@@ -84,14 +84,12 @@ export class Snapshot extends pulumi.CustomResource {
             if ((!args || args.snapshotName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'snapshotName'");
             }
-            inputs["diskId"] = args ? args.diskId : undefined;
-            inputs["snapshotName"] = args ? args.snapshotName : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["diskId"] = args ? args.diskId : undefined;
+            resourceInputs["snapshotName"] = args ? args.snapshotName : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Snapshot.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Snapshot.__pulumiType, name, resourceInputs, opts);
     }
 }
 

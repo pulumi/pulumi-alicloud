@@ -31,9 +31,7 @@ export function getHavips(args?: GetHavipsArgs, opts?: pulumi.InvokeOptions): Pr
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:vpc/getHavips:getHavips", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

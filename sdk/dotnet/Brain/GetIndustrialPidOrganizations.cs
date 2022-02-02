@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Brain
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.Brain
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetIndustrialPidOrganizationsResult> InvokeAsync(GetIndustrialPidOrganizationsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIndustrialPidOrganizationsResult>("alicloud:brain/getIndustrialPidOrganizations:getIndustrialPidOrganizations", args ?? new GetIndustrialPidOrganizationsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetIndustrialPidOrganizationsResult>("alicloud:brain/getIndustrialPidOrganizations:getIndustrialPidOrganizations", args ?? new GetIndustrialPidOrganizationsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Brain Industrial Pid Organizations of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.Brain
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetIndustrialPidOrganizationsResult> Invoke(GetIndustrialPidOrganizationsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIndustrialPidOrganizationsResult>("alicloud:brain/getIndustrialPidOrganizations:getIndustrialPidOrganizations", args ?? new GetIndustrialPidOrganizationsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetIndustrialPidOrganizationsResult>("alicloud:brain/getIndustrialPidOrganizations:getIndustrialPidOrganizations", args ?? new GetIndustrialPidOrganizationsInvokeArgs(), options.WithDefaults());
     }
 
 

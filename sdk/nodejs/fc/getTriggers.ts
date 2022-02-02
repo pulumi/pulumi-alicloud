@@ -28,9 +28,7 @@ export function getTriggers(args: GetTriggersArgs, opts?: pulumi.InvokeOptions):
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:fc/getTriggers:getTriggers", {
         "functionName": args.functionName,
         "ids": args.ids,

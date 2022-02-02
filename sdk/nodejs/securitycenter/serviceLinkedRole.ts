@@ -72,19 +72,17 @@ export class ServiceLinkedRole extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ServiceLinkedRoleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceLinkedRoleArgs | ServiceLinkedRoleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceLinkedRoleState | undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ServiceLinkedRoleArgs | undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ServiceLinkedRole.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ServiceLinkedRole.__pulumiType, name, resourceInputs, opts);
     }
 }
 

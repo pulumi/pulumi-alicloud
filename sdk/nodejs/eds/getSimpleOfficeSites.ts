@@ -31,9 +31,7 @@ export function getSimpleOfficeSites(args?: GetSimpleOfficeSitesArgs, opts?: pul
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:eds/getSimpleOfficeSites:getSimpleOfficeSites", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

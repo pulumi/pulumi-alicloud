@@ -300,7 +300,7 @@ type NasBackupPlanInput interface {
 }
 
 func (*NasBackupPlan) ElementType() reflect.Type {
-	return reflect.TypeOf((*NasBackupPlan)(nil))
+	return reflect.TypeOf((**NasBackupPlan)(nil)).Elem()
 }
 
 func (i *NasBackupPlan) ToNasBackupPlanOutput() NasBackupPlanOutput {
@@ -309,35 +309,6 @@ func (i *NasBackupPlan) ToNasBackupPlanOutput() NasBackupPlanOutput {
 
 func (i *NasBackupPlan) ToNasBackupPlanOutputWithContext(ctx context.Context) NasBackupPlanOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NasBackupPlanOutput)
-}
-
-func (i *NasBackupPlan) ToNasBackupPlanPtrOutput() NasBackupPlanPtrOutput {
-	return i.ToNasBackupPlanPtrOutputWithContext(context.Background())
-}
-
-func (i *NasBackupPlan) ToNasBackupPlanPtrOutputWithContext(ctx context.Context) NasBackupPlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NasBackupPlanPtrOutput)
-}
-
-type NasBackupPlanPtrInput interface {
-	pulumi.Input
-
-	ToNasBackupPlanPtrOutput() NasBackupPlanPtrOutput
-	ToNasBackupPlanPtrOutputWithContext(ctx context.Context) NasBackupPlanPtrOutput
-}
-
-type nasBackupPlanPtrType NasBackupPlanArgs
-
-func (*nasBackupPlanPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NasBackupPlan)(nil))
-}
-
-func (i *nasBackupPlanPtrType) ToNasBackupPlanPtrOutput() NasBackupPlanPtrOutput {
-	return i.ToNasBackupPlanPtrOutputWithContext(context.Background())
-}
-
-func (i *nasBackupPlanPtrType) ToNasBackupPlanPtrOutputWithContext(ctx context.Context) NasBackupPlanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NasBackupPlanPtrOutput)
 }
 
 // NasBackupPlanArrayInput is an input type that accepts NasBackupPlanArray and NasBackupPlanArrayOutput values.
@@ -393,7 +364,7 @@ func (i NasBackupPlanMap) ToNasBackupPlanMapOutputWithContext(ctx context.Contex
 type NasBackupPlanOutput struct{ *pulumi.OutputState }
 
 func (NasBackupPlanOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NasBackupPlan)(nil))
+	return reflect.TypeOf((**NasBackupPlan)(nil)).Elem()
 }
 
 func (o NasBackupPlanOutput) ToNasBackupPlanOutput() NasBackupPlanOutput {
@@ -404,44 +375,10 @@ func (o NasBackupPlanOutput) ToNasBackupPlanOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o NasBackupPlanOutput) ToNasBackupPlanPtrOutput() NasBackupPlanPtrOutput {
-	return o.ToNasBackupPlanPtrOutputWithContext(context.Background())
-}
-
-func (o NasBackupPlanOutput) ToNasBackupPlanPtrOutputWithContext(ctx context.Context) NasBackupPlanPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NasBackupPlan) *NasBackupPlan {
-		return &v
-	}).(NasBackupPlanPtrOutput)
-}
-
-type NasBackupPlanPtrOutput struct{ *pulumi.OutputState }
-
-func (NasBackupPlanPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NasBackupPlan)(nil))
-}
-
-func (o NasBackupPlanPtrOutput) ToNasBackupPlanPtrOutput() NasBackupPlanPtrOutput {
-	return o
-}
-
-func (o NasBackupPlanPtrOutput) ToNasBackupPlanPtrOutputWithContext(ctx context.Context) NasBackupPlanPtrOutput {
-	return o
-}
-
-func (o NasBackupPlanPtrOutput) Elem() NasBackupPlanOutput {
-	return o.ApplyT(func(v *NasBackupPlan) NasBackupPlan {
-		if v != nil {
-			return *v
-		}
-		var ret NasBackupPlan
-		return ret
-	}).(NasBackupPlanOutput)
-}
-
 type NasBackupPlanArrayOutput struct{ *pulumi.OutputState }
 
 func (NasBackupPlanArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NasBackupPlan)(nil))
+	return reflect.TypeOf((*[]*NasBackupPlan)(nil)).Elem()
 }
 
 func (o NasBackupPlanArrayOutput) ToNasBackupPlanArrayOutput() NasBackupPlanArrayOutput {
@@ -453,15 +390,15 @@ func (o NasBackupPlanArrayOutput) ToNasBackupPlanArrayOutputWithContext(ctx cont
 }
 
 func (o NasBackupPlanArrayOutput) Index(i pulumi.IntInput) NasBackupPlanOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NasBackupPlan {
-		return vs[0].([]NasBackupPlan)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NasBackupPlan {
+		return vs[0].([]*NasBackupPlan)[vs[1].(int)]
 	}).(NasBackupPlanOutput)
 }
 
 type NasBackupPlanMapOutput struct{ *pulumi.OutputState }
 
 func (NasBackupPlanMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]NasBackupPlan)(nil))
+	return reflect.TypeOf((*map[string]*NasBackupPlan)(nil)).Elem()
 }
 
 func (o NasBackupPlanMapOutput) ToNasBackupPlanMapOutput() NasBackupPlanMapOutput {
@@ -473,18 +410,16 @@ func (o NasBackupPlanMapOutput) ToNasBackupPlanMapOutputWithContext(ctx context.
 }
 
 func (o NasBackupPlanMapOutput) MapIndex(k pulumi.StringInput) NasBackupPlanOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NasBackupPlan {
-		return vs[0].(map[string]NasBackupPlan)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *NasBackupPlan {
+		return vs[0].(map[string]*NasBackupPlan)[vs[1].(string)]
 	}).(NasBackupPlanOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NasBackupPlanInput)(nil)).Elem(), &NasBackupPlan{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NasBackupPlanPtrInput)(nil)).Elem(), &NasBackupPlan{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NasBackupPlanArrayInput)(nil)).Elem(), NasBackupPlanArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NasBackupPlanMapInput)(nil)).Elem(), NasBackupPlanMap{})
 	pulumi.RegisterOutputType(NasBackupPlanOutput{})
-	pulumi.RegisterOutputType(NasBackupPlanPtrOutput{})
 	pulumi.RegisterOutputType(NasBackupPlanArrayOutput{})
 	pulumi.RegisterOutputType(NasBackupPlanMapOutput{})
 }

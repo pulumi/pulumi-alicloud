@@ -171,7 +171,7 @@ type HistoryDeliveryJobInput interface {
 }
 
 func (*HistoryDeliveryJob) ElementType() reflect.Type {
-	return reflect.TypeOf((*HistoryDeliveryJob)(nil))
+	return reflect.TypeOf((**HistoryDeliveryJob)(nil)).Elem()
 }
 
 func (i *HistoryDeliveryJob) ToHistoryDeliveryJobOutput() HistoryDeliveryJobOutput {
@@ -180,35 +180,6 @@ func (i *HistoryDeliveryJob) ToHistoryDeliveryJobOutput() HistoryDeliveryJobOutp
 
 func (i *HistoryDeliveryJob) ToHistoryDeliveryJobOutputWithContext(ctx context.Context) HistoryDeliveryJobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HistoryDeliveryJobOutput)
-}
-
-func (i *HistoryDeliveryJob) ToHistoryDeliveryJobPtrOutput() HistoryDeliveryJobPtrOutput {
-	return i.ToHistoryDeliveryJobPtrOutputWithContext(context.Background())
-}
-
-func (i *HistoryDeliveryJob) ToHistoryDeliveryJobPtrOutputWithContext(ctx context.Context) HistoryDeliveryJobPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HistoryDeliveryJobPtrOutput)
-}
-
-type HistoryDeliveryJobPtrInput interface {
-	pulumi.Input
-
-	ToHistoryDeliveryJobPtrOutput() HistoryDeliveryJobPtrOutput
-	ToHistoryDeliveryJobPtrOutputWithContext(ctx context.Context) HistoryDeliveryJobPtrOutput
-}
-
-type historyDeliveryJobPtrType HistoryDeliveryJobArgs
-
-func (*historyDeliveryJobPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**HistoryDeliveryJob)(nil))
-}
-
-func (i *historyDeliveryJobPtrType) ToHistoryDeliveryJobPtrOutput() HistoryDeliveryJobPtrOutput {
-	return i.ToHistoryDeliveryJobPtrOutputWithContext(context.Background())
-}
-
-func (i *historyDeliveryJobPtrType) ToHistoryDeliveryJobPtrOutputWithContext(ctx context.Context) HistoryDeliveryJobPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HistoryDeliveryJobPtrOutput)
 }
 
 // HistoryDeliveryJobArrayInput is an input type that accepts HistoryDeliveryJobArray and HistoryDeliveryJobArrayOutput values.
@@ -264,7 +235,7 @@ func (i HistoryDeliveryJobMap) ToHistoryDeliveryJobMapOutputWithContext(ctx cont
 type HistoryDeliveryJobOutput struct{ *pulumi.OutputState }
 
 func (HistoryDeliveryJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HistoryDeliveryJob)(nil))
+	return reflect.TypeOf((**HistoryDeliveryJob)(nil)).Elem()
 }
 
 func (o HistoryDeliveryJobOutput) ToHistoryDeliveryJobOutput() HistoryDeliveryJobOutput {
@@ -275,44 +246,10 @@ func (o HistoryDeliveryJobOutput) ToHistoryDeliveryJobOutputWithContext(ctx cont
 	return o
 }
 
-func (o HistoryDeliveryJobOutput) ToHistoryDeliveryJobPtrOutput() HistoryDeliveryJobPtrOutput {
-	return o.ToHistoryDeliveryJobPtrOutputWithContext(context.Background())
-}
-
-func (o HistoryDeliveryJobOutput) ToHistoryDeliveryJobPtrOutputWithContext(ctx context.Context) HistoryDeliveryJobPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v HistoryDeliveryJob) *HistoryDeliveryJob {
-		return &v
-	}).(HistoryDeliveryJobPtrOutput)
-}
-
-type HistoryDeliveryJobPtrOutput struct{ *pulumi.OutputState }
-
-func (HistoryDeliveryJobPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**HistoryDeliveryJob)(nil))
-}
-
-func (o HistoryDeliveryJobPtrOutput) ToHistoryDeliveryJobPtrOutput() HistoryDeliveryJobPtrOutput {
-	return o
-}
-
-func (o HistoryDeliveryJobPtrOutput) ToHistoryDeliveryJobPtrOutputWithContext(ctx context.Context) HistoryDeliveryJobPtrOutput {
-	return o
-}
-
-func (o HistoryDeliveryJobPtrOutput) Elem() HistoryDeliveryJobOutput {
-	return o.ApplyT(func(v *HistoryDeliveryJob) HistoryDeliveryJob {
-		if v != nil {
-			return *v
-		}
-		var ret HistoryDeliveryJob
-		return ret
-	}).(HistoryDeliveryJobOutput)
-}
-
 type HistoryDeliveryJobArrayOutput struct{ *pulumi.OutputState }
 
 func (HistoryDeliveryJobArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]HistoryDeliveryJob)(nil))
+	return reflect.TypeOf((*[]*HistoryDeliveryJob)(nil)).Elem()
 }
 
 func (o HistoryDeliveryJobArrayOutput) ToHistoryDeliveryJobArrayOutput() HistoryDeliveryJobArrayOutput {
@@ -324,15 +261,15 @@ func (o HistoryDeliveryJobArrayOutput) ToHistoryDeliveryJobArrayOutputWithContex
 }
 
 func (o HistoryDeliveryJobArrayOutput) Index(i pulumi.IntInput) HistoryDeliveryJobOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HistoryDeliveryJob {
-		return vs[0].([]HistoryDeliveryJob)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HistoryDeliveryJob {
+		return vs[0].([]*HistoryDeliveryJob)[vs[1].(int)]
 	}).(HistoryDeliveryJobOutput)
 }
 
 type HistoryDeliveryJobMapOutput struct{ *pulumi.OutputState }
 
 func (HistoryDeliveryJobMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]HistoryDeliveryJob)(nil))
+	return reflect.TypeOf((*map[string]*HistoryDeliveryJob)(nil)).Elem()
 }
 
 func (o HistoryDeliveryJobMapOutput) ToHistoryDeliveryJobMapOutput() HistoryDeliveryJobMapOutput {
@@ -344,18 +281,16 @@ func (o HistoryDeliveryJobMapOutput) ToHistoryDeliveryJobMapOutputWithContext(ct
 }
 
 func (o HistoryDeliveryJobMapOutput) MapIndex(k pulumi.StringInput) HistoryDeliveryJobOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) HistoryDeliveryJob {
-		return vs[0].(map[string]HistoryDeliveryJob)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *HistoryDeliveryJob {
+		return vs[0].(map[string]*HistoryDeliveryJob)[vs[1].(string)]
 	}).(HistoryDeliveryJobOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HistoryDeliveryJobInput)(nil)).Elem(), &HistoryDeliveryJob{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HistoryDeliveryJobPtrInput)(nil)).Elem(), &HistoryDeliveryJob{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HistoryDeliveryJobArrayInput)(nil)).Elem(), HistoryDeliveryJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HistoryDeliveryJobMapInput)(nil)).Elem(), HistoryDeliveryJobMap{})
 	pulumi.RegisterOutputType(HistoryDeliveryJobOutput{})
-	pulumi.RegisterOutputType(HistoryDeliveryJobPtrOutput{})
 	pulumi.RegisterOutputType(HistoryDeliveryJobArrayOutput{})
 	pulumi.RegisterOutputType(HistoryDeliveryJobMapOutput{})
 }

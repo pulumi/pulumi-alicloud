@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Vpc
 {
@@ -85,7 +84,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDhcpOptionsSetsResult> InvokeAsync(GetDhcpOptionsSetsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDhcpOptionsSetsResult>("alicloud:vpc/getDhcpOptionsSets:getDhcpOptionsSets", args ?? new GetDhcpOptionsSetsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDhcpOptionsSetsResult>("alicloud:vpc/getDhcpOptionsSets:getDhcpOptionsSets", args ?? new GetDhcpOptionsSetsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vpc Dhcp Options Sets of the current Alibaba Cloud user.
@@ -160,7 +159,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDhcpOptionsSetsResult> Invoke(GetDhcpOptionsSetsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDhcpOptionsSetsResult>("alicloud:vpc/getDhcpOptionsSets:getDhcpOptionsSets", args ?? new GetDhcpOptionsSetsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDhcpOptionsSetsResult>("alicloud:vpc/getDhcpOptionsSets:getDhcpOptionsSets", args ?? new GetDhcpOptionsSetsInvokeArgs(), options.WithDefaults());
     }
 
 

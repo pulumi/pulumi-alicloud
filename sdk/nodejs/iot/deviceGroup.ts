@@ -86,28 +86,26 @@ export class DeviceGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: DeviceGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DeviceGroupArgs | DeviceGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DeviceGroupState | undefined;
-            inputs["groupDesc"] = state ? state.groupDesc : undefined;
-            inputs["groupName"] = state ? state.groupName : undefined;
-            inputs["iotInstanceId"] = state ? state.iotInstanceId : undefined;
-            inputs["superGroupId"] = state ? state.superGroupId : undefined;
+            resourceInputs["groupDesc"] = state ? state.groupDesc : undefined;
+            resourceInputs["groupName"] = state ? state.groupName : undefined;
+            resourceInputs["iotInstanceId"] = state ? state.iotInstanceId : undefined;
+            resourceInputs["superGroupId"] = state ? state.superGroupId : undefined;
         } else {
             const args = argsOrState as DeviceGroupArgs | undefined;
             if ((!args || args.groupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupName'");
             }
-            inputs["groupDesc"] = args ? args.groupDesc : undefined;
-            inputs["groupName"] = args ? args.groupName : undefined;
-            inputs["iotInstanceId"] = args ? args.iotInstanceId : undefined;
-            inputs["superGroupId"] = args ? args.superGroupId : undefined;
+            resourceInputs["groupDesc"] = args ? args.groupDesc : undefined;
+            resourceInputs["groupName"] = args ? args.groupName : undefined;
+            resourceInputs["iotInstanceId"] = args ? args.iotInstanceId : undefined;
+            resourceInputs["superGroupId"] = args ? args.superGroupId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DeviceGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DeviceGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

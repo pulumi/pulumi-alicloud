@@ -194,7 +194,7 @@ type InstanceGrantInput interface {
 }
 
 func (*InstanceGrant) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGrant)(nil))
+	return reflect.TypeOf((**InstanceGrant)(nil)).Elem()
 }
 
 func (i *InstanceGrant) ToInstanceGrantOutput() InstanceGrantOutput {
@@ -203,35 +203,6 @@ func (i *InstanceGrant) ToInstanceGrantOutput() InstanceGrantOutput {
 
 func (i *InstanceGrant) ToInstanceGrantOutputWithContext(ctx context.Context) InstanceGrantOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGrantOutput)
-}
-
-func (i *InstanceGrant) ToInstanceGrantPtrOutput() InstanceGrantPtrOutput {
-	return i.ToInstanceGrantPtrOutputWithContext(context.Background())
-}
-
-func (i *InstanceGrant) ToInstanceGrantPtrOutputWithContext(ctx context.Context) InstanceGrantPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGrantPtrOutput)
-}
-
-type InstanceGrantPtrInput interface {
-	pulumi.Input
-
-	ToInstanceGrantPtrOutput() InstanceGrantPtrOutput
-	ToInstanceGrantPtrOutputWithContext(ctx context.Context) InstanceGrantPtrOutput
-}
-
-type instanceGrantPtrType InstanceGrantArgs
-
-func (*instanceGrantPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceGrant)(nil))
-}
-
-func (i *instanceGrantPtrType) ToInstanceGrantPtrOutput() InstanceGrantPtrOutput {
-	return i.ToInstanceGrantPtrOutputWithContext(context.Background())
-}
-
-func (i *instanceGrantPtrType) ToInstanceGrantPtrOutputWithContext(ctx context.Context) InstanceGrantPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGrantPtrOutput)
 }
 
 // InstanceGrantArrayInput is an input type that accepts InstanceGrantArray and InstanceGrantArrayOutput values.
@@ -287,7 +258,7 @@ func (i InstanceGrantMap) ToInstanceGrantMapOutputWithContext(ctx context.Contex
 type InstanceGrantOutput struct{ *pulumi.OutputState }
 
 func (InstanceGrantOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGrant)(nil))
+	return reflect.TypeOf((**InstanceGrant)(nil)).Elem()
 }
 
 func (o InstanceGrantOutput) ToInstanceGrantOutput() InstanceGrantOutput {
@@ -298,44 +269,10 @@ func (o InstanceGrantOutput) ToInstanceGrantOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o InstanceGrantOutput) ToInstanceGrantPtrOutput() InstanceGrantPtrOutput {
-	return o.ToInstanceGrantPtrOutputWithContext(context.Background())
-}
-
-func (o InstanceGrantOutput) ToInstanceGrantPtrOutputWithContext(ctx context.Context) InstanceGrantPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGrant) *InstanceGrant {
-		return &v
-	}).(InstanceGrantPtrOutput)
-}
-
-type InstanceGrantPtrOutput struct{ *pulumi.OutputState }
-
-func (InstanceGrantPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceGrant)(nil))
-}
-
-func (o InstanceGrantPtrOutput) ToInstanceGrantPtrOutput() InstanceGrantPtrOutput {
-	return o
-}
-
-func (o InstanceGrantPtrOutput) ToInstanceGrantPtrOutputWithContext(ctx context.Context) InstanceGrantPtrOutput {
-	return o
-}
-
-func (o InstanceGrantPtrOutput) Elem() InstanceGrantOutput {
-	return o.ApplyT(func(v *InstanceGrant) InstanceGrant {
-		if v != nil {
-			return *v
-		}
-		var ret InstanceGrant
-		return ret
-	}).(InstanceGrantOutput)
-}
-
 type InstanceGrantArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceGrantArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstanceGrant)(nil))
+	return reflect.TypeOf((*[]*InstanceGrant)(nil)).Elem()
 }
 
 func (o InstanceGrantArrayOutput) ToInstanceGrantArrayOutput() InstanceGrantArrayOutput {
@@ -347,15 +284,15 @@ func (o InstanceGrantArrayOutput) ToInstanceGrantArrayOutputWithContext(ctx cont
 }
 
 func (o InstanceGrantArrayOutput) Index(i pulumi.IntInput) InstanceGrantOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceGrant {
-		return vs[0].([]InstanceGrant)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceGrant {
+		return vs[0].([]*InstanceGrant)[vs[1].(int)]
 	}).(InstanceGrantOutput)
 }
 
 type InstanceGrantMapOutput struct{ *pulumi.OutputState }
 
 func (InstanceGrantMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]InstanceGrant)(nil))
+	return reflect.TypeOf((*map[string]*InstanceGrant)(nil)).Elem()
 }
 
 func (o InstanceGrantMapOutput) ToInstanceGrantMapOutput() InstanceGrantMapOutput {
@@ -367,18 +304,16 @@ func (o InstanceGrantMapOutput) ToInstanceGrantMapOutputWithContext(ctx context.
 }
 
 func (o InstanceGrantMapOutput) MapIndex(k pulumi.StringInput) InstanceGrantOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InstanceGrant {
-		return vs[0].(map[string]InstanceGrant)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *InstanceGrant {
+		return vs[0].(map[string]*InstanceGrant)[vs[1].(string)]
 	}).(InstanceGrantOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGrantInput)(nil)).Elem(), &InstanceGrant{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGrantPtrInput)(nil)).Elem(), &InstanceGrant{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGrantArrayInput)(nil)).Elem(), InstanceGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGrantMapInput)(nil)).Elem(), InstanceGrantMap{})
 	pulumi.RegisterOutputType(InstanceGrantOutput{})
-	pulumi.RegisterOutputType(InstanceGrantPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGrantArrayOutput{})
 	pulumi.RegisterOutputType(InstanceGrantMapOutput{})
 }

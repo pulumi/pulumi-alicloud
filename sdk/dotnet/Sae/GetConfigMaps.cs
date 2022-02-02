@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Sae
 {
@@ -50,11 +49,11 @@ namespace Pulumi.AliCloud.Sae
         ///             }),
         ///             NamespaceId = exampleNamespace.NamespaceId,
         ///         });
-        ///         var nameRegex = exampleNamespace.NamespaceId.Apply(namespaceId =&gt; AliCloud.Sae.GetConfigMaps.InvokeAsync(new AliCloud.Sae.GetConfigMapsArgs
+        ///         var nameRegex = AliCloud.Sae.GetConfigMaps.Invoke(new AliCloud.Sae.GetConfigMapsInvokeArgs
         ///         {
-        ///             NamespaceId = namespaceId,
+        ///             NamespaceId = exampleNamespace.NamespaceId,
         ///             NameRegex = "^example",
-        ///         }));
+        ///         });
         ///         this.SaeConfigMapId = nameRegex.Apply(nameRegex =&gt; nameRegex.Maps?[0]?.Id);
         ///     }
         /// 
@@ -66,7 +65,7 @@ namespace Pulumi.AliCloud.Sae
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetConfigMapsResult> InvokeAsync(GetConfigMapsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConfigMapsResult>("alicloud:sae/getConfigMaps:getConfigMaps", args ?? new GetConfigMapsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetConfigMapsResult>("alicloud:sae/getConfigMaps:getConfigMaps", args ?? new GetConfigMapsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Sae Config Maps of the current Alibaba Cloud user.
@@ -106,11 +105,11 @@ namespace Pulumi.AliCloud.Sae
         ///             }),
         ///             NamespaceId = exampleNamespace.NamespaceId,
         ///         });
-        ///         var nameRegex = exampleNamespace.NamespaceId.Apply(namespaceId =&gt; AliCloud.Sae.GetConfigMaps.InvokeAsync(new AliCloud.Sae.GetConfigMapsArgs
+        ///         var nameRegex = AliCloud.Sae.GetConfigMaps.Invoke(new AliCloud.Sae.GetConfigMapsInvokeArgs
         ///         {
-        ///             NamespaceId = namespaceId,
+        ///             NamespaceId = exampleNamespace.NamespaceId,
         ///             NameRegex = "^example",
-        ///         }));
+        ///         });
         ///         this.SaeConfigMapId = nameRegex.Apply(nameRegex =&gt; nameRegex.Maps?[0]?.Id);
         ///     }
         /// 
@@ -122,7 +121,7 @@ namespace Pulumi.AliCloud.Sae
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetConfigMapsResult> Invoke(GetConfigMapsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConfigMapsResult>("alicloud:sae/getConfigMaps:getConfigMaps", args ?? new GetConfigMapsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetConfigMapsResult>("alicloud:sae/getConfigMaps:getConfigMaps", args ?? new GetConfigMapsInvokeArgs(), options.WithDefaults());
     }
 
 

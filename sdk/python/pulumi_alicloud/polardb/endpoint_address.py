@@ -243,7 +243,7 @@ class EndpointAddress(pulumi.CustomResource):
             db_node_class="polar.mysql.x4.large",
             vswitch_id=default_switch.id,
             description=name)
-        default_endpoints = default_cluster.id.apply(lambda id: alicloud.polardb.get_endpoints(db_cluster_id=id))
+        default_endpoints = alicloud.polardb.get_endpoints_output(db_cluster_id=default_cluster.id)
         endpoint = alicloud.polardb.EndpointAddress("endpoint",
             db_cluster_id=default_cluster.id,
             db_endpoint_id=default_endpoints.endpoints[0].db_endpoint_id,
@@ -305,7 +305,7 @@ class EndpointAddress(pulumi.CustomResource):
             db_node_class="polar.mysql.x4.large",
             vswitch_id=default_switch.id,
             description=name)
-        default_endpoints = default_cluster.id.apply(lambda id: alicloud.polardb.get_endpoints(db_cluster_id=id))
+        default_endpoints = alicloud.polardb.get_endpoints_output(db_cluster_id=default_cluster.id)
         endpoint = alicloud.polardb.EndpointAddress("endpoint",
             db_cluster_id=default_cluster.id,
             db_endpoint_id=default_endpoints.endpoints[0].db_endpoint_id,

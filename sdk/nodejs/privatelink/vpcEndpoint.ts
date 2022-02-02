@@ -120,22 +120,22 @@ export class VpcEndpoint extends pulumi.CustomResource {
      */
     constructor(name: string, args: VpcEndpointArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VpcEndpointArgs | VpcEndpointState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcEndpointState | undefined;
-            inputs["bandwidth"] = state ? state.bandwidth : undefined;
-            inputs["connectionStatus"] = state ? state.connectionStatus : undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["endpointBusinessStatus"] = state ? state.endpointBusinessStatus : undefined;
-            inputs["endpointDescription"] = state ? state.endpointDescription : undefined;
-            inputs["endpointDomain"] = state ? state.endpointDomain : undefined;
-            inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            inputs["serviceId"] = state ? state.serviceId : undefined;
-            inputs["serviceName"] = state ? state.serviceName : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["vpcEndpointName"] = state ? state.vpcEndpointName : undefined;
-            inputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
+            resourceInputs["connectionStatus"] = state ? state.connectionStatus : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["endpointBusinessStatus"] = state ? state.endpointBusinessStatus : undefined;
+            resourceInputs["endpointDescription"] = state ? state.endpointDescription : undefined;
+            resourceInputs["endpointDomain"] = state ? state.endpointDomain : undefined;
+            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
+            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["vpcEndpointName"] = state ? state.vpcEndpointName : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as VpcEndpointArgs | undefined;
             if ((!args || args.securityGroupIds === undefined) && !opts.urn) {
@@ -144,23 +144,21 @@ export class VpcEndpoint extends pulumi.CustomResource {
             if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["endpointDescription"] = args ? args.endpointDescription : undefined;
-            inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            inputs["serviceId"] = args ? args.serviceId : undefined;
-            inputs["serviceName"] = args ? args.serviceName : undefined;
-            inputs["vpcEndpointName"] = args ? args.vpcEndpointName : undefined;
-            inputs["vpcId"] = args ? args.vpcId : undefined;
-            inputs["bandwidth"] = undefined /*out*/;
-            inputs["connectionStatus"] = undefined /*out*/;
-            inputs["endpointBusinessStatus"] = undefined /*out*/;
-            inputs["endpointDomain"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["endpointDescription"] = args ? args.endpointDescription : undefined;
+            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
+            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["vpcEndpointName"] = args ? args.vpcEndpointName : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["bandwidth"] = undefined /*out*/;
+            resourceInputs["connectionStatus"] = undefined /*out*/;
+            resourceInputs["endpointBusinessStatus"] = undefined /*out*/;
+            resourceInputs["endpointDomain"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(VpcEndpoint.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(VpcEndpoint.__pulumiType, name, resourceInputs, opts);
     }
 }
 

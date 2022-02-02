@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Eds
 {
@@ -42,13 +41,13 @@ namespace Pulumi.AliCloud.Eds
         ///             Bandwidth = 10,
         ///             OfficeSiteId = defaultSimpleOfficeSite.Id,
         ///         });
-        ///         var defaultNetworkPackages = defaultNetworkPackage.Id.Apply(id =&gt; AliCloud.Eds.GetNetworkPackages.InvokeAsync(new AliCloud.Eds.GetNetworkPackagesArgs
+        ///         var defaultNetworkPackages = AliCloud.Eds.GetNetworkPackages.Invoke(new AliCloud.Eds.GetNetworkPackagesInvokeArgs
         ///         {
         ///             Ids = 
         ///             {
-        ///                 id,
+        ///                 defaultNetworkPackage.Id,
         ///             },
-        ///         }));
+        ///         });
         ///         this.EcdNetworkPackageId1 = defaultNetworkPackages.Apply(defaultNetworkPackages =&gt; defaultNetworkPackages.Packages?[0]?.Id);
         ///     }
         /// 
@@ -60,7 +59,7 @@ namespace Pulumi.AliCloud.Eds
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworkPackagesResult> InvokeAsync(GetNetworkPackagesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkPackagesResult>("alicloud:eds/getNetworkPackages:getNetworkPackages", args ?? new GetNetworkPackagesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkPackagesResult>("alicloud:eds/getNetworkPackages:getNetworkPackages", args ?? new GetNetworkPackagesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
@@ -92,13 +91,13 @@ namespace Pulumi.AliCloud.Eds
         ///             Bandwidth = 10,
         ///             OfficeSiteId = defaultSimpleOfficeSite.Id,
         ///         });
-        ///         var defaultNetworkPackages = defaultNetworkPackage.Id.Apply(id =&gt; AliCloud.Eds.GetNetworkPackages.InvokeAsync(new AliCloud.Eds.GetNetworkPackagesArgs
+        ///         var defaultNetworkPackages = AliCloud.Eds.GetNetworkPackages.Invoke(new AliCloud.Eds.GetNetworkPackagesInvokeArgs
         ///         {
         ///             Ids = 
         ///             {
-        ///                 id,
+        ///                 defaultNetworkPackage.Id,
         ///             },
-        ///         }));
+        ///         });
         ///         this.EcdNetworkPackageId1 = defaultNetworkPackages.Apply(defaultNetworkPackages =&gt; defaultNetworkPackages.Packages?[0]?.Id);
         ///     }
         /// 
@@ -110,7 +109,7 @@ namespace Pulumi.AliCloud.Eds
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNetworkPackagesResult> Invoke(GetNetworkPackagesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNetworkPackagesResult>("alicloud:eds/getNetworkPackages:getNetworkPackages", args ?? new GetNetworkPackagesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetNetworkPackagesResult>("alicloud:eds/getNetworkPackages:getNetworkPackages", args ?? new GetNetworkPackagesInvokeArgs(), options.WithDefaults());
     }
 
 

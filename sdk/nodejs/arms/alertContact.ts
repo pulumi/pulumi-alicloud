@@ -93,27 +93,25 @@ export class AlertContact extends pulumi.CustomResource {
      */
     constructor(name: string, args?: AlertContactArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AlertContactArgs | AlertContactState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlertContactState | undefined;
-            inputs["alertContactName"] = state ? state.alertContactName : undefined;
-            inputs["dingRobotWebhookUrl"] = state ? state.dingRobotWebhookUrl : undefined;
-            inputs["email"] = state ? state.email : undefined;
-            inputs["phoneNum"] = state ? state.phoneNum : undefined;
-            inputs["systemNoc"] = state ? state.systemNoc : undefined;
+            resourceInputs["alertContactName"] = state ? state.alertContactName : undefined;
+            resourceInputs["dingRobotWebhookUrl"] = state ? state.dingRobotWebhookUrl : undefined;
+            resourceInputs["email"] = state ? state.email : undefined;
+            resourceInputs["phoneNum"] = state ? state.phoneNum : undefined;
+            resourceInputs["systemNoc"] = state ? state.systemNoc : undefined;
         } else {
             const args = argsOrState as AlertContactArgs | undefined;
-            inputs["alertContactName"] = args ? args.alertContactName : undefined;
-            inputs["dingRobotWebhookUrl"] = args ? args.dingRobotWebhookUrl : undefined;
-            inputs["email"] = args ? args.email : undefined;
-            inputs["phoneNum"] = args ? args.phoneNum : undefined;
-            inputs["systemNoc"] = args ? args.systemNoc : undefined;
+            resourceInputs["alertContactName"] = args ? args.alertContactName : undefined;
+            resourceInputs["dingRobotWebhookUrl"] = args ? args.dingRobotWebhookUrl : undefined;
+            resourceInputs["email"] = args ? args.email : undefined;
+            resourceInputs["phoneNum"] = args ? args.phoneNum : undefined;
+            resourceInputs["systemNoc"] = args ? args.systemNoc : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AlertContact.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AlertContact.__pulumiType, name, resourceInputs, opts);
     }
 }
 

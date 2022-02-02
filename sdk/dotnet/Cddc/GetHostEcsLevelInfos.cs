@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cddc
 {
@@ -18,7 +17,7 @@ namespace Pulumi.AliCloud.Cddc
         /// &gt; **NOTE:** Available in v1.147.0+.
         /// </summary>
         public static Task<GetHostEcsLevelInfosResult> InvokeAsync(GetHostEcsLevelInfosArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHostEcsLevelInfosResult>("alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos", args ?? new GetHostEcsLevelInfosArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetHostEcsLevelInfosResult>("alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos", args ?? new GetHostEcsLevelInfosArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cddc Host Ecs Level Infos of the current Alibaba Cloud user.
@@ -26,7 +25,7 @@ namespace Pulumi.AliCloud.Cddc
         /// &gt; **NOTE:** Available in v1.147.0+.
         /// </summary>
         public static Output<GetHostEcsLevelInfosResult> Invoke(GetHostEcsLevelInfosInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHostEcsLevelInfosResult>("alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos", args ?? new GetHostEcsLevelInfosInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetHostEcsLevelInfosResult>("alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos", args ?? new GetHostEcsLevelInfosInvokeArgs(), options.WithDefaults());
     }
 
 

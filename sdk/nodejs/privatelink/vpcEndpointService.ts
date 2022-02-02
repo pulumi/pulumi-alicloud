@@ -104,33 +104,31 @@ export class VpcEndpointService extends pulumi.CustomResource {
      */
     constructor(name: string, args?: VpcEndpointServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VpcEndpointServiceArgs | VpcEndpointServiceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcEndpointServiceState | undefined;
-            inputs["autoAcceptConnection"] = state ? state.autoAcceptConnection : undefined;
-            inputs["connectBandwidth"] = state ? state.connectBandwidth : undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["payer"] = state ? state.payer : undefined;
-            inputs["serviceBusinessStatus"] = state ? state.serviceBusinessStatus : undefined;
-            inputs["serviceDescription"] = state ? state.serviceDescription : undefined;
-            inputs["serviceDomain"] = state ? state.serviceDomain : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["autoAcceptConnection"] = state ? state.autoAcceptConnection : undefined;
+            resourceInputs["connectBandwidth"] = state ? state.connectBandwidth : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["payer"] = state ? state.payer : undefined;
+            resourceInputs["serviceBusinessStatus"] = state ? state.serviceBusinessStatus : undefined;
+            resourceInputs["serviceDescription"] = state ? state.serviceDescription : undefined;
+            resourceInputs["serviceDomain"] = state ? state.serviceDomain : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as VpcEndpointServiceArgs | undefined;
-            inputs["autoAcceptConnection"] = args ? args.autoAcceptConnection : undefined;
-            inputs["connectBandwidth"] = args ? args.connectBandwidth : undefined;
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["payer"] = args ? args.payer : undefined;
-            inputs["serviceDescription"] = args ? args.serviceDescription : undefined;
-            inputs["serviceBusinessStatus"] = undefined /*out*/;
-            inputs["serviceDomain"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["autoAcceptConnection"] = args ? args.autoAcceptConnection : undefined;
+            resourceInputs["connectBandwidth"] = args ? args.connectBandwidth : undefined;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["payer"] = args ? args.payer : undefined;
+            resourceInputs["serviceDescription"] = args ? args.serviceDescription : undefined;
+            resourceInputs["serviceBusinessStatus"] = undefined /*out*/;
+            resourceInputs["serviceDomain"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(VpcEndpointService.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(VpcEndpointService.__pulumiType, name, resourceInputs, opts);
     }
 }
 

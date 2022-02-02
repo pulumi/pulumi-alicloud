@@ -42,9 +42,7 @@ export function getIpv6InternetBandwidths(args?: GetIpv6InternetBandwidthsArgs, 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:vpc/getIpv6InternetBandwidths:getIpv6InternetBandwidths", {
         "ids": args.ids,
         "ipv6AddressId": args.ipv6AddressId,

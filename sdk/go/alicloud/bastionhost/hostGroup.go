@@ -154,7 +154,7 @@ type HostGroupInput interface {
 }
 
 func (*HostGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*HostGroup)(nil))
+	return reflect.TypeOf((**HostGroup)(nil)).Elem()
 }
 
 func (i *HostGroup) ToHostGroupOutput() HostGroupOutput {
@@ -163,35 +163,6 @@ func (i *HostGroup) ToHostGroupOutput() HostGroupOutput {
 
 func (i *HostGroup) ToHostGroupOutputWithContext(ctx context.Context) HostGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostGroupOutput)
-}
-
-func (i *HostGroup) ToHostGroupPtrOutput() HostGroupPtrOutput {
-	return i.ToHostGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *HostGroup) ToHostGroupPtrOutputWithContext(ctx context.Context) HostGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HostGroupPtrOutput)
-}
-
-type HostGroupPtrInput interface {
-	pulumi.Input
-
-	ToHostGroupPtrOutput() HostGroupPtrOutput
-	ToHostGroupPtrOutputWithContext(ctx context.Context) HostGroupPtrOutput
-}
-
-type hostGroupPtrType HostGroupArgs
-
-func (*hostGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**HostGroup)(nil))
-}
-
-func (i *hostGroupPtrType) ToHostGroupPtrOutput() HostGroupPtrOutput {
-	return i.ToHostGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *hostGroupPtrType) ToHostGroupPtrOutputWithContext(ctx context.Context) HostGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HostGroupPtrOutput)
 }
 
 // HostGroupArrayInput is an input type that accepts HostGroupArray and HostGroupArrayOutput values.
@@ -247,7 +218,7 @@ func (i HostGroupMap) ToHostGroupMapOutputWithContext(ctx context.Context) HostG
 type HostGroupOutput struct{ *pulumi.OutputState }
 
 func (HostGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HostGroup)(nil))
+	return reflect.TypeOf((**HostGroup)(nil)).Elem()
 }
 
 func (o HostGroupOutput) ToHostGroupOutput() HostGroupOutput {
@@ -258,44 +229,10 @@ func (o HostGroupOutput) ToHostGroupOutputWithContext(ctx context.Context) HostG
 	return o
 }
 
-func (o HostGroupOutput) ToHostGroupPtrOutput() HostGroupPtrOutput {
-	return o.ToHostGroupPtrOutputWithContext(context.Background())
-}
-
-func (o HostGroupOutput) ToHostGroupPtrOutputWithContext(ctx context.Context) HostGroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v HostGroup) *HostGroup {
-		return &v
-	}).(HostGroupPtrOutput)
-}
-
-type HostGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (HostGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**HostGroup)(nil))
-}
-
-func (o HostGroupPtrOutput) ToHostGroupPtrOutput() HostGroupPtrOutput {
-	return o
-}
-
-func (o HostGroupPtrOutput) ToHostGroupPtrOutputWithContext(ctx context.Context) HostGroupPtrOutput {
-	return o
-}
-
-func (o HostGroupPtrOutput) Elem() HostGroupOutput {
-	return o.ApplyT(func(v *HostGroup) HostGroup {
-		if v != nil {
-			return *v
-		}
-		var ret HostGroup
-		return ret
-	}).(HostGroupOutput)
-}
-
 type HostGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (HostGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]HostGroup)(nil))
+	return reflect.TypeOf((*[]*HostGroup)(nil)).Elem()
 }
 
 func (o HostGroupArrayOutput) ToHostGroupArrayOutput() HostGroupArrayOutput {
@@ -307,15 +244,15 @@ func (o HostGroupArrayOutput) ToHostGroupArrayOutputWithContext(ctx context.Cont
 }
 
 func (o HostGroupArrayOutput) Index(i pulumi.IntInput) HostGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostGroup {
-		return vs[0].([]HostGroup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HostGroup {
+		return vs[0].([]*HostGroup)[vs[1].(int)]
 	}).(HostGroupOutput)
 }
 
 type HostGroupMapOutput struct{ *pulumi.OutputState }
 
 func (HostGroupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]HostGroup)(nil))
+	return reflect.TypeOf((*map[string]*HostGroup)(nil)).Elem()
 }
 
 func (o HostGroupMapOutput) ToHostGroupMapOutput() HostGroupMapOutput {
@@ -327,18 +264,16 @@ func (o HostGroupMapOutput) ToHostGroupMapOutputWithContext(ctx context.Context)
 }
 
 func (o HostGroupMapOutput) MapIndex(k pulumi.StringInput) HostGroupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) HostGroup {
-		return vs[0].(map[string]HostGroup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *HostGroup {
+		return vs[0].(map[string]*HostGroup)[vs[1].(string)]
 	}).(HostGroupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HostGroupInput)(nil)).Elem(), &HostGroup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HostGroupPtrInput)(nil)).Elem(), &HostGroup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostGroupArrayInput)(nil)).Elem(), HostGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostGroupMapInput)(nil)).Elem(), HostGroupMap{})
 	pulumi.RegisterOutputType(HostGroupOutput{})
-	pulumi.RegisterOutputType(HostGroupPtrOutput{})
 	pulumi.RegisterOutputType(HostGroupArrayOutput{})
 	pulumi.RegisterOutputType(HostGroupMapOutput{})
 }

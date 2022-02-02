@@ -123,19 +123,19 @@ export class Accelerator extends pulumi.CustomResource {
      */
     constructor(name: string, args: AcceleratorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AcceleratorArgs | AcceleratorState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AcceleratorState | undefined;
-            inputs["acceleratorName"] = state ? state.acceleratorName : undefined;
-            inputs["autoRenewDuration"] = state ? state.autoRenewDuration : undefined;
-            inputs["autoUseCoupon"] = state ? state.autoUseCoupon : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["duration"] = state ? state.duration : undefined;
-            inputs["pricingCycle"] = state ? state.pricingCycle : undefined;
-            inputs["renewalStatus"] = state ? state.renewalStatus : undefined;
-            inputs["spec"] = state ? state.spec : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["acceleratorName"] = state ? state.acceleratorName : undefined;
+            resourceInputs["autoRenewDuration"] = state ? state.autoRenewDuration : undefined;
+            resourceInputs["autoUseCoupon"] = state ? state.autoUseCoupon : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["duration"] = state ? state.duration : undefined;
+            resourceInputs["pricingCycle"] = state ? state.pricingCycle : undefined;
+            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
+            resourceInputs["spec"] = state ? state.spec : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as AcceleratorArgs | undefined;
             if ((!args || args.duration === undefined) && !opts.urn) {
@@ -144,20 +144,18 @@ export class Accelerator extends pulumi.CustomResource {
             if ((!args || args.spec === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'spec'");
             }
-            inputs["acceleratorName"] = args ? args.acceleratorName : undefined;
-            inputs["autoRenewDuration"] = args ? args.autoRenewDuration : undefined;
-            inputs["autoUseCoupon"] = args ? args.autoUseCoupon : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["duration"] = args ? args.duration : undefined;
-            inputs["pricingCycle"] = args ? args.pricingCycle : undefined;
-            inputs["renewalStatus"] = args ? args.renewalStatus : undefined;
-            inputs["spec"] = args ? args.spec : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["acceleratorName"] = args ? args.acceleratorName : undefined;
+            resourceInputs["autoRenewDuration"] = args ? args.autoRenewDuration : undefined;
+            resourceInputs["autoUseCoupon"] = args ? args.autoUseCoupon : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["duration"] = args ? args.duration : undefined;
+            resourceInputs["pricingCycle"] = args ? args.pricingCycle : undefined;
+            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
+            resourceInputs["spec"] = args ? args.spec : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Accelerator.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Accelerator.__pulumiType, name, resourceInputs, opts);
     }
 }
 

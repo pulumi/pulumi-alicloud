@@ -126,44 +126,42 @@ export class Endpoint extends pulumi.CustomResource {
      */
     constructor(name: string, args: EndpointArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EndpointArgs | EndpointState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EndpointState | undefined;
-            inputs["autoAddNewNodes"] = state ? state.autoAddNewNodes : undefined;
-            inputs["dbClusterId"] = state ? state.dbClusterId : undefined;
-            inputs["endpointConfig"] = state ? state.endpointConfig : undefined;
-            inputs["endpointType"] = state ? state.endpointType : undefined;
-            inputs["netType"] = state ? state.netType : undefined;
-            inputs["nodes"] = state ? state.nodes : undefined;
-            inputs["readWriteMode"] = state ? state.readWriteMode : undefined;
-            inputs["sslAutoRotate"] = state ? state.sslAutoRotate : undefined;
-            inputs["sslCertificateUrl"] = state ? state.sslCertificateUrl : undefined;
-            inputs["sslConnectionString"] = state ? state.sslConnectionString : undefined;
-            inputs["sslEnabled"] = state ? state.sslEnabled : undefined;
-            inputs["sslExpireTime"] = state ? state.sslExpireTime : undefined;
+            resourceInputs["autoAddNewNodes"] = state ? state.autoAddNewNodes : undefined;
+            resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
+            resourceInputs["endpointConfig"] = state ? state.endpointConfig : undefined;
+            resourceInputs["endpointType"] = state ? state.endpointType : undefined;
+            resourceInputs["netType"] = state ? state.netType : undefined;
+            resourceInputs["nodes"] = state ? state.nodes : undefined;
+            resourceInputs["readWriteMode"] = state ? state.readWriteMode : undefined;
+            resourceInputs["sslAutoRotate"] = state ? state.sslAutoRotate : undefined;
+            resourceInputs["sslCertificateUrl"] = state ? state.sslCertificateUrl : undefined;
+            resourceInputs["sslConnectionString"] = state ? state.sslConnectionString : undefined;
+            resourceInputs["sslEnabled"] = state ? state.sslEnabled : undefined;
+            resourceInputs["sslExpireTime"] = state ? state.sslExpireTime : undefined;
         } else {
             const args = argsOrState as EndpointArgs | undefined;
             if ((!args || args.dbClusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
-            inputs["autoAddNewNodes"] = args ? args.autoAddNewNodes : undefined;
-            inputs["dbClusterId"] = args ? args.dbClusterId : undefined;
-            inputs["endpointConfig"] = args ? args.endpointConfig : undefined;
-            inputs["endpointType"] = args ? args.endpointType : undefined;
-            inputs["netType"] = args ? args.netType : undefined;
-            inputs["nodes"] = args ? args.nodes : undefined;
-            inputs["readWriteMode"] = args ? args.readWriteMode : undefined;
-            inputs["sslAutoRotate"] = args ? args.sslAutoRotate : undefined;
-            inputs["sslEnabled"] = args ? args.sslEnabled : undefined;
-            inputs["sslCertificateUrl"] = undefined /*out*/;
-            inputs["sslConnectionString"] = undefined /*out*/;
-            inputs["sslExpireTime"] = undefined /*out*/;
+            resourceInputs["autoAddNewNodes"] = args ? args.autoAddNewNodes : undefined;
+            resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
+            resourceInputs["endpointConfig"] = args ? args.endpointConfig : undefined;
+            resourceInputs["endpointType"] = args ? args.endpointType : undefined;
+            resourceInputs["netType"] = args ? args.netType : undefined;
+            resourceInputs["nodes"] = args ? args.nodes : undefined;
+            resourceInputs["readWriteMode"] = args ? args.readWriteMode : undefined;
+            resourceInputs["sslAutoRotate"] = args ? args.sslAutoRotate : undefined;
+            resourceInputs["sslEnabled"] = args ? args.sslEnabled : undefined;
+            resourceInputs["sslCertificateUrl"] = undefined /*out*/;
+            resourceInputs["sslConnectionString"] = undefined /*out*/;
+            resourceInputs["sslExpireTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Endpoint.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Endpoint.__pulumiType, name, resourceInputs, opts);
     }
 }
 

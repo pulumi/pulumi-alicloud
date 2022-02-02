@@ -133,15 +133,15 @@ export class RouterInterfaceConnection extends pulumi.CustomResource {
      */
     constructor(name: string, args: RouterInterfaceConnectionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouterInterfaceConnectionArgs | RouterInterfaceConnectionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterInterfaceConnectionState | undefined;
-            inputs["interfaceId"] = state ? state.interfaceId : undefined;
-            inputs["oppositeInterfaceId"] = state ? state.oppositeInterfaceId : undefined;
-            inputs["oppositeInterfaceOwnerId"] = state ? state.oppositeInterfaceOwnerId : undefined;
-            inputs["oppositeRouterId"] = state ? state.oppositeRouterId : undefined;
-            inputs["oppositeRouterType"] = state ? state.oppositeRouterType : undefined;
+            resourceInputs["interfaceId"] = state ? state.interfaceId : undefined;
+            resourceInputs["oppositeInterfaceId"] = state ? state.oppositeInterfaceId : undefined;
+            resourceInputs["oppositeInterfaceOwnerId"] = state ? state.oppositeInterfaceOwnerId : undefined;
+            resourceInputs["oppositeRouterId"] = state ? state.oppositeRouterId : undefined;
+            resourceInputs["oppositeRouterType"] = state ? state.oppositeRouterType : undefined;
         } else {
             const args = argsOrState as RouterInterfaceConnectionArgs | undefined;
             if ((!args || args.interfaceId === undefined) && !opts.urn) {
@@ -150,16 +150,14 @@ export class RouterInterfaceConnection extends pulumi.CustomResource {
             if ((!args || args.oppositeInterfaceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'oppositeInterfaceId'");
             }
-            inputs["interfaceId"] = args ? args.interfaceId : undefined;
-            inputs["oppositeInterfaceId"] = args ? args.oppositeInterfaceId : undefined;
-            inputs["oppositeInterfaceOwnerId"] = args ? args.oppositeInterfaceOwnerId : undefined;
-            inputs["oppositeRouterId"] = args ? args.oppositeRouterId : undefined;
-            inputs["oppositeRouterType"] = args ? args.oppositeRouterType : undefined;
+            resourceInputs["interfaceId"] = args ? args.interfaceId : undefined;
+            resourceInputs["oppositeInterfaceId"] = args ? args.oppositeInterfaceId : undefined;
+            resourceInputs["oppositeInterfaceOwnerId"] = args ? args.oppositeInterfaceOwnerId : undefined;
+            resourceInputs["oppositeRouterId"] = args ? args.oppositeRouterId : undefined;
+            resourceInputs["oppositeRouterType"] = args ? args.oppositeRouterType : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RouterInterfaceConnection.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RouterInterfaceConnection.__pulumiType, name, resourceInputs, opts);
     }
 }
 

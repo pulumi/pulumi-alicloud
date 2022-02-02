@@ -121,14 +121,14 @@ export class Dashboard extends pulumi.CustomResource {
      */
     constructor(name: string, args: DashboardArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DashboardArgs | DashboardState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DashboardState | undefined;
-            inputs["charList"] = state ? state.charList : undefined;
-            inputs["dashboardName"] = state ? state.dashboardName : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["projectName"] = state ? state.projectName : undefined;
+            resourceInputs["charList"] = state ? state.charList : undefined;
+            resourceInputs["dashboardName"] = state ? state.dashboardName : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["projectName"] = state ? state.projectName : undefined;
         } else {
             const args = argsOrState as DashboardArgs | undefined;
             if ((!args || args.charList === undefined) && !opts.urn) {
@@ -140,15 +140,13 @@ export class Dashboard extends pulumi.CustomResource {
             if ((!args || args.projectName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
-            inputs["charList"] = args ? args.charList : undefined;
-            inputs["dashboardName"] = args ? args.dashboardName : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["projectName"] = args ? args.projectName : undefined;
+            resourceInputs["charList"] = args ? args.charList : undefined;
+            resourceInputs["dashboardName"] = args ? args.dashboardName : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["projectName"] = args ? args.projectName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Dashboard.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Dashboard.__pulumiType, name, resourceInputs, opts);
     }
 }
 

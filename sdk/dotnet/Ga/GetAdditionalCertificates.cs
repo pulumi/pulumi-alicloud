@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ga
 {
@@ -52,7 +51,7 @@ namespace Pulumi.AliCloud.Ga
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAdditionalCertificatesResult> InvokeAsync(GetAdditionalCertificatesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAdditionalCertificatesResult>("alicloud:ga/getAdditionalCertificates:getAdditionalCertificates", args ?? new GetAdditionalCertificatesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAdditionalCertificatesResult>("alicloud:ga/getAdditionalCertificates:getAdditionalCertificates", args ?? new GetAdditionalCertificatesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ga Additional Certificates of the current Alibaba Cloud user.
@@ -94,7 +93,7 @@ namespace Pulumi.AliCloud.Ga
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAdditionalCertificatesResult> Invoke(GetAdditionalCertificatesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAdditionalCertificatesResult>("alicloud:ga/getAdditionalCertificates:getAdditionalCertificates", args ?? new GetAdditionalCertificatesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAdditionalCertificatesResult>("alicloud:ga/getAdditionalCertificates:getAdditionalCertificates", args ?? new GetAdditionalCertificatesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -215,7 +215,7 @@ type EnterpriseUserInput interface {
 }
 
 func (*EnterpriseUser) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnterpriseUser)(nil))
+	return reflect.TypeOf((**EnterpriseUser)(nil)).Elem()
 }
 
 func (i *EnterpriseUser) ToEnterpriseUserOutput() EnterpriseUserOutput {
@@ -224,35 +224,6 @@ func (i *EnterpriseUser) ToEnterpriseUserOutput() EnterpriseUserOutput {
 
 func (i *EnterpriseUser) ToEnterpriseUserOutputWithContext(ctx context.Context) EnterpriseUserOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseUserOutput)
-}
-
-func (i *EnterpriseUser) ToEnterpriseUserPtrOutput() EnterpriseUserPtrOutput {
-	return i.ToEnterpriseUserPtrOutputWithContext(context.Background())
-}
-
-func (i *EnterpriseUser) ToEnterpriseUserPtrOutputWithContext(ctx context.Context) EnterpriseUserPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseUserPtrOutput)
-}
-
-type EnterpriseUserPtrInput interface {
-	pulumi.Input
-
-	ToEnterpriseUserPtrOutput() EnterpriseUserPtrOutput
-	ToEnterpriseUserPtrOutputWithContext(ctx context.Context) EnterpriseUserPtrOutput
-}
-
-type enterpriseUserPtrType EnterpriseUserArgs
-
-func (*enterpriseUserPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnterpriseUser)(nil))
-}
-
-func (i *enterpriseUserPtrType) ToEnterpriseUserPtrOutput() EnterpriseUserPtrOutput {
-	return i.ToEnterpriseUserPtrOutputWithContext(context.Background())
-}
-
-func (i *enterpriseUserPtrType) ToEnterpriseUserPtrOutputWithContext(ctx context.Context) EnterpriseUserPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseUserPtrOutput)
 }
 
 // EnterpriseUserArrayInput is an input type that accepts EnterpriseUserArray and EnterpriseUserArrayOutput values.
@@ -308,7 +279,7 @@ func (i EnterpriseUserMap) ToEnterpriseUserMapOutputWithContext(ctx context.Cont
 type EnterpriseUserOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseUserOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EnterpriseUser)(nil))
+	return reflect.TypeOf((**EnterpriseUser)(nil)).Elem()
 }
 
 func (o EnterpriseUserOutput) ToEnterpriseUserOutput() EnterpriseUserOutput {
@@ -319,44 +290,10 @@ func (o EnterpriseUserOutput) ToEnterpriseUserOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o EnterpriseUserOutput) ToEnterpriseUserPtrOutput() EnterpriseUserPtrOutput {
-	return o.ToEnterpriseUserPtrOutputWithContext(context.Background())
-}
-
-func (o EnterpriseUserOutput) ToEnterpriseUserPtrOutputWithContext(ctx context.Context) EnterpriseUserPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseUser) *EnterpriseUser {
-		return &v
-	}).(EnterpriseUserPtrOutput)
-}
-
-type EnterpriseUserPtrOutput struct{ *pulumi.OutputState }
-
-func (EnterpriseUserPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EnterpriseUser)(nil))
-}
-
-func (o EnterpriseUserPtrOutput) ToEnterpriseUserPtrOutput() EnterpriseUserPtrOutput {
-	return o
-}
-
-func (o EnterpriseUserPtrOutput) ToEnterpriseUserPtrOutputWithContext(ctx context.Context) EnterpriseUserPtrOutput {
-	return o
-}
-
-func (o EnterpriseUserPtrOutput) Elem() EnterpriseUserOutput {
-	return o.ApplyT(func(v *EnterpriseUser) EnterpriseUser {
-		if v != nil {
-			return *v
-		}
-		var ret EnterpriseUser
-		return ret
-	}).(EnterpriseUserOutput)
-}
-
 type EnterpriseUserArrayOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseUserArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EnterpriseUser)(nil))
+	return reflect.TypeOf((*[]*EnterpriseUser)(nil)).Elem()
 }
 
 func (o EnterpriseUserArrayOutput) ToEnterpriseUserArrayOutput() EnterpriseUserArrayOutput {
@@ -368,15 +305,15 @@ func (o EnterpriseUserArrayOutput) ToEnterpriseUserArrayOutputWithContext(ctx co
 }
 
 func (o EnterpriseUserArrayOutput) Index(i pulumi.IntInput) EnterpriseUserOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseUser {
-		return vs[0].([]EnterpriseUser)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EnterpriseUser {
+		return vs[0].([]*EnterpriseUser)[vs[1].(int)]
 	}).(EnterpriseUserOutput)
 }
 
 type EnterpriseUserMapOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseUserMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]EnterpriseUser)(nil))
+	return reflect.TypeOf((*map[string]*EnterpriseUser)(nil)).Elem()
 }
 
 func (o EnterpriseUserMapOutput) ToEnterpriseUserMapOutput() EnterpriseUserMapOutput {
@@ -388,18 +325,16 @@ func (o EnterpriseUserMapOutput) ToEnterpriseUserMapOutputWithContext(ctx contex
 }
 
 func (o EnterpriseUserMapOutput) MapIndex(k pulumi.StringInput) EnterpriseUserOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EnterpriseUser {
-		return vs[0].(map[string]EnterpriseUser)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *EnterpriseUser {
+		return vs[0].(map[string]*EnterpriseUser)[vs[1].(string)]
 	}).(EnterpriseUserOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseUserInput)(nil)).Elem(), &EnterpriseUser{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseUserPtrInput)(nil)).Elem(), &EnterpriseUser{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseUserArrayInput)(nil)).Elem(), EnterpriseUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseUserMapInput)(nil)).Elem(), EnterpriseUserMap{})
 	pulumi.RegisterOutputType(EnterpriseUserOutput{})
-	pulumi.RegisterOutputType(EnterpriseUserPtrOutput{})
 	pulumi.RegisterOutputType(EnterpriseUserArrayOutput{})
 	pulumi.RegisterOutputType(EnterpriseUserMapOutput{})
 }

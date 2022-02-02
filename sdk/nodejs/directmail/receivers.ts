@@ -87,14 +87,14 @@ export class Receivers extends pulumi.CustomResource {
      */
     constructor(name: string, args: ReceiversArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ReceiversArgs | ReceiversState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReceiversState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["receiversAlias"] = state ? state.receiversAlias : undefined;
-            inputs["receiversName"] = state ? state.receiversName : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["receiversAlias"] = state ? state.receiversAlias : undefined;
+            resourceInputs["receiversName"] = state ? state.receiversName : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ReceiversArgs | undefined;
             if ((!args || args.receiversAlias === undefined) && !opts.urn) {
@@ -103,15 +103,13 @@ export class Receivers extends pulumi.CustomResource {
             if ((!args || args.receiversName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'receiversName'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["receiversAlias"] = args ? args.receiversAlias : undefined;
-            inputs["receiversName"] = args ? args.receiversName : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["receiversAlias"] = args ? args.receiversAlias : undefined;
+            resourceInputs["receiversName"] = args ? args.receiversName : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Receivers.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Receivers.__pulumiType, name, resourceInputs, opts);
     }
 }
 

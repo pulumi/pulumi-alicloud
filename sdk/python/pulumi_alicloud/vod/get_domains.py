@@ -148,11 +148,11 @@ def get_domains(domain_search_type: Optional[str] = None,
             "key1": "value1",
             "key2": "value2",
         })
-    default_domains = default_domain.id.apply(lambda id: alicloud.vod.get_domains(ids=[id],
+    default_domains = alicloud.vod.get_domains_output(ids=[default_domain.id],
         tags={
             "key1": "value1",
             "key2": "value2",
-        }))
+        })
     pulumi.export("vodDomain", default_domains.domains[0])
     ```
 
@@ -227,11 +227,11 @@ def get_domains_output(domain_search_type: Optional[pulumi.Input[Optional[str]]]
             "key1": "value1",
             "key2": "value2",
         })
-    default_domains = default_domain.id.apply(lambda id: alicloud.vod.get_domains(ids=[id],
+    default_domains = alicloud.vod.get_domains_output(ids=[default_domain.id],
         tags={
             "key1": "value1",
             "key2": "value2",
-        }))
+        })
     pulumi.export("vodDomain", default_domains.domains[0])
     ```
 

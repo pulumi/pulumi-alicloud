@@ -192,30 +192,30 @@ export class RestoreJob extends pulumi.CustomResource {
      */
     constructor(name: string, args: RestoreJobArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RestoreJobArgs | RestoreJobState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RestoreJobState | undefined;
-            inputs["exclude"] = state ? state.exclude : undefined;
-            inputs["include"] = state ? state.include : undefined;
-            inputs["options"] = state ? state.options : undefined;
-            inputs["restoreJobId"] = state ? state.restoreJobId : undefined;
-            inputs["restoreType"] = state ? state.restoreType : undefined;
-            inputs["snapshotHash"] = state ? state.snapshotHash : undefined;
-            inputs["snapshotId"] = state ? state.snapshotId : undefined;
-            inputs["sourceType"] = state ? state.sourceType : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["targetBucket"] = state ? state.targetBucket : undefined;
-            inputs["targetClientId"] = state ? state.targetClientId : undefined;
-            inputs["targetContainer"] = state ? state.targetContainer : undefined;
-            inputs["targetContainerClusterId"] = state ? state.targetContainerClusterId : undefined;
-            inputs["targetCreateTime"] = state ? state.targetCreateTime : undefined;
-            inputs["targetDataSourceId"] = state ? state.targetDataSourceId : undefined;
-            inputs["targetFileSystemId"] = state ? state.targetFileSystemId : undefined;
-            inputs["targetInstanceId"] = state ? state.targetInstanceId : undefined;
-            inputs["targetPath"] = state ? state.targetPath : undefined;
-            inputs["targetPrefix"] = state ? state.targetPrefix : undefined;
-            inputs["vaultId"] = state ? state.vaultId : undefined;
+            resourceInputs["exclude"] = state ? state.exclude : undefined;
+            resourceInputs["include"] = state ? state.include : undefined;
+            resourceInputs["options"] = state ? state.options : undefined;
+            resourceInputs["restoreJobId"] = state ? state.restoreJobId : undefined;
+            resourceInputs["restoreType"] = state ? state.restoreType : undefined;
+            resourceInputs["snapshotHash"] = state ? state.snapshotHash : undefined;
+            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
+            resourceInputs["sourceType"] = state ? state.sourceType : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["targetBucket"] = state ? state.targetBucket : undefined;
+            resourceInputs["targetClientId"] = state ? state.targetClientId : undefined;
+            resourceInputs["targetContainer"] = state ? state.targetContainer : undefined;
+            resourceInputs["targetContainerClusterId"] = state ? state.targetContainerClusterId : undefined;
+            resourceInputs["targetCreateTime"] = state ? state.targetCreateTime : undefined;
+            resourceInputs["targetDataSourceId"] = state ? state.targetDataSourceId : undefined;
+            resourceInputs["targetFileSystemId"] = state ? state.targetFileSystemId : undefined;
+            resourceInputs["targetInstanceId"] = state ? state.targetInstanceId : undefined;
+            resourceInputs["targetPath"] = state ? state.targetPath : undefined;
+            resourceInputs["targetPrefix"] = state ? state.targetPrefix : undefined;
+            resourceInputs["vaultId"] = state ? state.vaultId : undefined;
         } else {
             const args = argsOrState as RestoreJobArgs | undefined;
             if ((!args || args.restoreType === undefined) && !opts.urn) {
@@ -233,31 +233,29 @@ export class RestoreJob extends pulumi.CustomResource {
             if ((!args || args.vaultId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vaultId'");
             }
-            inputs["exclude"] = args ? args.exclude : undefined;
-            inputs["include"] = args ? args.include : undefined;
-            inputs["options"] = args ? args.options : undefined;
-            inputs["restoreJobId"] = args ? args.restoreJobId : undefined;
-            inputs["restoreType"] = args ? args.restoreType : undefined;
-            inputs["snapshotHash"] = args ? args.snapshotHash : undefined;
-            inputs["snapshotId"] = args ? args.snapshotId : undefined;
-            inputs["sourceType"] = args ? args.sourceType : undefined;
-            inputs["targetBucket"] = args ? args.targetBucket : undefined;
-            inputs["targetClientId"] = args ? args.targetClientId : undefined;
-            inputs["targetContainer"] = args ? args.targetContainer : undefined;
-            inputs["targetContainerClusterId"] = args ? args.targetContainerClusterId : undefined;
-            inputs["targetCreateTime"] = args ? args.targetCreateTime : undefined;
-            inputs["targetDataSourceId"] = args ? args.targetDataSourceId : undefined;
-            inputs["targetFileSystemId"] = args ? args.targetFileSystemId : undefined;
-            inputs["targetInstanceId"] = args ? args.targetInstanceId : undefined;
-            inputs["targetPath"] = args ? args.targetPath : undefined;
-            inputs["targetPrefix"] = args ? args.targetPrefix : undefined;
-            inputs["vaultId"] = args ? args.vaultId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["exclude"] = args ? args.exclude : undefined;
+            resourceInputs["include"] = args ? args.include : undefined;
+            resourceInputs["options"] = args ? args.options : undefined;
+            resourceInputs["restoreJobId"] = args ? args.restoreJobId : undefined;
+            resourceInputs["restoreType"] = args ? args.restoreType : undefined;
+            resourceInputs["snapshotHash"] = args ? args.snapshotHash : undefined;
+            resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
+            resourceInputs["sourceType"] = args ? args.sourceType : undefined;
+            resourceInputs["targetBucket"] = args ? args.targetBucket : undefined;
+            resourceInputs["targetClientId"] = args ? args.targetClientId : undefined;
+            resourceInputs["targetContainer"] = args ? args.targetContainer : undefined;
+            resourceInputs["targetContainerClusterId"] = args ? args.targetContainerClusterId : undefined;
+            resourceInputs["targetCreateTime"] = args ? args.targetCreateTime : undefined;
+            resourceInputs["targetDataSourceId"] = args ? args.targetDataSourceId : undefined;
+            resourceInputs["targetFileSystemId"] = args ? args.targetFileSystemId : undefined;
+            resourceInputs["targetInstanceId"] = args ? args.targetInstanceId : undefined;
+            resourceInputs["targetPath"] = args ? args.targetPath : undefined;
+            resourceInputs["targetPrefix"] = args ? args.targetPrefix : undefined;
+            resourceInputs["vaultId"] = args ? args.vaultId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RestoreJob.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RestoreJob.__pulumiType, name, resourceInputs, opts);
     }
 }
 

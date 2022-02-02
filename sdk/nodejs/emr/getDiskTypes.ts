@@ -33,9 +33,7 @@ export function getDiskTypes(args: GetDiskTypesArgs, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:emr/getDiskTypes:getDiskTypes", {
         "clusterType": args.clusterType,
         "destinationResource": args.destinationResource,

@@ -28,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dataworks.NewFolder(ctx, "_default", &dataworks.FolderArgs{
+// 		_, err := dataworks.NewFolder(ctx, "default", &dataworks.FolderArgs{
 // 			ProjectId:  pulumi.String("xxxx"),
 // 			FolderPath: pulumi.String("Business Flow/tfTestAcc/folderDi"),
 // 		})

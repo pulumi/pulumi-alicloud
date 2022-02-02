@@ -85,24 +85,22 @@ export class AlertContactGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: AlertContactGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AlertContactGroupArgs | AlertContactGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlertContactGroupState | undefined;
-            inputs["alertContactGroupName"] = state ? state.alertContactGroupName : undefined;
-            inputs["contactIds"] = state ? state.contactIds : undefined;
+            resourceInputs["alertContactGroupName"] = state ? state.alertContactGroupName : undefined;
+            resourceInputs["contactIds"] = state ? state.contactIds : undefined;
         } else {
             const args = argsOrState as AlertContactGroupArgs | undefined;
             if ((!args || args.alertContactGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'alertContactGroupName'");
             }
-            inputs["alertContactGroupName"] = args ? args.alertContactGroupName : undefined;
-            inputs["contactIds"] = args ? args.contactIds : undefined;
+            resourceInputs["alertContactGroupName"] = args ? args.alertContactGroupName : undefined;
+            resourceInputs["contactIds"] = args ? args.contactIds : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AlertContactGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AlertContactGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

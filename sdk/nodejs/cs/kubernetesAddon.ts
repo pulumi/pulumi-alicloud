@@ -151,16 +151,16 @@ export class KubernetesAddon extends pulumi.CustomResource {
      */
     constructor(name: string, args: KubernetesAddonArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KubernetesAddonArgs | KubernetesAddonState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KubernetesAddonState | undefined;
-            inputs["canUpgrade"] = state ? state.canUpgrade : undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["nextVersion"] = state ? state.nextVersion : undefined;
-            inputs["required"] = state ? state.required : undefined;
-            inputs["version"] = state ? state.version : undefined;
+            resourceInputs["canUpgrade"] = state ? state.canUpgrade : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nextVersion"] = state ? state.nextVersion : undefined;
+            resourceInputs["required"] = state ? state.required : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as KubernetesAddonArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
@@ -169,17 +169,15 @@ export class KubernetesAddon extends pulumi.CustomResource {
             if ((!args || args.version === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'version'");
             }
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["canUpgrade"] = undefined /*out*/;
-            inputs["nextVersion"] = undefined /*out*/;
-            inputs["required"] = undefined /*out*/;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["canUpgrade"] = undefined /*out*/;
+            resourceInputs["nextVersion"] = undefined /*out*/;
+            resourceInputs["required"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(KubernetesAddon.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(KubernetesAddon.__pulumiType, name, resourceInputs, opts);
     }
 }
 

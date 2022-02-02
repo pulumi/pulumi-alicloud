@@ -181,60 +181,58 @@ export class BackupPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: BackupPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BackupPolicyArgs | BackupPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupPolicyState | undefined;
-            inputs["archiveBackupKeepCount"] = state ? state.archiveBackupKeepCount : undefined;
-            inputs["archiveBackupKeepPolicy"] = state ? state.archiveBackupKeepPolicy : undefined;
-            inputs["archiveBackupRetentionPeriod"] = state ? state.archiveBackupRetentionPeriod : undefined;
-            inputs["backupPeriods"] = state ? state.backupPeriods : undefined;
-            inputs["backupRetentionPeriod"] = state ? state.backupRetentionPeriod : undefined;
-            inputs["backupTime"] = state ? state.backupTime : undefined;
-            inputs["compressType"] = state ? state.compressType : undefined;
-            inputs["enableBackupLog"] = state ? state.enableBackupLog : undefined;
-            inputs["highSpaceUsageProtection"] = state ? state.highSpaceUsageProtection : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["localLogRetentionHours"] = state ? state.localLogRetentionHours : undefined;
-            inputs["localLogRetentionSpace"] = state ? state.localLogRetentionSpace : undefined;
-            inputs["logBackup"] = state ? state.logBackup : undefined;
-            inputs["logBackupFrequency"] = state ? state.logBackupFrequency : undefined;
-            inputs["logBackupRetentionPeriod"] = state ? state.logBackupRetentionPeriod : undefined;
-            inputs["logRetentionPeriod"] = state ? state.logRetentionPeriod : undefined;
-            inputs["preferredBackupPeriods"] = state ? state.preferredBackupPeriods : undefined;
-            inputs["preferredBackupTime"] = state ? state.preferredBackupTime : undefined;
-            inputs["releasedKeepPolicy"] = state ? state.releasedKeepPolicy : undefined;
-            inputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
+            resourceInputs["archiveBackupKeepCount"] = state ? state.archiveBackupKeepCount : undefined;
+            resourceInputs["archiveBackupKeepPolicy"] = state ? state.archiveBackupKeepPolicy : undefined;
+            resourceInputs["archiveBackupRetentionPeriod"] = state ? state.archiveBackupRetentionPeriod : undefined;
+            resourceInputs["backupPeriods"] = state ? state.backupPeriods : undefined;
+            resourceInputs["backupRetentionPeriod"] = state ? state.backupRetentionPeriod : undefined;
+            resourceInputs["backupTime"] = state ? state.backupTime : undefined;
+            resourceInputs["compressType"] = state ? state.compressType : undefined;
+            resourceInputs["enableBackupLog"] = state ? state.enableBackupLog : undefined;
+            resourceInputs["highSpaceUsageProtection"] = state ? state.highSpaceUsageProtection : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["localLogRetentionHours"] = state ? state.localLogRetentionHours : undefined;
+            resourceInputs["localLogRetentionSpace"] = state ? state.localLogRetentionSpace : undefined;
+            resourceInputs["logBackup"] = state ? state.logBackup : undefined;
+            resourceInputs["logBackupFrequency"] = state ? state.logBackupFrequency : undefined;
+            resourceInputs["logBackupRetentionPeriod"] = state ? state.logBackupRetentionPeriod : undefined;
+            resourceInputs["logRetentionPeriod"] = state ? state.logRetentionPeriod : undefined;
+            resourceInputs["preferredBackupPeriods"] = state ? state.preferredBackupPeriods : undefined;
+            resourceInputs["preferredBackupTime"] = state ? state.preferredBackupTime : undefined;
+            resourceInputs["releasedKeepPolicy"] = state ? state.releasedKeepPolicy : undefined;
+            resourceInputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
         } else {
             const args = argsOrState as BackupPolicyArgs | undefined;
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["archiveBackupKeepCount"] = args ? args.archiveBackupKeepCount : undefined;
-            inputs["archiveBackupKeepPolicy"] = args ? args.archiveBackupKeepPolicy : undefined;
-            inputs["archiveBackupRetentionPeriod"] = args ? args.archiveBackupRetentionPeriod : undefined;
-            inputs["backupPeriods"] = args ? args.backupPeriods : undefined;
-            inputs["backupRetentionPeriod"] = args ? args.backupRetentionPeriod : undefined;
-            inputs["backupTime"] = args ? args.backupTime : undefined;
-            inputs["compressType"] = args ? args.compressType : undefined;
-            inputs["enableBackupLog"] = args ? args.enableBackupLog : undefined;
-            inputs["highSpaceUsageProtection"] = args ? args.highSpaceUsageProtection : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["localLogRetentionHours"] = args ? args.localLogRetentionHours : undefined;
-            inputs["localLogRetentionSpace"] = args ? args.localLogRetentionSpace : undefined;
-            inputs["logBackup"] = args ? args.logBackup : undefined;
-            inputs["logBackupFrequency"] = args ? args.logBackupFrequency : undefined;
-            inputs["logBackupRetentionPeriod"] = args ? args.logBackupRetentionPeriod : undefined;
-            inputs["logRetentionPeriod"] = args ? args.logRetentionPeriod : undefined;
-            inputs["preferredBackupPeriods"] = args ? args.preferredBackupPeriods : undefined;
-            inputs["preferredBackupTime"] = args ? args.preferredBackupTime : undefined;
-            inputs["releasedKeepPolicy"] = args ? args.releasedKeepPolicy : undefined;
-            inputs["retentionPeriod"] = args ? args.retentionPeriod : undefined;
+            resourceInputs["archiveBackupKeepCount"] = args ? args.archiveBackupKeepCount : undefined;
+            resourceInputs["archiveBackupKeepPolicy"] = args ? args.archiveBackupKeepPolicy : undefined;
+            resourceInputs["archiveBackupRetentionPeriod"] = args ? args.archiveBackupRetentionPeriod : undefined;
+            resourceInputs["backupPeriods"] = args ? args.backupPeriods : undefined;
+            resourceInputs["backupRetentionPeriod"] = args ? args.backupRetentionPeriod : undefined;
+            resourceInputs["backupTime"] = args ? args.backupTime : undefined;
+            resourceInputs["compressType"] = args ? args.compressType : undefined;
+            resourceInputs["enableBackupLog"] = args ? args.enableBackupLog : undefined;
+            resourceInputs["highSpaceUsageProtection"] = args ? args.highSpaceUsageProtection : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["localLogRetentionHours"] = args ? args.localLogRetentionHours : undefined;
+            resourceInputs["localLogRetentionSpace"] = args ? args.localLogRetentionSpace : undefined;
+            resourceInputs["logBackup"] = args ? args.logBackup : undefined;
+            resourceInputs["logBackupFrequency"] = args ? args.logBackupFrequency : undefined;
+            resourceInputs["logBackupRetentionPeriod"] = args ? args.logBackupRetentionPeriod : undefined;
+            resourceInputs["logRetentionPeriod"] = args ? args.logRetentionPeriod : undefined;
+            resourceInputs["preferredBackupPeriods"] = args ? args.preferredBackupPeriods : undefined;
+            resourceInputs["preferredBackupTime"] = args ? args.preferredBackupTime : undefined;
+            resourceInputs["releasedKeepPolicy"] = args ? args.releasedKeepPolicy : undefined;
+            resourceInputs["retentionPeriod"] = args ? args.retentionPeriod : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(BackupPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(BackupPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

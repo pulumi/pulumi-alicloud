@@ -31,9 +31,7 @@ export function getAutoSnapshotPolicies(args?: GetAutoSnapshotPoliciesArgs, opts
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ecs/getAutoSnapshotPolicies:getAutoSnapshotPolicies", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

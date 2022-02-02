@@ -86,28 +86,26 @@ export class AlarmContactGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: AlarmContactGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AlarmContactGroupArgs | AlarmContactGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlarmContactGroupState | undefined;
-            inputs["alarmContactGroupName"] = state ? state.alarmContactGroupName : undefined;
-            inputs["contacts"] = state ? state.contacts : undefined;
-            inputs["describe"] = state ? state.describe : undefined;
-            inputs["enableSubscribed"] = state ? state.enableSubscribed : undefined;
+            resourceInputs["alarmContactGroupName"] = state ? state.alarmContactGroupName : undefined;
+            resourceInputs["contacts"] = state ? state.contacts : undefined;
+            resourceInputs["describe"] = state ? state.describe : undefined;
+            resourceInputs["enableSubscribed"] = state ? state.enableSubscribed : undefined;
         } else {
             const args = argsOrState as AlarmContactGroupArgs | undefined;
             if ((!args || args.alarmContactGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'alarmContactGroupName'");
             }
-            inputs["alarmContactGroupName"] = args ? args.alarmContactGroupName : undefined;
-            inputs["contacts"] = args ? args.contacts : undefined;
-            inputs["describe"] = args ? args.describe : undefined;
-            inputs["enableSubscribed"] = args ? args.enableSubscribed : undefined;
+            resourceInputs["alarmContactGroupName"] = args ? args.alarmContactGroupName : undefined;
+            resourceInputs["contacts"] = args ? args.contacts : undefined;
+            resourceInputs["describe"] = args ? args.describe : undefined;
+            resourceInputs["enableSubscribed"] = args ? args.enableSubscribed : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AlarmContactGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AlarmContactGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

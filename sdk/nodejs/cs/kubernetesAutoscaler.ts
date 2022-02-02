@@ -69,16 +69,16 @@ export class KubernetesAutoscaler extends pulumi.CustomResource {
      */
     constructor(name: string, args: KubernetesAutoscalerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KubernetesAutoscalerArgs | KubernetesAutoscalerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KubernetesAutoscalerState | undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["coolDownDuration"] = state ? state.coolDownDuration : undefined;
-            inputs["deferScaleInDuration"] = state ? state.deferScaleInDuration : undefined;
-            inputs["nodepools"] = state ? state.nodepools : undefined;
-            inputs["useEcsRamRoleToken"] = state ? state.useEcsRamRoleToken : undefined;
-            inputs["utilization"] = state ? state.utilization : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["coolDownDuration"] = state ? state.coolDownDuration : undefined;
+            resourceInputs["deferScaleInDuration"] = state ? state.deferScaleInDuration : undefined;
+            resourceInputs["nodepools"] = state ? state.nodepools : undefined;
+            resourceInputs["useEcsRamRoleToken"] = state ? state.useEcsRamRoleToken : undefined;
+            resourceInputs["utilization"] = state ? state.utilization : undefined;
         } else {
             const args = argsOrState as KubernetesAutoscalerArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
@@ -93,17 +93,15 @@ export class KubernetesAutoscaler extends pulumi.CustomResource {
             if ((!args || args.utilization === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'utilization'");
             }
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["coolDownDuration"] = args ? args.coolDownDuration : undefined;
-            inputs["deferScaleInDuration"] = args ? args.deferScaleInDuration : undefined;
-            inputs["nodepools"] = args ? args.nodepools : undefined;
-            inputs["useEcsRamRoleToken"] = args ? args.useEcsRamRoleToken : undefined;
-            inputs["utilization"] = args ? args.utilization : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["coolDownDuration"] = args ? args.coolDownDuration : undefined;
+            resourceInputs["deferScaleInDuration"] = args ? args.deferScaleInDuration : undefined;
+            resourceInputs["nodepools"] = args ? args.nodepools : undefined;
+            resourceInputs["useEcsRamRoleToken"] = args ? args.useEcsRamRoleToken : undefined;
+            resourceInputs["utilization"] = args ? args.utilization : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(KubernetesAutoscaler.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(KubernetesAutoscaler.__pulumiType, name, resourceInputs, opts);
     }
 }
 

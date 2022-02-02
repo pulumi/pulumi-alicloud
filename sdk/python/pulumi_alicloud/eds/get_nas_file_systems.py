@@ -137,7 +137,7 @@ def get_nas_file_systems(ids: Optional[Sequence[str]] = None,
         nas_file_system_name="your_nas_file_system_name")
     ids = alicloud.eds.get_nas_file_systems()
     pulumi.export("ecdNasFileSystemId1", ids.systems[0].id)
-    name_regex = default_nas_file_system.nas_file_system_name.apply(lambda nas_file_system_name: alicloud.eds.get_nas_file_systems(name_regex=nas_file_system_name))
+    name_regex = default_nas_file_system.nas_file_system_name.apply(lambda nas_file_system_name: alicloud.eds.get_nas_file_systems_output(name_regex=nas_file_system_name))
     pulumi.export("ecdNasFileSystemId2", name_regex.systems[0].id)
     ```
 
@@ -201,7 +201,7 @@ def get_nas_file_systems_output(ids: Optional[pulumi.Input[Optional[Sequence[str
         nas_file_system_name="your_nas_file_system_name")
     ids = alicloud.eds.get_nas_file_systems()
     pulumi.export("ecdNasFileSystemId1", ids.systems[0].id)
-    name_regex = default_nas_file_system.nas_file_system_name.apply(lambda nas_file_system_name: alicloud.eds.get_nas_file_systems(name_regex=nas_file_system_name))
+    name_regex = default_nas_file_system.nas_file_system_name.apply(lambda nas_file_system_name: alicloud.eds.get_nas_file_systems_output(name_regex=nas_file_system_name))
     pulumi.export("ecdNasFileSystemId2", name_regex.systems[0].id)
     ```
 

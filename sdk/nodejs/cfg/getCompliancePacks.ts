@@ -31,9 +31,7 @@ export function getCompliancePacks(args?: GetCompliancePacksArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cfg/getCompliancePacks:getCompliancePacks", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,

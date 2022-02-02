@@ -27,9 +27,7 @@ export function getResourceDirectories(args?: GetResourceDirectoriesArgs, opts?:
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:resourcemanager/getResourceDirectories:getResourceDirectories", {
         "outputFile": args.outputFile,
     }, opts);

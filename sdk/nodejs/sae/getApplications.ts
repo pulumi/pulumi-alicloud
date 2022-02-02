@@ -50,9 +50,9 @@ import * as utilities from "../utilities";
  *     cpu: "500",
  *     memory: "2048",
  * });
- * const defaultApplications = defaultApplication.id.apply(id => alicloud.sae.getApplications({
- *     ids: [id],
- * }));
+ * const defaultApplications = alicloud.sae.getApplicationsOutput({
+ *     ids: [defaultApplication.id],
+ * });
  * export const saeApplicationId = defaultApplications.apply(defaultApplications => defaultApplications.applications?[0]?.id);
  * ```
  */
@@ -62,9 +62,7 @@ export function getApplications(args?: GetApplicationsArgs, opts?: pulumi.Invoke
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:sae/getApplications:getApplications", {
         "appName": args.appName,
         "enableDetails": args.enableDetails,

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Sddp
 {
@@ -36,14 +35,14 @@ namespace Pulumi.AliCloud.Sddp
         ///             Code = "access_failed_cnt",
         ///             Value = "10",
         ///         });
-        ///         var defaultConfigs = defaultConfig.Id.Apply(id =&gt; AliCloud.Sddp.GetConfigs.InvokeAsync(new AliCloud.Sddp.GetConfigsArgs
+        ///         var defaultConfigs = AliCloud.Sddp.GetConfigs.Invoke(new AliCloud.Sddp.GetConfigsInvokeArgs
         ///         {
         ///             Ids = 
         ///             {
-        ///                 id,
+        ///                 defaultConfig.Id,
         ///             },
         ///             OutputFile = "./t.json",
-        ///         }));
+        ///         });
         ///         this.SddpConfigId = defaultConfigs.Apply(defaultConfigs =&gt; defaultConfigs.Ids);
         ///     }
         /// 
@@ -55,7 +54,7 @@ namespace Pulumi.AliCloud.Sddp
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetConfigsResult> InvokeAsync(GetConfigsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConfigsResult>("alicloud:sddp/getConfigs:getConfigs", args ?? new GetConfigsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetConfigsResult>("alicloud:sddp/getConfigs:getConfigs", args ?? new GetConfigsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Sddp Configs of the current Alibaba Cloud user.
@@ -81,14 +80,14 @@ namespace Pulumi.AliCloud.Sddp
         ///             Code = "access_failed_cnt",
         ///             Value = "10",
         ///         });
-        ///         var defaultConfigs = defaultConfig.Id.Apply(id =&gt; AliCloud.Sddp.GetConfigs.InvokeAsync(new AliCloud.Sddp.GetConfigsArgs
+        ///         var defaultConfigs = AliCloud.Sddp.GetConfigs.Invoke(new AliCloud.Sddp.GetConfigsInvokeArgs
         ///         {
         ///             Ids = 
         ///             {
-        ///                 id,
+        ///                 defaultConfig.Id,
         ///             },
         ///             OutputFile = "./t.json",
-        ///         }));
+        ///         });
         ///         this.SddpConfigId = defaultConfigs.Apply(defaultConfigs =&gt; defaultConfigs.Ids);
         ///     }
         /// 
@@ -100,7 +99,7 @@ namespace Pulumi.AliCloud.Sddp
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetConfigsResult> Invoke(GetConfigsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConfigsResult>("alicloud:sddp/getConfigs:getConfigs", args ?? new GetConfigsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetConfigsResult>("alicloud:sddp/getConfigs:getConfigs", args ?? new GetConfigsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -75,14 +75,14 @@ export class DedicatedHostAccount extends pulumi.CustomResource {
      */
     constructor(name: string, args: DedicatedHostAccountArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DedicatedHostAccountArgs | DedicatedHostAccountState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DedicatedHostAccountState | undefined;
-            inputs["accountName"] = state ? state.accountName : undefined;
-            inputs["accountPassword"] = state ? state.accountPassword : undefined;
-            inputs["accountType"] = state ? state.accountType : undefined;
-            inputs["dedicatedHostId"] = state ? state.dedicatedHostId : undefined;
+            resourceInputs["accountName"] = state ? state.accountName : undefined;
+            resourceInputs["accountPassword"] = state ? state.accountPassword : undefined;
+            resourceInputs["accountType"] = state ? state.accountType : undefined;
+            resourceInputs["dedicatedHostId"] = state ? state.dedicatedHostId : undefined;
         } else {
             const args = argsOrState as DedicatedHostAccountArgs | undefined;
             if ((!args || args.accountName === undefined) && !opts.urn) {
@@ -94,15 +94,13 @@ export class DedicatedHostAccount extends pulumi.CustomResource {
             if ((!args || args.dedicatedHostId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dedicatedHostId'");
             }
-            inputs["accountName"] = args ? args.accountName : undefined;
-            inputs["accountPassword"] = args ? args.accountPassword : undefined;
-            inputs["accountType"] = args ? args.accountType : undefined;
-            inputs["dedicatedHostId"] = args ? args.dedicatedHostId : undefined;
+            resourceInputs["accountName"] = args ? args.accountName : undefined;
+            resourceInputs["accountPassword"] = args ? args.accountPassword : undefined;
+            resourceInputs["accountType"] = args ? args.accountType : undefined;
+            resourceInputs["dedicatedHostId"] = args ? args.dedicatedHostId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DedicatedHostAccount.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DedicatedHostAccount.__pulumiType, name, resourceInputs, opts);
     }
 }
 

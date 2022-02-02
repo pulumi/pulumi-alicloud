@@ -344,7 +344,7 @@ type RdsAccountInput interface {
 }
 
 func (*RdsAccount) ElementType() reflect.Type {
-	return reflect.TypeOf((*RdsAccount)(nil))
+	return reflect.TypeOf((**RdsAccount)(nil)).Elem()
 }
 
 func (i *RdsAccount) ToRdsAccountOutput() RdsAccountOutput {
@@ -353,35 +353,6 @@ func (i *RdsAccount) ToRdsAccountOutput() RdsAccountOutput {
 
 func (i *RdsAccount) ToRdsAccountOutputWithContext(ctx context.Context) RdsAccountOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RdsAccountOutput)
-}
-
-func (i *RdsAccount) ToRdsAccountPtrOutput() RdsAccountPtrOutput {
-	return i.ToRdsAccountPtrOutputWithContext(context.Background())
-}
-
-func (i *RdsAccount) ToRdsAccountPtrOutputWithContext(ctx context.Context) RdsAccountPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RdsAccountPtrOutput)
-}
-
-type RdsAccountPtrInput interface {
-	pulumi.Input
-
-	ToRdsAccountPtrOutput() RdsAccountPtrOutput
-	ToRdsAccountPtrOutputWithContext(ctx context.Context) RdsAccountPtrOutput
-}
-
-type rdsAccountPtrType RdsAccountArgs
-
-func (*rdsAccountPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RdsAccount)(nil))
-}
-
-func (i *rdsAccountPtrType) ToRdsAccountPtrOutput() RdsAccountPtrOutput {
-	return i.ToRdsAccountPtrOutputWithContext(context.Background())
-}
-
-func (i *rdsAccountPtrType) ToRdsAccountPtrOutputWithContext(ctx context.Context) RdsAccountPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RdsAccountPtrOutput)
 }
 
 // RdsAccountArrayInput is an input type that accepts RdsAccountArray and RdsAccountArrayOutput values.
@@ -437,7 +408,7 @@ func (i RdsAccountMap) ToRdsAccountMapOutputWithContext(ctx context.Context) Rds
 type RdsAccountOutput struct{ *pulumi.OutputState }
 
 func (RdsAccountOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RdsAccount)(nil))
+	return reflect.TypeOf((**RdsAccount)(nil)).Elem()
 }
 
 func (o RdsAccountOutput) ToRdsAccountOutput() RdsAccountOutput {
@@ -448,44 +419,10 @@ func (o RdsAccountOutput) ToRdsAccountOutputWithContext(ctx context.Context) Rds
 	return o
 }
 
-func (o RdsAccountOutput) ToRdsAccountPtrOutput() RdsAccountPtrOutput {
-	return o.ToRdsAccountPtrOutputWithContext(context.Background())
-}
-
-func (o RdsAccountOutput) ToRdsAccountPtrOutputWithContext(ctx context.Context) RdsAccountPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RdsAccount) *RdsAccount {
-		return &v
-	}).(RdsAccountPtrOutput)
-}
-
-type RdsAccountPtrOutput struct{ *pulumi.OutputState }
-
-func (RdsAccountPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RdsAccount)(nil))
-}
-
-func (o RdsAccountPtrOutput) ToRdsAccountPtrOutput() RdsAccountPtrOutput {
-	return o
-}
-
-func (o RdsAccountPtrOutput) ToRdsAccountPtrOutputWithContext(ctx context.Context) RdsAccountPtrOutput {
-	return o
-}
-
-func (o RdsAccountPtrOutput) Elem() RdsAccountOutput {
-	return o.ApplyT(func(v *RdsAccount) RdsAccount {
-		if v != nil {
-			return *v
-		}
-		var ret RdsAccount
-		return ret
-	}).(RdsAccountOutput)
-}
-
 type RdsAccountArrayOutput struct{ *pulumi.OutputState }
 
 func (RdsAccountArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RdsAccount)(nil))
+	return reflect.TypeOf((*[]*RdsAccount)(nil)).Elem()
 }
 
 func (o RdsAccountArrayOutput) ToRdsAccountArrayOutput() RdsAccountArrayOutput {
@@ -497,15 +434,15 @@ func (o RdsAccountArrayOutput) ToRdsAccountArrayOutputWithContext(ctx context.Co
 }
 
 func (o RdsAccountArrayOutput) Index(i pulumi.IntInput) RdsAccountOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RdsAccount {
-		return vs[0].([]RdsAccount)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RdsAccount {
+		return vs[0].([]*RdsAccount)[vs[1].(int)]
 	}).(RdsAccountOutput)
 }
 
 type RdsAccountMapOutput struct{ *pulumi.OutputState }
 
 func (RdsAccountMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]RdsAccount)(nil))
+	return reflect.TypeOf((*map[string]*RdsAccount)(nil)).Elem()
 }
 
 func (o RdsAccountMapOutput) ToRdsAccountMapOutput() RdsAccountMapOutput {
@@ -517,18 +454,16 @@ func (o RdsAccountMapOutput) ToRdsAccountMapOutputWithContext(ctx context.Contex
 }
 
 func (o RdsAccountMapOutput) MapIndex(k pulumi.StringInput) RdsAccountOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RdsAccount {
-		return vs[0].(map[string]RdsAccount)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *RdsAccount {
+		return vs[0].(map[string]*RdsAccount)[vs[1].(string)]
 	}).(RdsAccountOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsAccountInput)(nil)).Elem(), &RdsAccount{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RdsAccountPtrInput)(nil)).Elem(), &RdsAccount{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsAccountArrayInput)(nil)).Elem(), RdsAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsAccountMapInput)(nil)).Elem(), RdsAccountMap{})
 	pulumi.RegisterOutputType(RdsAccountOutput{})
-	pulumi.RegisterOutputType(RdsAccountPtrOutput{})
 	pulumi.RegisterOutputType(RdsAccountArrayOutput{})
 	pulumi.RegisterOutputType(RdsAccountMapOutput{})
 }

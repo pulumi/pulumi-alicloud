@@ -30,9 +30,7 @@ export function getAlertContactGroups(args?: GetAlertContactGroupsArgs, opts?: p
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:arms/getAlertContactGroups:getAlertContactGroups", {
         "alertContactGroupName": args.alertContactGroupName,
         "contactId": args.contactId,

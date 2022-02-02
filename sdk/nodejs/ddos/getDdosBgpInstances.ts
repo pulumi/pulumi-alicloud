@@ -29,9 +29,7 @@ export function getDdosBgpInstances(args?: GetDdosBgpInstancesArgs, opts?: pulum
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ddos/getDdosBgpInstances:getDdosBgpInstances", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

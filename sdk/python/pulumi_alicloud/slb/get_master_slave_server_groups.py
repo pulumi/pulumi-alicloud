@@ -177,7 +177,7 @@ def get_master_slave_server_groups(ids: Optional[Sequence[str]] = None,
                 server_type="Slave",
             ),
         ])
-    sample_ds = instance_application_load_balancer.id.apply(lambda id: alicloud.slb.get_master_slave_server_groups(load_balancer_id=id))
+    sample_ds = alicloud.slb.get_master_slave_server_groups_output(load_balancer_id=instance_application_load_balancer.id)
     pulumi.export("firstSlbServerGroupId", sample_ds.groups[0].id)
     ```
 
@@ -278,7 +278,7 @@ def get_master_slave_server_groups_output(ids: Optional[pulumi.Input[Optional[Se
                 server_type="Slave",
             ),
         ])
-    sample_ds = instance_application_load_balancer.id.apply(lambda id: alicloud.slb.get_master_slave_server_groups(load_balancer_id=id))
+    sample_ds = alicloud.slb.get_master_slave_server_groups_output(load_balancer_id=instance_application_load_balancer.id)
     pulumi.export("firstSlbServerGroupId", sample_ds.groups[0].id)
     ```
 

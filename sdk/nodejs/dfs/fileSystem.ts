@@ -111,18 +111,18 @@ export class FileSystem extends pulumi.CustomResource {
      */
     constructor(name: string, args: FileSystemArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FileSystemArgs | FileSystemState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FileSystemState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["fileSystemName"] = state ? state.fileSystemName : undefined;
-            inputs["protocolType"] = state ? state.protocolType : undefined;
-            inputs["provisionedThroughputInMiBps"] = state ? state.provisionedThroughputInMiBps : undefined;
-            inputs["spaceCapacity"] = state ? state.spaceCapacity : undefined;
-            inputs["storageType"] = state ? state.storageType : undefined;
-            inputs["throughputMode"] = state ? state.throughputMode : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["fileSystemName"] = state ? state.fileSystemName : undefined;
+            resourceInputs["protocolType"] = state ? state.protocolType : undefined;
+            resourceInputs["provisionedThroughputInMiBps"] = state ? state.provisionedThroughputInMiBps : undefined;
+            resourceInputs["spaceCapacity"] = state ? state.spaceCapacity : undefined;
+            resourceInputs["storageType"] = state ? state.storageType : undefined;
+            resourceInputs["throughputMode"] = state ? state.throughputMode : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as FileSystemArgs | undefined;
             if ((!args || args.fileSystemName === undefined) && !opts.urn) {
@@ -140,19 +140,17 @@ export class FileSystem extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["fileSystemName"] = args ? args.fileSystemName : undefined;
-            inputs["protocolType"] = args ? args.protocolType : undefined;
-            inputs["provisionedThroughputInMiBps"] = args ? args.provisionedThroughputInMiBps : undefined;
-            inputs["spaceCapacity"] = args ? args.spaceCapacity : undefined;
-            inputs["storageType"] = args ? args.storageType : undefined;
-            inputs["throughputMode"] = args ? args.throughputMode : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["fileSystemName"] = args ? args.fileSystemName : undefined;
+            resourceInputs["protocolType"] = args ? args.protocolType : undefined;
+            resourceInputs["provisionedThroughputInMiBps"] = args ? args.provisionedThroughputInMiBps : undefined;
+            resourceInputs["spaceCapacity"] = args ? args.spaceCapacity : undefined;
+            resourceInputs["storageType"] = args ? args.storageType : undefined;
+            resourceInputs["throughputMode"] = args ? args.throughputMode : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(FileSystem.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(FileSystem.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dns
 {
@@ -48,7 +47,7 @@ namespace Pulumi.AliCloud.Dns
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetResolutionLinesResult> InvokeAsync(GetResolutionLinesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResolutionLinesResult>("alicloud:dns/getResolutionLines:getResolutionLines", args ?? new GetResolutionLinesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetResolutionLinesResult>("alicloud:dns/getResolutionLines:getResolutionLines", args ?? new GetResolutionLinesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of DNS Resolution Lines in an Alibaba Cloud account according to the specified filters.
@@ -86,7 +85,7 @@ namespace Pulumi.AliCloud.Dns
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetResolutionLinesResult> Invoke(GetResolutionLinesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetResolutionLinesResult>("alicloud:dns/getResolutionLines:getResolutionLines", args ?? new GetResolutionLinesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetResolutionLinesResult>("alicloud:dns/getResolutionLines:getResolutionLines", args ?? new GetResolutionLinesInvokeArgs(), options.WithDefaults());
     }
 
 

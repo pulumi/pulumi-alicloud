@@ -100,15 +100,15 @@ export class Policy extends pulumi.CustomResource {
      */
     constructor(name: string, args: PolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PolicyArgs | PolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
-            inputs["defaultVersion"] = state ? state.defaultVersion : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["policyDocument"] = state ? state.policyDocument : undefined;
-            inputs["policyName"] = state ? state.policyName : undefined;
-            inputs["policyType"] = state ? state.policyType : undefined;
+            resourceInputs["defaultVersion"] = state ? state.defaultVersion : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["policyDocument"] = state ? state.policyDocument : undefined;
+            resourceInputs["policyName"] = state ? state.policyName : undefined;
+            resourceInputs["policyType"] = state ? state.policyType : undefined;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
             if ((!args || args.policyDocument === undefined) && !opts.urn) {
@@ -117,16 +117,14 @@ export class Policy extends pulumi.CustomResource {
             if ((!args || args.policyName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyName'");
             }
-            inputs["defaultVersion"] = args ? args.defaultVersion : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["policyDocument"] = args ? args.policyDocument : undefined;
-            inputs["policyName"] = args ? args.policyName : undefined;
-            inputs["policyType"] = undefined /*out*/;
+            resourceInputs["defaultVersion"] = args ? args.defaultVersion : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["policyDocument"] = args ? args.policyDocument : undefined;
+            resourceInputs["policyName"] = args ? args.policyName : undefined;
+            resourceInputs["policyType"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Policy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Policy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

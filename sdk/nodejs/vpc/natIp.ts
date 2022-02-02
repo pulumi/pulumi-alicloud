@@ -135,38 +135,36 @@ export class NatIp extends pulumi.CustomResource {
      */
     constructor(name: string, args: NatIpArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NatIpArgs | NatIpState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NatIpState | undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["natGatewayId"] = state ? state.natGatewayId : undefined;
-            inputs["natIp"] = state ? state.natIp : undefined;
-            inputs["natIpCidr"] = state ? state.natIpCidr : undefined;
-            inputs["natIpCidrId"] = state ? state.natIpCidrId : undefined;
-            inputs["natIpDescription"] = state ? state.natIpDescription : undefined;
-            inputs["natIpId"] = state ? state.natIpId : undefined;
-            inputs["natIpName"] = state ? state.natIpName : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["natGatewayId"] = state ? state.natGatewayId : undefined;
+            resourceInputs["natIp"] = state ? state.natIp : undefined;
+            resourceInputs["natIpCidr"] = state ? state.natIpCidr : undefined;
+            resourceInputs["natIpCidrId"] = state ? state.natIpCidrId : undefined;
+            resourceInputs["natIpDescription"] = state ? state.natIpDescription : undefined;
+            resourceInputs["natIpId"] = state ? state.natIpId : undefined;
+            resourceInputs["natIpName"] = state ? state.natIpName : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as NatIpArgs | undefined;
             if ((!args || args.natGatewayId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'natGatewayId'");
             }
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["natGatewayId"] = args ? args.natGatewayId : undefined;
-            inputs["natIp"] = args ? args.natIp : undefined;
-            inputs["natIpCidr"] = args ? args.natIpCidr : undefined;
-            inputs["natIpCidrId"] = args ? args.natIpCidrId : undefined;
-            inputs["natIpDescription"] = args ? args.natIpDescription : undefined;
-            inputs["natIpName"] = args ? args.natIpName : undefined;
-            inputs["natIpId"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["natGatewayId"] = args ? args.natGatewayId : undefined;
+            resourceInputs["natIp"] = args ? args.natIp : undefined;
+            resourceInputs["natIpCidr"] = args ? args.natIpCidr : undefined;
+            resourceInputs["natIpCidrId"] = args ? args.natIpCidrId : undefined;
+            resourceInputs["natIpDescription"] = args ? args.natIpDescription : undefined;
+            resourceInputs["natIpName"] = args ? args.natIpName : undefined;
+            resourceInputs["natIpId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(NatIp.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(NatIp.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -38,9 +38,7 @@ export function getTemplateScratches(args?: GetTemplateScratchesArgs, opts?: pul
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ros/getTemplateScratches:getTemplateScratches", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,

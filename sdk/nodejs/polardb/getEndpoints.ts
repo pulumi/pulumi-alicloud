@@ -32,9 +32,7 @@ export function getEndpoints(args: GetEndpointsArgs, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:polardb/getEndpoints:getEndpoints", {
         "dbClusterId": args.dbClusterId,
         "dbEndpointId": args.dbEndpointId,

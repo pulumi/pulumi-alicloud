@@ -107,16 +107,16 @@ export class ServerBackupPlan extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServerBackupPlanArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServerBackupPlanArgs | ServerBackupPlanState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerBackupPlanState | undefined;
-            inputs["details"] = state ? state.details : undefined;
-            inputs["disabled"] = state ? state.disabled : undefined;
-            inputs["ecsServerBackupPlanName"] = state ? state.ecsServerBackupPlanName : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["retention"] = state ? state.retention : undefined;
-            inputs["schedule"] = state ? state.schedule : undefined;
+            resourceInputs["details"] = state ? state.details : undefined;
+            resourceInputs["disabled"] = state ? state.disabled : undefined;
+            resourceInputs["ecsServerBackupPlanName"] = state ? state.ecsServerBackupPlanName : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["retention"] = state ? state.retention : undefined;
+            resourceInputs["schedule"] = state ? state.schedule : undefined;
         } else {
             const args = argsOrState as ServerBackupPlanArgs | undefined;
             if ((!args || args.details === undefined) && !opts.urn) {
@@ -134,17 +134,15 @@ export class ServerBackupPlan extends pulumi.CustomResource {
             if ((!args || args.schedule === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'schedule'");
             }
-            inputs["details"] = args ? args.details : undefined;
-            inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["ecsServerBackupPlanName"] = args ? args.ecsServerBackupPlanName : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["retention"] = args ? args.retention : undefined;
-            inputs["schedule"] = args ? args.schedule : undefined;
+            resourceInputs["details"] = args ? args.details : undefined;
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
+            resourceInputs["ecsServerBackupPlanName"] = args ? args.ecsServerBackupPlanName : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["retention"] = args ? args.retention : undefined;
+            resourceInputs["schedule"] = args ? args.schedule : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ServerBackupPlan.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ServerBackupPlan.__pulumiType, name, resourceInputs, opts);
     }
 }
 

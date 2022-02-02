@@ -125,44 +125,42 @@ export class SimpleOfficeSite extends pulumi.CustomResource {
      */
     constructor(name: string, args: SimpleOfficeSiteArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SimpleOfficeSiteArgs | SimpleOfficeSiteState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SimpleOfficeSiteState | undefined;
-            inputs["bandwidth"] = state ? state.bandwidth : undefined;
-            inputs["cenId"] = state ? state.cenId : undefined;
-            inputs["cenOwnerId"] = state ? state.cenOwnerId : undefined;
-            inputs["cidrBlock"] = state ? state.cidrBlock : undefined;
-            inputs["desktopAccessType"] = state ? state.desktopAccessType : undefined;
-            inputs["enableAdminAccess"] = state ? state.enableAdminAccess : undefined;
-            inputs["enableCrossDesktopAccess"] = state ? state.enableCrossDesktopAccess : undefined;
-            inputs["enableInternetAccess"] = state ? state.enableInternetAccess : undefined;
-            inputs["mfaEnabled"] = state ? state.mfaEnabled : undefined;
-            inputs["officeSiteName"] = state ? state.officeSiteName : undefined;
-            inputs["ssoEnabled"] = state ? state.ssoEnabled : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
+            resourceInputs["cenId"] = state ? state.cenId : undefined;
+            resourceInputs["cenOwnerId"] = state ? state.cenOwnerId : undefined;
+            resourceInputs["cidrBlock"] = state ? state.cidrBlock : undefined;
+            resourceInputs["desktopAccessType"] = state ? state.desktopAccessType : undefined;
+            resourceInputs["enableAdminAccess"] = state ? state.enableAdminAccess : undefined;
+            resourceInputs["enableCrossDesktopAccess"] = state ? state.enableCrossDesktopAccess : undefined;
+            resourceInputs["enableInternetAccess"] = state ? state.enableInternetAccess : undefined;
+            resourceInputs["mfaEnabled"] = state ? state.mfaEnabled : undefined;
+            resourceInputs["officeSiteName"] = state ? state.officeSiteName : undefined;
+            resourceInputs["ssoEnabled"] = state ? state.ssoEnabled : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as SimpleOfficeSiteArgs | undefined;
             if ((!args || args.cidrBlock === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cidrBlock'");
             }
-            inputs["bandwidth"] = args ? args.bandwidth : undefined;
-            inputs["cenId"] = args ? args.cenId : undefined;
-            inputs["cenOwnerId"] = args ? args.cenOwnerId : undefined;
-            inputs["cidrBlock"] = args ? args.cidrBlock : undefined;
-            inputs["desktopAccessType"] = args ? args.desktopAccessType : undefined;
-            inputs["enableAdminAccess"] = args ? args.enableAdminAccess : undefined;
-            inputs["enableCrossDesktopAccess"] = args ? args.enableCrossDesktopAccess : undefined;
-            inputs["enableInternetAccess"] = args ? args.enableInternetAccess : undefined;
-            inputs["mfaEnabled"] = args ? args.mfaEnabled : undefined;
-            inputs["officeSiteName"] = args ? args.officeSiteName : undefined;
-            inputs["ssoEnabled"] = args ? args.ssoEnabled : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
+            resourceInputs["cenId"] = args ? args.cenId : undefined;
+            resourceInputs["cenOwnerId"] = args ? args.cenOwnerId : undefined;
+            resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
+            resourceInputs["desktopAccessType"] = args ? args.desktopAccessType : undefined;
+            resourceInputs["enableAdminAccess"] = args ? args.enableAdminAccess : undefined;
+            resourceInputs["enableCrossDesktopAccess"] = args ? args.enableCrossDesktopAccess : undefined;
+            resourceInputs["enableInternetAccess"] = args ? args.enableInternetAccess : undefined;
+            resourceInputs["mfaEnabled"] = args ? args.mfaEnabled : undefined;
+            resourceInputs["officeSiteName"] = args ? args.officeSiteName : undefined;
+            resourceInputs["ssoEnabled"] = args ? args.ssoEnabled : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SimpleOfficeSite.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SimpleOfficeSite.__pulumiType, name, resourceInputs, opts);
     }
 }
 

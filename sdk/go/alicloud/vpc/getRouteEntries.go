@@ -124,6 +124,9 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		_ = vpc.GetRouteEntriesOutput(ctx, vpc.GetRouteEntriesOutputArgs{
+// 			RouteTableId: fooRouteEntry.RouteTableId,
+// 		}, nil)
 // 		return nil
 // 	})
 // }

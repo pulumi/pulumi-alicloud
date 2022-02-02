@@ -39,9 +39,7 @@ export function getCommonBandwidthPackages(args?: GetCommonBandwidthPackagesArgs
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", {
         "bandwidthPackageName": args.bandwidthPackageName,
         "dryRun": args.dryRun,

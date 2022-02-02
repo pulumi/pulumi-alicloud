@@ -144,32 +144,32 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     constructor(name: string, args: ShardingInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ShardingInstanceArgs | ShardingInstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ShardingInstanceState | undefined;
-            inputs["accountPassword"] = state ? state.accountPassword : undefined;
-            inputs["autoRenew"] = state ? state.autoRenew : undefined;
-            inputs["backupPeriods"] = state ? state.backupPeriods : undefined;
-            inputs["backupTime"] = state ? state.backupTime : undefined;
-            inputs["configServerLists"] = state ? state.configServerLists : undefined;
-            inputs["engineVersion"] = state ? state.engineVersion : undefined;
-            inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
-            inputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
-            inputs["mongoLists"] = state ? state.mongoLists : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["orderType"] = state ? state.orderType : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
-            inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            inputs["securityIpLists"] = state ? state.securityIpLists : undefined;
-            inputs["shardLists"] = state ? state.shardLists : undefined;
-            inputs["storageEngine"] = state ? state.storageEngine : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["tdeStatus"] = state ? state.tdeStatus : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountPassword"] = state ? state.accountPassword : undefined;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["backupPeriods"] = state ? state.backupPeriods : undefined;
+            resourceInputs["backupTime"] = state ? state.backupTime : undefined;
+            resourceInputs["configServerLists"] = state ? state.configServerLists : undefined;
+            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
+            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
+            resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
+            resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
+            resourceInputs["mongoLists"] = state ? state.mongoLists : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["orderType"] = state ? state.orderType : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
+            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["securityIpLists"] = state ? state.securityIpLists : undefined;
+            resourceInputs["shardLists"] = state ? state.shardLists : undefined;
+            resourceInputs["storageEngine"] = state ? state.storageEngine : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["tdeStatus"] = state ? state.tdeStatus : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ShardingInstanceArgs | undefined;
             if ((!args || args.engineVersion === undefined) && !opts.urn) {
@@ -181,33 +181,31 @@ export class ShardingInstance extends pulumi.CustomResource {
             if ((!args || args.shardLists === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'shardLists'");
             }
-            inputs["accountPassword"] = args ? args.accountPassword : undefined;
-            inputs["autoRenew"] = args ? args.autoRenew : undefined;
-            inputs["backupPeriods"] = args ? args.backupPeriods : undefined;
-            inputs["backupTime"] = args ? args.backupTime : undefined;
-            inputs["engineVersion"] = args ? args.engineVersion : undefined;
-            inputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            inputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
-            inputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
-            inputs["mongoLists"] = args ? args.mongoLists : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["orderType"] = args ? args.orderType : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            inputs["securityIpLists"] = args ? args.securityIpLists : undefined;
-            inputs["shardLists"] = args ? args.shardLists : undefined;
-            inputs["storageEngine"] = args ? args.storageEngine : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["tdeStatus"] = args ? args.tdeStatus : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["configServerLists"] = undefined /*out*/;
-            inputs["retentionPeriod"] = undefined /*out*/;
+            resourceInputs["accountPassword"] = args ? args.accountPassword : undefined;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["backupPeriods"] = args ? args.backupPeriods : undefined;
+            resourceInputs["backupTime"] = args ? args.backupTime : undefined;
+            resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
+            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
+            resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
+            resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
+            resourceInputs["mongoLists"] = args ? args.mongoLists : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["orderType"] = args ? args.orderType : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["securityIpLists"] = args ? args.securityIpLists : undefined;
+            resourceInputs["shardLists"] = args ? args.shardLists : undefined;
+            resourceInputs["storageEngine"] = args ? args.storageEngine : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["tdeStatus"] = args ? args.tdeStatus : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["configServerLists"] = undefined /*out*/;
+            resourceInputs["retentionPeriod"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ShardingInstance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ShardingInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

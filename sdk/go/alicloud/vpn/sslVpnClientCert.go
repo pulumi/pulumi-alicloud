@@ -133,7 +133,7 @@ type SslVpnClientCertInput interface {
 }
 
 func (*SslVpnClientCert) ElementType() reflect.Type {
-	return reflect.TypeOf((*SslVpnClientCert)(nil))
+	return reflect.TypeOf((**SslVpnClientCert)(nil)).Elem()
 }
 
 func (i *SslVpnClientCert) ToSslVpnClientCertOutput() SslVpnClientCertOutput {
@@ -142,35 +142,6 @@ func (i *SslVpnClientCert) ToSslVpnClientCertOutput() SslVpnClientCertOutput {
 
 func (i *SslVpnClientCert) ToSslVpnClientCertOutputWithContext(ctx context.Context) SslVpnClientCertOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SslVpnClientCertOutput)
-}
-
-func (i *SslVpnClientCert) ToSslVpnClientCertPtrOutput() SslVpnClientCertPtrOutput {
-	return i.ToSslVpnClientCertPtrOutputWithContext(context.Background())
-}
-
-func (i *SslVpnClientCert) ToSslVpnClientCertPtrOutputWithContext(ctx context.Context) SslVpnClientCertPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SslVpnClientCertPtrOutput)
-}
-
-type SslVpnClientCertPtrInput interface {
-	pulumi.Input
-
-	ToSslVpnClientCertPtrOutput() SslVpnClientCertPtrOutput
-	ToSslVpnClientCertPtrOutputWithContext(ctx context.Context) SslVpnClientCertPtrOutput
-}
-
-type sslVpnClientCertPtrType SslVpnClientCertArgs
-
-func (*sslVpnClientCertPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SslVpnClientCert)(nil))
-}
-
-func (i *sslVpnClientCertPtrType) ToSslVpnClientCertPtrOutput() SslVpnClientCertPtrOutput {
-	return i.ToSslVpnClientCertPtrOutputWithContext(context.Background())
-}
-
-func (i *sslVpnClientCertPtrType) ToSslVpnClientCertPtrOutputWithContext(ctx context.Context) SslVpnClientCertPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SslVpnClientCertPtrOutput)
 }
 
 // SslVpnClientCertArrayInput is an input type that accepts SslVpnClientCertArray and SslVpnClientCertArrayOutput values.
@@ -226,7 +197,7 @@ func (i SslVpnClientCertMap) ToSslVpnClientCertMapOutputWithContext(ctx context.
 type SslVpnClientCertOutput struct{ *pulumi.OutputState }
 
 func (SslVpnClientCertOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SslVpnClientCert)(nil))
+	return reflect.TypeOf((**SslVpnClientCert)(nil)).Elem()
 }
 
 func (o SslVpnClientCertOutput) ToSslVpnClientCertOutput() SslVpnClientCertOutput {
@@ -237,44 +208,10 @@ func (o SslVpnClientCertOutput) ToSslVpnClientCertOutputWithContext(ctx context.
 	return o
 }
 
-func (o SslVpnClientCertOutput) ToSslVpnClientCertPtrOutput() SslVpnClientCertPtrOutput {
-	return o.ToSslVpnClientCertPtrOutputWithContext(context.Background())
-}
-
-func (o SslVpnClientCertOutput) ToSslVpnClientCertPtrOutputWithContext(ctx context.Context) SslVpnClientCertPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SslVpnClientCert) *SslVpnClientCert {
-		return &v
-	}).(SslVpnClientCertPtrOutput)
-}
-
-type SslVpnClientCertPtrOutput struct{ *pulumi.OutputState }
-
-func (SslVpnClientCertPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SslVpnClientCert)(nil))
-}
-
-func (o SslVpnClientCertPtrOutput) ToSslVpnClientCertPtrOutput() SslVpnClientCertPtrOutput {
-	return o
-}
-
-func (o SslVpnClientCertPtrOutput) ToSslVpnClientCertPtrOutputWithContext(ctx context.Context) SslVpnClientCertPtrOutput {
-	return o
-}
-
-func (o SslVpnClientCertPtrOutput) Elem() SslVpnClientCertOutput {
-	return o.ApplyT(func(v *SslVpnClientCert) SslVpnClientCert {
-		if v != nil {
-			return *v
-		}
-		var ret SslVpnClientCert
-		return ret
-	}).(SslVpnClientCertOutput)
-}
-
 type SslVpnClientCertArrayOutput struct{ *pulumi.OutputState }
 
 func (SslVpnClientCertArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SslVpnClientCert)(nil))
+	return reflect.TypeOf((*[]*SslVpnClientCert)(nil)).Elem()
 }
 
 func (o SslVpnClientCertArrayOutput) ToSslVpnClientCertArrayOutput() SslVpnClientCertArrayOutput {
@@ -286,15 +223,15 @@ func (o SslVpnClientCertArrayOutput) ToSslVpnClientCertArrayOutputWithContext(ct
 }
 
 func (o SslVpnClientCertArrayOutput) Index(i pulumi.IntInput) SslVpnClientCertOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SslVpnClientCert {
-		return vs[0].([]SslVpnClientCert)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SslVpnClientCert {
+		return vs[0].([]*SslVpnClientCert)[vs[1].(int)]
 	}).(SslVpnClientCertOutput)
 }
 
 type SslVpnClientCertMapOutput struct{ *pulumi.OutputState }
 
 func (SslVpnClientCertMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SslVpnClientCert)(nil))
+	return reflect.TypeOf((*map[string]*SslVpnClientCert)(nil)).Elem()
 }
 
 func (o SslVpnClientCertMapOutput) ToSslVpnClientCertMapOutput() SslVpnClientCertMapOutput {
@@ -306,18 +243,16 @@ func (o SslVpnClientCertMapOutput) ToSslVpnClientCertMapOutputWithContext(ctx co
 }
 
 func (o SslVpnClientCertMapOutput) MapIndex(k pulumi.StringInput) SslVpnClientCertOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SslVpnClientCert {
-		return vs[0].(map[string]SslVpnClientCert)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SslVpnClientCert {
+		return vs[0].(map[string]*SslVpnClientCert)[vs[1].(string)]
 	}).(SslVpnClientCertOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SslVpnClientCertInput)(nil)).Elem(), &SslVpnClientCert{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SslVpnClientCertPtrInput)(nil)).Elem(), &SslVpnClientCert{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SslVpnClientCertArrayInput)(nil)).Elem(), SslVpnClientCertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SslVpnClientCertMapInput)(nil)).Elem(), SslVpnClientCertMap{})
 	pulumi.RegisterOutputType(SslVpnClientCertOutput{})
-	pulumi.RegisterOutputType(SslVpnClientCertPtrOutput{})
 	pulumi.RegisterOutputType(SslVpnClientCertArrayOutput{})
 	pulumi.RegisterOutputType(SslVpnClientCertMapOutput{})
 }

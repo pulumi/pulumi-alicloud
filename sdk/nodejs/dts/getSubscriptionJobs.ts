@@ -28,9 +28,7 @@ export function getSubscriptionJobs(args?: GetSubscriptionJobsArgs, opts?: pulum
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:dts/getSubscriptionJobs:getSubscriptionJobs", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,

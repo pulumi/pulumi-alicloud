@@ -79,17 +79,17 @@ export class LifecycleHook extends pulumi.CustomResource {
      */
     constructor(name: string, args: LifecycleHookArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LifecycleHookArgs | LifecycleHookState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LifecycleHookState | undefined;
-            inputs["defaultResult"] = state ? state.defaultResult : undefined;
-            inputs["heartbeatTimeout"] = state ? state.heartbeatTimeout : undefined;
-            inputs["lifecycleTransition"] = state ? state.lifecycleTransition : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["notificationArn"] = state ? state.notificationArn : undefined;
-            inputs["notificationMetadata"] = state ? state.notificationMetadata : undefined;
-            inputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
+            resourceInputs["defaultResult"] = state ? state.defaultResult : undefined;
+            resourceInputs["heartbeatTimeout"] = state ? state.heartbeatTimeout : undefined;
+            resourceInputs["lifecycleTransition"] = state ? state.lifecycleTransition : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["notificationArn"] = state ? state.notificationArn : undefined;
+            resourceInputs["notificationMetadata"] = state ? state.notificationMetadata : undefined;
+            resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
         } else {
             const args = argsOrState as LifecycleHookArgs | undefined;
             if ((!args || args.lifecycleTransition === undefined) && !opts.urn) {
@@ -98,18 +98,16 @@ export class LifecycleHook extends pulumi.CustomResource {
             if ((!args || args.scalingGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
-            inputs["defaultResult"] = args ? args.defaultResult : undefined;
-            inputs["heartbeatTimeout"] = args ? args.heartbeatTimeout : undefined;
-            inputs["lifecycleTransition"] = args ? args.lifecycleTransition : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["notificationArn"] = args ? args.notificationArn : undefined;
-            inputs["notificationMetadata"] = args ? args.notificationMetadata : undefined;
-            inputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
+            resourceInputs["defaultResult"] = args ? args.defaultResult : undefined;
+            resourceInputs["heartbeatTimeout"] = args ? args.heartbeatTimeout : undefined;
+            resourceInputs["lifecycleTransition"] = args ? args.lifecycleTransition : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["notificationArn"] = args ? args.notificationArn : undefined;
+            resourceInputs["notificationMetadata"] = args ? args.notificationMetadata : undefined;
+            resourceInputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(LifecycleHook.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(LifecycleHook.__pulumiType, name, resourceInputs, opts);
     }
 }
 

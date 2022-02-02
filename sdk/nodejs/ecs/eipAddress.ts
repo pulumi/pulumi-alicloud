@@ -147,51 +147,49 @@ export class EipAddress extends pulumi.CustomResource {
      */
     constructor(name: string, args?: EipAddressArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EipAddressArgs | EipAddressState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EipAddressState | undefined;
-            inputs["activityId"] = state ? state.activityId : undefined;
-            inputs["addressName"] = state ? state.addressName : undefined;
-            inputs["autoPay"] = state ? state.autoPay : undefined;
-            inputs["bandwidth"] = state ? state.bandwidth : undefined;
-            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            inputs["internetChargeType"] = state ? state.internetChargeType : undefined;
-            inputs["ipAddress"] = state ? state.ipAddress : undefined;
-            inputs["isp"] = state ? state.isp : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["netmode"] = state ? state.netmode : undefined;
-            inputs["paymentType"] = state ? state.paymentType : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["activityId"] = state ? state.activityId : undefined;
+            resourceInputs["addressName"] = state ? state.addressName : undefined;
+            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
+            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
+            resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
+            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
+            resourceInputs["isp"] = state ? state.isp : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["netmode"] = state ? state.netmode : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as EipAddressArgs | undefined;
-            inputs["activityId"] = args ? args.activityId : undefined;
-            inputs["addressName"] = args ? args.addressName : undefined;
-            inputs["autoPay"] = args ? args.autoPay : undefined;
-            inputs["bandwidth"] = args ? args.bandwidth : undefined;
-            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            inputs["internetChargeType"] = args ? args.internetChargeType : undefined;
-            inputs["isp"] = args ? args.isp : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["netmode"] = args ? args.netmode : undefined;
-            inputs["paymentType"] = args ? args.paymentType : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["ipAddress"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["activityId"] = args ? args.activityId : undefined;
+            resourceInputs["addressName"] = args ? args.addressName : undefined;
+            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
+            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
+            resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
+            resourceInputs["isp"] = args ? args.isp : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["netmode"] = args ? args.netmode : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["ipAddress"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EipAddress.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EipAddress.__pulumiType, name, resourceInputs, opts);
     }
 }
 

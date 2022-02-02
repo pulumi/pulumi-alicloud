@@ -30,9 +30,7 @@ export function getStocks(args?: GetStocksArgs, opts?: pulumi.InvokeOptions): Pr
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cloudstoragegateway/getStocks:getStocks", {
         "gatewayClass": args.gatewayClass,
         "outputFile": args.outputFile,

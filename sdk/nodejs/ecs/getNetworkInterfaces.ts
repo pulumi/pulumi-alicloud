@@ -11,9 +11,7 @@ export function getNetworkInterfaces(args?: GetNetworkInterfacesArgs, opts?: pul
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ecs/getNetworkInterfaces:getNetworkInterfaces", {
         "ids": args.ids,
         "instanceId": args.instanceId,

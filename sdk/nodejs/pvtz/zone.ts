@@ -101,39 +101,37 @@ export class Zone extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ZoneArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ZoneArgs | ZoneState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneState | undefined;
-            inputs["isPtr"] = state ? state.isPtr : undefined;
-            inputs["lang"] = state ? state.lang : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["proxyPattern"] = state ? state.proxyPattern : undefined;
-            inputs["recordCount"] = state ? state.recordCount : undefined;
-            inputs["remark"] = state ? state.remark : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["syncStatus"] = state ? state.syncStatus : undefined;
-            inputs["userClientIp"] = state ? state.userClientIp : undefined;
-            inputs["userInfos"] = state ? state.userInfos : undefined;
-            inputs["zoneName"] = state ? state.zoneName : undefined;
+            resourceInputs["isPtr"] = state ? state.isPtr : undefined;
+            resourceInputs["lang"] = state ? state.lang : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["proxyPattern"] = state ? state.proxyPattern : undefined;
+            resourceInputs["recordCount"] = state ? state.recordCount : undefined;
+            resourceInputs["remark"] = state ? state.remark : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["syncStatus"] = state ? state.syncStatus : undefined;
+            resourceInputs["userClientIp"] = state ? state.userClientIp : undefined;
+            resourceInputs["userInfos"] = state ? state.userInfos : undefined;
+            resourceInputs["zoneName"] = state ? state.zoneName : undefined;
         } else {
             const args = argsOrState as ZoneArgs | undefined;
-            inputs["lang"] = args ? args.lang : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["proxyPattern"] = args ? args.proxyPattern : undefined;
-            inputs["remark"] = args ? args.remark : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["syncStatus"] = args ? args.syncStatus : undefined;
-            inputs["userClientIp"] = args ? args.userClientIp : undefined;
-            inputs["userInfos"] = args ? args.userInfos : undefined;
-            inputs["zoneName"] = args ? args.zoneName : undefined;
-            inputs["isPtr"] = undefined /*out*/;
-            inputs["recordCount"] = undefined /*out*/;
+            resourceInputs["lang"] = args ? args.lang : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["proxyPattern"] = args ? args.proxyPattern : undefined;
+            resourceInputs["remark"] = args ? args.remark : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["syncStatus"] = args ? args.syncStatus : undefined;
+            resourceInputs["userClientIp"] = args ? args.userClientIp : undefined;
+            resourceInputs["userInfos"] = args ? args.userInfos : undefined;
+            resourceInputs["zoneName"] = args ? args.zoneName : undefined;
+            resourceInputs["isPtr"] = undefined /*out*/;
+            resourceInputs["recordCount"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Zone.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Zone.__pulumiType, name, resourceInputs, opts);
     }
 }
 

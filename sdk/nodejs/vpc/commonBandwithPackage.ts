@@ -100,44 +100,42 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
      */
     constructor(name: string, args: CommonBandwithPackageArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CommonBandwithPackageArgs | CommonBandwithPackageState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CommonBandwithPackageState | undefined;
-            inputs["bandwidth"] = state ? state.bandwidth : undefined;
-            inputs["bandwidthPackageName"] = state ? state.bandwidthPackageName : undefined;
-            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["force"] = state ? state.force : undefined;
-            inputs["internetChargeType"] = state ? state.internetChargeType : undefined;
-            inputs["isp"] = state ? state.isp : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["ratio"] = state ? state.ratio : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
+            resourceInputs["bandwidthPackageName"] = state ? state.bandwidthPackageName : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["force"] = state ? state.force : undefined;
+            resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
+            resourceInputs["isp"] = state ? state.isp : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["ratio"] = state ? state.ratio : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as CommonBandwithPackageArgs | undefined;
             if ((!args || args.bandwidth === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bandwidth'");
             }
-            inputs["bandwidth"] = args ? args.bandwidth : undefined;
-            inputs["bandwidthPackageName"] = args ? args.bandwidthPackageName : undefined;
-            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["force"] = args ? args.force : undefined;
-            inputs["internetChargeType"] = args ? args.internetChargeType : undefined;
-            inputs["isp"] = args ? args.isp : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["ratio"] = args ? args.ratio : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
+            resourceInputs["bandwidthPackageName"] = args ? args.bandwidthPackageName : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["force"] = args ? args.force : undefined;
+            resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
+            resourceInputs["isp"] = args ? args.isp : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["ratio"] = args ? args.ratio : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CommonBandwithPackage.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CommonBandwithPackage.__pulumiType, name, resourceInputs, opts);
     }
 }
 

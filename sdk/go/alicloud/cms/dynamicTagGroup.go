@@ -193,7 +193,7 @@ type DynamicTagGroupInput interface {
 }
 
 func (*DynamicTagGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*DynamicTagGroup)(nil))
+	return reflect.TypeOf((**DynamicTagGroup)(nil)).Elem()
 }
 
 func (i *DynamicTagGroup) ToDynamicTagGroupOutput() DynamicTagGroupOutput {
@@ -202,35 +202,6 @@ func (i *DynamicTagGroup) ToDynamicTagGroupOutput() DynamicTagGroupOutput {
 
 func (i *DynamicTagGroup) ToDynamicTagGroupOutputWithContext(ctx context.Context) DynamicTagGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DynamicTagGroupOutput)
-}
-
-func (i *DynamicTagGroup) ToDynamicTagGroupPtrOutput() DynamicTagGroupPtrOutput {
-	return i.ToDynamicTagGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *DynamicTagGroup) ToDynamicTagGroupPtrOutputWithContext(ctx context.Context) DynamicTagGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DynamicTagGroupPtrOutput)
-}
-
-type DynamicTagGroupPtrInput interface {
-	pulumi.Input
-
-	ToDynamicTagGroupPtrOutput() DynamicTagGroupPtrOutput
-	ToDynamicTagGroupPtrOutputWithContext(ctx context.Context) DynamicTagGroupPtrOutput
-}
-
-type dynamicTagGroupPtrType DynamicTagGroupArgs
-
-func (*dynamicTagGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DynamicTagGroup)(nil))
-}
-
-func (i *dynamicTagGroupPtrType) ToDynamicTagGroupPtrOutput() DynamicTagGroupPtrOutput {
-	return i.ToDynamicTagGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *dynamicTagGroupPtrType) ToDynamicTagGroupPtrOutputWithContext(ctx context.Context) DynamicTagGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DynamicTagGroupPtrOutput)
 }
 
 // DynamicTagGroupArrayInput is an input type that accepts DynamicTagGroupArray and DynamicTagGroupArrayOutput values.
@@ -286,7 +257,7 @@ func (i DynamicTagGroupMap) ToDynamicTagGroupMapOutputWithContext(ctx context.Co
 type DynamicTagGroupOutput struct{ *pulumi.OutputState }
 
 func (DynamicTagGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DynamicTagGroup)(nil))
+	return reflect.TypeOf((**DynamicTagGroup)(nil)).Elem()
 }
 
 func (o DynamicTagGroupOutput) ToDynamicTagGroupOutput() DynamicTagGroupOutput {
@@ -297,44 +268,10 @@ func (o DynamicTagGroupOutput) ToDynamicTagGroupOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o DynamicTagGroupOutput) ToDynamicTagGroupPtrOutput() DynamicTagGroupPtrOutput {
-	return o.ToDynamicTagGroupPtrOutputWithContext(context.Background())
-}
-
-func (o DynamicTagGroupOutput) ToDynamicTagGroupPtrOutputWithContext(ctx context.Context) DynamicTagGroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DynamicTagGroup) *DynamicTagGroup {
-		return &v
-	}).(DynamicTagGroupPtrOutput)
-}
-
-type DynamicTagGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (DynamicTagGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DynamicTagGroup)(nil))
-}
-
-func (o DynamicTagGroupPtrOutput) ToDynamicTagGroupPtrOutput() DynamicTagGroupPtrOutput {
-	return o
-}
-
-func (o DynamicTagGroupPtrOutput) ToDynamicTagGroupPtrOutputWithContext(ctx context.Context) DynamicTagGroupPtrOutput {
-	return o
-}
-
-func (o DynamicTagGroupPtrOutput) Elem() DynamicTagGroupOutput {
-	return o.ApplyT(func(v *DynamicTagGroup) DynamicTagGroup {
-		if v != nil {
-			return *v
-		}
-		var ret DynamicTagGroup
-		return ret
-	}).(DynamicTagGroupOutput)
-}
-
 type DynamicTagGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (DynamicTagGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DynamicTagGroup)(nil))
+	return reflect.TypeOf((*[]*DynamicTagGroup)(nil)).Elem()
 }
 
 func (o DynamicTagGroupArrayOutput) ToDynamicTagGroupArrayOutput() DynamicTagGroupArrayOutput {
@@ -346,15 +283,15 @@ func (o DynamicTagGroupArrayOutput) ToDynamicTagGroupArrayOutputWithContext(ctx 
 }
 
 func (o DynamicTagGroupArrayOutput) Index(i pulumi.IntInput) DynamicTagGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DynamicTagGroup {
-		return vs[0].([]DynamicTagGroup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DynamicTagGroup {
+		return vs[0].([]*DynamicTagGroup)[vs[1].(int)]
 	}).(DynamicTagGroupOutput)
 }
 
 type DynamicTagGroupMapOutput struct{ *pulumi.OutputState }
 
 func (DynamicTagGroupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DynamicTagGroup)(nil))
+	return reflect.TypeOf((*map[string]*DynamicTagGroup)(nil)).Elem()
 }
 
 func (o DynamicTagGroupMapOutput) ToDynamicTagGroupMapOutput() DynamicTagGroupMapOutput {
@@ -366,18 +303,16 @@ func (o DynamicTagGroupMapOutput) ToDynamicTagGroupMapOutputWithContext(ctx cont
 }
 
 func (o DynamicTagGroupMapOutput) MapIndex(k pulumi.StringInput) DynamicTagGroupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DynamicTagGroup {
-		return vs[0].(map[string]DynamicTagGroup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DynamicTagGroup {
+		return vs[0].(map[string]*DynamicTagGroup)[vs[1].(string)]
 	}).(DynamicTagGroupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicTagGroupInput)(nil)).Elem(), &DynamicTagGroup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DynamicTagGroupPtrInput)(nil)).Elem(), &DynamicTagGroup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicTagGroupArrayInput)(nil)).Elem(), DynamicTagGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicTagGroupMapInput)(nil)).Elem(), DynamicTagGroupMap{})
 	pulumi.RegisterOutputType(DynamicTagGroupOutput{})
-	pulumi.RegisterOutputType(DynamicTagGroupPtrOutput{})
 	pulumi.RegisterOutputType(DynamicTagGroupArrayOutput{})
 	pulumi.RegisterOutputType(DynamicTagGroupMapOutput{})
 }

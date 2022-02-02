@@ -96,16 +96,16 @@ export class DBAuditInstance extends pulumi.CustomResource {
      */
     constructor(name: string, args: DBAuditInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DBAuditInstanceArgs | DBAuditInstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DBAuditInstanceState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["planCode"] = state ? state.planCode : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["planCode"] = state ? state.planCode : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as DBAuditInstanceArgs | undefined;
             if ((!args || args.description === undefined) && !opts.urn) {
@@ -117,17 +117,15 @@ export class DBAuditInstance extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["planCode"] = args ? args.planCode : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["planCode"] = args ? args.planCode : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DBAuditInstance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DBAuditInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

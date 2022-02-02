@@ -30,9 +30,7 @@ export function getDedicatedHostGroups(args?: GetDedicatedHostGroupsArgs, opts?:
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cddc/getDedicatedHostGroups:getDedicatedHostGroups", {
         "engine": args.engine,
         "ids": args.ids,

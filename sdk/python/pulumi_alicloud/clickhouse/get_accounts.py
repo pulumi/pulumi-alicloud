@@ -149,8 +149,8 @@ def get_accounts(db_cluster_id: Optional[str] = None,
         account_description="your_description",
         account_name=name,
         account_password=pwd)
-    default_accounts = pulumi.Output.all(default_account.id, default_db_cluster.id).apply(lambda defaultAccountId, defaultDbClusterId: alicloud.clickhouse.get_accounts(ids=[default_account_id],
-        db_cluster_id=default_db_cluster_id))
+    default_accounts = alicloud.clickhouse.get_accounts_output(ids=[default_account.id],
+        db_cluster_id=default_db_cluster.id)
     pulumi.export("accountId", default_accounts.ids[0])
     ```
 
@@ -226,8 +226,8 @@ def get_accounts_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
         account_description="your_description",
         account_name=name,
         account_password=pwd)
-    default_accounts = pulumi.Output.all(default_account.id, default_db_cluster.id).apply(lambda defaultAccountId, defaultDbClusterId: alicloud.clickhouse.get_accounts(ids=[default_account_id],
-        db_cluster_id=default_db_cluster_id))
+    default_accounts = alicloud.clickhouse.get_accounts_output(ids=[default_account.id],
+        db_cluster_id=default_db_cluster.id)
     pulumi.export("accountId", default_accounts.ids[0])
     ```
 

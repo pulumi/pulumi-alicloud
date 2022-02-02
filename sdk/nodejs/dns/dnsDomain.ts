@@ -84,40 +84,38 @@ export class DnsDomain extends pulumi.CustomResource {
      */
     constructor(name: string, args: DnsDomainArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DnsDomainArgs | DnsDomainState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DnsDomainState | undefined;
-            inputs["dnsServers"] = state ? state.dnsServers : undefined;
-            inputs["domainId"] = state ? state.domainId : undefined;
-            inputs["domainName"] = state ? state.domainName : undefined;
-            inputs["groupId"] = state ? state.groupId : undefined;
-            inputs["groupName"] = state ? state.groupName : undefined;
-            inputs["lang"] = state ? state.lang : undefined;
-            inputs["punyCode"] = state ? state.punyCode : undefined;
-            inputs["remark"] = state ? state.remark : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["dnsServers"] = state ? state.dnsServers : undefined;
+            resourceInputs["domainId"] = state ? state.domainId : undefined;
+            resourceInputs["domainName"] = state ? state.domainName : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["groupName"] = state ? state.groupName : undefined;
+            resourceInputs["lang"] = state ? state.lang : undefined;
+            resourceInputs["punyCode"] = state ? state.punyCode : undefined;
+            resourceInputs["remark"] = state ? state.remark : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as DnsDomainArgs | undefined;
             if ((!args || args.domainName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            inputs["domainName"] = args ? args.domainName : undefined;
-            inputs["groupId"] = args ? args.groupId : undefined;
-            inputs["lang"] = args ? args.lang : undefined;
-            inputs["remark"] = args ? args.remark : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["dnsServers"] = undefined /*out*/;
-            inputs["domainId"] = undefined /*out*/;
-            inputs["groupName"] = undefined /*out*/;
-            inputs["punyCode"] = undefined /*out*/;
+            resourceInputs["domainName"] = args ? args.domainName : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["lang"] = args ? args.lang : undefined;
+            resourceInputs["remark"] = args ? args.remark : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["dnsServers"] = undefined /*out*/;
+            resourceInputs["domainId"] = undefined /*out*/;
+            resourceInputs["groupName"] = undefined /*out*/;
+            resourceInputs["punyCode"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DnsDomain.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DnsDomain.__pulumiType, name, resourceInputs, opts);
     }
 }
 

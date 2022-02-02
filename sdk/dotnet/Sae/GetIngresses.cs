@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Sae
 {
@@ -18,7 +17,7 @@ namespace Pulumi.AliCloud.Sae
         /// &gt; **NOTE:** Available in v1.137.0+.
         /// </summary>
         public static Task<GetIngressesResult> InvokeAsync(GetIngressesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIngressesResult>("alicloud:sae/getIngresses:getIngresses", args ?? new GetIngressesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetIngressesResult>("alicloud:sae/getIngresses:getIngresses", args ?? new GetIngressesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Sae Ingresses of the current Alibaba Cloud user.
@@ -26,7 +25,7 @@ namespace Pulumi.AliCloud.Sae
         /// &gt; **NOTE:** Available in v1.137.0+.
         /// </summary>
         public static Output<GetIngressesResult> Invoke(GetIngressesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIngressesResult>("alicloud:sae/getIngresses:getIngresses", args ?? new GetIngressesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetIngressesResult>("alicloud:sae/getIngresses:getIngresses", args ?? new GetIngressesInvokeArgs(), options.WithDefaults());
     }
 
 

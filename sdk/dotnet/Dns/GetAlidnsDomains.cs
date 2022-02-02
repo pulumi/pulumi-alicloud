@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dns
 {
@@ -45,7 +44,7 @@ namespace Pulumi.AliCloud.Dns
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAlidnsDomainsResult> InvokeAsync(GetAlidnsDomainsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAlidnsDomainsResult>("alicloud:dns/getAlidnsDomains:getAlidnsDomains", args ?? new GetAlidnsDomainsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAlidnsDomainsResult>("alicloud:dns/getAlidnsDomains:getAlidnsDomains", args ?? new GetAlidnsDomainsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
@@ -80,7 +79,7 @@ namespace Pulumi.AliCloud.Dns
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAlidnsDomainsResult> Invoke(GetAlidnsDomainsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAlidnsDomainsResult>("alicloud:dns/getAlidnsDomains:getAlidnsDomains", args ?? new GetAlidnsDomainsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAlidnsDomainsResult>("alicloud:dns/getAlidnsDomains:getAlidnsDomains", args ?? new GetAlidnsDomainsInvokeArgs(), options.WithDefaults());
     }
 
 

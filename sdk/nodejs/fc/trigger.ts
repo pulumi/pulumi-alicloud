@@ -95,21 +95,21 @@ export class Trigger extends pulumi.CustomResource {
      */
     constructor(name: string, args: TriggerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TriggerArgs | TriggerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TriggerState | undefined;
-            inputs["config"] = state ? state.config : undefined;
-            inputs["configMns"] = state ? state.configMns : undefined;
-            inputs["function"] = state ? state.function : undefined;
-            inputs["lastModified"] = state ? state.lastModified : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namePrefix"] = state ? state.namePrefix : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["service"] = state ? state.service : undefined;
-            inputs["sourceArn"] = state ? state.sourceArn : undefined;
-            inputs["triggerId"] = state ? state.triggerId : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["configMns"] = state ? state.configMns : undefined;
+            resourceInputs["function"] = state ? state.function : undefined;
+            resourceInputs["lastModified"] = state ? state.lastModified : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["service"] = state ? state.service : undefined;
+            resourceInputs["sourceArn"] = state ? state.sourceArn : undefined;
+            resourceInputs["triggerId"] = state ? state.triggerId : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as TriggerArgs | undefined;
             if ((!args || args.function === undefined) && !opts.urn) {
@@ -121,22 +121,20 @@ export class Trigger extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["config"] = args ? args.config : undefined;
-            inputs["configMns"] = args ? args.configMns : undefined;
-            inputs["function"] = args ? args.function : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namePrefix"] = args ? args.namePrefix : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["service"] = args ? args.service : undefined;
-            inputs["sourceArn"] = args ? args.sourceArn : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["lastModified"] = undefined /*out*/;
-            inputs["triggerId"] = undefined /*out*/;
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["configMns"] = args ? args.configMns : undefined;
+            resourceInputs["function"] = args ? args.function : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["sourceArn"] = args ? args.sourceArn : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["lastModified"] = undefined /*out*/;
+            resourceInputs["triggerId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Trigger.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Trigger.__pulumiType, name, resourceInputs, opts);
     }
 }
 

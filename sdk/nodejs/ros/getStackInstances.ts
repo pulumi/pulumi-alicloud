@@ -52,9 +52,7 @@ export function getStackInstances(args: GetStackInstancesArgs, opts?: pulumi.Inv
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ros/getStackInstances:getStackInstances", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Oos
 {
@@ -18,7 +17,7 @@ namespace Pulumi.AliCloud.Oos
         /// &gt; **NOTE:** Available in v1.147.0+.
         /// </summary>
         public static Task<GetSecretParametersResult> InvokeAsync(GetSecretParametersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretParametersResult>("alicloud:oos/getSecretParameters:getSecretParameters", args ?? new GetSecretParametersArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretParametersResult>("alicloud:oos/getSecretParameters:getSecretParameters", args ?? new GetSecretParametersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Oos Secret Parameters of the current Alibaba Cloud user.
@@ -26,7 +25,7 @@ namespace Pulumi.AliCloud.Oos
         /// &gt; **NOTE:** Available in v1.147.0+.
         /// </summary>
         public static Output<GetSecretParametersResult> Invoke(GetSecretParametersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSecretParametersResult>("alicloud:oos/getSecretParameters:getSecretParameters", args ?? new GetSecretParametersInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSecretParametersResult>("alicloud:oos/getSecretParameters:getSecretParameters", args ?? new GetSecretParametersInvokeArgs(), options.WithDefaults());
     }
 
 

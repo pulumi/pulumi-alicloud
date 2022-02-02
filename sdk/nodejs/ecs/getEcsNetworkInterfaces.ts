@@ -31,9 +31,7 @@ export function getEcsNetworkInterfaces(args?: GetEcsNetworkInterfacesArgs, opts
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ecs/getEcsNetworkInterfaces:getEcsNetworkInterfaces", {
         "ids": args.ids,
         "instanceId": args.instanceId,

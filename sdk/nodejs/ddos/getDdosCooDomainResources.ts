@@ -30,9 +30,7 @@ export function getDdosCooDomainResources(args?: GetDdosCooDomainResourcesArgs, 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources", {
         "ids": args.ids,
         "instanceIds": args.instanceIds,

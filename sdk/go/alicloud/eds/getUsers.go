@@ -28,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := eds.NewUser(ctx, "_default", &eds.UserArgs{
+// 		_, err := eds.NewUser(ctx, "default", &eds.UserArgs{
 // 			EndUserId: pulumi.String("example_value"),
 // 			Email:     pulumi.String("your_email"),
 // 			Phone:     pulumi.String("your_phone"),

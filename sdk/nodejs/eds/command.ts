@@ -129,16 +129,16 @@ export class Command extends pulumi.CustomResource {
      */
     constructor(name: string, args: CommandArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CommandArgs | CommandState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CommandState | undefined;
-            inputs["commandContent"] = state ? state.commandContent : undefined;
-            inputs["commandType"] = state ? state.commandType : undefined;
-            inputs["contentEncoding"] = state ? state.contentEncoding : undefined;
-            inputs["desktopId"] = state ? state.desktopId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["timeout"] = state ? state.timeout : undefined;
+            resourceInputs["commandContent"] = state ? state.commandContent : undefined;
+            resourceInputs["commandType"] = state ? state.commandType : undefined;
+            resourceInputs["contentEncoding"] = state ? state.contentEncoding : undefined;
+            resourceInputs["desktopId"] = state ? state.desktopId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["timeout"] = state ? state.timeout : undefined;
         } else {
             const args = argsOrState as CommandArgs | undefined;
             if ((!args || args.commandContent === undefined) && !opts.urn) {
@@ -150,17 +150,15 @@ export class Command extends pulumi.CustomResource {
             if ((!args || args.desktopId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'desktopId'");
             }
-            inputs["commandContent"] = args ? args.commandContent : undefined;
-            inputs["commandType"] = args ? args.commandType : undefined;
-            inputs["contentEncoding"] = args ? args.contentEncoding : undefined;
-            inputs["desktopId"] = args ? args.desktopId : undefined;
-            inputs["timeout"] = args ? args.timeout : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["commandContent"] = args ? args.commandContent : undefined;
+            resourceInputs["commandType"] = args ? args.commandType : undefined;
+            resourceInputs["contentEncoding"] = args ? args.contentEncoding : undefined;
+            resourceInputs["desktopId"] = args ? args.desktopId : undefined;
+            resourceInputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Command.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Command.__pulumiType, name, resourceInputs, opts);
     }
 }
 

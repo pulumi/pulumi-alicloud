@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CR
 {
@@ -48,7 +47,7 @@ namespace Pulumi.AliCloud.CR
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEndpointAclServiceResult> InvokeAsync(GetEndpointAclServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointAclServiceResult>("alicloud:cr/getEndpointAclService:getEndpointAclService", args ?? new GetEndpointAclServiceArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointAclServiceResult>("alicloud:cr/getEndpointAclService:getEndpointAclService", args ?? new GetEndpointAclServiceArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the CR Endpoint Acl Service of the current Alibaba Cloud user.
@@ -86,7 +85,7 @@ namespace Pulumi.AliCloud.CR
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEndpointAclServiceResult> Invoke(GetEndpointAclServiceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEndpointAclServiceResult>("alicloud:cr/getEndpointAclService:getEndpointAclService", args ?? new GetEndpointAclServiceInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetEndpointAclServiceResult>("alicloud:cr/getEndpointAclService:getEndpointAclService", args ?? new GetEndpointAclServiceInvokeArgs(), options.WithDefaults());
     }
 
 

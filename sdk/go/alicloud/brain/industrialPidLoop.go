@@ -208,7 +208,7 @@ type IndustrialPidLoopInput interface {
 }
 
 func (*IndustrialPidLoop) ElementType() reflect.Type {
-	return reflect.TypeOf((*IndustrialPidLoop)(nil))
+	return reflect.TypeOf((**IndustrialPidLoop)(nil)).Elem()
 }
 
 func (i *IndustrialPidLoop) ToIndustrialPidLoopOutput() IndustrialPidLoopOutput {
@@ -217,35 +217,6 @@ func (i *IndustrialPidLoop) ToIndustrialPidLoopOutput() IndustrialPidLoopOutput 
 
 func (i *IndustrialPidLoop) ToIndustrialPidLoopOutputWithContext(ctx context.Context) IndustrialPidLoopOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IndustrialPidLoopOutput)
-}
-
-func (i *IndustrialPidLoop) ToIndustrialPidLoopPtrOutput() IndustrialPidLoopPtrOutput {
-	return i.ToIndustrialPidLoopPtrOutputWithContext(context.Background())
-}
-
-func (i *IndustrialPidLoop) ToIndustrialPidLoopPtrOutputWithContext(ctx context.Context) IndustrialPidLoopPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IndustrialPidLoopPtrOutput)
-}
-
-type IndustrialPidLoopPtrInput interface {
-	pulumi.Input
-
-	ToIndustrialPidLoopPtrOutput() IndustrialPidLoopPtrOutput
-	ToIndustrialPidLoopPtrOutputWithContext(ctx context.Context) IndustrialPidLoopPtrOutput
-}
-
-type industrialPidLoopPtrType IndustrialPidLoopArgs
-
-func (*industrialPidLoopPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IndustrialPidLoop)(nil))
-}
-
-func (i *industrialPidLoopPtrType) ToIndustrialPidLoopPtrOutput() IndustrialPidLoopPtrOutput {
-	return i.ToIndustrialPidLoopPtrOutputWithContext(context.Background())
-}
-
-func (i *industrialPidLoopPtrType) ToIndustrialPidLoopPtrOutputWithContext(ctx context.Context) IndustrialPidLoopPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IndustrialPidLoopPtrOutput)
 }
 
 // IndustrialPidLoopArrayInput is an input type that accepts IndustrialPidLoopArray and IndustrialPidLoopArrayOutput values.
@@ -301,7 +272,7 @@ func (i IndustrialPidLoopMap) ToIndustrialPidLoopMapOutputWithContext(ctx contex
 type IndustrialPidLoopOutput struct{ *pulumi.OutputState }
 
 func (IndustrialPidLoopOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IndustrialPidLoop)(nil))
+	return reflect.TypeOf((**IndustrialPidLoop)(nil)).Elem()
 }
 
 func (o IndustrialPidLoopOutput) ToIndustrialPidLoopOutput() IndustrialPidLoopOutput {
@@ -312,44 +283,10 @@ func (o IndustrialPidLoopOutput) ToIndustrialPidLoopOutputWithContext(ctx contex
 	return o
 }
 
-func (o IndustrialPidLoopOutput) ToIndustrialPidLoopPtrOutput() IndustrialPidLoopPtrOutput {
-	return o.ToIndustrialPidLoopPtrOutputWithContext(context.Background())
-}
-
-func (o IndustrialPidLoopOutput) ToIndustrialPidLoopPtrOutputWithContext(ctx context.Context) IndustrialPidLoopPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IndustrialPidLoop) *IndustrialPidLoop {
-		return &v
-	}).(IndustrialPidLoopPtrOutput)
-}
-
-type IndustrialPidLoopPtrOutput struct{ *pulumi.OutputState }
-
-func (IndustrialPidLoopPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IndustrialPidLoop)(nil))
-}
-
-func (o IndustrialPidLoopPtrOutput) ToIndustrialPidLoopPtrOutput() IndustrialPidLoopPtrOutput {
-	return o
-}
-
-func (o IndustrialPidLoopPtrOutput) ToIndustrialPidLoopPtrOutputWithContext(ctx context.Context) IndustrialPidLoopPtrOutput {
-	return o
-}
-
-func (o IndustrialPidLoopPtrOutput) Elem() IndustrialPidLoopOutput {
-	return o.ApplyT(func(v *IndustrialPidLoop) IndustrialPidLoop {
-		if v != nil {
-			return *v
-		}
-		var ret IndustrialPidLoop
-		return ret
-	}).(IndustrialPidLoopOutput)
-}
-
 type IndustrialPidLoopArrayOutput struct{ *pulumi.OutputState }
 
 func (IndustrialPidLoopArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IndustrialPidLoop)(nil))
+	return reflect.TypeOf((*[]*IndustrialPidLoop)(nil)).Elem()
 }
 
 func (o IndustrialPidLoopArrayOutput) ToIndustrialPidLoopArrayOutput() IndustrialPidLoopArrayOutput {
@@ -361,15 +298,15 @@ func (o IndustrialPidLoopArrayOutput) ToIndustrialPidLoopArrayOutputWithContext(
 }
 
 func (o IndustrialPidLoopArrayOutput) Index(i pulumi.IntInput) IndustrialPidLoopOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IndustrialPidLoop {
-		return vs[0].([]IndustrialPidLoop)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IndustrialPidLoop {
+		return vs[0].([]*IndustrialPidLoop)[vs[1].(int)]
 	}).(IndustrialPidLoopOutput)
 }
 
 type IndustrialPidLoopMapOutput struct{ *pulumi.OutputState }
 
 func (IndustrialPidLoopMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]IndustrialPidLoop)(nil))
+	return reflect.TypeOf((*map[string]*IndustrialPidLoop)(nil)).Elem()
 }
 
 func (o IndustrialPidLoopMapOutput) ToIndustrialPidLoopMapOutput() IndustrialPidLoopMapOutput {
@@ -381,18 +318,16 @@ func (o IndustrialPidLoopMapOutput) ToIndustrialPidLoopMapOutputWithContext(ctx 
 }
 
 func (o IndustrialPidLoopMapOutput) MapIndex(k pulumi.StringInput) IndustrialPidLoopOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IndustrialPidLoop {
-		return vs[0].(map[string]IndustrialPidLoop)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *IndustrialPidLoop {
+		return vs[0].(map[string]*IndustrialPidLoop)[vs[1].(string)]
 	}).(IndustrialPidLoopOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IndustrialPidLoopInput)(nil)).Elem(), &IndustrialPidLoop{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IndustrialPidLoopPtrInput)(nil)).Elem(), &IndustrialPidLoop{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IndustrialPidLoopArrayInput)(nil)).Elem(), IndustrialPidLoopArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IndustrialPidLoopMapInput)(nil)).Elem(), IndustrialPidLoopMap{})
 	pulumi.RegisterOutputType(IndustrialPidLoopOutput{})
-	pulumi.RegisterOutputType(IndustrialPidLoopPtrOutput{})
 	pulumi.RegisterOutputType(IndustrialPidLoopArrayOutput{})
 	pulumi.RegisterOutputType(IndustrialPidLoopMapOutput{})
 }

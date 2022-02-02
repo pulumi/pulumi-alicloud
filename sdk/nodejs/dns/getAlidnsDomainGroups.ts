@@ -29,9 +29,7 @@ export function getAlidnsDomainGroups(args?: GetAlidnsDomainGroupsArgs, opts?: p
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:dns/getAlidnsDomainGroups:getAlidnsDomainGroups", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

@@ -184,33 +184,33 @@ export class Cluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: ClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterArgs | ClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            inputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
-            inputs["collectorStatus"] = state ? state.collectorStatus : undefined;
-            inputs["connectionString"] = state ? state.connectionString : undefined;
-            inputs["dbClusterIpArrays"] = state ? state.dbClusterIpArrays : undefined;
-            inputs["dbNodeClass"] = state ? state.dbNodeClass : undefined;
-            inputs["dbNodeCount"] = state ? state.dbNodeCount : undefined;
-            inputs["dbType"] = state ? state.dbType : undefined;
-            inputs["dbVersion"] = state ? state.dbVersion : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["encryptNewTables"] = state ? state.encryptNewTables : undefined;
-            inputs["maintainTime"] = state ? state.maintainTime : undefined;
-            inputs["modifyType"] = state ? state.modifyType : undefined;
-            inputs["parameters"] = state ? state.parameters : undefined;
-            inputs["payType"] = state ? state.payType : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["renewalStatus"] = state ? state.renewalStatus : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            inputs["securityIps"] = state ? state.securityIps : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["tdeStatus"] = state ? state.tdeStatus : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
+            resourceInputs["collectorStatus"] = state ? state.collectorStatus : undefined;
+            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
+            resourceInputs["dbClusterIpArrays"] = state ? state.dbClusterIpArrays : undefined;
+            resourceInputs["dbNodeClass"] = state ? state.dbNodeClass : undefined;
+            resourceInputs["dbNodeCount"] = state ? state.dbNodeCount : undefined;
+            resourceInputs["dbType"] = state ? state.dbType : undefined;
+            resourceInputs["dbVersion"] = state ? state.dbVersion : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["encryptNewTables"] = state ? state.encryptNewTables : undefined;
+            resourceInputs["maintainTime"] = state ? state.maintainTime : undefined;
+            resourceInputs["modifyType"] = state ? state.modifyType : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
+            resourceInputs["payType"] = state ? state.payType : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            resourceInputs["securityIps"] = state ? state.securityIps : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["tdeStatus"] = state ? state.tdeStatus : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
             if ((!args || args.dbNodeClass === undefined) && !opts.urn) {
@@ -222,34 +222,32 @@ export class Cluster extends pulumi.CustomResource {
             if ((!args || args.dbVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbVersion'");
             }
-            inputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
-            inputs["collectorStatus"] = args ? args.collectorStatus : undefined;
-            inputs["dbClusterIpArrays"] = args ? args.dbClusterIpArrays : undefined;
-            inputs["dbNodeClass"] = args ? args.dbNodeClass : undefined;
-            inputs["dbNodeCount"] = args ? args.dbNodeCount : undefined;
-            inputs["dbType"] = args ? args.dbType : undefined;
-            inputs["dbVersion"] = args ? args.dbVersion : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["encryptNewTables"] = args ? args.encryptNewTables : undefined;
-            inputs["maintainTime"] = args ? args.maintainTime : undefined;
-            inputs["modifyType"] = args ? args.modifyType : undefined;
-            inputs["parameters"] = args ? args.parameters : undefined;
-            inputs["payType"] = args ? args.payType : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["renewalStatus"] = args ? args.renewalStatus : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            inputs["securityIps"] = args ? args.securityIps : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["tdeStatus"] = args ? args.tdeStatus : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["connectionString"] = undefined /*out*/;
+            resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
+            resourceInputs["collectorStatus"] = args ? args.collectorStatus : undefined;
+            resourceInputs["dbClusterIpArrays"] = args ? args.dbClusterIpArrays : undefined;
+            resourceInputs["dbNodeClass"] = args ? args.dbNodeClass : undefined;
+            resourceInputs["dbNodeCount"] = args ? args.dbNodeCount : undefined;
+            resourceInputs["dbType"] = args ? args.dbType : undefined;
+            resourceInputs["dbVersion"] = args ? args.dbVersion : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["encryptNewTables"] = args ? args.encryptNewTables : undefined;
+            resourceInputs["maintainTime"] = args ? args.maintainTime : undefined;
+            resourceInputs["modifyType"] = args ? args.modifyType : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["payType"] = args ? args.payType : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            resourceInputs["securityIps"] = args ? args.securityIps : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["tdeStatus"] = args ? args.tdeStatus : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["connectionString"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Cluster.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Cluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

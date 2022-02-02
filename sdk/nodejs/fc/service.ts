@@ -100,41 +100,39 @@ export class Service extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceArgs | ServiceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["internetAccess"] = state ? state.internetAccess : undefined;
-            inputs["lastModified"] = state ? state.lastModified : undefined;
-            inputs["logConfig"] = state ? state.logConfig : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namePrefix"] = state ? state.namePrefix : undefined;
-            inputs["nasConfig"] = state ? state.nasConfig : undefined;
-            inputs["publish"] = state ? state.publish : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["serviceId"] = state ? state.serviceId : undefined;
-            inputs["version"] = state ? state.version : undefined;
-            inputs["vpcConfig"] = state ? state.vpcConfig : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["internetAccess"] = state ? state.internetAccess : undefined;
+            resourceInputs["lastModified"] = state ? state.lastModified : undefined;
+            resourceInputs["logConfig"] = state ? state.logConfig : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
+            resourceInputs["nasConfig"] = state ? state.nasConfig : undefined;
+            resourceInputs["publish"] = state ? state.publish : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["vpcConfig"] = state ? state.vpcConfig : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["internetAccess"] = args ? args.internetAccess : undefined;
-            inputs["logConfig"] = args ? args.logConfig : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namePrefix"] = args ? args.namePrefix : undefined;
-            inputs["nasConfig"] = args ? args.nasConfig : undefined;
-            inputs["publish"] = args ? args.publish : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["vpcConfig"] = args ? args.vpcConfig : undefined;
-            inputs["lastModified"] = undefined /*out*/;
-            inputs["serviceId"] = undefined /*out*/;
-            inputs["version"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["internetAccess"] = args ? args.internetAccess : undefined;
+            resourceInputs["logConfig"] = args ? args.logConfig : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
+            resourceInputs["nasConfig"] = args ? args.nasConfig : undefined;
+            resourceInputs["publish"] = args ? args.publish : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["vpcConfig"] = args ? args.vpcConfig : undefined;
+            resourceInputs["lastModified"] = undefined /*out*/;
+            resourceInputs["serviceId"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Service.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Service.__pulumiType, name, resourceInputs, opts);
     }
 }
 

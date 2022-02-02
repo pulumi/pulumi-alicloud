@@ -103,17 +103,17 @@ export class App extends pulumi.CustomResource {
      */
     constructor(name: string, args: AppArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AppArgs | AppState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppState | undefined;
-            inputs["appName"] = state ? state.appName : undefined;
-            inputs["bundleId"] = state ? state.bundleId : undefined;
-            inputs["encodedIcon"] = state ? state.encodedIcon : undefined;
-            inputs["industryId"] = state ? state.industryId : undefined;
-            inputs["packageName"] = state ? state.packageName : undefined;
-            inputs["productId"] = state ? state.productId : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["appName"] = state ? state.appName : undefined;
+            resourceInputs["bundleId"] = state ? state.bundleId : undefined;
+            resourceInputs["encodedIcon"] = state ? state.encodedIcon : undefined;
+            resourceInputs["industryId"] = state ? state.industryId : undefined;
+            resourceInputs["packageName"] = state ? state.packageName : undefined;
+            resourceInputs["productId"] = state ? state.productId : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as AppArgs | undefined;
             if ((!args || args.appName === undefined) && !opts.urn) {
@@ -125,18 +125,16 @@ export class App extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["appName"] = args ? args.appName : undefined;
-            inputs["bundleId"] = args ? args.bundleId : undefined;
-            inputs["encodedIcon"] = args ? args.encodedIcon : undefined;
-            inputs["industryId"] = args ? args.industryId : undefined;
-            inputs["packageName"] = args ? args.packageName : undefined;
-            inputs["productId"] = args ? args.productId : undefined;
-            inputs["type"] = args ? args.type : undefined;
+            resourceInputs["appName"] = args ? args.appName : undefined;
+            resourceInputs["bundleId"] = args ? args.bundleId : undefined;
+            resourceInputs["encodedIcon"] = args ? args.encodedIcon : undefined;
+            resourceInputs["industryId"] = args ? args.industryId : undefined;
+            resourceInputs["packageName"] = args ? args.packageName : undefined;
+            resourceInputs["productId"] = args ? args.productId : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(App.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(App.__pulumiType, name, resourceInputs, opts);
     }
 }
 

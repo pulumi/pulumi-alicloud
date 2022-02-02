@@ -81,13 +81,13 @@ export class IndustrialPidProject extends pulumi.CustomResource {
      */
     constructor(name: string, args: IndustrialPidProjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IndustrialPidProjectArgs | IndustrialPidProjectState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IndustrialPidProjectState | undefined;
-            inputs["pidOrganizationId"] = state ? state.pidOrganizationId : undefined;
-            inputs["pidProjectDesc"] = state ? state.pidProjectDesc : undefined;
-            inputs["pidProjectName"] = state ? state.pidProjectName : undefined;
+            resourceInputs["pidOrganizationId"] = state ? state.pidOrganizationId : undefined;
+            resourceInputs["pidProjectDesc"] = state ? state.pidProjectDesc : undefined;
+            resourceInputs["pidProjectName"] = state ? state.pidProjectName : undefined;
         } else {
             const args = argsOrState as IndustrialPidProjectArgs | undefined;
             if ((!args || args.pidOrganizationId === undefined) && !opts.urn) {
@@ -96,14 +96,12 @@ export class IndustrialPidProject extends pulumi.CustomResource {
             if ((!args || args.pidProjectName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'pidProjectName'");
             }
-            inputs["pidOrganizationId"] = args ? args.pidOrganizationId : undefined;
-            inputs["pidProjectDesc"] = args ? args.pidProjectDesc : undefined;
-            inputs["pidProjectName"] = args ? args.pidProjectName : undefined;
+            resourceInputs["pidOrganizationId"] = args ? args.pidOrganizationId : undefined;
+            resourceInputs["pidProjectDesc"] = args ? args.pidProjectDesc : undefined;
+            resourceInputs["pidProjectName"] = args ? args.pidProjectName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(IndustrialPidProject.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(IndustrialPidProject.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -152,13 +152,13 @@ export class RouteEntry extends pulumi.CustomResource {
      */
     constructor(name: string, args: RouteEntryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouteEntryArgs | RouteEntryState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouteEntryState | undefined;
-            inputs["cidrBlock"] = state ? state.cidrBlock : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["routeTableId"] = state ? state.routeTableId : undefined;
+            resourceInputs["cidrBlock"] = state ? state.cidrBlock : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["routeTableId"] = state ? state.routeTableId : undefined;
         } else {
             const args = argsOrState as RouteEntryArgs | undefined;
             if ((!args || args.cidrBlock === undefined) && !opts.urn) {
@@ -170,14 +170,12 @@ export class RouteEntry extends pulumi.CustomResource {
             if ((!args || args.routeTableId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'routeTableId'");
             }
-            inputs["cidrBlock"] = args ? args.cidrBlock : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["routeTableId"] = args ? args.routeTableId : undefined;
+            resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["routeTableId"] = args ? args.routeTableId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RouteEntry.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RouteEntry.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -241,7 +241,7 @@ def get_forward_entries(external_ip: Optional[str] = None,
         internal_ip="172.16.0.3",
         internal_port="8080",
         ip_protocol="tcp")
-    default_forward_entries = default_forward_entry.forward_table_id.apply(lambda forward_table_id: alicloud.vpc.get_forward_entries(forward_table_id=forward_table_id))
+    default_forward_entries = alicloud.vpc.get_forward_entries_output(forward_table_id=default_forward_entry.forward_table_id)
     ```
 
 
@@ -342,7 +342,7 @@ def get_forward_entries_output(external_ip: Optional[pulumi.Input[Optional[str]]
         internal_ip="172.16.0.3",
         internal_port="8080",
         ip_protocol="tcp")
-    default_forward_entries = default_forward_entry.forward_table_id.apply(lambda forward_table_id: alicloud.vpc.get_forward_entries(forward_table_id=forward_table_id))
+    default_forward_entries = alicloud.vpc.get_forward_entries_output(forward_table_id=default_forward_entry.forward_table_id)
     ```
 
 

@@ -201,29 +201,29 @@ export class ContainerGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: ContainerGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ContainerGroupArgs | ContainerGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContainerGroupState | undefined;
-            inputs["containerGroupName"] = state ? state.containerGroupName : undefined;
-            inputs["containers"] = state ? state.containers : undefined;
-            inputs["cpu"] = state ? state.cpu : undefined;
-            inputs["dnsConfig"] = state ? state.dnsConfig : undefined;
-            inputs["eciSecurityContext"] = state ? state.eciSecurityContext : undefined;
-            inputs["hostAliases"] = state ? state.hostAliases : undefined;
-            inputs["imageRegistryCredentials"] = state ? state.imageRegistryCredentials : undefined;
-            inputs["initContainers"] = state ? state.initContainers : undefined;
-            inputs["instanceType"] = state ? state.instanceType : undefined;
-            inputs["memory"] = state ? state.memory : undefined;
-            inputs["ramRoleName"] = state ? state.ramRoleName : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["restartPolicy"] = state ? state.restartPolicy : undefined;
-            inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["volumes"] = state ? state.volumes : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["containerGroupName"] = state ? state.containerGroupName : undefined;
+            resourceInputs["containers"] = state ? state.containers : undefined;
+            resourceInputs["cpu"] = state ? state.cpu : undefined;
+            resourceInputs["dnsConfig"] = state ? state.dnsConfig : undefined;
+            resourceInputs["eciSecurityContext"] = state ? state.eciSecurityContext : undefined;
+            resourceInputs["hostAliases"] = state ? state.hostAliases : undefined;
+            resourceInputs["imageRegistryCredentials"] = state ? state.imageRegistryCredentials : undefined;
+            resourceInputs["initContainers"] = state ? state.initContainers : undefined;
+            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
+            resourceInputs["memory"] = state ? state.memory : undefined;
+            resourceInputs["ramRoleName"] = state ? state.ramRoleName : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["restartPolicy"] = state ? state.restartPolicy : undefined;
+            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["volumes"] = state ? state.volumes : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ContainerGroupArgs | undefined;
             if ((!args || args.containerGroupName === undefined) && !opts.urn) {
@@ -238,30 +238,28 @@ export class ContainerGroup extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            inputs["containerGroupName"] = args ? args.containerGroupName : undefined;
-            inputs["containers"] = args ? args.containers : undefined;
-            inputs["cpu"] = args ? args.cpu : undefined;
-            inputs["dnsConfig"] = args ? args.dnsConfig : undefined;
-            inputs["eciSecurityContext"] = args ? args.eciSecurityContext : undefined;
-            inputs["hostAliases"] = args ? args.hostAliases : undefined;
-            inputs["imageRegistryCredentials"] = args ? args.imageRegistryCredentials : undefined;
-            inputs["initContainers"] = args ? args.initContainers : undefined;
-            inputs["instanceType"] = args ? args.instanceType : undefined;
-            inputs["memory"] = args ? args.memory : undefined;
-            inputs["ramRoleName"] = args ? args.ramRoleName : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["restartPolicy"] = args ? args.restartPolicy : undefined;
-            inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["volumes"] = args ? args.volumes : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["containerGroupName"] = args ? args.containerGroupName : undefined;
+            resourceInputs["containers"] = args ? args.containers : undefined;
+            resourceInputs["cpu"] = args ? args.cpu : undefined;
+            resourceInputs["dnsConfig"] = args ? args.dnsConfig : undefined;
+            resourceInputs["eciSecurityContext"] = args ? args.eciSecurityContext : undefined;
+            resourceInputs["hostAliases"] = args ? args.hostAliases : undefined;
+            resourceInputs["imageRegistryCredentials"] = args ? args.imageRegistryCredentials : undefined;
+            resourceInputs["initContainers"] = args ? args.initContainers : undefined;
+            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
+            resourceInputs["memory"] = args ? args.memory : undefined;
+            resourceInputs["ramRoleName"] = args ? args.ramRoleName : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["restartPolicy"] = args ? args.restartPolicy : undefined;
+            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["volumes"] = args ? args.volumes : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ContainerGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ContainerGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

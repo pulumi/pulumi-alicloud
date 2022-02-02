@@ -77,15 +77,15 @@ export class EndpointAclPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: EndpointAclPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EndpointAclPolicyArgs | EndpointAclPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EndpointAclPolicyState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["endpointType"] = state ? state.endpointType : undefined;
-            inputs["entry"] = state ? state.entry : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["moduleName"] = state ? state.moduleName : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["endpointType"] = state ? state.endpointType : undefined;
+            resourceInputs["entry"] = state ? state.entry : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["moduleName"] = state ? state.moduleName : undefined;
         } else {
             const args = argsOrState as EndpointAclPolicyArgs | undefined;
             if ((!args || args.endpointType === undefined) && !opts.urn) {
@@ -97,16 +97,14 @@ export class EndpointAclPolicy extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["endpointType"] = args ? args.endpointType : undefined;
-            inputs["entry"] = args ? args.entry : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["moduleName"] = args ? args.moduleName : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["endpointType"] = args ? args.endpointType : undefined;
+            resourceInputs["entry"] = args ? args.entry : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["moduleName"] = args ? args.moduleName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EndpointAclPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EndpointAclPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

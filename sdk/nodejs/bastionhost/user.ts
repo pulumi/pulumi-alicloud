@@ -153,22 +153,22 @@ export class User extends pulumi.CustomResource {
      */
     constructor(name: string, args: UserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            inputs["comment"] = state ? state.comment : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["email"] = state ? state.email : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["mobile"] = state ? state.mobile : undefined;
-            inputs["mobileCountryCode"] = state ? state.mobileCountryCode : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["source"] = state ? state.source : undefined;
-            inputs["sourceUserId"] = state ? state.sourceUserId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["userId"] = state ? state.userId : undefined;
-            inputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["email"] = state ? state.email : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["mobile"] = state ? state.mobile : undefined;
+            resourceInputs["mobileCountryCode"] = state ? state.mobileCountryCode : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["source"] = state ? state.source : undefined;
+            resourceInputs["sourceUserId"] = state ? state.sourceUserId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["userName"] = state ? state.userName : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
             if ((!args || args.instanceId === undefined) && !opts.urn) {
@@ -180,23 +180,21 @@ export class User extends pulumi.CustomResource {
             if ((!args || args.userName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userName'");
             }
-            inputs["comment"] = args ? args.comment : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["email"] = args ? args.email : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["mobile"] = args ? args.mobile : undefined;
-            inputs["mobileCountryCode"] = args ? args.mobileCountryCode : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["source"] = args ? args.source : undefined;
-            inputs["sourceUserId"] = args ? args.sourceUserId : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["userName"] = args ? args.userName : undefined;
-            inputs["userId"] = undefined /*out*/;
+            resourceInputs["comment"] = args ? args.comment : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["email"] = args ? args.email : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["mobile"] = args ? args.mobile : undefined;
+            resourceInputs["mobileCountryCode"] = args ? args.mobileCountryCode : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["sourceUserId"] = args ? args.sourceUserId : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["userId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(User.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(User.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -175,8 +175,8 @@ def get_common_bandwidth_packages(bandwidth_package_name: Optional[str] = None,
     foo_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("fooCommonBandwithPackage",
         bandwidth="2",
         description="tf-testAcc-CommonBandwidthPackage")
-    foo_common_bandwidth_packages = foo_common_bandwith_package.id.apply(lambda id: alicloud.vpc.get_common_bandwidth_packages(ids=[id],
-        name_regex="^tf-testAcc.*"))
+    foo_common_bandwidth_packages = alicloud.vpc.get_common_bandwidth_packages_output(ids=[foo_common_bandwith_package.id],
+        name_regex="^tf-testAcc.*")
     ```
     ## Public ip addresses Block
 
@@ -248,8 +248,8 @@ def get_common_bandwidth_packages_output(bandwidth_package_name: Optional[pulumi
     foo_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("fooCommonBandwithPackage",
         bandwidth="2",
         description="tf-testAcc-CommonBandwidthPackage")
-    foo_common_bandwidth_packages = foo_common_bandwith_package.id.apply(lambda id: alicloud.vpc.get_common_bandwidth_packages(ids=[id],
-        name_regex="^tf-testAcc.*"))
+    foo_common_bandwidth_packages = alicloud.vpc.get_common_bandwidth_packages_output(ids=[foo_common_bandwith_package.id],
+        name_regex="^tf-testAcc.*")
     ```
     ## Public ip addresses Block
 

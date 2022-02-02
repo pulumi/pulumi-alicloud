@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * });
  * const ids = alicloud.eds.getNasFileSystems({});
  * export const ecdNasFileSystemId1 = ids.then(ids => ids.systems?[0]?.id);
- * const nameRegex = defaultNasFileSystem.nasFileSystemName.apply(nasFileSystemName => alicloud.eds.getNasFileSystems({
+ * const nameRegex = defaultNasFileSystem.nasFileSystemName.apply(nasFileSystemName => alicloud.eds.getNasFileSystemsOutput({
  *     nameRegex: nasFileSystemName,
  * }));
  * export const ecdNasFileSystemId2 = nameRegex.apply(nameRegex => nameRegex.systems?[0]?.id);
@@ -43,9 +43,7 @@ export function getNasFileSystems(args?: GetNasFileSystemsArgs, opts?: pulumi.In
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:eds/getNasFileSystems:getNasFileSystems", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

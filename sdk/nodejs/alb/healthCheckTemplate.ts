@@ -122,46 +122,44 @@ export class HealthCheckTemplate extends pulumi.CustomResource {
      */
     constructor(name: string, args: HealthCheckTemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HealthCheckTemplateArgs | HealthCheckTemplateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HealthCheckTemplateState | undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["healthCheckCodes"] = state ? state.healthCheckCodes : undefined;
-            inputs["healthCheckConnectPort"] = state ? state.healthCheckConnectPort : undefined;
-            inputs["healthCheckHost"] = state ? state.healthCheckHost : undefined;
-            inputs["healthCheckHttpVersion"] = state ? state.healthCheckHttpVersion : undefined;
-            inputs["healthCheckInterval"] = state ? state.healthCheckInterval : undefined;
-            inputs["healthCheckMethod"] = state ? state.healthCheckMethod : undefined;
-            inputs["healthCheckPath"] = state ? state.healthCheckPath : undefined;
-            inputs["healthCheckProtocol"] = state ? state.healthCheckProtocol : undefined;
-            inputs["healthCheckTemplateName"] = state ? state.healthCheckTemplateName : undefined;
-            inputs["healthCheckTimeout"] = state ? state.healthCheckTimeout : undefined;
-            inputs["healthyThreshold"] = state ? state.healthyThreshold : undefined;
-            inputs["unhealthyThreshold"] = state ? state.unhealthyThreshold : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["healthCheckCodes"] = state ? state.healthCheckCodes : undefined;
+            resourceInputs["healthCheckConnectPort"] = state ? state.healthCheckConnectPort : undefined;
+            resourceInputs["healthCheckHost"] = state ? state.healthCheckHost : undefined;
+            resourceInputs["healthCheckHttpVersion"] = state ? state.healthCheckHttpVersion : undefined;
+            resourceInputs["healthCheckInterval"] = state ? state.healthCheckInterval : undefined;
+            resourceInputs["healthCheckMethod"] = state ? state.healthCheckMethod : undefined;
+            resourceInputs["healthCheckPath"] = state ? state.healthCheckPath : undefined;
+            resourceInputs["healthCheckProtocol"] = state ? state.healthCheckProtocol : undefined;
+            resourceInputs["healthCheckTemplateName"] = state ? state.healthCheckTemplateName : undefined;
+            resourceInputs["healthCheckTimeout"] = state ? state.healthCheckTimeout : undefined;
+            resourceInputs["healthyThreshold"] = state ? state.healthyThreshold : undefined;
+            resourceInputs["unhealthyThreshold"] = state ? state.unhealthyThreshold : undefined;
         } else {
             const args = argsOrState as HealthCheckTemplateArgs | undefined;
             if ((!args || args.healthCheckTemplateName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'healthCheckTemplateName'");
             }
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["healthCheckCodes"] = args ? args.healthCheckCodes : undefined;
-            inputs["healthCheckConnectPort"] = args ? args.healthCheckConnectPort : undefined;
-            inputs["healthCheckHost"] = args ? args.healthCheckHost : undefined;
-            inputs["healthCheckHttpVersion"] = args ? args.healthCheckHttpVersion : undefined;
-            inputs["healthCheckInterval"] = args ? args.healthCheckInterval : undefined;
-            inputs["healthCheckMethod"] = args ? args.healthCheckMethod : undefined;
-            inputs["healthCheckPath"] = args ? args.healthCheckPath : undefined;
-            inputs["healthCheckProtocol"] = args ? args.healthCheckProtocol : undefined;
-            inputs["healthCheckTemplateName"] = args ? args.healthCheckTemplateName : undefined;
-            inputs["healthCheckTimeout"] = args ? args.healthCheckTimeout : undefined;
-            inputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
-            inputs["unhealthyThreshold"] = args ? args.unhealthyThreshold : undefined;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["healthCheckCodes"] = args ? args.healthCheckCodes : undefined;
+            resourceInputs["healthCheckConnectPort"] = args ? args.healthCheckConnectPort : undefined;
+            resourceInputs["healthCheckHost"] = args ? args.healthCheckHost : undefined;
+            resourceInputs["healthCheckHttpVersion"] = args ? args.healthCheckHttpVersion : undefined;
+            resourceInputs["healthCheckInterval"] = args ? args.healthCheckInterval : undefined;
+            resourceInputs["healthCheckMethod"] = args ? args.healthCheckMethod : undefined;
+            resourceInputs["healthCheckPath"] = args ? args.healthCheckPath : undefined;
+            resourceInputs["healthCheckProtocol"] = args ? args.healthCheckProtocol : undefined;
+            resourceInputs["healthCheckTemplateName"] = args ? args.healthCheckTemplateName : undefined;
+            resourceInputs["healthCheckTimeout"] = args ? args.healthCheckTimeout : undefined;
+            resourceInputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
+            resourceInputs["unhealthyThreshold"] = args ? args.unhealthyThreshold : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(HealthCheckTemplate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(HealthCheckTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

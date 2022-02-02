@@ -588,7 +588,7 @@ type SynchronizationJobInput interface {
 }
 
 func (*SynchronizationJob) ElementType() reflect.Type {
-	return reflect.TypeOf((*SynchronizationJob)(nil))
+	return reflect.TypeOf((**SynchronizationJob)(nil)).Elem()
 }
 
 func (i *SynchronizationJob) ToSynchronizationJobOutput() SynchronizationJobOutput {
@@ -597,35 +597,6 @@ func (i *SynchronizationJob) ToSynchronizationJobOutput() SynchronizationJobOutp
 
 func (i *SynchronizationJob) ToSynchronizationJobOutputWithContext(ctx context.Context) SynchronizationJobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SynchronizationJobOutput)
-}
-
-func (i *SynchronizationJob) ToSynchronizationJobPtrOutput() SynchronizationJobPtrOutput {
-	return i.ToSynchronizationJobPtrOutputWithContext(context.Background())
-}
-
-func (i *SynchronizationJob) ToSynchronizationJobPtrOutputWithContext(ctx context.Context) SynchronizationJobPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SynchronizationJobPtrOutput)
-}
-
-type SynchronizationJobPtrInput interface {
-	pulumi.Input
-
-	ToSynchronizationJobPtrOutput() SynchronizationJobPtrOutput
-	ToSynchronizationJobPtrOutputWithContext(ctx context.Context) SynchronizationJobPtrOutput
-}
-
-type synchronizationJobPtrType SynchronizationJobArgs
-
-func (*synchronizationJobPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SynchronizationJob)(nil))
-}
-
-func (i *synchronizationJobPtrType) ToSynchronizationJobPtrOutput() SynchronizationJobPtrOutput {
-	return i.ToSynchronizationJobPtrOutputWithContext(context.Background())
-}
-
-func (i *synchronizationJobPtrType) ToSynchronizationJobPtrOutputWithContext(ctx context.Context) SynchronizationJobPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SynchronizationJobPtrOutput)
 }
 
 // SynchronizationJobArrayInput is an input type that accepts SynchronizationJobArray and SynchronizationJobArrayOutput values.
@@ -681,7 +652,7 @@ func (i SynchronizationJobMap) ToSynchronizationJobMapOutputWithContext(ctx cont
 type SynchronizationJobOutput struct{ *pulumi.OutputState }
 
 func (SynchronizationJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SynchronizationJob)(nil))
+	return reflect.TypeOf((**SynchronizationJob)(nil)).Elem()
 }
 
 func (o SynchronizationJobOutput) ToSynchronizationJobOutput() SynchronizationJobOutput {
@@ -692,44 +663,10 @@ func (o SynchronizationJobOutput) ToSynchronizationJobOutputWithContext(ctx cont
 	return o
 }
 
-func (o SynchronizationJobOutput) ToSynchronizationJobPtrOutput() SynchronizationJobPtrOutput {
-	return o.ToSynchronizationJobPtrOutputWithContext(context.Background())
-}
-
-func (o SynchronizationJobOutput) ToSynchronizationJobPtrOutputWithContext(ctx context.Context) SynchronizationJobPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SynchronizationJob) *SynchronizationJob {
-		return &v
-	}).(SynchronizationJobPtrOutput)
-}
-
-type SynchronizationJobPtrOutput struct{ *pulumi.OutputState }
-
-func (SynchronizationJobPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SynchronizationJob)(nil))
-}
-
-func (o SynchronizationJobPtrOutput) ToSynchronizationJobPtrOutput() SynchronizationJobPtrOutput {
-	return o
-}
-
-func (o SynchronizationJobPtrOutput) ToSynchronizationJobPtrOutputWithContext(ctx context.Context) SynchronizationJobPtrOutput {
-	return o
-}
-
-func (o SynchronizationJobPtrOutput) Elem() SynchronizationJobOutput {
-	return o.ApplyT(func(v *SynchronizationJob) SynchronizationJob {
-		if v != nil {
-			return *v
-		}
-		var ret SynchronizationJob
-		return ret
-	}).(SynchronizationJobOutput)
-}
-
 type SynchronizationJobArrayOutput struct{ *pulumi.OutputState }
 
 func (SynchronizationJobArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SynchronizationJob)(nil))
+	return reflect.TypeOf((*[]*SynchronizationJob)(nil)).Elem()
 }
 
 func (o SynchronizationJobArrayOutput) ToSynchronizationJobArrayOutput() SynchronizationJobArrayOutput {
@@ -741,15 +678,15 @@ func (o SynchronizationJobArrayOutput) ToSynchronizationJobArrayOutputWithContex
 }
 
 func (o SynchronizationJobArrayOutput) Index(i pulumi.IntInput) SynchronizationJobOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SynchronizationJob {
-		return vs[0].([]SynchronizationJob)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SynchronizationJob {
+		return vs[0].([]*SynchronizationJob)[vs[1].(int)]
 	}).(SynchronizationJobOutput)
 }
 
 type SynchronizationJobMapOutput struct{ *pulumi.OutputState }
 
 func (SynchronizationJobMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SynchronizationJob)(nil))
+	return reflect.TypeOf((*map[string]*SynchronizationJob)(nil)).Elem()
 }
 
 func (o SynchronizationJobMapOutput) ToSynchronizationJobMapOutput() SynchronizationJobMapOutput {
@@ -761,18 +698,16 @@ func (o SynchronizationJobMapOutput) ToSynchronizationJobMapOutputWithContext(ct
 }
 
 func (o SynchronizationJobMapOutput) MapIndex(k pulumi.StringInput) SynchronizationJobOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SynchronizationJob {
-		return vs[0].(map[string]SynchronizationJob)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SynchronizationJob {
+		return vs[0].(map[string]*SynchronizationJob)[vs[1].(string)]
 	}).(SynchronizationJobOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SynchronizationJobInput)(nil)).Elem(), &SynchronizationJob{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SynchronizationJobPtrInput)(nil)).Elem(), &SynchronizationJob{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SynchronizationJobArrayInput)(nil)).Elem(), SynchronizationJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SynchronizationJobMapInput)(nil)).Elem(), SynchronizationJobMap{})
 	pulumi.RegisterOutputType(SynchronizationJobOutput{})
-	pulumi.RegisterOutputType(SynchronizationJobPtrOutput{})
 	pulumi.RegisterOutputType(SynchronizationJobArrayOutput{})
 	pulumi.RegisterOutputType(SynchronizationJobMapOutput{})
 }

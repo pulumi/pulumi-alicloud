@@ -33,7 +33,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rocketmq.NewSnatEntry(ctx, "_default", &rocketmq.SnatEntryArgs{
+// 		_, err := rocketmq.NewSnatEntry(ctx, "default", &rocketmq.SnatEntryArgs{
 // 			CidrBlock: pulumi.String("192.168.7.0/24"),
 // 			SagId:     pulumi.String("sag-3rb1t3iagy3w0zgwy9"),
 // 			SnatIp:    pulumi.String("192.0.0.2"),
@@ -154,7 +154,7 @@ type SnatEntryInput interface {
 }
 
 func (*SnatEntry) ElementType() reflect.Type {
-	return reflect.TypeOf((*SnatEntry)(nil))
+	return reflect.TypeOf((**SnatEntry)(nil)).Elem()
 }
 
 func (i *SnatEntry) ToSnatEntryOutput() SnatEntryOutput {
@@ -163,35 +163,6 @@ func (i *SnatEntry) ToSnatEntryOutput() SnatEntryOutput {
 
 func (i *SnatEntry) ToSnatEntryOutputWithContext(ctx context.Context) SnatEntryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SnatEntryOutput)
-}
-
-func (i *SnatEntry) ToSnatEntryPtrOutput() SnatEntryPtrOutput {
-	return i.ToSnatEntryPtrOutputWithContext(context.Background())
-}
-
-func (i *SnatEntry) ToSnatEntryPtrOutputWithContext(ctx context.Context) SnatEntryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SnatEntryPtrOutput)
-}
-
-type SnatEntryPtrInput interface {
-	pulumi.Input
-
-	ToSnatEntryPtrOutput() SnatEntryPtrOutput
-	ToSnatEntryPtrOutputWithContext(ctx context.Context) SnatEntryPtrOutput
-}
-
-type snatEntryPtrType SnatEntryArgs
-
-func (*snatEntryPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SnatEntry)(nil))
-}
-
-func (i *snatEntryPtrType) ToSnatEntryPtrOutput() SnatEntryPtrOutput {
-	return i.ToSnatEntryPtrOutputWithContext(context.Background())
-}
-
-func (i *snatEntryPtrType) ToSnatEntryPtrOutputWithContext(ctx context.Context) SnatEntryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SnatEntryPtrOutput)
 }
 
 // SnatEntryArrayInput is an input type that accepts SnatEntryArray and SnatEntryArrayOutput values.
@@ -247,7 +218,7 @@ func (i SnatEntryMap) ToSnatEntryMapOutputWithContext(ctx context.Context) SnatE
 type SnatEntryOutput struct{ *pulumi.OutputState }
 
 func (SnatEntryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SnatEntry)(nil))
+	return reflect.TypeOf((**SnatEntry)(nil)).Elem()
 }
 
 func (o SnatEntryOutput) ToSnatEntryOutput() SnatEntryOutput {
@@ -258,44 +229,10 @@ func (o SnatEntryOutput) ToSnatEntryOutputWithContext(ctx context.Context) SnatE
 	return o
 }
 
-func (o SnatEntryOutput) ToSnatEntryPtrOutput() SnatEntryPtrOutput {
-	return o.ToSnatEntryPtrOutputWithContext(context.Background())
-}
-
-func (o SnatEntryOutput) ToSnatEntryPtrOutputWithContext(ctx context.Context) SnatEntryPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SnatEntry) *SnatEntry {
-		return &v
-	}).(SnatEntryPtrOutput)
-}
-
-type SnatEntryPtrOutput struct{ *pulumi.OutputState }
-
-func (SnatEntryPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SnatEntry)(nil))
-}
-
-func (o SnatEntryPtrOutput) ToSnatEntryPtrOutput() SnatEntryPtrOutput {
-	return o
-}
-
-func (o SnatEntryPtrOutput) ToSnatEntryPtrOutputWithContext(ctx context.Context) SnatEntryPtrOutput {
-	return o
-}
-
-func (o SnatEntryPtrOutput) Elem() SnatEntryOutput {
-	return o.ApplyT(func(v *SnatEntry) SnatEntry {
-		if v != nil {
-			return *v
-		}
-		var ret SnatEntry
-		return ret
-	}).(SnatEntryOutput)
-}
-
 type SnatEntryArrayOutput struct{ *pulumi.OutputState }
 
 func (SnatEntryArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SnatEntry)(nil))
+	return reflect.TypeOf((*[]*SnatEntry)(nil)).Elem()
 }
 
 func (o SnatEntryArrayOutput) ToSnatEntryArrayOutput() SnatEntryArrayOutput {
@@ -307,15 +244,15 @@ func (o SnatEntryArrayOutput) ToSnatEntryArrayOutputWithContext(ctx context.Cont
 }
 
 func (o SnatEntryArrayOutput) Index(i pulumi.IntInput) SnatEntryOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SnatEntry {
-		return vs[0].([]SnatEntry)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SnatEntry {
+		return vs[0].([]*SnatEntry)[vs[1].(int)]
 	}).(SnatEntryOutput)
 }
 
 type SnatEntryMapOutput struct{ *pulumi.OutputState }
 
 func (SnatEntryMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SnatEntry)(nil))
+	return reflect.TypeOf((*map[string]*SnatEntry)(nil)).Elem()
 }
 
 func (o SnatEntryMapOutput) ToSnatEntryMapOutput() SnatEntryMapOutput {
@@ -327,18 +264,16 @@ func (o SnatEntryMapOutput) ToSnatEntryMapOutputWithContext(ctx context.Context)
 }
 
 func (o SnatEntryMapOutput) MapIndex(k pulumi.StringInput) SnatEntryOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SnatEntry {
-		return vs[0].(map[string]SnatEntry)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SnatEntry {
+		return vs[0].(map[string]*SnatEntry)[vs[1].(string)]
 	}).(SnatEntryOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SnatEntryInput)(nil)).Elem(), &SnatEntry{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SnatEntryPtrInput)(nil)).Elem(), &SnatEntry{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SnatEntryArrayInput)(nil)).Elem(), SnatEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SnatEntryMapInput)(nil)).Elem(), SnatEntryMap{})
 	pulumi.RegisterOutputType(SnatEntryOutput{})
-	pulumi.RegisterOutputType(SnatEntryPtrOutput{})
 	pulumi.RegisterOutputType(SnatEntryArrayOutput{})
 	pulumi.RegisterOutputType(SnatEntryMapOutput{})
 }

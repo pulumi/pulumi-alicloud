@@ -104,15 +104,15 @@ export class RdsParameterGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: RdsParameterGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RdsParameterGroupArgs | RdsParameterGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RdsParameterGroupState | undefined;
-            inputs["engine"] = state ? state.engine : undefined;
-            inputs["engineVersion"] = state ? state.engineVersion : undefined;
-            inputs["paramDetails"] = state ? state.paramDetails : undefined;
-            inputs["parameterGroupDesc"] = state ? state.parameterGroupDesc : undefined;
-            inputs["parameterGroupName"] = state ? state.parameterGroupName : undefined;
+            resourceInputs["engine"] = state ? state.engine : undefined;
+            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
+            resourceInputs["paramDetails"] = state ? state.paramDetails : undefined;
+            resourceInputs["parameterGroupDesc"] = state ? state.parameterGroupDesc : undefined;
+            resourceInputs["parameterGroupName"] = state ? state.parameterGroupName : undefined;
         } else {
             const args = argsOrState as RdsParameterGroupArgs | undefined;
             if ((!args || args.engine === undefined) && !opts.urn) {
@@ -127,16 +127,14 @@ export class RdsParameterGroup extends pulumi.CustomResource {
             if ((!args || args.parameterGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parameterGroupName'");
             }
-            inputs["engine"] = args ? args.engine : undefined;
-            inputs["engineVersion"] = args ? args.engineVersion : undefined;
-            inputs["paramDetails"] = args ? args.paramDetails : undefined;
-            inputs["parameterGroupDesc"] = args ? args.parameterGroupDesc : undefined;
-            inputs["parameterGroupName"] = args ? args.parameterGroupName : undefined;
+            resourceInputs["engine"] = args ? args.engine : undefined;
+            resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
+            resourceInputs["paramDetails"] = args ? args.paramDetails : undefined;
+            resourceInputs["parameterGroupDesc"] = args ? args.parameterGroupDesc : undefined;
+            resourceInputs["parameterGroupName"] = args ? args.parameterGroupName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RdsParameterGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RdsParameterGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

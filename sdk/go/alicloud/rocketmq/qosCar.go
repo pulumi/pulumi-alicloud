@@ -235,7 +235,7 @@ type QosCarInput interface {
 }
 
 func (*QosCar) ElementType() reflect.Type {
-	return reflect.TypeOf((*QosCar)(nil))
+	return reflect.TypeOf((**QosCar)(nil)).Elem()
 }
 
 func (i *QosCar) ToQosCarOutput() QosCarOutput {
@@ -244,35 +244,6 @@ func (i *QosCar) ToQosCarOutput() QosCarOutput {
 
 func (i *QosCar) ToQosCarOutputWithContext(ctx context.Context) QosCarOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QosCarOutput)
-}
-
-func (i *QosCar) ToQosCarPtrOutput() QosCarPtrOutput {
-	return i.ToQosCarPtrOutputWithContext(context.Background())
-}
-
-func (i *QosCar) ToQosCarPtrOutputWithContext(ctx context.Context) QosCarPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QosCarPtrOutput)
-}
-
-type QosCarPtrInput interface {
-	pulumi.Input
-
-	ToQosCarPtrOutput() QosCarPtrOutput
-	ToQosCarPtrOutputWithContext(ctx context.Context) QosCarPtrOutput
-}
-
-type qosCarPtrType QosCarArgs
-
-func (*qosCarPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**QosCar)(nil))
-}
-
-func (i *qosCarPtrType) ToQosCarPtrOutput() QosCarPtrOutput {
-	return i.ToQosCarPtrOutputWithContext(context.Background())
-}
-
-func (i *qosCarPtrType) ToQosCarPtrOutputWithContext(ctx context.Context) QosCarPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QosCarPtrOutput)
 }
 
 // QosCarArrayInput is an input type that accepts QosCarArray and QosCarArrayOutput values.
@@ -328,7 +299,7 @@ func (i QosCarMap) ToQosCarMapOutputWithContext(ctx context.Context) QosCarMapOu
 type QosCarOutput struct{ *pulumi.OutputState }
 
 func (QosCarOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*QosCar)(nil))
+	return reflect.TypeOf((**QosCar)(nil)).Elem()
 }
 
 func (o QosCarOutput) ToQosCarOutput() QosCarOutput {
@@ -339,44 +310,10 @@ func (o QosCarOutput) ToQosCarOutputWithContext(ctx context.Context) QosCarOutpu
 	return o
 }
 
-func (o QosCarOutput) ToQosCarPtrOutput() QosCarPtrOutput {
-	return o.ToQosCarPtrOutputWithContext(context.Background())
-}
-
-func (o QosCarOutput) ToQosCarPtrOutputWithContext(ctx context.Context) QosCarPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v QosCar) *QosCar {
-		return &v
-	}).(QosCarPtrOutput)
-}
-
-type QosCarPtrOutput struct{ *pulumi.OutputState }
-
-func (QosCarPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**QosCar)(nil))
-}
-
-func (o QosCarPtrOutput) ToQosCarPtrOutput() QosCarPtrOutput {
-	return o
-}
-
-func (o QosCarPtrOutput) ToQosCarPtrOutputWithContext(ctx context.Context) QosCarPtrOutput {
-	return o
-}
-
-func (o QosCarPtrOutput) Elem() QosCarOutput {
-	return o.ApplyT(func(v *QosCar) QosCar {
-		if v != nil {
-			return *v
-		}
-		var ret QosCar
-		return ret
-	}).(QosCarOutput)
-}
-
 type QosCarArrayOutput struct{ *pulumi.OutputState }
 
 func (QosCarArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]QosCar)(nil))
+	return reflect.TypeOf((*[]*QosCar)(nil)).Elem()
 }
 
 func (o QosCarArrayOutput) ToQosCarArrayOutput() QosCarArrayOutput {
@@ -388,15 +325,15 @@ func (o QosCarArrayOutput) ToQosCarArrayOutputWithContext(ctx context.Context) Q
 }
 
 func (o QosCarArrayOutput) Index(i pulumi.IntInput) QosCarOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QosCar {
-		return vs[0].([]QosCar)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *QosCar {
+		return vs[0].([]*QosCar)[vs[1].(int)]
 	}).(QosCarOutput)
 }
 
 type QosCarMapOutput struct{ *pulumi.OutputState }
 
 func (QosCarMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]QosCar)(nil))
+	return reflect.TypeOf((*map[string]*QosCar)(nil)).Elem()
 }
 
 func (o QosCarMapOutput) ToQosCarMapOutput() QosCarMapOutput {
@@ -408,18 +345,16 @@ func (o QosCarMapOutput) ToQosCarMapOutputWithContext(ctx context.Context) QosCa
 }
 
 func (o QosCarMapOutput) MapIndex(k pulumi.StringInput) QosCarOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) QosCar {
-		return vs[0].(map[string]QosCar)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *QosCar {
+		return vs[0].(map[string]*QosCar)[vs[1].(string)]
 	}).(QosCarOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*QosCarInput)(nil)).Elem(), &QosCar{})
-	pulumi.RegisterInputType(reflect.TypeOf((*QosCarPtrInput)(nil)).Elem(), &QosCar{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QosCarArrayInput)(nil)).Elem(), QosCarArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QosCarMapInput)(nil)).Elem(), QosCarMap{})
 	pulumi.RegisterOutputType(QosCarOutput{})
-	pulumi.RegisterOutputType(QosCarPtrOutput{})
 	pulumi.RegisterOutputType(QosCarArrayOutput{})
 	pulumi.RegisterOutputType(QosCarMapOutput{})
 }

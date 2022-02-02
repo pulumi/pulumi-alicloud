@@ -89,40 +89,38 @@ export class Store extends pulumi.CustomResource {
      */
     constructor(name: string, args: StoreArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StoreArgs | StoreState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StoreState | undefined;
-            inputs["appendMeta"] = state ? state.appendMeta : undefined;
-            inputs["autoSplit"] = state ? state.autoSplit : undefined;
-            inputs["enableWebTracking"] = state ? state.enableWebTracking : undefined;
-            inputs["encryptConf"] = state ? state.encryptConf : undefined;
-            inputs["maxSplitShardCount"] = state ? state.maxSplitShardCount : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["project"] = state ? state.project : undefined;
-            inputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
-            inputs["shardCount"] = state ? state.shardCount : undefined;
-            inputs["shards"] = state ? state.shards : undefined;
+            resourceInputs["appendMeta"] = state ? state.appendMeta : undefined;
+            resourceInputs["autoSplit"] = state ? state.autoSplit : undefined;
+            resourceInputs["enableWebTracking"] = state ? state.enableWebTracking : undefined;
+            resourceInputs["encryptConf"] = state ? state.encryptConf : undefined;
+            resourceInputs["maxSplitShardCount"] = state ? state.maxSplitShardCount : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
+            resourceInputs["shardCount"] = state ? state.shardCount : undefined;
+            resourceInputs["shards"] = state ? state.shards : undefined;
         } else {
             const args = argsOrState as StoreArgs | undefined;
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            inputs["appendMeta"] = args ? args.appendMeta : undefined;
-            inputs["autoSplit"] = args ? args.autoSplit : undefined;
-            inputs["enableWebTracking"] = args ? args.enableWebTracking : undefined;
-            inputs["encryptConf"] = args ? args.encryptConf : undefined;
-            inputs["maxSplitShardCount"] = args ? args.maxSplitShardCount : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["project"] = args ? args.project : undefined;
-            inputs["retentionPeriod"] = args ? args.retentionPeriod : undefined;
-            inputs["shardCount"] = args ? args.shardCount : undefined;
-            inputs["shards"] = undefined /*out*/;
+            resourceInputs["appendMeta"] = args ? args.appendMeta : undefined;
+            resourceInputs["autoSplit"] = args ? args.autoSplit : undefined;
+            resourceInputs["enableWebTracking"] = args ? args.enableWebTracking : undefined;
+            resourceInputs["encryptConf"] = args ? args.encryptConf : undefined;
+            resourceInputs["maxSplitShardCount"] = args ? args.maxSplitShardCount : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["retentionPeriod"] = args ? args.retentionPeriod : undefined;
+            resourceInputs["shardCount"] = args ? args.shardCount : undefined;
+            resourceInputs["shards"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Store.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Store.__pulumiType, name, resourceInputs, opts);
     }
 }
 

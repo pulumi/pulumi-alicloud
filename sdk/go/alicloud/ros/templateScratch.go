@@ -218,7 +218,7 @@ type TemplateScratchInput interface {
 }
 
 func (*TemplateScratch) ElementType() reflect.Type {
-	return reflect.TypeOf((*TemplateScratch)(nil))
+	return reflect.TypeOf((**TemplateScratch)(nil)).Elem()
 }
 
 func (i *TemplateScratch) ToTemplateScratchOutput() TemplateScratchOutput {
@@ -227,35 +227,6 @@ func (i *TemplateScratch) ToTemplateScratchOutput() TemplateScratchOutput {
 
 func (i *TemplateScratch) ToTemplateScratchOutputWithContext(ctx context.Context) TemplateScratchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TemplateScratchOutput)
-}
-
-func (i *TemplateScratch) ToTemplateScratchPtrOutput() TemplateScratchPtrOutput {
-	return i.ToTemplateScratchPtrOutputWithContext(context.Background())
-}
-
-func (i *TemplateScratch) ToTemplateScratchPtrOutputWithContext(ctx context.Context) TemplateScratchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TemplateScratchPtrOutput)
-}
-
-type TemplateScratchPtrInput interface {
-	pulumi.Input
-
-	ToTemplateScratchPtrOutput() TemplateScratchPtrOutput
-	ToTemplateScratchPtrOutputWithContext(ctx context.Context) TemplateScratchPtrOutput
-}
-
-type templateScratchPtrType TemplateScratchArgs
-
-func (*templateScratchPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TemplateScratch)(nil))
-}
-
-func (i *templateScratchPtrType) ToTemplateScratchPtrOutput() TemplateScratchPtrOutput {
-	return i.ToTemplateScratchPtrOutputWithContext(context.Background())
-}
-
-func (i *templateScratchPtrType) ToTemplateScratchPtrOutputWithContext(ctx context.Context) TemplateScratchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TemplateScratchPtrOutput)
 }
 
 // TemplateScratchArrayInput is an input type that accepts TemplateScratchArray and TemplateScratchArrayOutput values.
@@ -311,7 +282,7 @@ func (i TemplateScratchMap) ToTemplateScratchMapOutputWithContext(ctx context.Co
 type TemplateScratchOutput struct{ *pulumi.OutputState }
 
 func (TemplateScratchOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TemplateScratch)(nil))
+	return reflect.TypeOf((**TemplateScratch)(nil)).Elem()
 }
 
 func (o TemplateScratchOutput) ToTemplateScratchOutput() TemplateScratchOutput {
@@ -322,44 +293,10 @@ func (o TemplateScratchOutput) ToTemplateScratchOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o TemplateScratchOutput) ToTemplateScratchPtrOutput() TemplateScratchPtrOutput {
-	return o.ToTemplateScratchPtrOutputWithContext(context.Background())
-}
-
-func (o TemplateScratchOutput) ToTemplateScratchPtrOutputWithContext(ctx context.Context) TemplateScratchPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TemplateScratch) *TemplateScratch {
-		return &v
-	}).(TemplateScratchPtrOutput)
-}
-
-type TemplateScratchPtrOutput struct{ *pulumi.OutputState }
-
-func (TemplateScratchPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TemplateScratch)(nil))
-}
-
-func (o TemplateScratchPtrOutput) ToTemplateScratchPtrOutput() TemplateScratchPtrOutput {
-	return o
-}
-
-func (o TemplateScratchPtrOutput) ToTemplateScratchPtrOutputWithContext(ctx context.Context) TemplateScratchPtrOutput {
-	return o
-}
-
-func (o TemplateScratchPtrOutput) Elem() TemplateScratchOutput {
-	return o.ApplyT(func(v *TemplateScratch) TemplateScratch {
-		if v != nil {
-			return *v
-		}
-		var ret TemplateScratch
-		return ret
-	}).(TemplateScratchOutput)
-}
-
 type TemplateScratchArrayOutput struct{ *pulumi.OutputState }
 
 func (TemplateScratchArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TemplateScratch)(nil))
+	return reflect.TypeOf((*[]*TemplateScratch)(nil)).Elem()
 }
 
 func (o TemplateScratchArrayOutput) ToTemplateScratchArrayOutput() TemplateScratchArrayOutput {
@@ -371,15 +308,15 @@ func (o TemplateScratchArrayOutput) ToTemplateScratchArrayOutputWithContext(ctx 
 }
 
 func (o TemplateScratchArrayOutput) Index(i pulumi.IntInput) TemplateScratchOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TemplateScratch {
-		return vs[0].([]TemplateScratch)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TemplateScratch {
+		return vs[0].([]*TemplateScratch)[vs[1].(int)]
 	}).(TemplateScratchOutput)
 }
 
 type TemplateScratchMapOutput struct{ *pulumi.OutputState }
 
 func (TemplateScratchMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]TemplateScratch)(nil))
+	return reflect.TypeOf((*map[string]*TemplateScratch)(nil)).Elem()
 }
 
 func (o TemplateScratchMapOutput) ToTemplateScratchMapOutput() TemplateScratchMapOutput {
@@ -391,18 +328,16 @@ func (o TemplateScratchMapOutput) ToTemplateScratchMapOutputWithContext(ctx cont
 }
 
 func (o TemplateScratchMapOutput) MapIndex(k pulumi.StringInput) TemplateScratchOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TemplateScratch {
-		return vs[0].(map[string]TemplateScratch)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TemplateScratch {
+		return vs[0].(map[string]*TemplateScratch)[vs[1].(string)]
 	}).(TemplateScratchOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateScratchInput)(nil)).Elem(), &TemplateScratch{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TemplateScratchPtrInput)(nil)).Elem(), &TemplateScratch{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateScratchArrayInput)(nil)).Elem(), TemplateScratchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateScratchMapInput)(nil)).Elem(), TemplateScratchMap{})
 	pulumi.RegisterOutputType(TemplateScratchOutput{})
-	pulumi.RegisterOutputType(TemplateScratchPtrOutput{})
 	pulumi.RegisterOutputType(TemplateScratchArrayOutput{})
 	pulumi.RegisterOutputType(TemplateScratchMapOutput{})
 }

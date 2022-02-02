@@ -114,15 +114,15 @@ export class PrivateZone extends pulumi.CustomResource {
      */
     constructor(name: string, args: PrivateZoneArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PrivateZoneArgs | PrivateZoneState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PrivateZoneState | undefined;
-            inputs["accessRegionId"] = state ? state.accessRegionId : undefined;
-            inputs["cenId"] = state ? state.cenId : undefined;
-            inputs["hostRegionId"] = state ? state.hostRegionId : undefined;
-            inputs["hostVpcId"] = state ? state.hostVpcId : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["accessRegionId"] = state ? state.accessRegionId : undefined;
+            resourceInputs["cenId"] = state ? state.cenId : undefined;
+            resourceInputs["hostRegionId"] = state ? state.hostRegionId : undefined;
+            resourceInputs["hostVpcId"] = state ? state.hostVpcId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as PrivateZoneArgs | undefined;
             if ((!args || args.accessRegionId === undefined) && !opts.urn) {
@@ -137,16 +137,14 @@ export class PrivateZone extends pulumi.CustomResource {
             if ((!args || args.hostVpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'hostVpcId'");
             }
-            inputs["accessRegionId"] = args ? args.accessRegionId : undefined;
-            inputs["cenId"] = args ? args.cenId : undefined;
-            inputs["hostRegionId"] = args ? args.hostRegionId : undefined;
-            inputs["hostVpcId"] = args ? args.hostVpcId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["accessRegionId"] = args ? args.accessRegionId : undefined;
+            resourceInputs["cenId"] = args ? args.cenId : undefined;
+            resourceInputs["hostRegionId"] = args ? args.hostRegionId : undefined;
+            resourceInputs["hostVpcId"] = args ? args.hostVpcId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(PrivateZone.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(PrivateZone.__pulumiType, name, resourceInputs, opts);
     }
 }
 

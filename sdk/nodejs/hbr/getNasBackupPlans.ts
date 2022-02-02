@@ -30,9 +30,7 @@ export function getNasBackupPlans(args?: GetNasBackupPlansArgs, opts?: pulumi.In
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:hbr/getNasBackupPlans:getNasBackupPlans", {
         "fileSystemId": args.fileSystemId,
         "ids": args.ids,

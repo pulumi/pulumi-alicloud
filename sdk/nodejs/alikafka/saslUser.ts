@@ -113,15 +113,15 @@ export class SaslUser extends pulumi.CustomResource {
      */
     constructor(name: string, args: SaslUserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SaslUserArgs | SaslUserState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SaslUserState | undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
-            inputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["username"] = state ? state.username : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
+            resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as SaslUserArgs | undefined;
             if ((!args || args.instanceId === undefined) && !opts.urn) {
@@ -130,16 +130,14 @@ export class SaslUser extends pulumi.CustomResource {
             if ((!args || args.username === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
-            inputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["username"] = args ? args.username : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
+            resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["username"] = args ? args.username : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SaslUser.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SaslUser.__pulumiType, name, resourceInputs, opts);
     }
 }
 

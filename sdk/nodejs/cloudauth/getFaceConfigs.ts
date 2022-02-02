@@ -22,10 +22,10 @@ import * as utilities from "../utilities";
  *     bizName: "example-value",
  *     bizType: "example-value",
  * });
- * const defaultFaceConfigs = pulumi.all([defaultFaceConfig.id, defaultFaceConfig.bizName]).apply(([id, bizName]) => alicloud.cloudauth.getFaceConfigs({
- *     ids: [id],
- *     nameRegex: bizName,
- * }));
+ * const defaultFaceConfigs = alicloud.cloudauth.getFaceConfigsOutput({
+ *     ids: [defaultFaceConfig.id],
+ *     nameRegex: defaultFaceConfig.bizName,
+ * });
  * export const faceConfig = defaultFaceConfigs.apply(defaultFaceConfigs => defaultFaceConfigs.configs?[0]);
  * ```
  */
@@ -35,9 +35,7 @@ export function getFaceConfigs(args?: GetFaceConfigsArgs, opts?: pulumi.InvokeOp
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

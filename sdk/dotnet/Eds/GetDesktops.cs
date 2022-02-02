@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Eds
 {
@@ -86,15 +85,15 @@ namespace Pulumi.AliCloud.Eds
         ///                 defaultUser.Id,
         ///             },
         ///         });
-        ///         var ids = defaultDesktop.Id.Apply(id =&gt; AliCloud.Eds.GetDesktops.InvokeAsync(new AliCloud.Eds.GetDesktopsArgs
+        ///         var ids = AliCloud.Eds.GetDesktops.Invoke(new AliCloud.Eds.GetDesktopsInvokeArgs
         ///         {
         ///             Ids = 
         ///             {
-        ///                 id,
+        ///                 defaultDesktop.Id,
         ///             },
-        ///         }));
+        ///         });
         ///         this.EcdDesktopId1 = ids.Apply(ids =&gt; ids.Desktops?[0]?.Id);
-        ///         var nameRegex = defaultDesktop.DesktopName.Apply(desktopName =&gt; AliCloud.Eds.GetDesktops.InvokeAsync(new AliCloud.Eds.GetDesktopsArgs
+        ///         var nameRegex = defaultDesktop.DesktopName.Apply(desktopName =&gt; AliCloud.Eds.GetDesktops.Invoke(new AliCloud.Eds.GetDesktopsInvokeArgs
         ///         {
         ///             NameRegex = desktopName,
         ///         }));
@@ -111,7 +110,7 @@ namespace Pulumi.AliCloud.Eds
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDesktopsResult> InvokeAsync(GetDesktopsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDesktopsResult>("alicloud:eds/getDesktops:getDesktops", args ?? new GetDesktopsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDesktopsResult>("alicloud:eds/getDesktops:getDesktops", args ?? new GetDesktopsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecd Desktops of the current Alibaba Cloud user.
@@ -187,15 +186,15 @@ namespace Pulumi.AliCloud.Eds
         ///                 defaultUser.Id,
         ///             },
         ///         });
-        ///         var ids = defaultDesktop.Id.Apply(id =&gt; AliCloud.Eds.GetDesktops.InvokeAsync(new AliCloud.Eds.GetDesktopsArgs
+        ///         var ids = AliCloud.Eds.GetDesktops.Invoke(new AliCloud.Eds.GetDesktopsInvokeArgs
         ///         {
         ///             Ids = 
         ///             {
-        ///                 id,
+        ///                 defaultDesktop.Id,
         ///             },
-        ///         }));
+        ///         });
         ///         this.EcdDesktopId1 = ids.Apply(ids =&gt; ids.Desktops?[0]?.Id);
-        ///         var nameRegex = defaultDesktop.DesktopName.Apply(desktopName =&gt; AliCloud.Eds.GetDesktops.InvokeAsync(new AliCloud.Eds.GetDesktopsArgs
+        ///         var nameRegex = defaultDesktop.DesktopName.Apply(desktopName =&gt; AliCloud.Eds.GetDesktops.Invoke(new AliCloud.Eds.GetDesktopsInvokeArgs
         ///         {
         ///             NameRegex = desktopName,
         ///         }));
@@ -212,7 +211,7 @@ namespace Pulumi.AliCloud.Eds
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDesktopsResult> Invoke(GetDesktopsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDesktopsResult>("alicloud:eds/getDesktops:getDesktops", args ?? new GetDesktopsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDesktopsResult>("alicloud:eds/getDesktops:getDesktops", args ?? new GetDesktopsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -32,9 +32,7 @@ export function getApplicationLoadBalancers(args?: GetApplicationLoadBalancersAr
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:slb/getApplicationLoadBalancers:getApplicationLoadBalancers", {
         "address": args.address,
         "addressIpVersion": args.addressIpVersion,

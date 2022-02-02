@@ -112,18 +112,18 @@ export class OssBackupPlan extends pulumi.CustomResource {
      */
     constructor(name: string, args: OssBackupPlanArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OssBackupPlanArgs | OssBackupPlanState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OssBackupPlanState | undefined;
-            inputs["backupType"] = state ? state.backupType : undefined;
-            inputs["bucket"] = state ? state.bucket : undefined;
-            inputs["disabled"] = state ? state.disabled : undefined;
-            inputs["ossBackupPlanName"] = state ? state.ossBackupPlanName : undefined;
-            inputs["prefix"] = state ? state.prefix : undefined;
-            inputs["retention"] = state ? state.retention : undefined;
-            inputs["schedule"] = state ? state.schedule : undefined;
-            inputs["vaultId"] = state ? state.vaultId : undefined;
+            resourceInputs["backupType"] = state ? state.backupType : undefined;
+            resourceInputs["bucket"] = state ? state.bucket : undefined;
+            resourceInputs["disabled"] = state ? state.disabled : undefined;
+            resourceInputs["ossBackupPlanName"] = state ? state.ossBackupPlanName : undefined;
+            resourceInputs["prefix"] = state ? state.prefix : undefined;
+            resourceInputs["retention"] = state ? state.retention : undefined;
+            resourceInputs["schedule"] = state ? state.schedule : undefined;
+            resourceInputs["vaultId"] = state ? state.vaultId : undefined;
         } else {
             const args = argsOrState as OssBackupPlanArgs | undefined;
             if ((!args || args.backupType === undefined) && !opts.urn) {
@@ -144,19 +144,17 @@ export class OssBackupPlan extends pulumi.CustomResource {
             if ((!args || args.vaultId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vaultId'");
             }
-            inputs["backupType"] = args ? args.backupType : undefined;
-            inputs["bucket"] = args ? args.bucket : undefined;
-            inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["ossBackupPlanName"] = args ? args.ossBackupPlanName : undefined;
-            inputs["prefix"] = args ? args.prefix : undefined;
-            inputs["retention"] = args ? args.retention : undefined;
-            inputs["schedule"] = args ? args.schedule : undefined;
-            inputs["vaultId"] = args ? args.vaultId : undefined;
+            resourceInputs["backupType"] = args ? args.backupType : undefined;
+            resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
+            resourceInputs["ossBackupPlanName"] = args ? args.ossBackupPlanName : undefined;
+            resourceInputs["prefix"] = args ? args.prefix : undefined;
+            resourceInputs["retention"] = args ? args.retention : undefined;
+            resourceInputs["schedule"] = args ? args.schedule : undefined;
+            resourceInputs["vaultId"] = args ? args.vaultId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(OssBackupPlan.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(OssBackupPlan.__pulumiType, name, resourceInputs, opts);
     }
 }
 

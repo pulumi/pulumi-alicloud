@@ -101,21 +101,21 @@ export class TrafficMirrorSession extends pulumi.CustomResource {
      */
     constructor(name: string, args: TrafficMirrorSessionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TrafficMirrorSessionArgs | TrafficMirrorSessionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TrafficMirrorSessionState | undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["trafficMirrorFilterId"] = state ? state.trafficMirrorFilterId : undefined;
-            inputs["trafficMirrorSessionDescription"] = state ? state.trafficMirrorSessionDescription : undefined;
-            inputs["trafficMirrorSessionName"] = state ? state.trafficMirrorSessionName : undefined;
-            inputs["trafficMirrorSourceIds"] = state ? state.trafficMirrorSourceIds : undefined;
-            inputs["trafficMirrorTargetId"] = state ? state.trafficMirrorTargetId : undefined;
-            inputs["trafficMirrorTargetType"] = state ? state.trafficMirrorTargetType : undefined;
-            inputs["virtualNetworkId"] = state ? state.virtualNetworkId : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["trafficMirrorFilterId"] = state ? state.trafficMirrorFilterId : undefined;
+            resourceInputs["trafficMirrorSessionDescription"] = state ? state.trafficMirrorSessionDescription : undefined;
+            resourceInputs["trafficMirrorSessionName"] = state ? state.trafficMirrorSessionName : undefined;
+            resourceInputs["trafficMirrorSourceIds"] = state ? state.trafficMirrorSourceIds : undefined;
+            resourceInputs["trafficMirrorTargetId"] = state ? state.trafficMirrorTargetId : undefined;
+            resourceInputs["trafficMirrorTargetType"] = state ? state.trafficMirrorTargetType : undefined;
+            resourceInputs["virtualNetworkId"] = state ? state.virtualNetworkId : undefined;
         } else {
             const args = argsOrState as TrafficMirrorSessionArgs | undefined;
             if ((!args || args.priority === undefined) && !opts.urn) {
@@ -133,22 +133,20 @@ export class TrafficMirrorSession extends pulumi.CustomResource {
             if ((!args || args.trafficMirrorTargetType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'trafficMirrorTargetType'");
             }
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["trafficMirrorFilterId"] = args ? args.trafficMirrorFilterId : undefined;
-            inputs["trafficMirrorSessionDescription"] = args ? args.trafficMirrorSessionDescription : undefined;
-            inputs["trafficMirrorSessionName"] = args ? args.trafficMirrorSessionName : undefined;
-            inputs["trafficMirrorSourceIds"] = args ? args.trafficMirrorSourceIds : undefined;
-            inputs["trafficMirrorTargetId"] = args ? args.trafficMirrorTargetId : undefined;
-            inputs["trafficMirrorTargetType"] = args ? args.trafficMirrorTargetType : undefined;
-            inputs["virtualNetworkId"] = args ? args.virtualNetworkId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["trafficMirrorFilterId"] = args ? args.trafficMirrorFilterId : undefined;
+            resourceInputs["trafficMirrorSessionDescription"] = args ? args.trafficMirrorSessionDescription : undefined;
+            resourceInputs["trafficMirrorSessionName"] = args ? args.trafficMirrorSessionName : undefined;
+            resourceInputs["trafficMirrorSourceIds"] = args ? args.trafficMirrorSourceIds : undefined;
+            resourceInputs["trafficMirrorTargetId"] = args ? args.trafficMirrorTargetId : undefined;
+            resourceInputs["trafficMirrorTargetType"] = args ? args.trafficMirrorTargetType : undefined;
+            resourceInputs["virtualNetworkId"] = args ? args.virtualNetworkId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TrafficMirrorSession.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TrafficMirrorSession.__pulumiType, name, resourceInputs, opts);
     }
 }
 

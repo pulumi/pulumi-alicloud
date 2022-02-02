@@ -266,7 +266,7 @@ type ExchangeInput interface {
 }
 
 func (*Exchange) ElementType() reflect.Type {
-	return reflect.TypeOf((*Exchange)(nil))
+	return reflect.TypeOf((**Exchange)(nil)).Elem()
 }
 
 func (i *Exchange) ToExchangeOutput() ExchangeOutput {
@@ -275,35 +275,6 @@ func (i *Exchange) ToExchangeOutput() ExchangeOutput {
 
 func (i *Exchange) ToExchangeOutputWithContext(ctx context.Context) ExchangeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExchangeOutput)
-}
-
-func (i *Exchange) ToExchangePtrOutput() ExchangePtrOutput {
-	return i.ToExchangePtrOutputWithContext(context.Background())
-}
-
-func (i *Exchange) ToExchangePtrOutputWithContext(ctx context.Context) ExchangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExchangePtrOutput)
-}
-
-type ExchangePtrInput interface {
-	pulumi.Input
-
-	ToExchangePtrOutput() ExchangePtrOutput
-	ToExchangePtrOutputWithContext(ctx context.Context) ExchangePtrOutput
-}
-
-type exchangePtrType ExchangeArgs
-
-func (*exchangePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Exchange)(nil))
-}
-
-func (i *exchangePtrType) ToExchangePtrOutput() ExchangePtrOutput {
-	return i.ToExchangePtrOutputWithContext(context.Background())
-}
-
-func (i *exchangePtrType) ToExchangePtrOutputWithContext(ctx context.Context) ExchangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExchangePtrOutput)
 }
 
 // ExchangeArrayInput is an input type that accepts ExchangeArray and ExchangeArrayOutput values.
@@ -359,7 +330,7 @@ func (i ExchangeMap) ToExchangeMapOutputWithContext(ctx context.Context) Exchang
 type ExchangeOutput struct{ *pulumi.OutputState }
 
 func (ExchangeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Exchange)(nil))
+	return reflect.TypeOf((**Exchange)(nil)).Elem()
 }
 
 func (o ExchangeOutput) ToExchangeOutput() ExchangeOutput {
@@ -370,44 +341,10 @@ func (o ExchangeOutput) ToExchangeOutputWithContext(ctx context.Context) Exchang
 	return o
 }
 
-func (o ExchangeOutput) ToExchangePtrOutput() ExchangePtrOutput {
-	return o.ToExchangePtrOutputWithContext(context.Background())
-}
-
-func (o ExchangeOutput) ToExchangePtrOutputWithContext(ctx context.Context) ExchangePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Exchange) *Exchange {
-		return &v
-	}).(ExchangePtrOutput)
-}
-
-type ExchangePtrOutput struct{ *pulumi.OutputState }
-
-func (ExchangePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Exchange)(nil))
-}
-
-func (o ExchangePtrOutput) ToExchangePtrOutput() ExchangePtrOutput {
-	return o
-}
-
-func (o ExchangePtrOutput) ToExchangePtrOutputWithContext(ctx context.Context) ExchangePtrOutput {
-	return o
-}
-
-func (o ExchangePtrOutput) Elem() ExchangeOutput {
-	return o.ApplyT(func(v *Exchange) Exchange {
-		if v != nil {
-			return *v
-		}
-		var ret Exchange
-		return ret
-	}).(ExchangeOutput)
-}
-
 type ExchangeArrayOutput struct{ *pulumi.OutputState }
 
 func (ExchangeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Exchange)(nil))
+	return reflect.TypeOf((*[]*Exchange)(nil)).Elem()
 }
 
 func (o ExchangeArrayOutput) ToExchangeArrayOutput() ExchangeArrayOutput {
@@ -419,15 +356,15 @@ func (o ExchangeArrayOutput) ToExchangeArrayOutputWithContext(ctx context.Contex
 }
 
 func (o ExchangeArrayOutput) Index(i pulumi.IntInput) ExchangeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Exchange {
-		return vs[0].([]Exchange)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Exchange {
+		return vs[0].([]*Exchange)[vs[1].(int)]
 	}).(ExchangeOutput)
 }
 
 type ExchangeMapOutput struct{ *pulumi.OutputState }
 
 func (ExchangeMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Exchange)(nil))
+	return reflect.TypeOf((*map[string]*Exchange)(nil)).Elem()
 }
 
 func (o ExchangeMapOutput) ToExchangeMapOutput() ExchangeMapOutput {
@@ -439,18 +376,16 @@ func (o ExchangeMapOutput) ToExchangeMapOutputWithContext(ctx context.Context) E
 }
 
 func (o ExchangeMapOutput) MapIndex(k pulumi.StringInput) ExchangeOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Exchange {
-		return vs[0].(map[string]Exchange)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Exchange {
+		return vs[0].(map[string]*Exchange)[vs[1].(string)]
 	}).(ExchangeOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExchangeInput)(nil)).Elem(), &Exchange{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExchangePtrInput)(nil)).Elem(), &Exchange{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExchangeArrayInput)(nil)).Elem(), ExchangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExchangeMapInput)(nil)).Elem(), ExchangeMap{})
 	pulumi.RegisterOutputType(ExchangeOutput{})
-	pulumi.RegisterOutputType(ExchangePtrOutput{})
 	pulumi.RegisterOutputType(ExchangeArrayOutput{})
 	pulumi.RegisterOutputType(ExchangeMapOutput{})
 }

@@ -136,19 +136,19 @@ export class Account extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccountArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountArgs | AccountState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
-            inputs["accountName"] = state ? state.accountName : undefined;
-            inputs["accountPassword"] = state ? state.accountPassword : undefined;
-            inputs["accountPrivilege"] = state ? state.accountPrivilege : undefined;
-            inputs["accountType"] = state ? state.accountType : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
-            inputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["accountName"] = state ? state.accountName : undefined;
+            resourceInputs["accountPassword"] = state ? state.accountPassword : undefined;
+            resourceInputs["accountPrivilege"] = state ? state.accountPrivilege : undefined;
+            resourceInputs["accountType"] = state ? state.accountType : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
+            resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as AccountArgs | undefined;
             if ((!args || args.accountName === undefined) && !opts.urn) {
@@ -157,20 +157,18 @@ export class Account extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["accountName"] = args ? args.accountName : undefined;
-            inputs["accountPassword"] = args ? args.accountPassword : undefined;
-            inputs["accountPrivilege"] = args ? args.accountPrivilege : undefined;
-            inputs["accountType"] = args ? args.accountType : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
-            inputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["accountName"] = args ? args.accountName : undefined;
+            resourceInputs["accountPassword"] = args ? args.accountPassword : undefined;
+            resourceInputs["accountPrivilege"] = args ? args.accountPrivilege : undefined;
+            resourceInputs["accountType"] = args ? args.accountType : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
+            resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Account.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Account.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.Hbr
     ///             Description = name,
     ///             EncryptType = 1,
     ///         });
-    ///         var defaultFileSystems = defaultFileSystem.Description.Apply(description =&gt; AliCloud.Nas.GetFileSystems.InvokeAsync(new AliCloud.Nas.GetFileSystemsArgs
+    ///         var defaultFileSystems = defaultFileSystem.Description.Apply(description =&gt; AliCloud.Nas.GetFileSystems.Invoke(new AliCloud.Nas.GetFileSystemsInvokeArgs
     ///         {
     ///             ProtocolType = "NFS",
     ///             DescriptionRegex = description,

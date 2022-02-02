@@ -27,9 +27,7 @@ export function getApps(args?: GetAppsArgs, opts?: pulumi.InvokeOptions): Promis
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:apigateway/getApps:getApps", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

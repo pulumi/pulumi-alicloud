@@ -97,15 +97,15 @@ export class AnycastEipAddressAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: AnycastEipAddressAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AnycastEipAddressAttachmentArgs | AnycastEipAddressAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AnycastEipAddressAttachmentState | undefined;
-            inputs["anycastId"] = state ? state.anycastId : undefined;
-            inputs["bindInstanceId"] = state ? state.bindInstanceId : undefined;
-            inputs["bindInstanceRegionId"] = state ? state.bindInstanceRegionId : undefined;
-            inputs["bindInstanceType"] = state ? state.bindInstanceType : undefined;
-            inputs["bindTime"] = state ? state.bindTime : undefined;
+            resourceInputs["anycastId"] = state ? state.anycastId : undefined;
+            resourceInputs["bindInstanceId"] = state ? state.bindInstanceId : undefined;
+            resourceInputs["bindInstanceRegionId"] = state ? state.bindInstanceRegionId : undefined;
+            resourceInputs["bindInstanceType"] = state ? state.bindInstanceType : undefined;
+            resourceInputs["bindTime"] = state ? state.bindTime : undefined;
         } else {
             const args = argsOrState as AnycastEipAddressAttachmentArgs | undefined;
             if ((!args || args.anycastId === undefined) && !opts.urn) {
@@ -120,16 +120,14 @@ export class AnycastEipAddressAttachment extends pulumi.CustomResource {
             if ((!args || args.bindInstanceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bindInstanceType'");
             }
-            inputs["anycastId"] = args ? args.anycastId : undefined;
-            inputs["bindInstanceId"] = args ? args.bindInstanceId : undefined;
-            inputs["bindInstanceRegionId"] = args ? args.bindInstanceRegionId : undefined;
-            inputs["bindInstanceType"] = args ? args.bindInstanceType : undefined;
-            inputs["bindTime"] = undefined /*out*/;
+            resourceInputs["anycastId"] = args ? args.anycastId : undefined;
+            resourceInputs["bindInstanceId"] = args ? args.bindInstanceId : undefined;
+            resourceInputs["bindInstanceRegionId"] = args ? args.bindInstanceRegionId : undefined;
+            resourceInputs["bindInstanceType"] = args ? args.bindInstanceType : undefined;
+            resourceInputs["bindTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AnycastEipAddressAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AnycastEipAddressAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

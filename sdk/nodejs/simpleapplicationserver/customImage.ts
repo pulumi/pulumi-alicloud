@@ -77,15 +77,15 @@ export class CustomImage extends pulumi.CustomResource {
      */
     constructor(name: string, args: CustomImageArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CustomImageArgs | CustomImageState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomImageState | undefined;
-            inputs["customImageName"] = state ? state.customImageName : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["systemSnapshotId"] = state ? state.systemSnapshotId : undefined;
+            resourceInputs["customImageName"] = state ? state.customImageName : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["systemSnapshotId"] = state ? state.systemSnapshotId : undefined;
         } else {
             const args = argsOrState as CustomImageArgs | undefined;
             if ((!args || args.customImageName === undefined) && !opts.urn) {
@@ -97,16 +97,14 @@ export class CustomImage extends pulumi.CustomResource {
             if ((!args || args.systemSnapshotId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'systemSnapshotId'");
             }
-            inputs["customImageName"] = args ? args.customImageName : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["systemSnapshotId"] = args ? args.systemSnapshotId : undefined;
+            resourceInputs["customImageName"] = args ? args.customImageName : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["systemSnapshotId"] = args ? args.systemSnapshotId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CustomImage.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CustomImage.__pulumiType, name, resourceInputs, opts);
     }
 }
 

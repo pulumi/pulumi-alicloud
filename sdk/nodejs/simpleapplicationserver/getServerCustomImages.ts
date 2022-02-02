@@ -34,9 +34,7 @@ export function getServerCustomImages(args?: GetServerCustomImagesArgs, opts?: p
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,

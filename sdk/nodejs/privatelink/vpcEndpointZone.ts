@@ -92,15 +92,15 @@ export class VpcEndpointZone extends pulumi.CustomResource {
      */
     constructor(name: string, args: VpcEndpointZoneArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VpcEndpointZoneArgs | VpcEndpointZoneState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcEndpointZoneState | undefined;
-            inputs["dryRun"] = state ? state.dryRun : undefined;
-            inputs["endpointId"] = state ? state.endpointId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["endpointId"] = state ? state.endpointId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as VpcEndpointZoneArgs | undefined;
             if ((!args || args.endpointId === undefined) && !opts.urn) {
@@ -109,16 +109,14 @@ export class VpcEndpointZone extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            inputs["dryRun"] = args ? args.dryRun : undefined;
-            inputs["endpointId"] = args ? args.endpointId : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["endpointId"] = args ? args.endpointId : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(VpcEndpointZone.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(VpcEndpointZone.__pulumiType, name, resourceInputs, opts);
     }
 }
 

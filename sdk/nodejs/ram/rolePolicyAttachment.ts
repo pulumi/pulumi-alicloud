@@ -120,13 +120,13 @@ export class RolePolicyAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: RolePolicyAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RolePolicyAttachmentArgs | RolePolicyAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RolePolicyAttachmentState | undefined;
-            inputs["policyName"] = state ? state.policyName : undefined;
-            inputs["policyType"] = state ? state.policyType : undefined;
-            inputs["roleName"] = state ? state.roleName : undefined;
+            resourceInputs["policyName"] = state ? state.policyName : undefined;
+            resourceInputs["policyType"] = state ? state.policyType : undefined;
+            resourceInputs["roleName"] = state ? state.roleName : undefined;
         } else {
             const args = argsOrState as RolePolicyAttachmentArgs | undefined;
             if ((!args || args.policyName === undefined) && !opts.urn) {
@@ -138,14 +138,12 @@ export class RolePolicyAttachment extends pulumi.CustomResource {
             if ((!args || args.roleName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'roleName'");
             }
-            inputs["policyName"] = args ? args.policyName : undefined;
-            inputs["policyType"] = args ? args.policyType : undefined;
-            inputs["roleName"] = args ? args.roleName : undefined;
+            resourceInputs["policyName"] = args ? args.policyName : undefined;
+            resourceInputs["policyType"] = args ? args.policyType : undefined;
+            resourceInputs["roleName"] = args ? args.roleName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RolePolicyAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RolePolicyAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

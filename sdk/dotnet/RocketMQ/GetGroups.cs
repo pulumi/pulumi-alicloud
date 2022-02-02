@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.RocketMQ
 {
@@ -43,7 +42,7 @@ namespace Pulumi.AliCloud.RocketMQ
         ///             InstanceId = defaultInstance.Id,
         ///             Remark = "dafault_ons_group_remark",
         ///         });
-        ///         var groupsDs = defaultGroup.InstanceId.Apply(instanceId =&gt; AliCloud.RocketMQ.GetGroups.InvokeAsync(new AliCloud.RocketMQ.GetGroupsArgs
+        ///         var groupsDs = defaultGroup.InstanceId.Apply(instanceId =&gt; AliCloud.RocketMQ.GetGroups.Invoke(new AliCloud.RocketMQ.GetGroupsInvokeArgs
         ///         {
         ///             InstanceId = instanceId,
         ///             NameRegex = @var.Group_id,
@@ -60,7 +59,7 @@ namespace Pulumi.AliCloud.RocketMQ
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:rocketmq/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:rocketmq/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of ONS Groups in an Alibaba Cloud account according to the specified filters.
@@ -93,7 +92,7 @@ namespace Pulumi.AliCloud.RocketMQ
         ///             InstanceId = defaultInstance.Id,
         ///             Remark = "dafault_ons_group_remark",
         ///         });
-        ///         var groupsDs = defaultGroup.InstanceId.Apply(instanceId =&gt; AliCloud.RocketMQ.GetGroups.InvokeAsync(new AliCloud.RocketMQ.GetGroupsArgs
+        ///         var groupsDs = defaultGroup.InstanceId.Apply(instanceId =&gt; AliCloud.RocketMQ.GetGroups.Invoke(new AliCloud.RocketMQ.GetGroupsInvokeArgs
         ///         {
         ///             InstanceId = instanceId,
         ///             NameRegex = @var.Group_id,
@@ -110,7 +109,7 @@ namespace Pulumi.AliCloud.RocketMQ
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGroupsResult> Invoke(GetGroupsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("alicloud:rocketmq/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("alicloud:rocketmq/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

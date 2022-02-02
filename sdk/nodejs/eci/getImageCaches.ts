@@ -16,9 +16,7 @@ export function getImageCaches(args?: GetImageCachesArgs, opts?: pulumi.InvokeOp
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:eci/getImageCaches:getImageCaches", {
         "ids": args.ids,
         "image": args.image,

@@ -325,7 +325,7 @@ type ElasticInstanceInput interface {
 }
 
 func (*ElasticInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElasticInstance)(nil))
+	return reflect.TypeOf((**ElasticInstance)(nil)).Elem()
 }
 
 func (i *ElasticInstance) ToElasticInstanceOutput() ElasticInstanceOutput {
@@ -334,35 +334,6 @@ func (i *ElasticInstance) ToElasticInstanceOutput() ElasticInstanceOutput {
 
 func (i *ElasticInstance) ToElasticInstanceOutputWithContext(ctx context.Context) ElasticInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ElasticInstanceOutput)
-}
-
-func (i *ElasticInstance) ToElasticInstancePtrOutput() ElasticInstancePtrOutput {
-	return i.ToElasticInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *ElasticInstance) ToElasticInstancePtrOutputWithContext(ctx context.Context) ElasticInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElasticInstancePtrOutput)
-}
-
-type ElasticInstancePtrInput interface {
-	pulumi.Input
-
-	ToElasticInstancePtrOutput() ElasticInstancePtrOutput
-	ToElasticInstancePtrOutputWithContext(ctx context.Context) ElasticInstancePtrOutput
-}
-
-type elasticInstancePtrType ElasticInstanceArgs
-
-func (*elasticInstancePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElasticInstance)(nil))
-}
-
-func (i *elasticInstancePtrType) ToElasticInstancePtrOutput() ElasticInstancePtrOutput {
-	return i.ToElasticInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *elasticInstancePtrType) ToElasticInstancePtrOutputWithContext(ctx context.Context) ElasticInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElasticInstancePtrOutput)
 }
 
 // ElasticInstanceArrayInput is an input type that accepts ElasticInstanceArray and ElasticInstanceArrayOutput values.
@@ -418,7 +389,7 @@ func (i ElasticInstanceMap) ToElasticInstanceMapOutputWithContext(ctx context.Co
 type ElasticInstanceOutput struct{ *pulumi.OutputState }
 
 func (ElasticInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElasticInstance)(nil))
+	return reflect.TypeOf((**ElasticInstance)(nil)).Elem()
 }
 
 func (o ElasticInstanceOutput) ToElasticInstanceOutput() ElasticInstanceOutput {
@@ -429,44 +400,10 @@ func (o ElasticInstanceOutput) ToElasticInstanceOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o ElasticInstanceOutput) ToElasticInstancePtrOutput() ElasticInstancePtrOutput {
-	return o.ToElasticInstancePtrOutputWithContext(context.Background())
-}
-
-func (o ElasticInstanceOutput) ToElasticInstancePtrOutputWithContext(ctx context.Context) ElasticInstancePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElasticInstance) *ElasticInstance {
-		return &v
-	}).(ElasticInstancePtrOutput)
-}
-
-type ElasticInstancePtrOutput struct{ *pulumi.OutputState }
-
-func (ElasticInstancePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElasticInstance)(nil))
-}
-
-func (o ElasticInstancePtrOutput) ToElasticInstancePtrOutput() ElasticInstancePtrOutput {
-	return o
-}
-
-func (o ElasticInstancePtrOutput) ToElasticInstancePtrOutputWithContext(ctx context.Context) ElasticInstancePtrOutput {
-	return o
-}
-
-func (o ElasticInstancePtrOutput) Elem() ElasticInstanceOutput {
-	return o.ApplyT(func(v *ElasticInstance) ElasticInstance {
-		if v != nil {
-			return *v
-		}
-		var ret ElasticInstance
-		return ret
-	}).(ElasticInstanceOutput)
-}
-
 type ElasticInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (ElasticInstanceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElasticInstance)(nil))
+	return reflect.TypeOf((*[]*ElasticInstance)(nil)).Elem()
 }
 
 func (o ElasticInstanceArrayOutput) ToElasticInstanceArrayOutput() ElasticInstanceArrayOutput {
@@ -478,15 +415,15 @@ func (o ElasticInstanceArrayOutput) ToElasticInstanceArrayOutputWithContext(ctx 
 }
 
 func (o ElasticInstanceArrayOutput) Index(i pulumi.IntInput) ElasticInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElasticInstance {
-		return vs[0].([]ElasticInstance)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ElasticInstance {
+		return vs[0].([]*ElasticInstance)[vs[1].(int)]
 	}).(ElasticInstanceOutput)
 }
 
 type ElasticInstanceMapOutput struct{ *pulumi.OutputState }
 
 func (ElasticInstanceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ElasticInstance)(nil))
+	return reflect.TypeOf((*map[string]*ElasticInstance)(nil)).Elem()
 }
 
 func (o ElasticInstanceMapOutput) ToElasticInstanceMapOutput() ElasticInstanceMapOutput {
@@ -498,18 +435,16 @@ func (o ElasticInstanceMapOutput) ToElasticInstanceMapOutputWithContext(ctx cont
 }
 
 func (o ElasticInstanceMapOutput) MapIndex(k pulumi.StringInput) ElasticInstanceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ElasticInstance {
-		return vs[0].(map[string]ElasticInstance)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ElasticInstance {
+		return vs[0].(map[string]*ElasticInstance)[vs[1].(string)]
 	}).(ElasticInstanceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElasticInstanceInput)(nil)).Elem(), &ElasticInstance{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElasticInstancePtrInput)(nil)).Elem(), &ElasticInstance{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElasticInstanceArrayInput)(nil)).Elem(), ElasticInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElasticInstanceMapInput)(nil)).Elem(), ElasticInstanceMap{})
 	pulumi.RegisterOutputType(ElasticInstanceOutput{})
-	pulumi.RegisterOutputType(ElasticInstancePtrOutput{})
 	pulumi.RegisterOutputType(ElasticInstanceArrayOutput{})
 	pulumi.RegisterOutputType(ElasticInstanceMapOutput{})
 }

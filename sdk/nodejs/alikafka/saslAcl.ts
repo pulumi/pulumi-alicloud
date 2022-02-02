@@ -134,17 +134,17 @@ export class SaslAcl extends pulumi.CustomResource {
      */
     constructor(name: string, args: SaslAclArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SaslAclArgs | SaslAclState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SaslAclState | undefined;
-            inputs["aclOperationType"] = state ? state.aclOperationType : undefined;
-            inputs["aclResourceName"] = state ? state.aclResourceName : undefined;
-            inputs["aclResourcePatternType"] = state ? state.aclResourcePatternType : undefined;
-            inputs["aclResourceType"] = state ? state.aclResourceType : undefined;
-            inputs["host"] = state ? state.host : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["username"] = state ? state.username : undefined;
+            resourceInputs["aclOperationType"] = state ? state.aclOperationType : undefined;
+            resourceInputs["aclResourceName"] = state ? state.aclResourceName : undefined;
+            resourceInputs["aclResourcePatternType"] = state ? state.aclResourcePatternType : undefined;
+            resourceInputs["aclResourceType"] = state ? state.aclResourceType : undefined;
+            resourceInputs["host"] = state ? state.host : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as SaslAclArgs | undefined;
             if ((!args || args.aclOperationType === undefined) && !opts.urn) {
@@ -165,18 +165,16 @@ export class SaslAcl extends pulumi.CustomResource {
             if ((!args || args.username === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            inputs["aclOperationType"] = args ? args.aclOperationType : undefined;
-            inputs["aclResourceName"] = args ? args.aclResourceName : undefined;
-            inputs["aclResourcePatternType"] = args ? args.aclResourcePatternType : undefined;
-            inputs["aclResourceType"] = args ? args.aclResourceType : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["username"] = args ? args.username : undefined;
-            inputs["host"] = undefined /*out*/;
+            resourceInputs["aclOperationType"] = args ? args.aclOperationType : undefined;
+            resourceInputs["aclResourceName"] = args ? args.aclResourceName : undefined;
+            resourceInputs["aclResourcePatternType"] = args ? args.aclResourcePatternType : undefined;
+            resourceInputs["aclResourceType"] = args ? args.aclResourceType : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["host"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SaslAcl.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SaslAcl.__pulumiType, name, resourceInputs, opts);
     }
 }
 

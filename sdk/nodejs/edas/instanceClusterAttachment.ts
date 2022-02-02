@@ -81,15 +81,15 @@ export class InstanceClusterAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceClusterAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceClusterAttachmentArgs | InstanceClusterAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceClusterAttachmentState | undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["clusterMemberIds"] = state ? state.clusterMemberIds : undefined;
-            inputs["ecuMap"] = state ? state.ecuMap : undefined;
-            inputs["instanceIds"] = state ? state.instanceIds : undefined;
-            inputs["statusMap"] = state ? state.statusMap : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["clusterMemberIds"] = state ? state.clusterMemberIds : undefined;
+            resourceInputs["ecuMap"] = state ? state.ecuMap : undefined;
+            resourceInputs["instanceIds"] = state ? state.instanceIds : undefined;
+            resourceInputs["statusMap"] = state ? state.statusMap : undefined;
         } else {
             const args = argsOrState as InstanceClusterAttachmentArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
@@ -98,16 +98,14 @@ export class InstanceClusterAttachment extends pulumi.CustomResource {
             if ((!args || args.instanceIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceIds'");
             }
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["instanceIds"] = args ? args.instanceIds : undefined;
-            inputs["clusterMemberIds"] = undefined /*out*/;
-            inputs["ecuMap"] = undefined /*out*/;
-            inputs["statusMap"] = undefined /*out*/;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["instanceIds"] = args ? args.instanceIds : undefined;
+            resourceInputs["clusterMemberIds"] = undefined /*out*/;
+            resourceInputs["ecuMap"] = undefined /*out*/;
+            resourceInputs["statusMap"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(InstanceClusterAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(InstanceClusterAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

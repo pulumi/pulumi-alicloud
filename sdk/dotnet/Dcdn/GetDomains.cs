@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dcdn
 {
@@ -18,7 +17,7 @@ namespace Pulumi.AliCloud.Dcdn
         /// &gt; **NOTE:** Available in 1.94.0+.
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:dcdn/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:dcdn/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides a collection of DCDN Domains to the specified filters.
@@ -26,7 +25,7 @@ namespace Pulumi.AliCloud.Dcdn
         /// &gt; **NOTE:** Available in 1.94.0+.
         /// </summary>
         public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:dcdn/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:dcdn/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());
     }
 
 

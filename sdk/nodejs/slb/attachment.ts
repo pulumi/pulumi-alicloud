@@ -75,16 +75,16 @@ export class Attachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: AttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AttachmentArgs | AttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AttachmentState | undefined;
-            inputs["backendServers"] = state ? state.backendServers : undefined;
-            inputs["deleteProtectionValidation"] = state ? state.deleteProtectionValidation : undefined;
-            inputs["instanceIds"] = state ? state.instanceIds : undefined;
-            inputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
-            inputs["serverType"] = state ? state.serverType : undefined;
-            inputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["backendServers"] = state ? state.backendServers : undefined;
+            resourceInputs["deleteProtectionValidation"] = state ? state.deleteProtectionValidation : undefined;
+            resourceInputs["instanceIds"] = state ? state.instanceIds : undefined;
+            resourceInputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
+            resourceInputs["serverType"] = state ? state.serverType : undefined;
+            resourceInputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as AttachmentArgs | undefined;
             if ((!args || args.instanceIds === undefined) && !opts.urn) {
@@ -93,17 +93,15 @@ export class Attachment extends pulumi.CustomResource {
             if ((!args || args.loadBalancerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
-            inputs["backendServers"] = args ? args.backendServers : undefined;
-            inputs["deleteProtectionValidation"] = args ? args.deleteProtectionValidation : undefined;
-            inputs["instanceIds"] = args ? args.instanceIds : undefined;
-            inputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
-            inputs["serverType"] = args ? args.serverType : undefined;
-            inputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["backendServers"] = args ? args.backendServers : undefined;
+            resourceInputs["deleteProtectionValidation"] = args ? args.deleteProtectionValidation : undefined;
+            resourceInputs["instanceIds"] = args ? args.instanceIds : undefined;
+            resourceInputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
+            resourceInputs["serverType"] = args ? args.serverType : undefined;
+            resourceInputs["weight"] = args ? args.weight : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Attachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Attachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

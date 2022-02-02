@@ -30,9 +30,7 @@ export function getQuotas(args: GetQuotasArgs, opts?: pulumi.InvokeOptions): Pro
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:quotas/getQuotas:getQuotas", {
         "dimensions": args.dimensions,
         "groupCode": args.groupCode,

@@ -28,9 +28,7 @@ export function getInstanceAttachments(args: GetInstanceAttachmentsArgs, opts?: 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cen/getInstanceAttachments:getInstanceAttachments", {
         "childInstanceRegionId": args.childInstanceRegionId,
         "childInstanceType": args.childInstanceType,

@@ -131,59 +131,57 @@ export class LoadBalancer extends pulumi.CustomResource {
     /** @deprecated This resource has been deprecated in favour of the ApplicationLoadBalancer resource */
     constructor(name: string, argsOrState?: LoadBalancerArgs | LoadBalancerState, opts?: pulumi.CustomResourceOptions) {
         pulumi.log.warn("LoadBalancer is deprecated: This resource has been deprecated in favour of the ApplicationLoadBalancer resource")
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerState | undefined;
-            inputs["address"] = state ? state.address : undefined;
-            inputs["addressIpVersion"] = state ? state.addressIpVersion : undefined;
-            inputs["addressType"] = state ? state.addressType : undefined;
-            inputs["bandwidth"] = state ? state.bandwidth : undefined;
-            inputs["deleteProtection"] = state ? state.deleteProtection : undefined;
-            inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            inputs["internetChargeType"] = state ? state.internetChargeType : undefined;
-            inputs["loadBalancerName"] = state ? state.loadBalancerName : undefined;
-            inputs["loadBalancerSpec"] = state ? state.loadBalancerSpec : undefined;
-            inputs["masterZoneId"] = state ? state.masterZoneId : undefined;
-            inputs["modificationProtectionReason"] = state ? state.modificationProtectionReason : undefined;
-            inputs["modificationProtectionStatus"] = state ? state.modificationProtectionStatus : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["paymentType"] = state ? state.paymentType : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["slaveZoneId"] = state ? state.slaveZoneId : undefined;
-            inputs["specification"] = state ? state.specification : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["address"] = state ? state.address : undefined;
+            resourceInputs["addressIpVersion"] = state ? state.addressIpVersion : undefined;
+            resourceInputs["addressType"] = state ? state.addressType : undefined;
+            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
+            resourceInputs["deleteProtection"] = state ? state.deleteProtection : undefined;
+            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
+            resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
+            resourceInputs["loadBalancerName"] = state ? state.loadBalancerName : undefined;
+            resourceInputs["loadBalancerSpec"] = state ? state.loadBalancerSpec : undefined;
+            resourceInputs["masterZoneId"] = state ? state.masterZoneId : undefined;
+            resourceInputs["modificationProtectionReason"] = state ? state.modificationProtectionReason : undefined;
+            resourceInputs["modificationProtectionStatus"] = state ? state.modificationProtectionStatus : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["slaveZoneId"] = state ? state.slaveZoneId : undefined;
+            resourceInputs["specification"] = state ? state.specification : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
-            inputs["address"] = args ? args.address : undefined;
-            inputs["addressIpVersion"] = args ? args.addressIpVersion : undefined;
-            inputs["addressType"] = args ? args.addressType : undefined;
-            inputs["bandwidth"] = args ? args.bandwidth : undefined;
-            inputs["deleteProtection"] = args ? args.deleteProtection : undefined;
-            inputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            inputs["internetChargeType"] = args ? args.internetChargeType : undefined;
-            inputs["loadBalancerName"] = args ? args.loadBalancerName : undefined;
-            inputs["loadBalancerSpec"] = args ? args.loadBalancerSpec : undefined;
-            inputs["masterZoneId"] = args ? args.masterZoneId : undefined;
-            inputs["modificationProtectionReason"] = args ? args.modificationProtectionReason : undefined;
-            inputs["modificationProtectionStatus"] = args ? args.modificationProtectionStatus : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["paymentType"] = args ? args.paymentType : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["slaveZoneId"] = args ? args.slaveZoneId : undefined;
-            inputs["specification"] = args ? args.specification : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["address"] = args ? args.address : undefined;
+            resourceInputs["addressIpVersion"] = args ? args.addressIpVersion : undefined;
+            resourceInputs["addressType"] = args ? args.addressType : undefined;
+            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
+            resourceInputs["deleteProtection"] = args ? args.deleteProtection : undefined;
+            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
+            resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
+            resourceInputs["loadBalancerName"] = args ? args.loadBalancerName : undefined;
+            resourceInputs["loadBalancerSpec"] = args ? args.loadBalancerSpec : undefined;
+            resourceInputs["masterZoneId"] = args ? args.masterZoneId : undefined;
+            resourceInputs["modificationProtectionReason"] = args ? args.modificationProtectionReason : undefined;
+            resourceInputs["modificationProtectionStatus"] = args ? args.modificationProtectionStatus : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["slaveZoneId"] = args ? args.slaveZoneId : undefined;
+            resourceInputs["specification"] = args ? args.specification : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(LoadBalancer.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(LoadBalancer.__pulumiType, name, resourceInputs, opts);
     }
 }
 

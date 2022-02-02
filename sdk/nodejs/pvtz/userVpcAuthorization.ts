@@ -82,26 +82,24 @@ export class UserVpcAuthorization extends pulumi.CustomResource {
      */
     constructor(name: string, args: UserVpcAuthorizationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UserVpcAuthorizationArgs | UserVpcAuthorizationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserVpcAuthorizationState | undefined;
-            inputs["authChannel"] = state ? state.authChannel : undefined;
-            inputs["authType"] = state ? state.authType : undefined;
-            inputs["authorizedUserId"] = state ? state.authorizedUserId : undefined;
+            resourceInputs["authChannel"] = state ? state.authChannel : undefined;
+            resourceInputs["authType"] = state ? state.authType : undefined;
+            resourceInputs["authorizedUserId"] = state ? state.authorizedUserId : undefined;
         } else {
             const args = argsOrState as UserVpcAuthorizationArgs | undefined;
             if ((!args || args.authorizedUserId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'authorizedUserId'");
             }
-            inputs["authChannel"] = args ? args.authChannel : undefined;
-            inputs["authType"] = args ? args.authType : undefined;
-            inputs["authorizedUserId"] = args ? args.authorizedUserId : undefined;
+            resourceInputs["authChannel"] = args ? args.authChannel : undefined;
+            resourceInputs["authType"] = args ? args.authType : undefined;
+            resourceInputs["authorizedUserId"] = args ? args.authorizedUserId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(UserVpcAuthorization.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(UserVpcAuthorization.__pulumiType, name, resourceInputs, opts);
     }
 }
 

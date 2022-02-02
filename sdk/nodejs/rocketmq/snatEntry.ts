@@ -86,13 +86,13 @@ export class SnatEntry extends pulumi.CustomResource {
      */
     constructor(name: string, args: SnatEntryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SnatEntryArgs | SnatEntryState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnatEntryState | undefined;
-            inputs["cidrBlock"] = state ? state.cidrBlock : undefined;
-            inputs["sagId"] = state ? state.sagId : undefined;
-            inputs["snatIp"] = state ? state.snatIp : undefined;
+            resourceInputs["cidrBlock"] = state ? state.cidrBlock : undefined;
+            resourceInputs["sagId"] = state ? state.sagId : undefined;
+            resourceInputs["snatIp"] = state ? state.snatIp : undefined;
         } else {
             const args = argsOrState as SnatEntryArgs | undefined;
             if ((!args || args.cidrBlock === undefined) && !opts.urn) {
@@ -104,14 +104,12 @@ export class SnatEntry extends pulumi.CustomResource {
             if ((!args || args.snatIp === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'snatIp'");
             }
-            inputs["cidrBlock"] = args ? args.cidrBlock : undefined;
-            inputs["sagId"] = args ? args.sagId : undefined;
-            inputs["snatIp"] = args ? args.snatIp : undefined;
+            resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
+            resourceInputs["sagId"] = args ? args.sagId : undefined;
+            resourceInputs["snatIp"] = args ? args.snatIp : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SnatEntry.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SnatEntry.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -139,27 +139,27 @@ export class JobTemplate extends pulumi.CustomResource {
      */
     constructor(name: string, args: JobTemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: JobTemplateArgs | JobTemplateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as JobTemplateState | undefined;
-            inputs["arrayRequest"] = state ? state.arrayRequest : undefined;
-            inputs["clockTime"] = state ? state.clockTime : undefined;
-            inputs["commandLine"] = state ? state.commandLine : undefined;
-            inputs["gpu"] = state ? state.gpu : undefined;
-            inputs["jobTemplateName"] = state ? state.jobTemplateName : undefined;
-            inputs["mem"] = state ? state.mem : undefined;
-            inputs["node"] = state ? state.node : undefined;
-            inputs["packagePath"] = state ? state.packagePath : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["queue"] = state ? state.queue : undefined;
-            inputs["reRunable"] = state ? state.reRunable : undefined;
-            inputs["runasUser"] = state ? state.runasUser : undefined;
-            inputs["stderrRedirectPath"] = state ? state.stderrRedirectPath : undefined;
-            inputs["stdoutRedirectPath"] = state ? state.stdoutRedirectPath : undefined;
-            inputs["task"] = state ? state.task : undefined;
-            inputs["thread"] = state ? state.thread : undefined;
-            inputs["variables"] = state ? state.variables : undefined;
+            resourceInputs["arrayRequest"] = state ? state.arrayRequest : undefined;
+            resourceInputs["clockTime"] = state ? state.clockTime : undefined;
+            resourceInputs["commandLine"] = state ? state.commandLine : undefined;
+            resourceInputs["gpu"] = state ? state.gpu : undefined;
+            resourceInputs["jobTemplateName"] = state ? state.jobTemplateName : undefined;
+            resourceInputs["mem"] = state ? state.mem : undefined;
+            resourceInputs["node"] = state ? state.node : undefined;
+            resourceInputs["packagePath"] = state ? state.packagePath : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["queue"] = state ? state.queue : undefined;
+            resourceInputs["reRunable"] = state ? state.reRunable : undefined;
+            resourceInputs["runasUser"] = state ? state.runasUser : undefined;
+            resourceInputs["stderrRedirectPath"] = state ? state.stderrRedirectPath : undefined;
+            resourceInputs["stdoutRedirectPath"] = state ? state.stdoutRedirectPath : undefined;
+            resourceInputs["task"] = state ? state.task : undefined;
+            resourceInputs["thread"] = state ? state.thread : undefined;
+            resourceInputs["variables"] = state ? state.variables : undefined;
         } else {
             const args = argsOrState as JobTemplateArgs | undefined;
             if ((!args || args.commandLine === undefined) && !opts.urn) {
@@ -168,28 +168,26 @@ export class JobTemplate extends pulumi.CustomResource {
             if ((!args || args.jobTemplateName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'jobTemplateName'");
             }
-            inputs["arrayRequest"] = args ? args.arrayRequest : undefined;
-            inputs["clockTime"] = args ? args.clockTime : undefined;
-            inputs["commandLine"] = args ? args.commandLine : undefined;
-            inputs["gpu"] = args ? args.gpu : undefined;
-            inputs["jobTemplateName"] = args ? args.jobTemplateName : undefined;
-            inputs["mem"] = args ? args.mem : undefined;
-            inputs["node"] = args ? args.node : undefined;
-            inputs["packagePath"] = args ? args.packagePath : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["queue"] = args ? args.queue : undefined;
-            inputs["reRunable"] = args ? args.reRunable : undefined;
-            inputs["runasUser"] = args ? args.runasUser : undefined;
-            inputs["stderrRedirectPath"] = args ? args.stderrRedirectPath : undefined;
-            inputs["stdoutRedirectPath"] = args ? args.stdoutRedirectPath : undefined;
-            inputs["task"] = args ? args.task : undefined;
-            inputs["thread"] = args ? args.thread : undefined;
-            inputs["variables"] = args ? args.variables : undefined;
+            resourceInputs["arrayRequest"] = args ? args.arrayRequest : undefined;
+            resourceInputs["clockTime"] = args ? args.clockTime : undefined;
+            resourceInputs["commandLine"] = args ? args.commandLine : undefined;
+            resourceInputs["gpu"] = args ? args.gpu : undefined;
+            resourceInputs["jobTemplateName"] = args ? args.jobTemplateName : undefined;
+            resourceInputs["mem"] = args ? args.mem : undefined;
+            resourceInputs["node"] = args ? args.node : undefined;
+            resourceInputs["packagePath"] = args ? args.packagePath : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["queue"] = args ? args.queue : undefined;
+            resourceInputs["reRunable"] = args ? args.reRunable : undefined;
+            resourceInputs["runasUser"] = args ? args.runasUser : undefined;
+            resourceInputs["stderrRedirectPath"] = args ? args.stderrRedirectPath : undefined;
+            resourceInputs["stdoutRedirectPath"] = args ? args.stdoutRedirectPath : undefined;
+            resourceInputs["task"] = args ? args.task : undefined;
+            resourceInputs["thread"] = args ? args.thread : undefined;
+            resourceInputs["variables"] = args ? args.variables : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(JobTemplate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(JobTemplate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

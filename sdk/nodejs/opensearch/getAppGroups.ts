@@ -30,9 +30,9 @@ import * as utilities from "../utilities";
  *         spec: "opensearch.share.common",
  *     },
  * });
- * const defaultAppGroups = defaultAppGroup.id.apply(id => alicloud.opensearch.getAppGroups({
- *     ids: [id],
- * }));
+ * const defaultAppGroups = alicloud.opensearch.getAppGroupsOutput({
+ *     ids: [defaultAppGroup.id],
+ * });
  * export const appGroups = defaultAppGroups.apply(defaultAppGroups => defaultAppGroups.groups);
  * ```
  */
@@ -42,9 +42,7 @@ export function getAppGroups(args?: GetAppGroupsArgs, opts?: pulumi.InvokeOption
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:opensearch/getAppGroups:getAppGroups", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,

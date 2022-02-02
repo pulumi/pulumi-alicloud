@@ -30,7 +30,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.NewEcsDeploymentSet(ctx, "_default", &ecs.EcsDeploymentSetArgs{
+// 		_, err := ecs.NewEcsDeploymentSet(ctx, "default", &ecs.EcsDeploymentSetArgs{
 // 			DeploymentSetName: pulumi.String("example_value"),
 // 			Description:       pulumi.String("example_value"),
 // 			Domain:            pulumi.String("Default"),
@@ -174,7 +174,7 @@ type EcsDeploymentSetInput interface {
 }
 
 func (*EcsDeploymentSet) ElementType() reflect.Type {
-	return reflect.TypeOf((*EcsDeploymentSet)(nil))
+	return reflect.TypeOf((**EcsDeploymentSet)(nil)).Elem()
 }
 
 func (i *EcsDeploymentSet) ToEcsDeploymentSetOutput() EcsDeploymentSetOutput {
@@ -183,35 +183,6 @@ func (i *EcsDeploymentSet) ToEcsDeploymentSetOutput() EcsDeploymentSetOutput {
 
 func (i *EcsDeploymentSet) ToEcsDeploymentSetOutputWithContext(ctx context.Context) EcsDeploymentSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EcsDeploymentSetOutput)
-}
-
-func (i *EcsDeploymentSet) ToEcsDeploymentSetPtrOutput() EcsDeploymentSetPtrOutput {
-	return i.ToEcsDeploymentSetPtrOutputWithContext(context.Background())
-}
-
-func (i *EcsDeploymentSet) ToEcsDeploymentSetPtrOutputWithContext(ctx context.Context) EcsDeploymentSetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EcsDeploymentSetPtrOutput)
-}
-
-type EcsDeploymentSetPtrInput interface {
-	pulumi.Input
-
-	ToEcsDeploymentSetPtrOutput() EcsDeploymentSetPtrOutput
-	ToEcsDeploymentSetPtrOutputWithContext(ctx context.Context) EcsDeploymentSetPtrOutput
-}
-
-type ecsDeploymentSetPtrType EcsDeploymentSetArgs
-
-func (*ecsDeploymentSetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EcsDeploymentSet)(nil))
-}
-
-func (i *ecsDeploymentSetPtrType) ToEcsDeploymentSetPtrOutput() EcsDeploymentSetPtrOutput {
-	return i.ToEcsDeploymentSetPtrOutputWithContext(context.Background())
-}
-
-func (i *ecsDeploymentSetPtrType) ToEcsDeploymentSetPtrOutputWithContext(ctx context.Context) EcsDeploymentSetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EcsDeploymentSetPtrOutput)
 }
 
 // EcsDeploymentSetArrayInput is an input type that accepts EcsDeploymentSetArray and EcsDeploymentSetArrayOutput values.
@@ -267,7 +238,7 @@ func (i EcsDeploymentSetMap) ToEcsDeploymentSetMapOutputWithContext(ctx context.
 type EcsDeploymentSetOutput struct{ *pulumi.OutputState }
 
 func (EcsDeploymentSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EcsDeploymentSet)(nil))
+	return reflect.TypeOf((**EcsDeploymentSet)(nil)).Elem()
 }
 
 func (o EcsDeploymentSetOutput) ToEcsDeploymentSetOutput() EcsDeploymentSetOutput {
@@ -278,44 +249,10 @@ func (o EcsDeploymentSetOutput) ToEcsDeploymentSetOutputWithContext(ctx context.
 	return o
 }
 
-func (o EcsDeploymentSetOutput) ToEcsDeploymentSetPtrOutput() EcsDeploymentSetPtrOutput {
-	return o.ToEcsDeploymentSetPtrOutputWithContext(context.Background())
-}
-
-func (o EcsDeploymentSetOutput) ToEcsDeploymentSetPtrOutputWithContext(ctx context.Context) EcsDeploymentSetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EcsDeploymentSet) *EcsDeploymentSet {
-		return &v
-	}).(EcsDeploymentSetPtrOutput)
-}
-
-type EcsDeploymentSetPtrOutput struct{ *pulumi.OutputState }
-
-func (EcsDeploymentSetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EcsDeploymentSet)(nil))
-}
-
-func (o EcsDeploymentSetPtrOutput) ToEcsDeploymentSetPtrOutput() EcsDeploymentSetPtrOutput {
-	return o
-}
-
-func (o EcsDeploymentSetPtrOutput) ToEcsDeploymentSetPtrOutputWithContext(ctx context.Context) EcsDeploymentSetPtrOutput {
-	return o
-}
-
-func (o EcsDeploymentSetPtrOutput) Elem() EcsDeploymentSetOutput {
-	return o.ApplyT(func(v *EcsDeploymentSet) EcsDeploymentSet {
-		if v != nil {
-			return *v
-		}
-		var ret EcsDeploymentSet
-		return ret
-	}).(EcsDeploymentSetOutput)
-}
-
 type EcsDeploymentSetArrayOutput struct{ *pulumi.OutputState }
 
 func (EcsDeploymentSetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EcsDeploymentSet)(nil))
+	return reflect.TypeOf((*[]*EcsDeploymentSet)(nil)).Elem()
 }
 
 func (o EcsDeploymentSetArrayOutput) ToEcsDeploymentSetArrayOutput() EcsDeploymentSetArrayOutput {
@@ -327,15 +264,15 @@ func (o EcsDeploymentSetArrayOutput) ToEcsDeploymentSetArrayOutputWithContext(ct
 }
 
 func (o EcsDeploymentSetArrayOutput) Index(i pulumi.IntInput) EcsDeploymentSetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EcsDeploymentSet {
-		return vs[0].([]EcsDeploymentSet)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EcsDeploymentSet {
+		return vs[0].([]*EcsDeploymentSet)[vs[1].(int)]
 	}).(EcsDeploymentSetOutput)
 }
 
 type EcsDeploymentSetMapOutput struct{ *pulumi.OutputState }
 
 func (EcsDeploymentSetMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]EcsDeploymentSet)(nil))
+	return reflect.TypeOf((*map[string]*EcsDeploymentSet)(nil)).Elem()
 }
 
 func (o EcsDeploymentSetMapOutput) ToEcsDeploymentSetMapOutput() EcsDeploymentSetMapOutput {
@@ -347,18 +284,16 @@ func (o EcsDeploymentSetMapOutput) ToEcsDeploymentSetMapOutputWithContext(ctx co
 }
 
 func (o EcsDeploymentSetMapOutput) MapIndex(k pulumi.StringInput) EcsDeploymentSetOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EcsDeploymentSet {
-		return vs[0].(map[string]EcsDeploymentSet)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *EcsDeploymentSet {
+		return vs[0].(map[string]*EcsDeploymentSet)[vs[1].(string)]
 	}).(EcsDeploymentSetOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsDeploymentSetInput)(nil)).Elem(), &EcsDeploymentSet{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EcsDeploymentSetPtrInput)(nil)).Elem(), &EcsDeploymentSet{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsDeploymentSetArrayInput)(nil)).Elem(), EcsDeploymentSetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsDeploymentSetMapInput)(nil)).Elem(), EcsDeploymentSetMap{})
 	pulumi.RegisterOutputType(EcsDeploymentSetOutput{})
-	pulumi.RegisterOutputType(EcsDeploymentSetPtrOutput{})
 	pulumi.RegisterOutputType(EcsDeploymentSetArrayOutput{})
 	pulumi.RegisterOutputType(EcsDeploymentSetMapOutput{})
 }

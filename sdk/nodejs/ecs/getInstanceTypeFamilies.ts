@@ -30,9 +30,7 @@ export function getInstanceTypeFamilies(args?: GetInstanceTypeFamiliesArgs, opts
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", {
         "generation": args.generation,
         "instanceChargeType": args.instanceChargeType,

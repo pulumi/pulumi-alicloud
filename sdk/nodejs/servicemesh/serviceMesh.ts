@@ -90,36 +90,34 @@ export class ServiceMesh extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServiceMeshArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceMeshArgs | ServiceMeshState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceMeshState | undefined;
-            inputs["edition"] = state ? state.edition : undefined;
-            inputs["force"] = state ? state.force : undefined;
-            inputs["loadBalancer"] = state ? state.loadBalancer : undefined;
-            inputs["meshConfig"] = state ? state.meshConfig : undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["serviceMeshName"] = state ? state.serviceMeshName : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["version"] = state ? state.version : undefined;
+            resourceInputs["edition"] = state ? state.edition : undefined;
+            resourceInputs["force"] = state ? state.force : undefined;
+            resourceInputs["loadBalancer"] = state ? state.loadBalancer : undefined;
+            resourceInputs["meshConfig"] = state ? state.meshConfig : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["serviceMeshName"] = state ? state.serviceMeshName : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as ServiceMeshArgs | undefined;
             if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            inputs["edition"] = args ? args.edition : undefined;
-            inputs["force"] = args ? args.force : undefined;
-            inputs["loadBalancer"] = args ? args.loadBalancer : undefined;
-            inputs["meshConfig"] = args ? args.meshConfig : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["serviceMeshName"] = args ? args.serviceMeshName : undefined;
-            inputs["version"] = args ? args.version : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["edition"] = args ? args.edition : undefined;
+            resourceInputs["force"] = args ? args.force : undefined;
+            resourceInputs["loadBalancer"] = args ? args.loadBalancer : undefined;
+            resourceInputs["meshConfig"] = args ? args.meshConfig : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["serviceMeshName"] = args ? args.serviceMeshName : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ServiceMesh.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ServiceMesh.__pulumiType, name, resourceInputs, opts);
     }
 }
 

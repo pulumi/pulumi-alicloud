@@ -29,9 +29,7 @@ export function getControlPolicyAttachments(args: GetControlPolicyAttachmentsArg
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:resourcemanager/getControlPolicyAttachments:getControlPolicyAttachments", {
         "language": args.language,
         "outputFile": args.outputFile,

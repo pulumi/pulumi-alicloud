@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dns
 {
     public static class GetDomainRecords
     {
         public static Task<GetDomainRecordsResult> InvokeAsync(GetDomainRecordsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainRecordsResult>("alicloud:dns/getDomainRecords:getDomainRecords", args ?? new GetDomainRecordsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainRecordsResult>("alicloud:dns/getDomainRecords:getDomainRecords", args ?? new GetDomainRecordsArgs(), options.WithDefaults());
 
         public static Output<GetDomainRecordsResult> Invoke(GetDomainRecordsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDomainRecordsResult>("alicloud:dns/getDomainRecords:getDomainRecords", args ?? new GetDomainRecordsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetDomainRecordsResult>("alicloud:dns/getDomainRecords:getDomainRecords", args ?? new GetDomainRecordsInvokeArgs(), options.WithDefaults());
     }
 
 

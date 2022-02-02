@@ -117,14 +117,14 @@ export class HostGroupAccountUserAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: HostGroupAccountUserAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HostGroupAccountUserAttachmentArgs | HostGroupAccountUserAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostGroupAccountUserAttachmentState | undefined;
-            inputs["hostAccountNames"] = state ? state.hostAccountNames : undefined;
-            inputs["hostGroupId"] = state ? state.hostGroupId : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["hostAccountNames"] = state ? state.hostAccountNames : undefined;
+            resourceInputs["hostGroupId"] = state ? state.hostGroupId : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as HostGroupAccountUserAttachmentArgs | undefined;
             if ((!args || args.hostAccountNames === undefined) && !opts.urn) {
@@ -139,15 +139,13 @@ export class HostGroupAccountUserAttachment extends pulumi.CustomResource {
             if ((!args || args.userId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            inputs["hostAccountNames"] = args ? args.hostAccountNames : undefined;
-            inputs["hostGroupId"] = args ? args.hostGroupId : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["hostAccountNames"] = args ? args.hostAccountNames : undefined;
+            resourceInputs["hostGroupId"] = args ? args.hostGroupId : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["userId"] = args ? args.userId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(HostGroupAccountUserAttachment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(HostGroupAccountUserAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

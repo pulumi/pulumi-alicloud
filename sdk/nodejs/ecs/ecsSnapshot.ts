@@ -126,44 +126,42 @@ export class EcsSnapshot extends pulumi.CustomResource {
      */
     constructor(name: string, args: EcsSnapshotArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EcsSnapshotArgs | EcsSnapshotState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsSnapshotState | undefined;
-            inputs["category"] = state ? state.category : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["diskId"] = state ? state.diskId : undefined;
-            inputs["force"] = state ? state.force : undefined;
-            inputs["instantAccess"] = state ? state.instantAccess : undefined;
-            inputs["instantAccessRetentionDays"] = state ? state.instantAccessRetentionDays : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["retentionDays"] = state ? state.retentionDays : undefined;
-            inputs["snapshotName"] = state ? state.snapshotName : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["category"] = state ? state.category : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["diskId"] = state ? state.diskId : undefined;
+            resourceInputs["force"] = state ? state.force : undefined;
+            resourceInputs["instantAccess"] = state ? state.instantAccess : undefined;
+            resourceInputs["instantAccessRetentionDays"] = state ? state.instantAccessRetentionDays : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["retentionDays"] = state ? state.retentionDays : undefined;
+            resourceInputs["snapshotName"] = state ? state.snapshotName : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as EcsSnapshotArgs | undefined;
             if ((!args || args.diskId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'diskId'");
             }
-            inputs["category"] = args ? args.category : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["diskId"] = args ? args.diskId : undefined;
-            inputs["force"] = args ? args.force : undefined;
-            inputs["instantAccess"] = args ? args.instantAccess : undefined;
-            inputs["instantAccessRetentionDays"] = args ? args.instantAccessRetentionDays : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["retentionDays"] = args ? args.retentionDays : undefined;
-            inputs["snapshotName"] = args ? args.snapshotName : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["category"] = args ? args.category : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["diskId"] = args ? args.diskId : undefined;
+            resourceInputs["force"] = args ? args.force : undefined;
+            resourceInputs["instantAccess"] = args ? args.instantAccess : undefined;
+            resourceInputs["instantAccessRetentionDays"] = args ? args.instantAccessRetentionDays : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
+            resourceInputs["snapshotName"] = args ? args.snapshotName : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EcsSnapshot.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EcsSnapshot.__pulumiType, name, resourceInputs, opts);
     }
 }
 

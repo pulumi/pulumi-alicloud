@@ -103,44 +103,42 @@ export class ScalingRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: ScalingRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ScalingRuleArgs | ScalingRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ScalingRuleState | undefined;
-            inputs["adjustmentType"] = state ? state.adjustmentType : undefined;
-            inputs["adjustmentValue"] = state ? state.adjustmentValue : undefined;
-            inputs["ari"] = state ? state.ari : undefined;
-            inputs["cooldown"] = state ? state.cooldown : undefined;
-            inputs["disableScaleIn"] = state ? state.disableScaleIn : undefined;
-            inputs["estimatedInstanceWarmup"] = state ? state.estimatedInstanceWarmup : undefined;
-            inputs["metricName"] = state ? state.metricName : undefined;
-            inputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
-            inputs["scalingRuleName"] = state ? state.scalingRuleName : undefined;
-            inputs["scalingRuleType"] = state ? state.scalingRuleType : undefined;
-            inputs["stepAdjustments"] = state ? state.stepAdjustments : undefined;
-            inputs["targetValue"] = state ? state.targetValue : undefined;
+            resourceInputs["adjustmentType"] = state ? state.adjustmentType : undefined;
+            resourceInputs["adjustmentValue"] = state ? state.adjustmentValue : undefined;
+            resourceInputs["ari"] = state ? state.ari : undefined;
+            resourceInputs["cooldown"] = state ? state.cooldown : undefined;
+            resourceInputs["disableScaleIn"] = state ? state.disableScaleIn : undefined;
+            resourceInputs["estimatedInstanceWarmup"] = state ? state.estimatedInstanceWarmup : undefined;
+            resourceInputs["metricName"] = state ? state.metricName : undefined;
+            resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
+            resourceInputs["scalingRuleName"] = state ? state.scalingRuleName : undefined;
+            resourceInputs["scalingRuleType"] = state ? state.scalingRuleType : undefined;
+            resourceInputs["stepAdjustments"] = state ? state.stepAdjustments : undefined;
+            resourceInputs["targetValue"] = state ? state.targetValue : undefined;
         } else {
             const args = argsOrState as ScalingRuleArgs | undefined;
             if ((!args || args.scalingGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
-            inputs["adjustmentType"] = args ? args.adjustmentType : undefined;
-            inputs["adjustmentValue"] = args ? args.adjustmentValue : undefined;
-            inputs["cooldown"] = args ? args.cooldown : undefined;
-            inputs["disableScaleIn"] = args ? args.disableScaleIn : undefined;
-            inputs["estimatedInstanceWarmup"] = args ? args.estimatedInstanceWarmup : undefined;
-            inputs["metricName"] = args ? args.metricName : undefined;
-            inputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
-            inputs["scalingRuleName"] = args ? args.scalingRuleName : undefined;
-            inputs["scalingRuleType"] = args ? args.scalingRuleType : undefined;
-            inputs["stepAdjustments"] = args ? args.stepAdjustments : undefined;
-            inputs["targetValue"] = args ? args.targetValue : undefined;
-            inputs["ari"] = undefined /*out*/;
+            resourceInputs["adjustmentType"] = args ? args.adjustmentType : undefined;
+            resourceInputs["adjustmentValue"] = args ? args.adjustmentValue : undefined;
+            resourceInputs["cooldown"] = args ? args.cooldown : undefined;
+            resourceInputs["disableScaleIn"] = args ? args.disableScaleIn : undefined;
+            resourceInputs["estimatedInstanceWarmup"] = args ? args.estimatedInstanceWarmup : undefined;
+            resourceInputs["metricName"] = args ? args.metricName : undefined;
+            resourceInputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
+            resourceInputs["scalingRuleName"] = args ? args.scalingRuleName : undefined;
+            resourceInputs["scalingRuleType"] = args ? args.scalingRuleType : undefined;
+            resourceInputs["stepAdjustments"] = args ? args.stepAdjustments : undefined;
+            resourceInputs["targetValue"] = args ? args.targetValue : undefined;
+            resourceInputs["ari"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ScalingRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ScalingRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

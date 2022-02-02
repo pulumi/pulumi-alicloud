@@ -13,9 +13,7 @@ export function getTrailsDeprecated(args?: GetTrailsDeprecatedArgs, opts?: pulum
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated", {
         "ids": args.ids,
         "includeOrganizationTrail": args.includeOrganizationTrail,

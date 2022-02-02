@@ -11,9 +11,7 @@ export function getRdsParameterGroups(args?: GetRdsParameterGroupsArgs, opts?: p
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,

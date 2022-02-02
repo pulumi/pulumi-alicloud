@@ -97,15 +97,15 @@ export class Aggregator extends pulumi.CustomResource {
      */
     constructor(name: string, args: AggregatorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AggregatorArgs | AggregatorState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AggregatorState | undefined;
-            inputs["aggregatorAccounts"] = state ? state.aggregatorAccounts : undefined;
-            inputs["aggregatorName"] = state ? state.aggregatorName : undefined;
-            inputs["aggregatorType"] = state ? state.aggregatorType : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["status"] = state ? state.status : undefined;
+            resourceInputs["aggregatorAccounts"] = state ? state.aggregatorAccounts : undefined;
+            resourceInputs["aggregatorName"] = state ? state.aggregatorName : undefined;
+            resourceInputs["aggregatorType"] = state ? state.aggregatorType : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as AggregatorArgs | undefined;
             if ((!args || args.aggregatorName === undefined) && !opts.urn) {
@@ -114,16 +114,14 @@ export class Aggregator extends pulumi.CustomResource {
             if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            inputs["aggregatorAccounts"] = args ? args.aggregatorAccounts : undefined;
-            inputs["aggregatorName"] = args ? args.aggregatorName : undefined;
-            inputs["aggregatorType"] = args ? args.aggregatorType : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["aggregatorAccounts"] = args ? args.aggregatorAccounts : undefined;
+            resourceInputs["aggregatorName"] = args ? args.aggregatorName : undefined;
+            resourceInputs["aggregatorType"] = args ? args.aggregatorType : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Aggregator.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Aggregator.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -82,6 +82,11 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		defaultApplications := sae.GetApplicationsOutput(ctx, sae.GetApplicationsOutputArgs{
+// 			Ids: pulumi.StringArray{
+// 				defaultApplication.ID(),
+// 			},
+// 		}, nil)
 // 		ctx.Export("saeApplicationId", defaultApplications.ApplyT(func(defaultApplications sae.GetApplicationsResult) (string, error) {
 // 			return defaultApplications.Applications[0].Id, nil
 // 		}).(pulumi.StringOutput))

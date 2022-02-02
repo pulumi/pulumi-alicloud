@@ -75,24 +75,22 @@ export class KeyVersion extends pulumi.CustomResource {
      */
     constructor(name: string, args: KeyVersionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KeyVersionArgs | KeyVersionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeyVersionState | undefined;
-            inputs["keyId"] = state ? state.keyId : undefined;
-            inputs["keyVersionId"] = state ? state.keyVersionId : undefined;
+            resourceInputs["keyId"] = state ? state.keyId : undefined;
+            resourceInputs["keyVersionId"] = state ? state.keyVersionId : undefined;
         } else {
             const args = argsOrState as KeyVersionArgs | undefined;
             if ((!args || args.keyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keyId'");
             }
-            inputs["keyId"] = args ? args.keyId : undefined;
-            inputs["keyVersionId"] = undefined /*out*/;
+            resourceInputs["keyId"] = args ? args.keyId : undefined;
+            resourceInputs["keyVersionId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(KeyVersion.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(KeyVersion.__pulumiType, name, resourceInputs, opts);
     }
 }
 

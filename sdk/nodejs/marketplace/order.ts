@@ -83,18 +83,18 @@ export class Order extends pulumi.CustomResource {
      */
     constructor(name: string, args: OrderArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OrderArgs | OrderState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrderState | undefined;
-            inputs["components"] = state ? state.components : undefined;
-            inputs["couponId"] = state ? state.couponId : undefined;
-            inputs["duration"] = state ? state.duration : undefined;
-            inputs["packageVersion"] = state ? state.packageVersion : undefined;
-            inputs["payType"] = state ? state.payType : undefined;
-            inputs["pricingCycle"] = state ? state.pricingCycle : undefined;
-            inputs["productCode"] = state ? state.productCode : undefined;
-            inputs["quantity"] = state ? state.quantity : undefined;
+            resourceInputs["components"] = state ? state.components : undefined;
+            resourceInputs["couponId"] = state ? state.couponId : undefined;
+            resourceInputs["duration"] = state ? state.duration : undefined;
+            resourceInputs["packageVersion"] = state ? state.packageVersion : undefined;
+            resourceInputs["payType"] = state ? state.payType : undefined;
+            resourceInputs["pricingCycle"] = state ? state.pricingCycle : undefined;
+            resourceInputs["productCode"] = state ? state.productCode : undefined;
+            resourceInputs["quantity"] = state ? state.quantity : undefined;
         } else {
             const args = argsOrState as OrderArgs | undefined;
             if ((!args || args.packageVersion === undefined) && !opts.urn) {
@@ -106,19 +106,17 @@ export class Order extends pulumi.CustomResource {
             if ((!args || args.productCode === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'productCode'");
             }
-            inputs["components"] = args ? args.components : undefined;
-            inputs["couponId"] = args ? args.couponId : undefined;
-            inputs["duration"] = args ? args.duration : undefined;
-            inputs["packageVersion"] = args ? args.packageVersion : undefined;
-            inputs["payType"] = args ? args.payType : undefined;
-            inputs["pricingCycle"] = args ? args.pricingCycle : undefined;
-            inputs["productCode"] = args ? args.productCode : undefined;
-            inputs["quantity"] = args ? args.quantity : undefined;
+            resourceInputs["components"] = args ? args.components : undefined;
+            resourceInputs["couponId"] = args ? args.couponId : undefined;
+            resourceInputs["duration"] = args ? args.duration : undefined;
+            resourceInputs["packageVersion"] = args ? args.packageVersion : undefined;
+            resourceInputs["payType"] = args ? args.payType : undefined;
+            resourceInputs["pricingCycle"] = args ? args.pricingCycle : undefined;
+            resourceInputs["productCode"] = args ? args.productCode : undefined;
+            resourceInputs["quantity"] = args ? args.quantity : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Order.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Order.__pulumiType, name, resourceInputs, opts);
     }
 }
 

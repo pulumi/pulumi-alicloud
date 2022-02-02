@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dts
 {
@@ -43,7 +42,7 @@ namespace Pulumi.AliCloud.Dts
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSynchronizationJobsResult> InvokeAsync(GetSynchronizationJobsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSynchronizationJobsResult>("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", args ?? new GetSynchronizationJobsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSynchronizationJobsResult>("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", args ?? new GetSynchronizationJobsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
@@ -76,7 +75,7 @@ namespace Pulumi.AliCloud.Dts
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSynchronizationJobsResult> Invoke(GetSynchronizationJobsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSynchronizationJobsResult>("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", args ?? new GetSynchronizationJobsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSynchronizationJobsResult>("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", args ?? new GetSynchronizationJobsInvokeArgs(), options.WithDefaults());
     }
 
 

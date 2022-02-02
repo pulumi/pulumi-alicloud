@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     description: name,
  *     encryptType: "1",
  * });
- * const defaultFileSystems = defaultFileSystem.description.apply(description => alicloud.nas.getFileSystems({
+ * const defaultFileSystems = defaultFileSystem.description.apply(description => alicloud.nas.getFileSystemsOutput({
  *     protocolType: "NFS",
  *     descriptionRegex: description,
  * }));
@@ -140,25 +140,25 @@ export class NasBackupPlan extends pulumi.CustomResource {
      */
     constructor(name: string, args: NasBackupPlanArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NasBackupPlanArgs | NasBackupPlanState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NasBackupPlanState | undefined;
-            inputs["backupType"] = state ? state.backupType : undefined;
-            inputs["createTime"] = state ? state.createTime : undefined;
-            inputs["detail"] = state ? state.detail : undefined;
-            inputs["disabled"] = state ? state.disabled : undefined;
-            inputs["exclude"] = state ? state.exclude : undefined;
-            inputs["fileSystemId"] = state ? state.fileSystemId : undefined;
-            inputs["include"] = state ? state.include : undefined;
-            inputs["nasBackupPlanName"] = state ? state.nasBackupPlanName : undefined;
-            inputs["options"] = state ? state.options : undefined;
-            inputs["paths"] = state ? state.paths : undefined;
-            inputs["retention"] = state ? state.retention : undefined;
-            inputs["schedule"] = state ? state.schedule : undefined;
-            inputs["speedLimit"] = state ? state.speedLimit : undefined;
-            inputs["updatePaths"] = state ? state.updatePaths : undefined;
-            inputs["vaultId"] = state ? state.vaultId : undefined;
+            resourceInputs["backupType"] = state ? state.backupType : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["detail"] = state ? state.detail : undefined;
+            resourceInputs["disabled"] = state ? state.disabled : undefined;
+            resourceInputs["exclude"] = state ? state.exclude : undefined;
+            resourceInputs["fileSystemId"] = state ? state.fileSystemId : undefined;
+            resourceInputs["include"] = state ? state.include : undefined;
+            resourceInputs["nasBackupPlanName"] = state ? state.nasBackupPlanName : undefined;
+            resourceInputs["options"] = state ? state.options : undefined;
+            resourceInputs["paths"] = state ? state.paths : undefined;
+            resourceInputs["retention"] = state ? state.retention : undefined;
+            resourceInputs["schedule"] = state ? state.schedule : undefined;
+            resourceInputs["speedLimit"] = state ? state.speedLimit : undefined;
+            resourceInputs["updatePaths"] = state ? state.updatePaths : undefined;
+            resourceInputs["vaultId"] = state ? state.vaultId : undefined;
         } else {
             const args = argsOrState as NasBackupPlanArgs | undefined;
             if ((!args || args.backupType === undefined) && !opts.urn) {
@@ -185,26 +185,24 @@ export class NasBackupPlan extends pulumi.CustomResource {
             if ((!args || args.vaultId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vaultId'");
             }
-            inputs["backupType"] = args ? args.backupType : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["detail"] = args ? args.detail : undefined;
-            inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["exclude"] = args ? args.exclude : undefined;
-            inputs["fileSystemId"] = args ? args.fileSystemId : undefined;
-            inputs["include"] = args ? args.include : undefined;
-            inputs["nasBackupPlanName"] = args ? args.nasBackupPlanName : undefined;
-            inputs["options"] = args ? args.options : undefined;
-            inputs["paths"] = args ? args.paths : undefined;
-            inputs["retention"] = args ? args.retention : undefined;
-            inputs["schedule"] = args ? args.schedule : undefined;
-            inputs["speedLimit"] = args ? args.speedLimit : undefined;
-            inputs["updatePaths"] = args ? args.updatePaths : undefined;
-            inputs["vaultId"] = args ? args.vaultId : undefined;
+            resourceInputs["backupType"] = args ? args.backupType : undefined;
+            resourceInputs["createTime"] = args ? args.createTime : undefined;
+            resourceInputs["detail"] = args ? args.detail : undefined;
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
+            resourceInputs["exclude"] = args ? args.exclude : undefined;
+            resourceInputs["fileSystemId"] = args ? args.fileSystemId : undefined;
+            resourceInputs["include"] = args ? args.include : undefined;
+            resourceInputs["nasBackupPlanName"] = args ? args.nasBackupPlanName : undefined;
+            resourceInputs["options"] = args ? args.options : undefined;
+            resourceInputs["paths"] = args ? args.paths : undefined;
+            resourceInputs["retention"] = args ? args.retention : undefined;
+            resourceInputs["schedule"] = args ? args.schedule : undefined;
+            resourceInputs["speedLimit"] = args ? args.speedLimit : undefined;
+            resourceInputs["updatePaths"] = args ? args.updatePaths : undefined;
+            resourceInputs["vaultId"] = args ? args.vaultId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(NasBackupPlan.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(NasBackupPlan.__pulumiType, name, resourceInputs, opts);
     }
 }
 

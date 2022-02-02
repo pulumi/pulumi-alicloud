@@ -29,9 +29,7 @@ export function getBundles(args?: GetBundlesArgs, opts?: pulumi.InvokeOptions): 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:eds/getBundles:getBundles", {
         "bundleIds": args.bundleIds,
         "bundleType": args.bundleType,

@@ -31,7 +31,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dts.NewSynchronizationInstance(ctx, "_default", &dts.SynchronizationInstanceArgs{
+// 		_, err := dts.NewSynchronizationInstance(ctx, "default", &dts.SynchronizationInstanceArgs{
 // 			DestinationEndpointEngineName: pulumi.String("ADB30"),
 // 			DestinationEndpointRegion:     pulumi.String("cn-hangzhou"),
 // 			InstanceClass:                 pulumi.String("small"),
@@ -258,7 +258,7 @@ type SynchronizationInstanceInput interface {
 }
 
 func (*SynchronizationInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*SynchronizationInstance)(nil))
+	return reflect.TypeOf((**SynchronizationInstance)(nil)).Elem()
 }
 
 func (i *SynchronizationInstance) ToSynchronizationInstanceOutput() SynchronizationInstanceOutput {
@@ -267,35 +267,6 @@ func (i *SynchronizationInstance) ToSynchronizationInstanceOutput() Synchronizat
 
 func (i *SynchronizationInstance) ToSynchronizationInstanceOutputWithContext(ctx context.Context) SynchronizationInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SynchronizationInstanceOutput)
-}
-
-func (i *SynchronizationInstance) ToSynchronizationInstancePtrOutput() SynchronizationInstancePtrOutput {
-	return i.ToSynchronizationInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *SynchronizationInstance) ToSynchronizationInstancePtrOutputWithContext(ctx context.Context) SynchronizationInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SynchronizationInstancePtrOutput)
-}
-
-type SynchronizationInstancePtrInput interface {
-	pulumi.Input
-
-	ToSynchronizationInstancePtrOutput() SynchronizationInstancePtrOutput
-	ToSynchronizationInstancePtrOutputWithContext(ctx context.Context) SynchronizationInstancePtrOutput
-}
-
-type synchronizationInstancePtrType SynchronizationInstanceArgs
-
-func (*synchronizationInstancePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SynchronizationInstance)(nil))
-}
-
-func (i *synchronizationInstancePtrType) ToSynchronizationInstancePtrOutput() SynchronizationInstancePtrOutput {
-	return i.ToSynchronizationInstancePtrOutputWithContext(context.Background())
-}
-
-func (i *synchronizationInstancePtrType) ToSynchronizationInstancePtrOutputWithContext(ctx context.Context) SynchronizationInstancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SynchronizationInstancePtrOutput)
 }
 
 // SynchronizationInstanceArrayInput is an input type that accepts SynchronizationInstanceArray and SynchronizationInstanceArrayOutput values.
@@ -351,7 +322,7 @@ func (i SynchronizationInstanceMap) ToSynchronizationInstanceMapOutputWithContex
 type SynchronizationInstanceOutput struct{ *pulumi.OutputState }
 
 func (SynchronizationInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SynchronizationInstance)(nil))
+	return reflect.TypeOf((**SynchronizationInstance)(nil)).Elem()
 }
 
 func (o SynchronizationInstanceOutput) ToSynchronizationInstanceOutput() SynchronizationInstanceOutput {
@@ -362,44 +333,10 @@ func (o SynchronizationInstanceOutput) ToSynchronizationInstanceOutputWithContex
 	return o
 }
 
-func (o SynchronizationInstanceOutput) ToSynchronizationInstancePtrOutput() SynchronizationInstancePtrOutput {
-	return o.ToSynchronizationInstancePtrOutputWithContext(context.Background())
-}
-
-func (o SynchronizationInstanceOutput) ToSynchronizationInstancePtrOutputWithContext(ctx context.Context) SynchronizationInstancePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SynchronizationInstance) *SynchronizationInstance {
-		return &v
-	}).(SynchronizationInstancePtrOutput)
-}
-
-type SynchronizationInstancePtrOutput struct{ *pulumi.OutputState }
-
-func (SynchronizationInstancePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SynchronizationInstance)(nil))
-}
-
-func (o SynchronizationInstancePtrOutput) ToSynchronizationInstancePtrOutput() SynchronizationInstancePtrOutput {
-	return o
-}
-
-func (o SynchronizationInstancePtrOutput) ToSynchronizationInstancePtrOutputWithContext(ctx context.Context) SynchronizationInstancePtrOutput {
-	return o
-}
-
-func (o SynchronizationInstancePtrOutput) Elem() SynchronizationInstanceOutput {
-	return o.ApplyT(func(v *SynchronizationInstance) SynchronizationInstance {
-		if v != nil {
-			return *v
-		}
-		var ret SynchronizationInstance
-		return ret
-	}).(SynchronizationInstanceOutput)
-}
-
 type SynchronizationInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (SynchronizationInstanceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SynchronizationInstance)(nil))
+	return reflect.TypeOf((*[]*SynchronizationInstance)(nil)).Elem()
 }
 
 func (o SynchronizationInstanceArrayOutput) ToSynchronizationInstanceArrayOutput() SynchronizationInstanceArrayOutput {
@@ -411,15 +348,15 @@ func (o SynchronizationInstanceArrayOutput) ToSynchronizationInstanceArrayOutput
 }
 
 func (o SynchronizationInstanceArrayOutput) Index(i pulumi.IntInput) SynchronizationInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SynchronizationInstance {
-		return vs[0].([]SynchronizationInstance)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SynchronizationInstance {
+		return vs[0].([]*SynchronizationInstance)[vs[1].(int)]
 	}).(SynchronizationInstanceOutput)
 }
 
 type SynchronizationInstanceMapOutput struct{ *pulumi.OutputState }
 
 func (SynchronizationInstanceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SynchronizationInstance)(nil))
+	return reflect.TypeOf((*map[string]*SynchronizationInstance)(nil)).Elem()
 }
 
 func (o SynchronizationInstanceMapOutput) ToSynchronizationInstanceMapOutput() SynchronizationInstanceMapOutput {
@@ -431,18 +368,16 @@ func (o SynchronizationInstanceMapOutput) ToSynchronizationInstanceMapOutputWith
 }
 
 func (o SynchronizationInstanceMapOutput) MapIndex(k pulumi.StringInput) SynchronizationInstanceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SynchronizationInstance {
-		return vs[0].(map[string]SynchronizationInstance)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SynchronizationInstance {
+		return vs[0].(map[string]*SynchronizationInstance)[vs[1].(string)]
 	}).(SynchronizationInstanceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SynchronizationInstanceInput)(nil)).Elem(), &SynchronizationInstance{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SynchronizationInstancePtrInput)(nil)).Elem(), &SynchronizationInstance{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SynchronizationInstanceArrayInput)(nil)).Elem(), SynchronizationInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SynchronizationInstanceMapInput)(nil)).Elem(), SynchronizationInstanceMap{})
 	pulumi.RegisterOutputType(SynchronizationInstanceOutput{})
-	pulumi.RegisterOutputType(SynchronizationInstancePtrOutput{})
 	pulumi.RegisterOutputType(SynchronizationInstanceArrayOutput{})
 	pulumi.RegisterOutputType(SynchronizationInstanceMapOutput{})
 }

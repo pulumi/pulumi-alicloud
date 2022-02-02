@@ -22,9 +22,9 @@ import * as utilities from "../utilities";
  *     jobTemplateName: "example_value",
  *     commandLine: "./LammpsTest/lammps.pbs",
  * });
- * const ids = _default.id.apply(id => alicloud.ehpc.getJobTemplates({
- *     ids: [id],
- * }));
+ * const ids = alicloud.ehpc.getJobTemplatesOutput({
+ *     ids: [_default.id],
+ * });
  * export const ehpcJobTemplateId1 = ids.apply(ids => ids.id);
  * ```
  */
@@ -34,9 +34,7 @@ export function getJobTemplates(args?: GetJobTemplatesArgs, opts?: pulumi.Invoke
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ehpc/getJobTemplates:getJobTemplates", {
         "ids": args.ids,
         "outputFile": args.outputFile,

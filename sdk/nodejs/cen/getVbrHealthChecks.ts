@@ -15,9 +15,7 @@ export function getVbrHealthChecks(args: GetVbrHealthChecksArgs, opts?: pulumi.I
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cen/getVbrHealthChecks:getVbrHealthChecks", {
         "cenId": args.cenId,
         "outputFile": args.outputFile,

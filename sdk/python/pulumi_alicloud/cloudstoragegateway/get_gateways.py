@@ -127,8 +127,8 @@ def get_gateways(ids: Optional[Sequence[str]] = None,
     import pulumi_alicloud as alicloud
 
     example = alicloud.cloudstoragegateway.StorageBundle("example", storage_bundle_name="example_value")
-    name_regex = example.id.apply(lambda id: alicloud.cloudstoragegateway.get_gateways(storage_bundle_id=id,
-        name_regex="^my-Gateway"))
+    name_regex = alicloud.cloudstoragegateway.get_gateways_output(storage_bundle_id=example.id,
+        name_regex="^my-Gateway")
     pulumi.export("cloudStorageGatewayGatewayId", name_regex.gateways[0].id)
     ```
 
@@ -182,8 +182,8 @@ def get_gateways_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     import pulumi_alicloud as alicloud
 
     example = alicloud.cloudstoragegateway.StorageBundle("example", storage_bundle_name="example_value")
-    name_regex = example.id.apply(lambda id: alicloud.cloudstoragegateway.get_gateways(storage_bundle_id=id,
-        name_regex="^my-Gateway"))
+    name_regex = alicloud.cloudstoragegateway.get_gateways_output(storage_bundle_id=example.id,
+        name_regex="^my-Gateway")
     pulumi.export("cloudStorageGatewayGatewayId", name_regex.gateways[0].id)
     ```
 

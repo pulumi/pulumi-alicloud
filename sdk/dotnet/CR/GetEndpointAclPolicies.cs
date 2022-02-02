@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.CR
 {
@@ -52,7 +51,7 @@ namespace Pulumi.AliCloud.CR
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEndpointAclPoliciesResult> InvokeAsync(GetEndpointAclPoliciesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointAclPoliciesResult>("alicloud:cr/getEndpointAclPolicies:getEndpointAclPolicies", args ?? new GetEndpointAclPoliciesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointAclPoliciesResult>("alicloud:cr/getEndpointAclPolicies:getEndpointAclPolicies", args ?? new GetEndpointAclPoliciesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cr Endpoint Acl Policies of the current Alibaba Cloud user.
@@ -94,7 +93,7 @@ namespace Pulumi.AliCloud.CR
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEndpointAclPoliciesResult> Invoke(GetEndpointAclPoliciesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEndpointAclPoliciesResult>("alicloud:cr/getEndpointAclPolicies:getEndpointAclPolicies", args ?? new GetEndpointAclPoliciesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetEndpointAclPoliciesResult>("alicloud:cr/getEndpointAclPolicies:getEndpointAclPolicies", args ?? new GetEndpointAclPoliciesInvokeArgs(), options.WithDefaults());
     }
 
 

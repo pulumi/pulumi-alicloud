@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -36,10 +35,10 @@ namespace Pulumi.AliCloud.Ecs
         ///         var primaryVpcDs = new AliCloud.Vpc.Network("primaryVpcDs", new AliCloud.Vpc.NetworkArgs
         ///         {
         ///         });
-        ///         var primarySecGroupsDs = primaryVpcDs.Id.Apply(id =&gt; AliCloud.Ecs.GetSecurityGroups.InvokeAsync(new AliCloud.Ecs.GetSecurityGroupsArgs
+        ///         var primarySecGroupsDs = AliCloud.Ecs.GetSecurityGroups.Invoke(new AliCloud.Ecs.GetSecurityGroupsInvokeArgs
         ///         {
-        ///             VpcId = id,
-        ///         }));
+        ///             VpcId = primaryVpcDs.Id,
+        ///         });
         ///         this.FirstGroupId = primarySecGroupsDs.Apply(primarySecGroupsDs =&gt; primarySecGroupsDs.Groups?[0]?.Id);
         ///     }
         /// 
@@ -51,7 +50,7 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSecurityGroupsResult> InvokeAsync(GetSecurityGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecurityGroupsResult>("alicloud:ecs/getSecurityGroups:getSecurityGroups", args ?? new GetSecurityGroupsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSecurityGroupsResult>("alicloud:ecs/getSecurityGroups:getSecurityGroups", args ?? new GetSecurityGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
@@ -77,10 +76,10 @@ namespace Pulumi.AliCloud.Ecs
         ///         var primaryVpcDs = new AliCloud.Vpc.Network("primaryVpcDs", new AliCloud.Vpc.NetworkArgs
         ///         {
         ///         });
-        ///         var primarySecGroupsDs = primaryVpcDs.Id.Apply(id =&gt; AliCloud.Ecs.GetSecurityGroups.InvokeAsync(new AliCloud.Ecs.GetSecurityGroupsArgs
+        ///         var primarySecGroupsDs = AliCloud.Ecs.GetSecurityGroups.Invoke(new AliCloud.Ecs.GetSecurityGroupsInvokeArgs
         ///         {
-        ///             VpcId = id,
-        ///         }));
+        ///             VpcId = primaryVpcDs.Id,
+        ///         });
         ///         this.FirstGroupId = primarySecGroupsDs.Apply(primarySecGroupsDs =&gt; primarySecGroupsDs.Groups?[0]?.Id);
         ///     }
         /// 
@@ -92,7 +91,7 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSecurityGroupsResult> Invoke(GetSecurityGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSecurityGroupsResult>("alicloud:ecs/getSecurityGroups:getSecurityGroups", args ?? new GetSecurityGroupsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSecurityGroupsResult>("alicloud:ecs/getSecurityGroups:getSecurityGroups", args ?? new GetSecurityGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

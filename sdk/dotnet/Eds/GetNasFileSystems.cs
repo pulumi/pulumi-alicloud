@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Eds
 {
@@ -46,7 +45,7 @@ namespace Pulumi.AliCloud.Eds
         ///         });
         ///         var ids = Output.Create(AliCloud.Eds.GetNasFileSystems.InvokeAsync());
         ///         this.EcdNasFileSystemId1 = ids.Apply(ids =&gt; ids.Systems?[0]?.Id);
-        ///         var nameRegex = defaultNasFileSystem.NasFileSystemName.Apply(nasFileSystemName =&gt; AliCloud.Eds.GetNasFileSystems.InvokeAsync(new AliCloud.Eds.GetNasFileSystemsArgs
+        ///         var nameRegex = defaultNasFileSystem.NasFileSystemName.Apply(nasFileSystemName =&gt; AliCloud.Eds.GetNasFileSystems.Invoke(new AliCloud.Eds.GetNasFileSystemsInvokeArgs
         ///         {
         ///             NameRegex = nasFileSystemName,
         ///         }));
@@ -63,7 +62,7 @@ namespace Pulumi.AliCloud.Eds
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNasFileSystemsResult> InvokeAsync(GetNasFileSystemsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNasFileSystemsResult>("alicloud:eds/getNasFileSystems:getNasFileSystems", args ?? new GetNasFileSystemsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNasFileSystemsResult>("alicloud:eds/getNasFileSystems:getNasFileSystems", args ?? new GetNasFileSystemsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecd Nas File Systems of the current Alibaba Cloud user.
@@ -99,7 +98,7 @@ namespace Pulumi.AliCloud.Eds
         ///         });
         ///         var ids = Output.Create(AliCloud.Eds.GetNasFileSystems.InvokeAsync());
         ///         this.EcdNasFileSystemId1 = ids.Apply(ids =&gt; ids.Systems?[0]?.Id);
-        ///         var nameRegex = defaultNasFileSystem.NasFileSystemName.Apply(nasFileSystemName =&gt; AliCloud.Eds.GetNasFileSystems.InvokeAsync(new AliCloud.Eds.GetNasFileSystemsArgs
+        ///         var nameRegex = defaultNasFileSystem.NasFileSystemName.Apply(nasFileSystemName =&gt; AliCloud.Eds.GetNasFileSystems.Invoke(new AliCloud.Eds.GetNasFileSystemsInvokeArgs
         ///         {
         ///             NameRegex = nasFileSystemName,
         ///         }));
@@ -116,7 +115,7 @@ namespace Pulumi.AliCloud.Eds
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNasFileSystemsResult> Invoke(GetNasFileSystemsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNasFileSystemsResult>("alicloud:eds/getNasFileSystems:getNasFileSystems", args ?? new GetNasFileSystemsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetNasFileSystemsResult>("alicloud:eds/getNasFileSystems:getNasFileSystems", args ?? new GetNasFileSystemsInvokeArgs(), options.WithDefaults());
     }
 
 

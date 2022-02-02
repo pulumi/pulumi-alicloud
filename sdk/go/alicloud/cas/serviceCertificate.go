@@ -180,7 +180,7 @@ type ServiceCertificateInput interface {
 }
 
 func (*ServiceCertificate) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceCertificate)(nil))
+	return reflect.TypeOf((**ServiceCertificate)(nil)).Elem()
 }
 
 func (i *ServiceCertificate) ToServiceCertificateOutput() ServiceCertificateOutput {
@@ -189,35 +189,6 @@ func (i *ServiceCertificate) ToServiceCertificateOutput() ServiceCertificateOutp
 
 func (i *ServiceCertificate) ToServiceCertificateOutputWithContext(ctx context.Context) ServiceCertificateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceCertificateOutput)
-}
-
-func (i *ServiceCertificate) ToServiceCertificatePtrOutput() ServiceCertificatePtrOutput {
-	return i.ToServiceCertificatePtrOutputWithContext(context.Background())
-}
-
-func (i *ServiceCertificate) ToServiceCertificatePtrOutputWithContext(ctx context.Context) ServiceCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceCertificatePtrOutput)
-}
-
-type ServiceCertificatePtrInput interface {
-	pulumi.Input
-
-	ToServiceCertificatePtrOutput() ServiceCertificatePtrOutput
-	ToServiceCertificatePtrOutputWithContext(ctx context.Context) ServiceCertificatePtrOutput
-}
-
-type serviceCertificatePtrType ServiceCertificateArgs
-
-func (*serviceCertificatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceCertificate)(nil))
-}
-
-func (i *serviceCertificatePtrType) ToServiceCertificatePtrOutput() ServiceCertificatePtrOutput {
-	return i.ToServiceCertificatePtrOutputWithContext(context.Background())
-}
-
-func (i *serviceCertificatePtrType) ToServiceCertificatePtrOutputWithContext(ctx context.Context) ServiceCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceCertificatePtrOutput)
 }
 
 // ServiceCertificateArrayInput is an input type that accepts ServiceCertificateArray and ServiceCertificateArrayOutput values.
@@ -273,7 +244,7 @@ func (i ServiceCertificateMap) ToServiceCertificateMapOutputWithContext(ctx cont
 type ServiceCertificateOutput struct{ *pulumi.OutputState }
 
 func (ServiceCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceCertificate)(nil))
+	return reflect.TypeOf((**ServiceCertificate)(nil)).Elem()
 }
 
 func (o ServiceCertificateOutput) ToServiceCertificateOutput() ServiceCertificateOutput {
@@ -284,44 +255,10 @@ func (o ServiceCertificateOutput) ToServiceCertificateOutputWithContext(ctx cont
 	return o
 }
 
-func (o ServiceCertificateOutput) ToServiceCertificatePtrOutput() ServiceCertificatePtrOutput {
-	return o.ToServiceCertificatePtrOutputWithContext(context.Background())
-}
-
-func (o ServiceCertificateOutput) ToServiceCertificatePtrOutputWithContext(ctx context.Context) ServiceCertificatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceCertificate) *ServiceCertificate {
-		return &v
-	}).(ServiceCertificatePtrOutput)
-}
-
-type ServiceCertificatePtrOutput struct{ *pulumi.OutputState }
-
-func (ServiceCertificatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceCertificate)(nil))
-}
-
-func (o ServiceCertificatePtrOutput) ToServiceCertificatePtrOutput() ServiceCertificatePtrOutput {
-	return o
-}
-
-func (o ServiceCertificatePtrOutput) ToServiceCertificatePtrOutputWithContext(ctx context.Context) ServiceCertificatePtrOutput {
-	return o
-}
-
-func (o ServiceCertificatePtrOutput) Elem() ServiceCertificateOutput {
-	return o.ApplyT(func(v *ServiceCertificate) ServiceCertificate {
-		if v != nil {
-			return *v
-		}
-		var ret ServiceCertificate
-		return ret
-	}).(ServiceCertificateOutput)
-}
-
 type ServiceCertificateArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceCertificateArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceCertificate)(nil))
+	return reflect.TypeOf((*[]*ServiceCertificate)(nil)).Elem()
 }
 
 func (o ServiceCertificateArrayOutput) ToServiceCertificateArrayOutput() ServiceCertificateArrayOutput {
@@ -333,15 +270,15 @@ func (o ServiceCertificateArrayOutput) ToServiceCertificateArrayOutputWithContex
 }
 
 func (o ServiceCertificateArrayOutput) Index(i pulumi.IntInput) ServiceCertificateOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceCertificate {
-		return vs[0].([]ServiceCertificate)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceCertificate {
+		return vs[0].([]*ServiceCertificate)[vs[1].(int)]
 	}).(ServiceCertificateOutput)
 }
 
 type ServiceCertificateMapOutput struct{ *pulumi.OutputState }
 
 func (ServiceCertificateMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ServiceCertificate)(nil))
+	return reflect.TypeOf((*map[string]*ServiceCertificate)(nil)).Elem()
 }
 
 func (o ServiceCertificateMapOutput) ToServiceCertificateMapOutput() ServiceCertificateMapOutput {
@@ -353,18 +290,16 @@ func (o ServiceCertificateMapOutput) ToServiceCertificateMapOutputWithContext(ct
 }
 
 func (o ServiceCertificateMapOutput) MapIndex(k pulumi.StringInput) ServiceCertificateOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServiceCertificate {
-		return vs[0].(map[string]ServiceCertificate)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ServiceCertificate {
+		return vs[0].(map[string]*ServiceCertificate)[vs[1].(string)]
 	}).(ServiceCertificateOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceCertificateInput)(nil)).Elem(), &ServiceCertificate{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceCertificatePtrInput)(nil)).Elem(), &ServiceCertificate{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceCertificateArrayInput)(nil)).Elem(), ServiceCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceCertificateMapInput)(nil)).Elem(), ServiceCertificateMap{})
 	pulumi.RegisterOutputType(ServiceCertificateOutput{})
-	pulumi.RegisterOutputType(ServiceCertificatePtrOutput{})
 	pulumi.RegisterOutputType(ServiceCertificateArrayOutput{})
 	pulumi.RegisterOutputType(ServiceCertificateMapOutput{})
 }

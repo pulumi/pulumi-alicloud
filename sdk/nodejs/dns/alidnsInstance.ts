@@ -107,18 +107,18 @@ export class AlidnsInstance extends pulumi.CustomResource {
      */
     constructor(name: string, args: AlidnsInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AlidnsInstanceArgs | AlidnsInstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlidnsInstanceState | undefined;
-            inputs["dnsSecurity"] = state ? state.dnsSecurity : undefined;
-            inputs["domainNumbers"] = state ? state.domainNumbers : undefined;
-            inputs["paymentType"] = state ? state.paymentType : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["renewPeriod"] = state ? state.renewPeriod : undefined;
-            inputs["renewalStatus"] = state ? state.renewalStatus : undefined;
-            inputs["versionCode"] = state ? state.versionCode : undefined;
-            inputs["versionName"] = state ? state.versionName : undefined;
+            resourceInputs["dnsSecurity"] = state ? state.dnsSecurity : undefined;
+            resourceInputs["domainNumbers"] = state ? state.domainNumbers : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
+            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
+            resourceInputs["versionCode"] = state ? state.versionCode : undefined;
+            resourceInputs["versionName"] = state ? state.versionName : undefined;
         } else {
             const args = argsOrState as AlidnsInstanceArgs | undefined;
             if ((!args || args.dnsSecurity === undefined) && !opts.urn) {
@@ -130,19 +130,17 @@ export class AlidnsInstance extends pulumi.CustomResource {
             if ((!args || args.versionCode === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'versionCode'");
             }
-            inputs["dnsSecurity"] = args ? args.dnsSecurity : undefined;
-            inputs["domainNumbers"] = args ? args.domainNumbers : undefined;
-            inputs["paymentType"] = args ? args.paymentType : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["renewPeriod"] = args ? args.renewPeriod : undefined;
-            inputs["renewalStatus"] = args ? args.renewalStatus : undefined;
-            inputs["versionCode"] = args ? args.versionCode : undefined;
-            inputs["versionName"] = undefined /*out*/;
+            resourceInputs["dnsSecurity"] = args ? args.dnsSecurity : undefined;
+            resourceInputs["domainNumbers"] = args ? args.domainNumbers : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
+            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
+            resourceInputs["versionCode"] = args ? args.versionCode : undefined;
+            resourceInputs["versionName"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AlidnsInstance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AlidnsInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

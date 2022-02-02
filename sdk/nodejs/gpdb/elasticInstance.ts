@@ -153,26 +153,26 @@ export class ElasticInstance extends pulumi.CustomResource {
      */
     constructor(name: string, args: ElasticInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ElasticInstanceArgs | ElasticInstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ElasticInstanceState | undefined;
-            inputs["connectionString"] = state ? state.connectionString : undefined;
-            inputs["dbInstanceDescription"] = state ? state.dbInstanceDescription : undefined;
-            inputs["engine"] = state ? state.engine : undefined;
-            inputs["engineVersion"] = state ? state.engineVersion : undefined;
-            inputs["instanceNetworkType"] = state ? state.instanceNetworkType : undefined;
-            inputs["instanceSpec"] = state ? state.instanceSpec : undefined;
-            inputs["paymentDuration"] = state ? state.paymentDuration : undefined;
-            inputs["paymentDurationUnit"] = state ? state.paymentDurationUnit : undefined;
-            inputs["paymentType"] = state ? state.paymentType : undefined;
-            inputs["securityIpLists"] = state ? state.securityIpLists : undefined;
-            inputs["segNodeNum"] = state ? state.segNodeNum : undefined;
-            inputs["segStorageType"] = state ? state.segStorageType : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["storageSize"] = state ? state.storageSize : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
+            resourceInputs["dbInstanceDescription"] = state ? state.dbInstanceDescription : undefined;
+            resourceInputs["engine"] = state ? state.engine : undefined;
+            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
+            resourceInputs["instanceNetworkType"] = state ? state.instanceNetworkType : undefined;
+            resourceInputs["instanceSpec"] = state ? state.instanceSpec : undefined;
+            resourceInputs["paymentDuration"] = state ? state.paymentDuration : undefined;
+            resourceInputs["paymentDurationUnit"] = state ? state.paymentDurationUnit : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["securityIpLists"] = state ? state.securityIpLists : undefined;
+            resourceInputs["segNodeNum"] = state ? state.segNodeNum : undefined;
+            resourceInputs["segStorageType"] = state ? state.segStorageType : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["storageSize"] = state ? state.storageSize : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ElasticInstanceArgs | undefined;
             if ((!args || args.engine === undefined) && !opts.urn) {
@@ -196,27 +196,25 @@ export class ElasticInstance extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            inputs["dbInstanceDescription"] = args ? args.dbInstanceDescription : undefined;
-            inputs["engine"] = args ? args.engine : undefined;
-            inputs["engineVersion"] = args ? args.engineVersion : undefined;
-            inputs["instanceNetworkType"] = args ? args.instanceNetworkType : undefined;
-            inputs["instanceSpec"] = args ? args.instanceSpec : undefined;
-            inputs["paymentDuration"] = args ? args.paymentDuration : undefined;
-            inputs["paymentDurationUnit"] = args ? args.paymentDurationUnit : undefined;
-            inputs["paymentType"] = args ? args.paymentType : undefined;
-            inputs["securityIpLists"] = args ? args.securityIpLists : undefined;
-            inputs["segNodeNum"] = args ? args.segNodeNum : undefined;
-            inputs["segStorageType"] = args ? args.segStorageType : undefined;
-            inputs["storageSize"] = args ? args.storageSize : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["connectionString"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["dbInstanceDescription"] = args ? args.dbInstanceDescription : undefined;
+            resourceInputs["engine"] = args ? args.engine : undefined;
+            resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
+            resourceInputs["instanceNetworkType"] = args ? args.instanceNetworkType : undefined;
+            resourceInputs["instanceSpec"] = args ? args.instanceSpec : undefined;
+            resourceInputs["paymentDuration"] = args ? args.paymentDuration : undefined;
+            resourceInputs["paymentDurationUnit"] = args ? args.paymentDurationUnit : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["securityIpLists"] = args ? args.securityIpLists : undefined;
+            resourceInputs["segNodeNum"] = args ? args.segNodeNum : undefined;
+            resourceInputs["segStorageType"] = args ? args.segStorageType : undefined;
+            resourceInputs["storageSize"] = args ? args.storageSize : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["connectionString"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ElasticInstance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ElasticInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

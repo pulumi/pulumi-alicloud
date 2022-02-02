@@ -15,9 +15,7 @@ export function getHostEcsLevelInfos(args: GetHostEcsLevelInfosArgs, opts?: pulu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos", {
         "dbType": args.dbType,
         "imageCategory": args.imageCategory,

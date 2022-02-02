@@ -31,9 +31,7 @@ export function getVpcFlowLogs(args?: GetVpcFlowLogsArgs, opts?: pulumi.InvokeOp
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs", {
         "description": args.description,
         "flowLogName": args.flowLogName,

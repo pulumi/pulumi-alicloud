@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Cdn
 {
@@ -46,7 +45,7 @@ namespace Pulumi.AliCloud.Cdn
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRealTimeLogDeliveriesResult> InvokeAsync(GetRealTimeLogDeliveriesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRealTimeLogDeliveriesResult>("alicloud:cdn/getRealTimeLogDeliveries:getRealTimeLogDeliveries", args ?? new GetRealTimeLogDeliveriesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRealTimeLogDeliveriesResult>("alicloud:cdn/getRealTimeLogDeliveries:getRealTimeLogDeliveries", args ?? new GetRealTimeLogDeliveriesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cdn Real Time Log Deliveries of the current Alibaba Cloud user.
@@ -82,7 +81,7 @@ namespace Pulumi.AliCloud.Cdn
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRealTimeLogDeliveriesResult> Invoke(GetRealTimeLogDeliveriesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRealTimeLogDeliveriesResult>("alicloud:cdn/getRealTimeLogDeliveries:getRealTimeLogDeliveries", args ?? new GetRealTimeLogDeliveriesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetRealTimeLogDeliveriesResult>("alicloud:cdn/getRealTimeLogDeliveries:getRealTimeLogDeliveries", args ?? new GetRealTimeLogDeliveriesInvokeArgs(), options.WithDefaults());
     }
 
 

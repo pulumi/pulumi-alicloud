@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.ResourceManager
 {
@@ -41,7 +40,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPolicyAttachmentsResult> InvokeAsync(GetPolicyAttachmentsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyAttachmentsResult>("alicloud:resourcemanager/getPolicyAttachments:getPolicyAttachments", args ?? new GetPolicyAttachmentsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyAttachmentsResult>("alicloud:resourcemanager/getPolicyAttachments:getPolicyAttachments", args ?? new GetPolicyAttachmentsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Resource Manager Policy Attachments of the current Alibaba Cloud user.
@@ -72,7 +71,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPolicyAttachmentsResult> Invoke(GetPolicyAttachmentsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPolicyAttachmentsResult>("alicloud:resourcemanager/getPolicyAttachments:getPolicyAttachments", args ?? new GetPolicyAttachmentsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetPolicyAttachmentsResult>("alicloud:resourcemanager/getPolicyAttachments:getPolicyAttachments", args ?? new GetPolicyAttachmentsInvokeArgs(), options.WithDefaults());
     }
 
 

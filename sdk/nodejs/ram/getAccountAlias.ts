@@ -10,9 +10,7 @@ export function getAccountAlias(args?: GetAccountAliasArgs, opts?: pulumi.Invoke
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:ram/getAccountAlias:getAccountAlias", {
         "outputFile": args.outputFile,
     }, opts);

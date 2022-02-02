@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Dns
 {
@@ -47,7 +46,7 @@ namespace Pulumi.AliCloud.Dns
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCustomLinesResult> InvokeAsync(GetCustomLinesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCustomLinesResult>("alicloud:dns/getCustomLines:getCustomLines", args ?? new GetCustomLinesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCustomLinesResult>("alicloud:dns/getCustomLines:getCustomLines", args ?? new GetCustomLinesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Alidns Custom Lines of the current Alibaba Cloud user.
@@ -84,7 +83,7 @@ namespace Pulumi.AliCloud.Dns
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetCustomLinesResult> Invoke(GetCustomLinesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCustomLinesResult>("alicloud:dns/getCustomLines:getCustomLines", args ?? new GetCustomLinesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetCustomLinesResult>("alicloud:dns/getCustomLines:getCustomLines", args ?? new GetCustomLinesInvokeArgs(), options.WithDefaults());
     }
 
 

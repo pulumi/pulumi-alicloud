@@ -98,29 +98,27 @@ export class EcsDeploymentSet extends pulumi.CustomResource {
      */
     constructor(name: string, args?: EcsDeploymentSetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EcsDeploymentSetArgs | EcsDeploymentSetState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsDeploymentSetState | undefined;
-            inputs["deploymentSetName"] = state ? state.deploymentSetName : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["domain"] = state ? state.domain : undefined;
-            inputs["granularity"] = state ? state.granularity : undefined;
-            inputs["onUnableToRedeployFailedInstance"] = state ? state.onUnableToRedeployFailedInstance : undefined;
-            inputs["strategy"] = state ? state.strategy : undefined;
+            resourceInputs["deploymentSetName"] = state ? state.deploymentSetName : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["granularity"] = state ? state.granularity : undefined;
+            resourceInputs["onUnableToRedeployFailedInstance"] = state ? state.onUnableToRedeployFailedInstance : undefined;
+            resourceInputs["strategy"] = state ? state.strategy : undefined;
         } else {
             const args = argsOrState as EcsDeploymentSetArgs | undefined;
-            inputs["deploymentSetName"] = args ? args.deploymentSetName : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["domain"] = args ? args.domain : undefined;
-            inputs["granularity"] = args ? args.granularity : undefined;
-            inputs["onUnableToRedeployFailedInstance"] = args ? args.onUnableToRedeployFailedInstance : undefined;
-            inputs["strategy"] = args ? args.strategy : undefined;
+            resourceInputs["deploymentSetName"] = args ? args.deploymentSetName : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["granularity"] = args ? args.granularity : undefined;
+            resourceInputs["onUnableToRedeployFailedInstance"] = args ? args.onUnableToRedeployFailedInstance : undefined;
+            resourceInputs["strategy"] = args ? args.strategy : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EcsDeploymentSet.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EcsDeploymentSet.__pulumiType, name, resourceInputs, opts);
     }
 }
 

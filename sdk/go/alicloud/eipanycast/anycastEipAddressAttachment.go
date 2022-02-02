@@ -181,7 +181,7 @@ type AnycastEipAddressAttachmentInput interface {
 }
 
 func (*AnycastEipAddressAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*AnycastEipAddressAttachment)(nil))
+	return reflect.TypeOf((**AnycastEipAddressAttachment)(nil)).Elem()
 }
 
 func (i *AnycastEipAddressAttachment) ToAnycastEipAddressAttachmentOutput() AnycastEipAddressAttachmentOutput {
@@ -190,35 +190,6 @@ func (i *AnycastEipAddressAttachment) ToAnycastEipAddressAttachmentOutput() Anyc
 
 func (i *AnycastEipAddressAttachment) ToAnycastEipAddressAttachmentOutputWithContext(ctx context.Context) AnycastEipAddressAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AnycastEipAddressAttachmentOutput)
-}
-
-func (i *AnycastEipAddressAttachment) ToAnycastEipAddressAttachmentPtrOutput() AnycastEipAddressAttachmentPtrOutput {
-	return i.ToAnycastEipAddressAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *AnycastEipAddressAttachment) ToAnycastEipAddressAttachmentPtrOutputWithContext(ctx context.Context) AnycastEipAddressAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnycastEipAddressAttachmentPtrOutput)
-}
-
-type AnycastEipAddressAttachmentPtrInput interface {
-	pulumi.Input
-
-	ToAnycastEipAddressAttachmentPtrOutput() AnycastEipAddressAttachmentPtrOutput
-	ToAnycastEipAddressAttachmentPtrOutputWithContext(ctx context.Context) AnycastEipAddressAttachmentPtrOutput
-}
-
-type anycastEipAddressAttachmentPtrType AnycastEipAddressAttachmentArgs
-
-func (*anycastEipAddressAttachmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AnycastEipAddressAttachment)(nil))
-}
-
-func (i *anycastEipAddressAttachmentPtrType) ToAnycastEipAddressAttachmentPtrOutput() AnycastEipAddressAttachmentPtrOutput {
-	return i.ToAnycastEipAddressAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *anycastEipAddressAttachmentPtrType) ToAnycastEipAddressAttachmentPtrOutputWithContext(ctx context.Context) AnycastEipAddressAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnycastEipAddressAttachmentPtrOutput)
 }
 
 // AnycastEipAddressAttachmentArrayInput is an input type that accepts AnycastEipAddressAttachmentArray and AnycastEipAddressAttachmentArrayOutput values.
@@ -274,7 +245,7 @@ func (i AnycastEipAddressAttachmentMap) ToAnycastEipAddressAttachmentMapOutputWi
 type AnycastEipAddressAttachmentOutput struct{ *pulumi.OutputState }
 
 func (AnycastEipAddressAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AnycastEipAddressAttachment)(nil))
+	return reflect.TypeOf((**AnycastEipAddressAttachment)(nil)).Elem()
 }
 
 func (o AnycastEipAddressAttachmentOutput) ToAnycastEipAddressAttachmentOutput() AnycastEipAddressAttachmentOutput {
@@ -285,44 +256,10 @@ func (o AnycastEipAddressAttachmentOutput) ToAnycastEipAddressAttachmentOutputWi
 	return o
 }
 
-func (o AnycastEipAddressAttachmentOutput) ToAnycastEipAddressAttachmentPtrOutput() AnycastEipAddressAttachmentPtrOutput {
-	return o.ToAnycastEipAddressAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (o AnycastEipAddressAttachmentOutput) ToAnycastEipAddressAttachmentPtrOutputWithContext(ctx context.Context) AnycastEipAddressAttachmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AnycastEipAddressAttachment) *AnycastEipAddressAttachment {
-		return &v
-	}).(AnycastEipAddressAttachmentPtrOutput)
-}
-
-type AnycastEipAddressAttachmentPtrOutput struct{ *pulumi.OutputState }
-
-func (AnycastEipAddressAttachmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AnycastEipAddressAttachment)(nil))
-}
-
-func (o AnycastEipAddressAttachmentPtrOutput) ToAnycastEipAddressAttachmentPtrOutput() AnycastEipAddressAttachmentPtrOutput {
-	return o
-}
-
-func (o AnycastEipAddressAttachmentPtrOutput) ToAnycastEipAddressAttachmentPtrOutputWithContext(ctx context.Context) AnycastEipAddressAttachmentPtrOutput {
-	return o
-}
-
-func (o AnycastEipAddressAttachmentPtrOutput) Elem() AnycastEipAddressAttachmentOutput {
-	return o.ApplyT(func(v *AnycastEipAddressAttachment) AnycastEipAddressAttachment {
-		if v != nil {
-			return *v
-		}
-		var ret AnycastEipAddressAttachment
-		return ret
-	}).(AnycastEipAddressAttachmentOutput)
-}
-
 type AnycastEipAddressAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (AnycastEipAddressAttachmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AnycastEipAddressAttachment)(nil))
+	return reflect.TypeOf((*[]*AnycastEipAddressAttachment)(nil)).Elem()
 }
 
 func (o AnycastEipAddressAttachmentArrayOutput) ToAnycastEipAddressAttachmentArrayOutput() AnycastEipAddressAttachmentArrayOutput {
@@ -334,15 +271,15 @@ func (o AnycastEipAddressAttachmentArrayOutput) ToAnycastEipAddressAttachmentArr
 }
 
 func (o AnycastEipAddressAttachmentArrayOutput) Index(i pulumi.IntInput) AnycastEipAddressAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AnycastEipAddressAttachment {
-		return vs[0].([]AnycastEipAddressAttachment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AnycastEipAddressAttachment {
+		return vs[0].([]*AnycastEipAddressAttachment)[vs[1].(int)]
 	}).(AnycastEipAddressAttachmentOutput)
 }
 
 type AnycastEipAddressAttachmentMapOutput struct{ *pulumi.OutputState }
 
 func (AnycastEipAddressAttachmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AnycastEipAddressAttachment)(nil))
+	return reflect.TypeOf((*map[string]*AnycastEipAddressAttachment)(nil)).Elem()
 }
 
 func (o AnycastEipAddressAttachmentMapOutput) ToAnycastEipAddressAttachmentMapOutput() AnycastEipAddressAttachmentMapOutput {
@@ -354,18 +291,16 @@ func (o AnycastEipAddressAttachmentMapOutput) ToAnycastEipAddressAttachmentMapOu
 }
 
 func (o AnycastEipAddressAttachmentMapOutput) MapIndex(k pulumi.StringInput) AnycastEipAddressAttachmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AnycastEipAddressAttachment {
-		return vs[0].(map[string]AnycastEipAddressAttachment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AnycastEipAddressAttachment {
+		return vs[0].(map[string]*AnycastEipAddressAttachment)[vs[1].(string)]
 	}).(AnycastEipAddressAttachmentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AnycastEipAddressAttachmentInput)(nil)).Elem(), &AnycastEipAddressAttachment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AnycastEipAddressAttachmentPtrInput)(nil)).Elem(), &AnycastEipAddressAttachment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnycastEipAddressAttachmentArrayInput)(nil)).Elem(), AnycastEipAddressAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnycastEipAddressAttachmentMapInput)(nil)).Elem(), AnycastEipAddressAttachmentMap{})
 	pulumi.RegisterOutputType(AnycastEipAddressAttachmentOutput{})
-	pulumi.RegisterOutputType(AnycastEipAddressAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(AnycastEipAddressAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(AnycastEipAddressAttachmentMapOutput{})
 }

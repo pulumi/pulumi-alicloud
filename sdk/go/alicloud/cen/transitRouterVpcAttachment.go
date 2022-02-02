@@ -220,7 +220,7 @@ type TransitRouterVpcAttachmentInput interface {
 }
 
 func (*TransitRouterVpcAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransitRouterVpcAttachment)(nil))
+	return reflect.TypeOf((**TransitRouterVpcAttachment)(nil)).Elem()
 }
 
 func (i *TransitRouterVpcAttachment) ToTransitRouterVpcAttachmentOutput() TransitRouterVpcAttachmentOutput {
@@ -229,35 +229,6 @@ func (i *TransitRouterVpcAttachment) ToTransitRouterVpcAttachmentOutput() Transi
 
 func (i *TransitRouterVpcAttachment) ToTransitRouterVpcAttachmentOutputWithContext(ctx context.Context) TransitRouterVpcAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterVpcAttachmentOutput)
-}
-
-func (i *TransitRouterVpcAttachment) ToTransitRouterVpcAttachmentPtrOutput() TransitRouterVpcAttachmentPtrOutput {
-	return i.ToTransitRouterVpcAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *TransitRouterVpcAttachment) ToTransitRouterVpcAttachmentPtrOutputWithContext(ctx context.Context) TransitRouterVpcAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterVpcAttachmentPtrOutput)
-}
-
-type TransitRouterVpcAttachmentPtrInput interface {
-	pulumi.Input
-
-	ToTransitRouterVpcAttachmentPtrOutput() TransitRouterVpcAttachmentPtrOutput
-	ToTransitRouterVpcAttachmentPtrOutputWithContext(ctx context.Context) TransitRouterVpcAttachmentPtrOutput
-}
-
-type transitRouterVpcAttachmentPtrType TransitRouterVpcAttachmentArgs
-
-func (*transitRouterVpcAttachmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransitRouterVpcAttachment)(nil))
-}
-
-func (i *transitRouterVpcAttachmentPtrType) ToTransitRouterVpcAttachmentPtrOutput() TransitRouterVpcAttachmentPtrOutput {
-	return i.ToTransitRouterVpcAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *transitRouterVpcAttachmentPtrType) ToTransitRouterVpcAttachmentPtrOutputWithContext(ctx context.Context) TransitRouterVpcAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterVpcAttachmentPtrOutput)
 }
 
 // TransitRouterVpcAttachmentArrayInput is an input type that accepts TransitRouterVpcAttachmentArray and TransitRouterVpcAttachmentArrayOutput values.
@@ -313,7 +284,7 @@ func (i TransitRouterVpcAttachmentMap) ToTransitRouterVpcAttachmentMapOutputWith
 type TransitRouterVpcAttachmentOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterVpcAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransitRouterVpcAttachment)(nil))
+	return reflect.TypeOf((**TransitRouterVpcAttachment)(nil)).Elem()
 }
 
 func (o TransitRouterVpcAttachmentOutput) ToTransitRouterVpcAttachmentOutput() TransitRouterVpcAttachmentOutput {
@@ -324,44 +295,10 @@ func (o TransitRouterVpcAttachmentOutput) ToTransitRouterVpcAttachmentOutputWith
 	return o
 }
 
-func (o TransitRouterVpcAttachmentOutput) ToTransitRouterVpcAttachmentPtrOutput() TransitRouterVpcAttachmentPtrOutput {
-	return o.ToTransitRouterVpcAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (o TransitRouterVpcAttachmentOutput) ToTransitRouterVpcAttachmentPtrOutputWithContext(ctx context.Context) TransitRouterVpcAttachmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransitRouterVpcAttachment) *TransitRouterVpcAttachment {
-		return &v
-	}).(TransitRouterVpcAttachmentPtrOutput)
-}
-
-type TransitRouterVpcAttachmentPtrOutput struct{ *pulumi.OutputState }
-
-func (TransitRouterVpcAttachmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransitRouterVpcAttachment)(nil))
-}
-
-func (o TransitRouterVpcAttachmentPtrOutput) ToTransitRouterVpcAttachmentPtrOutput() TransitRouterVpcAttachmentPtrOutput {
-	return o
-}
-
-func (o TransitRouterVpcAttachmentPtrOutput) ToTransitRouterVpcAttachmentPtrOutputWithContext(ctx context.Context) TransitRouterVpcAttachmentPtrOutput {
-	return o
-}
-
-func (o TransitRouterVpcAttachmentPtrOutput) Elem() TransitRouterVpcAttachmentOutput {
-	return o.ApplyT(func(v *TransitRouterVpcAttachment) TransitRouterVpcAttachment {
-		if v != nil {
-			return *v
-		}
-		var ret TransitRouterVpcAttachment
-		return ret
-	}).(TransitRouterVpcAttachmentOutput)
-}
-
 type TransitRouterVpcAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterVpcAttachmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TransitRouterVpcAttachment)(nil))
+	return reflect.TypeOf((*[]*TransitRouterVpcAttachment)(nil)).Elem()
 }
 
 func (o TransitRouterVpcAttachmentArrayOutput) ToTransitRouterVpcAttachmentArrayOutput() TransitRouterVpcAttachmentArrayOutput {
@@ -373,15 +310,15 @@ func (o TransitRouterVpcAttachmentArrayOutput) ToTransitRouterVpcAttachmentArray
 }
 
 func (o TransitRouterVpcAttachmentArrayOutput) Index(i pulumi.IntInput) TransitRouterVpcAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransitRouterVpcAttachment {
-		return vs[0].([]TransitRouterVpcAttachment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TransitRouterVpcAttachment {
+		return vs[0].([]*TransitRouterVpcAttachment)[vs[1].(int)]
 	}).(TransitRouterVpcAttachmentOutput)
 }
 
 type TransitRouterVpcAttachmentMapOutput struct{ *pulumi.OutputState }
 
 func (TransitRouterVpcAttachmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]TransitRouterVpcAttachment)(nil))
+	return reflect.TypeOf((*map[string]*TransitRouterVpcAttachment)(nil)).Elem()
 }
 
 func (o TransitRouterVpcAttachmentMapOutput) ToTransitRouterVpcAttachmentMapOutput() TransitRouterVpcAttachmentMapOutput {
@@ -393,18 +330,16 @@ func (o TransitRouterVpcAttachmentMapOutput) ToTransitRouterVpcAttachmentMapOutp
 }
 
 func (o TransitRouterVpcAttachmentMapOutput) MapIndex(k pulumi.StringInput) TransitRouterVpcAttachmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TransitRouterVpcAttachment {
-		return vs[0].(map[string]TransitRouterVpcAttachment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TransitRouterVpcAttachment {
+		return vs[0].(map[string]*TransitRouterVpcAttachment)[vs[1].(string)]
 	}).(TransitRouterVpcAttachmentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterVpcAttachmentInput)(nil)).Elem(), &TransitRouterVpcAttachment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterVpcAttachmentPtrInput)(nil)).Elem(), &TransitRouterVpcAttachment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterVpcAttachmentArrayInput)(nil)).Elem(), TransitRouterVpcAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterVpcAttachmentMapInput)(nil)).Elem(), TransitRouterVpcAttachmentMap{})
 	pulumi.RegisterOutputType(TransitRouterVpcAttachmentOutput{})
-	pulumi.RegisterOutputType(TransitRouterVpcAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(TransitRouterVpcAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(TransitRouterVpcAttachmentMapOutput{})
 }

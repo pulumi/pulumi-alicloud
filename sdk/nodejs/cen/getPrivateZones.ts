@@ -30,9 +30,7 @@ export function getPrivateZones(args: GetPrivateZonesArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:cen/getPrivateZones:getPrivateZones", {
         "cenId": args.cenId,
         "hostRegionId": args.hostRegionId,

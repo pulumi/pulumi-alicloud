@@ -239,7 +239,7 @@ type StateConfigurationInput interface {
 }
 
 func (*StateConfiguration) ElementType() reflect.Type {
-	return reflect.TypeOf((*StateConfiguration)(nil))
+	return reflect.TypeOf((**StateConfiguration)(nil)).Elem()
 }
 
 func (i *StateConfiguration) ToStateConfigurationOutput() StateConfigurationOutput {
@@ -248,35 +248,6 @@ func (i *StateConfiguration) ToStateConfigurationOutput() StateConfigurationOutp
 
 func (i *StateConfiguration) ToStateConfigurationOutputWithContext(ctx context.Context) StateConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StateConfigurationOutput)
-}
-
-func (i *StateConfiguration) ToStateConfigurationPtrOutput() StateConfigurationPtrOutput {
-	return i.ToStateConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *StateConfiguration) ToStateConfigurationPtrOutputWithContext(ctx context.Context) StateConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StateConfigurationPtrOutput)
-}
-
-type StateConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToStateConfigurationPtrOutput() StateConfigurationPtrOutput
-	ToStateConfigurationPtrOutputWithContext(ctx context.Context) StateConfigurationPtrOutput
-}
-
-type stateConfigurationPtrType StateConfigurationArgs
-
-func (*stateConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StateConfiguration)(nil))
-}
-
-func (i *stateConfigurationPtrType) ToStateConfigurationPtrOutput() StateConfigurationPtrOutput {
-	return i.ToStateConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *stateConfigurationPtrType) ToStateConfigurationPtrOutputWithContext(ctx context.Context) StateConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StateConfigurationPtrOutput)
 }
 
 // StateConfigurationArrayInput is an input type that accepts StateConfigurationArray and StateConfigurationArrayOutput values.
@@ -332,7 +303,7 @@ func (i StateConfigurationMap) ToStateConfigurationMapOutputWithContext(ctx cont
 type StateConfigurationOutput struct{ *pulumi.OutputState }
 
 func (StateConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StateConfiguration)(nil))
+	return reflect.TypeOf((**StateConfiguration)(nil)).Elem()
 }
 
 func (o StateConfigurationOutput) ToStateConfigurationOutput() StateConfigurationOutput {
@@ -343,44 +314,10 @@ func (o StateConfigurationOutput) ToStateConfigurationOutputWithContext(ctx cont
 	return o
 }
 
-func (o StateConfigurationOutput) ToStateConfigurationPtrOutput() StateConfigurationPtrOutput {
-	return o.ToStateConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o StateConfigurationOutput) ToStateConfigurationPtrOutputWithContext(ctx context.Context) StateConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StateConfiguration) *StateConfiguration {
-		return &v
-	}).(StateConfigurationPtrOutput)
-}
-
-type StateConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (StateConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StateConfiguration)(nil))
-}
-
-func (o StateConfigurationPtrOutput) ToStateConfigurationPtrOutput() StateConfigurationPtrOutput {
-	return o
-}
-
-func (o StateConfigurationPtrOutput) ToStateConfigurationPtrOutputWithContext(ctx context.Context) StateConfigurationPtrOutput {
-	return o
-}
-
-func (o StateConfigurationPtrOutput) Elem() StateConfigurationOutput {
-	return o.ApplyT(func(v *StateConfiguration) StateConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret StateConfiguration
-		return ret
-	}).(StateConfigurationOutput)
-}
-
 type StateConfigurationArrayOutput struct{ *pulumi.OutputState }
 
 func (StateConfigurationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StateConfiguration)(nil))
+	return reflect.TypeOf((*[]*StateConfiguration)(nil)).Elem()
 }
 
 func (o StateConfigurationArrayOutput) ToStateConfigurationArrayOutput() StateConfigurationArrayOutput {
@@ -392,15 +329,15 @@ func (o StateConfigurationArrayOutput) ToStateConfigurationArrayOutputWithContex
 }
 
 func (o StateConfigurationArrayOutput) Index(i pulumi.IntInput) StateConfigurationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StateConfiguration {
-		return vs[0].([]StateConfiguration)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StateConfiguration {
+		return vs[0].([]*StateConfiguration)[vs[1].(int)]
 	}).(StateConfigurationOutput)
 }
 
 type StateConfigurationMapOutput struct{ *pulumi.OutputState }
 
 func (StateConfigurationMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]StateConfiguration)(nil))
+	return reflect.TypeOf((*map[string]*StateConfiguration)(nil)).Elem()
 }
 
 func (o StateConfigurationMapOutput) ToStateConfigurationMapOutput() StateConfigurationMapOutput {
@@ -412,18 +349,16 @@ func (o StateConfigurationMapOutput) ToStateConfigurationMapOutputWithContext(ct
 }
 
 func (o StateConfigurationMapOutput) MapIndex(k pulumi.StringInput) StateConfigurationOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) StateConfiguration {
-		return vs[0].(map[string]StateConfiguration)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *StateConfiguration {
+		return vs[0].(map[string]*StateConfiguration)[vs[1].(string)]
 	}).(StateConfigurationOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StateConfigurationInput)(nil)).Elem(), &StateConfiguration{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StateConfigurationPtrInput)(nil)).Elem(), &StateConfiguration{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StateConfigurationArrayInput)(nil)).Elem(), StateConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StateConfigurationMapInput)(nil)).Elem(), StateConfigurationMap{})
 	pulumi.RegisterOutputType(StateConfigurationOutput{})
-	pulumi.RegisterOutputType(StateConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(StateConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(StateConfigurationMapOutput{})
 }

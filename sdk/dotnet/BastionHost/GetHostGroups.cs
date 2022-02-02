@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.BastionHost
 {
@@ -59,7 +58,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetHostGroupsResult> InvokeAsync(GetHostGroupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHostGroupsResult>("alicloud:bastionhost/getHostGroups:getHostGroups", args ?? new GetHostGroupsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetHostGroupsResult>("alicloud:bastionhost/getHostGroups:getHostGroups", args ?? new GetHostGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Bastionhost Host Groups of the current Alibaba Cloud user.
@@ -108,7 +107,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetHostGroupsResult> Invoke(GetHostGroupsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHostGroupsResult>("alicloud:bastionhost/getHostGroups:getHostGroups", args ?? new GetHostGroupsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetHostGroupsResult>("alicloud:bastionhost/getHostGroups:getHostGroups", args ?? new GetHostGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

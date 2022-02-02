@@ -30,9 +30,7 @@ export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions)
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:imm/getProjects:getProjects", {
         "ids": args.ids,
         "outputFile": args.outputFile,

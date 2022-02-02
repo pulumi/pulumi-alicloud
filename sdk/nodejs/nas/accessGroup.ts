@@ -110,29 +110,27 @@ export class AccessGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args?: AccessGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessGroupArgs | AccessGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessGroupState | undefined;
-            inputs["accessGroupName"] = state ? state.accessGroupName : undefined;
-            inputs["accessGroupType"] = state ? state.accessGroupType : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["fileSystemType"] = state ? state.fileSystemType : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["accessGroupName"] = state ? state.accessGroupName : undefined;
+            resourceInputs["accessGroupType"] = state ? state.accessGroupType : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["fileSystemType"] = state ? state.fileSystemType : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as AccessGroupArgs | undefined;
-            inputs["accessGroupName"] = args ? args.accessGroupName : undefined;
-            inputs["accessGroupType"] = args ? args.accessGroupType : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["fileSystemType"] = args ? args.fileSystemType : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["type"] = args ? args.type : undefined;
+            resourceInputs["accessGroupName"] = args ? args.accessGroupName : undefined;
+            resourceInputs["accessGroupType"] = args ? args.accessGroupType : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["fileSystemType"] = args ? args.fileSystemType : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AccessGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AccessGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

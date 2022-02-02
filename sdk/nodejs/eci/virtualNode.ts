@@ -142,21 +142,21 @@ export class VirtualNode extends pulumi.CustomResource {
      */
     constructor(name: string, args: VirtualNodeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VirtualNodeArgs | VirtualNodeState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VirtualNodeState | undefined;
-            inputs["eipInstanceId"] = state ? state.eipInstanceId : undefined;
-            inputs["enablePublicNetwork"] = state ? state.enablePublicNetwork : undefined;
-            inputs["kubeConfig"] = state ? state.kubeConfig : undefined;
-            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["taints"] = state ? state.taints : undefined;
-            inputs["virtualNodeName"] = state ? state.virtualNodeName : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["eipInstanceId"] = state ? state.eipInstanceId : undefined;
+            resourceInputs["enablePublicNetwork"] = state ? state.enablePublicNetwork : undefined;
+            resourceInputs["kubeConfig"] = state ? state.kubeConfig : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["taints"] = state ? state.taints : undefined;
+            resourceInputs["virtualNodeName"] = state ? state.virtualNodeName : undefined;
+            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as VirtualNodeArgs | undefined;
             if ((!args || args.kubeConfig === undefined) && !opts.urn) {
@@ -168,22 +168,20 @@ export class VirtualNode extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            inputs["eipInstanceId"] = args ? args.eipInstanceId : undefined;
-            inputs["enablePublicNetwork"] = args ? args.enablePublicNetwork : undefined;
-            inputs["kubeConfig"] = args ? args.kubeConfig : undefined;
-            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["taints"] = args ? args.taints : undefined;
-            inputs["virtualNodeName"] = args ? args.virtualNodeName : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["eipInstanceId"] = args ? args.eipInstanceId : undefined;
+            resourceInputs["enablePublicNetwork"] = args ? args.enablePublicNetwork : undefined;
+            resourceInputs["kubeConfig"] = args ? args.kubeConfig : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["taints"] = args ? args.taints : undefined;
+            resourceInputs["virtualNodeName"] = args ? args.virtualNodeName : undefined;
+            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(VirtualNode.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(VirtualNode.__pulumiType, name, resourceInputs, opts);
     }
 }
 

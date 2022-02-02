@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Oss
 {
@@ -42,7 +41,7 @@ namespace Pulumi.AliCloud.Oss
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBucketsResult> InvokeAsync(GetBucketsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBucketsResult>("alicloud:oss/getBuckets:getBuckets", args ?? new GetBucketsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBucketsResult>("alicloud:oss/getBuckets:getBuckets", args ?? new GetBucketsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the OSS buckets of the current Alibaba Cloud user.
@@ -74,7 +73,7 @@ namespace Pulumi.AliCloud.Oss
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBucketsResult> Invoke(GetBucketsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBucketsResult>("alicloud:oss/getBuckets:getBuckets", args ?? new GetBucketsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetBucketsResult>("alicloud:oss/getBuckets:getBuckets", args ?? new GetBucketsInvokeArgs(), options.WithDefaults());
     }
 
 

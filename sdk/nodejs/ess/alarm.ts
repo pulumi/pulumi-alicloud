@@ -111,25 +111,25 @@ export class Alarm extends pulumi.CustomResource {
      */
     constructor(name: string, args: AlarmArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AlarmArgs | AlarmState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlarmState | undefined;
-            inputs["alarmActions"] = state ? state.alarmActions : undefined;
-            inputs["cloudMonitorGroupId"] = state ? state.cloudMonitorGroupId : undefined;
-            inputs["comparisonOperator"] = state ? state.comparisonOperator : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["dimensions"] = state ? state.dimensions : undefined;
-            inputs["enable"] = state ? state.enable : undefined;
-            inputs["evaluationCount"] = state ? state.evaluationCount : undefined;
-            inputs["metricName"] = state ? state.metricName : undefined;
-            inputs["metricType"] = state ? state.metricType : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
-            inputs["state"] = state ? state.state : undefined;
-            inputs["statistics"] = state ? state.statistics : undefined;
-            inputs["threshold"] = state ? state.threshold : undefined;
+            resourceInputs["alarmActions"] = state ? state.alarmActions : undefined;
+            resourceInputs["cloudMonitorGroupId"] = state ? state.cloudMonitorGroupId : undefined;
+            resourceInputs["comparisonOperator"] = state ? state.comparisonOperator : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dimensions"] = state ? state.dimensions : undefined;
+            resourceInputs["enable"] = state ? state.enable : undefined;
+            resourceInputs["evaluationCount"] = state ? state.evaluationCount : undefined;
+            resourceInputs["metricName"] = state ? state.metricName : undefined;
+            resourceInputs["metricType"] = state ? state.metricType : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["statistics"] = state ? state.statistics : undefined;
+            resourceInputs["threshold"] = state ? state.threshold : undefined;
         } else {
             const args = argsOrState as AlarmArgs | undefined;
             if ((!args || args.alarmActions === undefined) && !opts.urn) {
@@ -144,26 +144,24 @@ export class Alarm extends pulumi.CustomResource {
             if ((!args || args.threshold === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'threshold'");
             }
-            inputs["alarmActions"] = args ? args.alarmActions : undefined;
-            inputs["cloudMonitorGroupId"] = args ? args.cloudMonitorGroupId : undefined;
-            inputs["comparisonOperator"] = args ? args.comparisonOperator : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["dimensions"] = args ? args.dimensions : undefined;
-            inputs["enable"] = args ? args.enable : undefined;
-            inputs["evaluationCount"] = args ? args.evaluationCount : undefined;
-            inputs["metricName"] = args ? args.metricName : undefined;
-            inputs["metricType"] = args ? args.metricType : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
-            inputs["statistics"] = args ? args.statistics : undefined;
-            inputs["threshold"] = args ? args.threshold : undefined;
-            inputs["state"] = undefined /*out*/;
+            resourceInputs["alarmActions"] = args ? args.alarmActions : undefined;
+            resourceInputs["cloudMonitorGroupId"] = args ? args.cloudMonitorGroupId : undefined;
+            resourceInputs["comparisonOperator"] = args ? args.comparisonOperator : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dimensions"] = args ? args.dimensions : undefined;
+            resourceInputs["enable"] = args ? args.enable : undefined;
+            resourceInputs["evaluationCount"] = args ? args.evaluationCount : undefined;
+            resourceInputs["metricName"] = args ? args.metricName : undefined;
+            resourceInputs["metricType"] = args ? args.metricType : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
+            resourceInputs["statistics"] = args ? args.statistics : undefined;
+            resourceInputs["threshold"] = args ? args.threshold : undefined;
+            resourceInputs["state"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Alarm.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Alarm.__pulumiType, name, resourceInputs, opts);
     }
 }
 

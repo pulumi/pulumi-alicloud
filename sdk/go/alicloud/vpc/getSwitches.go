@@ -51,6 +51,9 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		_ = vpc.GetSwitchesOutput(ctx, vpc.GetSwitchesOutputArgs{
+// 			NameRegex: vswitch.VswitchName,
+// 		}, nil)
 // 		return nil
 // 	})
 // }

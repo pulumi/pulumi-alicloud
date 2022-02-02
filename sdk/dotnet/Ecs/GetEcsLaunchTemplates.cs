@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.AliCloud.Ecs
 {
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsLaunchTemplatesResult> InvokeAsync(GetEcsLaunchTemplatesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsLaunchTemplatesResult>("alicloud:ecs/getEcsLaunchTemplates:getEcsLaunchTemplates", args ?? new GetEcsLaunchTemplatesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsLaunchTemplatesResult>("alicloud:ecs/getEcsLaunchTemplates:getEcsLaunchTemplates", args ?? new GetEcsLaunchTemplatesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
@@ -90,7 +89,7 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsLaunchTemplatesResult> Invoke(GetEcsLaunchTemplatesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEcsLaunchTemplatesResult>("alicloud:ecs/getEcsLaunchTemplates:getEcsLaunchTemplates", args ?? new GetEcsLaunchTemplatesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetEcsLaunchTemplatesResult>("alicloud:ecs/getEcsLaunchTemplates:getEcsLaunchTemplates", args ?? new GetEcsLaunchTemplatesInvokeArgs(), options.WithDefaults());
     }
 
 
