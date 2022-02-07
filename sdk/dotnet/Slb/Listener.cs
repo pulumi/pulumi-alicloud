@@ -171,7 +171,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string?> HealthCheck { get; private set; } = null!;
 
         /// <summary>
-        /// Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+        /// The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
         /// </summary>
         [Output("healthCheckConnectPort")]
         public Output<int> HealthCheckConnectPort { get; private set; } = null!;
@@ -195,7 +195,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<int?> HealthCheckInterval { get; private set; } = null!;
 
         /// <summary>
-        /// The method of health check. Valid values: ["head", "get"].
+        /// HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
         /// </summary>
         [Output("healthCheckMethod")]
         public Output<string> HealthCheckMethod { get; private set; } = null!;
@@ -219,7 +219,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string?> HealthCheckUri { get; private set; } = null!;
 
         /// <summary>
-        /// Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        /// The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
         /// </summary>
         [Output("healthyThreshold")]
         public Output<int?> HealthyThreshold { get; private set; } = null!;
@@ -316,13 +316,13 @@ namespace Pulumi.AliCloud.Slb
         public Output<string?> TlsCipherPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        /// The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
         /// </summary>
         [Output("unhealthyThreshold")]
         public Output<int?> UnhealthyThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
+        /// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
         /// </summary>
         [Output("xForwardedFor")]
         public Output<Outputs.ListenerXForwardedFor> XForwardedFor { get; private set; } = null!;
@@ -470,7 +470,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? HealthCheck { get; set; }
 
         /// <summary>
-        /// Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+        /// The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
         /// </summary>
         [Input("healthCheckConnectPort")]
         public Input<int>? HealthCheckConnectPort { get; set; }
@@ -494,7 +494,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<int>? HealthCheckInterval { get; set; }
 
         /// <summary>
-        /// The method of health check. Valid values: ["head", "get"].
+        /// HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
         /// </summary>
         [Input("healthCheckMethod")]
         public Input<string>? HealthCheckMethod { get; set; }
@@ -518,7 +518,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? HealthCheckUri { get; set; }
 
         /// <summary>
-        /// Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        /// The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
         /// </summary>
         [Input("healthyThreshold")]
         public Input<int>? HealthyThreshold { get; set; }
@@ -615,13 +615,13 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? TlsCipherPolicy { get; set; }
 
         /// <summary>
-        /// Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        /// The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
         /// </summary>
         [Input("unhealthyThreshold")]
         public Input<int>? UnhealthyThreshold { get; set; }
 
         /// <summary>
-        /// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
+        /// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
         /// </summary>
         [Input("xForwardedFor")]
         public Input<Inputs.ListenerXForwardedForArgs>? XForwardedFor { get; set; }
@@ -730,7 +730,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? HealthCheck { get; set; }
 
         /// <summary>
-        /// Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+        /// The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
         /// </summary>
         [Input("healthCheckConnectPort")]
         public Input<int>? HealthCheckConnectPort { get; set; }
@@ -754,7 +754,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<int>? HealthCheckInterval { get; set; }
 
         /// <summary>
-        /// The method of health check. Valid values: ["head", "get"].
+        /// HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
         /// </summary>
         [Input("healthCheckMethod")]
         public Input<string>? HealthCheckMethod { get; set; }
@@ -778,7 +778,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? HealthCheckUri { get; set; }
 
         /// <summary>
-        /// Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        /// The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
         /// </summary>
         [Input("healthyThreshold")]
         public Input<int>? HealthyThreshold { get; set; }
@@ -875,13 +875,13 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? TlsCipherPolicy { get; set; }
 
         /// <summary>
-        /// Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        /// The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
         /// </summary>
         [Input("unhealthyThreshold")]
         public Input<int>? UnhealthyThreshold { get; set; }
 
         /// <summary>
-        /// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
+        /// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `x_forwarded_for`.
         /// </summary>
         [Input("xForwardedFor")]
         public Input<Inputs.ListenerXForwardedForGetArgs>? XForwardedFor { get; set; }

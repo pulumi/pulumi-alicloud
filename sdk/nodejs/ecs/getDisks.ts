@@ -32,6 +32,8 @@ export function getDisks(args?: GetDisksArgs, opts?: pulumi.InvokeOptions): Prom
         "nameRegex": args.nameRegex,
         "operationLocks": args.operationLocks,
         "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
         "paymentType": args.paymentType,
         "portable": args.portable,
         "resourceGroupId": args.resourceGroupId,
@@ -86,6 +88,8 @@ export interface GetDisksArgs {
     nameRegex?: string;
     operationLocks?: inputs.ecs.GetDisksOperationLock[];
     outputFile?: string;
+    pageNumber?: number;
+    pageSize?: number;
     paymentType?: string;
     portable?: boolean;
     /**
@@ -170,6 +174,8 @@ export interface GetDisksResult {
     readonly names: string[];
     readonly operationLocks?: outputs.ecs.GetDisksOperationLock[];
     readonly outputFile?: string;
+    readonly pageNumber?: number;
+    readonly pageSize?: number;
     readonly paymentType?: string;
     readonly portable?: boolean;
     /**
@@ -188,6 +194,7 @@ export interface GetDisksResult {
      * A map of tags assigned to the disk.
      */
     readonly tags?: {[key: string]: any};
+    readonly totalCount: number;
     /**
      * Disk type. Possible values: `system` and `data`.
      *
@@ -244,6 +251,8 @@ export interface GetDisksOutputArgs {
     nameRegex?: pulumi.Input<string>;
     operationLocks?: pulumi.Input<pulumi.Input<inputs.ecs.GetDisksOperationLockArgs>[]>;
     outputFile?: pulumi.Input<string>;
+    pageNumber?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number>;
     paymentType?: pulumi.Input<string>;
     portable?: pulumi.Input<boolean>;
     /**

@@ -53,6 +53,8 @@ export function getNatGateways(args?: GetNatGatewaysArgs, opts?: pulumi.InvokeOp
         "natGatewayName": args.natGatewayName,
         "natType": args.natType,
         "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
         "paymentType": args.paymentType,
         "resourceGroupId": args.resourceGroupId,
         "specification": args.specification,
@@ -91,6 +93,8 @@ export interface GetNatGatewaysArgs {
      */
     natType?: string;
     outputFile?: string;
+    pageNumber?: number;
+    pageSize?: number;
     /**
      * The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
      */
@@ -149,6 +153,8 @@ export interface GetNatGatewaysResult {
      */
     readonly natType?: string;
     readonly outputFile?: string;
+    readonly pageNumber?: number;
+    readonly pageSize?: number;
     /**
      * The billing method of the NAT gateway.
      */
@@ -169,6 +175,7 @@ export interface GetNatGatewaysResult {
      * The tags of NAT gateway.
      */
     readonly tags?: {[key: string]: any};
+    readonly totalCount: number;
     /**
      * The ID of the VPC.
      */
@@ -208,6 +215,8 @@ export interface GetNatGatewaysOutputArgs {
      */
     natType?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
+    pageNumber?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number>;
     /**
      * The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
      */

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  * With its compatibility with MySQL protocols and syntaxes, DRDS enables database/table sharding, smooth scaling, configuration upgrade/downgrade,
  * transparent read/write splitting, and distributed transactions, providing O&M capabilities for distributed databases throughout their entire lifecycle.
  *
- * For information about DRDS and how to use it, see [What is DRDS](https://www.alibabacloud.com/help/doc-detail/29659.htm).
+ * For information about DRDS and how to use it, see [What is DRDS](https://www.alibabacloud.com/help/product/29657.htm).
  *
  * > **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao, ap-southeast-1.
  *
@@ -76,11 +76,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly instanceChargeType!: pulumi.Output<string | undefined>;
     /**
-     * User-defined DRDS instance node spec. Value range:
-     * - `drds.sn1.4c8g` for DRDS instance Starter version;
-     * - `drds.sn1.8c16g` for DRDS instance Standard edition;
-     * - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-     * - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
+     * The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
+     * - `drds.sn2.4c16g` Starter Edition.
+     * - `drds.sn2.8c32g` Standard Edition.
+     * - `drds.sn2.16c64g` Enterprise Edition.
      */
     public readonly instanceSeries!: pulumi.Output<string>;
     /**
@@ -165,11 +164,10 @@ export interface InstanceState {
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
-     * User-defined DRDS instance node spec. Value range:
-     * - `drds.sn1.4c8g` for DRDS instance Starter version;
-     * - `drds.sn1.8c16g` for DRDS instance Standard edition;
-     * - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-     * - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
+     * The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
+     * - `drds.sn2.4c16g` Starter Edition.
+     * - `drds.sn2.8c32g` Standard Edition.
+     * - `drds.sn2.16c64g` Enterprise Edition.
      */
     instanceSeries?: pulumi.Input<string>;
     /**
@@ -207,11 +205,10 @@ export interface InstanceArgs {
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
-     * User-defined DRDS instance node spec. Value range:
-     * - `drds.sn1.4c8g` for DRDS instance Starter version;
-     * - `drds.sn1.8c16g` for DRDS instance Standard edition;
-     * - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-     * - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
+     * The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
+     * - `drds.sn2.4c16g` Starter Edition.
+     * - `drds.sn2.8c32g` Standard Edition.
+     * - `drds.sn2.16c64g` Enterprise Edition.
      */
     instanceSeries: pulumi.Input<string>;
     /**

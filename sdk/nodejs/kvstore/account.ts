@@ -85,19 +85,20 @@ export class Account extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
+     * The name of the account. The name must meet the following requirements:
+     * * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
+     * * The name can be up to 100 characters in length.
+     * * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
      */
     public readonly accountName!: pulumi.Output<string>;
     /**
-     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
+     * The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
      */
     public readonly accountPassword!: pulumi.Output<string | undefined>;
     /**
-     * The privilege of account access database. Valid values: 
-     * - RoleReadOnly: This value is only for Redis and Memcache
-     * - RoleReadWrite: This value is only for Redis and Memcache
-     * - RoleRepl: This value supports instance to read, write, and open SYNC / PSYNC commands.
-     * Only for Redis which engine version is 4.0 and architecture type is standard
+     * The privilege of account access database. Default value: `RoleReadWrite` 
+     * - `RoleReadOnly`: This value is only for Redis and Memcache
+     * - `RoleReadWrite`: This value is only for Redis and Memcache
      */
     public readonly accountPrivilege!: pulumi.Output<string | undefined>;
     /**
@@ -177,19 +178,20 @@ export class Account extends pulumi.CustomResource {
  */
 export interface AccountState {
     /**
-     * The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
+     * The name of the account. The name must meet the following requirements:
+     * * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
+     * * The name can be up to 100 characters in length.
+     * * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
      */
     accountName?: pulumi.Input<string>;
     /**
-     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
+     * The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
      */
     accountPassword?: pulumi.Input<string>;
     /**
-     * The privilege of account access database. Valid values: 
-     * - RoleReadOnly: This value is only for Redis and Memcache
-     * - RoleReadWrite: This value is only for Redis and Memcache
-     * - RoleRepl: This value supports instance to read, write, and open SYNC / PSYNC commands.
-     * Only for Redis which engine version is 4.0 and architecture type is standard
+     * The privilege of account access database. Default value: `RoleReadWrite` 
+     * - `RoleReadOnly`: This value is only for Redis and Memcache
+     * - `RoleReadWrite`: This value is only for Redis and Memcache
      */
     accountPrivilege?: pulumi.Input<string>;
     /**
@@ -225,19 +227,20 @@ export interface AccountState {
  */
 export interface AccountArgs {
     /**
-     * The name of the account. The name must be 1 to 16 characters in length and contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
+     * The name of the account. The name must meet the following requirements:
+     * * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
+     * * The name can be up to 100 characters in length.
+     * * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
      */
     accountName: pulumi.Input<string>;
     /**
-     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
+     * The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
      */
     accountPassword?: pulumi.Input<string>;
     /**
-     * The privilege of account access database. Valid values: 
-     * - RoleReadOnly: This value is only for Redis and Memcache
-     * - RoleReadWrite: This value is only for Redis and Memcache
-     * - RoleRepl: This value supports instance to read, write, and open SYNC / PSYNC commands.
-     * Only for Redis which engine version is 4.0 and architecture type is standard
+     * The privilege of account access database. Default value: `RoleReadWrite` 
+     * - `RoleReadOnly`: This value is only for Redis and Memcache
+     * - `RoleReadWrite`: This value is only for Redis and Memcache
      */
     accountPrivilege?: pulumi.Input<string>;
     /**

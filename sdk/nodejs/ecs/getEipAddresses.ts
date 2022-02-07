@@ -91,7 +91,7 @@ export interface GetEipAddressesArgs {
      */
     ipAddress?: string;
     /**
-     * @deprecated Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.
+     * @deprecated Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
      */
     ipAddresses?: string[];
     /**
@@ -139,7 +139,7 @@ export interface GetEipAddressesResult {
     readonly associatedInstanceType?: string;
     readonly dryRun?: boolean;
     /**
-     * @deprecated Field 'eips' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'addresses' instead.
+     * @deprecated Field 'eips' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'addresses' instead.
      */
     readonly eips: outputs.ecs.GetEipAddressesEip[];
     readonly enableDetails?: boolean;
@@ -151,7 +151,7 @@ export interface GetEipAddressesResult {
     readonly includeReservationData?: boolean;
     readonly ipAddress?: string;
     /**
-     * @deprecated Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.
+     * @deprecated Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
      */
     readonly ipAddresses?: string[];
     readonly isp?: string;
@@ -207,7 +207,7 @@ export interface GetEipAddressesOutputArgs {
      */
     ipAddress?: pulumi.Input<string>;
     /**
-     * @deprecated Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.
+     * @deprecated Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
      */
     ipAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**

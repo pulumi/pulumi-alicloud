@@ -47,9 +47,14 @@ func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOpti
 type GetZonesArgs struct {
 	// Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
 	AvailableSlbAddressIpVersion *string `pulumi:"availableSlbAddressIpVersion"`
-	// Filter the results by a slb instance address type. Can be either `Vpc`, `classicInternet` or `classicIntranet`
+	// Filter the results by a slb instance network type. Valid values:
+	// * vpc: an internal SLB instance that is deployed in a virtual private cloud (VPC).
+	// * classic_internet: a public-facing SLB instance.
+	// * classic_intranet: an internal SLB instance that is deployed in a classic network.
 	AvailableSlbAddressType *string `pulumi:"availableSlbAddressType"`
 	// Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+	//
+	// Deprecated: The parameter enable_details has been deprecated from version v1.154.0+
 	EnableDetails *bool   `pulumi:"enableDetails"`
 	OutputFile    *string `pulumi:"outputFile"`
 }
@@ -58,7 +63,8 @@ type GetZonesArgs struct {
 type GetZonesResult struct {
 	AvailableSlbAddressIpVersion *string `pulumi:"availableSlbAddressIpVersion"`
 	AvailableSlbAddressType      *string `pulumi:"availableSlbAddressType"`
-	EnableDetails                *bool   `pulumi:"enableDetails"`
+	// Deprecated: The parameter enable_details has been deprecated from version v1.154.0+
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of zone IDs.
@@ -81,9 +87,14 @@ func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi
 type GetZonesOutputArgs struct {
 	// Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
 	AvailableSlbAddressIpVersion pulumi.StringPtrInput `pulumi:"availableSlbAddressIpVersion"`
-	// Filter the results by a slb instance address type. Can be either `Vpc`, `classicInternet` or `classicIntranet`
+	// Filter the results by a slb instance network type. Valid values:
+	// * vpc: an internal SLB instance that is deployed in a virtual private cloud (VPC).
+	// * classic_internet: a public-facing SLB instance.
+	// * classic_intranet: an internal SLB instance that is deployed in a classic network.
 	AvailableSlbAddressType pulumi.StringPtrInput `pulumi:"availableSlbAddressType"`
 	// Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+	//
+	// Deprecated: The parameter enable_details has been deprecated from version v1.154.0+
 	EnableDetails pulumi.BoolPtrInput   `pulumi:"enableDetails"`
 	OutputFile    pulumi.StringPtrInput `pulumi:"outputFile"`
 }
@@ -115,6 +126,7 @@ func (o GetZonesResultOutput) AvailableSlbAddressType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZonesResult) *string { return v.AvailableSlbAddressType }).(pulumi.StringPtrOutput)
 }
 
+// Deprecated: The parameter enable_details has been deprecated from version v1.154.0+
 func (o GetZonesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetZonesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
 }

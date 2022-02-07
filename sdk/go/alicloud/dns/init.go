@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:dns/accessStrategy:AccessStrategy":
+		r = &AccessStrategy{}
+	case "alicloud:dns/addressPool:AddressPool":
+		r = &AddressPool{}
 	case "alicloud:dns/alidnsDomain:AlidnsDomain":
 		r = &AlidnsDomain{}
 	case "alicloud:dns/alidnsDomainAttachment:AlidnsDomainAttachment":
@@ -49,6 +53,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GtmInstance{}
 	case "alicloud:dns/instance:Instance":
 		r = &Instance{}
+	case "alicloud:dns/monitorConfig:MonitorConfig":
+		r = &MonitorConfig{}
 	case "alicloud:dns/record:Record":
 		r = &Record{}
 	default:
@@ -64,6 +70,16 @@ func init() {
 	if err != nil {
 		fmt.Printf("failed to determine package version. defaulting to v1: %v\n", err)
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dns/accessStrategy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dns/addressPool",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"dns/alidnsDomain",
@@ -132,6 +148,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"dns/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dns/monitorConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

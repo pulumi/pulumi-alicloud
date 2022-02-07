@@ -11,7 +11,7 @@ import (
 )
 
 type ConnectionIkeConfig struct {
-	// The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+	// The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 . Default value: md5
 	IkeAuthAlg *string `pulumi:"ikeAuthAlg"`
 	// The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes
 	IkeEncAlg *string `pulumi:"ikeEncAlg"`
@@ -43,7 +43,7 @@ type ConnectionIkeConfigInput interface {
 }
 
 type ConnectionIkeConfigArgs struct {
-	// The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+	// The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 . Default value: md5
 	IkeAuthAlg pulumi.StringPtrInput `pulumi:"ikeAuthAlg"`
 	// The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes
 	IkeEncAlg pulumi.StringPtrInput `pulumi:"ikeEncAlg"`
@@ -114,7 +114,7 @@ func (o ConnectionIkeConfigOutput) ToConnectionIkeConfigOutputWithContext(ctx co
 	return o
 }
 
-// The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+// The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 . Default value: md5
 func (o ConnectionIkeConfigOutput) IkeAuthAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionIkeConfig) *string { return v.IkeAuthAlg }).(pulumi.StringPtrOutput)
 }

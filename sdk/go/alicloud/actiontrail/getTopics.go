@@ -52,23 +52,37 @@ func GetTopics(ctx *pulumi.Context, args *GetTopicsArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getTopics.
 type GetTopicsArgs struct {
+	// A list of ALIKAFKA Topics IDs, It is formatted to `<instance_id>:<topic>`.
+	Ids []string `pulumi:"ids"`
+	// ID of the instance.
 	InstanceId string `pulumi:"instanceId"`
 	// A regex string to filter results by the topic name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
+	// A topic to filter results by the topic name.
+	Topic *string `pulumi:"topic"`
 }
 
 // A collection of values returned by getTopics.
 type GetTopicsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string  `pulumi:"id"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The instanceId of the instance.
 	InstanceId string  `pulumi:"instanceId"`
 	NameRegex  *string `pulumi:"nameRegex"`
 	// A list of topic names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+	PageNumber *int     `pulumi:"pageNumber"`
+	PageSize   *int     `pulumi:"pageSize"`
+	// The name of the topic.
+	Topic *string `pulumi:"topic"`
 	// A list of topics. Each element contains the following attributes:
-	Topics []GetTopicsTopic `pulumi:"topics"`
+	Topics     []GetTopicsTopic `pulumi:"topics"`
+	TotalCount int              `pulumi:"totalCount"`
 }
 
 func GetTopicsOutput(ctx *pulumi.Context, args GetTopicsOutputArgs, opts ...pulumi.InvokeOption) GetTopicsResultOutput {
@@ -82,10 +96,17 @@ func GetTopicsOutput(ctx *pulumi.Context, args GetTopicsOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getTopics.
 type GetTopicsOutputArgs struct {
+	// A list of ALIKAFKA Topics IDs, It is formatted to `<instance_id>:<topic>`.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// ID of the instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// A regex string to filter results by the topic name.
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
+	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
+	// A topic to filter results by the topic name.
+	Topic pulumi.StringPtrInput `pulumi:"topic"`
 }
 
 func (GetTopicsOutputArgs) ElementType() reflect.Type {
@@ -112,6 +133,11 @@ func (o GetTopicsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTopicsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+func (o GetTopicsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTopicsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// The instanceId of the instance.
 func (o GetTopicsResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTopicsResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -129,9 +155,26 @@ func (o GetTopicsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTopicsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+func (o GetTopicsResultOutput) PageNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetTopicsResult) *int { return v.PageNumber }).(pulumi.IntPtrOutput)
+}
+
+func (o GetTopicsResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetTopicsResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+// The name of the topic.
+func (o GetTopicsResultOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTopicsResult) *string { return v.Topic }).(pulumi.StringPtrOutput)
+}
+
 // A list of topics. Each element contains the following attributes:
 func (o GetTopicsResultOutput) Topics() GetTopicsTopicArrayOutput {
 	return o.ApplyT(func(v GetTopicsResult) []GetTopicsTopic { return v.Topics }).(GetTopicsTopicArrayOutput)
+}
+
+func (o GetTopicsResultOutput) TotalCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTopicsResult) int { return v.TotalCount }).(pulumi.IntOutput)
 }
 
 func init() {

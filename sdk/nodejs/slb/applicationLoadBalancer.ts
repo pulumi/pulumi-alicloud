@@ -5,44 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an Application Load Balancer resource.
- *
- * > **NOTE:** Available in 1.123.1+
- *
- * > **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create `PayByBandwidth` instance.
- *
- * > **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
- * For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/doc-detail/27657.htm).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraformtestslbconfig";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {vpcName: name});
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/21",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
- *     vswitchName: name,
- * });
- * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
- *     loadBalancerName: name,
- *     addressType: "intranet",
- *     loadBalancerSpec: "slb.s2.small",
- *     vswitchId: defaultSwitch.id,
- *     tags: {
- *         info: "create for internet",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Load balancer can be imported using the id, e.g.
@@ -80,7 +42,7 @@ export class ApplicationLoadBalancer extends pulumi.CustomResource {
     }
 
     /**
-     * Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
+     * Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the corresponding switch.
      */
     public readonly address!: pulumi.Output<string>;
     /**
@@ -102,6 +64,8 @@ export class ApplicationLoadBalancer extends pulumi.CustomResource {
      */
     public readonly deleteProtection!: pulumi.Output<string | undefined>;
     /**
+     * Field `instanceChargeType` has been deprecated from provider version 1.124.0 New field `paymentType` instead.
+     *
      * @deprecated Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.
      */
     public readonly instanceChargeType!: pulumi.Output<string>;
@@ -121,7 +85,7 @@ export class ApplicationLoadBalancer extends pulumi.CustomResource {
      */
     public readonly masterZoneId!: pulumi.Output<string>;
     /**
-     * The resource of modification protection. It's effective when modification protection is `ConsoleProtection`.
+     * The reason of modification protection. It's effective when `modificationProtectionStatus` is `ConsoleProtection`.
      */
     public readonly modificationProtectionReason!: pulumi.Output<string | undefined>;
     /**
@@ -129,6 +93,8 @@ export class ApplicationLoadBalancer extends pulumi.CustomResource {
      */
     public readonly modificationProtectionStatus!: pulumi.Output<string>;
     /**
+     * Field `name` has been deprecated from provider version 1.123.1 New field `loadBalancerName` instead.
+     *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead
      */
     public readonly name!: pulumi.Output<string>;
@@ -146,11 +112,13 @@ export class ApplicationLoadBalancer extends pulumi.CustomResource {
      */
     public readonly slaveZoneId!: pulumi.Output<string>;
     /**
+     * Field `specification` has been deprecated from provider version 1.123.1 New field `loadBalancerSpec` instead.
+     *
      * @deprecated Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
      */
     public readonly specification!: pulumi.Output<string>;
     /**
-     * The status of slb load balancer. Valid values: `actice` and `inactice`. The system default value is `active`.
+     * The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
      */
     public readonly status!: pulumi.Output<string>;
     /**
@@ -230,7 +198,7 @@ export class ApplicationLoadBalancer extends pulumi.CustomResource {
  */
 export interface ApplicationLoadBalancerState {
     /**
-     * Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
+     * Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the corresponding switch.
      */
     address?: pulumi.Input<string>;
     /**
@@ -252,6 +220,8 @@ export interface ApplicationLoadBalancerState {
      */
     deleteProtection?: pulumi.Input<string>;
     /**
+     * Field `instanceChargeType` has been deprecated from provider version 1.124.0 New field `paymentType` instead.
+     *
      * @deprecated Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.
      */
     instanceChargeType?: pulumi.Input<string>;
@@ -271,7 +241,7 @@ export interface ApplicationLoadBalancerState {
      */
     masterZoneId?: pulumi.Input<string>;
     /**
-     * The resource of modification protection. It's effective when modification protection is `ConsoleProtection`.
+     * The reason of modification protection. It's effective when `modificationProtectionStatus` is `ConsoleProtection`.
      */
     modificationProtectionReason?: pulumi.Input<string>;
     /**
@@ -279,6 +249,8 @@ export interface ApplicationLoadBalancerState {
      */
     modificationProtectionStatus?: pulumi.Input<string>;
     /**
+     * Field `name` has been deprecated from provider version 1.123.1 New field `loadBalancerName` instead.
+     *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead
      */
     name?: pulumi.Input<string>;
@@ -296,11 +268,13 @@ export interface ApplicationLoadBalancerState {
      */
     slaveZoneId?: pulumi.Input<string>;
     /**
+     * Field `specification` has been deprecated from provider version 1.123.1 New field `loadBalancerSpec` instead.
+     *
      * @deprecated Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
      */
     specification?: pulumi.Input<string>;
     /**
-     * The status of slb load balancer. Valid values: `actice` and `inactice`. The system default value is `active`.
+     * The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
      */
     status?: pulumi.Input<string>;
     /**
@@ -318,7 +292,7 @@ export interface ApplicationLoadBalancerState {
  */
 export interface ApplicationLoadBalancerArgs {
     /**
-     * Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
+     * Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the corresponding switch.
      */
     address?: pulumi.Input<string>;
     /**
@@ -340,6 +314,8 @@ export interface ApplicationLoadBalancerArgs {
      */
     deleteProtection?: pulumi.Input<string>;
     /**
+     * Field `instanceChargeType` has been deprecated from provider version 1.124.0 New field `paymentType` instead.
+     *
      * @deprecated Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.
      */
     instanceChargeType?: pulumi.Input<string>;
@@ -359,7 +335,7 @@ export interface ApplicationLoadBalancerArgs {
      */
     masterZoneId?: pulumi.Input<string>;
     /**
-     * The resource of modification protection. It's effective when modification protection is `ConsoleProtection`.
+     * The reason of modification protection. It's effective when `modificationProtectionStatus` is `ConsoleProtection`.
      */
     modificationProtectionReason?: pulumi.Input<string>;
     /**
@@ -367,6 +343,8 @@ export interface ApplicationLoadBalancerArgs {
      */
     modificationProtectionStatus?: pulumi.Input<string>;
     /**
+     * Field `name` has been deprecated from provider version 1.123.1 New field `loadBalancerName` instead.
+     *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead
      */
     name?: pulumi.Input<string>;
@@ -384,11 +362,13 @@ export interface ApplicationLoadBalancerArgs {
      */
     slaveZoneId?: pulumi.Input<string>;
     /**
+     * Field `specification` has been deprecated from provider version 1.123.1 New field `loadBalancerSpec` instead.
+     *
      * @deprecated Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
      */
     specification?: pulumi.Input<string>;
     /**
-     * The status of slb load balancer. Valid values: `actice` and `inactice`. The system default value is `active`.
+     * The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
      */
     status?: pulumi.Input<string>;
     /**

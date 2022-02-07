@@ -80,6 +80,9 @@ namespace Pulumi.AliCloud.Slb
         [Output("caCertificate")]
         public Output<string> Certificate { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the CA Certificate.
+        /// </summary>
         [Output("caCertificateName")]
         public Output<string> CaCertificateName { get; private set; } = null!;
 
@@ -153,6 +156,9 @@ namespace Pulumi.AliCloud.Slb
         [Input("caCertificate", required: true)]
         public Input<string> Certificate { get; set; } = null!;
 
+        /// <summary>
+        /// Name of the CA Certificate.
+        /// </summary>
         [Input("caCertificateName")]
         public Input<string>? CaCertificateName { get; set; }
 
@@ -193,6 +199,9 @@ namespace Pulumi.AliCloud.Slb
         [Input("caCertificate")]
         public Input<string>? Certificate { get; set; }
 
+        /// <summary>
+        /// Name of the CA Certificate.
+        /// </summary>
         [Input("caCertificateName")]
         public Input<string>? CaCertificateName { get; set; }
 

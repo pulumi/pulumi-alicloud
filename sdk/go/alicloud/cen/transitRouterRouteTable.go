@@ -35,10 +35,12 @@ type TransitRouterRouteTable struct {
 	TransitRouterId pulumi.StringOutput `pulumi:"transitRouterId"`
 	// The description of the transit router route table.
 	TransitRouterRouteTableDescription pulumi.StringOutput `pulumi:"transitRouterRouteTableDescription"`
-	TransitRouterRouteTableId          pulumi.StringOutput `pulumi:"transitRouterRouteTableId"`
+	// The id of the transit router route table.
+	TransitRouterRouteTableId pulumi.StringOutput `pulumi:"transitRouterRouteTableId"`
 	// The name of the transit router route table.
 	TransitRouterRouteTableName pulumi.StringPtrOutput `pulumi:"transitRouterRouteTableName"`
-	TransitRouterRouteTableType pulumi.StringOutput    `pulumi:"transitRouterRouteTableType"`
+	// The type of the transit router route table. Valid values: `Custom`, `System`.
+	TransitRouterRouteTableType pulumi.StringOutput `pulumi:"transitRouterRouteTableType"`
 }
 
 // NewTransitRouterRouteTable registers a new resource with the given unique name, arguments, and options.
@@ -81,9 +83,11 @@ type transitRouterRouteTableState struct {
 	TransitRouterId *string `pulumi:"transitRouterId"`
 	// The description of the transit router route table.
 	TransitRouterRouteTableDescription *string `pulumi:"transitRouterRouteTableDescription"`
-	TransitRouterRouteTableId          *string `pulumi:"transitRouterRouteTableId"`
+	// The id of the transit router route table.
+	TransitRouterRouteTableId *string `pulumi:"transitRouterRouteTableId"`
 	// The name of the transit router route table.
 	TransitRouterRouteTableName *string `pulumi:"transitRouterRouteTableName"`
+	// The type of the transit router route table. Valid values: `Custom`, `System`.
 	TransitRouterRouteTableType *string `pulumi:"transitRouterRouteTableType"`
 }
 
@@ -96,9 +100,11 @@ type TransitRouterRouteTableState struct {
 	TransitRouterId pulumi.StringPtrInput
 	// The description of the transit router route table.
 	TransitRouterRouteTableDescription pulumi.StringPtrInput
-	TransitRouterRouteTableId          pulumi.StringPtrInput
+	// The id of the transit router route table.
+	TransitRouterRouteTableId pulumi.StringPtrInput
 	// The name of the transit router route table.
 	TransitRouterRouteTableName pulumi.StringPtrInput
+	// The type of the transit router route table. Valid values: `Custom`, `System`.
 	TransitRouterRouteTableType pulumi.StringPtrInput
 }
 

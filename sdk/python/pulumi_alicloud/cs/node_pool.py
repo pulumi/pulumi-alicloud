@@ -2084,7 +2084,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scalingConfig")
-    def scaling_config(self) -> pulumi.Output['outputs.NodePoolScalingConfig']:
+    def scaling_config(self) -> pulumi.Output[Optional['outputs.NodePoolScalingConfig']]:
         """
         Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
         """

@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> KeyFile { get; private set; } = null!;
 
         /// <summary>
-        /// The key pair's name. It is the only in one Alicloud account.
+        /// Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
         /// </summary>
         [Output("keyName")]
         public Output<string> KeyName { get; private set; } = null!;
@@ -77,6 +77,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("keyNamePrefix")]
         public Output<string?> KeyNamePrefix { get; private set; } = null!;
 
+        /// <summary>
+        /// The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        /// </summary>
         [Output("keyPairName")]
         public Output<string> KeyPairName { get; private set; } = null!;
 
@@ -151,7 +154,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? KeyFile { get; set; }
 
         /// <summary>
-        /// The key pair's name. It is the only in one Alicloud account.
+        /// Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
@@ -159,6 +162,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("keyNamePrefix")]
         public Input<string>? KeyNamePrefix { get; set; }
 
+        /// <summary>
+        /// The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
 
@@ -203,7 +209,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? KeyFile { get; set; }
 
         /// <summary>
-        /// The key pair's name. It is the only in one Alicloud account.
+        /// Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
@@ -211,6 +217,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("keyNamePrefix")]
         public Input<string>? KeyNamePrefix { get; set; }
 
+        /// <summary>
+        /// The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
 

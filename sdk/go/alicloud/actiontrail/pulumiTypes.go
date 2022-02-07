@@ -10,6 +10,139 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetConsumerGroupsGroup struct {
+	// The name of the consumer group.
+	ConsumerId string `pulumi:"consumerId"`
+	// The ID of the consumer group, It is formatted to `<instance_id>:<consumer_id>`.
+	Id string `pulumi:"id"`
+	// ID of the ALIKAFKA Instance that owns the consumer groups.
+	InstanceId string `pulumi:"instanceId"`
+	// The remark of the consumer group.
+	Remark string `pulumi:"remark"`
+	// A mapping of tags to assign to the consumer group.
+	Tags map[string]interface{} `pulumi:"tags"`
+}
+
+// GetConsumerGroupsGroupInput is an input type that accepts GetConsumerGroupsGroupArgs and GetConsumerGroupsGroupOutput values.
+// You can construct a concrete instance of `GetConsumerGroupsGroupInput` via:
+//
+//          GetConsumerGroupsGroupArgs{...}
+type GetConsumerGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetConsumerGroupsGroupOutput() GetConsumerGroupsGroupOutput
+	ToGetConsumerGroupsGroupOutputWithContext(context.Context) GetConsumerGroupsGroupOutput
+}
+
+type GetConsumerGroupsGroupArgs struct {
+	// The name of the consumer group.
+	ConsumerId pulumi.StringInput `pulumi:"consumerId"`
+	// The ID of the consumer group, It is formatted to `<instance_id>:<consumer_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// ID of the ALIKAFKA Instance that owns the consumer groups.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The remark of the consumer group.
+	Remark pulumi.StringInput `pulumi:"remark"`
+	// A mapping of tags to assign to the consumer group.
+	Tags pulumi.MapInput `pulumi:"tags"`
+}
+
+func (GetConsumerGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConsumerGroupsGroup)(nil)).Elem()
+}
+
+func (i GetConsumerGroupsGroupArgs) ToGetConsumerGroupsGroupOutput() GetConsumerGroupsGroupOutput {
+	return i.ToGetConsumerGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetConsumerGroupsGroupArgs) ToGetConsumerGroupsGroupOutputWithContext(ctx context.Context) GetConsumerGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConsumerGroupsGroupOutput)
+}
+
+// GetConsumerGroupsGroupArrayInput is an input type that accepts GetConsumerGroupsGroupArray and GetConsumerGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetConsumerGroupsGroupArrayInput` via:
+//
+//          GetConsumerGroupsGroupArray{ GetConsumerGroupsGroupArgs{...} }
+type GetConsumerGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetConsumerGroupsGroupArrayOutput() GetConsumerGroupsGroupArrayOutput
+	ToGetConsumerGroupsGroupArrayOutputWithContext(context.Context) GetConsumerGroupsGroupArrayOutput
+}
+
+type GetConsumerGroupsGroupArray []GetConsumerGroupsGroupInput
+
+func (GetConsumerGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConsumerGroupsGroup)(nil)).Elem()
+}
+
+func (i GetConsumerGroupsGroupArray) ToGetConsumerGroupsGroupArrayOutput() GetConsumerGroupsGroupArrayOutput {
+	return i.ToGetConsumerGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetConsumerGroupsGroupArray) ToGetConsumerGroupsGroupArrayOutputWithContext(ctx context.Context) GetConsumerGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConsumerGroupsGroupArrayOutput)
+}
+
+type GetConsumerGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetConsumerGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConsumerGroupsGroup)(nil)).Elem()
+}
+
+func (o GetConsumerGroupsGroupOutput) ToGetConsumerGroupsGroupOutput() GetConsumerGroupsGroupOutput {
+	return o
+}
+
+func (o GetConsumerGroupsGroupOutput) ToGetConsumerGroupsGroupOutputWithContext(ctx context.Context) GetConsumerGroupsGroupOutput {
+	return o
+}
+
+// The name of the consumer group.
+func (o GetConsumerGroupsGroupOutput) ConsumerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerGroupsGroup) string { return v.ConsumerId }).(pulumi.StringOutput)
+}
+
+// The ID of the consumer group, It is formatted to `<instance_id>:<consumer_id>`.
+func (o GetConsumerGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// ID of the ALIKAFKA Instance that owns the consumer groups.
+func (o GetConsumerGroupsGroupOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerGroupsGroup) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The remark of the consumer group.
+func (o GetConsumerGroupsGroupOutput) Remark() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerGroupsGroup) string { return v.Remark }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the consumer group.
+func (o GetConsumerGroupsGroupOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetConsumerGroupsGroup) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+type GetConsumerGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConsumerGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConsumerGroupsGroup)(nil)).Elem()
+}
+
+func (o GetConsumerGroupsGroupArrayOutput) ToGetConsumerGroupsGroupArrayOutput() GetConsumerGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetConsumerGroupsGroupArrayOutput) ToGetConsumerGroupsGroupArrayOutputWithContext(ctx context.Context) GetConsumerGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetConsumerGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetConsumerGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConsumerGroupsGroup {
+		return vs[0].([]GetConsumerGroupsGroup)[vs[1].(int)]
+	}).(GetConsumerGroupsGroupOutput)
+}
+
 type GetHistoryDeliveryJobsJob struct {
 	// The time when the task was created.
 	CreateTime string `pulumi:"createTime"`
@@ -292,16 +425,20 @@ func (o GetHistoryDeliveryJobsJobJobStatusArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetInstancesInstance struct {
+	// The allowed list of the instance.
+	AllowedLists []GetInstancesInstanceAllowedList `pulumi:"allowedLists"`
 	// The config the instance.
 	Config string `pulumi:"config"`
 	// The create time of the instance.
 	CreateTime string `pulumi:"createTime"`
-	// The deploy type of the instance. 0: sharing instance, 1: vpc instance, 2: vpc instance(support ip mapping), 3: eip instance, 4: eip/vpc instance, 5: vpc instance.
+	// The deployed type of the instance.
 	DeployType int `pulumi:"deployType"`
 	// The disk size of the instance.
 	DiskSize int `pulumi:"diskSize"`
 	// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
 	DiskType int `pulumi:"diskType"`
+	// The domain point of the instance.
+	DomainEndpoint string `pulumi:"domainEndpoint"`
 	// The peak bandwidth of the instance.
 	EipMax int `pulumi:"eipMax"`
 	// The endPoint to access the instance.
@@ -318,6 +455,8 @@ type GetInstancesInstance struct {
 	Name string `pulumi:"name"`
 	// The paid type of the instance.
 	PaidType string `pulumi:"paidType"`
+	// The SASL domain point of the instance.
+	SaslDomainEndpoint string `pulumi:"saslDomainEndpoint"`
 	// The security group of the instance.
 	SecurityGroup string `pulumi:"securityGroup"`
 	// The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error.
@@ -326,10 +465,16 @@ type GetInstancesInstance struct {
 	ServiceVersion string `pulumi:"serviceVersion"`
 	// The spec type of the instance.
 	SpecType string `pulumi:"specType"`
+	// The SSL domain point of the instance.
+	SslDomainEndpoint string `pulumi:"sslDomainEndpoint"`
 	// The SSL end point of the instance.
 	SslEndPoint string `pulumi:"sslEndPoint"`
+	// A mapping of tags to assign to the instance.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The max num of topic can be create of the instance.
 	TopicQuota int `pulumi:"topicQuota"`
+	// The UpgradeServiceDetailInfo List.
+	UpgradeServiceDetailInfos []GetInstancesInstanceUpgradeServiceDetailInfo `pulumi:"upgradeServiceDetailInfos"`
 	// The ID of attaching VPC to instance.
 	VpcId string `pulumi:"vpcId"`
 	// The ID of attaching vswitch to instance.
@@ -350,16 +495,20 @@ type GetInstancesInstanceInput interface {
 }
 
 type GetInstancesInstanceArgs struct {
+	// The allowed list of the instance.
+	AllowedLists GetInstancesInstanceAllowedListArrayInput `pulumi:"allowedLists"`
 	// The config the instance.
 	Config pulumi.StringInput `pulumi:"config"`
 	// The create time of the instance.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// The deploy type of the instance. 0: sharing instance, 1: vpc instance, 2: vpc instance(support ip mapping), 3: eip instance, 4: eip/vpc instance, 5: vpc instance.
+	// The deployed type of the instance.
 	DeployType pulumi.IntInput `pulumi:"deployType"`
 	// The disk size of the instance.
 	DiskSize pulumi.IntInput `pulumi:"diskSize"`
 	// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
 	DiskType pulumi.IntInput `pulumi:"diskType"`
+	// The domain point of the instance.
+	DomainEndpoint pulumi.StringInput `pulumi:"domainEndpoint"`
 	// The peak bandwidth of the instance.
 	EipMax pulumi.IntInput `pulumi:"eipMax"`
 	// The endPoint to access the instance.
@@ -376,6 +525,8 @@ type GetInstancesInstanceArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The paid type of the instance.
 	PaidType pulumi.StringInput `pulumi:"paidType"`
+	// The SASL domain point of the instance.
+	SaslDomainEndpoint pulumi.StringInput `pulumi:"saslDomainEndpoint"`
 	// The security group of the instance.
 	SecurityGroup pulumi.StringInput `pulumi:"securityGroup"`
 	// The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error.
@@ -384,10 +535,16 @@ type GetInstancesInstanceArgs struct {
 	ServiceVersion pulumi.StringInput `pulumi:"serviceVersion"`
 	// The spec type of the instance.
 	SpecType pulumi.StringInput `pulumi:"specType"`
+	// The SSL domain point of the instance.
+	SslDomainEndpoint pulumi.StringInput `pulumi:"sslDomainEndpoint"`
 	// The SSL end point of the instance.
 	SslEndPoint pulumi.StringInput `pulumi:"sslEndPoint"`
+	// A mapping of tags to assign to the instance.
+	Tags pulumi.MapInput `pulumi:"tags"`
 	// The max num of topic can be create of the instance.
 	TopicQuota pulumi.IntInput `pulumi:"topicQuota"`
+	// The UpgradeServiceDetailInfo List.
+	UpgradeServiceDetailInfos GetInstancesInstanceUpgradeServiceDetailInfoArrayInput `pulumi:"upgradeServiceDetailInfos"`
 	// The ID of attaching VPC to instance.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// The ID of attaching vswitch to instance.
@@ -447,6 +604,11 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx 
 	return o
 }
 
+// The allowed list of the instance.
+func (o GetInstancesInstanceOutput) AllowedLists() GetInstancesInstanceAllowedListArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceAllowedList { return v.AllowedLists }).(GetInstancesInstanceAllowedListArrayOutput)
+}
+
 // The config the instance.
 func (o GetInstancesInstanceOutput) Config() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Config }).(pulumi.StringOutput)
@@ -457,7 +619,7 @@ func (o GetInstancesInstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The deploy type of the instance. 0: sharing instance, 1: vpc instance, 2: vpc instance(support ip mapping), 3: eip instance, 4: eip/vpc instance, 5: vpc instance.
+// The deployed type of the instance.
 func (o GetInstancesInstanceOutput) DeployType() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.DeployType }).(pulumi.IntOutput)
 }
@@ -470,6 +632,11 @@ func (o GetInstancesInstanceOutput) DiskSize() pulumi.IntOutput {
 // The disk type of the instance. 0: efficient cloud disk , 1: SSD.
 func (o GetInstancesInstanceOutput) DiskType() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.DiskType }).(pulumi.IntOutput)
+}
+
+// The domain point of the instance.
+func (o GetInstancesInstanceOutput) DomainEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.DomainEndpoint }).(pulumi.StringOutput)
 }
 
 // The peak bandwidth of the instance.
@@ -512,6 +679,11 @@ func (o GetInstancesInstanceOutput) PaidType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.PaidType }).(pulumi.StringOutput)
 }
 
+// The SASL domain point of the instance.
+func (o GetInstancesInstanceOutput) SaslDomainEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.SaslDomainEndpoint }).(pulumi.StringOutput)
+}
+
 // The security group of the instance.
 func (o GetInstancesInstanceOutput) SecurityGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.SecurityGroup }).(pulumi.StringOutput)
@@ -532,14 +704,31 @@ func (o GetInstancesInstanceOutput) SpecType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.SpecType }).(pulumi.StringOutput)
 }
 
+// The SSL domain point of the instance.
+func (o GetInstancesInstanceOutput) SslDomainEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.SslDomainEndpoint }).(pulumi.StringOutput)
+}
+
 // The SSL end point of the instance.
 func (o GetInstancesInstanceOutput) SslEndPoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.SslEndPoint }).(pulumi.StringOutput)
 }
 
+// A mapping of tags to assign to the instance.
+func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
 // The max num of topic can be create of the instance.
 func (o GetInstancesInstanceOutput) TopicQuota() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.TopicQuota }).(pulumi.IntOutput)
+}
+
+// The UpgradeServiceDetailInfo List.
+func (o GetInstancesInstanceOutput) UpgradeServiceDetailInfos() GetInstancesInstanceUpgradeServiceDetailInfoArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceUpgradeServiceDetailInfo {
+		return v.UpgradeServiceDetailInfos
+	}).(GetInstancesInstanceUpgradeServiceDetailInfoArrayOutput)
 }
 
 // The ID of attaching VPC to instance.
@@ -575,6 +764,432 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
 		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
 	}).(GetInstancesInstanceOutput)
+}
+
+type GetInstancesInstanceAllowedList struct {
+	// The deployed type of the instance.
+	DeployType string `pulumi:"deployType"`
+	// The internet list of the instance.
+	InternetLists []GetInstancesInstanceAllowedListInternetList `pulumi:"internetLists"`
+	// The vpc list of the instance.
+	VpcLists []GetInstancesInstanceAllowedListVpcList `pulumi:"vpcLists"`
+}
+
+// GetInstancesInstanceAllowedListInput is an input type that accepts GetInstancesInstanceAllowedListArgs and GetInstancesInstanceAllowedListOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceAllowedListInput` via:
+//
+//          GetInstancesInstanceAllowedListArgs{...}
+type GetInstancesInstanceAllowedListInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceAllowedListOutput() GetInstancesInstanceAllowedListOutput
+	ToGetInstancesInstanceAllowedListOutputWithContext(context.Context) GetInstancesInstanceAllowedListOutput
+}
+
+type GetInstancesInstanceAllowedListArgs struct {
+	// The deployed type of the instance.
+	DeployType pulumi.StringInput `pulumi:"deployType"`
+	// The internet list of the instance.
+	InternetLists GetInstancesInstanceAllowedListInternetListArrayInput `pulumi:"internetLists"`
+	// The vpc list of the instance.
+	VpcLists GetInstancesInstanceAllowedListVpcListArrayInput `pulumi:"vpcLists"`
+}
+
+func (GetInstancesInstanceAllowedListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceAllowedList)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceAllowedListArgs) ToGetInstancesInstanceAllowedListOutput() GetInstancesInstanceAllowedListOutput {
+	return i.ToGetInstancesInstanceAllowedListOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceAllowedListArgs) ToGetInstancesInstanceAllowedListOutputWithContext(ctx context.Context) GetInstancesInstanceAllowedListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceAllowedListOutput)
+}
+
+// GetInstancesInstanceAllowedListArrayInput is an input type that accepts GetInstancesInstanceAllowedListArray and GetInstancesInstanceAllowedListArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceAllowedListArrayInput` via:
+//
+//          GetInstancesInstanceAllowedListArray{ GetInstancesInstanceAllowedListArgs{...} }
+type GetInstancesInstanceAllowedListArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceAllowedListArrayOutput() GetInstancesInstanceAllowedListArrayOutput
+	ToGetInstancesInstanceAllowedListArrayOutputWithContext(context.Context) GetInstancesInstanceAllowedListArrayOutput
+}
+
+type GetInstancesInstanceAllowedListArray []GetInstancesInstanceAllowedListInput
+
+func (GetInstancesInstanceAllowedListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceAllowedList)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceAllowedListArray) ToGetInstancesInstanceAllowedListArrayOutput() GetInstancesInstanceAllowedListArrayOutput {
+	return i.ToGetInstancesInstanceAllowedListArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceAllowedListArray) ToGetInstancesInstanceAllowedListArrayOutputWithContext(ctx context.Context) GetInstancesInstanceAllowedListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceAllowedListArrayOutput)
+}
+
+type GetInstancesInstanceAllowedListOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceAllowedListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceAllowedList)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceAllowedListOutput) ToGetInstancesInstanceAllowedListOutput() GetInstancesInstanceAllowedListOutput {
+	return o
+}
+
+func (o GetInstancesInstanceAllowedListOutput) ToGetInstancesInstanceAllowedListOutputWithContext(ctx context.Context) GetInstancesInstanceAllowedListOutput {
+	return o
+}
+
+// The deployed type of the instance.
+func (o GetInstancesInstanceAllowedListOutput) DeployType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceAllowedList) string { return v.DeployType }).(pulumi.StringOutput)
+}
+
+// The internet list of the instance.
+func (o GetInstancesInstanceAllowedListOutput) InternetLists() GetInstancesInstanceAllowedListInternetListArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstanceAllowedList) []GetInstancesInstanceAllowedListInternetList {
+		return v.InternetLists
+	}).(GetInstancesInstanceAllowedListInternetListArrayOutput)
+}
+
+// The vpc list of the instance.
+func (o GetInstancesInstanceAllowedListOutput) VpcLists() GetInstancesInstanceAllowedListVpcListArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstanceAllowedList) []GetInstancesInstanceAllowedListVpcList { return v.VpcLists }).(GetInstancesInstanceAllowedListVpcListArrayOutput)
+}
+
+type GetInstancesInstanceAllowedListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceAllowedListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceAllowedList)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceAllowedListArrayOutput) ToGetInstancesInstanceAllowedListArrayOutput() GetInstancesInstanceAllowedListArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceAllowedListArrayOutput) ToGetInstancesInstanceAllowedListArrayOutputWithContext(ctx context.Context) GetInstancesInstanceAllowedListArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceAllowedListArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceAllowedListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstanceAllowedList {
+		return vs[0].([]GetInstancesInstanceAllowedList)[vs[1].(int)]
+	}).(GetInstancesInstanceAllowedListOutput)
+}
+
+type GetInstancesInstanceAllowedListInternetList struct {
+	// The allowed ip list of the internet_list.
+	AllowedIpLists []string `pulumi:"allowedIpLists"`
+	// The port range of the internet_list.
+	PortRange string `pulumi:"portRange"`
+}
+
+// GetInstancesInstanceAllowedListInternetListInput is an input type that accepts GetInstancesInstanceAllowedListInternetListArgs and GetInstancesInstanceAllowedListInternetListOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceAllowedListInternetListInput` via:
+//
+//          GetInstancesInstanceAllowedListInternetListArgs{...}
+type GetInstancesInstanceAllowedListInternetListInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceAllowedListInternetListOutput() GetInstancesInstanceAllowedListInternetListOutput
+	ToGetInstancesInstanceAllowedListInternetListOutputWithContext(context.Context) GetInstancesInstanceAllowedListInternetListOutput
+}
+
+type GetInstancesInstanceAllowedListInternetListArgs struct {
+	// The allowed ip list of the internet_list.
+	AllowedIpLists pulumi.StringArrayInput `pulumi:"allowedIpLists"`
+	// The port range of the internet_list.
+	PortRange pulumi.StringInput `pulumi:"portRange"`
+}
+
+func (GetInstancesInstanceAllowedListInternetListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceAllowedListInternetList)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceAllowedListInternetListArgs) ToGetInstancesInstanceAllowedListInternetListOutput() GetInstancesInstanceAllowedListInternetListOutput {
+	return i.ToGetInstancesInstanceAllowedListInternetListOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceAllowedListInternetListArgs) ToGetInstancesInstanceAllowedListInternetListOutputWithContext(ctx context.Context) GetInstancesInstanceAllowedListInternetListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceAllowedListInternetListOutput)
+}
+
+// GetInstancesInstanceAllowedListInternetListArrayInput is an input type that accepts GetInstancesInstanceAllowedListInternetListArray and GetInstancesInstanceAllowedListInternetListArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceAllowedListInternetListArrayInput` via:
+//
+//          GetInstancesInstanceAllowedListInternetListArray{ GetInstancesInstanceAllowedListInternetListArgs{...} }
+type GetInstancesInstanceAllowedListInternetListArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceAllowedListInternetListArrayOutput() GetInstancesInstanceAllowedListInternetListArrayOutput
+	ToGetInstancesInstanceAllowedListInternetListArrayOutputWithContext(context.Context) GetInstancesInstanceAllowedListInternetListArrayOutput
+}
+
+type GetInstancesInstanceAllowedListInternetListArray []GetInstancesInstanceAllowedListInternetListInput
+
+func (GetInstancesInstanceAllowedListInternetListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceAllowedListInternetList)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceAllowedListInternetListArray) ToGetInstancesInstanceAllowedListInternetListArrayOutput() GetInstancesInstanceAllowedListInternetListArrayOutput {
+	return i.ToGetInstancesInstanceAllowedListInternetListArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceAllowedListInternetListArray) ToGetInstancesInstanceAllowedListInternetListArrayOutputWithContext(ctx context.Context) GetInstancesInstanceAllowedListInternetListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceAllowedListInternetListArrayOutput)
+}
+
+type GetInstancesInstanceAllowedListInternetListOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceAllowedListInternetListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceAllowedListInternetList)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceAllowedListInternetListOutput) ToGetInstancesInstanceAllowedListInternetListOutput() GetInstancesInstanceAllowedListInternetListOutput {
+	return o
+}
+
+func (o GetInstancesInstanceAllowedListInternetListOutput) ToGetInstancesInstanceAllowedListInternetListOutputWithContext(ctx context.Context) GetInstancesInstanceAllowedListInternetListOutput {
+	return o
+}
+
+// The allowed ip list of the internet_list.
+func (o GetInstancesInstanceAllowedListInternetListOutput) AllowedIpLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstanceAllowedListInternetList) []string { return v.AllowedIpLists }).(pulumi.StringArrayOutput)
+}
+
+// The port range of the internet_list.
+func (o GetInstancesInstanceAllowedListInternetListOutput) PortRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceAllowedListInternetList) string { return v.PortRange }).(pulumi.StringOutput)
+}
+
+type GetInstancesInstanceAllowedListInternetListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceAllowedListInternetListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceAllowedListInternetList)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceAllowedListInternetListArrayOutput) ToGetInstancesInstanceAllowedListInternetListArrayOutput() GetInstancesInstanceAllowedListInternetListArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceAllowedListInternetListArrayOutput) ToGetInstancesInstanceAllowedListInternetListArrayOutputWithContext(ctx context.Context) GetInstancesInstanceAllowedListInternetListArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceAllowedListInternetListArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceAllowedListInternetListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstanceAllowedListInternetList {
+		return vs[0].([]GetInstancesInstanceAllowedListInternetList)[vs[1].(int)]
+	}).(GetInstancesInstanceAllowedListInternetListOutput)
+}
+
+type GetInstancesInstanceAllowedListVpcList struct {
+	// The allowed ip list of the internet_list.
+	AllowedIpLists []string `pulumi:"allowedIpLists"`
+	// The port range of the internet_list.
+	PortRange string `pulumi:"portRange"`
+}
+
+// GetInstancesInstanceAllowedListVpcListInput is an input type that accepts GetInstancesInstanceAllowedListVpcListArgs and GetInstancesInstanceAllowedListVpcListOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceAllowedListVpcListInput` via:
+//
+//          GetInstancesInstanceAllowedListVpcListArgs{...}
+type GetInstancesInstanceAllowedListVpcListInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceAllowedListVpcListOutput() GetInstancesInstanceAllowedListVpcListOutput
+	ToGetInstancesInstanceAllowedListVpcListOutputWithContext(context.Context) GetInstancesInstanceAllowedListVpcListOutput
+}
+
+type GetInstancesInstanceAllowedListVpcListArgs struct {
+	// The allowed ip list of the internet_list.
+	AllowedIpLists pulumi.StringArrayInput `pulumi:"allowedIpLists"`
+	// The port range of the internet_list.
+	PortRange pulumi.StringInput `pulumi:"portRange"`
+}
+
+func (GetInstancesInstanceAllowedListVpcListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceAllowedListVpcList)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceAllowedListVpcListArgs) ToGetInstancesInstanceAllowedListVpcListOutput() GetInstancesInstanceAllowedListVpcListOutput {
+	return i.ToGetInstancesInstanceAllowedListVpcListOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceAllowedListVpcListArgs) ToGetInstancesInstanceAllowedListVpcListOutputWithContext(ctx context.Context) GetInstancesInstanceAllowedListVpcListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceAllowedListVpcListOutput)
+}
+
+// GetInstancesInstanceAllowedListVpcListArrayInput is an input type that accepts GetInstancesInstanceAllowedListVpcListArray and GetInstancesInstanceAllowedListVpcListArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceAllowedListVpcListArrayInput` via:
+//
+//          GetInstancesInstanceAllowedListVpcListArray{ GetInstancesInstanceAllowedListVpcListArgs{...} }
+type GetInstancesInstanceAllowedListVpcListArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceAllowedListVpcListArrayOutput() GetInstancesInstanceAllowedListVpcListArrayOutput
+	ToGetInstancesInstanceAllowedListVpcListArrayOutputWithContext(context.Context) GetInstancesInstanceAllowedListVpcListArrayOutput
+}
+
+type GetInstancesInstanceAllowedListVpcListArray []GetInstancesInstanceAllowedListVpcListInput
+
+func (GetInstancesInstanceAllowedListVpcListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceAllowedListVpcList)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceAllowedListVpcListArray) ToGetInstancesInstanceAllowedListVpcListArrayOutput() GetInstancesInstanceAllowedListVpcListArrayOutput {
+	return i.ToGetInstancesInstanceAllowedListVpcListArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceAllowedListVpcListArray) ToGetInstancesInstanceAllowedListVpcListArrayOutputWithContext(ctx context.Context) GetInstancesInstanceAllowedListVpcListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceAllowedListVpcListArrayOutput)
+}
+
+type GetInstancesInstanceAllowedListVpcListOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceAllowedListVpcListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceAllowedListVpcList)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceAllowedListVpcListOutput) ToGetInstancesInstanceAllowedListVpcListOutput() GetInstancesInstanceAllowedListVpcListOutput {
+	return o
+}
+
+func (o GetInstancesInstanceAllowedListVpcListOutput) ToGetInstancesInstanceAllowedListVpcListOutputWithContext(ctx context.Context) GetInstancesInstanceAllowedListVpcListOutput {
+	return o
+}
+
+// The allowed ip list of the internet_list.
+func (o GetInstancesInstanceAllowedListVpcListOutput) AllowedIpLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstanceAllowedListVpcList) []string { return v.AllowedIpLists }).(pulumi.StringArrayOutput)
+}
+
+// The port range of the internet_list.
+func (o GetInstancesInstanceAllowedListVpcListOutput) PortRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceAllowedListVpcList) string { return v.PortRange }).(pulumi.StringOutput)
+}
+
+type GetInstancesInstanceAllowedListVpcListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceAllowedListVpcListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceAllowedListVpcList)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceAllowedListVpcListArrayOutput) ToGetInstancesInstanceAllowedListVpcListArrayOutput() GetInstancesInstanceAllowedListVpcListArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceAllowedListVpcListArrayOutput) ToGetInstancesInstanceAllowedListVpcListArrayOutputWithContext(ctx context.Context) GetInstancesInstanceAllowedListVpcListArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceAllowedListVpcListArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceAllowedListVpcListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstanceAllowedListVpcList {
+		return vs[0].([]GetInstancesInstanceAllowedListVpcList)[vs[1].(int)]
+	}).(GetInstancesInstanceAllowedListVpcListOutput)
+}
+
+type GetInstancesInstanceUpgradeServiceDetailInfo struct {
+	// The Current2OpenSourceVersion of the instance.
+	Current2OpenSourceVersion string `pulumi:"current2OpenSourceVersion"`
+}
+
+// GetInstancesInstanceUpgradeServiceDetailInfoInput is an input type that accepts GetInstancesInstanceUpgradeServiceDetailInfoArgs and GetInstancesInstanceUpgradeServiceDetailInfoOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceUpgradeServiceDetailInfoInput` via:
+//
+//          GetInstancesInstanceUpgradeServiceDetailInfoArgs{...}
+type GetInstancesInstanceUpgradeServiceDetailInfoInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceUpgradeServiceDetailInfoOutput() GetInstancesInstanceUpgradeServiceDetailInfoOutput
+	ToGetInstancesInstanceUpgradeServiceDetailInfoOutputWithContext(context.Context) GetInstancesInstanceUpgradeServiceDetailInfoOutput
+}
+
+type GetInstancesInstanceUpgradeServiceDetailInfoArgs struct {
+	// The Current2OpenSourceVersion of the instance.
+	Current2OpenSourceVersion pulumi.StringInput `pulumi:"current2OpenSourceVersion"`
+}
+
+func (GetInstancesInstanceUpgradeServiceDetailInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceUpgradeServiceDetailInfo)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceUpgradeServiceDetailInfoArgs) ToGetInstancesInstanceUpgradeServiceDetailInfoOutput() GetInstancesInstanceUpgradeServiceDetailInfoOutput {
+	return i.ToGetInstancesInstanceUpgradeServiceDetailInfoOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceUpgradeServiceDetailInfoArgs) ToGetInstancesInstanceUpgradeServiceDetailInfoOutputWithContext(ctx context.Context) GetInstancesInstanceUpgradeServiceDetailInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceUpgradeServiceDetailInfoOutput)
+}
+
+// GetInstancesInstanceUpgradeServiceDetailInfoArrayInput is an input type that accepts GetInstancesInstanceUpgradeServiceDetailInfoArray and GetInstancesInstanceUpgradeServiceDetailInfoArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceUpgradeServiceDetailInfoArrayInput` via:
+//
+//          GetInstancesInstanceUpgradeServiceDetailInfoArray{ GetInstancesInstanceUpgradeServiceDetailInfoArgs{...} }
+type GetInstancesInstanceUpgradeServiceDetailInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceUpgradeServiceDetailInfoArrayOutput() GetInstancesInstanceUpgradeServiceDetailInfoArrayOutput
+	ToGetInstancesInstanceUpgradeServiceDetailInfoArrayOutputWithContext(context.Context) GetInstancesInstanceUpgradeServiceDetailInfoArrayOutput
+}
+
+type GetInstancesInstanceUpgradeServiceDetailInfoArray []GetInstancesInstanceUpgradeServiceDetailInfoInput
+
+func (GetInstancesInstanceUpgradeServiceDetailInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceUpgradeServiceDetailInfo)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceUpgradeServiceDetailInfoArray) ToGetInstancesInstanceUpgradeServiceDetailInfoArrayOutput() GetInstancesInstanceUpgradeServiceDetailInfoArrayOutput {
+	return i.ToGetInstancesInstanceUpgradeServiceDetailInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceUpgradeServiceDetailInfoArray) ToGetInstancesInstanceUpgradeServiceDetailInfoArrayOutputWithContext(ctx context.Context) GetInstancesInstanceUpgradeServiceDetailInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceUpgradeServiceDetailInfoArrayOutput)
+}
+
+type GetInstancesInstanceUpgradeServiceDetailInfoOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceUpgradeServiceDetailInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceUpgradeServiceDetailInfo)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceUpgradeServiceDetailInfoOutput) ToGetInstancesInstanceUpgradeServiceDetailInfoOutput() GetInstancesInstanceUpgradeServiceDetailInfoOutput {
+	return o
+}
+
+func (o GetInstancesInstanceUpgradeServiceDetailInfoOutput) ToGetInstancesInstanceUpgradeServiceDetailInfoOutputWithContext(ctx context.Context) GetInstancesInstanceUpgradeServiceDetailInfoOutput {
+	return o
+}
+
+// The Current2OpenSourceVersion of the instance.
+func (o GetInstancesInstanceUpgradeServiceDetailInfoOutput) Current2OpenSourceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceUpgradeServiceDetailInfo) string { return v.Current2OpenSourceVersion }).(pulumi.StringOutput)
+}
+
+type GetInstancesInstanceUpgradeServiceDetailInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceUpgradeServiceDetailInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceUpgradeServiceDetailInfo)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceUpgradeServiceDetailInfoArrayOutput) ToGetInstancesInstanceUpgradeServiceDetailInfoArrayOutput() GetInstancesInstanceUpgradeServiceDetailInfoArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceUpgradeServiceDetailInfoArrayOutput) ToGetInstancesInstanceUpgradeServiceDetailInfoArrayOutputWithContext(ctx context.Context) GetInstancesInstanceUpgradeServiceDetailInfoArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceUpgradeServiceDetailInfoArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceUpgradeServiceDetailInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstanceUpgradeServiceDetailInfo {
+		return vs[0].([]GetInstancesInstanceUpgradeServiceDetailInfo)[vs[1].(int)]
+	}).(GetInstancesInstanceUpgradeServiceDetailInfoOutput)
 }
 
 type GetSaslAclsAcl struct {
@@ -830,6 +1445,10 @@ type GetTopicsTopic struct {
 	CompactTopic bool `pulumi:"compactTopic"`
 	// Time of creation.
 	CreateTime string `pulumi:"createTime"`
+	// The ID of the topic, It is formatted to `<instance_id>:<topic>`.
+	Id string `pulumi:"id"`
+	// ID of the instance.
+	InstanceId string `pulumi:"instanceId"`
 	// whether the current topic is kafka local topic or not.
 	LocalTopic bool `pulumi:"localTopic"`
 	// Partition number of the topic.
@@ -838,7 +1457,11 @@ type GetTopicsTopic struct {
 	Remark string `pulumi:"remark"`
 	// The current status code of the topic. There are three values to describe the topic status: 0 stands for the topic is in service, 1 stands for freezing and 2 stands for pause.
 	Status int `pulumi:"status"`
-	// The name of the topic.
+	// The statusName of the topic.
+	StatusName string `pulumi:"statusName"`
+	// A mapping of tags to assign to the topic.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// A topic to filter results by the topic name.
 	Topic string `pulumi:"topic"`
 }
 
@@ -858,6 +1481,10 @@ type GetTopicsTopicArgs struct {
 	CompactTopic pulumi.BoolInput `pulumi:"compactTopic"`
 	// Time of creation.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the topic, It is formatted to `<instance_id>:<topic>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// ID of the instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// whether the current topic is kafka local topic or not.
 	LocalTopic pulumi.BoolInput `pulumi:"localTopic"`
 	// Partition number of the topic.
@@ -866,7 +1493,11 @@ type GetTopicsTopicArgs struct {
 	Remark pulumi.StringInput `pulumi:"remark"`
 	// The current status code of the topic. There are three values to describe the topic status: 0 stands for the topic is in service, 1 stands for freezing and 2 stands for pause.
 	Status pulumi.IntInput `pulumi:"status"`
-	// The name of the topic.
+	// The statusName of the topic.
+	StatusName pulumi.StringInput `pulumi:"statusName"`
+	// A mapping of tags to assign to the topic.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// A topic to filter results by the topic name.
 	Topic pulumi.StringInput `pulumi:"topic"`
 }
 
@@ -931,6 +1562,16 @@ func (o GetTopicsTopicOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTopicsTopic) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The ID of the topic, It is formatted to `<instance_id>:<topic>`.
+func (o GetTopicsTopicOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicsTopic) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// ID of the instance.
+func (o GetTopicsTopicOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicsTopic) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
 // whether the current topic is kafka local topic or not.
 func (o GetTopicsTopicOutput) LocalTopic() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTopicsTopic) bool { return v.LocalTopic }).(pulumi.BoolOutput)
@@ -951,7 +1592,17 @@ func (o GetTopicsTopicOutput) Status() pulumi.IntOutput {
 	return o.ApplyT(func(v GetTopicsTopic) int { return v.Status }).(pulumi.IntOutput)
 }
 
-// The name of the topic.
+// The statusName of the topic.
+func (o GetTopicsTopicOutput) StatusName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicsTopic) string { return v.StatusName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the topic.
+func (o GetTopicsTopicOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetTopicsTopic) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// A topic to filter results by the topic name.
 func (o GetTopicsTopicOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTopicsTopic) string { return v.Topic }).(pulumi.StringOutput)
 }
@@ -1677,12 +2328,22 @@ func (o GetTrailsTrailArrayOutput) Index(i pulumi.IntInput) GetTrailsTrailOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConsumerGroupsGroupInput)(nil)).Elem(), GetConsumerGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConsumerGroupsGroupArrayInput)(nil)).Elem(), GetConsumerGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHistoryDeliveryJobsJobInput)(nil)).Elem(), GetHistoryDeliveryJobsJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHistoryDeliveryJobsJobArrayInput)(nil)).Elem(), GetHistoryDeliveryJobsJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHistoryDeliveryJobsJobJobStatusInput)(nil)).Elem(), GetHistoryDeliveryJobsJobJobStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHistoryDeliveryJobsJobJobStatusArrayInput)(nil)).Elem(), GetHistoryDeliveryJobsJobJobStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceAllowedListInput)(nil)).Elem(), GetInstancesInstanceAllowedListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceAllowedListArrayInput)(nil)).Elem(), GetInstancesInstanceAllowedListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceAllowedListInternetListInput)(nil)).Elem(), GetInstancesInstanceAllowedListInternetListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceAllowedListInternetListArrayInput)(nil)).Elem(), GetInstancesInstanceAllowedListInternetListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceAllowedListVpcListInput)(nil)).Elem(), GetInstancesInstanceAllowedListVpcListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceAllowedListVpcListArrayInput)(nil)).Elem(), GetInstancesInstanceAllowedListVpcListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceUpgradeServiceDetailInfoInput)(nil)).Elem(), GetInstancesInstanceUpgradeServiceDetailInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceUpgradeServiceDetailInfoArrayInput)(nil)).Elem(), GetInstancesInstanceUpgradeServiceDetailInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSaslAclsAclInput)(nil)).Elem(), GetSaslAclsAclArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSaslAclsAclArrayInput)(nil)).Elem(), GetSaslAclsAclArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSaslUsersUserInput)(nil)).Elem(), GetSaslUsersUserArgs{})
@@ -1697,12 +2358,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTrailsDeprecatedTrailArrayInput)(nil)).Elem(), GetTrailsDeprecatedTrailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTrailsTrailInput)(nil)).Elem(), GetTrailsTrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTrailsTrailArrayInput)(nil)).Elem(), GetTrailsTrailArray{})
+	pulumi.RegisterOutputType(GetConsumerGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetConsumerGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetHistoryDeliveryJobsJobOutput{})
 	pulumi.RegisterOutputType(GetHistoryDeliveryJobsJobArrayOutput{})
 	pulumi.RegisterOutputType(GetHistoryDeliveryJobsJobJobStatusOutput{})
 	pulumi.RegisterOutputType(GetHistoryDeliveryJobsJobJobStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceAllowedListOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceAllowedListArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceAllowedListInternetListOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceAllowedListInternetListArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceAllowedListVpcListOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceAllowedListVpcListArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceUpgradeServiceDetailInfoOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceUpgradeServiceDetailInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetSaslAclsAclOutput{})
 	pulumi.RegisterOutputType(GetSaslAclsAclArrayOutput{})
 	pulumi.RegisterOutputType(GetSaslUsersUserOutput{})

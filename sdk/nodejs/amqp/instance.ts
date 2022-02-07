@@ -81,7 +81,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The instance name.
      */
-    public readonly instanceName!: pulumi.Output<string | undefined>;
+    public readonly instanceName!: pulumi.Output<string>;
     /**
      * The Instance Type. Valid values: `professional`, `vip`.
      */

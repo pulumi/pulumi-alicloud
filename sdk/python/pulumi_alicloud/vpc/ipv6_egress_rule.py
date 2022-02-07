@@ -218,6 +218,32 @@ class Ipv6EgressRule(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.142.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="example_value",
+            enable_ipv6=True)
+        example_ipv6_gateway = alicloud.vpc.Ipv6Gateway("exampleIpv6Gateway",
+            ipv6_gateway_name="example_value",
+            vpc_id=default_network.id)
+        default_instances = alicloud.ecs.get_instances(name_regex="ecs_with_ipv6_address",
+            status="Running")
+        default_ipv6_addresses = alicloud.vpc.get_ipv6_addresses(associated_instance_id=default_instances.instances[0].id,
+            status="Available")
+        example_ipv6_egress_rule = alicloud.vpc.Ipv6EgressRule("exampleIpv6EgressRule",
+            instance_id=default_ipv6_addresses.ids[0],
+            ipv6_egress_rule_name="example_value",
+            description="example_value",
+            ipv6_gateway_id=example_ipv6_gateway.id,
+            instance_type="Ipv6Address")
+        ```
+
         ## Import
 
         VPC Ipv6 Egress Rule can be imported using the id, e.g.
@@ -246,6 +272,32 @@ class Ipv6EgressRule(pulumi.CustomResource):
         For information about VPC Ipv6 Egress Rule and how to use it, see [What is Ipv6 Egress Rule](https://www.alibabacloud.com/help/doc-detail/102200.htm).
 
         > **NOTE:** Available in v1.142.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="example_value",
+            enable_ipv6=True)
+        example_ipv6_gateway = alicloud.vpc.Ipv6Gateway("exampleIpv6Gateway",
+            ipv6_gateway_name="example_value",
+            vpc_id=default_network.id)
+        default_instances = alicloud.ecs.get_instances(name_regex="ecs_with_ipv6_address",
+            status="Running")
+        default_ipv6_addresses = alicloud.vpc.get_ipv6_addresses(associated_instance_id=default_instances.instances[0].id,
+            status="Available")
+        example_ipv6_egress_rule = alicloud.vpc.Ipv6EgressRule("exampleIpv6EgressRule",
+            instance_id=default_ipv6_addresses.ids[0],
+            ipv6_egress_rule_name="example_value",
+            description="example_value",
+            ipv6_gateway_id=example_ipv6_gateway.id,
+            instance_type="Ipv6Address")
+        ```
 
         ## Import
 

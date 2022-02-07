@@ -1622,6 +1622,103 @@ func (o GetOssBackupPlansPlanArrayOutput) Index(i pulumi.IntInput) GetOssBackupP
 	}).(GetOssBackupPlansPlanOutput)
 }
 
+type GetReplicationVaultRegionsRegion struct {
+	// The ID of the replication region.
+	ReplicationRegionId string `pulumi:"replicationRegionId"`
+}
+
+// GetReplicationVaultRegionsRegionInput is an input type that accepts GetReplicationVaultRegionsRegionArgs and GetReplicationVaultRegionsRegionOutput values.
+// You can construct a concrete instance of `GetReplicationVaultRegionsRegionInput` via:
+//
+//          GetReplicationVaultRegionsRegionArgs{...}
+type GetReplicationVaultRegionsRegionInput interface {
+	pulumi.Input
+
+	ToGetReplicationVaultRegionsRegionOutput() GetReplicationVaultRegionsRegionOutput
+	ToGetReplicationVaultRegionsRegionOutputWithContext(context.Context) GetReplicationVaultRegionsRegionOutput
+}
+
+type GetReplicationVaultRegionsRegionArgs struct {
+	// The ID of the replication region.
+	ReplicationRegionId pulumi.StringInput `pulumi:"replicationRegionId"`
+}
+
+func (GetReplicationVaultRegionsRegionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReplicationVaultRegionsRegion)(nil)).Elem()
+}
+
+func (i GetReplicationVaultRegionsRegionArgs) ToGetReplicationVaultRegionsRegionOutput() GetReplicationVaultRegionsRegionOutput {
+	return i.ToGetReplicationVaultRegionsRegionOutputWithContext(context.Background())
+}
+
+func (i GetReplicationVaultRegionsRegionArgs) ToGetReplicationVaultRegionsRegionOutputWithContext(ctx context.Context) GetReplicationVaultRegionsRegionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReplicationVaultRegionsRegionOutput)
+}
+
+// GetReplicationVaultRegionsRegionArrayInput is an input type that accepts GetReplicationVaultRegionsRegionArray and GetReplicationVaultRegionsRegionArrayOutput values.
+// You can construct a concrete instance of `GetReplicationVaultRegionsRegionArrayInput` via:
+//
+//          GetReplicationVaultRegionsRegionArray{ GetReplicationVaultRegionsRegionArgs{...} }
+type GetReplicationVaultRegionsRegionArrayInput interface {
+	pulumi.Input
+
+	ToGetReplicationVaultRegionsRegionArrayOutput() GetReplicationVaultRegionsRegionArrayOutput
+	ToGetReplicationVaultRegionsRegionArrayOutputWithContext(context.Context) GetReplicationVaultRegionsRegionArrayOutput
+}
+
+type GetReplicationVaultRegionsRegionArray []GetReplicationVaultRegionsRegionInput
+
+func (GetReplicationVaultRegionsRegionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReplicationVaultRegionsRegion)(nil)).Elem()
+}
+
+func (i GetReplicationVaultRegionsRegionArray) ToGetReplicationVaultRegionsRegionArrayOutput() GetReplicationVaultRegionsRegionArrayOutput {
+	return i.ToGetReplicationVaultRegionsRegionArrayOutputWithContext(context.Background())
+}
+
+func (i GetReplicationVaultRegionsRegionArray) ToGetReplicationVaultRegionsRegionArrayOutputWithContext(ctx context.Context) GetReplicationVaultRegionsRegionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReplicationVaultRegionsRegionArrayOutput)
+}
+
+type GetReplicationVaultRegionsRegionOutput struct{ *pulumi.OutputState }
+
+func (GetReplicationVaultRegionsRegionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReplicationVaultRegionsRegion)(nil)).Elem()
+}
+
+func (o GetReplicationVaultRegionsRegionOutput) ToGetReplicationVaultRegionsRegionOutput() GetReplicationVaultRegionsRegionOutput {
+	return o
+}
+
+func (o GetReplicationVaultRegionsRegionOutput) ToGetReplicationVaultRegionsRegionOutputWithContext(ctx context.Context) GetReplicationVaultRegionsRegionOutput {
+	return o
+}
+
+// The ID of the replication region.
+func (o GetReplicationVaultRegionsRegionOutput) ReplicationRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReplicationVaultRegionsRegion) string { return v.ReplicationRegionId }).(pulumi.StringOutput)
+}
+
+type GetReplicationVaultRegionsRegionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReplicationVaultRegionsRegionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReplicationVaultRegionsRegion)(nil)).Elem()
+}
+
+func (o GetReplicationVaultRegionsRegionArrayOutput) ToGetReplicationVaultRegionsRegionArrayOutput() GetReplicationVaultRegionsRegionArrayOutput {
+	return o
+}
+
+func (o GetReplicationVaultRegionsRegionArrayOutput) ToGetReplicationVaultRegionsRegionArrayOutputWithContext(ctx context.Context) GetReplicationVaultRegionsRegionArrayOutput {
+	return o
+}
+
+func (o GetReplicationVaultRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetReplicationVaultRegionsRegionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReplicationVaultRegionsRegion {
+		return vs[0].([]GetReplicationVaultRegionsRegion)[vs[1].(int)]
+	}).(GetReplicationVaultRegionsRegionOutput)
+}
+
 type GetRestoreJobsJob struct {
 	// The actual size of Snapshot.
 	ActualBytes string `pulumi:"actualBytes"`
@@ -3092,6 +3189,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNasBackupPlansPlanArrayInput)(nil)).Elem(), GetNasBackupPlansPlanArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOssBackupPlansPlanInput)(nil)).Elem(), GetOssBackupPlansPlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOssBackupPlansPlanArrayInput)(nil)).Elem(), GetOssBackupPlansPlanArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReplicationVaultRegionsRegionInput)(nil)).Elem(), GetReplicationVaultRegionsRegionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReplicationVaultRegionsRegionArrayInput)(nil)).Elem(), GetReplicationVaultRegionsRegionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRestoreJobsJobInput)(nil)).Elem(), GetRestoreJobsJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRestoreJobsJobArrayInput)(nil)).Elem(), GetRestoreJobsJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerBackupPlansFilterInput)(nil)).Elem(), GetServerBackupPlansFilterArgs{})
@@ -3118,6 +3217,8 @@ func init() {
 	pulumi.RegisterOutputType(GetNasBackupPlansPlanArrayOutput{})
 	pulumi.RegisterOutputType(GetOssBackupPlansPlanOutput{})
 	pulumi.RegisterOutputType(GetOssBackupPlansPlanArrayOutput{})
+	pulumi.RegisterOutputType(GetReplicationVaultRegionsRegionOutput{})
+	pulumi.RegisterOutputType(GetReplicationVaultRegionsRegionArrayOutput{})
 	pulumi.RegisterOutputType(GetRestoreJobsJobOutput{})
 	pulumi.RegisterOutputType(GetRestoreJobsJobArrayOutput{})
 	pulumi.RegisterOutputType(GetServerBackupPlansFilterOutput{})

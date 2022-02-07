@@ -52,6 +52,8 @@ export function getEcsDisks(args?: GetEcsDisksArgs, opts?: pulumi.InvokeOptions)
         "nameRegex": args.nameRegex,
         "operationLocks": args.operationLocks,
         "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
         "paymentType": args.paymentType,
         "portable": args.portable,
         "resourceGroupId": args.resourceGroupId,
@@ -141,6 +143,8 @@ export interface GetEcsDisksArgs {
     nameRegex?: string;
     operationLocks?: inputs.ecs.GetEcsDisksOperationLock[];
     outputFile?: string;
+    pageNumber?: number;
+    pageSize?: number;
     /**
      * Payment method for disk.
      */
@@ -209,12 +213,15 @@ export interface GetEcsDisksResult {
     readonly names: string[];
     readonly operationLocks?: outputs.ecs.GetEcsDisksOperationLock[];
     readonly outputFile?: string;
+    readonly pageNumber?: number;
+    readonly pageSize?: number;
     readonly paymentType?: string;
     readonly portable?: boolean;
     readonly resourceGroupId?: string;
     readonly snapshotId?: string;
     readonly status?: string;
     readonly tags?: {[key: string]: any};
+    readonly totalCount: number;
     /**
      * @deprecated Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
      */
@@ -304,6 +311,8 @@ export interface GetEcsDisksOutputArgs {
     nameRegex?: pulumi.Input<string>;
     operationLocks?: pulumi.Input<pulumi.Input<inputs.ecs.GetEcsDisksOperationLockArgs>[]>;
     outputFile?: pulumi.Input<string>;
+    pageNumber?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number>;
     /**
      * Payment method for disk.
      */

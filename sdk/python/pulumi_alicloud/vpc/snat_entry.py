@@ -385,7 +385,7 @@ class SnatEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceCidr")
-    def source_cidr(self) -> pulumi.Output[Optional[str]]:
+    def source_cidr(self) -> pulumi.Output[str]:
         """
         The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
         """
@@ -393,7 +393,7 @@ class SnatEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceVswitchId")
-    def source_vswitch_id(self) -> pulumi.Output[Optional[str]]:
+    def source_vswitch_id(self) -> pulumi.Output[str]:
         """
         The vswitch ID.
         """

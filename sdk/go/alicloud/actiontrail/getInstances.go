@@ -92,6 +92,7 @@ func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getInstances.
 type GetInstancesArgs struct {
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of instance IDs to filter results.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by the instance name.
@@ -101,6 +102,7 @@ type GetInstancesArgs struct {
 
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of instance IDs.
@@ -124,6 +126,7 @@ func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts .
 
 // A collection of arguments for invoking getInstances.
 type GetInstancesOutputArgs struct {
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of instance IDs to filter results.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by the instance name.
@@ -148,6 +151,10 @@ func (o GetInstancesResultOutput) ToGetInstancesResultOutput() GetInstancesResul
 
 func (o GetInstancesResultOutput) ToGetInstancesResultOutputWithContext(ctx context.Context) GetInstancesResultOutput {
 	return o
+}
+
+func (o GetInstancesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

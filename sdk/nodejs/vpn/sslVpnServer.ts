@@ -42,7 +42,10 @@ export class SslVpnServer extends pulumi.CustomResource {
     }
 
     /**
-     * The encryption algorithm used by the SSL-VPN server. Valid value: AES-128-CBC (default)| AES-192-CBC | AES-256-CBC | none
+     * The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
+     * * `AES-128-CBC` - the AES-128-CBC algorithm.
+     * * `AES-192-CBC` - the AES-192-CBC algorithm.
+     * * `AES-256-CBC` - the AES-256-CBC algorithm.
      */
     public readonly cipher!: pulumi.Output<string | undefined>;
     /**
@@ -50,7 +53,7 @@ export class SslVpnServer extends pulumi.CustomResource {
      */
     public readonly clientIpPool!: pulumi.Output<string>;
     /**
-     * Specify whether to compress the communication. Valid value: true (default) | false
+     * Specifies whether to enable data compression. Valid values: `true`,`false`. Default value: `false`
      */
     public readonly compress!: pulumi.Output<boolean | undefined>;
     /**
@@ -74,7 +77,7 @@ export class SslVpnServer extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
+     * The port used by the SSL-VPN server. The default value is `1194`.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
      */
     public readonly port!: pulumi.Output<number | undefined>;
     /**
@@ -143,7 +146,10 @@ export class SslVpnServer extends pulumi.CustomResource {
  */
 export interface SslVpnServerState {
     /**
-     * The encryption algorithm used by the SSL-VPN server. Valid value: AES-128-CBC (default)| AES-192-CBC | AES-256-CBC | none
+     * The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
+     * * `AES-128-CBC` - the AES-128-CBC algorithm.
+     * * `AES-192-CBC` - the AES-192-CBC algorithm.
+     * * `AES-256-CBC` - the AES-256-CBC algorithm.
      */
     cipher?: pulumi.Input<string>;
     /**
@@ -151,7 +157,7 @@ export interface SslVpnServerState {
      */
     clientIpPool?: pulumi.Input<string>;
     /**
-     * Specify whether to compress the communication. Valid value: true (default) | false
+     * Specifies whether to enable data compression. Valid values: `true`,`false`. Default value: `false`
      */
     compress?: pulumi.Input<boolean>;
     /**
@@ -175,7 +181,7 @@ export interface SslVpnServerState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
+     * The port used by the SSL-VPN server. The default value is `1194`.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
      */
     port?: pulumi.Input<number>;
     /**
@@ -193,7 +199,10 @@ export interface SslVpnServerState {
  */
 export interface SslVpnServerArgs {
     /**
-     * The encryption algorithm used by the SSL-VPN server. Valid value: AES-128-CBC (default)| AES-192-CBC | AES-256-CBC | none
+     * The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
+     * * `AES-128-CBC` - the AES-128-CBC algorithm.
+     * * `AES-192-CBC` - the AES-192-CBC algorithm.
+     * * `AES-256-CBC` - the AES-256-CBC algorithm.
      */
     cipher?: pulumi.Input<string>;
     /**
@@ -201,7 +210,7 @@ export interface SslVpnServerArgs {
      */
     clientIpPool: pulumi.Input<string>;
     /**
-     * Specify whether to compress the communication. Valid value: true (default) | false
+     * Specifies whether to enable data compression. Valid values: `true`,`false`. Default value: `false`
      */
     compress?: pulumi.Input<boolean>;
     /**
@@ -213,7 +222,7 @@ export interface SslVpnServerArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
+     * The port used by the SSL-VPN server. The default value is `1194`.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
      */
     port?: pulumi.Input<number>;
     /**

@@ -76,6 +76,12 @@ namespace Pulumi.AliCloud.Vpc
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        [Input("pageNumber")]
+        public int? PageNumber { get; set; }
+
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
+
         /// <summary>
         /// The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
         /// </summary>
@@ -170,6 +176,12 @@ namespace Pulumi.AliCloud.Vpc
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        [Input("pageNumber")]
+        public Input<int>? PageNumber { get; set; }
+
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
+
         /// <summary>
         /// The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
         /// </summary>
@@ -249,6 +261,8 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public readonly string? NatType;
         public readonly string? OutputFile;
+        public readonly int? PageNumber;
+        public readonly int? PageSize;
         /// <summary>
         /// The billing method of the NAT gateway.
         /// </summary>
@@ -269,6 +283,7 @@ namespace Pulumi.AliCloud.Vpc
         /// The tags of NAT gateway.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly int TotalCount;
         /// <summary>
         /// The ID of the VPC.
         /// </summary>
@@ -296,6 +311,10 @@ namespace Pulumi.AliCloud.Vpc
 
             string? outputFile,
 
+            int? pageNumber,
+
+            int? pageSize,
+
             string? paymentType,
 
             string? resourceGroupId,
@@ -305,6 +324,8 @@ namespace Pulumi.AliCloud.Vpc
             string? status,
 
             ImmutableDictionary<string, object>? tags,
+
+            int totalCount,
 
             string? vpcId)
         {
@@ -318,11 +339,14 @@ namespace Pulumi.AliCloud.Vpc
             NatGatewayName = natGatewayName;
             NatType = natType;
             OutputFile = outputFile;
+            PageNumber = pageNumber;
+            PageSize = pageSize;
             PaymentType = paymentType;
             ResourceGroupId = resourceGroupId;
             Specification = specification;
             Status = status;
             Tags = tags;
+            TotalCount = totalCount;
             VpcId = vpcId;
         }
     }

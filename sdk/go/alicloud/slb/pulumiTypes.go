@@ -4978,6 +4978,8 @@ type GetZonesZone struct {
 	Id string `pulumi:"id"`
 	// A list of slb slave zone ids in which the slb master zone.
 	SlbSlaveZoneIds []string `pulumi:"slbSlaveZoneIds"`
+	// (Available in 1.154.0+)A list of available resource which the slb master zone supported.
+	SupportedResources []GetZonesZoneSupportedResource `pulumi:"supportedResources"`
 }
 
 // GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
@@ -4996,6 +4998,8 @@ type GetZonesZoneArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// A list of slb slave zone ids in which the slb master zone.
 	SlbSlaveZoneIds pulumi.StringArrayInput `pulumi:"slbSlaveZoneIds"`
+	// (Available in 1.154.0+)A list of available resource which the slb master zone supported.
+	SupportedResources GetZonesZoneSupportedResourceArrayInput `pulumi:"supportedResources"`
 }
 
 func (GetZonesZoneArgs) ElementType() reflect.Type {
@@ -5059,6 +5063,11 @@ func (o GetZonesZoneOutput) SlbSlaveZoneIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetZonesZone) []string { return v.SlbSlaveZoneIds }).(pulumi.StringArrayOutput)
 }
 
+// (Available in 1.154.0+)A list of available resource which the slb master zone supported.
+func (o GetZonesZoneOutput) SupportedResources() GetZonesZoneSupportedResourceArrayOutput {
+	return o.ApplyT(func(v GetZonesZone) []GetZonesZoneSupportedResource { return v.SupportedResources }).(GetZonesZoneSupportedResourceArrayOutput)
+}
+
 type GetZonesZoneArrayOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneArrayOutput) ElementType() reflect.Type {
@@ -5077,6 +5086,112 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZonesZone {
 		return vs[0].([]GetZonesZone)[vs[1].(int)]
 	}).(GetZonesZoneOutput)
+}
+
+type GetZonesZoneSupportedResource struct {
+	// The type of IP address.
+	AddressIpVersion string `pulumi:"addressIpVersion"`
+	// The type of network.
+	AddressType string `pulumi:"addressType"`
+}
+
+// GetZonesZoneSupportedResourceInput is an input type that accepts GetZonesZoneSupportedResourceArgs and GetZonesZoneSupportedResourceOutput values.
+// You can construct a concrete instance of `GetZonesZoneSupportedResourceInput` via:
+//
+//          GetZonesZoneSupportedResourceArgs{...}
+type GetZonesZoneSupportedResourceInput interface {
+	pulumi.Input
+
+	ToGetZonesZoneSupportedResourceOutput() GetZonesZoneSupportedResourceOutput
+	ToGetZonesZoneSupportedResourceOutputWithContext(context.Context) GetZonesZoneSupportedResourceOutput
+}
+
+type GetZonesZoneSupportedResourceArgs struct {
+	// The type of IP address.
+	AddressIpVersion pulumi.StringInput `pulumi:"addressIpVersion"`
+	// The type of network.
+	AddressType pulumi.StringInput `pulumi:"addressType"`
+}
+
+func (GetZonesZoneSupportedResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesZoneSupportedResource)(nil)).Elem()
+}
+
+func (i GetZonesZoneSupportedResourceArgs) ToGetZonesZoneSupportedResourceOutput() GetZonesZoneSupportedResourceOutput {
+	return i.ToGetZonesZoneSupportedResourceOutputWithContext(context.Background())
+}
+
+func (i GetZonesZoneSupportedResourceArgs) ToGetZonesZoneSupportedResourceOutputWithContext(ctx context.Context) GetZonesZoneSupportedResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneSupportedResourceOutput)
+}
+
+// GetZonesZoneSupportedResourceArrayInput is an input type that accepts GetZonesZoneSupportedResourceArray and GetZonesZoneSupportedResourceArrayOutput values.
+// You can construct a concrete instance of `GetZonesZoneSupportedResourceArrayInput` via:
+//
+//          GetZonesZoneSupportedResourceArray{ GetZonesZoneSupportedResourceArgs{...} }
+type GetZonesZoneSupportedResourceArrayInput interface {
+	pulumi.Input
+
+	ToGetZonesZoneSupportedResourceArrayOutput() GetZonesZoneSupportedResourceArrayOutput
+	ToGetZonesZoneSupportedResourceArrayOutputWithContext(context.Context) GetZonesZoneSupportedResourceArrayOutput
+}
+
+type GetZonesZoneSupportedResourceArray []GetZonesZoneSupportedResourceInput
+
+func (GetZonesZoneSupportedResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZonesZoneSupportedResource)(nil)).Elem()
+}
+
+func (i GetZonesZoneSupportedResourceArray) ToGetZonesZoneSupportedResourceArrayOutput() GetZonesZoneSupportedResourceArrayOutput {
+	return i.ToGetZonesZoneSupportedResourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetZonesZoneSupportedResourceArray) ToGetZonesZoneSupportedResourceArrayOutputWithContext(ctx context.Context) GetZonesZoneSupportedResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneSupportedResourceArrayOutput)
+}
+
+type GetZonesZoneSupportedResourceOutput struct{ *pulumi.OutputState }
+
+func (GetZonesZoneSupportedResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesZoneSupportedResource)(nil)).Elem()
+}
+
+func (o GetZonesZoneSupportedResourceOutput) ToGetZonesZoneSupportedResourceOutput() GetZonesZoneSupportedResourceOutput {
+	return o
+}
+
+func (o GetZonesZoneSupportedResourceOutput) ToGetZonesZoneSupportedResourceOutputWithContext(ctx context.Context) GetZonesZoneSupportedResourceOutput {
+	return o
+}
+
+// The type of IP address.
+func (o GetZonesZoneSupportedResourceOutput) AddressIpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesZoneSupportedResource) string { return v.AddressIpVersion }).(pulumi.StringOutput)
+}
+
+// The type of network.
+func (o GetZonesZoneSupportedResourceOutput) AddressType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesZoneSupportedResource) string { return v.AddressType }).(pulumi.StringOutput)
+}
+
+type GetZonesZoneSupportedResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZonesZoneSupportedResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZonesZoneSupportedResource)(nil)).Elem()
+}
+
+func (o GetZonesZoneSupportedResourceArrayOutput) ToGetZonesZoneSupportedResourceArrayOutput() GetZonesZoneSupportedResourceArrayOutput {
+	return o
+}
+
+func (o GetZonesZoneSupportedResourceArrayOutput) ToGetZonesZoneSupportedResourceArrayOutputWithContext(ctx context.Context) GetZonesZoneSupportedResourceArrayOutput {
+	return o
+}
+
+func (o GetZonesZoneSupportedResourceArrayOutput) Index(i pulumi.IntInput) GetZonesZoneSupportedResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZonesZoneSupportedResource {
+		return vs[0].([]GetZonesZoneSupportedResource)[vs[1].(int)]
+	}).(GetZonesZoneSupportedResourceOutput)
 }
 
 func init() {
@@ -5144,6 +5259,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTlsCipherPoliciesPolicyRelateListenerArrayInput)(nil)).Elem(), GetTlsCipherPoliciesPolicyRelateListenerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneSupportedResourceInput)(nil)).Elem(), GetZonesZoneSupportedResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneSupportedResourceArrayInput)(nil)).Elem(), GetZonesZoneSupportedResourceArray{})
 	pulumi.RegisterOutputType(AclEntryListOutput{})
 	pulumi.RegisterOutputType(AclEntryListArrayOutput{})
 	pulumi.RegisterOutputType(BackendServerBackendServerOutput{})
@@ -5208,4 +5325,6 @@ func init() {
 	pulumi.RegisterOutputType(GetTlsCipherPoliciesPolicyRelateListenerArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
+	pulumi.RegisterOutputType(GetZonesZoneSupportedResourceOutput{})
+	pulumi.RegisterOutputType(GetZonesZoneSupportedResourceArrayOutput{})
 }

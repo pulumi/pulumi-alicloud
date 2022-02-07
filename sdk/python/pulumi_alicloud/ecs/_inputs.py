@@ -14,6 +14,7 @@ __all__ = [
     'EcsLaunchTemplateDataDiskArgs',
     'EcsLaunchTemplateNetworkInterfacesArgs',
     'EcsLaunchTemplateSystemDiskArgs',
+    'EcsPrefixListEntryArgs',
     'ImageDiskDeviceMappingArgs',
     'ImageImportDiskDeviceMappingArgs',
     'InstanceDataDiskArgs',
@@ -465,6 +466,57 @@ class EcsLaunchTemplateSystemDiskArgs:
     @size.setter
     def size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size", value)
+
+
+@pulumi.input_type
+class EcsPrefixListEntryArgs:
+    def __init__(__self__, *,
+                 cidr: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cidr: The CIDR block in entry. This parameter is empty by default.  Take note of the following items:
+               * The total number of entries must not exceed the `max_entries` value.
+               * CIDR block types are determined by the IP address family. You cannot combine `IPv4` and `IPv6` CIDR blocks in a single entry.
+               * CIDR blocks must be unique across all entries in a prefix list. For example, you cannot specify 192.168.1.0/24 twice in the entries of the prefix list.
+               * IP addresses are supported. The system converts IP addresses into CIDR blocks. For example, if you specify 192.168.1.100, the system converts it into the 192.168.1.100/32 CIDR block.
+               * If an IPv6 CIDR block is used, the system converts it to the zero compression format and changes uppercase letters into lowercase ones. For example, if you specify 2001:0DB8:0000:0000:0000:0000:0000:0000/32, the system converts it into 2001:db8::/32.
+               * For more information about CIDR blocks, see the "What is CIDR block?" section of the [Network FAQ](https://www.alibabacloud.com/help/doc-detail/40637.htm) topic.  * The total number of entries must not exceed the `max_entries` value.
+        :param pulumi.Input[str] description: The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
+        """
+        if cidr is not None:
+            pulumi.set(__self__, "cidr", cidr)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def cidr(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CIDR block in entry. This parameter is empty by default.  Take note of the following items:
+        * The total number of entries must not exceed the `max_entries` value.
+        * CIDR block types are determined by the IP address family. You cannot combine `IPv4` and `IPv6` CIDR blocks in a single entry.
+        * CIDR blocks must be unique across all entries in a prefix list. For example, you cannot specify 192.168.1.0/24 twice in the entries of the prefix list.
+        * IP addresses are supported. The system converts IP addresses into CIDR blocks. For example, if you specify 192.168.1.100, the system converts it into the 192.168.1.100/32 CIDR block.
+        * If an IPv6 CIDR block is used, the system converts it to the zero compression format and changes uppercase letters into lowercase ones. For example, if you specify 2001:0DB8:0000:0000:0000:0000:0000:0000/32, the system converts it into 2001:db8::/32.
+        * For more information about CIDR blocks, see the "What is CIDR block?" section of the [Network FAQ](https://www.alibabacloud.com/help/doc-detail/40637.htm) topic.  * The total number of entries must not exceed the `max_entries` value.
+        """
+        return pulumi.get(self, "cidr")
+
+    @cidr.setter
+    def cidr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cidr", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
 
 @pulumi.input_type

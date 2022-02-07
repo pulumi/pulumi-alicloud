@@ -22,7 +22,7 @@ class GetDisksResult:
     """
     A collection of values returned by getDisks.
     """
-    def __init__(__self__, additional_attributes=None, auto_snapshot_policy_id=None, availability_zone=None, category=None, delete_auto_snapshot=None, delete_with_instance=None, disk_name=None, disk_type=None, disks=None, dry_run=None, enable_auto_snapshot=None, enable_automated_snapshot_policy=None, enable_shared=None, encrypted=None, id=None, ids=None, instance_id=None, kms_key_id=None, name_regex=None, names=None, operation_locks=None, output_file=None, payment_type=None, portable=None, resource_group_id=None, snapshot_id=None, status=None, tags=None, type=None, zone_id=None):
+    def __init__(__self__, additional_attributes=None, auto_snapshot_policy_id=None, availability_zone=None, category=None, delete_auto_snapshot=None, delete_with_instance=None, disk_name=None, disk_type=None, disks=None, dry_run=None, enable_auto_snapshot=None, enable_automated_snapshot_policy=None, enable_shared=None, encrypted=None, id=None, ids=None, instance_id=None, kms_key_id=None, name_regex=None, names=None, operation_locks=None, output_file=None, page_number=None, page_size=None, payment_type=None, portable=None, resource_group_id=None, snapshot_id=None, status=None, tags=None, total_count=None, type=None, zone_id=None):
         if additional_attributes and not isinstance(additional_attributes, list):
             raise TypeError("Expected argument 'additional_attributes' to be a list")
         pulumi.set(__self__, "additional_attributes", additional_attributes)
@@ -93,6 +93,12 @@ class GetDisksResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if page_number and not isinstance(page_number, int):
+            raise TypeError("Expected argument 'page_number' to be a int")
+        pulumi.set(__self__, "page_number", page_number)
+        if page_size and not isinstance(page_size, int):
+            raise TypeError("Expected argument 'page_size' to be a int")
+        pulumi.set(__self__, "page_size", page_size)
         if payment_type and not isinstance(payment_type, str):
             raise TypeError("Expected argument 'payment_type' to be a str")
         pulumi.set(__self__, "payment_type", payment_type)
@@ -111,6 +117,9 @@ class GetDisksResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
+        if total_count and not isinstance(total_count, int):
+            raise TypeError("Expected argument 'total_count' to be a int")
+        pulumi.set(__self__, "total_count", total_count)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         if type is not None:
@@ -251,6 +260,16 @@ class GetDisksResult:
         return pulumi.get(self, "output_file")
 
     @property
+    @pulumi.getter(name="pageNumber")
+    def page_number(self) -> Optional[int]:
+        return pulumi.get(self, "page_number")
+
+    @property
+    @pulumi.getter(name="pageSize")
+    def page_size(self) -> Optional[int]:
+        return pulumi.get(self, "page_size")
+
+    @property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[str]:
         return pulumi.get(self, "payment_type")
@@ -291,6 +310,11 @@ class GetDisksResult:
         A map of tags assigned to the disk.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="totalCount")
+    def total_count(self) -> int:
+        return pulumi.get(self, "total_count")
 
     @property
     @pulumi.getter
@@ -334,12 +358,15 @@ class AwaitableGetDisksResult(GetDisksResult):
             names=self.names,
             operation_locks=self.operation_locks,
             output_file=self.output_file,
+            page_number=self.page_number,
+            page_size=self.page_size,
             payment_type=self.payment_type,
             portable=self.portable,
             resource_group_id=self.resource_group_id,
             snapshot_id=self.snapshot_id,
             status=self.status,
             tags=self.tags,
+            total_count=self.total_count,
             type=self.type,
             zone_id=self.zone_id)
 
@@ -363,6 +390,8 @@ def get_disks(additional_attributes: Optional[Sequence[str]] = None,
               name_regex: Optional[str] = None,
               operation_locks: Optional[Sequence[pulumi.InputType['GetDisksOperationLockArgs']]] = None,
               output_file: Optional[str] = None,
+              page_number: Optional[int] = None,
+              page_size: Optional[int] = None,
               payment_type: Optional[str] = None,
               portable: Optional[bool] = None,
               resource_group_id: Optional[str] = None,
@@ -416,6 +445,8 @@ def get_disks(additional_attributes: Optional[Sequence[str]] = None,
     __args__['nameRegex'] = name_regex
     __args__['operationLocks'] = operation_locks
     __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
     __args__['paymentType'] = payment_type
     __args__['portable'] = portable
     __args__['resourceGroupId'] = resource_group_id
@@ -453,12 +484,15 @@ def get_disks(additional_attributes: Optional[Sequence[str]] = None,
         names=__ret__.names,
         operation_locks=__ret__.operation_locks,
         output_file=__ret__.output_file,
+        page_number=__ret__.page_number,
+        page_size=__ret__.page_size,
         payment_type=__ret__.payment_type,
         portable=__ret__.portable,
         resource_group_id=__ret__.resource_group_id,
         snapshot_id=__ret__.snapshot_id,
         status=__ret__.status,
         tags=__ret__.tags,
+        total_count=__ret__.total_count,
         type=__ret__.type,
         zone_id=__ret__.zone_id)
 
@@ -483,6 +517,8 @@ def get_disks_output(additional_attributes: Optional[pulumi.Input[Optional[Seque
                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                      operation_locks: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDisksOperationLockArgs']]]]] = None,
                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                     page_number: Optional[pulumi.Input[Optional[int]]] = None,
+                     page_size: Optional[pulumi.Input[Optional[int]]] = None,
                      payment_type: Optional[pulumi.Input[Optional[str]]] = None,
                      portable: Optional[pulumi.Input[Optional[bool]]] = None,
                      resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,

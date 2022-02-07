@@ -67,12 +67,13 @@ type EcsKeyPair struct {
 	FingerPrint pulumi.StringOutput `pulumi:"fingerPrint"`
 	// The key file.
 	KeyFile pulumi.StringPtrOutput `pulumi:"keyFile"`
-	// The key pair's name. It is the only in one Alicloud account.
+	// Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	//
 	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
 	KeyName       pulumi.StringOutput    `pulumi:"keyName"`
 	KeyNamePrefix pulumi.StringPtrOutput `pulumi:"keyNamePrefix"`
-	KeyPairName   pulumi.StringOutput    `pulumi:"keyPairName"`
+	// The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	KeyPairName pulumi.StringOutput `pulumi:"keyPairName"`
 	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey pulumi.StringPtrOutput `pulumi:"publicKey"`
 	// The Id of resource group which the key pair belongs.
@@ -113,12 +114,13 @@ type ecsKeyPairState struct {
 	FingerPrint *string `pulumi:"fingerPrint"`
 	// The key file.
 	KeyFile *string `pulumi:"keyFile"`
-	// The key pair's name. It is the only in one Alicloud account.
+	// Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	//
 	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
 	KeyName       *string `pulumi:"keyName"`
 	KeyNamePrefix *string `pulumi:"keyNamePrefix"`
-	KeyPairName   *string `pulumi:"keyPairName"`
+	// The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	KeyPairName *string `pulumi:"keyPairName"`
 	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey *string `pulumi:"publicKey"`
 	// The Id of resource group which the key pair belongs.
@@ -131,12 +133,13 @@ type EcsKeyPairState struct {
 	FingerPrint pulumi.StringPtrInput
 	// The key file.
 	KeyFile pulumi.StringPtrInput
-	// The key pair's name. It is the only in one Alicloud account.
+	// Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	//
 	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
 	KeyName       pulumi.StringPtrInput
 	KeyNamePrefix pulumi.StringPtrInput
-	KeyPairName   pulumi.StringPtrInput
+	// The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	KeyPairName pulumi.StringPtrInput
 	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey pulumi.StringPtrInput
 	// The Id of resource group which the key pair belongs.
@@ -152,12 +155,13 @@ func (EcsKeyPairState) ElementType() reflect.Type {
 type ecsKeyPairArgs struct {
 	// The key file.
 	KeyFile *string `pulumi:"keyFile"`
-	// The key pair's name. It is the only in one Alicloud account.
+	// Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	//
 	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
 	KeyName       *string `pulumi:"keyName"`
 	KeyNamePrefix *string `pulumi:"keyNamePrefix"`
-	KeyPairName   *string `pulumi:"keyPairName"`
+	// The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	KeyPairName *string `pulumi:"keyPairName"`
 	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey *string `pulumi:"publicKey"`
 	// The Id of resource group which the key pair belongs.
@@ -170,12 +174,13 @@ type ecsKeyPairArgs struct {
 type EcsKeyPairArgs struct {
 	// The key file.
 	KeyFile pulumi.StringPtrInput
-	// The key pair's name. It is the only in one Alicloud account.
+	// Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	//
 	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
 	KeyName       pulumi.StringPtrInput
 	KeyNamePrefix pulumi.StringPtrInput
-	KeyPairName   pulumi.StringPtrInput
+	// The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	KeyPairName pulumi.StringPtrInput
 	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey pulumi.StringPtrInput
 	// The Id of resource group which the key pair belongs.

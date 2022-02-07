@@ -45,6 +45,8 @@ type GetClustersArgs struct {
 	// A regex string to filter results by Cluster name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
 	// The Resource Group ID.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status list. Valid values: `ABNORMAL`, `CREATE_FAILED`, `CREATING`, `IDLE`, `RELEASED`, `RELEASE_FAILED`, `RELEASING`, `RUNNING`, `WAIT_FOR_PAY`.
@@ -70,8 +72,11 @@ type GetClustersResult struct {
 	NameRegex       *string  `pulumi:"nameRegex"`
 	Names           []string `pulumi:"names"`
 	OutputFile      *string  `pulumi:"outputFile"`
+	PageNumber      *int     `pulumi:"pageNumber"`
+	PageSize        *int     `pulumi:"pageSize"`
 	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	StatusLists     []string `pulumi:"statusLists"`
+	TotalCount      int      `pulumi:"totalCount"`
 	VpcId           *string  `pulumi:"vpcId"`
 }
 
@@ -107,6 +112,8 @@ type GetClustersOutputArgs struct {
 	// A regex string to filter results by Cluster name.
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
+	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 	// The Resource Group ID.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// The status list. Valid values: `ABNORMAL`, `CREATE_FAILED`, `CREATING`, `IDLE`, `RELEASED`, `RELEASE_FAILED`, `RELEASING`, `RUNNING`, `WAIT_FOR_PAY`.
@@ -191,12 +198,24 @@ func (o GetClustersResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+func (o GetClustersResultOutput) PageNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClustersResult) *int { return v.PageNumber }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClustersResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClustersResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
 func (o GetClustersResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
 func (o GetClustersResultOutput) StatusLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClustersResult) []string { return v.StatusLists }).(pulumi.StringArrayOutput)
+}
+
+func (o GetClustersResultOutput) TotalCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClustersResult) int { return v.TotalCount }).(pulumi.IntOutput)
 }
 
 func (o GetClustersResultOutput) VpcId() pulumi.StringPtrOutput {

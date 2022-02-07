@@ -2241,6 +2241,60 @@ export namespace dms {
 }
 
 export namespace dns {
+    export interface AccessStrategyDefaultAddrPool {
+        /**
+         * The ID of the address pool in the primary address pool group.
+         */
+        addrPoolId: pulumi.Input<string>;
+        /**
+         * The weight of the address pool in the primary address pool group.
+         */
+        lbaWeight?: pulumi.Input<number>;
+    }
+
+    export interface AccessStrategyFailoverAddrPool {
+        /**
+         * The ID of the address pool in the primary address pool group.
+         */
+        addrPoolId?: pulumi.Input<string>;
+        /**
+         * The weight of the address pool in the primary address pool group.
+         */
+        lbaWeight?: pulumi.Input<number>;
+    }
+
+    export interface AccessStrategyLine {
+        /**
+         * The line code of the source region.
+         */
+        lineCode?: pulumi.Input<string>;
+    }
+
+    export interface AddressPoolAddress {
+        /**
+         * The address that you want to add to the address pool.
+         */
+        address: pulumi.Input<string>;
+        /**
+         * The source region of the address. expressed as a JSON string. The structure is as follows:
+         * * `LineCodes`: List of home lineCodes.
+         * * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
+         */
+        attributeInfo: pulumi.Input<string>;
+        /**
+         * The weight of the address. **NOTE:** The attribute is valid when the attribute `lbaStrategy` is `RATIO`.
+         */
+        lbaWeight?: pulumi.Input<number>;
+        /**
+         * The type of the address. Valid values:`SMART`, `ONLINE` and `OFFLINE`.
+         */
+        mode: pulumi.Input<string>;
+        /**
+         * The description of the address.
+         */
+        remark?: pulumi.Input<string>;
+    }
+
     export interface CustomLineIpSegmentList {
         /**
          * The end IP address of the CIDR block.
@@ -2275,6 +2329,17 @@ export namespace dns {
          * Whether to configure SMS notification. Valid values: `true`, `false`.
          */
         smsNotice?: pulumi.Input<boolean>;
+    }
+
+    export interface MonitorConfigIspCityNode {
+        /**
+         * The code of the city node to monitor.
+         */
+        cityCode: pulumi.Input<string>;
+        /**
+         * The code of the Internet provider service (ISP) node to monitor.
+         */
+        ispCode: pulumi.Input<string>;
     }
 }
 
@@ -2743,6 +2808,23 @@ export namespace ecs {
         size?: pulumi.Input<number>;
     }
 
+    export interface EcsPrefixListEntry {
+        /**
+         * The CIDR block in entry. This parameter is empty by default.  Take note of the following items:
+         * * The total number of entries must not exceed the `maxEntries` value.
+         * * CIDR block types are determined by the IP address family. You cannot combine `IPv4` and `IPv6` CIDR blocks in a single entry.
+         * * CIDR blocks must be unique across all entries in a prefix list. For example, you cannot specify 192.168.1.0/24 twice in the entries of the prefix list.
+         * * IP addresses are supported. The system converts IP addresses into CIDR blocks. For example, if you specify 192.168.1.100, the system converts it into the 192.168.1.100/32 CIDR block.
+         * * If an IPv6 CIDR block is used, the system converts it to the zero compression format and changes uppercase letters into lowercase ones. For example, if you specify 2001:0DB8:0000:0000:0000:0000:0000:0000/32, the system converts it into 2001:db8::/32.
+         * * For more information about CIDR blocks, see the "What is CIDR block?" section of the [Network FAQ](https://www.alibabacloud.com/help/doc-detail/40637.htm) topic.  * The total number of entries must not exceed the `maxEntries` value.
+         */
+        cidr?: pulumi.Input<string>;
+        /**
+         * The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
+         */
+        description?: pulumi.Input<string>;
+    }
+
     export interface GetDedicatedHostsOperationLockArgs {
         /**
          * The reason why the dedicated host resource is locked.
@@ -2757,12 +2839,12 @@ export namespace ecs {
         lockReason?: string;
     }
 
-    export interface GetDisksOperationLockArgs {
-        lockReason?: pulumi.Input<string>;
-    }
-
     export interface GetDisksOperationLock {
         lockReason?: string;
+    }
+
+    export interface GetDisksOperationLockArgs {
+        lockReason?: pulumi.Input<string>;
     }
 
     export interface GetEcsDisksOperationLockArgs {
@@ -4526,6 +4608,11 @@ export namespace rds {
         paramValue: pulumi.Input<string>;
     }
 
+    export interface RdsUpgradeDbInstanceParameter {
+        name: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
     export interface ReadOnlyInstanceParameter {
         name: pulumi.Input<string>;
         value: pulumi.Input<string>;
@@ -5212,7 +5299,7 @@ export namespace vpc {
 export namespace vpn {
     export interface ConnectionIkeConfig {
         /**
-         * The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+         * The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 . Default value: md5
          */
         ikeAuthAlg?: pulumi.Input<string>;
         /**

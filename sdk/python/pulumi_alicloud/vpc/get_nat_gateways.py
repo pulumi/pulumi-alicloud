@@ -21,7 +21,7 @@ class GetNatGatewaysResult:
     """
     A collection of values returned by getNatGateways.
     """
-    def __init__(__self__, dry_run=None, enable_details=None, gateways=None, id=None, ids=None, name_regex=None, names=None, nat_gateway_name=None, nat_type=None, output_file=None, payment_type=None, resource_group_id=None, specification=None, status=None, tags=None, vpc_id=None):
+    def __init__(__self__, dry_run=None, enable_details=None, gateways=None, id=None, ids=None, name_regex=None, names=None, nat_gateway_name=None, nat_type=None, output_file=None, page_number=None, page_size=None, payment_type=None, resource_group_id=None, specification=None, status=None, tags=None, total_count=None, vpc_id=None):
         if dry_run and not isinstance(dry_run, bool):
             raise TypeError("Expected argument 'dry_run' to be a bool")
         pulumi.set(__self__, "dry_run", dry_run)
@@ -52,6 +52,12 @@ class GetNatGatewaysResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if page_number and not isinstance(page_number, int):
+            raise TypeError("Expected argument 'page_number' to be a int")
+        pulumi.set(__self__, "page_number", page_number)
+        if page_size and not isinstance(page_size, int):
+            raise TypeError("Expected argument 'page_size' to be a int")
+        pulumi.set(__self__, "page_size", page_size)
         if payment_type and not isinstance(payment_type, str):
             raise TypeError("Expected argument 'payment_type' to be a str")
         pulumi.set(__self__, "payment_type", payment_type)
@@ -67,6 +73,9 @@ class GetNatGatewaysResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
+        if total_count and not isinstance(total_count, int):
+            raise TypeError("Expected argument 'total_count' to be a int")
+        pulumi.set(__self__, "total_count", total_count)
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         pulumi.set(__self__, "vpc_id", vpc_id)
@@ -140,6 +149,16 @@ class GetNatGatewaysResult:
         return pulumi.get(self, "output_file")
 
     @property
+    @pulumi.getter(name="pageNumber")
+    def page_number(self) -> Optional[int]:
+        return pulumi.get(self, "page_number")
+
+    @property
+    @pulumi.getter(name="pageSize")
+    def page_size(self) -> Optional[int]:
+        return pulumi.get(self, "page_size")
+
+    @property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[str]:
         """
@@ -180,6 +199,11 @@ class GetNatGatewaysResult:
         return pulumi.get(self, "tags")
 
     @property
+    @pulumi.getter(name="totalCount")
+    def total_count(self) -> int:
+        return pulumi.get(self, "total_count")
+
+    @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[str]:
         """
@@ -204,11 +228,14 @@ class AwaitableGetNatGatewaysResult(GetNatGatewaysResult):
             nat_gateway_name=self.nat_gateway_name,
             nat_type=self.nat_type,
             output_file=self.output_file,
+            page_number=self.page_number,
+            page_size=self.page_size,
             payment_type=self.payment_type,
             resource_group_id=self.resource_group_id,
             specification=self.specification,
             status=self.status,
             tags=self.tags,
+            total_count=self.total_count,
             vpc_id=self.vpc_id)
 
 
@@ -219,6 +246,8 @@ def get_nat_gateways(dry_run: Optional[bool] = None,
                      nat_gateway_name: Optional[str] = None,
                      nat_type: Optional[str] = None,
                      output_file: Optional[str] = None,
+                     page_number: Optional[int] = None,
+                     page_size: Optional[int] = None,
                      payment_type: Optional[str] = None,
                      resource_group_id: Optional[str] = None,
                      specification: Optional[str] = None,
@@ -253,6 +282,8 @@ def get_nat_gateways(dry_run: Optional[bool] = None,
     __args__['natGatewayName'] = nat_gateway_name
     __args__['natType'] = nat_type
     __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
     __args__['paymentType'] = payment_type
     __args__['resourceGroupId'] = resource_group_id
     __args__['specification'] = specification
@@ -276,11 +307,14 @@ def get_nat_gateways(dry_run: Optional[bool] = None,
         nat_gateway_name=__ret__.nat_gateway_name,
         nat_type=__ret__.nat_type,
         output_file=__ret__.output_file,
+        page_number=__ret__.page_number,
+        page_size=__ret__.page_size,
         payment_type=__ret__.payment_type,
         resource_group_id=__ret__.resource_group_id,
         specification=__ret__.specification,
         status=__ret__.status,
         tags=__ret__.tags,
+        total_count=__ret__.total_count,
         vpc_id=__ret__.vpc_id)
 
 
@@ -292,6 +326,8 @@ def get_nat_gateways_output(dry_run: Optional[pulumi.Input[Optional[bool]]] = No
                             nat_gateway_name: Optional[pulumi.Input[Optional[str]]] = None,
                             nat_type: Optional[pulumi.Input[Optional[str]]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                            page_number: Optional[pulumi.Input[Optional[int]]] = None,
+                            page_size: Optional[pulumi.Input[Optional[int]]] = None,
                             payment_type: Optional[pulumi.Input[Optional[str]]] = None,
                             resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                             specification: Optional[pulumi.Input[Optional[str]]] = None,

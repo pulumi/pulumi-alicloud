@@ -74,7 +74,7 @@ type Instance struct {
 	pulumi.CustomResourceState
 
 	// The instance name.
-	InstanceName pulumi.StringPtrOutput `pulumi:"instanceName"`
+	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// The Instance Type. Valid values: `professional`, `vip`.
 	InstanceType pulumi.StringOutput    `pulumi:"instanceType"`
 	Logistics    pulumi.StringPtrOutput `pulumi:"logistics"`

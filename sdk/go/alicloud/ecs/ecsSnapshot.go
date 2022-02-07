@@ -72,6 +72,8 @@ type EcsSnapshot struct {
 	InstantAccess pulumi.BoolPtrOutput `pulumi:"instantAccess"`
 	// Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
 	InstantAccessRetentionDays pulumi.IntPtrOutput `pulumi:"instantAccessRetentionDays"`
+	// Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
+	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource group id.
@@ -130,6 +132,8 @@ type ecsSnapshotState struct {
 	InstantAccess *bool `pulumi:"instantAccess"`
 	// Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
 	InstantAccessRetentionDays *int `pulumi:"instantAccessRetentionDays"`
+	// Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
+	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
 	Name *string `pulumi:"name"`
 	// The resource group id.
@@ -157,6 +161,8 @@ type EcsSnapshotState struct {
 	InstantAccess pulumi.BoolPtrInput
 	// Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
 	InstantAccessRetentionDays pulumi.IntPtrInput
+	// Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
+	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
 	Name pulumi.StringPtrInput
 	// The resource group id.
@@ -188,6 +194,8 @@ type ecsSnapshotArgs struct {
 	InstantAccess *bool `pulumi:"instantAccess"`
 	// Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
 	InstantAccessRetentionDays *int `pulumi:"instantAccessRetentionDays"`
+	// Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
+	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
 	Name *string `pulumi:"name"`
 	// The resource group id.
@@ -214,6 +222,8 @@ type EcsSnapshotArgs struct {
 	InstantAccess pulumi.BoolPtrInput
 	// Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
 	InstantAccessRetentionDays pulumi.IntPtrInput
+	// Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
+	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
 	Name pulumi.StringPtrInput
 	// The resource group id.

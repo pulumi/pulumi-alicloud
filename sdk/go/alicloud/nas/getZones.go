@@ -46,11 +46,14 @@ func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getZones.
 type GetZonesArgs struct {
-	OutputFile *string `pulumi:"outputFile"`
+	// The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.
+	FileSystemType *string `pulumi:"fileSystemType"`
+	OutputFile     *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getZones.
 type GetZonesResult struct {
+	FileSystemType *string `pulumi:"fileSystemType"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string  `pulumi:"id"`
 	OutputFile *string `pulumi:"outputFile"`
@@ -69,7 +72,9 @@ func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getZones.
 type GetZonesOutputArgs struct {
-	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.
+	FileSystemType pulumi.StringPtrInput `pulumi:"fileSystemType"`
+	OutputFile     pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetZonesOutputArgs) ElementType() reflect.Type {
@@ -89,6 +94,10 @@ func (o GetZonesResultOutput) ToGetZonesResultOutput() GetZonesResultOutput {
 
 func (o GetZonesResultOutput) ToGetZonesResultOutputWithContext(ctx context.Context) GetZonesResultOutput {
 	return o
+}
+
+func (o GetZonesResultOutput) FileSystemType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZonesResult) *string { return v.FileSystemType }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

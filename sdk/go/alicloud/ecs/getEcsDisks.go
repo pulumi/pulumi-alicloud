@@ -94,6 +94,8 @@ type GetEcsDisksArgs struct {
 	NameRegex      *string                    `pulumi:"nameRegex"`
 	OperationLocks []GetEcsDisksOperationLock `pulumi:"operationLocks"`
 	OutputFile     *string                    `pulumi:"outputFile"`
+	PageNumber     *int                       `pulumi:"pageNumber"`
+	PageSize       *int                       `pulumi:"pageSize"`
 	// Payment method for disk.
 	PaymentType *string `pulumi:"paymentType"`
 	// Whether the disk is unmountable.
@@ -140,12 +142,15 @@ type GetEcsDisksResult struct {
 	Names           []string                   `pulumi:"names"`
 	OperationLocks  []GetEcsDisksOperationLock `pulumi:"operationLocks"`
 	OutputFile      *string                    `pulumi:"outputFile"`
+	PageNumber      *int                       `pulumi:"pageNumber"`
+	PageSize        *int                       `pulumi:"pageSize"`
 	PaymentType     *string                    `pulumi:"paymentType"`
 	Portable        *bool                      `pulumi:"portable"`
 	ResourceGroupId *string                    `pulumi:"resourceGroupId"`
 	SnapshotId      *string                    `pulumi:"snapshotId"`
 	Status          *string                    `pulumi:"status"`
 	Tags            map[string]interface{}     `pulumi:"tags"`
+	TotalCount      int                        `pulumi:"totalCount"`
 	// Deprecated: Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
 	Type   *string `pulumi:"type"`
 	ZoneId *string `pulumi:"zoneId"`
@@ -202,6 +207,8 @@ type GetEcsDisksOutputArgs struct {
 	NameRegex      pulumi.StringPtrInput              `pulumi:"nameRegex"`
 	OperationLocks GetEcsDisksOperationLockArrayInput `pulumi:"operationLocks"`
 	OutputFile     pulumi.StringPtrInput              `pulumi:"outputFile"`
+	PageNumber     pulumi.IntPtrInput                 `pulumi:"pageNumber"`
+	PageSize       pulumi.IntPtrInput                 `pulumi:"pageSize"`
 	// Payment method for disk.
 	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`
 	// Whether the disk is unmountable.
@@ -331,6 +338,14 @@ func (o GetEcsDisksResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+func (o GetEcsDisksResultOutput) PageNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *int { return v.PageNumber }).(pulumi.IntPtrOutput)
+}
+
+func (o GetEcsDisksResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
 func (o GetEcsDisksResultOutput) PaymentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) *string { return v.PaymentType }).(pulumi.StringPtrOutput)
 }
@@ -353,6 +368,10 @@ func (o GetEcsDisksResultOutput) Status() pulumi.StringPtrOutput {
 
 func (o GetEcsDisksResultOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetEcsDisksResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o GetEcsDisksResultOutput) TotalCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsDisksResult) int { return v.TotalCount }).(pulumi.IntOutput)
 }
 
 // Deprecated: Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.

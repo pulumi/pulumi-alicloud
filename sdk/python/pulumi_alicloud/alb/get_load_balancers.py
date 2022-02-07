@@ -43,8 +43,8 @@ class GetLoadBalancersResult:
         if load_balancer_bussiness_status and not isinstance(load_balancer_bussiness_status, str):
             raise TypeError("Expected argument 'load_balancer_bussiness_status' to be a str")
         if load_balancer_bussiness_status is not None:
-            warnings.warn("""Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be remove in the future version. Please use the new attribute 'load_balancer_business_status' instead.""", DeprecationWarning)
-            pulumi.log.warn("""load_balancer_bussiness_status is deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be remove in the future version. Please use the new attribute 'load_balancer_business_status' instead.""")
+            warnings.warn("""Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.""", DeprecationWarning)
+            pulumi.log.warn("""load_balancer_bussiness_status is deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.""")
 
         pulumi.set(__self__, "load_balancer_bussiness_status", load_balancer_bussiness_status)
         if load_balancer_ids and not isinstance(load_balancer_ids, list):

@@ -67,6 +67,8 @@ type GetInstancesArgs struct {
 	// A regex string to filter results by instance name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
 	// Status of the instance.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the DB instances.
@@ -97,9 +99,12 @@ type GetInstancesResult struct {
 	// A list of RDS instance names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+	PageNumber *int     `pulumi:"pageNumber"`
+	PageSize   *int     `pulumi:"pageSize"`
 	// Status of the instance.
-	Status *string                `pulumi:"status"`
-	Tags   map[string]interface{} `pulumi:"tags"`
+	Status     *string                `pulumi:"status"`
+	Tags       map[string]interface{} `pulumi:"tags"`
+	TotalCount int                    `pulumi:"totalCount"`
 	// ID of the VPC the instance belongs to.
 	VpcId *string `pulumi:"vpcId"`
 	// ID of the VSwitch the instance belongs to.
@@ -130,6 +135,8 @@ type GetInstancesOutputArgs struct {
 	// A regex string to filter results by instance name.
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
+	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 	// Status of the instance.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A map of tags assigned to the DB instances.
@@ -207,6 +214,14 @@ func (o GetInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+func (o GetInstancesResultOutput) PageNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *int { return v.PageNumber }).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstancesResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
 // Status of the instance.
 func (o GetInstancesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
@@ -214,6 +229,10 @@ func (o GetInstancesResultOutput) Status() pulumi.StringPtrOutput {
 
 func (o GetInstancesResultOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetInstancesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o GetInstancesResultOutput) TotalCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesResult) int { return v.TotalCount }).(pulumi.IntOutput)
 }
 
 // ID of the VPC the instance belongs to.

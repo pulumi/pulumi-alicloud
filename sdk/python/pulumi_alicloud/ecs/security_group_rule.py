@@ -21,6 +21,7 @@ class SecurityGroupRuleArgs:
                  nic_type: Optional[pulumi.Input[str]] = None,
                  policy: Optional[pulumi.Input[str]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
+                 prefix_list_id: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  source_group_owner_account: Optional[pulumi.Input[str]] = None,
                  source_security_group_id: Optional[pulumi.Input[str]] = None):
@@ -35,6 +36,7 @@ class SecurityGroupRuleArgs:
         :param pulumi.Input[str] policy: Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
         :param pulumi.Input[str] port_range: The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
                For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
+        :param pulumi.Input[str] prefix_list_id: The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id` parameter, this parameter is ignored.
         :param pulumi.Input[int] priority: Authorization policy priority, with parameter values: `1-100`, default value: 1.
         :param pulumi.Input[str] source_group_owner_account: The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
         :param pulumi.Input[str] source_security_group_id: The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
@@ -52,6 +54,8 @@ class SecurityGroupRuleArgs:
             pulumi.set(__self__, "policy", policy)
         if port_range is not None:
             pulumi.set(__self__, "port_range", port_range)
+        if prefix_list_id is not None:
+            pulumi.set(__self__, "prefix_list_id", prefix_list_id)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if source_group_owner_account is not None:
@@ -157,6 +161,18 @@ class SecurityGroupRuleArgs:
         pulumi.set(self, "port_range", value)
 
     @property
+    @pulumi.getter(name="prefixListId")
+    def prefix_list_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id` parameter, this parameter is ignored.
+        """
+        return pulumi.get(self, "prefix_list_id")
+
+    @prefix_list_id.setter
+    def prefix_list_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix_list_id", value)
+
+    @property
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[int]]:
         """
@@ -202,6 +218,7 @@ class _SecurityGroupRuleState:
                  nic_type: Optional[pulumi.Input[str]] = None,
                  policy: Optional[pulumi.Input[str]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
+                 prefix_list_id: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  source_group_owner_account: Optional[pulumi.Input[str]] = None,
@@ -216,6 +233,7 @@ class _SecurityGroupRuleState:
         :param pulumi.Input[str] policy: Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
         :param pulumi.Input[str] port_range: The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
                For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
+        :param pulumi.Input[str] prefix_list_id: The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id` parameter, this parameter is ignored.
         :param pulumi.Input[int] priority: Authorization policy priority, with parameter values: `1-100`, default value: 1.
         :param pulumi.Input[str] security_group_id: The security group to apply this rule to.
         :param pulumi.Input[str] source_group_owner_account: The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
@@ -234,6 +252,8 @@ class _SecurityGroupRuleState:
             pulumi.set(__self__, "policy", policy)
         if port_range is not None:
             pulumi.set(__self__, "port_range", port_range)
+        if prefix_list_id is not None:
+            pulumi.set(__self__, "prefix_list_id", prefix_list_id)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if security_group_id is not None:
@@ -319,6 +339,18 @@ class _SecurityGroupRuleState:
         pulumi.set(self, "port_range", value)
 
     @property
+    @pulumi.getter(name="prefixListId")
+    def prefix_list_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id` parameter, this parameter is ignored.
+        """
+        return pulumi.get(self, "prefix_list_id")
+
+    @prefix_list_id.setter
+    def prefix_list_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix_list_id", value)
+
+    @property
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[int]]:
         """
@@ -390,6 +422,7 @@ class SecurityGroupRule(pulumi.CustomResource):
                  nic_type: Optional[pulumi.Input[str]] = None,
                  policy: Optional[pulumi.Input[str]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
+                 prefix_list_id: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  source_group_owner_account: Optional[pulumi.Input[str]] = None,
@@ -407,6 +440,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         :param pulumi.Input[str] policy: Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
         :param pulumi.Input[str] port_range: The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
                For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
+        :param pulumi.Input[str] prefix_list_id: The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id` parameter, this parameter is ignored.
         :param pulumi.Input[int] priority: Authorization policy priority, with parameter values: `1-100`, default value: 1.
         :param pulumi.Input[str] security_group_id: The security group to apply this rule to.
         :param pulumi.Input[str] source_group_owner_account: The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
@@ -442,6 +476,7 @@ class SecurityGroupRule(pulumi.CustomResource):
                  nic_type: Optional[pulumi.Input[str]] = None,
                  policy: Optional[pulumi.Input[str]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
+                 prefix_list_id: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  source_group_owner_account: Optional[pulumi.Input[str]] = None,
@@ -467,6 +502,7 @@ class SecurityGroupRule(pulumi.CustomResource):
             __props__.__dict__["nic_type"] = nic_type
             __props__.__dict__["policy"] = policy
             __props__.__dict__["port_range"] = port_range
+            __props__.__dict__["prefix_list_id"] = prefix_list_id
             __props__.__dict__["priority"] = priority
             if security_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'security_group_id'")
@@ -492,6 +528,7 @@ class SecurityGroupRule(pulumi.CustomResource):
             nic_type: Optional[pulumi.Input[str]] = None,
             policy: Optional[pulumi.Input[str]] = None,
             port_range: Optional[pulumi.Input[str]] = None,
+            prefix_list_id: Optional[pulumi.Input[str]] = None,
             priority: Optional[pulumi.Input[int]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             source_group_owner_account: Optional[pulumi.Input[str]] = None,
@@ -511,6 +548,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         :param pulumi.Input[str] policy: Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
         :param pulumi.Input[str] port_range: The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
                For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
+        :param pulumi.Input[str] prefix_list_id: The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id` parameter, this parameter is ignored.
         :param pulumi.Input[int] priority: Authorization policy priority, with parameter values: `1-100`, default value: 1.
         :param pulumi.Input[str] security_group_id: The security group to apply this rule to.
         :param pulumi.Input[str] source_group_owner_account: The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
@@ -527,6 +565,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         __props__.__dict__["nic_type"] = nic_type
         __props__.__dict__["policy"] = policy
         __props__.__dict__["port_range"] = port_range
+        __props__.__dict__["prefix_list_id"] = prefix_list_id
         __props__.__dict__["priority"] = priority
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["source_group_owner_account"] = source_group_owner_account
@@ -582,6 +621,14 @@ class SecurityGroupRule(pulumi.CustomResource):
         For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
         """
         return pulumi.get(self, "port_range")
+
+    @property
+    @pulumi.getter(name="prefixListId")
+    def prefix_list_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id` parameter, this parameter is ignored.
+        """
+        return pulumi.get(self, "prefix_list_id")
 
     @property
     @pulumi.getter

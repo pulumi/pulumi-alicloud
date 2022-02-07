@@ -46,6 +46,8 @@ export function getRouteTables(args?: GetRouteTablesArgs, opts?: pulumi.InvokeOp
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
         "resourceGroupId": args.resourceGroupId,
         "routeTableName": args.routeTableName,
         "routerId": args.routerId,
@@ -69,6 +71,8 @@ export interface GetRouteTablesArgs {
      */
     nameRegex?: string;
     outputFile?: string;
+    pageNumber?: number;
+    pageSize?: number;
     /**
      * The Id of resource group which route tables belongs.
      */
@@ -117,6 +121,8 @@ export interface GetRouteTablesResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+    readonly pageNumber?: number;
+    readonly pageSize?: number;
     /**
      * The Id of resource group which route tables belongs.
      */
@@ -142,6 +148,7 @@ export interface GetRouteTablesResult {
      */
     readonly tables: outputs.vpc.GetRouteTablesTable[];
     readonly tags?: {[key: string]: any};
+    readonly totalCount: number;
     /**
      * The VPC ID.
      */
@@ -165,6 +172,8 @@ export interface GetRouteTablesOutputArgs {
      */
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
+    pageNumber?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number>;
     /**
      * The Id of resource group which route tables belongs.
      */

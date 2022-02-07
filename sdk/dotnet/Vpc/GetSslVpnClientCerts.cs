@@ -161,6 +161,9 @@ namespace Pulumi.AliCloud.Vpc
     [OutputType]
     public sealed class GetSslVpnClientCertsResult
     {
+        /// <summary>
+        /// A list of SSL-VPN client certificates. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetSslVpnClientCertsCertResult> Certs;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

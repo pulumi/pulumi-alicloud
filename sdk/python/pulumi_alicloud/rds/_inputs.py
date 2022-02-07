@@ -12,6 +12,7 @@ __all__ = [
     'InstanceParameterArgs',
     'RdsCloneDbInstanceParameterArgs',
     'RdsParameterGroupParamDetailArgs',
+    'RdsUpgradeDbInstanceParameterArgs',
     'ReadOnlyInstanceParameterArgs',
 ]
 
@@ -104,6 +105,33 @@ class RdsParameterGroupParamDetailArgs:
     @param_value.setter
     def param_value(self, value: pulumi.Input[str]):
         pulumi.set(self, "param_value", value)
+
+
+@pulumi.input_type
+class RdsUpgradeDbInstanceParameterArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type

@@ -97,6 +97,7 @@ class _TransitRouterState:
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] status: The associating status of the Transit Router.
         :param pulumi.Input[str] transit_router_description: The description of the transit router.
+        :param pulumi.Input[str] transit_router_id: The transit router id of the transit router.
         :param pulumi.Input[str] transit_router_name: The name of the transit router.
         :param pulumi.Input[str] type: The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.
         """
@@ -166,6 +167,9 @@ class _TransitRouterState:
     @property
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The transit router id of the transit router.
+        """
         return pulumi.get(self, "transit_router_id")
 
     @transit_router_id.setter
@@ -354,6 +358,7 @@ class TransitRouter(pulumi.CustomResource):
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] status: The associating status of the Transit Router.
         :param pulumi.Input[str] transit_router_description: The description of the transit router.
+        :param pulumi.Input[str] transit_router_id: The transit router id of the transit router.
         :param pulumi.Input[str] transit_router_name: The name of the transit router.
         :param pulumi.Input[str] type: The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.
         """
@@ -405,6 +410,9 @@ class TransitRouter(pulumi.CustomResource):
     @property
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> pulumi.Output[str]:
+        """
+        The transit router id of the transit router.
+        """
         return pulumi.get(self, "transit_router_id")
 
     @property

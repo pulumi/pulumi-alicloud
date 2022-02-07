@@ -89,13 +89,10 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string> BackupType { get; private set; } = null!;
 
         /// <summary>
-        /// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        /// This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
-
-        [Output("detail")]
-        public Output<string?> Detail { get; private set; } = null!;
 
         /// <summary>
         /// Whether to disable the backup task. Valid values: `true`, `false`.
@@ -103,17 +100,11 @@ namespace Pulumi.AliCloud.Hbr
         [Output("disabled")]
         public Output<bool> Disabled { get; private set; } = null!;
 
-        [Output("exclude")]
-        public Output<string?> Exclude { get; private set; } = null!;
-
         /// <summary>
         /// The File System ID of Nas.
         /// </summary>
         [Output("fileSystemId")]
         public Output<string> FileSystemId { get; private set; } = null!;
-
-        [Output("include")]
-        public Output<string?> Include { get; private set; } = null!;
 
         /// <summary>
         /// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
@@ -144,12 +135,6 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         [Output("schedule")]
         public Output<string> Schedule { get; private set; } = null!;
-
-        [Output("speedLimit")]
-        public Output<string?> SpeedLimit { get; private set; } = null!;
-
-        [Output("updatePaths")]
-        public Output<bool?> UpdatePaths { get; private set; } = null!;
 
         /// <summary>
         /// The ID of Backup vault.
@@ -210,13 +195,10 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string> BackupType { get; set; } = null!;
 
         /// <summary>
-        /// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        /// This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         /// </summary>
-        [Input("createTime", required: true)]
-        public Input<string> CreateTime { get; set; } = null!;
-
-        [Input("detail")]
-        public Input<string>? Detail { get; set; }
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
 
         /// <summary>
         /// Whether to disable the backup task. Valid values: `true`, `false`.
@@ -224,17 +206,11 @@ namespace Pulumi.AliCloud.Hbr
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
-        [Input("exclude")]
-        public Input<string>? Exclude { get; set; }
-
         /// <summary>
         /// The File System ID of Nas.
         /// </summary>
         [Input("fileSystemId", required: true)]
         public Input<string> FileSystemId { get; set; } = null!;
-
-        [Input("include")]
-        public Input<string>? Include { get; set; }
 
         /// <summary>
         /// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
@@ -272,12 +248,6 @@ namespace Pulumi.AliCloud.Hbr
         [Input("schedule", required: true)]
         public Input<string> Schedule { get; set; } = null!;
 
-        [Input("speedLimit")]
-        public Input<string>? SpeedLimit { get; set; }
-
-        [Input("updatePaths")]
-        public Input<bool>? UpdatePaths { get; set; }
-
         /// <summary>
         /// The ID of Backup vault.
         /// </summary>
@@ -298,13 +268,10 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? BackupType { get; set; }
 
         /// <summary>
-        /// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        /// This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
-
-        [Input("detail")]
-        public Input<string>? Detail { get; set; }
 
         /// <summary>
         /// Whether to disable the backup task. Valid values: `true`, `false`.
@@ -312,17 +279,11 @@ namespace Pulumi.AliCloud.Hbr
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
-        [Input("exclude")]
-        public Input<string>? Exclude { get; set; }
-
         /// <summary>
         /// The File System ID of Nas.
         /// </summary>
         [Input("fileSystemId")]
         public Input<string>? FileSystemId { get; set; }
-
-        [Input("include")]
-        public Input<string>? Include { get; set; }
 
         /// <summary>
         /// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
@@ -359,12 +320,6 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
-
-        [Input("speedLimit")]
-        public Input<string>? SpeedLimit { get; set; }
-
-        [Input("updatePaths")]
-        public Input<bool>? UpdatePaths { get; set; }
 
         /// <summary>
         /// The ID of Backup vault.

@@ -30,7 +30,8 @@ type TransitRouterVbrAttachment struct {
 	// The ID of the CEN.
 	CenId pulumi.StringOutput `pulumi:"cenId"`
 	// The dry run.
-	DryRun       pulumi.BoolPtrOutput   `pulumi:"dryRun"`
+	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
+	// The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
 	ResourceType pulumi.StringPtrOutput `pulumi:"resourceType"`
 	// Whether to enabled route table association. The system default value is `true`.
 	RouteTableAssociationEnabled pulumi.BoolPtrOutput `pulumi:"routeTableAssociationEnabled"`
@@ -40,13 +41,15 @@ type TransitRouterVbrAttachment struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The description of the transit router vbr attachment.
 	TransitRouterAttachmentDescription pulumi.StringPtrOutput `pulumi:"transitRouterAttachmentDescription"`
-	TransitRouterAttachmentId          pulumi.StringOutput    `pulumi:"transitRouterAttachmentId"`
+	// The id of the transit router vbr attachment.
+	TransitRouterAttachmentId pulumi.StringOutput `pulumi:"transitRouterAttachmentId"`
 	// The name of the transit router vbr attachment.
 	TransitRouterAttachmentName pulumi.StringPtrOutput `pulumi:"transitRouterAttachmentName"`
 	// The ID of the transit router.
 	TransitRouterId pulumi.StringPtrOutput `pulumi:"transitRouterId"`
 	// The ID of the VBR.
-	VbrId      pulumi.StringOutput `pulumi:"vbrId"`
+	VbrId pulumi.StringOutput `pulumi:"vbrId"`
+	// The owner id of the transit router vbr attachment.
 	VbrOwnerId pulumi.StringOutput `pulumi:"vbrOwnerId"`
 }
 
@@ -90,7 +93,8 @@ type transitRouterVbrAttachmentState struct {
 	// The ID of the CEN.
 	CenId *string `pulumi:"cenId"`
 	// The dry run.
-	DryRun       *bool   `pulumi:"dryRun"`
+	DryRun *bool `pulumi:"dryRun"`
+	// The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
 	ResourceType *string `pulumi:"resourceType"`
 	// Whether to enabled route table association. The system default value is `true`.
 	RouteTableAssociationEnabled *bool `pulumi:"routeTableAssociationEnabled"`
@@ -100,13 +104,15 @@ type transitRouterVbrAttachmentState struct {
 	Status *string `pulumi:"status"`
 	// The description of the transit router vbr attachment.
 	TransitRouterAttachmentDescription *string `pulumi:"transitRouterAttachmentDescription"`
-	TransitRouterAttachmentId          *string `pulumi:"transitRouterAttachmentId"`
+	// The id of the transit router vbr attachment.
+	TransitRouterAttachmentId *string `pulumi:"transitRouterAttachmentId"`
 	// The name of the transit router vbr attachment.
 	TransitRouterAttachmentName *string `pulumi:"transitRouterAttachmentName"`
 	// The ID of the transit router.
 	TransitRouterId *string `pulumi:"transitRouterId"`
 	// The ID of the VBR.
-	VbrId      *string `pulumi:"vbrId"`
+	VbrId *string `pulumi:"vbrId"`
+	// The owner id of the transit router vbr attachment.
 	VbrOwnerId *string `pulumi:"vbrOwnerId"`
 }
 
@@ -116,7 +122,8 @@ type TransitRouterVbrAttachmentState struct {
 	// The ID of the CEN.
 	CenId pulumi.StringPtrInput
 	// The dry run.
-	DryRun       pulumi.BoolPtrInput
+	DryRun pulumi.BoolPtrInput
+	// The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
 	ResourceType pulumi.StringPtrInput
 	// Whether to enabled route table association. The system default value is `true`.
 	RouteTableAssociationEnabled pulumi.BoolPtrInput
@@ -126,13 +133,15 @@ type TransitRouterVbrAttachmentState struct {
 	Status pulumi.StringPtrInput
 	// The description of the transit router vbr attachment.
 	TransitRouterAttachmentDescription pulumi.StringPtrInput
-	TransitRouterAttachmentId          pulumi.StringPtrInput
+	// The id of the transit router vbr attachment.
+	TransitRouterAttachmentId pulumi.StringPtrInput
 	// The name of the transit router vbr attachment.
 	TransitRouterAttachmentName pulumi.StringPtrInput
 	// The ID of the transit router.
 	TransitRouterId pulumi.StringPtrInput
 	// The ID of the VBR.
-	VbrId      pulumi.StringPtrInput
+	VbrId pulumi.StringPtrInput
+	// The owner id of the transit router vbr attachment.
 	VbrOwnerId pulumi.StringPtrInput
 }
 
@@ -146,7 +155,8 @@ type transitRouterVbrAttachmentArgs struct {
 	// The ID of the CEN.
 	CenId string `pulumi:"cenId"`
 	// The dry run.
-	DryRun       *bool   `pulumi:"dryRun"`
+	DryRun *bool `pulumi:"dryRun"`
+	// The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
 	ResourceType *string `pulumi:"resourceType"`
 	// Whether to enabled route table association. The system default value is `true`.
 	RouteTableAssociationEnabled *bool `pulumi:"routeTableAssociationEnabled"`
@@ -159,7 +169,8 @@ type transitRouterVbrAttachmentArgs struct {
 	// The ID of the transit router.
 	TransitRouterId *string `pulumi:"transitRouterId"`
 	// The ID of the VBR.
-	VbrId      string  `pulumi:"vbrId"`
+	VbrId string `pulumi:"vbrId"`
+	// The owner id of the transit router vbr attachment.
 	VbrOwnerId *string `pulumi:"vbrOwnerId"`
 }
 
@@ -170,7 +181,8 @@ type TransitRouterVbrAttachmentArgs struct {
 	// The ID of the CEN.
 	CenId pulumi.StringInput
 	// The dry run.
-	DryRun       pulumi.BoolPtrInput
+	DryRun pulumi.BoolPtrInput
+	// The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
 	ResourceType pulumi.StringPtrInput
 	// Whether to enabled route table association. The system default value is `true`.
 	RouteTableAssociationEnabled pulumi.BoolPtrInput
@@ -183,7 +195,8 @@ type TransitRouterVbrAttachmentArgs struct {
 	// The ID of the transit router.
 	TransitRouterId pulumi.StringPtrInput
 	// The ID of the VBR.
-	VbrId      pulumi.StringInput
+	VbrId pulumi.StringInput
+	// The owner id of the transit router vbr attachment.
 	VbrOwnerId pulumi.StringPtrInput
 }
 

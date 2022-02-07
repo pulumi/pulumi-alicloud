@@ -83,7 +83,7 @@ export class BackupPolicy extends pulumi.CustomResource {
      */
     public readonly archiveBackupKeepCount!: pulumi.Output<number>;
     /**
-     * Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+     * Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
      */
     public readonly archiveBackupKeepPolicy!: pulumi.Output<string>;
     /**
@@ -245,7 +245,7 @@ export interface BackupPolicyState {
      */
     archiveBackupKeepCount?: pulumi.Input<number>;
     /**
-     * Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+     * Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
      */
     archiveBackupKeepPolicy?: pulumi.Input<string>;
     /**
@@ -344,7 +344,7 @@ export interface BackupPolicyArgs {
      */
     archiveBackupKeepCount?: pulumi.Input<number>;
     /**
-     * Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+     * Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
      */
     archiveBackupKeepPolicy?: pulumi.Input<string>;
     /**

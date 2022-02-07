@@ -57,6 +57,9 @@ export class TransitRouterVbrAttachment extends pulumi.CustomResource {
      * The dry run.
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    /**
+     * The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+     */
     public readonly resourceType!: pulumi.Output<string | undefined>;
     /**
      * Whether to enabled route table association. The system default value is `true`.
@@ -74,6 +77,9 @@ export class TransitRouterVbrAttachment extends pulumi.CustomResource {
      * The description of the transit router vbr attachment.
      */
     public readonly transitRouterAttachmentDescription!: pulumi.Output<string | undefined>;
+    /**
+     * The id of the transit router vbr attachment.
+     */
     public /*out*/ readonly transitRouterAttachmentId!: pulumi.Output<string>;
     /**
      * The name of the transit router vbr attachment.
@@ -87,6 +93,9 @@ export class TransitRouterVbrAttachment extends pulumi.CustomResource {
      * The ID of the VBR.
      */
     public readonly vbrId!: pulumi.Output<string>;
+    /**
+     * The owner id of the transit router vbr attachment.
+     */
     public readonly vbrOwnerId!: pulumi.Output<string>;
 
     /**
@@ -158,6 +167,9 @@ export interface TransitRouterVbrAttachmentState {
      * The dry run.
      */
     dryRun?: pulumi.Input<boolean>;
+    /**
+     * The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+     */
     resourceType?: pulumi.Input<string>;
     /**
      * Whether to enabled route table association. The system default value is `true`.
@@ -175,6 +187,9 @@ export interface TransitRouterVbrAttachmentState {
      * The description of the transit router vbr attachment.
      */
     transitRouterAttachmentDescription?: pulumi.Input<string>;
+    /**
+     * The id of the transit router vbr attachment.
+     */
     transitRouterAttachmentId?: pulumi.Input<string>;
     /**
      * The name of the transit router vbr attachment.
@@ -188,6 +203,9 @@ export interface TransitRouterVbrAttachmentState {
      * The ID of the VBR.
      */
     vbrId?: pulumi.Input<string>;
+    /**
+     * The owner id of the transit router vbr attachment.
+     */
     vbrOwnerId?: pulumi.Input<string>;
 }
 
@@ -207,6 +225,9 @@ export interface TransitRouterVbrAttachmentArgs {
      * The dry run.
      */
     dryRun?: pulumi.Input<boolean>;
+    /**
+     * The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+     */
     resourceType?: pulumi.Input<string>;
     /**
      * Whether to enabled route table association. The system default value is `true`.
@@ -232,5 +253,8 @@ export interface TransitRouterVbrAttachmentArgs {
      * The ID of the VBR.
      */
     vbrId: pulumi.Input<string>;
+    /**
+     * The owner id of the transit router vbr attachment.
+     */
     vbrOwnerId?: pulumi.Input<string>;
 }

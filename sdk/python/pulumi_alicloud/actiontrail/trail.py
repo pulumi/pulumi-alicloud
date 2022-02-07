@@ -484,6 +484,10 @@ class Trail(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.95.0+
 
+        > **NOTE:** You can create a trail to deliver events to Log Service, Object Storage Service (OSS), or both. Before you call this operation to create a trail, make sure that the following requirements are met.
+        - Deliver events to Log Service: A project is created in Log Service.
+        - Deliver events to OSS: A bucket is created in OSS.
+
         ## Example Usage
 
         ```python
@@ -533,6 +537,10 @@ class Trail(pulumi.CustomResource):
         Provides a ActionTrail Trail resource. For information about alicloud actiontrail trail and how to use it, see [What is Resource Alicloud ActionTrail Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
 
         > **NOTE:** Available in 1.95.0+
+
+        > **NOTE:** You can create a trail to deliver events to Log Service, Object Storage Service (OSS), or both. Before you call this operation to create a trail, make sure that the following requirements are met.
+        - Deliver events to Log Service: A project is created in Log Service.
+        - Deliver events to OSS: A bucket is created in OSS.
 
         ## Example Usage
 

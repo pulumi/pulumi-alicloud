@@ -21,7 +21,7 @@ class GetLoadBalancersResult:
     """
     A collection of values returned by getLoadBalancers.
     """
-    def __init__(__self__, address=None, address_ip_version=None, address_type=None, balancers=None, enable_details=None, id=None, ids=None, internet_charge_type=None, load_balancer_name=None, master_zone_id=None, name_regex=None, names=None, network_type=None, output_file=None, payment_type=None, resource_group_id=None, server_id=None, server_intranet_address=None, slave_zone_id=None, slbs=None, status=None, tags=None, vpc_id=None, vswitch_id=None):
+    def __init__(__self__, address=None, address_ip_version=None, address_type=None, balancers=None, enable_details=None, id=None, ids=None, internet_charge_type=None, load_balancer_name=None, master_zone_id=None, name_regex=None, names=None, network_type=None, output_file=None, page_number=None, page_size=None, payment_type=None, resource_group_id=None, server_id=None, server_intranet_address=None, slave_zone_id=None, slbs=None, status=None, tags=None, total_count=None, vpc_id=None, vswitch_id=None):
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
         pulumi.set(__self__, "address", address)
@@ -64,6 +64,12 @@ class GetLoadBalancersResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if page_number and not isinstance(page_number, int):
+            raise TypeError("Expected argument 'page_number' to be a int")
+        pulumi.set(__self__, "page_number", page_number)
+        if page_size and not isinstance(page_size, int):
+            raise TypeError("Expected argument 'page_size' to be a int")
+        pulumi.set(__self__, "page_size", page_size)
         if payment_type and not isinstance(payment_type, str):
             raise TypeError("Expected argument 'payment_type' to be a str")
         pulumi.set(__self__, "payment_type", payment_type)
@@ -92,6 +98,9 @@ class GetLoadBalancersResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
+        if total_count and not isinstance(total_count, int):
+            raise TypeError("Expected argument 'total_count' to be a int")
+        pulumi.set(__self__, "total_count", total_count)
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         pulumi.set(__self__, "vpc_id", vpc_id)
@@ -185,6 +194,16 @@ class GetLoadBalancersResult:
         return pulumi.get(self, "output_file")
 
     @property
+    @pulumi.getter(name="pageNumber")
+    def page_number(self) -> Optional[int]:
+        return pulumi.get(self, "page_number")
+
+    @property
+    @pulumi.getter(name="pageSize")
+    def page_size(self) -> Optional[int]:
+        return pulumi.get(self, "page_size")
+
+    @property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[str]:
         return pulumi.get(self, "payment_type")
@@ -234,6 +253,11 @@ class GetLoadBalancersResult:
         return pulumi.get(self, "tags")
 
     @property
+    @pulumi.getter(name="totalCount")
+    def total_count(self) -> int:
+        return pulumi.get(self, "total_count")
+
+    @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[str]:
         """
@@ -270,6 +294,8 @@ class AwaitableGetLoadBalancersResult(GetLoadBalancersResult):
             names=self.names,
             network_type=self.network_type,
             output_file=self.output_file,
+            page_number=self.page_number,
+            page_size=self.page_size,
             payment_type=self.payment_type,
             resource_group_id=self.resource_group_id,
             server_id=self.server_id,
@@ -278,6 +304,7 @@ class AwaitableGetLoadBalancersResult(GetLoadBalancersResult):
             slbs=self.slbs,
             status=self.status,
             tags=self.tags,
+            total_count=self.total_count,
             vpc_id=self.vpc_id,
             vswitch_id=self.vswitch_id)
 
@@ -293,6 +320,8 @@ def get_load_balancers(address: Optional[str] = None,
                        name_regex: Optional[str] = None,
                        network_type: Optional[str] = None,
                        output_file: Optional[str] = None,
+                       page_number: Optional[int] = None,
+                       page_size: Optional[int] = None,
                        payment_type: Optional[str] = None,
                        resource_group_id: Optional[str] = None,
                        server_id: Optional[str] = None,
@@ -337,6 +366,8 @@ def get_load_balancers(address: Optional[str] = None,
     __args__['nameRegex'] = name_regex
     __args__['networkType'] = network_type
     __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
     __args__['paymentType'] = payment_type
     __args__['resourceGroupId'] = resource_group_id
     __args__['serverId'] = server_id
@@ -367,6 +398,8 @@ def get_load_balancers(address: Optional[str] = None,
         names=__ret__.names,
         network_type=__ret__.network_type,
         output_file=__ret__.output_file,
+        page_number=__ret__.page_number,
+        page_size=__ret__.page_size,
         payment_type=__ret__.payment_type,
         resource_group_id=__ret__.resource_group_id,
         server_id=__ret__.server_id,
@@ -375,6 +408,7 @@ def get_load_balancers(address: Optional[str] = None,
         slbs=__ret__.slbs,
         status=__ret__.status,
         tags=__ret__.tags,
+        total_count=__ret__.total_count,
         vpc_id=__ret__.vpc_id,
         vswitch_id=__ret__.vswitch_id)
 
@@ -391,6 +425,8 @@ def get_load_balancers_output(address: Optional[pulumi.Input[Optional[str]]] = N
                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                               network_type: Optional[pulumi.Input[Optional[str]]] = None,
                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                              page_number: Optional[pulumi.Input[Optional[int]]] = None,
+                              page_size: Optional[pulumi.Input[Optional[int]]] = None,
                               payment_type: Optional[pulumi.Input[Optional[str]]] = None,
                               resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                               server_id: Optional[pulumi.Input[Optional[str]]] = None,

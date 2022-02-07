@@ -30,7 +30,7 @@ type DomainExtension struct {
 
 	// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
 	DeleteProtectionValidation pulumi.BoolPtrOutput `pulumi:"deleteProtectionValidation"`
-	// The domain name,
+	// The domain name.
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
 	FrontendPort pulumi.IntOutput `pulumi:"frontendPort"`
@@ -83,7 +83,7 @@ func GetDomainExtension(ctx *pulumi.Context,
 type domainExtensionState struct {
 	// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
 	DeleteProtectionValidation *bool `pulumi:"deleteProtectionValidation"`
-	// The domain name,
+	// The domain name.
 	Domain *string `pulumi:"domain"`
 	// The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
 	FrontendPort *int `pulumi:"frontendPort"`
@@ -96,7 +96,7 @@ type domainExtensionState struct {
 type DomainExtensionState struct {
 	// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
 	DeleteProtectionValidation pulumi.BoolPtrInput
-	// The domain name,
+	// The domain name.
 	Domain pulumi.StringPtrInput
 	// The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
 	FrontendPort pulumi.IntPtrInput
@@ -113,7 +113,7 @@ func (DomainExtensionState) ElementType() reflect.Type {
 type domainExtensionArgs struct {
 	// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
 	DeleteProtectionValidation *bool `pulumi:"deleteProtectionValidation"`
-	// The domain name,
+	// The domain name.
 	Domain string `pulumi:"domain"`
 	// The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
 	FrontendPort int `pulumi:"frontendPort"`
@@ -127,7 +127,7 @@ type domainExtensionArgs struct {
 type DomainExtensionArgs struct {
 	// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
 	DeleteProtectionValidation pulumi.BoolPtrInput
-	// The domain name,
+	// The domain name.
 	Domain pulumi.StringInput
 	// The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
 	FrontendPort pulumi.IntInput

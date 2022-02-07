@@ -21,7 +21,7 @@ class GetInstancesResult:
     """
     A collection of values returned by getInstances.
     """
-    def __init__(__self__, availability_zone=None, id=None, ids=None, image_id=None, instances=None, name_regex=None, names=None, output_file=None, ram_role_name=None, resource_group_id=None, status=None, tags=None, vpc_id=None, vswitch_id=None):
+    def __init__(__self__, availability_zone=None, id=None, ids=None, image_id=None, instances=None, name_regex=None, names=None, output_file=None, page_number=None, page_size=None, ram_role_name=None, resource_group_id=None, status=None, tags=None, total_count=None, vpc_id=None, vswitch_id=None):
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
         pulumi.set(__self__, "availability_zone", availability_zone)
@@ -46,6 +46,12 @@ class GetInstancesResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if page_number and not isinstance(page_number, int):
+            raise TypeError("Expected argument 'page_number' to be a int")
+        pulumi.set(__self__, "page_number", page_number)
+        if page_size and not isinstance(page_size, int):
+            raise TypeError("Expected argument 'page_size' to be a int")
+        pulumi.set(__self__, "page_size", page_size)
         if ram_role_name and not isinstance(ram_role_name, str):
             raise TypeError("Expected argument 'ram_role_name' to be a str")
         pulumi.set(__self__, "ram_role_name", ram_role_name)
@@ -58,6 +64,9 @@ class GetInstancesResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
+        if total_count and not isinstance(total_count, int):
+            raise TypeError("Expected argument 'total_count' to be a int")
+        pulumi.set(__self__, "total_count", total_count)
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         pulumi.set(__self__, "vpc_id", vpc_id)
@@ -124,6 +133,16 @@ class GetInstancesResult:
         return pulumi.get(self, "output_file")
 
     @property
+    @pulumi.getter(name="pageNumber")
+    def page_number(self) -> Optional[int]:
+        return pulumi.get(self, "page_number")
+
+    @property
+    @pulumi.getter(name="pageSize")
+    def page_size(self) -> Optional[int]:
+        return pulumi.get(self, "page_size")
+
+    @property
     @pulumi.getter(name="ramRoleName")
     def ram_role_name(self) -> Optional[str]:
         """
@@ -156,6 +175,11 @@ class GetInstancesResult:
         return pulumi.get(self, "tags")
 
     @property
+    @pulumi.getter(name="totalCount")
+    def total_count(self) -> int:
+        return pulumi.get(self, "total_count")
+
+    @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[str]:
         """
@@ -186,10 +210,13 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
+            page_number=self.page_number,
+            page_size=self.page_size,
             ram_role_name=self.ram_role_name,
             resource_group_id=self.resource_group_id,
             status=self.status,
             tags=self.tags,
+            total_count=self.total_count,
             vpc_id=self.vpc_id,
             vswitch_id=self.vswitch_id)
 
@@ -199,6 +226,8 @@ def get_instances(availability_zone: Optional[str] = None,
                   image_id: Optional[str] = None,
                   name_regex: Optional[str] = None,
                   output_file: Optional[str] = None,
+                  page_number: Optional[int] = None,
+                  page_size: Optional[int] = None,
                   ram_role_name: Optional[str] = None,
                   resource_group_id: Optional[str] = None,
                   status: Optional[str] = None,
@@ -248,6 +277,8 @@ def get_instances(availability_zone: Optional[str] = None,
     __args__['imageId'] = image_id
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
     __args__['ramRoleName'] = ram_role_name
     __args__['resourceGroupId'] = resource_group_id
     __args__['status'] = status
@@ -269,10 +300,13 @@ def get_instances(availability_zone: Optional[str] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file,
+        page_number=__ret__.page_number,
+        page_size=__ret__.page_size,
         ram_role_name=__ret__.ram_role_name,
         resource_group_id=__ret__.resource_group_id,
         status=__ret__.status,
         tags=__ret__.tags,
+        total_count=__ret__.total_count,
         vpc_id=__ret__.vpc_id,
         vswitch_id=__ret__.vswitch_id)
 
@@ -283,6 +317,8 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
                          image_id: Optional[pulumi.Input[Optional[str]]] = None,
                          name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         page_number: Optional[pulumi.Input[Optional[int]]] = None,
+                         page_size: Optional[pulumi.Input[Optional[int]]] = None,
                          ram_role_name: Optional[pulumi.Input[Optional[str]]] = None,
                          resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                          status: Optional[pulumi.Input[Optional[str]]] = None,

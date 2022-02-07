@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./accessStrategy";
+export * from "./addressPool";
 export * from "./alidnsDomain";
 export * from "./alidnsDomainAttachment";
 export * from "./alidnsInstance";
@@ -16,6 +18,8 @@ export * from "./dnsDomain";
 export * from "./domain";
 export * from "./domainAttachment";
 export * from "./domainGroup";
+export * from "./getAccessStrategies";
+export * from "./getAddressPools";
 export * from "./getAlidnsDomainGroups";
 export * from "./getAlidnsDomains";
 export * from "./getAlidnsInstances";
@@ -33,9 +37,12 @@ export * from "./getResolutionLines";
 export * from "./group";
 export * from "./gtmInstance";
 export * from "./instance";
+export * from "./monitorConfig";
 export * from "./record";
 
 // Import resources to register:
+import { AccessStrategy } from "./accessStrategy";
+import { AddressPool } from "./addressPool";
 import { AlidnsDomain } from "./alidnsDomain";
 import { AlidnsDomainAttachment } from "./alidnsDomainAttachment";
 import { AlidnsInstance } from "./alidnsInstance";
@@ -50,12 +57,17 @@ import { DomainGroup } from "./domainGroup";
 import { Group } from "./group";
 import { GtmInstance } from "./gtmInstance";
 import { Instance } from "./instance";
+import { MonitorConfig } from "./monitorConfig";
 import { Record } from "./record";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:dns/accessStrategy:AccessStrategy":
+                return new AccessStrategy(name, <any>undefined, { urn })
+            case "alicloud:dns/addressPool:AddressPool":
+                return new AddressPool(name, <any>undefined, { urn })
             case "alicloud:dns/alidnsDomain:AlidnsDomain":
                 return new AlidnsDomain(name, <any>undefined, { urn })
             case "alicloud:dns/alidnsDomainAttachment:AlidnsDomainAttachment":
@@ -84,6 +96,8 @@ const _module = {
                 return new GtmInstance(name, <any>undefined, { urn })
             case "alicloud:dns/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "alicloud:dns/monitorConfig:MonitorConfig":
+                return new MonitorConfig(name, <any>undefined, { urn })
             case "alicloud:dns/record:Record":
                 return new Record(name, <any>undefined, { urn })
             default:
@@ -91,6 +105,8 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "dns/accessStrategy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dns/addressPool", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dns/alidnsDomain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dns/alidnsDomainAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dns/alidnsInstance", _module)
@@ -105,4 +121,5 @@ pulumi.runtime.registerResourceModule("alicloud", "dns/domainGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dns/group", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dns/gtmInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dns/instance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dns/monitorConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dns/record", _module)

@@ -54,6 +54,8 @@ func GetConsumerGroups(ctx *pulumi.Context, args *GetConsumerGroupsArgs, opts ..
 type GetConsumerGroupsArgs struct {
 	// A regex string to filter results by the consumer group id.
 	ConsumerIdRegex *string `pulumi:"consumerIdRegex"`
+	// A list of ALIKAFKA Consumer Groups IDs, It is formatted to `<instance_id>:<consumer_id>`.
+	Ids []string `pulumi:"ids"`
 	// ID of the ALIKAFKA Instance that owns the consumer groups.
 	InstanceId string  `pulumi:"instanceId"`
 	OutputFile *string `pulumi:"outputFile"`
@@ -61,13 +63,18 @@ type GetConsumerGroupsArgs struct {
 
 // A collection of values returned by getConsumerGroups.
 type GetConsumerGroupsResult struct {
-	ConsumerIdRegex *string `pulumi:"consumerIdRegex"`
-	// A list of consumer group ids.
-	ConsumerIds []string `pulumi:"consumerIds"`
+	ConsumerIdRegex *string  `pulumi:"consumerIdRegex"`
+	ConsumerIds     []string `pulumi:"consumerIds"`
+	// A list of consumer group. Each element contains the following attributes:
+	Groups []GetConsumerGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string  `pulumi:"id"`
-	InstanceId string  `pulumi:"instanceId"`
-	OutputFile *string `pulumi:"outputFile"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The instanceId of the instance.
+	InstanceId string `pulumi:"instanceId"`
+	// A list of consumer group names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 }
 
 func GetConsumerGroupsOutput(ctx *pulumi.Context, args GetConsumerGroupsOutputArgs, opts ...pulumi.InvokeOption) GetConsumerGroupsResultOutput {
@@ -83,6 +90,8 @@ func GetConsumerGroupsOutput(ctx *pulumi.Context, args GetConsumerGroupsOutputAr
 type GetConsumerGroupsOutputArgs struct {
 	// A regex string to filter results by the consumer group id.
 	ConsumerIdRegex pulumi.StringPtrInput `pulumi:"consumerIdRegex"`
+	// A list of ALIKAFKA Consumer Groups IDs, It is formatted to `<instance_id>:<consumer_id>`.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// ID of the ALIKAFKA Instance that owns the consumer groups.
 	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
@@ -111,9 +120,13 @@ func (o GetConsumerGroupsResultOutput) ConsumerIdRegex() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetConsumerGroupsResult) *string { return v.ConsumerIdRegex }).(pulumi.StringPtrOutput)
 }
 
-// A list of consumer group ids.
 func (o GetConsumerGroupsResultOutput) ConsumerIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetConsumerGroupsResult) []string { return v.ConsumerIds }).(pulumi.StringArrayOutput)
+}
+
+// A list of consumer group. Each element contains the following attributes:
+func (o GetConsumerGroupsResultOutput) Groups() GetConsumerGroupsGroupArrayOutput {
+	return o.ApplyT(func(v GetConsumerGroupsResult) []GetConsumerGroupsGroup { return v.Groups }).(GetConsumerGroupsGroupArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -121,8 +134,18 @@ func (o GetConsumerGroupsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConsumerGroupsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+func (o GetConsumerGroupsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConsumerGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// The instanceId of the instance.
 func (o GetConsumerGroupsResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConsumerGroupsResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// A list of consumer group names.
+func (o GetConsumerGroupsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConsumerGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
 func (o GetConsumerGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {

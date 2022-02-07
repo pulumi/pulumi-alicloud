@@ -58,6 +58,10 @@ export class SecurityGroupRule extends pulumi.CustomResource {
      */
     public readonly portRange!: pulumi.Output<string | undefined>;
     /**
+     * The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId` parameter, this parameter is ignored.
+     */
+    public readonly prefixListId!: pulumi.Output<string>;
+    /**
      * Authorization policy priority, with parameter values: `1-100`, default value: 1.
      */
     public readonly priority!: pulumi.Output<number | undefined>;
@@ -97,6 +101,7 @@ export class SecurityGroupRule extends pulumi.CustomResource {
             resourceInputs["nicType"] = state ? state.nicType : undefined;
             resourceInputs["policy"] = state ? state.policy : undefined;
             resourceInputs["portRange"] = state ? state.portRange : undefined;
+            resourceInputs["prefixListId"] = state ? state.prefixListId : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             resourceInputs["sourceGroupOwnerAccount"] = state ? state.sourceGroupOwnerAccount : undefined;
@@ -119,6 +124,7 @@ export class SecurityGroupRule extends pulumi.CustomResource {
             resourceInputs["nicType"] = args ? args.nicType : undefined;
             resourceInputs["policy"] = args ? args.policy : undefined;
             resourceInputs["portRange"] = args ? args.portRange : undefined;
+            resourceInputs["prefixListId"] = args ? args.prefixListId : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             resourceInputs["sourceGroupOwnerAccount"] = args ? args.sourceGroupOwnerAccount : undefined;
@@ -159,6 +165,10 @@ export interface SecurityGroupRuleState {
      * For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
      */
     portRange?: pulumi.Input<string>;
+    /**
+     * The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId` parameter, this parameter is ignored.
+     */
+    prefixListId?: pulumi.Input<string>;
     /**
      * Authorization policy priority, with parameter values: `1-100`, default value: 1.
      */
@@ -210,6 +220,10 @@ export interface SecurityGroupRuleArgs {
      * For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
      */
     portRange?: pulumi.Input<string>;
+    /**
+     * The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId` parameter, this parameter is ignored.
+     */
+    prefixListId?: pulumi.Input<string>;
     /**
      * Authorization policy priority, with parameter values: `1-100`, default value: 1.
      */

@@ -222,6 +222,12 @@ namespace Pulumi.AliCloud.Ecs
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        [Input("pageNumber")]
+        public int? PageNumber { get; set; }
+
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
+
         /// <summary>
         /// Payment method for disk.
         /// </summary>
@@ -410,6 +416,12 @@ namespace Pulumi.AliCloud.Ecs
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        [Input("pageNumber")]
+        public Input<int>? PageNumber { get; set; }
+
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
+
         /// <summary>
         /// Payment method for disk.
         /// </summary>
@@ -498,12 +510,15 @@ namespace Pulumi.AliCloud.Ecs
         public readonly ImmutableArray<string> Names;
         public readonly ImmutableArray<Outputs.GetEcsDisksOperationLockResult> OperationLocks;
         public readonly string? OutputFile;
+        public readonly int? PageNumber;
+        public readonly int? PageSize;
         public readonly string? PaymentType;
         public readonly bool? Portable;
         public readonly string? ResourceGroupId;
         public readonly string? SnapshotId;
         public readonly string? Status;
         public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly int TotalCount;
         public readonly string? Type;
         public readonly string? ZoneId;
 
@@ -553,6 +568,10 @@ namespace Pulumi.AliCloud.Ecs
 
             string? outputFile,
 
+            int? pageNumber,
+
+            int? pageSize,
+
             string? paymentType,
 
             bool? portable,
@@ -564,6 +583,8 @@ namespace Pulumi.AliCloud.Ecs
             string? status,
 
             ImmutableDictionary<string, object>? tags,
+
+            int totalCount,
 
             string? type,
 
@@ -591,12 +612,15 @@ namespace Pulumi.AliCloud.Ecs
             Names = names;
             OperationLocks = operationLocks;
             OutputFile = outputFile;
+            PageNumber = pageNumber;
+            PageSize = pageSize;
             PaymentType = paymentType;
             Portable = portable;
             ResourceGroupId = resourceGroupId;
             SnapshotId = snapshotId;
             Status = status;
             Tags = tags;
+            TotalCount = totalCount;
             Type = type;
             ZoneId = zoneId;
         }

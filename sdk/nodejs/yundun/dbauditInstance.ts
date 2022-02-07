@@ -5,30 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Cloud DBaudit instance resource ("Yundun_dbaudit" is the short term of this product).
- *
- * > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
- *
- * > **NOTE:** Available in 1.62.0+ .
- *
- * > **NOTE:** In order to destroy Cloud DBaudit instance , users are required to apply for white list first
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultDBAuditInstance = new alicloud.yundun.DBAuditInstance("default", {
- *     description: "Terraform-test",
- *     period: 1,
- *     planCode: "alpha.professional",
- *     vswitchId: "v-testVswitch",
- * });
- * ```
- *
  * ## Import
  *
  * Yundun_dbaudit instance can be imported using the id, e.g.
@@ -69,7 +45,7 @@ export class DBAuditInstance extends pulumi.CustomResource {
      * Description of the instance. This name can have a string of 1 to 63 characters.
      */
     public readonly description!: pulumi.Output<string>;
-    public readonly period!: pulumi.Output<number | undefined>;
+    public readonly period!: pulumi.Output<number>;
     /**
      * Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
      */
@@ -110,6 +86,9 @@ export class DBAuditInstance extends pulumi.CustomResource {
             const args = argsOrState as DBAuditInstanceArgs | undefined;
             if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
+            }
+            if ((!args || args.period === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'period'");
             }
             if ((!args || args.planCode === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'planCode'");
@@ -164,7 +143,7 @@ export interface DBAuditInstanceArgs {
      * Description of the instance. This name can have a string of 1 to 63 characters.
      */
     description: pulumi.Input<string>;
-    period?: pulumi.Input<number>;
+    period: pulumi.Input<number>;
     /**
      * Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
      */

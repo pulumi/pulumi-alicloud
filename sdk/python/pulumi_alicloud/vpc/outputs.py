@@ -17,6 +17,9 @@ __all__ = [
     'NetworkAclEntriesIngress',
     'NetworkAclIngressAclEntry',
     'NetworkAclResource',
+    'GetBgpGroupsGroupResult',
+    'GetBgpNetworksNetworkResult',
+    'GetBgpPeersPeerResult',
     'GetCommonBandwidthPackagesPackageResult',
     'GetCommonBandwidthPackagesPackagePublicIpAddressResult',
     'GetDhcpOptionsSetsSetResult',
@@ -612,6 +615,423 @@ class NetworkAclResource(dict):
         The type of the associated resource. Valid values `VSwitch`.
         """
         return pulumi.get(self, "resource_type")
+
+
+@pulumi.output_type
+class GetBgpGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 auth_key: str,
+                 bgp_group_name: str,
+                 description: str,
+                 hold: str,
+                 id: str,
+                 ip_version: str,
+                 is_fake_asn: bool,
+                 keepalive: str,
+                 local_asn: int,
+                 peer_asn: int,
+                 route_limit: str,
+                 router_id: str,
+                 status: str):
+        """
+        :param str auth_key: The key used by the BGP group.
+        :param str bgp_group_name: The name of the BGP group.
+        :param str description: Description of the BGP group.
+        :param str hold: The hold time to wait for the incoming BGP message. If no message has been passed in after the hold time, the BGP neighbor is considered disconnected.
+        :param str id: The ID of the Bgp Group.
+        :param str ip_version: IP version.
+        :param bool is_fake_asn: Whether the AS number is false.
+        :param str keepalive: The keepalive time.
+        :param int local_asn: The local AS number.
+        :param int peer_asn: The autonomous system (AS) number of the BGP peer.
+        :param str route_limit: Routing limits.
+        :param str router_id: The ID of the VBR.
+        :param str status: The status of the resource.
+        """
+        pulumi.set(__self__, "auth_key", auth_key)
+        pulumi.set(__self__, "bgp_group_name", bgp_group_name)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "hold", hold)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip_version", ip_version)
+        pulumi.set(__self__, "is_fake_asn", is_fake_asn)
+        pulumi.set(__self__, "keepalive", keepalive)
+        pulumi.set(__self__, "local_asn", local_asn)
+        pulumi.set(__self__, "peer_asn", peer_asn)
+        pulumi.set(__self__, "route_limit", route_limit)
+        pulumi.set(__self__, "router_id", router_id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="authKey")
+    def auth_key(self) -> str:
+        """
+        The key used by the BGP group.
+        """
+        return pulumi.get(self, "auth_key")
+
+    @property
+    @pulumi.getter(name="bgpGroupName")
+    def bgp_group_name(self) -> str:
+        """
+        The name of the BGP group.
+        """
+        return pulumi.get(self, "bgp_group_name")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Description of the BGP group.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def hold(self) -> str:
+        """
+        The hold time to wait for the incoming BGP message. If no message has been passed in after the hold time, the BGP neighbor is considered disconnected.
+        """
+        return pulumi.get(self, "hold")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Bgp Group.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> str:
+        """
+        IP version.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @property
+    @pulumi.getter(name="isFakeAsn")
+    def is_fake_asn(self) -> bool:
+        """
+        Whether the AS number is false.
+        """
+        return pulumi.get(self, "is_fake_asn")
+
+    @property
+    @pulumi.getter
+    def keepalive(self) -> str:
+        """
+        The keepalive time.
+        """
+        return pulumi.get(self, "keepalive")
+
+    @property
+    @pulumi.getter(name="localAsn")
+    def local_asn(self) -> int:
+        """
+        The local AS number.
+        """
+        return pulumi.get(self, "local_asn")
+
+    @property
+    @pulumi.getter(name="peerAsn")
+    def peer_asn(self) -> int:
+        """
+        The autonomous system (AS) number of the BGP peer.
+        """
+        return pulumi.get(self, "peer_asn")
+
+    @property
+    @pulumi.getter(name="routeLimit")
+    def route_limit(self) -> str:
+        """
+        Routing limits.
+        """
+        return pulumi.get(self, "route_limit")
+
+    @property
+    @pulumi.getter(name="routerId")
+    def router_id(self) -> str:
+        """
+        The ID of the VBR.
+        """
+        return pulumi.get(self, "router_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetBgpNetworksNetworkResult(dict):
+    def __init__(__self__, *,
+                 dst_cidr_block: str,
+                 id: str,
+                 router_id: str,
+                 status: str):
+        """
+        :param str dst_cidr_block: Advertised BGP networks.
+        :param str id: The ID of the Bgp Network. The value formats as `<router_id>:<dst_cidr_block>`.
+        :param str router_id: The ID of the vRouter.
+        :param str status: The state of the advertised BGP network.
+        """
+        pulumi.set(__self__, "dst_cidr_block", dst_cidr_block)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "router_id", router_id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="dstCidrBlock")
+    def dst_cidr_block(self) -> str:
+        """
+        Advertised BGP networks.
+        """
+        return pulumi.get(self, "dst_cidr_block")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Bgp Network. The value formats as `<router_id>:<dst_cidr_block>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="routerId")
+    def router_id(self) -> str:
+        """
+        The ID of the vRouter.
+        """
+        return pulumi.get(self, "router_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The state of the advertised BGP network.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetBgpPeersPeerResult(dict):
+    def __init__(__self__, *,
+                 auth_key: str,
+                 bfd_multi_hop: int,
+                 bgp_group_id: str,
+                 bgp_peer_id: str,
+                 bgp_peer_name: str,
+                 bgp_status: str,
+                 description: str,
+                 enable_bfd: bool,
+                 hold: str,
+                 id: str,
+                 ip_version: str,
+                 is_fake: bool,
+                 keepalive: str,
+                 local_asn: str,
+                 peer_asn: str,
+                 peer_ip_address: str,
+                 route_limit: str,
+                 router_id: str,
+                 status: str):
+        """
+        :param str auth_key: The authentication key of the BGP group.
+        :param int bfd_multi_hop: The BFD hop count.
+        :param str bgp_group_id: The ID of the BGP group.
+        :param str bgp_peer_id: The ID of the BGP neighbor.
+        :param str bgp_peer_name: The name of the BGP neighbor.
+        :param str bgp_status: The status of the BGP connection.
+        :param str description: The description of the BGP group.
+        :param bool enable_bfd: Indicates whether the Bidirectional Forwarding Detection (BFD) protocol is enabled.
+        :param str hold: The hold time.
+        :param str id: The ID of the Bgp Peer.
+        :param str ip_version: The IP version.
+        :param bool is_fake: Indicates whether a fake AS number is used.
+        :param str keepalive: The keepalive time.
+        :param str local_asn: The AS number of the device on the Alibaba Cloud side.
+        :param str peer_asn: The autonomous system (AS) number of the BGP peer.
+        :param str peer_ip_address: The IP address of the BGP neighbor.
+        :param str route_limit: The limit on routes.
+        :param str router_id: The ID of the router.
+        :param str status: The status of the BGP peer.
+        """
+        pulumi.set(__self__, "auth_key", auth_key)
+        pulumi.set(__self__, "bfd_multi_hop", bfd_multi_hop)
+        pulumi.set(__self__, "bgp_group_id", bgp_group_id)
+        pulumi.set(__self__, "bgp_peer_id", bgp_peer_id)
+        pulumi.set(__self__, "bgp_peer_name", bgp_peer_name)
+        pulumi.set(__self__, "bgp_status", bgp_status)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "enable_bfd", enable_bfd)
+        pulumi.set(__self__, "hold", hold)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip_version", ip_version)
+        pulumi.set(__self__, "is_fake", is_fake)
+        pulumi.set(__self__, "keepalive", keepalive)
+        pulumi.set(__self__, "local_asn", local_asn)
+        pulumi.set(__self__, "peer_asn", peer_asn)
+        pulumi.set(__self__, "peer_ip_address", peer_ip_address)
+        pulumi.set(__self__, "route_limit", route_limit)
+        pulumi.set(__self__, "router_id", router_id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="authKey")
+    def auth_key(self) -> str:
+        """
+        The authentication key of the BGP group.
+        """
+        return pulumi.get(self, "auth_key")
+
+    @property
+    @pulumi.getter(name="bfdMultiHop")
+    def bfd_multi_hop(self) -> int:
+        """
+        The BFD hop count.
+        """
+        return pulumi.get(self, "bfd_multi_hop")
+
+    @property
+    @pulumi.getter(name="bgpGroupId")
+    def bgp_group_id(self) -> str:
+        """
+        The ID of the BGP group.
+        """
+        return pulumi.get(self, "bgp_group_id")
+
+    @property
+    @pulumi.getter(name="bgpPeerId")
+    def bgp_peer_id(self) -> str:
+        """
+        The ID of the BGP neighbor.
+        """
+        return pulumi.get(self, "bgp_peer_id")
+
+    @property
+    @pulumi.getter(name="bgpPeerName")
+    def bgp_peer_name(self) -> str:
+        """
+        The name of the BGP neighbor.
+        """
+        return pulumi.get(self, "bgp_peer_name")
+
+    @property
+    @pulumi.getter(name="bgpStatus")
+    def bgp_status(self) -> str:
+        """
+        The status of the BGP connection.
+        """
+        return pulumi.get(self, "bgp_status")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the BGP group.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enableBfd")
+    def enable_bfd(self) -> bool:
+        """
+        Indicates whether the Bidirectional Forwarding Detection (BFD) protocol is enabled.
+        """
+        return pulumi.get(self, "enable_bfd")
+
+    @property
+    @pulumi.getter
+    def hold(self) -> str:
+        """
+        The hold time.
+        """
+        return pulumi.get(self, "hold")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Bgp Peer.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> str:
+        """
+        The IP version.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @property
+    @pulumi.getter(name="isFake")
+    def is_fake(self) -> bool:
+        """
+        Indicates whether a fake AS number is used.
+        """
+        return pulumi.get(self, "is_fake")
+
+    @property
+    @pulumi.getter
+    def keepalive(self) -> str:
+        """
+        The keepalive time.
+        """
+        return pulumi.get(self, "keepalive")
+
+    @property
+    @pulumi.getter(name="localAsn")
+    def local_asn(self) -> str:
+        """
+        The AS number of the device on the Alibaba Cloud side.
+        """
+        return pulumi.get(self, "local_asn")
+
+    @property
+    @pulumi.getter(name="peerAsn")
+    def peer_asn(self) -> str:
+        """
+        The autonomous system (AS) number of the BGP peer.
+        """
+        return pulumi.get(self, "peer_asn")
+
+    @property
+    @pulumi.getter(name="peerIpAddress")
+    def peer_ip_address(self) -> str:
+        """
+        The IP address of the BGP neighbor.
+        """
+        return pulumi.get(self, "peer_ip_address")
+
+    @property
+    @pulumi.getter(name="routeLimit")
+    def route_limit(self) -> str:
+        """
+        The limit on routes.
+        """
+        return pulumi.get(self, "route_limit")
+
+    @property
+    @pulumi.getter(name="routerId")
+    def router_id(self) -> str:
+        """
+        The ID of the router.
+        """
+        return pulumi.get(self, "router_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the BGP peer.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

@@ -15,7 +15,7 @@ import (
 // With its compatibility with MySQL protocols and syntaxes, DRDS enables database/table sharding, smooth scaling, configuration upgrade/downgrade,
 // transparent read/write splitting, and distributed transactions, providing O&M capabilities for distributed databases throughout their entire lifecycle.
 //
-// For information about DRDS and how to use it, see [What is DRDS](https://www.alibabacloud.com/help/doc-detail/29659.htm).
+// For information about DRDS and how to use it, see [What is DRDS](https://www.alibabacloud.com/help/product/29657.htm).
 //
 // > **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao, ap-southeast-1.
 //
@@ -63,11 +63,10 @@ type Instance struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
-	// User-defined DRDS instance node spec. Value range:
-	// - `drds.sn1.4c8g` for DRDS instance Starter version;
-	// - `drds.sn1.8c16g` for DRDS instance Standard edition;
-	// - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-	// - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
+	// The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
+	// - `drds.sn2.4c16g` Starter Edition.
+	// - `drds.sn2.8c32g` Standard Edition.
+	// - `drds.sn2.16c64g` Enterprise Edition.
 	InstanceSeries pulumi.StringOutput `pulumi:"instanceSeries"`
 	// User-defined DRDS instance specification. Value range:
 	// - `drds.sn1.4c8g` for DRDS instance Starter version;
@@ -133,11 +132,10 @@ type instanceState struct {
 	Description *string `pulumi:"description"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// User-defined DRDS instance node spec. Value range:
-	// - `drds.sn1.4c8g` for DRDS instance Starter version;
-	// - `drds.sn1.8c16g` for DRDS instance Standard edition;
-	// - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-	// - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
+	// The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
+	// - `drds.sn2.4c16g` Starter Edition.
+	// - `drds.sn2.8c32g` Standard Edition.
+	// - `drds.sn2.16c64g` Enterprise Edition.
 	InstanceSeries *string `pulumi:"instanceSeries"`
 	// User-defined DRDS instance specification. Value range:
 	// - `drds.sn1.4c8g` for DRDS instance Starter version;
@@ -160,11 +158,10 @@ type InstanceState struct {
 	Description pulumi.StringPtrInput
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	InstanceChargeType pulumi.StringPtrInput
-	// User-defined DRDS instance node spec. Value range:
-	// - `drds.sn1.4c8g` for DRDS instance Starter version;
-	// - `drds.sn1.8c16g` for DRDS instance Standard edition;
-	// - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-	// - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
+	// The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
+	// - `drds.sn2.4c16g` Starter Edition.
+	// - `drds.sn2.8c32g` Standard Edition.
+	// - `drds.sn2.16c64g` Enterprise Edition.
 	InstanceSeries pulumi.StringPtrInput
 	// User-defined DRDS instance specification. Value range:
 	// - `drds.sn1.4c8g` for DRDS instance Starter version;
@@ -191,11 +188,10 @@ type instanceArgs struct {
 	Description string `pulumi:"description"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// User-defined DRDS instance node spec. Value range:
-	// - `drds.sn1.4c8g` for DRDS instance Starter version;
-	// - `drds.sn1.8c16g` for DRDS instance Standard edition;
-	// - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-	// - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
+	// The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
+	// - `drds.sn2.4c16g` Starter Edition.
+	// - `drds.sn2.8c32g` Standard Edition.
+	// - `drds.sn2.16c64g` Enterprise Edition.
 	InstanceSeries string `pulumi:"instanceSeries"`
 	// User-defined DRDS instance specification. Value range:
 	// - `drds.sn1.4c8g` for DRDS instance Starter version;
@@ -219,11 +215,10 @@ type InstanceArgs struct {
 	Description pulumi.StringInput
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	InstanceChargeType pulumi.StringPtrInput
-	// User-defined DRDS instance node spec. Value range:
-	// - `drds.sn1.4c8g` for DRDS instance Starter version;
-	// - `drds.sn1.8c16g` for DRDS instance Standard edition;
-	// - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-	// - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
+	// The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
+	// - `drds.sn2.4c16g` Starter Edition.
+	// - `drds.sn2.8c32g` Standard Edition.
+	// - `drds.sn2.16c64g` Enterprise Edition.
 	InstanceSeries pulumi.StringInput
 	// User-defined DRDS instance specification. Value range:
 	// - `drds.sn1.4c8g` for DRDS instance Starter version;

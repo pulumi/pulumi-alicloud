@@ -21,7 +21,7 @@ class GetGatewaysResult:
     """
     A collection of values returned by getGateways.
     """
-    def __init__(__self__, gateways=None, id=None, ids=None, name_regex=None, names=None, output_file=None, status=None, storage_bundle_id=None):
+    def __init__(__self__, gateways=None, id=None, ids=None, name_regex=None, names=None, output_file=None, page_number=None, page_size=None, status=None, storage_bundle_id=None, total_count=None):
         if gateways and not isinstance(gateways, list):
             raise TypeError("Expected argument 'gateways' to be a list")
         pulumi.set(__self__, "gateways", gateways)
@@ -40,12 +40,21 @@ class GetGatewaysResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if page_number and not isinstance(page_number, int):
+            raise TypeError("Expected argument 'page_number' to be a int")
+        pulumi.set(__self__, "page_number", page_number)
+        if page_size and not isinstance(page_size, int):
+            raise TypeError("Expected argument 'page_size' to be a int")
+        pulumi.set(__self__, "page_size", page_size)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
         if storage_bundle_id and not isinstance(storage_bundle_id, str):
             raise TypeError("Expected argument 'storage_bundle_id' to be a str")
         pulumi.set(__self__, "storage_bundle_id", storage_bundle_id)
+        if total_count and not isinstance(total_count, int):
+            raise TypeError("Expected argument 'total_count' to be a int")
+        pulumi.set(__self__, "total_count", total_count)
 
     @property
     @pulumi.getter
@@ -81,6 +90,16 @@ class GetGatewaysResult:
         return pulumi.get(self, "output_file")
 
     @property
+    @pulumi.getter(name="pageNumber")
+    def page_number(self) -> Optional[int]:
+        return pulumi.get(self, "page_number")
+
+    @property
+    @pulumi.getter(name="pageSize")
+    def page_size(self) -> Optional[int]:
+        return pulumi.get(self, "page_size")
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[str]:
         return pulumi.get(self, "status")
@@ -89,6 +108,11 @@ class GetGatewaysResult:
     @pulumi.getter(name="storageBundleId")
     def storage_bundle_id(self) -> str:
         return pulumi.get(self, "storage_bundle_id")
+
+    @property
+    @pulumi.getter(name="totalCount")
+    def total_count(self) -> int:
+        return pulumi.get(self, "total_count")
 
 
 class AwaitableGetGatewaysResult(GetGatewaysResult):
@@ -103,13 +127,18 @@ class AwaitableGetGatewaysResult(GetGatewaysResult):
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
+            page_number=self.page_number,
+            page_size=self.page_size,
             status=self.status,
-            storage_bundle_id=self.storage_bundle_id)
+            storage_bundle_id=self.storage_bundle_id,
+            total_count=self.total_count)
 
 
 def get_gateways(ids: Optional[Sequence[str]] = None,
                  name_regex: Optional[str] = None,
                  output_file: Optional[str] = None,
+                 page_number: Optional[int] = None,
+                 page_size: Optional[int] = None,
                  status: Optional[str] = None,
                  storage_bundle_id: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGatewaysResult:
@@ -142,6 +171,8 @@ def get_gateways(ids: Optional[Sequence[str]] = None,
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
     __args__['status'] = status
     __args__['storageBundleId'] = storage_bundle_id
     if opts is None:
@@ -157,14 +188,19 @@ def get_gateways(ids: Optional[Sequence[str]] = None,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file,
+        page_number=__ret__.page_number,
+        page_size=__ret__.page_size,
         status=__ret__.status,
-        storage_bundle_id=__ret__.storage_bundle_id)
+        storage_bundle_id=__ret__.storage_bundle_id,
+        total_count=__ret__.total_count)
 
 
 @_utilities.lift_output_func(get_gateways)
 def get_gateways_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        page_number: Optional[pulumi.Input[Optional[int]]] = None,
+                        page_size: Optional[pulumi.Input[Optional[int]]] = None,
                         status: Optional[pulumi.Input[Optional[str]]] = None,
                         storage_bundle_id: Optional[pulumi.Input[str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGatewaysResult]:

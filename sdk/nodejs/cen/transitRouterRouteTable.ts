@@ -81,11 +81,17 @@ export class TransitRouterRouteTable extends pulumi.CustomResource {
      * The description of the transit router route table.
      */
     public readonly transitRouterRouteTableDescription!: pulumi.Output<string>;
+    /**
+     * The id of the transit router route table.
+     */
     public /*out*/ readonly transitRouterRouteTableId!: pulumi.Output<string>;
     /**
      * The name of the transit router route table.
      */
     public readonly transitRouterRouteTableName!: pulumi.Output<string | undefined>;
+    /**
+     * The type of the transit router route table. Valid values: `Custom`, `System`.
+     */
     public /*out*/ readonly transitRouterRouteTableType!: pulumi.Output<string>;
 
     /**
@@ -146,11 +152,17 @@ export interface TransitRouterRouteTableState {
      * The description of the transit router route table.
      */
     transitRouterRouteTableDescription?: pulumi.Input<string>;
+    /**
+     * The id of the transit router route table.
+     */
     transitRouterRouteTableId?: pulumi.Input<string>;
     /**
      * The name of the transit router route table.
      */
     transitRouterRouteTableName?: pulumi.Input<string>;
+    /**
+     * The type of the transit router route table. Valid values: `Custom`, `System`.
+     */
     transitRouterRouteTableType?: pulumi.Input<string>;
 }
 

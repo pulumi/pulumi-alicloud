@@ -106,7 +106,7 @@ type Listener struct {
 	Gzip pulumi.BoolPtrOutput `pulumi:"gzip"`
 	// Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
 	HealthCheck pulumi.StringPtrOutput `pulumi:"healthCheck"`
-	// Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+	// The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
 	HealthCheckConnectPort pulumi.IntOutput `pulumi:"healthCheckConnectPort"`
 	// Domain name used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
 	HealthCheckDomain pulumi.StringPtrOutput `pulumi:"healthCheckDomain"`
@@ -114,7 +114,7 @@ type Listener struct {
 	HealthCheckHttpCode pulumi.StringOutput `pulumi:"healthCheckHttpCode"`
 	// Time interval of health checks. It is required when `healthCheck` is on. Valid value range: [1-50] in seconds. Default to 2.
 	HealthCheckInterval pulumi.IntPtrOutput `pulumi:"healthCheckInterval"`
-	// The method of health check. Valid values: ["head", "get"].
+	// HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
 	HealthCheckMethod pulumi.StringOutput `pulumi:"healthCheckMethod"`
 	// Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
 	HealthCheckTimeout pulumi.IntPtrOutput `pulumi:"healthCheckTimeout"`
@@ -122,7 +122,7 @@ type Listener struct {
 	HealthCheckType pulumi.StringPtrOutput `pulumi:"healthCheckType"`
 	// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
 	HealthCheckUri pulumi.StringPtrOutput `pulumi:"healthCheckUri"`
-	// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+	// The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `healthCheck` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `healthCheck` parameter is set to `on`.
 	HealthyThreshold pulumi.IntPtrOutput `pulumi:"healthyThreshold"`
 	// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
 	IdleTimeout pulumi.IntPtrOutput `pulumi:"idleTimeout"`
@@ -160,9 +160,9 @@ type Listener struct {
 	StickySessionType pulumi.StringPtrOutput `pulumi:"stickySessionType"`
 	// Https listener TLS cipher policy. Valid values are `tlsCipherPolicy10`, `tlsCipherPolicy11`, `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`. Default to `tlsCipherPolicy10`. Currently the `tlsCipherPolicy` can not be updated when load balancer instance is "Shared-Performance".
 	TlsCipherPolicy pulumi.StringPtrOutput `pulumi:"tlsCipherPolicy"`
-	// Threshold determining the result of the health check is fail. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+	// The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `healthCheck` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `healthCheck` parameter is set to `on`.
 	UnhealthyThreshold pulumi.IntPtrOutput `pulumi:"unhealthyThreshold"`
-	// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
+	// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `xForwardedFor`.
 	XForwardedFor ListenerXForwardedForOutput `pulumi:"xForwardedFor"`
 }
 
@@ -236,7 +236,7 @@ type listenerState struct {
 	Gzip *bool `pulumi:"gzip"`
 	// Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
 	HealthCheck *string `pulumi:"healthCheck"`
-	// Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+	// The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
 	HealthCheckConnectPort *int `pulumi:"healthCheckConnectPort"`
 	// Domain name used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
 	HealthCheckDomain *string `pulumi:"healthCheckDomain"`
@@ -244,7 +244,7 @@ type listenerState struct {
 	HealthCheckHttpCode *string `pulumi:"healthCheckHttpCode"`
 	// Time interval of health checks. It is required when `healthCheck` is on. Valid value range: [1-50] in seconds. Default to 2.
 	HealthCheckInterval *int `pulumi:"healthCheckInterval"`
-	// The method of health check. Valid values: ["head", "get"].
+	// HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
 	HealthCheckMethod *string `pulumi:"healthCheckMethod"`
 	// Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
 	HealthCheckTimeout *int `pulumi:"healthCheckTimeout"`
@@ -252,7 +252,7 @@ type listenerState struct {
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
 	HealthCheckUri *string `pulumi:"healthCheckUri"`
-	// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+	// The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `healthCheck` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `healthCheck` parameter is set to `on`.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
 	// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
 	IdleTimeout *int `pulumi:"idleTimeout"`
@@ -290,9 +290,9 @@ type listenerState struct {
 	StickySessionType *string `pulumi:"stickySessionType"`
 	// Https listener TLS cipher policy. Valid values are `tlsCipherPolicy10`, `tlsCipherPolicy11`, `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`. Default to `tlsCipherPolicy10`. Currently the `tlsCipherPolicy` can not be updated when load balancer instance is "Shared-Performance".
 	TlsCipherPolicy *string `pulumi:"tlsCipherPolicy"`
-	// Threshold determining the result of the health check is fail. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+	// The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `healthCheck` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `healthCheck` parameter is set to `on`.
 	UnhealthyThreshold *int `pulumi:"unhealthyThreshold"`
-	// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
+	// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `xForwardedFor`.
 	XForwardedFor *ListenerXForwardedFor `pulumi:"xForwardedFor"`
 }
 
@@ -329,7 +329,7 @@ type ListenerState struct {
 	Gzip pulumi.BoolPtrInput
 	// Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
 	HealthCheck pulumi.StringPtrInput
-	// Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+	// The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
 	HealthCheckConnectPort pulumi.IntPtrInput
 	// Domain name used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
 	HealthCheckDomain pulumi.StringPtrInput
@@ -337,7 +337,7 @@ type ListenerState struct {
 	HealthCheckHttpCode pulumi.StringPtrInput
 	// Time interval of health checks. It is required when `healthCheck` is on. Valid value range: [1-50] in seconds. Default to 2.
 	HealthCheckInterval pulumi.IntPtrInput
-	// The method of health check. Valid values: ["head", "get"].
+	// HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
 	HealthCheckMethod pulumi.StringPtrInput
 	// Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
 	HealthCheckTimeout pulumi.IntPtrInput
@@ -345,7 +345,7 @@ type ListenerState struct {
 	HealthCheckType pulumi.StringPtrInput
 	// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
 	HealthCheckUri pulumi.StringPtrInput
-	// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+	// The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `healthCheck` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `healthCheck` parameter is set to `on`.
 	HealthyThreshold pulumi.IntPtrInput
 	// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
 	IdleTimeout pulumi.IntPtrInput
@@ -383,9 +383,9 @@ type ListenerState struct {
 	StickySessionType pulumi.StringPtrInput
 	// Https listener TLS cipher policy. Valid values are `tlsCipherPolicy10`, `tlsCipherPolicy11`, `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`. Default to `tlsCipherPolicy10`. Currently the `tlsCipherPolicy` can not be updated when load balancer instance is "Shared-Performance".
 	TlsCipherPolicy pulumi.StringPtrInput
-	// Threshold determining the result of the health check is fail. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+	// The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `healthCheck` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `healthCheck` parameter is set to `on`.
 	UnhealthyThreshold pulumi.IntPtrInput
-	// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
+	// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `xForwardedFor`.
 	XForwardedFor ListenerXForwardedForPtrInput
 }
 
@@ -426,7 +426,7 @@ type listenerArgs struct {
 	Gzip *bool `pulumi:"gzip"`
 	// Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
 	HealthCheck *string `pulumi:"healthCheck"`
-	// Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+	// The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
 	HealthCheckConnectPort *int `pulumi:"healthCheckConnectPort"`
 	// Domain name used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
 	HealthCheckDomain *string `pulumi:"healthCheckDomain"`
@@ -434,7 +434,7 @@ type listenerArgs struct {
 	HealthCheckHttpCode *string `pulumi:"healthCheckHttpCode"`
 	// Time interval of health checks. It is required when `healthCheck` is on. Valid value range: [1-50] in seconds. Default to 2.
 	HealthCheckInterval *int `pulumi:"healthCheckInterval"`
-	// The method of health check. Valid values: ["head", "get"].
+	// HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
 	HealthCheckMethod *string `pulumi:"healthCheckMethod"`
 	// Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
 	HealthCheckTimeout *int `pulumi:"healthCheckTimeout"`
@@ -442,7 +442,7 @@ type listenerArgs struct {
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
 	HealthCheckUri *string `pulumi:"healthCheckUri"`
-	// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+	// The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `healthCheck` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `healthCheck` parameter is set to `on`.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
 	// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
 	IdleTimeout *int `pulumi:"idleTimeout"`
@@ -480,9 +480,9 @@ type listenerArgs struct {
 	StickySessionType *string `pulumi:"stickySessionType"`
 	// Https listener TLS cipher policy. Valid values are `tlsCipherPolicy10`, `tlsCipherPolicy11`, `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`. Default to `tlsCipherPolicy10`. Currently the `tlsCipherPolicy` can not be updated when load balancer instance is "Shared-Performance".
 	TlsCipherPolicy *string `pulumi:"tlsCipherPolicy"`
-	// Threshold determining the result of the health check is fail. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+	// The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `healthCheck` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `healthCheck` parameter is set to `on`.
 	UnhealthyThreshold *int `pulumi:"unhealthyThreshold"`
-	// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
+	// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `xForwardedFor`.
 	XForwardedFor *ListenerXForwardedFor `pulumi:"xForwardedFor"`
 }
 
@@ -520,7 +520,7 @@ type ListenerArgs struct {
 	Gzip pulumi.BoolPtrInput
 	// Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
 	HealthCheck pulumi.StringPtrInput
-	// Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+	// The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
 	HealthCheckConnectPort pulumi.IntPtrInput
 	// Domain name used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
 	HealthCheckDomain pulumi.StringPtrInput
@@ -528,7 +528,7 @@ type ListenerArgs struct {
 	HealthCheckHttpCode pulumi.StringPtrInput
 	// Time interval of health checks. It is required when `healthCheck` is on. Valid value range: [1-50] in seconds. Default to 2.
 	HealthCheckInterval pulumi.IntPtrInput
-	// The method of health check. Valid values: ["head", "get"].
+	// HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
 	HealthCheckMethod pulumi.StringPtrInput
 	// Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
 	HealthCheckTimeout pulumi.IntPtrInput
@@ -536,7 +536,7 @@ type ListenerArgs struct {
 	HealthCheckType pulumi.StringPtrInput
 	// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
 	HealthCheckUri pulumi.StringPtrInput
-	// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+	// The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `healthCheck` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `healthCheck` parameter is set to `on`.
 	HealthyThreshold pulumi.IntPtrInput
 	// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
 	IdleTimeout pulumi.IntPtrInput
@@ -574,9 +574,9 @@ type ListenerArgs struct {
 	StickySessionType pulumi.StringPtrInput
 	// Https listener TLS cipher policy. Valid values are `tlsCipherPolicy10`, `tlsCipherPolicy11`, `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`. Default to `tlsCipherPolicy10`. Currently the `tlsCipherPolicy` can not be updated when load balancer instance is "Shared-Performance".
 	TlsCipherPolicy pulumi.StringPtrInput
-	// Threshold determining the result of the health check is fail. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+	// The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `healthCheck` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `healthCheck` parameter is set to `on`.
 	UnhealthyThreshold pulumi.IntPtrInput
-	// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
+	// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+. The details see Block `xForwardedFor`.
 	XForwardedFor ListenerXForwardedForPtrInput
 }
 

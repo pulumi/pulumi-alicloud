@@ -39,6 +39,8 @@ export function getNetworks(args?: GetNetworksArgs, opts?: pulumi.InvokeOptions)
         "isDefault": args.isDefault,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
         "resourceGroupId": args.resourceGroupId,
         "status": args.status,
         "tags": args.tags,
@@ -81,6 +83,8 @@ export interface GetNetworksArgs {
      */
     nameRegex?: string;
     outputFile?: string;
+    pageNumber?: number;
+    pageSize?: number;
     /**
      * The Id of resource group which VPC belongs.
      */
@@ -136,6 +140,8 @@ export interface GetNetworksResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+    readonly pageNumber?: number;
+    readonly pageSize?: number;
     readonly resourceGroupId?: string;
     /**
      * Status of the VPC.
@@ -145,6 +151,7 @@ export interface GetNetworksResult {
      * A map of tags assigned to the VPC.
      */
     readonly tags?: {[key: string]: any};
+    readonly totalCount: number;
     /**
      * Name of the VPC.
      */
@@ -194,6 +201,8 @@ export interface GetNetworksOutputArgs {
      */
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
+    pageNumber?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number>;
     /**
      * The Id of resource group which VPC belongs.
      */

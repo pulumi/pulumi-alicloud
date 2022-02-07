@@ -29,6 +29,8 @@ type GetRouteTablesArgs struct {
 	// A regex string to filter route tables by name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
 	// The Id of resource group which route tables belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The route table name.
@@ -55,6 +57,8 @@ type GetRouteTablesResult struct {
 	// A list of Route Tables names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+	PageNumber *int     `pulumi:"pageNumber"`
+	PageSize   *int     `pulumi:"pageSize"`
 	// The Id of resource group which route tables belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The route table name.
@@ -66,8 +70,9 @@ type GetRouteTablesResult struct {
 	// The status of route table.
 	Status *string `pulumi:"status"`
 	// A list of Route Tables. Each element contains the following attributes:
-	Tables []GetRouteTablesTable  `pulumi:"tables"`
-	Tags   map[string]interface{} `pulumi:"tags"`
+	Tables     []GetRouteTablesTable  `pulumi:"tables"`
+	Tags       map[string]interface{} `pulumi:"tags"`
+	TotalCount int                    `pulumi:"totalCount"`
 	// The VPC ID.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -88,6 +93,8 @@ type GetRouteTablesOutputArgs struct {
 	// A regex string to filter route tables by name.
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
+	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 	// The Id of resource group which route tables belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// The route table name.
@@ -146,6 +153,14 @@ func (o GetRouteTablesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRouteTablesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+func (o GetRouteTablesResultOutput) PageNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRouteTablesResult) *int { return v.PageNumber }).(pulumi.IntPtrOutput)
+}
+
+func (o GetRouteTablesResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRouteTablesResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
 // The Id of resource group which route tables belongs.
 func (o GetRouteTablesResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRouteTablesResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
@@ -178,6 +193,10 @@ func (o GetRouteTablesResultOutput) Tables() GetRouteTablesTableArrayOutput {
 
 func (o GetRouteTablesResultOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetRouteTablesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o GetRouteTablesResultOutput) TotalCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouteTablesResult) int { return v.TotalCount }).(pulumi.IntOutput)
 }
 
 // The VPC ID.

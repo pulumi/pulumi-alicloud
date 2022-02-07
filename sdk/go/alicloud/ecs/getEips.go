@@ -34,7 +34,7 @@ type GetEipsArgs struct {
 	IpAddress *string `pulumi:"ipAddress"`
 	// A list of EIP public IP addresses.
 	//
-	// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.
+	// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
 	IpAddresses []string `pulumi:"ipAddresses"`
 	Isp         *string  `pulumi:"isp"`
 	LockReason  *string  `pulumi:"lockReason"`
@@ -59,7 +59,7 @@ type GetEipsResult struct {
 	DryRun                 *bool            `pulumi:"dryRun"`
 	// A list of EIPs. Each element contains the following attributes:
 	//
-	// Deprecated: Field 'eips' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'addresses' instead.
+	// Deprecated: Field 'eips' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'addresses' instead.
 	Eips          []GetEipsEip `pulumi:"eips"`
 	EnableDetails *bool        `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
@@ -69,7 +69,7 @@ type GetEipsResult struct {
 	IncludeReservationData *bool    `pulumi:"includeReservationData"`
 	// Public IP Address of the the EIP.
 	IpAddress *string `pulumi:"ipAddress"`
-	// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.
+	// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
 	IpAddresses []string `pulumi:"ipAddresses"`
 	Isp         *string  `pulumi:"isp"`
 	LockReason  *string  `pulumi:"lockReason"`
@@ -109,7 +109,7 @@ type GetEipsOutputArgs struct {
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// A list of EIP public IP addresses.
 	//
-	// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.
+	// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
 	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
 	Isp         pulumi.StringPtrInput   `pulumi:"isp"`
 	LockReason  pulumi.StringPtrInput   `pulumi:"lockReason"`
@@ -166,7 +166,7 @@ func (o GetEipsResultOutput) DryRun() pulumi.BoolPtrOutput {
 
 // A list of EIPs. Each element contains the following attributes:
 //
-// Deprecated: Field 'eips' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'addresses' instead.
+// Deprecated: Field 'eips' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'addresses' instead.
 func (o GetEipsResultOutput) Eips() GetEipsEipArrayOutput {
 	return o.ApplyT(func(v GetEipsResult) []GetEipsEip { return v.Eips }).(GetEipsEipArrayOutput)
 }
@@ -194,7 +194,7 @@ func (o GetEipsResultOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEipsResult) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'ip_address' instead.
+// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
 func (o GetEipsResultOutput) IpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEipsResult) []string { return v.IpAddresses }).(pulumi.StringArrayOutput)
 }

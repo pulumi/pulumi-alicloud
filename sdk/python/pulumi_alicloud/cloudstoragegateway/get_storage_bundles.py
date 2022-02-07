@@ -21,7 +21,7 @@ class GetStorageBundlesResult:
     """
     A collection of values returned by getStorageBundles.
     """
-    def __init__(__self__, backend_bucket_region_id=None, bundles=None, id=None, ids=None, name_regex=None, names=None, output_file=None):
+    def __init__(__self__, backend_bucket_region_id=None, bundles=None, id=None, ids=None, name_regex=None, names=None, output_file=None, page_number=None, page_size=None, total_count=None):
         if backend_bucket_region_id and not isinstance(backend_bucket_region_id, str):
             raise TypeError("Expected argument 'backend_bucket_region_id' to be a str")
         pulumi.set(__self__, "backend_bucket_region_id", backend_bucket_region_id)
@@ -43,6 +43,15 @@ class GetStorageBundlesResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if page_number and not isinstance(page_number, int):
+            raise TypeError("Expected argument 'page_number' to be a int")
+        pulumi.set(__self__, "page_number", page_number)
+        if page_size and not isinstance(page_size, int):
+            raise TypeError("Expected argument 'page_size' to be a int")
+        pulumi.set(__self__, "page_size", page_size)
+        if total_count and not isinstance(total_count, int):
+            raise TypeError("Expected argument 'total_count' to be a int")
+        pulumi.set(__self__, "total_count", total_count)
 
     @property
     @pulumi.getter(name="backendBucketRegionId")
@@ -82,6 +91,21 @@ class GetStorageBundlesResult:
     def output_file(self) -> Optional[str]:
         return pulumi.get(self, "output_file")
 
+    @property
+    @pulumi.getter(name="pageNumber")
+    def page_number(self) -> Optional[int]:
+        return pulumi.get(self, "page_number")
+
+    @property
+    @pulumi.getter(name="pageSize")
+    def page_size(self) -> Optional[int]:
+        return pulumi.get(self, "page_size")
+
+    @property
+    @pulumi.getter(name="totalCount")
+    def total_count(self) -> int:
+        return pulumi.get(self, "total_count")
+
 
 class AwaitableGetStorageBundlesResult(GetStorageBundlesResult):
     # pylint: disable=using-constant-test
@@ -95,13 +119,18 @@ class AwaitableGetStorageBundlesResult(GetStorageBundlesResult):
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
-            output_file=self.output_file)
+            output_file=self.output_file,
+            page_number=self.page_number,
+            page_size=self.page_size,
+            total_count=self.total_count)
 
 
 def get_storage_bundles(backend_bucket_region_id: Optional[str] = None,
                         ids: Optional[Sequence[str]] = None,
                         name_regex: Optional[str] = None,
                         output_file: Optional[str] = None,
+                        page_number: Optional[int] = None,
+                        page_size: Optional[int] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStorageBundlesResult:
     """
     Use this data source to access information about an existing resource.
@@ -111,6 +140,8 @@ def get_storage_bundles(backend_bucket_region_id: Optional[str] = None,
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -124,7 +155,10 @@ def get_storage_bundles(backend_bucket_region_id: Optional[str] = None,
         ids=__ret__.ids,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
-        output_file=__ret__.output_file)
+        output_file=__ret__.output_file,
+        page_number=__ret__.page_number,
+        page_size=__ret__.page_size,
+        total_count=__ret__.total_count)
 
 
 @_utilities.lift_output_func(get_storage_bundles)
@@ -132,6 +166,8 @@ def get_storage_bundles_output(backend_bucket_region_id: Optional[pulumi.Input[s
                                ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                               page_number: Optional[pulumi.Input[Optional[int]]] = None,
+                               page_size: Optional[pulumi.Input[Optional[int]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStorageBundlesResult]:
     """
     Use this data source to access information about an existing resource.

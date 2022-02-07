@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
     public sealed class GetInstancesInstanceResult
     {
         /// <summary>
+        /// The allowed list of the instance.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceAllowedListResult> AllowedLists;
+        /// <summary>
         /// The config the instance.
         /// </summary>
         public readonly string Config;
@@ -22,7 +26,7 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The deploy type of the instance. 0: sharing instance, 1: vpc instance, 2: vpc instance(support ip mapping), 3: eip instance, 4: eip/vpc instance, 5: vpc instance.
+        /// The deployed type of the instance.
         /// </summary>
         public readonly int DeployType;
         /// <summary>
@@ -33,6 +37,10 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
         /// </summary>
         public readonly int DiskType;
+        /// <summary>
+        /// The domain point of the instance.
+        /// </summary>
+        public readonly string DomainEndpoint;
         /// <summary>
         /// The peak bandwidth of the instance.
         /// </summary>
@@ -66,6 +74,10 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// </summary>
         public readonly string PaidType;
         /// <summary>
+        /// The SASL domain point of the instance.
+        /// </summary>
+        public readonly string SaslDomainEndpoint;
+        /// <summary>
         /// The security group of the instance.
         /// </summary>
         public readonly string SecurityGroup;
@@ -82,13 +94,25 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// </summary>
         public readonly string SpecType;
         /// <summary>
+        /// The SSL domain point of the instance.
+        /// </summary>
+        public readonly string SslDomainEndpoint;
+        /// <summary>
         /// The SSL end point of the instance.
         /// </summary>
         public readonly string SslEndPoint;
         /// <summary>
+        /// A mapping of tags to assign to the instance.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object>? Tags;
+        /// <summary>
         /// The max num of topic can be create of the instance.
         /// </summary>
         public readonly int TopicQuota;
+        /// <summary>
+        /// The UpgradeServiceDetailInfo List.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceUpgradeServiceDetailInfoResult> UpgradeServiceDetailInfos;
         /// <summary>
         /// The ID of attaching VPC to instance.
         /// </summary>
@@ -104,6 +128,8 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
 
         [OutputConstructor]
         private GetInstancesInstanceResult(
+            ImmutableArray<Outputs.GetInstancesInstanceAllowedListResult> allowedLists,
+
             string config,
 
             string createTime,
@@ -113,6 +139,8 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
             int diskSize,
 
             int diskType,
+
+            string domainEndpoint,
 
             int eipMax,
 
@@ -130,6 +158,8 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
 
             string paidType,
 
+            string saslDomainEndpoint,
+
             string securityGroup,
 
             int serviceStatus,
@@ -138,9 +168,15 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
 
             string specType,
 
+            string sslDomainEndpoint,
+
             string sslEndPoint,
 
+            ImmutableDictionary<string, object>? tags,
+
             int topicQuota,
+
+            ImmutableArray<Outputs.GetInstancesInstanceUpgradeServiceDetailInfoResult> upgradeServiceDetailInfos,
 
             string vpcId,
 
@@ -148,11 +184,13 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
 
             string zoneId)
         {
+            AllowedLists = allowedLists;
             Config = config;
             CreateTime = createTime;
             DeployType = deployType;
             DiskSize = diskSize;
             DiskType = diskType;
+            DomainEndpoint = domainEndpoint;
             EipMax = eipMax;
             EndPoint = endPoint;
             ExpiredTime = expiredTime;
@@ -161,12 +199,16 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
             MsgRetain = msgRetain;
             Name = name;
             PaidType = paidType;
+            SaslDomainEndpoint = saslDomainEndpoint;
             SecurityGroup = securityGroup;
             ServiceStatus = serviceStatus;
             ServiceVersion = serviceVersion;
             SpecType = specType;
+            SslDomainEndpoint = sslDomainEndpoint;
             SslEndPoint = sslEndPoint;
+            Tags = tags;
             TopicQuota = topicQuota;
+            UpgradeServiceDetailInfos = upgradeServiceDetailInfos;
             VpcId = vpcId;
             VswitchId = vswitchId;
             ZoneId = zoneId;

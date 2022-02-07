@@ -48,6 +48,8 @@ type GetDisksArgs struct {
 	NameRegex      *string                 `pulumi:"nameRegex"`
 	OperationLocks []GetDisksOperationLock `pulumi:"operationLocks"`
 	OutputFile     *string                 `pulumi:"outputFile"`
+	PageNumber     *int                    `pulumi:"pageNumber"`
+	PageSize       *int                    `pulumi:"pageSize"`
 	PaymentType    *string                 `pulumi:"paymentType"`
 	Portable       *bool                   `pulumi:"portable"`
 	// The Id of resource group which the disk belongs.
@@ -120,6 +122,8 @@ type GetDisksResult struct {
 	Names          []string                `pulumi:"names"`
 	OperationLocks []GetDisksOperationLock `pulumi:"operationLocks"`
 	OutputFile     *string                 `pulumi:"outputFile"`
+	PageNumber     *int                    `pulumi:"pageNumber"`
+	PageSize       *int                    `pulumi:"pageSize"`
 	PaymentType    *string                 `pulumi:"paymentType"`
 	Portable       *bool                   `pulumi:"portable"`
 	// The Id of resource group.
@@ -129,7 +133,8 @@ type GetDisksResult struct {
 	// Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the disk.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags       map[string]interface{} `pulumi:"tags"`
+	TotalCount int                    `pulumi:"totalCount"`
 	// Disk type. Possible values: `system` and `data`.
 	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
@@ -175,6 +180,8 @@ type GetDisksOutputArgs struct {
 	NameRegex      pulumi.StringPtrInput           `pulumi:"nameRegex"`
 	OperationLocks GetDisksOperationLockArrayInput `pulumi:"operationLocks"`
 	OutputFile     pulumi.StringPtrInput           `pulumi:"outputFile"`
+	PageNumber     pulumi.IntPtrInput              `pulumi:"pageNumber"`
+	PageSize       pulumi.IntPtrInput              `pulumi:"pageSize"`
 	PaymentType    pulumi.StringPtrInput           `pulumi:"paymentType"`
 	Portable       pulumi.BoolPtrInput             `pulumi:"portable"`
 	// The Id of resource group which the disk belongs.
@@ -330,6 +337,14 @@ func (o GetDisksResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDisksResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+func (o GetDisksResultOutput) PageNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetDisksResult) *int { return v.PageNumber }).(pulumi.IntPtrOutput)
+}
+
+func (o GetDisksResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetDisksResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
 func (o GetDisksResultOutput) PaymentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDisksResult) *string { return v.PaymentType }).(pulumi.StringPtrOutput)
 }
@@ -356,6 +371,10 @@ func (o GetDisksResultOutput) Status() pulumi.StringPtrOutput {
 // A map of tags assigned to the disk.
 func (o GetDisksResultOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetDisksResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o GetDisksResultOutput) TotalCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDisksResult) int { return v.TotalCount }).(pulumi.IntOutput)
 }
 
 // Disk type. Possible values: `system` and `data`.

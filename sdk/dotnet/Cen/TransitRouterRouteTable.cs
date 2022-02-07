@@ -51,6 +51,9 @@ namespace Pulumi.AliCloud.Cen
         [Output("transitRouterRouteTableDescription")]
         public Output<string> TransitRouterRouteTableDescription { get; private set; } = null!;
 
+        /// <summary>
+        /// The id of the transit router route table.
+        /// </summary>
         [Output("transitRouterRouteTableId")]
         public Output<string> TransitRouterRouteTableId { get; private set; } = null!;
 
@@ -60,6 +63,9 @@ namespace Pulumi.AliCloud.Cen
         [Output("transitRouterRouteTableName")]
         public Output<string?> TransitRouterRouteTableName { get; private set; } = null!;
 
+        /// <summary>
+        /// The type of the transit router route table. Valid values: `Custom`, `System`.
+        /// </summary>
         [Output("transitRouterRouteTableType")]
         public Output<string> TransitRouterRouteTableType { get; private set; } = null!;
 
@@ -164,6 +170,9 @@ namespace Pulumi.AliCloud.Cen
         [Input("transitRouterRouteTableDescription")]
         public Input<string>? TransitRouterRouteTableDescription { get; set; }
 
+        /// <summary>
+        /// The id of the transit router route table.
+        /// </summary>
         [Input("transitRouterRouteTableId")]
         public Input<string>? TransitRouterRouteTableId { get; set; }
 
@@ -173,6 +182,9 @@ namespace Pulumi.AliCloud.Cen
         [Input("transitRouterRouteTableName")]
         public Input<string>? TransitRouterRouteTableName { get; set; }
 
+        /// <summary>
+        /// The type of the transit router route table. Valid values: `Custom`, `System`.
+        /// </summary>
         [Input("transitRouterRouteTableType")]
         public Input<string>? TransitRouterRouteTableType { get; set; }
 

@@ -136,6 +136,12 @@ namespace Pulumi.AliCloud.Vpc
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        [Input("pageNumber")]
+        public int? PageNumber { get; set; }
+
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
+
         /// <summary>
         /// The Id of resource group which route tables belongs.
         /// </summary>
@@ -212,6 +218,12 @@ namespace Pulumi.AliCloud.Vpc
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        [Input("pageNumber")]
+        public Input<int>? PageNumber { get; set; }
+
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
+
         /// <summary>
         /// The Id of resource group which route tables belongs.
         /// </summary>
@@ -283,6 +295,8 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        public readonly int? PageNumber;
+        public readonly int? PageSize;
         /// <summary>
         /// The Id of resource group which route tables belongs.
         /// </summary>
@@ -308,6 +322,7 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRouteTablesTableResult> Tables;
         public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly int TotalCount;
         /// <summary>
         /// The VPC ID.
         /// </summary>
@@ -325,6 +340,10 @@ namespace Pulumi.AliCloud.Vpc
 
             string? outputFile,
 
+            int? pageNumber,
+
+            int? pageSize,
+
             string? resourceGroupId,
 
             string? routeTableName,
@@ -339,6 +358,8 @@ namespace Pulumi.AliCloud.Vpc
 
             ImmutableDictionary<string, object>? tags,
 
+            int totalCount,
+
             string? vpcId)
         {
             Id = id;
@@ -346,6 +367,8 @@ namespace Pulumi.AliCloud.Vpc
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            PageNumber = pageNumber;
+            PageSize = pageSize;
             ResourceGroupId = resourceGroupId;
             RouteTableName = routeTableName;
             RouterId = routerId;
@@ -353,6 +376,7 @@ namespace Pulumi.AliCloud.Vpc
             Status = status;
             Tables = tables;
             Tags = tags;
+            TotalCount = totalCount;
             VpcId = vpcId;
         }
     }

@@ -285,36 +285,6 @@ class Instance(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **NOTE:** From the version 1.132.0, the resource has been renamed to `bastionhost.Instance`.
-
-        Cloud Bastion Host instance resource ("Yundun_bastionhost" is the short term of this product).
-        For information about Resource Manager Resource Directory and how to use it, see [What is Bastionhost](https://www.alibabacloud.com/help/en/doc-detail/52922.htm).
-
-        > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
-
-        > **NOTE:** Available in 1.63.0+ .
-
-        > **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.bastionhost.Instance("default",
-            description="Terraform-test",
-            license_code="bhah_ent_50_asset",
-            period=1,
-            security_group_ids=[
-                "sg-test",
-                "sg-12345",
-            ],
-            vswitch_id="v-testVswitch")
-        ```
-
         ## Import
 
         Yundun_bastionhost instance can be imported using the id, e.g.
@@ -340,36 +310,6 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **NOTE:** From the version 1.132.0, the resource has been renamed to `bastionhost.Instance`.
-
-        Cloud Bastion Host instance resource ("Yundun_bastionhost" is the short term of this product).
-        For information about Resource Manager Resource Directory and how to use it, see [What is Bastionhost](https://www.alibabacloud.com/help/en/doc-detail/52922.htm).
-
-        > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
-
-        > **NOTE:** Available in 1.63.0+ .
-
-        > **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.bastionhost.Instance("default",
-            description="Terraform-test",
-            license_code="bhah_ent_50_asset",
-            period=1,
-            security_group_ids=[
-                "sg-test",
-                "sg-12345",
-            ],
-            vswitch_id="v-testVswitch")
-        ```
-
         ## Import
 
         Yundun_bastionhost instance can be imported using the id, e.g.

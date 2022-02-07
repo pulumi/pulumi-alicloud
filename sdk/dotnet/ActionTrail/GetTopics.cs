@@ -87,6 +87,21 @@ namespace Pulumi.AliCloud.ActionTrail
 
     public sealed class GetTopicsArgs : Pulumi.InvokeArgs
     {
+        [Input("ids")]
+        private List<string>? _ids;
+
+        /// <summary>
+        /// A list of ALIKAFKA Topics IDs, It is formatted to `&lt;instance_id&gt;:&lt;topic&gt;`.
+        /// </summary>
+        public List<string> Ids
+        {
+            get => _ids ?? (_ids = new List<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// ID of the instance.
+        /// </summary>
         [Input("instanceId", required: true)]
         public string InstanceId { get; set; } = null!;
 
@@ -99,6 +114,18 @@ namespace Pulumi.AliCloud.ActionTrail
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        [Input("pageNumber")]
+        public int? PageNumber { get; set; }
+
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
+
+        /// <summary>
+        /// A topic to filter results by the topic name.
+        /// </summary>
+        [Input("topic")]
+        public string? Topic { get; set; }
+
         public GetTopicsArgs()
         {
         }
@@ -106,6 +133,21 @@ namespace Pulumi.AliCloud.ActionTrail
 
     public sealed class GetTopicsInvokeArgs : Pulumi.InvokeArgs
     {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of ALIKAFKA Topics IDs, It is formatted to `&lt;instance_id&gt;:&lt;topic&gt;`.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// ID of the instance.
+        /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
@@ -117,6 +159,18 @@ namespace Pulumi.AliCloud.ActionTrail
 
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
+
+        [Input("pageNumber")]
+        public Input<int>? PageNumber { get; set; }
+
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
+
+        /// <summary>
+        /// A topic to filter results by the topic name.
+        /// </summary>
+        [Input("topic")]
+        public Input<string>? Topic { get; set; }
 
         public GetTopicsInvokeArgs()
         {
@@ -131,6 +185,10 @@ namespace Pulumi.AliCloud.ActionTrail
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The instance_id of the instance.
+        /// </summary>
         public readonly string InstanceId;
         public readonly string? NameRegex;
         /// <summary>
@@ -138,14 +196,23 @@ namespace Pulumi.AliCloud.ActionTrail
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        public readonly int? PageNumber;
+        public readonly int? PageSize;
+        /// <summary>
+        /// The name of the topic.
+        /// </summary>
+        public readonly string? Topic;
         /// <summary>
         /// A list of topics. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTopicsTopicResult> Topics;
+        public readonly int TotalCount;
 
         [OutputConstructor]
         private GetTopicsResult(
             string id,
+
+            ImmutableArray<string> ids,
 
             string instanceId,
 
@@ -155,14 +222,27 @@ namespace Pulumi.AliCloud.ActionTrail
 
             string? outputFile,
 
-            ImmutableArray<Outputs.GetTopicsTopicResult> topics)
+            int? pageNumber,
+
+            int? pageSize,
+
+            string? topic,
+
+            ImmutableArray<Outputs.GetTopicsTopicResult> topics,
+
+            int totalCount)
         {
             Id = id;
+            Ids = ids;
             InstanceId = instanceId;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            PageNumber = pageNumber;
+            PageSize = pageSize;
+            Topic = topic;
             Topics = topics;
+            TotalCount = totalCount;
         }
     }
 }

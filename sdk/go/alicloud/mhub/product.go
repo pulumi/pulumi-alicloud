@@ -17,6 +17,8 @@ import (
 //
 // > **NOTE:** Available in v1.138.0+.
 //
+// > **NOTE:** At present, the resource only supports cn-shanghai region.
+//
 // ## Example Usage
 //
 // Basic Usage

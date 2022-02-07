@@ -45,6 +45,8 @@ export function getApplicationLoadBalancers(args?: GetApplicationLoadBalancersAr
         "nameRegex": args.nameRegex,
         "networkType": args.networkType,
         "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
         "paymentType": args.paymentType,
         "resourceGroupId": args.resourceGroupId,
         "serverId": args.serverId,
@@ -99,6 +101,8 @@ export interface GetApplicationLoadBalancersArgs {
      */
     networkType?: string;
     outputFile?: string;
+    pageNumber?: number;
+    pageSize?: number;
     /**
      * The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
      */
@@ -188,6 +192,8 @@ export interface GetApplicationLoadBalancersResult {
      */
     readonly networkType?: string;
     readonly outputFile?: string;
+    readonly pageNumber?: number;
+    readonly pageSize?: number;
     readonly paymentType?: string;
     /**
      * The ID of the resource group.
@@ -214,6 +220,7 @@ export interface GetApplicationLoadBalancersResult {
      * The tags of the SLB.
      */
     readonly tags?: {[key: string]: any};
+    readonly totalCount: number;
     /**
      * ID of the VPC the SLB belongs to.
      */
@@ -270,6 +277,8 @@ export interface GetApplicationLoadBalancersOutputArgs {
      */
     networkType?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
+    pageNumber?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number>;
     /**
      * The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
      */

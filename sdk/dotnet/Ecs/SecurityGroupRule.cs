@@ -50,6 +50,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> PortRange { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id` parameter, this parameter is ignored.
+        /// </summary>
+        [Output("prefixListId")]
+        public Output<string> PrefixListId { get; private set; } = null!;
+
+        /// <summary>
         /// Authorization policy priority, with parameter values: `1-100`, default value: 1.
         /// </summary>
         [Output("priority")]
@@ -163,6 +169,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PortRange { get; set; }
 
         /// <summary>
+        /// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id` parameter, this parameter is ignored.
+        /// </summary>
+        [Input("prefixListId")]
+        public Input<string>? PrefixListId { get; set; }
+
+        /// <summary>
         /// Authorization policy priority, with parameter values: `1-100`, default value: 1.
         /// </summary>
         [Input("priority")]
@@ -235,6 +247,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("portRange")]
         public Input<string>? PortRange { get; set; }
+
+        /// <summary>
+        /// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id` parameter, this parameter is ignored.
+        /// </summary>
+        [Input("prefixListId")]
+        public Input<string>? PrefixListId { get; set; }
 
         /// <summary>
         /// Authorization policy priority, with parameter values: `1-100`, default value: 1.

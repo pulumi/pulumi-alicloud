@@ -11,49 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **NOTE:** From the version 1.132.0, the resource has been renamed to `bastionhost.Instance`.
-//
-// Cloud Bastion Host instance resource ("Yundun_bastionhost" is the short term of this product).
-// For information about Resource Manager Resource Directory and how to use it, see [What is Bastionhost](https://www.alibabacloud.com/help/en/doc-detail/52922.htm).
-//
-// > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
-//
-// > **NOTE:** Available in 1.63.0+ .
-//
-// > **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
-//
-// ## Example Usage
-//
-// Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := bastionhost.NewInstance(ctx, "default", &bastionhost.InstanceArgs{
-// 			Description: pulumi.String("Terraform-test"),
-// 			LicenseCode: pulumi.String("bhah_ent_50_asset"),
-// 			Period:      pulumi.Int(1),
-// 			SecurityGroupIds: pulumi.StringArray{
-// 				pulumi.String("sg-test"),
-// 				pulumi.String("sg-12345"),
-// 			},
-// 			VswitchId: pulumi.String("v-testVswitch"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // Yundun_bastionhost instance can be imported using the id, e.g.

@@ -11,6 +11,39 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.142.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: "example_value",
+ *     enableIpv6: "true",
+ * });
+ * const exampleIpv6Gateway = new alicloud.vpc.Ipv6Gateway("exampleIpv6Gateway", {
+ *     ipv6GatewayName: "example_value",
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultInstances = alicloud.ecs.getInstances({
+ *     nameRegex: "ecs_with_ipv6_address",
+ *     status: "Running",
+ * });
+ * const defaultIpv6Addresses = defaultInstances.then(defaultInstances => alicloud.vpc.getIpv6Addresses({
+ *     associatedInstanceId: defaultInstances.instances?[0]?.id,
+ *     status: "Available",
+ * }));
+ * const exampleIpv6EgressRule = new alicloud.vpc.Ipv6EgressRule("exampleIpv6EgressRule", {
+ *     instanceId: defaultIpv6Addresses.then(defaultIpv6Addresses => defaultIpv6Addresses.ids?[0]),
+ *     ipv6EgressRuleName: "example_value",
+ *     description: "example_value",
+ *     ipv6GatewayId: exampleIpv6Gateway.id,
+ *     instanceType: "Ipv6Address",
+ * });
+ * ```
+ *
  * ## Import
  *
  * VPC Ipv6 Egress Rule can be imported using the id, e.g.

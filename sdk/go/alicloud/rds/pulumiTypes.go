@@ -316,6 +316,106 @@ func (o RdsParameterGroupParamDetailArrayOutput) Index(i pulumi.IntInput) RdsPar
 	}).(RdsParameterGroupParamDetailOutput)
 }
 
+type RdsUpgradeDbInstanceParameter struct {
+	Name  string `pulumi:"name"`
+	Value string `pulumi:"value"`
+}
+
+// RdsUpgradeDbInstanceParameterInput is an input type that accepts RdsUpgradeDbInstanceParameterArgs and RdsUpgradeDbInstanceParameterOutput values.
+// You can construct a concrete instance of `RdsUpgradeDbInstanceParameterInput` via:
+//
+//          RdsUpgradeDbInstanceParameterArgs{...}
+type RdsUpgradeDbInstanceParameterInput interface {
+	pulumi.Input
+
+	ToRdsUpgradeDbInstanceParameterOutput() RdsUpgradeDbInstanceParameterOutput
+	ToRdsUpgradeDbInstanceParameterOutputWithContext(context.Context) RdsUpgradeDbInstanceParameterOutput
+}
+
+type RdsUpgradeDbInstanceParameterArgs struct {
+	Name  pulumi.StringInput `pulumi:"name"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (RdsUpgradeDbInstanceParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RdsUpgradeDbInstanceParameter)(nil)).Elem()
+}
+
+func (i RdsUpgradeDbInstanceParameterArgs) ToRdsUpgradeDbInstanceParameterOutput() RdsUpgradeDbInstanceParameterOutput {
+	return i.ToRdsUpgradeDbInstanceParameterOutputWithContext(context.Background())
+}
+
+func (i RdsUpgradeDbInstanceParameterArgs) ToRdsUpgradeDbInstanceParameterOutputWithContext(ctx context.Context) RdsUpgradeDbInstanceParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RdsUpgradeDbInstanceParameterOutput)
+}
+
+// RdsUpgradeDbInstanceParameterArrayInput is an input type that accepts RdsUpgradeDbInstanceParameterArray and RdsUpgradeDbInstanceParameterArrayOutput values.
+// You can construct a concrete instance of `RdsUpgradeDbInstanceParameterArrayInput` via:
+//
+//          RdsUpgradeDbInstanceParameterArray{ RdsUpgradeDbInstanceParameterArgs{...} }
+type RdsUpgradeDbInstanceParameterArrayInput interface {
+	pulumi.Input
+
+	ToRdsUpgradeDbInstanceParameterArrayOutput() RdsUpgradeDbInstanceParameterArrayOutput
+	ToRdsUpgradeDbInstanceParameterArrayOutputWithContext(context.Context) RdsUpgradeDbInstanceParameterArrayOutput
+}
+
+type RdsUpgradeDbInstanceParameterArray []RdsUpgradeDbInstanceParameterInput
+
+func (RdsUpgradeDbInstanceParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RdsUpgradeDbInstanceParameter)(nil)).Elem()
+}
+
+func (i RdsUpgradeDbInstanceParameterArray) ToRdsUpgradeDbInstanceParameterArrayOutput() RdsUpgradeDbInstanceParameterArrayOutput {
+	return i.ToRdsUpgradeDbInstanceParameterArrayOutputWithContext(context.Background())
+}
+
+func (i RdsUpgradeDbInstanceParameterArray) ToRdsUpgradeDbInstanceParameterArrayOutputWithContext(ctx context.Context) RdsUpgradeDbInstanceParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RdsUpgradeDbInstanceParameterArrayOutput)
+}
+
+type RdsUpgradeDbInstanceParameterOutput struct{ *pulumi.OutputState }
+
+func (RdsUpgradeDbInstanceParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RdsUpgradeDbInstanceParameter)(nil)).Elem()
+}
+
+func (o RdsUpgradeDbInstanceParameterOutput) ToRdsUpgradeDbInstanceParameterOutput() RdsUpgradeDbInstanceParameterOutput {
+	return o
+}
+
+func (o RdsUpgradeDbInstanceParameterOutput) ToRdsUpgradeDbInstanceParameterOutputWithContext(ctx context.Context) RdsUpgradeDbInstanceParameterOutput {
+	return o
+}
+
+func (o RdsUpgradeDbInstanceParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RdsUpgradeDbInstanceParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o RdsUpgradeDbInstanceParameterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v RdsUpgradeDbInstanceParameter) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type RdsUpgradeDbInstanceParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (RdsUpgradeDbInstanceParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RdsUpgradeDbInstanceParameter)(nil)).Elem()
+}
+
+func (o RdsUpgradeDbInstanceParameterArrayOutput) ToRdsUpgradeDbInstanceParameterArrayOutput() RdsUpgradeDbInstanceParameterArrayOutput {
+	return o
+}
+
+func (o RdsUpgradeDbInstanceParameterArrayOutput) ToRdsUpgradeDbInstanceParameterArrayOutputWithContext(ctx context.Context) RdsUpgradeDbInstanceParameterArrayOutput {
+	return o
+}
+
+func (o RdsUpgradeDbInstanceParameterArrayOutput) Index(i pulumi.IntInput) RdsUpgradeDbInstanceParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RdsUpgradeDbInstanceParameter {
+		return vs[0].([]RdsUpgradeDbInstanceParameter)[vs[1].(int)]
+	}).(RdsUpgradeDbInstanceParameterOutput)
+}
+
 type ReadOnlyInstanceParameter struct {
 	Name  string `pulumi:"name"`
 	Value string `pulumi:"value"`
@@ -2676,6 +2776,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsCloneDbInstanceParameterArrayInput)(nil)).Elem(), RdsCloneDbInstanceParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsParameterGroupParamDetailInput)(nil)).Elem(), RdsParameterGroupParamDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdsParameterGroupParamDetailArrayInput)(nil)).Elem(), RdsParameterGroupParamDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RdsUpgradeDbInstanceParameterInput)(nil)).Elem(), RdsUpgradeDbInstanceParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RdsUpgradeDbInstanceParameterArrayInput)(nil)).Elem(), RdsUpgradeDbInstanceParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReadOnlyInstanceParameterInput)(nil)).Elem(), ReadOnlyInstanceParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReadOnlyInstanceParameterArrayInput)(nil)).Elem(), ReadOnlyInstanceParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountInput)(nil)).Elem(), GetAccountsAccountArgs{})
@@ -2709,6 +2811,8 @@ func init() {
 	pulumi.RegisterOutputType(RdsCloneDbInstanceParameterArrayOutput{})
 	pulumi.RegisterOutputType(RdsParameterGroupParamDetailOutput{})
 	pulumi.RegisterOutputType(RdsParameterGroupParamDetailArrayOutput{})
+	pulumi.RegisterOutputType(RdsUpgradeDbInstanceParameterOutput{})
+	pulumi.RegisterOutputType(RdsUpgradeDbInstanceParameterArrayOutput{})
 	pulumi.RegisterOutputType(ReadOnlyInstanceParameterOutput{})
 	pulumi.RegisterOutputType(ReadOnlyInstanceParameterArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountOutput{})

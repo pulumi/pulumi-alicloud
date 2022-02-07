@@ -64,6 +64,48 @@ namespace Pulumi.AliCloud.Nas
     /// }
     /// ```
     /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultZones = Output.Create(AliCloud.Nas.GetZones.InvokeAsync(new AliCloud.Nas.GetZonesArgs
+    ///         {
+    ///             FileSystemType = "cpfs",
+    ///         }));
+    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
+    ///         {
+    ///             NameRegex = "default-NODELETING",
+    ///         }));
+    ///         var defaultSwitches = Output.Tuple(defaultNetworks, defaultZones).Apply(values =&gt;
+    ///         {
+    ///             var defaultNetworks = values.Item1;
+    ///             var defaultZones = values.Item2;
+    ///             return Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
+    ///             {
+    ///                 VpcId = defaultNetworks.Ids?[0],
+    ///                 ZoneId = defaultZones.Zones?[0]?.ZoneId,
+    ///             }));
+    ///         });
+    ///         var foo = new AliCloud.Nas.FileSystem("foo", new AliCloud.Nas.FileSystemArgs
+    ///         {
+    ///             ProtocolType = "cpfs",
+    ///             StorageType = "advance_200",
+    ///             FileSystemType = "cpfs",
+    ///             Capacity = 3600,
+    ///             Description = "tf-testacc",
+    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.ZoneId),
+    ///             VpcId = defaultNetworks.Apply(defaultNetworks =&gt; defaultNetworks.Ids?[0]),
+    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Nas File System can be imported using the id, e.g.
@@ -99,7 +141,8 @@ namespace Pulumi.AliCloud.Nas
         /// the type of the file system. 
         /// Valid values:
         /// `standard` (Default),
-        /// `extreme`.
+        /// `extreme`,
+        /// `cpfs`.
         /// </summary>
         [Output("fileSystemType")]
         public Output<string?> FileSystemType { get; private set; } = null!;
@@ -114,7 +157,8 @@ namespace Pulumi.AliCloud.Nas
         /// The protocol type of the file system.
         /// Valid values:
         /// `NFS`,
-        /// `SMB` (Available when the `file_system_type` is `standard`).
+        /// `SMB` (Available when the `file_system_type` is `standard`),
+        /// `cpfs` (Available when the `file_system_type` is `cpfs`).
         /// </summary>
         [Output("protocolType")]
         public Output<string> ProtocolType { get; private set; } = null!;
@@ -125,6 +169,24 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         [Output("storageType")]
         public Output<string> StorageType { get; private set; } = null!;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
+        /// </summary>
+        [Output("vpcId")]
+        public Output<string?> VpcId { get; private set; } = null!;
+
+        /// <summary>
+        /// The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
+        /// </summary>
+        [Output("vswitchId")]
+        public Output<string?> VswitchId { get; private set; } = null!;
 
         /// <summary>
         /// The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.
@@ -202,7 +264,8 @@ namespace Pulumi.AliCloud.Nas
         /// the type of the file system. 
         /// Valid values:
         /// `standard` (Default),
-        /// `extreme`.
+        /// `extreme`,
+        /// `cpfs`.
         /// </summary>
         [Input("fileSystemType")]
         public Input<string>? FileSystemType { get; set; }
@@ -217,7 +280,8 @@ namespace Pulumi.AliCloud.Nas
         /// The protocol type of the file system.
         /// Valid values:
         /// `NFS`,
-        /// `SMB` (Available when the `file_system_type` is `standard`).
+        /// `SMB` (Available when the `file_system_type` is `standard`),
+        /// `cpfs` (Available when the `file_system_type` is `cpfs`).
         /// </summary>
         [Input("protocolType", required: true)]
         public Input<string> ProtocolType { get; set; } = null!;
@@ -228,6 +292,30 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         [Input("storageType", required: true)]
         public Input<string> StorageType { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
 
         /// <summary>
         /// The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.
@@ -266,7 +354,8 @@ namespace Pulumi.AliCloud.Nas
         /// the type of the file system. 
         /// Valid values:
         /// `standard` (Default),
-        /// `extreme`.
+        /// `extreme`,
+        /// `cpfs`.
         /// </summary>
         [Input("fileSystemType")]
         public Input<string>? FileSystemType { get; set; }
@@ -281,7 +370,8 @@ namespace Pulumi.AliCloud.Nas
         /// The protocol type of the file system.
         /// Valid values:
         /// `NFS`,
-        /// `SMB` (Available when the `file_system_type` is `standard`).
+        /// `SMB` (Available when the `file_system_type` is `standard`),
+        /// `cpfs` (Available when the `file_system_type` is `cpfs`).
         /// </summary>
         [Input("protocolType")]
         public Input<string>? ProtocolType { get; set; }
@@ -292,6 +382,30 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         [Input("storageType")]
         public Input<string>? StorageType { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
 
         /// <summary>
         /// The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.

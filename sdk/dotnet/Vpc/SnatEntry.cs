@@ -51,13 +51,13 @@ namespace Pulumi.AliCloud.Vpc
         /// The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
         /// </summary>
         [Output("sourceCidr")]
-        public Output<string?> SourceCidr { get; private set; } = null!;
+        public Output<string> SourceCidr { get; private set; } = null!;
 
         /// <summary>
         /// The vswitch ID.
         /// </summary>
         [Output("sourceVswitchId")]
-        public Output<string?> SourceVswitchId { get; private set; } = null!;
+        public Output<string> SourceVswitchId { get; private set; } = null!;
 
         /// <summary>
         /// (Available in 1.119.1+) The status of snat entry.

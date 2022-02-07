@@ -761,7 +761,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> pulumi.Output[Optional[str]]:
+    def instance_name(self) -> pulumi.Output[str]:
         """
         The instance name.
         """

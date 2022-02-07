@@ -87,7 +87,7 @@ export class SynchronizationInstance extends pulumi.CustomResource {
      */
     public readonly instanceClass!: pulumi.Output<string>;
     /**
-     * The duration of prepaid instance purchase. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
+     * The duration of prepaid instance purchase. this parameter is required When `paymentType` equals `Subscription`.
      */
     public readonly paymentDuration!: pulumi.Output<number | undefined>;
     /**
@@ -206,7 +206,7 @@ export interface SynchronizationInstanceState {
      */
     instanceClass?: pulumi.Input<string>;
     /**
-     * The duration of prepaid instance purchase. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
+     * The duration of prepaid instance purchase. this parameter is required When `paymentType` equals `Subscription`.
      */
     paymentDuration?: pulumi.Input<number>;
     /**
@@ -264,7 +264,7 @@ export interface SynchronizationInstanceArgs {
      */
     instanceClass?: pulumi.Input<string>;
     /**
-     * The duration of prepaid instance purchase. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
+     * The duration of prepaid instance purchase. this parameter is required When `paymentType` equals `Subscription`.
      */
     paymentDuration?: pulumi.Input<number>;
     /**

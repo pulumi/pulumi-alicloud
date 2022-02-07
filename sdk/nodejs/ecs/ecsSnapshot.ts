@@ -93,6 +93,8 @@ export class EcsSnapshot extends pulumi.CustomResource {
      */
     public readonly instantAccessRetentionDays!: pulumi.Output<number | undefined>;
     /**
+     * Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
+     *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
@@ -194,6 +196,8 @@ export interface EcsSnapshotState {
      */
     instantAccessRetentionDays?: pulumi.Input<number>;
     /**
+     * Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
+     *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
      */
     name?: pulumi.Input<string>;
@@ -248,6 +252,8 @@ export interface EcsSnapshotArgs {
      */
     instantAccessRetentionDays?: pulumi.Input<number>;
     /**
+     * Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
+     *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
      */
     name?: pulumi.Input<string>;

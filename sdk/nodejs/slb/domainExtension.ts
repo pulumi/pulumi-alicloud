@@ -143,7 +143,7 @@ export class DomainExtension extends pulumi.CustomResource {
      */
     public readonly deleteProtectionValidation!: pulumi.Output<boolean | undefined>;
     /**
-     * The domain name,
+     * The domain name.
      */
     public readonly domain!: pulumi.Output<string>;
     /**
@@ -211,7 +211,7 @@ export interface DomainExtensionState {
      */
     deleteProtectionValidation?: pulumi.Input<boolean>;
     /**
-     * The domain name,
+     * The domain name.
      */
     domain?: pulumi.Input<string>;
     /**
@@ -237,7 +237,7 @@ export interface DomainExtensionArgs {
      */
     deleteProtectionValidation?: pulumi.Input<boolean>;
     /**
-     * The domain name,
+     * The domain name.
      */
     domain: pulumi.Input<string>;
     /**

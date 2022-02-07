@@ -87,7 +87,11 @@ class HistoryDeliveryJob(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.139.0+.
 
-        > **NOTE:** Make sure that you have called the `actiontrail.Trail` to create a single account trace that is delivered to Log Service SLS. An Alibaba cloud account can only have one running delivery history job at the same time.
+        > **NOTE:** You are authorized to use the historical event delivery task feature. To use this feature, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=a2c63.p38356.0.0.e29f552bb6odNZ#/ticket/createIndex) or ask the sales manager to add you to the whitelist.
+
+        > **NOTE:** Make sure that you have called the `actiontrail.Trail` to create a single-account or multi-account trace that delivered to Log Service SLS.
+
+        > **NOTE:** An Alibaba cloud account can only have one running delivery history job at the same time.
 
         ## Example Usage
 
@@ -100,10 +104,8 @@ class HistoryDeliveryJob(pulumi.CustomResource):
         example_regions = alicloud.get_regions(current=True)
         example_account = alicloud.get_account()
         example_project = alicloud.log.Project("exampleProject", description="tf actiontrail test")
-        example_roles = alicloud.ram.get_roles(name_regex="AliyunActionTrailDefaultRole")
         example_trail = alicloud.actiontrail.Trail("exampleTrail",
             trail_name="example_value",
-            sls_write_role_arn=example_roles.roles[0].arn,
             sls_project_arn=example_project.name.apply(lambda name: f"acs:log:{example_regions.regions[0].id}:{example_account.id}:project/{name}"))
         example_history_delivery_job = alicloud.actiontrail.HistoryDeliveryJob("exampleHistoryDeliveryJob", trail_name=example_trail.id)
         ```
@@ -133,7 +135,11 @@ class HistoryDeliveryJob(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.139.0+.
 
-        > **NOTE:** Make sure that you have called the `actiontrail.Trail` to create a single account trace that is delivered to Log Service SLS. An Alibaba cloud account can only have one running delivery history job at the same time.
+        > **NOTE:** You are authorized to use the historical event delivery task feature. To use this feature, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=a2c63.p38356.0.0.e29f552bb6odNZ#/ticket/createIndex) or ask the sales manager to add you to the whitelist.
+
+        > **NOTE:** Make sure that you have called the `actiontrail.Trail` to create a single-account or multi-account trace that delivered to Log Service SLS.
+
+        > **NOTE:** An Alibaba cloud account can only have one running delivery history job at the same time.
 
         ## Example Usage
 
@@ -146,10 +152,8 @@ class HistoryDeliveryJob(pulumi.CustomResource):
         example_regions = alicloud.get_regions(current=True)
         example_account = alicloud.get_account()
         example_project = alicloud.log.Project("exampleProject", description="tf actiontrail test")
-        example_roles = alicloud.ram.get_roles(name_regex="AliyunActionTrailDefaultRole")
         example_trail = alicloud.actiontrail.Trail("exampleTrail",
             trail_name="example_value",
-            sls_write_role_arn=example_roles.roles[0].arn,
             sls_project_arn=example_project.name.apply(lambda name: f"acs:log:{example_regions.regions[0].id}:{example_account.id}:project/{name}"))
         example_history_delivery_job = alicloud.actiontrail.HistoryDeliveryJob("exampleHistoryDeliveryJob", trail_name=example_trail.id)
         ```

@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.Oos
         /// The ID of the resource group.
         /// </summary>
         [Output("resourceGroupId")]
-        public Output<string?> ResourceGroupId { get; private set; } = null!;
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
         /// The tag of the resource.

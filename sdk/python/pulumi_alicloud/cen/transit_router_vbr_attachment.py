@@ -30,11 +30,13 @@ class TransitRouterVbrAttachmentArgs:
         :param pulumi.Input[str] vbr_id: The ID of the VBR.
         :param pulumi.Input[bool] auto_publish_route_enabled: Auto publish route enabled.Default value is `false`.
         :param pulumi.Input[bool] dry_run: The dry run.
+        :param pulumi.Input[str] resource_type: The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
         :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. The system default value is `true`.
         :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. The system default value is `true`.
         :param pulumi.Input[str] transit_router_attachment_description: The description of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_attachment_name: The name of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
+        :param pulumi.Input[str] vbr_owner_id: The owner id of the transit router vbr attachment.
         """
         pulumi.set(__self__, "cen_id", cen_id)
         pulumi.set(__self__, "vbr_id", vbr_id)
@@ -108,6 +110,9 @@ class TransitRouterVbrAttachmentArgs:
     @property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+        """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
@@ -177,6 +182,9 @@ class TransitRouterVbrAttachmentArgs:
     @property
     @pulumi.getter(name="vbrOwnerId")
     def vbr_owner_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The owner id of the transit router vbr attachment.
+        """
         return pulumi.get(self, "vbr_owner_id")
 
     @vbr_owner_id.setter
@@ -205,13 +213,16 @@ class _TransitRouterVbrAttachmentState:
         :param pulumi.Input[bool] auto_publish_route_enabled: Auto publish route enabled.Default value is `false`.
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[bool] dry_run: The dry run.
+        :param pulumi.Input[str] resource_type: The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
         :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. The system default value is `true`.
         :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. The system default value is `true`.
         :param pulumi.Input[str] status: The associating status of the network.
         :param pulumi.Input[str] transit_router_attachment_description: The description of the transit router vbr attachment.
+        :param pulumi.Input[str] transit_router_attachment_id: The id of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_attachment_name: The name of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vbr_id: The ID of the VBR.
+        :param pulumi.Input[str] vbr_owner_id: The owner id of the transit router vbr attachment.
         """
         if auto_publish_route_enabled is not None:
             pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
@@ -279,6 +290,9 @@ class _TransitRouterVbrAttachmentState:
     @property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+        """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
@@ -336,6 +350,9 @@ class _TransitRouterVbrAttachmentState:
     @property
     @pulumi.getter(name="transitRouterAttachmentId")
     def transit_router_attachment_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the transit router vbr attachment.
+        """
         return pulumi.get(self, "transit_router_attachment_id")
 
     @transit_router_attachment_id.setter
@@ -381,6 +398,9 @@ class _TransitRouterVbrAttachmentState:
     @property
     @pulumi.getter(name="vbrOwnerId")
     def vbr_owner_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The owner id of the transit router vbr attachment.
+        """
         return pulumi.get(self, "vbr_owner_id")
 
     @vbr_owner_id.setter
@@ -423,12 +443,14 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_publish_route_enabled: Auto publish route enabled.Default value is `false`.
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[bool] dry_run: The dry run.
+        :param pulumi.Input[str] resource_type: The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
         :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. The system default value is `true`.
         :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. The system default value is `true`.
         :param pulumi.Input[str] transit_router_attachment_description: The description of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_attachment_name: The name of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vbr_id: The ID of the VBR.
+        :param pulumi.Input[str] vbr_owner_id: The owner id of the transit router vbr attachment.
         """
         ...
     @overload
@@ -537,13 +559,16 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_publish_route_enabled: Auto publish route enabled.Default value is `false`.
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[bool] dry_run: The dry run.
+        :param pulumi.Input[str] resource_type: The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
         :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. The system default value is `true`.
         :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. The system default value is `true`.
         :param pulumi.Input[str] status: The associating status of the network.
         :param pulumi.Input[str] transit_router_attachment_description: The description of the transit router vbr attachment.
+        :param pulumi.Input[str] transit_router_attachment_id: The id of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_attachment_name: The name of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vbr_id: The ID of the VBR.
+        :param pulumi.Input[str] vbr_owner_id: The owner id of the transit router vbr attachment.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -591,6 +616,9 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
     @property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+        """
         return pulumi.get(self, "resource_type")
 
     @property
@@ -628,6 +656,9 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
     @property
     @pulumi.getter(name="transitRouterAttachmentId")
     def transit_router_attachment_id(self) -> pulumi.Output[str]:
+        """
+        The id of the transit router vbr attachment.
+        """
         return pulumi.get(self, "transit_router_attachment_id")
 
     @property
@@ -657,5 +688,8 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
     @property
     @pulumi.getter(name="vbrOwnerId")
     def vbr_owner_id(self) -> pulumi.Output[str]:
+        """
+        The owner id of the transit router vbr attachment.
+        """
         return pulumi.get(self, "vbr_owner_id")
 

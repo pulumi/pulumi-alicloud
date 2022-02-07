@@ -10,46 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.BastionHost
 {
     /// <summary>
-    /// &gt; **NOTE:** From the version 1.132.0, the resource has been renamed to `alicloud.bastionhost.Instance`.
-    /// 
-    /// Cloud Bastion Host instance resource ("Yundun_bastionhost" is the short term of this product).
-    /// For information about Resource Manager Resource Directory and how to use it, see [What is Bastionhost](https://www.alibabacloud.com/help/en/doc-detail/52922.htm).
-    /// 
-    /// &gt; **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
-    /// 
-    /// &gt; **NOTE:** Available in 1.63.0+ .
-    /// 
-    /// &gt; **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new AliCloud.BastionHost.Instance("default", new AliCloud.BastionHost.InstanceArgs
-    ///         {
-    ///             Description = "Terraform-test",
-    ///             LicenseCode = "bhah_ent_50_asset",
-    ///             Period = 1,
-    ///             SecurityGroupIds = 
-    ///             {
-    ///                 "sg-test",
-    ///                 "sg-12345",
-    ///             },
-    ///             VswitchId = "v-testVswitch",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Yundun_bastionhost instance can be imported using the id, e.g.

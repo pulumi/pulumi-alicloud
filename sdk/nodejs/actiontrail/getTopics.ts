@@ -32,9 +32,13 @@ export function getTopics(args: GetTopicsArgs, opts?: pulumi.InvokeOptions): Pro
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("alicloud:actiontrail/getTopics:getTopics", {
+        "ids": args.ids,
         "instanceId": args.instanceId,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
+        "topic": args.topic,
     }, opts);
 }
 
@@ -42,12 +46,25 @@ export function getTopics(args: GetTopicsArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getTopics.
  */
 export interface GetTopicsArgs {
+    /**
+     * A list of ALIKAFKA Topics IDs, It is formatted to `<instance_id>:<topic>`.
+     */
+    ids?: string[];
+    /**
+     * ID of the instance.
+     */
     instanceId: string;
     /**
      * A regex string to filter results by the topic name.
      */
     nameRegex?: string;
     outputFile?: string;
+    pageNumber?: number;
+    pageSize?: number;
+    /**
+     * A topic to filter results by the topic name.
+     */
+    topic?: string;
 }
 
 /**
@@ -58,6 +75,10 @@ export interface GetTopicsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly ids: string[];
+    /**
+     * The instanceId of the instance.
+     */
     readonly instanceId: string;
     readonly nameRegex?: string;
     /**
@@ -65,10 +86,17 @@ export interface GetTopicsResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+    readonly pageNumber?: number;
+    readonly pageSize?: number;
+    /**
+     * The name of the topic.
+     */
+    readonly topic?: string;
     /**
      * A list of topics. Each element contains the following attributes:
      */
     readonly topics: outputs.actiontrail.GetTopicsTopic[];
+    readonly totalCount: number;
 }
 
 export function getTopicsOutput(args: GetTopicsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicsResult> {
@@ -79,10 +107,23 @@ export function getTopicsOutput(args: GetTopicsOutputArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getTopics.
  */
 export interface GetTopicsOutputArgs {
+    /**
+     * A list of ALIKAFKA Topics IDs, It is formatted to `<instance_id>:<topic>`.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ID of the instance.
+     */
     instanceId: pulumi.Input<string>;
     /**
      * A regex string to filter results by the topic name.
      */
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
+    pageNumber?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number>;
+    /**
+     * A topic to filter results by the topic name.
+     */
+    topic?: pulumi.Input<string>;
 }

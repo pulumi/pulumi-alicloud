@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<bool?> DeleteProtectionValidation { get; private set; } = null!;
 
         /// <summary>
-        /// The domain name,
+        /// The domain name.
         /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
@@ -111,7 +111,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<bool>? DeleteProtectionValidation { get; set; }
 
         /// <summary>
-        /// The domain name,
+        /// The domain name.
         /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<bool>? DeleteProtectionValidation { get; set; }
 
         /// <summary>
-        /// The domain name,
+        /// The domain name.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }

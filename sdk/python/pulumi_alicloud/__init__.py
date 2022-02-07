@@ -1682,6 +1682,22 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "dns/accessStrategy",
+  "fqn": "pulumi_alicloud.dns",
+  "classes": {
+   "alicloud:dns/accessStrategy:AccessStrategy": "AccessStrategy"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "dns/addressPool",
+  "fqn": "pulumi_alicloud.dns",
+  "classes": {
+   "alicloud:dns/addressPool:AddressPool": "AddressPool"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "dns/alidnsDomain",
   "fqn": "pulumi_alicloud.dns",
   "classes": {
@@ -1790,6 +1806,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.dns",
   "classes": {
    "alicloud:dns/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "dns/monitorConfig",
+  "fqn": "pulumi_alicloud.dns",
+  "classes": {
+   "alicloud:dns/monitorConfig:MonitorConfig": "MonitorConfig"
   }
  },
  {
@@ -2030,6 +2054,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ecs",
   "classes": {
    "alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment": "EcsNetworkInterfaceAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ecs/ecsPrefixList",
+  "fqn": "pulumi_alicloud.ecs",
+  "classes": {
+   "alicloud:ecs/ecsPrefixList:EcsPrefixList": "EcsPrefixList"
   }
  },
  {
@@ -2746,6 +2778,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "hbr/replicationVault",
+  "fqn": "pulumi_alicloud.hbr",
+  "classes": {
+   "alicloud:hbr/replicationVault:ReplicationVault": "ReplicationVault"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "hbr/restoreJob",
   "fqn": "pulumi_alicloud.hbr",
   "classes": {
@@ -3122,6 +3162,22 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "nas/autoSnapshotPolicy",
+  "fqn": "pulumi_alicloud.nas",
+  "classes": {
+   "alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy": "AutoSnapshotPolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "nas/dataFlow",
+  "fqn": "pulumi_alicloud.nas",
+  "classes": {
+   "alicloud:nas/dataFlow:DataFlow": "DataFlow"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "nas/fileSystem",
   "fqn": "pulumi_alicloud.nas",
   "classes": {
@@ -3130,10 +3186,34 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "nas/fileset",
+  "fqn": "pulumi_alicloud.nas",
+  "classes": {
+   "alicloud:nas/fileset:Fileset": "Fileset"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "nas/lifecyclePolicy",
+  "fqn": "pulumi_alicloud.nas",
+  "classes": {
+   "alicloud:nas/lifecyclePolicy:LifecyclePolicy": "LifecyclePolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "nas/mountTarget",
   "fqn": "pulumi_alicloud.nas",
   "classes": {
    "alicloud:nas/mountTarget:MountTarget": "MountTarget"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "nas/snapshot",
+  "fqn": "pulumi_alicloud.nas",
+  "classes": {
+   "alicloud:nas/snapshot:Snapshot": "Snapshot"
   }
  },
  {
@@ -3554,6 +3634,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "ram/securityPreference",
+  "fqn": "pulumi_alicloud.ram",
+  "classes": {
+   "alicloud:ram/securityPreference:SecurityPreference": "SecurityPreference"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "ram/user",
   "fqn": "pulumi_alicloud.ram",
   "classes": {
@@ -3654,6 +3742,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.rds",
   "classes": {
    "alicloud:rds/rdsParameterGroup:RdsParameterGroup": "RdsParameterGroup"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "rds/rdsUpgradeDbInstance",
+  "fqn": "pulumi_alicloud.rds",
+  "classes": {
+   "alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance": "RdsUpgradeDbInstance"
   }
  },
  {
@@ -4178,6 +4274,30 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "vpc/bgpGroup",
+  "fqn": "pulumi_alicloud.vpc",
+  "classes": {
+   "alicloud:vpc/bgpGroup:BgpGroup": "BgpGroup"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "vpc/bgpNetwork",
+  "fqn": "pulumi_alicloud.vpc",
+  "classes": {
+   "alicloud:vpc/bgpNetwork:BgpNetwork": "BgpNetwork"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "vpc/bgpPeer",
+  "fqn": "pulumi_alicloud.vpc",
+  "classes": {
+   "alicloud:vpc/bgpPeer:BgpPeer": "BgpPeer"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "vpc/commonBandwithPackage",
   "fqn": "pulumi_alicloud.vpc",
   "classes": {
@@ -4198,6 +4318,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.vpc",
   "classes": {
    "alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet": "DhcpOptionsSet"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "vpc/dhcpOptionsSetAttachment",
+  "fqn": "pulumi_alicloud.vpc",
+  "classes": {
+   "alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment": "DhcpOptionsSetAttachment"
   }
  },
  {

@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Amqp
         /// The instance name.
         /// </summary>
         [Output("instanceName")]
-        public Output<string?> InstanceName { get; private set; } = null!;
+        public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
         /// The Instance Type. Valid values: `professional`, `vip`.

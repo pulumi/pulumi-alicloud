@@ -21,12 +21,20 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:vpc/bgpGroup:BgpGroup":
+		r = &BgpGroup{}
+	case "alicloud:vpc/bgpNetwork:BgpNetwork":
+		r = &BgpNetwork{}
+	case "alicloud:vpc/bgpPeer:BgpPeer":
+		r = &BgpPeer{}
 	case "alicloud:vpc/commonBandwithPackage:CommonBandwithPackage":
 		r = &CommonBandwithPackage{}
 	case "alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment":
 		r = &CommonBandwithPackageAttachment{}
 	case "alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet":
 		r = &DhcpOptionsSet{}
+	case "alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment":
+		r = &DhcpOptionsSetAttachment{}
 	case "alicloud:vpc/flowLog:FlowLog":
 		r = &FlowLog{}
 	case "alicloud:vpc/forwardEntry:ForwardEntry":
@@ -100,6 +108,21 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"vpc/bgpGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/bgpNetwork",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/bgpPeer",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"vpc/commonBandwithPackage",
 		&module{version},
 	)
@@ -111,6 +134,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"vpc/dhcpOptionsSet",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/dhcpOptionsSetAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

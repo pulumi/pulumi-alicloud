@@ -2264,41 +2264,6 @@ class Instance(pulumi.CustomResource):
                  zone_id_slave_b: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides an RDS instance resource. A DB instance is an isolated database environment in the cloud. A DB instance can contain multiple user-created databases.
-
-        For information about RDS and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
-
-        ## Example Usage
-        ### Create a RDS MySQL instance
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testaccdbinstance"
-        creation = config.get("creation")
-        if creation is None:
-            creation = "Rds"
-        example_zones = alicloud.get_zones(available_resource_creation=creation)
-        example_network = alicloud.vpc.Network("exampleNetwork", cidr_block="172.16.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vpc_id=example_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=example_zones.zones[0].id)
-        example_instance = alicloud.rds.Instance("exampleInstance",
-            engine="MySQL",
-            engine_version="5.6",
-            instance_type="rds.mysql.s2.large",
-            instance_storage=30,
-            instance_charge_type="Postpaid",
-            instance_name=name,
-            vswitch_id=example_switch.id,
-            monitoring_period=60)
-        ```
-
         ## Import
 
         RDS instance can be imported using the id, e.g.
@@ -2441,41 +2406,6 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an RDS instance resource. A DB instance is an isolated database environment in the cloud. A DB instance can contain multiple user-created databases.
-
-        For information about RDS and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
-
-        ## Example Usage
-        ### Create a RDS MySQL instance
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testaccdbinstance"
-        creation = config.get("creation")
-        if creation is None:
-            creation = "Rds"
-        example_zones = alicloud.get_zones(available_resource_creation=creation)
-        example_network = alicloud.vpc.Network("exampleNetwork", cidr_block="172.16.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vpc_id=example_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=example_zones.zones[0].id)
-        example_instance = alicloud.rds.Instance("exampleInstance",
-            engine="MySQL",
-            engine_version="5.6",
-            instance_type="rds.mysql.s2.large",
-            instance_storage=30,
-            instance_charge_type="Postpaid",
-            instance_name=name,
-            vswitch_id=example_switch.id,
-            monitoring_period=60)
-        ```
-
         ## Import
 
         RDS instance can be imported using the id, e.g.

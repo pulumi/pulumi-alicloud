@@ -44,11 +44,16 @@ export interface GetZonesArgs {
      */
     availableSlbAddressIpVersion?: string;
     /**
-     * Filter the results by a slb instance address type. Can be either `Vpc`, `classicInternet` or `classicIntranet`
+     * Filter the results by a slb instance network type. Valid values:
+     * * vpc: an internal SLB instance that is deployed in a virtual private cloud (VPC).
+     * * classic_internet: a public-facing SLB instance.
+     * * classic_intranet: an internal SLB instance that is deployed in a classic network.
      */
     availableSlbAddressType?: string;
     /**
      * Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+     *
+     * @deprecated The parameter enable_details has been deprecated from version v1.154.0+
      */
     enableDetails?: boolean;
     outputFile?: string;
@@ -60,6 +65,9 @@ export interface GetZonesArgs {
 export interface GetZonesResult {
     readonly availableSlbAddressIpVersion?: string;
     readonly availableSlbAddressType?: string;
+    /**
+     * @deprecated The parameter enable_details has been deprecated from version v1.154.0+
+     */
     readonly enableDetails?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -89,11 +97,16 @@ export interface GetZonesOutputArgs {
      */
     availableSlbAddressIpVersion?: pulumi.Input<string>;
     /**
-     * Filter the results by a slb instance address type. Can be either `Vpc`, `classicInternet` or `classicIntranet`
+     * Filter the results by a slb instance network type. Valid values:
+     * * vpc: an internal SLB instance that is deployed in a virtual private cloud (VPC).
+     * * classic_internet: a public-facing SLB instance.
+     * * classic_intranet: an internal SLB instance that is deployed in a classic network.
      */
     availableSlbAddressType?: pulumi.Input<string>;
     /**
      * Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+     *
+     * @deprecated The parameter enable_details has been deprecated from version v1.154.0+
      */
     enableDetails?: pulumi.Input<boolean>;
     outputFile?: pulumi.Input<string>;

@@ -36,6 +36,8 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
         "imageId": args.imageId,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
         "ramRoleName": args.ramRoleName,
         "resourceGroupId": args.resourceGroupId,
         "status": args.status,
@@ -66,6 +68,8 @@ export interface GetInstancesArgs {
      */
     nameRegex?: string;
     outputFile?: string;
+    pageNumber?: number;
+    pageSize?: number;
     /**
      * The RAM role name which the instance attaches.
      */
@@ -133,6 +137,8 @@ export interface GetInstancesResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+    readonly pageNumber?: number;
+    readonly pageSize?: number;
     /**
      * The Ram role name.
      */
@@ -149,6 +155,7 @@ export interface GetInstancesResult {
      * A map of tags assigned to the ECS instance.
      */
     readonly tags?: {[key: string]: any};
+    readonly totalCount: number;
     /**
      * ID of the VPC the instance belongs to.
      */
@@ -184,6 +191,8 @@ export interface GetInstancesOutputArgs {
      */
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
+    pageNumber?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number>;
     /**
      * The RAM role name which the instance attaches.
      */

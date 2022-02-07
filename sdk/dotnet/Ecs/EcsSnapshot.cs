@@ -93,6 +93,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("instantAccessRetentionDays")]
         public Output<int?> InstantAccessRetentionDays { get; private set; } = null!;
 
+        /// <summary>
+        /// Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -208,6 +211,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("instantAccessRetentionDays")]
         public Input<int>? InstantAccessRetentionDays { get; set; }
 
+        /// <summary>
+        /// Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -284,6 +290,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("instantAccessRetentionDays")]
         public Input<int>? InstantAccessRetentionDays { get; set; }
 
+        /// <summary>
+        /// Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

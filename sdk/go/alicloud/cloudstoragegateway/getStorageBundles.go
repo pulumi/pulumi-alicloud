@@ -25,6 +25,8 @@ type GetStorageBundlesArgs struct {
 	Ids                   []string `pulumi:"ids"`
 	NameRegex             *string  `pulumi:"nameRegex"`
 	OutputFile            *string  `pulumi:"outputFile"`
+	PageNumber            *int     `pulumi:"pageNumber"`
+	PageSize              *int     `pulumi:"pageSize"`
 }
 
 // A collection of values returned by getStorageBundles.
@@ -37,6 +39,9 @@ type GetStorageBundlesResult struct {
 	NameRegex  *string  `pulumi:"nameRegex"`
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+	PageNumber *int     `pulumi:"pageNumber"`
+	PageSize   *int     `pulumi:"pageSize"`
+	TotalCount int      `pulumi:"totalCount"`
 }
 
 func GetStorageBundlesOutput(ctx *pulumi.Context, args GetStorageBundlesOutputArgs, opts ...pulumi.InvokeOption) GetStorageBundlesResultOutput {
@@ -54,6 +59,8 @@ type GetStorageBundlesOutputArgs struct {
 	Ids                   pulumi.StringArrayInput `pulumi:"ids"`
 	NameRegex             pulumi.StringPtrInput   `pulumi:"nameRegex"`
 	OutputFile            pulumi.StringPtrInput   `pulumi:"outputFile"`
+	PageNumber            pulumi.IntPtrInput      `pulumi:"pageNumber"`
+	PageSize              pulumi.IntPtrInput      `pulumi:"pageSize"`
 }
 
 func (GetStorageBundlesOutputArgs) ElementType() reflect.Type {
@@ -102,6 +109,18 @@ func (o GetStorageBundlesResultOutput) Names() pulumi.StringArrayOutput {
 
 func (o GetStorageBundlesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStorageBundlesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetStorageBundlesResultOutput) PageNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetStorageBundlesResult) *int { return v.PageNumber }).(pulumi.IntPtrOutput)
+}
+
+func (o GetStorageBundlesResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetStorageBundlesResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetStorageBundlesResultOutput) TotalCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetStorageBundlesResult) int { return v.TotalCount }).(pulumi.IntOutput)
 }
 
 func init() {

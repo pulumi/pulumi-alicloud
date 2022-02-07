@@ -89,15 +89,14 @@ type NasBackupPlan struct {
 
 	// Backup type. Valid values: `COMPLETE`.
 	BackupType pulumi.StringOutput `pulumi:"backupType"`
-	// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
-	CreateTime pulumi.StringOutput    `pulumi:"createTime"`
-	Detail     pulumi.StringPtrOutput `pulumi:"detail"`
+	// This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+	//
+	// Deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Whether to disable the backup task. Valid values: `true`, `false`.
-	Disabled pulumi.BoolOutput      `pulumi:"disabled"`
-	Exclude  pulumi.StringPtrOutput `pulumi:"exclude"`
+	Disabled pulumi.BoolOutput `pulumi:"disabled"`
 	// The File System ID of Nas.
-	FileSystemId pulumi.StringOutput    `pulumi:"fileSystemId"`
-	Include      pulumi.StringPtrOutput `pulumi:"include"`
+	FileSystemId pulumi.StringOutput `pulumi:"fileSystemId"`
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	NasBackupPlanName pulumi.StringOutput `pulumi:"nasBackupPlanName"`
 	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
@@ -107,10 +106,7 @@ type NasBackupPlan struct {
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringOutput `pulumi:"retention"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
-	Schedule   pulumi.StringOutput    `pulumi:"schedule"`
-	SpeedLimit pulumi.StringPtrOutput `pulumi:"speedLimit"`
-	// Deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
-	UpdatePaths pulumi.BoolPtrOutput `pulumi:"updatePaths"`
+	Schedule pulumi.StringOutput `pulumi:"schedule"`
 	// The ID of Backup vault.
 	VaultId pulumi.StringOutput `pulumi:"vaultId"`
 }
@@ -124,9 +120,6 @@ func NewNasBackupPlan(ctx *pulumi.Context,
 
 	if args.BackupType == nil {
 		return nil, errors.New("invalid value for required argument 'BackupType'")
-	}
-	if args.CreateTime == nil {
-		return nil, errors.New("invalid value for required argument 'CreateTime'")
 	}
 	if args.FileSystemId == nil {
 		return nil, errors.New("invalid value for required argument 'FileSystemId'")
@@ -170,15 +163,14 @@ func GetNasBackupPlan(ctx *pulumi.Context,
 type nasBackupPlanState struct {
 	// Backup type. Valid values: `COMPLETE`.
 	BackupType *string `pulumi:"backupType"`
-	// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+	// This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+	//
+	// Deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.
 	CreateTime *string `pulumi:"createTime"`
-	Detail     *string `pulumi:"detail"`
 	// Whether to disable the backup task. Valid values: `true`, `false`.
-	Disabled *bool   `pulumi:"disabled"`
-	Exclude  *string `pulumi:"exclude"`
+	Disabled *bool `pulumi:"disabled"`
 	// The File System ID of Nas.
 	FileSystemId *string `pulumi:"fileSystemId"`
-	Include      *string `pulumi:"include"`
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	NasBackupPlanName *string `pulumi:"nasBackupPlanName"`
 	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
@@ -188,10 +180,7 @@ type nasBackupPlanState struct {
 	// Backup retention days, the minimum is 1.
 	Retention *string `pulumi:"retention"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
-	Schedule   *string `pulumi:"schedule"`
-	SpeedLimit *string `pulumi:"speedLimit"`
-	// Deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
-	UpdatePaths *bool `pulumi:"updatePaths"`
+	Schedule *string `pulumi:"schedule"`
 	// The ID of Backup vault.
 	VaultId *string `pulumi:"vaultId"`
 }
@@ -199,15 +188,14 @@ type nasBackupPlanState struct {
 type NasBackupPlanState struct {
 	// Backup type. Valid values: `COMPLETE`.
 	BackupType pulumi.StringPtrInput
-	// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+	// This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+	//
+	// Deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.
 	CreateTime pulumi.StringPtrInput
-	Detail     pulumi.StringPtrInput
 	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled pulumi.BoolPtrInput
-	Exclude  pulumi.StringPtrInput
 	// The File System ID of Nas.
 	FileSystemId pulumi.StringPtrInput
-	Include      pulumi.StringPtrInput
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	NasBackupPlanName pulumi.StringPtrInput
 	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
@@ -217,10 +205,7 @@ type NasBackupPlanState struct {
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringPtrInput
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
-	Schedule   pulumi.StringPtrInput
-	SpeedLimit pulumi.StringPtrInput
-	// Deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
-	UpdatePaths pulumi.BoolPtrInput
+	Schedule pulumi.StringPtrInput
 	// The ID of Backup vault.
 	VaultId pulumi.StringPtrInput
 }
@@ -232,15 +217,14 @@ func (NasBackupPlanState) ElementType() reflect.Type {
 type nasBackupPlanArgs struct {
 	// Backup type. Valid values: `COMPLETE`.
 	BackupType string `pulumi:"backupType"`
-	// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
-	CreateTime string  `pulumi:"createTime"`
-	Detail     *string `pulumi:"detail"`
+	// This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+	//
+	// Deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.
+	CreateTime *string `pulumi:"createTime"`
 	// Whether to disable the backup task. Valid values: `true`, `false`.
-	Disabled *bool   `pulumi:"disabled"`
-	Exclude  *string `pulumi:"exclude"`
+	Disabled *bool `pulumi:"disabled"`
 	// The File System ID of Nas.
-	FileSystemId string  `pulumi:"fileSystemId"`
-	Include      *string `pulumi:"include"`
+	FileSystemId string `pulumi:"fileSystemId"`
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	NasBackupPlanName string `pulumi:"nasBackupPlanName"`
 	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
@@ -250,10 +234,7 @@ type nasBackupPlanArgs struct {
 	// Backup retention days, the minimum is 1.
 	Retention string `pulumi:"retention"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
-	Schedule   string  `pulumi:"schedule"`
-	SpeedLimit *string `pulumi:"speedLimit"`
-	// Deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
-	UpdatePaths *bool `pulumi:"updatePaths"`
+	Schedule string `pulumi:"schedule"`
 	// The ID of Backup vault.
 	VaultId string `pulumi:"vaultId"`
 }
@@ -262,15 +243,14 @@ type nasBackupPlanArgs struct {
 type NasBackupPlanArgs struct {
 	// Backup type. Valid values: `COMPLETE`.
 	BackupType pulumi.StringInput
-	// File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
-	CreateTime pulumi.StringInput
-	Detail     pulumi.StringPtrInput
+	// This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+	//
+	// Deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.
+	CreateTime pulumi.StringPtrInput
 	// Whether to disable the backup task. Valid values: `true`, `false`.
 	Disabled pulumi.BoolPtrInput
-	Exclude  pulumi.StringPtrInput
 	// The File System ID of Nas.
 	FileSystemId pulumi.StringInput
-	Include      pulumi.StringPtrInput
 	// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
 	NasBackupPlanName pulumi.StringInput
 	// Windows operating system with application consistency using VSS, e.g: `{"UseVSS":false}`.
@@ -280,10 +260,7 @@ type NasBackupPlanArgs struct {
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringInput
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
-	Schedule   pulumi.StringInput
-	SpeedLimit pulumi.StringPtrInput
-	// Deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
-	UpdatePaths pulumi.BoolPtrInput
+	Schedule pulumi.StringInput
 	// The ID of Backup vault.
 	VaultId pulumi.StringInput
 }

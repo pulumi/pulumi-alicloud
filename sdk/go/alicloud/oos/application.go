@@ -73,7 +73,7 @@ type Application struct {
 	// Application group description information.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The ID of the resource group.
-	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The tag of the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 }

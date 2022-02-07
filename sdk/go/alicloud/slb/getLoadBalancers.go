@@ -36,6 +36,8 @@ type GetLoadBalancersArgs struct {
 	// Network type of the SLBs. Valid values: `vpc` and `classic`.
 	NetworkType *string `pulumi:"networkType"`
 	OutputFile  *string `pulumi:"outputFile"`
+	PageNumber  *int    `pulumi:"pageNumber"`
+	PageSize    *int    `pulumi:"pageSize"`
 	PaymentType *string `pulumi:"paymentType"`
 	// The Id of resource group which SLB belongs.
 	ResourceGroupId       *string `pulumi:"resourceGroupId"`
@@ -96,6 +98,8 @@ type GetLoadBalancersResult struct {
 	// Network type of the SLB. Possible values: `vpc` and `classic`.
 	NetworkType           *string `pulumi:"networkType"`
 	OutputFile            *string `pulumi:"outputFile"`
+	PageNumber            *int    `pulumi:"pageNumber"`
+	PageSize              *int    `pulumi:"pageSize"`
 	PaymentType           *string `pulumi:"paymentType"`
 	ResourceGroupId       *string `pulumi:"resourceGroupId"`
 	ServerId              *string `pulumi:"serverId"`
@@ -108,7 +112,8 @@ type GetLoadBalancersResult struct {
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the SLB instance.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags       map[string]interface{} `pulumi:"tags"`
+	TotalCount int                    `pulumi:"totalCount"`
 	// ID of the VPC the SLB belongs to.
 	VpcId *string `pulumi:"vpcId"`
 	// ID of the VSwitch the SLB belongs to.
@@ -141,6 +146,8 @@ type GetLoadBalancersOutputArgs struct {
 	// Network type of the SLBs. Valid values: `vpc` and `classic`.
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
 	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
+	PageNumber  pulumi.IntPtrInput    `pulumi:"pageNumber"`
+	PageSize    pulumi.IntPtrInput    `pulumi:"pageSize"`
 	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`
 	// The Id of resource group which SLB belongs.
 	ResourceGroupId       pulumi.StringPtrInput `pulumi:"resourceGroupId"`
@@ -260,6 +267,14 @@ func (o GetLoadBalancersResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+func (o GetLoadBalancersResultOutput) PageNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetLoadBalancersResult) *int { return v.PageNumber }).(pulumi.IntPtrOutput)
+}
+
+func (o GetLoadBalancersResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetLoadBalancersResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
 func (o GetLoadBalancersResultOutput) PaymentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.PaymentType }).(pulumi.StringPtrOutput)
 }
@@ -295,6 +310,10 @@ func (o GetLoadBalancersResultOutput) Status() pulumi.StringPtrOutput {
 // A map of tags assigned to the SLB instance.
 func (o GetLoadBalancersResultOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o GetLoadBalancersResultOutput) TotalCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLoadBalancersResult) int { return v.TotalCount }).(pulumi.IntOutput)
 }
 
 // ID of the VPC the SLB belongs to.

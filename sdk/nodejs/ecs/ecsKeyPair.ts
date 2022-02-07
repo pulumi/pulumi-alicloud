@@ -75,12 +75,15 @@ export class EcsKeyPair extends pulumi.CustomResource {
      */
     public readonly keyFile!: pulumi.Output<string | undefined>;
     /**
-     * The key pair's name. It is the only in one Alicloud account.
+     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      *
      * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
      */
     public readonly keyName!: pulumi.Output<string>;
     public readonly keyNamePrefix!: pulumi.Output<string | undefined>;
+    /**
+     * The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     */
     public readonly keyPairName!: pulumi.Output<string>;
     /**
      * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
@@ -142,12 +145,15 @@ export interface EcsKeyPairState {
      */
     keyFile?: pulumi.Input<string>;
     /**
-     * The key pair's name. It is the only in one Alicloud account.
+     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      *
      * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
      */
     keyName?: pulumi.Input<string>;
     keyNamePrefix?: pulumi.Input<string>;
+    /**
+     * The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     */
     keyPairName?: pulumi.Input<string>;
     /**
      * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
@@ -172,12 +178,15 @@ export interface EcsKeyPairArgs {
      */
     keyFile?: pulumi.Input<string>;
     /**
-     * The key pair's name. It is the only in one Alicloud account.
+     * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      *
      * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
      */
     keyName?: pulumi.Input<string>;
     keyNamePrefix?: pulumi.Input<string>;
+    /**
+     * The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     */
     keyPairName?: pulumi.Input<string>;
     /**
      * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.

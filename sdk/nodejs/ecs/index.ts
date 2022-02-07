@@ -22,6 +22,7 @@ export * from "./ecsKeyPairAttachment";
 export * from "./ecsLaunchTemplate";
 export * from "./ecsNetworkInterface";
 export * from "./ecsNetworkInterfaceAttachment";
+export * from "./ecsPrefixList";
 export * from "./ecsSessionManagerStatus";
 export * from "./ecsSnapshot";
 export * from "./eip";
@@ -37,6 +38,7 @@ export * from "./getEcsDisks";
 export * from "./getEcsKeyPairs";
 export * from "./getEcsLaunchTemplates";
 export * from "./getEcsNetworkInterfaces";
+export * from "./getEcsPrefixLists";
 export * from "./getEcsSnapshots";
 export * from "./getEipAddresses";
 export * from "./getEips";
@@ -84,6 +86,7 @@ import { EcsKeyPairAttachment } from "./ecsKeyPairAttachment";
 import { EcsLaunchTemplate } from "./ecsLaunchTemplate";
 import { EcsNetworkInterface } from "./ecsNetworkInterface";
 import { EcsNetworkInterfaceAttachment } from "./ecsNetworkInterfaceAttachment";
+import { EcsPrefixList } from "./ecsPrefixList";
 import { EcsSessionManagerStatus } from "./ecsSessionManagerStatus";
 import { EcsSnapshot } from "./ecsSnapshot";
 import { Eip } from "./eip";
@@ -143,6 +146,8 @@ const _module = {
                 return new EcsNetworkInterface(name, <any>undefined, { urn })
             case "alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment":
                 return new EcsNetworkInterfaceAttachment(name, <any>undefined, { urn })
+            case "alicloud:ecs/ecsPrefixList:EcsPrefixList":
+                return new EcsPrefixList(name, <any>undefined, { urn })
             case "alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus":
                 return new EcsSessionManagerStatus(name, <any>undefined, { urn })
             case "alicloud:ecs/ecsSnapshot:EcsSnapshot":
@@ -205,6 +210,7 @@ pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsKeyPairAttachment", _m
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsLaunchTemplate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsNetworkInterface", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsNetworkInterfaceAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsPrefixList", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsSessionManagerStatus", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsSnapshot", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/eip", _module)

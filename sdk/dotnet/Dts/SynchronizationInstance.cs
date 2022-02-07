@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<string> InstanceClass { get; private set; } = null!;
 
         /// <summary>
-        /// The duration of prepaid instance purchase. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+        /// The duration of prepaid instance purchase. this parameter is required When `payment_type` equals `Subscription`.
         /// </summary>
         [Output("paymentDuration")]
         public Output<int?> PaymentDuration { get; private set; } = null!;
@@ -209,7 +209,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? InstanceClass { get; set; }
 
         /// <summary>
-        /// The duration of prepaid instance purchase. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+        /// The duration of prepaid instance purchase. this parameter is required When `payment_type` equals `Subscription`.
         /// </summary>
         [Input("paymentDuration")]
         public Input<int>? PaymentDuration { get; set; }
@@ -288,7 +288,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? InstanceClass { get; set; }
 
         /// <summary>
-        /// The duration of prepaid instance purchase. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
+        /// The duration of prepaid instance purchase. this parameter is required When `payment_type` equals `Subscription`.
         /// </summary>
         [Input("paymentDuration")]
         public Input<int>? PaymentDuration { get; set; }

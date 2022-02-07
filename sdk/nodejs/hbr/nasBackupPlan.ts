@@ -87,20 +87,19 @@ export class NasBackupPlan extends pulumi.CustomResource {
      */
     public readonly backupType!: pulumi.Output<string>;
     /**
-     * File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+     * This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+     *
+     * @deprecated Field 'create_time' has been deprecated from provider version 1.153.0.
      */
     public readonly createTime!: pulumi.Output<string>;
-    public readonly detail!: pulumi.Output<string | undefined>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
     public readonly disabled!: pulumi.Output<boolean>;
-    public readonly exclude!: pulumi.Output<string | undefined>;
     /**
      * The File System ID of Nas.
      */
     public readonly fileSystemId!: pulumi.Output<string>;
-    public readonly include!: pulumi.Output<string | undefined>;
     /**
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
@@ -121,11 +120,6 @@ export class NasBackupPlan extends pulumi.CustomResource {
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      */
     public readonly schedule!: pulumi.Output<string>;
-    public readonly speedLimit!: pulumi.Output<string | undefined>;
-    /**
-     * @deprecated Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
-     */
-    public readonly updatePaths!: pulumi.Output<boolean | undefined>;
     /**
      * The ID of Backup vault.
      */
@@ -146,26 +140,18 @@ export class NasBackupPlan extends pulumi.CustomResource {
             const state = argsOrState as NasBackupPlanState | undefined;
             resourceInputs["backupType"] = state ? state.backupType : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["detail"] = state ? state.detail : undefined;
             resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["exclude"] = state ? state.exclude : undefined;
             resourceInputs["fileSystemId"] = state ? state.fileSystemId : undefined;
-            resourceInputs["include"] = state ? state.include : undefined;
             resourceInputs["nasBackupPlanName"] = state ? state.nasBackupPlanName : undefined;
             resourceInputs["options"] = state ? state.options : undefined;
             resourceInputs["paths"] = state ? state.paths : undefined;
             resourceInputs["retention"] = state ? state.retention : undefined;
             resourceInputs["schedule"] = state ? state.schedule : undefined;
-            resourceInputs["speedLimit"] = state ? state.speedLimit : undefined;
-            resourceInputs["updatePaths"] = state ? state.updatePaths : undefined;
             resourceInputs["vaultId"] = state ? state.vaultId : undefined;
         } else {
             const args = argsOrState as NasBackupPlanArgs | undefined;
             if ((!args || args.backupType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'backupType'");
-            }
-            if ((!args || args.createTime === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'createTime'");
             }
             if ((!args || args.fileSystemId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'fileSystemId'");
@@ -187,18 +173,13 @@ export class NasBackupPlan extends pulumi.CustomResource {
             }
             resourceInputs["backupType"] = args ? args.backupType : undefined;
             resourceInputs["createTime"] = args ? args.createTime : undefined;
-            resourceInputs["detail"] = args ? args.detail : undefined;
             resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["exclude"] = args ? args.exclude : undefined;
             resourceInputs["fileSystemId"] = args ? args.fileSystemId : undefined;
-            resourceInputs["include"] = args ? args.include : undefined;
             resourceInputs["nasBackupPlanName"] = args ? args.nasBackupPlanName : undefined;
             resourceInputs["options"] = args ? args.options : undefined;
             resourceInputs["paths"] = args ? args.paths : undefined;
             resourceInputs["retention"] = args ? args.retention : undefined;
             resourceInputs["schedule"] = args ? args.schedule : undefined;
-            resourceInputs["speedLimit"] = args ? args.speedLimit : undefined;
-            resourceInputs["updatePaths"] = args ? args.updatePaths : undefined;
             resourceInputs["vaultId"] = args ? args.vaultId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -215,20 +196,19 @@ export interface NasBackupPlanState {
      */
     backupType?: pulumi.Input<string>;
     /**
-     * File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+     * This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+     *
+     * @deprecated Field 'create_time' has been deprecated from provider version 1.153.0.
      */
     createTime?: pulumi.Input<string>;
-    detail?: pulumi.Input<string>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
     disabled?: pulumi.Input<boolean>;
-    exclude?: pulumi.Input<string>;
     /**
      * The File System ID of Nas.
      */
     fileSystemId?: pulumi.Input<string>;
-    include?: pulumi.Input<string>;
     /**
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
@@ -249,11 +229,6 @@ export interface NasBackupPlanState {
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      */
     schedule?: pulumi.Input<string>;
-    speedLimit?: pulumi.Input<string>;
-    /**
-     * @deprecated Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
-     */
-    updatePaths?: pulumi.Input<boolean>;
     /**
      * The ID of Backup vault.
      */
@@ -269,20 +244,19 @@ export interface NasBackupPlanArgs {
      */
     backupType: pulumi.Input<string>;
     /**
-     * File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+     * This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+     *
+     * @deprecated Field 'create_time' has been deprecated from provider version 1.153.0.
      */
-    createTime: pulumi.Input<string>;
-    detail?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
     disabled?: pulumi.Input<boolean>;
-    exclude?: pulumi.Input<string>;
     /**
      * The File System ID of Nas.
      */
     fileSystemId: pulumi.Input<string>;
-    include?: pulumi.Input<string>;
     /**
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
@@ -303,11 +277,6 @@ export interface NasBackupPlanArgs {
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      */
     schedule: pulumi.Input<string>;
-    speedLimit?: pulumi.Input<string>;
-    /**
-     * @deprecated Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
-     */
-    updatePaths?: pulumi.Input<boolean>;
     /**
      * The ID of Backup vault.
      */

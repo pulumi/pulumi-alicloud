@@ -163,7 +163,7 @@ export class NodePool extends pulumi.CustomResource {
     /**
      * Auto scaling node pool configuration. For more details, see `scalingConfig`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
      */
-    public readonly scalingConfig!: pulumi.Output<outputs.cs.NodePoolScalingConfig>;
+    public readonly scalingConfig!: pulumi.Output<outputs.cs.NodePoolScalingConfig | undefined>;
     /**
      * (Available in 1.105.0+) Id of the Scaling Group.
      */
